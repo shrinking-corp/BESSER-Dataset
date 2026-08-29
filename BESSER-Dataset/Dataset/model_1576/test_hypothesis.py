@@ -1,0 +1,264 @@
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    petrinet_Arc,
+    petrinet_Node,
+    petrinet_PetriNet,
+    Node,
+    petrinet_Transition,
+    petrinet_Place,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_petrinet_arc_is_not_abstract():
+    assert not inspect.isabstract(petrinet_Arc)
+
+
+def test_petrinet_arc_constructor_exists():
+    assert callable(petrinet_Arc.__init__)
+
+
+def test_petrinet_arc_constructor_args():
+    sig = inspect.signature(petrinet_Arc.__init__)
+    params = list(sig.parameters.keys())
+    assert "poids" in params, "Missing parameter 'poids'"
+    assert "readArc" in params, "Missing parameter 'readArc'"
+
+def test_petrinet_arc_has_poids():
+    assert hasattr(petrinet_Arc, "poids")
+    descriptor = None
+    for klass in petrinet_Arc.__mro__:
+        if "poids" in klass.__dict__:
+            descriptor = klass.__dict__["poids"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_petrinet_arc_has_readArc():
+    assert hasattr(petrinet_Arc, "readArc")
+    descriptor = None
+    for klass in petrinet_Arc.__mro__:
+        if "readArc" in klass.__dict__:
+            descriptor = klass.__dict__["readArc"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_petrinet_node_is_not_abstract():
+    assert not inspect.isabstract(petrinet_Node)
+
+
+def test_petrinet_node_constructor_exists():
+    assert callable(petrinet_Node.__init__)
+
+
+def test_petrinet_node_constructor_args():
+    sig = inspect.signature(petrinet_Node.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_petrinet_node_has_name():
+    assert hasattr(petrinet_Node, "name")
+    descriptor = None
+    for klass in petrinet_Node.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_petrinet_petrinet_is_not_abstract():
+    assert not inspect.isabstract(petrinet_PetriNet)
+
+
+def test_petrinet_petrinet_constructor_exists():
+    assert callable(petrinet_PetriNet.__init__)
+
+
+def test_petrinet_petrinet_constructor_args():
+    sig = inspect.signature(petrinet_PetriNet.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_petrinet_petrinet_has_name():
+    assert hasattr(petrinet_PetriNet, "name")
+    descriptor = None
+    for klass in petrinet_PetriNet.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_node_is_not_abstract():
+    assert not inspect.isabstract(Node)
+
+
+def test_node_constructor_exists():
+    assert callable(Node.__init__)
+
+
+def test_node_constructor_args():
+    sig = inspect.signature(Node.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_petrinet_transition_is_not_abstract():
+    assert not inspect.isabstract(petrinet_Transition)
+
+
+def test_petrinet_transition_constructor_exists():
+    assert callable(petrinet_Transition.__init__)
+
+
+def test_petrinet_transition_constructor_args():
+    sig = inspect.signature(petrinet_Transition.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_petrinet_place_is_not_abstract():
+    assert not inspect.isabstract(petrinet_Place)
+
+
+def test_petrinet_place_constructor_exists():
+    assert callable(petrinet_Place.__init__)
+
+
+def test_petrinet_place_constructor_args():
+    sig = inspect.signature(petrinet_Place.__init__)
+    params = list(sig.parameters.keys())
+    assert "nbJetons" in params, "Missing parameter 'nbJetons'"
+
+def test_petrinet_place_has_nbJetons():
+    assert hasattr(petrinet_Place, "nbJetons")
+    descriptor = None
+    for klass in petrinet_Place.__mro__:
+        if "nbJetons" in klass.__dict__:
+            descriptor = klass.__dict__["nbJetons"]
+            break
+    assert isinstance(descriptor, property)
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+petrinet_Arc_strategy = st.builds(
+    petrinet_Arc,
+    poids=
+        st.integers(),
+    readArc=
+        st.booleans()
+)
+petrinet_Node_strategy = st.builds(
+    petrinet_Node,
+    name=
+        safe_text
+)
+petrinet_PetriNet_strategy = st.builds(
+    petrinet_PetriNet,
+    name=
+        safe_text
+)
+Node_strategy = st.builds(
+    Node,
+)
+petrinet_Transition_strategy = st.builds(
+    petrinet_Transition,
+)
+petrinet_Place_strategy = st.builds(
+    petrinet_Place,
+    nbJetons=
+        st.integers()
+)
+
+@given(instance=petrinet_Arc_strategy)
+@settings(max_examples=50)
+def test_petrinet_arc_instantiation(instance):
+    assert isinstance(instance, petrinet_Arc)
+
+
+
+@given(instance=petrinet_Arc_strategy)
+def test_petrinet_arc_poids_setter(instance):
+    original = instance.poids
+    instance.poids = original
+    assert instance.poids == original
+
+
+
+@given(instance=petrinet_Arc_strategy)
+def test_petrinet_arc_readArc_setter(instance):
+    original = instance.readArc
+    instance.readArc = original
+    assert instance.readArc == original
+
+@given(instance=petrinet_Node_strategy)
+@settings(max_examples=50)
+def test_petrinet_node_instantiation(instance):
+    assert isinstance(instance, petrinet_Node)
+
+
+
+@given(instance=petrinet_Node_strategy)
+def test_petrinet_node_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=petrinet_PetriNet_strategy)
+@settings(max_examples=50)
+def test_petrinet_petrinet_instantiation(instance):
+    assert isinstance(instance, petrinet_PetriNet)
+
+
+
+@given(instance=petrinet_PetriNet_strategy)
+def test_petrinet_petrinet_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=Node_strategy)
+@settings(max_examples=50)
+def test_node_instantiation(instance):
+    assert isinstance(instance, Node)
+
+@given(instance=petrinet_Transition_strategy)
+@settings(max_examples=50)
+def test_petrinet_transition_instantiation(instance):
+    assert isinstance(instance, petrinet_Transition)
+
+@given(instance=petrinet_Place_strategy)
+@settings(max_examples=50)
+def test_petrinet_place_instantiation(instance):
+    assert isinstance(instance, petrinet_Place)
+
+
+
+@given(instance=petrinet_Place_strategy)
+def test_petrinet_place_nbJetons_setter(instance):
+    original = instance.nbJetons
+    instance.nbJetons = original
+    assert instance.nbJetons == original
