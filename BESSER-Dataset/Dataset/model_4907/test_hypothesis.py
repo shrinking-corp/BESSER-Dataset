@@ -1,0 +1,780 @@
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    services_Value,
+    services_ServiceProfile,
+    services_ResourceMonitor,
+    services_ServiceForecastUsers,
+    services_ResourceForecast,
+    services_DateTimeRange,
+    services_Expression,
+    services_NetXResource,
+    services_ServiceUser,
+    services_ServiceDistribution,
+    services_ServiceMonitor,
+    services_ServiceForecast,
+    services_Node,
+    services_Service,
+    services_Tolerance,
+    services_CIID,
+    Service,
+    services_RFSService,
+    services_CFSService,
+    ServiceClassType,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_services_value_is_not_abstract():
+    assert not inspect.isabstract(services_Value)
+
+
+def test_services_value_constructor_exists():
+    assert callable(services_Value.__init__)
+
+
+def test_services_value_constructor_args():
+    sig = inspect.signature(services_Value.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_serviceprofile_is_not_abstract():
+    assert not inspect.isabstract(services_ServiceProfile)
+
+
+def test_services_serviceprofile_constructor_exists():
+    assert callable(services_ServiceProfile.__init__)
+
+
+def test_services_serviceprofile_constructor_args():
+    sig = inspect.signature(services_ServiceProfile.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_services_serviceprofile_has_name():
+    assert hasattr(services_ServiceProfile, "name")
+    descriptor = None
+    for klass in services_ServiceProfile.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_services_resourcemonitor_is_not_abstract():
+    assert not inspect.isabstract(services_ResourceMonitor)
+
+
+def test_services_resourcemonitor_constructor_exists():
+    assert callable(services_ResourceMonitor.__init__)
+
+
+def test_services_resourcemonitor_constructor_args():
+    sig = inspect.signature(services_ResourceMonitor.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_serviceforecastusers_is_not_abstract():
+    assert not inspect.isabstract(services_ServiceForecastUsers)
+
+
+def test_services_serviceforecastusers_constructor_exists():
+    assert callable(services_ServiceForecastUsers.__init__)
+
+
+def test_services_serviceforecastusers_constructor_args():
+    sig = inspect.signature(services_ServiceForecastUsers.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_resourceforecast_is_not_abstract():
+    assert not inspect.isabstract(services_ResourceForecast)
+
+
+def test_services_resourceforecast_constructor_exists():
+    assert callable(services_ResourceForecast.__init__)
+
+
+def test_services_resourceforecast_constructor_args():
+    sig = inspect.signature(services_ResourceForecast.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_datetimerange_is_not_abstract():
+    assert not inspect.isabstract(services_DateTimeRange)
+
+
+def test_services_datetimerange_constructor_exists():
+    assert callable(services_DateTimeRange.__init__)
+
+
+def test_services_datetimerange_constructor_args():
+    sig = inspect.signature(services_DateTimeRange.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_expression_is_not_abstract():
+    assert not inspect.isabstract(services_Expression)
+
+
+def test_services_expression_constructor_exists():
+    assert callable(services_Expression.__init__)
+
+
+def test_services_expression_constructor_args():
+    sig = inspect.signature(services_Expression.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_netxresource_is_not_abstract():
+    assert not inspect.isabstract(services_NetXResource)
+
+
+def test_services_netxresource_constructor_exists():
+    assert callable(services_NetXResource.__init__)
+
+
+def test_services_netxresource_constructor_args():
+    sig = inspect.signature(services_NetXResource.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_serviceuser_is_not_abstract():
+    assert not inspect.isabstract(services_ServiceUser)
+
+
+def test_services_serviceuser_constructor_exists():
+    assert callable(services_ServiceUser.__init__)
+
+
+def test_services_serviceuser_constructor_args():
+    sig = inspect.signature(services_ServiceUser.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_services_serviceuser_has_name():
+    assert hasattr(services_ServiceUser, "name")
+    descriptor = None
+    for klass in services_ServiceUser.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_services_servicedistribution_is_not_abstract():
+    assert not inspect.isabstract(services_ServiceDistribution)
+
+
+def test_services_servicedistribution_constructor_exists():
+    assert callable(services_ServiceDistribution.__init__)
+
+
+def test_services_servicedistribution_constructor_args():
+    sig = inspect.signature(services_ServiceDistribution.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_servicemonitor_is_not_abstract():
+    assert not inspect.isabstract(services_ServiceMonitor)
+
+
+def test_services_servicemonitor_constructor_exists():
+    assert callable(services_ServiceMonitor.__init__)
+
+
+def test_services_servicemonitor_constructor_args():
+    sig = inspect.signature(services_ServiceMonitor.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+    assert "revision" in params, "Missing parameter 'revision'"
+
+def test_services_servicemonitor_has_name():
+    assert hasattr(services_ServiceMonitor, "name")
+    descriptor = None
+    for klass in services_ServiceMonitor.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_servicemonitor_has_revision():
+    assert hasattr(services_ServiceMonitor, "revision")
+    descriptor = None
+    for klass in services_ServiceMonitor.__mro__:
+        if "revision" in klass.__dict__:
+            descriptor = klass.__dict__["revision"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_services_serviceforecast_is_not_abstract():
+    assert not inspect.isabstract(services_ServiceForecast)
+
+
+def test_services_serviceforecast_constructor_exists():
+    assert callable(services_ServiceForecast.__init__)
+
+
+def test_services_serviceforecast_constructor_args():
+    sig = inspect.signature(services_ServiceForecast.__init__)
+    params = list(sig.parameters.keys())
+    assert "revision" in params, "Missing parameter 'revision'"
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_services_serviceforecast_has_revision():
+    assert hasattr(services_ServiceForecast, "revision")
+    descriptor = None
+    for klass in services_ServiceForecast.__mro__:
+        if "revision" in klass.__dict__:
+            descriptor = klass.__dict__["revision"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_serviceforecast_has_name():
+    assert hasattr(services_ServiceForecast, "name")
+    descriptor = None
+    for klass in services_ServiceForecast.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_services_node_is_not_abstract():
+    assert not inspect.isabstract(services_Node)
+
+
+def test_services_node_constructor_exists():
+    assert callable(services_Node.__init__)
+
+
+def test_services_node_constructor_args():
+    sig = inspect.signature(services_Node.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_service_is_not_abstract():
+    assert not inspect.isabstract(services_Service)
+
+
+def test_services_service_constructor_exists():
+    assert callable(services_Service.__init__)
+
+
+def test_services_service_constructor_args():
+    sig = inspect.signature(services_Service.__init__)
+    params = list(sig.parameters.keys())
+    assert "serviceDescription" in params, "Missing parameter 'serviceDescription'"
+    assert "serviceCategory" in params, "Missing parameter 'serviceCategory'"
+    assert "serviceName" in params, "Missing parameter 'serviceName'"
+    assert "serviceClass" in params, "Missing parameter 'serviceClass'"
+
+def test_services_service_has_serviceDescription():
+    assert hasattr(services_Service, "serviceDescription")
+    descriptor = None
+    for klass in services_Service.__mro__:
+        if "serviceDescription" in klass.__dict__:
+            descriptor = klass.__dict__["serviceDescription"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_service_has_serviceCategory():
+    assert hasattr(services_Service, "serviceCategory")
+    descriptor = None
+    for klass in services_Service.__mro__:
+        if "serviceCategory" in klass.__dict__:
+            descriptor = klass.__dict__["serviceCategory"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_service_has_serviceName():
+    assert hasattr(services_Service, "serviceName")
+    descriptor = None
+    for klass in services_Service.__mro__:
+        if "serviceName" in klass.__dict__:
+            descriptor = klass.__dict__["serviceName"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_service_has_serviceClass():
+    assert hasattr(services_Service, "serviceClass")
+    descriptor = None
+    for klass in services_Service.__mro__:
+        if "serviceClass" in klass.__dict__:
+            descriptor = klass.__dict__["serviceClass"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_services_tolerance_is_not_abstract():
+    assert not inspect.isabstract(services_Tolerance)
+
+
+def test_services_tolerance_constructor_exists():
+    assert callable(services_Tolerance.__init__)
+
+
+def test_services_tolerance_constructor_args():
+    sig = inspect.signature(services_Tolerance.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_ciid_is_not_abstract():
+    assert not inspect.isabstract(services_CIID)
+
+
+def test_services_ciid_constructor_exists():
+    assert callable(services_CIID.__init__)
+
+
+def test_services_ciid_constructor_args():
+    sig = inspect.signature(services_CIID.__init__)
+    params = list(sig.parameters.keys())
+    assert "commonCIID" in params, "Missing parameter 'commonCIID'"
+    assert "localCIID" in params, "Missing parameter 'localCIID'"
+
+def test_services_ciid_has_commonCIID():
+    assert hasattr(services_CIID, "commonCIID")
+    descriptor = None
+    for klass in services_CIID.__mro__:
+        if "commonCIID" in klass.__dict__:
+            descriptor = klass.__dict__["commonCIID"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_ciid_has_localCIID():
+    assert hasattr(services_CIID, "localCIID")
+    descriptor = None
+    for klass in services_CIID.__mro__:
+        if "localCIID" in klass.__dict__:
+            descriptor = klass.__dict__["localCIID"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_service_is_not_abstract():
+    assert not inspect.isabstract(Service)
+
+
+def test_service_constructor_exists():
+    assert callable(Service.__init__)
+
+
+def test_service_constructor_args():
+    sig = inspect.signature(Service.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_services_rfsservice_is_not_abstract():
+    assert not inspect.isabstract(services_RFSService)
+
+
+def test_services_rfsservice_constructor_exists():
+    assert callable(services_RFSService.__init__)
+
+
+def test_services_rfsservice_constructor_args():
+    sig = inspect.signature(services_RFSService.__init__)
+    params = list(sig.parameters.keys())
+    assert "functionalCategory" in params, "Missing parameter 'functionalCategory'"
+
+def test_services_rfsservice_has_functionalCategory():
+    assert hasattr(services_RFSService, "functionalCategory")
+    descriptor = None
+    for klass in services_RFSService.__mro__:
+        if "functionalCategory" in klass.__dict__:
+            descriptor = klass.__dict__["functionalCategory"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_services_cfsservice_is_not_abstract():
+    assert not inspect.isabstract(services_CFSService)
+
+
+def test_services_cfsservice_constructor_exists():
+    assert callable(services_CFSService.__init__)
+
+
+def test_services_cfsservice_constructor_args():
+    sig = inspect.signature(services_CFSService.__init__)
+    params = list(sig.parameters.keys())
+    assert "provider" in params, "Missing parameter 'provider'"
+    assert "scenario" in params, "Missing parameter 'scenario'"
+
+def test_services_cfsservice_has_provider():
+    assert hasattr(services_CFSService, "provider")
+    descriptor = None
+    for klass in services_CFSService.__mro__:
+        if "provider" in klass.__dict__:
+            descriptor = klass.__dict__["provider"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_services_cfsservice_has_scenario():
+    assert hasattr(services_CFSService, "scenario")
+    descriptor = None
+    for klass in services_CFSService.__mro__:
+        if "scenario" in klass.__dict__:
+            descriptor = klass.__dict__["scenario"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_serviceclasstype_exists():
+    # Check that the Enumeration exists
+    assert ServiceClassType is not None
+
+def test_serviceclasstype_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in ServiceClassType]
+    expected_literals = [
+        "Silver",
+        "Bronze",
+        "Gold",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in ServiceClassType"
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+services_Value_strategy = st.builds(
+    services_Value,
+)
+services_ServiceProfile_strategy = st.builds(
+    services_ServiceProfile,
+    name=
+        safe_text
+)
+services_ResourceMonitor_strategy = st.builds(
+    services_ResourceMonitor,
+)
+services_ServiceForecastUsers_strategy = st.builds(
+    services_ServiceForecastUsers,
+)
+services_ResourceForecast_strategy = st.builds(
+    services_ResourceForecast,
+)
+services_DateTimeRange_strategy = st.builds(
+    services_DateTimeRange,
+)
+services_Expression_strategy = st.builds(
+    services_Expression,
+)
+services_NetXResource_strategy = st.builds(
+    services_NetXResource,
+)
+services_ServiceUser_strategy = st.builds(
+    services_ServiceUser,
+    name=
+        safe_text
+)
+services_ServiceDistribution_strategy = st.builds(
+    services_ServiceDistribution,
+)
+services_ServiceMonitor_strategy = st.builds(
+    services_ServiceMonitor,
+    name=
+        safe_text,
+    revision=
+        safe_text
+)
+services_ServiceForecast_strategy = st.builds(
+    services_ServiceForecast,
+    revision=
+        safe_text,
+    name=
+        safe_text
+)
+services_Node_strategy = st.builds(
+    services_Node,
+)
+services_Service_strategy = st.builds(
+    services_Service,
+    serviceDescription=
+        safe_text,
+    serviceCategory=
+        safe_text,
+    serviceName=
+        safe_text,
+    serviceClass=
+        safe_text
+)
+services_Tolerance_strategy = st.builds(
+    services_Tolerance,
+)
+services_CIID_strategy = st.builds(
+    services_CIID,
+    commonCIID=
+        safe_text,
+    localCIID=
+        safe_text
+)
+Service_strategy = st.builds(
+    Service,
+)
+services_RFSService_strategy = st.builds(
+    services_RFSService,
+    functionalCategory=
+        safe_text
+)
+services_CFSService_strategy = st.builds(
+    services_CFSService,
+    provider=
+        safe_text,
+    scenario=
+        safe_text
+)
+
+@given(instance=services_Value_strategy)
+@settings(max_examples=50)
+def test_services_value_instantiation(instance):
+    assert isinstance(instance, services_Value)
+
+@given(instance=services_ServiceProfile_strategy)
+@settings(max_examples=50)
+def test_services_serviceprofile_instantiation(instance):
+    assert isinstance(instance, services_ServiceProfile)
+
+
+
+@given(instance=services_ServiceProfile_strategy)
+def test_services_serviceprofile_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=services_ResourceMonitor_strategy)
+@settings(max_examples=50)
+def test_services_resourcemonitor_instantiation(instance):
+    assert isinstance(instance, services_ResourceMonitor)
+
+@given(instance=services_ServiceForecastUsers_strategy)
+@settings(max_examples=50)
+def test_services_serviceforecastusers_instantiation(instance):
+    assert isinstance(instance, services_ServiceForecastUsers)
+
+@given(instance=services_ResourceForecast_strategy)
+@settings(max_examples=50)
+def test_services_resourceforecast_instantiation(instance):
+    assert isinstance(instance, services_ResourceForecast)
+
+@given(instance=services_DateTimeRange_strategy)
+@settings(max_examples=50)
+def test_services_datetimerange_instantiation(instance):
+    assert isinstance(instance, services_DateTimeRange)
+
+@given(instance=services_Expression_strategy)
+@settings(max_examples=50)
+def test_services_expression_instantiation(instance):
+    assert isinstance(instance, services_Expression)
+
+@given(instance=services_NetXResource_strategy)
+@settings(max_examples=50)
+def test_services_netxresource_instantiation(instance):
+    assert isinstance(instance, services_NetXResource)
+
+@given(instance=services_ServiceUser_strategy)
+@settings(max_examples=50)
+def test_services_serviceuser_instantiation(instance):
+    assert isinstance(instance, services_ServiceUser)
+
+
+
+@given(instance=services_ServiceUser_strategy)
+def test_services_serviceuser_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=services_ServiceDistribution_strategy)
+@settings(max_examples=50)
+def test_services_servicedistribution_instantiation(instance):
+    assert isinstance(instance, services_ServiceDistribution)
+
+@given(instance=services_ServiceMonitor_strategy)
+@settings(max_examples=50)
+def test_services_servicemonitor_instantiation(instance):
+    assert isinstance(instance, services_ServiceMonitor)
+
+
+
+@given(instance=services_ServiceMonitor_strategy)
+def test_services_servicemonitor_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=services_ServiceMonitor_strategy)
+def test_services_servicemonitor_revision_setter(instance):
+    original = instance.revision
+    instance.revision = original
+    assert instance.revision == original
+
+@given(instance=services_ServiceForecast_strategy)
+@settings(max_examples=50)
+def test_services_serviceforecast_instantiation(instance):
+    assert isinstance(instance, services_ServiceForecast)
+
+
+
+@given(instance=services_ServiceForecast_strategy)
+def test_services_serviceforecast_revision_setter(instance):
+    original = instance.revision
+    instance.revision = original
+    assert instance.revision == original
+
+
+
+@given(instance=services_ServiceForecast_strategy)
+def test_services_serviceforecast_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=services_Node_strategy)
+@settings(max_examples=50)
+def test_services_node_instantiation(instance):
+    assert isinstance(instance, services_Node)
+
+@given(instance=services_Service_strategy)
+@settings(max_examples=50)
+def test_services_service_instantiation(instance):
+    assert isinstance(instance, services_Service)
+
+
+
+@given(instance=services_Service_strategy)
+def test_services_service_serviceDescription_setter(instance):
+    original = instance.serviceDescription
+    instance.serviceDescription = original
+    assert instance.serviceDescription == original
+
+
+
+@given(instance=services_Service_strategy)
+def test_services_service_serviceCategory_setter(instance):
+    original = instance.serviceCategory
+    instance.serviceCategory = original
+    assert instance.serviceCategory == original
+
+
+
+@given(instance=services_Service_strategy)
+def test_services_service_serviceName_setter(instance):
+    original = instance.serviceName
+    instance.serviceName = original
+    assert instance.serviceName == original
+
+
+
+@given(instance=services_Service_strategy)
+def test_services_service_serviceClass_setter(instance):
+    original = instance.serviceClass
+    instance.serviceClass = original
+    assert instance.serviceClass == original
+
+@given(instance=services_Tolerance_strategy)
+@settings(max_examples=50)
+def test_services_tolerance_instantiation(instance):
+    assert isinstance(instance, services_Tolerance)
+
+@given(instance=services_CIID_strategy)
+@settings(max_examples=50)
+def test_services_ciid_instantiation(instance):
+    assert isinstance(instance, services_CIID)
+
+
+
+@given(instance=services_CIID_strategy)
+def test_services_ciid_commonCIID_setter(instance):
+    original = instance.commonCIID
+    instance.commonCIID = original
+    assert instance.commonCIID == original
+
+
+
+@given(instance=services_CIID_strategy)
+def test_services_ciid_localCIID_setter(instance):
+    original = instance.localCIID
+    instance.localCIID = original
+    assert instance.localCIID == original
+
+@given(instance=Service_strategy)
+@settings(max_examples=50)
+def test_service_instantiation(instance):
+    assert isinstance(instance, Service)
+
+@given(instance=services_RFSService_strategy)
+@settings(max_examples=50)
+def test_services_rfsservice_instantiation(instance):
+    assert isinstance(instance, services_RFSService)
+
+
+
+@given(instance=services_RFSService_strategy)
+def test_services_rfsservice_functionalCategory_setter(instance):
+    original = instance.functionalCategory
+    instance.functionalCategory = original
+    assert instance.functionalCategory == original
+
+@given(instance=services_CFSService_strategy)
+@settings(max_examples=50)
+def test_services_cfsservice_instantiation(instance):
+    assert isinstance(instance, services_CFSService)
+
+
+
+@given(instance=services_CFSService_strategy)
+def test_services_cfsservice_provider_setter(instance):
+    original = instance.provider
+    instance.provider = original
+    assert instance.provider == original
+
+
+
+@given(instance=services_CFSService_strategy)
+def test_services_cfsservice_scenario_setter(instance):
+    original = instance.scenario
+    instance.scenario = original
+    assert instance.scenario == original
