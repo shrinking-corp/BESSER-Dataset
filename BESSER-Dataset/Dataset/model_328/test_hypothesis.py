@@ -1,0 +1,273 @@
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    Library_Book,
+    Library_Library,
+    Library_Writer,
+    Category,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_library_book_is_not_abstract():
+    assert not inspect.isabstract(Library_Book)
+
+
+def test_library_book_constructor_exists():
+    assert callable(Library_Book.__init__)
+
+
+def test_library_book_constructor_args():
+    sig = inspect.signature(Library_Book.__init__)
+    params = list(sig.parameters.keys())
+    assert "blurb" in params, "Missing parameter 'blurb'"
+    assert "pages" in params, "Missing parameter 'pages'"
+    assert "category" in params, "Missing parameter 'category'"
+    assert "title" in params, "Missing parameter 'title'"
+
+def test_library_book_has_blurb():
+    assert hasattr(Library_Book, "blurb")
+    descriptor = None
+    for klass in Library_Book.__mro__:
+        if "blurb" in klass.__dict__:
+            descriptor = klass.__dict__["blurb"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_library_book_has_pages():
+    assert hasattr(Library_Book, "pages")
+    descriptor = None
+    for klass in Library_Book.__mro__:
+        if "pages" in klass.__dict__:
+            descriptor = klass.__dict__["pages"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_library_book_has_category():
+    assert hasattr(Library_Book, "category")
+    descriptor = None
+    for klass in Library_Book.__mro__:
+        if "category" in klass.__dict__:
+            descriptor = klass.__dict__["category"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_library_book_has_title():
+    assert hasattr(Library_Book, "title")
+    descriptor = None
+    for klass in Library_Book.__mro__:
+        if "title" in klass.__dict__:
+            descriptor = klass.__dict__["title"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_library_library_is_not_abstract():
+    assert not inspect.isabstract(Library_Library)
+
+
+def test_library_library_constructor_exists():
+    assert callable(Library_Library.__init__)
+
+
+def test_library_library_constructor_args():
+    sig = inspect.signature(Library_Library.__init__)
+    params = list(sig.parameters.keys())
+    assert "id" in params, "Missing parameter 'id'"
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_library_library_has_id():
+    assert hasattr(Library_Library, "id")
+    descriptor = None
+    for klass in Library_Library.__mro__:
+        if "id" in klass.__dict__:
+            descriptor = klass.__dict__["id"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_library_library_has_name():
+    assert hasattr(Library_Library, "name")
+    descriptor = None
+    for klass in Library_Library.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_library_writer_is_not_abstract():
+    assert not inspect.isabstract(Library_Writer)
+
+
+def test_library_writer_constructor_exists():
+    assert callable(Library_Writer.__init__)
+
+
+def test_library_writer_constructor_args():
+    sig = inspect.signature(Library_Writer.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+    assert "id" in params, "Missing parameter 'id'"
+
+def test_library_writer_has_name():
+    assert hasattr(Library_Writer, "name")
+    descriptor = None
+    for klass in Library_Writer.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_library_writer_has_id():
+    assert hasattr(Library_Writer, "id")
+    descriptor = None
+    for klass in Library_Writer.__mro__:
+        if "id" in klass.__dict__:
+            descriptor = klass.__dict__["id"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_category_exists():
+    # Check that the Enumeration exists
+    assert Category is not None
+
+def test_category_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in Category]
+    expected_literals = [
+        "POETRY",
+        "FICTION",
+        "ALL",
+        "SCIENCE",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in Category"
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+Library_Book_strategy = st.builds(
+    Library_Book,
+    blurb=
+        safe_text,
+    pages=
+        st.integers(),
+    category=
+        safe_text,
+    title=
+        safe_text
+)
+Library_Library_strategy = st.builds(
+    Library_Library,
+    id=
+        st.integers(),
+    name=
+        safe_text
+)
+Library_Writer_strategy = st.builds(
+    Library_Writer,
+    name=
+        safe_text,
+    id=
+        st.integers()
+)
+
+@given(instance=Library_Book_strategy)
+@settings(max_examples=50)
+def test_library_book_instantiation(instance):
+    assert isinstance(instance, Library_Book)
+
+
+
+@given(instance=Library_Book_strategy)
+def test_library_book_blurb_setter(instance):
+    original = instance.blurb
+    instance.blurb = original
+    assert instance.blurb == original
+
+
+
+@given(instance=Library_Book_strategy)
+def test_library_book_pages_setter(instance):
+    original = instance.pages
+    instance.pages = original
+    assert instance.pages == original
+
+
+
+@given(instance=Library_Book_strategy)
+def test_library_book_category_setter(instance):
+    original = instance.category
+    instance.category = original
+    assert instance.category == original
+
+
+
+@given(instance=Library_Book_strategy)
+def test_library_book_title_setter(instance):
+    original = instance.title
+    instance.title = original
+    assert instance.title == original
+
+@given(instance=Library_Library_strategy)
+@settings(max_examples=50)
+def test_library_library_instantiation(instance):
+    assert isinstance(instance, Library_Library)
+
+
+
+@given(instance=Library_Library_strategy)
+def test_library_library_id_setter(instance):
+    original = instance.id
+    instance.id = original
+    assert instance.id == original
+
+
+
+@given(instance=Library_Library_strategy)
+def test_library_library_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=Library_Writer_strategy)
+@settings(max_examples=50)
+def test_library_writer_instantiation(instance):
+    assert isinstance(instance, Library_Writer)
+
+
+
+@given(instance=Library_Writer_strategy)
+def test_library_writer_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=Library_Writer_strategy)
+def test_library_writer_id_setter(instance):
+    original = instance.id
+    instance.id = original
+    assert instance.id == original
