@@ -1,0 +1,687 @@
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    User2_Interface,
+    HashTags,
+    Page,
+    Post,
+    User__,
+    Team,
+    User,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_user2_interface_is_not_abstract():
+    assert not inspect.isabstract(User2_Interface)
+
+
+def test_user2_interface_constructor_exists():
+    assert callable(User2_Interface.__init__)
+
+
+def test_user2_interface_constructor_args():
+    sig = inspect.signature(User2_Interface.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hashtags_is_not_abstract():
+    assert not inspect.isabstract(HashTags)
+
+
+def test_hashtags_constructor_exists():
+    assert callable(HashTags.__init__)
+
+
+def test_hashtags_constructor_args():
+    sig = inspect.signature(HashTags.__init__)
+    params = list(sig.parameters.keys())
+    assert "allHashTags" in params, "Missing parameter 'allHashTags'"
+
+def test_hashtags_has_allHashTags():
+    assert hasattr(HashTags, "allHashTags")
+    descriptor = None
+    for klass in HashTags.__mro__:
+        if "allHashTags" in klass.__dict__:
+            descriptor = klass.__dict__["allHashTags"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_page_is_not_abstract():
+    assert not inspect.isabstract(Page)
+
+
+def test_page_constructor_exists():
+    assert callable(Page.__init__)
+
+
+def test_page_constructor_args():
+    sig = inspect.signature(Page.__init__)
+    params = list(sig.parameters.keys())
+    assert "description" in params, "Missing parameter 'description'"
+    assert "nFans" in params, "Missing parameter 'nFans'"
+    assert "posts" in params, "Missing parameter 'posts'"
+    assert "name" in params, "Missing parameter 'name'"
+    assert "admin" in params, "Missing parameter 'admin'"
+    assert "fans" in params, "Missing parameter 'fans'"
+
+def test_page_has_description():
+    assert hasattr(Page, "description")
+    descriptor = None
+    for klass in Page.__mro__:
+        if "description" in klass.__dict__:
+            descriptor = klass.__dict__["description"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_page_has_nFans():
+    assert hasattr(Page, "nFans")
+    descriptor = None
+    for klass in Page.__mro__:
+        if "nFans" in klass.__dict__:
+            descriptor = klass.__dict__["nFans"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_page_has_posts():
+    assert hasattr(Page, "posts")
+    descriptor = None
+    for klass in Page.__mro__:
+        if "posts" in klass.__dict__:
+            descriptor = klass.__dict__["posts"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_page_has_name():
+    assert hasattr(Page, "name")
+    descriptor = None
+    for klass in Page.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_page_has_admin():
+    assert hasattr(Page, "admin")
+    descriptor = None
+    for klass in Page.__mro__:
+        if "admin" in klass.__dict__:
+            descriptor = klass.__dict__["admin"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_page_has_fans():
+    assert hasattr(Page, "fans")
+    descriptor = None
+    for klass in Page.__mro__:
+        if "fans" in klass.__dict__:
+            descriptor = klass.__dict__["fans"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_post_is_not_abstract():
+    assert not inspect.isabstract(Post)
+
+
+def test_post_constructor_exists():
+    assert callable(Post.__init__)
+
+
+def test_post_constructor_args():
+    sig = inspect.signature(Post.__init__)
+    params = list(sig.parameters.keys())
+    assert "owner" in params, "Missing parameter 'owner'"
+    assert "privateMode" in params, "Missing parameter 'privateMode'"
+    assert "nShares" in params, "Missing parameter 'nShares'"
+    assert "nComments" in params, "Missing parameter 'nComments'"
+    assert "nLikes" in params, "Missing parameter 'nLikes'"
+
+def test_post_has_owner():
+    assert hasattr(Post, "owner")
+    descriptor = None
+    for klass in Post.__mro__:
+        if "owner" in klass.__dict__:
+            descriptor = klass.__dict__["owner"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_post_has_privateMode():
+    assert hasattr(Post, "privateMode")
+    descriptor = None
+    for klass in Post.__mro__:
+        if "privateMode" in klass.__dict__:
+            descriptor = klass.__dict__["privateMode"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_post_has_nShares():
+    assert hasattr(Post, "nShares")
+    descriptor = None
+    for klass in Post.__mro__:
+        if "nShares" in klass.__dict__:
+            descriptor = klass.__dict__["nShares"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_post_has_nComments():
+    assert hasattr(Post, "nComments")
+    descriptor = None
+    for klass in Post.__mro__:
+        if "nComments" in klass.__dict__:
+            descriptor = klass.__dict__["nComments"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_post_has_nLikes():
+    assert hasattr(Post, "nLikes")
+    descriptor = None
+    for klass in Post.__mro__:
+        if "nLikes" in klass.__dict__:
+            descriptor = klass.__dict__["nLikes"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_user___is_not_abstract():
+    assert not inspect.isabstract(User__)
+
+
+def test_user___constructor_exists():
+    assert callable(User__.__init__)
+
+
+def test_user___constructor_args():
+    sig = inspect.signature(User__.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_team_is_not_abstract():
+    assert not inspect.isabstract(Team)
+
+
+def test_team_constructor_exists():
+    assert callable(Team.__init__)
+
+
+def test_team_constructor_args():
+    sig = inspect.signature(Team.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+    assert "nMembers" in params, "Missing parameter 'nMembers'"
+    assert "posts" in params, "Missing parameter 'posts'"
+    assert "description" in params, "Missing parameter 'description'"
+    assert "members" in params, "Missing parameter 'members'"
+    assert "admins" in params, "Missing parameter 'admins'"
+
+def test_team_has_name():
+    assert hasattr(Team, "name")
+    descriptor = None
+    for klass in Team.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_team_has_nMembers():
+    assert hasattr(Team, "nMembers")
+    descriptor = None
+    for klass in Team.__mro__:
+        if "nMembers" in klass.__dict__:
+            descriptor = klass.__dict__["nMembers"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_team_has_posts():
+    assert hasattr(Team, "posts")
+    descriptor = None
+    for klass in Team.__mro__:
+        if "posts" in klass.__dict__:
+            descriptor = klass.__dict__["posts"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_team_has_description():
+    assert hasattr(Team, "description")
+    descriptor = None
+    for klass in Team.__mro__:
+        if "description" in klass.__dict__:
+            descriptor = klass.__dict__["description"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_team_has_members():
+    assert hasattr(Team, "members")
+    descriptor = None
+    for klass in Team.__mro__:
+        if "members" in klass.__dict__:
+            descriptor = klass.__dict__["members"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_team_has_admins():
+    assert hasattr(Team, "admins")
+    descriptor = None
+    for klass in Team.__mro__:
+        if "admins" in klass.__dict__:
+            descriptor = klass.__dict__["admins"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_user_is_not_abstract():
+    assert not inspect.isabstract(User)
+
+
+def test_user_constructor_exists():
+    assert callable(User.__init__)
+
+
+def test_user_constructor_args():
+    sig = inspect.signature(User.__init__)
+    params = list(sig.parameters.keys())
+    assert "team" in params, "Missing parameter 'team'"
+    assert "password" in params, "Missing parameter 'password'"
+    assert "pages" in params, "Missing parameter 'pages'"
+    assert "gender" in params, "Missing parameter 'gender'"
+    assert "phone" in params, "Missing parameter 'phone'"
+    assert "username" in params, "Missing parameter 'username'"
+    assert "name" in params, "Missing parameter 'name'"
+
+def test_user_has_team():
+    assert hasattr(User, "team")
+    descriptor = None
+    for klass in User.__mro__:
+        if "team" in klass.__dict__:
+            descriptor = klass.__dict__["team"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_user_has_password():
+    assert hasattr(User, "password")
+    descriptor = None
+    for klass in User.__mro__:
+        if "password" in klass.__dict__:
+            descriptor = klass.__dict__["password"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_user_has_pages():
+    assert hasattr(User, "pages")
+    descriptor = None
+    for klass in User.__mro__:
+        if "pages" in klass.__dict__:
+            descriptor = klass.__dict__["pages"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_user_has_gender():
+    assert hasattr(User, "gender")
+    descriptor = None
+    for klass in User.__mro__:
+        if "gender" in klass.__dict__:
+            descriptor = klass.__dict__["gender"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_user_has_phone():
+    assert hasattr(User, "phone")
+    descriptor = None
+    for klass in User.__mro__:
+        if "phone" in klass.__dict__:
+            descriptor = klass.__dict__["phone"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_user_has_username():
+    assert hasattr(User, "username")
+    descriptor = None
+    for klass in User.__mro__:
+        if "username" in klass.__dict__:
+            descriptor = klass.__dict__["username"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_user_has_name():
+    assert hasattr(User, "name")
+    descriptor = None
+    for klass in User.__mro__:
+        if "name" in klass.__dict__:
+            descriptor = klass.__dict__["name"]
+            break
+    assert isinstance(descriptor, property)
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+User2_Interface_strategy = st.builds(
+    User2_Interface,
+)
+HashTags_strategy = st.builds(
+    HashTags,
+    allHashTags=
+        safe_text
+)
+Page_strategy = st.builds(
+    Page,
+    description=
+        safe_text,
+    nFans=
+        st.integers(),
+    posts=
+        safe_text,
+    name=
+        safe_text,
+    admin=
+        st.none(),
+    fans=
+        st.none()
+)
+Post_strategy = st.builds(
+    Post,
+    owner=
+        st.none(),
+    privateMode=
+        st.booleans(),
+    nShares=
+        st.integers(),
+    nComments=
+        st.integers(),
+    nLikes=
+        st.integers()
+)
+User___strategy = st.builds(
+    User__,
+)
+Team_strategy = st.builds(
+    Team,
+    name=
+        safe_text,
+    nMembers=
+        st.integers(),
+    posts=
+        safe_text,
+    description=
+        safe_text,
+    members=
+        st.none(),
+    admins=
+        st.none()
+)
+User_strategy = st.builds(
+    User,
+    team=
+        safe_text,
+    password=
+        safe_text,
+    pages=
+        safe_text,
+    gender=
+        safe_text,
+    phone=
+        safe_text,
+    username=
+        safe_text,
+    name=
+        safe_text
+)
+
+@given(instance=User2_Interface_strategy)
+@settings(max_examples=50)
+def test_user2_interface_instantiation(instance):
+    assert isinstance(instance, User2_Interface)
+
+@given(instance=HashTags_strategy)
+@settings(max_examples=50)
+def test_hashtags_instantiation(instance):
+    assert isinstance(instance, HashTags)
+
+
+
+@given(instance=HashTags_strategy)
+def test_hashtags_allHashTags_setter(instance):
+    original = instance.allHashTags
+    instance.allHashTags = original
+    assert instance.allHashTags == original
+
+@given(instance=Page_strategy)
+@settings(max_examples=50)
+def test_page_instantiation(instance):
+    assert isinstance(instance, Page)
+
+
+
+@given(instance=Page_strategy)
+def test_page_description_setter(instance):
+    original = instance.description
+    instance.description = original
+    assert instance.description == original
+
+
+
+@given(instance=Page_strategy)
+def test_page_nFans_setter(instance):
+    original = instance.nFans
+    instance.nFans = original
+    assert instance.nFans == original
+
+
+
+@given(instance=Page_strategy)
+def test_page_posts_setter(instance):
+    original = instance.posts
+    instance.posts = original
+    assert instance.posts == original
+
+
+
+@given(instance=Page_strategy)
+def test_page_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=Page_strategy)
+def test_page_admin_setter(instance):
+    original = instance.admin
+    instance.admin = original
+    assert instance.admin == original
+
+
+
+@given(instance=Page_strategy)
+def test_page_fans_setter(instance):
+    original = instance.fans
+    instance.fans = original
+    assert instance.fans == original
+
+@given(instance=Post_strategy)
+@settings(max_examples=50)
+def test_post_instantiation(instance):
+    assert isinstance(instance, Post)
+
+
+
+@given(instance=Post_strategy)
+def test_post_owner_setter(instance):
+    original = instance.owner
+    instance.owner = original
+    assert instance.owner == original
+
+
+
+@given(instance=Post_strategy)
+def test_post_privateMode_setter(instance):
+    original = instance.privateMode
+    instance.privateMode = original
+    assert instance.privateMode == original
+
+
+
+@given(instance=Post_strategy)
+def test_post_nShares_setter(instance):
+    original = instance.nShares
+    instance.nShares = original
+    assert instance.nShares == original
+
+
+
+@given(instance=Post_strategy)
+def test_post_nComments_setter(instance):
+    original = instance.nComments
+    instance.nComments = original
+    assert instance.nComments == original
+
+
+
+@given(instance=Post_strategy)
+def test_post_nLikes_setter(instance):
+    original = instance.nLikes
+    instance.nLikes = original
+    assert instance.nLikes == original
+
+@given(instance=User___strategy)
+@settings(max_examples=50)
+def test_user___instantiation(instance):
+    assert isinstance(instance, User__)
+
+@given(instance=Team_strategy)
+@settings(max_examples=50)
+def test_team_instantiation(instance):
+    assert isinstance(instance, Team)
+
+
+
+@given(instance=Team_strategy)
+def test_team_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=Team_strategy)
+def test_team_nMembers_setter(instance):
+    original = instance.nMembers
+    instance.nMembers = original
+    assert instance.nMembers == original
+
+
+
+@given(instance=Team_strategy)
+def test_team_posts_setter(instance):
+    original = instance.posts
+    instance.posts = original
+    assert instance.posts == original
+
+
+
+@given(instance=Team_strategy)
+def test_team_description_setter(instance):
+    original = instance.description
+    instance.description = original
+    assert instance.description == original
+
+
+
+@given(instance=Team_strategy)
+def test_team_members_setter(instance):
+    original = instance.members
+    instance.members = original
+    assert instance.members == original
+
+
+
+@given(instance=Team_strategy)
+def test_team_admins_setter(instance):
+    original = instance.admins
+    instance.admins = original
+    assert instance.admins == original
+
+@given(instance=User_strategy)
+@settings(max_examples=50)
+def test_user_instantiation(instance):
+    assert isinstance(instance, User)
+
+
+
+@given(instance=User_strategy)
+def test_user_team_setter(instance):
+    original = instance.team
+    instance.team = original
+    assert instance.team == original
+
+
+
+@given(instance=User_strategy)
+def test_user_password_setter(instance):
+    original = instance.password
+    instance.password = original
+    assert instance.password == original
+
+
+
+@given(instance=User_strategy)
+def test_user_pages_setter(instance):
+    original = instance.pages
+    instance.pages = original
+    assert instance.pages == original
+
+
+
+@given(instance=User_strategy)
+def test_user_gender_setter(instance):
+    original = instance.gender
+    instance.gender = original
+    assert instance.gender == original
+
+
+
+@given(instance=User_strategy)
+def test_user_phone_setter(instance):
+    original = instance.phone
+    instance.phone = original
+    assert instance.phone == original
+
+
+
+@given(instance=User_strategy)
+def test_user_username_setter(instance):
+    original = instance.username
+    instance.username = original
+    assert instance.username == original
+
+
+
+@given(instance=User_strategy)
+def test_user_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
