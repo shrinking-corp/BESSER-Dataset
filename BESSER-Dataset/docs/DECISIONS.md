@@ -7,6 +7,30 @@ decision was made, so we can backtrack later without re-deriving it.
 
 ---
 
+## 2026-09-01 — Resume/cache support added to both validator scripts after a real 250-model run risk
+
+**Context:** the 250-model mutation prototype run (on the second, more
+capable machine) took ~7 CPU-hours summed across models (p50 75s, p99 462s,
+max 852s per model) before this was added. Before this change, both scripts
+only wrote their aggregate report at the very end -- a kill/SSH-drop/reboot
+partway through, which is a real possibility at that runtime, would have
+discarded all progress with no way to resume short of starting over.
+
+**Fix:** both `validate_coverage.py` and `validate_mutation.py` now append
+each model's result as one JSON line to `<report-name>.cache.jsonl` in
+`reports/` the moment that model finishes (flushed immediately, not
+batched). On startup they read that file, skip any model already present,
+and merge cached + freshly-computed results into the final report. `--fresh`
+ignores an existing cache and recomputes everything.
+
+**Verified:** launched a 6-model mutation run, hard-killed it after 3
+completed, confirmed (a) the dataset directory was untouched -- consistent
+with the scratch-copy fix above -- and (b) the cache file had exactly those
+3 results; reran without `--fresh` and confirmed only the remaining 3 were
+computed and the final report merged all 6. Also confirmed `--fresh`
+correctly ignores a stale cache (reran with a different `--max-mutants` and
+got the new cap applied to a previously-cached model).
+
 ## 2026-09-01 — cosmic-ray mutates the target file in place on disk; script now runs it against a scratch copy, never the real dataset
 
 **Finding (caused real, if recovered, dataset corruption this session):**
