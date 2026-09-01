@@ -37,10 +37,20 @@ For each model:
 This is a PROTOTYPE script (see PROMPT.md): it does NOT write into each
 model's code_metadata.json, only into an aggregate report under reports/.
 
+A long run (the 250-model prototype sample took ~7 CPU-hours summed) is a
+real candidate for getting killed partway -- machine reboot, SSH drop, Ctrl-C
+-- and the aggregate report is only written at the very end, so without
+caching an interrupted run loses all of its progress. To avoid that, every
+model's result is appended as one line to a `<report-name>.cache.jsonl` file
+in --reports-dir *as soon as that model finishes* (not batched). On startup,
+any model already present in that cache file is skipped and its cached
+result is reused for the final aggregate report; pass --fresh to ignore an
+existing cache and recompute everything.
+
 Usage:
     python scripts/validate_mutation.py --models-file PATH [--workers N]
         [--max-mutants N] [--per-mutant-timeout SECONDS]
-        [--overall-timeout SECONDS] [--dataset-dir PATH]
+        [--overall-timeout SECONDS] [--dataset-dir PATH] [--fresh]
 """
 from __future__ import annotations
 
@@ -66,6 +76,28 @@ SESSION_FILENAME = "cr-session.sqlite"
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
 DEFAULT_OVERALL_TIMEOUT = 900  # hard wall-clock cap per model, seconds
+
+
+def load_cache(cache_path: Path) -> dict[str, dict]:
+    """Read a JSONL cache of previously-completed results, keyed by model name.
+
+    Tolerates a truncated last line (e.g. the process was killed mid-write)
+    by skipping any line that fails to parse.
+    """
+    cached: dict[str, dict] = {}
+    if not cache_path.is_file():
+        return cached
+    with cache_path.open("r") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                result = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            cached[result["model"]] = result
+    return cached
 
 
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
@@ -329,18 +361,34 @@ def main() -> None:
     parser.add_argument("--per-mutant-timeout", type=float, default=DEFAULT_PER_MUTANT_TIMEOUT)
     parser.add_argument("--overall-timeout", type=int, default=DEFAULT_OVERALL_TIMEOUT)
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--fresh", action="store_true",
+                         help="Ignore any existing cache and recompute every model")
     args = parser.parse_args()
 
-    model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
-    total = len(model_dirs)
+    args.reports_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
+
+    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    if args.fresh and cache_path.is_file():
+        cache_path.unlink()
+
+    all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
+    total = len(all_model_dirs)
+    model_dirs = [d for d in all_model_dirs if d.name not in cached_results]
+    skipped = total - len(model_dirs)
+
     hypothesis_home = tempfile.mkdtemp(prefix="besser_hypothesis_db_mut_")
     scratch_root = tempfile.mkdtemp(prefix="besser_cosmicray_scratch_")
     print(f"Running capped mutation testing for {total} models with {args.workers} workers "
           f"(cap={args.max_mutants} mutants/model)...")
+    if skipped:
+        print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
+              f"(pass --fresh to ignore the cache and recompute everything)")
     print(f"(scratch copies under {scratch_root} -- dataset directory is never mutated in place)")
 
-    results: list[dict] = []
-    done = 0
+    results: list[dict] = list(cached_results.values())
+    done = skipped
+    cache_file = cache_path.open("a")
     try:
         with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
             futures = {
@@ -362,11 +410,14 @@ def main() -> None:
                         "init_duration_s": None, "exec_duration_s": None,
                     }
                 results.append(result)
+                cache_file.write(json.dumps(result) + "\n")
+                cache_file.flush()
                 done += 1
                 print(f"  {done}/{total}: {model_dir.name} -> {result['status']}"
                       + (f" ({result['killed']}/{result['mutants_run']} killed)" if result.get("mutants_run") else ""),
                       flush=True)
     finally:
+        cache_file.close()
         shutil.rmtree(hypothesis_home, ignore_errors=True)
         shutil.rmtree(scratch_root, ignore_errors=True)
 

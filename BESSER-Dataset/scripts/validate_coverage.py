@@ -41,6 +41,28 @@ SOURCE_MODULE = "python_code"
 DEFAULT_TIMEOUT = 120
 
 
+def load_cache(cache_path: Path) -> dict[str, dict]:
+    """Read a JSONL cache of previously-completed results, keyed by model name.
+
+    Tolerates a truncated last line (e.g. the process was killed mid-write)
+    by skipping any line that fails to parse.
+    """
+    cached: dict[str, dict] = {}
+    if not cache_path.is_file():
+        return cached
+    with cache_path.open("r") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                result = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            cached[result["model"]] = result
+    return cached
+
+
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
     if models_file:
         names = [l.strip() for l in models_file.read_text().splitlines() if l.strip()]
@@ -209,16 +231,32 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT)
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--fresh", action="store_true",
+                         help="Ignore any existing cache and recompute every model")
     args = parser.parse_args()
 
-    model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
-    total = len(model_dirs)
+    args.reports_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
+
+    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    if args.fresh and cache_path.is_file():
+        cache_path.unlink()
+
+    all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
+    total = len(all_model_dirs)
+    model_dirs = [d for d in all_model_dirs if d.name not in cached_results]
+    skipped = total - len(model_dirs)
+
     hypothesis_home = tempfile.mkdtemp(prefix="besser_hypothesis_db_")
     scratch_dir = tempfile.mkdtemp(prefix="besser_coverage_scratch_")
     print(f"Measuring coverage for {total} models with {args.workers} workers...")
+    if skipped:
+        print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
+              f"(pass --fresh to ignore the cache and recompute everything)")
 
-    results: list[dict] = []
-    done = 0
+    results: list[dict] = list(cached_results.values())
+    done = skipped
+    cache_file = cache_path.open("a")
     try:
         with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
             futures = {
@@ -236,10 +274,13 @@ def main() -> None:
                         "covered_lines": None, "missing_lines": None, "returncode": None,
                     }
                 results.append(result)
+                cache_file.write(json.dumps(result) + "\n")
+                cache_file.flush()
                 done += 1
                 if done % 25 == 0 or done == total:
                     print(f"  {done}/{total} processed...")
     finally:
+        cache_file.close()
         shutil.rmtree(hypothesis_home, ignore_errors=True)
         shutil.rmtree(scratch_dir, ignore_errors=True)
 
