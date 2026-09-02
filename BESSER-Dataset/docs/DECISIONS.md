@@ -7,6 +7,62 @@ decision was made, so we can backtrack later without re-deriving it.
 
 ---
 
+## 2026-09-02 — New metric: coverage split by test section (structural vs. hypothesis), empty-method exclusion
+
+**User ask:** add per-model coverage ratios to metadata, but computed separately
+for the two halves of `test_hypothesis.py` (`SECTION 1 — STRUCTURAL TESTS` vs
+`HYPOTHESIS STRATEGIES`), and for the hypothesis half only, exclude statements
+belonging to "empty" (no-logic) methods from both numerator and denominator so
+a trivially-executed `pass` stub doesn't inflate the score.
+
+**Test-group selection:** Hypothesis's pytest plugin auto-applies a `hypothesis`
+marker to every `@given` test, so `pytest -m hypothesis` / `-m "not hypothesis"`
+cleanly separates the two groups with no need to parse test node ids out of the
+file. Verified against `model_1`: 9 `-m hypothesis` / 23 `-m "not hypothesis"`,
+matching an independent AST count of `@given` decorators exactly.
+
+**"Empty method" definition (confirmed with user, then verified empirically
+across a random sample of 300 models):** a function/method whose entire body
+is *exactly one* `pass` statement — no docstring, no other variant (no
+`raise NotImplementedError`, no bare `return`) was found anywhere in the
+sample. This only ever hits generated `Operation` methods (never `__init__`,
+never `@property`/`@x.setter`, which always contain real assignments) — the
+same stub-`pass` operations flagged in the 2026-09-01 test-validation entry
+below (907/9082 models). Implemented as an AST walk over every
+`FunctionDef`/`AsyncFunctionDef`, recording the line number of the lone
+`pass` when `len(node.body) == 1 and isinstance(node.body[0], ast.Pass)`.
+
+**Adjustment mechanics:** run pytest+coverage once per group with
+`--cov-report=json`, which gives per-file `executed_lines`/`missing_lines`
+arrays (not just totals — needed to subtract specific line numbers). For the
+hypothesis-only run, the "implemented-only" ratio = drop every empty-method
+line from both the executed and the (executed∪missing) sets, then
+recompute the percentage. The structural ratio is never adjusted — the user
+wants the full structural-component count there.
+
+**New script:** `scripts/validate_coverage_split.py`, same shape as
+`validate_coverage.py` (resume/cache, ProcessPoolExecutor, prototype-only —
+does not touch `code_metadata.json` unless `--write-metadata` is passed,
+which was not used this session). Trial run: 38 models (the first 30 of
+`reports/prototype_sample_models.txt`, plus 8 models known to have
+stub-operation `AssertionError` failures, added specifically to exercise the
+empty-method exclusion path — the first 30 alone happened to contain zero
+empty methods). All 38 measured without errors; 2 of the 8 assertion-error
+models (`model_100063`, `model_100064`, 72 empty methods each) timed out on
+the hypothesis-only run at 120s and were recorded with `status: "timeout"`,
+not a crash. Report: `reports/coverage_split_prototype_report.{json,md}`.
+
+**Full run:** user approved the trial numbers and asked for the full
+9,082-model `--write-metadata` run. Started locally, but the user then asked
+to hand it off to another machine instead (same pattern as the mutation
+prototype's compute handoff below) -- stopped the local run after confirming
+via `git status --porcelain -- Dataset` that no `code_metadata.json` had been
+touched yet (the script only writes metadata in a single pass *after* all
+models finish, not incrementally, so an interrupted run never leaves partial
+metadata) and no stray process remained. Command for the other machine:
+`python3 scripts/validate_coverage_split.py --workers <N> --timeout 120 --write-metadata`
+(the 38-model trial cache/report were not committed, so it starts fresh).
+
 ## 2026-09-01 — Resume/cache support added to both validator scripts after a real 250-model run risk
 
 **Context:** the 250-model mutation prototype run (on the second, more
