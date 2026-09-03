@@ -35,7 +35,13 @@ For each model:
   7. Delete the whole scratch dir.
 
 This is a PROTOTYPE script (see PROMPT.md): it does NOT write into each
-model's code_metadata.json, only into an aggregate report under reports/.
+model's code_metadata.json by default, only into an aggregate report under
+reports/. Pass --write-metadata to also merge each measured model's result
+into its code_metadata.json under a "mutation_validation" key (same
+convention as validate_tests.py / validate_coverage_split.py: the file must
+already exist, and only that one key is touched -- written in a single pass
+after the whole run finishes, so an interrupted run never leaves partial
+metadata).
 
 A long run (the 250-model prototype sample took ~7 CPU-hours summed) is a
 real candidate for getting killed partway -- machine reboot, SSH drop, Ctrl-C
@@ -51,6 +57,7 @@ Usage:
     python scripts/validate_mutation.py --models-file PATH [--workers N]
         [--max-mutants N] [--per-mutant-timeout SECONDS]
         [--overall-timeout SECONDS] [--dataset-dir PATH] [--fresh]
+        [--write-metadata]
 """
 from __future__ import annotations
 
@@ -73,9 +80,27 @@ TEST_FILENAME = "test_hypothesis.py"
 SOURCE_FILENAME = "python_code.py"
 CONFIG_FILENAME = "cr-config.toml"
 SESSION_FILENAME = "cr-session.sqlite"
+METADATA_FILENAME = "code_metadata.json"
+METADATA_KEY = "mutation_validation"
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
 DEFAULT_OVERALL_TIMEOUT = 900  # hard wall-clock cap per model, seconds
+
+
+def cosmic_ray_executable() -> str:
+    """Path to the cosmic-ray console-script installed alongside this interpreter.
+
+    subprocess.run(["cosmic-ray", ...]) resolves that name via PATH, which
+    does not include a venv's Scripts/bin directory unless the venv was
+    shell-activated -- invoking .venv/Scripts/python.exe directly does not
+    add it, and this script is meant to be runnable that way. The
+    console-script always installs next to the interpreter that installed
+    it, so resolve it from sys.executable instead of trusting PATH. Falls
+    back to the bare name (PATH lookup) if not found there.
+    """
+    name = "cosmic-ray.exe" if platform.system() == "Windows" else "cosmic-ray"
+    candidate = Path(sys.executable).parent / name
+    return str(candidate) if candidate.is_file() else "cosmic-ray"
 
 
 def load_cache(cache_path: Path) -> dict[str, dict]:
@@ -109,6 +134,28 @@ def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | No
     if limit:
         dirs = dirs[:limit]
     return dirs
+
+
+def sort_longest_first(model_dirs: list[Path]) -> list[Path]:
+    """Sort by combined python_code.py + test_hypothesis.py size, descending.
+
+    exec cost is ~= baseline test-suite runtime x mutants run, and mutants
+    run is capped at the same --max-mutants for nearly every model, so file
+    size is a free proxy for baseline runtime (measured: p50 exec is 73s,
+    max is 850s for the same 40-mutant cap). Submitting the slowest models
+    first (LPT scheduling) keeps a handful of them from landing at the tail
+    of the run with most workers already idle.
+    """
+    def size(model_dir: Path) -> int:
+        total = 0
+        for name in (SOURCE_FILENAME, TEST_FILENAME):
+            try:
+                total += (model_dir / name).stat().st_size
+            except OSError:
+                pass
+        return total
+
+    return sorted(model_dirs, key=size, reverse=True)
 
 
 def cap_mutants(session_path: Path, max_mutants: int, seed_key: str) -> tuple[int, int]:
@@ -188,11 +235,23 @@ def validate_model(
 
         config_path = scratch_dir / CONFIG_FILENAME
         session_path = scratch_dir / SESSION_FILENAME
+        # test-command needs two levels of backslash-safety on Windows, where
+        # sys.executable is a backslash path:
+        #  1. cosmic-ray itself parses this value with shlex.split() in POSIX
+        #     mode (cosmic_ray/testing.py) before exec'ing it, which treats
+        #     backslash as an escape character and mangles the path.
+        #  2. our own TOML *double*-quoted strings do the same at load time.
+        # Forward slashes are inert to both, and Windows' CreateProcess accepts
+        # them in an executable path just fine, so normalize to those; the
+        # double quotes around the path guard against a hypothetical space in
+        # it (harmless if absent), and the TOML *literal* (single-quoted)
+        # string around the whole value stops TOML from re-interpreting them.
+        python_exe = Path(sys.executable).as_posix()
         config_text = f"""[cosmic-ray]
 module-path = "{SOURCE_FILENAME}"
 timeout = {per_mutant_timeout}
 excluded-modules = []
-test-command = "{sys.executable} -m pytest {TEST_FILENAME} -x -q -p no:cacheprovider"
+test-command = '"{python_exe}" -m pytest {TEST_FILENAME} -x -q -p no:cacheprovider'
 
 [cosmic-ray.distributor]
 name = "local"
@@ -203,9 +262,10 @@ name = "local"
         env["PYTHONDONTWRITEBYTECODE"] = "1"
         env["HYPOTHESIS_STORAGE_DIRECTORY"] = hypothesis_home
 
+        cr_exe = cosmic_ray_executable()
         init_start = time.monotonic()
         init_proc = subprocess.run(
-            ["cosmic-ray", "init", CONFIG_FILENAME, SESSION_FILENAME],
+            [cr_exe, "init", CONFIG_FILENAME, SESSION_FILENAME],
             cwd=str(scratch_dir), capture_output=True, text=True,
             timeout=min(overall_timeout, 300), env=env,
         )
@@ -230,7 +290,7 @@ name = "local"
         exec_start = time.monotonic()
         try:
             exec_proc = subprocess.run(
-                ["cosmic-ray", "exec", CONFIG_FILENAME, SESSION_FILENAME],
+                [cr_exe, "exec", CONFIG_FILENAME, SESSION_FILENAME],
                 cwd=str(scratch_dir), capture_output=True, text=True,
                 timeout=overall_timeout, env=env,
             )
@@ -274,6 +334,35 @@ name = "local"
         return result
     finally:
         shutil.rmtree(scratch_dir, ignore_errors=True)
+
+
+def write_metadata(model_dir: Path, result: dict) -> bool:
+    """Merge this model's mutation result into its code_metadata.json under METADATA_KEY.
+
+    Requires the file to already exist (written by validate_python_code.py,
+    the first validator to run against every model) -- same convention as
+    validate_tests.py / validate_coverage_split.py: never create it here,
+    and never touch any key but our own.
+    """
+    metadata_path = model_dir / METADATA_FILENAME
+    if not metadata_path.is_file():
+        return False
+    try:
+        metadata = json.loads(metadata_path.read_text())
+    except json.JSONDecodeError:
+        return False
+    metadata[METADATA_KEY] = {
+        "checked_at": result["checked_at"],
+        "python_version": result["python_version"],
+        "status": result["status"],
+        "total_mutants_generated": result["total_mutants_generated"],
+        "mutants_run": result["mutants_run"],
+        "killed": result["killed"],
+        "survived": result["survived"],
+        "mutation_score": result["mutation_score"],
+    }
+    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
+    return True
 
 
 def build_report(results: list[dict]) -> dict:
@@ -363,6 +452,9 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--fresh", action="store_true",
                          help="Ignore any existing cache and recompute every model")
+    parser.add_argument("--write-metadata", action="store_true",
+                         help="Also write results into each model's code_metadata.json "
+                              "(off by default -- this is a prototype script)")
     args = parser.parse_args()
 
     args.reports_dir.mkdir(parents=True, exist_ok=True)
@@ -375,6 +467,7 @@ def main() -> None:
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
     model_dirs = [d for d in all_model_dirs if d.name not in cached_results]
+    model_dirs = sort_longest_first(model_dirs)
     skipped = total - len(model_dirs)
 
     hypothesis_home = tempfile.mkdtemp(prefix="besser_hypothesis_db_mut_")
@@ -420,6 +513,15 @@ def main() -> None:
         cache_file.close()
         shutil.rmtree(hypothesis_home, ignore_errors=True)
         shutil.rmtree(scratch_root, ignore_errors=True)
+
+    if args.write_metadata:
+        written = 0
+        for result in results:
+            if result["status"] == "measured":
+                model_dir = args.dataset_dir / result["model"]
+                if write_metadata(model_dir, result):
+                    written += 1
+        print(f"Wrote {METADATA_KEY} into {written}/{len(results)} models' code_metadata.json")
 
     report = build_report(results)
     args.reports_dir.mkdir(parents=True, exist_ok=True)
