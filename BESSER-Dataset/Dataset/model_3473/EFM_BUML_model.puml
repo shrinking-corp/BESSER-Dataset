@@ -1,0 +1,156 @@
+@startuml
+class Alternative {
+}
+class BooleanConstraint {
+}
+class Cardinality {
+}
+enum ComparisonOperator {
+  equal
+  geq
+  gt
+  leq
+  lt
+}
+class EFM_Alternative {
+}
+class EFM_Attribute {
+  + name : str
+}
+abstract class EFM_BooleanConstraint {
+}
+abstract class EFM_Cardinality {
+  + cardinalityMax : int
+  + cardinalityMin : int
+  + configValue : int
+}
+class EFM_Colocated {
+}
+class EFM_Comparison {
+  + type : str
+}
+class EFM_Excludes {
+}
+class EFM_Exclusive {
+}
+abstract class EFM_FMConstraint {
+}
+class EFM_FMElement {
+}
+class EFM_FeatCardinality {
+}
+class EFM_Feature {
+  + name : str
+}
+class EFM_FeatureModel {
+}
+class EFM_Functional {
+  + type : str
+  + value : int
+}
+class EFM_HostedBy {
+}
+class EFM_Implies {
+}
+class EFM_IntValue {
+}
+class EFM_NodeFeature {
+  + name : str
+}
+abstract class EFM_NodeFeatureElement {
+}
+class EFM_NotHostedBy {
+}
+class EFM_Operation {
+}
+class EFM_RangeOperation {
+  + max : int
+  + min : int
+}
+class EFM_Requires {
+  + operator : str
+}
+class EFM_ResourceVerification {
+}
+class EFM_Separated {
+}
+class EFM_Value {
+}
+class EFM_ValueOperation {
+}
+class FMConstraint {
+}
+class FMElement {
+}
+class Feature {
+}
+enum LogicalOperator {
+  and_
+  or_
+  void
+}
+class NodeFeatureElement {
+}
+class Operation {
+}
+enum Operator {
+  add
+  divide
+  multiply
+  remove
+  select
+}
+Alternative <|-- EFM_Exclusive
+BooleanConstraint <|-- EFM_Excludes
+BooleanConstraint <|-- EFM_Implies
+Cardinality <|-- EFM_FeatCardinality
+FMConstraint <|-- EFM_BooleanConstraint
+FMConstraint <|-- EFM_Colocated
+FMConstraint <|-- EFM_Comparison
+FMConstraint <|-- EFM_Functional
+FMConstraint <|-- EFM_HostedBy
+FMConstraint <|-- EFM_NotHostedBy
+FMConstraint <|-- EFM_Requires
+FMConstraint <|-- EFM_ResourceVerification
+FMConstraint <|-- EFM_Separated
+FMElement <|-- EFM_Attribute
+FMElement <|-- EFM_Feature
+Feature <|-- EFM_Alternative
+NodeFeatureElement <|-- EFM_NodeFeature
+Operation <|-- EFM_RangeOperation
+Operation <|-- EFM_ValueOperation
+EFM_Feature "1..9999" -- "1..1" EFM_NotHostedBy : From77
+EFM_HostedBy "0..1" --* "1..1" EFM_NodeFeature : HostedBy54
+EFM_Attribute "0..9999" --* "1..1" EFM_NodeFeature : NodeAttributes48
+EFM_FeatCardinality "1..1" --* "1..1" EFM_NodeFeature : NodeCardinalities51
+EFM_NodeFeature "1..1" *-- "0..1" EFM_NotHostedBy : NotHostedBy56
+EFM_Operation "1..1" --* "1..1" EFM_Requires : action22
+EFM_Attribute "0..1" -- "1..1" EFM_RangeOperation : attribute37
+EFM_Attribute "0..1" -- "1..1" EFM_ValueOperation : attribute39
+EFM_Attribute "0..9999" --* "1..1" EFM_Feature : attributes3
+EFM_Operation "1..2" --* "1..1" EFM_Requires : conditions21
+EFM_FMConstraint "0..9999" --* "1..1" EFM_FeatureModel : constraints0
+EFM_Attribute "1..1" -- "1..1" EFM_ResourceVerification : extF71
+EFM_NodeFeature "1..1" -- "1..1" EFM_NotHostedBy : extF74
+EFM_Feature "1..1" -- "1..1" EFM_Operation : feature34
+EFM_FeatCardinality "1..1" --* "1..1" EFM_Feature : featureCardinality8
+EFM_Colocated "1..1" -- "0..9999" EFM_Feature : fromAgain45
+EFM_Attribute "1..9999" -- "1..1" EFM_ResourceVerification : fromAtt69
+EFM_BooleanConstraint "1..1" -- "1..1" EFM_Feature : from_16
+EFM_Feature "1..1" -- "1..1" EFM_Functional : from_25
+EFM_Comparison "1..1" -- "1..1" EFM_FMElement : from_30
+EFM_Colocated "1..1" -- "1..1" EFM_Feature : from_43
+EFM_Feature "1..9999" -- "1..1" EFM_HostedBy : from_58
+EFM_Feature "1..1" -- "1..1" EFM_Separated : from_64
+EFM_Feature "1..1" *-- "0..9999" EFM_NodeFeature : nodeFeature10
+EFM_Feature "1..1" --* "1..1" EFM_FeatureModel : rootFeature1
+EFM_Feature "0..9999" --* "1..1" EFM_Feature : subFeatures6
+EFM_BooleanConstraint "1..1" -- "1..1" EFM_Feature : to18
+EFM_Feature "1..1" -- "1..1" EFM_Functional : to27
+EFM_Comparison "1..1" -- "1..1" EFM_FMElement : to31
+EFM_HostedBy "1..1" -- "1..1" EFM_NodeFeature : to61
+EFM_Feature "1..1" -- "1..1" EFM_Separated : to66
+EFM_Attribute "1..1" *-- "1..1" EFM_Value : value14
+EFM_IntValue "1..1" --* "1..1" EFM_ValueOperation : value41
+EFM_Alternative "1..1" *-- "1..9999" EFM_Feature : variants12
+@enduml

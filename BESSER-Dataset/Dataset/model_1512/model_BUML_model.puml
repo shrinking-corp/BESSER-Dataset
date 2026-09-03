@@ -1,0 +1,22 @@
+@startuml
+class model_FSM {
+  + name : str
+}
+class model_State {
+  + name : str
+}
+class model_Transition {
+  + action : str
+  + name : str
+  + trigger : str
+}
+model_FSM "0..1" -- "1..1" model_Transition : fsm13
+model_FSM "0..1" -- "1..1" model_State : fsm8
+model_State "1..1" -- "0..9999" model_Transition : incoming4
+model_FSM "1..1" -- "0..1" model_State : initialState3
+model_State "1..1" -- "0..9999" model_Transition : outgoing6
+model_FSM "1..1" *-- "0..9999" model_State : ownedStates0
+model_FSM "1..1" *-- "0..9999" model_Transition : ownedTransitions1
+model_State "0..1" -- "1..1" model_Transition : src11
+model_State "0..1" -- "1..1" model_Transition : tgt9
+@enduml

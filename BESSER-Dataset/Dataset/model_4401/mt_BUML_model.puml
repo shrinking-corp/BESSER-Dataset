@@ -1,0 +1,155 @@
+@startuml
+class ASTNode {
+}
+class Call {
+}
+class Expression {
+}
+class FilePath {
+}
+class If {
+}
+class Literal {
+}
+class Method {
+}
+class Parameter {
+}
+class Resource {
+}
+class Script {
+}
+class ScriptDescriptor {
+}
+class Statement {
+}
+class core_mt_Resource {
+}
+abstract class mt_Resource {
+  + name : str
+}
+class mt_ResourceSet {
+}
+abstract class mt_core_ASTNode {
+  + begin : int
+  + end : int
+  + getTemplate() : str
+}
+class mt_core_FilePath {
+}
+class mt_core_Metamodel {
+  + packageClass : str
+}
+class mt_core_Method {
+  + name : str
+  + return_ : str
+}
+class mt_core_Parameter {
+  + type : str
+}
+class mt_core_Script {
+}
+class mt_core_ScriptDescriptor {
+  + description : str
+  + name : str
+  + type : str
+}
+class mt_core_Service {
+}
+class mt_core_Template {
+  + beginTag : str
+  + endTag : str
+}
+class mt_expressions_BooleanLiteral {
+  + value : bool
+}
+class mt_expressions_Call {
+  + name : str
+  + prefix : str
+}
+class mt_expressions_CallSet {
+}
+class mt_expressions_DoubleLiteral {
+  + value : float
+}
+abstract class mt_expressions_Expression {
+}
+class mt_expressions_IntegerLiteral {
+  + value : int
+}
+abstract class mt_expressions_Literal {
+}
+class mt_expressions_Not {
+}
+class mt_expressions_NullLiteral {
+}
+class mt_expressions_Operator {
+  + operator : str
+}
+class mt_expressions_Parenthesis {
+}
+class mt_expressions_StringLiteral {
+  + value : str
+}
+class mt_statements_Comment {
+  + value : str
+}
+class mt_statements_Feature {
+}
+class mt_statements_For {
+}
+class mt_statements_If {
+}
+abstract class mt_statements_Statement {
+}
+class mt_statements_Text {
+  + value : str
+}
+ASTNode <|-- mt_core_FilePath
+ASTNode <|-- mt_core_Script
+ASTNode <|-- mt_core_ScriptDescriptor
+ASTNode <|-- mt_expressions_Call
+ASTNode <|-- mt_expressions_Expression
+ASTNode <|-- mt_statements_Statement
+Expression <|-- mt_expressions_CallSet
+Expression <|-- mt_expressions_Literal
+Expression <|-- mt_expressions_Not
+Expression <|-- mt_expressions_Operator
+Expression <|-- mt_expressions_Parenthesis
+Literal <|-- mt_expressions_BooleanLiteral
+Literal <|-- mt_expressions_DoubleLiteral
+Literal <|-- mt_expressions_IntegerLiteral
+Literal <|-- mt_expressions_NullLiteral
+Literal <|-- mt_expressions_StringLiteral
+Resource <|-- mt_core_Metamodel
+Resource <|-- mt_core_Service
+Resource <|-- mt_core_Template
+Statement <|-- mt_statements_Comment
+Statement <|-- mt_statements_Feature
+Statement <|-- mt_statements_For
+Statement <|-- mt_statements_If
+Statement <|-- mt_statements_Text
+Expression "0..9999" --* "1..1" mt_expressions_Call : arguments15
+Call "0..9999" --* "1..1" mt_expressions_CallSet : calls14
+Expression "1..1" --* "1..1" mt_statements_If : condition26
+ScriptDescriptor "1..1" --* "1..1" mt_core_Script : descriptor4
+If "0..9999" --* "1..1" mt_statements_If : elseIf34
+Statement "0..9999" --* "1..1" mt_statements_If : elseStatements31
+Expression "1..1" --* "1..1" mt_expressions_Not : expression20
+Expression "1..1" --* "1..1" mt_expressions_Parenthesis : expression24
+Expression "1..1" --* "1..1" mt_statements_Feature : expression41
+FilePath "0..1" --* "1..1" mt_core_ScriptDescriptor : file7
+Expression "0..1" --* "1..1" mt_expressions_Call : filter17
+core_mt_Resource "0..9999" -- "1..1" mt_core_Template : imports1
+Expression "1..1" --* "1..1" mt_statements_For : iterator36
+Method "0..9999" --* "1..1" mt_core_Service : methods12
+Expression "2..9999" --* "1..1" mt_expressions_Operator : operands22
+Parameter "0..9999" --* "1..1" mt_core_Method : parameters13
+Expression "0..1" --* "1..1" mt_core_ScriptDescriptor : post8
+mt_Resource "0..9999" --* "1..1" mt_ResourceSet : resources0
+Script "0..9999" --* "1..1" mt_core_Template : scripts2
+Statement "0..9999" --* "1..1" mt_core_FilePath : statements10
+Statement "0..9999" --* "1..1" mt_statements_For : statements38
+Statement "0..9999" --* "1..1" mt_core_Script : statements5
+Statement "0..9999" --* "1..1" mt_statements_If : thenStatements28
+@enduml

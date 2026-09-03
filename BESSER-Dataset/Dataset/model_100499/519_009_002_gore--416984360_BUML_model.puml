@@ -1,0 +1,138 @@
+@startuml
+enum AggregationLevel {
+  BOTH
+  CLASS
+  INSTANCE
+}
+class DefinableRequirement {
+}
+enum DefinableRequirementState {
+  CANCELED
+  FAILED
+  STARTED
+  SUCCEEDED
+  UNDEFINED
+}
+enum DifferentialRelationOperator {
+  FEWER_THAN
+  GREATER_THAN
+}
+enum MonitorableMethod {
+  CANCEL
+  END
+  FAIL
+  START
+  SUCCESS
+}
+class OclAny {
+}
+enum ParameterMetric {
+  ENUMERATED
+  INTEGER
+  REAL
+}
+enum ParameterType {
+  ENUMERATED_CONTROL_VARIABLE
+  NUMERIC_CONTROL_VARIABLE
+  VARIATION_POINT
+}
+class PerformativeRequirement {
+}
+enum RefinementType {
+  AND
+  OR
+}
+class Requirement {
+}
+class gore_Actor {
+}
+class gore_AwReq {
+  + incrementCoefficient : float
+}
+class gore_Configuration {
+}
+class gore_DefinableRequirement {
+  + state : str
+  + time : date
+  + checkState() : void
+  + end() : void
+  + fail() : void
+  + start() : void
+  + success() : void
+}
+class gore_DifferentialRelation {
+  + lowerBound : str
+  + operator : str
+  + upperBound : str
+  + value : float
+}
+class gore_DomainAssumption {
+}
+class gore_Goal {
+}
+class gore_GoalModel {
+  + internalId : str
+  + filterRelations(gore_indicator : str, gore_parameter : str, gore_value : str) : str
+  + getId() : str
+}
+class gore_Parameter {
+  + metric : str
+  + type : str
+  + unit : str
+  + value : str
+  + addedTo(gore_value : str) : str
+  + createCopy() : str
+  + equalTo(gore_value : str) : str
+  + fewerThan(gore_value : str) : str
+  + greaterThan(gore_value : str) : str
+  + increment(gore_relation : str, gore_value : str) : void
+  + incrementableIn(gore_relation : str) : str
+  + multipliedBy(gore_value : str) : str
+  + subtractedFrom(gore_value : str) : str
+  + withinBoundsOf(gore_relation : str) : str
+}
+class gore_PerformativeRequirement {
+  + startTime : date
+  + cancel() : void
+  + checkState() : void
+}
+class gore_QualityConstraint {
+  + replaceWith(gore_newRequirement : str) : void
+}
+class gore_Requirement {
+  + refinementType : str
+  + findGoalModel() : str
+  + getChildrenStateCount() : int
+  + replaceWith(gore_newRequirement : str) : void
+}
+class gore_Softgoal {
+}
+class gore_Task {
+}
+DefinableRequirement <|-- gore_AwReq
+DefinableRequirement <|-- gore_DomainAssumption
+DefinableRequirement <|-- gore_PerformativeRequirement
+DefinableRequirement <|-- gore_QualityConstraint
+OclAny <|-- gore_Requirement
+PerformativeRequirement <|-- gore_Goal
+PerformativeRequirement <|-- gore_Task
+Requirement <|-- gore_DefinableRequirement
+Requirement <|-- gore_Softgoal
+gore_Actor "0..9999" --* "1..1" gore_GoalModel : actors23
+gore_Requirement "1..1" *-- "0..9999" gore_Requirement : children1
+gore_Configuration "0..1" --* "1..1" gore_GoalModel : configuration25
+gore_Configuration "0..1" -- "1..1" gore_Parameter : configuration29
+gore_QualityConstraint "0..9999" -- "1..1" gore_Softgoal : constraints5
+gore_Goal "1..1" -- "0..1" gore_GoalModel : goalModel11
+gore_Actor "1..1" -- "0..1" gore_GoalModel : goalModel12
+gore_Configuration "1..1" -- "0..1" gore_GoalModel : goalModel15
+gore_AwReq "0..1" -- "1..1" gore_DifferentialRelation : indicator18
+gore_AwReq "1..1" -- "0..9999" gore_DefinableRequirement : otherTargets7
+gore_DifferentialRelation "1..1" -- "0..1" gore_Parameter : parameter20
+gore_Configuration "1..1" *-- "0..9999" gore_Parameter : parameters14
+gore_Requirement "1..1" -- "0..1" gore_Requirement : parent3
+gore_DifferentialRelation "0..9999" -- "1..1" gore_GoalModel : relations27
+gore_Goal "1..1" --* "1..1" gore_GoalModel : rootGoal22
+gore_QualityConstraint "1..1" -- "1..1" gore_Softgoal : softgoal6
+gore_AwReq "1..1" -- "1..1" gore_DefinableRequirement : target8
+@enduml

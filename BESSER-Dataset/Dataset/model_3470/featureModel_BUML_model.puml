@@ -1,0 +1,83 @@
+@startuml
+enum BinaryOperator {
+  Add
+  And
+  Divide
+  Equals
+  Higher
+  Lower
+  Multiply
+  Or
+  Subtract
+}
+class Constant {
+}
+class Expression {
+}
+class Feature {
+}
+enum SimpleType {
+  String
+  boolean
+  double
+  int
+  nulltype
+}
+enum SolitaryType {
+  Mandatory
+  Optional
+}
+enum UnaryOperator {
+  Minus
+  Not
+}
+class featureModel_BinaryOperation {
+  + operator : str
+}
+abstract class featureModel_Constant {
+}
+abstract class featureModel_Expression {
+}
+abstract class featureModel_Feature {
+  + name : str
+  + type : str
+}
+class featureModel_Group {
+  + inclusive : bool
+}
+class featureModel_GroupedFeature {
+}
+class featureModel_Identifier {
+  + name : str
+}
+class featureModel_Model {
+}
+class featureModel_NULL {
+}
+class featureModel_Number {
+  + value : int
+}
+class featureModel_SolitaryFeature {
+  + required : str
+}
+class featureModel_UnaryOperation {
+  + operator : str
+}
+Constant <|-- featureModel_NULL
+Constant <|-- featureModel_Number
+Expression <|-- featureModel_BinaryOperation
+Expression <|-- featureModel_Constant
+Expression <|-- featureModel_Identifier
+Expression <|-- featureModel_UnaryOperation
+Feature <|-- featureModel_GroupedFeature
+Feature <|-- featureModel_SolitaryFeature
+featureModel_Feature "0..9999" --* "1..1" featureModel_Model : RootFeature5
+featureModel_Expression "0..9999" --* "1..1" featureModel_Feature : constraints3
+featureModel_Expression "1..1" --* "1..1" featureModel_UnaryOperation : exp14
+featureModel_Feature "1..1" *-- "0..9999" featureModel_SolitaryFeature : features1
+featureModel_Group "1..1" *-- "2..9999" featureModel_GroupedFeature : groupedFeatures7
+featureModel_Feature "1..1" *-- "0..9999" featureModel_Group : groups0
+featureModel_BinaryOperation "1..1" *-- "1..1" featureModel_Expression : lexp11
+featureModel_Feature "1..9999" -- "1..1" featureModel_Identifier : ref16
+featureModel_BinaryOperation "1..1" *-- "1..1" featureModel_Expression : rexp9
+@enduml

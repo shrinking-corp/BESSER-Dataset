@@ -1,0 +1,46 @@
+@startuml
+enum AcceptanceKind {
+  Finite
+  Infinite
+  Probabilistic
+}
+class State {
+}
+class autopl_Alphabet {
+}
+class autopl_Automaton {
+  + acceptanceCondition() : str
+}
+class autopl_HierarchicalState {
+}
+class autopl_State {
+  + isFinal : str
+  + isInitial : str
+  + name : str
+  + adjacent() : str
+  + inTrans() : str
+  + outTrans() : str
+}
+class autopl_Symbol {
+  + name : str
+}
+class autopl_Transition {
+  + probability : str
+}
+State <|-- autopl_HierarchicalState
+autopl_State "1..1" -- "1..1" autopl_Transition : from_28
+autopl_Automaton "1..1" -- "1..1" autopl_Symbol : initialStackSymbol7
+autopl_Symbol "1..1" -- "1..1" autopl_Transition : input16
+autopl_Alphabet "1..1" --* "1..1" autopl_Automaton : inputAlphabet0
+autopl_Symbol "1..1" -- "1..1" autopl_Transition : output19
+autopl_Alphabet "1..1" --* "1..1" autopl_Automaton : outputAlphabet1
+autopl_Alphabet "1..1" --* "1..1" autopl_Automaton : stackAlphabet4
+autopl_Symbol "1..1" -- "1..1" autopl_Transition : stackCheck22
+autopl_Symbol "2..2" -- "1..1" autopl_Transition : stackPush25
+autopl_HierarchicalState "1..1" *-- "0..9999" autopl_State : states34
+autopl_Automaton "1..1" -- "0..9999" autopl_State : states9
+autopl_Alphabet "1..1" *-- "0..9999" autopl_Symbol : symbols13
+autopl_State "1..1" -- "1..1" autopl_Transition : to31
+autopl_Automaton "1..1" -- "0..9999" autopl_Transition : transitions11
+autopl_HierarchicalState "1..1" *-- "0..9999" autopl_Transition : transitions36
+@enduml

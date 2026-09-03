@@ -1,0 +1,309 @@
+@startuml
+class ArtifactDescriptor {
+}
+class ArtifactRepository {
+}
+class IArtifactDescriptor {
+}
+class IArtifactKey {
+}
+class IArtifactRepository {
+}
+class ICopyright {
+}
+class IFileArtifactRepository {
+}
+class IInstallableUnit {
+}
+class IInstallableUnitFragment {
+}
+class IInstallableUnitPatch {
+}
+class ILicense {
+}
+class IProcessingStepDescriptor {
+}
+class IProvidedCapability {
+}
+class IRepositoryReference {
+}
+class IRequiredCapability {
+}
+class IRequirement {
+}
+class IRequirementChange {
+}
+class ITouchpointData {
+}
+class ITouchpointInstruction {
+}
+class ITouchpointType {
+}
+class IUpdateDescriptor {
+}
+class InstallableUnit {
+}
+class Requirement {
+}
+class p2_ArtifactDescriptor {
+}
+class p2_ArtifactKey {
+}
+class p2_ArtifactRepository {
+}
+class p2_ArtifactsByKey {
+}
+abstract class p2_Comparable {
+  + compareTo(p2_o : str) : int
+}
+class p2_Copyright {
+}
+abstract class p2_IAdaptable {
+  + getAdapter(p2_adapter : str) : str
+}
+abstract class p2_IArtifactDescriptor {
+  + getProcessingSteps() : str
+  + getProperties() : void
+  + getProperty(p2_key : str) : str
+  + getRepository() : str
+}
+abstract class p2_IArtifactKey {
+  + classifier : str
+  + id : str
+  + version : str
+  + toExternalForm() : str
+}
+abstract class p2_IArtifactRepository {
+  + addDescriptor(p2_descriptor : str, p2_monitor : str) : void
+  + addDescriptors(p2_descriptors : str, p2_monitor : str) : void
+  + contains(p2_key : str) : bool
+  + createArtifactDescriptor(p2_key : str) : IArtifactDescriptor
+  + createArtifactKey(p2_classifier : str, p2_id : str, p2_version : str) : IArtifactKey
+  + descriptorQueryable() : void
+  + executeBatch(p2_monitor : str, p2_runnable : str) : str
+  + getArtifact(p2_descriptor : str, p2_destination : str, p2_monitor : str) : str
+  + getArtifactDescriptors(p2_key : str) : str
+  + getArtifacts(p2_monitor : str, p2_requests : str) : str
+  + getOutputStream(p2_descriptor : str) : str
+  + getRawArtifact(p2_descriptor : str, p2_destination : str, p2_monitor : str) : str
+  + removeAll(p2_monitor : str) : void
+  + removeDescriptor(p2_key : str, p2_monitor : str) : void
+  + removeDescriptors(p2_keys : str, p2_monitor : str) : void
+}
+abstract class p2_ICopyright {
+  + body : str
+  + location : str
+}
+abstract class p2_IFileArtifactRepository {
+  + getArtifactFile(p2_descriptor : str) : str
+}
+abstract class p2_IInstallableUnit {
+  + filter : str
+  + resolved : bool
+  + singleton : bool
+  + getCopyright(p2_locale : str) : ICopyright
+  + getLicenses(p2_locale : str) : str
+  + getProperties() : void
+  + getProperty(p2_key : str, p2_locale : str) : str
+  + satisfies(p2_candidate : str) : bool
+  + unresolved() : str
+}
+abstract class p2_IInstallableUnitFragment {
+}
+abstract class p2_IInstallableUnitPatch {
+}
+abstract class p2_ILicense {
+  + UUID : str
+  + body : str
+  + location : str
+}
+abstract class p2_IMetadataRepository {
+  + addInstallableUnits(p2_installableUnits : str) : void
+  + addReferences(p2_references : str) : void
+  + compress(p2_iuPool : str) : void
+  + executeBatch(p2_monitor : str, p2_runnable : str) : str
+  + removeAll() : void
+  + removeInstallableUnits(p2_installableUnits : str) : bool
+}
+abstract class p2_IProcessingStepDescriptor {
+  + data : str
+  + processorId : str
+  + required : bool
+}
+abstract class p2_IProvidedCapability {
+  + name : str
+  + namespace : str
+  + version : str
+}
+abstract class p2_IQueryable {
+  + query(p2_progress : str, p2_query : str) : void
+}
+abstract class p2_IRepository {
+  + description : str
+  + location : str
+  + modifiable : bool
+  + name : str
+  + provider : str
+  + provisioningAgent : str
+  + type : str
+  + version : str
+  + getProperties() : void
+  + getProperty(p2_key : str) : str
+  + setProperty(p2_key : str, p2_monitor : str, p2_value : str) : str
+}
+abstract class p2_IRepositoryReference {
+  + location : str
+  + nickname : str
+  + options : int
+  + type : int
+}
+abstract class p2_IRequiredCapability {
+  + name : str
+  + namespace : str
+  + range : str
+}
+abstract class p2_IRequirement {
+  + description : str
+  + filter : str
+  + greedy : bool
+  + matches : str
+  + max : str
+  + min : str
+  + isMatch(p2_installableUnit : str) : bool
+}
+abstract class p2_IRequirementChange {
+  + applyOn() : str
+  + matches(p2_toMatch : str) : bool
+  + newValue() : str
+}
+abstract class p2_ITouchpointData {
+  + getInstruction(p2_key : str) : str
+  + getInstructions() : void
+}
+abstract class p2_ITouchpointInstruction {
+  + body : str
+  + importAttribute : str
+}
+abstract class p2_ITouchpointType {
+  + id : str
+  + version : str
+}
+abstract class p2_IUpdateDescriptor {
+  + description : str
+  + location : str
+  + severity : int
+  + getIUsBeingUpdated() : void
+  + isUpdateOf(p2_installableUnit : str) : bool
+}
+abstract class p2_IVersionedId {
+  + id : str
+  + version : str
+}
+class p2_InstallableUnit {
+}
+class p2_InstallableUnitFragment {
+}
+class p2_InstallableUnitPatch {
+  + getApplicabilityScope() : str
+}
+class p2_InstructionMap {
+  + key : str
+}
+class p2_License {
+}
+class p2_MappingRule {
+  + filter : str
+  + output : str
+}
+class p2_MetadataRepository {
+}
+class p2_ProcessingStepDescriptor {
+}
+class p2_Property {
+  + key : str
+  + value : str
+}
+class p2_ProvidedCapability {
+}
+abstract class p2_Repository {
+}
+class p2_RepositoryReference {
+}
+class p2_RequiredCapability {
+}
+class p2_Requirement {
+}
+class p2_RequirementChange {
+}
+class p2_SimpleArtifactDescriptor {
+  + getRepositoryProperties() : void
+  + getRepositoryProperty(p2_key : str) : str
+}
+class p2_SimpleArtifactRepository {
+}
+class p2_TouchpointData {
+}
+class p2_TouchpointInstruction {
+}
+class p2_TouchpointType {
+}
+class p2_UpdateDescriptor {
+}
+ArtifactDescriptor <|-- p2_SimpleArtifactDescriptor
+ArtifactRepository <|-- p2_SimpleArtifactRepository
+IArtifactDescriptor <|-- p2_ArtifactDescriptor
+IArtifactKey <|-- p2_ArtifactKey
+IArtifactRepository <|-- p2_IFileArtifactRepository
+ICopyright <|-- p2_Copyright
+IFileArtifactRepository <|-- p2_SimpleArtifactRepository
+IInstallableUnit <|-- p2_IInstallableUnitFragment
+IInstallableUnit <|-- p2_IInstallableUnitPatch
+IInstallableUnit <|-- p2_InstallableUnit
+IInstallableUnitFragment <|-- p2_InstallableUnitFragment
+IInstallableUnitPatch <|-- p2_InstallableUnitPatch
+ILicense <|-- p2_License
+IProcessingStepDescriptor <|-- p2_ProcessingStepDescriptor
+IProvidedCapability <|-- p2_ProvidedCapability
+IRepositoryReference <|-- p2_RepositoryReference
+IRequiredCapability <|-- p2_RequiredCapability
+IRequirement <|-- p2_IRequiredCapability
+IRequirement <|-- p2_Requirement
+IRequirementChange <|-- p2_RequirementChange
+ITouchpointData <|-- p2_TouchpointData
+ITouchpointInstruction <|-- p2_TouchpointInstruction
+ITouchpointType <|-- p2_TouchpointType
+IUpdateDescriptor <|-- p2_UpdateDescriptor
+InstallableUnit <|-- p2_InstallableUnitFragment
+InstallableUnit <|-- p2_InstallableUnitPatch
+Requirement <|-- p2_RequiredCapability
+p2_IInstallableUnitPatch "1..1" *-- "0..9999" p2_IRequirement : appliesTo36
+p2_IRequiredCapability "0..1" --* "1..1" p2_IRequirementChange : applyOn44
+p2_IArtifactDescriptor "1..1" -- "1..1" p2_IArtifactKey : artifactKey8
+p2_ArtifactRepository "1..1" *-- "0..9999" p2_ArtifactsByKey : artifactMap3
+p2_IArtifactKey "0..9999" --* "1..1" p2_IInstallableUnit : artifacts11
+p2_ICopyright "0..1" --* "1..1" p2_IInstallableUnit : copyright13
+p2_IInstallableUnit "1..1" -- "0..9999" p2_IInstallableUnitFragment : fragments15
+p2_IRequirement "0..9999" --* "1..1" p2_InstallableUnitFragment : host41
+p2_IInstallableUnit "0..9999" --* "1..1" p2_MetadataRepository : installableUnits49
+p2_InstructionMap "0..9999" --* "1..1" p2_TouchpointData : instructionMap58
+p2_ArtifactsByKey "1..1" *-- "1..1" p2_IArtifactKey : key4
+p2_IInstallableUnit "1..1" *-- "0..9999" p2_ILicense : licenses17
+p2_IInstallableUnitPatch "1..1" *-- "0..1" p2_IRequirement : lifeCycle33
+p2_IInstallableUnit "1..1" *-- "0..9999" p2_IRequirement : metaRequirements19
+p2_IRequiredCapability "0..1" --* "1..1" p2_IRequirementChange : newValue46
+p2_ArtifactDescriptor "1..1" *-- "0..9999" p2_IProcessingStepDescriptor : processingStepList1
+p2_ArtifactDescriptor "1..1" *-- "0..9999" p2_Property : propertyMap0
+p2_InstallableUnit "1..1" *-- "0..9999" p2_Property : propertyMap39
+p2_Property "0..9999" --* "1..1" p2_Repository : propertyMap53
+p2_IInstallableUnit "1..1" *-- "0..9999" p2_IProvidedCapability : providedCapabilities21
+p2_IRepositoryReference "0..9999" --* "1..1" p2_MetadataRepository : references51
+p2_Property "0..9999" --* "1..1" p2_SimpleArtifactDescriptor : repositoryPropertyMap56
+p2_IInstallableUnit "1..1" *-- "0..9999" p2_IRequirement : requirements23
+p2_IInstallableUnitPatch "1..1" *-- "0..9999" p2_IRequirementChange : requirementsChange32
+p2_MappingRule "0..9999" --* "1..1" p2_SimpleArtifactRepository : rules55
+p2_IInstallableUnit "1..1" *-- "0..9999" p2_ITouchpointData : touchpointData26
+p2_IInstallableUnit "1..1" *-- "0..1" p2_ITouchpointType : touchpointType28
+p2_IInstallableUnit "1..1" *-- "0..1" p2_IUpdateDescriptor : updateDescriptor30
+p2_ITouchpointInstruction "0..1" --* "1..1" p2_InstructionMap : value43
+p2_ArtifactsByKey "1..1" *-- "0..9999" p2_IArtifactDescriptor : value6
+@enduml

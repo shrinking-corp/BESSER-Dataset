@@ -1,0 +1,113 @@
+@startuml
+enum AddType {
+  ADDITION
+  SUBTRACTION
+}
+class Expression {
+}
+class FileRegion {
+}
+enum MultiType {
+  DIVISION
+  MODULATION
+  MULTIPLICATION
+}
+enum ShiftType {
+  LEFT
+  RIGHT
+}
+enum UnaryType {
+  NEGATIVE
+  POSITIVE
+  TILDE
+}
+class expressions_AddExpression {
+  + type : str
+}
+class expressions_AndExpression {
+}
+class expressions_BooleanLiteral {
+  + value : bool
+}
+class expressions_CharacterLiteral {
+  + value : str
+}
+class expressions_ConstExpression {
+}
+class expressions_DoubleLiteral {
+  + value : float
+}
+abstract class expressions_Expression {
+}
+class expressions_FixedPtLiteral {
+  + decimalPart : int
+  + integerPart : int
+  + value : str
+}
+class expressions_FloatingPointLiteral {
+  + value : float
+}
+class expressions_IdlTypeDcl {
+}
+class expressions_IntegerLiteral {
+  + value : int
+}
+class expressions_MultExpression {
+  + type : str
+}
+class expressions_OrExpression {
+}
+class expressions_ScopeLiteral {
+}
+class expressions_ShiftExpression {
+  + type : str
+}
+class expressions_StringLiteral {
+  + value : str
+}
+class expressions_UnaryExpression {
+  + type : str
+}
+class expressions_WideCharacterLiteral {
+  + value : str
+}
+class expressions_WideStringLiteral {
+  + value : str
+}
+class expressions_XOrExpression {
+}
+Expression <|-- expressions_AddExpression
+Expression <|-- expressions_AndExpression
+Expression <|-- expressions_BooleanLiteral
+Expression <|-- expressions_CharacterLiteral
+Expression <|-- expressions_ConstExpression
+Expression <|-- expressions_DoubleLiteral
+Expression <|-- expressions_FixedPtLiteral
+Expression <|-- expressions_FloatingPointLiteral
+Expression <|-- expressions_IntegerLiteral
+Expression <|-- expressions_MultExpression
+Expression <|-- expressions_OrExpression
+Expression <|-- expressions_ScopeLiteral
+Expression <|-- expressions_ShiftExpression
+Expression <|-- expressions_StringLiteral
+Expression <|-- expressions_UnaryExpression
+Expression <|-- expressions_WideCharacterLiteral
+Expression <|-- expressions_WideStringLiteral
+Expression <|-- expressions_XOrExpression
+FileRegion <|-- expressions_Expression
+expressions_Expression "0..1" --* "1..1" expressions_UnaryExpression : expr31
+expressions_ConstExpression "1..1" *-- "0..1" expressions_Expression : expression0
+expressions_Expression "0..1" --* "1..1" expressions_OrExpression : left1
+expressions_AndExpression "1..1" *-- "0..1" expressions_Expression : left11
+expressions_Expression "0..1" --* "1..1" expressions_ShiftExpression : left16
+expressions_AddExpression "1..1" *-- "0..1" expressions_Expression : left21
+expressions_Expression "0..1" --* "1..1" expressions_MultExpression : left26
+expressions_Expression "0..1" --* "1..1" expressions_XOrExpression : left6
+expressions_AndExpression "1..1" *-- "0..1" expressions_Expression : right13
+expressions_Expression "0..1" --* "1..1" expressions_ShiftExpression : right18
+expressions_AddExpression "1..1" *-- "0..1" expressions_Expression : right23
+expressions_Expression "0..1" --* "1..1" expressions_MultExpression : right28
+expressions_Expression "0..1" --* "1..1" expressions_OrExpression : right3
+expressions_Expression "0..1" --* "1..1" expressions_XOrExpression : right8
+expressions_IdlTypeDcl "0..1" -- "1..1" expressions_ScopeLiteral : value33
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+class Board {
+  + aircraftCarrier : bool
+  + battleship : bool
+  + destroyer : bool
+  + patrolBoat : bool
+  + submarine : bool
+}
+class Boat {
+  + MAX_LENGTH : int
+  + direction : Direction
+  + length : int
+  + startCoord : Coordinate
+}
+enum CoordState {
+}
+class Coordinate {
+  + state : CoordState
+  + x : int
+  + y : int
+}
+enum Direction {
+}
+class Game {
+  + done : bool
+  + p1 : Player
+  + p2 : Player
+}
+class Player {
+  + name : str
+  + turn : bool
+  + won : bool
+}
+Board "1..1" -- "1..9999" Coordinate : Board_Coordinate
+Board "1..1" -- "1..1" Player : Board_Player
+Game "1..1" -- "1..9999" Player : Game_Player
+@enduml

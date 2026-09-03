@@ -1,0 +1,70 @@
+@startuml
+class Camera {
+  + CameraID : int
+}
+class Door {
+  + DoorID : int
+}
+class End_Of_Day {
+  + EOT : int
+}
+class Entertainment {
+  + DeviceID : int
+}
+class HomeTheatre {
+  + HTID : str
+}
+class HouseHolds {
+  + Computer : str
+  + Fan : str
+  + Light : str
+  + TimeID : str
+}
+class Light {
+  + LightID : str
+}
+class Light_Sensor {
+  + DetectLight__ : int
+}
+class MicroPhone {
+  + MicID : str
+}
+class Microcontroller {
+  + sendData__ : str
+}
+class Motion_Sensor {
+}
+class PressureSensor {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Speakers {
+  + SpeakerID : int
+}
+class Start_Of_Day {
+  + SOT : int
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+class TV {
+  + TVID : int
+}
+Entertainment "1..1" -- "1..9999" HomeTheatre : HomeTheatre_Entertainment
+HomeTheatre "1..9999" -- "0..1" Speakers : HomeTheatre_Speakers
+HomeTheatre "0..1" -- "1..1" System : HomeTheatre_System
+HomeTheatre "1..9999" -- "1..1" TV : HomeTheatre_TV
+End_Of_Day "0..1" -- "0..1" HouseHolds : HouseHolds_End_Of_Day
+HouseHolds "0..1" -- "0..1" Start_Of_Day : HouseHolds_Start_Of_Day
+MicroPhone "1..9999" -- "1..1" System : MicroPhone_System
+HouseHolds "0..1" -- "0..1" Microcontroller : Microcontroller_HouseHolds
+Microcontroller "0..1" -- "0..1" System : Microcontroller_System
+Door "1..1" -- "1..1" Sensor : Sensor_Door
+Microcontroller "0..1" -- "0..1" Sensor : Sensor_Microcontroller
+Entertainment "1..1" -- "1..9999" Speakers : Speakers_Entertainment
+HouseHolds "0..1" -- "1..1" System : System_HouseHolds
+Entertainment "1..1" -- "1..9999" TV : TV_Entertainment
+@enduml

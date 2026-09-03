@@ -1,0 +1,192 @@
+@startuml
+class BooleanLiteralExpCS {
+}
+class CSTrace {
+}
+class CallExpCS {
+}
+enum CollectionKindCS {
+  Collection
+}
+class EqualityExpCS {
+}
+class ExpCS {
+}
+class LiteralExpCS {
+}
+class LoopExpCS {
+}
+class NavigationExpCS {
+}
+class PrimaryExpCS {
+}
+class minioclcs_AccVarCS {
+  + accName : str
+}
+class minioclcs_BooleanExpCS {
+  + boolSymbol : bool
+}
+class minioclcs_BooleanLiteralExpCS {
+}
+abstract class minioclcs_CSTrace {
+}
+class minioclcs_CallExpCS {
+}
+class minioclcs_ClassCS {
+  + name : str
+}
+class minioclcs_CollectExpCS {
+}
+class minioclcs_CollectionLiteralExpCS {
+  + kind : str
+}
+class minioclcs_CollectionLiteralPartCS {
+}
+class minioclcs_ConstraintsDefCS {
+}
+class minioclcs_EClass {
+}
+class minioclcs_EObject {
+}
+class minioclcs_EqualityExpCS {
+  + opName : str
+}
+class minioclcs_ExpCS {
+}
+class minioclcs_ImportCS {
+  + alias : str
+  + uri : str
+}
+class minioclcs_IntLiteralExpCS {
+  + intSymbol : int
+}
+class minioclcs_InvariantCS {
+}
+class minioclcs_IterateExpCS {
+}
+class minioclcs_IteratorVarCS {
+  + itName : str
+}
+class minioclcs_LetExpCS {
+}
+class minioclcs_LetVarCS {
+  + name : str
+}
+class minioclcs_LiteralExpCS {
+}
+class minioclcs_LoopExpCS {
+}
+class minioclcs_MultiplicityCS {
+  + lowerInt : int
+  + mandatory : int
+  + mult : bool
+  + opt : bool
+  + upperInt : int
+  + upperMult : bool
+}
+class minioclcs_NameExpCS {
+}
+class minioclcs_NavigationExpCS {
+}
+class minioclcs_NullLiteralExpCS {
+}
+class minioclcs_OperationCS {
+  + name : str
+}
+class minioclcs_PackageCS {
+  + name : str
+}
+class minioclcs_ParameterCS {
+  + name : str
+}
+class minioclcs_PathElementCS {
+}
+class minioclcs_PathNameCS {
+}
+class minioclcs_PrimaryExpCS {
+}
+class minioclcs_PropertyCS {
+  + name : str
+}
+class minioclcs_RootCS {
+}
+class minioclcs_RoundedBracketClauseCS {
+}
+class minioclcs_SelfExpCS {
+}
+BooleanLiteralExpCS <|-- minioclcs_BooleanExpCS
+CSTrace <|-- minioclcs_AccVarCS
+CSTrace <|-- minioclcs_ClassCS
+CSTrace <|-- minioclcs_CollectionLiteralPartCS
+CSTrace <|-- minioclcs_ConstraintsDefCS
+CSTrace <|-- minioclcs_ExpCS
+CSTrace <|-- minioclcs_ImportCS
+CSTrace <|-- minioclcs_InvariantCS
+CSTrace <|-- minioclcs_IteratorVarCS
+CSTrace <|-- minioclcs_LetVarCS
+CSTrace <|-- minioclcs_MultiplicityCS
+CSTrace <|-- minioclcs_NavigationExpCS
+CSTrace <|-- minioclcs_OperationCS
+CSTrace <|-- minioclcs_PackageCS
+CSTrace <|-- minioclcs_ParameterCS
+CSTrace <|-- minioclcs_PathElementCS
+CSTrace <|-- minioclcs_PathNameCS
+CSTrace <|-- minioclcs_PropertyCS
+CSTrace <|-- minioclcs_RootCS
+CSTrace <|-- minioclcs_RoundedBracketClauseCS
+CallExpCS <|-- minioclcs_PrimaryExpCS
+EqualityExpCS <|-- minioclcs_CallExpCS
+ExpCS <|-- minioclcs_EqualityExpCS
+LiteralExpCS <|-- minioclcs_BooleanLiteralExpCS
+LiteralExpCS <|-- minioclcs_CollectionLiteralExpCS
+LiteralExpCS <|-- minioclcs_IntLiteralExpCS
+LiteralExpCS <|-- minioclcs_NullLiteralExpCS
+LoopExpCS <|-- minioclcs_CollectExpCS
+LoopExpCS <|-- minioclcs_IterateExpCS
+NavigationExpCS <|-- minioclcs_LoopExpCS
+NavigationExpCS <|-- minioclcs_NameExpCS
+PrimaryExpCS <|-- minioclcs_LetExpCS
+PrimaryExpCS <|-- minioclcs_LiteralExpCS
+PrimaryExpCS <|-- minioclcs_NameExpCS
+PrimaryExpCS <|-- minioclcs_SelfExpCS
+minioclcs_AccVarCS "1..1" *-- "0..1" minioclcs_ExpCS : accInitExp59
+minioclcs_AccVarCS "1..1" *-- "0..1" minioclcs_PathNameCS : accType56
+minioclcs_AccVarCS "0..1" --* "1..1" minioclcs_IterateExpCS : accVar55
+minioclcs_ExpCS "0..9999" --* "1..1" minioclcs_RoundedBracketClauseCS : args66
+minioclcs_CSTrace "1..1" -- "0..1" minioclcs_EObject : ast90
+minioclcs_ExpCS "0..1" --* "1..1" minioclcs_OperationCS : body26
+minioclcs_ClassCS "0..9999" --* "1..1" minioclcs_PackageCS : classes8
+minioclcs_ConstraintsDefCS "0..9999" --* "1..1" minioclcs_RootCS : constraints3
+minioclcs_EClass "0..1" -- "1..1" minioclcs_PathElementCS : elementName88
+minioclcs_ExpCS "0..1" --* "1..1" minioclcs_InvariantCS : exp36
+minioclcs_ExpCS "0..1" --* "1..1" minioclcs_LoopExpCS : exp49
+minioclcs_NameExpCS "1..1" *-- "0..1" minioclcs_PathNameCS : expName62
+minioclcs_ClassCS "1..1" *-- "0..1" minioclcs_PathNameCS : extends10
+minioclcs_CollectionLiteralPartCS "1..1" *-- "0..1" minioclcs_ExpCS : first70
+minioclcs_ImportCS "0..9999" --* "1..1" minioclcs_RootCS : imports0
+minioclcs_ExpCS "0..1" --* "1..1" minioclcs_LetExpCS : inExp77
+minioclcs_ExpCS "0..1" --* "1..1" minioclcs_LetVarCS : initExp83
+minioclcs_ConstraintsDefCS "1..1" *-- "0..9999" minioclcs_InvariantCS : invariants34
+minioclcs_IteratorVarCS "1..1" *-- "0..1" minioclcs_PathNameCS : itType52
+minioclcs_IteratorVarCS "0..1" --* "1..1" minioclcs_LoopExpCS : itVar48
+minioclcs_CollectionLiteralPartCS "1..1" *-- "0..1" minioclcs_ExpCS : last73
+minioclcs_EqualityExpCS "1..1" *-- "0..1" minioclcs_EqualityExpCS : left40
+minioclcs_LetExpCS "1..1" *-- "0..9999" minioclcs_LetVarCS : letVars76
+minioclcs_MultiplicityCS "0..1" --* "1..1" minioclcs_PropertyCS : multiplicity19
+minioclcs_CallExpCS "1..1" *-- "0..1" minioclcs_NavigationExpCS : navExp46
+minioclcs_ClassCS "1..1" *-- "0..9999" minioclcs_OperationCS : operations14
+minioclcs_PackageCS "0..9999" --* "1..1" minioclcs_RootCS : packages1
+minioclcs_PackageCS "0..9999" --* "1..1" minioclcs_PackageCS : packages6
+minioclcs_OperationCS "1..1" *-- "0..9999" minioclcs_ParameterCS : params21
+minioclcs_CollectionLiteralExpCS "1..1" *-- "0..9999" minioclcs_CollectionLiteralPartCS : parts69
+minioclcs_PathElementCS "0..9999" --* "1..1" minioclcs_PathNameCS : pathElements86
+minioclcs_ClassCS "1..1" *-- "0..9999" minioclcs_PropertyCS : properties12
+minioclcs_OperationCS "1..1" *-- "0..1" minioclcs_PathNameCS : resultRef23
+minioclcs_CallExpCS "0..1" --* "1..1" minioclcs_EqualityExpCS : right41
+minioclcs_NameExpCS "1..1" *-- "0..1" minioclcs_RoundedBracketClauseCS : roundedBrackets64
+minioclcs_CallExpCS "0..1" --* "1..1" minioclcs_CallExpCS : source44
+minioclcs_PathNameCS "0..1" --* "1..1" minioclcs_PropertyCS : typeRef16
+minioclcs_ParameterCS "1..1" *-- "0..1" minioclcs_PathNameCS : typeRef28
+minioclcs_ConstraintsDefCS "1..1" *-- "0..1" minioclcs_PathNameCS : typeRef31
+minioclcs_LetVarCS "1..1" *-- "0..1" minioclcs_PathNameCS : typeRef80
+@enduml

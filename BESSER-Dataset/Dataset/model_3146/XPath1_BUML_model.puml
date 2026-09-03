@@ -1,0 +1,125 @@
+@startuml
+class Axis {
+}
+class Expression {
+}
+class LiteralExp {
+}
+class LocatedElement {
+}
+class NamedElement {
+}
+class NodeTest {
+}
+class XPath_AncestorAxis {
+}
+class XPath_AncestorOrSelfAxis {
+}
+class XPath_AttributeAxis {
+}
+abstract class XPath_Axis {
+}
+class XPath_ChildAxis {
+}
+class XPath_DescendantAxis {
+}
+class XPath_DescendantOrSelfAxis {
+}
+abstract class XPath_Expression {
+}
+class XPath_FollowingAxis {
+}
+class XPath_FollowingSiblingAxis {
+}
+class XPath_FunctionCallExp {
+}
+class XPath_IntegerExp {
+  + symbol : str
+}
+class XPath_IsNodeTest {
+}
+class XPath_IsTextTest {
+}
+abstract class XPath_LiteralExp {
+}
+abstract class XPath_LocatedElement {
+  + commentsAfter : str
+  + commentsBefore : str
+  + location : str
+}
+class XPath_NameTest {
+}
+abstract class XPath_NamedElement {
+  + name : str
+}
+class XPath_NamespaceAxis {
+}
+abstract class XPath_NodeTest {
+}
+class XPath_OperatorCallExp {
+}
+class XPath_ParentAxis {
+}
+class XPath_PathExpression {
+  + isAbsolute : str
+}
+class XPath_PrecedingAxis {
+}
+class XPath_PrecedingSiblingAxis {
+}
+class XPath_Predicate {
+}
+class XPath_SelfAxis {
+}
+class XPath_Step {
+}
+class XPath_StringExp {
+  + symbol : str
+}
+class XPath_VariableExp {
+}
+class XPath_WildCardTest {
+}
+Axis <|-- XPath_AncestorAxis
+Axis <|-- XPath_AncestorOrSelfAxis
+Axis <|-- XPath_AttributeAxis
+Axis <|-- XPath_ChildAxis
+Axis <|-- XPath_DescendantAxis
+Axis <|-- XPath_DescendantOrSelfAxis
+Axis <|-- XPath_FollowingAxis
+Axis <|-- XPath_FollowingSiblingAxis
+Axis <|-- XPath_NamespaceAxis
+Axis <|-- XPath_ParentAxis
+Axis <|-- XPath_PrecedingAxis
+Axis <|-- XPath_PrecedingSiblingAxis
+Axis <|-- XPath_SelfAxis
+Expression <|-- XPath_FunctionCallExp
+Expression <|-- XPath_LiteralExp
+Expression <|-- XPath_OperatorCallExp
+Expression <|-- XPath_PathExpression
+Expression <|-- XPath_VariableExp
+LiteralExp <|-- XPath_IntegerExp
+LiteralExp <|-- XPath_StringExp
+LocatedElement <|-- XPath_Axis
+LocatedElement <|-- XPath_Expression
+LocatedElement <|-- XPath_NamedElement
+LocatedElement <|-- XPath_NodeTest
+LocatedElement <|-- XPath_Predicate
+LocatedElement <|-- XPath_Step
+NamedElement <|-- XPath_FunctionCallExp
+NamedElement <|-- XPath_NameTest
+NamedElement <|-- XPath_OperatorCallExp
+NamedElement <|-- XPath_VariableExp
+NodeTest <|-- XPath_IsNodeTest
+NodeTest <|-- XPath_IsTextTest
+NodeTest <|-- XPath_NameTest
+NodeTest <|-- XPath_WildCardTest
+XPath_Expression "0..9999" --* "1..1" XPath_FunctionCallExp : arguments14
+XPath_Axis "1..1" --* "1..1" XPath_Step : axis1
+XPath_Expression "1..1" --* "1..1" XPath_Predicate : expression7
+XPath_Expression "1..1" --* "1..1" XPath_OperatorCallExp : left9
+XPath_NodeTest "1..1" --* "1..1" XPath_Step : nodeTest3
+XPath_Predicate "0..9999" --* "1..1" XPath_Step : predicates5
+XPath_Expression "0..1" --* "1..1" XPath_OperatorCallExp : right11
+XPath_PathExpression "1..1" *-- "0..9999" XPath_Step : steps0
+@enduml

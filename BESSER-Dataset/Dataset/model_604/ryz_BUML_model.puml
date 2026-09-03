@@ -1,0 +1,292 @@
+@startuml
+class AbstractView {
+}
+enum ActionMethodParameterType {
+  INTEGER
+  STRING
+}
+enum ActionMethodReturnType {
+  Content
+  Json
+  PartialView
+  RedirectToAction
+  View
+}
+enum ButtonType {
+  RESET
+  SUBMIT
+}
+enum Cardinality {
+  MANY_TO_MANY
+  ONE_TO_MANY
+  ONE_TO_ONE
+}
+class ComponentPackage {
+}
+class HelperForSendingRequest {
+}
+enum HttpMethod {
+  GET
+  POST
+}
+enum InputDataType {
+  DATE
+  EMAIL
+  FILE
+  NUMBER
+  PASSWORD
+  TEL
+  TEXT
+  TIME
+}
+class MainComponent {
+}
+class MainComponentRelation {
+}
+enum ModelCardinality {
+  ALL
+  ONE
+}
+enum ModelOperation {
+  CREATE
+  DELETE
+  READ
+  UPDATE
+}
+enum ModelPropertyType {
+  BOOLEAN
+  DATETIME
+  DOUBLE
+  INTEGER
+  STRING
+}
+enum MultipleChoiceType {
+  CHECKBOX_GROUP
+  DROPDOWN_LIST
+  RADIO_BUTTON
+}
+class NamedElement {
+}
+class Package {
+}
+class PresentationElement {
+}
+class PresentationFormElement {
+}
+enum RequestType {
+  AJAX
+  REGULAR_HTTP
+}
+abstract class ryz_AbstractView {
+}
+class ryz_ActionLink {
+}
+class ryz_ActionMethod {
+  + httpMethod : str
+  + returns : str
+}
+class ryz_Actor {
+}
+class ryz_Button {
+  + buttonType : str
+}
+class ryz_Choice {
+  + selected : str
+  + text : str
+  + value : str
+}
+abstract class ryz_ComponentPackage {
+}
+class ryz_Controller {
+}
+class ryz_ControllerPackage {
+}
+class ryz_ControllerToModelRelation {
+  + modelCardinality : str
+  + modelOperation : str
+}
+class ryz_ControllerToViewRelation {
+}
+class ryz_Form {
+}
+class ryz_FormElementToPropertyKeyRelation {
+}
+class ryz_Header {
+  + labelText : str
+  + name : str
+}
+abstract class ryz_HelperForSendingRequest {
+  + httpMethod : str
+  + requestType : str
+  + text : str
+}
+class ryz_Input {
+  + inputDataType : str
+  + isHidden : bool
+  + isReadOnly : bool
+}
+class ryz_Layout {
+}
+class ryz_Link {
+  + text : str
+}
+abstract class ryz_MainComponent {
+}
+abstract class ryz_MainComponentRelation {
+}
+class ryz_Model {
+  + isAbstract : bool
+}
+class ryz_ModelAssociation {
+  + cardinality : str
+  + dependentRoleName : str
+  + isRequired : bool
+  + principalRoleName : str
+}
+class ryz_ModelPackage {
+}
+class ryz_MultipleChoice {
+  + multipleChoiceType : str
+  + multipleSelection : bool
+}
+class ryz_MvcPackage {
+}
+abstract class ryz_NamedElement {
+  + name : str
+}
+abstract class ryz_Package {
+}
+class ryz_Parameter {
+  + isList : bool
+  + isNullable : bool
+  + type : str
+}
+class ryz_Partial {
+}
+abstract class ryz_PresentationElement {
+}
+class ryz_PresentationForm {
+}
+abstract class ryz_PresentationFormElement {
+  + labelText : str
+}
+class ryz_PresentationFormElementToPropertyKey {
+}
+class ryz_Project {
+}
+class ryz_Property {
+  + isRequired : bool
+  + type : str
+}
+class ryz_Table {
+}
+class ryz_TableKey {
+  + isForeignKey : bool
+  + isPrimaryKey : bool
+  + isRequired : bool
+  + type : str
+}
+class ryz_UseCase {
+}
+class ryz_UseCaseActorPackage {
+}
+class ryz_UseCasePackage {
+}
+class ryz_View {
+}
+class ryz_ViewPackage {
+}
+class ryz_ViewToControllerRelation {
+}
+class ryz_ViewToModelRelation {
+  + modelcardinality : str
+}
+AbstractView <|-- ryz_Layout
+AbstractView <|-- ryz_Partial
+AbstractView <|-- ryz_View
+ComponentPackage <|-- ryz_ControllerPackage
+ComponentPackage <|-- ryz_ModelPackage
+ComponentPackage <|-- ryz_ViewPackage
+HelperForSendingRequest <|-- ryz_ActionLink
+HelperForSendingRequest <|-- ryz_Form
+MainComponent <|-- ryz_AbstractView
+MainComponent <|-- ryz_Controller
+MainComponent <|-- ryz_Model
+MainComponentRelation <|-- ryz_ControllerToModelRelation
+MainComponentRelation <|-- ryz_ControllerToViewRelation
+MainComponentRelation <|-- ryz_FormElementToPropertyKeyRelation
+MainComponentRelation <|-- ryz_ViewToControllerRelation
+MainComponentRelation <|-- ryz_ViewToModelRelation
+NamedElement <|-- ryz_ActionMethod
+NamedElement <|-- ryz_Actor
+NamedElement <|-- ryz_MainComponent
+NamedElement <|-- ryz_MainComponentRelation
+NamedElement <|-- ryz_ModelAssociation
+NamedElement <|-- ryz_Package
+NamedElement <|-- ryz_Parameter
+NamedElement <|-- ryz_PresentationElement
+NamedElement <|-- ryz_Project
+NamedElement <|-- ryz_Property
+NamedElement <|-- ryz_TableKey
+NamedElement <|-- ryz_UseCase
+NamedElement <|-- ryz_UseCasePackage
+Package <|-- ryz_ComponentPackage
+Package <|-- ryz_MvcPackage
+Package <|-- ryz_UseCaseActorPackage
+PresentationElement <|-- ryz_Link
+PresentationElement <|-- ryz_PresentationForm
+PresentationElement <|-- ryz_Table
+PresentationFormElement <|-- ryz_Button
+PresentationFormElement <|-- ryz_Input
+PresentationFormElement <|-- ryz_MultipleChoice
+ryz_AbstractView "1..1" -- "1..1" ryz_ViewToModelRelation : abstractview62
+ryz_ActionMethod "1..1" -- "1..1" ryz_ViewToControllerRelation : actionmethod36
+ryz_ActionMethod "1..1" -- "1..1" ryz_ControllerToModelRelation : actionmethod45
+ryz_ActionMethod "1..1" -- "1..1" ryz_ControllerToViewRelation : actionmethod57
+ryz_ActionMethod "0..9999" -- "1..1" ryz_UseCase : actionmethod78
+ryz_ActionMethod "0..9999" --* "1..1" ryz_Controller : actionmethods22
+ryz_Actor "0..9999" -- "1..1" ryz_UseCase : actor75
+ryz_Actor "0..9999" --* "1..1" ryz_UseCaseActorPackage : actors70
+ryz_Choice "0..9999" --* "1..1" ryz_MultipleChoice : choice85
+ryz_Controller "0..9999" --* "1..1" ryz_ControllerPackage : controllers8
+ryz_Model "1..1" -- "1..1" ryz_ModelAssociation : dependent27
+ryz_Header "0..9999" --* "1..1" ryz_Table : header86
+ryz_HelperForSendingRequest "1..1" -- "1..1" ryz_ViewToControllerRelation : helperforsendingrequest34
+ryz_HelperForSendingRequest "0..9999" -- "1..1" ryz_UseCase : helperforsendingrequest76
+ryz_HelperForSendingRequest "0..9999" -- "1..1" ryz_PresentationElement : helperforsendingrequest82
+ryz_FormElementToPropertyKeyRelation "1..1" -- "1..1" ryz_HelperForSendingRequest : helperforsendingrequest87
+ryz_AbstractView "1..1" *-- "0..9999" ryz_HelperForSendingRequest : htmlelements18
+ryz_Model "0..1" -- "1..1" ryz_Model : inherits12
+ryz_Layout "0..1" -- "1..1" ryz_View : layout33
+ryz_MainComponentRelation "0..9999" --* "1..1" ryz_MvcPackage : maincomponentrelations2
+ryz_MainComponent "0..9999" -- "1..1" ryz_MvcPackage : maincomponents1
+ryz_Model "0..1" -- "1..1" ryz_ViewToControllerRelation : model39
+ryz_ControllerToModelRelation "1..1" -- "1..1" ryz_Model : model47
+ryz_Model "1..1" -- "1..1" ryz_ViewToModelRelation : model64
+ryz_FormElementToPropertyKeyRelation "1..1" -- "1..1" ryz_Model : model89
+ryz_ModelAssociation "0..9999" --* "1..1" ryz_ModelPackage : modelassociations5
+ryz_ControllerToModelRelation "1..1" -- "0..9999" ryz_Property : modelproperties50
+ryz_Model "0..9999" --* "1..1" ryz_ModelPackage : models4
+ryz_Package "0..9999" --* "1..1" ryz_Project : packages0
+ryz_ActionMethod "1..1" *-- "0..9999" ryz_Parameter : parameters30
+ryz_AbstractView "1..1" *-- "0..9999" ryz_PresentationElement : presentationelement20
+ryz_HelperForSendingRequest "1..1" -- "0..9999" ryz_PresentationElement : presentationelement55
+ryz_PresentationForm "1..1" *-- "0..9999" ryz_PresentationFormElement : presentationformelement84
+ryz_PresentationFormElement "1..1" -- "1..1" ryz_PresentationFormElementToPropertyKey : presentationformelement94
+ryz_FormElementToPropertyKeyRelation "1..1" *-- "0..9999" ryz_PresentationFormElementToPropertyKey : presentationformelementtoproperty92
+ryz_Model "1..1" -- "1..1" ryz_ModelAssociation : principal24
+ryz_Property "0..9999" -- "1..1" ryz_ViewToControllerRelation : properties42
+ryz_Property "0..9999" -- "1..1" ryz_ViewToModelRelation : properties67
+ryz_Model "1..1" *-- "0..9999" ryz_Property : properties9
+ryz_PresentationFormElementToPropertyKey "1..1" -- "0..1" ryz_Property : property97
+ryz_AbstractView "1..1" -- "0..9999" ryz_Partial : renders16
+ryz_AbstractView "1..1" -- "1..1" ryz_ControllerToViewRelation : returns59
+ryz_PresentationFormElementToPropertyKey "1..1" -- "0..1" ryz_TableKey : tablekey100
+ryz_Model "1..1" *-- "0..9999" ryz_TableKey : tablekeys14
+ryz_ActionMethod "1..1" -- "0..9999" ryz_UseCase : usecase32
+ryz_HelperForSendingRequest "1..1" -- "0..9999" ryz_UseCase : usecase53
+ryz_Actor "1..1" -- "0..9999" ryz_UseCase : usecase73
+ryz_UseCaseActorPackage "1..1" *-- "0..9999" ryz_UseCasePackage : usecasepackages71
+ryz_UseCase "0..9999" --* "1..1" ryz_UseCasePackage : usecases80
+ryz_AbstractView "0..9999" --* "1..1" ryz_ViewPackage : views7
+@enduml

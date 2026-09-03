@@ -1,0 +1,48 @@
+@startuml
+class Course {
+}
+class schoolIncqDerived_Course {
+  + subject : str
+  + weight : int
+}
+class schoolIncqDerived_School {
+  + address : str
+  + currentYear : int
+  + name : str
+  + numberOfTeachers : int
+}
+class schoolIncqDerived_SchoolClass {
+  + code : str
+}
+class schoolIncqDerived_SpecialisationCourse {
+  + specialisation : str
+}
+class schoolIncqDerived_Student {
+  + name : str
+}
+class schoolIncqDerived_Teacher {
+  + name : str
+}
+class schoolIncqDerived_Year {
+  + startingDate : int
+}
+Course <|-- schoolIncqDerived_SpecialisationCourse
+schoolIncqDerived_Course "0..9999" -- "1..1" schoolIncqDerived_SchoolClass : courses17
+schoolIncqDerived_Course "0..9999" -- "1..1" schoolIncqDerived_Teacher : courses26
+schoolIncqDerived_Course "0..9999" --* "1..1" schoolIncqDerived_School : courses9
+schoolIncqDerived_SchoolClass "1..1" -- "0..1" schoolIncqDerived_Teacher : homeroomTeacher20
+schoolIncqDerived_SchoolClass "0..1" -- "1..1" schoolIncqDerived_Teacher : homeroomedClass28
+schoolIncqDerived_School "1..1" -- "0..1" schoolIncqDerived_Year : lastYear12
+schoolIncqDerived_Course "1..1" -- "0..1" schoolIncqDerived_School : school0
+schoolIncqDerived_School "0..1" -- "1..1" schoolIncqDerived_Teacher : school24
+schoolIncqDerived_School "0..1" -- "1..1" schoolIncqDerived_Year : school31
+schoolIncqDerived_SchoolClass "0..1" -- "1..1" schoolIncqDerived_Student : schoolClass22
+schoolIncqDerived_Course "1..1" -- "0..1" schoolIncqDerived_SchoolClass : schoolClass3
+schoolIncqDerived_SchoolClass "0..9999" --* "1..1" schoolIncqDerived_Year : schoolClasses33
+schoolIncqDerived_SchoolClass "1..1" *-- "0..9999" schoolIncqDerived_Student : students16
+schoolIncqDerived_Course "1..1" -- "0..1" schoolIncqDerived_Teacher : teacher1
+schoolIncqDerived_School "1..1" *-- "0..9999" schoolIncqDerived_Teacher : teachers6
+schoolIncqDerived_School "1..1" -- "0..9999" schoolIncqDerived_Teacher : teachersWithMostCourses11
+schoolIncqDerived_SchoolClass "1..1" -- "0..1" schoolIncqDerived_Year : year14
+schoolIncqDerived_School "1..1" *-- "0..9999" schoolIncqDerived_Year : years5
+@enduml

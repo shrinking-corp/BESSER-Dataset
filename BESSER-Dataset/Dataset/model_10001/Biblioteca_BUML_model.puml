@@ -1,0 +1,68 @@
+@startuml
+class Biblioteca_Autor {
+  + fechaDeNacimiento : date
+  + nacionalidad : str
+  + nombreCompleto : str
+}
+class Biblioteca_Biblioteca {
+  + direccion : str
+}
+class Biblioteca_Ejemplar {
+  + estado : str
+  + numeroDeEjemplar : int
+}
+class Biblioteca_Libro {
+  + ISBN : str
+  + activo : bool
+  + anioDeEdicion : int
+  + editorial : str
+  + genero : str
+  + titulo : str
+}
+class Biblioteca_Multa {
+  + diasExcedidos : int
+  + fecha : date
+  + fechaDePago : date
+  + monto : int
+}
+class Biblioteca_Prestamo {
+  + fechaDeDevolucion : date
+  + fechaDeFin : date
+  + fechaDeInicio : date
+}
+class Biblioteca_Socio {
+  + direccion : str
+  + edad : int
+  + fechaDeNacimiento : date
+  + nombreCompleto : str
+  + numeroDeSocio : int
+  + telefono : str
+  + devolverEjemplar(Biblioteca_codigo : str, Biblioteca_fechaActual : str) : str
+  + existeSocio(Biblioteca_nombreDeSocio : str) : str
+  + generarMulta(Biblioteca_prestamo : str) : str
+  + solicitarEjemplar(Biblioteca_codigo : str) : str
+  + uniqueID() : void
+}
+enum Estado {
+  Bueno
+  Malo
+}
+enum Genero {
+  Didactico
+  Dramatico
+  Epico
+  Lirico
+  Narrativo
+  Terror
+}
+Biblioteca_Autor "1..1" -- "1..1" Biblioteca_Libro : autor5
+Biblioteca_Autor "0..9999" --* "1..1" Biblioteca_Biblioteca : autores1
+Biblioteca_Ejemplar "1..1" -- "1..1" Biblioteca_Prestamo : ejemplar8
+Biblioteca_Biblioteca "1..1" *-- "0..9999" Biblioteca_Libro : libros0
+Biblioteca_Multa "0..9999" -- "1..1" Biblioteca_Socio : multas15
+Biblioteca_Autor "1..1" -- "1..9999" Biblioteca_Libro : obras12
+Biblioteca_Multa "1..1" -- "1..1" Biblioteca_Prestamo : prestamo20
+Biblioteca_Prestamo "0..3" -- "1..1" Biblioteca_Socio : prestamos17
+Biblioteca_Prestamo "1..1" -- "1..1" Biblioteca_Socio : socio9
+Biblioteca_Biblioteca "1..1" *-- "0..9999" Biblioteca_Socio : socios3
+@enduml

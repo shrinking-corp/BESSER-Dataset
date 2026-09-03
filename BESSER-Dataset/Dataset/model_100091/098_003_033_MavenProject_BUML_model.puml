@@ -1,0 +1,62 @@
+@startuml
+class Build {
+}
+class MailingList {
+}
+class MavenProject_Build {
+  + defaultGoal : str
+  + sourceDirectory : str
+  + unitTestSourceDirectory : str
+}
+class MavenProject_Contributor {
+}
+class MavenProject_Developer {
+  + id : str
+}
+class MavenProject_MailingList {
+  + archive : str
+  + name : str
+  + otherArchives : str
+  + post : str
+  + subscribe : str
+  + unsubscribe : str
+}
+abstract class MavenProject_Person {
+  + email : str
+  + name : str
+  + organization : str
+  + organizationUrl : str
+  + properties : str
+  + roles : str
+  + timezone : str
+  + url : str
+}
+class MavenProject_Project {
+  + artifactId : str
+  + description : str
+  + groupId : str
+  + id : str
+  + name : str
+}
+class MavenProject_Resource {
+  + directory : str
+  + excludes : str
+  + filtering : str
+  + includes : str
+  + targetPath : str
+}
+class Person {
+}
+class Project {
+}
+class Resource {
+}
+Person <|-- MavenProject_Contributor
+Person <|-- MavenProject_Developer
+Build "0..1" --* "1..1" MavenProject_Project : build3
+MavenProject_Project "1..1" *-- "0..9999" Project : dependencies5
+MavenProject_Project "1..1" *-- "0..9999" Person : developersAndContributors1
+MailingList "0..9999" --* "1..1" MavenProject_Project : mailingLists0
+MavenProject_Build "1..1" -- "0..9999" Resource : resources8
+MavenProject_Build "1..1" -- "0..9999" Resource : uniTest7
+@enduml

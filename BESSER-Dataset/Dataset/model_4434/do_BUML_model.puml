@@ -1,0 +1,31 @@
+@startuml
+class Action {
+}
+class Instruction {
+}
+abstract class RobotWork_Action {
+}
+class RobotWork_Chrography {
+  + name : str
+}
+class RobotWork_GoForward {
+  + cm : int
+}
+class RobotWork_Grab {
+}
+abstract class RobotWork_Instruction {
+}
+class RobotWork_Release {
+}
+class RobotWork_Rotate {
+  + degrees : int
+  + random : bool
+}
+Action <|-- RobotWork_GoForward
+Action <|-- RobotWork_Grab
+Action <|-- RobotWork_Release
+Action <|-- RobotWork_Rotate
+Instruction <|-- RobotWork_Action
+Instruction <|-- RobotWork_Chrography
+RobotWork_Chrography "1..1" *-- "0..9999" RobotWork_Instruction : instructions0
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+class FExpression {
+}
+class Referentiable {
+}
+class fsmWithMethods_Event {
+}
+class fsmWithMethods_FExpression {
+  + name : str
+}
+class fsmWithMethods_Fsm {
+  + name : str
+}
+class fsmWithMethods_Method {
+}
+class fsmWithMethods_MethodCall {
+}
+class fsmWithMethods_Referentiable {
+}
+class fsmWithMethods_State {
+}
+class fsmWithMethods_Transition {
+}
+FExpression <|-- fsmWithMethods_Event
+FExpression <|-- fsmWithMethods_Method
+FExpression <|-- fsmWithMethods_MethodCall
+FExpression <|-- fsmWithMethods_State
+FExpression <|-- fsmWithMethods_Transition
+Referentiable <|-- fsmWithMethods_FExpression
+fsmWithMethods_FExpression "0..1" -- "1..1" fsmWithMethods_Transition : event12
+fsmWithMethods_FExpression "0..9999" --* "1..1" fsmWithMethods_Fsm : expressions1
+fsmWithMethods_FExpression "0..9999" --* "1..1" fsmWithMethods_Method : expressions5
+fsmWithMethods_FExpression "0..1" -- "1..1" fsmWithMethods_Transition : from_14
+fsmWithMethods_Method "0..1" -- "1..1" fsmWithMethods_MethodCall : method8
+fsmWithMethods_MethodCall "1..1" *-- "0..9999" fsmWithMethods_Referentiable : params10
+fsmWithMethods_FExpression "0..9999" --* "1..1" fsmWithMethods_Method : params3
+fsmWithMethods_Fsm "1..1" -- "0..1" fsmWithMethods_State : state0
+fsmWithMethods_FExpression "0..1" -- "1..1" fsmWithMethods_Transition : to17
+@enduml

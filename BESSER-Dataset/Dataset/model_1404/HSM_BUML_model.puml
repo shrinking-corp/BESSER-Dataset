@@ -1,0 +1,23 @@
+@startuml
+class HSM_CompositeState {
+}
+class HSM_State {
+  + name : str
+}
+class HSM_StateMachine {
+  + name : str
+  + addTransition(HSM_src : str, HSM_trg : str) : void
+}
+class HSM_Transition {
+}
+class State {
+}
+State <|-- HSM_CompositeState
+HSM_CompositeState "0..1" -- "1..1" HSM_State : container2
+HSM_StateMachine "1..1" -- "1..1" HSM_Transition : machine10
+HSM_State "1..1" -- "1..1" HSM_StateMachine : machine3
+HSM_State "1..1" -- "1..1" HSM_Transition : source4
+HSM_State "0..9999" --* "1..1" HSM_StateMachine : states0
+HSM_State "1..1" -- "1..1" HSM_Transition : target7
+HSM_StateMachine "1..1" *-- "0..9999" HSM_Transition : transitions1
+@enduml

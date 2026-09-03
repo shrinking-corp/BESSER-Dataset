@@ -1,0 +1,21 @@
+@startuml
+class sample_Company {
+  + name : str
+}
+class sample_Department {
+  + name : str
+}
+class sample_Group {
+  + name : str
+}
+class sample_Person {
+  + birthdate : date
+  + name : str
+}
+sample_Company "0..1" -- "1..1" sample_Department : company2
+sample_Department "0..1" -- "1..1" sample_Group : department4
+sample_Company "1..1" *-- "0..9999" sample_Department : departments0
+sample_Group "0..1" -- "1..1" sample_Person : group6
+sample_Department "1..1" *-- "0..9999" sample_Group : groups1
+sample_Group "1..1" *-- "0..9999" sample_Person : persons3
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+class container {
+}
+class html5_Action {
+  + codigo : str
+}
+class html5_button {
+  + action : str
+  + type : str
+  + value : str
+}
+abstract class html5_container {
+  + class_ : str
+}
+class html5_dialog {
+}
+class html5_div {
+  + id : str
+}
+class html5_fieldset {
+}
+class html5_html {
+}
+abstract class html5_htmlElement {
+  + class_ : str
+}
+class html5_img {
+  + src : str
+}
+class html5_input {
+  + disable : str
+  + type : str
+  + value : str
+}
+class html5_label {
+  + valor : str
+  + value : str
+}
+class html5_legend {
+  + class_ : str
+  + valor : str
+}
+class html5_option {
+}
+class html5_select {
+  + multiple : str
+  + size : str
+}
+class html5_table {
+}
+class html5_td {
+}
+class html5_tr {
+}
+class htmlElement {
+}
+enum types {
+  button
+  number
+  text
+}
+container <|-- html5_div
+container <|-- html5_fieldset
+htmlElement <|-- html5_button
+htmlElement <|-- html5_dialog
+htmlElement <|-- html5_img
+htmlElement <|-- html5_input
+htmlElement <|-- html5_label
+htmlElement <|-- html5_select
+htmlElement <|-- html5_table
+html5_Action "0..9999" --* "1..1" html5_div : actions0
+html5_container "0..9999" --* "1..1" html5_html : container7
+html5_htmlElement "0..9999" --* "1..1" html5_td : elements4
+html5_container "1..1" *-- "0..9999" html5_htmlElement : elements8
+html5_container "0..9999" --* "1..1" html5_container : innercontainer12
+html5_fieldset "1..1" *-- "0..1" html5_legend : legend6
+html5_option "0..1" -- "1..1" html5_select : options14
+html5_td "0..9999" --* "1..1" html5_tr : td2
+html5_table "1..1" *-- "0..9999" html5_tr : tr1
+@enduml

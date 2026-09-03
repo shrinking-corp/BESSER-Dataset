@@ -1,0 +1,105 @@
+@startuml
+enum EventContext {
+  CHRONICLE
+  IMMEDIATE
+  RECENT
+  STRICT_IMMEDIATE
+  UNRESTRICTED
+}
+class State {
+}
+class TimedZone {
+}
+class Transition {
+}
+class TypedTransition {
+}
+class automaton_Automaton {
+  + eventPatternId : str
+}
+class automaton_EpsilonTransition {
+}
+class automaton_Event {
+}
+class automaton_EventPattern {
+}
+class automaton_EventToken {
+}
+class automaton_FinalState {
+}
+class automaton_Guard {
+}
+class automaton_HoldsFor {
+}
+class automaton_InitState {
+}
+class automaton_InternalModel {
+}
+class automaton_NegativeTransition {
+}
+class automaton_Parameter {
+  + position : int
+  + symbolicName : str
+}
+class automaton_ParameterBinding {
+  + symbolicName : str
+  + value : str
+}
+class automaton_ParameterTable {
+}
+class automaton_State {
+  + label : str
+}
+abstract class automaton_TimedZone {
+  + time : str
+}
+abstract class automaton_Transition {
+}
+class automaton_TrapState {
+}
+class automaton_TypedTransition {
+}
+class automaton_Within {
+}
+State <|-- automaton_FinalState
+State <|-- automaton_InitState
+State <|-- automaton_TrapState
+TimedZone <|-- automaton_HoldsFor
+TimedZone <|-- automaton_Within
+Transition <|-- automaton_EpsilonTransition
+Transition <|-- automaton_TypedTransition
+TypedTransition <|-- automaton_NegativeTransition
+automaton_Automaton "0..9999" --* "1..1" automaton_InternalModel : automata0
+automaton_EventToken "1..1" -- "0..1" automaton_State : currentState21
+automaton_Automaton "0..9999" -- "1..1" automaton_InternalModel : enabledForTheLatestEvent3
+automaton_EventToken "1..1" -- "1..1" automaton_ParameterTable : eventToken58
+automaton_Automaton "1..1" *-- "0..9999" automaton_EventToken : eventTokens10
+automaton_EventToken "0..9999" -- "1..1" automaton_State : eventTokens35
+automaton_EventToken "0..9999" -- "1..1" automaton_InternalModel : eventTokensInModel6
+automaton_EventPattern "1..1" -- "1..1" automaton_Guard : eventType49
+automaton_Automaton "1..1" -- "1..9999" automaton_FinalState : finalStates17
+automaton_Guard "1..9999" --* "1..1" automaton_TypedTransition : guards46
+automaton_State "1..1" -- "1..1" automaton_TimedZone : inState51
+automaton_State "1..1" -- "0..9999" automaton_TimedZone : inStateOf39
+automaton_State "1..1" -- "0..9999" automaton_Transition : inTransitions32
+automaton_Automaton "1..1" -- "1..1" automaton_InitState : initialState15
+automaton_Event "0..1" -- "1..1" automaton_EventToken : lastProcessed25
+automaton_Event "0..1" -- "1..1" automaton_State : lastProcessedEvent36
+automaton_Event "0..1" --* "1..1" automaton_InternalModel : latestEvent1
+automaton_State "1..1" -- "1..1" automaton_TimedZone : outState53
+automaton_State "1..1" -- "0..9999" automaton_TimedZone : outStateOf40
+automaton_State "1..1" *-- "0..9999" automaton_Transition : outTransitions33
+automaton_ParameterBinding "0..9999" --* "1..1" automaton_ParameterTable : parameterBindings57
+automaton_EventToken "1..1" *-- "1..1" automaton_ParameterTable : parameterTable31
+automaton_ParameterBinding "1..1" -- "1..1" automaton_ParameterTable : parameterTable61
+automaton_Parameter "0..9999" --* "1..1" automaton_TypedTransition : parameters47
+automaton_State "0..1" -- "1..1" automaton_Transition : postState44
+automaton_State "0..1" -- "1..1" automaton_Transition : preState42
+automaton_Event "0..9999" -- "1..1" automaton_EventToken : recordedEvents22
+automaton_Automaton "1..1" *-- "0..9999" automaton_State : states8
+automaton_Automaton "1..1" *-- "0..9999" automaton_TimedZone : timedZones13
+automaton_EventToken "1..1" -- "0..9999" automaton_TimedZone : timedZones28
+automaton_Guard "1..1" -- "1..1" automaton_TypedTransition : transition50
+automaton_Parameter "1..1" -- "1..1" automaton_TypedTransition : transition55
+automaton_Automaton "1..1" -- "1..1" automaton_TrapState : trapState19
+@enduml

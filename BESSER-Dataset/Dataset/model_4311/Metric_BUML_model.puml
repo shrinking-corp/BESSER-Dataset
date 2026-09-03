@@ -1,0 +1,32 @@
+@startuml
+class Metric {
+}
+class metric_AggregatedIntegerMetric {
+  + average : float
+  + maximum : str
+  + median : str
+  + minimum : str
+  + standardDeviation : float
+}
+class metric_AggregatedRealMetric {
+  + average : float
+  + maximum : float
+  + median : float
+  + minimum : float
+  + standardDeviation : float
+}
+class metric_Container {
+}
+abstract class metric_Metric {
+  + code : str
+  + description : str
+  + name : str
+}
+class metric_SimpleMetric {
+  + value : str
+}
+Metric <|-- metric_AggregatedIntegerMetric
+Metric <|-- metric_AggregatedRealMetric
+Metric <|-- metric_SimpleMetric
+metric_Container "1..1" *-- "0..9999" metric_Metric : metrics0
+@enduml

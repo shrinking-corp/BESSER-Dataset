@@ -1,0 +1,49 @@
+@startuml
+class Employee {
+}
+class company_Company {
+  + eotmDelta : str
+  + name : str
+}
+class company_Department {
+  + biggestNumberOfStudentsOrFreelancers : str
+  + budget : str
+  + maxJuniors : str
+  + name : str
+  + calcExpenses() : str
+  + sumBudget() : str
+}
+class company_Division {
+  + budget : str
+  + name : str
+  + numberEmployeesOfTheMonth : str
+}
+class company_Employee {
+  + age : str
+  + name : str
+  + salary : str
+}
+class company_Freelance {
+  + assignment : str
+}
+class company_Student {
+}
+Employee <|-- company_Freelance
+Employee <|-- company_Student
+company_Department "1..1" -- "0..1" company_Employee : boss9
+company_Company "0..1" -- "1..1" company_Division : company26
+company_Department "0..9999" --* "1..1" company_Division : department19
+company_Division "0..1" -- "1..1" company_Employee : directed3
+company_Division "1..1" *-- "0..1" company_Employee : director21
+company_Company "1..1" -- "0..1" company_Division : division27
+company_Company "1..1" -- "0..1" company_Employee : divisionDirector29
+company_Department "1..1" *-- "0..9999" company_Employee : employee8
+company_Department "1..1" -- "0..9999" company_Employee : employeeOfTheMonth17
+company_Division "1..1" -- "0..9999" company_Employee : employeesOfTheMonth23
+company_Department "0..1" -- "1..1" company_Employee : employer0
+company_Employee "1..1" -- "0..1" company_Student : intern6
+company_Department "0..1" -- "1..1" company_Employee : managed1
+company_Department "1..1" -- "0..1" company_Department : parentDepartment15
+company_Employee "1..1" *-- "0..1" company_Employee : secretary5
+company_Department "1..1" *-- "0..9999" company_Department : subDepartment12
+@enduml

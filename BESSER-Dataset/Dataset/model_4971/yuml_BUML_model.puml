@@ -1,0 +1,86 @@
+@startuml
+enum AssociationType {
+  aggregation
+  composition
+  simpleAssociation
+}
+class ClassMember {
+}
+class ColorableElement {
+}
+class ModelElement {
+}
+class Relationship {
+}
+enum Visibility {
+  package
+  private
+  protected
+  public
+  unspecified
+}
+class yuml_Association {
+  + navigableSource : bool
+  + navigableTarget : bool
+  + sourceVisibility : str
+  + targetVisibility : str
+  + type : str
+}
+class yuml_Attribute {
+  + stereotype : str
+  + type : str
+}
+class yuml_Cardinality {
+  + lowerBound : str
+  + upperBound : str
+}
+class yuml_Class {
+  + name : str
+  + stereotype : str
+}
+abstract class yuml_ClassMember {
+  + name : str
+  + visibility : str
+}
+abstract class yuml_ColorableElement {
+  + color : str
+}
+class yuml_Equivalence {
+}
+class yuml_Inheritance {
+}
+class yuml_Method {
+  + arguments : str
+}
+class yuml_Model {
+}
+abstract class yuml_ModelElement {
+}
+class yuml_Note {
+  + text : str
+}
+class yuml_NoteAssociation {
+}
+abstract class yuml_Relationship {
+  + sourceLabel : str
+  + targetLabel : str
+}
+ClassMember <|-- yuml_Attribute
+ClassMember <|-- yuml_Method
+ColorableElement <|-- yuml_Class
+ColorableElement <|-- yuml_Note
+ModelElement <|-- yuml_ColorableElement
+ModelElement <|-- yuml_Relationship
+Relationship <|-- yuml_Association
+Relationship <|-- yuml_Equivalence
+Relationship <|-- yuml_Inheritance
+Relationship <|-- yuml_NoteAssociation
+yuml_Attribute "0..9999" --* "1..1" yuml_Class : attributes1
+yuml_Model "1..1" *-- "0..9999" yuml_ModelElement : elements0
+yuml_Class "1..1" *-- "0..9999" yuml_Method : methods2
+yuml_Note "1..1" --* "1..1" yuml_NoteAssociation : note12
+yuml_Class "1..1" --* "1..1" yuml_Relationship : source4
+yuml_Association "1..1" *-- "0..1" yuml_Cardinality : sourceCardinality8
+yuml_ColorableElement "1..1" --* "1..1" yuml_Relationship : target6
+yuml_Association "1..1" *-- "0..1" yuml_Cardinality : targetCardinality9
+@enduml

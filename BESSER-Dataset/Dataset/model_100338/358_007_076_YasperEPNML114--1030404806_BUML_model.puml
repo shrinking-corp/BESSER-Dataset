@@ -1,0 +1,198 @@
+@startuml
+class Place {
+}
+enum TextType1 {
+  AND
+  XOR
+}
+enum TextType2 {
+  channel
+  store
+}
+enum TextTypeMember0 {
+  biflow
+  inflow
+  inhibitor
+  outflow
+  reset
+}
+enum Tool {
+  Yasper
+}
+enum Version {
+  _1
+}
+class YasperEPNML114_AnnotationGraphics {
+}
+class YasperEPNML114_Arc {
+  + group : str
+  + id : str
+  + source : str
+  + target : str
+}
+class YasperEPNML114_ArcType {
+  + text : str
+}
+class YasperEPNML114_ConnectionWeight {
+  + connection : str
+}
+class YasperEPNML114_ConnectionWeights {
+}
+class YasperEPNML114_Cost {
+}
+class YasperEPNML114_DocumentRoot {
+  + mixed : str
+}
+class YasperEPNML114_EStringToStringMapEntry {
+}
+class YasperEPNML114_EdgeGraphics {
+}
+class YasperEPNML114_InitialMarking {
+  + text : str
+}
+class YasperEPNML114_Inscription {
+  + text : str
+}
+class YasperEPNML114_Net {
+  + group : str
+  + id : str
+  + type : str
+}
+class YasperEPNML114_NetGraphics {
+  + group : str
+}
+class YasperEPNML114_NodeGraphics {
+  + group : str
+}
+class YasperEPNML114_Page {
+  + group : str
+  + id : str
+}
+class YasperEPNML114_Place {
+  + group : str
+  + id : str
+}
+class YasperEPNML114_PlaceType {
+  + text : str
+}
+class YasperEPNML114_PlaceType1 {
+}
+class YasperEPNML114_Pnml {
+  + group : str
+}
+class YasperEPNML114_PnmlAnnotation {
+  + text : str
+}
+class YasperEPNML114_ProcessingTime {
+}
+class YasperEPNML114_ReferencePlace {
+  + group : str
+  + id : str
+  + ref : str
+}
+class YasperEPNML114_ReferencePlaceSpecific {
+  + tool : str
+  + version : str
+}
+class YasperEPNML114_Role {
+  + text : str
+}
+class YasperEPNML114_Roles {
+}
+class YasperEPNML114_Stat {
+  + text : str
+}
+class YasperEPNML114_ToolspecificType {
+  + any : str
+  + group : str
+  + mixed : str
+  + tool : str
+  + version : str
+}
+class YasperEPNML114_Transformation {
+  + text : str
+}
+class YasperEPNML114_Transition {
+  + group : str
+  + id : str
+}
+class YasperEPNML114_TransitionSpecific {
+  + tokenCaseSensitive : str
+  + tool : str
+  + version : str
+}
+class YasperEPNML114_TransitionType {
+  + text : str
+}
+class YasperEPNML114_TwoDimVector {
+  + x : str
+  + y : str
+}
+Place <|-- YasperEPNML114_PlaceType1
+YasperEPNML114_Arc "0..9999" --* "1..1" YasperEPNML114_Net : arc40
+YasperEPNML114_Arc "0..9999" --* "1..1" YasperEPNML114_Page : arc78
+YasperEPNML114_ConnectionWeight "0..9999" --* "1..1" YasperEPNML114_ConnectionWeights : connectionWeight14
+YasperEPNML114_Cost "0..1" --* "1..1" YasperEPNML114_TransitionSpecific : cost160
+YasperEPNML114_Place "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : description103
+YasperEPNML114_PnmlAnnotation "0..9999" --* "1..1" YasperEPNML114_ReferencePlace : description129
+YasperEPNML114_PnmlAnnotation "0..9999" --* "1..1" YasperEPNML114_Transition : description152
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : description48
+YasperEPNML114_Arc "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : description8
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : description87
+YasperEPNML114_ProcessingTime "1..1" *-- "0..1" YasperEPNML114_Stat : deviation120
+YasperEPNML114_NetGraphics "1..1" *-- "0..9999" YasperEPNML114_TwoDimVector : dimension57
+YasperEPNML114_NodeGraphics "1..1" *-- "0..9999" YasperEPNML114_TwoDimVector : dimension62
+YasperEPNML114_Cost "1..1" *-- "0..1" YasperEPNML114_Stat : fixed16
+YasperEPNML114_AnnotationGraphics "0..1" --* "1..1" YasperEPNML114_PnmlAnnotation : graphics115
+YasperEPNML114_NodeGraphics "0..9999" --* "1..1" YasperEPNML114_ReferencePlace : graphics123
+YasperEPNML114_AnnotationGraphics "0..1" --* "1..1" YasperEPNML114_Transformation : graphics138
+YasperEPNML114_NodeGraphics "0..9999" --* "1..1" YasperEPNML114_Transition : graphics143
+YasperEPNML114_Arc "1..1" *-- "0..9999" YasperEPNML114_EdgeGraphics : graphics2
+YasperEPNML114_AnnotationGraphics "0..1" --* "1..1" YasperEPNML114_InitialMarking : graphics30
+YasperEPNML114_AnnotationGraphics "0..1" --* "1..1" YasperEPNML114_Inscription : graphics32
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_NetGraphics : graphics35
+YasperEPNML114_NetGraphics "0..9999" --* "1..1" YasperEPNML114_Page : graphics67
+YasperEPNML114_NodeGraphics "0..9999" --* "1..1" YasperEPNML114_Place : graphics94
+YasperEPNML114_InitialMarking "0..9999" --* "1..1" YasperEPNML114_Place : initialMarking97
+YasperEPNML114_Arc "1..1" *-- "0..9999" YasperEPNML114_Inscription : inscription4
+YasperEPNML114_ProcessingTime "1..1" *-- "0..1" YasperEPNML114_Stat : mean118
+YasperEPNML114_Place "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : name100
+YasperEPNML114_PnmlAnnotation "0..9999" --* "1..1" YasperEPNML114_ReferencePlace : name126
+YasperEPNML114_PnmlAnnotation "0..9999" --* "1..1" YasperEPNML114_Transition : name149
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : name45
+YasperEPNML114_Arc "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : name6
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_PnmlAnnotation : name84
+YasperEPNML114_Net "0..9999" --* "1..1" YasperEPNML114_Pnml : net109
+YasperEPNML114_AnnotationGraphics "1..1" *-- "0..9999" YasperEPNML114_TwoDimVector : offset0
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_Page : page43
+YasperEPNML114_Page "0..9999" --* "1..1" YasperEPNML114_Page : page82
+YasperEPNML114_NodeGraphics "0..1" --* "1..1" YasperEPNML114_ReferencePlaceSpecific : pathGraphics135
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_PlaceType1 : place36
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_PlaceType1 : place72
+YasperEPNML114_DocumentRoot "1..1" *-- "0..9999" YasperEPNML114_Pnml : pnml25
+YasperEPNML114_EdgeGraphics "1..1" *-- "0..9999" YasperEPNML114_TwoDimVector : position27
+YasperEPNML114_NetGraphics "1..1" *-- "0..9999" YasperEPNML114_TwoDimVector : position54
+YasperEPNML114_NodeGraphics "1..1" *-- "0..9999" YasperEPNML114_TwoDimVector : position60
+YasperEPNML114_ProcessingTime "0..1" --* "1..1" YasperEPNML114_TransitionSpecific : processingTime163
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_ReferencePlace : referencePlace65
+YasperEPNML114_Role "1..9999" --* "1..1" YasperEPNML114_Roles : role137
+YasperEPNML114_Roles "0..1" --* "1..1" YasperEPNML114_TransitionSpecific : roles158
+YasperEPNML114_Place "1..1" *-- "0..9999" YasperEPNML114_ToolspecificType : toolspecific106
+YasperEPNML114_Arc "1..1" *-- "0..9999" YasperEPNML114_ToolspecificType : toolspecific11
+YasperEPNML114_Pnml "1..1" *-- "0..9999" YasperEPNML114_ToolspecificType : toolspecific112
+YasperEPNML114_ReferencePlace "1..1" *-- "0..9999" YasperEPNML114_ToolspecificType : toolspecific132
+YasperEPNML114_ToolspecificType "0..9999" --* "1..1" YasperEPNML114_Transition : toolspecific155
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_ToolspecificType : toolspecific51
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_ToolspecificType : toolspecific90
+YasperEPNML114_Transformation "0..9999" --* "1..1" YasperEPNML114_Transition : transformation146
+YasperEPNML114_Net "1..1" *-- "0..9999" YasperEPNML114_Transition : transition38
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_Transition : transition75
+YasperEPNML114_Arc "1..1" *-- "0..9999" YasperEPNML114_ArcType : type1
+YasperEPNML114_Transition "1..1" *-- "0..9999" YasperEPNML114_TransitionType : type140
+YasperEPNML114_Page "1..1" *-- "0..9999" YasperEPNML114_TransitionType : type70
+YasperEPNML114_Place "1..1" *-- "0..9999" YasperEPNML114_PlaceType : type93
+YasperEPNML114_Cost "1..1" *-- "0..1" YasperEPNML114_Stat : variable18
+YasperEPNML114_ConnectionWeight "1..1" *-- "1..1" YasperEPNML114_Stat : weight13
+YasperEPNML114_DocumentRoot "1..1" *-- "0..9999" YasperEPNML114_EStringToStringMapEntry : xMLNSPrefixMap21
+YasperEPNML114_DocumentRoot "1..1" *-- "0..9999" YasperEPNML114_EStringToStringMapEntry : xSISchemaLocation22
+@enduml

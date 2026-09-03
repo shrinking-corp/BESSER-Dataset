@@ -1,0 +1,35 @@
+@startuml
+enum AddressType {
+  BUSINESS
+  DELIVERY
+  PRIVATE
+}
+class addressbook_Address {
+  + city : str
+  + street : str
+  + type : str
+  + zip : str
+}
+class addressbook_AddressBook {
+}
+class addressbook_Country {
+  + name : str
+}
+class addressbook_FederalState {
+  + name : str
+}
+class addressbook_Person {
+  + firstname : str
+  + lastname : str
+}
+addressbook_AddressBook "0..1" -- "1..1" addressbook_Country : addressBook11
+addressbook_AddressBook "0..1" -- "1..1" addressbook_Person : addressBook3
+addressbook_Address "0..9999" --* "1..1" addressbook_Person : addresses2
+addressbook_AddressBook "1..1" *-- "0..9999" addressbook_Country : countries1
+addressbook_Country "0..1" -- "1..1" addressbook_FederalState : country14
+addressbook_Address "1..1" -- "0..1" addressbook_Country : country4
+addressbook_Address "1..1" -- "0..1" addressbook_FederalState : federalState6
+addressbook_Country "1..1" *-- "0..9999" addressbook_FederalState : federalStates10
+addressbook_Address "1..1" -- "0..1" addressbook_Person : person8
+addressbook_AddressBook "1..1" *-- "0..9999" addressbook_Person : persons0
+@enduml

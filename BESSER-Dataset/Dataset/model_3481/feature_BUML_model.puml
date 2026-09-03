@@ -1,0 +1,105 @@
+@startuml
+class AttributeOperand {
+}
+class Constraint {
+}
+class Domain {
+}
+class FeatureConstraint {
+}
+enum FeatureState {
+  deselected
+  selected
+  unbound
+}
+class Identifiable {
+}
+enum Relop {
+  equal
+  greaterThan
+  greaterThanOrEqual
+  lessThan
+  lessThanOrEqual
+  unequal
+}
+class feature_Attribute {
+  + deselectedDomainValues : str
+  + name : str
+  + value : str
+}
+class feature_AttributeConstraint {
+  + operator : str
+}
+abstract class feature_AttributeOperand {
+}
+class feature_AttributeReference {
+}
+class feature_AttributeValue {
+  + int : int
+  + name : str
+}
+abstract class feature_Constraint {
+}
+class feature_DiscreteDomain {
+}
+abstract class feature_Domain {
+}
+class feature_DomainValue {
+  + int : int
+  + name : str
+}
+class feature_Exclude {
+}
+class feature_Feature {
+  + configurationState : str
+  + name : str
+}
+abstract class feature_FeatureConstraint {
+}
+class feature_FeatureModel {
+  + name : str
+}
+class feature_Group {
+  + maxCardinality : int
+  + minCardinality : int
+}
+abstract class feature_Identifiable {
+  + id : str
+}
+class feature_Imply {
+}
+class feature_Interval {
+  + lowerBound : int
+  + upperBound : int
+}
+class feature_NumericalDomain {
+}
+AttributeOperand <|-- feature_AttributeReference
+AttributeOperand <|-- feature_AttributeValue
+Constraint <|-- feature_AttributeConstraint
+Constraint <|-- feature_FeatureConstraint
+Domain <|-- feature_DiscreteDomain
+Domain <|-- feature_NumericalDomain
+FeatureConstraint <|-- feature_Exclude
+FeatureConstraint <|-- feature_Imply
+Identifiable <|-- feature_Constraint
+Identifiable <|-- feature_Domain
+Identifiable <|-- feature_Feature
+Identifiable <|-- feature_Group
+feature_Attribute "1..1" -- "1..1" feature_AttributeReference : attribute20
+feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes5
+feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures8
+feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints3
+feature_Attribute "1..1" -- "1..1" feature_Domain : domain12
+feature_Domain "0..9999" --* "1..1" feature_FeatureModel : domains1
+feature_Attribute "1..1" -- "1..1" feature_Feature : feature11
+feature_AttributeReference "1..1" -- "1..1" feature_Feature : feature22
+feature_Feature "1..1" *-- "0..9999" feature_Group : groups6
+feature_Interval "1..9999" --* "1..1" feature_NumericalDomain : intervals15
+feature_AttributeConstraint "1..1" *-- "1..1" feature_AttributeOperand : leftOperand16
+feature_Feature "1..1" -- "1..1" feature_FeatureConstraint : leftOperand25
+feature_AttributeConstraint "1..1" *-- "1..1" feature_AttributeOperand : rightOperand17
+feature_Feature "1..1" -- "1..1" feature_FeatureConstraint : rightOperand27
+feature_Feature "1..1" --* "1..1" feature_FeatureModel : root0
+feature_DiscreteDomain "1..1" *-- "1..9999" feature_DomainValue : values14
+@enduml

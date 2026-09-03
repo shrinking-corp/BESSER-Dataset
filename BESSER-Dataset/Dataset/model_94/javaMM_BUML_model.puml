@@ -1,0 +1,759 @@
+@startuml
+class ASTNode {
+}
+class AbstractMethodDeclaration {
+}
+class AbstractMethodInvocation {
+}
+class AbstractTypeDeclaration {
+}
+class AbstractTypeQualifiedExpression {
+}
+class AbstractVariablesContainer {
+}
+class AnnotationTypeDeclaration {
+}
+class AnnotationTypeMemberDeclaration {
+}
+enum AssignmentKind {
+  ASSIGN
+  BIT_AND_ASSIGN
+  BIT_OR_ASSIGN
+  BIT_XOR_ASSIGN
+  DIVIDE_ASSIGN
+  LEFT_SHIFT_ASSIGN
+  MINUS_ASSIGN
+  PLUS_ASSIGN
+  REMAINDER_ASSIGN
+  RIGHT_SHIFT_SIGNED_ASSIGN
+  RIGHT_SHIFT_UNSIGNED_ASSIGN
+  TIMES_ASSIGN
+}
+class BodyDeclaration {
+}
+class ClassDeclaration {
+}
+class Comment {
+}
+class EnumDeclaration {
+}
+class Expression {
+}
+enum InfixExpressionKind {
+  AND
+  CONDITIONAL_AND
+  CONDITIONAL_OR
+  DIVIDE
+  EQUALS
+  GREATER
+  GREATER_EQUALS
+  LEFT_SHIFT
+  LESS
+  LESS_EQUALS
+  MINUS
+  NOT_EQUALS
+  OR
+  PLUS
+  REMAINDER
+  RIGHT_SHIFT_SIGNED
+  RIGHT_SHIFT_UNSIGNED
+  TIMES
+  XOR
+}
+enum InheritanceKind {
+  abstract
+  final
+  none
+}
+class InterfaceDeclaration {
+}
+class LabeledStatement {
+}
+class MethodDeclaration {
+}
+class NamedElement {
+}
+class NamespaceAccess {
+}
+enum PostfixExpressionKind {
+  DECREMENT
+  INCREMENT
+}
+enum PrefixExpressionKind {
+  COMPLEMENT
+  DECREMENT
+  INCREMENT
+  MINUS
+  NOT
+  PLUS
+}
+class PrimitiveType {
+}
+class SingleVariableDeclaration {
+}
+class Statement {
+}
+class Type {
+}
+class TypeDeclaration {
+}
+class UnresolvedItem {
+}
+class VariableDeclaration {
+}
+class VariableDeclarationFragment {
+}
+enum VisibilityKind {
+  none
+  private
+  protected
+  public
+}
+abstract class javaMM_ASTNode {
+}
+abstract class javaMM_AbstractMethodDeclaration {
+  + localMethodIsUsed(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + parametersEffectivelyFinal(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+abstract class javaMM_AbstractMethodInvocation {
+}
+abstract class javaMM_AbstractTypeDeclaration {
+  + implements(javaMM_type : str) : str
+}
+abstract class javaMM_AbstractTypeQualifiedExpression {
+}
+abstract class javaMM_AbstractVariablesContainer {
+}
+class javaMM_Annotation {
+}
+class javaMM_AnnotationMemberValuePair {
+}
+class javaMM_AnnotationTypeDeclaration {
+}
+class javaMM_AnnotationTypeMemberDeclaration {
+}
+class javaMM_AnonymousClassDeclaration {
+}
+class javaMM_Archive {
+  + originalFilePath : str
+}
+class javaMM_ArrayAccess {
+}
+class javaMM_ArrayCreation {
+}
+class javaMM_ArrayInitializer {
+}
+class javaMM_ArrayLengthAccess {
+}
+class javaMM_ArrayType {
+  + dimensions : int
+}
+class javaMM_AssertStatement {
+}
+class javaMM_Assignment {
+  + operator : str
+  + noRedundantAssignment(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_Block {
+  + emptyBlockIsDocumented(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_BlockComment {
+}
+abstract class javaMM_BodyDeclaration {
+}
+class javaMM_BooleanLiteral {
+  + value : str
+}
+class javaMM_BreakStatement {
+}
+class javaMM_CastExpression {
+}
+class javaMM_CatchClause {
+  + doesNotCatchDubiousExceptions(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + exceptionIsUsed(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_CharacterLiteral {
+  + escapedValue : str
+}
+class javaMM_ClassDeclaration {
+  + cloneInCloneable(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + comparatorImplementsSerializable(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + equalsAndCompareTo(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + getMethods() : str
+  + hasCompareTo() : str
+  + hasEquals() : str
+  + hasHashcode() : str
+  + hashCodeAndEquals(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + noCovariantCompareTo(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + noCovariantEquals(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + noObscuredVariables(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + noRedundantInterfaceImpl(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + serialUIDInSerializableClass(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_ClassFile {
+  + originalFilePath : str
+}
+class javaMM_ClassInstanceCreation {
+}
+abstract class javaMM_Comment {
+  + content : str
+  + enclosedByParent : str
+  + prefixOfParent : str
+}
+class javaMM_CompilationUnit {
+  + originalFilePath : str
+}
+class javaMM_ConditionalExpression {
+}
+class javaMM_ConstructorDeclaration {
+}
+class javaMM_ConstructorInvocation {
+}
+class javaMM_ContinueStatement {
+}
+class javaMM_DoStatement {
+}
+class javaMM_EmptyStatement {
+}
+class javaMM_EnhancedForStatement {
+}
+class javaMM_EnumConstantDeclaration {
+}
+class javaMM_EnumDeclaration {
+}
+abstract class javaMM_Expression {
+}
+class javaMM_ExpressionStatement {
+}
+class javaMM_FieldAccess {
+}
+class javaMM_FieldDeclaration {
+}
+class javaMM_ForStatement {
+}
+class javaMM_IfStatement {
+  + noDeadCode(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + noUselessControlFlow(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_ImportDeclaration {
+  + static : str
+}
+class javaMM_InfixExpression {
+  + operator : str
+  + equalsNotOnLiterals(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + equalsNotOnStrings(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + noRedundantComparison(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + operatorIsEquality() : str
+}
+class javaMM_Initializer {
+}
+class javaMM_InstanceofExpression {
+}
+class javaMM_InterfaceDeclaration {
+}
+class javaMM_Javadoc {
+}
+class javaMM_LabeledStatement {
+}
+class javaMM_LineComment {
+}
+class javaMM_Manifest {
+}
+class javaMM_ManifestAttribute {
+  + key : str
+  + value : str
+}
+class javaMM_ManifestEntry {
+  + name : str
+}
+class javaMM_MemberRef {
+}
+class javaMM_MethodDeclaration {
+  + extraArrayDimensions : int
+  + shouldStartWithLowerCase(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_MethodInvocation {
+  + doesNotCallExit(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + doesNotCallFinalize(javaMM_context : str, javaMM_diagnostics : str) : bool
+  + doesNotCallRunFinalizers(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_MethodRef {
+}
+class javaMM_MethodRefParameter {
+  + name : str
+  + varargs : str
+}
+class javaMM_Model {
+  + name : str
+}
+class javaMM_Modifier {
+  + inheritance : str
+  + native : str
+  + static : str
+  + strictfp : str
+  + synchronized : str
+  + transient : str
+  + visibility : str
+  + volatile : str
+  + isLocal() : str
+}
+abstract class javaMM_NamedElement {
+  + name : str
+  + proxy : str
+}
+abstract class javaMM_NamespaceAccess {
+}
+class javaMM_NullLiteral {
+}
+class javaMM_NumberLiteral {
+  + tokenValue : str
+}
+class javaMM_Package {
+}
+class javaMM_PackageAccess {
+}
+class javaMM_ParameterizedType {
+}
+class javaMM_ParenthesizedExpression {
+}
+class javaMM_PostfixExpression {
+  + operator : str
+}
+class javaMM_PrefixExpression {
+  + operator : str
+}
+class javaMM_PrimitiveType {
+}
+class javaMM_PrimitiveTypeBoolean {
+}
+class javaMM_PrimitiveTypeByte {
+}
+class javaMM_PrimitiveTypeChar {
+}
+class javaMM_PrimitiveTypeDouble {
+}
+class javaMM_PrimitiveTypeFloat {
+}
+class javaMM_PrimitiveTypeInt {
+}
+class javaMM_PrimitiveTypeLong {
+}
+class javaMM_PrimitiveTypeShort {
+}
+class javaMM_PrimitiveTypeVoid {
+}
+class javaMM_ReturnStatement {
+}
+class javaMM_SingleVariableAccess {
+}
+class javaMM_SingleVariableDeclaration {
+  + varargs : str
+}
+abstract class javaMM_Statement {
+}
+class javaMM_StringLiteral {
+  + escapedValue : str
+}
+class javaMM_SuperConstructorInvocation {
+  + noRedundantSuperCall(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_SuperFieldAccess {
+}
+class javaMM_SuperMethodInvocation {
+}
+class javaMM_SwitchCase {
+  + default : str
+}
+class javaMM_SwitchStatement {
+  + moreThan3Cases(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_SynchronizedStatement {
+  + hasStatements(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_TagElement {
+  + tagName : str
+}
+class javaMM_TextElement {
+  + text : str
+}
+class javaMM_ThisExpression {
+}
+class javaMM_ThrowStatement {
+}
+class javaMM_TryStatement {
+}
+abstract class javaMM_Type {
+}
+class javaMM_TypeAccess {
+}
+abstract class javaMM_TypeDeclaration {
+}
+class javaMM_TypeDeclarationStatement {
+}
+class javaMM_TypeLiteral {
+}
+class javaMM_TypeParameter {
+}
+class javaMM_UnresolvedAnnotationDeclaration {
+}
+class javaMM_UnresolvedAnnotationTypeMemberDeclaration {
+}
+class javaMM_UnresolvedClassDeclaration {
+}
+class javaMM_UnresolvedEnumDeclaration {
+}
+class javaMM_UnresolvedInterfaceDeclaration {
+}
+class javaMM_UnresolvedItem {
+}
+class javaMM_UnresolvedItemAccess {
+}
+class javaMM_UnresolvedLabeledStatement {
+}
+class javaMM_UnresolvedMethodDeclaration {
+}
+class javaMM_UnresolvedSingleVariableDeclaration {
+}
+class javaMM_UnresolvedType {
+}
+class javaMM_UnresolvedTypeDeclaration {
+}
+class javaMM_UnresolvedVariableDeclarationFragment {
+}
+abstract class javaMM_VariableDeclaration {
+  + extraArrayDimensions : int
+  + variableIsUsed(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_VariableDeclarationExpression {
+  + publicVariableIsFinal(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_VariableDeclarationFragment {
+}
+class javaMM_VariableDeclarationStatement {
+  + extraArrayDimensions : int
+  + publicVariableIsFinal(javaMM_context : str, javaMM_diagnostics : str) : bool
+}
+class javaMM_WhileStatement {
+}
+class javaMM_WildCardType {
+  + upperBound : str
+}
+ASTNode <|-- javaMM_AbstractMethodInvocation
+ASTNode <|-- javaMM_AbstractVariablesContainer
+ASTNode <|-- javaMM_AnonymousClassDeclaration
+ASTNode <|-- javaMM_Comment
+ASTNode <|-- javaMM_Expression
+ASTNode <|-- javaMM_ImportDeclaration
+ASTNode <|-- javaMM_MemberRef
+ASTNode <|-- javaMM_MethodRef
+ASTNode <|-- javaMM_MethodRefParameter
+ASTNode <|-- javaMM_Modifier
+ASTNode <|-- javaMM_NamedElement
+ASTNode <|-- javaMM_NamespaceAccess
+ASTNode <|-- javaMM_Statement
+ASTNode <|-- javaMM_TagElement
+ASTNode <|-- javaMM_TextElement
+AbstractMethodDeclaration <|-- javaMM_ConstructorDeclaration
+AbstractMethodDeclaration <|-- javaMM_MethodDeclaration
+AbstractMethodInvocation <|-- javaMM_ClassInstanceCreation
+AbstractMethodInvocation <|-- javaMM_ConstructorInvocation
+AbstractMethodInvocation <|-- javaMM_MethodInvocation
+AbstractMethodInvocation <|-- javaMM_SuperConstructorInvocation
+AbstractMethodInvocation <|-- javaMM_SuperMethodInvocation
+AbstractTypeDeclaration <|-- javaMM_AnnotationTypeDeclaration
+AbstractTypeDeclaration <|-- javaMM_EnumDeclaration
+AbstractTypeDeclaration <|-- javaMM_TypeDeclaration
+AbstractTypeDeclaration <|-- javaMM_UnresolvedTypeDeclaration
+AbstractTypeQualifiedExpression <|-- javaMM_SuperFieldAccess
+AbstractTypeQualifiedExpression <|-- javaMM_SuperMethodInvocation
+AbstractTypeQualifiedExpression <|-- javaMM_ThisExpression
+AbstractVariablesContainer <|-- javaMM_FieldDeclaration
+AbstractVariablesContainer <|-- javaMM_VariableDeclarationExpression
+AbstractVariablesContainer <|-- javaMM_VariableDeclarationStatement
+AnnotationTypeDeclaration <|-- javaMM_UnresolvedAnnotationDeclaration
+AnnotationTypeMemberDeclaration <|-- javaMM_UnresolvedAnnotationTypeMemberDeclaration
+BodyDeclaration <|-- javaMM_AbstractMethodDeclaration
+BodyDeclaration <|-- javaMM_AbstractTypeDeclaration
+BodyDeclaration <|-- javaMM_AnnotationTypeMemberDeclaration
+BodyDeclaration <|-- javaMM_EnumConstantDeclaration
+BodyDeclaration <|-- javaMM_FieldDeclaration
+BodyDeclaration <|-- javaMM_Initializer
+ClassDeclaration <|-- javaMM_UnresolvedClassDeclaration
+Comment <|-- javaMM_BlockComment
+Comment <|-- javaMM_Javadoc
+Comment <|-- javaMM_LineComment
+EnumDeclaration <|-- javaMM_UnresolvedEnumDeclaration
+Expression <|-- javaMM_AbstractTypeQualifiedExpression
+Expression <|-- javaMM_Annotation
+Expression <|-- javaMM_ArrayAccess
+Expression <|-- javaMM_ArrayCreation
+Expression <|-- javaMM_ArrayInitializer
+Expression <|-- javaMM_ArrayLengthAccess
+Expression <|-- javaMM_Assignment
+Expression <|-- javaMM_BooleanLiteral
+Expression <|-- javaMM_CastExpression
+Expression <|-- javaMM_CharacterLiteral
+Expression <|-- javaMM_ClassInstanceCreation
+Expression <|-- javaMM_ConditionalExpression
+Expression <|-- javaMM_FieldAccess
+Expression <|-- javaMM_InfixExpression
+Expression <|-- javaMM_InstanceofExpression
+Expression <|-- javaMM_MethodInvocation
+Expression <|-- javaMM_NullLiteral
+Expression <|-- javaMM_NumberLiteral
+Expression <|-- javaMM_ParenthesizedExpression
+Expression <|-- javaMM_PostfixExpression
+Expression <|-- javaMM_PrefixExpression
+Expression <|-- javaMM_SingleVariableAccess
+Expression <|-- javaMM_StringLiteral
+Expression <|-- javaMM_TypeAccess
+Expression <|-- javaMM_TypeLiteral
+Expression <|-- javaMM_UnresolvedItemAccess
+Expression <|-- javaMM_VariableDeclarationExpression
+InterfaceDeclaration <|-- javaMM_UnresolvedInterfaceDeclaration
+LabeledStatement <|-- javaMM_UnresolvedLabeledStatement
+MethodDeclaration <|-- javaMM_UnresolvedMethodDeclaration
+NamedElement <|-- javaMM_AnnotationMemberValuePair
+NamedElement <|-- javaMM_Archive
+NamedElement <|-- javaMM_BodyDeclaration
+NamedElement <|-- javaMM_ClassFile
+NamedElement <|-- javaMM_CompilationUnit
+NamedElement <|-- javaMM_LabeledStatement
+NamedElement <|-- javaMM_Package
+NamedElement <|-- javaMM_Type
+NamedElement <|-- javaMM_UnresolvedItem
+NamedElement <|-- javaMM_VariableDeclaration
+NamespaceAccess <|-- javaMM_PackageAccess
+NamespaceAccess <|-- javaMM_TypeAccess
+NamespaceAccess <|-- javaMM_UnresolvedItemAccess
+PrimitiveType <|-- javaMM_PrimitiveTypeBoolean
+PrimitiveType <|-- javaMM_PrimitiveTypeByte
+PrimitiveType <|-- javaMM_PrimitiveTypeChar
+PrimitiveType <|-- javaMM_PrimitiveTypeDouble
+PrimitiveType <|-- javaMM_PrimitiveTypeFloat
+PrimitiveType <|-- javaMM_PrimitiveTypeInt
+PrimitiveType <|-- javaMM_PrimitiveTypeLong
+PrimitiveType <|-- javaMM_PrimitiveTypeShort
+PrimitiveType <|-- javaMM_PrimitiveTypeVoid
+SingleVariableDeclaration <|-- javaMM_UnresolvedSingleVariableDeclaration
+Statement <|-- javaMM_AssertStatement
+Statement <|-- javaMM_Block
+Statement <|-- javaMM_BreakStatement
+Statement <|-- javaMM_CatchClause
+Statement <|-- javaMM_ConstructorInvocation
+Statement <|-- javaMM_ContinueStatement
+Statement <|-- javaMM_DoStatement
+Statement <|-- javaMM_EmptyStatement
+Statement <|-- javaMM_EnhancedForStatement
+Statement <|-- javaMM_ExpressionStatement
+Statement <|-- javaMM_ForStatement
+Statement <|-- javaMM_IfStatement
+Statement <|-- javaMM_LabeledStatement
+Statement <|-- javaMM_ReturnStatement
+Statement <|-- javaMM_SuperConstructorInvocation
+Statement <|-- javaMM_SwitchCase
+Statement <|-- javaMM_SwitchStatement
+Statement <|-- javaMM_SynchronizedStatement
+Statement <|-- javaMM_ThrowStatement
+Statement <|-- javaMM_TryStatement
+Statement <|-- javaMM_TypeDeclarationStatement
+Statement <|-- javaMM_VariableDeclarationStatement
+Statement <|-- javaMM_WhileStatement
+Type <|-- javaMM_AbstractTypeDeclaration
+Type <|-- javaMM_ArrayType
+Type <|-- javaMM_ParameterizedType
+Type <|-- javaMM_PrimitiveType
+Type <|-- javaMM_TypeParameter
+Type <|-- javaMM_UnresolvedType
+Type <|-- javaMM_WildCardType
+TypeDeclaration <|-- javaMM_ClassDeclaration
+TypeDeclaration <|-- javaMM_InterfaceDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedAnnotationDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedAnnotationTypeMemberDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedClassDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedEnumDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedInterfaceDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedLabeledStatement
+UnresolvedItem <|-- javaMM_UnresolvedMethodDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedSingleVariableDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedType
+UnresolvedItem <|-- javaMM_UnresolvedTypeDeclaration
+UnresolvedItem <|-- javaMM_UnresolvedVariableDeclarationFragment
+VariableDeclaration <|-- javaMM_EnumConstantDeclaration
+VariableDeclaration <|-- javaMM_SingleVariableDeclaration
+VariableDeclaration <|-- javaMM_VariableDeclarationFragment
+VariableDeclarationFragment <|-- javaMM_UnresolvedVariableDeclarationFragment
+javaMM_AbstractTypeDeclaration "0..1" -- "1..1" javaMM_BodyDeclaration : abstractTypeDeclaration85
+javaMM_Annotation "0..9999" --* "1..1" javaMM_SingleVariableDeclaration : annotations297
+javaMM_Annotation "0..9999" --* "1..1" javaMM_VariableDeclarationExpression : annotations356
+javaMM_Annotation "0..9999" --* "1..1" javaMM_VariableDeclarationStatement : annotations361
+javaMM_Annotation "0..9999" --* "1..1" javaMM_BodyDeclaration : annotations86
+javaMM_AnonymousClassDeclaration "0..1" --* "1..1" javaMM_ClassInstanceCreation : anonymousClassDeclaration111
+javaMM_AnonymousClassDeclaration "0..1" --* "1..1" javaMM_EnumConstantDeclaration : anonymousClassDeclaration153
+javaMM_AnonymousClassDeclaration "0..1" -- "1..1" javaMM_BodyDeclaration : anonymousClassDeclarationOwner88
+javaMM_Archive "0..9999" --* "1..1" javaMM_Model : archives246
+javaMM_AbstractMethodInvocation "1..1" *-- "0..9999" javaMM_Expression : arguments10
+javaMM_EnumConstantDeclaration "1..1" *-- "0..9999" javaMM_Expression : arguments154
+javaMM_ArrayAccess "1..1" *-- "0..1" javaMM_Expression : array61
+javaMM_ArrayLengthAccess "1..1" *-- "0..1" javaMM_Expression : array76
+javaMM_ClassFile "1..1" -- "0..1" javaMM_CompilationUnit : attachedSource106
+javaMM_ManifestAttribute "0..9999" --* "1..1" javaMM_ManifestEntry : attributes210
+javaMM_AbstractMethodDeclaration "1..1" *-- "0..1" javaMM_Block : body0
+javaMM_Block "0..1" --* "1..1" javaMM_CatchClause : body101
+javaMM_DoStatement "1..1" *-- "0..1" javaMM_Statement : body143
+javaMM_EnhancedForStatement "1..1" *-- "0..1" javaMM_Statement : body146
+javaMM_ForStatement "1..1" *-- "0..1" javaMM_Statement : body173
+javaMM_Block "0..1" --* "1..1" javaMM_Initializer : body193
+javaMM_LabeledStatement "1..1" *-- "0..1" javaMM_Statement : body201
+javaMM_Block "0..1" --* "1..1" javaMM_SynchronizedStatement : body315
+javaMM_Block "0..1" --* "1..1" javaMM_TryStatement : body325
+javaMM_Statement "0..1" --* "1..1" javaMM_WhileStatement : body367
+javaMM_BodyDeclaration "0..1" -- "1..1" javaMM_Modifier : bodyDeclaration249
+javaMM_AbstractTypeDeclaration "1..1" *-- "0..9999" javaMM_BodyDeclaration : bodyDeclarations14
+javaMM_AnonymousClassDeclaration "1..1" *-- "0..9999" javaMM_BodyDeclaration : bodyDeclarations58
+javaMM_TypeAccess "0..1" --* "1..1" javaMM_WildCardType : bound363
+javaMM_TypeAccess "0..9999" --* "1..1" javaMM_TypeParameter : bounds343
+javaMM_CatchClause "0..1" -- "1..1" javaMM_SingleVariableDeclaration : catchClause302
+javaMM_CatchClause "0..9999" --* "1..1" javaMM_TryStatement : catchClauses330
+javaMM_ClassFile "0..9999" --* "1..1" javaMM_Model : classFiles243
+javaMM_Archive "1..1" *-- "0..9999" javaMM_ClassFile : classFiles32
+javaMM_AnonymousClassDeclaration "1..1" -- "0..1" javaMM_ClassInstanceCreation : classInstanceCreation60
+javaMM_Comment "0..9999" -- "1..1" javaMM_CompilationUnit : commentList128
+javaMM_ASTNode "1..1" *-- "0..9999" javaMM_Comment : comments40
+javaMM_AbstractTypeDeclaration "1..1" *-- "0..9999" javaMM_Comment : commentsAfterBody16
+javaMM_AbstractTypeDeclaration "1..1" *-- "0..9999" javaMM_Comment : commentsBeforeBody15
+javaMM_CompilationUnit "0..9999" --* "1..1" javaMM_Model : compilationUnits240
+javaMM_AbstractTypeDeclaration "0..1" --* "1..1" javaMM_TypeDeclarationStatement : declaration339
+javaMM_AnnotationTypeMemberDeclaration "1..1" *-- "0..1" javaMM_Expression : default52
+javaMM_ArrayCreation "1..1" *-- "0..9999" javaMM_Expression : dimensions66
+javaMM_UnresolvedItem "0..1" -- "1..1" javaMM_UnresolvedItemAccess : element346
+javaMM_ArrayType "1..1" *-- "0..1" javaMM_TypeAccess : elementType78
+javaMM_ConditionalExpression "1..1" *-- "0..1" javaMM_Expression : elseExpression118
+javaMM_IfStatement "1..1" *-- "0..1" javaMM_Statement : elseStatement181
+javaMM_EnhancedForStatement "0..1" -- "1..1" javaMM_SingleVariableDeclaration : enhancedForStatement303
+javaMM_Manifest "1..1" *-- "0..9999" javaMM_ManifestEntry : entryAttributes208
+javaMM_EnumConstantDeclaration "0..9999" --* "1..1" javaMM_EnumDeclaration : enumConstants157
+javaMM_CatchClause "1..1" *-- "0..1" javaMM_SingleVariableDeclaration : exception99
+javaMM_ClassInstanceCreation "1..1" *-- "0..1" javaMM_Expression : expression113
+javaMM_ConditionalExpression "1..1" *-- "0..1" javaMM_Expression : expression120
+javaMM_DoStatement "1..1" *-- "0..1" javaMM_Expression : expression141
+javaMM_EnhancedForStatement "1..1" *-- "0..1" javaMM_Expression : expression148
+javaMM_Expression "0..1" --* "1..1" javaMM_ExpressionStatement : expression159
+javaMM_Expression "0..1" --* "1..1" javaMM_FieldAccess : expression162
+javaMM_Expression "0..1" --* "1..1" javaMM_ForStatement : expression165
+javaMM_Expression "0..1" --* "1..1" javaMM_IfStatement : expression176
+javaMM_Expression "0..1" --* "1..1" javaMM_MethodInvocation : expression224
+javaMM_Expression "0..1" --* "1..1" javaMM_ParenthesizedExpression : expression281
+javaMM_Expression "0..1" --* "1..1" javaMM_ReturnStatement : expression287
+javaMM_Expression "0..1" --* "1..1" javaMM_SuperConstructorInvocation : expression304
+javaMM_Expression "0..1" --* "1..1" javaMM_SwitchCase : expression308
+javaMM_Expression "0..1" --* "1..1" javaMM_SwitchStatement : expression310
+javaMM_Expression "0..1" --* "1..1" javaMM_SynchronizedStatement : expression317
+javaMM_Expression "0..1" --* "1..1" javaMM_ThrowStatement : expression323
+javaMM_Expression "0..1" --* "1..1" javaMM_WhileStatement : expression365
+javaMM_AssertStatement "1..1" *-- "0..1" javaMM_Expression : expression37
+javaMM_CastExpression "1..1" *-- "0..1" javaMM_Expression : expression94
+javaMM_ArrayInitializer "1..1" *-- "0..9999" javaMM_Expression : expressions73
+javaMM_Expression "0..9999" --* "1..1" javaMM_InfixExpression : extendedOperands190
+javaMM_FieldAccess "1..1" *-- "0..1" javaMM_SingleVariableAccess : field161
+javaMM_SingleVariableAccess "0..1" --* "1..1" javaMM_SuperFieldAccess : field306
+javaMM_Block "0..1" --* "1..1" javaMM_TryStatement : finally_327
+javaMM_AbstractVariablesContainer "1..1" *-- "0..9999" javaMM_VariableDeclarationFragment : fragments27
+javaMM_ASTNode "0..9999" --* "1..1" javaMM_TagElement : fragments320
+javaMM_ImportDeclaration "1..1" -- "0..1" javaMM_NamedElement : importedElement184
+javaMM_CompilationUnit "1..1" *-- "0..9999" javaMM_ImportDeclaration : imports131
+javaMM_ArrayAccess "1..1" *-- "0..1" javaMM_Expression : index63
+javaMM_Expression "0..1" --* "1..1" javaMM_VariableDeclaration : initializer351
+javaMM_ArrayCreation "1..1" *-- "0..1" javaMM_ArrayInitializer : initializer68
+javaMM_Expression "0..9999" --* "1..1" javaMM_ForStatement : initializers170
+javaMM_ContinueStatement "1..1" -- "0..1" javaMM_LabeledStatement : label139
+javaMM_BreakStatement "1..1" -- "0..1" javaMM_LabeledStatement : label93
+javaMM_Assignment "1..1" *-- "0..1" javaMM_Expression : leftHandSide80
+javaMM_Expression "0..1" --* "1..1" javaMM_InfixExpression : leftOperand187
+javaMM_Expression "0..1" --* "1..1" javaMM_InstanceofExpression : leftOperand197
+javaMM_Manifest "1..1" *-- "0..9999" javaMM_ManifestAttribute : mainAttributes206
+javaMM_Archive "1..1" *-- "0..1" javaMM_Manifest : manifest33
+javaMM_MemberRef "1..1" -- "0..1" javaMM_NamedElement : member213
+javaMM_AnnotationMemberValuePair "1..1" -- "0..1" javaMM_AnnotationTypeMemberDeclaration : member47
+javaMM_AssertStatement "1..1" *-- "0..1" javaMM_Expression : message35
+javaMM_AbstractMethodDeclaration "0..1" -- "1..1" javaMM_MethodRef : method226
+javaMM_AbstractMethodDeclaration "0..1" -- "1..1" javaMM_AbstractMethodInvocation : method9
+javaMM_AbstractMethodDeclaration "0..1" -- "1..1" javaMM_SingleVariableDeclaration : methodDeclaration300
+javaMM_Model "0..1" -- "1..1" javaMM_Package : model261
+javaMM_Modifier "0..1" --* "1..1" javaMM_SingleVariableDeclaration : modifier293
+javaMM_Modifier "0..1" --* "1..1" javaMM_VariableDeclarationExpression : modifier354
+javaMM_Modifier "0..1" --* "1..1" javaMM_VariableDeclarationStatement : modifier359
+javaMM_BodyDeclaration "1..1" *-- "0..1" javaMM_Modifier : modifier90
+javaMM_Expression "0..1" --* "1..1" javaMM_PostfixExpression : operand283
+javaMM_Expression "0..1" --* "1..1" javaMM_PrefixExpression : operand285
+javaMM_ASTNode "1..1" -- "0..1" javaMM_ClassFile : originalClassFile44
+javaMM_ASTNode "1..1" -- "0..1" javaMM_CompilationUnit : originalCompilationUnit42
+javaMM_Model "1..1" *-- "0..9999" javaMM_Type : orphanTypes237
+javaMM_Model "1..1" *-- "0..9999" javaMM_Package : ownedElements235
+javaMM_AbstractTypeDeclaration "0..9999" --* "1..1" javaMM_Package : ownedElements259
+javaMM_Package "1..1" *-- "0..9999" javaMM_Package : ownedPackages264
+javaMM_ClassFile "1..1" -- "0..1" javaMM_Package : package109
+javaMM_CompilationUnit "1..1" -- "0..1" javaMM_Package : package133
+javaMM_AbstractTypeDeclaration "1..1" -- "0..1" javaMM_Package : package19
+javaMM_Package "1..1" -- "0..1" javaMM_Package : package268
+javaMM_Package "0..1" -- "1..1" javaMM_PackageAccess : package272
+javaMM_EnhancedForStatement "1..1" *-- "0..1" javaMM_SingleVariableDeclaration : parameter151
+javaMM_AbstractMethodDeclaration "1..1" *-- "0..9999" javaMM_SingleVariableDeclaration : parameters1
+javaMM_MethodRef "1..1" *-- "0..9999" javaMM_MethodRefParameter : parameters230
+javaMM_MemberRef "1..1" *-- "0..1" javaMM_TypeAccess : qualifier214
+javaMM_MethodRef "1..1" *-- "0..1" javaMM_TypeAccess : qualifier228
+javaMM_AbstractTypeQualifiedExpression "1..1" *-- "0..1" javaMM_TypeAccess : qualifier23
+javaMM_PackageAccess "1..1" *-- "0..1" javaMM_PackageAccess : qualifier275
+javaMM_Expression "0..1" --* "1..1" javaMM_SingleVariableAccess : qualifier290
+javaMM_NamespaceAccess "0..1" --* "1..1" javaMM_TypeAccess : qualifier335
+javaMM_ASTNode "0..1" --* "1..1" javaMM_UnresolvedItemAccess : qualifier348
+javaMM_MethodDeclaration "1..1" -- "0..1" javaMM_MethodDeclaration : redefinedMethodDeclaration220
+javaMM_MethodDeclaration "1..1" -- "0..9999" javaMM_MethodDeclaration : redefinitions222
+javaMM_MethodDeclaration "1..1" *-- "0..1" javaMM_TypeAccess : returnType217
+javaMM_Assignment "1..1" *-- "0..1" javaMM_Expression : rightHandSide82
+javaMM_Expression "0..1" --* "1..1" javaMM_InfixExpression : rightOperand185
+javaMM_InstanceofExpression "1..1" *-- "0..1" javaMM_TypeAccess : rightOperand195
+javaMM_Modifier "1..1" -- "0..1" javaMM_SingleVariableDeclaration : singleVariableDeclaration251
+javaMM_Statement "0..9999" --* "1..1" javaMM_SwitchStatement : statements312
+javaMM_Block "1..1" *-- "0..9999" javaMM_Statement : statements91
+javaMM_ClassDeclaration "1..1" *-- "0..1" javaMM_TypeAccess : superClass126
+javaMM_AbstractTypeDeclaration "1..1" *-- "0..9999" javaMM_TypeAccess : superInterfaces20
+javaMM_Javadoc "1..1" *-- "0..9999" javaMM_TagElement : tags200
+javaMM_ConditionalExpression "1..1" *-- "0..1" javaMM_Expression : thenExpression123
+javaMM_IfStatement "1..1" *-- "0..1" javaMM_Statement : thenStatement178
+javaMM_AbstractMethodDeclaration "1..1" *-- "0..9999" javaMM_TypeAccess : thrownExceptions2
+javaMM_AbstractTypeDeclaration "0..1" -- "1..1" javaMM_ClassFile : type103
+javaMM_ClassInstanceCreation "1..1" *-- "0..1" javaMM_TypeAccess : type115
+javaMM_MethodRefParameter "1..1" *-- "0..1" javaMM_TypeAccess : type232
+javaMM_AbstractVariablesContainer "1..1" *-- "0..1" javaMM_TypeAccess : type25
+javaMM_ParameterizedType "1..1" *-- "0..1" javaMM_TypeAccess : type276
+javaMM_Annotation "1..1" *-- "0..1" javaMM_TypeAccess : type28
+javaMM_SingleVariableDeclaration "1..1" *-- "0..1" javaMM_TypeAccess : type295
+javaMM_Type "0..1" -- "1..1" javaMM_TypeAccess : type334
+javaMM_TypeAccess "0..1" --* "1..1" javaMM_TypeLiteral : type341
+javaMM_AnnotationTypeMemberDeclaration "1..1" *-- "0..1" javaMM_TypeAccess : type54
+javaMM_ArrayCreation "1..1" *-- "0..1" javaMM_TypeAccess : type70
+javaMM_CastExpression "1..1" *-- "0..1" javaMM_TypeAccess : type96
+javaMM_AbstractMethodInvocation "1..1" *-- "0..9999" javaMM_TypeAccess : typeArguments11
+javaMM_ParameterizedType "1..1" *-- "0..9999" javaMM_TypeAccess : typeArguments278
+javaMM_TypeDeclaration "1..1" *-- "0..9999" javaMM_TypeParameter : typeParameters337
+javaMM_AbstractMethodDeclaration "1..1" *-- "0..9999" javaMM_TypeParameter : typeParameters4
+javaMM_AbstractTypeDeclaration "0..9999" -- "1..1" javaMM_CompilationUnit : types136
+javaMM_Model "1..1" *-- "0..9999" javaMM_UnresolvedItem : unresolvedItems238
+javaMM_Expression "0..9999" --* "1..1" javaMM_ForStatement : updaters167
+javaMM_SingleVariableAccess "0..9999" -- "1..1" javaMM_VariableDeclaration : usageInVariableAccess353
+javaMM_AnnotationMemberValuePair "0..9999" -- "1..1" javaMM_AnnotationTypeMemberDeclaration : usages57
+javaMM_AbstractMethodDeclaration "1..1" -- "0..9999" javaMM_AbstractMethodInvocation : usages7
+javaMM_BreakStatement "0..9999" -- "1..1" javaMM_LabeledStatement : usagesInBreakStatements203
+javaMM_ContinueStatement "0..9999" -- "1..1" javaMM_LabeledStatement : usagesInContinueStatements204
+javaMM_AbstractMethodDeclaration "1..1" -- "0..9999" javaMM_MethodRef : usagesInDocComments6
+javaMM_ImportDeclaration "0..9999" -- "1..1" javaMM_NamedElement : usagesInImports258
+javaMM_Package "1..1" -- "0..9999" javaMM_PackageAccess : usagesInPackageAccess270
+javaMM_Type "1..1" -- "0..9999" javaMM_TypeAccess : usagesInTypeAccess333
+javaMM_AnnotationMemberValuePair "1..1" *-- "0..1" javaMM_Expression : value49
+javaMM_Annotation "1..1" *-- "0..9999" javaMM_AnnotationMemberValuePair : values30
+javaMM_SingleVariableAccess "1..1" -- "0..1" javaMM_VariableDeclaration : variable289
+javaMM_Modifier "1..1" -- "0..1" javaMM_VariableDeclarationExpression : variableDeclarationExpression256
+javaMM_Modifier "1..1" -- "0..1" javaMM_VariableDeclarationStatement : variableDeclarationStatement254
+javaMM_AbstractVariablesContainer "0..1" -- "1..1" javaMM_VariableDeclarationFragment : variablesContainer358
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+class Node {
+}
+class Transition {
+}
+class state_Condition {
+  + expression : str
+}
+class state_ConditionalNode {
+}
+class state_FinalNode {
+}
+class state_InitialNode {
+}
+class state_Module {
+}
+abstract class state_Node {
+}
+class state_State {
+  + duration : str
+  + name : str
+}
+class state_StateMachine {
+  + name : str
+}
+class state_TimeoutTransition {
+}
+class state_Transition {
+  + triggerEventName : str
+}
+Node <|-- state_ConditionalNode
+Node <|-- state_FinalNode
+Node <|-- state_InitialNode
+Node <|-- state_State
+Transition <|-- state_TimeoutTransition
+state_Condition "0..1" --* "1..1" state_ConditionalNode : condition12
+state_Condition "0..1" --* "1..1" state_Transition : guard10
+state_Node "1..1" -- "0..9999" state_Transition : incoming0
+state_Module "0..1" -- "1..1" state_StateMachine : module19
+state_Node "0..9999" --* "1..1" state_StateMachine : nodes14
+state_Node "1..1" -- "0..9999" state_Transition : outgoing1
+state_Node "0..1" -- "1..1" state_Transition : source4
+state_Node "0..1" -- "1..1" state_Transition : target7
+state_StateMachine "1..1" *-- "0..9999" state_Transition : transitions16
+@enduml

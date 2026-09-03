@@ -1,0 +1,24 @@
+@startuml
+class DAG_Edge {
+  + ID : int
+  + name : str
+}
+class DAG_Graph {
+  + name : str
+}
+class DAG_Node {
+  + ID : int
+  + level : int
+  + name : str
+}
+class DAG_Revision {
+}
+DAG_Node "1..1" -- "0..9999" DAG_Node : children4
+DAG_Edge "1..1" -- "0..1" DAG_Node : from_11
+DAG_Edge "0..9999" -- "1..1" DAG_Node : incoming7
+DAG_Graph "1..1" *-- "0..9999" DAG_Node : nodes0
+DAG_Edge "0..9999" -- "1..1" DAG_Node : outgoing6
+DAG_Node "1..1" -- "0..9999" DAG_Node : parents2
+DAG_Node "1..1" -- "0..1" DAG_Revision : revision9
+DAG_Edge "1..1" -- "0..1" DAG_Node : to13
+@enduml

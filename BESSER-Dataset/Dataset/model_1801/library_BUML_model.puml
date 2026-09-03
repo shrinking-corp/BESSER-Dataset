@@ -1,0 +1,211 @@
+@startuml
+class Base {
+}
+class BaseExpressionResult {
+}
+class BaseResource {
+}
+class Company {
+}
+class Component {
+}
+enum LevelKind {
+  AMBER
+  GREEN
+  RED
+  YELLOW
+}
+enum RangeKind {
+  CAP
+  DERIVED
+  FORECAST
+  FORECASTCAP
+  METRIC
+  METRICREMOVE
+  TOLERANCE
+  TRENDED
+  UTILIZATION
+}
+enum RedundancyType {
+  _11
+  n
+  n1
+}
+enum StateType {
+  ACTIVE
+  DEFECT
+  IDLE
+  RESERVED
+  STANDBY
+}
+class library_BaseExpressionResult {
+}
+class library_BaseResource {
+  + detailDisplay : str
+  + expressionName : str
+  + longName : str
+  + shortName : str
+  + summaryDisplay : str
+}
+class library_Component {
+  + description : str
+  + duration : str
+  + name : str
+}
+class library_DiagramInfo {
+}
+class library_EObject {
+}
+class library_Equipment {
+  + count : str
+  + equipmentCode : str
+  + position : str
+  + redundancy : str
+  + state : str
+}
+class library_EquipmentGroup {
+  + count : str
+  + description : str
+  + name : str
+}
+class library_EquipmentRelationship {
+}
+class library_Expression {
+  + expressionLines : str
+  + name : str
+}
+class library_ExpressionResult {
+  + targetIntervalHint : str
+  + targetKindHint : str
+  + targetRange : str
+}
+class library_Function {
+}
+class library_FunctionRelationship {
+}
+class library_LastEvaluationExpressionResult {
+  + lastEvalResult : str
+}
+class library_Library {
+  + name : str
+  + protocols : str
+}
+class library_Lifecycle {
+}
+class library_Meta {
+}
+class library_Metric {
+}
+class library_MetricSource {
+}
+class library_MetricValueRange {
+}
+class library_MultiImage {
+}
+class library_NetXResource {
+}
+class library_NodeType {
+  + leafNode : str
+  + name : str
+}
+class library_Parameter {
+  + description : str
+  + expressionName : str
+  + modifiable : str
+  + name : str
+  + value : str
+}
+class library_ProductInfo {
+  + availableDate : str
+  + endOfSalesDate : str
+  + endOfSupportDate : str
+  + productCode : str
+  + salesCode : str
+  + underDevelopmentDate : str
+}
+class library_Protocol {
+}
+class library_Tolerance {
+  + level : str
+  + name : str
+}
+class library_Unit {
+  + code : str
+  + description : str
+  + name : str
+}
+class library_Value {
+}
+class library_Vendor {
+}
+Base <|-- library_BaseResource
+Base <|-- library_Component
+Base <|-- library_EquipmentGroup
+Base <|-- library_Expression
+Base <|-- library_NodeType
+Base <|-- library_Parameter
+Base <|-- library_ProductInfo
+Base <|-- library_Tolerance
+Base <|-- library_Unit
+BaseExpressionResult <|-- library_ExpressionResult
+BaseExpressionResult <|-- library_LastEvaluationExpressionResult
+BaseResource <|-- library_NetXResource
+Company <|-- library_Vendor
+Component <|-- library_Equipment
+Component <|-- library_Function
+library_EquipmentGroup "1..1" -- "0..9999" library_NetXResource : allEquipmentResources46
+library_Equipment "0..9999" -- "1..1" library_Equipment : allEquipments29
+library_Equipment "0..9999" -- "1..1" library_EquipmentGroup : allEquipments49
+library_Function "0..9999" -- "1..1" library_Function : allFunctions63
+library_Component "1..1" -- "0..9999" library_NetXResource : allResources16
+library_Component "1..1" -- "0..1" library_Expression : capacityExpressionRef5
+library_NetXResource "1..1" *-- "0..9999" library_Value : capacityValues97
+library_Component "1..1" -- "1..1" library_NetXResource : componentRef91
+library_Component "1..1" *-- "0..9999" library_DiagramInfo : diagrams18
+library_DiagramInfo "0..9999" --* "1..1" library_EquipmentGroup : diagrams31
+library_EquipmentGroup "1..1" *-- "0..9999" library_NetXResource : equipmentGroupResources34
+library_Equipment "1..1" *-- "0..9999" library_EquipmentGroup : equipmentGroups24
+library_Equipment "0..9999" -- "1..1" library_ProductInfo : equipmentRef118
+library_Equipment "0..9999" -- "1..1" library_EquipmentGroup : equipmentRefs40
+library_Equipment "1..1" -- "0..9999" library_EquipmentRelationship : equipmentRelationshipRefs26
+library_Equipment "0..9999" --* "1..1" library_NodeType : equipments115
+library_Equipment "1..1" *-- "0..9999" library_Equipment : equipments23
+library_Equipment "0..9999" --* "1..1" library_Library : equipments69
+library_EObject "0..1" -- "1..1" library_Expression : evaluationObject52
+library_Expression "0..1" -- "1..1" library_Tolerance : expressionRef126
+library_EquipmentGroup "1..1" -- "0..9999" library_Expression : expressionRefs37
+library_Expression "0..9999" --* "1..1" library_Library : expressions83
+library_NetXResource "1..1" *-- "0..9999" library_Value : forecastCapacityValues103
+library_NetXResource "1..1" *-- "0..9999" library_Value : forecastValues106
+library_Function "1..1" -- "0..9999" library_FunctionRelationship : functionRelationshipRefs60
+library_Function "0..9999" --* "1..1" library_NodeType : functions112
+library_Function "1..1" *-- "0..9999" library_Function : functions59
+library_Function "0..9999" --* "1..1" library_Library : functions65
+library_MultiImage "0..1" --* "1..1" library_Unit : icons129
+library_Component "1..1" *-- "0..1" library_MultiImage : icons20
+library_Function "0..9999" -- "1..1" library_ProductInfo : licensedFunctionRef120
+library_Component "1..1" *-- "0..1" library_Lifecycle : lifecycle1
+library_Metric "0..1" -- "1..1" library_NetXResource : metricRef92
+library_Component "1..1" -- "0..9999" library_Metric : metricRefs3
+library_Library "1..1" *-- "0..9999" library_MetricSource : metricSources75
+library_MetricValueRange "0..9999" --* "1..1" library_NetXResource : metricValueRanges95
+library_Library "1..1" *-- "0..9999" library_Metric : metrics72
+library_NodeType "0..9999" -- "1..1" library_ProductInfo : nodeTypeRef123
+library_Library "1..1" *-- "0..9999" library_NodeType : nodeTypes67
+library_Component "1..1" -- "0..9999" library_Parameter : parameterRefs14
+library_EquipmentGroup "1..1" -- "0..9999" library_Parameter : parameterRefs43
+library_Library "1..1" *-- "0..9999" library_Parameter : parameters77
+library_ProductInfo "0..9999" --* "1..1" library_Vendor : products132
+library_Component "1..1" -- "0..9999" library_Protocol : protocolRefs12
+library_Component "1..1" -- "0..9999" library_NetXResource : resourceRefs2
+library_BaseResource "0..1" -- "1..1" library_ExpressionResult : targetResource54
+library_ExpressionResult "1..1" *-- "0..9999" library_Value : targetValues56
+library_Component "1..1" -- "0..9999" library_Tolerance : toleranceRefs10
+library_Library "1..1" *-- "0..9999" library_Tolerance : tolerances80
+library_NetXResource "1..1" *-- "0..9999" library_Value : trendedValues109
+library_BaseResource "1..1" -- "0..1" library_Unit : unitRef0
+library_Library "1..1" *-- "0..9999" library_Unit : units86
+library_Component "1..1" -- "0..1" library_Expression : utilizationExpressionRef7
+library_NetXResource "1..1" *-- "0..9999" library_Value : utilizationValues100
+library_Library "1..1" *-- "0..1" library_Meta : version89
+@enduml

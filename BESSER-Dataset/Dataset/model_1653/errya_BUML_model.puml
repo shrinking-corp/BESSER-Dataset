@@ -1,0 +1,25 @@
+@startuml
+class NamedElement {
+}
+class errya_Alias {
+  + id : str
+}
+abstract class errya_NamedElement {
+  + name : str
+}
+class errya_RelatedTo {
+  + since : str
+}
+class errya_Thing {
+  + id : int
+}
+class errya_World {
+}
+NamedElement <|-- errya_RelatedTo
+NamedElement <|-- errya_Thing
+errya_Alias "0..9999" --* "1..1" errya_NamedElement : aliases2
+errya_RelatedTo "1..1" -- "0..1" errya_Thing : fromThing3
+errya_RelatedTo "0..9999" --* "1..1" errya_Thing : relations1
+errya_Thing "0..9999" --* "1..1" errya_World : things0
+errya_RelatedTo "1..1" -- "0..1" errya_Thing : toThing4
+@enduml

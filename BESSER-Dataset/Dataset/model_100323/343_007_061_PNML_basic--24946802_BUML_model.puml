@@ -1,0 +1,243 @@
+@startuml
+enum AlignType {
+  atcenter
+  atleft
+  atright
+}
+class AnnotationGraphics {
+}
+class AnyElement {
+}
+class Arc {
+}
+class Color {
+}
+class Coordinate {
+}
+enum DecorationType {
+  dtlinethrough
+  dtoverligne
+  dtunderligne
+}
+class Dimension {
+}
+class EdgeGraphics {
+}
+class Fill {
+}
+class Font {
+}
+class Graphics {
+}
+class IdedElement {
+}
+class InitialMarking {
+}
+class Inscription {
+}
+class Label {
+}
+class LabeledElement {
+}
+class Line {
+}
+class Name {
+}
+class NetContent {
+}
+class NetContentElement {
+}
+class NetElement {
+}
+class NetGraphics {
+}
+class Node {
+}
+class NodeGraphics {
+}
+class Offset {
+}
+class PNMLDocument {
+}
+class PNML_AnnotationGraphics {
+}
+class PNML_AnyElement {
+  + name : str
+  + text : str
+}
+class PNML_Arc {
+}
+class PNML_Color {
+}
+abstract class PNML_Coordinate {
+  + x : str
+  + y : str
+}
+class PNML_Dimension {
+  + height : str
+  + width : str
+}
+class PNML_EdgeGraphics {
+}
+class PNML_Fill {
+  + gradientrotation : str
+}
+class PNML_Font {
+  + align : str
+  + decoration : str
+  + family : str
+  + rotation : str
+  + size : str
+  + style : str
+  + weight : str
+}
+abstract class PNML_Graphics {
+}
+abstract class PNML_IdedElement {
+  + id : str
+}
+class PNML_InitialMarking {
+}
+class PNML_Inscription {
+}
+class PNML_Label {
+  + text : str
+}
+abstract class PNML_LabeledElement {
+}
+class PNML_Line {
+  + shape : str
+  + style : str
+  + width : str
+}
+class PNML_Name {
+}
+abstract class PNML_NetContent {
+}
+abstract class PNML_NetContentElement {
+}
+class PNML_NetElement {
+}
+class PNML_NetGraphics {
+}
+class PNML_Node {
+}
+class PNML_NodeGraphics {
+}
+class PNML_Offset {
+}
+class PNML_PNMLDocument {
+}
+class PNML_Place {
+}
+class PNML_Position {
+}
+class PNML_ToolSpecific {
+  + tool : str
+  + version : str
+}
+class PNML_Transition {
+}
+class PNML_URI {
+  + value : str
+}
+class Place {
+}
+class Position {
+}
+enum RotationType {
+  rtdiagonal
+  rthorizontal
+  rtvertical
+}
+enum ShapeType {
+  shtcurve
+  shtline
+}
+enum StyleType {
+  sttdash
+  sttdot
+  sttsolid
+}
+class ToolSpecific {
+}
+class URI {
+}
+Coordinate <|-- PNML_Offset
+Coordinate <|-- PNML_Position
+Graphics <|-- PNML_AnnotationGraphics
+Graphics <|-- PNML_EdgeGraphics
+Graphics <|-- PNML_NetGraphics
+Graphics <|-- PNML_NodeGraphics
+IdedElement <|-- PNML_Arc
+IdedElement <|-- PNML_NetElement
+IdedElement <|-- PNML_Node
+LabeledElement <|-- PNML_InitialMarking
+LabeledElement <|-- PNML_Inscription
+LabeledElement <|-- PNML_Name
+NetContent <|-- PNML_Arc
+NetContent <|-- PNML_NetContentElement
+NetContentElement <|-- PNML_Place
+NetContentElement <|-- PNML_Transition
+AnnotationGraphics "0..1" -- "1..1" PNML_Fill : annotationgraphics111
+AnnotationGraphics "0..1" -- "1..1" PNML_Line : annotationgraphics121
+AnnotationGraphics "1..1" -- "1..1" PNML_Font : annotationgraphics124
+AnnotationGraphics "0..1" --* "1..1" PNML_LabeledElement : annotationgraphics24
+AnnotationGraphics "1..1" -- "1..1" PNML_Offset : annotationgraphics95
+AnyElement "0..9999" --* "1..1" PNML_ToolSpecific : anyelement16
+Arc "0..1" -- "1..1" PNML_ToolSpecific : arc19
+Arc "1..1" -- "1..1" PNML_Inscription : arc32
+Arc "1..1" -- "1..1" PNML_EdgeGraphics : arc67
+Color "0..1" --* "1..1" PNML_Line : color114
+NetContent "0..9999" --* "1..1" PNML_NetElement : contents5
+Dimension "0..1" --* "1..1" PNML_NodeGraphics : dimension61
+PNMLDocument "1..1" -- "1..1" PNML_NetElement : document4
+EdgeGraphics "0..1" -- "1..1" PNML_Fill : edgegraphics108
+EdgeGraphics "0..1" -- "1..1" PNML_Line : edgegraphics118
+EdgeGraphics "0..1" --* "1..1" PNML_Arc : edgegraphics43
+EdgeGraphics "0..1" -- "1..1" PNML_Position : edgegraphics92
+Fill "0..1" --* "1..1" PNML_NodeGraphics : fill63
+Fill "0..1" --* "1..1" PNML_EdgeGraphics : fill72
+Fill "0..1" --* "1..1" PNML_AnnotationGraphics : fill84
+Font "0..1" --* "1..1" PNML_AnnotationGraphics : font82
+Color "0..1" --* "1..1" PNML_Fill : gradientcolor100
+PNML_Fill "1..1" *-- "0..1" URI : image103
+InitialMarking "0..1" --* "1..1" PNML_Place : initialmarking54
+Inscription "0..1" --* "1..1" PNML_Arc : inscription45
+Color "0..1" --* "1..1" PNML_Fill : interiorcolor99
+Label "0..9999" --* "1..1" PNML_LabeledElement : labels23
+Line "0..1" --* "1..1" PNML_NodeGraphics : line65
+Line "0..1" --* "1..1" PNML_EdgeGraphics : line75
+Line "0..1" --* "1..1" PNML_AnnotationGraphics : line87
+Name "0..1" --* "1..1" PNML_NetElement : name10
+Name "0..1" --* "1..1" PNML_NetContent : name14
+LabeledElement "1..1" -- "1..1" PNML_Label : namedelement26
+LabeledElement "1..1" -- "1..1" PNML_AnnotationGraphics : namedelement78
+NetElement "1..1" -- "1..1" PNML_NetContent : net12
+NetElement "0..1" -- "1..1" PNML_ToolSpecific : net17
+NetElement "0..1" -- "1..1" PNML_Name : net27
+NetElement "1..1" -- "1..1" PNML_NetGraphics : net55
+NetContent "0..1" -- "1..1" PNML_Name : netcontent29
+NetContentElement "1..1" --* "1..1" PNML_Node : netcontentelement47
+NetGraphics "0..1" --* "1..1" PNML_NetElement : netgraphics8
+NetElement "1..9999" --* "1..1" PNML_PNMLDocument : nets1
+Node "0..1" -- "1..1" PNML_ToolSpecific : node21
+Node "1..1" --* "1..1" PNML_NetContentElement : node35
+Node "1..1" -- "1..1" PNML_NodeGraphics : node57
+NodeGraphics "0..1" -- "1..1" PNML_Fill : nodegraphics106
+NodeGraphics "0..1" -- "1..1" PNML_Line : nodegraphics116
+NodeGraphics "0..1" --* "1..1" PNML_Node : nodegraphics52
+NodeGraphics "0..1" -- "1..1" PNML_Position : nodegraphics90
+NodeGraphics "1..1" -- "1..1" PNML_Dimension : nodegraphics97
+Offset "1..1" --* "1..1" PNML_AnnotationGraphics : offset80
+PNML_InitialMarking "1..1" -- "1..1" Place : place34
+PNML_NodeGraphics "1..1" *-- "1..1" Position : position59
+PNML_EdgeGraphics "1..1" *-- "0..9999" Position : position69
+NetContentElement "1..1" -- "1..1" PNML_Arc : source37
+NetContentElement "1..1" -- "1..1" PNML_Arc : target38
+PNML_Arc "1..1" *-- "0..9999" ToolSpecific : tools41
+PNML_Node "1..1" *-- "0..9999" ToolSpecific : tools49
+PNML_NetElement "1..1" *-- "0..9999" ToolSpecific : tools6
+PNML_NetElement "1..1" *-- "1..1" URI : type2
+PNML_PNMLDocument "1..1" *-- "1..1" URI : xmlns0
+@enduml

@@ -1,0 +1,144 @@
+@startuml
+enum ChoiceKind {
+  dynamic
+  static
+}
+class CompositeElement {
+}
+class Declaration {
+}
+class DocumentedElement {
+}
+enum EntryKind {
+  deepHistory
+  initial
+  shallowHistory
+}
+class NamedElement {
+}
+class Pseudostate {
+}
+class Reaction {
+}
+class ReactiveElement {
+}
+class RegularState {
+}
+class ScopedElement {
+}
+class SpecificationElement {
+}
+class Vertex {
+}
+class sgraph_Choice {
+  + kind : str
+}
+abstract class sgraph_CompositeElement {
+}
+abstract class sgraph_Declaration {
+}
+abstract class sgraph_Effect {
+}
+class sgraph_Entry {
+  + kind : str
+}
+abstract class sgraph_Event {
+}
+class sgraph_Exit {
+}
+class sgraph_FinalState {
+}
+class sgraph_Import {
+  + importedNamespace : str
+}
+class sgraph_ImportDeclaration {
+}
+abstract class sgraph_Pseudostate {
+}
+abstract class sgraph_Reaction {
+}
+class sgraph_ReactionProperty {
+}
+abstract class sgraph_ReactiveElement {
+}
+class sgraph_Region {
+}
+abstract class sgraph_RegularState {
+}
+class sgraph_Scope {
+}
+abstract class sgraph_ScopedElement {
+  + namespace : str
+}
+abstract class sgraph_SpecificationElement {
+  + specification : str
+}
+class sgraph_State {
+  + composite : bool
+  + leaf : bool
+  + orthogonal : bool
+  + simple : bool
+  + subchart : bool
+  + substatechartId : str
+}
+class sgraph_Statechart {
+}
+class sgraph_Synchronization {
+}
+class sgraph_Transition {
+}
+abstract class sgraph_Trigger {
+}
+abstract class sgraph_Variable {
+}
+abstract class sgraph_Vertex {
+}
+CompositeElement <|-- sgraph_State
+CompositeElement <|-- sgraph_Statechart
+Declaration <|-- sgraph_Event
+Declaration <|-- sgraph_ImportDeclaration
+Declaration <|-- sgraph_Variable
+DocumentedElement <|-- sgraph_State
+DocumentedElement <|-- sgraph_Statechart
+DocumentedElement <|-- sgraph_Transition
+NamedElement <|-- sgraph_Declaration
+NamedElement <|-- sgraph_Region
+NamedElement <|-- sgraph_Statechart
+NamedElement <|-- sgraph_Vertex
+Pseudostate <|-- sgraph_Choice
+Pseudostate <|-- sgraph_Entry
+Pseudostate <|-- sgraph_Exit
+Pseudostate <|-- sgraph_Synchronization
+Reaction <|-- sgraph_Transition
+ReactiveElement <|-- sgraph_State
+ReactiveElement <|-- sgraph_Statechart
+RegularState <|-- sgraph_FinalState
+RegularState <|-- sgraph_State
+ScopedElement <|-- sgraph_State
+ScopedElement <|-- sgraph_Statechart
+SpecificationElement <|-- sgraph_State
+SpecificationElement <|-- sgraph_Statechart
+SpecificationElement <|-- sgraph_Transition
+Vertex <|-- sgraph_Pseudostate
+Vertex <|-- sgraph_RegularState
+sgraph_CompositeElement "1..1" -- "1..1" sgraph_Region : composite5
+sgraph_Declaration "0..1" -- "1..1" sgraph_ImportDeclaration : declaration32
+sgraph_Declaration "0..9999" --* "1..1" sgraph_Scope : declarations21
+sgraph_Effect "0..1" --* "1..1" sgraph_Reaction : effect17
+sgraph_Event "0..9999" -- "1..1" sgraph_Scope : events22
+sgraph_Import "0..9999" --* "1..1" sgraph_Statechart : imports10
+sgraph_Transition "0..9999" -- "1..1" sgraph_Vertex : incomingTransitions1
+sgraph_Reaction "0..9999" -- "1..1" sgraph_ReactiveElement : localReactions12
+sgraph_Transition "0..9999" --* "1..1" sgraph_Vertex : outgoingTransitions2
+sgraph_Region "1..1" -- "1..1" sgraph_Vertex : parentRegion0
+sgraph_Reaction "1..1" *-- "0..9999" sgraph_ReactionProperty : properties19
+sgraph_Reaction "0..9999" -- "1..1" sgraph_ReactiveElement : reactions11
+sgraph_CompositeElement "1..1" *-- "0..9999" sgraph_Region : regions30
+sgraph_Scope "0..9999" --* "1..1" sgraph_ScopedElement : scopes26
+sgraph_Transition "1..1" -- "1..1" sgraph_Vertex : source8
+sgraph_State "1..1" -- "0..1" sgraph_Statechart : substatechart28
+sgraph_Transition "1..1" -- "1..1" sgraph_Vertex : target6
+sgraph_Reaction "1..1" *-- "0..1" sgraph_Trigger : trigger15
+sgraph_Scope "1..1" -- "0..9999" sgraph_Variable : variables24
+sgraph_Region "1..1" *-- "0..9999" sgraph_Vertex : vertices4
+@enduml

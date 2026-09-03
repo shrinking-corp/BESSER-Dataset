@@ -1,0 +1,47 @@
+@startuml
+enum SemesterKind {
+  AUTUMN
+  SPRING
+}
+class model_Course {
+  + fullName : str
+  + name : str
+}
+class model_CourseAllocation {
+  + explicitFactor : str
+  + factor : str
+}
+class model_CourseInstance {
+}
+class model_Department {
+  + name : str
+}
+class model_Person {
+  + email : str
+  + employmentFactor : str
+  + faceUrl : str
+  + name : str
+  + userName : str
+}
+class model_Role {
+  + factor : str
+  + name : str
+}
+class model_Semester {
+  + kind : str
+  + year : str
+}
+model_CourseAllocation "0..9999" --* "1..1" model_CourseInstance : allocations15
+model_CourseAllocation "0..9999" -- "1..1" model_Person : allocations7
+model_Course "0..1" -- "1..1" model_CourseInstance : course12
+model_CourseAllocation "1..1" -- "0..1" model_CourseInstance : course20
+model_Course "0..9999" --* "1..1" model_Department : courses1
+model_CourseInstance "0..9999" --* "1..1" model_Semester : courses11
+model_Department "1..1" *-- "0..9999" model_Person : employees0
+model_CourseAllocation "1..1" -- "0..1" model_Person : person17
+model_Course "1..1" -- "0..9999" model_Role : requiredRoles8
+model_CourseAllocation "1..1" -- "0..1" model_Role : role18
+model_Department "1..1" *-- "0..9999" model_Role : roles3
+model_CourseInstance "1..1" -- "0..1" model_Semester : semester14
+model_Department "1..1" *-- "0..9999" model_Semester : semesters5
+@enduml

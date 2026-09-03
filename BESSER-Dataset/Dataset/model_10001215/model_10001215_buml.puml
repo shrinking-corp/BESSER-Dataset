@@ -1,0 +1,91 @@
+@startuml
+class Customer {
+  + Customer_id : int
+  + name : str
+}
+class Customer1 {
+  + address : str
+  + customerId : int
+  + name : str
+  + phone : int
+}
+class Customer_Actor {
+}
+class Generate_Reports_UseCase {
+}
+class Item {
+  + item_code : int
+  + item_name : str
+}
+class Item1 {
+  + itemCode : int
+  + itemCost : float
+  + itemCount : str
+  + itemName : str
+}
+class Login_UseCase {
+}
+class Manage_Orders_UseCase {
+}
+class Manage_customer_accounts_UseCase {
+}
+class Manager {
+  + name : str
+}
+class Manager1 {
+  + id : str
+  + name : str
+}
+class Manager_Actor {
+}
+class Order {
+  + Cust_id : int
+  + Order_id : int
+}
+class Order1 {
+  + conformationNo : int
+  + cust : Customer_Actor
+  + deliveryDate : str
+  + orderDate : str
+  + orderId : int
+  + totalAmount : float
+}
+class Place_Order_UseCase {
+}
+class Register_UseCase {
+}
+class SpecialOrder {
+  + offerCode : int
+  + orderRange : int
+}
+class Special_order_UseCase {
+}
+class Stock {
+  + items__ : Item
+}
+class Stock1 {
+  + items__ : Item
+}
+class Update_Order_UseCase {
+}
+class Update_Stock_UseCase {
+}
+Customer_Actor "0..1" -- "0..1" Register_UseCase : Customer_Login
+Customer "1..1" -- "0..9999" Order : Customer_Order
+Customer1 "1..1" -- "0..9999" Order1 : Customer_Order2
+Customer_Actor "0..1" -- "0..1" Place_Order_UseCase : Customer_Place_Order
+Generate_Reports_UseCase "0..1" -- "0..1" Manager_Actor : Generate_Reports_Manager
+Item "0..9999" -- "1..1" Stock : Item_Stock
+Item1 "0..9999" -- "1..1" Stock1 : Item_Stock2
+Manage_Orders_UseCase "0..1" -- "0..1" Manager_Actor : Manage_Orders_Manager
+Manager_Actor "0..1" -- "0..1" Update_Stock_UseCase : Manage_Stock_Manager
+Manage_customer_accounts_UseCase "0..1" -- "0..1" Manager_Actor : Manage_customer_accounts_Manager
+Manager "1..1" -- "0..9999" Order : Manager_Order
+Manager "1..1" -- "0..9999" Stock : Manager_Stock
+Item "0..9999" -- "0..9999" Order : Order_Item
+Manager1 "1..1" -- "0..9999" Order1 : Order_Manager
+Customer_Actor "0..1" -- "0..1" Login_UseCase : Register_Customer
+Manager1 "1..1" -- "0..9999" Stock1 : Stock_Manager
+Customer_Actor "0..1" -- "0..1" Update_Order_UseCase : Update_Order_Customer
+Manager_Actor "0..1" -- "0..1" Update_Order_UseCase : Update_Order_Manager
+@enduml

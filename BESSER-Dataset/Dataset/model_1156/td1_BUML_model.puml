@@ -1,0 +1,74 @@
+@startuml
+class td1_Action {
+  + Body : str
+  + Name : str
+  + codeFiacre : str
+}
+class td1_Component {
+  + Name : str
+  + ProcessSize : int
+  + VarSize : int
+}
+class td1_DataType {
+  + Name : str
+}
+class td1_Guard {
+  + Body : str
+  + Name : str
+  + codeFiacre : str
+}
+class td1_Port {
+  + Name : str
+}
+class td1_Process {
+  + Name : str
+  + StateSize : int
+  + VarSize : int
+}
+class td1_Program {
+  + ComponentSize : int
+  + Name : str
+}
+class td1_State {
+  + Name : str
+}
+class td1_Transition {
+  + Name : str
+}
+class td1_Trigger {
+  + ArgSize : int
+  + Body : str
+  + Name : str
+  + codeFiacre : str
+}
+class td1_Variable {
+  + Name : str
+  + initVal : str
+}
+td1_Action "0..1" --* "1..1" td1_Transition : action22
+td1_Process "1..1" *-- "0..9999" td1_Trigger : alluniqueTriggers11
+td1_Trigger "1..1" *-- "0..9999" td1_Variable : arguments47
+td1_Component "0..9999" -- "1..1" td1_Variable : components27
+td1_Component "1..9999" --* "1..1" td1_Program : components36
+td1_Component "0..9999" -- "1..1" td1_Port : components50
+td1_DataType "1..1" -- "1..1" td1_Variable : datatype24
+td1_DataType "0..9999" --* "1..1" td1_Program : datatypes44
+td1_Guard "0..1" --* "1..1" td1_Transition : guard17
+td1_State "1..1" -- "1..9999" td1_Transition : inTransitions1
+td1_Process "1..1" -- "1..1" td1_State : initState8
+td1_Component "1..1" *-- "1..9999" td1_Process : instances29
+td1_Port "0..1" --* "1..1" td1_Process : outPorts9
+td1_State "1..1" -- "1..9999" td1_Transition : outTransitions0
+td1_Component "1..1" *-- "0..9999" td1_Port : ports33
+td1_Process "1..1" -- "1..1" td1_State : process3
+td1_Process "0..9999" -- "1..1" td1_Variable : processes25
+td1_Process "1..9999" --* "1..1" td1_Program : processes41
+td1_State "1..1" -- "1..1" td1_Transition : source13
+td1_Process "1..1" *-- "1..9999" td1_State : states6
+td1_State "1..1" -- "1..1" td1_Transition : target15
+td1_Process "1..1" *-- "1..9999" td1_Transition : transitions4
+td1_Transition "1..1" *-- "0..1" td1_Trigger : trigger19
+td1_Program "1..1" *-- "0..9999" td1_Variable : variable38
+td1_Component "1..1" -- "0..9999" td1_Variable : variables31
+td1_Process "1..1" -- "0..9999" td1_Variable : variables5
+@enduml

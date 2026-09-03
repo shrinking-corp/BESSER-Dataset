@@ -1,0 +1,53 @@
+@startuml
+enum Type {
+  Boolean
+  Double
+  INT
+  STRING
+  Void
+}
+class architecture_AbstractModel {
+}
+class architecture_Architecture {
+}
+class architecture_AtomicType {
+  + atomType : str
+}
+class architecture_Binding {
+}
+class architecture_Component {
+  + name : str
+}
+class architecture_DomainDeclaration {
+  + name : str
+}
+class architecture_Import {
+  + importedNamespace : str
+}
+class architecture_Model {
+}
+class architecture_Operation {
+  + name : str
+}
+class architecture_Variable {
+  + name : str
+}
+architecture_AbstractModel "1..1" *-- "0..9999" architecture_Architecture : arch7
+architecture_Operation "1..1" *-- "0..9999" architecture_Variable : arg35
+architecture_Architecture "1..1" *-- "0..9999" architecture_Binding : bind19
+architecture_AbstractModel "1..1" *-- "0..9999" architecture_Component : comp5
+architecture_AtomicType "1..1" -- "0..1" architecture_Component : compType41
+architecture_AbstractModel "0..9999" --* "1..1" architecture_DomainDeclaration : elements1
+architecture_AbstractModel "1..1" *-- "0..9999" architecture_Import : imp3
+architecture_Component "1..1" *-- "0..9999" architecture_Operation : operations14
+architecture_Component "1..1" -- "0..9999" architecture_Operation : ops9
+architecture_Component "1..1" -- "0..9999" architecture_Operation : opsReq11
+architecture_DomainDeclaration "0..9999" --* "1..1" architecture_Model : package0
+architecture_Binding "1..1" -- "0..1" architecture_Operation : proMember24
+architecture_Binding "1..1" -- "0..1" architecture_Variable : provider21
+architecture_Binding "1..1" -- "0..1" architecture_Operation : recMember30
+architecture_Binding "1..1" -- "0..1" architecture_Variable : receiver27
+architecture_AtomicType "0..1" --* "1..1" architecture_Variable : type33
+architecture_AtomicType "0..1" --* "1..1" architecture_Operation : type38
+architecture_Architecture "1..1" *-- "0..9999" architecture_Variable : vars17
+@enduml

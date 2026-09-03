@@ -1,0 +1,36 @@
+@startuml
+class Element {
+}
+class rpslPerceptionGraphMetaModel_Component {
+}
+class rpslPerceptionGraphMetaModel_Connection {
+}
+class rpslPerceptionGraphMetaModel_Element {
+  + doc : str
+  + name : str
+}
+class rpslPerceptionGraphMetaModel_InputPort {
+}
+class rpslPerceptionGraphMetaModel_Leaf {
+}
+class rpslPerceptionGraphMetaModel_Node {
+}
+class rpslPerceptionGraphMetaModel_OutputPort {
+}
+class rpslPerceptionGraphMetaModel_PerceptionGraph {
+  + doc : str
+  + name : str
+  + uuid : str
+}
+class rpslPerceptionGraphMetaModel_Prototype {
+}
+Element <|-- rpslPerceptionGraphMetaModel_Leaf
+Element <|-- rpslPerceptionGraphMetaModel_Node
+rpslPerceptionGraphMetaModel_Component "1..1" -- "1..1" rpslPerceptionGraphMetaModel_Element : component3
+rpslPerceptionGraphMetaModel_Connection "1..9999" --* "1..1" rpslPerceptionGraphMetaModel_Node : connection5
+rpslPerceptionGraphMetaModel_Element "1..9999" --* "1..1" rpslPerceptionGraphMetaModel_PerceptionGraph : element0
+rpslPerceptionGraphMetaModel_Connection "1..1" -- "1..1" rpslPerceptionGraphMetaModel_Element : element6
+rpslPerceptionGraphMetaModel_PerceptionGraph "1..1" -- "0..9999" rpslPerceptionGraphMetaModel_Prototype : perception_graph_property_prototype1
+rpslPerceptionGraphMetaModel_Connection "1..1" -- "1..1" rpslPerceptionGraphMetaModel_InputPort : sink9
+rpslPerceptionGraphMetaModel_Connection "1..1" -- "1..1" rpslPerceptionGraphMetaModel_OutputPort : src11
+@enduml

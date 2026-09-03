@@ -1,0 +1,23 @@
+@startuml
+class State {
+}
+class fsm_tp_FSM {
+  + name : str
+}
+class fsm_tp_InitialState {
+}
+class fsm_tp_State {
+  + isFinal : bool
+  + name : str
+}
+class fsm_tp_Transition {
+  + name : str
+  + trigger : str
+}
+State <|-- fsm_tp_InitialState
+fsm_tp_FSM "1..1" *-- "1..1" fsm_tp_InitialState : initialstate3
+fsm_tp_State "1..1" -- "1..1" fsm_tp_Transition : source5
+fsm_tp_FSM "1..1" *-- "0..9999" fsm_tp_State : state0
+fsm_tp_State "1..1" -- "1..1" fsm_tp_Transition : target8
+fsm_tp_FSM "1..1" *-- "0..9999" fsm_tp_Transition : transition1
+@enduml

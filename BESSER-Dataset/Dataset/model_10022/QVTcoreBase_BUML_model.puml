@@ -1,0 +1,87 @@
+@startuml
+class Area {
+}
+class Assignment {
+}
+class CorePattern {
+}
+class Domain {
+}
+class Element {
+}
+enum EnforcementMode {
+  Creation
+  Deletion
+}
+class Pattern {
+}
+class Rule {
+}
+class Variable {
+}
+abstract class qvtcorebase_AbstractMapping {
+  + getContext() : str
+  + getRefinement() : str
+}
+abstract class qvtcorebase_Area {
+  + getAllVariables() : str
+}
+abstract class qvtcorebase_Assignment {
+  + isDefault : str
+}
+class qvtcorebase_BottomPattern {
+}
+class qvtcorebase_CoreDomain {
+}
+class qvtcorebase_CorePattern {
+  + getAllVariables() : str
+  + getArea() : Area
+}
+class qvtcorebase_EnforcementOperation {
+  + enforcementMode : str
+}
+class qvtcorebase_GuardPattern {
+}
+class qvtcorebase_OCLExpression {
+}
+class qvtcorebase_OperationCallExp {
+}
+class qvtcorebase_Property {
+}
+class qvtcorebase_PropertyAssignment {
+}
+class qvtcorebase_RealizedVariable {
+}
+class qvtcorebase_Variable {
+}
+class qvtcorebase_VariableAssignment {
+}
+Area <|-- qvtcorebase_AbstractMapping
+Area <|-- qvtcorebase_CoreDomain
+Assignment <|-- qvtcorebase_PropertyAssignment
+Assignment <|-- qvtcorebase_VariableAssignment
+CorePattern <|-- qvtcorebase_BottomPattern
+CorePattern <|-- qvtcorebase_GuardPattern
+Domain <|-- qvtcorebase_CoreDomain
+Element <|-- qvtcorebase_Area
+Element <|-- qvtcorebase_Assignment
+Element <|-- qvtcorebase_EnforcementOperation
+Pattern <|-- qvtcorebase_CorePattern
+Rule <|-- qvtcorebase_AbstractMapping
+Variable <|-- qvtcorebase_RealizedVariable
+qvtcorebase_Area "1..1" -- "1..1" qvtcorebase_GuardPattern : area16
+qvtcorebase_Area "1..1" -- "1..1" qvtcorebase_BottomPattern : area6
+qvtcorebase_Assignment "0..9999" --* "1..1" qvtcorebase_BottomPattern : assignment7
+qvtcorebase_Area "1..1" *-- "1..1" qvtcorebase_BottomPattern : bottomPattern1
+qvtcorebase_BottomPattern "0..1" -- "1..1" qvtcorebase_EnforcementOperation : bottomPattern13
+qvtcorebase_Assignment "1..1" -- "1..1" qvtcorebase_BottomPattern : bottomPattern3
+qvtcorebase_BottomPattern "1..1" *-- "0..9999" qvtcorebase_EnforcementOperation : enforcementOperation9
+qvtcorebase_Area "1..1" *-- "1..1" qvtcorebase_GuardPattern : guardPattern0
+qvtcorebase_EnforcementOperation "1..1" *-- "1..1" qvtcorebase_OperationCallExp : operationCallExp15
+qvtcorebase_BottomPattern "1..1" *-- "0..9999" qvtcorebase_RealizedVariable : realizedVariable11
+qvtcorebase_OCLExpression "1..1" --* "1..1" qvtcorebase_PropertyAssignment : slotExpression18
+qvtcorebase_Property "1..1" -- "1..1" qvtcorebase_PropertyAssignment : targetProperty20
+qvtcorebase_Variable "1..1" -- "1..1" qvtcorebase_VariableAssignment : targetVariable22
+qvtcorebase_Assignment "1..1" *-- "1..1" qvtcorebase_OCLExpression : value5
+qvtcorebase_CorePattern "1..1" *-- "0..9999" qvtcorebase_Variable : variable12
+@enduml

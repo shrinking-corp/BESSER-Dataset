@@ -1,0 +1,107 @@
+@startuml
+class decobat_Customer {
+  + address : str
+  + city : str
+  + code : str
+  + country : str
+  + email : str
+  + fax : str
+  + name : str
+  + phone : str
+  + zip : str
+}
+class decobat_Level {
+  + code : str
+  + description : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_Library {
+  + created : date
+  + depth : str
+  + description : str
+  + height : str
+  + name : str
+  + shortDescription : str
+  + update : date
+  + width : str
+}
+class decobat_LibraryCategory {
+  + created : date
+  + description : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_Object {
+  + code : str
+  + description : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_Plan {
+  + code : str
+  + description : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_Product {
+  + created : date
+  + depth : str
+  + description : str
+  + height : str
+  + name : str
+  + shortDescription : str
+  + unitBilledPrice : str
+  + unitCostPrice : str
+  + unitWeight : str
+  + update : date
+  + width : str
+}
+class decobat_Project {
+  + closed : date
+  + created : date
+  + description : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_ProjectCategory {
+  + created : date
+  + description : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_ProjectRevision {
+  + comment : str
+  + description : str
+  + shortDescription : str
+  + update : date
+}
+class decobat_Service {
+  + code : str
+  + description : str
+  + hourlyBilledPrice : str
+  + hourlyCostPrice : str
+  + name : str
+  + shortDescription : str
+}
+class decobat_Supplier {
+  + address : str
+  + city : str
+  + code : str
+  + country : str
+  + email : str
+  + fax : str
+  + name : str
+  + phone : str
+  + zip : str
+}
+decobat_Library "1..1" *-- "0..9999" decobat_LibraryCategory : categories7
+decobat_Customer "1..1" -- "1..1" decobat_Project : customer5
+decobat_Level "1..9999" --* "1..1" decobat_Plan : levels9
+decobat_Level "1..1" -- "0..9999" decobat_Library : libraryItems11
+decobat_Library "0..9999" -- "1..1" decobat_Object : libraryItems14
+decobat_Plan "0..1" --* "1..1" decobat_Project : plans3
+decobat_Project "1..1" *-- "1..1" decobat_ProjectCategory : projectCategories1
+decobat_Project "1..1" *-- "0..9999" decobat_ProjectRevision : projectRevisions0
+decobat_Product "1..1" -- "1..1" decobat_Supplier : supplier8
+@enduml

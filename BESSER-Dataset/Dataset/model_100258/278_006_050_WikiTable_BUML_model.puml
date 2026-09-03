@@ -1,0 +1,38 @@
+@startuml
+class Caption {
+}
+class Cell {
+}
+class LocatedElement {
+}
+class Row {
+}
+class WikiTable_Caption {
+  + content : str
+}
+class WikiTable_Cell {
+  + align : str
+  + content : str
+  + isHeading : str
+  + style : str
+}
+abstract class WikiTable_LocatedElement {
+  + commentsAfter : str
+  + commentsBefore : str
+  + location : str
+}
+class WikiTable_Row {
+}
+class WikiTable_Table {
+  + border : str
+  + class_ : str
+  + style : str
+}
+LocatedElement <|-- WikiTable_Caption
+LocatedElement <|-- WikiTable_Cell
+LocatedElement <|-- WikiTable_Row
+LocatedElement <|-- WikiTable_Table
+Caption "0..1" --* "1..1" WikiTable_Table : caption0
+Cell "0..9999" --* "1..1" WikiTable_Row : cells3
+Row "0..9999" --* "1..1" WikiTable_Table : rows1
+@enduml

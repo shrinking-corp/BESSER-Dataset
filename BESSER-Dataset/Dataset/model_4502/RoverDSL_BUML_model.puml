@@ -1,0 +1,26 @@
+@startuml
+enum Color {
+  blue
+  red
+  yellow
+}
+class roverDSL_Colors {
+  + color : str
+}
+class roverDSL_DetectBottle {
+  + maxDistance : int
+}
+class roverDSL_Mission {
+  + id : str
+}
+class roverDSL_Robot {
+  + defaultSpeed : int
+  + maxAngle : int
+  + minAngle : int
+  + slowSpeed : int
+}
+roverDSL_Colors "0..1" --* "1..1" roverDSL_Mission : avoid5
+roverDSL_DetectBottle "0..1" --* "1..1" roverDSL_Mission : bottle3
+roverDSL_Colors "0..1" --* "1..1" roverDSL_Mission : find1
+roverDSL_Mission "0..1" --* "1..1" roverDSL_Robot : mission0
+@enduml

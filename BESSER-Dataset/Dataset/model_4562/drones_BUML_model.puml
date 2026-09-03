@@ -1,0 +1,85 @@
+@startuml
+enum ActionKind {
+  ADD
+  SET
+  SUBTRACT
+}
+class FieldObject {
+}
+class ImmovableObject {
+}
+class NamedElement {
+}
+class SizedElement {
+}
+class TemporalContainmentProxy {
+}
+class drones_Action {
+  + key : str
+  + operation : str
+  + range : float
+  + value : str
+}
+class drones_Battery {
+  + charge : float
+  + lifeTime : float
+  + rechargeRate : float
+  + remainingLifeTime : float
+}
+class drones_ChargeStation {
+}
+class drones_Drone {
+  + communicationRange : float
+  + cpuFrequency : int
+  + maxPayload : float
+  + maxSpeed : float
+  + memory : int
+  + minSpeed : float
+}
+abstract class drones_FieldObject {
+}
+class drones_ImmovableObject {
+}
+class drones_Mission {
+}
+class drones_MovableObject {
+  + weight : float
+}
+abstract class drones_NamedElement {
+  + name : str
+}
+class drones_Parameter {
+  + key : str
+  + value : str
+}
+abstract class drones_SizedElement {
+  + height : float
+  + length : float
+  + width : float
+  + x : float
+  + y : float
+  + z : float
+}
+abstract class drones_TemporalContainmentProxy {
+}
+FieldObject <|-- drones_ImmovableObject
+FieldObject <|-- drones_MovableObject
+ImmovableObject <|-- drones_ChargeStation
+NamedElement <|-- drones_Action
+NamedElement <|-- drones_Drone
+NamedElement <|-- drones_FieldObject
+NamedElement <|-- drones_Mission
+SizedElement <|-- drones_Drone
+SizedElement <|-- drones_FieldObject
+TemporalContainmentProxy <|-- drones_Action
+TemporalContainmentProxy <|-- drones_Battery
+TemporalContainmentProxy <|-- drones_Parameter
+drones_Action "0..9999" --* "1..1" drones_Mission : actions13
+drones_Battery "1..1" --* "1..1" drones_Drone : battery1
+drones_ChargeStation "1..1" -- "1..1" drones_Drone : chargeStation2
+drones_Drone "1..9999" --* "1..1" drones_Mission : drones8
+drones_FieldObject "1..9999" --* "1..1" drones_Mission : fieldObjects6
+drones_FieldObject "1..1" *-- "0..9999" drones_Parameter : parameters0
+drones_Action "0..9999" -- "1..1" drones_Drone : supportedActions4
+drones_Mission "1..1" *-- "0..9999" drones_TemporalContainmentProxy : temporalObjects11
+@enduml

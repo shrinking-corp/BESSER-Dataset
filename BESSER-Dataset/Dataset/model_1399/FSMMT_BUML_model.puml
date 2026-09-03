@@ -1,0 +1,35 @@
+@startuml
+class AbstractState {
+}
+class model_AbstractState {
+  + name : bool
+  + on(model_event : str) : str
+  + onEnter() : void
+  + onExit() : void
+}
+class model_FiniteStateMachine {
+  + enterInitialState(model_args : str) : void
+  + main() : void
+  + on(model_event : str) : AbstractState
+  + onEnter() : void
+}
+class model_State {
+  + onEnter() : void
+  + onExit() : void
+}
+class model_Transition {
+  + name : str
+  + trigger : str
+  + accepts(model_event : str) : void
+  + on(model_event : str) : AbstractState
+}
+AbstractState <|-- model_FiniteStateMachine
+AbstractState <|-- model_State
+model_AbstractState "0..1" -- "1..1" model_FiniteStateMachine : current4
+model_AbstractState "0..1" -- "1..1" model_FiniteStateMachine : initial2
+model_AbstractState "1..1" *-- "0..9999" model_Transition : outgoings1
+model_AbstractState "1..1" -- "0..1" model_FiniteStateMachine : parent0
+model_AbstractState "1..1" -- "1..1" model_Transition : source7
+model_AbstractState "0..9999" --* "1..1" model_FiniteStateMachine : states3
+model_AbstractState "1..1" -- "1..1" model_Transition : target9
+@enduml

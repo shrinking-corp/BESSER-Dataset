@@ -1,0 +1,55 @@
+@startuml
+class _LoginCredential {
+  + _loginid : str
+  + _password : str
+}
+class _OrderDetail {
+  + _orderdate : date
+  + _productid : int
+  + _quantity : int
+  + _totalamount : int
+  + _userid : int
+}
+class _PaymentInfo {
+  + _cardname : str
+  + _cardno : int
+  + _cvv : int
+  + _expirydate : date
+  + _userid : int
+}
+class _Product {
+  + _description : str
+  + _modelno : str
+  + _name : str
+  + _price : int
+  + _producttypeid : int
+  + _stock : int
+}
+class _ProductRating {
+  + _productid : int
+  + _rating : int
+  + _userid : int
+}
+class _ProductType {
+  + _type : str
+}
+class _User {
+  + _address : str
+  + _email : str
+  + _logincredentialsid : int
+  + _phone : int
+  + _username : str
+  + _usertypeid : int
+}
+class _UserType {
+  + _userrole : str
+}
+_Product "0..9999" -- "1..1" _ProductType : ProductType_Product
+_ProductRating "1..1" -- "0..9999" _User : Ratings_Customer
+_LoginCredential "1..1" -- "1..1" _User : WebUser_Customer
+_OrderDetail "1..1" -- "1..1" _User : _Customer__OrderDetails
+_PaymentInfo "1..9999" -- "1..1" _User : _Customer__PaymentInfo
+_Product "1..1" -- "0..9999" _ProductRating : _ProductRating__Product
+_OrderDetail "0..9999" -- "0..9999" _Product : _Product__OrderDetails
+_User "0..9999" -- "1..1" _UserType : _UserType__Customer
+@enduml

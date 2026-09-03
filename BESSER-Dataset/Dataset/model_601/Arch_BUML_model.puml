@@ -1,0 +1,79 @@
+@startuml
+class Arch_Application {
+  + name : str
+}
+class Arch_Attribute {
+  + name : str
+  + type : str
+}
+class Arch_BackEnd {
+  + name : str
+}
+class Arch_Controller {
+  + name : str
+}
+class Arch_Div {
+}
+class Arch_DropDownList {
+  + items : str
+}
+class Arch_Entity {
+  + name : str
+}
+class Arch_Event {
+  + name : str
+}
+class Arch_FrontEnd {
+  + name : str
+}
+abstract class Arch_GraphicControl {
+  + name : str
+}
+class Arch_Label {
+  + text : str
+}
+class Arch_Logic {
+  + name : str
+}
+class Arch_Method {
+  + name : str
+  + returntype : str
+}
+class Arch_Parameter {
+  + name : str
+  + type : str
+}
+class Arch_Service {
+  + name : str
+}
+class Arch_TextBox {
+  + type : str
+}
+class Arch_View {
+  + name : str
+}
+class GraphicControl {
+}
+GraphicControl <|-- Arch_Div
+GraphicControl <|-- Arch_DropDownList
+GraphicControl <|-- Arch_Label
+GraphicControl <|-- Arch_TextBox
+Arch_Attribute "0..9999" --* "1..1" Arch_Entity : attributes28
+Arch_Application "1..1" *-- "1..1" Arch_BackEnd : backend1
+Arch_Controller "0..9999" -- "1..1" Arch_View : controllers15
+Arch_Controller "0..9999" --* "1..1" Arch_FrontEnd : controllers5
+Arch_BackEnd "1..1" *-- "0..9999" Arch_Entity : entities11
+Arch_Controller "1..1" -- "0..9999" Arch_Event : events21
+Arch_Event "0..9999" --* "1..1" Arch_GraphicControl : events35
+Arch_Application "1..1" *-- "1..1" Arch_FrontEnd : frontend0
+Arch_GraphicControl "0..9999" --* "1..1" Arch_View : graphicControls13
+Arch_Div "1..1" *-- "0..9999" Arch_GraphicControl : graphicControls38
+Arch_BackEnd "1..1" *-- "0..9999" Arch_Logic : logics9
+Arch_Method "0..9999" --* "1..1" Arch_Service : methods23
+Arch_Logic "1..1" *-- "0..9999" Arch_Method : methods25
+Arch_Entity "1..1" *-- "0..9999" Arch_Method : methods30
+Arch_Method "1..1" *-- "0..9999" Arch_Parameter : parameters33
+Arch_BackEnd "1..1" *-- "0..9999" Arch_Service : services7
+Arch_Controller "1..1" -- "0..9999" Arch_View : views18
+Arch_FrontEnd "1..1" *-- "0..9999" Arch_View : views3
+@enduml

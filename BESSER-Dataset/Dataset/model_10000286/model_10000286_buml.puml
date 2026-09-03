@@ -1,0 +1,57 @@
+@startuml
+class Cooking_System {
+}
+class Entertainment {
+  + DeviceID : int
+}
+class Heater {
+  + Status : bool
+}
+class HomeTheatre {
+  + HTID : str
+}
+class Humidity_Sensor {
+  + CurrentValue : float
+}
+class Ingredient_Box {
+  + BoxID : int
+  + WeightValue : float
+}
+class Interior_Container {
+  + WorkMode : int
+}
+class MicroPhone {
+  + MicID : str
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Speakers {
+  + SpeakerID : int
+}
+class SteamGenerator {
+  + Status : bool
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+class TV {
+  + TVID : int
+}
+class Temperature_Sensor {
+  + CurrentValue : float
+}
+Entertainment "1..1" -- "1..9999" HomeTheatre : HomeTheatre_Entertainment
+HomeTheatre "1..9999" -- "0..1" Speakers : HomeTheatre_Speakers
+HomeTheatre "0..1" -- "0..9999" System : HomeTheatre_System
+HomeTheatre "1..9999" -- "1..1" TV : HomeTheatre_TV
+Cooking_System "0..1" -- "0..1" Ingredient_Box : Home_Security_System_Alert
+Cooking_System "1..1" -- "1..1" System : Home_Security_System_System
+MicroPhone "1..9999" -- "1..1" System : MicroPhone_System
+Interior_Container "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" System : Sensor_System
+Entertainment "1..1" -- "1..9999" Speakers : Speakers_Entertainment
+Entertainment "1..1" -- "1..9999" TV : TV_Entertainment
+@enduml

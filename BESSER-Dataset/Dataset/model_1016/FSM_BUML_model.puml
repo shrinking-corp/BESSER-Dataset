@@ -1,0 +1,33 @@
+@startuml
+class AbstractState {
+}
+abstract class fsm_AbstractState {
+  + name : str
+}
+class fsm_CompositeState {
+}
+class fsm_InitialState {
+}
+class fsm_RegularState {
+}
+class fsm_Root {
+}
+class fsm_StateMachine {
+  + name : str
+}
+class fsm_Transition {
+  + label : str
+}
+AbstractState <|-- fsm_CompositeState
+AbstractState <|-- fsm_InitialState
+AbstractState <|-- fsm_RegularState
+fsm_AbstractState "1..1" -- "0..1" fsm_CompositeState : compositeStates10
+fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source4
+fsm_StateMachine "1..1" -- "1..1" fsm_Transition : stateMachine3
+fsm_AbstractState "1..1" -- "1..1" fsm_StateMachine : stateMachine8
+fsm_Root "1..1" *-- "0..9999" fsm_StateMachine : stateMachines14
+fsm_AbstractState "0..9999" --* "1..1" fsm_StateMachine : states1
+fsm_AbstractState "0..9999" -- "1..1" fsm_CompositeState : states12
+fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target5
+fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : transitions0
+@enduml

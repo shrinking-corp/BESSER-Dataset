@@ -1,0 +1,45 @@
+@startuml
+class auftrag {
+  + anzahl : str
+  + auftragsPlaetzchen : str
+  + name : str
+}
+class backstrasse {
+  + BLECHBREITE : str
+  + BLECHLAENGE : str
+  + backAuftrag : str
+  + eingabeAusgabe : str
+  + geschwindigkeit : str
+  + gestoppt : str
+  + ofenlaenge : str
+  + temperatur : str
+  + zutatenVorrat : str
+}
+class ea_helfer {
+}
+class plaetzchen {
+  + backzeit : str
+  + belag : str
+  + breite : str
+  + form : str
+  + laenge : str
+  + teig : str
+  + temperatur : str
+}
+class zutat {
+  + einheit : str
+  + menge : str
+  + name : str
+}
+class zutaten {
+  + zutatenListe : str
+}
+auftrag "0..1" -- "0..1" plaetzchen : auftrag_plaetzchen
+auftrag "0..1" -- "0..1" backstrasse : backstrasse_auftrag
+backstrasse "0..1" -- "0..1" ea_helfer : backstrasse_eaHelfer
+backstrasse "0..1" -- "0..1" zutat : backstrasse_zutat
+plaetzchen "0..1" -- "0..1" zutaten : plaetzchen_teig
+plaetzchen "0..1" -- "0..1" zutat : plaetzchen_zutat
+zutat "0..1" -- "0..1" zutaten : teig_zutat
+auftrag "0..1" -- "0..1" zutat : zutat_auftrag
+@enduml

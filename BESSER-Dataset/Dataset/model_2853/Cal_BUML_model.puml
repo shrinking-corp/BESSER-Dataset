@@ -1,0 +1,322 @@
+@startuml
+class AstAbstractActor {
+}
+class AstAction {
+}
+class AstExpression {
+}
+class AstExpressionLiteral {
+}
+class AstExternalFunction {
+}
+class AstExternalProcedure {
+}
+class AstPackage {
+}
+class AstStatement {
+}
+class AstTop {
+}
+class AstUnit {
+}
+class cal_AstAbstractActor {
+  + name : str
+}
+class cal_AstAction {
+}
+class cal_AstActor {
+}
+class cal_AstActorVariable {
+  + name : str
+}
+class cal_AstActorVariableReference {
+}
+class cal_AstAnnotation {
+  + name : str
+}
+class cal_AstAnnotationArgument {
+  + name : str
+  + value : str
+}
+class cal_AstAssignParameter {
+  + name : str
+}
+class cal_AstConnection {
+  + inPort : str
+  + outPort : str
+}
+class cal_AstConnectionAttribute {
+  + name : str
+}
+class cal_AstEntity {
+}
+class cal_AstExpression {
+}
+class cal_AstExpressionBinary {
+  + operator : str
+}
+class cal_AstExpressionBoolean {
+  + value : bool
+}
+class cal_AstExpressionCall {
+}
+class cal_AstExpressionFloat {
+  + value : float
+}
+class cal_AstExpressionIf {
+}
+class cal_AstExpressionInteger {
+  + value : str
+}
+class cal_AstExpressionList {
+}
+class cal_AstExpressionLiteral {
+}
+class cal_AstExpressionString {
+  + value : str
+}
+class cal_AstExpressionUnary {
+  + unaryOperator : str
+}
+class cal_AstExpressionVariable {
+}
+class cal_AstExternalActor {
+}
+class cal_AstExternalFunction {
+}
+class cal_AstExternalProcedure {
+}
+class cal_AstForeachGenerator {
+}
+class cal_AstFunction {
+  + name : str
+}
+class cal_AstGenerator {
+}
+class cal_AstInequality {
+}
+class cal_AstInitialize {
+}
+class cal_AstInputPattern {
+}
+class cal_AstMemberAccess {
+  + name : str
+}
+class cal_AstNamespace {
+  + name : str
+}
+class cal_AstNetwork {
+}
+class cal_AstOutputPattern {
+}
+class cal_AstPackage {
+}
+class cal_AstPort {
+  + name : str
+}
+class cal_AstPriority {
+}
+class cal_AstProcedure {
+  + name : str
+}
+class cal_AstSchedule {
+}
+class cal_AstState {
+  + name : str
+}
+class cal_AstStatement {
+}
+class cal_AstStatementAssign {
+}
+class cal_AstStatementBlock {
+}
+class cal_AstStatementCall {
+}
+class cal_AstStatementForeach {
+}
+class cal_AstStatementIf {
+}
+class cal_AstStatementWhile {
+}
+class cal_AstStructure {
+}
+class cal_AstTag {
+  + identifiers : str
+}
+class cal_AstTop {
+}
+class cal_AstTransition {
+}
+class cal_AstType {
+  + builtin : str
+}
+class cal_AstTypeDefinitionParameter {
+}
+class cal_AstTypeName {
+  + name : str
+}
+class cal_AstTypeParam {
+  + name : str
+}
+class cal_AstTypeParameterList {
+}
+class cal_AstUnit {
+}
+class cal_AstVariable {
+  + constant : bool
+  + name : str
+}
+class cal_AstVariableReference {
+}
+class cal_EObject {
+}
+class cal_Import {
+  + importedNamespace : str
+}
+AstAbstractActor <|-- cal_AstActor
+AstAbstractActor <|-- cal_AstExternalActor
+AstAbstractActor <|-- cal_AstNetwork
+AstAction <|-- cal_AstInitialize
+AstExpression <|-- cal_AstExpressionBinary
+AstExpression <|-- cal_AstExpressionCall
+AstExpression <|-- cal_AstExpressionIf
+AstExpression <|-- cal_AstExpressionList
+AstExpression <|-- cal_AstExpressionLiteral
+AstExpression <|-- cal_AstExpressionUnary
+AstExpression <|-- cal_AstExpressionVariable
+AstExpressionLiteral <|-- cal_AstExpressionBoolean
+AstExpressionLiteral <|-- cal_AstExpressionFloat
+AstExpressionLiteral <|-- cal_AstExpressionInteger
+AstExpressionLiteral <|-- cal_AstExpressionString
+AstExternalFunction <|-- cal_AstFunction
+AstExternalProcedure <|-- cal_AstProcedure
+AstPackage <|-- cal_AstNamespace
+AstStatement <|-- cal_AstStatementAssign
+AstStatement <|-- cal_AstStatementBlock
+AstStatement <|-- cal_AstStatementCall
+AstStatement <|-- cal_AstStatementForeach
+AstStatement <|-- cal_AstStatementIf
+AstStatement <|-- cal_AstStatementWhile
+AstTop <|-- cal_AstNamespace
+AstTop <|-- cal_AstPackage
+AstUnit <|-- cal_AstNamespace
+cal_AstAction "0..9999" --* "1..1" cal_AstActor : actions106
+cal_AstAbstractActor "0..1" --* "1..1" cal_AstEntity : actor21
+cal_AstAnnotation "0..9999" --* "1..1" cal_AstNamespace : annotations11
+cal_AstAnnotation "0..9999" --* "1..1" cal_AstPort : annotations118
+cal_AstAnnotation "0..9999" --* "1..1" cal_AstProcedure : annotations124
+cal_AstAction "1..1" *-- "0..9999" cal_AstAnnotation : annotations152
+cal_AstAnnotation "0..9999" --* "1..1" cal_AstEntity : annotations18
+cal_AstAnnotation "0..9999" --* "1..1" cal_AstVariable : annotations62
+cal_AstAnnotation "0..9999" --* "1..1" cal_AstFunction : annotations87
+cal_AstAnnotation "1..1" *-- "0..9999" cal_AstAnnotationArgument : arguments296
+cal_AstConnection "1..1" *-- "0..9999" cal_AstConnectionAttribute : attribute51
+cal_AstType "0..9999" --* "1..1" cal_AstType : codomain277
+cal_AstExpression "0..1" --* "1..1" cal_AstStatementIf : condition221
+cal_AstExpression "0..1" --* "1..1" cal_AstStatementWhile : condition229
+cal_AstExpression "0..1" --* "1..1" cal_AstExpressionIf : condition239
+cal_AstConnection "0..9999" --* "1..1" cal_AstStructure : connections44
+cal_AstFunction "0..9999" --* "1..1" cal_AstTypeName : constructor72
+cal_AstExpression "0..9999" --* "1..1" cal_AstType : dimensions267
+cal_AstExpression "0..9999" --* "1..1" cal_AstVariable : dimensions67
+cal_AstType "0..9999" --* "1..1" cal_AstType : domain274
+cal_AstStatement "0..9999" --* "1..1" cal_AstStatementIf : else_226
+cal_AstExpression "0..1" --* "1..1" cal_AstExpressionIf : else_244
+cal_AstEntity "0..9999" --* "1..1" cal_AstNamespace : entities0
+cal_AstExpression "0..1" --* "1..1" cal_AstForeachGenerator : expression213
+cal_AstExpression "0..1" --* "1..1" cal_AstGenerator : expression254
+cal_AstExpression "0..1" --* "1..1" cal_AstExpressionUnary : expression303
+cal_AstExpression "0..1" --* "1..1" cal_AstFunction : expression99
+cal_AstExpression "0..9999" --* "1..1" cal_AstExpressionList : expressions247
+cal_AstNamespace "1..1" *-- "0..9999" cal_EObject : externals9
+cal_AstActorVariableReference "0..1" --* "1..1" cal_AstConnection : from_46
+cal_AstExpressionCall "1..1" -- "0..1" cal_AstFunction : function234
+cal_AstActor "1..1" *-- "0..9999" cal_AstFunction : functions102
+cal_AstFunction "0..9999" --* "1..1" cal_AstNamespace : functions5
+cal_AstForeachGenerator "0..9999" --* "1..1" cal_AstStatementForeach : generators203
+cal_AstExpressionList "1..1" *-- "0..9999" cal_AstGenerator : generators249
+cal_AstAction "1..1" *-- "0..9999" cal_AstExpression : guards162
+cal_AstNamespace "1..1" *-- "0..9999" cal_Import : imports1
+cal_AstExpression "0..9999" --* "1..1" cal_AstStatementAssign : indexes190
+cal_AstExpression "0..9999" --* "1..1" cal_AstExpressionVariable : indexes259
+cal_AstInequality "0..9999" --* "1..1" cal_AstPriority : inequalities136
+cal_AstSchedule "1..1" -- "0..1" cal_AstState : initialState139
+cal_AstAction "0..9999" --* "1..1" cal_AstActor : initializes108
+cal_AstAction "1..1" *-- "0..9999" cal_AstInputPattern : inputs158
+cal_AstAbstractActor "1..1" *-- "0..9999" cal_AstPort : inputs26
+cal_AstActorVariable "0..9999" --* "1..1" cal_AstNetwork : instances33
+cal_AstExpression "0..1" --* "1..1" cal_AstExpressionBinary : left298
+cal_AstMemberAccess "0..9999" --* "1..1" cal_AstStatementAssign : member193
+cal_AstExpressionVariable "1..1" *-- "0..9999" cal_AstMemberAccess : member262
+cal_AstExpression "0..9999" --* "1..1" cal_AstMemberAccess : memberIndex293
+cal_AstType "1..1" *-- "0..9999" cal_AstVariable : members279
+cal_AstFunction "1..1" *-- "0..9999" cal_AstVariable : members84
+cal_AstType "1..1" -- "0..1" cal_AstTypeName : name270
+cal_AstNamespace "0..9999" --* "1..1" cal_AstNamespace : namespaces16
+cal_AstAction "1..1" *-- "0..9999" cal_AstOutputPattern : outputs160
+cal_AstAbstractActor "1..1" *-- "0..9999" cal_AstPort : outputs28
+cal_AstProcedure "1..1" *-- "0..9999" cal_AstVariable : parameters127
+cal_AstExpression "0..9999" --* "1..1" cal_AstStatementCall : parameters200
+cal_AstAbstractActor "1..1" *-- "0..9999" cal_AstVariable : parameters23
+cal_AstExpression "0..9999" --* "1..1" cal_AstExpressionCall : parameters236
+cal_AstActorVariable "1..1" *-- "0..9999" cal_AstAssignParameter : parameters40
+cal_AstTypeDefinitionParameter "0..9999" --* "1..1" cal_AstTypeName : parameters70
+cal_AstFunction "1..1" *-- "0..9999" cal_AstVariable : parameters90
+cal_AstTypeParam "0..9999" --* "1..1" cal_AstTypeParameterList : params282
+cal_AstInputPattern "1..1" -- "0..1" cal_AstPort : port171
+cal_AstOutputPattern "1..1" -- "0..1" cal_AstPort : port180
+cal_AstActor "1..1" *-- "0..9999" cal_AstPriority : priorities116
+cal_AstProcedure "0..1" -- "1..1" cal_AstStatementCall : procedure198
+cal_AstActor "1..1" *-- "0..9999" cal_AstProcedure : procedures104
+cal_AstExpression "0..1" --* "1..1" cal_AstInputPattern : repeat177
+cal_AstExpression "0..1" --* "1..1" cal_AstOutputPattern : repeat186
+cal_AstExpression "0..1" --* "1..1" cal_AstExpressionBinary : right300
+cal_AstActor "1..1" *-- "0..9999" cal_AstSchedule : schedules114
+cal_AstState "0..1" -- "1..1" cal_AstTransition : source143
+cal_AstActor "1..1" *-- "0..9999" cal_AstVariable : stateVariables111
+cal_AstProcedure "1..1" *-- "0..9999" cal_AstStatement : statements133
+cal_AstAction "1..1" *-- "0..9999" cal_AstStatement : statements168
+cal_AstStatement "0..9999" --* "1..1" cal_AstStatementForeach : statements207
+cal_AstStatement "0..9999" --* "1..1" cal_AstStatementBlock : statements218
+cal_AstStatement "0..9999" --* "1..1" cal_AstStatementWhile : statements231
+cal_AstNetwork "1..1" *-- "0..1" cal_AstStructure : structure35
+cal_AstAction "1..1" *-- "0..1" cal_AstTag : tag155
+cal_AstInequality "1..1" *-- "0..9999" cal_AstTag : tags135
+cal_AstTag "0..9999" --* "1..1" cal_AstTransition : tags146
+cal_AstState "0..1" -- "1..1" cal_AstTransition : target149
+cal_AstStatementAssign "1..1" *-- "0..1" cal_AstVariableReference : target189
+cal_AstStatement "0..9999" --* "1..1" cal_AstStatementIf : then223
+cal_AstExpression "0..1" --* "1..1" cal_AstExpressionIf : then241
+cal_AstActorVariableReference "0..1" --* "1..1" cal_AstConnection : to48
+cal_AstInputPattern "1..1" *-- "0..9999" cal_AstVariable : tokens174
+cal_AstSchedule "1..1" *-- "0..9999" cal_AstTransition : transitions141
+cal_AstPort "1..1" *-- "0..1" cal_AstType : type121
+cal_AstType "0..1" --* "1..1" cal_AstTypeParam : type287
+cal_AstActorVariable "1..1" -- "0..1" cal_AstEntity : type37
+cal_AstType "0..1" --* "1..1" cal_AstVariable : type65
+cal_AstType "0..1" --* "1..1" cal_AstTypeName : type75
+cal_AstTypeDefinitionParameter "1..1" *-- "0..1" cal_AstTypeName : type81
+cal_AstFunction "1..1" *-- "0..1" cal_AstType : type93
+cal_AstType "1..1" *-- "0..1" cal_AstTypeParameterList : typeParams265
+cal_AstNamespace "1..1" *-- "0..9999" cal_AstTypeName : typedefs13
+cal_AstNamespace "1..1" *-- "0..9999" cal_AstUnit : units3
+cal_AstExpression "0..1" --* "1..1" cal_AstStatementAssign : value195
+cal_AstExpressionVariable "1..1" *-- "0..1" cal_AstVariableReference : value257
+cal_AstExpression "0..1" --* "1..1" cal_AstTypeParam : value284
+cal_AstAssignParameter "1..1" *-- "0..1" cal_AstExpression : value42
+cal_AstConnectionAttribute "1..1" *-- "0..1" cal_AstExpression : value56
+cal_AstExpression "0..1" --* "1..1" cal_AstVariable : value59
+cal_AstTypeDefinitionParameter "1..1" *-- "0..1" cal_AstVariable : value78
+cal_AstExpression "0..9999" --* "1..1" cal_AstOutputPattern : values183
+cal_AstForeachGenerator "1..1" *-- "0..1" cal_AstVariable : variable210
+cal_AstGenerator "1..1" *-- "0..1" cal_AstVariable : variable251
+cal_AstVariable "0..1" -- "1..1" cal_AstVariableReference : variable290
+cal_AstActorVariable "0..1" -- "1..1" cal_AstActorVariableReference : variable53
+cal_AstProcedure "1..1" *-- "0..9999" cal_AstVariable : variables130
+cal_AstAction "1..1" *-- "0..9999" cal_AstVariable : variables165
+cal_AstStatementForeach "1..1" *-- "0..9999" cal_AstVariable : variables204
+cal_AstStatementBlock "1..1" *-- "0..9999" cal_AstVariable : variables216
+cal_AstNetwork "1..1" *-- "0..9999" cal_AstVariable : variables31
+cal_AstNamespace "1..1" *-- "0..9999" cal_AstVariable : variables7
+cal_AstFunction "1..1" *-- "0..9999" cal_AstVariable : variables96
+@enduml

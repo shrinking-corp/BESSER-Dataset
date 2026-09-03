@@ -1,0 +1,47 @@
+@startuml
+class Comment {
+}
+class Dependency {
+}
+class Element {
+}
+class Make_Comment {
+  + text : str
+}
+abstract class Make_Dependency {
+}
+abstract class Make_Element {
+  + name : str
+}
+class Make_FileDep {
+  + name : str
+}
+class Make_Macro {
+  + value : str
+}
+class Make_Makefile {
+  + name : str
+}
+class Make_Rule {
+}
+class Make_RuleDep {
+}
+class Make_ShellLine {
+  + command : str
+  + display : str
+}
+class Rule {
+}
+class ShellLine {
+}
+Dependency <|-- Make_FileDep
+Dependency <|-- Make_RuleDep
+Element <|-- Make_Macro
+Element <|-- Make_Rule
+Comment "0..1" --* "1..1" Make_Makefile : comment0
+Dependency "0..9999" --* "1..1" Make_Rule : dependencies3
+Element "1..9999" --* "1..1" Make_Makefile : elements1
+Make_ShellLine "1..1" -- "1..1" Rule : ruleShellLine5
+Make_RuleDep "1..1" -- "1..1" Rule : ruledep6
+Make_Rule "1..1" *-- "1..9999" ShellLine : shellLines4
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class TreeMapItem {
+}
+enum TreeMapType {
+  Linear
+  Ordred
+  Quantum
+}
+class TreeMapViewer_TreeMapContainer {
+}
+class TreeMapViewer_TreeMapItem {
+  + label : str
+  + value : float
+}
+class TreeMapViewer_TreeMapViewer {
+  + childLayoutStrategy : str
+}
+TreeMapItem <|-- TreeMapViewer_TreeMapContainer
+TreeMapViewer_TreeMapItem "0..9999" --* "1..1" TreeMapViewer_TreeMapViewer : children0
+TreeMapViewer_TreeMapContainer "1..1" *-- "0..9999" TreeMapViewer_TreeMapItem : children4
+TreeMapViewer_TreeMapItem "1..1" -- "0..1" TreeMapViewer_TreeMapViewer : parent1
+@enduml

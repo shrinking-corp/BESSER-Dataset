@@ -1,0 +1,53 @@
+@startuml
+class tp6_Collaboration {
+  + ratio : int
+}
+class tp6_Keyword {
+  + description : str
+  + key : str
+}
+class tp6_KnowledgeManager {
+  + name : str
+}
+class tp6_Paper {
+  + name : str
+}
+class tp6_PaperKeywords {
+  + weight : int
+}
+class tp6_Paragraph {
+  + content : str
+  + id : int
+  + name : str
+}
+class tp6_Position {
+  + description : str
+  + name : str
+}
+class tp6_PublicationStructure {
+}
+class tp6_Researcher {
+  + forName : str
+  + name : str
+}
+class tp6_Skill {
+  + description : str
+}
+tp6_Keyword "0..9999" --* "1..1" tp6_KnowledgeManager : allKeywords34
+tp6_Paper "1..1" -- "0..9999" tp6_Researcher : authors7
+tp6_Paper "1..1" -- "0..1" tp6_Paper : citedBy9
+tp6_Collaboration "1..1" -- "0..1" tp6_Paper : col_paper26
+tp6_Collaboration "0..9999" --* "1..1" tp6_Researcher : collaborations4
+tp6_Keyword "1..1" -- "0..9999" tp6_Paper : kPapers29
+tp6_Keyword "0..1" -- "1..1" tp6_PaperKeywords : keyword31
+tp6_Paper "1..1" *-- "0..9999" tp6_PaperKeywords : keywords11
+tp6_KnowledgeManager "0..1" --* "1..1" tp6_PublicationStructure : knowledgeMan21
+tp6_Paper "0..9999" --* "1..1" tp6_PublicationStructure : papers15
+tp6_Paper "1..1" *-- "0..9999" tp6_Paragraph : paragraphs6
+tp6_Position "0..1" -- "1..1" tp6_Position : parent24
+tp6_Position "0..9999" --* "1..1" tp6_PublicationStructure : positions18
+tp6_Paper "0..9999" -- "1..1" tp6_Researcher : res_papers0
+tp6_Position "0..1" -- "1..1" tp6_Researcher : res_position2
+tp6_PublicationStructure "1..1" *-- "0..9999" tp6_Researcher : researchers13
+tp6_Researcher "1..1" *-- "0..9999" tp6_Skill : skills1
+@enduml

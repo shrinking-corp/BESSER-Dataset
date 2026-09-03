@@ -1,0 +1,50 @@
+@startuml
+class Column {
+}
+enum DatabaseKind {
+  POSTGRES
+}
+class Named {
+}
+class PrimitiveType {
+}
+class Type {
+}
+class relationaldb_Column {
+}
+class relationaldb_Database {
+  + rawDatabase : str
+}
+class relationaldb_ForeignKey {
+}
+class relationaldb_Integer {
+}
+abstract class relationaldb_Named {
+  + name : str
+}
+abstract class relationaldb_PrimitiveType {
+}
+class relationaldb_Table {
+}
+abstract class relationaldb_Type {
+}
+class relationaldb_UmlToNoSQLID {
+}
+class relationaldb_Varchar {
+  + length : int
+}
+Column <|-- relationaldb_ForeignKey
+Named <|-- relationaldb_Column
+Named <|-- relationaldb_Database
+Named <|-- relationaldb_Table
+PrimitiveType <|-- relationaldb_Integer
+PrimitiveType <|-- relationaldb_UmlToNoSQLID
+PrimitiveType <|-- relationaldb_Varchar
+Type <|-- relationaldb_PrimitiveType
+relationaldb_Column "0..9999" --* "1..1" relationaldb_Table : col1
+relationaldb_Column "1..1" -- "1..1" relationaldb_Table : owner4
+relationaldb_Column "0..9999" -- "1..1" relationaldb_Table : primaryKeys2
+relationaldb_Column "0..1" -- "1..1" relationaldb_ForeignKey : referencedColumn7
+relationaldb_Database "1..1" *-- "0..9999" relationaldb_Table : tables0
+relationaldb_Column "1..1" *-- "1..1" relationaldb_Type : type5
+@enduml

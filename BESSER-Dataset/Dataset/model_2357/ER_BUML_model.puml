@@ -1,0 +1,34 @@
+@startuml
+class ER_Column {
+  + name : str
+  + type : str
+}
+class ER_ForeignKey {
+  + name : str
+}
+class ER_Key {
+  + name : str
+}
+class ER_Schema {
+  + name : str
+}
+class ER_Table {
+  + name : str
+}
+ER_Column "1..9999" -- "1..1" ER_Key : column12
+ER_Column "1..9999" -- "1..1" ER_ForeignKey : column27
+ER_Column "0..9999" --* "1..1" ER_Table : column5
+ER_ForeignKey "0..9999" --* "1..1" ER_Schema : foreignKey1
+ER_Column "1..1" -- "0..9999" ER_ForeignKey : hasForeignKey20
+ER_ForeignKey "0..9999" -- "1..1" ER_Table : hasForeignKey7
+ER_Column "1..1" -- "0..9999" ER_Key : hasKey17
+ER_Key "0..1" --* "1..1" ER_Table : hasKey4
+ER_Key "1..1" -- "1..1" ER_Table : owner10
+ER_Column "1..1" -- "1..1" ER_Table : owner15
+ER_ForeignKey "1..1" -- "1..1" ER_Table : owner25
+ER_ForeignKey "0..9999" -- "1..1" ER_Key : referedBy13
+ER_ForeignKey "1..1" -- "0..9999" ER_Key : refersTo30
+ER_ForeignKey "1..1" -- "1..1" ER_Schema : schema23
+ER_Schema "1..1" -- "1..1" ER_Table : schema3
+ER_Schema "1..1" *-- "0..9999" ER_Table : table0
+@enduml

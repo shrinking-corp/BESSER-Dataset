@@ -1,0 +1,170 @@
+@startuml
+class ArithmeticExpression {
+}
+class BinaryExpression {
+}
+class Declaration {
+}
+class EqualityExpression {
+}
+class Expression {
+}
+class LogicExpression {
+}
+class Statement {
+}
+class UnaryExpression {
+}
+class siple_Addition {
+}
+class siple_And {
+}
+abstract class siple_ArithmeticExpression {
+}
+abstract class siple_BinaryExpression {
+}
+class siple_Block {
+}
+class siple_CompilationUnit {
+  + Interpret() : str
+}
+class siple_Constant {
+  + AsBoolean : str
+  + AsInteger : str
+  + AsReal : str
+  + Lexem : str
+}
+abstract class siple_Declaration {
+  + IsParameterDeclaration : bool
+  + Name : str
+  + Type : str
+}
+class siple_Dereference {
+}
+class siple_Division {
+}
+class siple_Equal {
+}
+abstract class siple_EqualityExpression {
+}
+abstract class siple_Expression {
+  + Type : str
+  + Value(siple_vm : str) : str
+}
+class siple_GreaterThan {
+}
+class siple_GreaterThanEqual {
+}
+class siple_If {
+}
+class siple_LesserThan {
+}
+class siple_LesserThanEqual {
+}
+abstract class siple_LogicExpression {
+}
+class siple_Multiplication {
+}
+class siple_NestedExpression {
+}
+class siple_Not {
+}
+class siple_Or {
+}
+class siple_ProcedureCall {
+}
+class siple_ProcedureDeclaration {
+  + ReturnType : str
+}
+class siple_ProcedureReturn {
+  + Type : str
+}
+class siple_Read {
+  + Type : str
+}
+class siple_RealCoercion {
+}
+class siple_Reference {
+  + Name : str
+}
+abstract class siple_Statement {
+  + Interpret(siple_vm : str) : void
+}
+class siple_Subtraction {
+}
+class siple_UMinus {
+}
+abstract class siple_UnaryExpression {
+}
+class siple_VariableAssignment {
+  + Type : str
+}
+class siple_VariableDeclaration {
+  + DeclaredType : str
+}
+class siple_While {
+}
+class siple_Write {
+  + Type : str
+}
+ArithmeticExpression <|-- siple_Addition
+ArithmeticExpression <|-- siple_Division
+ArithmeticExpression <|-- siple_Multiplication
+ArithmeticExpression <|-- siple_Subtraction
+BinaryExpression <|-- siple_ArithmeticExpression
+BinaryExpression <|-- siple_EqualityExpression
+BinaryExpression <|-- siple_LogicExpression
+Declaration <|-- siple_ProcedureDeclaration
+Declaration <|-- siple_VariableDeclaration
+EqualityExpression <|-- siple_Equal
+EqualityExpression <|-- siple_GreaterThan
+EqualityExpression <|-- siple_GreaterThanEqual
+EqualityExpression <|-- siple_LesserThan
+EqualityExpression <|-- siple_LesserThanEqual
+Expression <|-- siple_BinaryExpression
+Expression <|-- siple_Constant
+Expression <|-- siple_NestedExpression
+Expression <|-- siple_ProcedureCall
+Expression <|-- siple_Reference
+Expression <|-- siple_UnaryExpression
+LogicExpression <|-- siple_And
+LogicExpression <|-- siple_Or
+Statement <|-- siple_Block
+Statement <|-- siple_Declaration
+Statement <|-- siple_Expression
+Statement <|-- siple_If
+Statement <|-- siple_ProcedureReturn
+Statement <|-- siple_Read
+Statement <|-- siple_VariableAssignment
+Statement <|-- siple_While
+Statement <|-- siple_Write
+UnaryExpression <|-- siple_Dereference
+UnaryExpression <|-- siple_Not
+UnaryExpression <|-- siple_RealCoercion
+UnaryExpression <|-- siple_UMinus
+siple_Block "0..1" --* "1..1" siple_If : Alternative14
+siple_Expression "0..9999" --* "1..1" siple_ProcedureCall : Argument42
+siple_Block "1..1" --* "1..1" siple_If : Body11
+siple_Block "1..1" --* "1..1" siple_While : Body19
+siple_Block "1..1" --* "1..1" siple_ProcedureDeclaration : Body35
+siple_Expression "1..1" --* "1..1" siple_If : Condition10
+siple_Expression "1..1" --* "1..1" siple_While : Condition17
+siple_CompilationUnit "1..1" *-- "0..9999" siple_Declaration : Declaration0
+siple_Declaration "0..1" -- "1..1" siple_Reference : Declaration38
+siple_ProcedureCall "1..1" -- "0..1" siple_ProcedureDeclaration : Declaration45
+siple_Expression "0..1" --* "1..1" siple_ProcedureReturn : Expression27
+siple_Expression "1..1" --* "1..1" siple_Write : Expression29
+siple_Expression "1..1" --* "1..1" siple_Read : Expression31
+siple_Expression "1..1" --* "1..1" siple_NestedExpression : Expression48
+siple_Block "1..1" -- "0..1" siple_ProcedureDeclaration : IsProcedureBody7
+siple_Expression "1..1" --* "1..1" siple_VariableAssignment : LValue22
+siple_CompilationUnit "1..1" -- "0..1" siple_ProcedureDeclaration : MainProcedure1
+siple_BinaryExpression "1..1" *-- "1..1" siple_Expression : Operand152
+siple_BinaryExpression "1..1" *-- "1..1" siple_Expression : Operand254
+siple_Expression "1..1" --* "1..1" siple_UnaryExpression : Operand50
+siple_ProcedureDeclaration "1..1" *-- "0..9999" siple_VariableDeclaration : Parameter33
+siple_Expression "1..1" --* "1..1" siple_ProcedureCall : Procedure40
+siple_ProcedureDeclaration "0..1" -- "1..1" siple_Statement : ProcedureInContext3
+siple_Expression "1..1" --* "1..1" siple_VariableAssignment : RValue24
+siple_Block "1..1" *-- "0..9999" siple_Statement : Statement5
+@enduml

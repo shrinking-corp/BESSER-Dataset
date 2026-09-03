@@ -1,0 +1,24 @@
+@startuml
+class Node {
+}
+class petrinet_Arc {
+}
+abstract class petrinet_Node {
+  + name : str
+}
+class petrinet_Petrinet {
+}
+class petrinet_Place {
+  + tokenNb : int
+}
+class petrinet_Transition {
+}
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_Petrinet : arcs1
+petrinet_Arc "0..9999" -- "1..1" petrinet_Node : incomming3
+petrinet_Node "0..9999" --* "1..1" petrinet_Petrinet : nodes0
+petrinet_Arc "0..9999" -- "1..1" petrinet_Node : outgoing4
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : source7
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : target6
+@enduml

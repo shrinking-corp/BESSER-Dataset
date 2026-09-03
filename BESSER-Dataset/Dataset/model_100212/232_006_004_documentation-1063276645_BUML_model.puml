@@ -1,0 +1,79 @@
+@startuml
+class Fragment {
+}
+class NamedElement {
+}
+class TextFragmentContainer {
+}
+class documentation_Documentation {
+  + title : str
+}
+abstract class documentation_Fragment {
+}
+class documentation_Image {
+  + originalSource : str
+  + width : str
+}
+class documentation_Line {
+  + text : str
+}
+class documentation_List {
+}
+class documentation_ListItem {
+  + text : str
+}
+abstract class documentation_NamedElement {
+  + id : str
+  + name : str
+}
+class documentation_Paragraph {
+}
+class documentation_Section {
+}
+class documentation_Subsection {
+}
+class documentation_Subsubsection {
+}
+class documentation_Table {
+}
+class documentation_TableHeader {
+  + headerCells : str
+}
+class documentation_TableRow {
+  + rowCells : str
+}
+class documentation_TermEntry {
+  + description : str
+}
+abstract class documentation_TextFragmentContainer {
+}
+class documentation_XML {
+  + contextClassName : str
+  + resource : str
+}
+Fragment <|-- documentation_Image
+Fragment <|-- documentation_Line
+Fragment <|-- documentation_List
+Fragment <|-- documentation_Paragraph
+Fragment <|-- documentation_Subsection
+Fragment <|-- documentation_Subsubsection
+Fragment <|-- documentation_Table
+Fragment <|-- documentation_XML
+NamedElement <|-- documentation_Image
+NamedElement <|-- documentation_Section
+NamedElement <|-- documentation_Subsection
+NamedElement <|-- documentation_Subsubsection
+NamedElement <|-- documentation_TermEntry
+NamedElement <|-- documentation_XML
+TextFragmentContainer <|-- documentation_ListItem
+TextFragmentContainer <|-- documentation_Paragraph
+TextFragmentContainer <|-- documentation_Section
+TextFragmentContainer <|-- documentation_Subsection
+TextFragmentContainer <|-- documentation_Subsubsection
+documentation_Fragment "0..9999" --* "1..1" documentation_TextFragmentContainer : fragments3
+documentation_List "1..1" *-- "0..9999" documentation_ListItem : items4
+documentation_Documentation "1..1" *-- "0..9999" documentation_Section : sections0
+documentation_Table "1..1" *-- "1..1" documentation_TableHeader : tableHeader5
+documentation_Table "1..1" *-- "0..9999" documentation_TableRow : tableRows6
+documentation_Documentation "1..1" *-- "0..9999" documentation_TermEntry : terminology1
+@enduml

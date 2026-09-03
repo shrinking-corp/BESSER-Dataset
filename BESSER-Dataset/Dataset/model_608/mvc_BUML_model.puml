@@ -1,0 +1,76 @@
+@startuml
+class Model {
+}
+class View {
+}
+class mvc_Attribute {
+  + nameattribute : str
+  + typeattribute : str
+}
+class mvc_Client {
+  + nameservice : str
+}
+class mvc_Controller {
+  + name : str
+}
+class mvc_DataBase {
+}
+class mvc_GraphicComponent {
+  + stepSize : int
+}
+class mvc_MapComponent {
+  + latitude : float
+  + longitude : float
+  + marker : bool
+}
+class mvc_Method {
+  + namemethod : str
+  + type : str
+}
+class mvc_Model {
+  + nameclass : str
+  + type : str
+}
+class mvc_MvcApplication {
+  + description : str
+  + email : str
+  + name : str
+  + pagelink : str
+  + picture : str
+}
+class mvc_Position {
+  + above : int
+  + align_left : int
+  + long : int
+  + name : str
+  + wide : int
+}
+class mvc_ReturnParameter {
+}
+class mvc_SocialComponent {
+  + social : str
+  + socialname : str
+}
+class mvc_View {
+  + name : str
+  + type : str
+}
+Model <|-- mvc_Client
+Model <|-- mvc_DataBase
+View <|-- mvc_GraphicComponent
+View <|-- mvc_MapComponent
+View <|-- mvc_SocialComponent
+mvc_Attribute "1..9999" --* "1..1" mvc_Method : attrib13
+mvc_Attribute "0..9999" --* "1..1" mvc_DataBase : attribute16
+mvc_Controller "1..1" -- "1..1" mvc_Model : controller8
+mvc_Controller "1..1" -- "1..1" mvc_View : controller9
+mvc_Controller "1..9999" --* "1..1" mvc_MvcApplication : controllers3
+mvc_Attribute "0..1" -- "1..1" mvc_GraphicComponent : datoA18
+mvc_Attribute "0..1" -- "1..1" mvc_GraphicComponent : datoB20
+mvc_Client "1..1" *-- "1..1" mvc_Method : method14
+mvc_Controller "1..1" -- "1..1" mvc_Model : model5
+mvc_Model "1..9999" --* "1..1" mvc_MvcApplication : models1
+mvc_Position "1..1" --* "1..1" mvc_View : position11
+mvc_Controller "1..1" -- "1..1" mvc_View : view6
+mvc_MvcApplication "1..1" *-- "0..9999" mvc_View : views0
+@enduml

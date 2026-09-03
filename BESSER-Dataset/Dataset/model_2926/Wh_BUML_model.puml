@@ -1,0 +1,37 @@
+@startuml
+class AbstractElement {
+}
+class Type {
+}
+class wh_AbstractElement {
+}
+class wh_DataType {
+}
+class wh_Entity {
+}
+class wh_Feature {
+  + many : bool
+  + name : str
+}
+class wh_Import {
+  + importedNamespace : str
+}
+class wh_PackageDeclaration {
+  + name : str
+}
+class wh_Type {
+  + name : str
+}
+class wh_Wh {
+}
+AbstractElement <|-- wh_Import
+AbstractElement <|-- wh_PackageDeclaration
+AbstractElement <|-- wh_Type
+Type <|-- wh_DataType
+Type <|-- wh_Entity
+wh_AbstractElement "0..9999" --* "1..1" wh_Wh : elements0
+wh_AbstractElement "0..9999" --* "1..1" wh_PackageDeclaration : elements1
+wh_Entity "1..1" *-- "0..9999" wh_Feature : features5
+wh_Entity "1..1" -- "0..1" wh_Entity : superType4
+wh_Feature "1..1" -- "0..1" wh_Type : type7
+@enduml

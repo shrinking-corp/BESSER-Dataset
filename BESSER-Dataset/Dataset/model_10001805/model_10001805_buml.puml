@@ -1,0 +1,24 @@
+@startuml
+class Card {
+  + suit : int
+  + value : int
+}
+class Deck {
+}
+class GUI {
+}
+class GameBoard {
+  + discardPile : str
+  + garbagePile : str
+  + shelf : str
+}
+class Player {
+  + hand : Deck
+  + points : int
+}
+Card "0..9999" -- "0..1" Deck : Deck_Card
+Deck "0..1" -- "0..1" GameBoard : GameBoard_Deck
+GUI "0..1" -- "0..1" GameBoard : GameBoard_GUI
+Deck "0..1" -- "0..1" Player : Player_Deck
+GameBoard "0..1" -- "1..9999" Player : Player_GameBoard
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+class ContainerShape {
+}
+class DiNode {
+}
+abstract class di_ContainerShape {
+}
+abstract class di_DiNode {
+  + modelElement : str
+}
+class di_Diagram {
+}
+class di_EStringToStringMapEntry {
+}
+class di_Link {
+}
+class di_Shape {
+  + height : int
+  + width : int
+  + x : int
+  + y : int
+}
+ContainerShape <|-- di_Diagram
+ContainerShape <|-- di_Shape
+DiNode <|-- di_ContainerShape
+DiNode <|-- di_Link
+di_Diagram "1..1" *-- "0..9999" di_Link : links7
+di_DiNode "1..1" *-- "0..9999" di_EStringToStringMapEntry : properties8
+di_ContainerShape "1..1" *-- "0..9999" di_Shape : shapes0
+di_Link "1..1" -- "0..1" di_Shape : source4
+di_Link "0..9999" -- "1..1" di_Shape : sourceLinks1
+di_Link "1..1" -- "0..1" di_Shape : target5
+di_Link "0..9999" -- "1..1" di_Shape : targetLinks2
+@enduml

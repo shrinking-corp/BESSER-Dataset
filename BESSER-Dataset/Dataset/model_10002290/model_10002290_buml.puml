@@ -1,0 +1,58 @@
+@startuml
+class EmptyCell {
+}
+enum Enumeration {
+}
+class Food {
+}
+class Food1 {
+}
+class FoodCell {
+}
+class Game {
+}
+class GameSession {
+}
+class Map {
+}
+abstract class MapCell {
+}
+class Play_game_UseCase {
+}
+class Player {
+}
+class Snake {
+}
+class Snake1 {
+}
+class SnakeBody {
+}
+class Square {
+}
+class Start_new_game_UseCase {
+}
+class User_Actor {
+}
+class View_high_score_UseCase {
+}
+class Wall {
+}
+class WallCell {
+}
+Food "0..1" -- "0..1" FoodCell : Food_FoodCell
+GameSession "0..1" -- "0..1" Map : GameSession_Map
+GameSession "0..1" -- "1..9999" Player : GameSession_Player
+GameSession "0..1" -- "1..9999" Snake : GameSession_Snake
+Food1 "0..1" -- "0..1" Game : Game__Food
+Game "0..1" -- "0..1" Snake1 : Game__Snake
+Snake1 "0..1" -- "0..1" Square : Game__Square
+MapCell "1..1" -- "0..1" SnakeBody : MapCell_SnakeBody
+Map "0..1" -- "0..9999" MapCell : Map_Item
+Player "0..1" -- "0..1" Snake : Player_Snake
+Snake "0..1" -- "1..9999" SnakeBody : Snake_SnakeBody
+Food1 "0..1" -- "0..1" Square : Square__Food
+Play_game_UseCase "0..1" -- "0..1" User_Actor : User_Play_game
+Start_new_game_UseCase "0..1" -- "0..1" User_Actor : User_Start_new_game
+User_Actor "0..1" -- "0..1" View_high_score_UseCase : User_View_high_score
+Wall "0..1" -- "0..1" WallCell : Wall_WallCell
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+class Attendance {
+  + Date : str
+  + ID : str
+}
+class Database {
+  + Attendance : str
+  + Category : str
+}
+class Faculty {
+  + ID : str
+  + Password : str
+  + Username : str
+}
+class Login {
+  + Password : str
+  + Username : str
+  + login : Faculty
+}
+class Monitor {
+  + Date : date
+  + Location : str
+  + Time : int
+}
+class Student {
+  + First_Name : str
+  + ID : str
+  + Last_Name : str
+  + Password : str
+  + Username : str
+}
+Attendance "1..1" -- "1..1" Database : Attendance_Database
+Attendance "1..1" -- "1..1" Faculty : Faculty_Attendance
+Faculty "0..1" -- "1..1" Login : Faculty_Login
+Login "1..1" -- "1..1" Student : Student_Login
+Attendance "1..1" -- "1..1" Student : User_Login
+Monitor "0..9999" -- "1..1" Student : User_Message
+@enduml

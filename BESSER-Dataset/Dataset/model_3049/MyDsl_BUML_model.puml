@@ -1,0 +1,26 @@
+@startuml
+class Feature {
+}
+enum Type {
+  int
+  string
+}
+class myDsl_Attribute {
+  + type : str
+}
+class myDsl_Entity {
+  + name : str
+}
+class myDsl_Feature {
+  + name : str
+}
+class myDsl_Model {
+}
+class myDsl_Reference {
+}
+Feature <|-- myDsl_Attribute
+Feature <|-- myDsl_Reference
+myDsl_Entity "0..9999" --* "1..1" myDsl_Model : entities0
+myDsl_Entity "1..1" *-- "0..9999" myDsl_Feature : features1
+myDsl_Entity "0..1" -- "1..1" myDsl_Reference : type3
+@enduml

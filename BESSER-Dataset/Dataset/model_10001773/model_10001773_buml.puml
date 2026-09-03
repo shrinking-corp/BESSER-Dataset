@@ -1,0 +1,46 @@
+@startuml
+class Appliances {
+  + Off_status : bool
+  + On_status : bool
+}
+class Department {
+  + name : str
+}
+class FireAlarm {
+  + status : bool
+}
+class Fire_Alarm_system {
+  + system_Off : bool
+  + system_On : bool
+}
+class Home_Security_System {
+  + system_Off : bool
+  + system_On : bool
+}
+class Login {
+  + name : str
+  + password : str
+}
+class Owner {
+  + name : str
+}
+class Police {
+  + name : str
+}
+class securityAlarm {
+  + status : bool
+}
+class smokeAlarm {
+  + status : bool
+}
+class system {
+  + status : bool
+}
+Department "0..1" -- "0..1" Fire_Alarm_system : Department_Fire_Alarm_system
+FireAlarm "0..1" -- "0..1" Fire_Alarm_system : Fire_Alarm_system_FireAlarm
+Home_Security_System "0..1" -- "0..1" Police : Police_Home_Security_System
+Login "0..1" -- "0..1" Owner : access
+Login "0..1" -- "0..1" system : handle
+Home_Security_System "0..1" -- "0..1" securityAlarm : securityAlarm_Home_Security_System
+Fire_Alarm_system "0..1" -- "0..1" smokeAlarm : smokeAlarm_Fire_Alarm_system
+@enduml

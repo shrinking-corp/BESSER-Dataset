@@ -1,0 +1,120 @@
+@startuml
+enum SJAccessLevel {
+  PRIVATE
+  PROTECTED
+  PUBLIC
+}
+class SJBlock {
+}
+class SJExpression {
+}
+class SJMember {
+}
+class SJStatement {
+}
+class SJSymbol {
+}
+class smallJava_SJAssignment {
+}
+class smallJava_SJBlock {
+}
+class smallJava_SJBoolConstant {
+  + value : str
+}
+class smallJava_SJClass {
+  + name : str
+}
+class smallJava_SJExpression {
+}
+class smallJava_SJField {
+}
+class smallJava_SJIfBlock {
+}
+class smallJava_SJIfStatement {
+}
+class smallJava_SJImport {
+  + importedNamespace : str
+}
+class smallJava_SJIntConstant {
+  + value : int
+}
+class smallJava_SJMember {
+  + access : str
+  + name : str
+}
+class smallJava_SJMemberSelection {
+  + methodinvocation : bool
+}
+class smallJava_SJMethod {
+}
+class smallJava_SJMethodBody {
+}
+class smallJava_SJNew {
+}
+class smallJava_SJNull {
+}
+class smallJava_SJParameter {
+}
+class smallJava_SJProgram {
+  + name : str
+}
+class smallJava_SJReturn {
+}
+class smallJava_SJStatement {
+}
+class smallJava_SJStringConstant {
+  + value : str
+}
+class smallJava_SJSuper {
+}
+class smallJava_SJSymbol {
+  + name : str
+}
+class smallJava_SJSymbolRef {
+}
+class smallJava_SJThis {
+}
+class smallJava_SJVariableDeclaration {
+}
+SJBlock <|-- smallJava_SJIfBlock
+SJBlock <|-- smallJava_SJMethodBody
+SJExpression <|-- smallJava_SJAssignment
+SJExpression <|-- smallJava_SJBoolConstant
+SJExpression <|-- smallJava_SJIntConstant
+SJExpression <|-- smallJava_SJMemberSelection
+SJExpression <|-- smallJava_SJNew
+SJExpression <|-- smallJava_SJNull
+SJExpression <|-- smallJava_SJStringConstant
+SJExpression <|-- smallJava_SJSuper
+SJExpression <|-- smallJava_SJSymbolRef
+SJExpression <|-- smallJava_SJThis
+SJMember <|-- smallJava_SJField
+SJMember <|-- smallJava_SJMethod
+SJStatement <|-- smallJava_SJExpression
+SJStatement <|-- smallJava_SJIfStatement
+SJStatement <|-- smallJava_SJReturn
+SJStatement <|-- smallJava_SJVariableDeclaration
+SJSymbol <|-- smallJava_SJParameter
+SJSymbol <|-- smallJava_SJVariableDeclaration
+smallJava_SJExpression "0..9999" --* "1..1" smallJava_SJMemberSelection : args37
+smallJava_SJMethod "1..1" *-- "0..1" smallJava_SJMethodBody : body12
+smallJava_SJClass "0..9999" --* "1..1" smallJava_SJProgram : classes1
+smallJava_SJIfBlock "0..1" --* "1..1" smallJava_SJIfStatement : elseBlock21
+smallJava_SJExpression "0..1" --* "1..1" smallJava_SJReturn : expression14
+smallJava_SJExpression "0..1" --* "1..1" smallJava_SJVariableDeclaration : expression15
+smallJava_SJExpression "0..1" --* "1..1" smallJava_SJIfStatement : expression17
+smallJava_SJImport "0..9999" --* "1..1" smallJava_SJProgram : imports0
+smallJava_SJAssignment "1..1" *-- "0..1" smallJava_SJExpression : left27
+smallJava_SJMember "0..1" -- "1..1" smallJava_SJMemberSelection : member34
+smallJava_SJClass "1..1" *-- "0..9999" smallJava_SJMember : members6
+smallJava_SJMethod "1..1" *-- "0..9999" smallJava_SJParameter : params11
+smallJava_SJExpression "0..1" --* "1..1" smallJava_SJMemberSelection : receiver32
+smallJava_SJAssignment "1..1" *-- "0..1" smallJava_SJExpression : right29
+smallJava_SJBlock "1..1" *-- "0..9999" smallJava_SJStatement : statements24
+smallJava_SJClass "0..1" -- "1..1" smallJava_SJClass : superclass4
+smallJava_SJSymbol "0..1" -- "1..1" smallJava_SJSymbolRef : symbol40
+smallJava_SJIfBlock "0..1" --* "1..1" smallJava_SJIfStatement : thenBlock19
+smallJava_SJClass "0..1" -- "1..1" smallJava_SJSymbol : type25
+smallJava_SJClass "0..1" -- "1..1" smallJava_SJNew : type42
+smallJava_SJClass "0..1" -- "1..1" smallJava_SJMember : type8
+@enduml

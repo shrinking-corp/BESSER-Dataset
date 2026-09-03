@@ -1,0 +1,34 @@
+@startuml
+class Instruction {
+}
+class Primitive {
+}
+class Primitives_Back {
+}
+abstract class Primitives_Expression {
+  + eval(Primitives_context : str) : str
+}
+class Primitives_Forward {
+}
+abstract class Primitives_Instruction {
+}
+class Primitives_Left {
+}
+class Primitives_LogoProgram {
+}
+abstract class Primitives_Primitive {
+}
+class Primitives_Right {
+}
+Instruction <|-- Primitives_Expression
+Instruction <|-- Primitives_Primitive
+Primitive <|-- Primitives_Back
+Primitive <|-- Primitives_Forward
+Primitive <|-- Primitives_Left
+Primitive <|-- Primitives_Right
+Primitives_Expression "1..1" --* "1..1" Primitives_Left : angle4
+Primitives_Expression "1..1" --* "1..1" Primitives_Right : angle6
+Primitives_Instruction "0..9999" --* "1..1" Primitives_LogoProgram : instructions0
+Primitives_Expression "1..1" --* "1..1" Primitives_Forward : steps1
+Primitives_Back "1..1" *-- "1..1" Primitives_Expression : steps2
+@enduml

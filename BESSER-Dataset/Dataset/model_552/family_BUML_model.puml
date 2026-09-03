@@ -1,0 +1,24 @@
+@startuml
+class NamedElement {
+}
+class family_Family {
+  + familyIncome : float
+  + numberOfComponents : int
+}
+class family_Members {
+  + hasChild : bool
+}
+abstract class family_NamedElement {
+  + name : str
+}
+class family_Person {
+  + age : int
+  + gender : str
+  + surname : str
+}
+NamedElement <|-- family_Family
+NamedElement <|-- family_Members
+NamedElement <|-- family_Person
+family_Family "1..1" *-- "0..9999" family_Members : member1
+family_Members "1..1" -- "1..1" family_Person : person0
+@enduml

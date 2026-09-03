@@ -1,0 +1,79 @@
+@startuml
+class CacheInstruction {
+}
+class ControlFlowInstruction {
+}
+class DataAccessPattern {
+}
+class IOInstruction {
+}
+class SynchronisationInstruction {
+}
+class llp_Block {
+}
+abstract class llp_CacheInstruction {
+}
+class llp_CommitInstruction {
+}
+class llp_ControlFlowBranchingInstruction {
+}
+abstract class llp_ControlFlowInstruction {
+}
+abstract class llp_DataAccessPattern {
+}
+abstract class llp_IOInstruction {
+}
+class llp_LockInstruction {
+}
+class llp_LowLevelProgram {
+}
+class llp_MemoryReference {
+  + address : str
+}
+class llp_ParenthesisInstruction {
+}
+class llp_ReadInstruction {
+}
+class llp_RepetitionInstruction {
+  + numberOfRepetitions : int
+}
+class llp_SkipInstruction {
+}
+class llp_SpawnInstruction {
+}
+abstract class llp_SynchronisationInstruction {
+}
+class llp_Task {
+  + name : str
+}
+class llp_UnlockInstruction {
+}
+class llp_WriteInstruction {
+}
+CacheInstruction <|-- llp_CommitInstruction
+ControlFlowInstruction <|-- llp_ControlFlowBranchingInstruction
+ControlFlowInstruction <|-- llp_ParenthesisInstruction
+ControlFlowInstruction <|-- llp_RepetitionInstruction
+ControlFlowInstruction <|-- llp_SkipInstruction
+DataAccessPattern <|-- llp_CacheInstruction
+DataAccessPattern <|-- llp_ControlFlowInstruction
+DataAccessPattern <|-- llp_IOInstruction
+DataAccessPattern <|-- llp_SpawnInstruction
+DataAccessPattern <|-- llp_SynchronisationInstruction
+IOInstruction <|-- llp_ReadInstruction
+IOInstruction <|-- llp_WriteInstruction
+SynchronisationInstruction <|-- llp_LockInstruction
+SynchronisationInstruction <|-- llp_UnlockInstruction
+llp_Block "1..1" --* "1..1" llp_RepetitionInstruction : block18
+llp_Block "1..1" --* "1..1" llp_ParenthesisInstruction : block22
+llp_Block "1..1" --* "1..1" llp_Task : block3
+llp_Block "1..1" *-- "0..9999" llp_DataAccessPattern : dataAccessPatterns6
+llp_Block "1..1" --* "1..1" llp_ControlFlowBranchingInstruction : leftHandSideBlock13
+llp_Block "1..1" --* "1..1" llp_LowLevelProgram : mainBlock1
+llp_MemoryReference "1..1" --* "1..1" llp_SynchronisationInstruction : memoryReference20
+llp_IOInstruction "1..1" *-- "1..1" llp_MemoryReference : memoryReference8
+llp_CommitInstruction "1..1" *-- "0..1" llp_MemoryReference : memoryReference9
+llp_Block "1..1" --* "1..1" llp_ControlFlowBranchingInstruction : rightHandSideBlock15
+llp_SpawnInstruction "1..1" -- "1..1" llp_Task : task11
+llp_LowLevelProgram "1..1" *-- "0..9999" llp_Task : tasks0
+@enduml

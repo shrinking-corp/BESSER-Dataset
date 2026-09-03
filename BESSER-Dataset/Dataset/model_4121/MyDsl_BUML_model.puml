@@ -1,0 +1,79 @@
+@startuml
+class myDsl_And {
+}
+class myDsl_Command {
+  + nom : str
+}
+class myDsl_Commands {
+}
+class myDsl_Definiton {
+}
+class myDsl_EObject {
+}
+class myDsl_Eq {
+}
+class myDsl_Expr {
+}
+class myDsl_ExprSimple {
+  + mot : str
+}
+class myDsl_ExprTerm {
+  + termSym : str
+  + termVar : str
+}
+class myDsl_Exprs {
+}
+class myDsl_Function {
+  + funName : str
+}
+class myDsl_Input {
+  + v : str
+  + v2 : str
+}
+class myDsl_Lexpr {
+}
+class myDsl_Model {
+}
+class myDsl_Not {
+  + non : str
+}
+class myDsl_Or {
+}
+class myDsl_Output {
+  + v : str
+  + v2 : str
+}
+class myDsl_Vars {
+  + v1 : str
+  + v2 : str
+}
+myDsl_Command "1..1" *-- "0..1" myDsl_Commands : c123
+myDsl_Command "1..1" *-- "0..1" myDsl_Commands : c232
+myDsl_Command "0..9999" --* "1..1" myDsl_Commands : c9
+myDsl_Commands "0..1" --* "1..1" myDsl_Definiton : commandList5
+myDsl_Definiton "0..1" --* "1..1" myDsl_Function : def_1
+myDsl_Expr "0..1" --* "1..1" myDsl_Exprs : exp11
+myDsl_Command "1..1" *-- "0..1" myDsl_Expr : exp126
+myDsl_Command "1..1" *-- "0..1" myDsl_Expr : exp20
+myDsl_Command "1..1" *-- "0..1" myDsl_Expr : exp229
+myDsl_EObject "0..1" --* "1..1" myDsl_Eq : exp58
+myDsl_Expr "0..9999" --* "1..1" myDsl_Lexpr : exp66
+myDsl_Eq "0..1" --* "1..1" myDsl_Not : expEq51
+myDsl_And "0..1" --* "1..1" myDsl_Expr : expEt37
+myDsl_Expr "0..9999" --* "1..1" myDsl_Exprs : expL12
+myDsl_Command "1..1" *-- "0..1" myDsl_Exprs : expL17
+myDsl_Not "0..9999" --* "1..1" myDsl_Or : expNon248
+myDsl_Not "0..1" --* "1..1" myDsl_Or : expNon46
+myDsl_And "1..1" *-- "0..9999" myDsl_Or : expOu243
+myDsl_And "1..1" *-- "0..1" myDsl_Or : expOu41
+myDsl_Expr "1..1" *-- "0..1" myDsl_ExprTerm : expTerminale39
+myDsl_Expr "0..1" --* "1..1" myDsl_ExprSimple : expr63
+myDsl_EObject "0..1" --* "1..1" myDsl_Eq : exprEq153
+myDsl_EObject "0..1" --* "1..1" myDsl_Eq : exprEq255
+myDsl_Expr "1..1" *-- "0..1" myDsl_ExprSimple : exprSimple35
+myDsl_Definiton "1..1" *-- "0..1" myDsl_Input : inputVars3
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_Lexpr : lexpr61
+myDsl_Function "0..9999" --* "1..1" myDsl_Model : model0
+myDsl_Definiton "1..1" *-- "0..1" myDsl_Output : outputVars7
+myDsl_Command "1..1" *-- "0..1" myDsl_Vars : varL15
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+class BinaryExpression {
+}
+class Expression {
+}
+class FeatureCallExpression {
+}
+class Statement {
+}
+class simple_lang_ArithmeticExpression {
+}
+class simple_lang_AssignmentStatement {
+}
+abstract class simple_lang_BinaryExpression {
+  + operator : str
+}
+class simple_lang_ComparisonExpression {
+}
+abstract class simple_lang_Expression {
+}
+class simple_lang_ExpressionStatement {
+}
+abstract class simple_lang_FeatureCallExpression {
+  + name : str
+}
+class simple_lang_IfStatement {
+}
+class simple_lang_LogicalExpression {
+}
+class simple_lang_MethodCallExpression {
+}
+class simple_lang_PropertyCallExpression {
+}
+class simple_lang_SimpleLang {
+}
+abstract class simple_lang_Statement {
+}
+class simple_lang_Type {
+}
+class simple_lang_WhileStatement {
+}
+BinaryExpression <|-- simple_lang_ArithmeticExpression
+BinaryExpression <|-- simple_lang_ComparisonExpression
+BinaryExpression <|-- simple_lang_LogicalExpression
+Expression <|-- simple_lang_BinaryExpression
+Expression <|-- simple_lang_FeatureCallExpression
+FeatureCallExpression <|-- simple_lang_MethodCallExpression
+FeatureCallExpression <|-- simple_lang_PropertyCallExpression
+Statement <|-- simple_lang_AssignmentStatement
+Statement <|-- simple_lang_ExpressionStatement
+Statement <|-- simple_lang_IfStatement
+Statement <|-- simple_lang_WhileStatement
+simple_lang_Expression "0..9999" --* "1..1" simple_lang_MethodCallExpression : arguments9
+simple_lang_Expression "1..1" --* "1..1" simple_lang_IfStatement : condition13
+simple_lang_Expression "1..1" --* "1..1" simple_lang_WhileStatement : condition21
+simple_lang_IfStatement "1..1" *-- "0..9999" simple_lang_Statement : elseBody18
+simple_lang_Expression "1..1" --* "1..1" simple_lang_ExpressionStatement : expression11
+simple_lang_IfStatement "1..1" *-- "1..9999" simple_lang_Statement : ifBody15
+simple_lang_BinaryExpression "1..1" *-- "1..1" simple_lang_Expression : lhs2
+simple_lang_AssignmentStatement "1..1" *-- "1..1" simple_lang_Expression : lhs26
+simple_lang_AssignmentStatement "1..1" *-- "1..1" simple_lang_Expression : rhs28
+simple_lang_BinaryExpression "1..1" *-- "1..1" simple_lang_Expression : rhs4
+simple_lang_Statement "1..9999" --* "1..1" simple_lang_WhileStatement : statement23
+simple_lang_SimpleLang "1..1" *-- "0..9999" simple_lang_Statement : statements0
+simple_lang_Expression "0..1" --* "1..1" simple_lang_FeatureCallExpression : target7
+simple_lang_Expression "1..1" *-- "1..1" simple_lang_Type : type1
+@enduml

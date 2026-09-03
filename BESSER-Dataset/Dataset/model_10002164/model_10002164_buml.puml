@@ -1,0 +1,59 @@
+@startuml
+class Bartender {
+  + name : str
+  + staff_Id : str
+}
+class Chef {
+  + name : str
+  + staff_Id : str
+}
+class Customer {
+  + cust_Id : str
+  + cust_name : str
+}
+class DrinksItem {
+  + drinkType : str
+}
+class FoodItem {
+  + drinkType : str
+}
+class Karyawan {
+  + contact : str
+  + name : str
+  + staff_Id : str
+}
+class Kasir {
+  + cust_id : str
+  + order_id : str
+}
+class Manager_Owner {
+}
+class Menu {
+  + category : str
+  + drinksItem : DrinksItem
+  + foodItem : FoodItem
+}
+class MenuItem {
+  + available : bool
+  + item_Id : int
+  + item_description : str
+  + item_price : int
+  + quantity : int
+}
+class Order {
+  + cust_id : str
+  + cust_name : str
+  + drinksItem : DrinksItem
+  + foodItem : FoodItem
+  + numTable : int
+  + order_Id : str
+}
+class Report {
+  + orders : str
+  + profit : str
+  + totalSales : str
+}
+Menu "0..1" -- "0..1" MenuItem : MenuItem_Menu
+DrinksItem "0..1" -- "0..1" Order : Order_DrinksItem
+FoodItem "0..1" -- "0..1" Order : Order_FoodItem
+@enduml

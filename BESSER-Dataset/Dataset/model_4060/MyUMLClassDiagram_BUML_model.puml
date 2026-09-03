@@ -1,0 +1,49 @@
+@startuml
+enum EReturnType {
+  integer
+  string
+  void
+}
+enum EType {
+  integer
+  string
+}
+enum EVisibility {
+  private
+  protected
+  public
+}
+class NamedElement {
+}
+class myumlclassdiagram_Attribute {
+  + Type : str
+  + Visibility : str
+}
+class myumlclassdiagram_Class {
+  + Visibility : str
+}
+class myumlclassdiagram_Method {
+  + Returns : str
+  + Visibility : str
+}
+abstract class myumlclassdiagram_NamedElement {
+  + Name : str
+}
+class myumlclassdiagram_Package {
+}
+class myumlclassdiagram_Parameter {
+  + Type : str
+}
+NamedElement <|-- myumlclassdiagram_Attribute
+NamedElement <|-- myumlclassdiagram_Class
+NamedElement <|-- myumlclassdiagram_Method
+NamedElement <|-- myumlclassdiagram_Package
+NamedElement <|-- myumlclassdiagram_Parameter
+myumlclassdiagram_Attribute "0..9999" --* "1..1" myumlclassdiagram_Class : Attributes1
+myumlclassdiagram_Class "0..9999" --* "1..1" myumlclassdiagram_Package : Classes0
+myumlclassdiagram_Class "1..1" *-- "0..9999" myumlclassdiagram_Method : Methods2
+myumlclassdiagram_Attribute "1..1" -- "1..1" myumlclassdiagram_Class : Owner4
+myumlclassdiagram_Class "1..1" -- "1..1" myumlclassdiagram_Method : Owner7
+myumlclassdiagram_Method "0..1" -- "1..1" myumlclassdiagram_Parameter : Owner9
+myumlclassdiagram_Method "1..1" *-- "0..9999" myumlclassdiagram_Parameter : Parameters5
+@enduml

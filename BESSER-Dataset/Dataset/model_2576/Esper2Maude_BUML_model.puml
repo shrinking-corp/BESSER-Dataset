@@ -1,0 +1,113 @@
+@startuml
+class esper2Maude_ComparisonOperator {
+  + eq : str
+  + ge : str
+  + gt : str
+  + le : str
+  + lt : str
+  + neq : str
+}
+class esper2Maude_Event {
+  + name : str
+}
+class esper2Maude_EventProperty {
+  + name : str
+  + type : str
+}
+class esper2Maude_Every {
+  + eventName : str
+  + eventVariable : str
+}
+class esper2Maude_Field {
+  + eventPropName : str
+  + eventVariable : str
+  + star : str
+}
+class esper2Maude_FilterEvent {
+}
+class esper2Maude_FilterFrom {
+  + eventName : str
+  + eventVariable : str
+}
+class esper2Maude_FilterOperator {
+}
+class esper2Maude_FilterPart {
+  + dec : int
+  + eventPropName : str
+  + eventVariable : str
+  + f : str
+  + neg : str
+  + num : int
+  + str : str
+  + t : str
+}
+class esper2Maude_FollowedBy {
+}
+class esper2Maude_LastSelectEntry {
+}
+class esper2Maude_LogicalOperator {
+  + and_ : str
+  + or_ : str
+}
+class esper2Maude_Model {
+}
+class esper2Maude_NonLastSelectEntry {
+}
+class esper2Maude_Pattern {
+  + name : str
+  + num : int
+}
+class esper2Maude_Schema {
+  + name : str
+}
+class esper2Maude_SelectEntry {
+  + alias : str
+  + groupOp : str
+}
+class esper2Maude_SubFilterFollowedBy {
+  + eventName : str
+  + eventVariable : str
+}
+class esper2Maude_WhereFilter {
+  + num : int
+  + timer : str
+}
+class esper2Maude_Window {
+  + num : int
+  + typeBatch : str
+  + typeTime : str
+}
+esper2Maude_ComparisonOperator "0..1" --* "1..1" esper2Maude_FilterOperator : comparison67
+esper2Maude_NonLastSelectEntry "1..1" *-- "0..1" esper2Maude_SelectEntry : entry72
+esper2Maude_LastSelectEntry "1..1" *-- "0..1" esper2Maude_SelectEntry : entry74
+esper2Maude_Event "0..1" --* "1..1" esper2Maude_Pattern : event8
+esper2Maude_Every "0..1" --* "1..1" esper2Maude_SubFilterFollowedBy : every51
+esper2Maude_Field "0..1" --* "1..1" esper2Maude_SelectEntry : field77
+esper2Maude_FilterEvent "0..1" --* "1..1" esper2Maude_FilterFrom : filter37
+esper2Maude_FilterEvent "0..1" --* "1..1" esper2Maude_SubFilterFollowedBy : filter48
+esper2Maude_Every "1..1" *-- "0..1" esper2Maude_FilterEvent : filter53
+esper2Maude_FilterEvent "0..1" --* "1..1" esper2Maude_WhereFilter : filterEventL18
+esper2Maude_FilterEvent "0..1" --* "1..1" esper2Maude_WhereFilter : filterEventR24
+esper2Maude_Every "1..1" *-- "0..1" esper2Maude_FilterFrom : filterFrom56
+esper2Maude_FilterEvent "1..1" *-- "0..1" esper2Maude_FilterPart : filterLeftHandSide59
+esper2Maude_FilterEvent "1..1" *-- "0..1" esper2Maude_FilterOperator : filterOp61
+esper2Maude_FilterOperator "0..1" --* "1..1" esper2Maude_WhereFilter : filterOpL19
+esper2Maude_FilterOperator "0..1" --* "1..1" esper2Maude_WhereFilter : filterOpR21
+esper2Maude_FilterEvent "1..1" *-- "0..1" esper2Maude_FilterPart : filterRightHandSide64
+esper2Maude_FilterFrom "1..1" *-- "0..1" esper2Maude_FollowedBy : followedBy27
+esper2Maude_FilterFrom "0..1" --* "1..1" esper2Maude_Pattern : fromFilter14
+esper2Maude_FilterFrom "0..1" --* "1..1" esper2Maude_FilterFrom : left30
+esper2Maude_FollowedBy "1..1" *-- "0..1" esper2Maude_SubFilterFollowedBy : left40
+esper2Maude_FilterOperator "1..1" *-- "0..1" esper2Maude_LogicalOperator : logical69
+esper2Maude_FilterFrom "1..1" *-- "0..1" esper2Maude_LogicalOperator : op32
+esper2Maude_Model "1..1" *-- "0..9999" esper2Maude_Pattern : patterns1
+esper2Maude_EventProperty "0..1" --* "1..1" esper2Maude_Schema : prop3
+esper2Maude_EventProperty "0..9999" --* "1..1" esper2Maude_Schema : props5
+esper2Maude_FilterFrom "0..1" --* "1..1" esper2Maude_FilterFrom : right35
+esper2Maude_FollowedBy "1..1" *-- "0..1" esper2Maude_SubFilterFollowedBy : right42
+esper2Maude_Model "1..1" *-- "0..9999" esper2Maude_Schema : schemas0
+esper2Maude_NonLastSelectEntry "0..9999" --* "1..1" esper2Maude_Pattern : selectEntries10
+esper2Maude_LastSelectEntry "0..1" --* "1..1" esper2Maude_Pattern : selectEntry12
+esper2Maude_FollowedBy "1..1" *-- "0..1" esper2Maude_WhereFilter : whereFilter45
+esper2Maude_Pattern "1..1" *-- "0..1" esper2Maude_Window : win16
+@enduml

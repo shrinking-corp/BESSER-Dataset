@@ -1,0 +1,39 @@
+@startuml
+class graph_Cause {
+  + name : str
+  + type : str
+  + version : str
+}
+class graph_Dependency {
+  + id : str
+  + locality : str
+}
+class graph_DocumentRoot {
+  + mixed : str
+}
+class graph_EStringToStringMapEntry {
+}
+class graph_EnvironmentGraph {
+}
+class graph_Node {
+  + containerName : str
+  + id : str
+  + nodeName : str
+  + unitName : str
+  + unitVersion : str
+}
+graph_Cause "0..9999" --* "1..1" graph_Dependency : cause0
+graph_Cause "0..9999" --* "1..1" graph_DocumentRoot : cause10
+graph_Dependency "0..9999" --* "1..1" graph_EnvironmentGraph : dependencies24
+graph_Dependency "0..9999" -- "1..1" graph_Node : dependencies30
+graph_Dependency "0..9999" --* "1..1" graph_DocumentRoot : dependency13
+graph_Dependency "1..1" -- "0..1" graph_Node : destination1
+graph_DocumentRoot "1..1" *-- "0..9999" graph_EnvironmentGraph : environmentGraph16
+graph_Dependency "0..9999" -- "1..1" graph_Node : isRequiredBy33
+graph_DocumentRoot "1..1" *-- "0..9999" graph_Node : node18
+graph_EnvironmentGraph "1..1" *-- "1..9999" graph_Node : node21
+graph_EnvironmentGraph "1..1" -- "0..9999" graph_Node : origins27
+graph_Dependency "1..1" -- "0..1" graph_Node : source3
+graph_DocumentRoot "1..1" *-- "0..9999" graph_EStringToStringMapEntry : xMLNSPrefixMap6
+graph_DocumentRoot "1..1" *-- "0..9999" graph_EStringToStringMapEntry : xSISchemaLocation7
+@enduml

@@ -1,0 +1,121 @@
+@startuml
+enum TypeType {
+  text
+  xml
+}
+class qsar_BibTeXMLEntriesClass {
+}
+class qsar_DescriptorType {
+  + id : str
+  + ontologyid : str
+  + provider : str
+}
+class qsar_DescriptorlistType {
+}
+class qsar_DescriptorproviderType {
+  + id : str
+  + name : str
+  + uRL : str
+  + vendor : str
+  + version : str
+}
+class qsar_DescriptorresultType {
+  + descriptorid : str
+  + errorString : str
+  + structureid : str
+}
+class qsar_DescriptorresultlistsType {
+}
+class qsar_DescriptorvalueType {
+  + index : str
+  + label : str
+  + value : str
+}
+class qsar_DocumentRoot {
+  + mixed : str
+}
+class qsar_EStringToStringMapEntry {
+}
+class qsar_MetadataType {
+  + authors : str
+  + datasetname : str
+  + description : str
+  + license : str
+  + responseLabel : str
+  + responsePlacement : str
+  + uRL : str
+}
+class qsar_ParameterType {
+  + key : str
+  + value : str
+}
+class qsar_PreprocessingStepType {
+  + id : str
+  + name : str
+  + namespace : str
+  + order : str
+  + vendor : str
+}
+class qsar_PreprocessingType {
+}
+class qsar_QsarType {
+}
+class qsar_ResourceType {
+  + checksum : str
+  + containsErrors : str
+  + excluded : str
+  + file : str
+  + id : str
+  + name : str
+  + no2d : str
+  + no3d : str
+  + noMols : str
+  + type : str
+  + uRL : str
+}
+class qsar_ResponseType {
+  + structureID : str
+  + unit : str
+  + value : str
+}
+class qsar_ResponsesListType {
+}
+class qsar_ResponseunitType {
+  + description : str
+  + id : str
+  + name : str
+  + shortname : str
+  + uRL : str
+}
+class qsar_StructureType {
+  + has2d : str
+  + has3d : str
+  + id : str
+  + inchi : str
+  + problem : str
+  + resourceid : str
+  + resourceindex : str
+}
+class qsar_StructurelistType {
+}
+qsar_DescriptorlistType "0..1" --* "1..1" qsar_QsarType : descriptorlist16
+qsar_DescriptorproviderType "0..9999" --* "1..1" qsar_QsarType : descriptorproviders19
+qsar_DescriptorresultType "0..9999" --* "1..1" qsar_DescriptorresultlistsType : descriptorresult1
+qsar_DescriptorresultlistsType "0..1" --* "1..1" qsar_QsarType : descriptorresultlist31
+qsar_DescriptorType "0..9999" --* "1..1" qsar_DescriptorlistType : descriptors0
+qsar_DescriptorresultType "1..1" *-- "0..9999" qsar_DescriptorvalueType : descriptorvalue2
+qsar_MetadataType "1..1" --* "1..1" qsar_QsarType : metadata28
+qsar_DescriptorType "1..1" *-- "0..9999" qsar_ParameterType : parameter4
+qsar_PreprocessingType "0..1" --* "1..1" qsar_QsarType : preprocessing21
+qsar_PreprocessingStepType "0..9999" --* "1..1" qsar_PreprocessingType : preprocessingStep13
+qsar_DocumentRoot "1..1" *-- "0..9999" qsar_QsarType : qsar10
+qsar_BibTeXMLEntriesClass "0..9999" --* "1..1" qsar_MetadataType : reference12
+qsar_ResourceType "0..9999" --* "1..1" qsar_StructurelistType : resources37
+qsar_ResponseType "0..9999" --* "1..1" qsar_ResponsesListType : response35
+qsar_QsarType "1..1" *-- "0..1" qsar_ResponsesListType : responselist24
+qsar_QsarType "1..1" *-- "0..9999" qsar_ResponseunitType : responseunit26
+qsar_ResourceType "1..1" *-- "1..9999" qsar_StructureType : structure34
+qsar_QsarType "1..1" *-- "0..1" qsar_StructurelistType : structurelist14
+qsar_DocumentRoot "1..1" *-- "0..9999" qsar_EStringToStringMapEntry : xMLNSPrefixMap6
+qsar_DocumentRoot "1..1" *-- "0..9999" qsar_EStringToStringMapEntry : xSISchemaLocation7
+@enduml

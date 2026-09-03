@@ -1,0 +1,235 @@
+@startuml
+class Model {
+}
+class creating_aux {
+}
+class exp_aux {
+}
+class expression {
+}
+class expression_aux {
+}
+class newBlock {
+}
+class simpleJava_MODIFIER {
+  + modificador : str
+}
+class simpleJava_Model {
+}
+class simpleJava_arglist {
+  + nomeParametro : str
+}
+class simpleJava_aux {
+}
+class simpleJava_bit_expression {
+  + operador : str
+}
+class simpleJava_class_declaration {
+  + nomeClasse : str
+}
+class simpleJava_compilation_unit {
+}
+class simpleJava_constructor_declaration {
+  + nomeContrutor : str
+}
+class simpleJava_creating_aux {
+}
+class simpleJava_creating_expression {
+}
+class simpleJava_do_statement {
+}
+class simpleJava_doc_comment {
+  + comentario : str
+}
+class simpleJava_exp_aux {
+}
+class simpleJava_expression {
+  + identificador : str
+}
+class simpleJava_expression_aux {
+  + operador : str
+}
+class simpleJava_field_declaration {
+}
+class simpleJava_for_statement {
+}
+class simpleJava_if_statement {
+}
+class simpleJava_import_statement {
+}
+class simpleJava_interface_declaration {
+  + nomeInterface : str
+}
+class simpleJava_literal_expression {
+  + decimal : str
+  + inteiro : str
+  + l_float : str
+  + string : str
+}
+class simpleJava_logical_expression {
+  + operador : str
+}
+class simpleJava_mais_aux {
+  + operador : str
+}
+class simpleJava_method_declaration {
+  + nomeMetodo : str
+}
+class simpleJava_name {
+  + nome : str
+}
+class simpleJava_newBlock {
+}
+class simpleJava_numeric_expression {
+  + operador : str
+}
+class simpleJava_package_name_aux {
+  + nomePacote : str
+}
+class simpleJava_package_statement {
+}
+class simpleJava_parameter {
+  + nomeParametro : str
+}
+class simpleJava_parameter_list {
+}
+class simpleJava_statement {
+  + break_ : str
+  + continue_ : str
+}
+class simpleJava_statement_block {
+}
+class simpleJava_static_initializer {
+}
+class simpleJava_switch_statement {
+}
+class simpleJava_try_statement {
+}
+class simpleJava_type {
+}
+class simpleJava_type_declaration {
+}
+class simpleJava_type_specifier {
+  + nome : str
+}
+class simpleJava_variable_declaration {
+}
+class simpleJava_variable_declarator {
+  + nomeVariavel : str
+  + op : str
+}
+class simpleJava_variable_initializer {
+}
+class simpleJava_while_statement {
+}
+class type_declaration {
+}
+class variable_declarator {
+}
+Model <|-- simpleJava_compilation_unit
+creating_aux <|-- simpleJava_aux
+exp_aux <|-- simpleJava_type
+expression <|-- simpleJava_exp_aux
+expression_aux <|-- simpleJava_aux
+expression_aux <|-- simpleJava_expression
+expression_aux <|-- simpleJava_name
+newBlock <|-- simpleJava_constructor_declaration
+type_declaration <|-- simpleJava_doc_comment
+variable_declarator <|-- simpleJava_arglist
+simpleJava_arglist "0..1" --* "1..1" simpleJava_creating_aux : argumentos215
+simpleJava_bit_expression "0..1" --* "1..1" simpleJava_expression : bit199
+simpleJava_if_statement "1..1" *-- "0..1" simpleJava_statement : blcoIf116
+simpleJava_statement_block "0..1" --* "1..1" simpleJava_try_statement : blocoCatch155
+simpleJava_constructor_declaration "1..1" *-- "0..1" simpleJava_statement_block : blocoConstrutor176
+simpleJava_do_statement "1..1" *-- "0..1" simpleJava_statement : blocoDo122
+simpleJava_if_statement "1..1" *-- "0..1" simpleJava_statement : blocoElse119
+simpleJava_statement_block "0..1" --* "1..1" simpleJava_static_initializer : blocoEstatico179
+simpleJava_statement_block "0..1" --* "1..1" simpleJava_try_statement : blocoFinally158
+simpleJava_for_statement "1..1" *-- "0..1" simpleJava_statement : blocoFor146
+simpleJava_method_declaration "1..1" *-- "0..1" simpleJava_statement_block : blocoMetodo53
+simpleJava_statement "0..1" --* "1..1" simpleJava_switch_statement : blocoSwitch167
+simpleJava_statement_block "0..1" --* "1..1" simpleJava_try_statement : blocoTry149
+simpleJava_statement_block "0..1" --* "1..1" simpleJava_variable_declaration : blocoVariavel102
+simpleJava_statement "0..1" --* "1..1" simpleJava_while_statement : blocoWhile131
+simpleJava_doc_comment "0..1" --* "1..1" simpleJava_field_declaration : comentario36
+simpleJava_statement "0..9999" --* "1..1" simpleJava_statement_block : corpo60
+simpleJava_class_declaration "1..1" *-- "0..9999" simpleJava_field_declaration : corpoClasse22
+simpleJava_do_statement "0..1" --* "1..1" simpleJava_statement : corpoDoWhile72
+simpleJava_for_statement "0..1" --* "1..1" simpleJava_statement : corpoFor76
+simpleJava_if_statement "0..1" --* "1..1" simpleJava_statement : corpoIf70
+simpleJava_field_declaration "0..9999" --* "1..1" simpleJava_interface_declaration : corpoInterface33
+simpleJava_statement "1..1" *-- "0..1" simpleJava_switch_statement : corpoSwitchCase80
+simpleJava_statement "0..1" --* "1..1" simpleJava_statement : corpoSynchronize86
+simpleJava_statement "1..1" *-- "0..1" simpleJava_try_statement : corpoTryCatch78
+simpleJava_statement "1..1" *-- "0..1" simpleJava_while_statement : corpoWhile74
+simpleJava_compilation_unit "1..1" *-- "0..9999" simpleJava_type_declaration : declaracao3
+simpleJava_class_declaration "0..1" --* "1..1" simpleJava_type_declaration : declaracaoClasse10
+simpleJava_class_declaration "0..9999" --* "1..1" simpleJava_class_declaration : declaracaoClasse25
+simpleJava_constructor_declaration "0..1" --* "1..1" simpleJava_field_declaration : declaracaoConstrutor40
+simpleJava_interface_declaration "0..1" --* "1..1" simpleJava_type_declaration : declaracaoInterface12
+simpleJava_field_declaration "1..1" *-- "0..1" simpleJava_method_declaration : declaracaoMetodo38
+simpleJava_variable_declaration "1..1" *-- "0..9999" simpleJava_variable_declarator : declaracaoVariaveis100
+simpleJava_for_statement "1..1" *-- "0..1" simpleJava_variable_declaration : declaracaoVariavel134
+simpleJava_field_declaration "1..1" *-- "0..1" simpleJava_variable_declaration : declaracaoVariavel42
+simpleJava_statement "1..1" *-- "0..1" simpleJava_variable_declaration : declaracaoVariavel62
+simpleJava_aux "1..1" *-- "0..1" simpleJava_expression : espressao218
+simpleJava_expression "0..1" --* "1..1" simpleJava_if_statement : espressaoIf113
+simpleJava_field_declaration "1..1" *-- "0..1" simpleJava_static_initializer : estatico44
+simpleJava_expression "0..1" --* "1..1" simpleJava_statement : exececao91
+simpleJava_expression "0..1" --* "1..1" simpleJava_expression_aux : exp207
+simpleJava_expression "0..1" --* "1..1" simpleJava_logical_expression : exp220
+simpleJava_exp_aux "1..1" *-- "0..1" simpleJava_expression : expressao193
+simpleJava_bit_expression "1..1" *-- "0..1" simpleJava_expression : expressao223
+simpleJava_expression "0..1" --* "1..1" simpleJava_numeric_expression : expressao226
+simpleJava_expression "0..1" --* "1..1" simpleJava_statement : expressao65
+simpleJava_expression "0..9999" --* "1..1" simpleJava_switch_statement : expressaoCases164
+simpleJava_expression "0..1" --* "1..1" simpleJava_for_statement : expressaoDeclaracao137
+simpleJava_expression "0..1" --* "1..1" simpleJava_for_statement : expressaoFor140
+simpleJava_expression "0..1" --* "1..1" simpleJava_for_statement : expressaoIncremento143
+simpleJava_creating_expression "1..1" *-- "0..1" simpleJava_expression : expressaoNew188
+simpleJava_expression "0..1" --* "1..1" simpleJava_switch_statement : expressaoSwitch161
+simpleJava_expression "0..1" --* "1..1" simpleJava_statement : expressaoSynchronized82
+simpleJava_expression "0..1" --* "1..1" simpleJava_variable_initializer : expressaoVariavel107
+simpleJava_do_statement "1..1" *-- "0..1" simpleJava_expression : expressaoWhile125
+simpleJava_expression "0..1" --* "1..1" simpleJava_while_statement : expressaoWhile128
+simpleJava_expression_aux "0..1" --* "1..1" simpleJava_expression_aux : expressoes213
+simpleJava_arglist "1..1" *-- "0..9999" simpleJava_expression : expressoesArgumentos229
+simpleJava_class_declaration "1..1" *-- "0..9999" simpleJava_name : implementosClasse19
+simpleJava_compilation_unit "1..1" *-- "0..9999" simpleJava_import_statement : importes1
+simpleJava_expression "1..1" *-- "0..1" simpleJava_literal_expression : literal204
+simpleJava_expression "1..1" *-- "0..1" simpleJava_logical_expression : logical195
+simpleJava_MODIFIER "0..1" --* "1..1" simpleJava_constructor_declaration : modificador170
+simpleJava_MODIFIER "0..1" --* "1..1" simpleJava_variable_declaration : modificador94
+simpleJava_MODIFIER "0..1" --* "1..1" simpleJava_method_declaration : modificadorMetodo46
+simpleJava_MODIFIER "0..9999" --* "1..1" simpleJava_class_declaration : modificadores14
+simpleJava_MODIFIER "0..9999" --* "1..1" simpleJava_interface_declaration : modificadores27
+simpleJava_statement "1..1" *-- "0..1" simpleJava_statement_block : newbloco67
+simpleJava_import_statement "1..1" *-- "0..1" simpleJava_name : nomeImporte7
+simpleJava_name "0..1" --* "1..1" simpleJava_package_statement : noomePacote5
+simpleJava_creating_expression "1..1" *-- "0..1" simpleJava_newBlock : novo191
+simpleJava_creating_expression "0..1" --* "1..1" simpleJava_expression : novo201
+simpleJava_creating_expression "1..1" *-- "0..1" simpleJava_name : novoObjeto182
+simpleJava_expression "1..1" *-- "0..1" simpleJava_numeric_expression : numeric197
+simpleJava_name "0..1" --* "1..1" simpleJava_type : objeto243
+simpleJava_expression_aux "1..1" *-- "0..1" simpleJava_mais_aux : op210
+simpleJava_compilation_unit "1..1" *-- "0..1" simpleJava_package_statement : pacote0
+simpleJava_name "1..1" *-- "0..1" simpleJava_package_name_aux : pacote235
+simpleJava_package_name_aux "0..1" --* "1..1" simpleJava_package_name_aux : pacote238
+simpleJava_parameter "0..1" --* "1..1" simpleJava_try_statement : parametroCatch152
+simpleJava_creating_aux "0..1" --* "1..1" simpleJava_creating_expression : parametros184
+simpleJava_arglist "0..1" --* "1..1" simpleJava_expression_aux : parametros206
+simpleJava_parameter "0..9999" --* "1..1" simpleJava_parameter_list : parametros57
+simpleJava_constructor_declaration "1..1" *-- "0..1" simpleJava_parameter_list : parametrosContrutor173
+simpleJava_method_declaration "1..1" *-- "0..1" simpleJava_parameter_list : parametrosMetodo51
+simpleJava_type "1..1" *-- "0..1" simpleJava_type_specifier : primitivo240
+simpleJava_expression "0..1" --* "1..1" simpleJava_statement : return_88
+simpleJava_class_declaration "1..1" *-- "0..1" simpleJava_name : superclasse16
+simpleJava_interface_declaration "1..1" *-- "0..9999" simpleJava_name : superinterfaces30
+simpleJava_creating_expression "1..1" *-- "0..1" simpleJava_type_specifier : tipoObjeto186
+simpleJava_arglist "1..1" *-- "0..9999" simpleJava_type : tipoParametro232
+simpleJava_parameter "1..1" *-- "0..1" simpleJava_type : tipoParametro55
+simpleJava_method_declaration "1..1" *-- "0..1" simpleJava_type : tipoRetorno49
+simpleJava_type "0..1" --* "1..1" simpleJava_variable_declaration : tipoVariavel97
+simpleJava_variable_initializer "0..9999" --* "1..1" simpleJava_variable_initializer : valorVariaveis111
+simpleJava_variable_declarator "1..1" *-- "0..1" simpleJava_variable_initializer : valorVariavel105
+@enduml

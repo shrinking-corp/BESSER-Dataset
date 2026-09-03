@@ -1,0 +1,200 @@
+@startuml
+enum Accumulator {
+  average
+  maximum
+  minimum
+  sum
+}
+class BinaryMeasure {
+}
+class DimensionalMeasure {
+}
+class DimensionalMeasurement {
+}
+class DirectMeasure {
+}
+class DirectMeasurement {
+}
+class Measure {
+}
+class Measurement {
+}
+class SmmElement {
+}
+class SmmRelationship {
+}
+class smm_AggregatedMeasurement {
+  + isBaseSuppled : bool
+}
+class smm_Annotation {
+  + text : str
+}
+class smm_Attribute {
+  + tag : str
+  + value : str
+}
+class smm_BinaryMeasure {
+  + functor : str
+}
+class smm_Category {
+  + name : str
+}
+class smm_CategoryRelationship {
+  + name : str
+}
+class smm_Characteristic {
+  + name : str
+}
+class smm_CollectiveMeasure {
+  + accumulator : str
+}
+class smm_CollectiveMeasurement {
+  + accumulator : str
+  + isBaseSupplied : bool
+}
+class smm_Count {
+}
+class smm_Counting {
+}
+class smm_DimensionalMeasure {
+  + unit : str
+}
+abstract class smm_DimensionalMeasurement {
+  + value : float
+}
+class smm_DirectMeasure {
+  + operation : str
+}
+class smm_DirectMeasurement {
+}
+class smm_Grade {
+  + isBaseSupplied : bool
+  + value : str
+}
+abstract class smm_Measure {
+  + library : str
+  + name : str
+}
+class smm_MeasureRelationship {
+}
+abstract class smm_Measurement {
+  + error : str
+}
+abstract class smm_MeasurementRelationship {
+  + name : str
+}
+class smm_NamedMeasure {
+}
+class smm_NamedMeasurement {
+}
+class smm_Observation {
+  + observer : str
+  + tool : str
+  + whenObserved : str
+}
+class smm_Ranking {
+}
+class smm_RankingInterval {
+  + maximumEndpoint : float
+  + maximumOpen : bool
+  + minimumEndpoint : float
+  + minimumOpen : bool
+  + symbol : str
+}
+class smm_RatioMeasure {
+}
+class smm_ReScaledMeasurement {
+  + isBaseSupplied : bool
+}
+class smm_RescaledMeasure {
+  + formula : str
+}
+class smm_Scope {
+  + class_ : str
+  + enumerated : bool
+  + name : str
+  + recognizer : str
+}
+abstract class smm_SmmElement {
+  + getInbound() : str
+  + getOutbound() : str
+}
+class smm_SmmModel {
+}
+abstract class smm_SmmRelationship {
+  + getFrom() : SmmElement
+  + getTo() : SmmElement
+}
+BinaryMeasure <|-- smm_RatioMeasure
+DimensionalMeasure <|-- smm_BinaryMeasure
+DimensionalMeasure <|-- smm_CollectiveMeasure
+DimensionalMeasure <|-- smm_DirectMeasure
+DimensionalMeasure <|-- smm_NamedMeasure
+DimensionalMeasure <|-- smm_RescaledMeasure
+DimensionalMeasurement <|-- smm_AggregatedMeasurement
+DimensionalMeasurement <|-- smm_CollectiveMeasurement
+DimensionalMeasurement <|-- smm_DirectMeasurement
+DimensionalMeasurement <|-- smm_NamedMeasurement
+DimensionalMeasurement <|-- smm_ReScaledMeasurement
+DirectMeasure <|-- smm_Counting
+DirectMeasurement <|-- smm_Count
+Measure <|-- smm_DimensionalMeasure
+Measure <|-- smm_Ranking
+Measurement <|-- smm_DimensionalMeasurement
+Measurement <|-- smm_Grade
+SmmElement <|-- smm_Annotation
+SmmElement <|-- smm_Attribute
+SmmElement <|-- smm_Category
+SmmElement <|-- smm_Characteristic
+SmmElement <|-- smm_Measure
+SmmElement <|-- smm_Measurement
+SmmElement <|-- smm_Observation
+SmmElement <|-- smm_RankingInterval
+SmmElement <|-- smm_Scope
+SmmElement <|-- smm_SmmModel
+SmmElement <|-- smm_SmmRelationship
+SmmRelationship <|-- smm_CategoryRelationship
+SmmRelationship <|-- smm_MeasureRelationship
+SmmRelationship <|-- smm_MeasurementRelationship
+smm_Annotation "0..9999" --* "1..1" smm_SmmElement : annotation2
+smm_Attribute "0..9999" --* "1..1" smm_SmmElement : attribute1
+smm_BinaryMeasure "1..1" -- "1..1" smm_DimensionalMeasure : baseMeasure157
+smm_BinaryMeasure "1..1" -- "1..1" smm_DimensionalMeasure : baseMeasure258
+smm_CollectiveMeasure "1..1" -- "1..1" smm_DimensionalMeasure : baseMeasure61
+smm_DimensionalMeasurement "0..1" -- "1..1" smm_Grade : baseMeasurement63
+smm_CollectiveMeasurement "1..1" -- "0..9999" smm_DimensionalMeasurement : baseMeasurement68
+smm_AggregatedMeasurement "1..1" -- "0..9999" smm_DimensionalMeasurement : baseMeasurement70
+smm_Category "0..9999" -- "1..1" smm_Measure : category19
+smm_Category "1..1" -- "0..9999" smm_Category : category9
+smm_Category "1..1" -- "0..9999" smm_Category : categoryElement12
+smm_Category "1..1" -- "0..9999" smm_Measure : categoryMeasure17
+smm_Characteristic "1..1" *-- "0..9999" smm_Measure : characteristics53
+smm_Measure "1..1" -- "0..9999" smm_Measure : equivalentFrom22
+smm_Measure "1..1" -- "0..9999" smm_Measure : equivalentTo25
+smm_Measure "1..1" -- "1..1" smm_MeasureRelationship : from_45
+smm_Category "1..1" -- "1..1" smm_CategoryRelationship : from_5
+smm_Measurement "1..1" -- "1..1" smm_MeasurementRelationship : from_64
+smm_Category "1..1" -- "0..9999" smm_CategoryRelationship : inCategory15
+smm_Measure "1..1" *-- "0..9999" smm_MeasureRelationship : inMeasure32
+smm_Measurement "1..1" -- "0..9999" smm_MeasurementRelationship : inMeasurement42
+smm_Ranking "1..1" *-- "1..9999" smm_RankingInterval : interval49
+smm_Measure "1..1" -- "1..1" smm_Measurement : measure37
+smm_Measure "1..1" *-- "0..9999" smm_Measurement : measurement29
+smm_Measure "0..9999" -- "1..1" smm_Scope : measures55
+smm_SmmElement "1..1" -- "0..1" smm_SmmModel : model0
+smm_SmmElement "0..9999" --* "1..1" smm_SmmModel : modelElement4
+smm_Measurement "1..1" *-- "1..1" smm_Observation : observation39
+smm_Category "1..1" -- "0..9999" smm_CategoryRelationship : outCategory14
+smm_Measure "1..1" -- "0..9999" smm_MeasureRelationship : outMeasure30
+smm_Measurement "1..1" -- "0..9999" smm_MeasurementRelationship : outMeasurement40
+smm_Attribute "1..1" -- "0..1" smm_SmmElement : owner72
+smm_Annotation "1..1" -- "0..1" smm_SmmElement : owner74
+smm_Characteristic "1..1" -- "0..1" smm_Characteristic : parent52
+smm_Ranking "0..1" -- "1..1" smm_RankingInterval : rank50
+smm_Measure "1..1" -- "0..9999" smm_Measure : refinement28
+smm_Measure "1..1" -- "1..1" smm_Scope : scope36
+smm_Measure "1..1" -- "1..1" smm_MeasureRelationship : to47
+smm_Category "1..1" -- "1..1" smm_CategoryRelationship : to6
+smm_Measurement "1..1" -- "1..1" smm_MeasurementRelationship : to66
+smm_Characteristic "1..1" -- "1..1" smm_Measure : trait35
+@enduml

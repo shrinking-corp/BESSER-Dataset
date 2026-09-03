@@ -1,0 +1,64 @@
+@startuml
+class Auxiliar {
+  + Id_auxiliar : str
+  + Nombre_auxiliar : str
+}
+class Cliente {
+  + C_dula : str
+  + Tel_fono : int
+}
+class Estados {
+  + Nombre_estados : str
+  + id_estados : int
+}
+class Guacales {
+  + Id_guacal : int
+}
+class Insumos {
+  + Id_insumo : int
+  + Nombre_insumo : str
+}
+class Mascotas {
+  + Id_mascota : int
+  + tipo_mascota : Tipo_mascota
+}
+class Profesionales {
+  + Nombre_profesional : str
+  + id_profesional : int
+}
+class Registro {
+  + Auxiliar : Auxiliar
+  + Cliente : Cliente
+  + Hora_entrada : str
+  + Hora_salida : str
+  + Tipo_Mascota : Tipo_mascota
+}
+class Reporte {
+}
+class Servicios {
+  + Insumos : Insumos
+  + Nombre_servicio : str
+  + Profesional : Profesionales
+  + Tiempo : int
+  + Valor : int
+  + id_servicio : int
+}
+class Tipo_mascota {
+  + Nombre_Tipo : str
+  + id_Tipo_Mascota : int
+}
+enum int {
+}
+Auxiliar "1..1" -- "1..9999" Registro : Auxiliar_Registro
+Cliente "1..1" -- "1..9999" Mascotas : Cliente_Mascotas
+Cliente "1..1" -- "1..9999" Registro : Cliente_Registro
+Estados "1..1" -- "1..1" Mascotas : Mascotas_Estados
+Guacales "1..1" -- "1..1" Mascotas : Mascotas_Guacales
+Mascotas "1..1" -- "1..9999" Registro : Mascotas_Registro
+Mascotas "1..9999" -- "1..9999" Reporte : Reporte_Mascotas
+Reporte "1..9999" -- "1..9999" Servicios : Reporte_Servicios
+Insumos "1..9999" -- "1..1" Servicios : Servicios_Insumos
+Mascotas "1..9999" -- "1..9999" Servicios : Servicios_Mascotas
+Profesionales "1..1" -- "1..1" Servicios : Servicios_Profesionales
+Mascotas "1..9999" -- "1..1" Tipo_mascota : Tipo_mascota_Mascotas
+@enduml

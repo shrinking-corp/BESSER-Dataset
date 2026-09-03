@@ -1,0 +1,97 @@
+@startuml
+class BinaryOperator {
+}
+class ComparisonOperand {
+}
+class ComparisonOperator {
+}
+class Expression {
+}
+class Function {
+}
+class QuantifyOperator {
+}
+class UnaryOperator {
+}
+class expressions_All {
+}
+class expressions_And {
+}
+class expressions_Any {
+}
+abstract class expressions_BinaryOperator {
+}
+class expressions_ComparisonOperand {
+}
+class expressions_ComparisonOperator {
+}
+class expressions_Count {
+}
+class expressions_D {
+}
+class expressions_E {
+}
+abstract class expressions_Expression {
+}
+class expressions_Feature {
+  + name : str
+}
+class expressions_Function {
+}
+class expressions_G {
+}
+class expressions_GE {
+}
+class expressions_Implies {
+}
+class expressions_L {
+}
+class expressions_LE {
+}
+class expressions_Model {
+}
+class expressions_Neg {
+}
+class expressions_Number {
+  + value : int
+}
+class expressions_Or {
+}
+class expressions_QuantifyOperator {
+}
+class expressions_Quantity {
+  + value : int
+}
+abstract class expressions_UnaryOperator {
+}
+BinaryOperator <|-- expressions_And
+BinaryOperator <|-- expressions_Implies
+BinaryOperator <|-- expressions_Or
+ComparisonOperand <|-- expressions_Function
+ComparisonOperand <|-- expressions_Quantity
+ComparisonOperator <|-- expressions_D
+ComparisonOperator <|-- expressions_E
+ComparisonOperator <|-- expressions_G
+ComparisonOperator <|-- expressions_GE
+ComparisonOperator <|-- expressions_L
+ComparisonOperator <|-- expressions_LE
+Expression <|-- expressions_BinaryOperator
+Expression <|-- expressions_ComparisonOperand
+Expression <|-- expressions_ComparisonOperator
+Expression <|-- expressions_Feature
+Expression <|-- expressions_QuantifyOperator
+Expression <|-- expressions_UnaryOperator
+Function <|-- expressions_Count
+QuantifyOperator <|-- expressions_All
+QuantifyOperator <|-- expressions_Any
+QuantifyOperator <|-- expressions_Number
+UnaryOperator <|-- expressions_Neg
+expressions_Expression "0..9999" --* "1..1" expressions_Model : constraints6
+expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op10
+expressions_Feature "1..1" --* "1..1" expressions_Function : op12
+expressions_Feature "1..1" --* "1..1" expressions_QuantifyOperator : op13
+expressions_ComparisonOperand "1..1" --* "1..1" expressions_ComparisonOperator : op18
+expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op21
+expressions_ComparisonOperand "1..1" --* "1..1" expressions_ComparisonOperator : op29
+expressions_Expression "1..1" --* "1..1" expressions_UnaryOperator : op4
+@enduml

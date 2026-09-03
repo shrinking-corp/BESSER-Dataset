@@ -1,0 +1,350 @@
+@startuml
+abstract class Activities_BasicActivities_ActivityEdge {
+}
+class Activities_BasicActivities_ActivityFinalNode {
+}
+class Activities_BasicActivities_ActivityParameterNode {
+}
+class Activities_BasicActivities_ControlFlow {
+}
+abstract class Activities_BasicActivities_ControlNode {
+}
+class Activities_BasicActivities_InitialNode {
+}
+class Activities_BasicActivities_ObjectFlow {
+  + isControlType : bool
+  + isMulticast : bool
+  + isMultireceive : bool
+  + ordering : str
+}
+abstract class Activities_BasicActivities_ObjectNode {
+}
+class Activities_BasicActivities_Parameter {
+  + effect : str
+  + isException : bool
+  + isStream : bool
+}
+abstract class Activities_BasicActivities_Pin {
+  + isControl : bool
+}
+abstract class Activities_BasicActivities_RedefinableElement {
+}
+class Activities_BasicActivities_TypedElement {
+}
+class Activities_CompleteStructuredActivities_InputPin {
+}
+abstract class Activities_ExtraStructuredActivities_Classifier {
+}
+class Activities_ExtraStructuredActivities_ExceptionHandler {
+}
+class Activities_ExtraStructuredActivities_ExpansionNode {
+}
+class Activities_ExtraStructuredActivities_ExpansionRegion {
+  + mode : str
+}
+class Activities_FundamentalActivities_Action {
+  + isLocallyReentrant : bool
+}
+class Activities_FundamentalActivities_Activity {
+  + isReadOnly : bool
+  + isSingleExecution : bool
+}
+abstract class Activities_FundamentalActivities_ActivityGroup {
+}
+abstract class Activities_FundamentalActivities_ActivityNode {
+}
+abstract class Activities_FundamentalActivities_Behavior {
+}
+abstract class Activities_FundamentalActivities_NamedElement {
+}
+abstract class Activities_FundamentalActivities_Namespace {
+}
+class Activities_IntermediateActivities_ActivityPartition {
+}
+abstract class Activities_IntermediateActivities_BehavioralFeature {
+}
+class Activities_IntermediateActivities_CentralBufferNode {
+}
+class Activities_IntermediateActivities_Class {
+}
+class Activities_IntermediateActivities_Constraint {
+}
+class Activities_IntermediateActivities_DataStoreNode {
+}
+class Activities_IntermediateActivities_DecisionNode {
+}
+abstract class Activities_IntermediateActivities_Element {
+}
+abstract class Activities_IntermediateActivities_Feature {
+}
+abstract class Activities_IntermediateActivities_FinalNode {
+}
+class Activities_IntermediateActivities_FlowFinalNode {
+}
+class Activities_IntermediateActivities_ForkNode {
+}
+class Activities_IntermediateActivities_InterruptibleActivityRegion {
+}
+class Activities_IntermediateActivities_JoinNode {
+  + isCombineDuplicate : bool
+}
+class Activities_IntermediateActivities_MergeNode {
+}
+class Activities_IntermediateActivities_ParameterSet {
+}
+class Activities_IntermediateActivities_State {
+}
+abstract class Activities_IntermediateActivities_ValueSpecification {
+}
+class Activities_StructuredActivities_Clause {
+}
+class Activities_StructuredActivities_ConditionalNode {
+  + isAssumed : bool
+  + isDeterminate : bool
+}
+class Activities_StructuredActivities_ExecutableNode {
+}
+class Activities_StructuredActivities_LoopNode {
+  + isTestedFirst : bool
+}
+abstract class Activities_StructuredActivities_MultiplicityElement {
+}
+class Activities_StructuredActivities_OutputPin {
+}
+class Activities_StructuredActivities_SequenceNode {
+}
+class Activities_StructuredActivities_StructuredActivityNode {
+  + mustIsolate : bool
+}
+class Activities_StructuredActivities_Variable {
+}
+class Activity {
+}
+class ActivityEdge {
+}
+class ActivityGroup {
+}
+class ActivityNode {
+}
+class ActivityPartition {
+}
+class BasicActivities_ControlNode {
+}
+class BasicActivities_RedefinableElement {
+}
+class BasicActivities_TypedElement {
+}
+class Behavior {
+}
+class CentralBufferNode {
+}
+class Class {
+}
+class Classifier {
+}
+class Clause {
+}
+class Constraint {
+}
+class ControlNode {
+}
+class Element {
+}
+class ExceptionHandler {
+}
+class ExecutableNode {
+}
+enum ExpansionKind {
+  iterative
+  parallel
+  stream
+}
+class ExpansionNode {
+}
+class ExpansionRegion {
+}
+class FinalNode {
+}
+class FundamentalActivities_Action {
+}
+class FundamentalActivities_ActivityGroup {
+}
+class FundamentalActivities_ActivityNode {
+}
+class FundamentalActivities_NamedElement {
+}
+class FundamentalActivities_Namespace {
+}
+class InputPin {
+}
+class IntermediateActivities_Feature {
+}
+class IntermediateActivities_FinalNode {
+}
+class InterruptibleActivityRegion {
+}
+class NamedElement {
+}
+class ObjectFlow {
+}
+class ObjectNode {
+}
+enum ObjectNodeOrderingKind {
+  FIFO
+  LIFO
+  ordered
+  unordered
+}
+class OutputPin {
+}
+class Parameter {
+}
+enum ParameterEffectKind {
+  create
+  delete
+  read
+  update
+}
+class ParameterSet {
+}
+class RedefinableElement {
+}
+class State {
+}
+class StructuredActivities_ExecutableNode {
+}
+class StructuredActivities_MultiplicityElement {
+}
+class StructuredActivityNode {
+}
+class ValueSpecification {
+}
+class Variable {
+}
+ActivityEdge <|-- Activities_BasicActivities_ControlFlow
+ActivityEdge <|-- Activities_BasicActivities_ObjectFlow
+ActivityGroup <|-- Activities_IntermediateActivities_ActivityPartition
+ActivityGroup <|-- Activities_IntermediateActivities_InterruptibleActivityRegion
+ActivityNode <|-- Activities_BasicActivities_ControlNode
+ActivityNode <|-- Activities_FundamentalActivities_Action
+ActivityNode <|-- Activities_StructuredActivities_ExecutableNode
+BasicActivities_ControlNode <|-- Activities_BasicActivities_ActivityFinalNode
+BasicActivities_RedefinableElement <|-- Activities_FundamentalActivities_ActivityNode
+BasicActivities_TypedElement <|-- Activities_BasicActivities_ObjectNode
+BasicActivities_TypedElement <|-- Activities_StructuredActivities_Variable
+Behavior <|-- Activities_FundamentalActivities_Activity
+CentralBufferNode <|-- Activities_IntermediateActivities_DataStoreNode
+Class <|-- Activities_FundamentalActivities_Behavior
+ControlNode <|-- Activities_BasicActivities_InitialNode
+ControlNode <|-- Activities_IntermediateActivities_DecisionNode
+ControlNode <|-- Activities_IntermediateActivities_FinalNode
+ControlNode <|-- Activities_IntermediateActivities_ForkNode
+ControlNode <|-- Activities_IntermediateActivities_JoinNode
+ControlNode <|-- Activities_IntermediateActivities_MergeNode
+Element <|-- Activities_ExtraStructuredActivities_ExceptionHandler
+Element <|-- Activities_StructuredActivities_Clause
+FinalNode <|-- Activities_IntermediateActivities_FlowFinalNode
+FundamentalActivities_Action <|-- Activities_StructuredActivities_StructuredActivityNode
+FundamentalActivities_ActivityGroup <|-- Activities_StructuredActivities_StructuredActivityNode
+FundamentalActivities_ActivityNode <|-- Activities_BasicActivities_ObjectNode
+FundamentalActivities_NamedElement <|-- Activities_FundamentalActivities_ActivityNode
+FundamentalActivities_Namespace <|-- Activities_IntermediateActivities_BehavioralFeature
+FundamentalActivities_Namespace <|-- Activities_StructuredActivities_StructuredActivityNode
+IntermediateActivities_Feature <|-- Activities_IntermediateActivities_BehavioralFeature
+IntermediateActivities_FinalNode <|-- Activities_BasicActivities_ActivityFinalNode
+NamedElement <|-- Activities_FundamentalActivities_ActivityGroup
+NamedElement <|-- Activities_IntermediateActivities_ParameterSet
+ObjectNode <|-- Activities_BasicActivities_ActivityParameterNode
+ObjectNode <|-- Activities_BasicActivities_Pin
+ObjectNode <|-- Activities_ExtraStructuredActivities_ExpansionNode
+ObjectNode <|-- Activities_IntermediateActivities_CentralBufferNode
+RedefinableElement <|-- Activities_BasicActivities_ActivityEdge
+StructuredActivities_ExecutableNode <|-- Activities_StructuredActivities_StructuredActivityNode
+StructuredActivities_MultiplicityElement <|-- Activities_StructuredActivities_Variable
+StructuredActivityNode <|-- Activities_ExtraStructuredActivities_ExpansionRegion
+StructuredActivityNode <|-- Activities_StructuredActivities_ConditionalNode
+StructuredActivityNode <|-- Activities_StructuredActivities_LoopNode
+StructuredActivityNode <|-- Activities_StructuredActivities_SequenceNode
+Activities_StructuredActivities_StructuredActivityNode "1..1" -- "0..1" Activity : activity99
+Activities_StructuredActivities_ConditionalNode "1..1" -- "1..9999" ExecutableNode : body141
+Activities_StructuredActivities_LoopNode "1..1" -- "0..9999" OutputPin : bodyOutput131
+Activities_StructuredActivities_LoopNode "1..1" -- "0..9999" ExecutableNode : bodyPart116
+Activities_StructuredActivities_ConditionalNode "1..1" *-- "1..9999" Clause : clause137
+Activities_IntermediateActivities_ParameterSet "1..1" *-- "0..9999" Constraint : condition91
+Activities_FundamentalActivities_ActivityGroup "1..1" -- "0..9999" ActivityEdge : containedEdge40
+Activities_FundamentalActivities_ActivityGroup "1..1" -- "0..9999" ActivityNode : containedNode38
+Activities_StructuredActivities_LoopNode "1..1" -- "1..1" OutputPin : decider122
+Activities_StructuredActivities_Clause "1..1" -- "1..1" OutputPin : decider151
+Activities_IntermediateActivities_DecisionNode "1..1" -- "0..1" Behavior : decisionInput76
+Activities_IntermediateActivities_DecisionNode "1..1" -- "0..1" ObjectFlow : decisionInputFlow75
+Activities_StructuredActivities_StructuredActivityNode "1..1" *-- "0..9999" ActivityEdge : edge108
+Activities_FundamentalActivities_Activity "1..1" *-- "0..9999" ActivityEdge : edge2
+Activities_IntermediateActivities_ActivityPartition "1..1" -- "0..9999" ActivityEdge : edge79
+Activities_ExtraStructuredActivities_ExceptionHandler "1..1" -- "1..1" ObjectNode : exceptionInput159
+Activities_ExtraStructuredActivities_ExceptionHandler "1..1" -- "1..9999" Classifier : exceptionType161
+Activities_StructuredActivities_SequenceNode "1..1" *-- "0..9999" ExecutableNode : executableNode153
+Activities_FundamentalActivities_Activity "1..1" *-- "0..9999" ActivityGroup : group1
+Activities_BasicActivities_ActivityEdge "1..1" *-- "1..1" ValueSpecification : guard55
+Activities_StructuredActivities_ExecutableNode "1..1" *-- "0..9999" ExceptionHandler : handler114
+Activities_ExtraStructuredActivities_ExceptionHandler "1..1" -- "1..1" ExecutableNode : handlerBody155
+Activities_FundamentalActivities_ActivityGroup "1..1" -- "0..1" Activity : inActivity37
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..9999" ActivityGroup : inGroup10
+Activities_BasicActivities_ActivityEdge "1..1" -- "0..9999" ActivityGroup : inGroup53
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..1" InterruptibleActivityRegion : inInterruptibleRegion20
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..9999" ActivityPartition : inPartition18
+Activities_BasicActivities_ActivityEdge "1..1" -- "0..9999" ActivityPartition : inPartition57
+Activities_BasicActivities_ObjectFlow "1..1" -- "0..9999" State : inState71
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..1" StructuredActivityNode : inStructuredNode22
+Activities_BasicActivities_ActivityEdge "1..1" -- "0..1" StructuredActivityNode : inStructuredNode64
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..9999" ActivityEdge : incoming14
+Activities_FundamentalActivities_Action "1..1" *-- "0..9999" InputPin : input29
+Activities_ExtraStructuredActivities_ExpansionRegion "1..1" -- "1..9999" ExpansionNode : inputElement163
+Activities_IntermediateActivities_InterruptibleActivityRegion "1..1" -- "0..9999" ActivityEdge : interruptingEdge95
+Activities_BasicActivities_ActivityEdge "1..1" -- "0..1" InterruptibleActivityRegion : interrupts62
+Activities_IntermediateActivities_JoinNode "1..1" *-- "1..1" ValueSpecification : joinSpec73
+Activities_FundamentalActivities_Action "1..1" *-- "0..9999" Constraint : localPostcondition26
+Activities_FundamentalActivities_Action "1..1" *-- "0..9999" Constraint : localPrecondition25
+Activities_StructuredActivities_LoopNode "1..1" -- "0..9999" OutputPin : loopVariable128
+Activities_StructuredActivities_LoopNode "1..1" *-- "0..9999" InputPin : loopVariableInput125
+Activities_FundamentalActivities_Activity "1..1" *-- "0..9999" ActivityNode : node0
+Activities_StructuredActivities_StructuredActivityNode "1..1" *-- "0..9999" ActivityNode : node103
+Activities_IntermediateActivities_ActivityPartition "1..1" -- "0..9999" ActivityNode : node86
+Activities_IntermediateActivities_InterruptibleActivityRegion "1..1" -- "0..9999" ActivityNode : node97
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..9999" ActivityEdge : outgoing16
+Activities_FundamentalActivities_Action "1..1" *-- "0..9999" OutputPin : output31
+Activities_ExtraStructuredActivities_ExpansionRegion "1..1" -- "0..9999" ExpansionNode : outputElement164
+Activities_FundamentalActivities_Behavior "1..1" *-- "0..9999" ParameterSet : ownedParameterSet9
+Activities_IntermediateActivities_BehavioralFeature "1..1" *-- "0..9999" ParameterSet : ownedParameterSet93
+Activities_BasicActivities_ActivityParameterNode "1..1" -- "1..1" Parameter : parameter44
+Activities_IntermediateActivities_ParameterSet "1..1" -- "1..9999" Parameter : parameter89
+Activities_BasicActivities_Parameter "1..1" -- "0..9999" ParameterSet : parameterSet45
+Activities_FundamentalActivities_Activity "1..1" -- "0..9999" ActivityPartition : partition4
+Activities_StructuredActivities_Clause "1..1" -- "0..9999" Clause : predecessorClause147
+Activities_ExtraStructuredActivities_ExceptionHandler "1..1" -- "1..1" ExecutableNode : protectedNode157
+Activities_BasicActivities_ActivityEdge "1..1" -- "0..9999" ActivityEdge : redefinedEdge51
+Activities_BasicActivities_RedefinableElement "1..1" -- "0..9999" RedefinableElement : redefinedElement43
+Activities_FundamentalActivities_ActivityNode "1..1" -- "0..9999" ActivityNode : redefinedNode12
+Activities_ExtraStructuredActivities_ExpansionNode "1..1" -- "0..1" ExpansionRegion : regionAsInput166
+Activities_ExtraStructuredActivities_ExpansionNode "1..1" -- "0..1" ExpansionRegion : regionAsOutput167
+Activities_IntermediateActivities_ActivityPartition "1..1" -- "0..1" Element : represents85
+Activities_StructuredActivities_LoopNode "1..1" *-- "0..9999" OutputPin : result134
+Activities_StructuredActivities_ConditionalNode "1..1" *-- "0..9999" OutputPin : result144
+Activities_BasicActivities_ObjectFlow "1..1" -- "0..1" Behavior : selection68
+Activities_StructuredActivities_LoopNode "1..1" -- "0..9999" ExecutableNode : setupPart115
+Activities_BasicActivities_ActivityEdge "1..1" -- "1..1" ActivityNode : source49
+Activities_FundamentalActivities_Activity "1..1" *-- "0..9999" StructuredActivityNode : structuredNode6
+Activities_StructuredActivities_StructuredActivityNode "1..1" *-- "0..9999" InputPin : structuredNodeInput105
+Activities_StructuredActivities_StructuredActivityNode "1..1" *-- "0..9999" OutputPin : structuredNodeOutput111
+Activities_FundamentalActivities_ActivityGroup "1..1" *-- "0..9999" ActivityGroup : subgroup33
+Activities_IntermediateActivities_ActivityPartition "1..1" *-- "0..9999" ActivityPartition : subpartition81
+Activities_StructuredActivities_Clause "1..1" -- "0..9999" Clause : sucessorClause149
+Activities_FundamentalActivities_ActivityGroup "1..1" -- "0..1" ActivityGroup : superGroup35
+Activities_IntermediateActivities_ActivityPartition "1..1" -- "0..1" ActivityPartition : superPartition83
+Activities_BasicActivities_ActivityEdge "1..1" -- "1..1" ActivityNode : target47
+Activities_StructuredActivities_LoopNode "1..1" -- "1..9999" ExecutableNode : test119
+Activities_StructuredActivities_ConditionalNode "1..1" -- "1..9999" ExecutableNode : test138
+Activities_BasicActivities_ObjectFlow "1..1" -- "0..1" Behavior : transformation67
+Activities_StructuredActivities_StructuredActivityNode "1..1" *-- "0..9999" Variable : variable101
+Activities_FundamentalActivities_Activity "1..1" *-- "0..9999" Variable : variable7
+Activities_BasicActivities_ActivityEdge "1..1" *-- "1..1" ValueSpecification : weight59
+@enduml

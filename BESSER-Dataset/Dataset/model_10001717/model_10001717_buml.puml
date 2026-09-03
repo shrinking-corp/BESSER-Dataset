@@ -1,0 +1,63 @@
+@startuml
+class Part {
+  + _description : str
+  + _part_number : str
+}
+class Routing_number {
+}
+class Storage {
+  + instruction_ID : str
+}
+class _supplier {
+  + _supplier_ID : str
+}
+class admission_receptionist_Actor {
+}
+class check_in_external {
+}
+class check_out_external {
+}
+class enter_lab_notes_external {
+}
+class enter_patient_notes_external {
+}
+class floor_nurse_Actor {
+}
+class hospital_admission_system_Component {
+}
+class list_of_patients_external {
+}
+class medical_technologist_Actor {
+}
+class patient_Actor {
+}
+class physicians_Actor {
+}
+class price_quote {
+  + _bulk_rate_price : str
+}
+class receive_patient_records_external {
+}
+class receive_records_external {
+}
+class release_receptionist_Actor {
+}
+class student_Actor {
+}
+Part "1..9999" -- "0..9999" Part : Part_Part
+Part "0..9999" -- "1..9999" Storage : Part_Storage
+Part "0..9999" -- "1..9999" _supplier : Part__supplier
+Part "1..1" -- "1..1" price_quote : Part_price_quote
+Part "1..1" -- "0..1" Routing_number : Routing_number_Part
+admission_receptionist_Actor "0..1" -- "0..1" check_in_external : admission_receptionist_check_in
+admission_receptionist_Actor "0..1" -- "0..1" patient_Actor : admission_receptionist_patient
+enter_lab_notes_external "0..1" -- "0..1" medical_technologist_Actor : enter_lab_notes_medical_technologist
+enter_patient_notes_external "0..1" -- "0..1" physicians_Actor : enter_patient_notes_physicians
+enter_patient_notes_external "0..1" -- "0..1" floor_nurse_Actor : floor_nurse_enter_patient_notes
+floor_nurse_Actor "0..1" -- "0..1" list_of_patients_external : floor_nurse_list_of_patients
+medical_technologist_Actor "0..1" -- "0..1" receive_patient_records_external : medical_technologist_receive_patient_records
+patient_Actor "0..1" -- "0..1" release_receptionist_Actor : patient_release_receptionist
+physicians_Actor "0..1" -- "0..1" receive_records_external : physicians_receive_records
+_supplier "1..1" -- "1..1" price_quote : price_quote__supplier
+check_out_external "0..1" -- "0..1" release_receptionist_Actor : release_receptionist_check_out
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+class AbstractMultiplicity {
+}
+class ComplexEventOperator {
+}
+class EventPattern {
+}
+class events_AND {
+}
+abstract class events_AbstractMultiplicity {
+}
+class events_AtLeastOne {
+}
+class events_AtomicEventPattern {
+  + type : str
+}
+class events_Automaton {
+}
+abstract class events_ComplexEventOperator {
+}
+class events_ComplexEventPattern {
+}
+class events_Event {
+  + isProcessed : bool
+  + timestamp : str
+  + type : str
+}
+class events_EventModel {
+}
+abstract class events_EventPattern {
+  + id : str
+}
+class events_EventPatternReference {
+  + parameterSymbolicNames : str
+}
+abstract class events_EventSource {
+  + getId() : str
+}
+class events_FOLLOWS {
+}
+class events_Infinite {
+}
+class events_Multiplicity {
+  + value : int
+}
+class events_NEG {
+}
+class events_OR {
+}
+class events_Timewindow {
+  + time : str
+}
+AbstractMultiplicity <|-- events_AtLeastOne
+AbstractMultiplicity <|-- events_Infinite
+AbstractMultiplicity <|-- events_Multiplicity
+ComplexEventOperator <|-- events_AND
+ComplexEventOperator <|-- events_FOLLOWS
+ComplexEventOperator <|-- events_NEG
+ComplexEventOperator <|-- events_OR
+EventPattern <|-- events_AtomicEventPattern
+EventPattern <|-- events_ComplexEventPattern
+events_Automaton "0..1" -- "1..1" events_EventPattern : automaton2
+events_ComplexEventPattern "1..1" *-- "0..9999" events_EventPatternReference : containedEventPatterns6
+events_EventModel "0..1" -- "1..1" events_EventPattern : eventModel1
+events_EventPattern "1..1" --* "1..1" events_EventPatternReference : eventPattern8
+events_EventModel "1..1" *-- "0..9999" events_EventPattern : eventPatterns0
+events_AbstractMultiplicity "1..1" --* "1..1" events_EventPatternReference : multiplicity11
+events_ComplexEventOperator "1..1" --* "1..1" events_ComplexEventPattern : operator3
+events_Event "1..1" -- "0..1" events_EventSource : source13
+events_ComplexEventPattern "1..1" *-- "0..1" events_Timewindow : timewindow4
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+class graph_Edge {
+  + name : str
+}
+class graph_Graph {
+  + name : str
+}
+class graph_Mark {
+  + time : str
+}
+class graph_Node {
+  + name : str
+}
+graph_Edge "0..9999" --* "1..1" graph_Graph : edges1
+graph_Edge "1..1" -- "1..1" graph_Graph : graph12
+graph_Graph "1..1" -- "1..1" graph_Mark : graph16
+graph_Graph "1..1" -- "1..1" graph_Node : graph7
+graph_Mark "0..1" -- "1..1" graph_Node : mark5
+graph_Graph "1..1" *-- "0..9999" graph_Mark : marks3
+graph_Mark "1..1" -- "1..1" graph_Node : node14
+graph_Graph "1..1" *-- "0..9999" graph_Node : nodes0
+graph_Edge "1..1" -- "1..1" graph_Node : source8
+graph_Edge "1..1" -- "1..1" graph_Node : target9
+@enduml

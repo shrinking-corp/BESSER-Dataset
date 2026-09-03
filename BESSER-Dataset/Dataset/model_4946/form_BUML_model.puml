@@ -1,0 +1,341 @@
+@startuml
+class AbstractTable {
+}
+class CSSCustomizable {
+}
+class ConnectableElement {
+}
+class Duplicable {
+}
+class Element {
+}
+enum EventDependencyType {
+  onBlur
+  onChange
+  onClick
+  onValueChange
+}
+enum FileWidgetDownloadType {
+  Both
+  Browse
+  URL
+}
+enum FileWidgetInputType {
+  Document
+  Resource
+  URL
+}
+class Form {
+}
+class FormButton {
+}
+class FormField {
+}
+class Info {
+}
+class ItemContainer {
+}
+enum LabelPosition {
+  Down
+  Left
+  Right
+  Up
+}
+class MultipleValuatedFormField {
+}
+class SingleValuatedFormField {
+}
+class Validable {
+}
+class Widget {
+}
+abstract class form_AbstractTable {
+  + LastRowIsHeader : bool
+  + firstRowIsHeader : bool
+  + initializedUsingCells : bool
+  + leftColumnIsHeader : bool
+  + rightColumnIsHeader : bool
+  + useHorizontalHeader : bool
+  + useVerticalHeader : bool
+}
+abstract class form_CSSCustomizable {
+}
+class form_CheckBoxMultipleFormField {
+}
+class form_CheckBoxSingleFormField {
+}
+class form_Column {
+  + number : int
+  + width : str
+}
+class form_ComboFormField {
+}
+class form_DateFormField {
+  + displayFormat : str
+  + initialFormat : str
+}
+class form_Document {
+}
+abstract class form_Duplicable {
+  + duplicate : bool
+  + limitMinNumberOfDuplication : bool
+  + limitNumberOfDuplication : bool
+}
+class form_DurationFormField {
+  + day : str
+  + hour : str
+  + min : str
+  + sec : str
+}
+class form_DynamicTable {
+  + allowAddRemoveColumn : bool
+  + allowAddRemoveRow : bool
+  + limitMaxNumberOfColumn : bool
+  + limitMaxNumberOfRow : bool
+  + limitMinNumberOfColumn : bool
+  + limitMinNumberOfRow : bool
+}
+class form_EStringToStringMapEntry {
+}
+class form_Expression {
+}
+class form_FileWidget {
+  + downloadOnly : bool
+  + downloadType : str
+  + initialResourcePath : str
+  + inputType : str
+  + intialResourceList : str
+  + outputDocumentName : str
+  + updateDocument : bool
+  + usePreview : bool
+}
+class form_Form {
+  + allowHTMLInPageLabel : bool
+  + nColumn : int
+  + nLine : int
+  + showPageLabel : str
+  + version : str
+}
+class form_FormButton {
+  + labelBehavior : str
+}
+abstract class form_FormField {
+  + description : str
+  + exampleMessagePosition : str
+}
+class form_Group {
+  + showBorder : bool
+  + useIterator : bool
+}
+class form_GroupIterator {
+  + className : str
+}
+class form_HiddenWidget {
+}
+class form_HtmlWidget {
+}
+class form_IFrameWidget {
+}
+class form_ImageWidget {
+  + isADocument : bool
+}
+class form_Info {
+}
+abstract class form_ItemContainer {
+  + itemClass : str
+}
+class form_Line {
+  + height : str
+  + number : int
+}
+class form_ListFormField {
+  + maxHeigth : int
+}
+abstract class form_MandatoryFieldsCustomization {
+}
+class form_MessageInfo {
+}
+abstract class form_MultipleValuatedFormField {
+}
+class form_NextFormButton {
+}
+class form_Operation {
+}
+class form_PasswordFormField {
+  + maxLength : int
+}
+class form_PreviousFormButton {
+}
+class form_RadioFormField {
+}
+class form_RichTextAreaFormField {
+}
+class form_SelectFormField {
+}
+abstract class form_SingleValuatedFormField {
+}
+class form_SubmitFormButton {
+}
+class form_SuggestBox {
+  + asynchronous : bool
+  + delay : int
+  + maxItems : int
+  + useMaxItems : bool
+}
+class form_Table {
+  + allowSelection : bool
+  + selectionModeIsMultiple : bool
+  + usePagination : bool
+}
+class form_TableExpression {
+}
+class form_TextAreaFormField {
+  + maxHeigth : int
+  + maxLength : int
+}
+class form_TextFormField {
+  + maxLength : int
+}
+class form_TextInfo {
+}
+class form_Validable {
+  + below : bool
+  + useDefaultValidator : str
+}
+class form_Validator {
+  + belowField : bool
+  + htmlClass : str
+  + name : str
+  + validatorClass : str
+}
+class form_ViewForm {
+}
+abstract class form_Widget {
+  + allowHTMLForDisplayLabel : bool
+  + displayDependentWidgetOnlyOnEventTriggered : bool
+  + injectWidgetCondition : bool
+  + labelPosition : str
+  + mandatory : bool
+  + readOnly : bool
+  + realHtmlAttributes : str
+  + returnTypeModifier : str
+  + showDisplayLabel : str
+  + version : str
+}
+class form_WidgetDependency {
+  + eventTypes : str
+  + triggerRefreshOnModification : bool
+}
+class form_WidgetLayoutInfo {
+  + column : int
+  + horizontalSpan : int
+  + line : int
+  + verticalSpan : int
+}
+AbstractTable <|-- form_DynamicTable
+AbstractTable <|-- form_Table
+CSSCustomizable <|-- form_MandatoryFieldsCustomization
+CSSCustomizable <|-- form_Widget
+ConnectableElement <|-- form_Form
+ConnectableElement <|-- form_SubmitFormButton
+Duplicable <|-- form_AbstractTable
+Duplicable <|-- form_FileWidget
+Duplicable <|-- form_FormField
+Duplicable <|-- form_Group
+Duplicable <|-- form_HiddenWidget
+Duplicable <|-- form_ImageWidget
+Duplicable <|-- form_TextInfo
+Element <|-- form_GroupIterator
+Element <|-- form_Widget
+Form <|-- form_ViewForm
+FormButton <|-- form_NextFormButton
+FormButton <|-- form_PreviousFormButton
+FormButton <|-- form_SubmitFormButton
+FormField <|-- form_MultipleValuatedFormField
+FormField <|-- form_SingleValuatedFormField
+Info <|-- form_HtmlWidget
+Info <|-- form_IFrameWidget
+Info <|-- form_MessageInfo
+Info <|-- form_TextInfo
+ItemContainer <|-- form_CheckBoxMultipleFormField
+ItemContainer <|-- form_DurationFormField
+ItemContainer <|-- form_RadioFormField
+MultipleValuatedFormField <|-- form_CheckBoxMultipleFormField
+MultipleValuatedFormField <|-- form_ComboFormField
+MultipleValuatedFormField <|-- form_ListFormField
+MultipleValuatedFormField <|-- form_RadioFormField
+MultipleValuatedFormField <|-- form_SelectFormField
+MultipleValuatedFormField <|-- form_SuggestBox
+MultipleValuatedFormField <|-- form_Table
+SingleValuatedFormField <|-- form_CheckBoxSingleFormField
+SingleValuatedFormField <|-- form_DateFormField
+SingleValuatedFormField <|-- form_DurationFormField
+SingleValuatedFormField <|-- form_DynamicTable
+SingleValuatedFormField <|-- form_FileWidget
+SingleValuatedFormField <|-- form_HiddenWidget
+SingleValuatedFormField <|-- form_PasswordFormField
+SingleValuatedFormField <|-- form_RichTextAreaFormField
+SingleValuatedFormField <|-- form_TextAreaFormField
+SingleValuatedFormField <|-- form_TextFormField
+Validable <|-- form_Form
+Validable <|-- form_FormField
+Widget <|-- form_AbstractTable
+Widget <|-- form_FormButton
+Widget <|-- form_FormField
+Widget <|-- form_Group
+Widget <|-- form_ImageWidget
+Widget <|-- form_Info
+form_Operation "0..1" --* "1..1" form_Widget : action71
+form_Form "1..1" *-- "0..9999" form_Operation : actions18
+form_Operation "0..9999" --* "1..1" form_SubmitFormButton : actions91
+form_Expression "0..1" --* "1..1" form_Widget : afterEventExpression56
+form_Expression "0..1" --* "1..1" form_Table : columnForInitialSelectionIndex111
+form_Column "0..9999" --* "1..1" form_Group : columns76
+form_Column "0..9999" --* "1..1" form_Form : columns8
+form_Expression "0..1" --* "1..1" form_MultipleValuatedFormField : defaultExpression86
+form_Expression "0..1" --* "1..1" form_MultipleValuatedFormField : defaultExpressionAfterEvent88
+form_Widget "1..1" *-- "0..9999" form_WidgetDependency : dependOn41
+form_Expression "0..1" --* "1..1" form_Widget : displayAfterEventDependsOnConditionScript50
+form_Expression "0..1" --* "1..1" form_Widget : displayDependentWidgetOnlyAfterFirstEventTriggeredAndCondition47
+form_Expression "0..1" --* "1..1" form_Widget : displayLabel65
+form_Duplicable "1..1" *-- "0..1" form_Expression : displayLabelForAdd25
+form_Duplicable "1..1" *-- "0..1" form_Expression : displayLabelForRemove31
+form_Expression "0..1" --* "1..1" form_Validator : displayName2
+form_Document "0..1" -- "1..1" form_FileWidget : document93
+form_Document "0..1" -- "1..1" form_ImageWidget : document97
+form_Expression "0..1" --* "1..1" form_FormField : exampleMessage84
+form_Expression "0..1" --* "1..1" form_Widget : helpMessage62
+form_AbstractTable "1..1" *-- "0..1" form_Expression : horizontalHeaderExpression102
+form_CSSCustomizable "1..1" *-- "0..9999" form_EStringToStringMapEntry : htmlAttributes37
+form_Expression "0..1" --* "1..1" form_ImageWidget : imgPath99
+form_Expression "0..1" --* "1..1" form_Widget : injectWidgetScript68
+form_Expression "0..1" --* "1..1" form_Widget : inputExpression53
+form_Group "1..1" *-- "0..1" form_GroupIterator : iterator82
+form_Form "1..1" *-- "0..9999" form_Line : lines10
+form_Group "1..1" *-- "0..9999" form_Line : lines79
+form_Expression "0..1" --* "1..1" form_MandatoryFieldsCustomization : mandatoryLabel130
+form_Expression "0..1" --* "1..1" form_MandatoryFieldsCustomization : mandatorySymbol128
+form_DynamicTable "1..1" *-- "0..1" form_Expression : maxNumberOfColumn122
+form_Duplicable "1..1" *-- "0..1" form_Expression : maxNumberOfDuplication20
+form_DynamicTable "1..1" *-- "0..1" form_Expression : maxNumberOfRow125
+form_Expression "0..1" --* "1..1" form_Table : maxRowForPagination109
+form_DynamicTable "1..1" *-- "0..1" form_Expression : minNumberOfColumn117
+form_Duplicable "1..1" *-- "0..1" form_Expression : minNumberOfDuplication22
+form_DynamicTable "1..1" *-- "0..1" form_Expression : minNumberOfRow119
+form_Expression "0..1" --* "1..1" form_FileWidget : outputDocumentListExpression94
+form_Expression "0..1" --* "1..1" form_Form : pageLabel15
+form_Expression "0..1" --* "1..1" form_Validator : parameter1
+form_Widget "1..1" *-- "0..9999" form_WidgetDependency : parentOf44
+form_Expression "0..1" --* "1..1" form_Table : selectedValues114
+form_EStringToStringMapEntry "0..9999" --* "1..1" form_Form : stringAttributes7
+form_AbstractTable "1..1" *-- "0..1" form_TableExpression : tableExpression107
+form_Expression "0..1" --* "1..1" form_Widget : tooltip59
+form_Duplicable "1..1" *-- "0..1" form_Expression : tooltipForAdd28
+form_Duplicable "1..1" *-- "0..1" form_Expression : tooltipForRemove34
+form_Validable "1..1" *-- "0..9999" form_Validator : validators5
+form_AbstractTable "1..1" *-- "0..1" form_Expression : verticalHeaderExpression104
+form_Widget "1..1" -- "1..1" form_WidgetDependency : widget0
+form_Widget "1..1" *-- "0..1" form_WidgetLayoutInfo : widgetLayoutInfo39
+form_Form "1..1" *-- "0..9999" form_Widget : widgets12
+form_Group "1..1" *-- "0..9999" form_Widget : widgets74
+@enduml

@@ -1,0 +1,93 @@
+@startuml
+class ClassJ {
+}
+class InterfaceO_Interface {
+}
+class Notification_System {
+  + OwnerEmail : str
+  + OwnerNum__Integer : str
+  + PublicSafetyNumber : int
+  + PublicSafetyPage : int
+}
+class camera_records {
+  + camera_id : int
+  + camera_location : str
+  + camera_status_on : bool
+}
+class control_panel {
+  + system_on : bool
+}
+class door_alarm_system {
+  + door_alarm_system : bool
+}
+class door_sensor {
+  + door_location : str
+  + door_open_status : bool
+  + door_sensor_id : int
+}
+class eventlog {
+  + event_id : int
+  + event_info : str
+  + event_time : int
+}
+class fire_alarm_system {
+  + fire_alarm_system_on : bool
+}
+class flood_alarm_system {
+  + flood_alarm_system : bool
+}
+class flood_sensor {
+  + flood_sensor_id : int
+  + flood_sensor_loaction : str
+  + flood_sensor_status : bool
+  + waterlevel_breach_status : bool
+}
+class login {
+  + lockout : int
+  + loginapp : str
+  + loginattempt : int
+  + logoutapp : str
+  + password : str
+  + username : str
+}
+class owner_details {
+  + ownerName : str
+}
+class smoke_sensor {
+  + smoke_level_breach : bool
+  + smoke_sensor_id : int
+  + smoke_sensor_location : str
+  + smoke_sensor_status : bool
+}
+class temp_sensor {
+  + temp_level_breach : bool
+  + temp_sensor_id : int
+  + temp_sensor_location : str
+  + temp_sensor_status : bool
+}
+class timelog {
+  + day : int
+  + hour : int
+  + minutes : int
+  + month : int
+  + seconds : int
+  + year : int
+}
+Notification_System "0..1" -- "0..1" control_panel : Notification_System_control_panel
+eventlog "1..1" -- "0..1" login : assoc__U4MOxJiYEeqEM7mFKilpXw
+camera_records "0..1" -- "0..1" control_panel : camera_records_control_panel
+control_panel "0..1" -- "0..9999" door_alarm_system : door_alarm_system_control_panel
+door_alarm_system "1..1" -- "1..9999" door_sensor : door_alarm_system_door_sensor
+door_alarm_system "0..1" -- "0..1" eventlog : door_alarm_system_eventlog
+eventlog "0..1" -- "0..1" fire_alarm_system : eventlog_fire_alarm_system
+eventlog "0..1" -- "0..1" flood_alarm_system : eventlog_flood_alarm_system
+eventlog "0..1" -- "0..1" timelog : eventlog_timelog
+control_panel "0..1" -- "0..9999" fire_alarm_system : fire_alarm_system_control_panel
+fire_alarm_system "0..1" -- "0..1" fire_alarm_system : fire_alarm_system_fire_alarm_system
+fire_alarm_system "1..1" -- "1..9999" smoke_sensor : fire_alarm_system_smoke_sensor
+fire_alarm_system "1..1" -- "1..9999" temp_sensor : fire_alarm_system_temp_sensor
+control_panel "0..1" -- "0..9999" flood_alarm_system : flood_alarm_system_control_panel
+flood_alarm_system "1..1" -- "1..9999" flood_sensor : flood_alarm_system_flood_sensor
+login "1..1" -- "1..1" owner_details : owner_details_login
+Notification_System "0..1" -- "0..1" timelog : timelog_Notification_System
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+class Review {
+  + comments : str
+  + rating : int
+  + reviewId : int
+}
+class Session {
+  + duration : int
+  + sessionDate : date
+  + sessionId : int
+  + sessionType : SessionType
+}
+enum SessionType {
+  HYBRID
+  OFFLINE
+  ONLINE
+}
+class Skill {
+  + category : str
+  + description : str
+  + estimatedDuration : int
+  + skillId : int
+  + skillLevel : TechSkillLevel
+  + skillName : str
+}
+class SkillMatch {
+  + createdDate : date
+  + matchId : int
+  + startDate : date
+  + status : SkillMatchStatus
+}
+enum SkillMatchStatus {
+  ACTIVE
+  COMPLETED
+  PENDING
+  REJECTED
+}
+class SkillRequest {
+  + createdDate : date
+  + deadlineDate : date
+  + requestId : int
+  + status : SkillRequestStatus
+}
+enum SkillRequestStatus {
+  CANCELLED
+  COMPLETED
+  MATCHED
+  OPEN
+}
+enum TechSkillLevel {
+  ADVANCED
+  BEGINNER
+  EXPERT
+  INTERMEDIATE
+  MASTERCLASS
+}
+class User {
+  + emailId : str
+  + userId : int
+  + userName : str
+}
+class UserSkill {
+  + certification : bool
+  + skillId : int
+  + skillLevel : UserSkillLevel
+  + yearsOfExperience : int
+}
+enum UserSkillLevel {
+  AUTHORITY
+  COMPETENT
+  EXPERT
+  NOVICE
+  PROFICIENT
+}
+SkillRequest "0..9999" <-- "1..1" User : creates
+Session "0..9999" <-- "1..1" SkillMatch : has
+SkillMatch "0..1" <-- "0..9999" SkillRequest : leads_to
+Skill "1..1" <-- "0..9999" UserSkill : refers_to
+Review "0..1" <-- "1..1" Session : review
+User "1..1" --> "1..9999" UserSkill : teaches
+Skill "1..1" -- "0..9999" SkillRequest : wants
+@enduml

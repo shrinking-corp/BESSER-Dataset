@@ -1,0 +1,23 @@
+@startuml
+class DataElement {
+}
+class ddl_Column {
+}
+class ddl_DataElement {
+  + name : str
+}
+class ddl_DataType {
+}
+class ddl_Schema {
+}
+class ddl_Table {
+}
+DataElement <|-- ddl_Column
+DataElement <|-- ddl_DataType
+DataElement <|-- ddl_Schema
+DataElement <|-- ddl_Table
+ddl_Column "0..9999" --* "1..1" ddl_Table : column3
+ddl_Schema "1..1" *-- "0..9999" ddl_Table : table0
+ddl_Column "1..1" -- "1..1" ddl_DataType : type5
+ddl_DataType "0..9999" --* "1..1" ddl_Schema : types1
+@enduml

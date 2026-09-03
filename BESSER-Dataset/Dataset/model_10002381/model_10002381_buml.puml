@@ -1,0 +1,25 @@
+@startuml
+class Booking {
+  + booking_id : int
+  + contact_no : int
+  + customer_name : str
+  + date : date
+  + email_id : str
+  + endTime : str
+  + reservedTables : str
+  + startTime : str
+}
+class CustomerUI {
+}
+class ReservationManagementSystem {
+  + bookings : str
+}
+class Table {
+  + avaliable : bool
+  + numSeats : int
+  + table_id : str
+}
+CustomerUI "0..9999" -- "1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
+Booking "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
+Booking "1..1" -- "1..9999" Table : Table_Booking
+@enduml

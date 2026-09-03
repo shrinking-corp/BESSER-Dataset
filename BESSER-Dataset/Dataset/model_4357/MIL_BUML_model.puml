@@ -1,0 +1,113 @@
+@startuml
+class BinaryOperation {
+}
+class Comparison {
+}
+class Instruction {
+}
+class Jumper {
+}
+class Statement {
+}
+class UnaryOperation {
+}
+class Value {
+}
+class mil_AddInstruction {
+}
+abstract class mil_BinaryOperation {
+}
+class mil_CallInstruction {
+}
+abstract class mil_Comparison {
+}
+class mil_ConditionalJumpInstruction {
+}
+class mil_ConstantInteger {
+  + rawValue : int
+}
+class mil_DivInstruction {
+}
+class mil_EqualsComparison {
+}
+class mil_GreaterEqualsComparison {
+}
+class mil_GreaterThanComparison {
+}
+abstract class mil_Instruction {
+}
+class mil_JumpInstruction {
+}
+class mil_JumpMarker {
+  + name : str
+}
+abstract class mil_Jumper {
+}
+class mil_LoadInstruction {
+}
+class mil_LowerEqualsComparison {
+}
+class mil_LowerThanComparison {
+}
+class mil_MILModel {
+}
+class mil_MultInstruction {
+}
+class mil_NegateInstruction {
+}
+class mil_NotEqualsComparison {
+}
+class mil_PrintInstruction {
+  + text : str
+}
+class mil_RegisterReference {
+  + address : str
+}
+class mil_ReturnInstruction {
+}
+abstract class mil_Statement {
+}
+class mil_StoreInstruction {
+}
+class mil_SubInstruction {
+}
+abstract class mil_UnaryOperation {
+}
+abstract class mil_Value {
+}
+class mil_YieldInstruction {
+}
+BinaryOperation <|-- mil_AddInstruction
+BinaryOperation <|-- mil_Comparison
+BinaryOperation <|-- mil_DivInstruction
+BinaryOperation <|-- mil_MultInstruction
+BinaryOperation <|-- mil_SubInstruction
+Comparison <|-- mil_EqualsComparison
+Comparison <|-- mil_GreaterEqualsComparison
+Comparison <|-- mil_GreaterThanComparison
+Comparison <|-- mil_LowerEqualsComparison
+Comparison <|-- mil_LowerThanComparison
+Comparison <|-- mil_NotEqualsComparison
+Instruction <|-- mil_BinaryOperation
+Instruction <|-- mil_CallInstruction
+Instruction <|-- mil_JumpInstruction
+Instruction <|-- mil_LoadInstruction
+Instruction <|-- mil_PrintInstruction
+Instruction <|-- mil_ReturnInstruction
+Instruction <|-- mil_UnaryOperation
+Jumper <|-- mil_CallInstruction
+Jumper <|-- mil_ConditionalJumpInstruction
+Jumper <|-- mil_JumpInstruction
+Statement <|-- mil_Instruction
+Statement <|-- mil_JumpMarker
+UnaryOperation <|-- mil_ConditionalJumpInstruction
+UnaryOperation <|-- mil_NegateInstruction
+UnaryOperation <|-- mil_StoreInstruction
+UnaryOperation <|-- mil_YieldInstruction
+Value <|-- mil_ConstantInteger
+Value <|-- mil_RegisterReference
+mil_JumpMarker "1..1" -- "1..1" mil_Jumper : jumpTarget3
+mil_RegisterReference "0..1" --* "1..1" mil_StoreInstruction : registerReference2
+mil_MILModel "1..1" *-- "0..9999" mil_Statement : statements0
+mil_LoadInstruction "1..1" *-- "1..1" mil_Value : value1
+@enduml

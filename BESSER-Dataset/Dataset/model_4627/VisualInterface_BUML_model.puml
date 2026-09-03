@@ -1,0 +1,188 @@
+@startuml
+enum Alignment {
+  BOTTOM
+  CENTER
+  LEFT
+  RIGHT
+  TOP
+}
+class Child {
+}
+class Container {
+}
+class Cursor {
+}
+class Figure {
+}
+enum GridAlignment {
+  BEGINNING
+  CENTER
+  END
+  FILL
+}
+enum Orientation {
+  EAST
+  NORTH
+  SOUTH
+  WEST
+}
+class Primitive {
+}
+class Shape {
+}
+enum SystemCursorType {
+  ARROW
+  HAND
+}
+class VisualInterface_Arc {
+  + length : int
+  + start : int
+}
+class VisualInterface_BorderChild {
+  + alignment : str
+}
+class VisualInterface_BorderContainer {
+  + horizontalSpacing : int
+  + verticalSpacing : int
+}
+class VisualInterface_Child {
+  + name : str
+}
+class VisualInterface_Connection {
+}
+abstract class VisualInterface_Container {
+}
+abstract class VisualInterface_Cursor {
+}
+class VisualInterface_Dimension {
+  + height : float
+  + width : float
+}
+class VisualInterface_Ellipse {
+}
+abstract class VisualInterface_Figure {
+  + backgroundColor : str
+  + border : str
+  + foregroundColor : str
+  + onClick : str
+  + onDoubleClick : str
+  + opaque : str
+  + toolTip : str
+  + visible : bool
+}
+class VisualInterface_FigureContainer {
+}
+class VisualInterface_GridChild {
+  + grabHorizontalSpace : bool
+  + grabVerticalSpace : bool
+  + heightHint : str
+  + horizontalAlignment : str
+  + spanCols : int
+  + spanRows : str
+  + verticalAlignment : str
+  + widthHint : str
+}
+class VisualInterface_GridContainer {
+  + columns : int
+  + equalWidth : bool
+  + horizontalSpacing : int
+  + marginHeight : int
+  + marginWidth : int
+  + verticalSpacing : int
+}
+class VisualInterface_Image {
+  + uri : str
+}
+class VisualInterface_Line {
+}
+class VisualInterface_Position {
+  + x : float
+  + y : float
+}
+abstract class VisualInterface_Primitive {
+  + name : str
+}
+class VisualInterface_Rectangle {
+}
+abstract class VisualInterface_Shape {
+  + alpha : str
+  + antialias : str
+  + fill : bool
+  + lineWidth : float
+  + outline : bool
+}
+class VisualInterface_StackContainer {
+}
+class VisualInterface_StringToStringMap {
+  + key : str
+  + value : str
+}
+class VisualInterface_Symbol {
+  + backgroundColor : str
+  + onDispose : str
+  + onInit : str
+  + onUpdate : str
+  + scriptModules : str
+}
+class VisualInterface_SymbolReference {
+  + onCreateProperties : str
+  + uri : str
+  + zoom : str
+}
+class VisualInterface_SystemCursor {
+  + type : str
+}
+class VisualInterface_Text {
+  + fontBold : bool
+  + fontItalic : bool
+  + fontName : str
+  + fontSize : int
+  + iconAlignment : str
+  + labelAlignment : str
+  + text : str
+  + textAlignment : str
+  + textPlacement : str
+}
+class VisualInterface_XYChild {
+}
+class VisualInterface_XYContainer {
+}
+Child <|-- VisualInterface_BorderChild
+Child <|-- VisualInterface_GridChild
+Child <|-- VisualInterface_XYChild
+Container <|-- VisualInterface_BorderContainer
+Container <|-- VisualInterface_GridContainer
+Container <|-- VisualInterface_StackContainer
+Container <|-- VisualInterface_XYContainer
+Cursor <|-- VisualInterface_SystemCursor
+Figure <|-- VisualInterface_FigureContainer
+Figure <|-- VisualInterface_Image
+Figure <|-- VisualInterface_Shape
+Figure <|-- VisualInterface_Text
+Primitive <|-- VisualInterface_Container
+Primitive <|-- VisualInterface_Figure
+Primitive <|-- VisualInterface_SymbolReference
+Shape <|-- VisualInterface_Arc
+Shape <|-- VisualInterface_Ellipse
+Shape <|-- VisualInterface_Line
+Shape <|-- VisualInterface_Rectangle
+VisualInterface_XYChild "0..9999" --* "1..1" VisualInterface_XYContainer : children15
+VisualInterface_GridChild "0..9999" --* "1..1" VisualInterface_GridContainer : children26
+VisualInterface_BorderChild "0..9999" --* "1..1" VisualInterface_BorderContainer : children27
+VisualInterface_Primitive "0..9999" --* "1..1" VisualInterface_StackContainer : children36
+VisualInterface_Connection "0..9999" --* "1..1" VisualInterface_Symbol : connections7
+VisualInterface_FigureContainer "1..1" *-- "0..1" VisualInterface_Primitive : content28
+VisualInterface_Cursor "0..1" -- "1..1" VisualInterface_Figure : cursor21
+VisualInterface_Cursor "0..1" --* "1..1" VisualInterface_Symbol : cursors3
+VisualInterface_Dimension "0..1" --* "1..1" VisualInterface_Symbol : designSize5
+VisualInterface_Dimension "0..1" --* "1..1" VisualInterface_XYChild : dimension12
+VisualInterface_Child "1..1" *-- "0..1" VisualInterface_Primitive : element9
+VisualInterface_Connection "1..1" -- "1..1" VisualInterface_Primitive : end33
+VisualInterface_Line "1..1" *-- "0..9999" VisualInterface_Position : points17
+VisualInterface_Position "1..1" --* "1..1" VisualInterface_XYChild : position11
+VisualInterface_StringToStringMap "0..9999" --* "1..1" VisualInterface_Symbol : properties1
+VisualInterface_StringToStringMap "0..9999" --* "1..1" VisualInterface_SymbolReference : properties24
+VisualInterface_Primitive "0..1" --* "1..1" VisualInterface_Symbol : root0
+VisualInterface_Dimension "0..1" --* "1..1" VisualInterface_Figure : size19
+VisualInterface_Connection "1..1" -- "1..1" VisualInterface_Primitive : start30
+@enduml

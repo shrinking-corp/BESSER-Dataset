@@ -1,0 +1,59 @@
+@startuml
+class Entity {
+}
+class Type {
+}
+class smalluml_Association {
+}
+class smalluml_Attribute {
+  + name : str
+}
+class smalluml_BooleanType {
+}
+class smalluml_Cardinalities {
+  + lowerbound : int
+  + upperbound : int
+}
+class smalluml_Class {
+  + abstract : bool
+}
+class smalluml_ClassDiagram {
+  + name : str
+}
+class smalluml_Entity {
+  + name : str
+}
+class smalluml_Enumeration {
+  + name : str
+  + variable : str
+}
+class smalluml_IntegerType {
+}
+class smalluml_Operation {
+  + name : str
+}
+class smalluml_Parameter {
+  + name : str
+}
+class smalluml_RealType {
+}
+class smalluml_Type {
+}
+Entity <|-- smalluml_Association
+Entity <|-- smalluml_Class
+Type <|-- smalluml_BooleanType
+Type <|-- smalluml_Enumeration
+Type <|-- smalluml_IntegerType
+Type <|-- smalluml_RealType
+smalluml_Attribute "0..9999" --* "1..1" smalluml_Class : attributes0
+smalluml_Association "1..1" *-- "1..1" smalluml_Cardinalities : cardinalities17
+smalluml_ClassDiagram "1..1" *-- "0..9999" smalluml_Entity : entities6
+smalluml_Class "0..1" -- "1..1" smalluml_Class : extends2
+smalluml_Class "1..1" *-- "0..9999" smalluml_Operation : operations4
+smalluml_Operation "1..1" *-- "0..9999" smalluml_Parameter : parameters9
+smalluml_Association "1..1" -- "1..1" smalluml_Class : sourceclass21
+smalluml_Association "1..1" -- "1..1" smalluml_Class : targetclass18
+smalluml_Attribute "1..1" *-- "1..1" smalluml_Type : type11
+smalluml_Parameter "1..1" *-- "1..1" smalluml_Type : type14
+smalluml_Operation "1..1" *-- "0..1" smalluml_Type : typeReturn7
+@enduml

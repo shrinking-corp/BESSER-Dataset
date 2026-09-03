@@ -1,0 +1,79 @@
+@startuml
+enum AllowType {
+}
+enum ApprovalType {
+}
+enum CrudType {
+}
+enum Enumeration {
+}
+class Event {
+  + Date : str
+  + Description : str
+  + Groups : Group
+  + Id : int
+  + Name : str
+  + Panels : Panel
+  + Resources : Resource
+}
+class Group {
+  + Id : int
+  + Name : str
+  + Permissions : Permission
+  + Scope : ScopeType
+  + ScopeId : int
+  + Users : User
+}
+class Organization {
+  + Description : str
+  + Events : Event
+  + Groups : Group
+  + Id : int
+  + Name : str
+  + Owners : User
+  + Url : str
+}
+class Panel {
+  + Approval : ApprovalType
+  + Description : str
+  + Id : int
+  + Length : int
+  + Name : str
+  + Panelists : User
+  + PostBufferTime : int
+  + PreBufferTime : int
+  + Private : bool
+  + Resources : Resource
+  + Scheduled : str
+  + Submitter : User
+}
+class Permission {
+  + Allow : AllowType
+  + Crud : CrudType
+  + Id : int
+  + Name : str
+  + Scope : ScopeType
+}
+class Resource {
+  + Description : str
+  + Id : int
+  + Name : str
+  + NumberAvailable : int
+  + Private : bool
+  + Type : ResourceType
+}
+enum ResourceType {
+}
+enum ScopeType {
+}
+class User {
+  + EmailAddress : str
+  + FirstName : str
+  + Id : int
+  + LastName : str
+  + Password : str
+  + UserHash : int
+  + UserName : str
+  + UserNameFull : str
+}
+@enduml

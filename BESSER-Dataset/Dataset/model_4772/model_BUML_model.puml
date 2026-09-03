@@ -1,0 +1,195 @@
+@startuml
+class BasicType {
+}
+class CollectionType {
+}
+class MAssociation {
+}
+class MClass {
+}
+class MModelElement {
+}
+class MModelElementEx {
+}
+class Type {
+}
+class model_BagType {
+}
+class model_BasicType {
+}
+class model_BooleanType {
+}
+class model_CollectionType {
+}
+abstract class model_Comparable {
+}
+class model_EnumType {
+  + literals : str
+  + name : str
+  + addLiteral(model_literal : str) : void
+}
+class model_Expression {
+}
+class model_IntegerType {
+}
+class model_MAggregationKind {
+  + kind : int
+  + name : str
+}
+class model_MAssociation {
+  + addAssociationEnd(model_ae : str) : void
+  + processWithVisitor(model_v : str) : void
+}
+class model_MAssociationClass {
+  + processWithVisitor(model_v : str) : void
+}
+class model_MAssociationEnd {
+  + mClassName : str
+  + getExplicitNavigation() : bool
+  + getNavigation() : bool
+  + getOrdered() : bool
+}
+class model_MAttribute {
+  + processWithVisitor(model_v : str) : void
+}
+class model_MClass {
+  + addAssociation(model_a : str) : void
+  + addAttribute(model_attr : str) : void
+  + addChild(model_c : str) : void
+  + addOperation(model_op : str) : void
+  + addParent(model_c : str) : void
+  + getAbstract() : bool
+  + processWithVisitor(model_v : str) : void
+  + setAbstract(model_b : str) : void
+}
+class model_MClassInvariant {
+  + name : str
+  + positionInModel : int
+  + getHasVars() : bool
+  + getIsExistential() : bool
+}
+class model_MMVisitor {
+}
+class model_MModel {
+  + addClass(model_cls : str) : void
+  + addClassInvariant(model_inv : str) : void
+  + addPrePostCondition(model_ppc : str) : void
+  + processWithVisitor(model_v : str) : void
+}
+class model_MModelElement {
+  + name() : str
+  + processWithVisitor(model_v : str) : void
+}
+class model_MModelElementEx {
+  + name : str
+  + processWithVisitor(model_v : str) : void
+}
+class model_MMultiplicity {
+  + addRange(model_r : str) : void
+}
+class model_MNavigableElement {
+  + nameAsRolename : str
+  + getType(model_src : str) : Type
+}
+class model_MOperation {
+  + addVarDecl(model_vd : str) : void
+}
+class model_MPrePostCondition {
+  + positionInModel : int
+  + getIsPre() : bool
+  + setPre(model_b : str) : void
+}
+class model_MRange {
+  + lower : int
+  + upper : int
+}
+class model_ObjectType {
+}
+class model_OclAnyType {
+}
+class model_OrderedSetType {
+}
+class model_Part {
+  + name : str
+}
+class model_RealType {
+}
+class model_SequenceType {
+}
+class model_SetType {
+}
+class model_StringType {
+}
+class model_TupleType {
+  + parts : str
+}
+class model_Type {
+  + typeId : int
+  + typeName : str
+}
+class model_VarDecl {
+  + var : str
+}
+class model_VarDeclList {
+}
+class model_VoidType {
+}
+BasicType <|-- model_BooleanType
+BasicType <|-- model_IntegerType
+BasicType <|-- model_RealType
+BasicType <|-- model_StringType
+CollectionType <|-- model_BagType
+CollectionType <|-- model_OrderedSetType
+CollectionType <|-- model_SequenceType
+CollectionType <|-- model_SetType
+MAssociation <|-- model_MAssociationClass
+MClass <|-- model_MAssociationClass
+MModelElement <|-- model_MClassInvariant
+MModelElement <|-- model_MModelElementEx
+MModelElement <|-- model_MPrePostCondition
+MModelElementEx <|-- model_MAssociation
+MModelElementEx <|-- model_MAssociationEnd
+MModelElementEx <|-- model_MAttribute
+MModelElementEx <|-- model_MClass
+MModelElementEx <|-- model_MModel
+MModelElementEx <|-- model_MOperation
+Type <|-- model_BasicType
+Type <|-- model_CollectionType
+Type <|-- model_EnumType
+Type <|-- model_ObjectType
+Type <|-- model_OclAnyType
+Type <|-- model_TupleType
+Type <|-- model_VoidType
+model_MAggregationKind "0..1" --* "1..1" model_MAssociation : aggregationKind39
+model_MAssociation "0..1" -- "1..1" model_MAssociationEnd : association41
+model_MAssociation "0..1" -- "1..1" model_MNavigableElement : association56
+model_MAssociation "1..1" *-- "0..9999" model_MAssociationEnd : associationEnds37
+model_MAssociation "0..9999" --* "1..1" model_MClass : associations8
+model_MAttribute "0..9999" --* "1..1" model_MClass : attributes3
+model_Expression "0..1" --* "1..1" model_MClassInvariant : body64
+model_MClass "0..9999" -- "1..1" model_MClass : children14
+model_MClassInvariant "0..9999" --* "1..1" model_MModel : classInvariant18
+model_MClass "0..9999" --* "1..1" model_MModel : classes16
+model_MClass "0..1" -- "1..1" model_MNavigableElement : cls54
+model_MClass "0..1" -- "1..1" model_MClassInvariant : cls61
+model_CollectionType "1..1" *-- "0..1" model_Type : elemType33
+model_Expression "0..1" -- "1..1" model_MClassInvariant : expanded66
+model_Expression "0..1" --* "1..1" model_MPrePostCondition : expression72
+model_MAggregationKind "0..1" --* "1..1" model_MAssociationEnd : kind49
+model_MClass "0..1" -- "1..1" model_ObjectType : mClass35
+model_MAssociationEnd "1..1" -- "0..1" model_MClass : mClass44
+model_MAssociationEnd "1..1" *-- "0..1" model_MMultiplicity : mMultiplicity47
+model_MOperation "0..1" -- "1..1" model_MPrePostCondition : operation69
+model_MClass "1..1" *-- "0..9999" model_MOperation : operations6
+model_MAttribute "1..1" -- "0..1" model_MClass : owner0
+model_MClass "0..1" -- "1..1" model_MOperation : owner22
+model_MClass "0..9999" -- "1..1" model_MClass : parents11
+model_MModel "1..1" *-- "0..9999" model_MPrePostCondition : prePostCondition20
+model_MMultiplicity "1..1" *-- "0..9999" model_MRange : ranges52
+model_MOperation "1..1" *-- "0..1" model_Type : resultType25
+model_MAttribute "1..1" *-- "0..1" model_Type : type1
+model_Type "0..1" --* "1..1" model_VarDecl : type30
+model_Part "1..1" -- "0..1" model_Type : type75
+model_MOperation "1..1" *-- "0..9999" model_VarDecl : varDecls28
+model_MClassInvariant "1..1" -- "0..1" model_VarDeclList : vars59
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+enum EFieldState {
+  EDITABLE
+  HIDDEN
+  READONLY
+}
+class stateMachine_DocumentField {
+  + name : str
+}
+class stateMachine_Event {
+  + name : str
+}
+class stateMachine_FieldState {
+  + state : str
+}
+class stateMachine_Role {
+  + name : str
+}
+class stateMachine_State {
+  + name : str
+}
+class stateMachine_StateMachine {
+  + name : str
+  + package : str
+}
+class stateMachine_Trans {
+}
+class stateMachine_TransSet {
+}
+stateMachine_Event "1..1" -- "1..1" stateMachine_Trans : event16
+stateMachine_Event "1..9999" --* "1..1" stateMachine_StateMachine : eventList0
+stateMachine_DocumentField "0..9999" --* "1..1" stateMachine_StateMachine : fieldList6
+stateMachine_DocumentField "1..1" -- "1..1" stateMachine_FieldState : fieldRef22
+stateMachine_FieldState "0..9999" --* "1..1" stateMachine_State : fieldState12
+stateMachine_Role "1..1" -- "1..1" stateMachine_TransSet : firedBy28
+stateMachine_State "1..1" -- "1..1" stateMachine_StateMachine : initial3
+stateMachine_Role "0..9999" --* "1..1" stateMachine_StateMachine : roleList8
+stateMachine_State "1..9999" --* "1..1" stateMachine_StateMachine : stateList1
+stateMachine_State "1..1" -- "1..1" stateMachine_Trans : target19
+stateMachine_State "1..1" *-- "0..9999" stateMachine_Trans : transList10
+stateMachine_Trans "0..9999" --* "1..1" stateMachine_TransSet : transList25
+stateMachine_State "1..1" *-- "0..9999" stateMachine_TransSet : transSetList14
+@enduml

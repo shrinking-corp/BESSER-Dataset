@@ -1,0 +1,24 @@
+@startuml
+class Entry {
+}
+class document_BasicEntry {
+}
+class document_Chapter {
+}
+abstract class document_Entry {
+  + isBold : bool
+  + isItalic : bool
+  + text : str
+}
+class document_FullEntry {
+}
+class document_Section {
+}
+class document_Table {
+}
+Entry <|-- document_BasicEntry
+Entry <|-- document_FullEntry
+document_Entry "0..9999" --* "1..1" document_Table : entries3
+document_Chapter "1..1" *-- "0..9999" document_Section : sections0
+document_Section "1..1" *-- "0..9999" document_Table : tables1
+@enduml

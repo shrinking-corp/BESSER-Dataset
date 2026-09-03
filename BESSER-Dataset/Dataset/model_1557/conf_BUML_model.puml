@@ -1,0 +1,60 @@
+@startuml
+class Person {
+}
+class conf_Admin {
+}
+class conf_Chapter {
+}
+class conf_Conference {
+}
+class conf_Contribution {
+}
+class conf_Evaluation {
+}
+class conf_Laboratory {
+}
+class conf_Location {
+  + name : str
+}
+class conf_Person {
+}
+class conf_ProgramComitee {
+}
+class conf_Publication {
+}
+class conf_Researcher {
+}
+class conf_RevisionNote {
+}
+class conf_RevisionProcess {
+}
+class conf_Session {
+  + year : str
+}
+class conf_SteeringComitee {
+}
+class conf_System {
+}
+Person <|-- conf_Researcher
+conf_Admin "0..1" --* "1..1" conf_System : admin0
+conf_Chapter "0..9999" --* "1..1" conf_Publication : chapters30
+conf_Conference "0..9999" --* "1..1" conf_System : conferences3
+conf_Contribution "0..1" -- "1..1" conf_Session : contributions12
+conf_Evaluation "1..1" -- "0..1" conf_Publication : evPubli44
+conf_Evaluation "0..1" -- "1..1" conf_Researcher : evaluations24
+conf_Laboratory "0..9999" --* "1..1" conf_System : laboratories1
+conf_Location "0..1" -- "1..1" conf_Session : location7
+conf_Admin "1..1" *-- "0..9999" conf_Location : locations14
+conf_Person "0..1" -- "1..1" conf_ProgramComitee : pcPerson38
+conf_ProgramComitee "0..1" -- "1..1" conf_Session : progcomit8
+conf_Contribution "1..1" -- "0..1" conf_Publication : publication41
+conf_Laboratory "1..1" *-- "0..9999" conf_Publication : publications22
+conf_Laboratory "1..1" *-- "0..9999" conf_Researcher : researchers20
+conf_Researcher "1..1" -- "0..1" conf_RevisionNote : reviews28
+conf_RevisionProcess "0..1" --* "1..1" conf_System : revisionProcess5
+conf_Chapter "1..1" *-- "0..9999" conf_RevisionNote : revisonNotes33
+conf_Person "0..1" -- "1..1" conf_SteeringComitee : scPerson36
+conf_Conference "1..1" *-- "0..9999" conf_Session : sessions17
+conf_Session "1..1" -- "0..1" conf_SteeringComitee : steercomit10
+conf_Chapter "0..1" -- "1..1" conf_Researcher : writes26
+@enduml

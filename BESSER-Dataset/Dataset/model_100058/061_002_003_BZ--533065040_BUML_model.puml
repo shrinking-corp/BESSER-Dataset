@@ -1,0 +1,74 @@
+@startuml
+class BZ_BZComment {
+  + commentAuthor : str
+  + commentHTML : str
+  + commentId : str
+  + commentText : str
+  + commentTime : date
+  + issueId : int
+}
+class BZ_BZComponent {
+  + componentDescription : str
+  + componentId : str
+  + componentURL : str
+  + defaultAssignee : str
+}
+class BZ_BZEvent {
+  + author : str
+  + date : date
+  + field : str
+  + issueId : int
+  + newValue : str
+  + oldValue : str
+}
+class BZ_BZIssue {
+  + assignedTo : str
+  + blocks : str
+  + ccList : str
+  + classification : str
+  + componentName : str
+  + dependsOn : str
+  + importance : str
+  + issueId : int
+  + issueTitle : str
+  + issueURL : str
+  + keywords : str
+  + lastModifiedOn : date
+  + latestCommit : str
+  + milestone : str
+  + platform : str
+  + productName : str
+  + referenceURL : str
+  + reportedBy : str
+  + reportedByUsername : str
+  + reportedOn : date
+  + seeAlso : str
+  + status : str
+  + version : str
+  + versionFixedIn : str
+}
+class BZ_BZProduct {
+  + productDescription : str
+  + productId : str
+  + productURL : str
+}
+class BZ_BZRepo {
+  + repoURL : str
+}
+BZ_BZComment "0..9999" --* "1..1" BZ_BZIssue : comments20
+BZ_BZComponent "1..1" -- "1..1" BZ_BZIssue : component23
+BZ_BZComponent "0..9999" -- "1..1" BZ_BZRepo : components1
+BZ_BZComponent "0..9999" --* "1..1" BZ_BZProduct : components6
+BZ_BZEvent "0..9999" --* "1..1" BZ_BZIssue : events21
+BZ_BZComment "1..1" -- "1..1" BZ_BZIssue : issue29
+BZ_BZEvent "1..1" -- "1..1" BZ_BZIssue : issue31
+BZ_BZComponent "1..1" *-- "0..9999" BZ_BZIssue : issues11
+BZ_BZIssue "0..9999" -- "1..1" BZ_BZRepo : issues3
+BZ_BZIssue "0..9999" -- "1..1" BZ_BZProduct : issues8
+BZ_BZComponent "1..1" -- "1..1" BZ_BZProduct : product13
+BZ_BZIssue "1..1" -- "1..1" BZ_BZProduct : product26
+BZ_BZProduct "0..9999" --* "1..1" BZ_BZRepo : products0
+BZ_BZComponent "1..1" -- "1..1" BZ_BZRepo : repo15
+BZ_BZIssue "1..1" -- "1..1" BZ_BZRepo : repo18
+BZ_BZProduct "1..1" -- "1..1" BZ_BZRepo : repo5
+@enduml

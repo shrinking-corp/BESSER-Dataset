@@ -1,0 +1,37 @@
+@startuml
+class Booking {
+  + arrival_time : int
+  + customer_name : str
+  + table_number : int
+}
+class Customer {
+  + Address : str
+  + cust_id : int
+  + email : str
+  + mobile : int
+  + name : str
+}
+class Payment {
+  + credit_card : int
+  + debit_card : int
+  + pay_hotel : int
+  + paytm : int
+}
+class Restaurant {
+  + booking : int
+  + time : int
+}
+class Table {
+  + table_number : int
+  + total_person : int
+}
+class Table_booking_time {
+  + end_time : int
+  + start_time : int
+}
+Booking "0..1" -- "0..1" Table_booking_time : Booking_Table_booking_time
+Customer "0..1" -- "0..1" Restaurant : Restaurant_Customer
+Restaurant "0..1" -- "0..1" Table : Restaurant_Table
+Booking "0..1" -- "0..1" Table : Table_Booking
+Payment "0..1" -- "0..1" Table_booking_time : Table_booking_time_Payment
+@enduml

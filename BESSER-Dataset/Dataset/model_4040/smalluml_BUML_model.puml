@@ -1,0 +1,76 @@
+@startuml
+class ElementDiagramme {
+}
+class ElementNomme {
+}
+class Type {
+}
+class smalluml_Association {
+}
+class smalluml_Attribut {
+}
+class smalluml_Booleen {
+}
+class smalluml_Cardinalite {
+  + multipliciteInf : str
+  + multipliciteSup : str
+}
+class smalluml_Chaine {
+}
+class smalluml_Classe {
+  + abstrait : bool
+  + classeAbstraite : bool
+}
+class smalluml_Diagramme {
+}
+abstract class smalluml_ElementDiagramme {
+}
+abstract class smalluml_ElementNomme {
+  + nom : str
+}
+class smalluml_Entier {
+}
+class smalluml_Enumeration {
+  + elements : str
+}
+class smalluml_Methode {
+  + methodeAbstraite : bool
+}
+abstract class smalluml_Type {
+}
+class smalluml_TypeDonnee {
+}
+ElementDiagramme <|-- smalluml_Association
+ElementDiagramme <|-- smalluml_Classe
+ElementDiagramme <|-- smalluml_Diagramme
+ElementDiagramme <|-- smalluml_Enumeration
+ElementDiagramme <|-- smalluml_TypeDonnee
+ElementNomme <|-- smalluml_Association
+ElementNomme <|-- smalluml_Attribut
+ElementNomme <|-- smalluml_Cardinalite
+ElementNomme <|-- smalluml_Classe
+ElementNomme <|-- smalluml_Diagramme
+ElementNomme <|-- smalluml_Enumeration
+ElementNomme <|-- smalluml_Methode
+ElementNomme <|-- smalluml_TypeDonnee
+Type <|-- smalluml_Booleen
+Type <|-- smalluml_Chaine
+Type <|-- smalluml_Entier
+Type <|-- smalluml_Enumeration
+Type <|-- smalluml_TypeDonnee
+smalluml_Association "0..9999" --* "1..1" smalluml_ElementDiagramme : association27
+smalluml_Attribut "0..9999" --* "1..1" smalluml_Classe : attributs0
+smalluml_Attribut "0..9999" --* "1..1" smalluml_TypeDonnee : attributs17
+smalluml_Association "1..1" *-- "2..9999" smalluml_Cardinalite : cardinalites19
+smalluml_Cardinalite "1..1" *-- "1..1" smalluml_Classe : classe20
+smalluml_Classe "0..9999" --* "1..1" smalluml_ElementDiagramme : classe24
+smalluml_Diagramme "1..1" *-- "0..9999" smalluml_ElementDiagramme : elementsDiagramme23
+smalluml_ElementDiagramme "1..1" *-- "0..9999" smalluml_Enumeration : enumeration30
+smalluml_Classe "1..1" *-- "0..9999" smalluml_Methode : methodes1
+smalluml_Attribut "0..9999" --* "1..1" smalluml_Methode : parametres14
+smalluml_Classe "0..9999" --* "1..1" smalluml_Classe : sousClasses4
+smalluml_Classe "0..1" -- "1..1" smalluml_Classe : superClasse7
+smalluml_Attribut "1..1" *-- "1..1" smalluml_Type : type9
+smalluml_Methode "1..1" *-- "0..1" smalluml_Type : typeDeRetour11
+smalluml_ElementDiagramme "1..1" *-- "0..9999" smalluml_TypeDonnee : typeDonnee32
+@enduml

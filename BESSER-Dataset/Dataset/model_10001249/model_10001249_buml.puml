@@ -1,0 +1,55 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Camera {
+  + CameraID : int
+}
+class Door_Sensor {
+  + DoorID : int
+}
+class FireAlarm_Sensor {
+  + SmokeAlarm : bool
+}
+class HomeAutomation {
+  + Apllicances : str
+  + Lights : str
+}
+class Home_Security_System {
+  + UserID : int
+}
+class Light {
+  + LightID : str
+}
+class Motion_Sensor {
+}
+class Newsfeed {
+  + Calendar : str
+  + Email : str
+  + News : str
+  + Phone : str
+  + Weather : str
+}
+class Sensor {
+  + SensorID : int
+  + SensorName : int
+}
+class Smart_mirror {
+  + Display_newsfeed : Newsfeed
+  + PhoneConnect : bool
+  + Status : bool
+  + Update : float
+  + security : Home_Security_System
+}
+class Voice_control {
+  + MicID : str
+}
+Camera "0..9999" -- "1..1" Door_Sensor : Door_Camera
+HomeAutomation "0..1" -- "1..1" Smart_mirror : HomeTheatre_System
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" Smart_mirror : Home_Security_System_System
+Smart_mirror "1..1" -- "1..9999" Voice_control : MicroPhone_System
+Door_Sensor "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" Smart_mirror : Sensor_System
+Newsfeed "0..1" -- "0..1" Smart_mirror : Smart_mirror_Voice_control2
+@enduml

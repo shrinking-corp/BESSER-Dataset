@@ -1,0 +1,199 @@
+@startuml
+class AcePile {
+  + suit : str
+}
+class ActionEvent {
+}
+class Card {
+  + ACE : int
+  + CLUBS_SUIT : str
+  + DIAMONDS_SUIT : str
+  + EIGHT : int
+  + FIVE : int
+  + FOUR : int
+  + HEARTS_SUIT : str
+  + INVALID_NUMBER : int
+  + INVALID_SUIT : str
+  + JACK : int
+  + KING : int
+  + NINE : int
+  + QUEEN : int
+  + SEVEN : int
+  + SIX : int
+  + SPADES_SUIT : str
+  + TEN : int
+  + THREE : int
+  + TWO : int
+  + cardBack : str
+  + cardColor : int
+  + cardHighlighted : str
+  + cardImageString : str
+  + cardNumber : int
+  + cardSuit : str
+  + deckNumber : int
+  + faceUp : bool
+  + fullCardNumber : int
+  + highlighted : bool
+  + image : str
+  + location : str
+}
+class CardStack {
+}
+class ChangeAppearance {
+  + FRS_BACKGROUND : int
+  + FRS_DECK : int
+  + NUM_BACKGROUNDS : int
+  + NUM_DECKS : int
+  + backgroundLabel : str
+  + backgroundNumber : int
+  + backgrounds : str
+  + cardBackLabel : str
+  + deckNumber : int
+  + decks : str
+  + exited : bool
+  + ok : str
+}
+class ChangeOptions {
+  + animation : int
+  + difficulty : int
+  + drawCount : int
+  + drawOne : str
+  + drawThree : str
+  + easy : str
+  + exited : bool
+  + hard : str
+  + medium : str
+  + ok : str
+  + sounds : int
+  + timer : int
+  + timerCheck : str
+  + winAnimationCheck : str
+  + winSoundsCheck : str
+}
+class Column {
+}
+class DealDeck {
+  + DRAW_ONE_THROUGH_LIMIT : int
+  + DRAW_THREE_THROUGH_LIMIT : int
+  + EASY_THROUGH_LIMIT : int
+  + HARD_THROUGH_LIMIT : int
+  + MEDIUM_THROUGH_LIMIT : int
+  + deckThroughLimit : int
+  + difficulty : int
+  + drawCount : int
+  + numTimesThroughDeck : int
+  + redealable : bool
+}
+class Deck {
+  + deckNumber : int
+}
+class DiscardPile {
+  + cardsLeftFromDraw : int
+  + drawCount : int
+}
+class FireworksDisplay {
+  + FIREWORKS_SIZE : int
+  + FIREWORKS_TIME : int
+  + NUM_FIREWORKS : int
+  + SET_DELAY : int
+  + colors : str
+  + num : int
+  + numSets : int
+  + random : str
+  + startValue : int
+  + timer : str
+  + x : str
+  + xx : str
+  + y : str
+  + yy : str
+}
+class FourRowSolitaire {
+  + about : str
+  + appearance : str
+  + checkUpdate : str
+  + exit : str
+  + game : str
+  + help : str
+  + helpMenu : str
+  + hint : str
+  + menuBar : str
+  + newGame : str
+  + options : str
+  + statistics : str
+  + undo : str
+  + version : AcePile
+}
+class Graphics {
+}
+class SingleCell {
+}
+class SolitaireBoard {
+  + DO_NOTHING : int
+  + GAME_LOST : int
+  + GAME_SAVED : int
+  + GAME_WON : int
+  + RESET_STATS : int
+  + backgroundNumber : int
+  + deckNumber : int
+  + difficulty : int
+  + drawCount : int
+  + newDifficulty : int
+  + newDrawCount : int
+  + numCards : str
+  + numCardsInDiscardView : str
+  + statusBar : str
+  + timer : str
+  + timerCount : int
+  + timerLabel : str
+  + timerToRun : bool
+  + timerToRunNextGame : int
+  + winAnimationStatus : int
+  + winSoundsStatus : int
+}
+class SolitaireLayout {
+  + CELL_FOUR : str
+  + CELL_ONE : str
+  + CELL_THREE : str
+  + CELL_TWO : str
+  + CLUBS_ACE_PILE : str
+  + COLUMEN_ONE : str
+  + COLUMN_FOUR : str
+  + COLUMN_THREE : str
+  + COLUMN_TWO : str
+  + DECK : str
+  + DIAMONDS_ACE_PILE : str
+  + DISCARD_PILE : str
+  + HEARTS_ACE_PILE : str
+  + SPADES_ACE_PILE : str
+  + aceClubs : str
+  + aceDiamonds : str
+  + aceHearts : str
+  + aceSpades : str
+  + cellFour : str
+  + cellOne : str
+  + cellThree : str
+  + cellTwo : str
+  + colFour : str
+  + colOne : str
+  + colThree : str
+  + colTwo : str
+  + deck : str
+  + discardPile : str
+}
+class SolitairePanel {
+  + background : str
+  + backgroundNumber : int
+}
+class WinScreen {
+}
+Card "0..9999" -- "0..1" CardStack : CardStack_Card
+DealDeck "0..1" -- "0..1" DiscardPile : DealDeck_DiscardPile
+Card "0..9999" -- "0..1" Deck : Deck_Card
+AcePile "0..9999" -- "1..1" SolitaireBoard : SolitaireBoard_AcePile
+CardStack "0..9999" -- "1..1" SolitaireBoard : SolitaireBoard_CardStack
+Column "0..9999" -- "1..1" SolitaireBoard : SolitaireBoard_Column
+Deck "0..1" -- "1..1" SolitaireBoard : SolitaireBoard_Deck
+DiscardPile "0..1" -- "1..1" SolitaireBoard : SolitaireBoard_DiscardPile
+SingleCell "0..9999" -- "1..1" SolitaireBoard : SolitaireBoard_SingleCell
+SolitaireBoard "1..1" -- "0..1" SolitairePanel : SolitaireBoard_SolitairePanel
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+class Hotel {
+  + city : str
+  + coordinates : int
+  + name : str
+  + phoneNumber : int
+  + street : str
+  + website : str
+  + zip : int
+}
+class Room {
+  + room_id : int
+  + room_name : str
+  + room_no_bathroom : int
+  + room_no_bedroom : int
+  + room_rent_night : float
+  + room_size_interior : int
+}
+class Service {
+  + basePrice : str
+  + description : str
+  + name : str
+}
+class Users {
+  + first_name : str
+  + last_name : int
+  + user_addr_city : str
+  + user_addr_state : str
+  + user_address : str
+  + user_address1 : str
+  + user_mail : str
+  + user_phone_no : int
+  + user_role : str
+}
+Room "0..1" -- "1..9999" Users : Customer_Room
+Hotel "0..1" -- "1..9999" Room : Hotel_Room
+Hotel "0..1" -- "0..9999" Service : Service_Hotel
+@enduml

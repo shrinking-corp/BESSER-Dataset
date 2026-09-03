@@ -1,0 +1,26 @@
+@startuml
+class BinaryCalculator_BinaryCalculator {
+  + description : str
+}
+class BinaryCalculator_Bit {
+  + value : str
+}
+abstract class BinaryCalculator_BitSeq {
+}
+class BinaryCalculator_L {
+}
+class BinaryCalculator_Model {
+}
+class BinaryCalculator_Value {
+  + value : str
+}
+class BitSeq {
+}
+BitSeq <|-- BinaryCalculator_Bit
+BitSeq <|-- BinaryCalculator_L
+BinaryCalculator_BinaryCalculator "0..9999" --* "1..1" BinaryCalculator_Model : calculators0
+BinaryCalculator_BitSeq "1..1" --* "1..1" BinaryCalculator_L : left5
+BinaryCalculator_BinaryCalculator "1..1" *-- "1..1" BinaryCalculator_BitSeq : number1
+BinaryCalculator_BinaryCalculator "1..1" *-- "0..1" BinaryCalculator_Value : result3
+BinaryCalculator_Bit "1..1" --* "1..1" BinaryCalculator_L : rigth7
+@enduml

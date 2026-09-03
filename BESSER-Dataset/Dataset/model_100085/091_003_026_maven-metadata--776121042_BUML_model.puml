@@ -1,0 +1,25 @@
+@startuml
+class metadata_DocumentRoot {
+  + mixed : str
+}
+class metadata_EStringToStringMapEntry {
+}
+class metadata_MetaData {
+  + artifactId : str
+  + groupId : str
+  + version : str
+}
+class metadata_Versioning {
+  + lastUpdated : str
+  + latest : str
+  + release : str
+}
+class metadata_Versions {
+  + version : str
+}
+metadata_DocumentRoot "1..1" *-- "0..9999" metadata_MetaData : metadata4
+metadata_MetaData "1..1" *-- "1..1" metadata_Versioning : versioning6
+metadata_Versioning "1..1" *-- "1..1" metadata_Versions : versions8
+metadata_DocumentRoot "1..1" *-- "0..9999" metadata_EStringToStringMapEntry : xMLNSPrefixMap0
+metadata_DocumentRoot "1..1" *-- "0..9999" metadata_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

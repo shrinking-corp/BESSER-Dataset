@@ -1,0 +1,70 @@
+@startuml
+class TableContent {
+}
+class model_Book {
+  + pages : int
+  + title : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+class model_Computer {
+  + name : str
+}
+class model_Container {
+}
+class model_Content {
+  + secondAttribute : str
+  + uniqueAttribute : str
+}
+class model_Librarian {
+  + name : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+class model_Library {
+  + name : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+class model_Mainboard {
+  + name : str
+}
+class model_PowerBlock {
+  + name : str
+}
+abstract class model_TableContent {
+}
+class model_TableContentWithValidation {
+  + name : str
+  + weight : int
+}
+class model_TableContentWithoutValidation {
+  + name : str
+  + weight : int
+}
+class model_TableWithMultiplicity {
+}
+class model_TableWithUnique {
+}
+class model_TableWithoutMultiplicity {
+}
+class model_Writer {
+  + BirthDate : date
+  + EMail : str
+  + Pseudonym : bool
+  + firstName : str
+  + lastName : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+TableContent <|-- model_TableContentWithValidation
+TableContent <|-- model_TableContentWithoutValidation
+model_Book "0..9999" --* "1..1" model_Library : books1
+model_Book "0..9999" -- "1..1" model_Writer : books4
+model_TableContent "1..9999" --* "1..1" model_TableWithMultiplicity : content13
+model_TableContent "0..9999" --* "1..1" model_TableWithoutMultiplicity : content14
+model_TableContent "0..9999" --* "1..1" model_TableWithUnique : content16
+model_Container "1..1" *-- "0..9999" model_Content : contents12
+model_Librarian "0..1" --* "1..1" model_Library : librarian2
+model_Library "0..1" -- "1..1" model_Writer : library5
+model_Computer "1..1" *-- "0..1" model_Mainboard : mainboard9
+model_Computer "1..1" *-- "0..1" model_PowerBlock : powerBlock10
+model_Library "1..1" *-- "1..9999" model_Writer : writers0
+model_Book "1..1" -- "0..1" model_Writer : writers7
+@enduml

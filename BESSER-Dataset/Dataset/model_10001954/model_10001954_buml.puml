@@ -1,0 +1,44 @@
+@startuml
+class Group {
+  + Description : str
+  + ID_Group : int
+  + ID_User : int
+  + Name : str
+}
+class Message {
+  + ID_Message : int
+  + ID_User : int
+  + Mail : str
+  + Max_Chars : str
+}
+class Page {
+  + Description : str
+  + ID_Page : int
+  + ID_User : int
+  + Name : str
+}
+class Post {
+  + ID_Page : int
+  + ID_Post : int
+  + Info : str
+  + Mail : str
+  + Privacy : str
+}
+class Profile {
+  + About : str
+  + ID_Profile : str
+  + Password : str
+  + User_Name : str
+}
+class User {
+  + Fist_Name : str
+  + ID_User : int
+  + Mail : str
+  + Name : str
+}
+Page "1..1" -- "0..9999" Post : Page_Post
+Profile "1..1" -- "1..1" User : Profile_User
+Group "0..9999" -- "1..1" User : User_Group
+Message "0..9999" -- "1..1" User : User_Message
+Page "0..9999" -- "1..1" User : User_Page
+@enduml

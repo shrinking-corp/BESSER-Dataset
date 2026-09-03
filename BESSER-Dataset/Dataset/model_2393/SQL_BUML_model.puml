@@ -1,0 +1,31 @@
+@startuml
+enum DataType {
+  boolean
+  date
+  int
+  number
+  varchar
+}
+class sQL_Column {
+  + isNull : bool
+  + name : str
+  + type : str
+}
+class sQL_DataBase {
+}
+class sQL_ForeignKey {
+}
+class sQL_PrimaryKey {
+}
+class sQL_Table {
+  + name : str
+}
+sQL_Column "0..9999" --* "1..1" sQL_Table : column1
+sQL_Column "0..9999" -- "1..1" sQL_ForeignKey : column10
+sQL_Column "0..9999" -- "1..1" sQL_PrimaryKey : column7
+sQL_Column "0..9999" -- "1..1" sQL_ForeignKey : columnsRef16
+sQL_ForeignKey "0..9999" --* "1..1" sQL_Table : foreignkey5
+sQL_PrimaryKey "0..1" --* "1..1" sQL_Table : primarykey3
+sQL_DataBase "1..1" *-- "0..9999" sQL_Table : table0
+sQL_ForeignKey "1..1" -- "0..1" sQL_Table : tableRef13
+@enduml

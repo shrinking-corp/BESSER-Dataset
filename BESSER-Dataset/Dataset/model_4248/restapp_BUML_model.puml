@@ -1,0 +1,108 @@
+@startuml
+class Card {
+}
+class Category {
+}
+class Employee {
+}
+class PhysicalCard {
+}
+class Product {
+}
+class Provider {
+}
+class Purchase {
+}
+class User {
+}
+class restapp_model_Card {
+  + change : float
+  + discount : int
+  + id : int
+  + payedValue : float
+  + sellDate : date
+  + totalValue : float
+  + totalValueWithDiscount : float
+}
+class restapp_model_Category {
+  + description : str
+  + id : int
+  + name : str
+  + status : int
+}
+class restapp_model_Employee {
+  + address : str
+  + comission : float
+  + contracted : date
+  + cpf : str
+  + fired : date
+  + id : int
+  + mobile : str
+  + name : str
+  + phone : str
+  + rg : str
+  + salary : float
+  + status : int
+  + working : bool
+  + zipcode : str
+}
+class restapp_model_PhysicalCard {
+  + id : int
+  + number : int
+  + status : int
+}
+class restapp_model_Price {
+  + date : date
+  + id : int
+  + value : float
+}
+class restapp_model_Product {
+  + description : str
+  + id : int
+  + name : str
+  + status : int
+  + stock : int
+}
+class restapp_model_ProductsCard {
+  + date : date
+  + id : int
+}
+class restapp_model_ProductsPurchase {
+  + quantity : int
+  + unityDiscount : int
+  + unityValue : float
+  + unityValueWithDiscount : float
+}
+class restapp_model_Provider {
+  + Address : str
+  + CNPJ : str
+  + contact : str
+  + id : int
+  + name : str
+  + phone : str
+}
+class restapp_model_Purchase {
+  + date : date
+  + discount : int
+  + id : int
+  + totalValue : float
+  + totalWithDiscount : float
+}
+class restapp_model_User {
+  + id : int
+  + password : str
+  + status : int
+  + user : str
+}
+Employee "0..1" -- "1..1" restapp_model_User : newEReference10
+Category "0..1" -- "1..1" restapp_model_Product : newEReference11
+PhysicalCard "0..1" -- "1..1" restapp_model_Card : newEReference110
+Product "0..1" -- "1..1" restapp_model_ProductsCard : newEReference111
+Provider "0..1" -- "1..1" restapp_model_Purchase : newEReference13
+Purchase "0..1" -- "1..1" restapp_model_ProductsPurchase : newEReference16
+Product "0..9999" --* "1..1" restapp_model_Price : newEReference2
+Card "0..1" -- "1..1" restapp_model_ProductsCard : newEReference213
+User "0..1" -- "1..1" restapp_model_Purchase : newEReference24
+Product "0..1" -- "1..1" restapp_model_ProductsPurchase : newEReference27
+User "0..1" -- "1..1" restapp_model_ProductsCard : newEReference315
+@enduml

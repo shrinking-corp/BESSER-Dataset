@@ -1,0 +1,42 @@
+@startuml
+class nocollectionowner_Customer {
+  + address : str
+  + comments : str
+  + familyName : str
+  + hotel : str
+  + surname : str
+  + telephoneNr : str
+}
+class nocollectionowner_Order {
+  + comments : str
+  + number : str
+}
+class nocollectionowner_PriceCategory {
+  + name : str
+  + prices : float
+}
+class nocollectionowner_Product {
+  + description : str
+  + name : str
+  + number : str
+}
+class nocollectionowner_ProductCategory {
+  + name : str
+}
+class nocollectionowner_Transaction {
+  + endDate : date
+  + number : str
+  + paidDate : date
+  + price : float
+  + startDate : date
+}
+nocollectionowner_Customer "0..1" -- "1..1" nocollectionowner_Order : customer10
+nocollectionowner_Order "0..1" -- "1..1" nocollectionowner_Transaction : order11
+nocollectionowner_ProductCategory "1..1" -- "0..1" nocollectionowner_ProductCategory : parent7
+nocollectionowner_PriceCategory "0..1" -- "1..1" nocollectionowner_Product : priceCategory1
+nocollectionowner_Product "0..1" -- "1..1" nocollectionowner_Transaction : product12
+nocollectionowner_Product "1..1" -- "0..1" nocollectionowner_ProductCategory : productCategory0
+nocollectionowner_Product "0..9999" --* "1..1" nocollectionowner_ProductCategory : products2
+nocollectionowner_ProductCategory "1..1" *-- "0..9999" nocollectionowner_ProductCategory : subCategorys4
+nocollectionowner_Order "1..1" *-- "0..9999" nocollectionowner_Transaction : transactions9
+@enduml

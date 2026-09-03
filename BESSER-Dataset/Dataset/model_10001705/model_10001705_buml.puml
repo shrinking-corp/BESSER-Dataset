@@ -1,0 +1,56 @@
+@startuml
+class Login {
+  + lastLoginTime : date
+  + password : str
+  + username : str
+}
+class NewClass {
+}
+class cliente_Customer {
+  + dataNascimento : date
+  + email : str
+  + endere_o : str
+  + nome : str
+  + numeroTel : str
+}
+class conta {
+  + _attr : str
+}
+enum conta_AccountType {
+}
+class conta_CheckingAccount {
+}
+class conta_Conta {
+  + saldo : float
+  + tipo : conta_AccountType
+}
+class conta_Poupan_a {
+  + juros : float
+  + tempo : int
+}
+class conta_investimento {
+  + taxaDeJuros : float
+}
+class transacao_Class {
+}
+enum transacao_TransactionType {
+}
+class transacao_deposito {
+  + valor : str
+}
+class transacao_saque {
+  + valor : str
+}
+class transacao_transacao {
+  + amount : float
+  + id : int
+  + type : str
+}
+class transacao_transferencia {
+  + contaAlvo : conta_Conta
+  + contaOrigem : conta_Conta
+}
+conta_Conta "1..1" -- "0..9999" transacao_transacao : Account_Transaction
+Login "0..1" -- "1..1" cliente_Customer : Customer_Login
+cliente_Customer "1..1" -- "1..9999" conta_Conta : association2
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+class ProcessElement {
+}
+class pDL2_DependanceFinish {
+}
+class pDL2_DependanceStart {
+}
+class pDL2_EObject {
+}
+class pDL2_Guidance {
+  + texte : str
+}
+class pDL2_Process {
+  + name : str
+}
+class pDL2_ProcessElement {
+}
+class pDL2_WorkDefinition {
+  + name : str
+}
+class pDL2_WorkSequenceKindFinish {
+  + Finished2Finish : str
+  + Finished2Start : str
+}
+class pDL2_WorkSequenceKindStart {
+  + Started2Finish : str
+  + Started2Start : str
+}
+ProcessElement <|-- pDL2_Guidance
+ProcessElement <|-- pDL2_WorkDefinition
+pDL2_DependanceStart "1..1" *-- "0..1" pDL2_WorkSequenceKindStart : link4
+pDL2_DependanceFinish "1..1" *-- "0..1" pDL2_WorkSequenceKindFinish : link8
+pDL2_EObject "0..9999" --* "1..1" pDL2_WorkDefinition : linksToPredecessors1
+pDL2_DependanceStart "1..1" -- "0..1" pDL2_WorkDefinition : predecessor2
+pDL2_DependanceFinish "1..1" -- "0..1" pDL2_WorkDefinition : predecessor6
+pDL2_Process "1..1" *-- "0..9999" pDL2_ProcessElement : processElements0
+@enduml

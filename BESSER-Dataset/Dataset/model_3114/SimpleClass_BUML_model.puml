@@ -1,0 +1,30 @@
+@startuml
+class Classifier {
+}
+class simpleClass_Association {
+  + name : str
+}
+class simpleClass_Attribute {
+  + id : bool
+  + name : str
+}
+class simpleClass_Class {
+  + persistent : bool
+}
+class simpleClass_ClassModel {
+}
+abstract class simpleClass_Classifier {
+  + name : str
+}
+class simpleClass_PrimitiveDataType {
+}
+Classifier <|-- simpleClass_Class
+Classifier <|-- simpleClass_PrimitiveDataType
+simpleClass_Association "0..9999" --* "1..1" simpleClass_ClassModel : associations1
+simpleClass_Attribute "1..9999" --* "1..1" simpleClass_Class : attributes11
+simpleClass_ClassModel "1..1" *-- "0..9999" simpleClass_Classifier : classifiers0
+simpleClass_Association "1..1" -- "1..1" simpleClass_Class : source3
+simpleClass_Class "1..1" -- "0..1" simpleClass_Class : super9
+simpleClass_Association "1..1" -- "1..1" simpleClass_Class : target5
+simpleClass_Attribute "1..1" -- "1..1" simpleClass_Classifier : type13
+@enduml

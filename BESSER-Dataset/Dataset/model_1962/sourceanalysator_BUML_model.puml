@@ -1,0 +1,27 @@
+@startuml
+class sourceanalysator_Article {
+  + localFile : str
+  + title : str
+}
+class sourceanalysator_GeneralSource {
+  + aliases : str
+  + dontCount : bool
+  + name : str
+}
+class sourceanalysator_Hyperlink {
+  + url : str
+}
+class sourceanalysator_Library {
+}
+class sourceanalysator_Source {
+}
+sourceanalysator_Article "1..1" -- "1..1" sourceanalysator_Source : article2
+sourceanalysator_Article "0..9999" --* "1..1" sourceanalysator_Library : articles7
+sourceanalysator_GeneralSource "1..1" -- "1..1" sourceanalysator_Source : generalSource1
+sourceanalysator_GeneralSource "0..9999" --* "1..1" sourceanalysator_Library : generalSources6
+sourceanalysator_Hyperlink "1..1" -- "1..1" sourceanalysator_Source : hyperlink4
+sourceanalysator_Hyperlink "0..9999" --* "1..1" sourceanalysator_Library : hyperlinks9
+sourceanalysator_GeneralSource "1..1" -- "0..9999" sourceanalysator_Source : sources0
+sourceanalysator_Article "1..1" *-- "0..9999" sourceanalysator_Source : sources11
+sourceanalysator_Hyperlink "1..1" -- "0..9999" sourceanalysator_Source : sources13
+@enduml

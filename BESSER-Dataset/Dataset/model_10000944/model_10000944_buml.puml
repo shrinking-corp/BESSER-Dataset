@@ -1,0 +1,50 @@
+@startuml
+class Customer {
+  + Address : str
+  + Cellphone : str
+  + CreditCard : str
+  + FullName : str
+  + PostCode : int
+}
+class Food {
+  + Calories : int
+  + Price : int
+  + Vegetarian : bool
+}
+class FoodItem {
+  + Food : Food
+}
+class FoodPackage {
+  + FoodList : Food
+}
+class MenuItem {
+  + Description : str
+}
+class Order {
+  + Customer : Customer
+  + ItemList : MenuItem
+  + Restaurant : Restaurant
+}
+class OrderController {
+  + Order : Order
+}
+class Restaurant {
+  + Address : str
+  + Menu : MenuItem
+  + Name : str
+  + PostCode : int
+}
+class RestaurantController {
+  + Restaurant : Restaurant
+}
+Food "1..1" -- "0..9999" FoodItem : FoodItem_Food
+Food "1..9999" -- "0..9999" FoodPackage : FoodPackage_Food
+FoodItem "0..9999" -- "0..9999" MenuItem : MenuItem_FoodItem
+FoodPackage "0..9999" -- "0..9999" MenuItem : MenuItem_FoodPackage
+Order "1..1" -- "0..9999" OrderController : OrderController_Order
+Customer "1..1" -- "0..9999" Order : Order_Customer
+MenuItem "1..9999" -- "0..9999" Order : Order_MenuItem
+Order "0..9999" -- "1..1" Restaurant : Order_Restaurant
+Restaurant "1..9999" -- "0..9999" RestaurantController : RestaurantManager_Restaurant
+MenuItem "1..9999" -- "0..9999" Restaurant : Restaurant_MenuItem
+@enduml

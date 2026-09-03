@@ -1,0 +1,64 @@
+@startuml
+class AbstractAction {
+}
+class AbstractGuard {
+}
+class AbstractTrigger {
+}
+class ClassicalExpression_BinaryIntegerExpression {
+}
+class ClassicalExpression_BooleanExpression {
+}
+class ClassicalExpression_ClassicalExpression {
+}
+class ClockExpressionAndRelation_BindableEntity {
+}
+class ClockExpressionAndRelation_ConcreteEntity {
+}
+abstract class FSMModel_AbstractAction {
+}
+abstract class FSMModel_AbstractGuard {
+}
+abstract class FSMModel_AbstractTrigger {
+}
+class FSMModel_DeclarationBlock {
+}
+class FSMModel_Guard {
+}
+class FSMModel_IntegerAssignement {
+}
+class FSMModel_State {
+}
+class FSMModel_StateMachineDefinition {
+}
+class FSMModel_Transition {
+}
+class FSMModel_Trigger {
+}
+class NamedElement {
+}
+AbstractAction <|-- FSMModel_IntegerAssignement
+AbstractGuard <|-- FSMModel_Guard
+AbstractTrigger <|-- FSMModel_Trigger
+ClassicalExpression_BinaryIntegerExpression <|-- FSMModel_IntegerAssignement
+NamedElement <|-- FSMModel_State
+NamedElement <|-- FSMModel_StateMachineDefinition
+NamedElement <|-- FSMModel_Transition
+FSMModel_AbstractAction "0..9999" --* "1..1" FSMModel_Transition : actions9
+ClassicalExpression_ClassicalExpression "0..9999" --* "1..1" FSMModel_DeclarationBlock : classicalExpressions30
+ClockExpressionAndRelation_ConcreteEntity "0..9999" --* "1..1" FSMModel_DeclarationBlock : concreteEntities28
+FSMModel_DeclarationBlock "0..1" --* "1..1" FSMModel_StateMachineDefinition : declarationBlock11
+ClockExpressionAndRelation_BindableEntity "0..9999" -- "1..1" FSMModel_Trigger : falseTriggers25
+FSMModel_State "0..9999" -- "1..1" FSMModel_StateMachineDefinition : finalStates20
+FSMModel_AbstractGuard "0..1" --* "1..1" FSMModel_Transition : guard6
+FSMModel_State "1..9999" -- "1..1" FSMModel_StateMachineDefinition : initialStates17
+FSMModel_State "1..1" -- "0..9999" FSMModel_Transition : inputTransitions0
+FSMModel_State "1..1" -- "0..9999" FSMModel_Transition : outputTransitions1
+FSMModel_State "1..1" -- "1..1" FSMModel_Transition : source3
+FSMModel_State "1..9999" --* "1..1" FSMModel_StateMachineDefinition : states15
+FSMModel_State "1..1" -- "1..1" FSMModel_Transition : target4
+FSMModel_StateMachineDefinition "1..1" *-- "0..9999" FSMModel_Transition : transitions12
+FSMModel_AbstractTrigger "0..1" --* "1..1" FSMModel_Transition : trigger7
+ClockExpressionAndRelation_BindableEntity "0..9999" -- "1..1" FSMModel_Trigger : trueTriggers24
+ClassicalExpression_BooleanExpression "1..1" --* "1..1" FSMModel_Guard : value23
+@enduml

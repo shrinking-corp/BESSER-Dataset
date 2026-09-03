@@ -1,0 +1,24 @@
+@startuml
+class school_Classroom {
+  + capacity : int
+  + name : str
+  + rank : int
+  + teacher : str
+  + validate(school_context : str, school_diagnostic : str) : bool
+}
+class school_School {
+  + city : str
+  + director : str
+  + name : str
+  + zipCode : str
+}
+class school_Student {
+  + age : int
+  + name : str
+  + nickname : str
+  + validate(school_context : str, school_diagnostic : str) : bool
+}
+school_Classroom "0..9999" --* "1..1" school_School : classrooms1
+school_Student "0..9999" -- "1..1" school_Student : friends4
+school_Classroom "1..1" *-- "0..9999" school_Student : students0
+@enduml

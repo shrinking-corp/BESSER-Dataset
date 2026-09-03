@@ -1,0 +1,31 @@
+@startuml
+class Element {
+}
+class Node {
+}
+class petriNet_Arc {
+}
+abstract class petriNet_Element {
+}
+abstract class petriNet_Node {
+}
+class petriNet_PetriNet {
+  + diagramName : str
+}
+class petriNet_Place {
+  + noTokens : int
+}
+class petriNet_Transition {
+}
+Element <|-- petriNet_Arc
+Element <|-- petriNet_Node
+Node <|-- petriNet_Place
+Node <|-- petriNet_Transition
+petriNet_Element "1..1" -- "1..1" petriNet_PetriNet : diagram1
+petriNet_Element "10..9999" --* "1..1" petriNet_PetriNet : elements0
+petriNet_Place "1..1" -- "0..1" petriNet_Transition : hiddenOpposite2
+petriNet_Arc "0..1" -- "1..1" petriNet_Node : incomingArcs7
+petriNet_Arc "0..1" -- "1..1" petriNet_Node : outgoingArcs6
+petriNet_Arc "1..1" -- "1..1" petriNet_Node : source3
+petriNet_Arc "1..1" -- "1..1" petriNet_Node : target4
+@enduml

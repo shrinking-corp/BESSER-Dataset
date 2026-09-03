@@ -1,0 +1,57 @@
+@startuml
+class MultiplyOrDivide {
+}
+class PlusOrMinus {
+}
+class Primary {
+}
+class mathInterpreter_Bracket {
+}
+class mathInterpreter_Divide {
+}
+class mathInterpreter_EObject {
+}
+class mathInterpreter_Expression {
+}
+class mathInterpreter_Minus {
+}
+class mathInterpreter_Multiply {
+}
+class mathInterpreter_MultiplyOrDivide {
+  + operator : str
+}
+class mathInterpreter_Num {
+  + value : int
+}
+class mathInterpreter_Plus {
+}
+class mathInterpreter_PlusOrMinus {
+  + operator : str
+}
+class mathInterpreter_Primary {
+}
+class mathInterpreter_Solution {
+}
+class mathInterpreter_Variable {
+  + name : str
+}
+class mathInterpreter_VariableRef {
+}
+MultiplyOrDivide <|-- mathInterpreter_Divide
+MultiplyOrDivide <|-- mathInterpreter_Multiply
+PlusOrMinus <|-- mathInterpreter_Minus
+PlusOrMinus <|-- mathInterpreter_Plus
+Primary <|-- mathInterpreter_Bracket
+Primary <|-- mathInterpreter_Num
+Primary <|-- mathInterpreter_VariableRef
+mathInterpreter_Expression "1..1" *-- "0..1" mathInterpreter_PlusOrMinus : exp6
+mathInterpreter_Expression "0..1" --* "1..1" mathInterpreter_Solution : expression1
+mathInterpreter_EObject "0..1" --* "1..1" mathInterpreter_MultiplyOrDivide : left12
+mathInterpreter_EObject "0..1" --* "1..1" mathInterpreter_PlusOrMinus : left8
+mathInterpreter_MultiplyOrDivide "0..1" --* "1..1" mathInterpreter_PlusOrMinus : right10
+mathInterpreter_MultiplyOrDivide "1..1" *-- "0..1" mathInterpreter_Primary : right15
+mathInterpreter_Variable "0..1" -- "1..1" mathInterpreter_VariableRef : value17
+mathInterpreter_Bracket "1..1" *-- "0..1" mathInterpreter_Expression : value19
+mathInterpreter_Expression "0..1" --* "1..1" mathInterpreter_Variable : value3
+mathInterpreter_Solution "1..1" *-- "0..9999" mathInterpreter_Variable : variables0
+@enduml

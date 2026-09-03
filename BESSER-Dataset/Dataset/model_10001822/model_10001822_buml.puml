@@ -1,0 +1,54 @@
+@startuml
+class Card {
+  + isDouble : bool
+  + points : int
+  + rank : int
+  + suit : int
+}
+class Deck {
+}
+class Group {
+  + contents : str
+}
+class Hand {
+}
+class HandSorter {
+}
+class Player {
+  + hand : Hand
+  + name : str
+  + number : int
+  + score : int
+}
+class StartGame {
+  + bidNumber : int
+  + deck : Deck
+  + lead : int
+  + p1 : Player
+  + p2 : Player
+  + p3 : Player
+  + p4 : Player
+  + playerOrder : str
+  + t1 : Team
+  + t2 : Team
+  + trick : Trick
+  + turn : int
+}
+class Team {
+  + p1 : Player
+  + p2 : Player
+  + score : int
+}
+class Trick {
+  + suitLead : int
+}
+class int_Interface {
+}
+Card "0..9999" -- "1..1" Group : Card_Group
+Hand "1..1" -- "1..1" Player : Player_Hand
+Deck "0..9999" -- "1..1" StartGame : StartGame_Deck
+Player "0..9999" -- "1..1" StartGame : StartGame_Player
+StartGame "1..1" -- "0..9999" Team : StartGame_Team
+StartGame "1..1" -- "0..9999" Trick : StartGame_Trick
+Player "1..1" -- "0..9999" Team : Team_Player
+@enduml

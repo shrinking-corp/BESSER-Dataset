@@ -1,0 +1,191 @@
+@startuml
+class Account {
+  + accountNum : str
+  + balance : float
+  + pin : str
+  + type : account_AccountType
+  + userID : str
+}
+class Account1 {
+  + accountNum : str
+  + balance : float
+  + pin : str
+  + type : account_AccountType
+  + userID : str
+}
+class Account2 {
+  + accountNum : str
+  + balance : float
+  + pin : str
+  + type : account_AccountType
+  + userID : str
+}
+class ExternalAccount {
+  + accountNum : str
+  + associatedAccount : str
+  + routingNum : str
+}
+class Profile {
+  + IDNum : str
+  + IDType : int
+  + address1 : str
+  + address2 : str
+  + city : str
+  + country : str
+  + dateOfBirth : date
+  + email : str
+  + firstname : str
+  + lastname : str
+  + phoneNumber : str
+  + state : str
+  + userID : str
+  + zipcode : str
+}
+class String {
+}
+class Transaction {
+  + amount : float
+  + comment : str
+  + description : str
+  + destinationAccountNum : str
+  + sourceAccountNum : str
+  + time : str
+  + transactionID : str
+  + type : transaction_TransactionType
+}
+class Transaction1 {
+  + amount : float
+  + comment : str
+  + description : str
+  + destinationAccountNum : str
+  + sourceAccountNum : str
+  + time : str
+  + transactionID : str
+  + type : transaction_TransactionType
+}
+class Transaction2 {
+  + amount : float
+  + comment : str
+  + description : str
+  + destinationAccountNum : str
+  + sourceAccountNum : str
+  + time : str
+  + transactionID : str
+  + type : transaction_TransactionType
+}
+class Transaction3 {
+  + amount : float
+  + comment : str
+  + description : str
+  + destinationAccountNum : str
+  + sourceAccountNum : str
+  + time : str
+  + transactionID : str
+  + type : transaction_TransactionType
+}
+enum TransactionType {
+}
+class TransferTransaction {
+}
+class User {
+  + lastLoginTime : str
+  + password : str
+  + userID : str
+  + username : str
+}
+class account_Account {
+  + accountNum : str
+  + balance : float
+  + pin : str
+  + type : account_AccountType
+  + userID : str
+}
+enum account_AccountType {
+}
+class account_SavingsAccount {
+  + interestRate : float
+}
+enum loan_ApplicationStatus {
+}
+class loan_Loan {
+  + amount : float
+  + interestRate : float
+  + loanID : str
+  + status : loan_ApplicationStatus
+  + submissionTime : str
+  + term : int
+  + type : loan_LoanStatus
+  + userID : str
+}
+class loan_LoanApplication {
+  + amount : float
+  + applicationID : str
+  + interestRate : float
+  + status : loan_ApplicationStatus
+  + submissionTime : str
+  + term : int
+  + type : loan_LoanType
+  + userID : str
+}
+class loan_LoanApplicationFile {
+  + applicationID : str
+  + fileID : str
+}
+enum loan_LoanStatus {
+}
+enum loan_LoanType {
+}
+class transaction_DepositTransaction {
+}
+class transaction_ExternalAccount {
+  + accountNum : str
+  + associatedAccount : str
+  + routingNum : str
+}
+class transaction_LoanPayment {
+  + interest : float
+  + loanID : str
+  + principal : float
+}
+class transaction_PaybillsTransaction {
+}
+class transaction_Payee {
+  + accountNum : str
+  + address1 : str
+  + address2 : str
+  + city : str
+  + country : str
+  + email : str
+  + name : str
+  + phoneNum : str
+  + state : str
+  + userID : str
+  + zipcode : str
+}
+class transaction_Transaction {
+  + amount : float
+  + comment : str
+  + description : str
+  + destinationAccountNum : str
+  + sourceAccountNum : str
+  + time : str
+  + transactionID : str
+  + type : transaction_TransactionType
+}
+enum transaction_TransactionType {
+}
+class transaction_TransferTransaction {
+}
+Account2 "1..1" -- "0..9999" ExternalAccount : ExternalAccount_Account
+ExternalAccount "0..1" -- "0..9999" TransferTransaction : ExternalAccount_TransferTransaction
+loan_Loan "0..1" -- "0..1" loan_LoanApplication : LoanApplication_Loan
+loan_LoanApplication "1..1" -- "0..5" loan_LoanApplicationFile : LoanApplication_LoanApplicationFile
+transaction_PaybillsTransaction "0..9999" -- "0..1" transaction_Payee : PaybillsTransaction_Payee
+Profile "0..1" -- "0..9999" account_Account : Profile_Account
+Profile "1..1" -- "0..9999" loan_LoanApplication : Profile_LoanApplication
+Profile "0..1" -- "0..1" User : Profile_User
+account_Account "0..1" -- "0..9999" transaction_Transaction : Transaction_Account
+Account1 "0..1" -- "0..9999" Transaction1 : Transaction_Account1
+Account2 "0..1" -- "0..9999" Transaction3 : Transaction_Account2
+transaction_ExternalAccount "0..1" -- "0..9999" transaction_TransferTransaction : TransferTransaction_ExternalAccount
+@enduml

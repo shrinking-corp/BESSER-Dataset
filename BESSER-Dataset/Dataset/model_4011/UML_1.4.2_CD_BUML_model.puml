@@ -1,0 +1,86 @@
+@startuml
+class NamedElement {
+}
+class UML_14_Association {
+}
+class UML_14_AssociationEnd {
+  + isNavigable : str
+  + visibility : str
+}
+class UML_14_Attribute {
+  + initialValue : str
+  + visibility : str
+}
+class UML_14_Class {
+  + isActive : str
+}
+class UML_14_Comment {
+  + body : str
+}
+abstract class UML_14_Constraint {
+  + body : str
+}
+class UML_14_Enumeration {
+}
+class UML_14_EnumerationLiteral {
+  + value : str
+}
+class UML_14_Generalization {
+  + discriminator : str
+}
+class UML_14_Method {
+  + body : str
+  + visibility : str
+}
+class UML_14_Model {
+}
+class UML_14_MultiplicityRange {
+  + lower : str
+  + upper : str
+}
+abstract class UML_14_NamedElement {
+  + name : str
+}
+class UML_14_Package {
+}
+class UML_14_Parameter {
+  + defaultValue : str
+  + kind : str
+}
+class UML_14_Primitive {
+}
+NamedElement <|-- UML_14_Association
+NamedElement <|-- UML_14_AssociationEnd
+NamedElement <|-- UML_14_Attribute
+NamedElement <|-- UML_14_Class
+NamedElement <|-- UML_14_Enumeration
+NamedElement <|-- UML_14_Method
+NamedElement <|-- UML_14_Package
+NamedElement <|-- UML_14_Parameter
+NamedElement <|-- UML_14_Primitive
+UML_14_Association "1..1" -- "1..1" UML_14_AssociationEnd : association17
+UML_14_Association "0..9999" --* "1..1" UML_14_Package : associations47
+UML_14_Attribute "0..9999" --* "1..1" UML_14_Class : attributes26
+UML_14_Class "0..9999" -- "1..1" UML_14_Generalization : child12
+UML_14_Class "0..9999" --* "1..1" UML_14_Package : classes35
+UML_14_Comment "0..9999" --* "1..1" UML_14_NamedElement : comments52
+UML_14_Association "1..1" *-- "2..9999" UML_14_AssociationEnd : connection16
+UML_14_Constraint "0..9999" --* "1..1" UML_14_NamedElement : constraints53
+UML_14_Enumeration "0..1" -- "1..1" UML_14_Parameter : enumType0
+UML_14_Attribute "1..1" -- "0..1" UML_14_Enumeration : enumType7
+UML_14_Enumeration "0..9999" --* "1..1" UML_14_Package : enums41
+UML_14_Generalization "0..9999" --* "1..1" UML_14_Package : generalizations44
+UML_14_Enumeration "1..1" *-- "1..9999" UML_14_EnumerationLiteral : literal32
+UML_14_Class "1..1" *-- "0..9999" UML_14_Method : methods29
+UML_14_AssociationEnd "1..1" *-- "0..1" UML_14_MultiplicityRange : multiplicity20
+UML_14_Attribute "1..1" *-- "0..1" UML_14_MultiplicityRange : multiplicity6
+UML_14_Model "1..1" *-- "0..9999" UML_14_Package : package34
+UML_14_Package "0..9999" --* "1..1" UML_14_Package : packages39
+UML_14_Method "1..1" *-- "0..9999" UML_14_Parameter : parameters4
+UML_14_Class "0..9999" -- "1..1" UML_14_Generalization : parent13
+UML_14_AssociationEnd "1..1" -- "0..1" UML_14_Class : participant18
+UML_14_Enumeration "0..1" -- "1..1" UML_14_Parameter : primitiveType1
+UML_14_Attribute "1..1" -- "0..1" UML_14_Primitive : primitiveType10
+UML_14_Package "1..1" *-- "0..9999" UML_14_Primitive : primitiveTypes49
+UML_14_AssociationEnd "1..1" *-- "0..1" UML_14_Attribute : qualifier23
+@enduml

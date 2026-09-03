@@ -1,0 +1,44 @@
+@startuml
+class Admin {
+  + adminname : str
+  + gender : str
+  + mobile : int
+  + password : str
+  + type : str
+}
+class Flightlist {
+  + id : str
+  + name : str
+}
+class System {
+  + id : str
+  + name : str
+  + session : str
+}
+class Ticket {
+  + destination : str
+  + flightname : str
+  + passengername : str
+  + price : int
+  + source : str
+  + ticketid : str
+}
+class Timinglist {
+  + destination : str
+  + flightname : str
+  + source : str
+  + time : str
+}
+class User {
+  + address : str
+  + gender : str
+  + password : str
+  + phoneno : int
+  + username : str
+}
+Admin "1..1" -- "1..1" System : Admin_System
+Flightlist "1..1" -- "1..1" System : System_Flightlist
+System "1..1" -- "1..1" Timinglist : System_Timinglist
+System "0..1" -- "0..1" User : User_System
+Ticket "1..9999" -- "1..9999" User : User_Ticket
+@enduml

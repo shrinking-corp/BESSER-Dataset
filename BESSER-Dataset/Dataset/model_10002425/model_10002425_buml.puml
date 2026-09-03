@@ -1,0 +1,195 @@
+@startuml
+class AbstractTableModel {
+}
+enum ArrayList_Instruction_ {
+}
+enum ArrayList_Integer_ {
+}
+enum ArrayList_Interrupter_ {
+}
+enum ArrayList_ProcessData_ {
+}
+class ArrayList_ProgramFileData_ {
+}
+class CPU {
+  + interruptQueue : ArrayList_Interrupter_
+  + registers : str
+}
+class Class {
+}
+class Clock {
+  + clockCycle : int
+}
+class Dispatcher {
+}
+class Font {
+}
+class Hard_Drive {
+  + memory : str
+}
+class IO_Device {
+  + counter : int
+}
+class Instruction_Calculate {
+  + time : int
+}
+class Instruction_CloseBracket {
+}
+class Instruction_DecrementPointer {
+}
+class Instruction_DecrementValue {
+}
+class Instruction_Exit {
+}
+class Instruction_IO {
+}
+class Instruction_IncrementPointer {
+}
+class Instruction_IncrementValue {
+}
+class Instruction_Instruction_Interface {
+}
+class Instruction_OpenBracket {
+}
+class Instruction_Out {
+}
+class Instruction_Print {
+}
+class Instruction_Yield {
+}
+class Interrupter_Interface {
+}
+class JFrame {
+}
+class JLabel {
+}
+class JScrollPane {
+}
+class JTable {
+}
+class JTextArea {
+}
+class JTextField {
+}
+class JobFileData {
+  + programs : ArrayList_ProgramFileData_
+  + startTimes : ArrayList_Integer_
+}
+class Main {
+}
+class Memory {
+  + memory : Memory__
+  + table : Page__
+}
+enum Memory__ {
+}
+class Object {
+}
+class Operating_System {
+  + INSTRUCTION_REGISTER : int
+  + MEMORY_SIZE : int
+  + NUMBER_OF_REGISTERS : int
+  + PAGE_SIZE : int
+  + PROCESS_ID_REGISTER : int
+  + PROC_BASE_POINTER : int
+  + PROC_BASE_REGISTER : int
+  + PROC_DATA_POINTER : int
+  + PROC_LIMIT_REGISTER : int
+  + QUANTUM : int
+  + clock : Clock
+  + cpu : CPU
+  + device : IO_Device
+  + dispatcher : Dispatcher
+  + hardDrive : Hard_Drive
+  + memory : Memory
+  + prompt : Prompt
+  + scheduler : Scheduler
+  + taskManager : Task_Manager
+}
+class Page {
+  + attribute : str
+  + free : bool
+  + owner : Process
+}
+enum Page__ {
+}
+class Process {
+  + memoryUseage : int
+  + name : str
+  + processState : ProcessState
+  + registers : str
+}
+class ProcessData {
+  + instructions : ArrayList_Instruction_
+  + memory : int
+  + name : str
+  + startTime : str
+}
+enum ProcessState {
+}
+class ProcessTableModel {
+  + columnNames : str
+  + numberProcesses : int
+  + processList : str
+}
+class ProgramFileData {
+  + instructions : ArrayList_Instruction_
+  + memory : int
+  + name : str
+}
+class Prompt {
+  + FONT_SIZE : int
+  + MAX_COMMAND_LENGTH : int
+  + OUTPUT_HEIGHT : int
+  + OUTPUT_WIDTH : int
+  + commandLine : JTextField
+  + frame : JFrame
+  + frameFont : Font
+  + output : JTextArea
+  + queuePosition : int
+}
+class Request {
+  + endAddress : int
+  + processID : int
+  + startAddress : int
+}
+class Scheduler {
+  + identifier : int
+  + ioQueue : Process
+  + newQueue : ProcessData
+  + readyQueue : Process
+}
+class Task_Manager {
+  + amountofFreeMemory : JLabel
+  + amountofUsedMemory : JLabel
+  + contactTable : JTable
+  + numberOfProcesses : JLabel
+  + scrollPane : JScrollPane
+}
+Instruction_Calculate "0..1" -- "0..1" Operating_System : Calculate_Operating_System
+Instruction_Exit "0..1" -- "0..1" Operating_System : Exit_Operating_System
+Instruction_Exit "0..1" -- "0..1" Process : Exit_Process
+Hard_Drive "0..1" -- "0..1" Request : Hard_Drive_Request
+Instruction_IO "0..1" -- "0..1" Operating_System : IO_Operating_System
+Instruction_IO "0..1" -- "0..1" Process : IO_Process
+Instruction_Instruction_Interface "0..1" -- "0..1" ProcessData : Instruction_ProcessData
+JobFileData "0..1" -- "0..1" ProgramFileData : JobFileData_ProgramFileData
+Memory "0..1" -- "0..1" Page : Memory_Page
+CPU "0..1" -- "0..1" Operating_System : Operating_System_CPU
+Clock "0..1" -- "0..1" Operating_System : Operating_System_Clock
+Dispatcher "0..1" -- "0..1" Operating_System : Operating_System_Dispatcher
+Hard_Drive "0..1" -- "0..1" Operating_System : Operating_System_Hard_Drive
+IO_Device "0..1" -- "0..1" Operating_System : Operating_System_IO_Device
+Main "0..1" -- "0..1" Operating_System : Operating_System_Main
+Memory "0..1" -- "0..1" Operating_System : Operating_System_Memory
+Operating_System "0..1" -- "0..1" Prompt : Operating_System_Prompt
+Operating_System "0..1" -- "0..1" Scheduler : Operating_System_Scheduler
+Operating_System "0..1" -- "0..1" Task_Manager : Operating_System_Task_Manager
+Instruction_Out "0..1" -- "0..1" Operating_System : Out_Operating_System
+Page "0..1" -- "0..1" Process : Page_Process
+Operating_System "0..1" -- "0..1" ProcessTableModel : ProcessTableModel_Operating_System
+Process "0..1" -- "0..1" ProcessTableModel : ProcessTableModel_Process
+Instruction_Instruction_Interface "0..1" -- "0..1" ProgramFileData : ProgramFileData_Instruction
+Process "0..1" -- "0..1" Task_Manager : Task_Manager_Process
+Instruction_Yield "0..1" -- "0..1" Operating_System : Yield_Operating_System
+@enduml

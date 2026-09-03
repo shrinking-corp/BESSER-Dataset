@@ -1,0 +1,66 @@
+@startuml
+class Bot {
+  + hand : Hand
+  + name : str
+}
+class Card_Interface {
+}
+class Cards {
+  + num : int
+  + power : int
+  + suit : Suits
+  + value : int
+}
+class Deck_Interface {
+}
+class Game {
+  + blind : IBlind_Interface
+  + deck : Deck_Interface
+  + isCracked : bool
+  + partner : Player_Interface
+  + partnerCard : Card_Interface
+  + picker : Player_Interface
+  + rounds_6_ : Round
+}
+class Hand {
+  + cards_6_ : str
+}
+class Human {
+  + hand : Hand
+  + name : str
+}
+class IBlind_Interface {
+}
+class Piquet {
+  + cards_32_ : Card_Interface
+}
+class Player_Interface {
+}
+class Round {
+  + RoundStarter : Player_Interface
+  + roundNum : int
+  + trick : Trick
+  + turnToPlay : Player_Interface
+}
+class ScoreSheet_Interface {
+}
+class Scores {
+}
+enum Suits {
+}
+class Table {
+  + Games_6___ : Game
+  + dealer : Player_Interface
+  + numOfGames : int
+  + players_5_ : Player_Interface
+  + scoreSheet : ScoreSheet_Interface
+}
+class Trick {
+  + Card_5_ : str
+  + trickWinner : Player_Interface
+}
+Game "0..1" -- "0..1" Round : Game_Round
+Game "0..1" -- "0..1" Table : Game_Table
+Card_Interface "0..1" -- "0..1" Hand : Hand_Card
+Round "0..1" -- "0..1" Trick : Trick_Round
+@enduml

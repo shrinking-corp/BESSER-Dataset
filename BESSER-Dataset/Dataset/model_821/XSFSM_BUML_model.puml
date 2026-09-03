@@ -1,0 +1,89 @@
+@startuml
+class Action {
+}
+class Guard {
+}
+class NamedElement {
+}
+class NumberGuard {
+}
+class Variable {
+}
+abstract class fsm_Action {
+  + execute() : void
+}
+class fsm_AssignValueAction {
+  + value : bool
+  + execute() : void
+}
+class fsm_DecreaseValueAction {
+  + stepValue : int
+  + execute() : void
+}
+class fsm_EqualNumberGuard {
+  + holds() : void
+}
+class fsm_GreaterThanNumberGuard {
+  + holds() : void
+}
+abstract class fsm_Guard {
+  + not_ : bool
+  + holds() : void
+}
+class fsm_IncreaseValueAction {
+  + stepValue : int
+  + execute() : void
+}
+class fsm_LessThanNumberGuard {
+  + holds() : void
+}
+abstract class fsm_NamedElement {
+  + name : str
+}
+abstract class fsm_NumberGuard {
+  + value : bool
+  + holds() : void
+}
+class fsm_NumberVariable {
+  + initialValue : int
+  + value : bool
+}
+class fsm_State {
+}
+class fsm_StateMachine {
+  + assignInitialValues(fsm_arguments : str) : void
+  + main() : void
+  + step() : void
+}
+class fsm_Transition {
+  + fire() : void
+}
+abstract class fsm_Variable {
+  + name : str
+}
+Action <|-- fsm_AssignValueAction
+Action <|-- fsm_DecreaseValueAction
+Action <|-- fsm_IncreaseValueAction
+Guard <|-- fsm_NumberGuard
+NamedElement <|-- fsm_State
+NamedElement <|-- fsm_StateMachine
+NamedElement <|-- fsm_Transition
+NumberGuard <|-- fsm_EqualNumberGuard
+NumberGuard <|-- fsm_GreaterThanNumberGuard
+NumberGuard <|-- fsm_LessThanNumberGuard
+Variable <|-- fsm_NumberVariable
+fsm_Action "1..1" --* "1..1" fsm_Transition : action19
+fsm_State "0..1" -- "1..1" fsm_StateMachine : currentState6
+fsm_Guard "1..1" --* "1..1" fsm_Transition : guard17
+fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransitions11
+fsm_State "1..1" -- "1..1" fsm_StateMachine : initialState1
+fsm_State "1..1" -- "0..9999" fsm_Transition : outgoingTransitions10
+fsm_State "0..9999" --* "1..1" fsm_StateMachine : ownedStates0
+fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : ownedTransitions2
+fsm_State "1..1" -- "1..1" fsm_StateMachine : owningFSM9
+fsm_State "1..1" -- "1..1" fsm_Transition : source13
+fsm_NumberGuard "1..1" -- "1..1" fsm_NumberVariable : source21
+fsm_State "1..1" -- "1..1" fsm_Transition : target15
+fsm_Action "1..1" -- "1..1" fsm_NumberVariable : target22
+fsm_StateMachine "1..1" *-- "0..9999" fsm_Variable : variables4
+@enduml

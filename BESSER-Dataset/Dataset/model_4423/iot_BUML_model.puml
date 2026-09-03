@@ -1,0 +1,37 @@
+@startuml
+enum BoardType {
+  Arduino
+  BeagleBoard
+  RaspberryPi
+}
+class HWComp {
+}
+class iot_Actuator {
+}
+class iot_Board {
+  + name : str
+  + type : str
+}
+abstract class iot_HWComp {
+  + name : str
+}
+abstract class iot_IotActivity {
+}
+abstract class iot_IotOperationDef {
+}
+class iot_Sensor {
+}
+class iot_Sketch {
+}
+class iot_System {
+  + name : str
+}
+HWComp <|-- iot_Actuator
+HWComp <|-- iot_Sensor
+iot_IotActivity "0..1" --* "1..1" iot_Sketch : activity10
+iot_Board "0..9999" --* "1..1" iot_System : boards3
+iot_HWComp "0..9999" --* "1..1" iot_System : components1
+iot_Board "1..1" -- "0..9999" iot_HWComp : components7
+iot_HWComp "1..1" *-- "0..9999" iot_IotOperationDef : services0
+iot_Sketch "0..1" --* "1..1" iot_System : sketch5
+@enduml

@@ -1,0 +1,91 @@
+@startuml
+class whileCpp_Command {
+  + nop : str
+}
+class whileCpp_CommandForEach {
+}
+class whileCpp_CommandIf {
+}
+class whileCpp_CommandWhile {
+  + w : str
+}
+class whileCpp_Commands {
+}
+class whileCpp_Cons {
+  + exprCons : str
+}
+class whileCpp_Definition {
+}
+class whileCpp_Expr {
+}
+class whileCpp_ExprAnd {
+  + exprAnd : str
+}
+class whileCpp_ExprEq {
+}
+class whileCpp_ExprNot {
+  + not_ : str
+}
+class whileCpp_ExprOr {
+  + exprOr : str
+}
+class whileCpp_ExprSimple {
+  + exprHead : str
+  + exprTail : str
+  + nil : str
+  + nomSymb : str
+  + symb : str
+  + vari : str
+}
+class whileCpp_Exprs {
+}
+class whileCpp_Function {
+  + nom : str
+}
+class whileCpp_Input {
+  + varIn : str
+}
+class whileCpp_Output {
+  + varOut : str
+}
+class whileCpp_Program {
+}
+class whileCpp_Vars {
+  + varGen : str
+}
+whileCpp_Command "1..1" *-- "0..1" whileCpp_CommandForEach : cmdForEach19
+whileCpp_Command "1..1" *-- "0..1" whileCpp_CommandIf : cmdIf17
+whileCpp_Command "1..1" *-- "0..1" whileCpp_CommandWhile : cmdWhile15
+whileCpp_CommandWhile "1..1" *-- "0..1" whileCpp_Commands : cmds23
+whileCpp_CommandForEach "1..1" *-- "0..1" whileCpp_Commands : cmds41
+whileCpp_CommandIf "1..1" *-- "0..1" whileCpp_Commands : cmdsElse32
+whileCpp_CommandIf "1..1" *-- "0..1" whileCpp_Commands : cmdsThen29
+whileCpp_Command "0..9999" --* "1..1" whileCpp_Commands : commande9
+whileCpp_Commands "0..1" --* "1..1" whileCpp_Definition : commandes5
+whileCpp_CommandIf "1..1" *-- "0..1" whileCpp_Expr : cond26
+whileCpp_Definition "0..1" --* "1..1" whileCpp_Function : definition1
+whileCpp_CommandForEach "1..1" *-- "0..1" whileCpp_Expr : elem35
+whileCpp_CommandForEach "1..1" *-- "0..1" whileCpp_Expr : ensemb38
+whileCpp_Expr "0..9999" --* "1..1" whileCpp_Exprs : expGen44
+whileCpp_CommandWhile "1..1" *-- "0..1" whileCpp_Expr : expr21
+whileCpp_Expr "0..1" --* "1..1" whileCpp_ExprEq : expr74
+whileCpp_Expr "1..1" *-- "0..1" whileCpp_ExprAnd : exprAnd49
+whileCpp_ExprAnd "0..1" --* "1..1" whileCpp_ExprAnd : exprAndAtt65
+whileCpp_Cons "0..1" --* "1..1" whileCpp_ExprSimple : exprCons51
+whileCpp_Cons "1..1" *-- "0..9999" whileCpp_Expr : exprConsAttList83
+whileCpp_ExprEq "0..1" --* "1..1" whileCpp_ExprNot : exprEq72
+whileCpp_Expr "0..1" --* "1..1" whileCpp_ExprSimple : exprHeadAtt53
+whileCpp_ExprNot "0..1" --* "1..1" whileCpp_ExprOr : exprNot67
+whileCpp_ExprAnd "1..1" *-- "0..1" whileCpp_ExprOr : exprOr62
+whileCpp_ExprOr "0..1" --* "1..1" whileCpp_ExprOr : exprOrAtt70
+whileCpp_ExprEq "1..1" *-- "0..1" whileCpp_ExprSimple : exprSim177
+whileCpp_ExprEq "1..1" *-- "0..1" whileCpp_ExprSimple : exprSim280
+whileCpp_Expr "1..1" *-- "0..1" whileCpp_ExprSimple : exprSimp47
+whileCpp_Expr "0..1" --* "1..1" whileCpp_ExprSimple : exprTailAtt56
+whileCpp_Command "1..1" *-- "0..1" whileCpp_Exprs : exprs13
+whileCpp_Function "0..9999" --* "1..1" whileCpp_Program : fonctions0
+whileCpp_Definition "1..1" *-- "0..1" whileCpp_Input : inputs3
+whileCpp_Definition "1..1" *-- "0..1" whileCpp_Output : outputs7
+whileCpp_Expr "0..9999" --* "1..1" whileCpp_ExprSimple : symbAtt59
+whileCpp_Command "1..1" *-- "0..1" whileCpp_Vars : vars11
+@enduml

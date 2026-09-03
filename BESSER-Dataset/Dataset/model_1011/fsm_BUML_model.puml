@@ -1,0 +1,26 @@
+@startuml
+class State {
+}
+class fsm_FSM {
+  + name : str
+}
+abstract class fsm_State {
+  + name : str
+}
+class fsm_StateFinal {
+}
+class fsm_StateOff {
+}
+class fsm_StateOn {
+}
+class fsm_Transition {
+  + name : str
+}
+State <|-- fsm_StateFinal
+State <|-- fsm_StateOff
+State <|-- fsm_StateOn
+fsm_State "1..1" -- "1..1" fsm_Transition : source3
+fsm_FSM "1..1" *-- "1..9999" fsm_State : state0
+fsm_State "1..1" -- "1..1" fsm_Transition : target6
+fsm_FSM "1..1" *-- "0..9999" fsm_Transition : transition1
+@enduml

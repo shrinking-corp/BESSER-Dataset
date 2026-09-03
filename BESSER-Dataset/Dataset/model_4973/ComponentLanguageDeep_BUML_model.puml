@@ -1,0 +1,40 @@
+@startuml
+class ComponentLanguageDeep_Component {
+}
+class ComponentLanguageDeep_ComponentInstance {
+}
+class ComponentLanguageDeep_Connector {
+}
+class ComponentLanguageDeep_ConnectorInstance {
+}
+class ComponentLanguageDeep_InPort {
+}
+class ComponentLanguageDeep_InPortInstance {
+}
+class ComponentLanguageDeep_OutPort {
+}
+class ComponentLanguageDeep_OutPortInstance {
+}
+abstract class ComponentLanguageDeep_Port {
+}
+class ComponentLanguageDeep_PortInstance {
+}
+class Port {
+}
+class PortInstance {
+}
+Port <|-- ComponentLanguageDeep_InPort
+Port <|-- ComponentLanguageDeep_OutPort
+PortInstance <|-- ComponentLanguageDeep_InPortInstance
+PortInstance <|-- ComponentLanguageDeep_OutPortInstance
+ComponentLanguageDeep_Connector "1..1" -- "0..9999" ComponentLanguageDeep_Port : in_1
+ComponentLanguageDeep_ConnectorInstance "1..1" -- "0..9999" ComponentLanguageDeep_PortInstance : in_12
+ComponentLanguageDeep_ConnectorInstance "1..1" -- "0..9999" ComponentLanguageDeep_PortInstance : out14
+ComponentLanguageDeep_Connector "1..1" -- "0..9999" ComponentLanguageDeep_Port : out3
+ComponentLanguageDeep_Component "1..1" -- "0..9999" ComponentLanguageDeep_Port : ports0
+ComponentLanguageDeep_ComponentInstance "1..1" -- "0..9999" ComponentLanguageDeep_PortInstance : ports8
+ComponentLanguageDeep_Connector "0..1" -- "1..1" ComponentLanguageDeep_ConnectorInstance : type17
+ComponentLanguageDeep_InPort "0..1" -- "1..1" ComponentLanguageDeep_InPortInstance : type6
+ComponentLanguageDeep_OutPort "0..1" -- "1..1" ComponentLanguageDeep_OutPortInstance : type7
+ComponentLanguageDeep_Component "0..1" -- "1..1" ComponentLanguageDeep_ComponentInstance : type9
+@enduml

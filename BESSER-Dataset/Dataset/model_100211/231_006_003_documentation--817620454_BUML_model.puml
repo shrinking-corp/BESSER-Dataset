@@ -1,0 +1,128 @@
+@startuml
+class Fragment {
+}
+class FragmentContainer {
+}
+class NamedElement {
+}
+class Text {
+}
+class TextContainer {
+}
+enum Unit {
+  PERCENT
+  PIXELS
+}
+class documentation_Code {
+}
+class documentation_Documentation {
+  + title : str
+}
+abstract class documentation_Fragment {
+}
+abstract class documentation_FragmentContainer {
+}
+class documentation_HtmlCode {
+}
+class documentation_Image {
+  + contextClassName : str
+  + originalSource : str
+  + resource : str
+}
+class documentation_Line {
+}
+class documentation_Link {
+  + uri : str
+}
+class documentation_List {
+}
+class documentation_ListItem {
+  + text : str
+}
+class documentation_Listing {
+}
+abstract class documentation_NamedElement {
+  + id : str
+  + label : str
+  + name : str
+}
+class documentation_PageBreak {
+}
+class documentation_Paragraph {
+}
+class documentation_Reference {
+  + referredLabel : str
+}
+class documentation_Section {
+}
+class documentation_Subsection {
+}
+class documentation_Subsubsection {
+}
+class documentation_Table {
+}
+class documentation_TableCell {
+  + content : str
+  + span : int
+}
+class documentation_TableHeader {
+}
+class documentation_TableRow {
+}
+class documentation_TermEntry {
+  + description : str
+}
+abstract class documentation_Text {
+  + text : str
+}
+abstract class documentation_TextContainer {
+}
+class documentation_Width {
+  + unit : str
+  + width : str
+}
+class documentation_XML {
+  + content : str
+  + contextClassName : str
+  + resource : str
+}
+Fragment <|-- documentation_Image
+Fragment <|-- documentation_Link
+Fragment <|-- documentation_List
+Fragment <|-- documentation_Listing
+Fragment <|-- documentation_PageBreak
+Fragment <|-- documentation_Paragraph
+Fragment <|-- documentation_Subsection
+Fragment <|-- documentation_Subsubsection
+Fragment <|-- documentation_Table
+Fragment <|-- documentation_Text
+Fragment <|-- documentation_XML
+FragmentContainer <|-- documentation_Section
+FragmentContainer <|-- documentation_Subsection
+FragmentContainer <|-- documentation_Subsubsection
+NamedElement <|-- documentation_Image
+NamedElement <|-- documentation_Link
+NamedElement <|-- documentation_Reference
+NamedElement <|-- documentation_Section
+NamedElement <|-- documentation_Subsection
+NamedElement <|-- documentation_Subsubsection
+NamedElement <|-- documentation_TermEntry
+NamedElement <|-- documentation_XML
+Text <|-- documentation_Code
+Text <|-- documentation_HtmlCode
+Text <|-- documentation_Line
+Text <|-- documentation_Reference
+TextContainer <|-- documentation_FragmentContainer
+TextContainer <|-- documentation_Listing
+TextContainer <|-- documentation_Paragraph
+documentation_Fragment "0..9999" --* "1..1" documentation_FragmentContainer : fragments13
+documentation_TableCell "0..9999" --* "1..1" documentation_TableHeader : headerCells7
+documentation_List "1..1" *-- "0..9999" documentation_ListItem : items3
+documentation_TableCell "0..9999" --* "1..1" documentation_TableRow : rowCells9
+documentation_Documentation "1..1" *-- "0..9999" documentation_Section : sections0
+documentation_Table "1..1" *-- "1..1" documentation_TableHeader : tableHeader4
+documentation_Table "1..1" *-- "0..9999" documentation_TableRow : tableRows5
+documentation_Documentation "1..1" *-- "0..9999" documentation_TermEntry : terminology1
+documentation_Text "0..9999" --* "1..1" documentation_TextContainer : texts14
+documentation_Image "1..1" *-- "1..1" documentation_Width : width12
+@enduml

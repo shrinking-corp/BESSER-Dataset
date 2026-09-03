@@ -1,0 +1,65 @@
+@startuml
+class Account {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class Admin_Actor {
+}
+class AjoutProduit_UseCase {
+}
+class Customer {
+  + address : str
+  + email : str
+  + phone : str
+}
+class LineItem {
+  + price : float
+  + quantity : int
+}
+class MyActor_Actor {
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : OrderStatus
+  + total : float
+}
+enum OrderStatus {
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Product {
+  + description : str
+  + name : str
+}
+class ShoppinCart {
+  + creationDate : date
+}
+enum UserState {
+}
+class WebUser {
+  + login : str
+  + password : str
+  + state : UserState
+}
+class Webuser_Actor {
+}
+Account "1..1" -- "0..9999" Order : Account_Order
+Account "1..1" -- "0..9999" Payment : Account_Payment
+Account "1..1" -- "1..1" ShoppinCart : Account_ShoppinCart
+Account "1..1" -- "1..1" Customer : Customer_Account
+LineItem "1..9999" -- "0..9999" Order : Order_LineItem
+Order "1..1" -- "0..9999" Payment : Payment_Order
+LineItem "0..9999" -- "1..1" Product : Product_LineItem
+LineItem "0..9999" -- "1..1" ShoppinCart : ShoppinCart_LineItem
+ShoppinCart "0..1" -- "1..1" WebUser : ShoppinCart_WebUser
+Customer "1..1" -- "1..1" WebUser : WebUser_Customer
+Admin_Actor "0..1" -- "0..1" AjoutProduit_UseCase : association2
+@enduml

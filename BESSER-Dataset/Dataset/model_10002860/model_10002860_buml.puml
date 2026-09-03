@@ -1,0 +1,67 @@
+@startuml
+class Coach {
+  + capacity : int
+  + coachType : str
+  + humidity : str
+  + temprature : str
+  + totalPassengers : int
+}
+class Commutator {
+  + builder : TrainBuilder_Interface
+  + commutatorTrain : str
+}
+class Engine {
+  + fuelAvg : str
+  + horsePower : str
+}
+class InterCity {
+  + builder : TrainBuilder_Interface
+  + interCityTrain : str
+}
+class Route {
+  + destination : str
+  + routeId : int
+  + source : str
+  + stops : str
+}
+class Service {
+  + arrivalDateTime : str
+  + departureDateTime : str
+  + serviceId : int
+  + serviceName : str
+  + type : ServiceType_Interface
+}
+class ServiceTypeFactory {
+  + getServiceType : ServiceType_Interface
+  + type : str
+}
+class ServiceType_Interface {
+}
+class Sleeper {
+  + builder : TrainBuilder_Interface
+  + sleeperTrain : str
+}
+class Train {
+  + myCoach : str
+  + myEngine : str
+}
+class TrainBuilder_Interface {
+}
+class TrainStats {
+  + fuelAvg : str
+  + humidityAvg : str
+  + passengerCount : int
+  + tempAvg : str
+  + trainService : str
+}
+Commutator "1..1" -- "1..1" TrainBuilder_Interface : Commutator_TrainBuilder
+Commutator "1..1" -- "1..9999" TrainBuilder_Interface : Commutator_TrainBuilder2
+InterCity "1..1" -- "1..1" TrainBuilder_Interface : InterCity_TrainBuilder
+InterCity "1..1" -- "1..9999" TrainBuilder_Interface : InterCity_TrainBuilder2
+ServiceTypeFactory "1..1" -- "1..9999" ServiceType_Interface : ServiceTypeFactory_ServiceType
+Route "1..1" -- "1..1" Service : Service_Route
+Service "1..1" -- "1..9999" ServiceTypeFactory : Service_ServiceTypeFactory
+Sleeper "1..1" -- "1..1" TrainBuilder_Interface : Sleeper_TrainBuilder
+Sleeper "1..1" -- "1..9999" TrainBuilder_Interface : Sleeper_TrainBuilder2
+Service "1..1" -- "1..1" TrainStats : TrainStats_Service
+@enduml

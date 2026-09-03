@@ -1,0 +1,96 @@
+@startuml
+enum AttrType {
+  boolean
+  double
+  integer
+  string
+}
+class Data {
+}
+class Edge {
+}
+enum EdgeType {
+  directed
+  undirected
+}
+enum ElemType {
+  edge
+  graph
+  node
+}
+class Element {
+}
+class EndPoint {
+}
+class Graph {
+}
+class GraphML_Data {
+  + key : str
+  + value : str
+}
+class GraphML_Edge {
+  + directed : str
+}
+class GraphML_Element {
+  + id : str
+}
+class GraphML_EndPoint {
+}
+class GraphML_Graph {
+  + edgeDefault : str
+}
+class GraphML_HyperEdge {
+}
+class GraphML_Key {
+  + attrName : str
+  + defValue : str
+  + for_ : str
+  + type : str
+}
+abstract class GraphML_LocatedElement {
+  + commentsAfter : str
+  + commentsBefore : str
+  + location : str
+}
+class GraphML_Node {
+}
+class GraphML_Port {
+  + name : str
+}
+class GraphML_Root {
+}
+class Key {
+}
+class LocatedElement {
+}
+class Node {
+}
+class Port {
+}
+Element <|-- GraphML_Edge
+Element <|-- GraphML_Graph
+Element <|-- GraphML_HyperEdge
+Element <|-- GraphML_Key
+Element <|-- GraphML_Node
+LocatedElement <|-- GraphML_Data
+LocatedElement <|-- GraphML_Element
+LocatedElement <|-- GraphML_EndPoint
+LocatedElement <|-- GraphML_Port
+LocatedElement <|-- GraphML_Root
+Element "0..9999" --* "1..1" GraphML_Graph : contents6
+Data "0..9999" --* "1..1" GraphML_Element : datas3
+EndPoint "0..9999" --* "1..1" GraphML_HyperEdge : endpoints14
+Graph "0..1" -- "1..1" GraphML_Element : graph4
+Graph "0..9999" --* "1..1" GraphML_Root : graphs1
+GraphML_Root "1..1" *-- "0..9999" Key : keys0
+GraphML_EndPoint "1..1" -- "1..1" Node : node23
+GraphML_EndPoint "1..1" -- "1..1" Port : port25
+GraphML_Node "1..1" *-- "0..9999" Port : ports17
+GraphML_Edge "1..1" -- "1..1" Node : source7
+Edge "0..9999" -- "1..1" GraphML_Node : sourceOf20
+GraphML_Edge "1..1" -- "1..1" Port : sourceport10
+Graph "1..1" --* "1..1" GraphML_Node : subgraph15
+GraphML_Edge "1..1" -- "1..1" Node : target8
+Edge "0..9999" -- "1..1" GraphML_Node : targetOf21
+GraphML_Edge "1..1" -- "1..1" Port : targetport11
+@enduml

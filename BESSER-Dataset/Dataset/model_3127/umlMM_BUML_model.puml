@@ -1,0 +1,45 @@
+@startuml
+class Classifier {
+}
+enum KIND {
+  OTHER
+  PERSISTENT
+}
+class umlMM__Association {
+  + name : str
+}
+class umlMM__Attribute {
+  + name : str
+}
+class umlMM__Class {
+  + kind : str
+}
+abstract class umlMM__Classifier {
+  + name : str
+}
+class umlMM__Package {
+  + name : str
+}
+class umlMM__PrimitiveDataType {
+}
+class umlMM__dummy {
+}
+Classifier <|-- umlMM__Class
+Classifier <|-- umlMM__PrimitiveDataType
+umlMM__Association "1..9999" --* "1..1" umlMM__Package : association1
+umlMM__Attribute "1..9999" --* "1..1" umlMM__Class : attribute4
+umlMM__Classifier "1..9999" --* "1..1" umlMM__Package : classifier0
+umlMM__Package "1..9999" --* "1..1" umlMM__dummy : containsPackage27
+umlMM__Association "1..1" -- "1..1" umlMM__Class : destination25
+umlMM__Association "1..9999" -- "1..1" umlMM__Class : destinationOf12
+umlMM__Package "1..1" -- "1..1" umlMM__dummy : dummy3
+umlMM__Class "1..1" -- "1..1" umlMM__Class : general6
+umlMM__Classifier "1..1" -- "1..1" umlMM__Package : namespace20
+umlMM__Association "1..1" -- "1..1" umlMM__Package : namespace21
+umlMM__Attribute "1..1" -- "1..1" umlMM__Class : owner14
+umlMM__Association "1..1" -- "1..1" umlMM__Class : source23
+umlMM__Association "1..9999" -- "1..1" umlMM__Class : sourceOf10
+umlMM__Class "1..1" -- "1..9999" umlMM__Class : subclass8
+umlMM__Attribute "1..1" -- "1..1" umlMM__Classifier : type16
+umlMM__Attribute "1..9999" -- "1..1" umlMM__Classifier : typeOf18
+@enduml

@@ -1,0 +1,783 @@
+@startuml
+enum ActionGranularityType {
+  ROW
+  STATEMENT
+}
+enum ActionTimeType {
+  AFTER
+  BEFORE
+  INSTEADOF
+}
+class Assertion {
+}
+class AttributeDefinition {
+}
+class AuthorizationIdentifier {
+}
+class BaseTable {
+}
+class Catalog {
+}
+class CharacterSet {
+}
+class CharacterStringDataType {
+}
+class CheckConstraint {
+}
+enum CheckType {
+  CASCADED
+  LOCAL
+  NONE
+}
+enum CoercibilityType {
+  COERCIBILE
+  EXPLICIT
+  IMPLICIT
+  NO_COLLATION
+}
+class CollectionDataType {
+}
+class Column {
+}
+class Comment {
+}
+class Constraint {
+}
+class ConstructedDataType {
+}
+enum DataAccess {
+  CONTAINS_SQL
+  MODIFIES_SQL_DATA
+  NO_SQL
+  READS_SQL_DATA
+}
+class DataType {
+}
+class Database {
+}
+class Dependency {
+}
+class DerivedTable {
+}
+class DistinctUserDefinedType {
+}
+class ENamedElement {
+}
+class ElementType {
+}
+class Event {
+}
+class ExactNumericDataType {
+}
+class Field {
+}
+class ForeignKey {
+}
+class Function {
+}
+enum GenerateType {
+  ALWAYS_GENERATED
+  DEFAULT_GENERATED
+}
+class Group {
+}
+class IdentitySpecifier {
+}
+enum IncrementType {
+  ASC
+  DESC
+  RANDOM
+}
+class Index {
+}
+class IndexExpression {
+}
+class IndexMember {
+}
+enum IntegrityControlOption {
+  ALL
+  NONE
+  SELECTIVE
+}
+enum IntervalQualifierType {
+  DAY
+  FRACTION
+  HOUR
+  MINUTE
+  MONTH
+  SECOND
+  YEAR
+}
+enum LinkControlOption {
+  FILE_LINK_CONTROL
+  NO_FILE_LINK_CONTROL
+}
+enum MatchType {
+  MATCH_FULL
+  MATCH_PARTIAL
+  MATCH_SIMPLE
+}
+class Method {
+}
+class NumericalDataType {
+}
+class ObjectExtension {
+}
+enum OrderingCategoryType {
+  MAP
+  RELATIVE
+  STATE
+}
+enum OrderingType {
+  EQUALS
+  FULL
+}
+class Parameter {
+}
+enum ParameterMode {
+  IN
+  INOUT
+  OUT
+}
+class PredefinedDataType {
+}
+enum PrimitiveType {
+  BIGINT
+  BINARY
+  BINARY_LARGE_OBJECT
+  BINARY_VARYING
+  BOOLEAN
+  CHARACTER
+  CHARACTER_LARGE_OBJECT
+  CHARACTER_VARYING
+  DATALINK
+  DATE
+  DECIMAL
+  DOUBLE_PRECISION
+  FLOAT
+  INTEGER
+  INTERVAL
+  NATIONAL_CHARACTER
+  NATIONAL_CHARACTER_LARGE_OBJECT
+  NATIONAL_CHARACTER_VARYING
+  NUMERIC
+  REAL
+  SMALLINT
+  TIME
+  TIMESTAMP
+  XML_TYPE
+}
+class Privilege {
+}
+class QueryExpression {
+}
+enum ReadPermissionOption {
+  DB
+  FS
+}
+class ReferenceConstraint {
+}
+enum ReferenceType {
+  DERIVED_SELF_REF
+  SYSTEM_GENERATED
+  USER_GENERATED
+}
+enum ReferentialActionType {
+  CASCADE
+  NO_ACTION
+  RESTRICT
+  SET_DEFAULT
+  SET_NULL
+}
+class Role {
+}
+class RoleAuthorization {
+}
+class Routine {
+}
+class RoutineResultTable {
+}
+class SQLDataStatement {
+}
+class SQLDataType {
+}
+class SQLObject {
+}
+class SQLStatement {
+}
+class Schema {
+}
+class SearchCondition {
+}
+class Sequence {
+}
+class Source {
+}
+class StructuredUserDefinedType {
+}
+class Table {
+}
+class TableConstraint {
+}
+class Trigger {
+}
+class TypedElement {
+}
+class UniqueConstraint {
+}
+enum UnlinkOption {
+  DELETE
+  NONE
+  RESTORE
+}
+class User {
+}
+class UserDefinedType {
+}
+class UserDefinedTypeOrdering {
+}
+class ValueExpression {
+}
+enum WritePermissionOption {
+  ADMIN
+  BLOCKED
+  FS
+}
+class expressions_QueryExpression {
+}
+class expressions_SearchCondition {
+}
+class expressions_ValueExpression {
+}
+class schema_SQLObject {
+}
+class schema_sqlmodel_EObject {
+}
+abstract class sqlmodel_accesscontrol_AuthorizationIdentifier {
+}
+class sqlmodel_accesscontrol_Group {
+}
+class sqlmodel_accesscontrol_Privilege {
+  + action : str
+  + grantable : bool
+  + withHierarchy : bool
+}
+class sqlmodel_accesscontrol_Role {
+}
+class sqlmodel_accesscontrol_RoleAuthorization {
+  + grantable : bool
+}
+class sqlmodel_accesscontrol_User {
+}
+class sqlmodel_constraints_Assertion {
+}
+class sqlmodel_constraints_CheckConstraint {
+}
+abstract class sqlmodel_constraints_Constraint {
+  + deferrable : bool
+  + enforced : bool
+  + initiallyDeferred : bool
+}
+class sqlmodel_constraints_ForeignKey {
+  + match : str
+  + onDelete : str
+  + onUpdate : str
+}
+class sqlmodel_constraints_Index {
+  + clustered : bool
+  + fillFactor : int
+  + systemGenerated : bool
+  + unique : bool
+}
+class sqlmodel_constraints_IndexExpression {
+  + sql : str
+}
+class sqlmodel_constraints_IndexMember {
+  + incrementType : str
+}
+class sqlmodel_constraints_PrimaryKey {
+}
+abstract class sqlmodel_constraints_ReferenceConstraint {
+}
+abstract class sqlmodel_constraints_TableConstraint {
+}
+class sqlmodel_constraints_UniqueConstraint {
+  + clustered : bool
+}
+class sqlmodel_datatypes_ApproximateNumericDataType {
+}
+abstract class sqlmodel_datatypes_ArrayDataType {
+  + maxCardinality : int
+}
+class sqlmodel_datatypes_AttributeDefinition {
+  + defaultValue : str
+  + scopeCheck : str
+  + scopeChecked : bool
+}
+class sqlmodel_datatypes_BinaryStringDataType {
+  + length : int
+  + equals() : bool
+}
+class sqlmodel_datatypes_BooleanDataType {
+}
+class sqlmodel_datatypes_CharacterSet {
+  + defaultCollation : str
+  + encoding : str
+  + repertoire : str
+}
+class sqlmodel_datatypes_CharacterStringDataType {
+  + coercibility : str
+  + collationName : str
+  + fixedLength : bool
+  + length : int
+}
+abstract class sqlmodel_datatypes_CollectionDataType {
+}
+abstract class sqlmodel_datatypes_ConstructedDataType {
+}
+class sqlmodel_datatypes_DataLinkDataType {
+  + integrityControl : str
+  + length : int
+  + linkControl : str
+  + readPermission : str
+  + recovery : bool
+  + unlink : str
+  + writePermission : str
+}
+abstract class sqlmodel_datatypes_DataType {
+  + setContainer(sqlmodel_newContainer : str) : void
+}
+class sqlmodel_datatypes_DateDataType {
+}
+class sqlmodel_datatypes_DistinctUserDefinedType {
+}
+class sqlmodel_datatypes_Domain {
+  + defaultValue : str
+}
+class sqlmodel_datatypes_ElementType {
+}
+abstract class sqlmodel_datatypes_ExactNumericDataType {
+  + scale : int
+}
+class sqlmodel_datatypes_Field {
+  + scopeCheck : str
+  + scopeChecked : bool
+}
+class sqlmodel_datatypes_FixedPrecisionDataType {
+}
+class sqlmodel_datatypes_IntegerDataType {
+}
+class sqlmodel_datatypes_IntervalDataType {
+  + fractionalSecondsPrecision : int
+  + leadingFieldPrecision : int
+  + leadingQualifier : str
+  + trailingFieldPrecision : int
+  + trailingQualifier : str
+}
+abstract class sqlmodel_datatypes_MultisetDataType {
+}
+abstract class sqlmodel_datatypes_NumericalDataType {
+  + precision : int
+}
+abstract class sqlmodel_datatypes_PredefinedDataType {
+  + primitiveType : str
+}
+abstract class sqlmodel_datatypes_ReferenceDataType {
+}
+class sqlmodel_datatypes_RowDataType {
+}
+abstract class sqlmodel_datatypes_SQLDataType {
+}
+class sqlmodel_datatypes_StructuredUserDefinedType {
+  + final : bool
+  + instantiable : bool
+}
+class sqlmodel_datatypes_TimeDataType {
+  + fractionalSecondsPrecision : int
+  + timeZone : bool
+}
+abstract class sqlmodel_datatypes_UserDefinedType {
+}
+class sqlmodel_datatypes_UserDefinedTypeOrdering {
+  + orderingCategory : str
+  + orderingForm : str
+}
+class sqlmodel_datatypes_XMLDataType {
+}
+abstract class sqlmodel_expressions_QueryExpression {
+  + getSQL() : str
+  + setSQL(sqlmodel_sqlText : str) : void
+}
+class sqlmodel_expressions_QueryExpressionDefault {
+  + SQL : str
+}
+abstract class sqlmodel_expressions_SearchCondition {
+  + getSQL() : str
+  + setSQL(sqlmodel_sqlText : str) : void
+}
+class sqlmodel_expressions_SearchConditionDefault {
+  + SQL : str
+}
+abstract class sqlmodel_expressions_ValueExpression {
+  + getSQL() : str
+  + setSQL(sqlmodel_sqlText : str) : void
+}
+class sqlmodel_expressions_ValueExpressionDefault {
+  + SQL : str
+}
+class sqlmodel_routines_BuiltInFunction {
+}
+class sqlmodel_routines_Function {
+  + mutator : bool
+  + nullCall : bool
+  + static : bool
+  + transformGroup : str
+  + typePreserving : bool
+}
+class sqlmodel_routines_Method {
+  + constructor : bool
+  + overriding : bool
+}
+class sqlmodel_routines_Parameter {
+  + locator : bool
+  + mode : str
+}
+class sqlmodel_routines_Procedure {
+  + maxResultSets : int
+  + oldSavePoint : bool
+}
+abstract class sqlmodel_routines_Routine {
+  + authorizationID : str
+  + creationTS : str
+  + deterministic : bool
+  + externalName : str
+  + language : str
+  + lastAlteredTS : str
+  + parameterStyle : str
+  + security : str
+  + specificName : str
+  + sqlDataAccess : str
+}
+class sqlmodel_routines_RoutineResultTable {
+}
+class sqlmodel_routines_Source {
+  + body : str
+}
+class sqlmodel_routines_UserDefinedFunction {
+}
+class sqlmodel_schema_Catalog {
+}
+class sqlmodel_schema_Comment {
+  + description : str
+}
+class sqlmodel_schema_Database {
+  + vendor : str
+  + version : str
+  + getUserDefinedTypes() : str
+}
+class sqlmodel_schema_Dependency {
+  + dependencyType : str
+}
+class sqlmodel_schema_Event {
+  + action : str
+  + condition : str
+  + enabled : bool
+  + for_ : str
+}
+class sqlmodel_schema_IdentitySpecifier {
+  + cycleOption : bool
+  + generationType : str
+  + increment : str
+  + maximum : str
+  + minimum : str
+  + startValue : str
+}
+abstract class sqlmodel_schema_ObjectExtension {
+}
+abstract class sqlmodel_schema_SQLObject {
+  + description : str
+  + label : str
+  + addEAnnotation(sqlmodel_source : str) : str
+  + addEAnnotationDetail(sqlmodel_eAnnotation : str, sqlmodel_key : str, sqlmodel_value : str) : void
+  + getEAnnotation(sqlmodel_source : str) : str
+  + getEAnnotationDetail(sqlmodel_eAnnotation : str, sqlmodel_key : str) : str
+  + removeEAnnotationDetail(sqlmodel_eAnnotation : str, sqlmodel_key : str) : void
+  + setAnnotationDetail(sqlmodel_eAnnotation : str, sqlmodel_key : str, sqlmodel_value : str) : void
+}
+class sqlmodel_schema_Schema {
+}
+class sqlmodel_schema_Sequence {
+}
+abstract class sqlmodel_schema_TypedElement {
+  + getDataType() : str
+  + setDataType(sqlmodel_newType : str) : void
+}
+abstract class sqlmodel_statements_SQLConnectionStatement {
+}
+abstract class sqlmodel_statements_SQLControlStatement {
+}
+abstract class sqlmodel_statements_SQLDataChangeStatement {
+}
+abstract class sqlmodel_statements_SQLDataStatement {
+}
+abstract class sqlmodel_statements_SQLDiagnosticsStatement {
+}
+abstract class sqlmodel_statements_SQLDynamicStatement {
+}
+abstract class sqlmodel_statements_SQLSchemaStatement {
+}
+abstract class sqlmodel_statements_SQLSessionStatement {
+}
+abstract class sqlmodel_statements_SQLStatement {
+  + getSQL() : str
+  + setSQL(sqlmodel_sqlText : str) : void
+}
+class sqlmodel_statements_SQLStatementDefault {
+  + SQL : str
+}
+abstract class sqlmodel_statements_SQLTransactionStatement {
+}
+abstract class sqlmodel_tables_BaseTable {
+  + getForeignKeys() : str
+  + getPrimaryKey() : str
+  + getUniqueConstraints() : str
+}
+class sqlmodel_tables_Column {
+  + defaultValue : str
+  + implementationDependent : bool
+  + nullable : bool
+  + scopeCheck : str
+  + scopeChecked : bool
+  + isPartOfForeignKey() : bool
+  + isPartOfPrimaryKey() : bool
+  + isPartOfUniqueConstraint() : bool
+}
+abstract class sqlmodel_tables_DerivedTable {
+}
+class sqlmodel_tables_PersistentTable {
+}
+abstract class sqlmodel_tables_Table {
+  + insertable : bool
+  + selfRefColumnGeneration : str
+  + updatable : bool
+}
+class sqlmodel_tables_TemporaryTable {
+  + deleteOnCommit : bool
+  + local : bool
+}
+class sqlmodel_tables_Trigger {
+  + actionGranularity : str
+  + actionTime : str
+  + deleteType : bool
+  + insertType : bool
+  + newRow : str
+  + newTable : str
+  + oldRow : str
+  + oldTable : str
+  + timeStamp : str
+  + updateType : bool
+}
+class sqlmodel_tables_ViewTable {
+  + checkType : str
+}
+class statements_SQLStatement {
+}
+AuthorizationIdentifier <|-- sqlmodel_accesscontrol_Group
+AuthorizationIdentifier <|-- sqlmodel_accesscontrol_Role
+AuthorizationIdentifier <|-- sqlmodel_accesscontrol_User
+BaseTable <|-- sqlmodel_tables_PersistentTable
+BaseTable <|-- sqlmodel_tables_TemporaryTable
+CollectionDataType <|-- sqlmodel_datatypes_ArrayDataType
+CollectionDataType <|-- sqlmodel_datatypes_MultisetDataType
+Constraint <|-- sqlmodel_constraints_Assertion
+Constraint <|-- sqlmodel_constraints_TableConstraint
+ConstructedDataType <|-- sqlmodel_datatypes_CollectionDataType
+ConstructedDataType <|-- sqlmodel_datatypes_ReferenceDataType
+ConstructedDataType <|-- sqlmodel_datatypes_RowDataType
+DataType <|-- sqlmodel_datatypes_ConstructedDataType
+DataType <|-- sqlmodel_datatypes_SQLDataType
+DataType <|-- sqlmodel_datatypes_UserDefinedType
+DerivedTable <|-- sqlmodel_tables_ViewTable
+DistinctUserDefinedType <|-- sqlmodel_datatypes_Domain
+ENamedElement <|-- sqlmodel_schema_SQLObject
+ExactNumericDataType <|-- sqlmodel_datatypes_FixedPrecisionDataType
+ExactNumericDataType <|-- sqlmodel_datatypes_IntegerDataType
+Function <|-- sqlmodel_routines_BuiltInFunction
+Function <|-- sqlmodel_routines_Method
+Function <|-- sqlmodel_routines_UserDefinedFunction
+NumericalDataType <|-- sqlmodel_datatypes_ApproximateNumericDataType
+NumericalDataType <|-- sqlmodel_datatypes_ExactNumericDataType
+PredefinedDataType <|-- sqlmodel_datatypes_BinaryStringDataType
+PredefinedDataType <|-- sqlmodel_datatypes_BooleanDataType
+PredefinedDataType <|-- sqlmodel_datatypes_CharacterStringDataType
+PredefinedDataType <|-- sqlmodel_datatypes_DataLinkDataType
+PredefinedDataType <|-- sqlmodel_datatypes_DateDataType
+PredefinedDataType <|-- sqlmodel_datatypes_IntervalDataType
+PredefinedDataType <|-- sqlmodel_datatypes_NumericalDataType
+PredefinedDataType <|-- sqlmodel_datatypes_TimeDataType
+PredefinedDataType <|-- sqlmodel_datatypes_XMLDataType
+ReferenceConstraint <|-- sqlmodel_constraints_ForeignKey
+ReferenceConstraint <|-- sqlmodel_constraints_UniqueConstraint
+Routine <|-- sqlmodel_routines_Function
+Routine <|-- sqlmodel_routines_Procedure
+SQLDataStatement <|-- sqlmodel_statements_SQLDataChangeStatement
+SQLDataType <|-- sqlmodel_datatypes_PredefinedDataType
+SQLObject <|-- sqlmodel_accesscontrol_AuthorizationIdentifier
+SQLObject <|-- sqlmodel_accesscontrol_Privilege
+SQLObject <|-- sqlmodel_accesscontrol_RoleAuthorization
+SQLObject <|-- sqlmodel_constraints_Constraint
+SQLObject <|-- sqlmodel_constraints_Index
+SQLObject <|-- sqlmodel_constraints_IndexExpression
+SQLObject <|-- sqlmodel_constraints_IndexMember
+SQLObject <|-- sqlmodel_datatypes_CharacterSet
+SQLObject <|-- sqlmodel_datatypes_DataType
+SQLObject <|-- sqlmodel_datatypes_UserDefinedTypeOrdering
+SQLObject <|-- sqlmodel_routines_Routine
+SQLObject <|-- sqlmodel_routines_Source
+SQLObject <|-- sqlmodel_schema_Catalog
+SQLObject <|-- sqlmodel_schema_Database
+SQLObject <|-- sqlmodel_schema_Dependency
+SQLObject <|-- sqlmodel_schema_Event
+SQLObject <|-- sqlmodel_schema_IdentitySpecifier
+SQLObject <|-- sqlmodel_schema_Schema
+SQLObject <|-- sqlmodel_schema_TypedElement
+SQLObject <|-- sqlmodel_tables_Table
+SQLObject <|-- sqlmodel_tables_Trigger
+SQLStatement <|-- sqlmodel_statements_SQLConnectionStatement
+SQLStatement <|-- sqlmodel_statements_SQLControlStatement
+SQLStatement <|-- sqlmodel_statements_SQLDataStatement
+SQLStatement <|-- sqlmodel_statements_SQLDiagnosticsStatement
+SQLStatement <|-- sqlmodel_statements_SQLDynamicStatement
+SQLStatement <|-- sqlmodel_statements_SQLSchemaStatement
+SQLStatement <|-- sqlmodel_statements_SQLSessionStatement
+SQLStatement <|-- sqlmodel_statements_SQLTransactionStatement
+Table <|-- sqlmodel_routines_RoutineResultTable
+Table <|-- sqlmodel_tables_BaseTable
+Table <|-- sqlmodel_tables_DerivedTable
+TableConstraint <|-- sqlmodel_constraints_CheckConstraint
+TableConstraint <|-- sqlmodel_constraints_ReferenceConstraint
+TypedElement <|-- sqlmodel_datatypes_AttributeDefinition
+TypedElement <|-- sqlmodel_datatypes_ElementType
+TypedElement <|-- sqlmodel_datatypes_Field
+TypedElement <|-- sqlmodel_routines_Parameter
+TypedElement <|-- sqlmodel_schema_Sequence
+TypedElement <|-- sqlmodel_tables_Column
+UniqueConstraint <|-- sqlmodel_constraints_PrimaryKey
+UserDefinedType <|-- sqlmodel_datatypes_DistinctUserDefinedType
+UserDefinedType <|-- sqlmodel_datatypes_StructuredUserDefinedType
+expressions_QueryExpression <|-- sqlmodel_expressions_QueryExpressionDefault
+expressions_SearchCondition <|-- sqlmodel_expressions_SearchConditionDefault
+expressions_ValueExpression <|-- sqlmodel_expressions_ValueExpressionDefault
+schema_SQLObject <|-- sqlmodel_expressions_QueryExpressionDefault
+schema_SQLObject <|-- sqlmodel_expressions_SearchConditionDefault
+schema_SQLObject <|-- sqlmodel_expressions_ValueExpressionDefault
+schema_SQLObject <|-- sqlmodel_statements_SQLStatementDefault
+statements_SQLStatement <|-- sqlmodel_statements_SQLStatementDefault
+BaseTable "0..1" -- "1..1" sqlmodel_constraints_TableConstraint : BaseTable57
+Catalog "1..1" -- "1..1" sqlmodel_schema_Schema : Catalog11
+CharacterStringDataType "1..1" -- "1..1" sqlmodel_datatypes_CharacterSet : CharacterStringDataType93
+CollectionDataType "0..1" -- "1..1" sqlmodel_datatypes_ElementType : CollectionDataType112
+Database "1..1" -- "1..1" sqlmodel_accesscontrol_AuthorizationIdentifier : Database171
+Database "1..1" -- "1..1" sqlmodel_schema_Event : Database41
+Database "1..1" -- "1..1" sqlmodel_schema_Catalog : Database45
+ForeignKey "0..9999" -- "1..1" sqlmodel_constraints_UniqueConstraint : ForeignKey70
+ForeignKey "0..9999" -- "1..1" sqlmodel_constraints_Index : ForeignKey77
+SQLObject "1..1" -- "1..1" sqlmodel_schema_Comment : SQLObject43
+SQLObject "1..1" -- "1..1" sqlmodel_schema_ObjectExtension : SQLObject50
+Schema "1..1" -- "1..1" sqlmodel_constraints_Index : Schema72
+SQLObject "0..9999" -- "1..1" sqlmodel_accesscontrol_Privilege : actionObjects186
+SQLStatement "1..9999" --* "1..1" sqlmodel_tables_Trigger : actionStatement162
+Assertion "0..9999" -- "1..1" sqlmodel_schema_Schema : assertions13
+AttributeDefinition "0..9999" --* "1..1" sqlmodel_datatypes_StructuredUserDefinedType : attributes101
+AuthorizationIdentifier "0..9999" -- "1..1" sqlmodel_schema_Database : authorizationIds38
+Catalog "0..9999" -- "1..1" sqlmodel_schema_Database : catalogs35
+CharacterSet "0..9999" -- "1..1" sqlmodel_schema_Schema : charSets18
+CharacterSet "1..1" -- "1..1" sqlmodel_datatypes_CharacterStringDataType : characterSet90
+Column "0..1" -- "1..1" sqlmodel_constraints_IndexMember : column82
+Column "1..9999" --* "1..1" sqlmodel_tables_Table : columns131
+Comment "0..9999" -- "1..1" sqlmodel_schema_SQLObject : comments24
+BaseTable "1..9999" -- "1..1" sqlmodel_constraints_Assertion : constrainedTables55
+CheckConstraint "0..9999" --* "1..1" sqlmodel_datatypes_Domain : constraint104
+TableConstraint "0..9999" --* "1..1" sqlmodel_tables_BaseTable : constraints147
+SQLDataType "0..1" --* "1..1" sqlmodel_schema_TypedElement : containedType0
+Database "1..1" -- "1..1" sqlmodel_schema_Schema : database10
+Dependency "0..9999" --* "1..1" sqlmodel_schema_SQLObject : dependencies23
+ElementType "1..1" --* "1..1" sqlmodel_datatypes_CollectionDataType : elementType89
+Event "0..9999" -- "1..1" sqlmodel_schema_Database : events33
+IndexExpression "0..1" --* "1..1" sqlmodel_constraints_IndexMember : expression84
+ObjectExtension "0..9999" --* "1..1" sqlmodel_schema_SQLObject : extensions25
+Field "1..9999" --* "1..1" sqlmodel_datatypes_RowDataType : fields92
+ValueExpression "0..1" --* "1..1" sqlmodel_tables_Column : generateExpression155
+Privilege "0..9999" -- "1..1" sqlmodel_accesscontrol_AuthorizationIdentifier : grantedPrivilege176
+RoleAuthorization "0..9999" -- "1..1" sqlmodel_accesscontrol_AuthorizationIdentifier : grantedRoleAuthorization174
+AuthorizationIdentifier "0..1" -- "1..1" sqlmodel_accesscontrol_Privilege : grantee184
+AuthorizationIdentifier "1..1" -- "1..1" sqlmodel_accesscontrol_RoleAuthorization : grantee195
+AuthorizationIdentifier "1..1" -- "1..1" sqlmodel_accesscontrol_Privilege : grantor182
+AuthorizationIdentifier "1..1" -- "1..1" sqlmodel_accesscontrol_RoleAuthorization : grantor197
+Group "0..9999" -- "1..1" sqlmodel_accesscontrol_User : group191
+IdentitySpecifier "1..1" --* "1..1" sqlmodel_schema_Sequence : identity28
+IdentitySpecifier "0..1" --* "1..1" sqlmodel_tables_Column : identitySpecifier153
+IndexMember "0..9999" --* "1..1" sqlmodel_constraints_Index : includedMembers79
+Index "0..9999" -- "1..1" sqlmodel_tables_Table : index143
+Index "0..9999" -- "1..1" sqlmodel_schema_Schema : indices5
+Column "1..9999" -- "1..1" sqlmodel_constraints_ReferenceConstraint : members59
+IndexMember "1..9999" --* "1..1" sqlmodel_constraints_Index : members74
+Method "0..9999" --* "1..1" sqlmodel_datatypes_StructuredUserDefinedType : methods102
+SQLObject "1..1" -- "1..1" sqlmodel_accesscontrol_Privilege : object188
+UserDefinedTypeOrdering "0..1" --* "1..1" sqlmodel_datatypes_UserDefinedType : ordering88
+Routine "1..1" -- "1..1" sqlmodel_datatypes_UserDefinedTypeOrdering : orderingRoutine110
+Schema "0..9999" -- "1..1" sqlmodel_accesscontrol_AuthorizationIdentifier : ownedSchema169
+AuthorizationIdentifier "1..1" -- "1..1" sqlmodel_schema_Schema : owner22
+Parameter "0..9999" --* "1..1" sqlmodel_routines_Routine : parameters114
+PredefinedDataType "1..1" --* "1..1" sqlmodel_datatypes_DistinctUserDefinedType : predefinedRepresentation97
+Privilege "0..9999" -- "1..1" sqlmodel_schema_SQLObject : privileges27
+QueryExpression "0..1" --* "1..1" sqlmodel_tables_DerivedTable : queryExpression146
+Privilege "0..9999" --* "1..1" sqlmodel_accesscontrol_AuthorizationIdentifier : receivedPrivilege179
+RoleAuthorization "0..9999" -- "1..1" sqlmodel_accesscontrol_AuthorizationIdentifier : receivedRoleAuthorization173
+Column "1..9999" -- "1..1" sqlmodel_constraints_ForeignKey : referencedMembers63
+BaseTable "0..1" -- "1..1" sqlmodel_constraints_ForeignKey : referencedTable68
+UserDefinedType "0..1" -- "1..1" sqlmodel_schema_TypedElement : referencedType1
+StructuredUserDefinedType "1..1" -- "1..1" sqlmodel_datatypes_ReferenceDataType : referencedType107
+ForeignKey "0..9999" -- "1..1" sqlmodel_tables_BaseTable : referencingForeignKeys149
+RoutineResultTable "0..9999" --* "1..1" sqlmodel_routines_Procedure : resultSet122
+Parameter "0..1" --* "1..1" sqlmodel_routines_Function : returnCast128
+Parameter "0..1" --* "1..1" sqlmodel_routines_Function : returnScalar125
+RoutineResultTable "0..1" --* "1..1" sqlmodel_routines_Function : returnTable123
+Role "1..1" -- "1..1" sqlmodel_accesscontrol_RoleAuthorization : role194
+RoleAuthorization "1..9999" -- "1..1" sqlmodel_accesscontrol_Role : roleAuthorization192
+Routine "1..1" -- "1..1" sqlmodel_routines_Parameter : routine118
+Routine "0..9999" -- "1..1" sqlmodel_schema_Schema : routines20
+Schema "1..1" -- "1..1" sqlmodel_routines_Routine : schema116
+Schema "1..1" -- "1..1" sqlmodel_tables_Table : schema137
+Schema "1..1" -- "1..1" sqlmodel_tables_Trigger : schema157
+Schema "1..1" -- "1..1" sqlmodel_schema_Sequence : schema29
+Schema "1..1" -- "1..1" sqlmodel_constraints_Assertion : schema53
+Schema "1..1" -- "1..1" sqlmodel_datatypes_UserDefinedType : schema86
+Schema "1..1" -- "1..1" sqlmodel_datatypes_CharacterSet : schema95
+Schema "0..9999" -- "1..1" sqlmodel_schema_Database : schemas31
+Schema "0..9999" -- "1..1" sqlmodel_schema_Catalog : schemas47
+Table "1..1" -- "1..1" sqlmodel_datatypes_ReferenceDataType : scopeTable105
+SearchCondition "0..1" --* "1..1" sqlmodel_constraints_Assertion : searchCondition52
+SearchCondition "0..1" --* "1..1" sqlmodel_constraints_CheckConstraint : searchCondition60
+Sequence "0..9999" -- "1..1" sqlmodel_schema_Schema : sequences8
+Source "0..1" --* "1..1" sqlmodel_routines_Routine : source115
+CharacterStringDataType "0..1" --* "1..1" sqlmodel_routines_Parameter : stringTypeOption120
+StructuredUserDefinedType "0..9999" -- "1..1" sqlmodel_datatypes_StructuredUserDefinedType : sub99
+Table "1..1" -- "1..1" sqlmodel_tables_Trigger : subjectTable159
+Table "0..9999" -- "1..1" sqlmodel_tables_Table : subtables135
+StructuredUserDefinedType "0..1" -- "1..1" sqlmodel_datatypes_StructuredUserDefinedType : super98
+Table "0..1" -- "1..1" sqlmodel_tables_Table : supertable133
+Table "1..1" -- "1..1" sqlmodel_tables_Column : table151
+Table "1..1" -- "1..1" sqlmodel_constraints_Index : table75
+Table "0..9999" -- "1..1" sqlmodel_schema_Schema : tables6
+schema_sqlmodel_EObject "1..1" -- "1..1" sqlmodel_schema_Dependency : targetEnd3
+Column "0..9999" -- "1..1" sqlmodel_tables_Trigger : triggerColumn163
+Trigger "0..9999" -- "1..1" sqlmodel_tables_Table : triggers141
+Trigger "0..9999" -- "1..1" sqlmodel_schema_Schema : triggers4
+StructuredUserDefinedType "0..1" -- "1..1" sqlmodel_tables_Table : udt139
+UniqueConstraint "0..1" -- "1..1" sqlmodel_constraints_ForeignKey : uniqueConstraint62
+Index "0..1" -- "1..1" sqlmodel_constraints_ForeignKey : uniqueIndex65
+User "0..9999" -- "1..1" sqlmodel_accesscontrol_Group : user190
+UserDefinedType "0..9999" -- "1..1" sqlmodel_schema_Schema : userDefinedTypes15
+SearchCondition "0..1" --* "1..1" sqlmodel_tables_Trigger : when166
+@enduml

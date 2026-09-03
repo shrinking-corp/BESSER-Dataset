@@ -1,0 +1,363 @@
+@startuml
+enum ApproximateNumericTypeKind {
+  DOUBLE_PRECISION
+  FLOAT
+  REAL
+}
+enum BinaryLargeObjectStringTypeKind {
+  BINARY_LARGE_OBJECT
+  BLOB
+}
+enum CharLengthUnits {
+  CHARACTERS
+  CODE_UNITS
+  OCTETS
+}
+enum CharacterStringTypeKind {
+  CHAR
+  CHARACTER
+  CHARACTER_VARYING
+  CHAR_VARYING
+  VARCHAR
+}
+class Column {
+}
+class ColumnConstraint {
+}
+class Comment {
+}
+class DataType {
+}
+class DatetimeLiteral {
+}
+class DatetimeType {
+}
+class DatetimeValueFunction {
+}
+enum DatetimeValueFunctionKind {
+  CURRENT_DATE
+  CURRENT_TIME
+  CURRENT_TIMESTAMP
+  LOCALTIME
+  LOCALTIMESTAMP
+}
+class DefaultOption {
+}
+class DirectSQLStatement {
+}
+class EObject {
+}
+enum ExactNumericTypeKind {
+  BIGINT
+  DEC
+  DECIMAL
+  INT
+  INTEGER
+  NUMERIC
+  SMALLINT
+}
+class GeneralLiteral {
+}
+class ImplicitlyTypedValueSpecification {
+}
+class LargeObjectLength {
+}
+class Literal {
+}
+enum Multiplier {
+  G
+  K
+  M
+}
+class NationalCharacterStringLiteral {
+}
+enum NationalCharacterStringTypeKind {
+  NATIONAL_CHAR
+  NATIONAL_CHARACTER
+  NATIONAL_CHARACTER_VARYING
+  NATIONAL_CHAR_VARYING
+  NCHAR
+  NCHAR_VARYING
+}
+class NumericLiteral {
+}
+class NumericType {
+}
+class PredefinedType {
+}
+class SQLSchemaStatement {
+}
+class SchemaQualifiedName {
+}
+class Separator {
+}
+class Statement {
+}
+class TableConstraint {
+}
+class TableContentsSource {
+}
+class TableDefinition {
+}
+class TableElement {
+}
+class TableElementList {
+}
+class TableReference {
+}
+enum TableScope {
+  GLOBAL_TEMPORARY
+  LOCAL_TEMPORARY
+  PERSISTENT
+}
+enum UniqueSpecificationKind {
+  PRIMARY_KEY
+  UNIQUE
+}
+class schema_ColumnConstraint {
+}
+class schema_ReferentialConstraint {
+}
+class schema_SQLSchemaDefinitionStatement {
+}
+class schema_TableColumnsConstraint {
+}
+class schema_TableElement {
+}
+class schema_UniqueConstraint {
+}
+class sql_Dummy {
+}
+class sql_common_BracketedComment {
+}
+abstract class sql_common_Comment {
+  + value : str
+}
+abstract class sql_common_DirectSQLStatement {
+}
+class sql_common_SQLScript {
+}
+class sql_common_SchemaQualifiedName {
+  + catalogName : str
+  + name : str
+  + schemaName : str
+}
+abstract class sql_common_Separator {
+}
+class sql_common_SimpleComment {
+}
+abstract class sql_common_Statement {
+}
+class sql_datatype_ApproximateNumericType {
+  + kind : str
+  + precision : str
+}
+class sql_datatype_BinaryLargeObjectStringType {
+  + kind : str
+}
+class sql_datatype_BooleanType {
+}
+class sql_datatype_CharacterStringType {
+  + kind : str
+  + length : str
+}
+abstract class sql_datatype_DataType {
+}
+class sql_datatype_DateType {
+}
+abstract class sql_datatype_DatetimeType {
+}
+class sql_datatype_ExactNumericType {
+  + kind : str
+  + precision : str
+  + scale : str
+}
+class sql_datatype_LargeObjectLength {
+  + multiplier : str
+  + units : str
+  + value : str
+}
+class sql_datatype_NationalCharacterStringType {
+  + kind : str
+  + length : str
+}
+abstract class sql_datatype_NumericType {
+}
+abstract class sql_datatype_PredefinedType {
+}
+class sql_datatype_TimeType {
+  + precision : str
+  + withTimeZone : str
+}
+class sql_datatype_TimestampType {
+  + precision : str
+  + withTimeZone : str
+}
+abstract class sql_expression_ImplicitlyTypedValueSpecification {
+}
+class sql_expression_NullSpecification {
+}
+class sql_function_DatetimeValueFunction {
+  + kind : str
+  + precision : str
+}
+class sql_literal_ApproximateNumericLiteral {
+  + value : float
+}
+class sql_literal_BooleanLiteral {
+  + value : str
+}
+class sql_literal_CharacterStringLiteral {
+}
+class sql_literal_DateLiteral {
+  + value : str
+}
+abstract class sql_literal_DatetimeLiteral {
+}
+class sql_literal_ExactNumericLiteral {
+  + value : str
+}
+abstract class sql_literal_GeneralLiteral {
+}
+abstract class sql_literal_Literal {
+}
+class sql_literal_NationalCharacterStringLiteral {
+  + values : str
+}
+abstract class sql_literal_NumericLiteral {
+}
+class sql_literal_TimeLiteral {
+  + value : str
+}
+class sql_literal_TimestampLiteral {
+  + value : str
+}
+class sql_schema_Column {
+  + name : str
+}
+abstract class sql_schema_ColumnConstraint {
+}
+class sql_schema_DatetimeValueFunctionDefaultOption {
+}
+abstract class sql_schema_DefaultOption {
+}
+class sql_schema_ImplicitlyTypedValueSpecificationDefaultOption {
+}
+class sql_schema_LiteralDefaultOption {
+}
+class sql_schema_NotNullColumnConstraint {
+}
+class sql_schema_ReferentialColumnConstraint {
+}
+abstract class sql_schema_ReferentialConstraint {
+}
+class sql_schema_ReferentialTableConstraint {
+}
+abstract class sql_schema_SQLSchemaDefinitionStatement {
+}
+abstract class sql_schema_SQLSchemaStatement {
+}
+abstract class sql_schema_TableColumnsConstraint {
+}
+abstract class sql_schema_TableConstraint {
+}
+abstract class sql_schema_TableContentsSource {
+}
+class sql_schema_TableDefinition {
+  + label : str
+  + scope : str
+}
+abstract class sql_schema_TableElement {
+}
+class sql_schema_TableElementList {
+}
+class sql_schema_TableReference {
+  + catalogName : str
+  + schemaName : str
+}
+class sql_schema_UniqueColumnConstraint {
+}
+abstract class sql_schema_UniqueConstraint {
+  + kind : str
+}
+class sql_schema_UniqueTableConstraint {
+}
+ColumnConstraint <|-- sql_schema_NotNullColumnConstraint
+Comment <|-- sql_common_BracketedComment
+Comment <|-- sql_common_SimpleComment
+DataType <|-- sql_datatype_PredefinedType
+DatetimeLiteral <|-- sql_literal_DateLiteral
+DatetimeLiteral <|-- sql_literal_TimeLiteral
+DatetimeLiteral <|-- sql_literal_TimestampLiteral
+DatetimeType <|-- sql_datatype_DateType
+DatetimeType <|-- sql_datatype_TimeType
+DatetimeType <|-- sql_datatype_TimestampType
+DefaultOption <|-- sql_schema_DatetimeValueFunctionDefaultOption
+DefaultOption <|-- sql_schema_ImplicitlyTypedValueSpecificationDefaultOption
+DefaultOption <|-- sql_schema_LiteralDefaultOption
+DirectSQLStatement <|-- sql_schema_SQLSchemaStatement
+EObject <|-- sql_schema_ColumnConstraint
+EObject <|-- sql_schema_TableConstraint
+EObject <|-- sql_schema_TableDefinition
+GeneralLiteral <|-- sql_literal_BooleanLiteral
+GeneralLiteral <|-- sql_literal_DatetimeLiteral
+GeneralLiteral <|-- sql_literal_NationalCharacterStringLiteral
+ImplicitlyTypedValueSpecification <|-- sql_expression_NullSpecification
+Literal <|-- sql_literal_GeneralLiteral
+Literal <|-- sql_literal_NumericLiteral
+NationalCharacterStringLiteral <|-- sql_literal_CharacterStringLiteral
+NumericLiteral <|-- sql_literal_ApproximateNumericLiteral
+NumericLiteral <|-- sql_literal_ExactNumericLiteral
+NumericType <|-- sql_datatype_ApproximateNumericType
+NumericType <|-- sql_datatype_ExactNumericType
+PredefinedType <|-- sql_datatype_BinaryLargeObjectStringType
+PredefinedType <|-- sql_datatype_BooleanType
+PredefinedType <|-- sql_datatype_CharacterStringType
+PredefinedType <|-- sql_datatype_DatetimeType
+PredefinedType <|-- sql_datatype_NationalCharacterStringType
+PredefinedType <|-- sql_datatype_NumericType
+SQLSchemaStatement <|-- sql_schema_SQLSchemaDefinitionStatement
+Separator <|-- sql_common_Comment
+Statement <|-- sql_common_DirectSQLStatement
+Statement <|-- sql_common_Separator
+TableConstraint <|-- sql_schema_TableColumnsConstraint
+TableContentsSource <|-- sql_schema_TableElementList
+TableElement <|-- sql_schema_Column
+schema_ColumnConstraint <|-- sql_schema_ReferentialColumnConstraint
+schema_ColumnConstraint <|-- sql_schema_UniqueColumnConstraint
+schema_ReferentialConstraint <|-- sql_schema_ReferentialColumnConstraint
+schema_ReferentialConstraint <|-- sql_schema_ReferentialTableConstraint
+schema_SQLSchemaDefinitionStatement <|-- sql_schema_TableDefinition
+schema_TableColumnsConstraint <|-- sql_schema_ReferentialTableConstraint
+schema_TableColumnsConstraint <|-- sql_schema_UniqueTableConstraint
+schema_TableElement <|-- sql_schema_TableConstraint
+schema_UniqueConstraint <|-- sql_schema_UniqueColumnConstraint
+schema_UniqueConstraint <|-- sql_schema_UniqueTableConstraint
+SchemaQualifiedName "0..1" --* "1..1" sql_literal_CharacterStringLiteral : characterSetName1
+SchemaQualifiedName "0..1" --* "1..1" sql_datatype_CharacterStringType : characterSetName3
+SchemaQualifiedName "0..1" --* "1..1" sql_schema_Column : collationName22
+SchemaQualifiedName "0..1" --* "1..1" sql_datatype_CharacterStringType : collationName5
+SchemaQualifiedName "0..1" --* "1..1" sql_datatype_NationalCharacterStringType : collationName8
+Column "1..9999" -- "1..1" sql_schema_TableColumnsConstraint : columns42
+ColumnConstraint "0..1" --* "1..1" sql_schema_Column : constraint20
+TableContentsSource "1..1" --* "1..1" sql_schema_TableDefinition : contentsSource13
+DataType "1..1" --* "1..1" sql_schema_Column : dataType17
+DefaultOption "0..1" --* "1..1" sql_schema_Column : defaultOption18
+TableElement "1..9999" --* "1..1" sql_schema_TableElementList : elements14
+DatetimeValueFunction "1..1" --* "1..1" sql_schema_DatetimeValueFunctionDefaultOption : function34
+LargeObjectLength "0..1" --* "1..1" sql_datatype_BinaryLargeObjectStringType : length10
+Literal "1..1" --* "1..1" sql_schema_LiteralDefaultOption : literal33
+TableElementList "1..1" -- "1..1" sql_schema_TableElement : owner16
+TableDefinition "1..1" -- "1..1" sql_schema_TableContentsSource : owner27
+Column "1..1" -- "1..1" sql_schema_DefaultOption : owner28
+Column "1..1" -- "1..1" sql_schema_ColumnConstraint : owner29
+Column "0..9999" -- "1..1" sql_schema_ReferentialConstraint : referencedColumns36
+TableReference "1..1" --* "1..1" sql_schema_ReferentialConstraint : referencedTable38
+SchemaQualifiedName "1..1" --* "1..1" sql_schema_TableDefinition : schemaQualifiedName11
+SchemaQualifiedName "0..1" --* "1..1" sql_schema_TableConstraint : schemaQualifiedName25
+SchemaQualifiedName "0..1" --* "1..1" sql_schema_ColumnConstraint : schemaQualifiedName31
+Separator "0..9999" --* "1..1" sql_literal_NationalCharacterStringLiteral : separators2
+ImplicitlyTypedValueSpecification "1..1" --* "1..1" sql_schema_ImplicitlyTypedValueSpecificationDefaultOption : specification35
+Statement "0..9999" --* "1..1" sql_common_SQLScript : statements0
+TableDefinition "1..1" -- "1..1" sql_schema_TableReference : target40
+@enduml

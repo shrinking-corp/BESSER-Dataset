@@ -1,0 +1,188 @@
+@startuml
+class Administrator {
+}
+class Author {
+}
+class Bid {
+}
+class Chairman {
+}
+class Co_author {
+}
+class Conference {
+}
+class ConferenceMember {
+}
+class Decision {
+}
+class Document {
+}
+class ExternalReviewer {
+}
+class Meta_Reviewer {
+}
+class Paper {
+}
+class Person {
+}
+class ProgramCommittee {
+}
+class ProgramCommitteeMember {
+}
+class Review {
+}
+class Reviewer {
+}
+class SubjectArea {
+}
+class Thing {
+}
+class User {
+}
+class cmt_Acceptance {
+}
+class cmt_Administrator {
+}
+class cmt_AssociatedChair {
+}
+class cmt_Author {
+}
+class cmt_AuthorNotReviewer {
+}
+class cmt_Bid {
+}
+class cmt_Chairman {
+}
+class cmt_Co_author {
+}
+class cmt_Conference {
+  + acceptsHardcopySubmissions : str
+  + date : str
+  + logoURL : str
+  + reviewsPerPaper : str
+  + siteURL : str
+}
+class cmt_ConferenceChair {
+}
+class cmt_ConferenceMember {
+}
+class cmt_Decision {
+}
+class cmt_Document {
+}
+class cmt_ExternalReviewer {
+}
+class cmt_Meta_Review {
+}
+class cmt_Meta_Reviewer {
+}
+class cmt_Paper {
+  + paperID : str
+  + title : str
+}
+class cmt_PaperAbstract {
+}
+class cmt_PaperFullVersion {
+}
+class cmt_Person {
+  + email : str
+}
+class cmt_Preference {
+}
+class cmt_ProgramCommittee {
+}
+class cmt_ProgramCommitteeChair {
+}
+class cmt_ProgramCommitteeMember {
+  + maxPapers : str
+}
+class cmt_Rejection {
+}
+class cmt_Review {
+}
+class cmt_Reviewer {
+}
+class cmt_SubjectArea {
+}
+class cmt_Thing {
+}
+class cmt_User {
+}
+Author <|-- cmt_AuthorNotReviewer
+Author <|-- cmt_Co_author
+Chairman <|-- cmt_AssociatedChair
+Chairman <|-- cmt_ConferenceChair
+Chairman <|-- cmt_ProgramCommitteeChair
+ConferenceMember <|-- cmt_AssociatedChair
+ConferenceMember <|-- cmt_Author
+ConferenceMember <|-- cmt_Chairman
+ConferenceMember <|-- cmt_ConferenceChair
+ConferenceMember <|-- cmt_ProgramCommitteeMember
+ConferenceMember <|-- cmt_Reviewer
+Decision <|-- cmt_Acceptance
+Decision <|-- cmt_Rejection
+Document <|-- cmt_Paper
+Document <|-- cmt_Review
+Paper <|-- cmt_PaperAbstract
+Paper <|-- cmt_PaperFullVersion
+Person <|-- cmt_Chairman
+Person <|-- cmt_ConferenceMember
+Person <|-- cmt_ExternalReviewer
+Person <|-- cmt_ProgramCommitteeMember
+Person <|-- cmt_User
+ProgramCommitteeMember <|-- cmt_ProgramCommitteeChair
+Review <|-- cmt_Meta_Review
+Reviewer <|-- cmt_Meta_Reviewer
+Thing <|-- cmt_Conference
+User <|-- cmt_Administrator
+User <|-- cmt_Author
+User <|-- cmt_Reviewer
+Paper "0..1" -- "1..1" cmt_Administrator : acceptPaper79
+Administrator "0..1" -- "1..1" cmt_Paper : acceptedBy47
+ProgramCommitteeMember "0..1" -- "1..1" cmt_Administrator : addProgramCommitteeMember81
+Administrator "0..1" -- "1..1" cmt_ProgramCommitteeMember : addedBy27
+Bid "0..1" -- "1..1" cmt_Reviewer : adjustBid1
+Reviewer "0..1" -- "1..1" cmt_Bid : adjustedBy9
+ExternalReviewer "0..1" -- "1..1" cmt_Reviewer : assignExternalReviewer6
+Reviewer "0..1" -- "1..1" cmt_Administrator : assignReviewer67
+Administrator "0..1" -- "1..1" cmt_Reviewer : assignedByAdministrator0
+Reviewer "1..1" -- "1..1" cmt_ExternalReviewer : assignedByReviewer29
+Reviewer "0..1" -- "1..1" cmt_Paper : assignedTo40
+Paper "0..1" -- "1..1" cmt_Co_author : co_writePaper57
+Administrator "0..1" -- "1..1" cmt_Conference : detailsEnteredBy21
+Conference "0..1" -- "1..1" cmt_Administrator : enableVirtualMeeting63
+Review "0..1" -- "1..1" cmt_ProgramCommitteeChair : endReview31
+Conference "0..1" -- "1..1" cmt_Administrator : enterConferenceDetails71
+Conference "0..1" -- "1..1" cmt_Administrator : enterReviewCriteria77
+Conference "0..1" -- "1..1" cmt_Administrator : finalizePaperAssignment59
+Administrator "0..1" -- "1..1" cmt_Conference : hardcopyMailingManifestsPrintedBy19
+Author "0..1" -- "1..1" cmt_Paper : hasAuthor46
+Paper "0..1" -- "1..1" cmt_Reviewer : hasBeenAssigned3
+Bid "0..1" -- "1..1" cmt_Paper : hasBid36
+Co_author "0..1" -- "1..1" cmt_Paper : hasCo_author35
+ConferenceMember "0..1" -- "1..1" cmt_Conference : hasConferenceMember10
+Document "0..1" -- "1..1" cmt_Person : hasConflictOfInterest7
+Decision "0..1" -- "1..1" cmt_Paper : hasDecision38
+ProgramCommitteeMember "0..1" -- "1..1" cmt_ProgramCommittee : hasProgramCommitteeMember8
+SubjectArea "0..1" -- "1..1" cmt_Paper : hasSubjectArea42
+Conference "0..1" -- "1..1" cmt_ConferenceMember : memberOfConference25
+ProgramCommittee "0..1" -- "1..1" cmt_ProgramCommitteeMember : memberOfProgramCommittee26
+Administrator "0..1" -- "1..1" cmt_Conference : paperAssignmentFinalizedBy11
+Administrator "0..1" -- "1..1" cmt_Conference : paperAssignmentToolsRunBy15
+Conference "0..1" -- "1..1" cmt_Administrator : printHardcopyMailingManifests73
+Meta_Reviewer "0..1" -- "1..1" cmt_Paper : readByMeta_Reviewer51
+Reviewer "1..1" -- "1..1" cmt_Paper : readByReviewer44
+Paper "0..1" -- "1..1" cmt_Reviewer : readPaper2
+Paper "0..1" -- "1..1" cmt_Administrator : rejectPaper69
+Administrator "0..1" -- "1..1" cmt_Paper : rejectedBy49
+Administrator "0..1" -- "1..1" cmt_Conference : reviewCriteriaEnteredBy13
+Administrator "0..1" -- "1..1" cmt_Conference : reviewerBiddingStartedBy23
+Conference "0..1" -- "1..1" cmt_Administrator : runPaperAssignmentTools61
+ProgramCommitteeMember "0..1" -- "1..1" cmt_Administrator : setMaxPapers75
+Conference "0..1" -- "1..1" cmt_Administrator : startReviewerBidding65
+Paper "0..1" -- "1..1" cmt_Author : submitPaper53
+Administrator "0..1" -- "1..1" cmt_Conference : virtualMeetingEnabledBy17
+Paper "0..1" -- "1..1" cmt_Author : writePaper55
+Review "0..1" -- "1..1" cmt_Reviewer : writeReview5
+Reviewer "0..1" -- "1..1" cmt_Review : writtenBy33
+@enduml

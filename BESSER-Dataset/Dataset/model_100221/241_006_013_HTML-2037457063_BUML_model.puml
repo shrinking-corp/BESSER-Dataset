@@ -1,0 +1,186 @@
+@startuml
+class BBODY {
+}
+class BODYElement {
+}
+class HEAD {
+}
+class HEADElement {
+}
+class HTML {
+}
+class HTMLElement {
+}
+class HTML_A {
+  + ahref : str
+  + id : str
+  + name : str
+}
+class HTML_BBODY {
+  + alink : str
+  + background : str
+  + bgcolor : str
+  + link : str
+  + text : str
+  + vlink : str
+}
+abstract class HTML_BODYElement {
+}
+class HTML_BR {
+  + clear : str
+}
+class HTML_DIV {
+  + align : str
+}
+class HTML_EM {
+}
+class HTML_H1 {
+}
+class HTML_H2 {
+}
+class HTML_H3 {
+}
+class HTML_H4 {
+}
+class HTML_H5 {
+}
+class HTML_H6 {
+}
+class HTML_HEAD {
+}
+abstract class HTML_HEADElement {
+}
+class HTML_HTML {
+}
+class HTML_HTMLElement {
+  + value : str
+}
+class HTML_IMG {
+  + align : str
+  + alt : str
+  + border : str
+  + height : str
+  + hspace : str
+  + ismap : str
+  + src : str
+  + usemap : str
+  + vspace : str
+  + width : str
+}
+class HTML_LI {
+  + liValue : str
+}
+class HTML_LINK {
+  + ahref : str
+  + rel : str
+  + title : str
+  + type : str
+}
+abstract class HTML_ListElement {
+  + type : str
+}
+class HTML_OL {
+  + start : str
+}
+class HTML_OPTION {
+  + optionValue : str
+  + selected : str
+}
+class HTML_P {
+}
+class HTML_SELECT {
+  + multiple : str
+  + name : str
+  + size : str
+}
+class HTML_SPAN {
+  + style : str
+}
+class HTML_STRONG {
+}
+class HTML_STYLE {
+}
+class HTML_TABLE {
+  + border : str
+  + cellpadding : str
+  + cellspacing : str
+  + width : str
+}
+abstract class HTML_TABLEElement {
+  + background : str
+  + bgcolor : str
+}
+class HTML_TD {
+  + align : str
+  + colspan : str
+  + rowspan : str
+  + valign : str
+  + width : str
+}
+class HTML_TH {
+}
+class HTML_TITLE {
+}
+class HTML_TR {
+  + align : str
+  + valign : str
+}
+class HTML_UL {
+}
+class HTML_Website {
+}
+class ListElement {
+}
+class TABLE {
+}
+class TABLEElement {
+}
+class TD {
+}
+class TR {
+}
+BODYElement <|-- HTML_A
+BODYElement <|-- HTML_BR
+BODYElement <|-- HTML_DIV
+BODYElement <|-- HTML_EM
+BODYElement <|-- HTML_H1
+BODYElement <|-- HTML_H2
+BODYElement <|-- HTML_H3
+BODYElement <|-- HTML_H4
+BODYElement <|-- HTML_H5
+BODYElement <|-- HTML_H6
+BODYElement <|-- HTML_IMG
+BODYElement <|-- HTML_P
+BODYElement <|-- HTML_SPAN
+BODYElement <|-- HTML_STRONG
+BODYElement <|-- HTML_STYLE
+BODYElement <|-- HTML_TABLEElement
+HEADElement <|-- HTML_LINK
+HEADElement <|-- HTML_TITLE
+HTMLElement <|-- HTML_BBODY
+HTMLElement <|-- HTML_BODYElement
+HTMLElement <|-- HTML_HEAD
+HTMLElement <|-- HTML_HEADElement
+ListElement <|-- HTML_LI
+ListElement <|-- HTML_OL
+ListElement <|-- HTML_UL
+TABLEElement <|-- HTML_TABLE
+TABLEElement <|-- HTML_TD
+TABLEElement <|-- HTML_TR
+TD <|-- HTML_TH
+BBODY "1..1" --* "1..1" HTML_HTML : bbody1
+BBODY "1..1" -- "1..1" HTML_BODYElement : body14
+BODYElement "0..9999" --* "1..1" HTML_BBODY : bodyElements11
+HTMLElement "0..9999" --* "1..1" HTML_HTMLElement : children3
+HEAD "1..1" --* "1..1" HTML_HTML : head0
+HEAD "1..1" -- "1..1" HTML_HEADElement : head9
+HEADElement "0..9999" --* "1..1" HTML_HEAD : headElements6
+HTML "1..1" -- "1..1" HTML_BBODY : html12
+HTML "1..1" -- "1..1" HTML_HEAD : html7
+HTML "0..9999" --* "1..1" HTML_Website : pages21
+HTMLElement "1..1" -- "1..1" HTML_HTMLElement : parent4
+HTML_TR "1..1" -- "1..1" TABLE : table17
+HTML_TR "1..1" *-- "0..9999" TD : tds18
+HTML_TD "1..1" -- "1..1" TR : tr19
+HTML_TABLE "1..1" *-- "0..9999" TR : trs16
+@enduml

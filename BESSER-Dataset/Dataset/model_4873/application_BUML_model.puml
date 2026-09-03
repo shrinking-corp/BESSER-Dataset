@@ -1,0 +1,226 @@
+@startuml
+class ConfigurableElement {
+}
+class Interface {
+}
+class Persistency {
+}
+class Property {
+}
+enum PropertyTypes {
+  Authorization
+  Boolean
+  Date
+  Float
+  Integer
+  String
+  UploadFile
+  UploadZipFile
+}
+class Security {
+}
+class Source {
+}
+enum SourceActiveStates {
+  Enriching
+  Filled
+  Filling
+  Initialized
+  Initializing
+  Unknown
+  Updating
+  WaitingForUpdate
+}
+enum SourceState {
+  Active
+  Error
+  Paused
+  Stoped
+}
+class application_ApplicationKeyConfig {
+  + applicationKeys : str
+  + hasApplicationKey(application_applicationKey : str) : str
+}
+abstract class application_ConfigurableElement {
+  + changeable : str
+  + configurationImage : str
+  + description : str
+  + hidden : str
+  + ident : str
+  + name : str
+  + addProperty(application_property : str) : void
+  + getProperty(application_key : str) : Property
+  + getPropertyValue(application_key : str) : str
+  + getPropertyValueElseDefault(application_defaultValue : str, application_key : str) : str
+  + isPropertyTrue(application_key : str) : bool
+  + isPropertyTrueElseDefault(application_defaultValue : str, application_key : str) : bool
+  + removeProperty(application_key : str) : void
+}
+class application_Configuration {
+}
+class application_DataSet {
+}
+class application_Database {
+}
+class application_FEEDInterface {
+  + allowCategoryFiltering : str
+  + allowMetaTagFiltering : str
+  + allowOrganisationFiltering : str
+  + allowPersonFiltering : str
+  + allowTagFiltering : str
+  + allowTypeFiltering : str
+  + feedTitle : str
+  + feedType : str
+  + language : str
+}
+abstract class application_Interface {
+  + frontEndCaching : str
+  + urlSuffix : str
+}
+class application_MappingRule {
+}
+class application_Mashup {
+  + backupDataSet : str
+  + backupIntervall : str
+  + cacheAttachments : str
+  + cacheDataSet : str
+  + cacheDelay : str
+  + keepDeletedItemsList : str
+  + sourceIdentCounter : str
+  + workingDirectory : str
+  + getNewSourceIdent() : str
+  + getSourceWithIdent(application_ident : str) : Source
+}
+class application_MashupAdmin {
+  + email : str
+  + id : str
+  + isConfigurationAdmin : str
+  + localIdent : str
+  + name : str
+  + profileImage : str
+  + provider : str
+}
+class application_MashupContainer {
+  + backupConfiguration : str
+  + backupIntervall : str
+  + createAccountsAtLoginTry : str
+  + identCounter : str
+  + immediateSave : str
+  + getConfigurationAdmins() : str
+  + getMashupWithIdent(application_ident : str) : str
+  + getNewIdentNumber() : str
+  + getSourceConfigurationWithIdent(application_ident : str) : Source
+  + setNewIdentFor(application_configurableElement : str) : void
+}
+class application_OAuthAdmin {
+  + passwordHash : str
+  + username : str
+}
+class application_OAuthClientConfig {
+  + accessToken : str
+  + accessTokenCreationDate : date
+  + accessTokenExpirationDate : date
+  + allowedMetaTags : str
+  + clientID : str
+  + clientSecret : str
+  + code : str
+  + description : str
+  + forbiddenMetaTags : str
+  + grantType : str
+  + name : str
+  + oAuthScopeLevel : str
+  + redirectionURL : str
+  + refreshToken : str
+  + type : str
+}
+class application_OAuthClientScope {
+  + allowContents : str
+  + allowOrganisations : str
+  + allowPersons : str
+  + identSpecification : str
+  + maximumAge : str
+  + negativeCategory : str
+  + negativeMetaTag : str
+  + negativeOrganisation : str
+  + negativePerson : str
+  + negativeTag : str
+  + positiveCategory : str
+  + positiveMetaTag : str
+  + positiveOrganisation : str
+  + positivePerson : str
+  + positiveTag : str
+}
+class application_OAuthConfig {
+  + useScopeInterfaceOnRedirect : str
+}
+class application_OCLRestrictedProperty {
+  + OCLRestriction : str
+}
+class application_Persistency {
+}
+class application_Property {
+  + Key : str
+  + Value : str
+  + changeable : str
+  + helpText : str
+  + hidden : str
+  + possibleValues : str
+  + propertyType : str
+  + required : str
+  + getListOfValues() : str
+  + getMaxValue() : str
+  + getMinValue() : str
+  + isValueList() : bool
+  + isValueRange() : bool
+}
+class application_RESTInterface {
+  + type : str
+}
+abstract class application_Security {
+}
+class application_Source {
+  + activeState : str
+  + bundleId : str
+  + logLevel : str
+  + removeDataOnStop : str
+  + state : str
+  + updateRound : str
+  + getLogLevelIntValue() : str
+  + pause() : void
+  + start() : void
+  + stop() : void
+}
+class application_XMLFile {
+}
+ConfigurableElement <|-- application_Interface
+ConfigurableElement <|-- application_Source
+Interface <|-- application_FEEDInterface
+Interface <|-- application_RESTInterface
+Persistency <|-- application_Database
+Persistency <|-- application_XMLFile
+Property <|-- application_OCLRestrictedProperty
+Security <|-- application_ApplicationKeyConfig
+Security <|-- application_OAuthConfig
+Source <|-- application_Mashup
+application_OAuthAdmin "0..9999" --* "1..1" application_OAuthConfig : admins28
+application_MashupAdmin "0..9999" --* "1..1" application_MashupContainer : allMashupAdmins12
+application_OAuthClientConfig "1..1" *-- "0..1" application_OAuthClientScope : clientScope30
+application_OAuthClientConfig "0..9999" --* "1..1" application_OAuthConfig : clients27
+application_Mashup "0..9999" -- "1..1" application_MashupAdmin : configurableMashups32
+application_ConfigurableElement "1..1" *-- "1..1" application_Configuration : configuration34
+application_DataSet "0..1" -- "1..1" application_Source : dataSet1
+application_Mashup "0..9999" --* "1..1" application_MashupContainer : defaultMashups14
+application_Interface "0..1" -- "1..1" application_Security : interface25
+application_Interface "0..9999" --* "1..1" application_MashupContainer : interfaceConfigurations20
+application_Interface "0..9999" --* "1..1" application_Mashup : interfaces6
+application_MappingRule "0..9999" --* "1..1" application_Mashup : mappingRules4
+application_Interface "1..1" -- "0..1" application_Mashup : mashup23
+application_Mashup "0..1" -- "1..1" application_Source : mashup3
+application_Mashup "1..1" -- "0..9999" application_MashupAdmin : mashupAdmins8
+application_Mashup "0..9999" --* "1..1" application_MashupContainer : mashups10
+application_Persistency "0..1" --* "1..1" application_Source : persistency0
+application_Configuration "1..1" *-- "0..9999" application_Property : properties9
+application_Interface "1..1" *-- "0..1" application_Security : security22
+application_Mashup "0..9999" --* "1..1" application_MashupContainer : sourceConfigurations17
+application_Mashup "1..1" *-- "0..9999" application_Source : sources5
+@enduml

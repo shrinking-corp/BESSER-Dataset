@@ -1,0 +1,64 @@
+@startuml
+class CartItem {
+  + Name : str
+  + Price : str
+  + ProductID : int
+  + cartID : int
+  + fileName : str
+  + quantity : int
+  + subtotal : str
+}
+class Customer {
+  + Name : str
+  + adress : str
+  + cardId : int
+  + email : str
+  + phone : str
+}
+class Order {
+  + OrderID : int
+  + customerID : str
+  + dateCreated : str
+  + dateShipped : str
+  + shippingID : str
+  + status : str
+}
+class Product {
+  + Name : str
+  + Price : str
+  + ProductID : int
+  + cardId : int
+  + description : str
+  + fileName : str
+}
+class Product_catalog_Component {
+}
+class ShoppingCart {
+  + cartID : int
+  + dateAdded : str
+  + productID : int
+  + quantity : int
+}
+class admin_Actor {
+}
+class admin_portal_Component {
+}
+class keyWord {
+  + keyword : str
+}
+class online_client_Actor {
+}
+class online_shopping_chart_system_Component {
+}
+class online_shopping_portal_Component {
+}
+class registered_client_Actor {
+}
+class search_UseCase {
+}
+Customer "1..1" -- "0..9999" Order : Customer_Order
+CartItem "1..1" -- "1..9999" Product : Product_CartItem
+CartItem "0..1" -- "1..1" ShoppingCart : ShoppingCart_CartItem
+Customer "1..1" -- "0..1" ShoppingCart : ShoppingCart_Customer
+Product "1..1" -- "1..1" keyWord : keyWord_Product
+@enduml

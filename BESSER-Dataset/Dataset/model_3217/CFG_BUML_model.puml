@@ -1,0 +1,669 @@
+@startuml
+class Access {
+}
+class BaseAccess {
+}
+class BasePath {
+}
+class BlockStatement {
+}
+class Branch {
+}
+class BranchStatement {
+}
+class CatchBlock {
+}
+class CatchParameter {
+}
+class Clone {
+}
+class CloneInstance {
+}
+class CompositeAccess {
+}
+class Constructor {
+}
+class DeclarationTypeAccess {
+}
+class Delegate {
+}
+class Destructor {
+}
+class Directory {
+}
+class Exit {
+}
+class Field {
+}
+class File {
+}
+class FlowInstr {
+}
+class FormalParameter {
+}
+class Function {
+}
+class FunctionAccess {
+}
+class GASTClass {
+}
+class GASTExpression {
+}
+class GASTType {
+}
+class GlobalFunction {
+}
+enum GlobalFunctionKind {
+  NORMAL
+  UNITFINALIZER
+  UNITINITIALIZER
+}
+class GlobalVariable {
+}
+class Identifier {
+}
+class InheritanceTypeAccess {
+}
+enum JumpStatementKind {
+  JUMP
+  RETURN
+  THROW
+}
+class LocalVariable {
+}
+class LoopStatement {
+}
+enum LoopStatementKind {
+  DOWHILE
+  FOR
+  FOREACH
+  WHILE
+}
+class Member {
+}
+class Method {
+}
+class ModelAnnotation {
+}
+class ModelElement {
+}
+class NamedModelElement {
+}
+class Package {
+}
+class Position {
+}
+class Property {
+}
+class Root {
+}
+class SourceEntity {
+}
+class Statement {
+}
+enum Status {
+  FAILEDDEP
+  IMPLICIT
+  LIBRARY
+  NORMAL
+}
+class StructuralAbstraction {
+}
+class ThrowTypeAccess {
+}
+class TypeAccess {
+}
+class TypeAlias {
+}
+class TypeDecorator {
+}
+class TypeParameterClass {
+}
+class Var {
+}
+class Variable {
+}
+class VariableAccess {
+}
+enum Visibilities {
+  VISIBILITYPACKAGE
+  VISIBILITYPRIVAT
+  VISIBILITYPROTECTED
+  VISIBILITYPUBLIC
+  VISIBILITYSTRICTPROTECTED
+}
+class annotations_ModelAnnotation {
+}
+class core_GenericEntity {
+}
+class core_ModelElement {
+}
+class core_NamedModelElement {
+}
+class core_SourceEntity {
+}
+class functions_Constructor {
+}
+class functions_Function {
+}
+class functions_GlobalFunction {
+}
+class functions_Method {
+}
+abstract class gast_accesses_Access {
+}
+abstract class gast_accesses_BaseAccess {
+}
+class gast_accesses_CastTypeAccess {
+}
+class gast_accesses_CompositeAccess {
+}
+class gast_accesses_DeclarationTypeAccess {
+}
+class gast_accesses_DelegateAccess {
+}
+class gast_accesses_FunctionAccess {
+}
+class gast_accesses_InheritanceTypeAccess {
+  + implementationInheritance : bool
+}
+class gast_accesses_ParameterInstantiationTypeAccess {
+}
+class gast_accesses_PropertyAccess {
+}
+class gast_accesses_RunTimeTypeAccess {
+}
+class gast_accesses_SelfAccess {
+  + super : bool
+}
+class gast_accesses_StaticTypeAccess {
+}
+class gast_accesses_ThrowTypeAccess {
+  + declared : bool
+}
+abstract class gast_accesses_TypeAccess {
+}
+class gast_accesses_VariableAccess {
+  + write : bool
+}
+class gast_annotations_Attribute {
+}
+class gast_annotations_Clone {
+}
+class gast_annotations_CloneInstance {
+}
+class gast_annotations_Comment {
+  + formal : bool
+  + texts : str
+  + todo : bool
+  + todoCount : int
+  + OCLtodo(gast_context : str, gast_diagnostics : str) : bool
+}
+class gast_annotations_Layer {
+}
+abstract class gast_annotations_ModelAnnotation {
+}
+abstract class gast_annotations_StructuralAbstraction {
+}
+class gast_annotations_Subsystem {
+}
+class gast_core_BasePath {
+  + path : str
+}
+class gast_core_Directory {
+  + fileSystemPath : str
+  + fullQualifiedPath : str
+}
+class gast_core_File {
+  + assemblyFile : bool
+  + fileSystemPath : str
+  + fullQualifiedPath : str
+  + linesOfCode : int
+  + size : str
+  + sourceFile : bool
+}
+abstract class gast_core_GenericEntity {
+}
+abstract class gast_core_Identifier {
+  + id : str
+  + idHasToBeUnique(gast_context : str, gast_diagnostics : str) : bool
+}
+abstract class gast_core_ModelElement {
+  + sissyId : int
+  + status : str
+}
+abstract class gast_core_NamedModelElement {
+  + simpleName : str
+}
+class gast_core_Package {
+  + linesOfCode : int
+  + linesOfComments : int
+  + qualifiedName : str
+}
+class gast_core_PackageAlias {
+}
+class gast_core_Position {
+  + endColumn : int
+  + endLine : int
+  + startColumn : int
+  + startLine : int
+  + EitherAssemblyFileOrSourceFileSet(gast_context : str, gast_diagnostics : str) : bool
+}
+class gast_core_Root {
+  + linesOfCode : int
+  + linesOfComments : int
+  + getPackageByName(gast_name : str) : str
+  + getPackageByQualifiedName(gast_qualifiedName : str) : str
+}
+abstract class gast_core_SourceEntity {
+}
+class gast_functions_Constructor {
+  + initializer : bool
+}
+class gast_functions_Delegate {
+  + innerDelegate : bool
+}
+class gast_functions_Destructor {
+}
+abstract class gast_functions_Function {
+  + linesOfCode : int
+  + linesOfComments : int
+  + maximumNestingLevel : int
+  + numberOfEdgesInCFG : int
+  + numberOfNodesInCFG : int
+  + numberOfStatements : int
+  + operator : bool
+}
+class gast_functions_GenericConstructor {
+}
+class gast_functions_GenericFunction {
+}
+class gast_functions_GenericMethod {
+}
+class gast_functions_GlobalFunction {
+  + kind : str
+}
+class gast_functions_Method {
+  + propertyMethod : bool
+}
+class gast_statements_BlockStatement {
+  + synchronized : bool
+}
+class gast_statements_Branch {
+}
+class gast_statements_BranchStatement {
+}
+class gast_statements_CatchBlock {
+}
+class gast_statements_ExceptionHandler {
+}
+class gast_statements_Exit {
+  + name : str
+}
+class gast_statements_FlowInstr {
+  + txt : str
+}
+class gast_statements_GASTBehaviour {
+}
+abstract class gast_statements_GASTExpression {
+}
+class gast_statements_JumpStatement {
+  + kind : str
+}
+class gast_statements_LoopStatement {
+  + kind : str
+}
+class gast_statements_Methods {
+  + methodName : str
+}
+class gast_statements_Param {
+}
+class gast_statements_SimpleStatement {
+}
+abstract class gast_statements_Statement {
+  + linesOfCode : int
+  + maximumNestingLevel : int
+  + numberOfComments : int
+  + numberOfEdgesInCFG : int
+  + numberOfNodesInCFG : int
+  + numberOfStatements : int
+}
+class gast_statements_Var {
+  + name : str
+}
+class gast_types_GASTArray {
+  + dimensions : int
+}
+class gast_types_GASTClass {
+  + anonymous : bool
+  + inner : bool
+  + interface : bool
+  + linesOfComments : int
+  + local : bool
+  + primitive : bool
+}
+class gast_types_GASTEnumeration {
+}
+class gast_types_GASTStruct {
+}
+abstract class gast_types_GASTType {
+  + qualifiedName : str
+  + referenceType : bool
+}
+class gast_types_GASTUnion {
+}
+class gast_types_GenericClass {
+}
+abstract class gast_types_Member {
+  + abstract : bool
+  + extern : bool
+  + final : bool
+  + internal : bool
+  + introspectable : bool
+  + override : bool
+  + static : bool
+  + typeParameterClassMember : bool
+  + virtual : bool
+  + visibility : str
+  + getSurroundingClass() : str
+}
+class gast_types_Reference {
+  + explicit : bool
+}
+class gast_types_TypeAlias {
+  + innerTypeAlias : bool
+}
+abstract class gast_types_TypeDecorator {
+}
+class gast_types_TypeParameterClass {
+}
+class gast_variables_CatchParameter {
+  + rethrown : bool
+}
+class gast_variables_Field {
+  + propertyField : bool
+}
+class gast_variables_FormalParameter {
+  + passedByReference : bool
+}
+class gast_variables_GlobalVariable {
+}
+class gast_variables_LocalVariable {
+}
+class gast_variables_Property {
+}
+abstract class gast_variables_Variable {
+  + const : bool
+}
+class statements_BlockStatement {
+}
+class statements_FlowInstr {
+}
+class statements_Statement {
+}
+class types_GASTClass {
+}
+class types_GASTType {
+}
+class types_Member {
+}
+class types_TypeDecorator {
+}
+class variables_Field {
+}
+class variables_Variable {
+}
+Access <|-- gast_accesses_FunctionAccess
+Access <|-- gast_accesses_TypeAccess
+Access <|-- gast_accesses_VariableAccess
+BaseAccess <|-- gast_accesses_Access
+BaseAccess <|-- gast_accesses_CompositeAccess
+BlockStatement <|-- gast_statements_CatchBlock
+FlowInstr <|-- gast_statements_Exit
+Function <|-- gast_functions_GlobalFunction
+FunctionAccess <|-- gast_accesses_DelegateAccess
+GASTClass <|-- gast_types_GASTEnumeration
+GASTClass <|-- gast_types_GASTStruct
+GASTClass <|-- gast_types_GASTUnion
+GASTClass <|-- gast_types_TypeParameterClass
+GASTType <|-- gast_types_TypeDecorator
+Identifier <|-- gast_core_ModelElement
+ModelElement <|-- gast_core_BasePath
+ModelElement <|-- gast_core_GenericEntity
+ModelElement <|-- gast_core_NamedModelElement
+ModelElement <|-- gast_core_Root
+ModelElement <|-- gast_core_SourceEntity
+NamedModelElement <|-- gast_core_Directory
+NamedModelElement <|-- gast_core_File
+NamedModelElement <|-- gast_core_Package
+NamedModelElement <|-- gast_types_GASTType
+Package <|-- gast_core_PackageAlias
+SourceEntity <|-- gast_accesses_BaseAccess
+SourceEntity <|-- gast_statements_Branch
+SourceEntity <|-- gast_statements_GASTExpression
+SourceEntity <|-- gast_statements_Statement
+SourceEntity <|-- gast_types_Member
+Statement <|-- gast_statements_BlockStatement
+Statement <|-- gast_statements_BranchStatement
+Statement <|-- gast_statements_ExceptionHandler
+Statement <|-- gast_statements_LoopStatement
+StructuralAbstraction <|-- gast_annotations_Layer
+StructuralAbstraction <|-- gast_annotations_Subsystem
+TypeAccess <|-- gast_accesses_CastTypeAccess
+TypeAccess <|-- gast_accesses_DeclarationTypeAccess
+TypeAccess <|-- gast_accesses_InheritanceTypeAccess
+TypeAccess <|-- gast_accesses_ParameterInstantiationTypeAccess
+TypeAccess <|-- gast_accesses_RunTimeTypeAccess
+TypeAccess <|-- gast_accesses_StaticTypeAccess
+TypeAccess <|-- gast_accesses_ThrowTypeAccess
+TypeDecorator <|-- gast_types_GASTArray
+TypeDecorator <|-- gast_types_Reference
+Var <|-- gast_statements_Param
+Variable <|-- gast_variables_CatchParameter
+Variable <|-- gast_variables_FormalParameter
+Variable <|-- gast_variables_GlobalVariable
+Variable <|-- gast_variables_LocalVariable
+VariableAccess <|-- gast_accesses_PropertyAccess
+VariableAccess <|-- gast_accesses_SelfAccess
+annotations_ModelAnnotation <|-- gast_annotations_Attribute
+annotations_ModelAnnotation <|-- gast_annotations_Clone
+annotations_ModelAnnotation <|-- gast_annotations_CloneInstance
+annotations_ModelAnnotation <|-- gast_annotations_Comment
+annotations_ModelAnnotation <|-- gast_annotations_StructuralAbstraction
+core_GenericEntity <|-- gast_functions_GenericConstructor
+core_GenericEntity <|-- gast_functions_GenericFunction
+core_GenericEntity <|-- gast_functions_GenericMethod
+core_GenericEntity <|-- gast_types_GenericClass
+core_ModelElement <|-- gast_annotations_Clone
+core_ModelElement <|-- gast_annotations_CloneInstance
+core_NamedModelElement <|-- gast_annotations_StructuralAbstraction
+core_NamedModelElement <|-- gast_functions_Function
+core_NamedModelElement <|-- gast_variables_Variable
+core_SourceEntity <|-- gast_annotations_Comment
+core_SourceEntity <|-- gast_functions_Function
+core_SourceEntity <|-- gast_variables_Variable
+functions_Constructor <|-- gast_functions_GenericConstructor
+functions_Function <|-- gast_functions_Constructor
+functions_Function <|-- gast_functions_Delegate
+functions_Function <|-- gast_functions_Destructor
+functions_Function <|-- gast_functions_Method
+functions_GlobalFunction <|-- gast_functions_GenericFunction
+functions_Method <|-- gast_functions_GenericMethod
+statements_BlockStatement <|-- gast_statements_Methods
+statements_FlowInstr <|-- gast_statements_JumpStatement
+statements_FlowInstr <|-- gast_statements_Methods
+statements_FlowInstr <|-- gast_statements_SimpleStatement
+statements_Statement <|-- gast_statements_JumpStatement
+statements_Statement <|-- gast_statements_SimpleStatement
+types_GASTClass <|-- gast_annotations_Attribute
+types_GASTClass <|-- gast_types_GenericClass
+types_GASTType <|-- gast_functions_Delegate
+types_GASTType <|-- gast_types_GASTClass
+types_Member <|-- gast_functions_Constructor
+types_Member <|-- gast_functions_Delegate
+types_Member <|-- gast_functions_Destructor
+types_Member <|-- gast_functions_Method
+types_Member <|-- gast_types_GASTClass
+types_Member <|-- gast_types_TypeAlias
+types_Member <|-- gast_variables_Field
+types_Member <|-- gast_variables_Property
+types_TypeDecorator <|-- gast_types_TypeAlias
+variables_Field <|-- gast_variables_Property
+variables_Variable <|-- gast_variables_Field
+GASTClass "1..1" -- "1..1" gast_accesses_Access : accessedClass273
+Delegate "1..1" -- "1..1" gast_accesses_DelegateAccess : accessedDelegate263
+Function "0..9999" -- "1..1" gast_accesses_DelegateAccess : accessedFunctions261
+ModelElement "1..1" -- "1..1" gast_accesses_Access : accessedTarget275
+BaseAccess "0..9999" --* "1..1" gast_accesses_CompositeAccess : accesses244
+Access "0..9999" -- "1..1" gast_functions_Function : accesses308
+BaseAccess "0..9999" --* "1..1" gast_statements_Statement : accesses6
+Package "1..1" -- "1..1" gast_core_PackageAlias : aliasedPackage166
+GASTType "1..1" -- "1..1" gast_types_TypeAlias : aliasedType186
+GASTClass "0..9999" -- "1..1" gast_types_GASTClass : allAccessedClasses236
+Package "0..9999" -- "1..1" gast_core_Package : allAccessedPackages84
+Access "0..9999" -- "1..1" gast_types_GASTClass : allAccesses233
+Access "0..9999" -- "1..1" gast_core_Package : allAccesses68
+Access "0..9999" -- "1..1" gast_core_Root : allAccesses90
+GASTClass "0..9999" -- "1..1" gast_core_Package : allInnerClasses59
+GASTClass "0..9999" -- "1..1" gast_core_Root : allInnerClasses92
+GASTClass "0..9999" -- "1..1" gast_core_Package : allInterfaces65
+GASTClass "0..9999" -- "1..1" gast_core_Root : allInterfaces95
+GASTClass "0..9999" -- "1..1" gast_core_Package : allLocalClasses58
+GASTClass "0..9999" -- "1..1" gast_core_Root : allLocalClasses98
+ModelElement "0..9999" -- "1..1" gast_core_Root : allModelElements104
+GASTClass "0..9999" -- "1..1" gast_core_Root : allNormalClasses101
+GASTClass "0..9999" -- "1..1" gast_core_Package : allNormalClasses62
+Statement "0..9999" -- "1..1" gast_functions_Function : allStatements304
+ModelAnnotation "0..9999" --* "1..1" gast_core_ModelElement : annotations57
+File "0..1" -- "1..1" gast_core_Position : assembly162
+BasePath "0..1" -- "1..1" gast_core_Directory : basePath130
+BasePath "0..9999" --* "1..1" gast_core_Root : basePaths120
+GASTType "1..1" -- "1..1" gast_types_GASTArray : baseType184
+BlockStatement "1..1" -- "1..1" gast_statements_GASTBehaviour : blockstatement45
+BlockStatement "0..1" -- "1..1" gast_statements_Statement : blockstatement8
+BlockStatement "0..1" --* "1..1" gast_functions_Function : body311
+Statement "1..1" --* "1..1" gast_statements_LoopStatement : body38
+Branch "0..1" -- "1..1" gast_statements_Statement : branch12
+Branch "1..9999" --* "1..1" gast_statements_BranchStatement : branches28
+BranchStatement "1..1" -- "1..1" gast_statements_Branch : branchstatement25
+GASTExpression "0..1" --* "1..1" gast_statements_LoopStatement : breakConditionExpression30
+CatchBlock "0..9999" --* "1..1" gast_statements_ExceptionHandler : catchBlocks0
+CatchParameter "1..1" --* "1..1" gast_statements_CatchBlock : catchParameter40
+Statement "0..9999" -- "1..1" gast_statements_Statement : cfNext17
+Statement "0..9999" -- "1..1" gast_statements_Statement : cfPre14
+FlowInstr "0..9999" -- "1..1" gast_statements_FlowInstr : cfPrev53
+FlowInstr "0..9999" -- "1..1" gast_statements_FlowInstr : cfnext52
+GASTClass "0..9999" --* "1..1" gast_core_Package : classes77
+Clone "1..1" -- "1..1" gast_annotations_CloneInstance : clone175
+CloneInstance "0..1" -- "1..1" gast_statements_Statement : cloneInstance7
+CloneInstance "1..9999" --* "1..1" gast_annotations_Clone : cloneInstances169
+Clone "0..9999" --* "1..1" gast_core_Root : clones111
+GASTExpression "0..1" --* "1..1" gast_statements_Branch : conditionExpression24
+Constructor "0..9999" --* "1..1" gast_types_GASTClass : constructors200
+ModelElement "0..9999" --* "1..1" gast_core_Root : danglingModelElements117
+GASTType "1..1" -- "1..1" gast_types_TypeDecorator : decoratedType179
+Var "0..9999" -- "1..1" gast_statements_FlowInstr : def_49
+Delegate "0..9999" --* "1..1" gast_core_Package : delegates70
+Destructor "0..9999" --* "1..1" gast_types_GASTClass : destructors202
+Directory "0..9999" --* "1..1" gast_core_BasePath : directories56
+Directory "1..1" -- "1..1" gast_core_File : directory158
+Exit "0..1" --* "1..1" gast_statements_Methods : exit47
+GASTExpression "0..1" --* "1..1" gast_statements_JumpStatement : expression41
+GASTExpression "0..1" --* "1..1" gast_statements_SimpleStatement : expression43
+Field "0..9999" --* "1..1" gast_types_GASTClass : fields204
+File "0..9999" --* "1..1" gast_core_Directory : files129
+BlockStatement "0..1" --* "1..1" gast_statements_ExceptionHandler : finallyBlock1
+FormalParameter "0..9999" --* "1..1" gast_functions_Function : formalParameters301
+GASTClass "0..9999" --* "1..1" gast_types_GASTClass : friendClasses224
+Function "0..9999" --* "1..1" gast_types_GASTClass : friendFunctions228
+Function "0..1" -- "1..1" gast_accesses_DeclarationTypeAccess : function258
+GASTClass "0..1" -- "1..1" gast_types_GASTClass : gastClass226
+Method "0..1" -- "1..1" gast_variables_Property : getter329
+GlobalFunction "0..9999" --* "1..1" gast_core_Root : globalFunctions122
+GlobalFunction "0..9999" -- "1..1" gast_core_File : globalFunctions143
+GlobalFunction "0..9999" --* "1..1" gast_core_Package : globalFunctions71
+GlobalVariable "0..9999" --* "1..1" gast_core_Root : globalVariables106
+GlobalVariable "0..9999" -- "1..1" gast_core_File : globalVariables140
+GlobalVariable "0..9999" --* "1..1" gast_core_Package : globalVariables73
+BlockStatement "1..1" --* "1..1" gast_statements_ExceptionHandler : guardedBlock3
+GlobalFunction "0..9999" -- "1..1" gast_core_File : importedGlobalFunctions146
+GlobalVariable "0..9999" -- "1..1" gast_core_File : importedGlobalVariables149
+Package "0..9999" -- "1..1" gast_core_File : importedPackages152
+GASTType "0..9999" -- "1..1" gast_core_File : importedTypes134
+File "0..9999" -- "1..1" gast_core_File : includedFiles155
+GASTExpression "0..1" --* "1..1" gast_statements_LoopStatement : incrementExpression35
+InheritanceTypeAccess "0..9999" --* "1..1" gast_types_GASTClass : inheritanceTypeAccesses219
+GASTExpression "0..1" --* "1..1" gast_statements_LoopStatement : initExpression32
+GASTClass "0..9999" --* "1..1" gast_types_GASTClass : innerClasses214
+Delegate "0..9999" --* "1..1" gast_types_GASTClass : innerDelegates197
+TypeAlias "0..9999" --* "1..1" gast_types_GASTClass : innerTypeAliases195
+Function "0..9999" -- "1..1" gast_functions_Delegate : invocations280
+GASTClass "0..9999" --* "1..1" gast_functions_Function : localClasses314
+LocalVariable "0..9999" --* "1..1" gast_functions_Function : localVariables302
+LoopStatement "0..1" -- "1..1" gast_statements_Statement : loopstatement13
+Method "0..9999" --* "1..1" gast_types_GASTClass : methods206
+Member "0..1" -- "1..1" gast_types_Member : overriddenMember192
+Package "0..9999" --* "1..1" gast_core_Root : packages109
+Directory "0..1" -- "1..1" gast_core_Directory : parentDirectory127
+Statement "0..1" -- "1..1" gast_accesses_BaseAccess : parentStatement246
+Position "0..1" --* "1..1" gast_core_SourceEntity : position168
+Property "0..9999" --* "1..1" gast_types_GASTClass : property231
+GASTType "1..1" -- "1..1" gast_types_Reference : referencedType177
+DeclarationTypeAccess "0..1" --* "1..1" gast_functions_Function : returnTypeDeclaration300
+Root "1..1" -- "1..1" gast_core_File : root132
+Root "1..1" -- "1..1" gast_annotations_Clone : root171
+Root "0..1" -- "1..1" gast_functions_GlobalFunction : root293
+Root "1..1" -- "1..1" gast_core_BasePath : root55
+Root "0..1" -- "1..1" gast_core_Package : root75
+Field "1..1" --* "1..1" gast_types_GASTClass : self221
+Method "0..1" -- "1..1" gast_variables_Property : setter327
+File "0..1" -- "1..1" gast_core_Position : sourceFile160
+SourceEntity "1..1" -- "1..1" gast_core_Position : sourceentity165
+Statement "1..1" --* "1..1" gast_statements_Branch : statement26
+Statement "1..9999" --* "1..1" gast_annotations_CloneInstance : statements173
+Statement "0..9999" --* "1..1" gast_statements_BlockStatement : statements20
+StructuralAbstraction "0..9999" --* "1..1" gast_core_Root : structuralAbstractions113
+Directory "0..9999" --* "1..1" gast_core_Directory : subDirectory125
+Package "0..9999" --* "1..1" gast_core_Package : subPackages80
+GASTClass "0..1" -- "1..1" gast_functions_Delegate : superClass278
+GASTClass "0..9999" -- "1..1" gast_types_GASTClass : superTypes212
+GASTClass "0..1" -- "1..1" gast_types_TypeAlias : surroundingClass188
+GASTClass "0..1" -- "1..1" gast_types_GASTClass : surroundingClass217
+GASTClass "1..1" -- "1..1" gast_accesses_BaseAccess : surroundingClass250
+GASTClass "0..1" -- "1..1" gast_functions_Delegate : surroundingClass283
+GASTClass "1..1" -- "1..1" gast_functions_Constructor : surroundingClass287
+GASTClass "1..1" -- "1..1" gast_functions_Destructor : surroundingClass289
+GASTClass "1..1" -- "1..1" gast_functions_Method : surroundingClass298
+GASTClass "0..1" -- "1..1" gast_variables_Field : surroundingClass323
+CompositeAccess "0..1" -- "1..1" gast_accesses_BaseAccess : surroundingCompositeAccess256
+Function "0..1" -- "1..1" gast_types_GASTClass : surroundingFunction208
+Function "0..1" -- "1..1" gast_statements_BlockStatement : surroundingFunction22
+Function "0..1" -- "1..1" gast_accesses_BaseAccess : surroundingFunction253
+Function "1..1" -- "1..1" gast_variables_FormalParameter : surroundingFunction317
+Function "1..1" -- "1..1" gast_variables_LocalVariable : surroundingFunction325
+Package "0..1" -- "1..1" gast_types_TypeAlias : surroundingPackage190
+Package "0..1" -- "1..1" gast_types_GASTClass : surroundingPackage210
+Package "0..1" -- "1..1" gast_functions_Delegate : surroundingPackage285
+Package "0..1" -- "1..1" gast_functions_GlobalFunction : surroundingPackage291
+Package "0..1" -- "1..1" gast_variables_GlobalVariable : surroundingPackage332
+Package "0..1" -- "1..1" gast_core_Package : surroundingPackage82
+Property "0..1" -- "1..1" gast_functions_Method : surroundingProperty296
+Statement "0..1" -- "1..1" gast_statements_Statement : surroundingStatement11
+Statement "0..1" -- "1..1" gast_accesses_BaseAccess : surroundingStatement248
+Variable "0..1" -- "1..1" gast_accesses_DeclarationTypeAccess : surroundingVariable260
+Function "1..1" -- "1..1" gast_accesses_FunctionAccess : targetFunction268
+GASTType "1..1" -- "1..1" gast_accesses_TypeAccess : targetType239
+Variable "1..1" -- "1..1" gast_accesses_VariableAccess : targetVariable271
+ThrowTypeAccess "0..9999" -- "1..1" gast_functions_Function : throwTypeAccesses306
+GASTType "1..1" -- "1..1" gast_variables_Variable : type319
+TypeAlias "0..9999" --* "1..1" gast_core_Package : typeAliases87
+GASTType "0..9999" -- "1..1" gast_accesses_TypeAccess : typeArguments241
+GASTType "0..9999" -- "1..1" gast_accesses_FunctionAccess : typeArguments266
+GASTType "0..9999" -- "1..1" gast_types_TypeParameterClass : typeBounds193
+DeclarationTypeAccess "0..1" --* "1..1" gast_variables_Variable : typeDeclaration321
+TypeParameterClass "0..9999" --* "1..1" gast_core_GenericEntity : typeParameters89
+GASTType "0..9999" --* "1..1" gast_core_Root : types115
+GASTType "0..9999" -- "1..1" gast_core_File : types137
+GASTType "1..1" -- "1..1" gast_types_TypeDecorator : undecoratedType181
+Var "0..9999" -- "1..1" gast_statements_FlowInstr : use48
+@enduml

@@ -1,0 +1,275 @@
+@startuml
+class Expression {
+}
+class Member {
+}
+class SharedDef {
+}
+class Statement {
+}
+class VarDef {
+}
+class aDSL_AbstractElements {
+  + importedNamespace : str
+}
+class aDSL_And {
+}
+class aDSL_Assignment {
+}
+class aDSL_AsyncStat {
+}
+class aDSL_AtStat {
+}
+class aDSL_AtomicStatement {
+}
+class aDSL_Block {
+  + ispar : bool
+}
+class aDSL_Body {
+}
+class aDSL_BoolConstant {
+  + value : str
+}
+class aDSL_Comparison {
+  + op : str
+}
+class aDSL_DeRef {
+}
+class aDSL_Equality {
+  + op : str
+}
+class aDSL_Expression {
+}
+class aDSL_FinishStat {
+}
+class aDSL_For2Statement {
+}
+class aDSL_ForStat {
+}
+class aDSL_FuncVarDef {
+  + name : str
+}
+class aDSL_Here {
+}
+class aDSL_IfStat {
+  + iselse : bool
+}
+class aDSL_Init {
+}
+class aDSL_IntConstant {
+}
+class aDSL_IntegerNegative {
+  + isneg : bool
+  + value : int
+}
+class aDSL_MainMethod {
+}
+class aDSL_Member {
+}
+class aDSL_MemberSelection {
+  + ispar : bool
+  + methodinvocation : bool
+}
+class aDSL_Method {
+  + isconst : bool
+  + istyped : bool
+  + name : str
+}
+class aDSL_Minus {
+}
+class aDSL_MulOrDiv {
+  + op : str
+}
+class aDSL_New {
+}
+class aDSL_Not {
+}
+class aDSL_Null {
+}
+class aDSL_Operator {
+  + opName : str
+}
+class aDSL_Or {
+}
+class aDSL_Parameter {
+  + istyped : bool
+  + name : str
+}
+class aDSL_Plus {
+}
+class aDSL_PrintInst {
+}
+class aDSL_Program {
+  + name : str
+}
+class aDSL_Reference {
+  + isarray : bool
+}
+class aDSL_ReturnStat {
+}
+class aDSL_SharedArrayDef {
+}
+class aDSL_SharedDef {
+  + name : str
+  + replicas : bool
+}
+class aDSL_SharedVarDef {
+}
+class aDSL_Statement {
+}
+class aDSL_StringConstant {
+  + value : str
+}
+class aDSL_This {
+}
+class aDSL_TryCatchStat {
+  + name : str
+}
+class aDSL_VarDef {
+}
+class aDSL_VariableDef {
+  + isinit : bool
+  + isstatic : bool
+  + istyped : bool
+  + name : str
+  + vartype : str
+}
+class aDSL_VariableType {
+  + isarray : bool
+}
+class aDSL_WhenStatement {
+}
+class aDSL_WhileStat {
+}
+class aDSL_XClass {
+  + name : str
+}
+Expression <|-- aDSL_And
+Expression <|-- aDSL_Assignment
+Expression <|-- aDSL_BoolConstant
+Expression <|-- aDSL_Comparison
+Expression <|-- aDSL_DeRef
+Expression <|-- aDSL_Equality
+Expression <|-- aDSL_Here
+Expression <|-- aDSL_Init
+Expression <|-- aDSL_IntConstant
+Expression <|-- aDSL_MemberSelection
+Expression <|-- aDSL_Minus
+Expression <|-- aDSL_MulOrDiv
+Expression <|-- aDSL_New
+Expression <|-- aDSL_Not
+Expression <|-- aDSL_Null
+Expression <|-- aDSL_Or
+Expression <|-- aDSL_Plus
+Expression <|-- aDSL_Reference
+Expression <|-- aDSL_StringConstant
+Expression <|-- aDSL_This
+Member <|-- aDSL_FuncVarDef
+Member <|-- aDSL_MainMethod
+Member <|-- aDSL_Method
+Member <|-- aDSL_Operator
+Member <|-- aDSL_PrintInst
+Member <|-- aDSL_SharedDef
+Member <|-- aDSL_VariableDef
+SharedDef <|-- aDSL_SharedArrayDef
+SharedDef <|-- aDSL_SharedVarDef
+Statement <|-- aDSL_AsyncStat
+Statement <|-- aDSL_AtStat
+Statement <|-- aDSL_AtomicStatement
+Statement <|-- aDSL_Expression
+Statement <|-- aDSL_FinishStat
+Statement <|-- aDSL_For2Statement
+Statement <|-- aDSL_ForStat
+Statement <|-- aDSL_FuncVarDef
+Statement <|-- aDSL_IfStat
+Statement <|-- aDSL_PrintInst
+Statement <|-- aDSL_ReturnStat
+Statement <|-- aDSL_SharedDef
+Statement <|-- aDSL_TryCatchStat
+Statement <|-- aDSL_VariableDef
+Statement <|-- aDSL_WhenStatement
+Statement <|-- aDSL_WhileStat
+VarDef <|-- aDSL_FuncVarDef
+VarDef <|-- aDSL_Parameter
+VarDef <|-- aDSL_SharedDef
+VarDef <|-- aDSL_VariableDef
+VarDef <|-- aDSL_VariableType
+VarDef <|-- aDSL_XClass
+aDSL_Expression "0..9999" --* "1..1" aDSL_MemberSelection : args126
+aDSL_Expression "0..9999" --* "1..1" aDSL_New : args176
+aDSL_Reference "1..1" -- "0..1" aDSL_VarDef : base169
+aDSL_Block "0..1" --* "1..1" aDSL_ForStat : body100
+aDSL_Body "0..1" --* "1..1" aDSL_Method : body16
+aDSL_Body "0..1" --* "1..1" aDSL_FuncVarDef : body29
+aDSL_AsyncStat "1..1" *-- "0..1" aDSL_Block : body54
+aDSL_Block "0..1" --* "1..1" aDSL_FinishStat : body56
+aDSL_AtStat "1..1" *-- "0..1" aDSL_Block : body60
+aDSL_Block "0..1" --* "1..1" aDSL_For2Statement : body75
+aDSL_Body "0..1" --* "1..1" aDSL_WhileStat : body89
+aDSL_Body "0..1" --* "1..1" aDSL_MainMethod : body9
+aDSL_Body "0..1" --* "1..1" aDSL_TryCatchStat : bodyCatch84
+aDSL_Body "0..1" --* "1..1" aDSL_TryCatchStat : bodyTry82
+aDSL_Expression "0..1" --* "1..1" aDSL_ForStat : condition94
+aDSL_Expression "0..1" --* "1..1" aDSL_For2Statement : data72
+aDSL_Block "0..1" --* "1..1" aDSL_IfStat : elseBlock110
+aDSL_AtStat "1..1" *-- "0..1" aDSL_Expression : exp58
+aDSL_Expression "0..1" --* "1..1" aDSL_ReturnStat : expression103
+aDSL_Expression "0..1" --* "1..1" aDSL_IfStat : expression105
+aDSL_Expression "0..1" --* "1..1" aDSL_PrintInst : expression11
+aDSL_Expression "0..1" --* "1..1" aDSL_Not : expression164
+aDSL_Expression "0..1" --* "1..1" aDSL_Init : expression181
+aDSL_Expression "0..1" --* "1..1" aDSL_Operator : expression21
+aDSL_Expression "0..1" --* "1..1" aDSL_VariableDef : expression34
+aDSL_SharedArrayDef "1..1" -- "0..1" aDSL_VariableDef : expression37
+aDSL_Expression "0..1" --* "1..1" aDSL_SharedVarDef : expression39
+aDSL_Expression "0..1" --* "1..1" aDSL_WhenStatement : expression65
+aDSL_Expression "0..1" --* "1..1" aDSL_WhileStat : expression87
+aDSL_Expression "0..1" --* "1..1" aDSL_ForStat : finalexp97
+aDSL_AbstractElements "0..9999" --* "1..1" aDSL_Program : importElements0
+aDSL_VariableType "0..1" --* "1..1" aDSL_VariableType : innerType52
+aDSL_Assignment "1..1" *-- "0..1" aDSL_Expression : left113
+aDSL_Expression "0..1" --* "1..1" aDSL_Or : left129
+aDSL_And "1..1" *-- "0..1" aDSL_Expression : left134
+aDSL_Equality "1..1" *-- "0..1" aDSL_Expression : left139
+aDSL_Comparison "1..1" *-- "0..1" aDSL_Expression : left144
+aDSL_Expression "0..1" --* "1..1" aDSL_Plus : left149
+aDSL_Expression "0..1" --* "1..1" aDSL_Minus : left154
+aDSL_Expression "0..1" --* "1..1" aDSL_MulOrDiv : left159
+aDSL_Member "0..1" -- "1..1" aDSL_MemberSelection : member120
+aDSL_Member "0..9999" --* "1..1" aDSL_XClass : members6
+aDSL_MemberSelection "1..1" -- "0..1" aDSL_XClass : par123
+aDSL_For2Statement "1..1" *-- "0..1" aDSL_Parameter : par70
+aDSL_Method "1..1" *-- "0..9999" aDSL_Parameter : params12
+aDSL_Expression "0..9999" --* "1..1" aDSL_Reference : params171
+aDSL_Operator "1..1" *-- "0..9999" aDSL_Parameter : params19
+aDSL_FuncVarDef "1..1" *-- "0..9999" aDSL_Parameter : params24
+aDSL_Expression "0..1" --* "1..1" aDSL_MemberSelection : receiver118
+aDSL_DeRef "1..1" -- "0..1" aDSL_VarDef : ref167
+aDSL_Assignment "1..1" *-- "0..1" aDSL_Expression : right115
+aDSL_Expression "0..1" --* "1..1" aDSL_Or : right131
+aDSL_And "1..1" *-- "0..1" aDSL_Expression : right136
+aDSL_Equality "1..1" *-- "0..1" aDSL_Expression : right141
+aDSL_Comparison "1..1" *-- "0..1" aDSL_Expression : right146
+aDSL_Expression "0..1" --* "1..1" aDSL_Plus : right151
+aDSL_Expression "0..1" --* "1..1" aDSL_Minus : right156
+aDSL_Expression "0..1" --* "1..1" aDSL_MulOrDiv : right161
+aDSL_AtomicStatement "1..1" *-- "0..1" aDSL_Statement : statement63
+aDSL_Statement "0..1" --* "1..1" aDSL_WhenStatement : statement67
+aDSL_Body "1..1" *-- "0..9999" aDSL_Statement : statements44
+aDSL_Block "1..1" *-- "0..9999" aDSL_Statement : statements46
+aDSL_XClass "0..1" -- "1..1" aDSL_XClass : superclass4
+aDSL_SharedDef "1..1" -- "0..1" aDSL_VarDef : sym80
+aDSL_ForStat "1..1" *-- "0..1" aDSL_VariableDef : temp92
+aDSL_Block "0..1" --* "1..1" aDSL_IfStat : thenBlock107
+aDSL_Method "1..1" *-- "0..1" aDSL_VariableType : type13
+aDSL_New "1..1" *-- "0..1" aDSL_VariableType : type174
+aDSL_Init "1..1" *-- "0..1" aDSL_VariableType : type179
+aDSL_FuncVarDef "1..1" *-- "0..1" aDSL_VariableType : type26
+aDSL_VariableDef "1..1" *-- "0..1" aDSL_VariableType : type32
+aDSL_Parameter "1..1" *-- "0..1" aDSL_VariableType : type41
+aDSL_VariableType "1..1" -- "0..1" aDSL_XClass : type48
+aDSL_SharedDef "1..1" *-- "0..1" aDSL_VariableType : type78
+aDSL_MainMethod "1..1" *-- "0..1" aDSL_VariableType : type8
+aDSL_IntConstant "1..1" *-- "0..1" aDSL_IntegerNegative : value166
+aDSL_Program "1..1" *-- "0..9999" aDSL_XClass : xclass1
+@enduml

@@ -1,0 +1,85 @@
+@startuml
+class Activity {
+  + ActivityID : int
+  + ActivitySubType : int
+  + ActivityType : int
+  + NewValue : str
+  + PrevValue : str
+  + Project : Project
+  + Seen : bool
+  + User : User
+}
+class Attachment {
+  + AttachmentID : int
+  + Created : str
+  + Extension : str
+  + Name : str
+  + Path : str
+  + Project : Project
+  + Size : str
+  + User : User
+}
+class Comment {
+  + CommentID : int
+  + Content : str
+  + Created : str
+  + Project : Project
+  + User : User
+}
+class Project {
+  + Activities___ : str
+  + Assignee : User
+  + Attachments___ : str
+  + Author : User
+  + Comments___ : str
+  + Created : str
+  + Deadline : str
+  + Description : str
+  + PorjectID : int
+  + PriorityID : int
+  + ProjectManager : User
+  + StatusID : int
+  + Subscriptions___ : str
+  + Team___ : str
+  + Title : str
+}
+class Role {
+  + Description : str
+  + Name : String
+  + RoleID : int
+}
+enum String {
+}
+class User {
+  + About : str
+  + Active : bool
+  + Dateofbirth : str
+  + DepartmentID : int
+  + Email : str
+  + Facebook_link : str
+  + Firstname : str
+  + Google_plus_link : str
+  + Hiredate : str
+  + Lastname : str
+  + Linkedin_link : str
+  + Password : str
+  + Phone : str
+  + Position : str
+  + Roles___ : str
+  + Settings : str
+  + TitleID : int
+  + UserID : int
+  + Username : str
+}
+Activity "0..9999" -- "1..1" Project : Project_Activity
+Attachment "0..9999" -- "1..1" Project : Project_Attachment
+Comment "0..9999" -- "1..1" Project : Project_Comment
+Project "0..1" -- "0..1" User : Project_User
+Activity "0..9999" -- "1..1" User : User_Activity
+Attachment "0..9999" -- "1..1" User : User_Attachment
+Comment "0..9999" -- "1..1" User : User_Comment
+Project "1..1" -- "1..1" User : User_Project
+Project "0..9999" -- "1..1" User : User_Project2
+Project "0..9999" -- "1..1" User : User_Project3
+Role "0..9999" -- "1..9999" User : User_Role
+@enduml

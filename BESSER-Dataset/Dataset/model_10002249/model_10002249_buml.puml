@@ -1,0 +1,55 @@
+@startuml
+abstract class BasePlayer {
+  + isBusted : bool
+}
+class BlackjackGame {
+  + bet : int
+  + dealer : Dealer
+  + deck : Deck
+  + player : Player
+}
+class Card {
+  + Count : int
+  + avatar : str
+  + name : str
+  + rank : str
+  + suit : str
+  + valueHard : str
+  + valueSoft : str
+}
+class Dealer {
+  + cardTotalLimit : int
+  + hand : Hand
+}
+class Deck {
+  + cards : Card
+}
+class Hand {
+  + cards : Card
+  + total : int
+}
+class JButton {
+}
+class JLabel {
+}
+class Player {
+  + hand : Hand
+  + money : int
+  + profile : str
+}
+class Strategy {
+  + game : BlackjackGame
+}
+class UseCase_UseCase {
+}
+class User_Actor {
+}
+BlackjackGame "0..1" -- "0..1" Deck : Blackjack_Deck
+BlackjackGame "0..1" -- "0..1" Strategy : Blackjack_Strategy
+BlackjackGame "0..1" -- "0..1" Dealer : Dealer_Blackjack
+Dealer "1..1" -- "1..1" Hand : Dealer_Hand
+Card "0..9999" -- "0..1" Deck : Deck_Card
+Card "0..9999" -- "0..1" Hand : Hand_Card
+BlackjackGame "0..1" -- "0..1" Player : Player_Blackjack
+Hand "1..9999" -- "1..1" Player : Player_Hand
+@enduml

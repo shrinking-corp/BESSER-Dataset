@@ -1,0 +1,44 @@
+@startuml
+class AI {
+}
+class Card {
+  + suit : str
+  + value : int
+}
+class CommunityCards {
+  + cards : str
+}
+class Deck {
+  + cards : str
+  + positionInDeck : int
+}
+class Game {
+  + bigBlindValue : int
+  + currentBigBlind : int
+  + currentCommunityCards : CommunityCards
+  + currentDeck : Deck
+  + players : str
+  + pot : int
+}
+class Player {
+  + chips : int
+  + hand : str
+  + handValue : int
+  + isAI : bool
+  + isAllIn : bool
+  + isBigBlind : bool
+  + isFolded : bool
+  + isSmallBlind : bool
+  + name : str
+  + playerNumber : int
+}
+class makeNewPlayer {
+}
+Card "1..1" -- "1..1" CommunityCards : Community_Cards_Card
+Card "1..1" -- "1..1" Deck : DeckOfCards_Card
+Deck "1..1" -- "1..1" Game : DeckOfCards_Game
+CommunityCards "1..1" -- "1..1" Game : Game_Community_Cards
+Game "1..1" -- "1..9999" makeNewPlayer : Game_makeNewPlayer
+Card "1..1" -- "1..1" Player : Player_Card
+Game "1..1" -- "0..1" Player : Player_Game
+@enduml

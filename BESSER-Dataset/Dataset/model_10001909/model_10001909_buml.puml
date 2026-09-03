@@ -1,0 +1,151 @@
+@startuml
+class ArticulosCient_ficos {
+  + SSN : str
+}
+class Autores {
+  + fechaCreaci_n : str
+  + fechaEliminaci_n : str
+  + fechamodificaci_n : str
+}
+class Brindar_consultoria_external {
+}
+class Calcular {
+}
+class Calcular_Actor {
+}
+class Clasificar_producto_external {
+}
+class Cliente_Actor {
+}
+class ConcretBuilderBicicletaDoble {
+}
+class ConcretBuilderBicicletaFemenina {
+}
+class ConcretBuilderBicicletaInfantil {
+}
+class ConcretBuilderBicicletaMasculina {
+}
+class Contabilidad_y_Tesorer_a_Actor {
+}
+class Departamento_de_Inventarios_y_Suministros_DIS_Component {
+}
+class Dependencia {
+  + codigo : str
+  + nombre : str
+  + responsable : str
+}
+class Dependencias_Actor {
+}
+class Director {
+  + bicicletaBuilder : _a__BicicletaBuilder
+  + void_construirBicicleta : str
+}
+class Documentos {
+  + ISBN : str
+  + autores : str
+  + d_a : str
+  + editorial : str
+  + fechaCreaci_n : str
+  + fechaPublicaci_n : str
+  + mesPublicaci_n : str
+  + titulo : str
+}
+class Editoriales {
+  + direcci_nEmail : str
+  + direcci_nF_sica : str
+  + n_meroTel_fono : str
+  + personaContacto : str
+}
+class Elementos {
+  + clasificaci_n : str
+  + referencia : str
+}
+class Entegar_productos_external {
+}
+class Factura {
+  + codigo : str
+  + fecha : str
+}
+class Impuesto {
+}
+class Jur_dica_Actor {
+}
+class Libros {
+  + n_meroP_ginas : str
+}
+class Milenium_Component {
+}
+class Natural_Actor {
+}
+class NuevoProyecto {
+}
+class OrdenesPedido {
+  + codigo : str
+  + fecha : str
+}
+class Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Ponencias {
+  + nombreCongreso : str
+}
+class Principal {
+}
+class Producto {
+}
+class Proveedor {
+  + direcci_n : str
+  + nit : str
+  + razonSocial : str
+  + tel_fonos : str
+}
+class Proveedores_Actor {
+}
+class ProyectoNuevo_Actor {
+}
+class Recibir_ordenes_de_suministro_external {
+}
+class Recibir_productos_o_pedidos_external {
+}
+class Registrar_proveedores_external {
+}
+class Responsable_Inventario_Actor {
+}
+class Revisi_n_de_factura_external {
+}
+class Servidor_intel_I8_Node {
+}
+class Sistema_WEB_M_vil_Recepci_n_de_pedidos_Component {
+}
+class SolicitudSuministro {
+  + codigo : str
+  + fecha : str
+}
+class Venta {
+}
+class _a__BicicletaBuilder {
+}
+Calcular "0..1" -- "0..1" NuevoProyecto : Calcular_NuevoProyecto
+Brindar_consultoria_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_consultoria
+Contabilidad_y_Tesorer_a_Actor "0..1" -- "0..1" Registrar_proveedores_external : Contabilidad_y_Tesorer_a_Registrar_proveedores
+Dependencias_Actor "0..1" -- "0..1" Entegar_productos_external : Dependencias_Entregar_productos
+Dependencias_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministro_external : Dependencias_Recibir_ordenes_de_suministro
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_Recibir_productos_o_pedidos
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Clasificar_producto_external "0..1" -- "0..1" Responsable_Inventario_Actor : Responsable_Inventario_Clasificar_producto
+Responsable_Inventario_Actor "0..1" -- "0..1" Revisi_n_de_factura_external : Responsable_Inventario_Revisar_factura
+Elementos "1..9999" -- "0..9999" OrdenesPedido : conforma
+Documentos "1..9999" -- "0..9999" Libros : contienen
+ArticulosCient_ficos "0..9999" -- "1..9999" Documentos : contienen1
+Autores "1..9999" -- "0..9999" Documentos : crean
+Factura "0..9999" -- "1..1" Proveedor : elabora
+OrdenesPedido "0..9999" -- "1..1" Proveedor : es_enviado
+Elementos "1..9999" -- "0..9999" Factura : factura
+OrdenesPedido "0..1" -- "1..9999" SolicitudSuministro : genera
+Pedidos "0..9999" -- "1..1" Proveedor : provee
+Dependencia "1..1" -- "1..9999" SolicitudSuministro : realiza
+Elementos "1..9999" -- "0..9999" SolicitudSuministro : relaciona
+Documentos "0..9999" -- "1..9999" Editoriales : tienen
+Documentos "1..9999" -- "0..9999" Ponencias : tienen1
+@enduml

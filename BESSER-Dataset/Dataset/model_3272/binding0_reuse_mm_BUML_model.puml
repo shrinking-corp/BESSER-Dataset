@@ -1,0 +1,37 @@
+@startuml
+class State {
+}
+class StateMachine {
+}
+class Transition {
+}
+class sm_Event {
+  + name : str
+}
+class sm_State {
+  + name : str
+}
+class sm_StateMachine {
+  + name : str
+}
+class sm_Transition {
+  + name : str
+}
+class sm_sm_State {
+}
+class sm_sm_StateMachine {
+}
+class sm_sm_Transition {
+}
+State <|-- sm_sm_State
+StateMachine <|-- sm_sm_StateMachine
+Transition <|-- sm_sm_Transition
+sm_StateMachine "1..1" *-- "0..9999" sm_Transition : edges8
+sm_Event "1..1" --* "1..1" sm_sm_Transition : event0
+sm_State "0..9999" -- "1..1" sm_StateMachine : final2
+sm_State "0..1" -- "1..1" sm_StateMachine : initial1
+sm_State "0..9999" --* "1..1" sm_StateMachine : nodes5
+sm_State "1..1" -- "1..1" sm_Transition : source13
+sm_State "1..1" *-- "0..9999" sm_StateMachine : subMachines10
+sm_State "1..1" -- "1..1" sm_Transition : target16
+@enduml

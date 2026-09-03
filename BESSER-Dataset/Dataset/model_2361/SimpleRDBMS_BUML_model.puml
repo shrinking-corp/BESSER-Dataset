@@ -1,0 +1,39 @@
+@startuml
+class RdbmsModelElement {
+}
+class SimpleRDBMS_RdbmsColumn {
+  + rdbmsType : str
+}
+class SimpleRDBMS_RdbmsForeignKey {
+}
+class SimpleRDBMS_RdbmsKey {
+}
+class SimpleRDBMS_RdbmsModelElement {
+  + id : str
+  + rdbmsKind : str
+  + rdbmsName : str
+}
+class SimpleRDBMS_RdbmsSchema {
+}
+class SimpleRDBMS_RdbmsTable {
+}
+RdbmsModelElement <|-- SimpleRDBMS_RdbmsColumn
+RdbmsModelElement <|-- SimpleRDBMS_RdbmsForeignKey
+RdbmsModelElement <|-- SimpleRDBMS_RdbmsKey
+RdbmsModelElement <|-- SimpleRDBMS_RdbmsSchema
+RdbmsModelElement <|-- SimpleRDBMS_RdbmsTable
+SimpleRDBMS_RdbmsColumn "0..9999" -- "1..1" SimpleRDBMS_RdbmsKey : rdbmsColumn11
+SimpleRDBMS_RdbmsColumn "0..9999" --* "1..1" SimpleRDBMS_RdbmsTable : rdbmsColumn20
+SimpleRDBMS_RdbmsColumn "0..9999" -- "1..1" SimpleRDBMS_RdbmsForeignKey : rdbmsColumn9
+SimpleRDBMS_RdbmsForeignKey "0..9999" --* "1..1" SimpleRDBMS_RdbmsTable : rdbmsForeignKey22
+SimpleRDBMS_RdbmsColumn "1..1" -- "0..9999" SimpleRDBMS_RdbmsForeignKey : rdbmsForeignKey3
+SimpleRDBMS_RdbmsColumn "1..1" -- "0..9999" SimpleRDBMS_RdbmsKey : rdbmsKey1
+SimpleRDBMS_RdbmsKey "0..9999" --* "1..1" SimpleRDBMS_RdbmsTable : rdbmsKey25
+SimpleRDBMS_RdbmsColumn "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner0
+SimpleRDBMS_RdbmsKey "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner15
+SimpleRDBMS_RdbmsForeignKey "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner5
+SimpleRDBMS_RdbmsForeignKey "1..1" -- "1..1" SimpleRDBMS_RdbmsKey : rdbmsRefersTo7
+SimpleRDBMS_RdbmsForeignKey "0..9999" -- "1..1" SimpleRDBMS_RdbmsKey : rdbmsRefersToOpposite13
+SimpleRDBMS_RdbmsSchema "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsSchema28
+SimpleRDBMS_RdbmsSchema "1..1" *-- "0..9999" SimpleRDBMS_RdbmsTable : rdbmsTable18
+@enduml

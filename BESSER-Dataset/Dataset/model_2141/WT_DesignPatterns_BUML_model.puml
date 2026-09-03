@@ -1,0 +1,65 @@
+@startuml
+class DocumentElt {
+}
+class Port {
+}
+class Vertex {
+}
+class WT_Architecture {
+  + name : str
+}
+class WT_Component {
+  + label : str
+}
+class WT_ControlSubsystem {
+  + name : str
+}
+abstract class WT_DocumentElt {
+  + description : str
+  + name : str
+}
+class WT_Edge {
+}
+class WT_InPort {
+}
+class WT_InitialState {
+}
+class WT_OutPort {
+}
+abstract class WT_Port {
+  + label : str
+}
+class WT_SimpleState {
+}
+class WT_StateMachine {
+  + name : str
+}
+class WT_Subsystem {
+  + name : str
+}
+abstract class WT_Vertex {
+}
+class WT_WTComponents {
+  + name : str
+}
+DocumentElt <|-- WT_Edge
+DocumentElt <|-- WT_Vertex
+Port <|-- WT_InPort
+Port <|-- WT_OutPort
+Vertex <|-- WT_InitialState
+Vertex <|-- WT_SimpleState
+WT_ControlSubsystem "0..9999" --* "1..1" WT_Subsystem : beh6
+WT_Architecture "1..1" *-- "0..9999" WT_Component : elements8
+WT_Architecture "0..9999" --* "1..1" WT_Subsystem : ensembles4
+WT_Edge "0..9999" -- "1..1" WT_Vertex : incoming17
+WT_Edge "0..9999" -- "1..1" WT_Vertex : outgoing16
+WT_Component "1..1" *-- "0..9999" WT_Port : ports22
+WT_Edge "1..1" -- "1..1" WT_Vertex : source19
+WT_ControlSubsystem "1..1" *-- "0..9999" WT_StateMachine : states10
+WT_StateMachine "1..1" *-- "0..9999" WT_Vertex : states12
+WT_Component "1..1" -- "0..9999" WT_StateMachine : states24
+WT_Subsystem "0..9999" --* "1..1" WT_WTComponents : subsystems0
+WT_Subsystem "0..9999" --* "1..1" WT_Subsystem : subsystems2
+WT_Edge "1..1" -- "1..1" WT_Vertex : target20
+WT_Edge "0..9999" --* "1..1" WT_StateMachine : transitions14
+@enduml

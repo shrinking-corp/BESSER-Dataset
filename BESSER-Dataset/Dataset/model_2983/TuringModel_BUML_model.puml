@@ -1,0 +1,27 @@
+@startuml
+enum Direction {
+  HOLD
+  LEFT
+  RIGHT
+}
+class turingmodel_State {
+  + isEndState : bool
+  + name : str
+}
+class turingmodel_Transition {
+  + condition : str
+  + dir : str
+  + write : str
+}
+class turingmodel_TuringMachine {
+}
+turingmodel_State "1..1" -- "0..9999" turingmodel_Transition : next6
+turingmodel_State "1..1" -- "1..1" turingmodel_Transition : source16
+turingmodel_State "1..1" -- "1..1" turingmodel_TuringMachine : startState3
+turingmodel_State "0..1" -- "1..1" turingmodel_State : startSubstate11
+turingmodel_State "0..9999" --* "1..1" turingmodel_TuringMachine : states0
+turingmodel_State "0..9999" --* "1..1" turingmodel_State : substates8
+turingmodel_State "1..1" *-- "0..9999" turingmodel_Transition : subtransitions13
+turingmodel_State "1..1" -- "1..1" turingmodel_Transition : target17
+turingmodel_Transition "0..9999" --* "1..1" turingmodel_TuringMachine : transitions1
+@enduml

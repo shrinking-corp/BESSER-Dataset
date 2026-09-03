@@ -1,0 +1,63 @@
+@startuml
+class Addressable {
+}
+class Order {
+}
+enum VAT {
+  vat0
+  vat15
+  vat7
+}
+abstract class company_Addressable {
+  + city : str
+  + name : str
+  + street : str
+}
+class company_Category {
+  + name : str
+}
+class company_Company {
+}
+class company_Customer {
+}
+class company_Order {
+}
+class company_OrderDetail {
+  + price : float
+}
+class company_Product {
+  + description : str
+  + name : str
+  + price : float
+  + vat : str
+}
+class company_PurchaseOrder {
+  + date : date
+}
+class company_SalesOrder {
+  + id : int
+}
+class company_Supplier {
+  + preferred : bool
+}
+Addressable <|-- company_Company
+Addressable <|-- company_Customer
+Addressable <|-- company_Supplier
+Order <|-- company_PurchaseOrder
+Order <|-- company_SalesOrder
+company_Category "0..9999" --* "1..1" company_Company : categories0
+company_Category "0..9999" --* "1..1" company_Category : categories18
+company_Customer "1..1" -- "1..1" company_SalesOrder : customer16
+company_Company "1..1" *-- "0..9999" company_Customer : customers3
+company_Order "1..1" -- "1..1" company_OrderDetail : order12
+company_Order "1..1" *-- "0..9999" company_OrderDetail : orderDetails11
+company_OrderDetail "0..9999" -- "1..1" company_Product : orderDetails22
+company_OrderDetail "1..1" -- "0..1" company_Product : product13
+company_Category "1..1" *-- "0..9999" company_Product : products20
+company_Company "1..1" *-- "0..9999" company_PurchaseOrder : purchaseOrders5
+company_PurchaseOrder "0..9999" -- "1..1" company_Supplier : purchaseOrders9
+company_Customer "1..1" -- "0..9999" company_SalesOrder : salesOrders10
+company_Company "1..1" *-- "0..9999" company_SalesOrder : salesOrders7
+company_PurchaseOrder "1..1" -- "1..1" company_Supplier : supplier15
+company_Company "1..1" *-- "0..9999" company_Supplier : suppliers1
+@enduml

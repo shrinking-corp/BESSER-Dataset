@@ -1,0 +1,53 @@
+@startuml
+class Amalgamate_UseCase {
+}
+class Application {
+  + deck : Deck
+  + scan : str
+}
+class Card {
+  + cardValue : CardValue
+  + suit : Suit
+}
+enum CardValue {
+}
+class Current_onto_Previous_UseCase {
+}
+class Current_over_two_UseCase {
+}
+class Deal_a_Card_UseCase {
+}
+class Deck {
+  + _cards__ : Card
+  + scan : str
+}
+class Make_Move_UseCase {
+}
+class Play_Multiple_Times_UseCase {
+}
+class Play_Once_UseCase {
+}
+class Play_for_Me_UseCase {
+}
+class Show_Deck_UseCase {
+}
+class Show_Top_Results_UseCase {
+}
+class Shuffle_Deck_UseCase {
+}
+enum Suit {
+}
+class User_Actor {
+}
+Amalgamate_UseCase "0..1" -- "0..1" Make_Move_UseCase : Make_MOve_Amalgamate
+Current_onto_Previous_UseCase "0..1" -- "0..1" Make_Move_UseCase : Make_MOve_Current_onto_Previous
+Current_over_two_UseCase "0..1" -- "0..1" Make_Move_UseCase : Make_MOve_Current_over_two
+Play_Multiple_Times_UseCase "0..1" -- "0..1" Play_for_Me_UseCase : Play_for_Me_Play_Multiple_Times
+Play_Once_UseCase "0..1" -- "0..1" Play_for_Me_UseCase : Play_for_Me_Play_Once
+Deal_a_Card_UseCase "0..1" -- "0..1" User_Actor : User_Deal_a_Card
+Make_Move_UseCase "0..1" -- "0..1" User_Actor : User_Make_MOve
+Play_for_Me_UseCase "0..1" -- "0..1" User_Actor : User_Play_for_Me
+Show_Deck_UseCase "0..1" -- "0..1" User_Actor : User_Show_Deck
+Show_Top_Results_UseCase "0..1" -- "0..1" User_Actor : User_Show_Top_Results
+Shuffle_Deck_UseCase "0..1" -- "0..1" User_Actor : User_Shuffle_Deck
+@enduml

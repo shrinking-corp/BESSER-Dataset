@@ -1,0 +1,124 @@
+@startuml
+enum BinaryOperatorKind {
+  add
+  div
+  eq
+  ge
+  gt
+  le
+  lt
+  max
+  min
+  mod
+  mul
+  neq
+  sub
+}
+class Control {
+}
+class Expression {
+}
+class InputModule {
+}
+class Instruction {
+}
+class Module {
+}
+class ModuleSet {
+}
+class NamedElement {
+}
+class OutputModule {
+}
+enum UnaryOperatorKind {
+  minus
+  neg
+}
+class arduino_BinaryExpression {
+  + operator : str
+}
+class arduino_Block {
+}
+class arduino_Board {
+}
+class arduino_Constant {
+  + value : int
+}
+abstract class arduino_Control {
+}
+class arduino_Delay {
+  + value : int
+}
+abstract class arduino_Expression {
+}
+class arduino_If {
+}
+abstract class arduino_InputModule {
+}
+abstract class arduino_Instruction {
+}
+class arduino_Led {
+}
+abstract class arduino_Module {
+}
+class arduino_ModuleGet {
+}
+abstract class arduino_ModuleSet {
+}
+abstract class arduino_NamedElement {
+  + name : str
+}
+abstract class arduino_OutputModule {
+}
+class arduino_Project {
+}
+class arduino_PushButton {
+}
+class arduino_SetLed {
+}
+class arduino_Sketch {
+}
+class arduino_UnaryExpression {
+  + operator : str
+}
+class arduino_WaitFor {
+}
+class arduino_While {
+}
+Control <|-- arduino_If
+Control <|-- arduino_While
+Expression <|-- arduino_BinaryExpression
+Expression <|-- arduino_Constant
+Expression <|-- arduino_ModuleGet
+Expression <|-- arduino_UnaryExpression
+InputModule <|-- arduino_PushButton
+Instruction <|-- arduino_Control
+Instruction <|-- arduino_Delay
+Instruction <|-- arduino_ModuleSet
+Instruction <|-- arduino_WaitFor
+Module <|-- arduino_InputModule
+Module <|-- arduino_OutputModule
+ModuleSet <|-- arduino_SetLed
+NamedElement <|-- arduino_Board
+NamedElement <|-- arduino_Module
+NamedElement <|-- arduino_Project
+NamedElement <|-- arduino_Sketch
+OutputModule <|-- arduino_Led
+arduino_Block "1..1" --* "1..1" arduino_Sketch : block5
+arduino_Block "1..1" --* "1..1" arduino_Control : block9
+arduino_Board "1..1" --* "1..1" arduino_Project : board0
+arduino_Expression "1..1" --* "1..1" arduino_If : condition11
+arduino_Expression "1..1" --* "1..1" arduino_While : condition15
+arduino_Block "0..1" --* "1..1" arduino_If : elseBlock12
+arduino_Block "1..1" *-- "0..9999" arduino_Instruction : instructions7
+arduino_Led "1..1" -- "1..1" arduino_SetLed : led19
+arduino_BinaryExpression "1..1" *-- "1..1" arduino_Expression : left26
+arduino_Module "0..1" -- "1..1" arduino_WaitFor : module20
+arduino_Module "1..1" -- "1..1" arduino_ModuleGet : module31
+arduino_Board "1..1" *-- "0..9999" arduino_Module : modules3
+arduino_Expression "1..1" --* "1..1" arduino_UnaryExpression : operand24
+arduino_BinaryExpression "1..1" *-- "0..1" arduino_Expression : right28
+arduino_Project "1..1" *-- "1..1" arduino_Sketch : sketch1
+arduino_Expression "1..1" --* "1..1" arduino_ModuleSet : value17
+arduino_Constant "0..1" --* "1..1" arduino_WaitFor : value22
+@enduml

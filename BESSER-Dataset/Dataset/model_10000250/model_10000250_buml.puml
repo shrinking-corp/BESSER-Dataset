@@ -1,0 +1,48 @@
+@startuml
+class Connect4_Board {
+  + gameBoard : str
+  + maxColumns : int
+  + maxRows : int
+}
+class Connect4_CirclePanel {
+  + color : str
+  + colorIndex : int
+}
+class Connect4_Client {
+}
+class Connect4_Player {
+  + currentPlayer : bool
+  + name : str
+  + roundWon : bool
+  + tokenColor : str
+  + wins : int
+}
+class Connect4_Server {
+}
+class Connect4_Token {
+  + color : str
+  + isEmpty : bool
+  + xValue : int
+  + yValue : int
+}
+class Connect4_connect {
+  + FRAME_HEIGHT : int
+  + FRAME_WIDTH : int
+  + columnSize : int
+  + label1 : str
+  + label2 : str
+  + label3 : str
+  + label4 : str
+  + label5 : str
+  + panel : str
+  + rowSize : int
+  + x : int
+  + y : int
+}
+Connect4_Board "1..1" -- "1..9999" Connect4_Player : Board_Player
+Connect4_Board "1..1" -- "1..9999" Connect4_Token : Board_Token
+Connect4_Board "1..1" -- "0..1" Connect4_connect : Board_connect
+Connect4_CirclePanel "1..1" -- "1..9999" Connect4_connect : CirclePanel_connect
+Connect4_Board "0..1" -- "0..1" Connect4_Server : Server_Board
+Connect4_Client "0..1" -- "0..1" Connect4_Server : Server_Client
+@enduml

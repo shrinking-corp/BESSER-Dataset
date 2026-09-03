@@ -1,0 +1,721 @@
+@startuml
+class Argument {
+}
+class Condition {
+}
+enum Connective {
+  And
+  Eqv
+  If
+  Nor
+  OnlyIf
+  Or
+  Unless
+  Xor
+}
+class Constant {
+}
+class Dimension {
+}
+enum ElementKind {
+  Condition
+  Group
+  Instance
+  Modifier
+  None_
+  Noun
+  Pronoun
+  Property
+  Qualifier
+  Quantifier
+  Query
+  Role
+  Sentence
+}
+class ExtentConstant {
+}
+class FormElement {
+}
+enum FormElementKind {
+  ItemElement
+  ObjectRole
+  ParticleElement
+  ParticleRole
+  SubjectRole
+}
+class Formulation {
+}
+class FormulationForm {
+}
+class Grammar_ParseElement {
+}
+enum GroupKind {
+  All
+  Choice
+  Instead
+  Joint
+  Neither
+}
+class Instance {
+}
+enum InstanceKind {
+  Concept
+  Name
+  Number
+  Quantity
+  Query
+  Question
+  Statement
+  String
+}
+class ItemElement {
+}
+class Keyword {
+}
+enum KeywordKind {
+  Adjunct
+  Anaphor
+  Function
+  Genitive
+  K_All
+  K_Always
+  K_An
+  K_And
+  K_Another
+  K_Any
+  K_Anything
+  K_As
+  K_At
+  K_Both
+  K_But
+  K_Different
+  K_Either
+  K_Else
+  K_Everything
+  K_Exactly
+  K_For
+  K_How
+  K_If
+  K_Instead
+  K_Least
+  K_Less
+  K_Many
+  K_May
+  K_More
+  K_Most
+  K_Must
+  K_Neither
+  K_No
+  K_None
+  K_Nor
+  K_Not
+  K_Nothing
+  K_Of
+  K_One
+  K_Only
+  K_Or
+  K_Other
+  K_Same
+  K_Self
+  K_Something
+  K_Than
+  K_That
+  K_The
+  K_Then
+  K_There
+  K_This
+  K_Together
+  K_Unless
+  K_What
+  K_When
+  K_Where
+  K_Whether
+  K_Which
+  K_Whose
+  K_Why
+  Pronoun
+}
+class LocalName {
+}
+enum Modality {
+  Antipreference
+  Impossibility
+  Negation
+  None_
+  Nonpreference
+  Obligation
+  Permission
+  PermittedNot
+  Possibility
+  Preference
+  Prohibition
+}
+class ModifiedTerm {
+}
+class Modifier {
+}
+class NBVR_Grammar_CompoundForm {
+  + kind : str
+}
+class NBVR_Grammar_Condition {
+  + otherwise : bool
+}
+class NBVR_Grammar_Dimension {
+  + exponent : int
+}
+class NBVR_Grammar_DomainForm {
+  + modality : str
+}
+class NBVR_Grammar_GroupPhrase {
+  + kind : str
+}
+class NBVR_Grammar_ImplicationForm {
+  + kind : str
+}
+abstract class NBVR_Grammar_Instance {
+  + getKind() : str
+}
+class NBVR_Grammar_Intension {
+}
+class NBVR_Grammar_LexicalInstance {
+}
+class NBVR_Grammar_LocalName {
+}
+abstract class NBVR_Grammar_ModifiedTerm {
+}
+class NBVR_Grammar_Modifier {
+  + kind : str
+}
+abstract class NBVR_Grammar_Nominalization {
+}
+class NBVR_Grammar_Parse {
+}
+abstract class NBVR_Grammar_ParseElement {
+  + getElementKind() : str
+  + isInstance() : bool
+  + isRolePhrase() : bool
+  + isSentence() : bool
+}
+class NBVR_Grammar_PartPhrase {
+}
+class NBVR_Grammar_Pronoun {
+}
+class NBVR_Grammar_ProperName {
+}
+class NBVR_Grammar_PropertyNoun {
+}
+abstract class NBVR_Grammar_Qualifier {
+  + isSimple() : bool
+}
+class NBVR_Grammar_QualifierChain {
+}
+class NBVR_Grammar_Quantifier {
+  + count : int
+  + kind : str
+}
+class NBVR_Grammar_Quantity {
+}
+class NBVR_Grammar_QueryPhrase {
+  + query : str
+}
+class NBVR_Grammar_Question {
+  + query : str
+}
+class NBVR_Grammar_RoleNoun {
+}
+abstract class NBVR_Grammar_RolePhrase {
+  + getType() : str
+}
+abstract class NBVR_Grammar_Sentence {
+  + getType() : str
+}
+class NBVR_Grammar_SimpleForm {
+  + getModality() : str
+  + isNegated() : bool
+}
+abstract class NBVR_Grammar_SimpleNounPhrase {
+}
+class NBVR_Grammar_SimpleQualifier {
+}
+class NBVR_Grammar_Statement {
+}
+class NBVR_Grammar_TypeNoun {
+}
+class NBVR_Grammar_VerbPhrase {
+  + modality : str
+  + negated : bool
+}
+class NBVR_Logic_Argument {
+  + hasNext() : bool
+}
+class NBVR_Logic_Connection {
+  + kind : str
+}
+abstract class NBVR_Logic_Constant {
+  + kind : str
+}
+class NBVR_Logic_ExtentConstant {
+}
+class NBVR_Logic_Implication {
+}
+class NBVR_Logic_Modal {
+  + kind : str
+}
+class NBVR_Logic_Negation {
+}
+class NBVR_Logic_NominalConstant {
+}
+class NBVR_Logic_Predicate {
+  + name : str
+}
+abstract class NBVR_Logic_Proposition {
+  + text : str
+  + getType() : str
+}
+class NBVR_Logic_Quantification {
+  + kind : str
+  + unique : bool
+}
+class NBVR_Logic_QuantityValue {
+  + factor : str
+  + unit : str
+}
+class NBVR_Logic_Relation {
+  + getArgument() : str
+}
+class NBVR_Logic_RoleVariable {
+}
+class NBVR_Logic_Set {
+}
+class NBVR_Logic_ValueConstant {
+  + name : str
+}
+class NBVR_Logic_Variable {
+  + name : str
+}
+class NBVR_Vocabulary_Adjective {
+}
+class NBVR_Vocabulary_Adjunct {
+}
+class NBVR_Vocabulary_DateTime {
+}
+class NBVR_Vocabulary_Definition {
+}
+class NBVR_Vocabulary_Dictionary {
+}
+abstract class NBVR_Vocabulary_FormElement {
+  + kind : str
+}
+class NBVR_Vocabulary_Formulation {
+  + language : str
+  + text : str
+  + addElement(NBVR_elt : str) : void
+  + isStructured() : bool
+}
+abstract class NBVR_Vocabulary_FormulationForm {
+  + isStructured() : bool
+}
+class NBVR_Vocabulary_IsVerb {
+}
+class NBVR_Vocabulary_ItemElement {
+}
+class NBVR_Vocabulary_Keyword {
+  + kind : str
+}
+class NBVR_Vocabulary_Name {
+}
+class NBVR_Vocabulary_Noun {
+}
+class NBVR_Vocabulary_NumberWord {
+  + decimal : bool
+  + value : int
+}
+class NBVR_Vocabulary_Particle {
+}
+class NBVR_Vocabulary_RoleElement {
+  + slot : int
+}
+class NBVR_Vocabulary_StringWord {
+}
+class NBVR_Vocabulary_SyntaxForm {
+  + isAuxForm : bool
+  + text : str
+}
+class NBVR_Vocabulary_Term {
+  + text : str
+}
+class NBVR_Vocabulary_Terminology {
+}
+class NBVR_Vocabulary_Verb {
+  + isPast(NBVR_wf : str) : bool
+  + isPerfective(NBVR_wf : str) : bool
+  + isProgressive(NBVR_wf : str) : bool
+}
+class NBVR_Vocabulary_VerbRole {
+  + isRange : bool
+}
+class NBVR_Vocabulary_VocAdjective {
+}
+class NBVR_Vocabulary_VocName {
+  + isUnit() : bool
+}
+class NBVR_Vocabulary_VocNoun {
+  + massNoun : bool
+}
+class NBVR_Vocabulary_VocProperty {
+}
+class NBVR_Vocabulary_VocUnit {
+}
+class NBVR_Vocabulary_VocVerb {
+  + arity : int
+}
+abstract class NBVR_Vocabulary_VocabularyItem {
+  + getKind() : str
+  + isPrimitive() : bool
+}
+abstract class NBVR_Vocabulary_Word {
+  + isArticle() : bool
+  + isIs() : bool
+  + isKeyword() : bool
+  + isNumber() : bool
+  + isText() : bool
+}
+class NBVR_Vocabulary_WordForm {
+  + text : str
+}
+class Nominalization {
+}
+class NumberWord {
+}
+class ParseElement {
+}
+class PartPhrase {
+}
+class Particle {
+}
+enum PhraseType {
+  Anaphor
+  Group
+  Instance
+  Interrogative
+  LocalName
+  Pronoun
+  Property
+  Query
+  RoleNoun
+  TypeNoun
+}
+class Predicate {
+}
+class Proposition {
+}
+enum PropositionKind {
+  Connection
+  Implication
+  Modal
+  Negation
+  Quantification
+  Relation
+}
+class Qualifier {
+}
+class QualifierChain {
+}
+class Quantification {
+}
+class Quantifier {
+}
+enum QuantifierKind {
+  AtLeast1
+  AtLeastN
+  AtMost1
+  AtMostN
+  Exactly1
+  ExactlyN
+  LessThanN
+  MoreThanN
+  Q_All
+  Q_An
+  Q_Any
+  Q_No
+  Q_The
+}
+class Quantity {
+}
+enum QueryKind {
+  Any
+  How
+  HowMany
+  What
+  When
+  Where
+  Whether
+  Why
+}
+class QueryPhrase {
+}
+class Question {
+}
+class Relation {
+}
+class RoleElement {
+}
+class RolePhrase {
+}
+class RoleVariable {
+}
+class Sentence {
+}
+enum SentenceType {
+  Compound
+  Domain
+  Equivalence
+  Implication
+  Modal
+  Other
+  Simple
+}
+class Set {
+}
+class SimpleNounPhrase {
+}
+class SimpleQualifier {
+}
+class SyntaxForm {
+}
+class Term {
+}
+class TypeNoun {
+}
+class Variable {
+}
+class Verb {
+}
+class VerbPhrase {
+}
+class VerbRole {
+}
+class VocAdjective {
+}
+enum VocItemKind {
+  AdjectiveConcept
+  NounConcept
+  ProperName
+  PropertyConcept
+  VerbConcept
+}
+class VocName {
+}
+class VocNoun {
+}
+class VocProperty {
+}
+class VocUnit {
+}
+class VocVerb {
+}
+class VocabularyItem {
+}
+class Vocabulary_FormulationForm {
+}
+class Word {
+}
+class WordForm {
+}
+Constant <|-- NBVR_Logic_ExtentConstant
+Constant <|-- NBVR_Logic_NominalConstant
+Constant <|-- NBVR_Logic_QuantityValue
+Constant <|-- NBVR_Logic_ValueConstant
+FormElement <|-- NBVR_Vocabulary_ItemElement
+FormElement <|-- NBVR_Vocabulary_Particle
+FormElement <|-- NBVR_Vocabulary_RoleElement
+Formulation <|-- NBVR_Vocabulary_Definition
+FormulationForm <|-- NBVR_Logic_Proposition
+Grammar_ParseElement <|-- NBVR_Grammar_RolePhrase
+Grammar_ParseElement <|-- NBVR_Grammar_Sentence
+Instance <|-- NBVR_Grammar_Intension
+Instance <|-- NBVR_Grammar_LexicalInstance
+Instance <|-- NBVR_Grammar_Nominalization
+Instance <|-- NBVR_Grammar_ProperName
+Instance <|-- NBVR_Grammar_Quantity
+ModifiedTerm <|-- NBVR_Grammar_Pronoun
+ModifiedTerm <|-- NBVR_Grammar_PropertyNoun
+ModifiedTerm <|-- NBVR_Grammar_TypeNoun
+Nominalization <|-- NBVR_Grammar_Question
+Nominalization <|-- NBVR_Grammar_Statement
+ParseElement <|-- NBVR_Grammar_Condition
+ParseElement <|-- NBVR_Grammar_Modifier
+ParseElement <|-- NBVR_Grammar_Qualifier
+ParseElement <|-- NBVR_Grammar_Quantifier
+Proposition <|-- NBVR_Logic_Connection
+Proposition <|-- NBVR_Logic_Implication
+Proposition <|-- NBVR_Logic_Modal
+Proposition <|-- NBVR_Logic_Negation
+Proposition <|-- NBVR_Logic_Quantification
+Proposition <|-- NBVR_Logic_Relation
+Qualifier <|-- NBVR_Grammar_QualifierChain
+Qualifier <|-- NBVR_Grammar_SimpleQualifier
+RolePhrase <|-- NBVR_Grammar_GroupPhrase
+RolePhrase <|-- NBVR_Grammar_QueryPhrase
+RolePhrase <|-- NBVR_Grammar_SimpleNounPhrase
+Sentence <|-- NBVR_Grammar_CompoundForm
+Sentence <|-- NBVR_Grammar_DomainForm
+Sentence <|-- NBVR_Grammar_ImplicationForm
+Sentence <|-- NBVR_Grammar_SimpleForm
+SimpleNounPhrase <|-- NBVR_Grammar_Instance
+SimpleNounPhrase <|-- NBVR_Grammar_LocalName
+SimpleNounPhrase <|-- NBVR_Grammar_ModifiedTerm
+SimpleNounPhrase <|-- NBVR_Grammar_RoleNoun
+Variable <|-- NBVR_Logic_RoleVariable
+Verb <|-- NBVR_Vocabulary_IsVerb
+VocName <|-- NBVR_Vocabulary_VocUnit
+VocabularyItem <|-- NBVR_Vocabulary_VocAdjective
+VocabularyItem <|-- NBVR_Vocabulary_VocName
+VocabularyItem <|-- NBVR_Vocabulary_VocNoun
+VocabularyItem <|-- NBVR_Vocabulary_VocProperty
+VocabularyItem <|-- NBVR_Vocabulary_VocVerb
+Vocabulary_FormulationForm <|-- NBVR_Grammar_RolePhrase
+Vocabulary_FormulationForm <|-- NBVR_Grammar_Sentence
+Word <|-- NBVR_Vocabulary_Adjective
+Word <|-- NBVR_Vocabulary_Adjunct
+Word <|-- NBVR_Vocabulary_DateTime
+Word <|-- NBVR_Vocabulary_Keyword
+Word <|-- NBVR_Vocabulary_Name
+Word <|-- NBVR_Vocabulary_Noun
+Word <|-- NBVR_Vocabulary_NumberWord
+Word <|-- NBVR_Vocabulary_StringWord
+Word <|-- NBVR_Vocabulary_Verb
+NBVR_Grammar_Modifier "1..1" -- "0..1" VocAdjective : adjective146
+NBVR_Vocabulary_Verb "1..1" -- "0..1" WordForm : altPast104
+NBVR_Vocabulary_Noun "1..1" -- "0..1" WordForm : altPlural87
+NBVR_Vocabulary_WordForm "1..1" -- "0..1" Word : altWord10
+NBVR_Grammar_ImplicationForm "1..1" -- "0..1" Sentence : alternative180
+NBVR_Grammar_Condition "1..1" -- "0..1" Sentence : antecedent122
+NBVR_Grammar_ImplicationForm "1..1" -- "1..1" Sentence : antecedent175
+NBVR_Logic_Implication "1..1" -- "1..1" Proposition : antecedent246
+Argument "1..9999" --* "1..1" NBVR_Logic_Relation : arguments220
+NBVR_Vocabulary_Word "1..1" -- "1..1" WordForm : base0
+NBVR_Vocabulary_VocabularyItem "1..1" -- "0..9999" VocabularyItem : base25
+NBVR_Vocabulary_Word "1..1" -- "0..9999" Term : beginsTerm1
+NBVR_Grammar_SimpleQualifier "1..1" -- "1..1" Sentence : boundForm124
+NBVR_Grammar_SimpleQualifier "1..1" -- "0..1" QualifierChain : chain123
+NBVR_Vocabulary_Term "1..1" -- "0..1" VocabularyItem : concept13
+NBVR_Grammar_Intension "1..1" -- "0..1" RolePhrase : concept195
+NBVR_Vocabulary_Formulation "1..1" -- "1..1" VocabularyItem : concept35
+Condition "0..1" -- "1..1" NBVR_Grammar_SimpleQualifier : condition126
+NBVR_Grammar_ImplicationForm "1..1" -- "1..1" Sentence : consequent177
+NBVR_Logic_Implication "1..1" -- "1..1" Proposition : consequent248
+Constant "0..1" --* "1..1" NBVR_Logic_Argument : constant234
+NBVR_Logic_Variable "1..1" -- "0..1" Proposition : constraint206
+NBVR_Vocabulary_Term "1..1" -- "0..1" VocabularyItem : context19
+Dimension "0..9999" -- "1..1" NBVR_Grammar_Quantity : dimension143
+NBVR_Grammar_Sentence "1..1" -- "0..1" RolePhrase : domain129
+NBVR_Grammar_PropertyNoun "1..1" -- "1..1" SimpleNounPhrase : domain152
+NBVR_Grammar_QueryPhrase "1..1" -- "1..1" RolePhrase : domain190
+NBVR_Vocabulary_VocProperty "1..1" -- "1..1" VocNoun : domain61
+NBVR_Vocabulary_VocAdjective "1..1" -- "0..1" VocNoun : domain73
+ItemElement "0..9999" -- "1..1" NBVR_Vocabulary_Term : element22
+NBVR_Vocabulary_Formulation "1..1" *-- "0..9999" ParseElement : elements34
+FormElement "1..9999" --* "1..1" NBVR_Vocabulary_SyntaxForm : elements53
+NBVR_Grammar_PropertyNoun "1..1" -- "0..1" TypeNoun : expansion155
+ExtentConstant "0..1" -- "1..1" NBVR_Logic_Set : extent238
+NBVR_Grammar_Quantity "1..1" -- "1..1" NumberWord : factor142
+NBVR_Vocabulary_Terminology "1..1" *-- "0..1" VocabularyItem : firstItem109
+NBVR_Vocabulary_Dictionary "1..1" *-- "0..1" Word : firstWord107
+FormulationForm "0..1" --* "1..1" NBVR_Vocabulary_Formulation : form33
+NBVR_Vocabulary_VocVerb "1..1" *-- "1..9999" SyntaxForm : form48
+NBVR_Vocabulary_FormElement "1..1" -- "0..1" SyntaxForm : form59
+Formulation "0..1" -- "1..1" NBVR_Vocabulary_FormulationForm : formulation37
+Formulation "0..9999" --* "1..1" NBVR_Vocabulary_VocabularyItem : formulations24
+NBVR_Vocabulary_VocNoun "1..1" -- "0..1" VocVerb : isAVerb43
+Keyword "1..1" -- "1..1" NBVR_Grammar_Pronoun : keyword194
+NBVR_Vocabulary_Terminology "1..1" -- "0..1" VocabularyItem : lastItem111
+NBVR_Grammar_GroupPhrase "1..1" -- "1..9999" SimpleNounPhrase : members114
+Modifier "0..9999" -- "1..1" NBVR_Grammar_ModifiedTerm : modifiers137
+NBVR_Grammar_ProperName "1..1" -- "1..1" VocName : name193
+LocalName "0..1" -- "1..1" NBVR_Grammar_LocalName : next201
+Argument "0..1" -- "1..1" NBVR_Logic_Argument : next223
+NBVR_Vocabulary_VocabularyItem "1..1" *-- "0..1" VocabularyItem : next27
+NBVR_Vocabulary_Word "1..1" *-- "0..1" Word : next3
+NBVR_Vocabulary_WordForm "1..1" -- "0..1" WordForm : next5
+NBVR_Grammar_TypeNoun "1..1" -- "1..1" VocNoun : noun134
+NBVR_Logic_Predicate "1..1" -- "0..1" VocNoun : noun262
+NBVR_Grammar_SimpleForm "1..1" -- "0..1" RolePhrase : object172
+NBVR_Logic_Connection "1..1" -- "1..9999" Proposition : operands244
+NBVR_Logic_Proposition "1..1" -- "0..1" Proposition : owner218
+NBVR_Grammar_ParseElement "1..1" -- "0..1" ParseElement : parent203
+NBVR_Grammar_SimpleForm "1..1" *-- "0..9999" PartPhrase : partPhrases167
+NBVR_Grammar_PartPhrase "1..1" -- "0..1" RolePhrase : partRole161
+NBVR_Vocabulary_Term "1..1" -- "0..1" Particle : particle15
+NBVR_Grammar_PartPhrase "1..1" -- "1..1" Particle : particle163
+NBVR_Vocabulary_Verb "1..1" -- "1..1" WordForm : past95
+NBVR_Vocabulary_Verb "1..1" -- "1..1" WordForm : perfective101
+NBVR_Logic_Argument "1..1" -- "1..1" RolePhrase : phrase228
+NBVR_Vocabulary_Noun "1..1" -- "1..1" WordForm : plural85
+NBVR_Vocabulary_Verb "1..1" -- "1..1" WordForm : plural92
+NBVR_Logic_Relation "1..1" -- "1..1" Predicate : predicate221
+NBVR_Logic_RoleVariable "1..1" -- "0..1" Predicate : predicate255
+NBVR_Vocabulary_VocNoun "1..1" *-- "0..1" Predicate : predicate45
+NBVR_Vocabulary_VocVerb "1..1" *-- "0..1" Predicate : predicate50
+NBVR_Vocabulary_Verb "1..1" -- "1..1" WordForm : progressive98
+NBVR_Grammar_PropertyNoun "1..1" -- "1..1" VocProperty : property150
+NBVR_Vocabulary_SyntaxForm "1..1" -- "0..1" VocProperty : property55
+NBVR_Vocabulary_VocProperty "1..1" *-- "1..9999" SyntaxForm : propertyForm69
+NBVR_Logic_NominalConstant "1..1" -- "1..1" Proposition : proposition259
+NBVR_Grammar_Condition "1..1" -- "1..1" SimpleQualifier : qualifier121
+NBVR_Grammar_QualifierChain "1..1" -- "1..9999" SimpleQualifier : qualifiers127
+NBVR_Grammar_ModifiedTerm "1..1" -- "0..9999" Qualifier : qualifiers139
+NBVR_Grammar_ModifiedTerm "1..1" -- "0..1" Quantifier : quantifier136
+NBVR_Grammar_Quantifier "1..1" -- "0..1" Quantity : quantity141
+NBVR_Vocabulary_VocUnit "1..1" -- "0..1" VocProperty : quantityKind71
+NBVR_Grammar_Question "1..1" -- "0..1" QueryPhrase : queryPhrase189
+NBVR_Grammar_QueryPhrase "1..1" -- "1..1" Question : question192
+NBVR_Logic_Variable "1..1" -- "1..1" VocNoun : range209
+NBVR_Vocabulary_VerbRole "1..1" -- "1..1" VocNoun : range39
+NBVR_Vocabulary_VocProperty "1..1" -- "1..1" VocNoun : range63
+NBVR_Grammar_RolePhrase "1..1" -- "0..1" RolePhrase : referent119
+NBVR_Logic_Argument "1..1" -- "1..1" Relation : relation236
+NBVR_Grammar_Modifier "1..1" -- "0..1" RolePhrase : relative147
+NBVR_Grammar_Sentence "1..1" -- "0..1" Sentence : rewrites131
+NBVR_Vocabulary_Term "1..1" -- "0..1" VerbRole : role14
+NBVR_Grammar_RoleNoun "1..1" -- "0..1" VerbRole : role157
+NBVR_Logic_Argument "1..1" -- "0..1" VerbRole : role231
+NBVR_Logic_RoleVariable "1..1" -- "0..1" VerbRole : role257
+NBVR_Vocabulary_Particle "1..1" *-- "0..1" RoleElement : role78
+NBVR_Vocabulary_RoleElement "1..1" -- "1..1" VerbRole : role81
+NBVR_Grammar_RolePhrase "1..1" -- "0..1" VerbRole : rolePlayed115
+NBVR_Vocabulary_VocVerb "1..1" *-- "1..9999" VerbRole : roles46
+NBVR_Logic_Quantification "1..1" -- "1..1" Proposition : scope214
+NBVR_Logic_Modal "1..1" -- "1..1" Proposition : scope251
+NBVR_Logic_Negation "1..1" -- "1..1" Proposition : scope253
+NBVR_Grammar_Nominalization "1..1" -- "1..1" Sentence : sentence187
+NBVR_Logic_Variable "1..1" -- "0..1" Set : set212
+NBVR_Logic_ExtentConstant "1..1" -- "1..1" Set : set242
+NBVR_Vocabulary_Verb "1..1" -- "1..1" WordForm : singular90
+NBVR_Logic_Variable "1..1" -- "0..1" Quantification : source205
+NBVR_Grammar_DomainForm "1..1" -- "0..1" Sentence : statement197
+NBVR_Grammar_CompoundForm "1..1" -- "1..9999" Sentence : statements183
+NBVR_Grammar_SimpleForm "1..1" -- "1..1" RolePhrase : subject169
+NBVR_Vocabulary_VerbRole "1..1" *-- "0..1" Term : term41
+NBVR_Vocabulary_Particle "1..1" *-- "1..1" Term : term79
+NBVR_Vocabulary_ItemElement "1..1" -- "1..1" Term : term83
+NBVR_Vocabulary_VocabularyItem "1..1" *-- "1..9999" Term : terms30
+NBVR_Grammar_Dimension "1..1" -- "1..1" VocUnit : unit145
+NBVR_Logic_Variable "1..1" -- "1..9999" Relation : uses207
+NBVR_Grammar_RolePhrase "1..1" -- "0..1" Variable : variable117
+NBVR_Logic_Quantification "1..1" -- "1..1" Variable : variable216
+NBVR_Logic_Argument "1..1" -- "0..1" Variable : variable225
+NBVR_Logic_Set "1..1" -- "1..1" Variable : variable239
+NBVR_Logic_Predicate "1..1" *-- "1..9999" RoleVariable : variables261
+NBVR_Grammar_VerbPhrase "1..1" -- "1..1" VocVerb : verb159
+NBVR_Grammar_SimpleForm "1..1" *-- "1..1" VerbPhrase : verb166
+NBVR_Logic_Predicate "1..1" -- "0..1" VocVerb : verb265
+NBVR_Vocabulary_VerbRole "1..1" -- "1..1" VocVerb : verb40
+NBVR_Vocabulary_SyntaxForm "1..1" -- "0..1" VocVerb : verb56
+NBVR_Vocabulary_VocProperty "1..1" -- "1..1" VocVerb : verb66
+NBVR_Vocabulary_VocAdjective "1..1" -- "1..1" VocVerb : verb75
+NBVR_Grammar_LexicalInstance "1..1" -- "1..1" Word : word185
+NBVR_Grammar_LocalName "1..1" -- "1..1" Word : word199
+NBVR_Vocabulary_WordForm "1..1" -- "1..1" Word : word7
+NBVR_Vocabulary_Term "1..1" -- "1..9999" Word : words17
+@enduml

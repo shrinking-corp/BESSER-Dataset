@@ -1,0 +1,61 @@
+@startuml
+class Admin {
+  + Password : str
+  + Username : str
+}
+class Administrasi {
+  + Bayar : str
+  + HargaSewa : str
+  + IdAdmin : int
+  + IdPelanggan : int
+  + Kembali : str
+  + NoPesan : int
+}
+class Kendaraan {
+  + Merk : str
+  + NoMesin : str
+  + NoPolisi : str
+  + NoRangka : str
+  + TahunPembuatan : str
+  + Warna : str
+}
+class Login {
+  + Password : str
+  + Username : str
+}
+class Pelanggan {
+  + Alamat : str
+  + IdPelanggan : int
+  + JenisKelamin : str
+  + NoKTP : str
+  + Password : str
+  + Pekerjaan : str
+  + Telepon : str
+  + Umur : int
+  + Username : str
+}
+class Pemilik {
+  + Password : str
+  + Username : str
+}
+class Pesan {
+  + IdPelanggan : int
+  + NoPesan : int
+  + TanggalKembali : str
+  + TanggalRental : str
+}
+class RentalMobil {
+  + Alamat : str
+  + Email : str
+  + Nama : str
+  + Telepon : str
+}
+Admin "1..1" -- "1..1" Administrasi : Admin_Administrasi
+Admin "1..1" -- "1..9999" Pelanggan : Admin_Pelanggan
+Admin "1..1" -- "1..1" Pesan : Admin_Pesan
+Administrasi "1..1" -- "1..1" Pesan : Administrasi_Pesan
+Kendaraan "1..9999" -- "1..1" Pesan : Kendaraan_Pesan
+Kendaraan "1..9999" -- "0..1" Pelanggan : Pelanggan_Kendaraan
+Pelanggan "1..1" -- "1..9999" Pesan : Pelanggan_Pesan
+Admin "1..1" -- "1..1" Pemilik : Pemilik_Admin
+@enduml

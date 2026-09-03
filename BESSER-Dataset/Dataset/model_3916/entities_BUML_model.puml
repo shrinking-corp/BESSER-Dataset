@@ -1,0 +1,23 @@
+@startuml
+class Type {
+}
+class entities_Entity {
+}
+class entities_Model {
+}
+class entities_Property {
+  + many : bool
+  + name : str
+}
+class entities_SimpleType {
+}
+class entities_Type {
+  + name : str
+}
+Type <|-- entities_Entity
+Type <|-- entities_SimpleType
+entities_Model "1..1" *-- "0..9999" entities_Type : elements0
+entities_Entity "0..1" -- "1..1" entities_Entity : extends3
+entities_Entity "1..1" *-- "0..9999" entities_Property : properties1
+entities_Property "1..1" -- "0..1" entities_Type : type5
+@enduml

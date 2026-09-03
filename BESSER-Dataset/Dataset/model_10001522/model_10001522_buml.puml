@@ -1,0 +1,56 @@
+@startuml
+class CSV {
+  + cloumn : str
+  + row : str
+}
+class Data {
+  + key : str
+  + value : str
+}
+class File {
+  + file_type : File
+}
+class User {
+  + user_id : User
+}
+class XML {
+  + attribute : str
+  + element : str
+}
+class book {
+}
+class cash {
+}
+class credit_card {
+}
+class fine {
+}
+class librarian {
+}
+class library {
+}
+class library_member {
+}
+class member_profile {
+}
+class status_of_book {
+}
+class transaction {
+}
+File "0..9999" -- "1..1" User : User_Parser
+Data "0..9999" -- "1..1" User : User_data
+book "1..1" -- "1..1" status_of_book : book_status_of_book
+Data "1..1" -- "1..1" File : data_File
+cash "0..1" -- "1..1" fine : fine_class
+credit_card "0..1" -- "1..1" fine : fine_credit_card
+librarian "1..9999" -- "1..9999" library_member : librarian_member_profile
+librarian "1..9999" -- "1..9999" transaction : librarian_transaction
+book "1..9999" -- "1..1" library : library_book
+librarian "1..9999" -- "1..1" library : library_librarian
+library_member "1..1" -- "1..1" member_profile : library_member_member_profile
+library_member "1..9999" -- "1..9999" status_of_book : library_member_status_of_book
+library "1..1" -- "1..9999" transaction : library_transaction
+library_member "1..1" -- "1..1" transaction : member_library_card
+book "1..1" -- "1..1" transaction : transaction_book
+fine "0..1" -- "1..1" transaction : transaction_fine
+@enduml

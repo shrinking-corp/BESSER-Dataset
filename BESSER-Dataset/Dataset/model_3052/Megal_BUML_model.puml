@@ -1,0 +1,103 @@
+@startuml
+class MegalDeclaration {
+}
+class MegalElement {
+}
+class MegalNamed {
+}
+class QueryEntry {
+}
+class megal_MegalAnnotation {
+  + key : str
+}
+abstract class megal_MegalDeclaration {
+}
+abstract class megal_MegalElement {
+}
+class megal_MegalEntity {
+  + many : bool
+}
+class megal_MegalEntityType {
+}
+class megal_MegalFile {
+  + name : str
+}
+class megal_MegalLink {
+  + to : str
+}
+abstract class megal_MegalNamed {
+  + name : str
+}
+class megal_MegalPair {
+}
+class megal_MegalRelationship {
+}
+class megal_MegalRelationshipType {
+  + leftBoth : bool
+  + leftMany : bool
+  + rightBoth : bool
+  + rightMany : bool
+}
+class megal_QueryEntity {
+}
+abstract class megal_QueryEntry {
+}
+class megal_QueryParam {
+  + name : str
+}
+class megal_QueryPos {
+  + value : int
+}
+class megal_QueryReference {
+}
+class megal_QueryStatement {
+}
+class megal_QueryString {
+  + value : str
+}
+class megal_Selection {
+}
+MegalDeclaration <|-- megal_MegalNamed
+MegalDeclaration <|-- megal_MegalPair
+MegalDeclaration <|-- megal_MegalRelationship
+MegalElement <|-- megal_MegalDeclaration
+MegalElement <|-- megal_MegalFile
+MegalElement <|-- megal_MegalLink
+MegalNamed <|-- megal_MegalEntity
+MegalNamed <|-- megal_MegalEntityType
+MegalNamed <|-- megal_MegalRelationshipType
+QueryEntry <|-- megal_QueryEntity
+QueryEntry <|-- megal_QueryParam
+QueryEntry <|-- megal_QueryPos
+QueryEntry <|-- megal_QueryReference
+QueryEntry <|-- megal_QueryString
+megal_MegalAnnotation "0..9999" --* "1..1" megal_MegalElement : annotations1
+megal_MegalFile "1..1" *-- "0..9999" megal_MegalLink : bindings4
+megal_MegalDeclaration "0..9999" --* "1..1" megal_MegalFile : declarations3
+megal_MegalEntity "1..1" -- "1..1" megal_QueryEntity : entity69
+megal_MegalEntity "0..1" -- "1..1" megal_MegalLink : first11
+megal_MegalEntity "1..1" -- "1..1" megal_MegalPair : first26
+megal_MegalFile "0..9999" -- "1..1" megal_MegalFile : imports7
+megal_MegalEntity "1..1" -- "1..1" megal_MegalRelationship : left18
+megal_MegalEntityType "1..1" -- "1..1" megal_MegalRelationshipType : left34
+megal_MegalEntity "0..9999" -- "1..1" megal_MegalRelationshipType : leftParams40
+megal_MegalEntity "1..1" -- "1..1" megal_MegalLink : link9
+megal_QueryEntry "1..1" --* "1..1" megal_QueryStatement : object62
+megal_MegalEntity "0..9999" -- "1..1" megal_MegalEntity : params50
+megal_MegalRelationshipType "1..1" -- "1..1" megal_QueryStatement : predicate59
+megal_QueryStatement "0..9999" --* "1..1" megal_Selection : query54
+megal_QueryParam "0..1" -- "1..1" megal_QueryReference : ref67
+megal_MegalEntity "1..1" -- "1..1" megal_MegalRelationship : right21
+megal_MegalEntityType "1..1" -- "1..1" megal_MegalRelationshipType : right37
+megal_MegalEntity "0..9999" -- "1..1" megal_MegalRelationshipType : rightParams43
+megal_MegalEntity "0..1" -- "1..1" megal_MegalLink : second14
+megal_MegalEntity "1..1" -- "1..1" megal_MegalPair : second29
+megal_QueryEntry "0..9999" --* "1..1" megal_Selection : select52
+megal_MegalAnnotation "1..1" *-- "0..1" megal_Selection : selection0
+megal_MegalEntity "1..1" -- "1..1" megal_MegalPair : set24
+megal_QueryEntry "1..1" --* "1..1" megal_QueryStatement : subject56
+megal_MegalEntityType "1..1" -- "0..1" megal_MegalEntityType : supertype33
+megal_MegalRelationship "1..1" -- "1..1" megal_MegalRelationshipType : type17
+megal_MegalEntity "1..1" -- "1..1" megal_MegalEntityType : type46
+megal_MegalEntityType "0..1" -- "1..1" megal_QueryParam : type65
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+class Aran_man {
+  + Aran_manID : int
+  + Cena : str
+  + DatumDolaska : str
+  + DatumPolaska : str
+  + KorisnikID : int
+  + KupacID : int
+  + PutovID : int
+  + SlobMesto : bool
+}
+class Korisnik_IS {
+  + ImeKorisnika : str
+  + KorisnikID : int
+  + Password : str
+  + PrezimeKorisnika : str
+  + UserName : str
+}
+class Kupac {
+  + Adresa : str
+  + Grad : str
+  + ImeKup : str
+  + JMBG : str
+  + KupacID : int
+  + Mobilni : int
+  + OsigID : int
+  + PrezimeKup : str
+  + eMail : str
+}
+class Osiguranje {
+  + KucaOsiguranje : str
+  + OsigID : int
+  + PaketPokri_a : str
+}
+class Putovanje {
+  + Dr_ava : str
+  + Grad : str
+  + PutovID : int
+}
+class Sme_taj {
+  + CenaSmestaja : str
+  + DuzinaBoravka : int
+  + ImeSme_taja : str
+  + LokacijaSme_taja : str
+  + PutovID : int
+  + Sme_tajID : int
+  + UslugaSme_taja : str
+}
+Putovanje "1..1" -- "0..9999" Sme_taj : Destinacija_Hotel
+Kupac "0..9999" -- "0..1" Osiguranje : Osiguranje_Putnik
+Aran_man "0..9999" -- "1..1" Kupac : Putnik_Rezervisanje
+Aran_man "0..9999" -- "1..1" Putovanje : Rezervisanje_Destinacija
+Aran_man "0..9999" -- "1..1" Korisnik_IS : Rezervisanje_Korisnik_IS
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+class Identifiable {
+}
+class Section {
+}
+class TitledElement {
+}
+class docbook_Article {
+}
+class docbook_Book {
+}
+class docbook_DocBook {
+}
+abstract class docbook_Identifiable {
+  + id : str
+}
+class docbook_Para {
+  + content : str
+}
+class docbook_Sect1 {
+}
+class docbook_Sect2 {
+}
+abstract class docbook_Section {
+}
+abstract class docbook_TitledElement {
+  + title : str
+}
+Identifiable <|-- docbook_Book
+Identifiable <|-- docbook_DocBook
+Identifiable <|-- docbook_Para
+Identifiable <|-- docbook_TitledElement
+Section <|-- docbook_Sect1
+Section <|-- docbook_Sect2
+TitledElement <|-- docbook_Article
+TitledElement <|-- docbook_Section
+docbook_Article "1..9999" --* "1..1" docbook_Book : articles1
+docbook_Book "1..9999" --* "1..1" docbook_DocBook : books0
+docbook_Para "1..9999" --* "1..1" docbook_Section : paras5
+docbook_Article "1..1" *-- "1..9999" docbook_Sect1 : sections_13
+docbook_Sect1 "1..1" *-- "1..9999" docbook_Sect2 : sections_26
+@enduml

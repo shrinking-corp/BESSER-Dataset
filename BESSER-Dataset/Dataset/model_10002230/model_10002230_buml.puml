@@ -1,0 +1,59 @@
+@startuml
+class Client {
+  + adresse : str
+  + codePostal : str
+  + contact : str
+  + nom : str
+  + tel : str
+  + ville : str
+}
+class Convention {
+  + id_convention : int
+  + numero : str
+}
+class DevisEntete {
+  + id_session : int
+  + numero : str
+}
+class Facture {
+  + id_devis : int
+  + numero : str
+  + paye : bool
+}
+class Formateur {
+  + Nom : str
+  + Prenom : str
+}
+class Formation {
+  + cout_unitaire : int
+  + libelle : str
+  + objectif : str
+}
+class Participant {
+  + date_naissance : str
+  + id_session : int
+  + nom : str
+  + prenom : str
+}
+class Prestation {
+  + date_debut : str
+  + date_fin : str
+  + duree : str
+  + horaires : str
+  + id_client : int
+  + id_formateur : int
+  + id_formation : int
+  + id_type : int
+  + lieu : bool
+  + nb_stagiaires : int
+}
+class Type {
+  + type : str
+}
+Client "0..1" -- "0..1" Prestation : Client_Session
+DevisEntete "0..1" -- "0..1" Prestation : DevisEntete_Session
+Formateur "0..1" -- "0..1" Prestation : Formateurs_Sessions
+Formation "0..1" -- "0..1" Prestation : Formation_Session
+Participant "1..1" -- "0..9999" Prestation : Sessions_Participants
+Prestation "0..1" -- "0..1" Type : Type_Prestation
+@enduml

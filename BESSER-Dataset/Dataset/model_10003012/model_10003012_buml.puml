@@ -1,0 +1,43 @@
+@startuml
+class Account {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class Carro_de_Compras {
+  + Cantidad : int
+  + IdCarro : int
+  + Precio : int
+  + Producto : str
+}
+class Cliente {
+  + Contacto : int
+  + Direcci_n : str
+  + Nombre : str
+  + email : str
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : str
+  + total : float
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Product {
+  + description : str
+  + id : int
+  + name : str
+}
+Account "1..1" -- "0..9999" Order : Account_Order
+Account "1..1" -- "0..9999" Payment : Account_Payment
+Account "1..1" -- "1..1" Carro_de_Compras : Account_ShoppingCart
+Order "1..1" -- "0..1" Payment : Payment_Order
+Carro_de_Compras "0..1" -- "1..1" Cliente : WebUser_ShoppingCart
+@enduml

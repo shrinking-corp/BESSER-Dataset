@@ -1,0 +1,26 @@
+@startuml
+class Courses_Answer {
+  + id : int
+  + pass_ : bool
+  + text : str
+}
+class Courses_Assignment {
+  + description : str
+  + mandatory : bool
+  + name : str
+}
+class Courses_Course {
+  + credit : float
+  + id : str
+  + name : str
+}
+class Courses_Person {
+  + id : int
+  + name : str
+  + role : str
+}
+Courses_Answer "0..9999" --* "1..1" Courses_Assignment : answer5
+Courses_Answer "0..9999" -- "1..1" Courses_Person : assignmentDelivery3
+Courses_Assignment "0..9999" --* "1..1" Courses_Course : assignments1
+Courses_Course "1..1" *-- "0..9999" Courses_Person : members0
+@enduml

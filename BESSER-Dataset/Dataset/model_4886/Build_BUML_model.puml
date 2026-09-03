@@ -1,0 +1,472 @@
+@startuml
+class AdviceGroup {
+}
+class BuildUnitCommand {
+}
+enum ConflictResolution {
+  fail
+  keep
+  replace
+  update
+}
+class ContextNodeSelector {
+}
+enum Disposition {
+  desired
+  rejected
+  required
+  unbiassed
+  undesired
+}
+class EFSResolver {
+}
+enum FilterAdviceOperation {
+  AND
+  OR
+  REPLACE
+}
+class FilterGroup {
+}
+class IActionResult {
+}
+class IAdvise {
+}
+class IBuildPart {
+}
+class ICapability {
+}
+class IClosure {
+}
+class IClosurePart {
+}
+class IExpr {
+}
+class IExtension {
+}
+class IFilter {
+}
+class IFunction {
+}
+class IGenericUnit {
+}
+class IHumanSelectable {
+}
+class IMaterializer {
+}
+class IMetaDataTranslator {
+}
+class IMetaDataTranslatorFactory {
+}
+class IPrerequisites {
+}
+class IRequirement {
+}
+class IResolution {
+}
+class IResolver {
+}
+class IUnitRequest {
+}
+class ImportOptions {
+}
+class Match {
+}
+class MaterializerExtension {
+}
+class MetaDataTranslatorFactoryExtension {
+}
+class PropertyScope {
+}
+class ResolutionOptions {
+}
+class ResolverExtension {
+}
+class ResolverGroup {
+}
+class SinglePropertyFilter {
+}
+enum SplitStyle {
+  groups
+  quoted
+  unquoted
+}
+class UpToDateExtension {
+}
+abstract class build_IActionPart {
+}
+abstract class build_IActionResult {
+}
+abstract class build_IArtifactsPart {
+}
+abstract class build_IBuildPart {
+  + name : str
+}
+abstract class build_IBuildUnit {
+  + circularityAllowed : bool
+  + filter : str
+  + instanceLocation : str
+}
+abstract class build_ICapability {
+  + name : str
+  + namespace : str
+  + version : str
+  + satisfies(build_required : str) : bool
+}
+abstract class build_IClosure {
+  + executeOnce : bool
+}
+abstract class build_IClosurePart {
+}
+abstract class build_IGenericUnit {
+}
+abstract class build_IPartGroup {
+}
+abstract class build_IPathGroup {
+  + basePath : str
+  + paths : str
+}
+abstract class build_IPrerequisites {
+  + alias : str
+  + rebasePath : str
+}
+abstract class build_IProducedPart {
+}
+abstract class build_IProvidedCapability {
+}
+abstract class build_IRequiredCapability {
+  + filter : str
+  + name : str
+  + namespace : str
+  + range : str
+}
+abstract class build_IRequirement {
+  + alias : str
+  + contributor : bool
+  + excludePattern : str
+  + filter : str
+  + includePattern : str
+  + memberName : str
+}
+abstract class build_IResultingParts {
+}
+abstract class build_IUpToDatePolicy {
+}
+class build_PartCapability {
+}
+class build_PartRequirement {
+}
+abstract class build_PropertyScope {
+  + unsetProperties : str
+}
+class build_Requirement {
+}
+class build_ResultingPathGroup {
+}
+class build_StringProperties {
+  + immutable : bool
+  + key : str
+  + value : str
+}
+class build_command_AdviceGroup {
+}
+class build_command_BooleanAdvice {
+  + value : bool
+}
+abstract class build_command_BuildUnitCommand {
+}
+abstract class build_command_ContextNodeSelector {
+}
+class build_command_FilterAdvice {
+  + filterOp : str
+}
+abstract class build_command_IAdvise {
+}
+abstract class build_command_IUnitRequest {
+  + name : str
+  + nameSpace : str
+  + range : str
+}
+class build_command_ImportCommand {
+}
+class build_command_InvokeCommand {
+  + action : str
+}
+class build_command_NewInstanceAdvice {
+  + clazz : str
+}
+class build_command_PropertyAdvice {
+}
+class build_command_StringAdvice {
+  + value : str
+}
+class build_command_UnsetAdvice {
+}
+class build_command_VersionAdvice {
+  + version : str
+}
+class build_command_VersionRangeAdvice {
+  + versionRange : str
+}
+abstract class build_context_IBuildContext {
+}
+abstract class build_context_IResolution {
+}
+abstract class build_context_ImportOptions {
+  + conflictResolution : str
+  + expand : bool
+  + location : str
+  + resourcePath : str
+  + suffix : str
+  + unpack : bool
+}
+abstract class build_context_ResolutionOptions {
+  + branchTagPath : str
+  + excludeParts : str
+  + filterGroups : bool
+  + includeParts : str
+  + mutable : str
+  + overlayPath : str
+  + prune : bool
+  + resolverFilter : str
+  + revision : str
+  + source : str
+  + timestamp : str
+}
+class build_filter_AndFilter {
+}
+class build_filter_FilterGroup {
+}
+abstract class build_filter_IFilter {
+  + match(build_matched : str, build_properties : str) : bool
+}
+class build_filter_OSGiBasedFilter {
+}
+class build_filter_OrFilter {
+}
+class build_filter_RegexpFilter {
+}
+class build_filter_SimplePatternFIlter {
+}
+class build_filter_SinglePropertyFilter {
+  + _property : str
+}
+class build_materializer_FileSystemMaterializer {
+}
+abstract class build_materializer_IMaterializer {
+}
+class build_materializer_P2Materializer {
+}
+class build_materializer_WorkspaceMaterializer {
+}
+class build_properties_Format {
+  + formatString : str
+}
+abstract class build_properties_IExpr {
+  + eval(build_scope : str) : str
+}
+abstract class build_properties_IFunction {
+}
+class build_properties_Literal {
+  + value : str
+}
+class build_properties_Match {
+  + pattern : str
+  + quotePattern : bool
+  + replacement : str
+}
+class build_properties_PropertyRef {
+}
+class build_properties_Split {
+  + limit : int
+  + pattern : str
+  + style : str
+}
+class build_properties_ToUpper {
+}
+class build_properties_replace {
+}
+class build_properties_toLower {
+}
+class build_resolver_BestChoice {
+}
+abstract class build_resolver_DefaultResolver {
+}
+class build_resolver_EFSResolver {
+}
+class build_resolver_FirstChoice {
+}
+abstract class build_resolver_IEFSBasedAccess {
+  + getFileStore() : str
+}
+abstract class build_resolver_ILocation {
+}
+abstract class build_resolver_IMetaDataTranslator {
+  + resolve(build_resolver : str) : str
+}
+abstract class build_resolver_IMetaDataTranslatorFactory {
+  + getTranslator(build_nameSpace : str, build_resolver : str) : str
+}
+abstract class build_resolver_IResolutionContext {
+}
+abstract class build_resolver_IResolver {
+  + failOnError : bool
+  + filter : str
+  + resolve(build_IResolutionContext : str) : str
+}
+abstract class build_resolver_IResourceMap {
+  + lookup(build_request : str) : str
+}
+class build_resolver_P2Resolver {
+  + resolve(build_IResolutionContext : str) : str
+}
+abstract class build_resolver_ResolverGroup {
+}
+class build_resolver_WorspaceResolver {
+}
+class build_runtime_BuildRuntime {
+}
+abstract class build_runtime_IExtension {
+}
+abstract class build_runtime_IHumanSelectable {
+  + label : str
+  + typeName : str
+}
+class build_runtime_MaterializerExtension {
+}
+class build_runtime_MetaDataTranslatorFactoryExtension {
+}
+class build_runtime_ResolverExtension {
+}
+class build_runtime_UpToDateExtension {
+}
+class command_build_PropertyScope {
+}
+class context_build_IBuildUnit {
+}
+class context_build_ICapability {
+}
+class context_build_IRequiredCapability {
+}
+class resolver_DefaultResolver {
+}
+class resolver_IEFSBasedAccess {
+}
+class runtime_build_IUpToDatePolicy {
+}
+AdviceGroup <|-- build_command_NewInstanceAdvice
+BuildUnitCommand <|-- build_command_ImportCommand
+BuildUnitCommand <|-- build_command_InvokeCommand
+EFSResolver <|-- build_resolver_WorspaceResolver
+FilterGroup <|-- build_filter_AndFilter
+FilterGroup <|-- build_filter_OrFilter
+IActionResult <|-- build_IResultingParts
+IActionResult <|-- build_ResultingPathGroup
+IAdvise <|-- build_command_BooleanAdvice
+IAdvise <|-- build_command_FilterAdvice
+IAdvise <|-- build_command_PropertyAdvice
+IAdvise <|-- build_command_StringAdvice
+IAdvise <|-- build_command_UnsetAdvice
+IAdvise <|-- build_command_VersionAdvice
+IAdvise <|-- build_command_VersionRangeAdvice
+IBuildPart <|-- build_IArtifactsPart
+IBuildPart <|-- build_IClosurePart
+IBuildPart <|-- build_IPrerequisites
+ICapability <|-- build_IBuildUnit
+ICapability <|-- build_PartCapability
+IClosure <|-- build_IClosurePart
+IClosurePart <|-- build_IActionPart
+IClosurePart <|-- build_IPartGroup
+IClosurePart <|-- build_IProducedPart
+IExpr <|-- build_properties_IFunction
+IExpr <|-- build_properties_Literal
+IExtension <|-- build_runtime_IHumanSelectable
+IExtension <|-- build_runtime_MetaDataTranslatorFactoryExtension
+IFilter <|-- build_filter_FilterGroup
+IFilter <|-- build_filter_OSGiBasedFilter
+IFilter <|-- build_filter_SinglePropertyFilter
+IFunction <|-- build_properties_Format
+IFunction <|-- build_properties_PropertyRef
+IFunction <|-- build_properties_Split
+IFunction <|-- build_properties_ToUpper
+IFunction <|-- build_properties_replace
+IFunction <|-- build_properties_toLower
+IGenericUnit <|-- build_IBuildUnit
+IHumanSelectable <|-- build_runtime_MaterializerExtension
+IHumanSelectable <|-- build_runtime_ResolverExtension
+IHumanSelectable <|-- build_runtime_UpToDateExtension
+IMaterializer <|-- build_materializer_FileSystemMaterializer
+IMaterializer <|-- build_materializer_P2Materializer
+IMaterializer <|-- build_materializer_WorkspaceMaterializer
+IPrerequisites <|-- build_IClosure
+IRequirement <|-- build_PartRequirement
+IRequirement <|-- build_Requirement
+IResolver <|-- build_resolver_DefaultResolver
+IResolver <|-- build_resolver_P2Resolver
+IResolver <|-- build_resolver_ResolverGroup
+PropertyScope <|-- build_IBuildUnit
+PropertyScope <|-- build_IClosure
+ResolverGroup <|-- build_resolver_BestChoice
+ResolverGroup <|-- build_resolver_FirstChoice
+SinglePropertyFilter <|-- build_filter_RegexpFilter
+SinglePropertyFilter <|-- build_filter_SimplePatternFIlter
+resolver_DefaultResolver <|-- build_resolver_EFSResolver
+resolver_IEFSBasedAccess <|-- build_resolver_EFSResolver
+IFilter "0..1" -- "1..1" build_command_FilterAdvice : add92
+IAdvise "0..9999" --* "1..1" build_IClosure : advice20
+IAdvise "0..9999" --* "1..1" build_context_IBuildContext : advice43
+IAdvise "0..9999" --* "1..1" build_command_BuildUnitCommand : advice85
+IAdvise "0..9999" --* "1..1" build_command_AdviceGroup : advice95
+build_IBuildUnit "1..1" *-- "0..9999" build_IRequiredCapability : allRequiredCapabilities5
+build_IBuildPart "1..1" -- "1..1" build_PartCapability : buildPart33
+build_IBuildPart "1..1" -- "0..1" build_IBuildUnit : buildUnit16
+IFilter "0..9999" --* "1..1" build_filter_FilterGroup : filters97
+build_runtime_UpToDateExtension "1..1" -- "1..1" runtime_build_IUpToDatePolicy : instance64
+IMaterializer "1..1" -- "1..1" build_runtime_MaterializerExtension : instance65
+IMetaDataTranslatorFactory "0..1" -- "1..1" build_runtime_MetaDataTranslatorFactoryExtension : instance67
+IResolver "1..1" -- "1..1" build_runtime_ResolverExtension : instance68
+IExpr "0..1" --* "1..1" build_resolver_IResolver : location70
+Match "0..9999" --* "1..1" build_properties_replace : matchers76
+IMaterializer "0..1" -- "1..1" build_context_ImportOptions : materializer56
+MaterializerExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : materializers58
+build_IBuildUnit "1..1" *-- "0..9999" build_IRequiredCapability : metaRequiredCapabilities2
+IExpr "0..9999" --* "1..1" build_properties_IFunction : operands74
+ImportOptions "0..1" -- "1..1" build_context_IResolution : options54
+ResolutionOptions "0..1" -- "1..1" build_command_IUnitRequest : options77
+build_IBuildUnit "1..1" *-- "0..9999" build_PartCapability : partCapabilities13
+build_IBuildPart "0..9999" --* "1..1" build_IBuildUnit : parts0
+build_IArtifactsPart "1..1" *-- "0..9999" build_IPathGroup : paths17
+build_IPathGroup "0..1" --* "1..1" build_IProducedPart : paths24
+build_IPathGroup "0..1" --* "1..1" build_ResultingPathGroup : paths31
+build_IActionPart "1..1" -- "1..1" build_IActionResult : producedBy23
+build_IProducedPart "1..1" -- "1..1" build_IResultingParts : producedBy26
+build_IProducedPart "0..9999" -- "1..1" build_IResultingParts : producedParts27
+build_IActionPart "1..1" *-- "0..1" build_IActionResult : produces18
+build_PropertyScope "1..1" *-- "0..1" build_StringProperties : properties35
+build_command_BuildUnitCommand "1..1" *-- "0..1" command_build_PropertyScope : properties80
+build_command_PropertyAdvice "1..1" *-- "0..1" command_build_PropertyScope : properties89
+build_IBuildUnit "1..1" *-- "0..9999" build_ICapability : providedCapabilities8
+build_IBuildPart "1..1" -- "0..9999" build_PartCapability : publishedCapabilities15
+IFilter "0..1" -- "1..1" build_command_FilterAdvice : remove91
+IUnitRequest "0..9999" --* "1..1" build_context_IBuildContext : requests38
+IUnitRequest "1..9999" --* "1..1" build_command_BuildUnitCommand : requests78
+build_IBuildUnit "1..1" *-- "0..9999" build_IRequiredCapability : requiredCapabilities1
+build_IRequiredCapability "1..1" -- "1..1" build_Requirement : requiredCapability29
+build_IBuildPart "1..1" -- "1..1" build_PartRequirement : requiredPart22
+build_IPrerequisites "1..1" *-- "0..9999" build_IRequirement : requiredParts21
+build_context_IResolution "1..1" -- "0..1" context_build_ICapability : resolution49
+IResolution "0..9999" --* "1..1" build_context_IBuildContext : resolutions39
+IResolver "0..1" --* "1..1" build_context_IBuildContext : resolver46
+IResolver "0..1" -- "1..1" build_command_BuildUnitCommand : resolver82
+ResolverExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : resolvers62
+IResolver "0..9999" --* "1..1" build_resolver_ResolverGroup : resolvers71
+build_context_IResolution "1..1" -- "1..1" context_build_IRequiredCapability : resolves48
+ContextNodeSelector "0..1" -- "1..1" build_command_IAdvise : selector88
+build_IGenericUnit "1..1" -- "1..1" build_IPathGroup : self36
+build_IBuildUnit "0..1" --* "1..1" build_IBuildUnit : selfCapability11
+IResolution "0..9999" --* "1..1" build_context_IResolution : subResolutions51
+IMetaDataTranslator "0..1" --* "1..1" build_resolver_DefaultResolver : translator73
+MetaDataTranslatorFactoryExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : unitTypes60
+build_context_IBuildContext "1..1" *-- "0..9999" context_build_IBuildUnit : units41
+UpToDateExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : upToDatePolicies57
+build_IActionPart "1..1" -- "0..1" build_IUpToDatePolicy : upToDatePolicy19
+@enduml

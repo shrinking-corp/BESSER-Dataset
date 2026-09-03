@@ -1,0 +1,87 @@
+@startuml
+enum Axis {
+  ancestor
+  ancestororself
+  attribute
+  binding
+  child
+  component
+  descendant
+  descendantorself
+  interface
+  internalinterface
+  parent
+  sibling
+  siblingorself
+}
+class Expression {
+}
+class FPath_BinaryOperatorExp {
+}
+class FPath_ContextExp {
+}
+abstract class FPath_Expression {
+}
+class FPath_FunctionCallExp {
+  + name : str
+}
+abstract class FPath_LocatedElement {
+  + commentsAfter : str
+  + commentsBefore : str
+  + location : str
+}
+class FPath_NameTest {
+  + name : str
+}
+class FPath_NumberExp {
+  + value : str
+}
+abstract class FPath_OperatorExp {
+  + operator : str
+}
+class FPath_PathExp {
+}
+class FPath_Step {
+  + axis : str
+}
+class FPath_StringExp {
+  + value : str
+}
+abstract class FPath_Test {
+}
+class FPath_UnaryOperatorExp {
+}
+class FPath_VariableExp {
+  + name : str
+}
+class FPath_WildcardTest {
+}
+class LocatedElement {
+}
+class OperatorExp {
+}
+class Test {
+}
+Expression <|-- FPath_ContextExp
+Expression <|-- FPath_FunctionCallExp
+Expression <|-- FPath_NumberExp
+Expression <|-- FPath_OperatorExp
+Expression <|-- FPath_PathExp
+Expression <|-- FPath_StringExp
+Expression <|-- FPath_VariableExp
+LocatedElement <|-- FPath_Expression
+LocatedElement <|-- FPath_Step
+LocatedElement <|-- FPath_Test
+OperatorExp <|-- FPath_BinaryOperatorExp
+OperatorExp <|-- FPath_UnaryOperatorExp
+Test <|-- FPath_NameTest
+Test <|-- FPath_WildcardTest
+FPath_Expression "0..9999" --* "1..1" FPath_FunctionCallExp : arguments0
+FPath_Expression "1..1" --* "1..1" FPath_PathExp : initialNodeSet1
+FPath_BinaryOperatorExp "1..1" *-- "1..1" FPath_Expression : left5
+FPath_Expression "1..1" --* "1..1" FPath_UnaryOperatorExp : operand10
+FPath_Expression "0..9999" --* "1..1" FPath_Step : predicates14
+FPath_BinaryOperatorExp "1..1" *-- "1..1" FPath_Expression : right7
+FPath_PathExp "1..1" *-- "1..9999" FPath_Step : steps3
+FPath_Step "1..1" *-- "1..1" FPath_Test : test12
+@enduml

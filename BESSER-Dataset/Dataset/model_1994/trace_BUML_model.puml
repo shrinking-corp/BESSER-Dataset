@@ -1,0 +1,69 @@
+@startuml
+enum EDirectionKind {
+  IN
+  INOUT
+  OUT
+}
+class EValue {
+}
+class MappingOperation {
+}
+class trace_EMappingContext {
+}
+class trace_EMappingOperation {
+  + module : str
+  + name : str
+  + package : str
+}
+class trace_EMappingParameters {
+}
+class trace_EMappingResults {
+}
+class trace_EObject {
+}
+class trace_ETuplePartValue {
+  + name : str
+}
+class trace_EValue {
+  + collectionType : str
+  + oclObject : str
+  + primitiveValue : str
+}
+class trace_MappingOperationToTraceRecordMapEntry {
+}
+class trace_ObjectToTraceRecordMapEntry {
+  + key : str
+}
+class trace_Trace {
+  + addRecordBySource(trace_mapping : str, trace_sourceObject : str, trace_trace : str) : void
+  + getRecordBySource(trace_mapping : str, trace_sourceObject : str) : str
+}
+class trace_TraceRecord {
+}
+class trace_VarParameterValue {
+  + kind : str
+  + name : str
+  + type : str
+}
+EValue <|-- trace_ETuplePartValue
+trace_EValue "0..9999" --* "1..1" trace_EValue : collection31
+trace_EMappingContext "1..1" --* "1..1" trace_TraceRecord : context10
+trace_EMappingContext "1..1" *-- "0..1" trace_VarParameterValue : context35
+trace_EObject "0..1" --* "1..1" trace_EValue : intermediateElement27
+MappingOperation "1..1" -- "1..1" trace_MappingOperationToTraceRecordMapEntry : key20
+trace_EMappingOperation "1..1" --* "1..1" trace_TraceRecord : mappingOperation8
+trace_EObject "0..1" -- "1..1" trace_EValue : modelElement25
+trace_EMappingParameters "1..1" --* "1..1" trace_TraceRecord : parameters12
+trace_EMappingParameters "1..1" *-- "0..9999" trace_VarParameterValue : parameters38
+trace_EMappingResults "1..1" --* "1..1" trace_TraceRecord : result14
+trace_EMappingResults "1..1" *-- "0..9999" trace_VarParameterValue : result41
+MappingOperation "1..1" -- "1..1" trace_EMappingOperation : runtimeMappingOperation22
+trace_ObjectToTraceRecordMapEntry "0..9999" --* "1..1" trace_Trace : sourceToTraceRecordMap3
+trace_ObjectToTraceRecordMapEntry "0..9999" --* "1..1" trace_Trace : targetToTraceRecordMap5
+trace_MappingOperationToTraceRecordMapEntry "0..9999" --* "1..1" trace_Trace : traceRecordMap1
+trace_Trace "1..1" *-- "0..9999" trace_TraceRecord : traceRecords0
+trace_EValue "1..1" --* "1..1" trace_VarParameterValue : value16
+trace_MappingOperationToTraceRecordMapEntry "1..1" -- "0..9999" trace_TraceRecord : value17
+trace_ETuplePartValue "1..1" *-- "0..1" trace_EValue : value33
+trace_ObjectToTraceRecordMapEntry "1..1" -- "0..9999" trace_TraceRecord : value44
+@enduml

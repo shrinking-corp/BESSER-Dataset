@@ -1,0 +1,33 @@
+@startuml
+class RDBMS_Column {
+  + name : str
+  + setName(RDBMS_n : str) : void
+  + setTable(RDBMS_n : str) : void
+}
+class RDBMS_FKey {
+}
+class RDBMS_PKey {
+}
+class RDBMS_Scheme {
+  + name : str
+  + addTable(RDBMS_n : str) : void
+  + remTable(RDBMS_n : str) : void
+  + setName(RDBMS_n : str) : void
+}
+class RDBMS_Table {
+  + name : str
+  + addColumn(RDBMS_n : str) : void
+  + remColumn(RDBMS_n : str) : void
+  + setName(RDBMS_n : str) : void
+}
+RDBMS_Column "1..1" -- "1..1" RDBMS_FKey : column10
+RDBMS_Column "0..1" -- "1..1" RDBMS_PKey : column14
+RDBMS_Column "1..9999" --* "1..1" RDBMS_Table : columns3
+RDBMS_PKey "0..1" --* "1..1" RDBMS_Table : key5
+RDBMS_FKey "0..9999" --* "1..1" RDBMS_Scheme : keys1
+RDBMS_FKey "1..1" -- "1..1" RDBMS_PKey : refersTo8
+RDBMS_FKey "1..1" -- "1..1" RDBMS_Scheme : scheme12
+RDBMS_Scheme "1..1" -- "1..1" RDBMS_Table : scheme4
+RDBMS_Column "1..1" -- "1..1" RDBMS_Table : table6
+RDBMS_Scheme "1..1" *-- "0..9999" RDBMS_Table : tables0
+@enduml

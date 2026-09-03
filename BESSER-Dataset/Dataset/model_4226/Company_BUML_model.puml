@@ -1,0 +1,25 @@
+@startuml
+class Visitable {
+}
+class company_Company {
+  + name : str
+}
+class company_Department {
+  + name : str
+}
+class company_Employee {
+  + address : str
+  + name : str
+  + salary : float
+}
+abstract class company_Visitable {
+}
+Visitable <|-- company_Company
+Visitable <|-- company_Department
+Visitable <|-- company_Employee
+company_Company "1..1" *-- "0..9999" company_Department : depts0
+company_Department "1..1" *-- "0..9999" company_Employee : employees6
+company_Department "1..1" *-- "1..1" company_Employee : manager1
+company_Employee "1..1" -- "0..1" company_Employee : mentor10
+company_Department "0..9999" --* "1..1" company_Department : subdepts4
+@enduml

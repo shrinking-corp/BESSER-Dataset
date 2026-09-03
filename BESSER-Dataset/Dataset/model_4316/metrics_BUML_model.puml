@@ -1,0 +1,52 @@
+@startuml
+class Base {
+}
+enum FixedMetricRetentionPeriod {
+  Always
+  OneMonth
+  OneWeek
+  OneYear
+}
+class Rule {
+}
+class metrics_Addon {
+}
+class metrics_EObject {
+}
+class metrics_Metric {
+  + name : str
+}
+class metrics_MetricAggregationRule {
+  + intervalHint : str
+  + period : str
+}
+class metrics_MetricAggregationRules {
+}
+class metrics_MetricRetentionPeriods {
+  + metricRetentionPeriods : str
+}
+class metrics_MetricRetentionRule {
+  + intervalHint : str
+  + period : str
+}
+class metrics_MetricRetentionRules {
+}
+class metrics_MetricSource {
+  + name : str
+}
+Base <|-- metrics_Metric
+Base <|-- metrics_MetricSource
+Rule <|-- metrics_MetricAggregationRule
+Rule <|-- metrics_MetricRetentionRule
+metrics_EObject "0..1" -- "1..1" metrics_MetricAggregationRule : aggregationExpression13
+metrics_MetricAggregationRules "0..1" -- "1..1" metrics_MetricSource : metricAggregationRuleSet19
+metrics_Metric "1..1" -- "0..1" metrics_MetricAggregationRules : metricAggregationRuleSet7
+metrics_Addon "1..1" *-- "0..9999" metrics_MetricAggregationRules : metricAggregationRuleSets5
+metrics_MetricAggregationRule "0..9999" --* "1..1" metrics_MetricAggregationRules : metricAggregationRules14
+metrics_Metric "1..1" -- "0..1" metrics_MetricRetentionRules : metricRetentionRuleSet10
+metrics_MetricRetentionRules "0..1" -- "1..1" metrics_MetricSource : metricRetentionRuleSet22
+metrics_Addon "1..1" *-- "0..9999" metrics_MetricRetentionRules : metricRetentionRuleSets3
+metrics_MetricRetentionRule "0..9999" --* "1..1" metrics_MetricRetentionRules : metricRetentionRules17
+metrics_Addon "1..1" *-- "0..9999" metrics_MetricSource : metricSources1
+metrics_Addon "1..1" *-- "0..9999" metrics_Metric : metrics0
+@enduml

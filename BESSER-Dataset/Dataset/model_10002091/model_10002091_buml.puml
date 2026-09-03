@@ -1,0 +1,33 @@
+@startuml
+class Class1 {
+}
+class Hospital {
+  + name : str
+  + totalwards : int
+}
+class consultant_doctor {
+}
+class doctor {
+  + address : str
+  + grade : str
+  + name : str
+}
+class junior_doctor {
+}
+class patient {
+}
+class team {
+}
+class ward {
+  + no_of_patients : str
+  + ward_id : int
+}
+Hospital "1..1" -- "1..9999" ward : Hospital_ward
+consultant_doctor "1..1" -- "1..1" patient : consultant_doctor_patient
+consultant_doctor "0..1" -- "0..1" doctor : doctor_consultant_doctor
+doctor "0..1" -- "0..1" junior_doctor : doctor_junior_doctor
+doctor "0..1" -- "0..1" team : doctor_team
+junior_doctor "1..9999" -- "1..1" patient : patient_junior_doctor
+patient "1..1" -- "1..1" team : patient_team
+consultant_doctor "0..1" -- "0..1" team : team_consultant_doctor
+@enduml

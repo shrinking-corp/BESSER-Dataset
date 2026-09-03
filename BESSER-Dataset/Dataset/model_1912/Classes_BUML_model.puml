@@ -1,0 +1,702 @@
+@startuml
+class Account {
+}
+enum AccountType {
+  CustomerService
+  Guest
+  Manager
+  Staff
+}
+class Accounts_IAccountsAccess {
+}
+class Accounts_IManageAccounts {
+}
+class Bill {
+}
+class Bookable {
+}
+class Booking {
+}
+class Classes_Accounts_Account {
+  + accountType : str
+  + password : str
+  + username : str
+}
+class Classes_Accounts_AccountsManager {
+}
+abstract class Classes_Accounts_IAccountsAccess {
+  + login(Classes_password : str, Classes_username : str) : str
+  + validateAccount(Classes_password : str, Classes_username : str) : str
+}
+abstract class Classes_Accounts_IManageAccounts {
+  + addAccount(Classes_password : str, Classes_type : str, Classes_username : str) : void
+  + changePassword(Classes_newPassword : str, Classes_username : str) : void
+  + deleteAccount(Classes_username : str) : void
+  + getAccountName(Classes_username : str) : str
+  + getAccountPassword(Classes_username : str) : str
+  + renameAccount(Classes_newUsername : str, Classes_oldUsername : str) : void
+  + searchAccounts(Classes_keyword : str) : str
+}
+abstract class Classes_Banking_AdministratorProvides {
+  + addCreditCard(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : bool
+  + getBalance(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : float
+  + makeDeposit(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str, Classes_sum : str) : float
+  + removeCreditCard(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : bool
+}
+abstract class Classes_Banking_CustomerProvides {
+  + isCreditCardValid(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : bool
+  + makePayment(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str, Classes_sum : str) : bool
+}
+class Classes_Bills_Bill {
+  + bookable : str
+  + id : str
+  + isPaid : str
+  + issueDate : date
+  + items : str
+  + paymentDate : date
+  + paymentType : str
+  + services : str
+  + totalAmount : float
+  + addItem(Classes_itemID : str) : void
+  + addService(Classes_serviceID : str) : void
+}
+class Classes_Bills_BillsManager {
+}
+abstract class Classes_Bills_IBills {
+  + addBill(Classes_bookable : str, Classes_items : str, Classes_services : str) : void
+  + getAllBillIDs() : str
+  + getAllBillsNotPaid() : str
+  + getAllPayedBills() : str
+  + getBillBookable(Classes_billID : str) : str
+  + getBillIssueDate(Classes_billID : str) : date
+  + getBillItems(Classes_billID : str) : str
+  + getBillPaymentDate(Classes_billID : str) : date
+  + getBillPaymentType(Classes_billID : str) : str
+  + getBillServices(Classes_billID : str) : str
+  + getBillTotalAmount(Classes_billID : str) : float
+  + getIsBillPaid(Classes_billID : str) : str
+  + payBillsWithCash(Classes_bills : str) : void
+  + payBillsWithCreditCard(Classes_bills : str, Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : void
+  + removeBill(Classes_billID : str) : void
+  + searchBills(Classes_keyword : str) : str
+  + sendInvoice(Classes_billID : str, Classes_email : str) : void
+}
+abstract class Classes_Bookables_Bookable {
+  + baseprice : float
+  + description : str
+  + id : str
+}
+class Classes_Bookables_BookablesManager {
+}
+class Classes_Bookables_ConferenceRoom {
+  + capacity : str
+  + category : str
+}
+class Classes_Bookables_HostelBed {
+}
+class Classes_Bookables_HotelRoom {
+  + category : str
+  + nbrBeds : str
+}
+abstract class Classes_Bookables_IBookablesAccess {
+  + getAllBookableIDs() : str
+  + getAllConferenceRoomIDs() : str
+  + getAllHostelBedIDs() : str
+  + getAllHotelRoomIDs() : str
+  + getBookableBasePrice(Classes_bookableID : str) : float
+  + getBookableDescription(Classes_bookableID : str) : str
+  + getConferenceRoomCapacity(Classes_roomID : str) : str
+  + getConferenceRoomCategory(Classes_roomID : str) : str
+  + getHotelRoomCategory(Classes_roomID : str) : str
+  + getHotelRoomNbrBeds(Classes_ID : str) : str
+  + getRoomLocationFloor(Classes_roomID : str) : str
+  + getRoomLocationInfo(Classes_roomID : str) : str
+  + getRoomOfHostelBed(Classes_hostelBedID : str) : str
+  + searchConferenceRooms(Classes_category : str, Classes_keyword : str) : str
+  + searchForBookable(Classes_keyword : str) : str
+  + searchHostelBeds(Classes_keyword : str) : str
+  + searchHotelRooms(Classes_category : str, Classes_keyword : str) : str
+}
+abstract class Classes_Bookables_IBookablesManage {
+  + addConferenceRoom(Classes_basePrice : str, Classes_capacity : str, Classes_category : str, Classes_description : str, Classes_floor : str, Classes_locationInfo : str, Classes_roomNumber : str) : str
+  + addHostelBed(Classes_basePrice : str, Classes_bedNumber : str, Classes_description : str, Classes_roomID : str) : str
+  + addHotelRoom(Classes_basePrice : str, Classes_category : str, Classes_description : str, Classes_floor : str, Classes_locationInfo : str, Classes_nbrBeds : str, Classes_roomNumber : str) : str
+  + changeBookableBasePrice(Classes_basePrice : str, Classes_bookableID : str) : void
+  + changeBookableDescription(Classes_bookableID : str, Classes_description : str) : void
+  + changeConferenceRoomCapacity(Classes_capacity : str, Classes_roomID : str) : void
+  + changeConferenceRoomCategory(Classes_category : str, Classes_roomID : str) : void
+  + changeHostelBedRoom(Classes_hostelBedID : str, Classes_roomID : str) : void
+  + changeHotelRoomCategory(Classes_category : str, Classes_roomID : str) : void
+  + changeHotelRoomNumberBeds(Classes_nbrBeds : str, Classes_roomID : str) : void
+  + changeRoomLocation(Classes_additionalInfo : str, Classes_floor : str, Classes_roomID : str) : void
+  + deleteBookable(Classes_bookableID : str) : void
+}
+abstract class Classes_Bookables_Room {
+}
+class Classes_Bookables_RoomLocation {
+  + addtionalInfo : str
+  + floor : str
+}
+class Classes_Bookings_Booking {
+  + bookedStays : str
+  + bookingNbr : str
+  + customer : str
+  + issueDate : date
+  + nbrGuests : str
+  + requests : str
+  + addBookedStay(Classes_stayID : str) : void
+  + addRequest(Classes_requestID : str) : void
+  + cancelBookedStay(Classes_stayID : str) : void
+  + removeRequest(Classes_requestID : str) : void
+}
+class Classes_Bookings_BookingsManager {
+}
+abstract class Classes_Bookings_IBookings {
+  + addBookedStayToBooking(Classes_bookingID : str, Classes_stayID : str) : void
+  + addBookingRequest(Classes_bookingID : str, Classes_requestID : str) : void
+  + cancelBooking(Classes_bookingID : str) : void
+  + cancelStayOfBooking(Classes_bookingID : str, Classes_stayID : str) : void
+  + changeNbrGuestsOfBooking(Classes_bookingID : str, Classes_nbrGuests : str) : void
+  + getAllBookings() : str
+  + getAllBookingsWithStaysInPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getAllBookingsWithinPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getAvailableBookablesInPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getAvailableConferenceRoomsInPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getAvailableHostelBedsInPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getAvailableHotelRoomsInPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getBookedStaysOfBooking(Classes_bookingID : str) : str
+  + getBookingRequests(Classes_bookingID : str) : str
+  + getCustomerOfBooking(Classes_bookingID : str) : str
+  + getNbrGuestOfBooking(Classes_bookingID : str) : str
+  + makeBooking(Classes_bookables : str, Classes_ccNumber : str, Classes_ccv : str, Classes_customerID : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_guests : str, Classes_lastName : str, Classes_requests : str) : void
+  + payBookingBills(Classes_bookingID : str) : void
+  + payStayBills(Classes_bookingID : str, Classes_stayID : str) : void
+  + removeBookingRequest(Classes_bookingID : str, Classes_requestID : str) : void
+  + searchBookings(Classes_keyword : str) : str
+  + searchBookingsMadeInPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+  + searchBookingsWithStaysInPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+  + searchForAvailableBookablesInPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+  + searchForAvailableConferenceRoomsInPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+  + searchForAvailableHostelBedsInPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+  + searchForAvailableHotelRoomsInPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+}
+class Classes_Customers_Customer {
+  + bookings : str
+  + email : str
+  + firstname : str
+  + lastname : str
+  + phone : str
+  + requests : str
+  + ssid : str
+  + title : str
+  + addBooking() : void
+  + addRequest() : void
+  + removeBooking() : void
+  + removeRequest() : void
+}
+class Classes_Customers_CustomersManager {
+}
+abstract class Classes_Customers_ICustomers {
+  + addCustomer(Classes_SSID : str, Classes_email : str, Classes_firstname : str, Classes_lastname : str, Classes_phone : str, Classes_title : str) : void
+  + addCustomerBooking(Classes_SSID : str, Classes_bookingID : str) : void
+  + addCustomerRequest(Classes_SSID : str, Classes_description : str) : void
+  + changeCustomerEmail(Classes_SSID : str, Classes_eMail : str) : void
+  + changeCustomerFirstName(Classes_SSID : str, Classes_firstName : str) : void
+  + changeCustomerLastName(Classes_SSID : str, Classes_lastName : str) : void
+  + changeCustomerPhone(Classes_SSID : str, Classes_phoneNr : str) : void
+  + changeCustomerTitle(Classes_SSID : str, Classes_title : str) : void
+  + getAllCustomers() : str
+  + getCustomerBookings(Classes_SSID : str) : str
+  + getCustomerEmail(Classes_SSID : str) : str
+  + getCustomerFirstName(Classes_SSID : str) : str
+  + getCustomerLastName(Classes_SSID : str) : str
+  + getCustomerPhone(Classes_SSID : str) : str
+  + getCustomerRequests(Classes_SSID : str) : str
+  + getCustomerTitle(Classes_SSID : str) : str
+  + removeCustomerBooking(Classes_SSID : str, Classes_bookingID : str) : void
+  + removeCustomerRequest(Classes_SSID : str, Classes_requestID : str) : void
+  + searchCustomers(Classes_keyword : str) : str
+}
+class Classes_Feedback_Feedback {
+  + description : str
+  + id : str
+  + isNoted : str
+  + isResolved : str
+}
+class Classes_Feedback_FeedbackManager {
+}
+abstract class Classes_Feedback_IFeedback {
+  + addFeedback(Classes_desc : str) : void
+  + getAllFeedbackIDs() : str
+  + getFeedbackDescription(Classes_id : str) : str
+  + getFeedbackIsNoted(Classes_id : str) : str
+  + getFeedbackIsResolved(Classes_id : str) : str
+  + searchFeedback(Classes_keyword : str) : str
+  + setFeedbackDescription(Classes_desc : str, Classes_id : str) : void
+  + setFeedbackIsNoted(Classes_id : str, Classes_status : str) : void
+  + setFeedbackIsResolved(Classes_id : str, Classes_status : str) : void
+}
+class Classes_Guests_Guest {
+  + account : str
+  + email : str
+  + firstname : str
+  + lastname : str
+  + phone : str
+  + requests : str
+  + ssid : str
+  + stays : str
+  + title : str
+  + addRequest(Classes_description : str, Classes_requestID : str) : void
+  + addStay(Classes_bookableID : str, Classes_bookingID : str, Classes_fromDate : str, Classes_toDate : str) : void
+  + removeRequest(Classes_requestID : str) : void
+  + removeStay(Classes_stayID : str) : void
+}
+class Classes_Guests_GuestsManager {
+}
+abstract class Classes_Guests_IGuests {
+  + addGuest(Classes_SSID : str, Classes_email : str, Classes_firstname : str, Classes_lastname : str, Classes_phone : str, Classes_title : str) : void
+  + addGuestRequest(Classes_SSID : str, Classes_desctiption : str, Classes_requestID : str) : void
+  + changeGuestEmail(Classes_SSID : str, Classes_eMail : str) : void
+  + changeGuestFirstName(Classes_SSID : str, Classes_firstName : str) : void
+  + changeGuestLastName(Classes_SSID : str, Classes_lastName : str) : void
+  + changeGuestPhone(Classes_SSID : str, Classes_phoneNr : str) : void
+  + changeGuestTitle(Classes_SSID : str, Classes_title : str) : void
+  + generateGuestAccount(Classes_SSID : str) : void
+  + getAllGuestIDs() : str
+  + getGuestAccountPassword(Classes_SSID : str) : str
+  + getGuestAccountUsername(Classes_SSID : str) : str
+  + getGuestEmail(Classes_SSID : str) : str
+  + getGuestFirstName(Classes_SSID : str) : str
+  + getGuestLastName(Classes_SSID : str) : str
+  + getGuestPhone(Classes_SSID : str) : str
+  + getGuestRequests(Classes_SSID : str) : str
+  + getGuestStays(Classes_SSID : str) : str
+  + getGuestTitle(Classes_SSID : str) : str
+  + removeGuestAccount(Classes_SSID : str) : void
+  + removeGuestRequest(Classes_SSID : str, Classes_requestID : str) : void
+  + removeGuestStay(Classes_SSID : str, Classes_stayID : str) : void
+  + searchGuests(Classes_keyword : str) : str
+}
+abstract class Classes_Inventory_IInventoryAccess {
+  + changeItemStock(Classes_id : str, Classes_stock : str) : void
+  + getAllItemIDs() : str
+  + getItemExpense(Classes_id : str) : float
+  + getItemName(Classes_id : str) : str
+  + getItemPrice(Classes_id : str) : float
+  + getItemStock(Classes_id : str) : str
+  + searchItems(Classes_keyword : str) : str
+}
+abstract class Classes_Inventory_IManageInventory {
+  + addItem(Classes_expense : str, Classes_name : str, Classes_price : str, Classes_stock : str) : void
+  + changeItemExpense(Classes_expense : str, Classes_id : str) : void
+  + changeItemName(Classes_id : str, Classes_name : str) : void
+  + changeItemPrice(Classes_id : str, Classes_price : str) : void
+  + removeItem(Classes_id : str) : void
+}
+class Classes_Inventory_InventoryManager {
+}
+class Classes_Inventory_Item {
+  + expense : float
+  + id : str
+  + name : str
+  + price : float
+  + stock : str
+}
+abstract class Classes_Requests_IRequests {
+  + addRequest(Classes_description : str, Classes_specialRequestId : str) : void
+  + changeRequestDesc(Classes_description : str, Classes_specialRequestId : str) : void
+  + createRequest(Classes_description : str) : void
+  + deleteRequest(Classes_specialRequestId : str) : void
+  + getAllRequestIDs() : str
+  + getRequestDescription(Classes_specialRequestId : str) : str
+  + hasRequestBeenResolved(Classes_specialRequestId : str) : str
+  + searchRequests(Classes_keyword : str) : str
+  + setRequestDescription(Classes_description : str, Classes_specialRequestId : str) : void
+  + setRequestResolved(Classes_SpecialRequestId : str) : void
+}
+class Classes_Requests_Request {
+  + description : str
+  + id : str
+  + isResolved : str
+}
+class Classes_Requests_RequestsManager {
+}
+abstract class Classes_Restaurants_IRestaurantsAccess {
+  + cancelReservation(Classes_reservationID : str, Classes_restaurantID : str) : void
+  + changeReservedTables(Classes_reservationID : str, Classes_restaurantID : str, Classes_tables : str) : void
+  + getAllRestaurantNames() : str
+  + getAvailableTables(Classes_from_ : str, Classes_restaurantID : str, Classes_to : str) : str
+  + getAvailableTablesByNbrGuests(Classes_from_ : str, Classes_nbrGuests : str, Classes_restaurantID : str, Classes_to : str) : str
+  + getReservationFromTime(Classes_reservationID : str, Classes_restaurantID : str) : date
+  + getReservationGuest(Classes_reservationID : str, Classes_restaurantID : str) : str
+  + getReservationToTime(Classes_reservationID : str, Classes_restaurantID : str) : date
+  + getRestaurantMenuItems(Classes_restaurantID : str) : str
+  + getRestaurantMenuName(Classes_restaurantID : str) : str
+  + getRestaurantReservations(Classes_restaurantID : str) : str
+  + getRestaurantTableNumberOfSeats(Classes_restaurantID : str, Classes_tableNbr : str) : str
+  + getRestaurantTables(Classes_restaurantID : str) : str
+  + makeReservation(Classes_from_ : str, Classes_guestID : str, Classes_restaurantID : str, Classes_tables : str, Classes_to : str) : void
+  + searchRestaurantReservations(Classes_keyword : str, Classes_restaurantID : str) : str
+  + searchRestaurantReservationsWithTime(Classes_from_ : str, Classes_keyword : str, Classes_restaurantID : str, Classes_to : str) : str
+  + searchRestaurantTables(Classes_keyword : str, Classes_restaurantID : str) : str
+  + searchRestaurants(Classes_keyword : str) : str
+}
+abstract class Classes_Restaurants_IRestaurantsManage {
+  + addMenuItem(Classes_itemID : str, Classes_restaurantID : str) : void
+  + addRestaurant(Classes_name : str) : void
+  + addRestaurantTable(Classes_nbrSeats : str, Classes_restaurantID : str, Classes_tableNbr : str) : void
+  + changeMenuName(Classes_name : str, Classes_restaurantID : str) : void
+  + changeRestaurantName(Classes_name : str, Classes_restaurantID : str) : void
+  + changeTableNumber(Classes_newTableNbr : str, Classes_oldTableNbr : str, Classes_restaurantID : str) : void
+  + changeTableNumberOfSeats(Classes_nbrSeats : str, Classes_restaurantID : str, Classes_tableNbr : str) : void
+  + removeMenuItem(Classes_itemID : str, Classes_restaurantID : str) : void
+  + removeRestaurant(Classes_restaurantID : str) : void
+  + removeRestaurantTable(Classes_restaurantID : str, Classes_tableNbr : str) : void
+}
+class Classes_Restaurants_Reservation {
+  + from_ : date
+  + id : str
+  + reservedBy : str
+  + to : date
+}
+class Classes_Restaurants_Restaurant {
+  + name : str
+  + addReservation() : void
+  + getReservation(Classes_reservationID : str) : void
+}
+class Classes_Restaurants_RestaurantMenu {
+  + items : str
+  + name : str
+  + addItem(Classes_itemID : str) : void
+  + removeItem(Classes_itemID : str) : void
+}
+class Classes_Restaurants_RestaurantTable {
+  + numberOfSeats : str
+  + tableNumber : str
+}
+class Classes_Restaurants_RestaurantsManager {
+}
+abstract class Classes_Services_IServicesAccess {
+  + changeRSODeliveryDate(Classes_date : str, Classes_orderID : str) : void
+  + changeRSOISDelivered(Classes_isDelivered : str, Classes_orderID : str) : void
+  + getAllRoomServiceOrderIDs() : str
+  + getAllServiceIDs() : str
+  + getRSOBill(Classes_orderID : str) : str
+  + getRSOBookable(Classes_orderID : str) : str
+  + getRSODeliveryDate(Classes_orderID : str) : date
+  + getRSOItems(Classes_orderID : str) : str
+  + getRSOServices(Classes_orderID : str) : str
+  + getRoomServiceMenuItems() : str
+  + getRoomServiceMenuName() : str
+  + getServiceExpense(Classes_serviceID : str) : float
+  + getServiceName(Classes_serviceID : str) : str
+  + getServicePrice(Classes_serviceID : str) : float
+  + isRSODelivered(Classes_orderID : str) : str
+  + makeRoomServiceOrder(Classes_bill : str, Classes_bookable : str, Classes_deliveryDate : str, Classes_isDelivered : str, Classes_items : str, Classes_services : str) : void
+  + searchRoomServiceOrders(Classes_keyword : str) : str
+  + searchServices(Classes_keyword : str) : str
+  + setRSOBill(Classes_billID : str, Classes_orderID : str) : void
+}
+abstract class Classes_Services_IServicesManage {
+  + addRoomServiceMenuItem(Classes_itemID : str) : void
+  + addService(Classes_expense : str, Classes_name : str, Classes_price : str) : void
+  + changeRoomServiceMenuName(Classes_name : str) : void
+  + changeServiceExpense(Classes_expense : str, Classes_serviceID : str) : void
+  + changeServiceName(Classes_name : str, Classes_serviceID : str) : void
+  + changeServicePrice(Classes_price : str, Classes_serviceID : str) : void
+  + removeRoomServiceMenuItem(Classes_itemID : str) : void
+}
+class Classes_Services_RoomServiceMenu {
+  + items : str
+  + name : str
+  + addItem(Classes_itemID : str) : void
+  + removeItem(Classes_itemID : str) : void
+}
+class Classes_Services_RoomServiceOrder {
+  + bill : str
+  + bookable : str
+  + deliveryDate : date
+  + id : str
+  + isDelivered : str
+  + items : str
+  + addItem() : void
+  + addService() : void
+  + removeItem() : void
+  + removeService() : void
+}
+class Classes_Services_Service {
+  + expense : float
+  + id : str
+  + name : str
+  + price : float
+}
+class Classes_Services_ServiceManager {
+}
+class Classes_Staff_HourlySalaryContract {
+  + salary : float
+}
+abstract class Classes_Staff_IStaff {
+  + addEmployee(Classes_SSID : str, Classes_email : str, Classes_firstname : str, Classes_job : str, Classes_lastname : str, Classes_phone : str, Classes_salary : str, Classes_salaryContractType : str) : void
+  + changeStaffFirstName(Classes_SSID : str, Classes_firstName : str) : void
+  + changeStaffJob(Classes_SSID : str, Classes_job : str) : void
+  + changeStaffLastName(Classes_SSID : str, Classes_lastName : str) : void
+  + changeStaffPhone(Classes_SSID : str, Classes_phoneNumber : str) : void
+  + changeStaffSalaryContract(Classes_SSID : str, Classes_salaryContract : str) : void
+  + getAllStaff() : str
+  + getStaffEmail(Classes_SSID : str) : str
+  + getStaffFirstName(Classes_SSID : str) : str
+  + getStaffJob(Classes_SSID : str) : str
+  + getStaffLastName(Classes_SSID : str) : str
+  + getStaffPhone(Classes_SSID : str) : str
+  + getStaffSalary(Classes_SSID : str) : str
+  + getStaffSalaryContractType(Classes_SSID : str) : str
+  + scheduleStaff(Classes_from_ : str, Classes_to : str) : str
+  + searchStaff(Classes_keyword : str) : str
+}
+class Classes_Staff_MonthlySalaryContract {
+  + salary : float
+}
+abstract class Classes_Staff_SalaryContract {
+  + getSalary() : float
+  + getType() : str
+  + setSalary(Classes_salary : str) : void
+}
+class Classes_Staff_Staff {
+  + email : str
+  + firstName : str
+  + job : str
+  + lastName : str
+  + phone : str
+  + ssid : str
+}
+class Classes_Staff_StaffManager {
+}
+class Classes_Statistics_Date {
+}
+abstract class Classes_Statistics_IStatisticsGenerator {
+  + getOccupancyStatistics(Classes_from_ : str, Classes_to : str) : str
+  + getProfitStatistics(Classes_from_ : str, Classes_to : str) : str
+  + getRevenueStatistics(Classes_from_ : str, Classes_to : str) : str
+}
+class Classes_Statistics_Statistic {
+  + type : str
+}
+class Classes_Statistics_StatisticEntry {
+  + value : str
+}
+class Classes_Statistics_StatisticsGenerator {
+  + staticExpenses : float
+}
+class Classes_Stays_CreditCard {
+  + ccNumber : str
+  + ccv : str
+  + expiryMonth : str
+  + expiryYear : str
+  + firstName : str
+  + lastName : str
+}
+abstract class Classes_Stays_IStays {
+  + addBillToStay(Classes_billID : str, Classes_stayID : str) : void
+  + addNewStay(Classes_bookableID : str, Classes_bookingID : str, Classes_fromDate : str, Classes_toDate : str) : void
+  + addResponsibleCreditCard(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str, Classes_stayID : str) : void
+  + billCreditCardWithAllUnpaidBillsOfHotelStay(Classes_stayID : str) : void
+  + changeBookableOfStay(Classes_bookableID : str, Classes_stayID : str) : void
+  + changePeriodOfStay(Classes_from_ : str, Classes_stayID : str, Classes_to : str) : void
+  + changeResponsibleCreditCard(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str, Classes_stayID : str) : void
+  + checkInGuest(Classes_guestID : str, Classes_stayID : str) : void
+  + checkOutGuest(Classes_guestID : str, Classes_stayID : str) : void
+  + getAllHotelStayIDs() : str
+  + getAllHotelStaysWithinPeriod(Classes_from_ : str, Classes_to : str) : str
+  + getAllUnpayedBillsOfHotelStay(Classes_stayID : str) : str
+  + getBillsOfHotelStay(Classes_stayID : str) : str
+  + getBookableOfHotelStay(Classes_stayID : str) : str
+  + getBookingOfHotelStay(Classes_stayID : str) : str
+  + getCheckedInGuestsOfHotelStay(Classes_stayID : str) : str
+  + getCheckedOutGuestsOfHotelStay(Classes_stayID : str) : str
+  + getGuestsOfHotelStay(Classes_stayID : str) : str
+  + isResponsibleCreditCardAdded(Classes_stayID : str) : str
+  + removeBillFromStay(Classes_billID : str, Classes_stayID : str) : void
+  + removeStay(Classes_stayID : str) : void
+  + searchHotelStays(Classes_keyword : str) : str
+  + searchHotelStaysWithinPeriod(Classes_from_ : str, Classes_keyword : str, Classes_to : str) : str
+}
+class Classes_Stays_Stay {
+  + ID : str
+  + bills : str
+  + bookable : str
+  + booking : str
+  + checkedInGuests : str
+  + checkedOutGuests : str
+  + fromDate : date
+  + toDate : date
+  + addBill(Classes_billID : str) : void
+  + addCheckedInGuest(Classes_SSID : str) : void
+  + checkOutGuest() : void
+}
+class Classes_Stays_StaysManager {
+}
+enum ConferenceRoomCategory {
+  DiningRoom
+  LectureRoom
+  MeetingRoom
+  Other
+}
+class CreditCard {
+}
+class Customer {
+}
+class CustomerProvides {
+}
+class Date {
+}
+class Feedback {
+}
+class Guest {
+}
+class HotelRoom {
+}
+enum HotelRoomCategory {
+  FamilyRoom
+  StandardRoom
+  Suite
+}
+class IBills {
+}
+class IBookablesAccess {
+}
+class IBookablesManage {
+}
+class IBookings {
+}
+class ICustomers {
+}
+class IFeedback {
+}
+class IGuests {
+}
+class IInventoryAccess {
+}
+class IManageAccounts {
+}
+class IManageInventory {
+}
+class IRequests {
+}
+class IRestaurantsAccess {
+}
+class IRestaurantsManage {
+}
+class IServicesAccess {
+}
+class IServicesManage {
+}
+class IStaff {
+}
+class IStatisticsGenerator {
+}
+class IStays {
+}
+class Item {
+}
+class Request {
+}
+class Reservation {
+}
+class Restaurant {
+}
+class RestaurantMenu {
+}
+class RestaurantTable {
+}
+class Room {
+}
+class RoomLocation {
+}
+class RoomServiceMenu {
+}
+class RoomServiceOrder {
+}
+class SalaryContract {
+}
+class Service {
+}
+class Staff {
+}
+class StatisticEntry {
+}
+class Stay {
+}
+Accounts_IAccountsAccess <|-- Classes_Accounts_AccountsManager
+Accounts_IManageAccounts <|-- Classes_Accounts_AccountsManager
+Bookable <|-- Classes_Bookables_HostelBed
+Bookable <|-- Classes_Bookables_Room
+IBills <|-- Classes_Bills_BillsManager
+IBookablesAccess <|-- Classes_Bookables_IBookablesManage
+IBookablesManage <|-- Classes_Bookables_BookablesManager
+IBookings <|-- Classes_Bookings_BookingsManager
+ICustomers <|-- Classes_Customers_CustomersManager
+IFeedback <|-- Classes_Feedback_FeedbackManager
+IGuests <|-- Classes_Guests_GuestsManager
+IInventoryAccess <|-- Classes_Inventory_IManageInventory
+IManageInventory <|-- Classes_Inventory_InventoryManager
+IRequests <|-- Classes_Requests_RequestsManager
+IRestaurantsAccess <|-- Classes_Restaurants_IRestaurantsManage
+IRestaurantsManage <|-- Classes_Restaurants_RestaurantsManager
+IServicesAccess <|-- Classes_Services_IServicesManage
+IServicesManage <|-- Classes_Services_ServiceManager
+IStaff <|-- Classes_Staff_StaffManager
+IStatisticsGenerator <|-- Classes_Statistics_StatisticsGenerator
+IStays <|-- Classes_Stays_StaysManager
+Room <|-- Classes_Bookables_ConferenceRoom
+Room <|-- Classes_Bookables_HotelRoom
+SalaryContract <|-- Classes_Staff_HourlySalaryContract
+SalaryContract <|-- Classes_Staff_MonthlySalaryContract
+Account "0..9999" -- "1..1" Classes_Accounts_AccountsManager : accounts34
+Classes_Bookings_BookingsManager "1..1" -- "1..1" CustomerProvides : bank44
+Bill "0..9999" -- "1..1" Classes_Bills_BillsManager : bills13
+Bookable "0..9999" -- "1..1" Classes_Bookables_BookablesManager : bookables2
+Classes_Bills_BillsManager "1..1" -- "1..1" IBookablesAccess : bookablesAccess17
+Booking "0..9999" -- "1..1" Classes_Bookings_BookingsManager : booking37
+Classes_Bookings_Booking "1..1" -- "1..1" CreditCard : creditCard35
+Classes_Stays_Stay "1..1" -- "1..1" CreditCard : creditCard5
+Classes_Customers_CustomersManager "1..1" -- "0..9999" Customer : customer55
+Classes_Bills_BillsManager "1..1" -- "1..1" CustomerProvides : customerProvides14
+Classes_Stays_StaysManager "1..1" -- "1..1" CustomerProvides : customerProvides7
+Classes_Statistics_StatisticEntry "1..1" -- "1..1" Date : dateOfEntry62
+Classes_Staff_StaffManager "1..1" -- "0..9999" Staff : employees70
+Classes_Feedback_FeedbackManager "1..1" -- "0..9999" Feedback : feedbacks82
+Classes_Statistics_Statistic "1..1" -- "1..1" Date : fromDate57
+Classes_Guests_GuestsManager "1..1" -- "0..9999" Guest : guests31
+Classes_Bookings_BookingsManager "1..1" -- "1..1" IBills : iBills52
+Classes_Stays_StaysManager "1..1" -- "1..1" IBills : iBills9
+Classes_Statistics_StatisticsGenerator "1..1" -- "1..1" IBills : iBillsAccess64
+Classes_Bookings_BookingsManager "1..1" -- "1..1" IBookablesAccess : iBookableAccess38
+Classes_Statistics_StatisticsGenerator "1..1" -- "1..1" IBookings : iBooking66
+Classes_Bookings_BookingsManager "1..1" -- "1..1" ICustomers : iCustomer50
+Classes_Bookings_BookingsManager "1..1" -- "1..1" IGuests : iGuest47
+Classes_Stays_StaysManager "1..1" -- "1..1" IGuests : iGuests11
+Classes_Bookables_BookablesManager "1..1" -- "1..1" IStays : iHotelStayManager3
+Classes_Bookings_BookingsManager "1..1" -- "1..1" IStays : iHotelStayManager41
+Classes_Guests_GuestsManager "1..1" -- "1..1" IManageAccounts : iManageAccounts32
+Classes_Statistics_StatisticsGenerator "1..1" -- "1..1" IStaff : iStaff68
+Classes_Staff_StaffManager "1..1" -- "1..1" IStatisticsGenerator : iStatisticsGenerator71
+Classes_Bills_BillsManager "1..1" -- "1..1" IInventoryAccess : inventoryAccess19
+Classes_Inventory_InventoryManager "1..1" -- "0..9999" Item : items23
+Classes_Bookables_Room "1..1" -- "1..1" RoomLocation : location0
+Classes_Restaurants_Restaurant "1..1" -- "1..1" RestaurantMenu : menu78
+Classes_Restaurants_Restaurant "1..1" -- "0..9999" Reservation : reservation75
+Classes_Restaurants_RestaurantsManager "1..1" -- "0..9999" Restaurant : restaurant74
+Classes_Restaurants_Restaurant "1..1" -- "0..9999" RestaurantTable : restaurantTable76
+Classes_Restaurants_Reservation "1..1" -- "1..9999" RestaurantTable : restaurantTable80
+Classes_Bookables_HostelBed "1..1" -- "1..1" HotelRoom : room1
+Classes_Services_ServiceManager "1..1" -- "1..1" RoomServiceMenu : roomServiceMenu27
+Classes_Services_ServiceManager "1..1" -- "0..9999" RoomServiceOrder : roomServiceOrder25
+Classes_Staff_Staff "1..1" -- "1..1" SalaryContract : salaryContract73
+Classes_Services_ServiceManager "1..1" -- "0..9999" Service : service24
+Classes_Services_RoomServiceOrder "1..1" -- "0..9999" Service : service29
+Classes_Bills_BillsManager "1..1" -- "1..1" IServicesAccess : servicesAccess21
+Classes_Requests_RequestsManager "1..1" -- "0..9999" Request : specialRequest83
+Classes_Statistics_Statistic "1..1" -- "0..9999" StatisticEntry : statisticEntry56
+Classes_Stays_StaysManager "1..1" -- "0..9999" Stay : stays6
+Classes_Statistics_Statistic "1..1" -- "1..1" Date : toDate59
+@enduml

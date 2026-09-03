@@ -1,0 +1,168 @@
+@startuml
+class Behavior {
+}
+enum Mode {
+  Both
+  CanDo
+  CanTeach
+  KnowsWhoCanBoth
+  KnowsWhoCanDo
+  KnowsWhoCanTeach
+  None_
+}
+class State {
+}
+enum Type {
+  Boolean1
+  Double1
+  Integer1
+  ServiceAskMode
+  ServiceOfferMode
+  String1
+  boolean
+  double
+  integer
+  string
+}
+class selflet_Abilities {
+}
+class selflet_Ability {
+  + file : str
+  + service : str
+}
+class selflet_AbilityState {
+}
+class selflet_Action {
+  + file : str
+}
+class selflet_Actions {
+}
+class selflet_Active {
+  + mainService : str
+}
+class selflet_Behavior {
+  + elementaryBehaviorCPUTime : str
+  + elementaryBehaviorCost : str
+  + fileName : str
+  + isDefaultBehavior : str
+  + name : str
+}
+class selflet_CPUUtilization {
+  + lowerBound : str
+  + upperBound : str
+}
+class selflet_ComplexBehavior {
+}
+class selflet_Condition {
+  + file : str
+}
+class selflet_Conditions {
+}
+class selflet_ElementaryBehavior {
+}
+class selflet_Empty {
+}
+class selflet_FinalState {
+}
+class selflet_GeneralKnowledge {
+}
+class selflet_InitialState {
+}
+class selflet_Input {
+}
+class selflet_IntermediateState {
+}
+class selflet_Method {
+  + name : str
+  + paramType : str
+}
+class selflet_Methods {
+}
+class selflet_OfferMode {
+  + mode : str
+}
+class selflet_Output {
+}
+class selflet_Parameter {
+  + name : str
+  + type : str
+}
+class selflet_Reds {
+  + ipAddress : str
+  + port : str
+}
+class selflet_Rule {
+  + file : str
+}
+class selflet_Rules {
+}
+class selflet_SelfLetProperty {
+  + name : str
+  + type : str
+  + value : str
+}
+class selflet_Selflet {
+  + name : str
+}
+class selflet_SelfletProperties {
+  + author : str
+  + description : str
+  + enableCloudOptimizationPolicy : str
+  + enableOptimizationPolicy : str
+  + limePort : str
+}
+class selflet_SelfletResources {
+}
+class selflet_Service {
+  + active : str
+  + maxResponseTime : str
+  + name : str
+  + revenue : str
+}
+class selflet_Services {
+}
+class selflet_State {
+  + name : str
+}
+class selflet_TypeKnowledge {
+}
+Behavior <|-- selflet_ComplexBehavior
+Behavior <|-- selflet_ElementaryBehavior
+State <|-- selflet_AbilityState
+State <|-- selflet_FinalState
+State <|-- selflet_InitialState
+State <|-- selflet_IntermediateState
+selflet_Abilities "1..1" --* "1..1" selflet_SelfletResources : abilities27
+selflet_Abilities "1..1" *-- "0..9999" selflet_Ability : ability0
+selflet_Action "0..9999" --* "1..1" selflet_Actions : action3
+selflet_Actions "1..1" --* "1..1" selflet_SelfletResources : actions30
+selflet_Active "0..1" --* "1..1" selflet_SelfletProperties : active18
+selflet_Condition "0..9999" --* "1..1" selflet_Conditions : condition5
+selflet_Conditions "1..1" --* "1..1" selflet_SelfletResources : conditions33
+selflet_AbilityState "1..1" -- "1..1" selflet_Action : do64
+selflet_GeneralKnowledge "0..1" --* "1..1" selflet_SelfletProperties : generalknowledge22
+selflet_Behavior "0..9999" --* "1..1" selflet_Service : implementations52
+selflet_Behavior "1..1" *-- "1..1" selflet_Service : implements4
+selflet_Input "1..1" --* "1..1" selflet_Service : input44
+selflet_IntermediateState "1..1" -- "0..1" selflet_Service : invoke66
+selflet_Method "0..9999" --* "1..1" selflet_Methods : method8
+selflet_Ability "1..1" *-- "1..1" selflet_Methods : methods1
+selflet_State "0..9999" -- "1..1" selflet_State : next62
+selflet_OfferMode "1..1" --* "1..1" selflet_Service : offermode50
+selflet_Output "1..1" --* "1..1" selflet_Service : output47
+selflet_Output "1..1" *-- "1..1" selflet_Parameter : parameter10
+selflet_Input "1..1" *-- "0..9999" selflet_Parameter : parameter7
+selflet_Empty "0..1" --* "1..1" selflet_SelfletProperties : passive16
+selflet_Reds "1..1" --* "1..1" selflet_SelfletProperties : reds20
+selflet_Rule "0..9999" --* "1..1" selflet_Rules : rule12
+selflet_Rules "1..1" --* "1..1" selflet_SelfletResources : rules38
+selflet_SelfLetProperty "1..9999" --* "1..1" selflet_TypeKnowledge : selfLetProperty55
+selflet_GeneralKnowledge "1..1" *-- "1..9999" selflet_SelfLetProperty : selfLetProperty6
+selflet_Selflet "1..1" *-- "1..1" selflet_SelfletProperties : selfletProperties13
+selflet_Selflet "1..1" *-- "1..1" selflet_SelfletResources : selfletResources14
+selflet_Service "0..9999" --* "1..1" selflet_Services : service41
+selflet_SelfletResources "1..1" *-- "1..1" selflet_Services : services36
+selflet_ElementaryBehavior "1..1" *-- "3..3" selflet_State : states58
+selflet_ComplexBehavior "1..1" *-- "3..9999" selflet_State : states59
+selflet_SelfletProperties "1..1" *-- "0..1" selflet_TypeKnowledge : typeKnowledge25
+@enduml

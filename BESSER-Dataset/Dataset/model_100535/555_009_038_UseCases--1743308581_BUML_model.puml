@@ -1,0 +1,134 @@
+@startuml
+enum ActorType {
+  ORGANIZATION
+  PERSON
+  SYSTEM
+}
+class Flow {
+}
+class NamedFlow {
+}
+class StepAlternative {
+}
+class useCases_Actor {
+  + description : str
+  + name : str
+  + type : str
+}
+class useCases_AlternativeFlow {
+}
+class useCases_AlternativeFlowAlternative {
+}
+class useCases_ApplicationInstance {
+}
+class useCases_BasicFlow {
+}
+class useCases_Condition {
+  + condition : str
+}
+class useCases_CustomAttributes {
+}
+class useCases_CustomStepType {
+}
+class useCases_Entity {
+}
+class useCases_EntityRef {
+}
+class useCases_ExceptionFlow {
+  + condition : str
+}
+class useCases_Feature {
+}
+class useCases_Flow {
+  + finalState : str
+}
+class useCases_Identifiable {
+}
+class useCases_Label {
+}
+class useCases_LocalAlternative {
+  + description : str
+}
+class useCases_NamedFlow {
+  + name : str
+}
+class useCases_NamespaceImport {
+}
+class useCases_PackageDeclaration {
+  + description : str
+  + name : str
+}
+class useCases_PageRef {
+}
+class useCases_Precondition {
+  + name : str
+}
+class useCases_RequirementRef {
+}
+class useCases_Screen {
+}
+class useCases_Step {
+  + description : str
+  + label : str
+  + name : str
+}
+class useCases_StepAlternative {
+  + finalState : str
+  + finalizeFlow : bool
+}
+class useCases_UseCase {
+  + goals : str
+  + name : str
+  + ucName : str
+}
+class useCases_UseCasesModel {
+}
+class useCases_ViewInstance {
+}
+Flow <|-- useCases_BasicFlow
+Flow <|-- useCases_NamedFlow
+NamedFlow <|-- useCases_AlternativeFlow
+NamedFlow <|-- useCases_ExceptionFlow
+StepAlternative <|-- useCases_AlternativeFlowAlternative
+StepAlternative <|-- useCases_Condition
+StepAlternative <|-- useCases_LocalAlternative
+useCases_Actor "0..1" -- "1..1" useCases_Step : actor55
+useCases_Actor "0..9999" --* "1..1" useCases_PackageDeclaration : actors19
+useCases_Actor "0..9999" -- "1..1" useCases_UseCase : actors28
+useCases_AlternativeFlow "0..9999" --* "1..1" useCases_UseCase : alternativeFlows41
+useCases_Step "1..1" *-- "0..9999" useCases_StepAlternative : alternatives66
+useCases_BasicFlow "0..1" --* "1..1" useCases_UseCase : basicFlow39
+useCases_Label "0..9999" --* "1..1" useCases_UseCase : commonLabels37
+useCases_Condition "0..1" --* "1..1" useCases_LocalAlternative : condition76
+useCases_AlternativeFlowAlternative "1..1" *-- "0..1" useCases_Condition : condition80
+useCases_Step "0..1" -- "1..1" useCases_StepAlternative : continuation70
+useCases_CustomAttributes "0..1" --* "1..1" useCases_UseCase : customAttributes45
+useCases_CustomStepType "0..1" -- "1..1" useCases_Step : customStepType68
+useCases_CustomStepType "0..1" -- "1..1" useCases_StepAlternative : customStepType73
+useCases_Entity "0..9999" -- "1..1" useCases_UseCase : entities31
+useCases_Entity "0..1" -- "1..1" useCases_EntityRef : entity84
+useCases_EntityRef "0..9999" --* "1..1" useCases_Step : entityRefs58
+useCases_ExceptionFlow "0..9999" --* "1..1" useCases_UseCase : exceptionFlows43
+useCases_Actor "0..1" -- "1..1" useCases_Actor : extends24
+useCases_EntityRef "1..1" -- "0..9999" useCases_Feature : features87
+useCases_Step "1..1" -- "0..1" useCases_UseCase : invokedUseCase63
+useCases_LocalAlternative "1..1" -- "0..1" useCases_UseCase : invokedUseCase77
+useCases_NamespaceImport "0..9999" --* "1..1" useCases_UseCasesModel : namespaceImports0
+useCases_NamespaceImport "0..9999" --* "1..1" useCases_PackageDeclaration : namespaceImports16
+useCases_PackageDeclaration "0..9999" --* "1..1" useCases_UseCasesModel : packages1
+useCases_PageRef "1..1" -- "0..1" useCases_ViewInstance : page47
+useCases_PageRef "0..9999" --* "1..1" useCases_UseCase : pages33
+useCases_Precondition "0..9999" --* "1..1" useCases_UseCase : preConditions35
+useCases_AlternativeFlowAlternative "1..1" -- "0..1" useCases_NamedFlow : ref82
+useCases_NamespaceImport "1..1" -- "0..1" useCases_PackageDeclaration : refActorImportedNamespace13
+useCases_NamespaceImport "1..1" -- "0..1" useCases_PackageDeclaration : refEntityImportedNamespace3
+useCases_Identifiable "0..1" -- "1..1" useCases_NamespaceImport : refRequirementImportedNamespace8
+useCases_NamespaceImport "1..1" -- "0..1" useCases_PackageDeclaration : refUseCaseImportedNamespace10
+useCases_ApplicationInstance "0..1" -- "1..1" useCases_NamespaceImport : refViewInstanceImportedNamespace6
+useCases_RequirementRef "0..9999" --* "1..1" useCases_UseCase : requirements26
+useCases_Precondition "1..1" -- "0..1" useCases_UseCase : requires51
+useCases_Screen "0..1" -- "1..1" useCases_Step : screen60
+useCases_PageRef "1..1" -- "0..9999" useCases_Screen : screens49
+useCases_Flow "1..1" *-- "0..9999" useCases_Step : steps54
+useCases_PackageDeclaration "1..1" *-- "0..9999" useCases_UseCase : useCases21
+@enduml

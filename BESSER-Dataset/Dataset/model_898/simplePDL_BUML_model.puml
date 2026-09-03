@@ -1,0 +1,51 @@
+@startuml
+class ProcessElement {
+}
+class SimplePDL_Guidance {
+  + text : str
+}
+class SimplePDL_Process {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class SimplePDL_ProcessElement {
+}
+class SimplePDL_Resource {
+  + occurrences : int
+}
+class SimplePDL_ResourceType {
+  + name : str
+  + occurrences : int
+}
+class SimplePDL_WorkDefinition {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class SimplePDL_WorkSequence {
+  + linkType : str
+}
+enum WorkSequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+ProcessElement <|-- SimplePDL_Resource
+ProcessElement <|-- SimplePDL_ResourceType
+ProcessElement <|-- SimplePDL_WorkDefinition
+ProcessElement <|-- SimplePDL_WorkSequence
+SimplePDL_ProcessElement "0..9999" --* "1..1" SimplePDL_WorkDefinition : child7
+SimplePDL_Guidance "0..9999" --* "1..1" SimplePDL_Process : guidanceGFX1
+SimplePDL_Guidance "0..9999" -- "1..1" SimplePDL_ProcessElement : guides11
+SimplePDL_WorkDefinition "1..1" -- "0..9999" SimplePDL_WorkSequence : linksToPredecessors3
+SimplePDL_WorkDefinition "1..1" -- "0..9999" SimplePDL_WorkSequence : linksToSuccessors4
+SimplePDL_Resource "0..9999" -- "1..1" SimplePDL_WorkDefinition : neededResources6
+SimplePDL_ProcessElement "1..1" -- "0..1" SimplePDL_WorkDefinition : parent14
+SimplePDL_WorkDefinition "1..1" -- "1..1" SimplePDL_WorkSequence : predecessor8
+SimplePDL_Process "1..1" *-- "0..9999" SimplePDL_ProcessElement : processElements0
+SimplePDL_WorkDefinition "1..1" -- "1..1" SimplePDL_WorkSequence : successor9
+SimplePDL_Resource "1..1" -- "1..1" SimplePDL_ResourceType : type18
+SimplePDL_Resource "1..1" -- "1..1" SimplePDL_WorkDefinition : workDefinition16
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+class State {
+}
+class oclstates_CompoundState {
+}
+class oclstates_Event {
+  + name : str
+}
+class oclstates_Module {
+  + name : str
+}
+class oclstates_SimpleState {
+  + value : int
+}
+class oclstates_State {
+  + initial : bool
+  + name : str
+}
+class oclstates_Statemachine {
+  + initial : bool
+  + name : str
+  + value : int
+}
+class oclstates_Transition {
+}
+State <|-- oclstates_CompoundState
+State <|-- oclstates_SimpleState
+oclstates_Event "0..1" -- "1..1" oclstates_Transition : event12
+oclstates_Event "0..9999" --* "1..1" oclstates_Statemachine : events1
+oclstates_CompoundState "1..1" -- "0..1" oclstates_Statemachine : machine10
+oclstates_Module "1..1" *-- "0..9999" oclstates_Statemachine : machines0
+oclstates_State "0..1" -- "1..1" oclstates_Transition : state15
+oclstates_State "1..1" -- "0..1" oclstates_Statemachine : statemachine7
+oclstates_State "0..9999" --* "1..1" oclstates_Statemachine : states3
+oclstates_State "1..1" *-- "0..9999" oclstates_Transition : transitions5
+@enduml

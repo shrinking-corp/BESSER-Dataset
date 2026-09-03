@@ -297,7 +297,7 @@ Elabora: BinaryAssociation = BinaryAssociation(
         Property(name="factura27", type=Factura, multiplicity=Multiplicity(0, 9999))
     }
 )
-Factura: BinaryAssociation = BinaryAssociation(
+Factura_assoc: BinaryAssociation = BinaryAssociation(
     name="Factura",
     ends={
         Property(name="factura28", type=Factura, multiplicity=Multiplicity(0, 9999)),
@@ -407,7 +407,7 @@ venta_producto: BinaryAssociation = BinaryAssociation(
 domain_model = DomainModel(
     name="_c4_Q0G3dEeqhRdvvYtDJdw",
     types={Millenium_Component, Cliente_Actor, Natural_Actor, Juridico_Actor, Departamento_de_inventarios_y_Suminsitros_Component, Proveedores_Actor, Dependencias_Actor, Actor_Actor, Sistema_Web_Movil___Receccion_de_pedidos_Component, _Actor, Factura, Ordenes_Perdidos, Solicitud_suministro, Elementos, Proveedores, Dependencia, Pedidos, Presupuesto, Facturas, Comerciales, Empresa, Imformes, TransferenciaCompa_ia, CuentaBanco, Compa_ia, ventas, Pago, Pedidos1, Servidor_Intel_Node, Cacular, JavaApplication2, venta, producto, impuesto, Brindar_consultoria_external, Recibir_productos_o_pedidos_external, Registrar_proveedores_external, Resivir_ordenes_de_suministros_external, Entregar_Productos_external, Clasificar_Producto_external},
-    associations={Cliente_Brindar_consultoria, Recibir_productos_o_pedidos_Actor, Proveedores_Registrar_proveedores, Proveedores_Recibir_productos_o_pedidos, Dependencias_Resivir_ordenes_de_suministros, Dependencias_Entregar_Productos, Actor2_UseCase, Ordenes_Perdidos_Proveedores, Provee, Conforma, Relaciones, Genera, Realiza, Elabora, Factura, Realiza1, Asigna, Paga, Genera1, Factura1, visita, hace, assoc__px0D3ZfBEeqEM7mFKilpXw, Emite, Provee1, Realiza2, producto_impuesto, Cacular_Java, venta_producto},
+    associations={Cliente_Brindar_consultoria, Recibir_productos_o_pedidos_Actor, Proveedores_Registrar_proveedores, Proveedores_Recibir_productos_o_pedidos, Dependencias_Resivir_ordenes_de_suministros, Dependencias_Entregar_Productos, Actor2_UseCase, Ordenes_Perdidos_Proveedores, Provee, Conforma, Relaciones, Genera, Realiza, Elabora, Factura_assoc, Realiza1, Asigna, Paga, Genera1, Factura1, visita, hace, assoc__px0D3ZfBEeqEM7mFKilpXw, Emite, Provee1, Realiza2, producto_impuesto, Cacular_Java, venta_producto},
     generalizations={},
     metadata=None
 )

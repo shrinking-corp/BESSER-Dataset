@@ -1,0 +1,23 @@
+@startuml
+class Class {
+}
+class ShoppingCartExample_Account {
+  + id : int
+}
+class ShoppingCartExample_Customer {
+}
+class ShoppingCartExample_LineItem {
+  + price : int
+  + quantity : int
+}
+class ShoppingCartExample_Order {
+  + id : int
+}
+class ShoppingCartExample_ShoppingCart {
+  + creationDate : date
+}
+ShoppingCartExample_Account "1..1" -- "1..1" ShoppingCartExample_Customer : Account_Customer
+ShoppingCartExample_Account "1..1" -- "1..1" ShoppingCartExample_ShoppingCart : Account_ShoppingCart
+ShoppingCartExample_LineItem "1..9999" -- "1..1" ShoppingCartExample_Order : Order_Line
+ShoppingCartExample_Order "0..9999" -- "1..1" ShoppingCartExample_ShoppingCart : ShoppingCart_Order
+@enduml

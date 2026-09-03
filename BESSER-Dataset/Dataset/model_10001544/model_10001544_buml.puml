@@ -1,0 +1,32 @@
+@startuml
+class BlackjackGame {
+}
+class Cards {
+  + cardName : str
+  + cardValue : int
+}
+class Dealer {
+  + handLimit : int
+  + handValue : int
+}
+class Deck {
+  + deckArray : int
+  + size : int
+}
+class Hand {
+  + handValue : int
+}
+class Integer_external {
+}
+class Player {
+  + name : str
+}
+class _Interface {
+}
+BlackjackGame "0..1" -- "0..1" Dealer : BlackjackGame_Dealer
+BlackjackGame "0..1" -- "0..1" Player : BlackjackGame_Player
+Dealer "0..1" -- "0..1" Integer_external : Hand_Dealer
+Hand "0..1" -- "0..9999" Player : Player_Hand
+BlackjackGame "0..1" -- "0..1" _Interface : association
+Deck "0..1" -- "0..1" _Interface : association2
+@enduml

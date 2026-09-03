@@ -1,0 +1,147 @@
+@startuml
+class Action {
+}
+class Branch {
+}
+class IVREvent {
+}
+class IvrAction {
+}
+class State {
+}
+class Transition {
+}
+abstract class stateMachine_Action {
+}
+abstract class stateMachine_Branch {
+}
+class stateMachine_Bye {
+}
+class stateMachine_Call {
+  + from_ : str
+  + to : str
+}
+class stateMachine_Cancel {
+}
+class stateMachine_CollectTimeout {
+}
+class stateMachine_Collected {
+}
+class stateMachine_CompositeState {
+}
+class stateMachine_FinalState {
+}
+abstract class stateMachine_IVREvent {
+}
+class stateMachine_Init {
+}
+class stateMachine_InitialState {
+}
+abstract class stateMachine_IvrAction {
+}
+class stateMachine_Key {
+  + key : str
+}
+class stateMachine_Managed {
+  + code : int
+  + success : bool
+}
+class stateMachine_NoneEvent {
+}
+class stateMachine_Otherwise {
+}
+class stateMachine_PickUp {
+}
+class stateMachine_Play {
+  + baseURL : str
+  + mediaURI : str
+}
+class stateMachine_Played {
+}
+class stateMachine_Properties {
+  + applicationAddress : str
+  + applicationServerHost : str
+  + applicationServerPort : int
+  + applicationServerProtocol : str
+  + mediaFromAddr : str
+  + mediaHost : str
+  + mediaPort : int
+  + mediaProtocol : str
+  + mediaToAddr : str
+  + mediaURI : str
+  + recordPath : str
+  + scscfHost : str
+  + scscfPort : int
+  + scscfProtocol : str
+  + scscfUser : str
+  + setupConference : bool
+}
+class stateMachine_Recorderd {
+  + recordId : str
+}
+class stateMachine_SMS {
+  + from_ : str
+  + text : str
+  + to : str
+}
+class stateMachine_SMSReceived {
+}
+class stateMachine_SendSms {
+}
+class stateMachine_SetTimer {
+  + millis : float
+}
+class stateMachine_State {
+  + nombre : str
+}
+class stateMachine_StateMachine {
+  + nombre : str
+}
+class stateMachine_Terminate {
+}
+class stateMachine_Terminated {
+}
+class stateMachine_Timer {
+}
+abstract class stateMachine_Transition {
+}
+Action <|-- stateMachine_IvrAction
+Action <|-- stateMachine_SendSms
+Action <|-- stateMachine_SetTimer
+Branch <|-- stateMachine_Key
+Branch <|-- stateMachine_Otherwise
+IVREvent <|-- stateMachine_Bye
+IVREvent <|-- stateMachine_Call
+IVREvent <|-- stateMachine_Cancel
+IVREvent <|-- stateMachine_CollectTimeout
+IVREvent <|-- stateMachine_Collected
+IVREvent <|-- stateMachine_Init
+IVREvent <|-- stateMachine_Managed
+IVREvent <|-- stateMachine_PickUp
+IVREvent <|-- stateMachine_Played
+IVREvent <|-- stateMachine_Recorderd
+IVREvent <|-- stateMachine_Terminated
+IvrAction <|-- stateMachine_Play
+IvrAction <|-- stateMachine_Terminate
+State <|-- stateMachine_CompositeState
+State <|-- stateMachine_FinalState
+State <|-- stateMachine_InitialState
+Transition <|-- stateMachine_IVREvent
+Transition <|-- stateMachine_NoneEvent
+Transition <|-- stateMachine_SMSReceived
+Transition <|-- stateMachine_Timer
+stateMachine_Action "0..9999" --* "1..1" stateMachine_Transition : action12
+stateMachine_Action "0..9999" --* "1..1" stateMachine_Branch : action24
+stateMachine_Branch "0..9999" --* "1..1" stateMachine_Collected : branches20
+stateMachine_State "1..1" *-- "0..9999" stateMachine_State : children5
+stateMachine_State "0..1" -- "1..1" stateMachine_Transition : defaultTar15
+stateMachine_Branch "1..1" -- "0..1" stateMachine_State : out21
+stateMachine_State "1..1" *-- "0..9999" stateMachine_Transition : outs3
+stateMachine_State "1..1" -- "0..1" stateMachine_State : parent7
+stateMachine_Properties "0..1" --* "1..1" stateMachine_StateMachine : properties1
+stateMachine_CompositeState "1..1" -- "0..1" stateMachine_StateMachine : sm9
+stateMachine_SMS "0..1" --* "1..1" stateMachine_SendSms : sms11
+stateMachine_SMS "0..1" --* "1..1" stateMachine_SMSReceived : sms18
+stateMachine_State "0..1" -- "1..1" stateMachine_Transition : src13
+stateMachine_State "0..9999" --* "1..1" stateMachine_StateMachine : states0
+@enduml

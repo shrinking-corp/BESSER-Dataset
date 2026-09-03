@@ -1,0 +1,83 @@
+@startuml
+class BaseEntity {
+  + Active : bool
+  + CreatedBy : str
+  + CreatedDate : str
+  + Id : str
+  + UpdatedBy : str
+  + UpdatedDate : str
+}
+class Category {
+  + Name : str
+  + RusName : str
+}
+class CouponCode {
+  + Code : str
+  + Discount : int
+  + ExpiryDate : str
+  + UserId : str
+}
+class FavoriteItem {
+  + ItemId : str
+  + UserId : str
+}
+class Item {
+  + Amount : int
+  + Brand : str
+  + CategoryId : str
+  + Color : str
+  + Description : str
+  + Discount : str
+  + ImagePath1 : str
+  + ImagePath2 : str
+  + ImagePath3 : str
+  + MinPreviewImagePath : str
+  + Name : str
+  + PreviewImagePath : str
+  + Price : str
+  + Sex : int
+  + Size : str
+  + Status : int
+  + SubCategoryId : str
+}
+class Order {
+  + Address : str
+  + CodeId : str
+  + Comment : str
+  + Email : str
+  + Name : str
+  + PhoneNumber : str
+  + Status : int
+  + TotalPrice : str
+  + UserId : str
+}
+class OrderItem {
+  + Amount : int
+  + ItemId : str
+  + Name : str
+  + OrderId : str
+  + Price : str
+}
+class SubCategory {
+  + CategoryId : str
+  + Name : str
+  + RusName : str
+}
+class User {
+  + Email : str
+  + FirstName : str
+  + LastName : str
+  + Login : str
+  + Password : str
+  + PhoneNumber : str
+  + Role : int
+}
+Category "0..1" -- "0..1" Item : Category_Item
+CouponCode "0..1" -- "0..1" User : CouponCode_User
+FavoriteItem "0..1" -- "0..1" User : FavoriteItem_User
+FavoriteItem "0..1" -- "0..1" Item : Item_FavoriteItem
+Order "0..1" -- "0..1" OrderItem : OrderItem_Order
+CouponCode "0..1" -- "0..1" Order : Order_CouponCode
+Category "0..1" -- "0..1" SubCategory : SubCategory_Category
+Item "0..1" -- "0..1" SubCategory : SubCategory_Item
+@enduml

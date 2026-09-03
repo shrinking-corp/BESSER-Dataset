@@ -1,0 +1,136 @@
+@startuml
+class EEPROM {
+}
+class Function {
+}
+class Memory {
+}
+enum MemoryUnit {
+  Go
+  Ko
+  Mo
+}
+class MicrocontrollerModeling_CLanguage {
+  + filesExtension : str
+  + hasMain : bool
+  + name : str
+}
+class MicrocontrollerModeling_EEPROM {
+}
+class MicrocontrollerModeling_Flash {
+}
+class MicrocontrollerModeling_Function {
+  + type : str
+}
+class MicrocontrollerModeling_Instruction {
+  + value : str
+}
+class MicrocontrollerModeling_Library {
+  + name : str
+}
+abstract class MicrocontrollerModeling_Memory {
+  + size : int
+  + unit : str
+}
+class MicrocontrollerModeling_Microcontroller {
+  + family : str
+  + manufacturer : str
+  + name : str
+  + wordMemory : str
+}
+class MicrocontrollerModeling_Parameter {
+  + name : str
+  + type : str
+}
+class MicrocontrollerModeling_Pin {
+  + name : str
+  + nature : str
+  + number : int
+}
+class MicrocontrollerModeling_PinMode {
+  + name : str
+  + value : str
+}
+class MicrocontrollerModeling_PinOperation {
+  + name : str
+}
+class MicrocontrollerModeling_Processor {
+  + speed : int
+  + unit : str
+}
+class MicrocontrollerModeling_RAM {
+}
+class MicrocontrollerModeling_ROM {
+}
+class MicrocontrollerModeling_Register {
+  + name : str
+  + type : str
+}
+class MicrocontrollerModeling_TimerConfig {
+  + name : str
+  + period : int
+}
+enum OperationName {
+  analogPinRead
+  analogPinWrite
+  digitalPinRead
+  digitalPinWrite
+  pinConfigMode
+}
+enum PinModes {
+  Input
+  Output
+}
+enum PinNature {
+  Analog
+  Digital
+  Mixed
+}
+class ROM {
+}
+enum RegType {
+  CCR
+  ICR
+  IR
+  PCounter
+  Stack
+  accumulator
+  general
+}
+enum SpeedUnit {
+  GHz
+  Hz
+  MIPS
+  Mhz
+}
+enum TimerOp {
+  initializeTimer
+}
+enum WordSize {
+  wd_16bits
+  wd_24bits
+  wd_32bits
+  wd_48bits
+  wd_64bits
+  wd_8bits
+}
+EEPROM <|-- MicrocontrollerModeling_Flash
+Function <|-- MicrocontrollerModeling_PinOperation
+Function <|-- MicrocontrollerModeling_TimerConfig
+Memory <|-- MicrocontrollerModeling_RAM
+Memory <|-- MicrocontrollerModeling_ROM
+ROM <|-- MicrocontrollerModeling_EEPROM
+MicrocontrollerModeling_CLanguage "1..1" --* "1..1" MicrocontrollerModeling_Microcontroller : clanguage1
+MicrocontrollerModeling_Flash "0..1" --* "1..1" MicrocontrollerModeling_Microcontroller : flash7
+MicrocontrollerModeling_Function "1..1" *-- "1..9999" MicrocontrollerModeling_Instruction : instructions22
+MicrocontrollerModeling_CLanguage "1..1" *-- "0..9999" MicrocontrollerModeling_Library : libraries13
+MicrocontrollerModeling_Function "1..1" *-- "1..9999" MicrocontrollerModeling_Parameter : parameters21
+MicrocontrollerModeling_CLanguage "1..1" *-- "1..2" MicrocontrollerModeling_PinMode : pinmodes17
+MicrocontrollerModeling_CLanguage "1..1" *-- "1..5" MicrocontrollerModeling_PinOperation : pinoperation19
+MicrocontrollerModeling_Microcontroller "1..1" *-- "1..9999" MicrocontrollerModeling_Pin : pins0
+MicrocontrollerModeling_Microcontroller "1..1" *-- "1..9999" MicrocontrollerModeling_Processor : processor3
+MicrocontrollerModeling_Microcontroller "1..1" *-- "1..1" MicrocontrollerModeling_RAM : ram9
+MicrocontrollerModeling_Microcontroller "1..1" *-- "0..9999" MicrocontrollerModeling_Register : registers11
+MicrocontrollerModeling_Microcontroller "1..1" *-- "0..1" MicrocontrollerModeling_ROM : rom5
+MicrocontrollerModeling_CLanguage "1..1" *-- "0..1" MicrocontrollerModeling_TimerConfig : timerconfig15
+@enduml

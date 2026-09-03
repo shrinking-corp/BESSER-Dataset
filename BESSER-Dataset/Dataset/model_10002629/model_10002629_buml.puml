@@ -1,0 +1,28 @@
+@startuml
+class Order {
+  + Address : str
+  + number : int
+  + ordered : date
+  + status : str
+  + total : float
+}
+class Product {
+  + description : str
+  + name : str
+}
+class Product_View {
+  + price : float
+  + quantity : int
+}
+class ShoppingCart {
+  + creationDate : date
+}
+class WebUser {
+  + login : str
+  + password : str
+}
+Order "0..1" -- "1..9999" Product_View : Order_LineItem
+Product "1..1" -- "0..9999" Product_View : Product_LineItem
+Product_View "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+ShoppingCart "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+@enduml

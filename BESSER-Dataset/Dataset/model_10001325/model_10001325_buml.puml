@@ -1,0 +1,117 @@
+@startuml
+class bytecode_ArgsByteCode {
+  + argCount : int
+  + byteCode : str
+}
+class bytecode_BopByteCode {
+  + byteCode : str
+  + theOperator : str
+}
+abstract class bytecode_ByteCode {
+}
+class bytecode_CallByteCode {
+  + byteCode : str
+  + lineNO : int
+  + theArg : str
+}
+class bytecode_DumpByteCode {
+  + byteCode : str
+  + theArg : str
+}
+class bytecode_FalseBranchByteCode {
+  + byteCode : str
+  + lineNO : int
+  + theArg : str
+}
+class bytecode_GoToByteCode {
+  + byteCode : str
+  + lineNO : int
+  + theArg : str
+}
+class bytecode_HaltByteCode {
+  + byteCode : str
+}
+class bytecode_LabelByteCode {
+  + byteCode : str
+  + lineNO : int
+  + theArg : str
+}
+class bytecode_LitByteCode {
+  + byteCode : str
+  + litID : str
+  + litValue : int
+}
+class bytecode_LoadByteCode {
+  + byteCode : str
+  + loadID : str
+  + loadOffset : int
+}
+class bytecode_PopByteCode {
+  + byteCode : str
+  + count : int
+  + theArg : str
+}
+class bytecode_ReadByteCode {
+  + byteCode : str
+}
+class bytecode_ReturnByteCode {
+  + byteCode : str
+}
+class bytecode_StoreByteCode {
+  + byteCode : str
+  + storeID : str
+  + storeValue : int
+  + theArg : str
+}
+class bytecode_WriteByteCode {
+  + byteCode : str
+}
+class genmymodelreverse_C1 {
+}
+class genmymodelreverse_C11 {
+}
+class genmymodelreverse_C12 {
+}
+class genmymodelreverse_C2 {
+}
+class genmymodelreverse_C21 {
+}
+class genmymodelreverse_java_io_IOException {
+}
+class genmymodelreverse_java_util_HashMap {
+}
+abstract class genmymodelreverse_java_util_Map_Interface {
+}
+class genmymodelreverse_java_util_Scanner {
+}
+class genmymodelreverse_java_util_Vector {
+}
+class interpreter_ByteCodeLoader {
+  + input : genmymodelreverse_java_util_Scanner
+  + lineCount : int
+  + programMap : str
+}
+class interpreter_CodeTable {
+  + byteCodesTXT : str
+  + codeMap : str
+}
+class interpreter_Interpreter {
+}
+class interpreter_Program {
+  + byteCodeVector : str
+  + programMap : str
+}
+class interpreter_RunTimeStack {
+  + framePointers : int
+  + runStack : str
+}
+class interpreter_VirtualMachine {
+  + dumpState : bool
+  + isRunning : bool
+  + pc : int
+  + returnAddrs : int
+}
+interpreter_ByteCodeLoader "0..1" -- "0..1" interpreter_Interpreter : bcl_Interpreter_ByteCodeLoader_2
+interpreter_Program "0..1" -- "0..1" interpreter_VirtualMachine : newProgram_VirtualMachine_Program_1
+interpreter_RunTimeStack "0..1" -- "0..1" interpreter_VirtualMachine : newRunStack_VirtualMachine_RunTimeStack_0
+@enduml

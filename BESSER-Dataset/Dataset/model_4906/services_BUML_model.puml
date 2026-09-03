@@ -1,0 +1,80 @@
+@startuml
+class Service {
+}
+enum ServiceClassType {
+  Bronze
+  Gold
+  Silver
+}
+class services_CFSService {
+  + provider : str
+  + scenario : str
+}
+class services_CIID {
+  + commonCIID : str
+  + localCIID : str
+}
+class services_DateTimeRange {
+}
+class services_EObject {
+}
+class services_Expression {
+}
+class services_NetXResource {
+}
+class services_RFSService {
+  + functionalCategory : str
+}
+class services_ResourceForecast {
+}
+class services_ResourceMonitor {
+}
+class services_Service {
+  + serviceCategory : str
+  + serviceClass : str
+  + serviceDescription : str
+  + serviceName : str
+}
+class services_ServiceDistribution {
+}
+class services_ServiceForecast {
+  + name : str
+  + revision : str
+}
+class services_ServiceForecastUsers {
+}
+class services_ServiceMonitor {
+  + name : str
+  + revision : str
+}
+class services_ServiceProfile {
+  + name : str
+}
+class services_ServiceUser {
+  + name : str
+}
+class services_Value {
+}
+Service <|-- services_CFSService
+Service <|-- services_RFSService
+services_CIID "0..9999" --* "1..1" services_Service : cIID4
+services_Expression "0..9999" -- "1..1" services_ServiceDistribution : expressionRefs18
+services_Expression "0..9999" -- "1..1" services_ServiceUser : expressionRefs41
+services_EObject "0..9999" -- "1..1" services_RFSService : nodes0
+services_DateTimeRange "0..1" --* "1..1" services_ServiceForecast : period20
+services_DateTimeRange "0..1" --* "1..1" services_ServiceMonitor : period31
+services_NetXResource "0..9999" --* "1..1" services_ServiceProfile : profileResources36
+services_ResourceForecast "0..9999" --* "1..1" services_ServiceForecast : resourceForecasts24
+services_ResourceMonitor "0..9999" --* "1..1" services_ServiceMonitor : resourceMonitors34
+services_Service "1..1" *-- "0..1" services_ServiceDistribution : serviceDistribution14
+services_ServiceForecast "1..1" *-- "0..9999" services_ServiceForecastUsers : serviceForecastUsers22
+services_Service "1..1" *-- "0..9999" services_ServiceForecast : serviceForecasts8
+services_Service "1..1" *-- "0..9999" services_ServiceMonitor : serviceMonitors10
+services_ServiceProfile "0..1" --* "1..1" services_ServiceUser : serviceProfile38
+services_NetXResource "0..9999" --* "1..1" services_ServiceDistribution : serviceResources16
+services_ServiceForecastUsers "1..1" -- "0..1" services_ServiceUser : serviceUserRef28
+services_Service "1..1" -- "0..9999" services_ServiceUser : serviceUserRefs12
+services_Service "0..9999" --* "1..1" services_Service : services6
+services_EObject "0..9999" -- "1..1" services_RFSService : toleranceRefs1
+services_ServiceForecastUsers "1..1" *-- "0..9999" services_Value : userValues26
+@enduml

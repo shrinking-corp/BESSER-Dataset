@@ -1,0 +1,340 @@
+@startuml
+class ArduinoAnalogModule {
+}
+class ArduinoDigitalModule {
+}
+class ArduinoModule {
+}
+class Assignment {
+}
+enum BinaryBooleanOperatorKind {
+  Different
+  and_
+  equal
+  inf
+  infOrEqual
+  or_
+  sup
+  supOrEqual
+}
+class BinaryExpression {
+}
+enum BinaryIntegerOperatorKind {
+  div
+  max
+  min
+  minus
+  mul
+  plus
+  pourcent
+}
+class Board {
+}
+class BooleanExpression {
+}
+enum Color {
+  blue
+  red
+  white
+}
+class Constant {
+}
+class Control {
+}
+class Expression {
+}
+class Instruction {
+}
+class IntegerExpression {
+}
+class Module {
+}
+class ModuleGet {
+}
+class ModuleInstruction {
+}
+class NamedElement {
+}
+class Pin {
+}
+enum Time {
+  MicroSecond
+  MilliSecond
+}
+enum UnaryBooleanOperatorKind {
+  not_
+}
+class UnaryExpression {
+}
+enum UnaryIntegerOperatorKind {
+  minus
+  squareRoot
+}
+class Utilities {
+}
+class Variable {
+}
+class VariableRef {
+}
+class arduino_AmbientLightSensor {
+}
+class arduino_AnalogPin {
+}
+abstract class arduino_ArduinoAnalogModule {
+}
+class arduino_ArduinoBoard {
+}
+abstract class arduino_ArduinoCommunicationModule {
+  + push() : void
+}
+abstract class arduino_ArduinoDigitalModule {
+}
+abstract class arduino_ArduinoModule {
+}
+abstract class arduino_Assignment {
+}
+class arduino_BinaryBooleanExpression {
+  + operator : str
+  + evaluate() : str
+}
+abstract class arduino_BinaryExpression {
+}
+class arduino_BinaryIntegerExpression {
+  + operator : str
+  + evaluate() : str
+}
+class arduino_Block {
+  + execute() : void
+}
+class arduino_BluetoothTransceiver {
+  + dataReceived : str
+  + dataToSend : str
+  + push() : void
+}
+abstract class arduino_Board {
+}
+class arduino_BooleanConstant {
+  + value : bool
+  + evaluate() : str
+}
+abstract class arduino_BooleanExpression {
+}
+class arduino_BooleanModuleGet {
+  + evaluate() : str
+}
+class arduino_BooleanVariable {
+  + initialValue : bool
+  + value : str
+  + evaluate() : str
+}
+class arduino_BooleanVariableRef {
+}
+class arduino_Buzzer {
+}
+abstract class arduino_Constant {
+  + evaluate() : str
+}
+abstract class arduino_Control {
+  + evaluate() : str
+  + execute() : void
+}
+class arduino_Delay {
+  + unit : str
+  + value : int
+  + execute() : void
+}
+class arduino_DigitalPin {
+}
+abstract class arduino_Expression {
+  + evaluate() : str
+}
+class arduino_Fan {
+}
+class arduino_If {
+  + evaluate() : str
+  + execute() : void
+}
+class arduino_InfraRedSensor {
+}
+abstract class arduino_Instruction {
+  + execute() : void
+  + finalize() : void
+}
+class arduino_IntegerConstant {
+  + value : int
+  + evaluate() : str
+}
+abstract class arduino_IntegerExpression {
+}
+class arduino_IntegerModuleGet {
+  + evaluate() : str
+}
+class arduino_IntegerVariable {
+  + initialValue : int
+  + value : str
+  + evaluate() : str
+}
+class arduino_IntegerVariableRef {
+}
+class arduino_LED {
+  + color : str
+}
+class arduino_MicroServo {
+}
+abstract class arduino_Module {
+}
+class arduino_ModuleAssignment {
+  + execute() : void
+}
+abstract class arduino_ModuleGet {
+}
+abstract class arduino_ModuleInstruction {
+  + execute() : void
+}
+class arduino_MusicPlayer {
+}
+abstract class arduino_NamedElement {
+  + name : str
+}
+abstract class arduino_Pin {
+  + level : str
+}
+class arduino_Project {
+  + execute() : void
+  + initializeModel(arduino_args : str) : void
+  + main() : void
+  + setup() : void
+}
+class arduino_PushButton {
+}
+class arduino_Repeat {
+  + iteration : int
+  + evaluate() : str
+  + execute() : void
+  + finalize() : void
+}
+class arduino_RotationSensor {
+}
+class arduino_Sketch {
+}
+class arduino_SoundSensor {
+}
+class arduino_UnaryBooleanExpression {
+  + operator : str
+}
+abstract class arduino_UnaryExpression {
+}
+class arduino_UnaryIntegerExpression {
+  + operator : str
+}
+abstract class arduino_Utilities {
+  + execute() : void
+}
+abstract class arduino_Variable {
+  + evaluate() : str
+}
+class arduino_VariableAssignment {
+  + execute() : void
+}
+class arduino_VariableDeclaration {
+  + execute() : void
+}
+abstract class arduino_VariableRef {
+  + evaluate() : str
+}
+class arduino_While {
+  + evaluate() : str
+  + execute() : void
+}
+ArduinoAnalogModule <|-- arduino_AmbientLightSensor
+ArduinoAnalogModule <|-- arduino_BluetoothTransceiver
+ArduinoAnalogModule <|-- arduino_MusicPlayer
+ArduinoAnalogModule <|-- arduino_RotationSensor
+ArduinoAnalogModule <|-- arduino_SoundSensor
+ArduinoDigitalModule <|-- arduino_ArduinoCommunicationModule
+ArduinoDigitalModule <|-- arduino_Buzzer
+ArduinoDigitalModule <|-- arduino_Fan
+ArduinoDigitalModule <|-- arduino_InfraRedSensor
+ArduinoDigitalModule <|-- arduino_LED
+ArduinoDigitalModule <|-- arduino_MicroServo
+ArduinoDigitalModule <|-- arduino_PushButton
+ArduinoModule <|-- arduino_ArduinoAnalogModule
+ArduinoModule <|-- arduino_ArduinoDigitalModule
+Assignment <|-- arduino_ModuleAssignment
+Assignment <|-- arduino_VariableAssignment
+BinaryExpression <|-- arduino_BinaryBooleanExpression
+BinaryExpression <|-- arduino_BinaryIntegerExpression
+Board <|-- arduino_ArduinoBoard
+BooleanExpression <|-- arduino_BinaryBooleanExpression
+BooleanExpression <|-- arduino_BooleanConstant
+BooleanExpression <|-- arduino_BooleanModuleGet
+BooleanExpression <|-- arduino_BooleanVariableRef
+BooleanExpression <|-- arduino_UnaryBooleanExpression
+Constant <|-- arduino_BooleanConstant
+Constant <|-- arduino_IntegerConstant
+Control <|-- arduino_If
+Control <|-- arduino_Repeat
+Control <|-- arduino_While
+Expression <|-- arduino_BinaryExpression
+Expression <|-- arduino_BooleanExpression
+Expression <|-- arduino_Constant
+Expression <|-- arduino_IntegerExpression
+Expression <|-- arduino_ModuleGet
+Expression <|-- arduino_UnaryExpression
+Expression <|-- arduino_VariableRef
+Instruction <|-- arduino_Assignment
+Instruction <|-- arduino_Control
+Instruction <|-- arduino_ModuleInstruction
+Instruction <|-- arduino_Utilities
+Instruction <|-- arduino_VariableAssignment
+Instruction <|-- arduino_VariableDeclaration
+IntegerExpression <|-- arduino_BinaryIntegerExpression
+IntegerExpression <|-- arduino_IntegerConstant
+IntegerExpression <|-- arduino_IntegerModuleGet
+IntegerExpression <|-- arduino_IntegerVariableRef
+IntegerExpression <|-- arduino_UnaryIntegerExpression
+Module <|-- arduino_ArduinoModule
+ModuleGet <|-- arduino_BooleanModuleGet
+ModuleGet <|-- arduino_IntegerModuleGet
+ModuleInstruction <|-- arduino_ModuleAssignment
+NamedElement <|-- arduino_Board
+NamedElement <|-- arduino_Module
+NamedElement <|-- arduino_Pin
+NamedElement <|-- arduino_Sketch
+NamedElement <|-- arduino_Variable
+Pin <|-- arduino_AnalogPin
+Pin <|-- arduino_DigitalPin
+UnaryExpression <|-- arduino_UnaryBooleanExpression
+UnaryExpression <|-- arduino_UnaryIntegerExpression
+Utilities <|-- arduino_Delay
+Variable <|-- arduino_BooleanVariable
+Variable <|-- arduino_IntegerVariable
+VariableRef <|-- arduino_BooleanVariableRef
+VariableRef <|-- arduino_IntegerVariableRef
+arduino_AnalogPin "0..9999" --* "1..1" arduino_ArduinoBoard : analogPins38
+arduino_Block "1..1" --* "1..1" arduino_Control : block12
+arduino_Block "0..1" --* "1..1" arduino_Sketch : block5
+arduino_Board "0..1" -- "1..1" arduino_Sketch : board6
+arduino_Board "0..9999" --* "1..1" arduino_Project : boards8
+arduino_BooleanExpression "1..1" --* "1..1" arduino_While : condition16
+arduino_BooleanExpression "1..1" --* "1..1" arduino_If : condition22
+arduino_BluetoothTransceiver "1..1" -- "0..9999" arduino_BluetoothTransceiver : connectedTransceiver43
+arduino_ArduinoBoard "1..1" *-- "0..9999" arduino_DigitalPin : digitalPins36
+arduino_Block "0..1" --* "1..1" arduino_If : elseBlock24
+arduino_Block "1..1" *-- "0..9999" arduino_Instruction : instructions34
+arduino_BinaryExpression "1..1" *-- "1..1" arduino_Expression : left17
+arduino_ArduinoDigitalModule "0..1" --* "1..1" arduino_DigitalPin : module1
+arduino_Module "1..1" -- "1..1" arduino_ModuleInstruction : module11
+arduino_Module "1..1" -- "1..1" arduino_ModuleGet : module14
+arduino_AnalogPin "1..1" *-- "0..1" arduino_ArduinoAnalogModule : module2
+arduino_Assignment "1..1" *-- "1..1" arduino_Expression : operand27
+arduino_Expression "1..1" --* "1..1" arduino_UnaryExpression : operand29
+arduino_Board "1..1" -- "1..1" arduino_Project : project0
+arduino_Project "1..1" -- "1..1" arduino_Sketch : project3
+arduino_BinaryExpression "1..1" *-- "0..1" arduino_Expression : right18
+arduino_Project "1..1" *-- "0..9999" arduino_Sketch : sketches9
+arduino_Variable "1..1" -- "1..1" arduino_VariableAssignment : variable21
+arduino_Variable "1..1" --* "1..1" arduino_VariableDeclaration : variable31
+arduino_IntegerVariable "1..1" -- "1..1" arduino_IntegerVariableRef : variable33
+arduino_BooleanVariable "1..1" -- "1..1" arduino_BooleanVariableRef : variable41
+@enduml

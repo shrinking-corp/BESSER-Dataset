@@ -1,0 +1,105 @@
+@startuml
+class Editable {
+}
+class FormElement {
+}
+enum GraphType {
+  BAR
+  NONE
+  PIE
+  SCALAR
+}
+enum InputType {
+  DATE
+  EMAIL
+  NUMBER
+  RANGE
+  TEXT
+}
+enum SelectType {
+  COMBO
+  LIST
+}
+class SelectionList {
+}
+class html_ColumnOption {
+  + content : str
+  + value : int
+}
+class html_Container {
+  + name : str
+}
+abstract class html_Editable {
+  + name : int
+  + required : bool
+}
+abstract class html_FormElement {
+  + id : str
+  + visible : bool
+}
+class html_Graph {
+  + title : str
+  + type : str
+}
+class html_Input {
+  + checked : bool
+  + max : int
+  + maxLength : int
+  + min : int
+  + step : int
+  + type : str
+}
+class html_Label {
+  + content : str
+  + forText : int
+}
+class html_Option {
+  + content : str
+  + value : int
+}
+class html_Page {
+  + description : str
+  + id : int
+  + title : str
+  + urlToGetData : str
+  + urlToGetRelationResult : str
+  + urlToSaveResponses : str
+}
+class html_Section {
+  + id : int
+  + title : str
+}
+class html_Select {
+  + type : str
+}
+class html_SelectComplex {
+}
+abstract class html_SelectionList {
+  + multiple : bool
+}
+class html_TextArea {
+  + maxLength : int
+  + rows : int
+}
+class html_View {
+  + title : str
+}
+Editable <|-- html_Input
+Editable <|-- html_SelectionList
+Editable <|-- html_TextArea
+FormElement <|-- html_Editable
+FormElement <|-- html_Label
+SelectionList <|-- html_Select
+SelectionList <|-- html_SelectComplex
+html_ColumnOption "0..9999" --* "1..1" html_SelectComplex : columnsOptions12
+html_FormElement "0..9999" --* "1..1" html_Section : formElements3
+html_FormElement "0..9999" -- "1..1" html_Option : formElements9
+html_Graph "0..9999" --* "1..1" html_View : graphs0
+html_Editable "1..1" *-- "1..1" html_Label : label5
+html_Option "0..9999" --* "1..1" html_SelectComplex : options13
+html_Option "0..9999" --* "1..1" html_Select : options6
+html_Option "1..1" *-- "0..1" html_TextArea : otherArea7
+html_Container "1..1" *-- "0..9999" html_Page : pages16
+html_Section "0..9999" --* "1..1" html_View : sections1
+html_Page "1..1" *-- "0..9999" html_View : views17
+@enduml

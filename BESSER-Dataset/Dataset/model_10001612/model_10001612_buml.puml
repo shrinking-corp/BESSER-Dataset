@@ -1,0 +1,32 @@
+@startuml
+class Admin {
+  + id : int
+  + password : str
+  + username : str
+}
+class Book {
+  + author : str
+  + name : str
+}
+class Guest {
+}
+class Librarian {
+  + attribute : str
+  + id : int
+  + password : str
+}
+class Member {
+  + id : int
+  + name : str
+  + password : str
+  + username : str
+}
+class log {
+}
+Admin "0..1" -- "0..1" Book : Admin_Book
+Book "0..1" -- "0..1" Member : Book_Member
+Book "0..1" -- "0..1" Guest : Guest_Book
+Admin "0..9999" -- "0..1" log : log_Admin
+Librarian "0..9999" -- "0..1" log : log_Librarian
+Member "0..1" -- "0..1" log : log_Member
+@enduml

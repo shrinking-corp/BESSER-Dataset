@@ -1,0 +1,91 @@
+@startuml
+class Storage {
+}
+class statespace_EAttribute {
+}
+class statespace_EClass {
+}
+class statespace_EObject {
+}
+class statespace_EObjectIntegerMapEntry {
+  + value : str
+}
+class statespace_EStringToStringMapEntry {
+}
+class statespace_EqualityHelper {
+  + checkLinkOrder : bool
+  + equals(statespace_model1 : str, statespace_model2 : str) : bool
+  + hashCode(statespace_model : str) : int
+  + setStateSpace(statespace_stateSpace : str) : void
+}
+class statespace_Model {
+  + eGraph : str
+  + objectCount : int
+  + objectKeys : str
+  + resource : str
+  + collectMissingRootObjects() : void
+  + getCopy(statespace_match : str) : str
+  + updateObjectKeys(statespace_identityTypes : str) : bool
+}
+class statespace_Rule {
+}
+class statespace_State {
+  + derivedFrom : int
+  + goal : bool
+  + hashCode : int
+  + index : int
+  + location : str
+  + objectCount : int
+  + objectKeys : str
+  + open : bool
+  + pruned : bool
+  + getOutgoing(statespace_match : str, statespace_paramIDs : str, statespace_rule : str, statespace_target : str) : str
+  + isInitial() : bool
+}
+class statespace_StateSpace {
+  + allParameterKeys : str
+  + layoutHideIndizes : bool
+  + layoutHideLabels : bool
+  + layoutStateRepulsion : int
+  + layoutTransitionAttraction : int
+  + layoutZoomLevel : int
+  + maxStateDistance : int
+  + stateCount : int
+  + transitionCount : int
+  + incTransitionCount() : int
+  + removeState(statespace_state : str) : bool
+  + updateEqualityHelper() : void
+}
+class statespace_Storage {
+  + data : str
+  + getData(statespace_beginIndex : str, statespace_endIndex : str) : str
+  + setData(statespace_beginIndex : str, statespace_endIndex : str, statespace_value : str) : void
+}
+class statespace_Transition {
+  + match : int
+  + parameterCount : int
+  + parameterKeys : str
+  + getLabel() : str
+}
+Storage <|-- statespace_State
+Storage <|-- statespace_StateSpace
+Storage <|-- statespace_Transition
+statespace_EqualityHelper "0..1" --* "1..1" statespace_StateSpace : equalityHelper7
+statespace_EClass "1..9999" -- "1..1" statespace_EqualityHelper : identityTypes30
+statespace_EAttribute "1..9999" -- "1..1" statespace_EqualityHelper : ignoredAttributes28
+statespace_State "1..1" -- "0..9999" statespace_Transition : incoming11
+statespace_State "0..9999" -- "1..1" statespace_StateSpace : initialStates2
+statespace_EObject "0..1" -- "1..1" statespace_EObjectIntegerMapEntry : key32
+statespace_Model "0..1" --* "1..1" statespace_State : model15
+statespace_EObjectIntegerMapEntry "0..9999" --* "1..1" statespace_Model : objectHashCodes17
+statespace_EObjectIntegerMapEntry "0..9999" --* "1..1" statespace_Model : objectKeysMap19
+statespace_State "0..9999" -- "1..1" statespace_StateSpace : openStates4
+statespace_State "1..1" *-- "0..9999" statespace_Transition : outgoing12
+statespace_EStringToStringMapEntry "0..9999" --* "1..1" statespace_StateSpace : properties9
+statespace_Rule "0..1" -- "1..1" statespace_Transition : rule26
+statespace_Rule "0..9999" -- "1..1" statespace_StateSpace : rules0
+statespace_State "0..1" -- "1..1" statespace_Transition : source22
+statespace_State "1..1" -- "0..1" statespace_StateSpace : stateSpace14
+statespace_State "0..9999" --* "1..1" statespace_StateSpace : states1
+statespace_State "0..1" -- "1..1" statespace_Transition : target24
+@enduml

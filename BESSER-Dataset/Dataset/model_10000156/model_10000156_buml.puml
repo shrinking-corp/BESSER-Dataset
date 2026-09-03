@@ -1,0 +1,29 @@
+@startuml
+class Avatar {
+}
+class Card {
+  + kind : Kind
+  + suit : Suit
+}
+class Deck {
+}
+abstract class Game {
+  + name : str
+}
+enum Kind {
+}
+abstract class Player {
+  + name : str
+}
+enum Suit {
+}
+class Theme {
+}
+Card "1..9999" -- "1..1" Deck : Deck_Card
+Deck "0..9999" -- "1..1" Theme : Deck_Theme
+Deck "1..9999" -- "0..9999" Game : Game_Deck
+Game "0..9999" -- "1..9999" Player : Game_Player
+Avatar "0..1" -- "0..9999" Player : Player_Avatar
+Card "1..9999" -- "0..1" Player : Player_Card
+Avatar "0..1" -- "0..1" Theme : Theme_Avatar
+@enduml

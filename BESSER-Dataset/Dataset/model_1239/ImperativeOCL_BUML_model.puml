@@ -1,0 +1,167 @@
+@startuml
+class AltExp {
+}
+class CatchExp {
+}
+class Class {
+}
+class CollectionType {
+}
+class DictLiteralExp {
+}
+class DictLiteralPart {
+}
+class Element {
+}
+class ImperativeExpression {
+}
+class ImperativeLoopExp {
+}
+class ImperativeOCL_AltExp {
+}
+class ImperativeOCL_AssertExp {
+  + severity : str
+}
+class ImperativeOCL_AssignExp {
+  + isReset : str
+}
+class ImperativeOCL_BlockExp {
+}
+class ImperativeOCL_BreakExp {
+}
+class ImperativeOCL_CatchExp {
+}
+class ImperativeOCL_ComputeExp {
+}
+class ImperativeOCL_ContinueExp {
+}
+class ImperativeOCL_DictLiteralExp {
+}
+class ImperativeOCL_DictLiteralPart {
+}
+class ImperativeOCL_DictionaryType {
+}
+class ImperativeOCL_ForExp {
+}
+abstract class ImperativeOCL_ImperativeExpression {
+}
+class ImperativeOCL_ImperativeIterateExp {
+}
+abstract class ImperativeOCL_ImperativeLoopExp {
+}
+class ImperativeOCL_InstantiationExp {
+}
+class ImperativeOCL_ListLiteralExp {
+}
+class ImperativeOCL_ListType {
+}
+class ImperativeOCL_LogExp {
+}
+class ImperativeOCL_RaiseExp {
+}
+class ImperativeOCL_ReturnExp {
+}
+class ImperativeOCL_SwitchExp {
+}
+class ImperativeOCL_TryExp {
+}
+class ImperativeOCL_Typedef {
+}
+class ImperativeOCL_UnlinkExp {
+}
+class ImperativeOCL_VariableInitExp {
+  + withResult : str
+}
+class ImperativeOCL_WhileExp {
+}
+class LiteralExp {
+}
+class LogExp {
+}
+class LoopExp {
+}
+class OclExpression {
+}
+class Operation {
+}
+class OperationCallExp {
+}
+enum SeverityKind {
+  error
+  fatal
+  warning
+}
+class Type {
+}
+class Variable {
+}
+Class <|-- ImperativeOCL_Typedef
+CollectionType <|-- ImperativeOCL_DictionaryType
+CollectionType <|-- ImperativeOCL_ListType
+Element <|-- ImperativeOCL_DictLiteralPart
+ImperativeExpression <|-- ImperativeOCL_AltExp
+ImperativeExpression <|-- ImperativeOCL_AssertExp
+ImperativeExpression <|-- ImperativeOCL_AssignExp
+ImperativeExpression <|-- ImperativeOCL_BlockExp
+ImperativeExpression <|-- ImperativeOCL_BreakExp
+ImperativeExpression <|-- ImperativeOCL_CatchExp
+ImperativeExpression <|-- ImperativeOCL_ComputeExp
+ImperativeExpression <|-- ImperativeOCL_ContinueExp
+ImperativeExpression <|-- ImperativeOCL_ImperativeLoopExp
+ImperativeExpression <|-- ImperativeOCL_InstantiationExp
+ImperativeExpression <|-- ImperativeOCL_LogExp
+ImperativeExpression <|-- ImperativeOCL_RaiseExp
+ImperativeExpression <|-- ImperativeOCL_ReturnExp
+ImperativeExpression <|-- ImperativeOCL_SwitchExp
+ImperativeExpression <|-- ImperativeOCL_TryExp
+ImperativeExpression <|-- ImperativeOCL_UnlinkExp
+ImperativeExpression <|-- ImperativeOCL_VariableInitExp
+ImperativeExpression <|-- ImperativeOCL_WhileExp
+ImperativeLoopExp <|-- ImperativeOCL_ForExp
+ImperativeLoopExp <|-- ImperativeOCL_ImperativeIterateExp
+LiteralExp <|-- ImperativeOCL_DictLiteralExp
+LiteralExp <|-- ImperativeOCL_ListLiteralExp
+LoopExp <|-- ImperativeOCL_ImperativeLoopExp
+OclExpression <|-- ImperativeOCL_ImperativeExpression
+OperationCallExp <|-- ImperativeOCL_LogExp
+AltExp "0..9999" --* "1..1" ImperativeOCL_SwitchExp : alternativePart63
+ImperativeOCL_InstantiationExp "1..1" *-- "0..9999" OclExpression : argument43
+ImperativeOCL_RaiseExp "1..1" *-- "0..1" OclExpression : argument56
+ImperativeOCL_AssertExp "1..1" *-- "1..1" OclExpression : assertion4
+ImperativeOCL_Typedef "1..1" -- "1..1" Type : base71
+ImperativeOCL_AltExp "1..1" *-- "1..1" OclExpression : body0
+ImperativeOCL_BlockExp "1..1" *-- "0..9999" OclExpression : body16
+ImperativeOCL_CatchExp "1..1" *-- "0..9999" OclExpression : body18
+ImperativeOCL_ComputeExp "1..1" *-- "1..1" OclExpression : body24
+ImperativeOCL_WhileExp "1..1" *-- "1..1" OclExpression : body83
+ImperativeOCL_AltExp "1..1" *-- "1..1" OclExpression : condition1
+ImperativeOCL_ImperativeLoopExp "1..1" *-- "0..1" OclExpression : condition41
+ImperativeOCL_LogExp "1..1" *-- "0..1" OclExpression : condition54
+ImperativeOCL_Typedef "1..1" *-- "0..1" OclExpression : condition73
+ImperativeOCL_WhileExp "1..1" *-- "1..1" OclExpression : condition85
+ImperativeOCL_AssignExp "1..1" *-- "0..1" OclExpression : defaultValue8
+ImperativeOCL_ListLiteralExp "1..1" *-- "0..9999" OclExpression : element52
+ImperativeOCL_SwitchExp "1..1" *-- "0..1" OclExpression : elsePart64
+CatchExp "0..9999" --* "1..1" ImperativeOCL_TryExp : exceptClause67
+ImperativeOCL_CatchExp "1..1" -- "1..9999" Type : exception20
+ImperativeOCL_RaiseExp "1..1" -- "1..1" Type : exception58
+ImperativeOCL_CatchExp "1..1" *-- "0..1" Variable : exceptionVariable22
+ImperativeOCL_InstantiationExp "1..1" -- "0..1" Variable : extent45
+ImperativeOCL_InstantiationExp "1..1" -- "0..1" Operation : initializationOperation50
+Class "1..1" -- "1..1" ImperativeOCL_InstantiationExp : instantiatedClass48
+ImperativeOCL_UnlinkExp "1..1" *-- "1..1" OclExpression : item76
+ImperativeOCL_DictLiteralPart "1..1" *-- "1..1" OclExpression : key30
+ImperativeOCL_DictionaryType "1..1" -- "0..1" Type : keyType37
+ImperativeOCL_AssignExp "1..1" *-- "1..1" OclExpression : left10
+ImperativeOCL_AssertExp "1..1" *-- "0..1" LogExp : log6
+DictLiteralPart "0..9999" --* "1..1" ImperativeOCL_DictLiteralExp : part29
+DictLiteralExp "1..1" -- "1..1" ImperativeOCL_DictLiteralPart : partOwner35
+ImperativeOCL_VariableInitExp "1..1" *-- "1..1" Variable : referredVariable81
+ImperativeOCL_ComputeExp "1..1" *-- "1..1" Variable : returnedElement26
+ImperativeOCL_ImperativeIterateExp "1..1" *-- "0..1" Variable : target39
+ImperativeOCL_UnlinkExp "1..1" *-- "1..1" OclExpression : target78
+ImperativeOCL_TryExp "1..1" *-- "0..9999" OclExpression : tryBody68
+ImperativeOCL_AssignExp "1..1" *-- "0..9999" OclExpression : value13
+ImperativeOCL_DictLiteralPart "1..1" *-- "1..1" OclExpression : value32
+ImperativeOCL_ReturnExp "1..1" *-- "0..1" OclExpression : value61
+@enduml

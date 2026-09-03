@@ -1,0 +1,53 @@
+@startuml
+class AuthoredEntry {
+}
+class DatedEntry {
+}
+class Entries {
+}
+class MonthEntry {
+}
+class bibtex_Article {
+  + journal : str
+  + note : str
+  + number : int
+  + pages : int
+  + volume : int
+}
+class bibtex_Author {
+  + name : str
+  + surname : str
+}
+abstract class bibtex_AuthoredEntry {
+}
+class bibtex_Bibtex {
+}
+class bibtex_Book {
+  + address : str
+  + edition : int
+  + publisher : str
+  + series : int
+  + volume : int
+}
+abstract class bibtex_DatedEntry {
+  + year : int
+}
+abstract class bibtex_Entries {
+}
+abstract class bibtex_MonthEntry {
+  + month : str
+}
+AuthoredEntry <|-- bibtex_Article
+AuthoredEntry <|-- bibtex_Book
+DatedEntry <|-- bibtex_Article
+DatedEntry <|-- bibtex_Book
+Entries <|-- bibtex_Article
+Entries <|-- bibtex_AuthoredEntry
+Entries <|-- bibtex_Book
+Entries <|-- bibtex_DatedEntry
+Entries <|-- bibtex_MonthEntry
+MonthEntry <|-- bibtex_Article
+MonthEntry <|-- bibtex_Book
+bibtex_Bibtex "1..1" *-- "0..9999" bibtex_Entries : entries0
+bibtex_Author "1..1" *-- "1..9999" bibtex_AuthoredEntry : has1
+@enduml

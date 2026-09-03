@@ -1,0 +1,200 @@
+@startuml
+class ApproximateNumericType {
+}
+class BitStringType {
+}
+class CharacterStringType {
+}
+abstract class DDL_ApproximateNumericType {
+}
+class DDL_Bfile {
+}
+class DDL_Bit {
+}
+abstract class DDL_BitStringType {
+  + length : int
+}
+class DDL_BitVarying {
+}
+class DDL_Blob {
+}
+class DDL_Char {
+}
+class DDL_CharVarying {
+}
+class DDL_Character {
+}
+abstract class DDL_CharacterStringType {
+  + length : int
+}
+class DDL_CharacterVarying {
+}
+class DDL_Check {
+}
+class DDL_Ck {
+  + columnName : str
+}
+class DDL_Clob {
+}
+class DDL_Column {
+  + columnNull : bool
+}
+class DDL_DDLDefinition {
+}
+class DDL_Database {
+}
+class DDL_Date {
+}
+abstract class DDL_DatetimeType {
+}
+class DDL_Dec {
+  + precision : int
+  + scale : int
+}
+class DDL_Decimal {
+  + precision : int
+  + scale : int
+}
+class DDL_DoublePrecision {
+}
+abstract class DDL_ExactNumericType {
+}
+class DDL_Fk {
+  + columnName : str
+  + columnReference : str
+}
+class DDL_Float {
+  + precision : int
+}
+class DDL_Int {
+}
+class DDL_Integer {
+}
+class DDL_Interval {
+  + field1 : str
+  + field2 : str
+  + precision1 : int
+  + precision2 : int
+}
+class DDL_NChar {
+}
+class DDL_NCharVarying {
+}
+abstract class DDL_NamedElement {
+  + name : str
+}
+class DDL_NationalChar {
+}
+class DDL_NationalCharVarying {
+}
+class DDL_NationalCharacter {
+}
+abstract class DDL_NationalCharacterStringType {
+  + length : int
+}
+class DDL_NationalCharacterVarying {
+}
+class DDL_Numeric {
+  + precision : int
+  + scale : int
+}
+abstract class DDL_NumericType {
+}
+class DDL_Pk {
+  + columnName : str
+}
+class DDL_Real {
+}
+class DDL_Small {
+}
+abstract class DDL_Statement {
+}
+class DDL_Table {
+}
+class DDL_Time {
+  + precision : int
+  + withTimeZone : bool
+}
+class DDL_TimeStamp {
+  + precision : int
+  + withTimeZone : bool
+}
+abstract class DDL_Type {
+}
+class DDL_ValuesCheck {
+  + columnName : str
+  + comparator : str
+  + logConjuntion : str
+  + value : str
+}
+class DDL_Varchar {
+}
+class DatetimeType {
+}
+class ExactNumericType {
+}
+class NamedElement {
+}
+class NationalCharacterStringType {
+}
+class NumericType {
+}
+class Statement {
+}
+class Type {
+}
+ApproximateNumericType <|-- DDL_DoublePrecision
+ApproximateNumericType <|-- DDL_Float
+ApproximateNumericType <|-- DDL_Real
+BitStringType <|-- DDL_Bit
+BitStringType <|-- DDL_BitVarying
+CharacterStringType <|-- DDL_Char
+CharacterStringType <|-- DDL_CharVarying
+CharacterStringType <|-- DDL_Character
+CharacterStringType <|-- DDL_CharacterVarying
+CharacterStringType <|-- DDL_Clob
+CharacterStringType <|-- DDL_Varchar
+DatetimeType <|-- DDL_Date
+DatetimeType <|-- DDL_Time
+DatetimeType <|-- DDL_TimeStamp
+ExactNumericType <|-- DDL_Dec
+ExactNumericType <|-- DDL_Decimal
+ExactNumericType <|-- DDL_Int
+ExactNumericType <|-- DDL_Integer
+ExactNumericType <|-- DDL_Numeric
+ExactNumericType <|-- DDL_Small
+NamedElement <|-- DDL_Check
+NamedElement <|-- DDL_Ck
+NamedElement <|-- DDL_Column
+NamedElement <|-- DDL_Database
+NamedElement <|-- DDL_Fk
+NamedElement <|-- DDL_Pk
+NamedElement <|-- DDL_Table
+NationalCharacterStringType <|-- DDL_NChar
+NationalCharacterStringType <|-- DDL_NCharVarying
+NationalCharacterStringType <|-- DDL_NationalChar
+NationalCharacterStringType <|-- DDL_NationalCharVarying
+NationalCharacterStringType <|-- DDL_NationalCharacter
+NationalCharacterStringType <|-- DDL_NationalCharacterVarying
+NumericType <|-- DDL_ApproximateNumericType
+NumericType <|-- DDL_ExactNumericType
+Statement <|-- DDL_Database
+Statement <|-- DDL_Table
+Type <|-- DDL_Bfile
+Type <|-- DDL_BitStringType
+Type <|-- DDL_Blob
+Type <|-- DDL_CharacterStringType
+Type <|-- DDL_DatetimeType
+Type <|-- DDL_Interval
+Type <|-- DDL_NationalCharacterStringType
+Type <|-- DDL_NumericType
+DDL_Check "0..9999" --* "1..1" DDL_Table : checks8
+DDL_Ck "0..9999" --* "1..1" DDL_Table : cks4
+DDL_Column "0..9999" --* "1..1" DDL_Table : columns1
+DDL_Fk "0..9999" --* "1..1" DDL_Table : fks6
+DDL_Pk "0..1" --* "1..1" DDL_Table : pks2
+DDL_Fk "1..1" -- "0..1" DDL_Table : references12
+DDL_DDLDefinition "1..1" *-- "0..9999" DDL_Statement : statements0
+DDL_Column "1..1" *-- "1..1" DDL_Type : type10
+DDL_Check "1..1" *-- "0..9999" DDL_ValuesCheck : valuesCheck15
+@enduml

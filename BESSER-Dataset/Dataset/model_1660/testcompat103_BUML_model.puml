@@ -1,0 +1,46 @@
+@startuml
+class EClass0 {
+}
+class NamedElement {
+}
+class World {
+}
+class testcompat103_EClass0 {
+}
+class testcompat103_EClass1 {
+}
+class testcompat103_EClass2 {
+}
+class testcompat103_EClass3 {
+}
+class testcompat103_Foo {
+}
+abstract class testcompat103_NamedElement {
+  + name : str
+}
+class testcompat103_RelatedTo {
+  + since : str
+}
+class testcompat103_Thing {
+  + id : int
+}
+abstract class testcompat103_World {
+}
+EClass0 <|-- testcompat103_EClass2
+NamedElement <|-- testcompat103_EClass0
+NamedElement <|-- testcompat103_EClass1
+NamedElement <|-- testcompat103_Foo
+NamedElement <|-- testcompat103_RelatedTo
+NamedElement <|-- testcompat103_Thing
+NamedElement <|-- testcompat103_World
+World <|-- testcompat103_EClass3
+testcompat103_EClass0 "1..1" *-- "0..9999" testcompat103_EClass1 : e1s11
+testcompat103_EClass0 "0..9999" --* "1..1" testcompat103_World : ec0s3
+testcompat103_EClass2 "0..9999" --* "1..1" testcompat103_World : ec2s5
+testcompat103_Foo "0..9999" --* "1..1" testcompat103_World : foos1
+testcompat103_RelatedTo "1..1" -- "0..1" testcompat103_Thing : fromThing8
+testcompat103_RelatedTo "0..9999" --* "1..1" testcompat103_Thing : relations7
+testcompat103_EClass3 "1..1" *-- "0..9999" testcompat103_EClass3 : subs14
+testcompat103_Thing "0..9999" --* "1..1" testcompat103_World : things0
+testcompat103_RelatedTo "1..1" -- "0..1" testcompat103_Thing : toThing9
+@enduml

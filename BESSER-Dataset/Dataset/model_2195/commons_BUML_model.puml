@@ -1,0 +1,569 @@
+@startuml
+enum AccountStatus {
+  active
+  draft
+  inactive
+  unregister
+  validated
+  verified
+  void
+}
+enum ArchivalStatus {
+  archived
+  fresh
+}
+class BundleAware {
+}
+enum CustomerRoleStatus {
+  active
+  inactive
+  void
+}
+class Describable {
+}
+enum EClassStatus {
+  resolved
+  unresolved
+}
+enum EntityKind {
+  article
+  banner_shop
+  category
+  page
+  person
+  place
+  product
+  product_release
+  shop
+  tag
+  task
+}
+class Expandable {
+}
+enum ExpansionState {
+  expanded
+  unexpanded
+}
+enum Gender {
+  female
+  male
+  unknown
+}
+enum GenericStatus {
+  booked
+  draft
+  inactive
+  void
+}
+class Identifiable {
+}
+class Imageable {
+}
+enum JavaClassStatus {
+  resolved
+  unresolved
+}
+class NameContainer {
+}
+class Nameable {
+}
+class NsPrefixable {
+}
+class PersonLike {
+}
+class PhotoIdContainer {
+}
+class Positionable {
+}
+class ProgressMonitor {
+}
+enum ProgressStatus {
+  deleted
+  error
+  ok
+  skipped
+  warning
+}
+enum PublicationStatus {
+  draft
+  published
+  unpublished
+}
+class ResourceAware {
+}
+enum ResourceType {
+  bundle
+  classpath
+  database
+  file
+}
+class SchemaVersionable {
+}
+enum SignupSourceType {
+  alia_magazine
+  facebook_ads
+  facebook_friend
+  google_ads
+  google_search
+  other
+}
+class Sluggable {
+}
+class SysConfig {
+}
+enum TenantSource {
+  classpath
+  config
+  repository
+}
+class Timestamped {
+}
+enum TranslationState {
+  original
+  translated
+}
+class commons_Added {
+}
+class commons_AddedMany {
+}
+class commons_AppManifest {
+  + defaultCategoryUName : str
+  + defaultCountryCode : str
+  + defaultCurrency : str
+  + defaultCurrencyCode : str
+  + defaultLanguageTag : str
+  + defaultStyle : str
+  + defaultTimeZone : str
+  + defaultTimeZoneId : str
+  + defaultVariation : str
+  + description : str
+  + domain : str
+  + domainDev : str
+  + domainPrd : str
+  + domainStg : str
+  + emailLogoUriTemplate : str
+  + footnote : str
+  + generalEmail : str
+  + generalEmailDev : str
+  + generalEmailPrd : str
+  + generalEmailStg : str
+  + headNote : str
+  + headTitle : str
+  + kursDollarDpex : str
+  + kursDollarPaypal : str
+  + letterClosing : str
+  + letterSalutation : str
+  + organizationAddress : str
+  + organizationName : str
+  + organizationPhoneNumbers : str
+  + reminderPeriod : str
+  + reminderPeriodStr : str
+  + reminderSchedule : str
+  + reminderScheduleStr : str
+  + shipmentLogoUriTemplate : str
+  + summary : str
+  + supportEmail : str
+  + title : str
+  + wwwUsed : str
+  + getDefaultLocale() : str
+  + getWebHost() : str
+}
+class commons_AttributeNotification {
+  + newValue : str
+  + object : str
+  + oldValue : str
+}
+class commons_AttributeSet {
+  + principals : str
+}
+class commons_AttributeUnset {
+}
+abstract class commons_BundleAware {
+  + bundle : str
+}
+abstract class commons_CanonicalSluggable {
+  + canonicalSlug : str
+}
+class commons_CategoryInfo {
+  + googleFormalId : str
+  + primaryUri : str
+  + getEffectiveName(commons_curLanguageTag : str) : str
+}
+abstract class commons_CategoryLike {
+  + categoryCount : str
+  + color : str
+  + imageId : str
+  + level : str
+  + slugPath : str
+}
+abstract class commons_Colorable {
+  + color : str
+}
+class commons_CustomerRole {
+  + agentSalesReportEnabled : bool
+  + bookingEnabled : bool
+  + bookingExpiryTimeInMinutes : int
+  + dropshipEnabled : bool
+  + historySalesOrderEnabled : bool
+  + paymentGatewayEnabled : bool
+  + quickShopEnabled : bool
+  + readOnly : bool
+  + reviewReminderEnabled : bool
+  + salesOrderReportEnabled : bool
+  + schemaVersion : str
+  + status : str
+  + transactionHistoryEnabled : bool
+  + zendeskIntegration : bool
+  + zendeskOrganizationId : str
+}
+abstract class commons_Describable {
+  + description : str
+}
+class commons_EAttribute {
+}
+class commons_EClass {
+}
+abstract class commons_EClassLinked {
+  + eClassName : str
+  + eClassStatus : str
+  + ePackageName : str
+  + ePackageNsPrefix : str
+  + resolveEClass(commons_eClassMap : str) : void
+}
+abstract class commons_EFactoryLinked {
+  + eFactory : str
+}
+class commons_EObject {
+}
+abstract class commons_EObjectLinked {
+  + getObject() : void
+}
+class commons_Email {
+  + email : str
+  + primary : bool
+  + validationTime : str
+}
+class commons_EventBusProgressMonitor {
+  + eventBus : str
+  + trackingId : str
+}
+abstract class commons_Expandable {
+  + expansionState : str
+  + expand(commons_scope : str) : void
+}
+class commons_FacebookAccessible {
+  + facebookAccessToken : str
+}
+class commons_FacebookIdentity {
+  + facebookId : str
+  + facebookUsername : str
+}
+abstract class commons_GeneralSysConfig {
+  + sslSupported : str
+}
+class commons_Geolocation {
+  + elevation : str
+  + latitude : str
+  + longitude : str
+}
+abstract class commons_Identifiable {
+  + id : str
+}
+abstract class commons_Imageable {
+  + getImageId() : str
+}
+abstract class commons_Informer {
+  + toInfo() : void
+}
+abstract class commons_JavaClassLinked {
+  + javaClass : str
+  + javaClassName : str
+  + javaClassStatus : str
+  + resolveJavaClass(commons_bundle : str) : void
+}
+abstract class commons_ModelNotification {
+}
+abstract class commons_MongoSysConfig {
+  + mongoUri : str
+}
+abstract class commons_NameContainer {
+  + name : str
+}
+abstract class commons_Nameable {
+  + getName() : str
+}
+abstract class commons_NsPrefixable {
+  + nsPrefix : str
+}
+abstract class commons_ObjectNotification {
+  + object : str
+}
+abstract class commons_ObjectsNotification {
+  + objects : str
+}
+class commons_Organization {
+  + blackBerryPin : str
+  + facebookAccessToken : str
+  + facebookId : str
+  + facebookPageUri : str
+  + facebookUserName : str
+  + schemaVersion : str
+  + twitterAccessToken : str
+  + twitterAccessTokenSecret : str
+  + twitterId : str
+  + twitterScreenName : str
+  + website : str
+}
+abstract class commons_Parentable {
+}
+class commons_Person {
+  + accountStatus : str
+  + activationTime : str
+  + archivalStatus : str
+  + birthDate : str
+  + birthDay : str
+  + birthMonth : str
+  + birthYear : str
+  + clientAccessToken : str
+  + currency : str
+  + currencyCode : str
+  + customerRole : str
+  + customerRoleEditTime : str
+  + debitBalance : str
+  + debitCurrency : str
+  + firstName : str
+  + folder : str
+  + gender : str
+  + googlePlusId : str
+  + googleUsername : str
+  + ipAddress : str
+  + language : str
+  + lastIpAddress : str
+  + lastLoginTime : str
+  + lastName : str
+  + lastTimeSynchronizeWithZendesk : str
+  + managerRole : str
+  + memberRole : str
+  + newsletterSubscriptionEnabled : str
+  + newsletterSubscriptionTime : str
+  + nickname : str
+  + password : str
+  + passwordResetCode : str
+  + passwordResetExpiryTime : str
+  + publicationStatus : str
+  + referrerId : str
+  + referrerType : str
+  + religion : str
+  + schemaVersion : str
+  + securityRoleIds : str
+  + signupSource : str
+  + signupSourceType : str
+  + socialSharingEnabled : str
+  + timeZone : str
+  + timeZoneId : str
+  + type : str
+  + validationTime : str
+  + verificationTime : str
+  + verifyCode : str
+  + virtualMail : str
+  + zendeskIntegration : bool
+  + zendeskUserId : str
+  + hasEmail(commons_email : str) : bool
+  + putEmail(commons_email : str) : str
+}
+class commons_PersonCatalog {
+}
+class commons_PersonInfo {
+  + email : str
+  + gender : str
+  + mobileNumber : str
+}
+abstract class commons_PersonLike {
+  + getEmail() : str
+  + getGender() : str
+  + getId() : str
+  + getName() : str
+  + getPhotoId() : str
+  + getSlug() : str
+}
+class commons_PhoneNumber {
+  + phoneNumber : str
+  + primary : bool
+  + validationTime : str
+}
+abstract class commons_PhotoIdContainer {
+  + photoId : str
+}
+abstract class commons_Positionable {
+  + positioner : str
+}
+class commons_PostalAddress {
+  + city : str
+  + country : str
+  + countryCode : str
+  + description : str
+  + district : str
+  + emails : str
+  + homePhones : str
+  + jneAreaCode : str
+  + mobiles : str
+  + organization : str
+  + phones : str
+  + postalCode : str
+  + primary : bool
+  + primaryBilling : bool
+  + primaryEmail : str
+  + primaryHomePhone : str
+  + primaryMobile : str
+  + primaryPhone : str
+  + primaryShipping : bool
+  + primaryWorkPhone : str
+  + province : str
+  + schemaVersion : str
+  + street : str
+  + validationTime : str
+  + workPhones : str
+}
+abstract class commons_ProgressMonitor {
+  + canceled : bool
+  + taskName : str
+  + beginTask(commons_name : str, commons_totalWork : str) : void
+  + done(commons_status : str) : void
+  + internalWorked(commons_work : str) : void
+  + subTask(commons_name : str) : void
+  + worked(commons_status : str, commons_work : str) : void
+}
+class commons_ProgressMonitorWrapper {
+}
+class commons_Removed {
+}
+class commons_RemovedMany {
+}
+abstract class commons_ResourceAware {
+  + resourceName : str
+  + resourceType : str
+  + resourceUri : str
+}
+abstract class commons_Revisionable {
+  + guid : str
+  + revision : str
+}
+abstract class commons_SchemaVersionable {
+  + getSchemaVersion() : str
+}
+class commons_ShellProgressMonitor {
+}
+abstract class commons_Sluggable {
+  + slug : str
+}
+abstract class commons_StyleConfiguration {
+  + getDefaultStyle() : str
+}
+abstract class commons_SysConfig {
+  + tenantId : str
+}
+class commons_ThingInfo {
+  + imageId : str
+}
+abstract class commons_Timestamped {
+  + creationTime : str
+  + modificationTime : str
+}
+abstract class commons_Translatable {
+  + language : str
+  + originalLanguage : str
+  + translationState : str
+}
+class commons_Translation {
+  + language : str
+}
+class commons_TranslationEntry {
+  + key : str
+}
+class commons_TranslationManager {
+  + translate(commons_entity : str, commons_targetLanguage : str) : void
+}
+class commons_TranslationMessageEntry {
+  + key : str
+  + value : str
+}
+abstract class commons_TwitterAccessible {
+  + twitterAccessToken : str
+  + twitterAccessTokenSecret : str
+}
+abstract class commons_TwitterIdentity {
+  + twitterId : str
+  + twitterScreenName : str
+}
+class commons_WebAddress {
+  + apiPath : str
+  + basePath : str
+  + baseUri : str
+  + imagesUri : str
+  + jsUri : str
+  + secureBaseUri : str
+  + secureImagesUri : str
+  + secureJsUri : str
+  + secureSkinUri : str
+  + skinUri : str
+  + getApiUri() : str
+  + getSecureApiUri() : str
+}
+BundleAware <|-- commons_AppManifest
+BundleAware <|-- commons_WebAddress
+Describable <|-- commons_CustomerRole
+Expandable <|-- commons_AppManifest
+Expandable <|-- commons_GeneralSysConfig
+Expandable <|-- commons_WebAddress
+Identifiable <|-- commons_CategoryLike
+Identifiable <|-- commons_CustomerRole
+Identifiable <|-- commons_Organization
+Identifiable <|-- commons_PersonInfo
+Identifiable <|-- commons_PostalAddress
+Identifiable <|-- commons_ThingInfo
+Imageable <|-- commons_CategoryLike
+Imageable <|-- commons_PhotoIdContainer
+Imageable <|-- commons_ThingInfo
+NameContainer <|-- commons_CategoryLike
+NameContainer <|-- commons_CustomerRole
+NameContainer <|-- commons_Organization
+NameContainer <|-- commons_PersonInfo
+NameContainer <|-- commons_PostalAddress
+NameContainer <|-- commons_ThingInfo
+Nameable <|-- commons_NameContainer
+NsPrefixable <|-- commons_CategoryLike
+PersonLike <|-- commons_PersonInfo
+PhotoIdContainer <|-- commons_PersonInfo
+Positionable <|-- commons_AppManifest
+Positionable <|-- commons_CategoryLike
+Positionable <|-- commons_WebAddress
+ProgressMonitor <|-- commons_EventBusProgressMonitor
+ProgressMonitor <|-- commons_ProgressMonitorWrapper
+ProgressMonitor <|-- commons_ShellProgressMonitor
+ResourceAware <|-- commons_AppManifest
+ResourceAware <|-- commons_WebAddress
+SchemaVersionable <|-- commons_CustomerRole
+SchemaVersionable <|-- commons_Organization
+SchemaVersionable <|-- commons_PostalAddress
+Sluggable <|-- commons_CanonicalSluggable
+Sluggable <|-- commons_CategoryLike
+Sluggable <|-- commons_PersonInfo
+Sluggable <|-- commons_ThingInfo
+SysConfig <|-- commons_GeneralSysConfig
+Timestamped <|-- commons_CustomerRole
+Timestamped <|-- commons_SysConfig
+commons_Person "1..1" *-- "0..9999" commons_PostalAddress : addresses17
+commons_AttributeNotification "1..1" -- "1..1" commons_EAttribute : attribute2
+commons_EObject "0..1" -- "1..1" commons_ModelNotification : container1
+commons_ProgressMonitor "0..1" -- "1..1" commons_ProgressMonitorWrapper : delegate5
+commons_EClass "0..1" -- "1..1" commons_EClassLinked : eClass0
+commons_Email "0..9999" --* "1..1" commons_Person : emails12
+commons_Translation "1..1" *-- "0..9999" commons_TranslationMessageEntry : messages7
+commons_Person "1..1" *-- "0..9999" commons_PhoneNumber : mobileNumbers14
+commons_Organization "0..9999" -- "1..1" commons_Person : organizations19
+commons_CategoryInfo "1..1" *-- "0..9999" commons_CategoryInfo : parents4
+commons_Person "0..9999" --* "1..1" commons_PersonCatalog : people21
+commons_Person "1..1" *-- "0..9999" commons_PhoneNumber : phoneNumbers11
+commons_Translatable "1..1" *-- "0..9999" commons_TranslationEntry : translations6
+commons_Translation "0..1" --* "1..1" commons_TranslationEntry : value8
+@enduml

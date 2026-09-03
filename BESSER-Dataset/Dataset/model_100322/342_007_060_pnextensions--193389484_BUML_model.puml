@@ -1,0 +1,37 @@
+@startuml
+enum ServerType {
+  InfiniteServer
+  LoadDependent
+  MarkingDependent
+  OneServer
+}
+enum ToolInfoConstants {
+  toolName
+  toolVersion
+  uri
+}
+enum TransitionKind {
+  Deterministic
+  Exponential
+  Immediate
+}
+class pnextensions_pnutils_DataTypeUtils {
+  + createLongString(pnextensions_string : str) : str
+  + createURI(pnextensions_stringUri : str) : str
+}
+class pnextensions_pnutils_PnUtils {
+  + layout(pnextensions_petriNet : str) : void
+}
+class pnextensions_pnutils_ToolInfoUtils {
+  + deleteToolInfoEntryByGrammarUri(pnextensions_pnObject : str, pnextensions_uri : str) : str
+  + getToolInfoEntryByGrammarUri(pnextensions_pnObject : str, pnextensions_uri : str) : str
+  + getTransitionRate(pnextensions_transition : str) : str
+  + isEObjectValidPnObject(pnextensions_eObject : str) : bool
+  + isEObjectValidTransition(pnextensions_eObject : str) : bool
+  + isTransitionKind(pnextensions_transition : str, pnextensions_transitionKind : str) : bool
+  + isTransitionServerType(pnextensions_serverType : str, pnextensions_transition : str) : bool
+  + setToolInfoEntryByGrammarUri(pnextensions_pnObject : str, pnextensions_uri : str, pnextensions_value : str) : void
+  + setTransitionKind(pnextensions_transition : str, pnextensions_transitionKind : str, pnextensions_value : str) : void
+  + setTransitionServerType(pnextensions_serverType : str, pnextensions_transition : str, pnextensions_value : str) : void
+}
+@enduml

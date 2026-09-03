@@ -1,0 +1,35 @@
+@startuml
+class GenericPlace {
+}
+abstract class petriNet_GenericPlace {
+  + name : str
+  + numberOfTokens : int
+}
+class petriNet_InputArc {
+  + weight : int
+}
+class petriNet_OutputArc {
+  + weight : int
+}
+class petriNet_PetriNet {
+  + name : str
+}
+class petriNet_Place {
+  + capacity : int
+}
+class petriNet_Resource {
+}
+class petriNet_Transition {
+  + name : str
+}
+GenericPlace <|-- petriNet_Place
+GenericPlace <|-- petriNet_Resource
+petriNet_GenericPlace "0..1" -- "1..1" petriNet_InputArc : InputArcFromPlace7
+petriNet_InputArc "1..1" -- "0..1" petriNet_Transition : InputArcToTransition10
+petriNet_OutputArc "1..1" -- "0..1" petriNet_Transition : OutputArcFromTransition13
+petriNet_GenericPlace "0..1" -- "1..1" petriNet_OutputArc : OutputArcToPlace16
+petriNet_GenericPlace "0..9999" --* "1..1" petriNet_PetriNet : containsGenericPlaces0
+petriNet_InputArc "0..9999" --* "1..1" petriNet_PetriNet : containsInputArcs3
+petriNet_OutputArc "0..9999" --* "1..1" petriNet_PetriNet : containsOutputArcs5
+petriNet_PetriNet "1..1" *-- "0..9999" petriNet_Transition : containsTransitions1
+@enduml

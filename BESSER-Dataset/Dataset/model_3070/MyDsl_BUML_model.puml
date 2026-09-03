@@ -1,0 +1,138 @@
+@startuml
+enum RestStatusCode {
+  CLIENT_ERROR
+  INFORMATIONAL
+  NETWORK_ERROR
+  REDIRECTION
+  SERVER_ERROR
+  SUCCESS
+}
+class Type {
+}
+class myDsl_BaseException {
+  + errorCode : str
+  + message : str
+}
+class myDsl_Block {
+  + code : str
+}
+class myDsl_DataAccessObject {
+  + deleteby : str
+  + findby : str
+  + name : str
+  + updateby : str
+}
+class myDsl_DataModel {
+  + id : str
+}
+class myDsl_DataModelMethodConclusion {
+}
+class myDsl_DomainModel {
+}
+class myDsl_ExceptionMapper {
+  + name : str
+}
+class myDsl_Feature {
+  + many : bool
+  + name : str
+}
+class myDsl_ModelMapper {
+}
+class myDsl_PrimitiveType {
+}
+class myDsl_Resource {
+  + deleteby : str
+  + findby : str
+  + name : str
+  + updateby : str
+}
+class myDsl_RestAPI {
+}
+class myDsl_RestException {
+  + message : str
+  + statusCode : str
+}
+class myDsl_RestExceptionList {
+}
+class myDsl_RestModel {
+  + id : str
+  + self : str
+}
+class myDsl_RestModelMethodConclusion {
+}
+class myDsl_Service {
+  + deleteby : str
+  + findby : str
+  + name : str
+  + updateby : str
+}
+class myDsl_Transformation {
+}
+class myDsl_Type {
+  + name : str
+}
+class myDsl_ValidationService {
+}
+Type <|-- myDsl_DataModel
+Type <|-- myDsl_ModelMapper
+Type <|-- myDsl_PrimitiveType
+Type <|-- myDsl_RestModel
+myDsl_DomainModel "1..1" *-- "0..9999" myDsl_RestAPI : apis1
+myDsl_BaseException "0..1" --* "1..1" myDsl_ExceptionMapper : baseException153
+myDsl_Block "0..1" --* "1..1" myDsl_ValidationService : block103
+myDsl_DataAccessObject "1..1" *-- "0..1" myDsl_DataModelMethodConclusion : createConclusion112
+myDsl_Resource "1..1" *-- "0..1" myDsl_RestModelMethodConclusion : createConclusion43
+myDsl_DataModelMethodConclusion "0..1" --* "1..1" myDsl_Service : createConclusion77
+myDsl_DataAccessObject "1..1" -- "0..1" myDsl_DataModel : createDataModel106
+myDsl_DataModel "0..1" -- "1..1" myDsl_Service : createDataModel71
+myDsl_Block "0..1" --* "1..1" myDsl_DataAccessObject : createMethod109
+myDsl_Block "0..1" --* "1..1" myDsl_Resource : createMethod41
+myDsl_Block "0..1" --* "1..1" myDsl_Service : createMethod74
+myDsl_Resource "1..1" -- "0..1" myDsl_RestModel : createRestModel36
+myDsl_Resource "1..1" *-- "0..1" myDsl_ValidationService : createValService39
+myDsl_DataAccessObject "0..9999" -- "1..1" myDsl_Service : dao68
+myDsl_DataAccessObject "0..9999" --* "1..1" myDsl_RestAPI : dao7
+myDsl_DataModel "0..1" -- "1..1" myDsl_DataModelMethodConclusion : dataModel136
+myDsl_DataModel "0..1" -- "1..1" myDsl_Transformation : dataModel21
+myDsl_Block "0..1" --* "1..1" myDsl_DataAccessObject : deleteMethod130
+myDsl_Block "0..1" --* "1..1" myDsl_Resource : deleteMethod63
+myDsl_Block "0..1" --* "1..1" myDsl_Service : deleteMethod94
+myDsl_DomainModel "1..1" *-- "0..9999" myDsl_Type : elements0
+myDsl_RestExceptionList "0..9999" --* "1..1" myDsl_RestModelMethodConclusion : exception145
+myDsl_RestException "0..9999" --* "1..1" myDsl_RestExceptionList : exception148
+myDsl_Resource "1..1" *-- "0..1" myDsl_RestExceptionList : exception466
+myDsl_RestExceptionList "0..1" --* "1..1" myDsl_Service : exception497
+myDsl_ExceptionMapper "0..1" -- "1..1" myDsl_Resource : exceptionMapper33
+myDsl_ExceptionMapper "0..9999" --* "1..1" myDsl_RestAPI : exceptionMapper9
+myDsl_DataAccessObject "1..1" *-- "0..1" myDsl_RestExceptionList : exceptions133
+myDsl_DataModelMethodConclusion "1..1" *-- "0..9999" myDsl_RestExceptionList : exceptions139
+myDsl_DataModel "1..1" *-- "0..9999" myDsl_Feature : features13
+myDsl_Feature "0..9999" --* "1..1" myDsl_RestModel : features17
+myDsl_DataAccessObject "1..1" *-- "0..1" myDsl_DataModelMethodConclusion : findConclusion118
+myDsl_Resource "1..1" *-- "0..1" myDsl_RestModelMethodConclusion : findConclusion48
+myDsl_DataModelMethodConclusion "0..1" --* "1..1" myDsl_Service : findConclusion82
+myDsl_Block "0..1" --* "1..1" myDsl_DataAccessObject : findMethod115
+myDsl_Block "0..1" --* "1..1" myDsl_Resource : findMethod45
+myDsl_Block "0..1" --* "1..1" myDsl_Service : findMethod79
+myDsl_Resource "0..1" --* "1..1" myDsl_RestAPI : resource3
+myDsl_ExceptionMapper "1..1" *-- "0..1" myDsl_RestException : restException150
+myDsl_RestModel "0..1" -- "1..1" myDsl_ValidationService : restModel100
+myDsl_RestModel "0..1" -- "1..1" myDsl_RestModelMethodConclusion : restModel142
+myDsl_RestModel "0..1" -- "1..1" myDsl_Transformation : restModel24
+myDsl_Resource "1..1" -- "0..9999" myDsl_Service : service30
+myDsl_RestAPI "1..1" *-- "0..9999" myDsl_Service : service5
+myDsl_DataModel "1..1" -- "0..1" myDsl_DataModel : superType12
+myDsl_RestModel "1..1" -- "0..1" myDsl_RestModel : superType16
+myDsl_ModelMapper "1..1" *-- "0..9999" myDsl_Transformation : transformation20
+myDsl_Feature "1..1" -- "0..1" myDsl_Type : type27
+myDsl_DataAccessObject "1..1" *-- "0..1" myDsl_DataModelMethodConclusion : updateConclusion127
+myDsl_Resource "1..1" *-- "0..1" myDsl_RestModelMethodConclusion : updateConclusion60
+myDsl_DataModelMethodConclusion "0..1" --* "1..1" myDsl_Service : updateConclusion91
+myDsl_DataAccessObject "1..1" -- "0..1" myDsl_DataModel : updateDataModel121
+myDsl_DataModel "0..1" -- "1..1" myDsl_Service : updateDataModel85
+myDsl_Block "0..1" --* "1..1" myDsl_DataAccessObject : updateMethod124
+myDsl_Block "0..1" --* "1..1" myDsl_Resource : updateMethod57
+myDsl_Block "0..1" --* "1..1" myDsl_Service : updateMethod88
+myDsl_Resource "1..1" -- "0..1" myDsl_RestModel : updateRestModel51
+myDsl_Resource "1..1" *-- "0..1" myDsl_ValidationService : updateValService54
+@enduml

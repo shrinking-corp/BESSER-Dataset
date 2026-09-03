@@ -1,0 +1,243 @@
+@startuml
+class Active_Digital_Artifact {
+}
+class Actuator {
+}
+class Device {
+}
+class DeviceState {
+}
+class Digital_Artifact {
+}
+class Entity {
+}
+class Evaluators {
+}
+class InformationResource {
+}
+class Passive_Digital_Artifact {
+}
+class PhysicalThing {
+}
+class Sensor {
+}
+class User {
+}
+class ioT_metamodel_Action {
+  + Description : str
+}
+class ioT_metamodel_Active_Digital_Artifact {
+}
+class ioT_metamodel_Actuator {
+  + name : str
+}
+class ioT_metamodel_Analytics_Engine {
+}
+class ioT_metamodel_AtomicData {
+}
+abstract class ioT_metamodel_AtomicDataAttributes {
+  + DataEncoding : str
+  + DeviceID : str
+}
+abstract class ioT_metamodel_Attribute {
+  + Type : str
+  + name : str
+}
+class ioT_metamodel_Authorizor {
+}
+class ioT_metamodel_Cloud {
+}
+class ioT_metamodel_Communicator {
+  + Type : str
+  + ports_number : int
+}
+class ioT_metamodel_CompositeState {
+}
+class ioT_metamodel_Container {
+  + ID : str
+  + IP_address : str
+}
+abstract class ioT_metamodel_DataStreamAttributes {
+  + DataEncoding : str
+  + DataFormat : str
+  + Description : str
+  + DeviceID : str
+  + MaxBitrate : str
+  + MeanBitRate : str
+  + Timestamp : str
+}
+class ioT_metamodel_DataStreams {
+}
+class ioT_metamodel_Database {
+}
+class ioT_metamodel_Device {
+  + Technology : str
+}
+class ioT_metamodel_DeviceActuator {
+}
+class ioT_metamodel_DeviceSensor {
+}
+class ioT_metamodel_DeviceState {
+  + Enabled : bool
+}
+class ioT_metamodel_Device_Resource {
+}
+class ioT_metamodel_Digital_Artifact {
+}
+class ioT_metamodel_Entity {
+}
+abstract class ioT_metamodel_Evaluators {
+}
+class ioT_metamodel_ExternalActuator {
+}
+class ioT_metamodel_ExternalSensor {
+}
+class ioT_metamodel_Fog {
+}
+class ioT_metamodel_FogNode {
+}
+class ioT_metamodel_Fog_Services {
+}
+class ioT_metamodel_Human_User {
+}
+class ioT_metamodel_Information {
+}
+class ioT_metamodel_InformationResource {
+}
+class ioT_metamodel_JavaEvaluator {
+}
+class ioT_metamodel_Network_Resource {
+}
+class ioT_metamodel_On_Device_Resource {
+}
+class ioT_metamodel_Operations {
+}
+class ioT_metamodel_Passive_Digital_Artifact {
+}
+class ioT_metamodel_PhysicalThing {
+}
+class ioT_metamodel_Policy_Repository {
+}
+class ioT_metamodel_Port {
+}
+class ioT_metamodel_Property {
+  + changeable : bool
+}
+class ioT_metamodel_Reference_Monitor {
+}
+class ioT_metamodel_Rule {
+  + conditionLiteral : str
+  + conditionValue : float
+}
+class ioT_metamodel_ScriptEvaluator {
+}
+abstract class ioT_metamodel_Sensor {
+  + Name : str
+  + State : bool
+  + frequency : float
+}
+class ioT_metamodel_Service_Resource {
+}
+class ioT_metamodel_Tag {
+  + Name : str
+}
+class ioT_metamodel_Thing {
+  + name : str
+}
+class ioT_metamodel_Transition {
+}
+class ioT_metamodel_User {
+}
+class ioT_metamodel_VM {
+}
+class ioT_metamodel_VirtualThing {
+  + URI : str
+}
+Active_Digital_Artifact <|-- ioT_metamodel_VirtualThing
+Actuator <|-- ioT_metamodel_DeviceActuator
+Actuator <|-- ioT_metamodel_ExternalActuator
+Device <|-- ioT_metamodel_Actuator
+Device <|-- ioT_metamodel_Sensor
+Device <|-- ioT_metamodel_Tag
+DeviceState <|-- ioT_metamodel_CompositeState
+Digital_Artifact <|-- ioT_metamodel_Active_Digital_Artifact
+Digital_Artifact <|-- ioT_metamodel_Passive_Digital_Artifact
+Entity <|-- ioT_metamodel_Attribute
+Entity <|-- ioT_metamodel_Thing
+Entity <|-- ioT_metamodel_User
+Evaluators <|-- ioT_metamodel_JavaEvaluator
+Evaluators <|-- ioT_metamodel_ScriptEvaluator
+InformationResource <|-- ioT_metamodel_Network_Resource
+InformationResource <|-- ioT_metamodel_On_Device_Resource
+Passive_Digital_Artifact <|-- ioT_metamodel_VirtualThing
+PhysicalThing <|-- ioT_metamodel_Device
+Sensor <|-- ioT_metamodel_DeviceSensor
+Sensor <|-- ioT_metamodel_ExternalSensor
+User <|-- ioT_metamodel_Active_Digital_Artifact
+User <|-- ioT_metamodel_Human_User
+ioT_metamodel_Action "0..9999" --* "1..1" ioT_metamodel_Transition : action60
+ioT_metamodel_Actuator "1..1" -- "0..9999" ioT_metamodel_PhysicalThing : acts40
+ioT_metamodel_Action "0..9999" -- "1..1" ioT_metamodel_DeviceActuator : actuator_actions56
+ioT_metamodel_Action "0..9999" -- "1..1" ioT_metamodel_ExternalActuator : actuator_actions58
+ioT_metamodel_Analytics_Engine "1..1" --* "1..1" ioT_metamodel_FogNode : analytics_engine25
+ioT_metamodel_FogNode "1..1" -- "1..9999" ioT_metamodel_Fog_Services : associates_with27
+ioT_metamodel_AtomicData "0..9999" --* "1..1" ioT_metamodel_Information : atomicdata100
+ioT_metamodel_Authorizor "1..1" -- "1..1" ioT_metamodel_Fog : connects_with98
+ioT_metamodel_AtomicData "1..9999" -- "1..1" ioT_metamodel_DataStreams : consists_of104
+ioT_metamodel_Device "1..1" *-- "0..9999" ioT_metamodel_Device : contains31
+ioT_metamodel_Thing "0..9999" -- "1..1" ioT_metamodel_Thing : contains5
+ioT_metamodel_Authorizor "1..1" --* "1..1" ioT_metamodel_Policy_Repository : contains93
+ioT_metamodel_Device_Resource "0..9999" --* "1..1" ioT_metamodel_On_Device_Resource : contains_device_resource79
+ioT_metamodel_Device_Resource "0..9999" --* "1..1" ioT_metamodel_Network_Resource : contains_device_resource83
+ioT_metamodel_On_Device_Resource "1..1" *-- "0..9999" ioT_metamodel_Service_Resource : contains_service_resource81
+ioT_metamodel_Network_Resource "1..1" *-- "0..9999" ioT_metamodel_Service_Resource : contains_service_resource85
+ioT_metamodel_Database "1..9999" --* "1..1" ioT_metamodel_Fog : database18
+ioT_metamodel_DataStreams "0..9999" --* "1..1" ioT_metamodel_Information : datastreams102
+ioT_metamodel_Authorizor "1..1" -- "1..1" ioT_metamodel_Fog : define_control_policies_to20
+ioT_metamodel_Device "1..1" *-- "1..1" ioT_metamodel_DeviceState : devicestate34
+ioT_metamodel_Authorizor "0..9999" -- "1..1" ioT_metamodel_Reference_Monitor : enforces96
+ioT_metamodel_Fog_Services "1..1" -- "1..9999" ioT_metamodel_InformationResource : exposes119
+ioT_metamodel_Fog "1..1" -- "1..1" ioT_metamodel_Thing : fog1
+ioT_metamodel_Fog "1..1" *-- "0..9999" ioT_metamodel_FogNode : fognode16
+ioT_metamodel_Device "0..9999" -- "1..1" ioT_metamodel_PhysicalThing : has14
+ioT_metamodel_Information "1..9999" --* "1..1" ioT_metamodel_InformationResource : has75
+ioT_metamodel_AtomicData "1..1" -- "1..1" ioT_metamodel_AtomicDataAttributes : has_atomicdataattributes109
+ioT_metamodel_Attribute "0..9999" -- "1..1" ioT_metamodel_InformationResource : has_attributes77
+ioT_metamodel_Communicator "0..9999" --* "1..1" ioT_metamodel_Device : has_communicators36
+ioT_metamodel_DataStreamAttributes "1..1" -- "1..1" ioT_metamodel_DataStreams : has_datastreamattributes107
+ioT_metamodel_InformationResource "1..1" -- "0..9999" ioT_metamodel_PhysicalThing : has_information_about72
+ioT_metamodel_Communicator "1..1" *-- "0..9999" ioT_metamodel_Port : has_ports70
+ioT_metamodel_Device "1..1" *-- "0..9999" ioT_metamodel_Rule : has_rules32
+ioT_metamodel_Device "1..1" *-- "0..9999" ioT_metamodel_On_Device_Resource : hosts38
+ioT_metamodel_PhysicalThing "0..9999" -- "1..1" ioT_metamodel_Tag : identifies45
+ioT_metamodel_DeviceState "0..9999" -- "1..1" ioT_metamodel_Transition : incoming_states62
+ioT_metamodel_Policy_Repository "1..1" -- "1..1" ioT_metamodel_Reference_Monitor : interacts_with92
+ioT_metamodel_Fog_Services "1..1" *-- "0..9999" ioT_metamodel_Operations : invokes114
+ioT_metamodel_Fog_Services "0..9999" -- "1..1" ioT_metamodel_Fog_Services : invokes_fog_services117
+ioT_metamodel_Action "0..9999" --* "1..1" ioT_metamodel_Rule : involves52
+ioT_metamodel_InformationResource "0..9999" -- "1..1" ioT_metamodel_VirtualThing : is_associated_with12
+ioT_metamodel_Device "1..1" -- "0..9999" ioT_metamodel_PhysicalThing : is_attached_to29
+ioT_metamodel_Fog_Services "1..1" -- "1..9999" ioT_metamodel_VirtualThing : is_connected_with122
+ioT_metamodel_PhysicalThing "0..9999" -- "1..1" ioT_metamodel_Sensor : monitors47
+ioT_metamodel_Actuator "1..1" -- "0..1" ioT_metamodel_DeviceState : observes42
+ioT_metamodel_DeviceState "0..1" -- "1..1" ioT_metamodel_Sensor : observes49
+ioT_metamodel_Policy_Repository "1..1" -- "1..1" ioT_metamodel_Reference_Monitor : orchestrate_policies95
+ioT_metamodel_DeviceState "0..9999" -- "1..1" ioT_metamodel_Transition : outgoing_states65
+ioT_metamodel_PhysicalThing "0..1" --* "1..1" ioT_metamodel_Thing : physical_entity2
+ioT_metamodel_Evaluators "0..1" -- "1..1" ioT_metamodel_Operations : points_to_processing_logic125
+ioT_metamodel_Database "1..1" *-- "1..1" ioT_metamodel_Policy_Repository : policy_repository90
+ioT_metamodel_Property "0..9999" --* "1..1" ioT_metamodel_Thing : property7
+ioT_metamodel_PhysicalThing "1..1" -- "1..1" ioT_metamodel_VirtualThing : represents9
+ioT_metamodel_Cloud "1..9999" -- "1..1" ioT_metamodel_Fog : request_cloud_service17
+ioT_metamodel_Fog "1..1" -- "1..9999" ioT_metamodel_Thing : request_service15
+ioT_metamodel_Cloud "1..1" -- "1..9999" ioT_metamodel_Fog : respond_to_fog88
+ioT_metamodel_Container "1..1" -- "1..1" ioT_metamodel_Fog_Services : runs_in111
+ioT_metamodel_Container "0..1" -- "1..1" ioT_metamodel_Operations : runs_in127
+ioT_metamodel_Container "1..9999" --* "1..1" ioT_metamodel_FogNode : runs_in_container23
+ioT_metamodel_FogNode "1..1" *-- "1..9999" ioT_metamodel_VM : runs_on_vm21
+ioT_metamodel_Action "0..9999" -- "1..1" ioT_metamodel_DeviceSensor : sensor_actions133
+ioT_metamodel_Action "0..9999" -- "1..1" ioT_metamodel_ExternalSensor : sensor_actions54
+ioT_metamodel_Fog_Services "0..9999" -- "1..1" ioT_metamodel_User : subscribes_invokes68
+ioT_metamodel_InformationResource "1..9999" -- "1..1" ioT_metamodel_Operations : subscribes_to130
+ioT_metamodel_Thing "1..1" *-- "1..1" ioT_metamodel_VirtualThing : virtual_entity0
+@enduml

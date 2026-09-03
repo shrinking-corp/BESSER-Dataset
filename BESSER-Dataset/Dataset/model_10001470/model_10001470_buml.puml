@@ -1,0 +1,72 @@
+@startuml
+class Agent {
+  + AgentID : int
+  + BrojTele : str
+  + Email : str
+  + ImeAgent : str
+  + Password : str
+  + PrezimeAgent : str
+  + Username : str
+}
+class Aranzman {
+  + AranzmanID : int
+  + BrojMesta : int
+  + Cena : Double
+  + DestinacijaID : int
+  + NazivAranzmana : str
+  + Popunjeno : bool
+  + TerminID : int
+}
+class Date {
+}
+class Destinacija {
+  + DestinacijaID : int
+  + Drzava : str
+  + Grad : str
+  + Hotel : str
+}
+class Double {
+}
+class Osiguranje {
+  + OsigurKuca : str
+  + OsiguranjeID : int
+}
+class Putnik {
+  + Adresa : str
+  + BrojTel : str
+  + Email : str
+  + Grad : str
+  + ImePutnik : str
+  + JMBG : str
+  + OsiguranjeID : int
+  + PrezimePutnik : str
+  + PutnikID : int
+}
+class Racun {
+  + Iznos : Double
+  + Placeno : bool
+  + RacunID : int
+}
+class Rezervacija {
+  + AgentID : int
+  + AranzmanID : int
+  + DatumKreiranja : Date
+  + PutnikID : int
+  + RacunID : int
+  + ReyervacijaID : int
+}
+class Termin {
+  + DatumPolaska : Date
+  + DatumPovratka : Date
+  + TerminID : int
+}
+class string {
+}
+Aranzman "0..1" -- "0..1" Destinacija : Aranzman_Destinacija
+Aranzman "0..1" -- "0..1" Rezervacija : Aranzman_Rezervacija
+Osiguranje "0..1" -- "0..1" Putnik : Osiguranje_Putnik
+Putnik "0..1" -- "0..1" Rezervacija : Putnik_Rezervacija
+Racun "0..1" -- "0..1" Rezervacija : Racun_Rezervacija
+Agent "0..1" -- "0..1" Rezervacija : Rezervacija_Agent
+Aranzman "0..1" -- "0..1" Termin : Termin_Aranzman
+@enduml

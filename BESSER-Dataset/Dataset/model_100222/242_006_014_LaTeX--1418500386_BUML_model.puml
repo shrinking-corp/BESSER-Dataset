@@ -1,0 +1,101 @@
+@startuml
+class latex_Abstracte {
+  + abstractprefix : str
+  + abstracttext : str
+}
+class latex_Begin {
+  + beginprefix : str
+}
+class latex_Beginbib {
+  + Beginbibprefix : str
+}
+class latex_Bibliography {
+  + bibstyle : str
+}
+class latex_Body {
+}
+class latex_Commands {
+  + comname : str
+  + comprefix : str
+  + comtext : str
+  + number : float
+}
+class latex_Document {
+  + documenttype : str
+  + fontsize : str
+  + papertype : str
+  + prefix : str
+}
+class latex_End {
+  + endprefix : str
+}
+class latex_Endbib {
+  + Endbibprefix : str
+}
+class latex_Enumerate {
+  + enumprefix : str
+  + enumtext : str
+}
+class latex_Figures {
+  + figcaption : str
+  + figname : str
+  + figprefix : str
+}
+class latex_General {
+  + genname : str
+  + genprefix : str
+  + gentext : str
+}
+class latex_Packages {
+  + packageprefix : str
+  + packagetype : str
+}
+class latex_Section {
+  + sectionname : str
+  + sectionprefix : str
+  + sectiontext : str
+}
+class latex_Styles {
+  + stylenames : str
+  + styleprefix : str
+  + stylesnames : str
+}
+class latex_Subsection {
+  + subsectionname : str
+  + subsectionprefix : str
+  + subsectiontext : str
+}
+class latex_Title {
+  + authortext : str
+  + titleprefix : str
+  + titletext : str
+}
+class latex_bibitem {
+  + bibprefix : str
+  + bibtext : str
+}
+latex_Abstracte "1..1" *-- "0..9999" latex_General : Abscontainsgen19
+latex_Begin "0..1" --* "1..1" latex_Document : begindoc13
+latex_Bibliography "1..1" *-- "0..9999" latex_General : bibcontainsgen28
+latex_Beginbib "0..1" --* "1..1" latex_Bibliography : containbeginbib33
+latex_Bibliography "1..1" *-- "0..1" latex_Endbib : containendbib35
+latex_Abstracte "0..1" --* "1..1" latex_Document : containsabstract7
+latex_Bibliography "0..1" --* "1..1" latex_Document : containsbib11
+latex_Bibliography "1..1" *-- "0..9999" latex_bibitem : containsbibitems31
+latex_Body "0..1" --* "1..1" latex_Document : containsbody9
+latex_Commands "0..9999" --* "1..1" latex_Document : containscommands1
+latex_Body "1..1" *-- "0..9999" latex_Enumerate : containsenumerate26
+latex_Body "1..1" *-- "0..9999" latex_Figures : containsfigures24
+latex_Document "1..1" *-- "0..9999" latex_Packages : containspackages0
+latex_Body "1..1" *-- "0..9999" latex_Section : containssections22
+latex_Document "1..1" *-- "0..9999" latex_Styles : containsstyles5
+latex_Subsection "0..9999" --* "1..1" latex_Subsection : containssubsections43
+latex_Document "1..1" *-- "0..1" latex_Title : containstitle3
+latex_Section "1..1" *-- "0..9999" latex_Subsection : containsubsections40
+latex_Document "1..1" *-- "0..1" latex_End : enddoc15
+latex_Enumerate "1..1" *-- "0..9999" latex_General : enumcontainsgen51
+latex_Figures "1..1" *-- "0..9999" latex_General : figcontainsgen48
+latex_General "0..9999" --* "1..1" latex_Section : seccontainsgen37
+latex_General "0..9999" --* "1..1" latex_Subsection : subseccontainsgen45
+latex_General "0..9999" --* "1..1" latex_Title : titlecontainsgen17
+@enduml

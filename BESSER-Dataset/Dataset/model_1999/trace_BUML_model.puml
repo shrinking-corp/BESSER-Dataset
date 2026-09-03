@@ -1,0 +1,65 @@
+@startuml
+class TraceElement {
+}
+class trace_EObject {
+}
+class trace_SourceElement {
+  + mapsToSelf : bool
+}
+class trace_SourceElementList {
+  + getSourceObjects() : str
+}
+class trace_TargetElement {
+}
+abstract class trace_TraceElement {
+  + name : str
+  + runtimeObject : str
+}
+class trace_TraceLink {
+  + overridden : bool
+  + getSourceElement(trace_create : str, trace_name : str) : str
+  + getTargetElement(trace_name : str) : str
+}
+class trace_TraceLinkSet {
+  + clear() : void
+  + getDefaultSourceElement(trace_sourceElement : str) : str
+  + getDefaultSourceElements(trace_sourceElements : str) : str
+  + getLinksByRule(trace_create : str, trace_rule : str) : str
+}
+class trace_TraceProperty {
+  + propertyName : str
+  + resolved : bool
+  + resolveBinding(trace_traces : str) : void
+}
+class trace_TracedRule {
+  + rule : str
+  + getUniqueSourceElement(trace_sourceElement : str) : str
+  + getUniqueSourceElements(trace_sourceElements : str) : str
+}
+TraceElement <|-- trace_SourceElement
+TraceElement <|-- trace_TargetElement
+trace_TraceLink "0..1" -- "1..1" trace_TraceProperty : appliedAt40
+trace_SourceElement "1..1" -- "0..1" trace_TraceLinkSet : defaultFor22
+trace_SourceElementList "1..1" -- "0..1" trace_TraceLinkSet : defaultFor32
+trace_SourceElementList "0..9999" --* "1..1" trace_TraceLinkSet : defaultSourceElementLists2
+trace_SourceElement "0..9999" -- "1..1" trace_TraceLinkSet : defaultSourceElements1
+trace_TraceLinkSet "0..1" -- "1..1" trace_TracedRule : linkSet5
+trace_TraceLink "0..9999" --* "1..1" trace_TracedRule : links4
+trace_SourceElement "1..1" -- "0..9999" trace_TargetElement : mapsTo20
+trace_SourceElement "0..9999" -- "1..1" trace_TargetElement : mapsTo28
+trace_EObject "0..1" -- "1..1" trace_TraceElement : object17
+trace_TraceLink "1..1" *-- "0..9999" trace_TraceProperty : properties16
+trace_TargetElement "1..1" -- "1..1" trace_TraceProperty : resolvedFor36
+trace_EObject "0..9999" -- "1..1" trace_TraceProperty : resolvings37
+trace_TraceLink "1..1" -- "0..1" trace_TracedRule : rule14
+trace_TraceLinkSet "1..1" *-- "0..9999" trace_TracedRule : rules0
+trace_SourceElement "0..9999" --* "1..1" trace_TraceLink : sourceElements11
+trace_SourceElement "2..9999" -- "1..1" trace_SourceElementList : sourceElements31
+trace_SourceElement "1..1" -- "0..1" trace_TraceLink : sourceOf18
+trace_TargetElement "0..9999" --* "1..1" trace_TraceLink : targetElements13
+trace_TargetElement "1..1" -- "0..1" trace_TraceLink : targetOf26
+trace_SourceElement "1..1" -- "0..1" trace_TracedRule : uniqueFor24
+trace_SourceElementList "1..1" -- "0..1" trace_TracedRule : uniqueFor34
+trace_SourceElementList "0..9999" --* "1..1" trace_TracedRule : uniqueSourceElementLists8
+trace_SourceElement "0..9999" -- "1..1" trace_TracedRule : uniqueSourceElements6
+@enduml

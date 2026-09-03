@@ -1,0 +1,75 @@
+@startuml
+class BinaryClockConstraint {
+}
+class ClockConstraint {
+}
+class ClockConstraintOperation {
+}
+class State {
+}
+class tfsm_AndClockConstraint {
+}
+abstract class tfsm_BinaryClockConstraint {
+}
+class tfsm_Clock {
+  + name : str
+  + tick : int
+}
+abstract class tfsm_ClockConstraint {
+  + threshold : int
+}
+abstract class tfsm_ClockConstraintOperation {
+}
+class tfsm_ClockReset {
+}
+class tfsm_FSM {
+  + name : str
+}
+class tfsm_FinalState {
+}
+class tfsm_InitialState {
+}
+class tfsm_LowerClockConstraint {
+}
+class tfsm_LowerEqualClockConstraint {
+}
+class tfsm_OrClockConstraint {
+}
+class tfsm_State {
+  + name : str
+}
+class tfsm_Transition {
+  + event : str
+}
+class tfsm_UpperClockConstraint {
+}
+class tfsm_UpperEqualClockConstraint {
+}
+BinaryClockConstraint <|-- tfsm_AndClockConstraint
+BinaryClockConstraint <|-- tfsm_OrClockConstraint
+ClockConstraint <|-- tfsm_LowerClockConstraint
+ClockConstraint <|-- tfsm_LowerEqualClockConstraint
+ClockConstraint <|-- tfsm_UpperClockConstraint
+ClockConstraint <|-- tfsm_UpperEqualClockConstraint
+ClockConstraintOperation <|-- tfsm_BinaryClockConstraint
+ClockConstraintOperation <|-- tfsm_ClockConstraint
+State <|-- tfsm_FinalState
+State <|-- tfsm_InitialState
+tfsm_Clock "1..1" -- "1..1" tfsm_ClockConstraint : clock26
+tfsm_Clock "1..1" -- "1..1" tfsm_ClockReset : clock28
+tfsm_ClockReset "0..9999" --* "1..1" tfsm_Transition : clockresets18
+tfsm_Clock "0..9999" --* "1..1" tfsm_FSM : clocks0
+tfsm_FSM "1..1" -- "0..1" tfsm_State : currentState7
+tfsm_State "1..1" -- "1..1" tfsm_Transition : from_23
+tfsm_FSM "1..1" -- "1..1" tfsm_State : fsm12
+tfsm_State "1..1" -- "0..9999" tfsm_Transition : incommingtransitions16
+tfsm_FSM "1..1" -- "1..1" tfsm_InitialState : initialstate5
+tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : left31
+tfsm_State "1..1" -- "0..9999" tfsm_Transition : outgoingtransitions15
+tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : right33
+tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_State : stateguard10
+tfsm_FSM "1..1" *-- "0..9999" tfsm_State : states1
+tfsm_State "1..1" -- "1..1" tfsm_Transition : to24
+tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_Transition : transitionguard20
+tfsm_FSM "1..1" *-- "0..9999" tfsm_Transition : transitions3
+@enduml

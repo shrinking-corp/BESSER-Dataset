@@ -1,0 +1,46 @@
+@startuml
+class admin {
+  + cost : int
+  + name_of_flight : str
+  + pwd : str
+  + seats : int
+  + type : str
+  + username : str
+}
+class cash {
+}
+class credit_card {
+}
+class customer {
+  + address : str
+  + age : int
+  + name : str
+  + source : str
+}
+class flights {
+  + depart : str
+  + dest : str
+  + name : str
+  + number : int
+  + time : int
+}
+class payement {
+  + customer_info : str
+  + pay_amt : int
+  + pay_date : int
+  + paymethod : str
+  + transc_id : int
+}
+class ticket {
+  + attribute : str
+  + custid : int
+  + dest : str
+  + source : str
+  + tiketno_ : int
+}
+admin "1..1" -- "1..9999" flights : admin_flights
+admin "1..1" -- "1..9999" customer : customer_admin
+customer "1..9999" -- "1..1" flights : customer_flights
+customer "1..9999" -- "0..1" ticket : customer_ticket
+customer "0..1" -- "1..1" payement : payement_customer
+@enduml

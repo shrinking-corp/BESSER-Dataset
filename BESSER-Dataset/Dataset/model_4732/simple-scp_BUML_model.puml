@@ -1,0 +1,153 @@
+@startuml
+class BinaryOp {
+}
+class BooleanLiteral {
+}
+class DescribedElement {
+}
+class Domain {
+}
+class Expression {
+}
+class Goal {
+}
+class NamedElement {
+}
+class Operator {
+}
+class SetOp {
+}
+enum Type {
+  BOOLEAN
+  INTEGER
+}
+class TypedElement {
+}
+class UnaryOp {
+}
+class simple_csp_And {
+}
+abstract class simple_csp_BinaryOp {
+}
+abstract class simple_csp_BooleanLiteral {
+}
+class simple_csp_Constraint {
+}
+abstract class simple_csp_DescribedElement {
+  + description : str
+}
+abstract class simple_csp_Domain {
+}
+class simple_csp_Equal {
+}
+abstract class simple_csp_Expression {
+}
+class simple_csp_FalseValue {
+}
+abstract class simple_csp_Goal {
+}
+class simple_csp_Greater {
+}
+class simple_csp_GreaterEqual {
+}
+class simple_csp_Implies {
+}
+class simple_csp_IntegerDomain {
+  + maxValue : str
+  + minValue : str
+}
+class simple_csp_Less {
+}
+class simple_csp_LessEqual {
+}
+class simple_csp_Max {
+}
+class simple_csp_MaximizeGoal {
+}
+class simple_csp_Min {
+}
+class simple_csp_MinimizeGoal {
+}
+class simple_csp_Minus {
+}
+abstract class simple_csp_NamedElement {
+  + name : str
+}
+class simple_csp_Not {
+}
+abstract class simple_csp_Operator {
+}
+class simple_csp_Or {
+}
+class simple_csp_Plus {
+}
+class simple_csp_Power {
+}
+class simple_csp_Problem {
+}
+abstract class simple_csp_SetOp {
+}
+class simple_csp_Sum {
+}
+class simple_csp_Times {
+}
+class simple_csp_TrueValue {
+}
+abstract class simple_csp_TypedElement {
+  + type : str
+}
+class simple_csp_UnEqual {
+}
+abstract class simple_csp_UnaryOp {
+}
+class simple_csp_VarOccurence {
+}
+class simple_csp_Variable {
+}
+BinaryOp <|-- simple_csp_And
+BinaryOp <|-- simple_csp_Equal
+BinaryOp <|-- simple_csp_Greater
+BinaryOp <|-- simple_csp_GreaterEqual
+BinaryOp <|-- simple_csp_Implies
+BinaryOp <|-- simple_csp_Less
+BinaryOp <|-- simple_csp_LessEqual
+BinaryOp <|-- simple_csp_Minus
+BinaryOp <|-- simple_csp_Or
+BinaryOp <|-- simple_csp_Plus
+BinaryOp <|-- simple_csp_Power
+BinaryOp <|-- simple_csp_Times
+BinaryOp <|-- simple_csp_UnEqual
+BooleanLiteral <|-- simple_csp_FalseValue
+BooleanLiteral <|-- simple_csp_TrueValue
+DescribedElement <|-- simple_csp_Variable
+Domain <|-- simple_csp_IntegerDomain
+Expression <|-- simple_csp_BooleanLiteral
+Expression <|-- simple_csp_Operator
+Expression <|-- simple_csp_VarOccurence
+Goal <|-- simple_csp_MaximizeGoal
+Goal <|-- simple_csp_MinimizeGoal
+NamedElement <|-- simple_csp_Constraint
+NamedElement <|-- simple_csp_Goal
+NamedElement <|-- simple_csp_Problem
+NamedElement <|-- simple_csp_Variable
+Operator <|-- simple_csp_BinaryOp
+Operator <|-- simple_csp_SetOp
+Operator <|-- simple_csp_UnaryOp
+SetOp <|-- simple_csp_Max
+SetOp <|-- simple_csp_Min
+SetOp <|-- simple_csp_Sum
+TypedElement <|-- simple_csp_Variable
+UnaryOp <|-- simple_csp_Not
+simple_csp_Constraint "0..9999" --* "1..1" simple_csp_Problem : constraint3
+simple_csp_Domain "0..1" -- "1..1" simple_csp_TypedElement : domain7
+simple_csp_Domain "0..9999" --* "1..1" simple_csp_Problem : domains0
+simple_csp_Expression "0..1" --* "1..1" simple_csp_UnaryOp : exp18
+simple_csp_Expression "0..1" --* "1..1" simple_csp_Goal : exp22
+simple_csp_Constraint "1..1" *-- "0..1" simple_csp_Expression : exp9
+simple_csp_Expression "0..9999" --* "1..1" simple_csp_SetOp : exps11
+simple_csp_Goal "0..9999" --* "1..1" simple_csp_Problem : goals5
+simple_csp_BinaryOp "1..1" *-- "0..1" simple_csp_Expression : leftExp13
+simple_csp_BinaryOp "1..1" *-- "0..1" simple_csp_Expression : rightExp15
+simple_csp_VarOccurence "1..1" -- "0..1" simple_csp_Variable : variable20
+simple_csp_Problem "1..1" *-- "0..9999" simple_csp_Variable : variables1
+@enduml

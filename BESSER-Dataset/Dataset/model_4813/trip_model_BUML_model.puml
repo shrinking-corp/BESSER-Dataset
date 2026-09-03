@@ -1,0 +1,35 @@
+@startuml
+class Service {
+}
+class trip_model_OtherService {
+}
+class trip_model_Service {
+  + Cost : float
+  + Duration : int
+  + Rating : int
+  + Type : str
+  + name : str
+}
+class trip_model_TravelService {
+}
+class trip_model_Trip {
+  + End : date
+  + Start : date
+  + name : str
+}
+class trip_model_TripModel {
+}
+class trip_model_location {
+  + name : str
+}
+Service <|-- trip_model_OtherService
+Service <|-- trip_model_TravelService
+trip_model_Trip "1..1" -- "1..1" trip_model_location : destination10
+trip_model_TravelService "1..1" -- "1..1" trip_model_location : destination3
+trip_model_OtherService "1..1" -- "1..1" trip_model_location : location0
+trip_model_TripModel "1..1" *-- "0..9999" trip_model_location : location15
+trip_model_Service "0..9999" --* "1..1" trip_model_Trip : service6
+trip_model_TravelService "1..1" -- "1..1" trip_model_location : source1
+trip_model_Trip "1..1" -- "1..1" trip_model_location : source7
+trip_model_Trip "0..9999" --* "1..1" trip_model_TripModel : trip13
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+enum LogLevel {
+  CONFIG
+  FINE
+  FINER
+  FINEST
+  INFO
+  SEVERE
+  WARNING
+}
+class trace_Exception {
+  + message : str
+}
+class trace_Log {
+  + level : str
+  + message : str
+  + source : str
+  + timestamp : date
+}
+class trace_Trace {
+}
+trace_Exception "0..9999" --* "1..1" trace_Log : exceptions1
+trace_Log "0..9999" --* "1..1" trace_Trace : logs0
+@enduml

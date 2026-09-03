@@ -1,0 +1,42 @@
+@startuml
+enum BaseElement {
+  Activity
+  Task
+}
+enum ColectType {
+  continuous
+  intercalated
+}
+class Metric {
+}
+class MetricModel_ActivityMetric {
+  + activityBegin : str
+  + activityEnd : str
+}
+class MetricModel_Metric {
+  + description : str
+  + form : str
+  + id : str
+  + name : str
+  + type : str
+  + unit : str
+}
+class MetricModel_MetricPlanModel {
+  + name : str
+}
+class MetricModel_TaskMetric {
+  + tasksBase : str
+}
+enum MetricType {
+  hardData
+  normalizedData
+  softData
+}
+enum MetricUnit {
+  minutes
+  uc
+}
+Metric <|-- MetricModel_ActivityMetric
+Metric <|-- MetricModel_TaskMetric
+MetricModel_Metric "0..9999" --* "1..1" MetricModel_MetricPlanModel : metrics0
+@enduml

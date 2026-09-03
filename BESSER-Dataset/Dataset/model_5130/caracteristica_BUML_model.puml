@@ -1,0 +1,296 @@
+@startuml
+class Acao {
+}
+class Antecedente {
+}
+class Caracteristica {
+}
+class CaracteristicaProduto {
+}
+enum CardinalidadeMaxima {
+  OR
+  XOR
+}
+class Elemento {
+}
+class ElementoCaracteristico {
+}
+class ElementoDeProduto {
+}
+class Evento {
+}
+class Expressao {
+}
+enum OperadorAcaoLogico {
+  AND
+}
+enum OperadorLogico {
+  AND
+  OR
+}
+enum OperadorRelacional {
+  DIFERENTE
+  IGUAL
+  MAIOR
+  MAIORIGUAL
+  MENOR
+  MENORIGUAL
+}
+enum Origem {
+  Derivada
+  Perfil
+  Sentida
+  Usuario
+}
+class PontoDeVariacao {
+}
+enum Presenca {
+  AUSENTE
+  PRESENTE
+}
+enum Qualidade {
+  Alto
+  Baixo
+}
+class Regra {
+}
+enum TipoValor {
+  TBoolean
+  TFloat
+  TInteger
+  TString
+}
+enum Validade {
+  Frequente
+  Permanente
+  Raramente
+  Volatil
+}
+class caracteristica_Acao {
+}
+class caracteristica_AcaoLogico {
+  + operadorAcaoLogico : str
+}
+class caracteristica_Antecedente {
+}
+class caracteristica_Atributo {
+  + tipoValor : str
+}
+class caracteristica_AtributoProduto {
+  + tipoValor : str
+  + valor : str
+}
+class caracteristica_Caracteristica {
+}
+class caracteristica_CaracteristicaAgrupada {
+}
+class caracteristica_CaracteristicaMandatoria {
+}
+class caracteristica_CaracteristicaMandatoriaProduto {
+}
+class caracteristica_CaracteristicaOpcional {
+}
+class caracteristica_CaracteristicaOpcionalProduto {
+}
+class caracteristica_CaracteristicaProduto {
+}
+class caracteristica_CaracteristicaRaiz {
+}
+class caracteristica_Designar {
+  + tipoValor : str
+  + valor : str
+}
+class caracteristica_Elemento {
+  + nome : str
+}
+class caracteristica_ElementoCaracteristico {
+}
+class caracteristica_ElementoDeProduto {
+  + nome : str
+}
+class caracteristica_EntidadeDeContexto {
+}
+class caracteristica_Estado {
+  + nome : str
+  + safe : bool
+}
+class caracteristica_Evento {
+}
+class caracteristica_EventoLogico {
+  + operadorLogico : str
+}
+class caracteristica_EventoRelacional {
+  + operadorRelacional : str
+  + valor : str
+}
+class caracteristica_Expressao {
+  + nome : str
+}
+class caracteristica_ExpressaoLogica {
+  + operadorLogico : str
+}
+class caracteristica_ExpressaoRelacional {
+  + operadorRelacional : str
+  + valor : str
+}
+class caracteristica_InconsistenciaRegraAdaptacao {
+}
+class caracteristica_InformacaoDeContexto {
+  + origem : str
+  + qualidade : str
+  + tipoValor : str
+  + validade : str
+  + valor : str
+}
+class caracteristica_LPS {
+  + erro : str
+  + nome : str
+  + valoresContextuais : str
+}
+class caracteristica_LiteralAcao {
+  + presenca : str
+}
+class caracteristica_LiteralComposicao {
+  + presenca : str
+}
+class caracteristica_PontoDeVariacao {
+}
+class caracteristica_Produto {
+}
+class caracteristica_RaizDeContexto {
+}
+class caracteristica_Regra {
+  + conteudo : str
+  + nome : str
+}
+class caracteristica_RegraDeComposicao {
+}
+class caracteristica_RegraDeContexto {
+}
+class caracteristica_Simulacao {
+  + nome : str
+}
+class caracteristica_Transicao {
+  + etiqueta : str
+  + safe : bool
+}
+class caracteristica_Variacao {
+  + cardinalidadeMaxima : str
+  + cardinalidadeMinima : str
+}
+class caracteristica_VariacaoDois {
+  + cardinalidadeMaxima : str
+  + cardinalidadeMaximaOr : str
+  + cardinalidadeMinimaOr : str
+}
+class caracteristica_VariacaoDoisProduto {
+  + cardinalidadeMaxima : str
+}
+class caracteristica_VariacaoProduto {
+  + cardinalidadeMaxima : str
+  + cardinalidadeMinima : str
+}
+class caracteristica_Variante {
+}
+class caracteristica_VarianteProduto {
+  + selecionado : str
+}
+Acao <|-- caracteristica_AcaoLogico
+Acao <|-- caracteristica_Designar
+Acao <|-- caracteristica_LiteralAcao
+Antecedente <|-- caracteristica_ExpressaoLogica
+Antecedente <|-- caracteristica_ExpressaoRelacional
+Antecedente <|-- caracteristica_LiteralComposicao
+Caracteristica <|-- caracteristica_CaracteristicaAgrupada
+Caracteristica <|-- caracteristica_CaracteristicaMandatoria
+Caracteristica <|-- caracteristica_CaracteristicaOpcional
+Caracteristica <|-- caracteristica_CaracteristicaRaiz
+Caracteristica <|-- caracteristica_VariacaoDois
+Caracteristica <|-- caracteristica_Variante
+CaracteristicaProduto <|-- caracteristica_CaracteristicaMandatoriaProduto
+CaracteristicaProduto <|-- caracteristica_CaracteristicaOpcionalProduto
+CaracteristicaProduto <|-- caracteristica_Produto
+CaracteristicaProduto <|-- caracteristica_VariacaoDoisProduto
+Elemento <|-- caracteristica_Atributo
+Elemento <|-- caracteristica_Caracteristica
+Elemento <|-- caracteristica_ElementoCaracteristico
+Elemento <|-- caracteristica_EntidadeDeContexto
+Elemento <|-- caracteristica_InformacaoDeContexto
+Elemento <|-- caracteristica_RaizDeContexto
+Elemento <|-- caracteristica_Variacao
+ElementoCaracteristico <|-- caracteristica_CaracteristicaAgrupada
+ElementoCaracteristico <|-- caracteristica_CaracteristicaOpcional
+ElementoCaracteristico <|-- caracteristica_VariacaoDois
+ElementoCaracteristico <|-- caracteristica_Variante
+ElementoDeProduto <|-- caracteristica_AtributoProduto
+ElementoDeProduto <|-- caracteristica_CaracteristicaProduto
+ElementoDeProduto <|-- caracteristica_VariacaoDoisProduto
+ElementoDeProduto <|-- caracteristica_VariacaoProduto
+ElementoDeProduto <|-- caracteristica_VarianteProduto
+Evento <|-- caracteristica_EventoLogico
+Evento <|-- caracteristica_EventoRelacional
+Expressao <|-- caracteristica_Acao
+Expressao <|-- caracteristica_Antecedente
+Expressao <|-- caracteristica_Evento
+PontoDeVariacao <|-- caracteristica_Variacao
+PontoDeVariacao <|-- caracteristica_Variante
+Regra <|-- caracteristica_RegraDeComposicao
+Regra <|-- caracteristica_RegraDeContexto
+caracteristica_CaracteristicaRaiz "0..1" -- "1..1" caracteristica_Produto : LinhaDoProduto55
+caracteristica_CaracteristicaRaiz "1..1" -- "1..1" caracteristica_LPS : LpsDoSistema29
+caracteristica_Acao "0..1" -- "1..1" caracteristica_RegraDeContexto : acao62
+caracteristica_Acao "0..9999" -- "1..1" caracteristica_Transicao : acoes100
+caracteristica_Antecedente "0..1" -- "1..1" caracteristica_RegraDeComposicao : antecedente57
+caracteristica_Designar "0..9999" -- "1..1" caracteristica_InconsistenciaRegraAdaptacao : atribuicoesInconsistentes112
+caracteristica_Atributo "0..9999" -- "1..1" caracteristica_Caracteristica : atributo27
+caracteristica_Atributo "0..1" -- "1..1" caracteristica_Designar : atributo76
+caracteristica_AtributoProduto "0..9999" -- "1..1" caracteristica_CaracteristicaProduto : atributoProduto48
+caracteristica_Atributo "0..9999" --* "1..1" caracteristica_LPS : atributos12
+caracteristica_Caracteristica "1..1" -- "0..9999" caracteristica_Caracteristica : caracteristicaFilha23
+caracteristica_Atributo "1..1" -- "0..1" caracteristica_Caracteristica : caracteristicaPai18
+caracteristica_Caracteristica "1..1" -- "0..1" caracteristica_Caracteristica : caracteristicaPai20
+caracteristica_Caracteristica "0..1" -- "1..1" caracteristica_Variacao : caracteristicaPai31
+caracteristica_CaracteristicaProduto "1..1" -- "0..9999" caracteristica_CaracteristicaProduto : caracteristicaProdutoFilha46
+caracteristica_CaracteristicaProduto "1..1" -- "0..1" caracteristica_CaracteristicaProduto : caracteristicaProdutoPai44
+caracteristica_AtributoProduto "1..1" -- "0..1" caracteristica_CaracteristicaProduto : caracteristicaProdutoPai50
+caracteristica_CaracteristicaProduto "0..1" -- "1..1" caracteristica_VariacaoProduto : caracteristicaProdutoPai53
+caracteristica_Antecedente "0..1" -- "1..1" caracteristica_RegraDeComposicao : consequente58
+caracteristica_Estado "0..1" -- "1..1" caracteristica_Transicao : eAntigo91
+caracteristica_Estado "0..1" -- "1..1" caracteristica_Transicao : eNovo94
+caracteristica_ElementoCaracteristico "0..1" -- "1..1" caracteristica_LiteralAcao : elemento75
+caracteristica_ElementoCaracteristico "0..1" -- "1..1" caracteristica_LiteralComposicao : elemento85
+caracteristica_Elemento "0..1" -- "1..1" caracteristica_ElementoDeProduto : elementoOriginal40
+caracteristica_EntidadeDeContexto "1..1" -- "1..1" caracteristica_InformacaoDeContexto : elementoPai38
+caracteristica_Elemento "0..9999" --* "1..1" caracteristica_LPS : elementos1
+caracteristica_ElementoDeProduto "0..9999" --* "1..1" caracteristica_LPS : elementosDeProduto9
+caracteristica_EntidadeDeContexto "0..9999" -- "1..1" caracteristica_RaizDeContexto : entidadesDeContexto35
+caracteristica_Estado "0..9999" --* "1..1" caracteristica_Simulacao : estados89
+caracteristica_Evento "0..1" -- "1..1" caracteristica_RegraDeContexto : evento61
+caracteristica_Expressao "0..9999" --* "1..1" caracteristica_LPS : expressoes7
+caracteristica_InconsistenciaRegraAdaptacao "0..9999" --* "1..1" caracteristica_LPS : inconsistenciaERA16
+caracteristica_EntidadeDeContexto "1..1" -- "0..9999" caracteristica_InformacaoDeContexto : informacoesDeContexto37
+caracteristica_Acao "1..1" -- "1..1" caracteristica_AcaoLogico : ladoDireitoAcao72
+caracteristica_Antecedente "0..1" -- "1..1" caracteristica_ExpressaoLogica : ladoDireitoComposicao78
+caracteristica_Evento "0..1" -- "1..1" caracteristica_EventoLogico : ladoDireitoEvento64
+caracteristica_Acao "1..1" -- "1..1" caracteristica_AcaoLogico : ladoEsquerdoAcao70
+caracteristica_Antecedente "0..1" -- "1..1" caracteristica_ExpressaoLogica : ladoEsquerdoComposicao80
+caracteristica_Evento "0..1" -- "1..1" caracteristica_EventoLogico : ladoEsquerdoEvento66
+caracteristica_InconsistenciaRegraAdaptacao "1..1" -- "0..9999" caracteristica_LiteralAcao : literaisInconsistentes109
+caracteristica_LPS "1..1" *-- "0..9999" caracteristica_PontoDeVariacao : pontosDeVariacao0
+caracteristica_CaracteristicaProduto "0..1" -- "1..1" caracteristica_Estado : produto103
+caracteristica_LPS "1..1" *-- "0..9999" caracteristica_Produto : produtos5
+caracteristica_EntidadeDeContexto "1..1" -- "0..1" caracteristica_RaizDeContexto : raiz36
+caracteristica_LPS "1..1" *-- "0..9999" caracteristica_Regra : regras3
+caracteristica_InconsistenciaRegraAdaptacao "1..1" -- "0..9999" caracteristica_RegraDeContexto : regrasInconsistentes106
+caracteristica_RegraDeComposicao "0..9999" -- "1..1" caracteristica_Transicao : regrasQuebradas97
+caracteristica_LPS "1..1" *-- "0..9999" caracteristica_Simulacao : simulacoes14
+caracteristica_CaracteristicaRaiz "0..1" -- "1..1" caracteristica_LPS : sistema11
+caracteristica_Simulacao "1..1" *-- "0..9999" caracteristica_Transicao : transicoes87
+caracteristica_Variacao "0..1" -- "1..1" caracteristica_Variante : variacaoPai33
+caracteristica_VariacaoProduto "1..1" -- "1..1" caracteristica_VarianteProduto : variacaoProdutoPai54
+caracteristica_Caracteristica "1..1" -- "0..9999" caracteristica_Variacao : variacoes25
+caracteristica_Variacao "1..1" -- "0..9999" caracteristica_Variante : variantes30
+caracteristica_VariacaoProduto "1..1" -- "0..9999" caracteristica_VarianteProduto : variantesProduto52
+caracteristica_EventoRelacional "1..1" -- "0..1" caracteristica_InformacaoDeContexto : variavelDeContexto69
+caracteristica_Atributo "0..1" -- "1..1" caracteristica_ExpressaoRelacional : variaveldaExpressao83
+@enduml

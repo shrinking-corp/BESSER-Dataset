@@ -1,0 +1,37 @@
+@startuml
+class AbstractElement {
+}
+class Type {
+}
+class domainModel_AbstractElement {
+}
+class domainModel_DataType {
+}
+class domainModel_Domainmodel {
+}
+class domainModel_Entity {
+}
+class domainModel_Feature {
+  + many : bool
+  + name : str
+}
+class domainModel_Import {
+  + importedNamespace : str
+}
+class domainModel_PackageDecl {
+  + name : str
+}
+class domainModel_Type {
+  + name : str
+}
+AbstractElement <|-- domainModel_Import
+AbstractElement <|-- domainModel_PackageDecl
+AbstractElement <|-- domainModel_Type
+Type <|-- domainModel_DataType
+Type <|-- domainModel_Entity
+domainModel_AbstractElement "0..9999" --* "1..1" domainModel_Domainmodel : elements0
+domainModel_AbstractElement "0..9999" --* "1..1" domainModel_PackageDecl : elements1
+domainModel_Entity "1..1" *-- "0..9999" domainModel_Feature : features5
+domainModel_Entity "1..1" -- "0..1" domainModel_Entity : superType4
+domainModel_Feature "1..1" -- "0..1" domainModel_Type : type7
+@enduml

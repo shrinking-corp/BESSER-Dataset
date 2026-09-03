@@ -1,0 +1,25 @@
+@startuml
+class k3fsm_FSM {
+  + consummedString : str
+  + name : str
+  + producedString : str
+  + unprocessedString : str
+}
+class k3fsm_State {
+  + name : str
+}
+class k3fsm_Transition {
+  + input : str
+  + name : str
+  + output : str
+}
+k3fsm_FSM "1..1" -- "0..1" k3fsm_State : currentState5
+k3fsm_FSM "1..1" -- "0..1" k3fsm_State : finalState2
+k3fsm_State "1..1" -- "0..9999" k3fsm_Transition : incomingTransitions9
+k3fsm_FSM "1..1" -- "1..1" k3fsm_State : initialState1
+k3fsm_State "1..1" *-- "0..9999" k3fsm_Transition : outgoingTransitions8
+k3fsm_FSM "1..1" *-- "0..9999" k3fsm_State : ownedStates0
+k3fsm_FSM "1..1" -- "1..1" k3fsm_State : owningFSM11
+k3fsm_State "1..1" -- "1..1" k3fsm_Transition : source14
+k3fsm_State "1..1" -- "1..1" k3fsm_Transition : target12
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+class GraphGenerator {
+}
+class Identifiable {
+}
+class LatticeGraphGenerator {
+}
+abstract class graphgenerators_GraphGenerator {
+  + getGraph() : str
+}
+abstract class graphgenerators_LatticeGraphGenerator {
+  + periodicBoundaries : bool
+  + useNearestNeighbors : bool
+  + useNextNearestNeighbors : bool
+}
+class graphgenerators_MigrationEdgeGraphGenerator {
+  + location : str
+  + migrationRate : float
+  + population : str
+}
+class graphgenerators_PajekNetGraphGenerator {
+  + area : float
+  + colArea : int
+  + dataFile_net : str
+  + zoomFactor : int
+}
+class graphgenerators_PlateCarreeGlobeGraphGenerator {
+  + angularStep : int
+  + radius : float
+}
+class graphgenerators_SquareLatticeGraphGenerator {
+  + area : float
+  + xSize : int
+  + ySize : int
+}
+GraphGenerator <|-- graphgenerators_LatticeGraphGenerator
+GraphGenerator <|-- graphgenerators_MigrationEdgeGraphGenerator
+GraphGenerator <|-- graphgenerators_PajekNetGraphGenerator
+Identifiable <|-- graphgenerators_GraphGenerator
+LatticeGraphGenerator <|-- graphgenerators_PlateCarreeGlobeGraphGenerator
+LatticeGraphGenerator <|-- graphgenerators_SquareLatticeGraphGenerator
+@enduml

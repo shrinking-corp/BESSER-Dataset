@@ -1,0 +1,276 @@
+@startuml
+enum AnchorDirection {
+  INCOMING
+  OUTGOING
+}
+enum BooleanLiteral {
+  FALSE
+  TRUE
+}
+class ConnectableElement {
+}
+enum DefaultColor {
+  AQUA
+  BLACK
+  BLUE
+  FUCHSIA
+  GRAY
+  GREEN
+  LIME
+  MAROON
+  NAVY
+  OLIVE
+  PURPLE
+  RED
+  SILVER
+  TEAL
+  WHITE
+  YELLOW
+}
+class DiagramElement {
+}
+class Feature {
+}
+class FeatureContainer {
+}
+enum LineType {
+  DASH
+  DOT
+  SOLID
+}
+enum Operator {
+  DIFFERENT
+  EQUAL
+}
+enum TextAlignValue {
+  CENTER
+  LEFT
+  RIGHT
+}
+class Value {
+}
+class model_Anchor {
+  + direction : str
+  + max : int
+}
+class model_Arrow {
+}
+class model_BooleanValue {
+  + value : str
+}
+class model_Color {
+  + default : str
+}
+class model_ColorFeature {
+  + type : str
+}
+class model_Colors {
+}
+class model_ConnectableElement {
+}
+class model_Contains {
+}
+class model_Corner {
+  + angle : int
+}
+class model_Custom {
+}
+class model_CustomColor {
+  + B : int
+  + G : int
+  + R : int
+  + name : str
+}
+class model_CustomFigure {
+  + name : str
+}
+class model_Decorator {
+}
+class model_Diagram {
+}
+class model_DiagramElement {
+}
+class model_DoubleValue {
+  + valueDecimal : int
+  + valueInt : int
+}
+class model_EAttribute {
+}
+class model_EClass {
+}
+class model_EReference {
+}
+class model_Ellipse {
+  + circle : bool
+  + ellipse : bool
+}
+class model_EnumValue {
+  + name : str
+}
+class model_Feature {
+}
+class model_FeatureConditional {
+  + operator : str
+}
+class model_FeatureContainer {
+}
+class model_FontProperties {
+  + bold : bool
+  + face : str
+  + italics : bool
+  + size : int
+}
+class model_Image {
+  + imageId : str
+}
+class model_ImportStatement {
+  + importedNamespace : str
+}
+class model_IntValue {
+  + value : int
+}
+class model_Invisible {
+}
+class model_Label {
+}
+class model_Layout {
+  + horizontal : bool
+  + margin : int
+  + vertical : bool
+}
+class model_Line {
+  + horizontal : bool
+  + vertical : bool
+}
+class model_LineStyle {
+  + manhattan : bool
+  + style : str
+}
+class model_LineWidth {
+  + width : int
+}
+class model_Link {
+  + complex : bool
+  + reference : bool
+}
+class model_MetaModel {
+  + ecorePath : str
+  + plugin : str
+}
+class model_Node {
+}
+class model_Point {
+  + x : int
+  + y : int
+}
+class model_Polyline {
+  + polygon : bool
+  + polyline : bool
+}
+class model_Position {
+  + x : int
+  + xRelative : bool
+  + y : int
+  + yRelative : bool
+}
+class model_Rectangle {
+  + rectangle : bool
+  + square : bool
+}
+class model_Rhombus {
+}
+class model_Size {
+  + height : int
+  + heightRelative : bool
+  + resizable : bool
+  + width : int
+  + widthRelative : bool
+}
+class model_StringValue {
+  + null : bool
+  + value : str
+}
+class model_TextAlign {
+  + value : str
+}
+class model_TextPart {
+  + editable : bool
+  + text : str
+}
+class model_TextValue {
+}
+class model_Transparency {
+  + percent : int
+}
+class model_Triangle {
+}
+class model_Value {
+}
+class model_Visible {
+}
+class model_XDiagram {
+}
+ConnectableElement <|-- model_Custom
+ConnectableElement <|-- model_Ellipse
+ConnectableElement <|-- model_Image
+ConnectableElement <|-- model_Invisible
+ConnectableElement <|-- model_Label
+ConnectableElement <|-- model_Polyline
+ConnectableElement <|-- model_Rectangle
+ConnectableElement <|-- model_Rhombus
+ConnectableElement <|-- model_Triangle
+DiagramElement <|-- model_Link
+DiagramElement <|-- model_Node
+Feature <|-- model_Anchor
+Feature <|-- model_ColorFeature
+Feature <|-- model_Contains
+Feature <|-- model_Corner
+Feature <|-- model_FontProperties
+Feature <|-- model_Layout
+Feature <|-- model_LineStyle
+Feature <|-- model_LineWidth
+Feature <|-- model_Point
+Feature <|-- model_Position
+Feature <|-- model_Size
+Feature <|-- model_TextAlign
+Feature <|-- model_TextValue
+Feature <|-- model_Transparency
+Feature <|-- model_Visible
+FeatureContainer <|-- model_Arrow
+FeatureContainer <|-- model_ConnectableElement
+FeatureContainer <|-- model_Line
+FeatureContainer <|-- model_Link
+Value <|-- model_BooleanValue
+Value <|-- model_DoubleValue
+Value <|-- model_EnumValue
+Value <|-- model_IntValue
+Value <|-- model_StringValue
+model_ConnectableElement "1..1" *-- "0..9999" model_FeatureContainer : children42
+model_Color "0..1" --* "1..1" model_ColorFeature : color53
+model_Colors "1..1" *-- "0..9999" model_CustomColor : colors38
+model_Feature "1..1" *-- "0..1" model_FeatureConditional : conditional16
+model_Contains "0..9999" --* "1..1" model_Diagram : contains11
+model_Color "1..1" -- "0..1" model_CustomColor : custom40
+model_Colors "0..1" --* "1..1" model_XDiagram : customColors3
+model_Decorator "0..9999" --* "1..1" model_Link : decorators31
+model_Diagram "0..1" --* "1..1" model_XDiagram : diagram1
+model_Decorator "1..1" *-- "0..1" model_FeatureContainer : element33
+model_ConnectableElement "0..1" --* "1..1" model_CustomFigure : element45
+model_DiagramElement "0..9999" --* "1..1" model_XDiagram : elements5
+model_Feature "0..9999" --* "1..1" model_FeatureContainer : features17
+model_Custom "1..1" -- "0..1" model_CustomFigure : figure48
+model_CustomFigure "0..9999" --* "1..1" model_XDiagram : figures7
+model_MetaModel "0..1" --* "1..1" model_XDiagram : metamodel0
+model_EAttribute "0..1" -- "1..1" model_FeatureConditional : modelAttribute19
+model_EAttribute "0..1" -- "1..1" model_TextPart : modelAttribute56
+model_DiagramElement "1..1" -- "0..1" model_EClass : modelClass13
+model_Diagram "1..1" -- "0..1" model_EClass : modelClass9
+model_EReference "0..1" -- "1..1" model_Link : modelReference24
+model_Anchor "1..1" -- "0..1" model_EReference : modelReference36
+model_Contains "1..1" -- "0..1" model_EReference : modelReference50
+model_TextPart "0..9999" --* "1..1" model_TextValue : parts55
+model_ConnectableElement "0..1" --* "1..1" model_Node : rootFigure23
+model_EReference "0..1" -- "1..1" model_Link : sourceReference25
+model_EReference "0..1" -- "1..1" model_Link : targetReference28
+model_FeatureConditional "1..1" *-- "0..1" model_Value : value21
+@enduml

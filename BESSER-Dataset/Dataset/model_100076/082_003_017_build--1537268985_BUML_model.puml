@@ -1,0 +1,36 @@
+@startuml
+class Instance {
+}
+class OptionBinding {
+}
+class build_Build {
+}
+class build_Configuration {
+}
+class build_FileName {
+}
+class build_Include {
+}
+class build_ModuleInstance {
+}
+class build_ModuleType {
+}
+class build_OptionInstance {
+}
+Instance <|-- build_ModuleInstance
+OptionBinding <|-- build_OptionInstance
+build_ModuleInstance "0..9999" -- "1..1" build_ModuleInstance : afterDepends21
+build_ModuleInstance "1..1" -- "0..9999" build_ModuleType : allTypes4
+build_Build "0..1" -- "1..1" build_ModuleInstance : build2
+build_Build "1..1" -- "0..1" build_Configuration : configuration0
+build_ModuleInstance "1..1" -- "0..1" build_ModuleInstance : container17
+build_ModuleInstance "1..1" -- "0..9999" build_ModuleInstance : contents14
+build_ModuleInstance "1..1" -- "0..9999" build_ModuleInstance : dependent8
+build_ModuleInstance "1..1" -- "0..9999" build_ModuleInstance : depends11
+build_Include "0..1" -- "1..1" build_ModuleInstance : includeMember23
+build_ModuleInstance "0..1" -- "1..1" build_OptionInstance : module27
+build_Build "1..1" *-- "0..9999" build_ModuleInstance : modules1
+build_ModuleInstance "1..1" *-- "0..9999" build_OptionInstance : options19
+build_FileName "0..9999" -- "1..1" build_ModuleInstance : sources25
+build_ModuleInstance "1..1" -- "0..1" build_ModuleType : type3
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+class statemachine_Resource {
+  + name : str
+}
+class statemachine_State {
+  + name : str
+}
+class statemachine_StateMachine {
+  + name : str
+}
+class statemachine_Transition {
+  + Id : int
+}
+statemachine_Resource "1..9999" -- "1..1" statemachine_State : need5
+statemachine_Resource "0..9999" --* "1..1" statemachine_StateMachine : resources3
+statemachine_State "1..1" -- "1..1" statemachine_Transition : source8
+statemachine_State "0..9999" --* "1..1" statemachine_StateMachine : states0
+statemachine_State "1..1" -- "1..1" statemachine_Transition : target11
+statemachine_StateMachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
+@enduml

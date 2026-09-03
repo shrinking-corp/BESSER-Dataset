@@ -1,0 +1,156 @@
+@startuml
+class BinaryOp {
+}
+class BoolOperand {
+}
+class BoolOperandChoices {
+}
+class Comparison {
+}
+class LogicalOperator {
+}
+class NumOperand {
+}
+class NumOperandChoices {
+}
+class NumOperator {
+}
+class Operand {
+}
+class Selection {
+}
+class UnaryOp {
+}
+class hydraconstraints_All {
+}
+class hydraconstraints_And {
+}
+class hydraconstraints_Any {
+}
+abstract class hydraconstraints_BinaryOp {
+}
+abstract class hydraconstraints_BoolOperand {
+}
+abstract class hydraconstraints_BoolOperandChoices {
+}
+class hydraconstraints_BoolPriorityOperand1 {
+}
+class hydraconstraints_BoolPriorityOperand2 {
+}
+abstract class hydraconstraints_Comparison {
+}
+class hydraconstraints_Constraint {
+}
+class hydraconstraints_Context {
+}
+class hydraconstraints_Div {
+}
+class hydraconstraints_Equal {
+}
+class hydraconstraints_Implies {
+}
+class hydraconstraints_Less {
+}
+class hydraconstraints_LessOrEqual {
+}
+abstract class hydraconstraints_LogicalOperator {
+}
+class hydraconstraints_Minus {
+}
+class hydraconstraints_Model {
+  + featureList : str
+  + featureModelExists(hydraconstraints_context : str, hydraconstraints_diagnostics : str) : bool
+}
+class hydraconstraints_More {
+}
+class hydraconstraints_MoreOrEqual {
+}
+class hydraconstraints_Mul {
+}
+class hydraconstraints_MultipleFeature {
+  + featureName : str
+  + isMultipleFeature(hydraconstraints_context : str, hydraconstraints_diagnostics : str) : bool
+}
+class hydraconstraints_Neg {
+}
+class hydraconstraints_NotEqual {
+}
+abstract class hydraconstraints_NumOperand {
+}
+abstract class hydraconstraints_NumOperandChoices {
+}
+abstract class hydraconstraints_NumOperator {
+}
+class hydraconstraints_NumPriorityOperand1 {
+}
+class hydraconstraints_NumPriorityOperand2 {
+}
+class hydraconstraints_Number {
+  + numValue : int
+}
+abstract class hydraconstraints_Operand {
+  + evaluate(hydraconstraints_featureContext : str, hydraconstraints_modelDirection : str) : int
+}
+class hydraconstraints_Or {
+}
+class hydraconstraints_Plus {
+}
+abstract class hydraconstraints_Selection {
+}
+class hydraconstraints_SimpleFeature {
+  + featureName : str
+  + isSimpleFeature(hydraconstraints_context : str, hydraconstraints_diagnostics : str) : bool
+}
+abstract class hydraconstraints_UnaryOp {
+}
+class hydraconstraints_Xor {
+}
+BinaryOp <|-- hydraconstraints_And
+BinaryOp <|-- hydraconstraints_Implies
+BinaryOp <|-- hydraconstraints_Or
+BinaryOp <|-- hydraconstraints_Xor
+BoolOperand <|-- hydraconstraints_BoolOperandChoices
+BoolOperand <|-- hydraconstraints_LogicalOperator
+BoolOperandChoices <|-- hydraconstraints_Context
+BoolOperandChoices <|-- hydraconstraints_Selection
+BoolOperandChoices <|-- hydraconstraints_SimpleFeature
+Comparison <|-- hydraconstraints_Equal
+Comparison <|-- hydraconstraints_Less
+Comparison <|-- hydraconstraints_LessOrEqual
+Comparison <|-- hydraconstraints_More
+Comparison <|-- hydraconstraints_MoreOrEqual
+Comparison <|-- hydraconstraints_NotEqual
+LogicalOperator <|-- hydraconstraints_BinaryOp
+LogicalOperator <|-- hydraconstraints_Comparison
+LogicalOperator <|-- hydraconstraints_UnaryOp
+NumOperand <|-- hydraconstraints_NumOperandChoices
+NumOperand <|-- hydraconstraints_NumOperator
+NumOperandChoices <|-- hydraconstraints_Context
+NumOperandChoices <|-- hydraconstraints_MultipleFeature
+NumOperandChoices <|-- hydraconstraints_Number
+NumOperator <|-- hydraconstraints_Div
+NumOperator <|-- hydraconstraints_Minus
+NumOperator <|-- hydraconstraints_Mul
+NumOperator <|-- hydraconstraints_Plus
+Operand <|-- hydraconstraints_BoolOperand
+Operand <|-- hydraconstraints_NumOperand
+Selection <|-- hydraconstraints_All
+Selection <|-- hydraconstraints_Any
+UnaryOp <|-- hydraconstraints_Neg
+hydraconstraints_BinaryOp "1..1" *-- "1..1" hydraconstraints_BoolPriorityOperand1 : binaryOp19
+hydraconstraints_BinaryOp "1..1" *-- "1..1" hydraconstraints_BoolPriorityOperand2 : binaryOp211
+hydraconstraints_BoolOperand "1..1" --* "1..1" hydraconstraints_BoolPriorityOperand1 : boolPriorityOp13
+hydraconstraints_BoolOperand "1..1" --* "1..1" hydraconstraints_BoolPriorityOperand2 : boolPriorityOp25
+hydraconstraints_Comparison "1..1" *-- "1..1" hydraconstraints_NumPriorityOperand2 : compOp114
+hydraconstraints_Comparison "1..1" *-- "1..1" hydraconstraints_NumPriorityOperand2 : compOp215
+hydraconstraints_Constraint "0..9999" --* "1..1" hydraconstraints_Model : constraints0
+hydraconstraints_Context "1..1" *-- "1..1" hydraconstraints_MultipleFeature : contextOp129
+hydraconstraints_Constraint "1..1" --* "1..1" hydraconstraints_Context : contextOp227
+hydraconstraints_NumOperator "1..1" *-- "1..1" hydraconstraints_NumPriorityOperand1 : numOp122
+hydraconstraints_NumOperator "1..1" *-- "1..1" hydraconstraints_NumPriorityOperand2 : numOp224
+hydraconstraints_NumOperand "1..1" --* "1..1" hydraconstraints_NumPriorityOperand1 : numPriorityOp120
+hydraconstraints_NumOperand "1..1" --* "1..1" hydraconstraints_NumPriorityOperand2 : numPriorityOp218
+hydraconstraints_BoolOperand "1..1" --* "1..1" hydraconstraints_Constraint : operators1
+hydraconstraints_Context "1..1" --* "1..1" hydraconstraints_Selection : selectionOp31
+hydraconstraints_BoolPriorityOperand2 "1..1" --* "1..1" hydraconstraints_UnaryOp : unaryOp7
+@enduml

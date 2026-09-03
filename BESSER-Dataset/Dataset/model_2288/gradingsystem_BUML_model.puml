@@ -1,0 +1,44 @@
+@startuml
+enum MinRequirementsType {
+  Absolute
+  Percentage
+}
+class Task {
+}
+class gradingsystem_ConcreteTask {
+  + maxPoints : int
+}
+class gradingsystem_Course {
+  + name : str
+}
+class gradingsystem_Grade {
+  + name : str
+  + requiredPoints : int
+}
+class gradingsystem_Grading {
+  + semester : str
+}
+class gradingsystem_GradingScheme {
+}
+class gradingsystem_GradingSystem {
+}
+class gradingsystem_MinRequirement {
+  + type : str
+  + value : int
+}
+abstract class gradingsystem_Task {
+  + name : str
+}
+class gradingsystem_TaskGroup {
+}
+Task <|-- gradingsystem_ConcreteTask
+Task <|-- gradingsystem_TaskGroup
+gradingsystem_Task "1..9999" --* "1..1" gradingsystem_TaskGroup : contains4
+gradingsystem_Course "0..9999" --* "1..1" gradingsystem_GradingSystem : courses0
+gradingsystem_Grade "1..9999" --* "1..1" gradingsystem_GradingScheme : grades6
+gradingsystem_Grading "1..1" *-- "1..1" gradingsystem_GradingScheme : gradingScheme13
+gradingsystem_Course "1..1" *-- "0..9999" gradingsystem_Grading : gradings1
+gradingsystem_MinRequirement "0..1" --* "1..1" gradingsystem_Task : minRequirement3
+gradingsystem_Grade "1..1" -- "1..1" gradingsystem_GradingScheme : minRequirementNotFulfilledGrade7
+gradingsystem_Grading "1..1" *-- "1..9999" gradingsystem_Task : tasks10
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+enum Gender {
+  FEMALE
+  MALE
+  UNKNOWN
+}
+class Lims_Family {
+  + name : str
+}
+class Lims_Individual {
+  + gender : str
+  + name : str
+}
+class Lims_Laboratory {
+}
+class Lims_Run {
+  + date : date
+  + name : str
+}
+class Lims_Sample {
+  + id : str
+}
+class Lims_Sequenced {
+}
+class Lims_Sequencer {
+  + name : str
+}
+Lims_Individual "1..1" -- "0..1" Lims_Individual : Father8
+Lims_Individual "1..1" -- "0..1" Lims_Individual : Mother10
+Lims_Family "0..9999" --* "1..1" Lims_Laboratory : families2
+Lims_Family "1..1" -- "1..1" Lims_Individual : family5
+Lims_Individual "1..1" -- "1..1" Lims_Sample : individual19
+Lims_Family "1..1" *-- "0..9999" Lims_Individual : individuals0
+Lims_Family "1..1" -- "1..1" Lims_Laboratory : laboratory1
+Lims_Laboratory "1..1" -- "1..1" Lims_Sequencer : laboratory14
+Lims_Run "1..1" -- "1..1" Lims_Sequenced : run21
+Lims_Run "0..9999" --* "1..1" Lims_Sequencer : runs13
+Lims_Sample "1..1" -- "1..1" Lims_Sequenced : sample23
+Lims_Individual "1..1" *-- "0..9999" Lims_Sample : samples12
+Lims_Run "1..1" *-- "0..9999" Lims_Sequenced : sequenced16
+Lims_Run "1..1" -- "1..1" Lims_Sequencer : sequencer17
+Lims_Laboratory "1..1" *-- "0..9999" Lims_Sequencer : sequencers3
+@enduml

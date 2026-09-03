@@ -1,0 +1,102 @@
+@startuml
+class Expr {
+}
+class wh_Affect {
+  + vars : str
+}
+class wh_Command {
+}
+class wh_Commands {
+}
+class wh_Definition {
+}
+class wh_EObject {
+}
+class wh_Expr {
+}
+class wh_ExprAnd {
+}
+class wh_ExprCons {
+}
+class wh_ExprEq {
+}
+class wh_ExprHd {
+}
+class wh_ExprList {
+}
+class wh_ExprNot {
+}
+class wh_ExprOr {
+}
+class wh_ExprSimple {
+  + str : str
+  + sym : str
+  + varSimple : str
+}
+class wh_ExprSym {
+  + arg1 : str
+}
+class wh_ExprTl {
+}
+class wh_For {
+}
+class wh_Function {
+  + name : str
+}
+class wh_If {
+}
+class wh_Input {
+  + vars : str
+}
+class wh_Nop {
+  + nop : str
+}
+class wh_Output {
+  + vars : str
+}
+class wh_Program {
+}
+class wh_Wh {
+}
+class wh_While {
+}
+Expr <|-- wh_ExprAnd
+Expr <|-- wh_ExprCons
+Expr <|-- wh_ExprEq
+Expr <|-- wh_ExprHd
+Expr <|-- wh_ExprList
+Expr <|-- wh_ExprNot
+Expr <|-- wh_ExprOr
+Expr <|-- wh_ExprSimple
+Expr <|-- wh_ExprSym
+Expr <|-- wh_ExprTl
+wh_ExprAnd "1..1" *-- "0..1" wh_ExprSimple : arg137
+wh_ExprOr "1..1" *-- "0..1" wh_ExprSimple : arg141
+wh_ExprEq "0..1" --* "1..1" wh_ExprNot : arg156
+wh_ExprEq "1..1" *-- "0..1" wh_ExprSimple : arg157
+wh_Expr "0..1" --* "1..1" wh_ExprAnd : arg238
+wh_Expr "0..1" --* "1..1" wh_ExprOr : arg243
+wh_Expr "0..9999" --* "1..1" wh_ExprSym : arg254
+wh_ExprEq "1..1" *-- "0..1" wh_ExprSimple : arg260
+wh_Expr "0..9999" --* "1..1" wh_ExprCons : arg46
+wh_Expr "0..9999" --* "1..1" wh_ExprList : arg48
+wh_Expr "0..1" --* "1..1" wh_ExprHd : arg50
+wh_Expr "0..1" --* "1..1" wh_ExprTl : arg52
+wh_Command "1..1" *-- "0..1" wh_EObject : cmd13
+wh_Commands "0..1" --* "1..1" wh_For : cmds26
+wh_Commands "0..1" --* "1..1" wh_While : cmds31
+wh_Command "0..9999" --* "1..1" wh_Commands : commands11
+wh_Commands "0..1" --* "1..1" wh_If : commands116
+wh_Commands "0..1" --* "1..1" wh_If : commands219
+wh_Commands "0..1" --* "1..1" wh_Definition : commands7
+wh_Definition "0..1" --* "1..1" wh_Function : definition3
+wh_Program "0..9999" --* "1..1" wh_Wh : elements0
+wh_Expr "0..1" --* "1..1" wh_If : expr15
+wh_Expr "0..1" --* "1..1" wh_For : expr24
+wh_Expr "0..1" --* "1..1" wh_While : expr29
+wh_Expr "0..1" --* "1..1" wh_Expr : expr35
+wh_Affect "1..1" *-- "0..9999" wh_Expr : exprs22
+wh_Function "0..9999" --* "1..1" wh_Program : functions1
+wh_Definition "1..1" *-- "0..1" wh_Input : input5
+wh_Definition "1..1" *-- "0..1" wh_Output : output9
+@enduml

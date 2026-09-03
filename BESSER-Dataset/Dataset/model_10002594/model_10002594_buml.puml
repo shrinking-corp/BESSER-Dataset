@@ -1,0 +1,66 @@
+@startuml
+class Book {
+  + Author : str
+  + publisher : str
+  + publisherCity : str
+  + title : str
+  + yearPublished : int
+}
+class Categorize_apps_as_productive___Social_UseCase {
+}
+class Change_Password_UseCase {
+}
+enum Enumeration {
+}
+class Home_Page_UseCase {
+}
+class Library {
+  + changeSinceLastSave : bool
+  + collection : str
+  + count : int
+  + file : str
+}
+class LibraryController {
+  + libraryDataAcces : str
+}
+class LibraryGui {
+  + library : Library
+  + libraryController : LibraryController
+}
+class Login {
+  + _attr : str
+  + username : str
+}
+class Login_UseCase {
+}
+class Manage_Notifications_UseCase {
+}
+class Manage_Tracking_UseCase {
+}
+class Settings_UseCase {
+}
+class Sign_up_UseCase {
+}
+class User_Actor {
+}
+class View_points_scored_UseCase {
+}
+class View_time_spent_on_each_app_UseCase {
+}
+class view_the_count_each_app_has_been_opened_UseCase {
+}
+Book "0..9999" -- "1..1" Library : Book_Library
+Categorize_apps_as_productive___Social_UseCase "0..1" -- "0..1" Home_Page_UseCase : Home_Page_Categorize_apps_as_productive___Social
+Home_Page_UseCase "0..1" -- "0..1" Settings_UseCase : Home_Page_Settings
+Home_Page_UseCase "0..1" -- "0..1" View_points_scored_UseCase : Home_Page_View_points_scored
+Home_Page_UseCase "0..1" -- "0..1" View_time_spent_on_each_app_UseCase : Home_Page_View_time_spent_on_each_app
+Home_Page_UseCase "0..1" -- "0..1" view_the_count_each_app_has_been_opened_UseCase : Home_Page_view_the_count_each_app_has_been_opened
+LibraryController "1..1" -- "1..1" LibraryGui : LibraryGui_LibraryController
+Library "1..1" -- "1..1" LibraryGui : Library_LibraryGui
+Change_Password_UseCase "0..1" -- "0..1" Settings_UseCase : Settings_Change_Password
+Manage_Notifications_UseCase "0..1" -- "0..1" Settings_UseCase : Settings_Manage_Notifications
+Manage_Tracking_UseCase "0..1" -- "0..1" Settings_UseCase : Settings_Manage_Tracking
+Home_Page_UseCase "0..1" -- "0..1" User_Actor : User_Home_Page
+Login_UseCase "0..1" -- "0..1" User_Actor : User_Login
+Sign_up_UseCase "0..1" -- "0..1" User_Actor : User_Sign_up
+@enduml

@@ -1,0 +1,116 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class PlaceHolder {
+}
+enum SequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+abstract class publication_Counted {
+  + id : int
+}
+abstract class publication_Labelled {
+  + lname : str
+}
+abstract class publication_Named {
+  + name : str
+}
+class publication_Paper {
+}
+class publication_Paragraph {
+  + content : str
+}
+abstract class publication_PlaceHolder {
+}
+class publication_PlaceHolderPP {
+}
+class publication_PlaceHolderRn {
+}
+class publication_PlaceHolderRs {
+}
+class publication_PlaceHolderRule {
+}
+class publication_Progress {
+  + percent : int
+  + time : int
+}
+class publication_PublicationPhase {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class publication_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class publication_PublicationStructure {
+}
+class publication_PublicationSystem {
+}
+class publication_Researcher {
+  + forName : str
+  + name : str
+  + position : str
+}
+class publication_Review {
+}
+class publication_ReviewNote {
+  + content : str
+}
+class publication_Rule {
+  + key : str
+  + text : str
+}
+class publication_Sequence {
+  + sequenceType : str
+}
+class publication_Write {
+}
+Counted <|-- publication_Paragraph
+Labelled <|-- publication_Progress
+Labelled <|-- publication_Review
+Labelled <|-- publication_Write
+Named <|-- publication_Paper
+Named <|-- publication_Paragraph
+Named <|-- publication_PublicationProcess
+Named <|-- publication_PublicationStructure
+Named <|-- publication_ReviewNote
+PlaceHolder <|-- publication_PlaceHolderPP
+PlaceHolder <|-- publication_PlaceHolderRn
+PlaceHolder <|-- publication_PlaceHolderRs
+PlaceHolder <|-- publication_PlaceHolderRule
+publication_Paper "1..1" -- "0..9999" publication_Researcher : authors28
+publication_PublicationPhase "1..1" *-- "0..9999" publication_Sequence : linksToSuccessors3
+publication_PublicationPhase "1..1" -- "0..9999" publication_Researcher : neededPerson5
+publication_Paper "0..1" -- "1..1" publication_Progress : paper36
+publication_Paper "0..9999" -- "1..1" publication_Researcher : papers23
+publication_Paper "0..9999" --* "1..1" publication_PublicationStructure : papers46
+publication_Paragraph "0..1" -- "1..1" publication_Write : paragraph38
+publication_Paper "1..1" *-- "0..9999" publication_Paragraph : paragraphs26
+publication_PublicationPhase "0..9999" -- "1..1" publication_Researcher : phaseParticipation19
+publication_PublicationPhase "0..9999" --* "1..1" publication_PublicationProcess : phases0
+publication_PlaceHolderRule "0..1" --* "1..1" publication_Rule : placeholder17
+publication_PlaceHolderRs "0..1" --* "1..1" publication_Researcher : placeholder24
+publication_PlaceHolderRn "0..1" --* "1..1" publication_ReviewNote : placeholder32
+publication_PlaceHolderPP "0..1" --* "1..1" publication_PublicationPhase : placeholder9
+publication_PublicationPhase "1..1" -- "1..1" publication_Sequence : predecessor14
+publication_Progress "1..1" -- "0..1" publication_PublicationProcess : process34
+publication_PublicationProcess "0..1" --* "1..1" publication_PublicationSystem : processView49
+publication_Paper "1..1" *-- "0..9999" publication_Progress : progress27
+publication_PublicationProcess "1..1" *-- "0..9999" publication_Rule : publicationRules1
+publication_PublicationStructure "1..1" *-- "0..9999" publication_Researcher : researchers44
+publication_Review "1..1" -- "0..1" publication_ReviewNote : reviewNote41
+publication_Researcher "1..1" *-- "0..9999" publication_Review : reviews21
+publication_Paragraph "1..1" *-- "0..9999" publication_ReviewNote : reviews30
+publication_PublicationPhase "1..1" -- "0..9999" publication_Rule : rules6
+publication_PublicationStructure "0..1" --* "1..1" publication_PublicationSystem : structuralView51
+publication_PublicationPhase "1..1" -- "1..1" publication_Sequence : successor11
+publication_Researcher "1..1" *-- "0..9999" publication_Write : writes20
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+class BookedTables {
+  + BookingID : int
+  + TableNo : int
+}
+class Bookings {
+  + BookingID : int
+  + CustomerName : str
+  + Date : date
+  + People : int
+  + Phone : str
+  + Time : date
+}
+class Membership_Card {
+  + DiscountLVL : int
+  + ID : int
+}
+class Menu {
+  + Availability : int
+  + Category : str
+  + MenuItem : str
+  + Price : float
+}
+class Order {
+  + Date : date
+  + DicountLvl : int
+  + OrderID : int
+  + Total : float
+  + UserID : int
+}
+class OrderItem {
+  + Completed : int
+  + ItemName : str
+  + OrderID : int
+  + OrderItemID : int
+  + RemaningTime : date
+}
+class Table {
+  + Occupied : int
+  + TableNo : int
+}
+class Users {
+  + UserID : int
+  + UserLevel : int
+  + UserName : str
+}
+class ViewOrder {
+  + getUser : int
+}
+BookedTables "1..9999" -- "1..1" Table : BookedTables_Table
+Membership_Card "1..1" -- "1..9999" Order : Membership_Card_Order
+Order "1..1" -- "1..9999" OrderItem : OrderItem_Order
+Menu "1..1" -- "1..9999" OrderItem : Order_Menu
+Order "1..9999" -- "1..1" Table : Order_Table
+Order "1..9999" -- "1..1" Users : Order_Users
+BookedTables "1..9999" -- "1..1" Bookings : Table_Bookings
+OrderItem "1..9999" -- "1..1" ViewOrder : ViewOrder_OrderItem
+@enduml

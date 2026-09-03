@@ -1,0 +1,64 @@
+@startuml
+class Dependency {
+}
+class Element {
+}
+class Gate {
+}
+class dynamicFaultTree_AND {
+}
+class dynamicFaultTree_DFT {
+  + name : str
+}
+abstract class dynamicFaultTree_Dependency {
+}
+abstract class dynamicFaultTree_Element {
+  + elementID : int
+  + name : str
+  + probability : float
+  + sequencePosition : int
+}
+class dynamicFaultTree_Event {
+}
+class dynamicFaultTree_FunctionalDependency {
+}
+abstract class dynamicFaultTree_Gate {
+}
+class dynamicFaultTree_OR {
+}
+class dynamicFaultTree_PAND {
+}
+class dynamicFaultTree_POR {
+}
+class dynamicFaultTree_Sequence {
+}
+class dynamicFaultTree_Spare {
+}
+class dynamicFaultTree_TopLevelEvent {
+}
+class dynamicFaultTree_XOR {
+}
+Dependency <|-- dynamicFaultTree_FunctionalDependency
+Dependency <|-- dynamicFaultTree_Sequence
+Element <|-- dynamicFaultTree_Dependency
+Element <|-- dynamicFaultTree_Event
+Element <|-- dynamicFaultTree_Gate
+Element <|-- dynamicFaultTree_TopLevelEvent
+Gate <|-- dynamicFaultTree_AND
+Gate <|-- dynamicFaultTree_OR
+Gate <|-- dynamicFaultTree_PAND
+Gate <|-- dynamicFaultTree_POR
+Gate <|-- dynamicFaultTree_Spare
+Gate <|-- dynamicFaultTree_XOR
+dynamicFaultTree_Event "0..9999" --* "1..1" dynamicFaultTree_Gate : childEvent11
+dynamicFaultTree_Gate "1..1" *-- "0..9999" dynamicFaultTree_Gate : childGate6
+dynamicFaultTree_DFT "1..1" *-- "0..9999" dynamicFaultTree_Dependency : dependencies1
+dynamicFaultTree_Dependency "0..9999" -- "1..1" dynamicFaultTree_Event : dependency15
+dynamicFaultTree_Dependency "1..1" -- "0..9999" dynamicFaultTree_Event : events16
+dynamicFaultTree_Gate "0..1" --* "1..1" dynamicFaultTree_TopLevelEvent : gate3
+dynamicFaultTree_Event "1..1" -- "0..1" dynamicFaultTree_Gate : parentGate13
+dynamicFaultTree_Gate "1..1" -- "0..1" dynamicFaultTree_Gate : parentGate9
+dynamicFaultTree_Event "0..9999" -- "1..1" dynamicFaultTree_Spare : spares18
+dynamicFaultTree_DFT "1..1" *-- "0..1" dynamicFaultTree_TopLevelEvent : topLevelEvent0
+dynamicFaultTree_Gate "1..1" -- "0..1" dynamicFaultTree_TopLevelEvent : toplevelevent4
+@enduml

@@ -1,0 +1,120 @@
+@startuml
+class Action {
+}
+class Actuate {
+}
+class Behavior {
+}
+class Condition {
+}
+enum EscolhaBumper {
+  Direito
+  Esquerdo
+}
+enum EstadoDaLuz {
+  Desligado
+  Ligado
+}
+enum EstadoDecorrer {
+  Decorrer
+  Falha
+  Sucesso
+}
+enum EstadoFalha {
+  Decorrer
+  Falha
+  Sucesso
+}
+enum EstadoSucesso {
+  Decorrer
+  Falha
+  Sucesso
+}
+class Node {
+}
+enum TipoDistancia {
+  Maior
+  Menor
+}
+abstract class farrusco_Action {
+}
+abstract class farrusco_Actuate {
+}
+class farrusco_AlterarEstado {
+  + Alterar_Decorrer : str
+  + Alterar_Falha : str
+  + Alterar_Sucesso : str
+  + Nome : str
+}
+class farrusco_Behavior {
+}
+class farrusco_Bumpers {
+  + Bumper_Esquerdo_ou_Direito : str
+  + Nome : str
+}
+abstract class farrusco_Condition {
+}
+class farrusco_Distancia {
+  + Menor_Maior : str
+  + Nome : str
+  + distancia : int
+}
+class farrusco_Espera {
+  + Nome : str
+  + Tempo : int
+}
+class farrusco_Filho {
+}
+class farrusco_Irmao {
+}
+class farrusco_LED {
+  + Ligado_ou_Desligado : str
+  + Nome : str
+}
+class farrusco_Motor {
+  + Motor_Direito : int
+  + Motor_Esquerdo : int
+  + Nome : str
+}
+class farrusco_Node {
+}
+class farrusco_Paralelo {
+  + Nome : str
+}
+class farrusco_Prioridade {
+  + Nome : str
+}
+class farrusco_Robot {
+  + Nome : str
+}
+class farrusco_Sequencial {
+  + Nome : str
+}
+class farrusco_Servo {
+  + Nome : str
+  + Passo_a_Passo : int
+  + Posicao_Maxima : int
+  + Posicao_Minima : int
+}
+Action <|-- farrusco_Actuate
+Action <|-- farrusco_Condition
+Actuate <|-- farrusco_LED
+Actuate <|-- farrusco_Motor
+Actuate <|-- farrusco_Servo
+Behavior <|-- farrusco_AlterarEstado
+Behavior <|-- farrusco_Paralelo
+Behavior <|-- farrusco_Prioridade
+Behavior <|-- farrusco_Sequencial
+Condition <|-- farrusco_Bumpers
+Condition <|-- farrusco_Distancia
+Condition <|-- farrusco_Espera
+Node <|-- farrusco_Action
+Node <|-- farrusco_Behavior
+farrusco_Filho "0..9999" --* "1..1" farrusco_Robot : child1
+farrusco_Irmao "0..9999" --* "1..1" farrusco_Robot : next3
+farrusco_Node "0..9999" --* "1..1" farrusco_Robot : nodes0
+farrusco_Irmao "1..1" -- "0..9999" farrusco_Node : source10
+farrusco_Behavior "0..9999" -- "1..1" farrusco_Filho : source5
+farrusco_Irmao "1..1" -- "0..9999" farrusco_Node : target13
+farrusco_Filho "1..1" -- "0..9999" farrusco_Node : target7
+@enduml

@@ -1,0 +1,157 @@
+@startuml
+class Actor_Actor {
+}
+class Brindar_consultoria_external {
+}
+class Cacular {
+}
+class Clasificar_Producto_external {
+}
+class Cliente_Actor {
+}
+class Comerciales {
+  + Id : str
+  + Nombre : str
+  + Zona : str
+}
+class Compa_ia {
+  + codigo : str
+  + zona : str
+}
+class CuentaBanco {
+  + nombreBanco : str
+  + numeroCuenta : str
+  + tipoCuenta : str
+}
+class Departamento_de_inventarios_y_Suminsitros_Component {
+}
+class Dependencia {
+  + Codigo : str
+  + Nombre : str
+  + Responsable : str
+}
+class Dependencias_Actor {
+}
+class Elementos {
+  + Clasificacion : str
+  + Referencia : str
+}
+class Empresa {
+  + codigo : str
+  + nombre : str
+  + ubicacion : str
+}
+class Entregar_Productos_external {
+}
+class Factura {
+  + Codigo : str
+  + Fecha : str
+}
+class Facturas {
+  + codigo : str
+  + direccionPostal : str
+  + nif : str
+  + nombre : str
+}
+class Imformes {
+}
+class JavaApplication2 {
+}
+class Juridico_Actor {
+}
+class Millenium_Component {
+}
+class Natural_Actor {
+}
+class Ordenes_Perdidos {
+  + Codigo : str
+  + Fecha : str
+}
+class Pago {
+  + Codigo : str
+  + Fecha : str
+}
+class Pedidos {
+  + Codigo : str
+  + Fecha : str
+}
+class Pedidos1 {
+  + codigo : str
+  + fecha : str
+}
+class Presupuesto {
+}
+class Proveedores {
+  + Direccion : str
+  + Nit : str
+  + RazonSocial : str
+  + Telefono : str
+}
+class Proveedores_Actor {
+}
+class Recibir_productos_o_pedidos_external {
+}
+class Registrar_proveedores_external {
+}
+class Resivir_ordenes_de_suministros_external {
+}
+class Servidor_Intel_Node {
+}
+class Sistema_Web_Movil___Receccion_de_pedidos_Component {
+}
+class Solicitud_suministro {
+  + Codigo : str
+  + Fecha : str
+}
+class TransferenciaCompa_ia {
+  + numerodecuenta : str
+}
+class _Actor {
+}
+class impuesto {
+  + setPorcentaje : float
+}
+class producto {
+  + setCantidad : int
+  + setCodigo : str
+  + setNombre : str
+  + setPrecio : float
+}
+class venta {
+  + Setcodigo : str
+  + setFecha : str
+}
+class ventas {
+  + fechadeventas : str
+  + valordeventa : str
+}
+Clasificar_Producto_external "0..1" -- "0..1" _Actor : Actor2_UseCase
+Empresa "1..1" -- "0..9999" Presupuesto : Asigna
+Cacular "0..1" -- "0..1" JavaApplication2 : Cacular_Java
+Brindar_consultoria_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_consultoria
+Elementos "1..9999" -- "0..9999" Ordenes_Perdidos : Conforma
+Dependencias_Actor "0..1" -- "0..1" Entregar_Productos_external : Dependencias_Entregar_Productos
+Dependencias_Actor "0..1" -- "0..1" Resivir_ordenes_de_suministros_external : Dependencias_Resivir_ordenes_de_suministros
+Factura "0..9999" -- "1..1" Proveedores : Elabora
+Compa_ia "1..1" -- "0..9999" Facturas : Emite
+Elementos "0..1" -- "0..9999" Factura : Factura
+Empresa "1..1" -- "1..9999" Facturas : Factura1
+Ordenes_Perdidos "0..1" -- "1..9999" Solicitud_suministro : Genera
+Comerciales "1..1" -- "0..9999" Imformes : Genera1
+Ordenes_Perdidos "0..9999" -- "1..1" Proveedores : Ordenes_Perdidos_Proveedores
+Comerciales "1..9999" -- "1..1" Facturas : Paga
+Pedidos "0..9999" -- "1..1" Proveedores : Provee
+Empresa "1..1" -- "0..9999" Pedidos1 : Provee1
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_Recibir_productos_o_pedidos
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Dependencia "1..1" -- "1..9999" Solicitud_suministro : Realiza
+Comerciales "1..1" -- "1..1" Presupuesto : Realiza1
+Compa_ia "0..9999" -- "0..9999" Pedidos1 : Realiza2
+Actor_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Recibir_productos_o_pedidos_Actor
+Elementos "1..9999" -- "0..9999" Solicitud_suministro : Relaciones
+Facturas "1..9999" -- "1..1" Pago : assoc__px0D3ZfBEeqEM7mFKilpXw
+Comerciales "1..1" -- "0..9999" ventas : hace
+impuesto "1..1" -- "1..1" producto : producto_impuesto
+producto "0..9999" -- "1..1" venta : venta_producto
+Comerciales "1..9999" -- "1..1" Compa_ia : visita
+@enduml

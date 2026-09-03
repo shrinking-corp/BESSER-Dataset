@@ -1,0 +1,28 @@
+@startuml
+class myDsl_Event {
+  + name : str
+  + resetEvent : bool
+}
+class myDsl_JvmTypeReference {
+}
+class myDsl_Service {
+  + name : str
+}
+class myDsl_State {
+  + name : str
+}
+class myDsl_Statemachine {
+}
+class myDsl_Transition {
+}
+class myDsl_XExpression {
+}
+myDsl_State "1..1" *-- "0..1" myDsl_XExpression : action7
+myDsl_Event "0..1" -- "1..1" myDsl_Transition : event11
+myDsl_Event "0..9999" --* "1..1" myDsl_Statemachine : events0
+myDsl_Service "0..9999" --* "1..1" myDsl_Statemachine : services1
+myDsl_State "0..1" -- "1..1" myDsl_Transition : state14
+myDsl_State "0..9999" --* "1..1" myDsl_Statemachine : states3
+myDsl_State "1..1" *-- "0..9999" myDsl_Transition : transitions9
+myDsl_JvmTypeReference "0..1" --* "1..1" myDsl_Service : type5
+@enduml

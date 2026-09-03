@@ -1,0 +1,364 @@
+@startuml
+class AbstractMeasureElement {
+}
+enum Accumulator {
+  average
+  maximum
+  minimum
+  standardDeviation
+  sum
+}
+class BinaryMeasure {
+}
+class BinaryMeasurement {
+}
+class DimensionalMeasure {
+}
+class DimensionalMeasurement {
+}
+class DirectMeasure {
+}
+class DirectMeasurement {
+}
+class Measure {
+}
+class MeasureRelationship {
+}
+class Measurement {
+}
+class MeasurementRelationship {
+}
+class SmmElement {
+}
+class SmmRelationship {
+}
+abstract class smm_AbstractMeasureElement {
+}
+class smm_AggregatedMeasurement {
+  + isBaseSuppled : bool
+}
+class smm_Annotation {
+  + text : str
+}
+class smm_Argument {
+  + type : str
+  + value : str
+}
+class smm_Attribute {
+  + tag : str
+  + value : str
+}
+class smm_Base1MeasureRelationship {
+}
+class smm_Base1MeasurementRelationship {
+}
+class smm_Base2MeasureRelationship {
+}
+class smm_Base2MeasurementRelationship {
+}
+class smm_BaseMeasureRelationship {
+}
+class smm_BaseMeasurementRelationship {
+}
+class smm_BinaryMeasure {
+  + functor : str
+}
+class smm_BinaryMeasurement {
+  + isBaseSupplied : bool
+}
+class smm_CategoryRelationship {
+}
+class smm_Characteristic {
+}
+class smm_CollectiveMeasure {
+  + accumulator : str
+}
+class smm_CollectiveMeasurement {
+  + accumulator : str
+  + isBaseSupplied : bool
+}
+class smm_Count {
+}
+class smm_Counting {
+}
+class smm_DimensionalMeasure {
+  + unit : str
+}
+abstract class smm_DimensionalMeasurement {
+  + value : float
+}
+class smm_DirectMeasure {
+}
+class smm_DirectMeasurement {
+}
+class smm_EObject {
+}
+class smm_EquivalentMeasureRelationship {
+}
+class smm_EquivalentMeasurementRelationship {
+}
+class smm_Grade {
+  + isBaseSupplied : bool
+  + value : str
+}
+abstract class smm_Measure {
+  + measureLabelFormat : str
+  + measurementLabelFormat : str
+  + visible : bool
+  + getAllArguments() : str
+  + getArguments() : str
+}
+class smm_MeasureCategory {
+}
+class smm_MeasureLibrary {
+  + getOclOperations() : AbstractMeasureElement
+  + getOperations() : AbstractMeasureElement
+}
+abstract class smm_MeasureRelationship {
+  + getFrom() : Measure
+  + getTo() : Measure
+}
+abstract class smm_Measurement {
+  + breakValue : str
+  + error : str
+  + getMeasureLabel() : str
+  + getMeasurementLabel() : str
+}
+abstract class smm_MeasurementRelationship {
+  + getFrom() : Measurement
+  + getTo() : Measurement
+}
+class smm_NamedMeasure {
+}
+class smm_NamedMeasurement {
+}
+class smm_OCLOperation {
+  + body : str
+  + context : str
+}
+class smm_Observation {
+  + observer : str
+  + tool : str
+  + whenObserved : str
+}
+class smm_ObservationScope {
+  + scopeUri : str
+}
+class smm_ObservedMeasure {
+  + getMeasureRefimentsObservedMeasures() : str
+}
+class smm_Operation {
+  + body : str
+  + language : str
+  + getParamStrings() : str
+}
+class smm_Ranking {
+}
+class smm_RankingInterval {
+  + maximumEndpoint : float
+  + maximumOpen : bool
+  + minimumEndpoint : float
+  + minimumOpen : bool
+  + symbol : str
+}
+class smm_RankingMeasureRelationship {
+}
+class smm_RankingMeasurementRelationship {
+}
+class smm_RatioMeasure {
+}
+class smm_RatioMeasurement {
+}
+class smm_RecursiveMeasureRelationship {
+}
+class smm_RecursiveMeasurementRelationship {
+}
+class smm_RefinementMeasureRelationship {
+}
+class smm_RefinementMeasurementRelationship {
+}
+class smm_RescaleMeasureRelationship {
+}
+class smm_RescaleMeasurementRelationship {
+}
+class smm_RescaledMeasure {
+  + formula : str
+}
+class smm_RescaledMeasurement {
+  + isBaseSupplied : bool
+}
+class smm_Scope {
+  + class_ : str
+}
+abstract class smm_SmmElement {
+  + description : str
+  + name : str
+  + shortDescription : str
+  + getInbound() : SmmRelationship
+  + getOutbound() : SmmRelationship
+}
+class smm_SmmModel {
+}
+abstract class smm_SmmRelationship {
+  + getFrom() : SmmElement
+  + getTo() : SmmElement
+}
+AbstractMeasureElement <|-- smm_Characteristic
+AbstractMeasureElement <|-- smm_Measure
+AbstractMeasureElement <|-- smm_MeasureCategory
+AbstractMeasureElement <|-- smm_OCLOperation
+AbstractMeasureElement <|-- smm_Operation
+AbstractMeasureElement <|-- smm_Scope
+BinaryMeasure <|-- smm_RatioMeasure
+BinaryMeasurement <|-- smm_RatioMeasurement
+DimensionalMeasure <|-- smm_BinaryMeasure
+DimensionalMeasure <|-- smm_CollectiveMeasure
+DimensionalMeasure <|-- smm_DirectMeasure
+DimensionalMeasure <|-- smm_NamedMeasure
+DimensionalMeasure <|-- smm_RescaledMeasure
+DimensionalMeasurement <|-- smm_AggregatedMeasurement
+DimensionalMeasurement <|-- smm_BinaryMeasurement
+DimensionalMeasurement <|-- smm_CollectiveMeasurement
+DimensionalMeasurement <|-- smm_DirectMeasurement
+DimensionalMeasurement <|-- smm_NamedMeasurement
+DimensionalMeasurement <|-- smm_RescaledMeasurement
+DirectMeasure <|-- smm_Counting
+DirectMeasurement <|-- smm_Count
+Measure <|-- smm_DimensionalMeasure
+Measure <|-- smm_Ranking
+MeasureRelationship <|-- smm_Base1MeasureRelationship
+MeasureRelationship <|-- smm_Base2MeasureRelationship
+MeasureRelationship <|-- smm_BaseMeasureRelationship
+MeasureRelationship <|-- smm_EquivalentMeasureRelationship
+MeasureRelationship <|-- smm_RankingMeasureRelationship
+MeasureRelationship <|-- smm_RecursiveMeasureRelationship
+MeasureRelationship <|-- smm_RefinementMeasureRelationship
+MeasureRelationship <|-- smm_RescaleMeasureRelationship
+Measurement <|-- smm_DimensionalMeasurement
+Measurement <|-- smm_Grade
+MeasurementRelationship <|-- smm_Base1MeasurementRelationship
+MeasurementRelationship <|-- smm_Base2MeasurementRelationship
+MeasurementRelationship <|-- smm_BaseMeasurementRelationship
+MeasurementRelationship <|-- smm_EquivalentMeasurementRelationship
+MeasurementRelationship <|-- smm_RankingMeasurementRelationship
+MeasurementRelationship <|-- smm_RecursiveMeasurementRelationship
+MeasurementRelationship <|-- smm_RefinementMeasurementRelationship
+MeasurementRelationship <|-- smm_RescaleMeasurementRelationship
+SmmElement <|-- smm_AbstractMeasureElement
+SmmElement <|-- smm_Annotation
+SmmElement <|-- smm_Argument
+SmmElement <|-- smm_Attribute
+SmmElement <|-- smm_MeasureLibrary
+SmmElement <|-- smm_Measurement
+SmmElement <|-- smm_Observation
+SmmElement <|-- smm_ObservationScope
+SmmElement <|-- smm_RankingInterval
+SmmElement <|-- smm_SmmModel
+SmmElement <|-- smm_SmmRelationship
+SmmRelationship <|-- smm_CategoryRelationship
+SmmRelationship <|-- smm_MeasureRelationship
+SmmRelationship <|-- smm_MeasurementRelationship
+SmmRelationship <|-- smm_ObservedMeasure
+smm_Annotation "0..9999" --* "1..1" smm_SmmElement : annotation211
+smm_Argument "0..9999" --* "1..1" smm_Observation : arguments145
+smm_Attribute "0..9999" --* "1..1" smm_SmmElement : attribute210
+smm_Base1MeasureRelationship "0..9999" -- "1..1" smm_DimensionalMeasure : baseMeasure1From40
+smm_Base1MeasureRelationship "1..1" -- "1..1" smm_BinaryMeasure : baseMeasure1To20
+smm_Base2MeasureRelationship "0..9999" -- "1..1" smm_DimensionalMeasure : baseMeasure2From43
+smm_Base2MeasureRelationship "1..1" -- "1..1" smm_BinaryMeasure : baseMeasure2To21
+smm_BaseMeasureRelationship "0..9999" -- "1..1" smm_DimensionalMeasure : baseMeasureFrom38
+smm_BaseMeasureRelationship "1..9999" -- "1..1" smm_CollectiveMeasure : baseMeasureTo34
+smm_AggregatedMeasurement "1..1" -- "0..9999" smm_DimensionalMeasurement : baseMeasurement1
+smm_Base1MeasurementRelationship "0..9999" -- "1..1" smm_DimensionalMeasurement : baseMeasurement1From53
+smm_Base1MeasurementRelationship "0..1" --* "1..1" smm_BinaryMeasurement : baseMeasurement1To23
+smm_Base2MeasurementRelationship "0..9999" -- "1..1" smm_DimensionalMeasurement : baseMeasurement2From56
+smm_Base2MeasurementRelationship "0..1" --* "1..1" smm_BinaryMeasurement : baseMeasurement2To25
+smm_DimensionalMeasurement "0..1" -- "1..1" smm_Grade : baseMeasurement74
+smm_BaseMeasurementRelationship "0..9999" -- "1..1" smm_DimensionalMeasurement : baseMeasurementFrom50
+smm_BaseMeasurementRelationship "0..9999" -- "1..1" smm_CollectiveMeasurement : baseMeasurementTo36
+smm_Operation "0..1" -- "1..1" smm_Scope : breakCondition207
+smm_MeasureCategory "1..1" -- "0..9999" smm_MeasureCategory : category105
+smm_Measure "1..1" -- "0..9999" smm_MeasureCategory : category79
+smm_MeasureCategory "1..1" -- "0..9999" smm_MeasureCategory : categoryElement108
+smm_Measure "0..9999" -- "1..1" smm_MeasureCategory : categoryMeasure110
+smm_CategoryRelationship "0..9999" --* "1..1" smm_MeasureLibrary : categoryRelationships115
+smm_Measure "1..1" -- "0..1" smm_Operation : defaultQuery101
+smm_EObject "0..9999" -- "1..1" smm_Scope : elements201
+smm_EquivalentMeasurementRelationship "0..9999" -- "1..1" smm_Measurement : equivalentFrom129
+smm_EquivalentMeasureRelationship "0..9999" -- "1..1" smm_Measure : equivalentFrom91
+smm_EquivalentMeasurementRelationship "0..9999" -- "1..1" smm_Measurement : equivalentTo127
+smm_EquivalentMeasureRelationship "0..9999" -- "1..1" smm_Measure : equivalentTo89
+smm_Base2MeasureRelationship "1..1" -- "1..1" smm_BinaryMeasure : from_10
+smm_BaseMeasurementRelationship "1..1" -- "1..1" smm_CollectiveMeasurement : from_14
+smm_Ranking "1..1" -- "1..1" smm_RankingMeasureRelationship : from_158
+smm_Grade "1..1" -- "1..1" smm_RankingMeasurementRelationship : from_162
+smm_Measure "1..1" -- "1..1" smm_RecursiveMeasureRelationship : from_167
+smm_BaseMeasureRelationship "1..1" -- "1..1" smm_CollectiveMeasure : from_17
+smm_Measurement "1..1" -- "1..1" smm_RecursiveMeasurementRelationship : from_171
+smm_Measure "1..1" -- "1..1" smm_RefinementMeasureRelationship : from_177
+smm_Measurement "1..1" -- "1..1" smm_RefinementMeasurementRelationship : from_181
+smm_DimensionalMeasure "1..1" -- "1..1" smm_RescaleMeasureRelationship : from_191
+smm_DimensionalMeasurement "1..1" -- "1..1" smm_RescaleMeasurementRelationship : from_198
+smm_Base1MeasurementRelationship "1..1" -- "1..1" smm_BinaryMeasurement : from_2
+smm_CategoryRelationship "1..1" -- "1..1" smm_MeasureCategory : from_27
+smm_Base1MeasureRelationship "1..1" -- "1..1" smm_BinaryMeasure : from_4
+smm_Base2MeasurementRelationship "1..1" -- "1..1" smm_BinaryMeasurement : from_6
+smm_EquivalentMeasureRelationship "1..1" -- "1..1" smm_Measure : from_66
+smm_EquivalentMeasurementRelationship "1..1" -- "1..1" smm_Measurement : from_69
+smm_AbstractMeasureElement "1..1" -- "0..9999" smm_CategoryRelationship : inCategory0
+smm_Ranking "1..1" *-- "1..9999" smm_RankingInterval : interval153
+smm_MeasureLibrary "0..9999" --* "1..1" smm_SmmModel : librairies216
+smm_EquivalentMeasureRelationship "1..1" -- "0..1" smm_Operation : mapping64
+smm_EObject "0..1" -- "1..1" smm_Measurement : measurand121
+smm_MeasureRelationship "1..1" -- "0..1" smm_Operation : measurandQuery118
+smm_Measure "1..1" -- "1..1" smm_ObservedMeasure : measure147
+smm_AbstractMeasureElement "0..9999" --* "1..1" smm_MeasureLibrary : measureElements113
+smm_Measure "1..1" *-- "0..9999" smm_MeasureRelationship : measureRelationships99
+smm_Observation "1..1" *-- "0..9999" smm_SmmRelationship : measurementRelations143
+smm_Measurement "1..1" *-- "0..9999" smm_MeasurementRelationship : measurementRelationships137
+smm_Measurement "0..9999" --* "1..1" smm_ObservedMeasure : measurements150
+smm_Observation "0..9999" --* "1..1" smm_SmmModel : observations214
+smm_Observation "1..1" *-- "0..9999" smm_ObservedMeasure : observedMeasures140
+smm_DirectMeasure "1..1" -- "0..1" smm_Operation : operation63
+smm_Characteristic "1..1" -- "0..1" smm_Characteristic : parent33
+smm_Ranking "0..1" -- "1..1" smm_RankingInterval : rank157
+smm_DimensionalMeasure "1..1" -- "0..9999" smm_RankingMeasureRelationship : rankingFrom48
+smm_DimensionalMeasurement "1..1" -- "0..9999" smm_RankingMeasurementRelationship : rankingFrom61
+smm_Ranking "1..1" -- "0..1" smm_RankingMeasureRelationship : rankingTo154
+smm_Grade "1..1" -- "0..1" smm_RankingMeasurementRelationship : rankingTo76
+smm_Operation "0..1" -- "1..1" smm_Scope : recognizerQuery204
+smm_Measurement "1..1" -- "0..9999" smm_RecursiveMeasurementRelationship : recursiveFrom134
+smm_Measure "1..1" -- "0..1" smm_RecursiveMeasureRelationship : recursiveFrom96
+smm_Measurement "1..1" -- "0..1" smm_RecursiveMeasurementRelationship : recursiveTo132
+smm_Measure "1..1" -- "0..1" smm_RecursiveMeasureRelationship : recursiveTo94
+smm_Measurement "1..1" -- "0..9999" smm_RefinementMeasurementRelationship : refinementFrom124
+smm_Measure "1..1" -- "0..9999" smm_RefinementMeasureRelationship : refinementFrom86
+smm_Measurement "1..1" -- "0..9999" smm_RefinementMeasurementRelationship : refinementTo122
+smm_Measure "1..1" -- "0..9999" smm_RefinementMeasureRelationship : refinementTo84
+smm_Observation "1..1" -- "0..9999" smm_SmmElement : requestedMeasures142
+smm_Observation "0..9999" -- "1..1" smm_SmmElement : requestedObservations213
+smm_RescaleMeasureRelationship "0..9999" -- "1..1" smm_RescaledMeasure : rescaleFrom187
+smm_RescaleMeasurementRelationship "0..9999" -- "1..1" smm_RescaledMeasurement : rescaleFrom193
+smm_DimensionalMeasure "1..1" -- "0..1" smm_RescaleMeasureRelationship : rescaleTo46
+smm_DimensionalMeasurement "1..1" -- "0..9999" smm_RescaleMeasurementRelationship : rescaleTo59
+smm_Measure "1..1" -- "1..1" smm_Scope : scope82
+smm_Observation "1..1" *-- "0..9999" smm_ObservationScope : scopes139
+smm_Base2MeasureRelationship "1..1" -- "1..1" smm_DimensionalMeasure : to12
+smm_BaseMeasurementRelationship "1..1" -- "1..1" smm_DimensionalMeasurement : to15
+smm_DimensionalMeasure "1..1" -- "1..1" smm_RankingMeasureRelationship : to160
+smm_DimensionalMeasurement "1..1" -- "1..1" smm_RankingMeasurementRelationship : to164
+smm_Measure "1..1" -- "1..1" smm_RecursiveMeasureRelationship : to169
+smm_Measurement "1..1" -- "1..1" smm_RecursiveMeasurementRelationship : to174
+smm_Measure "1..1" -- "1..1" smm_RefinementMeasureRelationship : to179
+smm_BaseMeasureRelationship "1..1" -- "1..1" smm_DimensionalMeasure : to18
+smm_Measurement "1..1" -- "1..1" smm_RefinementMeasurementRelationship : to184
+smm_RescaleMeasureRelationship "1..1" -- "1..1" smm_RescaledMeasure : to190
+smm_RescaleMeasurementRelationship "1..1" -- "1..1" smm_RescaledMeasurement : to196
+smm_AbstractMeasureElement "1..1" -- "1..1" smm_CategoryRelationship : to29
+smm_Base1MeasurementRelationship "1..1" -- "1..1" smm_DimensionalMeasurement : to3
+smm_Base1MeasureRelationship "1..1" -- "1..1" smm_DimensionalMeasure : to5
+smm_EquivalentMeasureRelationship "1..1" -- "1..1" smm_Measure : to67
+smm_EquivalentMeasurementRelationship "1..1" -- "1..1" smm_Measurement : to71
+smm_Base2MeasurementRelationship "1..1" -- "1..1" smm_DimensionalMeasurement : to8
+smm_Characteristic "1..1" -- "1..1" smm_Measure : trait80
+@enduml

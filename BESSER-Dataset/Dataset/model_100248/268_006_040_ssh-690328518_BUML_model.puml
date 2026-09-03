@@ -1,0 +1,55 @@
+@startuml
+class ContentElement {
+}
+class DocumentModel {
+}
+class spreadsheet_Cell {
+  + getColNumber() : int
+  + getRowNumber() : int
+  + offset(spreadsheet_x : str, spreadsheet_y : str) : str
+}
+class spreadsheet_Header {
+}
+class spreadsheet_Image {
+  + height : int
+  + width : int
+}
+class spreadsheet_Point {
+  + x : int
+  + y : int
+}
+class spreadsheet_Row {
+}
+class spreadsheet_Sheet {
+  + name : str
+}
+class spreadsheet_SpreadsheetFile {
+  + nbSheet : int
+}
+class spreadsheet_Table {
+  + nbColumns : int
+}
+class spreadsheet_Text {
+  + textContent : str
+}
+class spreadsheet_Title {
+  + hiearchy : str
+}
+ContentElement <|-- spreadsheet_Cell
+ContentElement <|-- spreadsheet_Title
+DocumentModel <|-- spreadsheet_SpreadsheetFile
+spreadsheet_Cell "1..9999" --* "1..1" spreadsheet_Header : cell24
+spreadsheet_Cell "1..9999" --* "1..1" spreadsheet_Row : cell29
+spreadsheet_Header "1..9999" --* "1..1" spreadsheet_Table : header17
+spreadsheet_Image "0..9999" --* "1..1" spreadsheet_Sheet : image3
+spreadsheet_Image "1..1" -- "1..1" spreadsheet_Point : imagePos12
+spreadsheet_Cell "1..1" -- "1..1" spreadsheet_Point : posCell26
+spreadsheet_Row "1..9999" --* "1..1" spreadsheet_Table : row19
+spreadsheet_Sheet "1..9999" --* "1..1" spreadsheet_SpreadsheetFile : sheet0
+spreadsheet_Sheet "1..1" *-- "0..9999" spreadsheet_Table : table5
+spreadsheet_Point "1..1" -- "1..1" spreadsheet_Table : tablePos21
+spreadsheet_Sheet "1..1" *-- "0..9999" spreadsheet_Text : text1
+spreadsheet_Table "1..1" *-- "0..9999" spreadsheet_Title : title14
+spreadsheet_Text "1..1" -- "1..1" spreadsheet_Title : title7
+spreadsheet_Image "1..1" -- "1..1" spreadsheet_Title : title9
+@enduml

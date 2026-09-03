@@ -1,0 +1,47 @@
+@startuml
+enum Color {
+  black
+  brown
+  green
+  orange
+  pink
+  red
+  yellow
+}
+class Fruit {
+}
+class OclTest_Apple {
+  + label : str
+  + label(OclTest_text : str) : void
+  + newApple() : str
+  + preferredLabel(OclTest_text : str) : str
+}
+abstract class OclTest_Fruit {
+  + color : str
+  + name : str
+  + newFruit() : str
+  + preferredColor() : str
+  + ripen(OclTest_color : str) : bool
+  + setColor(OclTest_fruit : str, OclTest_newColor : str) : void
+}
+class OclTest_FruitUtil {
+  + processBag(OclTest_fruits : str) : Fruit
+  + processOrderedSet(OclTest_fruits : str) : Fruit
+  + processSequence(OclTest_fruits : str) : Fruit
+  + processSet(OclTest_fruits : str) : Fruit
+}
+class OclTest_Stem {
+}
+class OclTest_Tree {
+  + name : str
+}
+Fruit <|-- OclTest_Apple
+OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : bag8
+OclTest_Fruit "0..9999" --* "1..1" OclTest_Tree : fruits14
+OclTest_Fruit "0..9999" -- "1..1" OclTest_Tree : fruitsDroppedUnder16
+OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : orderedSet3
+OclTest_Fruit "1..1" -- "0..9999" OclTest_Fruit : relatedFruits1
+OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : sequence11
+OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : set5
+OclTest_Apple "1..1" *-- "0..1" OclTest_Stem : stem2
+@enduml

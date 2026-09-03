@@ -1,0 +1,147 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class StateMachineObject {
+}
+enum StateType {
+  final
+  initial
+  ongoing
+}
+class research16_Action {
+  + actionLabel : str
+  + actionStatement : str
+}
+class research16_Collaboration {
+  + ratio : int
+}
+abstract class research16_Counted {
+  + id : int
+}
+class research16_Keyword {
+  + word : str
+}
+class research16_KnowledgeManager {
+}
+abstract class research16_Labelled {
+  + lname : str
+}
+abstract class research16_Named {
+  + name : str
+}
+class research16_Paper {
+}
+class research16_PaperKeyword {
+  + weight : int
+}
+class research16_Paragraph {
+  + content : str
+}
+class research16_Phase {
+  + name : str
+}
+class research16_Position {
+  + description : str
+}
+class research16_Progress {
+  + percent : int
+}
+class research16_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class research16_PublicationStatus {
+  + label : str
+}
+class research16_PublicationStructure {
+}
+class research16_PublicationSystem {
+}
+class research16_Researcher {
+  + forName : str
+  + name : str
+}
+class research16_Review {
+  + date : date
+}
+class research16_ReviewNote {
+  + content : str
+}
+class research16_Skill {
+  + description : str
+}
+class research16_State {
+  + id : int
+  + kind : str
+  + name : str
+}
+abstract class research16_StateMachineObject {
+  + label : str
+}
+class research16_StateMachineVariable {
+}
+class research16_Transition {
+  + guardExpression : str
+  + guardLabel : str
+}
+class research16_Write {
+  + timeSpent : int
+}
+Counted <|-- research16_Paragraph
+Labelled <|-- research16_Progress
+Labelled <|-- research16_Review
+Labelled <|-- research16_Write
+Named <|-- research16_Keyword
+Named <|-- research16_KnowledgeManager
+Named <|-- research16_Paper
+Named <|-- research16_Paragraph
+Named <|-- research16_Position
+Named <|-- research16_PublicationProcess
+Named <|-- research16_PublicationStructure
+Named <|-- research16_PublicationSystem
+Named <|-- research16_ReviewNote
+StateMachineObject <|-- research16_State
+StateMachineObject <|-- research16_Transition
+research16_Keyword "0..9999" --* "1..1" research16_KnowledgeManager : allkeywords55
+research16_Paper "1..1" -- "0..9999" research16_Researcher : authors13
+research16_PublicationStatus "0..1" --* "1..1" research16_PublicationSystem : behaviorView48
+research16_Paper "0..1" -- "1..1" research16_Paper : citedBy17
+research16_Collaboration "1..1" -- "0..1" research16_Paper : col_paper61
+research16_Collaboration "0..9999" --* "1..1" research16_Researcher : collaborations9
+research16_Keyword "0..1" -- "1..1" research16_PaperKeyword : keyword58
+research16_Paper "1..1" *-- "0..9999" research16_PaperKeyword : keywords14
+research16_KnowledgeManager "0..1" --* "1..1" research16_PublicationStructure : knowledgeMan38
+research16_Keyword "1..1" -- "0..9999" research16_Paper : kpapers53
+research16_PublicationStatus "1..1" *-- "0..9999" research16_StateMachineVariable : machineVariables64
+research16_Action "0..1" -- "1..1" research16_Action : next83
+research16_Paper "0..1" -- "1..1" research16_Progress : paper25
+research16_Paper "0..9999" --* "1..1" research16_PublicationStructure : papers35
+research16_Paragraph "0..1" -- "1..1" research16_Write : paragraph27
+research16_Paper "1..1" *-- "0..9999" research16_Paragraph : paragraphs11
+research16_Position "0..1" -- "1..1" research16_Position : parent51
+research16_Phase "0..9999" --* "1..1" research16_PublicationProcess : phases0
+research16_Position "0..9999" --* "1..1" research16_PublicationSystem : positions45
+research16_Progress "1..1" -- "0..1" research16_PublicationProcess : process23
+research16_PublicationProcess "0..1" --* "1..1" research16_PublicationSystem : processView40
+research16_Paper "1..1" *-- "0..9999" research16_Progress : progress12
+research16_PublicationStatus "1..1" *-- "0..9999" research16_State : pubStates66
+research16_Paper "0..9999" -- "1..1" research16_Researcher : res_papers4
+research16_Position "0..1" -- "1..1" research16_Researcher : res_position7
+research16_PublicationStructure "1..1" *-- "0..9999" research16_Researcher : researchers33
+research16_Review "1..1" -- "0..1" research16_ReviewNote : reviewNote30
+research16_Researcher "1..1" *-- "0..9999" research16_Review : reviews2
+research16_Paragraph "1..1" *-- "0..9999" research16_ReviewNote : reviews21
+research16_Action "0..9999" --* "1..1" research16_State : s_actions79
+research16_Researcher "1..1" *-- "0..9999" research16_Skill : skills5
+research16_State "0..1" -- "1..1" research16_Transition : source70
+research16_Paper "1..1" -- "0..1" research16_State : state19
+research16_PublicationStructure "0..1" --* "1..1" research16_PublicationSystem : structuralView42
+research16_Action "0..9999" --* "1..1" research16_Transition : t_actions69
+research16_State "0..1" -- "1..1" research16_Transition : target73
+research16_State "1..1" *-- "0..9999" research16_Transition : transitions76
+research16_Researcher "1..1" *-- "0..9999" research16_Write : writes1
+@enduml

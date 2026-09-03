@@ -1,0 +1,49 @@
+@startuml
+class Admin {
+  + AdminID : int
+  + AminName : str
+  + UserLogin : int
+}
+class BallotInformation {
+  + BallotElectionID : int
+  + BallotID : int
+  + BallotPropBallotID : int
+  + BallotPropID : int
+  + BallotPropResults : int
+  + BallotVotersID : int
+}
+class Candidate {
+  + CandidatePartyName : str
+  + Candidate_Name : str
+  + Candidate_PostID : int
+  + candidate_ID : int
+}
+class Election {
+  + ElectionCriteria : str
+  + ElectionDate : str
+  + ElectionID : int
+  + ElectionName : str
+}
+class Post {
+  + PostDesc : str
+  + PostElectionId : int
+  + PostId : int
+}
+class Voter {
+  + Address : str
+  + Age : int
+  + Eligibilty : bool
+  + Name : str
+  + student_faculty_ID : int
+}
+Admin "0..1" -- "0..1" BallotInformation : Admin_BallotInformation
+Admin "0..1" -- "0..1" Candidate : Admin_Candidate
+Admin "0..1" -- "0..1" Election : Admin_Election
+BallotInformation "0..1" -- "0..1" Candidate : Candidate__BallotInformation
+Candidate "0..1" -- "0..1" Election : Candidate__Election
+BallotInformation "0..1" -- "0..1" Election : Election_BallotInformation
+BallotInformation "0..1" -- "0..1" Post : Post_BallotInformation
+Admin "0..1" -- "0..1" Voter : Voter_Admin
+Election "0..1" -- "0..1" Voter : Voter_Election
+Post "0..1" -- "0..1" Voter : Voter_Post
+@enduml

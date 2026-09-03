@@ -1,0 +1,113 @@
+@startuml
+class Announce_Winner_external {
+}
+class Class {
+}
+class Class1 {
+}
+class Computer_Turn_external {
+}
+class Display {
+}
+class Game_Start_external {
+}
+class Get_Instructions_external {
+}
+class Get_Player_Name_external {
+}
+class Next_Turn_external {
+}
+class Play_Again_external {
+}
+class Player_Actor {
+}
+class Players {
+}
+class Roll_Dice_external {
+}
+class Roll_First_external {
+}
+class Score_Roll_external {
+}
+class Scoring {
+}
+class Turn {
+}
+class Yahtzee_Component {
+}
+class Yahtzee_Display {
+  + PanelChoices : str
+  + PanelGameName : str
+  + PanelNames : str
+  + PanelPrimary : str
+  + PanelScorecard : str
+}
+class Yahtzee_Display1 {
+  + Computer : Yahtzee_Players
+  + JButton : Yahtzee_Display
+  + JFrame : Yahtzee_Display
+  + JImageIcon : Yahtzee_Display
+  + JRadioButton : Yahtzee_Display
+  + JScrollPanel : Yahtzee_Display1
+  + JTextField : Yahtzee_Display
+  + Jlabel : Yahtzee_Display
+  + Jpanel : Yahtzee_Display
+  + Player : Yahtzee_Players
+  + Temp : int
+  + Temp1 : int
+}
+class Yahtzee_Game {
+  + Again : bool
+  + CompPlayer : Class1
+  + First : int
+  + Player : Class
+}
+class Yahtzee_Players {
+  + Name : str
+  + Score : str
+}
+class Yahtzee_Players1 {
+  + compScore : str
+  + playerScore : str
+}
+class Yahtzee_Scoring {
+}
+class Yahtzee_Scoring1 {
+  + Temp : str
+}
+class Yahtzee_Turn {
+}
+class Yahtzee_Turn1 {
+  + Dice : str
+}
+Announce_Winner_external "0..1" -- "0..1" Play_Again_external : Announce_Winner_Play_Again
+Computer_Turn_external "0..1" -- "0..1" Next_Turn_external : Computer_Turn_Next_Turn
+Yahtzee_Display1 "0..1" -- "0..1" Yahtzee_Players1 : Display_Players
+Yahtzee_Display1 "0..1" -- "0..1" Yahtzee_Scoring1 : Display_Scoring
+Yahtzee_Display1 "0..1" -- "0..1" Yahtzee_Turn1 : Display_Turn
+Yahtzee_Game "0..1" -- "0..1" Yahtzee_Players : Game_Players
+Computer_Turn_external "0..1" -- "0..1" Game_Start_external : Game_Start_Computer_Turn
+Game_Start_external "0..1" -- "0..1" Roll_Dice_external : Game_Start_UseCase
+Get_Instructions_external "0..1" -- "0..1" Get_Player_Name_external : Get_Instructions_Get_Player_Name
+Get_Player_Name_external "0..1" -- "0..1" Roll_First_external : Get_Player_Name_Roll_First
+Announce_Winner_external "0..1" -- "0..1" Next_Turn_external : Next_Turn_Announce_Winner
+Game_Start_external "0..1" -- "0..1" Player_Actor : Player_Game_Start
+Get_Instructions_external "0..1" -- "0..1" Player_Actor : Player_Get_Instructions
+Get_Player_Name_external "0..1" -- "0..1" Player_Actor : Player_Get_Player_Name
+Play_Again_external "0..1" -- "0..1" Player_Actor : Player_Play_Again
+Player_Actor "0..1" -- "0..1" Roll_Dice_external : Player_Roll_Dice
+Player_Actor "0..1" -- "0..1" Roll_First_external : Player_Roll_First
+Player_Actor "0..1" -- "0..1" Score_Roll_external : Player_Score_Roll
+Next_Turn_external "0..1" -- "0..1" Roll_Dice_external : Roll_Dice_Next_Turn
+Roll_Dice_external "0..1" -- "0..1" Score_Roll_external : Roll_Dice_Score_Roll
+Game_Start_external "0..1" -- "0..1" Roll_First_external : Roll_First_Game_Start
+Play_Again_external "0..1" -- "0..1" Roll_First_external : Roll_First_Play_Again
+Display "0..1" -- "0..1" Scoring : Scoring_Display
+Yahtzee_Players "0..1" -- "0..1" Yahtzee_Scoring : Scoring_Players
+Players "0..1" -- "0..1" Scoring : Scoring_Players1
+Yahtzee_Scoring "0..1" -- "0..1" Yahtzee_Turn : Scoring_Turn
+Yahtzee_Scoring1 "0..1" -- "0..1" Yahtzee_Turn1 : Scoring_Turn1
+Yahtzee_Game "0..1" -- "0..1" Yahtzee_Turn : Turn_Game
+Yahtzee_Players "0..1" -- "0..1" Yahtzee_Turn : Turn_Players
+Scoring "0..1" -- "0..1" Turn : Turn_Scoring
+@enduml

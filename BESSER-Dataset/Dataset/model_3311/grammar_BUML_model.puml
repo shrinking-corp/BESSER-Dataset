@@ -1,0 +1,37 @@
+@startuml
+class Named {
+}
+class grammar_ConnexionInstruction {
+  + m : str
+}
+class grammar_Embedding {
+}
+class grammar_Grammar {
+}
+class grammar_Graph {
+}
+class grammar_LHS {
+}
+class grammar_Node {
+}
+class grammar_RHS {
+}
+class grammar_Rule {
+  + name : str
+  + priority : int
+}
+Named <|-- grammar_Grammar
+grammar_Embedding "1..1" --* "1..1" grammar_Rule : EmbeddingMechanism5
+grammar_Embedding "1..1" -- "1..1" grammar_Rule : ParentRule12
+grammar_ConnexionInstruction "1..1" -- "0..1" grammar_Node : d17
+grammar_ConnexionInstruction "0..9999" --* "1..1" grammar_Embedding : instructions14
+grammar_LHS "1..1" --* "1..1" grammar_Rule : lhs2
+grammar_LHS "1..1" -- "1..1" grammar_Node : node8
+grammar_ConnexionInstruction "1..1" -- "1..1" grammar_Embedding : parentEmbedding15
+grammar_Grammar "1..1" -- "1..1" grammar_Rule : parentGrammar1
+grammar_LHS "1..1" -- "1..1" grammar_Rule : parentRule6
+grammar_RHS "1..1" -- "1..1" grammar_Rule : parentRule9
+grammar_RHS "1..1" --* "1..1" grammar_Rule : rhs3
+grammar_Grammar "1..1" *-- "0..9999" grammar_Rule : rules0
+grammar_Graph "1..1" -- "1..1" grammar_RHS : subGraph11
+@enduml

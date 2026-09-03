@@ -1,0 +1,84 @@
+@startuml
+enum DependencyType {
+  END_END
+  END_START
+  START_END
+  START_START
+}
+enum IssuePriority {
+  HIGH
+  HIGHER
+  LOW
+  LOWER
+  NORMAL
+}
+enum IssueStatus {
+  ASSIGNED
+  CLOSED
+  OPEN
+  RESOLVED
+}
+enum VersionStatus {
+  CLOSED
+  INPROGRESS
+  OPEN
+}
+class itm_Issue {
+  + completedDate : date
+  + description : str
+  + doneRatio : float
+  + dueDate : date
+  + elapsedHours : float
+  + estimatedHours : float
+  + name : str
+  + priority : str
+  + status : str
+}
+class itm_IssueCategory {
+  + name : str
+}
+class itm_IssueDependency {
+  + type : str
+}
+class itm_IssueTrackingDatabase {
+}
+class itm_Member {
+}
+class itm_Project {
+  + description : str
+  + name : str
+}
+class itm_Role {
+  + name : str
+  + permissions : str
+}
+class itm_Tracker {
+  + name : str
+}
+class itm_User {
+  + language : str
+  + login : str
+}
+class itm_Version {
+  + completedDate : date
+  + description : str
+  + name : str
+  + status : str
+}
+itm_Issue "1..1" -- "0..1" itm_IssueCategory : category20
+itm_Issue "1..1" *-- "0..9999" itm_IssueDependency : dependencies18
+itm_Issue "1..1" -- "1..1" itm_IssueDependency : dependentTask29
+itm_IssueCategory "0..9999" --* "1..1" itm_Project : issueCategories9
+itm_Issue "0..9999" --* "1..1" itm_Version : issues13
+itm_Member "0..9999" --* "1..1" itm_Project : members11
+itm_Issue "1..1" -- "1..1" itm_Member : owner23
+itm_IssueTrackingDatabase "1..1" *-- "0..9999" itm_Project : projects0
+itm_Issue "1..1" -- "1..1" itm_Member : responsible26
+itm_Member "1..1" -- "1..1" itm_Role : role35
+itm_IssueTrackingDatabase "1..1" *-- "1..9999" itm_Role : roles3
+itm_Issue "1..1" -- "1..1" itm_Tracker : tracker15
+itm_IssueTrackingDatabase "1..1" *-- "1..9999" itm_Tracker : trackers1
+itm_Member "1..1" -- "1..1" itm_User : user32
+itm_IssueTrackingDatabase "1..1" *-- "1..9999" itm_User : users5
+itm_Project "1..1" *-- "1..9999" itm_Version : versions7
+@enduml

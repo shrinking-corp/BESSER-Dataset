@@ -1,0 +1,72 @@
+@startuml
+enum FeatureGroupType {
+  ORGROUP
+  SIMPLEGROUP
+  XORGROUP
+}
+enum FeatureType {
+  MANDATORY
+  OPTIONAL
+  SIMPLE
+}
+class Node {
+}
+class Relation {
+}
+enum ValueType {
+  FEATURE
+  FLOAT
+  INTEGER
+  NONE
+  STRING
+}
+class featureModel_Feature {
+  + name : str
+  + valueType : str
+}
+class featureModel_FeatureGroup {
+  + lowerBound : int
+  + type : str
+  + upperBound : int
+}
+class featureModel_Node {
+}
+class featureModel_Project {
+  + nameConfigFile : str
+  + nameConstraintsFile : str
+  + numberOfProducts : int
+  + validatedOCL : bool
+  + validatedTEF : bool
+}
+class featureModel_Relation {
+}
+class featureModel_RelationFG {
+}
+class featureModel_RelationFeature {
+  + lowerBound : int
+  + type : str
+  + upperBound : int
+}
+class featureModel_TypedValue {
+  + floatValue : str
+  + integerValue : str
+  + stringValue : str
+}
+Node <|-- featureModel_Feature
+Node <|-- featureModel_FeatureGroup
+Relation <|-- featureModel_RelationFG
+Relation <|-- featureModel_RelationFeature
+featureModel_Feature "1..1" -- "0..9999" featureModel_Node : children1
+featureModel_Feature "0..9999" -- "1..1" featureModel_FeatureGroup : children16
+featureModel_Node "0..1" -- "1..1" featureModel_Node : father19
+featureModel_Feature "0..1" -- "1..1" featureModel_TypedValue : featureValue9
+featureModel_Node "0..9999" --* "1..1" featureModel_Project : features12
+featureModel_Feature "0..1" -- "1..1" featureModel_Feature : references4
+featureModel_Feature "0..9999" -- "1..1" featureModel_Feature : referenciated7
+featureModel_Project "1..1" *-- "0..9999" featureModel_Relation : relations14
+featureModel_Node "1..1" -- "1..1" featureModel_RelationFG : source21
+featureModel_Feature "1..1" -- "1..1" featureModel_RelationFeature : source26
+featureModel_Node "1..1" -- "1..1" featureModel_RelationFG : target23
+featureModel_Feature "1..1" -- "1..1" featureModel_RelationFeature : target28
+featureModel_Feature "1..1" *-- "0..1" featureModel_TypedValue : typedValue0
+@enduml

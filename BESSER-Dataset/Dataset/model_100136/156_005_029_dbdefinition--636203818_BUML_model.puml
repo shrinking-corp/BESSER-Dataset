@@ -1,0 +1,342 @@
+@startuml
+enum CheckOption {
+  CASCADE
+  LOCAL
+  NONE
+}
+enum LanguageType {
+  ASSEMBLY
+  C
+  CL
+  COBOL
+  COBOLLE
+  CPLUSPLUS
+  FORTRAN
+  JAVA
+  OLE
+  PLI
+  PLSQL
+  REXX
+  RPG
+  RPGLE
+  SQL
+}
+enum LengthUnit {
+  BIT
+  BYTE
+  DECIMAL
+  DOUBLE_BYTE
+}
+enum ParameterStyle {
+  DB2DARI
+  DB2GENRL
+  DB2SQL
+  GENERAL
+  GENERAL_WITH_NULLS
+  JAVA
+  SQL
+}
+enum ParentDeleteDRIRuleType {
+  CASCADE
+  NO_ACTION
+  RESTRICT
+  SET_DEFAULT
+  SET_NULL
+}
+enum ParentUpdateDRIRuleType {
+  CASCADE
+  NO_ACTION
+  RESTRICT
+  SET_DEFAULT
+  SET_NULL
+}
+enum PercentFreeTerminology {
+  FILL_FACTOR
+  PERCENT_FREE
+  THRESHOLD
+}
+enum ProcedureType {
+  FUNCTION
+  PROCEDURE
+}
+enum TableSpaceType {
+  LARGE
+  LOB
+  LONG
+  PERMANENT
+  REGULAR
+  SYSTEM_TEMPORARY
+  TEMPORARY
+  USER_TEMPORARY
+}
+class dbdefinition_ColumnDefinition {
+  + computedSupported : bool
+  + identityCycleSupported : bool
+  + identityIncrementSupported : bool
+  + identityMaximumSupported : bool
+  + identityMinimumSupported : bool
+  + identityStartValueSupported : bool
+  + identitySupported : bool
+  + maximumIdentifierLength : int
+}
+class dbdefinition_ConstraintDefinition {
+  + checkOption : str
+  + clusteredPrimaryKeySupported : bool
+  + clusteredUniqueConstraintSupported : bool
+  + deferrableConstraintSupported : bool
+  + informationalConstraintSupported : bool
+  + maximumCheckConstraintIdentifierLength : int
+  + maximumCheckExpressionLength : int
+  + maximumForeignKeyIdentifierLength : int
+  + maximumPrimaryKeyIdentifierLength : int
+  + parentDeleteDRIRuleType : str
+  + parentUpdateDRIRuleType : str
+  + primaryKeyNullable : bool
+  + uniqueKeyNullable : bool
+}
+class dbdefinition_ConstructedDataTypeDefinition {
+  + arrayDatatypeSupported : bool
+  + cursorDatatypeSupported : bool
+  + multisetDatatypeSupported : bool
+  + referenceDatatypeSupported : bool
+  + rowDatatypeSupported : bool
+}
+class dbdefinition_DatabaseVendorDefinition {
+  + SQLStatementSupported : bool
+  + aliasSupported : bool
+  + authorizationIdentifierSupported : bool
+  + constraintsSupported : bool
+  + constructedDataTypeSupported : bool
+  + domainSupported : bool
+  + eventSupported : bool
+  + groupSupported : bool
+  + joinSupported : bool
+  + mQTIndexSupported : bool
+  + mQTSupported : bool
+  + maximumCommentLength : int
+  + maximumIdentifierLength : int
+  + nicknameSupported : bool
+  + packageSupported : bool
+  + quotedDDLSupported : bool
+  + quotedDMLSupported : bool
+  + roleAuthorizationSupported : bool
+  + roleSupported : bool
+  + schemaSupported : bool
+  + sequenceSupported : bool
+  + snapshotViewSupported : bool
+  + sqlUDFSupported : bool
+  + storedProcedureSupported : bool
+  + synonymSupported : bool
+  + tablespacesSupported : bool
+  + triggerSupported : bool
+  + uDFSupported : bool
+  + userDefinedTypeSupported : bool
+  + userSupported : bool
+  + vendor : str
+  + version : str
+  + viewTriggerSupported : bool
+  + xmlSupported : bool
+}
+class dbdefinition_DebuggerDefinition {
+  + conditionSupported : bool
+}
+class dbdefinition_ExtendedDefinition {
+  + name : str
+  + value : str
+}
+class dbdefinition_FieldQualifierDefinition {
+  + defaultPrecision : int
+  + defaultScale : int
+  + maximumPrecision : int
+  + maximumScale : int
+  + name : str
+  + precisionSupported : bool
+  + scaleSupported : bool
+}
+class dbdefinition_IndexDefinition {
+  + clusterChangeable : bool
+  + clusteringSupported : bool
+  + fillFactorSupported : bool
+  + includedColumnsSupported : bool
+  + maximumIdentifierLength : int
+  + percentFreeChangeable : bool
+  + percentFreeTerminology : str
+}
+class dbdefinition_NicknameDefinition {
+  + constraintSupported : bool
+  + indexSupported : bool
+  + maximumIdentifierLength : int
+}
+class dbdefinition_PredefinedDataTypeDefinition {
+  + bitDataSupported : bool
+  + characterSet : str
+  + characterSetSuffix : str
+  + clusteringSupported : bool
+  + cutoffPrecision : int
+  + defaultLength : int
+  + defaultPrecision : int
+  + defaultScale : int
+  + defaultSupported : bool
+  + defaultValueTypes : str
+  + displayName : str
+  + displayNameSupported : bool
+  + encodingScheme : str
+  + encodingSchemeSuffix : str
+  + fieldQualifierSeparator : str
+  + fillFactorSupported : bool
+  + groupingSupported : bool
+  + identitySupported : bool
+  + javaClassName : str
+  + jdbcEnumType : int
+  + keyConstraintSupported : bool
+  + languageType : str
+  + largeValueSpecifierLength : int
+  + largeValueSpecifierName : str
+  + largeValueSpecifierSupported : bool
+  + leadingFieldQualifierSupported : bool
+  + lengthSemantic : str
+  + lengthSemanticSupported : bool
+  + lengthSupported : bool
+  + lengthUnit : str
+  + maximumLength : int
+  + maximumPrecision : int
+  + maximumScale : int
+  + maximumValue : str
+  + minimumScale : int
+  + minimumValue : str
+  + multipleColumnsSupported : bool
+  + name : str
+  + nullableSupported : bool
+  + orderingSupported : bool
+  + precisionSupported : bool
+  + primitiveType : str
+  + scaleSupported : bool
+  + trailingFieldQualifierSupported : bool
+}
+class dbdefinition_PrivilegeDefinition {
+  + name : str
+}
+class dbdefinition_PrivilegedElementDefinition {
+  + name : str
+}
+class dbdefinition_QueryDefinition {
+  + castExpressionSupported : bool
+  + defaultKeywordForInsertValueSupported : bool
+  + extendedGroupingSupported : bool
+  + hostVariableMarker : str
+  + hostVariableMarkerSupported : bool
+  + identifierQuoteString : str
+  + tableAliasInDeleteSupported : bool
+}
+class dbdefinition_SQLSyntaxDefinition {
+  + keywords : str
+  + operators : str
+  + terminationCharacter : str
+}
+class dbdefinition_SchemaDefinition {
+  + maximumIdentifierLength : int
+}
+class dbdefinition_SequenceDefinition {
+  + cacheDefaultValue : int
+  + cacheSupported : bool
+  + noCacheString : str
+  + noMaximumValueString : str
+  + noMinimumValueString : str
+  + orderSupported : bool
+  + typeEnumerationSupported : bool
+}
+class dbdefinition_StoredProcedureDefinition {
+  + determininsticSupported : bool
+  + functionLanguageType : str
+  + languageType : str
+  + maximumActionBodyLength : int
+  + maximumIdentifierLength : int
+  + nullInputActionSupported : bool
+  + packageGenerationSupported : bool
+  + parameterDeclarationConstraintSupported : bool
+  + parameterInitValueSupported : bool
+  + parameterStyle : str
+  + parameterStyleSupported : bool
+  + procedureType : str
+  + returnTypeSupported : bool
+  + returnedNullSupported : bool
+  + returnedTypeDeclarationConstraintSupported : bool
+}
+class dbdefinition_TableDefinition {
+  + auditSupported : bool
+  + dataCaptureSupported : bool
+  + editProcSupported : bool
+  + encodingSupported : bool
+  + maximumIdentifierLength : int
+  + validProcSupported : bool
+}
+class dbdefinition_TableSpaceDefinition {
+  + bufferPoolSupported : bool
+  + containerExtentSizeSupported : bool
+  + containerInitialSizeSupported : bool
+  + containerMaximumSizeSupported : bool
+  + defaultSupported : bool
+  + extentSizeSupported : bool
+  + managedBySupported : bool
+  + maximumIdentifierLength : int
+  + pageSizeSupported : bool
+  + prefetchSizeSupported : bool
+  + tableSpaceType : str
+  + typeSupported : bool
+}
+class dbdefinition_TriggerDefinition {
+  + granularitySupported : bool
+  + insteadOfTriggerSupported : bool
+  + maximumActionBodyLength : int
+  + maximumIdentifierLength : int
+  + maximumReferencePartLength : int
+  + perColumnUpdateTriggerSupported : bool
+  + referencesClauseSupported : bool
+  + rowTriggerReferenceSupported : bool
+  + tableTriggerReferenceSupported : bool
+  + typeSupported : bool
+  + whenClauseSupported : bool
+}
+class dbdefinition_UserDefinedTypeDefinition {
+  + defaultValueSupported : bool
+  + distinctTypeSupported : bool
+  + maximumIdentifierLength : int
+  + structuredTypeSupported : bool
+}
+class dbdefinition_ViewDefinition {
+  + checkOptionLevelsSupported : bool
+  + checkOptionSupported : bool
+  + indexSupported : bool
+  + maximumIdentifierLength : int
+}
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_SQLSyntaxDefinition : SQLSyntaxDefinition23
+dbdefinition_PrivilegeDefinition "1..1" -- "0..9999" dbdefinition_PrivilegedElementDefinition : actionElementDefinitions65
+dbdefinition_ColumnDefinition "1..1" --* "1..1" dbdefinition_DatabaseVendorDefinition : columnDefinition7
+dbdefinition_ConstraintDefinition "1..1" --* "1..1" dbdefinition_DatabaseVendorDefinition : constraintDefinition9
+dbdefinition_ConstructedDataTypeDefinition "1..1" --* "1..1" dbdefinition_DatabaseVendorDefinition : constructedDataTypeDefinition35
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_DebuggerDefinition : debuggerDefinition31
+dbdefinition_PredefinedDataTypeDefinition "1..1" -- "1..1" dbdefinition_SequenceDefinition : defaultDataTypeDefinition57
+dbdefinition_FieldQualifierDefinition "0..1" -- "1..1" dbdefinition_PredefinedDataTypeDefinition : defaultLeadingFieldQualifierDefinition45
+dbdefinition_FieldQualifierDefinition "0..1" -- "1..1" dbdefinition_PredefinedDataTypeDefinition : defaultTrailingFieldQualifierDefinition42
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "0..9999" dbdefinition_ExtendedDefinition : extendedDefinitions11
+dbdefinition_ColumnDefinition "1..1" -- "1..9999" dbdefinition_PredefinedDataTypeDefinition : identityColumnDataTypeDefinitions51
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_IndexDefinition : indexDefinition13
+dbdefinition_FieldQualifierDefinition "0..9999" --* "1..1" dbdefinition_PredefinedDataTypeDefinition : leadingFieldQualifierDefinition37
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_NicknameDefinition : nicknameDefinition25
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "0..9999" dbdefinition_PredefinedDataTypeDefinition : predefinedDataTypeDefinitions0
+dbdefinition_PredefinedDataTypeDefinition "0..9999" --* "1..1" dbdefinition_StoredProcedureDefinition : predefinedDataTypeDefinitions48
+dbdefinition_PredefinedDataTypeDefinition "1..9999" -- "1..1" dbdefinition_SequenceDefinition : predefinedDataTypeDefinitions54
+dbdefinition_PrivilegeDefinition "0..9999" --* "1..1" dbdefinition_PrivilegedElementDefinition : privilegeDefinitions63
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "0..9999" dbdefinition_PrivilegedElementDefinition : privilegedElementDefinitions33
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_QueryDefinition : queryDefinition21
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_SchemaDefinition : schemaDefinition27
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_SequenceDefinition : sequenceDefinition17
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_StoredProcedureDefinition : storedProcedureDefinition3
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_TableDefinition : tableDefinition15
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_TableSpaceDefinition : tableSpaceDefinition1
+dbdefinition_FieldQualifierDefinition "0..9999" --* "1..1" dbdefinition_PredefinedDataTypeDefinition : trailingFieldQualifierDefinition39
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_TriggerDefinition : triggerDefinition5
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_UserDefinedTypeDefinition : udtDefinition19
+dbdefinition_FieldQualifierDefinition "0..9999" -- "1..1" dbdefinition_FieldQualifierDefinition : validTrailingFieldQualifierDefinitions61
+dbdefinition_DatabaseVendorDefinition "1..1" *-- "1..1" dbdefinition_ViewDefinition : viewDefinition29
+@enduml

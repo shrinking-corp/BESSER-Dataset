@@ -1,0 +1,42 @@
+@startuml
+class Equipo {
+  + nombre : str
+}
+class Fecha {
+  + anio : int
+  + dia : int
+  + mes : int
+}
+class Jugador {
+  + apellidos : str
+  + nif : str
+  + nombre : str
+  + telefono : int
+}
+class Marcador {
+  + equipo1 : int
+  + equipo2 : int
+  + tiempoSet : int
+}
+class Partido {
+  + id : int
+  + ronda : str
+}
+class Premio {
+  + Dinero : int
+  + Puesto : int
+  + Puntos : int
+}
+class Torneo {
+  + Nombre : str
+  + Pais : str
+}
+Equipo "0..1" -- "1..2" Jugador : Equipo_Jugador
+Fecha "1..1" -- "1..1" Jugador : Jugador_Fecha_Nacimiento
+Equipo "2..2" -- "0..1" Partido : Partido_Equipo
+Marcador "1..5" -- "0..1" Partido : Partido_Marcador
+Fecha "0..1" -- "1..1" Torneo : Torneo_Fecha_Fin
+Fecha "1..1" -- "1..1" Torneo : Torneo_Fecha_Inicio
+Partido "1..9999" -- "1..1" Torneo : Torneo_Partido
+Premio "0..9999" -- "0..1" Torneo : Torneo_Premio
+@enduml

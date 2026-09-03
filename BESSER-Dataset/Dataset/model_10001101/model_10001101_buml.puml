@@ -1,0 +1,29 @@
+@startuml
+class Camera_sensor {
+  + Image_ID : int
+  + Video_ID : int
+}
+class Event_Log {
+  + attribute : str
+}
+class Home_Security {
+}
+class Light_Sensor {
+  + attribute : str
+}
+class Lock_doors_sensors {
+  + attribute : str
+}
+class Server {
+  + attribute : str
+}
+class Temperature_sensor {
+  + attribute : str
+}
+Camera_sensor "1..9999" -- "1..1" Home_Security : Home_Security_Camera
+Home_Security "1..1" -- "1..1" Lock_doors_sensors : Home_Security_Doors
+Event_Log "1..9999" -- "1..1" Home_Security : Home_Security_Event_Log
+Home_Security "1..1" -- "1..9999" Light_Sensor : Home_Security_Light_Sensor
+Home_Security "1..1" -- "1..1" Server : Home_Security_Server
+Home_Security "1..1" -- "1..9999" Temperature_sensor : Home_Security_Temperature_sensor
+@enduml

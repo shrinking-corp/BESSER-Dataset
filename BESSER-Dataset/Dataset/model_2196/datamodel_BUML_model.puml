@@ -1,0 +1,54 @@
+@startuml
+enum ConstraintType {
+  Expected
+  GlobalIncoming
+  GlobalOutgoing
+  LocalIncoming
+  LocalOutgoing
+  NotAllowed
+  Undefined
+}
+class Ensemble {
+}
+class TreeNode {
+}
+class datamodel_ConcreteEnsemble {
+}
+class datamodel_Constraint {
+  + constraintType : str
+  + dependencyKind : str
+}
+class datamodel_EmptyEnsemble {
+}
+abstract class datamodel_Ensemble {
+  + derived : bool
+  + description : str
+  + name : str
+  + query : str
+}
+class datamodel_EnsembleRepository {
+}
+class datamodel_Slice {
+  + diagram : str
+  + name : str
+}
+class datamodel_SliceRepository {
+}
+abstract class datamodel_TreeNode {
+}
+Ensemble <|-- datamodel_ConcreteEnsemble
+Ensemble <|-- datamodel_EmptyEnsemble
+TreeNode <|-- datamodel_Ensemble
+TreeNode <|-- datamodel_EnsembleRepository
+datamodel_TreeNode "1..1" *-- "0..9999" datamodel_TreeNode : children20
+datamodel_Constraint "0..9999" -- "1..1" datamodel_Ensemble : constraints0
+datamodel_Constraint "0..9999" --* "1..1" datamodel_Slice : constraints12
+datamodel_Ensemble "1..1" --* "1..1" datamodel_SliceRepository : emptyEnsemble10
+datamodel_Ensemble "0..9999" -- "1..1" datamodel_Slice : ensembles14
+datamodel_TreeNode "1..1" -- "0..1" datamodel_TreeNode : parent18
+datamodel_Slice "1..1" -- "1..1" datamodel_SliceRepository : sliceRepository15
+datamodel_Ensemble "1..1" -- "0..9999" datamodel_Slice : slices1
+datamodel_Slice "0..9999" --* "1..1" datamodel_SliceRepository : slices8
+datamodel_Constraint "1..1" -- "1..1" datamodel_Ensemble : source2
+datamodel_Constraint "1..1" -- "1..1" datamodel_Ensemble : target5
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+class BinaryExpression {
+}
+class Expression {
+}
+enum ILPDataType {
+  BINARY
+  INTEGER
+  REAL
+}
+enum ObjectiveGoal {
+  MAX
+  MIN
+}
+enum Operator {
+  EQUAL_TO
+  GREATER_THAN_OR_EQUAL_TO
+  LESS_THAN_OR_EQUAL_TO
+  MINUS
+  PLUS
+  TIMES
+}
+class ilp_ArithmeticExpression {
+}
+abstract class ilp_BinaryExpression {
+  + operator : str
+}
+class ilp_ConstraintExpression {
+}
+abstract class ilp_Expression {
+  + comment : str
+}
+class ilp_IntegerLinearProgram {
+}
+class ilp_LiteralExpression {
+  + value : str
+}
+class ilp_ObjectiveFunctionExpression {
+  + goal : str
+}
+class ilp_Variable {
+  + dataType : str
+  + name : str
+}
+class ilp_VariableExpression {
+}
+BinaryExpression <|-- ilp_ArithmeticExpression
+BinaryExpression <|-- ilp_ConstraintExpression
+Expression <|-- ilp_BinaryExpression
+Expression <|-- ilp_LiteralExpression
+Expression <|-- ilp_VariableExpression
+ilp_ConstraintExpression "0..9999" --* "1..1" ilp_IntegerLinearProgram : constraints1
+ilp_BinaryExpression "1..1" *-- "1..1" ilp_Expression : leftExpression5
+ilp_Expression "1..1" --* "1..1" ilp_ObjectiveFunctionExpression : objectiveFunction11
+ilp_IntegerLinearProgram "1..1" *-- "0..1" ilp_ObjectiveFunctionExpression : objectiveFunction3
+ilp_BinaryExpression "1..1" *-- "1..1" ilp_Expression : rightExpression6
+ilp_Variable "1..1" -- "1..1" ilp_VariableExpression : variable9
+ilp_IntegerLinearProgram "1..1" *-- "0..9999" ilp_Variable : variables0
+@enduml

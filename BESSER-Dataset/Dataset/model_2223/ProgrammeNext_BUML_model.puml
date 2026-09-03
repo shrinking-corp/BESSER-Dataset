@@ -1,0 +1,59 @@
+@startuml
+enum CourseLevel {
+  HIGHER
+  PHD
+  THIRD_YEAR
+}
+enum CourseType {
+  Elective
+  M1A
+  M2A
+  Obligatory
+}
+enum ProgrammeType {
+  BACHELOR
+  INTEGRATED_MASTER
+  MASTER_2_YEARS
+  YEAR_STUDY
+}
+enum SemesterType {
+  FALL
+  SPRING
+}
+class programme_Course {
+  + code : str
+  + credits : float
+  + level : str
+  + name : str
+  + taugtIn : str
+}
+class programme_Department {
+  + name : str
+}
+class programme_Programme {
+  + code : str
+  + name : str
+  + programmeType : str
+}
+class programme_Semester {
+  + semesterType : str
+}
+class programme_SemesterCourse {
+  + courseType : str
+}
+class programme_Specialization {
+  + name : str
+}
+class programme_StudyYear {
+  + year : int
+}
+programme_Programme "1..1" *-- "0..9999" programme_Specialization : availableSpecializations3
+programme_Specialization "0..9999" -- "1..1" programme_Specialization : availableSpecializations8
+programme_Course "0..9999" --* "1..1" programme_Department : courses1
+programme_Semester "1..1" *-- "1..9999" programme_SemesterCourse : courses15
+programme_Department "1..1" *-- "0..9999" programme_Programme : programmes0
+programme_Course "1..1" -- "1..1" programme_SemesterCourse : semesterCourse17
+programme_Semester "2..2" --* "1..1" programme_StudyYear : semesters13
+programme_Specialization "1..1" *-- "0..9999" programme_StudyYear : studyYears10
+programme_Programme "1..1" *-- "0..9999" programme_StudyYear : studyYears5
+@enduml

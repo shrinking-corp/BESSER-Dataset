@@ -1,0 +1,35 @@
+@startuml
+class Classifier {
+}
+class NamedElement {
+}
+class TypedElement {
+}
+class classes_Attribute {
+  + isMany : bool
+}
+class classes_CClass {
+  + abstract : bool
+}
+class classes_CModel {
+}
+abstract class classes_Classifier {
+}
+class classes_Datatype {
+}
+abstract class classes_NamedElement {
+  + name : str
+}
+abstract class classes_TypedElement {
+}
+Classifier <|-- classes_CClass
+Classifier <|-- classes_Datatype
+NamedElement <|-- classes_Attribute
+NamedElement <|-- classes_Classifier
+TypedElement <|-- classes_Attribute
+classes_Attribute "0..9999" --* "1..1" classes_CClass : attributes3
+classes_CModel "1..1" *-- "0..9999" classes_Classifier : contents0
+classes_CClass "1..1" -- "0..1" classes_CClass : extends2
+classes_CClass "0..9999" -- "1..1" classes_CClass : super6
+classes_Classifier "0..1" -- "1..1" classes_TypedElement : type8
+@enduml

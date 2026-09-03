@@ -1,0 +1,29 @@
+@startuml
+class NamedElement {
+}
+class relationaldatabase_Column {
+}
+class relationaldatabase_ForeignKey {
+}
+abstract class relationaldatabase_NamedElement {
+  + name : str
+}
+class relationaldatabase_RelationalDatabase {
+}
+class relationaldatabase_Table {
+}
+NamedElement <|-- relationaldatabase_Column
+NamedElement <|-- relationaldatabase_ForeignKey
+NamedElement <|-- relationaldatabase_Table
+relationaldatabase_Column "1..9999" --* "1..1" relationaldatabase_Table : columns1
+relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_ForeignKey : foreignColumn15
+relationaldatabase_ForeignKey "0..9999" --* "1..1" relationaldatabase_Table : foreignKeys4
+relationaldatabase_Column "1..1" -- "0..9999" relationaldatabase_ForeignKey : foreignKeysAsColumn9
+relationaldatabase_Column "1..1" -- "0..9999" relationaldatabase_ForeignKey : foreignKeysAsForeignColumn11
+relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_Table : primaryKey2
+relationaldatabase_ForeignKey "1..1" -- "1..1" relationaldatabase_Table : table17
+relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_Table : table6
+relationaldatabase_Column "1..1" -- "0..1" relationaldatabase_Table : tableAsPrimaryKey7
+relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_ForeignKey : tableColumn13
+relationaldatabase_RelationalDatabase "1..1" *-- "0..9999" relationaldatabase_Table : tables0
+@enduml

@@ -1,0 +1,124 @@
+@startuml
+class Action {
+}
+class CommunicationAction {
+}
+class NamedElement {
+}
+class PropertyKeyContainer {
+}
+enum RobotStatus {
+  Executing
+  Ready
+  TurnedOff
+  Waiting
+}
+enum TaskExecutionStatus {
+  Finished
+  InProgress
+  Ready
+  Suspended
+  Waiting
+}
+class behaviour_Action {
+}
+class behaviour_AreaObject {
+}
+class behaviour_BehaviourContainer {
+}
+class behaviour_BehaviouralPropertyKeyContainer {
+}
+class behaviour_BroadcastCommunication {
+}
+class behaviour_Capability {
+}
+class behaviour_CapabilityProperties {
+}
+abstract class behaviour_CommunicationAction {
+}
+class behaviour_DetectedObject {
+  + obstacle : bool
+}
+class behaviour_DynamicRobot {
+  + status : str
+}
+class behaviour_MeasureValue {
+}
+class behaviour_Message {
+  + needResponse : bool
+  + timestamp : date
+}
+class behaviour_MessageRepository {
+}
+class behaviour_MulticastCommunication {
+}
+class behaviour_Property {
+}
+class behaviour_Robot {
+}
+class behaviour_RobotCollaboration {
+}
+class behaviour_Task {
+}
+class behaviour_TaskDescriptor {
+}
+class behaviour_TaskExecution {
+  + status : str
+}
+class behaviour_TaskRequirement {
+  + participants : int
+}
+class behaviour_UnicastCommunication {
+}
+Action <|-- behaviour_CommunicationAction
+CommunicationAction <|-- behaviour_BroadcastCommunication
+CommunicationAction <|-- behaviour_MulticastCommunication
+CommunicationAction <|-- behaviour_UnicastCommunication
+NamedElement <|-- behaviour_Action
+NamedElement <|-- behaviour_DynamicRobot
+NamedElement <|-- behaviour_Message
+NamedElement <|-- behaviour_MessageRepository
+NamedElement <|-- behaviour_TaskExecution
+NamedElement <|-- behaviour_TaskRequirement
+PropertyKeyContainer <|-- behaviour_BehaviouralPropertyKeyContainer
+behaviour_MeasureValue "0..1" --* "1..1" behaviour_Message : TTL13
+behaviour_Action "0..9999" --* "1..1" behaviour_DynamicRobot : actions68
+behaviour_MeasureValue "0..1" -- "1..1" behaviour_RobotCollaboration : availabilityRange51
+behaviour_BehaviourContainer "1..1" *-- "0..1" behaviour_BehaviouralPropertyKeyContainer : behaviourKeysContainer5
+behaviour_CapabilityProperties "0..9999" --* "1..1" behaviour_TaskRequirement : capabilityProperties83
+behaviour_DynamicRobot "1..1" *-- "0..9999" behaviour_RobotCollaboration : collaborations64
+behaviour_DynamicRobot "1..1" -- "1..1" behaviour_RobotCollaboration : collaborator49
+behaviour_Action "1..1" -- "0..1" behaviour_Task : currentTask37
+behaviour_Action "1..1" -- "0..1" behaviour_TaskExecution : currentTaskExecution34
+behaviour_TaskDescriptor "0..1" -- "1..1" behaviour_TaskRequirement : descriptor85
+behaviour_DetectedObject "0..9999" --* "1..1" behaviour_DynamicRobot : detectedObjects61
+behaviour_BehaviourContainer "1..1" *-- "0..9999" behaviour_DynamicRobot : dynamicRobots0
+behaviour_DynamicRobot "1..1" -- "0..9999" behaviour_TaskExecution : executedTasks71
+behaviour_MeasureValue "0..1" --* "1..1" behaviour_TaskExecution : executionTime42
+behaviour_DynamicRobot "0..9999" -- "1..1" behaviour_TaskExecution : executors39
+behaviour_Message "0..1" -- "1..1" behaviour_Message : follows16
+behaviour_Message "1..1" -- "0..9999" behaviour_TaskExecution : involvedTaskExecutions7
+behaviour_CommunicationAction "1..1" -- "1..1" behaviour_Message : message18
+behaviour_DynamicRobot "1..1" *-- "0..1" behaviour_MessageRepository : messageRepository67
+behaviour_AreaObject "1..1" -- "1..1" behaviour_DetectedObject : object57
+behaviour_TaskExecution "0..1" -- "1..1" behaviour_TaskRequirement : prerequisite75
+behaviour_Action "1..1" *-- "0..9999" behaviour_Property : properties32
+behaviour_Property "0..9999" --* "1..1" behaviour_RobotCollaboration : properties54
+behaviour_Property "0..9999" --* "1..1" behaviour_TaskRequirement : properties78
+behaviour_Message "1..1" *-- "0..9999" behaviour_Property : properties9
+behaviour_Message "0..9999" -- "1..1" behaviour_MessageRepository : receivedMessages27
+behaviour_AreaObject "0..9999" -- "1..1" behaviour_Message : referredObjects11
+behaviour_Capability "0..9999" -- "1..1" behaviour_TaskRequirement : requiredCapabilities81
+behaviour_TaskExecution "1..1" -- "0..1" behaviour_TaskRequirement : requirement48
+behaviour_DynamicRobot "1..1" -- "1..1" behaviour_MessageRepository : robot26
+behaviour_DynamicRobot "1..1" -- "1..1" behaviour_Robot : robot59
+behaviour_Message "0..9999" --* "1..1" behaviour_MessageRepository : sendedMessages29
+behaviour_DynamicRobot "1..1" -- "1..1" behaviour_UnicastCommunication : target20
+behaviour_DynamicRobot "1..9999" -- "1..1" behaviour_MulticastCommunication : targets22
+behaviour_BroadcastCommunication "1..1" -- "1..9999" behaviour_DynamicRobot : targets24
+behaviour_Task "1..1" -- "1..1" behaviour_TaskExecution : task45
+behaviour_Task "0..1" -- "1..1" behaviour_TaskRequirement : task87
+behaviour_TaskExecution "1..1" -- "1..1" behaviour_TaskRequirement : taskExecution74
+behaviour_BehaviourContainer "1..1" *-- "0..9999" behaviour_TaskExecution : taskExecutions1
+behaviour_BehaviourContainer "1..1" *-- "0..9999" behaviour_TaskRequirement : taskRequirements3
+@enduml

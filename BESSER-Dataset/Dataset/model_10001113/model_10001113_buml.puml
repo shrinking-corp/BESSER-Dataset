@@ -1,0 +1,71 @@
+@startuml
+class Booking {
+  + booking_Id : str
+  + contact : str
+  + date : str
+  + name : str
+  + reservedTables : str
+  + type : int
+}
+class Chef {
+  + kitchenStation : Kitchen
+}
+class Class {
+}
+class Customer {
+  + numFemale : int
+  + numMale : int
+  + type : CustomerType
+}
+enum CustomerType {
+}
+class Food {
+  + description : str
+  + food_Id : str
+  + name : str
+  + prepared : bool
+  + price : str
+  + served : bool
+  + type : int
+}
+enum Kitchen {
+}
+class Manager {
+}
+class Order {
+  + foodOrdered : Food
+  + order_Id : str
+}
+class RMS {
+  + bookings : str
+}
+class Report {
+  + orders : str
+  + profit : str
+  + totalSales : str
+}
+class Staff {
+  + contact : str
+  + jobType : int
+  + name : str
+  + staff_Id : str
+}
+class Table {
+  + customerDetail : Customer
+  + numSeats : int
+  + occupied : bool
+  + order : str
+  + specialRequest : str
+  + table_Id : str
+}
+class Waiter {
+}
+Food "1..9999" -- "0..9999" Order : Order_Food
+Order "1..1" -- "1..1" Table : Order_Table
+Booking "0..9999" -- "1..1" RMS : RMS_Booking
+RMS "1..1" -- "1..9999" Report : Report_RMS
+RMS "1..1" -- "0..9999" Staff : Staff_RMS
+Booking "1..1" -- "1..9999" Table : Table_Booking
+Customer "0..1" -- "0..1" Table : Table_Customer
+Staff "0..1" -- "0..1" Table : accesses
+@enduml

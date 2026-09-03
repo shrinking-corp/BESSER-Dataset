@@ -1,0 +1,42 @@
+@startuml
+class State {
+}
+class StateMachineDiagram_meta_Activity {
+}
+class StateMachineDiagram_meta_Application {
+  + name : str
+}
+class StateMachineDiagram_meta_Event {
+}
+class StateMachineDiagram_meta_Fragment {
+}
+class StateMachineDiagram_meta_Pseudostate {
+}
+abstract class StateMachineDiagram_meta_State {
+  + name : str
+}
+class StateMachineDiagram_meta_StateMachine {
+  + name : str
+}
+class StateMachineDiagram_meta_Transition {
+  + name : str
+  + trigger : str
+}
+abstract class StateMachineDiagram_meta_Vertex {
+}
+class Vertex {
+}
+State <|-- StateMachineDiagram_meta_Activity
+State <|-- StateMachineDiagram_meta_Event
+State <|-- StateMachineDiagram_meta_Fragment
+Vertex <|-- StateMachineDiagram_meta_Pseudostate
+Vertex <|-- StateMachineDiagram_meta_State
+StateMachineDiagram_meta_Transition "0..9999" -- "1..1" StateMachineDiagram_meta_Vertex : incoming6
+StateMachineDiagram_meta_Transition "0..9999" -- "1..1" StateMachineDiagram_meta_Vertex : outgoing5
+StateMachineDiagram_meta_Transition "1..1" -- "0..9999" StateMachineDiagram_meta_Vertex : souce8
+StateMachineDiagram_meta_Application "1..1" *-- "0..9999" StateMachineDiagram_meta_StateMachine : statemachine0
+StateMachineDiagram_meta_State "1..1" *-- "0..9999" StateMachineDiagram_meta_StateMachine : statemachine11
+StateMachineDiagram_meta_Transition "1..1" -- "0..9999" StateMachineDiagram_meta_Vertex : target9
+StateMachineDiagram_meta_StateMachine "1..1" *-- "0..9999" StateMachineDiagram_meta_Transition : transition3
+StateMachineDiagram_meta_StateMachine "1..1" *-- "0..9999" StateMachineDiagram_meta_Vertex : vertex1
+@enduml

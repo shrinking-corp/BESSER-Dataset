@@ -1,0 +1,86 @@
+@startuml
+class Expr {
+}
+class ExprBool {
+}
+class Legolang_Robot_OrderRobot {
+}
+class Legolang_Robot_bip {
+}
+class Legolang_Robot_display {
+}
+class Legolang_Robot_hasTurned {
+}
+class Legolang_Robot_move {
+}
+class Legolang_Robot_obstacle {
+}
+class Legolang_Robot_stopEngine {
+}
+class Legolang_Robot_turn {
+}
+class Legolang_Robot_turnAngle {
+}
+class Legolang_controlflow_Expr {
+}
+class Legolang_controlflow_ExprBool {
+}
+class Legolang_controlflow_Program {
+}
+class Legolang_controlflow_and {
+}
+class Legolang_controlflow_not {
+}
+class Legolang_controlflow_opBinaire {
+}
+class Legolang_controlflow_opUnaire {
+}
+class Legolang_controlflow_operator {
+}
+class Legolang_controlflow_si {
+}
+class Legolang_controlflow_tantqueue {
+}
+class OrderRobot {
+}
+class controlflow_ExprBool {
+}
+class controlflow_operator {
+}
+class opBinaire {
+}
+class opUnaire {
+}
+class operator {
+}
+class tantqueue {
+}
+Expr <|-- Legolang_controlflow_ExprBool
+Expr <|-- Legolang_controlflow_si
+Expr <|-- Legolang_controlflow_tantqueue
+OrderRobot <|-- Legolang_Robot_bip
+OrderRobot <|-- Legolang_Robot_display
+OrderRobot <|-- Legolang_Robot_hasTurned
+OrderRobot <|-- Legolang_Robot_move
+OrderRobot <|-- Legolang_Robot_obstacle
+OrderRobot <|-- Legolang_Robot_stopEngine
+OrderRobot <|-- Legolang_Robot_turn
+OrderRobot <|-- Legolang_Robot_turnAngle
+controlflow_ExprBool <|-- Legolang_controlflow_opUnaire
+controlflow_operator <|-- Legolang_controlflow_opUnaire
+opBinaire <|-- Legolang_controlflow_and
+opUnaire <|-- Legolang_controlflow_not
+operator <|-- Legolang_controlflow_opBinaire
+ExprBool "0..1" -- "1..1" Legolang_controlflow_tantqueue : Cdt3
+Expr "0..9999" -- "1..1" Legolang_controlflow_Program : EReferenc022
+Expr "0..9999" -- "1..1" Legolang_Robot_OrderRobot : EReference00
+Legolang_controlflow_Expr "1..1" -- "0..1" tantqueue : EReference010
+Legolang_controlflow_opBinaire "1..1" -- "0..1" opBinaire : EReference013
+Legolang_controlflow_ExprBool "1..1" -- "0..1" tantqueue : EReference220
+ExprBool "1..1" -- "1..1" Legolang_controlflow_opBinaire : LeftSon14
+ExprBool "1..1" -- "1..1" Legolang_controlflow_opBinaire : RightSon17
+ExprBool "0..1" -- "1..1" Legolang_controlflow_si : cdt5
+Legolang_controlflow_Expr "1..1" -- "0..9999" OrderRobot : fonction11
+Expr "0..9999" -- "1..1" Legolang_controlflow_si : instrSi7
+Expr "0..1" -- "1..1" Legolang_controlflow_tantqueue : instrTTque1
+@enduml

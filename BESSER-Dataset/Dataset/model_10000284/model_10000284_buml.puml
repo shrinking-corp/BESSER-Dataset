@@ -1,0 +1,37 @@
+@startuml
+class Administrator {
+  + admin_name : str
+  + password : str
+}
+class Property {
+  + Available : bool
+  + address : str
+  + location : str
+  + property_id : str
+  + property_type : str
+  + size : str
+}
+class User {
+  + Address : str
+  + Id : int
+  + email : str
+  + password : str
+  + phone : int
+}
+class customer {
+}
+class operation_or_contract {
+  + Property_id : int
+  + customer_id : str
+  + operation_id : int
+  + operation_type : str
+  + owner_id : str
+}
+class owner {
+}
+Property "1..9999" -- "1..1" owner : Property_Seller
+Administrator "1..1" -- "1..9999" User : User_Administrator
+Property "0..1" -- "0..9999" customer : customer_Property
+Property "1..1" -- "0..1" operation_or_contract : operation_or_contract_Property
+operation_or_contract "0..1" -- "1..1" owner : owner_operation_or_contract
+@enduml

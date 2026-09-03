@@ -1,0 +1,30 @@
+@startuml
+class PetriNetModel_ArcPT {
+  + inscription : str
+}
+class PetriNetModel_ArcTP {
+  + inscription : str
+}
+class PetriNetModel_PetriNet {
+  + name : str
+}
+class PetriNetModel_Place {
+  + name : str
+  + token : str
+}
+class PetriNetModel_Transition {
+  + name : str
+}
+PetriNetModel_ArcPT "0..9999" --* "1..1" PetriNetModel_PetriNet : arcPT1
+PetriNetModel_ArcTP "0..9999" --* "1..1" PetriNetModel_PetriNet : arcTP3
+PetriNetModel_ArcPT "1..1" -- "0..9999" PetriNetModel_Place : place16
+PetriNetModel_ArcTP "1..1" -- "0..9999" PetriNetModel_Place : place19
+PetriNetModel_PetriNet "1..1" *-- "0..9999" PetriNetModel_Place : place5
+PetriNetModel_ArcTP "0..9999" -- "1..1" PetriNetModel_Transition : postArc10
+PetriNetModel_ArcPT "0..9999" -- "1..1" PetriNetModel_Place : postArc28
+PetriNetModel_ArcTP "0..9999" -- "1..1" PetriNetModel_Place : preArc25
+PetriNetModel_ArcPT "0..9999" -- "1..1" PetriNetModel_Transition : preArc7
+PetriNetModel_PetriNet "1..1" *-- "0..9999" PetriNetModel_Transition : transition0
+PetriNetModel_ArcPT "1..1" -- "0..9999" PetriNetModel_Transition : transition13
+PetriNetModel_ArcTP "1..1" -- "0..9999" PetriNetModel_Transition : transition22
+@enduml

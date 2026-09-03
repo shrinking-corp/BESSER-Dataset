@@ -1,0 +1,104 @@
+@startuml
+class AtlAnnotation {
+}
+class PrimitiveType {
+}
+class RefType {
+}
+class ReflectiveType {
+}
+class Type {
+}
+class annotations_atl_types_EObject {
+}
+class annotations_atl_types_Type {
+}
+class atl_types_BooleanType {
+}
+class atl_types_EClass {
+}
+class atl_types_EObject {
+}
+class atl_types_EmptyCollection {
+}
+class atl_types_EnumType {
+  + name : str
+}
+class atl_types_FloatType {
+}
+class atl_types_IntegerType {
+}
+class atl_types_MapType {
+}
+class atl_types_Metaclass {
+  + name : str
+}
+abstract class atl_types_PrimitiveType {
+}
+class atl_types_RefType {
+}
+class atl_types_ReflectiveClass {
+}
+abstract class atl_types_ReflectiveType {
+}
+class atl_types_StringType {
+}
+class atl_types_ThisModuleType {
+}
+class atl_types_TupleAttribute {
+  + name : str
+}
+class atl_types_TupleType {
+}
+abstract class atl_types_Type {
+  + multivalued : bool
+}
+class atl_types_UnionType {
+}
+class atl_types_Unknown {
+}
+abstract class atl_types_annotations_AtlAnnotation {
+}
+class atl_types_annotations_BindingAnnotation {
+  + name : str
+}
+class atl_types_annotations_ExpressionAnnotation {
+}
+class atl_types_annotations_HelperAnnotation {
+  + name : str
+}
+AtlAnnotation <|-- atl_types_annotations_BindingAnnotation
+AtlAnnotation <|-- atl_types_annotations_ExpressionAnnotation
+AtlAnnotation <|-- atl_types_annotations_HelperAnnotation
+PrimitiveType <|-- atl_types_BooleanType
+PrimitiveType <|-- atl_types_FloatType
+PrimitiveType <|-- atl_types_IntegerType
+PrimitiveType <|-- atl_types_StringType
+RefType <|-- atl_types_Metaclass
+RefType <|-- atl_types_Unknown
+ReflectiveType <|-- atl_types_ReflectiveClass
+Type <|-- atl_types_EmptyCollection
+Type <|-- atl_types_EnumType
+Type <|-- atl_types_MapType
+Type <|-- atl_types_PrimitiveType
+Type <|-- atl_types_RefType
+Type <|-- atl_types_ReflectiveType
+Type <|-- atl_types_ThisModuleType
+Type <|-- atl_types_TupleType
+Type <|-- atl_types_UnionType
+atl_types_TupleAttribute "0..9999" --* "1..1" atl_types_TupleType : attributes0
+annotations_atl_types_EObject "0..1" -- "1..1" atl_types_annotations_BindingAnnotation : binding17
+atl_types_EObject "1..1" -- "1..1" atl_types_EnumType : eenum8
+annotations_atl_types_EObject "0..1" -- "1..1" atl_types_annotations_ExpressionAnnotation : expr26
+annotations_atl_types_EObject "0..1" -- "1..1" atl_types_annotations_HelperAnnotation : helper12
+atl_types_MapType "1..1" *-- "1..1" atl_types_Type : keyType1
+atl_types_EClass "1..1" -- "1..1" atl_types_Metaclass : klass9
+atl_types_Type "0..9999" --* "1..1" atl_types_UnionType : possibleTypes10
+annotations_atl_types_EObject "0..1" -- "1..1" atl_types_annotations_BindingAnnotation : rule15
+annotations_atl_types_Type "1..1" -- "1..1" atl_types_annotations_BindingAnnotation : sourceType20
+annotations_atl_types_Type "1..1" -- "1..1" atl_types_annotations_BindingAnnotation : targetType23
+annotations_atl_types_Type "1..1" -- "1..1" atl_types_annotations_HelperAnnotation : type13
+annotations_atl_types_Type "1..1" -- "1..1" atl_types_annotations_ExpressionAnnotation : type28
+atl_types_TupleAttribute "1..1" *-- "1..1" atl_types_Type : type5
+atl_types_MapType "1..1" *-- "1..1" atl_types_Type : valueType2
+@enduml

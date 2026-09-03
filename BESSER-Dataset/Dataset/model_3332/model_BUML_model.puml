@@ -1,0 +1,282 @@
+@startuml
+class AbstractCExpression {
+}
+class AbstractCStatement {
+}
+class AbstractMClass {
+}
+class AbstractMClassFieldDeclaration {
+}
+class AbstractMDeclaredType {
+}
+class AbstractMExternalType {
+}
+class AbstractMFieldDeclaration {
+}
+class AbstractMImplementableMethodDeclaration {
+}
+class AbstractMInterface {
+}
+class AbstractMMethodDeclaration {
+}
+class AbstractMMethodImplementation {
+}
+class AbstractMMethodLike {
+}
+class AbstractMPackageContainer {
+}
+class AbstractMResource {
+}
+class AbstractMType {
+}
+class AbstractMTypeContainer {
+}
+class AbstractMTypeReference {
+}
+class AbstractMTypeWithNameDeclaration {
+}
+class AbstractModifiers {
+}
+class MDeclaredClass {
+}
+enum MPrimitiveTypes {
+  boolean
+  byte
+  char
+  double
+  float
+  int
+  long
+  short
+}
+enum MVisibility {
+  DEFAULT
+  PRIVATE
+  PROTECTED
+  PUBLIC
+}
+abstract class model_AbstractCExpression {
+}
+abstract class model_AbstractCStatement {
+}
+abstract class model_AbstractMClass {
+}
+abstract class model_AbstractMClassFieldDeclaration {
+  + final : bool
+  + visibility : str
+}
+abstract class model_AbstractMDeclaredType {
+  + name : str
+}
+abstract class model_AbstractMExternalType {
+  + fullQualifiedName : str
+}
+abstract class model_AbstractMFieldDeclaration {
+}
+abstract class model_AbstractMImplementableMethodDeclaration {
+}
+abstract class model_AbstractMInterface {
+}
+abstract class model_AbstractMMethodDeclaration {
+}
+abstract class model_AbstractMMethodImplementation {
+}
+abstract class model_AbstractMMethodLike {
+}
+abstract class model_AbstractMPackageContainer {
+}
+abstract class model_AbstractMResource {
+  + derived : bool
+  + name : str
+}
+abstract class model_AbstractMType {
+}
+abstract class model_AbstractMTypeContainer {
+}
+abstract class model_AbstractMTypeReference {
+  + array : bool
+}
+abstract class model_AbstractMTypeWithNameDeclaration {
+  + name : str
+}
+abstract class model_AbstractModifiers {
+  + final : bool
+  + synchronized : bool
+  + visibility : str
+}
+class model_CBlockStatement {
+}
+class model_CConditionalExpression {
+}
+class model_CDeclarationStatement {
+  + final : bool
+}
+class model_CExpressionStatement {
+}
+class model_CIfStatement {
+}
+class model_CUnparsedExpression {
+  + code : str
+}
+class model_CUnparsedStatement {
+  + code : str
+}
+class model_MAbstractClassMethodDeclaration {
+  + visibility : str
+}
+class model_MAbstractDeclaredClass {
+}
+class model_MCompilationUnit {
+}
+class model_MConstantInterfaceFieldDeclaration {
+}
+class model_MConstructor {
+}
+class model_MConstructorParameter {
+  + final : bool
+}
+class model_MDeclaredClass {
+}
+class model_MDeclaredInterface {
+}
+class model_MDeclaredMethodImplementation {
+}
+class model_MDeclaredTypeReference {
+}
+class model_MDirectMethodImplementation {
+}
+class model_MExternalClass {
+}
+class model_MExternalInterface {
+}
+class model_MExternalTypeReference {
+}
+class model_MImplicitMethodDeclaration {
+}
+class model_MInstanceClassFieldDeclaration {
+  + transient : bool
+}
+class model_MInterfaceMethodDeclaration {
+}
+class model_MMethodDeclarationParameter {
+}
+class model_MMethodImplementationParameter {
+  + final : bool
+  + name : str
+}
+class model_MNativeMethodDeclaration {
+}
+class model_MPackage {
+  + name : str
+}
+class model_MPrimitiveTypeReference {
+  + type : str
+}
+class model_MResource {
+  + content : str
+}
+class model_MRoot {
+}
+class model_MStaticClassFieldDeclaration {
+}
+AbstractCExpression <|-- model_CConditionalExpression
+AbstractCExpression <|-- model_CUnparsedExpression
+AbstractCStatement <|-- model_CBlockStatement
+AbstractCStatement <|-- model_CDeclarationStatement
+AbstractCStatement <|-- model_CExpressionStatement
+AbstractCStatement <|-- model_CIfStatement
+AbstractCStatement <|-- model_CUnparsedStatement
+AbstractMClass <|-- model_MDeclaredClass
+AbstractMClass <|-- model_MExternalClass
+AbstractMClassFieldDeclaration <|-- model_MInstanceClassFieldDeclaration
+AbstractMClassFieldDeclaration <|-- model_MStaticClassFieldDeclaration
+AbstractMDeclaredType <|-- model_MDeclaredClass
+AbstractMDeclaredType <|-- model_MDeclaredInterface
+AbstractMExternalType <|-- model_MExternalClass
+AbstractMExternalType <|-- model_MExternalInterface
+AbstractMFieldDeclaration <|-- model_AbstractMClassFieldDeclaration
+AbstractMFieldDeclaration <|-- model_MConstantInterfaceFieldDeclaration
+AbstractMImplementableMethodDeclaration <|-- model_MAbstractClassMethodDeclaration
+AbstractMImplementableMethodDeclaration <|-- model_MInterfaceMethodDeclaration
+AbstractMInterface <|-- model_MDeclaredInterface
+AbstractMInterface <|-- model_MExternalInterface
+AbstractMMethodDeclaration <|-- model_AbstractMImplementableMethodDeclaration
+AbstractMMethodDeclaration <|-- model_MImplicitMethodDeclaration
+AbstractMMethodDeclaration <|-- model_MNativeMethodDeclaration
+AbstractMMethodImplementation <|-- model_MDeclaredMethodImplementation
+AbstractMMethodImplementation <|-- model_MDirectMethodImplementation
+AbstractMMethodLike <|-- model_AbstractMMethodImplementation
+AbstractMMethodLike <|-- model_MConstructor
+AbstractMPackageContainer <|-- model_MPackage
+AbstractMPackageContainer <|-- model_MRoot
+AbstractMResource <|-- model_MCompilationUnit
+AbstractMResource <|-- model_MResource
+AbstractMType <|-- model_AbstractMClass
+AbstractMType <|-- model_AbstractMInterface
+AbstractMTypeContainer <|-- model_AbstractMDeclaredType
+AbstractMTypeContainer <|-- model_MCompilationUnit
+AbstractMTypeReference <|-- model_MDeclaredTypeReference
+AbstractMTypeReference <|-- model_MExternalTypeReference
+AbstractMTypeReference <|-- model_MPrimitiveTypeReference
+AbstractMTypeWithNameDeclaration <|-- model_AbstractMFieldDeclaration
+AbstractMTypeWithNameDeclaration <|-- model_AbstractMMethodDeclaration
+AbstractMTypeWithNameDeclaration <|-- model_CDeclarationStatement
+AbstractMTypeWithNameDeclaration <|-- model_MConstructorParameter
+AbstractMTypeWithNameDeclaration <|-- model_MMethodDeclarationParameter
+AbstractModifiers <|-- model_AbstractMMethodLike
+MDeclaredClass <|-- model_MAbstractDeclaredClass
+model_MAbstractClassMethodDeclaration "0..9999" --* "1..1" model_MAbstractDeclaredClass : abstractMethods32
+model_AbstractCExpression "1..1" --* "1..1" model_CIfStatement : condition76
+model_AbstractCExpression "1..1" --* "1..1" model_CConditionalExpression : condition84
+model_MConstantInterfaceFieldDeclaration "0..9999" --* "1..1" model_MDeclaredInterface : constants36
+model_MConstructor "1..1" -- "1..1" model_MConstructorParameter : constructor67
+model_MConstructor "0..9999" --* "1..1" model_MDeclaredClass : constructors26
+model_AbstractMImplementableMethodDeclaration "1..1" -- "1..1" model_MDeclaredMethodImplementation : declaration58
+model_MDirectMethodImplementation "1..1" *-- "1..1" model_MImplicitMethodDeclaration : declaration59
+model_AbstractMResource "1..1" -- "0..9999" model_AbstractMResource : derivedFrom7
+model_AbstractCExpression "1..1" --* "1..1" model_CExpressionStatement : expression74
+model_AbstractMClass "0..1" -- "1..1" model_MDeclaredClass : extends20
+model_AbstractMInterface "0..9999" -- "1..1" model_MDeclaredInterface : extends34
+model_AbstractMExternalType "0..9999" --* "1..1" model_MRoot : externalTypes1
+model_AbstractCExpression "0..1" --* "1..1" model_CConditionalExpression : falseExpression89
+model_AbstractCStatement "0..1" --* "1..1" model_CIfStatement : falseStatement81
+model_AbstractMImplementableMethodDeclaration "1..1" -- "0..9999" model_MDeclaredMethodImplementation : implementations48
+model_AbstractMMethodImplementation "0..9999" --* "1..1" model_MDeclaredClass : implementedMethods28
+model_AbstractMInterface "0..9999" -- "1..1" model_MDeclaredClass : implements21
+model_AbstractMType "0..9999" -- "1..1" model_MCompilationUnit : imports13
+model_AbstractCExpression "0..1" --* "1..1" model_AbstractMFieldDeclaration : initialValue40
+model_MDeclaredClass "1..1" *-- "0..9999" model_MInstanceClassFieldDeclaration : instanceFields24
+model_AbstractMMethodDeclaration "1..1" -- "1..1" model_MMethodDeclarationParameter : methodDeclaration46
+model_AbstractMMethodImplementation "1..1" -- "1..1" model_MMethodImplementationParameter : methodImplementation61
+model_MDeclaredInterface "1..1" *-- "0..9999" model_MInterfaceMethodDeclaration : methods38
+model_MDeclaredClass "1..1" *-- "0..9999" model_MNativeMethodDeclaration : nativeMethods30
+model_MDeclaredClass "1..1" -- "1..1" model_MStaticClassFieldDeclaration : owner41
+model_MDeclaredClass "1..1" -- "1..1" model_MInstanceClassFieldDeclaration : owner42
+model_MConstantInterfaceFieldDeclaration "1..1" -- "1..1" model_MDeclaredInterface : owner44
+model_MDirectMethodImplementation "1..1" -- "1..1" model_MImplicitMethodDeclaration : owner47
+model_MAbstractClassMethodDeclaration "1..1" -- "1..1" model_MAbstractDeclaredClass : owner50
+model_MDeclaredInterface "1..1" -- "1..1" model_MInterfaceMethodDeclaration : owner51
+model_MDeclaredClass "1..1" -- "1..1" model_MNativeMethodDeclaration : owner53
+model_AbstractMMethodImplementation "1..1" -- "1..1" model_MDeclaredClass : owner55
+model_MConstructor "1..1" -- "1..1" model_MDeclaredClass : owner64
+model_AbstractMResource "1..1" -- "1..1" model_MPackage : package4
+model_AbstractMPackageContainer "1..1" -- "1..1" model_MPackage : packageContainer2
+model_AbstractMPackageContainer "1..1" *-- "0..9999" model_MPackage : packages0
+model_AbstractMMethodDeclaration "1..1" *-- "0..9999" model_MMethodDeclarationParameter : parameters45
+model_AbstractMMethodImplementation "1..1" *-- "0..9999" model_MMethodImplementationParameter : parameters57
+model_MConstructor "1..1" *-- "0..9999" model_MConstructorParameter : parameters66
+model_AbstractMResource "0..9999" --* "1..1" model_MPackage : resources3
+model_AbstractMExternalType "1..1" -- "1..1" model_MRoot : root15
+model_AbstractCStatement "0..1" --* "1..1" model_AbstractMMethodLike : statement18
+model_AbstractCStatement "0..9999" --* "1..1" model_CBlockStatement : statements70
+model_MDeclaredClass "1..1" *-- "0..9999" model_MStaticClassFieldDeclaration : staticFields23
+model_AbstractMResource "1..1" -- "0..9999" model_AbstractMResource : superOf10
+model_AbstractCExpression "1..1" --* "1..1" model_CConditionalExpression : trueExpression86
+model_AbstractCStatement "1..1" --* "1..1" model_CIfStatement : trueStatement78
+model_AbstractMDeclaredType "1..1" -- "1..1" model_MDeclaredTypeReference : type16
+model_AbstractMExternalType "1..1" -- "1..1" model_MExternalTypeReference : type17
+model_AbstractMTypeReference "1..1" --* "1..1" model_AbstractMTypeWithNameDeclaration : type19
+model_AbstractMDeclaredType "1..1" -- "1..1" model_AbstractMTypeContainer : typeContainer14
+model_AbstractMDeclaredType "0..9999" --* "1..1" model_AbstractMTypeContainer : types12
+model_AbstractCExpression "0..1" --* "1..1" model_CDeclarationStatement : value72
+@enduml

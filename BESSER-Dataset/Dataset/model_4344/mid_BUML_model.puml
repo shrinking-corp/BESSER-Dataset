@@ -1,0 +1,400 @@
+@startuml
+class ConversionOperator {
+}
+class Editor {
+}
+class ExtendibleElement {
+}
+class ExtendibleElementEndpoint {
+}
+class ExtendibleElementEndpointReference {
+}
+class ExtendibleElementReference {
+}
+class GenericElement {
+}
+class GenericEndpoint {
+}
+enum MIDLevel {
+  INSTANCES
+  TYPES
+  WORKFLOWS
+}
+class Mapping {
+}
+class MappingReference {
+}
+class Model {
+}
+class ModelElementEndpoint {
+}
+class ModelElementEndpointReference {
+}
+class ModelElementReference {
+}
+class ModelEndpointReference {
+}
+enum ModelOrigin {
+  CREATED
+  IMPORTED
+}
+class ModelRel {
+}
+class NestingOperator {
+}
+class Operator {
+}
+class mid_EMFInfo {
+  + attribute : bool
+  + className : str
+  + featureName : str
+  + relatedClassName : str
+  + toInstanceString() : str
+  + toTypeString() : str
+}
+class mid_EObject {
+}
+class mid_EStringToExtendibleElementMap {
+  + key : str
+}
+abstract class mid_ExtendibleElement {
+  + dynamic : bool
+  + level : str
+  + metatypeUri : str
+  + name : str
+  + uri : str
+  + addTypeConstraint(mid_implementation : str, mid_language : str) : void
+  + createSubtypeUri(mid_newTypeFragmentUri : str, mid_newTypeName : str) : str
+  + getClosestTypeConstraint() : str
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getRuntimeTypes() : void
+  + isInstancesLevel() : bool
+  + isLevel(mid_midLevel : str) : bool
+  + isTypesLevel() : bool
+  + isWorkflowsLevel() : bool
+  + toMIDCustomEditLabel() : str
+  + toMIDCustomPrintLabel() : str
+  + updateMIDCustomLabel(mid_newLabel : str) : void
+  + updateWorkflowInstanceId(mid_newInstanceId : str) : void
+  + validateInstance() : bool
+  + validateInstanceInEditor(mid_context : str) : str
+  + validateInstanceType(mid_type : str) : bool
+}
+class mid_ExtendibleElementConstraint {
+  + implementation : str
+  + language : str
+}
+abstract class mid_ExtendibleElementEndpoint {
+  + lowerBound : int
+  + upperBound : int
+  + getMetatype() : str
+  + getSupertype() : str
+  + getTargetUri() : str
+}
+abstract class mid_GenericElement {
+  + abstract : bool
+}
+class mid_MID {
+  + level : str
+  + getExtendibleElement(mid_uri : str) : void
+  + getModelRels() : str
+  + isInstancesLevel() : bool
+  + isTypesLevel() : bool
+  + isWorkflowsLevel() : bool
+}
+class mid_Model {
+  + fileExtension : str
+  + origin : str
+  + copyInstance(mid_instanceMID : str, mid_newModelName : str, mid_origModel : str) : str
+  + copyInstanceAndEditor(mid_copyDiagram : str, mid_instanceMID : str, mid_newModelName : str, mid_origModel : str) : str
+  + createInstance(mid_instanceMID : str, mid_newModelPath : str, mid_rootModelObj : str) : str
+  + createInstanceAndEditor(mid_instanceMID : str, mid_newModelPath : str, mid_rootModelObj : str) : str
+  + createInstanceEditor(mid_createEditorFile : str) : str
+  + createSubtype(mid_isMetamodelExtension : str, mid_newModelTypeName : str) : str
+  + createWorkflowInstance(mid_newModelId : str, mid_workflowMID : str) : str
+  + deleteInstance() : void
+  + deleteInstanceAndFile() : void
+  + deleteType() : void
+  + deleteWorkflowInstance() : void
+  + getEMFTypeRoot() : str
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getSupertype() : str
+  + importInstance(mid_instanceMID : str, mid_modelPath : str) : str
+  + importInstanceAndEditor(mid_instanceMID : str, mid_modelPath : str) : str
+  + openInstance() : void
+  + openType() : void
+}
+class mid_ModelElement {
+  + createInstanceAndReference(mid_containerModelEndpointRef : str, mid_eInfo : str, mid_newModelElemName : str, mid_newModelElemUri : str) : str
+  + createInstanceReference(mid_containerModelEndpointRef : str) : str
+  + createSubtypeAndReference(mid_containerModelTypeEndpointRef : str, mid_eInfo : str, mid_modelElemTypeRef : str, mid_newModelElemTypeName : str, mid_newModelElemTypeUri : str) : str
+  + createTypeReference(mid_containerModelTypeEndpointRef : str, mid_isModifiable : str, mid_modelElemTypeRef : str) : str
+  + deleteInstance() : void
+  + deleteType() : void
+  + getEMFInstanceObject(mid_emfResource : str) : str
+  + getEMFTypeObject() : str
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getSupertype() : str
+}
+class mid_ModelEndpoint {
+  + createInstance(mid_containerFeatureName : str, mid_containerOperator : str, mid_targetModel : str) : str
+  + createInstanceReference(mid_containerModelRel : str) : str
+  + createSubtype(mid_containerModelRelType : str, mid_isBinarySrc : str, mid_newModelTypeEndpointName : str, mid_targetModelType : str) : str
+  + createTypeReference(mid_containerModelRelType : str, mid_isModifiable : str) : str
+  + createWorkflowInstance(mid_containerFeatureName : str, mid_containerOperator : str, mid_targetModel : str) : str
+  + deleteInstance(mid_isFullDelete : str) : void
+  + deleteType(mid_isFullDelete : str) : void
+  + deleteWorkflowInstance() : void
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getSupertype() : str
+  + getTarget() : str
+  + replaceInstance(mid_oldModelEndpoint : str, mid_targetModel : str) : void
+  + replaceSubtype(mid_newModelTypeEndpointName : str, mid_oldModelTypeEndpoint : str, mid_targetModelType : str) : void
+  + replaceWorkflowInstance(mid_oldModelEndpoint : str, mid_targetModel : str) : void
+}
+class mid_editor_Diagram {
+}
+class mid_editor_Editor {
+  + fileExtensions : str
+  + id : str
+  + modelUri : str
+  + wizardDialogClass : str
+  + wizardId : str
+  + createInstance(mid_createEditorFile : str, mid_instanceMID : str, mid_modelPath : str) : str
+  + createSubtype(mid_editorId : str, mid_modelTypeUri : str, mid_newEditorTypeFragmentUri : str, mid_newEditorTypeName : str, mid_wizardDialogClassName : str, mid_wizardId : str) : str
+  + deleteInstance() : void
+  + deleteType() : void
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getSupertype() : str
+  + invokeInstanceWizard(mid_initialSelection : str) : str
+}
+class mid_operator_ConversionOperator {
+  + cleanup() : void
+  + deleteType() : void
+}
+class mid_operator_GenericEndpoint {
+  + metatargetUri : str
+  + createInstance(mid_containerOperator : str, mid_targetGeneric : str) : str
+  + createWorkflowInstance(mid_containerOperator : str, mid_targetGeneric : str) : str
+  + getMetatype() : str
+  + getSupertype() : str
+  + getTarget() : GenericElement
+  + setTarget(mid_newTarget : str) : void
+}
+class mid_operator_NestingOperator {
+  + nestedMIDPath : str
+  + getNestedInstanceMID() : str
+  + startNestedInstance(mid_generics : str, mid_inputProperties : str, mid_inputs : str, mid_nestedOperatorType : str, mid_outputMIDsByName : str) : str
+}
+class mid_operator_Operator {
+  + commutative : bool
+  + executionTime : str
+  + workingPath : str
+  + checkAllowedInputs(mid_inputModels : str) : str
+  + createInstance(mid_instanceMID : str) : str
+  + createSubtype(mid_implementationPath : str, mid_newOperatorTypeName : str) : str
+  + createWorkflowInstance(mid_workflowMID : str) : str
+  + createWorkflowInstanceOutputs(mid_inputsByName : str, mid_newOperator : str, mid_workflowMID : str) : void
+  + deleteInstance() : void
+  + deleteType() : void
+  + deleteWorkflowInstance() : void
+  + findAllowedInputs(mid_inputMIDs : str, mid_inputModelBlacklists : str) : void
+  + findFirstAllowedInput(mid_inputMIDs : str, mid_inputModelBlacklists : str) : str
+  + getInputProperties() : str
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getOutputModels() : Model
+  + getOutputsByName() : void
+  + getSupertype() : str
+  + getTypeSignature(mid_inputs : str) : str
+  + openInstance() : void
+  + openType() : void
+  + openWorkflowInstance() : void
+  + readInputProperties(mid_inputProperties : str) : void
+  + run(mid_genericsByName : str, mid_inputsByName : str, mid_outputMIDsByName : str) : void
+  + selectAllowedGenerics(mid_inputs : str) : str
+  + startInstance(mid_generics : str, mid_inputProperties : str, mid_inputs : str, mid_instanceMID : str, mid_outputMIDsByName : str) : str
+  + startWorkflowInstance(mid_generics : str, mid_inputs : str, mid_workflowMID : str) : str
+}
+class mid_operator_OperatorGeneric {
+}
+class mid_operator_OperatorInput {
+}
+class mid_operator_RandomOperator {
+  + state : str
+}
+class mid_operator_WorkflowOperator {
+  + getNestedWorkflowMID() : str
+}
+class mid_relationship_BinaryMapping {
+}
+class mid_relationship_BinaryMappingReference {
+  + addModelElementTypeReference(mid_isBinarySrc : str, mid_modelElemTypeRef : str) : void
+  + getObject() : str
+}
+class mid_relationship_BinaryModelRel {
+  + addModelType(mid_isBinarySrc : str, mid_modelType : str) : void
+}
+abstract class mid_relationship_ExtendibleElementEndpointReference {
+  + getObject() : ExtendibleElementEndpoint
+  + getSupertypeRef() : str
+  + getTargetUri() : str
+}
+abstract class mid_relationship_ExtendibleElementReference {
+  + modifiable : bool
+  + getMIDContainer() : str
+  + getObject() : ExtendibleElement
+  + getUri() : str
+  + isInstancesLevel() : bool
+  + isTypesLevel() : bool
+  + isWorkflowsLevel() : bool
+}
+class mid_relationship_Mapping {
+  + createInstanceAndReference(mid_containerModelRel : str, mid_isBinary : str) : str
+  + createInstanceAndReferenceAndEndpointsAndReferences(mid_isBinary : str, mid_targetModelElemRefs : str) : str
+  + createInstanceReference(mid_containerModelRel : str) : str
+  + createSubtypeAndReference(mid_containerModelRelType : str, mid_isBinary : str, mid_mappingTypeRef : str, mid_newMappingTypeName : str) : str
+  + createTypeReference(mid_containerModelRelType : str, mid_isModifiable : str, mid_mappingTypeRef : str) : str
+  + deleteInstance() : void
+  + deleteType() : void
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getSupertype() : str
+}
+class mid_relationship_MappingReference {
+  + deleteInstanceAndReference() : void
+  + deleteInstanceReference() : void
+  + deleteTypeAndReference() : void
+  + deleteTypeReference() : void
+  + getObject() : str
+  + getSupertypeRef() : str
+}
+class mid_relationship_ModelElementEndpoint {
+  + createInstanceAndReference(mid_containerMappingRef : str, mid_targetModelElemRef : str) : str
+  + createInstanceReference(mid_containerMappingRef : str, mid_targetModelElemRef : str) : str
+  + createSubtypeAndReference(mid_containerMappingTypeRef : str, mid_isBinarySrc : str, mid_newModelElemTypeEndpointName : str, mid_targetModelElemTypeRef : str) : str
+  + createTypeReference(mid_containerMappingTypeRef : str, mid_isBinarySrc : str, mid_isModifiable : str, mid_modelElemTypeEndpointRef : str, mid_targetModelElemTypeRef : str) : str
+  + deleteType(mid_isFullDelete : str) : void
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getSupertype() : str
+  + getTarget() : str
+  + replaceInstanceAndReference(mid_oldModelElemEndpointRef : str, mid_targetModelElemRef : str) : void
+  + replaceSubtypeAndReference(mid_newModelElemTypeEndpointName : str, mid_oldModelElemTypeEndpointRef : str, mid_targetModelElemTypeRef : str) : void
+}
+class mid_relationship_ModelElementEndpointReference {
+  + deleteInstanceAndReference(mid_isFullDelete : str) : void
+  + deleteTypeAndReference(mid_isFullDelete : str) : void
+  + deleteTypeReference(mid_isFullDelete : str) : void
+  + getObject() : str
+  + getSupertypeRef() : str
+}
+class mid_relationship_ModelElementReference {
+  + deleteInstanceReference() : void
+  + deleteTypeReference() : void
+  + getObject() : str
+  + getSupertypeRef() : str
+}
+class mid_relationship_ModelEndpointReference {
+  + acceptModelElementInstance(mid_modelObj : str) : str
+  + acceptModelElementType(mid_metamodelObj : str) : bool
+  + createModelElementInstanceAndReference(mid_modelObj : str, mid_newModelElemName : str) : str
+  + deleteTypeReference(mid_isFullDelete : str) : void
+  + getObject() : str
+  + getSupertypeRef() : str
+}
+class mid_relationship_ModelRel {
+  + copySubtype(mid_origModelRelType : str) : str
+  + createBinaryInstance(mid_instanceMID : str, mid_newModelRelName : str, mid_rootModelRelObj : str) : str
+  + createBinaryInstanceAndEndpoints(mid_endpointSourceModel : str, mid_endpointTargetModel : str, mid_instanceMID : str, mid_newModelRelName : str, mid_rootModelRelObj : str) : str
+  + createBinarySubtype(mid_isMetamodelExtension : str, mid_newModelRelTypeName : str) : str
+  + createInstanceAndEndpoints(mid_endpointModels : str, mid_instanceMID : str, mid_newModelRelName : str, mid_rootModelRelObj : str) : str
+  + createWorkflowBinaryInstance(mid_newModelRelId : str, mid_workflowMID : str) : str
+  + createWorkflowBinaryInstanceAndEndpoints(mid_endpointSourceModel : str, mid_endpointTargetModel : str, mid_newModelRelId : str, mid_workflowMID : str) : str
+  + createWorkflowInstanceAndEndpoints(mid_endpointModels : str, mid_newModelRelId : str, mid_workflowMID : str) : str
+  + getMIDContainer() : str
+  + getMetatype() : str
+  + getOutlineResourceInstances() : str
+  + getOutlineResourceTypes() : str
+  + getSupertype() : Model
+}
+class operator_mid_GenericElement {
+}
+class operator_mid_Model {
+}
+class operator_mid_ModelEndpoint {
+}
+class relationship_mid_ExtendibleElement {
+}
+class relationship_mid_Model {
+}
+class relationship_mid_ModelEndpoint {
+}
+Editor <|-- mid_editor_Diagram
+ExtendibleElement <|-- mid_ExtendibleElementEndpoint
+ExtendibleElement <|-- mid_GenericElement
+ExtendibleElement <|-- mid_ModelElement
+ExtendibleElement <|-- mid_editor_Editor
+ExtendibleElement <|-- mid_relationship_Mapping
+ExtendibleElementEndpoint <|-- mid_ModelEndpoint
+ExtendibleElementEndpoint <|-- mid_operator_GenericEndpoint
+ExtendibleElementEndpoint <|-- mid_relationship_ModelElementEndpoint
+ExtendibleElementEndpointReference <|-- mid_relationship_ModelElementEndpointReference
+ExtendibleElementEndpointReference <|-- mid_relationship_ModelEndpointReference
+ExtendibleElementReference <|-- mid_relationship_ExtendibleElementEndpointReference
+ExtendibleElementReference <|-- mid_relationship_MappingReference
+ExtendibleElementReference <|-- mid_relationship_ModelElementReference
+GenericElement <|-- mid_Model
+GenericElement <|-- mid_operator_Operator
+Mapping <|-- mid_relationship_BinaryMapping
+MappingReference <|-- mid_relationship_BinaryMappingReference
+Model <|-- mid_relationship_ModelRel
+ModelRel <|-- mid_relationship_BinaryModelRel
+NestingOperator <|-- mid_operator_WorkflowOperator
+Operator <|-- mid_operator_ConversionOperator
+Operator <|-- mid_operator_NestingOperator
+Operator <|-- mid_operator_RandomOperator
+mid_EObject "0..1" -- "1..1" mid_Model : EMFInstanceRoot23
+mid_ExtendibleElement "1..1" *-- "0..1" mid_ExtendibleElementConstraint : constraint12
+mid_relationship_ExtendibleElementReference "1..1" *-- "0..1" relationship_mid_ExtendibleElement : containedObject39
+ConversionOperator "0..9999" -- "1..1" mid_Model : conversionOperators21
+ConversionOperator "0..9999" -- "1..1" mid_operator_OperatorInput : conversions66
+mid_EMFInfo "1..1" --* "1..1" mid_ModelElement : eInfo25
+Editor "0..9999" --* "1..1" mid_MID : editors1
+Editor "0..9999" -- "1..1" mid_Model : editors16
+mid_EStringToExtendibleElementMap "0..9999" --* "1..1" mid_MID : extendibleTable5
+mid_operator_OperatorGeneric "1..1" -- "1..1" operator_mid_GenericElement : generic72
+GenericEndpoint "1..1" -- "1..1" mid_operator_OperatorGeneric : genericSuperTypeEndpoint73
+GenericEndpoint "0..9999" --* "1..1" mid_operator_Operator : generics63
+mid_operator_Operator "1..1" *-- "0..9999" operator_mid_ModelEndpoint : inputs59
+MappingReference "0..9999" --* "1..1" mid_relationship_ModelRel : mappingRefs32
+Mapping "0..9999" --* "1..1" mid_relationship_ModelRel : mappings28
+mid_operator_OperatorInput "1..1" -- "1..1" operator_mid_Model : model65
+ModelElementEndpointReference "0..9999" -- "1..1" mid_relationship_ModelElementReference : modelElemEndpointRefs45
+ModelElementEndpointReference "0..9999" -- "1..1" mid_relationship_Mapping : modelElemEndpointRefs47
+ModelElementEndpointReference "0..9999" --* "1..1" mid_relationship_MappingReference : modelElemEndpointRefs50
+ModelElementEndpoint "0..9999" --* "1..1" mid_relationship_Mapping : modelElemEndpoints46
+ModelElementReference "1..1" -- "1..1" mid_relationship_ModelElementEndpointReference : modelElemRef57
+ModelElementReference "0..9999" --* "1..1" mid_relationship_ModelEndpointReference : modelElemRefs44
+mid_Model "1..1" *-- "0..9999" mid_ModelElement : modelElems19
+ModelEndpointReference "0..9999" --* "1..1" mid_relationship_ModelRel : modelEndpointRefs30
+mid_relationship_ModelRel "1..1" *-- "0..9999" relationship_mid_ModelEndpoint : modelEndpoints27
+mid_operator_OperatorInput "1..1" -- "1..1" operator_mid_ModelEndpoint : modelTypeEndpoint69
+mid_MID "1..1" *-- "0..9999" mid_Model : models0
+Operator "0..9999" --* "1..1" mid_MID : operators3
+mid_operator_Operator "1..1" *-- "0..9999" operator_mid_ModelEndpoint : outputs60
+mid_relationship_ExtendibleElementReference "1..1" -- "0..1" relationship_mid_ExtendibleElement : referencedObject38
+mid_relationship_BinaryModelRel "1..1" -- "1..1" relationship_mid_Model : sourceModel34
+ModelElementReference "1..1" -- "1..1" mid_relationship_BinaryMappingReference : sourceModelElemRef52
+mid_ExtendibleElement "1..1" -- "0..1" mid_ExtendibleElement : supertype10
+ExtendibleElementReference "0..1" -- "1..1" mid_relationship_ExtendibleElementReference : supertypeRef42
+mid_ExtendibleElement "1..1" -- "1..1" mid_ExtendibleElementEndpoint : target14
+mid_relationship_BinaryModelRel "1..1" -- "1..1" relationship_mid_Model : targetModel35
+ModelElementReference "1..1" -- "1..1" mid_relationship_BinaryMappingReference : targetModelElemRef54
+mid_EStringToExtendibleElementMap "1..1" -- "1..1" mid_ExtendibleElement : value7
+@enduml

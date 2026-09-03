@@ -1,0 +1,88 @@
+@startuml
+class Factor {
+}
+class Stmt {
+}
+class simpliC_Args {
+  + name : str
+}
+class simpliC_Assign {
+  + var : str
+}
+class simpliC_Block {
+}
+class simpliC_Call {
+}
+class simpliC_Decl {
+  + name : str
+}
+class simpliC_EObject {
+}
+class simpliC_Expr {
+  + op : str
+}
+class simpliC_ExprCall {
+}
+class simpliC_Factor {
+}
+class simpliC_Function {
+  + name : str
+}
+class simpliC_IDuse {
+}
+class simpliC_Ifstmt {
+}
+class simpliC_Model {
+}
+class simpliC_Return {
+}
+class simpliC_Stmt {
+}
+class simpliC_TFact {
+  + op : str
+}
+class simpliC_Type {
+  + name : str
+}
+class simpliC_Typedef {
+  + name : str
+}
+class simpliC_Whilestmt {
+}
+Factor <|-- simpliC_ExprCall
+Factor <|-- simpliC_IDuse
+Stmt <|-- simpliC_Assign
+Stmt <|-- simpliC_Block
+Stmt <|-- simpliC_Call
+Stmt <|-- simpliC_Decl
+Stmt <|-- simpliC_Ifstmt
+Stmt <|-- simpliC_Return
+Stmt <|-- simpliC_Typedef
+Stmt <|-- simpliC_Whilestmt
+simpliC_Args "0..9999" --* "1..1" simpliC_Function : Arglist3
+simpliC_Block "0..1" --* "1..1" simpliC_Ifstmt : Else23
+simpliC_Call "1..1" *-- "0..9999" simpliC_Expr : Paramlist11
+simpliC_Expr "0..9999" --* "1..1" simpliC_ExprCall : Paramlist15
+simpliC_Function "0..9999" --* "1..1" simpliC_Model : Program0
+simpliC_Block "0..1" --* "1..1" simpliC_Ifstmt : Then20
+simpliC_Block "0..1" --* "1..1" simpliC_Whilestmt : Then28
+simpliC_Block "1..1" *-- "0..9999" simpliC_Stmt : block7
+simpliC_Block "0..1" --* "1..1" simpliC_Function : body5
+simpliC_Expr "0..1" --* "1..1" simpliC_Ifstmt : cond18
+simpliC_Expr "0..1" --* "1..1" simpliC_Whilestmt : cond26
+simpliC_ExprCall "1..1" -- "0..1" simpliC_Function : functionID13
+simpliC_Call "1..1" -- "0..1" simpliC_Function : functionID9
+simpliC_EObject "0..1" --* "1..1" simpliC_Expr : lh44
+simpliC_Expr "0..1" --* "1..1" simpliC_TFact : lh49
+simpliC_Decl "0..1" -- "1..1" simpliC_IDuse : name52
+simpliC_EObject "0..1" --* "1..1" simpliC_Typedef : oldtype57
+simpliC_EObject "0..1" --* "1..1" simpliC_Expr : rh42
+simpliC_Expr "1..1" *-- "0..9999" simpliC_TFact : terms47
+simpliC_Function "1..1" *-- "0..1" simpliC_Type : type1
+simpliC_Decl "1..1" *-- "0..1" simpliC_Type : type33
+simpliC_Args "1..1" *-- "0..1" simpliC_Type : type54
+simpliC_Expr "0..1" --* "1..1" simpliC_Return : value31
+simpliC_Decl "1..1" *-- "0..1" simpliC_Expr : value37
+simpliC_Assign "1..1" *-- "0..1" simpliC_Expr : value40
+simpliC_Decl "1..1" -- "0..1" simpliC_Typedef : vtype35
+@enduml

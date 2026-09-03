@@ -1,0 +1,87 @@
+@startuml
+class Addressable {
+}
+class AudioVisualItem {
+}
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class CirculatingItem {
+}
+class Item {
+}
+class Lendable {
+}
+class Person {
+}
+abstract class extlibraryprofile_Addressable {
+  + address : str
+}
+abstract class extlibraryprofile_AudioVisualItem {
+  + damaged : str
+  + minutesLength : str
+}
+class extlibraryprofile_Book {
+  + category : str
+  + pages : str
+}
+class extlibraryprofile_BookOnTape {
+}
+class extlibraryprofile_Borrower {
+}
+class extlibraryprofile_Borrows {
+}
+abstract class extlibraryprofile_CirculatingItem {
+}
+class extlibraryprofile_Class {
+}
+class extlibraryprofile_Dependency {
+}
+class extlibraryprofile_Employee {
+}
+abstract class extlibraryprofile_Item {
+  + publicationDate : str
+  + title : str
+}
+abstract class extlibraryprofile_Lendable {
+  + copies : str
+}
+class extlibraryprofile_Library {
+  + name : str
+}
+class extlibraryprofile_Package {
+}
+class extlibraryprofile_Periodical {
+  + issuesPerYear : str
+}
+abstract class extlibraryprofile_Person {
+  + firstName : str
+  + lastName : str
+}
+class extlibraryprofile_VideoCassete {
+}
+class extlibraryprofile_Writer {
+  + name : str
+}
+Addressable <|-- extlibraryprofile_Library
+Addressable <|-- extlibraryprofile_Person
+AudioVisualItem <|-- extlibraryprofile_BookOnTape
+AudioVisualItem <|-- extlibraryprofile_VideoCassete
+CirculatingItem <|-- extlibraryprofile_AudioVisualItem
+CirculatingItem <|-- extlibraryprofile_Book
+Item <|-- extlibraryprofile_CirculatingItem
+Item <|-- extlibraryprofile_Periodical
+Lendable <|-- extlibraryprofile_CirculatingItem
+Person <|-- extlibraryprofile_Borrower
+Person <|-- extlibraryprofile_Employee
+Person <|-- extlibraryprofile_Writer
+extlibraryprofile_Class "1..1" -- "1..1" extlibraryprofile_Item : base_Class0
+extlibraryprofile_Class "1..1" -- "1..1" extlibraryprofile_Person : base_Class7
+extlibraryprofile_Borrows "1..1" -- "1..1" extlibraryprofile_Dependency : base_Dependency10
+extlibraryprofile_Library "1..1" -- "1..1" extlibraryprofile_Package : base_Package1
+extlibraryprofile_BookOnTape "1..1" -- "1..1" extlibraryprofile_Person : bookOnTape14
+extlibraryprofile_BookOnTape "1..1" -- "1..1" extlibraryprofile_Writer : bookOnTape2
+extlibraryprofile_Person "1..1" -- "0..9999" extlibraryprofile_VideoCassete : videoCassete3
+@enduml

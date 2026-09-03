@@ -1,0 +1,45 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Control_Box {
+  + Status : bool
+  + Update : float
+}
+class FAN {
+  + FAN_ID : str
+}
+class Fan_Regulator_Box {
+  + FAN_ID : str
+}
+class FireAlarm_Sensor {
+  + DispenseSprinkler : bool
+  + SmokeAlarm : bool
+}
+class Home_Security_System {
+  + UserID : int
+}
+class HouseHolds {
+  + Alarm : str
+  + TimeID : str
+  + WashingMachine : str
+}
+class Light {
+  + LightID : str
+}
+class MicroPhone {
+  + MicID : str
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" System : Home_Security_System_System
+MicroPhone "1..9999" -- "1..1" System : MicroPhone_System
+HouseHolds "0..1" -- "1..1" System : System_HouseHolds
+@enduml

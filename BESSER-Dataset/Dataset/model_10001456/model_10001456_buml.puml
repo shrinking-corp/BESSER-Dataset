@@ -1,0 +1,57 @@
+@startuml
+class Apuesta {
+  + id : str
+  + porcentajeGanancia : str
+  + valorApuesta : str
+}
+class ApuestaEquipoGanador {
+  + nombreEquipoGnador : str
+}
+class ApuestaMarcadorEspecifico {
+  + nombreEquipoGanador : str
+  + numeroGolesEquipo1 : int
+  + numeroGolesEquipo2 : int
+  + porcentajeAciertoMarcador : str
+}
+class Equipo {
+  + jugadores : str
+  + nombre : str
+  + porcentajeFavoritismo : str
+}
+class Historico {
+  + numeroPartidosGanados : int
+  + numeroPartidosJugados : int
+  + numeroPartidosPerdidos : int
+  + porcentajeApuestasEnFavor : str
+}
+class Marcador {
+  + nombreEquipoGanador : str
+  + numeroGolesEquipo1 : int
+  + numeroGolesEquipo2 : int
+}
+class Partido {
+  + idPartido : str
+  + numeroApuestas : str
+}
+class SistemaApuesta {
+}
+class Tarjeta {
+  + codigoSeguridad : int
+  + numeroTarje : int
+}
+class Usuario {
+  + passWord : str
+  + userName : str
+}
+Apuesta "0..9999" -- "1..1" Partido : Apuesta_Partido
+Equipo "0..1" -- "1..1" Historico : Equipo_Historico
+Historico "0..1" -- "1..9999" Partido : Historico__Partido
+Equipo "0..1" -- "0..1" Partido : Partido_Equipo
+Equipo "0..1" -- "0..1" Partido : Partido_Equipo2
+Marcador "1..1" -- "1..1" Partido : Partido_Marcador
+Apuesta "0..9999" -- "0..1" SistemaApuesta : SistemaApuesta_Apuesta
+Partido "1..9999" -- "0..1" SistemaApuesta : SistemaApuesta_Partido
+SistemaApuesta "0..1" -- "0..9999" Usuario : SistemaApuesta_Usuario
+Apuesta "0..9999" -- "1..1" Usuario : Usuario_Apuesta
+Tarjeta "1..9999" -- "1..1" Usuario : Usuario_Tarjeta
+@enduml

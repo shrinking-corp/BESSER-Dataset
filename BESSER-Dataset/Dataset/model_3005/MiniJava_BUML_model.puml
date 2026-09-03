@@ -1,0 +1,272 @@
+@startuml
+enum AccessLevel {
+  PRIVATE
+  PROTECTED
+  PUBLIC
+}
+class Assignee {
+}
+class Expression {
+}
+class Member {
+}
+class NamedElement {
+}
+class SingleTypeRef {
+}
+class Statement {
+}
+class Symbol {
+}
+class TypeDeclaration {
+}
+class TypeRef {
+}
+class TypedDeclaration {
+}
+class miniJava_And {
+}
+class miniJava_ArrayAccess {
+}
+class miniJava_ArrayLength {
+}
+class miniJava_ArrayTypeRef {
+}
+class miniJava_Assignee {
+}
+class miniJava_Assignment {
+}
+class miniJava_Block {
+}
+class miniJava_BoolConstant {
+  + value : str
+}
+class miniJava_BooleanTypeRef {
+}
+class miniJava_Class {
+  + abstract : bool
+}
+class miniJava_ClassRef {
+}
+class miniJava_Division {
+}
+class miniJava_Equality {
+}
+class miniJava_Expression {
+}
+class miniJava_Field {
+}
+class miniJava_FieldAccess {
+}
+class miniJava_ForStatement {
+}
+class miniJava_IfStatement {
+}
+class miniJava_Import {
+  + importedNamespace : str
+}
+class miniJava_Inequality {
+}
+class miniJava_Inferior {
+}
+class miniJava_InferiorOrEqual {
+}
+class miniJava_IntConstant {
+  + value : int
+}
+class miniJava_IntegerTypeRef {
+}
+class miniJava_Interface {
+}
+class miniJava_Member {
+  + access : str
+}
+class miniJava_Method {
+  + abstract : bool
+  + static : bool
+}
+class miniJava_MethodCall {
+}
+class miniJava_Minus {
+}
+class miniJava_Multiplication {
+}
+class miniJava_NamedElement {
+  + name : str
+}
+class miniJava_Neg {
+}
+class miniJava_NewArray {
+}
+class miniJava_NewObject {
+}
+class miniJava_Not {
+}
+class miniJava_Null {
+}
+class miniJava_Or {
+}
+class miniJava_Parameter {
+}
+class miniJava_Plus {
+}
+class miniJava_PrintStatement {
+}
+class miniJava_Program {
+  + name : str
+}
+class miniJava_Return {
+}
+class miniJava_SingleTypeRef {
+}
+class miniJava_Statement {
+}
+class miniJava_StringConstant {
+  + value : str
+}
+class miniJava_StringTypeRef {
+}
+class miniJava_Super {
+}
+class miniJava_Superior {
+}
+class miniJava_SuperiorOrEqual {
+}
+class miniJava_Symbol {
+}
+class miniJava_SymbolRef {
+}
+class miniJava_This {
+}
+class miniJava_TypeDeclaration {
+  + accessLevel : str
+}
+class miniJava_TypeRef {
+}
+class miniJava_TypedDeclaration {
+}
+class miniJava_VariableDeclaration {
+}
+class miniJava_VoidTypeRef {
+}
+class miniJava_WhileStatement {
+}
+Assignee <|-- miniJava_Expression
+Assignee <|-- miniJava_VariableDeclaration
+Expression <|-- miniJava_And
+Expression <|-- miniJava_ArrayAccess
+Expression <|-- miniJava_ArrayLength
+Expression <|-- miniJava_BoolConstant
+Expression <|-- miniJava_Division
+Expression <|-- miniJava_Equality
+Expression <|-- miniJava_FieldAccess
+Expression <|-- miniJava_Inequality
+Expression <|-- miniJava_Inferior
+Expression <|-- miniJava_InferiorOrEqual
+Expression <|-- miniJava_IntConstant
+Expression <|-- miniJava_MethodCall
+Expression <|-- miniJava_Minus
+Expression <|-- miniJava_Multiplication
+Expression <|-- miniJava_Neg
+Expression <|-- miniJava_NewArray
+Expression <|-- miniJava_NewObject
+Expression <|-- miniJava_Not
+Expression <|-- miniJava_Null
+Expression <|-- miniJava_Or
+Expression <|-- miniJava_Plus
+Expression <|-- miniJava_StringConstant
+Expression <|-- miniJava_Super
+Expression <|-- miniJava_Superior
+Expression <|-- miniJava_SuperiorOrEqual
+Expression <|-- miniJava_SymbolRef
+Expression <|-- miniJava_This
+Member <|-- miniJava_Field
+Member <|-- miniJava_Method
+NamedElement <|-- miniJava_TypeDeclaration
+NamedElement <|-- miniJava_TypedDeclaration
+SingleTypeRef <|-- miniJava_BooleanTypeRef
+SingleTypeRef <|-- miniJava_ClassRef
+SingleTypeRef <|-- miniJava_IntegerTypeRef
+SingleTypeRef <|-- miniJava_StringTypeRef
+SingleTypeRef <|-- miniJava_VoidTypeRef
+Statement <|-- miniJava_Assignment
+Statement <|-- miniJava_Block
+Statement <|-- miniJava_Expression
+Statement <|-- miniJava_ForStatement
+Statement <|-- miniJava_IfStatement
+Statement <|-- miniJava_PrintStatement
+Statement <|-- miniJava_Return
+Statement <|-- miniJava_WhileStatement
+Symbol <|-- miniJava_Parameter
+Symbol <|-- miniJava_VariableDeclaration
+TypeDeclaration <|-- miniJava_Class
+TypeDeclaration <|-- miniJava_Interface
+TypeRef <|-- miniJava_ArrayTypeRef
+TypeRef <|-- miniJava_SingleTypeRef
+TypedDeclaration <|-- miniJava_Member
+TypedDeclaration <|-- miniJava_Symbol
+miniJava_Expression "0..9999" --* "1..1" miniJava_MethodCall : args132
+miniJava_Expression "0..9999" --* "1..1" miniJava_NewObject : args137
+miniJava_ArrayLength "1..1" *-- "0..1" miniJava_Expression : array116
+miniJava_Assignee "0..1" --* "1..1" miniJava_Assignment : assignee45
+miniJava_Block "0..1" --* "1..1" miniJava_WhileStatement : block29
+miniJava_Block "0..1" --* "1..1" miniJava_ForStatement : block39
+miniJava_Block "0..1" --* "1..1" miniJava_Method : body10
+miniJava_Program "1..1" *-- "0..9999" miniJava_TypeDeclaration : classes1
+miniJava_Expression "0..1" --* "1..1" miniJava_WhileStatement : condition27
+miniJava_Expression "0..1" --* "1..1" miniJava_ForStatement : condition33
+miniJava_Assignment "0..1" --* "1..1" miniJava_ForStatement : declaration32
+miniJava_Expression "0..1" --* "1..1" miniJava_Field : defaultValue12
+miniJava_Block "0..1" --* "1..1" miniJava_IfStatement : elseBlock24
+miniJava_Expression "0..1" --* "1..1" miniJava_Not : expression118
+miniJava_Expression "0..1" --* "1..1" miniJava_Neg : expression120
+miniJava_Expression "0..1" --* "1..1" miniJava_PrintStatement : expression15
+miniJava_Expression "0..1" --* "1..1" miniJava_Return : expression17
+miniJava_Expression "0..1" --* "1..1" miniJava_IfStatement : expression19
+miniJava_Field "0..1" -- "1..1" miniJava_FieldAccess : field124
+miniJava_Interface "0..9999" -- "1..1" miniJava_TypeDeclaration : implements3
+miniJava_Import "0..9999" --* "1..1" miniJava_Program : imports0
+miniJava_ArrayAccess "1..1" *-- "0..1" miniJava_Expression : index113
+miniJava_Expression "0..1" --* "1..1" miniJava_Multiplication : left101
+miniJava_Division "1..1" *-- "0..1" miniJava_Expression : left106
+miniJava_Expression "0..1" --* "1..1" miniJava_Or : left51
+miniJava_And "1..1" *-- "0..1" miniJava_Expression : left56
+miniJava_Equality "1..1" *-- "0..1" miniJava_Expression : left61
+miniJava_Expression "0..1" --* "1..1" miniJava_Inequality : left66
+miniJava_Expression "0..1" --* "1..1" miniJava_SuperiorOrEqual : left71
+miniJava_Expression "0..1" --* "1..1" miniJava_InferiorOrEqual : left76
+miniJava_Expression "0..1" --* "1..1" miniJava_Superior : left81
+miniJava_Expression "0..1" --* "1..1" miniJava_Inferior : left86
+miniJava_Expression "0..1" --* "1..1" miniJava_Plus : left91
+miniJava_Expression "0..1" --* "1..1" miniJava_Minus : left96
+miniJava_Member "0..9999" --* "1..1" miniJava_TypeDeclaration : members5
+miniJava_Method "0..1" -- "1..1" miniJava_MethodCall : method129
+miniJava_ArrayAccess "1..1" *-- "0..1" miniJava_Expression : object111
+miniJava_Method "1..1" *-- "0..9999" miniJava_Parameter : params9
+miniJava_Assignment "0..1" --* "1..1" miniJava_ForStatement : progression36
+miniJava_Expression "0..1" --* "1..1" miniJava_FieldAccess : receiver122
+miniJava_Expression "0..1" --* "1..1" miniJava_MethodCall : receiver127
+miniJava_ClassRef "1..1" -- "0..1" miniJava_TypeDeclaration : referencedClass42
+miniJava_Expression "0..1" --* "1..1" miniJava_Multiplication : right103
+miniJava_Division "1..1" *-- "0..1" miniJava_Expression : right108
+miniJava_Expression "0..1" --* "1..1" miniJava_Or : right53
+miniJava_And "1..1" *-- "0..1" miniJava_Expression : right58
+miniJava_Equality "1..1" *-- "0..1" miniJava_Expression : right63
+miniJava_Expression "0..1" --* "1..1" miniJava_Inequality : right68
+miniJava_Expression "0..1" --* "1..1" miniJava_SuperiorOrEqual : right73
+miniJava_Expression "0..1" --* "1..1" miniJava_InferiorOrEqual : right78
+miniJava_Expression "0..1" --* "1..1" miniJava_Superior : right83
+miniJava_Expression "0..1" --* "1..1" miniJava_Inferior : right88
+miniJava_Expression "0..1" --* "1..1" miniJava_Plus : right93
+miniJava_Expression "0..1" --* "1..1" miniJava_Minus : right98
+miniJava_Expression "0..1" --* "1..1" miniJava_NewArray : size142
+miniJava_Block "1..1" *-- "0..9999" miniJava_Statement : statements13
+miniJava_Class "1..1" -- "0..1" miniJava_Class : superClass8
+miniJava_Symbol "0..1" -- "1..1" miniJava_SymbolRef : symbol145
+miniJava_Block "0..1" --* "1..1" miniJava_IfStatement : thenBlock21
+miniJava_Class "0..1" -- "1..1" miniJava_NewObject : type135
+miniJava_NewArray "1..1" *-- "0..1" miniJava_TypeRef : type140
+miniJava_TypeRef "0..1" --* "1..1" miniJava_TypedDeclaration : typeRef44
+miniJava_ArrayTypeRef "1..1" *-- "0..1" miniJava_SingleTypeRef : typeRef50
+miniJava_Assignment "1..1" *-- "0..1" miniJava_Expression : value47
+@enduml

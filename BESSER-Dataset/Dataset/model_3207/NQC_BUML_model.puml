@@ -1,0 +1,214 @@
+@startuml
+enum AssignmentStatementEnum {
+  assign
+}
+enum BinaryOperatorEnum {
+  and_
+  bitand
+  bitor
+  div
+  equal
+  geq
+  greater
+  leq
+  less
+  minus
+  mod
+  notequal
+  or_
+  plus
+  times
+}
+class CallStatement {
+}
+class CompoundExpression {
+}
+class ConstantExpression {
+}
+class ControlStructure {
+}
+class Expression {
+}
+class NQC_ArrayExpression {
+}
+class NQC_AssignmentStatement {
+  + Operator : str
+}
+class NQC_BinaryExpression {
+  + Operator : str
+}
+class NQC_BlockStatement {
+}
+class NQC_BooleanConstant {
+  + Value : bool
+}
+class NQC_BreakStatement {
+}
+abstract class NQC_CallStatement {
+}
+class NQC_Case {
+  + IsDefault : bool
+}
+abstract class NQC_CompoundExpression {
+}
+abstract class NQC_ConstantExpression {
+}
+class NQC_ContinueStatement {
+}
+abstract class NQC_ControlStructure {
+}
+class NQC_DoWhileStatement {
+}
+class NQC_EmptyStatement {
+}
+abstract class NQC_Expression {
+}
+class NQC_ForStatement {
+}
+class NQC_Function {
+  + Name : str
+}
+class NQC_FunctionCall {
+}
+class NQC_GlobalVariable {
+}
+class NQC_GoToStatement {
+}
+class NQC_IfStatement {
+}
+class NQC_IntegerConstant {
+  + Value : int
+}
+class NQC_Label {
+  + Label : str
+}
+class NQC_LocalVariable {
+}
+class NQC_Parameter {
+}
+class NQC_Program {
+  + Name : str
+}
+class NQC_RepeatStatement {
+}
+class NQC_ReturnStatement {
+}
+class NQC_StartStatement {
+}
+abstract class NQC_Statement {
+}
+class NQC_StopStatement {
+}
+class NQC_Subroutine {
+  + Name : str
+}
+class NQC_SubroutineCall {
+}
+class NQC_SwitchStatement {
+}
+class NQC_Task {
+  + Name : str
+}
+class NQC_UntilStatement {
+}
+abstract class NQC_ValueExpression {
+}
+abstract class NQC_Variable {
+  + Name : str
+  + Type : str
+}
+class NQC_VariableExpression {
+}
+class NQC_WhileStatement {
+}
+class Statement {
+}
+enum TypeEnum {
+  Integer
+  IntegerArray
+}
+class ValueExpression {
+}
+class Variable {
+}
+class VariableExpression {
+}
+CallStatement <|-- NQC_FunctionCall
+CallStatement <|-- NQC_SubroutineCall
+CompoundExpression <|-- NQC_BinaryExpression
+ConstantExpression <|-- NQC_BooleanConstant
+ConstantExpression <|-- NQC_IntegerConstant
+ControlStructure <|-- NQC_DoWhileStatement
+ControlStructure <|-- NQC_ForStatement
+ControlStructure <|-- NQC_GoToStatement
+ControlStructure <|-- NQC_IfStatement
+ControlStructure <|-- NQC_RepeatStatement
+ControlStructure <|-- NQC_SwitchStatement
+ControlStructure <|-- NQC_UntilStatement
+ControlStructure <|-- NQC_WhileStatement
+Expression <|-- NQC_CompoundExpression
+Expression <|-- NQC_ValueExpression
+Statement <|-- NQC_AssignmentStatement
+Statement <|-- NQC_BlockStatement
+Statement <|-- NQC_BreakStatement
+Statement <|-- NQC_CallStatement
+Statement <|-- NQC_ContinueStatement
+Statement <|-- NQC_ControlStructure
+Statement <|-- NQC_EmptyStatement
+Statement <|-- NQC_Expression
+Statement <|-- NQC_ReturnStatement
+Statement <|-- NQC_StartStatement
+Statement <|-- NQC_StopStatement
+ValueExpression <|-- NQC_ConstantExpression
+ValueExpression <|-- NQC_VariableExpression
+Variable <|-- NQC_GlobalVariable
+Variable <|-- NQC_LocalVariable
+Variable <|-- NQC_Parameter
+VariableExpression <|-- NQC_ArrayExpression
+NQC_IfStatement "1..1" *-- "0..1" NQC_Statement : Alternative62
+NQC_IntegerConstant "0..1" -- "1..1" NQC_Variable : ArrayMaxSize26
+NQC_DoWhileStatement "1..1" *-- "1..1" NQC_Statement : Body42
+NQC_RepeatStatement "1..1" *-- "1..1" NQC_Statement : Body67
+NQC_Statement "1..1" --* "1..1" NQC_UntilStatement : Body76
+NQC_Statement "1..1" --* "1..1" NQC_WhileStatement : Body81
+NQC_Function "1..1" -- "1..1" NQC_FunctionCall : Callee100
+NQC_Subroutine "1..1" -- "1..1" NQC_SubroutineCall : Callee105
+NQC_Case "0..9999" --* "1..1" NQC_SwitchStatement : Cases72
+NQC_DoWhileStatement "1..1" *-- "1..1" NQC_Expression : Condition44
+NQC_Expression "0..1" --* "1..1" NQC_ForStatement : Condition49
+NQC_Expression "1..1" --* "1..1" NQC_IfStatement : Condition57
+NQC_Expression "1..1" --* "1..1" NQC_RepeatStatement : Condition65
+NQC_Expression "1..1" -- "1..1" NQC_SwitchStatement : Condition70
+NQC_Expression "1..1" --* "1..1" NQC_UntilStatement : Condition74
+NQC_Expression "1..1" --* "1..1" NQC_WhileStatement : Condition79
+NQC_IfStatement "1..1" *-- "1..1" NQC_Statement : Consequence59
+NQC_AssignmentStatement "1..1" *-- "1..1" NQC_Expression : Expression31
+NQC_Function "0..9999" --* "1..1" NQC_Program : Functions1
+NQC_GlobalVariable "0..32" --* "1..1" NQC_Program : GlobalVariables5
+NQC_ConstantExpression "0..1" --* "1..1" NQC_Variable : InitialValue25
+NQC_ForStatement "1..1" *-- "0..1" NQC_Statement : Initialization47
+NQC_GoToStatement "1..1" -- "1..1" NQC_Label : JumpLabel55
+NQC_Label "0..1" --* "1..1" NQC_Statement : Label28
+NQC_Case "1..1" -- "1..9999" NQC_ConstantExpression : Label84
+NQC_Function "1..1" *-- "0..9999" NQC_LocalVariable : LocalVariables14
+NQC_LocalVariable "0..9999" --* "1..1" NQC_Subroutine : LocalVariables22
+NQC_BlockStatement "1..1" *-- "0..9999" NQC_LocalVariable : LocalVariables33
+NQC_LocalVariable "0..9999" --* "1..1" NQC_Task : LocalVariables9
+NQC_BinaryExpression "1..1" *-- "1..1" NQC_Expression : Operand195
+NQC_BinaryExpression "1..1" *-- "1..1" NQC_Expression : Operand297
+NQC_Expression "0..9999" --* "1..1" NQC_FunctionCall : Parameters102
+NQC_Function "1..1" *-- "0..9999" NQC_Parameter : Parameters17
+NQC_Function "1..1" *-- "0..9999" NQC_Statement : Statements11
+NQC_Statement "0..9999" --* "1..1" NQC_Subroutine : Statements19
+NQC_BlockStatement "1..1" *-- "0..9999" NQC_Statement : Statements35
+NQC_Statement "0..9999" --* "1..1" NQC_Task : Statements7
+NQC_Case "1..1" *-- "0..9999" NQC_Statement : Statements87
+NQC_Program "1..1" *-- "0..9999" NQC_Subroutine : Subroutines3
+NQC_StartStatement "1..1" -- "1..1" NQC_Task : Task38
+NQC_StopStatement "1..1" -- "1..1" NQC_Task : Task40
+NQC_Program "1..1" *-- "0..9999" NQC_Task : Tasks0
+NQC_ForStatement "1..1" *-- "0..1" NQC_Statement : Update52
+NQC_AssignmentStatement "1..1" *-- "1..1" NQC_VariableExpression : Variable30
+NQC_Variable "1..1" -- "1..1" NQC_VariableExpression : Variable90
+NQC_ArrayExpression "1..1" *-- "0..1" NQC_Expression : index93
+@enduml

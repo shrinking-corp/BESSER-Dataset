@@ -1,0 +1,93 @@
+@startuml
+enum Color {
+  BLACK
+  BLUE
+  GREEN
+  ORANGE
+  RED
+  WHITE
+  YELLOW
+}
+class Figure {
+}
+class GraphicalElement {
+}
+class IdElement {
+}
+class NotationElement {
+}
+class TextualElement {
+}
+class Value {
+}
+class notation_AttributeValue {
+}
+class notation_Composite {
+}
+class notation_Definition {
+}
+class notation_EAttribute {
+}
+class notation_EReference {
+}
+abstract class notation_Figure {
+}
+abstract class notation_GraphicalElement {
+  + fill : str
+  + height : int
+  + stroke : str
+  + width : int
+  + x : int
+  + y : int
+}
+abstract class notation_IdElement {
+  + id : str
+}
+class notation_Image {
+  + path : str
+}
+class notation_Keyword {
+}
+class notation_Label {
+}
+class notation_Line {
+}
+abstract class notation_NotationElement {
+}
+class notation_Rectangle {
+}
+class notation_ReferenceValue {
+}
+class notation_SyntaxOf {
+}
+class notation_TextualElement {
+  + fill : str
+}
+class notation_Token {
+}
+abstract class notation_Value {
+  + separator : str
+}
+Figure <|-- notation_Rectangle
+GraphicalElement <|-- notation_Figure
+GraphicalElement <|-- notation_Image
+GraphicalElement <|-- notation_Label
+GraphicalElement <|-- notation_Line
+IdElement <|-- notation_NotationElement
+NotationElement <|-- notation_Composite
+NotationElement <|-- notation_GraphicalElement
+NotationElement <|-- notation_SyntaxOf
+NotationElement <|-- notation_TextualElement
+TextualElement <|-- notation_Keyword
+TextualElement <|-- notation_Token
+TextualElement <|-- notation_Value
+Value <|-- notation_AttributeValue
+Value <|-- notation_ReferenceValue
+notation_EAttribute "1..1" -- "1..1" notation_Value : attribute1
+notation_Definition "1..1" *-- "0..9999" notation_NotationElement : elements9
+notation_EReference "1..1" -- "1..1" notation_ReferenceValue : reference2
+notation_EReference "1..1" -- "1..1" notation_SyntaxOf : reference3
+notation_NotationElement "0..1" -- "1..1" notation_SyntaxOf : separator5
+notation_Composite "1..1" *-- "0..9999" notation_NotationElement : subElements7
+notation_Label "1..1" *-- "1..1" notation_TextualElement : text0
+@enduml

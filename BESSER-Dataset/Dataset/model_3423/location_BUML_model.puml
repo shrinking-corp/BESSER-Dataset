@@ -1,0 +1,34 @@
+@startuml
+enum AltitudeMode {
+  absolute
+  clampToGround
+  relativeToGround
+}
+class location_Area {
+  + boundary : str
+  + comments : str
+  + name : str
+  + containsPoint(location_point : str) : bool
+  + getAreaMeasurement() : float
+}
+class location_Location {
+  + altitude : float
+  + altitudeMode : str
+  + city : str
+  + comments : str
+  + country : str
+  + description : str
+  + latitude : float
+  + longitude : float
+  + name : str
+  + phoneNumber : str
+  + postalCode : str
+  + state : str
+  + street : str
+  + containsPoint(location_point : str) : bool
+  + getAddress() : str
+  + getCoordinates() : str
+  + locate(location_point : str) : str
+}
+location_Area "0..9999" --* "1..1" location_Location : areas0
+@enduml

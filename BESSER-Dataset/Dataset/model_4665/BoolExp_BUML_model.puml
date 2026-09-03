@@ -1,0 +1,34 @@
+@startuml
+class BinExp {
+}
+class Exp {
+}
+class Lit {
+}
+class boolexp_And {
+}
+abstract class boolexp_BinExp {
+}
+abstract class boolexp_Exp {
+}
+class boolexp_Fals {
+}
+abstract class boolexp_Lit {
+}
+class boolexp_Not {
+}
+class boolexp_Or {
+}
+class boolexp_Tru {
+}
+BinExp <|-- boolexp_And
+BinExp <|-- boolexp_Or
+Exp <|-- boolexp_BinExp
+Exp <|-- boolexp_Lit
+Exp <|-- boolexp_Not
+Lit <|-- boolexp_Fals
+Lit <|-- boolexp_Tru
+boolexp_Exp "1..1" --* "1..1" boolexp_Not : exp4
+boolexp_BinExp "1..1" *-- "1..1" boolexp_Exp : lhs0
+boolexp_BinExp "1..1" *-- "1..1" boolexp_Exp : rhs1
+@enduml

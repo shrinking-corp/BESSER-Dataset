@@ -1,0 +1,24 @@
+@startuml
+class sQL_Column {
+  + dataType : str
+  + name : str
+  + notNull : str
+}
+class sQL_Database {
+}
+class sQL_ForeignKey {
+}
+class sQL_PrimaryKey {
+}
+class sQL_Table {
+  + name : str
+}
+sQL_Column "0..9999" --* "1..1" sQL_Table : columns1
+sQL_Column "0..9999" -- "1..1" sQL_ForeignKey : columns10
+sQL_Column "0..9999" -- "1..1" sQL_PrimaryKey : columns7
+sQL_ForeignKey "0..9999" --* "1..1" sQL_Table : foreignKeys5
+sQL_PrimaryKey "0..1" --* "1..1" sQL_Table : primaryKey3
+sQL_Column "0..9999" -- "1..1" sQL_ForeignKey : refColumns16
+sQL_ForeignKey "1..1" -- "0..1" sQL_Table : refTable13
+sQL_Database "1..1" *-- "0..9999" sQL_Table : tables0
+@enduml

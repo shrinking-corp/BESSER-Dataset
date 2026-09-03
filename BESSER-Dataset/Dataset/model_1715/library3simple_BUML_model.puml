@@ -1,0 +1,24 @@
+@startuml
+class library3Simplified_Book {
+  + author : str
+  + dimension : str
+  + download : str
+  + isbn : str
+  + name : str
+  + pages : int
+  + title : str
+}
+class library3Simplified_BookInfo {
+}
+class library3Simplified_Customer {
+  + borrowedBookSince : str
+  + firstName : str
+  + lastName : str
+}
+class library3Simplified_Library {
+}
+library3Simplified_Book "1..1" *-- "0..1" library3Simplified_BookInfo : bookInfo0
+library3Simplified_Book "0..9999" --* "1..1" library3Simplified_Library : books3
+library3Simplified_Book "0..1" -- "1..1" library3Simplified_Customer : borrowedBookId1
+library3Simplified_Customer "0..9999" --* "1..1" library3Simplified_Library : customers5
+@enduml

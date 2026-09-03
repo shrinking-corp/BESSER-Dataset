@@ -1,0 +1,130 @@
+@startuml
+enum LinearScale_Orientation {
+  HORIZONTAL
+  VERTICAL
+}
+enum Trace_BaseLine {
+  NEGATIVE_INFINITY
+  POSITIVE_INFINITY
+  ZERO
+}
+enum Trace_ErrorBarType {
+  BOTH
+  MINUS
+  NONE
+  PLUS
+}
+enum Trace_PointStyle {
+  BAR
+  CIRCLE
+  CROSS
+  DIAMOND
+  FILLED_DIAMOND
+  FILLED_SQUARE
+  FILLED_TRIANGLE
+  NONE
+  POINT
+  SQUARE
+  TRIANGLE
+  XCROSS
+}
+enum Trace_TraceType {
+  AREA
+  BAR
+  DASHDOTDOT_LINE
+  DASHDOT_LINE
+  DASH_LINE
+  DOT_LINE
+  LINE_AREA
+  POINT
+  SOLID_LINE
+  STEP_HORIZONTALLY
+  STEP_VERTICALLY
+}
+enum ZoomType {
+  DYNAMIC_ZOOM
+  HORIZONTAL_ZOOM
+  NONE
+  PANNING
+  RUBBERBAND_ZOOM
+  VERTICAL_ZOOM
+  ZOOM_IN
+  ZOOM_IN_HORIZONTALLY
+  ZOOM_IN_VERTICALLY
+  ZOOM_OUT
+  ZOOM_OUT_HORIZONTALLY
+  ZOOM_OUT_VERTICALLY
+}
+class xygraph_AxisDescriptor {
+  + autoFormat : bool
+  + autoScale : bool
+  + autoScaleThreshold : float
+  + dashGridLine : bool
+  + dateEnabled : bool
+  + formatPattern : str
+  + logScale : bool
+  + minorTicksVisible : bool
+  + orientation : str
+  + primarySide : bool
+  + rangeLower : float
+  + rangeUpper : float
+  + showMajorGrid : bool
+  + showMinorGrid : bool
+  + title : str
+  + zoomType : str
+}
+class xygraph_ColorDescriptor {
+  + b : int
+  + g : int
+  + r : int
+}
+class xygraph_EObject {
+}
+class xygraph_FontDescriptor {
+  + name : str
+  + size : int
+  + style : int
+}
+class xygraph_TraceDescriptor {
+  + antiAliasing : bool
+  + areaAlpha : int
+  + baseLine : str
+  + drawYErrorInArea : bool
+  + errorBarCapWidth : int
+  + errorBarEnabled : bool
+  + lineWidth : int
+  + name : str
+  + pointSize : int
+  + pointStyle : str
+  + traceType : str
+  + xErrorBarType : str
+  + yErrorBarType : str
+}
+class xygraph_XYGraphDescriptor {
+  + showLegend : bool
+  + showPlotAreaBorder : bool
+  + showTitle : bool
+  + title : str
+  + transparent : bool
+  + zoomType : str
+}
+xygraph_AxisDescriptor "0..9999" --* "1..1" xygraph_XYGraphDescriptor : axisDescriptors1
+xygraph_AxisDescriptor "1..1" *-- "0..1" xygraph_ColorDescriptor : backgroundColor18
+xygraph_EObject "1..1" -- "1..1" xygraph_XYGraphDescriptor : context10
+xygraph_EObject "0..1" -- "1..1" xygraph_XYGraphDescriptor : dataSource12
+xygraph_EObject "0..1" -- "1..1" xygraph_TraceDescriptor : dataSource48
+xygraph_ColorDescriptor "0..1" --* "1..1" xygraph_TraceDescriptor : errorBarColor36
+xygraph_AxisDescriptor "1..1" *-- "0..1" xygraph_FontDescriptor : font33
+xygraph_AxisDescriptor "1..1" *-- "0..1" xygraph_ColorDescriptor : foregroundColor21
+xygraph_AxisDescriptor "1..1" *-- "0..1" xygraph_ColorDescriptor : majorGridColor24
+xygraph_AxisDescriptor "1..1" *-- "0..1" xygraph_ColorDescriptor : minorGridColor27
+xygraph_ColorDescriptor "0..1" --* "1..1" xygraph_XYGraphDescriptor : plotAreaBackgroundColor5
+xygraph_ColorDescriptor "0..1" --* "1..1" xygraph_XYGraphDescriptor : titleColor0
+xygraph_AxisDescriptor "1..1" *-- "0..1" xygraph_FontDescriptor : titleFont30
+xygraph_FontDescriptor "0..1" --* "1..1" xygraph_XYGraphDescriptor : titleFont8
+xygraph_ColorDescriptor "0..1" --* "1..1" xygraph_TraceDescriptor : traceColor39
+xygraph_TraceDescriptor "0..9999" --* "1..1" xygraph_XYGraphDescriptor : traceDescriptors3
+xygraph_TraceDescriptor "0..9999" -- "1..1" xygraph_XYGraphDescriptor : visibleTraces15
+xygraph_AxisDescriptor "0..1" -- "1..1" xygraph_TraceDescriptor : xAxis42
+xygraph_AxisDescriptor "0..1" -- "1..1" xygraph_TraceDescriptor : yAxis45
+@enduml

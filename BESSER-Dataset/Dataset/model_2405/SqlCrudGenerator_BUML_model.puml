@@ -1,0 +1,72 @@
+@startuml
+enum ENUM_DATA_TYPE {
+  ARRAY
+  ARRAY_M
+  BIGINT
+  BIGINT_M
+  BINARY
+  BINARY_M
+  BOOLEAN
+  BOOLEAN_M
+  CHARACTER
+  CHARACTER_M
+  DATE
+  DATE_M
+  DECIMAL
+  DECIMAL_M
+  FLOAT
+  FLOAT_M
+  INT
+  INTEGER
+  INTEGER_M
+  INTERVAL
+  INTERVAL_M
+  INT_M
+  MULTISET
+  MULTISET_M
+  NUMERIC
+  NUMERIC_M
+  REAL
+  REAL_M
+  SMALLINT
+  SMALLINT_M
+  TIME
+  TIMESTAMP
+  TIMESTAMP_M
+  TIME_M
+  VARBINARY
+  VARBINARY_M
+  VARCHAR
+  VARCHAR_M
+  VARYING
+  VARYING_M
+  XML
+  XML_M
+}
+class sqlCrudGenerator_Column {
+  + name : str
+}
+class sqlCrudGenerator_DataType {
+  + dataType : str
+  + precision : int
+}
+class sqlCrudGenerator_ForeignKey {
+}
+class sqlCrudGenerator_PrimaryKey {
+}
+class sqlCrudGenerator_Schema {
+  + name : str
+}
+class sqlCrudGenerator_Table {
+  + name : str
+}
+sqlCrudGenerator_Column "0..9999" --* "1..1" sqlCrudGenerator_Table : columns1
+sqlCrudGenerator_Column "1..1" *-- "0..1" sqlCrudGenerator_DataType : dataType7
+sqlCrudGenerator_ForeignKey "0..9999" --* "1..1" sqlCrudGenerator_Table : foreignsKeys5
+sqlCrudGenerator_Column "0..9999" -- "1..1" sqlCrudGenerator_PrimaryKey : ids9
+sqlCrudGenerator_PrimaryKey "0..1" --* "1..1" sqlCrudGenerator_Table : primaryKey3
+sqlCrudGenerator_ForeignKey "1..1" -- "0..1" sqlCrudGenerator_Table : reference15
+sqlCrudGenerator_Column "0..1" -- "1..1" sqlCrudGenerator_ForeignKey : refsFrom18
+sqlCrudGenerator_Column "0..1" -- "1..1" sqlCrudGenerator_ForeignKey : refsTo12
+sqlCrudGenerator_Schema "1..1" *-- "0..9999" sqlCrudGenerator_Table : tables0
+@enduml

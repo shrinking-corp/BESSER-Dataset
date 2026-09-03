@@ -1,0 +1,48 @@
+@startuml
+class MultiLiteralConstraint {
+}
+enum TokenTraceType {
+  CompositeParts
+  MinimalCutSet
+  TokenGraph
+  TokenTrace
+}
+class TokenTrace_EObject {
+}
+class TokenTrace_Literal {
+}
+class TokenTrace_Token {
+  + assignedProbability : str
+  + computedProbability : str
+  + message : str
+  + name : str
+  + referenceCount : int
+  + scale : str
+  + tokenType : str
+  + getProbability() : str
+}
+class TokenTrace_TokenTrace {
+  + message : str
+  + name : str
+  + tokenTraceType : str
+}
+enum TokenType {
+  Basic
+  Component
+  External
+  Intermediate
+  Sink
+  System
+  Undeveloped
+  Unhandled
+}
+MultiLiteralConstraint <|-- TokenTrace_Token
+TokenTrace_Literal "0..1" --* "1..1" TokenTrace_TokenTrace : inferredRootLiteral6
+TokenTrace_EObject "0..1" -- "1..1" TokenTrace_TokenTrace : instanceRoot1
+TokenTrace_Literal "0..9999" --* "1..1" TokenTrace_Token : literalSink17
+TokenTrace_EObject "0..1" -- "1..1" TokenTrace_Token : relatedEObject11
+TokenTrace_Token "0..1" -- "1..1" TokenTrace_TokenTrace : root0
+TokenTrace_Literal "0..1" -- "1..1" TokenTrace_Token : tokenLiteral14
+TokenTrace_Token "0..9999" --* "1..1" TokenTrace_TokenTrace : tokens3
+TokenTrace_Token "1..1" -- "0..9999" TokenTrace_Token : tokens9
+@enduml

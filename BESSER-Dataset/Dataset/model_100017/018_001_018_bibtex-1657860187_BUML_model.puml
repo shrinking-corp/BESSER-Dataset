@@ -1,0 +1,176 @@
+@startuml
+class Entry {
+}
+class Field {
+}
+class IntValue {
+}
+class Person {
+}
+class StringValue {
+}
+class YearValue {
+}
+class bibtex_AbstractField {
+}
+class bibtex_AddressField {
+}
+class bibtex_ArticleEntry {
+  + getFields() : Field
+}
+class bibtex_Author {
+}
+class bibtex_AuthorField {
+}
+class bibtex_Bibliography {
+}
+class bibtex_BibtexKeyField {
+}
+class bibtex_BookTitleField {
+}
+class bibtex_Editor {
+}
+class bibtex_EditorField {
+}
+class bibtex_EidField {
+}
+abstract class bibtex_Entry {
+  + getFields() : Field
+  + getGeneralFields() : Field
+}
+abstract class bibtex_Field {
+}
+class bibtex_InProceedingsEntry {
+  + getFields() : Field
+}
+abstract class bibtex_IntValue {
+  + value : int
+}
+class bibtex_JournalField {
+}
+class bibtex_Keyword {
+}
+class bibtex_KeywordField {
+}
+class bibtex_MonthField {
+}
+class bibtex_NoteField {
+}
+class bibtex_NumberField {
+}
+class bibtex_OrganizationField {
+}
+class bibtex_Page {
+}
+class bibtex_PageField {
+}
+class bibtex_PartField {
+}
+abstract class bibtex_Person {
+  + firstName : str
+  + lastName : str
+  + secondName : str
+}
+class bibtex_PublisherField {
+}
+class bibtex_ReviewField {
+}
+class bibtex_SeriesField {
+}
+abstract class bibtex_StringValue {
+  + value : str
+}
+class bibtex_TitleField {
+}
+class bibtex_UrlField {
+}
+class bibtex_VolumeField {
+}
+class bibtex_YearField {
+}
+abstract class bibtex_YearValue {
+  + value : int
+}
+Entry <|-- bibtex_ArticleEntry
+Entry <|-- bibtex_InProceedingsEntry
+Field <|-- bibtex_AbstractField
+Field <|-- bibtex_AddressField
+Field <|-- bibtex_AuthorField
+Field <|-- bibtex_BibtexKeyField
+Field <|-- bibtex_BookTitleField
+Field <|-- bibtex_EditorField
+Field <|-- bibtex_EidField
+Field <|-- bibtex_JournalField
+Field <|-- bibtex_KeywordField
+Field <|-- bibtex_MonthField
+Field <|-- bibtex_NoteField
+Field <|-- bibtex_NumberField
+Field <|-- bibtex_OrganizationField
+Field <|-- bibtex_PageField
+Field <|-- bibtex_PartField
+Field <|-- bibtex_PublisherField
+Field <|-- bibtex_ReviewField
+Field <|-- bibtex_SeriesField
+Field <|-- bibtex_TitleField
+Field <|-- bibtex_UrlField
+Field <|-- bibtex_VolumeField
+Field <|-- bibtex_YearField
+IntValue <|-- bibtex_NumberField
+IntValue <|-- bibtex_Page
+IntValue <|-- bibtex_PartField
+IntValue <|-- bibtex_VolumeField
+Person <|-- bibtex_Author
+Person <|-- bibtex_Editor
+StringValue <|-- bibtex_AbstractField
+StringValue <|-- bibtex_AddressField
+StringValue <|-- bibtex_BibtexKeyField
+StringValue <|-- bibtex_BookTitleField
+StringValue <|-- bibtex_EidField
+StringValue <|-- bibtex_JournalField
+StringValue <|-- bibtex_Keyword
+StringValue <|-- bibtex_MonthField
+StringValue <|-- bibtex_NoteField
+StringValue <|-- bibtex_OrganizationField
+StringValue <|-- bibtex_PublisherField
+StringValue <|-- bibtex_ReviewField
+StringValue <|-- bibtex_SeriesField
+StringValue <|-- bibtex_TitleField
+StringValue <|-- bibtex_UrlField
+YearValue <|-- bibtex_YearField
+bibtex_AbstractField "0..1" --* "1..1" bibtex_Entry : abstract8
+bibtex_AddressField "0..1" --* "1..1" bibtex_InProceedingsEntry : address37
+bibtex_AuthorField "1..1" --* "1..1" bibtex_InProceedingsEntry : author17
+bibtex_ArticleEntry "1..1" *-- "1..1" bibtex_AuthorField : author47
+bibtex_Author "1..9999" --* "1..1" bibtex_AuthorField : authors0
+bibtex_BibtexKeyField "1..1" --* "1..1" bibtex_Entry : bibtexKey7
+bibtex_BookTitleField "1..1" --* "1..1" bibtex_InProceedingsEntry : bookTitle21
+bibtex_EditorField "0..1" --* "1..1" bibtex_InProceedingsEntry : editor25
+bibtex_Editor "1..9999" --* "1..1" bibtex_EditorField : editors1
+bibtex_ArticleEntry "1..1" *-- "0..1" bibtex_EidField : eid74
+bibtex_Bibliography "1..1" *-- "0..9999" bibtex_Entry : entries76
+bibtex_Page "1..1" --* "1..1" bibtex_PageField : fromPage2
+bibtex_ArticleEntry "1..1" *-- "1..1" bibtex_JournalField : journal55
+bibtex_Entry "1..1" *-- "0..1" bibtex_KeywordField : keyword12
+bibtex_Keyword "0..9999" --* "1..1" bibtex_KeywordField : keywords6
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_MonthField : month39
+bibtex_ArticleEntry "1..1" *-- "0..1" bibtex_MonthField : month66
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_NoteField : note43
+bibtex_ArticleEntry "1..1" *-- "0..1" bibtex_NoteField : note69
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_NumberField : number33
+bibtex_ArticleEntry "1..1" *-- "0..1" bibtex_NumberField : number63
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_OrganizationField : organization41
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_PageField : pages28
+bibtex_ArticleEntry "1..1" *-- "1..1" bibtex_PageField : pages57
+bibtex_ArticleEntry "1..1" *-- "0..1" bibtex_PartField : part72
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_PublisherField : publisher45
+bibtex_Entry "1..1" *-- "0..1" bibtex_ReviewField : review15
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_SeriesField : series35
+bibtex_InProceedingsEntry "1..1" *-- "1..1" bibtex_TitleField : title19
+bibtex_ArticleEntry "1..1" *-- "1..1" bibtex_TitleField : title49
+bibtex_Page "0..1" --* "1..1" bibtex_PageField : toPage3
+bibtex_Entry "1..1" *-- "0..1" bibtex_UrlField : url10
+bibtex_InProceedingsEntry "1..1" *-- "0..1" bibtex_VolumeField : volume31
+bibtex_ArticleEntry "1..1" *-- "1..1" bibtex_VolumeField : volume60
+bibtex_InProceedingsEntry "1..1" *-- "1..1" bibtex_YearField : year23
+bibtex_ArticleEntry "1..1" *-- "1..1" bibtex_YearField : year52
+@enduml

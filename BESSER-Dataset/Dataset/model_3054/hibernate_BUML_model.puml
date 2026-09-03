@@ -1,0 +1,53 @@
+@startuml
+enum DataTypes {
+  Boolean
+  Double
+  Integer
+  Long
+  Object
+  String
+}
+enum EntityAnnotation {
+  Cache
+}
+class Feature {
+}
+enum FetureAnnotation {
+  Id
+  Ignore
+  Index
+  Load
+}
+class NamedElement {
+}
+class hibernate_DataType {
+  + type : str
+}
+class hibernate_Entity {
+  + annotations : str
+}
+abstract class hibernate_Feature {
+  + annotations : str
+  + many : bool
+}
+class hibernate_Module {
+}
+abstract class hibernate_NamedElement {
+  + name : str
+}
+class hibernate_Package {
+}
+class hibernate_Reference {
+}
+Feature <|-- hibernate_DataType
+Feature <|-- hibernate_Reference
+NamedElement <|-- hibernate_Entity
+NamedElement <|-- hibernate_Feature
+NamedElement <|-- hibernate_Module
+NamedElement <|-- hibernate_Package
+hibernate_Entity "0..9999" --* "1..1" hibernate_Package : entities1
+hibernate_Entity "1..1" *-- "0..9999" hibernate_Feature : features3
+hibernate_Module "1..1" *-- "0..9999" hibernate_Package : packages0
+hibernate_Entity "1..1" -- "1..1" hibernate_Reference : reference8
+hibernate_Entity "0..1" -- "1..1" hibernate_Entity : superEntity6
+@enduml

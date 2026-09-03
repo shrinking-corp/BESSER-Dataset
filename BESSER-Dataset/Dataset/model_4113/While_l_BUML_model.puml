@@ -1,0 +1,94 @@
+@startuml
+class while_l_Affect {
+  + vars : str
+}
+class while_l_Command {
+}
+class while_l_Commands {
+}
+class while_l_Definition {
+}
+class while_l_EObject {
+}
+class while_l_Expr {
+}
+class while_l_ExprAnd {
+}
+class while_l_ExprCons {
+}
+class while_l_ExprEq {
+}
+class while_l_ExprHd {
+}
+class while_l_ExprList {
+}
+class while_l_ExprNot {
+}
+class while_l_ExprOr {
+}
+class while_l_ExprSimple {
+  + nameFunction : str
+  + str : str
+  + sym : str
+  + varSimple : str
+}
+class while_l_ExprSym {
+  + arg1 : str
+}
+class while_l_ExprTl {
+}
+class while_l_For {
+}
+class while_l_Function {
+  + name : str
+}
+class while_l_If {
+}
+class while_l_Input {
+  + vars : str
+}
+class while_l_Nop {
+  + nop : str
+}
+class while_l_Output {
+  + vars : str
+}
+class while_l_Program {
+}
+class while_l_Wh {
+}
+class while_l_While {
+}
+while_l_ExprAnd "1..1" *-- "0..1" while_l_ExprSimple : arg141
+while_l_ExprOr "1..1" *-- "0..1" while_l_ExprSimple : arg146
+while_l_Expr "0..1" --* "1..1" while_l_ExprCons : arg151
+while_l_ExprEq "0..1" --* "1..1" while_l_ExprNot : arg164
+while_l_ExprEq "1..1" *-- "0..1" while_l_ExprSimple : arg166
+while_l_Expr "0..1" --* "1..1" while_l_ExprAnd : arg243
+while_l_Expr "0..1" --* "1..1" while_l_ExprOr : arg248
+while_l_Expr "0..1" --* "1..1" while_l_ExprCons : arg253
+while_l_Expr "0..9999" --* "1..1" while_l_ExprSym : arg262
+while_l_ExprEq "1..1" *-- "0..1" while_l_ExprSimple : arg269
+while_l_Expr "0..9999" --* "1..1" while_l_ExprList : arg56
+while_l_Expr "0..1" --* "1..1" while_l_ExprHd : arg58
+while_l_Expr "0..1" --* "1..1" while_l_ExprTl : arg60
+while_l_Command "1..1" *-- "0..1" while_l_EObject : cmd13
+while_l_Commands "0..1" --* "1..1" while_l_For : cmds26
+while_l_Commands "0..1" --* "1..1" while_l_While : cmds31
+while_l_Command "0..9999" --* "1..1" while_l_Commands : commands11
+while_l_Commands "0..1" --* "1..1" while_l_If : commands116
+while_l_Commands "0..1" --* "1..1" while_l_If : commands219
+while_l_Commands "0..1" --* "1..1" while_l_Definition : commands7
+while_l_Definition "0..1" --* "1..1" while_l_Function : definition3
+while_l_Program "0..9999" --* "1..1" while_l_Wh : elements0
+while_l_Expr "0..1" --* "1..1" while_l_If : expr15
+while_l_Expr "0..1" --* "1..1" while_l_For : expr24
+while_l_Expr "0..1" --* "1..1" while_l_While : expr29
+while_l_EObject "0..1" --* "1..1" while_l_Expr : expr34
+while_l_Expr "1..1" *-- "0..1" while_l_ExprEq : exprEq37
+while_l_Affect "1..1" *-- "0..9999" while_l_Expr : exprs22
+while_l_Function "0..9999" --* "1..1" while_l_Program : functions1
+while_l_Definition "1..1" *-- "0..1" while_l_Input : input5
+while_l_Definition "1..1" *-- "0..1" while_l_Output : output9
+while_l_ExprSimple "1..1" *-- "0..1" while_l_Input : vars39
+@enduml

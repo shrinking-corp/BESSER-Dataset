@@ -1,0 +1,45 @@
+@startuml
+class State {
+}
+class StateMachineObject {
+}
+class statemachine103_Action {
+  + actionLabel : str
+  + actionStatement : str
+}
+class statemachine103_FinalState {
+}
+class statemachine103_InitialState {
+}
+class statemachine103_NormalState {
+}
+abstract class statemachine103_State {
+  + id : int
+}
+class statemachine103_StateMachine {
+  + label : str
+}
+abstract class statemachine103_StateMachineObject {
+  + label : str
+}
+class statemachine103_StateMachineVariable {
+  + name : str
+  + type : str
+}
+class statemachine103_Transition {
+  + guardExpression : str
+  + guardLabel : str
+}
+State <|-- statemachine103_FinalState
+State <|-- statemachine103_InitialState
+State <|-- statemachine103_NormalState
+StateMachineObject <|-- statemachine103_State
+StateMachineObject <|-- statemachine103_Transition
+statemachine103_StateMachine "1..1" *-- "0..9999" statemachine103_StateMachineObject : machineObjects0
+statemachine103_StateMachine "1..1" *-- "0..9999" statemachine103_StateMachineVariable : machineVariables1
+statemachine103_Action "1..1" -- "0..1" statemachine103_Action : next10
+statemachine103_Action "0..9999" --* "1..1" statemachine103_NormalState : s_actions12
+statemachine103_State "0..1" -- "1..1" statemachine103_Transition : source3
+statemachine103_Action "0..9999" --* "1..1" statemachine103_Transition : t_actions7
+statemachine103_State "0..1" -- "1..1" statemachine103_Transition : target4
+@enduml

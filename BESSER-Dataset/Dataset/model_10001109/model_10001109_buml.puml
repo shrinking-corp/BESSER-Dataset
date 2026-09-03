@@ -1,0 +1,114 @@
+@startuml
+class Controllers_OrderController {
+}
+class Controllers_ProductController {
+}
+class Controllers_ShoppingCartController {
+}
+class Models_Customer {
+  + address : str
+  + coustomername : str
+  + creditcardinfo : str
+  + deleted : bool
+  + phoneno : int
+  + shippinginfo : str
+}
+class Models_LineItem {
+  + orderId : int
+  + productid : int
+  + productname : str
+  + quantity : int
+  + subtotal : float
+  + unitcost : float
+}
+class Models_LoginLog {
+  + id : int
+  + isLogin : bool
+  + lastLoginDate : date
+  + user_id : int
+}
+class Models_Order {
+  + customerid : int
+  + dateCreated : date
+  + dateShipped : str
+  + orderID : int
+  + shippingInfoId : int
+  + status : str
+}
+enum Models_OrderStatus {
+}
+class Models_Product {
+  + imagefilename : str
+  + price : float
+  + productid : int
+  + productname : str
+  + quantity : int
+}
+class Models_ShippingInfo {
+  + shippingcost : int
+  + shippingid : int
+  + shippingregionid : int
+  + shippingtype : str
+}
+enum Models_ShippingType {
+}
+class Models_ShoppingCart {
+  + cartId : int
+  + customerId : int
+  + dateAdded : int
+  + deleted : bool
+  + status : int
+}
+enum Models_ShoppingCartStatus {
+}
+class Models_User {
+  + UserId : str
+  + email : str
+  + password : str
+}
+class Models_cartItem {
+  + cartId : int
+  + deleted : bool
+  + name : str
+  + quantity : int
+  + subtotal : float
+  + unitcost : float
+}
+class dao_CartItemDao_Interface {
+}
+class dao_CustomerDao_Interface {
+}
+class dao_LineItemDao_Interface {
+}
+class dao_OrderDao_Interface {
+}
+class dao_ProductDao_Interface {
+}
+class dao_ShippingInfoDao_Interface {
+}
+class dao_ShoppingCartDao_Interface {
+}
+Models_cartItem "1..1" -- "1..1" dao_CartItemDao_Interface : CartItemDao_cartItem
+Models_Customer "1..1" -- "1..1" dao_CustomerDao_Interface : Customer_CustomerDao
+Models_LoginLog "0..1" -- "0..1" Models_User : LoginLog_user
+Controllers_OrderController "1..1" -- "1..1" dao_LineItemDao_Interface : OrderController_LineItemDao
+Controllers_OrderController "1..1" -- "1..1" dao_OrderDao_Interface : OrderController_OrderDao
+Controllers_OrderController "1..1" -- "1..1" dao_ShippingInfoDao_Interface : OrderController_ShippingInfoDao
+Models_Order "1..1" -- "1..1" dao_OrderDao_Interface : OrderDao_Order
+Controllers_ProductController "1..1" -- "1..1" dao_ProductDao_Interface : ProductController_ProductDao
+Controllers_ProductController "1..1" -- "1..1" dao_ShoppingCartDao_Interface : ProductController_ShoppingCartDao
+Models_ShippingInfo "1..1" -- "1..1" dao_ShippingInfoDao_Interface : ShippingInfo_shippingInfo
+Controllers_ShoppingCartController "1..1" -- "1..1" dao_CartItemDao_Interface : ShoppingCartController_CartItemDao
+Controllers_ShoppingCartController "0..1" -- "0..1" dao_OrderDao_Interface : ShoppingCartController_OrderDao
+Controllers_ShoppingCartController "1..1" -- "1..1" dao_ShoppingCartDao_Interface : ShoppingCartController_ShoppingCartDao
+Models_ShoppingCart "1..1" -- "1..1" dao_ShoppingCartDao_Interface : ShoppingCart_ShoppingCartDao
+Models_ShoppingCart "1..1" -- "1..9999" Models_cartItem : ShoppingCart_cartitem
+Models_Customer "1..1" -- "0..1" Models_ShoppingCart : ShoppingCart_coustomer
+Models_Product "1..1" -- "1..9999" Models_cartItem : cartitem_ProLocal
+Models_Customer "1..1" -- "1..9999" Models_Order : coustomer_order
+Models_LineItem "1..1" -- "1..1" Models_Product : orderDetail_ProLocal
+Models_LineItem "1..9999" -- "1..1" Models_Order : order_orderDetail
+Models_Order "1..1" -- "1..1" Models_ShippingInfo : order_shippinginfo
+Models_LineItem "1..1" -- "1..1" dao_LineItemDao_Interface : product_LineItemDao
+Models_Product "1..1" -- "1..1" dao_ProductDao_Interface : product_ProductDao
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+class barang {
+  + harga : int
+  + id_barang : str
+  + kategori : str
+  + nama_barang : barang
+  + satuan : str
+  + stok : int
+}
+class keluar {
+  + pembeli : pelanggan
+}
+class masuk {
+  + penyuplai : supplier
+}
+class pelanggan {
+  + alamat : str
+  + id_pelanggan : int
+  + nama_pelanggan : pelanggan
+  + no_telp_pelanggan : str
+}
+class sistem {
+  + barang : barang
+  + supplier : supplier
+  + user : str
+}
+class supplier {
+  + alamat : str
+  + attribute : str
+  + id_supplier : int
+  + nama_supplier : supplier
+  + no_telp_supp : str
+}
+class transaksi {
+  + id_transaksi : int
+  + nama_barang : barang
+  + tanggal : str
+  + total : int
+}
+class user {
+  + id_user : int
+  + nama_user : str
+  + password : str
+  + username : str
+}
+barang "0..1" -- "0..1" sistem : barang_sistem
+pelanggan "0..1" -- "0..1" transaksi : pelanggan_transaksi
+sistem "0..1" -- "0..1" transaksi : sistem_transaksi
+sistem "0..1" -- "0..1" supplier : supplier_sistem
+supplier "0..1" -- "0..1" transaksi : supplier_transaksi
+sistem "0..1" -- "0..1" user : user_sistem
+@enduml

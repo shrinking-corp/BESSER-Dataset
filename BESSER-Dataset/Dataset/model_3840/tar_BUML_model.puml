@@ -1,0 +1,19 @@
+@startuml
+class target_Column {
+  + name : str
+  + type : str
+}
+class target_Database {
+}
+class target_FKey {
+}
+class target_Table {
+  + name : str
+}
+target_Column "0..9999" --* "1..1" target_Table : cols3
+target_Column "0..9999" -- "1..1" target_FKey : fcols6
+target_FKey "0..9999" --* "1..1" target_Table : fkeys0
+target_Column "0..1" -- "1..1" target_Table : pkey1
+target_FKey "1..1" -- "0..1" target_Table : references9
+target_Database "1..1" *-- "0..9999" target_Table : table12
+@enduml

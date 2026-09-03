@@ -1,0 +1,223 @@
+@startuml
+class Actuator {
+}
+enum CompOps {
+  EQUAL
+  GREATER
+  GREATEROREQUAL
+  LESS
+  LESSOREQUAL
+  NOTEQUAL
+}
+class Expression {
+}
+class HasActuators {
+}
+class HasIntegerValue {
+}
+class HasSensors {
+}
+class NamedElement {
+}
+class PolicyEngine_AccessControl {
+}
+abstract class PolicyEngine_Actuator {
+}
+class PolicyEngine_ActuatorComponent {
+}
+class PolicyEngine_AudioAlarmActuator {
+}
+class PolicyEngine_BinaryOps {
+  + operator : str
+}
+class PolicyEngine_Building {
+}
+class PolicyEngine_CO2Sensor {
+}
+class PolicyEngine_CTS {
+}
+class PolicyEngine_CalendarSystem {
+}
+class PolicyEngine_Constant {
+}
+class PolicyEngine_DoorActuator {
+}
+abstract class PolicyEngine_Expression {
+}
+class PolicyEngine_Floor {
+}
+class PolicyEngine_HasActuators {
+}
+class PolicyEngine_HasIntegerValue {
+  + valueState : int
+}
+class PolicyEngine_HasSensors {
+}
+class PolicyEngine_HumidifierActuator {
+}
+class PolicyEngine_HumiditySensor {
+}
+class PolicyEngine_Id {
+}
+class PolicyEngine_If {
+}
+class PolicyEngine_InfraredLightSensor {
+}
+class PolicyEngine_LightSensor {
+}
+class PolicyEngine_LightSwitchActuator {
+}
+class PolicyEngine_MeetingScheduleSystem {
+}
+class PolicyEngine_Model {
+}
+class PolicyEngine_MotionSensor {
+}
+abstract class PolicyEngine_NamedElement {
+  + name : str
+}
+class PolicyEngine_Policy {
+}
+class PolicyEngine_PressureSensor {
+}
+class PolicyEngine_RadiatorActuator {
+}
+class PolicyEngine_ResetExpression {
+}
+class PolicyEngine_Room {
+}
+class PolicyEngine_RoomActuators {
+}
+class PolicyEngine_RoomUsage {
+}
+class PolicyEngine_Schedule {
+  + weekdays : str
+}
+abstract class PolicyEngine_Sensor {
+}
+class PolicyEngine_SensorComponent {
+}
+class PolicyEngine_SmokeSensor {
+}
+class PolicyEngine_State {
+  + valueState : bool
+}
+class PolicyEngine_TemperatureSensor {
+}
+class PolicyEngine_Time {
+  + hours : str
+  + minutes : str
+}
+class PolicyEngine_TimeExpression {
+  + TimeBound : int
+}
+class PolicyEngine_Timer {
+}
+class PolicyEngine_TouchSensor {
+}
+class PolicyEngine_UnaryOp {
+  + operator : str
+}
+class PolicyEngine_WindowActuator {
+}
+class Sensor {
+}
+enum Weekdays {
+  FRIDAY
+  MONDAY
+  SATURDAY
+  SUNDAY
+  THURSDAY
+  TUESDAY
+  WEDNESDAY
+}
+Actuator <|-- PolicyEngine_AudioAlarmActuator
+Actuator <|-- PolicyEngine_DoorActuator
+Actuator <|-- PolicyEngine_HumidifierActuator
+Actuator <|-- PolicyEngine_LightSwitchActuator
+Actuator <|-- PolicyEngine_RadiatorActuator
+Actuator <|-- PolicyEngine_WindowActuator
+Expression <|-- PolicyEngine_BinaryOps
+Expression <|-- PolicyEngine_Constant
+Expression <|-- PolicyEngine_Id
+Expression <|-- PolicyEngine_ResetExpression
+Expression <|-- PolicyEngine_RoomActuators
+Expression <|-- PolicyEngine_RoomUsage
+Expression <|-- PolicyEngine_TimeExpression
+Expression <|-- PolicyEngine_UnaryOp
+HasActuators <|-- PolicyEngine_ActuatorComponent
+HasIntegerValue <|-- PolicyEngine_Actuator
+HasIntegerValue <|-- PolicyEngine_Sensor
+HasSensors <|-- PolicyEngine_SensorComponent
+NamedElement <|-- PolicyEngine_ActuatorComponent
+NamedElement <|-- PolicyEngine_Building
+NamedElement <|-- PolicyEngine_Floor
+NamedElement <|-- PolicyEngine_Id
+NamedElement <|-- PolicyEngine_Model
+NamedElement <|-- PolicyEngine_Policy
+NamedElement <|-- PolicyEngine_Room
+NamedElement <|-- PolicyEngine_Schedule
+NamedElement <|-- PolicyEngine_SensorComponent
+NamedElement <|-- PolicyEngine_State
+NamedElement <|-- PolicyEngine_Timer
+Sensor <|-- PolicyEngine_CO2Sensor
+Sensor <|-- PolicyEngine_HumiditySensor
+Sensor <|-- PolicyEngine_InfraredLightSensor
+Sensor <|-- PolicyEngine_LightSensor
+Sensor <|-- PolicyEngine_MotionSensor
+Sensor <|-- PolicyEngine_PressureSensor
+Sensor <|-- PolicyEngine_SmokeSensor
+Sensor <|-- PolicyEngine_TemperatureSensor
+Sensor <|-- PolicyEngine_TouchSensor
+PolicyEngine_AccessControl "0..1" --* "1..1" PolicyEngine_Building : accessControl1
+PolicyEngine_AccessControl "1..1" *-- "0..9999" PolicyEngine_Actuator : accessControlDoorLockActuator31
+PolicyEngine_AccessControl "1..1" *-- "0..9999" PolicyEngine_Sensor : accessControlSensors28
+PolicyEngine_Actuator "0..1" --* "1..1" PolicyEngine_RoomUsage : act108
+PolicyEngine_Actuator "0..9999" --* "1..1" PolicyEngine_HasActuators : actuators36
+PolicyEngine_Building "0..9999" --* "1..1" PolicyEngine_Model : buildings11
+PolicyEngine_Building "1..1" *-- "0..1" PolicyEngine_CalendarSystem : calendarSystem3
+PolicyEngine_Expression "1..1" --* "1..1" PolicyEngine_If : cond90
+PolicyEngine_Policy "1..1" *-- "0..9999" PolicyEngine_Timer : controlledBy68
+PolicyEngine_Actuator "0..9999" --* "1..1" PolicyEngine_CTS : ctsActuators26
+PolicyEngine_Building "1..1" *-- "0..1" PolicyEngine_CTS : ctsSystem0
+PolicyEngine_ActuatorComponent "0..9999" --* "1..1" PolicyEngine_Room : declareActuator40
+PolicyEngine_Room "1..1" *-- "0..9999" PolicyEngine_SensorComponent : declareSensor38
+PolicyEngine_Policy "1..1" *-- "0..9999" PolicyEngine_State : defineLocalState80
+PolicyEngine_RoomUsage "1..1" -- "0..1" PolicyEngine_State : defineState111
+PolicyEngine_Policy "1..1" -- "0..9999" PolicyEngine_State : defineState71
+PolicyEngine_ActuatorComponent "0..1" -- "1..1" PolicyEngine_RoomActuators : definedActuator123
+PolicyEngine_Room "0..1" -- "1..1" PolicyEngine_RoomActuators : definedRoomActuator121
+PolicyEngine_Room "1..1" -- "0..9999" PolicyEngine_Schedule : during51
+PolicyEngine_Policy "1..1" -- "0..9999" PolicyEngine_Schedule : during74
+PolicyEngine_Expression "0..1" --* "1..1" PolicyEngine_If : else_99
+PolicyEngine_If "0..9999" --* "1..1" PolicyEngine_If : elseif97
+PolicyEngine_Expression "1..1" --* "1..1" PolicyEngine_UnaryOp : expr119
+PolicyEngine_Expression "0..1" --* "1..1" PolicyEngine_State : exprStates83
+PolicyEngine_Room "0..9999" -- "1..1" PolicyEngine_Room : extends43
+PolicyEngine_Building "1..1" *-- "0..9999" PolicyEngine_Floor : floors7
+PolicyEngine_Schedule "1..1" *-- "0..1" PolicyEngine_Time : from_85
+PolicyEngine_BinaryOps "1..1" *-- "1..1" PolicyEngine_Expression : lexpr114
+PolicyEngine_Building "1..1" *-- "0..1" PolicyEngine_MeetingScheduleSystem : meetingScheduleSystem5
+PolicyEngine_Policy "0..9999" -- "1..1" PolicyEngine_Room : policies48
+PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Policy : policyDefinition15
+PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Room : predefinedRooms13
+PolicyEngine_ResetExpression "1..1" -- "1..1" PolicyEngine_Timer : reset104
+PolicyEngine_BinaryOps "1..1" *-- "1..1" PolicyEngine_Expression : rexpr116
+PolicyEngine_Floor "1..1" *-- "0..9999" PolicyEngine_Room : rooms54
+PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Schedule : schedules22
+PolicyEngine_RoomUsage "1..1" *-- "0..1" PolicyEngine_Sensor : sen106
+PolicyEngine_HasSensors "1..1" *-- "0..9999" PolicyEngine_Sensor : sensors34
+PolicyEngine_If "1..9999" --* "1..1" PolicyEngine_Policy : specifiedBy66
+PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_State : stateDefinition17
+PolicyEngine_CTS "1..1" *-- "0..9999" PolicyEngine_Sensor : temperatureSensors24
+PolicyEngine_Expression "0..9999" --* "1..1" PolicyEngine_If : then93
+PolicyEngine_TimeExpression "1..1" -- "1..1" PolicyEngine_Timer : time102
+PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Timer : timers19
+PolicyEngine_Room "1..1" *-- "0..9999" PolicyEngine_Timer : timers45
+PolicyEngine_Floor "1..1" *-- "0..9999" PolicyEngine_Timer : timers57
+PolicyEngine_Building "1..1" *-- "0..9999" PolicyEngine_Timer : timers9
+PolicyEngine_Schedule "1..1" *-- "0..1" PolicyEngine_Time : to87
+PolicyEngine_Actuator "0..9999" --* "1..1" PolicyEngine_Policy : usesActuators60
+PolicyEngine_Policy "1..1" -- "0..9999" PolicyEngine_Room : usesRooms77
+PolicyEngine_Policy "1..1" *-- "0..9999" PolicyEngine_Sensor : usesSensors63
+@enduml

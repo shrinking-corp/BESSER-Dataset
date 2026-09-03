@@ -1,0 +1,62 @@
+@startuml
+class Account {
+  + billing_address : str
+  + id : str
+  + open : str
+}
+class Cart {
+  + Id : str
+  + items : int
+}
+class Customer {
+  + address : str
+  + email : str
+  + id_ : str
+  + phone : int
+}
+class Order {
+  + address : str
+  + items : str
+  + ordered : str
+  + shipped : str
+  + status : str
+  + t : str
+}
+class Payment {
+  + Details : str
+  + paid : str
+  + total : str
+  + txn_id : str
+}
+class Payment_Verification {
+  + status : str
+  + txn_id : str
+}
+class Product {
+  + Category : str
+  + attribute : str
+  + name : str
+  + price : str
+}
+class Web_Login {
+  + login_id : str
+  + password : str
+  + verification : Customer
+}
+class catalog {
+  + category : str
+  + name : str
+}
+Account "0..1" -- "0..1" Order : Account__Order
+Cart "0..1" -- "0..1" Order : Cart_Order
+Cart "0..1" -- "0..1" Product : Cart_Product
+Account "0..1" -- "0..1" Customer : Customer_Account
+Order "0..1" -- "0..1" Payment : Order_Payment
+Payment "0..1" -- "0..1" Payment_Verification : Payment_Payment_Verification
+Account "0..1" -- "0..1" Payment_Verification : Payment_Verification_Account
+Customer "0..1" -- "0..1" Payment_Verification : Payment_Verification_Customer
+Order "0..1" -- "0..1" Product : Product_Order
+Cart "0..1" -- "0..1" Web_Login : Web_Login_Cart
+Customer "0..1" -- "0..1" Web_Login : Web_Login_Customer
+Product "0..1" -- "0..1" catalog : catalog_Product
+@enduml

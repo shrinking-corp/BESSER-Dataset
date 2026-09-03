@@ -1,0 +1,271 @@
+@startuml
+class Assignment {
+}
+enum BinaryBooleanOperatorKind {
+  Different
+  and_
+  equal
+  inf
+  infOrEqual
+  or_
+  sup
+  supOrEqual
+}
+class BinaryExpression {
+}
+enum BinaryIntegerOperatorKind {
+  div
+  max
+  min
+  minus
+  mul
+  plus
+  pourcent
+}
+class BooleanExpression {
+}
+class Constant {
+}
+class Control {
+}
+class Expression {
+}
+class InstantaneousInstruction {
+}
+class Instruction {
+}
+class IntegerExpression {
+}
+enum Library {
+  music
+  none
+  servo
+}
+class Module {
+}
+class ModuleGet {
+}
+class ModuleInstruction {
+}
+enum ModuleKind {
+  analog
+  digital
+}
+class NamedElement {
+}
+class Pin {
+}
+enum Time {
+  MicroSecond
+  MilliSecond
+}
+enum UnaryBooleanOperatorKind {
+  not_
+}
+class UnaryExpression {
+}
+enum UnaryIntegerOperatorKind {
+  minus
+  squareRoot
+}
+class Utilities {
+}
+class Variable {
+}
+class arduino_Actuator {
+}
+class arduino_AnalogPin {
+}
+abstract class arduino_Assignment {
+}
+class arduino_BinaryBooleanExpression {
+  + operator : str
+}
+abstract class arduino_BinaryExpression {
+}
+class arduino_BinaryIntegerExpression {
+  + operator : str
+}
+class arduino_BooleanConstant {
+  + value : bool
+}
+abstract class arduino_BooleanExpression {
+}
+class arduino_BooleanModuleGet {
+}
+class arduino_BooleanVariable {
+  + initialValue : bool
+}
+class arduino_Connector {
+}
+abstract class arduino_Constant {
+}
+abstract class arduino_Control {
+  + evaluate() : bool
+}
+class arduino_Delay {
+  + unit : str
+  + value : int
+}
+class arduino_DigitalPin {
+}
+abstract class arduino_Expression {
+}
+class arduino_Hardware {
+}
+class arduino_If {
+}
+abstract class arduino_InstantaneousInstruction {
+}
+abstract class arduino_Instruction {
+  + execute() : void
+  + finalize() : void
+}
+class arduino_IntegerConstant {
+  + value : int
+}
+abstract class arduino_IntegerExpression {
+}
+class arduino_IntegerModuleGet {
+}
+class arduino_IntegerVariable {
+  + initialValue : int
+}
+abstract class arduino_Module {
+  + image : str
+  + kind : str
+  + level : bool
+  + library : str
+}
+class arduino_ModuleAssignment {
+}
+abstract class arduino_ModuleGet {
+}
+abstract class arduino_ModuleInstruction {
+}
+abstract class arduino_NamedElement {
+  + name : str
+}
+abstract class arduino_Pin {
+  + id : int
+  + level : int
+}
+class arduino_Platform {
+  + image : str
+}
+class arduino_Project {
+}
+class arduino_Repeat {
+  + iteration : int
+}
+class arduino_Sensor {
+}
+class arduino_Sketch {
+}
+class arduino_Synchro {
+}
+class arduino_UnaryBooleanExpression {
+  + operator : str
+}
+abstract class arduino_UnaryExpression {
+}
+class arduino_UnaryIntegerExpression {
+  + operator : str
+}
+abstract class arduino_Utilities {
+}
+abstract class arduino_Variable {
+}
+class arduino_VariableAssignment {
+}
+class arduino_VariableDeclaration {
+}
+class arduino_VariableRef {
+}
+class arduino_While {
+}
+Assignment <|-- arduino_ModuleAssignment
+Assignment <|-- arduino_VariableAssignment
+BinaryExpression <|-- arduino_BinaryBooleanExpression
+BinaryExpression <|-- arduino_BinaryIntegerExpression
+BooleanExpression <|-- arduino_BinaryBooleanExpression
+BooleanExpression <|-- arduino_BooleanConstant
+BooleanExpression <|-- arduino_BooleanModuleGet
+BooleanExpression <|-- arduino_BooleanVariable
+BooleanExpression <|-- arduino_UnaryBooleanExpression
+Constant <|-- arduino_BooleanConstant
+Constant <|-- arduino_IntegerConstant
+Control <|-- arduino_If
+Control <|-- arduino_Repeat
+Control <|-- arduino_While
+Expression <|-- arduino_BinaryExpression
+Expression <|-- arduino_BooleanExpression
+Expression <|-- arduino_Constant
+Expression <|-- arduino_IntegerExpression
+Expression <|-- arduino_ModuleGet
+Expression <|-- arduino_UnaryExpression
+Expression <|-- arduino_Variable
+Expression <|-- arduino_VariableRef
+InstantaneousInstruction <|-- arduino_Synchro
+Instruction <|-- arduino_Assignment
+Instruction <|-- arduino_Control
+Instruction <|-- arduino_InstantaneousInstruction
+Instruction <|-- arduino_ModuleInstruction
+Instruction <|-- arduino_Sketch
+Instruction <|-- arduino_Utilities
+Instruction <|-- arduino_VariableAssignment
+Instruction <|-- arduino_VariableDeclaration
+IntegerExpression <|-- arduino_BinaryIntegerExpression
+IntegerExpression <|-- arduino_IntegerConstant
+IntegerExpression <|-- arduino_IntegerModuleGet
+IntegerExpression <|-- arduino_IntegerVariable
+IntegerExpression <|-- arduino_UnaryIntegerExpression
+Module <|-- arduino_Actuator
+Module <|-- arduino_Sensor
+ModuleGet <|-- arduino_BooleanModuleGet
+ModuleGet <|-- arduino_IntegerModuleGet
+ModuleInstruction <|-- arduino_ModuleAssignment
+NamedElement <|-- arduino_Hardware
+NamedElement <|-- arduino_Instruction
+NamedElement <|-- arduino_Module
+NamedElement <|-- arduino_Platform
+NamedElement <|-- arduino_Sketch
+NamedElement <|-- arduino_Variable
+Pin <|-- arduino_AnalogPin
+Pin <|-- arduino_DigitalPin
+UnaryExpression <|-- arduino_UnaryBooleanExpression
+UnaryExpression <|-- arduino_UnaryIntegerExpression
+Utilities <|-- arduino_Delay
+Variable <|-- arduino_BooleanVariable
+Variable <|-- arduino_IntegerVariable
+arduino_AnalogPin "0..9999" --* "1..1" arduino_Platform : analogPins7
+arduino_Expression "1..1" --* "1..1" arduino_While : condition44
+arduino_Expression "1..1" --* "1..1" arduino_If : condition51
+arduino_Connector "0..9999" --* "1..1" arduino_Hardware : connectors3
+arduino_Instruction "0..1" -- "1..1" arduino_Instruction : dependency31
+arduino_DigitalPin "0..9999" --* "1..1" arduino_Platform : digitalPins5
+arduino_Hardware "0..1" --* "1..1" arduino_Project : hardware13
+arduino_Hardware "1..1" -- "1..1" arduino_Sketch : hardware9
+arduino_Instruction "0..9999" --* "1..1" arduino_Sketch : instructions11
+arduino_Control "1..1" *-- "0..9999" arduino_Instruction : instructions35
+arduino_BinaryExpression "1..1" *-- "1..1" arduino_Expression : left45
+arduino_Module "1..1" -- "1..1" arduino_ModuleInstruction : module33
+arduino_Connector "1..1" -- "0..1" arduino_Module : module39
+arduino_Module "1..1" -- "1..1" arduino_ModuleGet : module42
+arduino_Hardware "1..1" -- "0..9999" arduino_Module : modules1
+arduino_Module "0..9999" --* "1..1" arduino_Project : modules15
+arduino_Instruction "0..1" -- "1..1" arduino_Instruction : next28
+arduino_Assignment "1..1" *-- "1..1" arduino_Expression : operand53
+arduino_Expression "1..1" --* "1..1" arduino_UnaryExpression : operand55
+arduino_Connector "1..1" -- "0..1" arduino_Pin : pin37
+arduino_Platform "0..9999" --* "1..1" arduino_Project : platform18
+arduino_Hardware "1..1" -- "1..9999" arduino_Platform : platforms0
+arduino_Instruction "0..1" -- "1..1" arduino_Instruction : previous25
+arduino_BinaryExpression "1..1" *-- "0..1" arduino_Expression : right47
+arduino_Project "1..1" *-- "0..9999" arduino_Sketch : sketchs21
+arduino_Synchro "1..1" -- "0..9999" arduino_Synchro : synchro62
+arduino_Synchro "1..1" -- "0..9999" arduino_Synchro : synchroeOpposite64
+arduino_Variable "1..1" -- "1..1" arduino_VariableAssignment : variable50
+arduino_Variable "1..1" --* "1..1" arduino_VariableDeclaration : variable57
+arduino_Variable "1..1" -- "1..1" arduino_VariableRef : variable59
+@enduml

@@ -1,0 +1,78 @@
+@startuml
+class AbstractElement {
+}
+class AbstractFeatures {
+}
+class Port {
+}
+class SystemPortDec {
+}
+class componentModel_AbstractElement {
+  + name : str
+}
+class componentModel_AbstractFeatures {
+  + name : str
+}
+class componentModel_CompConnDec {
+}
+class componentModel_ComponentFeature {
+}
+class componentModel_ComponentImpl {
+}
+class componentModel_ComponentModel {
+}
+class componentModel_ComponentType {
+}
+class componentModel_InPort {
+}
+class componentModel_OutPort {
+}
+class componentModel_Port {
+  + name : str
+}
+class componentModel_PortType {
+}
+class componentModel_SystemConnDec {
+}
+class componentModel_SystemDec {
+}
+class componentModel_SystemPortDec {
+}
+class componentModel_SystemPortIn {
+}
+class componentModel_SystemPortOut {
+}
+class componentModel_errorModes {
+  + name : str
+}
+AbstractElement <|-- componentModel_PortType
+AbstractElement <|-- componentModel_SystemConnDec
+AbstractElement <|-- componentModel_SystemDec
+AbstractFeatures <|-- componentModel_CompConnDec
+AbstractFeatures <|-- componentModel_ComponentImpl
+AbstractFeatures <|-- componentModel_ComponentType
+AbstractFeatures <|-- componentModel_SystemPortDec
+Port <|-- componentModel_InPort
+Port <|-- componentModel_OutPort
+SystemPortDec <|-- componentModel_SystemPortIn
+SystemPortDec <|-- componentModel_SystemPortOut
+componentModel_ComponentFeature "0..9999" --* "1..1" componentModel_ComponentType : compFeatures32
+componentModel_PortType "1..1" *-- "0..1" componentModel_errorModes : eModes38
+componentModel_AbstractElement "0..9999" --* "1..1" componentModel_ComponentModel : elements0
+componentModel_ComponentImpl "0..1" -- "1..1" componentModel_SystemPortIn : inComp12
+componentModel_InPort "0..1" -- "1..1" componentModel_SystemPortIn : inPort13
+componentModel_ComponentImpl "0..1" -- "1..1" componentModel_SystemPortOut : outComp15
+componentModel_OutPort "0..1" -- "1..1" componentModel_SystemPortOut : outPort17
+componentModel_ComponentFeature "1..1" *-- "0..9999" componentModel_Port : ports34
+componentModel_CompConnDec "1..1" -- "0..1" componentModel_ComponentImpl : sourceComp19
+componentModel_SystemConnDec "1..1" -- "0..1" componentModel_SystemPortDec : sourcePort2
+componentModel_CompConnDec "1..1" -- "0..1" componentModel_OutPort : sourcePort21
+componentModel_SystemConnDec "1..1" -- "0..1" componentModel_SystemDec : sourceSystem1
+componentModel_ComponentImpl "1..1" -- "0..1" componentModel_ComponentType : superType30
+componentModel_Port "1..1" -- "0..1" componentModel_PortType : superType36
+componentModel_AbstractFeatures "0..9999" --* "1..1" componentModel_SystemDec : sysFeatures10
+componentModel_CompConnDec "1..1" -- "0..1" componentModel_ComponentImpl : targetComp24
+componentModel_CompConnDec "1..1" -- "0..1" componentModel_InPort : targetPort27
+componentModel_SystemConnDec "1..1" -- "0..1" componentModel_SystemPortDec : targetPort7
+componentModel_SystemConnDec "1..1" -- "0..1" componentModel_SystemDec : targetSystem4
+@enduml

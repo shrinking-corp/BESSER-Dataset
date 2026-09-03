@@ -1,0 +1,50 @@
+@startuml
+class Bank {
+  + total : str
+}
+class Card {
+  + img : str
+  + name : str
+  + suit : str
+  + val : str
+}
+class Computer {
+}
+class Dealer {
+  + analyzeHand : HandStrength
+  + deck : Deck
+}
+class Deck {
+  + cards : str
+}
+class Hand {
+  + handCollection : str
+}
+class HandStrength {
+  + STRAIGHT_FLUSH : int
+}
+class Human {
+}
+abstract class Player {
+  + bank : Bank
+  + hand : Hand
+  + name : str
+}
+class Poker {
+  + dealer : Dealer
+  + player1 : Player
+  + player2 : Player
+}
+class RecordBook {
+  + recordList : str
+}
+Bank "1..1" -- "1..1" Player : Bank_Player
+Card "0..9999" -- "1..1" Deck : Card_Deck
+Dealer "1..1" -- "1..1" Deck : Dealer_Deck
+Dealer "1..1" -- "1..1" Poker : Dealer_TexasHoldEm
+Dealer "1..1" -- "1..1" HandStrength : HandStrength_Dealer
+Card "0..9999" -- "1..1" Hand : Hand_Card
+Hand "1..1" -- "1..1" Player : Player_Hand
+Player "0..9999" -- "1..1" Poker : Player_TexasHoldEm
+Poker "1..1" -- "1..1" RecordBook : TexasHoldEm_RecordBook
+@enduml

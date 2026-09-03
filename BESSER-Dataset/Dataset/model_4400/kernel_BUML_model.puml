@@ -1,0 +1,223 @@
+@startuml
+class Argument {
+}
+class DataItem {
+}
+class Definition {
+}
+class ElementReference {
+}
+class End {
+}
+class ExceptionHandlerStatement {
+}
+enum ExecutionOrder {
+  interleaved
+  l2r
+  r2l
+}
+class Expression {
+}
+class Jump {
+}
+class KernelRoot {
+}
+class LabellableElement {
+}
+class MainProcedure {
+}
+class Member {
+}
+class NamedElement {
+}
+class Parameter {
+}
+class ProcedureCall {
+}
+class ReferenceableElement {
+}
+class ReturnSite {
+}
+class Start {
+}
+class Statement {
+}
+class SubExpression {
+}
+class Usage {
+}
+class commons_LabellableElement {
+}
+class commons_Variable {
+}
+abstract class kernel_commons_NamedElement {
+  + name : str
+}
+class kernel_containers_CompilationUnit {
+}
+abstract class kernel_containers_KernelRoot {
+}
+class kernel_dataitems_DataItem {
+}
+class kernel_expressions_Affects {
+}
+class kernel_expressions_Defines {
+}
+abstract class kernel_expressions_Definition {
+}
+class kernel_expressions_Expression {
+  + getDefinedVariables() : str
+  + getUsedVariables() : str
+}
+abstract class kernel_expressions_SubExpression {
+}
+abstract class kernel_expressions_Usage {
+}
+class kernel_expressions_Uses {
+}
+abstract class kernel_members_Member {
+}
+class kernel_parameters_Parameter {
+  + byReference : bool
+  + correspondingArgument : str
+}
+class kernel_procedures_MainProcedure {
+}
+class kernel_procedures_Procedure {
+}
+class kernel_references_Argument {
+  + getCorrespondingParameter() : str
+}
+abstract class kernel_references_ElementReference {
+}
+abstract class kernel_references_Reference {
+}
+abstract class kernel_references_ReferenceableElement {
+}
+class kernel_statements_Abort {
+}
+class kernel_statements_Block {
+}
+class kernel_statements_Condition {
+}
+abstract class kernel_statements_Conditional {
+}
+class kernel_statements_ExceptionHandlerStatement {
+}
+class kernel_statements_ExpressionStatement {
+}
+class kernel_statements_Goto {
+}
+abstract class kernel_statements_Jump {
+}
+class kernel_statements_NonDeterministicBlock {
+}
+class kernel_statements_ParallelBlock {
+  + order : str
+}
+class kernel_statements_ProcedureCall {
+}
+class kernel_statements_Return {
+}
+class kernel_statements_Skip {
+}
+abstract class kernel_statements_Statement {
+}
+abstract class kernel_statements_StatementContainer {
+}
+abstract class kernel_statements_StatementListContainer {
+}
+class kernel_statements_StatementWithException {
+}
+class kernel_statements_WhileLoop {
+}
+class members_Member {
+}
+class procedures_Procedure {
+}
+class procedures_ProcedureCall {
+}
+class references_ElementReference {
+}
+class references_ReferenceableElement {
+}
+class statements_Conditional {
+}
+class statements_Statement {
+}
+class statements_StatementContainer {
+}
+class statements_StatementListContainer {
+}
+DataItem <|-- kernel_parameters_Parameter
+Definition <|-- kernel_expressions_Affects
+Definition <|-- kernel_expressions_Defines
+ElementReference <|-- kernel_expressions_SubExpression
+ElementReference <|-- kernel_references_Argument
+Jump <|-- kernel_statements_Goto
+KernelRoot <|-- kernel_containers_CompilationUnit
+LabellableElement <|-- kernel_containers_KernelRoot
+LabellableElement <|-- kernel_expressions_Expression
+LabellableElement <|-- kernel_procedures_MainProcedure
+NamedElement <|-- kernel_references_ReferenceableElement
+Statement <|-- kernel_statements_Abort
+Statement <|-- kernel_statements_ExpressionStatement
+Statement <|-- kernel_statements_Jump
+Statement <|-- kernel_statements_Return
+Statement <|-- kernel_statements_Skip
+SubExpression <|-- kernel_expressions_Definition
+SubExpression <|-- kernel_expressions_Usage
+Usage <|-- kernel_expressions_Uses
+commons_LabellableElement <|-- kernel_procedures_Procedure
+commons_LabellableElement <|-- kernel_statements_ExceptionHandlerStatement
+commons_LabellableElement <|-- kernel_statements_Statement
+commons_Variable <|-- kernel_dataitems_DataItem
+members_Member <|-- kernel_dataitems_DataItem
+members_Member <|-- kernel_procedures_Procedure
+members_Member <|-- kernel_statements_Statement
+procedures_Procedure <|-- kernel_procedures_Procedure
+procedures_ProcedureCall <|-- kernel_statements_ProcedureCall
+references_ElementReference <|-- kernel_statements_ProcedureCall
+references_ReferenceableElement <|-- kernel_dataitems_DataItem
+references_ReferenceableElement <|-- kernel_procedures_Procedure
+statements_Conditional <|-- kernel_statements_Condition
+statements_Conditional <|-- kernel_statements_WhileLoop
+statements_Statement <|-- kernel_statements_Block
+statements_Statement <|-- kernel_statements_Condition
+statements_Statement <|-- kernel_statements_NonDeterministicBlock
+statements_Statement <|-- kernel_statements_ParallelBlock
+statements_Statement <|-- kernel_statements_ProcedureCall
+statements_Statement <|-- kernel_statements_StatementWithException
+statements_Statement <|-- kernel_statements_WhileLoop
+statements_StatementContainer <|-- kernel_statements_Condition
+statements_StatementContainer <|-- kernel_statements_ExceptionHandlerStatement
+statements_StatementContainer <|-- kernel_statements_StatementWithException
+statements_StatementContainer <|-- kernel_statements_WhileLoop
+statements_StatementListContainer <|-- kernel_statements_Block
+statements_StatementListContainer <|-- kernel_statements_NonDeterministicBlock
+statements_StatementListContainer <|-- kernel_statements_ParallelBlock
+Argument "0..9999" --* "1..1" kernel_statements_ProcedureCall : arguments8
+ProcedureCall "0..9999" -- "1..1" kernel_procedures_Procedure : callers16
+SubExpression "0..9999" --* "1..1" kernel_expressions_Expression : children30
+Expression "1..1" --* "1..1" kernel_statements_Conditional : condition7
+Member "0..9999" --* "1..1" kernel_containers_CompilationUnit : declarations33
+Statement "0..1" --* "1..1" kernel_statements_Condition : elseStatement3
+End "1..1" --* "1..1" kernel_procedures_Procedure : end20
+End "1..1" --* "1..1" kernel_procedures_MainProcedure : end27
+End "1..1" --* "1..1" kernel_containers_CompilationUnit : end39
+ExceptionHandlerStatement "1..9999" --* "1..1" kernel_statements_StatementWithException : exceptionStatements6
+Expression "1..1" --* "1..1" kernel_statements_ExpressionStatement : expression11
+MainProcedure "1..1" --* "1..1" kernel_containers_CompilationUnit : mainProcedure32
+Member "0..9999" --* "1..1" kernel_procedures_Procedure : members13
+Member "0..9999" --* "1..1" kernel_procedures_MainProcedure : members22
+Parameter "0..9999" --* "1..1" kernel_procedures_Procedure : parameters14
+Usage "0..9999" -- "1..1" kernel_expressions_Definition : reaches31
+ReturnSite "1..1" --* "1..1" kernel_statements_ProcedureCall : returnSite9
+Start "1..1" --* "1..1" kernel_procedures_Procedure : start18
+Start "1..1" --* "1..1" kernel_procedures_MainProcedure : start24
+Start "1..1" --* "1..1" kernel_containers_CompilationUnit : start36
+Statement "1..1" --* "1..1" kernel_statements_StatementContainer : statement1
+Statement "0..9999" --* "1..1" kernel_statements_StatementListContainer : statements0
+ReferenceableElement "1..1" -- "1..1" kernel_references_ElementReference : target42
+LabellableElement "1..1" -- "1..1" kernel_statements_Jump : target5
+@enduml

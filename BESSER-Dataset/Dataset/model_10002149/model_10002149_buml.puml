@@ -1,0 +1,59 @@
+@startuml
+class Atestado {
+  + consulta : Consulta
+  + dataFimDoAtestado : str
+  + dataInicioDoAtestado : str
+  + quantidadeDias : str
+}
+class Consulta {
+  + atestado : bool
+  + codigoDiagnostico : str
+  + diagnostico : str
+  + medicamentos : str
+  + medico : Medico
+  + triagem : Triagem
+}
+class Enfermeira {
+  + cofen : str
+  + setor : str
+}
+class Medico {
+  + crm : str
+  + especialidade : str
+  + setor : str
+}
+class Paciente {
+  + id : str
+  + numeroSus : str
+  + responsavel : Pessoa
+}
+class Pessoa {
+  + cpf : str
+  + dataNascimento : str
+  + endereco : str
+  + estadoCivil : str
+  + nome : str
+  + rg : str
+  + sexo : str
+  + telefone : str
+}
+class String_Interface {
+}
+class Triagem {
+  + IMC : str
+  + alergias : str
+  + altura : str
+  + enfermeira : Enfermeira
+  + febre : bool
+  + paciente : Paciente
+  + peso : str
+  + pressao : String_Interface
+  + sintoma : str
+  + temperatura : str
+}
+Atestado "0..1" -- "0..1" Consulta : Atestado_Consulta
+Consulta "0..1" -- "0..1" Medico : Consulta_Medico
+Consulta "0..1" -- "0..1" Triagem : Consulta_Triagem
+Enfermeira "0..1" -- "0..1" Triagem : Triagem_Enfermeira
+Paciente "0..1" -- "0..1" Triagem : Triagem_Paciente
+@enduml

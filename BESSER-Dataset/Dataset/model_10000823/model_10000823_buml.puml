@@ -1,0 +1,141 @@
+@startuml
+class Administrator_Actor {
+}
+class Authenticate_UseCase {
+}
+class Bill {
+  + attachment_id : str
+  + date : str
+  + distance : str
+  + id : str
+  + payment_method : PaymentMethod
+  + status : ExpenseStatus
+  + sum : str
+}
+class Collaborator_Actor {
+}
+class Collaborator_Actor1 {
+}
+class Comment {
+  + id : str
+  + text : str
+  + user_id : str
+}
+class Consult_Expense_external {
+}
+class Consult_an_attched_file_UseCase {
+}
+class Consult_collaborators__Expenses_Component {
+}
+class Consult_collaborators__Expenses_external {
+}
+class Create_an_Expense_external {
+}
+enum Currency {
+}
+class Currency1 {
+  + abr : str
+  + id : str
+  + name : str
+}
+class Delete_an_Expense_external {
+}
+class Delete_an_attached_file_UseCase {
+}
+class Download_an_attached_file_UseCase {
+}
+class Expense {
+  + id : str
+  + manager_id : str
+  + mission_id : str
+  + project_id : str
+  + user_id : str
+}
+enum ExpenseStatus {
+}
+class ExpenseType {
+  + id : str
+  + name : str
+  + price : str
+}
+class Filter_Expenses_external {
+}
+class Manage_Expense_currency_external {
+}
+class Manage_Expense_types_external {
+}
+class Manage_Expenses_Component {
+}
+class Manage_Expenses__settings_Component {
+}
+class Manage_Expenses__settings_external {
+}
+class Manage_Expenses_external {
+}
+class Manage_attached_files_UseCase {
+}
+class Manager_Actor {
+}
+class Manager_Actor1 {
+}
+class Manager_Actor2 {
+}
+class Manager_Actor3 {
+}
+class My_Expenses_general_use_case_diagram_Component {
+}
+class Office_Manager_Actor {
+}
+class Office_Manager_Actor1 {
+}
+enum PaymentMethod {
+}
+class Refund_Expenses_external {
+}
+class Refuse_collaborators__Expense_refunds_external {
+}
+class Review_collaborators__Expense_refunds_Component {
+}
+class Review_collaborators__Expense_refunds_external {
+}
+class Sales_Agent_Actor {
+}
+class Sales_agent_Actor {
+}
+class Search_Expenses_external {
+}
+class Send_an_Expense_to_verification_external {
+}
+class Super_Administrator_Actor {
+}
+class Update_an_Expense_external {
+}
+class Upload_a_file_UseCase {
+}
+class Validate_collaborators__Expense_refunds_external {
+}
+class Verify_collaborators__Expenses_external {
+}
+Administrator_Actor "0..1" -- "0..1" Manage_Expenses__settings_external : Administrator_Manage_Expense_report_settings
+Collaborator_Actor1 "0..1" -- "0..1" Create_an_Expense_external : Collaborator_Create_an_Expense_Report
+Collaborator_Actor1 "0..1" -- "0..1" Delete_an_Expense_external : Collaborator_Delete_an_Expense_Report
+Collaborator_Actor "0..1" -- "0..1" Manage_Expenses_external : Collaborator_Manage_Expense_Report
+Collaborator_Actor1 "0..1" -- "0..1" Manage_attached_files_UseCase : Collaborator_Manage_attached_files
+Collaborator_Actor1 "0..1" -- "0..1" Send_an_Expense_to_verification_external : Collaborator_Send_an_Expense_Report_to_verification
+Collaborator_Actor1 "0..1" -- "0..1" Update_an_Expense_external : Collaborator_Update_an_Expense_Report
+Collaborator_Actor1 "0..1" -- "0..1" Consult_Expense_external : Collaborator_View_an_Expense_Report
+Bill "1..1" -- "1..1" Currency1 : Currency_Expense
+Bill "1..1" -- "1..1" ExpenseType : ExpenseType_Bill
+Bill "1..1" -- "0..1" Expense : Expense_Bill
+Comment "0..9999" -- "1..1" Expense : Expense_Comment
+Manager_Actor2 "0..1" -- "0..1" Refuse_collaborators__Expense_refunds_external : Manager_Refuse_collaborators__Expense_refunds
+Manage_Expense_currency_external "0..1" -- "0..1" Manager_Actor3 : Manager_Refuse_collaborators__Expense_refunds2
+Manager_Actor "0..1" -- "0..1" Review_collaborators__Expense_refunds_external : Manager_Review_collaborators__Expense_reports
+Manager_Actor2 "0..1" -- "0..1" Validate_collaborators__Expense_refunds_external : Manager_Validate_collaborators__Expense_refunds
+Manage_Expense_types_external "0..1" -- "0..1" Manager_Actor3 : Manager_Validate_collaborators__Expense_refunds2
+Office_Manager_Actor "0..1" -- "0..1" Refund_Expenses_external : Office_Manager_Manage_refunds
+Office_Manager_Actor "0..1" -- "0..1" Verify_collaborators__Expenses_external : Office_Manager_Verify_collaborators__Expense_reports
+Filter_Expenses_external "0..1" -- "0..1" Sales_Agent_Actor : Sales_Agent_Filter_Expenses
+Sales_Agent_Actor "0..1" -- "0..1" Search_Expenses_external : Sales_Agent_Search_Expenses
+Consult_collaborators__Expenses_external "0..1" -- "0..1" Sales_agent_Actor : Sales_agent_Consult_collaborators__Expense_reports
+@enduml

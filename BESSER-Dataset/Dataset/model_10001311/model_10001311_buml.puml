@@ -1,0 +1,29 @@
+@startuml
+class BankAccount {
+  + FREE_TRANSACTIONS : int
+  + TRANSACTION_FEE : int
+  + balance : float
+  + isActive : bool
+  + minimumBalance : float
+  + numOfTransactions : int
+}
+class Checking {
+  + OVERDRAFT_FEE : float
+  + OVERDRAFT_LIMIT : float
+  + isActive : bool
+}
+class Instructor {
+  + name : str
+}
+class Main {
+}
+class Savings {
+}
+class Student {
+  + name : str
+}
+Checking "0..1" -- "0..1" Instructor : Checking_Instructor
+Checking "0..1" -- "0..1" Student : Checking_Student
+Instructor "0..1" -- "0..1" Savings : Savings_Instructor
+Savings "0..1" -- "0..1" Student : Savings_Student
+@enduml

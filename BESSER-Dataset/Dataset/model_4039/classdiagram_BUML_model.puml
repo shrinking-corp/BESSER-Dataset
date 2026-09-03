@@ -1,0 +1,50 @@
+@startuml
+class NamedElement {
+}
+class TypedElement {
+}
+class classdiagram_Association {
+}
+class classdiagram_Attribute {
+}
+class classdiagram_Class {
+}
+class classdiagram_ClassDiagram {
+}
+class classdiagram_Dependency {
+  + name : str
+}
+abstract class classdiagram_NamedElement {
+  + name : str
+}
+class classdiagram_Operation {
+}
+abstract class classdiagram_TypedElement {
+  + public : bool
+}
+NamedElement <|-- classdiagram_Association
+NamedElement <|-- classdiagram_Class
+NamedElement <|-- classdiagram_TypedElement
+TypedElement <|-- classdiagram_Attribute
+TypedElement <|-- classdiagram_Operation
+classdiagram_Association "0..9999" --* "1..1" classdiagram_ClassDiagram : associations3
+classdiagram_Association "0..9999" -- "1..1" classdiagram_Class : associationsAsSource22
+classdiagram_Association "0..9999" -- "1..1" classdiagram_Class : associationsAsTarget23
+classdiagram_Class "0..9999" --* "1..1" classdiagram_ClassDiagram : classes0
+classdiagram_Class "1..1" -- "1..1" classdiagram_Dependency : dependee29
+classdiagram_ClassDiagram "1..1" *-- "0..9999" classdiagram_Dependency : dependencies1
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Dependency : dependenciesAsDependee8
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Dependency : dependenciesAsDepender9
+classdiagram_Class "1..1" -- "1..1" classdiagram_Dependency : depender31
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Class : nested14
+classdiagram_Class "1..1" -- "0..1" classdiagram_Class : nestedIn12
+classdiagram_Attribute "0..9999" --* "1..1" classdiagram_Class : ownedAttributes5
+classdiagram_Class "1..1" *-- "0..9999" classdiagram_Operation : ownedOperations6
+classdiagram_Attribute "1..1" -- "1..1" classdiagram_Class : owner25
+classdiagram_Class "1..1" -- "1..1" classdiagram_Operation : owner27
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : source35
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Class : subclasses20
+classdiagram_Class "1..1" -- "0..1" classdiagram_Class : superclass17
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : target37
+classdiagram_Class "1..1" -- "1..1" classdiagram_TypedElement : type33
+@enduml

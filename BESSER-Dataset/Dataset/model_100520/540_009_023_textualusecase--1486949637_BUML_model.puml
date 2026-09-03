@@ -1,0 +1,82 @@
+@startuml
+class Agent {
+}
+class FlowOfEvents {
+}
+class Statement {
+}
+class Step {
+}
+class textualusecase_Action {
+  + description : str
+}
+class textualusecase_Actor {
+}
+abstract class textualusecase_Agent {
+  + name : str
+}
+class textualusecase_AlternativeFlow {
+}
+class textualusecase_BasicFlow {
+}
+class textualusecase_Condition {
+  + expression : str
+}
+class textualusecase_ConditionalStatement {
+}
+abstract class textualusecase_FlowOfEvents {
+  + name : str
+}
+class textualusecase_Include {
+}
+class textualusecase_LoopStatement {
+}
+abstract class textualusecase_Statement {
+}
+abstract class textualusecase_Step {
+  + name : str
+}
+class textualusecase_Subject {
+}
+class textualusecase_UseCase {
+  + description : str
+  + name : str
+}
+class textualusecase_UseCaseModel {
+}
+Agent <|-- textualusecase_Actor
+Agent <|-- textualusecase_Subject
+FlowOfEvents <|-- textualusecase_AlternativeFlow
+FlowOfEvents <|-- textualusecase_BasicFlow
+Statement <|-- textualusecase_ConditionalStatement
+Statement <|-- textualusecase_LoopStatement
+Step <|-- textualusecase_Action
+Step <|-- textualusecase_Include
+Step <|-- textualusecase_Statement
+textualusecase_Action "0..9999" -- "1..1" textualusecase_Agent : actions31
+textualusecase_Actor "0..9999" --* "1..1" textualusecase_UseCaseModel : actor1
+textualusecase_Actor "1..9999" -- "1..1" textualusecase_UseCase : actor7
+textualusecase_Action "1..1" -- "1..1" textualusecase_Agent : agent45
+textualusecase_AlternativeFlow "0..9999" -- "1..1" textualusecase_Step : alternativeFlow26
+textualusecase_AlternativeFlow "0..9999" --* "1..1" textualusecase_UseCase : alternativeFlow4
+textualusecase_BasicFlow "1..1" --* "1..1" textualusecase_UseCase : basicFlow5
+textualusecase_AlternativeFlow "1..1" -- "1..1" textualusecase_Step : branchingStep18
+textualusecase_AlternativeFlow "1..1" *-- "1..1" textualusecase_Condition : condition19
+textualusecase_Condition "1..1" --* "1..1" textualusecase_Statement : condition32
+textualusecase_FlowOfEvents "0..1" -- "1..1" textualusecase_Step : flowOfEvents29
+textualusecase_Include "0..9999" -- "1..1" textualusecase_UseCase : includes16
+textualusecase_Condition "0..1" --* "1..1" textualusecase_UseCase : postCondition10
+textualusecase_Condition "0..1" --* "1..1" textualusecase_UseCase : preCondition11
+textualusecase_Statement "0..1" -- "1..1" textualusecase_Step : statement28
+textualusecase_FlowOfEvents "1..1" *-- "1..9999" textualusecase_Step : steps24
+textualusecase_Statement "1..1" *-- "1..9999" textualusecase_Step : steps34
+textualusecase_Subject "1..1" --* "1..1" textualusecase_UseCaseModel : subject3
+textualusecase_UseCase "0..9999" --* "1..1" textualusecase_UseCaseModel : useCase0
+textualusecase_AlternativeFlow "1..1" -- "1..1" textualusecase_UseCase : useCase21
+textualusecase_BasicFlow "1..1" -- "1..1" textualusecase_UseCase : useCase36
+textualusecase_Actor "1..1" -- "0..9999" textualusecase_UseCase : useCase40
+textualusecase_Include "1..1" -- "1..1" textualusecase_UseCase : useCase46
+textualusecase_UseCase "1..1" -- "1..1" textualusecase_UseCaseModel : useCaseModel14
+textualusecase_Actor "1..1" -- "1..1" textualusecase_UseCaseModel : useCaseModel38
+textualusecase_Subject "1..1" -- "1..1" textualusecase_UseCaseModel : useCasemodel43
+@enduml

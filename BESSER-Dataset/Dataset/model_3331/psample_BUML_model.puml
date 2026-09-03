@@ -1,0 +1,58 @@
+@startuml
+class Member {
+}
+class Object {
+}
+enum PrimitiveTypes {
+  bool
+  double
+  int
+  string
+}
+class Type {
+}
+class TypedElement {
+}
+enum Visibility {
+  private
+  protected
+  public
+}
+class psample_Class {
+}
+class psample_Function {
+}
+class psample_Interface {
+}
+abstract class psample_Member {
+}
+abstract class psample_Object {
+  + Name : str
+}
+class psample_Package {
+  + Name : str
+}
+class psample_PrimitiveTypeVariable {
+  + isParameter : bool
+}
+abstract class psample_Type {
+}
+abstract class psample_TypedElement {
+}
+class psample_Variable {
+  + isParameter : bool
+}
+Member <|-- psample_Function
+Member <|-- psample_Variable
+Object <|-- psample_Type
+Object <|-- psample_TypedElement
+Type <|-- psample_Member
+Type <|-- psample_PrimitiveTypeVariable
+TypedElement <|-- psample_Class
+TypedElement <|-- psample_Interface
+psample_Class "1..1" *-- "0..9999" psample_Member : member1
+psample_Class "1..1" *-- "0..9999" psample_PrimitiveTypeVariable : primitivetype2
+psample_Function "1..1" *-- "0..9999" psample_PrimitiveTypeVariable : primitivetypevariable4
+psample_Package "1..1" *-- "0..9999" psample_TypedElement : typedelement0
+psample_Function "1..1" *-- "0..9999" psample_Variable : variable6
+@enduml

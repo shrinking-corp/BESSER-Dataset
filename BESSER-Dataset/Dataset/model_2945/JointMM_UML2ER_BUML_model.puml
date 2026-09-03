@@ -1,0 +1,70 @@
+@startuml
+class SrcClass {
+}
+class SrcNamedElement {
+}
+class SrcPackage {
+}
+class SrcProperty {
+}
+class TrgElement {
+}
+class TrgEntityType {
+}
+class TrgFeature {
+}
+class TrgReference {
+}
+class TrgStrongReference {
+}
+class jointPackage_UML2ER_JointMM {
+}
+class jointPackage_UML2ER_SrcClass {
+}
+abstract class jointPackage_UML2ER_SrcNamedElement {
+  + name : str
+}
+class jointPackage_UML2ER_SrcPackage {
+}
+class jointPackage_UML2ER_SrcProperty {
+  + isContainment : bool
+  + primitiveType : str
+}
+class jointPackage_UML2ER_TrgAttribute {
+  + type : str
+}
+class jointPackage_UML2ER_TrgERModel {
+}
+abstract class jointPackage_UML2ER_TrgElement {
+  + name : str
+}
+class jointPackage_UML2ER_TrgEntityType {
+}
+abstract class jointPackage_UML2ER_TrgFeature {
+}
+abstract class jointPackage_UML2ER_TrgReference {
+}
+class jointPackage_UML2ER_TrgStrongReference {
+}
+class jointPackage_UML2ER_TrgWeakReference {
+}
+SrcNamedElement <|-- jointPackage_UML2ER_SrcClass
+SrcNamedElement <|-- jointPackage_UML2ER_SrcPackage
+SrcNamedElement <|-- jointPackage_UML2ER_SrcProperty
+TrgElement <|-- jointPackage_UML2ER_TrgERModel
+TrgElement <|-- jointPackage_UML2ER_TrgEntityType
+TrgElement <|-- jointPackage_UML2ER_TrgFeature
+TrgFeature <|-- jointPackage_UML2ER_TrgAttribute
+TrgFeature <|-- jointPackage_UML2ER_TrgReference
+TrgReference <|-- jointPackage_UML2ER_TrgStrongReference
+TrgReference <|-- jointPackage_UML2ER_TrgWeakReference
+SrcClass "0..1" -- "1..1" jointPackage_UML2ER_SrcProperty : complexType8
+TrgEntityType "0..9999" --* "1..1" jointPackage_UML2ER_TrgERModel : entities10
+TrgFeature "0..9999" --* "1..1" jointPackage_UML2ER_TrgEntityType : features11
+SrcClass "0..9999" --* "1..1" jointPackage_UML2ER_SrcPackage : ownedElements3
+SrcProperty "0..9999" --* "1..1" jointPackage_UML2ER_SrcClass : ownedProperty4
+SrcPackage "1..1" --* "1..1" jointPackage_UML2ER_JointMM : sourceRoot0
+SrcClass "0..9999" -- "1..1" jointPackage_UML2ER_SrcClass : superClasses5
+TrgStrongReference "1..1" --* "1..1" jointPackage_UML2ER_JointMM : targetRoot1
+TrgEntityType "1..1" -- "1..1" jointPackage_UML2ER_TrgReference : type12
+@enduml

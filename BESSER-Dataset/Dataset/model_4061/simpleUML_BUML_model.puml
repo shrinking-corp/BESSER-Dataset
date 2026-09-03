@@ -1,0 +1,36 @@
+@startuml
+class Classifier {
+}
+class NamedElement {
+}
+class simpleUML_Association {
+}
+class simpleUML_Attribute {
+}
+class simpleUML_Class {
+}
+class simpleUML_Classifier {
+}
+class simpleUML_DataType {
+}
+class simpleUML_NamedElement {
+  + name : str
+}
+class simpleUML_Package {
+}
+Classifier <|-- simpleUML_Association
+Classifier <|-- simpleUML_Class
+Classifier <|-- simpleUML_DataType
+Classifier <|-- simpleUML_Package
+NamedElement <|-- simpleUML_Attribute
+NamedElement <|-- simpleUML_Classifier
+simpleUML_Attribute "0..9999" --* "1..1" simpleUML_Class : attributes2
+simpleUML_Association "0..9999" -- "1..1" simpleUML_Class : navigableAssociationTargets5
+simpleUML_Classifier "1..1" -- "0..9999" simpleUML_Classifier : ownedElements10
+simpleUML_Classifier "1..1" -- "0..1" simpleUML_Classifier : owner12
+simpleUML_Association "1..1" -- "0..1" simpleUML_Class : source14
+simpleUML_Association "0..9999" -- "1..1" simpleUML_Class : sourceAssociations4
+simpleUML_Class "1..1" -- "0..9999" simpleUML_Class : superClasses1
+simpleUML_Association "1..1" -- "0..1" simpleUML_Class : target15
+simpleUML_Attribute "1..1" -- "1..1" simpleUML_Classifier : type7
+@enduml

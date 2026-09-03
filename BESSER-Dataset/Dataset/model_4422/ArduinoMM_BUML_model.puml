@@ -1,0 +1,80 @@
+@startuml
+class Analog {
+}
+enum AnalogID {
+  A0
+  A1
+  A2
+  A3
+  A4
+  A5
+  A6
+}
+class ArduinoMetamodel_Action {
+}
+class ArduinoMetamodel_Analog {
+  + ID : str
+}
+class ArduinoMetamodel_ArduinoBoardUNO {
+}
+class ArduinoMetamodel_Digital {
+  + ID : str
+}
+class ArduinoMetamodel_FiniteStateMachine {
+}
+class ArduinoMetamodel_Instruccion {
+  + codigo : str
+}
+class ArduinoMetamodel_Metodo {
+  + nombre : str
+}
+class ArduinoMetamodel_PWM {
+}
+abstract class ArduinoMetamodel_Pin {
+  + label : str
+  + pinMode : str
+}
+class ArduinoMetamodel_Project {
+}
+class ArduinoMetamodel_State {
+  + isInitial : bool
+  + name : str
+}
+class ArduinoMetamodel_Transition {
+}
+class ArduinoMetamodel_delay {
+}
+enum DigitalID {
+  D12
+  D13
+  D2
+  D4
+  D7
+  D8
+}
+class Instruccion {
+}
+class Pin {
+}
+enum PinMode {
+  INPUT
+  INPUT_PULLUP
+  OUTPUT
+}
+Analog <|-- ArduinoMetamodel_PWM
+Instruccion <|-- ArduinoMetamodel_delay
+Pin <|-- ArduinoMetamodel_Analog
+Pin <|-- ArduinoMetamodel_Digital
+ArduinoMetamodel_Action "0..9999" --* "1..1" ArduinoMetamodel_Transition : actions14
+ArduinoMetamodel_Analog "0..6" --* "1..1" ArduinoMetamodel_ArduinoBoardUNO : analogpins7
+ArduinoMetamodel_ArduinoBoardUNO "1..9999" --* "1..1" ArduinoMetamodel_Project : boards0
+ArduinoMetamodel_ArduinoBoardUNO "1..1" *-- "0..6" ArduinoMetamodel_Digital : digitalpins5
+ArduinoMetamodel_FiniteStateMachine "0..1" -- "1..1" ArduinoMetamodel_Project : fsm3
+ArduinoMetamodel_State "1..1" -- "0..9999" ArduinoMetamodel_Transition : incoming11
+ArduinoMetamodel_Instruccion "1..9999" --* "1..1" ArduinoMetamodel_Metodo : instrucciones9
+ArduinoMetamodel_Metodo "1..9999" --* "1..1" ArduinoMetamodel_Project : metodos1
+ArduinoMetamodel_State "1..1" -- "0..9999" ArduinoMetamodel_Transition : outgoing12
+ArduinoMetamodel_State "1..1" -- "1..1" ArduinoMetamodel_Transition : source15
+ArduinoMetamodel_FiniteStateMachine "1..1" *-- "0..9999" ArduinoMetamodel_State : states18
+ArduinoMetamodel_State "1..1" -- "1..1" ArduinoMetamodel_Transition : target16
+@enduml

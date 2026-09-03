@@ -1,0 +1,130 @@
+@startuml
+class Add_property_to_whishlist_UseCase {
+}
+class Administrator {
+  + admin_name : str
+  + password : str
+}
+class Advertiesment {
+  + advertiesment_id : int
+  + advertiser_id : str
+  + end_date : str
+  + start_date : str
+}
+class Advertiser {
+  + advertiesment_id : str
+  + advertiser_id : str
+}
+class Buyer {
+  + buyer_id : str
+}
+class Buyer_Actor {
+}
+class Buyer_Component {
+}
+class City_UseCase {
+}
+class Forgot_Password_UseCase {
+}
+class Liked_Property_UseCase {
+}
+class Login_UseCase {
+}
+class Login_external {
+}
+class Logout_external {
+}
+class Manage_Property_external {
+}
+class Management {
+  + specialoffers : str
+  + suggetions : str
+}
+class Meeting_With_the_Clent_UseCase {
+}
+class Owener_Agent_Component {
+}
+class Owner_Agent_Other_Actor {
+}
+class Payment {
+  + card_no : str
+  + ex_date : str
+  + pay_amount : str
+  + pay_id : int
+  + pay_mode : str
+}
+class Price_UseCase {
+}
+class Property {
+  + address : str
+  + location : str
+  + property_id : str
+  + property_type : str
+}
+class Reg_User {
+  + Address : str
+  + password : str
+  + username : str
+}
+class Registartion_external {
+}
+class Registration_UseCase {
+}
+class Request {
+  + request_details : str
+  + request_id : int
+  + request_type : str
+  + requser_id : str
+}
+class Requirement {
+  + req_description : str
+  + requirement_location : str
+  + requirement_type : str
+  + user_id : str
+}
+class Sales_Team_Actor {
+}
+class Search_Property_UseCase {
+}
+class Seller {
+  + property_id : str
+  + seller_id : str
+}
+class Seller_Component {
+}
+class Seller_UseCase {
+}
+class State_UseCase {
+}
+class Unreg_User {
+}
+class User {
+  + email : str
+  + location : str
+}
+class Username__Password_UseCase {
+}
+class View_All_Posted_Properties_external {
+}
+class View_the_Buyers_List_UseCase {
+}
+Advertiesment "0..9999" -- "1..1" Advertiser : Advertiser_Advertiesment
+Buyer_Actor "0..1" -- "0..1" Login_UseCase : Buyer_Login
+Buyer_Actor "0..1" -- "0..1" Search_Property_UseCase : Buyer_Search_Property
+Login_external "0..1" -- "0..1" Owner_Agent_Other_Actor : Owner_Agent_Login
+Logout_external "0..1" -- "0..1" Owner_Agent_Other_Actor : Owner_Agent_Logout
+Manage_Property_external "0..1" -- "0..1" Owner_Agent_Other_Actor : Owner_Agent_Manage_Property
+Owner_Agent_Other_Actor "0..1" -- "0..1" Registartion_external : Owner_Agent_Registartion
+Owner_Agent_Other_Actor "0..1" -- "0..1" View_All_Posted_Properties_external : Owner_Agent_View_All_Posted_Properties
+Payment "1..1" -- "0..9999" Property : Payment_Property
+Payment "1..1" -- "1..9999" Reg_User : Payment_Reg_User
+Buyer "1..1" -- "0..9999" Property : Property_Buyer
+Management "0..9999" -- "1..1" Property : Property_Management
+Property "0..9999" -- "1..1" Seller : Property_Seller
+Reg_User "1..9999" -- "0..9999" Requirement : Reg_User_Requirement
+Login_UseCase "0..1" -- "0..1" Sales_Team_Actor : Sales_Team_Login
+Meeting_With_the_Clent_UseCase "0..1" -- "0..1" Sales_Team_Actor : Sales_Team_Meeting_With_the_Clent
+Sales_Team_Actor "0..1" -- "0..1" View_the_Buyers_List_UseCase : Sales_Team_View_the_Buyers_List
+Administrator "1..1" -- "1..9999" User : User_Administrator
+Request "0..9999" -- "1..1" User : User_Request
+@enduml

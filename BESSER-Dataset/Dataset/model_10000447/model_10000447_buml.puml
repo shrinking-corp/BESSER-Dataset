@@ -1,0 +1,38 @@
+@startuml
+class Chef {
+}
+class Customer {
+  + name : str
+  + numberPeople : int
+}
+class Food {
+  + food_id : str
+  + name : str
+  + prepared : bool
+  + price : float
+  + served : bool
+}
+class Host {
+  + ID : str
+  + shift : str
+}
+class Items {
+}
+class Table {
+  + seats : int
+  + tableNumber : int
+}
+class app {
+}
+class cost {
+}
+class robotWaiter {
+}
+Food "0..1" -- "0..1" Items : Food_Items
+Customer "0..1" -- "0..1" Host : Host_Customer
+Items "0..1" -- "0..1" cost : Items_Bill
+Customer "0..1" -- "0..1" Table : Table_Customer
+Table "0..1" -- "0..1" app : Table_app
+Food "0..1" -- "0..1" app : app__Food
+Customer "0..1" -- "0..1" robotWaiter : robotWaiter_Customer
+@enduml

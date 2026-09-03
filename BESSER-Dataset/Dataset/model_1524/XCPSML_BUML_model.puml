@@ -1,0 +1,90 @@
+@startuml
+class Transition {
+}
+class cpsml_ComTransition {
+}
+class cpsml_Condition {
+  + name : str
+}
+class cpsml_DeVariable {
+  + name : str
+}
+class cpsml_Fright {
+  + name : str
+}
+class cpsml_Function {
+  + name : str
+}
+class cpsml_IndeVariable {
+  + name : str
+}
+class cpsml_Interval {
+  + left : float
+  + name : str
+  + right : float
+  + subinterval : float
+}
+class cpsml_ODE {
+  + name : str
+}
+class cpsml_ProbTransition {
+  + probability : float
+}
+class cpsml_State {
+  + name : bool
+}
+class cpsml_System {
+  + name : str
+  + ran : str
+  + sub : int
+  + y0label : int
+  + RealizeInitializeModel(cpsml_arguments : str) : void
+  + callscilab() : void
+  + dojump() : void
+  + main() : void
+}
+abstract class cpsml_Transition {
+  + action : str
+  + event : str
+  + guard : str
+  + name : str
+  + holds() : void
+}
+class cpsml_Variable {
+  + Globalnv : float
+  + value : float
+}
+Transition <|-- cpsml_ComTransition
+Transition <|-- cpsml_ProbTransition
+cpsml_Condition "1..1" --* "1..1" cpsml_ODE : condition60
+cpsml_ComTransition "1..1" -- "1..1" cpsml_State : csrc51
+cpsml_ComTransition "1..1" -- "1..1" cpsml_State : ctgt52
+cpsml_State "0..1" -- "1..1" cpsml_System : currentState13
+cpsml_DeVariable "1..1" --* "1..1" cpsml_Function : devariable66
+cpsml_State "0..1" -- "1..1" cpsml_System : fatherState16
+cpsml_Fright "1..1" --* "1..1" cpsml_Function : fright68
+cpsml_Function "1..1" --* "1..1" cpsml_ODE : function58
+cpsml_ComTransition "0..9999" -- "1..1" cpsml_State : incomingComTransitions25
+cpsml_ProbTransition "0..9999" -- "1..1" cpsml_State : incomingProbTransitions28
+cpsml_Function "1..1" *-- "1..1" cpsml_IndeVariable : indevariable64
+cpsml_State "1..1" -- "1..1" cpsml_System : initialState8
+cpsml_State "1..1" -- "1..1" cpsml_State : initialsubstate34
+cpsml_Interval "1..1" --* "1..1" cpsml_ODE : interval62
+cpsml_ComTransition "0..9999" -- "1..1" cpsml_State : outgoingComTransitions24
+cpsml_ProbTransition "0..9999" -- "1..1" cpsml_State : outgoingProbTransitions27
+cpsml_State "0..9999" --* "1..1" cpsml_System : ownedStates4
+cpsml_System "1..1" *-- "0..9999" cpsml_Transition : ownedTransitions6
+cpsml_ODE "0..9999" --* "1..1" cpsml_System : ownedodes11
+cpsml_System "1..1" *-- "0..9999" cpsml_Variable : ownedvariables0
+cpsml_ProbTransition "1..1" -- "1..1" cpsml_State : psrc54
+cpsml_ProbTransition "1..1" -- "1..1" cpsml_State : ptgt56
+cpsml_ProbTransition "0..1" -- "1..1" cpsml_System : ptok19
+cpsml_System "1..1" -- "1..1" cpsml_Variable : relatedvariable1
+cpsml_Transition "1..1" -- "1..1" cpsml_Variable : relatedvariable248
+cpsml_ODE "1..1" -- "1..1" cpsml_State : slaveode21
+cpsml_State "0..9999" --* "1..1" cpsml_State : subStates31
+cpsml_ODE "0..9999" --* "1..1" cpsml_State : subodes39
+cpsml_State "1..1" -- "1..1" cpsml_Variable : subrelatedvariable45
+cpsml_State "1..1" *-- "0..9999" cpsml_Variable : subrelatedvariables42
+cpsml_State "1..1" *-- "0..9999" cpsml_Transition : subtransitions36
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+class Bill {
+  + amount : float
+  + billno : str
+  + patientname : str
+}
+class Department {
+  + doctorid : int
+  + id : int
+  + name : str
+}
+class Doctor {
+  + address : str
+  + department : str
+  + docid : int
+  + name : str
+  + phno : int
+  + specialization : str
+}
+class Nurse {
+}
+class Patient {
+  + address : str
+  + age : int
+  + id : int
+  + name : str
+  + roomno : int
+  + sex : str
+  + telno : int
+}
+abstract class Person {
+  + id : int
+  + name : str
+  + type : str
+}
+class Receptionist {
+  + attribute2 : str
+  + id : int
+}
+class Room {
+  + location : str
+  + roomno : int
+}
+class Staff {
+}
+Department "1..1" -- "1..9999" Doctor : Doctor_Department
+Doctor "1..9999" -- "1..9999" Patient : Doctor_Patient
+Bill "1..1" -- "1..1" Patient : Patient_Bill
+Patient "1..9999" -- "1..1" Room : Patient_Room
+Room "0..9999" -- "0..9999" Staff : Room_Staff
+Bill "0..9999" -- "1..1" Receptionist : manages
+Patient "1..1" -- "1..1" Receptionist : receptions
+@enduml

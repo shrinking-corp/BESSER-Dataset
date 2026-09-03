@@ -1,0 +1,91 @@
+@startuml
+enum AssocKind {
+  Aggregation
+  Association
+  Composition
+}
+enum CollectionTypes {
+  Bag
+  Sequence
+  Set
+}
+enum SimpleTypes {
+  Boolean
+  Integer
+  Real
+  String
+}
+class Type {
+}
+class USE_Association {
+  + kind : str
+  + name : str
+}
+class USE_Attribute {
+  + name : str
+}
+class USE_Class {
+  + abstract : bool
+  + name : str
+}
+class USE_CollectionType {
+  + type : str
+}
+class USE_Enumeration {
+  + name : str
+}
+class USE_EnumerationType {
+}
+class USE_Literal {
+  + name : str
+}
+class USE_Model {
+  + name : str
+}
+class USE_OCLExpression {
+  + expr : str
+}
+class USE_Operation {
+  + name : str
+}
+class USE_Parameter {
+  + name : str
+}
+class USE_ReferenceType {
+}
+class USE_Role {
+  + lowerBound : int
+  + name : str
+  + ordered : bool
+  + upperBound : int
+}
+class USE_SimpleType {
+  + type : str
+}
+abstract class USE_Type {
+}
+Type <|-- USE_CollectionType
+Type <|-- USE_EnumerationType
+Type <|-- USE_ReferenceType
+Type <|-- USE_SimpleType
+USE_Association "0..9999" --* "1..1" USE_Model : associations12
+USE_Attribute "0..9999" --* "1..1" USE_Class : attributes2
+USE_CollectionType "1..1" *-- "1..1" USE_Type : baseType35
+USE_Class "1..1" -- "1..1" USE_Role : className43
+USE_Class "1..1" -- "1..1" USE_ReferenceType : class_37
+USE_Class "1..9999" --* "1..1" USE_Model : classes8
+USE_Enumeration "1..1" -- "1..1" USE_EnumerationType : enum33
+USE_Enumeration "0..9999" --* "1..1" USE_Model : enumerations10
+USE_OCLExpression "0..1" --* "1..1" USE_Operation : implementation18
+USE_Class "1..1" *-- "0..9999" USE_OCLExpression : invariants6
+USE_Enumeration "1..1" *-- "0..9999" USE_Literal : literals39
+USE_Class "1..1" *-- "0..9999" USE_Operation : operations4
+USE_Operation "1..1" *-- "0..9999" USE_Parameter : parameters16
+USE_OCLExpression "0..9999" --* "1..1" USE_Operation : postCondition27
+USE_OCLExpression "0..9999" --* "1..1" USE_Operation : preCondition24
+USE_Association "1..1" *-- "2..9999" USE_Role : role41
+USE_Class "1..1" -- "0..9999" USE_Class : superClasses1
+USE_Attribute "1..1" *-- "1..1" USE_Type : type14
+USE_Operation "1..1" *-- "0..1" USE_Type : type21
+USE_Parameter "1..1" *-- "1..1" USE_Type : type30
+@enduml

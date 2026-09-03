@@ -1,0 +1,18 @@
+@startuml
+class mteach_Course {
+  + coefficient : float
+  + name : str
+  + time : int
+}
+class mteach_Professor {
+  + firstName : str
+  + lastName : str
+}
+class mteach_Topic {
+  + title : str
+}
+mteach_Course "0..1" -- "1..1" mteach_Topic : course3
+mteach_Course "1..1" -- "0..1" mteach_Professor : professor2
+mteach_Course "0..9999" -- "1..1" mteach_Professor : teachedCourses0
+mteach_Course "1..1" -- "1..9999" mteach_Topic : topics1
+@enduml

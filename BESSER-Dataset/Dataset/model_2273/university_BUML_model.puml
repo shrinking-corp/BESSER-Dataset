@@ -1,0 +1,29 @@
+@startuml
+class Person {
+}
+class university_Address {
+}
+class university_Assistant {
+}
+class university_Course {
+  + etcs : int
+  + id : str
+  + name : str
+}
+class university_CourseCatalog {
+}
+abstract class university_Person {
+  + name : str
+}
+class university_Professor {
+}
+class university_Staff {
+  + staff : str
+}
+Person <|-- university_Assistant
+Person <|-- university_Professor
+university_Address "0..9999" --* "1..1" university_Person : addresses4
+university_Assistant "0..9999" --* "1..1" university_Staff : assistants2
+university_Course "0..9999" --* "1..1" university_CourseCatalog : courses0
+university_Professor "0..9999" --* "1..1" university_Staff : professors1
+@enduml

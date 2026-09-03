@@ -1,0 +1,21 @@
+@startuml
+class FamiliesWithSiblings_Family {
+  + name : str
+}
+class FamiliesWithSiblings_FamilyMember {
+  + name : str
+}
+class FamiliesWithSiblings_FamilyRegister {
+}
+FamiliesWithSiblings_Family "1..1" *-- "0..9999" FamiliesWithSiblings_FamilyMember : daughters6
+FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : daughtersInverse17
+FamiliesWithSiblings_Family "0..9999" --* "1..1" FamiliesWithSiblings_FamilyRegister : families0
+FamiliesWithSiblings_Family "1..1" -- "0..1" FamiliesWithSiblings_FamilyRegister : familiesInverse8
+FamiliesWithSiblings_Family "1..1" *-- "0..1" FamiliesWithSiblings_FamilyMember : father1
+FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : fatherInverse11
+FamiliesWithSiblings_Family "1..1" *-- "0..1" FamiliesWithSiblings_FamilyMember : mother2
+FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : motherInverse13
+FamiliesWithSiblings_Family "1..1" -- "0..5" FamiliesWithSiblings_Family : siblings10
+FamiliesWithSiblings_Family "1..1" *-- "0..9999" FamiliesWithSiblings_FamilyMember : sons4
+FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : sonsInverse15
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+class Interface {
+}
+class adl201_Binding {
+  + name : str
+}
+class adl201_BindingAttributes {
+  + name : str
+  + value : str
+}
+class adl201_Component {
+  + name : str
+}
+class adl201_Content {
+  + expression : str
+  + language : str
+}
+abstract class adl201_Interface {
+  + name : str
+  + signature : str
+}
+class adl201_Provided {
+}
+class adl201_Required {
+}
+Interface <|-- adl201_Provided
+Interface <|-- adl201_Required
+adl201_Binding "1..1" *-- "0..9999" adl201_BindingAttributes : attributes13
+adl201_Binding "0..9999" -- "1..1" adl201_Provided : bindings21
+adl201_Binding "0..9999" --* "1..1" adl201_Component : bindings5
+adl201_Component "1..1" *-- "0..1" adl201_Content : content0
+adl201_Component "1..1" -- "1..1" adl201_Content : contentParent18
+adl201_Binding "1..1" -- "0..1" adl201_Provided : from_15
+adl201_Component "1..1" *-- "0..9999" adl201_Provided : providedInterfaces3
+adl201_Component "1..1" *-- "0..9999" adl201_Required : requiredInterfaces1
+adl201_Provided "1..1" -- "0..9999" adl201_Required : simpleBindings24
+adl201_Component "0..9999" --* "1..1" adl201_Component : subComponents8
+adl201_Binding "1..1" -- "0..1" adl201_Required : to10
+@enduml

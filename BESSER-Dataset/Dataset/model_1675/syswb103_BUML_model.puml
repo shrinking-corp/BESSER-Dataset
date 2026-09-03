@@ -1,0 +1,58 @@
+@startuml
+class NamedElement {
+}
+class syswb103_Component {
+}
+class syswb103_Function {
+}
+class syswb103_FunctionProperty {
+  + description : str
+}
+abstract class syswb103_NamedElement {
+  + name : str
+}
+class syswb103_PatternCatalog {
+  + id : str
+}
+class syswb103_RelatedTo {
+  + since : str
+}
+class syswb103_System {
+}
+class syswb103_Thing {
+  + id : int
+}
+class syswb103_Thoughts {
+}
+class syswb103_Workbench {
+  + aprop : str
+}
+NamedElement <|-- syswb103_Component
+NamedElement <|-- syswb103_Function
+NamedElement <|-- syswb103_FunctionProperty
+NamedElement <|-- syswb103_RelatedTo
+NamedElement <|-- syswb103_System
+NamedElement <|-- syswb103_Thing
+NamedElement <|-- syswb103_Thoughts
+NamedElement <|-- syswb103_Workbench
+syswb103_Component "0..1" -- "1..1" syswb103_Function : allocatedTo35
+syswb103_Component "0..9999" -- "1..1" syswb103_Component : associations22
+syswb103_Function "0..1" -- "1..1" syswb103_Function : associations33
+syswb103_PatternCatalog "0..9999" --* "1..1" syswb103_Workbench : catalog7
+syswb103_Component "1..1" -- "0..9999" syswb103_Component : decompositions20
+syswb103_Function "0..9999" --* "1..1" syswb103_Function : decompositions27
+syswb103_RelatedTo "1..1" -- "0..1" syswb103_Thing : fromThing10
+syswb103_FunctionProperty "0..9999" --* "1..1" syswb103_Workbench : functionProperties5
+syswb103_Function "0..1" --* "1..1" syswb103_System : functionalArchitecture38
+syswb103_FunctionProperty "0..1" -- "1..1" syswb103_FunctionProperty : parent17
+syswb103_Function "0..9999" --* "1..1" syswb103_PatternCatalog : patterns44
+syswb103_Component "1..1" -- "0..9999" syswb103_Function : performs24
+syswb103_Component "0..1" --* "1..1" syswb103_System : physicalArchitecture41
+syswb103_Function "1..1" -- "0..9999" syswb103_FunctionProperty : property29
+syswb103_Thing "0..9999" -- "1..1" syswb103_Thoughts : relatedTo13
+syswb103_RelatedTo "0..9999" --* "1..1" syswb103_Thing : relations9
+syswb103_System "0..1" --* "1..1" syswb103_Workbench : systemView3
+syswb103_Thing "0..9999" --* "1..1" syswb103_Workbench : things0
+syswb103_Thoughts "0..9999" --* "1..1" syswb103_Workbench : thoughts1
+syswb103_RelatedTo "1..1" -- "0..1" syswb103_Thing : toThing11
+@enduml

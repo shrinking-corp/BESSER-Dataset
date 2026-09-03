@@ -1,0 +1,156 @@
+@startuml
+class Expr {
+}
+class Member {
+}
+class Symbol {
+}
+class paplj_Add {
+}
+class paplj_And {
+}
+class paplj_Assignment {
+}
+class paplj_Binding {
+}
+class paplj_Block2 {
+}
+class paplj_Bool {
+  + true : bool
+}
+class paplj_Cast {
+}
+class paplj_Div {
+}
+class paplj_Eq {
+}
+class paplj_Expr {
+}
+class paplj_Field {
+}
+class paplj_If {
+}
+class paplj_Import {
+  + importedNamespace : str
+}
+class paplj_Let {
+}
+class paplj_Lt {
+}
+class paplj_Member {
+}
+class paplj_MemberRef {
+  + methodInvocation : bool
+}
+class paplj_Method {
+}
+class paplj_Min {
+}
+class paplj_Mul {
+}
+class paplj_Neq {
+}
+class paplj_New {
+}
+class paplj_Not {
+}
+class paplj_Null {
+}
+class paplj_Num {
+  + value : int
+}
+class paplj_Or {
+}
+class paplj_Param {
+}
+class paplj_Program {
+  + name : str
+}
+class paplj_Sub {
+}
+class paplj_Symbol {
+  + name : str
+}
+class paplj_This {
+}
+class paplj_Type {
+  + name : str
+}
+class paplj_Var {
+  + methodInvocation : bool
+}
+Expr <|-- paplj_Add
+Expr <|-- paplj_And
+Expr <|-- paplj_Assignment
+Expr <|-- paplj_Block2
+Expr <|-- paplj_Bool
+Expr <|-- paplj_Cast
+Expr <|-- paplj_Div
+Expr <|-- paplj_Eq
+Expr <|-- paplj_If
+Expr <|-- paplj_Let
+Expr <|-- paplj_Lt
+Expr <|-- paplj_MemberRef
+Expr <|-- paplj_Min
+Expr <|-- paplj_Mul
+Expr <|-- paplj_Neq
+Expr <|-- paplj_New
+Expr <|-- paplj_Not
+Expr <|-- paplj_Null
+Expr <|-- paplj_Num
+Expr <|-- paplj_Or
+Expr <|-- paplj_Sub
+Expr <|-- paplj_This
+Expr <|-- paplj_Var
+Member <|-- paplj_Field
+Member <|-- paplj_Method
+Symbol <|-- paplj_Binding
+Symbol <|-- paplj_Member
+Symbol <|-- paplj_Param
+paplj_Expr "0..9999" --* "1..1" paplj_Var : args106
+paplj_Expr "0..9999" --* "1..1" paplj_MemberRef : args97
+paplj_Binding "0..9999" --* "1..1" paplj_Let : bindings28
+paplj_Block2 "0..1" --* "1..1" paplj_Method : body13
+paplj_Program "1..1" *-- "0..9999" paplj_Type : classes1
+paplj_Expr "0..1" --* "1..1" paplj_If : condition20
+paplj_Expr "0..1" --* "1..1" paplj_Program : expr3
+paplj_Expr "0..1" --* "1..1" paplj_Let : expr30
+paplj_Expr "0..1" --* "1..1" paplj_Not : expr88
+paplj_Expr "0..1" --* "1..1" paplj_Min : expr90
+paplj_Block2 "1..1" *-- "0..9999" paplj_Expr : exprs17
+paplj_Import "0..9999" --* "1..1" paplj_Program : imports0
+paplj_Assignment "1..1" *-- "0..1" paplj_Expr : left33
+paplj_Expr "0..1" --* "1..1" paplj_Or : left38
+paplj_And "1..1" *-- "0..1" paplj_Expr : left43
+paplj_Eq "1..1" *-- "0..1" paplj_Expr : left48
+paplj_Expr "0..1" --* "1..1" paplj_Neq : left53
+paplj_Expr "0..1" --* "1..1" paplj_Lt : left58
+paplj_Add "1..1" *-- "0..1" paplj_Expr : left63
+paplj_Expr "0..1" --* "1..1" paplj_Sub : left68
+paplj_Expr "0..1" --* "1..1" paplj_Mul : left73
+paplj_Div "1..1" *-- "0..1" paplj_Expr : left78
+paplj_Cast "1..1" *-- "0..1" paplj_Expr : left83
+paplj_Expr "0..1" --* "1..1" paplj_MemberRef : left92
+paplj_Symbol "0..1" -- "1..1" paplj_Var : member104
+paplj_Member "0..1" -- "1..1" paplj_MemberRef : member94
+paplj_Member "0..9999" --* "1..1" paplj_Type : members8
+paplj_Expr "0..1" --* "1..1" paplj_If : onFalse25
+paplj_Expr "0..1" --* "1..1" paplj_If : onTrue22
+paplj_Method "1..1" *-- "0..9999" paplj_Param : params12
+paplj_Expr "0..1" --* "1..1" paplj_Or : right40
+paplj_And "1..1" *-- "0..1" paplj_Expr : right45
+paplj_Eq "1..1" *-- "0..1" paplj_Expr : right50
+paplj_Expr "0..1" --* "1..1" paplj_Neq : right55
+paplj_Expr "0..1" --* "1..1" paplj_Lt : right60
+paplj_Add "1..1" *-- "0..1" paplj_Expr : right65
+paplj_Expr "0..1" --* "1..1" paplj_Sub : right70
+paplj_Expr "0..1" --* "1..1" paplj_Mul : right75
+paplj_Div "1..1" *-- "0..1" paplj_Expr : right80
+paplj_Type "0..1" -- "1..1" paplj_Type : superType6
+paplj_Symbol "1..1" -- "0..1" paplj_Type : type10
+paplj_Null "1..1" -- "0..1" paplj_Type : type100
+paplj_New "1..1" -- "0..1" paplj_Type : type102
+paplj_Cast "1..1" -- "0..1" paplj_Type : type85
+paplj_Binding "1..1" *-- "0..1" paplj_Expr : value15
+paplj_Assignment "1..1" *-- "0..1" paplj_Expr : value35
+@enduml

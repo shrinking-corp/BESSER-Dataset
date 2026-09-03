@@ -1,0 +1,57 @@
+@startuml
+class Admin {
+  + alamat : str
+  + id : str
+  + nama : str
+  + no_tlp : int
+}
+class Admin_Actor {
+}
+class Cetak_Slip_UseCase {
+}
+class Data_Pembayaran {
+  + angsuran : int
+  + angsuranke : int
+  + keterangan : str
+  + kode_bayar : str
+  + kode_kredit : str
+  + tanggal_bayar : str
+}
+class Login_Admin {
+  + User_name : str
+  + attribute : str
+}
+class Melakukan_Login_UseCase {
+}
+class Melakukan_Registrasi_UseCase {
+}
+class Melakukan_Transaksi_UseCase {
+}
+class Memproses_Database_UseCase {
+}
+class Memverivikasi_Data_UseCase {
+}
+class Mengentry_Data_UseCase {
+}
+class Pelanggan {
+  + alamat : str
+  + kode_pelanggan : str
+  + nama : str
+}
+class Pelanggan__Actor {
+}
+Admin "1..9999" -- "1..9999" Data_Pembayaran : Admin_Data_Pembayaran
+Admin "0..1" -- "1..1" Login_Admin : Admin_Login_Admin
+Admin_Actor "0..1" -- "0..1" Melakukan_Login_UseCase : Admin_Melakukan_Login
+Admin_Actor "0..1" -- "0..1" Memverivikasi_Data_UseCase : Admin_Memverivikasi_Data
+Admin_Actor "0..1" -- "0..1" Mengentry_Data_UseCase : Admin_Mengentry_Data
+Admin "1..9999" -- "1..9999" Pelanggan : Admin_Pelanggan
+Admin_Actor "0..1" -- "0..1" Cetak_Slip_UseCase : Cetak_Slip_Admin
+Admin_Actor "0..1" -- "0..1" Melakukan_Registrasi_UseCase : Melakukan_Registrasi_Admin
+Admin_Actor "0..1" -- "0..1" Melakukan_Transaksi_UseCase : Melakukan_Transaksi_Admin
+Admin_Actor "0..1" -- "0..1" Memproses_Database_UseCase : Memproses_Database_Admin
+Data_Pembayaran "1..1" -- "1..1" Pelanggan : Pelanggan_Data_Pembayaran
+Melakukan_Registrasi_UseCase "0..1" -- "0..1" Pelanggan__Actor : Pelanggan__Melakukan_Registrasi
+Melakukan_Transaksi_UseCase "0..1" -- "0..1" Pelanggan__Actor : Pelanggan__Melakukan_Transaksi
+Memverivikasi_Data_UseCase "0..1" -- "0..1" Pelanggan__Actor : Pelanggan__Memverivikasi_Data
+@enduml

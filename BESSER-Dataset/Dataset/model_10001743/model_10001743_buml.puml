@@ -1,0 +1,33 @@
+@startuml
+class Checkout_Book_external {
+}
+class Database_external {
+}
+class Library_Management_System_Component {
+}
+class Library_Staff_Actor {
+}
+class Patron_Actor {
+}
+class Return_Book_external {
+}
+class Search_for_Books_external {
+}
+class Send_Book_external {
+}
+class librarymanagementsystem_Library {
+  + CDs : str
+  + books : str
+  + computers : int
+  + fine : str
+  + maxFine : str
+  + software : str
+  + videos : str
+}
+Database_external "0..1" -- "0..1" Library_Staff_Actor : Database_Library_Staff
+Checkout_Book_external "0..1" -- "0..1" Patron_Actor : Patron_Checkout_Book
+Patron_Actor "0..1" -- "0..1" Return_Book_external : Patron_Return_Book
+Patron_Actor "0..1" -- "0..1" Search_for_Books_external : Patron_Search_for_Books
+Library_Staff_Actor "0..1" -- "0..1" Return_Book_external : Return_Book_Library_Staff
+Library_Staff_Actor "0..1" -- "0..1" Send_Book_external : Send_Book_Library_Staff
+@enduml

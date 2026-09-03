@@ -1,0 +1,60 @@
+@startuml
+class ASTNode {
+}
+class AbstractTypeDeclaration {
+}
+class BodyDeclaration {
+}
+class Expression {
+}
+abstract class JAVA_ASTNode {
+}
+abstract class JAVA_AbstractTypeDeclaration {
+}
+abstract class JAVA_BodyDeclaration {
+}
+class JAVA_ClassDeclaration {
+}
+abstract class JAVA_Expression {
+}
+class JAVA_FieldDeclaration {
+}
+class JAVA_InterfaceDeclaration {
+}
+abstract class JAVA_NamedElement {
+  + name : str
+  + proxy : bool
+}
+class JAVA_Package {
+}
+abstract class JAVA_Type {
+}
+class JAVA_TypeAccess {
+}
+abstract class JAVA_TypeDeclaration {
+}
+class NamedElement {
+}
+class Type {
+}
+class TypeDeclaration {
+}
+ASTNode <|-- JAVA_Expression
+ASTNode <|-- JAVA_NamedElement
+AbstractTypeDeclaration <|-- JAVA_TypeDeclaration
+BodyDeclaration <|-- JAVA_AbstractTypeDeclaration
+BodyDeclaration <|-- JAVA_FieldDeclaration
+Expression <|-- JAVA_TypeAccess
+NamedElement <|-- JAVA_BodyDeclaration
+NamedElement <|-- JAVA_Package
+NamedElement <|-- JAVA_Type
+Type <|-- JAVA_AbstractTypeDeclaration
+TypeDeclaration <|-- JAVA_ClassDeclaration
+TypeDeclaration <|-- JAVA_InterfaceDeclaration
+JAVA_ClassDeclaration "1..1" *-- "0..9999" JAVA_FieldDeclaration : fields1
+JAVA_AbstractTypeDeclaration "0..9999" --* "1..1" JAVA_Package : ownedElements5
+JAVA_ClassDeclaration "1..1" *-- "0..1" JAVA_TypeAccess : superClass0
+JAVA_AbstractTypeDeclaration "1..1" *-- "0..9999" JAVA_TypeAccess : superInterfaces6
+JAVA_TypeAccess "1..1" -- "1..1" JAVA_TypeDeclaration : type3
+JAVA_FieldDeclaration "1..1" *-- "1..1" JAVA_TypeAccess : typeAccess9
+@enduml

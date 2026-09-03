@@ -1,0 +1,35 @@
+@startuml
+enum ArcKind {
+  normal
+  readArc
+}
+class Node {
+}
+class iritptn_Arc {
+  + kind : str
+  + weight : int
+}
+class iritptn_Node {
+  + name : str
+}
+class iritptn_PetriNet {
+  + name : str
+}
+class iritptn_Place {
+  + marking : int
+}
+class iritptn_Transition {
+  + tMax : int
+  + tMin : int
+}
+Node <|-- iritptn_Place
+Node <|-- iritptn_Transition
+iritptn_Arc "0..9999" --* "1..1" iritptn_PetriNet : arc1
+iritptn_Arc "0..9999" -- "1..1" iritptn_Node : ingoings3
+iritptn_Arc "1..1" -- "0..1" iritptn_PetriNet : net10
+iritptn_Node "1..1" -- "0..1" iritptn_PetriNet : net7
+iritptn_Node "0..9999" --* "1..1" iritptn_PetriNet : nodes0
+iritptn_Arc "0..9999" -- "1..1" iritptn_Node : outgoings5
+iritptn_Arc "1..1" -- "1..1" iritptn_Node : source12
+iritptn_Arc "1..1" -- "1..1" iritptn_Node : target8
+@enduml

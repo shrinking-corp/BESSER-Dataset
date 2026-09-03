@@ -1,0 +1,320 @@
+@startuml
+class CSTNode {
+}
+class CallExpCS {
+}
+class CollectionLiteralPartCS {
+}
+enum CollectionTypeIdentifierEnum {
+  Bag
+  Collection
+  OrderedSet
+  Sequence
+  Set
+}
+class ContextDeclCS {
+}
+class DefExpressionCS {
+}
+enum DotOrArrowEnum {
+  arrow
+  dot
+  none
+}
+class FeatureCallExpCS {
+}
+class InitOrDerValueCS {
+}
+class InvOrDefCS {
+}
+class IsMarkedPreCS {
+}
+class LiteralExpCS {
+}
+class LoopExpCS {
+}
+enum MessageExpKind {
+  hasSent
+  sent
+}
+class OCLExpressionCS {
+}
+class OCLMessageArgCS {
+}
+class OperationCS {
+}
+class PackageDeclarationCS {
+}
+class PathNameCS {
+}
+class PrePostOrBodyDeclCS {
+}
+enum PrePostOrBodyEnum {
+  body
+  post
+  pre
+}
+class PrimitiveLiteralExpCS {
+}
+class SimpleNameCS {
+}
+enum SimpleTypeEnum {
+  Boolean
+  Integer
+  OclAny
+  OclInvalid
+  OclMessage
+  OclVoid
+  Real
+  String
+  UnlimitedNatural
+  identifier
+  keyword
+  self
+}
+class TypeCS {
+}
+class VariableCS {
+}
+class cst_LiteralExpCS {
+}
+class cst_PrimitiveLiteralExpCS {
+}
+class cst_SimpleNameCS {
+}
+class cst_TypeCS {
+}
+class ocl_cst_BooleanLiteralExpCS {
+  + booleanSymbol : str
+}
+abstract class ocl_cst_CSTNode {
+  + ast : str
+  + endOffset : int
+  + endToken : str
+  + startOffset : int
+  + startToken : str
+}
+class ocl_cst_CallExpCS {
+  + accessor : str
+}
+class ocl_cst_ClassifierContextDeclCS {
+}
+class ocl_cst_CollectionLiteralExpCS {
+  + collectionType : str
+}
+class ocl_cst_CollectionLiteralPartCS {
+}
+class ocl_cst_CollectionRangeCS {
+}
+class ocl_cst_CollectionTypeCS {
+  + collectionTypeIdentifier : str
+}
+abstract class ocl_cst_ContextDeclCS {
+}
+class ocl_cst_DefCS {
+  + static : bool
+}
+class ocl_cst_DefExpressionCS {
+}
+class ocl_cst_DerValueCS {
+}
+class ocl_cst_FeatureCallExpCS {
+}
+class ocl_cst_IfExpCS {
+}
+abstract class ocl_cst_InitOrDerValueCS {
+}
+class ocl_cst_InitValueCS {
+}
+class ocl_cst_IntegerLiteralExpCS {
+  + extendedIntegerSymbol : str
+  + integerSymbol : str
+  + longSymbol : str
+}
+class ocl_cst_InvCS {
+}
+abstract class ocl_cst_InvOrDefCS {
+}
+class ocl_cst_InvalidLiteralExpCS {
+}
+class ocl_cst_IsMarkedPreCS {
+}
+class ocl_cst_IterateExpCS {
+}
+class ocl_cst_IteratorExpCS {
+}
+class ocl_cst_LetExpCS {
+}
+abstract class ocl_cst_LiteralExpCS {
+}
+class ocl_cst_LoopExpCS {
+}
+class ocl_cst_MessageExpCS {
+  + kind : str
+}
+class ocl_cst_NullLiteralExpCS {
+}
+class ocl_cst_OCLDocumentCS {
+}
+abstract class ocl_cst_OCLExpressionCS {
+}
+class ocl_cst_OCLMessageArgCS {
+}
+class ocl_cst_OperationCS {
+}
+class ocl_cst_OperationCallExpCS {
+  + isAtomic : str
+}
+class ocl_cst_OperationContextDeclCS {
+}
+class ocl_cst_PackageDeclarationCS {
+}
+class ocl_cst_PathNameCS {
+}
+class ocl_cst_PrePostOrBodyDeclCS {
+  + kind : str
+}
+class ocl_cst_PrimitiveLiteralExpCS {
+  + symbol : str
+}
+class ocl_cst_PrimitiveTypeCS {
+}
+class ocl_cst_PropertyContextCS {
+}
+class ocl_cst_RealLiteralExpCS {
+  + realSymbol : str
+}
+class ocl_cst_SimpleNameCS {
+  + type : str
+  + value : str
+}
+class ocl_cst_StringLiteralExpCS {
+  + stringSymbol : str
+  + unescapedStringSymbol : str
+}
+class ocl_cst_TupleLiteralExpCS {
+}
+class ocl_cst_TupleTypeCS {
+}
+abstract class ocl_cst_TypeCS {
+}
+class ocl_cst_UnlimitedNaturalLiteralExpCS {
+  + extendedIntegerSymbol : str
+  + integerSymbol : str
+  + longSymbol : str
+}
+class ocl_cst_VariableCS {
+  + name : str
+}
+class ocl_cst_VariableExpCS {
+}
+CSTNode <|-- ocl_cst_CollectionLiteralPartCS
+CSTNode <|-- ocl_cst_ContextDeclCS
+CSTNode <|-- ocl_cst_DefExpressionCS
+CSTNode <|-- ocl_cst_InitOrDerValueCS
+CSTNode <|-- ocl_cst_InvOrDefCS
+CSTNode <|-- ocl_cst_IsMarkedPreCS
+CSTNode <|-- ocl_cst_OCLDocumentCS
+CSTNode <|-- ocl_cst_OCLExpressionCS
+CSTNode <|-- ocl_cst_OCLMessageArgCS
+CSTNode <|-- ocl_cst_OperationCS
+CSTNode <|-- ocl_cst_PackageDeclarationCS
+CSTNode <|-- ocl_cst_PrePostOrBodyDeclCS
+CSTNode <|-- ocl_cst_VariableCS
+CallExpCS <|-- ocl_cst_FeatureCallExpCS
+CallExpCS <|-- ocl_cst_LoopExpCS
+CollectionLiteralPartCS <|-- ocl_cst_CollectionRangeCS
+ContextDeclCS <|-- ocl_cst_ClassifierContextDeclCS
+ContextDeclCS <|-- ocl_cst_OperationContextDeclCS
+ContextDeclCS <|-- ocl_cst_PropertyContextCS
+FeatureCallExpCS <|-- ocl_cst_OperationCallExpCS
+InitOrDerValueCS <|-- ocl_cst_DerValueCS
+InitOrDerValueCS <|-- ocl_cst_InitValueCS
+InvOrDefCS <|-- ocl_cst_DefCS
+InvOrDefCS <|-- ocl_cst_InvCS
+LiteralExpCS <|-- ocl_cst_CollectionLiteralExpCS
+LiteralExpCS <|-- ocl_cst_PrimitiveLiteralExpCS
+LiteralExpCS <|-- ocl_cst_TupleLiteralExpCS
+LoopExpCS <|-- ocl_cst_IterateExpCS
+LoopExpCS <|-- ocl_cst_IteratorExpCS
+OCLExpressionCS <|-- ocl_cst_CallExpCS
+OCLExpressionCS <|-- ocl_cst_IfExpCS
+OCLExpressionCS <|-- ocl_cst_LetExpCS
+OCLExpressionCS <|-- ocl_cst_LiteralExpCS
+OCLExpressionCS <|-- ocl_cst_MessageExpCS
+OCLExpressionCS <|-- ocl_cst_SimpleNameCS
+OCLExpressionCS <|-- ocl_cst_TypeCS
+OCLExpressionCS <|-- ocl_cst_VariableExpCS
+PrimitiveLiteralExpCS <|-- ocl_cst_IntegerLiteralExpCS
+PrimitiveLiteralExpCS <|-- ocl_cst_RealLiteralExpCS
+PrimitiveLiteralExpCS <|-- ocl_cst_StringLiteralExpCS
+PrimitiveLiteralExpCS <|-- ocl_cst_UnlimitedNaturalLiteralExpCS
+TypeCS <|-- ocl_cst_PathNameCS
+TypeCS <|-- ocl_cst_TupleTypeCS
+cst_LiteralExpCS <|-- ocl_cst_InvalidLiteralExpCS
+cst_LiteralExpCS <|-- ocl_cst_NullLiteralExpCS
+cst_PrimitiveLiteralExpCS <|-- ocl_cst_BooleanLiteralExpCS
+cst_SimpleNameCS <|-- ocl_cst_BooleanLiteralExpCS
+cst_SimpleNameCS <|-- ocl_cst_CollectionTypeCS
+cst_SimpleNameCS <|-- ocl_cst_InvalidLiteralExpCS
+cst_SimpleNameCS <|-- ocl_cst_NullLiteralExpCS
+cst_SimpleNameCS <|-- ocl_cst_PrimitiveTypeCS
+cst_TypeCS <|-- ocl_cst_CollectionTypeCS
+cst_TypeCS <|-- ocl_cst_PrimitiveTypeCS
+OCLExpressionCS "0..9999" --* "1..1" ocl_cst_FeatureCallExpCS : arguments117
+OCLExpressionCS "0..9999" --* "1..1" ocl_cst_VariableExpCS : arguments59
+OCLMessageArgCS "0..9999" --* "1..1" ocl_cst_MessageExpCS : arguments88
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_LoopExpCS : body112
+CollectionLiteralPartCS "0..9999" --* "1..1" ocl_cst_CollectionLiteralExpCS : collectionLiteralParts95
+OCLExpressionCS "1..1" --* "1..1" ocl_cst_IfExpCS : condition80
+InitOrDerValueCS "0..9999" --* "1..1" ocl_cst_PropertyContextCS : constraints13
+InvOrDefCS "0..9999" --* "1..1" ocl_cst_ClassifierContextDeclCS : constraints18
+ContextDeclCS "0..9999" --* "1..1" ocl_cst_PackageDeclarationCS : contextDecls1
+DefExpressionCS "0..1" --* "1..1" ocl_cst_DefCS : defExpressionCS50
+OCLExpressionCS "1..1" --* "1..1" ocl_cst_IfExpCS : elseExpression77
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_OCLMessageArgCS : expression92
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_InitOrDerValueCS : expressionCS15
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_PrePostOrBodyDeclCS : expressionCS45
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_InvCS : expressionCS48
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_DefExpressionCS : expressionCS56
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_CollectionLiteralPartCS : expressionCS96
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_LetExpCS : inExpression72
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_VariableCS : initExpression40
+IsMarkedPreCS "0..1" --* "1..1" ocl_cst_FeatureCallExpCS : isMarkedPreCS120
+IsMarkedPreCS "0..1" --* "1..1" ocl_cst_VariableExpCS : isMarkedPreCS64
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_CollectionRangeCS : lastExpressionCS100
+OperationCS "0..1" --* "1..1" ocl_cst_OperationContextDeclCS : operationCS25
+OperationCS "0..1" --* "1..1" ocl_cst_DefExpressionCS : operationCS51
+PackageDeclarationCS "0..1" -- "1..1" ocl_cst_PackageDeclarationCS : packageDeclarationCS3
+PackageDeclarationCS "0..9999" --* "1..1" ocl_cst_OCLDocumentCS : packageDeclarations123
+VariableCS "0..9999" --* "1..1" ocl_cst_OperationCS : parameters33
+PathNameCS "0..1" --* "1..1" ocl_cst_PackageDeclarationCS : pathNameCS0
+PathNameCS "0..1" --* "1..1" ocl_cst_FeatureCallExpCS : pathNameCS115
+PathNameCS "0..1" --* "1..1" ocl_cst_ClassifierContextDeclCS : pathNameCS16
+PathNameCS "0..1" --* "1..1" ocl_cst_OperationCS : pathNameCS28
+PathNameCS "0..1" --* "1..1" ocl_cst_PropertyContextCS : pathNameCS6
+PrePostOrBodyDeclCS "1..9999" --* "1..1" ocl_cst_OperationContextDeclCS : prePostOrBodyDecls26
+SimpleNameCS "0..1" --* "1..1" ocl_cst_CallExpCS : simpleNameCS104
+SimpleNameCS "0..1" --* "1..1" ocl_cst_ClassifierContextDeclCS : simpleNameCS20
+SimpleNameCS "0..1" --* "1..1" ocl_cst_InvOrDefCS : simpleNameCS23
+SimpleNameCS "0..1" --* "1..1" ocl_cst_OperationCS : simpleNameCS30
+SimpleNameCS "0..1" --* "1..1" ocl_cst_PrePostOrBodyDeclCS : simpleNameCS43
+SimpleNameCS "0..1" --* "1..1" ocl_cst_VariableExpCS : simpleNameCS61
+SimpleNameCS "0..1" --* "1..1" ocl_cst_PropertyContextCS : simpleNameCS8
+SimpleNameCS "0..1" --* "1..1" ocl_cst_MessageExpCS : simpleNameCS85
+SimpleNameCS "0..9999" --* "1..1" ocl_cst_PathNameCS : simpleNames5
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_CallExpCS : source102
+OCLExpressionCS "0..1" --* "1..1" ocl_cst_MessageExpCS : target83
+OCLExpressionCS "1..1" --* "1..1" ocl_cst_IfExpCS : thenExpression75
+TypeCS "0..1" --* "1..1" ocl_cst_PropertyContextCS : typeCS11
+TypeCS "0..1" --* "1..1" ocl_cst_OperationCS : typeCS35
+TypeCS "0..1" --* "1..1" ocl_cst_VariableCS : typeCS38
+TypeCS "0..1" --* "1..1" ocl_cst_CollectionTypeCS : typeCS68
+TypeCS "0..1" --* "1..1" ocl_cst_OCLMessageArgCS : typeCS90
+VariableCS "0..1" --* "1..1" ocl_cst_LoopExpCS : variable1107
+VariableCS "0..1" --* "1..1" ocl_cst_LoopExpCS : variable2109
+VariableCS "0..1" --* "1..1" ocl_cst_DefExpressionCS : variableCS53
+VariableCS "1..9999" --* "1..1" ocl_cst_TupleTypeCS : variables66
+VariableCS "1..9999" --* "1..1" ocl_cst_LetExpCS : variables70
+VariableCS "0..9999" --* "1..1" ocl_cst_TupleLiteralExpCS : variables98
+@enduml

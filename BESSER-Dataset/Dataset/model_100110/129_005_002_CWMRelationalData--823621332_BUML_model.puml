@@ -1,0 +1,90 @@
+@startuml
+class CWMRelationalData_CheckConstraint {
+}
+class CWMRelationalData_Column {
+  + characterSetName : str
+  + collectionName : str
+  + isNullable : str
+  + length : str
+  + precision : str
+  + scale : str
+}
+class CWMRelationalData_ColumnSet {
+}
+class CWMRelationalData_NamedColumnSet {
+}
+class CWMRelationalData_QueryColumnSet {
+}
+class CWMRelationalData_QueryExpression {
+  + expresssion : str
+}
+class CWMRelationalData_SQLDataType {
+  + typeNumber : str
+}
+class CWMRelationalData_SQLDistinctType {
+  + length : str
+  + precision : str
+  + scale : str
+}
+class CWMRelationalData_SQLSimpleType {
+  + characterMaximumLength : str
+  + characterOctetLength : str
+  + dateTimePrecision : str
+  + numericPrecision : str
+  + numericPrecisionRadix : str
+  + numericScale : str
+}
+class CWMRelationalData_Table {
+  + isSystem : str
+  + isTemporary : str
+  + temporaryScope : str
+}
+class CWMRelationalData_Trigger {
+}
+class CWMRelationalData_View {
+  + checkOption : str
+  + isReadOnly : str
+}
+class CheckConstraint {
+}
+class Column {
+}
+class ColumnSet {
+}
+class NamedColumnSet {
+}
+class QueryExpression {
+}
+class SQLDataType {
+}
+class SQLDistinctType {
+}
+class SQLSimpleType {
+}
+class Table {
+}
+class Trigger {
+}
+ColumnSet <|-- CWMRelationalData_NamedColumnSet
+ColumnSet <|-- CWMRelationalData_QueryColumnSet
+NamedColumnSet <|-- CWMRelationalData_Table
+NamedColumnSet <|-- CWMRelationalData_View
+SQLDataType <|-- CWMRelationalData_SQLDistinctType
+SQLDataType <|-- CWMRelationalData_SQLSimpleType
+CWMRelationalData_Column "1..1" -- "0..9999" CheckConstraint : column_constraints2
+CWMRelationalData_CheckConstraint "1..1" -- "0..9999" Table : constrainedElements1
+CWMRelationalData_CheckConstraint "1..1" -- "0..9999" Column : constraintElements0
+CWMRelationalData_ColumnSet "1..1" *-- "0..9999" Column : features6
+CWMRelationalData_Trigger "1..1" -- "1..1" NamedColumnSet : namedColumnSet16
+CWMRelationalData_NamedColumnSet "1..1" -- "1..1" Column : optionScopeColumn8
+CWMRelationalData_Column "1..1" -- "0..1" NamedColumnSet : optionScopeColumnSet5
+CWMRelationalData_Column "1..1" -- "0..1" ColumnSet : owner4
+CWMRelationalData_QueryColumnSet "1..1" *-- "1..1" QueryExpression : query11
+CWMRelationalData_View "1..1" *-- "1..1" QueryExpression : queryExpression14
+CWMRelationalData_SQLSimpleType "1..1" -- "0..9999" SQLDistinctType : sqlDistinctTypes21
+CWMRelationalData_SQLDistinctType "1..1" -- "1..1" SQLSimpleType : sqlSimpleType20
+CWMRelationalData_SQLDataType "1..1" -- "0..9999" Column : structuralFeatures18
+CWMRelationalData_Table "1..1" -- "0..9999" CheckConstraint : table_constraints12
+CWMRelationalData_NamedColumnSet "1..1" -- "0..9999" Trigger : triggers10
+CWMRelationalData_Column "1..1" -- "1..1" SQLDataType : type3
+@enduml

@@ -1,0 +1,107 @@
+@startuml
+class ArithmeticInstruction {
+}
+class CompareInstruction {
+}
+class Instruction {
+}
+class JumpInstruction {
+}
+class OutputInstruction {
+}
+class Value {
+}
+class mil_AddInstruction {
+}
+abstract class mil_ArithmeticInstruction {
+}
+class mil_CallInstruction {
+}
+abstract class mil_CompareInstruction {
+}
+class mil_ConditionalJumpInstruction {
+}
+class mil_ConstantInteger {
+  + rawValue : int
+}
+class mil_DivInstruction {
+}
+class mil_EqualInstruction {
+}
+class mil_GreaterThanEqualInstruction {
+}
+class mil_GreaterThanInstruction {
+}
+abstract class mil_Instruction {
+}
+abstract class mil_JumpInstruction {
+}
+class mil_LabelInstruction {
+  + name : str
+}
+class mil_LessThanEqualInstruction {
+}
+class mil_LessThanInstruction {
+}
+class mil_LoadInstruction {
+}
+class mil_MILModel {
+}
+class mil_MulInstruction {
+}
+class mil_NegateInstruction {
+}
+class mil_NotEqualInstruction {
+}
+abstract class mil_OutputInstruction {
+}
+class mil_PrintInstruction {
+  + output : str
+}
+class mil_RegisterReference {
+  + address : str
+}
+class mil_ReturnInstruction {
+}
+class mil_StoreInstruction {
+}
+class mil_SubInstruction {
+}
+class mil_UnconditionalJumpInstruction {
+}
+abstract class mil_Value {
+}
+class mil_YieldInstruciton {
+}
+ArithmeticInstruction <|-- mil_AddInstruction
+ArithmeticInstruction <|-- mil_DivInstruction
+ArithmeticInstruction <|-- mil_MulInstruction
+ArithmeticInstruction <|-- mil_SubInstruction
+CompareInstruction <|-- mil_EqualInstruction
+CompareInstruction <|-- mil_GreaterThanEqualInstruction
+CompareInstruction <|-- mil_GreaterThanInstruction
+CompareInstruction <|-- mil_LessThanEqualInstruction
+CompareInstruction <|-- mil_LessThanInstruction
+CompareInstruction <|-- mil_NotEqualInstruction
+Instruction <|-- mil_ArithmeticInstruction
+Instruction <|-- mil_CallInstruction
+Instruction <|-- mil_CompareInstruction
+Instruction <|-- mil_JumpInstruction
+Instruction <|-- mil_LabelInstruction
+Instruction <|-- mil_LoadInstruction
+Instruction <|-- mil_NegateInstruction
+Instruction <|-- mil_OutputInstruction
+Instruction <|-- mil_ReturnInstruction
+Instruction <|-- mil_StoreInstruction
+JumpInstruction <|-- mil_ConditionalJumpInstruction
+JumpInstruction <|-- mil_UnconditionalJumpInstruction
+OutputInstruction <|-- mil_PrintInstruction
+OutputInstruction <|-- mil_YieldInstruciton
+Value <|-- mil_ConstantInteger
+Value <|-- mil_RegisterReference
+mil_Instruction "0..9999" --* "1..1" mil_MILModel : instructions0
+mil_JumpInstruction "1..1" -- "1..1" mil_LabelInstruction : jumpTo3
+mil_CallInstruction "1..1" -- "1..1" mil_LabelInstruction : operationName4
+mil_RegisterReference "0..1" --* "1..1" mil_StoreInstruction : registerReference2
+mil_LoadInstruction "1..1" *-- "1..1" mil_Value : value1
+@enduml

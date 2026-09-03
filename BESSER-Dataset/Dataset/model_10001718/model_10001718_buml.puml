@@ -1,0 +1,45 @@
+@startuml
+class ConsultantDoctor {
+}
+class Doctor {
+  + locations : str
+  + specialty : str
+}
+enum Gender {
+}
+class Hospital {
+  + address : str
+  + name : str
+  + phone : str
+}
+class JuniorDoctor {
+}
+class Patient {
+  + allergies : str
+  + id : int
+  + prescriptions : str
+  + sickness : str
+  + specialReqs : str
+}
+class Person {
+  + address : str
+  + age : int
+  + gender : Gender
+  + phone : str
+}
+class Team {
+  + name : str
+}
+class Ward {
+  + capacity : int
+  + name : str
+}
+ConsultantDoctor "0..1" -- "0..9999" JuniorDoctor : ConsultantDoctor_JuniorDoctor
+ConsultantDoctor "1..1" -- "0..9999" Patient : ConsultantDoctor_Patient
+ConsultantDoctor "1..1" -- "0..1" Team : ConsultantDoctor_Team
+Doctor "0..9999" -- "0..9999" Patient : Doctor_Patient
+Hospital "1..1" -- "1..9999" Team : Hospital_Team
+Hospital "1..1" -- "0..9999" Ward : Hospital_Ward
+Patient "0..9999" -- "1..1" Ward : Patient_Ward
+Doctor "0..1" -- "0..9999" Team : Team_Doctor
+@enduml

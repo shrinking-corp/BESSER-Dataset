@@ -1,0 +1,54 @@
+@startuml
+class myDsl_Api {
+}
+class myDsl_ApiNome {
+  + nome : str
+}
+class myDsl_Associacao {
+  + associacao : str
+}
+class myDsl_Atributo {
+}
+class myDsl_AtributoTipo {
+  + tipoColecao : str
+  + tipoObjeto : str
+  + tipoPrimitivo : str
+}
+class myDsl_Atributos {
+}
+class myDsl_Entidade {
+}
+class myDsl_Entidades {
+}
+class myDsl_Greeting {
+}
+class myDsl_Model {
+}
+class myDsl_Nome {
+  + nome : str
+}
+class myDsl_Nome_Atributo {
+  + nome : str
+}
+class myDsl_Operacao {
+}
+class myDsl_OperacaoCascada {
+  + operacao : str
+}
+myDsl_Api "0..1" --* "1..1" myDsl_Greeting : api1
+myDsl_Associacao "0..1" --* "1..1" myDsl_Atributo : associacao25
+myDsl_Atributo "0..1" --* "1..1" myDsl_Atributos : atributo16
+myDsl_Atributo "0..9999" --* "1..1" myDsl_Atributos : atributoMais18
+myDsl_Atributo "1..1" *-- "0..1" myDsl_AtributoTipo : atributoTipo23
+myDsl_Atributos "0..1" --* "1..1" myDsl_Entidade : atributos14
+myDsl_Entidade "0..1" --* "1..1" myDsl_Entidades : entidade7
+myDsl_Entidade "0..9999" --* "1..1" myDsl_Entidades : entidadeMais9
+myDsl_Api "1..1" *-- "0..1" myDsl_Entidades : entidades5
+myDsl_Greeting "0..9999" --* "1..1" myDsl_Model : greetings0
+myDsl_Api "1..1" *-- "0..1" myDsl_ApiNome : nomeApi3
+myDsl_Atributo "1..1" *-- "0..1" myDsl_Nome_Atributo : nomeAtributo21
+myDsl_Entidade "1..1" *-- "0..1" myDsl_Nome : nomeEntidade12
+myDsl_Operacao "1..1" *-- "0..1" myDsl_OperacaoCascada : opCascada29
+myDsl_Operacao "1..1" *-- "0..9999" myDsl_OperacaoCascada : opCascadaMais31
+myDsl_Atributo "1..1" *-- "0..1" myDsl_Operacao : operacao27
+@enduml

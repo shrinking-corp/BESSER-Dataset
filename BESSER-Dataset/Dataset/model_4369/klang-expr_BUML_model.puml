@@ -1,0 +1,130 @@
+@startuml
+class BinaryOperator {
+}
+class Expression {
+}
+class Operator {
+}
+class Statement {
+}
+class UnaryOperator {
+}
+class klangexpr_And {
+}
+class klangexpr_BinaryOperator {
+}
+class klangexpr_BooleanLiteral {
+  + value : bool
+}
+class klangexpr_Divide {
+}
+class klangexpr_DoubleLiteral {
+  + value : float
+}
+class klangexpr_Equal {
+}
+class klangexpr_Expression {
+}
+class klangexpr_ForeverLoop {
+}
+class klangexpr_FunctionCall {
+  + name : str
+}
+class klangexpr_GreaterThan {
+}
+class klangexpr_GreaterThanOrEqual {
+}
+class klangexpr_If {
+}
+class klangexpr_IntegerLiteral {
+  + value : int
+}
+class klangexpr_LessThan {
+}
+class klangexpr_LessThanOrEqual {
+}
+class klangexpr_Minus {
+}
+class klangexpr_Multiply {
+}
+class klangexpr_Not {
+}
+abstract class klangexpr_Operator {
+}
+class klangexpr_Or {
+}
+class klangexpr_Plus {
+}
+class klangexpr_SendMessage {
+  + name : str
+}
+class klangexpr_Sleep {
+}
+class klangexpr_Statement {
+}
+class klangexpr_StringLiteral {
+  + value : str
+}
+class klangexpr_ToDouble {
+}
+class klangexpr_ToInt {
+}
+class klangexpr_UnaryMinus {
+}
+class klangexpr_UnaryOperator {
+}
+class klangexpr_VariableAssignment {
+  + variableName : str
+}
+class klangexpr_VariableReference {
+  + variableName : str
+}
+class klangexpr_WhileLoop {
+}
+class klangexpr_Yield {
+}
+BinaryOperator <|-- klangexpr_And
+BinaryOperator <|-- klangexpr_Divide
+BinaryOperator <|-- klangexpr_Equal
+BinaryOperator <|-- klangexpr_GreaterThan
+BinaryOperator <|-- klangexpr_GreaterThanOrEqual
+BinaryOperator <|-- klangexpr_LessThan
+BinaryOperator <|-- klangexpr_LessThanOrEqual
+BinaryOperator <|-- klangexpr_Minus
+BinaryOperator <|-- klangexpr_Multiply
+BinaryOperator <|-- klangexpr_Or
+BinaryOperator <|-- klangexpr_Plus
+Expression <|-- klangexpr_BooleanLiteral
+Expression <|-- klangexpr_DoubleLiteral
+Expression <|-- klangexpr_FunctionCall
+Expression <|-- klangexpr_IntegerLiteral
+Expression <|-- klangexpr_Operator
+Expression <|-- klangexpr_StringLiteral
+Expression <|-- klangexpr_VariableReference
+Operator <|-- klangexpr_BinaryOperator
+Operator <|-- klangexpr_UnaryOperator
+Statement <|-- klangexpr_ForeverLoop
+Statement <|-- klangexpr_FunctionCall
+Statement <|-- klangexpr_If
+Statement <|-- klangexpr_SendMessage
+Statement <|-- klangexpr_Sleep
+Statement <|-- klangexpr_VariableAssignment
+Statement <|-- klangexpr_WhileLoop
+Statement <|-- klangexpr_Yield
+UnaryOperator <|-- klangexpr_Not
+UnaryOperator <|-- klangexpr_ToDouble
+UnaryOperator <|-- klangexpr_ToInt
+UnaryOperator <|-- klangexpr_UnaryMinus
+klangexpr_Expression "0..1" --* "1..1" klangexpr_Sleep : duration24
+klangexpr_If "1..1" *-- "0..9999" klangexpr_Statement : elseBlock8
+klangexpr_Expression "0..1" --* "1..1" klangexpr_VariableAssignment : expression13
+klangexpr_Expression "0..1" --* "1..1" klangexpr_UnaryOperator : expression15
+klangexpr_If "1..1" *-- "0..9999" klangexpr_Statement : ifBlock5
+klangexpr_BinaryOperator "1..1" *-- "0..1" klangexpr_Expression : left17
+klangexpr_Expression "0..9999" --* "1..1" klangexpr_FunctionCall : parameters22
+klangexpr_Expression "0..1" --* "1..1" klangexpr_WhileLoop : predicate0
+klangexpr_Expression "0..1" --* "1..1" klangexpr_If : predicate3
+klangexpr_BinaryOperator "1..1" *-- "0..1" klangexpr_Expression : right19
+klangexpr_Statement "0..9999" --* "1..1" klangexpr_WhileLoop : statements1
+klangexpr_ForeverLoop "1..1" *-- "0..9999" klangexpr_Statement : statements11
+@enduml

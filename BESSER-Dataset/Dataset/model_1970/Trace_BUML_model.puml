@@ -1,0 +1,30 @@
+@startuml
+class TraceItem {
+}
+class trace_EObject {
+}
+class trace_M2CTraceItem {
+  + targetFile : str
+  + token : str
+}
+class trace_M2MTraceItem {
+}
+class trace_Trace {
+}
+class trace_TraceBySource {
+}
+abstract class trace_TraceItem {
+  + kind : str
+}
+class trace_TraceList {
+}
+TraceItem <|-- trace_M2CTraceItem
+TraceItem <|-- trace_M2MTraceItem
+trace_EObject "1..9999" -- "1..1" trace_TraceItem : from_5
+trace_TraceBySource "1..1" -- "0..9999" trace_TraceItem : items10
+trace_TraceItem "0..9999" --* "1..1" trace_TraceList : items3
+trace_Trace "1..1" *-- "0..1" trace_TraceList : list0
+trace_EObject "0..1" -- "1..1" trace_TraceBySource : source7
+trace_EObject "1..9999" -- "1..1" trace_M2MTraceItem : to13
+trace_Trace "1..1" *-- "0..9999" trace_TraceBySource : traceBySource1
+@enduml

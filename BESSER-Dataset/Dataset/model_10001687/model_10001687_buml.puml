@@ -1,0 +1,61 @@
+@startuml
+class Customer {
+}
+class Customer_Data {
+  + Contact : str
+  + Name : str
+}
+class Employee {
+}
+class Inventory {
+  + Products : str
+  + Services : str
+}
+class Manager {
+}
+class Online_Portal {
+  + StoreLocation : str
+}
+class Order {
+  + Product : str
+  + Service : str
+}
+class Product {
+  + Company : str
+}
+class Service {
+  + Info : str
+  + Terms : str
+}
+class Store {
+}
+class Terminal {
+  + Current_Employee : str
+}
+class Transactions {
+  + Customer : str
+  + Order : str
+}
+Customer "1..9999" -- "0..1" Customer_Data : Customer_Customer_Data
+Customer_Data "0..9999" -- "1..1" Order : Customer_Data_Order
+Customer "0..9999" -- "0..9999" Employee : Customer_Employee
+Customer "0..9999" -- "0..9999" Manager : Customer_Manager
+Customer "0..9999" -- "1..1" Online_Portal : Customer_Online_Portal
+Employee "0..9999" -- "0..9999" Terminal : Employee_Terminal
+Manager "1..1" -- "0..9999" Terminal : Manager_Terminal
+Customer_Data "0..1" -- "1..1" Online_Portal : Online_Portal_Customer_Data
+Inventory "0..1" -- "1..1" Online_Portal : Online_Portal_Inventory
+Online_Portal "1..1" -- "0..1" Transactions : Online_Portal_Transactions
+Customer "0..1" -- "0..1" Store : Store_Customer
+Customer_Data "1..1" -- "1..1" Store : Store_Customer_Data
+Employee "1..9999" -- "1..1" Store : Store_Employee
+Inventory "1..1" -- "1..1" Store : Store_Inventory
+Manager "1..1" -- "1..1" Store : Store_Manager
+Product "0..9999" -- "0..9999" Store : Store_Product
+Service "0..9999" -- "0..9999" Store : Store_Service
+Store "1..1" -- "1..1" Transactions : Store_Transactions
+Customer_Data "0..9999" -- "0..9999" Terminal : Terminal_Customer_Data
+Inventory "0..9999" -- "0..9999" Terminal : Terminal_Inventory
+Terminal "0..9999" -- "0..9999" Transactions : Terminal_Transactions
+Order "0..9999" -- "1..1" Transactions : Transactions_Order
+@enduml

@@ -1,0 +1,186 @@
+@startuml
+class AbstractFeature {
+}
+class Actor {
+}
+class ApplicationDomainUseCase {
+}
+class Asset {
+}
+class AssociationClassElement {
+}
+class Danger {
+}
+class Feature {
+}
+class FunctionalRequirement {
+}
+class Goal {
+}
+class GoalReference {
+}
+enum GoalReferenceType {
+  MINUS
+  MINUS_MINUS
+  PLUS
+  PLUS_PLUS
+}
+enum GoalType {
+  BUSINESS_GOAL
+  CUSTOMER_GOAL
+  END_USER_GOAL
+  PRODUCT_GOAL
+}
+class MEDiagram {
+}
+class Mitigation {
+}
+class NonFunctionalRequirement {
+}
+class Product {
+}
+class Requirement {
+}
+class Service {
+}
+class SolutionDomainUseCase {
+}
+class Step {
+}
+class UnicaseModelElement {
+}
+class UrmlModelElement {
+}
+class UseCase {
+}
+class VariationPoint {
+}
+class VariationPointInstance {
+}
+class goal_urml_Stakeholder {
+}
+class urml_Stakeholder {
+}
+class urml_URMLDiagram {
+}
+abstract class urml_UrmlModelElement {
+}
+abstract class urml_danger_Asset {
+}
+class urml_danger_Danger {
+}
+abstract class urml_danger_Mitigation {
+}
+class urml_danger_ProceduralMitigation {
+  + mitigationProcedure : str
+}
+abstract class urml_feature_AbstractFeature {
+}
+class urml_feature_Feature {
+}
+class urml_feature_Product {
+}
+class urml_feature_VariationPoint {
+  + multiplicity : int
+}
+class urml_feature_VariationPointInstance {
+}
+class urml_goal_Goal {
+  + soft : bool
+  + type : str
+}
+class urml_goal_GoalReference {
+  + weight : str
+}
+class urml_requirement_FunctionalRequirement {
+}
+class urml_requirement_NonFunctionalRequirement {
+}
+abstract class urml_requirement_Requirement {
+  + terminal : bool
+}
+class urml_service_Service {
+}
+class urml_usecase_Actor {
+}
+class urml_usecase_ApplicationDomainUseCase {
+}
+class urml_usecase_SolutionDomainUseCase {
+}
+abstract class urml_usecase_UseCase {
+}
+AbstractFeature <|-- urml_feature_Feature
+AbstractFeature <|-- urml_feature_VariationPoint
+Asset <|-- urml_service_Service
+Asset <|-- urml_usecase_Actor
+AssociationClassElement <|-- urml_goal_GoalReference
+MEDiagram <|-- urml_URMLDiagram
+Mitigation <|-- urml_danger_ProceduralMitigation
+Mitigation <|-- urml_requirement_Requirement
+Requirement <|-- urml_requirement_FunctionalRequirement
+Requirement <|-- urml_requirement_NonFunctionalRequirement
+UnicaseModelElement <|-- urml_UrmlModelElement
+UrmlModelElement <|-- urml_Stakeholder
+UrmlModelElement <|-- urml_danger_Asset
+UrmlModelElement <|-- urml_danger_Danger
+UrmlModelElement <|-- urml_danger_Mitigation
+UrmlModelElement <|-- urml_feature_AbstractFeature
+UrmlModelElement <|-- urml_feature_Product
+UrmlModelElement <|-- urml_feature_VariationPointInstance
+UrmlModelElement <|-- urml_goal_Goal
+UrmlModelElement <|-- urml_goal_GoalReference
+UrmlModelElement <|-- urml_usecase_UseCase
+UseCase <|-- urml_usecase_ApplicationDomainUseCase
+UseCase <|-- urml_usecase_SolutionDomainUseCase
+Actor "0..9999" -- "1..1" urml_usecase_UseCase : actors28
+AbstractFeature "0..9999" -- "1..1" urml_requirement_NonFunctionalRequirement : constrainedFeatures22
+NonFunctionalRequirement "0..9999" -- "1..1" urml_feature_AbstractFeature : constrainingNonFunctionalRequirements53
+AbstractFeature "0..1" -- "1..1" urml_usecase_SolutionDomainUseCase : detailedFeature31
+AbstractFeature "0..9999" -- "1..1" urml_requirement_FunctionalRequirement : detailedFeatures17
+Goal "0..9999" -- "1..1" urml_usecase_ApplicationDomainUseCase : detailedGoal29
+FunctionalRequirement "0..9999" -- "1..1" urml_feature_AbstractFeature : detailingFunctionalRequirements51
+ApplicationDomainUseCase "0..1" -- "1..1" urml_goal_Goal : detailingUseCases4
+SolutionDomainUseCase "0..9999" -- "1..1" urml_feature_AbstractFeature : detailingUseCases55
+AbstractFeature "0..9999" -- "1..1" urml_feature_AbstractFeature : excludedFeatures62
+AbstractFeature "0..9999" -- "1..1" urml_feature_AbstractFeature : excludingFeatures60
+Feature "0..9999" -- "1..1" urml_feature_Product : features84
+Goal "0..9999" -- "1..1" urml_Stakeholder : goals0
+Goal "0..9999" -- "1..1" urml_feature_AbstractFeature : goals49
+Asset "0..9999" -- "1..1" urml_danger_Danger : harmedAssets44
+Danger "0..9999" -- "1..1" urml_danger_Asset : harmingDangers41
+Service "0..9999" -- "1..1" urml_requirement_Requirement : implementingServices16
+GoalReference "0..9999" --* "1..1" urml_goal_Goal : influencedGoals10
+GoalReference "0..9999" -- "1..1" urml_goal_Goal : influencingGoals9
+VariationPointInstance "0..9999" -- "1..1" urml_feature_VariationPoint : instances73
+Danger "0..9999" -- "1..1" urml_danger_Mitigation : mitigatedDangers47
+Mitigation "0..9999" -- "1..1" urml_danger_Danger : mitigations46
+VariationPoint "0..1" -- "1..1" urml_feature_AbstractFeature : optionalParentVariationPoint68
+AbstractFeature "0..9999" --* "1..1" urml_feature_VariationPoint : optionalSubFeatures71
+AbstractFeature "0..1" -- "1..1" urml_feature_AbstractFeature : parentFeature56
+FunctionalRequirement "0..1" -- "1..1" urml_requirement_FunctionalRequirement : parentFunctionalRequirement20
+Goal "0..1" -- "1..1" urml_goal_Goal : parentGoal7
+NonFunctionalRequirement "0..1" -- "1..1" urml_requirement_NonFunctionalRequirement : parentNonFunctionalRequirement25
+Service "0..1" -- "1..1" urml_service_Service : parentService36
+Product "0..9999" -- "1..1" urml_feature_Feature : products70
+Product "0..9999" -- "1..1" urml_feature_VariationPointInstance : products77
+AbstractFeature "0..9999" -- "1..1" urml_goal_Goal : realizedFeatures2
+AbstractFeature "0..9999" -- "1..1" urml_feature_AbstractFeature : requiredFeatures66
+AbstractFeature "0..9999" -- "1..1" urml_feature_AbstractFeature : requiringFeatures64
+Requirement "0..9999" -- "1..1" urml_service_Service : satisfiedRequirements35
+AbstractFeature "0..9999" -- "1..1" urml_feature_VariationPointInstance : selectedFeatures79
+Goal "0..1" -- "1..1" urml_goal_GoalReference : source12
+goal_urml_Stakeholder "0..9999" -- "1..1" urml_goal_Goal : stakeholders1
+Step "0..9999" --* "1..1" urml_usecase_UseCase : steps27
+AbstractFeature "0..9999" --* "1..1" urml_feature_AbstractFeature : subFeatures58
+FunctionalRequirement "0..9999" --* "1..1" urml_requirement_FunctionalRequirement : subFunctionalRequirements19
+Goal "0..9999" --* "1..1" urml_goal_Goal : subGoals5
+NonFunctionalRequirement "0..9999" --* "1..1" urml_requirement_NonFunctionalRequirement : subNonFunctionalRequirements24
+Service "0..9999" --* "1..1" urml_service_Service : subServices38
+Goal "0..1" -- "1..1" urml_goal_GoalReference : target14
+Danger "0..9999" -- "1..1" urml_danger_Asset : triggeredDangers40
+Asset "0..9999" -- "1..1" urml_danger_Danger : triggeringAssets43
+UseCase "0..9999" -- "1..1" urml_usecase_Actor : useCases34
+VariationPoint "0..1" -- "1..1" urml_feature_VariationPointInstance : variationPoint75
+VariationPointInstance "0..9999" -- "1..1" urml_feature_AbstractFeature : variationPointInstances69
+VariationPointInstance "0..9999" -- "1..1" urml_feature_Product : variationPointInstances82
+@enduml

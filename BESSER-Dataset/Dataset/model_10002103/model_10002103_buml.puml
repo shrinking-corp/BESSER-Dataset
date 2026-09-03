@@ -1,0 +1,56 @@
+@startuml
+class Admin {
+  + password : str
+  + username : str
+}
+class Attendance {
+  + atten_date : str
+  + atten_emp_id : int
+  + atten_id : int
+  + atten_time : int
+  + atten_type : str
+}
+class Employee {
+  + address : str
+  + e_id : int
+  + email_id : str
+  + name : str
+  + office_address : str
+  + paasword : str
+  + phone_no : int
+}
+class Full_day {
+  + end_date : int
+  + start_date : int
+}
+class Haff_day {
+  + start_date : int
+}
+class Leave {
+  + l_description : str
+  + l_emp_id : int
+  + l_id : int
+  + l_type : str
+}
+class location {
+  + Latitude : int
+  + Longitude : int
+}
+class login {
+  + loginStatus : str
+  + loginUsername : str
+  + login_id : int
+  + loginpassword : str
+}
+Admin "0..1" -- "0..1" Attendance : Admin_Attendance
+Admin "0..1" -- "1..9999" Employee : Admin_Employee
+Admin "0..1" -- "0..1" Leave : Admin_Leave
+Admin "0..1" -- "0..1" login : Admin_login
+Attendance "0..1" -- "0..1" location : Attendance_location
+Attendance "0..1" -- "0..1" Employee : Employee_Attendance
+Attendance "0..1" -- "0..1" Employee : Employee_Attendance1
+Admin "0..1" -- "0..1" Employee : Employee_____Admin
+Employee "0..1" -- "0..1" login : Employee_login
+Employee "1..9999" -- "1..9999" Leave : Leave_Employee
+Attendance "0..1" -- "0..1" location : location_Attendance
+@enduml

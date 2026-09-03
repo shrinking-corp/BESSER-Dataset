@@ -1,0 +1,32 @@
+@startuml
+class Type {
+}
+class jsonldConverter_DataType {
+}
+class jsonldConverter_Entity {
+}
+class jsonldConverter_Enum {
+}
+class jsonldConverter_EnumItem {
+  + name : str
+  + type : str
+}
+class jsonldConverter_Model {
+}
+class jsonldConverter_Property {
+  + many : bool
+  + name : str
+  + one : bool
+}
+class jsonldConverter_Type {
+  + name : str
+}
+Type <|-- jsonldConverter_DataType
+Type <|-- jsonldConverter_Entity
+Type <|-- jsonldConverter_Enum
+jsonldConverter_Model "1..1" *-- "0..9999" jsonldConverter_Type : elements0
+jsonldConverter_Entity "1..1" *-- "0..9999" jsonldConverter_Property : features3
+jsonldConverter_Enum "1..1" *-- "0..9999" jsonldConverter_EnumItem : features8
+jsonldConverter_Entity "1..1" -- "0..1" jsonldConverter_Entity : superType2
+jsonldConverter_Property "1..1" -- "0..1" jsonldConverter_Type : type5
+@enduml

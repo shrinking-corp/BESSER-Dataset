@@ -1,0 +1,49 @@
+@startuml
+class Account {
+  + Name : str
+  + closed : date
+  + created : date
+  + isClosed : bool
+}
+class AddPost {
+  + creationDate : date
+}
+class LineItem {
+  + category : int
+  + tags : float
+}
+class Post {
+  + Category : str
+  + Created : date
+  + ID : int
+  + User : str
+  + status : post_status
+  + tags : float
+}
+class User {
+  + Id : int
+  + Name : str
+  + email : str
+}
+enum UserState {
+}
+class WebUser {
+  + login : str
+  + password : str
+  + state : UserState
+}
+class post {
+  + ID : int
+  + description : str
+}
+enum post_status {
+}
+Account "1..1" -- "0..9999" Post : Account_Order
+Account "1..1" -- "1..1" AddPost : Account_ShoppingCart
+Account "1..1" -- "1..1" User : Customer_Account
+LineItem "1..9999" -- "0..1" Post : Order_LineItem
+LineItem "0..9999" -- "1..1" post : Product_LineItem
+AddPost "1..1" -- "1..1" LineItem : ShoppingCart_LineItem
+User "1..1" -- "1..1" WebUser : WebUser_Customer
+AddPost "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+@enduml

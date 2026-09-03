@@ -1,0 +1,31 @@
+@startuml
+class CD_Attribute {
+  + multiValued : str
+}
+class CD_Class {
+  + isAbstract : str
+}
+abstract class CD_Classifier {
+}
+class CD_DataType {
+}
+abstract class CD_NamedElt {
+  + name : str
+}
+class CD_Package {
+}
+class Classifier {
+}
+class NamedElt {
+}
+Classifier <|-- CD_Class
+Classifier <|-- CD_DataType
+Classifier <|-- CD_Package
+NamedElt <|-- CD_Attribute
+NamedElt <|-- CD_Classifier
+CD_Attribute "0..9999" --* "1..1" CD_Class : attr2
+CD_Classifier "0..9999" --* "1..1" CD_Package : classifiers5
+CD_Attribute "1..1" -- "1..1" CD_Class : owner4
+CD_Class "1..1" -- "0..9999" CD_Class : super1
+CD_Attribute "1..1" -- "1..1" CD_Classifier : type3
+@enduml

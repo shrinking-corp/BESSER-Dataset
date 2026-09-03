@@ -1,0 +1,97 @@
+@startuml
+class SArtifact {
+}
+enum SDBEngine {
+  INNODB
+  MYISAM
+}
+class SExtDeclaredSQLType {
+}
+enum SIndex {
+  NO
+  SPATIAL
+  UNIQUE
+  YES
+}
+class SInlinedSQLType {
+}
+enum SSimpleTypes {
+  BLOB
+  BOOLEAN
+  Coordinate
+  Currency
+  DATE
+  DATETIME
+  FOTO
+  INT
+  MEDIUM_INT
+  POINT
+  POLYGON
+  SMALL_INT
+  TIME
+  TINY_INT
+}
+class STableMember {
+}
+class sqlDSL_SArtifact {
+  + name : str
+}
+class sqlDSL_SColumn {
+  + simpleType : str
+}
+class sqlDSL_SColumnProps {
+  + aes : bool
+  + index : str
+  + javacolumn : str
+  + nullable : bool
+}
+class sqlDSL_SDecimal {
+}
+class sqlDSL_SEnum {
+}
+class sqlDSL_SEnumLiteral {
+  + name : str
+  + value : int
+}
+class sqlDSL_SExtDeclaredSQLType {
+}
+class sqlDSL_SInlinedSQLType {
+  + value : int
+}
+class sqlDSL_SJoinColumn {
+}
+class sqlDSL_SModel {
+  + generatedFile : str
+}
+class sqlDSL_SSettings {
+  + engine : str
+  + javapackage : str
+  + schema : str
+}
+class sqlDSL_SString {
+}
+class sqlDSL_STable {
+  + cached : bool
+  + entityname : str
+  + prefix : str
+}
+class sqlDSL_STableMember {
+  + name : str
+}
+SArtifact <|-- sqlDSL_SEnum
+SArtifact <|-- sqlDSL_STable
+SExtDeclaredSQLType <|-- sqlDSL_SEnum
+SInlinedSQLType <|-- sqlDSL_SDecimal
+SInlinedSQLType <|-- sqlDSL_SString
+STableMember <|-- sqlDSL_SColumn
+STableMember <|-- sqlDSL_SJoinColumn
+sqlDSL_SArtifact "0..9999" --* "1..1" sqlDSL_SModel : artifact1
+sqlDSL_STable "1..1" *-- "0..9999" sqlDSL_STableMember : columns5
+sqlDSL_SColumn "1..1" -- "0..1" sqlDSL_SExtDeclaredSQLType : extType9
+sqlDSL_SColumn "1..1" *-- "0..1" sqlDSL_SInlinedSQLType : inlinedType10
+sqlDSL_SEnum "1..1" *-- "0..9999" sqlDSL_SEnumLiteral : literals14
+sqlDSL_SColumnProps "0..1" --* "1..1" sqlDSL_STableMember : props7
+sqlDSL_SJoinColumn "1..1" -- "0..1" sqlDSL_STable : referencedType12
+sqlDSL_SModel "1..1" *-- "0..1" sqlDSL_SSettings : settings0
+sqlDSL_SSettings "0..1" --* "1..1" sqlDSL_STable : settings3
+@enduml

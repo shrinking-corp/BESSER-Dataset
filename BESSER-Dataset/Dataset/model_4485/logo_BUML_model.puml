@@ -1,0 +1,96 @@
+@startuml
+enum ArithmeticOperator {
+  div
+  minus
+  mult
+  plus
+}
+class Expression {
+}
+class Instruction {
+}
+class Literal {
+}
+class Primitive {
+}
+enum RelationalOperator {
+  equals
+  greaterThan
+  greaterThanOrEqualTo
+  lessThan
+  lessThanOrEqualTo
+  notEqual
+}
+class kmLogo_ArithmeticExpression {
+  + operator : str
+}
+class kmLogo_Back {
+}
+class kmLogo_BoolLit {
+  + value : bool
+}
+class kmLogo_Clear {
+}
+abstract class kmLogo_Expression {
+}
+class kmLogo_Forward {
+}
+abstract class kmLogo_Instruction {
+}
+class kmLogo_IntegerLit {
+  + value : int
+}
+class kmLogo_Left {
+}
+class kmLogo_Literal {
+}
+class kmLogo_LogoProgram {
+}
+class kmLogo_PenDown {
+}
+class kmLogo_PenUp {
+}
+abstract class kmLogo_Primitive {
+}
+class kmLogo_RelationalExpression {
+  + operator : str
+}
+class kmLogo_Right {
+}
+class kmLogo_StringLit {
+  + value : str
+}
+class kmLogo_VarDecl {
+  + key : str
+}
+class kmLogo_VarReference {
+  + key : str
+}
+Expression <|-- kmLogo_ArithmeticExpression
+Expression <|-- kmLogo_Literal
+Expression <|-- kmLogo_RelationalExpression
+Expression <|-- kmLogo_VarReference
+Instruction <|-- kmLogo_Primitive
+Instruction <|-- kmLogo_VarDecl
+Literal <|-- kmLogo_BoolLit
+Literal <|-- kmLogo_IntegerLit
+Literal <|-- kmLogo_StringLit
+Primitive <|-- kmLogo_Back
+Primitive <|-- kmLogo_Clear
+Primitive <|-- kmLogo_Forward
+Primitive <|-- kmLogo_Left
+Primitive <|-- kmLogo_PenDown
+Primitive <|-- kmLogo_PenUp
+Primitive <|-- kmLogo_Right
+kmLogo_Expression "0..1" --* "1..1" kmLogo_Left : angle6
+kmLogo_Expression "0..1" --* "1..1" kmLogo_Right : angle8
+kmLogo_Expression "0..1" --* "1..1" kmLogo_VarDecl : expression20
+kmLogo_Instruction "0..9999" --* "1..1" kmLogo_LogoProgram : instructions1
+kmLogo_ArithmeticExpression "1..1" *-- "1..1" kmLogo_Expression : left10
+kmLogo_Expression "1..1" --* "1..1" kmLogo_RelationalExpression : left15
+kmLogo_ArithmeticExpression "1..1" *-- "1..1" kmLogo_Expression : right12
+kmLogo_Expression "1..1" --* "1..1" kmLogo_RelationalExpression : right17
+kmLogo_Back "1..1" *-- "1..1" kmLogo_Expression : steps3
+kmLogo_Expression "1..1" --* "1..1" kmLogo_Forward : steps4
+kmLogo_LogoProgram "1..1" *-- "0..9999" kmLogo_VarDecl : variables0
+@enduml

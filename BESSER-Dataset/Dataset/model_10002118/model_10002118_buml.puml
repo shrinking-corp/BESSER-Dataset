@@ -1,0 +1,37 @@
+@startuml
+class Cards_Card {
+  + suit : str
+  + value : int
+}
+class MainGame_Deck {
+  + Cards : str
+}
+class MainGame_GUI {
+}
+class MainGame_Hand {
+  + Hand : str
+  + flush : bool
+  + fourKind : bool
+  + fullHouse : bool
+  + highCard : bool
+  + onePair : bool
+  + straight : bool
+  + straightFlush : bool
+  + threeKing : bool
+  + twoPair : bool
+}
+class MainGame_Main {
+  + dealNumber : int
+  + deck : MainGame_Deck
+}
+class Players_Player {
+  + bet : int
+  + hand : MainGame_Hand
+  + name : str
+}
+Cards_Card "0..5" -- "1..1" MainGame_Hand : composed_of
+Cards_Card "0..52" -- "1..1" MainGame_Deck : contains
+MainGame_Deck "1..1" -- "1..1" MainGame_Main : deals_manages
+MainGame_GUI "1..1" -- "1..1" MainGame_Main : displays_GUI
+MainGame_Hand "1..1" -- "1..1" Players_Player : plays
+@enduml

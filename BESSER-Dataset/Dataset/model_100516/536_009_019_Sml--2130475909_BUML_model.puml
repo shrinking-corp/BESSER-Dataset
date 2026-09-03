@@ -1,0 +1,303 @@
+@startuml
+class AbstractRanges {
+}
+class BindingExpression {
+}
+enum CollectionOperation {
+  any
+  contains
+  containsAll
+  first
+  get
+  isEmpty
+  last
+  size
+}
+class Condition {
+}
+class Expression {
+}
+class ExpressionAndVariables {
+}
+class ExpressionOrRegion {
+}
+class InteractionFragment {
+}
+class ParameterExpression {
+}
+enum ScenarioKind {
+  assumption
+  existential
+  requirement
+  specification
+}
+class Value {
+}
+class VariableExpression {
+}
+class sml_AbstractRanges {
+}
+class sml_Alternative {
+}
+class sml_BinaryOperationExpression {
+  + operator : str
+}
+class sml_BindingExpression {
+}
+class sml_BooleanValue {
+  + value : bool
+}
+class sml_Case {
+}
+class sml_CaseCondition {
+}
+class sml_Collaboration {
+  + name : str
+}
+class sml_CollectionAccess {
+  + collectionOperation : str
+}
+class sml_Condition {
+}
+class sml_ConditionExpression {
+}
+class sml_ConstraintBlock {
+}
+class sml_Document {
+}
+class sml_EnumRanges {
+}
+class sml_EnumValue {
+}
+class sml_EventParameterRanges {
+}
+class sml_Expression {
+}
+class sml_ExpressionAndVariables {
+}
+class sml_ExpressionOrRegion {
+}
+class sml_ExpressionParameter {
+}
+class sml_ExpressionRegion {
+}
+class sml_FeatureAccess {
+}
+class sml_FeatureAccessBindingExpression {
+}
+class sml_Import {
+  + importURI : str
+}
+class sml_IntegerRanges {
+  + max : int
+  + min : int
+  + values : int
+}
+class sml_IntegerValue {
+  + value : int
+}
+class sml_Interaction {
+}
+class sml_InteractionFragment {
+}
+class sml_InterruptCondition {
+}
+class sml_Loop {
+}
+class sml_LoopCondition {
+}
+class sml_Message {
+}
+class sml_ModalMessage {
+  + requested : bool
+  + strict : bool
+}
+class sml_NullValue {
+}
+class sml_Parallel {
+}
+class sml_ParameterBinding {
+}
+class sml_ParameterExpression {
+}
+class sml_RandomParameter {
+}
+class sml_RangesForParameter {
+}
+class sml_Role {
+  + name : str
+  + static : bool
+}
+class sml_RoleBindingConstraint {
+}
+class sml_Scenario {
+  + kind : str
+  + name : str
+  + singular : bool
+}
+class sml_SmlEClass {
+  + name : str
+}
+class sml_SmlEClassifier {
+  + name : str
+}
+class sml_SmlEEnum {
+  + name : str
+}
+class sml_SmlEEnumLiteral {
+  + name : str
+}
+class sml_SmlEPackage {
+  + name : str
+}
+class sml_SmlEStructuralFeature {
+  + name : str
+}
+class sml_SmlETypedElement {
+  + name : str
+}
+class sml_Specification {
+  + name : str
+}
+class sml_StringRanges {
+  + values : str
+}
+class sml_StringValue {
+  + value : str
+}
+class sml_StructuralFeatureValue {
+}
+class sml_TypedVariableDeclaration {
+  + name : str
+}
+class sml_UnaryOperationExpression {
+  + operator : str
+}
+class sml_Value {
+}
+class sml_Variable {
+  + name : str
+}
+class sml_VariableAssignment {
+}
+class sml_VariableBindingParameter {
+}
+class sml_VariableDeclaration {
+  + name : str
+}
+class sml_VariableExpression {
+}
+class sml_VariableFragment {
+}
+class sml_VariableValue {
+}
+class sml_ViolationCondition {
+}
+class sml_WaitCondition {
+  + requested : bool
+  + strict : bool
+}
+AbstractRanges <|-- sml_EnumRanges
+AbstractRanges <|-- sml_IntegerRanges
+AbstractRanges <|-- sml_StringRanges
+BindingExpression <|-- sml_FeatureAccessBindingExpression
+Condition <|-- sml_InterruptCondition
+Condition <|-- sml_ViolationCondition
+Condition <|-- sml_WaitCondition
+Expression <|-- sml_BinaryOperationExpression
+Expression <|-- sml_UnaryOperationExpression
+Expression <|-- sml_Value
+ExpressionAndVariables <|-- sml_Expression
+ExpressionAndVariables <|-- sml_VariableExpression
+ExpressionOrRegion <|-- sml_ExpressionAndVariables
+ExpressionOrRegion <|-- sml_ExpressionRegion
+InteractionFragment <|-- sml_Alternative
+InteractionFragment <|-- sml_Condition
+InteractionFragment <|-- sml_Interaction
+InteractionFragment <|-- sml_Loop
+InteractionFragment <|-- sml_ModalMessage
+InteractionFragment <|-- sml_Parallel
+InteractionFragment <|-- sml_VariableFragment
+ParameterExpression <|-- sml_ExpressionParameter
+ParameterExpression <|-- sml_RandomParameter
+ParameterExpression <|-- sml_VariableBindingParameter
+Value <|-- sml_BooleanValue
+Value <|-- sml_EnumValue
+Value <|-- sml_FeatureAccess
+Value <|-- sml_IntegerValue
+Value <|-- sml_NullValue
+Value <|-- sml_StringValue
+Value <|-- sml_VariableValue
+VariableExpression <|-- sml_TypedVariableDeclaration
+VariableExpression <|-- sml_VariableAssignment
+sml_BindingExpression "0..1" --* "1..1" sml_RoleBindingConstraint : bindingExpression48
+sml_ParameterBinding "1..1" *-- "0..1" sml_ParameterExpression : bindingExpression66
+sml_Interaction "0..1" --* "1..1" sml_Loop : bodyInteraction77
+sml_Case "1..1" *-- "0..1" sml_CaseCondition : caseCondition71
+sml_Case "1..1" *-- "0..1" sml_Interaction : caseInteraction73
+sml_Alternative "1..1" *-- "0..9999" sml_Case : cases70
+sml_CollectionAccess "0..1" --* "1..1" sml_FeatureAccess : collectionAccess145
+sml_Condition "1..1" *-- "0..1" sml_ConditionExpression : conditionExpression82
+sml_ConditionExpression "0..1" --* "1..1" sml_LoopCondition : conditionExpression83
+sml_CaseCondition "1..1" *-- "0..1" sml_ConditionExpression : conditionExpression86
+sml_ConstraintBlock "1..1" *-- "0..9999" sml_Message : consider92
+sml_ConstraintBlock "0..1" --* "1..1" sml_Interaction : constraints54
+sml_Collaboration "0..9999" --* "1..1" sml_Specification : containedCollaborations12
+sml_SmlEClass "0..9999" --* "1..1" sml_Specification : controllableEClasses3
+sml_SmlEPackage "0..9999" --* "1..1" sml_Specification : domains1
+sml_Document "1..1" *-- "0..9999" sml_SmlEPackage : domains117
+sml_Collaboration "1..1" *-- "0..9999" sml_SmlEPackage : domains24
+sml_EventParameterRanges "1..1" *-- "0..1" sml_SmlETypedElement : event27
+sml_EventParameterRanges "0..9999" --* "1..1" sml_Specification : eventParameterRanges10
+sml_Expression "0..1" --* "1..1" sml_VariableExpression : expression124
+sml_Expression "0..1" --* "1..1" sml_VariableDeclaration : expression127
+sml_VariableExpression "0..1" --* "1..1" sml_VariableFragment : expression51
+sml_ConditionExpression "1..1" *-- "0..1" sml_Expression : expression89
+sml_Document "1..1" *-- "0..9999" sml_ExpressionRegion : expressions120
+sml_ExpressionOrRegion "0..9999" --* "1..1" sml_ExpressionRegion : expressions122
+sml_FeatureAccess "0..1" --* "1..1" sml_FeatureAccessBindingExpression : featureaccess50
+sml_ConstraintBlock "1..1" *-- "0..9999" sml_Message : forbidden97
+sml_Interaction "1..1" *-- "0..9999" sml_InteractionFragment : fragments52
+sml_ConstraintBlock "1..1" *-- "0..9999" sml_Message : ignore94
+sml_Import "0..9999" --* "1..1" sml_Specification : imports0
+sml_Document "1..1" *-- "0..9999" sml_Import : imports115
+sml_Collaboration "1..1" *-- "0..9999" sml_Import : imports21
+sml_Collaboration "0..9999" -- "1..1" sml_Specification : includedCollaborations14
+sml_ConstraintBlock "1..1" *-- "0..9999" sml_Message : interrupt100
+sml_BinaryOperationExpression "1..1" *-- "0..1" sml_Expression : left150
+sml_Loop "1..1" *-- "0..1" sml_LoopCondition : loopCondition76
+sml_Message "1..1" *-- "0..1" sml_SmlETypedElement : modelElement109
+sml_ModalMessage "1..1" *-- "0..1" sml_SmlETypedElement : modelElement61
+sml_SmlETypedElement "0..9999" --* "1..1" sml_Specification : nonSpontaneousOperations8
+sml_Expression "0..1" --* "1..1" sml_UnaryOperationExpression : operand155
+sml_Interaction "0..1" --* "1..1" sml_Scenario : ownedInteraction43
+sml_Interaction "0..9999" --* "1..1" sml_Parallel : parallelInteraction80
+sml_CollectionAccess "1..1" *-- "0..1" sml_Expression : parameter138
+sml_RangesForParameter "1..1" *-- "0..1" sml_SmlETypedElement : parameter32
+sml_Message "1..1" *-- "0..9999" sml_ParameterBinding : parameters112
+sml_ModalMessage "1..1" *-- "0..9999" sml_ParameterBinding : parameters64
+sml_AbstractRanges "0..1" --* "1..1" sml_RangesForParameter : ranges35
+sml_EventParameterRanges "1..1" *-- "0..9999" sml_RangesForParameter : rangesForParameter30
+sml_Message "1..1" -- "0..1" sml_Role : receiver106
+sml_ModalMessage "1..1" -- "0..1" sml_Role : receiver58
+sml_BinaryOperationExpression "1..1" *-- "0..1" sml_Expression : right152
+sml_Role "0..1" -- "1..1" sml_RoleBindingConstraint : role45
+sml_RoleBindingConstraint "0..9999" --* "1..1" sml_Scenario : roleBindings41
+sml_Collaboration "1..1" *-- "0..9999" sml_Role : roles17
+sml_Collaboration "1..1" *-- "0..9999" sml_Scenario : scenarios19
+sml_Message "1..1" -- "0..1" sml_Role : sender103
+sml_ModalMessage "1..1" -- "0..1" sml_Role : sender56
+sml_SmlEClassifier "0..1" --* "1..1" sml_TypedVariableDeclaration : type129
+sml_EnumValue "1..1" *-- "0..1" sml_SmlEEnum : type132
+sml_Role "1..1" -- "0..1" sml_SmlEClass : type38
+sml_SmlEClass "0..9999" --* "1..1" sml_Specification : uncontrollableEClasses5
+sml_EnumValue "1..1" *-- "0..1" sml_SmlEEnumLiteral : value133
+sml_Variable "0..1" --* "1..1" sml_VariableValue : value136
+sml_FeatureAccess "1..1" *-- "0..1" sml_StructuralFeatureValue : value143
+sml_SmlEStructuralFeature "0..1" --* "1..1" sml_StructuralFeatureValue : value148
+sml_Expression "0..1" --* "1..1" sml_ExpressionParameter : value68
+sml_EnumRanges "1..1" *-- "0..9999" sml_SmlEEnumLiteral : values37
+sml_VariableAssignment "1..1" -- "0..1" sml_VariableDeclaration : variable130
+sml_FeatureAccess "1..1" *-- "0..1" sml_Variable : variable140
+sml_VariableBindingParameter "1..1" *-- "0..1" sml_VariableValue : variable69
+@enduml

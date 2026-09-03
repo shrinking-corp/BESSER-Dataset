@@ -1,0 +1,64 @@
+@startuml
+class MuddleElementType {
+}
+class PrimitiveType {
+}
+class Type {
+}
+class muddle_BooleanType {
+}
+class muddle_Feature {
+  + many : bool
+  + name : str
+  + primary : bool
+  + runtime : bool
+}
+class muddle_IntegerType {
+}
+class muddle_LinkElementType {
+}
+class muddle_Muddle {
+}
+class muddle_MuddleElement {
+  + id : str
+}
+class muddle_MuddleElementType {
+}
+abstract class muddle_PrimitiveType {
+}
+class muddle_RealType {
+}
+class muddle_Slot {
+  + values : str
+}
+class muddle_StringType {
+}
+abstract class muddle_Type {
+  + name : str
+}
+MuddleElementType <|-- muddle_LinkElementType
+PrimitiveType <|-- muddle_BooleanType
+PrimitiveType <|-- muddle_IntegerType
+PrimitiveType <|-- muddle_RealType
+PrimitiveType <|-- muddle_StringType
+Type <|-- muddle_MuddleElementType
+Type <|-- muddle_PrimitiveType
+muddle_Muddle "1..1" *-- "0..9999" muddle_MuddleElement : elements1
+muddle_Feature "0..1" -- "1..1" muddle_Slot : feature5
+muddle_Feature "0..9999" --* "1..1" muddle_MuddleElementType : features17
+muddle_MuddleElement "0..9999" -- "1..1" muddle_MuddleElementType : instances15
+muddle_Muddle "0..1" -- "1..1" muddle_MuddleElement : muddle4
+muddle_MuddleElement "0..1" -- "1..1" muddle_Slot : owningElement6
+muddle_Feature "1..1" -- "0..1" muddle_MuddleElementType : owningType11
+muddle_Feature "0..1" --* "1..1" muddle_LinkElementType : roleInSourceFeature30
+muddle_Feature "0..1" --* "1..1" muddle_LinkElementType : roleInTargetFeature33
+muddle_Feature "1..1" -- "0..9999" muddle_Slot : slots13
+muddle_MuddleElement "1..1" *-- "0..9999" muddle_Slot : slots2
+muddle_Feature "0..1" -- "1..1" muddle_LinkElementType : sourceFeature25
+muddle_MuddleElementType "1..1" -- "0..9999" muddle_MuddleElementType : subTypes23
+muddle_MuddleElementType "1..1" -- "0..9999" muddle_MuddleElementType : superTypes20
+muddle_Feature "0..1" -- "1..1" muddle_LinkElementType : targetFeature27
+muddle_MuddleElement "1..1" -- "0..1" muddle_MuddleElementType : type3
+muddle_Feature "1..1" -- "0..1" muddle_Type : type9
+muddle_Muddle "1..1" *-- "0..9999" muddle_Type : types0
+@enduml

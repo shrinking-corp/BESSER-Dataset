@@ -1,0 +1,28 @@
+@startuml
+class IDBase {
+}
+class dtmc_DTMC {
+  + name : str
+}
+class dtmc_Label {
+  + name : str
+}
+class dtmc_State {
+  + name : str
+}
+class dtmc_Transition {
+  + prob : float
+}
+IDBase <|-- dtmc_DTMC
+IDBase <|-- dtmc_Label
+IDBase <|-- dtmc_State
+IDBase <|-- dtmc_Transition
+dtmc_DTMC "1..1" *-- "0..9999" dtmc_State : States0
+dtmc_State "1..1" -- "1..1" dtmc_Transition : from_8
+dtmc_State "1..1" -- "0..9999" dtmc_Transition : incoming4
+dtmc_DTMC "1..1" -- "0..1" dtmc_State : initialState1
+dtmc_Label "0..9999" --* "1..1" dtmc_State : labels7
+dtmc_State "1..1" *-- "0..9999" dtmc_Transition : outgoing5
+dtmc_Label "1..1" -- "1..1" dtmc_State : state11
+dtmc_State "1..1" -- "1..1" dtmc_Transition : to9
+@enduml

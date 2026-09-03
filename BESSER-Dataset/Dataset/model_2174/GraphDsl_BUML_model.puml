@@ -1,0 +1,65 @@
+@startuml
+class graphDsl_ChildrenProperty {
+  + name : str
+}
+class graphDsl_Component {
+  + name : str
+}
+class graphDsl_ComponentOrFacet {
+}
+class graphDsl_ComponentProperties {
+}
+class graphDsl_ExportsProperty {
+}
+class graphDsl_ExportsVariable {
+  + intValue : int
+  + name : str
+  + strValue : str
+}
+class graphDsl_ExtendsProperty {
+  + extendsNames : str
+}
+class graphDsl_Facet {
+  + name : str
+}
+class graphDsl_FacetProperties {
+}
+class graphDsl_FacetProperty {
+}
+class graphDsl_FacetsProperty {
+  + facetsNames : str
+}
+class graphDsl_Graph {
+  + comments : str
+}
+class graphDsl_ImportsProperty {
+}
+class graphDsl_ImportsVariable {
+  + componentName : str
+  + componentProperty : str
+  + isExternal : bool
+  + isOptional : bool
+}
+class graphDsl_InstallerProperty {
+  + name : str
+}
+class graphDsl_OptionalProperty {
+}
+graphDsl_ChildrenProperty "0..1" --* "1..1" graphDsl_FacetProperty : childrenProperty15
+graphDsl_ChildrenProperty "0..1" --* "1..1" graphDsl_OptionalProperty : childrenProperty19
+graphDsl_Component "0..1" --* "1..1" graphDsl_ComponentOrFacet : component1
+graphDsl_ComponentOrFacet "0..9999" --* "1..1" graphDsl_Graph : components0
+graphDsl_ExportsProperty "0..1" --* "1..1" graphDsl_FacetProperty : exportsProperty17
+graphDsl_ExportsProperty "0..1" --* "1..1" graphDsl_OptionalProperty : exportsProperty22
+graphDsl_ExportsProperty "1..1" *-- "0..9999" graphDsl_ExportsVariable : exportsVariables31
+graphDsl_ExtendsProperty "0..1" --* "1..1" graphDsl_OptionalProperty : extendsProperty29
+graphDsl_ComponentOrFacet "1..1" *-- "0..1" graphDsl_Facet : facet3
+graphDsl_FacetsProperty "0..1" --* "1..1" graphDsl_OptionalProperty : facetsProperty27
+graphDsl_ImportsProperty "0..1" --* "1..1" graphDsl_OptionalProperty : importsProperty25
+graphDsl_ImportsProperty "1..1" *-- "0..9999" graphDsl_ImportsVariable : importsVariables33
+graphDsl_ComponentProperties "1..1" *-- "0..1" graphDsl_InstallerProperty : installerProperty11
+graphDsl_ComponentProperties "1..1" *-- "0..9999" graphDsl_OptionalProperty : optionalProperties9
+graphDsl_FacetProperties "1..1" *-- "0..9999" graphDsl_FacetProperty : properties13
+graphDsl_Component "1..1" *-- "0..1" graphDsl_ComponentProperties : properties5
+graphDsl_Facet "1..1" *-- "0..1" graphDsl_FacetProperties : properties7
+@enduml

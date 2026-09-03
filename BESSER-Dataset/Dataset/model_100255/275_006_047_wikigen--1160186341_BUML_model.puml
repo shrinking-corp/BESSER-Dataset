@@ -1,0 +1,26 @@
+@startuml
+class HtmlProfile {
+}
+class wikigen_Article {
+  + generateTOC : bool
+  + nbColumns : int
+}
+class wikigen_Container {
+}
+class wikigen_Document {
+}
+class wikigen_GenHtmlDocument {
+  + filename : str
+}
+class wikigen_GenLatexDocument {
+  + authors : str
+  + filename : str
+  + title : str
+}
+abstract class wikigen_HtmlProfile {
+}
+HtmlProfile <|-- wikigen_Article
+wikigen_Container "0..9999" -- "1..1" wikigen_GenLatexDocument : roots0
+wikigen_Document "0..9999" -- "1..1" wikigen_GenHtmlDocument : roots2
+wikigen_GenHtmlDocument "1..1" *-- "0..1" wikigen_HtmlProfile : style1
+@enduml

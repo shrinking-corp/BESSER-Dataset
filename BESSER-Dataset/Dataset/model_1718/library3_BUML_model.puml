@@ -1,0 +1,30 @@
+@startuml
+class Library3_BookInfoType {
+  + any : str
+}
+class Library3_BookType {
+  + author : str
+  + isbn : str
+  + name : str
+  + pages : str
+  + title : str
+}
+class Library3_CustomerType {
+  + borrowedBookId : str
+  + firstName : str
+  + lastName : str
+}
+class Library3_DocumentRoot {
+  + mixed : str
+}
+class Library3_EStringToStringMapEntry {
+}
+class Library3_LibraryType {
+}
+Library3_BookType "0..9999" --* "1..1" Library3_LibraryType : book7
+Library3_BookInfoType "0..1" --* "1..1" Library3_BookType : bookInfo0
+Library3_CustomerType "0..9999" --* "1..1" Library3_LibraryType : customer10
+Library3_DocumentRoot "1..1" *-- "0..9999" Library3_LibraryType : library5
+Library3_DocumentRoot "1..1" *-- "0..9999" Library3_EStringToStringMapEntry : xMLNSPrefixMap1
+Library3_DocumentRoot "1..1" *-- "0..9999" Library3_EStringToStringMapEntry : xSISchemaLocation2
+@enduml

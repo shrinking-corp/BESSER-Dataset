@@ -1,0 +1,94 @@
+@startuml
+class OnlineBanking_AppConfig {
+}
+class TestAccountChain {
+}
+class data_CustomerProfileRepository {
+  + customerProfiles : str
+  + numAccounts : int
+}
+class genmymodelreverse_C1 {
+}
+class genmymodelreverse_C2 {
+}
+class genmymodelreverse_java_util_Date {
+}
+class genmymodelreverse_java_util_HashMap {
+}
+abstract class genmymodelreverse_org_springframework_ui_Model_Interface {
+}
+abstract class model_Account {
+  + accountNumber : int
+  + balance : float
+  + customerId : int
+  + type : str
+}
+class model_AccountAction {
+  + action : str
+  + amount : float
+  + success : bool
+}
+class model_AccountChain_Interface {
+}
+class model_AccountHandler {
+}
+class model_Bank {
+  + address : str
+  + customerMap : str
+  + name : str
+}
+class model_CheckingAccount {
+  + interestRate : float
+  + type : str
+}
+class model_CloseAccount {
+}
+class model_CreditAccount {
+  + interestRate : float
+  + minPayment : float
+  + paymentDueDate : str
+  + type : str
+}
+class model_Customer {
+  + accounts : str
+  + address : str
+  + dob : str
+  + id : int
+  + name : str
+  + password : str
+  + username : str
+}
+class model_Deposit {
+}
+class model_Loan {
+  + interestRate : float
+  + minPayment : float
+  + paymentDueDate : str
+  + type : str
+}
+class model_MakePayment {
+}
+class model_OpenAccount {
+}
+class model_SavingsAccount {
+  + interestRate : float
+  + type : str
+}
+class model_Transaction {
+  + ammount : float
+  + date : genmymodelreverse_java_util_Date
+}
+class model_Withdrawal {
+}
+model_AccountChain_Interface "0..1" -- "0..9999" model_AccountChain_Interface : AccountChain_AccountChain
+model_Account "0..9999" -- "0..9999" model_AccountAction : Account_AccountAction
+model_Account "0..4" -- "0..1" model_Customer : Customer_Account
+model_AccountAction "0..9999" -- "0..1" model_Customer : Customer_AccountAction
+model_Account "0..9999" -- "0..1" model_Bank : account_Bank_Account_8
+model_Bank "0..1" -- "0..9999" model_Customer : customer_Bank_Customer_6
+model_AccountChain_Interface "0..1" -- "0..1" model_CloseAccount : next_CloseAccount_AccountChain_4
+model_AccountChain_Interface "0..1" -- "0..1" model_Deposit : next_Deposit_AccountChain_2
+model_AccountChain_Interface "0..1" -- "0..1" model_MakePayment : next_MakePayment_AccountChain_3
+model_AccountChain_Interface "0..1" -- "0..1" model_OpenAccount : next_OpenAccount_AccountChain_5
+model_AccountChain_Interface "0..1" -- "0..1" model_Withdrawal : next_Withdrawal_AccountChain_1
+@enduml

@@ -1,0 +1,111 @@
+@startuml
+class ATL_atlext_EObject {
+}
+class ATL_atlext_Type {
+}
+class Callable {
+}
+class CallableParameter {
+}
+class ContextHelper {
+}
+class JavaBody {
+}
+class MatchedRule {
+}
+class OCL_atlext_EObject {
+}
+class OCL_atlext_Type {
+}
+class OclExpression {
+}
+class OutPatternElement {
+}
+class PropertyCallExp {
+}
+class ResolveTempResolution {
+}
+class RuleResolutionInfo {
+}
+class StringToStringMap {
+}
+class TypedElement {
+}
+class VariableDeclaration {
+}
+class atlext_ATL_Binding {
+}
+class atlext_ATL_Callable {
+}
+class atlext_ATL_CallableParameter {
+  + name : str
+}
+class atlext_ATL_ContextHelper {
+}
+class atlext_ATL_Helper {
+  + hasContext : bool
+  + isAttribute : bool
+}
+class atlext_ATL_LocatedElement {
+  + fileLocation : str
+  + fileObject : str
+}
+class atlext_ATL_MatchedRule {
+}
+class atlext_ATL_OutPatternElement {
+}
+class atlext_ATL_RuleResolutionInfo {
+}
+class atlext_ATL_StringToStringMap {
+  + key : str
+  + value : str
+}
+class atlext_OCL_GetAppliedStereotypesBody {
+}
+class atlext_OCL_JavaBody {
+}
+class atlext_OCL_OclExpression {
+  + implicitlyCasted : bool
+}
+class atlext_OCL_OperationCallExp {
+}
+class atlext_OCL_PropertyCallExp {
+  + isStaticCall : bool
+}
+class atlext_OCL_ResolveTempResolution {
+}
+abstract class atlext_OCL_TypedElement {
+}
+class atlext_OCL_VariableDeclaration {
+}
+JavaBody <|-- atlext_OCL_GetAppliedStereotypesBody
+OclExpression <|-- atlext_OCL_JavaBody
+RuleResolutionInfo <|-- atlext_OCL_ResolveTempResolution
+TypedElement <|-- atlext_OCL_OclExpression
+TypedElement <|-- atlext_OCL_VariableDeclaration
+MatchedRule "1..9999" -- "1..1" atlext_ATL_RuleResolutionInfo : allInvolvedRules26
+StringToStringMap "0..9999" --* "1..1" atlext_ATL_LocatedElement : annotations1
+CallableParameter "0..9999" --* "1..1" atlext_ATL_Callable : callableParameters4
+PropertyCallExp "0..9999" -- "1..1" atlext_ATL_Callable : calledBy3
+ATL_atlext_Type "1..1" -- "1..1" atlext_ATL_ContextHelper : contextType9
+ContextHelper "0..9999" -- "1..1" atlext_OCL_PropertyCallExp : dynamicResolvers43
+OutPatternElement "1..1" -- "1..1" atlext_OCL_ResolveTempResolution : element45
+ATL_atlext_Type "0..1" -- "1..1" atlext_ATL_Helper : inferredReturnType13
+OCL_atlext_Type "0..1" -- "1..1" atlext_OCL_TypedElement : inferredType29
+ATL_atlext_Type "1..1" -- "1..1" atlext_ATL_Binding : leftType20
+OCL_atlext_Type "0..1" -- "1..1" atlext_OCL_OclExpression : noCastedType32
+VariableDeclaration "0..1" -- "1..1" atlext_ATL_CallableParameter : paramDeclaration7
+PropertyCallExp "0..9999" -- "1..1" atlext_ATL_ContextHelper : polymorphicCalledBy11
+ATL_atlext_EObject "0..9999" -- "1..1" atlext_ATL_LocatedElement : problems0
+OCL_atlext_EObject "0..1" -- "1..1" atlext_OCL_PropertyCallExp : receptorType38
+ResolveTempResolution "0..9999" --* "1..1" atlext_OCL_OperationCallExp : resolveTempResolvedBy44
+RuleResolutionInfo "0..9999" --* "1..1" atlext_ATL_Binding : resolvedBy23
+MatchedRule "1..1" -- "1..1" atlext_ATL_RuleResolutionInfo : rule25
+Callable "1..1" -- "1..1" atlext_OCL_PropertyCallExp : staticResolver41
+ATL_atlext_Type "0..1" -- "1..1" atlext_ATL_Helper : staticReturnType15
+OCL_atlext_Type "0..1" -- "1..1" atlext_OCL_VariableDeclaration : staticType30
+ATL_atlext_Type "1..1" -- "1..1" atlext_ATL_CallableParameter : staticType6
+OCL_atlext_EObject "0..9999" -- "1..1" atlext_OCL_PropertyCallExp : subtypeFeatures35
+OCL_atlext_EObject "0..1" -- "1..1" atlext_OCL_PropertyCallExp : usedFeature34
+ATL_atlext_EObject "1..1" -- "1..1" atlext_ATL_Binding : writtenFeature18
+@enduml

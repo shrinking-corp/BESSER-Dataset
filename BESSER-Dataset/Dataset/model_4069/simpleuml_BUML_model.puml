@@ -1,0 +1,38 @@
+@startuml
+class Classifier {
+}
+enum Ignore {
+  anotherlit
+  lit1
+}
+class ModelElement {
+}
+class simpleuml_Association {
+}
+class simpleuml_Attribute {
+}
+abstract class simpleuml_Classifier {
+}
+abstract class simpleuml_ModelElement {
+  + name : str
+}
+class simpleuml_PrimitiveDataType {
+}
+class simpleuml_UMLClass {
+  + kind : str
+}
+class simpleuml_UMLPackage {
+}
+Classifier <|-- simpleuml_PrimitiveDataType
+Classifier <|-- simpleuml_UMLClass
+ModelElement <|-- simpleuml_Association
+ModelElement <|-- simpleuml_Attribute
+ModelElement <|-- simpleuml_Classifier
+simpleuml_Attribute "0..9999" --* "1..1" simpleuml_UMLClass : attribute2
+simpleuml_ModelElement "0..9999" --* "1..1" simpleuml_UMLPackage : contents10
+simpleuml_Attribute "1..1" -- "1..1" simpleuml_UMLClass : owner9
+simpleuml_UMLClass "1..1" -- "0..9999" simpleuml_UMLClass : parents1
+simpleuml_Association "1..1" -- "1..1" simpleuml_UMLClass : source3
+simpleuml_Association "1..1" -- "1..1" simpleuml_UMLClass : target5
+simpleuml_Attribute "1..1" -- "1..1" simpleuml_Classifier : type8
+@enduml

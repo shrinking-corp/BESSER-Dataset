@@ -1,0 +1,45 @@
+@startuml
+class NamedElement {
+}
+class RegularState {
+}
+class State {
+}
+class dfa_Dfa {
+}
+class dfa_FinalState {
+}
+class dfa_InitialState {
+}
+class dfa_Language {
+}
+abstract class dfa_NamedElement {
+  + name : str
+}
+class dfa_RegularState {
+}
+abstract class dfa_State {
+  + description : str
+}
+class dfa_Symbol {
+  + description : str
+  + direction : str
+  + literal : str
+}
+class dfa_Transition {
+}
+NamedElement <|-- dfa_Dfa
+NamedElement <|-- dfa_Language
+NamedElement <|-- dfa_State
+RegularState <|-- dfa_InitialState
+State <|-- dfa_FinalState
+State <|-- dfa_RegularState
+dfa_Dfa "1..1" *-- "0..9999" dfa_FinalState : finalStates5
+dfa_Dfa "1..1" *-- "1..1" dfa_InitialState : initialState3
+dfa_Dfa "1..1" *-- "1..1" dfa_Language : language0
+dfa_Dfa "1..1" *-- "0..9999" dfa_RegularState : regularStates1
+dfa_Language "1..1" *-- "0..9999" dfa_Symbol : symbols10
+dfa_Symbol "0..1" -- "1..1" dfa_Transition : symbols8
+dfa_State "1..1" -- "1..1" dfa_Transition : targetState7
+dfa_RegularState "1..1" *-- "1..9999" dfa_Transition : transitions13
+@enduml

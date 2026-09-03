@@ -1,0 +1,386 @@
+@startuml
+enum ComplexHTMLTypeKinds {
+  Checkbox
+  Multiselect
+  Radiobutton
+  Select
+}
+enum CoreComponent {
+  Content
+  Menu
+  User
+}
+enum DataAccessKinds {
+  backendDAO
+  database
+  frontendDAO
+  webservice
+}
+class DynamicPage {
+}
+class EJSLPart {
+}
+class Extension {
+}
+class HTMLTypes {
+}
+class InternalLink {
+}
+class Link {
+}
+class Page {
+}
+enum PageActionKind {
+  ARCHIVE
+  CANCEL
+  CHECKIN
+  CLOSE
+  EDIT
+  HIDE
+  INDIVIDUAL
+  LOGIN
+  NEW
+  PUBLISH
+  PWRESET
+  SAVE
+  SAVE_CLOSE
+  SAVE_COPY
+  TRASH
+  UNPUBLISH
+}
+enum PageActionPositionKind {
+  bottom
+  center
+  top
+}
+enum PageKinds {
+  custom
+  details
+  list
+}
+enum PluginKinds {
+  authenticate
+  captcha
+  contact
+  content
+  editors
+  extensions
+  finder
+  quick_icons
+  search
+  system
+  user
+  xml_rpc
+}
+class Section {
+}
+enum SimpleHTMLTypeKinds {
+  Datepicker
+  Editor
+  Filepicker
+  Imagepicker
+  Integer
+  Link
+  Text_Field
+  Text_Field_NE
+  Textarea
+  Yes_No_Buttons
+}
+enum StandardTypeKinds {
+  Boolean
+  Date
+  Datetime
+  Encrypted_Text
+  File
+  Image
+  Integer
+  Label
+  Link
+  Short_Text
+  Text
+  Time
+}
+class Type {
+}
+class eJSL_Attribute {
+  + id : bool
+  + isprimary : bool
+  + isunique : bool
+  + name : str
+  + preserve : bool
+}
+class eJSL_Author {
+  + authoremail : str
+  + authorurl : str
+  + name : str
+}
+class eJSL_BackendSection {
+}
+class eJSL_CMSCore {
+}
+class eJSL_CMSExtension {
+}
+class eJSL_Class {
+  + name : str
+}
+class eJSL_ComplexHTMLTypes {
+  + htmltype : str
+}
+class eJSL_Component {
+}
+class eJSL_ComponentReference {
+  + core : str
+}
+class eJSL_ContextLink {
+}
+class eJSL_CssBlock {
+  + selector : str
+}
+class eJSL_CustomPage {
+  + pageType : str
+  + preserve : str
+}
+class eJSL_Datatype {
+  + name : str
+  + type : str
+}
+class eJSL_DatatypeReference {
+}
+class eJSL_DetailPageField {
+}
+class eJSL_DetailsPage {
+}
+class eJSL_DynamicPage {
+  + preserve : bool
+}
+class eJSL_EJSLModel {
+  + name : str
+}
+class eJSL_EJSLPart {
+}
+class eJSL_Entity {
+  + name : str
+  + preserve : bool
+}
+class eJSL_Entitypackage {
+  + name : str
+}
+class eJSL_Extension {
+  + name : str
+}
+class eJSL_ExtensionPackage {
+}
+class eJSL_ExternalLink {
+  + label : str
+  + target : str
+}
+class eJSL_Feature {
+}
+class eJSL_FrontendSection {
+}
+class eJSL_HTMLTypes {
+}
+class eJSL_IndexPage {
+}
+class eJSL_InternalLink {
+  + name : str
+}
+class eJSL_KeyValuePair {
+  + name : str
+  + value : str
+}
+class eJSL_Language {
+  + name : str
+  + sys : bool
+}
+class eJSL_Library {
+}
+class eJSL_Link {
+}
+class eJSL_LinkParameter {
+  + id : bool
+  + name : str
+  + value : str
+}
+class eJSL_Manifestation {
+  + copyright : str
+  + creationdate : str
+  + description : str
+  + license : str
+  + link : str
+  + version : str
+}
+class eJSL_Method {
+  + name : str
+  + returnvalue : str
+}
+class eJSL_MethodParameter {
+  + name : str
+}
+class eJSL_Module {
+}
+class eJSL_Package {
+  + name : str
+}
+class eJSL_Page {
+  + name : str
+}
+class eJSL_PageAction {
+  + name : str
+  + pageActionPosition : str
+  + pageActionType : str
+}
+class eJSL_PageReference {
+  + sect : str
+}
+class eJSL_Parameter {
+  + defaultvalue : str
+  + descripton : str
+  + label : str
+  + name : str
+  + size : int
+}
+class eJSL_ParameterGroup {
+  + label : str
+  + name : str
+}
+class eJSL_Plugin {
+  + type : str
+}
+class eJSL_Position {
+  + name : str
+}
+class eJSL_PositionParameter {
+  + divid : str
+  + name : str
+  + type : str
+}
+class eJSL_Reference {
+  + id : bool
+  + lower : str
+  + preserve : bool
+  + upper : str
+}
+class eJSL_Section {
+}
+class eJSL_SimpleHTMLTypes {
+  + htmltype : str
+}
+class eJSL_StandardTypes {
+  + autoincrement : bool
+  + default : str
+  + notnull : bool
+  + type : str
+}
+class eJSL_StaticPage {
+  + HTMLBody : str
+  + preserve : bool
+}
+class eJSL_Template {
+}
+class eJSL_Type {
+}
+class eJSL_coreFeature {
+}
+DynamicPage <|-- eJSL_DetailsPage
+DynamicPage <|-- eJSL_IndexPage
+EJSLPart <|-- eJSL_CMSCore
+EJSLPart <|-- eJSL_CMSExtension
+Extension <|-- eJSL_Component
+Extension <|-- eJSL_ExtensionPackage
+Extension <|-- eJSL_Library
+Extension <|-- eJSL_Module
+Extension <|-- eJSL_Plugin
+Extension <|-- eJSL_Template
+HTMLTypes <|-- eJSL_ComplexHTMLTypes
+HTMLTypes <|-- eJSL_DatatypeReference
+HTMLTypes <|-- eJSL_SimpleHTMLTypes
+InternalLink <|-- eJSL_ContextLink
+Link <|-- eJSL_ExternalLink
+Link <|-- eJSL_InternalLink
+Page <|-- eJSL_CustomPage
+Page <|-- eJSL_DynamicPage
+Page <|-- eJSL_StaticPage
+Section <|-- eJSL_BackendSection
+Section <|-- eJSL_FrontendSection
+Type <|-- eJSL_DatatypeReference
+Type <|-- eJSL_StandardTypes
+eJSL_Attribute "0..9999" -- "1..1" eJSL_Reference : attribute54
+eJSL_Attribute "0..1" -- "1..1" eJSL_DetailPageField : attribute85
+eJSL_Attribute "0..9999" -- "1..1" eJSL_Reference : attributerefereced60
+eJSL_KeyValuePair "0..9999" --* "1..1" eJSL_Parameter : attributes24
+eJSL_Attribute "0..9999" --* "1..1" eJSL_Entity : attributes45
+eJSL_DetailPageField "1..1" *-- "0..9999" eJSL_KeyValuePair : attributes94
+eJSL_Attribute "0..1" -- "1..1" eJSL_LinkParameter : attvalue108
+eJSL_Author "0..9999" --* "1..1" eJSL_Manifestation : authors176
+eJSL_Class "0..9999" --* "1..1" eJSL_Library : classes141
+eJSL_Class "0..9999" --* "1..1" eJSL_Package : classes148
+eJSL_CssBlock "0..9999" --* "1..1" eJSL_Template : cssblocks174
+eJSL_Datatype "0..9999" --* "1..1" eJSL_EJSLPart : datatypes1
+eJSL_Datatype "0..9999" --* "1..1" eJSL_Entitypackage : datatypes39
+eJSL_HTMLTypes "0..1" --* "1..1" eJSL_Parameter : dtype20
+eJSL_DetailPageField "0..9999" --* "1..1" eJSL_DetailsPage : editfields84
+eJSL_EJSLModel "1..1" *-- "0..1" eJSL_EJSLPart : ejslPart0
+eJSL_Entity "0..9999" --* "1..1" eJSL_Feature : entities12
+eJSL_Entity "0..9999" -- "1..1" eJSL_Plugin : entities134
+eJSL_Entity "0..9999" -- "1..1" eJSL_Library : entities139
+eJSL_Class "1..1" -- "0..9999" eJSL_Entity : entities157
+eJSL_Entity "0..9999" --* "1..1" eJSL_Entitypackage : entities36
+eJSL_DynamicPage "1..1" -- "0..9999" eJSL_Entity : entities76
+eJSL_CustomPage "1..1" -- "0..9999" eJSL_Entity : entities97
+eJSL_Entity "0..1" -- "1..1" eJSL_Reference : entity57
+eJSL_Entitypackage "0..9999" --* "1..1" eJSL_Feature : entitypackages10
+eJSL_Entitypackage "0..9999" --* "1..1" eJSL_Entitypackage : entitypackages34
+eJSL_Extension "0..9999" --* "1..1" eJSL_ExtensionPackage : extensions115
+eJSL_CMSExtension "1..1" *-- "0..9999" eJSL_Extension : extensions9
+eJSL_EJSLPart "1..1" *-- "0..1" eJSL_Feature : feature7
+eJSL_Attribute "0..9999" -- "1..1" eJSL_DynamicPage : filters81
+eJSL_Component "1..1" *-- "0..9999" eJSL_ParameterGroup : globalParamter117
+eJSL_Parameter "0..9999" -- "1..1" eJSL_ParameterGroup : globalparameters27
+eJSL_EJSLPart "1..1" *-- "0..9999" eJSL_Parameter : globalparameters3
+eJSL_Page "1..1" -- "0..9999" eJSL_Parameter : globalparameters66
+eJSL_DetailPageField "1..1" *-- "0..1" eJSL_HTMLTypes : htmltype88
+eJSL_KeyValuePair "0..9999" --* "1..1" eJSL_Language : keyvaluepairs178
+eJSL_KeyValuePair "0..9999" --* "1..1" eJSL_PositionParameter : keyvaluepairs183
+eJSL_CssBlock "1..1" *-- "0..9999" eJSL_KeyValuePair : keyvaluepairs186
+eJSL_Extension "1..1" *-- "0..9999" eJSL_Language : languages113
+eJSL_Link "1..1" -- "0..1" eJSL_PageAction : linkedAction102
+eJSL_Attribute "0..1" -- "1..1" eJSL_Link : linkedAttribute99
+eJSL_ContextLink "1..1" *-- "0..9999" eJSL_LinkParameter : linkparameters107
+eJSL_Link "0..9999" --* "1..1" eJSL_Page : links74
+eJSL_Parameter "0..9999" --* "1..1" eJSL_Plugin : localparameters136
+eJSL_Parameter "0..9999" --* "1..1" eJSL_Template : localparameters170
+eJSL_Page "1..1" *-- "0..9999" eJSL_Parameter : localparameters69
+eJSL_Extension "1..1" *-- "0..1" eJSL_Manifestation : manifest111
+eJSL_Method "1..1" *-- "0..9999" eJSL_MethodParameter : methodparameters165
+eJSL_Class "1..1" *-- "0..9999" eJSL_Method : methods160
+eJSL_Library "1..1" *-- "0..9999" eJSL_Package : packages143
+eJSL_Package "0..9999" --* "1..1" eJSL_Package : packages146
+eJSL_Page "0..1" -- "1..1" eJSL_PageReference : page124
+eJSL_PageReference "0..9999" --* "1..1" eJSL_Section : pageRef122
+eJSL_Module "1..1" *-- "0..1" eJSL_PageReference : pageRef132
+eJSL_Page "1..1" *-- "0..9999" eJSL_PageAction : pageactions72
+eJSL_Feature "1..1" *-- "0..9999" eJSL_Page : pages14
+eJSL_ComponentReference "0..1" --* "1..1" eJSL_PageReference : pagescr127
+eJSL_EJSLPart "1..1" *-- "0..9999" eJSL_ParameterGroup : parametergroups5
+eJSL_Page "1..1" -- "0..9999" eJSL_ParameterGroup : parametergroups63
+eJSL_Parameter "0..9999" --* "1..1" eJSL_ParameterGroup : parameters30
+eJSL_Position "1..1" *-- "0..9999" eJSL_PositionParameter : positionparameters181
+eJSL_Position "0..9999" --* "1..1" eJSL_Template : positions172
+eJSL_Component "0..1" -- "1..1" eJSL_ComponentReference : ref129
+eJSL_Class "0..9999" -- "1..1" eJSL_Class : references155
+eJSL_Entity "1..1" *-- "0..9999" eJSL_Reference : references47
+eJSL_Component "1..1" *-- "0..9999" eJSL_Section : sections119
+eJSL_Feature "1..1" *-- "0..9999" eJSL_Section : sections16
+eJSL_Class "0..1" -- "1..1" eJSL_Class : supertype152
+eJSL_Entity "0..1" -- "1..1" eJSL_Entity : supertype43
+eJSL_Attribute "0..9999" -- "1..1" eJSL_DynamicPage : tablecolumns78
+eJSL_InternalLink "1..1" -- "0..1" eJSL_Page : target105
+eJSL_Method "1..1" *-- "0..1" eJSL_Type : type162
+eJSL_MethodParameter "1..1" *-- "0..1" eJSL_Type : type167
+eJSL_Datatype "0..1" -- "1..1" eJSL_DatatypeReference : type18
+eJSL_Attribute "1..1" *-- "0..1" eJSL_Type : type49
+eJSL_KeyValuePair "0..9999" --* "1..1" eJSL_Parameter : values22
+eJSL_DetailPageField "1..1" *-- "0..9999" eJSL_KeyValuePair : values91
+eJSL_Attribute "0..1" -- "1..1" eJSL_Attribute : withattribute52
+@enduml

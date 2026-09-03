@@ -1,0 +1,140 @@
+@startuml
+class Measure {
+}
+class MeasureBinaryOperation {
+}
+class MeasureBinaryProductOperation {
+}
+class MeasureUnboundOperation {
+}
+class MeasureValue {
+}
+class MeasurementUncertaintyInformation {
+}
+enum Type {
+  Current
+  Duration
+  Energy
+  Frequency
+  Power
+  Scalar
+  Voltage
+}
+class TypedMeasure {
+}
+enum Visibility {
+  GLOBAL
+  LOCAL
+}
+class eel_EnergyComputation {
+  + type() : str
+  + value() : str
+}
+class eel_Integral {
+  + function : str
+}
+class eel_Interval {
+}
+abstract class eel_Measure {
+  + name : str
+  + subname : str
+  + targetClass : str
+  + targetOperation : str
+  + name() : str
+  + type() : str
+  + value() : str
+}
+class eel_MeasureAttribute {
+  + att : str
+}
+abstract class eel_MeasureBinaryOperation {
+}
+class eel_MeasureBinaryProductOperation {
+  + value() : str
+}
+class eel_MeasureBinarySumOperation {
+  + value() : str
+}
+class eel_MeasureCast {
+}
+class eel_MeasureOCL {
+  + oclQuery : str
+}
+abstract class eel_MeasureUnboundOperation {
+}
+class eel_MeasureUnboundProductOperation {
+  + value() : str
+}
+class eel_MeasureUnboundSumOperation {
+  + value() : str
+}
+class eel_MeasureValue {
+  + value : str
+  + value() : str
+}
+class eel_MeasurementUncertainty {
+  + standardUncertainty : str
+}
+abstract class eel_MeasurementUncertaintyInformation {
+}
+class eel_NormalDistribution {
+  + meanValue : str
+  + standardDeviation : str
+}
+class eel_Platform {
+  + name : str
+}
+class eel_PowerComputation {
+  + type() : str
+  + value() : str
+}
+class eel_RealTimeDuration {
+  + type() : str
+}
+class eel_Sample {
+}
+class eel_Sampling {
+  + measurementProcedure : str
+}
+abstract class eel_TypedMeasure {
+  + type : str
+  + name() : str
+  + type() : str
+}
+class eel_Variable {
+  + name : str
+  + value : str
+  + vibility : str
+}
+Measure <|-- eel_TypedMeasure
+MeasureBinaryOperation <|-- eel_MeasureBinaryProductOperation
+MeasureBinaryOperation <|-- eel_MeasureBinarySumOperation
+MeasureBinaryProductOperation <|-- eel_EnergyComputation
+MeasureBinaryProductOperation <|-- eel_PowerComputation
+MeasureUnboundOperation <|-- eel_MeasureUnboundProductOperation
+MeasureUnboundOperation <|-- eel_MeasureUnboundSumOperation
+MeasureValue <|-- eel_MeasureAttribute
+MeasureValue <|-- eel_MeasureOCL
+MeasureValue <|-- eel_RealTimeDuration
+MeasurementUncertaintyInformation <|-- eel_Integral
+MeasurementUncertaintyInformation <|-- eel_Interval
+MeasurementUncertaintyInformation <|-- eel_NormalDistribution
+MeasurementUncertaintyInformation <|-- eel_Sampling
+TypedMeasure <|-- eel_MeasureBinaryOperation
+TypedMeasure <|-- eel_MeasureCast
+TypedMeasure <|-- eel_MeasureUnboundOperation
+TypedMeasure <|-- eel_MeasureValue
+eel_MeasurementUncertainty "1..1" *-- "0..1" eel_MeasurementUncertaintyInformation : information14
+eel_Integral "1..1" -- "1..1" eel_Interval : interval22
+eel_Measure "0..1" -- "1..1" eel_MeasureBinaryOperation : left7
+eel_Interval "1..1" *-- "1..1" eel_Measure : lowerEndpoint16
+eel_Measure "1..1" -- "1..1" eel_MeasureCast : measure5
+eel_Measure "0..9999" --* "1..1" eel_Platform : measures1
+eel_Measure "1..9999" -- "1..1" eel_MeasureUnboundOperation : measures12
+eel_Measure "0..9999" --* "1..1" eel_Sample : quantity24
+eel_Measure "0..1" -- "1..1" eel_MeasureBinaryOperation : right9
+eel_Sample "0..9999" --* "1..1" eel_Sampling : samples21
+eel_Measure "1..1" *-- "0..1" eel_MeasurementUncertainty : uncertainty3
+eel_Interval "1..1" *-- "1..1" eel_Measure : upperEndpoint18
+eel_Platform "1..1" *-- "0..9999" eel_Variable : variables0
+@enduml

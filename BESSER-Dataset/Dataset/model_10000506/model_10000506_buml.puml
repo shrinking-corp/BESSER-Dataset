@@ -1,0 +1,97 @@
+@startuml
+class ADDS_ITEMS_SERVICE_TO_CART_UseCase {
+}
+class ADMINISTRATOR_Actor {
+}
+class Buyer {
+  + T : str
+  + address : str
+  + id : int
+  + mailid : str
+  + name : str
+  + phoneno : int
+}
+class Buyer_Actor {
+}
+class CREATES_THE_WEBSITE_UseCase {
+}
+class Cancelorder {
+  + item : str
+  + quantity : int
+}
+class Customercare {
+  + address : str
+  + no : int
+}
+class DELIVERS_THE_PRODUCT_UseCase {
+}
+class Feedback {
+  + customername : str
+  + id : int
+  + phoneno : int
+}
+class MAINTAINS_THE_PRODUCTS_SERVICES_UseCase {
+}
+class Order {
+  + item : str
+  + list : str
+  + quantity : int
+}
+class PAYS_THE_BILL_UseCase {
+}
+class Product {
+  + id : int
+  + name : str
+  + seller : str
+  + type : str
+}
+class SELECTS_THE_ITEMS_SERVICE_UseCase {
+}
+class SELECTS_THE_MODE_OF_PAYMENT_UseCase {
+}
+class SUPPORT_AND_FEEDBACK_UseCase {
+}
+class Seller {
+  + T : str
+  + address : str
+  + id : int
+  + mailid : str
+  + name : str
+  + phoneno : int
+}
+class Seller_Actor {
+}
+class Shipment {
+  + packing : str
+}
+class Transaction {
+  + cashondelivery : int
+}
+class UseCase_UseCase {
+}
+class VISITS_THE_WEBSITE_UseCase {
+}
+class WEB_DEVELOPER_Actor {
+}
+class sellers_warehouse {
+  + database : str
+  + location : str
+}
+CREATES_THE_WEBSITE_UseCase "0..1" -- "0..1" WEB_DEVELOPER_Actor : CREATES_THE_WEBSITE_WEB_DEVELOPER
+ADDS_ITEMS_SERVICE_TO_CART_UseCase "0..1" -- "0..1" Buyer_Actor : CUSTOMER_ADDS_ITEMS_SERVICE_TO_CART
+Buyer_Actor "0..1" -- "0..1" PAYS_THE_BILL_UseCase : CUSTOMER_PAYS_THE_BILL
+Buyer_Actor "0..1" -- "0..1" SELECTS_THE_ITEMS_SERVICE_UseCase : CUSTOMER_SELECTS_THE_ITEMS_SERVICE
+Buyer_Actor "0..1" -- "0..1" SELECTS_THE_MODE_OF_PAYMENT_UseCase : CUSTOMER_SELECTS_THE_MODE_OF_PAYMENT
+Buyer_Actor "0..1" -- "0..1" SUPPORT_AND_FEEDBACK_UseCase : CUSTOMER_SUPPORT_AND_FEEDBACK
+Buyer_Actor "0..1" -- "0..1" VISITS_THE_WEBSITE_UseCase : CUSTOMER_VISITS_THE_WEBSITE
+Buyer "1..9999" -- "1..9999" Customercare : Customer_Customercare
+Customercare "0..1" -- "0..9999" Seller : Customercare_Seller
+ADMINISTRATOR_Actor "0..1" -- "0..1" DELIVERS_THE_PRODUCT_UseCase : DELIVERS_THE_PRODUCT_ADMINISTRATOR
+ADMINISTRATOR_Actor "0..1" -- "0..1" MAINTAINS_THE_PRODUCTS_SERVICES_UseCase : MAINTAINS_THE_PRODUCTS_SERVICES_ADMINISTRATOR
+Order "1..9999" -- "1..9999" Product : ORDER_PRODUCT
+ADMINISTRATOR_Actor "0..1" -- "0..1" PAYS_THE_BILL_UseCase : PAYS_THE_BILL_ADMINISTRATOR
+Product "0..9999" -- "1..9999" sellers_warehouse : Product_Warehouse
+ADMINISTRATOR_Actor "0..1" -- "0..1" SELECTS_THE_MODE_OF_PAYMENT_UseCase : SELECTS_THE_MODE_OF_PAYMENT_ADMINISTRATOR
+ADMINISTRATOR_Actor "0..1" -- "0..1" SUPPORT_AND_FEEDBACK_UseCase : SUPPORT_AND_FEEDBACK_ADMINISTRATOR
+Shipment "0..9999" -- "1..9999" sellers_warehouse : Warehouse_Shipment
+@enduml

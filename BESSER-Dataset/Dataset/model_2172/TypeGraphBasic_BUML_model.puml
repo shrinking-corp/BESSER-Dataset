@@ -1,0 +1,67 @@
+@startuml
+class TMember {
+}
+class TSignature {
+}
+class TypeGraphBasic_TClass {
+  + tName : str
+}
+class TypeGraphBasic_TField {
+  + tName : str
+}
+class TypeGraphBasic_TFieldDefinition {
+}
+class TypeGraphBasic_TFieldSignature {
+}
+abstract class TypeGraphBasic_TMember {
+}
+class TypeGraphBasic_TMethod {
+  + tName : str
+}
+class TypeGraphBasic_TMethodDefinition {
+}
+class TypeGraphBasic_TMethodSignature {
+}
+class TypeGraphBasic_TPackage {
+  + tName : str
+}
+abstract class TypeGraphBasic_TSignature {
+}
+class TypeGraphBasic_TypeGraph {
+  + tName : str
+}
+TMember <|-- TypeGraphBasic_TFieldDefinition
+TMember <|-- TypeGraphBasic_TMethodDefinition
+TSignature <|-- TypeGraphBasic_TFieldSignature
+TSignature <|-- TypeGraphBasic_TMethodSignature
+TypeGraphBasic_TMember "0..9999" -- "1..1" TypeGraphBasic_TMember : access23
+TypeGraphBasic_TClass "1..1" -- "0..9999" TypeGraphBasic_TClass : childClasses3
+TypeGraphBasic_TClass "0..9999" --* "1..1" TypeGraphBasic_TypeGraph : classes62
+TypeGraphBasic_TClass "0..9999" -- "1..1" TypeGraphBasic_TPackage : containedClasses49
+TypeGraphBasic_TClass "1..1" *-- "0..9999" TypeGraphBasic_TMember : defines7
+TypeGraphBasic_TFieldDefinition "0..9999" -- "1..1" TypeGraphBasic_TFieldSignature : definitions17
+TypeGraphBasic_TMethodDefinition "0..9999" -- "1..1" TypeGraphBasic_TMethodSignature : definitions44
+TypeGraphBasic_TField "1..1" -- "1..1" TypeGraphBasic_TFieldSignature : field19
+TypeGraphBasic_TField "0..9999" --* "1..1" TypeGraphBasic_TypeGraph : fields60
+TypeGraphBasic_TFieldDefinition "1..1" -- "0..9999" TypeGraphBasic_TFieldDefinition : hiddenBy13
+TypeGraphBasic_TFieldDefinition "1..1" -- "0..1" TypeGraphBasic_TFieldDefinition : hiding11
+TypeGraphBasic_TMethod "1..1" -- "1..1" TypeGraphBasic_TMethodSignature : method42
+TypeGraphBasic_TMethod "0..9999" --* "1..1" TypeGraphBasic_TypeGraph : methods58
+TypeGraphBasic_TMethodDefinition "1..1" -- "0..9999" TypeGraphBasic_TMethodDefinition : overloadedBy38
+TypeGraphBasic_TMethodDefinition "1..1" -- "0..9999" TypeGraphBasic_TMethodDefinition : overloading35
+TypeGraphBasic_TMethodDefinition "1..1" -- "0..9999" TypeGraphBasic_TMethodDefinition : overriddenBy32
+TypeGraphBasic_TMethodDefinition "1..1" -- "0..1" TypeGraphBasic_TMethodDefinition : overriding30
+TypeGraphBasic_TClass "1..1" -- "1..1" TypeGraphBasic_TPackage : package6
+TypeGraphBasic_TPackage "0..9999" --* "1..1" TypeGraphBasic_TypeGraph : packages57
+TypeGraphBasic_TClass "0..9999" -- "1..1" TypeGraphBasic_TMethodSignature : paramList47
+TypeGraphBasic_TPackage "1..1" -- "0..1" TypeGraphBasic_TPackage : parent55
+TypeGraphBasic_TClass "1..1" -- "0..1" TypeGraphBasic_TClass : parentClass1
+TypeGraphBasic_TClass "0..1" -- "1..1" TypeGraphBasic_TMethodDefinition : returnType40
+TypeGraphBasic_TFieldDefinition "1..1" -- "1..1" TypeGraphBasic_TFieldSignature : signature15
+TypeGraphBasic_TMethodDefinition "1..1" -- "1..1" TypeGraphBasic_TMethodSignature : signature26
+TypeGraphBasic_TClass "1..1" -- "0..9999" TypeGraphBasic_TSignature : signature5
+TypeGraphBasic_TMethod "1..1" *-- "0..9999" TypeGraphBasic_TMethodSignature : signatures25
+TypeGraphBasic_TField "1..1" *-- "0..9999" TypeGraphBasic_TFieldSignature : signatures9
+TypeGraphBasic_TPackage "1..1" *-- "0..9999" TypeGraphBasic_TPackage : subpackage52
+TypeGraphBasic_TClass "1..1" -- "1..1" TypeGraphBasic_TFieldSignature : type20
+@enduml

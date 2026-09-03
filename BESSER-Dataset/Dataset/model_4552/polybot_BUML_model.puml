@@ -1,0 +1,52 @@
+@startuml
+class Instruction {
+}
+class Move {
+}
+class polybot_Bot {
+}
+class polybot_Forward {
+}
+class polybot_GoTo {
+}
+class polybot_IfObjectDetected {
+}
+class polybot_IfObstacleDetected {
+}
+abstract class polybot_Instruction {
+}
+class polybot_Left {
+}
+abstract class polybot_Move {
+  + duration : int
+  + speed : int
+}
+class polybot_Point {
+  + x : int
+  + y : int
+}
+class polybot_Reverse {
+}
+class polybot_Right {
+}
+class polybot_TakeDropObject {
+}
+class polybot_While {
+  + nb : int
+}
+Instruction <|-- polybot_IfObjectDetected
+Instruction <|-- polybot_IfObstacleDetected
+Instruction <|-- polybot_Move
+Instruction <|-- polybot_TakeDropObject
+Instruction <|-- polybot_While
+Move <|-- polybot_Forward
+Move <|-- polybot_GoTo
+Move <|-- polybot_Left
+Move <|-- polybot_Reverse
+Move <|-- polybot_Right
+polybot_Bot "1..1" *-- "0..1" polybot_Point : initialPosition0
+polybot_Bot "1..1" *-- "0..9999" polybot_Instruction : instructionList1
+polybot_IfObjectDetected "1..1" *-- "0..9999" polybot_Instruction : listOfInstructions3
+polybot_IfObstacleDetected "1..1" *-- "0..9999" polybot_Instruction : listOfInstructions5
+polybot_Instruction "0..9999" --* "1..1" polybot_While : listOfInstructions7
+@enduml

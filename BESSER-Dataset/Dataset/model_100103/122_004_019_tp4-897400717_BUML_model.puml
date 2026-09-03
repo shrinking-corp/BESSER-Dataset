@@ -1,0 +1,92 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+abstract class tp4_Counted {
+  + id : int
+}
+class tp4_Keyword {
+  + description : str
+}
+abstract class tp4_Labelled {
+  + lname : str
+}
+abstract class tp4_Named {
+  + name : str
+}
+class tp4_Paper {
+}
+class tp4_Paragraph {
+  + content : str
+}
+class tp4_Phases {
+  + name : str
+}
+class tp4_Position {
+  + description : str
+}
+class tp4_Progress {
+  + percent : int
+}
+class tp4_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class tp4_PublicationStructure {
+}
+class tp4_PublicationSystem {
+}
+class tp4_Researcher {
+  + forName : str
+  + name : str
+}
+class tp4_Review {
+  + date : date
+}
+class tp4_ReviewNote {
+  + content : str
+}
+class tp4_Skill {
+  + description : str
+}
+class tp4_Write {
+  + timeSpent : int
+}
+Counted <|-- tp4_Paragraph
+Labelled <|-- tp4_Progress
+Labelled <|-- tp4_Review
+Labelled <|-- tp4_Write
+Named <|-- tp4_Keyword
+Named <|-- tp4_Paper
+Named <|-- tp4_Paragraph
+Named <|-- tp4_Position
+Named <|-- tp4_PublicationProcess
+Named <|-- tp4_PublicationStructure
+Named <|-- tp4_PublicationSystem
+Named <|-- tp4_ReviewNote
+tp4_Keyword "0..9999" --* "1..1" tp4_PublicationSystem : allKeywords39
+tp4_Paper "1..1" -- "0..9999" tp4_Researcher : authors11
+tp4_Keyword "0..9999" -- "1..1" tp4_Paper : keywords12
+tp4_Paper "0..1" -- "1..1" tp4_Progress : paper18
+tp4_Paper "0..9999" --* "1..1" tp4_PublicationStructure : papers28
+tp4_Paragraph "0..1" -- "1..1" tp4_Write : paragraph20
+tp4_Paper "1..1" *-- "0..9999" tp4_Paragraph : paragraphs9
+tp4_Position "0..1" -- "1..1" tp4_Position : parent43
+tp4_Phases "0..9999" --* "1..1" tp4_PublicationProcess : phases0
+tp4_Position "0..1" -- "1..1" tp4_Researcher : position7
+tp4_Position "0..9999" --* "1..1" tp4_PublicationSystem : positions36
+tp4_Progress "1..1" -- "0..1" tp4_PublicationProcess : process16
+tp4_PublicationProcess "0..1" --* "1..1" tp4_PublicationSystem : processView31
+tp4_Paper "1..1" *-- "0..9999" tp4_Progress : progress10
+tp4_Paper "0..9999" -- "1..1" tp4_Researcher : res_papers4
+tp4_PublicationStructure "1..1" *-- "0..9999" tp4_Researcher : researchers26
+tp4_Review "1..1" -- "0..1" tp4_ReviewNote : reviewNote23
+tp4_Paragraph "1..1" *-- "0..9999" tp4_ReviewNote : reviews14
+tp4_Researcher "1..1" *-- "0..9999" tp4_Review : reviews2
+tp4_Researcher "1..1" *-- "0..9999" tp4_Skill : skills5
+tp4_PublicationStructure "0..1" --* "1..1" tp4_PublicationSystem : structuralView33
+tp4_Researcher "1..1" *-- "0..9999" tp4_Write : writes1
+@enduml

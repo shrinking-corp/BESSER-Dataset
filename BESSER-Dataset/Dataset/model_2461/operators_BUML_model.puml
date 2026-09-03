@@ -1,0 +1,47 @@
+@startuml
+class NumericExp {
+}
+class OclExpression {
+}
+class OperatorCallExp {
+}
+class PrimitiveExp {
+}
+class operators_BinaryOperatorCallExp {
+}
+class operators_BooleanExp {
+  + booleanSymbol : str
+}
+class operators_IntegerExp {
+  + integerSymbol : str
+}
+abstract class operators_NumericExp {
+}
+abstract class operators_OclExpression {
+}
+abstract class operators_OperatorCallExp {
+  + name : str
+}
+abstract class operators_PrimitiveExp {
+}
+class operators_RealExp {
+  + realSymbol : str
+}
+class operators_StringExp {
+  + stringSymbol : str
+}
+class operators_UnaryOperatorCallExp {
+}
+NumericExp <|-- operators_IntegerExp
+NumericExp <|-- operators_RealExp
+OclExpression <|-- operators_OperatorCallExp
+OclExpression <|-- operators_PrimitiveExp
+OperatorCallExp <|-- operators_BinaryOperatorCallExp
+OperatorCallExp <|-- operators_UnaryOperatorCallExp
+PrimitiveExp <|-- operators_BooleanExp
+PrimitiveExp <|-- operators_NumericExp
+PrimitiveExp <|-- operators_StringExp
+operators_BinaryOperatorCallExp "1..1" *-- "1..1" operators_OclExpression : argument1
+operators_BinaryOperatorCallExp "1..1" *-- "1..1" operators_OclExpression : source0
+operators_OclExpression "1..1" --* "1..1" operators_UnaryOperatorCallExp : source4
+@enduml

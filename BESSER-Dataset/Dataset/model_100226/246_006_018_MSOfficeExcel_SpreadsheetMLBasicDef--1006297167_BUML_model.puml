@@ -1,0 +1,195 @@
+@startuml
+class Cell {
+}
+class ColOrRowElement {
+}
+class Column {
+}
+class Comment {
+}
+class CustomDocumentPropertiesCollection {
+}
+class CustomDocumentProperty {
+}
+class Data {
+}
+class DateTimeType {
+}
+class DocumentPropertiesCollection {
+}
+class Row {
+}
+class SmartTagType {
+}
+class SmartTagsCollection {
+}
+class SpreadsheetMLBasicDef_BooleanValue {
+  + value : str
+}
+class SpreadsheetMLBasicDef_Cell {
+  + arrayRange : str
+  + formula : str
+  + hRef : str
+  + mergeAcross : str
+  + mergeDown : str
+}
+abstract class SpreadsheetMLBasicDef_ColOrRowElement {
+  + hidden : str
+  + span : str
+}
+class SpreadsheetMLBasicDef_Column {
+  + autoFitWidth : str
+  + width : str
+}
+class SpreadsheetMLBasicDef_Comment {
+  + author : str
+  + showAlways : str
+}
+class SpreadsheetMLBasicDef_CustomDocumentPropertiesCollection {
+}
+class SpreadsheetMLBasicDef_CustomDocumentProperty {
+  + name : str
+}
+class SpreadsheetMLBasicDef_Data {
+}
+class SpreadsheetMLBasicDef_DateTimeType {
+  + day : str
+  + hour : str
+  + minute : str
+  + month : str
+  + second : str
+  + year : str
+}
+class SpreadsheetMLBasicDef_DateTimeTypeValue {
+}
+class SpreadsheetMLBasicDef_DocumentPropertiesCollection {
+  + appName : str
+  + author : str
+  + bytes : str
+  + category : str
+  + characters : str
+  + charactersWithSpaces : str
+  + company : str
+  + description : str
+  + guid : str
+  + hyperlinkBase : str
+  + keywords : str
+  + lastAuthor : str
+  + lines : str
+  + manager : str
+  + pages : str
+  + paragraphs : str
+  + presentationFormat : str
+  + revision : str
+  + subject : str
+  + title : str
+  + totalTime : str
+  + words : str
+}
+class SpreadsheetMLBasicDef_ErrorValue {
+}
+class SpreadsheetMLBasicDef_NumberValue {
+  + value : str
+}
+class SpreadsheetMLBasicDef_Row {
+  + autoFitHeight : str
+  + height : str
+}
+class SpreadsheetMLBasicDef_SmartTagType {
+  + name : str
+  + namespaceuri : str
+  + url : str
+}
+class SpreadsheetMLBasicDef_SmartTagsCollection {
+}
+class SpreadsheetMLBasicDef_StringValue {
+  + value : str
+}
+abstract class SpreadsheetMLBasicDef_StyledElement {
+}
+class SpreadsheetMLBasicDef_Table {
+  + defaultColumnWidth : str
+  + defaultRowHeight : str
+  + expandedColumnCount : str
+  + expandedRowCount : str
+  + fullColumns : str
+  + fullRows : str
+  + leftCell : str
+  + topCell : str
+}
+abstract class SpreadsheetMLBasicDef_TableElement {
+  + index : str
+}
+abstract class SpreadsheetMLBasicDef_ValueType {
+}
+class SpreadsheetMLBasicDef_VersionType {
+  + n : str
+  + nn : str
+}
+class SpreadsheetMLBasicDef_Workbook {
+}
+class SpreadsheetMLBasicDef_Worksheet {
+  + name : str
+}
+class StyledElement {
+}
+class Table {
+}
+class TableElement {
+}
+class ValueType {
+}
+class VersionType {
+}
+class Workbook {
+}
+class Worksheet {
+}
+ColOrRowElement <|-- SpreadsheetMLBasicDef_Column
+ColOrRowElement <|-- SpreadsheetMLBasicDef_Row
+StyledElement <|-- SpreadsheetMLBasicDef_Table
+StyledElement <|-- SpreadsheetMLBasicDef_TableElement
+TableElement <|-- SpreadsheetMLBasicDef_Cell
+TableElement <|-- SpreadsheetMLBasicDef_ColOrRowElement
+ValueType <|-- SpreadsheetMLBasicDef_BooleanValue
+ValueType <|-- SpreadsheetMLBasicDef_DateTimeTypeValue
+ValueType <|-- SpreadsheetMLBasicDef_ErrorValue
+ValueType <|-- SpreadsheetMLBasicDef_NumberValue
+ValueType <|-- SpreadsheetMLBasicDef_StringValue
+Cell "1..1" -- "1..1" SpreadsheetMLBasicDef_Comment : c_cell49
+Comment "0..1" --* "1..1" SpreadsheetMLBasicDef_Cell : c_comment48
+Data "0..1" --* "1..1" SpreadsheetMLBasicDef_Cell : c_data46
+Row "1..1" -- "1..1" SpreadsheetMLBasicDef_Cell : c_row42
+SmartTagsCollection "0..9999" --* "1..1" SpreadsheetMLBasicDef_Cell : c_smartTags44
+SpreadsheetMLBasicDef_Column "1..1" -- "1..1" Table : c_table36
+SpreadsheetMLBasicDef_CustomDocumentPropertiesCollection "1..1" -- "1..1" Workbook : cdp_workbook13
+Data "1..1" --* "1..1" SpreadsheetMLBasicDef_Comment : com_data51
+DateTimeType "0..1" --* "1..1" SpreadsheetMLBasicDef_DocumentPropertiesCollection : created7
+CustomDocumentProperty "1..9999" --* "1..1" SpreadsheetMLBasicDef_CustomDocumentPropertiesCollection : customDocumentProperties15
+CustomDocumentPropertiesCollection "1..1" -- "1..1" SpreadsheetMLBasicDef_CustomDocumentProperty : customDocumentProperty_cdpe16
+Cell "1..1" -- "1..1" SpreadsheetMLBasicDef_Data : d_cell53
+Comment "1..1" -- "1..1" SpreadsheetMLBasicDef_Data : d_comment55
+SpreadsheetMLBasicDef_DocumentPropertiesCollection "1..1" -- "1..1" Workbook : dp_workbook2
+DateTimeType "0..1" --* "1..1" SpreadsheetMLBasicDef_DocumentPropertiesCollection : lastPrinted4
+DateTimeType "0..1" --* "1..1" SpreadsheetMLBasicDef_DocumentPropertiesCollection : lastSaved10
+Cell "0..9999" --* "1..1" SpreadsheetMLBasicDef_Row : r_cells40
+SpreadsheetMLBasicDef_Row "1..1" -- "1..1" Table : r_table38
+SmartTagsCollection "1..1" -- "1..1" SpreadsheetMLBasicDef_SmartTagType : smartTagType_ste18
+SmartTagType "0..9999" --* "1..1" SpreadsheetMLBasicDef_SmartTagsCollection : smartTagTypes22
+Cell "1..1" -- "1..1" SpreadsheetMLBasicDef_SmartTagsCollection : st_cell21
+SpreadsheetMLBasicDef_SmartTagsCollection "1..1" -- "1..1" Workbook : st_workbook19
+Column "0..9999" --* "1..1" SpreadsheetMLBasicDef_Table : t_cols34
+Row "0..9999" --* "1..1" SpreadsheetMLBasicDef_Table : t_rows35
+SpreadsheetMLBasicDef_Table "1..1" -- "1..1" Worksheet : t_worksheet32
+DateTimeType "1..1" --* "1..1" SpreadsheetMLBasicDef_DateTimeTypeValue : value1
+SpreadsheetMLBasicDef_CustomDocumentProperty "1..1" *-- "1..1" ValueType : value17
+SpreadsheetMLBasicDef_Data "1..1" *-- "1..1" ValueType : value57
+SpreadsheetMLBasicDef_DocumentPropertiesCollection "1..1" *-- "0..1" VersionType : version3
+Data "1..1" -- "1..1" SpreadsheetMLBasicDef_ValueType : vt_data0
+CustomDocumentPropertiesCollection "0..1" --* "1..1" SpreadsheetMLBasicDef_Workbook : wb_customDocProperties26
+DocumentPropertiesCollection "0..1" --* "1..1" SpreadsheetMLBasicDef_Workbook : wb_docProperties25
+SmartTagsCollection "0..1" --* "1..1" SpreadsheetMLBasicDef_Workbook : wb_smartTags23
+SpreadsheetMLBasicDef_Workbook "1..1" *-- "0..9999" Worksheet : wb_worksheets28
+SpreadsheetMLBasicDef_Worksheet "1..1" *-- "0..1" Table : ws_table31
+SpreadsheetMLBasicDef_Worksheet "1..1" -- "1..1" Workbook : ws_workbook29
+@enduml

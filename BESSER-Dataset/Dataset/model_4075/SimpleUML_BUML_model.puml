@@ -1,0 +1,22 @@
+@startuml
+class NamedElement {
+}
+class SimpleUML_Class {
+}
+abstract class SimpleUML_NamedElement {
+  + name : str
+}
+class SimpleUML_Package {
+}
+class SimpleUML_Property {
+  + isContainment : bool
+  + primitiveType : str
+}
+NamedElement <|-- SimpleUML_Class
+NamedElement <|-- SimpleUML_Package
+NamedElement <|-- SimpleUML_Property
+SimpleUML_Class "0..1" -- "1..1" SimpleUML_Property : complexType4
+SimpleUML_Class "0..9999" --* "1..1" SimpleUML_Package : ownedElements7
+SimpleUML_Class "1..1" *-- "0..9999" SimpleUML_Property : ownedProperty0
+SimpleUML_Class "0..9999" -- "1..1" SimpleUML_Class : superClasses2
+@enduml

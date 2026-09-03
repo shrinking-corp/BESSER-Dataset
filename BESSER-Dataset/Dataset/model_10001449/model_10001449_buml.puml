@@ -1,0 +1,67 @@
+@startuml
+class Appointment {
+  + Doctor : str
+  + Patient : str
+  + Time : str
+}
+class Assistant {
+  + CNIC : str
+  + name : str
+}
+class Billing_Report {
+  + serviceCharges : str
+  + testCharges : str
+}
+class BloodBank {
+  + bloodGroup : str
+  + phone : str
+}
+class Doctor {
+  + name : str
+  + privateConsultancy : bool
+  + specilization : str
+  + timing : str
+}
+class DoctorDatabase {
+  + Specialization : str
+  + doctorName : str
+}
+class Hospital {
+  + address : str
+  + name : str
+  + phone : int
+}
+class PatientProfile {
+  + appointment : str
+  + name : str
+}
+class Patients {
+  + BP : int
+  + History : str
+  + Symptoms : str
+  + name : str
+  + weight : int
+}
+class Prescription {
+  + medicines : str
+  + tests : str
+}
+class Receptionist {
+  + CNIC : str
+  + name : str
+}
+Appointment "0..9999" -- "1..1" Assistant : Assistant_Appointment
+Assistant "1..1" -- "1..1" Doctor : Doctor_Assistant
+Doctor "1..1" -- "1..9999" Patients : Doctor_Patients
+Doctor "0..9999" -- "0..9999" Prescription : Doctor_Prescription
+BloodBank "1..1" -- "1..1" Hospital : Hospital_BloodBank
+Doctor "0..9999" -- "1..1" Hospital : Hospital_Doctor
+Appointment "1..1" -- "1..1" Patients : Patients_Appointment
+Assistant "1..1" -- "0..9999" Patients : Patients_Assistant
+Hospital "1..1" -- "0..9999" Patients : Patients_Hospital
+Patients "0..9999" -- "1..1" Receptionist : Patients_Receptionist
+Appointment "0..9999" -- "1..1" Receptionist : Receptionist_Appointment
+Billing_Report "0..9999" -- "1..1" Receptionist : Receptionist_Billing_Report
+DoctorDatabase "1..1" -- "1..1" Receptionist : Receptionist_DoctorDatabase
+PatientProfile "0..9999" -- "1..1" Receptionist : Receptionist_PatientProfile
+@enduml

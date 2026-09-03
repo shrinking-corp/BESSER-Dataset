@@ -1,0 +1,76 @@
+@startuml
+class CallExp {
+}
+class Element {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class TypedElement {
+}
+class Visitable {
+}
+class classes_Argument {
+}
+abstract class classes_CallExp {
+}
+class classes_Class {
+}
+abstract class classes_Element {
+}
+abstract class classes_NamedElement {
+  + name : str
+}
+abstract class classes_Namespace {
+}
+class classes_Operation {
+}
+class classes_OperationCallExp {
+}
+class classes_Package {
+}
+class classes_Parameter {
+}
+class classes_Property {
+}
+class classes_PropertyCallExp {
+}
+class classes_Root {
+}
+abstract class classes_TypedElement {
+}
+abstract class classes_Visitable {
+}
+CallExp <|-- classes_OperationCallExp
+CallExp <|-- classes_PropertyCallExp
+Element <|-- classes_NamedElement
+Element <|-- classes_Namespace
+Element <|-- classes_Root
+Element <|-- classes_TypedElement
+NamedElement <|-- classes_Argument
+NamedElement <|-- classes_Class
+NamedElement <|-- classes_Operation
+NamedElement <|-- classes_Package
+NamedElement <|-- classes_Parameter
+NamedElement <|-- classes_Property
+Namespace <|-- classes_Package
+TypedElement <|-- classes_CallExp
+TypedElement <|-- classes_Operation
+TypedElement <|-- classes_Property
+Visitable <|-- classes_Element
+classes_Argument "0..9999" --* "1..1" classes_OperationCallExp : ownedArguments26
+classes_CallExp "1..1" *-- "0..1" classes_CallExp : ownedCallExp2
+classes_Class "0..9999" --* "1..1" classes_Package : ownedClasses7
+classes_CallExp "0..9999" --* "1..1" classes_Operation : ownedExpressions22
+classes_Class "1..1" *-- "0..9999" classes_Operation : ownedOperations16
+classes_Package "0..9999" --* "1..1" classes_Package : ownedPackages11
+classes_Package "0..9999" --* "1..1" classes_Root : ownedPackages6
+classes_Operation "1..1" *-- "0..9999" classes_Parameter : ownedParameters20
+classes_Class "1..1" *-- "0..9999" classes_Property : ownedProperties18
+classes_CallExp "1..1" -- "0..1" classes_CallExp : owningSource4
+classes_Operation "0..1" -- "1..1" classes_OperationCallExp : referredOperation27
+classes_Property "0..1" -- "1..1" classes_PropertyCallExp : referredProperty24
+classes_Class "0..1" -- "1..1" classes_Class : superClass14
+classes_Class "0..1" -- "1..1" classes_TypedElement : type0
+@enduml

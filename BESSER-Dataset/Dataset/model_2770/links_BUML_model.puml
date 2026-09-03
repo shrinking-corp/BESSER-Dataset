@@ -1,0 +1,29 @@
+@startuml
+class links_ChildNodeA {
+}
+class links_ChildNodeB {
+}
+class links_Child_AB_Element_Link {
+}
+class links_Root {
+}
+class links_RootNodeA {
+}
+class links_RootNodeB {
+}
+class links_Root_BA_Element_Link {
+  + name : str
+}
+links_ChildNodeA "1..1" -- "0..9999" links_ChildNodeB : Child_AB_Feature_Link14
+links_ChildNodeB "0..9999" --* "1..1" links_RootNodeB : ChildrenB9
+links_ChildNodeA "0..9999" --* "1..1" links_RootNodeA : ChildrenNodeA7
+links_RootNodeA "0..9999" -- "1..1" links_RootNodeB : Root_BA_Feature_Link11
+links_RootNodeA "0..1" -- "1..1" links_Root_BA_Element_Link : a26
+links_RootNodeB "0..1" -- "1..1" links_Root_BA_Element_Link : b23
+links_Child_AB_Element_Link "0..9999" --* "1..1" links_Root : childABElementLinks0
+links_Root "1..1" *-- "0..9999" links_Root_BA_Element_Link : rootBALinks5
+links_Root "1..1" *-- "0..9999" links_RootNodeA : rootNodeAs1
+links_Root "1..1" *-- "0..9999" links_RootNodeB : rootNodeBs3
+links_ChildNodeA "0..1" -- "1..1" links_Child_AB_Element_Link : source_A17
+links_ChildNodeB "0..1" -- "1..1" links_Child_AB_Element_Link : target_B20
+@enduml

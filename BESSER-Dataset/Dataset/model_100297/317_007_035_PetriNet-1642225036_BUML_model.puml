@@ -1,0 +1,40 @@
+@startuml
+class Arc {
+}
+class EObject {
+}
+class Element {
+}
+abstract class PetriNet_Arc {
+  + name : str
+  + weight : str
+}
+abstract class PetriNet_Element {
+  + name : str
+}
+class PetriNet_PetriNet {
+}
+class PetriNet_Place {
+}
+class PetriNet_PlaceToTransition {
+}
+class PetriNet_Transition {
+}
+class PetriNet_TransitionToPlace {
+}
+class Place {
+}
+class Transition {
+}
+Arc <|-- PetriNet_PlaceToTransition
+Arc <|-- PetriNet_TransitionToPlace
+EObject <|-- PetriNet_PetriNet
+Element <|-- PetriNet_Place
+Element <|-- PetriNet_Transition
+Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs1
+Element "0..9999" --* "1..1" PetriNet_PetriNet : elements0
+PetriNet_PlaceToTransition "1..1" -- "1..1" Place : from_3
+PetriNet_TransitionToPlace "1..1" -- "1..1" Transition : from_6
+PetriNet_PlaceToTransition "1..1" -- "1..1" Transition : to4
+PetriNet_TransitionToPlace "1..1" -- "1..1" Place : to8
+@enduml

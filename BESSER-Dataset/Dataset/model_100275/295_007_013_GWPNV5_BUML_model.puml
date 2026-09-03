@@ -1,0 +1,47 @@
+@startuml
+class Arc {
+}
+class Net {
+}
+class PTArc {
+}
+abstract class PetriNet_Arc {
+  + weight : str
+}
+class PetriNet_Net {
+}
+class PetriNet_PTArc {
+}
+class PetriNet_Place {
+}
+class PetriNet_TPArc {
+}
+class PetriNet_Token {
+}
+class PetriNet_Transition {
+}
+class Place {
+}
+class TPArc {
+}
+class Token {
+}
+class Transition {
+}
+Arc <|-- PetriNet_PTArc
+Arc <|-- PetriNet_TPArc
+PetriNet_PTArc "1..1" -- "1..1" Transition : dst16
+PetriNet_TPArc "1..1" -- "1..1" Place : dst23
+PetriNet_Place "1..1" -- "0..9999" TPArc : in_2
+PTArc "1..9999" -- "1..1" PetriNet_Transition : in_7
+Net "1..1" -- "1..1" PetriNet_Place : net0
+Net "1..1" -- "1..1" PetriNet_Transition : net5
+PTArc "0..9999" -- "1..1" PetriNet_Place : out1
+PetriNet_Transition "1..1" -- "1..9999" TPArc : out10
+PetriNet_Net "1..1" *-- "1..9999" Place : place13
+PetriNet_Token "1..1" -- "1..1" Place : place26
+PetriNet_PTArc "1..1" -- "1..1" Place : src18
+PetriNet_TPArc "1..1" -- "1..1" Transition : src20
+PetriNet_Place "1..1" *-- "0..9999" Token : token3
+PetriNet_Net "1..1" *-- "1..9999" Transition : transition14
+@enduml

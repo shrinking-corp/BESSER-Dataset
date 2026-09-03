@@ -1,0 +1,89 @@
+@startuml
+class AppointmentDiagnose_external {
+}
+class Appointment_external {
+}
+class Appointment_management_UseCase {
+}
+class Authorization_UseCase {
+}
+class Bill {
+  + ammount : float
+  + billID : str
+  + date : str
+}
+class Billing_UseCase {
+}
+class Create_new_patient_account_UseCase {
+}
+class Diagnose {
+  + diagnoseID : int
+  + medication : str
+  + symptomps : str
+}
+class Diagnose_UseCase {
+}
+class Doctor {
+  + specialization : str
+}
+class Doctor_Actor {
+}
+class Employee {
+  + employeeAddress : str
+  + employeeEmail : str
+  + employeeID : int
+  + employeeMobile : str
+  + employeeName : str
+  + employeePassword : str
+  + employeeSurname : str
+  + employeeUsername : str
+}
+class Employee_Actor {
+}
+class Logging_as_existing_user_UseCase {
+}
+class Logging_into_system_UseCase {
+}
+class New_appointment_UseCase {
+}
+class Nurse {
+  + experience : str
+}
+class Nurse_Actor {
+}
+class Patient {
+  + coupon : float
+  + patientAddress : str
+  + patientEmail : str
+  + patientID : int
+  + patientMobile : str
+  + patientName : str
+  + patientSurname : str
+}
+class Patient_Actor {
+}
+class Remove_appointment_UseCase {
+}
+class Schedule {
+  + available : bool
+  + date : str
+  + endTime : str
+  + scheduleID : int
+  + startTime : str
+}
+class TreatmentList {
+  + treatmentID : int
+  + treatmentName : str
+  + treatmentPrice : float
+}
+Appointment_external "1..1" -- "0..1" Bill : Appointment_Bill
+Diagnose_UseCase "0..1" -- "0..1" Doctor_Actor : Doctor_Diagnose
+Employee_Actor "0..1" -- "0..1" Logging_into_system_UseCase : Employee_Logging_into_system
+Bill "0..9999" -- "1..1" Nurse : Nurse_Bill
+Billing_UseCase "0..1" -- "0..1" Nurse_Actor : Nurse_Billing
+Billing_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Billing
+Appointment_management_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Create_appointment
+Appointment_external "0..9999" -- "0..1" Patient : Patient_DoctorSchedule
+Logging_into_system_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Logging_into_system
+AppointmentDiagnose_external "0..9999" -- "1..1" TreatmentList : TreatmentList_AppointmentDiagnose
+@enduml

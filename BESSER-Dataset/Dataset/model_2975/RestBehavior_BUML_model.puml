@@ -1,0 +1,170 @@
+@startuml
+class Action {
+}
+class MTReference {
+}
+class OpType {
+}
+class Operation {
+}
+class Reference {
+}
+class State {
+}
+class Trigger {
+}
+class Value {
+}
+class WritableReference {
+}
+abstract class restbehavior_Action {
+}
+class restbehavior_ActionSequence {
+}
+class restbehavior_Attribute {
+}
+class restbehavior_AttributeReference {
+}
+class restbehavior_BehaviorSpecification {
+}
+class restbehavior_BinOpType {
+}
+class restbehavior_BinaryOperation {
+}
+class restbehavior_Condition {
+}
+class restbehavior_ConditionalAction {
+}
+class restbehavior_Constant {
+  + stringRepresentation : str
+}
+class restbehavior_CreateAction {
+}
+class restbehavior_Creator {
+}
+class restbehavior_DataType {
+}
+class restbehavior_DeletedState {
+}
+class restbehavior_ExternalLink {
+}
+class restbehavior_ExternalLinkReference {
+}
+class restbehavior_InternalLink {
+}
+class restbehavior_InternalLinkReference {
+}
+class restbehavior_InternalMessage {
+  + name : str
+}
+class restbehavior_ListAddAction {
+}
+class restbehavior_ListRemoveAction {
+}
+class restbehavior_MTLinkReference {
+}
+abstract class restbehavior_MTReference {
+}
+class restbehavior_MediaType {
+}
+class restbehavior_MediaTypeElement {
+}
+class restbehavior_MediaTypeLink {
+}
+class restbehavior_MessageAction {
+}
+class restbehavior_Metadata {
+}
+class restbehavior_Method {
+}
+class restbehavior_MtElementReference {
+}
+abstract class restbehavior_OpType {
+  + name : str
+}
+abstract class restbehavior_Operation {
+}
+class restbehavior_Parameter {
+}
+abstract class restbehavior_Reference {
+}
+class restbehavior_Representation {
+}
+class restbehavior_ReturnAction {
+}
+class restbehavior_State {
+  + name : str
+}
+class restbehavior_StatusCode {
+  + number : int
+}
+class restbehavior_Transition {
+}
+abstract class restbehavior_Trigger {
+}
+class restbehavior_UpdateAction {
+}
+abstract class restbehavior_Value {
+}
+abstract class restbehavior_WritableReference {
+}
+Action <|-- restbehavior_ActionSequence
+Action <|-- restbehavior_ConditionalAction
+Action <|-- restbehavior_CreateAction
+Action <|-- restbehavior_ListAddAction
+Action <|-- restbehavior_ListRemoveAction
+Action <|-- restbehavior_MessageAction
+Action <|-- restbehavior_ReturnAction
+Action <|-- restbehavior_UpdateAction
+MTReference <|-- restbehavior_MTLinkReference
+MTReference <|-- restbehavior_MtElementReference
+OpType <|-- restbehavior_BinOpType
+Operation <|-- restbehavior_BinaryOperation
+Reference <|-- restbehavior_MTReference
+Reference <|-- restbehavior_WritableReference
+State <|-- restbehavior_DeletedState
+Trigger <|-- restbehavior_InternalMessage
+Value <|-- restbehavior_Constant
+Value <|-- restbehavior_Operation
+Value <|-- restbehavior_Reference
+WritableReference <|-- restbehavior_AttributeReference
+WritableReference <|-- restbehavior_ExternalLinkReference
+WritableReference <|-- restbehavior_InternalLinkReference
+restbehavior_Action "0..1" --* "1..1" restbehavior_BehaviorSpecification : action5
+restbehavior_Condition "1..1" --* "1..1" restbehavior_ConditionalAction : actionCondition29
+restbehavior_Action "0..1" --* "1..1" restbehavior_ConditionalAction : actionIfFalse34
+restbehavior_Action "0..1" --* "1..1" restbehavior_ConditionalAction : actionIfTrue31
+restbehavior_Action "1..9999" --* "1..1" restbehavior_ActionSequence : actionelements39
+restbehavior_Condition "0..1" --* "1..1" restbehavior_Transition : condition21
+restbehavior_Condition "1..1" *-- "1..1" restbehavior_Value : conditionExpr26
+restbehavior_Creator "1..1" -- "1..9999" restbehavior_MediaType : consumedMT0
+restbehavior_BehaviorSpecification "1..1" --* "1..1" restbehavior_Creator : createbehavior3
+restbehavior_CreateAction "1..1" -- "0..1" restbehavior_Creator : creator37
+restbehavior_Creator "1..1" *-- "0..9999" restbehavior_Parameter : creatorParams1
+restbehavior_BehaviorSpecification "0..1" --* "1..1" restbehavior_Transition : effect23
+restbehavior_UpdateAction "1..1" *-- "1..1" restbehavior_WritableReference : elementForUpdate41
+restbehavior_BehaviorSpecification "0..1" --* "1..1" restbehavior_State : entering7
+restbehavior_BinaryOperation "1..1" *-- "1..1" restbehavior_Value : firstOp51
+restbehavior_BinOpType "1..1" -- "1..1" restbehavior_DataType : firstOpType60
+restbehavior_BehaviorSpecification "0..1" --* "1..1" restbehavior_State : leaving9
+restbehavior_InternalMessage "1..1" -- "1..1" restbehavior_MessageAction : message28
+restbehavior_Metadata "0..9999" --* "1..1" restbehavior_ReturnAction : metadata46
+restbehavior_UpdateAction "1..1" *-- "1..1" restbehavior_Value : newValue42
+restbehavior_BinOpType "1..1" -- "1..1" restbehavior_BinaryOperation : optype56
+restbehavior_Attribute "1..1" -- "1..1" restbehavior_AttributeReference : referencedAttribute66
+restbehavior_ExternalLink "0..1" -- "1..1" restbehavior_ExternalLinkReference : referencedExternalLink73
+restbehavior_InternalLink "1..1" -- "1..1" restbehavior_InternalLinkReference : referencedLink67
+restbehavior_MediaTypeElement "1..1" -- "1..1" restbehavior_MtElementReference : referencedMTElement72
+restbehavior_MTLinkReference "1..1" -- "1..1" restbehavior_MediaTypeLink : referencedMTLink71
+restbehavior_InternalLinkReference "1..1" *-- "0..1" restbehavior_WritableReference : referencedReference68
+restbehavior_Representation "0..1" --* "1..1" restbehavior_ReturnAction : representation48
+restbehavior_DataType "1..1" -- "1..1" restbehavior_OpType : resultType58
+restbehavior_BinaryOperation "1..1" *-- "1..1" restbehavior_Value : secondOp53
+restbehavior_BinOpType "1..1" -- "1..1" restbehavior_DataType : secondOpType63
+restbehavior_ReturnAction "1..1" *-- "1..1" restbehavior_StatusCode : status45
+restbehavior_Method "0..9999" -- "1..1" restbehavior_State : supportedMethods14
+restbehavior_State "1..1" -- "1..1" restbehavior_Transition : targetState18
+restbehavior_State "1..1" *-- "0..9999" restbehavior_Transition : transitions12
+restbehavior_Transition "1..1" *-- "1..9999" restbehavior_Trigger : trigger16
+restbehavior_Constant "1..1" -- "1..1" restbehavior_DataType : type50
+@enduml

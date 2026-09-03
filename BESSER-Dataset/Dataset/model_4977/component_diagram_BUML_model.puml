@@ -1,0 +1,75 @@
+@startuml
+class ComponentType {
+}
+class ElectronicDevice {
+}
+class HardwareComponent {
+}
+class IDBase {
+}
+class MechanicalDevice {
+}
+class component_diagram_Actuator {
+}
+class component_diagram_Architecture {
+}
+class component_diagram_ComponentInstance {
+  + name : str
+  + version : int
+}
+abstract class component_diagram_ComponentType {
+  + name : str
+}
+class component_diagram_Connector {
+  + name : str
+}
+class component_diagram_ElectronicDevice {
+}
+class component_diagram_HardwareComponent {
+  + powerSupply : str
+}
+class component_diagram_MechanicalDevice {
+}
+class component_diagram_PortInstance {
+  + name : str
+}
+class component_diagram_PortType {
+  + name : str
+}
+class component_diagram_Sensor {
+  + type : str
+}
+class component_diagram_SoftwareComponent {
+}
+ComponentType <|-- component_diagram_HardwareComponent
+ComponentType <|-- component_diagram_SoftwareComponent
+ElectronicDevice <|-- component_diagram_Sensor
+HardwareComponent <|-- component_diagram_ElectronicDevice
+HardwareComponent <|-- component_diagram_MechanicalDevice
+IDBase <|-- component_diagram_Architecture
+IDBase <|-- component_diagram_ComponentInstance
+IDBase <|-- component_diagram_ComponentType
+IDBase <|-- component_diagram_Connector
+IDBase <|-- component_diagram_PortInstance
+IDBase <|-- component_diagram_PortType
+MechanicalDevice <|-- component_diagram_Actuator
+component_diagram_Architecture "1..1" *-- "0..9999" component_diagram_ComponentType : component10
+component_diagram_ComponentType "0..1" -- "1..1" component_diagram_PortType : component_type30
+component_diagram_Connector "0..1" -- "1..1" component_diagram_PortInstance : connect3
+component_diagram_Architecture "1..1" *-- "0..9999" component_diagram_Connector : connectors11
+component_diagram_ComponentInstance "0..1" -- "1..1" component_diagram_PortInstance : inComponent6
+component_diagram_ComponentInstance "1..1" *-- "0..9999" component_diagram_PortInstance : inPorts25
+component_diagram_ComponentInstance "0..9999" -- "1..1" component_diagram_ComponentType : instance1
+component_diagram_Architecture "1..1" *-- "0..9999" component_diagram_ComponentInstance : instances15
+component_diagram_ComponentInstance "0..1" -- "1..1" component_diagram_PortInstance : outComponent4
+component_diagram_ComponentInstance "1..1" *-- "0..9999" component_diagram_PortInstance : outPorts27
+component_diagram_ComponentInstance "1..1" -- "0..1" component_diagram_ComponentInstance : parentcomponent23
+component_diagram_Connector "1..1" -- "2..2" component_diagram_PortInstance : port2
+component_diagram_PortInstance "0..9999" -- "1..1" component_diagram_PortType : port_instance32
+component_diagram_Architecture "1..1" *-- "0..9999" component_diagram_PortType : port_type17
+component_diagram_ComponentType "1..1" *-- "0..9999" component_diagram_PortType : port_types0
+component_diagram_Architecture "1..1" *-- "0..9999" component_diagram_PortInstance : ports13
+component_diagram_ComponentInstance "1..1" *-- "0..9999" component_diagram_ComponentInstance : subcomponent20
+component_diagram_ComponentInstance "1..1" -- "1..1" component_diagram_ComponentType : type29
+component_diagram_PortInstance "1..1" -- "1..1" component_diagram_PortType : type8
+@enduml

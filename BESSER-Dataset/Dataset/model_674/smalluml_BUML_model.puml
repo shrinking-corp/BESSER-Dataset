@@ -1,0 +1,53 @@
+@startuml
+class NamedElement {
+}
+class Type {
+}
+class smalluml_Class {
+}
+abstract class smalluml_NamedElement {
+  + name : str
+}
+class smalluml_Operation {
+}
+class smalluml_Property {
+  + lowerBound : int
+  + upperBound : int
+}
+class smalluml_Root {
+}
+class smalluml_Type {
+}
+class smalluml_TypeBoolean {
+  + value : str
+}
+class smalluml_TypeInteger {
+  + value : str
+}
+class smalluml_TypeReal {
+  + value : str
+}
+class smalluml_TypeString {
+  + value : str
+}
+class smalluml_TypeUnlimitedNatural {
+  + value : str
+}
+NamedElement <|-- smalluml_Operation
+NamedElement <|-- smalluml_Property
+NamedElement <|-- smalluml_Type
+Type <|-- smalluml_Class
+Type <|-- smalluml_TypeBoolean
+Type <|-- smalluml_TypeInteger
+Type <|-- smalluml_TypeReal
+Type <|-- smalluml_TypeString
+Type <|-- smalluml_TypeUnlimitedNatural
+smalluml_Class "0..9999" --* "1..1" smalluml_Root : elements14
+smalluml_Class "1..1" *-- "0..9999" smalluml_Operation : ownedOperations0
+smalluml_Class "1..1" *-- "0..9999" smalluml_Property : ownedProperties4
+smalluml_Operation "1..1" -- "0..9999" smalluml_Type : params8
+smalluml_Root "1..1" *-- "0..9999" smalluml_Type : primitiveTypes16
+smalluml_Operation "1..1" -- "0..1" smalluml_Type : resultType6
+smalluml_Class "0..9999" -- "1..1" smalluml_Class : superClass2
+smalluml_Property "1..1" -- "1..1" smalluml_Type : type11
+@enduml

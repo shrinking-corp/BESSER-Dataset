@@ -1,0 +1,52 @@
+@startuml
+class AIplayer {
+  + name : str
+  + score : str
+}
+class Button {
+}
+class Connect4 {
+}
+class Connect4GUI {
+  + root : str
+  + undo : Button
+}
+class ConsolePlayer {
+  + name : str
+  + score : str
+}
+class GameBoard {
+  + board : str
+  + player1 : Player_Interface
+  + player2 : Player_Interface
+  + whoPlay : str
+}
+class GameboardGUI {
+  + columns : int
+  + piecesList : str
+  + rows : int
+}
+class MainMenuGUI {
+}
+class Piece {
+  + pieceColor : str
+  + pieceSize : int
+}
+class Player_Interface {
+}
+class RandomPlayer {
+  + name : str
+  + score : str
+}
+class ScoreBoardGUI {
+  + playersList : str
+}
+Connect4 "0..1" -- "0..1" MainMenuGUI : Connect4_MainMenuGUI
+Connect4GUI "1..1" -- "1..1" GameBoard : GameBoard_Connect4GUI
+Connect4GUI "0..1" -- "0..1" GameboardGUI : GameboardGUI_Connect4GUI
+GameboardGUI "1..1" -- "0..9999" Piece : GameboardGUI_Piece
+Connect4GUI "1..1" -- "1..1" MainMenuGUI : MainMenuGUI_Connect4GUI
+GameBoard "1..1" -- "1..9999" Player_Interface : Player_GameBoard
+MainMenuGUI "1..1" -- "1..1" ScoreBoardGUI : ScoreBoardGUI_MainMenuGUI
+Player_Interface "1..9999" -- "1..1" ScoreBoardGUI : ScoreBoardGUI_Player
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+class NamedElement {
+}
+class benchmark_InputData {
+}
+class benchmark_NamedElement {
+  + name : str
+}
+class benchmark_Property {
+  + name : str
+  + value : str
+}
+class benchmark_Scenario {
+}
+class benchmark_TestCase {
+}
+class benchmark_TimeResult {
+  + elapsedMaxTime : str
+  + elapsedTime : str
+}
+class benchmark_Variant {
+}
+NamedElement <|-- benchmark_InputData
+NamedElement <|-- benchmark_Scenario
+NamedElement <|-- benchmark_TestCase
+NamedElement <|-- benchmark_Variant
+benchmark_InputData "0..9999" --* "1..1" benchmark_Scenario : inputData0
+benchmark_InputData "0..1" -- "1..1" benchmark_TestCase : inputData5
+benchmark_Property "0..9999" --* "1..1" benchmark_TimeResult : properties11
+benchmark_NamedElement "1..1" *-- "0..9999" benchmark_Property : properties9
+benchmark_TimeResult "0..9999" -- "1..1" benchmark_Variant : results14
+benchmark_TestCase "1..1" *-- "0..9999" benchmark_TimeResult : results6
+benchmark_Scenario "1..1" *-- "0..9999" benchmark_TestCase : testCases1
+benchmark_InputData "1..1" -- "0..9999" benchmark_TestCase : tests8
+benchmark_TimeResult "1..1" -- "0..1" benchmark_Variant : variant10
+benchmark_Scenario "1..1" *-- "0..9999" benchmark_Variant : variants3
+@enduml

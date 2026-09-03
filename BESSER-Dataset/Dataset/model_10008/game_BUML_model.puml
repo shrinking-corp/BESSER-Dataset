@@ -1,0 +1,105 @@
+@startuml
+class EntiteLieu {
+}
+class GameElement {
+}
+class game_Action {
+}
+class game_Chemin {
+}
+class game_Choix {
+  + name : str
+}
+class game_Condition {
+}
+class game_Conjonction {
+}
+class game_Connaissance {
+}
+class game_ConnaissanceLieu {
+}
+class game_Description {
+}
+class game_EntiteLieu {
+}
+class game_Explorateur {
+  + name : str
+  + tailleInventaire : int
+}
+class game_Game {
+  + name : str
+}
+class game_GameElement {
+  + name : str
+}
+class game_Interaction {
+}
+class game_Lieu {
+}
+class game_Litteral {
+  + operateur : str
+  + quantite : int
+}
+class game_Objet {
+  + taille : int
+}
+class game_PackObjets {
+  + quantite : int
+}
+class game_Personne {
+  + name : str
+}
+class game_Recompense {
+}
+class game_Texte {
+  + contenu : str
+}
+EntiteLieu <|-- game_ConnaissanceLieu
+EntiteLieu <|-- game_PackObjets
+GameElement <|-- game_Chemin
+GameElement <|-- game_Connaissance
+GameElement <|-- game_Lieu
+GameElement <|-- game_Objet
+game_Chemin "0..9999" -- "1..1" game_Lieu : cheminsPossibles21
+game_Choix "1..1" *-- "0..1" game_Condition : choixFin100
+game_Action "1..1" -- "0..1" game_Choix : choixSuivant80
+game_Condition "0..1" --* "1..1" game_Texte : condition57
+game_Action "1..1" *-- "0..1" game_Condition : condition71
+game_Condition "0..1" --* "1..1" game_Recompense : conditionObtention66
+game_Chemin "1..1" *-- "0..1" game_Condition : conditionVisibilite28
+game_Condition "0..1" --* "1..1" game_EntiteLieu : conditionVisibilite9
+game_Condition "1..1" *-- "0..9999" game_Conjonction : conjonctions45
+game_Connaissance "0..1" -- "1..1" game_ConnaissanceLieu : connaissance11
+game_Connaissance "0..1" -- "1..1" game_Litteral : connaissance52
+game_Connaissance "0..1" -- "1..1" game_Recompense : connaissanceObtenue60
+game_Connaissance "0..9999" -- "1..1" game_Explorateur : connaissances14
+game_Chemin "1..1" *-- "0..9999" game_PackObjets : consommations42
+game_Action "1..1" *-- "0..9999" game_PackObjets : consommations77
+game_Description "0..1" --* "1..1" game_GameElement : description12
+game_Action "1..1" *-- "0..1" game_Description : description69
+game_Choix "1..1" *-- "0..1" game_Description : description97
+game_EntiteLieu "1..1" *-- "0..1" game_Personne : entite8
+game_EntiteLieu "0..9999" --* "1..1" game_Lieu : entiteLieu23
+game_Explorateur "0..1" --* "1..1" game_Game : explorateur0
+game_Game "1..1" *-- "0..9999" game_GameElement : gameElements6
+game_Interaction "0..1" --* "1..1" game_Personne : interaction19
+game_Explorateur "1..1" *-- "0..9999" game_PackObjets : inventaire17
+game_Chemin "1..1" -- "0..1" game_Lieu : lieu131
+game_Chemin "1..1" -- "0..1" game_Lieu : lieu234
+game_Game "1..1" -- "0..1" game_Lieu : lieuDepart1
+game_Game "1..1" -- "0..9999" game_Lieu : lieuxArrivee3
+game_Action "0..9999" --* "1..1" game_Choix : listeActions103
+game_Choix "0..9999" --* "1..1" game_Interaction : listeChoix94
+game_Choix "0..9999" -- "1..1" game_Interaction : listeChoixDebut85
+game_Condition "0..9999" --* "1..1" game_Interaction : listeConditionsDebut88
+game_Conjonction "1..1" *-- "0..9999" game_Litteral : litteraux47
+game_Objet "0..1" -- "1..1" game_PackObjets : objet26
+game_Litteral "1..1" -- "0..1" game_Objet : objet49
+game_PackObjets "0..1" --* "1..1" game_Recompense : objetsObtenus63
+game_Chemin "1..1" *-- "0..1" game_Condition : ouvert37
+game_Chemin "1..1" *-- "0..9999" game_Recompense : recompenses40
+game_Action "1..1" *-- "0..9999" game_Recompense : recompenses74
+game_Interaction "1..1" *-- "0..9999" game_Recompense : recompenses82
+game_Choix "0..1" -- "1..1" game_Interaction : seulChoixDebut91
+game_Description "1..1" *-- "0..9999" game_Texte : textes55
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+class sAAP_State {
+  + default : bool
+  + name : str
+}
+class sAAP_StateMachine {
+  + name : str
+  + execute() : void
+}
+class sAAP_Transition {
+  + name : str
+}
+sAAP_State "1..1" -- "1..1" sAAP_Transition : from_6
+sAAP_State "1..1" -- "0..9999" sAAP_Transition : incoming1
+sAAP_State "1..1" -- "0..9999" sAAP_Transition : outgoing0
+sAAP_State "0..9999" --* "1..1" sAAP_StateMachine : state3
+sAAP_State "1..1" -- "1..1" sAAP_Transition : to7
+sAAP_StateMachine "1..1" *-- "0..9999" sAAP_Transition : transition4
+@enduml

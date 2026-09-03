@@ -1,0 +1,37 @@
+@startuml
+class ClientAccount {
+  + Password : str
+}
+class Double_Interface {
+}
+class Order {
+  + CustomerName : User
+  + Date : str
+  + HomeAddress : User
+  + OrderNumber : int
+  + PaymentMethod : str
+  + Products : Shopping_Cart
+}
+class Product {
+  + ProductDescription : str
+  + ProductID : int
+  + ProductImage : str
+  + ProductName : str
+  + ProductPrice : float
+  + ProductType : str
+}
+class Shopping_Cart {
+  + ProductPurchased : str
+}
+class User {
+  + Age : int
+  + Email : str
+  + HomeAddress : str
+  + Name : str
+  + Surname : str
+}
+ClientAccount "1..1" -- "1..1" Shopping_Cart : ClientAccount_Shopping_Cart
+ClientAccount "1..9999" -- "1..9999" Order : Order_ClientAccount
+Order "1..1" -- "1..1" Shopping_Cart : Order_Shopping_Cart
+Product "0..1" -- "0..1" Shopping_Cart : Shopping_Cart_Product
+@enduml

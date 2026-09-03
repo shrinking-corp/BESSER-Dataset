@@ -1,0 +1,134 @@
+@startuml
+enum ARCH {
+  ia64_32
+  ppc
+  ppc64
+  s390
+  s390x
+  sparc
+  x86
+  x86_64
+}
+enum ArchiveFormat {
+  tar
+  zip
+}
+enum BuildType {
+  Continuous
+  Integration
+  Maintenance
+  Nightly
+  Release
+  Stable
+}
+class InstallationUnit {
+}
+enum OS {
+  aix
+  hpux
+  linux
+  macosx
+  solaris
+  win32
+}
+enum WS {
+  carbon
+  cocoa
+  gtk
+  motif
+  win32
+}
+class build_Build {
+  + buildRoot : str
+  + builderURL : str
+  + date : str
+  + fetchTag : str
+  + label : str
+  + launchVM : str
+  + sendmail : bool
+  + time : str
+  + type : str
+}
+class build_Bundle {
+}
+class build_Category {
+  + description : str
+  + label : str
+  + name : str
+}
+class build_Compiler {
+  + args : str
+  + debugInfo : bool
+  + failOnError : bool
+  + sourceVersion : str
+  + targetVersion : str
+  + verbose : bool
+}
+class build_Config {
+  + arch : str
+  + archiveFormat : str
+  + os : str
+  + ws : str
+}
+class build_Contact {
+  + email : str
+  + name : str
+}
+class build_Contribution {
+  + label : str
+}
+class build_Feature {
+  + inProduct : bool
+}
+abstract class build_InstallationUnit {
+  + id : str
+  + version : str
+}
+class build_Map {
+  + repo : str
+  + root : str
+  + tag : str
+}
+class build_Platform {
+  + deltapack : str
+  + file : str
+  + location : str
+}
+class build_Product {
+}
+class build_Promotion {
+  + baseURL : str
+  + buildAlias : str
+  + downloadDirectory : str
+  + incubating : bool
+  + uploadDirectory : str
+}
+class build_Repository {
+  + label : str
+  + location : str
+}
+InstallationUnit <|-- build_Bundle
+InstallationUnit <|-- build_Feature
+InstallationUnit <|-- build_Product
+build_Build "1..1" -- "1..1" build_Platform : base11
+build_Build "1..1" -- "1..1" build_Platform : builder14
+build_Build "1..1" *-- "0..1" build_Contact : buildmaster21
+build_Bundle "0..9999" --* "1..1" build_Contribution : bundles37
+build_Build "1..1" *-- "0..9999" build_Category : categories5
+build_Category "0..9999" -- "1..1" build_Feature : category42
+build_Build "1..1" *-- "0..1" build_Compiler : compiler17
+build_Config "0..1" -- "1..1" build_Platform : config26
+build_Build "1..1" *-- "1..9999" build_Config : configs1
+build_Contact "0..9999" --* "1..1" build_Contribution : contacts30
+build_Build "1..1" *-- "0..9999" build_Contribution : contributions7
+build_Build "1..1" *-- "0..9999" build_Contact : defaultMailList23
+build_Category "1..1" -- "0..9999" build_Feature : features29
+build_Contribution "1..1" *-- "0..9999" build_Feature : features33
+build_Build "1..1" *-- "0..1" build_Map : map3
+build_Build "1..1" *-- "1..9999" build_Platform : platforms0
+build_Build "1..1" -- "0..1" build_Product : product9
+build_Contribution "1..1" *-- "0..9999" build_Product : products39
+build_Build "1..1" *-- "0..1" build_Promotion : promotion19
+build_InstallationUnit "1..1" -- "0..1" build_Repository : repo43
+build_Contribution "1..1" *-- "0..9999" build_Repository : repositories35
+@enduml

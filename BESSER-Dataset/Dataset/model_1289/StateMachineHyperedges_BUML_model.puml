@@ -1,0 +1,30 @@
+@startuml
+class StateMachineHyperedges_Event {
+}
+class StateMachineHyperedges_FinalState {
+}
+class StateMachineHyperedges_InitialState {
+}
+class StateMachineHyperedges_SimpleState {
+}
+class StateMachineHyperedges_StateMachine {
+}
+abstract class StateMachineHyperedges_StateVertex {
+  + name : str
+}
+class StateMachineHyperedges_Transition {
+  + name : str
+}
+class StateVertex {
+}
+StateVertex <|-- StateMachineHyperedges_FinalState
+StateVertex <|-- StateMachineHyperedges_InitialState
+StateVertex <|-- StateMachineHyperedges_SimpleState
+StateMachineHyperedges_StateVertex "1..1" -- "0..9999" StateMachineHyperedges_Transition : incoming4
+StateMachineHyperedges_StateVertex "1..1" -- "0..9999" StateMachineHyperedges_Transition : outgoing3
+StateMachineHyperedges_StateVertex "0..9999" -- "1..1" StateMachineHyperedges_Transition : sources8
+StateMachineHyperedges_StateMachine "1..1" *-- "0..9999" StateMachineHyperedges_StateVertex : states0
+StateMachineHyperedges_StateVertex "0..9999" -- "1..1" StateMachineHyperedges_Transition : targets9
+StateMachineHyperedges_StateMachine "1..1" *-- "0..9999" StateMachineHyperedges_Transition : transitions1
+StateMachineHyperedges_Event "0..1" -- "1..1" StateMachineHyperedges_Transition : trigger6
+@enduml

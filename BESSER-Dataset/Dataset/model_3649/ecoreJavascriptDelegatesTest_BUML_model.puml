@@ -1,0 +1,22 @@
+@startuml
+enum CompanySizeKind {
+  large
+  medium
+  small
+}
+class ecoreJavascriptDelegatesTest_Company {
+  + name : str
+  + size : str
+}
+class ecoreJavascriptDelegatesTest_Employee {
+  + name : str
+  + checkNameLength(ecoreJavascriptDelegatesTest_context : str, ecoreJavascriptDelegatesTest_diagnostics : str) : bool
+  + reportsTo(ecoreJavascriptDelegatesTest_manager : str) : bool
+}
+ecoreJavascriptDelegatesTest_Employee "0..9999" -- "1..1" ecoreJavascriptDelegatesTest_Employee : allReports8
+ecoreJavascriptDelegatesTest_Company "1..1" -- "1..1" ecoreJavascriptDelegatesTest_Employee : company3
+ecoreJavascriptDelegatesTest_Employee "0..9999" -- "1..1" ecoreJavascriptDelegatesTest_Employee : directReports5
+ecoreJavascriptDelegatesTest_Company "1..1" *-- "0..9999" ecoreJavascriptDelegatesTest_Employee : employees0
+ecoreJavascriptDelegatesTest_Employee "1..1" -- "0..1" ecoreJavascriptDelegatesTest_Employee : manager2
+ecoreJavascriptDelegatesTest_Employee "0..9999" -- "1..1" ecoreJavascriptDelegatesTest_Employee : reportingChain11
+@enduml

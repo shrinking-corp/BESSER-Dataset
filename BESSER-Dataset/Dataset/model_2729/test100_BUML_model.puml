@@ -1,0 +1,23 @@
+@startuml
+class B {
+}
+class test100_A {
+  + name : str
+}
+class test100_B {
+  + id : str
+}
+class test100_C {
+}
+class test100_DsmlRelation {
+  + details : str
+  + mandatory : bool
+  + name : str
+}
+B <|-- test100_A
+test100_A "0..9999" --* "1..1" test100_C : as_0
+test100_A "1..1" -- "0..9999" test100_B : bs1
+test100_A "0..1" -- "1..1" test100_DsmlRelation : fromDsml5
+test100_A "1..1" *-- "0..9999" test100_DsmlRelation : relateds3
+test100_A "0..1" -- "1..1" test100_DsmlRelation : toDsml8
+@enduml

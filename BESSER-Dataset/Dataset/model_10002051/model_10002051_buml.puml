@@ -1,0 +1,28 @@
+@startuml
+class BlackJack_Card {
+  + color : str
+  + rank : int
+  + value : int
+}
+class BlackJack_Deck {
+  + nextItem : int
+}
+class BlackJack_Game {
+  + win_loose : bool
+}
+class BlackJack_Generic_Player {
+  + valueOfHand : int
+}
+class BlackJack_Hand {
+  + ArrayList : BlackJack_Card
+}
+class BlackJack_House {
+}
+class BlackJack_Player {
+  + limit : int
+}
+BlackJack_Card "1..9999" -- "1..9999" BlackJack_Hand : Card_Hand
+BlackJack_Deck "1..1" -- "0..1" BlackJack_House : Deck_Game
+BlackJack_Game "1..1" -- "1..1" BlackJack_House : Game_House
+BlackJack_Game "1..1" -- "1..9999" BlackJack_Player : Game_Player
+@enduml

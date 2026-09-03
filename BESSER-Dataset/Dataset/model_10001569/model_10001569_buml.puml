@@ -1,0 +1,96 @@
+@startuml
+class album {
+  + albumID : str
+  + artists : person
+  + cover : str
+  + duration : str
+  + genre : str
+  + price : str
+  + publishDate : str
+  + publisher : orgnazition
+  + rightsReserve : orgnazition
+  + title : str
+}
+class author {
+  + Address : str
+  + FamilyName : str
+  + GivenName : str
+  + Mail : str
+  + Phone : str
+}
+class book {
+  + AuthoredBy : author
+  + Price : float
+  + Publisher : publisher
+  + RefTo : publishments
+  + Region : str
+  + Title : str
+  + Year : int
+}
+class book_chapters {
+}
+class conference_paper {
+  + AuthoredBy : author
+  + ConferenceName : str
+  + Location : str
+  + Publisher : publisher
+  + Title : str
+  + Year : int
+}
+class document {
+}
+class journal_article {
+  + AuthoredBy : author
+  + JournalName : str
+  + Pages : int
+  + Publisher : publisher
+  + Title : str
+  + Volume : int
+  + Year : int
+}
+class orgnazition {
+  + establishedDate : str
+  + icon : str
+  + name : str
+  + orgID : str
+  + president : person
+}
+class person {
+  + belongsTo : orgnazition
+  + birthday : str
+  + gender : bool
+  + name : str
+  + personID : str
+  + portrait : str
+}
+class publisher {
+  + EstablishedYear : int
+  + OrgAddress : str
+  + OrgContact : str
+  + OrgName : str
+}
+class publishments {
+  + AuthoredBy : author
+  + Publisher : publisher
+  + Title : str
+  + Year : int
+}
+class song {
+  + artistCompose : person
+  + artistLyrics : person
+  + artistPerform : person
+  + artistVocal : person
+  + belongsTo : album
+  + cover : str
+  + duration : str
+  + genre : str
+  + price : str
+  + rightsReserve : orgnazition
+  + songID : str
+  + title : str
+  + trackID : int
+  + year : int
+}
+conference_paper "0..1" -- "0..1" publishments : conference_paper_publishments
+book "0..1" -- "0..1" publishments : publishments_book
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+class NamedElement {
+}
+class Type {
+}
+abstract class adl_AbstractComponent {
+}
+class adl_Binding {
+}
+class adl_Component {
+}
+abstract class adl_Interface {
+}
+abstract class adl_NamedElement {
+  + name : str
+}
+class adl_Provided {
+}
+class adl_Required {
+}
+abstract class adl_Type {
+  + signature : str
+}
+AbstractComponent <|-- adl_Component
+Interface <|-- adl_Type
+NamedElement <|-- adl_Binding
+NamedElement <|-- adl_Component
+NamedElement <|-- adl_Interface
+Type <|-- adl_Provided
+Type <|-- adl_Required
+adl_Binding "0..9999" --* "1..1" adl_Interface : bindings3
+adl_Binding "1..1" -- "0..1" adl_Interface : from_4
+adl_AbstractComponent "1..1" *-- "0..9999" adl_Provided : providedInterfaces1
+adl_AbstractComponent "1..1" *-- "0..9999" adl_Required : requiredInterfaces0
+adl_Component "1..1" *-- "0..9999" adl_Component : subComponents11
+adl_Binding "1..1" -- "0..1" adl_Interface : to7
+@enduml

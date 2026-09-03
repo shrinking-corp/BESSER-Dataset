@@ -1,0 +1,92 @@
+@startuml
+class OCLElement {
+}
+class OCLNamedElement {
+}
+class OCLPackageParent {
+}
+class OCLRoot {
+}
+class OCLType {
+}
+class OCLTypeValue {
+}
+class OCLTypedElement {
+}
+class library_OCLBoundType {
+}
+class library_OCLElement {
+}
+class library_OCLLibrary {
+}
+class library_OCLLibraryIteration {
+  + class_ : str
+  + iterator : str
+  + iterators : bool
+}
+class library_OCLLibraryOperation {
+  + class_ : str
+  + isStatic : bool
+}
+class library_OCLLibraryProperty {
+  + class_ : str
+  + isStatic : bool
+}
+class library_OCLNamedElement {
+  + name : str
+}
+class library_OCLPackage {
+}
+class library_OCLPackageParent {
+}
+class library_OCLParameter {
+}
+class library_OCLRoot {
+}
+class library_OCLType {
+}
+class library_OCLTypeBinding {
+}
+class library_OCLTypeDefinition {
+}
+class library_OCLTypeParameter {
+}
+class library_OCLTypeReference {
+}
+class library_OCLTypeValue {
+}
+class library_OCLTypedElement {
+}
+OCLElement <|-- library_OCLNamedElement
+OCLElement <|-- library_OCLTypeBinding
+OCLElement <|-- library_OCLTypeValue
+OCLNamedElement <|-- library_OCLPackageParent
+OCLNamedElement <|-- library_OCLType
+OCLNamedElement <|-- library_OCLTypedElement
+OCLPackageParent <|-- library_OCLLibrary
+OCLPackageParent <|-- library_OCLPackage
+OCLRoot <|-- library_OCLLibrary
+OCLType <|-- library_OCLTypeDefinition
+OCLType <|-- library_OCLTypeParameter
+OCLTypeValue <|-- library_OCLBoundType
+OCLTypeValue <|-- library_OCLTypeReference
+OCLTypedElement <|-- library_OCLLibraryIteration
+OCLTypedElement <|-- library_OCLLibraryOperation
+OCLTypedElement <|-- library_OCLLibraryProperty
+OCLTypedElement <|-- library_OCLParameter
+library_OCLTypeDefinition "1..1" *-- "0..9999" library_OCLTypeValue : conformsTo17
+library_OCLLibrary "1..1" -- "0..9999" library_OCLLibrary : imports4
+library_OCLLibraryIteration "0..9999" --* "1..1" library_OCLTypeDefinition : iteration20
+library_OCLLibraryOperation "0..9999" --* "1..1" library_OCLTypeDefinition : operation22
+library_OCLPackage "0..9999" --* "1..1" library_OCLPackageParent : package10
+library_OCLLibraryOperation "1..1" *-- "0..9999" library_OCLParameter : parameter6
+library_OCLLibraryProperty "0..9999" --* "1..1" library_OCLTypeDefinition : property25
+library_OCLBoundType "1..1" -- "0..1" library_OCLTypeDefinition : type0
+library_OCLTypeValue "0..1" --* "1..1" library_OCLTypedElement : type27
+library_OCLType "0..1" -- "1..1" library_OCLTypeReference : type29
+library_OCLPackage "1..1" *-- "0..9999" library_OCLTypeDefinition : type8
+library_OCLBoundType "1..1" *-- "0..9999" library_OCLTypeBinding : typeBinding1
+library_OCLTypeBinding "1..1" *-- "0..1" library_OCLTypeValue : typeParameter12
+library_OCLTypeDefinition "1..1" *-- "0..9999" library_OCLTypeParameter : typeParameter14
+library_OCLLibraryOperation "1..1" *-- "0..9999" library_OCLTypeParameter : typeParameter5
+@enduml

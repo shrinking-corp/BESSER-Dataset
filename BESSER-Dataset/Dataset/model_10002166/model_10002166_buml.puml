@@ -1,0 +1,85 @@
+@startuml
+class Estring_Interface {
+}
+class online_shopping_Administrator {
+  + Email : Estring_Interface
+  + Name : Estring_Interface
+}
+class online_shopping_Category {
+  + Category_ID : str
+  + Catemegory_Name : Estring_Interface
+  + Department_ID : str
+  + Description : Estring_Interface
+}
+class online_shopping_Customer {
+  + Address : Estring_Interface
+  + E_mail : Estring_Interface
+  + Name : Estring_Interface
+  + Phone : str
+  + Shippinginfo : Estring_Interface
+}
+class online_shopping_Delivertiony_Informa {
+  + Delivery_Address : Estring_Interface
+  + Delivery_Phone : str
+  + Other_Delivery_Address : Estring_Interface
+  + Receiver_Name : Estring_Interface
+}
+class online_shopping_Deoartment {
+  + Department_ID : str
+  + Description : str
+  + Name : str
+}
+class online_shopping_Order_Detail {
+  + Order_ID : str
+  + Product_ID : str
+  + Product_Name : Estring_Interface
+  + Quantity : str
+  + Subtotal : str
+  + unit_Cost : str
+}
+class online_shopping_Orders {
+  + Customer_ID : Estring_Interface
+  + Customer_Name : Estring_Interface
+  + Date_Created : Estring_Interface
+  + Datw_Shipping : Estring_Interface
+  + Order_ID : int
+}
+class online_shopping_Payment {
+  + Catch_Pay : str
+  + Online_Pay : str
+}
+class online_shopping_Person {
+  + Login_Status : Estring_Interface
+  + Person_ID : Estring_Interface
+  + Person_Password : Estring_Interface
+}
+class online_shopping_Product {
+  + Description : Estring_Interface
+  + Image_File_Name : Estring_Interface
+  + Name : Estring_Interface
+  + Price : str
+  + Product_ID : str
+}
+class online_shopping_Session_manager {
+  + Department_Name : Estring_Interface
+  + Person_ID : Estring_Interface
+}
+class online_shopping_Shopping_Card {
+  + Cart_ID : str
+  + Date_Added : str
+  + Produced_Id : str
+  + Quantity : str
+}
+online_shopping_Category "1..1" -- "1..1" online_shopping_Product : Category_Product
+online_shopping_Customer "1..1" -- "0..9999" online_shopping_Orders : Customer_Orders
+online_shopping_Customer "1..1" -- "0..9999" online_shopping_Shopping_Card : Customer_Shopping_Card
+online_shopping_Category "1..1" -- "1..1" online_shopping_Deoartment : Deoartment_Category
+online_shopping_Delivertiony_Informa "1..1" -- "1..1" online_shopping_Orders : Orders_Delivertiony_Informa
+online_shopping_Order_Detail "1..1" -- "1..1" online_shopping_Orders : Orders_Order_Detail
+online_shopping_Order_Detail "0..9999" -- "1..1" online_shopping_Product : Product_Order_Detail
+online_shopping_Deoartment "1..1" -- "1..1" online_shopping_Session_manager : Session_manager_Deoartment
+online_shopping_Person "1..1" -- "1..1" online_shopping_Session_manager : Session_manager_Person
+online_shopping_Customer "0..1" -- "0..1" online_shopping_Shopping_Card : Shopping_Card_Customer
+online_shopping_Payment "1..1" -- "1..1" online_shopping_Shopping_Card : Shopping_Card_Payment
+online_shopping_Product "0..9999" -- "0..9999" online_shopping_Shopping_Card : Shopping_Card_Product
+@enduml

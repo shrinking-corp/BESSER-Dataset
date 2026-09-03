@@ -1,0 +1,213 @@
+@startuml
+class CallExp {
+}
+class Class {
+}
+class ConstructorBody {
+}
+enum DirectionKind {
+  in_
+  inout
+  out
+}
+class Dummy2 {
+}
+class DummyRelation {
+}
+class DummyRelationDomain {
+}
+class Element {
+}
+class EntryOperation {
+}
+class ImperativeCallExp {
+}
+class ImperativeExpression {
+}
+class ImperativeOperation {
+}
+enum ImportKind {
+  access
+  extension
+}
+class InstantiationExp {
+}
+class MappingOperation {
+}
+class ModelParameter {
+}
+class ModelType {
+}
+class Module {
+}
+class ModuleImport {
+}
+class Operation {
+}
+class OperationBody {
+}
+class OperationCallExp {
+}
+class Parameter {
+}
+class Property {
+}
+class ResolveExp {
+}
+class VarParameter {
+}
+class Variable {
+}
+class qvtoperational_Class {
+}
+class qvtoperational_Constructor {
+}
+class qvtoperational_ConstructorBody {
+}
+class qvtoperational_ContextualProperty {
+}
+class qvtoperational_DummyRelation {
+}
+class qvtoperational_DummyRelationDomain {
+}
+class qvtoperational_DummyRelationalTransformation {
+}
+class qvtoperational_Element {
+}
+class qvtoperational_EntryOperation {
+}
+class qvtoperational_Helper {
+  + isQuery : str
+}
+class qvtoperational_ImperativeCallExp {
+  + isVirtual : str
+}
+class qvtoperational_ImperativeOperation {
+  + isBlackbox : str
+}
+class qvtoperational_Library {
+}
+class qvtoperational_MappingBody {
+}
+class qvtoperational_MappingCallExp {
+  + isStrict : str
+}
+class qvtoperational_MappingOperation {
+}
+class qvtoperational_MappingParameter {
+}
+class qvtoperational_ModelParameter {
+}
+class qvtoperational_ModelType {
+  + conformanceKind : str
+}
+class qvtoperational_Module {
+  + isBlackbox : str
+}
+class qvtoperational_ModuleImport {
+  + kind : str
+}
+class qvtoperational_OCLExpression {
+}
+class qvtoperational_ObjectExp {
+}
+class qvtoperational_OperationBody {
+}
+class qvtoperational_OperationalTransformation {
+}
+class qvtoperational_Package {
+}
+class qvtoperational_Property {
+}
+class qvtoperational_ResolveExp {
+  + isDeferred : str
+  + isInverse : str
+  + one : str
+}
+class qvtoperational_ResolveInExp {
+}
+class qvtoperational_Tag {
+  + name : str
+  + value : str
+}
+class qvtoperational_TemplateableElement {
+}
+class qvtoperational_VarParameter {
+  + kind : str
+}
+class qvtoperational_Variable {
+}
+CallExp <|-- qvtoperational_ResolveExp
+Class <|-- qvtoperational_ModelType
+Class <|-- qvtoperational_Module
+Element <|-- qvtoperational_DummyRelation
+Element <|-- qvtoperational_DummyRelationDomain
+Element <|-- qvtoperational_DummyRelationalTransformation
+Element <|-- qvtoperational_ModuleImport
+Element <|-- qvtoperational_OperationBody
+Element <|-- qvtoperational_Tag
+ImperativeCallExp <|-- qvtoperational_MappingCallExp
+ImperativeExpression <|-- qvtoperational_ImperativeCallExp
+ImperativeExpression <|-- qvtoperational_ResolveExp
+ImperativeOperation <|-- qvtoperational_Constructor
+ImperativeOperation <|-- qvtoperational_EntryOperation
+ImperativeOperation <|-- qvtoperational_Helper
+ImperativeOperation <|-- qvtoperational_MappingOperation
+InstantiationExp <|-- qvtoperational_ObjectExp
+Module <|-- qvtoperational_Library
+Module <|-- qvtoperational_OperationalTransformation
+Operation <|-- qvtoperational_ImperativeOperation
+OperationBody <|-- qvtoperational_ConstructorBody
+OperationBody <|-- qvtoperational_MappingBody
+OperationCallExp <|-- qvtoperational_ImperativeCallExp
+Parameter <|-- qvtoperational_VarParameter
+Property <|-- qvtoperational_ContextualProperty
+ResolveExp <|-- qvtoperational_ResolveInExp
+VarParameter <|-- qvtoperational_MappingParameter
+VarParameter <|-- qvtoperational_ModelParameter
+Variable <|-- qvtoperational_VarParameter
+qvtoperational_ModelType "1..1" *-- "0..9999" qvtoperational_OCLExpression : additionalCondition36
+ModelType "0..9999" -- "1..1" qvtoperational_ModuleImport : binding52
+OperationBody "0..1" --* "1..1" qvtoperational_ImperativeOperation : body5
+ConstructorBody "1..1" --* "1..1" qvtoperational_ObjectExp : body59
+qvtoperational_OCLExpression "0..1" --* "1..1" qvtoperational_ResolveExp : condition84
+qvtoperational_Module "1..1" -- "0..9999" qvtoperational_Property : configProperty40
+qvtoperational_OCLExpression "0..9999" --* "1..1" qvtoperational_OperationBody : content63
+qvtoperational_Class "1..1" -- "1..1" qvtoperational_ContextualProperty : context0
+VarParameter "0..1" --* "1..1" qvtoperational_ImperativeOperation : context6
+ImperativeOperation "0..1" -- "1..1" qvtoperational_VarParameter : ctxOwner91
+MappingOperation "0..9999" -- "1..1" qvtoperational_MappingOperation : disjunct18
+qvtoperational_Element "0..9999" -- "1..1" qvtoperational_Tag : elements96
+qvtoperational_MappingBody "1..1" *-- "0..9999" qvtoperational_OCLExpression : endSection13
+EntryOperation "0..1" -- "1..1" qvtoperational_Module : entry42
+ModelParameter "0..1" -- "1..1" qvtoperational_MappingParameter : extent33
+Module "1..1" -- "1..1" qvtoperational_ModuleImport : importedModule54
+MappingOperation "0..1" -- "1..1" qvtoperational_ResolveInExp : inMapping89
+MappingOperation "0..9999" -- "1..1" qvtoperational_MappingOperation : inherited19
+qvtoperational_ContextualProperty "1..1" *-- "0..1" qvtoperational_OCLExpression : initExpression1
+qvtoperational_MappingBody "1..1" *-- "0..9999" qvtoperational_OCLExpression : initSection15
+qvtoperational_Class "0..9999" -- "1..1" qvtoperational_OperationalTransformation : intermediateClass71
+qvtoperational_OperationalTransformation "1..1" -- "0..9999" qvtoperational_Property : intermediateProperty73
+MappingOperation "0..9999" -- "1..1" qvtoperational_MappingOperation : merged22
+qvtoperational_ModelType "1..1" -- "1..9999" qvtoperational_Package : metamodel38
+ModelParameter "0..9999" --* "1..1" qvtoperational_OperationalTransformation : modelParameter76
+Module "0..1" -- "1..1" qvtoperational_ModuleImport : module56
+ModuleImport "0..9999" --* "1..1" qvtoperational_Module : moduleImport44
+ImperativeOperation "0..1" -- "1..1" qvtoperational_OperationBody : operation65
+qvtoperational_ContextualProperty "1..1" -- "0..1" qvtoperational_Property : overridden3
+ImperativeOperation "0..1" -- "1..1" qvtoperational_ImperativeOperation : overridden8
+qvtoperational_Module "1..1" *-- "0..9999" qvtoperational_TemplateableElement : ownedTag46
+qvtoperational_Module "1..1" *-- "0..9999" qvtoperational_Variable : ownedVariable48
+DummyRelationDomain "0..1" -- "1..1" qvtoperational_MappingParameter : referredDomain34
+qvtoperational_ObjectExp "1..1" -- "1..1" qvtoperational_Variable : referredObject60
+Dummy2 "0..1" -- "1..1" qvtoperational_OperationalTransformation : refined79
+DummyRelation "0..1" -- "1..1" qvtoperational_MappingOperation : refinedRelation25
+DummyRelation "0..9999" --* "1..1" qvtoperational_OperationalTransformation : relation81
+ImperativeOperation "0..1" -- "1..1" qvtoperational_VarParameter : resOwner93
+VarParameter "0..9999" --* "1..1" qvtoperational_ImperativeOperation : result10
+qvtoperational_ResolveExp "1..1" *-- "0..1" qvtoperational_Variable : target86
+ModelType "0..9999" -- "1..1" qvtoperational_Module : usedModelType50
+qvtoperational_OperationBody "1..1" *-- "0..9999" qvtoperational_Variable : variable68
+qvtoperational_MappingOperation "1..1" *-- "0..1" qvtoperational_OCLExpression : when27
+qvtoperational_MappingOperation "1..1" *-- "0..1" qvtoperational_OCLExpression : where30
+@enduml

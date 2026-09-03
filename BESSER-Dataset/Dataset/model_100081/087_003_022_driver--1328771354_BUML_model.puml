@@ -1,0 +1,128 @@
+@startuml
+enum OperatorType {
+  exclude
+  include
+}
+enum Phase {
+  both
+  build
+  run
+}
+enum StatCommand {
+  createFolder
+  delete
+  getScreenCapture
+  listDrives
+  listFiles
+  removeFolder
+  run
+  startLogging
+  stopLogging
+}
+class driver_Build {
+  + componentName : str
+  + testBuild : str
+  + uRI : str
+}
+class driver_CmdPC {
+  + phase : str
+  + sync : str
+  + uRI : str
+  + value : str
+}
+class driver_CmdSymbian {
+  + argument : str
+  + output : str
+  + statCommand : str
+  + sync : str
+}
+class driver_DocumentRoot {
+  + mixed : str
+}
+class driver_Driver {
+}
+class driver_DriverInfo {
+}
+class driver_EStringToStringMapEntry {
+}
+class driver_ExecuteOnPC {
+  + group : str
+}
+class driver_ExecuteOnSymbian {
+  + group : str
+}
+class driver_FlashROM {
+  + pCPath : str
+}
+class driver_Info {
+  + key : str
+  + value : str
+}
+class driver_Reference {
+}
+class driver_RetrieveFromSymbian {
+  + group : str
+}
+class driver_Rtest {
+  + resultFile : str
+  + symbianPath : str
+}
+class driver_StartTrace {
+  + configFilePath : str
+  + disablePrimaryFilters : str
+  + disableSecondaryFilters : str
+  + enablePrimaryFilters : str
+  + enableSecondaryFilters : str
+}
+class driver_StopTrace {
+}
+class driver_Task {
+  + group : str
+  + name : str
+  + preRebootDevice : str
+  + timeout : str
+}
+class driver_TestCase {
+  + target : str
+}
+class driver_TestCasesList {
+  + operator : str
+}
+class driver_TestExecuteScript {
+  + pCPath : str
+  + symbianPath : str
+}
+class driver_Transfer {
+  + move : str
+  + pCPath : str
+  + symbianPath : str
+}
+class driver_TransferToSymbian {
+  + group : str
+}
+driver_Build "0..9999" --* "1..1" driver_ExecuteOnPC : build13
+driver_CmdPC "0..9999" --* "1..1" driver_ExecuteOnPC : cmd12
+driver_CmdSymbian "0..9999" --* "1..1" driver_ExecuteOnSymbian : cmd15
+driver_DocumentRoot "1..1" *-- "0..9999" driver_Driver : driver4
+driver_Driver "1..1" *-- "0..1" driver_DriverInfo : driverInfo6
+driver_ExecuteOnPC "0..9999" --* "1..1" driver_Task : executeOnPC23
+driver_ExecuteOnSymbian "0..9999" --* "1..1" driver_Task : executeOnSymbian28
+driver_FlashROM "0..9999" --* "1..1" driver_Task : flashrom40
+driver_DriverInfo "1..1" *-- "1..9999" driver_Info : info10
+driver_Reference "0..9999" --* "1..1" driver_Task : reference34
+driver_RetrieveFromSymbian "0..9999" --* "1..1" driver_Task : retrieveFromSymbian31
+driver_ExecuteOnSymbian "1..1" *-- "0..9999" driver_Rtest : rtest18
+driver_StartTrace "0..1" --* "1..1" driver_Task : startTrace42
+driver_StopTrace "0..1" --* "1..1" driver_Task : stopTrace44
+driver_Task "0..9999" --* "1..1" driver_Task : task38
+driver_Driver "1..1" *-- "1..1" driver_Task : task8
+driver_TestCase "1..9999" --* "1..1" driver_TestCasesList : testCase46
+driver_TestCasesList "0..1" --* "1..1" driver_TestExecuteScript : testCasesList47
+driver_ExecuteOnSymbian "1..1" *-- "0..9999" driver_TestExecuteScript : testExecuteScript16
+driver_RetrieveFromSymbian "1..1" *-- "1..9999" driver_Transfer : transfer22
+driver_Transfer "1..9999" --* "1..1" driver_TransferToSymbian : transfer50
+driver_Task "1..1" *-- "0..9999" driver_TransferToSymbian : transferToSymbian26
+driver_Reference "1..1" -- "0..1" driver_Task : uri20
+driver_DocumentRoot "1..1" *-- "0..9999" driver_EStringToStringMapEntry : xMLNSPrefixMap0
+driver_DocumentRoot "1..1" *-- "0..9999" driver_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

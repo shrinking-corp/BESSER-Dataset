@@ -1,0 +1,153 @@
+@startuml
+class Core_BinaryPackageFragmentRoot {
+}
+class Core_CompilationUnit {
+}
+class Core_IClassFile {
+  + isClass : str
+  + isInterface : str
+}
+class Core_ICompilationUnit {
+}
+class Core_IField {
+  + constant : str
+  + isEnumConstant : str
+  + isTransient : str
+  + isVolatile : str
+  + typeSignature : str
+}
+class Core_IImportDeclaration {
+  + isOnDemand : str
+  + isStatic : str
+}
+class Core_IInitializer {
+}
+abstract class Core_IJavaElement {
+  + elementName : str
+}
+class Core_IJavaModel {
+}
+class Core_IJavaProject {
+}
+abstract class Core_IMember {
+}
+class Core_IMethod {
+  + exceptionTypes : str
+  + isConstructor : str
+  + isMainMethod : str
+  + returnType : str
+}
+class Core_IPackageFragment {
+  + isDefaultPackage : str
+}
+abstract class Core_IPackageFragmentRoot {
+}
+class Core_ISourceRange {
+  + length : str
+  + offset : str
+}
+abstract class Core_ISourceReference {
+  + source : str
+}
+class Core_IType {
+  + fullyQualifiedName : str
+  + fullyQualifiedParametrizedName : str
+}
+class Core_ITypeParameter {
+  + bounds : str
+}
+abstract class Core_ITypeRoot {
+}
+class Core_Parameter {
+  + name : str
+  + type : str
+}
+abstract class Core_PhysicalElement {
+  + isReadOnly : str
+  + path : str
+}
+class Core_SourcePackageFragmentRoot {
+}
+class IJavaElement {
+}
+class IMember {
+}
+class IPackageFragmentRoot {
+}
+class ISourceReference {
+}
+class ITypeRoot {
+}
+enum Modifiers {
+  abstract
+  annotation
+  bridge
+  default
+  deprecated
+  enum
+  final
+  interface
+  native
+  private
+  protected
+  public
+  static
+  strictfp
+  super
+  synchronized
+  synthetic
+  transient
+  varargs
+  volatile
+}
+class PhysicalElement {
+}
+IJavaElement <|-- Core_IImportDeclaration
+IJavaElement <|-- Core_IJavaProject
+IJavaElement <|-- Core_IMember
+IJavaElement <|-- Core_IPackageFragment
+IJavaElement <|-- Core_IPackageFragmentRoot
+IJavaElement <|-- Core_ITypeParameter
+IJavaElement <|-- Core_ITypeRoot
+IMember <|-- Core_IField
+IMember <|-- Core_IInitializer
+IMember <|-- Core_IMethod
+IMember <|-- Core_IType
+IPackageFragmentRoot <|-- Core_BinaryPackageFragmentRoot
+IPackageFragmentRoot <|-- Core_SourcePackageFragmentRoot
+ISourceReference <|-- Core_IImportDeclaration
+ISourceReference <|-- Core_IMember
+ISourceReference <|-- Core_ITypeParameter
+ISourceReference <|-- Core_ITypeRoot
+ITypeRoot <|-- Core_IClassFile
+ITypeRoot <|-- Core_ICompilationUnit
+PhysicalElement <|-- Core_IJavaModel
+PhysicalElement <|-- Core_IJavaProject
+PhysicalElement <|-- Core_IPackageFragment
+PhysicalElement <|-- Core_IPackageFragmentRoot
+PhysicalElement <|-- Core_ITypeRoot
+Core_ICompilationUnit "1..1" -- "0..9999" Core_IType : allType17
+Core_CompilationUnit "1..1" --* "1..1" Core_ICompilationUnit : ast27
+Core_IClassFile "0..9999" --* "1..1" Core_IPackageFragment : classFiles14
+Core_ICompilationUnit "0..9999" --* "1..1" Core_IPackageFragment : compilationUnits15
+Core_IJavaModel "1..1" *-- "0..9999" Core_IPackageFragmentRoot : externalPackageFragmentRoots1
+Core_IJavaProject "1..1" -- "0..9999" Core_IPackageFragmentRoot : externalPackageFragmentRoots6
+Core_IField "0..9999" --* "1..1" Core_IType : fields40
+Core_ICompilationUnit "1..1" *-- "0..9999" Core_IImportDeclaration : imports19
+Core_IInitializer "0..9999" --* "1..1" Core_IType : initializers38
+Core_IJavaModel "1..1" *-- "0..9999" Core_IJavaProject : javaProjects0
+Core_IMember "1..1" *-- "0..1" Core_ISourceRange : javadocRange33
+Core_IMethod "0..9999" --* "1..1" Core_IType : methods42
+Core_IMember "1..1" *-- "0..1" Core_ISourceRange : nameRange35
+Core_IPackageFragment "1..1" -- "1..1" Core_IPackageFragmentRoot : packageFragmentRoot13
+Core_IJavaProject "1..1" *-- "0..9999" Core_IPackageFragmentRoot : packageFragmentRoots3
+Core_IPackageFragment "0..9999" --* "1..1" Core_IPackageFragmentRoot : packageFragments12
+Core_IMethod "1..1" *-- "0..9999" Core_Parameter : parameters49
+Core_ICompilationUnit "1..1" -- "1..1" Core_ICompilationUnit : primary25
+Core_IJavaProject "1..1" -- "0..9999" Core_IJavaProject : requiredProjects10
+Core_ISourceRange "1..1" --* "1..1" Core_ISourceReference : sourceRange32
+Core_IClassFile "1..1" *-- "1..1" Core_IType : type29
+Core_IType "1..1" -- "0..9999" Core_ITypeParameter : typeParameters47
+Core_ICompilationUnit "1..1" *-- "0..9999" Core_IType : types21
+Core_IType "0..9999" --* "1..1" Core_IType : types45
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class Element {
+}
+class Type {
+}
+class myDsl_Datatype {
+}
+class myDsl_Element {
+}
+class myDsl_Entity {
+}
+class myDsl_File {
+}
+class myDsl_Import {
+  + importedNamespace : str
+}
+class myDsl_Namespace {
+  + name : str
+}
+class myDsl_Property {
+  + name : str
+}
+class myDsl_Type {
+  + name : str
+}
+Element <|-- myDsl_Import
+Element <|-- myDsl_Namespace
+Element <|-- myDsl_Type
+Type <|-- myDsl_Datatype
+Type <|-- myDsl_Entity
+myDsl_Element "0..9999" --* "1..1" myDsl_File : elements0
+myDsl_Element "0..9999" --* "1..1" myDsl_Namespace : elements1
+myDsl_Entity "1..1" *-- "0..9999" myDsl_Property : properties3
+myDsl_Property "1..1" -- "0..1" myDsl_Type : type4
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+class PublicSpace {
+}
+class Road {
+}
+enum cards {
+  big
+  medium
+  small
+}
+class maps_Boulevard {
+}
+class maps_Garden {
+}
+class maps_Pedestrian {
+}
+abstract class maps_PublicSpace {
+  + name : str
+}
+abstract class maps_Road {
+  + district : str
+  + length : int
+  + name : str
+}
+class maps_Square {
+}
+class maps_Street {
+}
+class maps_map {
+  + country : str
+  + isCity : bool
+  + name : str
+  + size : str
+}
+PublicSpace <|-- maps_Garden
+PublicSpace <|-- maps_Square
+Road <|-- maps_Boulevard
+Road <|-- maps_Pedestrian
+Road <|-- maps_Street
+maps_PublicSpace "0..9999" -- "1..1" maps_Road : border3
+maps_PublicSpace "1..1" -- "1..9999" maps_Road : borderedBy7
+maps_Road "0..9999" -- "1..1" maps_Road : meet5
+maps_Road "0..9999" --* "1..1" maps_map : roads0
+maps_PublicSpace "0..9999" --* "1..1" maps_map : spaces1
+@enduml

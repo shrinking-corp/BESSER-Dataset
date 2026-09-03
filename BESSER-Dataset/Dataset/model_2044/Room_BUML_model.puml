@@ -1,0 +1,331 @@
+@startuml
+class ActorContainerClass {
+}
+class ActorContainerRef {
+}
+class InterfaceItem {
+}
+class NonInitialTransition {
+}
+enum PrimitiveType {
+  boolean
+  char
+  float32
+  float64
+  int16
+  int32
+  int8
+  string
+  uint16
+  uint32
+  uint8
+  void
+}
+class RoomClass {
+}
+class SAPoint {
+}
+class SemanticsRule {
+}
+class State {
+}
+class StateGraphItem {
+}
+class StateGraphNode {
+}
+class StructureClass {
+}
+class TrPoint {
+}
+class Transition {
+}
+class TransitionTerminal {
+}
+class room_ActorClass {
+  + abstract : bool
+}
+class room_ActorContainerClass {
+}
+class room_ActorContainerRef {
+  + name : str
+}
+class room_ActorInstancePath {
+  + segments : str
+}
+class room_ActorRef {
+}
+class room_Attribute {
+  + name : str
+  + size : int
+}
+class room_BaseState {
+  + name : str
+}
+class room_Binding {
+}
+class room_BindingEndPoint {
+}
+class room_CPBranchTransition {
+}
+class room_ChoicePoint {
+  + name : str
+}
+class room_ChoicepointTerminal {
+}
+class room_ContinuationTransition {
+}
+class room_DataClass {
+}
+class room_DetailCode {
+  + commands : str
+}
+class room_EntryPoint {
+}
+class room_ExitPoint {
+}
+class room_ExternalPort {
+}
+class room_FreeType {
+  + prim : str
+  + type : str
+}
+class room_FreeTypedID {
+  + name : str
+}
+class room_Guard {
+}
+class room_Import {
+  + importedNamespace : str
+}
+class room_InitialTransition {
+}
+class room_InterfaceItem {
+  + name : str
+}
+class room_LayerConnection {
+}
+class room_LogicalSystem {
+}
+class room_LogicalThread {
+  + name : str
+}
+class room_Message {
+  + name : str
+}
+class room_MessageFromIf {
+}
+class room_MessageHandler {
+}
+class room_NonInitialTransition {
+}
+class room_Operation {
+  + name : str
+}
+class room_Port {
+  + conjugated : bool
+  + multiplicity : int
+}
+class room_PortClass {
+}
+class room_ProtocolClass {
+}
+class room_ProtocolSemantics {
+}
+class room_RefSAPoint {
+}
+class room_RefinedState {
+}
+class room_RelaySAPoint {
+}
+class room_RoomClass {
+  + name : str
+}
+class room_RoomModel {
+  + name : str
+}
+class room_SAPRef {
+}
+class room_SAPoint {
+}
+class room_SPPRef {
+}
+class room_SPPoint {
+}
+class room_SemanticsInRule {
+}
+class room_SemanticsOutRule {
+}
+class room_SemanticsRule {
+}
+class room_ServiceImplementation {
+}
+class room_State {
+  + getName() : str
+}
+class room_StateGraph {
+}
+class room_StateGraphItem {
+}
+class room_StateGraphNode {
+}
+class room_StateTerminal {
+}
+class room_StructureClass {
+}
+class room_SubStateTrPointTerminal {
+}
+class room_SubSystemClass {
+}
+class room_SubSystemRef {
+}
+class room_TrPoint {
+  + name : str
+}
+class room_TrPointTerminal {
+}
+class room_Transition {
+  + name : str
+}
+class room_TransitionPoint {
+  + handler : bool
+}
+class room_TransitionTerminal {
+}
+class room_Trigger {
+}
+class room_TriggeredTransition {
+}
+class room_Type {
+  + prim : str
+}
+class room_TypedID {
+  + name : str
+}
+ActorContainerClass <|-- room_ActorClass
+ActorContainerClass <|-- room_SubSystemClass
+ActorContainerRef <|-- room_ActorRef
+ActorContainerRef <|-- room_SubSystemRef
+InterfaceItem <|-- room_Port
+InterfaceItem <|-- room_SAPRef
+InterfaceItem <|-- room_SPPRef
+NonInitialTransition <|-- room_CPBranchTransition
+NonInitialTransition <|-- room_ContinuationTransition
+NonInitialTransition <|-- room_TriggeredTransition
+RoomClass <|-- room_DataClass
+RoomClass <|-- room_ProtocolClass
+RoomClass <|-- room_StructureClass
+SAPoint <|-- room_RefSAPoint
+SAPoint <|-- room_RelaySAPoint
+SemanticsRule <|-- room_SemanticsInRule
+SemanticsRule <|-- room_SemanticsOutRule
+State <|-- room_BaseState
+State <|-- room_RefinedState
+StateGraphItem <|-- room_StateGraphNode
+StateGraphItem <|-- room_Transition
+StateGraphNode <|-- room_ChoicePoint
+StateGraphNode <|-- room_State
+StateGraphNode <|-- room_TrPoint
+StructureClass <|-- room_ActorContainerClass
+StructureClass <|-- room_LogicalSystem
+TrPoint <|-- room_EntryPoint
+TrPoint <|-- room_ExitPoint
+TrPoint <|-- room_TransitionPoint
+Transition <|-- room_InitialTransition
+Transition <|-- room_NonInitialTransition
+TransitionTerminal <|-- room_ChoicepointTerminal
+TransitionTerminal <|-- room_StateTerminal
+TransitionTerminal <|-- room_SubStateTrPointTerminal
+TransitionTerminal <|-- room_TrPointTerminal
+room_DetailCode "0..1" --* "1..1" room_Transition : action187
+room_ActorClass "0..9999" --* "1..1" room_RoomModel : actorClasses5
+room_ActorContainerRef "0..1" -- "1..1" room_BindingEndPoint : actorRef145
+room_ActorContainerClass "1..1" *-- "0..9999" room_ActorRef : actorRefs15
+room_FreeTypedID "0..9999" --* "1..1" room_Operation : arguments35
+room_Message "1..1" *-- "0..9999" room_TypedID : arguments64
+room_ActorClass "1..1" *-- "0..9999" room_Attribute : attributes112
+room_Attribute "0..9999" --* "1..1" room_DataClass : attributes28
+room_Attribute "0..9999" --* "1..1" room_PortClass : attributes70
+room_BaseState "0..1" -- "1..1" room_RefinedState : base184
+room_DataClass "0..1" -- "1..1" room_DataClass : base23
+room_ProtocolClass "0..1" -- "1..1" room_ProtocolClass : base44
+room_ActorClass "0..1" -- "1..1" room_ActorClass : base93
+room_Binding "0..9999" --* "1..1" room_StructureClass : bindings11
+room_ChoicePoint "0..9999" --* "1..1" room_StateGraph : chPoints180
+room_CPBranchTransition "1..1" *-- "0..1" room_DetailCode : condition193
+room_PortClass "0..1" --* "1..1" room_ProtocolClass : conjugate59
+room_LayerConnection "0..9999" --* "1..1" room_StructureClass : connections12
+room_ChoicePoint "0..1" -- "1..1" room_ChoicepointTerminal : cp204
+room_DataClass "0..9999" --* "1..1" room_RoomModel : dataClasses1
+room_DetailCode "0..1" --* "1..1" room_Operation : detailCode41
+room_DetailCode "0..1" --* "1..1" room_MessageHandler : detailCode81
+room_Binding "1..1" *-- "0..1" room_BindingEndPoint : endpoint1140
+room_Binding "1..1" *-- "0..1" room_BindingEndPoint : endpoint2142
+room_DetailCode "0..1" --* "1..1" room_State : entryCode167
+room_DetailCode "0..1" --* "1..1" room_State : exitCode169
+room_ActorClass "1..1" *-- "0..9999" room_ExternalPort : extPorts106
+room_SemanticsRule "0..9999" --* "1..1" room_SemanticsRule : followUps90
+room_LayerConnection "1..1" *-- "0..1" room_SAPoint : from_150
+room_NonInitialTransition "1..1" *-- "0..1" room_TransitionTerminal : from_190
+room_InterfaceItem "0..1" -- "1..1" room_MessageFromIf : from_213
+room_Guard "0..1" --* "1..1" room_Trigger : guard208
+room_DetailCode "0..1" --* "1..1" room_Guard : guard216
+room_ActorClass "1..1" *-- "0..9999" room_Port : ifPorts95
+room_ActorContainerClass "1..1" *-- "0..9999" room_SPPRef : ifSPPs14
+room_ExternalPort "1..1" -- "0..1" room_Port : ifport122
+room_Import "0..9999" --* "1..1" room_RoomModel : imports0
+room_DataClass "1..1" *-- "0..9999" room_Import : imports25
+room_Message "0..9999" --* "1..1" room_ProtocolClass : incomingMessages52
+room_ActorInstancePath "0..9999" --* "1..1" room_LogicalThread : instances138
+room_ActorClass "1..1" *-- "0..9999" room_Port : intPorts103
+room_Message "0..1" -- "1..1" room_MessageFromIf : message210
+room_Message "0..1" -- "1..1" room_MessageHandler : msg78
+room_Message "0..1" -- "1..1" room_SemanticsRule : msg86
+room_MessageFromIf "0..9999" --* "1..1" room_Trigger : msgFromIfPairs206
+room_MessageHandler "0..9999" --* "1..1" room_PortClass : msgHandlers76
+room_ActorClass "1..1" *-- "0..9999" room_Operation : operations115
+room_DataClass "1..1" *-- "0..9999" room_Operation : operations30
+room_Operation "0..9999" --* "1..1" room_PortClass : operations73
+room_Message "0..9999" --* "1..1" room_ProtocolClass : outgoingMessages54
+room_BindingEndPoint "1..1" -- "0..1" room_Port : port147
+room_InterfaceItem "1..1" -- "0..1" room_ProtocolClass : protocol120
+room_ProtocolClass "0..9999" --* "1..1" room_RoomModel : protocolClasses3
+room_ActorContainerRef "0..1" -- "1..1" room_RefSAPoint : ref154
+room_ActorContainerRef "0..1" -- "1..1" room_SPPoint : ref158
+room_PortClass "0..1" --* "1..1" room_ProtocolClass : regular57
+room_RelaySAPoint "1..1" -- "0..1" room_SPPRef : relay156
+room_Port "0..9999" --* "1..1" room_SubSystemClass : relayPorts133
+room_FreeType "0..1" --* "1..1" room_Operation : returntype38
+room_ProtocolSemantics "1..1" *-- "0..9999" room_SemanticsRule : rules84
+room_ProtocolClass "1..1" *-- "0..1" room_ProtocolSemantics : semantics62
+room_SPPRef "0..1" -- "1..1" room_SPPoint : service161
+room_ActorClass "1..1" *-- "0..9999" room_ServiceImplementation : serviceImplementations108
+room_SPPRef "0..1" -- "1..1" room_ServiceImplementation : spp125
+room_BaseState "0..1" -- "1..1" room_StateTerminal : state195
+room_BaseState "0..1" -- "1..1" room_SubStateTrPointTerminal : state201
+room_ActorClass "1..1" *-- "0..1" room_StateGraph : stateMachine118
+room_State "0..9999" --* "1..1" room_StateGraph : states175
+room_ActorClass "1..1" *-- "0..9999" room_SAPRef : strSAPs110
+room_RoomModel "1..1" *-- "0..9999" room_SubSystemClass : subSystemClasses7
+room_LogicalSystem "1..1" *-- "0..9999" room_SubSystemRef : subSystems128
+room_State "1..1" *-- "0..1" room_StateGraph : subgraph172
+room_LogicalSystem "0..9999" --* "1..1" room_RoomModel : systems9
+room_LogicalThread "0..9999" --* "1..1" room_SubSystemClass : threads136
+room_LayerConnection "1..1" *-- "0..1" room_SPPoint : to152
+room_Transition "1..1" *-- "0..1" room_TransitionTerminal : to185
+room_TrPoint "0..1" -- "1..1" room_TrPointTerminal : trPoint197
+room_SubStateTrPointTerminal "1..1" -- "0..1" room_TrPoint : trPoint199
+room_StateGraph "1..1" *-- "0..9999" room_TrPoint : trPoints178
+room_StateGraph "1..1" *-- "0..9999" room_Transition : transitions182
+room_Trigger "0..9999" --* "1..1" room_TriggeredTransition : triggers192
+room_SubSystemClass "0..1" -- "1..1" room_SubSystemRef : type130
+room_ActorClass "0..1" -- "1..1" room_ActorRef : type164
+room_Type "0..1" --* "1..1" room_TypedID : type17
+room_FreeType "0..1" --* "1..1" room_FreeTypedID : type18
+room_DataClass "0..1" -- "1..1" room_Type : type19
+room_Attribute "1..1" *-- "0..1" room_Type : type32
+room_DetailCode "0..1" --* "1..1" room_ProtocolClass : userCode146
+room_ActorClass "1..1" *-- "0..1" room_DetailCode : userCode197
+room_ActorClass "1..1" *-- "0..1" room_DetailCode : userCode2100
+room_DetailCode "0..1" --* "1..1" room_ProtocolClass : userCode249
+room_DetailCode "0..1" --* "1..1" room_PortClass : userCode67
+@enduml

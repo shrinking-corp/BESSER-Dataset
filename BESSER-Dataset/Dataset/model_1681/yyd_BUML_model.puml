@@ -1,0 +1,23 @@
+@startuml
+class Foo {
+}
+class yyd_Alias {
+  + id : str
+}
+class yyd_Blias {
+  + id : str
+}
+abstract class yyd_Foo {
+}
+class yyd_RelatedTo {
+  + since : str
+}
+class yyd_Thing {
+  + id : int
+}
+Foo <|-- yyd_Alias
+Foo <|-- yyd_Blias
+yyd_Foo "0..9999" --* "1..1" yyd_RelatedTo : foos2
+yyd_RelatedTo "1..1" -- "0..1" yyd_Thing : fromThing1
+yyd_RelatedTo "0..9999" --* "1..1" yyd_Thing : relations0
+@enduml

@@ -1,0 +1,79 @@
+@startuml
+class Endereco {
+  + bairro : str
+  + cep : str
+  + cidade : str
+  + logradouro : str
+  + numero : int
+}
+class Exame {
+  + data : str
+  + descricao : str
+  + nome : str
+}
+class Interacao {
+}
+class LinhaCuidado {
+  + descricao : int
+  + nome : str
+}
+class LocalExame {
+  + nome : str
+}
+class Medicamento {
+  + ativo : bool
+  + dataFim : str
+  + dataInicio : str
+  + descricao : str
+  + horaInicial : str
+  + intervaloTempo : int
+  + nome : str
+}
+class Mensagem {
+  + assunto : str
+  + dataEnvio : str
+  + geral : bool
+  + mensagem : str
+}
+class Naturalidade {
+  + naturalidade : str
+}
+class Paciente {
+}
+class Pessoa {
+  + cpf : str
+  + dataInclusao : str
+  + dataNascimento : str
+  + email : str
+  + senha : str
+  + sexo : str
+  + ultimoAcesso : str
+}
+class ProfissionalSaude {
+}
+class Telefone {
+  + ddd : int
+  + numero : str
+  + tipo : str
+}
+class TipoMedicamento {
+  + nome : str
+}
+class TipoSanguineo {
+  + nome : str
+}
+enum enu {
+}
+Endereco "1..1" -- "1..1" Pessoa : Endereco_Pessoa
+Exame "0..9999" -- "1..1" LocalExame : Est__em
+Interacao "0..9999" -- "0..1" Mensagem : Interacao_Mensagem
+Endereco "1..1" -- "1..1" LocalExame : LocalExame_Endereco
+LinhaCuidado "0..1" -- "0..9999" Mensagem : Mensagem_LinhaCuidado
+Interacao "0..9999" -- "1..1" Paciente : Paciente_Interacao
+Medicamento "0..9999" -- "1..1" Paciente : Paciente_Medicamento
+Mensagem "0..1" -- "0..1" Paciente : Paciente_Mensagem
+Naturalidade "1..1" -- "0..9999" Pessoa : Pessoa_Naturalidade
+Pessoa "0..1" -- "0..1" Telefone : Pessoa_Telefone
+Mensagem "0..9999" -- "1..1" ProfissionalSaude : ProfissioanlSaude_Mensagem
+Paciente "0..9999" -- "0..1" TipoSanguineo : TipoSanguineo_Paciente
+@enduml

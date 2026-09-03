@@ -1,0 +1,27 @@
+@startuml
+class Type {
+}
+class myDsl_Attribute {
+  + many : bool
+}
+class myDsl_Interface {
+}
+class myDsl_JAVAID {
+  + name : str
+}
+class myDsl_Model {
+}
+class myDsl_Type {
+  + name : str
+}
+class myDsl_TypeDef {
+}
+Type <|-- myDsl_Attribute
+Type <|-- myDsl_Interface
+Type <|-- myDsl_TypeDef
+myDsl_Attribute "0..9999" --* "1..1" myDsl_Interface : attributes4
+myDsl_JAVAID "0..1" --* "1..1" myDsl_TypeDef : mappedType1
+myDsl_Interface "1..1" -- "0..1" myDsl_Interface : superInterface3
+myDsl_Attribute "1..1" -- "0..1" myDsl_Type : type6
+myDsl_Model "1..1" *-- "0..9999" myDsl_Type : types0
+@enduml

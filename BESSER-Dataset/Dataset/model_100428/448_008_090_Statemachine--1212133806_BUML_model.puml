@@ -1,0 +1,56 @@
+@startuml
+class Declaration {
+}
+class State {
+}
+class statemachine_Action {
+  + actionLabel : str
+}
+abstract class statemachine_Declaration {
+  + printReachable() : void
+}
+class statemachine_Expression {
+}
+class statemachine_FinalState {
+}
+class statemachine_InitialState {
+}
+class statemachine_NormalState {
+}
+abstract class statemachine_State {
+  + id : int
+  + label : str
+  + printReachable() : void
+}
+class statemachine_StateMachine {
+  + printReachable() : void
+}
+class statemachine_StateMachineVariable {
+  + name : str
+  + type : str
+}
+class statemachine_Statement {
+}
+class statemachine_Transition {
+  + actionLabel : str
+  + guardLabel : str
+  + label : str
+  + sourceLabel : str
+  + targetLabel : str
+}
+Declaration <|-- statemachine_State
+Declaration <|-- statemachine_Transition
+State <|-- statemachine_FinalState
+State <|-- statemachine_InitialState
+State <|-- statemachine_NormalState
+statemachine_Action "1..1" -- "0..1" statemachine_Statement : actionStatement17
+statemachine_Statement "0..1" -- "1..1" statemachine_Transition : actionStatement9
+statemachine_Declaration "0..9999" --* "1..1" statemachine_StateMachine : declarations0
+statemachine_Action "0..1" --* "1..1" statemachine_NormalState : entry19
+statemachine_Expression "0..1" -- "1..1" statemachine_Transition : guardExpression7
+statemachine_StateMachine "1..1" *-- "0..9999" statemachine_StateMachineVariable : machineVariables1
+statemachine_State "0..9999" -- "1..1" statemachine_State : reachable15
+statemachine_State "0..1" -- "1..1" statemachine_Transition : source3
+statemachine_State "0..9999" -- "1..1" statemachine_State : successors12
+statemachine_State "0..1" -- "1..1" statemachine_Transition : target4
+@enduml

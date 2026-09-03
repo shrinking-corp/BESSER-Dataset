@@ -1,0 +1,25 @@
+@startuml
+class demo1_Category {
+  + name : str
+}
+class demo1_EObject {
+}
+class demo1_Model {
+}
+class demo1_RatioExpression {
+  + ratio : int
+}
+class demo1_Rule {
+}
+class demo1_RuleExpression {
+}
+class demo1_TestExpression {
+}
+demo1_Category "0..9999" --* "1..1" demo1_Model : categories0
+demo1_Category "0..1" -- "1..1" demo1_TestExpression : category11
+demo1_Rule "1..1" *-- "0..1" demo1_RuleExpression : first3
+demo1_EObject "0..1" --* "1..1" demo1_Rule : next5
+demo1_RatioExpression "0..1" --* "1..1" demo1_RuleExpression : ratio9
+demo1_Model "1..1" *-- "0..1" demo1_Rule : rule1
+demo1_RuleExpression "1..1" *-- "0..1" demo1_TestExpression : test7
+@enduml

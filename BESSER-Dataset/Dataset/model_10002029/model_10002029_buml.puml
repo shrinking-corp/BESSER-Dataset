@@ -1,0 +1,85 @@
+@startuml
+enum DateTime {
+}
+class alergia {
+  + alergiaID : int
+  + nombre : str
+}
+class aseguradora {
+  + aseguradoraID : int
+  + nombre : str
+  + tipoSeguroID : int
+}
+class consulta {
+  + consultaID : int
+  + doctorID : int
+  + empleadoID : int
+  + fechaConsulta : DateTime
+  + pacienteID : int
+}
+class doctor {
+  + apMaterno : str
+  + apPaterno : str
+  + codigoDoctor : str
+  + doctorID : int
+  + especialidadID : int
+  + fechaNacimiento : DateTime
+  + loginID : int
+  + nombre : str
+  + nroDocumento : int
+}
+class empleado {
+  + apMaterno : str
+  + apPaterno : str
+  + codigoEmpleado : str
+  + empleadoID : int
+  + fechaNacimiento : DateTime
+  + loginID : int
+  + nombre : str
+  + nroDocumento : int
+}
+class especialidad {
+  + especialidadID : int
+  + nombre : str
+}
+class historico {
+  + consultaID : int
+  + diagnostico : str
+  + historicoID : int
+  + observacion : str
+  + sintoma : str
+  + tratamiento : str
+}
+class login {
+  + contrasena : str
+  + loginID : int
+  + role : str
+  + usuario : str
+}
+class paciente {
+  + apMaterno : str
+  + apPaterno : str
+  + aseguradoID : int
+  + codigoAsegurado : str
+  + fechaAfiliacion : DateTime
+  + fechaNacimiento : DateTime
+  + nombre : str
+  + nroDocumento : int
+  + pacienteID : int
+  + razonSocial : str
+  + tipoSangre : str
+}
+class tipoSeguro {
+  + descripcion : str
+  + tipoSeguraID : int
+}
+aseguradora "1..1" -- "1..9999" paciente : aseguradora_paciente
+consulta "1..9999" -- "1..1" doctor : doctor_consulta
+doctor "1..9999" -- "1..1" especialidad : especialidad_doctor
+consulta "1..1" -- "1..1" historico : historico_consulta
+doctor "1..1" -- "1..1" login : login_doctor
+empleado "1..1" -- "1..1" login : login_empleado
+consulta "1..9999" -- "1..1" paciente : paciente_consulta
+aseguradora "1..9999" -- "1..1" tipoSeguro : tipoSeguro_aseguradora
+consulta "1..9999" -- "1..1" empleado : trabajador_consulta
+@enduml

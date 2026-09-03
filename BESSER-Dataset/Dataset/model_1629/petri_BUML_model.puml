@@ -1,0 +1,15 @@
+@startuml
+class petri_Place {
+  + name : str
+  + tokens : int
+}
+class petri_RedPetri {
+}
+class petri_Transition {
+  + name : str
+}
+petri_Place "1..1" -- "0..9999" petri_Transition : connection0
+petri_Place "0..9999" -- "1..1" petri_Transition : connection1
+petri_Place "0..9999" --* "1..1" petri_RedPetri : iniPlace4
+petri_RedPetri "1..1" *-- "0..9999" petri_Transition : iniTrans6
+@enduml

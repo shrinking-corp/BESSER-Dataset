@@ -1,0 +1,97 @@
+@startuml
+enum ActorType {
+  ORGANIZATION
+  PERSON
+  SYSTEM
+}
+enum CustomStepType {
+  INPUT
+  MIX
+  OUTPUT
+  PROCESS
+}
+class Flow {
+}
+class NamedFlow {
+}
+class Step {
+}
+class StepAlternative {
+}
+class UseCaseDSL_Actor {
+  + description : str
+  + name : str
+  + type : str
+}
+class UseCaseDSL_AlternativeFlow {
+}
+class UseCaseDSL_AlternativeFlowAlternative {
+}
+class UseCaseDSL_BasicFlow {
+}
+class UseCaseDSL_Condition {
+}
+class UseCaseDSL_ExceptionFlow {
+  + condition : str
+}
+abstract class UseCaseDSL_Flow {
+  + finalState : str
+}
+class UseCaseDSL_LocalAlternative {
+  + description : str
+}
+abstract class UseCaseDSL_NamedFlow {
+  + name : str
+}
+class UseCaseDSL_NormalStep {
+  + customStepType : str
+}
+class UseCaseDSL_PackageDeclaration {
+  + description : str
+  + name : str
+}
+class UseCaseDSL_ParallelFlow {
+}
+class UseCaseDSL_ParallelStep {
+}
+abstract class UseCaseDSL_Step {
+  + label : str
+  + name : str
+}
+abstract class UseCaseDSL_StepAlternative {
+  + condition : str
+}
+class UseCaseDSL_UseCase {
+  + description : str
+  + name : str
+  + postcondition : str
+  + preConditions : str
+}
+class UseCaseDSL_UseCasesModel {
+}
+Flow <|-- UseCaseDSL_BasicFlow
+Flow <|-- UseCaseDSL_NamedFlow
+NamedFlow <|-- UseCaseDSL_AlternativeFlow
+NamedFlow <|-- UseCaseDSL_ExceptionFlow
+NamedFlow <|-- UseCaseDSL_ParallelFlow
+Step <|-- UseCaseDSL_NormalStep
+Step <|-- UseCaseDSL_ParallelStep
+StepAlternative <|-- UseCaseDSL_AlternativeFlowAlternative
+StepAlternative <|-- UseCaseDSL_Condition
+StepAlternative <|-- UseCaseDSL_LocalAlternative
+UseCaseDSL_Actor "0..1" -- "1..1" UseCaseDSL_NormalStep : actor6
+UseCaseDSL_Actor "0..9999" --* "1..1" UseCaseDSL_PackageDeclaration : actors11
+UseCaseDSL_Step "0..1" -- "1..1" UseCaseDSL_StepAlternative : continuation21
+UseCaseDSL_Actor "1..1" -- "0..1" UseCaseDSL_Actor : extends1
+UseCaseDSL_Flow "0..9999" --* "1..1" UseCaseDSL_UseCase : flows27
+UseCaseDSL_ParallelFlow "0..9999" -- "1..1" UseCaseDSL_ParallelStep : invokedFlows14
+UseCaseDSL_Step "1..1" -- "0..1" UseCaseDSL_UseCase : invokedUseCase18
+UseCaseDSL_LocalAlternative "1..1" -- "0..1" UseCaseDSL_UseCase : invokedUseCase4
+UseCaseDSL_Step "0..1" -- "1..1" UseCaseDSL_Step : next16
+UseCaseDSL_PackageDeclaration "0..9999" --* "1..1" UseCaseDSL_UseCasesModel : packages30
+UseCaseDSL_AlternativeFlowAlternative "1..1" -- "0..1" UseCaseDSL_NamedFlow : ref2
+UseCaseDSL_NormalStep "1..1" *-- "0..9999" UseCaseDSL_StepAlternative : stepAlternative5
+UseCaseDSL_Flow "1..1" *-- "0..9999" UseCaseDSL_Step : steps3
+UseCaseDSL_UseCase "0..1" -- "1..1" UseCaseDSL_UseCase : superCase25
+UseCaseDSL_PackageDeclaration "1..1" *-- "0..9999" UseCaseDSL_UseCase : useCases9
+@enduml

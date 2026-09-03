@@ -1,0 +1,77 @@
+@startuml
+class Person {
+}
+class Publication {
+}
+class sistedesMM_Article {
+  + fromPage : int
+  + month : str
+  + number : int
+  + title : str
+  + toPage : int
+  + volume : str
+  + year : int
+}
+class sistedesMM_Book {
+  + edition : int
+  + isbn : str
+  + month : str
+  + series : str
+  + title : str
+  + volume : str
+  + year : int
+}
+class sistedesMM_Edition {
+  + location : str
+  + year : int
+}
+class sistedesMM_Editor {
+  + name : str
+}
+class sistedesMM_InProceedings {
+  + bookTitle : str
+  + fromPage : str
+  + month : str
+  + title : str
+  + toPage : str
+  + year : int
+}
+class sistedesMM_Journal {
+  + acronym : str
+  + jcrIndexed : bool
+  + name : str
+}
+class sistedesMM_Person {
+  + email : str
+  + name : str
+  + nationality : str
+  + surname : str
+}
+abstract class sistedesMM_Publication {
+}
+class sistedesMM_Publisher {
+  + address : str
+  + name : str
+}
+class sistedesMM_SistedesMember {
+}
+class sistedesMM_University {
+  + city : str
+  + country : str
+  + name : str
+  + provinceOrState : str
+}
+Person <|-- sistedesMM_SistedesMember
+Publication <|-- sistedesMM_Article
+Publication <|-- sistedesMM_Book
+Publication <|-- sistedesMM_InProceedings
+sistedesMM_Article "0..1" -- "1..1" sistedesMM_Journal : articles7
+sistedesMM_Edition "0..9999" -- "1..1" sistedesMM_SistedesMember : attendedTo10
+sistedesMM_Person "1..9999" -- "1..1" sistedesMM_Publication : authors2
+sistedesMM_Editor "0..9999" -- "1..1" sistedesMM_InProceedings : editors5
+sistedesMM_Article "1..1" -- "0..1" sistedesMM_Journal : journal3
+sistedesMM_Person "1..1" -- "0..9999" sistedesMM_Publication : publications1
+sistedesMM_InProceedings "1..1" -- "0..1" sistedesMM_Publisher : publisher4
+sistedesMM_Book "1..1" -- "0..1" sistedesMM_Publisher : publisher8
+sistedesMM_Person "1..1" -- "1..9999" sistedesMM_University : university0
+@enduml

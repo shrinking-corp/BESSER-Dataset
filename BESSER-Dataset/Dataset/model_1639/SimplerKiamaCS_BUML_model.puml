@@ -1,0 +1,25 @@
+@startuml
+class BaseCS {
+}
+class NodeCS {
+}
+abstract class kiamacs_BaseCS {
+}
+class kiamacs_CompositeCS {
+}
+class kiamacs_EObject {
+}
+class kiamacs_LeafCS {
+}
+abstract class kiamacs_NodeCS {
+}
+class kiamacs_TopCS {
+}
+BaseCS <|-- kiamacs_NodeCS
+BaseCS <|-- kiamacs_TopCS
+NodeCS <|-- kiamacs_CompositeCS
+NodeCS <|-- kiamacs_LeafCS
+kiamacs_BaseCS "1..1" -- "0..1" kiamacs_EObject : ast3
+kiamacs_CompositeCS "1..1" *-- "0..1" kiamacs_NodeCS : child1
+kiamacs_NodeCS "1..1" --* "1..1" kiamacs_TopCS : node0
+@enduml

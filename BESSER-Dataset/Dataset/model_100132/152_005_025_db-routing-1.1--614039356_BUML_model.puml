@@ -1,0 +1,40 @@
+@startuml
+class ElementVisitor {
+}
+enum ResultSetScopeType {
+  APPLICATION
+  EXECUTION
+}
+class dbrouting_DBRoutingDocumentRoot {
+  + mixed : str
+}
+class dbrouting_EStringToStringMapEntry {
+}
+class dbrouting_Executor {
+  + datasource : str
+  + executeBefore : str
+  + executeOnElement : str
+  + executeOnElementNS : str
+  + statement : str
+}
+class dbrouting_ResultSet {
+  + name : str
+  + scope : str
+  + timeToLive : str
+}
+class dbrouting_ResultSetRowSelector {
+  + beanId : str
+  + executeBefore : str
+  + failedSelectError : str
+  + resultSetName : str
+  + selectRowOnElement : str
+  + where : str
+}
+ElementVisitor <|-- dbrouting_Executor
+ElementVisitor <|-- dbrouting_ResultSetRowSelector
+dbrouting_DBRoutingDocumentRoot "1..1" *-- "0..9999" dbrouting_Executor : executor4
+dbrouting_Executor "1..1" *-- "0..1" dbrouting_ResultSet : resultSet8
+dbrouting_DBRoutingDocumentRoot "1..1" *-- "0..9999" dbrouting_ResultSetRowSelector : resultSetRowSelector6
+dbrouting_DBRoutingDocumentRoot "1..1" *-- "0..9999" dbrouting_EStringToStringMapEntry : xMLNSPrefixMap0
+dbrouting_DBRoutingDocumentRoot "1..1" *-- "0..9999" dbrouting_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+enum SeasonEnum {
+  Høst
+  Vår
+}
+class Semester {
+}
+class studyPlan_Course {
+  + codename : str
+  + credits : float
+  + level : int
+  + name : str
+}
+class studyPlan_Semester {
+  + codename : str
+  + season : str
+  + year : int
+}
+class studyPlan_SemesterPlan {
+}
+class studyPlan_SemesterProgramme {
+}
+class studyPlan_Specialization {
+  + name : str
+  + year : int
+}
+class studyPlan_Student {
+  + name : str
+  + username : str
+}
+class studyPlan_StudyPlan {
+}
+class studyPlan_StudyProgramme {
+  + codename : str
+  + lengthInYears : int
+  + name : str
+}
+class studyPlan_University {
+  + name : str
+}
+Semester <|-- studyPlan_SemesterPlan
+Semester <|-- studyPlan_SemesterProgramme
+studyPlan_Specialization "1..1" *-- "0..9999" studyPlan_Specialization : continuations28
+studyPlan_Course "0..9999" --* "1..1" studyPlan_University : courses4
+studyPlan_Course "0..9999" -- "1..1" studyPlan_SemesterProgramme : electiveCourses14
+studyPlan_Course "0..9999" -- "1..1" studyPlan_SemesterProgramme : mandatoryCourses12
+studyPlan_Course "0..9999" -- "1..1" studyPlan_SemesterPlan : selectedCourses10
+studyPlan_SemesterPlan "0..9999" --* "1..1" studyPlan_StudyPlan : semesterPlans8
+studyPlan_SemesterProgramme "1..9999" --* "1..1" studyPlan_Specialization : semesters29
+studyPlan_SemesterProgramme "1..1" -- "1..1" studyPlan_Specialization : specialization11
+studyPlan_Specialization "1..9999" --* "1..1" studyPlan_StudyProgramme : specializations23
+studyPlan_Student "1..1" -- "1..1" studyPlan_StudyPlan : student6
+studyPlan_Student "0..9999" --* "1..1" studyPlan_University : students1
+studyPlan_SemesterPlan "1..1" -- "1..1" studyPlan_StudyPlan : studyPlan9
+studyPlan_Specialization "1..1" -- "0..1" studyPlan_StudyProgramme : studyProgramme25
+studyPlan_StudyProgramme "0..9999" --* "1..1" studyPlan_University : studyProgrammes2
+studyPlan_Student "1..1" *-- "1..1" studyPlan_StudyPlan : studyplan19
+studyPlan_Course "1..1" -- "1..1" studyPlan_University : university0
+studyPlan_Student "1..1" -- "1..1" studyPlan_University : university17
+studyPlan_StudyProgramme "1..1" -- "1..1" studyPlan_University : university21
+@enduml

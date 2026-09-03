@@ -1,0 +1,181 @@
+@startuml
+class BinaryFormula {
+}
+class DescribedElement {
+}
+class Formula {
+}
+class GraphElement {
+}
+class NamedElement {
+}
+class TransformationUnit {
+}
+class UnaryFormula {
+}
+class henshin_AmalgamationUnit {
+}
+class henshin_And {
+}
+class henshin_Attribute {
+  + value : str
+}
+class henshin_AttributeCondition {
+  + conditionText : str
+}
+abstract class henshin_BinaryFormula {
+}
+class henshin_ConditionalUnit {
+}
+class henshin_CountedUnit {
+  + count : int
+}
+abstract class henshin_DescribedElement {
+  + description : str
+}
+class henshin_EAttribute {
+}
+class henshin_EClass {
+}
+class henshin_EPackage {
+}
+class henshin_EReference {
+}
+class henshin_Edge {
+}
+abstract class henshin_Formula {
+  + stringRepresentation(henshin_recursive : str) : str
+}
+class henshin_Graph {
+  + findEdgesByType(henshin_edgeType : str) : str
+  + findNodesByType(henshin_nodeType : str) : str
+  + getContainerRule() : str
+  + removeEdge(henshin_edge : str) : void
+  + removeNode(henshin_node : str) : void
+}
+abstract class henshin_GraphElement {
+  + getGraph() : str
+}
+class henshin_IndependentUnit {
+}
+class henshin_Mapping {
+}
+abstract class henshin_NamedElement {
+  + name : str
+}
+class henshin_NestedCondition {
+  + negated : bool
+}
+class henshin_Node {
+  + findAttributeByType(henshin_attributeType : str) : str
+  + findIncomingEdgeByType(henshin_edgeType : str, henshin_sourceNode : str) : str
+  + findIncomingEdgesByType(henshin_edgeType : str) : str
+  + findOutgoingEdgeByType(henshin_edgeType : str, henshin_targetNode : str) : str
+  + findOutgoingEdgesByType(henshin_edgeType : str) : str
+}
+class henshin_Not {
+}
+class henshin_Or {
+}
+class henshin_Parameter {
+}
+class henshin_ParameterMapping {
+}
+class henshin_PriorityUnit {
+}
+class henshin_Rule {
+  + containsMapping(henshin_sourceNode : str, henshin_targetNode : str) : bool
+  + getNodeByName(henshin_isLhs : str, henshin_nodename : str) : str
+}
+class henshin_SequentialUnit {
+  + rollback : bool
+  + strict : bool
+}
+class henshin_TransformationSystem {
+  + findRuleByName(henshin_ruleName : str) : str
+  + findUnitByName(henshin_unitName : str) : str
+}
+abstract class henshin_TransformationUnit {
+  + activated : bool
+  + getParameterByName(henshin_parametername : str) : str
+  + getSubUnits(henshin_deep : str) : TransformationUnit
+}
+abstract class henshin_UnaryFormula {
+}
+class henshin_Xor {
+}
+BinaryFormula <|-- henshin_And
+BinaryFormula <|-- henshin_Or
+BinaryFormula <|-- henshin_Xor
+DescribedElement <|-- henshin_AttributeCondition
+DescribedElement <|-- henshin_Parameter
+DescribedElement <|-- henshin_TransformationSystem
+DescribedElement <|-- henshin_TransformationUnit
+Formula <|-- henshin_BinaryFormula
+Formula <|-- henshin_NestedCondition
+Formula <|-- henshin_UnaryFormula
+GraphElement <|-- henshin_Edge
+GraphElement <|-- henshin_Node
+NamedElement <|-- henshin_AttributeCondition
+NamedElement <|-- henshin_Graph
+NamedElement <|-- henshin_Node
+NamedElement <|-- henshin_Parameter
+NamedElement <|-- henshin_TransformationSystem
+NamedElement <|-- henshin_TransformationUnit
+TransformationUnit <|-- henshin_AmalgamationUnit
+TransformationUnit <|-- henshin_ConditionalUnit
+TransformationUnit <|-- henshin_CountedUnit
+TransformationUnit <|-- henshin_IndependentUnit
+TransformationUnit <|-- henshin_PriorityUnit
+TransformationUnit <|-- henshin_Rule
+TransformationUnit <|-- henshin_SequentialUnit
+UnaryFormula <|-- henshin_Not
+henshin_Edge "0..9999" -- "1..1" henshin_Node : allEdges36
+henshin_AttributeCondition "0..9999" --* "1..1" henshin_Rule : attributeConditions11
+henshin_Attribute "0..9999" --* "1..1" henshin_Node : attributes30
+henshin_Formula "1..1" --* "1..1" henshin_UnaryFormula : child84
+henshin_Graph "1..1" --* "1..1" henshin_NestedCondition : conclusion79
+henshin_Edge "0..9999" --* "1..1" henshin_Graph : edges19
+henshin_ConditionalUnit "1..1" -- "0..1" henshin_TransformationUnit : else_61
+henshin_Formula "0..1" --* "1..1" henshin_Graph : formula21
+henshin_Graph "1..1" -- "1..1" henshin_Node : graph31
+henshin_Edge "1..1" -- "1..1" henshin_Graph : graph47
+henshin_ConditionalUnit "1..1" -- "1..1" henshin_TransformationUnit : if_56
+henshin_Mapping "1..1" -- "1..1" henshin_Node : image25
+henshin_EPackage "0..9999" -- "1..1" henshin_TransformationSystem : imports1
+henshin_Edge "0..9999" -- "1..1" henshin_Node : incoming32
+henshin_Graph "0..9999" --* "1..1" henshin_TransformationSystem : instances2
+henshin_AmalgamationUnit "1..1" -- "1..1" henshin_Rule : kernelRule66
+henshin_BinaryFormula "1..1" *-- "1..1" henshin_Formula : left86
+henshin_Graph "1..1" --* "1..1" henshin_Rule : lhs6
+henshin_AmalgamationUnit "1..1" *-- "0..9999" henshin_Mapping : lhsMappings71
+henshin_Mapping "0..9999" --* "1..1" henshin_Rule : mappings12
+henshin_Mapping "0..9999" --* "1..1" henshin_NestedCondition : mappings81
+henshin_AmalgamationUnit "1..1" -- "1..9999" henshin_Rule : multiRules68
+henshin_Attribute "1..1" -- "1..1" henshin_Node : node39
+henshin_Graph "1..1" *-- "0..9999" henshin_Node : nodes18
+henshin_Mapping "1..1" -- "1..1" henshin_Node : origin23
+henshin_Edge "0..9999" -- "1..1" henshin_Node : outgoing34
+henshin_ParameterMapping "0..9999" --* "1..1" henshin_TransformationUnit : parameterMappings50
+henshin_Parameter "0..9999" --* "1..1" henshin_TransformationUnit : parameters49
+henshin_Graph "1..1" --* "1..1" henshin_Rule : rhs8
+henshin_AmalgamationUnit "1..1" *-- "0..9999" henshin_Mapping : rhsMappings74
+henshin_BinaryFormula "1..1" *-- "1..1" henshin_Formula : right88
+henshin_AttributeCondition "1..1" -- "1..1" henshin_Rule : rule15
+henshin_Rule "0..9999" --* "1..1" henshin_TransformationSystem : rules0
+henshin_Edge "1..1" -- "1..1" henshin_Node : source41
+henshin_Parameter "1..1" -- "1..1" henshin_ParameterMapping : source91
+henshin_CountedUnit "1..1" -- "1..1" henshin_TransformationUnit : subUnit77
+henshin_IndependentUnit "1..1" -- "0..9999" henshin_TransformationUnit : subUnits52
+henshin_SequentialUnit "1..1" -- "0..9999" henshin_TransformationUnit : subUnits54
+henshin_PriorityUnit "1..1" -- "0..9999" henshin_TransformationUnit : subUnits64
+henshin_Edge "1..1" -- "1..1" henshin_Node : target43
+henshin_Parameter "1..1" -- "1..1" henshin_ParameterMapping : target93
+henshin_ConditionalUnit "1..1" -- "1..1" henshin_TransformationUnit : then58
+henshin_Rule "1..1" -- "0..1" henshin_TransformationSystem : transformationSystem14
+henshin_TransformationSystem "1..1" *-- "0..9999" henshin_TransformationUnit : transformationUnits4
+henshin_EClass "1..1" -- "1..1" henshin_Node : type28
+henshin_Attribute "1..1" -- "1..1" henshin_EAttribute : type38
+henshin_EReference "1..1" -- "1..1" henshin_Edge : type45
+henshin_Parameter "1..1" -- "1..1" henshin_TransformationUnit : unit17
+@enduml

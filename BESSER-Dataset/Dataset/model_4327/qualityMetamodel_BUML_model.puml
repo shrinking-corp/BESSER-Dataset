@@ -1,0 +1,82 @@
+@startuml
+class QualityMetamodel_AggregatedValue {
+}
+class QualityMetamodel_AggregatedValueMetric {
+  + average : str
+  + maximum : str
+  + median : str
+  + minimum : str
+  + standardDeviation : str
+}
+class QualityMetamodel_BooleanValueType {
+  + value : str
+}
+class QualityMetamodel_EnumerationItem {
+  + name : str
+}
+class QualityMetamodel_EnumerationMetric {
+}
+class QualityMetamodel_IntegerValueType {
+  + value : str
+}
+class QualityMetamodel_MetricProvider {
+  + description : str
+  + id : str
+  + name : str
+}
+class QualityMetamodel_Operation {
+  + body : str
+  + name : str
+}
+class QualityMetamodel_QualityAttribute {
+  + name : str
+}
+class QualityMetamodel_QualityModel {
+  + name : str
+}
+class QualityMetamodel_RangeValueType {
+  + max : str
+  + min : str
+}
+class QualityMetamodel_RealValueType {
+  + value : str
+}
+class QualityMetamodel_SingleValue {
+}
+class QualityMetamodel_TextValueType {
+  + value : str
+}
+abstract class QualityMetamodel_Value {
+  + description : str
+  + name : str
+}
+abstract class QualityMetamodel_ValueType {
+  + name : str
+}
+class Value {
+}
+class ValueType {
+}
+Value <|-- QualityMetamodel_AggregatedValue
+Value <|-- QualityMetamodel_SingleValue
+ValueType <|-- QualityMetamodel_AggregatedValueMetric
+ValueType <|-- QualityMetamodel_BooleanValueType
+ValueType <|-- QualityMetamodel_EnumerationMetric
+ValueType <|-- QualityMetamodel_IntegerValueType
+ValueType <|-- QualityMetamodel_RangeValueType
+ValueType <|-- QualityMetamodel_RealValueType
+ValueType <|-- QualityMetamodel_TextValueType
+QualityMetamodel_Operation "1..1" -- "1..9999" QualityMetamodel_Value : aggregatedValues18
+QualityMetamodel_AggregatedValue "1..1" *-- "1..1" QualityMetamodel_Operation : calculatedBy17
+QualityMetamodel_MetricProvider "1..1" -- "1..1" QualityMetamodel_SingleValue : measuredBy15
+QualityMetamodel_MetricProvider "0..9999" --* "1..1" QualityMetamodel_QualityModel : metricProviders0
+QualityMetamodel_QualityAttribute "0..9999" -- "1..1" QualityMetamodel_QualityAttribute : qualityAttributes11
+QualityMetamodel_QualityAttribute "0..9999" --* "1..1" QualityMetamodel_QualityModel : qualityAttributes3
+QualityMetamodel_QualityModel "1..1" *-- "0..9999" QualityMetamodel_ValueType : qualityTypes1
+QualityMetamodel_QualityModel "1..1" *-- "0..9999" QualityMetamodel_Value : qualityValues5
+QualityMetamodel_EnumerationItem "1..9999" --* "1..1" QualityMetamodel_EnumerationMetric : set21
+QualityMetamodel_Value "1..1" -- "1..1" QualityMetamodel_ValueType : type13
+QualityMetamodel_Value "1..1" -- "1..1" QualityMetamodel_ValueType : val14
+QualityMetamodel_EnumerationItem "0..1" -- "1..1" QualityMetamodel_EnumerationMetric : value22
+QualityMetamodel_QualityAttribute "1..1" -- "1..1" QualityMetamodel_Value : value7
+@enduml

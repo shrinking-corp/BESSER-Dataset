@@ -1,0 +1,52 @@
+@startuml
+class fsm_Action {
+  + name : str
+}
+class fsm_Event {
+  + name : str
+}
+class fsm_FSM {
+  + groupId : str
+  + isServer : bool
+  + name : str
+}
+class fsm_Guard {
+  + name : str
+}
+class fsm_Message {
+  + name : str
+}
+class fsm_State {
+  + name : str
+}
+class fsm_StringToStringMap {
+  + key : str
+  + value : str
+}
+class fsm_Transition {
+  + InverseGuard : bool
+  + name : str
+}
+fsm_Action "0..9999" -- "1..1" fsm_Transition : actions30
+fsm_Message "1..1" *-- "0..9999" fsm_StringToStringMap : data43
+fsm_FSM "1..1" *-- "0..9999" fsm_StringToStringMap : dataTypes13
+fsm_Message "1..1" *-- "0..9999" fsm_StringToStringMap : enumsDef46
+fsm_Event "1..1" -- "1..1" fsm_Transition : event35
+fsm_Event "1..1" -- "1..1" fsm_Message : event40
+fsm_Message "0..1" -- "1..1" fsm_State : expectedMessage25
+fsm_FSM "1..1" -- "0..1" fsm_State : finalState2
+fsm_Guard "0..1" -- "1..1" fsm_Transition : guard32
+fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransitions17
+fsm_FSM "1..1" -- "1..1" fsm_State : initialState1
+fsm_Action "0..9999" -- "1..1" fsm_State : onEnteredActions19
+fsm_Action "0..9999" -- "1..1" fsm_State : onExitedActions22
+fsm_State "1..1" *-- "0..9999" fsm_Transition : outgoingTransitions16
+fsm_Action "0..9999" --* "1..1" fsm_FSM : ownedActions7
+fsm_Event "0..9999" --* "1..1" fsm_FSM : ownedEvents5
+fsm_FSM "1..1" *-- "0..9999" fsm_Guard : ownedGuards9
+fsm_FSM "1..1" *-- "0..9999" fsm_Message : ownedMessages11
+fsm_FSM "1..1" *-- "0..9999" fsm_State : ownedStates0
+fsm_FSM "1..1" -- "1..1" fsm_State : owningFSM15
+fsm_State "1..1" -- "1..1" fsm_Transition : source28
+fsm_State "1..1" -- "1..1" fsm_Transition : target38
+@enduml

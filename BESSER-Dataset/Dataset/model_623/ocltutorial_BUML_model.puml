@@ -1,0 +1,21 @@
+@startuml
+class ocltutorial_Book {
+  + copies : str
+  + name : str
+}
+class ocltutorial_Library {
+}
+class ocltutorial_Loans {
+  + date : date
+}
+class ocltutorial_Member {
+  + name : str
+}
+ocltutorial_Book "1..1" -- "1..1" ocltutorial_Loans : book7
+ocltutorial_Book "0..9999" --* "1..1" ocltutorial_Library : books0
+ocltutorial_Book "1..1" -- "0..1" ocltutorial_Library : library4
+ocltutorial_Library "0..1" -- "1..1" ocltutorial_Member : library9
+ocltutorial_Library "1..1" *-- "0..9999" ocltutorial_Loans : loans3
+ocltutorial_Loans "1..1" -- "1..1" ocltutorial_Member : member5
+ocltutorial_Library "1..1" *-- "0..9999" ocltutorial_Member : members1
+@enduml

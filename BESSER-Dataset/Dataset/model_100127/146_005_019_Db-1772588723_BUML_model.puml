@@ -1,0 +1,55 @@
+@startuml
+class NamedElement {
+}
+class Taggable {
+}
+class relationaldatabase_Column {
+  + arrayDimensions : int
+  + nullable : bool
+  + primaryKey : bool
+  + scale : str
+  + size : str
+  + unique : bool
+}
+class relationaldatabase_Configuration {
+}
+class relationaldatabase_DataType {
+}
+class relationaldatabase_DatabaseModel {
+}
+class relationaldatabase_ForeignKey {
+  + sourceLowerBoundary : str
+  + sourceUpperBoundary : str
+  + targetLowerBoundary : str
+  + targetUpperBoundary : str
+}
+abstract class relationaldatabase_NamedElement {
+  + documentation : str
+  + name : str
+}
+class relationaldatabase_Table {
+}
+class relationaldatabase_Tag {
+  + documentation : str
+  + name : str
+}
+class relationaldatabase_Taggable {
+}
+NamedElement <|-- relationaldatabase_Column
+NamedElement <|-- relationaldatabase_DataType
+NamedElement <|-- relationaldatabase_DatabaseModel
+NamedElement <|-- relationaldatabase_ForeignKey
+NamedElement <|-- relationaldatabase_Table
+Taggable <|-- relationaldatabase_NamedElement
+relationaldatabase_Column "0..9999" --* "1..1" relationaldatabase_Table : columns7
+relationaldatabase_Configuration "0..1" --* "1..1" relationaldatabase_DatabaseModel : configuration5
+relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_DataType : dataType11
+relationaldatabase_DataType "0..9999" --* "1..1" relationaldatabase_DatabaseModel : dataTypes1
+relationaldatabase_ForeignKey "0..9999" --* "1..1" relationaldatabase_Table : foreignKeys9
+relationaldatabase_Column "1..9999" -- "1..1" relationaldatabase_ForeignKey : sourceColumns14
+relationaldatabase_DatabaseModel "1..1" *-- "0..9999" relationaldatabase_Table : tables0
+relationaldatabase_Tag "0..9999" -- "1..1" relationaldatabase_Taggable : tag23
+relationaldatabase_DatabaseModel "1..1" *-- "0..9999" relationaldatabase_Tag : tags3
+relationaldatabase_Column "1..9999" -- "1..1" relationaldatabase_ForeignKey : targetColumns17
+relationaldatabase_ForeignKey "1..1" -- "0..1" relationaldatabase_Table : targetTable20
+@enduml

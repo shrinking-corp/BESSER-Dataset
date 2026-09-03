@@ -1,0 +1,51 @@
+@startuml
+class NamedElement {
+}
+class Rail {
+}
+class TrackElement {
+}
+abstract class sihuhu_NamedElement {
+  + name : str
+}
+class sihuhu_Rail {
+}
+class sihuhu_Signal {
+  + enabled : bool
+}
+class sihuhu_Switch {
+}
+class sihuhu_SwitchConnection {
+}
+class sihuhu_Track {
+}
+abstract class sihuhu_TrackElement {
+}
+class sihuhu_Train {
+}
+class sihuhu_World {
+}
+NamedElement <|-- sihuhu_Signal
+NamedElement <|-- sihuhu_Track
+NamedElement <|-- sihuhu_TrackElement
+NamedElement <|-- sihuhu_Train
+NamedElement <|-- sihuhu_World
+Rail <|-- sihuhu_SwitchConnection
+TrackElement <|-- sihuhu_Rail
+TrackElement <|-- sihuhu_Switch
+sihuhu_Switch "1..1" -- "0..1" sihuhu_SwitchConnection : activeConnection23
+sihuhu_Rail "1..1" *-- "1..1" sihuhu_Signal : allowedFrom10
+sihuhu_Rail "1..1" *-- "1..1" sihuhu_Signal : allowedTo8
+sihuhu_Rail "0..9999" -- "1..1" sihuhu_Switch : connectedRails20
+sihuhu_Switch "1..1" *-- "0..9999" sihuhu_SwitchConnection : connections18
+sihuhu_Rail "1..1" -- "0..1" sihuhu_TrackElement : from_13
+sihuhu_TrackElement "0..1" -- "1..1" sihuhu_Train : nextElement26
+sihuhu_Rail "0..1" -- "1..1" sihuhu_Signal : nextRail30
+sihuhu_TrackElement "0..9999" -- "1..1" sihuhu_Train : onTracks29
+sihuhu_Rail "0..9999" --* "1..1" sihuhu_Track : rails3
+sihuhu_Switch "0..9999" --* "1..1" sihuhu_Track : switches5
+sihuhu_Rail "1..1" -- "0..1" sihuhu_TrackElement : to15
+sihuhu_Track "0..9999" --* "1..1" sihuhu_World : tracks0
+sihuhu_TrackElement "1..1" -- "0..1" sihuhu_Train : train7
+sihuhu_Train "0..9999" --* "1..1" sihuhu_World : trains1
+@enduml

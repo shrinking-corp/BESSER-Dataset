@@ -1,0 +1,49 @@
+@startuml
+class scheduleOfCourse_Capacity {
+  + exam : int
+  + normal : int
+}
+class scheduleOfCourse_CourseLoad {
+  + totalQuantity : int
+  + type : str
+  + unitQuantity : int
+}
+class scheduleOfCourse_Lesson {
+  + end : str
+  + start : str
+}
+class scheduleOfCourse_LessonPeriod {
+  + end : str
+  + start : str
+}
+class scheduleOfCourse_Occupation {
+  + current : int
+  + max : int
+}
+class scheduleOfCourse_Room {
+  + description : str
+  + id : str
+  + name : str
+  + type : str
+}
+class scheduleOfCourse_Shift {
+  + name : str
+  + types : str
+}
+class scheduleOfCourse_TopLevelSpace {
+  + id : str
+  + name : str
+  + type : str
+}
+class scheduleOfCourse_scheduleOfCourse {
+}
+scheduleOfCourse_Capacity "0..1" --* "1..1" scheduleOfCourse_Room : capacity16
+scheduleOfCourse_CourseLoad "1..9999" --* "1..1" scheduleOfCourse_scheduleOfCourse : courseLoads6
+scheduleOfCourse_LessonPeriod "1..9999" --* "1..1" scheduleOfCourse_scheduleOfCourse : lessonPeriods5
+scheduleOfCourse_Lesson "1..9999" --* "1..1" scheduleOfCourse_Shift : lessons1
+scheduleOfCourse_Occupation "1..1" --* "1..1" scheduleOfCourse_Shift : occupation0
+scheduleOfCourse_Lesson "1..1" *-- "1..1" scheduleOfCourse_Room : room11
+scheduleOfCourse_Room "1..9999" --* "1..1" scheduleOfCourse_Shift : rooms3
+scheduleOfCourse_Shift "1..9999" --* "1..1" scheduleOfCourse_scheduleOfCourse : shifts8
+scheduleOfCourse_Room "1..1" *-- "1..1" scheduleOfCourse_TopLevelSpace : topLevelSpace14
+@enduml

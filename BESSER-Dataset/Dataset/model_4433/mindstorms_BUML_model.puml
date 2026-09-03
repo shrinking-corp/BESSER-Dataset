@@ -1,0 +1,31 @@
+@startuml
+class Action {
+}
+class Instruction {
+}
+abstract class mindstorms_Action {
+}
+class mindstorms_Choreography {
+  + name : str
+}
+class mindstorms_GoForward {
+  + cm : int
+}
+class mindstorms_Grab {
+}
+abstract class mindstorms_Instruction {
+}
+class mindstorms_Release {
+}
+class mindstorms_Rotate {
+  + degrees : int
+  + random : bool
+}
+Action <|-- mindstorms_GoForward
+Action <|-- mindstorms_Grab
+Action <|-- mindstorms_Release
+Action <|-- mindstorms_Rotate
+Instruction <|-- mindstorms_Action
+Instruction <|-- mindstorms_Choreography
+mindstorms_Choreography "1..1" *-- "0..9999" mindstorms_Instruction : instructions0
+@enduml

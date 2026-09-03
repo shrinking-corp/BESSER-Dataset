@@ -1,0 +1,47 @@
+@startuml
+class Bill {
+  + Amount : Float
+  + BillId : int
+  + PatientName : str
+}
+class Dept {
+  + DocId : int
+  + Id : int
+  + Name : str
+}
+class Doctor {
+  + Dept : str
+  + Location : str
+  + Name : str
+  + PhoneNo : int
+  + Specialization : str
+  + docId : int
+}
+class Float {
+}
+class Patient {
+  + Address : str
+  + Age : int
+  + PatientId : int
+  + PatientName : str
+  + PhoneNo : int
+  + RoomNo : int
+  + Sex : str
+}
+class ReceptionList {
+  + RepId : int
+  + name : str
+}
+class Rooms {
+  + Location : str
+  + RoomNo : int
+}
+class system_Component {
+}
+Bill "1..1" -- "1..1" Patient : Bill_Patient
+Bill "0..9999" -- "1..1" ReceptionList : Bill_ReceptionList
+Dept "1..1" -- "0..9999" Doctor : Doctor_Dept
+Doctor "1..9999" -- "1..9999" Patient : Doctor_Patient
+Patient "1..9999" -- "1..1" ReceptionList : Patient_ReceptionList
+Patient "1..1" -- "1..1" Rooms : Rooms_Patient
+@enduml

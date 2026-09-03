@@ -1,0 +1,34 @@
+@startuml
+class Arc {
+}
+abstract class lit_petriNets_Arc {
+}
+class lit_petriNets_Net {
+}
+class lit_petriNets_PTArc {
+}
+class lit_petriNets_Place {
+  + name : str
+}
+class lit_petriNets_TPArc {
+}
+class lit_petriNets_Transition {
+  + name : str
+}
+Arc <|-- lit_petriNets_PTArc
+Arc <|-- lit_petriNets_TPArc
+lit_petriNets_Arc "0..9999" --* "1..1" lit_petriNets_Net : arcs3
+lit_petriNets_PTArc "1..1" -- "1..1" lit_petriNets_Transition : d20
+lit_petriNets_Place "1..1" -- "1..1" lit_petriNets_TPArc : d25
+lit_petriNets_PTArc "1..9999" -- "1..1" lit_petriNets_Transition : in_10
+lit_petriNets_Place "1..1" -- "0..9999" lit_petriNets_TPArc : in_6
+lit_petriNets_Arc "1..1" -- "1..1" lit_petriNets_Net : net16
+lit_petriNets_Net "1..1" -- "1..1" lit_petriNets_Place : net5
+lit_petriNets_Net "1..1" -- "1..1" lit_petriNets_Transition : net8
+lit_petriNets_TPArc "1..9999" -- "1..1" lit_petriNets_Transition : out13
+lit_petriNets_PTArc "0..9999" -- "1..1" lit_petriNets_Place : out7
+lit_petriNets_Net "1..1" *-- "0..9999" lit_petriNets_Place : places0
+lit_petriNets_PTArc "1..1" -- "1..1" lit_petriNets_Place : s18
+lit_petriNets_TPArc "1..1" -- "1..1" lit_petriNets_Transition : s22
+lit_petriNets_Net "1..1" *-- "0..9999" lit_petriNets_Transition : transitions1
+@enduml

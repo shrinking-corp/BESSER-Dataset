@@ -1,0 +1,18 @@
+@startuml
+class tables_Chair {
+  + order : int
+}
+class tables_Restaurant {
+}
+class tables_Table {
+  + id : int
+  + isReserved : bool
+}
+class tables_Waitress {
+  + name : str
+}
+tables_Chair "0..9999" --* "1..1" tables_Table : chairs0
+tables_Table "0..9999" -- "1..1" tables_Waitress : tables1
+tables_Restaurant "1..1" *-- "0..9999" tables_Table : tables5
+tables_Restaurant "1..1" *-- "0..9999" tables_Waitress : waitress3
+@enduml

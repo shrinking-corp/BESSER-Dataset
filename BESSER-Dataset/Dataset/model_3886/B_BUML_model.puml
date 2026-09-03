@@ -1,0 +1,61 @@
+@startuml
+class B_Action {
+}
+class B_Any {
+}
+class B_Begin {
+}
+class B_Expression {
+  + expression : str
+}
+class B_If {
+}
+class B_Machine {
+  + name : str
+}
+class B_Operation {
+  + name : str
+}
+class B_Predicate {
+}
+class B_SET {
+  + name : str
+}
+class B_Skip {
+}
+class B_Variable {
+  + name : str
+}
+class B_VariableList {
+  + size : str
+}
+class Expression {
+}
+Expression <|-- B_Action
+Expression <|-- B_Any
+Expression <|-- B_Begin
+Expression <|-- B_If
+Expression <|-- B_Predicate
+Expression <|-- B_Skip
+B_If "1..1" *-- "1..9999" B_Predicate : conditions47
+B_Expression "0..9999" --* "1..1" B_If : false_statements44
+B_Variable "1..1" -- "1..1" B_VariableList : first31
+B_Action "0..9999" --* "1..1" B_Machine : initialisations10
+B_Operation "1..1" *-- "1..1" B_VariableList : inputs14
+B_Machine "1..1" *-- "0..9999" B_Predicate : invariants6
+B_Machine "1..1" *-- "0..9999" B_Operation : operations4
+B_Operation "1..1" *-- "1..1" B_VariableList : outputs16
+B_Variable "0..1" -- "1..1" B_Variable : preceeds23
+B_Operation "1..1" *-- "0..9999" B_Predicate : preconditions19
+B_Machine "1..1" -- "0..1" B_Machine : refines1
+B_Machine "1..1" *-- "0..9999" B_SET : sets2
+B_Expression "1..9999" --* "1..1" B_Operation : statements12
+B_Any "1..1" *-- "1..9999" B_Expression : statements39
+B_Begin "1..1" *-- "1..9999" B_Expression : statements50
+B_Expression "1..9999" --* "1..1" B_If : true_statements42
+B_Predicate "0..1" -- "1..1" B_Variable : type25
+B_Any "1..1" *-- "1..9999" B_Predicate : var_conditions36
+B_Variable "0..9999" --* "1..1" B_VariableList : variables28
+B_Any "1..1" *-- "1..9999" B_Variable : variables34
+B_Machine "1..1" *-- "0..9999" B_Variable : variables8
+@enduml

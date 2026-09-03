@@ -1,0 +1,184 @@
+@startuml
+enum AdditiveOperator {
+  minus
+  plus
+}
+enum AssignmentOperator {
+  addAssign
+  andAssign
+  assign
+  divAssign
+  leftShiftAssign
+  modAssign
+  multAssign
+  orAssign
+  rightShiftAssign
+  subAssign
+  xorAssign
+}
+enum EqualityOperator {
+  equals
+  notEquals
+}
+class Event {
+}
+class Expression {
+}
+enum MultiplicativeOperator {
+  div
+  mod
+  mul
+}
+class PrimaryExpression {
+}
+enum RelationalOperator {
+  greater
+  greaterEqual
+  smaller
+  smallerEqual
+}
+enum ShiftOperator {
+  left
+  right
+}
+class Statement {
+}
+class TimeExpression {
+}
+enum TimeUnit {
+  millisecond
+  nanosecond
+  second
+}
+enum UnaryOperator {
+  complement
+  negative
+  not_
+  positive
+}
+class statechartexpressions_ActionExpression {
+}
+class statechartexpressions_AdditiveExpression {
+  + operator : str
+}
+class statechartexpressions_BitwiseAndExpression {
+}
+class statechartexpressions_BitwiseOrExpression {
+}
+class statechartexpressions_BitwiseXorExpression {
+}
+class statechartexpressions_BooleanAndExpression {
+}
+class statechartexpressions_BooleanOrExpression {
+}
+class statechartexpressions_ConditionalExpression {
+}
+class statechartexpressions_EqualityExpression {
+  + operator : str
+}
+class statechartexpressions_Event {
+}
+class statechartexpressions_EventRaising {
+}
+class statechartexpressions_Expression {
+}
+class statechartexpressions_GuardExpression {
+}
+class statechartexpressions_LiteralValue {
+  + value : str
+}
+class statechartexpressions_MultiplicativeExpression {
+  + operator : str
+}
+class statechartexpressions_NestedExpression {
+}
+class statechartexpressions_PrimaryExpression {
+}
+class statechartexpressions_Procedure {
+  + identifier : str
+}
+class statechartexpressions_ProcedureCall {
+}
+class statechartexpressions_RelationalExpression {
+  + operator : str
+}
+class statechartexpressions_ShiftExpression {
+  + operator : str
+}
+class statechartexpressions_SignalEvent {
+  + identifier : str
+}
+class statechartexpressions_Statement {
+}
+class statechartexpressions_TimeConstant {
+  + unit : str
+  + value : int
+}
+class statechartexpressions_TimeEvent {
+}
+class statechartexpressions_TimeExpression {
+}
+class statechartexpressions_Trigger {
+}
+class statechartexpressions_TriggerExpression {
+}
+class statechartexpressions_UnaryExpression {
+  + operator : str
+}
+class statechartexpressions_Variable {
+  + identifier : str
+}
+class statechartexpressions_VariableAssignment {
+  + operator : str
+}
+class statechartexpressions_VariableReference {
+}
+Event <|-- statechartexpressions_SignalEvent
+Event <|-- statechartexpressions_TimeEvent
+Expression <|-- statechartexpressions_ActionExpression
+Expression <|-- statechartexpressions_GuardExpression
+Expression <|-- statechartexpressions_TriggerExpression
+PrimaryExpression <|-- statechartexpressions_LiteralValue
+PrimaryExpression <|-- statechartexpressions_NestedExpression
+PrimaryExpression <|-- statechartexpressions_VariableReference
+Statement <|-- statechartexpressions_EventRaising
+Statement <|-- statechartexpressions_ProcedureCall
+Statement <|-- statechartexpressions_VariableAssignment
+TimeExpression <|-- statechartexpressions_TimeConstant
+TimeExpression <|-- statechartexpressions_VariableReference
+statechartexpressions_TimeEvent "1..1" *-- "0..1" statechartexpressions_TimeExpression : duration5
+statechartexpressions_EventRaising "1..1" *-- "0..1" statechartexpressions_SignalEvent : event12
+statechartexpressions_Event "0..1" --* "1..1" statechartexpressions_Trigger : event3
+statechartexpressions_BooleanOrExpression "0..1" --* "1..1" statechartexpressions_GuardExpression : expression1
+statechartexpressions_ConditionalExpression "0..1" --* "1..1" statechartexpressions_NestedExpression : expression74
+statechartexpressions_BooleanAndExpression "0..1" --* "1..1" statechartexpressions_BooleanOrExpression : operand113
+statechartexpressions_BitwiseXorExpression "0..1" --* "1..1" statechartexpressions_BooleanAndExpression : operand118
+statechartexpressions_BitwiseOrExpression "0..1" --* "1..1" statechartexpressions_BitwiseXorExpression : operand123
+statechartexpressions_BitwiseAndExpression "0..1" --* "1..1" statechartexpressions_BitwiseOrExpression : operand128
+statechartexpressions_BitwiseAndExpression "1..1" *-- "0..1" statechartexpressions_EqualityExpression : operand133
+statechartexpressions_EqualityExpression "1..1" *-- "0..1" statechartexpressions_RelationalExpression : operand138
+statechartexpressions_RelationalExpression "1..1" *-- "0..1" statechartexpressions_ShiftExpression : operand143
+statechartexpressions_BooleanOrExpression "0..1" --* "1..1" statechartexpressions_ConditionalExpression : operand148
+statechartexpressions_AdditiveExpression "0..1" --* "1..1" statechartexpressions_ShiftExpression : operand157
+statechartexpressions_AdditiveExpression "1..1" *-- "0..1" statechartexpressions_MultiplicativeExpression : operand162
+statechartexpressions_MultiplicativeExpression "1..1" *-- "0..1" statechartexpressions_UnaryExpression : operand167
+statechartexpressions_BooleanAndExpression "0..1" --* "1..1" statechartexpressions_BooleanOrExpression : operand215
+statechartexpressions_BitwiseXorExpression "0..1" --* "1..1" statechartexpressions_BooleanAndExpression : operand220
+statechartexpressions_BitwiseOrExpression "0..1" --* "1..1" statechartexpressions_BitwiseXorExpression : operand225
+statechartexpressions_BitwiseAndExpression "0..1" --* "1..1" statechartexpressions_BitwiseOrExpression : operand230
+statechartexpressions_BitwiseAndExpression "1..1" *-- "0..1" statechartexpressions_EqualityExpression : operand235
+statechartexpressions_EqualityExpression "1..1" *-- "0..1" statechartexpressions_RelationalExpression : operand240
+statechartexpressions_RelationalExpression "1..1" *-- "0..1" statechartexpressions_ShiftExpression : operand245
+statechartexpressions_ConditionalExpression "1..1" *-- "0..1" statechartexpressions_ShiftExpression : operand251
+statechartexpressions_AdditiveExpression "0..1" --* "1..1" statechartexpressions_ShiftExpression : operand259
+statechartexpressions_AdditiveExpression "1..1" *-- "0..1" statechartexpressions_MultiplicativeExpression : operand264
+statechartexpressions_MultiplicativeExpression "1..1" *-- "0..1" statechartexpressions_UnaryExpression : operand269
+statechartexpressions_ConditionalExpression "1..1" *-- "0..1" statechartexpressions_ShiftExpression : operand354
+statechartexpressions_PrimaryExpression "0..1" --* "1..1" statechartexpressions_UnaryExpression : operand72
+statechartexpressions_Procedure "0..1" --* "1..1" statechartexpressions_ProcedureCall : procedure11
+statechartexpressions_ActionExpression "1..1" *-- "0..9999" statechartexpressions_Statement : statement2
+statechartexpressions_Trigger "0..9999" --* "1..1" statechartexpressions_TriggerExpression : triggers0
+statechartexpressions_ConditionalExpression "0..1" --* "1..1" statechartexpressions_VariableAssignment : value9
+statechartexpressions_Variable "0..1" --* "1..1" statechartexpressions_VariableReference : variable6
+statechartexpressions_VariableAssignment "1..1" *-- "0..1" statechartexpressions_VariableReference : variableReference7
+@enduml

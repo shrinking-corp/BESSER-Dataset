@@ -1,0 +1,96 @@
+@startuml
+enum Actions {
+  BEEP
+  DRIVETOEDGE
+  DRIVE_BACKWARD
+  DRIVE_FORWARD
+  MEASURE
+  ROTATE_L
+  ROTATE_R
+  STOP_DRIVING
+  TURN_AROUND
+}
+enum Colors {
+  BLACK
+  BLUE
+  CYAN
+  DARK_GRAY
+  GRAY
+  GREEN
+  LIGHT_GRAY
+  MAGENTA
+  ORANGE
+  PINK
+  RED
+  WHITE
+  YELLOW
+}
+enum CompareOperator {
+  EQ
+  G
+  GEQ
+  L
+  LEQ
+  NEQ
+}
+enum Directions {
+  E
+  N
+  NE
+  NW
+  S
+  SE
+  SW
+  W
+}
+class SensorType {
+}
+enum TouchSensorSides {
+  ANY
+  BOTH
+  LEFT
+  RIGHT
+}
+class dsl_ColorSensor {
+  + distinct : bool
+}
+class dsl_ColorValue {
+  + color : str
+}
+class dsl_Ignorables {
+  + AVOID_OBJECTS : str
+}
+class dsl_Mission {
+}
+class dsl_SensorType {
+}
+class dsl_Task {
+  + action : str
+  + name : str
+  + nrOfTimes : int
+  + time : int
+}
+class dsl_TouchSensor {
+  + key : str
+}
+class dsl_UltrasonicSensor {
+  + comparator : str
+  + distance : str
+}
+class dsl_timeUnitValue {
+  + unit : str
+}
+enum timeUnit {
+  MILISECONDS
+  SECONDS
+}
+SensorType <|-- dsl_ColorSensor
+SensorType <|-- dsl_TouchSensor
+SensorType <|-- dsl_UltrasonicSensor
+dsl_Ignorables "0..1" --* "1..1" dsl_Task : ignoreBehavior3
+dsl_ColorSensor "1..1" *-- "0..1" dsl_ColorValue : key7
+dsl_ColorSensor "1..1" *-- "0..9999" dsl_ColorValue : keys8
+dsl_SensorType "0..1" --* "1..1" dsl_Task : sensor1
+dsl_Mission "1..1" *-- "0..9999" dsl_Task : tasks0
+dsl_Task "1..1" *-- "0..1" dsl_timeUnitValue : timeunit5
+@enduml

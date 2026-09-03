@@ -1,0 +1,49 @@
+@startuml
+class BoolExpr {
+}
+class Calc {
+}
+class CalcExpr {
+}
+class Condition {
+}
+class calculatrice_BoolExpr {
+  + op : str
+}
+class calculatrice_Boolean {
+  + BoolValue : str
+}
+class calculatrice_Calc {
+  + boolName : str
+  + decl : bool
+  + varName : str
+}
+class calculatrice_CalcExpr {
+  + op : str
+}
+class calculatrice_Calculatrice {
+}
+class calculatrice_Condition {
+}
+class calculatrice_Number {
+  + neg : bool
+  + value : int
+}
+class calculatrice_VarCall {
+  + varCall : str
+}
+BoolExpr <|-- calculatrice_Boolean
+Calc <|-- calculatrice_Condition
+CalcExpr <|-- calculatrice_Number
+CalcExpr <|-- calculatrice_VarCall
+Condition <|-- calculatrice_BoolExpr
+calculatrice_BoolExpr "0..1" --* "1..1" calculatrice_Calc : b1
+calculatrice_Calc "0..9999" --* "1..1" calculatrice_Calculatrice : calculs0
+calculatrice_Calc "1..1" *-- "0..1" calculatrice_CalcExpr : e3
+calculatrice_BoolExpr "1..1" *-- "0..1" calculatrice_Calc : elseBlock14
+calculatrice_BoolExpr "0..1" --* "1..1" calculatrice_BoolExpr : left18
+calculatrice_CalcExpr "0..1" --* "1..1" calculatrice_CalcExpr : left6
+calculatrice_BoolExpr "0..1" --* "1..1" calculatrice_BoolExpr : right21
+calculatrice_CalcExpr "1..1" *-- "0..1" calculatrice_CalcExpr : right9
+calculatrice_BoolExpr "1..1" *-- "0..1" calculatrice_Calc : thenBlock11
+@enduml

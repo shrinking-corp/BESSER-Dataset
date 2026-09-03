@@ -1,0 +1,53 @@
+@startuml
+enum DataTypes {
+  Boolean
+  Double
+  Integer
+  Long
+  Object
+  String
+}
+enum EntityAnnotation {
+  Cache
+}
+class Feature {
+}
+enum FetureAnnotation {
+  Id
+  Ignore
+  Index
+  Load
+}
+class NamedElement {
+}
+class hermes_DataType {
+  + type : str
+}
+class hermes_Entity {
+  + annotations : str
+}
+abstract class hermes_Feature {
+  + annotations : str
+  + many : bool
+}
+class hermes_Module {
+}
+abstract class hermes_NamedElement {
+  + name : str
+}
+class hermes_Package {
+}
+class hermes_Reference {
+}
+Feature <|-- hermes_DataType
+Feature <|-- hermes_Reference
+NamedElement <|-- hermes_Entity
+NamedElement <|-- hermes_Feature
+NamedElement <|-- hermes_Module
+NamedElement <|-- hermes_Package
+hermes_Entity "0..9999" --* "1..1" hermes_Package : entities1
+hermes_Entity "1..1" *-- "0..9999" hermes_Feature : features3
+hermes_Module "1..1" *-- "0..9999" hermes_Package : packages0
+hermes_Entity "1..1" -- "1..1" hermes_Reference : reference8
+hermes_Entity "0..1" -- "1..1" hermes_Entity : superEntity6
+@enduml

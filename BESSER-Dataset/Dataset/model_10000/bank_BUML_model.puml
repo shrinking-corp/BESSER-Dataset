@@ -1,0 +1,30 @@
+@startuml
+enum CardType {
+}
+class bank_Account {
+  + credit : float
+  + overdraft : float
+}
+class bank_Bank {
+}
+class bank_Card {
+  + number : str
+  + type : str
+}
+class bank_Client {
+  + capacity : int
+  + name : str
+}
+class bank_Manager {
+  + name : str
+}
+bank_Account "0..9999" --* "1..1" bank_Bank : accounts1
+bank_Account "0..9999" -- "1..1" bank_Client : accounts6
+bank_Account "1..1" -- "0..9999" bank_Card : cards13
+bank_Client "0..9999" -- "1..1" bank_Manager : clients10
+bank_Bank "1..1" *-- "0..9999" bank_Client : clients3
+bank_Client "1..1" -- "0..9999" bank_Manager : manager5
+bank_Bank "1..1" *-- "0..9999" bank_Manager : managers0
+bank_Account "1..1" -- "0..9999" bank_Client : owners11
+bank_Client "0..9999" -- "1..1" bank_Client : sponsorships8
+@enduml

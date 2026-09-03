@@ -1,0 +1,33 @@
+@startuml
+class AcademicResult {
+  + semester : int
+}
+class Administrator {
+  + administratorID : int
+  + name : str
+}
+class Course {
+  + courseName : str
+  + subjectCode : str
+}
+class Department {
+  + course : Course
+  + name : str
+}
+class FacultyInfo {
+  + department : Department
+  + facultyID : str
+  + facultyName : str
+}
+class Portal {
+}
+class Student {
+  + branch : Department
+  + name : str
+  + scholarNo : int
+  + semester : int
+}
+Course "0..1" -- "0..1" Department : Department_Course
+Department "0..1" -- "0..1" Student : Department_Student
+Department "0..1" -- "0..1" FacultyInfo : FacultyInfo_Department
+@enduml

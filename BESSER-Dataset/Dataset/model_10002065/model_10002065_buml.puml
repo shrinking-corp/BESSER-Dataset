@@ -1,0 +1,78 @@
+@startuml
+class Admin {
+}
+class Binary_File {
+}
+class Course {
+  + CCode : str
+  + CInstructor : str
+  + CName : str
+  + CPrice : str
+}
+class Department {
+  + deptId : str
+  + deptName : str
+}
+class Email {
+}
+class Exam {
+  + EName : str
+  + ETime : str
+  + MaxGrade : str
+}
+class Exceptions {
+}
+class Finance {
+}
+class ILogin_Interface {
+}
+class Instructor {
+}
+class Person {
+  + Id : str
+  + PhoneNum : str
+}
+class Report {
+}
+class Student {
+  + SAge : int
+  + SGender : str
+}
+class Stuff {
+  + Salary : str
+  + WorkHours : str
+}
+class T {
+}
+class User {
+  + Fname : str
+  + Lname : str
+  + Password : str
+  + email : str
+}
+class str {
+}
+Admin "0..1" -- "0..1" Course : Admin_Course
+Admin "0..1" -- "0..1" Email : Admin_Email
+Admin "0..1" -- "0..1" Instructor : Admin_Instructor
+Admin "0..1" -- "0..1" Report : Admin_Report
+Admin "0..1" -- "0..1" Student : Admin_Student
+Binary_File "0..1" -- "0..1" Report : Binary_File_Report
+Binary_File "0..1" -- "0..1" Course : Course_Binary_File
+Course "0..1" -- "0..1" Report : Course_Report
+Binary_File "0..1" -- "0..1" Department : Department_Binary_File
+Course "0..1" -- "0..1" Department : Department_Course
+Email "0..1" -- "0..1" Student : Email_Student
+Binary_File "0..1" -- "0..1" Exam : Exam_Binary_File
+Course "0..1" -- "0..1" Exam : Exam_Course
+Finance "0..1" -- "0..1" Report : Finance__Report
+Finance "0..1" -- "0..1" Student : Finance__Student
+Email "0..1" -- "0..1" ILogin_Interface : ILogin_Email
+Department "0..1" -- "0..1" Instructor : Instructor_Department
+Course "0..1" -- "0..1" Report : Report_Course
+Course "0..1" -- "0..1" Student : Student_Course
+Report "0..1" -- "0..1" Student : Student_Report
+Binary_File "0..1" -- "0..1" User : User_Binary_File
+Exceptions "0..1" -- "0..1" User : User_Exceptions
+ILogin_Interface "0..1" -- "0..1" User : User_ILogin
+@enduml

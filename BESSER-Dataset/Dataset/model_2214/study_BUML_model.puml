@@ -1,0 +1,66 @@
+@startuml
+enum GradeEnum {
+  A
+  B
+  C
+  D
+  E
+  F
+  NONE
+}
+class study_Course {
+  + code : str
+  + credits : float
+  + level : int
+  + name : str
+}
+class study_CourseRelationship {
+  + grade : str
+  + numExamAttempts : int
+}
+class study_ElectiveCourseList {
+}
+class study_IndividualStudyPlan {
+}
+class study_Semester {
+  + ordinal : int
+}
+class study_Specialization {
+  + name : str
+  + numYears : int
+}
+class study_Student {
+  + name : str
+  + username : str
+}
+class study_StudyProgramme {
+  + code : str
+  + name : str
+  + numYears : int
+}
+class study_University {
+  + name : str
+}
+study_Specialization "1..9999" --* "1..1" study_StudyProgramme : allSpecializations6
+study_Specialization "1..9999" -- "1..1" study_StudyProgramme : baseSpecializations7
+study_Course "1..1" -- "1..1" study_CourseRelationship : course36
+study_Course "0..9999" --* "1..1" study_University : courses1
+study_Course "1..9999" -- "1..1" study_ElectiveCourseList : courses22
+study_CourseRelationship "0..9999" --* "1..1" study_IndividualStudyPlan : courses31
+study_IndividualStudyPlan "1..1" -- "1..1" study_Semester : currentSemester29
+study_ElectiveCourseList "0..1" --* "1..1" study_Semester : electiveCourses17
+study_Specialization "0..9999" -- "1..1" study_Specialization : furtherSpecializations12
+study_Course "0..9999" -- "1..1" study_Semester : mandatoryCourses16
+study_ElectiveCourseList "1..1" -- "1..1" study_Semester : semester20
+study_Semester "2..9999" --* "1..1" study_Specialization : semesters10
+study_Semester "1..1" -- "1..1" study_Specialization : specialization14
+study_IndividualStudyPlan "1..1" -- "1..1" study_Student : student27
+study_Student "0..9999" --* "1..1" study_University : students3
+study_IndividualStudyPlan "1..1" --* "1..1" study_Student : studyPlan26
+study_CourseRelationship "1..1" -- "1..1" study_IndividualStudyPlan : studyPlan33
+study_Specialization "1..1" -- "1..1" study_StudyProgramme : studyProgramme8
+study_StudyProgramme "0..9999" --* "1..1" study_University : studyProgrammes0
+study_Course "1..1" -- "1..1" study_University : university18
+study_Student "1..1" -- "1..1" study_University : university24
+study_StudyProgramme "1..1" -- "1..1" study_University : university5
+@enduml

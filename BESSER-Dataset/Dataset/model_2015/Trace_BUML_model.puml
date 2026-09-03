@@ -1,0 +1,21 @@
+@startuml
+class trace_DebugLocationData {
+  + endLineNumber : int
+  + endOffset : int
+  + label : str
+  + length : int
+  + lineNumber : int
+  + offset : int
+  + path : str
+}
+class trace_DebugTraceRegion {
+  + label : str
+  + myEndLineNumber : int
+  + myEndOffset : int
+  + myLength : int
+  + myLineNumber : int
+  + myOffset : int
+}
+trace_DebugLocationData "0..9999" --* "1..1" trace_DebugTraceRegion : associations2
+trace_DebugTraceRegion "1..1" *-- "0..9999" trace_DebugTraceRegion : nestedRegions1
+@enduml

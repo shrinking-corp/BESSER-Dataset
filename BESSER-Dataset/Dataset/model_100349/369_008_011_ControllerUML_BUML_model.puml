@@ -1,0 +1,49 @@
+@startuml
+class Controller {
+}
+class ControllerAttribute {
+}
+class ControllerUML_Controller {
+}
+class ControllerUML_ControllerAttribute {
+}
+class ControllerUML_Event {
+}
+class ControllerUML_State {
+}
+class ControllerUML_StateMachine {
+}
+class ControllerUML_StateMachineAction {
+}
+class ControllerUML_StateTransition {
+}
+class ControllerUML_SubControllerState {
+}
+class ControllerUML_ViewState {
+}
+class Event {
+}
+class State {
+}
+class StateMachine {
+}
+class StateMachineAction {
+}
+class StateTransition {
+}
+State <|-- ControllerUML_SubControllerState
+State <|-- ControllerUML_ViewState
+ControllerUML_Controller "1..1" *-- "1..1" StateMachine : behavior2
+Controller "1..1" -- "1..1" ControllerUML_ControllerAttribute : controller0
+Controller "1..1" -- "1..1" ControllerUML_SubControllerState : controller11
+ControllerAttribute "0..9999" -- "1..1" ControllerUML_Controller : controllerAttribute1
+ControllerUML_StateTransition "1..1" *-- "0..1" StateMachineAction : effect18
+ControllerUML_State "1..1" -- "0..9999" StateTransition : incoming9
+ControllerUML_State "1..1" *-- "0..9999" StateTransition : outGoing8
+ControllerUML_StateTransition "1..1" -- "1..1" State : source13
+ControllerUML_StateMachine "1..1" *-- "0..9999" State : states3
+ControllerUML_State "1..1" *-- "0..9999" State : substates4
+ControllerUML_StateTransition "1..1" -- "1..1" State : target15
+ControllerUML_State "1..1" -- "0..1" State : theContainer6
+ControllerUML_StateTransition "1..1" -- "1..1" Event : trigger17
+@enduml

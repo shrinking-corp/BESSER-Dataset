@@ -1,0 +1,62 @@
+@startuml
+class ActionEvent2_Interface {
+}
+class ActionListener_Interface {
+}
+class Class {
+}
+class Controleur_Controleur {
+  + modele : Modele_CModele
+}
+class Graphics_Interface {
+}
+class JPanel {
+}
+class Modele_CModele {
+  + attribute : Modele_Cellule
+  + hauteur : int
+  + largeur : int
+}
+class Modele_Cellule {
+  + etat : bool
+  + modele : Modele_CModele
+  + prochaineEtat : bool
+  + x : int
+  + y : int
+}
+class Modele_Joueur {
+  + artefacts : str
+  + cles : int
+  + vivant : bool
+  + x : int
+  + y : int
+}
+class Modele_Participants {
+  + NOMBRE : int
+  + attribute : str
+}
+abstract class Observable {
+}
+class Observer_Interface {
+}
+class Vue_CVue {
+  + commande : Vue_VueCommande
+  + frame : str
+  + grille : Vue_VueGrille
+}
+class Vue_VueCommande {
+  + modele : Modele_CModele
+}
+class Vue_VueGrille {
+  + TAILLE : int
+  + modele : Modele_CModele
+  + update : str
+}
+Modele_CModele "1..1" -- "0..9999" Modele_Cellule : CModele_Cellule
+Controleur_Controleur "0..9999" -- "1..1" Modele_CModele : CModele_Controleur
+Vue_CVue "0..9999" -- "1..1" Vue_VueCommande : CVue_VueCommande
+Modele_Joueur "0..9999" -- "1..1" Modele_Participants : Participants_Joueur
+Modele_CModele "1..1" -- "0..9999" Vue_VueCommande : VueCommande_CModele
+Modele_CModele "1..1" -- "0..9999" Vue_VueGrille : VueGrille_CModele
+Vue_CVue "0..9999" -- "1..1" Vue_VueGrille : VueGrille_CVue
+@enduml

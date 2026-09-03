@@ -1,0 +1,47 @@
+@startuml
+class Edge {
+}
+class Graph {
+}
+class Mark {
+}
+class Node {
+}
+class sm_Edge {
+  + name : str
+}
+class sm_Graph {
+  + name : str
+}
+class sm_Mark {
+  + time : str
+}
+class sm_Node {
+  + name : str
+}
+class sm_Observation {
+}
+class sm_State {
+}
+class sm_StateMachine {
+}
+class sm_Transition {
+}
+Edge <|-- sm_Transition
+Graph <|-- sm_StateMachine
+Mark <|-- sm_Observation
+Node <|-- sm_State
+sm_Edge "0..9999" --* "1..1" sm_Graph : edges8
+sm_State "0..9999" -- "1..1" sm_StateMachine : final1
+sm_Graph "1..1" -- "1..1" sm_Node : graph14
+sm_Edge "1..1" -- "1..1" sm_Graph : graph19
+sm_Graph "1..1" -- "1..1" sm_Mark : graph23
+sm_State "0..1" -- "1..1" sm_StateMachine : initial0
+sm_Mark "0..1" -- "1..1" sm_Node : mark12
+sm_Graph "1..1" *-- "0..9999" sm_Mark : marks10
+sm_Mark "1..1" -- "1..1" sm_Node : node21
+sm_Graph "1..1" *-- "0..9999" sm_Node : nodes7
+sm_Edge "1..1" -- "1..1" sm_Node : source15
+sm_State "1..1" *-- "0..9999" sm_StateMachine : subMachines4
+sm_Edge "1..1" -- "1..1" sm_Node : target16
+@enduml

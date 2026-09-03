@@ -1,0 +1,45 @@
+@startuml
+class IOAutomaton_Activation {
+  + name : str
+}
+class IOAutomaton_Automaton {
+  + name : str
+}
+class IOAutomaton_Input {
+  + name : str
+}
+class IOAutomaton_Object {
+  + name : str
+}
+class IOAutomaton_Operation {
+  + name : str
+}
+class IOAutomaton_Output {
+  + name : str
+}
+class IOAutomaton_ReturnValue {
+  + isVoid : bool
+  + name : str
+}
+class IOAutomaton_State {
+  + name : str
+}
+class IOAutomaton_Transition {
+  + name : str
+}
+IOAutomaton_Activation "1..1" -- "1..1" IOAutomaton_Transition : activation19
+IOAutomaton_Automaton "1..1" *-- "0..9999" IOAutomaton_Transition : delta5
+IOAutomaton_Automaton "1..1" *-- "0..9999" IOAutomaton_Input : ingoing1
+IOAutomaton_Input "1..1" -- "1..1" IOAutomaton_Transition : input16
+IOAutomaton_Input "1..1" *-- "0..1" IOAutomaton_Operation : operation26
+IOAutomaton_Operation "1..1" --* "1..1" IOAutomaton_Output : operation28
+IOAutomaton_Object "1..1" --* "1..1" IOAutomaton_Output : outObject31
+IOAutomaton_Activation "0..9999" --* "1..1" IOAutomaton_Automaton : outcoming3
+IOAutomaton_Activation "1..1" *-- "0..9999" IOAutomaton_Output : output22
+IOAutomaton_State "1..1" -- "1..1" IOAutomaton_Transition : postState13
+IOAutomaton_State "1..1" -- "1..1" IOAutomaton_Transition : preState10
+IOAutomaton_Activation "1..1" *-- "1..1" IOAutomaton_ReturnValue : returnValue24
+IOAutomaton_Output "1..1" *-- "1..1" IOAutomaton_ReturnValue : returnValue33
+IOAutomaton_Automaton "1..1" *-- "0..9999" IOAutomaton_State : z0
+IOAutomaton_Automaton "1..1" -- "1..1" IOAutomaton_State : z07
+@enduml

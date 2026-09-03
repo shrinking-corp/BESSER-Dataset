@@ -1,0 +1,41 @@
+@startuml
+class comicBooks_Artist {
+  + name : str
+}
+class comicBooks_Book {
+  + name : str
+  + publicationDate : str
+}
+class comicBooks_ComicBookCollection {
+}
+class comicBooks_Editor {
+  + name : str
+}
+class comicBooks_Publisher {
+  + publishersName : str
+}
+class comicBooks_Series {
+  + seriesName : str
+}
+class comicBooks_Writer {
+  + name : str
+}
+comicBooks_Artist "0..9999" --* "1..1" comicBooks_ComicBookCollection : artists1
+comicBooks_Artist "1..9999" -- "1..1" comicBooks_Book : artists14
+comicBooks_Book "0..9999" --* "1..1" comicBooks_ComicBookCollection : books0
+comicBooks_Artist "1..1" -- "0..9999" comicBooks_Book : booksArtistFor21
+comicBooks_Artist "1..1" -- "0..9999" comicBooks_Book : booksCoverArtistFor23
+comicBooks_Book "0..9999" -- "1..1" comicBooks_Editor : booksEditorFor25
+comicBooks_Book "0..9999" -- "1..1" comicBooks_Series : booksInSeries12
+comicBooks_Book "0..9999" -- "1..1" comicBooks_Publisher : booksPublished11
+comicBooks_Book "0..9999" -- "1..1" comicBooks_Writer : booksWriterFor27
+comicBooks_Artist "1..1" -- "1..1" comicBooks_Book : coverArtist17
+comicBooks_Book "1..1" -- "1..9999" comicBooks_Editor : editors15
+comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Editor : editors3
+comicBooks_Book "1..1" -- "1..1" comicBooks_Publisher : publisher19
+comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Publisher : publishingCompanies7
+comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Series : series9
+comicBooks_Book "1..1" -- "1..1" comicBooks_Series : seriesPartOf20
+comicBooks_Book "1..1" -- "1..9999" comicBooks_Writer : writers16
+comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Writer : writers5
+@enduml

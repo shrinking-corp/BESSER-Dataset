@@ -1,0 +1,67 @@
+@startuml
+class Air_Conditioners {
+  + ACID : int
+}
+class Alert {
+  + AlertID : int
+}
+class Doors {
+  + DoorID : int
+}
+class Entry_Points {
+  + DoorID : int
+}
+class Fans {
+  + FANID : int
+}
+class Gardening {
+  + GID : int
+}
+class HomeAppliances {
+  + HAID : int
+}
+class Home_Security_System {
+  + UserID : int
+}
+class IoT_based_Smart_Resort_System {
+  + Status : bool
+  + Update : float
+}
+class Lights {
+  + LightID : str
+}
+class MoistureSensor {
+}
+class Motion_Sensor {
+}
+class Security_Guard_Police {
+  + sgpID : int
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class SolarPanel {
+  + SPID : int
+}
+class User_Home_Owner {
+  + UserID : int
+}
+class Windows {
+  + WinID : int
+}
+Entry_Points "1..9999" -- "1..9999" Windows : Entry_Points_Windows
+Air_Conditioners "1..9999" -- "1..9999" HomeAppliances : HomeAppliances_Air_Conditioner
+Doors "1..9999" -- "1..9999" Entry_Points : HomeAppliances_Door
+HomeAppliances "1..9999" -- "1..9999" Lights : HomeAppliances_Light
+Fans "1..9999" -- "1..9999" HomeAppliances : HomeTheatre_Speakers
+HomeAppliances "1..1" -- "1..1" IoT_based_Smart_Resort_System : HomeTheatre_System
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Entry_Points "1..1" -- "1..1" IoT_based_Smart_Resort_System : IoT_based_Smart_Resort_System_Entry_Points
+Home_Security_System "1..1" -- "1..1" IoT_based_Smart_Resort_System : IoT_based_Smart_Resort_System_Home_Security_System
+IoT_based_Smart_Resort_System "1..1" -- "1..9999" SolarPanel : IoT_based_Smart_Resort_System_SolarPanel
+Gardening "1..9999" -- "1..1" IoT_based_Smart_Resort_System : MicroPhone_System
+Alert "1..1" -- "1..1" Security_Guard_Police : Security_Guard_Police_Alert
+IoT_based_Smart_Resort_System "1..1" -- "1..9999" Sensor : Sensor_System
+Alert "1..1" -- "1..1" User_Home_Owner : User_Home_Owner_Alert
+@enduml

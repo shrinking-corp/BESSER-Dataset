@@ -1,0 +1,102 @@
+@startuml
+class Cell {
+}
+class ColOrRowElement {
+}
+class Column {
+}
+class Data {
+}
+class DateTimeType {
+}
+class Excel_BooleanValue {
+  + value : str
+}
+class Excel_Cell {
+  + arrayRange : str
+  + formula : str
+  + hRef : str
+  + mergeAcross : str
+  + mergeDown : str
+}
+abstract class Excel_ColOrRowElement {
+  + hidden : str
+  + span : str
+}
+class Excel_Column {
+  + autoFitWidth : str
+  + width : str
+}
+class Excel_Data {
+}
+class Excel_DateTimeType {
+  + day : str
+  + hour : str
+  + minute : str
+  + month : str
+  + second : str
+  + year : str
+}
+class Excel_DateTimeTypeValue {
+}
+class Excel_ErrorValue {
+}
+class Excel_NumberValue {
+  + value : str
+}
+class Excel_Row {
+  + autoFitHeight : str
+  + height : str
+}
+class Excel_StringValue {
+  + value : str
+}
+class Excel_Table {
+}
+abstract class Excel_TableElement {
+  + index : str
+}
+abstract class Excel_ValueType {
+}
+class Excel_Workbook {
+}
+class Excel_Worksheet {
+  + name : str
+}
+class Row {
+}
+class Table {
+}
+class TableElement {
+}
+class ValueType {
+}
+class Workbook {
+}
+class Worksheet {
+}
+ColOrRowElement <|-- Excel_Column
+ColOrRowElement <|-- Excel_Row
+TableElement <|-- Excel_Cell
+TableElement <|-- Excel_ColOrRowElement
+ValueType <|-- Excel_BooleanValue
+ValueType <|-- Excel_DateTimeTypeValue
+ValueType <|-- Excel_ErrorValue
+ValueType <|-- Excel_NumberValue
+ValueType <|-- Excel_StringValue
+Data "0..1" --* "1..1" Excel_Cell : c_data16
+Excel_Cell "1..1" -- "1..1" Row : c_row14
+Excel_Column "1..1" -- "1..1" Table : c_table9
+Cell "1..1" -- "1..1" Excel_Data : d_cell18
+Cell "0..9999" --* "1..1" Excel_Row : r_cells13
+Excel_Row "1..1" -- "1..1" Table : r_table11
+Column "0..9999" --* "1..1" Excel_Table : t_cols7
+Excel_Table "1..1" *-- "0..9999" Row : t_rows8
+Excel_Table "1..1" -- "1..1" Worksheet : t_worksheet5
+DateTimeType "1..1" --* "1..1" Excel_DateTimeTypeValue : value1
+Excel_Data "1..1" *-- "1..1" ValueType : value20
+Data "1..1" -- "1..1" Excel_ValueType : vt_data0
+Excel_Workbook "1..1" *-- "0..9999" Worksheet : wb_worksheets2
+Excel_Worksheet "1..1" *-- "0..1" Table : ws_table4
+Excel_Worksheet "1..1" -- "1..1" Workbook : ws_workbook3
+@enduml

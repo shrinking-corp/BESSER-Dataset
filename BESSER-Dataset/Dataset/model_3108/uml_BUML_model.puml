@@ -1,0 +1,26 @@
+@startuml
+class NamedElement {
+}
+class uml_Association {
+}
+class uml_Attribute {
+}
+class uml_Class {
+}
+abstract class uml_NamedElement {
+  + name : str
+}
+class uml_UMLSpecification {
+}
+NamedElement <|-- uml_Association
+NamedElement <|-- uml_Attribute
+NamedElement <|-- uml_Class
+NamedElement <|-- uml_UMLSpecification
+uml_Association "0..9999" --* "1..1" uml_UMLSpecification : associations14
+uml_Attribute "0..9999" --* "1..1" uml_Class : attrs7
+uml_Class "0..9999" --* "1..1" uml_UMLSpecification : classes12
+uml_Association "1..1" -- "0..1" uml_Class : dst1
+uml_Class "0..1" -- "1..1" uml_Class : parent5
+uml_Association "1..1" -- "0..1" uml_Class : src0
+uml_Attribute "1..1" -- "0..1" uml_Class : type9
+@enduml

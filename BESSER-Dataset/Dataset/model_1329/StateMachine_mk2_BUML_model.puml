@@ -1,0 +1,38 @@
+@startuml
+class State {
+}
+class statemachine_mk2_Composite_state {
+}
+class statemachine_mk2_Event {
+  + description : str
+}
+class statemachine_mk2_Final_state {
+}
+class statemachine_mk2_SimpleState {
+}
+abstract class statemachine_mk2_State {
+  + name : str
+}
+class statemachine_mk2_StateMachine {
+}
+class statemachine_mk2_Transition {
+  + name : str
+}
+State <|-- statemachine_mk2_Composite_state
+State <|-- statemachine_mk2_Final_state
+State <|-- statemachine_mk2_SimpleState
+statemachine_mk2_Event "1..1" -- "0..9999" statemachine_mk2_Transition : causes23
+statemachine_mk2_Composite_state "0..1" --* "1..1" statemachine_mk2_StateMachine : composite_states9
+statemachine_mk2_Event "0..9999" --* "1..1" statemachine_mk2_StateMachine : events5
+statemachine_mk2_Final_state "0..1" --* "1..1" statemachine_mk2_StateMachine : final_states7
+statemachine_mk2_State "1..1" -- "0..9999" statemachine_mk2_Transition : incoming12
+statemachine_mk2_State "1..1" -- "1..1" statemachine_mk2_StateMachine : initial_state1
+statemachine_mk2_State "1..1" -- "0..9999" statemachine_mk2_Transition : outgoing11
+statemachine_mk2_Event "1..1" -- "0..9999" statemachine_mk2_State : possible_states20
+statemachine_mk2_SimpleState "0..9999" --* "1..1" statemachine_mk2_StateMachine : simple_states0
+statemachine_mk2_State "1..1" -- "1..1" statemachine_mk2_Transition : source14
+statemachine_mk2_Composite_state "1..1" -- "0..9999" statemachine_mk2_State : substates26
+statemachine_mk2_State "1..1" -- "1..1" statemachine_mk2_Transition : target15
+statemachine_mk2_StateMachine "1..1" *-- "0..9999" statemachine_mk2_Transition : transitions3
+statemachine_mk2_Event "0..9999" -- "1..1" statemachine_mk2_Transition : triggers17
+@enduml

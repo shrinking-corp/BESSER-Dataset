@@ -1,0 +1,47 @@
+@startuml
+class ConfigConstraint {
+}
+class Constraint {
+}
+class FeatureModel_And {
+}
+abstract class FeatureModel_ConfigConstraint {
+  + kind : str
+}
+abstract class FeatureModel_Constraint {
+}
+class FeatureModel_Feature {
+  + id : int
+  + name : str
+}
+class FeatureModel_FeatureConstraint {
+  + type : str
+}
+class FeatureModel_FeatureModel {
+}
+class FeatureModel_Or {
+}
+class FeatureModel_RootFeature {
+}
+class FeatureModel_Xor {
+}
+enum Type {
+  exclude
+  require
+}
+enum kind {
+  mandatory
+  optional
+}
+ConfigConstraint <|-- FeatureModel_And
+ConfigConstraint <|-- FeatureModel_Or
+ConfigConstraint <|-- FeatureModel_Xor
+Constraint <|-- FeatureModel_ConfigConstraint
+Constraint <|-- FeatureModel_FeatureConstraint
+FeatureModel_ConfigConstraint "1..9999" --* "1..1" FeatureModel_RootFeature : ConfConst3
+FeatureModel_ConfigConstraint "1..1" *-- "0..9999" FeatureModel_Feature : ConfFeatures8
+FeatureModel_ConfigConstraint "1..1" -- "1..1" FeatureModel_Feature : Config7
+FeatureModel_FeatureConstraint "0..9999" --* "1..1" FeatureModel_FeatureModel : FConst1
+FeatureModel_Feature "2..2" -- "1..1" FeatureModel_FeatureConstraint : Features5
+FeatureModel_FeatureModel "1..1" *-- "1..1" FeatureModel_RootFeature : RootFeature0
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+class LineItem {
+  + price : float
+  + quantity : int
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : OrderStatus
+  + total : float
+}
+enum OrderStatus {
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Product {
+  + description : str
+  + name : str
+}
+class ShoppingCart {
+  + creationDate : date
+}
+class ShoppingCart1 {
+  + closed : date
+  + isClosed : bool
+  + itemCount : int
+  + totalPrice : int
+}
+enum UserState {
+}
+Order "0..9999" -- "1..1" ShoppingCart1 : Account_Order
+Payment "0..9999" -- "1..1" ShoppingCart1 : Account_Payment
+ShoppingCart "1..1" -- "1..1" ShoppingCart1 : Account_ShoppingCart
+LineItem "1..9999" -- "0..1" Order : Order_LineItem
+Order "1..1" -- "0..1" Payment : Payment_Order
+LineItem "0..9999" -- "1..1" Product : Product_LineItem
+LineItem "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+@enduml

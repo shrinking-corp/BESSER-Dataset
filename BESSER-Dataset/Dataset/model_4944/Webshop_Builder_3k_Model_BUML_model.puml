@@ -1,0 +1,128 @@
+@startuml
+enum Alignment {
+  left
+  right
+}
+class Component {
+}
+class User_input_field {
+}
+class webshop_builder_3k_model_Border {
+  + color : str
+  + thickness : int
+}
+class webshop_builder_3k_model_Branding {
+}
+class webshop_builder_3k_model_Checkbox {
+}
+abstract class webshop_builder_3k_model_Component {
+  + alignment : str
+  + height : int
+  + name : str
+  + width : int
+  + xposition : int
+  + yposition : int
+}
+class webshop_builder_3k_model_Component_group {
+}
+class webshop_builder_3k_model_Item {
+}
+class webshop_builder_3k_model_Item_to_KB_link {
+}
+class webshop_builder_3k_model_Knowledge_base {
+  + xml_file_uri : str
+}
+class webshop_builder_3k_model_Login_widget {
+}
+class webshop_builder_3k_model_Menu {
+}
+class webshop_builder_3k_model_Navigation_button {
+}
+class webshop_builder_3k_model_Navigation_to_Page_link {
+}
+class webshop_builder_3k_model_Newsletter_subscription_widget {
+}
+class webshop_builder_3k_model_Page {
+  + canvas_color : str
+  + height : int
+  + title : str
+  + width : int
+}
+class webshop_builder_3k_model_Picture {
+  + alternative_text : str
+  + source : str
+  + title : str
+}
+class webshop_builder_3k_model_Radio_button {
+}
+class webshop_builder_3k_model_Result_list {
+  + distance_between_items : int
+  + number_of_items_per_page : int
+}
+class webshop_builder_3k_model_Reuse_component {
+  + xposition : int
+  + yposition : int
+}
+class webshop_builder_3k_model_Reuses_component_link {
+}
+class webshop_builder_3k_model_Search_widget {
+}
+class webshop_builder_3k_model_Shopping_cart_button {
+}
+class webshop_builder_3k_model_Slideshow {
+}
+class webshop_builder_3k_model_Social_button {
+}
+class webshop_builder_3k_model_Source_code {
+}
+class webshop_builder_3k_model_Style {
+  + background_color : str
+}
+class webshop_builder_3k_model_Text_field {
+  + header_level : int
+  + text : str
+}
+class webshop_builder_3k_model_Text_input_field {
+}
+class webshop_builder_3k_model_User_input_field {
+  + label : str
+}
+class webshop_builder_3k_model_Webshop_builder_3k {
+  + company_name : str
+}
+Component <|-- webshop_builder_3k_model_Branding
+Component <|-- webshop_builder_3k_model_Item
+Component <|-- webshop_builder_3k_model_Navigation_button
+Component <|-- webshop_builder_3k_model_Picture
+Component <|-- webshop_builder_3k_model_Result_list
+Component <|-- webshop_builder_3k_model_Text_field
+User_input_field <|-- webshop_builder_3k_model_Checkbox
+User_input_field <|-- webshop_builder_3k_model_Radio_button
+User_input_field <|-- webshop_builder_3k_model_Text_input_field
+webshop_builder_3k_model_Navigation_button "1..1" -- "1..1" webshop_builder_3k_model_Navigation_to_Page_link : Source45
+webshop_builder_3k_model_Border "0..1" --* "1..1" webshop_builder_3k_model_Style : border49
+webshop_builder_3k_model_Branding "1..1" *-- "1..1" webshop_builder_3k_model_Picture : company_logo12
+webshop_builder_3k_model_Branding "1..1" *-- "1..1" webshop_builder_3k_model_Text_field : company_name11
+webshop_builder_3k_model_Component "1..9999" --* "1..1" webshop_builder_3k_model_Page : components0
+webshop_builder_3k_model_Component "0..9999" --* "1..1" webshop_builder_3k_model_Webshop_builder_3k : free_components19
+webshop_builder_3k_model_Page "1..1" -- "1..1" webshop_builder_3k_model_Webshop_builder_3k : index_page25
+webshop_builder_3k_model_Item "1..1" -- "1..1" webshop_builder_3k_model_Item_to_KB_link : item9
+webshop_builder_3k_model_Page "0..1" -- "1..1" webshop_builder_3k_model_Webshop_builder_3k : item_details_page28
+webshop_builder_3k_model_Item "1..1" *-- "1..1" webshop_builder_3k_model_Picture : item_picture31
+webshop_builder_3k_model_Item "1..1" *-- "1..1" webshop_builder_3k_model_Item_to_KB_link : kb_link36
+webshop_builder_3k_model_Item_to_KB_link "1..1" -- "1..1" webshop_builder_3k_model_Knowledge_base : knowledge_base10
+webshop_builder_3k_model_Knowledge_base "1..9999" --* "1..1" webshop_builder_3k_model_Webshop_builder_3k : knowledge_bases22
+webshop_builder_3k_model_Navigation_button "1..1" *-- "1..1" webshop_builder_3k_model_Navigation_to_Page_link : link39
+webshop_builder_3k_model_Reuse_component "1..1" *-- "1..1" webshop_builder_3k_model_Reuses_component_link : link5
+webshop_builder_3k_model_Page "1..9999" --* "1..1" webshop_builder_3k_model_Webshop_builder_3k : pages17
+webshop_builder_3k_model_Navigation_button "1..1" *-- "0..1" webshop_builder_3k_model_Picture : picture40
+webshop_builder_3k_model_Item "1..1" --* "1..1" webshop_builder_3k_model_Result_list : result_template37
+webshop_builder_3k_model_Page "1..1" *-- "0..9999" webshop_builder_3k_model_Reuse_component : reuse_components1
+webshop_builder_3k_model_Reuse_component "1..1" -- "1..1" webshop_builder_3k_model_Reuses_component_link : source14
+webshop_builder_3k_model_Page "1..1" *-- "0..1" webshop_builder_3k_model_Style : style3
+webshop_builder_3k_model_Component "1..1" *-- "0..1" webshop_builder_3k_model_Style : style6
+webshop_builder_3k_model_Component "1..1" -- "1..1" webshop_builder_3k_model_Reuses_component_link : target15
+webshop_builder_3k_model_Navigation_to_Page_link "1..1" -- "1..1" webshop_builder_3k_model_Page : target47
+webshop_builder_3k_model_Navigation_button "1..1" *-- "0..1" webshop_builder_3k_model_Text_field : text42
+webshop_builder_3k_model_Item "1..1" *-- "1..9999" webshop_builder_3k_model_Text_field : text_fields33
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+class Antrieb {
+  + aNTRIEBSART : str
+}
+class BenannteEinrichtung {
+  + name : str
+}
+class Deck {
+  + fahrtWunsch : bool
+  + sektion : str
+}
+class Kabine {
+  + tuerZustand : bool
+}
+class Steuerung {
+}
+class TurboliftSchacht {
+  + vertikal : bool
+}
+class TurboliftSystem {
+  + alarmStufe : int
+}
+Antrieb "1..1" -- "1..1" TurboliftSchacht : TurboliftSchacht_Antrieb
+Kabine "1..1" -- "1..1" TurboliftSchacht : TurboliftSchacht_Kabine
+Steuerung "1..1" -- "1..1" TurboliftSystem : TurboliftSystem_Steuerung
+TurboliftSchacht "1..9999" -- "1..1" TurboliftSystem : besteht_aus
+Deck "1..1" -- "0..9999" Kabine : kennt
+Deck "0..9999" -- "0..9999" Kabine : kennt2
+Deck "1..9999" -- "0..9999" TurboliftSchacht : kennt3
+Steuerung "1..1" -- "1..9999" TurboliftSchacht : verwaltet
+@enduml

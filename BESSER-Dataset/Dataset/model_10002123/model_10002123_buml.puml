@@ -1,0 +1,86 @@
+@startuml
+class CentreHospitalier {
+  + descriptionCentre : str
+  + nomCentre : str
+  + numeroCentre : int
+}
+class Contact {
+  + id : int
+  + mail : str
+  + telephone : int
+}
+class Examen {
+  + dateProvisoir : str
+  + heure : str
+  + motif : str
+  + numeroExamen : int
+}
+class Laboratoire {
+  + id : int
+  + nom : str
+  + numero : str
+}
+class Medecin {
+  + dateNaissance : str
+  + nomMedecin : str
+  + prenomMedecin : str
+  + specialite : str
+}
+class Ordonance {
+  + date : str
+  + id : int
+}
+class Patient {
+  + agePatient : int
+  + lieuResidence : str
+  + nomPatient : str
+  + numeroPatien : int
+  + prenomPatien : str
+  + profession : str
+}
+class Personne {
+  + attribute : str
+  + id : int
+  + nom : str
+  + numero : str
+  + numeroMedecin : int
+  + prenom : str
+}
+class Produit {
+  + dose : str
+  + id : int
+  + nom : str
+  + posologie : str
+}
+class Programme {
+  + date : str
+  + heure : str
+  + numeroProgramme : str
+}
+class Rendez_vous {
+  + date : str
+  + id : int
+  + numero : str
+}
+class Rendez_vous_Laboratoire_Patient_external {
+}
+class Rendez_vous_Medecin_Patient_external {
+}
+class ResultatExamen {
+  + infoResultat : str
+  + numeroResultat : int
+}
+class Service {
+  + descriptionService : str
+  + nomService : str
+  + numeroService : int
+}
+Examen "0..1" -- "0..1" ResultatExamen : Examen_ResultatExamen
+Medecin "0..1" -- "0..1" Service : Medecin_Service
+Ordonance "0..1" -- "0..1" Produit : Ordonance_Produit
+Contact "0..9999" -- "1..1" Personne : Personne_Contact
+Examen "0..1" -- "0..1" Programme : Programme_Examen
+Examen "0..1" -- "0..1" Rendez_vous_Laboratoire_Patient_external : Rendez_vous_Laboratoire_Patient_Examen
+Ordonance "0..1" -- "0..1" Rendez_vous_Medecin_Patient_external : Rendez_vous_Medecin_Patient_Ordonance
+CentreHospitalier "1..1" -- "1..9999" Service : Service_CentreHospitalier
+@enduml

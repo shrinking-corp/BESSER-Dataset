@@ -1,0 +1,82 @@
+@startuml
+class Alias {
+}
+enum LibrarySourceType {
+  Folder
+  JavascriptFile
+  ZipFile
+}
+class TypeItem {
+}
+class basic_Alias {
+  + name : str
+  + rawName : str
+}
+class basic_CoreVersionDefault {
+  + coreLib : str
+  + facet : str
+  + version : str
+}
+class basic_Event {
+  + description : str
+  + name : str
+}
+class basic_ExecutionEnvironment {
+  + builtin : bool
+  + corePath : str
+  + coreType : str
+  + facet : str
+  + libraries : str
+  + name : str
+  + versions : str
+}
+class basic_ExtJSProject {
+  + name : str
+}
+class basic_Feature {
+}
+class basic_File {
+  + name : str
+  + addAlias(basic_name : str, basic_sourceEnd : str, basic_sourceStart : str, basic_type : str) : void
+  + cleanAliases() : void
+}
+class basic_Layout {
+}
+class basic_Library {
+  + builtin : bool
+  + name : str
+  + senchaTouchVersions : str
+  + versions : str
+}
+class basic_LibrarySource {
+  + exclusions : str
+  + inclusions : str
+  + path : str
+  + type : str
+}
+class basic_Parameter {
+  + description : str
+  + name : str
+  + type : str
+}
+class basic_Plugin {
+}
+abstract class basic_TypeItem {
+  + sourceEnd : int
+  + sourceStart : int
+  + typeName : str
+}
+class basic_Widget {
+}
+Alias <|-- basic_Feature
+Alias <|-- basic_Layout
+Alias <|-- basic_Plugin
+Alias <|-- basic_Widget
+TypeItem <|-- basic_Alias
+TypeItem <|-- basic_Event
+basic_Alias "0..9999" --* "1..1" basic_File : aliases1
+basic_ExtJSProject "1..1" *-- "0..9999" basic_File : files0
+basic_File "0..9999" --* "1..1" basic_LibrarySource : files5
+basic_Event "1..1" *-- "0..9999" basic_Parameter : parameters3
+basic_Library "1..1" *-- "0..9999" basic_LibrarySource : sources4
+@enduml

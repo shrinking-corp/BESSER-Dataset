@@ -1,0 +1,51 @@
+@startuml
+class NamedElement {
+}
+class hello122_Alias {
+  + id : str
+}
+class hello122_Base {
+}
+class hello122_Child {
+  + id : str
+}
+class hello122_Classoc {
+  + id : str
+}
+class hello122_Clazoc {
+}
+abstract class hello122_NamedElement {
+  + name : str
+}
+class hello122_RelatedTo {
+  + since : str
+}
+class hello122_Thing {
+  + id : int
+}
+class hello122_Third {
+  + id : str
+}
+class hello122_Top {
+  + id : str
+}
+NamedElement <|-- hello122_Clazoc
+NamedElement <|-- hello122_RelatedTo
+NamedElement <|-- hello122_Thing
+hello122_Alias "0..9999" --* "1..1" hello122_NamedElement : aliases14
+hello122_Base "0..1" -- "1..1" hello122_Classoc : base24
+hello122_Child "0..9999" --* "1..1" hello122_Top : childs36
+hello122_Base "1..1" *-- "0..9999" hello122_Classoc : classocs1
+hello122_Classoc "0..9999" --* "1..1" hello122_Thing : classocs9
+hello122_Base "1..1" *-- "0..9999" hello122_Clazoc : clazocs3
+hello122_Thing "1..1" *-- "0..9999" hello122_Third : foos7
+hello122_RelatedTo "1..1" -- "0..1" hello122_Thing : fromThing15
+hello122_Clazoc "1..1" -- "0..1" hello122_Third : fromThird33
+hello122_RelatedTo "0..9999" --* "1..1" hello122_Thing : relations12
+hello122_Classoc "1..1" -- "0..1" hello122_Thing : thing27
+hello122_Base "1..1" *-- "0..9999" hello122_Thing : things0
+hello122_Classoc "1..1" -- "0..1" hello122_Third : third21
+hello122_RelatedTo "1..1" -- "0..1" hello122_Thing : toThing18
+hello122_Clazoc "1..1" -- "0..1" hello122_Thing : toThing30
+hello122_Base "1..1" *-- "0..9999" hello122_Top : tops5
+@enduml

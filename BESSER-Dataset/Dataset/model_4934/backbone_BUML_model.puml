@@ -1,0 +1,61 @@
+@startuml
+enum CardinalityKind {
+  MANY
+  ONE
+}
+class NamedElement {
+}
+class backbone_Application {
+}
+class backbone_Attribute {
+  + cardinality : str
+  + defaultValue : str
+}
+class backbone_Collection {
+}
+class backbone_Model {
+}
+abstract class backbone_NamedElement {
+  + name : str
+}
+class backbone_Operation {
+}
+class backbone_Parameter {
+}
+class backbone_Reference {
+  + cardinality : str
+}
+class backbone_Router {
+}
+class backbone_RouterMapping {
+  + path : str
+}
+class backbone_View {
+}
+NamedElement <|-- backbone_Application
+NamedElement <|-- backbone_Attribute
+NamedElement <|-- backbone_Collection
+NamedElement <|-- backbone_Model
+NamedElement <|-- backbone_Operation
+NamedElement <|-- backbone_Parameter
+NamedElement <|-- backbone_Reference
+NamedElement <|-- backbone_Router
+NamedElement <|-- backbone_View
+backbone_Application "1..1" -- "1..1" backbone_Model : application12
+backbone_Application "1..1" -- "1..1" backbone_Collection : application20
+backbone_Application "1..1" -- "1..1" backbone_Router : application23
+backbone_Application "1..1" -- "1..1" backbone_View : application30
+backbone_Attribute "0..9999" --* "1..1" backbone_Model : attributes7
+backbone_Application "1..1" *-- "0..9999" backbone_Collection : collections1
+backbone_Router "1..1" *-- "0..9999" backbone_RouterMapping : mappings22
+backbone_Collection "1..1" -- "0..1" backbone_Model : model18
+backbone_Application "1..1" *-- "0..9999" backbone_Model : models0
+backbone_Model "1..1" *-- "0..9999" backbone_Operation : operations10
+backbone_Operation "0..9999" -- "1..1" backbone_View : operations27
+backbone_Operation "1..1" *-- "0..9999" backbone_Parameter : parameters16
+backbone_Model "1..1" *-- "0..9999" backbone_Reference : references8
+backbone_Application "1..1" *-- "1..1" backbone_Router : router3
+backbone_Model "1..1" -- "1..1" backbone_Reference : type13
+backbone_RouterMapping "1..1" -- "1..1" backbone_View : view25
+backbone_Application "1..1" *-- "0..9999" backbone_View : views5
+@enduml

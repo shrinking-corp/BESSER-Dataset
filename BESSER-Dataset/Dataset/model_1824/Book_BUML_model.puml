@@ -1,0 +1,109 @@
+@startuml
+class Action {
+}
+class Animation {
+}
+class Control {
+}
+class Node {
+}
+class Page {
+}
+abstract class book_Action {
+}
+abstract class book_Animation {
+  + autoReverse : bool
+  + delay : float
+  + duration : float
+  + repeat : int
+}
+class book_Book {
+  + author : str
+  + bookId : str
+  + description : str
+  + resolution : str
+  + title : str
+  + version : str
+}
+class book_Control {
+  + image : str
+  + sound : str
+}
+class book_Fade {
+  + fromValue : float
+  + toValue : float
+}
+class book_Group {
+}
+class book_ImageFlash {
+  + duration : int
+  + images : str
+}
+class book_JSAction {
+  + javaScript : str
+}
+class book_Label {
+  + font : str
+  + text : str
+}
+class book_Layer {
+  + visible : bool
+}
+class book_Media {
+  + autoPlay : bool
+  + duration : int
+  + repeat : int
+  + url : str
+}
+class book_Move {
+  + fromLocation : str
+  + toLocation : str
+}
+abstract class book_Node {
+  + background : str
+  + bounds : str
+  + enable : bool
+  + foreground : str
+  + opacity : float
+}
+class book_OpenPage {
+}
+class book_Page {
+  + name : str
+}
+class book_Rotation {
+  + fromAngle : float
+  + toAngle : float
+}
+class book_Shape {
+  + lineWidth : int
+  + points : str
+}
+class book_Splash {
+  + duration : int
+}
+Action <|-- book_Animation
+Action <|-- book_JSAction
+Action <|-- book_OpenPage
+Animation <|-- book_Fade
+Animation <|-- book_Move
+Animation <|-- book_Rotation
+Control <|-- book_Group
+Control <|-- book_ImageFlash
+Control <|-- book_Label
+Control <|-- book_Media
+Node <|-- book_Control
+Node <|-- book_Shape
+Page <|-- book_Splash
+book_Group "1..1" *-- "0..9999" book_Node : children15
+book_Control "0..1" --* "1..1" book_Layer : control8
+book_Animation "0..1" --* "1..1" book_ImageFlash : in_17
+book_Layer "0..9999" --* "1..1" book_Page : layers6
+book_Book "1..1" *-- "0..1" book_Page : main3
+book_Action "0..9999" --* "1..1" book_Control : onExposed10
+book_Action "0..9999" --* "1..1" book_Control : onTouched12
+book_Animation "0..1" --* "1..1" book_ImageFlash : out16
+book_OpenPage "1..1" -- "0..1" book_Page : page20
+book_Book "1..1" *-- "0..9999" book_Page : pages0
+book_Book "1..1" *-- "0..1" book_Splash : splash1
+@enduml

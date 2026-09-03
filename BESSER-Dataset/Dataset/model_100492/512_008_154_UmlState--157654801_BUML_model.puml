@@ -1,0 +1,38 @@
+@startuml
+enum BehaviorKind {
+  ACTIVITY
+  OPAQUE_BEHAVIOR
+  STATE_MACHINE
+}
+class umlState_DoRule {
+  + behaviorName : str
+  + kind : str
+}
+class umlState_EntryRule {
+  + behaviorName : str
+  + kind : str
+}
+class umlState_ExitRule {
+  + behaviorName : str
+  + kind : str
+}
+class umlState_Namespace {
+}
+class umlState_QualifiedName {
+}
+class umlState_StateMachine {
+}
+class umlState_StateRule {
+  + name : str
+}
+class umlState_SubmachineRule {
+}
+umlState_DoRule "0..1" --* "1..1" umlState_StateRule : do3
+umlState_EntryRule "0..1" --* "1..1" umlState_StateRule : entry1
+umlState_ExitRule "0..1" --* "1..1" umlState_StateRule : exit5
+umlState_Namespace "0..1" -- "1..1" umlState_QualifiedName : path11
+umlState_QualifiedName "0..1" --* "1..1" umlState_SubmachineRule : path7
+umlState_QualifiedName "0..1" --* "1..1" umlState_QualifiedName : remaining14
+umlState_StateRule "1..1" *-- "0..1" umlState_SubmachineRule : submachine0
+umlState_StateMachine "0..1" -- "1..1" umlState_SubmachineRule : submachine9
+@enduml

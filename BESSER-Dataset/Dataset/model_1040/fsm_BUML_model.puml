@@ -1,0 +1,145 @@
+@startuml
+class AbstractState {
+}
+class Expression {
+}
+class Literal {
+}
+class Pseudostate {
+}
+class State {
+}
+class Statement {
+}
+class Trigger {
+}
+abstract class fsm_AbstractState {
+}
+class fsm_AndTrigger {
+}
+class fsm_ArithmeticExpression {
+}
+class fsm_Assignation {
+}
+class fsm_Block {
+}
+class fsm_Boolean {
+}
+class fsm_Condition {
+}
+class fsm_Conditional {
+}
+class fsm_Constraint {
+}
+class fsm_Context {
+}
+class fsm_DeepHistory {
+}
+abstract class fsm_Expression {
+}
+class fsm_FinalState {
+}
+class fsm_Fork {
+}
+class fsm_InitialState {
+}
+class fsm_Integer {
+}
+class fsm_Join {
+}
+class fsm_Junction {
+}
+abstract class fsm_Literal {
+}
+class fsm_Loop {
+}
+class fsm_NotTrigger {
+}
+class fsm_OrTrigger {
+}
+abstract class fsm_Pseudostate {
+}
+class fsm_Real {
+}
+class fsm_Region {
+}
+class fsm_RelationalExpression {
+}
+class fsm_ShallowHistory {
+}
+class fsm_State {
+}
+class fsm_StateMachine {
+}
+abstract class fsm_Statement {
+}
+class fsm_String {
+}
+class fsm_Transition {
+}
+class fsm_Trigger {
+  + expression : str
+}
+class fsm_VarDecl {
+}
+class fsm_VarRef {
+  + varId : str
+}
+AbstractState <|-- fsm_Pseudostate
+AbstractState <|-- fsm_State
+Expression <|-- fsm_ArithmeticExpression
+Expression <|-- fsm_Literal
+Expression <|-- fsm_RelationalExpression
+Literal <|-- fsm_Boolean
+Literal <|-- fsm_Integer
+Literal <|-- fsm_Real
+Literal <|-- fsm_String
+Literal <|-- fsm_VarRef
+Pseudostate <|-- fsm_Condition
+Pseudostate <|-- fsm_DeepHistory
+Pseudostate <|-- fsm_Fork
+Pseudostate <|-- fsm_InitialState
+Pseudostate <|-- fsm_Join
+Pseudostate <|-- fsm_Junction
+Pseudostate <|-- fsm_ShallowHistory
+State <|-- fsm_FinalState
+Statement <|-- fsm_Assignation
+Statement <|-- fsm_Block
+Statement <|-- fsm_Conditional
+Statement <|-- fsm_Loop
+Statement <|-- fsm_VarDecl
+Trigger <|-- fsm_AndTrigger
+Trigger <|-- fsm_NotTrigger
+Trigger <|-- fsm_OrTrigger
+fsm_Block "0..1" --* "1..1" fsm_Loop : body39
+fsm_Block "0..1" --* "1..1" fsm_Conditional : body43
+fsm_Constraint "1..1" *-- "0..1" fsm_Context : context34
+fsm_Block "0..1" --* "1..1" fsm_State : doActivity9
+fsm_Statement "0..9999" --* "1..1" fsm_Transition : effect18
+fsm_Expression "1..1" --* "1..1" fsm_VarDecl : expr48
+fsm_Assignation "1..1" *-- "1..1" fsm_Expression : expr50
+fsm_Constraint "1..1" --* "1..1" fsm_Transition : guard20
+fsm_Expression "1..1" --* "1..1" fsm_Loop : guard41
+fsm_Conditional "1..1" *-- "1..1" fsm_Expression : guard45
+fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : incoming5
+fsm_AndTrigger "1..1" -- "1..1" fsm_Trigger : left24
+fsm_OrTrigger "1..1" -- "1..1" fsm_Trigger : left29
+fsm_Expression "1..1" --* "1..1" fsm_RelationalExpression : left52
+fsm_ArithmeticExpression "1..1" *-- "1..1" fsm_Expression : left57
+fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : outgoing6
+fsm_Region "0..9999" --* "1..1" fsm_State : ownedRegions10
+fsm_AbstractState "1..1" -- "1..1" fsm_Region : region8
+fsm_Region "0..9999" --* "1..1" fsm_StateMachine : regions0
+fsm_AndTrigger "1..1" -- "1..1" fsm_Trigger : right26
+fsm_OrTrigger "1..1" -- "1..1" fsm_Trigger : right31
+fsm_Expression "1..1" --* "1..1" fsm_RelationalExpression : right54
+fsm_ArithmeticExpression "1..1" *-- "1..1" fsm_Expression : right59
+fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source16
+fsm_Region "1..1" -- "0..1" fsm_State : stateMachine4
+fsm_Block "1..1" *-- "0..9999" fsm_Statement : statements36
+fsm_AbstractState "0..9999" --* "1..1" fsm_Region : subvertex1
+fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target14
+fsm_Region "1..1" *-- "0..9999" fsm_Transition : transitions2
+fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger12
+fsm_NotTrigger "1..1" -- "1..1" fsm_Trigger : trigger22
+@enduml

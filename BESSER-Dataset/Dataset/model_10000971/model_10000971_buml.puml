@@ -1,0 +1,71 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Camera {
+  + CameraID : int
+}
+class Class {
+}
+class Door {
+  + DoorID : int
+}
+class Entertainment {
+  + DeviceID : int
+}
+class FireAlarm_Sensor {
+  + DispenseSprinkler : bool
+  + SmokeAlarm : bool
+}
+class HomeTheatre {
+  + HTID : str
+}
+class Home_Security_System {
+  + UserID : int
+}
+class HouseHolds {
+  + Alarm : str
+  + Coffee : str
+  + DishWasher : str
+  + TimeID : str
+  + WashingMachine : str
+}
+class Light {
+  + LightID : str
+}
+class Motion_Sensor {
+}
+class PressureSensor {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Speakers {
+  + SpeakerID : int
+}
+class Symbol_Meaning {
+  + ____ : str
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+class TV {
+  + TVID : int
+}
+class _unnamed {
+}
+Camera "0..9999" -- "1..1" Door : Door_Camera
+Entertainment "1..1" -- "1..9999" HomeTheatre : HomeTheatre_Entertainment
+HomeTheatre "1..9999" -- "0..1" Speakers : HomeTheatre_Speakers
+HomeTheatre "0..1" -- "1..1" System : HomeTheatre_System
+HomeTheatre "1..9999" -- "1..1" TV : HomeTheatre_TV
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" System : Home_Security_System_System
+Door "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" System : Sensor_System
+Entertainment "1..1" -- "1..9999" Speakers : Speakers_Entertainment
+HouseHolds "0..1" -- "1..1" System : System_HouseHolds
+Entertainment "1..1" -- "1..9999" TV : TV_Entertainment
+@enduml

@@ -1,0 +1,121 @@
+@startuml
+class Operator {
+}
+class QueryVariableQualifier {
+}
+class Referrable {
+}
+class Result {
+}
+class Variable {
+}
+class operators_ASSIGN {
+  + value : str
+  + execute() : void
+}
+class operators_CREATE {
+  + execute() : void
+}
+class operators_DELETE {
+  + execute() : void
+}
+class operators_EAttribute {
+}
+class operators_EClass {
+}
+class operators_EObject {
+}
+class operators_EObjectReference {
+}
+class operators_EOperation {
+}
+class operators_EOperationQualifier {
+}
+class operators_EReference {
+}
+class operators_EReferenceQualifier {
+}
+class operators_EStructuralFeature {
+}
+class operators_MERGE {
+}
+class operators_MOVE {
+  + execute() : void
+}
+abstract class operators_Operator {
+  + executed : bool
+  + execute() : void
+}
+class operators_PrimitiveReference {
+  + value : str
+}
+class operators_QueryVariable {
+}
+abstract class operators_QueryVariableQualifier {
+}
+abstract class operators_Referrable {
+}
+abstract class operators_Result {
+}
+class operators_SET {
+  + execute() : void
+}
+class operators_SPLIT {
+}
+class operators_StructuralFeatureSet {
+}
+class operators_TypeVariable {
+}
+class operators_VAR {
+  + execute() : void
+}
+abstract class operators_Variable {
+  + name : str
+}
+class operators_VariableReference {
+}
+Operator <|-- operators_ASSIGN
+Operator <|-- operators_CREATE
+Operator <|-- operators_DELETE
+Operator <|-- operators_MERGE
+Operator <|-- operators_MOVE
+Operator <|-- operators_SET
+Operator <|-- operators_SPLIT
+Operator <|-- operators_VAR
+QueryVariableQualifier <|-- operators_EOperationQualifier
+QueryVariableQualifier <|-- operators_EReferenceQualifier
+Referrable <|-- operators_EObjectReference
+Referrable <|-- operators_VariableReference
+Result <|-- operators_EObjectReference
+Result <|-- operators_PrimitiveReference
+Variable <|-- operators_QueryVariable
+Variable <|-- operators_TypeVariable
+operators_ASSIGN "1..1" -- "1..1" operators_EAttribute : attribute12
+operators_ASSIGN "1..1" *-- "1..1" operators_Referrable : attributeOwner13
+operators_DELETE "1..1" *-- "1..1" operators_Referrable : deletion10
+operators_EObject "1..9999" -- "1..1" operators_EObjectReference : elements16
+operators_EObject "1..1" -- "1..1" operators_TypeVariable : instance8
+operators_MERGE "1..1" *-- "2..9999" operators_Referrable : mergeObjects41
+operators_MOVE "1..1" *-- "1..1" operators_Referrable : movee32
+operators_CREATE "1..1" *-- "1..1" operators_TypeVariable : newInstanceVariable1
+operators_MOVE "1..1" *-- "1..1" operators_Referrable : newParent27
+operators_EOperation "1..1" -- "1..1" operators_EOperationQualifier : operation52
+operators_CREATE "1..1" *-- "1..1" operators_Referrable : parent2
+operators_CREATE "1..1" -- "1..1" operators_EReference : parentCompositeReference4
+operators_EReference "1..1" -- "1..1" operators_MOVE : parentReference29
+operators_QueryVariable "1..1" *-- "1..1" operators_QueryVariableQualifier : qualifier50
+operators_QueryVariable "1..1" *-- "1..1" operators_Referrable : queryObject44
+operators_QueryVariable "1..1" -- "1..1" operators_Result : queryResult47
+operators_EReference "1..1" -- "1..1" operators_SET : reference18
+operators_EReference "1..1" -- "1..1" operators_EReferenceQualifier : reference53
+operators_Referrable "1..1" --* "1..1" operators_SET : referenceOwner23
+operators_Variable "1..1" -- "1..1" operators_VariableReference : referencedVariable26
+operators_Operator "1..1" *-- "0..1" operators_Result : result0
+operators_Referrable "1..1" --* "1..1" operators_SPLIT : splitObject36
+operators_SPLIT "1..1" *-- "1..9999" operators_StructuralFeatureSet : splitSets35
+operators_EStructuralFeature "1..9999" -- "1..1" operators_StructuralFeatureSet : structuralFeatures39
+operators_EClass "1..1" -- "1..1" operators_TypeVariable : type6
+operators_Referrable "1..1" --* "1..1" operators_SET : value20
+operators_QueryVariable "1..1" --* "1..1" operators_VAR : variable43
+operators_QueryVariable "1..1" -- "1..1" operators_QueryVariableQualifier : variable51
+@enduml

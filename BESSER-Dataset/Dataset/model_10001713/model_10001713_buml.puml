@@ -1,0 +1,87 @@
+@startuml
+class Card {
+  + cardNumber : int
+  + cardSN : int
+  + cardholderName : str
+  + isCredit : bool
+  + isDebit : bool
+}
+class CardReader {
+  + attribute : str
+}
+class Drink {
+  + name : str
+  + price : str
+  + quantity : int
+}
+class Food {
+  + attribute : str
+  + name : str
+  + price : str
+  + quantity : int
+}
+class Manager {
+  + name : str
+  + password : str
+}
+class Menu {
+  + _attr : str
+}
+class Order {
+  + customer : str
+  + drinkName : str
+  + drinkPrice : int
+  + foodName : str
+  + foodPrice : int
+}
+class Payment {
+  + amount : str
+}
+class Product {
+  + description : str
+  + itemID : int
+  + name : str
+  + price : str
+}
+class Register {
+  + attribute : str
+}
+class SUID {
+  + ID : int
+  + studentName : str
+  + suFOODBal : str
+}
+class Sale {
+  + Date : str
+  + Time : str
+  + isComplete : bool
+}
+class Sales_Line_Item {
+  + Quantity : int
+}
+class Store {
+  + Address : str
+  + Name : str
+}
+class customerDatabase {
+  + SUID : int
+  + creditCardNum : int
+  + customerName : str
+  + paymentHistory : str
+}
+Manager "0..1" -- "0..1" Menu : Manager_Menu
+Menu "1..1" -- "1..9999" Product : Menu_Product
+Order "1..1" -- "1..1" Payment : Payment_Order
+Product "1..1" -- "1..1" Sales_Line_Item : Product_Sales_Line_Item
+Register "1..1" -- "1..1" Sale : Register_Sale
+Register "1..1" -- "1..1" Store : Register_Store
+Card "0..1" -- "0..9999" SUID : SUID_Card
+Payment "0..1" -- "0..9999" SUID : SUID_Payment
+CardReader "1..1" -- "1..1" Sale : Sale_CardReader
+Payment "1..1" -- "1..1" Sale : Sale_Payment
+Sale "1..1" -- "1..9999" Sales_Line_Item : Sale_Sales_Line_Item
+Drink "0..9999" -- "1..1" Sales_Line_Item : Sales_Line_Item_Drink
+Food "0..9999" -- "1..1" Sales_Line_Item : Sales_Line_Item_Food
+Menu "1..1" -- "1..1" Store : Store_Menu
+Card "1..9999" -- "0..1" customerDatabase : customerDatabase_Card
+@enduml

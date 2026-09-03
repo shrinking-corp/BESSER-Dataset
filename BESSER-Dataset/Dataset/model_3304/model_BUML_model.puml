@@ -1,0 +1,50 @@
+@startuml
+class Decorator {
+}
+class Identifiable {
+}
+abstract class model_Comparable {
+}
+class model_Decorator {
+  + enabled : bool
+  + graphDecorated : bool
+  + progress : float
+  + decorateGraph(model_time : str) : bool
+  + getLabelsToUpdate(model_max : str, model_partition : str) : void
+  + prepare(model_model : str, model_time : str) : void
+  + resetLabels() : void
+  + updateLabels(model_cycle : str, model_time : str, model_timerPeriod : str) : void
+}
+class model_DynamicLabel {
+}
+class model_EdgeDecorator {
+}
+class model_Graph {
+}
+class model_GraphDecorator {
+}
+class model_Model {
+  + getCanonicalGraph(model_filter : str, model_time : str, model_uri : str) : str
+  + prepare(model_time : str) : void
+}
+class model_NodeDecorator {
+}
+class model_STEMTime {
+  + time : date
+  + addIncrement(model_timeIncrement : str) : str
+  + equals(model_obj : str) : bool
+  + hashCode() : int
+}
+Decorator <|-- model_EdgeDecorator
+Decorator <|-- model_GraphDecorator
+Decorator <|-- model_NodeDecorator
+Identifiable <|-- model_Decorator
+Identifiable <|-- model_Model
+model_EdgeDecorator "0..9999" -- "1..1" model_Model : edgeDecorators10
+model_Decorator "1..1" -- "0..1" model_Graph : graph1
+model_GraphDecorator "0..9999" -- "1..1" model_Model : graphDecorators6
+model_Graph "0..9999" -- "1..1" model_Model : graphs4
+model_Decorator "1..1" -- "0..9999" model_DynamicLabel : labelsToUpdate0
+model_Model "1..1" -- "0..9999" model_Model : models3
+model_Model "1..1" -- "0..9999" model_NodeDecorator : nodeDecorators8
+@enduml

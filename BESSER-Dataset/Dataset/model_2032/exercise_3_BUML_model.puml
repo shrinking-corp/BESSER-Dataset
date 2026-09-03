@@ -1,0 +1,55 @@
+@startuml
+class MySM_Action {
+  + name : str
+}
+class MySM_ComplexSate {
+}
+class MySM_LabeledTransition {
+}
+class MySM_Pseudostate {
+  + kind : str
+  + psId : str
+}
+class MySM_Region {
+  + name : str
+}
+class MySM_State {
+  + name : str
+}
+class MySM_Statemachine {
+}
+class MySM_Transition {
+  + tId : str
+}
+class MySM_Vertex {
+}
+enum Pseudokind {
+  DeepHistory
+  End
+  Exit
+  Initial
+  ShallowHistory
+}
+class Region {
+}
+class State {
+}
+class Transition {
+}
+class Vertex {
+}
+Region <|-- MySM_Statemachine
+State <|-- MySM_ComplexSate
+Transition <|-- MySM_LabeledTransition
+Vertex <|-- MySM_Pseudostate
+Vertex <|-- MySM_State
+MySM_Action "1..1" -- "1..1" MySM_LabeledTransition : action16
+MySM_Action "1..9999" --* "1..1" MySM_Statemachine : actions1
+MySM_Pseudostate "1..1" --* "1..1" MySM_Region : initial4
+MySM_Transition "1..9999" -- "1..1" MySM_Vertex : outgoings6
+MySM_ComplexSate "1..1" *-- "1..9999" MySM_Region : region8
+MySM_Transition "1..1" -- "1..1" MySM_Vertex : source10
+MySM_Region "1..1" *-- "1..9999" MySM_State : states3
+MySM_Transition "1..1" -- "1..1" MySM_Vertex : target13
+MySM_Statemachine "1..1" *-- "1..9999" MySM_Transition : transitions0
+@enduml

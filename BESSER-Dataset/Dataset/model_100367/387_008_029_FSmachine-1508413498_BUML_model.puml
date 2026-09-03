@@ -1,0 +1,39 @@
+@startuml
+class AbstractConection {
+}
+class AbstractObject {
+}
+class FSmachine_AbstractConection {
+  + name : str
+}
+class FSmachine_AbstractObject {
+  + active : bool
+  + name : str
+  + checkStatussen() : bool
+  + makeMeActive() : void
+}
+class FSmachine_ReasonConnection {
+  + reason : str
+}
+class FSmachine_Root {
+  + FSmachineName : str
+}
+class FSmachine_State {
+  + data : str
+  + description : str
+}
+class FSmachine_TimeConnection {
+  + when : str
+}
+AbstractConection <|-- FSmachine_ReasonConnection
+AbstractConection <|-- FSmachine_TimeConnection
+AbstractObject <|-- FSmachine_State
+FSmachine_AbstractConection "0..1" -- "1..1" FSmachine_AbstractObject : conChild3
+FSmachine_AbstractConection "0..1" --* "1..1" FSmachine_AbstractObject : conParent5
+FSmachine_AbstractConection "0..9999" --* "1..1" FSmachine_Root : connections1
+FSmachine_AbstractConection "1..1" *-- "0..1" FSmachine_AbstractObject : next9
+FSmachine_AbstractObject "0..9999" --* "1..1" FSmachine_Root : objects0
+FSmachine_AbstractConection "1..1" -- "0..1" FSmachine_Root : par7
+FSmachine_AbstractObject "1..1" -- "0..1" FSmachine_Root : parent2
+FSmachine_AbstractConection "1..1" -- "0..1" FSmachine_AbstractObject : prev11
+@enduml

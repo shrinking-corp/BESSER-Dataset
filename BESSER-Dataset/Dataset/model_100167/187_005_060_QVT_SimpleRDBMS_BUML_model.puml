@@ -1,0 +1,48 @@
+@startuml
+class Column {
+}
+class ForeignKey {
+}
+class Key {
+}
+class RModelElement {
+}
+class Schema {
+}
+class SimpleRDBMS_Column {
+  + type : str
+}
+class SimpleRDBMS_ForeignKey {
+}
+class SimpleRDBMS_Key {
+}
+abstract class SimpleRDBMS_RModelElement {
+  + kind : str
+  + name : str
+}
+class SimpleRDBMS_Schema {
+}
+class SimpleRDBMS_Table {
+}
+class Table {
+}
+RModelElement <|-- SimpleRDBMS_Column
+RModelElement <|-- SimpleRDBMS_ForeignKey
+RModelElement <|-- SimpleRDBMS_Key
+RModelElement <|-- SimpleRDBMS_Schema
+RModelElement <|-- SimpleRDBMS_Table
+Column "0..9999" -- "1..1" SimpleRDBMS_Key : column17
+Column "0..9999" --* "1..1" SimpleRDBMS_Table : column2
+Column "0..9999" -- "1..1" SimpleRDBMS_ForeignKey : column22
+ForeignKey "0..9999" -- "1..1" SimpleRDBMS_Column : foreignKey12
+ForeignKey "0..9999" --* "1..1" SimpleRDBMS_Table : foreignKey5
+Key "0..9999" --* "1..1" SimpleRDBMS_Table : key3
+Key "0..9999" -- "1..1" SimpleRDBMS_Column : key9
+SimpleRDBMS_Key "1..1" -- "1..1" Table : owner15
+SimpleRDBMS_ForeignKey "1..1" -- "1..1" Table : owner24
+SimpleRDBMS_Column "1..1" -- "1..1" Table : owner7
+Key "1..1" -- "1..1" SimpleRDBMS_ForeignKey : refersTo27
+ForeignKey "0..9999" -- "1..1" SimpleRDBMS_Key : refersToOpposite20
+Schema "1..1" -- "1..1" SimpleRDBMS_Table : schema1
+SimpleRDBMS_Schema "1..1" *-- "0..9999" Table : tables0
+@enduml

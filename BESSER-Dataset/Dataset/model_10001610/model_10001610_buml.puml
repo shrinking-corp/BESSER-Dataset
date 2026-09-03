@@ -1,0 +1,70 @@
+@startuml
+class CrudRepository_Interface {
+}
+enum Int {
+}
+class Integer_Interface {
+}
+class UserAccount {
+}
+class UserProfileRequestCreate {
+}
+class account_UserAccount {
+  + alias : str
+  + createdAt : str
+  + email : str
+  + gamesPlayed : str
+  + gamesWon : str
+  + id : str
+  + password : str
+}
+class account_UserAccountController {
+  + URL : str
+  + userAccountRepository : account_UserAccountRepository_Interface
+}
+class account_UserAccountPasswordChange {
+  + email : str
+  + newPassword : str
+  + oldPassword : str
+}
+class account_UserAccountPublicInfo {
+  + alias : str
+  + gamesPlayed : str
+  + gamesWon : str
+  + id : str
+}
+class account_UserAccountRepository_Interface {
+}
+class game_Ace {
+}
+class game_Card {
+  + name : str
+  + suit : str
+}
+abstract class game_Deck {
+  + cards : str
+}
+class game_GameController {
+}
+class game_Pack {
+}
+class profile_UserProfile {
+  + attribute : str
+  + credits : str
+  + id : str
+  + name : str
+  + uid : str
+}
+class profile_UserProfileController {
+  + URL : str
+  + attribute : str
+  + userAccountRepository : account_UserAccountRepository_Interface
+  + userProfileRepository : profile_UserProfileRepository_Interface
+}
+class profile_UserProfileRepository_Interface {
+}
+game_Card "52..52" -- "0..1" game_Deck : Card_Deck
+account_UserAccountController "0..1" -- "0..1" account_UserAccountPublicInfo : UserAccountPublicInfo_UserAccountController
+account_UserAccountController "0..1" -- "0..1" account_UserAccountRepository_Interface : UserAccountRepository_UserAccountController
+account_UserAccount "0..1" -- "0..1" account_UserAccountController : UserAccount_UserAccountController
+@enduml

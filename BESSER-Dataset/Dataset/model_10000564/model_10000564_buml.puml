@@ -1,0 +1,82 @@
+@startuml
+class Ask_Player_to_Cut_Deck_UseCase {
+}
+class Blackjack {
+  + croupier : Croupier
+  + joueurs : str
+}
+class Call_for_Last_Bets_UseCase {
+}
+class Card {
+  + rank : str
+  + suit : int
+}
+class Croupier {
+  + main : str
+}
+class Cut_Deck_UseCase {
+}
+class Deal_UseCase {
+}
+class Dealer__automated__Actor {
+}
+class Double_Down_UseCase {
+}
+class Hit_UseCase {
+}
+class Hit_UseCase1 {
+}
+class Joueur {
+  + main : str
+  + nom : str
+  + playerbank : int
+}
+class Leave_Table_UseCase {
+}
+class Main {
+  + bet : str
+  + cartes : str
+  + value : int
+}
+class Pay_Chips_UseCase {
+}
+class Place_Bet_UseCase {
+}
+class Player_Actor {
+}
+class Reveal_Last_Card_UseCase {
+}
+class Shuffle_Shoe_UseCase {
+}
+class Sit_at_Table_UseCase {
+}
+class Split_Hand_UseCase {
+}
+class Stand_UseCase {
+}
+class Stand_UseCase1 {
+}
+class Take_Chips_UseCase {
+}
+Blackjack "1..1" -- "1..1" Croupier : Blackjack_Dealer
+Blackjack "1..1" -- "1..9999" Joueur : Blackjack_Player
+Card "1..9999" -- "1..1" Main : Card_Hand
+Croupier "1..1" -- "1..1" Main : Dealer_Hand
+Ask_Player_to_Cut_Deck_UseCase "0..1" -- "0..1" Dealer__automated__Actor : Dealer__automated__Ask_Player_to_Cut_Deck
+Call_for_Last_Bets_UseCase "0..1" -- "0..1" Dealer__automated__Actor : Dealer__automated__Call_for_Last_Bets
+Deal_UseCase "0..1" -- "0..1" Dealer__automated__Actor : Dealer__automated__Deal
+Dealer__automated__Actor "0..1" -- "0..1" Hit_UseCase1 : Dealer__automated__Hit
+Dealer__automated__Actor "0..1" -- "0..1" Pay_Chips_UseCase : Dealer__automated__Pay_Chips
+Dealer__automated__Actor "0..1" -- "0..1" Reveal_Last_Card_UseCase : Dealer__automated__Reveal_Last_Card
+Dealer__automated__Actor "0..1" -- "0..1" Shuffle_Shoe_UseCase : Dealer__automated__Shuffle_Shoe
+Dealer__automated__Actor "0..1" -- "0..1" Stand_UseCase1 : Dealer__automated__Stand
+Dealer__automated__Actor "0..1" -- "0..1" Take_Chips_UseCase : Dealer__automated__Take_Chips
+Cut_Deck_UseCase "0..1" -- "0..1" Player_Actor : Player_Cut_Deck
+Double_Down_UseCase "0..1" -- "0..1" Player_Actor : Player_Double_Down
+Joueur "1..1" -- "1..9999" Main : Player_Hand
+Hit_UseCase "0..1" -- "0..1" Player_Actor : Player_Hit
+Place_Bet_UseCase "0..1" -- "0..1" Player_Actor : Player_Place_Bet
+Player_Actor "0..1" -- "0..1" Sit_at_Table_UseCase : Player_Sit_at_Table
+Player_Actor "0..1" -- "0..1" Split_Hand_UseCase : Player_Split_Hand
+Player_Actor "0..1" -- "0..1" Stand_UseCase : Player_Stand
+@enduml

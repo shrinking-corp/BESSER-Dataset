@@ -1,0 +1,49 @@
+@startuml
+class AbstractRepresentation {
+}
+class Representation {
+}
+abstract class expansionmodel_AbstractRepresentation {
+  + editPartQualifiedName : str
+  + name : str
+  + viewFactory : str
+  + validate(expansionmodel_context : str, expansionmodel_diagnostic : str) : bool
+}
+class expansionmodel_DiagramExpansion {
+  + ID : str
+}
+class expansionmodel_GMFT_BasedRepresentation {
+  + reusedID : str
+}
+class expansionmodel_GraphicalElementLibrary {
+  + name : str
+}
+class expansionmodel_InducedRepresentation {
+  + hint : str
+}
+class expansionmodel_Representation {
+  + graphicalElementType : str
+}
+class expansionmodel_RepresentationKind {
+  + editPartQualifiedName : str
+  + name : str
+  + viewFactory : str
+}
+class expansionmodel_UseContext {
+  + diagramType : str
+  + name : str
+}
+AbstractRepresentation <|-- expansionmodel_InducedRepresentation
+AbstractRepresentation <|-- expansionmodel_Representation
+Representation <|-- expansionmodel_GMFT_BasedRepresentation
+expansionmodel_InducedRepresentation "1..1" -- "0..9999" expansionmodel_Representation : children5
+expansionmodel_GMFT_BasedRepresentation "0..9999" --* "1..1" expansionmodel_UseContext : gmftRepresentations15
+expansionmodel_InducedRepresentation "0..9999" -- "1..1" expansionmodel_Representation : inducedRepresentations0
+expansionmodel_AbstractRepresentation "1..1" -- "0..1" expansionmodel_RepresentationKind : kind4
+expansionmodel_DiagramExpansion "1..1" *-- "0..9999" expansionmodel_GraphicalElementLibrary : libraries19
+expansionmodel_GraphicalElementLibrary "1..1" *-- "0..9999" expansionmodel_RepresentationKind : representationkinds8
+expansionmodel_AbstractRepresentation "0..9999" --* "1..1" expansionmodel_GraphicalElementLibrary : representations10
+expansionmodel_Representation "1..9999" -- "1..1" expansionmodel_UseContext : representations13
+expansionmodel_Representation "0..9999" -- "1..1" expansionmodel_Representation : subRepresentations2
+expansionmodel_DiagramExpansion "1..1" *-- "0..9999" expansionmodel_UseContext : usages17
+@enduml

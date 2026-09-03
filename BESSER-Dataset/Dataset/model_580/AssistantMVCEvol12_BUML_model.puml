@@ -1,0 +1,79 @@
+@startuml
+abstract class AssistantMVC_Controller {
+}
+class AssistantMVC_Exam {
+}
+class AssistantMVC_ExamController {
+}
+abstract class AssistantMVC_ExamItem {
+  + question : str
+}
+abstract class AssistantMVC_ExamItemController {
+}
+class AssistantMVC_ExamItemView {
+}
+class AssistantMVC_ExamView {
+}
+class AssistantMVC_MultipleChoice {
+  + numberOfChoices : int
+  + optional : bool
+  + selectionWay : str
+}
+class AssistantMVC_MultipleChoiceController {
+  + numberOfChoices : int
+  + selectionWay : str
+}
+class AssistantMVC_MultipleChoiceView {
+  + numberOfChoices : int
+  + selectionWay : str
+}
+class AssistantMVC_Observable {
+}
+class AssistantMVC_Observer {
+}
+class AssistantMVC_Open {
+}
+class AssistantMVC_OpenController {
+}
+class AssistantMVC_OpenView {
+}
+abstract class AssistantMVC_View {
+  + fontColor : str
+  + fontName : str
+}
+class Controller {
+}
+class ExamItem {
+}
+class ExamItemController {
+}
+class ExamItemView {
+}
+class ExamView {
+}
+class Observable {
+}
+class Observer {
+}
+class View {
+}
+Controller <|-- AssistantMVC_ExamController
+Controller <|-- AssistantMVC_ExamItemController
+ExamItem <|-- AssistantMVC_MultipleChoice
+ExamItem <|-- AssistantMVC_Open
+ExamItemController <|-- AssistantMVC_MultipleChoiceController
+ExamItemController <|-- AssistantMVC_OpenController
+ExamItemView <|-- AssistantMVC_MultipleChoiceView
+ExamView <|-- AssistantMVC_OpenView
+Observable <|-- AssistantMVC_Exam
+Observable <|-- AssistantMVC_ExamItem
+Observer <|-- AssistantMVC_Controller
+Observer <|-- AssistantMVC_View
+View <|-- AssistantMVC_ExamItemView
+View <|-- AssistantMVC_ExamView
+AssistantMVC_Controller "0..1" -- "1..1" AssistantMVC_View : controller6
+AssistantMVC_Controller "0..9999" --* "1..1" AssistantMVC_Exam : controllers1
+AssistantMVC_Exam "1..1" *-- "0..9999" AssistantMVC_ExamItem : examItems0
+AssistantMVC_Observable "1..1" -- "0..9999" AssistantMVC_Observer : observers5
+AssistantMVC_Exam "1..1" *-- "0..9999" AssistantMVC_View : views3
+@enduml

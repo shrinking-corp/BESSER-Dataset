@@ -1,0 +1,24 @@
+@startuml
+class Element {
+}
+class PetriNet_Arc {
+}
+abstract class PetriNet_Element {
+  + name : str
+}
+class PetriNet_PetriNetRoot {
+}
+class PetriNet_Place {
+  + Tokens : int
+}
+class PetriNet_Transition {
+  + maxTime : int
+  + minTime : int
+}
+Element <|-- PetriNet_Place
+Element <|-- PetriNet_Transition
+PetriNet_Arc "1..1" -- "1..1" PetriNet_Element : In3
+PetriNet_Arc "1..1" -- "1..1" PetriNet_Element : Out6
+PetriNet_Arc "0..9999" --* "1..1" PetriNet_PetriNetRoot : arcs1
+PetriNet_Element "0..9999" --* "1..1" PetriNet_PetriNetRoot : elements0
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class Entry {
+}
+class NamedElement {
+}
+class addressbook_AddressBook {
+}
+class addressbook_Category {
+}
+class addressbook_Contact {
+  + email : str
+  + firstName : str
+  + lastName : str
+}
+abstract class addressbook_Entry {
+  + id : int
+}
+abstract class addressbook_NamedElement {
+  + name : str
+}
+class addressbook_Organization {
+  + homepage : str
+}
+Entry <|-- addressbook_Contact
+Entry <|-- addressbook_Organization
+NamedElement <|-- addressbook_AddressBook
+NamedElement <|-- addressbook_Category
+NamedElement <|-- addressbook_Organization
+addressbook_AddressBook "0..1" -- "1..1" addressbook_Category : addressBook1
+addressbook_AddressBook "1..1" *-- "0..9999" addressbook_Category : categories0
+addressbook_Category "0..1" -- "1..1" addressbook_Entry : category3
+addressbook_Contact "0..9999" -- "1..1" addressbook_Organization : employees6
+addressbook_Contact "1..1" -- "0..9999" addressbook_Organization : employers5
+addressbook_Category "1..1" *-- "0..9999" addressbook_Entry : entries2
+@enduml

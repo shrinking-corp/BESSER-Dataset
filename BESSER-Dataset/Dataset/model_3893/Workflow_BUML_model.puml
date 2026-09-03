@@ -1,0 +1,83 @@
+@startuml
+class CompoundTask {
+}
+class OutputPort {
+}
+class Port {
+}
+class WorkflowElement {
+}
+class WorkflowNode {
+}
+class workflow_Comment {
+}
+class workflow_CompoundTask {
+}
+class workflow_ConditionalOutputPort {
+  + condition : str
+}
+class workflow_ConditionalTask {
+}
+class workflow_Edge {
+}
+class workflow_Fault {
+}
+class workflow_InputPort {
+}
+class workflow_LoopTask {
+  + whileCondition : str
+}
+class workflow_OutputPort {
+}
+abstract class workflow_Port {
+}
+class workflow_Task {
+}
+class workflow_TransformationTask {
+  + transformExpression : str
+}
+class workflow_Workflow {
+}
+abstract class workflow_WorkflowElement {
+  + comment : str
+  + height : int
+  + name : str
+  + width : int
+  + workFlowElementId : str
+  + x : int
+  + y : int
+}
+abstract class workflow_WorkflowNode {
+  + isFinish : bool
+  + isStart : bool
+}
+CompoundTask <|-- workflow_LoopTask
+OutputPort <|-- workflow_ConditionalOutputPort
+OutputPort <|-- workflow_Fault
+Port <|-- workflow_InputPort
+Port <|-- workflow_OutputPort
+WorkflowElement <|-- workflow_Comment
+WorkflowElement <|-- workflow_Edge
+WorkflowElement <|-- workflow_Port
+WorkflowElement <|-- workflow_Workflow
+WorkflowElement <|-- workflow_WorkflowNode
+WorkflowNode <|-- workflow_CompoundTask
+WorkflowNode <|-- workflow_ConditionalTask
+WorkflowNode <|-- workflow_Task
+WorkflowNode <|-- workflow_TransformationTask
+workflow_Comment "0..9999" --* "1..1" workflow_Workflow : comments3
+workflow_Edge "0..9999" --* "1..1" workflow_Workflow : edges1
+workflow_Edge "0..9999" -- "1..1" workflow_InputPort : edges19
+workflow_Edge "0..9999" -- "1..1" workflow_OutputPort : edges23
+workflow_InputPort "1..9999" --* "1..1" workflow_WorkflowNode : inputs7
+workflow_InputPort "1..1" -- "1..1" workflow_WorkflowNode : node17
+workflow_OutputPort "1..1" -- "1..1" workflow_WorkflowNode : node21
+workflow_Workflow "1..1" *-- "0..9999" workflow_WorkflowNode : nodes0
+workflow_OutputPort "1..9999" --* "1..1" workflow_WorkflowNode : outputs6
+workflow_Edge "1..1" -- "1..1" workflow_OutputPort : source14
+workflow_CompoundTask "1..1" -- "1..1" workflow_Workflow : subworkflow25
+workflow_Edge "1..1" -- "1..1" workflow_InputPort : target11
+workflow_Comment "1..1" -- "1..1" workflow_Workflow : workflow26
+workflow_Workflow "1..1" -- "1..1" workflow_WorkflowNode : workflow5
+workflow_Edge "1..1" -- "1..1" workflow_Workflow : workflow9
+@enduml

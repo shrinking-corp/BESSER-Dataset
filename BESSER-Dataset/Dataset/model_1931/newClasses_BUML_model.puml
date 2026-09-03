@@ -1,0 +1,235 @@
+@startuml
+class AdministratorProvides {
+}
+class Biller {
+}
+class Booker {
+}
+class Customer {
+}
+class CustomerProvides {
+}
+class DB_interface {
+}
+class GuestBiller {
+}
+class GuestInterface {
+}
+class ManagerInterface {
+}
+class Receipt {
+}
+class RoomHandlerInterface {
+}
+class RoomProvider {
+}
+class RoomType {
+}
+class ServiceHandlerInterface {
+}
+class ServiceProvider {
+}
+class ServiceType {
+}
+class Validator {
+}
+abstract class newClasses_AdministratorProvides {
+  + addCreditCard(newClasses_ccNumber : str, newClasses_ccv : str, newClasses_expiryMonth : str, newClasses_expiryYear : str, newClasses_firstName : str, newClasses_lastName : str) : bool
+  + getBalance(newClasses_ccNumber : str, newClasses_ccv : str, newClasses_expiryMonth : str, newClasses_expiryYear : str, newClasses_firstName : str, newClasses_lastName : str) : float
+  + makeDeposit(newClasses_ccNumber : str, newClasses_ccv : str, newClasses_expiryMonth : str, newClasses_expiryYear : str, newClasses_firstName : str, newClasses_lastName : str, newClasses_sum : str) : float
+  + removeCreditCard(newClasses_ccNumber : str, newClasses_ccv : str, newClasses_expiryMonth : str, newClasses_expiryYear : str, newClasses_firstName : str, newClasses_lastName : str) : bool
+}
+class newClasses_BankComponent {
+}
+abstract class newClasses_Biller {
+  + calculateBill(newClasses_addedServices : str, newClasses_bookingCost : str, newClasses_extraDays : str, newClasses_isPaid : str) : str
+  + calculateCost(newClasses_checkInDate : str, newClasses_checkOutDate : str, newClasses_roomType : str, newClasses_services : str) : str
+  + pay(newClasses_addedServices : str, newClasses_bookingCost : str, newClasses_creditCardNum : str, newClasses_cvc : str, newClasses_extraDays : str, newClasses_firstName : str, newClasses_isPaid : str, newClasses_lastName : str, newClasses_month : str, newClasses_year : str) : str
+}
+class newClasses_Billing {
+  + isPaid : str
+  + totalCost : str
+}
+abstract class newClasses_Booker {
+  + cancelBooking(newClasses_conformationNum : str) : void
+  + createBooking(newClasses_checkInDate : str, newClasses_checkOutDate : str, newClasses_roomType : str, newClasses_services : str) : str
+  + generateConfirmNum() : str
+  + reBook(newClasses_checkInDate : str, newClasses_checkOutDate : str, newClasses_comformationNum : str, newClasses_roomType : str, newClasses_serviceType : str) : void
+}
+class newClasses_Booking {
+  + checkInDate : str
+  + checkOutDate : str
+  + conformationNum : str
+  + cost : str
+  + isPaid : str
+  + roomType : str
+  + services : str
+}
+class newClasses_CreditCard {
+  + creditCardNumber : str
+  + cvc : str
+  + firstName : str
+  + lastName : str
+  + month : str
+  + year : str
+}
+class newClasses_Customer {
+  + address : str
+  + bookingCost : str
+  + bookingNum : str
+  + city : str
+  + country : str
+  + email : str
+  + firstName : str
+  + lastName : str
+  + personalNum : str
+  + phoneNum : str
+  + zipCode : str
+}
+abstract class newClasses_CustomerProvides {
+  + isCreditCardValid(newClasses_ccNumber : str, newClasses_ccv : str, newClasses_expiryMonth : str, newClasses_expiryYear : str, newClasses_firstName : str, newClasses_lastName : str) : bool
+  + makePayment(newClasses_ccNumber : str, newClasses_ccv : str, newClasses_expiryMonth : str, newClasses_expiryYear : str, newClasses_firstName : str, newClasses_lastName : str, newClasses_sum : str) : bool
+}
+abstract class newClasses_DB_interface {
+  + connect() : void
+  + registerCustomerPayment(newClasses_bookingCost : str, newClasses_customer : str) : void
+  + registerGuestPayment(newClasses_guest : str, newClasses_totalBillCost : str) : void
+  + storeBooking(newClasses_booking : str) : void
+  + storeCustomer(newClasses_customer : str) : void
+  + storeGuest(newClasses_guest : str) : void
+}
+class newClasses_Database {
+}
+class newClasses_Guest {
+  + addedServices : str
+  + bookingPaid : str
+  + checkInDate : str
+  + checkOutDate : str
+  + checkedIn : str
+  + checkedOut : str
+  + cost : str
+  + extraDays : str
+  + roomNum : str
+}
+abstract class newClasses_GuestBiller {
+  + addServiceToBill(newClasses_guest : str, newClasses_type : str) : str
+  + checkOut(newClasses_checkOutDate : str, newClasses_cost : str, newClasses_creditCardNum : str, newClasses_cvc : str, newClasses_firstName : str, newClasses_lastName : str, newClasses_month : str, newClasses_roomNum : str, newClasses_year : str) : str
+}
+abstract class newClasses_GuestInterface {
+  + changeRoom(newClasses_guest : str, newClasses_newRoomType : str, newClasses_roomNum : str) : void
+  + checkIn(newClasses_checkInDate : str, newClasses_conformationNum : str) : str
+  + extendStay(newClasses_guest : str, newClasses_newCheckOutDate : str, newClasses_roomNum : str) : void
+}
+class newClasses_InformationValidator {
+}
+class newClasses_LoginChecker {
+}
+class newClasses_Manager {
+  + password : str
+  + userName : str
+}
+abstract class newClasses_ManagerInterface {
+  + SessionData() : void
+  + login(newClasses_password : str, newClasses_userName : str) : void
+  + logout() : void
+  + validateLogin(newClasses_password : str, newClasses_userName : str) : str
+}
+abstract class newClasses_Receipt {
+  + createCustomerReceipt(newClasses_booking : str, newClasses_bookingCost : str, newClasses_customer : str) : void
+  + createGuestReceipt(newClasses_booking : str, newClasses_guest : str, newClasses_totalBillCost : str) : void
+}
+class newClasses_ReceiptCreator {
+}
+class newClasses_Room {
+  + roomNum : str
+  + status : str
+}
+class newClasses_RoomHandler {
+}
+abstract class newClasses_RoomHandlerInterface {
+  + addRoom(newClasses_price : str, newClasses_roomNum : str, newClasses_roomType : str) : void
+  + changeRoomPrice(newClasses_newPrice : str, newClasses_roomNum : str) : void
+  + changeRoomType(newClasses_roomNum : str, newClasses_roomType : str) : void
+  + removeRoom(newClasses_roomNum : str) : void
+}
+abstract class newClasses_RoomProvider {
+  + checkAvalibility(newClasses_checkInDate : str, newClasses_checkOutDate : str, newClasses_roomType : str) : str
+  + dateChecker(newClasses_DBcheckIn : str, newClasses_DBcheckOut : str, newClasses_checkInDate : str, newClasses_checkOutDate : str) : str
+  + setAvalibility(newClasses_checkInDate : str, newClasses_checkOutDate : str, newClasses_roomType : str, newClasses_status : str) : void
+}
+class newClasses_RoomType {
+  + price : str
+  + type : str
+}
+class newClasses_Service {
+  + id : str
+  + status : str
+}
+class newClasses_ServiceHandler {
+}
+abstract class newClasses_ServiceHandlerInterface {
+  + addService(newClasses_ID : str, newClasses_price : str, newClasses_type : str) : void
+  + changeServicePrice(newClasses_ID : str, newClasses_newPrice : str) : void
+  + changeServiceType(newClasses_ID : str, newClasses_newType : str) : void
+  + removeService(newClasses_ID : str) : void
+}
+abstract class newClasses_ServiceProvider {
+  + checkAvalibility(newClasses_checkInDate : str, newClasses_checkOutDate : str, newClasses_service : str) : str
+  + setAvalibility(newClasses_service : str, newClasses_status : str) : void
+}
+class newClasses_ServiceType {
+  + price : str
+  + type : str
+}
+abstract class newClasses_Validator {
+  + checkAge(newClasses_day : str, newClasses_month : str, newClasses_year : str) : str
+  + checkAgeRestriction(newClasses_personalNum : str) : str
+  + checkDateOrder(newClasses_checkInDate : str, newClasses_checkOutDate : str) : str
+  + validateAddress(newClasses_address : str, newClasses_city : str, newClasses_country : str, newClasses_zipCode : str) : str
+  + validateConfirmationNum(newClasses_conformationNum : str) : str
+  + validateDates(newClasses_checkInDate : str, newClasses_checkOutDate : str) : str
+  + validateEmail(newClasses_email : str) : str
+  + validateNames(newClasses_firstName : str, newClasses_lastName : str) : str
+  + validatePersonalNum(newClasses_personalNum : str) : str
+  + validatePhoneNum(newClasses_phoneNum : str) : str
+}
+AdministratorProvides <|-- newClasses_BankComponent
+Biller <|-- newClasses_Billing
+Biller <|-- newClasses_Booking
+Booker <|-- newClasses_Booking
+Booker <|-- newClasses_Customer
+Customer <|-- newClasses_Guest
+CustomerProvides <|-- newClasses_BankComponent
+CustomerProvides <|-- newClasses_Billing
+CustomerProvides <|-- newClasses_Booking
+DB_interface <|-- newClasses_Database
+GuestBiller <|-- newClasses_Billing
+GuestBiller <|-- newClasses_Guest
+GuestInterface <|-- newClasses_Guest
+GuestInterface <|-- newClasses_RoomHandler
+ManagerInterface <|-- newClasses_LoginChecker
+ManagerInterface <|-- newClasses_Manager
+Receipt <|-- newClasses_ReceiptCreator
+RoomHandlerInterface <|-- newClasses_Manager
+RoomHandlerInterface <|-- newClasses_RoomHandler
+RoomProvider <|-- newClasses_Booking
+RoomProvider <|-- newClasses_RoomHandler
+RoomType <|-- newClasses_Room
+ServiceHandlerInterface <|-- newClasses_Manager
+ServiceHandlerInterface <|-- newClasses_ServiceHandler
+ServiceProvider <|-- newClasses_Booking
+ServiceProvider <|-- newClasses_ServiceHandler
+ServiceType <|-- newClasses_Service
+Validator <|-- newClasses_Booking
+Validator <|-- newClasses_InformationValidator
+newClasses_Booking "1..1" -- "1..1" newClasses_Customer : booking0
+newClasses_CreditCard "1..1" -- "1..1" newClasses_Customer : creditCard1
+newClasses_Database "1..1" -- "1..1" newClasses_RoomHandler : database14
+newClasses_Booking "1..1" -- "1..1" newClasses_Database : databaseHandler5
+newClasses_LoginChecker "1..1" -- "1..1" newClasses_Manager : manager17
+newClasses_Booking "1..1" -- "1..1" newClasses_ReceiptCreator : receiptCreator3
+newClasses_Room "1..1" -- "1..1" newClasses_RoomHandler : room12
+newClasses_Manager "1..1" -- "1..1" newClasses_RoomHandler : roomHandler8
+newClasses_Service "1..1" -- "1..1" newClasses_ServiceHandler : service7
+newClasses_Manager "1..1" -- "1..1" newClasses_ServiceHandler : serviceHandler9
+@enduml

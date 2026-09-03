@@ -1,0 +1,33 @@
+@startuml
+class Node {
+}
+class PetriNetElement {
+}
+class petrinet_Arc {
+  + multiplicity : int
+  + readOnly : bool
+}
+abstract class petrinet_Node {
+  + name : str
+}
+class petrinet_PetriNet {
+  + name : str
+}
+abstract class petrinet_PetriNetElement {
+}
+class petrinet_Place {
+  + marking : int
+}
+class petrinet_Transition {
+}
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+PetriNetElement <|-- petrinet_Arc
+PetriNetElement <|-- petrinet_Node
+petrinet_Arc "0..9999" -- "1..1" petrinet_Node : linksToPredecessor3
+petrinet_Arc "0..9999" -- "1..1" petrinet_Node : linksToSuccessor2
+petrinet_PetriNet "1..1" -- "1..1" petrinet_PetriNetElement : petriNet1
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_PetriNetElement : petriNetElements0
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : predecessor5
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : successor6
+@enduml

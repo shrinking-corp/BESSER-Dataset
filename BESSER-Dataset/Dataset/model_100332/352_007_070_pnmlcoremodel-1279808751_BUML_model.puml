@@ -1,0 +1,250 @@
+@startuml
+class Annotation {
+}
+enum CSS2Color {
+  AQUA
+  BLACK
+  BLUE
+  FUCHSIA
+  GRAY
+  GREEN
+  LIME
+  MAROON
+  NAVY
+  OLIVE
+  ORANGE
+  PURPLE
+  RED
+  SILVER
+  TEAL
+  WHITE
+  YELLOW
+}
+enum CSS2FontFamily {
+  ARIAL
+  GEORGIA
+  TIMES
+  TREBUCHET
+  VERDANA
+}
+enum CSS2FontSize {
+  LARGE
+  MEDIUM
+  SMALL
+  XLARGE
+  XSMALL
+  XXLARGE
+  XXSMALL
+}
+enum CSS2FontStyle {
+  ITALIC
+  NORMAL
+  OBLIQUE
+}
+enum CSS2FontWeight {
+  BOLD
+  BOLDER
+  LIGHTER
+  NORMAL
+}
+class Coordinate {
+}
+enum FontAlign {
+  CENTER
+  LEFT
+  RIGHT
+}
+enum FontDecoration {
+  LINETHROUGH
+  OVERLINE
+  UNDERLINE
+}
+enum Gradient {
+  DIAGONAL
+  HORIZONTAL
+  VERTICAL
+}
+class Graphics {
+}
+class Label {
+}
+enum LineShape {
+  CURVE
+  LINE
+}
+enum LineStyle {
+  DASH
+  DOT
+  SOLID
+}
+class Node {
+}
+enum PNType {
+  COREMODEL
+  HLPN
+  PTNET
+  SYMNET
+}
+class PlaceNode {
+}
+class PnObject {
+}
+class TransitionNode {
+}
+abstract class pnmlcoremodel_Annotation {
+}
+class pnmlcoremodel_AnnotationGraphics {
+}
+abstract class pnmlcoremodel_AnyObject {
+}
+class pnmlcoremodel_Arc {
+}
+class pnmlcoremodel_ArcGraphics {
+}
+abstract class pnmlcoremodel_Attribute {
+}
+abstract class pnmlcoremodel_Coordinate {
+  + x : str
+  + y : str
+}
+class pnmlcoremodel_Dimension {
+}
+class pnmlcoremodel_Fill {
+  + color : str
+  + gradientcolor : str
+  + gradientrotation : str
+  + image : str
+}
+class pnmlcoremodel_Font {
+  + align : str
+  + decoration : str
+  + family : str
+  + rotation : str
+  + size : str
+  + style : str
+  + weight : str
+}
+abstract class pnmlcoremodel_Graphics {
+}
+abstract class pnmlcoremodel_Label {
+}
+class pnmlcoremodel_Line {
+  + color : str
+  + shape : str
+  + style : str
+  + width : str
+}
+class pnmlcoremodel_Name {
+  + text : str
+}
+abstract class pnmlcoremodel_Node {
+}
+class pnmlcoremodel_NodeGraphics {
+}
+class pnmlcoremodel_Offset {
+}
+class pnmlcoremodel_Page {
+}
+class pnmlcoremodel_PetriNet {
+  + id : str
+  + type : str
+}
+class pnmlcoremodel_PetriNetDoc {
+  + xmlns : str
+}
+class pnmlcoremodel_Place {
+}
+abstract class pnmlcoremodel_PlaceNode {
+}
+abstract class pnmlcoremodel_PnObject {
+  + id : str
+}
+class pnmlcoremodel_Position {
+}
+class pnmlcoremodel_RefPlace {
+}
+class pnmlcoremodel_RefTransition {
+}
+class pnmlcoremodel_ToolInfo {
+  + formattedXMLBuffer : str
+  + tool : str
+  + toolInfoGrammarURI : str
+  + version : str
+}
+class pnmlcoremodel_Transition {
+}
+abstract class pnmlcoremodel_TransitionNode {
+}
+Annotation <|-- pnmlcoremodel_Name
+Coordinate <|-- pnmlcoremodel_Dimension
+Coordinate <|-- pnmlcoremodel_Offset
+Coordinate <|-- pnmlcoremodel_Position
+Graphics <|-- pnmlcoremodel_AnnotationGraphics
+Graphics <|-- pnmlcoremodel_ArcGraphics
+Graphics <|-- pnmlcoremodel_NodeGraphics
+Label <|-- pnmlcoremodel_Annotation
+Label <|-- pnmlcoremodel_Attribute
+Node <|-- pnmlcoremodel_PlaceNode
+Node <|-- pnmlcoremodel_TransitionNode
+PlaceNode <|-- pnmlcoremodel_Place
+PlaceNode <|-- pnmlcoremodel_RefPlace
+PnObject <|-- pnmlcoremodel_Arc
+PnObject <|-- pnmlcoremodel_Node
+PnObject <|-- pnmlcoremodel_Page
+TransitionNode <|-- pnmlcoremodel_RefTransition
+TransitionNode <|-- pnmlcoremodel_Transition
+pnmlcoremodel_Arc "0..9999" -- "1..1" pnmlcoremodel_Node : InArcs82
+pnmlcoremodel_Arc "0..9999" -- "1..1" pnmlcoremodel_Node : OutArcs84
+pnmlcoremodel_Annotation "1..1" *-- "0..1" pnmlcoremodel_AnnotationGraphics : annotationgraphics95
+pnmlcoremodel_Arc "1..1" *-- "0..1" pnmlcoremodel_ArcGraphics : arcgraphics80
+pnmlcoremodel_Annotation "0..1" -- "1..1" pnmlcoremodel_AnnotationGraphics : containerAnnotation56
+pnmlcoremodel_AnnotationGraphics "0..1" -- "1..1" pnmlcoremodel_Offset : containerAnnotationGraphics44
+pnmlcoremodel_AnnotationGraphics "0..1" -- "1..1" pnmlcoremodel_Fill : containerAnnotationGraphics59
+pnmlcoremodel_AnnotationGraphics "0..1" -- "1..1" pnmlcoremodel_Line : containerAnnotationGraphics67
+pnmlcoremodel_AnnotationGraphics "0..1" -- "1..1" pnmlcoremodel_Font : containerAnnotationGraphics88
+pnmlcoremodel_Arc "0..1" -- "1..1" pnmlcoremodel_ArcGraphics : containerArc75
+pnmlcoremodel_ArcGraphics "0..1" -- "1..1" pnmlcoremodel_Position : containerArcGraphics43
+pnmlcoremodel_ArcGraphics "0..1" -- "1..1" pnmlcoremodel_Line : containerArcGraphics64
+pnmlcoremodel_Dimension "1..1" -- "0..1" pnmlcoremodel_NodeGraphics : containerDNodeGraphics45
+pnmlcoremodel_Label "0..1" -- "1..1" pnmlcoremodel_ToolInfo : containerLabel27
+pnmlcoremodel_Name "1..1" -- "0..1" pnmlcoremodel_PetriNet : containerNamePetriNet17
+pnmlcoremodel_Name "1..1" -- "0..1" pnmlcoremodel_PnObject : containerNamePnObject19
+pnmlcoremodel_Node "0..1" -- "1..1" pnmlcoremodel_NodeGraphics : containerNode37
+pnmlcoremodel_Fill "1..1" -- "0..1" pnmlcoremodel_NodeGraphics : containerNodeGraphics57
+pnmlcoremodel_Line "1..1" -- "0..1" pnmlcoremodel_NodeGraphics : containerNodeGraphics62
+pnmlcoremodel_NodeGraphics "0..1" -- "1..1" pnmlcoremodel_Position : containerPNodeGraphics41
+pnmlcoremodel_Page "0..1" -- "1..1" pnmlcoremodel_PnObject : containerPage15
+pnmlcoremodel_NodeGraphics "1..1" -- "0..1" pnmlcoremodel_Page : containerPage38
+pnmlcoremodel_PetriNet "0..1" -- "1..1" pnmlcoremodel_ToolInfo : containerPetriNet22
+pnmlcoremodel_Page "1..1" -- "0..1" pnmlcoremodel_PetriNet : containerPetriNet7
+pnmlcoremodel_PetriNet "1..1" -- "1..1" pnmlcoremodel_PetriNetDoc : containerPetriNetDoc5
+pnmlcoremodel_PnObject "0..1" -- "1..1" pnmlcoremodel_ToolInfo : containerPnObject24
+pnmlcoremodel_AnyObject "1..1" -- "0..1" pnmlcoremodel_ToolInfo : containerToolInfo97
+pnmlcoremodel_Dimension "0..1" --* "1..1" pnmlcoremodel_NodeGraphics : dimension33
+pnmlcoremodel_Fill "0..1" --* "1..1" pnmlcoremodel_NodeGraphics : fill34
+pnmlcoremodel_AnnotationGraphics "1..1" *-- "0..1" pnmlcoremodel_Fill : fill48
+pnmlcoremodel_AnnotationGraphics "1..1" *-- "0..1" pnmlcoremodel_Font : font54
+pnmlcoremodel_Line "0..1" --* "1..1" pnmlcoremodel_NodeGraphics : line35
+pnmlcoremodel_AnnotationGraphics "1..1" *-- "0..1" pnmlcoremodel_Line : line51
+pnmlcoremodel_ArcGraphics "1..1" *-- "0..1" pnmlcoremodel_Line : line72
+pnmlcoremodel_Name "0..1" --* "1..1" pnmlcoremodel_PnObject : name11
+pnmlcoremodel_Name "0..1" --* "1..1" pnmlcoremodel_PetriNet : name2
+pnmlcoremodel_PetriNet "1..9999" --* "1..1" pnmlcoremodel_PetriNetDoc : nets0
+pnmlcoremodel_Node "1..1" *-- "0..1" pnmlcoremodel_NodeGraphics : nodegraphics86
+pnmlcoremodel_NodeGraphics "0..1" --* "1..1" pnmlcoremodel_Page : nodegraphics9
+pnmlcoremodel_Page "1..1" *-- "0..9999" pnmlcoremodel_PnObject : objects6
+pnmlcoremodel_AnnotationGraphics "1..1" *-- "0..1" pnmlcoremodel_Offset : offset47
+pnmlcoremodel_Page "1..9999" --* "1..1" pnmlcoremodel_PetriNet : pages1
+pnmlcoremodel_NodeGraphics "1..1" *-- "0..1" pnmlcoremodel_Position : position32
+pnmlcoremodel_ArcGraphics "1..1" *-- "0..9999" pnmlcoremodel_Position : positions70
+pnmlcoremodel_RefTransition "1..1" -- "1..1" pnmlcoremodel_TransitionNode : ref93
+pnmlcoremodel_PlaceNode "1..1" -- "1..1" pnmlcoremodel_RefPlace : ref94
+pnmlcoremodel_PlaceNode "1..1" -- "0..9999" pnmlcoremodel_RefPlace : referencingPlaces90
+pnmlcoremodel_RefTransition "0..9999" -- "1..1" pnmlcoremodel_TransitionNode : referencingTransitions91
+pnmlcoremodel_Arc "1..1" -- "1..1" pnmlcoremodel_Node : source76
+pnmlcoremodel_Arc "1..1" -- "1..1" pnmlcoremodel_Node : target78
+pnmlcoremodel_AnyObject "0..1" --* "1..1" pnmlcoremodel_ToolInfo : toolInfoModel29
+pnmlcoremodel_PnObject "1..1" *-- "0..9999" pnmlcoremodel_ToolInfo : toolspecifics13
+pnmlcoremodel_PetriNet "1..1" *-- "0..9999" pnmlcoremodel_ToolInfo : toolspecifics3
+pnmlcoremodel_Label "1..1" *-- "0..9999" pnmlcoremodel_ToolInfo : toolspecifics30
+@enduml

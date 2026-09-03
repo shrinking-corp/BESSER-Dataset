@@ -1,0 +1,75 @@
+@startuml
+class Condition {
+}
+class ConditionalStatement {
+}
+class ControlStatement {
+}
+class NamedElement {
+}
+class Statement {
+}
+class robot_Condition {
+}
+abstract class robot_ConditionalStatement {
+}
+class robot_Connection {
+  + ip : str
+  + port : int
+}
+abstract class robot_ControlStatement {
+  + value : int
+}
+class robot_ExecuteStatement {
+}
+class robot_ForwardStatement {
+}
+class robot_IfStatement {
+}
+abstract class robot_NamedElement {
+  + name : str
+}
+class robot_ObjectAheadCondition {
+}
+class robot_PrintStatement {
+  + text : str
+}
+class robot_RightStatement {
+}
+class robot_Robot {
+}
+class robot_Scenario {
+}
+abstract class robot_Statement {
+}
+class robot_StatementBlock {
+}
+class robot_TrueCondition {
+}
+class robot_UntilStatement {
+}
+class robot_WhileStatement {
+}
+Condition <|-- robot_ObjectAheadCondition
+Condition <|-- robot_TrueCondition
+ConditionalStatement <|-- robot_IfStatement
+ConditionalStatement <|-- robot_UntilStatement
+ConditionalStatement <|-- robot_WhileStatement
+ControlStatement <|-- robot_ForwardStatement
+ControlStatement <|-- robot_RightStatement
+NamedElement <|-- robot_Robot
+NamedElement <|-- robot_Scenario
+Statement <|-- robot_ConditionalStatement
+Statement <|-- robot_ControlStatement
+Statement <|-- robot_ExecuteStatement
+Statement <|-- robot_PrintStatement
+robot_Condition "1..1" --* "1..1" robot_ConditionalStatement : condition11
+robot_Connection "0..1" --* "1..1" robot_Robot : connection6
+robot_ExecuteStatement "1..1" -- "1..1" robot_Scenario : destination15
+robot_Robot "1..1" *-- "1..1" robot_StatementBlock : global_1
+robot_Robot "1..1" -- "0..1" robot_Scenario : initial3
+robot_Robot "1..1" *-- "0..9999" robot_Scenario : scenarii0
+robot_ConditionalStatement "1..1" *-- "1..1" robot_StatementBlock : statementBlock12
+robot_Scenario "1..1" *-- "1..1" robot_StatementBlock : statementBlock8
+robot_Statement "0..9999" --* "1..1" robot_StatementBlock : statements17
+@enduml

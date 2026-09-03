@@ -1,0 +1,152 @@
+@startuml
+class CallExpCS {
+}
+class ElementCS {
+}
+class ExpCS {
+}
+class ExpressionBlockCS {
+}
+class ImperativeLoopExpCS {
+}
+class StatementCS {
+}
+class TypedRefCS {
+}
+class imperativeoclcs_AssertExpCS {
+  + severity : str
+}
+class imperativeoclcs_AssignStatementCS {
+  + incremental : bool
+}
+class imperativeoclcs_BlockExpCS {
+}
+class imperativeoclcs_CollectionLiteralPartCS {
+}
+class imperativeoclcs_ComputeExpCS {
+}
+class imperativeoclcs_DictLiteralExpCS {
+}
+class imperativeoclcs_DictLiteralPartCS {
+}
+class imperativeoclcs_DictTypeCS {
+}
+class imperativeoclcs_DoExpCS {
+}
+class imperativeoclcs_ExceptCS {
+}
+class imperativeoclcs_ExpCS {
+}
+class imperativeoclcs_ExpressionBlockCS {
+}
+class imperativeoclcs_ExpressionStatementCS {
+}
+class imperativeoclcs_ForExpCS {
+}
+class imperativeoclcs_ImperativeIterateExpCS {
+}
+class imperativeoclcs_ImperativeLoopExpCS {
+}
+class imperativeoclcs_InstantiationExpCS {
+}
+class imperativeoclcs_ListLiteralExpCS {
+}
+class imperativeoclcs_ListTypeCS {
+}
+class imperativeoclcs_LogExpCS {
+}
+class imperativeoclcs_PrimitiveLiteralExpCS {
+}
+class imperativeoclcs_QuitExpCS {
+  + keyword : str
+}
+class imperativeoclcs_RaiseExpCS {
+}
+class imperativeoclcs_ReturnExpCS {
+}
+abstract class imperativeoclcs_StatementCS {
+}
+class imperativeoclcs_SwitchAltCS {
+  + keyword : str
+}
+class imperativeoclcs_SwitchExpCS {
+}
+class imperativeoclcs_TryExpCS {
+}
+class imperativeoclcs_Type {
+}
+class imperativeoclcs_TypeCS {
+}
+class imperativeoclcs_TypedRefCS {
+}
+class imperativeoclcs_VariableCS {
+}
+class imperativeoclcs_VariableInitializationCS {
+  + simpleNameCS : str
+  + withResult : bool
+}
+class imperativeoclcs_WhileExpCS {
+}
+CallExpCS <|-- imperativeoclcs_ImperativeLoopExpCS
+CallExpCS <|-- imperativeoclcs_LogExpCS
+ElementCS <|-- imperativeoclcs_DictLiteralPartCS
+ElementCS <|-- imperativeoclcs_ExceptCS
+ExpCS <|-- imperativeoclcs_DictLiteralExpCS
+ExpCS <|-- imperativeoclcs_ExpressionBlockCS
+ExpCS <|-- imperativeoclcs_ListLiteralExpCS
+ExpCS <|-- imperativeoclcs_ReturnExpCS
+ExpCS <|-- imperativeoclcs_StatementCS
+ExpressionBlockCS <|-- imperativeoclcs_ComputeExpCS
+ExpressionBlockCS <|-- imperativeoclcs_DoExpCS
+ExpressionBlockCS <|-- imperativeoclcs_TryExpCS
+ExpressionBlockCS <|-- imperativeoclcs_WhileExpCS
+ImperativeLoopExpCS <|-- imperativeoclcs_ForExpCS
+ImperativeLoopExpCS <|-- imperativeoclcs_ImperativeIterateExpCS
+StatementCS <|-- imperativeoclcs_AssertExpCS
+StatementCS <|-- imperativeoclcs_AssignStatementCS
+StatementCS <|-- imperativeoclcs_BlockExpCS
+StatementCS <|-- imperativeoclcs_ExpressionStatementCS
+StatementCS <|-- imperativeoclcs_ImperativeLoopExpCS
+StatementCS <|-- imperativeoclcs_InstantiationExpCS
+StatementCS <|-- imperativeoclcs_QuitExpCS
+StatementCS <|-- imperativeoclcs_RaiseExpCS
+StatementCS <|-- imperativeoclcs_SwitchAltCS
+StatementCS <|-- imperativeoclcs_SwitchExpCS
+StatementCS <|-- imperativeoclcs_VariableInitializationCS
+TypedRefCS <|-- imperativeoclcs_DictTypeCS
+TypedRefCS <|-- imperativeoclcs_ListTypeCS
+imperativeoclcs_SwitchAltCS "1..9999" --* "1..1" imperativeoclcs_SwitchExpCS : alternativePart54
+imperativeoclcs_ExpCS "0..9999" --* "1..1" imperativeoclcs_InstantiationExpCS : arguments26
+imperativeoclcs_AssertExpCS "1..1" *-- "1..1" imperativeoclcs_ExpCS : assertion0
+imperativeoclcs_ExceptCS "1..1" *-- "0..1" imperativeoclcs_ExpCS : body32
+imperativeoclcs_ExpCS "0..9999" --* "1..1" imperativeoclcs_ExpressionBlockCS : body35
+imperativeoclcs_ExpCS "1..1" --* "1..1" imperativeoclcs_SwitchAltCS : body51
+imperativeoclcs_ExceptCS "0..9999" --* "1..1" imperativeoclcs_TryExpCS : catch59
+imperativeoclcs_ExpCS "1..1" --* "1..1" imperativeoclcs_ImperativeLoopExpCS : condition23
+imperativeoclcs_DoExpCS "1..1" *-- "0..1" imperativeoclcs_ExpCS : condition29
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_LogExpCS : condition42
+imperativeoclcs_ExpCS "1..1" --* "1..1" imperativeoclcs_SwitchAltCS : condition49
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_WhileExpCS : condition66
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_SwitchExpCS : elsePart56
+imperativeoclcs_ExceptCS "1..1" -- "0..9999" imperativeoclcs_Type : except_31
+imperativeoclcs_BlockExpCS "1..1" *-- "0..9999" imperativeoclcs_ExpCS : expressions8
+imperativeoclcs_DictLiteralPartCS "1..1" *-- "0..1" imperativeoclcs_PrimitiveLiteralExpCS : key11
+imperativeoclcs_DictTypeCS "1..1" *-- "0..1" imperativeoclcs_TypedRefCS : keyType16
+imperativeoclcs_AssignStatementCS "1..1" *-- "0..1" imperativeoclcs_ExpCS : lValueCS3
+imperativeoclcs_AssertExpCS "1..1" *-- "0..1" imperativeoclcs_LogExpCS : log1
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_ExpressionStatementCS : oclExpressionCS37
+imperativeoclcs_AssignStatementCS "1..1" *-- "0..1" imperativeoclcs_ExpCS : oclExpressionCS5
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_VariableInitializationCS : oclExpressionCS61
+imperativeoclcs_DictLiteralExpCS "1..1" *-- "0..9999" imperativeoclcs_DictLiteralPartCS : ownedParts10
+imperativeoclcs_CollectionLiteralPartCS "0..9999" --* "1..1" imperativeoclcs_ListLiteralExpCS : ownedParts41
+imperativeoclcs_VariableCS "0..1" --* "1..1" imperativeoclcs_WhileExpCS : resultVar68
+imperativeoclcs_ComputeExpCS "1..1" *-- "1..1" imperativeoclcs_VariableCS : returnedElement20
+imperativeoclcs_ImperativeIterateExpCS "1..1" *-- "0..1" imperativeoclcs_VariableCS : target21
+imperativeoclcs_ListTypeCS "1..1" *-- "0..1" imperativeoclcs_TypedRefCS : type39
+imperativeoclcs_TypeCS "0..1" --* "1..1" imperativeoclcs_VariableInitializationCS : typeCS63
+imperativeoclcs_InstantiationExpCS "1..1" *-- "1..1" imperativeoclcs_TypeCS : typeSpecCS25
+imperativeoclcs_DictLiteralPartCS "1..1" *-- "0..1" imperativeoclcs_ExpCS : value13
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_QuitExpCS : value45
+imperativeoclcs_ExpCS "0..1" --* "1..1" imperativeoclcs_ReturnExpCS : value47
+imperativeoclcs_DictTypeCS "1..1" *-- "0..1" imperativeoclcs_TypedRefCS : valueType17
+@enduml

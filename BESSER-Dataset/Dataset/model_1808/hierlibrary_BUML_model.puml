@@ -1,0 +1,19 @@
+@startuml
+class hierarchy_Book {
+  + Name : str
+  + genre : str
+}
+class hierarchy_Fiction {
+  + Name : str
+}
+class hierarchy_HierLibrary {
+  + Name : str
+}
+class hierarchy_NonFiction {
+  + Name : str
+}
+hierarchy_Fiction "0..1" --* "1..1" hierarchy_HierLibrary : fiction0
+hierarchy_Book "0..9999" --* "1..1" hierarchy_Fiction : members3
+hierarchy_Book "0..9999" --* "1..1" hierarchy_NonFiction : members5
+hierarchy_HierLibrary "1..1" *-- "0..1" hierarchy_NonFiction : nonfiction1
+@enduml

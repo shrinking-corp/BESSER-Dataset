@@ -1,0 +1,55 @@
+@startuml
+class Arc {
+}
+class Attribute {
+}
+class Label {
+}
+class PetriNetType {
+}
+class Place {
+}
+class StructuredLabel {
+}
+class extendedpetrinet_Animation {
+}
+class extendedpetrinet_AnimationLabel {
+}
+class extendedpetrinet_Arc {
+}
+class extendedpetrinet_ExtendedPetriNet {
+}
+class extendedpetrinet_GeometryLabel {
+  + text : str
+}
+class extendedpetrinet_Identity {
+  + text : int
+}
+class extendedpetrinet_InputPlaceAppearance {
+  + text : str
+}
+class extendedpetrinet_InteractiveInput {
+  + text : bool
+}
+class extendedpetrinet_Place {
+}
+class extendedpetrinet_Token {
+  + text : str
+}
+Arc <|-- extendedpetrinet_Arc
+Attribute <|-- extendedpetrinet_Identity
+Attribute <|-- extendedpetrinet_InteractiveInput
+Label <|-- extendedpetrinet_GeometryLabel
+Label <|-- extendedpetrinet_InputPlaceAppearance
+Label <|-- extendedpetrinet_Token
+PetriNetType <|-- extendedpetrinet_ExtendedPetriNet
+Place <|-- extendedpetrinet_Place
+StructuredLabel <|-- extendedpetrinet_AnimationLabel
+extendedpetrinet_AnimationLabel "0..1" --* "1..1" extendedpetrinet_Place : animations2
+extendedpetrinet_InputPlaceAppearance "0..1" --* "1..1" extendedpetrinet_Place : appearance6
+extendedpetrinet_GeometryLabel "0..1" --* "1..1" extendedpetrinet_Place : geometryLabel8
+extendedpetrinet_Arc "1..1" *-- "0..1" extendedpetrinet_Identity : identity0
+extendedpetrinet_InteractiveInput "1..1" --* "1..1" extendedpetrinet_Place : interactiveInput1
+extendedpetrinet_Animation "1..1" --* "1..1" extendedpetrinet_AnimationLabel : structure10
+extendedpetrinet_Place "1..1" *-- "0..9999" extendedpetrinet_Token : tokens4
+@enduml

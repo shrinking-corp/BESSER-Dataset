@@ -1,0 +1,173 @@
+@startuml
+enum CMConstraintType {
+  and_
+  implies
+  not_
+  or_
+}
+enum CTConstraintType {
+  and_
+  implies
+  not_
+  or_
+}
+enum ConfigScenarioType {
+  fmConflicts
+  fmPreferences
+  fmSearch
+  fsgConflicts
+  fsgPreferences
+  fsgSearch
+}
+enum ConfigType {
+  input
+  output
+}
+enum DataType {
+  boolean
+  double
+  int
+  string
+}
+enum HardLimitSCOp {
+  eq
+  geq
+  gt
+  leq
+  lt
+}
+enum OptimizationSCFunct {
+  maximize
+  minimize
+}
+enum SCType {
+  finiteDomain
+  hardLimit
+  optimization
+  selectionState
+}
+enum SelectionStateSCType {
+  forbidden
+  mandatory
+  preferred
+}
+class SolutionConstraint {
+}
+enum TreeConstraintType {
+  Alternative
+  And
+  Or
+}
+class coCoMM_AttributeType {
+  + id : str
+  + name : str
+}
+class coCoMM_AttributeTypeElement {
+  + dataType : str
+  + name : str
+}
+class coCoMM_CMConstraintExpression {
+  + op : str
+}
+class coCoMM_CTConstraintExpression {
+  + op : str
+}
+class coCoMM_CoCo {
+  + configScenario : str
+}
+class coCoMM_Config {
+  + selected : bool
+  + type : str
+}
+class coCoMM_CrossModelConstraint {
+}
+class coCoMM_CrossTreeConstraint {
+}
+class coCoMM_Feature {
+  + abstract : bool
+  + id : str
+  + mandatory : bool
+  + name : str
+}
+class coCoMM_FeatureAttribute {
+  + name : str
+}
+class coCoMM_FeatureAttributeElement {
+  + value : str
+}
+class coCoMM_FeatureModel {
+  + isDomain : bool
+  + name : str
+}
+class coCoMM_FiniteDomainSC {
+}
+class coCoMM_FiniteDomainSCValue {
+  + value : str
+}
+class coCoMM_HardLimitDRExpression {
+  + op : str
+  + value : str
+}
+class coCoMM_HardLimitSC {
+}
+class coCoMM_OptimizationSC {
+  + funct : str
+}
+class coCoMM_Project {
+  + date : date
+  + name : str
+  + target : bool
+}
+class coCoMM_SelectionStateSC {
+  + state : str
+}
+class coCoMM_SolutionConstraint {
+  + type : str
+}
+class coCoMM_Stakeholder {
+  + job : str
+  + name : str
+}
+class coCoMM_TreeConstraint {
+  + type : str
+}
+SolutionConstraint <|-- coCoMM_FiniteDomainSC
+SolutionConstraint <|-- coCoMM_HardLimitSC
+SolutionConstraint <|-- coCoMM_OptimizationSC
+SolutionConstraint <|-- coCoMM_SelectionStateSC
+coCoMM_AttributeType "1..1" -- "1..1" coCoMM_FeatureAttribute : attrType20
+coCoMM_AttributeType "1..1" -- "1..1" coCoMM_HardLimitSC : attrType48
+coCoMM_AttributeType "1..1" -- "1..1" coCoMM_OptimizationSC : attrType51
+coCoMM_AttributeType "0..9999" --* "1..1" coCoMM_CoCo : attributeTypes33
+coCoMM_Feature "1..9999" --* "1..1" coCoMM_TreeConstraint : children10
+coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_CrossModelConstraint : cmConstraints29
+coCoMM_Config "0..9999" --* "1..1" coCoMM_Project : configs56
+coCoMM_CrossTreeConstraint "0..9999" --* "1..1" coCoMM_FeatureModel : ctConstraints1
+coCoMM_AttributeType "1..1" *-- "1..9999" coCoMM_AttributeTypeElement : elements15
+coCoMM_FeatureAttribute "1..1" *-- "0..9999" coCoMM_FeatureAttributeElement : elements23
+coCoMM_CTConstraintExpression "1..9999" --* "1..1" coCoMM_CrossTreeConstraint : expressions25
+coCoMM_CMConstraintExpression "1..9999" --* "1..1" coCoMM_CrossModelConstraint : expressions40
+coCoMM_HardLimitDRExpression "1..2" --* "1..1" coCoMM_HardLimitSC : expressions47
+coCoMM_CTConstraintExpression "0..9999" --* "1..1" coCoMM_CTConstraintExpression : expressions68
+coCoMM_CMConstraintExpression "0..9999" --* "1..1" coCoMM_CMConstraintExpression : expressions74
+coCoMM_Feature "0..1" -- "1..1" coCoMM_SelectionStateSC : feature44
+coCoMM_Feature "1..1" -- "1..1" coCoMM_FiniteDomainSC : feature78
+coCoMM_AttributeType "1..1" *-- "0..9999" coCoMM_FeatureAttribute : featureAttributes17
+coCoMM_FeatureAttribute "1..1" -- "1..1" coCoMM_FiniteDomainSC : featureAttributes76
+coCoMM_Feature "1..1" -- "0..9999" coCoMM_FeatureAttribute : featureAttributes8
+coCoMM_FeatureModel "0..1" -- "1..1" coCoMM_SelectionStateSC : featureModel42
+coCoMM_Feature "1..1" -- "1..1" coCoMM_FeatureModel : featureModel5
+coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_FeatureModel : featureModels27
+coCoMM_Config "1..1" -- "0..9999" coCoMM_Feature : features61
+coCoMM_CTConstraintExpression "1..1" -- "0..9999" coCoMM_Feature : features64
+coCoMM_CMConstraintExpression "1..1" -- "0..9999" coCoMM_Feature : features70
+coCoMM_AttributeType "1..1" -- "0..1" coCoMM_AttributeType : independentAttrType14
+coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_Project : project36
+coCoMM_Feature "1..1" --* "1..1" coCoMM_FeatureModel : root0
+coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_SolutionConstraint : solutionConstraints31
+coCoMM_Project "1..1" -- "0..9999" coCoMM_SolutionConstraint : solutionConstraints53
+coCoMM_Config "1..1" -- "0..1" coCoMM_Stakeholder : stakeholder58
+coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_Stakeholder : stakeholders38
+coCoMM_Feature "1..1" *-- "0..9999" coCoMM_TreeConstraint : treeConstraints3
+coCoMM_FiniteDomainSC "1..1" -- "1..9999" coCoMM_FiniteDomainSCValue : values81
+@enduml

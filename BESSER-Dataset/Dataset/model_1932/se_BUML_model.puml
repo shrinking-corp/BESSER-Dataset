@@ -1,0 +1,202 @@
+@startuml
+class IAdministratorProvides {
+}
+class IHotelStartupProvides {
+}
+class User {
+}
+class bankcomponents_ICustomerProvides {
+}
+class hotelsystem_Bill {
+}
+class hotelsystem_Booking {
+}
+class hotelsystem_Customer {
+}
+class hotelsystem_IHotelAdministratorProvides {
+}
+class hotelsystem_IHotelCustomerProvides {
+}
+class hotelsystem_IHotelReceptionistProvides {
+}
+class hotelsystem_IHotelStartupProvides {
+}
+class hotelsystem_IRoomHandler {
+}
+class hotelsystem_PaymentHandler {
+}
+class hotelsystem_Room {
+}
+class hotelsystem_RoomExtra {
+}
+class hotelsystem_RoomHandler {
+}
+class hotelsystem_RoomReservation {
+}
+class hotelsystem_RoomType {
+}
+class se_actor_Administrator {
+}
+class se_actor_Receptionist {
+}
+class se_actor_User {
+}
+class se_bankcomponents_BankAdministrator {
+}
+abstract class se_bankcomponents_IAdministratorProvides {
+  + addCreditCard(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str) : bool
+  + getBalance(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str) : float
+  + makeDeposit(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str, se_sum : str) : float
+  + removeCreditCard(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str) : bool
+}
+abstract class se_bankcomponents_ICustomerProvides {
+  + isCreditCardValid(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str) : bool
+  + makePayment(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str, se_sum : str) : bool
+}
+class se_hotelsystem_Bill {
+  + billID : int
+  + price : float
+}
+class se_hotelsystem_Booking {
+  + bookingId : int
+  + canceled : bool
+  + confirmed : bool
+  + endDate : str
+  + startDate : str
+  + addExtra(se_extra : str, se_roomNbr : str) : bool
+  + cancel() : void
+  + checkIn(se_room : str) : bool
+  + checkOut() : float
+  + checkOutRoom(se_roomNumber : str) : float
+  + getBookingPrice() : float
+  + getOccupiedRooms(se_date : str) : str
+  + getRoomPrice(se_roomNumber : str) : float
+  + isCheckedIn() : bool
+  + isFree(se_endDate : str, se_roomId : str, se_startDate : str) : bool
+  + nrOfNights() : int
+}
+class se_hotelsystem_BookingHandler {
+  + bookingCurrentlyCheckingOut : int
+  + nextBookingId : int
+  + getBookingById(se_bookingId : str) : str
+  + isFree(se_endDate : str, se_roomId : str, se_startDate : str) : bool
+}
+class se_hotelsystem_Customer {
+  + firstName : str
+  + lastName : str
+}
+class se_hotelsystem_FreeRoomTypesDTO {
+  + numBeds : int
+  + numFreeRooms : int
+  + pricePerNight : float
+  + roomTypeDescription : str
+}
+class se_hotelsystem_HotelInitializer {
+}
+abstract class se_hotelsystem_IHotelAdministratorProvides {
+  + addRoom(se_roomNumber : str, se_roomTypeName : str) : bool
+  + addRoomType(se_featureDescription : str, se_nbrOfBeds : str, se_price : str, se_roomTypeName : str) : bool
+  + blockRoom(se_roomNumber : str) : bool
+  + changeRoomType(se_roomNumber : str, se_roomTypeName : str) : bool
+  + editRoomType(se_featuresDescription : str, se_nbrOfBeds : str, se_price : str, se_roomTypeName : str) : bool
+  + removeRoom(se_roomNumber : str) : bool
+  + removeRoomType(se_roomTypeName : str) : bool
+  + unblockRoom(se_roomNumber : str) : bool
+}
+abstract class se_hotelsystem_IHotelCustomerProvides {
+  + addRoomToBooking(se_bookingID : str, se_roomTypeName : str) : bool
+  + checkInRoom(se_bookindId : str, se_roomTypeName : str) : int
+  + confirmBooking(se_bookingID : str) : bool
+  + getFreeRooms(se_endDate : str, se_numBeds : str, se_startDate : str) : str
+  + initiateBooking(se_endDate : str, se_firstName : str, se_lastName : str, se_startDate : str) : int
+  + initiateCheckout(se_bookingID : str) : float
+  + initiateRoomCheckout(se_bookingId : str, se_roomNumber : str) : float
+  + payDuringCheckout(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str) : bool
+  + payRoomDuringCheckout(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str, se_roomNumber : str) : bool
+}
+abstract class se_hotelsystem_IHotelReceptionistProvides {
+  + addExtraToRoom(se_bookingId : str, se_extraDescription : str, se_price : str, se_roomNumber : str) : bool
+  + addRoomTypeToBooking(se_bookingId : str, se_numberOfRoomsForType : str, se_roomTypeName : str) : bool
+  + cancelBooking(se_bookingId : str) : bool
+  + checkIn(se_bookingId : str, se_roomNumbers : str) : str
+  + editBookingTime(se_endDate : str, se_reservationId : str, se_startDate : str) : bool
+  + getFreeRoom(se_endDate : str, se_roomType : str, se_startDate : str) : str
+  + listBookings() : str
+  + listCheckins(se_endDate : str, se_startDate : str) : str
+  + listCheckouts(se_endDate : str, se_startDate : str) : str
+  + listFreeRooms(se_bookingId : str) : int
+  + listOccupiedRooms(se_date : str) : str
+  + removeRoomTypeFromBooking(se_bookingId : str, se_nbrToRemove : str, se_roomType : str) : bool
+}
+abstract class se_hotelsystem_IHotelStartupProvides {
+  + startup(se_numRooms : str) : void
+}
+abstract class se_hotelsystem_IRoomHandler {
+  + getAllRoomTypes(se_nrOfBeds : str) : str
+  + getAllRooms() : str
+  + getAllRoomsByType(se_roomType : str) : str
+  + getFreeRoomByType(se_roomType : str) : str
+  + getFreeRooms() : int
+  + getRoomType(se_roomTypeName : str) : str
+}
+class se_hotelsystem_PaymentHandler {
+  + payIfCardValid(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str, se_sum : str) : bool
+}
+class se_hotelsystem_Room {
+  + blocked : bool
+  + occupied : bool
+  + roomNumber : int
+}
+class se_hotelsystem_RoomExtra {
+  + description : str
+  + price : float
+}
+class se_hotelsystem_RoomHandler {
+  + getRoom(se_roomNumber : str) : str
+  + initialize(se_numberOfRooms : str) : void
+}
+class se_hotelsystem_RoomReservation {
+  + checkInDate : str
+  + checkOuDate : str
+  + endDate : str
+  + startDate : str
+  + addExtra(se_extra : str) : void
+  + checkIn() : void
+  + checkOut(se_nrOfNights : str) : float
+  + getRoomId() : int
+  + getRoomIfOccupied(se_date : str) : str
+}
+class se_hotelsystem_RoomType {
+  + description : str
+  + name : str
+  + numBeds : int
+  + pricePerNight : float
+}
+IAdministratorProvides <|-- se_bankcomponents_BankAdministrator
+IHotelStartupProvides <|-- se_hotelsystem_HotelInitializer
+User <|-- se_actor_Administrator
+User <|-- se_actor_Receptionist
+hotelsystem_IHotelAdministratorProvides <|-- se_hotelsystem_RoomHandler
+hotelsystem_IHotelCustomerProvides <|-- se_hotelsystem_BookingHandler
+hotelsystem_IHotelReceptionistProvides <|-- se_hotelsystem_BookingHandler
+hotelsystem_IRoomHandler <|-- se_hotelsystem_RoomHandler
+bankcomponents_ICustomerProvides "1..1" -- "1..1" se_hotelsystem_PaymentHandler : bankingComponent19
+hotelsystem_Bill "0..9999" -- "1..1" se_hotelsystem_Booking : bills8
+hotelsystem_Booking "0..9999" -- "1..1" se_hotelsystem_BookingHandler : bookings0
+hotelsystem_Customer "1..1" -- "1..1" se_hotelsystem_Booking : customer5
+hotelsystem_IHotelAdministratorProvides "1..1" -- "1..1" se_actor_Administrator : iadministratorprovides29
+hotelsystem_IHotelCustomerProvides "1..1" -- "1..1" se_actor_Receptionist : ihotelcustomerprovides27
+hotelsystem_IHotelStartupProvides "1..1" -- "1..1" se_actor_Administrator : ihotelstartupprovides30
+hotelsystem_IHotelReceptionistProvides "1..1" -- "1..1" se_actor_Receptionist : ireceptionistprovides26
+hotelsystem_PaymentHandler "1..1" -- "1..1" se_hotelsystem_BookingHandler : paymentHandler1
+hotelsystem_Room "0..1" -- "1..1" se_hotelsystem_RoomReservation : room13
+hotelsystem_RoomExtra "0..9999" -- "1..1" se_hotelsystem_RoomReservation : roomExtras11
+hotelsystem_RoomHandler "1..1" -- "1..1" se_hotelsystem_HotelInitializer : roomHandler25
+hotelsystem_RoomReservation "0..9999" -- "1..1" se_hotelsystem_Booking : roomReservations6
+hotelsystem_RoomType "1..1" -- "1..1" se_hotelsystem_RoomReservation : roomType10
+hotelsystem_RoomType "0..9999" -- "1..1" se_hotelsystem_RoomHandler : roomTypes20
+hotelsystem_IRoomHandler "1..1" -- "1..1" se_hotelsystem_BookingHandler : roomhandler3
+hotelsystem_RoomReservation "1..1" -- "1..1" se_hotelsystem_Bill : roomreservation17
+hotelsystem_Room "0..9999" -- "1..1" se_hotelsystem_RoomHandler : rooms22
+hotelsystem_RoomType "1..1" -- "1..1" se_hotelsystem_Room : roomtype15
+@enduml

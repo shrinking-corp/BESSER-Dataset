@@ -1,0 +1,70 @@
+@startuml
+class NamedElement {
+}
+class Typeable {
+}
+class TypedElement {
+}
+class classdiagram_Association {
+  + multiplicity : str
+}
+class classdiagram_Attribute {
+}
+class classdiagram_Class {
+}
+class classdiagram_ClassDiagram {
+}
+class classdiagram_Composition {
+  + multiplicity : str
+}
+class classdiagram_DataType {
+}
+class classdiagram_Dependency {
+  + name : str
+}
+abstract class classdiagram_NamedElement {
+  + name : str
+}
+class classdiagram_Operation {
+}
+abstract class classdiagram_Typeable {
+}
+abstract class classdiagram_TypedElement {
+  + public : bool
+}
+NamedElement <|-- classdiagram_Association
+NamedElement <|-- classdiagram_Composition
+NamedElement <|-- classdiagram_Typeable
+NamedElement <|-- classdiagram_TypedElement
+Typeable <|-- classdiagram_Class
+Typeable <|-- classdiagram_DataType
+TypedElement <|-- classdiagram_Attribute
+TypedElement <|-- classdiagram_Operation
+classdiagram_Association "0..9999" --* "1..1" classdiagram_ClassDiagram : associations3
+classdiagram_Association "0..9999" -- "1..1" classdiagram_Class : associationsAsSource26
+classdiagram_Association "0..9999" -- "1..1" classdiagram_Class : associationsAsTarget27
+classdiagram_Class "0..9999" --* "1..1" classdiagram_ClassDiagram : classes0
+classdiagram_Class "1..1" -- "1..1" classdiagram_Composition : composite49
+classdiagram_ClassDiagram "1..1" *-- "0..9999" classdiagram_Composition : compositions7
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Composition : compositionsAsComposite30
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Composition : compositionsAsConstituent29
+classdiagram_Class "1..1" -- "1..1" classdiagram_Composition : constituent47
+classdiagram_ClassDiagram "1..1" *-- "0..9999" classdiagram_DataType : datatypes5
+classdiagram_Class "1..1" -- "1..1" classdiagram_Dependency : dependee37
+classdiagram_ClassDiagram "1..1" *-- "0..9999" classdiagram_Dependency : dependencies1
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Dependency : dependenciesAsDependee12
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Dependency : dependenciesAsDepender13
+classdiagram_Class "1..1" -- "1..1" classdiagram_Dependency : depender39
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Class : nested18
+classdiagram_Class "1..1" -- "0..1" classdiagram_Class : nestedIn16
+classdiagram_Attribute "0..9999" --* "1..1" classdiagram_Class : ownedAttributes9
+classdiagram_Class "1..1" *-- "0..9999" classdiagram_Operation : ownedOperations10
+classdiagram_Attribute "1..1" -- "1..1" classdiagram_Class : owner32
+classdiagram_Class "1..1" -- "1..1" classdiagram_Operation : owner34
+classdiagram_Operation "1..1" -- "0..9999" classdiagram_Typeable : parameterTypes36
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : source43
+classdiagram_Class "1..1" -- "0..9999" classdiagram_Class : subclasses24
+classdiagram_Class "1..1" -- "0..1" classdiagram_Class : superclass21
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : target45
+classdiagram_Typeable "0..1" -- "1..1" classdiagram_TypedElement : type41
+@enduml

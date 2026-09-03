@@ -1,0 +1,18 @@
+@startuml
+class MyAbstractElement {
+}
+abstract class mydsl_MyAbstractElement {
+}
+class mydsl_MyElement {
+  + name : str
+}
+class mydsl_MyModel {
+  + name : str
+}
+class mydsl_MyReference {
+}
+MyAbstractElement <|-- mydsl_MyElement
+MyAbstractElement <|-- mydsl_MyReference
+mydsl_MyElement "1..1" -- "1..1" mydsl_MyReference : element1
+mydsl_MyAbstractElement "0..9999" --* "1..1" mydsl_MyModel : elements0
+@enduml

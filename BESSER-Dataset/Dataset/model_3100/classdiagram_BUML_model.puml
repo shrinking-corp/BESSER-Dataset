@@ -1,0 +1,31 @@
+@startuml
+class Classifier {
+}
+class classdiagram_Association {
+  + name : str
+}
+class classdiagram_Attribute {
+  + is_primary : bool
+  + name : str
+}
+class classdiagram_Class {
+  + is_persistent : bool
+}
+abstract class classdiagram_Classifier {
+  + name : str
+}
+class classdiagram_Package {
+  + name : str
+}
+class classdiagram_PrimitiveDataType {
+}
+Classifier <|-- classdiagram_Class
+Classifier <|-- classdiagram_PrimitiveDataType
+classdiagram_Association "0..9999" --* "1..1" classdiagram_Package : associations1
+classdiagram_Attribute "0..9999" --* "1..1" classdiagram_Class : attrs3
+classdiagram_Classifier "0..9999" --* "1..1" classdiagram_Package : classifiers0
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : dest13
+classdiagram_Class "0..1" -- "1..1" classdiagram_Class : parent5
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : src10
+classdiagram_Attribute "1..1" -- "1..1" classdiagram_Classifier : type7
+@enduml

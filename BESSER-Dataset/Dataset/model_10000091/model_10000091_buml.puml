@@ -1,0 +1,65 @@
+@startuml
+class Destinacija {
+  + DesDrzava : str
+  + DesGrad : str
+  + DestiID : int
+}
+class Hotel {
+  + AdresaHotela : str
+  + CenaSmestaja : str
+  + DestiID : int
+  + DuzinaBoravka : int
+  + HotelID : int
+  + ImeHotela : str
+  + SobaHotela : int
+  + SpratHotela : int
+  + UslugaHotela : str
+}
+class Karta {
+  + CenaKarte : str
+  + KartaID : int
+  + OdlazakKarta : str
+  + PovratakKarta : str
+  + RezerID : int
+  + VremeOdlaska : str
+  + VremePovratka : str
+}
+class Korisnik_IS {
+  + ImeKorisnika : str
+  + KorisnikID : int
+  + Password : str
+  + PrezimeKorisnika : str
+  + UserName : str
+}
+class Osiguranje {
+  + KucaOsiguranje : str
+  + OsigID : int
+}
+class Putnik {
+  + Adresa : str
+  + Grad : str
+  + ImePut : str
+  + JMBG : str
+  + Mobilni : int
+  + OsigID : int
+  + PrezimePut : str
+  + PutnikID : int
+  + eMail : str
+}
+class Rezervisanje {
+  + Cena : str
+  + DatumDolaska : str
+  + DatumPolaska : str
+  + DestiID : int
+  + KorisnikID : int
+  + PutnikID : int
+  + RezerID : int
+  + SlobMesto : bool
+}
+Destinacija "1..1" -- "0..9999" Hotel : Destinacija_Hotel
+Karta "0..9999" -- "1..1" Rezervisanje : Karta_Rezervisanje
+Osiguranje "0..1" -- "0..9999" Putnik : Osiguranje_Putnik
+Putnik "1..1" -- "0..9999" Rezervisanje : Putnik_Rezervisanje
+Destinacija "1..1" -- "0..9999" Rezervisanje : Rezervisanje_Destinacija
+Korisnik_IS "1..1" -- "0..9999" Rezervisanje : Rezervisanje_Korisnik_IS
+@enduml

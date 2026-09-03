@@ -1,0 +1,140 @@
+@startuml
+class ExtraParenthesisRule {
+}
+class KindOfEvent {
+}
+enum Operators {
+  and_
+  between
+  equal
+  in_
+  isnot
+  lessEqualThan
+  lessThan
+  minus
+  moreEqualThan
+  moreThan
+  multiplication
+  notIn
+  not_
+  or_
+  plus
+}
+class esper_AbstractFollowBy {
+}
+class esper_Anything {
+  + operator : str
+}
+class esper_Attributes {
+}
+class esper_AttributesDefinition {
+  + name : str
+  + type : str
+}
+class esper_DefaultMethods {
+  + name : str
+}
+class esper_Domainmodel {
+}
+class esper_Event {
+}
+class esper_ExtraParenthesisRule {
+}
+class esper_FollowBy {
+}
+class esper_FollowByWhere {
+}
+class esper_From {
+}
+class esper_GroupBy {
+}
+class esper_Having {
+  + operator : str
+}
+class esper_Insert {
+}
+class esper_JoinFollowBy {
+  + operator : str
+}
+class esper_KindOfEvent {
+  + name : str
+}
+class esper_KindSelectAttributesDefinition {
+  + int : int
+  + string : str
+}
+class esper_Name {
+  + name : str
+}
+class esper_Pattern {
+}
+class esper_Priority {
+  + priorityInt : int
+}
+class esper_RuleParts {
+}
+class esper_Select {
+  + alias : str
+  + asterisk : bool
+}
+class esper_SelectAttributesDefinition {
+  + operator : str
+}
+class esper_SingleDefinition {
+  + name : str
+}
+class esper_SingleSelectDefinition {
+  + attribute : str
+}
+class esper_TerminalExpression {
+  + every : bool
+  + parenthesis : bool
+}
+class esper_Timer {
+}
+class esper_Win {
+}
+ExtraParenthesisRule <|-- esper_Anything
+KindOfEvent <|-- esper_Event
+KindOfEvent <|-- esper_Insert
+esper_Anything "0..1" --* "1..1" esper_From : anything37
+esper_Anything "0..1" --* "1..1" esper_SingleDefinition : anything67
+esper_Anything "0..1" --* "1..1" esper_GroupBy : anything78
+esper_Anything "0..1" --* "1..1" esper_Having : anything84
+esper_Anything "0..1" --* "1..1" esper_DefaultMethods : anything87
+esper_Attributes "1..1" *-- "0..9999" esper_AttributesDefinition : attribute5
+esper_FollowBy "0..1" --* "1..1" esper_TerminalExpression : betweenParenthesis59
+esper_DefaultMethods "0..1" --* "1..1" esper_KindSelectAttributesDefinition : defaultMethod24
+esper_DefaultMethods "0..1" --* "1..1" esper_Win : defaultMethod70
+esper_DefaultMethods "0..1" --* "1..1" esper_Timer : defaultMethod75
+esper_DefaultMethods "0..1" --* "1..1" esper_Having : defaultMethod81
+esper_SingleDefinition "0..9999" -- "1..1" esper_SingleSelectDefinition : event32
+esper_Event "0..1" -- "1..1" esper_From : event34
+esper_Attributes "0..1" --* "1..1" esper_Event : eventattributes3
+esper_Domainmodel "1..1" *-- "0..9999" esper_Event : events1
+esper_FollowBy "0..1" --* "1..1" esper_TerminalExpression : everyExpression56
+esper_Anything "1..1" *-- "0..9999" esper_ExtraParenthesisRule : extraParenthesis90
+esper_AbstractFollowBy "1..1" *-- "0..1" esper_FollowBy : followBy47
+esper_AbstractFollowBy "0..9999" --* "1..1" esper_JoinFollowBy : followsByJoinList45
+esper_From "0..1" --* "1..1" esper_RuleParts : fromRule15
+esper_GroupBy "0..1" --* "1..1" esper_RuleParts : groupBy17
+esper_Having "0..1" --* "1..1" esper_RuleParts : having19
+esper_Insert "0..1" --* "1..1" esper_RuleParts : insert9
+esper_JoinFollowBy "0..1" --* "1..1" esper_Pattern : joinFollowBy41
+esper_KindSelectAttributesDefinition "0..9999" --* "1..1" esper_SelectAttributesDefinition : leftSide29
+esper_FollowBy "1..1" *-- "0..1" esper_TerminalExpression : leftSide51
+esper_Name "0..1" --* "1..1" esper_RuleParts : nameRule7
+esper_From "1..1" *-- "0..1" esper_Pattern : pattern39
+esper_Priority "0..1" --* "1..1" esper_RuleParts : priority11
+esper_KindSelectAttributesDefinition "0..9999" --* "1..1" esper_SelectAttributesDefinition : rightSide26
+esper_FollowBy "1..1" *-- "0..9999" esper_TerminalExpression : rightSide53
+esper_Domainmodel "1..1" *-- "0..9999" esper_RuleParts : rules0
+esper_Select "1..1" *-- "0..9999" esper_SelectAttributesDefinition : selectAttributes21
+esper_RuleParts "1..1" *-- "0..1" esper_Select : selectRule13
+esper_KindOfEvent "0..1" -- "1..1" esper_SingleDefinition : simpleEvents65
+esper_SingleDefinition "0..1" --* "1..1" esper_TerminalExpression : singleDefinition62
+esper_KindSelectAttributesDefinition "1..1" *-- "0..1" esper_SingleSelectDefinition : singleSelectDefinition23
+esper_FollowByWhere "1..1" *-- "0..1" esper_Timer : timer73
+esper_AbstractFollowBy "1..1" *-- "0..1" esper_FollowByWhere : wherePart49
+esper_Pattern "1..1" *-- "0..1" esper_Win : win43
+@enduml

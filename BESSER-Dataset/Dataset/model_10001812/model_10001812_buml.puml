@@ -1,0 +1,228 @@
+@startuml
+class Address {
+  + City : str
+  + Country : str
+  + State : str
+  + Street : str
+  + Type : str
+  + ZipCode : str
+}
+class Administrator {
+  + adminName : str
+  + email : str
+}
+class Category {
+  + categoryID : int
+  + categoryName : str
+  + departmentId : int
+  + description : str
+}
+class Class {
+}
+class Class1 {
+}
+class Class2 {
+}
+class CreditCardPayment {
+  + CardNumber : int
+  + CardType : str
+}
+class Credit_DebitCard {
+}
+class Credit_DebitCard1 {
+}
+class Customer {
+  + address : str
+  + creditcardinfo : str
+  + customerName : str
+  + email : str
+  + newsLettersub : bool
+  + phoneno : int
+  + shippinginfo : str
+  + surveys : bool
+}
+class Department {
+  + departmentID : int
+  + departmentName : str
+  + description : str
+}
+class EmailNotification {
+}
+class Gpay {
+}
+class Item {
+  + Name : str
+  + Quantity : int
+  + attribute : str
+}
+class Notify_Interface {
+}
+class Offer_Interface {
+}
+class Order {
+  + BillingAddress : str
+  + Item : str
+  + OrderId : int
+  + OrderStatus : str
+  + Payment : str
+  + ShippingAddress : str
+  + customerId : str
+  + customerName : str
+  + dateCreated : str
+  + dateShipped : str
+  + status : str
+}
+class OrderDetail {
+  + orderId : int
+  + productId : int
+  + productName : str
+  + quantity : int
+  + subTotal : str
+  + unitCost : str
+}
+class OrderService {
+  + attribute : str
+}
+class PayLater {
+}
+class PayLater1 {
+  + UserID : str
+}
+class Payment {
+}
+class Payment_Interface {
+}
+class Price {
+  + ActualPrice : str
+}
+class Product {
+  + Name : str
+  + Price : str
+  + SKU : str
+  + attribute5 : str
+  + attribute6 : str
+  + attribute7 : str
+  + description : str
+  + productId : int
+  + reviews : str
+}
+class ProductDiscount {
+}
+class PushNotification {
+}
+class SMS {
+  + MobileNo : int
+}
+class SessionManager {
+  + departmentName : str
+  + userid : str
+}
+class Shipping {
+  + ShippingType : str
+  + _attr : int
+  + shippingAddress : str
+  + shippingId : int
+  + shippingType : str
+}
+class ShippingType_Interface {
+}
+class ShoppingCart {
+  + GetTotalPrice : str
+  + Item : str
+  + dateAdded : int
+  + quantity : int
+}
+class TimeBasedDiscount {
+}
+class User {
+  + loginStatus : str
+  + password : str
+  + userId : str
+}
+class Vendor {
+  + attribute : str
+  + attribute2 : str
+}
+class billdesk_Interface {
+}
+class cartItem {
+  + name : str
+  + productId : int
+  + quantity : int
+  + subtotal : str
+  + unitCost : str
+}
+class customeraddress_Interface {
+}
+class email {
+  + EmailAddress : str
+}
+class email_Interface {
+}
+class gpay_Interface {
+}
+class keywordSet {
+  + keyword : str
+}
+class mobile_Interface {
+}
+class notify_Interface {
+}
+class paylater_Interface {
+}
+class payment_Interface {
+}
+class pickuppoint_Interface {
+}
+class promotions {
+  + endDate : int
+  + promotionCode : str
+  + startDate : int
+}
+class searchFacade {
+}
+class shiporder_Interface {
+}
+Administrator "0..1" -- "0..1" Order : Administrator_Order
+cartItem "0..1" -- "0..1" cartItem : Cart_Cart
+Credit_DebitCard1 "0..1" -- "0..1" payment_Interface : Credit_DebitCard_payment
+Customer "0..1" -- "0..1" Order : Customer_Order
+Customer "0..1" -- "0..1" promotions : Customer_promotions
+Category "0..1" -- "0..1" Department : Department_Category
+Department "0..1" -- "0..1" Department : Department_Department
+EmailNotification "0..1" -- "0..1" notify_Interface : EmailNotification_notify
+Department "0..1" -- "0..1" Product : Genre_Genre
+Category "0..1" -- "0..1" Product : Genre_Product
+Gpay "0..1" -- "0..1" payment_Interface : Gpay_payment
+Item "0..1" -- "0..1" Order : Item_Order
+Item "0..1" -- "0..1" Product : Item_Product
+Notify_Interface "0..1" -- "0..1" OrderService : OrderService_Notify
+Order "0..1" -- "0..1" OrderService : OrderService_Order
+Address "0..1" -- "0..1" Order : Order_Address
+Order "0..1" -- "0..1" OrderDetail : Order_OrderDetail
+Order "0..1" -- "0..1" Payment : Order_Payment
+Order "0..1" -- "0..1" Payment_Interface : Order_Payment2
+Order "0..1" -- "0..1" Shipping : Order_Shipping
+Order "0..1" -- "0..1" Shipping : Order_Shippinginfo
+PayLater "0..1" -- "0..1" payment_Interface : PayLater_payment
+Price "0..1" -- "0..1" Price : Price_Price
+Offer_Interface "0..1" -- "0..1" Product : Product_Offer
+OrderDetail "0..1" -- "0..1" Product : Product_OrderDetail
+Price "0..1" -- "0..1" Product : Product_Price
+Product "0..1" -- "0..1" cartItem : Product_cartItem
+PushNotification "0..1" -- "0..1" notify_Interface : PushNotification_notify
+Department "0..1" -- "0..1" SessionManager : SessionManager_Genre
+SessionManager "0..1" -- "0..1" User : SessionManager_User
+ShippingType_Interface "0..1" -- "0..1" ShippingType_Interface : ShippingType_ShippingType
+Shipping "0..1" -- "0..1" ShippingType_Interface : Shipping_ShippingType
+Item "0..1" -- "0..1" ShoppingCart : ShoppingCart_Item
+billdesk_Interface "0..1" -- "0..1" payment_Interface : billdesk_payment
+Product "0..1" -- "0..1" keywordSet : keywordSet_Product
+email_Interface "0..1" -- "0..1" notify_Interface : notify_email
+mobile_Interface "0..1" -- "0..1" notify_Interface : notify_mobile
+gpay_Interface "0..1" -- "0..1" payment_Interface : payment_gpay
+paylater_Interface "0..1" -- "0..1" payment_Interface : payment_paylater
+keywordSet "0..1" -- "0..1" searchFacade : searchFacade_keywordSet
+customeraddress_Interface "0..1" -- "0..1" shiporder_Interface : shiporder_customeraddress
+pickuppoint_Interface "0..1" -- "0..1" shiporder_Interface : shiporder_pickuppoint
+@enduml

@@ -1,0 +1,269 @@
+@startuml
+enum Behavior {
+  CASCADE
+  RESTRICT
+}
+enum Charset {
+  ARMSCII8
+  ASCII
+  BIG5
+  BINARY
+  CP1250
+  CP1251
+  CP1256
+  CP1257
+  CP850
+  CP852
+  CP866
+  CP932
+  DEC8
+  EUCJMPS
+  EUCKR
+  GB2312
+  GBK
+  GEOSTD8
+  GREEK
+  HEBREW
+  HP8
+  KEYBCS2
+  KOI8R
+  KOI8U
+  LATIN1
+  LATIN2
+  LATIN5
+  LATIN7
+  MACCE
+  MACROMAN
+  SJIS
+  SWE7
+  TIS620
+  UCS2
+  UJIS
+  UTF8
+}
+enum ColumnType {
+  BIGINT
+  BINARY
+  BIT
+  BLOB
+  CHAR
+  DATE
+  DATETIME
+  DECIMAL
+  DOUBLE
+  FLOAT
+  INTEGER
+  LONGBLOB
+  LONGTEXT
+  MEDIUMBLOB
+  MEDIUMINT
+  MEDIUMTEXT
+  NUMERIC
+  REAL
+  SMALLINT
+  TEXT
+  TIME
+  TIMESTAMP
+  TINYBLOB
+  TINYINT
+  TINYTEXT
+  VARBINARY
+  VARCHAR
+  YEAR
+}
+enum FormMethod {
+  GET
+  POST
+}
+enum InputType {
+  BUTTON
+  TEXT
+}
+class Instruction {
+}
+class Tag {
+}
+class webapp_Action {
+  + name : str
+  + returnType : str
+}
+class webapp_AppConfig {
+}
+class webapp_Attribute {
+  + name : str
+  + value : str
+}
+class webapp_BusinessObject {
+  + name : str
+  + package : str
+}
+class webapp_Check {
+  + expr : str
+}
+class webapp_Column {
+  + defaultValue : str
+  + isNotNull : bool
+  + name : str
+  + size : int
+  + type : str
+  + useZeroFill : bool
+}
+class webapp_Constraint {
+}
+class webapp_Controller {
+}
+class webapp_Detail {
+  + precision : int
+  + scale : int
+}
+class webapp_Field {
+  + defaultValue : str
+  + name : str
+  + type : str
+}
+class webapp_File {
+}
+class webapp_ForeignKey {
+}
+class webapp_Form {
+  + method : str
+}
+class webapp_Image {
+}
+class webapp_Input {
+  + type : str
+}
+class webapp_Instruction {
+}
+class webapp_Library {
+}
+class webapp_Mapping {
+  + left : str
+  + right : str
+}
+class webapp_Messages {
+}
+class webapp_Model {
+  + databaseName : str
+  + password : str
+  + url : str
+  + userName : str
+}
+class webapp_Navigation {
+  + message : str
+}
+class webapp_OnDelete {
+  + behavior : str
+}
+class webapp_OnUpdate {
+  + behavior : str
+}
+class webapp_Page {
+  + isMain : bool
+  + name : str
+}
+class webapp_PrimaryKey {
+}
+class webapp_Properties {
+  + name : str
+  + package : str
+}
+class webapp_Resource {
+}
+class webapp_Table {
+  + charset : str
+  + name : str
+}
+class webapp_TableHTML {
+}
+abstract class webapp_Tag {
+  + _property : str
+}
+class webapp_Td {
+}
+class webapp_Text {
+  + content : str
+}
+class webapp_Th {
+}
+class webapp_Tr {
+}
+class webapp_Unique {
+}
+class webapp_Validator {
+  + name : str
+  + package : str
+}
+class webapp_View {
+}
+class webapp_WebApp {
+  + framework : str
+  + name : str
+}
+class webapp_WebConfig {
+  + displayName : str
+}
+Instruction <|-- webapp_Tag
+Instruction <|-- webapp_Text
+Tag <|-- webapp_Form
+Tag <|-- webapp_Input
+Tag <|-- webapp_Messages
+Tag <|-- webapp_TableHTML
+Tag <|-- webapp_Td
+Tag <|-- webapp_Th
+Tag <|-- webapp_Tr
+webapp_Action "0..9999" -- "1..1" webapp_BusinessObject : action107
+webapp_Action "1..9999" --* "1..1" webapp_Controller : action23
+webapp_Action "0..1" -- "1..1" webapp_Input : action83
+webapp_AppConfig "1..1" --* "1..1" webapp_WebApp : appConfig0
+webapp_Attribute "0..9999" --* "1..1" webapp_Tag : attribute81
+webapp_BusinessObject "0..9999" -- "1..1" webapp_BusinessObject : businessObject111
+webapp_BusinessObject "1..1" -- "1..1" webapp_Field : businessObject116
+webapp_BusinessObject "0..9999" --* "1..1" webapp_Model : businessObject19
+webapp_Action "1..1" -- "0..1" webapp_BusinessObject : businessObject78
+webapp_Input "1..1" -- "0..1" webapp_Mapping : buttonValue88
+webapp_Check "0..9999" --* "1..1" webapp_Constraint : check43
+webapp_Column "1..9999" --* "1..1" webapp_Table : column33
+webapp_Column "1..9999" -- "1..1" webapp_PrimaryKey : column47
+webapp_Column "1..9999" -- "1..1" webapp_Unique : column63
+webapp_Constraint "0..1" --* "1..1" webapp_Table : constraint35
+webapp_Controller "1..1" --* "1..1" webapp_WebApp : controller9
+webapp_Column "1..1" *-- "0..1" webapp_Detail : detail37
+webapp_Column "1..1" -- "1..1" webapp_ForeignKey : externalColumn50
+webapp_ForeignKey "1..1" -- "1..1" webapp_Table : externalTable57
+webapp_BusinessObject "1..1" *-- "0..9999" webapp_Field : field104
+webapp_File "0..9999" --* "1..1" webapp_Resource : file27
+webapp_Constraint "1..1" *-- "0..9999" webapp_ForeignKey : foreignKey45
+webapp_Navigation "1..1" -- "0..1" webapp_Page : from_119
+webapp_Image "0..9999" --* "1..1" webapp_Resource : image25
+webapp_Instruction "0..9999" --* "1..1" webapp_Page : instruction75
+webapp_Column "1..1" -- "1..1" webapp_ForeignKey : internalColumn60
+webapp_Input "1..1" -- "0..1" webapp_Mapping : label85
+webapp_Library "0..9999" --* "1..1" webapp_WebApp : library3
+webapp_Mapping "0..9999" --* "1..1" webapp_Properties : mapping31
+webapp_BusinessObject "1..1" -- "1..1" webapp_Model : model113
+webapp_Model "1..1" --* "1..1" webapp_WebApp : model7
+webapp_Navigation "0..9999" --* "1..1" webapp_View : navigation15
+webapp_ForeignKey "1..1" *-- "0..1" webapp_OnDelete : onDelete53
+webapp_ForeignKey "1..1" *-- "0..1" webapp_OnUpdate : onUpdate55
+webapp_Page "1..9999" --* "1..1" webapp_View : page13
+webapp_Page "0..1" -- "1..1" webapp_Validator : page66
+webapp_Constraint "1..1" *-- "0..1" webapp_PrimaryKey : primaryKey39
+webapp_Properties "0..9999" --* "1..1" webapp_Resource : propertie29
+webapp_Page "1..1" -- "0..9999" webapp_Properties : properties69
+webapp_Resource "0..1" --* "1..1" webapp_WebApp : resource11
+webapp_Model "1..1" *-- "0..9999" webapp_Table : table17
+webapp_Tag "0..9999" --* "1..1" webapp_Td : tag101
+webapp_Form "1..1" *-- "1..9999" webapp_Tag : tag77
+webapp_Td "0..9999" --* "1..1" webapp_Tr : td99
+webapp_Field "0..1" -- "1..1" webapp_Input : textValue91
+webapp_Th "0..9999" --* "1..1" webapp_Tr : th97
+webapp_Mapping "0..1" -- "1..1" webapp_Page : title72
+webapp_Navigation "1..1" -- "1..1" webapp_Page : to122
+webapp_TableHTML "1..1" *-- "0..9999" webapp_Tr : tr96
+webapp_Constraint "1..1" *-- "0..9999" webapp_Unique : unique41
+webapp_Controller "1..1" *-- "1..9999" webapp_Validator : validator21
+webapp_Input "1..1" -- "0..1" webapp_Validator : validator93
+webapp_View "1..1" --* "1..1" webapp_WebApp : view5
+webapp_WebApp "1..1" *-- "1..1" webapp_WebConfig : webConfig1
+@enduml

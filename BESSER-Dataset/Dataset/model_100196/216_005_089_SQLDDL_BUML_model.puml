@@ -1,0 +1,98 @@
+@startuml
+class Column {
+}
+class Database {
+}
+class ForeignKey {
+}
+class Key {
+}
+class LocatedElement {
+}
+class NamedElement {
+}
+class Parameter {
+}
+class SQLDDL_Column {
+  + canBeNull : str
+  + name : str
+}
+class SQLDDL_Database {
+}
+class SQLDDL_ForeignKey {
+}
+class SQLDDL_IntegerVal {
+  + value : str
+}
+abstract class SQLDDL_Key {
+  + isUnique : str
+  + name : str
+}
+abstract class SQLDDL_LocatedElement {
+  + commentsAfter : str
+  + commentsBefore : str
+  + location : str
+}
+abstract class SQLDDL_NamedElement {
+  + name : str
+}
+class SQLDDL_NullVal {
+}
+class SQLDDL_Parameter {
+}
+class SQLDDL_PrimaryKey {
+}
+class SQLDDL_SimpleKey {
+}
+class SQLDDL_StringVal {
+  + value : str
+}
+class SQLDDL_Table {
+}
+abstract class SQLDDL_TableElement {
+}
+class SQLDDL_Type {
+  + isUnsigned : str
+  + length : str
+}
+abstract class SQLDDL_Value {
+}
+class Table {
+}
+class TableElement {
+}
+class Type {
+}
+class Value {
+}
+Key <|-- SQLDDL_ForeignKey
+Key <|-- SQLDDL_PrimaryKey
+Key <|-- SQLDDL_SimpleKey
+LocatedElement <|-- SQLDDL_NamedElement
+LocatedElement <|-- SQLDDL_TableElement
+LocatedElement <|-- SQLDDL_Value
+NamedElement <|-- SQLDDL_Database
+NamedElement <|-- SQLDDL_Parameter
+NamedElement <|-- SQLDDL_Table
+NamedElement <|-- SQLDDL_Type
+TableElement <|-- SQLDDL_Column
+TableElement <|-- SQLDDL_Key
+Value <|-- SQLDDL_IntegerVal
+Value <|-- SQLDDL_NullVal
+Value <|-- SQLDDL_StringVal
+Column "1..9999" -- "1..1" SQLDDL_Key : columns14
+Database "1..1" -- "1..1" SQLDDL_Table : database1
+SQLDDL_Column "1..1" *-- "0..1" Value : default11
+SQLDDL_Table "1..1" *-- "0..9999" TableElement : elements3
+Key "0..9999" -- "1..1" SQLDDL_Column : keys13
+Parameter "0..9999" --* "1..1" SQLDDL_Table : parameters4
+ForeignKey "0..9999" -- "1..1" SQLDDL_Table : referencedBy2
+ForeignKey "0..9999" -- "1..1" SQLDDL_Column : referencedBy8
+Column "1..9999" -- "1..1" SQLDDL_ForeignKey : referencedColumns17
+SQLDDL_ForeignKey "1..1" -- "1..1" Table : referencedTable15
+SQLDDL_Parameter "1..1" -- "1..1" Table : table20
+SQLDDL_TableElement "1..1" -- "1..1" Table : table6
+SQLDDL_Database "1..1" *-- "0..9999" Table : tables0
+SQLDDL_Column "1..1" *-- "1..1" Type : type10
+SQLDDL_Parameter "1..1" *-- "0..1" Value : value22
+@enduml

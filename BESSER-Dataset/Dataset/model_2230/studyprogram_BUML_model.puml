@@ -1,0 +1,35 @@
+@startuml
+enum Season {
+  Fall
+  Spring
+  Summer
+}
+class studyprogram_Course {
+  + credits : float
+  + name : str
+}
+class studyprogram_Department {
+  + name : str
+}
+class studyprogram_Program {
+  + name : str
+}
+class studyprogram_Semester {
+  + season : str
+  + year : int
+}
+class studyprogram_Slot {
+}
+class studyprogram_Specialization {
+  + name : str
+}
+studyprogram_Specialization "0..9999" --* "1..1" studyprogram_Specialization : additionalSpecializations7
+studyprogram_Course "1..9999" -- "1..1" studyprogram_Slot : availableCourses11
+studyprogram_Program "1..1" *-- "1..9999" studyprogram_Semester : baseSemesters0
+studyprogram_Course "0..9999" --* "1..1" studyprogram_Department : courses16
+studyprogram_Department "1..1" *-- "0..9999" studyprogram_Program : programs18
+studyprogram_Course "1..1" -- "1..1" studyprogram_Slot : selectedCourse13
+studyprogram_Semester "1..1" *-- "1..9999" studyprogram_Slot : slots9
+studyprogram_Semester "1..9999" --* "1..1" studyprogram_Specialization : specializationSemesters3
+studyprogram_Program "1..1" *-- "0..9999" studyprogram_Specialization : specializations1
+@enduml

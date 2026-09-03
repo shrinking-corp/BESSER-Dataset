@@ -1,0 +1,106 @@
+@startuml
+class Admin {
+  + Password : str
+  + UserName : str
+}
+class Admin1 {
+  + UserName : str
+  + password : str
+}
+class Administrator_Actor {
+}
+class Authentication_UseCase {
+}
+class Customer {
+  + UserName : str
+  + address : str
+  + country : str
+  + password : str
+  + postal_code : int
+}
+class Customer1 {
+  + Customer_Name : str
+  + S : str
+}
+class Employee {
+  + Emp_Address : str
+  + Emp_ContactNo : str
+  + Emp_Department : str
+  + Emp_Email : str
+  + Emp_Id : int
+  + Emp_Name : str
+  + Emp_Salary : float
+  + Password : str
+}
+class Employee1 {
+  + Email : str
+  + Emp_Address : str
+  + Emp_Dep : str
+  + Salary : int
+  + UserName : str
+  + attribute : str
+  + contact_no : int
+  + name : str
+  + password : str
+}
+class Employee_Actor {
+}
+class Employee_Management_System_Component {
+}
+class Leave {
+  + Emp_Id : int
+  + Leave_EndDate : date
+  + Leave_Status : str
+  + Leave_Title : str
+  + Leave_detail : str
+  + leave_id : int
+}
+class Login_external {
+}
+class Logout_external {
+}
+class Manager {
+  + UserName : str
+  + password : str
+}
+class Manager1 {
+  + Manager_id : int
+  + Name : str
+  + Password : str
+}
+class Manager2 {
+  + id : int
+  + name : str
+  + password : str
+}
+class Order {
+  + id : int
+  + name : str
+}
+class Salary {
+  + Emp_Id : int
+  + OverTime : str
+  + Sly_Basic : float
+  + Sly_Decrement : float
+  + Sly_Increment : float
+  + Sly_Netgross : float
+}
+class Salary_Management_UseCase {
+}
+class Users {
+  + Password : str
+  + UserName : str
+}
+class Users1 {
+  + id : str
+  + password : str
+}
+Admin1 "1..1" -- "0..9999" Employee1 : Admin_Employee
+Admin1 "1..1" -- "0..1" Order : Admin_Order
+Customer "1..1" -- "0..9999" Order : Customer_Order
+Employee "0..1" -- "0..1" Leave : Employee_Leave
+Employee_Actor "0..1" -- "0..1" Login_external : Employee_Login
+Employee_Actor "0..1" -- "0..1" Logout_external : Employee_Logout
+Employee1 "1..9999" -- "1..1" Manager2 : Employee_Manager
+Employee "0..1" -- "0..1" Salary : Employee_Salary
+@enduml

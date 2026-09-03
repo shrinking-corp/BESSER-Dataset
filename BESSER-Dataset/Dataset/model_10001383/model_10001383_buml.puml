@@ -1,0 +1,153 @@
+@startuml
+class Authentication_UseCase {
+}
+class Authentication_or_service_or_identity_provider_Actor {
+}
+class Checkout_UseCase {
+}
+class Checkout_UseCase1 {
+}
+class Choose_items_UseCase {
+}
+class Credit_payment_service_Actor {
+}
+class Customer_Actor {
+}
+class Customer_Actor1 {
+}
+class Customer_authentication__UseCase {
+}
+enum Integer {
+}
+class Log_in__sign_in_page_UseCase {
+}
+class Login_UseCase {
+}
+class Online_Shopping_Basket {
+  + Contents : Online_Shopping_BasketItem
+  + IsEmpty : bool
+  + attribute : str
+}
+class Online_Shopping_BasketItem {
+  + ProductID : str
+  + Quantity : int
+}
+class Online_Shopping_Card_payment {
+  + CVS_number : int
+  + Card_number : int
+  + Cardholder_name : str
+  + Valid_date : int
+  + payment_type : str
+}
+class Online_Shopping_Checkout {
+  + Billing_address : str
+  + Checkout_address : str
+  + Email_address : str
+  + Phone_number : int
+}
+class Online_Shopping_Customer {
+  + Address : str
+  + Age : int
+  + Password : str
+  + Username : str
+}
+class Online_Shopping_Customer_points {
+  + Balance : Integer
+}
+class Online_Shopping_Item {
+  + Description : str
+  + Name : str
+  + Price : int
+  + ProductID : str
+}
+enum Online_Shopping_Or {
+}
+class Online_Shopping_Order {
+  + Contents : Online_Shopping_Orderitem
+  + Placed_Date : int
+  + State : str
+}
+class Online_Shopping_Orderitem {
+  + ProductID : str
+  + Quantity : int
+  + Sub_Total : str
+}
+class Online_Shopping_Orderstate {
+  + attribute : str
+}
+class Online_Shopping_PayPal_payment {
+  + Password : str
+  + Username : str
+  + attribute : str
+}
+class Online_Shopping_Special_offers {
+  + Discount : int
+  + Price : str
+}
+class Online_customer_Actor {
+}
+class PayPal__Mastercard__etc__UseCase {
+}
+class Payment_UseCase {
+}
+class Search_for_items_UseCase {
+}
+class View_items_UseCase {
+}
+class _unnamed {
+}
+class add_items_to_shopping_cart_UseCase {
+}
+class bank__Actor {
+}
+class browse_catalogue_UseCase {
+}
+class claim_some_points_UseCase {
+}
+class credit_card__shop_card__PayPal_UseCase {
+}
+class make_a_purchase_UseCase {
+}
+class payment_UseCase {
+}
+class register_UseCase {
+}
+class save_items_for_later_in_wish_list_UseCase {
+}
+class special_offers_UseCase {
+}
+class user_authentication_cookie_UseCase {
+}
+class view_items_UseCase {
+}
+class view_recommended_items_UseCase {
+}
+Online_Shopping_Basket "0..1" -- "0..1" Online_Shopping_BasketItem : Basket_BasketItem
+Online_Shopping_Basket "0..1" -- "0..1" Online_Shopping_Checkout : Basket_Checkout
+Online_Shopping_Card_payment "0..1" -- "0..1" Online_Shopping_Order : Card_payment_Orderitem
+Online_Shopping_Card_payment "0..1" -- "0..1" Online_Shopping_Checkout : Checkout_Card_payment
+Checkout_UseCase1 "0..1" -- "0..1" Online_customer_Actor : Checkout_Online_customer
+Online_Shopping_Checkout "0..1" -- "0..1" Online_Shopping_PayPal_payment : Checkout_PayPal_payment
+Checkout_UseCase "0..1" -- "0..1" make_a_purchase_UseCase : Checkout_make_a_purchase
+Checkout_UseCase "0..1" -- "0..1" Choose_items_UseCase : Choose_items_Checkout
+Choose_items_UseCase "0..1" -- "0..1" make_a_purchase_UseCase : Choose_items_make_a_purchase
+Credit_payment_service_Actor "0..1" -- "0..1" payment_UseCase : Credit_payment_service_payment
+Online_Shopping_Customer "0..1" -- "0..1" Online_Shopping_Customer_points : Customer_Customer_points
+Online_Shopping_Customer "0..1" -- "0..1" Online_Shopping_Item : Customer_Item
+Customer_Actor "0..1" -- "0..1" Login_UseCase : Customer_Login
+Online_Shopping_Customer "0..1" -- "0..1" Online_Shopping_Special_offers : Customer_Special_offers
+Customer_Actor1 "0..1" -- "0..1" add_items_to_shopping_cart_UseCase : Customer_add_items_to_shopping_cart
+Customer_Actor "0..1" -- "0..1" register_UseCase : Customer_register
+Customer_Actor1 "0..1" -- "0..1" save_items_for_later_in_wish_list_UseCase : Customer_save_items_for_late_in_wish_list
+Online_Shopping_Basket "0..1" -- "0..1" Online_Shopping_Item : Item_Basket
+Authentication_or_service_or_identity_provider_Actor "0..1" -- "0..1" Log_in__sign_in_page_UseCase : Log_in__sign_in_page_Authentication_or_service_or_identity_provider
+Login_UseCase "0..1" -- "0..1" view_items_UseCase : Login_view_items
+Customer_authentication__UseCase "0..1" -- "0..1" Online_customer_Actor : Online_customer_Customer_authentication
+Online_Shopping_Order "0..1" -- "0..1" Online_Shopping_Orderitem : Orderitem_Order
+Online_Shopping_Order "0..1" -- "0..1" Online_Shopping_PayPal_payment : PayPal_payment_Orderitem
+Online_Shopping_BasketItem "0..1" -- "0..1" Online_Shopping_Special_offers : Special_offers_BasketItem
+bank__Actor "0..1" -- "0..1" credit_card__shop_card__PayPal_UseCase : bank__credit_card__shop_card__PayPal
+Choose_items_UseCase "0..1" -- "0..1" special_offers_UseCase : special_offers_Choose_items
+Authentication_or_service_or_identity_provider_Actor "0..1" -- "0..1" user_authentication_cookie_UseCase : user_authentication_cookie_Authentication_or_service_or_identity_provider
+Choose_items_UseCase "0..1" -- "0..1" view_items_UseCase : view_items_Choose_items
+@enduml

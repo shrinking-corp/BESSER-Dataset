@@ -1,0 +1,115 @@
+@startuml
+class AndState {
+}
+class AssociationDataStateBase {
+}
+class AssociationStateState {
+}
+class CompoundState {
+}
+class DataVar {
+}
+class HSM_AndState {
+}
+class HSM_AssociationDataStateBase {
+}
+class HSM_AssociationStateState {
+}
+class HSM_CompoundState {
+}
+class HSM_DataVar {
+}
+class HSM_Init {
+}
+class HSM_MgaObject {
+  + name : str
+  + position : str
+}
+class HSM_OrState {
+}
+class HSM_PrimitiveState {
+}
+class HSM_RootFolder {
+  + name : str
+}
+class HSM_State {
+}
+class HSM_StateBase {
+  + defaultTransition : str
+  + marked : str
+}
+class HSM_StateDataRelation {
+  + color : str
+  + value : str
+}
+class HSM_StateDateRelation {
+  + color : str
+  + value : str
+}
+class HSM_Transition {
+  + action : str
+  + guard : str
+  + isSync : str
+  + trigger : str
+}
+class Init {
+}
+class MgaObject {
+}
+class OrState {
+}
+class PrimitiveState {
+}
+class RootFolder {
+}
+class State {
+}
+class StateBase {
+}
+class StateDataRelation {
+}
+class Transition {
+}
+CompoundState <|-- HSM_AndState
+CompoundState <|-- HSM_OrState
+MgaObject <|-- HSM_DataVar
+MgaObject <|-- HSM_StateBase
+MgaObject <|-- HSM_StateDateRelation
+MgaObject <|-- HSM_Transition
+PrimitiveState <|-- HSM_Init
+PrimitiveState <|-- HSM_State
+PrimitiveState <|-- HSM_StateDataRelation
+StateBase <|-- HSM_CompoundState
+StateBase <|-- HSM_PrimitiveState
+AndState "1..1" -- "1..1" HSM_CompoundState : andState36
+AssociationDataStateBase "1..1" -- "1..1" HSM_StateDataRelation : associationDataStateBase146
+AssociationDataStateBase "1..1" -- "1..1" HSM_StateBase : associationDataStateBase4
+AssociationDataStateBase "1..1" -- "1..1" HSM_DataVar : associationDataStateBase8
+AssociationStateState "1..1" -- "1..1" HSM_Transition : associationStateState13
+AssociationStateState "1..9999" -- "1..1" HSM_StateBase : associationStateStatedst0
+AssociationStateState "1..9999" -- "1..1" HSM_StateBase : associationStateStatesrc1
+CompoundState "0..9999" --* "1..1" HSM_OrState : compoundState32
+CompoundState "0..9999" --* "1..1" HSM_AndState : compoundState34
+DataVar "0..9999" -- "1..1" HSM_StateBase : data3
+DataVar "0..9999" --* "1..1" HSM_OrState : dataVar25
+DataVar "1..9999" -- "1..1" HSM_AssociationDataStateBase : dataVar57
+HSM_AssociationStateState "1..1" -- "1..9999" StateBase : dstTransition51
+HSM_OrState "1..1" *-- "1..1" Init : init23
+HSM_Transition "1..1" -- "1..1" OrState : orState11
+HSM_RootFolder "1..1" *-- "0..9999" OrState : orState17
+HSM_CompoundState "1..1" -- "1..1" OrState : orState37
+HSM_Init "1..1" -- "1..1" OrState : orState40
+HSM_State "1..1" -- "1..1" OrState : orState42
+HSM_StateDataRelation "1..1" -- "1..1" OrState : orState44
+HSM_DataVar "1..1" -- "1..1" OrState : orState7
+HSM_OrState "1..1" -- "1..1" RootFolder : rootFolder19
+HSM_RootFolder "1..1" *-- "0..9999" RootFolder : rootFolders16
+HSM_AssociationStateState "1..1" -- "1..9999" StateBase : srcTransition53
+HSM_OrState "1..1" *-- "0..9999" State : state21
+HSM_AssociationDataStateBase "1..1" -- "1..9999" StateBase : stateBase59
+HSM_DataVar "1..1" -- "0..9999" StateBase : stateBase6
+HSM_OrState "1..1" *-- "0..9999" StateDataRelation : stateDataRelation28
+HSM_AssociationDataStateBase "1..1" -- "1..1" StateDataRelation : stateDataRelation55
+HSM_OrState "1..1" *-- "0..9999" Transition : transition30
+HSM_AssociationStateState "1..1" -- "1..1" Transition : transition49
+@enduml

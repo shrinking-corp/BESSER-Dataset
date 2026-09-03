@@ -1,0 +1,48 @@
+@startuml
+class ATM_s {
+  + OperatorName : str
+  + PIN : int
+  + Withdrawn : int
+}
+class AccountHolder {
+  + AccNo : int
+  + Address : str
+  + Name : str
+}
+class Accounts {
+  + AccountNo : int
+  + branchCode : str
+}
+class Bank {
+  + ID : int
+  + Name : str
+  + Name_string : str
+  + locality : str
+}
+class BankEmployee {
+  + EmpAdd : str
+  + EmployeeID : int
+  + Name : str
+  + Salary : int
+}
+class CurrentAccount {
+  + AccNo : int
+  + HolderName : str
+  + PIn : int
+}
+class Loan_Account {
+  + Acc_No : int
+  + HolderName : str
+  + Loan_No : int
+  + Type : str
+}
+class Savings_Account {
+  + AccNo : int
+  + Holder_Name : str
+  + PIn : Savings_Account
+}
+AccountHolder "0..1" -- "0..1" Accounts : Accounts_AccountHolder
+Accounts "0..1" -- "0..1" Bank : Accounts_Bank
+ATM_s "0..1" -- "0..1" Bank : Bank_ATM_s
+Bank "0..1" -- "0..1" BankEmployee : Bank_BankEmployee
+@enduml

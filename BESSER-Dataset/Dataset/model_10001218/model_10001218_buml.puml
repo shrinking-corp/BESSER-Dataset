@@ -1,0 +1,107 @@
+@startuml
+class Arbitro {
+  + Cod_Arbitro : str
+  + Cod_persona : str
+  + Partidos : str
+}
+class Clasificacion {
+  + Cod_Equipo : str
+  + DG : str
+  + GC : str
+  + GF : str
+  + JE : str
+  + JG : str
+  + JJ : str
+  + JP : str
+  + Posicion : str
+  + Puntos : str
+}
+class Entrenador {
+  + Cod_Entrenador : str
+  + Cod_persona : str
+  + Titulos : str
+}
+class Equipo {
+  + Ciudad : str
+  + Cod_Entrenador : str
+  + Cod_equipo : str
+  + F_fundacion : str
+  + Nombre : str
+  + Titulos : str
+}
+class Estadio {
+  + Capacidad : str
+  + Cod_Estadio : str
+  + Cod_equipo : str
+  + Nombre : str
+  + Terreno : str
+  + Ubicacion : str
+  + Ubicacion1 : str
+}
+class Evento {
+  + Cod_TipodeEvento : str
+  + Cod_jugador : str
+  + Cod_partido : str
+}
+class Jugador {
+  + Altura : str
+  + Cod_equipo : str
+  + Cod_jugador : str
+  + Cod_persona : str
+  + Dorsal : str
+  + Peso : str
+  + Posicion : str
+  + Titulos : str
+}
+class Lesion {
+  + Cod_jugador : str
+  + Condicion : str
+  + FechaLesion : str
+  + TiempoLesion : str
+}
+class Liga {
+  + Cod_Clasificacion : str
+  + Cod_liga : str
+  + Inferior : str
+  + Nombre : str
+  + Num_equipos : str
+  + Superior : str
+}
+class Partido {
+  + Cod_liga : str
+  + Cod_partido : str
+  + Fecha : str
+  + Ganador : str
+  + GolLocal : str
+  + GolVisita : str
+  + Hora : str
+  + Local : str
+  + Visita : str
+}
+class Persona {
+  + Apellido : str
+  + Cod_persona : str
+  + FechaNacimiento : str
+  + Nacionalidad : str
+  + Nombre : str
+  + NombreCorto : str
+}
+class TipoDeEvento {
+  + Cod_TipodeEvento : str
+  + Evento : str
+}
+Entrenador "1..1" -- "1..1" Equipo : Entrenador_Equipo
+Equipo "1..1" -- "0..9999" Partido : Equipo_Partido
+Evento "0..9999" -- "1..1" Partido : Evento_Partido
+Equipo "1..1" -- "0..9999" Jugador : Jugador_Equipo
+Evento "0..9999" -- "1..1" Jugador : Jugador_Evento
+Jugador "1..1" -- "0..9999" Lesion : Jugador_Lesion
+Clasificacion "1..1" -- "0..9999" Liga : Liga_Clasificacion
+Liga "1..1" -- "0..9999" Partido : Liga_Partido
+Equipo "1..1" -- "0..9999" Partido : Partido_Equipo
+Estadio "1..1" -- "0..9999" Partido : Partido_Estadio
+Arbitro "0..9999" -- "1..1" Persona : Persona_Arbitro
+Entrenador "0..9999" -- "1..1" Persona : Persona_Entrenador
+Jugador "0..9999" -- "1..1" Persona : Persona_Jugador
+Evento "0..9999" -- "1..1" TipoDeEvento : TipoDeEvento_Evento
+@enduml

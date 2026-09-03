@@ -1,0 +1,115 @@
+@startuml
+class Caracteristica {
+}
+enum CardinalidadeMaxima {
+  OR
+  XOR
+}
+class Elemento {
+}
+class ElementoCaracteristico {
+}
+enum OperadorAcaoLogico {
+  AND
+}
+enum OperadorLogico {
+  AND
+  OR
+}
+enum OperadorRelacional {
+  DIFERENTE
+  IGUAL
+  MAIOR
+  MAIORIGUAL
+  MENOR
+  MENORIGUAL
+}
+enum Origem {
+  Derivada
+  Perfil
+  Sentida
+  Usuario
+}
+class PontoDeVariacao {
+}
+enum Presenca {
+  AUSENTE
+  PRESENTE
+}
+enum Qualidade {
+  Alto
+  Baixo
+}
+enum TipoValor {
+  TBoolean
+  TFloat
+  TInteger
+  TString
+}
+enum Validade {
+  Frequente
+  Permanente
+  Raramente
+  Volatil
+}
+class caracteristica_Atributo {
+  + tipoValor : str
+}
+class caracteristica_Caracteristica {
+}
+class caracteristica_CaracteristicaAgrupada {
+}
+class caracteristica_CaracteristicaMandatoria {
+}
+class caracteristica_CaracteristicaOpcional {
+}
+class caracteristica_CaracteristicaRaiz {
+}
+class caracteristica_Elemento {
+  + nome : str
+}
+class caracteristica_ElementoCaracteristico {
+}
+class caracteristica_LPS {
+  + nome : str
+}
+class caracteristica_PontoDeVariacao {
+}
+class caracteristica_Variacao {
+  + cardinalidadeMaxima : str
+  + cardinalidadeMinima : str
+}
+class caracteristica_VariacaoDois {
+  + cardinalidadeMaxima : str
+  + cardinalidadeMaximaOr : str
+  + cardinalidadeMinimaOr : str
+}
+class caracteristica_Variante {
+}
+Caracteristica <|-- caracteristica_CaracteristicaAgrupada
+Caracteristica <|-- caracteristica_CaracteristicaMandatoria
+Caracteristica <|-- caracteristica_CaracteristicaOpcional
+Caracteristica <|-- caracteristica_CaracteristicaRaiz
+Caracteristica <|-- caracteristica_VariacaoDois
+Caracteristica <|-- caracteristica_Variante
+Elemento <|-- caracteristica_Atributo
+Elemento <|-- caracteristica_Caracteristica
+Elemento <|-- caracteristica_ElementoCaracteristico
+Elemento <|-- caracteristica_Variacao
+ElementoCaracteristico <|-- caracteristica_CaracteristicaAgrupada
+ElementoCaracteristico <|-- caracteristica_CaracteristicaOpcional
+ElementoCaracteristico <|-- caracteristica_VariacaoDois
+ElementoCaracteristico <|-- caracteristica_Variante
+PontoDeVariacao <|-- caracteristica_Variacao
+PontoDeVariacao <|-- caracteristica_Variante
+caracteristica_CaracteristicaRaiz "1..1" -- "1..1" caracteristica_LPS : LpsDoSistema12
+caracteristica_Atributo "0..9999" -- "1..1" caracteristica_Caracteristica : atributo10
+caracteristica_Caracteristica "1..1" -- "0..9999" caracteristica_Caracteristica : caracteristicaFilha6
+caracteristica_Atributo "1..1" -- "0..1" caracteristica_Caracteristica : caracteristicaPai1
+caracteristica_Caracteristica "0..1" -- "1..1" caracteristica_Variacao : caracteristicaPai15
+caracteristica_Caracteristica "1..1" -- "0..1" caracteristica_Caracteristica : caracteristicaPai3
+caracteristica_Elemento "0..9999" --* "1..1" caracteristica_LPS : elementos0
+caracteristica_Variacao "0..1" -- "1..1" caracteristica_Variante : variacaoPai17
+caracteristica_Caracteristica "1..1" -- "0..9999" caracteristica_Variacao : variacoes8
+caracteristica_Variacao "1..1" -- "0..9999" caracteristica_Variante : variantes14
+@enduml

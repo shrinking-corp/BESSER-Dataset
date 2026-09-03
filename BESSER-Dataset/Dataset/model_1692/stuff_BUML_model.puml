@@ -1,0 +1,33 @@
+@startuml
+class NamedElement {
+}
+class Thing {
+}
+class stuff_Bar {
+}
+class stuff_Baz {
+}
+class stuff_Foo {
+  + name : str
+}
+abstract class stuff_NamedElement {
+  + name : str
+}
+class stuff_Stuff {
+}
+class stuff_Thing {
+  + id : int
+}
+class stuff_World {
+}
+NamedElement <|-- stuff_Bar
+NamedElement <|-- stuff_Baz
+Thing <|-- stuff_Stuff
+stuff_Bar "0..9999" --* "1..1" stuff_Stuff : bars5
+stuff_Bar "1..1" *-- "0..9999" stuff_Baz : baz13
+stuff_Foo "0..9999" --* "1..1" stuff_Stuff : foos4
+stuff_Thing "0..9999" -- "1..1" stuff_Thing : others2
+stuff_Foo "1..1" -- "0..1" stuff_Stuff : src7
+stuff_Thing "0..9999" --* "1..1" stuff_World : things0
+stuff_Foo "1..1" -- "0..1" stuff_Thing : trg10
+@enduml

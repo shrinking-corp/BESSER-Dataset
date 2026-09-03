@@ -1,0 +1,44 @@
+@startuml
+class Ent {
+}
+class bookstore_Book {
+  + pages : int
+  + title : str
+}
+class bookstore_Cd {
+  + albumName : str
+  + bandArtist : str
+}
+class bookstore_Dvd {
+  + title : str
+}
+class bookstore_Ent {
+  + name : str
+}
+class bookstore_Magazine {
+  + pages : int
+  + title : str
+  + version : str
+}
+class bookstore_Model {
+}
+class bookstore_Person {
+  + achternaam : str
+  + voornaam : str
+}
+Ent <|-- bookstore_Book
+Ent <|-- bookstore_Cd
+Ent <|-- bookstore_Dvd
+Ent <|-- bookstore_Magazine
+Ent <|-- bookstore_Person
+bookstore_Dvd "1..1" -- "0..9999" bookstore_Person : actor10
+bookstore_Cd "1..1" -- "0..9999" bookstore_Person : artiesten21
+bookstore_Book "0..1" -- "1..1" bookstore_Dvd : book12
+bookstore_Ent "0..9999" --* "1..1" bookstore_Model : ent0
+bookstore_Person "1..1" -- "0..1" bookstore_Person : manWife2
+bookstore_Dvd "0..1" -- "1..1" bookstore_Dvd : sequel19
+bookstore_Book "1..1" -- "0..1" bookstore_Book : sequel4
+bookstore_Dvd "1..1" -- "0..1" bookstore_Person : writer15
+bookstore_Book "1..1" -- "0..1" bookstore_Person : writer5
+bookstore_Magazine "1..1" -- "0..1" bookstore_Person : writer8
+@enduml

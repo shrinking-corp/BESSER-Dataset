@@ -1,0 +1,72 @@
+@startuml
+enum Actions {
+  EMAIL
+  SMS
+}
+class Device {
+}
+enum EnvironmentConditions {
+  LIGHT
+  SOUND
+  TEMPERATURE
+}
+class NamedElement {
+}
+enum RelationalOperator {
+  DIFFERENT
+  EQUAL
+  MAJOR
+  MAJOREQUAL
+  MINOR
+  MINOREQUAL
+}
+class iotsystem_Action {
+  + action : str
+}
+class iotsystem_Actuator {
+}
+class iotsystem_Condition {
+  + expectedValue : float
+  + relationalOperator : str
+}
+abstract class iotsystem_Device {
+}
+class iotsystem_DigitalArtifact {
+}
+class iotsystem_IotSystem {
+}
+class iotsystem_NamedElement {
+  + name : str
+}
+class iotsystem_Parameter {
+  + name : str
+  + value : str
+}
+class iotsystem_PhysicalEntity {
+}
+class iotsystem_Resource {
+  + measurement : str
+  + url : str
+}
+class iotsystem_Rule {
+}
+class iotsystem_Sensor {
+}
+Device <|-- iotsystem_Actuator
+Device <|-- iotsystem_Sensor
+NamedElement <|-- iotsystem_Device
+NamedElement <|-- iotsystem_DigitalArtifact
+NamedElement <|-- iotsystem_IotSystem
+NamedElement <|-- iotsystem_PhysicalEntity
+NamedElement <|-- iotsystem_Rule
+iotsystem_Action "1..9999" --* "1..1" iotsystem_Rule : actions5
+iotsystem_Condition "1..1" --* "1..1" iotsystem_Rule : condition7
+iotsystem_Device "1..1" -- "1..9999" iotsystem_Resource : consumes0
+iotsystem_Device "0..9999" --* "1..1" iotsystem_PhysicalEntity : devices11
+iotsystem_DigitalArtifact "1..9999" --* "1..1" iotsystem_IotSystem : digitalArtifacts15
+iotsystem_Action "1..1" *-- "0..9999" iotsystem_Parameter : parameters9
+iotsystem_IotSystem "1..1" *-- "1..9999" iotsystem_PhysicalEntity : physicalEntities13
+iotsystem_DigitalArtifact "1..1" *-- "0..9999" iotsystem_Resource : resources1
+iotsystem_DigitalArtifact "1..1" *-- "0..9999" iotsystem_Rule : rules3
+iotsystem_Condition "1..1" -- "1..1" iotsystem_Sensor : variable18
+@enduml

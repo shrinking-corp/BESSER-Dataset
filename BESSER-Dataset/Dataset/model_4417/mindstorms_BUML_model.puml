@@ -1,0 +1,119 @@
+@startuml
+class Action {
+}
+enum Color {
+  BLACK
+  BLUE
+  BROWN
+  CYAN
+  DARK_GRAY
+  GRAY
+  GREEN
+  LIGHT_GRAY
+  MAGENTA
+  NONE
+  ORANGE
+  PINK
+  RED
+  WHITE
+  YELLOW
+}
+class Condition {
+}
+class ConditionalFlow {
+}
+class Flow {
+}
+class Instruction {
+}
+enum OperatorKind {
+  equal
+  lowerOrEqual
+  notEqual
+  upperOrEqual
+}
+class Sensor {
+}
+abstract class mindstorms_Action {
+}
+class mindstorms_Choregraphy {
+  + name : str
+}
+class mindstorms_ColorSensor {
+  + color : str
+}
+abstract class mindstorms_Condition {
+}
+abstract class mindstorms_ConditionalFlow {
+}
+class mindstorms_Delay {
+  + ms : int
+}
+abstract class mindstorms_Flow {
+}
+class mindstorms_GoBackward {
+  + cm : int
+  + infinite : bool
+}
+class mindstorms_GoForward {
+  + cm : int
+  + infinite : bool
+}
+class mindstorms_GoTo {
+  + x : int
+  + y : int
+}
+class mindstorms_Grab {
+}
+class mindstorms_If {
+}
+abstract class mindstorms_Instruction {
+}
+class mindstorms_Release {
+}
+class mindstorms_ReturnToBase {
+}
+class mindstorms_Reuse {
+}
+class mindstorms_Rotate {
+  + degrees : int
+  + random : bool
+}
+abstract class mindstorms_Sensor {
+}
+class mindstorms_TouchSensor {
+  + isPressed : bool
+}
+class mindstorms_UltrasonicSensor {
+  + operator : str
+  + value : float
+}
+class mindstorms_While {
+}
+Action <|-- mindstorms_Delay
+Action <|-- mindstorms_GoBackward
+Action <|-- mindstorms_GoForward
+Action <|-- mindstorms_GoTo
+Action <|-- mindstorms_Grab
+Action <|-- mindstorms_Release
+Action <|-- mindstorms_ReturnToBase
+Action <|-- mindstorms_Rotate
+Condition <|-- mindstorms_Sensor
+ConditionalFlow <|-- mindstorms_If
+ConditionalFlow <|-- mindstorms_While
+Flow <|-- mindstorms_Choregraphy
+Flow <|-- mindstorms_ConditionalFlow
+Instruction <|-- mindstorms_Action
+Instruction <|-- mindstorms_Flow
+Instruction <|-- mindstorms_Reuse
+Sensor <|-- mindstorms_ColorSensor
+Sensor <|-- mindstorms_TouchSensor
+Sensor <|-- mindstorms_UltrasonicSensor
+mindstorms_Choregraphy "0..1" -- "1..1" mindstorms_Reuse : choregraphy9
+mindstorms_Condition "0..1" --* "1..1" mindstorms_ConditionalFlow : condition10
+mindstorms_If "1..1" *-- "0..1" mindstorms_If : elsif12
+mindstorms_Flow "1..1" -- "0..1" mindstorms_Instruction : first5
+mindstorms_Flow "1..1" *-- "0..9999" mindstorms_Instruction : instructions6
+mindstorms_Instruction "1..1" -- "0..1" mindstorms_Instruction : next1
+mindstorms_Instruction "1..1" -- "0..1" mindstorms_Instruction : previous3
+@enduml

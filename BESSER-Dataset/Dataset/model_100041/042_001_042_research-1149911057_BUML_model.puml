@@ -1,0 +1,107 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class research_Collaboration {
+  + ratio : int
+}
+abstract class research_Counted {
+  + id : int
+}
+class research_Keyword {
+  + description : str
+}
+class research_KnowledgeManager {
+}
+abstract class research_Labelled {
+  + lname : str
+}
+abstract class research_Named {
+  + name : str
+}
+class research_Paper {
+}
+class research_PaperKeyword {
+  + weight : int
+}
+class research_Paragraph {
+  + content : str
+}
+class research_Phase {
+  + name : str
+}
+class research_Position {
+  + description : str
+}
+class research_Progress {
+  + percent : int
+}
+class research_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class research_PublicationStructure {
+}
+class research_PublicationSystem {
+}
+class research_Researcher {
+  + forName : str
+  + name : str
+}
+class research_Review {
+  + date : date
+}
+class research_ReviewNote {
+  + content : str
+}
+class research_Skill {
+  + description : str
+}
+class research_Write {
+  + timeSpent : int
+}
+Counted <|-- research_Paragraph
+Labelled <|-- research_Progress
+Labelled <|-- research_Review
+Labelled <|-- research_Write
+Named <|-- research_Keyword
+Named <|-- research_KnowledgeManager
+Named <|-- research_Paper
+Named <|-- research_Paragraph
+Named <|-- research_Position
+Named <|-- research_PublicationProcess
+Named <|-- research_PublicationStructure
+Named <|-- research_PublicationSystem
+Named <|-- research_ReviewNote
+research_Keyword "0..9999" --* "1..1" research_KnowledgeManager : allkeywords51
+research_Paper "1..1" -- "0..9999" research_Researcher : authors13
+research_Paper "0..1" -- "1..1" research_Paper : citedBy17
+research_Collaboration "1..1" -- "0..1" research_Paper : col_paper57
+research_Collaboration "0..9999" --* "1..1" research_Researcher : collaborations9
+research_Keyword "0..1" -- "1..1" research_PaperKeyword : keyword54
+research_Paper "1..1" *-- "0..9999" research_PaperKeyword : keywords14
+research_KnowledgeManager "0..1" --* "1..1" research_PublicationStructure : knowledgeMan36
+research_Keyword "1..1" -- "0..9999" research_Paper : kpapers49
+research_Paper "0..1" -- "1..1" research_Progress : paper23
+research_Paper "0..9999" --* "1..1" research_PublicationStructure : papers33
+research_Paragraph "0..1" -- "1..1" research_Write : paragraph25
+research_Paper "1..1" *-- "0..9999" research_Paragraph : paragraphs11
+research_Position "0..1" -- "1..1" research_Position : parent47
+research_Phase "0..9999" --* "1..1" research_PublicationProcess : phases0
+research_Position "0..9999" --* "1..1" research_PublicationSystem : positions43
+research_Progress "1..1" -- "0..1" research_PublicationProcess : process21
+research_PublicationProcess "0..1" --* "1..1" research_PublicationSystem : processView38
+research_Paper "1..1" *-- "0..9999" research_Progress : progress12
+research_Paper "0..9999" -- "1..1" research_Researcher : res_papers4
+research_Position "0..1" -- "1..1" research_Researcher : res_position7
+research_PublicationStructure "1..1" *-- "0..9999" research_Researcher : researchers31
+research_Review "1..1" -- "0..1" research_ReviewNote : reviewNote28
+research_Paragraph "1..1" *-- "0..9999" research_ReviewNote : reviews19
+research_Researcher "1..1" *-- "0..9999" research_Review : reviews2
+research_Researcher "1..1" *-- "0..9999" research_Skill : skills5
+research_PublicationStructure "0..1" --* "1..1" research_PublicationSystem : structuralView40
+research_Researcher "1..1" *-- "0..9999" research_Write : writes1
+@enduml

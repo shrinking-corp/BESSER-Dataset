@@ -1,0 +1,83 @@
+@startuml
+enum attributetype {
+  edge
+  graph
+  node
+}
+class dot_a_list {
+  + name : str
+  + value : str
+}
+class dot_attr_list {
+}
+class dot_attr_stmt {
+  + type : str
+}
+class dot_attribute {
+  + name : str
+  + value : str
+}
+class dot_edgeRHS {
+  + op : str
+}
+class dot_edgeRHS_node {
+}
+class dot_edgeRHS_subgraph {
+}
+class dot_edge_stmt_node {
+}
+class dot_edge_stmt_subgraph {
+}
+class dot_graph {
+  + name : str
+  + strict : bool
+  + type : str
+}
+class dot_graphvizmodel {
+}
+class dot_node_id {
+  + name : str
+}
+class dot_node_stmt {
+  + name : str
+}
+class dot_stmt {
+}
+class dot_subgraph {
+  + name : str
+}
+class edgeRHS {
+}
+enum edgeop {
+  directed
+  undirected
+}
+enum graphtype {
+  digraph
+  graph
+}
+class stmt {
+}
+edgeRHS <|-- dot_edgeRHS_node
+edgeRHS <|-- dot_edgeRHS_subgraph
+stmt <|-- dot_attr_stmt
+stmt <|-- dot_attribute
+stmt <|-- dot_edge_stmt_node
+stmt <|-- dot_edge_stmt_subgraph
+stmt <|-- dot_node_stmt
+stmt <|-- dot_subgraph
+dot_a_list "0..9999" --* "1..1" dot_attr_list : a_list19
+dot_attr_list "0..9999" --* "1..1" dot_edge_stmt_subgraph : attributes12
+dot_attr_list "0..9999" --* "1..1" dot_node_stmt : attributes15
+dot_attr_list "0..9999" --* "1..1" dot_attr_stmt : attributes17
+dot_attr_list "0..9999" --* "1..1" dot_edge_stmt_node : attributes6
+dot_edgeRHS "0..9999" --* "1..1" dot_edge_stmt_node : edgeRHS4
+dot_edgeRHS "0..1" --* "1..1" dot_edge_stmt_subgraph : edgeRHS9
+dot_graph "0..9999" --* "1..1" dot_graphvizmodel : graphs0
+dot_edgeRHS_node "1..1" *-- "0..1" dot_node_id : node24
+dot_edge_stmt_node "1..1" *-- "0..1" dot_node_id : node_id3
+dot_graph "1..1" *-- "0..9999" dot_stmt : stmts1
+dot_stmt "0..9999" --* "1..1" dot_subgraph : stmts21
+dot_edgeRHS_subgraph "1..1" *-- "0..1" dot_subgraph : subgraph26
+dot_edge_stmt_subgraph "1..1" *-- "0..1" dot_subgraph : subgraph8
+@enduml

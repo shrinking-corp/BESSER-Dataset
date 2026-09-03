@@ -1,0 +1,38 @@
+@startuml
+class EJavaObject {
+}
+class Fonctionnalite {
+}
+class dsl_Action {
+}
+class dsl_Capture {
+}
+class dsl_Device {
+  + name : str
+}
+class dsl_EJavaObject {
+}
+class dsl_Fonctionnalite {
+  + name : str
+}
+class dsl_IDevice {
+  + name : str
+  + typeof : str
+}
+class dsl_Object {
+}
+class dsl_Parametre {
+  + name : str
+}
+class dsl_Robot {
+  + name : str
+}
+EJavaObject <|-- dsl_Object
+Fonctionnalite <|-- dsl_Action
+Fonctionnalite <|-- dsl_Capture
+dsl_Fonctionnalite "1..1" *-- "0..9999" dsl_Parametre : ListeParametres1
+dsl_IDevice "0..9999" --* "1..1" dsl_Robot : instances0
+dsl_Device "1..1" *-- "0..9999" dsl_Fonctionnalite : refFonction2
+dsl_Action "1..1" *-- "0..1" dsl_EJavaObject : return_6
+dsl_EJavaObject "0..1" --* "1..1" dsl_Parametre : type4
+@enduml

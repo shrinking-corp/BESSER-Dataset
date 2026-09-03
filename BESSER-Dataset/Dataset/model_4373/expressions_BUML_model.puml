@@ -1,0 +1,47 @@
+@startuml
+class BinaryOperator {
+}
+class Expression {
+}
+class UnaryOperator {
+}
+class expressions_All {
+}
+class expressions_And {
+}
+class expressions_Any {
+}
+abstract class expressions_BinaryOperator {
+}
+abstract class expressions_Expression {
+}
+class expressions_Feature {
+  + name : str
+}
+class expressions_Implies {
+}
+class expressions_Model {
+}
+class expressions_Neg {
+}
+class expressions_Number {
+}
+class expressions_Or {
+}
+abstract class expressions_UnaryOperator {
+}
+BinaryOperator <|-- expressions_And
+BinaryOperator <|-- expressions_Implies
+BinaryOperator <|-- expressions_Or
+Expression <|-- expressions_BinaryOperator
+Expression <|-- expressions_Feature
+Expression <|-- expressions_UnaryOperator
+UnaryOperator <|-- expressions_All
+UnaryOperator <|-- expressions_Any
+UnaryOperator <|-- expressions_Neg
+UnaryOperator <|-- expressions_Number
+expressions_Expression "0..9999" --* "1..1" expressions_Model : constraints6
+expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op10
+expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op21
+expressions_Expression "1..1" --* "1..1" expressions_UnaryOperator : op4
+@enduml

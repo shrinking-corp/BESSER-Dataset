@@ -1,0 +1,30 @@
+@startuml
+class StateMachine_Event {
+}
+class StateMachine_FinalState {
+}
+class StateMachine_InitialState {
+}
+class StateMachine_SimpleState {
+}
+class StateMachine_StateMachine {
+}
+abstract class StateMachine_StateVertex {
+  + name : str
+}
+class StateMachine_Transition {
+  + name : str
+}
+class StateVertex {
+}
+StateVertex <|-- StateMachine_FinalState
+StateVertex <|-- StateMachine_InitialState
+StateVertex <|-- StateMachine_SimpleState
+StateMachine_StateVertex "1..1" -- "0..9999" StateMachine_Transition : incoming4
+StateMachine_StateVertex "1..1" -- "0..9999" StateMachine_Transition : outgoing3
+StateMachine_StateVertex "1..1" -- "1..1" StateMachine_Transition : source8
+StateMachine_StateMachine "1..1" *-- "0..9999" StateMachine_StateVertex : states0
+StateMachine_StateVertex "1..1" -- "1..1" StateMachine_Transition : target9
+StateMachine_StateMachine "1..1" *-- "0..9999" StateMachine_Transition : transitions1
+StateMachine_Event "0..1" -- "1..1" StateMachine_Transition : trigger6
+@enduml

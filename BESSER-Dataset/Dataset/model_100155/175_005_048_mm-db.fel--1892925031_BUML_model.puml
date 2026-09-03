@@ -1,0 +1,184 @@
+@startuml
+class Column {
+}
+class ColumnConstraint {
+}
+class Constraint {
+}
+class Database {
+}
+class DbObject {
+}
+class Index {
+}
+class ModelRoot {
+}
+class NamedElement {
+}
+class Operation {
+}
+class PrimaryKey {
+}
+class Relation {
+}
+class Schema {
+}
+class Sequence {
+}
+class Table {
+}
+class TableColumn {
+}
+class TableConstraint {
+}
+class UniqueIndex {
+}
+class dml_ColumnReference {
+}
+class mm_dml_ColumnReference {
+}
+class mm_dml_Query {
+}
+class mm_rdb_AddColumn {
+  + newColumnName : str
+  + addColumn(mm_changedTable : str, mm_columnConstrains : str, mm_newColumnName : str) : bool
+}
+abstract class mm_rdb_Column {
+  + getOwningTable() : str
+}
+abstract class mm_rdb_ColumnConstraint {
+}
+abstract class mm_rdb_Constraint {
+}
+class mm_rdb_CreateTable {
+  + tableName : str
+  + createTable(mm_generateID : str, mm_primaryKey : str, mm_tableColumns : str, mm_tableConstraints : str, mm_tableName : str) : bool
+}
+class mm_rdb_Database {
+}
+abstract class mm_rdb_DbObject {
+}
+class mm_rdb_DeleteColumn {
+  + deleteColumn(mm_changedTable : str, mm_deleteColumn : str) : bool
+}
+class mm_rdb_DeleteTable {
+  + deleteTable(mm_deletedTable : str) : bool
+}
+class mm_rdb_ForeignKey {
+}
+class mm_rdb_Index {
+}
+class mm_rdb_ModelRoot {
+}
+abstract class mm_rdb_NamedElement {
+  + name : str
+}
+abstract class mm_rdb_Operation {
+}
+class mm_rdb_PrimaryKey {
+}
+abstract class mm_rdb_Relation {
+  + getColumns() : str
+}
+class mm_rdb_RenameColumn {
+  + newColumnName : str
+  + renameColumn(mm_changedTable : str, mm_newColumnName : str, mm_renamedColumn : str) : bool
+}
+class mm_rdb_RenameTable {
+  + newName : str
+  + renameTable(mm_newName : str, mm_renamedTable : str) : bool
+}
+class mm_rdb_Schema {
+}
+class mm_rdb_Sequence {
+  + cacheSize : int
+}
+class mm_rdb_Table {
+  + getColumns() : str
+  + getPrimaryColumn() : str
+}
+class mm_rdb_TableColumn {
+  + type : str
+  + getOwningTable() : str
+}
+abstract class mm_rdb_TableConstraint {
+}
+class mm_rdb_TypeChangeToColumn {
+  + newType : str
+  + typeChangeToColumn(mm_changedTable : str, mm_changedTypeColumn : str, mm_newType : str) : bool
+}
+class mm_rdb_UniqueIndex {
+}
+class rdb_Constraint {
+}
+class rdb_DbObject {
+}
+class rdb_NamedElement {
+}
+class rdb_Relation {
+}
+Column <|-- mm_dml_ColumnReference
+Column <|-- mm_rdb_TableColumn
+Constraint <|-- mm_rdb_ColumnConstraint
+DbObject <|-- mm_rdb_Constraint
+DbObject <|-- mm_rdb_Index
+DbObject <|-- mm_rdb_Schema
+DbObject <|-- mm_rdb_Sequence
+NamedElement <|-- mm_rdb_Column
+NamedElement <|-- mm_rdb_Database
+NamedElement <|-- mm_rdb_DbObject
+Operation <|-- mm_rdb_AddColumn
+Operation <|-- mm_rdb_CreateTable
+Operation <|-- mm_rdb_DeleteColumn
+Operation <|-- mm_rdb_DeleteTable
+Operation <|-- mm_rdb_RenameColumn
+Operation <|-- mm_rdb_RenameTable
+Operation <|-- mm_rdb_TypeChangeToColumn
+Relation <|-- mm_dml_Query
+TableConstraint <|-- mm_rdb_ForeignKey
+TableConstraint <|-- mm_rdb_UniqueIndex
+UniqueIndex <|-- mm_rdb_PrimaryKey
+rdb_Constraint <|-- mm_rdb_TableConstraint
+rdb_DbObject <|-- mm_rdb_Table
+rdb_NamedElement <|-- mm_rdb_TableConstraint
+rdb_Relation <|-- mm_rdb_Table
+Table "1..1" -- "1..1" mm_rdb_TableColumn : _owningTable28
+Table "1..1" -- "1..1" mm_rdb_AddColumn : changedTable56
+Table "1..1" -- "1..1" mm_rdb_RenameColumn : changedTable61
+Table "1..1" -- "1..1" mm_rdb_TypeChangeToColumn : changedTable66
+Table "1..1" -- "1..1" mm_rdb_DeleteColumn : changedTable71
+TableColumn "1..1" -- "1..1" mm_rdb_TypeChangeToColumn : changedTypeColumn68
+ColumnConstraint "0..9999" -- "1..1" mm_rdb_AddColumn : columnConstrains58
+dml_ColumnReference "1..9999" --* "1..1" mm_dml_Query : columnReferences76
+TableColumn "1..9999" -- "1..1" mm_rdb_Index : columns31
+TableColumn "1..1" -- "1..1" mm_rdb_ForeignKey : constrainedColumn25
+TableConstraint "0..9999" --* "1..1" mm_rdb_Table : constraints15
+ColumnConstraint "0..9999" --* "1..1" mm_rdb_TableColumn : constraints30
+TableColumn "1..1" -- "1..1" mm_rdb_DeleteColumn : deleteColumn73
+Table "1..1" -- "1..1" mm_rdb_DeleteTable : deletedTable54
+Sequence "1..1" -- "1..1" mm_rdb_CreateTable : generateID49
+Table "1..1" -- "1..1" mm_rdb_Index : indexedTable33
+Index "0..9999" --* "1..1" mm_rdb_Schema : indexes9
+ModelRoot "1..1" -- "1..1" mm_rdb_Operation : modelRoot40
+Operation "0..9999" --* "1..1" mm_rdb_ModelRoot : operations4
+TableColumn "0..9999" --* "1..1" mm_rdb_Table : ownedColumns14
+TableColumn "1..1" -- "1..1" mm_rdb_ColumnConstraint : owningColumn20
+Schema "1..1" -- "1..1" mm_rdb_Table : owningSchema11
+Schema "1..1" -- "1..1" mm_rdb_Sequence : owningSchema16
+Schema "1..1" -- "1..1" mm_rdb_Index : owningSchema36
+Table "1..1" -- "1..1" mm_rdb_TableConstraint : owningTable18
+PrimaryKey "0..1" -- "1..1" mm_rdb_Table : primaryKey13
+PrimaryKey "0..1" -- "1..1" mm_rdb_CreateTable : primaryKey46
+Column "1..1" -- "1..1" mm_dml_ColumnReference : reference77
+TableColumn "1..1" -- "1..1" mm_rdb_RenameColumn : renamedColumn63
+Table "1..1" -- "1..1" mm_rdb_RenameTable : renamedTable52
+Schema "0..9999" --* "1..1" mm_rdb_Database : schemas5
+Sequence "0..9999" --* "1..1" mm_rdb_Schema : sequences7
+Database "1..1" --* "1..1" mm_rdb_ModelRoot : sourceDB0
+TableColumn "0..9999" -- "1..1" mm_rdb_CreateTable : tableColumns41
+TableConstraint "0..9999" -- "1..1" mm_rdb_CreateTable : tableConstraints43
+Table "0..9999" --* "1..1" mm_rdb_Schema : tables6
+Database "1..1" --* "1..1" mm_rdb_ModelRoot : targetDB1
+Table "1..1" -- "1..1" mm_rdb_ForeignKey : targetTable23
+Index "1..1" -- "1..1" mm_rdb_UniqueIndex : underlyingIndex38
+@enduml

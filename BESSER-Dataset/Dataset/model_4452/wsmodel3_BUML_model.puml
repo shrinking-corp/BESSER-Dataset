@@ -1,0 +1,207 @@
+@startuml
+enum ActuatorType {
+  Buzzer
+  LCD
+  Led
+  Relay
+  Servo
+  Undefined
+}
+class Bridge {
+}
+enum CommunicationType {
+  Serial
+  Undefined
+  WiFi
+}
+enum ControllerType {
+  ESP8266
+  Undefined
+}
+enum DBType {
+  MySQL
+  Undefined
+}
+class Data {
+}
+class Device {
+}
+enum MessageBrokerType {
+  MQTT
+  Undefined
+}
+class Port {
+}
+enum PortType {
+  Analog
+  Digital
+}
+enum SensorType {
+  Button
+  CO2
+  Contact
+  HumidityG
+  Light
+  Movement
+  TempHum
+  Temperature
+  Undefined
+  Vibration
+}
+class Server {
+}
+class wsmodel3_AccesPoint {
+  + pass_ : str
+  + ssid : str
+}
+class wsmodel3_Actuator {
+  + type : str
+}
+class wsmodel3_Break {
+  + expression : str
+}
+abstract class wsmodel3_Bridge {
+  + host : str
+  + port : int
+  + topic : str
+}
+class wsmodel3_Communication {
+  + name : str
+  + type : str
+}
+class wsmodel3_CommunicationData {
+}
+class wsmodel3_Controller {
+  + type : str
+}
+class wsmodel3_DBServer {
+  + database : str
+  + pass_ : str
+  + port : int
+  + type : str
+  + usser : str
+}
+abstract class wsmodel3_Data {
+  + Artefact : str
+  + Attribute : str
+  + Date : str
+  + Location : str
+  + Time : str
+  + id : str
+}
+abstract class wsmodel3_Device {
+  + name : str
+}
+class wsmodel3_DeviceData {
+}
+class wsmodel3_ExternalAPI {
+  + URI : str
+}
+class wsmodel3_Function {
+  + expression : str
+}
+class wsmodel3_InputBridge {
+  + URI : str
+}
+class wsmodel3_InputOrchestrator {
+  + URI : str
+}
+class wsmodel3_InputPort {
+}
+class wsmodel3_IntegrationPattern {
+}
+class wsmodel3_IoTNode {
+}
+class wsmodel3_MessageBroker {
+  + host : str
+  + pass_ : str
+  + port : int
+  + type : str
+  + usser : str
+}
+class wsmodel3_Orchestrator {
+  + name : str
+  + port : str
+}
+class wsmodel3_OrchestratorData {
+}
+class wsmodel3_OutputBridge {
+}
+class wsmodel3_OutputOrchestrator {
+}
+class wsmodel3_OutputPort {
+}
+abstract class wsmodel3_Port {
+  + id : str
+  + type : str
+}
+class wsmodel3_REST {
+  + URI : str
+  + port : int
+}
+class wsmodel3_Sensor {
+  + type : str
+}
+abstract class wsmodel3_Server {
+  + host : str
+}
+class wsmodel3_System {
+  + name : str
+}
+class wsmodel3_WebServer {
+}
+class wsmodel3_WebService {
+}
+Bridge <|-- wsmodel3_InputBridge
+Bridge <|-- wsmodel3_OutputBridge
+Data <|-- wsmodel3_CommunicationData
+Data <|-- wsmodel3_DeviceData
+Data <|-- wsmodel3_OrchestratorData
+Device <|-- wsmodel3_Actuator
+Device <|-- wsmodel3_Controller
+Device <|-- wsmodel3_Sensor
+Port <|-- wsmodel3_InputPort
+Port <|-- wsmodel3_OutputPort
+Server <|-- wsmodel3_DBServer
+Server <|-- wsmodel3_WebServer
+wsmodel3_AccesPoint "0..1" -- "1..1" wsmodel3_Communication : accespoint31
+wsmodel3_AccesPoint "0..9999" --* "1..1" wsmodel3_System : accespoint5
+wsmodel3_Actuator "1..1" -- "1..1" wsmodel3_OutputPort : actuator38
+wsmodel3_Actuator "0..1" -- "1..1" wsmodel3_InputBridge : actuator41
+wsmodel3_Break "0..9999" --* "1..1" wsmodel3_Function : break_74
+wsmodel3_Bridge "0..9999" --* "1..1" wsmodel3_MessageBroker : bridge47
+wsmodel3_Communication "0..9999" --* "1..1" wsmodel3_Controller : communication27
+wsmodel3_Communication "1..1" *-- "0..9999" wsmodel3_CommunicationData : communicationdata29
+wsmodel3_DBServer "1..1" -- "1..1" wsmodel3_WebService : dbserver19
+wsmodel3_Device "0..9999" --* "1..1" wsmodel3_IoTNode : device13
+wsmodel3_Device "0..1" -- "1..1" wsmodel3_REST : device21
+wsmodel3_Device "1..1" *-- "0..9999" wsmodel3_DeviceData : devicedata24
+wsmodel3_ExternalAPI "0..9999" --* "1..1" wsmodel3_System : externalapi11
+wsmodel3_ExternalAPI "0..9999" -- "1..1" wsmodel3_Orchestrator : externalapi62
+wsmodel3_ExternalAPI "0..9999" -- "1..1" wsmodel3_OutputOrchestrator : externalapi87
+wsmodel3_Function "1..9999" --* "1..1" wsmodel3_Orchestrator : function58
+wsmodel3_InputBridge "0..1" -- "1..1" wsmodel3_OutputOrchestrator : inputbridge79
+wsmodel3_InputOrchestrator "0..9999" -- "1..1" wsmodel3_OutputBridge : inputorchestrator43
+wsmodel3_InputOrchestrator "1..9999" --* "1..1" wsmodel3_Orchestrator : inputorchestrator55
+wsmodel3_Function "1..1" -- "1..1" wsmodel3_InputOrchestrator : inputorchestrator68
+wsmodel3_InputOrchestrator "0..9999" -- "1..1" wsmodel3_OutputOrchestrator : inputorchestrator76
+wsmodel3_IntegrationPattern "0..9999" --* "1..1" wsmodel3_System : integrationpattern7
+wsmodel3_IoTNode "0..9999" --* "1..1" wsmodel3_System : iotnode3
+wsmodel3_Communication "1..1" -- "0..1" wsmodel3_MessageBroker : messagebroker34
+wsmodel3_MessageBroker "0..9999" --* "1..1" wsmodel3_System : messagebroker9
+wsmodel3_IntegrationPattern "1..1" *-- "0..9999" wsmodel3_Orchestrator : orchestrator50
+wsmodel3_Orchestrator "1..1" *-- "1..9999" wsmodel3_OutputOrchestrator : outputorchestrator60
+wsmodel3_Function "1..1" -- "1..1" wsmodel3_OutputOrchestrator : outputorchestrator71
+wsmodel3_Controller "1..1" *-- "0..9999" wsmodel3_Port : port26
+wsmodel3_OrchestratorData "0..9999" --* "1..1" wsmodel3_OutputOrchestrator : renponsedata82
+wsmodel3_REST "0..9999" --* "1..1" wsmodel3_WebService : rest15
+wsmodel3_Bridge "1..1" -- "0..1" wsmodel3_REST : rest39
+wsmodel3_Orchestrator "1..1" -- "0..9999" wsmodel3_REST : rest65
+wsmodel3_OutputOrchestrator "1..1" -- "0..9999" wsmodel3_REST : rest84
+wsmodel3_InputPort "1..1" -- "1..1" wsmodel3_Sensor : sensor37
+wsmodel3_OutputBridge "1..1" -- "0..1" wsmodel3_Sensor : sensor44
+wsmodel3_Server "0..9999" --* "1..1" wsmodel3_System : server1
+wsmodel3_WebServer "1..1" -- "1..1" wsmodel3_WebService : webserver17
+wsmodel3_IntegrationPattern "1..1" -- "1..1" wsmodel3_WebServer : webserver52
+wsmodel3_System "1..1" *-- "0..9999" wsmodel3_WebService : webservice0
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+class ContainerCar {
+  + climateControlled : bool
+  + cubicFeet : float
+  + temp : float
+}
+class ElectricTrain {
+  + MAXSPEED : float
+}
+class EngineCar {
+  + MAXSPEED : float
+}
+class FreightTrain {
+  + containerTrain : bool
+}
+class Maglev {
+  + MAXSPEED : float
+}
+class MaglevCar {
+  + NUMSEATS : int
+  + numSeatsOccupied : int
+}
+class PassengerCar {
+  + NUMSEATS : int
+  + numSeatsOccupied : int
+}
+class PassengerTrain {
+}
+class T {
+}
+class Train {
+  + milesPerHour : float
+  + totalCars : int
+}
+ContainerCar "0..1" -- "0..1" FreightTrain : ContainerCar_FreightTrain
+ElectricTrain "0..1" -- "0..1" EngineCar : ElectricTrain_EngineCar
+ElectricTrain "0..1" -- "0..1" PassengerCar : ElectricTrain_PassengerCar
+Maglev "0..1" -- "0..1" MaglevCar : Maglev_MaglevCar
+ElectricTrain "0..1" -- "0..1" PassengerTrain : PassengerTrain_ElectricTrain
+Maglev "0..1" -- "0..1" PassengerTrain : PassengerTrain_Maglev
+FreightTrain "0..1" -- "0..1" Train : Train_freightTrain
+PassengerTrain "0..1" -- "0..1" Train : Train_passengerTrain
+@enduml

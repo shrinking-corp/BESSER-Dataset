@@ -1,0 +1,43 @@
+@startuml
+class Answer {
+}
+class Booking {
+  + Destination : str
+  + Id : str
+  + Luggage : str
+  + Origin : str
+  + Tickets : Ticket
+  + Time : str
+}
+class Client {
+  + Bookings : Booking
+  + Id : str
+  + Loyalty_card : str
+  + Name : str
+}
+class Flight {
+  + Company : str
+  + Destination : str
+  + Id : str
+  + Max_Passangers : int
+  + Origin : str
+  + Time : str
+}
+class Problem {
+  + Content : str
+  + Id : str
+  + Type : str
+}
+class Ticket {
+  + Booking_Class : str
+  + Clients : Client
+  + Id : str
+  + Seat : str
+}
+Answer "1..9999" -- "1..1" Problem : Answer_Problem
+Booking "1..1" -- "1..9999" Ticket : Booking_Ticket
+Booking "1..9999" -- "1..1" Client : Client_Booking
+Client "1..1" -- "0..9999" Problem : Client_Problem
+Client "1..1" -- "1..9999" Ticket : Client_Ticket
+Flight "1..1" -- "1..9999" Ticket : Ticket_Flight
+@enduml

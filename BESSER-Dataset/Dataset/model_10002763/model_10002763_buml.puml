@@ -1,0 +1,31 @@
+@startuml
+class ATM {
+  + ManagedBy : str
+  + location : str
+}
+class ATM__Transactions {
+  + Amount : str
+  + Date : str
+  + Post_balance : str
+  + Transaction_id : str
+  + Type : str
+}
+class Account {
+  + AccountNumber : str
+  + Balance : str
+}
+class BANK {
+  + Address : str
+  + Code : str
+}
+class Customer {
+  + Card_num : int
+  + DOB : str
+  + Name : str
+  + Pin : int
+}
+ATM__Transactions "0..1" -- "0..1" Account : Account_ATM__Transactions
+ATM "0..1" -- "1..1" BANK : BANK_ATM
+Account "0..1" -- "1..1" BANK : BANK_Account
+Account "0..1" -- "0..1" Customer : Customer_Account
+@enduml

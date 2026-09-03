@@ -1,0 +1,47 @@
+@startuml
+class Node {
+}
+class RefArcs {
+}
+class RefNodes {
+}
+class RefPetriNets {
+}
+class RefTokens {
+}
+class petrinet_Arc {
+  + name : str
+}
+abstract class petrinet_Node {
+  + name : str
+}
+class petrinet_PetriNet {
+  + name : str
+}
+class petrinet_Place {
+}
+abstract class petrinet_RefArcs {
+}
+abstract class petrinet_RefNodes {
+}
+abstract class petrinet_RefPetriNets {
+}
+abstract class petrinet_RefTokens {
+}
+class petrinet_Token {
+  + name : str
+}
+class petrinet_Transition {
+}
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+RefArcs <|-- petrinet_Arc
+RefNodes <|-- petrinet_Node
+RefPetriNets <|-- petrinet_PetriNet
+RefTokens <|-- petrinet_Token
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_RefArcs : arcs1
+petrinet_Place "1..1" *-- "0..9999" petrinet_RefTokens : marking8
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_RefNodes : nodes0
+petrinet_Arc "1..1" -- "1..1" petrinet_RefNodes : source5
+petrinet_Arc "1..1" -- "1..1" petrinet_RefNodes : target3
+@enduml

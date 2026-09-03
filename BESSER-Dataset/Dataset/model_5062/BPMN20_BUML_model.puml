@@ -1,0 +1,835 @@
+@startuml
+class Activity {
+}
+enum AdHocOrdering {
+  Parallel
+  Sequential
+}
+class Artifact {
+}
+enum AssociationDirection {
+  Both
+  None_
+  One
+}
+class BaseElement {
+}
+class CallableElement {
+}
+class CatchEvent {
+}
+class Choreography {
+}
+class ChoreographyActivity {
+}
+enum ChoreographyLoopType {
+  MultiInstanceParallel
+  MultiInstanceSequential
+  None_
+  Standard
+}
+class Collaboration {
+}
+class ConversationNode {
+}
+class DataAssociation {
+}
+class Event {
+}
+enum EventBasedGatewayType {
+  Exclusive
+  Parallel
+}
+class EventDefinition {
+}
+class Expression {
+}
+class FlowElement {
+}
+class FlowElementsContainer {
+}
+class FlowNode {
+}
+class Gateway {
+}
+enum GatewayDirection {
+  Converging
+  Diverging
+  Mixed
+  Unspecified
+}
+class GlobalTask {
+}
+class HumanPerformer {
+}
+class InteractionNode {
+}
+class ItemAwareElement {
+}
+enum ItemKind {
+  Information
+  Physical
+}
+class LoopCharacteristics {
+}
+enum MultiInstanceBehavior {
+  All
+  Complex
+  None_
+  One
+}
+class Performer {
+}
+enum ProcessType {
+  None_
+  Private
+  Public
+}
+enum RelationshipDirection {
+  Backward
+  Both
+  Forward
+  None_
+}
+class ResourceRole {
+}
+class RootElement {
+}
+class SubProcess {
+}
+class Task {
+}
+class ThrowEvent {
+}
+abstract class bpmn2_Activity {
+  + completionQuantity : int
+  + isForCompensation : bool
+  + startQuantity : int
+}
+class bpmn2_AdHocSubProcess {
+  + cancelRemainingInstances : bool
+  + ordering : str
+}
+abstract class bpmn2_Artifact {
+}
+class bpmn2_Assignment {
+}
+class bpmn2_Association {
+  + associationDirection : str
+}
+class bpmn2_Auditing {
+}
+class bpmn2_BPMNDiagram {
+}
+abstract class bpmn2_BaseElement {
+  + id : str
+}
+class bpmn2_BoundaryEvent {
+  + cancelActivity : bool
+}
+class bpmn2_BusinessRuleTask {
+  + implementation : str
+}
+class bpmn2_CallActivity {
+}
+class bpmn2_CallChoreography {
+}
+class bpmn2_CallConversation {
+}
+abstract class bpmn2_CallableElement {
+  + name : str
+}
+class bpmn2_CancelEventDefinition {
+}
+abstract class bpmn2_CatchEvent {
+  + parallelMultiple : bool
+}
+class bpmn2_Category {
+  + name : str
+}
+class bpmn2_CategoryValue {
+  + value : str
+}
+class bpmn2_Choreography {
+}
+abstract class bpmn2_ChoreographyActivity {
+  + loopType : str
+}
+class bpmn2_ChoreographyTask {
+}
+class bpmn2_Collaboration {
+  + isClosed : bool
+  + name : str
+}
+class bpmn2_CompensateEventDefinition {
+  + waitForCompletion : bool
+}
+class bpmn2_ComplexBehaviorDefinition {
+}
+class bpmn2_ComplexGateway {
+}
+class bpmn2_ConditionalEventDefinition {
+}
+class bpmn2_Conversation {
+}
+class bpmn2_ConversationAssociation {
+}
+class bpmn2_ConversationLink {
+  + name : str
+}
+abstract class bpmn2_ConversationNode {
+  + name : str
+}
+class bpmn2_CorrelationKey {
+  + name : str
+}
+class bpmn2_CorrelationProperty {
+  + name : str
+}
+class bpmn2_CorrelationPropertyBinding {
+}
+class bpmn2_CorrelationPropertyRetrievalExpression {
+}
+class bpmn2_CorrelationSubscription {
+}
+class bpmn2_DataAssociation {
+}
+class bpmn2_DataInput {
+  + isCollection : bool
+  + name : str
+}
+class bpmn2_DataInputAssociation {
+}
+class bpmn2_DataObject {
+  + isCollection : bool
+}
+class bpmn2_DataObjectReference {
+}
+class bpmn2_DataOutput {
+  + isCollection : bool
+  + name : str
+}
+class bpmn2_DataOutputAssociation {
+}
+class bpmn2_DataState {
+  + name : str
+}
+class bpmn2_DataStore {
+  + capacity : int
+  + isUnlimited : bool
+  + name : str
+}
+class bpmn2_DataStoreReference {
+}
+class bpmn2_Definitions {
+  + exporter : str
+  + exporterVersion : str
+  + expressionLanguage : str
+  + name : str
+  + targetNamespace : str
+  + typeLanguage : str
+}
+class bpmn2_Documentation {
+  + text : str
+  + textFormat : str
+}
+class bpmn2_EObject {
+}
+class bpmn2_EndEvent {
+}
+class bpmn2_EndPoint {
+}
+class bpmn2_Error {
+  + errorCode : str
+  + name : str
+}
+class bpmn2_ErrorEventDefinition {
+}
+class bpmn2_Escalation {
+  + escalationCode : str
+  + name : str
+}
+class bpmn2_EscalationEventDefinition {
+}
+abstract class bpmn2_Event {
+}
+class bpmn2_EventBasedGateway {
+  + eventGatewayType : str
+  + instantiate : bool
+}
+abstract class bpmn2_EventDefinition {
+}
+class bpmn2_ExclusiveGateway {
+}
+class bpmn2_Expression {
+}
+class bpmn2_Extension {
+  + mustUnderstand : bool
+}
+class bpmn2_ExtensionAttributeDefinition {
+  + isReference : bool
+  + name : str
+  + type : str
+}
+class bpmn2_ExtensionAttributeValue {
+}
+class bpmn2_ExtensionDefinition {
+  + name : str
+}
+abstract class bpmn2_FlowElement {
+  + name : str
+}
+abstract class bpmn2_FlowElementsContainer {
+}
+abstract class bpmn2_FlowNode {
+}
+class bpmn2_FormalExpression {
+  + language : str
+}
+abstract class bpmn2_Gateway {
+  + gatewayDirection : str
+}
+class bpmn2_GlobalBusinessRuleTask {
+  + implementation : str
+}
+class bpmn2_GlobalChoreographyTask {
+}
+class bpmn2_GlobalConversation {
+}
+class bpmn2_GlobalManualTask {
+}
+class bpmn2_GlobalScriptTask {
+  + script : str
+  + scriptLanguage : str
+}
+class bpmn2_GlobalTask {
+}
+class bpmn2_GlobalUserTask {
+  + implementation : str
+}
+class bpmn2_Group {
+}
+class bpmn2_HumanPerformer {
+}
+class bpmn2_ImplicitThrowEvent {
+}
+class bpmn2_Import {
+  + importType : str
+  + location : str
+  + namespace : str
+}
+class bpmn2_InclusiveGateway {
+}
+class bpmn2_InputOutputBinding {
+}
+class bpmn2_InputOutputSpecification {
+}
+class bpmn2_InputSet {
+  + name : str
+}
+abstract class bpmn2_InteractionNode {
+}
+class bpmn2_Interface {
+  + name : str
+}
+class bpmn2_IntermediateCatchEvent {
+}
+class bpmn2_IntermediateThrowEvent {
+}
+class bpmn2_ItemAwareElement {
+}
+class bpmn2_ItemDefinition {
+  + isCollection : bool
+  + itemKind : str
+}
+class bpmn2_Lane {
+  + name : str
+}
+class bpmn2_LaneSet {
+  + name : str
+}
+class bpmn2_LinkEventDefinition {
+  + name : str
+}
+abstract class bpmn2_LoopCharacteristics {
+}
+class bpmn2_ManualTask {
+}
+class bpmn2_Message {
+  + name : str
+}
+class bpmn2_MessageEventDefinition {
+}
+class bpmn2_MessageFlow {
+  + name : str
+}
+class bpmn2_MessageFlowAssociation {
+}
+class bpmn2_Monitoring {
+}
+class bpmn2_MultiInstanceLoopCharacteristics {
+  + behavior : str
+  + isSequential : bool
+}
+class bpmn2_Operation {
+  + name : str
+}
+class bpmn2_OutputSet {
+  + name : str
+}
+class bpmn2_ParallelGateway {
+}
+class bpmn2_Participant {
+  + name : str
+}
+class bpmn2_ParticipantAssociation {
+}
+class bpmn2_ParticipantMultiplicity {
+  + maximum : int
+  + minimum : int
+}
+class bpmn2_PartnerEntity {
+  + name : str
+}
+class bpmn2_PartnerRole {
+  + name : str
+}
+class bpmn2_Performer {
+}
+class bpmn2_PotentialOwner {
+}
+class bpmn2_Process {
+  + isClosed : bool
+  + isExecutable : bool
+  + processType : str
+}
+class bpmn2_Property {
+  + name : str
+}
+class bpmn2_ReceiveTask {
+  + implementation : str
+  + instantiate : bool
+}
+class bpmn2_Relationship {
+  + direction : str
+  + type : str
+}
+class bpmn2_Rendering {
+}
+class bpmn2_Resource {
+  + name : str
+}
+class bpmn2_ResourceAssignmentExpression {
+}
+class bpmn2_ResourceParameter {
+  + isRequired : bool
+  + name : str
+}
+class bpmn2_ResourceParameterBinding {
+}
+class bpmn2_ResourceRole {
+  + name : str
+}
+abstract class bpmn2_RootElement {
+}
+class bpmn2_ScriptTask {
+  + script : str
+  + scriptFormat : str
+}
+class bpmn2_SendTask {
+  + implementation : str
+}
+class bpmn2_SequenceFlow {
+  + isImmediate : bool
+}
+class bpmn2_ServiceTask {
+  + implementation : str
+}
+class bpmn2_Signal {
+  + name : str
+}
+class bpmn2_SignalEventDefinition {
+}
+class bpmn2_StandardLoopCharacteristics {
+  + testBefore : bool
+}
+class bpmn2_StartEvent {
+  + isInterrupting : bool
+}
+class bpmn2_SubChoreography {
+}
+class bpmn2_SubConversation {
+}
+class bpmn2_SubProcess {
+  + triggeredByEvent : bool
+}
+class bpmn2_Task {
+}
+class bpmn2_TerminateEventDefinition {
+}
+class bpmn2_TextAnnotation {
+  + text : str
+  + textFormat : str
+}
+abstract class bpmn2_ThrowEvent {
+}
+class bpmn2_TimerEventDefinition {
+}
+class bpmn2_Transaction {
+  + method : str
+  + protocol : str
+}
+class bpmn2_UserTask {
+  + implementation : str
+}
+Activity <|-- bpmn2_CallActivity
+Activity <|-- bpmn2_SubProcess
+Activity <|-- bpmn2_Task
+Artifact <|-- bpmn2_Association
+Artifact <|-- bpmn2_Group
+Artifact <|-- bpmn2_TextAnnotation
+BaseElement <|-- bpmn2_Artifact
+BaseElement <|-- bpmn2_Assignment
+BaseElement <|-- bpmn2_Auditing
+BaseElement <|-- bpmn2_CategoryValue
+BaseElement <|-- bpmn2_ComplexBehaviorDefinition
+BaseElement <|-- bpmn2_ConversationAssociation
+BaseElement <|-- bpmn2_ConversationLink
+BaseElement <|-- bpmn2_ConversationNode
+BaseElement <|-- bpmn2_CorrelationKey
+BaseElement <|-- bpmn2_CorrelationPropertyBinding
+BaseElement <|-- bpmn2_CorrelationPropertyRetrievalExpression
+BaseElement <|-- bpmn2_CorrelationSubscription
+BaseElement <|-- bpmn2_DataAssociation
+BaseElement <|-- bpmn2_DataState
+BaseElement <|-- bpmn2_Definitions
+BaseElement <|-- bpmn2_Documentation
+BaseElement <|-- bpmn2_Expression
+BaseElement <|-- bpmn2_FlowElement
+BaseElement <|-- bpmn2_FlowElementsContainer
+BaseElement <|-- bpmn2_InputOutputSpecification
+BaseElement <|-- bpmn2_InputSet
+BaseElement <|-- bpmn2_ItemAwareElement
+BaseElement <|-- bpmn2_Lane
+BaseElement <|-- bpmn2_LaneSet
+BaseElement <|-- bpmn2_LoopCharacteristics
+BaseElement <|-- bpmn2_MessageFlow
+BaseElement <|-- bpmn2_MessageFlowAssociation
+BaseElement <|-- bpmn2_Monitoring
+BaseElement <|-- bpmn2_Operation
+BaseElement <|-- bpmn2_OutputSet
+BaseElement <|-- bpmn2_Participant
+BaseElement <|-- bpmn2_ParticipantAssociation
+BaseElement <|-- bpmn2_Relationship
+BaseElement <|-- bpmn2_Rendering
+BaseElement <|-- bpmn2_ResourceParameter
+BaseElement <|-- bpmn2_ResourceRole
+BaseElement <|-- bpmn2_RootElement
+CallableElement <|-- bpmn2_GlobalTask
+CallableElement <|-- bpmn2_Process
+CatchEvent <|-- bpmn2_BoundaryEvent
+CatchEvent <|-- bpmn2_IntermediateCatchEvent
+CatchEvent <|-- bpmn2_StartEvent
+Choreography <|-- bpmn2_GlobalChoreographyTask
+ChoreographyActivity <|-- bpmn2_CallChoreography
+ChoreographyActivity <|-- bpmn2_ChoreographyTask
+ChoreographyActivity <|-- bpmn2_SubChoreography
+Collaboration <|-- bpmn2_Choreography
+Collaboration <|-- bpmn2_GlobalConversation
+ConversationNode <|-- bpmn2_CallConversation
+ConversationNode <|-- bpmn2_Conversation
+ConversationNode <|-- bpmn2_SubConversation
+DataAssociation <|-- bpmn2_DataInputAssociation
+DataAssociation <|-- bpmn2_DataOutputAssociation
+Event <|-- bpmn2_CatchEvent
+Event <|-- bpmn2_ThrowEvent
+EventDefinition <|-- bpmn2_CancelEventDefinition
+EventDefinition <|-- bpmn2_CompensateEventDefinition
+EventDefinition <|-- bpmn2_ConditionalEventDefinition
+EventDefinition <|-- bpmn2_ErrorEventDefinition
+EventDefinition <|-- bpmn2_EscalationEventDefinition
+EventDefinition <|-- bpmn2_LinkEventDefinition
+EventDefinition <|-- bpmn2_MessageEventDefinition
+EventDefinition <|-- bpmn2_SignalEventDefinition
+EventDefinition <|-- bpmn2_TerminateEventDefinition
+EventDefinition <|-- bpmn2_TimerEventDefinition
+Expression <|-- bpmn2_FormalExpression
+FlowElement <|-- bpmn2_DataObject
+FlowElement <|-- bpmn2_DataObjectReference
+FlowElement <|-- bpmn2_DataStoreReference
+FlowElement <|-- bpmn2_FlowNode
+FlowElement <|-- bpmn2_SequenceFlow
+FlowElementsContainer <|-- bpmn2_Choreography
+FlowElementsContainer <|-- bpmn2_Process
+FlowElementsContainer <|-- bpmn2_SubChoreography
+FlowElementsContainer <|-- bpmn2_SubProcess
+FlowNode <|-- bpmn2_Activity
+FlowNode <|-- bpmn2_ChoreographyActivity
+FlowNode <|-- bpmn2_Event
+FlowNode <|-- bpmn2_Gateway
+Gateway <|-- bpmn2_ComplexGateway
+Gateway <|-- bpmn2_EventBasedGateway
+Gateway <|-- bpmn2_ExclusiveGateway
+Gateway <|-- bpmn2_InclusiveGateway
+Gateway <|-- bpmn2_ParallelGateway
+GlobalTask <|-- bpmn2_GlobalBusinessRuleTask
+GlobalTask <|-- bpmn2_GlobalManualTask
+GlobalTask <|-- bpmn2_GlobalScriptTask
+GlobalTask <|-- bpmn2_GlobalUserTask
+HumanPerformer <|-- bpmn2_PotentialOwner
+InteractionNode <|-- bpmn2_ConversationNode
+InteractionNode <|-- bpmn2_Event
+InteractionNode <|-- bpmn2_Participant
+InteractionNode <|-- bpmn2_Task
+ItemAwareElement <|-- bpmn2_DataInput
+ItemAwareElement <|-- bpmn2_DataObject
+ItemAwareElement <|-- bpmn2_DataObjectReference
+ItemAwareElement <|-- bpmn2_DataOutput
+ItemAwareElement <|-- bpmn2_DataStore
+ItemAwareElement <|-- bpmn2_DataStoreReference
+ItemAwareElement <|-- bpmn2_Property
+LoopCharacteristics <|-- bpmn2_MultiInstanceLoopCharacteristics
+LoopCharacteristics <|-- bpmn2_StandardLoopCharacteristics
+Performer <|-- bpmn2_HumanPerformer
+ResourceRole <|-- bpmn2_Performer
+RootElement <|-- bpmn2_CallableElement
+RootElement <|-- bpmn2_Category
+RootElement <|-- bpmn2_Collaboration
+RootElement <|-- bpmn2_CorrelationProperty
+RootElement <|-- bpmn2_DataStore
+RootElement <|-- bpmn2_EndPoint
+RootElement <|-- bpmn2_Error
+RootElement <|-- bpmn2_EventDefinition
+RootElement <|-- bpmn2_Interface
+RootElement <|-- bpmn2_ItemDefinition
+RootElement <|-- bpmn2_Message
+RootElement <|-- bpmn2_PartnerEntity
+RootElement <|-- bpmn2_PartnerRole
+RootElement <|-- bpmn2_Resource
+RootElement <|-- bpmn2_Signal
+SubProcess <|-- bpmn2_AdHocSubProcess
+SubProcess <|-- bpmn2_Transaction
+Task <|-- bpmn2_BusinessRuleTask
+Task <|-- bpmn2_ManualTask
+Task <|-- bpmn2_ReceiveTask
+Task <|-- bpmn2_ScriptTask
+Task <|-- bpmn2_SendTask
+Task <|-- bpmn2_ServiceTask
+Task <|-- bpmn2_UserTask
+ThrowEvent <|-- bpmn2_EndEvent
+ThrowEvent <|-- bpmn2_ImplicitThrowEvent
+ThrowEvent <|-- bpmn2_IntermediateThrowEvent
+bpmn2_ComplexGateway "1..1" *-- "0..1" bpmn2_Expression : activationCondition317
+bpmn2_Activity "0..1" -- "1..1" bpmn2_CompensateEventDefinition : activityRef353
+bpmn2_Artifact "0..9999" --* "1..1" bpmn2_Process : artifacts124
+bpmn2_Artifact "0..9999" --* "1..1" bpmn2_Collaboration : artifacts163
+bpmn2_Artifact "0..9999" --* "1..1" bpmn2_SubChoreography : artifacts405
+bpmn2_Artifact "0..9999" --* "1..1" bpmn2_SubProcess : artifacts421
+bpmn2_Assignment "0..9999" --* "1..1" bpmn2_DataAssociation : assignment300
+bpmn2_Activity "1..1" -- "1..1" bpmn2_BoundaryEvent : attachedToRef282
+bpmn2_Auditing "0..1" --* "1..1" bpmn2_Process : auditing111
+bpmn2_Auditing "0..1" --* "1..1" bpmn2_FlowElement : auditing131
+bpmn2_EObject "1..1" -- "1..1" bpmn2_FormalExpression : body247
+bpmn2_Activity "1..1" -- "0..9999" bpmn2_BoundaryEvent : boundaryEventRefs277
+bpmn2_CallChoreography "1..1" -- "0..1" bpmn2_Choreography : calledChoreographyRef400
+bpmn2_CallConversation "1..1" -- "0..1" bpmn2_Collaboration : calledCollaborationRef381
+bpmn2_CallActivity "1..1" -- "0..1" bpmn2_CallableElement : calledElementRef458
+bpmn2_CategoryValue "1..1" -- "0..9999" bpmn2_FlowElement : categorizedFlowElements138
+bpmn2_Category "1..1" *-- "0..9999" bpmn2_CategoryValue : categoryValue417
+bpmn2_CategoryValue "0..9999" -- "1..1" bpmn2_FlowElement : categoryValueRef137
+bpmn2_CategoryValue "0..1" -- "1..1" bpmn2_Group : categoryValueRef411
+bpmn2_Lane "1..1" *-- "0..1" bpmn2_LaneSet : childLaneSet141
+bpmn2_Choreography "0..9999" -- "1..1" bpmn2_Collaboration : choreographyRef161
+bpmn2_Expression "0..1" --* "1..1" bpmn2_MultiInstanceLoopCharacteristics : completionCondition437
+bpmn2_AdHocSubProcess "1..1" *-- "1..1" bpmn2_Expression : completionCondition470
+bpmn2_ComplexBehaviorDefinition "0..9999" --* "1..1" bpmn2_MultiInstanceLoopCharacteristics : complexBehaviorDefinition440
+bpmn2_ConditionalEventDefinition "1..1" *-- "1..1" bpmn2_Expression : condition373
+bpmn2_ComplexBehaviorDefinition "1..1" *-- "1..1" bpmn2_FormalExpression : condition448
+bpmn2_Expression "0..1" --* "1..1" bpmn2_SequenceFlow : conditionExpression155
+bpmn2_Collaboration "1..1" *-- "1..1" bpmn2_ConversationAssociation : conversationAssociations170
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_ConversationLink : conversationLinks180
+bpmn2_ConversationNode "0..9999" --* "1..1" bpmn2_SubConversation : conversationNodes386
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_ConversationNode : conversations178
+bpmn2_CorrelationKey "1..1" -- "1..1" bpmn2_CorrelationSubscription : correlationKeyRef253
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_CorrelationKey : correlationKeys176
+bpmn2_ConversationNode "1..1" *-- "0..9999" bpmn2_CorrelationKey : correlationKeys232
+bpmn2_ChoreographyActivity "1..1" *-- "0..9999" bpmn2_CorrelationKey : correlationKeys397
+bpmn2_CorrelationPropertyBinding "0..9999" --* "1..1" bpmn2_CorrelationSubscription : correlationPropertyBinding256
+bpmn2_CorrelationKey "1..1" -- "0..9999" bpmn2_CorrelationProperty : correlationPropertyRef235
+bpmn2_CorrelationProperty "1..1" -- "1..1" bpmn2_CorrelationPropertyBinding : correlationPropertyRef261
+bpmn2_CorrelationProperty "1..1" *-- "1..9999" bpmn2_CorrelationPropertyRetrievalExpression : correlationPropertyRetrievalExpression237
+bpmn2_CorrelationSubscription "0..9999" --* "1..1" bpmn2_Process : correlationSubscriptions126
+bpmn2_DataInputAssociation "0..9999" --* "1..1" bpmn2_ThrowEvent : dataInputAssociation338
+bpmn2_Activity "1..1" *-- "0..9999" bpmn2_DataInputAssociation : dataInputAssociations278
+bpmn2_DataInput "0..9999" -- "1..1" bpmn2_InputSet : dataInputRefs53
+bpmn2_DataInput "0..9999" --* "1..1" bpmn2_ThrowEvent : dataInputs341
+bpmn2_DataInput "0..9999" --* "1..1" bpmn2_InputOutputSpecification : dataInputs49
+bpmn2_DataObject "1..1" -- "1..1" bpmn2_DataObjectReference : dataObjectRef380
+bpmn2_CatchEvent "1..1" *-- "0..9999" bpmn2_DataOutputAssociation : dataOutputAssociation287
+bpmn2_Activity "1..1" *-- "0..9999" bpmn2_DataOutputAssociation : dataOutputAssociations280
+bpmn2_DataOutput "0..9999" -- "1..1" bpmn2_OutputSet : dataOutputRefs69
+bpmn2_CatchEvent "1..1" *-- "0..9999" bpmn2_DataOutput : dataOutputs290
+bpmn2_DataOutput "0..9999" --* "1..1" bpmn2_InputOutputSpecification : dataOutputs51
+bpmn2_CorrelationPropertyBinding "1..1" *-- "1..1" bpmn2_FormalExpression : dataPath258
+bpmn2_DataState "0..1" --* "1..1" bpmn2_ItemAwareElement : dataState67
+bpmn2_DataStore "0..1" -- "1..1" bpmn2_DataStoreReference : dataStoreRef379
+bpmn2_Activity "1..1" -- "0..1" bpmn2_SequenceFlow : default268
+bpmn2_ComplexGateway "1..1" -- "0..1" bpmn2_SequenceFlow : default319
+bpmn2_ExclusiveGateway "1..1" -- "0..1" bpmn2_SequenceFlow : default322
+bpmn2_InclusiveGateway "1..1" -- "0..1" bpmn2_SequenceFlow : default324
+bpmn2_Extension "1..1" *-- "1..1" bpmn2_ExtensionDefinition : definition331
+bpmn2_Collaboration "0..1" -- "1..1" bpmn2_Process : definitionalCollaborationRef119
+bpmn2_BPMNDiagram "0..9999" --* "1..1" bpmn2_Definitions : diagrams482
+bpmn2_BaseElement "1..1" *-- "0..9999" bpmn2_Documentation : documentation6
+bpmn2_EndPoint "0..9999" -- "1..1" bpmn2_Participant : endPointRefs193
+bpmn2_Error "0..1" -- "1..1" bpmn2_ErrorEventDefinition : errorRef347
+bpmn2_Error "0..9999" -- "1..1" bpmn2_Operation : errorRefs23
+bpmn2_Escalation "0..1" -- "1..1" bpmn2_EscalationEventDefinition : escalationRef349
+bpmn2_FormalExpression "1..1" -- "1..1" bpmn2_ItemDefinition : evaluatesToTypeRef250
+bpmn2_ComplexBehaviorDefinition "1..1" *-- "0..1" bpmn2_ImplicitThrowEvent : event451
+bpmn2_CatchEvent "1..1" -- "0..9999" bpmn2_EventDefinition : eventDefinitionRefs285
+bpmn2_EventDefinition "0..9999" -- "1..1" bpmn2_ThrowEvent : eventDefinitionRefs335
+bpmn2_CatchEvent "1..1" *-- "0..9999" bpmn2_EventDefinition : eventDefinitions293
+bpmn2_EventDefinition "0..9999" --* "1..1" bpmn2_ThrowEvent : eventDefinitions344
+bpmn2_Expression "1..1" --* "1..1" bpmn2_ResourceParameterBinding : expression103
+bpmn2_Expression "1..1" --* "1..1" bpmn2_ResourceAssignmentExpression : expression108
+bpmn2_ExtensionAttributeDefinition "1..1" -- "1..1" bpmn2_ExtensionAttributeValue : extensionAttributeDefinition16
+bpmn2_ExtensionAttributeDefinition "0..9999" --* "1..1" bpmn2_ExtensionDefinition : extensionAttributeDefinitions8
+bpmn2_ExtensionAttributeDefinition "1..1" -- "1..1" bpmn2_ExtensionDefinition : extensionDefinition9
+bpmn2_BaseElement "1..1" -- "0..9999" bpmn2_ExtensionDefinition : extensionDefinitions3
+bpmn2_BaseElement "1..1" *-- "0..9999" bpmn2_ExtensionAttributeValue : extensionValues4
+bpmn2_Definitions "1..1" *-- "0..9999" bpmn2_Extension : extensions474
+bpmn2_FlowElement "0..9999" --* "1..1" bpmn2_FlowElementsContainer : flowElements128
+bpmn2_FlowNode "0..9999" -- "1..1" bpmn2_Lane : flowNodeRefs147
+bpmn2_Assignment "1..1" *-- "1..1" bpmn2_Expression : from_308
+bpmn2_EObject "0..1" -- "1..1" bpmn2_Interface : implementationRef1
+bpmn2_EObject "0..1" -- "1..1" bpmn2_Operation : implementationRef25
+bpmn2_Import "0..1" -- "1..1" bpmn2_ItemDefinition : import_33
+bpmn2_Definitions "1..1" *-- "0..9999" bpmn2_Import : imports472
+bpmn2_Message "1..1" -- "1..1" bpmn2_Operation : inMessageRef18
+bpmn2_FlowNode "1..1" -- "0..9999" bpmn2_SequenceFlow : incoming152
+bpmn2_ConversationLink "0..9999" -- "1..1" bpmn2_InteractionNode : incomingConversationLinks198
+bpmn2_ChoreographyActivity "1..1" -- "1..1" bpmn2_Participant : initiatingParticipantRef394
+bpmn2_GlobalChoreographyTask "1..1" -- "1..1" bpmn2_Participant : initiatingParticipantRef409
+bpmn2_ConversationAssociation "1..1" -- "1..1" bpmn2_ConversationNode : innerConversationNodeRef220
+bpmn2_MessageFlow "1..1" -- "1..1" bpmn2_MessageFlowAssociation : innerMessageFlowRef206
+bpmn2_Participant "1..1" -- "1..1" bpmn2_ParticipantAssociation : innerParticipantRef182
+bpmn2_DataInput "0..1" --* "1..1" bpmn2_MultiInstanceLoopCharacteristics : inputDataItem431
+bpmn2_InputOutputBinding "1..1" -- "1..1" bpmn2_InputSet : inputDataRef83
+bpmn2_InputSet "0..1" --* "1..1" bpmn2_ThrowEvent : inputSet333
+bpmn2_DataInput "1..1" -- "1..9999" bpmn2_InputSet : inputSetRefs63
+bpmn2_InputSet "0..9999" -- "1..1" bpmn2_OutputSet : inputSetRefs74
+bpmn2_DataInput "1..1" -- "0..9999" bpmn2_InputSet : inputSetWithOptional60
+bpmn2_DataInput "1..1" -- "0..9999" bpmn2_InputSet : inputSetWithWhileExecuting61
+bpmn2_InputOutputSpecification "1..1" *-- "1..9999" bpmn2_InputSet : inputSets45
+bpmn2_Interface "0..9999" -- "1..1" bpmn2_Participant : interfaceRefs188
+bpmn2_CallableElement "1..1" *-- "0..9999" bpmn2_InputOutputBinding : ioBinding43
+bpmn2_Activity "1..1" *-- "0..1" bpmn2_InputOutputSpecification : ioSpecification274
+bpmn2_CallableElement "1..1" *-- "0..1" bpmn2_InputOutputSpecification : ioSpecification39
+bpmn2_ItemDefinition "0..1" -- "1..1" bpmn2_Message : itemRef28
+bpmn2_ItemAwareElement "1..1" -- "0..1" bpmn2_ItemDefinition : itemSubjectRef65
+bpmn2_FlowElementsContainer "1..1" *-- "0..9999" bpmn2_LaneSet : laneSets129
+bpmn2_Lane "0..9999" --* "1..1" bpmn2_LaneSet : lanes139
+bpmn2_FlowNode "1..1" -- "0..9999" bpmn2_Lane : lanes154
+bpmn2_Expression "0..1" --* "1..1" bpmn2_MultiInstanceLoopCharacteristics : loopCardinality423
+bpmn2_Activity "1..1" *-- "0..1" bpmn2_LoopCharacteristics : loopCharacteristics264
+bpmn2_Expression "0..1" --* "1..1" bpmn2_StandardLoopCharacteristics : loopCondition453
+bpmn2_ItemAwareElement "0..1" -- "1..1" bpmn2_MultiInstanceLoopCharacteristics : loopDataInputRef425
+bpmn2_ItemAwareElement "0..1" -- "1..1" bpmn2_MultiInstanceLoopCharacteristics : loopDataOutputRef428
+bpmn2_Expression "0..1" --* "1..1" bpmn2_StandardLoopCharacteristics : loopMaximum455
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_MessageFlowAssociation : messageFlowAssociations168
+bpmn2_ChoreographyTask "1..1" -- "1..2" bpmn2_MessageFlow : messageFlowRef407
+bpmn2_ConversationNode "1..1" -- "0..9999" bpmn2_MessageFlow : messageFlowRefs229
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_MessageFlow : messageFlows174
+bpmn2_CorrelationPropertyRetrievalExpression "1..1" *-- "1..1" bpmn2_FormalExpression : messagePath242
+bpmn2_Message "0..1" -- "1..1" bpmn2_MessageFlow : messageRef217
+bpmn2_CorrelationPropertyRetrievalExpression "1..1" -- "1..1" bpmn2_Message : messageRef244
+bpmn2_Message "0..1" -- "1..1" bpmn2_MessageEventDefinition : messageRef368
+bpmn2_Message "0..1" -- "1..1" bpmn2_SendTask : messageRef462
+bpmn2_Message "0..1" -- "1..1" bpmn2_ReceiveTask : messageRef467
+bpmn2_Monitoring "0..1" --* "1..1" bpmn2_Process : monitoring112
+bpmn2_FlowElement "1..1" *-- "0..1" bpmn2_Monitoring : monitoring134
+bpmn2_EventDefinition "0..1" -- "1..1" bpmn2_MultiInstanceLoopCharacteristics : noneBehaviorEventRef445
+bpmn2_EventDefinition "0..1" -- "1..1" bpmn2_MultiInstanceLoopCharacteristics : oneBehaviorEventRef442
+bpmn2_MessageEventDefinition "1..1" -- "0..1" bpmn2_Operation : operationRef370
+bpmn2_Operation "0..1" -- "1..1" bpmn2_ServiceTask : operationRef419
+bpmn2_Operation "0..1" -- "1..1" bpmn2_SendTask : operationRef460
+bpmn2_Operation "0..1" -- "1..1" bpmn2_ReceiveTask : operationRef465
+bpmn2_InputOutputBinding "1..1" -- "1..1" bpmn2_Operation : operationRef89
+bpmn2_Interface "1..1" *-- "1..9999" bpmn2_Operation : operations0
+bpmn2_DataInput "0..9999" -- "1..1" bpmn2_InputSet : optionalInputRefs54
+bpmn2_DataOutput "0..9999" -- "1..1" bpmn2_OutputSet : optionalOutputRefs70
+bpmn2_Message "0..1" -- "1..1" bpmn2_Operation : outMessageRef20
+bpmn2_ConversationAssociation "1..1" -- "1..1" bpmn2_ConversationNode : outerConversationNodeRef223
+bpmn2_MessageFlow "1..1" -- "1..1" bpmn2_MessageFlowAssociation : outerMessageFlowRef209
+bpmn2_Participant "1..1" -- "1..1" bpmn2_ParticipantAssociation : outerParticipantRef185
+bpmn2_FlowNode "1..1" -- "0..9999" bpmn2_SequenceFlow : outgoing151
+bpmn2_ConversationLink "0..9999" -- "1..1" bpmn2_InteractionNode : outgoingConversationLinks200
+bpmn2_DataOutput "0..1" --* "1..1" bpmn2_MultiInstanceLoopCharacteristics : outputDataItem434
+bpmn2_InputOutputBinding "1..1" -- "1..1" bpmn2_OutputSet : outputDataRef86
+bpmn2_CatchEvent "1..1" *-- "0..1" bpmn2_OutputSet : outputSet283
+bpmn2_InputSet "1..1" -- "0..9999" bpmn2_OutputSet : outputSetRefs58
+bpmn2_DataOutput "1..1" -- "1..9999" bpmn2_OutputSet : outputSetRefs81
+bpmn2_DataOutput "1..1" -- "0..9999" bpmn2_OutputSet : outputSetWithOptional77
+bpmn2_DataOutput "1..1" -- "0..9999" bpmn2_OutputSet : outputSetWithWhileExecuting79
+bpmn2_InputOutputSpecification "1..1" *-- "1..9999" bpmn2_OutputSet : outputSets47
+bpmn2_ResourceParameter "1..1" -- "1..1" bpmn2_ResourceParameterBinding : parameterRef105
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_ParticipantAssociation : participantAssociations166
+bpmn2_CallConversation "1..1" *-- "0..9999" bpmn2_ParticipantAssociation : participantAssociations383
+bpmn2_CallChoreography "1..1" *-- "0..9999" bpmn2_ParticipantAssociation : participantAssociations402
+bpmn2_Participant "1..1" *-- "0..1" bpmn2_ParticipantMultiplicity : participantMultiplicity191
+bpmn2_Participant "0..9999" -- "1..1" bpmn2_PartnerEntity : participantRef388
+bpmn2_Participant "0..9999" -- "1..1" bpmn2_PartnerRole : participantRef390
+bpmn2_ConversationNode "1..1" -- "2..9999" bpmn2_Participant : participantRefs226
+bpmn2_ChoreographyActivity "1..1" -- "2..9999" bpmn2_Participant : participantRefs392
+bpmn2_Collaboration "1..1" *-- "0..9999" bpmn2_Participant : participants172
+bpmn2_BaseElement "0..1" --* "1..1" bpmn2_Lane : partitionElement148
+bpmn2_BaseElement "0..1" -- "1..1" bpmn2_Lane : partitionElementRef144
+bpmn2_Participant "1..1" -- "0..1" bpmn2_Process : processRef195
+bpmn2_Process "1..1" *-- "0..9999" bpmn2_Property : properties114
+bpmn2_Activity "1..1" *-- "0..9999" bpmn2_Property : properties271
+bpmn2_Event "1..1" *-- "0..9999" bpmn2_Property : properties296
+bpmn2_Definitions "1..1" *-- "0..9999" bpmn2_Relationship : relationships477
+bpmn2_Rendering "0..9999" --* "1..1" bpmn2_UserTask : renderings314
+bpmn2_GlobalUserTask "1..1" *-- "0..9999" bpmn2_Rendering : renderings315
+bpmn2_ResourceAssignmentExpression "0..1" --* "1..1" bpmn2_ResourceRole : resourceAssignmentExpression96
+bpmn2_ResourceParameterBinding "0..9999" --* "1..1" bpmn2_ResourceRole : resourceParameterBindings94
+bpmn2_Resource "1..1" *-- "0..9999" bpmn2_ResourceParameter : resourceParameters98
+bpmn2_Resource "0..1" -- "1..1" bpmn2_ResourceRole : resourceRef92
+bpmn2_Process "1..1" *-- "0..9999" bpmn2_ResourceRole : resources121
+bpmn2_Activity "1..1" *-- "0..9999" bpmn2_ResourceRole : resources265
+bpmn2_GlobalTask "1..1" *-- "0..9999" bpmn2_ResourceRole : resources38
+bpmn2_Definitions "1..1" *-- "0..9999" bpmn2_RootElement : rootElements480
+bpmn2_Signal "0..1" -- "1..1" bpmn2_SignalEventDefinition : signalRef375
+bpmn2_LinkEventDefinition "1..1" -- "0..9999" bpmn2_LinkEventDefinition : source366
+bpmn2_FlowNode "1..1" -- "1..1" bpmn2_SequenceFlow : sourceRef159
+bpmn2_ConversationLink "1..1" -- "1..1" bpmn2_InteractionNode : sourceRef203
+bpmn2_InteractionNode "1..1" -- "1..1" bpmn2_MessageFlow : sourceRef212
+bpmn2_DataAssociation "1..1" -- "0..9999" bpmn2_ItemAwareElement : sourceRef305
+bpmn2_Association "1..1" -- "1..1" bpmn2_BaseElement : sourceRef412
+bpmn2_EObject "1..9999" -- "1..1" bpmn2_Relationship : sources326
+bpmn2_EObject "1..1" -- "1..1" bpmn2_ItemDefinition : structureRef30
+bpmn2_Error "1..1" -- "0..1" bpmn2_ItemDefinition : structureRef35
+bpmn2_Escalation "1..1" -- "0..1" bpmn2_ItemDefinition : structureRef350
+bpmn2_ItemDefinition "0..1" -- "1..1" bpmn2_Signal : structureRef376
+bpmn2_CallableElement "1..1" -- "0..9999" bpmn2_Interface : supportedInterfaceRefs40
+bpmn2_Process "0..9999" -- "1..1" bpmn2_Process : supports117
+bpmn2_LinkEventDefinition "1..1" -- "0..1" bpmn2_LinkEventDefinition : target364
+bpmn2_FlowNode "1..1" -- "1..1" bpmn2_SequenceFlow : targetRef157
+bpmn2_ConversationLink "1..1" -- "1..1" bpmn2_InteractionNode : targetRef204
+bpmn2_InteractionNode "1..1" -- "1..1" bpmn2_MessageFlow : targetRef214
+bpmn2_DataAssociation "1..1" -- "1..1" bpmn2_ItemAwareElement : targetRef302
+bpmn2_Association "1..1" -- "1..1" bpmn2_BaseElement : targetRef414
+bpmn2_EObject "1..9999" -- "1..1" bpmn2_Relationship : targets328
+bpmn2_Expression "0..1" --* "1..1" bpmn2_TimerEventDefinition : timeCycle357
+bpmn2_Expression "0..1" --* "1..1" bpmn2_TimerEventDefinition : timeDate355
+bpmn2_Expression "0..1" --* "1..1" bpmn2_TimerEventDefinition : timeDuration360
+bpmn2_Assignment "1..1" *-- "1..1" bpmn2_Expression : to311
+bpmn2_DataAssociation "1..1" *-- "0..1" bpmn2_FormalExpression : transformation298
+bpmn2_ItemDefinition "0..1" -- "1..1" bpmn2_ResourceParameter : type100
+bpmn2_CorrelationProperty "1..1" -- "0..1" bpmn2_ItemDefinition : type239
+bpmn2_EObject "0..1" --* "1..1" bpmn2_ExtensionAttributeValue : value13
+bpmn2_EObject "0..1" -- "1..1" bpmn2_ExtensionAttributeValue : valueRef10
+bpmn2_DataInput "0..9999" -- "1..1" bpmn2_InputSet : whileExecutingInputRefs56
+bpmn2_DataOutput "0..9999" -- "1..1" bpmn2_OutputSet : whileExecutingOutputRefs72
+@enduml

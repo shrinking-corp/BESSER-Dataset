@@ -1,0 +1,45 @@
+@startuml
+class Booking {
+  + booking_id : int
+  + contact_no : int
+  + customer_name : str
+  + date : date
+  + email_id : str
+  + endTime : str
+  + reservedTables : str
+  + startTime : str
+}
+class CustomerUI {
+}
+class FrontOfHouse {
+}
+class Manager {
+}
+class Report {
+  + orders : str
+  + report_id : str
+}
+class ReservationManagementSystem {
+  + bookings : str
+}
+class Staff {
+  + name : str
+  + staffId : str
+  + type : str
+}
+class StaffUI {
+}
+class Table {
+  + avaliable : bool
+  + numSeats : int
+  + table_id : str
+}
+class Waiter {
+}
+CustomerUI "0..9999" -- "1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
+Booking "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
+Report "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Report
+Staff "0..9999" -- "1..1" StaffUI : Staff_ReservationManagementSystem
+ReservationManagementSystem "0..9999" -- "0..9999" StaffUI : Staff_StaffUI
+Booking "1..1" -- "1..9999" Table : Table_Booking
+@enduml

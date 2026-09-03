@@ -1,0 +1,32 @@
+@startuml
+class AbstractA {
+}
+class aSubSubPackage_F {
+}
+class rootPackage_A {
+  + a : int
+  + a2 : bool
+}
+abstract class rootPackage_AbstractA {
+}
+class rootPackage_B {
+  + bint : int
+  + stuff : str
+}
+class rootPackage_C {
+  + cstring : str
+}
+class rootPackage_aSubPackage_D {
+  + d : int
+}
+class rootPackage_aSubSubPackage_E {
+}
+class rootPackage_aSubSubPackage_F {
+}
+AbstractA <|-- rootPackage_A
+rootPackage_A "1..1" *-- "0..9999" rootPackage_B : b1
+rootPackage_B "2..3" -- "1..1" rootPackage_C : b4
+rootPackage_A "1..1" -- "0..1" rootPackage_C : c0
+rootPackage_B "1..1" -- "0..1" rootPackage_C : c3
+aSubSubPackage_F "0..1" --* "1..1" rootPackage_aSubSubPackage_E : f5
+@enduml

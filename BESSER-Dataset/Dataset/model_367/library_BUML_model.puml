@@ -1,0 +1,56 @@
+@startuml
+class Addressable {
+}
+class CirculatingItem {
+}
+class Item {
+}
+class Lendable {
+}
+class Person {
+}
+abstract class library_Addressable {
+  + address : str
+}
+class library_Borrower {
+}
+abstract class library_CirculatingItem {
+}
+class library_Employee {
+}
+class library_IncBook {
+  + pages : int
+  + title : str
+}
+abstract class library_Item {
+  + publicationDate : date
+}
+abstract class library_Lendable {
+  + copies : int
+}
+class library_Library {
+  + name : str
+}
+class library_Person {
+  + firstName : str
+  + lastName : str
+}
+class library_Writer {
+}
+Addressable <|-- library_Library
+Addressable <|-- library_Person
+CirculatingItem <|-- library_IncBook
+Item <|-- library_CirculatingItem
+Lendable <|-- library_CirculatingItem
+Person <|-- library_Borrower
+Person <|-- library_Employee
+Person <|-- library_Writer
+library_IncBook "1..1" -- "1..9999" library_Writer : authors9
+library_IncBook "0..9999" -- "1..1" library_Writer : books7
+library_Borrower "0..9999" -- "1..1" library_Lendable : borrowers10
+library_Borrower "0..9999" --* "1..1" library_Library : borrowers3
+library_Borrower "1..1" -- "0..9999" library_Lendable : borrowing8
+library_Employee "0..9999" --* "1..1" library_Library : employees1
+library_Item "0..9999" --* "1..1" library_Library : stock5
+library_Library "1..1" *-- "0..9999" library_Writer : writers0
+@enduml

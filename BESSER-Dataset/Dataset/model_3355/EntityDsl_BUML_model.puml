@@ -1,0 +1,36 @@
+@startuml
+class AbstractType {
+}
+class Named {
+}
+class entityDsl_AbstractType {
+}
+class entityDsl_Attribute {
+}
+class entityDsl_BooleanType {
+}
+class entityDsl_Entity {
+}
+class entityDsl_EntityReference {
+}
+class entityDsl_IntType {
+}
+class entityDsl_Module {
+}
+class entityDsl_Named {
+  + name : str
+}
+class entityDsl_StringType {
+}
+AbstractType <|-- entityDsl_BooleanType
+AbstractType <|-- entityDsl_EntityReference
+AbstractType <|-- entityDsl_IntType
+AbstractType <|-- entityDsl_StringType
+Named <|-- entityDsl_Attribute
+Named <|-- entityDsl_Entity
+Named <|-- entityDsl_Module
+entityDsl_Attribute "0..9999" --* "1..1" entityDsl_Entity : attributes1
+entityDsl_Entity "0..9999" --* "1..1" entityDsl_Module : entities0
+entityDsl_Entity "0..1" -- "1..1" entityDsl_EntityReference : ref5
+entityDsl_AbstractType "0..1" --* "1..1" entityDsl_Attribute : type3
+@enduml

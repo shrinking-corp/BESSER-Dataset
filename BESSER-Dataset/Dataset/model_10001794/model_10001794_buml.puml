@@ -1,0 +1,64 @@
+@startuml
+class Administrator {
+  + adminName : str
+  + email : str
+}
+class Customer {
+  + address : str
+  + credit_card_info : str
+  + customer : str
+  + email : str
+  + shipping_info : str
+}
+class Item {
+  + name : str
+  + pieceAvailable : int
+  + unitcost : int
+}
+class Order_Details {
+  + orderId : int
+  + productId : int
+  + productName : str
+  + quantity : int
+  + subtotal : int
+  + unitcost : int
+}
+class Orders {
+  + CustomerId : str
+  + Date : str
+  + OrderId : int
+  + ShippingId : str
+  + customerName : str
+  + dateCreated : str
+  + status : str
+}
+class Products {
+  + racknumber : int
+  + totral : int
+}
+class Shipping_Info {
+  + ShippingRegionId : int
+  + Shipping_Cost : int
+  + Shipping_Id : int
+  + Shipping_Type : str
+}
+class Shopping_Cart {
+  + CartId : int
+  + Quantity : int
+  + dateAdded : int
+  + productId : int
+}
+class User {
+  + Password : str
+  + User_Id : str
+  + loginStatus : str
+}
+Administrator "0..1" -- "0..1" Products : Administrator_Products
+Customer "1..1" -- "0..9999" Orders : Customer_Orders
+Customer "1..1" -- "0..9999" Shopping_Cart : Customer_Shopping_Cart
+Customer "0..1" -- "0..1" User : Customer_User
+Order_Details "1..1" -- "1..1" Orders : Orders_Order_Details
+Orders "1..1" -- "1..1" Shipping_Info : Orders_Shipping_Info
+Item "0..1" -- "0..1" Products : Products_Item
+Administrator "0..1" -- "0..1" User : User_Administrator
+@enduml

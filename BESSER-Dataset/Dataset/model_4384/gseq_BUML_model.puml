@@ -1,0 +1,97 @@
+@startuml
+class BooleanExpression {
+}
+class IntegerExpression {
+}
+class Operation {
+}
+class gseq_And {
+}
+class gseq_Assign {
+  + varName : str
+}
+abstract class gseq_BooleanExpression {
+  + bvalue() : bool
+  + pretty() : str
+}
+class gseq_Const {
+  + value : str
+}
+class gseq_Equality {
+}
+class gseq_False {
+}
+class gseq_GreaterThan {
+}
+class gseq_If {
+}
+abstract class gseq_IntegerExpression {
+  + ivalue() : str
+  + pretty() : str
+}
+class gseq_Method {
+  + name : str
+  + call() : void
+}
+class gseq_MethodCall {
+}
+class gseq_Not {
+}
+abstract class gseq_Operation {
+  + execute() : void
+}
+class gseq_Plus {
+}
+class gseq_Print {
+  + print() : void
+}
+class gseq_Program {
+  + init() : void
+}
+class gseq_True {
+}
+class gseq_Var {
+  + varName : str
+}
+class gseq_While {
+}
+BooleanExpression <|-- gseq_And
+BooleanExpression <|-- gseq_Equality
+BooleanExpression <|-- gseq_False
+BooleanExpression <|-- gseq_GreaterThan
+BooleanExpression <|-- gseq_Not
+BooleanExpression <|-- gseq_True
+IntegerExpression <|-- gseq_Const
+IntegerExpression <|-- gseq_MethodCall
+IntegerExpression <|-- gseq_Plus
+IntegerExpression <|-- gseq_Var
+Operation <|-- gseq_Assign
+Operation <|-- gseq_BooleanExpression
+Operation <|-- gseq_If
+Operation <|-- gseq_IntegerExpression
+Operation <|-- gseq_Print
+Operation <|-- gseq_While
+gseq_Assign "1..1" *-- "1..1" gseq_IntegerExpression : assignedExpression28
+gseq_Method "1..1" -- "0..9999" gseq_MethodCall : calledBy4
+gseq_BooleanExpression "1..1" --* "1..1" gseq_If : conditionIf15
+gseq_If "1..1" *-- "0..1" gseq_Operation : elseBranch10
+gseq_Method "0..1" -- "1..1" gseq_Operation : executedBy5
+gseq_Method "1..1" -- "1..1" gseq_Program : inProgram3
+gseq_And "1..1" -- "1..1" gseq_BooleanExpression : leftAnd23
+gseq_Equality "1..1" -- "1..1" gseq_IntegerExpression : leftEquality17
+gseq_GreaterThan "1..1" -- "1..1" gseq_IntegerExpression : leftGreaterThan35
+gseq_IntegerExpression "1..1" --* "1..1" gseq_Plus : leftPlus30
+gseq_Method "1..1" -- "1..1" gseq_MethodCall : methodToCall8
+gseq_Method "0..9999" --* "1..1" gseq_Program : methods0
+gseq_BooleanExpression "1..1" -- "1..1" gseq_Not : notExpression21
+gseq_Method "1..1" *-- "0..9999" gseq_Operation : operations2
+gseq_And "1..1" -- "1..1" gseq_BooleanExpression : rightAnd25
+gseq_Equality "1..1" -- "1..1" gseq_IntegerExpression : rightEquality18
+gseq_GreaterThan "1..1" -- "0..1" gseq_IntegerExpression : rightGreaterThan37
+gseq_IntegerExpression "1..1" --* "1..1" gseq_Plus : rightPlus32
+gseq_Method "1..1" -- "1..1" gseq_Program : startMethod1
+gseq_If "1..1" *-- "1..1" gseq_Operation : thenBranch12
+gseq_Operation "1..1" --* "1..1" gseq_Print : toPrint7
+gseq_BooleanExpression "0..1" -- "1..1" gseq_While : whileCondition40
+gseq_IntegerExpression "1..1" -- "1..1" gseq_While : whileExpression42
+@enduml

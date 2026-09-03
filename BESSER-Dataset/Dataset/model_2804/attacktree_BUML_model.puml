@@ -1,0 +1,41 @@
+@startuml
+class attacktree_EObject {
+}
+class attacktree_Model {
+  + description : str
+  + name : str
+}
+class attacktree_Node {
+  + description : str
+  + domains : str
+  + name : str
+  + tags : str
+}
+class attacktree_Vulnerability {
+  + description : str
+  + name : str
+  + severity : int
+  + tags : str
+  + type : str
+}
+enum propagationType {
+  bus
+  data
+  dataFlow
+  local
+  memory
+  processor
+}
+enum vulnerabilityType {
+  Authentication
+  Concurrency
+  Exposure
+  Isolation
+  ResourceAllocation
+  Timing
+}
+attacktree_EObject "0..1" -- "1..1" attacktree_Node : relatedObject4
+attacktree_Model "1..1" *-- "0..1" attacktree_Node : rootNode6
+attacktree_Node "0..9999" --* "1..1" attacktree_Node : subNodes2
+attacktree_Node "1..1" *-- "0..9999" attacktree_Vulnerability : vulnerabilities0
+@enduml

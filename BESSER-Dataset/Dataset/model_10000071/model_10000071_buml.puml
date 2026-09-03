@@ -1,0 +1,74 @@
+@startuml
+class Ar_Condicionado {
+  + book_id : int
+  + borrowed_date : str
+  + fine_amount : int
+  + member_id : int
+  + returned_date : str
+}
+class Borrowed {
+  + borrowed_date : str
+  + returned_date : str
+}
+class Class {
+}
+class Members {
+  + address : str
+  + cont_no : int
+  + dob : str
+  + fname : str
+  + gender : str
+  + lname : str
+  + member_id : int
+  + member_pwd : str
+}
+class Quado_Branco {
+  + address : str
+  + cont_no : int
+  + dob : str
+  + fname : str
+  + gender : str
+  + lname : str
+  + member_id : int
+  + member_pwd : str
+}
+class Reserved {
+  + reserved_date : str
+}
+class Retro_Projetor {
+  + ISBN_no : str
+  + author_name : str
+  + book_id : int
+  + book_qty : int
+  + publisher : str
+  + title : str
+}
+class Staff {
+  + Staff_ID : int
+  + address : str
+  + contact : int
+  + email : str
+  + fname : str
+  + gender : str
+  + lname : str
+  + password : str
+  + position : str
+  + username : str
+}
+class admin {
+  + Experience : str
+}
+class lecturer {
+  + module : str
+}
+Borrowed "0..9999" -- "0..9999" Retro_Projetor : Books_Borrowed
+Reserved "0..9999" -- "0..9999" Retro_Projetor : Books_Reserved
+Borrowed "0..9999" -- "0..9999" Members : Borrowed_Member
+Ar_Condicionado "0..9999" -- "1..1" Members : Fine_Member
+Quado_Branco "0..9999" -- "0..9999" Retro_Projetor : Librarian_Books
+Ar_Condicionado "0..9999" -- "0..9999" Quado_Branco : Librarian_Fine
+Members "0..9999" -- "0..9999" Quado_Branco : Member_Librarian
+Staff "0..1" -- "0..1" admin : Registar_Staff2
+Members "0..9999" -- "0..9999" Reserved : Reserved_Member
+Staff "0..1" -- "0..1" lecturer : Staff_Professor2
+@enduml

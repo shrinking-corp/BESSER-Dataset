@@ -1,0 +1,36 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+abstract class testall_AbstractComponent {
+  + name : str
+}
+class testall_Binding {
+}
+class testall_Component {
+}
+class testall_Content {
+  + expression : str
+  + language : str
+}
+abstract class testall_Interface {
+  + name : str
+  + signature : str
+}
+class testall_Provided {
+}
+class testall_Required {
+}
+AbstractComponent <|-- testall_Component
+Interface <|-- testall_Provided
+Interface <|-- testall_Required
+testall_Binding "0..9999" --* "1..1" testall_Interface : bindings5
+testall_AbstractComponent "1..1" *-- "0..1" testall_Content : content0
+testall_AbstractComponent "1..1" -- "1..1" testall_Content : contentParent12
+testall_Binding "1..1" -- "0..1" testall_Interface : from_6
+testall_AbstractComponent "1..1" *-- "0..9999" testall_Provided : providedInterfaces3
+testall_AbstractComponent "1..1" *-- "0..9999" testall_Required : requiredInterfaces1
+testall_Component "1..1" *-- "0..9999" testall_Component : subComponents16
+testall_Binding "1..1" -- "0..1" testall_Interface : to9
+@enduml

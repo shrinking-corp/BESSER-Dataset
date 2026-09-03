@@ -1,0 +1,63 @@
+@startuml
+class Action {
+}
+class ActionResult {
+}
+class AtomicProcess {
+}
+class CompositeProcess {
+}
+class Process {
+}
+abstract class actions_Action {
+}
+class actions_ActionResult {
+  + id : int
+  + version : int
+}
+class actions_ActionsCollection {
+  + id : int
+  + ns : str
+  + version : int
+}
+class actions_AtomicAction {
+}
+class actions_AtomicActionResult {
+  + hasDensity : float
+}
+class actions_CompositeAction {
+}
+class actions_Condition {
+}
+class actions_Distribution {
+  + datapoint : float
+  + density : float
+  + id : int
+  + version : int
+}
+class actions_Expression {
+}
+class actions_Parameter {
+}
+class actions_Participant {
+}
+class actions_Role {
+}
+Action <|-- actions_AtomicAction
+Action <|-- actions_CompositeAction
+ActionResult <|-- actions_AtomicActionResult
+AtomicProcess <|-- actions_AtomicAction
+CompositeProcess <|-- actions_CompositeAction
+Process <|-- actions_Action
+actions_Action "0..9999" --* "1..1" actions_ActionsCollection : actions16
+actions_ActionResult "1..1" *-- "0..9999" actions_Expression : hasAddEffect3
+actions_AtomicAction "1..1" *-- "0..9999" actions_AtomicActionResult : hasAtomicActionResult1
+actions_AtomicActionResult "1..1" *-- "0..9999" actions_Distribution : hasCostDistribution8
+actions_ActionResult "1..1" *-- "0..9999" actions_Expression : hasDeleteEffect5
+actions_AtomicActionResult "1..1" *-- "0..9999" actions_Distribution : hasDurationDistribution10
+actions_AtomicActionResult "1..1" *-- "0..9999" actions_Distribution : hasQualityDistribution13
+actions_ActionResult "1..1" *-- "0..9999" actions_Condition : inCondition2
+actions_ActionsCollection "1..1" *-- "0..9999" actions_Parameter : parameters20
+actions_ActionsCollection "1..1" *-- "0..9999" actions_Participant : participants18
+actions_Action "1..1" -- "0..9999" actions_Role : performedByRole0
+@enduml

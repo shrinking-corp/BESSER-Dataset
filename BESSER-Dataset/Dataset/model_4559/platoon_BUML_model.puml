@@ -1,0 +1,52 @@
+@startuml
+class Command {
+}
+class Constraint {
+}
+class Vehicle {
+}
+class platoon_Command {
+}
+class platoon_Constraint {
+}
+class platoon_Constraints {
+}
+class platoon_FollowVehicle {
+}
+class platoon_ForwardCommand {
+  + distance : int
+}
+class platoon_HeadwayConstraint {
+  + max : int
+  + min : int
+}
+class platoon_LeadingVehicle {
+}
+class platoon_Platoon {
+}
+class platoon_Route {
+  + name : str
+}
+class platoon_TurnCommand {
+  + direction : str
+}
+abstract class platoon_Vehicle {
+  + name : str
+}
+class platoon_World {
+}
+Command <|-- platoon_ForwardCommand
+Command <|-- platoon_TurnCommand
+Constraint <|-- platoon_HeadwayConstraint
+Vehicle <|-- platoon_FollowVehicle
+Vehicle <|-- platoon_LeadingVehicle
+platoon_FollowVehicle "0..9999" --* "1..1" platoon_Platoon : FV1
+platoon_LeadingVehicle "1..1" --* "1..1" platoon_Platoon : LV0
+platoon_Command "1..9999" --* "1..1" platoon_Route : commands3
+platoon_Constraints "0..1" --* "1..1" platoon_World : constraints14
+platoon_Constraint "0..9999" --* "1..1" platoon_Constraints : constraints16
+platoon_FollowVehicle "1..1" -- "1..1" platoon_Vehicle : follows4
+platoon_Platoon "1..1" --* "1..1" platoon_World : platoon9
+platoon_Route "1..1" --* "1..1" platoon_World : route11
+platoon_LeadingVehicle "1..1" -- "1..1" platoon_Route : route6
+@enduml

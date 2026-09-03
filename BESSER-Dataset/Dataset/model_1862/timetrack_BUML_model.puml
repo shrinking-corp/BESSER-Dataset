@@ -1,0 +1,28 @@
+@startuml
+class timetrack_Library {
+}
+class timetrack_Project {
+  + name : str
+  + number : str
+}
+class timetrack_TimeEntry {
+  + day : date
+  + duration : date
+  + factured : bool
+  + from_ : date
+  + notes : str
+  + sync_date : date
+  + till : date
+}
+class timetrack_User {
+  + name : str
+  + password : str
+  + sap_name : str
+  + sap_password : str
+}
+timetrack_Library "1..1" *-- "0..9999" timetrack_User : listBook3
+timetrack_Library "1..1" *-- "0..9999" timetrack_Project : listProject8
+timetrack_Library "1..1" *-- "0..9999" timetrack_TimeEntry : listTimeEntry5
+timetrack_Project "1..1" -- "1..1" timetrack_TimeEntry : project1
+timetrack_TimeEntry "1..1" -- "1..1" timetrack_User : user0
+@enduml

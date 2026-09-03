@@ -1,0 +1,94 @@
+@startuml
+enum ActionKind {
+  ENTRY
+  EXIT
+}
+class ConstantValue {
+}
+class GAbstractAction {
+}
+class GAbstractState {
+}
+class GCompositeState {
+}
+class GState {
+}
+class Named {
+}
+class NumberValue {
+}
+class Value {
+}
+class statemachine_BooleanValue {
+}
+class statemachine_Call {
+  + actionId : str
+}
+class statemachine_CallAction {
+}
+abstract class statemachine_ConstantValue {
+  + value : str
+}
+abstract class statemachine_GAbstractAction {
+  + kind : str
+}
+abstract class statemachine_GAbstractState {
+}
+class statemachine_GCompositeState {
+}
+class statemachine_GStartState {
+}
+class statemachine_GState {
+}
+class statemachine_GStatemachine {
+  + package : str
+}
+class statemachine_GStopState {
+}
+class statemachine_GetParameter {
+}
+class statemachine_LongValue {
+}
+class statemachine_Named {
+  + comment : str
+  + name : str
+}
+abstract class statemachine_NumberValue {
+}
+class statemachine_Parameter {
+}
+class statemachine_StringValue {
+}
+class statemachine_Transition {
+  + preserveTimers : bool
+}
+abstract class statemachine_Value {
+}
+ConstantValue <|-- statemachine_BooleanValue
+ConstantValue <|-- statemachine_NumberValue
+ConstantValue <|-- statemachine_StringValue
+GAbstractAction <|-- statemachine_CallAction
+GAbstractState <|-- statemachine_GStartState
+GAbstractState <|-- statemachine_GState
+GAbstractState <|-- statemachine_GStopState
+GCompositeState <|-- statemachine_GStatemachine
+GState <|-- statemachine_GCompositeState
+Named <|-- statemachine_GState
+Named <|-- statemachine_Parameter
+Named <|-- statemachine_Transition
+NumberValue <|-- statemachine_LongValue
+Value <|-- statemachine_Call
+Value <|-- statemachine_ConstantValue
+Value <|-- statemachine_GetParameter
+statemachine_GAbstractAction "0..9999" --* "1..1" statemachine_GAbstractState : actions0
+statemachine_Call "1..1" --* "1..1" statemachine_CallAction : call20
+statemachine_Transition "1..1" *-- "0..1" statemachine_Value : delay8
+statemachine_GAbstractState "0..1" -- "1..1" statemachine_Transition : from_1
+statemachine_Transition "1..1" *-- "0..1" statemachine_Value : guard6
+statemachine_GStatemachine "1..1" *-- "0..9999" statemachine_Parameter : parameter19
+statemachine_GetParameter "1..1" -- "1..1" statemachine_Parameter : parameter21
+statemachine_Transition "1..1" *-- "0..9999" statemachine_Value : signals11
+statemachine_GAbstractState "1..9999" --* "1..1" statemachine_GCompositeState : states14
+statemachine_GAbstractState "0..1" -- "1..1" statemachine_Transition : to3
+statemachine_GCompositeState "1..1" *-- "0..9999" statemachine_Transition : transitions16
+@enduml

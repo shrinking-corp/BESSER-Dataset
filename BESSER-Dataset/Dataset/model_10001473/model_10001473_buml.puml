@@ -1,0 +1,47 @@
+@startuml
+class Comment {
+  + comment : str
+  + date : str
+  + userName : str
+}
+class CommentTopic {
+}
+class Group {
+}
+class Invitation {
+}
+class Message {
+}
+class Post {
+  + Date : str
+  + content : str
+  + userName : str
+}
+class Rol {
+  + nombre : str
+}
+class Tag {
+}
+class Topic {
+}
+class User {
+  + email : str
+  + password : str
+  + userName : str
+}
+class Vote {
+  + tipo : bool
+}
+Comment "0..1" -- "0..9999" Vote : Comments_Vote
+Group "0..9999" -- "0..9999" User : Group_User
+Comment "0..9999" -- "1..1" Post : Post_Comment
+Post "0..1" -- "0..9999" Vote : Post_Vote
+Rol "1..1" -- "0..9999" User : Rol_User
+CommentTopic "0..9999" -- "1..1" Topic : Topic_CommentTopic
+Tag "0..9999" -- "1..1" Topic : Topic_Tag
+Topic "0..1" -- "0..9999" Vote : Topic_Vote
+Invitation "0..9999" -- "0..1" User : User_Invitation
+Message "0..9999" -- "1..1" User : User_Message
+Post "0..9999" -- "1..1" User : User_Post
+User "0..9999" -- "1..1" User : User_User
+@enduml

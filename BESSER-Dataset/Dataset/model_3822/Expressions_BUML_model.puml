@@ -1,0 +1,189 @@
+@startuml
+enum AdditiveOperator {
+  minus
+  plus
+}
+class ArgumentExpression {
+}
+enum AssignmentOperator {
+  addAssign
+  andAssign
+  assign
+  divAssign
+  leftShiftAssign
+  modAssign
+  multAssign
+  orAssign
+  rightShiftAssign
+  subAssign
+  xorAssign
+}
+class BinaryExpression {
+}
+enum BitwiseOperator {
+  and_
+  or_
+  xor
+}
+class Expression {
+}
+class Literal {
+}
+enum LogicalOperator {
+  and_
+  not_
+  or_
+}
+enum MultiplicativeOperator {
+  div
+  mod
+  mul
+}
+enum RelationalOperator {
+  equals
+  greater
+  greaterEqual
+  notEquals
+  smaller
+  smallerEqual
+}
+enum ShiftOperator {
+  left
+  right
+}
+class UnaryExpression {
+}
+enum UnaryOperator {
+  complement
+  negative
+  positive
+}
+abstract class expressions_ArgumentExpression {
+}
+class expressions_AssignmentExpression {
+  + operator : str
+}
+abstract class expressions_BinaryExpression {
+  + getOperator() : str
+}
+class expressions_BitwiseAndExpression {
+}
+class expressions_BitwiseOrExpression {
+}
+class expressions_BitwiseXorExpression {
+}
+class expressions_BoolLiteral {
+  + value : bool
+}
+class expressions_ConditionalExpression {
+}
+class expressions_DoubleLiteral {
+  + value : float
+}
+class expressions_EObject {
+}
+class expressions_ElementReferenceExpression {
+  + arrayAccess : bool
+  + operationCall : bool
+}
+abstract class expressions_Expression {
+}
+class expressions_FeatureCall {
+  + arrayAccess : bool
+  + operationCall : bool
+}
+class expressions_FloatLiteral {
+  + value : float
+}
+class expressions_HexLiteral {
+  + value : int
+}
+class expressions_IntLiteral {
+  + value : int
+}
+abstract class expressions_Literal {
+}
+class expressions_LogicalAndExpression {
+}
+class expressions_LogicalNotExpression {
+}
+class expressions_LogicalOrExpression {
+}
+class expressions_LogicalRelationExpression {
+  + operator : str
+}
+class expressions_NullLiteral {
+}
+class expressions_NumericalAddSubtractExpression {
+  + operator : str
+}
+class expressions_NumericalMultiplyDivideExpression {
+  + operator : str
+}
+class expressions_NumericalUnaryExpression {
+  + operator : str
+}
+class expressions_ParenthesizedExpression {
+}
+class expressions_PrimitiveValueExpression {
+}
+class expressions_ShiftExpression {
+  + operator : str
+}
+class expressions_StringLiteral {
+  + value : str
+}
+class expressions_Type {
+}
+class expressions_TypeCastExpression {
+}
+abstract class expressions_UnaryExpression {
+  + getOperator() : str
+}
+ArgumentExpression <|-- expressions_ElementReferenceExpression
+ArgumentExpression <|-- expressions_FeatureCall
+BinaryExpression <|-- expressions_BitwiseAndExpression
+BinaryExpression <|-- expressions_BitwiseOrExpression
+BinaryExpression <|-- expressions_BitwiseXorExpression
+BinaryExpression <|-- expressions_LogicalAndExpression
+BinaryExpression <|-- expressions_LogicalOrExpression
+BinaryExpression <|-- expressions_LogicalRelationExpression
+BinaryExpression <|-- expressions_NumericalAddSubtractExpression
+BinaryExpression <|-- expressions_NumericalMultiplyDivideExpression
+BinaryExpression <|-- expressions_ShiftExpression
+Expression <|-- expressions_ArgumentExpression
+Expression <|-- expressions_AssignmentExpression
+Expression <|-- expressions_BinaryExpression
+Expression <|-- expressions_ConditionalExpression
+Expression <|-- expressions_ParenthesizedExpression
+Expression <|-- expressions_PrimitiveValueExpression
+Expression <|-- expressions_TypeCastExpression
+Expression <|-- expressions_UnaryExpression
+Literal <|-- expressions_BoolLiteral
+Literal <|-- expressions_DoubleLiteral
+Literal <|-- expressions_FloatLiteral
+Literal <|-- expressions_HexLiteral
+Literal <|-- expressions_IntLiteral
+Literal <|-- expressions_NullLiteral
+Literal <|-- expressions_StringLiteral
+UnaryExpression <|-- expressions_LogicalNotExpression
+UnaryExpression <|-- expressions_NumericalUnaryExpression
+expressions_ArgumentExpression "1..1" *-- "0..9999" expressions_Expression : args6
+expressions_Expression "0..9999" --* "1..1" expressions_FeatureCall : arraySelector26
+expressions_ElementReferenceExpression "1..1" *-- "0..9999" expressions_Expression : arraySelector31
+expressions_ConditionalExpression "1..1" *-- "0..1" expressions_Expression : condition13
+expressions_AssignmentExpression "1..1" *-- "0..1" expressions_Expression : expression10
+expressions_Expression "0..1" --* "1..1" expressions_ParenthesizedExpression : expression34
+expressions_ConditionalExpression "1..1" *-- "0..1" expressions_Expression : falseCase18
+expressions_EObject "0..1" -- "1..1" expressions_FeatureCall : feature24
+expressions_BinaryExpression "1..1" *-- "0..1" expressions_Expression : leftOperand0
+expressions_Expression "0..1" --* "1..1" expressions_TypeCastExpression : operand36
+expressions_Expression "0..1" --* "1..1" expressions_UnaryExpression : operand4
+expressions_Expression "0..1" --* "1..1" expressions_FeatureCall : owner22
+expressions_EObject "0..1" -- "1..1" expressions_ElementReferenceExpression : reference29
+expressions_BinaryExpression "1..1" *-- "0..1" expressions_Expression : rightOperand1
+expressions_ConditionalExpression "1..1" *-- "0..1" expressions_Expression : trueCase15
+expressions_Type "0..1" -- "1..1" expressions_TypeCastExpression : type38
+expressions_Literal "0..1" --* "1..1" expressions_PrimitiveValueExpression : value21
+expressions_AssignmentExpression "1..1" *-- "0..1" expressions_Expression : varRef8
+@enduml

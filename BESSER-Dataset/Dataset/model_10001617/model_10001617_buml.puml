@@ -1,0 +1,71 @@
+@startuml
+class Add_New_Inventory_UseCase {
+}
+class Book_UseCase {
+}
+class CD_UseCase {
+}
+class Check_In_UseCase {
+}
+class Check_out_UseCase {
+}
+class Due_Date_UseCase {
+}
+class Fine_Calculation_UseCase {
+}
+class Librarian_Actor {
+}
+class Library_Inventory_UseCase {
+}
+class Magazine_Management__System_UseCase {
+}
+class Patron {
+}
+class Patron_Actor {
+}
+class Reminder_System_UseCase {
+}
+class Renew_UseCase {
+}
+class Reserve_UseCase {
+}
+class Retire_Old_Inventory_UseCase {
+}
+class Search_UseCase {
+}
+class Software_UseCase {
+}
+class User_Status_UseCase {
+}
+class Video_UseCase {
+}
+Add_New_Inventory_UseCase "0..1" -- "0..1" Library_Inventory_UseCase : Add_New_Inventory_Library_Inventory
+Check_In_UseCase "0..1" -- "0..1" User_Status_UseCase : Check_In_Library_Resource
+Check_In_UseCase "0..1" -- "0..1" Patron_Actor : Check_in_book_Patron
+Check_out_UseCase "0..1" -- "0..1" User_Status_UseCase : Check_out_Library_Resource
+Check_out_UseCase "0..1" -- "0..1" Patron_Actor : Check_out_book_Patron
+Due_Date_UseCase "0..1" -- "0..1" Fine_Calculation_UseCase : Due_Date_Fine_Calculation
+Due_Date_UseCase "0..1" -- "0..1" User_Status_UseCase : Fine_Calculation_Book
+Fine_Calculation_UseCase "0..1" -- "0..1" Reminder_System_UseCase : Fine_Calculation_Late_reminder
+Due_Date_UseCase "0..1" -- "0..1" Librarian_Actor : Fine_Calculation_Librarian
+Patron_Actor "0..1" -- "0..1" Reminder_System_UseCase : Late_reminder_Patron
+Add_New_Inventory_UseCase "0..1" -- "0..1" Librarian_Actor : Librarian_Add_New_Inventory
+Fine_Calculation_UseCase "0..1" -- "0..1" Librarian_Actor : Librarian_Fine_Calculation
+Librarian_Actor "0..1" -- "0..1" Magazine_Management__System_UseCase : Librarian_Magazine_Management__System
+Librarian_Actor "0..1" -- "0..1" Reminder_System_UseCase : Librarian_Reminder_needs_to_be_mailed
+Librarian_Actor "0..1" -- "0..1" Retire_Old_Inventory_UseCase : Librarian_Retire_Old_Inventory
+Due_Date_UseCase "0..1" -- "0..1" Library_Inventory_UseCase : Library_Inventory_Due_Date
+Library_Inventory_UseCase "0..1" -- "0..1" Magazine_Management__System_UseCase : Library_Inventory_Magazine_Management
+Book_UseCase "0..1" -- "0..1" Library_Inventory_UseCase : Library_Resource_Book
+CD_UseCase "0..1" -- "0..1" Library_Inventory_UseCase : Library_Resource_CD
+Library_Inventory_UseCase "0..1" -- "0..1" Software_UseCase : Library_Resource_Software
+Library_Inventory_UseCase "0..1" -- "0..1" Video_UseCase : Library_Resource_Video
+Patron_Actor "0..1" -- "0..1" Search_UseCase : Patron_Search
+Patron_Actor "0..1" -- "0..1" Renew_UseCase : Renew_Patron
+Renew_UseCase "0..1" -- "0..1" User_Status_UseCase : Renew_User_Status
+Patron_Actor "0..1" -- "0..1" Reserve_UseCase : Reserve_Patron
+Reserve_UseCase "0..1" -- "0..1" Search_UseCase : Reserve_Search
+Library_Inventory_UseCase "0..1" -- "0..1" Retire_Old_Inventory_UseCase : Retire_Old_Inventory_Library_Inventory
+Library_Inventory_UseCase "0..1" -- "0..1" Search_UseCase : Search_Library_Inventory
+Library_Inventory_UseCase "0..1" -- "0..1" User_Status_UseCase : User_Status_Library_Inventory
+@enduml

@@ -1,0 +1,230 @@
+@startuml
+class Component {
+}
+enum ConnectionKind {
+  OUTSIDE_FLOW
+  STATE_FLOW
+}
+class Connectivity {
+}
+class Device {
+}
+enum I2CLCDType {
+  I2CLCD1602
+  I2CLCD2004
+}
+class IODevice {
+}
+class InputDevice {
+}
+enum ListBaud {
+  baud_115200
+  baud_19200
+  baud_230400
+  baud_250000
+  baud_38400
+  baud_57600
+  baud_74880
+  baud_9600
+}
+enum ListConnectionChannel {
+  Multiple
+  Single
+}
+enum ListProtocol {
+  TCP
+  UDP
+}
+class Mainboard {
+}
+class OutputDevice {
+}
+enum RouterKind {
+  BENDPOINT
+  MANHATTAN
+}
+class StateComponent {
+}
+enum WifiIDConnection {
+  id_0
+  id_1
+  id_2
+  id_3
+  id_4
+}
+enum WifiMode {
+  Access_Point
+  Both
+  Station
+}
+class iotw_ArduinoUNOR3 {
+  + pin0 : str
+  + pin1 : str
+  + pin10 : str
+  + pin11 : str
+  + pin12 : str
+  + pin13 : str
+  + pin2 : str
+  + pin3 : str
+  + pin4 : str
+  + pin5 : str
+  + pin6 : str
+  + pin7 : str
+  + pin8 : str
+  + pin9 : str
+  + pinA0 : str
+  + pinA1 : str
+  + pinA2 : str
+  + pinA3 : str
+  + pinA4 : str
+  + pinA5 : str
+}
+class iotw_BluetoothHC06 {
+  + pinGND : str
+  + pinRXD : str
+  + pinTXD : str
+  + pinVCC : str
+}
+class iotw_Button {
+  + pin1 : str
+}
+class iotw_Buzzer {
+  + Time : int
+  + Tone : int
+  + pin1 : str
+  + pin2 : str
+}
+abstract class iotw_Component {
+  + constraints : str
+  + id : str
+}
+class iotw_Connection {
+  + bendpoints : str
+  + kind : str
+  + label : str
+  + routerKind : str
+}
+abstract class iotw_Connectivity {
+}
+class iotw_Decision {
+}
+abstract class iotw_Device {
+  + name : str
+  + getPinConnecteds() : str
+  + getPins() : str
+  + modifyPin(iotw_pin : str) : void
+}
+class iotw_EndPoint {
+}
+class iotw_I2CLCD {
+  + pinGND : str
+  + pinSCL : str
+  + pinSDA : str
+  + pinVcc : str
+  + type : str
+}
+abstract class iotw_IODevice {
+}
+abstract class iotw_InputDevice {
+}
+class iotw_Keypad4x4 {
+  + cols : int
+  + keys : str
+  + nameButton0 : str
+  + nameButton1 : str
+  + nameButton2 : str
+  + nameButton3 : str
+  + nameButton4 : str
+  + nameButton5 : str
+  + nameButton6 : str
+  + nameButton7 : str
+  + nameButton8 : str
+  + nameButton9 : str
+  + nameButtonA : str
+  + nameButtonAsterisk : str
+  + nameButtonB : str
+  + nameButtonC : str
+  + nameButtonD : str
+  + nameButtonHash : str
+  + pin1 : str
+  + pin2 : str
+  + pin3 : str
+  + pin4 : str
+  + pin5 : str
+  + pin6 : str
+  + pin7 : str
+  + pin8 : str
+  + rows : int
+  + getButton(iotw_name : str) : str
+}
+class iotw_LED {
+  + pin1 : str
+  + pin2 : str
+}
+abstract class iotw_Mainboard {
+  + name : str
+  + addDevice(iotw_device : str) : void
+  + findPin(iotw_pin : str) : str
+  + getPinConnecteds() : str
+  + getPins() : str
+  + modifyPin(iotw_pin : str) : void
+  + removeDevice(iotw_device : str) : void
+}
+abstract class iotw_OutputDevice {
+}
+class iotw_StartPoint {
+}
+abstract class iotw_StateComponent {
+  + name : str
+}
+class iotw_StateFrame {
+  + content : str
+}
+class iotw_StateSchema {
+}
+class iotw_WifiESP8266 {
+  + baud : str
+  + connectedChannel : str
+  + iP : str
+  + idConnection : str
+  + mode : str
+  + password_AccessPoint : str
+  + password_ST : str
+  + pinCHPD : str
+  + pinGND : str
+  + pinRX : str
+  + pinTX : str
+  + pinVcc : str
+  + port : int
+  + protocol : str
+  + sSID_AccessPoint : str
+  + sSID_ST : str
+}
+Component <|-- iotw_Device
+Component <|-- iotw_StateComponent
+Connectivity <|-- iotw_BluetoothHC06
+Connectivity <|-- iotw_WifiESP8266
+Device <|-- iotw_Connectivity
+Device <|-- iotw_IODevice
+IODevice <|-- iotw_InputDevice
+IODevice <|-- iotw_OutputDevice
+InputDevice <|-- iotw_Button
+InputDevice <|-- iotw_Keypad4x4
+Mainboard <|-- iotw_ArduinoUNOR3
+OutputDevice <|-- iotw_Buzzer
+OutputDevice <|-- iotw_I2CLCD
+OutputDevice <|-- iotw_LED
+StateComponent <|-- iotw_Decision
+StateComponent <|-- iotw_EndPoint
+StateComponent <|-- iotw_StartPoint
+StateComponent <|-- iotw_StateFrame
+iotw_StateComponent "0..9999" --* "1..1" iotw_StateSchema : components5
+iotw_Connection "0..9999" --* "1..1" iotw_StateSchema : connnections6
+iotw_Device "0..9999" --* "1..1" iotw_Mainboard : devices14
+iotw_Connection "0..9999" -- "1..1" iotw_StateComponent : incomings7
+iotw_Device "1..1" -- "0..1" iotw_Mainboard : mainboard13
+iotw_Connection "0..9999" -- "1..1" iotw_StateComponent : outgoings10
+iotw_Component "0..1" -- "1..1" iotw_Connection : source0
+iotw_Connection "1..1" -- "0..1" iotw_StateSchema : stateSchema4
+iotw_Component "0..1" -- "1..1" iotw_Connection : target1
+@enduml

@@ -1,0 +1,141 @@
+@startuml
+class reqLanguage_Action {
+  + action : str
+  + name : str
+}
+class reqLanguage_Actor {
+  + actor : str
+  + name : str
+}
+class reqLanguage_ActorEvent {
+  + action : str
+}
+class reqLanguage_Attribute {
+  + attribute : str
+  + name : str
+  + type : str
+}
+class reqLanguage_EObject {
+}
+class reqLanguage_Function {
+  + function : str
+  + name : str
+  + type : str
+}
+class reqLanguage_MainAttributes {
+}
+class reqLanguage_MainComposition {
+}
+class reqLanguage_MainFunction {
+}
+class reqLanguage_MainFunctions {
+}
+class reqLanguage_MainStateTransition {
+}
+class reqLanguage_Model {
+}
+class reqLanguage_NoTransition {
+}
+class reqLanguage_Operator {
+  + operator : str
+}
+class reqLanguage_OutTransition {
+}
+class reqLanguage_ParamEvent {
+  + action : str
+}
+class reqLanguage_Parameter {
+  + name : str
+  + parameter : str
+}
+class reqLanguage_ParameterState {
+}
+class reqLanguage_Prefix {
+}
+class reqLanguage_PrefixCondition {
+  + prefixFixedSyntax : str
+}
+class reqLanguage_PrefixEvent {
+  + prefixFixedSyntax : str
+}
+class reqLanguage_PrefixRightOperand {
+  + operator : str
+}
+class reqLanguage_PrefixState {
+  + prefixFixedSyntax : str
+}
+class reqLanguage_ReqID {
+  + name : str
+  + reqID : str
+}
+class reqLanguage_Requirement {
+}
+class reqLanguage_State {
+  + name : str
+  + state : str
+}
+class reqLanguage_StateEvent {
+}
+class reqLanguage_System {
+  + name : str
+  + system : str
+}
+class reqLanguage_Time {
+  + timeUnit : str
+  + value : int
+}
+class reqLanguage_TimingConstraint {
+  + minmax : str
+  + timingConstraint : str
+}
+class reqLanguage_Transition {
+}
+class reqLanguage_User {
+  + name : str
+  + user : str
+}
+class reqLanguage_Value {
+  + val : str
+  + value : int
+}
+reqLanguage_ActorEvent "1..1" *-- "0..1" reqLanguage_EObject : actor32
+reqLanguage_Attribute "0..9999" --* "1..1" reqLanguage_MainAttributes : attributeList63
+reqLanguage_ActorEvent "1..1" *-- "0..1" reqLanguage_Parameter : entity34
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_PrefixEvent : event_expression25
+reqLanguage_Action "0..1" --* "1..1" reqLanguage_MainFunction : function46
+reqLanguage_Action "0..1" --* "1..1" reqLanguage_MainStateTransition : function58
+reqLanguage_Function "0..9999" --* "1..1" reqLanguage_MainFunctions : functionList67
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_Prefix : leftOperand7
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_Requirement : mainRequirement5
+reqLanguage_Operator "0..1" --* "1..1" reqLanguage_PrefixCondition : operator19
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_PrefixCondition : parameter17
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_ParamEvent : parameter27
+reqLanguage_Parameter "0..1" --* "1..1" reqLanguage_ParameterState : parameter39
+reqLanguage_Action "1..1" *-- "0..1" reqLanguage_Parameter : parameter78
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_ParameterState : parameter_value41
+reqLanguage_Prefix "0..1" --* "1..1" reqLanguage_Requirement : prefix3
+reqLanguage_Prefix "1..1" *-- "0..9999" reqLanguage_PrefixRightOperand : prefixList10
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_PrefixRightOperand : prefixRightOperand12
+reqLanguage_ReqID "0..1" --* "1..1" reqLanguage_Requirement : reqID1
+reqLanguage_Model "1..1" *-- "0..9999" reqLanguage_Requirement : requirements0
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_Transition : source_state69
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_OutTransition : source_state74
+reqLanguage_State "0..1" --* "1..1" reqLanguage_StateEvent : state37
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_NoTransition : state76
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_PrefixState : stateExpression15
+reqLanguage_Action "1..1" *-- "0..1" reqLanguage_EObject : subject84
+reqLanguage_MainComposition "1..1" *-- "0..9999" reqLanguage_System : subsystemList50
+reqLanguage_StateEvent "1..1" *-- "0..1" reqLanguage_System : system36
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_MainFunction : system44
+reqLanguage_MainComposition "1..1" *-- "0..1" reqLanguage_System : system48
+reqLanguage_MainStateTransition "1..1" *-- "0..1" reqLanguage_System : system53
+reqLanguage_MainAttributes "1..1" *-- "0..1" reqLanguage_System : system61
+reqLanguage_MainFunctions "1..1" *-- "0..1" reqLanguage_System : system65
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_Transition : target_state71
+reqLanguage_PrefixCondition "1..1" *-- "0..1" reqLanguage_TimingConstraint : time23
+reqLanguage_Time "0..1" --* "1..1" reqLanguage_TimingConstraint : time87
+reqLanguage_EObject "0..1" --* "1..1" reqLanguage_MainStateTransition : transition55
+reqLanguage_PrefixCondition "1..1" *-- "0..1" reqLanguage_Value : value21
+reqLanguage_ParamEvent "1..1" *-- "0..1" reqLanguage_Value : value29
+reqLanguage_Action "1..1" *-- "0..1" reqLanguage_Value : value81
+@enduml

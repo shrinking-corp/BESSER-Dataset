@@ -1,0 +1,47 @@
+@startuml
+enum IsMandatory {
+  ELECTIVE
+  MANDATORY
+}
+enum Season {
+  FALL
+  SPRING
+}
+class study_Course {
+  + code : str
+  + credits : float
+  + level : int
+  + name : str
+}
+class study_Department {
+  + name : str
+}
+class study_Programme {
+  + code : str
+  + duration : int
+  + name : str
+}
+class study_Semester {
+  + Season : str
+  + year : int
+}
+class study_SemesterCourse {
+  + mandatory : str
+}
+class study_Specialization {
+  + name : str
+}
+study_Course "0..1" -- "1..1" study_SemesterCourse : course13
+study_Course "0..9999" --* "1..1" study_Department : courses19
+study_Semester "1..1" *-- "0..9999" study_SemesterCourse : courses4
+study_Course "1..1" -- "0..1" study_Department : department16
+study_Department "0..1" -- "1..1" study_Programme : department3
+study_Programme "0..1" -- "1..1" study_Specialization : programme11
+study_Programme "0..1" -- "1..1" study_Semester : programme5
+study_Department "1..1" *-- "0..9999" study_Programme : programs20
+study_Semester "0..1" -- "1..1" study_SemesterCourse : semester14
+study_Programme "1..1" *-- "0..9999" study_Semester : semesters0
+study_Semester "0..9999" --* "1..1" study_Specialization : semesters9
+study_Semester "1..1" -- "0..1" study_Specialization : specialization6
+study_Programme "1..1" *-- "0..9999" study_Specialization : specializations1
+@enduml

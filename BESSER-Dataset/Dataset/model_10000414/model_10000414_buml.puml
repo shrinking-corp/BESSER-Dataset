@@ -1,0 +1,120 @@
+@startuml
+class Administrateur {
+  + actif : bool
+  + id_administrateur : int
+}
+class BankAccount {
+  + balance : float
+  + ownerName : str
+}
+class CCP {
+  + description : str
+  + id_ccp : int
+  + label : str
+}
+class ClassA {
+  + packageAttribute : str
+  + privateAttribute : int
+  + protectedAttribute : str
+  + publicAttribute : float
+}
+class ClassB {
+}
+class ClassC {
+  + packageAttribute : str
+  + privateAttribute : int
+  + protectedAttribute : str
+  + publicAttribute : float
+}
+class ClassD {
+}
+class ClassE {
+}
+class ClassF {
+}
+class ClassG {
+}
+class ClassH {
+}
+class ClassJ {
+}
+class ClassK {
+}
+class ClassL {
+}
+class ClassM {
+}
+class ClassN {
+}
+class ClassP {
+}
+class ClassQ {
+}
+class ClassR {
+}
+class ClassS {
+}
+class ClassT {
+}
+class ClassU {
+}
+class ClassV {
+}
+class Direction {
+  + actif : bool
+  + id_direction : int
+}
+class Document {
+  + cours : bool
+  + descriptif : str
+  + id_document : int
+  + label : str
+  + url : str
+}
+class Etudiant {
+  + actif : bool
+  + cv : str
+  + id_etudiant : int
+  + list_commentaire : str
+  + list_notes : float
+}
+class Formateur {
+  + actif : bool
+  + id_formateur : int
+}
+class Formation {
+  + descriptif : str
+  + id_formation : int
+  + label : str
+}
+class InterfaceO_Interface {
+}
+class Personne {
+  + id : int
+  + mail : str
+  + naissance : date
+  + nom : str
+  + photo : str
+  + prenom : str
+  + telephone : str
+}
+class Session {
+  + adresse : str
+  + date_debut : date
+  + date_fin : date
+  + id_session : int
+  + label : str
+}
+ClassD "0..1" -- "0..1" ClassE : ClassD_ClassE
+ClassF "0..1" -- "0..1" ClassG : ClassD_ClassECopy
+ClassH "0..1" -- "0..1" ClassJ : ClassD_ClassECopyCopy
+Document "0..9999" -- "0..9999" Session : Document_Session
+Etudiant "1..9999" -- "1..9999" Session : Etudiant_Session
+CCP "0..9999" -- "0..9999" Formation : Formation_CCP
+Formation "1..1" -- "0..9999" Session : Formation_Session
+Administrateur "0..1" -- "0..9999" Personne : Personne_Administrateur
+Direction "0..1" -- "0..9999" Personne : Personne_Direction
+Etudiant "0..1" -- "0..9999" Personne : Personne_Etudiant
+Formateur "0..1" -- "0..9999" Personne : Personne_Formateur
+Formateur "1..9999" -- "1..9999" Session : Session_Formateur
+@enduml

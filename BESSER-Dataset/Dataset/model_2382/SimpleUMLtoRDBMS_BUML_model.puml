@@ -1,0 +1,97 @@
+@startuml
+class FromAttribute {
+}
+class FromAttributeOwner {
+}
+class PrimitiveToName {
+}
+class ToColumn {
+}
+class UmlToRdbmsModelElement {
+}
+class simpleumltordbms_Association {
+}
+class simpleumltordbms_AssociationToForeignKey {
+}
+class simpleumltordbms_Attribute {
+}
+class simpleumltordbms_AttributeToColumn {
+}
+class simpleumltordbms_BooleanToBoolean {
+}
+class simpleumltordbms_Class {
+}
+class simpleumltordbms_ClassToTable {
+}
+class simpleumltordbms_Column {
+}
+class simpleumltordbms_ForeignKey {
+}
+abstract class simpleumltordbms_FromAttribute {
+  + kind : str
+}
+abstract class simpleumltordbms_FromAttributeOwner {
+}
+class simpleumltordbms_IntegerToNumber {
+}
+class simpleumltordbms_Key {
+}
+class simpleumltordbms_NonLeafAttribute {
+}
+class simpleumltordbms_Package {
+}
+class simpleumltordbms_PackageToSchema {
+}
+class simpleumltordbms_PrimitiveDataType {
+}
+abstract class simpleumltordbms_PrimitiveToName {
+  + typeName : str
+}
+class simpleumltordbms_Schema {
+}
+class simpleumltordbms_StringToVarchar {
+}
+class simpleumltordbms_Table {
+}
+abstract class simpleumltordbms_ToColumn {
+}
+abstract class simpleumltordbms_UmlToRdbmsModelElement {
+  + name : str
+}
+FromAttribute <|-- simpleumltordbms_AttributeToColumn
+FromAttribute <|-- simpleumltordbms_NonLeafAttribute
+FromAttributeOwner <|-- simpleumltordbms_ClassToTable
+FromAttributeOwner <|-- simpleumltordbms_NonLeafAttribute
+PrimitiveToName <|-- simpleumltordbms_BooleanToBoolean
+PrimitiveToName <|-- simpleumltordbms_IntegerToNumber
+PrimitiveToName <|-- simpleumltordbms_StringToVarchar
+ToColumn <|-- simpleumltordbms_AssociationToForeignKey
+ToColumn <|-- simpleumltordbms_AttributeToColumn
+ToColumn <|-- simpleumltordbms_ClassToTable
+UmlToRdbmsModelElement <|-- simpleumltordbms_AssociationToForeignKey
+UmlToRdbmsModelElement <|-- simpleumltordbms_ClassToTable
+UmlToRdbmsModelElement <|-- simpleumltordbms_FromAttribute
+UmlToRdbmsModelElement <|-- simpleumltordbms_PackageToSchema
+UmlToRdbmsModelElement <|-- simpleumltordbms_PrimitiveToName
+simpleumltordbms_Association "0..1" -- "1..1" simpleumltordbms_AssociationToForeignKey : association1
+simpleumltordbms_AssociationToForeignKey "0..9999" --* "1..1" simpleumltordbms_ClassToTable : associationsToForeignKeys7
+simpleumltordbms_Attribute "0..1" -- "1..1" simpleumltordbms_FromAttribute : attribute15
+simpleumltordbms_ClassToTable "1..9999" --* "1..1" simpleumltordbms_PackageToSchema : classesToTables22
+simpleumltordbms_Column "1..1" -- "1..1" simpleumltordbms_ToColumn : column34
+simpleumltordbms_AssociationToForeignKey "1..1" -- "0..1" simpleumltordbms_ForeignKey : foreignKey2
+simpleumltordbms_FromAttribute "0..9999" --* "1..1" simpleumltordbms_FromAttributeOwner : fromAttributes20
+simpleumltordbms_AttributeToColumn "0..9999" -- "1..1" simpleumltordbms_FromAttribute : leafs16
+simpleumltordbms_FromAttribute "1..1" -- "1..1" simpleumltordbms_FromAttributeOwner : owner19
+simpleumltordbms_PackageToSchema "1..1" -- "1..1" simpleumltordbms_PrimitiveToName : owner30
+simpleumltordbms_AssociationToForeignKey "1..1" -- "1..1" simpleumltordbms_ClassToTable : owner4
+simpleumltordbms_ClassToTable "1..1" -- "1..1" simpleumltordbms_PackageToSchema : owner8
+simpleumltordbms_ClassToTable "1..1" -- "0..1" simpleumltordbms_Key : primaryKey9
+simpleumltordbms_PrimitiveDataType "1..1" -- "1..1" simpleumltordbms_PrimitiveToName : primitive32
+simpleumltordbms_PackageToSchema "1..1" *-- "0..9999" simpleumltordbms_PrimitiveToName : primitivesToNames25
+simpleumltordbms_AssociationToForeignKey "1..1" -- "0..1" simpleumltordbms_ClassToTable : referenced5
+simpleumltordbms_PackageToSchema "1..1" -- "1..1" simpleumltordbms_Schema : schema27
+simpleumltordbms_ClassToTable "1..1" -- "0..1" simpleumltordbms_Table : table11
+simpleumltordbms_AttributeToColumn "1..1" -- "0..1" simpleumltordbms_PrimitiveToName : type0
+simpleumltordbms_Class "0..1" -- "1..1" simpleumltordbms_ClassToTable : umlClass13
+simpleumltordbms_Package "1..1" -- "1..1" simpleumltordbms_PackageToSchema : umlPackage28
+@enduml

@@ -1,0 +1,212 @@
+@startuml
+class Action {
+}
+class Behaviour {
+}
+enum ContainmentKind {
+  EXTERNAL_LINK
+  FREE
+  HORIZONTAL_ARRANGEMENT
+  VERTICAL_ARRANGEMENT
+}
+class DomainOperation {
+}
+enum IntegrityRestrictionKind {
+  CASCADE
+  NO_ACTION
+  SET_NULL
+}
+enum LineKind {
+  DASHED
+  DOTTED
+  SOLID
+}
+class NodeStyle {
+}
+enum OutlineKind {
+  DOUBLE
+  NONE
+  SIMPLE
+}
+enum QueryLanguageKind {
+  AQL
+  JPQL
+  LINQ
+  OCL
+  SQL
+  XPATH_XQUERY
+}
+enum ShapeKind {
+  CIRCLE
+  DIAMOND
+  ELLIPSE
+  RECTANGLE
+  SQUARE
+  TRIANGLE
+}
+class SupportOperation {
+}
+class TrackerAction {
+}
+abstract class aredsl_Action {
+  + description : str
+}
+class aredsl_ArrangeElements {
+}
+abstract class aredsl_Behaviour {
+  + description : str
+}
+class aredsl_ChangeContextOperation {
+  + expression : str
+}
+class aredsl_CreateInstanceOperation {
+  + feature : str
+  + name : str
+  + type : str
+}
+abstract class aredsl_DomainOperation {
+}
+class aredsl_Edge {
+  + description : str
+  + destinationSemantics : str
+  + id : str
+  + originSemantics : str
+}
+class aredsl_EdgeStyle {
+  + color : str
+  + kind : str
+  + semanticCondition : str
+  + width : int
+}
+class aredsl_Editor {
+  + description : str
+  + fileExtension : str
+  + name : str
+  + queryLanguageKind : str
+}
+class aredsl_Exit {
+}
+class aredsl_GeometricShapeNodeStyle {
+  + color : str
+  + kind : str
+  + outline : str
+}
+class aredsl_GestureAction {
+}
+class aredsl_Image2DNodeStyle {
+  + file : str
+}
+class aredsl_Label {
+  + description : str
+  + id : str
+  + semantics : str
+}
+class aredsl_LabelStyle {
+  + color : str
+  + height : int
+  + semanticCondition : str
+}
+class aredsl_Layer {
+  + description : str
+  + id : str
+  + semantics : str
+}
+class aredsl_MarkerBasedTrackerAction {
+  + markerId : int
+}
+class aredsl_MarkerLessTrackerAction {
+  + file : str
+}
+class aredsl_MentalAction {
+}
+class aredsl_Model3DNodeStyle {
+  + file : str
+}
+class aredsl_MoveElement {
+}
+class aredsl_Node {
+  + contaimentKind : str
+  + description : str
+  + id : str
+  + semantics : str
+}
+abstract class aredsl_NodeStyle {
+  + height : int
+  + semanticCondition : str
+  + width : int
+}
+class aredsl_RemoveOperation {
+  + constraint : str
+}
+class aredsl_SensorBasedAction {
+}
+class aredsl_SetOperation {
+  + constraint : str
+  + feature : str
+  + value : str
+}
+class aredsl_ShowSystemMenu {
+}
+abstract class aredsl_SupportOperation {
+}
+class aredsl_TactileAction {
+}
+class aredsl_Tool {
+  + description : str
+  + id : str
+  + precondition : str
+  + targetPrecondition : str
+}
+class aredsl_ToolSet {
+  + description : str
+  + id : str
+}
+abstract class aredsl_TrackerAction {
+}
+class aredsl_UnsetOperation {
+  + constraint : str
+  + feature : str
+}
+class aredsl_VoiceAction {
+}
+Action <|-- aredsl_GestureAction
+Action <|-- aredsl_MentalAction
+Action <|-- aredsl_SensorBasedAction
+Action <|-- aredsl_TactileAction
+Action <|-- aredsl_TrackerAction
+Action <|-- aredsl_VoiceAction
+Behaviour <|-- aredsl_DomainOperation
+Behaviour <|-- aredsl_SupportOperation
+DomainOperation <|-- aredsl_ChangeContextOperation
+DomainOperation <|-- aredsl_CreateInstanceOperation
+DomainOperation <|-- aredsl_RemoveOperation
+DomainOperation <|-- aredsl_SetOperation
+DomainOperation <|-- aredsl_UnsetOperation
+NodeStyle <|-- aredsl_GeometricShapeNodeStyle
+NodeStyle <|-- aredsl_Image2DNodeStyle
+NodeStyle <|-- aredsl_Model3DNodeStyle
+SupportOperation <|-- aredsl_ArrangeElements
+SupportOperation <|-- aredsl_Exit
+SupportOperation <|-- aredsl_MoveElement
+SupportOperation <|-- aredsl_ShowSystemMenu
+TrackerAction <|-- aredsl_MarkerBasedTrackerAction
+TrackerAction <|-- aredsl_MarkerLessTrackerAction
+aredsl_Action "1..9999" --* "1..1" aredsl_Tool : actions36
+aredsl_Behaviour "1..9999" --* "1..1" aredsl_Tool : behaviours35
+aredsl_Node "0..9999" --* "1..1" aredsl_Node : contentNodes14
+aredsl_Edge "1..1" *-- "0..1" aredsl_Label : destinationLabel32
+aredsl_Edge "1..1" -- "1..1" aredsl_Node : destinationNode26
+aredsl_Edge "0..9999" --* "1..1" aredsl_Layer : edges5
+aredsl_Edge "1..1" *-- "0..9999" aredsl_EdgeStyle : edgestyles18
+aredsl_Label "0..1" --* "1..1" aredsl_Node : label11
+aredsl_Label "1..1" *-- "0..9999" aredsl_LabelStyle : labelstyles16
+aredsl_Editor "1..1" *-- "1..9999" aredsl_Layer : layer0
+aredsl_Edge "1..1" *-- "0..1" aredsl_Label : middleLabel20
+aredsl_Layer "1..1" *-- "0..9999" aredsl_Node : nodes3
+aredsl_Node "1..1" *-- "0..9999" aredsl_NodeStyle : nodestyles9
+aredsl_Edge "1..1" *-- "0..1" aredsl_Label : originLabel29
+aredsl_Edge "1..1" -- "1..1" aredsl_Node : originNode23
+aredsl_Layer "1..1" *-- "0..1" aredsl_TrackerAction : referenceAction7
+aredsl_Tool "0..9999" --* "1..1" aredsl_ToolSet : tools38
+aredsl_Editor "1..1" *-- "1..9999" aredsl_ToolSet : toolsets1
+@enduml

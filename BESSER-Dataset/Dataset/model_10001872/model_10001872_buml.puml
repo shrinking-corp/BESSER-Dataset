@@ -1,0 +1,56 @@
+@startuml
+class Bill {
+  + billNo : int
+  + guestID : int
+}
+class Chef {
+  + branch : str
+  + chefID : int
+  + name : str
+}
+class Food {
+  + foodID : int
+  + name : str
+}
+class Guest {
+  + address : str
+  + guestID : int
+  + name : str
+  + phoneNo : int
+  + roomNo : int
+}
+class Housekeeping {
+  + branch : str
+  + hkID : int
+  + name : str
+}
+class Inventory {
+  + status : str
+  + type : str
+}
+class Manager {
+  + branch : str
+  + managerID : int
+  + name : str
+  + phoneNo : int
+}
+class Receptionist {
+  + branch : str
+  + name : str
+  + phoneNo : int
+  + rID : int
+}
+class Rooms {
+  + roomNo : int
+  + type : str
+}
+Chef "1..9999" -- "1..9999" Food : Chef_Food
+Food "1..9999" -- "1..9999" Guest : Food_Guest
+Bill "1..1" -- "1..1" Guest : Guest_Bill
+Guest "1..1" -- "1..9999" Rooms : Guest_Rooms
+Guest "1..9999" -- "1..1" Manager : Manager_Guest
+Inventory "1..9999" -- "1..1" Manager : Manager_Inventory
+Bill "1..1" -- "1..9999" Receptionist : Receptionist_Bill
+Housekeeping "1..1" -- "1..1" Rooms : Rooms_Housekeeping
+Receptionist "1..9999" -- "1..9999" Rooms : Rooms_Receptionist
+@enduml

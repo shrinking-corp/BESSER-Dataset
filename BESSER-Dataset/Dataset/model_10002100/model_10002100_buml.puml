@@ -1,0 +1,181 @@
+@startuml
+class Acessar_atividade_UseCase {
+}
+class Activity {
+  + content : str
+  + subject : Subject
+}
+class Adequar_sequ_ncia_UseCase {
+}
+class Alternative {
+  + answer : str
+  + answer_text : str
+  + category : AlternativeCategory
+  + content : str
+  + step : Step
+}
+class AlternativeCategory {
+  + name : str
+}
+class Aluno_Actor {
+}
+class Analisar_dados_UseCase {
+}
+class Aplicativo_Actor {
+}
+class Autenticar_se_UseCase {
+}
+class Avaliar_plano_de_ensino_UseCase {
+}
+class Curriculum {
+  + activity : Activity
+  + sequence : int
+}
+class DispositivoBluetooth {
+  + macAddress : str
+  + nome : str
+}
+class Estabelecer_comunica__o_com_wearable_UseCase {
+}
+class Exercise {
+  + difficulty : int
+  + user_exercise : bool
+}
+class Feedback {
+  + alternative : Alternative
+  + feedback : str
+  + level : int
+  + state : bool
+}
+class Fornecer_dica_UseCase {
+}
+class Fornecer_feedback_UseCase {
+}
+class Fornecer_lista_de_atividades_superadas_UseCase {
+}
+class Identificar_erros_comuns_UseCase {
+}
+class Iniciar_parar_monitoramento_card_aco_UseCase {
+}
+class Instruction {
+  + level : int
+  + title : str
+}
+class M_dulo_Pedag_gico_Actor {
+}
+class MedicaoBatimento {
+  + enviado : bool
+  + instante : str
+  + treino : Treino
+  + usuario : Usu_rio_Actor
+  + valor : int
+}
+class Propor_desafio_UseCase {
+}
+class Receber_responder_requisi__es_UseCase {
+}
+class Selecionar_treino_UseCase {
+}
+class Sequenciar_atividades_UseCase {
+}
+class Servi_o_Web_Actor {
+}
+class ServicoWeb {
+}
+class Sincronizar_dados_do_usu_rio_UseCase {
+}
+class Solicitar_dica_UseCase {
+}
+class Step {
+  + content : str
+  + exercise : Exercise
+}
+class StudentHistory {
+  + activity : Activity
+  + sequence : int
+  + student : Student_Interface
+}
+class StudentStepHistory {
+  + status : bool
+  + step : Step
+  + student : Student_Interface
+  + tries : int
+}
+class StudentSubject {
+  + level : int
+  + student : Student_Interface
+  + subject : Subject
+}
+class Student_Interface {
+}
+class Subject {
+  + name : str
+}
+class Treino {
+  + nome : str
+}
+class TreinoMonitoramento {
+  + fim : str
+  + inicio : str
+}
+class TutorStep {
+  + difficulty : int
+  + evidence : str
+}
+class UserStep {
+}
+class Usu_rio_Actor {
+}
+class Usuario {
+  + cpf : str
+  + dataNascimento : str
+  + nome : str
+  + peso : str
+  + senha : str
+}
+class correct_alternative_alternative_id__alternative_answer__student__user_exercise__UseCase {
+}
+class handle_user_answer_request__UseCase {
+}
+class is_exercise_activity_id__UseCase {
+}
+class is_user_step_step_id__UseCase {
+}
+class select_activity_request__UseCase {
+}
+class select_exercise_student__subject__UseCase {
+}
+class sequence_student__UseCase {
+}
+class student_module_views_get_student_domains_student__UseCase {
+}
+class student_module_views_update_evidence_student__evidence_dict__UseCase {
+}
+class update_history_request__UseCase {
+}
+class update_student_subject_student__student_knowledge__UseCase {
+}
+Acessar_atividade_UseCase "0..1" -- "0..1" Aluno_Actor : Acessar_atividade_Aluno
+Activity "0..1" -- "0..1" Curriculum : Activity_Curriculum
+Activity "0..1" -- "0..1" StudentHistory : Activity_StudentHistory
+Alternative "0..1" -- "0..1" AlternativeCategory : Alternative_AlternativeCategory
+Alternative "0..1" -- "0..1" Feedback : Alternative_Feedback
+Alternative "0..1" -- "0..1" Step : Alternative_Step
+Aluno_Actor "0..1" -- "0..1" Solicitar_dica_UseCase : Aluno_Solicitar_dica
+Analisar_dados_UseCase "0..1" -- "0..1" Servi_o_Web_Actor : Analisar_dados_Servi_o_Web
+Aplicativo_Actor "0..1" -- "0..1" Estabelecer_comunica__o_com_wearable_UseCase : Aplicativo_Estabelecer_comunica__o_com_wearable
+Autenticar_se_UseCase "0..1" -- "0..1" Usu_rio_Actor : Autenticar_se_Usu_rio
+Exercise "0..1" -- "0..1" Step : Exercise_Step
+Fornecer_feedback_UseCase "0..1" -- "0..1" M_dulo_Pedag_gico_Actor : Fornecer_feedback_M_dulo_Pedag_gico
+Fornecer_lista_de_atividades_superadas_UseCase "0..1" -- "0..1" M_dulo_Pedag_gico_Actor : Fornecer_lista_de_atividades_superadas_M_dulo_Pedag_gico
+Iniciar_parar_monitoramento_card_aco_UseCase "0..1" -- "0..1" Usu_rio_Actor : Iniciar_parar_monitoramento_card_aco_Usu_rio
+Fornecer_dica_UseCase "0..1" -- "0..1" M_dulo_Pedag_gico_Actor : M_dulo_Pedag_gico_Fornecer_dica
+M_dulo_Pedag_gico_Actor "0..1" -- "0..1" Propor_desafio_UseCase : Propor_desafio_M_dulo_Pedag_gico
+Selecionar_treino_UseCase "0..1" -- "0..1" Usu_rio_Actor : Selecionar_treino_Usu_rio
+M_dulo_Pedag_gico_Actor "0..1" -- "0..1" Sequenciar_atividades_UseCase : Sequenciar_atividades_M_dulo_Pedag_gico
+Receber_responder_requisi__es_UseCase "0..1" -- "0..1" Servi_o_Web_Actor : Servi_o_Web_Receber_responder_requisi__es
+Aplicativo_Actor "0..1" -- "0..1" Sincronizar_dados_do_usu_rio_UseCase : Sincronizar_dados_Aplicativo
+Step "0..1" -- "0..1" StudentStepHistory : Step_StudentStepHistory
+Activity "0..1" -- "0..1" Subject : Subject_Activity
+StudentSubject "0..1" -- "0..1" Subject : Subject_StudentSubject
+@enduml

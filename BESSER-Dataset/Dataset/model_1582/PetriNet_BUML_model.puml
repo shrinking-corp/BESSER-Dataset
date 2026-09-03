@@ -1,0 +1,28 @@
+@startuml
+class Identifyable {
+}
+class Node {
+}
+class petrinet_Arc {
+}
+abstract class petrinet_Identifyable {
+  + id : str
+}
+class petrinet_Node {
+}
+class petrinet_PetriNet {
+}
+class petrinet_Place {
+}
+class petrinet_Transition {
+}
+Identifyable <|-- petrinet_Arc
+Identifyable <|-- petrinet_Node
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_PetriNet : arcs6
+petrinet_Node "0..9999" --* "1..1" petrinet_PetriNet : places4
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : source0
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : target1
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions9
+@enduml

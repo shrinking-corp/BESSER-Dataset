@@ -1,0 +1,75 @@
+@startuml
+class Administrative_staff {
+}
+class Bill {
+  + amount : float
+  + billno : str
+  + patientname : str
+}
+class Department {
+}
+class Doctor {
+  + address : str
+  + department : str
+  + docid : int
+  + name : str
+  + phno : int
+  + specialization : str
+}
+class Hospital {
+  + address : str
+  + name : str
+  + phone : int
+}
+class Nurse {
+  + doctorid : int
+  + id : int
+  + name : str
+}
+class Nurse1 {
+}
+class Operations_staff {
+}
+class Patient {
+  + accepted : date
+  + address : str
+  + age : int
+  + roomno : int
+  + sex : str
+  + sickness : str
+  + telno : int
+}
+abstract class RFID_Reader {
+  + CRC_code : str
+  + Gender : str
+  + RFID : int
+  + address : str
+  + birthDate : date
+  + phone : int
+}
+class Room {
+  + location : str
+  + roomno : int
+}
+class Staff {
+  + education : str
+  + joined : date
+}
+class Staff1 {
+}
+class Technical_staff {
+}
+Department "1..1" -- "0..9999" Staff : Department_Staff
+Doctor "1..9999" -- "1..1" Nurse : Doctor_Department
+Doctor "1..9999" -- "1..9999" Patient : Doctor_Patient
+Department "0..9999" -- "1..1" Hospital : Hospital_Department
+Bill "1..1" -- "1..1" Patient : Patient_Bill
+Operations_staff "0..9999" -- "0..9999" Patient : Patient_Operations_staff
+Patient "1..9999" -- "1..1" Room : Patient_Room
+Hospital "0..1" -- "0..1" RFID_Reader : Person_Hospital
+Hospital "0..9999" -- "0..9999" RFID_Reader : Person_Hospital2
+Hospital "0..9999" -- "0..9999" RFID_Reader : Person_Hospital3
+Room "0..9999" -- "0..9999" Staff1 : Room_Staff
+Bill "0..9999" -- "1..1" Staff : manages
+Patient "1..1" -- "1..1" Staff : receptions
+@enduml

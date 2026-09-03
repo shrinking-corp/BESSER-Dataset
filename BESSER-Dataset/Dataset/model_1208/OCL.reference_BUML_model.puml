@@ -1,0 +1,233 @@
+@startuml
+class ASTNode {
+}
+enum CollectionKind {
+  Bag
+  Collection
+  OrderedSet
+  Sequence
+  Set
+}
+class Visitable {
+}
+class ocl_expressions_AssociationClassCallExp {
+}
+class ocl_expressions_BooleanLiteralExp {
+  + booleanSymbol : str
+  + boolean_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+abstract class ocl_expressions_CallExp {
+}
+class ocl_expressions_CollectionItem {
+  + item_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_CollectionLiteralExp {
+  + kind : str
+  + simpleRange : bool
+  + bag_kind(ocl_context : str, ocl_diagnostics : str) : bool
+  + element_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + no_collection_instances(ocl_context : str, ocl_diagnostics : str) : bool
+  + sequence_kind(ocl_context : str, ocl_diagnostics : str) : bool
+  + set_kind(ocl_context : str, ocl_diagnostics : str) : bool
+}
+abstract class ocl_expressions_CollectionLiteralPart {
+}
+class ocl_expressions_CollectionRange {
+  + range_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_EnumLiteralExp {
+  + enum_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+abstract class ocl_expressions_FeatureCallExp {
+  + markedPre : bool
+}
+class ocl_expressions_IfExp {
+  + boolean_condition(ocl_context : str, ocl_diagnostics : str) : bool
+  + if_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_IntegerLiteralExp {
+  + integerSymbol : str
+  + integer_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_InvalidLiteralExp {
+}
+class ocl_expressions_IterateExp {
+  + body_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + iterate_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + result_init(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_IteratorExp {
+  + boolean_body_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + boolean_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + collect_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + select_reject_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_LetExp {
+  + let_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+abstract class ocl_expressions_LiteralExp {
+}
+abstract class ocl_expressions_LoopExp {
+  + loop_variable_init(ocl_context : str, ocl_diagnostics : str) : bool
+  + loop_variable_type(ocl_context : str, ocl_diagnostics : str) : bool
+  + source_collection(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_MessageExp {
+  + has_operation_or_signal(ocl_context : str, ocl_diagnostics : str) : bool
+  + operation_arguments(ocl_context : str, ocl_diagnostics : str) : bool
+  + signal_arguments(ocl_context : str, ocl_diagnostics : str) : bool
+  + target_defines_operation(ocl_context : str, ocl_diagnostics : str) : bool
+  + target_not_collection(ocl_context : str, ocl_diagnostics : str) : bool
+}
+abstract class ocl_expressions_NavigationCallExp {
+}
+class ocl_expressions_NullLiteralExp {
+}
+abstract class ocl_expressions_NumericLiteralExp {
+}
+abstract class ocl_expressions_OCLExpression {
+}
+class ocl_expressions_OperationCallExp {
+  + operationCode : int
+  + argument_count(ocl_context : str, ocl_diagnostics : str) : bool
+  + arguments_conform(ocl_context : str, ocl_diagnostics : str) : bool
+}
+abstract class ocl_expressions_PrimitiveLiteralExp {
+}
+class ocl_expressions_PropertyCallExp {
+  + property_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_RealLiteralExp {
+  + realSymbol : str
+  + real_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_StateExp {
+}
+class ocl_expressions_StringLiteralExp {
+  + stringSymbol : str
+  + string_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_TupleLiteralExp {
+  + parts_unique(ocl_context : str, ocl_diagnostics : str) : bool
+  + tuple_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_TupleLiteralPart {
+  + value_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_TypeExp {
+}
+class ocl_expressions_UnlimitedNaturalLiteralExp {
+  + integerSymbol : str
+  + unlimited : bool
+  + natural_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_UnspecifiedValueExp {
+}
+class ocl_expressions_Variable {
+  + init_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_expressions_VariableExp {
+  + var_type(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_types_AnyType {
+}
+class ocl_types_BagType {
+}
+class ocl_types_CollectionType {
+  + kind : str
+  + collection_type_name(ocl_context : str, ocl_diagnostics : str) : bool
+  + no_invalid_values(ocl_context : str, ocl_diagnostics : str) : bool
+  + oclIterators() : void
+}
+class ocl_types_ElementType {
+}
+class ocl_types_InvalidType {
+}
+class ocl_types_MessageType {
+  + exclusive_signature(ocl_context : str, ocl_diagnostics : str) : bool
+  + oclProperties() : void
+  + operation_parameters(ocl_context : str, ocl_diagnostics : str) : bool
+  + signal_attributes(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_types_OrderedSetType {
+}
+class ocl_types_PrimitiveType {
+}
+class ocl_types_SequenceType {
+}
+class ocl_types_SetType {
+}
+class ocl_types_TemplateParameterType {
+  + specification : str
+}
+class ocl_types_TupleType {
+  + features_only_properties(ocl_context : str, ocl_diagnostics : str) : bool
+  + oclProperties() : void
+  + part_names_unique(ocl_context : str, ocl_diagnostics : str) : bool
+  + tuple_type_name(ocl_context : str, ocl_diagnostics : str) : bool
+}
+class ocl_types_TypeType {
+}
+class ocl_types_VoidType {
+}
+abstract class ocl_utilities_ASTNode {
+  + endPosition : int
+  + startPosition : int
+}
+abstract class ocl_utilities_CallingASTNode {
+  + propertyEndPosition : int
+  + propertyStartPosition : int
+}
+abstract class ocl_utilities_ExpressionInOCL {
+}
+abstract class ocl_utilities_PredefinedType {
+  + getName() : str
+  + oclOperations() : void
+}
+abstract class ocl_utilities_TypedASTNode {
+  + typeEndPosition : int
+  + typeStartPosition : int
+}
+abstract class ocl_utilities_TypedElement {
+  + getName() : str
+  + getType() : void
+  + setName(ocl_name : str) : void
+  + setType(ocl_type : str) : void
+}
+abstract class ocl_utilities_Visitable {
+  + accept(ocl_v : str) : void
+}
+abstract class ocl_utilities_Visitor {
+  + visitAssociationClassCallExp(ocl_callExp : str) : void
+  + visitBooleanLiteralExp(ocl_literalExp : str) : void
+  + visitCollectionItem(ocl_item : str) : void
+  + visitCollectionLiteralExp(ocl_literalExp : str) : void
+  + visitCollectionRange(ocl_range : str) : void
+  + visitConstraint(ocl_constraint : str) : void
+  + visitEnumLiteralExp(ocl_literalExp : str) : void
+  + visitExpressionInOCL(ocl_expression : str) : void
+  + visitIfExp(ocl_ifExp : str) : void
+  + visitIntegerLiteralExp(ocl_literalExp : str) : void
+  + visitInvalidLiteralExp(ocl_literalExp : str) : void
+  + visitIterateExp(ocl_callExp : str) : void
+  + visitIteratorExp(ocl_callExp : str) : void
+  + visitLetExp(ocl_letExp : str) : void
+  + visitMessageExp(ocl_messageExp : str) : void
+  + visitNullLiteralExp(ocl_literalExp : str) : void
+  + visitOperationCallExp(ocl_callExp : str) : void
+  + visitPropertyCallExp(ocl_callExp : str) : void
+  + visitRealLiteralExp(ocl_literalExp : str) : void
+  + visitStateExp(ocl_stateExp : str) : void
+  + visitStringLiteralExp(ocl_literalExp : str) : void
+  + visitTupleLiteralExp(ocl_literalExp : str) : void
+  + visitTupleLiteralPart(ocl_part : str) : void
+  + visitTypeExp(ocl_typeExp : str) : void
+  + visitUnlimitedNaturalLiteralExp(ocl_literalExp : str) : void
+  + visitUnspecifiedValueExp(ocl_unspecExp : str) : void
+  + visitVariable(ocl_variable : str) : void
+  + visitVariableExp(ocl_variableExp : str) : void
+}
+ASTNode <|-- ocl_utilities_CallingASTNode
+ASTNode <|-- ocl_utilities_TypedASTNode
+Visitable <|-- ocl_utilities_ExpressionInOCL
+@enduml

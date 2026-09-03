@@ -1,0 +1,25 @@
+@startuml
+class Writer {
+}
+class library_Book {
+  + ISBN : str
+  + pages : str
+  + title : str
+}
+class library_GuideBookWriter {
+  + countries : str
+}
+class library_Library {
+  + name : str
+}
+class library_SpecialistBookWriter {
+  + subject : str
+}
+abstract class library_Writer {
+  + name : str
+}
+Writer <|-- library_GuideBookWriter
+Writer <|-- library_SpecialistBookWriter
+library_Book "1..1" -- "1..1" library_Writer : author0
+library_Book "0..9999" --* "1..1" library_Library : books1
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class NamedElement {
+}
+class fsm_FiniteStateMachine {
+}
+class fsm_Model {
+}
+abstract class fsm_NamedElement {
+  + name : str
+}
+class fsm_State {
+}
+class fsm_Transition {
+  + input : str
+  + output : str
+}
+NamedElement <|-- fsm_FiniteStateMachine
+NamedElement <|-- fsm_Model
+NamedElement <|-- fsm_State
+fsm_FiniteStateMachine "1..1" -- "1..1" fsm_State : initial2
+fsm_State "1..1" *-- "0..9999" fsm_Transition : leavingTransitions4
+fsm_FiniteStateMachine "0..9999" --* "1..1" fsm_Model : machine0
+fsm_FiniteStateMachine "1..1" -- "1..1" fsm_State : machine5
+fsm_State "1..1" -- "1..1" fsm_Transition : source8
+fsm_FiniteStateMachine "1..1" *-- "1..9999" fsm_State : states1
+fsm_State "1..1" -- "1..1" fsm_Transition : target6
+@enduml

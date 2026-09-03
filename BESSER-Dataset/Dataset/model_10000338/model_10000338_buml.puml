@@ -1,0 +1,97 @@
+@startuml
+class Color_external {
+}
+class ImageIcon_external {
+}
+class JButton_external {
+}
+class candyCrushPackage_ActionListener_Interface {
+}
+class candyCrushPackage_Board {
+  + BOARD_HEIGHT : int
+  + BOARD_WIDTH : int
+  + HORIZONTAL_GAP : int
+  + SIZE : int
+  + VERTICAL_GAP : int
+  + baseScorePerCandy : int
+  + candyHeight : int
+  + candyWidth : int
+  + cascadeTimer : str
+  + crushTimer : str
+  + crushTimerCount : int
+  + delay : int
+  + dropTimer : str
+  + dropTimerCount : int
+  + firstPressedCandy : candyCrushPackage_Candy
+  + gameScore : int
+  + isFirstPressed : bool
+  + isSwapBack : bool
+  + moveDistance : int
+  + movesLeft : int
+  + movesPerGame : int
+  + scorePerCandy : str
+  + secondPressedCandy : candyCrushPackage_Candy
+  + selfCrushCandy : candyCrushPackage_Candy
+  + selfCrushTimer : str
+  + selfCrushTimerCount : int
+  + swapDirection : candyCrushPackage_SwapDirection
+  + swapTimer : str
+  + swapTimerCount : int
+}
+abstract class candyCrushPackage_Candy {
+  + col : int
+  + color : int
+  + row : int
+}
+class candyCrushPackage_CandyButton {
+  + button : str
+  + image : str
+  + x : int
+  + y : int
+}
+class candyCrushPackage_ColorBombCandy {
+}
+class candyCrushPackage_Game {
+  + IMAGES_PATH : str
+  + SEP : str
+  + SOUNDS_PATH : str
+  + WINDOW_HEIGHT : int
+  + WINDOW_WIDTH : int
+  + playerName : str
+  + score : int
+}
+class candyCrushPackage_JFrame {
+}
+class candyCrushPackage_JPanel {
+}
+class candyCrushPackage_Menu {
+  + buttonBGColor : str
+  + highScoreLabel : str
+  + menuBGColor : str
+  + movesLabel : str
+}
+class candyCrushPackage_RegularCandy {
+  + selfCrush : bool
+  + selfCrushRange : int
+}
+class candyCrushPackage_StrippedCandy {
+  + isHorizontal : bool
+}
+enum candyCrushPackage_SwapDirection {
+}
+class candyCrushPackage_Visited_Interface {
+}
+class candyCrushPackage_Visitor_Interface {
+}
+class candyCrushPackage_WrappedCandy {
+  + selfCrushRange : int
+}
+candyCrushPackage_Board "0..1" -- "1..9999" candyCrushPackage_Candy : Board_Candy
+candyCrushPackage_Board "0..1" -- "1..9999" candyCrushPackage_CandyButton : Board_CandyButton
+ImageIcon_external "0..1" -- "0..1" candyCrushPackage_CandyButton : CandyButton_ImageIcon
+JButton_external "0..1" -- "0..1" candyCrushPackage_CandyButton : CandyButton_JButton
+candyCrushPackage_Candy "1..9999" -- "0..1" candyCrushPackage_Candy : Candy_Candy
+candyCrushPackage_Board "0..1" -- "0..1" candyCrushPackage_Game : Game_Board
+candyCrushPackage_Game "0..1" -- "0..1" candyCrushPackage_Menu : Game_Menu
+Color_external "0..1" -- "0..1" candyCrushPackage_Menu : Menu_Color
+@enduml

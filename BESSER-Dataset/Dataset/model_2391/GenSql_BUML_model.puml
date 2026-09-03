@@ -1,0 +1,24 @@
+@startuml
+class genSql_Column {
+  + Longitud : str
+  + SQLType : str
+  + name : str
+}
+class genSql_DataBase {
+}
+class genSql_ForeignKey {
+}
+class genSql_PrimaryKey {
+}
+class genSql_Table {
+  + name : str
+}
+genSql_Column "0..9999" --* "1..1" genSql_Table : columns1
+genSql_Column "0..9999" -- "1..1" genSql_ForeignKey : columns10
+genSql_Column "0..9999" -- "1..1" genSql_PrimaryKey : columns7
+genSql_Column "0..9999" -- "1..1" genSql_ForeignKey : columnsRef16
+genSql_ForeignKey "0..9999" --* "1..1" genSql_Table : foreignkeys5
+genSql_PrimaryKey "0..1" --* "1..1" genSql_Table : primarykey3
+genSql_ForeignKey "1..1" -- "0..1" genSql_Table : tableRef13
+genSql_DataBase "1..1" *-- "0..9999" genSql_Table : tables0
+@enduml

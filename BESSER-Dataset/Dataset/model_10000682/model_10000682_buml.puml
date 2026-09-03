@@ -1,0 +1,97 @@
+@startuml
+class Admin {
+}
+class Admin1 {
+}
+class Comment {
+}
+class Comment1 {
+  + author : str
+  + body : str
+  + date : str
+}
+class Event {
+}
+class Event1 {
+  + date : str
+  + eventOwner : User1
+  + invites : str
+  + isOpen : bool
+  + joined : str
+  + location : Location
+  + name : str
+  + rating : int
+  + size : int
+}
+class Guest {
+}
+class Guest1 {
+}
+class Lecturer {
+}
+class Lecturer1 {
+  + school : str
+}
+class Location {
+}
+class Location1 {
+  + address : str
+  + capacity : int
+  + name : str
+}
+class Post {
+}
+class Post1 {
+  + author : str
+  + body : str
+  + date : str
+  + files : str
+  + title : str
+}
+class Society {
+}
+class Society1 {
+  + yearEstablished : int
+}
+class Student {
+}
+class Student1 {
+  + course : str
+  + school : str
+  + yearOfStudy : int
+}
+class User {
+}
+class User1 {
+  + attribute : str
+  + campus : str
+  + email : str
+  + isStaff : bool
+  + name : str
+  + username : str
+}
+class User_Actor {
+}
+class VirtualTour {
+}
+class VirtualTour1 {
+  + URL : str
+}
+class test_UseCase {
+}
+Comment "0..1" -- "0..1" Post : Comment_Post
+Comment "0..1" -- "0..1" User : Comment_User
+Comment1 "0..1" -- "0..1" User1 : Comment_User2
+Event1 "1..1" -- "0..9999" Post1 : Event_Post
+Event "0..1" -- "0..1" Location : Location_Event
+Event1 "1..1" -- "1..1" Location1 : Location_Event2
+Guest "0..1" -- "0..1" VirtualTour : MyClass_MyClass2
+Guest1 "0..1" -- "0..1" VirtualTour1 : MyClass_MyClass22
+Comment1 "0..9999" -- "1..1" Post1 : Post_Comment
+Event "0..1" -- "0..1" User : User_Event
+Event1 "0..1" -- "0..1" User1 : User_Event2
+Post "0..1" -- "0..1" User : User_Post
+Post1 "0..1" -- "0..1" User1 : User_Post2
+User "0..1" -- "0..1" VirtualTour : User_VirtualTour
+User1 "0..1" -- "0..1" VirtualTour1 : User_VirtualTour2
+@enduml

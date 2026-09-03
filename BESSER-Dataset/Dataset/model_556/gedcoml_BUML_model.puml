@@ -1,0 +1,88 @@
+@startuml
+class Address {
+}
+class Person {
+}
+enum Sexus {
+  female
+  male
+  undefined
+}
+class Source {
+}
+abstract class gedcoml_Address {
+  + entry : str
+  + exodus : str
+}
+class gedcoml_Author {
+  + firstName : str
+  + lastName : str
+}
+class gedcoml_BekanntePerson {
+  + birthDay : str
+  + birthName : str
+  + deathDay : str
+  + firstName : str
+  + lastName : str
+  + middleName : str
+}
+class gedcoml_Family {
+  + name : str
+}
+class gedcoml_FamilyBook {
+}
+class gedcoml_FamilyImport {
+}
+class gedcoml_Married {
+  + separationDay : str
+  + weddingDay : str
+}
+class gedcoml_Note {
+  + content : str
+}
+class gedcoml_Others {
+  + description : str
+}
+abstract class gedcoml_Person {
+  + id : str
+  + sex : str
+}
+class gedcoml_PersonRef {
+}
+class gedcoml_PostAddress {
+  + city : str
+  + postcode : str
+  + street : str
+}
+class gedcoml_Projectdescription {
+  + artifactId : str
+  + groupId : str
+  + publishingDate : str
+  + version : str
+}
+abstract class gedcoml_Source {
+}
+class gedcoml_UnbekanntePerson {
+}
+Address <|-- gedcoml_PostAddress
+Person <|-- gedcoml_BekanntePerson
+Person <|-- gedcoml_UnbekanntePerson
+Source <|-- gedcoml_Others
+Source <|-- gedcoml_PersonRef
+gedcoml_Address "0..9999" --* "1..1" gedcoml_Person : addresses34
+gedcoml_Author "1..1" --* "1..1" gedcoml_Projectdescription : author1
+gedcoml_BekanntePerson "1..1" -- "1..1" gedcoml_Person : biologicalFatherIs9
+gedcoml_BekanntePerson "1..1" -- "1..1" gedcoml_Person : biologicalMotherIs12
+gedcoml_BekanntePerson "1..1" -- "0..9999" gedcoml_Person : biologicalParentOf7
+gedcoml_Family "1..1" -- "1..1" gedcoml_FamilyImport : importedResource23
+gedcoml_FamilyImport "0..9999" --* "1..1" gedcoml_Projectdescription : imports0
+gedcoml_Family "1..1" *-- "0..9999" gedcoml_FamilyImport : imports4
+gedcoml_BekanntePerson "1..1" *-- "0..9999" gedcoml_Married : marriedWith15
+gedcoml_Author "1..1" -- "0..1" gedcoml_BekanntePerson : memberId29
+gedcoml_Family "1..1" *-- "1..9999" gedcoml_Person : members3
+gedcoml_BekanntePerson "1..1" *-- "0..9999" gedcoml_Note : notes17
+gedcoml_Married "1..1" -- "1..1" gedcoml_Person : partner26
+gedcoml_BekanntePerson "1..1" -- "1..1" gedcoml_PersonRef : personID32
+gedcoml_FamilyBook "1..1" *-- "0..1" gedcoml_Projectdescription : project21
+gedcoml_BekanntePerson "1..1" *-- "1..9999" gedcoml_Source : sources19
+@enduml

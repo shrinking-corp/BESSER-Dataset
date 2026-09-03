@@ -1,0 +1,107 @@
+@startuml
+class Column {
+}
+enum ColumnType {
+  Boolean
+  Float
+  Integer
+  String
+  Text
+}
+class Content {
+}
+class DataSource {
+}
+class Entity {
+}
+class Field {
+}
+enum FieldType {
+  CheckBox
+  RadioButton
+  SubmitButton
+  TextBox
+}
+class Form {
+}
+class Link {
+}
+class Named {
+}
+class Page {
+}
+class RelatedEntity {
+}
+class webApplication_Named {
+  + name : str
+}
+class webApplication_WebApplicationModel {
+}
+class webApplication_content_CRUDForm {
+}
+abstract class webApplication_content_Content {
+}
+class webApplication_content_Field {
+  + type : str
+}
+class webApplication_content_Form {
+}
+class webApplication_content_Link {
+}
+class webApplication_content_Menu {
+  + itemName : str
+  + order : int
+  + url : str
+}
+class webApplication_content_MultipleContent {
+  + paginated : bool
+  + size : int
+}
+class webApplication_content_Page {
+}
+class webApplication_content_SingleContent {
+}
+class webApplication_data_Column {
+  + PK : bool
+  + lenght : int
+  + type : str
+}
+class webApplication_data_DataSource {
+}
+class webApplication_data_Entity {
+  + numberOfColumns : str
+  + getPK() : str
+  + getPKRelated() : str
+}
+class webApplication_data_RelatedEntity {
+}
+Content <|-- webApplication_content_Menu
+Content <|-- webApplication_content_MultipleContent
+Content <|-- webApplication_content_SingleContent
+Form <|-- webApplication_content_CRUDForm
+Named <|-- webApplication_WebApplicationModel
+Named <|-- webApplication_content_Content
+Named <|-- webApplication_content_Field
+Named <|-- webApplication_content_Form
+Named <|-- webApplication_content_Link
+Named <|-- webApplication_content_Page
+Named <|-- webApplication_data_Column
+Named <|-- webApplication_data_DataSource
+Named <|-- webApplication_data_Entity
+Named <|-- webApplication_data_RelatedEntity
+Column "1..9999" --* "1..1" webApplication_data_Entity : columns7
+Content "0..9999" --* "1..1" webApplication_content_Page : contents15
+DataSource "1..1" -- "1..1" webApplication_content_Content : dataSource20
+DataSource "0..9999" --* "1..1" webApplication_WebApplicationModel : dataSources1
+Entity "0..9999" --* "1..1" webApplication_WebApplicationModel : entities0
+Entity "1..1" -- "1..1" webApplication_data_DataSource : entity5
+Field "0..9999" --* "1..1" webApplication_content_CRUDForm : fields27
+Form "0..9999" --* "1..1" webApplication_content_Page : forms18
+Page "1..1" -- "1..1" webApplication_content_Link : from_22
+Link "0..9999" --* "1..1" webApplication_content_Page : links16
+Page "0..9999" --* "1..1" webApplication_WebApplicationModel : pages3
+Entity "0..9999" -- "1..1" webApplication_data_Entity : relatedEntities10
+RelatedEntity "0..9999" --* "1..1" webApplication_data_Entity : relates8
+Entity "1..1" -- "1..1" webApplication_data_RelatedEntity : relatesTo13
+Page "1..1" -- "1..1" webApplication_content_Link : to24
+@enduml

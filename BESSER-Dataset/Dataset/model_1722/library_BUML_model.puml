@@ -1,0 +1,23 @@
+@startuml
+class library_Book {
+  + name : str
+}
+class library_Chapter {
+  + name : str
+  + pages : int
+}
+class library_Content {
+}
+class library_Image {
+}
+class library_Library {
+  + name : str
+}
+class library_Text {
+}
+library_Book "0..9999" --* "1..1" library_Library : books0
+library_Book "1..1" *-- "0..9999" library_Chapter : chapters1
+library_Chapter "1..1" *-- "1..1" library_Content : content3
+library_Content "1..1" *-- "0..9999" library_Image : images7
+library_Content "1..1" *-- "0..9999" library_Text : text5
+@enduml

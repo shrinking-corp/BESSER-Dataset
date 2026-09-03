@@ -1,0 +1,44 @@
+@startuml
+class Arc {
+}
+class Element {
+}
+class Node {
+}
+abstract class petrinet_Arc {
+}
+abstract class petrinet_Element {
+  + name : str
+}
+class petrinet_InputArc {
+}
+class petrinet_NetworkSystem {
+}
+abstract class petrinet_Node {
+}
+class petrinet_OutputArc {
+}
+class petrinet_PetriNet {
+  + name : str
+}
+class petrinet_Place {
+}
+class petrinet_Transition {
+  + maxDelay : float
+  + minDelay : float
+}
+Arc <|-- petrinet_InputArc
+Arc <|-- petrinet_OutputArc
+Element <|-- petrinet_Arc
+Element <|-- petrinet_Node
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Element "0..9999" --* "1..1" petrinet_PetriNet : elements0
+petrinet_Arc "1..1" -- "1..1" petrinet_PetriNet : fromNet1
+petrinet_InputArc "1..1" -- "1..1" petrinet_Place : from_11
+petrinet_OutputArc "1..1" -- "1..1" petrinet_Transition : from_6
+petrinet_NetworkSystem "1..1" *-- "0..9999" petrinet_PetriNet : petrinets14
+petrinet_OutputArc "1..1" -- "1..1" petrinet_Place : to7
+petrinet_InputArc "1..1" -- "1..1" petrinet_Transition : to9
+petrinet_Arc "1..1" -- "1..1" petrinet_PetriNet : toNet3
+@enduml

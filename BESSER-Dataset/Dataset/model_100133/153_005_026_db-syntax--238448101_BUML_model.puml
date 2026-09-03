@@ -1,0 +1,378 @@
+@startuml
+class BindingStatement {
+}
+class ConditionInfoClause {
+}
+enum CursorType {
+  DYNSCROLL
+  NOTSCROLL
+  SCROLL
+}
+class DefinitionStatement {
+}
+enum DescriptorScope {
+  GLOBAL
+  LOCAL
+  NONE
+}
+enum DropRange {
+  CASCADE
+  RESTRICT
+}
+enum FetchPosition {
+  AFTER
+  BEFORE
+  CURRENT
+  FIRST
+  LAST
+  NEXT
+  PRIOR
+  RELATIVE
+}
+class IntoClause {
+}
+enum IsolationLevel {
+  NONE
+  NO_COMMIT
+  READ_COMMITTED
+  READ_UNCOMMITTED
+  REPEATABLE_READ
+  SERIALIZABLE
+}
+class MultipleRowFetchClause {
+}
+enum OpenUsingType {
+  DESCRIPTOR
+  NONE
+  VARIABLE
+}
+class Option {
+}
+class QueryExpressionBody {
+}
+class QuerySelect {
+}
+enum RWOperation {
+  READ_ONLY
+  READ_WRITE
+}
+class SQLObjectNameHelper {
+}
+enum ShareMode {
+  EXCLUSIVE
+  SHARE
+}
+class SingleRowFetchClause {
+}
+class StatementParser {
+}
+enum StatementType {
+  DBL
+  DDL
+  DML
+}
+class StatementWriter {
+}
+enum TargetElement {
+  ALIAS
+  INDEX
+  TABLE
+  VIEW
+}
+enum TargetItem {
+  ALL
+  ALLSQL
+  CURRENT
+}
+enum UsingType {
+  ALL
+  ANY
+  BOTH
+  LABELS
+  NAMES
+  NONE
+  SYSTEM_NAMES
+}
+class ddl_syntax_IndexDef {
+}
+class ddl_syntax_QualifiedName {
+}
+class ddl_syntax_TableColumnDef {
+}
+class dml_ExtendedQueryExpressionBody {
+}
+abstract class syntax_AliasResolver {
+  + resolveQuery(syntax_connection : str, syntax_query : str) : void
+}
+class syntax_BindingParseError {
+}
+class syntax_BindingParseResult {
+}
+abstract class syntax_BindingParser {
+  + parseBinding(syntax_sql : str) : str
+}
+abstract class syntax_BindingParserRegistry {
+  + lookup(syntax_connectionConfig : str) : str
+}
+abstract class syntax_BindingStatement {
+  + getStatementType() : str
+}
+class syntax_DefinitionParseError {
+}
+class syntax_DefinitionParseResult {
+}
+abstract class syntax_DefinitionParser {
+  + parseDefinition(syntax_sql : str) : str
+}
+abstract class syntax_DefinitionParserRegistry {
+  + lookup(syntax_connectionConfig : str) : str
+}
+abstract class syntax_DefinitionStatement {
+  + getStatementType() : str
+}
+abstract class syntax_DefinitionWriter {
+  + copyTableData(syntax_isCreateRelativeRecordNumber : str, syntax_tableFrom : str, syntax_tableTo : str) : str
+  + countRecords(syntax_table : str) : str
+  + createIndex(syntax_index : str, syntax_name : str, syntax_table : str) : str
+  + createLabel(syntax_name : str, syntax_schema : str, syntax_table : str) : str
+  + createLabelForFields(syntax_name : str, syntax_schema : str, syntax_table : str) : str
+  + createSchema(syntax_name : str, syntax_schema : str) : str
+  + createTable(syntax_name : str, syntax_schema : str, syntax_table : str) : str
+  + createView(syntax_name : str, syntax_schema : str, syntax_view : str) : str
+  + deleteData(syntax_table : str) : str
+  + dropIndex(syntax_index : str) : str
+  + dropSchema(syntax_ignoreFailOnNonEmpty : str, syntax_schema : str) : str
+  + dropTable(syntax_table : str) : str
+  + dropView(syntax_view : str) : str
+  + hasLogicals(syntax_table : str) : str
+  + insertData(syntax_fieldNames : str, syntax_table : str) : str
+  + renameIndex(syntax_index : str, syntax_newName : str) : str
+  + renameTable(syntax_newName : str, syntax_table : str) : str
+  + selectData(syntax_table : str) : str
+  + truncateTable(syntax_table : str) : str
+}
+abstract class syntax_DefinitionWriterRegistry {
+  + lookup(syntax_connectionConfig : str) : str
+}
+abstract class syntax_NameHelper {
+  + resolveContainers(syntax_query : str) : void
+}
+abstract class syntax_NameHelperRegistry {
+  + lookup(syntax_connectionConfig : str) : str
+}
+abstract class syntax_QueryParser {
+  + parseQuery(syntax_sql : str) : str
+}
+abstract class syntax_QueryParserRegistry {
+  + lookup(syntax_connectionConfig : str) : str
+}
+abstract class syntax_QueryWriter {
+  + writeQuery(syntax_statement : str) : str
+}
+abstract class syntax_QueryWriterRegistry {
+  + lookup(syntax_connectionConfig : str) : str
+}
+abstract class syntax_SQLObjectNameHelper {
+}
+abstract class syntax_StatementParser {
+}
+abstract class syntax_StatementWriter {
+}
+class syntax_dbl_AllocateDescriptorStatement {
+  + descriptorName : str
+  + descriptorScope : str
+  + withMax : str
+}
+class syntax_dbl_CloseStatement {
+  + cursor : str
+}
+class syntax_dbl_ConditionInfoClause {
+  + condition : str
+}
+class syntax_dbl_DeallocateDescriptorStatement {
+  + descriptorName : str
+  + descriptorScope : str
+}
+class syntax_dbl_DeclareCursorStatement {
+  + cursorName : str
+  + cursorType : str
+  + forQuery : str
+  + forStatementName : str
+  + hold : bool
+}
+class syntax_dbl_DescribeStatement {
+  + statementName : str
+}
+class syntax_dbl_ExecuteImmediateStatement {
+  + variable : str
+}
+class syntax_dbl_ExecuteStatement {
+  + statementName : str
+}
+class syntax_dbl_FetchStatement {
+  + cursorName : str
+  + position : str
+  + relativePosition : str
+}
+class syntax_dbl_GetDescriptorStatement {
+  + descriptorName : str
+  + descriptorScope : str
+  + value : str
+}
+class syntax_dbl_GetDiagnosticsStatement {
+}
+class syntax_dbl_IntoClause {
+  + descriptorName : str
+  + using : str
+}
+class syntax_dbl_MultipleRowFetchClause {
+  + descriptor : str
+  + into : str
+  + rowsNumber : str
+  + usingDescriptor : bool
+}
+class syntax_dbl_OpenStatement {
+  + cursor : str
+  + using : str
+  + usingType : str
+}
+class syntax_dbl_Option {
+  + name : str
+  + value : str
+}
+class syntax_dbl_PrepareStatement {
+  + from_ : str
+  + statementName : str
+}
+class syntax_dbl_SetDescriptorStatement {
+  + descriptorName : str
+  + value : str
+}
+class syntax_dbl_SetOptionStatement {
+}
+class syntax_dbl_SetTransactionStatement {
+  + isolationLevel : str
+  + rwOperation : str
+}
+class syntax_dbl_SingleRowFetchClause {
+  + into : str
+  + usingDescriptor : bool
+}
+class syntax_ddl_CallStatement {
+  + parms : str
+}
+class syntax_ddl_CommitStatement {
+  + hold : bool
+}
+class syntax_ddl_ConnectStatement {
+  + pwd : str
+  + reset : bool
+  + to : str
+  + user : str
+}
+class syntax_ddl_CreateAliasStatement {
+}
+class syntax_ddl_CreateIndexStatement {
+  + unique : bool
+}
+class syntax_ddl_CreateTableStatement {
+}
+class syntax_ddl_CreateViewStatement {
+  + fields : str
+  + query : str
+}
+class syntax_ddl_DisconnectStatement {
+  + target : str
+}
+class syntax_ddl_DropStatement {
+  + range : str
+  + target : str
+}
+class syntax_ddl_LockTableStatement {
+  + allowRead : bool
+  + shareMode : str
+}
+class syntax_ddl_ReleaseStatement {
+  + serverName : str
+}
+class syntax_ddl_RenameStatement {
+  + newName : str
+  + system : str
+  + target : str
+}
+class syntax_ddl_RollbackStatement {
+  + hold : bool
+}
+class syntax_ddl_SetConnectionStatement {
+  + databaseName : str
+}
+class syntax_dml_ExtendedQueryExpressionBody {
+  + optimizeRecordsNumber : int
+}
+class syntax_dml_ExtendedQuerySelect {
+}
+BindingStatement <|-- syntax_dbl_AllocateDescriptorStatement
+BindingStatement <|-- syntax_dbl_CloseStatement
+BindingStatement <|-- syntax_dbl_DeallocateDescriptorStatement
+BindingStatement <|-- syntax_dbl_DeclareCursorStatement
+BindingStatement <|-- syntax_dbl_DescribeStatement
+BindingStatement <|-- syntax_dbl_ExecuteImmediateStatement
+BindingStatement <|-- syntax_dbl_ExecuteStatement
+BindingStatement <|-- syntax_dbl_FetchStatement
+BindingStatement <|-- syntax_dbl_GetDescriptorStatement
+BindingStatement <|-- syntax_dbl_GetDiagnosticsStatement
+BindingStatement <|-- syntax_dbl_OpenStatement
+BindingStatement <|-- syntax_dbl_PrepareStatement
+BindingStatement <|-- syntax_dbl_SetDescriptorStatement
+BindingStatement <|-- syntax_dbl_SetOptionStatement
+BindingStatement <|-- syntax_dbl_SetTransactionStatement
+DefinitionStatement <|-- syntax_ddl_CallStatement
+DefinitionStatement <|-- syntax_ddl_CommitStatement
+DefinitionStatement <|-- syntax_ddl_ConnectStatement
+DefinitionStatement <|-- syntax_ddl_CreateAliasStatement
+DefinitionStatement <|-- syntax_ddl_CreateIndexStatement
+DefinitionStatement <|-- syntax_ddl_CreateTableStatement
+DefinitionStatement <|-- syntax_ddl_CreateViewStatement
+DefinitionStatement <|-- syntax_ddl_DisconnectStatement
+DefinitionStatement <|-- syntax_ddl_DropStatement
+DefinitionStatement <|-- syntax_ddl_LockTableStatement
+DefinitionStatement <|-- syntax_ddl_ReleaseStatement
+DefinitionStatement <|-- syntax_ddl_RenameStatement
+DefinitionStatement <|-- syntax_ddl_RollbackStatement
+DefinitionStatement <|-- syntax_ddl_SetConnectionStatement
+QueryExpressionBody <|-- syntax_dml_ExtendedQueryExpressionBody
+QuerySelect <|-- syntax_dml_ExtendedQuerySelect
+SQLObjectNameHelper <|-- syntax_NameHelper
+StatementParser <|-- syntax_BindingParser
+StatementParser <|-- syntax_DefinitionParser
+StatementParser <|-- syntax_QueryParser
+StatementWriter <|-- syntax_DefinitionWriter
+StatementWriter <|-- syntax_QueryWriter
+dml_ExtendedQueryExpressionBody <|-- syntax_dml_ExtendedQuerySelect
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateAliasStatement : aliasName8
+syntax_BindingParseResult "1..1" -- "0..1" syntax_BindingStatement : bindingStatement0
+ConditionInfoClause "0..1" -- "1..1" syntax_dbl_GetDiagnosticsStatement : conditionInfo39
+Option "0..9999" -- "1..1" syntax_dbl_ConditionInfoClause : conditionItems32
+syntax_DefinitionParseResult "1..1" -- "0..1" syntax_DefinitionStatement : definitionStatement3
+syntax_BindingParseError "0..9999" -- "1..1" syntax_BindingParseResult : errorList1
+syntax_DefinitionParseError "0..9999" -- "1..1" syntax_DefinitionParseResult : errorList4
+ddl_syntax_TableColumnDef "1..9999" --* "1..1" syntax_ddl_CreateTableStatement : fields22
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateIndexStatement : indexName13
+IntoClause "0..1" --* "1..1" syntax_dbl_DescribeStatement : into33
+IntoClause "0..1" --* "1..1" syntax_dbl_PrepareStatement : into44
+Option "0..9999" -- "1..1" syntax_dbl_SetDescriptorStatement : items40
+MultipleRowFetchClause "0..1" --* "1..1" syntax_dbl_FetchStatement : multipleRowClause34
+syntax_NameHelper "0..1" -- "1..1" syntax_StatementWriter : nameHelper6
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateIndexStatement : onTable15
+Option "0..9999" -- "1..1" syntax_dbl_SetOptionStatement : options42
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_RenameStatement : originalName30
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CallStatement : procedureName7
+SingleRowFetchClause "0..1" --* "1..1" syntax_dbl_FetchStatement : singleRowClause35
+ddl_syntax_IndexDef "0..1" --* "1..1" syntax_ddl_CreateIndexStatement : sortBy18
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateAliasStatement : tableName10
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateTableStatement : tableName20
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_LockTableStatement : tableName28
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_DropStatement : targetName26
+Option "0..9999" -- "1..1" syntax_dbl_GetDescriptorStatement : variables37
+ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateViewStatement : viewName24
+@enduml

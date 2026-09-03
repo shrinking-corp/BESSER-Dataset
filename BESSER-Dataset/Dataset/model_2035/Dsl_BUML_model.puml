@@ -1,0 +1,27 @@
+@startuml
+class dsl_Command {
+  + code : str
+  + name : str
+}
+class dsl_Event {
+  + code : str
+  + name : str
+}
+class dsl_State {
+  + name : str
+}
+class dsl_Statemachine {
+}
+class dsl_Transition {
+}
+dsl_Command "0..9999" -- "1..1" dsl_State : actions11
+dsl_Command "0..9999" --* "1..1" dsl_Statemachine : commands6
+dsl_Event "0..1" -- "1..1" dsl_Transition : event19
+dsl_Event "0..9999" --* "1..1" dsl_Statemachine : events0
+dsl_State "0..1" -- "1..1" dsl_Statemachine : initialState4
+dsl_Event "0..9999" -- "1..1" dsl_Statemachine : resetEvents1
+dsl_State "0..1" -- "1..1" dsl_Transition : state22
+dsl_State "0..9999" --* "1..1" dsl_Statemachine : state8
+dsl_State "0..9999" --* "1..1" dsl_State : subState17
+dsl_State "1..1" *-- "0..9999" dsl_Transition : transitions14
+@enduml

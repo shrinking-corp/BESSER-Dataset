@@ -1,0 +1,27 @@
+@startuml
+class rules_Node {
+  + type : str
+}
+class rules_NodeRelation {
+  + lowerBound : int
+  + relation : str
+  + relationTgt : str
+  + upperBound : int
+}
+class rules_Rule {
+  + name : str
+}
+class rules_RulesLattice {
+  + source : str
+  + target : str
+}
+rules_Rule "1..1" -- "0..9999" rules_Rule : children2
+rules_Node "0..9999" -- "1..1" rules_Rule : conclusion8
+rules_Node "0..9999" --* "1..1" rules_Rule : nodes11
+rules_Rule "1..1" -- "0..9999" rules_Rule : parents4
+rules_Node "0..9999" -- "1..1" rules_Rule : premise6
+rules_Node "1..1" *-- "0..9999" rules_NodeRelation : relatedNodes14
+rules_Rule "0..9999" --* "1..1" rules_RulesLattice : rules0
+rules_Node "1..1" -- "1..1" rules_NodeRelation : source15
+rules_Node "1..1" -- "1..1" rules_NodeRelation : target16
+@enduml

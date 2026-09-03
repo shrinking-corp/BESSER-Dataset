@@ -1,0 +1,26 @@
+@startuml
+class NamedElement {
+}
+class OfficeElement {
+}
+class office_Employee {
+  + title : str
+}
+abstract class office_NamedElement {
+  + name : str
+}
+class office_Office {
+}
+abstract class office_OfficeElement {
+}
+class office_OfficeModel {
+}
+NamedElement <|-- office_OfficeElement
+NamedElement <|-- office_OfficeModel
+OfficeElement <|-- office_Employee
+OfficeElement <|-- office_Office
+office_OfficeElement "0..9999" --* "1..1" office_OfficeModel : elements0
+office_Employee "0..9999" -- "1..1" office_Office : employees4
+office_Employee "1..1" -- "1..1" office_Office : worksIn1
+office_Employee "1..1" -- "0..9999" office_Employee : worksWith3
+@enduml

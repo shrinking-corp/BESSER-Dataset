@@ -1,0 +1,64 @@
+@startuml
+class Account {
+  + Acc_no_ : int
+  + Branch_ : str
+  + Phone_no_ : int
+}
+class Admin_Actor {
+}
+class Analyzing_UseCase {
+}
+class Buy_product_UseCase {
+}
+class Cart {
+  + Buy_ : int
+  + Delete_ : str
+  + No_of_items_ : int
+}
+class Comment_UseCase {
+}
+class Customer {
+  + Address_ : str
+  + Phone_ : int
+  + login_id_ : str
+}
+class Key_generate_UseCase {
+}
+class Login {
+  + login_id_ : str
+  + password_ : str
+}
+class Login_UseCase {
+}
+class Password_UseCase {
+}
+class Payment {
+  + Acc_No_ : int
+  + Amount_paid_ : int
+  + Transaction_id_ : int
+}
+class Update_product_UseCase {
+}
+class User_Actor {
+}
+class View_product_UseCase {
+}
+class order {
+  + amount__ : int
+  + no_of_items_ : int
+  + order_status_ : str
+}
+class user_name_UseCase {
+}
+Account "0..1" -- "0..1" order : Account_order
+Admin_Actor "0..1" -- "0..1" Login_UseCase : Admin_Login
+Cart "0..1" -- "0..1" order : Cart_order
+Admin_Actor "0..1" -- "0..1" Key_generate_UseCase : Key_generate_Admin
+Customer "0..1" -- "0..1" Login : Login_Customer
+Admin_Actor "0..1" -- "0..1" Update_product_UseCase : Update_product_Admin
+Buy_product_UseCase "0..1" -- "0..1" User_Actor : User_Buy_product
+Key_generate_UseCase "0..1" -- "0..1" User_Actor : User_Key_generate
+Login_UseCase "0..1" -- "0..1" User_Actor : User_Login
+User_Actor "0..1" -- "0..1" View_product_UseCase : User_View_product
+Admin_Actor "0..1" -- "0..1" View_product_UseCase : View_product_Admin
+@enduml

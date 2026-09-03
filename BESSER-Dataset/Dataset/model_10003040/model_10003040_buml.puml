@@ -1,0 +1,72 @@
+@startuml
+class ActiveRecord {
+  + connection : ConnectionInterface_Interface
+  + id : int
+}
+class Car {
+  + cost : str
+  + manufacturer : str
+  + name : str
+  + stock : int
+}
+class Check_Car_Stock_UseCase {
+}
+class Check_for_Parts_UseCase {
+}
+class Compute_Billables_UseCase {
+}
+class ConnectionInterface_Interface {
+}
+class Customer {
+  + address : str
+  + name : str
+  + type : CustomerType
+}
+enum CustomerType {
+}
+class Customer_Actor {
+}
+class Dealer_Actor {
+}
+class Enquire_for_Cars_UseCase {
+}
+class Maintenance_Team_Actor {
+}
+class Manufacturer_Actor {
+}
+class Order_Cars_UseCase {
+}
+class Purchase_Car_UseCase {
+}
+class Repair {
+  + car : Car
+  + customer : Customer
+  + date : date
+  + part : RepairPart
+}
+class RepairPart {
+  + cost : str
+  + name : str
+  + stock : int
+}
+class Repair_Part_Purchase_UseCase {
+}
+class Sale {
+  + billable : str
+  + car : Car
+  + customer : Customer
+  + date : date
+}
+class Send_for_Repair_UseCase {
+}
+Customer_Actor "0..1" -- "0..1" Enquire_for_Cars_UseCase : Customer_Enquire_for_Cars
+Customer_Actor "0..1" -- "0..1" Purchase_Car_UseCase : Customer_Purchase_Car
+Customer_Actor "0..1" -- "0..1" Send_for_Repair_UseCase : Customer_Send_for_Repair
+Dealer_Actor "0..1" -- "0..1" Enquire_for_Cars_UseCase : Dealer_Enquire_for_Cars
+Dealer_Actor "0..1" -- "0..1" Order_Cars_UseCase : Dealer_Order_Cars
+Dealer_Actor "0..1" -- "0..1" Purchase_Car_UseCase : Dealer_Purchase_Car
+Dealer_Actor "0..1" -- "0..1" Send_for_Repair_UseCase : Dealer_Send_for_Repair
+Maintenance_Team_Actor "0..1" -- "0..1" Repair_Part_Purchase_UseCase : Maintenance_Team_Repair_Part_Purchase
+Maintenance_Team_Actor "0..1" -- "0..1" Send_for_Repair_UseCase : Maintenance_Team_Send_for_Repair
+Manufacturer_Actor "0..1" -- "0..1" Order_Cars_UseCase : Manufacturer_Order_Cars
+@enduml

@@ -1,0 +1,432 @@
+@startuml
+class Attachment {
+}
+class Classification {
+}
+class Extension {
+}
+class InformationObject {
+}
+class Item {
+}
+class MetaInformation {
+}
+class Ranking {
+}
+abstract class data_Attachment {
+  + cachedFileName : str
+  + cachedFileUrl : str
+  + cachedOnly : str
+  + fileExtension : str
+  + fileIdentifier : str
+  + fileUrl : str
+  + getOriginalFileUrl() : str
+}
+class data_Binary {
+  + bytes : str
+}
+class data_Category {
+}
+abstract class data_Classification {
+  + name : str
+  + getContents() : str
+  + getContentsCount() : str
+  + getCount() : str
+  + getOrganisations() : str
+  + getOrganisationsCount() : str
+  + getPersons() : str
+  + getPersonsCount() : str
+  + getSlug() : str
+}
+class data_Connection {
+}
+class data_Content {
+  + locale : str
+  + addContributor(data_contributor : str) : str
+  + attachDocument(data_fileUrl : str) : str
+  + comment(data_comment : str) : str
+  + getOrganisations() : str
+  + getPersons() : str
+}
+class data_DataSet {
+  + cacheFileAttachements : str
+  + cacheFolder : str
+  + created : date
+  + identCounter : str
+  + identPrefix : str
+  + lastModified : date
+  + logLevel : str
+  + add(data_item : str) : Item
+  + forceAdd(data_item : str) : Item
+  + getAllCategories() : str
+  + getAllConnections() : str
+  + getAllContents() : str
+  + getAllMetaTags() : str
+  + getAllOrganisations() : str
+  + getAllPersons() : str
+  + getAllTags() : str
+  + getAttachmentWithIdent(data_ident : str) : str
+  + getAttachments() : str
+  + getAttachmentsWithCachedFileName(data_cachedFileName : str) : str
+  + getBinaries() : str
+  + getCategories() : str
+  + getCategory(data_name : str) : str
+  + getCategoryWithSlug(data_slug : str) : str
+  + getClassifications() : str
+  + getConnections() : str
+  + getConnectionsBetweenInformationObjectsOfDifferentCategories() : str
+  + getContentWithIdent(data_ident : str) : str
+  + getContentWithIdentifier(data_key : str, data_value : str) : str
+  + getContents() : str
+  + getContentsWithAllCategories(data_categories : str) : str
+  + getContentsWithAllMetaTags(data_tags : str) : str
+  + getContentsWithAllTags(data_tags : str) : str
+  + getContentsWithAttachment(data_attachment : str) : str
+  + getContentsWithName(data_name : str) : str
+  + getContentsWithOneOfCategories(data_categories : str) : str
+  + getContentsWithOneOfMetaTags(data_tags : str) : str
+  + getContentsWithOneOfTags(data_tags : str) : str
+  + getDocuments() : str
+  + getEmails() : str
+  + getEmptyItemWithIdent(data_ident : str) : Item
+  + getEqualItem(data_item : str) : Item
+  + getEvents() : str
+  + getEventsAfter(data_date : str) : str
+  + getEventsBefore(data_date : str) : str
+  + getEventsBetweenDates(data_after : str, data_before : str) : str
+  + getExtensions() : str
+  + getIdentifierWithKeyValue(data_key : str, data_value : str) : str
+  + getIdentifiers() : str
+  + getIdentifiersWithKey(data_key : str) : str
+  + getIdentsOfExistingItems() : str
+  + getImageWithIdentifier(data_key : str, data_value : str) : str
+  + getImages() : str
+  + getIndoorLocationWithIdentifier(data_key : str, data_value : str) : str
+  + getInformationObjects() : InformationObject
+  + getInformationObjectsModifiedSince(data_date : str) : InformationObject
+  + getInformationObjectsWithAllCategories(data_categories : str) : InformationObject
+  + getInformationObjectsWithAllMetaTags(data_tags : str) : InformationObject
+  + getInformationObjectsWithAllTags(data_tags : str) : InformationObject
+  + getInformationObjectsWithAttachment(data_attachment : str) : InformationObject
+  + getInformationObjectsWithOneOfCategories(data_categories : str) : InformationObject
+  + getInformationObjectsWithOneOfMetaTags(data_tags : str) : InformationObject
+  + getInformationObjectsWithOneOfTags(data_tags : str) : InformationObject
+  + getInstantMessengers() : str
+  + getItemWithIdentifier(data_key : str, data_value : str) : Item
+  + getItemsCreatedSince(data_date : str) : Item
+  + getItemsModifiedSince(data_date : str) : Item
+  + getItemsWithAllMetaTags(data_tags : str) : Item
+  + getItemsWithIdent(data_ident : str) : Item
+  + getItemsWithOneOfMetaTags(data_tags : str) : Item
+  + getItemsWithStringValue(data_stringValue : str) : Item
+  + getLocationWithIdentifier(data_key : str, data_value : str) : str
+  + getLocations() : str
+  + getMetaInformations() : str
+  + getMetaTag(data_name : str) : str
+  + getMetaTags() : str
+  + getOrganisationWithIdent(data_ident : str) : str
+  + getOrganisationWithIdentifier(data_key : str, data_value : str) : str
+  + getOrganisations() : str
+  + getOrganisationsWithAllCategories(data_categories : str) : str
+  + getOrganisationsWithAllMetaTags(data_tags : str) : str
+  + getOrganisationsWithAllTags(data_tags : str) : str
+  + getOrganisationsWithAttachment(data_attachment : str) : str
+  + getOrganisationsWithName(data_name : str) : str
+  + getOrganisationsWithOneOfCategories(data_categories : str) : str
+  + getOrganisationsWithOneOfMetaTags(data_tags : str) : str
+  + getOrganisationsWithOneOfTags(data_tags : str) : str
+  + getPersonWithIdent(data_ident : str) : str
+  + getPersonWithIdentifier(data_key : str, data_value : str) : str
+  + getPersons() : str
+  + getPersonsWithAllCategories(data_categories : str) : str
+  + getPersonsWithAllMetaTags(data_tags : str) : str
+  + getPersonsWithAllTags(data_tags : str) : str
+  + getPersonsWithAttachment(data_attachment : str) : str
+  + getPersonsWithFirstName(data_firstname : str) : str
+  + getPersonsWithLastname(data_lastname : str) : str
+  + getPersonsWithName(data_name : str) : str
+  + getPersonsWithOneOfCategories(data_categories : str) : str
+  + getPersonsWithOneOfMetaTags(data_tags : str) : str
+  + getPersonsWithOneOfTags(data_tags : str) : str
+  + getPhones() : str
+  + getRandomXContents(data_x : str) : str
+  + getRandomXInformationObjects(data_x : str) : InformationObject
+  + getRandomXOrganisations(data_x : str) : str
+  + getRandomXPersons(data_x : str) : str
+  + getRankings() : str
+  + getSpicynodesRepresentation() : str
+  + getStarRankings() : str
+  + getTag(data_name : str) : str
+  + getTags() : str
+  + getTagsWithMoreThanXInformationObjects(data_x : str) : str
+  + getThumbRankings() : str
+  + getTransformations() : str
+  + getVideos() : str
+  + getViewRankings() : str
+  + getWebAccounts() : str
+  + getWebSites() : str
+  + hasEqualItem(data_item : str) : str
+  + log(data_level : str, data_message : str) : void
+  + rebuildIndexes() : void
+  + searchByQuery(data_query : str) : Item
+  + searchInformationObjects(data_term : str) : InformationObject
+  + searchItems(data_term : str) : Item
+}
+class data_Document {
+}
+class data_Email {
+  + adress : str
+}
+class data_Event {
+  + date : date
+  + getDatePretty() : str
+  + getDatePrettyInLanguage(data_language : str) : str
+}
+abstract class data_Extension {
+  + tag(data_name : str) : str
+}
+class data_Identifier {
+  + key : str
+  + value : str
+}
+class data_Image {
+}
+class data_IndoorLocation {
+  + name : str
+}
+abstract class data_InformationObject {
+  + name : str
+  + addEmailAddress(data_emailAdress : str) : str
+  + addPhone(data_phoneNumber : str) : str
+  + addWebAccount(data_username : str) : str
+  + addWebSite(data_url : str) : str
+  + attachImage(data_imageUrl : str) : str
+  + categorize(data_name : str) : str
+  + connectTo(data_informationObject : str) : str
+  + connectToWithMetaTag(data_informationObject : str, data_metaTag : str) : str
+  + connectToWithValueAndMetaTag(data_informationObject : str, data_metaTag : str, data_value : str) : str
+  + extend(data_metaInformation : str) : str
+  + getAttachedImageWithUrl(data_url : str) : str
+  + getAttachmentWithUrl(data_url : str) : str
+  + getAttachments() : str
+  + getConnectionFrom(data_informationObject : str, data_value : str) : str
+  + getConnectionTo(data_informationObject : str, data_value : str) : str
+  + getConnectionsFrom(data_informationObject : str) : str
+  + getConnectionsFromWithMetaTag(data_informationObject : str, data_metaTag : str) : str
+  + getConnectionsTo(data_informationObject : str) : str
+  + getConnectionsToWithMetaTag(data_informationObject : str, data_metaTag : str) : str
+  + getContentsWithCommonTags() : str
+  + getEmails() : str
+  + getInformationObjectsConnected() : InformationObject
+  + getInformationObjectsConnectedFrom() : InformationObject
+  + getInformationObjectsConnectedFromWithMetaTag(data_metaTag : str) : InformationObject
+  + getInformationObjectsConnectedTo() : InformationObject
+  + getInformationObjectsConnectedToWithMetaTag(data_metaTag : str) : InformationObject
+  + getInformationObjectsConnectedWithMetaTag(data_metaTag : str) : InformationObject
+  + getInformationObjectsWithCommonTags() : InformationObject
+  + getInstantMessengers() : str
+  + getLocations() : str
+  + getOrganisationsWithCommonTags() : str
+  + getPersonsWithCommonTags() : str
+  + getPhones() : str
+  + getSlugName() : str
+  + getStarRanking() : str
+  + getThumbsCount() : str
+  + getThumbsDown() : str
+  + getThumbsDownCount() : str
+  + getThumbsUp() : str
+  + getThumbsUpCount() : str
+  + getViewsCount() : str
+  + getWebAccounts() : str
+  + getWebSites() : str
+  + hasImages() : str
+  + starRank(data_ofStars : str, data_stars : str) : str
+  + tag(data_name : str) : str
+  + thumbsDown() : str
+  + thumbsUp() : str
+  + unCategorize(data_name : str) : str
+  + unTag(data_name : str) : str
+  + view() : str
+}
+class data_InstantMessenger {
+  + username : str
+}
+abstract class data_Item {
+  + created : date
+  + ident : str
+  + lastModified : date
+  + stringValue : str
+  + uri : str
+  + delete() : void
+  + deleteIfEmptyOnDelete() : void
+  + deleteOnDeleteOf(data_item : str) : Item
+  + forceUpdate(data_item : str) : Item
+  + getCreatedPretty() : str
+  + getCreatedPrettyInLanguage(data_language : str) : str
+  + getIdentifier(data_key : str) : str
+  + getLastModifiedPretty() : str
+  + getLastModifiedPrettyInLanguage(data_language : str) : str
+  + hasMetaTag(data_tag : str) : str
+  + identifyBy(data_key : str, data_value : str) : str
+  + isEqualItem(data_item : str) : str
+  + log(data_level : str, data_message : str) : void
+  + matchesSearch(data_term : str) : str
+  + metaTag(data_name : str) : str
+  + removeIdentifier(data_key : str) : str
+  + unMetaTag(data_name : str) : str
+  + update(data_item : str) : Item
+}
+class data_Location {
+  + city : str
+  + country : str
+  + houseNumber : str
+  + latitude : str
+  + longitude : str
+  + state : str
+  + street : str
+  + zipCode : str
+}
+class data_Mashup {
+}
+class data_MetaInformation {
+}
+class data_MetaTag {
+  + name : str
+  + getCount() : str
+  + getExtensions() : str
+  + getInformationObjects() : InformationObject
+  + getInformationObjectsCount() : str
+  + getWebAccounts() : str
+}
+class data_Organisation {
+  + addParticipant(data_participant : str) : str
+  + getContents() : str
+  + getPersons() : str
+}
+class data_Person {
+  + dateOfBirth : date
+  + firstname : str
+  + lastname : str
+  + title : str
+  + addAuthoredContent(data_authoredContent : str) : str
+  + addContributedContent(data_contributedContent : str) : str
+  + getContents() : str
+  + getOrganisations() : str
+  + parseFirstName() : str
+  + parseLastName() : str
+}
+class data_Phone {
+  + areaCode : str
+  + countryCode : str
+  + number : str
+}
+abstract class data_Ranking {
+  + date : date
+}
+class data_StarRanking {
+  + normalizedValue : str
+}
+class data_Tag {
+}
+class data_ThumbRanking {
+  + isThumbDown() : str
+  + isThumbUp() : str
+}
+class data_Transformation {
+}
+class data_Video {
+}
+class data_ViewRanking {
+}
+class data_WebAccount {
+  + username : str
+}
+class data_WebSite {
+  + adress : str
+  + title : str
+}
+Attachment <|-- data_Binary
+Attachment <|-- data_Document
+Attachment <|-- data_Image
+Attachment <|-- data_Transformation
+Attachment <|-- data_Video
+Classification <|-- data_Category
+Classification <|-- data_Tag
+Extension <|-- data_Attachment
+Extension <|-- data_Connection
+Extension <|-- data_MetaInformation
+Extension <|-- data_Ranking
+InformationObject <|-- data_Content
+InformationObject <|-- data_Organisation
+InformationObject <|-- data_Person
+Item <|-- data_Classification
+Item <|-- data_Extension
+Item <|-- data_Identifier
+Item <|-- data_InformationObject
+Item <|-- data_MetaTag
+MetaInformation <|-- data_Email
+MetaInformation <|-- data_Event
+MetaInformation <|-- data_IndoorLocation
+MetaInformation <|-- data_InstantMessenger
+MetaInformation <|-- data_Location
+MetaInformation <|-- data_Phone
+MetaInformation <|-- data_WebAccount
+MetaInformation <|-- data_WebSite
+Ranking <|-- data_StarRanking
+Ranking <|-- data_ThumbRanking
+Ranking <|-- data_ViewRanking
+data_Content "1..1" -- "0..1" data_Person : author29
+data_Content "0..9999" -- "1..1" data_Person : authored3
+data_Binary "0..9999" -- "1..1" data_InformationObject : binaries20
+data_Category "1..1" -- "0..9999" data_Category : categories55
+data_Category "0..9999" -- "1..1" data_InformationObject : categories9
+data_Category "1..1" -- "0..9999" data_InformationObject : categorized49
+data_Connection "0..9999" -- "1..1" data_InformationObject : connectedBy18
+data_Connection "0..9999" -- "1..1" data_InformationObject : connectedTo17
+data_Content "1..1" -- "0..9999" data_Content : contents26
+data_Content "0..9999" -- "1..1" data_Person : contributed4
+data_Content "1..1" -- "0..9999" data_Person : contributors28
+data_DataSet "0..1" -- "1..1" data_Item : dataSet40
+data_Item "1..1" -- "0..9999" data_Item : deleteOnDelete44
+data_Item "1..1" -- "0..9999" data_Item : deletedIfDeleted47
+data_Content "1..1" -- "0..9999" data_Document : documents31
+data_Connection "1..1" -- "0..1" data_InformationObject : from_84
+data_Identifier "1..1" -- "1..1" data_Item : identified98
+data_Identifier "0..9999" -- "1..1" data_Item : identifiedBy42
+data_Image "0..9999" -- "1..1" data_InformationObject : images11
+data_IndoorLocation "0..9999" -- "1..1" data_Location : indoorLocations75
+data_IndoorLocation "1..1" -- "0..9999" data_IndoorLocation : indoorLocations96
+data_InformationObject "0..9999" -- "1..1" data_MetaInformation : informationObjects88
+data_DataSet "1..1" *-- "0..9999" data_Item : items38
+data_Organisation "1..1" -- "0..1" data_Person : leader64
+data_Organisation "0..9999" -- "1..1" data_Person : leaderOf0
+data_IndoorLocation "1..1" -- "0..1" data_Location : location90
+data_Category "1..1" -- "0..9999" data_InformationObject : mainCategorized57
+data_Category "0..1" -- "1..1" data_InformationObject : mainCategory22
+data_InformationObject "1..1" -- "0..9999" data_MetaInformation : metaInformations24
+data_Item "0..9999" -- "1..1" data_MetaTag : metaTagged71
+data_Item "1..1" -- "0..9999" data_MetaTag : metaTags41
+data_Organisation "1..1" -- "0..9999" data_Organisation : organisations69
+data_Category "1..1" -- "0..1" data_Category : parentCategory51
+data_Content "1..1" -- "0..1" data_Content : parentContent33
+data_IndoorLocation "1..1" -- "0..1" data_IndoorLocation : parentIndoorLocation92
+data_Organisation "1..1" -- "0..1" data_Organisation : parentOrganisation62
+data_Organisation "1..1" -- "0..9999" data_Person : participants66
+data_Organisation "0..9999" -- "1..1" data_Person : participates1
+data_Person "1..1" -- "0..9999" data_Person : persons7
+data_Person "1..1" -- "0..9999" data_Ranking : ranked8
+data_InformationObject "0..1" -- "1..1" data_StarRanking : rankedInformationObject76
+data_InformationObject "0..1" -- "1..1" data_ViewRanking : rankedInformationObject78
+data_InformationObject "0..1" -- "1..1" data_ThumbRanking : rankedInformationObject80
+data_Person "0..1" -- "1..1" data_Ranking : ranker73
+data_DataSet "1..1" -- "0..1" data_Mashup : setUp39
+data_InformationObject "1..1" -- "0..9999" data_StarRanking : starRankings12
+data_InformationObject "0..9999" -- "1..1" data_Tag : tagged59
+data_InformationObject "1..1" -- "0..9999" data_Tag : tags10
+data_InformationObject "1..1" -- "0..9999" data_ThumbRanking : thumbRankings13
+data_Connection "1..1" -- "0..1" data_InformationObject : to86
+data_Content "1..1" -- "0..9999" data_Transformation : transformations35
+data_Content "0..9999" -- "1..1" data_Transformation : transformed82
+data_Content "1..1" -- "0..9999" data_Video : videos36
+data_InformationObject "1..1" -- "0..9999" data_ViewRanking : viewRankings15
+@enduml

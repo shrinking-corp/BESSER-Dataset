@@ -1,0 +1,49 @@
+@startuml
+class Item {
+}
+class smarthome_Command {
+  + command : str
+}
+class smarthome_CommandConnection {
+}
+class smarthome_ContactItem {
+}
+class smarthome_DimmerItem {
+}
+class smarthome_EvaluatingNode {
+}
+class smarthome_FilterConnection {
+}
+abstract class smarthome_Item {
+  + name : str
+}
+class smarthome_NumberItem {
+}
+class smarthome_SmartHome {
+  + name : str
+}
+class smarthome_State {
+  + state : str
+}
+class smarthome_StateChangeConnection {
+}
+class smarthome_SwitchItem {
+}
+Item <|-- smarthome_ContactItem
+Item <|-- smarthome_DimmerItem
+Item <|-- smarthome_NumberItem
+Item <|-- smarthome_SwitchItem
+smarthome_Command "0..9999" --* "1..1" smarthome_Item : accaptedCommands5
+smarthome_Command "1..1" -- "1..1" smarthome_CommandConnection : command16
+smarthome_CommandConnection "1..9999" --* "1..1" smarthome_EvaluatingNode : commands9
+smarthome_EvaluatingNode "1..1" *-- "1..9999" smarthome_StateChangeConnection : events7
+smarthome_EvaluatingNode "1..1" *-- "0..9999" smarthome_FilterConnection : filters11
+smarthome_CommandConnection "1..1" -- "1..1" smarthome_Item : item13
+smarthome_Item "1..1" -- "1..1" smarthome_StateChangeConnection : item22
+smarthome_FilterConnection "1..1" -- "1..1" smarthome_Item : item28
+smarthome_Item "0..9999" --* "1..1" smarthome_SmartHome : items0
+smarthome_State "1..1" -- "1..1" smarthome_StateChangeConnection : newState19
+smarthome_FilterConnection "1..1" -- "1..1" smarthome_State : requiredState25
+smarthome_EvaluatingNode "0..9999" --* "1..1" smarthome_SmartHome : rules1
+smarthome_Item "1..1" *-- "0..9999" smarthome_State : states3
+@enduml

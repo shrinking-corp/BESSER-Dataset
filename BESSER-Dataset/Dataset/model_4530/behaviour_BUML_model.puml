@@ -1,0 +1,139 @@
+@startuml
+class Action {
+}
+class CommunicationAction {
+}
+enum GoToStrategy {
+  DIRECT
+  HORIZONTAL_FIRST
+  VERTICAL_FIRST
+}
+class Move {
+}
+class MoveTransition {
+}
+class NamedElement {
+}
+class Notify {
+}
+enum TravelMode {
+  AGGRESSIVE
+  NORMAL
+  SAFE
+}
+abstract class behaviour_Action {
+}
+class behaviour_Behaviour {
+  + crs : str
+}
+class behaviour_BroadcastNotify {
+}
+class behaviour_CheckNotification {
+}
+class behaviour_Choice {
+  + conditionIdentifier : str
+}
+class behaviour_Circle {
+  + altitude : float
+  + clockwise : bool
+  + duration : float
+  + radius : float
+}
+abstract class behaviour_CommunicationAction {
+}
+class behaviour_Coordinate {
+  + altitude : float
+  + heading : float
+  + latitude : float
+  + longitude : float
+}
+class behaviour_DeviceAction {
+  + actionName : str
+}
+class behaviour_Drone {
+  + travelMode : str
+  + typeName : str
+}
+class behaviour_Feedback {
+  + actionName : str
+}
+class behaviour_GoTo {
+  + strategy : str
+}
+class behaviour_HeadTo {
+  + direction : float
+}
+class behaviour_Hover {
+  + duration : float
+}
+class behaviour_Land {
+}
+abstract class behaviour_Move {
+}
+class behaviour_MoveTransition {
+  + fluid : bool
+}
+class behaviour_MulticastNotify {
+}
+abstract class behaviour_NamedElement {
+  + name : str
+}
+abstract class behaviour_Notify {
+}
+class behaviour_Parameter {
+  + key : str
+  + value : str
+}
+class behaviour_Slot {
+}
+class behaviour_Start {
+}
+class behaviour_Stop {
+}
+class behaviour_TakeOff {
+  + altitude : float
+}
+class behaviour_UnicastNotify {
+}
+Action <|-- behaviour_CommunicationAction
+Action <|-- behaviour_DeviceAction
+CommunicationAction <|-- behaviour_CheckNotification
+CommunicationAction <|-- behaviour_Feedback
+CommunicationAction <|-- behaviour_Notify
+Move <|-- behaviour_Circle
+Move <|-- behaviour_GoTo
+Move <|-- behaviour_HeadTo
+Move <|-- behaviour_Hover
+Move <|-- behaviour_Land
+Move <|-- behaviour_Start
+Move <|-- behaviour_Stop
+Move <|-- behaviour_TakeOff
+MoveTransition <|-- behaviour_Choice
+NamedElement <|-- behaviour_Action
+NamedElement <|-- behaviour_Behaviour
+NamedElement <|-- behaviour_Drone
+NamedElement <|-- behaviour_Move
+NamedElement <|-- behaviour_Slot
+Notify <|-- behaviour_BroadcastNotify
+Notify <|-- behaviour_MulticastNotify
+Notify <|-- behaviour_UnicastNotify
+behaviour_Behaviour "1..1" *-- "1..9999" behaviour_Drone : drones0
+behaviour_Choice "1..1" -- "1..1" behaviour_Move : falseBranch9
+behaviour_Move "1..1" -- "1..1" behaviour_MoveTransition : from_32
+behaviour_Coordinate "1..1" --* "1..1" behaviour_Drone : home1
+behaviour_Drone "1..1" *-- "0..9999" behaviour_MoveTransition : moveTransitions5
+behaviour_Drone "1..1" *-- "0..9999" behaviour_Move : movements3
+behaviour_DeviceAction "1..1" *-- "0..9999" behaviour_Parameter : parameters28
+behaviour_Feedback "1..1" *-- "0..9999" behaviour_Parameter : parameters38
+behaviour_Action "0..9999" --* "1..1" behaviour_Move : postActions13
+behaviour_Action "0..9999" --* "1..1" behaviour_Move : preActions11
+behaviour_Drone "1..1" -- "1..1" behaviour_UnicastNotify : receiver22
+behaviour_Drone "1..9999" -- "1..1" behaviour_MulticastNotify : receiver24
+behaviour_Notify "1..1" -- "1..1" behaviour_Slot : slot20
+behaviour_CheckNotification "1..1" -- "1..1" behaviour_Slot : slot26
+behaviour_Drone "1..1" *-- "0..9999" behaviour_Slot : slots7
+behaviour_Coordinate "1..1" --* "1..1" behaviour_GoTo : targetPosition16
+behaviour_Circle "1..1" *-- "1..1" behaviour_Coordinate : targetPosition18
+behaviour_Move "1..1" -- "1..1" behaviour_MoveTransition : to35
+behaviour_MoveTransition "1..1" -- "0..1" behaviour_Slot : waitFor29
+@enduml

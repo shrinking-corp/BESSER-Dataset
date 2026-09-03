@@ -1,0 +1,26 @@
+@startuml
+enum BookCategory {
+  Biography
+  GeneralFiction
+  NonFiction
+  SciFi
+}
+class lib_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class lib_LibSys {
+}
+class lib_Library {
+  + location : str
+  + name : str
+}
+class lib_Writer {
+  + name : str
+}
+lib_Book "1..1" -- "1..1" lib_Writer : author3
+lib_Book "0..9999" --* "1..1" lib_Library : books1
+lib_LibSys "1..1" *-- "0..1" lib_Library : library6
+lib_Library "1..1" *-- "0..9999" lib_Writer : writers0
+@enduml

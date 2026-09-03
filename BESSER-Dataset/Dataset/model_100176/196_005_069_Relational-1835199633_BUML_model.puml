@@ -1,0 +1,56 @@
+@startuml
+enum AttributeType {
+  Derivate
+  Simple
+}
+class CandidateKey {
+}
+class Domain {
+}
+class Relational_Attribute {
+  + multiplicity : int
+  + name : str
+  + nullable : bool
+  + type : str
+}
+class Relational_CandidateKey {
+  + name : str
+}
+class Relational_Constraint {
+  + description : str
+  + name : str
+}
+class Relational_Domain {
+  + name : str
+}
+class Relational_EnumeratedLiteral {
+  + name : str
+}
+class Relational_EnumerationType {
+}
+class Relational_ForeignKey {
+}
+class Relational_PrimitiveType {
+}
+class Relational_Schema {
+  + name : str
+}
+class Relational_Table {
+  + name : str
+}
+CandidateKey <|-- Relational_ForeignKey
+Domain <|-- Relational_EnumerationType
+Domain <|-- Relational_PrimitiveType
+Relational_Attribute "1..9999" --* "1..1" Relational_Table : attributes10
+Relational_Attribute "1..9999" -- "1..1" Relational_CandidateKey : attributes20
+Relational_CandidateKey "1..9999" --* "1..1" Relational_Table : candidateKey7
+Relational_Constraint "0..9999" --* "1..1" Relational_Domain : constraints17
+Relational_Constraint "0..9999" --* "1..1" Relational_Schema : constraints3
+Relational_Attribute "1..1" -- "1..1" Relational_Domain : domain14
+Relational_Domain "0..9999" --* "1..1" Relational_Schema : domains1
+Relational_ForeignKey "0..9999" --* "1..1" Relational_Table : foreignKey12
+Relational_EnumeratedLiteral "1..9999" --* "1..1" Relational_EnumerationType : literals26
+Relational_CandidateKey "1..1" -- "1..1" Relational_Table : primaryKey5
+Relational_ForeignKey "1..1" -- "1..1" Relational_Table : referencedTable23
+Relational_Schema "1..1" *-- "0..9999" Relational_Table : tables0
+@enduml

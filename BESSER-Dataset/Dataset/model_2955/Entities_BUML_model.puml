@@ -1,0 +1,31 @@
+@startuml
+class ElementType {
+}
+class entities_Attribute {
+  + name : str
+}
+class entities_AttributeType {
+  + array : bool
+  + length : int
+}
+class entities_BasicType {
+  + typeName : str
+}
+class entities_ElementType {
+}
+class entities_Entity {
+  + name : str
+}
+class entities_EntityType {
+}
+class entities_Model {
+}
+ElementType <|-- entities_BasicType
+ElementType <|-- entities_EntityType
+entities_Attribute "0..9999" --* "1..1" entities_Entity : attibutes4
+entities_AttributeType "1..1" *-- "0..1" entities_ElementType : elementType8
+entities_Entity "0..9999" --* "1..1" entities_Model : entities0
+entities_Entity "0..1" -- "1..1" entities_EntityType : entity10
+entities_Entity "0..1" -- "1..1" entities_Entity : superType2
+entities_Attribute "1..1" *-- "0..1" entities_AttributeType : type6
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+class Person {
+}
+class library_Author {
+}
+class library_Book {
+}
+class library_Library {
+}
+class library_Model {
+}
+class library_Person {
+}
+Person <|-- library_Author
+library_Author "1..9999" -- "1..1" library_Book : authors1
+library_Book "0..9999" --* "1..1" library_Library : books0
+library_Book "0..9999" -- "1..1" library_Person : borrows3
+library_Library "0..9999" --* "1..1" library_Model : library5
+library_Model "1..1" *-- "0..9999" library_Person : persons7
+library_Author "1..1" -- "0..9999" library_Book : writtenBooks2
+@enduml

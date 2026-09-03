@@ -1,0 +1,136 @@
+@startuml
+enum AggregationRules {
+  AtLeastOnce
+  Maximum
+  Minimum
+  Product
+  Sum
+}
+enum AttributeDomain {
+  Boolean
+  Continuous
+}
+enum FeatureTypes {
+  AbstractFeature
+  GroupingFeature
+  InstanceFeature
+}
+class ModifyRelationship {
+}
+enum ScaleOrders {
+  ExistenceIsBetter
+  HigherIsBetter
+  LowerIsBetter
+}
+class ServiceFeature {
+}
+class Variant {
+}
+class servicefeaturemodel_Attribute {
+  + id : str
+  + instantiationValue : str
+}
+class servicefeaturemodel_AttributeToAttributeModifyRelationship {
+  + triggerParameterName : str
+}
+class servicefeaturemodel_AttributeType {
+  + aggregationRule : str
+  + customAttributeTypePriority : int
+  + description : str
+  + domain : str
+  + name : str
+  + requirement : str
+  + scaleOrder : str
+  + toBeEvaluated : bool
+}
+class servicefeaturemodel_AttributeTypes {
+}
+class servicefeaturemodel_Configuration {
+  + description : str
+  + id : str
+  + name : str
+  + validate(servicefeaturemodel_context : str, servicefeaturemodel_diagnostic : str) : bool
+}
+class servicefeaturemodel_Excludes {
+}
+class servicefeaturemodel_FeatureToAttributeModifyRelationship {
+}
+class servicefeaturemodel_MandatoryServiceFeature {
+}
+abstract class servicefeaturemodel_ModifyRelationship {
+  + function : str
+  + name : str
+  + orderNumber : int
+  + targetParameterName : str
+}
+class servicefeaturemodel_OR {
+  + maxFeaturesToChoose : int
+  + minFeaturesToChoose : int
+}
+class servicefeaturemodel_OptionalServiceFeature {
+}
+class servicefeaturemodel_PossibleConfigurations {
+}
+class servicefeaturemodel_Preference {
+  + creationDate : date
+  + description : str
+  + stakeholderGroup : str
+  + value : float
+}
+class servicefeaturemodel_Requires {
+}
+class servicefeaturemodel_Service {
+  + description : str
+  + id : str
+  + name : str
+}
+abstract class servicefeaturemodel_ServiceFeature {
+  + associatedGSMElement : str
+  + description : str
+  + featureType : str
+  + id : str
+  + mapsToGSMElement : bool
+  + maxAmount : int
+  + minAmount : int
+  + name : str
+  + required : bool
+  + validate(servicefeaturemodel_context : str, servicefeaturemodel_diagnostic : str) : bool
+}
+class servicefeaturemodel_ServiceFeatureDiagram {
+  + description : str
+  + id : str
+  + name : str
+  + validate(servicefeaturemodel_context : str, servicefeaturemodel_diagnostic : str) : bool
+}
+abstract class servicefeaturemodel_Variant {
+}
+class servicefeaturemodel_XOR {
+}
+ModifyRelationship <|-- servicefeaturemodel_AttributeToAttributeModifyRelationship
+ModifyRelationship <|-- servicefeaturemodel_FeatureToAttributeModifyRelationship
+ServiceFeature <|-- servicefeaturemodel_MandatoryServiceFeature
+ServiceFeature <|-- servicefeaturemodel_OptionalServiceFeature
+Variant <|-- servicefeaturemodel_OR
+Variant <|-- servicefeaturemodel_XOR
+servicefeaturemodel_OptionalServiceFeature "2..9999" --* "1..1" servicefeaturemodel_Variant : contains35
+servicefeaturemodel_Configuration "0..9999" --* "1..1" servicefeaturemodel_PossibleConfigurations : contains37
+servicefeaturemodel_AttributeType "0..9999" --* "1..1" servicefeaturemodel_AttributeTypes : contains40
+servicefeaturemodel_Excludes "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : containsExcludes10
+servicefeaturemodel_ServiceFeature "0..9999" --* "1..1" servicefeaturemodel_ServiceFeatureDiagram : containsFeatures25
+servicefeaturemodel_Attribute "1..1" *-- "0..9999" servicefeaturemodel_ModifyRelationship : containsModifyRelationship17
+servicefeaturemodel_Requires "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : containsRequires8
+servicefeaturemodel_ServiceFeature "1..1" *-- "0..1" servicefeaturemodel_Variant : containsVariant6
+servicefeaturemodel_ServiceFeature "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : decomposesInto13
+servicefeaturemodel_Attribute "0..9999" --* "1..1" servicefeaturemodel_Configuration : describedBy32
+servicefeaturemodel_Attribute "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : describedBy5
+servicefeaturemodel_PossibleConfigurations "1..1" --* "1..1" servicefeaturemodel_Service : enables1
+servicefeaturemodel_Configuration "1..1" *-- "0..9999" servicefeaturemodel_Preference : evaluatedBy30
+servicefeaturemodel_Excludes "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : excludesServiceFeature22
+servicefeaturemodel_Configuration "1..1" -- "0..9999" servicefeaturemodel_ServiceFeature : groups28
+servicefeaturemodel_AttributeTypes "1..1" --* "1..1" servicefeaturemodel_Service : has3
+servicefeaturemodel_Attribute "1..1" -- "1..1" servicefeaturemodel_AttributeType : ofAttributeType15
+servicefeaturemodel_Service "1..1" *-- "1..1" servicefeaturemodel_ServiceFeatureDiagram : representedBy0
+servicefeaturemodel_Requires "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : requiresServiceFeature19
+servicefeaturemodel_Attribute "1..1" -- "1..1" servicefeaturemodel_AttributeToAttributeModifyRelationship : triggeredByAttribute43
+servicefeaturemodel_FeatureToAttributeModifyRelationship "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : triggeredByServiceFeature45
+@enduml

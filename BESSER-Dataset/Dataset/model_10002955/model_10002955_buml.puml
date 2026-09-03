@@ -1,0 +1,42 @@
+@startuml
+class Button_Interface {
+}
+class Elevator {
+  + buttons : Elevator_Button
+  + emergencyButton : EmergencyButton
+  + isOutOfService : bool
+  + outOfServiceMech : OutOfServiceMechanism
+  + queue : Queue
+}
+class ElevatorController {
+  + elevators : Elevator
+  + floors : Floor
+}
+class Elevator_Button {
+  + floorID : int
+}
+class EmergencyButton {
+}
+enum Enumeration {
+}
+class Floor {
+  + floorButtons : FloorButton
+  + floorID : int
+}
+class FloorButton {
+  + direction : Enumeration
+}
+class OutOfServiceMechanism {
+}
+class Queue {
+  + currentDirection : Enumeration
+  + floorQueue : int
+}
+Elevator "2..2" -- "1..1" ElevatorController : ElevatorController_Elevator
+ElevatorController "1..1" -- "5..5" Floor : ElevatorController_Floor
+Elevator "1..1" -- "5..5" Elevator_Button : Elevator_Elevator_Button
+Elevator "1..1" -- "1..1" EmergencyButton : Elevator_EmergencyButton
+Elevator "1..1" -- "1..1" OutOfServiceMechanism : Elevator_OutOfServiceMechanism
+Elevator "1..1" -- "1..1" Queue : Elevator_Queue
+Floor "1..1" -- "1..2" FloorButton : Floor_FloorButton
+@enduml

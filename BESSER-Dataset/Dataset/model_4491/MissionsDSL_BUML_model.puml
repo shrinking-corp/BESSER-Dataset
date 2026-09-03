@@ -1,0 +1,73 @@
+@startuml
+enum Color {
+  BLACK
+  BLUE
+  BROWN
+  GREEN
+  RED
+  WHITE
+  YELLOW
+}
+enum EV3_ACTION {
+  HALT
+  PLAY
+  REVERSE
+  ROTATE
+  STOP
+}
+enum MissionType {
+  AVOID
+  FIND
+  FINDINORDER
+  FINDSIMULTANEOUS
+}
+enum Relation {
+  EQ
+  GE
+  GT
+  LE
+  LT
+}
+enum Sensor {
+  color
+  proximity
+  touch
+}
+class missionsDSL_Action {
+  + action : str
+  + duration : int
+  + value : int
+}
+class missionsDSL_Condition {
+  + relation : str
+  + sensor : str
+}
+class missionsDSL_Mission {
+  + name : str
+  + priority : int
+  + type : str
+}
+class missionsDSL_NewMissions {
+}
+class missionsDSL_Robot {
+  + defaultSpeed : int
+  + maxAngle : int
+  + minAngle : int
+  + refreshRate : int
+  + slaveAddress : str
+  + slowSpeed : int
+}
+class missionsDSL_Value {
+  + bool : str
+  + color : str
+  + integer : int
+}
+missionsDSL_Action "0..9999" --* "1..1" missionsDSL_Mission : actionsAfterSetOfConditions6
+missionsDSL_Mission "0..9999" --* "1..1" missionsDSL_Robot : availableMissions1
+missionsDSL_Condition "0..9999" --* "1..1" missionsDSL_Mission : cond4
+missionsDSL_Action "0..1" --* "1..1" missionsDSL_Condition : ifConditionTrue12
+missionsDSL_Mission "0..9999" -- "1..1" missionsDSL_NewMissions : missions15
+missionsDSL_Mission "1..1" *-- "0..1" missionsDSL_NewMissions : newMission8
+missionsDSL_Mission "0..9999" -- "1..1" missionsDSL_Robot : startMissions0
+missionsDSL_Condition "1..1" *-- "0..1" missionsDSL_Value : value10
+@enduml

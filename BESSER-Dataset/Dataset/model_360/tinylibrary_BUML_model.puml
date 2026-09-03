@@ -1,0 +1,38 @@
+@startuml
+enum BookCategory {
+  Biography
+  Computing
+  Mystery
+  ScienceFiction
+}
+class Person {
+}
+class tinylibrary_Book {
+  + category : str
+  + damaged : str
+  + isbn : str
+  + pages : str
+  + published : date
+  + title : str
+}
+class tinylibrary_Employee {
+}
+class tinylibrary_Library {
+}
+abstract class tinylibrary_Person {
+  + firstName : str
+  + lastName : str
+  + name : str
+}
+class tinylibrary_Writer {
+}
+Person <|-- tinylibrary_Employee
+Person <|-- tinylibrary_Writer
+tinylibrary_Book "1..1" -- "1..9999" tinylibrary_Writer : authors11
+tinylibrary_Book "0..9999" --* "1..1" tinylibrary_Library : books0
+tinylibrary_Book "0..9999" -- "1..1" tinylibrary_Writer : books5
+tinylibrary_Employee "0..9999" --* "1..1" tinylibrary_Library : employees1
+tinylibrary_Employee "1..1" -- "0..9999" tinylibrary_Employee : managed9
+tinylibrary_Employee "1..1" -- "0..1" tinylibrary_Employee : manager7
+tinylibrary_Library "1..1" *-- "0..9999" tinylibrary_Writer : writers3
+@enduml

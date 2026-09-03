@@ -1,0 +1,29 @@
+@startuml
+enum BookCategory {
+  Art
+  Drama
+  History
+  SciFi
+}
+class library_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class library_Library {
+  + address : str
+  + internalRequestCount : int
+  + requestCount : int
+  + sumOfPages : int
+}
+class library_Writer {
+  + name : str
+}
+library_Book "1..1" -- "0..9999" library_Writer : authors6
+library_Book "0..9999" --* "1..1" library_Library : books1
+library_Book "0..9999" -- "1..1" library_Writer : books7
+library_Book "0..1" -- "1..1" library_Writer : firstBook8
+library_Book "0..9999" -- "1..1" library_Writer : scifiBooks11
+library_Book "0..9999" -- "1..1" library_Library : someBooks3
+library_Library "1..1" *-- "0..9999" library_Writer : writers0
+@enduml

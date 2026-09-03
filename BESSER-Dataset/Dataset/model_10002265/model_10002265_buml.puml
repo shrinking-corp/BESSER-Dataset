@@ -1,0 +1,54 @@
+@startuml
+class Account {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class BoMon {
+  + mabomon : str
+  + tenbomon : str
+}
+class ConNguoi {
+  + CMND : str
+  + diachi : str
+  + gioitinh : bool
+  + hoten : str
+  + ngaysinh : date
+}
+class Customer {
+  + address : str
+  + email : str
+  + phone : str
+}
+class Khoa {
+  + makhoa : str
+  + tenkhoa : str
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : str
+  + total : float
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class SinhVien {
+  + MSSV : str
+  + bomon : str
+  + lop : str
+  + nganhhoc : str
+}
+Account "1..1" -- "0..9999" Order : Account_Order
+Account "1..1" -- "0..9999" Payment : Account_Payment
+Account "1..1" -- "1..1" ConNguoi : Account_ShoppingCart
+Account "1..1" -- "1..1" Customer : Customer_Account
+Order "1..1" -- "0..1" Payment : Payment_Order
+BoMon "1..9999" -- "1..1" Khoa : Product_LineItem
+Customer "1..1" -- "1..1" SinhVien : WebUser_Customer
+@enduml

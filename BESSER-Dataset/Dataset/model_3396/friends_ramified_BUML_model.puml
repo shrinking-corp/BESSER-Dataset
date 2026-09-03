@@ -1,0 +1,61 @@
+@startuml
+class MT__Element {
+}
+class MTpos__Element {
+}
+class MTpos__Person {
+}
+class MTpre__Element {
+}
+class MTpre__Person {
+}
+class ramRoot_GenericNode {
+}
+abstract class ramRoot_MT__Element {
+  + MT__isProcessed : bool
+  + MT__label : str
+}
+class ramRoot_MTpos__Classroom {
+  + id : str
+}
+abstract class ramRoot_MTpos__Element {
+}
+class ramRoot_MTpos__Man {
+}
+class ramRoot_MTpos__Person {
+  + name : str
+}
+class ramRoot_MTpos__Woman {
+}
+class ramRoot_MTpre__Classroom {
+  + id : str
+}
+abstract class ramRoot_MTpre__Element {
+  + MT__matchSubtype : bool
+}
+class ramRoot_MTpre__Man {
+}
+class ramRoot_MTpre__Person {
+  + name : str
+}
+class ramRoot_MTpre__Woman {
+}
+MT__Element <|-- ramRoot_GenericNode
+MT__Element <|-- ramRoot_MTpos__Element
+MT__Element <|-- ramRoot_MTpre__Element
+MTpos__Element <|-- ramRoot_MTpos__Classroom
+MTpos__Element <|-- ramRoot_MTpos__Person
+MTpos__Person <|-- ramRoot_MTpos__Man
+MTpos__Person <|-- ramRoot_MTpos__Woman
+MTpre__Element <|-- ramRoot_MTpre__Classroom
+MTpre__Element <|-- ramRoot_MTpre__Person
+MTpre__Person <|-- ramRoot_MTpre__Man
+MTpre__Person <|-- ramRoot_MTpre__Woman
+ramRoot_GenericNode "1..1" -- "0..9999" ramRoot_MT__Element : GenericLink0
+ramRoot_MTpre__Person "1..1" -- "0..9999" ramRoot_MTpre__Person : friend_with10
+ramRoot_MTpos__Person "0..9999" -- "1..1" ramRoot_MTpos__Person : friend_with3
+ramRoot_MTpre__Classroom "1..1" *-- "0..9999" ramRoot_MTpre__Person : person12
+ramRoot_MTpos__Classroom "1..1" *-- "0..9999" ramRoot_MTpos__Person : person5
+ramRoot_MTpos__Classroom "0..1" -- "1..1" ramRoot_MTpos__Person : teacher_of1
+ramRoot_MTpre__Classroom "0..1" -- "1..1" ramRoot_MTpre__Person : teacher_of8
+@enduml

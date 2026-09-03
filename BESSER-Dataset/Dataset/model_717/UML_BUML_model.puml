@@ -1,0 +1,192 @@
+@startuml
+class Abstraction {
+}
+class BehavioralFeature {
+}
+class Classifier {
+}
+class Dependency {
+}
+class DirectedRelationship {
+}
+class Element {
+}
+class Feature {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class PackageableElement {
+}
+class Realization {
+}
+class Relationship {
+}
+class Type {
+}
+class TypedElement {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class uml_Abstraction {
+}
+class uml_Association {
+  + isDerived : str
+}
+abstract class uml_BehavioralFeature {
+  + isAbstract : str
+}
+class uml_Class {
+  + isActive : str
+  + name : str
+}
+abstract class uml_Classifier {
+  + isAbstract : str
+}
+class uml_Comment {
+  + body : str
+}
+class uml_Dependency {
+}
+abstract class uml_DirectedRelationship {
+}
+abstract class uml_Element {
+}
+class uml_ElementImport {
+  + alias : str
+  + visibility : str
+}
+abstract class uml_Feature {
+  + isStatic : str
+}
+class uml_Generalization {
+  + isSubstitutable : str
+}
+class uml_Model {
+  + name : str
+}
+abstract class uml_NamedElement {
+  + name : str
+  + qualifiedName : str
+  + visibility : str
+}
+abstract class uml_Namespace {
+}
+class uml_Operation {
+  + isOrdered : str
+  + isQuery : str
+  + isUnique : str
+  + lower : str
+  + upper : str
+}
+class uml_Package {
+  + name : str
+}
+class uml_PackageImport {
+  + visibility : str
+}
+abstract class uml_PackageableElement {
+}
+class uml_Parameter {
+  + default : str
+  + isException : str
+  + isStream : str
+}
+class uml_Property {
+  + name : str
+}
+class uml_Realization {
+}
+abstract class uml_Relationship {
+}
+class uml_Substitution {
+}
+abstract class uml_Type {
+}
+abstract class uml_TypedElement {
+}
+abstract class uml_ValueSpecification {
+}
+Abstraction <|-- uml_Realization
+BehavioralFeature <|-- uml_Operation
+Classifier <|-- uml_Association
+Classifier <|-- uml_Class
+Dependency <|-- uml_Abstraction
+DirectedRelationship <|-- uml_Dependency
+DirectedRelationship <|-- uml_ElementImport
+DirectedRelationship <|-- uml_Generalization
+DirectedRelationship <|-- uml_PackageImport
+Element <|-- uml_Comment
+Element <|-- uml_NamedElement
+Element <|-- uml_Relationship
+Feature <|-- uml_BehavioralFeature
+NamedElement <|-- uml_Namespace
+NamedElement <|-- uml_TypedElement
+Namespace <|-- uml_BehavioralFeature
+PackageableElement <|-- uml_Dependency
+PackageableElement <|-- uml_Package
+PackageableElement <|-- uml_Type
+PackageableElement <|-- uml_ValueSpecification
+Realization <|-- uml_Substitution
+Relationship <|-- uml_Association
+Relationship <|-- uml_DirectedRelationship
+Type <|-- uml_Classifier
+TypedElement <|-- uml_ValueSpecification
+uml_Comment "1..1" -- "0..9999" uml_Element : annotatedElement0
+uml_Classifier "1..1" -- "0..9999" uml_Property : attribute62
+uml_Class "0..1" -- "1..1" uml_Operation : class_75
+uml_Dependency "1..1" -- "1..9999" uml_NamedElement : client14
+uml_Dependency "0..9999" -- "1..1" uml_NamedElement : clientDependency11
+uml_Classifier "1..1" -- "1..1" uml_Substitution : contract66
+uml_Parameter "1..1" *-- "0..1" uml_ValueSpecification : defaultValue71
+uml_ElementImport "0..9999" --* "1..1" uml_Namespace : elementImport22
+uml_Association "1..1" -- "1..9999" uml_Type : endType46
+uml_Classifier "1..1" -- "0..9999" uml_Feature : feature52
+uml_Classifier "0..9999" -- "1..1" uml_Feature : featuringClassifier65
+uml_Classifier "0..9999" -- "1..1" uml_Classifier : general59
+uml_Classifier "1..1" -- "1..1" uml_Generalization : general96
+uml_Class "1..1" *-- "0..9999" uml_Generalization : generalization94
+uml_ElementImport "1..1" -- "1..1" uml_PackageableElement : importedElement32
+uml_Namespace "1..1" -- "0..9999" uml_PackageableElement : importedMember27
+uml_Package "1..1" -- "1..1" uml_PackageImport : importedPackage36
+uml_ElementImport "1..1" -- "1..1" uml_Namespace : importingNamespace34
+uml_Namespace "1..1" -- "1..1" uml_PackageImport : importingNamespace38
+uml_Classifier "1..1" -- "0..9999" uml_NamedElement : inheritedMember53
+uml_NamedElement "0..9999" -- "1..1" uml_Namespace : member25
+uml_Association "1..1" -- "2..9999" uml_Property : memberEnd43
+uml_NamedElement "1..1" -- "0..1" uml_Namespace : namespace12
+uml_Association "1..1" -- "0..9999" uml_Property : navigableOwnedEnd49
+uml_Class "1..1" *-- "0..9999" uml_Classifier : nestedClassifier84
+uml_Operation "0..1" -- "1..1" uml_Parameter : operation70
+uml_Class "1..1" *-- "0..9999" uml_Property : ownedAttribute91
+uml_Comment "0..9999" --* "1..1" uml_Element : ownedComment6
+uml_Element "1..1" -- "0..9999" uml_Element : ownedElement2
+uml_Association "1..1" *-- "0..9999" uml_Property : ownedEnd42
+uml_NamedElement "0..9999" -- "1..1" uml_Namespace : ownedMember30
+uml_Class "1..1" *-- "0..9999" uml_Operation : ownedOperation87
+uml_BehavioralFeature "1..1" *-- "0..9999" uml_Parameter : ownedParameter79
+uml_Package "1..1" -- "0..9999" uml_Type : ownedType9
+uml_Element "1..1" -- "0..1" uml_Element : owner4
+uml_Package "0..1" -- "1..1" uml_Type : package41
+uml_Namespace "1..1" *-- "0..9999" uml_PackageImport : packageImport23
+uml_Package "1..1" *-- "0..9999" uml_PackageableElement : packagedElement10
+uml_Model "1..1" *-- "0..9999" uml_PackageableElement : packagedElement102
+uml_BehavioralFeature "1..1" -- "0..9999" uml_Type : raisedException81
+uml_Classifier "0..9999" -- "1..1" uml_Classifier : redefinedClassifier56
+uml_Operation "0..9999" -- "1..1" uml_Operation : redefinedOperation77
+uml_Element "1..9999" -- "1..1" uml_Relationship : relatedElement20
+uml_DirectedRelationship "1..1" -- "1..9999" uml_Element : source15
+uml_Classifier "1..1" -- "1..1" uml_Generalization : specific99
+uml_Classifier "1..1" -- "1..1" uml_Substitution : substitutingClassifier68
+uml_Classifier "1..1" *-- "0..9999" uml_Substitution : substitution61
+uml_Class "0..9999" -- "1..1" uml_Class : superClass89
+uml_Dependency "1..1" -- "1..9999" uml_NamedElement : supplier13
+uml_DirectedRelationship "1..1" -- "1..9999" uml_Element : target17
+uml_Type "0..1" -- "1..1" uml_TypedElement : type40
+uml_Class "1..1" -- "1..1" uml_Property : type73
+@enduml

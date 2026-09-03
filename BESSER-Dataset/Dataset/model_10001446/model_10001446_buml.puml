@@ -1,0 +1,65 @@
+@startuml
+class Covoiturage_Authentification {
+  + id : str
+  + password : str
+}
+class Covoiturage_Avis {
+  + commentaire : str
+  + id : int
+  + note : int
+}
+class Covoiturage_Conducteur {
+  + datePermi : str
+}
+class Covoiturage_Message {
+  + Id : str
+  + Value : str
+}
+class Covoiturage_Passager {
+  + id : int
+  + mail : str
+  + nom : str
+  + prenom : str
+  + tel : int
+}
+class Covoiturage_Reservation {
+  + dateReservation : date
+  + etat : bool
+  + id : int
+  + id2 : int
+}
+class Covoiturage_Trajet {
+  + date : date
+  + depart : Covoiturage_Ville
+  + destination : Covoiturage_Ville
+  + etat : bool
+  + id : int
+  + prix : int
+}
+class Covoiturage_Ville {
+  + cp : int
+  + id : int
+  + nom : str
+}
+class Covoiturage_Voiture {
+  + attribute : str
+  + categorie : str
+  + confort : str
+  + id : int
+  + marque : str
+  + model : str
+  + nbPlaces : int
+}
+Covoiturage_Avis "0..9999" -- "0..1" Covoiturage_Trajet : Avis_Evenement
+Covoiturage_Avis "0..9999" -- "0..1" Covoiturage_Passager : Avis_Personne
+Covoiturage_Message "0..9999" -- "1..1" Covoiturage_Passager : Passager_Message
+Covoiturage_Conducteur "1..1" -- "0..9999" Covoiturage_Trajet : Personne_Evenement
+Covoiturage_Authentification "1..1" -- "0..9999" Covoiturage_Passager : Personne_Preferences
+Covoiturage_Passager "0..9999" -- "1..1" Covoiturage_Ville : Personne_Ville
+Covoiturage_Passager "1..9999" -- "0..1" Covoiturage_Reservation : Profil_Reservation
+Covoiturage_Passager "0..9999" -- "0..9999" Covoiturage_Trajet : Trajet_Passager
+Covoiturage_Reservation "1..9999" -- "0..1" Covoiturage_Trajet : Trajet_Reservation
+Covoiturage_Trajet "1..9999" -- "1..1" Covoiturage_Ville : Ville_Trajet
+Covoiturage_Conducteur "1..1" -- "1..1" Covoiturage_Voiture : Voiture_Passager
+Covoiturage_Trajet "1..9999" -- "1..1" Covoiturage_Voiture : Voiture_Trajet
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+class Answer {
+}
+class Cashier_Actor {
+}
+class Chef_Actor {
+}
+class Client_Actor {
+}
+class Consult_menu_UseCase {
+}
+class Mark_order_as_prepared_UseCase {
+}
+class Mark_order_as_served_UseCase {
+}
+class Place_order_UseCase {
+}
+class Question {
+  + title : str
+}
+class QuestonOrAnswer {
+  + body : str
+}
+class Register_order_UseCase {
+}
+class Tag {
+}
+class User {
+}
+class View_current_orders_UseCase {
+}
+class View_prepared_orders_UseCase {
+}
+class View_price_of_served_orders_UseCase {
+}
+class Waiter_Actor {
+}
+Chef_Actor "0..1" -- "0..1" View_current_orders_UseCase : Chef_View_current_orders
+Client_Actor "0..1" -- "0..1" Consult_menu_UseCase : Client_Consult_menu
+Client_Actor "0..1" -- "0..1" Place_order_UseCase : Client_Place_order
+Chef_Actor "0..1" -- "0..1" Mark_order_as_prepared_UseCase : Mark_order_as_prepared_Chef
+Question "1..1" -- "0..9999" Question : Question_Question
+Question "0..9999" -- "0..9999" Tag : Tag_Question
+QuestonOrAnswer "0..9999" -- "1..1" User : User_QuestonOrAnswer
+Client_Actor "0..1" -- "0..1" Waiter_Actor : User_Waiter
+Cashier_Actor "0..1" -- "0..1" View_price_of_served_orders_UseCase : View_price_of_served_orders_Cashier
+Register_order_UseCase "0..1" -- "0..1" Waiter_Actor : Waiter_Register_order
+View_prepared_orders_UseCase "0..1" -- "0..1" Waiter_Actor : Waiter_View_prepared_orders
+@enduml

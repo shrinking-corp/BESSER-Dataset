@@ -1,0 +1,46 @@
+@startuml
+class AbstractState {
+}
+enum ActionKind {
+  ENTRY
+  EXIT
+}
+class ModelElement {
+}
+abstract class statechart_AbstractState {
+}
+class statechart_Action {
+  + kind : str
+}
+class statechart_CompositeState {
+}
+class statechart_FinalState {
+}
+class statechart_InitialState {
+}
+abstract class statechart_ModelElement {
+  + name : str
+}
+class statechart_SimpleState {
+}
+class statechart_StateMachine {
+}
+class statechart_Transition {
+  + event : str
+  + guard : str
+}
+AbstractState <|-- statechart_CompositeState
+AbstractState <|-- statechart_FinalState
+AbstractState <|-- statechart_InitialState
+AbstractState <|-- statechart_SimpleState
+ModelElement <|-- statechart_AbstractState
+ModelElement <|-- statechart_Transition
+statechart_AbstractState "1..1" *-- "0..9999" statechart_Action : actions6
+statechart_AbstractState "1..1" -- "1..1" statechart_Transition : from_0
+statechart_AbstractState "1..1" -- "0..9999" statechart_Transition : incoming3
+statechart_AbstractState "1..1" -- "0..9999" statechart_Transition : outgoing4
+statechart_CompositeState "0..1" --* "1..1" statechart_StateMachine : state11
+statechart_AbstractState "0..9999" --* "1..1" statechart_CompositeState : states7
+statechart_AbstractState "1..1" -- "1..1" statechart_Transition : to1
+statechart_CompositeState "1..1" *-- "0..9999" statechart_Transition : transitions9
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class Person {
+}
+class basicfamily_Family {
+  + name : str
+}
+class basicfamily_Man {
+}
+class basicfamily_Person {
+  + birthDate : date
+  + name : str
+}
+class basicfamily_Relation {
+  + description : str
+}
+class basicfamily_Woman {
+}
+Person <|-- basicfamily_Man
+Person <|-- basicfamily_Woman
+basicfamily_Person "1..1" -- "0..9999" basicfamily_Person : children6
+basicfamily_Man "0..1" -- "1..1" basicfamily_Person : father10
+basicfamily_Family "1..1" *-- "0..9999" basicfamily_Person : members0
+basicfamily_Person "1..1" -- "0..1" basicfamily_Woman : mother8
+basicfamily_Person "1..1" -- "0..2" basicfamily_Person : parents4
+basicfamily_Person "1..1" -- "1..1" basicfamily_Relation : personA15
+basicfamily_Person "1..1" -- "1..1" basicfamily_Relation : personB18
+basicfamily_Family "1..1" *-- "0..9999" basicfamily_Relation : relations1
+basicfamily_Person "1..1" -- "0..9999" basicfamily_Relation : relations12
+@enduml

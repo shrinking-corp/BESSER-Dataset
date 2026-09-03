@@ -1,0 +1,40 @@
+@startuml
+class Bill {
+  + BillNo : int
+  + amount : int
+  + patientName : str
+}
+class Department {
+  + DocID : str
+  + Name : str
+  + deptID : str
+}
+class Doctor {
+  + Address : str
+  + Department : str
+  + DocID : str
+  + Name : str
+  + PhoneNumber : int
+  + Specialization : int
+}
+class Patient {
+  + Address : str
+  + Age : str
+  + Gender : str
+  + Name : str
+  + PatientID : int
+  + WardNo : int
+}
+class Receptionist {
+}
+class Ward {
+  + Location : str
+  + wardNo : int
+}
+Department "1..1" -- "0..9999" Doctor : Doctor_Department
+Doctor "1..1" -- "1..9999" Patient : Doctor_Patient
+Bill "1..1" -- "1..1" Patient : Patient_Bill
+Patient "1..9999" -- "1..1" Receptionist : Patient_Receptionist
+Patient "1..1" -- "1..1" Ward : Patient_Ward
+Bill "0..9999" -- "1..1" Receptionist : Receptionist_Bill
+@enduml

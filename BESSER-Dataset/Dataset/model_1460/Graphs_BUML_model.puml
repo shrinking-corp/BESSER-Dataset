@@ -1,0 +1,23 @@
+@startuml
+class Node {
+}
+class graphs_CompositeNode {
+}
+class graphs_Edge {
+  + weight : int
+}
+class graphs_Graph {
+}
+class graphs_Node {
+  + name : str
+  + inputs() : str
+  + outputs() : str
+}
+Node <|-- graphs_CompositeNode
+graphs_Edge "0..9999" --* "1..1" graphs_Graph : edges1
+graphs_Edge "1..1" -- "2..2" graphs_Node : ends11
+graphs_Graph "1..1" *-- "0..9999" graphs_Node : nodes0
+graphs_Edge "1..1" -- "1..1" graphs_Node : src5
+graphs_CompositeNode "1..1" *-- "0..1" graphs_Graph : subGraph3
+graphs_Edge "1..1" -- "1..1" graphs_Node : tar8
+@enduml

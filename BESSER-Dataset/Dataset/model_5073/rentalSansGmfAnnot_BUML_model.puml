@@ -1,0 +1,39 @@
+@startuml
+enum StreetType {
+  Road
+  Street
+}
+class rental_Customer {
+  + firstName : str
+  + lastName : str
+  + getDisplayName() : str
+}
+class rental_Rental {
+  + endDate : date
+  + startDate : date
+  + nbDaysBooked() : int
+}
+class rental_RentalAgency {
+  + name : str
+  + addCustomer(rental_customer : str) : void
+  + addObject(rental_object : str) : void
+  + book(rental_customer : str, rental_from_ : str, rental_rentedObject : str, rental_to : str) : str
+  + isAvailable(rental_from_ : str, rental_rentedObject : str, rental_to : str) : bool
+  + removeCustomer(rental_customer : str) : void
+  + removeObject(rental_object : str) : void
+}
+class rental_RentalObject {
+  + ID : str
+  + name : str
+  + picture : str
+  + rent(rental_customer : str) : str
+}
+rental_Customer "1..1" -- "1..1" rental_Rental : customer8
+rental_Customer "0..9999" --* "1..1" rental_RentalAgency : customers1
+rental_RentalAgency "1..1" *-- "0..9999" rental_RentalObject : objectsToRent0
+rental_Rental "1..1" -- "1..1" rental_RentalAgency : parentAgency11
+rental_Customer "1..1" -- "1..1" rental_RentalAgency : parentAgency5
+rental_RentalAgency "1..1" -- "1..1" rental_RentalObject : parentAgency6
+rental_Rental "0..9999" --* "1..1" rental_RentalAgency : rentals3
+rental_Rental "1..1" -- "0..1" rental_RentalObject : rentedObject9
+@enduml

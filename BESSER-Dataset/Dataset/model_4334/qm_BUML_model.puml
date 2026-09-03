@@ -1,0 +1,337 @@
+@startuml
+class AnnotatedElement {
+}
+class CharacterizingElement {
+}
+class DescribedElement {
+}
+enum Effect {
+  NEGATIVE
+  POSITIVE
+}
+class Evaluation {
+}
+class EvaluationResult {
+}
+class FactorAggregation {
+}
+class FormBasedEvaluation {
+}
+class FormBasedMeasureAggregation {
+}
+class Function {
+}
+class Instrument {
+}
+class LinearFunction {
+}
+class Measure {
+}
+class MeasureAggregation {
+}
+class MeasureEvaluation {
+}
+class MeasurementMethod {
+}
+class MeasurementResult {
+}
+class MultiMeasureEvaluation {
+}
+class NamedElement {
+}
+class QualityModelElement {
+}
+class Ranking {
+}
+class Result {
+}
+class TaggedElement {
+}
+class TextAggregation {
+}
+class TextEvaluation {
+}
+enum Type {
+  FINDINGS
+  NONE
+  NUMBER
+}
+abstract class qm_AnnotatedElement {
+}
+class qm_Annotation {
+  + key : str
+  + value : str
+}
+abstract class qm_AnnotationBase {
+}
+abstract class qm_CharacterizingElement {
+}
+class qm_Decomposition {
+}
+abstract class qm_DescribedElement {
+  + description : str
+}
+class qm_DoubleInterval {
+  + lower : float
+  + upper : float
+}
+class qm_Entity {
+  + stakeholder : bool
+  + useCase : bool
+}
+abstract class qm_Evaluation {
+  + completeness : int
+  + maximumPoints : int
+}
+class qm_EvaluationResult {
+}
+class qm_Factor {
+}
+abstract class qm_FactorAggregation {
+}
+class qm_FactorRanking {
+}
+class qm_FactorRefinement {
+}
+class qm_FindingMessage {
+  + location : str
+  + message : str
+}
+class qm_FindingsMeasurementResult {
+  + count : int
+  + findings : str
+}
+class qm_FindingsUnionMeasureAggregation {
+}
+abstract class qm_FormBasedEvaluation {
+}
+abstract class qm_FormBasedMeasureAggregation {
+}
+abstract class qm_Function {
+}
+class qm_Impact {
+  + effect : str
+  + justification : str
+}
+abstract class qm_Instrument {
+}
+class qm_LinearDecreasingFunction {
+}
+abstract class qm_LinearFunction {
+  + lowerBound : float
+  + upperBound : float
+}
+class qm_LinearIncreasingFunction {
+}
+class qm_ManualEvaluation {
+}
+class qm_ManualInstrument {
+}
+class qm_Measure {
+  + type : str
+}
+abstract class qm_MeasureAggregation {
+}
+abstract class qm_MeasureEvaluation {
+  + range : str
+}
+class qm_MeasureRanking {
+}
+class qm_MeasureRankingEvaluationResult {
+  + ratioAffected : float
+}
+class qm_MeasureRefinement {
+}
+class qm_Measurement {
+}
+abstract class qm_MeasurementMethod {
+}
+abstract class qm_MeasurementResult {
+}
+abstract class qm_MultiMeasureEvaluation {
+}
+class qm_MultiMeasureEvaluationResult {
+}
+abstract class qm_NamedElement {
+  + name : str
+  + title : str
+}
+class qm_NormalizationMeasure {
+}
+class qm_NumberMeanMeasureAggregation {
+}
+class qm_NumberMeasurementResult {
+}
+class qm_QIESLAggregation {
+}
+class qm_QIESLEvaluation {
+}
+class qm_QualityModel {
+  + schoolGradeBoundary2 : str
+  + schoolGradeBoundary3 : str
+  + schoolGradeBoundary4 : str
+  + schoolGradeBoundary5 : str
+  + schoolGradeBoundary6 : str
+}
+abstract class qm_QualityModelElement {
+  + qualifiedName : str
+}
+class qm_QualityModelResult {
+  + date : date
+  + system : str
+}
+abstract class qm_Ranking {
+  + rank : int
+  + weight : float
+}
+abstract class qm_Result {
+  + message : str
+}
+class qm_SingleMeasureEvaluation {
+}
+class qm_SingleMeasureEvaluationResult {
+  + ratioAffected : float
+}
+class qm_Source {
+}
+class qm_Specialization {
+}
+class qm_Tag {
+}
+abstract class qm_TaggedElement {
+}
+class qm_TextAggregation {
+  + specification : str
+}
+class qm_TextEvaluation {
+  + specification : str
+}
+class qm_Tool {
+}
+class qm_ToolBasedInstrument {
+  + metric : str
+}
+class qm_WeightedSumFactorAggregation {
+}
+class qm_WeightedSumMultiMeasureEvaluation {
+}
+AnnotatedElement <|-- qm_Decomposition
+AnnotatedElement <|-- qm_DescribedElement
+AnnotatedElement <|-- qm_FactorRefinement
+AnnotatedElement <|-- qm_Impact
+AnnotatedElement <|-- qm_MeasureRefinement
+AnnotatedElement <|-- qm_Measurement
+AnnotatedElement <|-- qm_MeasurementMethod
+AnnotatedElement <|-- qm_Specialization
+CharacterizingElement <|-- qm_Factor
+CharacterizingElement <|-- qm_Measure
+DescribedElement <|-- qm_NamedElement
+Evaluation <|-- qm_FormBasedEvaluation
+Evaluation <|-- qm_ManualEvaluation
+Evaluation <|-- qm_TextEvaluation
+EvaluationResult <|-- qm_MultiMeasureEvaluationResult
+EvaluationResult <|-- qm_SingleMeasureEvaluationResult
+FactorAggregation <|-- qm_WeightedSumFactorAggregation
+FormBasedEvaluation <|-- qm_FactorAggregation
+FormBasedEvaluation <|-- qm_MultiMeasureEvaluation
+FormBasedEvaluation <|-- qm_SingleMeasureEvaluation
+FormBasedMeasureAggregation <|-- qm_FindingsUnionMeasureAggregation
+FormBasedMeasureAggregation <|-- qm_NumberMeanMeasureAggregation
+Function <|-- qm_LinearFunction
+Instrument <|-- qm_ManualInstrument
+Instrument <|-- qm_ToolBasedInstrument
+LinearFunction <|-- qm_LinearDecreasingFunction
+LinearFunction <|-- qm_LinearIncreasingFunction
+Measure <|-- qm_NormalizationMeasure
+MeasureAggregation <|-- qm_FormBasedMeasureAggregation
+MeasureAggregation <|-- qm_TextAggregation
+MeasureEvaluation <|-- qm_MeasureRanking
+MeasureEvaluation <|-- qm_SingleMeasureEvaluation
+MeasurementMethod <|-- qm_Instrument
+MeasurementMethod <|-- qm_MeasureAggregation
+MeasurementResult <|-- qm_FindingsMeasurementResult
+MeasurementResult <|-- qm_NumberMeasurementResult
+MultiMeasureEvaluation <|-- qm_WeightedSumMultiMeasureEvaluation
+NamedElement <|-- qm_CharacterizingElement
+NamedElement <|-- qm_Entity
+NamedElement <|-- qm_Evaluation
+NamedElement <|-- qm_ManualInstrument
+NamedElement <|-- qm_MeasureAggregation
+NamedElement <|-- qm_QualityModel
+NamedElement <|-- qm_Source
+NamedElement <|-- qm_Tag
+NamedElement <|-- qm_Tool
+QualityModelElement <|-- qm_TaggedElement
+Ranking <|-- qm_FactorRanking
+Ranking <|-- qm_MeasureRanking
+Result <|-- qm_EvaluationResult
+Result <|-- qm_MeasurementResult
+TaggedElement <|-- qm_AnnotatedElement
+TextAggregation <|-- qm_QIESLAggregation
+TextEvaluation <|-- qm_QIESLEvaluation
+qm_AnnotatedElement "1..1" *-- "0..9999" qm_AnnotationBase : advancedAnnotations20
+qm_AnnotatedElement "1..1" *-- "0..9999" qm_Annotation : annotations19
+qm_CharacterizingElement "1..1" -- "0..1" qm_Entity : characterizes43
+qm_Entity "1..1" -- "1..1" qm_Specialization : child37
+qm_Decomposition "1..1" -- "1..1" qm_Entity : child41
+qm_Factor "1..1" -- "1..1" qm_FactorRefinement : child63
+qm_Measure "1..1" -- "1..1" qm_Measurement : child69
+qm_Measure "1..1" -- "1..1" qm_MeasureRefinement : child72
+qm_Measure "1..1" -- "1..1" qm_MeasurementMethod : determines88
+qm_Entity "0..9999" --* "1..1" qm_QualityModel : entities0
+qm_Evaluation "1..1" -- "1..1" qm_Factor : evaluates59
+qm_EvaluationResult "0..9999" --* "1..1" qm_QualityModelResult : evaluationResults107
+qm_MeasureRankingEvaluationResult "0..9999" --* "1..1" qm_MultiMeasureEvaluationResult : evaluationResults120
+qm_Evaluation "0..9999" --* "1..1" qm_QualityModel : evaluations3
+qm_Factor "1..1" -- "1..1" qm_FactorRanking : factor95
+qm_Factor "0..9999" --* "1..1" qm_QualityModel : factors1
+qm_FindingMessage "0..9999" --* "1..1" qm_FindingsMeasurementResult : findingMessages113
+qm_Function "1..1" --* "1..1" qm_MeasureEvaluation : function103
+qm_Factor "1..1" *-- "0..9999" qm_Impact : influences45
+qm_Factor "1..1" -- "0..9999" qm_Factor : influencesDirect47
+qm_Entity "1..1" *-- "0..9999" qm_Specialization : isA25
+qm_Entity "1..1" -- "0..9999" qm_Entity : isADirect27
+qm_Measure "1..1" -- "1..1" qm_MeasureEvaluation : measure99
+qm_MeasurementMethod "0..9999" --* "1..1" qm_QualityModel : measurementMethods7
+qm_MeasurementResult "0..9999" --* "1..1" qm_QualityModelResult : measurementResults106
+qm_Measure "0..9999" --* "1..1" qm_QualityModel : measures5
+qm_Measure "1..1" *-- "0..9999" qm_Measurement : measures75
+qm_Factor "0..9999" -- "1..1" qm_Measure : measuresDirect77
+qm_MeasureEvaluation "1..1" -- "0..1" qm_NormalizationMeasure : normlizationMeasure101
+qm_QualityModelElement "1..1" -- "0..9999" qm_Source : originatesFrom17
+qm_Entity "1..1" -- "1..1" qm_Specialization : parent35
+qm_Decomposition "1..1" -- "1..1" qm_Entity : parent39
+qm_Factor "1..1" -- "1..1" qm_FactorRefinement : parent65
+qm_Factor "1..1" -- "1..1" qm_Measurement : parent67
+qm_Measure "1..1" -- "1..1" qm_MeasureRefinement : parent71
+qm_Decomposition "0..1" --* "1..1" qm_Entity : partOf28
+qm_Entity "0..1" -- "1..1" qm_Entity : partOfDirect31
+qm_QualityModel "1..1" -- "1..1" qm_Source : qualityModel18
+qm_QualityModel "1..1" -- "1..1" qm_Tag : qualityModel22
+qm_Entity "1..1" -- "1..1" qm_QualityModel : qualityModel33
+qm_Factor "1..1" -- "1..1" qm_QualityModel : qualityModel53
+qm_Evaluation "1..1" -- "1..1" qm_QualityModel : qualityModel61
+qm_Measure "1..1" -- "1..1" qm_QualityModel : qualityModel80
+qm_MeasurementMethod "1..1" -- "1..1" qm_QualityModel : qualityModel90
+qm_QualityModel "1..1" -- "1..1" qm_Tool : qualityModel93
+qm_MeasureRanking "1..9999" --* "1..1" qm_WeightedSumMultiMeasureEvaluation : rankings105
+qm_FactorRanking "1..9999" --* "1..1" qm_WeightedSumFactorAggregation : rankings97
+qm_Factor "1..1" *-- "0..9999" qm_FactorRefinement : refines48
+qm_Measure "1..1" *-- "0..9999" qm_MeasureRefinement : refines83
+qm_Factor "0..9999" -- "1..1" qm_Factor : refinesDirect51
+qm_Measure "0..9999" -- "1..1" qm_Measure : refinesDirect86
+qm_QualityModel "1..1" -- "0..9999" qm_QualityModel : requires16
+qm_MeasurementMethod "1..1" -- "1..1" qm_MeasurementResult : resultsFrom109
+qm_Evaluation "1..1" -- "1..1" qm_EvaluationResult : resultsFrom117
+qm_MeasureRanking "1..1" -- "1..1" qm_MeasureRankingEvaluationResult : resultsFrom124
+qm_Factor "1..1" -- "1..1" qm_Impact : source55
+qm_QualityModel "1..1" *-- "0..9999" qm_Source : sources13
+qm_Tag "0..9999" -- "1..1" qm_TaggedElement : taggedBy24
+qm_QualityModel "1..1" *-- "0..9999" qm_Tag : tags11
+qm_Factor "1..1" -- "1..1" qm_Impact : target57
+qm_Tool "1..1" -- "1..1" qm_ToolBasedInstrument : tool92
+qm_QualityModel "1..1" *-- "0..9999" qm_Tool : tools9
+qm_DoubleInterval "1..1" --* "1..1" qm_NumberMeasurementResult : value112
+qm_DoubleInterval "1..1" --* "1..1" qm_EvaluationResult : value114
+qm_DoubleInterval "1..1" --* "1..1" qm_MeasureRankingEvaluationResult : value121
+@enduml

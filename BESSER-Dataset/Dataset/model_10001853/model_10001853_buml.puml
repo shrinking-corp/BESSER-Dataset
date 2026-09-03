@@ -1,0 +1,31 @@
+@startuml
+class Chat {
+  + commands : str
+  + username : str
+}
+class Class {
+}
+class Game {
+  + mine_field : MineField
+  + score : int
+  + time_keeper : Timer
+}
+class MineField {
+  + grid : str
+  + height : int
+  + width : int
+}
+class Position {
+  + has_flag : bool
+  + is_hidden : bool
+  + x : int
+  + y : int
+}
+class Timer {
+  + start : int
+  + ticks : int
+}
+Game "0..1" -- "0..1" MineField : Game_MineField
+Game "0..1" -- "0..1" Timer : Game_Timer
+MineField "0..1" -- "0..1" Position : MineField_Position
+@enduml

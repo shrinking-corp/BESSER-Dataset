@@ -1,0 +1,72 @@
+@startuml
+class Administrator {
+  + admin_name : str
+  + password : str
+}
+class Buildings {
+  + end_date : str
+  + management_id : int
+  + manager_id : str
+  + start_date : str
+}
+class Management {
+  + specialoffers : str
+  + suggetions : str
+}
+class Manager {
+  + management_id : str
+  + manager_id : str
+}
+class Owner {
+  + owner_id : str
+  + property_id : str
+}
+class Payment {
+  + card_no : str
+  + ex_date : str
+  + pay_amount : str
+  + pay_id : int
+  + pay_mode : str
+}
+class Property {
+  + address : str
+  + location : str
+  + property_id : str
+  + property_type : str
+}
+class Reg_User {
+  + Address : str
+  + password : str
+  + username : str
+}
+class Request {
+  + request_details : str
+  + request_id : int
+  + request_type : str
+  + requser_id : str
+}
+class Requirement {
+  + req_description : str
+  + requirement_location : str
+  + requirement_type : str
+  + user_id : str
+}
+class Tenant {
+  + tenant_id : str
+}
+class Unreg_User {
+}
+class User {
+  + email : str
+  + location : str
+}
+Buildings "0..9999" -- "1..1" Manager : Advertiser_Advertiesment
+Payment "1..1" -- "0..9999" Property : Payment_Property
+Payment "1..1" -- "1..9999" Reg_User : Payment_Reg_User
+Property "0..9999" -- "1..1" Tenant : Property_Buyer
+Management "0..9999" -- "1..1" Property : Property_Management
+Owner "1..1" -- "0..9999" Property : Property_Seller
+Reg_User "1..9999" -- "0..9999" Requirement : Reg_User_Requirement
+Administrator "1..1" -- "1..9999" User : User_Administrator
+Request "0..9999" -- "1..1" User : User_Request
+@enduml

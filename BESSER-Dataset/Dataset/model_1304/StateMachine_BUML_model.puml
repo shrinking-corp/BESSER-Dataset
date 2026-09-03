@@ -1,0 +1,101 @@
+@startuml
+class CompositeState {
+}
+class Data {
+}
+class ExpressionElement {
+}
+enum Operator {
+  add
+  and_
+  div
+  eq
+  gt
+  gte
+  lt
+  lte
+  mul
+  neq
+  not_
+  or_
+  sub
+}
+class SimplStateMachine_Assignment {
+  + _name : str
+}
+class SimplStateMachine_BooleanData {
+  + value : bool
+}
+class SimplStateMachine_BooleanVariable {
+}
+class SimplStateMachine_CompositeState {
+  + activeSubTree() : bool
+  + unactiveSubTree() : bool
+}
+abstract class SimplStateMachine_Data {
+}
+class SimplStateMachine_Event {
+  + name : str
+}
+class SimplStateMachine_Expression {
+  + _name : str
+  + operator : str
+}
+abstract class SimplStateMachine_ExpressionElement {
+}
+class SimplStateMachine_InitialState {
+}
+class SimplStateMachine_IntegerData {
+  + value : int
+}
+class SimplStateMachine_IntegerVariable {
+}
+class SimplStateMachine_Operation {
+}
+class SimplStateMachine_State {
+  + isActive : bool
+  + name : str
+}
+class SimplStateMachine_StateMachine {
+}
+class SimplStateMachine_Transition {
+}
+abstract class SimplStateMachine_Variable {
+  + name : str
+}
+class SimplStateMachine_VariableReference {
+  + _name : str
+}
+class State {
+}
+class Variable {
+}
+CompositeState <|-- SimplStateMachine_StateMachine
+Data <|-- SimplStateMachine_BooleanData
+Data <|-- SimplStateMachine_IntegerData
+ExpressionElement <|-- SimplStateMachine_Data
+ExpressionElement <|-- SimplStateMachine_Expression
+ExpressionElement <|-- SimplStateMachine_VariableReference
+State <|-- SimplStateMachine_CompositeState
+Variable <|-- SimplStateMachine_BooleanVariable
+Variable <|-- SimplStateMachine_IntegerVariable
+SimplStateMachine_CompositeState "0..1" -- "1..1" SimplStateMachine_State : container5
+SimplStateMachine_Assignment "0..9999" --* "1..1" SimplStateMachine_Operation : contents30
+SimplStateMachine_Event "1..1" -- "1..1" SimplStateMachine_Transition : event18
+SimplStateMachine_Event "1..9999" --* "1..1" SimplStateMachine_StateMachine : events1
+SimplStateMachine_Assignment "1..1" *-- "1..1" SimplStateMachine_ExpressionElement : expression32
+SimplStateMachine_Expression "0..1" --* "1..1" SimplStateMachine_Transition : guard21
+SimplStateMachine_CompositeState "1..1" *-- "1..1" SimplStateMachine_InitialState : initialState8
+SimplStateMachine_Expression "1..1" *-- "1..1" SimplStateMachine_ExpressionElement : left23
+SimplStateMachine_Operation "0..1" --* "1..1" SimplStateMachine_State : operation6
+SimplStateMachine_InitialState "1..1" -- "1..1" SimplStateMachine_State : referencedState9
+SimplStateMachine_Expression "1..1" *-- "1..1" SimplStateMachine_ExpressionElement : right25
+SimplStateMachine_State "1..1" -- "1..1" SimplStateMachine_Transition : source12
+SimplStateMachine_CompositeState "1..1" *-- "1..9999" SimplStateMachine_State : states7
+SimplStateMachine_State "1..1" -- "1..1" SimplStateMachine_Transition : target15
+SimplStateMachine_StateMachine "1..1" *-- "1..9999" SimplStateMachine_Transition : transitions0
+SimplStateMachine_Data "0..1" --* "1..1" SimplStateMachine_Variable : value28
+SimplStateMachine_Assignment "1..1" -- "1..1" SimplStateMachine_Variable : variable35
+SimplStateMachine_Variable "1..1" -- "1..1" SimplStateMachine_VariableReference : variable38
+SimplStateMachine_StateMachine "1..1" *-- "0..9999" SimplStateMachine_Variable : variables3
+@enduml

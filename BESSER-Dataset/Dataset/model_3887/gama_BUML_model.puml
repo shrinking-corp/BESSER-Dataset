@@ -1,0 +1,272 @@
+@startuml
+class EExperiment {
+}
+class EGamaLink {
+}
+class EGamaObject {
+}
+class ESpecies {
+}
+class gama_EAction {
+  + gamlCode : str
+  + returnType : str
+}
+class gama_EActionLink {
+}
+class gama_EAspect {
+  + defineGamlCode : bool
+  + gamlCode : str
+}
+class gama_EAspectLink {
+}
+class gama_EBatchExperiment {
+}
+class gama_EChartLayer {
+  + color : str
+  + style : str
+  + value : str
+}
+class gama_EDisplay {
+  + defineGamlCode : bool
+  + gamlCode : str
+  + layerList : str
+}
+class gama_EDisplayLink {
+}
+class gama_EEquation {
+  + gamlCode : str
+}
+class gama_EEquationLink {
+}
+class gama_EExperiment {
+}
+class gama_EExperimentLink {
+}
+class gama_EFacet {
+  + name : str
+  + value : str
+}
+class gama_EGUIExperiment {
+}
+class gama_EGamaLink {
+}
+class gama_EGamaModel {
+  + name : str
+}
+class gama_EGamaObject {
+  + colorPicto : str
+  + error : str
+  + hasError : str
+  + name : str
+}
+class gama_EGrid {
+}
+class gama_EInheritLink {
+}
+class gama_ELayer {
+  + agents : str
+  + aspect : str
+  + chart_type : str
+  + color : str
+  + colorRBG : str
+  + file : str
+  + gamlCode : str
+  + grid : str
+  + isColorCst : str
+  + showLines : bool
+  + size : str
+  + species : str
+  + text : str
+  + type : str
+}
+class gama_ELayerAspect {
+  + at : str
+  + color : str
+  + colorRBG : str
+  + depth : str
+  + empty : str
+  + expression : str
+  + gamlCode : str
+  + heigth : str
+  + imageSize : str
+  + isColorCst : str
+  + path : str
+  + points : str
+  + radius : str
+  + rotate : str
+  + shape : str
+  + shapeType : str
+  + size : str
+  + text : str
+  + textSize : str
+  + texture : str
+  + type : str
+  + width : str
+}
+class gama_EMonitor {
+  + value : str
+}
+class gama_EParameter {
+  + among : str
+  + category : str
+  + init : str
+  + max : str
+  + min : str
+  + step : str
+  + variable : str
+}
+class gama_EPerceive {
+  + gamlCode : str
+}
+class gama_EPerceiveLink {
+}
+class gama_EPlan {
+  + gamlCode : str
+}
+class gama_EPlanLink {
+}
+class gama_EReflex {
+  + gamlCode : str
+}
+class gama_EReflexLink {
+}
+class gama_ERule {
+  + gamlCode : str
+}
+class gama_ERuleLink {
+}
+class gama_ESpecies {
+  + init : str
+  + reflexList : str
+  + skills : str
+}
+class gama_EState {
+  + gamlCode : str
+}
+class gama_EStateLink {
+}
+class gama_ESubSpeciesLink {
+}
+class gama_ETask {
+  + gamlCode : str
+}
+class gama_ETaskLink {
+}
+class gama_EVariable {
+  + error : str
+  + function : str
+  + hasError : str
+  + init : str
+  + max : str
+  + min : str
+  + name : str
+  + type : str
+  + update : str
+}
+class gama_EWorldAgent {
+}
+EExperiment <|-- gama_EBatchExperiment
+EExperiment <|-- gama_EGUIExperiment
+EGamaLink <|-- gama_EActionLink
+EGamaLink <|-- gama_EAspectLink
+EGamaLink <|-- gama_EDisplayLink
+EGamaLink <|-- gama_EEquationLink
+EGamaLink <|-- gama_EExperimentLink
+EGamaLink <|-- gama_EInheritLink
+EGamaLink <|-- gama_EPerceiveLink
+EGamaLink <|-- gama_EPlanLink
+EGamaLink <|-- gama_EReflexLink
+EGamaLink <|-- gama_ERuleLink
+EGamaLink <|-- gama_EStateLink
+EGamaLink <|-- gama_ESubSpeciesLink
+EGamaLink <|-- gama_ETaskLink
+EGamaObject <|-- gama_EAction
+EGamaObject <|-- gama_EAspect
+EGamaObject <|-- gama_EChartLayer
+EGamaObject <|-- gama_EDisplay
+EGamaObject <|-- gama_EEquation
+EGamaObject <|-- gama_ELayer
+EGamaObject <|-- gama_ELayerAspect
+EGamaObject <|-- gama_EMonitor
+EGamaObject <|-- gama_EParameter
+EGamaObject <|-- gama_EPerceive
+EGamaObject <|-- gama_EPlan
+EGamaObject <|-- gama_EReflex
+EGamaObject <|-- gama_ERule
+EGamaObject <|-- gama_ESpecies
+EGamaObject <|-- gama_EState
+EGamaObject <|-- gama_ETask
+ESpecies <|-- gama_EExperiment
+ESpecies <|-- gama_EGrid
+ESpecies <|-- gama_EWorldAgent
+gama_EAction "0..1" -- "1..1" gama_EActionLink : action68
+gama_EActionLink "0..9999" -- "1..1" gama_ESpecies : actionLinks10
+gama_EAction "1..1" -- "0..9999" gama_EActionLink : actionLinks36
+gama_EAspect "0..1" -- "1..1" gama_ELayerAspect : aspect109
+gama_EAspect "0..1" -- "1..1" gama_EAspectLink : aspect74
+gama_EAspect "1..1" -- "0..9999" gama_EAspectLink : aspectLinks41
+gama_EAspectLink "0..9999" -- "1..1" gama_ESpecies : aspectLinks8
+gama_EChartLayer "0..9999" -- "1..1" gama_ELayer : chartlayers101
+gama_EInheritLink "1..1" -- "0..1" gama_ESpecies : child115
+gama_EDisplay "0..1" -- "1..1" gama_EDisplayLink : display88
+gama_EDisplay "0..1" -- "1..1" gama_ELayer : display98
+gama_EDisplay "1..1" -- "0..1" gama_EDisplayLink : displayLink92
+gama_EDisplayLink "0..9999" -- "1..1" gama_EExperiment : displayLinks49
+gama_EEquation "0..1" -- "1..1" gama_EEquationLink : equation163
+gama_EEquation "1..1" -- "0..9999" gama_EEquationLink : equationLinks161
+gama_EEquationLink "0..9999" -- "1..1" gama_ESpecies : equationLinks34
+gama_EExperiment "0..1" -- "1..1" gama_EExperimentLink : experiment106
+gama_EDisplayLink "1..1" -- "0..1" gama_EGUIExperiment : experiment86
+gama_EExperiment "1..1" -- "0..1" gama_EExperimentLink : experimentLink47
+gama_EExperimentLink "0..9999" -- "1..1" gama_ESpecies : experimentLinks6
+gama_EFacet "0..9999" --* "1..1" gama_EGamaObject : facets4
+gama_EInheritLink "0..9999" -- "1..1" gama_ESpecies : inheritingLinks22
+gama_ESpecies "0..1" -- "1..1" gama_ESpecies : inheritsFrom20
+gama_EAspect "1..1" -- "0..9999" gama_ELayerAspect : layers43
+gama_EDisplay "1..1" -- "0..9999" gama_ELayer : layers90
+gama_EGamaLink "0..9999" --* "1..1" gama_EGamaModel : links1
+gama_ESpecies "0..1" -- "1..1" gama_ESubSpeciesLink : macro62
+gama_ESpecies "1..1" -- "0..9999" gama_ESubSpeciesLink : macroSpeciesLinks16
+gama_ESpecies "0..1" -- "1..1" gama_ESubSpeciesLink : micro65
+gama_ESpecies "1..1" -- "0..9999" gama_ESubSpeciesLink : microSpeciesLinks14
+gama_EGamaModel "1..1" -- "1..1" gama_EGamaObject : model3
+gama_EGamaLink "1..1" -- "1..1" gama_EGamaModel : model60
+gama_EExperiment "1..1" -- "0..9999" gama_EMonitor : monitors53
+gama_EGamaModel "1..1" *-- "0..9999" gama_EGamaObject : objects0
+gama_EFacet "1..1" -- "0..1" gama_EGamaObject : owner118
+gama_EGamaObject "0..1" -- "1..1" gama_EVariable : owner95
+gama_EExperiment "1..1" -- "0..9999" gama_EParameter : parameters51
+gama_EInheritLink "1..1" -- "0..1" gama_ESpecies : parent112
+gama_EPerceive "0..1" -- "1..1" gama_EPerceiveLink : perceive147
+gama_EPerceive "1..1" -- "0..9999" gama_EPerceiveLink : perceiveLinks145
+gama_EPerceiveLink "0..9999" -- "1..1" gama_ESpecies : perceiveLinks30
+gama_EPlan "0..1" -- "1..1" gama_EPlanLink : plan127
+gama_EPlan "1..1" -- "0..9999" gama_EPlanLink : planLinks121
+gama_EPlanLink "0..9999" -- "1..1" gama_ESpecies : planLinks24
+gama_EReflex "0..1" -- "1..1" gama_EReflexLink : reflex80
+gama_EReflexLink "0..9999" -- "1..1" gama_ESpecies : reflexLinks12
+gama_EReflex "1..1" -- "0..9999" gama_EReflexLink : reflexLinks45
+gama_ERule "0..1" -- "1..1" gama_ERuleLink : rule155
+gama_ERule "1..1" -- "0..9999" gama_ERuleLink : ruleLinks153
+gama_ERuleLink "0..9999" -- "1..1" gama_ESpecies : ruleLinks32
+gama_EGamaLink "1..1" -- "1..1" gama_EGamaObject : source57
+gama_EExperimentLink "1..1" -- "0..1" gama_ESpecies : species103
+gama_EPlanLink "1..1" -- "0..1" gama_ESpecies : species130
+gama_ESpecies "0..1" -- "1..1" gama_EStateLink : species136
+gama_ESpecies "0..1" -- "1..1" gama_ETaskLink : species142
+gama_EPerceiveLink "1..1" -- "0..1" gama_ESpecies : species150
+gama_ERuleLink "1..1" -- "0..1" gama_ESpecies : species158
+gama_EEquationLink "1..1" -- "0..1" gama_ESpecies : species166
+gama_EActionLink "1..1" -- "0..1" gama_ESpecies : species71
+gama_EAspectLink "1..1" -- "0..1" gama_ESpecies : species77
+gama_EReflexLink "1..1" -- "0..1" gama_ESpecies : species83
+gama_EState "0..1" -- "1..1" gama_EStateLink : state133
+gama_EState "1..1" -- "0..9999" gama_EStateLink : stateLinks123
+gama_ESpecies "1..1" -- "0..9999" gama_EStateLink : stateLinks26
+gama_EGamaLink "1..1" -- "1..1" gama_EGamaObject : target55
+gama_ETask "0..1" -- "1..1" gama_ETaskLink : task139
+gama_ETask "1..1" -- "0..9999" gama_ETaskLink : taskLinks125
+gama_ESpecies "1..1" -- "0..9999" gama_ETaskLink : taskLinks28
+gama_EAction "1..1" *-- "0..9999" gama_EVariable : variables38
+gama_ESpecies "1..1" *-- "0..9999" gama_EVariable : variables5
+@enduml

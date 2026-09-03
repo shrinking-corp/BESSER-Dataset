@@ -1,0 +1,88 @@
+@startuml
+class Definition {
+}
+class Key {
+}
+class dDL_Alter_table {
+  + add : str
+  + enable : str
+  + id : str
+}
+class dDL_Colname {
+  + id : str
+}
+class dDL_Column {
+  + id : str
+  + number : int
+}
+class dDL_Comment {
+  + columnId : str
+  + string : str
+}
+class dDL_Constraint {
+  + id : str
+}
+class dDL_Create_sequence {
+  + id : str
+}
+class dDL_Create_table {
+  + id : str
+}
+class dDL_Data_definition {
+}
+class dDL_Definition {
+}
+class dDL_Foreign_key {
+}
+class dDL_ISNULL {
+  + nonNull : bool
+  + null : bool
+}
+class dDL_Key {
+}
+class dDL_Primary_key {
+}
+class dDL_Sequence_options {
+  + cache : str
+  + cycle : str
+  + increment : str
+  + maxvalue : str
+  + minvalue : str
+  + nocache : str
+  + nocycle : str
+  + nomaxvalue : str
+  + nominvalue : str
+  + noorder : str
+  + order : str
+  + start : str
+}
+class dDL_TYPE {
+  + id : str
+}
+class dDL_Tabname {
+  + basename : str
+  + id : str
+}
+class dDL_Unique_key {
+}
+Definition <|-- dDL_Alter_table
+Definition <|-- dDL_Comment
+Definition <|-- dDL_Create_sequence
+Definition <|-- dDL_Create_table
+Key <|-- dDL_Foreign_key
+Key <|-- dDL_Primary_key
+Key <|-- dDL_Unique_key
+dDL_Colname "0..9999" --* "1..1" dDL_Key : colNames19
+dDL_Colname "0..1" --* "1..1" dDL_Comment : colname14
+dDL_Column "0..9999" --* "1..1" dDL_Create_table : columns1
+dDL_Alter_table "1..1" *-- "0..1" dDL_Constraint : constraint9
+dDL_Constraint "0..9999" --* "1..1" dDL_Create_table : constraints2
+dDL_Data_definition "1..1" *-- "0..9999" dDL_Definition : definitions0
+dDL_Column "1..1" *-- "0..1" dDL_ISNULL : isNull6
+dDL_Constraint "1..1" *-- "0..1" dDL_Key : key17
+dDL_Create_sequence "1..1" *-- "0..9999" dDL_Sequence_options : sequence_options16
+dDL_Comment "1..1" *-- "0..1" dDL_Tabname : tabname12
+dDL_Foreign_key "1..1" *-- "0..1" dDL_Tabname : tabname22
+dDL_Alter_table "1..1" *-- "0..1" dDL_Tabname : tabname8
+dDL_Column "1..1" *-- "0..1" dDL_TYPE : type4
+@enduml

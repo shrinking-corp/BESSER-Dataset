@@ -1,0 +1,71 @@
+@startuml
+class Admin {
+}
+class Cart {
+  + ProductID : str
+  + Quantity : int
+  + cartID : int
+  + date : str
+}
+class Customer {
+  + CustomerName : str
+  + CutsomerAddress : str
+  + Email : str
+  + PhoneNumber : int
+}
+class Employee {
+  + EmpName : str
+  + EmpPassword : str
+  + EmployeeID : str
+}
+class Guest {
+  + guestID : str
+}
+class Meals {
+  + MealID : str
+  + MealName : str
+  + MealType : str
+  + Portion : str
+  + supplier : str
+  + unitPrice : str
+}
+class OrderDetails {
+  + MealID : str
+  + OrderID : int
+  + orderTime : str
+  + quantity : int
+  + status : str
+  + totPrice : str
+}
+class Orders {
+  + OrderID : int
+  + dateFinished : str
+  + dateOrdered : str
+  + status : str
+}
+class Payment {
+  + PaymentStatus : str
+  + PaymentType : str
+  + paymentAmount : str
+  + paymentDate : str
+  + paymentID : str
+}
+class Transport {
+  + TransportID : int
+  + location : str
+  + transportCost : str
+}
+class User {
+  + Password : str
+  + loginStatus : str
+  + userID : str
+}
+Cart "1..1" -- "1..1" Customer : Customer_Cart
+Customer "1..1" -- "1..9999" Orders : Customer_Orders
+Customer "1..1" -- "1..9999" Payment : Customer_Payment
+Employee "0..1" -- "0..1" Orders : Employee_Orders
+Cart "1..1" -- "0..1" OrderDetails : OrderDetails_Cart
+OrderDetails "1..9999" -- "1..1" Orders : Orders_OrderDetails
+Orders "1..1" -- "1..1" Payment : Orders_Payment
+Orders "1..1" -- "1..1" Transport : Orders_Transport2
+@enduml

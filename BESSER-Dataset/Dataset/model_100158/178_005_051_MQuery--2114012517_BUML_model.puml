@@ -1,0 +1,275 @@
+@startuml
+class Expression {
+}
+class ExpressionTerm {
+}
+class FromEntry {
+}
+class FromJoin {
+}
+class InExpression {
+}
+class MQuery {
+}
+enum Operator {
+  equal
+  greaterEqual
+  greaterThen
+  lessEqual
+  lessThen
+  notEqual
+}
+class SelectAggregateExpression {
+}
+class SelectExpression {
+}
+class Value {
+}
+class Variable {
+}
+class mql_AliasAttributeExpression {
+  + attributes : str
+}
+class mql_AllExpression {
+}
+class mql_AndExpression {
+}
+class mql_AnyExpression {
+}
+class mql_AvgAggregate {
+}
+class mql_BetweenExpression {
+  + isNot : bool
+}
+class mql_BooleanExpression {
+  + value : bool
+}
+class mql_CollectionExpression {
+  + isNot : bool
+}
+class mql_CountAggregate {
+}
+class mql_DateTimeExpression {
+  + value : str
+}
+class mql_DeleteClause {
+}
+class mql_DeleteStatement {
+}
+class mql_EmptyComparisonExpression {
+  + isNot : bool
+}
+class mql_ExistsExpression {
+  + isNot : bool
+}
+class mql_Expression {
+}
+class mql_ExpressionTerm {
+}
+class mql_FromClass {
+  + type : str
+}
+class mql_FromClause {
+}
+class mql_FromCollection {
+}
+class mql_FromEntry {
+}
+class mql_FromJoin {
+  + isFetch : bool
+}
+class mql_Function {
+  + name : str
+}
+class mql_HavingClause {
+}
+class mql_Import {
+  + importURI : str
+}
+class mql_InExpression {
+  + isNot : bool
+}
+class mql_InQueryExpression {
+}
+class mql_InSeqExpression {
+}
+class mql_InnerJoin {
+}
+class mql_IntegerExpression {
+  + value : int
+}
+class mql_Join {
+}
+class mql_LeftJoin {
+  + isOuter : bool
+}
+class mql_LikeExpression {
+  + isNot : bool
+  + pattern : str
+}
+class mql_MQuery {
+}
+class mql_MaxAggregate {
+}
+class mql_MinAggregate {
+}
+class mql_NamedQuery {
+  + name : str
+}
+class mql_NullComparisonExpression {
+  + isNot : bool
+}
+class mql_NullExpression {
+  + value : str
+}
+class mql_OperatorExpression {
+  + operator : str
+}
+class mql_OrExpression {
+}
+class mql_OrderClause {
+  + isAsc : bool
+  + isDesc : bool
+}
+class mql_OrderItem {
+  + feature : str
+}
+class mql_ParameterExpression {
+  + name : str
+}
+class mql_QueryModule {
+}
+class mql_SelectAggregateExpression {
+  + isDistinct : bool
+}
+class mql_SelectClause {
+  + isDistinct : bool
+}
+class mql_SelectConstructorExpression {
+  + name : str
+}
+class mql_SelectExpression {
+}
+class mql_SelectFromClause {
+}
+class mql_SelectStatement {
+}
+class mql_SetClause {
+}
+class mql_SomeExpression {
+}
+class mql_StringExpression {
+  + value : str
+}
+class mql_SumAggregate {
+}
+class mql_UpdateClause {
+}
+class mql_UpdateItem {
+}
+class mql_UpdateStatement {
+}
+class mql_Value {
+}
+class mql_Variable {
+}
+class mql_VariableDeclaration {
+  + name : str
+}
+class mql_WhereClause {
+}
+Expression <|-- mql_AllExpression
+Expression <|-- mql_AndExpression
+Expression <|-- mql_AnyExpression
+Expression <|-- mql_BetweenExpression
+Expression <|-- mql_CollectionExpression
+Expression <|-- mql_EmptyComparisonExpression
+Expression <|-- mql_ExistsExpression
+Expression <|-- mql_ExpressionTerm
+Expression <|-- mql_InExpression
+Expression <|-- mql_LikeExpression
+Expression <|-- mql_NullComparisonExpression
+Expression <|-- mql_OperatorExpression
+Expression <|-- mql_OrExpression
+Expression <|-- mql_SomeExpression
+ExpressionTerm <|-- mql_SelectStatement
+ExpressionTerm <|-- mql_Variable
+FromEntry <|-- mql_FromClass
+FromEntry <|-- mql_FromCollection
+FromJoin <|-- mql_InnerJoin
+FromJoin <|-- mql_Join
+FromJoin <|-- mql_LeftJoin
+InExpression <|-- mql_InQueryExpression
+InExpression <|-- mql_InSeqExpression
+MQuery <|-- mql_DeleteStatement
+MQuery <|-- mql_SelectStatement
+MQuery <|-- mql_UpdateStatement
+SelectAggregateExpression <|-- mql_AvgAggregate
+SelectAggregateExpression <|-- mql_CountAggregate
+SelectAggregateExpression <|-- mql_MaxAggregate
+SelectAggregateExpression <|-- mql_MinAggregate
+SelectAggregateExpression <|-- mql_SumAggregate
+SelectExpression <|-- mql_AliasAttributeExpression
+SelectExpression <|-- mql_SelectAggregateExpression
+SelectExpression <|-- mql_SelectConstructorExpression
+Value <|-- mql_BooleanExpression
+Value <|-- mql_DateTimeExpression
+Value <|-- mql_IntegerExpression
+Value <|-- mql_NullExpression
+Value <|-- mql_StringExpression
+Variable <|-- mql_AliasAttributeExpression
+Variable <|-- mql_ParameterExpression
+Variable <|-- mql_Value
+mql_AliasAttributeExpression "1..1" -- "0..1" mql_VariableDeclaration : alias100
+mql_AliasAttributeExpression "0..1" --* "1..1" mql_UpdateItem : alias29
+mql_MQuery "0..1" --* "1..1" mql_QueryModule : defaultQuery1
+mql_DeleteClause "0..1" --* "1..1" mql_DeleteStatement : deleteClause33
+mql_Expression "0..9999" --* "1..1" mql_OrExpression : entries105
+mql_AndExpression "1..1" *-- "0..9999" mql_Expression : entries107
+mql_SelectClause "1..1" *-- "0..9999" mql_SelectExpression : expressions41
+mql_DeleteClause "1..1" *-- "0..1" mql_FromClause : fromClause34
+mql_FromClause "0..1" --* "1..1" mql_SelectFromClause : fromClause38
+mql_FromEntry "0..9999" --* "1..1" mql_UpdateClause : fromEntries24
+mql_FromClause "1..1" *-- "0..9999" mql_FromEntry : fromEntries47
+mql_HavingClause "0..1" --* "1..1" mql_SelectStatement : having11
+mql_Expression "0..1" --* "1..1" mql_HavingClause : having15
+mql_Import "0..9999" --* "1..1" mql_QueryModule : imports0
+mql_AliasAttributeExpression "0..1" --* "1..1" mql_SelectAggregateExpression : item43
+mql_SetClause "1..1" *-- "0..9999" mql_UpdateItem : items27
+mql_AliasAttributeExpression "0..9999" --* "1..1" mql_SelectConstructorExpression : items45
+mql_InSeqExpression "1..1" *-- "0..9999" mql_Variable : items88
+mql_FromClass "1..1" *-- "0..9999" mql_FromJoin : joins52
+mql_OperatorExpression "1..1" *-- "0..1" mql_Variable : lhs64
+mql_CollectionExpression "1..1" *-- "0..1" mql_Variable : lhs75
+mql_NullComparisonExpression "1..1" *-- "0..1" mql_Variable : lhs80
+mql_EmptyComparisonExpression "1..1" *-- "0..1" mql_Variable : lhs82
+mql_LikeExpression "1..1" *-- "0..1" mql_Variable : lhs84
+mql_InExpression "1..1" *-- "0..1" mql_Variable : lhs86
+mql_BetweenExpression "1..1" *-- "0..1" mql_Variable : lhs92
+mql_BetweenExpression "1..1" *-- "0..1" mql_Value : max97
+mql_BetweenExpression "1..1" *-- "0..1" mql_Value : min94
+mql_NamedQuery "0..9999" --* "1..1" mql_QueryModule : namedQueries3
+mql_OrderClause "0..1" --* "1..1" mql_SelectStatement : order13
+mql_OrderClause "1..1" *-- "0..9999" mql_OrderItem : ordering17
+mql_Function "1..1" *-- "0..9999" mql_Variable : params103
+mql_AliasAttributeExpression "0..1" --* "1..1" mql_FromCollection : path53
+mql_AliasAttributeExpression "0..1" --* "1..1" mql_FromJoin : path55
+mql_MQuery "0..1" --* "1..1" mql_NamedQuery : query5
+mql_ExistsExpression "1..1" *-- "0..1" mql_SelectStatement : query67
+mql_AllExpression "1..1" *-- "0..1" mql_SelectStatement : query69
+mql_AnyExpression "1..1" *-- "0..1" mql_SelectStatement : query71
+mql_SelectStatement "0..1" --* "1..1" mql_SomeExpression : query73
+mql_InQueryExpression "1..1" *-- "0..1" mql_SelectStatement : query90
+mql_ExpressionTerm "0..1" --* "1..1" mql_OperatorExpression : rhs65
+mql_AliasAttributeExpression "0..1" --* "1..1" mql_CollectionExpression : rhs77
+mql_SelectClause "0..1" --* "1..1" mql_SelectFromClause : selectClause36
+mql_SelectFromClause "0..1" --* "1..1" mql_SelectStatement : selectFromClause10
+mql_SetClause "0..1" --* "1..1" mql_UpdateStatement : setClause22
+mql_UpdateClause "0..1" --* "1..1" mql_UpdateStatement : updateClause21
+mql_UpdateItem "1..1" *-- "0..1" mql_Value : value31
+mql_FromEntry "0..1" -- "1..1" mql_OrderItem : var19
+mql_FromEntry "1..1" *-- "0..1" mql_VariableDeclaration : variable50
+mql_FromJoin "1..1" *-- "0..1" mql_VariableDeclaration : variable58
+mql_MQuery "1..1" *-- "0..1" mql_WhereClause : whereClause8
+mql_Expression "0..1" --* "1..1" mql_WhereClause : whereEntry61
+@enduml

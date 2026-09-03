@@ -1,0 +1,99 @@
+@startuml
+class Admin {
+  + address : str
+  + name : str
+  + qualification : str
+}
+class Applicant {
+  + Address : str
+  + Applied_Position : str
+  + Date_of_Birth : str
+  + Email : str
+  + First_Name : str
+  + Last_Name : str
+  + Password : str
+  + Phone : str
+}
+class Assessment {
+  + Name : str
+  + Total_Score : str
+  + Type_of_Assessment : str
+}
+class Assessment__Self_Assessment {
+  + Name : str
+  + Question : str
+  + Score : str
+}
+class Attendance {
+  + Date___Time : str
+  + Details : str
+  + Name : str
+  + Position : str
+}
+class Login {
+  + password : str
+  + userid : str
+}
+class New_Employee {
+  + Date_of_Birth : str
+  + Division : str
+  + Name : str
+  + Place_of_Birth : str
+  + Position : str
+  + Working_Since : str
+}
+class Performance {
+  + Coordination : str
+  + Name : str
+  + Punctuality : str
+  + Target : str
+}
+class Position {
+  + divisionName : str
+  + jobID : str
+  + positionID : int
+  + positionName : str
+}
+class Registration {
+  + Address : str
+  + Applied_Position : str
+  + Date : str
+  + Email : str
+  + Name : str
+  + Phone : str
+  + Position_Type : str
+  + Skills___Requirement : str
+}
+class Requirement {
+  + Curriculum_Vitae : str
+  + Diploma : str
+  + ID_Card : str
+  + Photo : str
+  + Transcript : str
+}
+class Survey {
+  + Name : str
+  + Question : str
+  + Score : str
+}
+class Task {
+  + Deadline : str
+  + Name : str
+  + Task_Detail : str
+  + Task_Name : str
+}
+Admin "0..1" -- "0..1" Login : Admin_Login
+Admin "0..1" -- "0..1" Registration : Admin_Registration
+Applicant "0..1" -- "0..1" Login : Applicant_Login
+Applicant "0..1" -- "0..1" New_Employee : Applicant_New_Employee
+Applicant "0..1" -- "0..1" Position : Applicant_Position
+Applicant "0..1" -- "0..1" Registration : Applicant_Registration
+Assessment "0..1" -- "0..1" Assessment__Self_Assessment : Assessment__Self_Assessment_Assessment
+Assessment "0..1" -- "0..1" Attendance : Attendance_Assessment
+Attendance "0..1" -- "0..1" New_Employee : New_Employee_Attendance
+Assessment "0..1" -- "0..1" Performance : Performance_Assessment
+New_Employee "0..1" -- "0..1" Registration : Registration_New_Employee
+Registration "0..1" -- "0..1" Requirement : Requirement_Registration
+Assessment "0..1" -- "0..1" Survey : Survey_Assessment
+New_Employee "0..1" -- "0..1" Task : Task_New_Employee
+@enduml

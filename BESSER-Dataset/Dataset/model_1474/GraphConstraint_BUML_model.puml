@@ -1,0 +1,93 @@
+@startuml
+class GraphConstraint_Attribute {
+  + op : str
+  + value : str
+}
+class GraphConstraint_EAttribute {
+}
+class GraphConstraint_EClass {
+}
+class GraphConstraint_EDataType {
+}
+class GraphConstraint_EPackage {
+}
+class GraphConstraint_EReference {
+}
+class GraphConstraint_Edge {
+}
+class GraphConstraint_ElementMapping {
+}
+class GraphConstraint_Formula {
+  + op : str
+}
+class GraphConstraint_Graph {
+}
+abstract class GraphConstraint_GraphElement {
+  + name : str
+}
+class GraphConstraint_Mapping {
+}
+abstract class GraphConstraint_NestedGraphCondition {
+}
+class GraphConstraint_NestedGraphConstraint {
+  + name : str
+}
+class GraphConstraint_Node {
+}
+class GraphConstraint_QuantifiedGraphCondition {
+  + quantifier : str
+}
+class GraphConstraint_True {
+}
+class GraphConstraint_Variable {
+  + name : str
+}
+class GraphElement {
+}
+class NestedGraphCondition {
+}
+enum Operator {
+  AND
+  IMPLIES
+  NOT
+  OR
+}
+enum Quantifier {
+  EXISTS
+  FORALL
+}
+GraphElement <|-- GraphConstraint_Attribute
+GraphElement <|-- GraphConstraint_Edge
+GraphElement <|-- GraphConstraint_Node
+NestedGraphCondition <|-- GraphConstraint_Formula
+NestedGraphCondition <|-- GraphConstraint_QuantifiedGraphCondition
+NestedGraphCondition <|-- GraphConstraint_True
+GraphConstraint_Formula "1..1" *-- "1..9999" GraphConstraint_NestedGraphCondition : args47
+GraphConstraint_Attribute "0..9999" --* "1..1" GraphConstraint_Node : attributes8
+GraphConstraint_Graph "0..1" --* "1..1" GraphConstraint_QuantifiedGraphCondition : codomain34
+GraphConstraint_Mapping "0..1" --* "1..1" GraphConstraint_QuantifiedGraphCondition : codomainMapping42
+GraphConstraint_NestedGraphCondition "1..1" --* "1..1" GraphConstraint_NestedGraphConstraint : condition4
+GraphConstraint_Graph "1..1" -- "1..1" GraphConstraint_NestedGraphCondition : domain53
+GraphConstraint_Edge "0..9999" --* "1..1" GraphConstraint_Graph : edges0
+GraphConstraint_Graph "1..1" --* "1..1" GraphConstraint_NestedGraphConstraint : emptyDomain5
+GraphConstraint_Formula "0..1" -- "1..1" GraphConstraint_NestedGraphCondition : formula50
+GraphConstraint_Graph "1..1" -- "1..1" GraphConstraint_Mapping : from_22
+GraphConstraint_NestedGraphCondition "1..1" -- "0..1" GraphConstraint_NestedGraphConstraint : gc52
+GraphConstraint_ElementMapping "1..1" -- "1..1" GraphConstraint_GraphElement : image31
+GraphConstraint_EPackage "1..1" -- "1..1" GraphConstraint_NestedGraphConstraint : import_3
+GraphConstraint_ElementMapping "0..9999" --* "1..1" GraphConstraint_Mapping : mappings27
+GraphConstraint_NestedGraphCondition "1..1" --* "1..1" GraphConstraint_QuantifiedGraphCondition : nested45
+GraphConstraint_Graph "1..1" *-- "0..9999" GraphConstraint_Node : nodes1
+GraphConstraint_ElementMapping "1..1" -- "1..1" GraphConstraint_GraphElement : origin29
+GraphConstraint_NestedGraphCondition "1..1" -- "0..1" GraphConstraint_QuantifiedGraphCondition : qgc51
+GraphConstraint_Graph "0..1" --* "1..1" GraphConstraint_QuantifiedGraphCondition : restriction36
+GraphConstraint_Mapping "0..1" --* "1..1" GraphConstraint_QuantifiedGraphCondition : restrictionMapping39
+GraphConstraint_Edge "1..1" -- "1..1" GraphConstraint_Node : src12
+GraphConstraint_Edge "1..1" -- "1..1" GraphConstraint_Node : tgt15
+GraphConstraint_Graph "1..1" -- "1..1" GraphConstraint_Mapping : to24
+GraphConstraint_EClass "1..1" -- "1..1" GraphConstraint_Node : type10
+GraphConstraint_EReference "1..1" -- "1..1" GraphConstraint_Edge : type18
+GraphConstraint_Attribute "1..1" -- "1..1" GraphConstraint_EAttribute : type20
+GraphConstraint_EDataType "1..1" -- "1..1" GraphConstraint_Variable : type49
+GraphConstraint_NestedGraphCondition "1..1" *-- "0..9999" GraphConstraint_Variable : vars55
+@enduml

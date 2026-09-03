@@ -1,0 +1,283 @@
+@startuml
+enum AggregationKind {
+  composite
+  none
+  shared
+}
+class BehavioralFeature {
+}
+class Classifier {
+}
+class DataType {
+}
+class Element {
+}
+class Feature {
+}
+class InstanceSpecification {
+}
+class LiteralSpecification {
+}
+class MultiplicityElement {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class Package {
+}
+class PackageableElement {
+}
+enum ParameterDirectionKind {
+  in_
+  inout
+  out
+  return_
+}
+class RedefinableElement {
+}
+class StructuralFeature {
+}
+class Type {
+}
+class TypedElement {
+}
+class ValueSpecification {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class classes_Association {
+  + derived : bool
+}
+abstract class classes_BehavioralFeature {
+  + abstract : bool
+}
+class classes_Class {
+  + active : bool
+}
+abstract class classes_Classifier {
+  + abstract : bool
+  + finalSpecialization : bool
+  + allFeatures() : Feature
+}
+class classes_Comment {
+  + body : str
+}
+class classes_DataType {
+}
+abstract class classes_Element {
+  + allOwnedElements() : Element
+  + mustBeOwned() : bool
+}
+class classes_ElementImport {
+  + alias : str
+  + visibility : str
+}
+class classes_Enumeration {
+}
+class classes_EnumerationLiteral {
+}
+abstract class classes_Feature {
+  + static : bool
+}
+class classes_Generalization {
+  + substitutable : bool
+}
+class classes_InstanceSpecification {
+}
+class classes_InstanceValue {
+}
+class classes_LiteralBoolean {
+  + value : bool
+  + booleanValue() : bool
+  + isComputable() : bool
+}
+class classes_LiteralInteger {
+  + value : int
+  + integerValue() : int
+  + isComputable() : bool
+}
+class classes_LiteralNull {
+  + isComputable() : bool
+  + isNull() : bool
+}
+abstract class classes_LiteralSpecification {
+}
+class classes_LiteralString {
+  + value : str
+  + isComputable() : bool
+  + stringValue() : str
+}
+class classes_LiteralUnlimitedNatural {
+  + value : int
+  + isComputable() : bool
+  + unlimitedValue() : int
+}
+class classes_Model {
+}
+class classes_MultiplicityElement {
+  + lower : int
+  + ordered : bool
+  + unique : bool
+  + upper : int
+  + lowerBound() : int
+  + upperBound() : int
+}
+abstract class classes_NamedElement {
+  + name : str
+  + qualifiedName : str
+  + visibility : str
+  + allNamespaces() : str
+  + separator() : str
+}
+abstract class classes_Namespace {
+}
+class classes_Operation {
+  + lower : str
+  + ordered : bool
+  + query : bool
+  + unique : bool
+  + upper : str
+  + returnResult() : str
+}
+class classes_Package {
+}
+class classes_PackageImport {
+  + visibility : str
+}
+abstract class classes_PackageableElement {
+}
+class classes_Parameter {
+  + direction : str
+}
+class classes_PrimitiveType {
+}
+class classes_Property {
+  + aggregation : str
+  + composite : bool
+  + derived : bool
+  + derivedUnion : bool
+}
+abstract class classes_RedefinableElement {
+  + leaf : bool
+}
+class classes_Slot {
+}
+abstract class classes_StructuralFeature {
+  + readOnly : bool
+}
+abstract class classes_Type {
+}
+class classes_TypedElement {
+}
+abstract class classes_ValueSpecification {
+  + booleanValue() : bool
+  + integerValue() : int
+  + isComputable() : bool
+  + isNull() : bool
+  + stringValue() : str
+  + unlimitedValue() : int
+}
+BehavioralFeature <|-- classes_Operation
+Classifier <|-- classes_Association
+Classifier <|-- classes_Class
+Classifier <|-- classes_DataType
+DataType <|-- classes_Enumeration
+DataType <|-- classes_PrimitiveType
+Element <|-- classes_ElementImport
+Element <|-- classes_Generalization
+Element <|-- classes_MultiplicityElement
+Element <|-- classes_NamedElement
+Element <|-- classes_PackageImport
+Element <|-- classes_Slot
+Feature <|-- classes_BehavioralFeature
+Feature <|-- classes_StructuralFeature
+InstanceSpecification <|-- classes_EnumerationLiteral
+LiteralSpecification <|-- classes_LiteralBoolean
+LiteralSpecification <|-- classes_LiteralInteger
+LiteralSpecification <|-- classes_LiteralNull
+LiteralSpecification <|-- classes_LiteralString
+LiteralSpecification <|-- classes_LiteralUnlimitedNatural
+MultiplicityElement <|-- classes_Parameter
+MultiplicityElement <|-- classes_StructuralFeature
+NamedElement <|-- classes_InstanceSpecification
+NamedElement <|-- classes_Namespace
+NamedElement <|-- classes_PackageableElement
+NamedElement <|-- classes_RedefinableElement
+NamedElement <|-- classes_TypedElement
+Namespace <|-- classes_Classifier
+Namespace <|-- classes_Package
+Package <|-- classes_Model
+PackageableElement <|-- classes_Package
+PackageableElement <|-- classes_Type
+RedefinableElement <|-- classes_Feature
+StructuralFeature <|-- classes_Property
+Type <|-- classes_Classifier
+TypedElement <|-- classes_Parameter
+TypedElement <|-- classes_StructuralFeature
+TypedElement <|-- classes_ValueSpecification
+ValueSpecification <|-- classes_InstanceValue
+ValueSpecification <|-- classes_LiteralSpecification
+classes_Comment "1..1" -- "0..9999" classes_Element : annotatedElement8
+classes_Association "0..1" -- "1..1" classes_Property : association56
+classes_Classifier "1..1" -- "0..9999" classes_Property : attribute46
+classes_Class "0..1" -- "1..1" classes_Property : class_59
+classes_Class "0..1" -- "1..1" classes_Operation : class_79
+classes_Classifier "0..9999" -- "1..1" classes_InstanceSpecification : classifier86
+classes_DataType "0..1" -- "1..1" classes_Property : datatype58
+classes_Slot "1..1" -- "1..1" classes_StructuralFeature : definingFeature89
+classes_ElementImport "0..9999" --* "1..1" classes_Namespace : elementImport12
+classes_Association "1..1" -- "1..9999" classes_Type : endType64
+classes_Enumeration "0..1" -- "1..1" classes_EnumerationLiteral : enumeration97
+classes_Classifier "1..1" -- "0..9999" classes_Feature : feature42
+classes_Classifier "0..9999" -- "1..1" classes_Feature : featuringClassifier36
+classes_Classifier "0..9999" -- "1..1" classes_Classifier : general49
+classes_Classifier "1..1" -- "1..1" classes_Generalization : general51
+classes_Classifier "1..1" *-- "0..9999" classes_Generalization : generalization41
+classes_ElementImport "1..1" -- "1..1" classes_PackageableElement : importedElement18
+classes_Namespace "1..1" -- "0..9999" classes_PackageableElement : importedMember15
+classes_Package "1..1" -- "1..1" classes_PackageImport : importedPackage22
+classes_ElementImport "1..1" -- "1..1" classes_Namespace : importingNamespace20
+classes_Namespace "1..1" -- "1..1" classes_PackageImport : importingNamespace23
+classes_Classifier "1..1" -- "0..9999" classes_NamedElement : inheritedMember43
+classes_InstanceSpecification "1..1" -- "1..1" classes_InstanceValue : instance94
+classes_MultiplicityElement "1..1" *-- "0..1" classes_ValueSpecification : lowerValue75
+classes_NamedElement "0..9999" -- "1..1" classes_Namespace : member11
+classes_Association "1..1" -- "2..9999" classes_Property : memberEnd66
+classes_NamedElement "1..1" -- "0..1" classes_Namespace : namespace1
+classes_Association "1..1" -- "0..9999" classes_Property : navigableOwnedEnd67
+classes_Class "1..1" *-- "0..9999" classes_Classifier : nestedClassifier104
+classes_Package "1..1" -- "0..9999" classes_Package : nestedPackage30
+classes_Package "1..1" -- "0..1" classes_Package : nestingPackage32
+classes_Property "0..1" -- "1..1" classes_Property : opposite62
+classes_DataType "1..1" *-- "0..9999" classes_Property : ownedAttribute72
+classes_Class "1..1" *-- "0..9999" classes_Property : ownedAttribute98
+classes_Comment "0..9999" --* "1..1" classes_Element : ownedComment7
+classes_Element "1..1" -- "0..9999" classes_Element : ownedElement3
+classes_Association "1..1" *-- "0..9999" classes_Property : ownedEnd70
+classes_Enumeration "1..1" *-- "0..9999" classes_EnumerationLiteral : ownedLiteral96
+classes_NamedElement "0..9999" -- "1..1" classes_Namespace : ownedMember17
+classes_Class "1..1" *-- "0..9999" classes_Operation : ownedOperation100
+classes_BehavioralFeature "1..1" *-- "0..9999" classes_Parameter : ownedParameter78
+classes_Package "1..1" -- "0..9999" classes_Type : ownedType28
+classes_Element "1..1" -- "0..1" classes_Element : owner5
+classes_Association "0..1" -- "1..1" classes_Property : owningAssociation55
+classes_InstanceSpecification "1..1" -- "1..1" classes_Slot : owningInstance93
+classes_Package "0..1" -- "1..1" classes_Type : package34
+classes_Namespace "1..1" *-- "0..9999" classes_PackageImport : packageImport13
+classes_Package "1..1" *-- "0..9999" classes_PackageableElement : packagedElement25
+classes_RedefinableElement "1..1" -- "0..9999" classes_RedefinableElement : redefinedElement38
+classes_Operation "1..1" -- "0..9999" classes_Operation : redefinedOperation82
+classes_Classifier "0..9999" -- "1..1" classes_RedefinableElement : redefinitionContext39
+classes_InstanceSpecification "1..1" *-- "0..9999" classes_Slot : slot88
+classes_Classifier "1..1" -- "1..1" classes_Generalization : specific53
+classes_Class "1..1" -- "0..9999" classes_Class : superClass103
+classes_Type "0..1" -- "1..1" classes_TypedElement : type0
+classes_Operation "1..1" -- "0..1" classes_Type : type83
+classes_MultiplicityElement "1..1" *-- "0..1" classes_ValueSpecification : upperValue74
+classes_Slot "1..1" *-- "0..9999" classes_ValueSpecification : value90
+@enduml

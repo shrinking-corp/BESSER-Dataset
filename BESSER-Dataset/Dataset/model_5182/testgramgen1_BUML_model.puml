@@ -1,0 +1,50 @@
+@startuml
+class CNamedElement {
+}
+class Component {
+}
+class Node {
+}
+class ProtoLink {
+}
+class testgramgen1_A {
+}
+class testgramgen1_B {
+}
+class testgramgen1_C {
+}
+abstract class testgramgen1_CNamedElement {
+  + name : str
+}
+class testgramgen1_Component {
+}
+class testgramgen1_D {
+}
+class testgramgen1_DerivedComponent {
+}
+class testgramgen1_DerivedLink {
+}
+abstract class testgramgen1_Node {
+}
+class testgramgen1_ProtoLink {
+}
+class testgramgen1_System {
+}
+CNamedElement <|-- testgramgen1_C
+CNamedElement <|-- testgramgen1_Component
+CNamedElement <|-- testgramgen1_DerivedLink
+Component <|-- testgramgen1_DerivedComponent
+Component <|-- testgramgen1_ProtoLink
+Node <|-- testgramgen1_A
+Node <|-- testgramgen1_B
+Node <|-- testgramgen1_C
+Node <|-- testgramgen1_D
+ProtoLink <|-- testgramgen1_DerivedLink
+testgramgen1_Node "0..9999" --* "1..1" testgramgen1_System : anodes1
+testgramgen1_Component "0..9999" --* "1..1" testgramgen1_System : components0
+testgramgen1_Component "0..1" -- "1..1" testgramgen1_DerivedLink : from_11
+testgramgen1_Component "1..1" *-- "0..9999" testgramgen1_ProtoLink : links3
+testgramgen1_Component "0..1" -- "1..1" testgramgen1_ProtoLink : src5
+testgramgen1_B "0..1" -- "1..1" testgramgen1_DerivedLink : to13
+testgramgen1_Node "0..1" -- "1..1" testgramgen1_ProtoLink : trg8
+@enduml

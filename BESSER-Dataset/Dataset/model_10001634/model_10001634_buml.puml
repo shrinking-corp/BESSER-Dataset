@@ -1,0 +1,104 @@
+@startuml
+class calculations_PokerRules {
+  + arrayWithHands : str
+  + cardsOnTable : str
+  + highestCardStraight : str
+  + numberOfPlayers : int
+  + tableCardRank : common_Ranks
+}
+class common_Hand {
+  + rank : common_Ranks
+}
+class common_Observer_Interface {
+}
+enum common_Ranks {
+}
+enum common_States {
+}
+class common_Subject_Interface {
+}
+class genmymodelreverse_java_io_BufferedReader {
+}
+class genmymodelreverse_java_io_IOException {
+}
+class genmymodelreverse_java_io_PrintWriter {
+}
+class managers_GameManager {
+  + dealer : int
+  + initialBigID : int
+  + initialSmallID : int
+  + minimumState : common_States
+  + newRound : bool
+  + playerBets : str
+  + playerHands : str
+  + playerIDs : str
+  + playerNames : str
+  + playerTurn : int
+  + playersLeftInTheGame : int
+  + raise : float
+  + smallblind : float
+  + stateOfPlayersArr : str
+  + tableCards : str
+}
+class managers_LoginManager {
+  + in : genmymodelreverse_java_io_BufferedReader
+  + inputLine : str
+  + out : genmymodelreverse_java_io_PrintWriter
+}
+class player_Player {
+  + bigB : float
+  + dealer : bool
+  + name : str
+  + observerID : int
+  + observerIDTracker : int
+  + state : common_States
+  + wealth : float
+}
+class player_Players {
+  + AmountOfPlayers : int
+  + MaxAmountOfPlayers : int
+  + goodToGo : bool
+  + wealth : float
+}
+class server_MultiServer {
+}
+class table_Card {
+  + rank : table_Rank
+  + suit : table_Suit
+}
+class table_Deck {
+  + numCardsInDeck : int
+  + randomNumbers : int
+  + rank : table_Rank
+  + suit : table_Suit
+}
+enum table_Rank {
+}
+enum table_Suit {
+}
+class table_Table {
+  + amountOfCards : int
+  + turnedCards : str
+  + upcomingCards : table_UpcomingCards
+}
+enum table_UpcomingCards {
+}
+table_Card "0..1" -- "0..1" table_Table : burnedCard_Table_Card_16
+common_Hand "0..1" -- "0..1" table_Card : card1_Hand_Card_7
+common_Hand "0..1" -- "0..1" table_Card : card2_Hand_Card_17
+table_Card "0..1" -- "0..1" table_Deck : cardBelow_Deck_Card_12
+table_Deck "0..1" -- "0..1" table_Table : deck_Table_Deck_10
+managers_GameManager "0..1" -- "0..1" player_Player : gameManager_Player_GameManager_13
+managers_GameManager "0..1" -- "0..1" player_Players : gameManager_Players_GameManager_9
+common_Hand "0..1" -- "0..1" player_Player : hand_Player_Hand_0
+managers_LoginManager "0..1" -- "0..1" player_Player : player_LoginManager_Player_11
+managers_GameManager "0..1" -- "0..1" player_Players : playersObj_GameManager_Players_3
+common_Observer_Interface "0..9999" -- "0..1" managers_GameManager : players_GameManager_Observer_5
+managers_LoginManager "0..1" -- "0..1" player_Players : players_LoginManager_Players_8
+common_Observer_Interface "0..9999" -- "0..1" player_Players : players_Players_Observer_6
+player_Players "0..1" -- "0..1" table_Table : players_Table_Players_1
+calculations_PokerRules "0..1" -- "0..1" managers_GameManager : pokerRules_GameManager_PokerRules_14
+table_Card "0..1" -- "0..1" table_Card : reference_Card_Card_15
+managers_GameManager "0..1" -- "0..1" table_Table : table_GameManager_Table_4
+table_Card "0..1" -- "0..1" table_Deck : topCard_Deck_Card_2
+@enduml

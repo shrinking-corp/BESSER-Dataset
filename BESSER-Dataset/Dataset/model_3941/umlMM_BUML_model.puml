@@ -1,0 +1,38 @@
+@startuml
+class Classifier {
+}
+class UmlMM_Class {
+  + name : str
+}
+class UmlMM_Classifier {
+}
+class UmlMM_DataType {
+  + name : str
+}
+class UmlMM_Operation {
+  + name : str
+}
+class UmlMM_Parameter {
+  + name : str
+}
+class UmlMM_Property {
+  + lower : int
+  + name : str
+  + upper : int
+}
+class UmlMM_UmlPackage {
+  + name : str
+}
+Classifier <|-- UmlMM_Class
+Classifier <|-- UmlMM_DataType
+UmlMM_Class "1..1" -- "1..1" UmlMM_Property : _Class12
+UmlMM_Class "1..1" -- "1..1" UmlMM_Operation : _Class5
+UmlMM_Operation "1..1" -- "1..1" UmlMM_Parameter : _Operation8
+UmlMM_Classifier "1..1" -- "1..1" UmlMM_UmlPackage : _UmlPackage1
+UmlMM_Class "1..1" *-- "0..9999" UmlMM_Property : _property3
+UmlMM_Classifier "0..9999" --* "1..1" UmlMM_UmlPackage : elements0
+UmlMM_Class "1..1" *-- "0..9999" UmlMM_Operation : operation2
+UmlMM_Operation "1..1" *-- "0..9999" UmlMM_Parameter : parameter6
+UmlMM_Classifier "1..1" -- "1..1" UmlMM_Property : type10
+UmlMM_Classifier "1..1" -- "1..1" UmlMM_Parameter : type7
+@enduml

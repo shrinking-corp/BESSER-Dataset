@@ -1,0 +1,36 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+abstract class adlold_AbstractComponent {
+  + name : str
+}
+class adlold_Binding {
+}
+class adlold_Component {
+}
+class adlold_Content {
+  + expression : str
+  + language : str
+}
+abstract class adlold_Interface {
+  + name : str
+  + signature : str
+}
+class adlold_Provided {
+}
+class adlold_Required {
+}
+AbstractComponent <|-- adlold_Component
+Interface <|-- adlold_Provided
+Interface <|-- adlold_Required
+adlold_Binding "0..9999" --* "1..1" adlold_Interface : bindings5
+adlold_AbstractComponent "1..1" *-- "0..1" adlold_Content : content0
+adlold_AbstractComponent "1..1" -- "1..1" adlold_Content : contentParent12
+adlold_Binding "1..1" -- "0..1" adlold_Interface : from_6
+adlold_AbstractComponent "1..1" *-- "0..9999" adlold_Provided : providedInterfaces3
+adlold_AbstractComponent "1..1" *-- "0..9999" adlold_Required : requiredInterfaces1
+adlold_Component "1..1" *-- "0..9999" adlold_Component : subComponents16
+adlold_Binding "1..1" -- "0..1" adlold_Interface : to9
+@enduml

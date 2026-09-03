@@ -1,0 +1,155 @@
+@startuml
+class Condition {
+}
+enum EOperator {
+  AND
+  DIFF
+  EQ
+  GT
+  GTE
+  LT
+  LTE
+  OR
+}
+enum ESensor {
+  distanceBL
+  distanceBR
+  distanceFLB
+  distanceFLF
+  distanceFRB
+  distanceFRF
+  distanceL
+  distanceR
+  lightBL
+  lightBR
+  lightFLB
+  lightFLF
+  lightFRB
+  lightFRF
+  lightL
+  lightR
+}
+class Movement {
+}
+class Operation {
+}
+class Operator {
+}
+class Values {
+}
+class Var {
+}
+class robot_Affectation {
+}
+class robot_Alternative {
+}
+class robot_Backward {
+}
+class robot_Compare {
+}
+class robot_Condition {
+}
+class robot_Declaration {
+}
+class robot_Different {
+}
+class robot_Echo {
+  + param : str
+}
+class robot_Event {
+}
+class robot_Forward {
+}
+class robot_Mission {
+}
+class robot_Movement {
+  + duration : float
+}
+class robot_Operation {
+}
+class robot_Operator {
+  + type : str
+}
+class robot_Sensor {
+  + name : str
+}
+class robot_Sequence {
+}
+class robot_Sleep {
+}
+class robot_Stop {
+}
+class robot_TBoolean {
+  + Value : str
+}
+class robot_TFloat {
+  + Value : str
+}
+class robot_TInteger {
+  + Value : str
+}
+class robot_TString {
+  + Value : str
+}
+class robot_TurnLeft {
+}
+class robot_TurnRight {
+}
+class robot_Value {
+}
+class robot_Values {
+}
+class robot_Var {
+  + Name : str
+}
+class robot_Variable {
+  + Name : str
+}
+class robot_Whenever {
+}
+class robot_While {
+}
+Condition <|-- robot_Compare
+Condition <|-- robot_Value
+Movement <|-- robot_Backward
+Movement <|-- robot_Forward
+Movement <|-- robot_Sleep
+Movement <|-- robot_Stop
+Movement <|-- robot_TurnLeft
+Movement <|-- robot_TurnRight
+Operation <|-- robot_Alternative
+Operation <|-- robot_Echo
+Operation <|-- robot_Event
+Operation <|-- robot_Movement
+Operation <|-- robot_Sequence
+Operation <|-- robot_Var
+Operation <|-- robot_Whenever
+Operation <|-- robot_While
+Operator <|-- robot_Different
+Values <|-- robot_Sensor
+Values <|-- robot_TBoolean
+Values <|-- robot_TFloat
+Values <|-- robot_TInteger
+Values <|-- robot_TString
+Values <|-- robot_Variable
+Var <|-- robot_Affectation
+Var <|-- robot_Declaration
+robot_Alternative "1..1" *-- "0..1" robot_Operation : Alternative5
+robot_Event "1..1" *-- "1..1" robot_Operation : At10
+robot_Compare "1..1" *-- "1..1" robot_Condition : Condition138
+robot_Condition "1..1" --* "1..1" robot_Event : Condition15
+robot_Condition "1..1" --* "1..1" robot_Whenever : Condition19
+robot_Compare "1..1" *-- "1..1" robot_Condition : Condition235
+robot_Condition "1..1" --* "1..1" robot_While : Condition29
+robot_Alternative "1..1" *-- "1..1" robot_Condition : Condition8
+robot_Alternative "1..1" *-- "1..1" robot_Operation : Consequence3
+robot_Operation "0..1" --* "1..1" robot_Whenever : Else24
+robot_Event "1..1" *-- "0..1" robot_Operation : Onleave12
+robot_Operation "1..1" --* "1..1" robot_While : Operation27
+robot_Operation "1..9999" --* "1..1" robot_Sequence : Operations1
+robot_Compare "1..1" *-- "1..1" robot_Operator : Operator34
+robot_Mission "1..1" *-- "1..1" robot_Sequence : Sequence0
+robot_Values "1..1" --* "1..1" robot_Var : Value18
+robot_Value "1..1" *-- "1..1" robot_Values : Variable32
+robot_Operation "1..1" --* "1..1" robot_Whenever : Whenever21
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+class Named {
+}
+class Typed {
+}
+class graph_Edge {
+}
+class graph_Graph {
+}
+abstract class graph_Named {
+  + name : str
+}
+class graph_Node {
+}
+abstract class graph_Typed {
+  + type : str
+}
+Named <|-- graph_Graph
+Named <|-- graph_Typed
+Typed <|-- graph_Edge
+Typed <|-- graph_Node
+graph_Edge "0..9999" --* "1..1" graph_Graph : edges1
+graph_Edge "0..9999" -- "1..1" graph_Node : ingoingEdges6
+graph_Graph "1..1" *-- "0..9999" graph_Node : nodes0
+graph_Edge "0..9999" -- "1..1" graph_Node : outgoingEdges4
+graph_Graph "1..1" -- "1..1" graph_Node : parent3
+graph_Edge "1..1" -- "1..1" graph_Graph : parent8
+graph_Edge "1..1" -- "1..1" graph_Node : source10
+graph_Edge "1..1" -- "1..1" graph_Node : target12
+@enduml

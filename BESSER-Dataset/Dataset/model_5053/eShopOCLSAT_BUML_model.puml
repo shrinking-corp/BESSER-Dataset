@@ -1,0 +1,37 @@
+@startuml
+class Customer {
+}
+class eShop_Customer {
+  + name : int
+  + newCustomer(eShop_name : str, eShop_p : str) : str
+}
+class eShop_GoldCustomer {
+}
+class eShop_Portal {
+  + name : str
+  + url : str
+  + removeGoldCategory(eShop_c : str) : void
+}
+class eShop_Product {
+  + price : int
+  + stock : int
+}
+class eShop_Sale {
+  + amount : int
+  + id : int
+  + paid : bool
+  + addSaleLine(eShop_p : str, eShop_quantity : str) : str
+}
+class eShop_SaleLine {
+  + quantity : int
+}
+Customer <|-- eShop_GoldCustomer
+eShop_Customer "0..9999" -- "1..1" eShop_Portal : customers2
+eShop_Sale "1..1" -- "0..9999" eShop_SaleLine : lines5
+eShop_Customer "1..1" -- "1..1" eShop_Portal : portal0
+eShop_Product "1..1" -- "1..1" eShop_SaleLine : product9
+eShop_Customer "1..1" -- "1..1" eShop_Sale : purchaser3
+eShop_Customer "1..1" -- "0..9999" eShop_Sale : sale1
+eShop_Sale "0..1" -- "1..1" eShop_SaleLine : sale7
+eShop_Product "1..1" -- "0..9999" eShop_SaleLine : salesLines10
+@enduml

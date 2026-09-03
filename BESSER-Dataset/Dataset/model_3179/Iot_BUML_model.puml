@@ -1,0 +1,111 @@
+@startuml
+class AbstractElement {
+}
+class Expression {
+}
+class iot_AbstractElement {
+}
+class iot_And {
+}
+class iot_BoolConstant {
+  + value : str
+}
+class iot_Comparison {
+  + op : str
+}
+class iot_Dispositivo {
+  + name : str
+}
+class iot_Equality {
+  + op : str
+}
+class iot_Estado {
+  + name : str
+}
+class iot_Etiqueta {
+  + name : str
+  + typeName : str
+  + value : str
+}
+class iot_Evento {
+  + name : str
+  + typeName : str
+}
+class iot_Expression {
+}
+class iot_IfBlock {
+}
+class iot_IfStatement {
+}
+class iot_IntConstant {
+  + value : int
+}
+class iot_Minus {
+}
+class iot_Model {
+}
+class iot_MulOrDiv {
+  + op : str
+}
+class iot_Not {
+}
+class iot_Or {
+}
+class iot_Plus {
+}
+class iot_StringConstant {
+  + value : str
+}
+class iot_Transicion {
+}
+class iot_Variable {
+  + name : str
+}
+class iot_VariableRef {
+}
+AbstractElement <|-- iot_Expression
+AbstractElement <|-- iot_IfStatement
+AbstractElement <|-- iot_Variable
+Expression <|-- iot_And
+Expression <|-- iot_BoolConstant
+Expression <|-- iot_Comparison
+Expression <|-- iot_Equality
+Expression <|-- iot_IntConstant
+Expression <|-- iot_Minus
+Expression <|-- iot_MulOrDiv
+Expression <|-- iot_Not
+Expression <|-- iot_Or
+Expression <|-- iot_Plus
+Expression <|-- iot_StringConstant
+Expression <|-- iot_VariableRef
+iot_Dispositivo "0..9999" --* "1..1" iot_Model : dispositivos0
+iot_AbstractElement "0..9999" --* "1..1" iot_Estado : elementos12
+iot_AbstractElement "0..9999" --* "1..1" iot_IfBlock : elementos26
+iot_IfBlock "0..1" --* "1..1" iot_IfStatement : elseBlock23
+iot_Estado "0..1" -- "1..1" iot_Transicion : estado17
+iot_Dispositivo "1..1" *-- "0..9999" iot_Estado : estados6
+iot_Dispositivo "1..1" *-- "0..9999" iot_Etiqueta : etiquetas4
+iot_Evento "0..1" -- "1..1" iot_Transicion : evento14
+iot_Dispositivo "1..1" *-- "0..9999" iot_Evento : eventos8
+iot_Expression "0..1" --* "1..1" iot_IfStatement : expression20
+iot_Expression "0..1" --* "1..1" iot_Variable : expression29
+iot_Expression "0..1" --* "1..1" iot_Not : expression66
+iot_Expression "0..1" --* "1..1" iot_Or : left31
+iot_And "1..1" *-- "0..1" iot_Expression : left36
+iot_Equality "1..1" *-- "0..1" iot_Expression : left41
+iot_Comparison "1..1" *-- "0..1" iot_Expression : left46
+iot_Expression "0..1" --* "1..1" iot_Plus : left51
+iot_Expression "0..1" --* "1..1" iot_Minus : left56
+iot_Expression "0..1" --* "1..1" iot_MulOrDiv : left61
+iot_Expression "0..1" --* "1..1" iot_Or : right33
+iot_And "1..1" *-- "0..1" iot_Expression : right38
+iot_Equality "1..1" *-- "0..1" iot_Expression : right43
+iot_Comparison "1..1" *-- "0..1" iot_Expression : right48
+iot_Expression "0..1" --* "1..1" iot_Plus : right53
+iot_Expression "0..1" --* "1..1" iot_Minus : right58
+iot_Expression "0..1" --* "1..1" iot_MulOrDiv : right63
+iot_Dispositivo "0..1" -- "1..1" iot_Dispositivo : superType2
+iot_IfBlock "0..1" --* "1..1" iot_IfStatement : thenBlock21
+iot_Dispositivo "1..1" *-- "0..9999" iot_Transicion : transiciones10
+iot_Variable "0..1" -- "1..1" iot_VariableRef : variable68
+@enduml

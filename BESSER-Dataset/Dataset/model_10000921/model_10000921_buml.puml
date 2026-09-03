@@ -1,0 +1,154 @@
+@startuml
+class App {
+}
+class Array_Zutat___ {
+}
+class ComboBox {
+}
+class DekorRezept {
+  + basis : PlaetzchenForm_
+  + basismenge : int
+  + dekor : Zutat_
+  + zutaten : List_Zutat___
+}
+class Font_ {
+}
+class Font_2 {
+}
+class GUI {
+  + attribute : str
+  + datei : KonfigDatei_
+  + dateiname : str
+  + deko : ComboBox
+  + dekorList : List_DekorRezept___
+  + form : ComboBox
+  + groesse : ComboBox
+  + guss : ComboBox
+  + gussList : List_DekorRezept___
+  + plaetzchen : Plaetzchen_
+  + plaetzchenname : str
+  + plformList : List_PlaetzchenForm___
+  + stueckzahl : str
+  + teigList : List_TeigRezept___
+  + teigsorte : ComboBox
+  + zutatenList : List_Zutat___
+}
+class GUIKeksform {
+  + breite : int
+  + laenge : int
+  + name : str
+  + pl__f : PL_Form_
+}
+class GUIRezept {
+  + name : str
+}
+class Groesse {
+  + breite : int
+  + laenge : int
+  + name : str
+  + name1 : PL_Groesse_
+}
+class Groesse_ {
+}
+class GussRezept {
+  + basis : PlaetzchenForm_
+  + basismenge : int
+  + zutat : Zutat
+}
+class KeyPressEventArgs_ {
+}
+class KonfigDatei {
+  + attribute : str
+  + attribute2 : str
+  + backtemp : int
+  + backzeit : int
+  + menge : int
+  + menge1 : int
+  + name : String_
+  + plaetzchen : Plaetzchen_
+}
+class KonfigDatei_ {
+}
+class List_DekorRezept___ {
+}
+class List_PlaetzchenForm___ {
+}
+class List_TeigRezept___ {
+}
+class List_Zutat___ {
+}
+class Object_ {
+}
+enum PL_Form {
+}
+class PL_Form_ {
+}
+enum PL_Groesse {
+}
+class PL_Groesse_ {
+}
+class Plaetzchen {
+  + deko : Zutat_
+  + form : PlaetzchenForm_
+  + guss : Zutat_
+  + menge : int
+  + name : String_
+  + rezeptDeko : str
+  + rezeptGuss : str
+  + rezeptTeig : TeigRezept_
+  + teig : List_Zutat___
+}
+class PlaetzchenForm {
+  + faktor : str
+  + pl_form : PL_Form_
+  + pl_groesse : Groesse_
+}
+class PlaetzchenForm_ {
+}
+class Plaetzchen_ {
+}
+class Rezept {
+  + attribute : str
+  + attribute2 : str
+  + basis : PlaetzchenForm_
+  + basismenge : int
+  + rezeptname : String_
+}
+class String_ {
+}
+class TeigRezept {
+  + backtemp : int
+  + backzeit : int
+  + basis : PlaetzchenForm_
+  + basismenge : int
+  + zutaten : List_Zutat___
+}
+class TeigRezept_ {
+}
+class ThreadExceptionEventArgs_ {
+}
+class Zutat {
+  + einheit : String_
+  + menge : int
+  + name : String_
+}
+class Zutat_ {
+}
+class myException {
+}
+DekorRezept "0..1" -- "0..1" GUI : DekorRezept_GUI
+DekorRezept "0..1" -- "0..1" Zutat : DekorRezept_Zutat
+GUIRezept "0..1" -- "0..1" TeigRezept : GUIRezept_TeigRezept
+GUI "0..1" -- "0..1" GUIKeksform : GUI_GUIPlaetzchen
+GUI "0..1" -- "0..1" GUIRezept : GUI_GUIRezept
+GUI "0..1" -- "0..1" KonfigDatei : GUI_KonfigDatei2
+GUI "0..1" -- "0..1" myException : GUI_myException
+Groesse "0..1" -- "0..1" PlaetzchenForm : Groesse_PlaetzchenForm
+GUI "0..1" -- "0..1" PlaetzchenForm : PlaetzchenForm_GUI
+GUIKeksform "0..1" -- "0..1" PlaetzchenForm : PlaetzchenForm_GUIKeksform
+Plaetzchen "0..1" -- "0..1" PlaetzchenForm : PlaetzchenForm_Plaetzchen
+PlaetzchenForm "0..1" -- "0..1" Rezept : PlaetzchenForm_TeigRezept
+GUI "0..1" -- "0..1" TeigRezept : TeigRezept_GUI
+GUI "0..1" -- "0..1" Zutat : Zutat_GUI
+TeigRezept "0..1" -- "0..1" Zutat : Zutat_TeigRezept
+@enduml

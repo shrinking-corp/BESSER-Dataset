@@ -1,0 +1,39 @@
+@startuml
+class DB_Column {
+  + notNull : bool
+  + type : str
+}
+class DB_Database {
+}
+abstract class DB_DatabaseElement {
+}
+class DB_ForeignKey {
+  + isMany : str
+}
+abstract class DB_NamedElement {
+  + name : str
+}
+class DB_Table {
+}
+enum DataType {
+  int
+  text
+  unknown
+  varchar
+}
+class DatabaseElement {
+}
+class NamedElement {
+}
+DatabaseElement <|-- DB_Column
+DatabaseElement <|-- DB_ForeignKey
+DatabaseElement <|-- DB_Table
+NamedElement <|-- DB_DatabaseElement
+DB_Column "0..1" -- "1..1" DB_ForeignKey : child7
+DB_Column "0..9999" --* "1..1" DB_Table : columns2
+DB_Database "1..1" *-- "0..9999" DB_DatabaseElement : contents0
+DB_Database "0..1" -- "1..1" DB_DatabaseElement : database1
+DB_Column "0..1" -- "1..1" DB_ForeignKey : parent5
+DB_Column "0..9999" -- "1..1" DB_Table : primaryKeys3
+DB_Column "1..1" -- "0..1" DB_Table : table4
+@enduml

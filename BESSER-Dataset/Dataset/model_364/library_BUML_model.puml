@@ -1,0 +1,29 @@
+@startuml
+enum BookCategory {
+  Art
+  Drama
+  History
+  SciFi
+}
+class eiqlibrary_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class eiqlibrary_Library {
+  + address : str
+  + internalRequestCount : int
+  + requestCount : int
+  + sumOfPages : int
+}
+class eiqlibrary_Writer {
+  + name : str
+}
+eiqlibrary_Book "1..1" -- "0..9999" eiqlibrary_Writer : authors6
+eiqlibrary_Book "0..9999" --* "1..1" eiqlibrary_Library : books1
+eiqlibrary_Book "0..9999" -- "1..1" eiqlibrary_Writer : books7
+eiqlibrary_Book "0..1" -- "1..1" eiqlibrary_Writer : firstBook8
+eiqlibrary_Book "0..9999" -- "1..1" eiqlibrary_Writer : scifiBooks11
+eiqlibrary_Book "0..9999" -- "1..1" eiqlibrary_Library : someBooks3
+eiqlibrary_Library "1..1" *-- "0..9999" eiqlibrary_Writer : writers0
+@enduml

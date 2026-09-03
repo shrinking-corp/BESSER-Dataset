@@ -1,0 +1,102 @@
+@startuml
+class DBA {
+  + ID : int
+  + email : str
+  + name : str
+}
+class DBA_Actor {
+}
+class add_book_UseCase {
+}
+class book {
+  + ISBN : int
+  + author : str
+  + pages : int
+  + publisher : str
+  + title : str
+  + type : str
+}
+class buy_book_from_author_UseCase {
+}
+class buy_book_from_publisher_UseCase {
+}
+class check_account__UseCase {
+}
+class date {
+}
+class display_details_UseCase {
+}
+class issue_book_UseCase {
+}
+class librarian {
+  + address : str
+  + birth_date : date
+  + email : str
+  + hire_date : date
+  + id : int
+  + job : str
+  + name : str
+}
+class librarian_Actor {
+}
+class loan_book {
+  + cost : int
+  + due_date : date
+  + id : int
+  + loan_date : date
+  + returned_date : date
+}
+class maintenance_database_UseCase {
+}
+class make_reservation_UseCase {
+}
+class ordinary_user {
+}
+class publish_book_UseCase {
+}
+class publisher {
+  + address : str
+  + email : str
+  + id : int
+  + name : str
+  + website : str
+}
+class publisher_Actor {
+}
+class remove_reservation_UseCase {
+}
+class remove_title_UseCase {
+}
+class search_for_book_UseCase {
+}
+class student {
+  + student_card : int
+}
+class system_Component {
+}
+class update_details_UseCase {
+}
+class user {
+  + address : str
+  + card : int
+  + email : str
+  + first_name : str
+  + id : int
+  + last_name : str
+  + phone_number : int
+}
+DBA_Actor "0..1" -- "0..1" maintenance_database_UseCase : DBA_maintenance_database
+book "0..1" -- "0..1" publisher : book_publisher
+display_details_UseCase "0..1" -- "0..1" system_Component : display_details_system
+issue_book_UseCase "0..1" -- "0..1" librarian_Actor : issue_book_librarian
+DBA "1..1" -- "0..1" librarian : librarian_DBA
+librarian_Actor "0..1" -- "0..1" search_for_book_UseCase : librarian_search_for_book
+book "0..1" -- "0..1" loan_book : loan_book_book
+librarian_Actor "0..1" -- "0..1" make_reservation_UseCase : make_reservation_librarian
+DBA "0..1" -- "0..1" publisher : publisher_DBA
+buy_book_from_author_UseCase "0..1" -- "0..1" publisher_Actor : publisher_buy_book_from_author
+publish_book_UseCase "0..1" -- "0..1" publisher_Actor : publisher_publish_book
+librarian_Actor "0..1" -- "0..1" remove_reservation_UseCase : remove_reservation_librarian
+librarian "1..1" -- "0..1" user : user_librarian
+loan_book "0..1" -- "0..1" user : user_loan_book
+@enduml

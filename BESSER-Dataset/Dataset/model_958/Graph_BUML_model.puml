@@ -1,0 +1,31 @@
+@startuml
+class Adaptable {
+}
+class Attributable {
+}
+class Vertex {
+}
+class graph_Edge {
+  + label : str
+}
+class graph_Graph {
+}
+class graph_Vertex {
+  + label : str
+  + number : int
+}
+Adaptable <|-- graph_Vertex
+Attributable <|-- graph_Edge
+Attributable <|-- graph_Vertex
+Vertex <|-- graph_Graph
+graph_Edge "0..9999" -- "1..1" graph_Vertex : connecting6
+graph_Edge "0..9999" --* "1..1" graph_Graph : edges0
+graph_Edge "0..9999" -- "1..1" graph_Vertex : incoming3
+graph_Vertex "0..9999" -- "1..1" graph_Vertex : neighbors16
+graph_Edge "0..9999" -- "1..1" graph_Vertex : outgoing4
+graph_Vertex "1..1" -- "0..9999" graph_Vertex : predecessors10
+graph_Edge "1..1" -- "0..1" graph_Vertex : source18
+graph_Vertex "0..9999" -- "1..1" graph_Vertex : successors13
+graph_Edge "1..1" -- "0..1" graph_Vertex : target19
+graph_Graph "1..1" *-- "0..9999" graph_Vertex : vertices1
+@enduml

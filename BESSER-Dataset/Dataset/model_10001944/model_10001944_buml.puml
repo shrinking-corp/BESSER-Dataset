@@ -1,0 +1,56 @@
+@startuml
+class Candidat {
+}
+class CoursCode {
+}
+class CoursConduite {
+}
+class Examen {
+  + dateExamen : str
+  + heureD : str
+  + heureF : str
+  + id : int
+  + typeExamen : str
+}
+class Groupe {
+  + id : int
+  + libelle : str
+  + numeroGroupe : int
+}
+class Personne {
+  + adresse : str
+  + dateNaissance : str
+  + email : str
+  + id : int
+  + lieuNaissance : str
+  + nom : str
+  + numeroCIN : int
+  + prenom : str
+  + telephone : str
+}
+class Professeur {
+  + dateEmbauche : str
+}
+class Utilisateur {
+  + login : str
+  + mdp : str
+}
+class Voiture {
+  + id : int
+  + immatriculation : str
+  + marque : str
+  + modele : str
+}
+class cours {
+  + dateCours : str
+  + heureD : str
+  + heureF : str
+  + id : int
+}
+Candidat "1..9999" -- "1..1" Groupe : candidat_groupe
+Candidat "1..1" -- "0..9999" CoursConduite : coursConduite_candidat
+CoursConduite "0..9999" -- "1..1" Voiture : coursConduite_voiture
+CoursCode "1..9999" -- "1..1" Groupe : groupe_coursCode
+CoursCode "0..9999" -- "1..1" Professeur : professeur_coursCode
+CoursConduite "0..9999" -- "1..1" Professeur : professeur_coursConduite
+@enduml

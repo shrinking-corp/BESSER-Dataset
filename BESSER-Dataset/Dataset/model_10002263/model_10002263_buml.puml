@@ -1,0 +1,56 @@
+@startuml
+class NO_Queue_mobile_application__Account {
+  + Closed : str
+  + ID : str
+  + Open : str
+  + billing_address : str
+  + is_closed : bool
+}
+class NO_Queue_mobile_application__App_User {
+  + login_id : str
+  + passwd : str
+}
+class NO_Queue_mobile_application__Customer {
+  + Address : str
+  + Email : str
+  + ID : str
+  + Phone : str
+}
+class NO_Queue_mobile_application__Line_item {
+  + price : str
+  + quantity : int
+}
+class NO_Queue_mobile_application__NOQueue {
+  + APP_Details : str
+}
+class NO_Queue_mobile_application__Order {
+  + Number : str
+  + Ship_to : str
+  + ordered : str
+  + shipped : str
+  + status : str
+  + total : str
+}
+class NO_Queue_mobile_application__Payment {
+  + Details : str
+  + ID : str
+  + Paid : str
+  + Total : str
+}
+class NO_Queue_mobile_application__Product {
+  + ID : str
+  + Name : str
+  + Supplier : str
+}
+class NO_Queue_mobile_application__Shopping_Cart {
+  + created : str
+}
+NO_Queue_mobile_application__Account "1..1" -- "0..9999" NO_Queue_mobile_application__Order : Account_Order
+NO_Queue_mobile_application__Account "1..1" -- "1..1" NO_Queue_mobile_application__Customer : Customer_Account
+NO_Queue_mobile_application__Line_item "0..9999" -- "1..1" NO_Queue_mobile_application__Product : Line_item_Product
+NO_Queue_mobile_application__Line_item "0..9999" -- "1..1" NO_Queue_mobile_application__Order : Order_Line_item
+NO_Queue_mobile_application__Account "1..1" -- "1..9999" NO_Queue_mobile_application__Payment : Payment_Account
+NO_Queue_mobile_application__Line_item "0..9999" -- "1..1" NO_Queue_mobile_application__Shopping_Cart : Shopping_Cart_Line_item
+NO_Queue_mobile_application__App_User "0..1" -- "1..1" NO_Queue_mobile_application__Customer : Web_User_Customer
+NO_Queue_mobile_application__App_User "1..1" -- "0..1" NO_Queue_mobile_application__Shopping_Cart : Web_User_Shopping_Cart
+@enduml

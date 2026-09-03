@@ -1,0 +1,43 @@
+@startuml
+class AdminController {
+  + UserID : int
+  + UserLevel : int
+  + UserName : str
+}
+class BookingController {
+  + BookingID : int
+  + CustomerName : str
+  + Date : str
+  + Phone : str
+  + TableNo : str
+  + Time : str
+}
+class Login {
+  + Discount : int
+  + LoyaltyID : int
+}
+class Membership_Card {
+  + Discount : int
+  + LoyaltyID : int
+}
+class OrderController {
+  + Date : str
+  + OrderID : int
+  + OrderTotal : str
+  + UserID : int
+}
+class Table {
+  + Occupied : bool
+  + TableNo : str
+}
+class processQuery {
+}
+Login "0..1" -- "0..1" processQuery : Login_processQuery
+Membership_Card "0..1" -- "0..9999" OrderController : Order_Membership_Card
+OrderController "1..1" -- "1..1" Table : Order_Table
+BookingController "1..1" -- "1..9999" Table : Table_Booking
+AdminController "0..1" -- "0..1" processQuery : processQuery_AdminPanel
+BookingController "0..1" -- "0..1" processQuery : processQuery_Booking
+OrderController "0..1" -- "0..1" processQuery : processQuery_Order
+Table "0..1" -- "0..1" processQuery : processQuery_Table
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+class tdt4250case_Course {
+  + code : str
+  + content : str
+  + credits : float
+  + name : str
+}
+class tdt4250case_CourseInstance {
+  + semester : str
+}
+class tdt4250case_CourseRole {
+  + name : str
+}
+class tdt4250case_CourseWork {
+  + hours : int
+  + type : str
+}
+class tdt4250case_CreditReductionCourse {
+  + from_ : date
+  + reduction : float
+  + to : date
+}
+class tdt4250case_Department {
+  + code : str
+  + name : str
+}
+class tdt4250case_Examination {
+}
+class tdt4250case_ExaminationActivity {
+  + evaluationForm : str
+  + weighting : str
+}
+class tdt4250case_Person {
+  + name : str
+  + username : str
+}
+class tdt4250case_ScheduledActivity {
+  + activity : str
+  + room : str
+  + timeslot : str
+}
+class tdt4250case_Studyprogram {
+  + code : str
+}
+class tdt4250case_Timetable {
+}
+tdt4250case_Examination "1..1" *-- "1..9999" tdt4250case_ExaminationActivity : activity27
+tdt4250case_Course "1..1" -- "1..1" tdt4250case_CreditReductionCourse : course12
+tdt4250case_Course "0..9999" -- "1..1" tdt4250case_Studyprogram : course15
+tdt4250case_Course "1..1" -- "1..1" tdt4250case_CourseInstance : course25
+tdt4250case_CourseInstance "1..1" -- "1..1" tdt4250case_Person : courseCoordinator23
+tdt4250case_Course "1..1" *-- "1..9999" tdt4250case_CourseWork : courseWork10
+tdt4250case_Course "1..1" *-- "0..9999" tdt4250case_CreditReductionCourse : creditReductionCourse6
+tdt4250case_Department "1..1" *-- "0..9999" tdt4250case_Person : employee33
+tdt4250case_CourseInstance "1..1" *-- "1..1" tdt4250case_Examination : examination16
+tdt4250case_Course "1..1" *-- "0..9999" tdt4250case_CourseInstance : instance8
+tdt4250case_CourseRole "1..1" -- "1..9999" tdt4250case_Person : person37
+tdt4250case_Course "0..9999" -- "1..1" tdt4250case_Course : recommendedCourse4
+tdt4250case_Course "1..1" -- "0..9999" tdt4250case_Course : requiredCourse2
+tdt4250case_ScheduledActivity "1..1" -- "1..9999" tdt4250case_Studyprogram : reservedFor31
+tdt4250case_CourseInstance "1..1" -- "1..1" tdt4250case_Department : responsibleDepartment19
+tdt4250case_CourseInstance "1..1" *-- "1..9999" tdt4250case_CourseRole : role21
+tdt4250case_CourseRole "0..9999" -- "1..1" tdt4250case_Person : role36
+tdt4250case_ScheduledActivity "0..9999" --* "1..1" tdt4250case_Timetable : scheduledActivity29
+tdt4250case_Course "1..1" -- "0..9999" tdt4250case_Studyprogram : studyprogram0
+tdt4250case_CourseInstance "1..1" *-- "1..1" tdt4250case_Timetable : timetable17
+@enduml

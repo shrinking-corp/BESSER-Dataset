@@ -1,0 +1,31 @@
+@startuml
+class Doctor {
+  + Address : str
+  + Department : str
+  + DocID : int
+  + Name : str
+  + Phone : int
+  + Specialization : str
+}
+class Hospital_Management_System {
+  + Address : str
+  + Code : str
+  + Name : str
+}
+class Patient {
+  + Address : str
+  + Age : int
+  + Gender : str
+  + Name : str
+  + PatID : int
+  + RoomNo : int
+  + TelNo : int
+}
+class Receptionist {
+  + ID : int
+  + Name : str
+}
+Doctor "0..1" -- "1..9999" Patient : Doctor_Patient
+Doctor "1..9999" -- "0..1" Receptionist : Receptionist_Doctor
+Patient "0..1" -- "0..1" Receptionist : Receptionist_Patient
+@enduml

@@ -1,0 +1,114 @@
+@startuml
+enum Color {
+  Blue
+  Green
+  Red
+}
+enum Gender {
+  Both
+  Female
+  Male
+}
+class TableContent {
+}
+class model_Book {
+  + pages : int
+  + title : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+class model_Computer {
+  + colors : str
+  + name : str
+}
+class model_Container {
+}
+class model_Content {
+  + secondAttribute : str
+  + uniqueAttribute : str
+}
+class model_CrossReferenceContainer {
+}
+class model_CrossReferenceContent {
+}
+class model_Librarian {
+  + name : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+class model_Library {
+  + name : str
+  + phoneNumber : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+class model_Mainboard {
+  + name : str
+}
+class model_Person {
+  + age : str
+  + custom : str
+  + firstName : str
+  + gender : str
+  + lastName : str
+}
+class model_PowerBlock {
+  + name : str
+}
+class model_Referencer {
+}
+abstract class model_TableContent {
+}
+class model_TableContentWithInnerChild {
+  + stuff : str
+}
+class model_TableContentWithInnerChild2 {
+}
+class model_TableContentWithValidation {
+  + name : str
+  + weight : int
+}
+class model_TableContentWithoutValidation {
+  + name : str
+  + weight : int
+}
+class model_TableWithMultiplicity {
+}
+class model_TableWithUnique {
+}
+class model_TableWithoutMultiplicity {
+}
+class model_TableWithoutMultiplicityConcrete {
+}
+class model_Writer {
+  + BirthDate : date
+  + EMail : str
+  + Pseudonym : bool
+  + firstName : str
+  + initials : str
+  + lastName : str
+  + title : str
+  + validate(model_context : str, model_diagnostic : str) : bool
+}
+TableContent <|-- model_TableContentWithInnerChild
+TableContent <|-- model_TableContentWithInnerChild2
+TableContent <|-- model_TableContentWithValidation
+TableContent <|-- model_TableContentWithoutValidation
+model_Book "0..9999" --* "1..1" model_Library : books1
+model_Book "0..9999" -- "1..1" model_Writer : books4
+model_TableContent "1..9999" --* "1..1" model_TableWithMultiplicity : content13
+model_TableContent "0..9999" --* "1..1" model_TableWithoutMultiplicity : content14
+model_TableContent "0..9999" --* "1..1" model_TableWithUnique : content16
+model_TableContentWithInnerChild "0..9999" --* "1..1" model_TableWithoutMultiplicityConcrete : content22
+model_Container "1..1" *-- "0..9999" model_Content : contents12
+model_CrossReferenceContainer "1..1" *-- "0..9999" model_CrossReferenceContent : contents26
+model_TableContent "0..1" --* "1..1" model_TableContentWithInnerChild2 : innerChild18
+model_TableContent "0..1" --* "1..1" model_TableContentWithInnerChild : innerChild20
+model_Librarian "0..1" --* "1..1" model_Library : librarian2
+model_Library "0..1" -- "1..1" model_Writer : library5
+model_Computer "1..1" *-- "0..1" model_Mainboard : mainboard9
+model_CrossReferenceContainer "0..1" -- "1..1" model_CrossReferenceContent : parent29
+model_Computer "1..1" *-- "0..1" model_PowerBlock : powerBlock10
+model_Computer "0..1" -- "1..1" model_Referencer : referencedContent24
+model_CrossReferenceContainer "1..1" *-- "0..1" model_CrossReferenceContent : singleContent27
+model_CrossReferenceContainer "0..1" -- "1..1" model_CrossReferenceContent : singleParent30
+model_Library "1..1" *-- "1..9999" model_Writer : writers0
+model_Book "1..1" -- "0..1" model_Writer : writers7
+@enduml

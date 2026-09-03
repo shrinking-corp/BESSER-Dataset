@@ -1,0 +1,62 @@
+@startuml
+class BookedTables {
+  + BookingID : int
+  + TableNo : int
+}
+class Bookings {
+  + BookingID : int
+  + CustomerName : str
+  + Date : date
+  + People : int
+  + Phone : str
+  + Time : date
+}
+class Checkout {
+  + checkoutAmount : float
+  + checkoutID : int
+}
+class Membership {
+  + discount : float
+  + loyaltyID : int
+}
+class Menu {
+  + Availability : int
+  + Category : str
+  + MenuItem : str
+  + Price : float
+}
+class Order {
+  + Completed : int
+  + Date : str
+  + OrderID : int
+  + UserID : int
+}
+class OrderList {
+  + ItemName : str
+  + OrderID : int
+  + OrderItemID : int
+  + RemaningTime : date
+}
+class Table {
+  + Occupied : int
+  + TableNo : int
+}
+class Users {
+  + UserBday : date
+  + UserID : int
+  + UserLevel : int
+  + UserName : str
+}
+class ViewOrder {
+  + getOrderList : int
+}
+BookedTables "1..9999" -- "1..1" Table : BookedTables_Table
+Checkout "1..1" -- "1..1" Membership : Membership_Checkout
+Order "1..1" -- "1..9999" OrderList : OrderItem_Order
+Checkout "1..1" -- "1..1" Order : Order_Checkout
+Menu "1..1" -- "1..9999" OrderList : Order_Menu
+Order "1..9999" -- "1..1" Table : Order_Table
+Order "1..9999" -- "1..1" Users : Order_Users
+BookedTables "1..9999" -- "1..1" Bookings : Table_Bookings
+OrderList "1..9999" -- "1..1" ViewOrder : ViewOrder_OrderItem
+@enduml

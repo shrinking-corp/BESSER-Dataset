@@ -1,0 +1,29 @@
+@startuml
+class Unit {
+}
+class units_BaseUnit {
+  + name : str
+}
+abstract class units_Unit {
+}
+abstract class units_UnitCarryingElement {
+  + unitSpecification : str
+}
+class units_UnitLiteral {
+}
+class units_UnitMultiplication {
+}
+class units_UnitPower {
+  + exponent : int
+}
+class units_UnitRepository {
+}
+Unit <|-- units_UnitLiteral
+Unit <|-- units_UnitMultiplication
+Unit <|-- units_UnitPower
+units_BaseUnit "1..1" -- "1..1" units_UnitLiteral : baseUnit4
+units_Unit "1..1" --* "1..1" units_UnitPower : unit2
+units_Unit "0..1" -- "1..1" units_UnitCarryingElement : unit6
+units_BaseUnit "0..9999" --* "1..1" units_UnitRepository : units0
+units_Unit "1..9999" --* "1..1" units_UnitMultiplication : units1
+@enduml

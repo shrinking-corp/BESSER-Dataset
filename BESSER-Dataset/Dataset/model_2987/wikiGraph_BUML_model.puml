@@ -1,0 +1,52 @@
+@startuml
+class Graph {
+}
+class wiki_ArticleGraph {
+}
+class wiki_CategoryGraph {
+}
+class wiki_ClassificationGraph {
+}
+class wiki_Edge {
+  + type : str
+}
+class wiki_Graph {
+  + name : str
+}
+class wiki_IndexGraph {
+}
+class wiki_Node {
+  + editions : int
+  + node_id : int
+  + node_namespace : int
+  + title : str
+  + type : str
+  + visits : int
+}
+class wiki_Revision {
+  + date : str
+  + text_id : int
+  + user : str
+}
+class wiki_Wiki {
+  + title : str
+}
+Graph <|-- wiki_ArticleGraph
+Graph <|-- wiki_CategoryGraph
+Graph <|-- wiki_ClassificationGraph
+Graph <|-- wiki_IndexGraph
+wiki_Edge "0..9999" -- "1..1" wiki_Graph : edgerefs15
+wiki_Edge "0..9999" --* "1..1" wiki_Wiki : edges9
+wiki_Edge "1..1" -- "1..1" wiki_Node : from_26
+wiki_ArticleGraph "0..1" --* "1..1" wiki_Wiki : graphArticles3
+wiki_CategoryGraph "0..1" --* "1..1" wiki_Wiki : graphCategories1
+wiki_ClassificationGraph "0..1" --* "1..1" wiki_Wiki : graphClassification5
+wiki_IndexGraph "0..1" --* "1..1" wiki_Wiki : graphIndex0
+wiki_Node "1..1" -- "0..1" wiki_Revision : lastRevision18
+wiki_Node "0..1" -- "1..1" wiki_Revision : node22
+wiki_Graph "1..1" -- "0..9999" wiki_Node : noderefs13
+wiki_Node "0..9999" --* "1..1" wiki_Wiki : nodes7
+wiki_Revision "0..9999" --* "1..1" wiki_Wiki : revisions11
+wiki_Node "1..1" -- "0..9999" wiki_Revision : revisions21
+wiki_Edge "1..1" -- "1..1" wiki_Node : to23
+@enduml

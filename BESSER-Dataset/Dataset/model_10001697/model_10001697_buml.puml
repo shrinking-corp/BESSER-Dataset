@@ -1,0 +1,63 @@
+@startuml
+class Address {
+  + City : str
+  + House : str
+  + Street : str
+}
+class Customer {
+  + attribute : str
+  + attribute2 : str
+  + attribute3 : str
+}
+class Customer1 {
+  + Email : str
+  + ID : str
+  + Name : str
+  + Password : str
+  + attribute : str
+}
+class CustomerProduct {
+  + Customer : Customer
+  + ID : int
+  + Product : Products
+}
+class Guest {
+}
+class Order {
+  + Date : str
+  + ProductID : Products
+  + id : int
+}
+class OrderCustomer {
+  + Customer : Customer
+  + Order : Order
+  + id : int
+}
+class OrderProduct {
+  + ID : int
+  + Oid : Order
+  + Pid : Products
+}
+class Payment {
+  + Amount : int
+  + Customer : Customer
+  + Details : str
+  + ID : int
+}
+class Products {
+  + Description : str
+  + ID : int
+  + Name : str
+}
+Address "1..1" -- "1..1" Customer1 : Address_Customer
+Address "1..1" -- "1..1" Order : Address_Order
+CustomerProduct "1..9999" -- "1..1" Products : CustomerProduct_Products
+Customer "0..1" -- "1..9999" Customer : Customer_Customer
+Customer "0..9999" -- "0..1" Customer : Customer_Customer2
+Customer1 "1..1" -- "1..9999" CustomerProduct : Customer_CustomerProduct
+Customer1 "1..1" -- "1..9999" OrderCustomer : Customer_OrderCustomer
+Customer1 "1..1" -- "1..9999" Payment : Customer_Payment
+Order "1..1" -- "1..9999" OrderCustomer : Order_OrderCustomer
+Order "1..9999" -- "1..1" OrderProduct : Order_OrderProduct
+OrderProduct "1..9999" -- "1..1" Products : Products_OrderProduct
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class contacts_Address {
+  + city : str
+  + country : str
+  + state : str
+  + street : str
+  + zipCode : str
+}
+class contacts_AddressBook {
+}
+class contacts_Contact {
+  + company : str
+  + email : str
+  + firstName : str
+  + image : str
+  + jobTitle : str
+  + lastName : str
+  + middleName : str
+  + note : str
+  + title : str
+  + webPage : str
+}
+class contacts_PhoneNumber {
+  + country : str
+  + number : str
+}
+class contacts_UoD {
+}
+contacts_AddressBook "0..9999" --* "1..1" contacts_UoD : allAddressBooks11
+contacts_AddressBook "1..1" *-- "0..9999" contacts_Contact : contacts9
+contacts_Address "0..1" --* "1..1" contacts_Contact : homeAddress6
+contacts_Contact "1..1" *-- "0..1" contacts_PhoneNumber : mobile3
+contacts_Contact "1..1" *-- "0..1" contacts_PhoneNumber : phone1
+contacts_Address "0..1" --* "1..1" contacts_Contact : workAddress0
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+class Bug {
+}
+enum BugStatusType {
+  bst_closed
+  bst_open
+  bst_skipped
+}
+class BugTracking {
+}
+class Control {
+}
+class ControlType {
+}
+class ControlsSequence {
+}
+class DateType {
+}
+class SoftwareQualityControl_Bug {
+  + closeDate : str
+  + commentsAnswers : str
+  + componentVersion : str
+  + description : str
+  + number : str
+  + openDate : str
+  + originator : str
+  + responsible : str
+  + status : str
+}
+class SoftwareQualityControl_BugTracking {
+}
+class SoftwareQualityControl_Control {
+  + component : str
+  + controlledElt : str
+  + developmentPhase : str
+  + eltAuthor : str
+  + eltRef : str
+  + formRef : str
+  + responsible : str
+  + scope : str
+}
+abstract class SoftwareQualityControl_ControlType {
+}
+class SoftwareQualityControl_ControlsSequence {
+}
+class SoftwareQualityControl_DateType {
+  + day : str
+  + month : str
+  + year : str
+}
+ControlType <|-- SoftwareQualityControl_BugTracking
+BugTracking "1..1" -- "1..1" SoftwareQualityControl_Bug : b_bugTracking7
+Bug "0..9999" --* "1..1" SoftwareQualityControl_BugTracking : bugs6
+ControlsSequence "1..1" -- "1..1" SoftwareQualityControl_Control : c_controlsSequence1
+Control "0..9999" --* "1..1" SoftwareQualityControl_ControlsSequence : controls0
+Control "1..1" -- "1..1" SoftwareQualityControl_ControlType : ct_control4
+DateType "1..1" --* "1..1" SoftwareQualityControl_Control : date2
+ControlType "1..1" --* "1..1" SoftwareQualityControl_Control : type3
+@enduml

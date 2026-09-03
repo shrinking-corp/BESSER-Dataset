@@ -1,0 +1,32 @@
+@startuml
+class Expression {
+}
+class mathInterpreter_Divide {
+}
+class mathInterpreter_Exp {
+}
+class mathInterpreter_Expression {
+}
+class mathInterpreter_MathExp {
+}
+class mathInterpreter_Minus {
+}
+class mathInterpreter_Multiply {
+}
+class mathInterpreter_Num {
+  + value : int
+}
+class mathInterpreter_Plus {
+}
+Expression <|-- mathInterpreter_Divide
+Expression <|-- mathInterpreter_Exp
+Expression <|-- mathInterpreter_Minus
+Expression <|-- mathInterpreter_Multiply
+Expression <|-- mathInterpreter_Num
+Expression <|-- mathInterpreter_Plus
+mathInterpreter_Expression "0..1" --* "1..1" mathInterpreter_MathExp : exp0
+mathInterpreter_Expression "0..1" --* "1..1" mathInterpreter_Expression : exp2
+mathInterpreter_Exp "1..1" *-- "0..1" mathInterpreter_Expression : left4
+mathInterpreter_Exp "1..1" *-- "0..1" mathInterpreter_Expression : operator6
+mathInterpreter_Exp "1..1" *-- "0..1" mathInterpreter_Expression : right9
+@enduml

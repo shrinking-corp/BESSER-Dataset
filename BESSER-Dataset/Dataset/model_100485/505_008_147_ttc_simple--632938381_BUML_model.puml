@@ -1,0 +1,107 @@
+@startuml
+class Action {
+}
+enum EOperator {
+  Add
+  And
+  Divide
+  Equal
+  GreaterEqual
+  GreaterThan
+  LowerEqual
+  LowerThan
+  Multiply
+  Negate
+  Not
+  NotEqual
+  Or
+  Subtract
+}
+enum EType {
+  TBool
+  TInt
+}
+class IExpressionTerm {
+}
+class INamedElement {
+}
+class Port {
+}
+class State {
+}
+class StateAutomaton {
+}
+class TransitionSegment {
+}
+class TransitionSegmentSpecification {
+}
+class Var {
+}
+abstract class model_INamedElement {
+  + name : str
+}
+class model_component_Component {
+}
+class model_component_InputPort {
+}
+class model_component_OutputPort {
+}
+abstract class model_component_Port {
+  + type : str
+}
+class model_expression_BoolConst {
+  + value : bool
+}
+abstract class model_expression_IExpressionTerm {
+}
+class model_expression_IntConst {
+  + value : int
+}
+class model_expression_Operation {
+  + operator : str
+}
+class model_expression_Var {
+  + identifier : str
+}
+class model_state_Action {
+}
+class model_state_DataStateVariable {
+  + type : str
+}
+class model_state_State {
+  + isInitial : bool
+}
+class model_state_StateAutomaton {
+}
+class model_state_TransitionSegment {
+}
+class model_state_TransitionSegmentSpecification {
+}
+IExpressionTerm <|-- model_expression_BoolConst
+IExpressionTerm <|-- model_expression_IntConst
+IExpressionTerm <|-- model_expression_Operation
+IExpressionTerm <|-- model_expression_Var
+INamedElement <|-- model_component_Component
+INamedElement <|-- model_component_Port
+INamedElement <|-- model_state_DataStateVariable
+INamedElement <|-- model_state_State
+INamedElement <|-- model_state_TransitionSegment
+Port <|-- model_component_InputPort
+Port <|-- model_component_OutputPort
+Action "0..9999" --* "1..1" model_state_TransitionSegmentSpecification : actions23
+IExpressionTerm "0..9999" --* "1..1" model_expression_Operation : arguments0
+IExpressionTerm "0..1" --* "1..1" model_state_TransitionSegmentSpecification : guard21
+TransitionSegmentSpecification "0..9999" --* "1..1" model_state_State : idleTransitionsSpecifications12
+IExpressionTerm "0..1" --* "1..1" model_state_DataStateVariable : initialValue25
+IExpressionTerm "0..1" --* "1..1" model_component_Port : initialValue7
+Port "0..9999" --* "1..1" model_component_Component : inputPorts1
+Port "0..9999" --* "1..1" model_component_Component : outputPorts2
+State "0..1" -- "1..1" model_state_TransitionSegment : sourceState13
+StateAutomaton "0..1" --* "1..1" model_component_Component : stateAutomaton5
+State "0..9999" --* "1..1" model_state_StateAutomaton : states9
+State "0..1" -- "1..1" model_state_TransitionSegment : targetState15
+TransitionSegmentSpecification "0..1" --* "1..1" model_state_TransitionSegment : transitionSegmentSpecification18
+TransitionSegment "0..9999" --* "1..1" model_state_StateAutomaton : transitions10
+IExpressionTerm "0..1" --* "1..1" model_state_Action : value28
+Var "0..1" --* "1..1" model_state_Action : variable27
+@enduml

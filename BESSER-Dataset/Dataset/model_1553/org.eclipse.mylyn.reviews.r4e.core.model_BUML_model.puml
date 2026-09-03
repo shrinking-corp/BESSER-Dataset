@@ -1,0 +1,309 @@
+@startuml
+class Comment {
+}
+class CommentType {
+}
+class Item {
+}
+class Location {
+}
+enum R4EAnomalyState {
+  R4E_ANOMALY_STATE_ACCEPTED
+  R4E_ANOMALY_STATE_ASSIGNED
+  R4E_ANOMALY_STATE_CREATED
+  R4E_ANOMALY_STATE_DEFERRED
+  R4E_ANOMALY_STATE_DUPLICATED
+  R4E_ANOMALY_STATE_FIXED
+  R4E_ANOMALY_STATE_REJECTED
+  R4E_ANOMALY_STATE_VERIFIED
+}
+class R4EComment {
+}
+class R4EContent {
+}
+enum R4EContextType {
+  R4E_ADDED
+  R4E_DELETED
+  R4E_MODIFIED
+  R4E_REPLACED
+  R4E_UNDEFINED
+}
+enum R4EDecision {
+  R4E_REVIEW_DECISION_ACCEPTED
+  R4E_REVIEW_DECISION_ACCEPTED_FOLLOWUP
+  R4E_REVIEW_DECISION_NONE
+  R4E_REVIEW_DECISION_REJECTED
+}
+class R4EIDComponent {
+}
+class R4EPosition {
+}
+class R4EReview {
+}
+class R4EReviewComponent {
+}
+enum R4EReviewPhase {
+  R4E_REVIEW_PHASE_COMPLETED
+  R4E_REVIEW_PHASE_DECISION
+  R4E_REVIEW_PHASE_PREPARATION
+  R4E_REVIEW_PHASE_REWORK
+  R4E_REVIEW_PHASE_STARTED
+}
+enum R4EReviewType {
+  R4E_REVIEW_TYPE_BASIC
+  R4E_REVIEW_TYPE_FORMAL
+  R4E_REVIEW_TYPE_INFORMAL
+}
+class R4ETextPosition {
+}
+class R4EUser {
+}
+enum R4EUserRole {
+  R4E_ROLE_AUTHOR
+  R4E_ROLE_LEAD
+  R4E_ROLE_ORGANIZER
+  R4E_ROLE_REVIEWER
+}
+class Review {
+}
+class ReviewComponent {
+}
+class ReviewGroup {
+}
+class ReviewState {
+}
+class TaskReference {
+}
+class Topic {
+}
+class User {
+}
+class model_MapDateToDuration {
+  + key : date
+  + value : str
+}
+class model_MapIDToComponent {
+}
+class model_MapKeyToInfoAttributes {
+  + key : str
+  + value : str
+}
+class model_MapNameToReview {
+  + key : str
+}
+class model_MapToAnomalyType {
+  + key : str
+}
+class model_MapToUsers {
+  + key : str
+}
+class model_MapUserIDToUserReviews {
+  + key : str
+}
+class model_R4EAnomaly {
+  + decidedByID : str
+  + dueDate : date
+  + fixedByID : str
+  + followUpByID : str
+  + isImported : bool
+  + notAcceptedReason : str
+  + rank : str
+  + ruleID : str
+  + state : str
+}
+class model_R4EAnomalyTextPosition {
+}
+class model_R4EAnomalyType {
+  + type : str
+}
+class model_R4EComment {
+  + createdOn : date
+}
+class model_R4ECommentType {
+  + type : str
+}
+abstract class model_R4EContent {
+  + info : str
+}
+class model_R4EDelta {
+}
+class model_R4EDesignRule {
+}
+class model_R4EFileContext {
+  + type : str
+}
+class model_R4EFileVersion {
+  + fileRevision : str
+  + localVersionID : str
+  + name : str
+  + platformURI : str
+  + repositoryPath : str
+  + resource : str
+  + versionID : str
+}
+class model_R4EFormalReview {
+}
+class model_R4EID {
+  + sequenceID : int
+  + userID : str
+}
+class model_R4EIDComponent {
+}
+class model_R4EItem {
+  + ProjectURIs : str
+  + addedById : str
+  + authorRep : str
+  + description : str
+  + repositoryRef : str
+  + submitted : date
+}
+class model_R4EMeetingData {
+  + body : str
+  + duration : int
+  + id : str
+  + location : str
+  + receivers : str
+  + sender : str
+  + sentCount : int
+  + startTime : str
+  + subject : str
+}
+class model_R4EParticipant {
+  + focusArea : str
+  + isPartOfDecision : bool
+  + roles : str
+}
+class model_R4EPosition {
+}
+class model_R4EReview {
+  + components : str
+  + dueDate : date
+  + endDate : date
+  + entryCriteria : str
+  + extraNotes : str
+  + modifiedDate : date
+  + name : str
+  + objectives : str
+  + project : str
+  + referenceMaterial : str
+  + startDate : date
+  + type : str
+}
+class model_R4EReviewComponent {
+  + assignedTo : str
+}
+class model_R4EReviewDecision {
+  + spentTime : int
+  + value : str
+}
+class model_R4EReviewGroup {
+  + availableComponents : str
+  + availableProjects : str
+  + defaultEntryCriteria : str
+  + designRuleLocations : str
+  + folder : str
+  + name : str
+}
+class model_R4EReviewPhaseInfo {
+  + endDate : date
+  + phaseOwnerID : str
+  + startDate : date
+  + type : str
+}
+class model_R4EReviewState {
+  + state : str
+}
+class model_R4ETaskReference {
+}
+class model_R4ETextContent {
+  + content : str
+}
+class model_R4ETextPosition {
+  + endLine : int
+  + length : int
+  + startLine : int
+  + startPosition : int
+}
+class model_R4EUser {
+  + groupPaths : str
+  + reviewCompleted : bool
+  + reviewCompletedCode : int
+  + reviewCreatedByMe : bool
+  + sequenceIDCounter : int
+}
+class model_R4EUserReviews {
+  + createdReviews : str
+  + name : str
+}
+Comment <|-- model_R4EComment
+CommentType <|-- model_R4EAnomalyType
+CommentType <|-- model_R4ECommentType
+Item <|-- model_R4EItem
+Location <|-- model_R4EContent
+R4EComment <|-- model_R4EAnomaly
+R4EContent <|-- model_R4ETextContent
+R4EIDComponent <|-- model_R4EComment
+R4EIDComponent <|-- model_R4EDelta
+R4EIDComponent <|-- model_R4EFileContext
+R4EIDComponent <|-- model_R4EItem
+R4EPosition <|-- model_R4ETextPosition
+R4EReview <|-- model_R4EFormalReview
+R4EReviewComponent <|-- model_R4EAnomaly
+R4EReviewComponent <|-- model_R4EComment
+R4EReviewComponent <|-- model_R4EIDComponent
+R4EReviewComponent <|-- model_R4EReview
+R4EReviewComponent <|-- model_R4EReviewGroup
+R4EReviewComponent <|-- model_R4ETaskReference
+R4EReviewComponent <|-- model_R4EUser
+R4ETextPosition <|-- model_R4EAnomalyTextPosition
+R4EUser <|-- model_R4EParticipant
+Review <|-- model_R4EReview
+ReviewComponent <|-- model_R4EReviewComponent
+ReviewGroup <|-- model_R4EReviewGroup
+ReviewState <|-- model_R4EReviewState
+TaskReference <|-- model_R4ETaskReference
+Topic <|-- model_R4EAnomaly
+User <|-- model_R4EUser
+model_R4EMeetingData "0..1" --* "1..1" model_R4EReview : activeMeeting16
+model_R4EComment "0..9999" --* "1..1" model_R4EUser : addedComments28
+model_R4EItem "0..9999" --* "1..1" model_R4EUser : addedItems30
+model_R4EAnomaly "1..1" -- "1..1" model_R4EComment : anomaly43
+model_R4EAnomaly "1..1" --* "1..1" model_R4EReview : anomalyTemplate8
+model_MapToAnomalyType "0..9999" --* "1..1" model_R4EReviewGroup : anomalyTypeKeyToReference1
+model_R4EAnomalyType "0..9999" --* "1..1" model_R4EReviewGroup : availableAnomalyTypes0
+model_R4EFileContext "1..1" *-- "0..1" model_R4EFileVersion : base51
+model_R4EContent "0..1" --* "1..1" model_R4EDelta : base60
+model_R4EReview "1..1" -- "1..1" model_R4EUser : createdBy12
+model_R4EFormalReview "1..1" -- "0..1" model_R4EReviewPhaseInfo : current25
+model_R4EReview "1..1" *-- "0..1" model_R4EReviewDecision : decision7
+model_R4EDelta "0..9999" --* "1..1" model_R4EFileContext : deltas49
+model_R4EAnomalyTextPosition "1..1" *-- "0..1" model_R4EFileVersion : file95
+model_R4EFileContext "0..9999" --* "1..1" model_R4EItem : fileContextList39
+model_R4EAnomaly "1..1" -- "0..1" model_R4EFileVersion : fixedInVersion20
+model_R4EReviewGroup "0..1" -- "1..1" model_R4EUserReviews : group81
+model_R4EID "0..1" --* "1..1" model_R4EIDComponent : id84
+model_MapIDToComponent "0..9999" --* "1..1" model_R4EReview : idsMap14
+model_MapKeyToInfoAttributes "0..9999" --* "1..1" model_R4EItem : infoAtt41
+model_MapKeyToInfoAttributes "0..9999" --* "1..1" model_R4EComment : infoAtt46
+model_MapKeyToInfoAttributes "0..9999" --* "1..1" model_R4EFileContext : infoAtt57
+model_MapKeyToInfoAttributes "0..9999" --* "1..1" model_R4EFileVersion : infoAtt70
+model_MapNameToReview "0..9999" --* "1..1" model_R4EUserReviews : invitedToMap79
+model_MapIDToComponent "1..1" -- "1..1" model_R4EID : key86
+model_R4EContent "1..1" *-- "1..1" model_R4EPosition : location68
+model_R4EFormalReview "1..1" -- "1..1" model_R4EParticipant : phaseOwner22
+model_R4EFormalReview "1..1" *-- "0..9999" model_R4EReviewPhaseInfo : phases23
+model_R4EReview "1..1" -- "1..1" model_R4EUser : reviewInstance32
+model_R4EID "0..9999" -- "1..1" model_R4EParticipant : reviewedContent35
+model_MapNameToReview "0..9999" --* "1..1" model_R4EReviewGroup : reviewsMap3
+model_R4EAnomaly "1..1" -- "0..1" model_R4EDesignRule : rule18
+model_R4EFileContext "1..1" *-- "1..1" model_R4EFileVersion : target54
+model_R4EContent "1..1" --* "1..1" model_R4EDelta : target62
+model_MapDateToDuration "0..9999" --* "1..1" model_R4EParticipant : timeLog37
+model_MapUserIDToUserReviews "0..9999" --* "1..1" model_R4EReviewGroup : userReviews5
+model_MapToUsers "0..9999" --* "1..1" model_R4EReview : usersMap10
+model_MapToAnomalyType "1..1" -- "0..1" model_R4EAnomalyType : value65
+model_MapNameToReview "1..1" -- "1..1" model_R4EReview : value73
+model_MapToUsers "1..1" -- "1..1" model_R4EUser : value76
+model_MapIDToComponent "1..1" -- "1..1" model_R4EIDComponent : value89
+model_MapUserIDToUserReviews "1..1" -- "1..1" model_R4EUserReviews : value92
+@enduml

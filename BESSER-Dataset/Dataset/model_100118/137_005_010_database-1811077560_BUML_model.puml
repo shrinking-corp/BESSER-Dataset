@@ -1,0 +1,81 @@
+@startuml
+enum ColumnType {
+  NON_STD_FIELD
+  STD_FIELD
+}
+class DatabaseResourceData {
+}
+class ExtensibleModel {
+}
+class JRESResourceInfo {
+}
+class database_DBGenContext {
+}
+class database_DBModuleCommonProperty {
+  + database : str
+  + supportDatabases : str
+}
+class database_DatabaseResourceData {
+}
+class database_ForeignKey {
+  + fieldName : str
+  + tableName : str
+}
+class database_TableColumn {
+  + chineseName : str
+  + columnName : str
+  + columnType : str
+  + comments : str
+  + dataType : str
+  + defaultValue : str
+  + description : str
+  + fieldName : str
+  + mark : str
+  + name : str
+  + nullable : bool
+  + primaryKey : bool
+  + unique : bool
+}
+class database_TableIndex {
+  + cluster : bool
+  + mark : str
+  + name : str
+  + unique : bool
+}
+class database_TableIndexColumn {
+  + ascending : bool
+  + columnName : str
+  + columnType : str
+}
+class database_TableKey {
+  + mark : str
+  + name : str
+  + type : str
+}
+class database_TableResourceData {
+}
+class database_ViewResourceData {
+  + isHistory : bool
+  + sql : str
+}
+enum key_type {
+  Foreign
+  Primary
+  Unique
+}
+DatabaseResourceData <|-- database_TableResourceData
+DatabaseResourceData <|-- database_ViewResourceData
+ExtensibleModel <|-- database_DBGenContext
+ExtensibleModel <|-- database_TableColumn
+ExtensibleModel <|-- database_TableIndex
+ExtensibleModel <|-- database_TableIndexColumn
+ExtensibleModel <|-- database_TableKey
+JRESResourceInfo <|-- database_DatabaseResourceData
+database_TableColumn "0..9999" --* "1..1" database_TableResourceData : columns0
+database_TableColumn "0..9999" -- "1..1" database_TableKey : columns12
+database_TableIndex "1..1" *-- "0..9999" database_TableIndexColumn : columns7
+database_ForeignKey "0..9999" --* "1..1" database_TableKey : foreignKey9
+database_ForeignKey "0..9999" --* "1..1" database_TableColumn : foreignkey5
+database_TableIndex "0..9999" --* "1..1" database_TableResourceData : indexes1
+database_TableKey "0..9999" --* "1..1" database_TableResourceData : keys3
+@enduml

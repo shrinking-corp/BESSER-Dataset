@@ -1,0 +1,75 @@
+@startuml
+class Admin {
+  + AdminID : int
+}
+class Alert {
+  + AlertID : int
+}
+class Camera {
+  + CameraID : int
+}
+class Display {
+  + Alarm : str
+  + Coffee : str
+  + DishWasher : str
+  + TimeID : str
+  + WashingMachine : str
+}
+class Door {
+  + DoorID : int
+}
+class Employee {
+  + EmployeeID : int
+}
+class End_Of_Day {
+  + EOT : int
+}
+class Home_Security_System {
+  + UserID : int
+}
+class Hub_Device {
+  + Status : bool
+  + Update : float
+}
+class Light {
+  + LightID : str
+}
+class Manager {
+  + MangagerID : int
+}
+class Motion_Sensor {
+}
+class PressureSensor {
+}
+class RFID_Sensor {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Start_Of_Day {
+  + SOT : int
+}
+class UDP_Controller {
+  + ip_session : str
+}
+class UDP_Socket {
+  + socket : int
+}
+class Users {
+  + HTID : str
+}
+class int {
+}
+Camera "0..9999" -- "1..1" Door : Door_Camera
+Manager "0..1" -- "1..9999" Users : HomeTheatre_Speakers
+Hub_Device "1..1" -- "0..1" Users : HomeTheatre_System
+Admin "1..1" -- "1..9999" Users : HomeTheatre_TV
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" Hub_Device : Home_Security_System_System
+Display "0..1" -- "0..1" End_Of_Day : HouseHolds_End_Of_Day
+Display "0..1" -- "0..1" Start_Of_Day : HouseHolds_Start_Of_Day
+Door "1..1" -- "1..1" Sensor : Sensor_Door
+Hub_Device "1..1" -- "1..9999" Sensor : Sensor_System
+Display "0..1" -- "1..1" Hub_Device : System_HouseHolds
+@enduml

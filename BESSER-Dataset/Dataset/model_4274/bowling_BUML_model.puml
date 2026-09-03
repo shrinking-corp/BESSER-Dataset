@@ -1,0 +1,79 @@
+@startuml
+enum Gender {
+  Female
+  Male
+}
+enum TournamentType {
+  Amateur
+  Pro
+}
+class bowling_Area {
+}
+class bowling_Fan {
+  + dateOfBirth : date
+  + eMails : str
+  + gender : str
+  + hasSeasonTicket : bool
+  + moneySpentOnTickets : float
+  + name : str
+  + numberOfTournamentsVisited : int
+}
+class bowling_Game {
+  + frames : int
+}
+class bowling_League {
+  + name : str
+}
+class bowling_Matchup {
+  + nrSpectators : str
+}
+class bowling_Merchandise {
+  + name : str
+  + price : str
+  + serialNumber : str
+}
+class bowling_Player {
+  + dateOfBirth : date
+  + eMails : str
+  + gender : str
+  + height : float
+  + isProfessional : bool
+  + name : str
+  + numberOfVictories : int
+  + playedTournamentTypes : str
+  + winLossRatio : str
+  + validate(bowling_chain : str, bowling_context : str) : bool
+}
+class bowling_PlayerToPointsMap {
+  + value : str
+}
+class bowling_Referee {
+  + dateOfBirth : str
+}
+class bowling_RefereeToGamesMap {
+}
+class bowling_Tournament {
+  + matchDays : date
+  + priceMoney : float
+  + receivesTrophy : bool
+  + type : str
+}
+bowling_Area "1..1" *-- "0..9999" bowling_Area : areas25
+bowling_Fan "1..1" *-- "0..9999" bowling_Merchandise : fanMerchandise31
+bowling_Fan "1..1" *-- "0..1" bowling_Merchandise : favouriteMerchandise33
+bowling_Fan "1..1" -- "0..1" bowling_Player : favouritePlayer29
+bowling_Game "2..2" --* "1..1" bowling_Matchup : games9
+bowling_Player "0..1" -- "1..1" bowling_PlayerToPointsMap : key13
+bowling_Referee "0..1" --* "1..1" bowling_RefereeToGamesMap : key18
+bowling_League "0..1" -- "1..1" bowling_Referee : league16
+bowling_Game "1..1" -- "1..1" bowling_Matchup : matchup10
+bowling_Matchup "0..9999" --* "1..1" bowling_Tournament : matchups1
+bowling_Game "1..1" -- "0..1" bowling_Player : player11
+bowling_PlayerToPointsMap "0..9999" --* "1..1" bowling_Tournament : playerPoints2
+bowling_League "1..1" *-- "0..9999" bowling_Player : players0
+bowling_Player "0..9999" -- "1..1" bowling_Tournament : players4
+bowling_RefereeToGamesMap "0..9999" --* "1..1" bowling_Tournament : referees7
+bowling_Area "1..1" *-- "0..9999" bowling_Tournament : tournaments26
+bowling_Game "0..1" -- "1..1" bowling_RefereeToGamesMap : value21
+bowling_Fan "1..1" -- "0..9999" bowling_Tournament : visitedTournaments36
+@enduml

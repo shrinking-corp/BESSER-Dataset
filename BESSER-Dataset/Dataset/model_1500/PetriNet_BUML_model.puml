@@ -1,0 +1,32 @@
+@startuml
+class Node {
+}
+class Object {
+}
+class PetriNets_Arc {
+}
+abstract class PetriNets_Node {
+  + name : str
+}
+abstract class PetriNets_Object {
+}
+class PetriNets_PetriNet {
+}
+class PetriNets_Place {
+  + capacity : int
+}
+class PetriNets_Token {
+}
+class PetriNets_Transition {
+}
+Node <|-- PetriNets_Place
+Node <|-- PetriNets_Transition
+Object <|-- PetriNets_Arc
+Object <|-- PetriNets_Node
+PetriNets_Arc "0..9999" -- "1..1" PetriNets_Node : in_1
+PetriNets_Object "0..9999" --* "1..1" PetriNets_PetriNet : object0
+PetriNets_Arc "0..9999" -- "1..1" PetriNets_Node : out2
+PetriNets_Arc "1..1" -- "1..1" PetriNets_Node : source4
+PetriNets_Arc "1..1" -- "1..1" PetriNets_Node : target5
+PetriNets_Place "1..1" *-- "0..9999" PetriNets_Token : token7
+@enduml

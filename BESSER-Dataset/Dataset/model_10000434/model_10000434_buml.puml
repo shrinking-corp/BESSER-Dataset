@@ -1,0 +1,144 @@
+@startuml
+class Admin {
+  + mail : str
+  + name : str
+}
+class Cart {
+  + cartid : str
+  + date : str
+  + productid : str
+  + quantity : str
+}
+class Kategori {
+  + desc : str
+  + idkategori : str
+  + name : str
+  + productid : str
+}
+class Order {
+  + customerid : str
+  + datedeliver : str
+  + dateorder : str
+  + orderid : str
+  + shippingid : str
+  + status : str
+}
+class Orderdetail {
+  + cost : str
+  + orderid : str
+  + productid : str
+  + quantity : str
+  + total : str
+}
+class Produk {
+  + desc : str
+  + idkategori : str
+  + name : str
+  + price : str
+  + productid : str
+}
+class Shippinginfo {
+  + cost : str
+  + region : str
+  + shippingid : str
+  + total : str
+  + type : str
+}
+class User {
+  + id : str
+  + password : str
+}
+class admin {
+  + id : int
+  + password : str
+  + username : str
+}
+class barang {
+  + deskripsi_barang : str
+  + harga_barang : int
+  + id : int
+  + id_kategori : int
+  + nama_barang : str
+}
+class kategori {
+  + deskripsi_kategori : str
+  + id : int
+  + nama_kategori : str
+}
+class order {
+  + dateorder : str
+  + id_user : int
+  + order_id : int
+  + status : str
+}
+class orderdetail {
+  + barang_id : int
+  + order_id : int
+  + total : str
+}
+class pembeli {
+  + address : str
+  + id : str
+  + mail : str
+  + name : str
+  + password : str
+  + shippinginfo : str
+  + username : str
+}
+class pembeli1 {
+  + address : str
+  + id : int
+  + id_role : int
+  + mail : str
+  + name : str
+  + password : str
+  + username : str
+}
+class penjual {
+  + address : str
+  + bank : str
+  + bussinessname : str
+  + id : str
+  + mail : str
+  + name : str
+  + password : str
+  + shippinginfo : str
+  + username : str
+}
+class role {
+  + deskripsi_role : str
+  + id : int
+  + nama_role : str
+}
+class user {
+  + id_order : int
+  + id_role : int
+  + id_user : int
+}
+class vendor {
+  + address : str
+  + bank : str
+  + bussinessname : str
+  + id : int
+  + id_role : int
+  + mail : str
+  + name : str
+  + password : str
+  + shippinginfo : str
+  + username : str
+}
+Cart "0..1" -- "0..1" pembeli : Cart_Customer
+Order "0..1" -- "0..1" Orderdetail : Orderdetail_Order
+Kategori "1..1" -- "1..1" Produk : Produk_Kategori
+Orderdetail "1..1" -- "0..9999" Produk : Produk_Orderdetail
+Order "0..1" -- "0..1" Shippinginfo : Shippinginfo_Order
+admin "1..1" -- "1..1" user : admin_user
+barang "1..1" -- "1..1" kategori : barang_kategori
+order "0..1" -- "0..1" orderdetail : order_orderdetail
+order "0..9999" -- "1..1" user : order_user
+barang "0..9999" -- "1..1" orderdetail : orderdetail_barang
+pembeli1 "1..1" -- "1..1" user : pembeli_user
+User "0..1" -- "0..1" penjual : penjual_User
+role "1..1" -- "1..1" user : role_user
+user "1..1" -- "1..1" vendor : vendor_user
+@enduml

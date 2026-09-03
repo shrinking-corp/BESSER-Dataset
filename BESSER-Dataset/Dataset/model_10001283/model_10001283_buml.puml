@@ -1,0 +1,71 @@
+@startuml
+class Diagnosis {
+  + Condition : str
+  + Date : str
+  + Doctor_Id : int
+  + ID : int
+  + LIst_of_Diagnosis : str
+  + LIst_of_Instructions : str
+  + LIst_of_Medical_Test : str
+  + LIst_of_Medicine : str
+  + LIst_of_Symptoms : str
+  + Patient_Id : int
+}
+class Instructions {
+  + ID : int
+  + descriptions : str
+  + name : str
+}
+class Medical_test {
+  + Date : str
+  + ID : int
+  + Image : str
+  + Lab : str
+  + name : str
+}
+class Medicine {
+  + ActiveIngredient : str
+  + ID : int
+  + Price : str
+  + Type : str
+  + name : str
+}
+class Patient {
+  + Allergies : str
+  + DiagnosisList : str
+  + Height : float
+  + MedicalTest : str
+  + Medicine : str
+  + Surgeries : str
+  + weight : float
+}
+class Person {
+  + Balance : str
+  + Email : str
+  + Gender : int
+  + ID : int
+  + Image : str
+  + InsuranceNumber : str
+  + Last_Seen : str
+  + Lat : str
+  + Long : str
+  + Name : str
+  + Password : str
+  + PhoneNumeber : str
+  + Ssn : str
+}
+class Signs {
+  + ID : int
+  + name : str
+}
+class Symptoms {
+  + ID : int
+  + name : str
+}
+Diagnosis "1..1" -- "0..9999" Instructions : Diagnosis_Instructions
+Diagnosis "1..1" -- "0..9999" Medical_test : Diagnosis_Medical_test
+Diagnosis "1..1" -- "0..9999" Medicine : Diagnosis_Medicine
+Diagnosis "1..1" -- "0..9999" Signs : Diagnosis_Signs
+Diagnosis "1..1" -- "0..9999" Symptoms : Diagnosis_Symptoms
+Diagnosis "0..9999" -- "1..1" Patient : Patient__Diagnosis
+@enduml

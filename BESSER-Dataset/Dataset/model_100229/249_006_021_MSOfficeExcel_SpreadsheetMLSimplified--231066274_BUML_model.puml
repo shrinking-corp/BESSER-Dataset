@@ -1,0 +1,102 @@
+@startuml
+class Cell {
+}
+class ColOrRowElement {
+}
+class Column {
+}
+class Data {
+}
+class DateTimeType {
+}
+class Row {
+}
+class SpreadsheetMLSimplified_BooleanValue {
+  + value : str
+}
+class SpreadsheetMLSimplified_Cell {
+  + arrayRange : str
+  + formula : str
+  + hRef : str
+  + mergeAcross : str
+  + mergeDown : str
+}
+abstract class SpreadsheetMLSimplified_ColOrRowElement {
+  + hidden : str
+  + span : str
+}
+class SpreadsheetMLSimplified_Column {
+  + autoFitWidth : str
+  + width : str
+}
+class SpreadsheetMLSimplified_Data {
+}
+class SpreadsheetMLSimplified_DateTimeType {
+  + day : str
+  + hour : str
+  + minute : str
+  + month : str
+  + second : str
+  + year : str
+}
+class SpreadsheetMLSimplified_DateTimeTypeValue {
+}
+class SpreadsheetMLSimplified_ErrorValue {
+}
+class SpreadsheetMLSimplified_NumberValue {
+  + value : str
+}
+class SpreadsheetMLSimplified_Row {
+  + autoFitHeight : str
+  + height : str
+}
+class SpreadsheetMLSimplified_StringValue {
+  + value : str
+}
+class SpreadsheetMLSimplified_Table {
+}
+abstract class SpreadsheetMLSimplified_TableElement {
+  + index : str
+}
+abstract class SpreadsheetMLSimplified_ValueType {
+}
+class SpreadsheetMLSimplified_Workbook {
+}
+class SpreadsheetMLSimplified_Worksheet {
+  + name : str
+}
+class Table {
+}
+class TableElement {
+}
+class ValueType {
+}
+class Workbook {
+}
+class Worksheet {
+}
+ColOrRowElement <|-- SpreadsheetMLSimplified_Column
+ColOrRowElement <|-- SpreadsheetMLSimplified_Row
+TableElement <|-- SpreadsheetMLSimplified_Cell
+TableElement <|-- SpreadsheetMLSimplified_ColOrRowElement
+ValueType <|-- SpreadsheetMLSimplified_BooleanValue
+ValueType <|-- SpreadsheetMLSimplified_DateTimeTypeValue
+ValueType <|-- SpreadsheetMLSimplified_ErrorValue
+ValueType <|-- SpreadsheetMLSimplified_NumberValue
+ValueType <|-- SpreadsheetMLSimplified_StringValue
+Data "0..1" --* "1..1" SpreadsheetMLSimplified_Cell : c_data16
+Row "1..1" -- "1..1" SpreadsheetMLSimplified_Cell : c_row14
+SpreadsheetMLSimplified_Column "1..1" -- "1..1" Table : c_table9
+Cell "1..1" -- "1..1" SpreadsheetMLSimplified_Data : d_cell18
+Cell "0..9999" --* "1..1" SpreadsheetMLSimplified_Row : r_cells13
+SpreadsheetMLSimplified_Row "1..1" -- "1..1" Table : r_table11
+Column "0..9999" --* "1..1" SpreadsheetMLSimplified_Table : t_cols7
+Row "0..9999" --* "1..1" SpreadsheetMLSimplified_Table : t_rows8
+SpreadsheetMLSimplified_Table "1..1" -- "1..1" Worksheet : t_worksheet5
+DateTimeType "1..1" --* "1..1" SpreadsheetMLSimplified_DateTimeTypeValue : value1
+SpreadsheetMLSimplified_Data "1..1" *-- "1..1" ValueType : value20
+Data "1..1" -- "1..1" SpreadsheetMLSimplified_ValueType : vt_data0
+SpreadsheetMLSimplified_Workbook "1..1" *-- "0..9999" Worksheet : wb_worksheets2
+SpreadsheetMLSimplified_Worksheet "1..1" *-- "0..1" Table : ws_table4
+SpreadsheetMLSimplified_Worksheet "1..1" -- "1..1" Workbook : ws_workbook3
+@enduml

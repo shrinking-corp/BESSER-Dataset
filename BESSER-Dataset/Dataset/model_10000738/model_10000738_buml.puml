@@ -1,0 +1,37 @@
+@startuml
+class Admin {
+}
+class Course {
+  + CourseName : str
+  + CourseNumber : str
+  + Course_Teacher : Teacher
+}
+class Database {
+  + Accounts : Database
+  + Grades : Database
+  + Materials : Database
+  + Schedules : Database
+}
+class Login {
+}
+class Student {
+  + Year : str
+}
+class Teacher {
+  + Assigned_Courses : str
+}
+class User {
+  + First_Name : str
+  + ID_Number : int
+  + Last_Name : str
+  + Password : str
+}
+Course "1..9999" -- "1..9999" Student : Course_Student
+Admin "0..1" -- "0..1" Database : Database_Admin
+Database "0..1" -- "0..1" Login : Login_Database
+Database "0..1" -- "0..1" Student : Student_Database
+Course "1..9999" -- "0..1" Teacher : Teacher_Course
+Database "1..1" -- "0..9999" Teacher : Teacher_Database
+Database "0..1" -- "1..1" User : User_Database
+Login "1..1" -- "0..9999" User : User_Login
+@enduml

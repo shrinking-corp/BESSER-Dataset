@@ -1,0 +1,37 @@
+@startuml
+class Order {
+  + Customer : Person
+  + Date : str
+  + OrderID : int
+  + items : Shopping_cart
+}
+class Person {
+  + Address : str
+  + Email : str
+  + Name : str
+  + Surname : str
+}
+class Product {
+  + ProductID : int
+  + description : str
+  + name : str
+  + price : int
+  + quantity : int
+}
+class Shopping_cart {
+  + Products : str
+}
+class Stock {
+  + Items : str
+}
+class User {
+  + Password : str
+  + UserID : int
+  + UserName : str
+}
+Order "0..9999" -- "1..1" Person : Order_Client
+Order "1..1" -- "1..1" Shopping_cart : Order_Shopping_cart
+Product "0..9999" -- "1..1" Shopping_cart : Shopping_cart_Product
+Product "0..9999" -- "0..9999" Stock : Stock_Product
+Person "1..1" -- "1..1" User : User_Person
+@enduml

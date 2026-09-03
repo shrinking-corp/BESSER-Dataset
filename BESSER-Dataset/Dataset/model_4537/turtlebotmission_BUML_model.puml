@@ -1,0 +1,47 @@
+@startuml
+class NamedElement {
+}
+class Task {
+}
+class turtlebotmission_Area {
+  + xmax : int
+  + ymax : int
+}
+class turtlebotmission_LineTask {
+}
+class turtlebotmission_Mission {
+}
+abstract class turtlebotmission_NamedElement {
+  + name : str
+}
+class turtlebotmission_ReturnToStartTask {
+}
+class turtlebotmission_ShortestPathTask {
+}
+abstract class turtlebotmission_Task {
+}
+class turtlebotmission_TurtleBot {
+}
+class turtlebotmission_WayPoint {
+  + coord_x : int
+  + coord_y : int
+}
+class turtlebotmission_WaypointType {
+}
+NamedElement <|-- turtlebotmission_Mission
+NamedElement <|-- turtlebotmission_TurtleBot
+NamedElement <|-- turtlebotmission_WayPoint
+NamedElement <|-- turtlebotmission_WaypointType
+Task <|-- turtlebotmission_LineTask
+Task <|-- turtlebotmission_ReturnToStartTask
+Task <|-- turtlebotmission_ShortestPathTask
+turtlebotmission_Area "1..1" --* "1..1" turtlebotmission_TurtleBot : area0
+turtlebotmission_TurtleBot "1..1" -- "1..1" turtlebotmission_WayPoint : bot_start3
+turtlebotmission_Mission "0..9999" --* "1..1" turtlebotmission_TurtleBot : missions8
+turtlebotmission_Mission "1..1" *-- "1..9999" turtlebotmission_Task : task13
+turtlebotmission_LineTask "1..1" -- "1..9999" turtlebotmission_WayPoint : waypoints15
+turtlebotmission_ShortestPathTask "1..1" -- "1..9999" turtlebotmission_WayPoint : waypoints17
+turtlebotmission_TurtleBot "1..1" *-- "1..9999" turtlebotmission_WayPoint : waypoints5
+turtlebotmission_TurtleBot "1..1" *-- "1..9999" turtlebotmission_WaypointType : waypointtypes1
+turtlebotmission_WayPoint "1..1" -- "1..9999" turtlebotmission_WaypointType : waypointtypes10
+@enduml

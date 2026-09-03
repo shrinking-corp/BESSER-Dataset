@@ -1,0 +1,83 @@
+@startuml
+enum FunctionDomain {
+  form
+  space
+  time
+}
+class Port {
+}
+class ProcessNode {
+}
+class Sequence {
+}
+class SequenceNode {
+}
+class effbd106_And {
+}
+class effbd106_Description {
+  + content : str
+}
+class effbd106_Final {
+}
+class effbd106_Flow {
+}
+class effbd106_Function {
+  + domain : str
+}
+class effbd106_InputPort {
+}
+class effbd106_Item {
+  + name : str
+}
+class effbd106_Iteration {
+}
+class effbd106_Loop {
+}
+class effbd106_LoopExit {
+}
+class effbd106_Or {
+}
+class effbd106_OutputPort {
+}
+abstract class effbd106_Port {
+  + id : str
+}
+abstract class effbd106_ProcessNode {
+  + label : str
+}
+abstract class effbd106_Sequence {
+}
+abstract class effbd106_SequenceNode {
+  + name : str
+  + tMax : int
+  + tMin : int
+}
+class effbd106_Start {
+}
+class effbd106_Token {
+}
+Port <|-- effbd106_InputPort
+Port <|-- effbd106_OutputPort
+ProcessNode <|-- effbd106_Flow
+ProcessNode <|-- effbd106_Function
+Sequence <|-- effbd106_And
+Sequence <|-- effbd106_Final
+Sequence <|-- effbd106_Iteration
+Sequence <|-- effbd106_Loop
+Sequence <|-- effbd106_LoopExit
+Sequence <|-- effbd106_Or
+Sequence <|-- effbd106_Start
+SequenceNode <|-- effbd106_Function
+SequenceNode <|-- effbd106_Sequence
+effbd106_SequenceNode "1..1" -- "0..9999" effbd106_SequenceNode : controlFlowEdge15
+effbd106_Function "1..1" *-- "0..9999" effbd106_Function : decompositions1
+effbd106_Description "0..9999" --* "1..1" effbd106_Function : descriptions10
+effbd106_Flow "0..9999" --* "1..1" effbd106_Function : flows4
+effbd106_Function "1..1" *-- "0..9999" effbd106_InputPort : inputPorts8
+effbd106_Flow "1..1" -- "0..9999" effbd106_InputPort : inputflowEdge16
+effbd106_Flow "1..1" *-- "0..9999" effbd106_Item : items19
+effbd106_Function "1..1" *-- "0..9999" effbd106_OutputPort : outputPorts6
+effbd106_Flow "0..9999" -- "1..1" effbd106_OutputPort : outputflowEdge21
+effbd106_Function "1..1" *-- "0..9999" effbd106_Sequence : sequenceNodes2
+effbd106_Function "1..1" *-- "0..9999" effbd106_Token : tokens12
+@enduml

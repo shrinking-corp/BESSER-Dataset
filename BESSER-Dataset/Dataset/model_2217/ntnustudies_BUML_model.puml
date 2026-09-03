@@ -1,0 +1,58 @@
+@startuml
+enum courseLevel {
+  basic
+  high
+  medium
+}
+enum courseType {
+  elective
+  mandatory
+}
+class ntnustudies_ChosenSemester {
+}
+class ntnustudies_Course {
+  + code : str
+  + credtis : float
+  + level : str
+  + name : str
+  + semesters : str
+  + type : str
+}
+class ntnustudies_Department {
+  + name : str
+  + shortName : str
+}
+class ntnustudies_Programme {
+  + name : str
+  + years : int
+}
+class ntnustudies_Semester {
+  + type : str
+  + year : int
+}
+class ntnustudies_Specialization {
+  + name : str
+  + specializationChoicePointSemester : int
+}
+class ntnustudies_StudyPlan {
+}
+enum semesterType {
+  fall
+  spring
+}
+ntnustudies_ChosenSemester "0..9999" -- "1..1" ntnustudies_StudyPlan : chosenSemesters24
+ntnustudies_ChosenSemester "1..1" *-- "0..9999" ntnustudies_Course : courses17
+ntnustudies_Course "0..9999" --* "1..1" ntnustudies_Department : courses27
+ntnustudies_Course "0..9999" -- "1..1" ntnustudies_Specialization : courses4
+ntnustudies_Course "0..9999" -- "1..1" ntnustudies_Semester : possibleCourses10
+ntnustudies_Programme "0..1" -- "1..1" ntnustudies_Semester : programme13
+ntnustudies_Programme "0..1" -- "1..1" ntnustudies_StudyPlan : programme20
+ntnustudies_Programme "0..1" -- "1..1" ntnustudies_Specialization : programme3
+ntnustudies_Department "1..1" *-- "0..9999" ntnustudies_Programme : programmes29
+ntnustudies_Specialization "0..1" -- "1..1" ntnustudies_Specialization : requiredSpecialization6
+ntnustudies_ChosenSemester "1..1" -- "0..1" ntnustudies_Semester : semester15
+ntnustudies_Programme "1..1" *-- "0..9999" ntnustudies_Semester : semesters1
+ntnustudies_Semester "0..9999" --* "1..1" ntnustudies_Specialization : semesters8
+ntnustudies_Programme "1..1" *-- "0..9999" ntnustudies_Specialization : specializations0
+ntnustudies_Specialization "0..9999" -- "1..1" ntnustudies_StudyPlan : specializations21
+@enduml

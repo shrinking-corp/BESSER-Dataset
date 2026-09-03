@@ -1,0 +1,116 @@
+@startuml
+enum Action {
+  element
+  next
+  previous
+  range
+}
+enum ContainerType {
+  Building
+  Corridor
+  Floor
+  Furniture
+  Room
+  Wall
+  Window
+}
+enum DataType {
+  Cardiac_frequency
+  Humidity
+  Luminosity
+  Occupancy
+  Pressure
+  Temperature
+}
+enum Quantifier {
+  All
+  One
+  Some
+}
+enum Reaction {
+  Disable
+  Enable
+  GoTo
+  Synchronize
+}
+enum State {
+  Current
+  Expected
+  Over
+}
+enum Taxonomy {
+  Comparison
+  Distribution
+  Hierarchy
+  Location
+  Over_time
+  Part_to_a_whole
+  Pattern
+  Proportion
+  Range
+  Reference_tool
+  Relationship
+}
+class Then {
+}
+class When {
+}
+class requirementEngineeringLanguage_Background {
+  + dashboard : str
+}
+class requirementEngineeringLanguage_Data {
+  + location : str
+  + locationType : str
+  + quantifier : str
+  + type : str
+}
+class requirementEngineeringLanguage_Feature {
+  + desc : str
+  + name : str
+}
+class requirementEngineeringLanguage_Given {
+  + dashboard : str
+}
+class requirementEngineeringLanguage_Goal {
+  + data : str
+  + function : str
+}
+class requirementEngineeringLanguage_Interaction {
+  + action : str
+  + target : str
+}
+class requirementEngineeringLanguage_Loading {
+  + new : str
+}
+class requirementEngineeringLanguage_Project {
+  + name : str
+}
+class requirementEngineeringLanguage_Scenario {
+  + name : str
+}
+abstract class requirementEngineeringLanguage_Then {
+}
+class requirementEngineeringLanguage_Update {
+  + do : str
+}
+class requirementEngineeringLanguage_View {
+  + desc : str
+  + name : str
+}
+abstract class requirementEngineeringLanguage_When {
+}
+Then <|-- requirementEngineeringLanguage_Goal
+Then <|-- requirementEngineeringLanguage_Update
+When <|-- requirementEngineeringLanguage_Interaction
+When <|-- requirementEngineeringLanguage_Loading
+requirementEngineeringLanguage_Background "1..9999" --* "1..1" requirementEngineeringLanguage_Project : background10
+requirementEngineeringLanguage_Feature "1..9999" --* "1..1" requirementEngineeringLanguage_Project : consistOf9
+requirementEngineeringLanguage_View "1..1" -- "1..1" requirementEngineeringLanguage_When : context7
+requirementEngineeringLanguage_Data "0..9999" --* "1..1" requirementEngineeringLanguage_Given : data5
+requirementEngineeringLanguage_Scenario "1..1" *-- "1..9999" requirementEngineeringLanguage_Then : outcome1
+requirementEngineeringLanguage_Feature "1..1" *-- "1..9999" requirementEngineeringLanguage_Scenario : specifiedBy14
+requirementEngineeringLanguage_Given "0..1" --* "1..1" requirementEngineeringLanguage_Scenario : system3
+requirementEngineeringLanguage_Update "1..1" -- "1..1" requirementEngineeringLanguage_View : target12
+requirementEngineeringLanguage_Scenario "1..1" *-- "1..9999" requirementEngineeringLanguage_When : trigger0
+requirementEngineeringLanguage_Background "1..1" *-- "1..9999" requirementEngineeringLanguage_View : view17
+@enduml

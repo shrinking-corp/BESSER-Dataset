@@ -1,0 +1,156 @@
+@startuml
+class AuthenticationUserPassword {
+}
+class ContextProvider {
+}
+class DatabaseObjectDef {
+}
+class JavaCloseable {
+}
+class Object {
+}
+enum OrderingType {
+  Ascend
+  Descend
+}
+class Statement {
+}
+class TableDef {
+}
+class core_CatalogContainer {
+  + active : bool
+  + name : str
+  + supportsGuestAccess : bool
+  + createConnection(core_factory : str, core_password : str, core_user : str) : void
+  + getCatalogContext() : str
+  + getMetaData() : str
+  + loadIndex(core_name : str, core_table : str) : str
+  + loadSchema(core_name : str) : str
+  + loadTable(core_name : str, core_schema : str) : str
+  + loadView(core_name : str, core_schema : str) : str
+  + removeIndex(core_index : str) : void
+  + removeSchema(core_schema : str) : void
+  + removeTable(core_table : str) : void
+  + removeView(core_view : str) : void
+}
+class core_CatalogGenerationStrategy {
+  + createIndexOnView : bool
+  + createRelativeRecordNumber : bool
+}
+abstract class core_CatalogMetaData {
+  + getIndex(core_index : str, core_schema : str, core_table : str) : str
+  + getSchema(core_schema : str) : str
+  + getSchemas() : str
+  + getTable(core_contextDescription : str, core_table : str) : str
+  + getView(core_schema : str, core_table : str) : str
+}
+abstract class core_Connection {
+  + close(core_rs : str) : void
+  + createStatement(core_native : str, core_updatable : str) : str
+  + getCatalog() : str
+  + getCatalogGenerationStrategy() : str
+  + getCatalogMetaData() : str
+  + prepareStatement(core_native : str, core_sql : str, core_updatable : str) : str
+  + setCatalog(core_catalog : str) : void
+  + translate(core_sql : str) : str
+}
+class core_ConnectionConfig {
+  + catalog : str
+  + persistent : bool
+  + url : str
+  + vendor : str
+  + version : str
+}
+class core_ConnectionCredentials {
+}
+abstract class core_ConnectionManager {
+  + createConnection(core_catalog : str, core_password : str, core_user : str) : str
+}
+abstract class core_DataSourceFactory {
+}
+class core_DatabaseContainer {
+  + vendor : str
+  + version : str
+}
+abstract class core_DatabaseManager {
+  + createIndex(core_connection : str, core_index : str, core_name : str, core_table : str) : str
+  + createSchema(core_connection : str, core_name : str, core_schema : str) : str
+  + createTable(core_connection : str, core_name : str, core_schema : str, core_table : str) : str
+  + createView(core_connection : str, core_name : str, core_schema : str, core_view : str) : str
+  + dropIndex(core_connection : str, core_index : str) : void
+  + dropSchema(core_connection : str, core_ignoreFailOnNonEmpty : str, core_schema : str) : void
+  + dropTable(core_connection : str, core_table : str) : void
+  + dropView(core_connection : str, core_view : str) : void
+  + hasLogicals(core_connection : str, core_table : str) : bool
+  + isStarted() : bool
+  + renameIndex(core_connection : str, core_index : str, core_newName : str) : void
+  + renameTable(core_connection : str, core_newName : str, core_table : str) : void
+  + start() : void
+}
+abstract class core_DatabaseObjectDef {
+  + label : str
+}
+class core_IndexColumnDef {
+  + name : str
+  + ordering : str
+  + sequence : int
+}
+class core_IndexDef {
+  + clustered : bool
+  + unique : bool
+}
+abstract class core_PreparedStatement {
+  + addBatch() : void
+  + clearParameters() : void
+  + execute() : bool
+  + executeQuery() : str
+  + executeUpdate() : int
+  + setInt(core_position : str, core_value : str) : void
+  + setObject(core_position : str, core_value : str) : void
+  + setString(core_position : str, core_value : str) : void
+}
+class core_QualifiedName {
+  + qualifiers : str
+  + getFirstQualifier() : str
+  + getLastQualifier() : str
+}
+class core_SchemaDef {
+}
+abstract class core_Statement {
+  + addBatch(core_sql : str) : void
+  + clearBatch() : void
+  + close() : void
+  + execute(core_sql : str) : bool
+  + executeBatch() : str
+  + executeQuery(core_sql : str) : str
+  + executeUpdate(core_sql : str) : int
+}
+class core_TableColumnDef {
+  + default : bool
+  + name : str
+  + nullable : bool
+}
+class core_TableDef {
+}
+class core_ViewDef {
+  + querySelect : str
+}
+AuthenticationUserPassword <|-- core_ConnectionCredentials
+ContextProvider <|-- core_Connection
+DatabaseObjectDef <|-- core_IndexColumnDef
+DatabaseObjectDef <|-- core_IndexDef
+DatabaseObjectDef <|-- core_SchemaDef
+DatabaseObjectDef <|-- core_TableColumnDef
+DatabaseObjectDef <|-- core_TableDef
+JavaCloseable <|-- core_Statement
+Object <|-- core_DatabaseContainer
+Statement <|-- core_PreparedStatement
+TableDef <|-- core_ViewDef
+core_CatalogContainer "1..9999" --* "1..1" core_DatabaseContainer : catalogContainers5
+core_IndexColumnDef "0..9999" --* "1..1" core_IndexDef : columns10
+core_TableColumnDef "0..9999" --* "1..1" core_TableDef : columns11
+core_CatalogContainer "1..1" *-- "1..1" core_ConnectionConfig : connectionConfig0
+core_ConnectionConfig "1..1" *-- "1..1" core_ConnectionCredentials : credentials3
+core_CatalogContainer "1..1" -- "1..1" core_DatabaseContainer : defaultCatalogContainer7
+core_CatalogContainer "1..1" *-- "1..1" core_CatalogGenerationStrategy : generationStrategy1
+@enduml

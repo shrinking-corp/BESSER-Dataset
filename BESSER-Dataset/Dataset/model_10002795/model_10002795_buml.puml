@@ -1,0 +1,53 @@
+@startuml
+class account_Account {
+  + accountNo : str
+  + balance : float
+  + type : account_AccountType
+}
+enum account_AccountType {
+}
+class account_CertificatesOfDepositAccount {
+  + interestRate : float
+  + timePeriod : int
+}
+class account_CheckingAccount {
+}
+class account_SavingsAccount {
+  + interestRate : float
+}
+class mypackage_Customer {
+  + address : str
+  + dateOfBirth : date
+  + emailAddress : str
+  + name : str
+  + phoneNumber : str
+}
+class mypackage_Login {
+  + lastLoginTime : date
+  + password : str
+  + securityAnswer : str
+  + securityQuestion : str
+  + username : str
+}
+class mypackage_T {
+}
+class transaction_DepositTransaction {
+}
+class transaction_Transaction {
+  + amount : float
+  + id : int
+  + transactionTime : date
+  + type : transaction_TransactionType
+}
+enum transaction_TransactionType {
+}
+class transaction_TransferTransaction {
+  + sourceAccount : account_Account
+  + targetAccount : account_Account
+}
+class transaction_WithdrawTransaction {
+}
+account_Account "1..1" -- "0..9999" transaction_Transaction : Account_Transaction
+mypackage_Customer "1..1" -- "0..1" mypackage_Login : Customer_Login
+account_Account "1..9999" -- "1..1" mypackage_Customer : association2
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+class AA {
+}
+class formalmetamodel_A {
+  + name : str
+}
+abstract class formalmetamodel_AA {
+}
+class formalmetamodel_B {
+  + name : str
+}
+class formalmetamodel_C {
+  + name : str
+}
+class formalmetamodel_FormalModel {
+}
+AA <|-- formalmetamodel_A
+formalmetamodel_A "1..1" -- "0..9999" formalmetamodel_B : ab0
+formalmetamodel_A "0..9999" --* "1..1" formalmetamodel_FormalModel : as_9
+formalmetamodel_A "0..9999" -- "1..1" formalmetamodel_B : ba1
+formalmetamodel_B "0..1" --* "1..1" formalmetamodel_B : bb5
+formalmetamodel_B "0..9999" --* "1..1" formalmetamodel_FormalModel : bs7
+formalmetamodel_A "0..1" -- "1..1" formalmetamodel_C : ca17
+formalmetamodel_C "0..9999" --* "1..1" formalmetamodel_FormalModel : cs12
+formalmetamodel_C "0..9999" --* "1..1" formalmetamodel_C : cs15
+@enduml

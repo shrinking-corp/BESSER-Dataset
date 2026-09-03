@@ -1,0 +1,77 @@
+@startuml
+class Customer {
+}
+class Product {
+}
+class ordersystem_Account {
+  + accountNumber : str
+  + paymentMethod : str
+}
+class ordersystem_Address {
+  + apartment : str
+  + city : str
+  + country : str
+  + number : str
+  + postalCode : str
+  + province : str
+  + street : str
+}
+class ordersystem_Customer {
+  + firstName : str
+  + lastName : str
+}
+class ordersystem_InventoryItem {
+  + inStock : int
+  + nextStockDate : str
+  + restockThreshold : int
+}
+class ordersystem_LineItem {
+  + discount : float
+  + quantity : int
+  + getCost() : float
+}
+class ordersystem_Order {
+  + completed : bool
+  + filledOn : str
+  + id : str
+  + placedOn : str
+}
+class ordersystem_OrderSystem {
+  + version : int
+}
+class ordersystem_Product {
+  + name : str
+  + price : float
+  + sku : str
+}
+class ordersystem_Warehouse {
+  + name : str
+}
+class ordersystem_special_LimitedEditionProduct {
+  + availableUntil : str
+}
+class ordersystem_special_PreferredCustomer {
+  + since : str
+}
+Customer <|-- ordersystem_special_PreferredCustomer
+Product <|-- ordersystem_special_LimitedEditionProduct
+ordersystem_InventoryItem "1..1" -- "0..1" ordersystem_Warehouse : Warehouse17
+ordersystem_Account "0..9999" --* "1..1" ordersystem_Customer : account24
+ordersystem_Account "1..1" *-- "1..1" ordersystem_Address : billingAddress31
+ordersystem_Customer "0..9999" --* "1..1" ordersystem_OrderSystem : customer7
+ordersystem_LineItem "0..9999" --* "1..1" ordersystem_Order : item1
+ordersystem_InventoryItem "0..9999" --* "1..1" ordersystem_Warehouse : item5
+ordersystem_Address "1..1" --* "1..1" ordersystem_Warehouse : location6
+ordersystem_Customer "1..1" *-- "0..9999" ordersystem_Order : order26
+ordersystem_Customer "0..1" -- "1..1" ordersystem_Order : owner0
+ordersystem_LineItem "1..1" -- "0..1" ordersystem_Order : owner15
+ordersystem_OrderSystem "0..1" -- "1..1" ordersystem_Product : owner2
+ordersystem_Customer "1..1" -- "0..1" ordersystem_OrderSystem : owner22
+ordersystem_Account "1..1" -- "0..1" ordersystem_Customer : owner29
+ordersystem_OrderSystem "0..1" -- "1..1" ordersystem_Warehouse : owner3
+ordersystem_OrderSystem "1..1" *-- "0..9999" ordersystem_Product : product10
+ordersystem_LineItem "1..1" -- "1..1" ordersystem_Product : product16
+ordersystem_InventoryItem "1..1" -- "1..1" ordersystem_Product : product20
+ordersystem_Account "1..1" *-- "1..1" ordersystem_Address : shippingAddress33
+ordersystem_OrderSystem "1..1" *-- "0..9999" ordersystem_Warehouse : warehouse12
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+class Unit {
+}
+class units_av_Advice {
+}
+class units_av_BaseUnit {
+  + name : str
+}
+class units_av_EObject {
+}
+class units_av_GlobalScope {
+}
+class units_av_PerJoinPointScope {
+}
+class units_av_Unit {
+}
+class units_av_UnitCarryingElement {
+  + unitSpecification : str
+}
+class units_av_UnitLiteral {
+}
+class units_av_UnitMultiplication {
+}
+class units_av_UnitPower {
+  + exponent : int
+}
+class units_av_UnitRepository {
+}
+Unit <|-- units_av_UnitLiteral
+Unit <|-- units_av_UnitMultiplication
+Unit <|-- units_av_UnitPower
+units_av_BaseUnit "0..1" -- "1..1" units_av_UnitLiteral : baseUnit6
+units_av_Advice "1..1" *-- "0..9999" units_av_EObject : children8
+units_av_EObject "1..1" -- "1..1" units_av_PerJoinPointScope : scopedObject11
+units_av_EObject "1..1" -- "1..1" units_av_GlobalScope : scopedObject9
+units_av_Unit "0..1" -- "1..1" units_av_UnitCarryingElement : unit0
+units_av_Unit "0..1" --* "1..1" units_av_UnitPower : unit4
+units_av_BaseUnit "0..9999" --* "1..1" units_av_UnitRepository : units1
+units_av_Unit "0..9999" --* "1..1" units_av_UnitMultiplication : units2
+@enduml

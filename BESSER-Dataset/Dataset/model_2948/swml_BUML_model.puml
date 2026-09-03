@@ -1,0 +1,116 @@
+@startuml
+class DynamicPage {
+}
+class EntityPage {
+}
+class Link {
+}
+class Node {
+}
+class Page {
+}
+enum SWMLType {
+  Boolean
+  Date
+  Email
+  Float
+  Integer
+  String
+  Time
+}
+class swml_Attribute {
+  + name : str
+  + type : str
+}
+class swml_ContentModel {
+}
+class swml_ContextualLink {
+}
+class swml_CreatePage {
+}
+class swml_DeletePage {
+}
+abstract class swml_DynamicPage {
+}
+class swml_EntityPage {
+}
+class swml_EntityType {
+  + isAbstract : bool
+  + name : str
+}
+class swml_Enumeration {
+  + name : str
+}
+class swml_HypertextModel {
+}
+class swml_IndexPage {
+}
+class swml_KOLink {
+}
+abstract class swml_Link {
+}
+class swml_LinkJoinNode {
+}
+class swml_Literal {
+  + name : str
+}
+abstract class swml_Node {
+}
+class swml_NonContextualLink {
+}
+class swml_OKLink {
+}
+abstract class swml_Page {
+  + name : str
+}
+class swml_Parameter {
+  + ValueSpec : str
+}
+class swml_Relationship {
+  + lower : int
+  + name : str
+  + upper : int
+}
+class swml_StaticPage {
+}
+class swml_UpdatePage {
+}
+class swml_WebApplication {
+  + name : str
+}
+DynamicPage <|-- swml_EntityPage
+DynamicPage <|-- swml_IndexPage
+EntityPage <|-- swml_CreatePage
+EntityPage <|-- swml_DeletePage
+EntityPage <|-- swml_UpdatePage
+Link <|-- swml_ContextualLink
+Link <|-- swml_KOLink
+Link <|-- swml_NonContextualLink
+Link <|-- swml_OKLink
+Node <|-- swml_LinkJoinNode
+Node <|-- swml_Page
+Page <|-- swml_DynamicPage
+Page <|-- swml_LinkJoinNode
+Page <|-- swml_StaticPage
+swml_Attribute "1..1" -- "0..1" swml_Enumeration : EnumType11
+swml_Attribute "0..9999" --* "1..1" swml_EntityType : attribute3
+swml_ContentModel "1..1" --* "1..1" swml_WebApplication : contentModel0
+swml_DynamicPage "1..1" -- "1..1" swml_EntityType : displayedEntityType18
+swml_EntityType "1..1" -- "1..1" swml_Relationship : entityType21
+swml_ContentModel "1..1" *-- "0..9999" swml_EntityType : entityType32
+swml_ContentModel "1..1" *-- "0..9999" swml_Enumeration : enumerations29
+swml_HypertextModel "1..1" *-- "1..1" swml_StaticPage : homepage38
+swml_HypertextModel "1..1" --* "1..1" swml_WebApplication : hyperTextModel1
+swml_Attribute "0..1" --* "1..1" swml_EntityType : id4
+swml_DynamicPage "0..9999" --* "1..1" swml_EntityPage : innerPage17
+swml_Link "0..9999" --* "1..1" swml_Node : link40
+swml_Enumeration "1..1" *-- "0..9999" swml_Literal : literals27
+swml_Relationship "1..1" -- "1..1" swml_Relationship : opposite23
+swml_HypertextModel "1..1" *-- "0..9999" swml_Node : page35
+swml_Link "1..1" *-- "0..1" swml_Parameter : parameter15
+swml_EntityType "1..1" *-- "0..9999" swml_Relationship : relationship7
+swml_Link "1..1" -- "1..1" swml_Node : source13
+swml_EntityType "1..1" -- "0..1" swml_EntityType : superEntityType9
+swml_Link "1..1" -- "1..1" swml_Node : target14
+swml_EntityType "1..1" -- "1..1" swml_Relationship : target24
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+class Class {
+}
+class Classifier {
+}
+class Feature {
+}
+class NamedElement {
+}
+class Package {
+}
+class PackageableElement {
+}
+class Type {
+}
+class TypedElement {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class uml_Behavior {
+}
+class uml_Class {
+  + isAbstract : str
+}
+abstract class uml_Classifier {
+}
+class uml_Dependency {
+}
+abstract class uml_Feature {
+}
+class uml_Model {
+}
+abstract class uml_NamedElement {
+  + name : str
+  + visibility : str
+}
+class uml_Operation {
+}
+class uml_Package {
+}
+abstract class uml_PackageableElement {
+}
+class uml_Parameter {
+}
+class uml_Property {
+}
+abstract class uml_Type {
+}
+abstract class uml_TypedElement {
+}
+Class <|-- uml_Behavior
+Classifier <|-- uml_Class
+Feature <|-- uml_Operation
+Feature <|-- uml_Property
+NamedElement <|-- uml_Classifier
+NamedElement <|-- uml_Feature
+NamedElement <|-- uml_Operation
+NamedElement <|-- uml_Package
+NamedElement <|-- uml_PackageableElement
+NamedElement <|-- uml_Property
+NamedElement <|-- uml_TypedElement
+Package <|-- uml_Model
+PackageableElement <|-- uml_Dependency
+PackageableElement <|-- uml_Package
+PackageableElement <|-- uml_Type
+Type <|-- uml_Classifier
+TypedElement <|-- uml_Parameter
+TypedElement <|-- uml_Property
+uml_Class "1..1" -- "0..9999" uml_Classifier : generalizationGeneral5
+uml_Behavior "0..9999" -- "1..1" uml_Operation : method10
+uml_Class "1..1" *-- "0..9999" uml_Classifier : nestedClassifier2
+uml_Class "1..1" *-- "0..9999" uml_Property : ownedAttribute8
+uml_Class "1..1" *-- "0..9999" uml_Operation : ownedOperation3
+uml_Operation "1..1" *-- "0..9999" uml_Parameter : ownedParameter12
+uml_Package "1..1" *-- "0..9999" uml_PackageableElement : packagedElement0
+uml_Dependency "1..1" -- "1..9999" uml_NamedElement : supplier1
+uml_Type "0..1" -- "1..1" uml_TypedElement : type14
+@enduml

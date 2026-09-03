@@ -1,0 +1,98 @@
+@startuml
+class Admin {
+  + AdminInfo : str
+  + ID : int
+  + Password : str
+  + UserName : str
+}
+class Banner {
+  + BannerID : int
+  + BannerInfo : str
+  + DateEnd : str
+  + DateStart : str
+  + Image : str
+  + IsShow : int
+}
+class Cart {
+  + CartID : int
+  + CartInfo : str
+}
+class Collection {
+  + CollectionID : int
+  + CollectionName : str
+}
+class Color {
+  + ColorID : str
+  + ColorName : str
+}
+class DetailCart {
+  + CartID : int
+  + DetailCartID : int
+  + DetailCartInfo : str
+  + ProductID : int
+}
+class DetailOrder {
+  + DetailOrderID : int
+  + DetailOrderInfo : str
+  + OrderID : int
+  + ProductID : int
+}
+class Gallery {
+  + DateCreate : str
+  + GalleryID : int
+  + GalleryName : str
+  + Image : str
+  + ProductID : int
+}
+class Inventory {
+  + ColorID : int
+  + InStock : int
+  + ProductID : int
+  + SizeID : int
+}
+class Orders {
+  + DeliInfo : str
+  + OrderID : int
+  + OrderInfo : str
+  + UserID : int
+}
+class Products {
+  + CollectionID : int
+  + DateCreate : str
+  + InStock : int
+  + Index : int
+  + ProductID : int
+  + ProductInfo : str
+  + TypeID : int
+  + TypeID1 : int
+}
+class Size {
+  + SizeID : int
+  + SizeName : str
+}
+class Type {
+  + TypeID : int
+  + TypeName : str
+}
+class User {
+  + Email : str
+  + ID : int
+  + Password : str
+  + Phone : int
+  + Point : int
+  + UserInfo : str
+  + UserName : str
+}
+Cart "1..1" -- "1..1" User : Cart_User
+Collection "1..1" -- "0..9999" Products : Collection_Products
+Color "0..9999" -- "0..9999" Inventory : Color_Inventory
+Cart "1..1" -- "0..9999" DetailCart : DetailCart_Cart
+DetailOrder "0..9999" -- "1..1" Orders : DetailOrder_Orders
+DetailOrder "1..1" -- "0..9999" Products : DetailOrder_Products
+Gallery "0..9999" -- "1..1" Products : Gallery_Products
+Orders "1..1" -- "1..1" User : Orders_User
+DetailCart "1..1" -- "0..9999" Products : Products_DetailCart
+Inventory "0..9999" -- "0..9999" Products : Products_Inventory
+Inventory "0..9999" -- "0..9999" Size : Size_Inventory
+Products "0..9999" -- "1..1" Type : Type_Products
+@enduml

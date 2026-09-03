@@ -1,0 +1,90 @@
+@startuml
+class DObject {
+}
+enum EnumTestEnum {
+  HIGH
+  INCREDIBLE
+  LOW
+  MEDIUM
+}
+class TestCategoryBase {
+}
+class TestCategoryBeanAbstract {
+}
+class dmf_DObject {
+}
+class tests_EReferenceTest {
+}
+class tests_ExternalTestType {
+}
+class tests_TestCategoryAllProperty {
+  + testBool : bool
+  + testEnum : str
+  + testFloat : float
+  + testInt : int
+  + testResource : str
+  + testString : str
+}
+class tests_TestCategoryBase {
+  + testBaseProperty : int
+}
+class tests_TestCategoryBeanA {
+}
+abstract class tests_TestCategoryBeanAbstract {
+}
+class tests_TestCategoryBeanB {
+}
+class tests_TestCategoryBeanConcrete {
+}
+class tests_TestCategoryComposition {
+}
+class tests_TestCategoryCompositionArray {
+}
+class tests_TestCategoryExtends {
+  + testExtendsProperty : int
+}
+class tests_TestCategoryIntrinsicArray {
+  + testStringArrayDynamic : str
+  + testStringArrayStatic : str
+}
+class tests_TestCategoryReference {
+}
+class tests_TestCategoryReferenceArray {
+}
+class tests_TestCrossLinkedParametersWithCalculation {
+  + calcedTrl : float
+}
+class tests_TestMassParameters {
+}
+class tests_TestParameter {
+  + defaultValue : float
+}
+DObject <|-- tests_EReferenceTest
+DObject <|-- tests_TestCategoryAllProperty
+DObject <|-- tests_TestCategoryBase
+DObject <|-- tests_TestCategoryBeanA
+DObject <|-- tests_TestCategoryBeanAbstract
+DObject <|-- tests_TestCategoryBeanB
+DObject <|-- tests_TestCategoryComposition
+DObject <|-- tests_TestCategoryCompositionArray
+DObject <|-- tests_TestCategoryIntrinsicArray
+DObject <|-- tests_TestCategoryReference
+DObject <|-- tests_TestCategoryReferenceArray
+DObject <|-- tests_TestCrossLinkedParametersWithCalculation
+DObject <|-- tests_TestMassParameters
+DObject <|-- tests_TestParameter
+TestCategoryBase <|-- tests_TestCategoryExtends
+TestCategoryBeanAbstract <|-- tests_TestCategoryBeanConcrete
+dmf_DObject <|-- tests_TestCategoryBeanConcrete
+dmf_DObject <|-- tests_TestCategoryExtends
+tests_EReferenceTest "1..1" -- "0..1" tests_ExternalTestType : eReferenceTest19
+tests_TestMassParameters "1..1" *-- "0..1" tests_TestParameter : mass18
+tests_TestCategoryBase "1..1" *-- "0..9999" tests_TestCategoryBase : testArray14
+tests_TestCategoryAllProperty "0..9999" -- "1..1" tests_TestCategoryReferenceArray : testCategoryReferenceArrayDynamic8
+tests_TestCategoryAllProperty "0..4" -- "1..1" tests_TestCategoryReferenceArray : testCategoryReferenceArrayStatic10
+tests_TestCategoryAllProperty "0..9999" --* "1..1" tests_TestCategoryCompositionArray : testCompositionArrayDynamic3
+tests_TestCategoryAllProperty "0..4" --* "1..1" tests_TestCategoryCompositionArray : testCompositionArrayStatic5
+tests_TestCategoryAllProperty "0..1" -- "1..1" tests_TestCategoryReference : testRefCategory1
+tests_TestCategoryBase "0..1" -- "1..1" tests_TestCategoryBase : testReference16
+tests_TestCategoryAllProperty "0..1" --* "1..1" tests_TestCategoryComposition : testSubCategory0
+@enduml

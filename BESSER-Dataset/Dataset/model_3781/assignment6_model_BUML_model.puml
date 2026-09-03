@@ -1,0 +1,65 @@
+@startuml
+enum BinaryOperator {
+  AND
+  OR
+}
+class Dependency {
+}
+class Feature {
+}
+enum GroupType {
+  OR
+  XOR
+}
+class UnaryDependency {
+}
+class assignment6_model_BinaryDependency {
+  + operator : str
+}
+class assignment6_model_Configurator {
+  + name : str
+}
+abstract class assignment6_model_Dependency {
+  + not_ : bool
+}
+abstract class assignment6_model_Feature {
+  + mandatory : bool
+  + name : str
+  + selected : bool
+}
+class assignment6_model_Group {
+  + groupType : str
+  + name : str
+}
+class assignment6_model_IntegerFeature {
+  + maxValue : int
+  + minValue : int
+  + step : int
+  + value : int
+}
+class assignment6_model_IntegerValueDependency {
+  + value : int
+}
+class assignment6_model_IsSelectedDependency {
+}
+class assignment6_model_SimpleFeature {
+}
+abstract class assignment6_model_UnaryDependency {
+}
+Dependency <|-- assignment6_model_BinaryDependency
+Dependency <|-- assignment6_model_UnaryDependency
+Feature <|-- assignment6_model_IntegerFeature
+Feature <|-- assignment6_model_SimpleFeature
+UnaryDependency <|-- assignment6_model_IntegerValueDependency
+UnaryDependency <|-- assignment6_model_IsSelectedDependency
+assignment6_model_Dependency "0..9999" --* "1..1" assignment6_model_Feature : dependencies9
+assignment6_model_Configurator "1..1" *-- "0..9999" assignment6_model_Feature : features0
+assignment6_model_Group "1..1" *-- "2..9999" assignment6_model_SimpleFeature : features11
+assignment6_model_Feature "0..9999" --* "1..1" assignment6_model_Feature : features4
+assignment6_model_Configurator "1..1" *-- "0..9999" assignment6_model_Group : groups1
+assignment6_model_Feature "1..1" *-- "0..9999" assignment6_model_Group : groups6
+assignment6_model_BinaryDependency "1..1" *-- "1..1" assignment6_model_Dependency : leftHand15
+assignment6_model_BinaryDependency "1..1" *-- "1..1" assignment6_model_Dependency : rightHand13
+assignment6_model_Feature "1..1" -- "1..1" assignment6_model_IsSelectedDependency : target18
+assignment6_model_IntegerFeature "1..1" -- "1..1" assignment6_model_IntegerValueDependency : target20
+@enduml

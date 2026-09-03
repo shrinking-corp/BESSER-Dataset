@@ -1,0 +1,25 @@
+@startuml
+class cfg_cfg {
+}
+class cfg_edge {
+}
+class cfg_endnode {
+}
+class cfg_node {
+  + name : str
+}
+class cfg_startnode {
+}
+class node {
+}
+node <|-- cfg_endnode
+node <|-- cfg_startnode
+cfg_edge "1..1" -- "0..1" cfg_node : EReference010
+cfg_edge "0..1" -- "1..1" cfg_node : EReference13
+cfg_cfg "1..1" *-- "0..9999" cfg_edge : edges1
+cfg_edge "0..9999" -- "1..1" cfg_node : incoming6
+cfg_cfg "1..1" *-- "0..9999" cfg_node : nodes0
+cfg_edge "0..9999" -- "1..1" cfg_node : outgoing7
+cfg_edge "1..1" -- "1..1" cfg_node : source13
+cfg_edge "1..1" -- "1..1" cfg_node : target9
+@enduml

@@ -1,0 +1,81 @@
+@startuml
+class InputField {
+}
+class PageElement {
+}
+enum SelectionFieldType {
+  Checkbox
+  Combobox
+  Radio
+}
+class Text {
+}
+class VisibilityCondition {
+}
+class form_Form {
+}
+class form_Heading {
+  + level : int
+}
+abstract class form_InputField {
+  + label : str
+  + mandatory : bool
+}
+class form_List {
+  + ordered : bool
+}
+class form_ListItem {
+  + label : str
+}
+class form_Page {
+  + title : str
+}
+abstract class form_PageElement {
+  + elementId : str
+}
+class form_Paragraph {
+}
+class form_SelectionCondition {
+}
+class form_SelectionField {
+  + selectionFieldType : str
+}
+class form_SelectionItem {
+  + label : str
+  + selected : bool
+}
+abstract class form_Text {
+  + content : str
+}
+class form_TextArea {
+}
+class form_TextField {
+  + encrypted : bool
+}
+abstract class form_VisibilityCondition {
+}
+InputField <|-- form_SelectionField
+InputField <|-- form_TextArea
+InputField <|-- form_TextField
+PageElement <|-- form_InputField
+PageElement <|-- form_List
+PageElement <|-- form_Text
+Text <|-- form_Heading
+Text <|-- form_Paragraph
+VisibilityCondition <|-- form_SelectionCondition
+form_Page "0..9999" -- "1..1" form_Page : allNextPages8
+form_Page "0..9999" -- "1..1" form_Page : allPreviousPages5
+form_PageElement "0..9999" -- "1..1" form_VisibilityCondition : concernsElements25
+form_Page "1..1" *-- "0..9999" form_PageElement : elements12
+form_SelectionField "1..1" -- "1..1" form_SelectionItem : field21
+form_SelectionCondition "1..1" -- "1..1" form_SelectionItem : item26
+form_SelectionField "1..1" *-- "1..9999" form_SelectionItem : items20
+form_List "1..1" *-- "1..9999" form_ListItem : items22
+form_Page "1..1" -- "0..1" form_Page : nextPage11
+form_Page "1..1" -- "1..1" form_PageElement : page18
+form_Page "1..1" -- "1..1" form_VisibilityCondition : page23
+form_Form "1..1" *-- "0..9999" form_Page : pages0
+form_Page "1..1" -- "0..1" form_Page : previousPage14
+form_Page "1..1" *-- "0..9999" form_VisibilityCondition : visibilityConditions16
+form_Form "1..1" -- "1..1" form_Page : welcomePage1
+@enduml

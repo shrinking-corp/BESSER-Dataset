@@ -1,0 +1,24 @@
+@startuml
+class Statement {
+}
+class sourcecode_Assignment {
+}
+class sourcecode_Decision {
+}
+class sourcecode_Program {
+}
+abstract class sourcecode_Statement {
+  + id : str
+}
+class sourcecode_While {
+}
+Statement <|-- sourcecode_Assignment
+Statement <|-- sourcecode_Decision
+Statement <|-- sourcecode_While
+sourcecode_Program "1..1" *-- "0..1" sourcecode_Statement : first12
+sourcecode_Statement "0..1" --* "1..1" sourcecode_While : first7
+sourcecode_Statement "0..1" -- "1..1" sourcecode_While : last9
+sourcecode_Decision "1..1" *-- "0..1" sourcecode_Statement : negative4
+sourcecode_Statement "1..1" *-- "0..1" sourcecode_Statement : next1
+sourcecode_Decision "1..1" *-- "0..1" sourcecode_Statement : positive2
+@enduml

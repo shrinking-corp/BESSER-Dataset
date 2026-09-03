@@ -1,0 +1,125 @@
+@startuml
+enum DAlignment {
+  beginning
+  center
+  end
+  fill
+}
+class DBaseStyle {
+}
+enum DColor {
+  black
+  blue
+  cyan
+  darkBlue
+  darkGray
+  darkGreen
+  gray
+  green
+  lightBlue
+  lightGray
+  lightGreen
+  orange
+  red
+  white
+  yellow
+}
+enum DDirection {
+  bidirectional
+  left
+  none
+  right
+}
+enum DFontName {
+  arial
+  courier
+  times
+}
+enum DFontStyle {
+  bold
+  italic
+  normal
+}
+enum DLayout {
+  free
+  horizontal
+  none
+  vertical
+}
+enum DLine {
+  custom
+  dash
+  dashdot
+  dashdotdot
+  dot
+  solid
+}
+class DNodeEdgeStyle {
+}
+enum DShape {
+  arrow
+  custom
+  dot
+  ellipse
+  rectangle
+  roundedRectangle
+  triangle
+}
+class EModelElement {
+}
+abstract class diastyle_DBaseStyle {
+  + color : str
+  + name : str
+  + parentName : str
+}
+class diastyle_DEdgeStyle {
+  + arrowDirection : str
+  + arrowSize : int
+  + shape : str
+}
+class diastyle_DGraph {
+}
+class diastyle_DGraphElement {
+}
+class diastyle_DNestingEdgeStyle {
+}
+abstract class diastyle_DNodeEdgeStyle {
+  + fontColor : str
+  + fontName : str
+  + fontSize : int
+  + fontStyle : str
+  + icon : str
+  + line : str
+  + lineWidth : int
+  + textAlignment : str
+}
+class diastyle_DNodeStyle {
+  + figure : str
+  + layout : str
+  + radius : int
+  + shape : str
+  + shapeData : str
+  + sizeX : int
+  + sizeY : int
+}
+class diastyle_DStyle {
+  + styleHandler : str
+  + getBackgroundColor(diastyle_element : str) : str
+  + getFigure(diastyle_element : str) : str
+  + getIcon(diastyle_element : str) : str
+}
+class diastyle_DStyleBridge {
+  + name : str
+}
+DBaseStyle <|-- diastyle_DNestingEdgeStyle
+DBaseStyle <|-- diastyle_DNodeEdgeStyle
+DNodeEdgeStyle <|-- diastyle_DEdgeStyle
+DNodeEdgeStyle <|-- diastyle_DNodeStyle
+EModelElement <|-- diastyle_DNodeEdgeStyle
+EModelElement <|-- diastyle_DStyle
+diastyle_DGraph "0..1" -- "1..1" diastyle_DStyle : dGraph1
+diastyle_DGraphElement "0..1" -- "1..1" diastyle_DStyleBridge : dGraphElement3
+diastyle_DBaseStyle "0..1" -- "1..1" diastyle_DBaseStyle : parent8
+diastyle_DBaseStyle "1..1" *-- "0..9999" diastyle_DStyleBridge : styleBridges4
+diastyle_DBaseStyle "0..9999" --* "1..1" diastyle_DStyle : styles0
+@enduml

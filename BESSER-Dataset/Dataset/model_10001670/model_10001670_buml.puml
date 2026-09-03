@@ -1,0 +1,63 @@
+@startuml
+class Account {
+  + Address : str
+  + ContactNo : str
+  + Email : str
+}
+class Corporate_Order {
+  + Date : str
+}
+class Custom_Login {
+  + Login : str
+  + Password : str
+}
+class Customer {
+  + Customer_ID : str
+  + Name : str
+}
+class Items {
+  + Quantity : str
+  + SKUCode : str
+}
+class Order {
+  + GiftMessage : str
+  + Order_ID : str
+  + ReceipientAddress : str
+  + ReceipientContactNo : str
+  + ReceipientEmail : str
+  + ReceipientName : str
+}
+class Payment {
+  + Date : int
+  + Payment_ID : str
+}
+class Phone_Order {
+  + Date : str
+}
+class Products {
+  + Product_Name : str
+  + SKU_Code : str
+}
+class Shopping_Cart {
+  + Date : str
+}
+class Social_Login {
+  + email : str
+  + password : str
+}
+Account "0..1" -- "0..1" Customer : Account_Customer
+Account "1..1" -- "0..1" Order : Account_Order
+Corporate_Order "1..1" -- "1..1" Customer : Corporate_Order_Customer
+Corporate_Order "0..9999" -- "1..9999" Items : Corporate_Order_Items
+Account "1..1" -- "1..1" Customer : Customer_Account
+Customer "1..1" -- "1..9999" Order : Customer_Order
+Customer "1..1" -- "1..1" Payment : Customer_Payment
+Customer "1..9999" -- "1..9999" Products : Customer_Products
+Customer "1..1" -- "1..1" Shopping_Cart : Customer_Shopping_Cart
+Account "0..1" -- "0..1" Order : Order_Account
+Account "0..1" -- "0..1" Order : Order_Account2
+Order "1..1" -- "1..1" Payment : Payment__Order
+Customer "0..1" -- "1..1" Phone_Order : Phone_Order_Customer
+Items "1..9999" -- "0..9999" Phone_Order : Phone_Order_Items
+Items "1..9999" -- "0..9999" Shopping_Cart : Shopping_Cart_Items
+@enduml

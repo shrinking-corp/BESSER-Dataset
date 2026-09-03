@@ -1,0 +1,145 @@
+@startuml
+enum ConnectionType {
+  dependent
+  independent
+}
+class Event {
+}
+class Import {
+}
+class PublicEvent {
+}
+class PubliclyPublishable {
+}
+class PubliclySubscribable {
+}
+class PublishableByMe {
+}
+class PublishableByOthers {
+}
+class State {
+}
+enum StateMachineType {
+  finite
+  infinite
+  stateless
+}
+class SubscribableByMe {
+}
+class SubscribableByOthers {
+}
+class conversation_Agent {
+  + accessRequirement : str
+  + connectionType : str
+  + name : str
+  + stateMachineType : str
+}
+class conversation_AgentImport {
+}
+class conversation_Conversation {
+  + name : str
+}
+class conversation_Decision {
+}
+abstract class conversation_Event {
+  + name : str
+}
+class conversation_Import {
+  + alias : str
+}
+class conversation_Join {
+}
+class conversation_Junction {
+}
+class conversation_PrivatePubSub {
+}
+class conversation_Projection {
+}
+class conversation_ProjectionField {
+}
+abstract class conversation_PublicEvent {
+}
+class conversation_PublicPubSub {
+}
+class conversation_PubliclyPublishable {
+}
+class conversation_PubliclySubscribable {
+}
+abstract class conversation_PublishableByMe {
+}
+abstract class conversation_PublishableByOthers {
+}
+class conversation_RestService {
+}
+class conversation_Service {
+}
+class conversation_State {
+  + join : bool
+  + name : str
+  + requiresExecution : bool
+}
+class conversation_StateMachine {
+}
+abstract class conversation_SubscribableByMe {
+}
+abstract class conversation_SubscribableByOthers {
+}
+class conversation_Transition {
+  + requiresExecution : bool
+}
+class conversation_TypeImport {
+}
+class conversation_View {
+}
+Event <|-- conversation_PublicEvent
+Event <|-- conversation_PublishableByMe
+Event <|-- conversation_PublishableByOthers
+Event <|-- conversation_SubscribableByMe
+Event <|-- conversation_SubscribableByOthers
+Import <|-- conversation_AgentImport
+Import <|-- conversation_TypeImport
+PublicEvent <|-- conversation_PubliclyPublishable
+PublicEvent <|-- conversation_PubliclySubscribable
+PubliclyPublishable <|-- conversation_PublicPubSub
+PubliclySubscribable <|-- conversation_PublicPubSub
+PublishableByMe <|-- conversation_PrivatePubSub
+PublishableByMe <|-- conversation_PubliclySubscribable
+PublishableByOthers <|-- conversation_PubliclyPublishable
+State <|-- conversation_Decision
+State <|-- conversation_Join
+SubscribableByMe <|-- conversation_PrivatePubSub
+SubscribableByMe <|-- conversation_PubliclyPublishable
+SubscribableByOthers <|-- conversation_PubliclySubscribable
+conversation_Agent "0..1" -- "1..1" conversation_AgentImport : agent51
+conversation_Agent "0..9999" --* "1..1" conversation_Conversation : agents0
+conversation_PrivatePubSub "0..1" --* "1..1" conversation_Transition : causedBy41
+conversation_Conversation "1..1" *-- "0..9999" conversation_Projection : definedTypes1
+conversation_Agent "1..1" *-- "0..9999" conversation_Projection : definedTypes12
+conversation_SubscribableByOthers "0..1" -- "1..1" conversation_Transition : exCausedBy39
+conversation_PublishableByOthers "0..1" -- "1..1" conversation_Transition : exTriggers42
+conversation_ProjectionField "0..1" -- "1..1" conversation_Transition : fieldMapping46
+conversation_Junction "1..1" -- "0..1" conversation_ProjectionField : fieldMapping61
+conversation_AgentImport "0..9999" --* "1..1" conversation_Conversation : importedAgents8
+conversation_Conversation "1..1" *-- "0..9999" conversation_TypeImport : importedTypes6
+conversation_State "0..1" -- "1..1" conversation_StateMachine : initialState22
+conversation_StateMachine "1..1" *-- "0..1" conversation_Transition : initialTransition27
+conversation_Join "1..1" *-- "1..9999" conversation_Junction : joins57
+conversation_Junction "1..1" -- "1..1" conversation_SubscribableByOthers : message58
+conversation_Agent "1..1" -- "0..1" conversation_Conversation : parent18
+conversation_Agent "0..1" -- "1..1" conversation_StateMachine : parent25
+conversation_State "1..1" -- "0..1" conversation_StateMachine : parent34
+conversation_Agent "0..1" -- "1..1" conversation_PubliclySubscribable : parent48
+conversation_Agent "1..1" -- "0..1" conversation_Projection : projection19
+conversation_Event "1..1" -- "0..1" conversation_Projection : refType29
+conversation_Conversation "1..1" *-- "0..9999" conversation_RestService : restServices2
+conversation_Agent "1..1" *-- "0..9999" conversation_PubliclySubscribable : sendables16
+conversation_Conversation "1..1" *-- "0..9999" conversation_Service : services4
+conversation_Agent "1..1" *-- "1..1" conversation_StateMachine : stateMachine14
+conversation_State "1..9999" --* "1..1" conversation_StateMachine : states23
+conversation_State "1..1" -- "1..1" conversation_Transition : toState36
+conversation_PrivatePubSub "1..1" -- "0..1" conversation_Transition : transition50
+conversation_State "1..1" *-- "0..9999" conversation_Transition : transitions31
+conversation_PublishableByMe "0..1" -- "1..1" conversation_Transition : triggers44
+conversation_Projection "0..1" -- "1..1" conversation_TypeImport : type54
+conversation_Conversation "1..1" *-- "0..9999" conversation_View : views10
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+class Admin {
+}
+class Biddee {
+  + statusBiddee : str
+}
+class Bidder {
+}
+class Bidding {
+  + berkas : str
+  + biddee : str
+  + bidder : str
+  + catatanBidder : str
+  + jabatan : str
+  + nilai : int
+  + notulensi : str
+  + statusBidding : str
+}
+class HasilBidding {
+}
+class User {
+  + loginStatus : str
+  + nama : str
+  + password : str
+  + userName : str
+}
+Admin "1..1" -- "1..9999" Biddee : Admin_Biddee
+Admin "1..1" -- "1..9999" Bidding : Admin_Bidding
+Bidder "1..9999" -- "1..9999" Bidding : Bidder_Bidding
+Bidder "1..9999" -- "1..9999" Bidding : Bidder_Bidding2
+Biddee "0..9999" -- "1..9999" Bidding : Bidding_Biddee
+Bidding "1..9999" -- "1..1" HasilBidding : HasilBidding_Bidding
+HasilBidding "0..9999" -- "1..9999" User : User_HasilBidding
+@enduml

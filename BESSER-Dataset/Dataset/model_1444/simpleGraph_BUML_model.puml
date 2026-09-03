@@ -1,0 +1,43 @@
+@startuml
+class GraphElement {
+}
+class Position {
+}
+class simpleGraph_Edge {
+}
+class simpleGraph_Graph {
+}
+abstract class simpleGraph_GraphElement {
+  + generated : bool
+  + id : int
+}
+class simpleGraph_Label {
+  + value : str
+}
+class simpleGraph_Nail {
+}
+class simpleGraph_Node {
+}
+class simpleGraph_Parameter {
+  + key : str
+  + value : str
+}
+class simpleGraph_Position {
+  + X : int
+  + Y : int
+}
+GraphElement <|-- simpleGraph_Edge
+GraphElement <|-- simpleGraph_Graph
+GraphElement <|-- simpleGraph_Position
+Position <|-- simpleGraph_Label
+Position <|-- simpleGraph_Nail
+Position <|-- simpleGraph_Node
+simpleGraph_Edge "0..9999" -- "1..1" simpleGraph_Graph : edges1
+simpleGraph_Label "0..1" -- "1..1" simpleGraph_Node : label14
+simpleGraph_Edge "1..1" -- "0..9999" simpleGraph_Label : labels10
+simpleGraph_Edge "1..1" -- "0..9999" simpleGraph_Nail : nails12
+simpleGraph_Graph "1..1" -- "0..9999" simpleGraph_Node : nodes0
+simpleGraph_GraphElement "1..1" -- "0..9999" simpleGraph_Parameter : parameters3
+simpleGraph_Edge "1..1" -- "0..1" simpleGraph_Node : source4
+simpleGraph_Edge "1..1" -- "0..1" simpleGraph_Node : target7
+@enduml

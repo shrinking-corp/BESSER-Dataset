@@ -1,0 +1,80 @@
+@startuml
+class AbstractState {
+}
+class EObject {
+}
+class FromState {
+}
+class IntermediateState {
+}
+class Named {
+}
+class StateContainer {
+}
+class ToState {
+}
+abstract class workflow_AbstractState {
+  + associatedClass : str
+}
+class workflow_Decision {
+}
+class workflow_End {
+}
+class workflow_Fork {
+}
+abstract class workflow_FromState {
+}
+abstract class workflow_IntermediateState {
+}
+class workflow_Join {
+}
+abstract class workflow_Named {
+  + name : str
+}
+class workflow_Processing {
+}
+class workflow_Start {
+}
+abstract class workflow_StateContainer {
+}
+class workflow_StateTransition {
+}
+class workflow_SubProcess {
+}
+class workflow_Task {
+}
+abstract class workflow_ToState {
+}
+class workflow_Workflow {
+}
+AbstractState <|-- workflow_End
+AbstractState <|-- workflow_IntermediateState
+AbstractState <|-- workflow_Start
+EObject <|-- workflow_Named
+FromState <|-- workflow_IntermediateState
+FromState <|-- workflow_Start
+IntermediateState <|-- workflow_Decision
+IntermediateState <|-- workflow_Fork
+IntermediateState <|-- workflow_Join
+IntermediateState <|-- workflow_Processing
+IntermediateState <|-- workflow_SubProcess
+IntermediateState <|-- workflow_Task
+Named <|-- workflow_AbstractState
+Named <|-- workflow_StateTransition
+Named <|-- workflow_Workflow
+StateContainer <|-- workflow_SubProcess
+StateContainer <|-- workflow_Workflow
+ToState <|-- workflow_End
+ToState <|-- workflow_IntermediateState
+workflow_End "1..1" --* "1..1" workflow_StateContainer : endState7
+workflow_FromState "1..1" -- "1..1" workflow_StateTransition : from_10
+workflow_StateTransition "1..9999" -- "1..1" workflow_ToState : inboundTransitions2
+workflow_FromState "1..1" -- "1..9999" workflow_StateTransition : outboundTransitions1
+workflow_Start "1..1" --* "1..1" workflow_StateContainer : startState4
+workflow_Start "1..1" -- "1..1" workflow_StateContainer : stateContainer12
+workflow_End "1..1" -- "1..1" workflow_StateContainer : stateContainer14
+workflow_IntermediateState "1..1" -- "1..1" workflow_StateContainer : stateContainer9
+workflow_IntermediateState "0..9999" --* "1..1" workflow_StateContainer : states5
+workflow_StateTransition "1..1" -- "1..1" workflow_ToState : to11
+workflow_StateTransition "0..9999" --* "1..1" workflow_Workflow : transition0
+@enduml

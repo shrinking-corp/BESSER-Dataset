@@ -1,0 +1,103 @@
+@startuml
+class Publication {
+}
+class research_team_ActivityReport {
+}
+class research_team_Article {
+}
+class research_team_CallForPaper {
+  + category : str
+  + deadline : str
+  + title : str
+  + url : str
+}
+class research_team_Collaboration {
+  + from_ : str
+  + status : str
+  + title : str
+  + until : str
+  + website : str
+}
+class research_team_InProceedings {
+}
+class research_team_MasterThesis {
+}
+class research_team_Misc {
+}
+class research_team_OpenPosition {
+  + duration : str
+  + mission : str
+  + status : str
+}
+class research_team_Paper {
+  + state : str
+  + title : str
+  + url4pdf : str
+}
+class research_team_Partner {
+  + category : str
+  + country : str
+  + name : str
+}
+class research_team_Person {
+  + affiliation : str
+  + firstname : str
+  + mail : str
+  + name : str
+  + phone : str
+}
+class research_team_PhDThesis {
+}
+class research_team_Publication {
+  + getBibtex() : str
+  + getEndnote() : str
+}
+class research_team_Section {
+  + text : str
+}
+class research_team_Seminar {
+  + abstract : str
+  + dateFrom : str
+  + dateUntil : str
+  + place : str
+  + title : str
+  + url4slides : str
+}
+class research_team_Software {
+  + description : str
+  + title : str
+  + website : str
+}
+class research_team_Team {
+  + meaning : str
+  + name : str
+  + status : str
+  + urlPage : str
+}
+class research_team_TypeCollaboration {
+  + name : str
+}
+Publication <|-- research_team_Article
+Publication <|-- research_team_InProceedings
+Publication <|-- research_team_MasterThesis
+Publication <|-- research_team_Misc
+Publication <|-- research_team_PhDThesis
+research_team_ActivityReport "0..9999" -- "1..1" research_team_Team : 0
+research_team_Paper "1..1" -- "0..9999" research_team_Publication : 21
+research_team_Paper "1..1" -- "1..9999" research_team_Person : author23
+research_team_Collaboration "1..9999" -- "1..1" research_team_Partner : collaboration27
+research_team_Collaboration "0..1" -- "1..1" research_team_OpenPosition : context20
+research_team_Person "1..9999" -- "1..1" research_team_Software : developers25
+research_team_Collaboration "0..9999" -- "1..1" research_team_Team : involvedIn8
+research_team_Publication "0..9999" -- "1..1" research_team_Team : mainReferences10
+research_team_Person "1..9999" -- "1..1" research_team_Team : members1
+research_team_OpenPosition "0..9999" -- "1..1" research_team_Team : openPosition6
+research_team_Paper "0..9999" -- "1..1" research_team_Person : paper13
+research_team_Collaboration "0..9999" -- "1..1" research_team_Person : participates14
+research_team_Paper "1..1" -- "1..1" research_team_Publication : publishedAs18
+research_team_Person "1..1" -- "0..1" research_team_Seminar : seminars12
+research_team_Person "1..1" -- "0..9999" research_team_Software : soft11
+research_team_Person "1..9999" -- "1..1" research_team_Seminar : speakers19
+research_team_Publication "1..1" -- "0..1" research_team_Team : team17
+research_team_Person "1..1" -- "1..1" research_team_Team : teamMaster3
+@enduml

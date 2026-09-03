@@ -1,0 +1,375 @@
+@startuml
+class BasicMaterializationTask {
+}
+class ComponentExtension {
+}
+enum ComponentType {
+  BOM
+  BUCKMINSTER
+  ECLIPSE_FEATURE
+  JAR
+  OSGI_BUNDLE
+  UNKNOWN
+}
+class ConfigurableItem {
+}
+class ScopeRoot {
+}
+class SetupTask {
+}
+class SetupTaskContainer {
+}
+enum SetupTaskScope {
+  Branch
+  Configuration
+  Eclipse
+  None_
+  Project
+  User
+}
+class SourceLocator {
+}
+class TargletData {
+}
+enum Trigger {
+  BOOTSTRAP
+  MANUAL
+  STARTUP
+}
+enum VariableType {
+  BOOLEAN
+  CONTAINER
+  FILE
+  FLOAT
+  FOLDER
+  INTEGER
+  PASSWORD
+  PATTERN
+  PROJECT
+  RESOURCE
+  STRING
+  TEXT
+  URI
+}
+class setup_ApiBaselineTask {
+  + containerFolder : str
+  + version : str
+  + zipLocation : str
+}
+class setup_AutomaticSourceLocator {
+  + locateNestedProjects : bool
+  + rootFolder : str
+}
+abstract class setup_BasicMaterializationTask {
+  + bundlePool : str
+  + targetPlatform : str
+}
+class setup_Branch {
+  + name : str
+}
+class setup_BuckminsterImportTask {
+  + mspec : str
+}
+class setup_BuildPlan {
+  + name : str
+}
+class setup_CommandParameter {
+  + iD : str
+  + value : str
+}
+class setup_Component {
+  + name : str
+  + type : str
+  + versionRange : str
+}
+class setup_ComponentDefinition {
+  + iD : str
+  + version : str
+}
+class setup_ComponentExtension {
+}
+class setup_CompoundSetupTask {
+  + name : str
+}
+abstract class setup_ConfigurableItem {
+}
+class setup_Configuration {
+}
+class setup_ContextVariableTask {
+  + label : str
+  + name : str
+  + stringSubstitution : bool
+  + type : str
+  + value : str
+}
+class setup_Eclipse {
+  + version : str
+}
+class setup_EclipseIniTask {
+  + option : str
+  + value : str
+  + vm : bool
+}
+class setup_EclipsePreferenceTask {
+  + key : str
+  + value : str
+}
+class setup_FileAssociationTask {
+  + defaultEditorID : str
+  + filePattern : str
+}
+class setup_FileAssociationsTask {
+}
+class setup_FileEditor {
+  + iD : str
+}
+class setup_FileMapping {
+  + defaultEditorID : str
+  + filePattern : str
+}
+class setup_GitCloneTask {
+  + checkoutBranch : str
+  + location : str
+  + pushURI : str
+  + remoteName : str
+  + remoteURI : str
+  + userID : str
+}
+class setup_Index {
+  + name : str
+  + oldURIs : str
+  + uRI : str
+}
+class setup_InstallableUnit {
+  + iD : str
+  + versionRange : str
+}
+class setup_JRETask {
+  + location : str
+  + version : str
+}
+class setup_KeyBindingContext {
+  + iD : str
+}
+class setup_KeyBindingTask {
+  + command : str
+  + keys : str
+  + locale : str
+  + platform : str
+  + scheme : str
+}
+class setup_LinkLocationTask {
+  + name : str
+  + path : str
+}
+class setup_ManualSourceLocator {
+  + componentNamePattern : str
+  + componentTypes : str
+  + location : str
+}
+class setup_MaterializationTask {
+}
+class setup_MavenImportTask {
+}
+class setup_MetaIndex {
+}
+class setup_MylynBuildsTask {
+  + connectorKind : str
+  + password : str
+  + serverURL : str
+  + userID : str
+}
+class setup_MylynQueriesTask {
+  + connectorKind : str
+  + password : str
+  + repositoryURL : str
+  + userID : str
+}
+class setup_MylynQueryTask {
+  + connectorKind : str
+  + relativeURL : str
+  + repositoryURL : str
+  + summary : str
+}
+class setup_P2Repository {
+  + uRL : str
+}
+class setup_P2Task {
+  + licenseConfirmationDisabled : bool
+  + mergeDisabled : bool
+}
+class setup_Predicate {
+}
+class setup_Preferences {
+  + acceptedLicenses : str
+  + installFolder : str
+}
+class setup_Project {
+  + label : str
+  + name : str
+}
+class setup_ProjectSetImportTask {
+  + uRL : str
+}
+class setup_ProjectsImportTask {
+}
+class setup_Query {
+  + summary : str
+  + uRL : str
+}
+class setup_QueryAttribute {
+  + key : str
+  + value : str
+}
+class setup_RedirectionTask {
+  + sourceURL : str
+  + targetURL : str
+}
+class setup_RepositoryList {
+  + name : str
+}
+class setup_ResourceCopyTask {
+  + sourceURL : str
+  + targetURL : str
+}
+class setup_ResourceCreationTask {
+  + content : str
+  + encoding : str
+  + targetURL : str
+}
+abstract class setup_ScopeRoot {
+  + getParentScopeRoot() : ScopeRoot
+  + getScope() : str
+}
+class setup_Setup {
+  + getSetupTasks(setup_filterRestrictions : str, setup_preferences : str, setup_trigger : str) : str
+}
+abstract class setup_SetupTask {
+  + disabled : bool
+  + documentation : str
+  + excludedTriggers : str
+  + scope : str
+  + getScopeRoot() : ScopeRoot
+  + getTriggers() : str
+  + getValidTriggers() : str
+  + requires(setup_setupTask : str) : bool
+}
+abstract class setup_SetupTaskContainer {
+}
+abstract class setup_SourceLocator {
+}
+class setup_TargetPlatformTask {
+  + name : str
+}
+class setup_Targlet {
+}
+abstract class setup_TargletData {
+  + activeRepositoryList : str
+  + includeAllPlatforms : bool
+  + includeSources : bool
+  + name : str
+}
+class setup_TargletImportTask {
+  + targletURI : str
+}
+class setup_TargletTask {
+}
+class setup_TextModification {
+  + pattern : str
+  + substitutions : str
+}
+class setup_TextModifyTask {
+  + encoding : str
+  + uRL : str
+}
+class setup_VariableChoice {
+  + label : str
+  + value : str
+}
+class setup_WorkingSet {
+}
+class setup_WorkingSetTask {
+}
+BasicMaterializationTask <|-- setup_BuckminsterImportTask
+BasicMaterializationTask <|-- setup_MaterializationTask
+ComponentExtension <|-- setup_ComponentDefinition
+ConfigurableItem <|-- setup_Branch
+ConfigurableItem <|-- setup_Eclipse
+ConfigurableItem <|-- setup_Project
+ScopeRoot <|-- setup_ConfigurableItem
+ScopeRoot <|-- setup_Configuration
+ScopeRoot <|-- setup_Preferences
+SetupTask <|-- setup_ApiBaselineTask
+SetupTask <|-- setup_BasicMaterializationTask
+SetupTask <|-- setup_CompoundSetupTask
+SetupTask <|-- setup_ContextVariableTask
+SetupTask <|-- setup_EclipseIniTask
+SetupTask <|-- setup_EclipsePreferenceTask
+SetupTask <|-- setup_FileAssociationTask
+SetupTask <|-- setup_FileAssociationsTask
+SetupTask <|-- setup_GitCloneTask
+SetupTask <|-- setup_JRETask
+SetupTask <|-- setup_KeyBindingTask
+SetupTask <|-- setup_LinkLocationTask
+SetupTask <|-- setup_MavenImportTask
+SetupTask <|-- setup_MylynBuildsTask
+SetupTask <|-- setup_MylynQueriesTask
+SetupTask <|-- setup_MylynQueryTask
+SetupTask <|-- setup_P2Task
+SetupTask <|-- setup_ProjectSetImportTask
+SetupTask <|-- setup_ProjectsImportTask
+SetupTask <|-- setup_RedirectionTask
+SetupTask <|-- setup_ResourceCopyTask
+SetupTask <|-- setup_ResourceCreationTask
+SetupTask <|-- setup_TargetPlatformTask
+SetupTask <|-- setup_TargletImportTask
+SetupTask <|-- setup_TargletTask
+SetupTask <|-- setup_TextModifyTask
+SetupTask <|-- setup_WorkingSetTask
+SetupTaskContainer <|-- setup_CompoundSetupTask
+SetupTaskContainer <|-- setup_ScopeRoot
+SourceLocator <|-- setup_AutomaticSourceLocator
+SourceLocator <|-- setup_ManualSourceLocator
+TargletData <|-- setup_Targlet
+TargletData <|-- setup_TargletTask
+setup_P2Repository "0..9999" -- "1..1" setup_TargletData : activeP2Repositories46
+setup_Query "1..1" *-- "0..9999" setup_QueryAttribute : attributes66
+setup_Branch "1..1" -- "1..1" setup_Setup : branch13
+setup_Branch "1..9999" --* "1..1" setup_Project : branches7
+setup_BuildPlan "1..9999" --* "1..1" setup_MylynBuildsTask : buildPlans67
+setup_ContextVariableTask "1..1" *-- "0..9999" setup_VariableChoice : choices24
+setup_CommandParameter "0..9999" --* "1..1" setup_KeyBindingTask : commandParameters62
+setup_Configuration "0..1" -- "1..1" setup_Eclipse : configuration1
+setup_Configuration "0..1" -- "1..1" setup_Project : configuration5
+setup_KeyBindingContext "1..9999" --* "1..1" setup_KeyBindingTask : contexts61
+setup_ComponentExtension "1..1" *-- "0..9999" setup_InstallableUnit : dependencies35
+setup_Eclipse "1..1" -- "1..1" setup_Setup : eclipseVersion15
+setup_Configuration "1..1" *-- "1..9999" setup_Eclipse : eclipseVersions2
+setup_FileAssociationTask "1..1" *-- "0..9999" setup_FileEditor : editors54
+setup_FileEditor "0..9999" --* "1..1" setup_FileMapping : editors56
+setup_Index "0..9999" --* "1..1" setup_MetaIndex : indexes0
+setup_InstallableUnit "1..9999" --* "1..1" setup_P2Task : installableUnits25
+setup_FileAssociationsTask "1..1" *-- "1..9999" setup_FileMapping : mappings55
+setup_TextModification "0..9999" --* "1..1" setup_TextModifyTask : modifications60
+setup_P2Repository "1..9999" --* "1..1" setup_P2Task : p2Repositories26
+setup_MaterializationTask "1..1" *-- "0..9999" setup_P2Repository : p2Repositories31
+setup_P2Repository "0..9999" --* "1..1" setup_RepositoryList : p2Repositories49
+setup_AutomaticSourceLocator "1..1" *-- "0..9999" setup_Predicate : predicates34
+setup_Branch "1..1" -- "0..1" setup_Project : project9
+setup_Configuration "1..1" *-- "1..9999" setup_Project : projects3
+setup_MylynQueriesTask "1..1" *-- "0..9999" setup_Query : queries64
+setup_RepositoryList "0..9999" --* "1..1" setup_TargletData : repositoryLists44
+setup_SetupTask "1..1" -- "0..9999" setup_SetupTask : requirements19
+setup_Branch "1..1" -- "0..9999" setup_Eclipse : restrictions11
+setup_ConfigurableItem "0..9999" -- "1..1" setup_SetupTask : restrictions20
+setup_Eclipse "0..9999" -- "1..1" setup_Project : restrictions8
+setup_Component "1..9999" --* "1..1" setup_MaterializationTask : rootComponents28
+setup_InstallableUnit "1..9999" --* "1..1" setup_TargletData : roots39
+setup_SetupTask "0..9999" --* "1..1" setup_SetupTaskContainer : setupTasks22
+setup_MaterializationTask "1..1" *-- "0..9999" setup_SourceLocator : sourceLocators29
+setup_AutomaticSourceLocator "1..9999" --* "1..1" setup_MavenImportTask : sourceLocators37
+setup_AutomaticSourceLocator "0..9999" --* "1..1" setup_TargletData : sourceLocators41
+setup_AutomaticSourceLocator "1..9999" --* "1..1" setup_ProjectsImportTask : sourceLocators52
+setup_MylynQueriesTask "0..1" -- "1..1" setup_Query : task65
+setup_WorkingSet "0..9999" --* "1..1" setup_WorkingSetTask : workingSets59
+@enduml

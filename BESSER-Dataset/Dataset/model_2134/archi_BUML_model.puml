@@ -1,0 +1,112 @@
+@startuml
+class AnalysedElement {
+}
+class Dependency {
+}
+class ReferenceDependency {
+}
+class Relationship {
+}
+class RuntimeDependency {
+}
+abstract class architecture_AnalysedElement {
+  + idAnalyzedElement : int
+  + name : str
+  + properties : int
+}
+class architecture_ArchitectureFile {
+  + path : str
+}
+class architecture_CallRelationship {
+}
+class architecture_DeclaredType {
+}
+abstract class architecture_Dependency {
+}
+class architecture_Field {
+}
+class architecture_FieldReferenceDependency {
+}
+class architecture_ImportReferenceDependency {
+}
+class architecture_InheritanceDependency {
+}
+class architecture_InjectionDependency {
+}
+class architecture_Library {
+}
+class architecture_Method {
+}
+class architecture_ParameterRelationship {
+}
+class architecture_Project {
+}
+class architecture_ReferenceDependency {
+  + name : str
+  + uri : str
+}
+abstract class architecture_Relationship {
+  + relationShipId : int
+}
+class architecture_ReturnTypeRelationship {
+}
+class architecture_RuntimeDependency {
+}
+class architecture_Type {
+  + binary : bool
+  + qualifiedName : str
+  + source : bool
+}
+class architecture_extension_Bop {
+}
+class architecture_extension_ExtensionRelationship {
+  + checkConstraint() : bool
+}
+abstract class architecture_extension_Pattern {
+}
+class architecture_extension_PatternRelationship {
+  + referenceName : str
+  + checkConstraint() : bool
+  + getSource() : str
+  + getTarget() : void
+}
+abstract class architecture_extension_RelationshipConstraint {
+  + check(architecture_relationship : str) : bool
+}
+abstract class architecture_extension_Role {
+  + attachedElement : str
+}
+class architecture_extension_RoleRelationship {
+  + checkConstraint() : bool
+  + getTarget() : void
+}
+AnalysedElement <|-- architecture_ArchitectureFile
+AnalysedElement <|-- architecture_Field
+AnalysedElement <|-- architecture_Library
+AnalysedElement <|-- architecture_Method
+AnalysedElement <|-- architecture_Project
+AnalysedElement <|-- architecture_Type
+AnalysedElement <|-- architecture_extension_Pattern
+AnalysedElement <|-- architecture_extension_Role
+Dependency <|-- architecture_InheritanceDependency
+Dependency <|-- architecture_ReferenceDependency
+Dependency <|-- architecture_RuntimeDependency
+ReferenceDependency <|-- architecture_FieldReferenceDependency
+ReferenceDependency <|-- architecture_ImportReferenceDependency
+Relationship <|-- architecture_CallRelationship
+Relationship <|-- architecture_DeclaredType
+Relationship <|-- architecture_Dependency
+Relationship <|-- architecture_ParameterRelationship
+Relationship <|-- architecture_ReturnTypeRelationship
+Relationship <|-- architecture_extension_ExtensionRelationship
+Relationship <|-- architecture_extension_PatternRelationship
+Relationship <|-- architecture_extension_RoleRelationship
+RuntimeDependency <|-- architecture_InjectionDependency
+architecture_AnalysedElement "1..1" *-- "0..9999" architecture_AnalysedElement : containedElements4
+architecture_AnalysedElement "1..1" -- "0..9999" architecture_Relationship : incomingRelationships1
+architecture_AnalysedElement "0..1" -- "1..1" architecture_InjectionDependency : mapping12
+architecture_AnalysedElement "1..1" *-- "0..9999" architecture_Relationship : outgoingRelationships0
+architecture_AnalysedElement "1..1" -- "0..1" architecture_AnalysedElement : parent6
+architecture_AnalysedElement "1..1" -- "1..1" architecture_Relationship : source10
+architecture_AnalysedElement "1..1" -- "1..1" architecture_Relationship : target8
+@enduml

@@ -1,0 +1,72 @@
+@startuml
+class CourseSlot {
+}
+enum ProgrammeCode {
+  BIT
+  MIDT
+  MIT
+  MTDT
+  MTIOT
+  MTPROD
+}
+enum ProgrammeType {
+  Bachelors
+  IntegratedMaster
+  Masters
+}
+class SemesterContainer {
+}
+class studyprogramme_CompulsoryCourseSlot {
+}
+class studyprogramme_Course {
+  + courseCode : str
+  + credits : float
+  + displayedName : str
+  + level : int
+  + name : str
+}
+class studyprogramme_CourseSlot {
+}
+class studyprogramme_ElectiveCourseList {
+  + name : str
+}
+class studyprogramme_ElectiveCourseSlot {
+}
+class studyprogramme_Programme {
+  + name : str
+  + numberOfYears : int
+  + programmeCode : str
+  + programmeType : str
+}
+class studyprogramme_Semester {
+  + semesterNumber : int
+}
+class studyprogramme_SemesterContainer {
+}
+class studyprogramme_Specialization {
+  + name : str
+  + selectionSemester : int
+}
+class studyprogramme_University {
+  + name : str
+}
+CourseSlot <|-- studyprogramme_CompulsoryCourseSlot
+CourseSlot <|-- studyprogramme_ElectiveCourseSlot
+SemesterContainer <|-- studyprogramme_Programme
+SemesterContainer <|-- studyprogramme_Specialization
+studyprogramme_Semester "0..9999" --* "1..1" studyprogramme_University : Semesters20
+studyprogramme_Course "1..1" -- "1..1" studyprogramme_ElectiveCourseSlot : assignedCourse26
+studyprogramme_Course "0..9999" -- "1..1" studyprogramme_ElectiveCourseList : availableCourses13
+studyprogramme_Course "1..1" -- "1..1" studyprogramme_CourseSlot : course9
+studyprogramme_Course "0..9999" --* "1..1" studyprogramme_University : courses17
+studyprogramme_ElectiveCourseList "0..1" --* "1..1" studyprogramme_ElectiveCourseSlot : electiveCourseList25
+studyprogramme_ElectiveCourseList "1..1" -- "0..1" studyprogramme_ElectiveCourseSlot : electiveCourseSlot15
+studyprogramme_Specialization "1..1" -- "0..1" studyprogramme_Specialization : parrentSpecialisation6
+studyprogramme_Programme "0..1" -- "1..1" studyprogramme_Specialization : programme1
+studyprogramme_Programme "0..9999" --* "1..1" studyprogramme_University : programmes16
+studyprogramme_Semester "0..9999" --* "1..1" studyprogramme_SemesterContainer : semesters11
+studyprogramme_CourseSlot "0..9999" --* "1..1" studyprogramme_Semester : slots8
+studyprogramme_Specialization "0..9999" --* "1..1" studyprogramme_University : specialisations23
+studyprogramme_Programme "1..1" *-- "0..9999" studyprogramme_Specialization : specializations0
+studyprogramme_Specialization "1..1" *-- "0..9999" studyprogramme_Specialization : subSpecialisations3
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class DataValue {
+}
+class NamedElement {
+}
+class xunit_Action {
+  + desc : str
+}
+class xunit_Assertion {
+  + type : str
+}
+class xunit_DataValue {
+  + value : str
+}
+class xunit_ExpectedValue {
+}
+class xunit_NamedElement {
+  + name : str
+}
+class xunit_TestCase {
+}
+class xunit_TestSuite {
+}
+DataValue <|-- xunit_ExpectedValue
+NamedElement <|-- xunit_Assertion
+NamedElement <|-- xunit_TestCase
+NamedElement <|-- xunit_TestSuite
+xunit_Action "1..1" --* "1..1" xunit_Assertion : action8
+xunit_Assertion "0..9999" --* "1..1" xunit_TestCase : assertion1
+xunit_Assertion "1..1" -- "1..1" xunit_ExpectedValue : assertion13
+xunit_Assertion "1..1" *-- "0..1" xunit_ExpectedValue : expectedValue6
+xunit_TestCase "1..9999" --* "1..1" xunit_TestSuite : testCase0
+xunit_Assertion "1..1" -- "0..1" xunit_TestCase : testCase10
+xunit_TestCase "1..1" -- "0..1" xunit_TestSuite : testSuite3
+@enduml

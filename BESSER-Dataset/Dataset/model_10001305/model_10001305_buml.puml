@@ -1,0 +1,76 @@
+@startuml
+class OrderProcess {
+  + IsMember : int
+  + MemberShipPayment : int
+  + OrderID : int
+  + OrderPickUp : int
+  + PromoCode : str
+  + Total : str
+  + UserID : int
+}
+class Premium_Members {
+  + MembershipEndDate : str
+  + MembershipStartDate : str
+  + PromoCode : str
+}
+class Product {
+  + Description : str
+  + InventoryMinQuantity : int
+  + InventoryQuantity : int
+  + ProductID : int
+  + VendorID : int
+}
+class Promos {
+  + Discount : str
+  + EndDate : str
+  + Name : str
+  + PromoCode : str
+  + StartDate : str
+}
+class Regular_Members {
+  + TrialStartDate : str
+  + TriedPremium : int
+}
+class ShoppingCart {
+  + OrderID : int
+  + ProductID : int
+  + Promo : Promos
+  + Quantity : int
+  + ShoppingCartID : int
+  + Total : str
+  + UserID : str
+}
+class UserAddress {
+  + City : str
+  + PostCode : str
+  + StreetName : str
+  + StreetNum : int
+}
+class UserName {
+  + FirstName : str
+  + LastName : str
+}
+class User_Account {
+  + DateOfBirth : str
+  + Email : str
+  + FullName : str
+  + RegDate : str
+  + UserAddress : str
+  + UserID : str
+}
+class Vendor {
+  + Address : str
+  + Contact_Number : int
+  + Email : str
+  + Name : str
+  + VendorID : int
+}
+UserName "0..1" -- "0..1" User_Account : Customer_ShoppingCart
+ShoppingCart "1..9999" -- "1..1" User_Account : Order_Regular_Members
+Premium_Members "1..1" -- "0..1" Promos : Premium_Members_Promos
+Product "1..9999" -- "1..1" Vendor : Product_Vendor
+Promos "0..1" -- "0..9999" ShoppingCart : Promos_ShoppingCart
+OrderProcess "0..1" -- "1..1" ShoppingCart : ShoppingCart_Order
+OrderProcess "0..9999" -- "1..1" User_Account : User_Account_OrderProcess
+UserAddress "0..1" -- "0..1" User_Account : User_Account_UserAddress
+@enduml

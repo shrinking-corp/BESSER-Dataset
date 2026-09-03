@@ -1,0 +1,54 @@
+@startuml
+class Bill {
+  + amount : float
+  + billno : str
+}
+class Bursar {
+  + firstname : str
+  + lastname : str
+}
+class Doctor {
+  + dentist : Doctor
+  + normal_doctor : Doctor
+  + women_doctor : Doctor
+}
+class Patient {
+  + addr : str
+  + birthyear : int
+  + blood_group : int
+  + email : str
+  + firstname : str
+  + id : int
+  + lastname : str
+  + phonenumber : int
+  + sex : str
+}
+class Receptionist {
+  + firstname : str
+  + lastname : str
+}
+class Room {
+  + roomname : str
+  + roomno : int
+}
+class lab {
+  + price : int
+  + results : str
+}
+class medicine {
+  + id : int
+  + medicine : str
+  + price : int
+}
+class pharmacy {
+  + medicine : str
+  + price : int
+}
+Bill "1..1" -- "1..1" Patient : Patient_Bill
+Doctor "0..1" -- "0..1" Patient : Patient_Doctor
+Doctor "0..1" -- "0..1" lab : lab_Doctor
+Patient "0..1" -- "0..1" lab : lab_Patient
+Bursar "0..1" -- "0..1" pharmacy : pharmacy_Bursar
+Patient "0..1" -- "0..1" pharmacy : pharmacy_Patient
+Patient "1..1" -- "1..1" Receptionist : receptions
+@enduml

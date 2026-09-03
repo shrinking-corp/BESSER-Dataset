@@ -1,0 +1,53 @@
+@startuml
+enum CourseType {
+  ELECTIVE
+  MANDATORY
+}
+class Programme {
+}
+enum SemesterType {
+  Autumn
+  Spring
+}
+enum StudyLevel {
+  FIRST_YEAR
+  POST_GRAD
+  SECOND_DEGREE
+  SECOND_YEAR
+  THIRD_YEAR
+}
+class programmes_Course {
+  + code : str
+  + credits : float
+  + level : str
+  + name : str
+}
+class programmes_CourseGroup {
+  + coursesType : str
+  + name : str
+}
+class programmes_Programme {
+  + code : str
+  + name : str
+}
+class programmes_Semester {
+  + semesterType : str
+  + year : int
+}
+class programmes_Specialization {
+}
+class programmes_University {
+  + name : str
+}
+Programme <|-- programmes_Specialization
+programmes_Semester "1..1" -- "1..1" programmes_Specialization : chosenIn4
+programmes_CourseGroup "0..9999" --* "1..1" programmes_Programme : courseGroups2
+programmes_Course "0..9999" --* "1..1" programmes_University : courses14
+programmes_Course "0..9999" -- "1..1" programmes_Semester : courses7
+programmes_Course "0..9999" -- "1..1" programmes_CourseGroup : courses9
+programmes_Programme "1..1" -- "1..1" programmes_Semester : programme5
+programmes_Programme "1..1" *-- "0..9999" programmes_Semester : programmeSemester1
+programmes_Programme "1..1" *-- "0..9999" programmes_Specialization : specializations0
+programmes_Programme "0..1" -- "1..1" programmes_Specialization : specializesIn3
+programmes_Programme "0..9999" --* "1..1" programmes_University : studyProgrammes12
+@enduml

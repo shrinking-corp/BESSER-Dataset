@@ -1,0 +1,194 @@
+@startuml
+class Action {
+}
+class ActivityEdge {
+}
+class ActivityNode {
+}
+enum BooleanBinaryOperator {
+  AND
+  OR
+}
+class BooleanExpression {
+}
+enum BooleanUnaryOperator {
+  NOT
+}
+class ControlNode {
+}
+class Expression {
+}
+class FinalNode {
+}
+enum IntegerCalculationOperator {
+  ADD
+  SUBRACT
+}
+enum IntegerComparisonOperator {
+  EQUALS
+  GREATER
+  GREATER_EQUALS
+  SMALLER
+  SMALLER_EQUALS
+}
+class IntegerExpression {
+}
+class NamedElement {
+}
+class Value {
+}
+class Variable {
+}
+class VariableAssignment {
+}
+class activitydiagram_AcceptEventAction {
+}
+abstract class activitydiagram_Action {
+}
+class activitydiagram_Activity {
+}
+abstract class activitydiagram_ActivityEdge {
+}
+class activitydiagram_ActivityFinalNode {
+}
+abstract class activitydiagram_ActivityNode {
+  + running : bool
+}
+class activitydiagram_BooleanBinaryExpression {
+  + operator : str
+}
+abstract class activitydiagram_BooleanExpression {
+}
+class activitydiagram_BooleanUnaryExpression {
+  + operator : str
+}
+class activitydiagram_BooleanValue {
+  + value : bool
+}
+class activitydiagram_BooleanVariable {
+  + initialValue : bool
+}
+class activitydiagram_BooleanVariableAssignment {
+}
+class activitydiagram_ControlFlow {
+}
+abstract class activitydiagram_ControlNode {
+}
+class activitydiagram_DecisionNode {
+}
+class activitydiagram_Event {
+}
+abstract class activitydiagram_Expression {
+}
+abstract class activitydiagram_FinalNode {
+}
+class activitydiagram_FlowFinalNode {
+}
+class activitydiagram_ForkNode {
+}
+class activitydiagram_InitialNode {
+}
+class activitydiagram_IntegerBinaryExpression {
+  + operator : str
+}
+class activitydiagram_IntegerComparisonExpression {
+  + operator : str
+}
+abstract class activitydiagram_IntegerExpression {
+}
+class activitydiagram_IntegerValue {
+  + value : int
+}
+class activitydiagram_IntegerVariable {
+  + initialValue : int
+}
+class activitydiagram_IntegerVariableAssignment {
+}
+class activitydiagram_JoinNode {
+}
+class activitydiagram_MergeNode {
+}
+abstract class activitydiagram_NamedElement {
+  + name : str
+}
+class activitydiagram_OpaqueAction {
+}
+abstract class activitydiagram_Value {
+}
+abstract class activitydiagram_Variable {
+  + name : str
+}
+abstract class activitydiagram_VariableAssignment {
+}
+Action <|-- activitydiagram_OpaqueAction
+ActivityEdge <|-- activitydiagram_ControlFlow
+ActivityNode <|-- activitydiagram_AcceptEventAction
+ActivityNode <|-- activitydiagram_Action
+ActivityNode <|-- activitydiagram_ControlNode
+BooleanExpression <|-- activitydiagram_BooleanBinaryExpression
+BooleanExpression <|-- activitydiagram_BooleanUnaryExpression
+BooleanExpression <|-- activitydiagram_BooleanValue
+BooleanExpression <|-- activitydiagram_BooleanVariable
+BooleanExpression <|-- activitydiagram_IntegerComparisonExpression
+ControlNode <|-- activitydiagram_DecisionNode
+ControlNode <|-- activitydiagram_FinalNode
+ControlNode <|-- activitydiagram_ForkNode
+ControlNode <|-- activitydiagram_InitialNode
+ControlNode <|-- activitydiagram_JoinNode
+ControlNode <|-- activitydiagram_MergeNode
+Expression <|-- activitydiagram_BooleanExpression
+Expression <|-- activitydiagram_IntegerBinaryExpression
+Expression <|-- activitydiagram_IntegerExpression
+Expression <|-- activitydiagram_Value
+Expression <|-- activitydiagram_Variable
+FinalNode <|-- activitydiagram_ActivityFinalNode
+FinalNode <|-- activitydiagram_FlowFinalNode
+IntegerExpression <|-- activitydiagram_IntegerBinaryExpression
+IntegerExpression <|-- activitydiagram_IntegerValue
+IntegerExpression <|-- activitydiagram_IntegerVariable
+NamedElement <|-- activitydiagram_Activity
+NamedElement <|-- activitydiagram_ActivityEdge
+NamedElement <|-- activitydiagram_ActivityNode
+NamedElement <|-- activitydiagram_Event
+Value <|-- activitydiagram_BooleanValue
+Value <|-- activitydiagram_IntegerValue
+Variable <|-- activitydiagram_BooleanVariable
+Variable <|-- activitydiagram_IntegerVariable
+VariableAssignment <|-- activitydiagram_BooleanVariableAssignment
+VariableAssignment <|-- activitydiagram_IntegerVariableAssignment
+activitydiagram_Activity "1..1" -- "1..1" activitydiagram_ActivityNode : activity12
+activitydiagram_BooleanVariable "1..1" -- "1..1" activitydiagram_BooleanVariableAssignment : assignee66
+activitydiagram_IntegerVariable "1..1" -- "1..1" activitydiagram_IntegerVariableAssignment : assignee71
+activitydiagram_OpaqueAction "1..1" *-- "0..9999" activitydiagram_VariableAssignment : assignments18
+activitydiagram_Activity "1..1" *-- "0..9999" activitydiagram_ActivityEdge : edges2
+activitydiagram_AcceptEventAction "1..1" -- "1..1" activitydiagram_Event : eventType19
+activitydiagram_Activity "1..1" *-- "0..9999" activitydiagram_Event : events0
+activitydiagram_BooleanExpression "0..1" --* "1..1" activitydiagram_BooleanVariableAssignment : expression68
+activitydiagram_IntegerExpression "0..1" --* "1..1" activitydiagram_IntegerVariableAssignment : expression72
+activitydiagram_BooleanVariable "0..1" -- "1..1" activitydiagram_ControlFlow : guard11
+activitydiagram_Action "1..1" -- "1..1" activitydiagram_ActivityEdge : incoming13
+activitydiagram_AcceptEventAction "1..1" -- "0..1" activitydiagram_ActivityEdge : incoming21
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_DecisionNode : incoming29
+activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_MergeNode : incoming34
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ForkNode : incoming39
+activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_JoinNode : incoming44
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_FinalNode : incoming49
+activitydiagram_Activity "1..1" *-- "0..9999" activitydiagram_Variable : locals4
+activitydiagram_Activity "1..1" *-- "0..9999" activitydiagram_ActivityNode : nodes1
+activitydiagram_IntegerBinaryExpression "1..1" -- "0..1" activitydiagram_IntegerExpression : operand151
+activitydiagram_IntegerComparisonExpression "1..1" -- "0..1" activitydiagram_IntegerExpression : operand155
+activitydiagram_BooleanBinaryExpression "1..1" -- "1..1" activitydiagram_BooleanExpression : operand161
+activitydiagram_IntegerBinaryExpression "1..1" -- "0..1" activitydiagram_IntegerExpression : operand252
+activitydiagram_IntegerComparisonExpression "1..1" -- "0..1" activitydiagram_IntegerExpression : operand257
+activitydiagram_BooleanBinaryExpression "1..1" -- "1..1" activitydiagram_BooleanExpression : operand263
+activitydiagram_BooleanExpression "1..1" -- "1..1" activitydiagram_BooleanUnaryExpression : operand60
+activitydiagram_Action "1..1" -- "1..1" activitydiagram_ActivityEdge : outgoing15
+activitydiagram_AcceptEventAction "1..1" -- "1..1" activitydiagram_ActivityEdge : outgoing24
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_InitialNode : outgoing27
+activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_DecisionNode : outgoing31
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_MergeNode : outgoing36
+activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_ForkNode : outgoing41
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_JoinNode : outgoing46
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ActivityNode : source6
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ActivityNode : target8
+@enduml

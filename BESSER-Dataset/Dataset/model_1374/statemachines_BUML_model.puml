@@ -1,0 +1,19 @@
+@startuml
+class statemachines_Event {
+  + code : str
+  + name : str
+}
+class statemachines_State {
+  + name : str
+}
+class statemachines_StateMachine {
+}
+class statemachines_Transition {
+}
+statemachines_Event "0..1" -- "1..1" statemachines_Transition : event11
+statemachines_Event "0..9999" --* "1..1" statemachines_StateMachine : events1
+statemachines_Event "0..9999" -- "1..1" statemachines_StateMachine : resetEvents3
+statemachines_State "0..1" -- "1..1" statemachines_Transition : state8
+statemachines_State "0..9999" --* "1..1" statemachines_StateMachine : states0
+statemachines_State "1..1" *-- "0..9999" statemachines_Transition : transitions6
+@enduml

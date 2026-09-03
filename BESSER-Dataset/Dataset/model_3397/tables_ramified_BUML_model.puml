@@ -1,0 +1,63 @@
+@startuml
+class MT__Element {
+}
+class MTpos__Element {
+}
+class MTpre__Element {
+}
+class ramRoot_GenericNode {
+}
+abstract class ramRoot_MT__Element {
+  + MT__isProcessed : bool
+  + MT__label : str
+}
+class ramRoot_MTpos__Chair {
+  + MTpos__order : str
+}
+abstract class ramRoot_MTpos__Element {
+}
+class ramRoot_MTpos__Restaurant {
+}
+class ramRoot_MTpos__Table {
+  + MTpos__id : str
+  + MTpos__isReserved : str
+}
+class ramRoot_MTpos__Waitress {
+  + MTpos__name : str
+}
+class ramRoot_MTpre__Chair {
+  + MTpre__order : str
+}
+abstract class ramRoot_MTpre__Element {
+  + MT__matchSubtype : bool
+}
+class ramRoot_MTpre__Restaurant {
+}
+class ramRoot_MTpre__Table {
+  + MTpre__id : str
+  + MTpre__isReserved : str
+}
+class ramRoot_MTpre__Waitress {
+  + MTpre__name : str
+}
+MT__Element <|-- ramRoot_GenericNode
+MT__Element <|-- ramRoot_MTpos__Element
+MT__Element <|-- ramRoot_MTpre__Element
+MTpos__Element <|-- ramRoot_MTpos__Chair
+MTpos__Element <|-- ramRoot_MTpos__Restaurant
+MTpos__Element <|-- ramRoot_MTpos__Table
+MTpos__Element <|-- ramRoot_MTpos__Waitress
+MTpre__Element <|-- ramRoot_MTpre__Chair
+MTpre__Element <|-- ramRoot_MTpre__Restaurant
+MTpre__Element <|-- ramRoot_MTpre__Table
+MTpre__Element <|-- ramRoot_MTpre__Waitress
+ramRoot_GenericNode "1..1" -- "0..9999" ramRoot_MT__Element : GenericLink0
+ramRoot_MTpos__Chair "0..9999" --* "1..1" ramRoot_MTpos__Table : chairs1
+ramRoot_MTpre__Chair "0..9999" --* "1..1" ramRoot_MTpre__Table : chairs4
+ramRoot_MTpos__Restaurant "1..1" *-- "0..9999" ramRoot_MTpos__Table : tables14
+ramRoot_MTpos__Table "0..9999" --* "1..1" ramRoot_MTpos__Waitress : tables2
+ramRoot_MTpre__Table "0..9999" --* "1..1" ramRoot_MTpre__Waitress : tables5
+ramRoot_MTpre__Restaurant "1..1" *-- "0..9999" ramRoot_MTpre__Table : tables7
+ramRoot_MTpos__Restaurant "1..1" *-- "0..9999" ramRoot_MTpos__Waitress : waitress12
+ramRoot_MTpre__Restaurant "1..1" *-- "0..9999" ramRoot_MTpre__Waitress : waitress9
+@enduml

@@ -1,0 +1,91 @@
+@startuml
+class Action {
+}
+class ActionsList {
+}
+class ContinuosAction {
+}
+class Ending {
+}
+class Event {
+}
+enum MOVE_DIRECTION {
+  BACKWARDS
+  FORWARDS
+}
+class RandomAction {
+}
+class RotorAction {
+}
+enum TURN_DIRECTION {
+  LEFT
+  RIGHT
+}
+abstract class model_Action {
+}
+abstract class model_ActionsList {
+}
+abstract class model_ContinuosAction {
+  + duration : float
+}
+abstract class model_Ending {
+}
+abstract class model_Event {
+}
+class model_EventListener {
+}
+class model_Main {
+}
+class model_Move {
+  + direction : str
+}
+class model_Obstacle {
+}
+abstract class model_RandomAction {
+  + isRandom : bool
+}
+class model_Repeat {
+}
+class model_RoboProse {
+}
+class model_Root {
+}
+abstract class model_RotorAction {
+}
+class model_StartOver {
+}
+class model_Stop {
+}
+class model_Tapped {
+}
+class model_Turn {
+  + degrees : float
+  + direction : str
+}
+class model_Wait {
+}
+Action <|-- model_ContinuosAction
+Action <|-- model_RandomAction
+Action <|-- model_RotorAction
+ActionsList <|-- model_EventListener
+ActionsList <|-- model_Main
+ContinuosAction <|-- model_Move
+ContinuosAction <|-- model_Stop
+ContinuosAction <|-- model_Turn
+Ending <|-- model_Repeat
+Ending <|-- model_StartOver
+Ending <|-- model_Wait
+Event <|-- model_Obstacle
+Event <|-- model_Tapped
+RandomAction <|-- model_Move
+RandomAction <|-- model_Turn
+RotorAction <|-- model_Move
+RotorAction <|-- model_Turn
+model_Action "1..9999" --* "1..1" model_ActionsList : actions10
+model_ActionsList "1..1" *-- "0..1" model_Ending : ending11
+model_Event "1..1" --* "1..1" model_EventListener : event8
+model_EventListener "0..9999" --* "1..1" model_RoboProse : listeners3
+model_Main "0..1" --* "1..1" model_RoboProse : main1
+model_RoboProse "1..1" --* "1..1" model_Root : robot0
+model_EventListener "0..9999" --* "1..1" model_EventListener : sublisteners6
+@enduml

@@ -1,0 +1,195 @@
+@startuml
+class AbstractInstance {
+}
+class InstanceBase {
+}
+class InterfaceItemInstance {
+}
+enum PortKind {
+  external
+  interface
+  internal
+  relay
+}
+class StructureInstance {
+}
+class WiredStructureClass {
+}
+abstract class etricegen_AbstractInstance {
+}
+class etricegen_ActorClass {
+}
+class etricegen_ActorInstance {
+  + replIdx : int
+  + unindexedName : str
+}
+class etricegen_ActorInterfaceInstance {
+  + array : bool
+}
+class etricegen_Binding {
+}
+class etricegen_BindingInstance {
+}
+class etricegen_ConnectionInstance {
+}
+class etricegen_DataClass {
+}
+class etricegen_EnumerationType {
+}
+class etricegen_ExpandedActorClass {
+  + getInterfaceItemLocalId(etricegen_ifitem : str) : int
+}
+class etricegen_GraphContainer {
+}
+abstract class etricegen_InstanceBase {
+  + nObjIDs : int
+  + name : str
+  + objId : int
+  + path : str
+  + threadId : int
+}
+class etricegen_InterfaceItemInstance {
+  + getInterfaceItem() : str
+  + isRelay() : bool
+  + isReplicated() : bool
+  + isSimple() : bool
+}
+class etricegen_LayerConnection {
+}
+class etricegen_LogicalSystem {
+}
+class etricegen_OpenBinding {
+  + path : str
+}
+class etricegen_OpenServiceConnection {
+  + path : str
+}
+class etricegen_OptionalActorInstance {
+}
+class etricegen_Port {
+}
+class etricegen_PortInstance {
+  + kind : str
+}
+class etricegen_ProtocolClass {
+}
+class etricegen_RoomModel {
+}
+class etricegen_Root {
+  + library : bool
+  + computeSubClasses() : void
+  + getExpandedActorClass(etricegen_ac : str) : str
+  + getInstance(etricegen_path : str) : str
+  + getReferencedActorClasses(etricegen_cls : str) : str
+  + getReferencedDataClasses(etricegen_cls : str) : str
+  + getReferencedEnumClasses(etricegen_cls : str) : str
+  + getReferencedModels(etricegen_cls : str) : str
+  + getReferencedProtocolClasses(etricegen_cls : str) : str
+  + getSubClasses(etricegen_ac : str) : str
+}
+class etricegen_SAP {
+}
+class etricegen_SAPInstance {
+}
+class etricegen_SPP {
+}
+class etricegen_SPPInstance {
+}
+class etricegen_ServiceImplInstance {
+}
+class etricegen_ServiceImplementation {
+}
+class etricegen_StructureInstance {
+  + getActorInstances() : str
+}
+class etricegen_SubSystemClass {
+}
+class etricegen_SubSystemInstance {
+  + maxObjId : int
+  + getThreadId(etricegen_instance : str) : int
+}
+class etricegen_SystemInstance {
+}
+class etricegen_Wire {
+  + dataDriven : bool
+  + path1 : str
+  + path2 : str
+}
+class etricegen_WiredActorClass {
+}
+abstract class etricegen_WiredStructureClass {
+}
+class etricegen_WiredSubSystemClass {
+}
+AbstractInstance <|-- etricegen_ActorInterfaceInstance
+AbstractInstance <|-- etricegen_StructureInstance
+InstanceBase <|-- etricegen_AbstractInstance
+InstanceBase <|-- etricegen_InterfaceItemInstance
+InstanceBase <|-- etricegen_SPPInstance
+InstanceBase <|-- etricegen_SystemInstance
+InterfaceItemInstance <|-- etricegen_PortInstance
+InterfaceItemInstance <|-- etricegen_SAPInstance
+InterfaceItemInstance <|-- etricegen_ServiceImplInstance
+StructureInstance <|-- etricegen_ActorInstance
+StructureInstance <|-- etricegen_OptionalActorInstance
+StructureInstance <|-- etricegen_SubSystemInstance
+WiredStructureClass <|-- etricegen_WiredActorClass
+WiredStructureClass <|-- etricegen_WiredSubSystemClass
+etricegen_ActorClass "0..1" -- "1..1" etricegen_WiredActorClass : actorClass116
+etricegen_ActorClass "0..1" -- "1..1" etricegen_ExpandedActorClass : actorClass120
+etricegen_ActorClass "0..1" -- "1..1" etricegen_ActorInterfaceInstance : actorClass31
+etricegen_ActorClass "0..1" -- "1..1" etricegen_ActorInstance : actorClass63
+etricegen_ActorClass "0..1" -- "1..1" etricegen_OptionalActorInstance : actorClass66
+etricegen_ActorClass "0..9999" -- "1..1" etricegen_Root : actorClasses17
+etricegen_ActorInstance "0..9999" -- "1..1" etricegen_StructureInstance : allContainedInstances51
+etricegen_Binding "0..1" -- "1..1" etricegen_BindingInstance : binding82
+etricegen_BindingInstance "0..9999" --* "1..1" etricegen_StructureInstance : bindings47
+etricegen_BindingInstance "0..9999" -- "1..1" etricegen_PortInstance : bindings80
+etricegen_ConnectionInstance "1..1" -- "0..1" etricegen_LayerConnection : connection99
+etricegen_ConnectionInstance "0..9999" --* "1..1" etricegen_StructureInstance : connections49
+etricegen_DataClass "0..9999" -- "1..1" etricegen_Root : dataClasses13
+etricegen_EnumerationType "0..9999" -- "1..1" etricegen_Root : enumClasses19
+etricegen_AbstractInstance "0..1" -- "1..1" etricegen_ConnectionInstance : fromAI93
+etricegen_ConnectionInstance "1..1" -- "0..1" etricegen_SPPInstance : fromSPP96
+etricegen_ExpandedActorClass "1..1" *-- "0..1" etricegen_GraphContainer : graphContainer123
+etricegen_RoomModel "0..9999" -- "1..1" etricegen_Root : importedModels8
+etricegen_ConnectionInstance "0..9999" -- "1..1" etricegen_SPPInstance : incoming88
+etricegen_AbstractInstance "0..9999" --* "1..1" etricegen_StructureInstance : instances38
+etricegen_SubSystemInstance "0..9999" --* "1..1" etricegen_SystemInstance : instances55
+etricegen_LogicalSystem "0..1" -- "1..1" etricegen_SystemInstance : logicalSystem58
+etricegen_RoomModel "0..9999" -- "1..1" etricegen_Root : models6
+etricegen_OpenBinding "0..9999" --* "1..1" etricegen_WiredStructureClass : openBindings103
+etricegen_ActorClass "0..9999" -- "1..1" etricegen_Root : optionalActorClasses25
+etricegen_OptionalActorInstance "0..9999" --* "1..1" etricegen_Root : optionalInstances23
+etricegen_ActorInterfaceInstance "1..1" -- "0..9999" etricegen_OptionalActorInstance : optionalInstances35
+etricegen_InterfaceItemInstance "0..9999" -- "1..1" etricegen_StructureInstance : orderedIfItemInstances53
+etricegen_ConnectionInstance "0..1" -- "1..1" etricegen_SPPInstance : outgoing89
+etricegen_Root "1..1" *-- "0..9999" etricegen_SubSystemInstance : ownSubSystemInstances1
+etricegen_InterfaceItemInstance "0..9999" -- "1..1" etricegen_InterfaceItemInstance : peers76
+etricegen_OpenBinding "1..1" -- "0..1" etricegen_Port : port110
+etricegen_Port "0..1" -- "1..1" etricegen_PortInstance : port78
+etricegen_AbstractInstance "1..1" *-- "0..9999" etricegen_PortInstance : ports30
+etricegen_BindingInstance "1..1" -- "0..2" etricegen_PortInstance : ports81
+etricegen_OpenServiceConnection "1..1" -- "0..1" etricegen_ProtocolClass : protocol113
+etricegen_InterfaceItemInstance "1..1" -- "0..1" etricegen_ProtocolClass : protocol72
+etricegen_ProtocolClass "0..9999" -- "1..1" etricegen_Root : protocolClasses15
+etricegen_OpenServiceConnection "0..9999" --* "1..1" etricegen_WiredStructureClass : providedServices105
+etricegen_ActorInterfaceInstance "1..1" -- "0..9999" etricegen_ServiceImplInstance : providedServices33
+etricegen_OpenServiceConnection "0..9999" --* "1..1" etricegen_WiredStructureClass : requiredServices107
+etricegen_OptionalActorInstance "1..1" -- "0..9999" etricegen_SAPInstance : requiredServices69
+etricegen_SAP "0..1" -- "1..1" etricegen_SAPInstance : sap84
+etricegen_SAPInstance "0..9999" --* "1..1" etricegen_StructureInstance : saps40
+etricegen_ServiceImplInstance "0..9999" --* "1..1" etricegen_StructureInstance : services44
+etricegen_SPP "0..1" -- "1..1" etricegen_SPPInstance : spp86
+etricegen_SPPInstance "0..9999" --* "1..1" etricegen_StructureInstance : spps42
+etricegen_SubSystemClass "0..1" -- "1..1" etricegen_WiredSubSystemClass : subSystemClass118
+etricegen_SubSystemClass "0..1" -- "1..1" etricegen_SubSystemInstance : subSystemClass60
+etricegen_Root "1..1" -- "0..9999" etricegen_SubSystemClass : subSystemClasses21
+etricegen_Root "1..1" -- "0..9999" etricegen_SubSystemInstance : subSystemInstances3
+etricegen_ServiceImplInstance "1..1" -- "0..1" etricegen_ServiceImplementation : svcImpl91
+etricegen_Root "1..1" *-- "0..9999" etricegen_SystemInstance : systemInstances0
+etricegen_ConnectionInstance "1..1" -- "0..1" etricegen_SPPInstance : toSPP97
+etricegen_Root "1..1" *-- "0..9999" etricegen_WiredStructureClass : wiredInstances28
+etricegen_Wire "0..9999" --* "1..1" etricegen_WiredStructureClass : wires101
+etricegen_ExpandedActorClass "0..9999" --* "1..1" etricegen_Root : xpActorClasses11
+@enduml

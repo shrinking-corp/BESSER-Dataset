@@ -1,0 +1,19 @@
+@startuml
+class NamedElement {
+}
+class Sql_Column {
+  + type : str
+}
+class Sql_Database {
+}
+abstract class Sql_NamedElement {
+  + name : str
+}
+class Sql_Table {
+}
+NamedElement <|-- Sql_Column
+NamedElement <|-- Sql_Database
+NamedElement <|-- Sql_Table
+Sql_Column "0..9999" --* "1..1" Sql_Table : column1
+Sql_Database "1..1" *-- "0..9999" Sql_Table : table0
+@enduml

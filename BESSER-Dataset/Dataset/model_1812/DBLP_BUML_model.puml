@@ -1,0 +1,110 @@
+@startuml
+class DBLP_Article {
+  + fromPage : int
+  + month : str
+  + number : int
+  + title : str
+  + toPage : int
+  + volume : str
+  + year : int
+}
+class DBLP_Author {
+  + name : str
+}
+class DBLP_Book {
+  + edition : int
+  + isbn : str
+  + month : str
+  + series : str
+  + title : str
+  + volume : int
+  + year : int
+}
+class DBLP_Editor {
+  + name : str
+}
+class DBLP_InCollection {
+  + bookTitle : str
+  + fromPage : int
+  + month : str
+  + title : str
+  + toPage : int
+  + year : int
+}
+class DBLP_InProceedings {
+  + bootitle : str
+  + fromPage : int
+  + month : str
+  + title : str
+  + toPage : int
+  + year : int
+}
+class DBLP_Journal {
+  + name : str
+}
+class DBLP_MastersThesis {
+  + month : str
+  + title : str
+  + year : int
+}
+class DBLP_Organization {
+  + name : str
+}
+class DBLP_PhDThesis {
+  + month : str
+  + title : str
+  + year : int
+}
+class DBLP_Proceedings {
+  + isbn : str
+  + month : str
+  + title : str
+  + year : int
+}
+class DBLP_Publisher {
+  + address : str
+  + name : str
+}
+abstract class DBLP_Record {
+  + ee : str
+  + key : str
+  + mdate : str
+  + url : str
+}
+class DBLP_School {
+  + address : str
+  + name : str
+}
+class DBLP_Www {
+  + month : str
+  + title : str
+  + year : int
+}
+class Record {
+}
+Record <|-- DBLP_Article
+Record <|-- DBLP_Book
+Record <|-- DBLP_InCollection
+Record <|-- DBLP_InProceedings
+Record <|-- DBLP_MastersThesis
+Record <|-- DBLP_PhDThesis
+Record <|-- DBLP_Proceedings
+Record <|-- DBLP_Www
+DBLP_Article "0..9999" -- "1..1" DBLP_Journal : articles3
+DBLP_Author "0..9999" -- "1..1" DBLP_Record : authors0
+DBLP_Editor "0..9999" -- "1..1" DBLP_InProceedings : editors11
+DBLP_Editor "0..9999" -- "1..1" DBLP_Proceedings : editors20
+DBLP_Editor "0..9999" -- "1..1" DBLP_Www : editors30
+DBLP_Editor "0..9999" -- "1..1" DBLP_InCollection : editors5
+DBLP_Article "1..1" -- "0..1" DBLP_Journal : journal1
+DBLP_InProceedings "1..1" -- "0..1" DBLP_Organization : organization13
+DBLP_InProceedings "1..1" -- "0..1" DBLP_Publisher : publisher16
+DBLP_Proceedings "1..1" -- "0..1" DBLP_Publisher : publisher22
+DBLP_Book "1..1" -- "0..1" DBLP_Publisher : publisher4
+DBLP_InCollection "1..1" -- "0..1" DBLP_Publisher : publisher8
+DBLP_Author "1..1" -- "0..9999" DBLP_Record : records2
+DBLP_MastersThesis "1..1" -- "0..1" DBLP_School : school19
+DBLP_PhDThesis "1..1" -- "0..1" DBLP_School : school28
+DBLP_Organization "0..9999" -- "1..1" DBLP_Proceedings : sponsoredBy25
+DBLP_InCollection "1..1" -- "0..1" DBLP_Organization : sponsoredBy6
+@enduml

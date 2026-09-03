@@ -1,0 +1,251 @@
+@startuml
+enum AdditionOperator {
+  add
+  subtract
+}
+enum ComparisonOperator {
+  equal
+  greaterEqual
+  greaterThen
+  lessEqual
+  lessThen
+  notEqual
+}
+class Expression {
+}
+class ExpressionTerm {
+}
+class FromEntry {
+}
+class FromJoin {
+}
+class JPQLQuery {
+}
+class Literal {
+}
+enum MultiplicationOperator {
+  divide
+  multiply
+}
+enum OrderByDirection {
+  asc
+  desc
+}
+class OrderBySpec {
+}
+class SelectAggregateExpression {
+}
+class SelectExpression {
+}
+enum TrimSpec {
+  both
+  leading
+  trailing
+}
+enum UnaryOperator {
+  logicalNot
+  negative
+  positive
+}
+class Variable {
+}
+class jPQL_AdditionExpression {
+  + operator : str
+}
+class jPQL_AliasAttributeExpression {
+  + attributes : str
+  + direction : str
+}
+class jPQL_AndExpression {
+}
+class jPQL_AvgAggregate {
+}
+class jPQL_BooleanLiteral {
+  + value : str
+}
+class jPQL_ComparisonOperatorExpression {
+  + operator : str
+}
+class jPQL_CountAggregate {
+}
+class jPQL_DeleteClause {
+}
+class jPQL_DeleteStatement {
+}
+class jPQL_Expression {
+  + isNot : bool
+  + unaryOperator : str
+}
+class jPQL_ExpressionTerm {
+}
+class jPQL_Float {
+  + fractionValue : int
+  + integerValue : int
+}
+class jPQL_FloatLiteral {
+}
+class jPQL_FromClass {
+  + type : str
+}
+class jPQL_FromClause {
+}
+class jPQL_FromCollection {
+}
+class jPQL_FromEntry {
+}
+class jPQL_FromJoin {
+  + isFetch : bool
+}
+class jPQL_FunctionExpression {
+  + name : str
+  + trimSpec : str
+}
+class jPQL_GroupByClause {
+}
+class jPQL_HavingClause {
+}
+class jPQL_InnerJoin {
+}
+class jPQL_IntegerLiteral {
+  + value : int
+}
+class jPQL_JPQLQuery {
+}
+class jPQL_Join {
+}
+class jPQL_LeftJoin {
+  + isOuter : bool
+}
+class jPQL_Literal {
+}
+class jPQL_MaxAggregate {
+}
+class jPQL_MinAggregate {
+}
+class jPQL_MultiplicationExpression {
+  + operator : str
+}
+class jPQL_NullLiteral {
+  + value : str
+}
+class jPQL_OrExpression {
+}
+class jPQL_OrderByClause {
+}
+class jPQL_OrderBySpec {
+}
+class jPQL_ParameterExpression {
+  + index : int
+  + name : str
+}
+class jPQL_SelectAggregateExpression {
+  + isDistinct : bool
+}
+class jPQL_SelectClause {
+  + isDistinct : bool
+}
+class jPQL_SelectConstructorExpression {
+  + name : str
+}
+class jPQL_SelectExpression {
+}
+class jPQL_SelectStatement {
+}
+class jPQL_SetClause {
+}
+class jPQL_StringLiteral {
+  + value : str
+}
+class jPQL_SumAggregate {
+}
+class jPQL_UpdateClause {
+}
+class jPQL_UpdateItem {
+}
+class jPQL_UpdateStatement {
+}
+class jPQL_Variable {
+}
+class jPQL_VariableDeclaration {
+  + name : str
+}
+class jPQL_WhereClause {
+}
+Expression <|-- jPQL_AdditionExpression
+Expression <|-- jPQL_AndExpression
+Expression <|-- jPQL_ComparisonOperatorExpression
+Expression <|-- jPQL_ExpressionTerm
+Expression <|-- jPQL_FunctionExpression
+Expression <|-- jPQL_MultiplicationExpression
+Expression <|-- jPQL_OrExpression
+Expression <|-- jPQL_Variable
+ExpressionTerm <|-- jPQL_SelectStatement
+ExpressionTerm <|-- jPQL_Variable
+FromEntry <|-- jPQL_FromClass
+FromEntry <|-- jPQL_FromCollection
+FromJoin <|-- jPQL_InnerJoin
+FromJoin <|-- jPQL_Join
+FromJoin <|-- jPQL_LeftJoin
+JPQLQuery <|-- jPQL_DeleteStatement
+JPQLQuery <|-- jPQL_SelectStatement
+JPQLQuery <|-- jPQL_UpdateStatement
+Literal <|-- jPQL_BooleanLiteral
+Literal <|-- jPQL_FloatLiteral
+Literal <|-- jPQL_IntegerLiteral
+Literal <|-- jPQL_NullLiteral
+Literal <|-- jPQL_StringLiteral
+OrderBySpec <|-- jPQL_AliasAttributeExpression
+SelectAggregateExpression <|-- jPQL_AvgAggregate
+SelectAggregateExpression <|-- jPQL_CountAggregate
+SelectAggregateExpression <|-- jPQL_MaxAggregate
+SelectAggregateExpression <|-- jPQL_MinAggregate
+SelectAggregateExpression <|-- jPQL_SumAggregate
+SelectExpression <|-- jPQL_Expression
+SelectExpression <|-- jPQL_SelectAggregateExpression
+SelectExpression <|-- jPQL_SelectConstructorExpression
+Variable <|-- jPQL_AliasAttributeExpression
+Variable <|-- jPQL_Literal
+Variable <|-- jPQL_ParameterExpression
+jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_UpdateItem : alias23
+jPQL_AliasAttributeExpression "1..1" -- "0..1" jPQL_VariableDeclaration : alias72
+jPQL_DeleteClause "0..1" --* "1..1" jPQL_DeleteStatement : deleteClause28
+jPQL_Expression "0..9999" --* "1..1" jPQL_OrExpression : entries90
+jPQL_AndExpression "1..1" *-- "0..9999" jPQL_Expression : entries92
+jPQL_SelectClause "1..1" *-- "0..9999" jPQL_SelectExpression : expressions32
+jPQL_Expression "0..1" --* "1..1" jPQL_FunctionExpression : field77
+jPQL_Expression "0..9999" --* "1..1" jPQL_FunctionExpression : fields75
+jPQL_FromClause "0..1" --* "1..1" jPQL_SelectStatement : fromClause2
+jPQL_DeleteClause "1..1" *-- "0..1" jPQL_FromClause : fromClause29
+jPQL_FromEntry "0..9999" --* "1..1" jPQL_UpdateClause : fromEntries19
+jPQL_FromClause "1..1" *-- "0..9999" jPQL_FromEntry : fromEntries38
+jPQL_GroupByClause "0..1" --* "1..1" jPQL_SelectStatement : groupByClause4
+jPQL_AliasAttributeExpression "0..9999" --* "1..1" jPQL_GroupByClause : grouping8
+jPQL_Expression "0..1" --* "1..1" jPQL_HavingClause : having12
+jPQL_GroupByClause "1..1" *-- "0..1" jPQL_HavingClause : havingClause10
+jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_SelectAggregateExpression : item34
+jPQL_SetClause "1..1" *-- "0..9999" jPQL_UpdateItem : items21
+jPQL_AliasAttributeExpression "0..9999" --* "1..1" jPQL_SelectConstructorExpression : items36
+jPQL_Expression "1..1" *-- "0..9999" jPQL_Variable : items61
+jPQL_FromClass "1..1" *-- "0..9999" jPQL_FromJoin : joins43
+jPQL_Expression "0..1" --* "1..1" jPQL_Expression : left59
+jPQL_Expression "0..1" --* "1..1" jPQL_FunctionExpression : length83
+jPQL_Expression "1..1" *-- "0..1" jPQL_Literal : max69
+jPQL_Expression "1..1" *-- "0..1" jPQL_Literal : min66
+jPQL_OrderByClause "0..1" --* "1..1" jPQL_SelectStatement : orderByClause6
+jPQL_OrderByClause "1..1" *-- "0..9999" jPQL_OrderBySpec : ordering14
+jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_FromCollection : path44
+jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_FromJoin : path46
+jPQL_Expression "1..1" *-- "0..1" jPQL_SelectStatement : query63
+jPQL_Expression "0..1" --* "1..1" jPQL_Expression : right56
+jPQL_SelectClause "0..1" --* "1..1" jPQL_SelectStatement : selectClause1
+jPQL_SetClause "0..1" --* "1..1" jPQL_UpdateStatement : setClause17
+jPQL_Expression "0..1" --* "1..1" jPQL_FunctionExpression : startPos80
+jPQL_Expression "0..1" --* "1..1" jPQL_FunctionExpression : trimChar86
+jPQL_UpdateClause "0..1" --* "1..1" jPQL_UpdateStatement : updateClause16
+jPQL_Literal "0..1" --* "1..1" jPQL_UpdateItem : value26
+jPQL_Float "0..1" --* "1..1" jPQL_FloatLiteral : value89
+jPQL_FromEntry "1..1" *-- "0..1" jPQL_VariableDeclaration : variable41
+jPQL_FromJoin "1..1" *-- "0..1" jPQL_VariableDeclaration : variable49
+jPQL_JPQLQuery "1..1" *-- "0..1" jPQL_WhereClause : whereClause0
+jPQL_Expression "0..1" --* "1..1" jPQL_WhereClause : whereEntry52
+@enduml

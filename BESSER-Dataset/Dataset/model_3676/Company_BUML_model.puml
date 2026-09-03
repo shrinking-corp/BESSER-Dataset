@@ -1,0 +1,53 @@
+@startuml
+class Company_Category {
+  + name : str
+}
+class Company_Client {
+}
+class Company_CompanyModel {
+}
+abstract class Company_Division {
+  + name : str
+}
+class Company_Employee {
+}
+class Company_Organisation {
+  + city : str
+  + completeAddress : str
+  + name : str
+}
+abstract class Company_Person {
+  + fullName : str
+}
+class Company_Project {
+  + budget : int
+  + name : str
+}
+class Company_ServiceLine {
+}
+class Company_Topic {
+  + id : str
+}
+class Company_Unit {
+}
+class Division {
+}
+class Person {
+}
+Division <|-- Company_ServiceLine
+Division <|-- Company_Unit
+Person <|-- Company_Client
+Person <|-- Company_Employee
+Company_Person "1..1" -- "0..9999" Company_Project : assignedTo0
+Company_Category "0..9999" --* "1..1" Company_CompanyModel : categories16
+Company_Category "1..1" -- "1..1" Company_Topic : category13
+Company_CompanyModel "1..1" *-- "1..1" Company_Organisation : company14
+Company_CompanyModel "1..1" *-- "0..9999" Company_Division : division21
+Company_Person "1..1" -- "0..1" Company_Unit : employed1
+Company_Division "0..9999" --* "1..1" Company_Organisation : lines8
+Company_Organisation "1..1" *-- "0..9999" Company_Person : persons3
+Company_Organisation "1..1" *-- "0..9999" Company_Project : projects5
+Company_Project "1..1" -- "1..1" Company_Topic : related10
+Company_Category "1..1" -- "0..9999" Company_Topic : topics12
+Company_CompanyModel "1..1" *-- "0..9999" Company_Topic : topics18
+@enduml

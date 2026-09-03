@@ -1,0 +1,56 @@
+@startuml
+class Bill {
+  + Tax : int
+  + Tip : int
+  + TotalAmount : int
+}
+enum Date {
+}
+class Guest {
+  + Guest_ID : str
+  + Name : str
+  + Phone : str
+}
+class Host {
+}
+class Kitchen {
+}
+class Online_Customer {
+}
+class Order {
+}
+class Party {
+  + Number_Of_Adults : int
+  + Number_Of_Children : int
+  + Number_of_Guests : int
+}
+class Payment {
+}
+class Reservation {
+  + Date : Date
+  + ReservationID : str
+  + Time : str
+}
+enum ReservationType {
+}
+enum ReservationType2 {
+}
+class Staff {
+  + JobType : str
+  + Name : str
+  + Phone : str
+  + Staff_ID : str
+}
+class Table {
+  + Capacity : int
+  + TableID : str
+}
+class Waiter {
+}
+Host "0..1" -- "0..1" Reservation : Host_Reservation
+Kitchen "0..1" -- "0..1" Order : Kitchen_Order
+Reservation "0..1" -- "0..1" Table : Reservation_Table
+Bill "0..1" -- "0..1" Waiter : Waiter_Bill
+Order "0..1" -- "0..1" Waiter : Waiter_Order
+Table "0..1" -- "0..1" Waiter : Waiter_Table
+@enduml

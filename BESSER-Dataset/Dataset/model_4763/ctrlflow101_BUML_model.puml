@@ -1,0 +1,39 @@
+@startuml
+class Sequence {
+}
+class SequenceNode {
+}
+class ctrlflow101_And {
+}
+class ctrlflow101_Final {
+}
+class ctrlflow101_Function {
+}
+class ctrlflow101_Loop {
+}
+class ctrlflow101_Or {
+}
+abstract class ctrlflow101_Sequence {
+  + weight : int
+}
+abstract class ctrlflow101_SequenceNode {
+  + name : str
+  + tMax : int
+  + tMin : int
+}
+class ctrlflow101_Start {
+}
+class ctrlflow101_Token {
+}
+Sequence <|-- ctrlflow101_And
+Sequence <|-- ctrlflow101_Final
+Sequence <|-- ctrlflow101_Loop
+Sequence <|-- ctrlflow101_Or
+Sequence <|-- ctrlflow101_Start
+SequenceNode <|-- ctrlflow101_Function
+SequenceNode <|-- ctrlflow101_Sequence
+ctrlflow101_SequenceNode "1..1" -- "0..9999" ctrlflow101_SequenceNode : controlFlowEdge7
+ctrlflow101_Function "1..1" *-- "0..9999" ctrlflow101_Function : decompositions1
+ctrlflow101_Function "1..1" *-- "0..9999" ctrlflow101_Sequence : sequenceNodes2
+ctrlflow101_Function "1..1" *-- "0..9999" ctrlflow101_Token : tokens4
+@enduml

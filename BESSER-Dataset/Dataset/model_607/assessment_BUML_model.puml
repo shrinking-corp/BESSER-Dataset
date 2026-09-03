@@ -1,0 +1,209 @@
+@startuml
+class Contents {
+}
+class GraphNode {
+}
+enum HttpMethod {
+  CONNECT
+  DELETE
+  GET
+  HEAD
+  OPTIONS
+  PATCH
+  POST
+  PUT
+  TRACE
+}
+class Label {
+}
+enum Language {
+  C_Cpp
+  C_Sharp
+  Java
+  Other
+  PHP
+  Python
+  Ruby
+  Scala
+}
+class Node {
+}
+class Notes {
+}
+enum TaskStatus {
+  done
+  in_progress
+  skipped
+  todo
+}
+enum UrlPattern {
+  ANT
+}
+class assessment_Account {
+  + email : str
+  + password : str
+}
+class assessment_Accounts {
+}
+class assessment_Application {
+  + externalURL : str
+  + internalURL : str
+}
+class assessment_Applications {
+}
+class assessment_Assessment {
+}
+abstract class assessment_Contents {
+  + contents : str
+}
+class assessment_Control {
+}
+class assessment_Controller {
+}
+class assessment_Controllers {
+}
+class assessment_Entitlement {
+}
+class assessment_Entitlements {
+}
+class assessment_Finding {
+  + references : str
+  + remediation : str
+  + reproducer : str
+}
+class assessment_Findings {
+}
+class assessment_Generic {
+}
+abstract class assessment_Graph {
+}
+abstract class assessment_GraphNode {
+}
+class assessment_Http {
+  + request : str
+  + response : str
+}
+abstract class assessment_Label {
+  + label : str
+}
+class assessment_Model {
+}
+class assessment_Models {
+}
+abstract class assessment_Node {
+}
+abstract class assessment_Notes {
+  + notes : str
+}
+class assessment_Resource {
+}
+class assessment_Resources {
+}
+class assessment_Scm {
+  + branchTag : str
+  + repository : str
+}
+class assessment_Sink {
+  + cwes : int
+}
+class assessment_Sinks {
+}
+class assessment_Snippet {
+  + columnEnd : int
+  + columnStart : int
+  + lineEnd : int
+  + lineStart : int
+}
+class assessment_Task {
+  + status : str
+}
+class assessment_Tasks {
+}
+class assessment_Url {
+  + pattern : str
+  + patternType : str
+}
+class assessment_View {
+}
+class assessment_Views {
+}
+Contents <|-- assessment_Resource
+Contents <|-- assessment_Snippet
+GraphNode <|-- assessment_Control
+GraphNode <|-- assessment_Generic
+GraphNode <|-- assessment_Http
+GraphNode <|-- assessment_Snippet
+Label <|-- assessment_Application
+Label <|-- assessment_Assessment
+Label <|-- assessment_Finding
+Label <|-- assessment_Node
+Label <|-- assessment_Resource
+Label <|-- assessment_Task
+Node <|-- assessment_Account
+Node <|-- assessment_Controller
+Node <|-- assessment_Entitlement
+Node <|-- assessment_GraphNode
+Node <|-- assessment_Model
+Node <|-- assessment_Sink
+Node <|-- assessment_View
+Notes <|-- assessment_Application
+Notes <|-- assessment_Assessment
+Notes <|-- assessment_Finding
+Notes <|-- assessment_Node
+Notes <|-- assessment_Resource
+Notes <|-- assessment_Task
+assessment_Accounts "0..1" --* "1..1" assessment_Application : accounts17
+assessment_Account "1..1" -- "0..1" assessment_Accounts : accounts45
+assessment_Account "0..9999" -- "1..1" assessment_Entitlement : accounts48
+assessment_Account "0..9999" --* "1..1" assessment_Accounts : accounts75
+assessment_Finding "1..1" -- "0..9999" assessment_Node : affects42
+assessment_Node "0..9999" -- "1..1" assessment_Task : affects53
+assessment_Application "0..1" -- "1..1" assessment_Resources : application104
+assessment_Application "0..1" -- "1..1" assessment_Scm : application56
+assessment_Accounts "1..1" -- "0..1" assessment_Application : application72
+assessment_Application "0..1" -- "1..1" assessment_Controllers : application78
+assessment_Application "0..1" -- "1..1" assessment_Entitlements : application83
+assessment_Application "0..1" -- "1..1" assessment_Models : application89
+assessment_Application "0..1" -- "1..1" assessment_Views : application94
+assessment_Application "0..1" -- "1..1" assessment_Sinks : application99
+assessment_Applications "0..1" --* "1..1" assessment_Assessment : applications12
+assessment_Application "1..1" -- "0..1" assessment_Applications : applications31
+assessment_Application "0..9999" --* "1..1" assessment_Applications : applications61
+assessment_Assessment "0..1" -- "1..1" assessment_Tasks : assessment110
+assessment_Applications "1..1" -- "0..1" assessment_Assessment : assessment64
+assessment_Assessment "0..1" -- "1..1" assessment_Findings : assessment69
+assessment_GraphNode "0..9999" --* "1..1" assessment_Node : children0
+assessment_Application "1..1" *-- "0..1" assessment_Controllers : controllers20
+assessment_Controller "1..1" -- "0..1" assessment_Controllers : controllers34
+assessment_Controller "0..9999" --* "1..1" assessment_Controllers : controllers81
+assessment_Application "1..1" *-- "0..1" assessment_Entitlements : entitlements18
+assessment_Account "1..1" -- "0..9999" assessment_Entitlement : entitlements46
+assessment_Entitlement "1..1" -- "0..1" assessment_Entitlements : entitlements49
+assessment_Entitlement "0..9999" --* "1..1" assessment_Entitlements : entitlements86
+assessment_Finding "0..9999" -- "1..1" assessment_Node : findings10
+assessment_Assessment "1..1" *-- "0..1" assessment_Findings : findings13
+assessment_Finding "1..1" -- "0..1" assessment_Findings : findings40
+assessment_Finding "0..9999" --* "1..1" assessment_Findings : findings66
+assessment_Application "1..1" *-- "0..1" assessment_Models : models21
+assessment_Model "1..1" -- "0..1" assessment_Models : models38
+assessment_Model "0..9999" --* "1..1" assessment_Models : models92
+assessment_Node "0..1" -- "1..1" assessment_Node : parent2
+assessment_Node "1..1" -- "0..9999" assessment_Node : referredBy7
+assessment_Node "1..1" -- "0..9999" assessment_Node : refersTo5
+assessment_Resource "0..1" -- "1..1" assessment_Snippet : resource57
+assessment_Resource "0..9999" --* "1..1" assessment_Resources : resources107
+assessment_Application "1..1" *-- "0..1" assessment_Resources : resources29
+assessment_Resource "1..1" -- "0..1" assessment_Resources : resources58
+assessment_Application "1..1" *-- "0..1" assessment_Scm : scm23
+assessment_Sink "0..9999" --* "1..1" assessment_Sinks : sinks102
+assessment_Application "1..1" *-- "0..1" assessment_Sinks : sinks27
+assessment_Sink "1..1" -- "0..1" assessment_Sinks : sinks33
+assessment_Resource "1..1" -- "0..9999" assessment_Snippet : snippets60
+assessment_Task "0..9999" --* "1..1" assessment_Tasks : tasks113
+assessment_Assessment "1..1" *-- "0..1" assessment_Tasks : tasks15
+assessment_Task "1..1" -- "0..1" assessment_Tasks : tasks51
+assessment_Node "1..1" -- "0..9999" assessment_Task : tasks9
+assessment_Application "1..1" *-- "0..1" assessment_Views : views25
+assessment_View "1..1" -- "0..1" assessment_Views : views36
+assessment_View "0..9999" --* "1..1" assessment_Views : views97
+@enduml

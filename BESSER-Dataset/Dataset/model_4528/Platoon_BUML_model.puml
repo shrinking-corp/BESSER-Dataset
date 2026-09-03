@@ -1,0 +1,51 @@
+@startuml
+class Action {
+}
+class Turn {
+}
+class Vehicle {
+}
+class platoon_Action {
+}
+class platoon_Constraints {
+  + maxHeadway : int
+  + minHeadway : int
+}
+class platoon_FV {
+}
+class platoon_Forward {
+  + distance : int
+}
+class platoon_LV {
+}
+class platoon_Left {
+}
+class platoon_Model {
+}
+class platoon_Platoon {
+}
+class platoon_Right {
+}
+class platoon_Route {
+  + name : str
+}
+class platoon_Turn {
+}
+class platoon_Vehicle {
+  + name : str
+}
+Action <|-- platoon_Forward
+Action <|-- platoon_Turn
+Turn <|-- platoon_Left
+Turn <|-- platoon_Right
+Vehicle <|-- platoon_FV
+Vehicle <|-- platoon_LV
+platoon_Action "0..9999" --* "1..1" platoon_Route : actions14
+platoon_Constraints "0..1" --* "1..1" platoon_Model : constraints3
+platoon_LV "0..1" --* "1..1" platoon_Platoon : first5
+platoon_FV "0..9999" --* "1..1" platoon_Platoon : followers7
+platoon_Model "1..1" *-- "0..1" platoon_Platoon : platoons0
+platoon_FV "1..1" -- "0..1" platoon_Vehicle : pulledBy9
+platoon_LV "1..1" -- "0..1" platoon_Route : route11
+platoon_Model "1..1" *-- "0..1" platoon_Route : routes1
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+class NamedElement {
+}
+class error4_Component {
+}
+abstract class error4_NamedElement {
+  + name : str
+}
+class error4_RelatedTo {
+  + since : str
+}
+class error4_Thing {
+  + id : int
+}
+class error4_World {
+}
+NamedElement <|-- error4_Component
+NamedElement <|-- error4_RelatedTo
+NamedElement <|-- error4_Thing
+error4_Component "0..9999" --* "1..1" error4_Thing : components2
+error4_RelatedTo "1..1" -- "0..1" error4_Thing : fromThing4
+error4_RelatedTo "0..9999" --* "1..1" error4_Thing : relations1
+error4_Thing "0..9999" --* "1..1" error4_World : things0
+error4_Component "0..1" -- "1..1" error4_RelatedTo : toComponent7
+error4_RelatedTo "1..1" -- "0..1" error4_Thing : toThing5
+@enduml

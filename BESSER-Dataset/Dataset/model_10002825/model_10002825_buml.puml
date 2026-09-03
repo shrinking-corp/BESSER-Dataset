@@ -1,0 +1,67 @@
+@startuml
+class Administrator_Actor {
+}
+class Booking {
+  + _numberOfNights : int
+  + bookingDate : str
+  + checkInDate : str
+  + checkOutDate : str
+}
+enum BookingStatus {
+}
+class Cancel_Booking_UseCase {
+}
+class Contact {
+  + address : str
+  + email : str
+  + name : str
+  + phone : str
+}
+class Guest {
+}
+class Guest_Actor {
+}
+class Guest_Check_in_UseCase {
+}
+class Guest_Check_out_UseCase {
+}
+class Hotel {
+  + name : str
+}
+class HotelBusiness {
+}
+class Make_Booking_UseCase {
+}
+class Manage_Hotels_UseCase {
+}
+class Manage_Room_Types_UseCase {
+}
+class Manage_Rooms_UseCase {
+}
+class Manager_Actor {
+}
+class Receptionist_Actor {
+}
+class Room {
+  + name : str
+}
+class RoomType {
+  + name : str
+  + pricePerNight : str
+}
+Administrator_Actor "0..1" -- "0..1" Manage_Hotels_UseCase : Add_delete_Hotels_Administrator
+Booking "0..9999" -- "1..1" Hotel : Booking_Hotel
+Booking "0..9999" -- "1..9999" Guest : Guest_Booking
+Cancel_Booking_UseCase "0..1" -- "0..1" Guest_Actor : Guest_Cancel_Booking
+Guest_Actor "0..1" -- "0..1" Make_Booking_UseCase : Guest_Make_Booking
+Guest "0..9999" -- "0..1" Room : Guest_Room
+Hotel "1..9999" -- "1..1" HotelBusiness : HotelBusiness_Hotel
+Hotel "1..1" -- "1..9999" RoomType : Hotel_RoomType
+Manage_Room_Types_UseCase "0..1" -- "0..1" Manager_Actor : Manager_Add_delete_Room_Types
+Manage_Rooms_UseCase "0..1" -- "0..1" Manager_Actor : Manager_Add_delete_Rooms
+Cancel_Booking_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Cancel_Booking
+Guest_Check_in_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Guest_Check_in
+Guest_Check_out_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Guest_Check_out
+Make_Booking_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Make_Booking
+Room "0..9999" -- "1..1" RoomType : RoomType_Room
+@enduml

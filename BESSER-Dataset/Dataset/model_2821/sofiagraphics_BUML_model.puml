@@ -1,0 +1,82 @@
+@startuml
+enum Alignment {
+  BOTTOM
+  CENTER
+  LEFT
+  MIDDLE
+  RIGHT
+  TOP
+  UNSPECIFIED
+}
+class Rectangle {
+}
+class Widget {
+}
+class sofiagraphics_Color {
+  + a : float
+  + b : float
+  + g : float
+  + r : float
+}
+class sofiagraphics_Dimension {
+  + height : float
+  + hrelative : bool
+  + noresize : bool
+  + width : float
+  + wrelative : bool
+}
+class sofiagraphics_Ellipse {
+}
+class sofiagraphics_Gesture {
+}
+class sofiagraphics_Point {
+  + x : float
+  + xrelative : bool
+  + y : float
+  + yrelative : bool
+}
+class sofiagraphics_Polyline {
+}
+class sofiagraphics_Rectangle {
+}
+class sofiagraphics_RoundedRectangle {
+}
+class sofiagraphics_Scene {
+}
+class sofiagraphics_Style {
+  + filled : bool
+  + lineWidth : float
+}
+class sofiagraphics_Text {
+  + attributeName : str
+  + halign : str
+  + text : str
+  + valign : str
+}
+abstract class sofiagraphics_Widget {
+  + gestureOnly : bool
+  + portYPosition : float
+}
+Rectangle <|-- sofiagraphics_RoundedRectangle
+Widget <|-- sofiagraphics_Ellipse
+Widget <|-- sofiagraphics_Polyline
+Widget <|-- sofiagraphics_Rectangle
+Widget <|-- sofiagraphics_Text
+sofiagraphics_Color "0..1" -- "1..1" sofiagraphics_Style : bgcolor35
+sofiagraphics_Widget "1..1" *-- "0..9999" sofiagraphics_Widget : child4
+sofiagraphics_Color "0..9999" --* "1..1" sofiagraphics_Scene : color25
+sofiagraphics_Dimension "1..1" --* "1..1" sofiagraphics_RoundedRectangle : corner10
+sofiagraphics_Dimension "0..1" --* "1..1" sofiagraphics_Widget : dim8
+sofiagraphics_Dimension "0..9999" --* "1..1" sofiagraphics_Scene : dimension22
+sofiagraphics_Color "0..1" -- "1..1" sofiagraphics_Style : fgcolor32
+sofiagraphics_Gesture "0..9999" --* "1..1" sofiagraphics_Scene : gesture30
+sofiagraphics_Scene "1..1" *-- "0..9999" sofiagraphics_Widget : object14
+sofiagraphics_Widget "1..1" -- "0..1" sofiagraphics_Widget : parent1
+sofiagraphics_Point "2..9999" --* "1..1" sofiagraphics_Polyline : point12
+sofiagraphics_Point "0..9999" --* "1..1" sofiagraphics_Scene : point19
+sofiagraphics_Point "0..1" --* "1..1" sofiagraphics_Widget : pos6
+sofiagraphics_Scene "1..1" -- "0..1" sofiagraphics_Widget : root16
+sofiagraphics_Style "0..1" -- "1..1" sofiagraphics_Widget : style2
+sofiagraphics_Scene "1..1" *-- "0..9999" sofiagraphics_Style : style27
+sofiagraphics_Gesture "1..1" -- "0..9999" sofiagraphics_Widget : widget38
+@enduml

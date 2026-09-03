@@ -1,0 +1,65 @@
+@startuml
+class ByteFile {
+}
+class File {
+}
+enum FileEncoding {
+  ISO_8859_1
+  US_ASCII
+  UTF_16
+  UTF_16BE
+  UTF_16LE
+  UTF_8
+}
+class FileHandler {
+}
+class FileOwner {
+}
+abstract class file_ByteFile {
+  + Encoding : str
+}
+abstract class file_File {
+  + Name : str
+}
+abstract class file_FileHandler {
+}
+class file_FileInMemory {
+  + Content : str
+}
+class file_FileLocal {
+  + FilePath : str
+}
+abstract class file_FileOutput {
+}
+abstract class file_FileOwner {
+}
+abstract class file_FileReaderWriter {
+  + CloseFeedback : str
+  + Open : bool
+  + ReadFeedback : str
+  + WriteFeedback : str
+  + close() : void
+  + getReadFeedback(file_file : str) : str
+  + getWriteFeedback(file_file : str) : str
+  + readFile(file_file : str) : void
+  + writeFile(file_file : str) : void
+}
+class file_FileRemote {
+  + URL : str
+}
+class file_Files {
+  + Name : str
+}
+ByteFile <|-- file_FileLocal
+ByteFile <|-- file_FileRemote
+File <|-- file_ByteFile
+File <|-- file_FileInMemory
+FileHandler <|-- file_FileReaderWriter
+FileOwner <|-- file_FileHandler
+FileOwner <|-- file_FileOutput
+FileOwner <|-- file_Files
+file_File "0..9999" --* "1..1" file_FileOwner : Files4
+file_File "0..1" -- "1..1" file_FileHandler : HandledFile1
+file_File "0..1" -- "1..1" file_FileOutput : OutputFile6
+file_File "0..1" -- "1..1" file_FileHandler : SelectedFile0
+@enduml

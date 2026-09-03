@@ -1,0 +1,46 @@
+@startuml
+class Edge {
+}
+class NamedElement {
+}
+class NetElement {
+}
+abstract class pnw_Edge {
+  + weight : int
+}
+abstract class pnw_NamedElement {
+  + name : str
+}
+class pnw_Net {
+  + incrementalID : str
+}
+abstract class pnw_NetElement {
+}
+class pnw_PTEdge {
+}
+class pnw_Place {
+  + noOfTokens : int
+}
+class pnw_TPEdge {
+}
+class pnw_Transition {
+}
+Edge <|-- pnw_PTEdge
+Edge <|-- pnw_TPEdge
+NamedElement <|-- pnw_Net
+NamedElement <|-- pnw_Place
+NamedElement <|-- pnw_Transition
+NetElement <|-- pnw_Edge
+NetElement <|-- pnw_Place
+NetElement <|-- pnw_Transition
+pnw_Net "1..1" *-- "0..9999" pnw_NetElement : elements0
+pnw_PTEdge "1..1" -- "1..1" pnw_Place : fromPlace10
+pnw_TPEdge "1..1" -- "1..1" pnw_Transition : fromTransition8
+pnw_PTEdge "0..9999" -- "1..1" pnw_Transition : inPTEdges3
+pnw_Place "1..1" -- "0..9999" pnw_TPEdge : inTPEdges6
+pnw_Net "1..1" -- "1..1" pnw_NetElement : net1
+pnw_PTEdge "0..9999" -- "1..1" pnw_Place : outPTEdges4
+pnw_TPEdge "0..9999" -- "1..1" pnw_Transition : outTPEdges2
+pnw_Place "1..1" -- "1..1" pnw_TPEdge : toPlace9
+pnw_PTEdge "1..1" -- "1..1" pnw_Transition : toTransition12
+@enduml

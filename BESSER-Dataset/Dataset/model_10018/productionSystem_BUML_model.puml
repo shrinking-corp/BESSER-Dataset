@@ -1,0 +1,28 @@
+@startuml
+class Piece {
+}
+class ProductionSystem_Conveyor {
+  + capacity : int
+  + id : str
+}
+class ProductionSystem_Machine {
+  + id : str
+}
+abstract class ProductionSystem_Piece {
+  + id : str
+}
+class ProductionSystem_Processed {
+}
+class ProductionSystem_Raw {
+}
+Piece <|-- ProductionSystem_Processed
+Piece <|-- ProductionSystem_Raw
+ProductionSystem_Conveyor "0..1" -- "1..1" ProductionSystem_Piece : conveyor13
+ProductionSystem_Conveyor "0..9999" --* "1..1" ProductionSystem_Machine : ic0
+ProductionSystem_Conveyor "1..1" -- "0..1" ProductionSystem_Machine : im10
+ProductionSystem_Conveyor "1..1" -- "0..9999" ProductionSystem_Conveyor : next5
+ProductionSystem_Conveyor "0..9999" --* "1..1" ProductionSystem_Machine : oc1
+ProductionSystem_Conveyor "1..1" -- "0..1" ProductionSystem_Machine : om11
+ProductionSystem_Conveyor "1..1" *-- "0..9999" ProductionSystem_Piece : piece3
+ProductionSystem_Conveyor "1..1" -- "0..1" ProductionSystem_Conveyor : prev8
+@enduml

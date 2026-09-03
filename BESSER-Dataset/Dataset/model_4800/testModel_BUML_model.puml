@@ -1,0 +1,56 @@
+@startuml
+class Element {
+}
+enum ElementType {
+  Type1
+  Type2
+}
+class testModel_ContainedElement {
+  + Character : str
+  + DiagnosticChain : str
+  + DoubleObj : str
+  + byteArray : str
+  + byteObject : str
+  + char : str
+  + date : date
+  + double : float
+  + elementType : str
+  + float : float
+  + name : str
+}
+abstract class testModel_Element {
+}
+class testModel_Kategorie {
+  + Boolean : str
+  + bigdeci : str
+  + bigint : str
+  + bool : bool
+  + byte : str
+  + name : str
+}
+class testModel_multiRefElement {
+  + name : str
+}
+class testModel_referenziertesElement {
+  + Float : str
+  + Integer : str
+  + LongObj : str
+  + ShortObj : str
+  + int : int
+  + long : str
+  + name : str
+  + notChangeable : str
+  + short : str
+}
+class testModel_upperBound {
+  + name : str
+}
+Element <|-- testModel_multiRefElement
+Element <|-- testModel_referenziertesElement
+Element <|-- testModel_upperBound
+testModel_ContainedElement "0..9999" --* "1..1" testModel_Kategorie : contains2
+testModel_multiRefElement "0..9999" -- "1..1" testModel_referenziertesElement : multiRef8
+testModel_ContainedElement "1..1" -- "0..9999" testModel_referenziertesElement : ref4
+testModel_Kategorie "1..1" -- "0..9999" testModel_Kategorie : subKategorie1
+testModel_ContainedElement "1..1" *-- "0..2" testModel_upperBound : upperBound6
+@enduml

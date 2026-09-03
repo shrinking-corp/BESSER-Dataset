@@ -1,0 +1,104 @@
+@startuml
+class BasicCode {
+}
+class BasicNotificationDefinition {
+}
+class BasicObject {
+}
+enum ObjectState {
+  DELETION
+  MODIFICATION
+  NEW
+  PRODUCTION
+}
+class model_Attachment {
+  + data : str
+  + key : str
+  + objectId : str
+}
+abstract class model_BasicCode {
+  + active : bool
+  + descriptions : str
+  + domain : int
+  + id : str
+  + names : str
+  + sortHint : int
+  + structure : bool
+  + getFirstSegment() : str
+  + getLastSegment() : str
+  + getPureLastSegment() : str
+  + getSegments() : str
+  + setParentPath(model_parent : str) : void
+}
+abstract class model_BasicNotificationDefinition {
+  + active : bool
+  + description : str
+  + identifier : str
+  + notificationEventId : str
+  + toString() : str
+}
+abstract class model_BasicObject {
+  + domain : int
+  + id : str
+  + locale : str
+  + toString() : str
+}
+class model_Category {
+  + associatedClassifier : str
+  + classifier : str
+}
+class model_Code {
+}
+class model_CodeEntry {
+  + id : str
+  + key : str
+  + value : str
+}
+class model_NotificationDefinition {
+  + excludeFilter : str
+  + includeFilter : str
+  + template : bool
+  + toString() : str
+}
+class model_NotificationParticipant {
+  + groupId : str
+  + id : str
+  + mailAddress : str
+}
+class model_ObjectRef {
+  + appId : str
+  + domain : int
+  + id : str
+  + labels : str
+  + nature : str
+  + state : str
+  + type : str
+  + getDefaultLabel() : str
+  + getDefaultLocale() : str
+  + getWorkingId() : str
+  + toString() : str
+}
+class model_TreeNode {
+  + name : str
+}
+class model_TreeNodeChild {
+  + nodeId : str
+}
+BasicCode <|-- model_Category
+BasicCode <|-- model_Code
+BasicNotificationDefinition <|-- model_NotificationDefinition
+BasicObject <|-- model_Attachment
+BasicObject <|-- model_BasicNotificationDefinition
+BasicObject <|-- model_TreeNode
+model_BasicNotificationDefinition "1..1" *-- "0..9999" model_NotificationParticipant : bccReceivers17
+model_BasicNotificationDefinition "1..1" *-- "0..9999" model_NotificationParticipant : ccReceivers14
+model_TreeNode "1..1" *-- "0..9999" model_TreeNodeChild : childs0
+model_BasicNotificationDefinition "1..1" -- "0..1" model_Code : delivery20
+model_BasicCode "1..1" *-- "0..9999" model_CodeEntry : entries5
+model_ObjectRef "0..1" -- "1..1" model_TreeNode : object1
+model_NotificationParticipant "1..1" -- "0..1" model_ObjectRef : objectRef7
+model_TreeNode "0..1" -- "1..1" model_TreeNodeChild : parent2
+model_BasicCode "1..1" -- "0..1" model_BasicCode : parent4
+model_BasicNotificationDefinition "1..1" *-- "0..9999" model_NotificationParticipant : receivers11
+model_BasicNotificationDefinition "1..1" *-- "0..1" model_NotificationParticipant : sender9
+@enduml

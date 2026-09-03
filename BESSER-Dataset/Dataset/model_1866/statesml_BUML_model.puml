@@ -1,0 +1,113 @@
+@startuml
+class Event {
+}
+class KeyValuePair {
+}
+enum NewEnum1 {
+  LITERAL0
+  LITERAL1
+  LITERAL2
+}
+class Node {
+}
+class State {
+}
+class statesml_Attribute {
+}
+class statesml_Attributes {
+}
+class statesml_ChangeEvent {
+}
+class statesml_Constant {
+}
+abstract class statesml_DataType {
+  + name : str
+}
+abstract class statesml_DataTypeLibrary {
+  + name : str
+}
+class statesml_Edge {
+  + name : str
+}
+abstract class statesml_Event {
+  + name : str
+  + eventOccured() : void
+}
+class statesml_Events {
+}
+class statesml_Function {
+  + name : str
+}
+class statesml_InitialState {
+}
+abstract class statesml_KeyValuePair {
+  + name : str
+}
+class statesml_NewEClass21 {
+}
+class statesml_NewEClass22 {
+}
+class statesml_NewEClass3 {
+}
+class statesml_NewEClass4 {
+}
+abstract class statesml_Node {
+  + name : str
+}
+class statesml_Parameter {
+}
+class statesml_RegularState {
+}
+class statesml_SelectionConvergence {
+}
+class statesml_SelectionDivergence {
+}
+abstract class statesml_State {
+}
+class statesml_StatesMLModel {
+}
+abstract class statesml_SystemUnit {
+  + name : str
+}
+abstract class statesml_SystemUnitLibrary {
+  + name : str
+}
+class statesml_TerminalState {
+}
+class statesml_Transition {
+}
+class statesml_Trigger {
+  + fire(statesml_event : str) : void
+}
+Event <|-- statesml_ChangeEvent
+KeyValuePair <|-- statesml_Attribute
+KeyValuePair <|-- statesml_Parameter
+Node <|-- statesml_SelectionConvergence
+Node <|-- statesml_SelectionDivergence
+Node <|-- statesml_State
+Node <|-- statesml_Transition
+State <|-- statesml_InitialState
+State <|-- statesml_RegularState
+State <|-- statesml_TerminalState
+statesml_Attribute "0..9999" --* "1..1" statesml_SystemUnit : attributes23
+statesml_Attribute "0..9999" --* "1..1" statesml_StatesMLModel : attributes5
+statesml_Function "0..9999" -- "1..1" statesml_RegularState : calls22
+statesml_SelectionConvergence "1..1" -- "1..9999" statesml_Transition : converges14
+statesml_DataType "1..1" *-- "0..9999" statesml_Function : defines34
+statesml_SelectionDivergence "1..1" -- "2..9999" statesml_Transition : diverges12
+statesml_Edge "0..9999" --* "1..1" statesml_StatesMLModel : edges3
+statesml_Function "0..9999" --* "1..1" statesml_SystemUnit : functions26
+statesml_DataType "1..1" --* "1..1" statesml_KeyValuePair : hasType36
+statesml_Function "1..1" *-- "0..9999" statesml_Parameter : inputParams29
+statesml_Node "0..9999" -- "1..1" statesml_Transition : node7
+statesml_Node "0..9999" --* "1..1" statesml_StatesMLModel : nodes0
+statesml_Function "1..1" *-- "0..1" statesml_Parameter : outputParams31
+statesml_Edge "1..1" -- "1..1" statesml_Node : preceedingNode16
+statesml_Edge "1..1" -- "1..1" statesml_Node : succeedingNode19
+statesml_StatesMLModel "1..1" *-- "0..9999" statesml_SystemUnit : systemunits1
+statesml_Node "1..1" -- "2..2" statesml_Transition : transition9
+statesml_Event "1..1" -- "0..1" statesml_Trigger : trigger10
+statesml_Transition "1..1" *-- "0..9999" statesml_Trigger : trigger8
+statesml_DataType "0..9999" --* "1..1" statesml_DataTypeLibrary : types40
+statesml_SystemUnit "0..9999" --* "1..1" statesml_SystemUnitLibrary : unitCollection38
+@enduml

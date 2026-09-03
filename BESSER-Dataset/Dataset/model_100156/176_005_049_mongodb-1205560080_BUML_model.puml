@@ -1,0 +1,48 @@
+@startuml
+class IValue {
+}
+enum Type {
+  BOOLEAN
+  DATE
+  DOUBLE
+  JAVASCRIPT
+  NULL
+  REGEXPR
+  STRING
+  TIMESTAMP
+}
+class mongodb_Collection {
+  + name : str
+}
+class mongodb_Database {
+  + name : str
+}
+class mongodb_Document {
+  + _id : str
+}
+class mongodb_Field {
+  + key : str
+}
+abstract class mongodb_IValue {
+  + getSubDocument() : void
+  + getValue() : str
+  + getValueList() : str
+}
+class mongodb_SubDocument {
+}
+class mongodb_Value {
+  + type : str
+  + value : str
+}
+class mongodb_ValueList {
+}
+IValue <|-- mongodb_SubDocument
+IValue <|-- mongodb_Value
+IValue <|-- mongodb_ValueList
+mongodb_Collection "0..9999" --* "1..1" mongodb_Database : collections0
+mongodb_Collection "1..1" *-- "0..9999" mongodb_Document : documents1
+mongodb_Document "1..1" *-- "1..9999" mongodb_Field : fields3
+mongodb_Field "1..9999" -- "1..1" mongodb_SubDocument : fields9
+mongodb_Field "1..1" -- "1..1" mongodb_IValue : value5
+mongodb_IValue "1..9999" -- "1..1" mongodb_ValueList : values7
+@enduml

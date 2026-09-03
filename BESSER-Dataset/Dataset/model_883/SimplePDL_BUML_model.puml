@@ -1,0 +1,46 @@
+@startuml
+class ProcessElement {
+}
+enum WorkSequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+class simplepdl_Guidance {
+  + text : str
+}
+class simplepdl_Process {
+  + name : str
+}
+abstract class simplepdl_ProcessElement {
+}
+class simplepdl_Ressource {
+  + name : str
+  + quantity : int
+}
+class simplepdl_RessourceSequence {
+  + quantity : int
+}
+class simplepdl_WorkDefinition {
+  + name : str
+}
+class simplepdl_WorkSequence {
+  + linkType : str
+}
+ProcessElement <|-- simplepdl_Guidance
+ProcessElement <|-- simplepdl_Ressource
+ProcessElement <|-- simplepdl_RessourceSequence
+ProcessElement <|-- simplepdl_WorkDefinition
+ProcessElement <|-- simplepdl_WorkSequence
+simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : element11
+simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors4
+simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors5
+simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor8
+simplepdl_Process "1..1" -- "1..1" simplepdl_ProcessElement : process1
+simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_Ressource "1..1" -- "1..1" simplepdl_RessourceSequence : ressource13
+simplepdl_RessourceSequence "0..9999" -- "1..1" simplepdl_WorkDefinition : ressourcesequence7
+simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor9
+simplepdl_RessourceSequence "1..1" -- "1..1" simplepdl_WorkDefinition : workdefinition14
+@enduml

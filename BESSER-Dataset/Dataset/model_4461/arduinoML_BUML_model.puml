@@ -1,0 +1,83 @@
+@startuml
+class Brick {
+}
+enum Comparator {
+  einf
+  equ
+  esup
+  inf
+  sup
+}
+class Condition {
+}
+class NamedElement {
+}
+enum Operator {
+  AND
+  OR
+}
+enum Signal {
+  HIGH
+  LOW
+}
+enum Type {
+  analog
+  digital
+}
+class arduinoML_Action {
+  + analogvalue : int
+  + value : str
+}
+class arduinoML_Actuator {
+}
+class arduinoML_App {
+}
+class arduinoML_BaseCondition {
+}
+class arduinoML_BooleanCondition {
+  + operator : str
+}
+abstract class arduinoML_Brick {
+  + pin : int
+  + type : str
+}
+abstract class arduinoML_Condition {
+  + analogvalue : int
+  + comparator : str
+  + value : str
+}
+abstract class arduinoML_NamedElement {
+  + name : str
+}
+class arduinoML_Sensor {
+}
+class arduinoML_SinkError {
+  + value : int
+}
+class arduinoML_State {
+}
+class arduinoML_Transition {
+}
+Brick <|-- arduinoML_Actuator
+Brick <|-- arduinoML_Sensor
+Condition <|-- arduinoML_BaseCondition
+Condition <|-- arduinoML_BooleanCondition
+NamedElement <|-- arduinoML_App
+NamedElement <|-- arduinoML_Brick
+NamedElement <|-- arduinoML_State
+arduinoML_Action "1..9999" --* "1..1" arduinoML_State : actions6
+arduinoML_Action "1..1" -- "1..1" arduinoML_Actuator : actuator11
+arduinoML_BaseCondition "1..1" --* "1..1" arduinoML_Transition : basecondition16
+arduinoML_BaseCondition "1..1" --* "1..1" arduinoML_SinkError : basecondition21
+arduinoML_BooleanCondition "0..9999" --* "1..1" arduinoML_Transition : booleancondition18
+arduinoML_BooleanCondition "0..9999" --* "1..1" arduinoML_SinkError : booleancondition23
+arduinoML_App "1..1" *-- "1..9999" arduinoML_Brick : bricks0
+arduinoML_SinkError "0..9999" --* "1..1" arduinoML_State : errors9
+arduinoML_App "1..1" -- "1..1" arduinoML_State : initial3
+arduinoML_State "1..1" -- "1..1" arduinoML_Transition : next13
+arduinoML_Condition "1..1" -- "1..1" arduinoML_Sensor : sensor20
+arduinoML_State "1..1" -- "1..1" arduinoML_Transition : state15
+arduinoML_SinkError "1..1" -- "1..1" arduinoML_State : state26
+arduinoML_App "1..1" *-- "1..9999" arduinoML_State : states1
+arduinoML_State "1..1" *-- "1..9999" arduinoML_Transition : transitions8
+@enduml

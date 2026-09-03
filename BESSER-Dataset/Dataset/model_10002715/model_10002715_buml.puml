@@ -1,0 +1,112 @@
+@startuml
+class Cart_Checkout {
+  + CheckoutID : int
+  + CustomerID : str
+  + PayBill__ : Customer_Account
+  + Paymentid : int
+  + billingMethod : str
+}
+class Cart_ShoppingCart {
+  + AddCart : int
+  + CheckoutID : int
+  + GetTotal__ : float
+  + RemoveOrder : int
+  + UpdateOrder : int
+  + creationDate : date
+  + id : int
+}
+class Customer_Account {
+  + Login__ : str
+  + account__ : str
+}
+class Customer_Customer {
+  + Message : str
+  + emailAddress : str
+  + firstname : str
+  + id : int
+  + lastname : str
+  + login : str
+  + password : str
+}
+class Customer_Customer1 {
+  + Account__ : str
+  + PaymentMet__ : float
+  + select__ : str
+  + userId : str
+}
+class Customer_Payment {
+  + ApplPay : int
+  + CustomerId : str
+  + PayPal : int
+  + Payment__ : float
+  + Paymentid : int
+  + login : str
+}
+class Customer_Payment1 {
+  + Auth__ : bool
+  + ID : Customer_Account
+  + PayBill__ : str
+}
+class Customer_User {
+  + Addresschange__ : str
+  + userid__ : str
+}
+class GUI_Screen {
+  + DisplayList__ : int
+  + Error__ : str
+  + Exit__ : str
+  + Message : str
+  + id : int
+}
+class Product_Item {
+  + OutofStock__ : str
+  + id : int
+  + list__ : float
+  + quantity : int
+  + totalcost__ : str
+}
+class Product_Item_Specification {
+  + Brand__ : str
+  + ItemSpecs__ : str
+  + id : int
+  + price : float
+  + quantity : int
+}
+class Product_Item_Type {
+  + Avail__ : str
+  + ItemType__ : str
+  + id : int
+  + price : float
+  + quantity : int
+}
+class Shopping_Cart_Checkout {
+  + CheckoutID : int
+  + Checkout__ : float
+  + CustomerID : str
+  + Paymentid : int
+  + billingMethod : str
+}
+class Shopping_Cart_ShoppingCart {
+  + AddOrder : int
+  + CheckoutID : int
+  + GetTotal__ : float
+  + RemoveOrder : int
+  + UpdateOrder : int
+  + creationDate : date
+  + id : int
+}
+Cart_Checkout "1..1" -- "1..9999" Customer_Payment1 : Checkout_Payment
+Customer_Customer "0..1" -- "1..1" Shopping_Cart_ShoppingCart : Customer_ShoppingCart
+Customer_Account "0..1" -- "0..1" GUI_Screen : GUI_Screen_Account
+GUI_Screen "0..1" -- "0..1" Product_Item : GUI_Screen_Item
+Cart_ShoppingCart "0..1" -- "0..1" GUI_Screen : GUI_Screen_ShoppingCart
+Cart_ShoppingCart "0..1" -- "1..9999" Product_Item : Item_ShoppingCart
+Product_Item "1..1" -- "1..9999" Product_Item_Specification : Item_Specification_Item
+Product_Item "1..1" -- "1..9999" Product_Item_Type : Item_Type_Item
+Customer_Payment "1..9999" -- "1..1" Shopping_Cart_Checkout : Payment_Checkout
+Customer_Customer "0..1" -- "0..1" Customer_Payment : Payment_Customer
+Customer_Customer1 "1..9999" -- "0..1" Customer_Payment1 : Payment_Customer1
+Shopping_Cart_Checkout "1..9999" -- "1..1" Shopping_Cart_ShoppingCart : ShoppingCart_Checkout
+Cart_Checkout "1..9999" -- "1..1" Cart_ShoppingCart : ShoppingCart_Checkout1
+Cart_ShoppingCart "1..1" -- "0..1" Customer_Customer1 : ShoppingCart_Customer
+@enduml

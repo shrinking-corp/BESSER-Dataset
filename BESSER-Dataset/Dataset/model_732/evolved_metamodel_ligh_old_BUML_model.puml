@@ -1,0 +1,199 @@
+@startuml
+class Action {
+}
+class ActivityEdge {
+}
+class ActivityGroup {
+}
+class ActivityNode {
+}
+class Behavior {
+}
+class BehavioredClassifier {
+}
+class Class {
+}
+class Classifier {
+}
+class ControlNode {
+}
+class Element {
+}
+class EncapsulatedClassifier {
+}
+class ExecutableNode {
+}
+class FinalNode {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class ObjectNode {
+}
+enum ObjectNodeOrderingKind {
+  FIFO
+  LIFO
+  ordered
+  unordered
+}
+class PackageableElement {
+}
+class ParameterableElement {
+}
+class RedefinableElement {
+}
+class StructuredClassifier {
+}
+class TemplateableElement {
+}
+class Type {
+}
+class TypedElement {
+}
+class ValueSpecification {
+}
+abstract class uml_Action {
+}
+class uml_Activity {
+}
+abstract class uml_ActivityEdge {
+}
+class uml_ActivityFinalNode {
+}
+abstract class uml_ActivityGroup {
+}
+abstract class uml_ActivityNode {
+}
+class uml_ActivityParameterNode {
+}
+class uml_ActivityPartition {
+}
+abstract class uml_Behavior {
+  + isReentrant : str
+}
+abstract class uml_BehavioredClassifier {
+}
+class uml_Class {
+  + isActive : str
+}
+abstract class uml_Classifier {
+  + isAbstract : str
+}
+class uml_ControlFlow {
+}
+abstract class uml_ControlNode {
+}
+class uml_DecisionNode {
+}
+abstract class uml_Element {
+}
+abstract class uml_EncapsulatedClassifier {
+}
+abstract class uml_ExecutableNode {
+}
+abstract class uml_FinalNode {
+}
+class uml_ForkNode {
+}
+class uml_InitialNode {
+}
+class uml_JoinNode {
+  + isCombineDuplicate : str
+}
+abstract class uml_NamedElement {
+  + name : str
+}
+abstract class uml_Namespace {
+}
+class uml_ObjectFlow {
+  + isMulticast : str
+  + isMultireceive : str
+}
+abstract class uml_ObjectNode {
+  + isControlType : str
+  + ordering : str
+}
+class uml_OpaqueAction {
+}
+class uml_OpaqueExpression {
+  + body : str
+}
+class uml_Package {
+}
+abstract class uml_PackageableElement {
+}
+abstract class uml_ParameterableElement {
+}
+abstract class uml_RedefinableElement {
+  + isLeaf : str
+}
+abstract class uml_StructuredClassifier {
+}
+abstract class uml_TemplateableElement {
+}
+abstract class uml_Type {
+}
+abstract class uml_TypedElement {
+}
+abstract class uml_ValueSpecification {
+}
+Action <|-- uml_OpaqueAction
+ActivityEdge <|-- uml_ControlFlow
+ActivityEdge <|-- uml_ObjectFlow
+ActivityGroup <|-- uml_ActivityPartition
+ActivityNode <|-- uml_ControlNode
+ActivityNode <|-- uml_ExecutableNode
+ActivityNode <|-- uml_ObjectNode
+Behavior <|-- uml_Activity
+BehavioredClassifier <|-- uml_Class
+Class <|-- uml_Behavior
+Classifier <|-- uml_BehavioredClassifier
+Classifier <|-- uml_StructuredClassifier
+ControlNode <|-- uml_DecisionNode
+ControlNode <|-- uml_FinalNode
+ControlNode <|-- uml_ForkNode
+ControlNode <|-- uml_InitialNode
+ControlNode <|-- uml_JoinNode
+Element <|-- uml_ActivityGroup
+Element <|-- uml_NamedElement
+Element <|-- uml_ParameterableElement
+Element <|-- uml_TemplateableElement
+EncapsulatedClassifier <|-- uml_Class
+ExecutableNode <|-- uml_Action
+FinalNode <|-- uml_ActivityFinalNode
+NamedElement <|-- uml_ActivityPartition
+NamedElement <|-- uml_Namespace
+NamedElement <|-- uml_PackageableElement
+NamedElement <|-- uml_RedefinableElement
+NamedElement <|-- uml_TypedElement
+Namespace <|-- uml_Classifier
+Namespace <|-- uml_Package
+ObjectNode <|-- uml_ActivityParameterNode
+PackageableElement <|-- uml_Package
+PackageableElement <|-- uml_Type
+PackageableElement <|-- uml_ValueSpecification
+ParameterableElement <|-- uml_PackageableElement
+RedefinableElement <|-- uml_ActivityEdge
+RedefinableElement <|-- uml_ActivityNode
+RedefinableElement <|-- uml_Classifier
+StructuredClassifier <|-- uml_EncapsulatedClassifier
+TemplateableElement <|-- uml_Classifier
+TemplateableElement <|-- uml_Package
+Type <|-- uml_Classifier
+TypedElement <|-- uml_ObjectNode
+TypedElement <|-- uml_ValueSpecification
+ValueSpecification <|-- uml_OpaqueExpression
+uml_Activity "1..1" *-- "0..9999" uml_ActivityEdge : edge2
+uml_ActivityEdge "0..9999" -- "1..1" uml_ActivityPartition : edge8
+uml_Activity "1..1" *-- "0..9999" uml_ActivityGroup : group4
+uml_ActivityEdge "1..1" *-- "1..1" uml_ValueSpecification : guard18
+uml_ActivityEdge "0..9999" -- "1..1" uml_ActivityNode : incoming13
+uml_Activity "1..1" *-- "0..9999" uml_ActivityNode : node1
+uml_ActivityNode "0..9999" -- "1..1" uml_ActivityPartition : node6
+uml_ActivityEdge "0..9999" -- "1..1" uml_ActivityNode : outgoing12
+uml_Package "1..1" *-- "0..9999" uml_PackageableElement : packagedElement0
+uml_ActivityEdge "1..1" -- "1..1" uml_ActivityNode : source15
+uml_ActivityEdge "1..1" -- "1..1" uml_ActivityNode : target16
+uml_Type "0..1" -- "1..1" uml_TypedElement : type11
+@enduml

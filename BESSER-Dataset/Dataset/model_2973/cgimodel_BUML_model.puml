@@ -1,0 +1,33 @@
+@startuml
+class BaseState {
+}
+abstract class cgimodel_BaseState {
+  + name : str
+  + isSet() : bool
+}
+class cgimodel_Expr {
+  + value : str
+}
+class cgimodel_OrState {
+}
+class cgimodel_State {
+  + set : bool
+}
+class cgimodel_StateModel {
+  + name : str
+}
+class cgimodel_StateModels {
+}
+class cgimodel_Transition {
+}
+BaseState <|-- cgimodel_OrState
+BaseState <|-- cgimodel_State
+cgimodel_Expr "0..1" --* "1..1" cgimodel_Transition : condition12
+cgimodel_Expr "0..1" --* "1..1" cgimodel_State : expr3
+cgimodel_BaseState "0..1" -- "1..1" cgimodel_Transition : source6
+cgimodel_StateModel "0..9999" --* "1..1" cgimodel_StateModels : stateModels15
+cgimodel_BaseState "0..9999" --* "1..1" cgimodel_StateModel : states0
+cgimodel_BaseState "0..9999" --* "1..1" cgimodel_OrState : states4
+cgimodel_State "0..1" -- "1..1" cgimodel_Transition : target9
+cgimodel_StateModel "1..1" *-- "0..9999" cgimodel_Transition : transitions1
+@enduml

@@ -1,0 +1,194 @@
+@startuml
+class ClassDiagram_ApplianceAdministration {
+  + addAppliance(ClassDiagram_room : str) : void
+  + addApplianceService(ClassDiagram_applianceService : str) : void
+  + addApplianceType(ClassDiagram_name : str) : void
+  + editAppliance(ClassDiagram_appliance : str) : void
+  + editApplianceService(ClassDiagram_applianceService : str) : void
+  + editApplianceType(ClassDiagram_applianceType : str) : void
+  + removeAppliance(ClassDiagram_appliance : str) : void
+  + removeApplianceServer(ClassDiagram_applianceService : str) : void
+  + removeApplianceType(ClassDiagram_applianceType : str) : void
+}
+class ClassDiagram_ApplianceType_ApplianceService {
+  + name : str
+  + price : float
+}
+class ClassDiagram_BillManager {
+  + addPurchasedService(ClassDiagram_amount : str, ClassDiagram_bookingID : str, ClassDiagram_item : str) : void
+  + createReceipt(ClassDiagram_bookingID : str) : void
+  + findBill(ClassDiagram_bookingID : str) : void
+  + getAmount(ClassDiagram_bookingID : str) : void
+  + pay(ClassDiagram_bookingID : str) : void
+}
+class ClassDiagram_BookingManager {
+  + assignKey(ClassDiagram_booking : str, ClassDiagram_expirationDate : str, ClassDiagram_room : str) : void
+  + cancelBooking(ClassDiagram_bookingId : str) : void
+  + checkIn(ClassDiagram_bookingID : str) : void
+  + checkOut(ClassDiagram_bookingID : str) : void
+  + createBooking(ClassDiagram_end : str, ClassDiagram_guest : str, ClassDiagram_numberOfPeople : str, ClassDiagram_rooms : str, ClassDiagram_start : str) : void
+  + editBooking(ClassDiagram_bookingId : str) : void
+  + findAvailableRoomTypes(ClassDiagram_end : str, ClassDiagram_start : str) : void
+  + findAvailableRooms(ClassDiagram__people : str, ClassDiagram_end : str, ClassDiagram_roomType : str, ClassDiagram_start : str) : void
+  + findBooking(ClassDiagram_bookingID : str) : void
+  + getBookings(ClassDiagram_ssn : str) : void
+  + initBooking() : void
+}
+class ClassDiagram_Booking_Bill {
+  + paidAmount : float
+}
+class ClassDiagram_Booking_BookedService {
+  + date : date
+}
+class ClassDiagram_Booking_PurchasedService {
+  + name : str
+  + price : float
+}
+class ClassDiagram_Company {
+  + name : str
+}
+class ClassDiagram_Company_GuestRecord {
+  + adress : str
+  + name : str
+  + paymentInformation : str
+  + phoneNumber : str
+  + ssn : str
+}
+class ClassDiagram_Company_Hotel {
+  + name : str
+}
+class ClassDiagram_FacilityAdministration {
+  + addFacility(ClassDiagram_facilityType : str, ClassDiagram_name : str) : void
+  + addFacilityType(ClassDiagram_name : str) : void
+  + addService(ClassDiagram_facility : str, ClassDiagram_name : str, ClassDiagram_price : str) : void
+  + editFacility(ClassDiagram_facility : str) : void
+  + editFacilityType(ClassDiagram_facility : str) : void
+  + editService(ClassDiagram_service : str) : void
+  + removeFacility(ClassDiagram_facility : str) : void
+  + removeFacilityType(ClassDiagram_facility : str) : void
+  + removeService(ClassDiagram_service : str) : void
+}
+class ClassDiagram_FacilityManager {
+  + findBookedServices(ClassDiagram_guest : str) : void
+  + findServices(ClassDiagram_end : str, ClassDiagram_facility : str, ClassDiagram_start : str) : void
+}
+class ClassDiagram_Facility_FacilityService {
+  + name : str
+  + price : float
+}
+class ClassDiagram_Facility_FacilityType {
+  + name : str
+}
+class ClassDiagram_GuestManager {
+  + createGuestRecord(ClassDiagram_adress : str, ClassDiagram_firstName : str, ClassDiagram_lastName : str, ClassDiagram_paymentInformation : str, ClassDiagram_phoneNumber : str, ClassDiagram_ssn : str) : void
+  + editGuestRecord(ClassDiagram_ssn : str) : void
+  + findGuestRecord(ClassDiagram_ssn : str) : void
+  + findGuestRecords(ClassDiagram_firstName : str, ClassDiagram_lastName : str) : void
+  + removeGuestRecord(ClassDiagram_ssn : str) : void
+}
+class ClassDiagram_HotelAdministration {
+  + addHotel(ClassDiagram_name : str) : void
+  + editHotel(ClassDiagram_hotel : str) : void
+  + removeHotel(ClassDiagram_hotel : str) : void
+}
+class ClassDiagram_Hotel_Booking {
+  + bookingID : int
+  + checkedIn : bool
+  + endDate : date
+  + price : float
+  + startDate : date
+}
+class ClassDiagram_Hotel_Facility {
+  + name : str
+}
+class ClassDiagram_Hotel_Room {
+  + cleaningStatus : bool
+  + maintenceStatus : bool
+  + roomNumber : int
+}
+class ClassDiagram_Hotel_Staff {
+  + firstName : str
+  + hasWorkTitel : str
+  + lastName : str
+  + ssn : str
+}
+abstract class ClassDiagram_IServiceBooking {
+  + bookFacilityService(ClassDiagram_booking : str, ClassDiagram_date : str, ClassDiagram_facility : str, ClassDiagram_guest : str, ClassDiagram_service : str) : void
+  + cancelBookedService(ClassDiagram_service : str) : void
+  + findAvailableServices(ClassDiagram_date : str, ClassDiagram_facility : str) : void
+  + findBookedService(ClassDiagram_bookedServiceID : str) : void
+  + getBookedServices(ClassDiagram_booking : str) : void
+}
+class ClassDiagram_RoomAdministration {
+  + addRoom(ClassDiagram_appliances : str, ClassDiagram_roomNumber : str, ClassDiagram_roomType : str) : void
+  + createRoomType(ClassDiagram_applianceTypes : str, ClassDiagram_area : str, ClassDiagram_maxNumberOfGuests : str, ClassDiagram_price : str) : void
+  + editRoom(ClassDiagram_room : str) : void
+  + editRoomType(ClassDiagram_roomType : str) : void
+  + removeRoom(ClassDiagram_room : str) : void
+  + removeRoomType(ClassDiagram_roomType : str) : void
+}
+class ClassDiagram_RoomAppliance_ApplianceType {
+  + name : str
+}
+class ClassDiagram_RoomManager {
+  + cleaningStatus(ClassDiagram_room : str) : void
+  + findRoom(ClassDiagram_roomNumber : str) : void
+  + getRoomsToClean() : void
+  + getRoomsToMaintain() : void
+  + maintenanceStatus(ClassDiagram_room : str) : void
+  + roomExists(ClassDiagram_roomNumber : str, ClassDiagram_rooms : str) : void
+}
+class ClassDiagram_Room_RoomAppliance {
+  + name : str
+}
+class ClassDiagram_Room_RoomKey {
+  + expirationDate : date
+}
+class ClassDiagram_Room_RoomType {
+  + area : float
+  + maxNumberOfGuests : int
+  + name : str
+  + price : float
+}
+class ClassDiagram_StaffAdministration {
+  + addStaff(ClassDiagram_firstName : str, ClassDiagram_lastName : str, ClassDiagram_ssn : str, ClassDiagram_workTitel : str) : void
+  + editStaff(ClassDiagram_staff : str) : void
+  + removeStaff(ClassDiagram_staff : str) : void
+}
+enum StaffType {
+  HouseKeeper
+  Janitor
+  Manager
+  Receptionist
+}
+ClassDiagram_Hotel_Room "1..1" -- "0..9999" ClassDiagram_Room_RoomKey : accessedBy11
+ClassDiagram_RoomAppliance_ApplianceType "0..9999" -- "1..1" ClassDiagram_Room_RoomType : applianceType16
+ClassDiagram_RoomAppliance_ApplianceType "1..1" -- "1..1" ClassDiagram_Room_RoomAppliance : applianceType18
+ClassDiagram_Booking_Bill "1..1" -- "1..1" ClassDiagram_Hotel_Booking : bill28
+ClassDiagram_BillManager "1..1" -- "1..1" ClassDiagram_BookingManager : billManager41
+ClassDiagram_Company "1..1" -- "1..1" ClassDiagram_GuestManager : company46
+ClassDiagram_Company "1..1" -- "1..1" ClassDiagram_HotelAdministration : company60
+ClassDiagram_Booking_Bill "1..1" -- "0..9999" ClassDiagram_Booking_PurchasedService : contains32
+ClassDiagram_Company_Hotel "1..1" -- "0..9999" ClassDiagram_Hotel_Staff : employees5
+ClassDiagram_Booking_BookedService "1..1" -- "1..1" ClassDiagram_Facility_FacilityService : facilityService30
+ClassDiagram_Facility_FacilityType "1..1" -- "1..1" ClassDiagram_Hotel_Facility : facilityType34
+ClassDiagram_BookingManager "1..1" -- "1..1" ClassDiagram_GuestManager : guestManager39
+ClassDiagram_BookingManager "1..1" -- "1..1" ClassDiagram_Company_Hotel : hotel35
+ClassDiagram_Company_Hotel "1..1" -- "1..1" ClassDiagram_RoomManager : hotel43
+ClassDiagram_BillManager "1..1" -- "1..1" ClassDiagram_Company_Hotel : hotel49
+ClassDiagram_Company_Hotel "1..1" -- "1..1" ClassDiagram_StaffAdministration : hotel52
+ClassDiagram_Company_Hotel "1..1" -- "1..1" ClassDiagram_RoomAdministration : hotel54
+ClassDiagram_ApplianceAdministration "1..1" -- "1..1" ClassDiagram_Company_Hotel : hotel56
+ClassDiagram_Company_Hotel "1..1" -- "1..1" ClassDiagram_FacilityAdministration : hotel58
+ClassDiagram_Company_Hotel "1..1" -- "1..1" ClassDiagram_FacilityManager : hotel62
+ClassDiagram_Booking_BookedService "0..9999" -- "1..1" ClassDiagram_Hotel_Booking : includes20
+ClassDiagram_Company_Hotel "1..1" -- "0..9999" ClassDiagram_Hotel_Booking : listOfBookings7
+ClassDiagram_Company_Hotel "1..1" -- "0..9999" ClassDiagram_Room_RoomType : listOfRoomTypes9
+ClassDiagram_Company_Hotel "1..1" -- "0..9999" ClassDiagram_Hotel_Room : listOfRooms3
+ClassDiagram_Company "1..1" -- "1..9999" ClassDiagram_Company_Hotel : owns0
+ClassDiagram_Company "1..1" -- "0..9999" ClassDiagram_Company_GuestRecord : recordsOf1
+ClassDiagram_Company_GuestRecord "1..1" -- "1..1" ClassDiagram_Hotel_Booking : responsibleGuest25
+ClassDiagram_BookingManager "1..1" -- "1..1" ClassDiagram_RoomManager : roomManager37
+ClassDiagram_Hotel_Room "1..1" -- "1..1" ClassDiagram_Room_RoomType : roomType13
+ClassDiagram_Hotel_Booking "1..1" -- "1..9999" ClassDiagram_Hotel_Room : rooms22
+@enduml

@@ -1,0 +1,78 @@
+@startuml
+class RefColumn {
+}
+class RefDatabase {
+}
+class RefFKey {
+}
+class RefPKey {
+}
+class RefParameter {
+}
+class RefProcedure {
+}
+class RefTable {
+}
+class RefType {
+}
+class database_Column {
+  + name : str
+}
+class database_Database {
+  + name : str
+}
+class database_FKey {
+  + name : str
+}
+class database_PKey {
+  + name : str
+}
+class database_Parameter {
+  + name : str
+}
+class database_Procedure {
+  + name : str
+}
+abstract class database_RefColumn {
+}
+abstract class database_RefDatabase {
+}
+abstract class database_RefFKey {
+}
+abstract class database_RefPKey {
+}
+abstract class database_RefParameter {
+}
+abstract class database_RefProcedure {
+}
+abstract class database_RefTable {
+}
+abstract class database_RefType {
+}
+class database_Table {
+  + name : str
+}
+class database_Type {
+  + name : str
+}
+RefColumn <|-- database_Column
+RefDatabase <|-- database_Database
+RefFKey <|-- database_FKey
+RefPKey <|-- database_PKey
+RefParameter <|-- database_Parameter
+RefProcedure <|-- database_Procedure
+RefTable <|-- database_Table
+RefType <|-- database_Type
+database_RefColumn "0..9999" --* "1..1" database_Table : columns0
+database_Column "1..9999" -- "1..1" database_PKey : columns20
+database_Column "1..9999" -- "1..1" database_FKey : columns5
+database_RefFKey "0..9999" --* "1..1" database_Table : fkeys3
+database_Procedure "1..1" *-- "0..9999" database_RefParameter : parameters14
+database_RefPKey "0..9999" --* "1..1" database_Table : pkeys1
+database_Database "1..1" *-- "0..9999" database_RefProcedure : procedures12
+database_FKey "1..1" -- "1..1" database_RefTable : reference6
+database_Procedure "1..1" *-- "0..1" database_RefType : return_15
+database_Database "1..1" *-- "0..9999" database_RefTable : tables10
+database_Parameter "1..1" *-- "1..1" database_RefType : type18
+database_Column "1..1" *-- "1..1" database_RefType : type8
+@enduml

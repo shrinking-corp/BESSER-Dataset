@@ -1,0 +1,44 @@
+@startuml
+enum CellType {
+  CellTypeDate
+  CellTypeFormula
+  CellTypeNumeric
+  CellTypeString
+}
+class spreadsheet_Cell {
+  + CellType : str
+  + DoubleValue : float
+  + StringValue : str
+  + ValueFormatted : str
+}
+class spreadsheet_Column {
+  + ColumnIndex : int
+  + getCell(spreadsheet_rowindex : str) : str
+}
+class spreadsheet_Row {
+  + RowIndex : int
+  + getCell(spreadsheet_column : str) : str
+}
+class spreadsheet_Sheet {
+  + SheetIndex : int
+  + SheetName : str
+  + getColumn(spreadsheet_columnindex : str) : str
+  + getRow(spreadsheet_rowindex : str) : str
+}
+abstract class spreadsheet_Spreadsheet {
+  + FilePath : str
+  + Label : str
+  + getSheet(spreadsheet_sheetindex : str) : str
+  + readFile() : void
+}
+spreadsheet_Cell "0..9999" -- "1..1" spreadsheet_Column : Cell13
+spreadsheet_Cell "0..9999" --* "1..1" spreadsheet_Row : Cell8
+spreadsheet_Cell "1..1" -- "1..1" spreadsheet_Column : Column22
+spreadsheet_Column "0..9999" --* "1..1" spreadsheet_Sheet : Column3
+spreadsheet_Row "0..9999" --* "1..1" spreadsheet_Sheet : Row1
+spreadsheet_Cell "1..1" -- "1..1" spreadsheet_Row : Row19
+spreadsheet_Sheet "0..9999" --* "1..1" spreadsheet_Spreadsheet : Sheet0
+spreadsheet_Row "1..1" -- "1..1" spreadsheet_Sheet : Sheet10
+spreadsheet_Column "1..1" -- "1..1" spreadsheet_Sheet : Sheet16
+spreadsheet_Sheet "1..1" -- "0..1" spreadsheet_Spreadsheet : Spreadsheet5
+@enduml

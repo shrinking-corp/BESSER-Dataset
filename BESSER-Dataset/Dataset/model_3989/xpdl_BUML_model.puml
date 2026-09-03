@@ -1,0 +1,166 @@
+@startuml
+class ExtendedAnnotationType {
+}
+class Extensible {
+}
+class LoopDataRefType {
+}
+enum LoopTypeType {
+  MultiInstance
+  Standard
+}
+enum MIFlowConditionType {
+  All
+  Complex
+  None_
+  One
+}
+enum MIOrderingType {
+  Parallel
+  Sequential
+}
+enum ModeType {
+  IN
+  INOUT
+  OUT
+}
+enum TestTimeType {
+  After
+  Before
+}
+enum TypeType {
+  BOOLEAN
+  DATETIME
+  FLOAT
+  INTEGER
+  PERFORMER
+  REFERENCE
+  STRING
+}
+class XSDAnnotation {
+}
+class XpdlTypeType {
+}
+class xpdl2_BasicTypeType {
+  + type : str
+}
+class xpdl2_DataTypeType {
+  + carnotType : str
+  + getDataType() : XpdlTypeType
+}
+class xpdl2_DeclaredTypeType {
+  + id : str
+}
+class xpdl2_ExpressionType {
+  + any : str
+  + group : str
+  + mixed : str
+  + scriptGrammar : str
+  + scriptType : str
+  + scriptVersion : str
+}
+class xpdl2_ExtendedAttributeType {
+  + any : str
+  + group : str
+  + mixed : str
+  + name : str
+  + value : str
+}
+class xpdl2_ExtendedAttributesType {
+}
+abstract class xpdl2_Extensible {
+}
+class xpdl2_ExternalPackage {
+  + href : str
+  + id : str
+  + name : str
+}
+class xpdl2_ExternalPackages {
+  + getExternalPackage(xpdl2_packageId : str) : str
+}
+class xpdl2_ExternalReferenceType {
+  + location : str
+  + namespace : str
+  + uuid : str
+  + xref : str
+  + getSchema() : str
+}
+class xpdl2_FormalParameterType {
+  + description : str
+  + id : str
+  + mode : str
+  + name : str
+}
+class xpdl2_FormalParametersType {
+  + addFormalParameter(xpdl2_parameter : str) : void
+  + getFormalParameter(xpdl2_parameterId : str) : str
+}
+class xpdl2_LoopMultiInstanceType {
+  + mIFlowCondition : str
+  + mIOrdering : str
+}
+class xpdl2_LoopStandardType {
+  + loopMaximum : str
+  + testTime : str
+}
+class xpdl2_LoopType {
+  + loopType : str
+}
+class xpdl2_SchemaTypeType {
+}
+class xpdl2_ScriptType {
+  + grammar : str
+  + type : str
+  + version : str
+}
+class xpdl2_TypeDeclarationType {
+  + description : str
+  + id : str
+  + name : str
+  + getDataType() : XpdlTypeType
+  + getSchema() : str
+}
+class xpdl2_TypeDeclarationsType {
+  + getTypeDeclaration(xpdl2_typeId : str) : str
+}
+class xpdl2_XSDSchema {
+}
+abstract class xpdl2_XpdlTypeType {
+}
+class xpdl2_extensions_ExtendedAnnotationType {
+}
+class xpdl2_extensions_LoopDataRefType {
+  + inputItemRef : str
+  + loopCounterRef : str
+  + outputItemRef : str
+}
+Extensible <|-- xpdl2_ExternalPackage
+Extensible <|-- xpdl2_TypeDeclarationType
+XSDAnnotation <|-- xpdl2_extensions_ExtendedAnnotationType
+XpdlTypeType <|-- xpdl2_BasicTypeType
+XpdlTypeType <|-- xpdl2_DeclaredTypeType
+XpdlTypeType <|-- xpdl2_ExternalReferenceType
+XpdlTypeType <|-- xpdl2_SchemaTypeType
+xpdl2_BasicTypeType "0..1" --* "1..1" xpdl2_DataTypeType : basicType0
+xpdl2_BasicTypeType "0..1" --* "1..1" xpdl2_TypeDeclarationType : basicType33
+xpdl2_ExpressionType "0..1" --* "1..1" xpdl2_LoopMultiInstanceType : complexMIFlowCondition18
+xpdl2_DataTypeType "0..1" --* "1..1" xpdl2_FormalParameterType : dataType14
+xpdl2_DataTypeType "1..1" *-- "0..1" xpdl2_DeclaredTypeType : declaredType1
+xpdl2_DeclaredTypeType "0..1" --* "1..1" xpdl2_TypeDeclarationType : declaredType36
+ExtendedAnnotationType "0..1" --* "1..1" xpdl2_ExtendedAttributeType : extendedAnnotation8
+xpdl2_ExtendedAttributeType "0..9999" --* "1..1" xpdl2_ExtendedAttributesType : extendedAttribute7
+xpdl2_ExtendedAttributesType "0..1" --* "1..1" xpdl2_Extensible : extendedAttributes10
+xpdl2_ExternalPackage "0..9999" --* "1..1" xpdl2_ExternalPackages : externalPackage12
+xpdl2_ExternalReferenceType "0..1" --* "1..1" xpdl2_TypeDeclarationType : externalReference42
+xpdl2_DataTypeType "1..1" *-- "0..1" xpdl2_ExternalReferenceType : externalReference5
+xpdl2_FormalParameterType "0..9999" --* "1..1" xpdl2_FormalParametersType : formalParameter13
+xpdl2_ExpressionType "0..1" --* "1..1" xpdl2_LoopStandardType : loopCondition23
+LoopDataRefType "0..1" --* "1..1" xpdl2_LoopMultiInstanceType : loopDataRef21
+xpdl2_LoopMultiInstanceType "0..1" --* "1..1" xpdl2_LoopType : loopMultiInstance27
+xpdl2_LoopStandardType "0..1" --* "1..1" xpdl2_LoopType : loopStandard25
+xpdl2_ExpressionType "0..1" --* "1..1" xpdl2_LoopMultiInstanceType : mICondition17
+xpdl2_SchemaTypeType "1..1" *-- "0..1" xpdl2_XSDSchema : schema30
+xpdl2_DataTypeType "1..1" *-- "0..1" xpdl2_SchemaTypeType : schemaType3
+xpdl2_SchemaTypeType "0..1" --* "1..1" xpdl2_TypeDeclarationType : schemaType39
+xpdl2_TypeDeclarationType "0..9999" --* "1..1" xpdl2_TypeDeclarationsType : typeDeclaration32
+@enduml

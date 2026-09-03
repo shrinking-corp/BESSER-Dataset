@@ -1,0 +1,254 @@
+@startuml
+class Auxiliary {
+}
+class ColorSet {
+}
+enum Colour16 {
+  Aqua
+  Black
+  Blue
+  Fuchsia
+  Gray
+  Green
+  Lime
+  Maroon
+  Navy
+  Olive
+  Purple
+  Red
+  Silver
+  Teal
+  White
+  Yellow
+}
+class CompoundColorSet {
+}
+class Declaration {
+}
+class DiagramElement {
+}
+enum Orientation {
+  Inhibitor
+  PtoT
+  TtoP
+  undefined
+}
+class SimpleColorSet {
+}
+class cpntools_Alias {
+}
+class cpntools_Annot {
+  + text : str
+}
+class cpntools_Arc {
+  + currentcyckle : str
+  + headsize : float
+  + order : int
+  + orientation : str
+}
+class cpntools_AuxBox {
+  + height : int
+  + width : int
+}
+class cpntools_AuxEllipse {
+  + height : int
+  + width : int
+}
+class cpntools_AuxText {
+  + text : str
+}
+abstract class cpntools_Auxiliary {
+}
+class cpntools_Binder {
+  + height : int
+  + posx : int
+  + posy : int
+  + width : int
+}
+class cpntools_Block {
+  + idname : str
+}
+class cpntools_Boolean {
+  + with_ : str
+}
+abstract class cpntools_ColorSet {
+  + colorSetType : str
+  + declare : str
+  + idname : str
+  + timed : bool
+}
+abstract class cpntools_CompoundColorSet {
+}
+class cpntools_Cpnet {
+}
+abstract class cpntools_Declaration {
+}
+abstract class cpntools_DiagramElement {
+  + fillColour : str
+  + fillFilled : bool
+  + fillPattern : str
+  + lineColour : str
+  + lineThick : int
+  + lineType : str
+  + posx : int
+  + posy : int
+}
+class cpntools_Enumerated {
+  + with_ : str
+}
+class cpntools_Fusion {
+  + name : str
+}
+class cpntools_Globbox {
+  + name : str
+}
+class cpntools_Globref {
+  + idname : str
+}
+class cpntools_Group {
+  + name : str
+}
+class cpntools_Index {
+  + with_ : str
+}
+class cpntools_Initmark {
+  + expression : str
+}
+class cpntools_Integer {
+  + with_ : str
+}
+class cpntools_LargeInteger {
+  + with_ : str
+}
+class cpntools_List {
+}
+class cpntools_Ml {
+  + expression : str
+}
+class cpntools_Page {
+  + name : str
+  + layout() : void
+}
+class cpntools_Place {
+  + height : int
+  + text : str
+  + width : int
+}
+class cpntools_Port {
+  + portType : str
+}
+class cpntools_Product {
+}
+class cpntools_Real {
+  + with_ : str
+}
+class cpntools_Record {
+}
+abstract class cpntools_SimpleColorSet {
+}
+class cpntools_String {
+  + and_ : str
+  + with_ : str
+}
+class cpntools_Subset {
+}
+class cpntools_Time {
+}
+class cpntools_Trans {
+  + explicit : bool
+  + height : int
+  + text : str
+  + width : int
+}
+class cpntools_TransCond {
+  + text : str
+}
+class cpntools_TransPriority {
+  + text : str
+}
+class cpntools_TransTime {
+  + text : str
+}
+class cpntools_Union {
+}
+class cpntools_Unit {
+  + with_ : str
+}
+class cpntools_Var {
+  + idname : str
+}
+Auxiliary <|-- cpntools_AuxBox
+Auxiliary <|-- cpntools_AuxEllipse
+Auxiliary <|-- cpntools_AuxText
+ColorSet <|-- cpntools_CompoundColorSet
+ColorSet <|-- cpntools_SimpleColorSet
+CompoundColorSet <|-- cpntools_Alias
+CompoundColorSet <|-- cpntools_List
+CompoundColorSet <|-- cpntools_Product
+CompoundColorSet <|-- cpntools_Record
+CompoundColorSet <|-- cpntools_Subset
+CompoundColorSet <|-- cpntools_Union
+Declaration <|-- cpntools_Block
+Declaration <|-- cpntools_ColorSet
+Declaration <|-- cpntools_Globref
+Declaration <|-- cpntools_Ml
+Declaration <|-- cpntools_Var
+DiagramElement <|-- cpntools_Annot
+DiagramElement <|-- cpntools_Arc
+DiagramElement <|-- cpntools_Auxiliary
+DiagramElement <|-- cpntools_Initmark
+DiagramElement <|-- cpntools_Place
+DiagramElement <|-- cpntools_Port
+DiagramElement <|-- cpntools_Trans
+DiagramElement <|-- cpntools_TransCond
+DiagramElement <|-- cpntools_TransPriority
+DiagramElement <|-- cpntools_TransTime
+SimpleColorSet <|-- cpntools_Boolean
+SimpleColorSet <|-- cpntools_Enumerated
+SimpleColorSet <|-- cpntools_Index
+SimpleColorSet <|-- cpntools_Integer
+SimpleColorSet <|-- cpntools_LargeInteger
+SimpleColorSet <|-- cpntools_Real
+SimpleColorSet <|-- cpntools_String
+SimpleColorSet <|-- cpntools_Time
+SimpleColorSet <|-- cpntools_Unit
+cpntools_Annot "0..1" --* "1..1" cpntools_Arc : annot55
+cpntools_Arc "0..9999" --* "1..1" cpntools_Page : arcs12
+cpntools_Arc "0..9999" -- "1..1" cpntools_Place : arcs31
+cpntools_Arc "0..9999" -- "1..1" cpntools_Trans : arcs62
+cpntools_Auxiliary "0..9999" --* "1..1" cpntools_Page : auxiliarys8
+cpntools_Binder "0..1" -- "1..1" cpntools_Page : binder14
+cpntools_Binder "0..1" --* "1..1" cpntools_Cpnet : binder3
+cpntools_Block "0..1" -- "1..1" cpntools_Declaration : block35
+cpntools_Trans "1..1" *-- "0..1" cpntools_TransCond : cond59
+cpntools_Cpnet "0..1" -- "1..1" cpntools_Fusion : cpnet39
+cpntools_Cpnet "0..1" -- "1..1" cpntools_Globbox : cpnet42
+cpntools_Binder "1..1" -- "0..1" cpntools_Cpnet : cpnet69
+cpntools_Declaration "0..9999" --* "1..1" cpntools_Globbox : declarations44
+cpntools_Block "1..1" *-- "0..9999" cpntools_Declaration : declarations48
+cpntools_Fusion "0..1" -- "1..1" cpntools_Place : fusion26
+cpntools_Cpnet "1..1" *-- "0..9999" cpntools_Fusion : fusions0
+cpntools_Cpnet "1..1" *-- "0..1" cpntools_Globbox : globbox1
+cpntools_Declaration "1..1" -- "0..1" cpntools_Globbox : globbox33
+cpntools_DiagramElement "1..1" -- "0..1" cpntools_Group : group19
+cpntools_Group "0..9999" --* "1..1" cpntools_Page : group5
+cpntools_DiagramElement "0..9999" --* "1..1" cpntools_Group : groupElms16
+cpntools_Initmark "0..1" --* "1..1" cpntools_Place : initmark22
+cpntools_Group "1..1" -- "1..1" cpntools_Page : page17
+cpntools_Page "1..1" -- "1..1" cpntools_Place : page28
+cpntools_Auxiliary "1..1" -- "1..1" cpntools_Page : page40
+cpntools_Arc "1..1" -- "1..1" cpntools_Page : page56
+cpntools_Page "1..1" -- "1..1" cpntools_Trans : page60
+cpntools_Binder "1..1" *-- "0..9999" cpntools_Page : pages71
+cpntools_Arc "1..1" -- "1..1" cpntools_Place : place50
+cpntools_Fusion "1..1" -- "0..9999" cpntools_Place : places37
+cpntools_Page "1..1" *-- "0..9999" cpntools_Place : places6
+cpntools_Place "1..1" *-- "0..1" cpntools_Port : port24
+cpntools_Trans "1..1" *-- "0..1" cpntools_TransPriority : priority64
+cpntools_CompoundColorSet "1..1" -- "1..9999" cpntools_SimpleColorSet : simpleColors68
+cpntools_Trans "1..1" *-- "0..1" cpntools_TransTime : time66
+cpntools_Arc "1..1" -- "1..1" cpntools_Trans : trans52
+cpntools_Page "1..1" *-- "0..9999" cpntools_Trans : transs10
+cpntools_ColorSet "1..1" -- "1..1" cpntools_Place : type21
+cpntools_ColorSet "1..1" -- "1..1" cpntools_Var : type46
+@enduml

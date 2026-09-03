@@ -1,0 +1,30 @@
+@startuml
+class Arc {
+}
+abstract class PetriNet_Arc {
+}
+class PetriNet_Net {
+}
+class PetriNet_PTArc {
+}
+class PetriNet_Place {
+}
+class PetriNet_TPArc {
+}
+class PetriNet_Transition {
+}
+Arc <|-- PetriNet_PTArc
+Arc <|-- PetriNet_TPArc
+PetriNet_PTArc "1..1" -- "1..1" PetriNet_Transition : dst14
+PetriNet_Place "1..1" -- "1..1" PetriNet_TPArc : dst21
+PetriNet_Place "1..1" -- "0..9999" PetriNet_TPArc : in_2
+PetriNet_PTArc "1..9999" -- "1..1" PetriNet_Transition : in_5
+PetriNet_Net "1..1" -- "1..1" PetriNet_Place : net0
+PetriNet_Net "1..1" -- "1..1" PetriNet_Transition : net3
+PetriNet_PTArc "0..9999" -- "1..1" PetriNet_Place : out1
+PetriNet_TPArc "1..9999" -- "1..1" PetriNet_Transition : out8
+PetriNet_Net "1..1" *-- "1..9999" PetriNet_Place : place11
+PetriNet_PTArc "1..1" -- "1..1" PetriNet_Place : src16
+PetriNet_TPArc "1..1" -- "1..1" PetriNet_Transition : src18
+PetriNet_Net "1..1" *-- "1..9999" PetriNet_Transition : transition12
+@enduml

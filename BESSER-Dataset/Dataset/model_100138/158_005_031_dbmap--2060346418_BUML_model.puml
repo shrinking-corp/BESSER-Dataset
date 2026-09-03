@@ -1,0 +1,48 @@
+@startuml
+class AbstaceDBInOutTable {
+}
+class AbstractDBDataMapTable {
+}
+class AbstractExternalData {
+}
+class dbmap_AbstaceDBInOutTable {
+}
+class dbmap_AbstractDBDataMapTable {
+  + minimized : bool
+  + name : str
+  + readonly : bool
+  + tableName : str
+}
+class dbmap_DBMapData {
+}
+class dbmap_DBMapperTableEntry {
+  + expression : str
+  + join : bool
+  + name : str
+  + nullable : bool
+  + operator : str
+  + type : str
+}
+class dbmap_FilterEntry {
+  + expression : str
+  + name : str
+}
+class dbmap_InputTable {
+  + alias : str
+  + joinType : str
+}
+class dbmap_OutputTable {
+}
+class dbmap_VarTable {
+}
+AbstaceDBInOutTable <|-- dbmap_InputTable
+AbstaceDBInOutTable <|-- dbmap_OutputTable
+AbstractDBDataMapTable <|-- dbmap_AbstaceDBInOutTable
+AbstractDBDataMapTable <|-- dbmap_VarTable
+AbstractExternalData <|-- dbmap_DBMapData
+dbmap_AbstractDBDataMapTable "1..1" *-- "0..9999" dbmap_DBMapperTableEntry : DBMapperTableEntries5
+dbmap_FilterEntry "0..9999" --* "1..1" dbmap_OutputTable : FilterEntries6
+dbmap_DBMapData "1..1" *-- "0..9999" dbmap_InputTable : InputTables1
+dbmap_DBMapData "1..1" *-- "0..9999" dbmap_OutputTable : OutputTables3
+dbmap_DBMapData "1..1" *-- "0..9999" dbmap_VarTable : VarTables0
+@enduml

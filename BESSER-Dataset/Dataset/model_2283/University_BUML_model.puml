@@ -1,0 +1,38 @@
+@startuml
+enum CourseType {
+  PR
+  SEM
+  UE
+  VO
+}
+class Person {
+}
+class University_Course {
+  + courseNumber : int
+  + courseType : str
+  + name : str
+}
+class University_Exam {
+  + examID : str
+}
+abstract class University_Person {
+  + email : str
+  + name : str
+}
+class University_Professor {
+  + employeeNumber : int
+}
+class University_Student {
+  + matriculationNumber : int
+}
+class University_UniversityManagementSystem {
+}
+Person <|-- University_Professor
+Person <|-- University_Student
+University_Course "0..9999" -- "1..1" University_Student : attends0
+University_Course "0..9999" --* "1..1" University_UniversityManagementSystem : course8
+University_Course "1..1" *-- "0..9999" University_Exam : exam6
+University_Course "0..9999" -- "1..1" University_Professor : lectures1
+University_Course "0..9999" -- "1..1" University_Course : mandatoryFor4
+University_Person "0..9999" --* "1..1" University_UniversityManagementSystem : person10
+@enduml

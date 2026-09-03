@@ -1,0 +1,33 @@
+@startuml
+class NamedElement {
+}
+class Type {
+}
+class entity_Attribute {
+}
+class entity_Datatype {
+}
+class entity_Entity {
+}
+abstract class entity_NamedElement {
+  + name : str
+}
+class entity_Namespace {
+}
+class entity_Reference {
+}
+class entity_Type {
+}
+NamedElement <|-- entity_Attribute
+NamedElement <|-- entity_Namespace
+NamedElement <|-- entity_Reference
+NamedElement <|-- entity_Type
+Type <|-- entity_Datatype
+Type <|-- entity_Entity
+entity_Attribute "0..9999" --* "1..1" entity_Entity : attributes1
+entity_Attribute "1..1" -- "0..1" entity_Datatype : datatype10
+entity_Namespace "0..9999" --* "1..1" entity_Namespace : nested5
+entity_Entity "1..1" *-- "0..9999" entity_Reference : references0
+entity_Entity "0..1" -- "1..1" entity_Reference : type7
+entity_Namespace "1..1" *-- "0..9999" entity_Type : types3
+@enduml

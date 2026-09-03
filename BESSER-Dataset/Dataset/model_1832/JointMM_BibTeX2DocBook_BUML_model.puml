@@ -1,0 +1,155 @@
+@startuml
+class SrcAuthor {
+}
+class SrcAuthoredEntry {
+}
+class SrcBibTeXEntry {
+}
+class SrcBook {
+}
+class SrcBookTitledEntry {
+}
+class SrcDatedEntry {
+}
+class SrcMasterThesis {
+}
+class SrcProceedings {
+}
+class SrcThesisEntry {
+}
+class SrcTitledEntry {
+}
+class TrgArticle {
+}
+class TrgBook {
+}
+class TrgDocBook {
+}
+class TrgPara {
+}
+class TrgSect1 {
+}
+class TrgSect2 {
+}
+class TrgSection {
+}
+class TrgTitledElement {
+}
+class jointPackage_BibTeX2DocBook_JointMM {
+}
+class jointPackage_BibTeX2DocBook_SrcArticle {
+  + journal : str
+}
+class jointPackage_BibTeX2DocBook_SrcAuthor {
+  + author : str
+}
+abstract class jointPackage_BibTeX2DocBook_SrcAuthoredEntry {
+}
+abstract class jointPackage_BibTeX2DocBook_SrcBibTeXEntry {
+  + id : str
+}
+class jointPackage_BibTeX2DocBook_SrcBibTeXFile {
+}
+class jointPackage_BibTeX2DocBook_SrcBook {
+  + publisher : str
+}
+abstract class jointPackage_BibTeX2DocBook_SrcBookTitledEntry {
+  + booktitle : str
+}
+class jointPackage_BibTeX2DocBook_SrcBooklet {
+}
+abstract class jointPackage_BibTeX2DocBook_SrcDatedEntry {
+  + year : str
+}
+class jointPackage_BibTeX2DocBook_SrcInBook {
+  + chapter : int
+}
+class jointPackage_BibTeX2DocBook_SrcInCollection {
+}
+class jointPackage_BibTeX2DocBook_SrcInProceedings {
+}
+class jointPackage_BibTeX2DocBook_SrcManual {
+}
+class jointPackage_BibTeX2DocBook_SrcMasterThesis {
+}
+class jointPackage_BibTeX2DocBook_SrcMisc {
+}
+class jointPackage_BibTeX2DocBook_SrcPhDThesis {
+}
+class jointPackage_BibTeX2DocBook_SrcProceedings {
+}
+class jointPackage_BibTeX2DocBook_SrcTechReport {
+}
+abstract class jointPackage_BibTeX2DocBook_SrcThesisEntry {
+  + school : str
+}
+abstract class jointPackage_BibTeX2DocBook_SrcTitledEntry {
+  + title : str
+}
+class jointPackage_BibTeX2DocBook_SrcUnpublished {
+  + note : str
+}
+class jointPackage_BibTeX2DocBook_TrgArticle {
+}
+class jointPackage_BibTeX2DocBook_TrgBook {
+}
+class jointPackage_BibTeX2DocBook_TrgDocBook {
+}
+class jointPackage_BibTeX2DocBook_TrgPara {
+  + content : str
+}
+class jointPackage_BibTeX2DocBook_TrgSect1 {
+}
+class jointPackage_BibTeX2DocBook_TrgSect2 {
+}
+abstract class jointPackage_BibTeX2DocBook_TrgSection {
+}
+abstract class jointPackage_BibTeX2DocBook_TrgTitledElement {
+  + title : str
+}
+SrcAuthoredEntry <|-- jointPackage_BibTeX2DocBook_SrcArticle
+SrcAuthoredEntry <|-- jointPackage_BibTeX2DocBook_SrcBook
+SrcAuthoredEntry <|-- jointPackage_BibTeX2DocBook_SrcInProceedings
+SrcAuthoredEntry <|-- jointPackage_BibTeX2DocBook_SrcTechReport
+SrcAuthoredEntry <|-- jointPackage_BibTeX2DocBook_SrcThesisEntry
+SrcAuthoredEntry <|-- jointPackage_BibTeX2DocBook_SrcUnpublished
+SrcBibTeXEntry <|-- jointPackage_BibTeX2DocBook_SrcAuthoredEntry
+SrcBibTeXEntry <|-- jointPackage_BibTeX2DocBook_SrcBookTitledEntry
+SrcBibTeXEntry <|-- jointPackage_BibTeX2DocBook_SrcDatedEntry
+SrcBibTeXEntry <|-- jointPackage_BibTeX2DocBook_SrcMisc
+SrcBibTeXEntry <|-- jointPackage_BibTeX2DocBook_SrcTitledEntry
+SrcBook <|-- jointPackage_BibTeX2DocBook_SrcInBook
+SrcBook <|-- jointPackage_BibTeX2DocBook_SrcInCollection
+SrcBookTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcInCollection
+SrcBookTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcInProceedings
+SrcDatedEntry <|-- jointPackage_BibTeX2DocBook_SrcArticle
+SrcDatedEntry <|-- jointPackage_BibTeX2DocBook_SrcBook
+SrcDatedEntry <|-- jointPackage_BibTeX2DocBook_SrcBooklet
+SrcDatedEntry <|-- jointPackage_BibTeX2DocBook_SrcProceedings
+SrcDatedEntry <|-- jointPackage_BibTeX2DocBook_SrcTechReport
+SrcDatedEntry <|-- jointPackage_BibTeX2DocBook_SrcThesisEntry
+SrcProceedings <|-- jointPackage_BibTeX2DocBook_SrcInProceedings
+SrcThesisEntry <|-- jointPackage_BibTeX2DocBook_SrcMasterThesis
+SrcThesisEntry <|-- jointPackage_BibTeX2DocBook_SrcPhDThesis
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcArticle
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcBook
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcManual
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcProceedings
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcTechReport
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcThesisEntry
+SrcTitledEntry <|-- jointPackage_BibTeX2DocBook_SrcUnpublished
+TrgSection <|-- jointPackage_BibTeX2DocBook_TrgSect1
+TrgSection <|-- jointPackage_BibTeX2DocBook_TrgSect2
+TrgTitledElement <|-- jointPackage_BibTeX2DocBook_TrgArticle
+TrgTitledElement <|-- jointPackage_BibTeX2DocBook_TrgSection
+TrgArticle "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgBook : articles6
+SrcAuthor "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_SrcAuthoredEntry : authors4
+TrgBook "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgDocBook : books5
+SrcBibTeXEntry "0..9999" --* "1..1" jointPackage_BibTeX2DocBook_SrcBibTeXFile : entries3
+TrgPara "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgSection : paras8
+TrgSection "1..1" -- "1..1" jointPackage_BibTeX2DocBook_TrgPara : section10
+TrgSect1 "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgArticle : sections_17
+TrgSect2 "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgSect1 : sections_29
+SrcMasterThesis "1..1" --* "1..1" jointPackage_BibTeX2DocBook_JointMM : sourceRoot0
+TrgDocBook "1..1" --* "1..1" jointPackage_BibTeX2DocBook_JointMM : targetRoot1
+@enduml

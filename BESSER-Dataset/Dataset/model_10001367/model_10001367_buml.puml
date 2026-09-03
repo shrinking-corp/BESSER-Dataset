@@ -1,0 +1,67 @@
+@startuml
+class Adres {
+  + bijvoegsel : str
+  + huisnummer : int
+  + postcode : str
+  + stad : str
+  + straatnaam : str
+}
+class Afbeelding {
+  + datum : str
+  + locatie : str
+  + naam : str
+}
+class Beheerder {
+  + rechten : bool
+}
+class Bestelregel {
+  + aantal : int
+}
+class Categorie {
+}
+class Contactformulier {
+  + tekst : str
+}
+class Factuur {
+  + btw : int
+  + datum : str
+  + status : str
+}
+class Hoofdbeheerder {
+}
+class Klant {
+  + geboortedatum : str
+  + telefoonnummer : str
+}
+class Nieuwsbericht {
+  + tekst : str
+  + titel : str
+}
+class Persoon {
+  + achternaam : str
+  + e_mail : str
+  + tussenvoegsel : str
+  + voornaam : str
+  + wachtwoord : str
+}
+class Product {
+  + actief : bool
+  + beschrijving : str
+  + naam : str
+  + prijs : int
+  + voorraad : int
+}
+Beheerder "0..9999" -- "0..9999" Product : beheert
+Klant "0..9999" -- "0..9999" Product : bekijkt
+Beheerder "0..9999" -- "0..9999" Contactformulier : bekijkt1
+Factuur "0..9999" -- "1..1" Klant : betaalt
+Beheerder "1..1" -- "0..9999" Factuur : bevestigt
+Adres "1..1" -- "1..9999" Klant : heeft
+Afbeelding "0..1" -- "0..9999" Product : heeft1
+Bestelregel "1..9999" -- "1..1" Factuur : heeft2
+Afbeelding "0..1" -- "0..9999" Nieuwsbericht : heeft3
+Hoofdbeheerder "1..1" -- "0..9999" Nieuwsbericht : maakt
+Bestelregel "0..9999" -- "1..1" Product : staat_in
+Categorie "1..9999" -- "0..9999" Product : staat_in1
+Contactformulier "0..9999" -- "1..1" Klant : vult_in
+@enduml

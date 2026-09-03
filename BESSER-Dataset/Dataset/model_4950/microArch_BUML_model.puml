@@ -1,0 +1,117 @@
+@startuml
+class Attribute {
+}
+enum AttributePrimitiveValue {
+  String
+  boolean
+  char
+  float
+  int
+  long
+  short
+}
+enum CRUDOperation {
+  create
+  delete
+  retrieve
+  update
+}
+enum CommandType {
+  compensate
+  invoke
+  reply
+}
+class NamedElement {
+}
+class Service {
+}
+class micro_API {
+}
+class micro_AggregateService {
+  + ReferenceModelsIncluded() : bool
+}
+abstract class micro_Attribute {
+  + isGenerated : bool
+  + isId : bool
+  + isMany : bool
+  + name : str
+}
+class micro_Command {
+  + commandType : str
+  + isReplyInfoMany : bool
+}
+class micro_Data {
+}
+class micro_Event {
+}
+class micro_Info {
+}
+class micro_MicroserviceArchitecture {
+}
+class micro_Model {
+}
+class micro_NamedElement {
+  + name : str
+}
+class micro_Operation {
+  + isMethodController : bool
+  + operationType : str
+}
+class micro_PrimitiveTypeAttribute {
+  + type : str
+}
+class micro_ReferenceAttribute {
+}
+class micro_Saga {
+}
+abstract class micro_Service {
+  + description : str
+  + fullname : str
+  + port : int
+  + shortname : str
+}
+class micro_Step {
+}
+class micro_ViewService {
+}
+Attribute <|-- micro_PrimitiveTypeAttribute
+Attribute <|-- micro_ReferenceAttribute
+NamedElement <|-- micro_API
+NamedElement <|-- micro_Command
+NamedElement <|-- micro_Data
+NamedElement <|-- micro_Event
+NamedElement <|-- micro_Info
+NamedElement <|-- micro_MicroserviceArchitecture
+NamedElement <|-- micro_Model
+NamedElement <|-- micro_Operation
+NamedElement <|-- micro_Saga
+NamedElement <|-- micro_Service
+NamedElement <|-- micro_Step
+Service <|-- micro_AggregateService
+Service <|-- micro_ViewService
+micro_Data "1..1" --* "1..1" micro_Saga : Data35
+micro_Model "0..1" -- "1..1" micro_PrimitiveTypeAttribute : ModelToView41
+micro_Operation "1..1" *-- "0..1" micro_Saga : Saga10
+micro_Saga "1..1" *-- "1..9999" micro_Step : Steps32
+micro_AggregateService "0..1" -- "1..1" micro_Operation : aggregateService14
+micro_AggregateService "0..1" -- "1..1" micro_Model : aggregateService2
+micro_API "0..1" -- "1..1" micro_Command : api22
+micro_API "0..1" -- "1..1" micro_Event : api23
+micro_API "0..1" -- "1..1" micro_Info : api28
+micro_API "1..1" --* "1..1" micro_AggregateService : api4
+micro_Attribute "1..9999" --* "1..1" micro_Model : attributes1
+micro_API "1..1" *-- "1..9999" micro_Command : commands17
+micro_Command "1..9999" -- "1..1" micro_Step : commands30
+micro_Info "1..1" -- "0..1" micro_Model : dto25
+micro_API "1..1" *-- "1..9999" micro_Event : events16
+micro_API "1..1" *-- "1..9999" micro_Info : infos19
+micro_Model "1..1" -- "1..1" micro_Operation : model12
+micro_Attribute "1..1" -- "0..1" micro_Model : model37
+micro_AggregateService "1..1" *-- "1..9999" micro_Model : models5
+micro_AggregateService "1..1" *-- "1..9999" micro_Operation : operation3
+micro_Event "0..1" -- "1..1" micro_Operation : publish9
+micro_AggregateService "0..9999" -- "1..1" micro_ViewService : replicateServices7
+micro_Command "1..1" -- "0..1" micro_Info : replyInfo21
+micro_MicroserviceArchitecture "1..1" *-- "0..9999" micro_Service : services0
+micro_Model "1..1" -- "1..1" micro_ReferenceAttribute : type39
+@enduml

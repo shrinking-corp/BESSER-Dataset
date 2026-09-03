@@ -1,0 +1,27 @@
+@startuml
+class Instruction {
+}
+enum JumpType {
+  JUMP_HIGH
+  JUMP_LONG
+  JUMP_MAX
+}
+class minidrone_Go {
+  + distance : int
+}
+abstract class minidrone_Instruction {
+}
+class minidrone_Jump {
+  + jumpType : str
+}
+class minidrone_MiniDroneProgram {
+  + name : str
+}
+class minidrone_Turn {
+  + angle : int
+}
+Instruction <|-- minidrone_Go
+Instruction <|-- minidrone_Jump
+Instruction <|-- minidrone_Turn
+minidrone_Instruction "0..9999" --* "1..1" minidrone_MiniDroneProgram : instructions0
+@enduml

@@ -1,0 +1,216 @@
+@startuml
+class Declaration {
+}
+class Expression {
+}
+class Literal {
+}
+class Statement {
+}
+class Type {
+}
+class VarDeclaration {
+}
+class xs_AndExpression {
+  + op : str
+}
+class xs_Assign {
+}
+class xs_Block {
+}
+class xs_BoolType {
+}
+class xs_BreakStatement {
+}
+class xs_Call {
+}
+class xs_ComparisonExpression {
+  + op : str
+}
+class xs_ContinueStatement {
+}
+class xs_Declaration {
+}
+class xs_EqualsExpression {
+  + op : str
+}
+class xs_Expression {
+}
+class xs_Factor {
+  + op : str
+}
+class xs_FloatType {
+}
+class xs_ForStatement {
+  + op : str
+}
+class xs_ForVarDeclaration {
+}
+class xs_FunctionDeclaration {
+  + mutable : bool
+  + name : str
+}
+class xs_GlobalVarDeclaration {
+  + const : bool
+  + extern : bool
+}
+class xs_IfElseStatement {
+}
+class xs_IncludeDeclaration {
+  + filePath : str
+}
+class xs_IntType {
+}
+class xs_Literal {
+}
+class xs_LiteralBool {
+  + value : bool
+}
+class xs_LiteralFloat {
+  + value : float
+}
+class xs_LiteralInt {
+  + value : int
+}
+class xs_LiteralString {
+  + value : str
+}
+class xs_LocalVarDeclaration {
+}
+class xs_OrExpression {
+  + op : str
+}
+class xs_ParameterDeclaration {
+}
+class xs_PostfixStatement {
+  + op : str
+}
+class xs_Program {
+}
+class xs_ReturnStatement {
+}
+class xs_RuleDeclaration {
+  + active : bool
+  + group : str
+  + highFrequency : bool
+  + maxInterval : int
+  + minInterval : int
+  + name : str
+  + priority : int
+  + runImmediately : bool
+}
+class xs_Statement {
+}
+class xs_StringType {
+}
+class xs_SwitchCase {
+}
+class xs_SwitchDefault {
+}
+class xs_SwitchStatement {
+}
+class xs_Term {
+  + op : str
+}
+class xs_Type {
+}
+class xs_Var {
+}
+class xs_VarDeclaration {
+  + name : str
+}
+class xs_VectorLiteral {
+}
+class xs_VectorType {
+}
+class xs_VoidType {
+}
+class xs_WhileStatement {
+}
+Declaration <|-- xs_FunctionDeclaration
+Declaration <|-- xs_GlobalVarDeclaration
+Declaration <|-- xs_IncludeDeclaration
+Declaration <|-- xs_RuleDeclaration
+Expression <|-- xs_AndExpression
+Expression <|-- xs_Assign
+Expression <|-- xs_Call
+Expression <|-- xs_ComparisonExpression
+Expression <|-- xs_EqualsExpression
+Expression <|-- xs_Factor
+Expression <|-- xs_Literal
+Expression <|-- xs_OrExpression
+Expression <|-- xs_Term
+Expression <|-- xs_Var
+Literal <|-- xs_LiteralBool
+Literal <|-- xs_LiteralFloat
+Literal <|-- xs_LiteralInt
+Literal <|-- xs_LiteralString
+Literal <|-- xs_VectorLiteral
+Statement <|-- xs_Block
+Statement <|-- xs_BreakStatement
+Statement <|-- xs_ContinueStatement
+Statement <|-- xs_Expression
+Statement <|-- xs_ForStatement
+Statement <|-- xs_IfElseStatement
+Statement <|-- xs_LocalVarDeclaration
+Statement <|-- xs_PostfixStatement
+Statement <|-- xs_ReturnStatement
+Statement <|-- xs_SwitchStatement
+Statement <|-- xs_WhileStatement
+Type <|-- xs_BoolType
+Type <|-- xs_FloatType
+Type <|-- xs_IntType
+Type <|-- xs_StringType
+Type <|-- xs_VectorType
+Type <|-- xs_VoidType
+VarDeclaration <|-- xs_ForVarDeclaration
+VarDeclaration <|-- xs_GlobalVarDeclaration
+VarDeclaration <|-- xs_LocalVarDeclaration
+VarDeclaration <|-- xs_ParameterDeclaration
+xs_Call "1..1" *-- "0..9999" xs_Expression : arguments96
+xs_Block "0..1" --* "1..1" xs_FunctionDeclaration : body12
+xs_Block "0..1" --* "1..1" xs_RuleDeclaration : body14
+xs_SwitchCase "0..9999" --* "1..1" xs_SwitchStatement : cases51
+xs_Expression "0..1" --* "1..1" xs_IfElseStatement : condition29
+xs_Expression "0..1" --* "1..1" xs_WhileStatement : condition37
+xs_Block "1..1" *-- "0..9999" xs_Statement : contents16
+xs_Var "1..1" -- "0..1" xs_VarDeclaration : declaration25
+xs_Declaration "0..9999" --* "1..1" xs_Program : declarations0
+xs_SwitchDefault "0..1" --* "1..1" xs_SwitchStatement : default54
+xs_IfElseStatement "1..1" *-- "0..1" xs_Statement : elseStatement34
+xs_Expression "0..1" --* "1..1" xs_ForStatement : end43
+xs_Expression "0..1" --* "1..1" xs_SwitchStatement : expression49
+xs_Expression "0..1" --* "1..1" xs_ReturnStatement : expression57
+xs_Assign "1..1" *-- "0..1" xs_Expression : expression61
+xs_Call "1..1" -- "0..1" xs_FunctionDeclaration : function94
+xs_Expression "0..1" --* "1..1" xs_OrExpression : left64
+xs_AndExpression "1..1" *-- "0..1" xs_Expression : left69
+xs_EqualsExpression "1..1" *-- "0..1" xs_Expression : left74
+xs_ComparisonExpression "1..1" *-- "0..1" xs_Expression : left79
+xs_Expression "0..1" --* "1..1" xs_Term : left84
+xs_Expression "0..1" --* "1..1" xs_Factor : left89
+xs_FunctionDeclaration "1..1" *-- "0..9999" xs_ParameterDeclaration : parameters9
+xs_Expression "0..1" --* "1..1" xs_OrExpression : right66
+xs_AndExpression "1..1" *-- "0..1" xs_Expression : right71
+xs_EqualsExpression "1..1" *-- "0..1" xs_Expression : right76
+xs_ComparisonExpression "1..1" *-- "0..1" xs_Expression : right81
+xs_Expression "0..1" --* "1..1" xs_Term : right86
+xs_Expression "0..1" --* "1..1" xs_Factor : right91
+xs_Statement "0..1" --* "1..1" xs_SwitchCase : statement20
+xs_Statement "0..1" --* "1..1" xs_SwitchDefault : statement23
+xs_Statement "0..1" --* "1..1" xs_WhileStatement : statement39
+xs_ForStatement "1..1" *-- "0..1" xs_Statement : statement46
+xs_IfElseStatement "1..1" *-- "0..1" xs_Statement : thenStatement31
+xs_LocalVarDeclaration "1..1" *-- "0..1" xs_Type : type2
+xs_GlobalVarDeclaration "1..1" *-- "0..1" xs_Type : type3
+xs_ParameterDeclaration "1..1" *-- "0..1" xs_Type : type5
+xs_FunctionDeclaration "1..1" *-- "0..1" xs_Type : type7
+xs_Expression "0..1" --* "1..1" xs_VarDeclaration : value1
+xs_Expression "0..1" --* "1..1" xs_SwitchCase : value18
+xs_PostfixStatement "1..1" -- "0..1" xs_VarDeclaration : var27
+xs_ForStatement "1..1" *-- "0..1" xs_ForVarDeclaration : var42
+xs_Assign "1..1" *-- "0..1" xs_Var : var59
+xs_Expression "0..1" --* "1..1" xs_VectorLiteral : x99
+xs_Expression "0..1" --* "1..1" xs_VectorLiteral : y101
+xs_Expression "0..1" --* "1..1" xs_VectorLiteral : z104
+@enduml

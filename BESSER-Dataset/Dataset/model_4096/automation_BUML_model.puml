@@ -1,0 +1,30 @@
+@startuml
+class NamedElement {
+}
+class automation_Automation {
+}
+class automation_Input {
+}
+abstract class automation_NamedElement {
+  + name : str
+}
+class automation_Output {
+}
+class automation_State {
+}
+class automation_Transition {
+}
+NamedElement <|-- automation_Automation
+NamedElement <|-- automation_Input
+NamedElement <|-- automation_Output
+NamedElement <|-- automation_State
+NamedElement <|-- automation_Transition
+automation_Output "0..9999" -- "1..1" automation_Transition : actions1
+automation_State "0..1" -- "1..1" automation_Transition : disnation5
+automation_Input "0..1" -- "1..1" automation_Transition : event0
+automation_Automation "1..1" *-- "0..9999" automation_Input : inputs13
+automation_State "0..1" -- "1..1" automation_Transition : origin3
+automation_Automation "1..1" *-- "0..9999" automation_Output : outputs16
+automation_Automation "1..1" *-- "0..9999" automation_State : states10
+automation_Automation "1..1" *-- "0..9999" automation_Transition : transitions8
+@enduml

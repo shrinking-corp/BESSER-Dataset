@@ -1,0 +1,295 @@
+@startuml
+class BehavioredClass {
+}
+class Expression {
+}
+class Statement {
+}
+class ale_Add {
+}
+class ale_And {
+}
+class ale_Apply {
+  + name : str
+  + varName : str
+}
+class ale_Assign {
+}
+class ale_Attribute {
+  + bounds : str
+  + modifier : str
+  + name : str
+}
+class ale_BehavioredClass {
+  + name : str
+}
+class ale_Block {
+}
+class ale_BoolType {
+}
+class ale_Call {
+  + name : str
+}
+class ale_ClassifierSetType {
+}
+class ale_ClassifierType {
+  + className : str
+  + packageName : str
+}
+class ale_Collection {
+  + max : int
+  + min : int
+}
+class ale_Comp {
+  + op : str
+}
+class ale_Conditional {
+}
+class ale_EObject {
+}
+class ale_Enum {
+}
+class ale_Expression {
+}
+class ale_ExpressionStmt {
+}
+class ale_ExtendedClass {
+  + extends : str
+}
+class ale_False {
+}
+class ale_Feature {
+  + feature : str
+}
+class ale_ForEach {
+  + iterator : str
+}
+class ale_If {
+}
+class ale_Implie {
+}
+class ale_Import {
+  + alias : str
+  + name : str
+}
+class ale_Insert {
+}
+class ale_Int {
+  + value : int
+}
+class ale_IntType {
+}
+class ale_Let {
+}
+class ale_Lit {
+}
+class ale_Min {
+}
+class ale_Mult {
+}
+class ale_Not {
+}
+class ale_Null {
+}
+class ale_Operation {
+  + name : str
+}
+class ale_Or {
+}
+class ale_OrderedSet {
+}
+class ale_Real {
+  + value : str
+}
+class ale_RealType {
+}
+class ale_Remove {
+}
+class ale_RuntimeClass {
+}
+class ale_SeqType {
+}
+class ale_Sequence {
+}
+class ale_Service {
+  + name : str
+}
+class ale_SetType {
+}
+class ale_Statement {
+}
+class ale_String {
+  + value : str
+}
+class ale_StringType {
+}
+class ale_Tag {
+  + name : str
+}
+class ale_True {
+}
+class ale_Unit {
+  + name : str
+}
+class ale_VarDecl {
+  + name : str
+}
+class ale_VarRef {
+  + ID : str
+}
+class ale_Variable {
+  + name : str
+}
+class ale_While {
+}
+class ale_Xor {
+}
+class ale_binding {
+  + name : str
+}
+class ale_classifierTypeRule {
+}
+class ale_literal {
+}
+class ale_rCase {
+}
+class ale_rOpposite {
+  + name : str
+}
+class ale_rSwitch {
+  + paramName : str
+}
+class ale_rType {
+  + name : str
+}
+class ale_typeLiteral {
+}
+class classifierTypeRule {
+}
+class literal {
+}
+class rType {
+}
+class typeLiteral {
+}
+BehavioredClass <|-- ale_ExtendedClass
+BehavioredClass <|-- ale_RuntimeClass
+Expression <|-- ale_Add
+Expression <|-- ale_And
+Expression <|-- ale_Apply
+Expression <|-- ale_Call
+Expression <|-- ale_Comp
+Expression <|-- ale_Conditional
+Expression <|-- ale_Feature
+Expression <|-- ale_Implie
+Expression <|-- ale_Let
+Expression <|-- ale_Lit
+Expression <|-- ale_Min
+Expression <|-- ale_Mult
+Expression <|-- ale_Not
+Expression <|-- ale_Or
+Expression <|-- ale_VarRef
+Expression <|-- ale_Xor
+Statement <|-- ale_Assign
+Statement <|-- ale_ExpressionStmt
+Statement <|-- ale_ForEach
+Statement <|-- ale_If
+Statement <|-- ale_Insert
+Statement <|-- ale_Remove
+Statement <|-- ale_VarDecl
+Statement <|-- ale_While
+classifierTypeRule <|-- ale_ClassifierType
+literal <|-- ale_Enum
+literal <|-- ale_False
+literal <|-- ale_Int
+literal <|-- ale_Null
+literal <|-- ale_OrderedSet
+literal <|-- ale_Real
+literal <|-- ale_Sequence
+literal <|-- ale_String
+literal <|-- ale_True
+literal <|-- ale_typeLiteral
+rType <|-- ale_typeLiteral
+typeLiteral <|-- ale_BoolType
+typeLiteral <|-- ale_ClassifierSetType
+typeLiteral <|-- ale_IntType
+typeLiteral <|-- ale_RealType
+typeLiteral <|-- ale_SeqType
+typeLiteral <|-- ale_SetType
+typeLiteral <|-- ale_StringType
+typeLiteral <|-- ale_classifierTypeRule
+ale_Attribute "0..9999" --* "1..1" ale_BehavioredClass : attributes5
+ale_Let "1..1" *-- "0..9999" ale_binding : bindings159
+ale_Block "0..1" --* "1..1" ale_ForEach : block47
+ale_Block "0..1" --* "1..1" ale_While : block68
+ale_Block "0..1" --* "1..1" ale_Operation : body15
+ale_rCase "0..9999" --* "1..1" ale_rSwitch : cases73
+ale_Collection "0..1" --* "1..1" ale_ForEach : collection46
+ale_Conditional "1..1" *-- "0..1" ale_Expression : cond151
+ale_ExpressionStmt "0..1" --* "1..1" ale_If : cond55
+ale_ExpressionStmt "0..1" --* "1..1" ale_While : cond66
+ale_Conditional "1..1" *-- "0..1" ale_Expression : else_156
+ale_Block "0..1" --* "1..1" ale_If : else_60
+ale_Expression "0..1" --* "1..1" ale_Not : exp146
+ale_Expression "0..1" --* "1..1" ale_Min : exp148
+ale_Expression "0..1" --* "1..1" ale_Let : exp161
+ale_Attribute "1..1" *-- "0..1" ale_ExpressionStmt : exp25
+ale_ExpressionStmt "0..1" --* "1..1" ale_VarDecl : exp29
+ale_Assign "1..1" *-- "0..1" ale_ExpressionStmt : exp33
+ale_ExpressionStmt "0..1" --* "1..1" ale_Insert : exp38
+ale_ExpressionStmt "0..1" --* "1..1" ale_Remove : exp43
+ale_Collection "1..1" *-- "0..1" ale_ExpressionStmt : exp50
+ale_EObject "0..1" --* "1..1" ale_ExpressionStmt : exp87
+ale_Expression "0..1" --* "1..1" ale_binding : exp90
+ale_rCase "1..1" *-- "0..1" ale_rType : guard78
+ale_Import "0..9999" --* "1..1" ale_Unit : imports0
+ale_Apply "1..1" *-- "0..1" ale_Expression : lambda_105
+ale_Expression "0..1" --* "1..1" ale_Mult : left111
+ale_Add "1..1" *-- "0..1" ale_Expression : left116
+ale_Comp "1..1" *-- "0..1" ale_Expression : left121
+ale_And "1..1" *-- "0..1" ale_Expression : left126
+ale_Expression "0..1" --* "1..1" ale_Or : left131
+ale_Expression "0..1" --* "1..1" ale_Xor : left136
+ale_Expression "0..1" --* "1..1" ale_Implie : left141
+ale_Lit "1..1" *-- "0..1" ale_literal : literal150
+ale_ExpressionStmt "0..1" --* "1..1" ale_rCase : match81
+ale_If "0..1" --* "1..1" ale_If : nestedIf64
+ale_BehavioredClass "1..1" *-- "0..9999" ale_Operation : operations7
+ale_Attribute "1..1" *-- "0..1" ale_rOpposite : opposite20
+ale_ExpressionStmt "0..1" --* "1..1" ale_rSwitch : other75
+ale_ExpressionStmt "0..1" --* "1..1" ale_rSwitch : paramVal71
+ale_Apply "1..1" *-- "0..9999" ale_Expression : params108
+ale_Operation "1..1" *-- "0..9999" ale_Variable : params13
+ale_Expression "0..9999" --* "1..1" ale_Sequence : params164
+ale_Expression "0..9999" --* "1..1" ale_OrderedSet : params166
+ale_Call "1..1" *-- "0..9999" ale_Expression : params95
+ale_Expression "0..1" --* "1..1" ale_Mult : right113
+ale_Add "1..1" *-- "0..1" ale_Expression : right118
+ale_Comp "1..1" *-- "0..1" ale_Expression : right123
+ale_And "1..1" *-- "0..1" ale_Expression : right128
+ale_Expression "0..1" --* "1..1" ale_Or : right133
+ale_Expression "0..1" --* "1..1" ale_Xor : right138
+ale_Expression "0..1" --* "1..1" ale_Implie : right143
+ale_Service "0..9999" --* "1..1" ale_Unit : services1
+ale_Block "1..1" *-- "0..9999" ale_Statement : statements53
+ale_Operation "1..1" *-- "0..9999" ale_Tag : tag9
+ale_Apply "1..1" *-- "0..1" ale_Expression : target100
+ale_Assign "1..1" *-- "0..1" ale_Expression : target32
+ale_Expression "0..1" --* "1..1" ale_Insert : target36
+ale_Expression "0..1" --* "1..1" ale_Remove : target41
+ale_Call "1..1" *-- "0..1" ale_Expression : target93
+ale_Expression "0..1" --* "1..1" ale_Feature : target98
+ale_Conditional "1..1" *-- "0..1" ale_Expression : then153
+ale_Block "0..1" --* "1..1" ale_If : then57
+ale_Operation "1..1" *-- "0..1" ale_rType : type11
+ale_SeqType "1..1" *-- "0..1" ale_typeLiteral : type168
+ale_Variable "1..1" *-- "0..1" ale_rType : type17
+ale_SetType "1..1" *-- "0..1" ale_typeLiteral : type170
+ale_Attribute "1..1" *-- "0..1" ale_rType : type22
+ale_VarDecl "1..1" *-- "0..1" ale_rType : type27
+ale_binding "1..1" *-- "0..1" ale_typeLiteral : type89
+ale_ClassifierSetType "1..1" *-- "0..9999" ale_classifierTypeRule : types172
+ale_ExpressionStmt "0..1" --* "1..1" ale_rCase : value84
+ale_Apply "1..1" *-- "0..1" ale_typeLiteral : varType102
+ale_BehavioredClass "0..9999" --* "1..1" ale_Unit : xtendedClasses3
+@enduml

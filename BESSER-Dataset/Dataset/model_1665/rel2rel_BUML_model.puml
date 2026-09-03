@@ -1,0 +1,24 @@
+@startuml
+class NamedElement {
+}
+class Thing {
+}
+abstract class rel2rel_NamedElement {
+  + name : str
+}
+class rel2rel_RelatedTo {
+  + since : str
+}
+class rel2rel_Thing {
+  + id : int
+}
+class rel2rel_World {
+}
+NamedElement <|-- rel2rel_Thing
+Thing <|-- rel2rel_RelatedTo
+rel2rel_RelatedTo "1..1" -- "0..1" rel2rel_Thing : fromThing2
+rel2rel_RelatedTo "0..9999" --* "1..1" rel2rel_Thing : relations1
+rel2rel_Thing "0..9999" --* "1..1" rel2rel_World : things0
+rel2rel_RelatedTo "0..1" -- "1..1" rel2rel_RelatedTo : toRelation6
+rel2rel_RelatedTo "1..1" -- "0..1" rel2rel_Thing : toThing3
+@enduml

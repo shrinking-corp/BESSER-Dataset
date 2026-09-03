@@ -1,0 +1,68 @@
+@startuml
+class Acquired_UseCase {
+}
+class Acquisition_of_Books_UseCase {
+}
+class Book {
+  + author : str
+  + creation_date : str
+  + id : int
+  + status : str
+  + title : str
+}
+class Book_Actor {
+}
+class Check_In_Book_UseCase {
+}
+class Check_Out_Book_UseCase {
+}
+class Checked_In_UseCase {
+}
+class Checked_Out_UseCase {
+}
+class Librarian {
+  + id : int
+  + name : str
+}
+class Librarian_Actor {
+}
+class Library {
+  + id : int
+  + librarian_id : int
+}
+class Mail_2_Week_Reminders_UseCase {
+}
+class Patron {
+  + address : str
+  + id : int
+  + name : str
+  + num_books_checked_out : int
+  + status : str
+}
+class Patron_Actor {
+}
+class Reserve_Book_UseCase {
+}
+class Retired_UseCase {
+}
+class Retirement_of_Books_UseCase {
+}
+Acquisition_of_Books_UseCase "0..1" -- "0..1" Librarian_Actor : Acquisition_of_Books_Librarian
+Acquired_UseCase "0..1" -- "0..1" Book_Actor : Book_Acquired
+Book_Actor "0..1" -- "0..1" Checked_In_UseCase : Book_Check_In
+Book_Actor "0..1" -- "0..1" Checked_Out_UseCase : Book_Check_Out
+Book_Actor "0..1" -- "0..1" Retired_UseCase : Book_Retired
+Check_In_Book_UseCase "0..1" -- "0..1" Librarian_Actor : Check_In_Book_Librarian
+Check_In_Book_UseCase "0..1" -- "0..1" Patron_Actor : Check_In_Book_Patron
+Check_Out_Book_UseCase "0..1" -- "0..1" Librarian_Actor : Check_Out_Book_Librarian
+Book "0..9999" -- "0..1" Librarian : Librarian_Book
+Librarian "0..1" -- "0..1" Library : Library_Librarian
+Library "0..1" -- "0..9999" Patron : Library_Patron
+Librarian_Actor "0..1" -- "0..1" Mail_2_Week_Reminders_UseCase : Mail_2_Week_Reminders_Librarian
+Book "0..9999" -- "0..1" Patron : Patron_Book
+Check_Out_Book_UseCase "0..1" -- "0..1" Patron_Actor : Patron_Check_Out_Book
+Librarian "0..1" -- "0..9999" Patron : Patron_Librarian
+Librarian_Actor "0..1" -- "0..1" Reserve_Book_UseCase : Reserve_Book_Librarian
+Patron_Actor "0..1" -- "0..1" Reserve_Book_UseCase : Reserve_Book_Patron
+Librarian_Actor "0..1" -- "0..1" Retirement_of_Books_UseCase : Retirement_of_Books_Librarian
+@enduml

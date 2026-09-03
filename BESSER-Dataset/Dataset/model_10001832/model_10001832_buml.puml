@@ -1,0 +1,160 @@
+@startuml
+class Asesor {
+  + id : int
+  + pass : str
+  + user : str
+}
+class Asesor_Actor {
+}
+class Asesor_Actor1 {
+}
+class Banco_Activar_asesor_UseCase {
+}
+class Banco_Activar_asesor_UseCase1 {
+}
+class Banco_Activar_cliente_UseCase {
+}
+class Banco_Activar_cliente_UseCase1 {
+}
+class Banco_Asociar_cuenta_UseCase {
+}
+class Banco_Asociar_cuenta_UseCase1 {
+}
+class Banco_Consulta_datos_cliente_UseCase {
+}
+class Banco_Consulta_datos_cliente_UseCase1 {
+}
+class Banco_Consultar_saldo_UseCase {
+}
+class Banco_Consultar_saldo_UseCase1 {
+}
+class Banco_Crear_asesor_UseCase {
+}
+class Banco_Crear_asesor_UseCase1 {
+}
+class Banco_Crear_cliente_UseCase {
+}
+class Banco_Crear_cliente_UseCase1 {
+}
+class Banco_Crear_cuenta_UseCase {
+}
+class Banco_Crear_cuenta_UseCase1 {
+}
+class Banco_Depositar_UseCase {
+}
+class Banco_Depositar_UseCase1 {
+}
+class Banco_Editar_cliente_UseCase {
+}
+class Banco_Editar_cliente_UseCase1 {
+}
+class Banco_Editar_datos_UseCase {
+}
+class Banco_Editar_datos_UseCase1 {
+}
+class Banco_Inactivar_asesor_UseCase {
+}
+class Banco_Inactivar_asesor_UseCase1 {
+}
+class Banco_Inactivar_cliente_UseCase {
+}
+class Banco_Inactivar_cliente_UseCase1 {
+}
+class Banco_Iniciar_sesi_n_UseCase {
+}
+class Banco_Iniciar_sesi_n_UseCase1 {
+}
+class Banco_Iniciar_sesi_n_UseCase2 {
+}
+class Banco_Iniciar_sesi_n_UseCase3 {
+}
+class Banco_Iniciar_sesi_n_UseCase4 {
+}
+class Banco_Iniciar_sesi_n_UseCase5 {
+}
+class Banco_Realizar_transacci_n_UseCase {
+}
+class Banco_Realizar_transacci_n_UseCase1 {
+}
+class Banco_Retirar_UseCase {
+}
+class Banco_Retirar_UseCase1 {
+}
+class Banco_Valida_saldo_UseCase {
+}
+class Banco_Valida_saldo_UseCase1 {
+}
+class Class {
+}
+class Cliente {
+  + celular : int
+  + correo : str
+  + estado : bool
+  + foto : str
+  + id : int
+  + pass : str
+  + telefono : int
+  + user : str
+}
+class Cliente_Actor {
+}
+class Cliente_Actor1 {
+}
+class Cuenta {
+  + tipoCuenta : str
+}
+class Cuenta_external {
+}
+class Gerente {
+  + id : int
+  + pass : str
+  + user : str
+}
+class Gerente_Actor {
+}
+class Gerente_Actor1 {
+}
+class Sucursal {
+  + id : int
+  + nombre : str
+}
+class TipoCuenta {
+  + estado : bool
+  + id : int
+  + tipo : str
+}
+class Transacci_n {
+  + detalle : str
+  + fecha : datetime
+  + id : int
+  + monto : float
+}
+Asesor "1..1" -- "0..1" Cliente : Asesor_Cliente
+Asesor_Actor "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase1 : Asesor_Iniciar_sesi_n
+Asesor_Actor1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase4 : Asesor_Iniciar_sesi_n2
+Asesor "0..9999" -- "1..1" Sucursal : Asesor_Sucursal
+Cuenta_external "0..9999" -- "1..1" TipoCuenta : Bank_Account_Account_Type
+Cuenta_external "1..1" -- "0..9999" Transacci_n : Bank_Account_Transaction
+Cuenta_external "1..1" -- "0..9999" Transacci_n : Bank_Account_Transaction2
+Cliente "1..1" -- "1..9999" Cuenta_external : Cliente_Cuenta
+Banco_Iniciar_sesi_n_UseCase2 "0..1" -- "0..1" Cliente_Actor : Cliente_Iniciar_sesi_n
+Banco_Iniciar_sesi_n_UseCase5 "0..1" -- "0..1" Cliente_Actor1 : Cliente_Iniciar_sesi_n2
+Cliente "0..1" -- "1..1" Gerente : Gerente_Cliente
+Banco_Iniciar_sesi_n_UseCase "0..1" -- "0..1" Gerente_Actor : Gerente_Iniciar_sesi_n
+Banco_Iniciar_sesi_n_UseCase3 "0..1" -- "0..1" Gerente_Actor1 : Gerente_Iniciar_sesi_n2
+Banco_Crear_cuenta_UseCase "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase1 : Iniciar_sesi_n_Asociar_cuenta
+Banco_Crear_cuenta_UseCase1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase4 : Iniciar_sesi_n_Asociar_cuenta1
+Banco_Consulta_datos_cliente_UseCase "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase1 : Iniciar_sesi_n_Consulta_datos_cliente
+Banco_Consulta_datos_cliente_UseCase1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase4 : Iniciar_sesi_n_Consulta_datos_cliente1
+Banco_Crear_asesor_UseCase "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase : Iniciar_sesi_n_Crear_asesor
+Banco_Crear_asesor_UseCase1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase3 : Iniciar_sesi_n_Crear_asesor1
+Banco_Crear_cliente_UseCase "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase1 : Iniciar_sesi_n_Crear_cliente
+Banco_Crear_cliente_UseCase1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase4 : Iniciar_sesi_n_Crear_cliente1
+Banco_Editar_cliente_UseCase "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase1 : Iniciar_sesi_n_Editar_cliente
+Banco_Editar_cliente_UseCase1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase4 : Iniciar_sesi_n_Editar_cliente1
+Banco_Editar_datos_UseCase "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase2 : Iniciar_sesi_n_Editar_datos
+Banco_Editar_datos_UseCase1 "0..1" -- "0..1" Banco_Iniciar_sesi_n_UseCase5 : Iniciar_sesi_n_Editar_datos1
+Banco_Iniciar_sesi_n_UseCase2 "0..1" -- "0..1" Banco_Realizar_transacci_n_UseCase : Iniciar_sesi_n_Realizar_transacci_n
+Banco_Iniciar_sesi_n_UseCase5 "0..1" -- "0..1" Banco_Realizar_transacci_n_UseCase1 : Iniciar_sesi_n_Realizar_transacci_n1
+Gerente "1..1" -- "1..1" Sucursal : Sucursal_Gerente
+@enduml

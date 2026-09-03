@@ -1,0 +1,40 @@
+@startuml
+class Friend {
+}
+class Login {
+  + email : str
+  + password : str
+}
+class Message {
+  + maxChars : str
+}
+class Post {
+  + info : str
+  + likes : int
+}
+class Profile {
+  + password : str
+  + photo : str
+  + username : str
+}
+class Registration {
+  + email : str
+  + name : str
+  + password : secret
+}
+class User {
+  + name : str
+}
+class public {
+  + name : str
+}
+class secret {
+  + name : str
+}
+Friend "0..9999" -- "1..1" User : User_Friends
+Login "1..1" -- "1..1" User : User_Login
+Message "0..9999" -- "1..1" User : User_Message
+Profile "1..1" -- "1..1" User : User_Myprofile
+Post "0..9999" -- "1..1" User : User_Post
+Registration "1..1" -- "1..1" User : User_Registeration
+@enduml

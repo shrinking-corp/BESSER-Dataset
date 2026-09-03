@@ -1,0 +1,41 @@
+@startuml
+class Edge {
+}
+class NamedElement {
+}
+abstract class petrinet_Edge {
+}
+class petrinet_InhibitorEdge {
+}
+class petrinet_InputEdge {
+}
+class petrinet_NamedElement {
+  + name : str
+}
+class petrinet_OutputEdge {
+}
+class petrinet_PetriNet {
+}
+class petrinet_Place {
+  + tokens : int
+}
+class petrinet_ReadEdge {
+}
+class petrinet_Transition {
+}
+Edge <|-- petrinet_InhibitorEdge
+Edge <|-- petrinet_InputEdge
+Edge <|-- petrinet_OutputEdge
+Edge <|-- petrinet_ReadEdge
+NamedElement <|-- petrinet_Edge
+NamedElement <|-- petrinet_PetriNet
+NamedElement <|-- petrinet_Place
+NamedElement <|-- petrinet_Transition
+petrinet_Edge "0..9999" --* "1..1" petrinet_PetriNet : edges3
+petrinet_Edge "0..9999" -- "1..1" petrinet_Place : edges5
+petrinet_Edge "0..9999" -- "1..1" petrinet_Transition : edges6
+petrinet_Edge "1..1" -- "0..1" petrinet_Place : place8
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Place : places0
+petrinet_Edge "1..1" -- "0..1" petrinet_Transition : transition9
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions1
+@enduml

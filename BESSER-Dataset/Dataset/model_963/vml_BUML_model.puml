@@ -1,0 +1,161 @@
+@startuml
+class Chart {
+}
+class ChartElement {
+}
+class Diagram {
+}
+class DiagramElement {
+}
+class GraphStyle {
+}
+enum LineStyle {
+  Dash
+  Dot
+  Solid
+}
+class Style {
+}
+class vml_Bar {
+}
+class vml_BarChart {
+}
+class vml_Category {
+  + category : str
+}
+class vml_Cell {
+  + textValue : str
+}
+abstract class vml_Chart {
+  + ID : str
+  + title : str
+  + xTitle : str
+  + yTitle : str
+}
+class vml_ChartElement {
+  + ID : str
+  + xValue : str
+  + yValue : str
+}
+class vml_ChartWithAxisStyle {
+}
+class vml_ChartWithoutAxisStyle {
+}
+class vml_Color {
+  + blue : int
+  + green : int
+  + name : str
+  + red : int
+}
+class vml_Column {
+  + columnTitle : str
+}
+abstract class vml_Diagram {
+}
+abstract class vml_DiagramElement {
+}
+class vml_Edge {
+  + relation : str
+}
+class vml_EdgeStyle {
+  + directed : bool
+  + lineStyle : str
+  + lineWidth : int
+  + weight : float
+}
+class vml_Graph {
+  + ID : str
+  + title : str
+}
+class vml_GraphStyle {
+}
+class vml_LineChart {
+}
+class vml_Model {
+}
+class vml_Node {
+  + icone : str
+  + title : str
+}
+class vml_NodeStyle {
+  + borderWidth : int
+  + padding : int
+}
+class vml_Pie {
+  + identifier : str
+  + title : str
+}
+class vml_Point {
+}
+class vml_Row {
+}
+class vml_Scatter {
+}
+class vml_Slice {
+  + title : str
+  + value : int
+}
+class vml_StackBarChart {
+}
+class vml_StackBars {
+}
+class vml_Style {
+}
+class vml_Table {
+  + tableTitle : str
+}
+Chart <|-- vml_BarChart
+Chart <|-- vml_LineChart
+Chart <|-- vml_Scatter
+Chart <|-- vml_StackBarChart
+ChartElement <|-- vml_Bar
+ChartElement <|-- vml_Point
+ChartElement <|-- vml_StackBars
+Diagram <|-- vml_Chart
+Diagram <|-- vml_Graph
+Diagram <|-- vml_Pie
+DiagramElement <|-- vml_ChartElement
+DiagramElement <|-- vml_Edge
+DiagramElement <|-- vml_Node
+DiagramElement <|-- vml_Slice
+GraphStyle <|-- vml_EdgeStyle
+GraphStyle <|-- vml_NodeStyle
+Style <|-- vml_ChartWithAxisStyle
+Style <|-- vml_ChartWithoutAxisStyle
+Style <|-- vml_GraphStyle
+vml_Color "0..1" -- "1..1" vml_NodeStyle : backgroundColor15
+vml_Bar "0..9999" --* "1..1" vml_BarChart : bars59
+vml_Bar "0..9999" --* "1..1" vml_StackBars : bars66
+vml_Color "0..1" -- "1..1" vml_NodeStyle : borderColor22
+vml_Color "0..1" -- "1..1" vml_NodeStyle : borderHighlightColor25
+vml_Category "0..9999" --* "1..1" vml_StackBarChart : categories61
+vml_Category "0..1" -- "1..1" vml_StackBars : category63
+vml_Cell "0..9999" --* "1..1" vml_Row : cells7
+vml_Cell "1..1" -- "0..1" vml_Column : col9
+vml_Column "0..9999" --* "1..1" vml_Table : columns3
+vml_Diagram "0..9999" --* "1..1" vml_Model : diagrams0
+vml_Diagram "0..1" -- "1..1" vml_DiagramElement : diagrams38
+vml_Diagram "0..9999" --* "1..1" vml_Diagram : digrams13
+vml_Edge "0..9999" --* "1..1" vml_Graph : edges48
+vml_Color "0..1" -- "1..1" vml_NodeStyle : foregroundColor16
+vml_Color "0..1" -- "1..1" vml_NodeStyle : highlightColor19
+vml_Color "0..1" -- "1..1" vml_EdgeStyle : highlightColor35
+vml_Edge "0..9999" -- "1..1" vml_Node : incoming53
+vml_Color "0..1" -- "1..1" vml_EdgeStyle : lineColor32
+vml_Graph "1..1" *-- "0..9999" vml_Node : nodes46
+vml_Edge "0..9999" -- "1..1" vml_Node : outgoing52
+vml_LineChart "1..1" *-- "0..9999" vml_Point : points69
+vml_Point "0..9999" --* "1..1" vml_Scatter : points70
+vml_Row "0..9999" --* "1..1" vml_Table : rows5
+vml_Pie "1..1" *-- "0..9999" vml_Slice : slices43
+vml_EdgeStyle "1..1" -- "0..1" vml_Node : source28
+vml_Edge "1..1" -- "0..1" vml_Node : source55
+vml_StackBarChart "1..1" *-- "0..9999" vml_StackBars : stackBar60
+vml_ChartWithoutAxisStyle "0..1" --* "1..1" vml_Pie : style44
+vml_Graph "1..1" *-- "0..1" vml_GraphStyle : style50
+vml_Chart "1..1" *-- "0..1" vml_ChartWithAxisStyle : style58
+vml_DiagramElement "1..1" -- "0..1" vml_Table : table40
+vml_Model "1..1" *-- "0..9999" vml_Table : tables1
+vml_EdgeStyle "1..1" -- "0..1" vml_Node : target29
+vml_Edge "1..1" -- "0..1" vml_Node : target56
+@enduml

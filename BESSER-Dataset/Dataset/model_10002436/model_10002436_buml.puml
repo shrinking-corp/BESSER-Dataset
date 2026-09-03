@@ -1,0 +1,135 @@
+@startuml
+abstract class AbstractEntity {
+  + createdAt : Date
+  + createdBy : User
+  + id : str
+  + modifiedAt : date
+  + modifiedBy : User
+}
+class Address {
+  + city : str
+  + country : str
+  + street : str
+  + streetnumber : str
+  + zipCode : str
+}
+class AdminUser {
+  + active : bool
+  + email : str
+  + id : str
+  + password : str
+  + phone : str
+  + roles : str
+  + username : str
+}
+class ContentPage {
+  + active : bool
+  + address : Address
+  + attribute : str
+  + author : AdminUser
+  + content : str
+  + content1 : str
+  + date : Date
+  + expiryDate : Date
+  + externalSource : str
+  + headline : str
+  + media : Media
+  + priority : str
+  + priorityExpiryDate : Date
+  + publishingDate : Date
+  + references : str
+  + state : str
+  + tags : str
+  + title : str
+}
+enum ContentPagePublicityState {
+}
+enum Date {
+}
+enum Enumeration {
+}
+class Friend {
+}
+class Group {
+}
+class Image {
+}
+class LogEntry {
+  + _attr : str
+  + objectId : str
+  + objectType : str
+  + time : str
+}
+class Media {
+  + active : bool
+  + description : str
+  + filesize : int
+  + link : str
+  + mediaPool : MediaPool
+  + mimetype : str
+  + name : str
+}
+class MediaPool {
+  + assets : str
+  + name : str
+}
+enum MediaType {
+}
+class Message {
+}
+class Profile {
+  + email : str
+  + firstName : str
+  + name : str
+  + username : str
+}
+class Profile2 {
+  + email : str
+  + firstName : str
+  + name : str
+  + username : str
+}
+enum PublicityState {
+}
+class Settings {
+  + email : str
+  + firstName : str
+  + name : str
+  + notificationChannels : str
+  + username : str
+}
+class Tag {
+  + name : str
+}
+class Tenant {
+  + id : str
+  + name : str
+}
+class User {
+  + active : bool
+  + password : str
+  + userId : str
+}
+enum VIDEO {
+}
+class Video {
+}
+class int2_Interface {
+}
+AbstractEntity "1..9999" -- "1..1" Tenant : AbstractEntity_Tenant
+Address "0..1" -- "0..1" ContentPage : ContentPage_Address
+AdminUser "0..1" -- "0..1" ContentPage : ContentPage_AdminUser
+ContentPage "0..1" -- "0..1" Tag : ContentPage_Tag
+ContentPage "1..9999" -- "1..9999" Tag : ContentPage_Tag2
+Media "0..1" -- "1..1" MediaPool : MediaPool_Media
+Media "1..9999" -- "1..1" MediaPool : MediaPool_Media2
+MediaPool "0..1" -- "0..1" MediaPool : MediaPool_MediaPool
+Profile "1..1" -- "1..1" User : Profile_User
+Settings "1..1" -- "1..1" User : Settings_User
+AbstractEntity "0..9999" -- "1..1" Tenant : Tenant_AbstractEntity
+Group "0..9999" -- "1..1" User : User_Group
+Message "0..9999" -- "1..1" User : User_Message
+Profile "1..1" -- "1..1" User : User_Myprofile
+Profile "1..1" -- "1..1" User : User_Profile
+Settings "1..1" -- "1..1" User : User_Settings
+@enduml

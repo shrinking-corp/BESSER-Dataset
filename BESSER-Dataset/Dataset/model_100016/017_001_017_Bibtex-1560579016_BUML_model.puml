@@ -1,0 +1,18 @@
+@startuml
+class Bibtex_Author {
+  + name : str
+}
+class Bibtex_Entry {
+  + id : str
+  + title : str
+}
+class Bibtex_LiteratureDb {
+  + name : str
+}
+Bibtex_Author "0..9999" --* "1..1" Bibtex_LiteratureDb : author0
+Bibtex_Author "0..9999" -- "1..1" Bibtex_Entry : author3
+Bibtex_Entry "0..9999" --* "1..1" Bibtex_LiteratureDb : entries1
+Bibtex_Entry "1..1" -- "1..1" Bibtex_LiteratureDb : literaturedb5
+Bibtex_Author "1..1" -- "1..1" Bibtex_LiteratureDb : literaturedb8
+Bibtex_Author "1..1" -- "0..9999" Bibtex_Entry : publications6
+@enduml

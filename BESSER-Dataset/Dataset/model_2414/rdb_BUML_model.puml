@@ -1,0 +1,157 @@
+@startuml
+class CheckConstraint {
+}
+class Column {
+}
+class ColumnRefConstraint {
+}
+class Constraint {
+}
+class DataType {
+}
+class Domain {
+}
+class Element {
+}
+class ForeignKey {
+}
+class Index {
+}
+class IndexedColumn {
+}
+class NamedColumnSet {
+}
+class NamedElement {
+}
+class PrimaryKey {
+}
+class PrimitiveDataType {
+}
+class SchemaElement {
+}
+class UniqueConstraint {
+}
+class ViewAlias {
+}
+class ViewColumn {
+}
+class constraints_rdb_TableColumn {
+}
+class datatypes_PrimitiveDataType {
+}
+abstract class rdb_Column {
+}
+class rdb_Element {
+}
+class rdb_Model {
+  + server_id : str
+}
+abstract class rdb_NamedColumnSet {
+}
+abstract class rdb_NamedElement {
+  + name : str
+}
+class rdb_Schema {
+}
+abstract class rdb_SchemaElement {
+  + owner : str
+}
+class rdb_Table {
+}
+class rdb_TableColumn {
+  + isForeignKey : str
+  + isPrimaryKey : str
+}
+class rdb_constraints_CheckConstraint {
+  + expression : str
+}
+abstract class rdb_constraints_ColumnRefConstraint {
+}
+abstract class rdb_constraints_Constraint {
+}
+class rdb_constraints_ForeignKey {
+}
+class rdb_constraints_Index {
+}
+class rdb_constraints_IndexedColumn {
+  + ascending : bool
+}
+class rdb_constraints_PrimaryKey {
+}
+class rdb_constraints_UniqueConstraint {
+}
+abstract class rdb_datatypes_DataType {
+  + check : str
+  + decimalDigits : int
+  + default : str
+  + nullable : bool
+  + size : int
+  + var : str
+}
+class rdb_datatypes_Domain {
+}
+class rdb_datatypes_PrimitiveDataType {
+  + type : str
+}
+class rdb_view_ReferencedViewColumn {
+}
+class rdb_view_View {
+  + ddl : str
+}
+class rdb_view_ViewAlias {
+}
+abstract class rdb_view_ViewColumn {
+}
+class rdb_view_ViewExpressionColumn {
+  + expression : str
+}
+class view_rdb_Column {
+}
+class view_rdb_NamedColumnSet {
+}
+Column <|-- rdb_TableColumn
+Column <|-- rdb_view_ViewColumn
+ColumnRefConstraint <|-- rdb_constraints_ForeignKey
+ColumnRefConstraint <|-- rdb_constraints_UniqueConstraint
+Constraint <|-- rdb_constraints_CheckConstraint
+Constraint <|-- rdb_constraints_ColumnRefConstraint
+Constraint <|-- rdb_constraints_Index
+DataType <|-- rdb_datatypes_PrimitiveDataType
+Element <|-- rdb_NamedElement
+NamedColumnSet <|-- rdb_Table
+NamedColumnSet <|-- rdb_view_View
+NamedElement <|-- rdb_Column
+NamedElement <|-- rdb_Model
+NamedElement <|-- rdb_Schema
+NamedElement <|-- rdb_SchemaElement
+NamedElement <|-- rdb_constraints_Constraint
+NamedElement <|-- rdb_constraints_IndexedColumn
+NamedElement <|-- rdb_datatypes_DataType
+NamedElement <|-- rdb_view_ViewAlias
+SchemaElement <|-- rdb_NamedColumnSet
+SchemaElement <|-- rdb_datatypes_Domain
+UniqueConstraint <|-- rdb_constraints_PrimaryKey
+ViewColumn <|-- rdb_view_ReferencedViewColumn
+ViewColumn <|-- rdb_view_ViewExpressionColumn
+datatypes_PrimitiveDataType <|-- rdb_datatypes_Domain
+CheckConstraint "0..9999" --* "1..1" rdb_Table : checks14
+ViewColumn "1..9999" --* "1..1" rdb_view_View : columns28
+rdb_Table "1..1" *-- "1..9999" rdb_TableColumn : columns5
+Domain "0..1" -- "1..1" rdb_TableColumn : domain16
+rdb_Schema "1..1" *-- "0..9999" rdb_SchemaElement : elements3
+ForeignKey "0..9999" --* "1..1" rdb_Table : foreignKeys10
+constraints_rdb_TableColumn "1..9999" -- "1..1" rdb_constraints_ColumnRefConstraint : includedColumns20
+IndexedColumn "0..9999" --* "1..1" rdb_constraints_Index : indexedColumns23
+Index "0..9999" --* "1..1" rdb_Table : indices12
+rdb_Element "1..1" -- "0..1" rdb_Element : parent1
+Domain "0..1" -- "1..1" rdb_datatypes_Domain : parentDomain26
+PrimaryKey "0..1" --* "1..1" rdb_Table : primaryKey6
+constraints_rdb_TableColumn "1..1" -- "1..1" rdb_constraints_IndexedColumn : refColumn24
+rdb_view_ReferencedViewColumn "1..1" -- "1..1" view_rdb_Column : refColumn32
+rdb_view_ViewAlias "1..1" -- "1..1" view_rdb_NamedColumnSet : referencedTableOrView31
+ViewAlias "0..9999" --* "1..1" rdb_view_View : referencedTablesAndViews29
+UniqueConstraint "1..1" -- "1..1" rdb_constraints_ForeignKey : referredUC21
+rdb_Model "1..1" *-- "0..9999" rdb_Schema : schemas2
+PrimitiveDataType "0..1" --* "1..1" rdb_TableColumn : type18
+UniqueConstraint "0..9999" --* "1..1" rdb_Table : uniqueConstraints8
+@enduml

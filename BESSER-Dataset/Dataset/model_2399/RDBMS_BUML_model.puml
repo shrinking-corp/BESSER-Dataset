@@ -1,0 +1,21 @@
+@startuml
+class rdbms_Column {
+  + name : str
+  + type : str
+}
+class rdbms_ForeignKey {
+}
+class rdbms_RDBMSModel {
+}
+class rdbms_Table {
+  + name : str
+}
+rdbms_Column "1..9999" -- "1..1" rdbms_ForeignKey : columns17
+rdbms_Column "1..9999" --* "1..1" rdbms_Table : columns8
+rdbms_Column "1..9999" --* "1..1" rdbms_RDBMSModel : containsColumns1
+rdbms_ForeignKey "1..9999" --* "1..1" rdbms_RDBMSModel : containsForeignKeys3
+rdbms_RDBMSModel "1..1" *-- "1..9999" rdbms_Table : containsTables0
+rdbms_ForeignKey "0..9999" --* "1..1" rdbms_Table : foreignKeys5
+rdbms_Column "1..9999" -- "1..1" rdbms_Table : primaryKey11
+rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : references14
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+class Entity {
+}
+class graphmodel_Edge {
+}
+class graphmodel_Entity {
+  + ID : str
+  + accessModifier : str
+  + category : str
+  + className : str
+  + description : str
+  + group : str
+  + height : str
+  + name : str
+  + text : str
+  + type : str
+  + value : str
+  + width : str
+  + x : str
+  + y : str
+}
+class graphmodel_Graph {
+}
+class graphmodel_ModellingType {
+  + name : str
+}
+class graphmodel_Node {
+}
+class graphmodel_Operation {
+}
+class graphmodel_Property {
+}
+Entity <|-- graphmodel_Edge
+Entity <|-- graphmodel_Graph
+Entity <|-- graphmodel_Node
+Entity <|-- graphmodel_Operation
+Entity <|-- graphmodel_Property
+graphmodel_Edge "0..9999" --* "1..1" graphmodel_Graph : edges1
+graphmodel_Graph "1..1" *-- "0..9999" graphmodel_Node : nodes0
+graphmodel_Node "1..1" *-- "0..9999" graphmodel_Operation : operations11
+graphmodel_Node "0..1" --* "1..1" graphmodel_Node : parentNode4
+graphmodel_Node "1..1" *-- "0..9999" graphmodel_Property : properties9
+graphmodel_Edge "1..1" -- "0..1" graphmodel_Node : source13
+graphmodel_Node "0..9999" --* "1..1" graphmodel_Node : subNodes7
+graphmodel_Edge "1..1" -- "0..1" graphmodel_Node : target16
+@enduml

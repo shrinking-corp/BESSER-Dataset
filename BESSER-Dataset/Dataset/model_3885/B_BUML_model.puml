@@ -1,0 +1,374 @@
+@startuml
+class Abstraction {
+}
+class Arg {
+}
+class BeginBody {
+}
+class Body {
+}
+enum BoolLiteralEnum {
+  FALSE
+  TRUE
+}
+class Condition {
+}
+class Expr {
+}
+class FinalExpr {
+}
+enum InequalityOp {
+  GREATER
+  GREATER_EQ
+  LESS
+  LESS_EQ
+}
+class LogicalExpr {
+}
+enum PrimitiveTypeEnum {
+  BOOL
+  INT
+  NAT
+  NAT1
+  STRING
+}
+class PropertyExpr {
+}
+class Return {
+}
+class ReturnExpr {
+}
+class ReturnTypeExpr {
+}
+class Statement {
+}
+class Type {
+}
+class b_Abstraction {
+  + name : str
+}
+class b_AndExpr {
+}
+class b_Arg {
+}
+class b_ArgMinus {
+}
+class b_AssertionExpr {
+}
+class b_Assertions {
+}
+class b_Assign {
+}
+class b_Begin {
+}
+class b_BeginBody {
+}
+class b_Body {
+}
+class b_BoolLiteral {
+  + constant : str
+  + value : str
+}
+class b_BoolTest {
+}
+class b_Call {
+}
+class b_Case {
+}
+class b_CaseExpr {
+}
+class b_ConcreteConstants {
+}
+class b_ConcreteVariables {
+}
+class b_CondAnd {
+}
+class b_CondEq {
+}
+class b_CondLessThan {
+}
+class b_CondMinus {
+}
+class b_CondNeg {
+}
+class b_Condition {
+}
+class b_ConstantExpr {
+  + constant : str
+}
+class b_Definition {
+  + name : str
+}
+class b_DefinitionCall {
+}
+class b_Definitions {
+}
+class b_EqualExpr {
+}
+class b_Expr {
+}
+class b_FinalExpr {
+}
+class b_If {
+}
+class b_IfCond {
+}
+class b_Implementation {
+}
+class b_ImplyExpr {
+}
+class b_Imports {
+}
+class b_InequalityExpr {
+  + op : str
+}
+class b_Initialisation {
+}
+class b_InitialisationExpr {
+}
+class b_IntLiteral {
+  + value : int
+}
+class b_Invariant {
+}
+class b_InvariantExpr {
+}
+class b_LocalOperations {
+}
+class b_LogicalExpr {
+}
+class b_Machine {
+}
+class b_Neg {
+}
+class b_NegExpr {
+}
+class b_Operation {
+  + name : str
+}
+class b_Operations {
+}
+class b_Pre {
+}
+class b_PreExpr {
+}
+class b_PrimitiveType {
+  + type : str
+}
+class b_Program {
+}
+class b_Properties {
+}
+class b_PropertyExpr {
+}
+class b_PropertyRange {
+}
+class b_PropertyTyped {
+}
+class b_Range {
+  + lowerBound : int
+}
+class b_Ref {
+}
+class b_Return {
+}
+class b_ReturnExpr {
+}
+class b_ReturnOr {
+}
+class b_ReturnTuple {
+}
+class b_ReturnTypeExpr {
+}
+class b_Sees {
+}
+class b_Seq {
+}
+class b_Set {
+}
+class b_Sets {
+}
+class b_SimpleCall {
+}
+class b_Skip {
+}
+class b_Statement {
+}
+class b_StringLiteral {
+  + value : str
+}
+class b_Type {
+}
+class b_TypeConstraint {
+}
+class b_ValueExpr {
+  + value : str
+}
+class b_Values {
+}
+class b_Var {
+}
+class b_Variable {
+  + name : str
+}
+Abstraction <|-- b_Implementation
+Abstraction <|-- b_Machine
+Arg <|-- b_ArgMinus
+Arg <|-- b_BoolLiteral
+Arg <|-- b_IntLiteral
+Arg <|-- b_Ref
+Arg <|-- b_StringLiteral
+BeginBody <|-- b_FinalExpr
+BeginBody <|-- b_Seq
+Body <|-- b_Begin
+Body <|-- b_If
+Body <|-- b_Pre
+Body <|-- b_Seq
+Body <|-- b_Skip
+Body <|-- b_Var
+Condition <|-- b_BoolLiteral
+Condition <|-- b_CondAnd
+Condition <|-- b_CondEq
+Condition <|-- b_CondLessThan
+Condition <|-- b_CondMinus
+Condition <|-- b_CondNeg
+Condition <|-- b_IntLiteral
+Condition <|-- b_Ref
+Expr <|-- b_Assign
+Expr <|-- b_Call
+Expr <|-- b_Case
+Expr <|-- b_If
+Expr <|-- b_Return
+Expr <|-- b_Skip
+Expr <|-- b_Var
+FinalExpr <|-- b_Case
+FinalExpr <|-- b_If
+FinalExpr <|-- b_Return
+FinalExpr <|-- b_Var
+LogicalExpr <|-- b_AndExpr
+LogicalExpr <|-- b_BoolTest
+LogicalExpr <|-- b_ConstantExpr
+LogicalExpr <|-- b_DefinitionCall
+LogicalExpr <|-- b_EqualExpr
+LogicalExpr <|-- b_ImplyExpr
+LogicalExpr <|-- b_InequalityExpr
+LogicalExpr <|-- b_IntLiteral
+LogicalExpr <|-- b_NegExpr
+LogicalExpr <|-- b_Ref
+LogicalExpr <|-- b_TypeConstraint
+PropertyExpr <|-- b_PropertyRange
+PropertyExpr <|-- b_PropertyTyped
+Return <|-- b_ReturnTuple
+Return <|-- b_ReturnTypeExpr
+ReturnExpr <|-- b_BoolLiteral
+ReturnExpr <|-- b_BoolTest
+ReturnExpr <|-- b_Neg
+ReturnExpr <|-- b_Ref
+ReturnTypeExpr <|-- b_ReturnOr
+Statement <|-- b_Assign
+Statement <|-- b_Call
+Type <|-- b_PrimitiveType
+Type <|-- b_Ref
+b_Arg "0..9999" --* "1..1" b_Call : args154
+b_Arg "0..9999" --* "1..1" b_SimpleCall : args159
+b_Definition "1..1" *-- "0..9999" b_Variable : args77
+b_Arg "0..9999" --* "1..1" b_DefinitionCall : args84
+b_Operation "1..1" *-- "0..9999" b_Variable : args99
+b_Assertions "0..1" --* "1..1" b_Machine : assertions14
+b_Body "0..1" --* "1..1" b_Operation : body102
+b_Case "1..1" *-- "0..9999" b_CaseExpr : cases138
+b_Abstraction "1..1" *-- "0..1" b_ConcreteConstants : concreteConstants1
+b_ConcreteVariables "0..1" --* "1..1" b_Machine : concreteVariables9
+b_Condition "0..1" --* "1..1" b_IfCond : condition107
+b_ValueExpr "1..1" -- "0..1" b_Variable : constant34
+b_PropertyExpr "1..1" -- "0..1" b_Variable : constant62
+b_AssertionExpr "1..1" -- "0..1" b_Variable : constant69
+b_ConcreteConstants "1..1" *-- "0..9999" b_Variable : constants39
+b_Definition "0..1" -- "1..1" b_DefinitionCall : def_82
+b_Abstraction "1..1" *-- "0..1" b_Definitions : definitions3
+b_Set "1..1" *-- "0..9999" b_Variable : elems91
+b_Expr "0..1" --* "1..1" b_If : else_105
+b_Expr "0..1" --* "1..1" b_Pre : expr113
+b_Begin "1..1" *-- "0..1" b_BeginBody : expr126
+b_CaseExpr "1..1" *-- "0..1" b_Expr : expr143
+b_LogicalExpr "0..1" --* "1..1" b_NegExpr : expr191
+b_BoolTest "1..1" *-- "0..1" b_LogicalExpr : expr193
+b_CondNeg "1..1" *-- "0..1" b_Condition : expr217
+b_Neg "1..1" *-- "0..1" b_ReturnExpr : expr226
+b_Properties "1..1" *-- "0..9999" b_PropertyExpr : expr59
+b_Definition "1..1" *-- "0..1" b_LogicalExpr : expr80
+b_If "1..1" *-- "0..9999" b_IfCond : exprs104
+b_Pre "1..1" *-- "0..9999" b_PreExpr : exprs112
+b_Expr "0..9999" --* "1..1" b_Seq : exprs146
+b_AndExpr "1..1" *-- "0..9999" b_LogicalExpr : exprs174
+b_CondAnd "1..1" *-- "0..9999" b_Condition : exprs200
+b_ReturnOr "1..1" *-- "0..9999" b_ReturnTypeExpr : exprs224
+b_ValueExpr "0..9999" --* "1..1" b_Values : exprs32
+b_Invariant "1..1" *-- "0..9999" b_InvariantExpr : exprs42
+b_Initialisation "1..1" *-- "0..9999" b_InitialisationExpr : exprs49
+b_Properties "1..1" *-- "0..9999" b_PropertyExpr : exprs57
+b_AssertionExpr "0..9999" --* "1..1" b_Assertions : exprs67
+b_Definition "0..9999" --* "1..1" b_Definitions : exprs75
+b_Set "0..9999" --* "1..1" b_Sets : exprs86
+b_Implementation "0..9999" --* "1..1" b_Program : implementations235
+b_Implementation "1..1" *-- "0..1" b_Imports : imports20
+b_Abstraction "0..9999" -- "1..1" b_Imports : imports29
+b_Seq "0..1" --* "1..1" b_Var : in_124
+b_Initialisation "0..1" --* "1..1" b_Machine : initialisation12
+b_Invariant "0..1" --* "1..1" b_Machine : invariant10
+b_ImplyExpr "1..1" *-- "0..1" b_LogicalExpr : left176
+b_InequalityExpr "1..1" *-- "0..1" b_LogicalExpr : left181
+b_EqualExpr "1..1" *-- "0..1" b_LogicalExpr : left186
+b_CondEq "1..1" *-- "0..1" b_Condition : left202
+b_CondLessThan "1..1" *-- "0..1" b_Condition : left207
+b_CondMinus "1..1" *-- "0..1" b_Condition : left212
+b_Arg "0..1" --* "1..1" b_ArgMinus : left228
+b_Implementation "1..1" *-- "0..1" b_LocalOperations : localOperations24
+b_Machine "0..9999" --* "1..1" b_Program : machines233
+b_Set "1..1" *-- "0..1" b_Variable : name88
+b_Call "1..1" -- "0..1" b_Operation : op151
+b_Operation "0..1" -- "1..1" b_SimpleCall : op157
+b_LocalOperations "1..1" *-- "0..9999" b_Operation : operations162
+b_Abstraction "1..1" *-- "0..1" b_Operations : operations7
+b_Operation "0..9999" --* "1..1" b_Operations : operations94
+b_Operation "1..1" *-- "0..9999" b_Variable : outputs96
+b_Abstraction "1..1" *-- "0..1" b_Properties : properties5
+b_PropertyRange "1..1" *-- "0..1" b_Range : range172
+b_Implementation "1..1" -- "0..1" b_Machine : refine18
+b_Call "1..1" -- "0..9999" b_Variable : rets149
+b_ImplyExpr "1..1" *-- "0..1" b_LogicalExpr : right178
+b_InequalityExpr "1..1" *-- "0..1" b_LogicalExpr : right183
+b_EqualExpr "1..1" *-- "0..1" b_LogicalExpr : right188
+b_CondEq "1..1" *-- "0..1" b_Condition : right204
+b_CondLessThan "1..1" *-- "0..1" b_Condition : right209
+b_CondMinus "1..1" *-- "0..1" b_Condition : right214
+b_Arg "0..1" --* "1..1" b_ArgMinus : right230
+b_Abstraction "0..9999" -- "1..1" b_Sees : seens26
+b_Abstraction "1..1" *-- "0..1" b_Sees : sees0
+b_Machine "1..1" *-- "0..1" b_Sets : sets16
+b_CaseExpr "1..1" -- "0..1" b_Variable : test140
+b_Expr "0..1" --* "1..1" b_IfCond : then109
+b_PreExpr "1..1" *-- "0..1" b_Type : type119
+b_ReturnTypeExpr "1..1" *-- "0..1" b_Type : type133
+b_Ref "1..1" -- "0..1" b_Variable : type165
+b_PropertyTyped "1..1" *-- "0..1" b_Type : type170
+b_Type "0..1" --* "1..1" b_TypeConstraint : type197
+b_InvariantExpr "1..1" *-- "0..1" b_Type : type47
+b_InitialisationExpr "1..1" *-- "0..1" b_Type : type54
+b_AssertionExpr "1..1" *-- "0..1" b_Type : type72
+b_Range "1..1" -- "0..1" b_Variable : upperBound65
+b_Assign "1..1" *-- "0..1" b_ReturnExpr : value129
+b_LogicalExpr "0..1" --* "1..1" b_ReturnTuple : value221
+b_Implementation "1..1" *-- "0..1" b_Values : values22
+b_PreExpr "1..1" -- "0..1" b_Variable : var116
+b_Assign "1..1" -- "0..1" b_Variable : var127
+b_ReturnTypeExpr "1..1" -- "0..1" b_Variable : var131
+b_Case "1..1" -- "0..1" b_Variable : var136
+b_Ref "1..1" -- "0..1" b_Variable : var167
+b_TypeConstraint "1..1" -- "0..1" b_Variable : var195
+b_InvariantExpr "1..1" -- "0..1" b_Variable : variable44
+b_InitialisationExpr "1..1" -- "0..1" b_Variable : variable51
+b_ConcreteVariables "1..1" *-- "0..9999" b_Variable : variables36
+b_Var "1..1" *-- "0..9999" b_Variable : vars122
+b_ReturnTuple "1..1" -- "0..9999" b_Variable : vars219
+@enduml

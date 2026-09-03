@@ -1,0 +1,217 @@
+@startuml
+class Ast {
+}
+class Cell {
+}
+class HasA1 {
+}
+class HasId {
+}
+class InfixOperator {
+}
+class Operand {
+}
+class Operation {
+}
+class PostfixOperator {
+}
+class PrefixOperator {
+}
+class Ref {
+}
+class cellsheet_Addition {
+}
+abstract class cellsheet_Ast {
+}
+class cellsheet_AstEval {
+  + isError : bool
+  + numberValue : str
+  + text : str
+}
+class cellsheet_BlankCell {
+  + value : str
+}
+class cellsheet_Book {
+  + bookname : str
+}
+class cellsheet_BooleanCell {
+  + value : str
+}
+abstract class cellsheet_Cell {
+  + colIndex : int
+  + getA1ColIndex() : str
+  + getA1RowIndex() : int
+  + getBook() : str
+  + getRowIndex() : int
+  + getSheet() : str
+}
+class cellsheet_CellFormat {
+  + value : str
+}
+class cellsheet_Concatenation {
+}
+class cellsheet_DateCell {
+  + value : date
+}
+class cellsheet_Division {
+}
+class cellsheet_EQ {
+}
+class cellsheet_EStringToTokenEntry {
+  + key : str
+}
+class cellsheet_Error {
+}
+class cellsheet_Exponentiation {
+}
+class cellsheet_FormulaCell {
+  + value : str
+}
+class cellsheet_Function {
+}
+class cellsheet_GT {
+}
+class cellsheet_GTE {
+}
+abstract class cellsheet_HasA1 {
+  + a1 : str
+}
+abstract class cellsheet_HasId {
+  + id : str
+}
+abstract class cellsheet_InfixOperator {
+}
+class cellsheet_Intersection {
+}
+class cellsheet_LT {
+}
+class cellsheet_LTE {
+}
+class cellsheet_Logical {
+}
+class cellsheet_Multiplication {
+}
+class cellsheet_NEQ {
+}
+class cellsheet_Negation {
+}
+class cellsheet_Noop {
+}
+class cellsheet_Number {
+}
+class cellsheet_NumericCell {
+  + value : str
+}
+abstract class cellsheet_Operand {
+}
+abstract class cellsheet_Operation {
+}
+class cellsheet_Percent {
+}
+class cellsheet_Plus {
+}
+abstract class cellsheet_PostfixOperator {
+}
+abstract class cellsheet_PrefixOperator {
+}
+class cellsheet_Range {
+}
+class cellsheet_Ref {
+}
+class cellsheet_RelativeRange {
+}
+class cellsheet_RelativeRef {
+}
+class cellsheet_Row {
+  + rowIndex : int
+  + getA1RowIndex() : int
+  + getBook() : str
+}
+class cellsheet_Sheet {
+  + sheetIndex : int
+  + sheetName : str
+}
+class cellsheet_Subtraction {
+}
+class cellsheet_Text {
+}
+class cellsheet_TextCell {
+  + value : str
+}
+class cellsheet_Token {
+  + value : str
+}
+class cellsheet_Union {
+}
+class cellsheet_Unknown {
+}
+class cellsheet_Workspace {
+}
+Ast <|-- cellsheet_InfixOperator
+Ast <|-- cellsheet_Noop
+Ast <|-- cellsheet_Operand
+Ast <|-- cellsheet_Operation
+Ast <|-- cellsheet_PostfixOperator
+Ast <|-- cellsheet_PrefixOperator
+Ast <|-- cellsheet_Unknown
+Cell <|-- cellsheet_BlankCell
+Cell <|-- cellsheet_BooleanCell
+Cell <|-- cellsheet_DateCell
+Cell <|-- cellsheet_FormulaCell
+Cell <|-- cellsheet_NumericCell
+Cell <|-- cellsheet_TextCell
+HasA1 <|-- cellsheet_Book
+HasA1 <|-- cellsheet_Cell
+HasA1 <|-- cellsheet_Row
+HasA1 <|-- cellsheet_Sheet
+HasId <|-- cellsheet_Book
+HasId <|-- cellsheet_Cell
+HasId <|-- cellsheet_CellFormat
+HasId <|-- cellsheet_Row
+HasId <|-- cellsheet_Sheet
+InfixOperator <|-- cellsheet_Addition
+InfixOperator <|-- cellsheet_Concatenation
+InfixOperator <|-- cellsheet_Division
+InfixOperator <|-- cellsheet_EQ
+InfixOperator <|-- cellsheet_Exponentiation
+InfixOperator <|-- cellsheet_GT
+InfixOperator <|-- cellsheet_GTE
+InfixOperator <|-- cellsheet_Intersection
+InfixOperator <|-- cellsheet_LT
+InfixOperator <|-- cellsheet_LTE
+InfixOperator <|-- cellsheet_Multiplication
+InfixOperator <|-- cellsheet_NEQ
+InfixOperator <|-- cellsheet_Subtraction
+InfixOperator <|-- cellsheet_Union
+Operand <|-- cellsheet_Error
+Operand <|-- cellsheet_Logical
+Operand <|-- cellsheet_Number
+Operand <|-- cellsheet_Range
+Operand <|-- cellsheet_Ref
+Operand <|-- cellsheet_Text
+Operation <|-- cellsheet_Function
+PostfixOperator <|-- cellsheet_Percent
+PrefixOperator <|-- cellsheet_Negation
+PrefixOperator <|-- cellsheet_Plus
+Ref <|-- cellsheet_RelativeRange
+Ref <|-- cellsheet_RelativeRef
+cellsheet_Ast "0..9999" --* "1..1" cellsheet_Cell : asts16
+cellsheet_Book "0..1" -- "1..1" cellsheet_CellFormat : book28
+cellsheet_Book "0..1" -- "1..1" cellsheet_Sheet : book8
+cellsheet_Book "0..9999" --* "1..1" cellsheet_Workspace : books1
+cellsheet_Ast "1..1" -- "0..1" cellsheet_Cell : cell23
+cellsheet_Book "1..1" *-- "0..9999" cellsheet_CellFormat : cellFormats5
+cellsheet_Cell "0..9999" --* "1..1" cellsheet_Row : cells13
+cellsheet_Ast "0..9999" --* "1..1" cellsheet_Ast : children21
+cellsheet_Ast "1..1" *-- "0..1" cellsheet_AstEval : result26
+cellsheet_Ast "0..1" -- "1..1" cellsheet_Cell : root17
+cellsheet_Cell "1..1" -- "0..1" cellsheet_Row : row14
+cellsheet_Row "0..9999" --* "1..1" cellsheet_Sheet : rows10
+cellsheet_Row "1..1" -- "0..1" cellsheet_Sheet : sheet11
+cellsheet_Book "1..1" *-- "0..9999" cellsheet_Sheet : sheets6
+cellsheet_Ast "1..1" -- "0..1" cellsheet_Token : token25
+cellsheet_EStringToTokenEntry "0..9999" --* "1..1" cellsheet_Workspace : tokens2
+cellsheet_Ast "0..9999" -- "1..1" cellsheet_Token : usedBy18
+cellsheet_EStringToTokenEntry "1..1" -- "0..1" cellsheet_Token : value0
+cellsheet_Book "1..1" -- "0..1" cellsheet_Workspace : workspace4
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+class ContainerElement {
+}
+class GraphicElement {
+}
+class NodeElement {
+}
+class RepresentationGraph_Circle {
+  + radius : str
+}
+abstract class RepresentationGraph_ContainerElement {
+}
+class RepresentationGraph_Diagram {
+}
+class RepresentationGraph_EdgeElement {
+}
+abstract class RepresentationGraph_GraphicElement {
+  + color : str
+  + paletteIconPath : str
+  + paletteName : str
+}
+class RepresentationGraph_IconElement {
+  + filepath : str
+}
+abstract class RepresentationGraph_NodeElement {
+  + label : str
+}
+class RepresentationGraph_Rectangle {
+  + height : str
+  + width : str
+}
+class RepresentationGraph_Rhombus {
+  + height : str
+  + width : str
+}
+ContainerElement <|-- RepresentationGraph_Circle
+ContainerElement <|-- RepresentationGraph_Rectangle
+ContainerElement <|-- RepresentationGraph_Rhombus
+GraphicElement <|-- RepresentationGraph_EdgeElement
+GraphicElement <|-- RepresentationGraph_NodeElement
+NodeElement <|-- RepresentationGraph_ContainerElement
+NodeElement <|-- RepresentationGraph_IconElement
+RepresentationGraph_ContainerElement "1..1" *-- "0..9999" RepresentationGraph_NodeElement : contains8
+RepresentationGraph_Diagram "1..1" *-- "0..9999" RepresentationGraph_GraphicElement : elements0
+RepresentationGraph_NodeElement "0..9999" -- "1..1" RepresentationGraph_NodeElement : link6
+RepresentationGraph_EdgeElement "1..1" -- "1..1" RepresentationGraph_NodeElement : source1
+RepresentationGraph_EdgeElement "1..1" -- "1..1" RepresentationGraph_NodeElement : target2
+@enduml

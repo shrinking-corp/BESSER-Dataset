@@ -1,0 +1,19 @@
+@startuml
+class Book_Author {
+  + name : str
+}
+class Book_Book {
+  + isbn : str
+  + nbpages : int
+  + title : str
+}
+class Book_Chapter {
+  + title : str
+}
+class Book_Library {
+}
+Book_Author "0..9999" --* "1..1" Book_Library : authors1
+Book_Author "0..9999" -- "1..1" Book_Book : authors3
+Book_Book "0..9999" --* "1..1" Book_Library : books0
+Book_Book "1..1" *-- "0..9999" Book_Chapter : sections6
+@enduml

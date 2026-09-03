@@ -1,0 +1,42 @@
+@startuml
+enum EventType {
+  Basic
+  Conditioning
+  External
+  Intermediate
+  Undevelopped
+}
+enum GateType {
+  AND
+  INHIBIT
+  INTERMEDIATE
+  OR
+  ORLESS
+  ORMORE
+  PRIORITY_AND
+  PRIORITY_OR
+  XOR
+}
+class emfta_Event {
+  + description : str
+  + name : str
+  + probability : float
+  + referenceCount : int
+  + relatedObject : str
+  + type : str
+}
+class emfta_FTAModel {
+  + comments : str
+  + description : str
+  + name : str
+}
+class emfta_Gate {
+  + description : str
+  + nbOccurrences : int
+  + type : str
+}
+emfta_Event "0..9999" -- "1..1" emfta_Gate : events1
+emfta_Event "0..9999" --* "1..1" emfta_FTAModel : events6
+emfta_Event "1..1" *-- "0..1" emfta_Gate : gate0
+emfta_Event "0..1" -- "1..1" emfta_FTAModel : root4
+@enduml

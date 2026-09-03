@@ -1,0 +1,33 @@
+@startuml
+class Metric {
+}
+class QualityMetrics_AggregatedIntegerMetric {
+  + Average : float
+  + Maximum : int
+  + Median : int
+  + Minimum : int
+  + StandardDeviation : float
+}
+class QualityMetrics_AggregatedRealMetric {
+  + Average : float
+  + Maximum : float
+  + Median : float
+  + Minimum : float
+  + StandardDeviation : float
+}
+abstract class QualityMetrics_Metric {
+  + Metric : str
+}
+class QualityMetrics_Metrics {
+  + TrafoName : str
+}
+class QualityMetrics_SimpleMetric {
+  + Value : int
+}
+Metric <|-- QualityMetrics_AggregatedIntegerMetric
+Metric <|-- QualityMetrics_AggregatedRealMetric
+Metric <|-- QualityMetrics_SimpleMetric
+QualityMetrics_AggregatedIntegerMetric "0..9999" --* "1..1" QualityMetrics_Metrics : AggregatedIntegerMetrics1
+QualityMetrics_AggregatedRealMetric "0..9999" --* "1..1" QualityMetrics_Metrics : AggregatedRealMetrics3
+QualityMetrics_Metrics "1..1" *-- "0..9999" QualityMetrics_SimpleMetric : SimpleMetrics0
+@enduml

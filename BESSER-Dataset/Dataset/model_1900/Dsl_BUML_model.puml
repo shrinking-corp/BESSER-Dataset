@@ -1,0 +1,270 @@
+@startuml
+class AbstractFrontElement {
+}
+class Eclass {
+}
+class File {
+}
+class UIComponent {
+}
+class dsl_AbstractClass {
+}
+class dsl_AbstractFrontElement {
+}
+class dsl_AbstractMethod {
+  + name : str
+}
+class dsl_Action {
+  + name : str
+}
+class dsl_ActionCreator {
+  + name : str
+  + type : str
+}
+class dsl_ActionDispatcher {
+  + name : str
+}
+class dsl_Annotation {
+  + propertie : str
+}
+class dsl_Architecture {
+}
+class dsl_Attribute {
+  + name : str
+}
+class dsl_Component {
+  + name : str
+}
+class dsl_Container {
+  + name : str
+}
+class dsl_Css {
+}
+class dsl_Descriptor {
+  + name : str
+}
+class dsl_Directory {
+  + name : str
+  + purpose : str
+}
+class dsl_Domain {
+}
+class dsl_EObject {
+}
+class dsl_Eclass {
+  + name : str
+}
+class dsl_Einterface {
+  + name : str
+}
+class dsl_EntityName {
+  + name : str
+}
+class dsl_Epackage {
+  + name : str
+}
+class dsl_File {
+  + name : str
+  + type : str
+}
+class dsl_Functionality {
+  + name : str
+}
+class dsl_GeneralEntity {
+}
+class dsl_GenericClass {
+}
+class dsl_JavaApp {
+}
+class dsl_JeeProject {
+  + name : str
+}
+class dsl_Js {
+}
+class dsl_JsModule {
+  + name : str
+}
+class dsl_Json {
+}
+class dsl_Layer {
+  + name : str
+}
+class dsl_LayerSegment {
+  + name : str
+}
+class dsl_LayerSegmentRelation {
+  + layerSegment : str
+}
+class dsl_Library {
+  + isNative : str
+  + name : str
+}
+class dsl_Md {
+}
+class dsl_MethodBack {
+  + name : str
+}
+class dsl_Module {
+  + name : str
+}
+class dsl_NativeClass {
+}
+class dsl_Operateson {
+}
+class dsl_Operation {
+  + type : str
+}
+class dsl_Property {
+  + name : str
+}
+class dsl_ReactApp {
+}
+class dsl_Reducer {
+  + name : str
+}
+class dsl_RelationArch {
+  + name : str
+  + source : str
+}
+class dsl_RelationDom {
+}
+class dsl_RouterComponent {
+  + name : str
+}
+class dsl_ServiceFront {
+  + method : str
+  + name : str
+}
+class dsl_SpecialEntity {
+}
+class dsl_State {
+  + name : str
+}
+class dsl_SublayerSegment {
+  + name : str
+}
+class dsl_Submodule {
+  + name : str
+}
+class dsl_Subproject {
+  + name : str
+}
+class dsl_System {
+}
+class dsl_Technology {
+}
+class dsl_Transaction {
+  + type : str
+}
+class dsl_Type {
+  + name : str
+}
+class dsl_UIComponent {
+}
+class dsl_Visualizer {
+  + name : str
+}
+AbstractFrontElement <|-- dsl_Action
+AbstractFrontElement <|-- dsl_ActionCreator
+AbstractFrontElement <|-- dsl_ActionDispatcher
+AbstractFrontElement <|-- dsl_Container
+AbstractFrontElement <|-- dsl_Directory
+AbstractFrontElement <|-- dsl_File
+AbstractFrontElement <|-- dsl_Functionality
+AbstractFrontElement <|-- dsl_JsModule
+AbstractFrontElement <|-- dsl_ReactApp
+AbstractFrontElement <|-- dsl_Reducer
+AbstractFrontElement <|-- dsl_RouterComponent
+AbstractFrontElement <|-- dsl_ServiceFront
+AbstractFrontElement <|-- dsl_State
+AbstractFrontElement <|-- dsl_Type
+AbstractFrontElement <|-- dsl_Visualizer
+Eclass <|-- dsl_AbstractClass
+Eclass <|-- dsl_Annotation
+Eclass <|-- dsl_GenericClass
+Eclass <|-- dsl_NativeClass
+File <|-- dsl_Css
+File <|-- dsl_Js
+File <|-- dsl_Json
+File <|-- dsl_Md
+UIComponent <|-- dsl_RouterComponent
+UIComponent <|-- dsl_Visualizer
+dsl_AbstractClass "0..1" -- "1..1" dsl_GenericClass : abs85
+dsl_AbstractClass "1..1" *-- "0..9999" dsl_AbstractMethod : abstractMethod75
+dsl_AbstractMethod "0..9999" --* "1..1" dsl_Einterface : abstractMethod93
+dsl_Action "0..1" -- "1..1" dsl_State : action161
+dsl_Action "1..1" -- "0..1" dsl_ActionCreator : actionCreator165
+dsl_Action "1..1" -- "0..1" dsl_ActionDispatcher : actionDispatcher167
+dsl_Annotation "0..9999" --* "1..1" dsl_Library : annotation118
+dsl_AbstractClass "1..1" -- "0..1" dsl_Annotation : annotation73
+dsl_Annotation "0..1" -- "1..1" dsl_GenericClass : annotation82
+dsl_Architecture "0..1" --* "1..1" dsl_System : arch1
+dsl_Eclass "0..1" -- "1..1" dsl_MethodBack : arg106
+dsl_AbstractMethod "1..1" -- "0..1" dsl_Eclass : arg112
+dsl_AbstractClass "1..1" *-- "0..9999" dsl_Attribute : attribute70
+dsl_Attribute "0..9999" --* "1..1" dsl_GenericClass : attribute77
+dsl_Attribute "0..9999" --* "1..1" dsl_Einterface : attribute90
+dsl_Attribute "0..9999" --* "1..1" dsl_NativeClass : attribute96
+dsl_Architecture "1..1" *-- "0..9999" dsl_Component : componentes44
+dsl_Descriptor "0..9999" --* "1..1" dsl_Subproject : descriptor68
+dsl_Directory "0..1" -- "1..1" dsl_ReactApp : dir125
+dsl_Action "1..1" -- "0..1" dsl_Directory : dir169
+dsl_Domain "0..1" --* "1..1" dsl_System : dom0
+dsl_Eclass "0..9999" --* "1..1" dsl_Epackage : eclass103
+dsl_AbstractFrontElement "0..9999" --* "1..1" dsl_ReactApp : elements121
+dsl_EObject "0..9999" --* "1..1" dsl_Submodule : entities15
+dsl_Epackage "0..9999" --* "1..1" dsl_Subproject : epackage64
+dsl_Directory "1..1" -- "0..1" dsl_File : file156
+dsl_Functionality "0..1" -- "1..1" dsl_ReactApp : func123
+dsl_Einterface "0..1" -- "1..1" dsl_GenericClass : imp88
+dsl_JavaApp "0..1" --* "1..1" dsl_Technology : java56
+dsl_JavaApp "1..1" *-- "0..9999" dsl_JeeProject : jeeproject60
+dsl_Component "1..1" *-- "0..9999" dsl_Layer : layer48
+dsl_Layer "1..1" *-- "0..9999" dsl_LayerSegment : layerSegments50
+dsl_Library "0..9999" --* "1..1" dsl_Subproject : library66
+dsl_AbstractClass "1..1" *-- "0..9999" dsl_MethodBack : methodClass71
+dsl_GenericClass "1..1" *-- "0..9999" dsl_MethodBack : methodClass79
+dsl_MethodBack "0..9999" --* "1..1" dsl_NativeClass : methodClass98
+dsl_JsModule "0..1" -- "1..1" dsl_ReactApp : mod127
+dsl_Domain "1..1" *-- "0..9999" dsl_Module : modules7
+dsl_EntityName "0..1" --* "1..1" dsl_GeneralEntity : name19
+dsl_EntityName "0..1" --* "1..1" dsl_SpecialEntity : name26
+dsl_Operateson "0..9999" --* "1..1" dsl_Transaction : operateson33
+dsl_EntityName "0..9999" --* "1..1" dsl_Operateson : operateson35
+dsl_Operation "0..9999" --* "1..1" dsl_Submodule : operations13
+dsl_GeneralEntity "1..1" *-- "0..9999" dsl_Property : properties21
+dsl_Property "0..9999" --* "1..1" dsl_SpecialEntity : properties28
+dsl_ReactApp "0..1" --* "1..1" dsl_Technology : react58
+dsl_Reducer "0..1" -- "1..1" dsl_State : reducer163
+dsl_Architecture "1..1" *-- "0..9999" dsl_RelationArch : relationArch46
+dsl_LayerSegment "1..1" *-- "0..9999" dsl_LayerSegmentRelation : relations52
+dsl_Domain "1..1" *-- "0..9999" dsl_RelationDom : relations9
+dsl_Functionality "1..1" -- "0..1" dsl_Visualizer : render133
+dsl_Functionality "1..1" -- "0..1" dsl_RouterComponent : route129
+dsl_RouterComponent "1..1" -- "0..1" dsl_UIComponent : route145
+dsl_Functionality "1..1" -- "0..1" dsl_ServiceFront : service137
+dsl_EntityName "0..9999" --* "1..1" dsl_RelationDom : source38
+dsl_Functionality "1..1" -- "0..1" dsl_State : state135
+dsl_Directory "0..1" -- "1..1" dsl_Directory : subdirectory159
+dsl_LayerSegment "1..1" *-- "0..9999" dsl_SublayerSegment : sublayerSegments54
+dsl_Module "1..1" *-- "0..9999" dsl_Submodule : submodules11
+dsl_JeeProject "1..1" *-- "0..9999" dsl_Subproject : subproject62
+dsl_EntityName "0..9999" --* "1..1" dsl_Operation : target17
+dsl_EntityName "0..9999" --* "1..1" dsl_RelationDom : target41
+dsl_System "1..1" *-- "0..1" dsl_Technology : tech3
+dsl_SpecialEntity "1..1" *-- "0..9999" dsl_Transaction : transactions31
+dsl_Attribute "1..1" -- "0..1" dsl_Eclass : type101
+dsl_Eclass "0..1" -- "1..1" dsl_MethodBack : type109
+dsl_AbstractMethod "1..1" -- "0..1" dsl_Eclass : type115
+dsl_Directory "0..1" -- "1..1" dsl_Functionality : type139
+dsl_AbstractFrontElement "0..1" -- "1..1" dsl_RouterComponent : type142
+dsl_AbstractFrontElement "0..1" -- "1..1" dsl_Container : type147
+dsl_AbstractFrontElement "0..1" -- "1..1" dsl_Visualizer : type150
+dsl_JsModule "0..1" -- "1..1" dsl_ServiceFront : type153
+dsl_ActionCreator "0..1" -- "1..1" dsl_ActionDispatcher : type172
+dsl_AbstractFrontElement "0..1" -- "1..1" dsl_Reducer : type175
+dsl_Directory "0..1" -- "1..1" dsl_JsModule : type178
+dsl_Property "1..1" -- "0..1" dsl_Type : type23
+dsl_Domain "1..1" *-- "0..9999" dsl_Type : types5
+dsl_Container "0..1" -- "1..1" dsl_Functionality : wrap131
+@enduml

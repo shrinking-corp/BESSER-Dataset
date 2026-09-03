@@ -1,0 +1,128 @@
+@startuml
+enum Mode {
+  Dameged
+  Degraded
+  EmergencyStop
+  Initialization
+  Normal
+  Rescue
+}
+class SBCS_ControlProgram {
+  + failureDetected : bool
+  + mode : str
+  + pumpControlerFailure : bool
+  + pumpFailure : bool
+  + ready : bool
+  + smdFailure : bool
+  + wlmdFailure : bool
+}
+class SBCS_ControlProgram_Start {
+}
+class SBCS_Pump {
+  + capacity : float
+  + mode : str
+  + ready : bool
+}
+class SBCS_PumpControler {
+  + circulating : bool
+  + ready : bool
+}
+class SBCS_PumpController_ClosePump {
+}
+class SBCS_PumpController_OpenPump {
+}
+class SBCS_Snapshot {
+  + futureClosure(SBCS_s : str) : str
+  + getNext() : str
+  + getPost() : str
+  + getPre() : str
+  + getPrevious() : str
+  + previousClosure(SBCS_s : str) : str
+}
+class SBCS_SteamBoiler {
+  + capacity : float
+  + maximalLimit : float
+  + maximalNormal : float
+  + maximumDecrease : float
+  + maximumIncrease : float
+  + minimalLimit : float
+  + minimalNormal : float
+  + ready : bool
+  + valveOpen : str
+}
+class SBCS_SteamBoiler_OpenValve {
+}
+class SBCS_SteamMeasurementDevice {
+  + evaporationRate : bool
+  + ready : bool
+  + waterLevel : float
+}
+class SBCS_Transition {
+}
+class SBCS_WaterLevelMeasurementDevice {
+  + ready : bool
+  + waterLevel : float
+}
+class SBCS_WaterLevelMeaurementDevice_getLevel {
+  + ret : float
+}
+enum State {
+  Off
+  On
+}
+class Transition {
+}
+enum ValveState {
+  Closed
+  Open
+}
+Transition <|-- SBCS_ControlProgram_Start
+Transition <|-- SBCS_PumpController_ClosePump
+Transition <|-- SBCS_PumpController_OpenPump
+Transition <|-- SBCS_SteamBoiler_OpenValve
+Transition <|-- SBCS_WaterLevelMeaurementDevice_getLevel
+SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans16
+SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans42
+SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : BeforeTrans15
+SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : BeforeTrans39
+SBCS_ControlProgram "0..1" -- "1..1" SBCS_ControlProgram_Start : CPPost64
+SBCS_ControlProgram "0..1" -- "1..1" SBCS_ControlProgram_Start : CPPre63
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_Pump : ControlProgramPump20
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_PumpControler : ControlProgramPumpControler28
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamMeasurementDevice : ControlProgramSMD24
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_Snapshot : ControlProgramSnapshot6
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamBoiler : ControlProgramSteamBoiler26
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : ControlProgramWLMD22
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPost76
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPost81
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPre75
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPre79
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_Pump : PumpControlProgram33
+SBCS_PumpControler "1..1" -- "1..1" SBCS_Snapshot : PumpControlSnapshot14
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_PumpControler : PumpControlerControlProgram47
+SBCS_Pump "1..1" -- "1..1" SBCS_PumpControler : PumpControlerPump49
+SBCS_Pump "1..1" -- "1..1" SBCS_PumpControler : PumpPumpControler35
+SBCS_Pump "1..1" -- "1..1" SBCS_Snapshot : PumpSnapshot30
+SBCS_Pump "1..1" -- "1..1" SBCS_Snapshot : PumpSnapshot8
+SBCS_Pump "1..1" -- "1..1" SBCS_SteamBoiler : PumpSteamBoiler37
+SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPost72
+SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPre71
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SMDControlProgram53
+SBCS_SteamBoiler "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SMDSteamBoiler55
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_Snapshot : SnapshotControlProgram18
+SBCS_PumpControler "1..1" -- "1..1" SBCS_Snapshot : SnapshotPumpControl45
+SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SnapshotSBMD51
+SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamBoiler : SnapshotSteamBoiler0
+SBCS_Snapshot "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : SnapshotWLMD57
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamBoiler : SteamBoilerControlProgram1
+SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SteamBoilerMeasurementDeviceSnapshot12
+SBCS_SteamBoiler "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SteamBoilerSMD3
+SBCS_Snapshot "1..1" -- "0..1" SBCS_SteamBoiler : SteamBoilerSnapshot5
+SBCS_SteamBoiler "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : SteamBoilerWLMD4
+SBCS_Pump "1..1" -- "1..1" SBCS_SteamBoiler : SteqmBoilerPump2
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDControlProgram59
+SBCS_Snapshot "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSnapshot10
+SBCS_SteamBoiler "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSteamBoiler61
+SBCS_WaterLevelMeasurementDevice "0..1" -- "1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPost68
+SBCS_WaterLevelMeasurementDevice "0..1" -- "1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPre67
+@enduml

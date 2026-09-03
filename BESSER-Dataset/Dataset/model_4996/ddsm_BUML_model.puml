@@ -1,0 +1,187 @@
+@startuml
+class CloudElement {
+}
+class Cluster {
+}
+class Component {
+}
+class ExecutionPlatform {
+}
+class ExternalComponent {
+}
+class InternalComponent {
+}
+class Port {
+}
+enum ProviderType {
+  Flexiant
+  Openstack
+}
+class Resource {
+}
+enum VMSize {
+  Large
+  Medium
+  Small
+}
+class ddsm_ChefResource {
+  + cookbookId : str
+}
+class ddsm_ClientNode {
+  + artifactUrl : str
+  + mainClass : str
+  + type : str
+}
+abstract class ddsm_CloudElement {
+  + description : str
+  + elementId : str
+}
+class ddsm_Cluster {
+}
+abstract class ddsm_Component {
+}
+class ddsm_DDSM {
+  + description : str
+  + modelId : str
+}
+class ddsm_ExecutionBinding {
+}
+abstract class ddsm_ExecutionPlatform {
+}
+class ddsm_ExternalComponent {
+  + location : str
+  + login : str
+  + password : str
+  + region : str
+  + serviceType : str
+}
+class ddsm_HDFSDataNode {
+}
+class ddsm_HDFSNameNode {
+}
+class ddsm_InternalComponent {
+}
+class ddsm_Kafka {
+}
+abstract class ddsm_Port {
+  + isLocal : bool
+  + portNumber : str
+}
+class ddsm_Property {
+  + propertyId : str
+  + value : str
+}
+class ddsm_ProvidedExecutionPlatform {
+}
+class ddsm_ProvidedPort {
+}
+class ddsm_Provider {
+  + credentialsPath : str
+  + type : str
+}
+class ddsm_Relationship {
+}
+class ddsm_RequiredExecutionPlatform {
+  + isMandatory : bool
+}
+class ddsm_RequiredPort {
+  + isMandatory : bool
+}
+class ddsm_Resource {
+  + configureCommand : str
+  + createCommand : str
+  + downloadCommand : str
+  + installCommand : str
+  + resourceId : str
+  + startCommand : str
+  + stopCommand : str
+}
+class ddsm_StormCluster {
+  + number_of_workers : str
+}
+class ddsm_StormNimbus {
+  + monitorFrequency : str
+  + queueSize : str
+  + retryInterval : str
+  + retryTimes : str
+  + supervisorTimeout : str
+  + taskTimeout : str
+}
+class ddsm_StormSupervisor {
+  + cpuCapacity : str
+  + heartbeatFrequency : str
+  + memoryCapacity : str
+  + workerStartTimeout : str
+}
+class ddsm_VM {
+  + genericSize : str
+  + imageId : str
+  + instances : str
+  + is64os : str
+  + maxCores : str
+  + maxRam : str
+  + maxStorage : str
+  + minCores : str
+  + minRam : str
+  + minStorage : str
+  + os : str
+  + privateKey : str
+  + providerSpecificTypeName : str
+  + publicAddress : str
+  + publicPorts : str
+  + securityGroup : str
+  + sshKey : str
+}
+class ddsm_YarnNodeManager {
+}
+class ddsm_YarnResourceManager {
+}
+class ddsm_Zookeeper {
+  + initLimit : str
+  + syncLimit : str
+  + tickTime : str
+}
+CloudElement <|-- ddsm_Component
+CloudElement <|-- ddsm_ExecutionBinding
+CloudElement <|-- ddsm_ExecutionPlatform
+CloudElement <|-- ddsm_Port
+CloudElement <|-- ddsm_Provider
+CloudElement <|-- ddsm_Relationship
+Cluster <|-- ddsm_StormCluster
+Component <|-- ddsm_ExternalComponent
+Component <|-- ddsm_InternalComponent
+ExecutionPlatform <|-- ddsm_ProvidedExecutionPlatform
+ExecutionPlatform <|-- ddsm_RequiredExecutionPlatform
+ExternalComponent <|-- ddsm_Cluster
+ExternalComponent <|-- ddsm_VM
+InternalComponent <|-- ddsm_ClientNode
+InternalComponent <|-- ddsm_HDFSDataNode
+InternalComponent <|-- ddsm_HDFSNameNode
+InternalComponent <|-- ddsm_Kafka
+InternalComponent <|-- ddsm_StormNimbus
+InternalComponent <|-- ddsm_StormSupervisor
+InternalComponent <|-- ddsm_YarnNodeManager
+InternalComponent <|-- ddsm_YarnResourceManager
+InternalComponent <|-- ddsm_Zookeeper
+Port <|-- ddsm_ProvidedPort
+Port <|-- ddsm_RequiredPort
+Resource <|-- ddsm_ChefResource
+ddsm_CloudElement "0..9999" --* "1..1" ddsm_DDSM : cloudelement29
+ddsm_Cluster "1..1" -- "0..9999" ddsm_VM : hasVm37
+ddsm_InternalComponent "0..9999" --* "1..1" ddsm_InternalComponent : internalcomponent8
+ddsm_Component "1..1" -- "1..1" ddsm_ProvidedPort : owner12
+ddsm_Component "1..1" -- "1..1" ddsm_ProvidedExecutionPlatform : owner15
+ddsm_DDSM "1..1" *-- "0..9999" ddsm_Property : properties31
+ddsm_CloudElement "1..1" *-- "0..9999" ddsm_Property : property1
+ddsm_ExecutionBinding "1..1" -- "0..1" ddsm_ProvidedExecutionPlatform : providedexecutionplatform25
+ddsm_Component "1..1" *-- "0..9999" ddsm_ProvidedExecutionPlatform : providedexecutionplatform4
+ddsm_ProvidedPort "0..1" -- "1..1" ddsm_Relationship : providedport18
+ddsm_Component "1..1" *-- "0..9999" ddsm_ProvidedPort : providedport3
+ddsm_ExternalComponent "1..1" -- "1..1" ddsm_Provider : provider28
+ddsm_InternalComponent "1..1" *-- "0..9999" ddsm_RequiredExecutionPlatform : requiredexecutionplatform10
+ddsm_ExecutionBinding "1..1" -- "0..1" ddsm_RequiredExecutionPlatform : requiredexecutionplatform23
+ddsm_Relationship "1..1" -- "0..1" ddsm_RequiredPort : requiredport20
+ddsm_InternalComponent "1..1" *-- "0..9999" ddsm_RequiredPort : requiredport6
+ddsm_CloudElement "1..1" *-- "0..9999" ddsm_Resource : resource0
+ddsm_DDSM "1..1" *-- "0..9999" ddsm_Resource : resources34
+@enduml

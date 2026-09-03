@@ -1,0 +1,104 @@
+@startuml
+class CORECompositionSpecification {
+}
+enum COREFeatureRelationshipType {
+  Mandatory
+  OR
+  Optional
+  XOR
+}
+enum COREFeatureSelectionStatus {
+  AUTO_SELECTED
+  NOT_SELECTED_ACTION_REQUIRED
+  NOT_SELECTED_NO_ACTION
+  REEXPOSE_AUTO_SELECTED
+  REEXPOSE_USER_SELECTED
+  USER_SELECTED
+  WARNING_AUTO_SELECTED
+  WARNING_USER_SELECTED
+}
+class COREModel {
+}
+class COREModelElement {
+}
+class CORENamedElement {
+}
+abstract class core_COREBinding {
+}
+abstract class core_CORECompositionSpecification {
+}
+class core_COREConcern {
+}
+class core_COREConfiguration {
+}
+abstract class core_COREFeature {
+  + AssociateReuse(core_reexposed : str, core_reuse : str, core_selected : str) : bool
+  + addFeature(core_association : str, core_child_name : str, core_position : str) : bool
+  + addRealizedBy(core_model : str) : bool
+  + changeLink(core_new_association : str) : bool
+  + changeParent(core_feature : str, core_new_association : str) : bool
+  + delete() : bool
+  + excludes(core_feature : str) : bool
+  + removeConstraint(core_feature : str) : bool
+  + rename(core_core_feature_name : str) : void
+  + requires(core_feature : str) : bool
+}
+abstract class core_COREFeatureModel {
+  + getGlobalRoot() : str
+  + getLocalRoot() : str
+}
+abstract class core_COREImpactModel {
+}
+abstract class core_COREImpactModelElement {
+}
+class core_COREInterface {
+}
+abstract class core_COREMapping {
+}
+abstract class core_COREModel {
+}
+abstract class core_COREModelElement {
+}
+class core_COREModelReuse {
+}
+abstract class core_CORENamedElement {
+  + name : str
+}
+abstract class core_COREPattern {
+}
+class core_COREReuse {
+}
+CORECompositionSpecification <|-- core_COREBinding
+CORECompositionSpecification <|-- core_COREPattern
+COREModel <|-- core_COREFeatureModel
+COREModel <|-- core_COREImpactModel
+COREModelElement <|-- core_COREFeature
+COREModelElement <|-- core_COREImpactModelElement
+CORENamedElement <|-- core_COREConcern
+CORENamedElement <|-- core_COREConfiguration
+CORENamedElement <|-- core_COREModel
+CORENamedElement <|-- core_COREModelElement
+core_CORECompositionSpecification "0..9999" -- "1..1" core_COREModelReuse : compositions47
+core_COREConfiguration "0..9999" --* "1..1" core_COREReuse : configurations35
+core_COREBinding "1..1" -- "0..9999" core_COREMapping : coreMappings10
+core_COREInterface "1..1" -- "0..9999" core_COREModelElement : customizable22
+core_COREConfiguration "0..9999" -- "1..1" core_COREInterface : defaults30
+core_COREImpactModelElement "0..9999" -- "1..1" core_COREInterface : impacted28
+core_COREConcern "1..1" *-- "1..1" core_COREInterface : interface6
+core_COREMapping "1..1" -- "1..1" core_COREModelElement : mappedFrom16
+core_COREMapping "1..1" -- "1..1" core_COREModelElement : mappedTo13
+core_COREModel "1..1" -- "0..9999" core_COREModelElement : modelElements1
+core_COREModel "1..1" *-- "0..9999" core_COREModelReuse : modelReuse0
+core_COREModelReuse "1..1" -- "0..9999" core_COREReuse : modelReuse50
+core_COREConcern "1..1" -- "2..9999" core_COREModel : models4
+core_COREFeature "1..1" -- "0..9999" core_COREModel : realizedBy8
+core_COREFeature "0..9999" -- "1..1" core_COREModel : realizes3
+core_COREConfiguration "1..1" -- "0..9999" core_COREFeature : reexposed44
+core_COREConcern "1..1" -- "1..1" core_COREReuse : reusedConcern32
+core_COREFeature "1..1" *-- "0..9999" core_COREReuse : reuses9
+core_COREFeature "0..9999" -- "1..1" core_COREInterface : selectable19
+core_COREConfiguration "0..1" -- "1..1" core_COREReuse : selected38
+core_COREConfiguration "1..1" -- "0..9999" core_COREFeature : selected41
+core_CORECompositionSpecification "1..1" -- "1..1" core_COREModel : source11
+core_COREInterface "1..1" -- "0..9999" core_COREModelElement : usable25
+@enduml

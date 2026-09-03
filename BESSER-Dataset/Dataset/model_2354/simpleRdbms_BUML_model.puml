@@ -1,0 +1,37 @@
+@startuml
+class RModelElement {
+}
+class simpleRdbms_Column {
+  + type : str
+}
+class simpleRdbms_ForeignKey {
+}
+class simpleRdbms_Key {
+}
+class simpleRdbms_RModelElement {
+  + kind : str
+  + name : str
+}
+class simpleRdbms_Schema {
+}
+class simpleRdbms_Table {
+}
+RModelElement <|-- simpleRdbms_Column
+RModelElement <|-- simpleRdbms_ForeignKey
+RModelElement <|-- simpleRdbms_Key
+RModelElement <|-- simpleRdbms_Schema
+RModelElement <|-- simpleRdbms_Table
+simpleRdbms_Column "1..1" -- "1..1" simpleRdbms_Key : column15
+simpleRdbms_Column "0..9999" --* "1..1" simpleRdbms_Table : column2
+simpleRdbms_Column "1..1" -- "1..1" simpleRdbms_ForeignKey : column20
+simpleRdbms_Column "1..1" -- "0..9999" simpleRdbms_ForeignKey : foreignKey12
+simpleRdbms_ForeignKey "0..9999" --* "1..1" simpleRdbms_Table : foreignKey5
+simpleRdbms_Key "0..9999" --* "1..1" simpleRdbms_Table : key3
+simpleRdbms_Column "1..1" -- "0..9999" simpleRdbms_Key : key9
+simpleRdbms_Key "1..1" -- "1..1" simpleRdbms_Table : owner17
+simpleRdbms_ForeignKey "1..1" -- "1..1" simpleRdbms_Table : owner23
+simpleRdbms_Column "1..1" -- "1..1" simpleRdbms_Table : owner7
+simpleRdbms_ForeignKey "1..1" -- "1..1" simpleRdbms_Key : refersTo22
+simpleRdbms_Schema "1..1" -- "1..1" simpleRdbms_Table : schema1
+simpleRdbms_Schema "1..1" *-- "0..9999" simpleRdbms_Table : tables0
+@enduml

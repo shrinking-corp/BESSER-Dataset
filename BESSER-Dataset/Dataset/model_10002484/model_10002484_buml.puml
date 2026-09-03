@@ -1,0 +1,42 @@
+@startuml
+class ADMIN {
+  + id : str
+  + password : str
+}
+class FACULTY {
+  + id : str
+  + password : str
+}
+class PARENT {
+  + id : str
+  + password : str
+  + phoneNumber : int
+}
+class STUDENT {
+  + id : str
+  + password : str
+}
+class _Component {
+}
+class admin_Actor {
+}
+class login_external {
+}
+class modify_list_of_students_external {
+}
+class student_Actor {
+}
+class view_cumiliative_attendance_external {
+}
+class view_subject_wise_attendance_external {
+}
+ADMIN "1..1" -- "1..9999" FACULTY : FACULTY_ADMIN
+FACULTY "1..9999" -- "1..9999" STUDENT : FACULTY_STUDENT
+ADMIN "1..1" -- "1..9999" PARENT : PARENT_ADMIN
+ADMIN "1..1" -- "1..9999" STUDENT : STUDENT_ADMIN
+admin_Actor "0..1" -- "0..1" login_external : admin_login
+admin_Actor "0..1" -- "0..1" modify_list_of_students_external : admin_modify_list_of_students
+login_external "0..1" -- "0..1" student_Actor : student_login
+student_Actor "0..1" -- "0..1" view_cumiliative_attendance_external : student_view_cumiliative_attendance
+student_Actor "0..1" -- "0..1" view_subject_wise_attendance_external : student_view_subject_wise_attendance
+@enduml

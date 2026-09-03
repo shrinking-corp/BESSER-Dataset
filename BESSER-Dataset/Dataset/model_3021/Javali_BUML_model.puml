@@ -1,0 +1,162 @@
+@startuml
+class Expression {
+}
+class Statement {
+}
+class javali_Addition {
+  + operator : str
+}
+class javali_And {
+}
+class javali_Block {
+}
+class javali_Break {
+}
+class javali_Constant {
+  + static : bool
+}
+class javali_Continue {
+}
+class javali_Decrement {
+}
+class javali_DoWhile {
+}
+class javali_Equality {
+  + operator : str
+}
+class javali_Expression {
+}
+class javali_For {
+}
+class javali_Identifier {
+  + id : str
+}
+class javali_IfElse {
+}
+class javali_Increment {
+}
+class javali_Literal {
+  + value : str
+}
+class javali_Module {
+}
+class javali_Multiplication {
+  + operator : str
+}
+class javali_NewArray {
+}
+class javali_NewObject {
+}
+class javali_Null {
+}
+class javali_Or {
+}
+class javali_ProcCall {
+}
+class javali_Procedure {
+  + comment : str
+  + static : bool
+  + void : bool
+}
+class javali_Record {
+}
+class javali_Relation {
+  + operator : str
+}
+class javali_Return {
+}
+class javali_Statement {
+}
+class javali_Type {
+  + arrayDims : str
+}
+class javali_VarAssign {
+}
+class javali_VarDeclaration {
+}
+class javali_VarExpression {
+}
+class javali_While {
+}
+class javali_Xor {
+}
+Expression <|-- javali_Addition
+Expression <|-- javali_And
+Expression <|-- javali_Equality
+Expression <|-- javali_Literal
+Expression <|-- javali_Multiplication
+Expression <|-- javali_NewArray
+Expression <|-- javali_NewObject
+Expression <|-- javali_Null
+Expression <|-- javali_Or
+Expression <|-- javali_ProcCall
+Expression <|-- javali_Relation
+Expression <|-- javali_VarExpression
+Expression <|-- javali_Xor
+Statement <|-- javali_Break
+Statement <|-- javali_Continue
+Statement <|-- javali_Decrement
+Statement <|-- javali_DoWhile
+Statement <|-- javali_For
+Statement <|-- javali_IfElse
+Statement <|-- javali_Increment
+Statement <|-- javali_ProcCall
+Statement <|-- javali_Return
+Statement <|-- javali_VarAssign
+Statement <|-- javali_VarDeclaration
+Statement <|-- javali_While
+javali_Block "0..1" --* "1..1" javali_IfElse : alternativeBlock48
+javali_Expression "0..9999" --* "1..1" javali_ProcCall : args84
+javali_Expression "0..9999" --* "1..1" javali_NewArray : arrayDims92
+javali_Expression "0..9999" --* "1..1" javali_VarExpression : arrayIndexes79
+javali_Block "0..1" --* "1..1" javali_While : block53
+javali_Block "0..1" --* "1..1" javali_For : block64
+javali_Block "0..1" --* "1..1" javali_DoWhile : block67
+javali_Block "0..1" --* "1..1" javali_Procedure : body25
+javali_Constant "0..9999" --* "1..1" javali_Module : constants0
+javali_Expression "0..1" --* "1..1" javali_Return : exp29
+javali_Expression "0..1" --* "1..1" javali_VarAssign : exp40
+javali_Record "1..1" *-- "0..9999" javali_VarDeclaration : fields14
+javali_Expression "0..1" --* "1..1" javali_IfElse : guard43
+javali_Expression "0..1" --* "1..1" javali_While : guard51
+javali_Expression "0..1" --* "1..1" javali_For : guard58
+javali_DoWhile "1..1" *-- "0..1" javali_Expression : guard69
+javali_Identifier "0..1" --* "1..1" javali_Record : id11
+javali_Identifier "0..1" --* "1..1" javali_Procedure : id19
+javali_Identifier "0..1" --* "1..1" javali_VarDeclaration : id33
+javali_Constant "1..1" *-- "0..1" javali_Identifier : id7
+javali_Identifier "0..1" --* "1..1" javali_Increment : id72
+javali_Decrement "1..1" *-- "0..1" javali_Identifier : id74
+javali_Identifier "0..1" --* "1..1" javali_ProcCall : id82
+javali_Identifier "0..1" --* "1..1" javali_Type : id87
+javali_Expression "0..1" --* "1..1" javali_VarDeclaration : init36
+javali_For "1..1" *-- "0..9999" javali_Statement : initStatements56
+javali_Expression "0..1" --* "1..1" javali_Xor : left102
+javali_And "1..1" *-- "0..1" javali_Expression : left107
+javali_Equality "1..1" *-- "0..1" javali_Expression : left112
+javali_Expression "0..1" --* "1..1" javali_Relation : left117
+javali_Addition "1..1" *-- "0..1" javali_Expression : left122
+javali_Expression "0..1" --* "1..1" javali_Multiplication : left127
+javali_Expression "0..1" --* "1..1" javali_Or : left97
+javali_Procedure "1..1" *-- "0..9999" javali_VarDeclaration : params22
+javali_Identifier "0..9999" --* "1..1" javali_VarExpression : parts76
+javali_Module "1..1" *-- "0..9999" javali_Procedure : procedures3
+javali_For "1..1" *-- "0..9999" javali_Statement : progressStatements61
+javali_Module "1..1" *-- "0..9999" javali_Record : records1
+javali_Procedure "1..1" *-- "0..1" javali_Type : retType16
+javali_Expression "0..1" --* "1..1" javali_Xor : right104
+javali_And "1..1" *-- "0..1" javali_Expression : right109
+javali_Equality "1..1" *-- "0..1" javali_Expression : right114
+javali_Expression "0..1" --* "1..1" javali_Relation : right119
+javali_Addition "1..1" *-- "0..1" javali_Expression : right124
+javali_Expression "0..1" --* "1..1" javali_Multiplication : right129
+javali_Expression "0..1" --* "1..1" javali_Or : right99
+javali_Block "0..1" --* "1..1" javali_IfElse : selectionBlock45
+javali_Block "1..1" *-- "0..9999" javali_Statement : statements27
+javali_Type "0..1" --* "1..1" javali_VarDeclaration : type30
+javali_Constant "1..1" *-- "0..1" javali_Type : type5
+javali_Identifier "0..1" --* "1..1" javali_NewArray : type90
+javali_Identifier "0..1" --* "1..1" javali_NewObject : type95
+javali_Constant "1..1" *-- "0..1" javali_Literal : value9
+javali_VarAssign "1..1" *-- "0..1" javali_VarExpression : var39
+@enduml

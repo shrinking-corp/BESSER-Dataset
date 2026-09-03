@@ -1,0 +1,180 @@
+@startuml
+class Attribute {
+}
+class ClientElement {
+}
+class CommentedElement {
+}
+enum DataType {
+  Blob
+  Bool
+  Char
+  Date
+  DateTime
+  GUID
+  Integer
+  Real
+  String
+  Time
+}
+class DatabaseElement {
+}
+class Element {
+}
+class Entity {
+}
+enum EntityFormType {
+  Delete
+  Insert
+  Select
+  Update
+}
+class Form {
+}
+class NamedElement {
+}
+class Parameter {
+}
+enum RelationshipType {
+  ManyToMany
+  ManyToOne
+  OneToMany
+  OneToOne
+}
+class ServerElement {
+}
+class Service {
+}
+class dbca_AbstractEntity {
+}
+class dbca_Application {
+}
+abstract class dbca_Attribute {
+  + maxLength : int
+  + type : str
+}
+class dbca_Client {
+}
+abstract class dbca_ClientElement {
+}
+abstract class dbca_CommentedElement {
+  + comment : str
+}
+class dbca_ComputedEntity {
+}
+class dbca_CustomForm {
+}
+class dbca_CustomService {
+}
+class dbca_DataParameter {
+  + type : str
+}
+class dbca_Database {
+}
+abstract class dbca_DatabaseElement {
+}
+abstract class dbca_Element {
+}
+abstract class dbca_Entity {
+}
+class dbca_EntityContainmentForm {
+}
+class dbca_EntityForm {
+  + type : str
+}
+class dbca_EntityParameter {
+}
+class dbca_EntityService {
+}
+class dbca_Event {
+}
+abstract class dbca_Form {
+}
+class dbca_Function {
+  + returnType : str
+}
+abstract class dbca_NamedElement {
+  + name : str
+}
+class dbca_Operation {
+}
+class dbca_OperationService {
+}
+abstract class dbca_Parameter {
+}
+class dbca_PersistentEntity {
+}
+class dbca_PrimaryProperty {
+}
+class dbca_Property {
+  + defaultValue : str
+  + isNullable : bool
+}
+class dbca_Query {
+}
+class dbca_QueryService {
+}
+class dbca_Relationship {
+  + isContainment : str
+  + isNullable : bool
+  + type : str
+}
+class dbca_Server {
+}
+abstract class dbca_ServerElement {
+}
+abstract class dbca_Service {
+}
+Attribute <|-- dbca_PrimaryProperty
+Attribute <|-- dbca_Property
+ClientElement <|-- dbca_Form
+CommentedElement <|-- dbca_NamedElement
+DatabaseElement <|-- dbca_Entity
+DatabaseElement <|-- dbca_Event
+DatabaseElement <|-- dbca_Function
+DatabaseElement <|-- dbca_Operation
+DatabaseElement <|-- dbca_Query
+Element <|-- dbca_CommentedElement
+Entity <|-- dbca_AbstractEntity
+Entity <|-- dbca_ComputedEntity
+Entity <|-- dbca_PersistentEntity
+Form <|-- dbca_CustomForm
+Form <|-- dbca_EntityContainmentForm
+Form <|-- dbca_EntityForm
+NamedElement <|-- dbca_Application
+NamedElement <|-- dbca_Attribute
+NamedElement <|-- dbca_Client
+NamedElement <|-- dbca_ClientElement
+NamedElement <|-- dbca_Database
+NamedElement <|-- dbca_DatabaseElement
+NamedElement <|-- dbca_Parameter
+NamedElement <|-- dbca_Relationship
+NamedElement <|-- dbca_Server
+NamedElement <|-- dbca_ServerElement
+Parameter <|-- dbca_DataParameter
+Parameter <|-- dbca_EntityParameter
+ServerElement <|-- dbca_Service
+Service <|-- dbca_CustomService
+Service <|-- dbca_EntityService
+Service <|-- dbca_OperationService
+Service <|-- dbca_QueryService
+dbca_Application "1..1" *-- "0..9999" dbca_Client : clients3
+dbca_Application "1..1" *-- "0..1" dbca_Database : database0
+dbca_Server "1..1" *-- "0..9999" dbca_ServerElement : elements25
+dbca_Client "1..1" *-- "0..9999" dbca_ClientElement : elements32
+dbca_Database "1..1" *-- "0..9999" dbca_DatabaseElement : elements5
+dbca_Entity "1..1" -- "1..1" dbca_EntityParameter : entity21
+dbca_Entity "1..1" -- "1..1" dbca_EntityService : entity27
+dbca_Entity "1..1" -- "1..1" dbca_EntityForm : entity34
+dbca_Operation "1..1" -- "1..1" dbca_OperationService : operation30
+dbca_DataParameter "0..9999" --* "1..1" dbca_Function : parameters23
+dbca_Operation "1..1" *-- "0..9999" dbca_Parameter : parameters24
+dbca_Entity "1..1" *-- "1..9999" dbca_PrimaryProperty : primaries7
+dbca_Property "0..9999" --* "1..1" dbca_Relationship : properties18
+dbca_Entity "1..1" *-- "0..9999" dbca_Property : properties8
+dbca_Query "1..1" -- "1..1" dbca_QueryService : query29
+dbca_Entity "1..1" *-- "0..9999" dbca_Relationship : relationships10
+dbca_Application "1..1" *-- "0..1" dbca_Server : server1
+dbca_Entity "0..1" -- "1..1" dbca_Entity : super13
+dbca_Entity "1..1" -- "1..1" dbca_Relationship : target15
+@enduml

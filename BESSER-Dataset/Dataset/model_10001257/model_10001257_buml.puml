@@ -1,0 +1,32 @@
+@startuml
+class Card {
+  + color : Color
+  + rank : Rank
+  + suit : Suit
+}
+enum Color {
+}
+abstract class Player {
+  + hand : Card
+  + id : int
+  + name : str
+}
+enum Rank {
+}
+class Session {
+  + cardDeck : str
+  + currentPlayerPointer : int
+  + discardPile : str
+  + gameStatus : str
+  + gameStatusCode : int
+  + humanPointer : int
+  + humanTurn : bool
+  + id : int
+  + players : str
+}
+enum Suit {
+}
+Card "1..9999" -- "0..1" Player : Player_Card
+Card "0..1" -- "0..1" Session : Session_Card
+Player "0..1" -- "0..1" Session : Session_Player
+@enduml

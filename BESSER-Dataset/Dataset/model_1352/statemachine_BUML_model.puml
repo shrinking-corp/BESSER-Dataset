@@ -1,0 +1,37 @@
+@startuml
+class AbstractState {
+}
+class FiringElement {
+}
+abstract class statemachine_AbstractState {
+  + name : str
+}
+class statemachine_FinalState {
+}
+abstract class statemachine_FiringElement {
+  + action : str
+  + trigger : str
+}
+class statemachine_InitialState {
+}
+class statemachine_State {
+}
+class statemachine_StateAction {
+}
+class statemachine_StateMachine {
+}
+class statemachine_Transition {
+}
+AbstractState <|-- statemachine_FinalState
+AbstractState <|-- statemachine_InitialState
+AbstractState <|-- statemachine_State
+FiringElement <|-- statemachine_StateAction
+FiringElement <|-- statemachine_Transition
+statemachine_State "1..1" *-- "0..9999" statemachine_StateAction : internalActions6
+statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : source7
+statemachine_AbstractState "0..9999" --* "1..1" statemachine_StateMachine : states0
+statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : target8
+statemachine_StateMachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
+statemachine_AbstractState "1..1" -- "0..9999" statemachine_Transition : transitionsAsSource3
+statemachine_AbstractState "1..1" -- "0..9999" statemachine_Transition : transitionsAsTarget4
+@enduml

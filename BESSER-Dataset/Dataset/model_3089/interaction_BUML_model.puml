@@ -1,0 +1,114 @@
+@startuml
+class AbstractBehavior {
+}
+class AbstractFunctionalChainContainer {
+}
+class CapellaElement {
+}
+enum InteractionOperatorKind {
+  ALT
+  ASSERT
+  CONSIDER
+  CRITICAL
+  IGNORE
+  LOOP
+  NEG
+  OPT
+  PAR
+  SEQ
+  STRICT
+  UNSET
+}
+enum MessageKind {
+  ASYNCHRONOUS_CALL
+  CREATE
+  DELETE
+  REPLY
+  SYNCHRONOUS_CALL
+  TIMER
+  UNSET
+}
+class NamedElement {
+}
+class Namespace {
+}
+enum ScenarioKind {
+  DATA_FLOW
+  FUNCTIONAL
+  INTERACTION
+  INTERFACE
+  UNSET
+}
+class Structure {
+}
+abstract class interaction_AbstractCapability {
+}
+class interaction_AbstractEventOperation {
+}
+class interaction_AbstractFunction {
+}
+class interaction_CombinedFragment {
+  + operator : str
+}
+class interaction_Constraint {
+}
+class interaction_ExchangeItem {
+}
+class interaction_ExchangeItemElement {
+}
+class interaction_FunctionalChain {
+}
+class interaction_InteractionOperand {
+}
+class interaction_Part {
+}
+class interaction_Scenario {
+  + kind : str
+  + merged : bool
+}
+class interaction_SequenceMessage {
+  + kind : str
+}
+class interaction_SequenceMessageValuation {
+}
+class interaction_State {
+}
+class interaction_ValueSpecification {
+}
+AbstractBehavior <|-- interaction_Scenario
+AbstractFunctionalChainContainer <|-- interaction_AbstractCapability
+CapellaElement <|-- interaction_AbstractCapability
+CapellaElement <|-- interaction_SequenceMessageValuation
+NamedElement <|-- interaction_CombinedFragment
+NamedElement <|-- interaction_InteractionOperand
+NamedElement <|-- interaction_SequenceMessage
+Namespace <|-- interaction_Scenario
+Structure <|-- interaction_AbstractCapability
+interaction_AbstractCapability "1..1" -- "0..9999" interaction_State : availableInStates54
+interaction_AbstractFunction "0..9999" -- "1..1" interaction_Scenario : containedFunctions25
+interaction_Part "0..9999" -- "1..1" interaction_Scenario : containedParts28
+interaction_Constraint "0..1" -- "1..1" interaction_SequenceMessage : exchangeContext0
+interaction_ExchangeItemElement "0..1" -- "1..1" interaction_SequenceMessageValuation : exchangeItemElement63
+interaction_ExchangeItem "0..9999" -- "1..1" interaction_SequenceMessage : exchangedItems3
+interaction_AbstractCapability "0..9999" -- "1..1" interaction_AbstractCapability : extendedAbstractCapabilities52
+interaction_Constraint "0..1" -- "1..1" interaction_InteractionOperand : guard61
+interaction_AbstractCapability "0..9999" -- "1..1" interaction_AbstractCapability : includedAbstractCapabilities49
+interaction_AbstractEventOperation "0..1" -- "1..1" interaction_SequenceMessage : invokedOperation1
+interaction_AbstractCapability "1..1" -- "0..9999" interaction_AbstractFunction : involvedAbstractFunctions56
+interaction_AbstractCapability "1..1" -- "0..9999" interaction_FunctionalChain : involvedFunctionalChains59
+interaction_Scenario "1..1" *-- "0..9999" interaction_SequenceMessage : ownedMessages22
+interaction_AbstractCapability "1..1" *-- "0..9999" interaction_Scenario : ownedScenarios42
+interaction_SequenceMessage "1..1" *-- "0..9999" interaction_SequenceMessageValuation : ownedSequenceMessageValuations15
+interaction_Constraint "0..1" -- "1..1" interaction_Scenario : postCondition19
+interaction_AbstractCapability "1..1" -- "0..1" interaction_Constraint : postCondition39
+interaction_Constraint "0..1" -- "1..1" interaction_Scenario : preCondition17
+interaction_AbstractCapability "1..1" -- "0..1" interaction_Constraint : preCondition37
+interaction_Scenario "0..9999" -- "1..1" interaction_Scenario : realizedScenarios35
+interaction_AbstractFunction "0..1" -- "1..1" interaction_SequenceMessage : receivingFunction12
+interaction_Part "0..1" -- "1..1" interaction_SequenceMessage : receivingPart7
+interaction_Scenario "0..9999" -- "1..1" interaction_Scenario : referencedScenarios32
+interaction_AbstractFunction "0..1" -- "1..1" interaction_SequenceMessage : sendingFunction10
+interaction_Part "0..1" -- "1..1" interaction_SequenceMessage : sendingPart5
+interaction_AbstractCapability "0..9999" -- "1..1" interaction_AbstractCapability : super46
+interaction_SequenceMessageValuation "1..1" -- "0..1" interaction_ValueSpecification : value65
+@enduml

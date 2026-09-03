@@ -1,0 +1,132 @@
+@startuml
+class Action {
+}
+class CallMethodAction {
+}
+class Class {
+}
+enum DataType {
+  Boolean
+  Integer
+  String
+}
+class Guard {
+}
+class IsInStateCondition {
+}
+class Method {
+}
+class NamedElement {
+}
+class Parameter {
+}
+class Property {
+}
+abstract class soopl_Action {
+}
+class soopl_AssignProperty {
+}
+abstract class soopl_CallMethodAction {
+}
+class soopl_CallMethodOfParameter {
+}
+class soopl_CallMethodOfProperty {
+}
+class soopl_Class {
+  + isAbstract : bool
+}
+class soopl_ComplexTypeParameter {
+}
+class soopl_ComplexTypeProperty {
+}
+abstract class soopl_Guard {
+}
+abstract class soopl_IsInStateCondition {
+}
+class soopl_Method {
+}
+abstract class soopl_NamedElement {
+  + name : str
+}
+class soopl_Package {
+}
+class soopl_Parameter {
+}
+class soopl_ParameterBinding {
+}
+class soopl_ParameterIsInState {
+}
+abstract class soopl_Property {
+  + lowerBound : int
+  + multiValued : bool
+  + upperBound : int
+}
+class soopl_PropertyIsInState {
+}
+class soopl_SimpleTypeParameter {
+  + dataType : str
+}
+class soopl_SimpleTypeProperty {
+  + dataType : str
+}
+class soopl_StateClass {
+}
+class soopl_StateImplementationClass {
+}
+class soopl_StatefulClass {
+}
+class soopl_Transition {
+}
+class soopl_TransitionMethod {
+}
+Action <|-- soopl_AssignProperty
+Action <|-- soopl_CallMethodAction
+CallMethodAction <|-- soopl_CallMethodOfParameter
+CallMethodAction <|-- soopl_CallMethodOfProperty
+Class <|-- soopl_StateClass
+Class <|-- soopl_StateImplementationClass
+Class <|-- soopl_StatefulClass
+Guard <|-- soopl_IsInStateCondition
+IsInStateCondition <|-- soopl_ParameterIsInState
+IsInStateCondition <|-- soopl_PropertyIsInState
+Method <|-- soopl_TransitionMethod
+NamedElement <|-- soopl_Class
+NamedElement <|-- soopl_Method
+NamedElement <|-- soopl_Package
+NamedElement <|-- soopl_Parameter
+NamedElement <|-- soopl_Property
+Parameter <|-- soopl_ComplexTypeParameter
+Parameter <|-- soopl_SimpleTypeParameter
+Property <|-- soopl_ComplexTypeProperty
+Property <|-- soopl_SimpleTypeProperty
+soopl_Action "0..9999" --* "1..1" soopl_Transition : actions33
+soopl_CallMethodAction "1..1" -- "1..1" soopl_Method : calledMethod42
+soopl_Class "1..1" -- "1..1" soopl_ComplexTypeParameter : classType40
+soopl_Class "0..9999" --* "1..1" soopl_Package : classes0
+soopl_Method "0..9999" -- "1..1" soopl_StateImplementationClass : entryMethod19
+soopl_Guard "0..1" --* "1..1" soopl_Transition : guard35
+soopl_IsInStateCondition "1..1" -- "1..1" soopl_StateImplementationClass : inState52
+soopl_StateImplementationClass "1..1" -- "1..1" soopl_StatefulClass : initialState13
+soopl_Class "1..1" *-- "0..9999" soopl_Method : methods6
+soopl_ComplexTypeProperty "0..1" -- "1..1" soopl_ComplexTypeProperty : opposite28
+soopl_Package "1..1" *-- "0..9999" soopl_Package : packages2
+soopl_Parameter "1..1" -- "1..1" soopl_ParameterBinding : parameter49
+soopl_Parameter "1..1" -- "1..1" soopl_ParameterIsInState : parameter56
+soopl_CallMethodOfParameter "1..1" -- "1..1" soopl_Parameter : parameter60
+soopl_AssignProperty "1..1" -- "1..1" soopl_Parameter : parameter62
+soopl_CallMethodAction "1..1" *-- "0..9999" soopl_ParameterBinding : parameterBinding44
+soopl_Method "1..1" *-- "0..9999" soopl_Parameter : parameters30
+soopl_Package "1..1" -- "0..1" soopl_Package : parentPackage4
+soopl_Class "1..1" *-- "0..9999" soopl_Property : properties8
+soopl_ComplexTypeProperty "1..1" -- "1..1" soopl_PropertyIsInState : property54
+soopl_CallMethodOfProperty "1..1" -- "1..1" soopl_ComplexTypeProperty : property58
+soopl_AssignProperty "1..1" -- "1..1" soopl_ComplexTypeProperty : property64
+soopl_StateClass "1..1" -- "1..1" soopl_StatefulClass : stateClass14
+soopl_StateClass "1..1" -- "1..1" soopl_StateImplementationClass : stateClass22
+soopl_StateClass "1..1" -- "1..1" soopl_StatefulClass : statefulClass16
+soopl_ParameterBinding "1..1" -- "0..1" soopl_Property : structuralFeatureBinding46
+soopl_Class "0..1" -- "1..1" soopl_Class : superClass11
+soopl_StateImplementationClass "1..1" -- "1..1" soopl_Transition : targetState37
+soopl_Transition "0..9999" --* "1..1" soopl_TransitionMethod : transitions32
+soopl_Class "1..1" -- "1..1" soopl_ComplexTypeProperty : type25
+@enduml

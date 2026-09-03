@@ -1,0 +1,33 @@
+@startuml
+class Person {
+}
+class familyleft2_Daughter {
+}
+class familyleft2_Family {
+}
+class familyleft2_Father {
+  + address : str
+}
+class familyleft2_Mother {
+  + address : str
+}
+abstract class familyleft2_Person {
+  + age : int
+  + isMale : bool
+  + name : str
+}
+class familyleft2_Son {
+}
+Person <|-- familyleft2_Daughter
+Person <|-- familyleft2_Father
+Person <|-- familyleft2_Mother
+Person <|-- familyleft2_Son
+familyleft2_Daughter "0..9999" --* "1..1" familyleft2_Family : daughters12
+familyleft2_Family "0..1" -- "1..1" familyleft2_Father : family0
+familyleft2_Family "0..1" -- "1..1" familyleft2_Mother : family1
+familyleft2_Family "0..1" -- "1..1" familyleft2_Son : family3
+familyleft2_Daughter "1..1" -- "0..1" familyleft2_Family : family5
+familyleft2_Family "1..1" *-- "0..1" familyleft2_Father : father7
+familyleft2_Family "1..1" *-- "0..1" familyleft2_Mother : mother8
+familyleft2_Family "1..1" *-- "0..9999" familyleft2_Son : sons10
+@enduml

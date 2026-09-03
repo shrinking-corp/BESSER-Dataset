@@ -1,0 +1,71 @@
+@startuml
+class BooleanExpression {
+}
+class Classifier {
+}
+class Extend {
+}
+class ExtensionPoint {
+}
+class Include {
+}
+class Instance {
+}
+class LocationReference {
+}
+class ModelElement {
+}
+class RelationShip {
+}
+class UseCase {
+}
+class UseCases_Actor {
+}
+class UseCases_BooleanExpression {
+  + value : str
+}
+class UseCases_Classifier {
+}
+class UseCases_Extend {
+}
+class UseCases_ExtensionPoint {
+}
+class UseCases_Include {
+}
+class UseCases_Instance {
+}
+class UseCases_LocationReference {
+  + value : str
+}
+abstract class UseCases_ModelElement {
+}
+abstract class UseCases_RelationShip {
+}
+class UseCases_UseCase {
+  + extensionPoint : str
+}
+class UseCases_UseCaseInstance {
+}
+Classifier <|-- UseCases_Actor
+Classifier <|-- UseCases_UseCase
+Instance <|-- UseCases_UseCaseInstance
+ModelElement <|-- UseCases_ExtensionPoint
+RelationShip <|-- UseCases_Extend
+RelationShip <|-- UseCases_Include
+UseCase "1..1" -- "1..1" UseCases_Include : addition10
+UseCase "1..1" -- "1..1" UseCases_Include : base11
+UseCase "1..1" -- "1..1" UseCases_Extend : base16
+Classifier "1..9999" -- "1..1" UseCases_Instance : classifier1
+BooleanExpression "1..1" -- "1..1" UseCases_Extend : condition13
+Extend "0..9999" -- "1..1" UseCases_ExtensionPoint : extend21
+Extend "1..1" -- "1..1" UseCases_UseCase : extendBase6
+Extend "1..1" -- "1..1" UseCases_UseCase : extendExtension5
+UseCase "1..1" -- "1..1" UseCases_Extend : extension14
+ExtensionPoint "1..9999" -- "1..1" UseCases_Extend : extensionPoint18
+ExtensionPoint "0..9999" -- "1..1" UseCases_UseCase : extensionPoints9
+Include "1..1" -- "1..1" UseCases_UseCase : includeAddition2
+Include "1..1" -- "1..1" UseCases_UseCase : includeBase3
+Instance "0..9999" -- "1..1" UseCases_Classifier : instance0
+LocationReference "1..1" -- "1..1" UseCases_ExtensionPoint : location20
+UseCase "0..9999" -- "1..1" UseCases_ExtensionPoint : useCase23
+@enduml

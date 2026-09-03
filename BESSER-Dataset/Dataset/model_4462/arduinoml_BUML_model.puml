@@ -1,0 +1,96 @@
+@startuml
+class Action {
+}
+class Actuator {
+}
+class Brick {
+}
+enum COMPARATOR {
+  EQUAL
+  INFERIOR
+  SUPERIOR
+}
+class Condition {
+}
+class NamedElement {
+}
+enum OPERATOR {
+  and_
+  or_
+}
+enum SIGNAL {
+  HIGH
+  LOW
+}
+class Sensor {
+}
+abstract class arduinoml_Action {
+}
+abstract class arduinoml_Actuator {
+}
+class arduinoml_AnalogAction {
+  + actionValue : int
+}
+class arduinoml_AnalogActuator {
+}
+class arduinoml_AnalogSensor {
+}
+class arduinoml_App {
+}
+class arduinoml_BinaryAction {
+  + actionValue : str
+}
+class arduinoml_BinaryActuator {
+}
+class arduinoml_BinarySensor {
+}
+class arduinoml_Brick {
+  + pin : str
+}
+abstract class arduinoml_Condition {
+}
+class arduinoml_MultipleElementCondition {
+  + operators : str
+}
+abstract class arduinoml_NamedElement {
+  + name : str
+}
+abstract class arduinoml_Sensor {
+}
+class arduinoml_SingleElementCondition {
+  + value : str
+}
+class arduinoml_State {
+}
+class arduinoml_Transition {
+}
+class arduinoml_ValueElementCondition {
+  + comparator : str
+  + value : float
+}
+Action <|-- arduinoml_AnalogAction
+Action <|-- arduinoml_BinaryAction
+Actuator <|-- arduinoml_AnalogActuator
+Actuator <|-- arduinoml_BinaryActuator
+Brick <|-- arduinoml_Actuator
+Brick <|-- arduinoml_Sensor
+Condition <|-- arduinoml_MultipleElementCondition
+Condition <|-- arduinoml_SingleElementCondition
+Condition <|-- arduinoml_ValueElementCondition
+NamedElement <|-- arduinoml_App
+NamedElement <|-- arduinoml_Brick
+NamedElement <|-- arduinoml_State
+Sensor <|-- arduinoml_AnalogSensor
+Sensor <|-- arduinoml_BinarySensor
+arduinoml_Action "1..9999" --* "1..1" arduinoml_State : actions6
+arduinoml_Action "1..1" -- "1..1" arduinoml_Actuator : actuator10
+arduinoml_App "1..1" *-- "1..9999" arduinoml_Brick : bricks1
+arduinoml_MultipleElementCondition "1..1" --* "1..1" arduinoml_Transition : condition15
+arduinoml_Condition "1..9999" --* "1..1" arduinoml_MultipleElementCondition : conditions18
+arduinoml_App "1..1" -- "1..1" arduinoml_State : initial3
+arduinoml_State "1..1" -- "1..1" arduinoml_Transition : next12
+arduinoml_BinarySensor "1..1" -- "1..1" arduinoml_SingleElementCondition : sensor17
+arduinoml_AnalogSensor "1..1" -- "1..1" arduinoml_ValueElementCondition : sensor20
+arduinoml_App "1..1" *-- "1..9999" arduinoml_State : states0
+arduinoml_State "1..1" *-- "1..1" arduinoml_Transition : transition8
+@enduml

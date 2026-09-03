@@ -1,0 +1,43 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+abstract class adl199_AbstractComponent {
+  + name : str
+}
+class adl199_AtomicComponent {
+}
+class adl199_Binding {
+}
+class adl199_Component {
+}
+class adl199_Content {
+  + expression : str
+  + language : str
+}
+class adl199_Delegation {
+}
+abstract class adl199_Interface {
+  + name : str
+  + signature : str
+}
+class adl199_Provided {
+}
+class adl199_Required {
+}
+AbstractComponent <|-- adl199_AtomicComponent
+AbstractComponent <|-- adl199_Component
+Interface <|-- adl199_Delegation
+Interface <|-- adl199_Provided
+Interface <|-- adl199_Required
+adl199_Binding "0..9999" --* "1..1" adl199_Interface : bindings7
+adl199_AbstractComponent "1..1" *-- "0..1" adl199_Content : content0
+adl199_AbstractComponent "1..1" *-- "0..9999" adl199_Delegation : delegationInterfaces5
+adl199_Binding "1..1" -- "0..1" adl199_Interface : from_8
+adl199_AbstractComponent "1..1" -- "1..1" adl199_Content : parent14
+adl199_AbstractComponent "1..1" *-- "0..9999" adl199_Provided : providedInterfaces3
+adl199_AbstractComponent "1..1" *-- "0..9999" adl199_Required : requiredInterfaces1
+adl199_AbstractComponent "0..9999" --* "1..1" adl199_Component : subComponents17
+adl199_Binding "1..1" -- "0..1" adl199_Interface : to11
+@enduml

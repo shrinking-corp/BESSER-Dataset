@@ -1,0 +1,82 @@
+@startuml
+class Node {
+}
+class remember_Customer {
+  + customerId : str
+  + name : str
+}
+class remember_Customers {
+}
+class remember_Folder {
+}
+class remember_InvoiceSpecification {
+  + month : int
+}
+class remember_KeyIdPair {
+  + id : str
+  + key : str
+}
+class remember_KeyManager {
+}
+abstract class remember_Node {
+  + dateCreated : date
+  + dateModified : date
+  + description : str
+  + markedForDeletion : bool
+  + name : str
+  + nodeId : str
+  + nodeType : str
+  + parentNodeId : str
+  + parentNodeType : str
+  + sequence : int
+}
+class remember_Project {
+  + description : str
+  + projectId : str
+  + projectNumber : str
+}
+class remember_Task {
+  + budget : str
+  + done : bool
+  + priority : str
+  + status : str
+  + taskId : int
+  + text : str
+}
+class remember_TimeSpent {
+  + comment : str
+  + date : date
+  + invoiced : bool
+  + minutes : int
+  + timeSpentId : str
+}
+class remember_Year {
+  + year : int
+}
+class remember_Years {
+}
+Node <|-- remember_Folder
+Node <|-- remember_Task
+remember_Folder "1..1" -- "0..9999" remember_Task : Tasks0
+remember_Customer "0..1" -- "1..1" remember_Node : customer11
+remember_Customer "1..1" -- "1..1" remember_Project : customer19
+remember_Customer "0..9999" -- "1..1" remember_Customers : customers23
+remember_Folder "1..1" -- "0..9999" remember_Folder : folders2
+remember_InvoiceSpecification "1..1" -- "1..1" remember_TimeSpent : invoiceSpecification28
+remember_InvoiceSpecification "0..9999" -- "1..1" remember_Year : invoiceSpecifications30
+remember_KeyIdPair "0..9999" --* "1..1" remember_KeyManager : keyIdPairs14
+remember_Customer "1..1" -- "0..9999" remember_Node : nodes17
+remember_Node "0..9999" -- "1..1" remember_Project : nodes21
+remember_Folder "1..1" -- "0..1" remember_Folder : parent5
+remember_Folder "0..1" -- "1..1" remember_Task : parent8
+remember_Node "1..1" -- "0..1" remember_Project : project12
+remember_Project "0..1" -- "1..1" remember_TimeSpent : project25
+remember_Customer "1..1" -- "0..9999" remember_Project : projects15
+remember_Task "1..1" -- "1..1" remember_TimeSpent : task26
+remember_Task "1..1" -- "0..9999" remember_TimeSpent : timeSpent10
+remember_InvoiceSpecification "1..1" -- "0..9999" remember_TimeSpent : timeSpent34
+remember_Customers "0..1" -- "1..1" remember_Folder : workspace7
+remember_InvoiceSpecification "1..1" -- "1..1" remember_Year : year36
+remember_Year "0..9999" -- "1..1" remember_Years : year37
+remember_Year "1..1" -- "1..1" remember_Years : years32
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+class AbstractDefinition {
+}
+class Expression {
+}
+class rankPL_AbstractDefinition {
+  + name : str
+}
+class rankPL_DeclaredParameter {
+}
+class rankPL_Definition {
+}
+class rankPL_Div {
+}
+class rankPL_Expression {
+}
+class rankPL_FunctionCall {
+}
+class rankPL_Minus {
+}
+class rankPL_Model {
+}
+class rankPL_Multi {
+}
+class rankPL_NumberLiteral {
+  + value : str
+}
+class rankPL_Plus {
+}
+AbstractDefinition <|-- rankPL_DeclaredParameter
+AbstractDefinition <|-- rankPL_Definition
+Expression <|-- rankPL_Div
+Expression <|-- rankPL_FunctionCall
+Expression <|-- rankPL_Minus
+Expression <|-- rankPL_Multi
+Expression <|-- rankPL_NumberLiteral
+Expression <|-- rankPL_Plus
+rankPL_Expression "0..9999" --* "1..1" rankPL_FunctionCall : args24
+rankPL_Definition "1..1" *-- "0..1" rankPL_Expression : expr1
+rankPL_AbstractDefinition "0..1" -- "1..1" rankPL_FunctionCall : func22
+rankPL_AbstractDefinition "0..9999" --* "1..1" rankPL_Model : greetings0
+rankPL_Expression "0..1" --* "1..1" rankPL_Multi : left12
+rankPL_Div "1..1" *-- "0..1" rankPL_Expression : left17
+rankPL_Expression "0..1" --* "1..1" rankPL_Plus : left2
+rankPL_Expression "0..1" --* "1..1" rankPL_Minus : left7
+rankPL_Expression "0..1" --* "1..1" rankPL_Multi : right14
+rankPL_Div "1..1" *-- "0..1" rankPL_Expression : right19
+rankPL_Expression "0..1" --* "1..1" rankPL_Plus : right4
+rankPL_Expression "0..1" --* "1..1" rankPL_Minus : right9
+@enduml

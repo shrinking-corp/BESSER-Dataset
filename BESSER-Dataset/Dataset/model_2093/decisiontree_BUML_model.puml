@@ -1,0 +1,34 @@
+@startuml
+class DecisionTreeNode {
+}
+class DecisionTree_DecisionTreeForEntity {
+}
+abstract class DecisionTree_DecisionTreeNode {
+}
+class DecisionTree_DecisionTrees {
+  + name : str
+}
+class DecisionTree_EntityType {
+}
+class DecisionTree_IntermediateNode {
+}
+class DecisionTree_LeafNode {
+}
+class DecisionTree_Property {
+}
+class DecisionTree_PropertySpec2 {
+  + needsTypeCheck : bool
+}
+class DecisionTree_StructuralVariation {
+}
+DecisionTreeNode <|-- DecisionTree_IntermediateNode
+DecisionTreeNode <|-- DecisionTree_LeafNode
+DecisionTree_IntermediateNode "1..1" *-- "1..1" DecisionTree_PropertySpec2 : checkedProperty6
+DecisionTree_DecisionTreeForEntity "1..1" -- "1..1" DecisionTree_EntityType : entity9
+DecisionTree_LeafNode "1..1" -- "1..1" DecisionTree_StructuralVariation : identifiedVariation5
+DecisionTree_DecisionTreeNode "0..1" --* "1..1" DecisionTree_DecisionTreeNode : noBranch3
+DecisionTree_Property "1..1" -- "1..1" DecisionTree_PropertySpec2 : property13
+DecisionTree_DecisionTreeForEntity "1..1" *-- "0..1" DecisionTree_DecisionTreeNode : root7
+DecisionTree_DecisionTreeForEntity "0..9999" --* "1..1" DecisionTree_DecisionTrees : trees11
+DecisionTree_DecisionTreeNode "1..1" *-- "0..1" DecisionTree_DecisionTreeNode : yesBranch1
+@enduml

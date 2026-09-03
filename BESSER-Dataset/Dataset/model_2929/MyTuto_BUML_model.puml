@@ -1,0 +1,37 @@
+@startuml
+class AbstractElement {
+}
+class Type {
+}
+class myTuto_AbstractElement {
+}
+class myTuto_DataType {
+}
+class myTuto_Entity {
+}
+class myTuto_Feature {
+  + many : bool
+  + name : str
+}
+class myTuto_Import {
+  + importedNameSpace : str
+}
+class myTuto_MyTuto {
+}
+class myTuto_PackageDeclaration {
+  + name : str
+}
+class myTuto_Type {
+  + name : str
+}
+AbstractElement <|-- myTuto_Import
+AbstractElement <|-- myTuto_PackageDeclaration
+AbstractElement <|-- myTuto_Type
+Type <|-- myTuto_DataType
+Type <|-- myTuto_Entity
+myTuto_AbstractElement "0..9999" --* "1..1" myTuto_MyTuto : elements0
+myTuto_AbstractElement "0..9999" --* "1..1" myTuto_PackageDeclaration : elements1
+myTuto_Entity "1..1" *-- "0..9999" myTuto_Feature : features5
+myTuto_Entity "1..1" -- "0..1" myTuto_Entity : superType4
+myTuto_Feature "1..1" -- "0..1" myTuto_Type : type7
+@enduml

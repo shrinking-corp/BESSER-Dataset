@@ -1,0 +1,41 @@
+@startuml
+class TraceElement {
+}
+class trace_ExecutionContext {
+  + modelsIds : str
+  + scriptId : str
+}
+class trace_ModelElement {
+  + element_id : str
+}
+class trace_ModuleElement {
+  + module_id : str
+}
+class trace_Property {
+  + name : str
+}
+class trace_Trace {
+}
+abstract class trace_TraceElement {
+  + id : str
+}
+TraceElement <|-- trace_ExecutionContext
+TraceElement <|-- trace_ModelElement
+TraceElement <|-- trace_ModuleElement
+TraceElement <|-- trace_Property
+TraceElement <|-- trace_Trace
+trace_Property "0..9999" -- "1..1" trace_Trace : accesses15
+trace_ExecutionContext "1..1" -- "0..9999" trace_Trace : contains1
+trace_ExecutionContext "0..9999" -- "1..1" trace_ModelElement : executionContext17
+trace_ExecutionContext "0..1" -- "1..1" trace_Trace : executionContext7
+trace_ExecutionContext "0..9999" -- "1..1" trace_ModuleElement : executionContexts4
+trace_ExecutionContext "1..1" -- "0..9999" trace_ModuleElement : for_0
+trace_ExecutionContext "1..1" -- "0..9999" trace_ModelElement : involves2
+trace_ModelElement "1..1" -- "1..1" trace_Property : modelElement23
+trace_ModelElement "1..1" -- "0..9999" trace_Property : owns21
+trace_ModelElement "0..9999" -- "1..1" trace_Trace : reaches12
+trace_ModelElement "1..1" -- "0..9999" trace_Trace : traces19
+trace_Property "1..1" -- "0..9999" trace_Trace : traces25
+trace_ModuleElement "1..1" -- "0..9999" trace_Trace : traces5
+trace_ModuleElement "1..1" -- "1..1" trace_Trace : traces9
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+class Arc {
+}
+class ArcSortant {
+}
+class Element {
+}
+abstract class petrinet_Arc {
+  + nbJetons : int
+}
+class petrinet_ArcEntrant {
+}
+class petrinet_ArcSortant {
+}
+abstract class petrinet_Element {
+  + nom : str
+}
+class petrinet_Place {
+  + jetons : int
+}
+class petrinet_ReadArc {
+}
+class petrinet_Reseau {
+  + nom : str
+}
+class petrinet_Transition {
+}
+Arc <|-- petrinet_ArcEntrant
+Arc <|-- petrinet_ArcSortant
+ArcSortant <|-- petrinet_ReadArc
+Element <|-- petrinet_Place
+Element <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_Reseau : arcs9
+petrinet_Element "1..9999" --* "1..1" petrinet_Reseau : elements8
+petrinet_ArcSortant "1..1" -- "1..1" petrinet_Place : predecesseur3
+petrinet_ArcEntrant "1..1" -- "1..1" petrinet_Transition : predecesseur6
+petrinet_ArcSortant "1..9999" -- "1..1" petrinet_Transition : predecesseurs0
+petrinet_ArcSortant "1..1" -- "1..1" petrinet_Transition : successeur2
+petrinet_ArcEntrant "1..1" -- "1..1" petrinet_Place : successeur4
+petrinet_ArcEntrant "1..9999" -- "1..1" petrinet_Transition : successeurs1
+@enduml

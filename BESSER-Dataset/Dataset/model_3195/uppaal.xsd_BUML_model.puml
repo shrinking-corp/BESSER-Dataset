@@ -1,0 +1,102 @@
+@startuml
+class Uppaal_DeclarationType {
+  + mixed : str
+}
+class Uppaal_DocumentRoot {
+  + committed : str
+  + mixed : str
+  + urgent : str
+}
+class Uppaal_EStringToStringMapEntry {
+}
+class Uppaal_ImportsType {
+  + mixed : str
+}
+class Uppaal_InitType {
+  + ref : str
+}
+class Uppaal_InstantiationType {
+  + mixed : str
+}
+class Uppaal_LabelType {
+  + kind : str
+  + mixed : str
+  + x : str
+  + y : str
+}
+class Uppaal_LocationType {
+  + color : str
+  + committed : str
+  + id : str
+  + urgent : str
+  + x : str
+  + y : str
+}
+class Uppaal_NailType {
+  + x : str
+  + y : str
+}
+class Uppaal_NameType {
+  + mixed : str
+  + x : str
+  + y : str
+}
+class Uppaal_NtaType {
+}
+class Uppaal_ParameterType {
+  + mixed : str
+  + x : str
+  + y : str
+}
+class Uppaal_SourceType {
+  + ref : str
+}
+class Uppaal_SystemType {
+  + mixed : str
+}
+class Uppaal_TargetType {
+  + ref : str
+}
+class Uppaal_TemplateType {
+}
+class Uppaal_TransitionType {
+  + color : str
+  + id : str
+  + x : str
+  + y : str
+}
+Uppaal_DeclarationType "0..9999" --* "1..1" Uppaal_DocumentRoot : declaration4
+Uppaal_DeclarationType "0..1" --* "1..1" Uppaal_NtaType : declaration43
+Uppaal_DeclarationType "0..1" --* "1..1" Uppaal_TemplateType : declaration61
+Uppaal_ImportsType "0..1" --* "1..1" Uppaal_NtaType : imports40
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_ImportsType : imports6
+Uppaal_InitType "0..1" --* "1..1" Uppaal_TemplateType : init67
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_InitType : init8
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_InstantiationType : instantiation10
+Uppaal_InstantiationType "0..1" --* "1..1" Uppaal_NtaType : instantiation49
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_LabelType : label12
+Uppaal_LabelType "0..9999" --* "1..1" Uppaal_LocationType : label37
+Uppaal_LabelType "0..9999" --* "1..1" Uppaal_TransitionType : label79
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_LocationType : location14
+Uppaal_LocationType "0..9999" --* "1..1" Uppaal_TemplateType : location64
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_NailType : nail16
+Uppaal_NailType "0..9999" --* "1..1" Uppaal_TransitionType : nail82
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_NameType : name18
+Uppaal_LocationType "1..1" *-- "0..1" Uppaal_NameType : name34
+Uppaal_NameType "1..1" --* "1..1" Uppaal_TemplateType : name55
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_NtaType : nta20
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_ParameterType : parameter22
+Uppaal_ParameterType "0..1" --* "1..1" Uppaal_TemplateType : parameter58
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_SourceType : source24
+Uppaal_SourceType "1..1" --* "1..1" Uppaal_TransitionType : source73
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_SystemType : system26
+Uppaal_NtaType "1..1" *-- "1..1" Uppaal_SystemType : system52
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_TargetType : target28
+Uppaal_TargetType "1..1" --* "1..1" Uppaal_TransitionType : target76
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_TemplateType : template30
+Uppaal_NtaType "1..1" *-- "1..9999" Uppaal_TemplateType : template46
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_TransitionType : transition32
+Uppaal_TemplateType "1..1" *-- "0..9999" Uppaal_TransitionType : transition70
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_EStringToStringMapEntry : xMLNSPrefixMap0
+Uppaal_DocumentRoot "1..1" *-- "0..9999" Uppaal_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

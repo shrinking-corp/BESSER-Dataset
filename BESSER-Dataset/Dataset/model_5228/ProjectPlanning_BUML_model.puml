@@ -1,0 +1,31 @@
+@startuml
+class projectPlanning_Assignment {
+}
+class projectPlanning_Capability {
+  + name : str
+}
+class projectPlanning_Employee {
+  + hasResource : int
+  + name : str
+}
+class projectPlanning_Project {
+  + name : str
+  + requiresResources : int
+}
+class projectPlanning_ProjectPlan {
+}
+class projectPlanning_Rating {
+  + rating : int
+}
+projectPlanning_Assignment "0..9999" --* "1..1" projectPlanning_ProjectPlan : assignments7
+projectPlanning_Capability "0..9999" --* "1..1" projectPlanning_ProjectPlan : capabilities0
+projectPlanning_Capability "0..1" -- "1..1" projectPlanning_Rating : capability18
+projectPlanning_Assignment "1..1" -- "0..1" projectPlanning_Employee : employee24
+projectPlanning_Employee "0..9999" --* "1..1" projectPlanning_ProjectPlan : employees1
+projectPlanning_Capability "0..9999" -- "1..1" projectPlanning_Employee : hasCapabilities12
+projectPlanning_Assignment "1..1" -- "0..1" projectPlanning_Project : project21
+projectPlanning_Project "0..9999" --* "1..1" projectPlanning_ProjectPlan : projects3
+projectPlanning_Employee "1..1" *-- "0..9999" projectPlanning_Rating : ratings15
+projectPlanning_ProjectPlan "1..1" *-- "0..9999" projectPlanning_Rating : ratings5
+projectPlanning_Capability "0..9999" -- "1..1" projectPlanning_Project : requiresCapabilities9
+@enduml

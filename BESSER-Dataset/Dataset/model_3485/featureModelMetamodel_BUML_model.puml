@@ -1,0 +1,69 @@
+@startuml
+class Feature {
+}
+class Multiplicity_ {
+}
+class Selection {
+}
+enum SelectionState {
+  selected
+  unselected
+}
+enum VariabilityType {
+  alternative
+  mandatory
+  optional
+  or_
+}
+class featureModelMetamodel_AbstractFeature {
+}
+class featureModelMetamodel_Attribute {
+}
+class featureModelMetamodel_ClonableFeature {
+}
+class featureModelMetamodel_ClonableSelection {
+  + instance : str
+}
+class featureModelMetamodel_ConfigurationModel {
+}
+class featureModelMetamodel_Constraint {
+  + code : str
+  + id : str
+  + language : str
+}
+class featureModelMetamodel_Feature {
+  + id : str
+  + name : str
+  + variabilityType : str
+}
+class featureModelMetamodel_FeatureModel {
+}
+class featureModelMetamodel_GroupMultiplicity {
+}
+class featureModelMetamodel_Multiplicity_ {
+  + lower : str
+  + upper : str
+}
+class featureModelMetamodel_Selection {
+  + name : str
+  + state : str
+}
+class featureModelMetamodel_VariableFeature {
+}
+Feature <|-- featureModelMetamodel_AbstractFeature
+Feature <|-- featureModelMetamodel_ClonableFeature
+Feature <|-- featureModelMetamodel_VariableFeature
+Multiplicity_ <|-- featureModelMetamodel_GroupMultiplicity
+Selection <|-- featureModelMetamodel_ClonableSelection
+featureModelMetamodel_Attribute "0..9999" --* "1..1" featureModelMetamodel_Feature : attributes4
+featureModelMetamodel_Feature "1..1" *-- "0..9999" featureModelMetamodel_Feature : children1
+featureModelMetamodel_Constraint "0..9999" --* "1..1" featureModelMetamodel_FeatureModel : constraints12
+featureModelMetamodel_Feature "1..1" -- "1..1" featureModelMetamodel_Selection : feature20
+featureModelMetamodel_Feature "0..9999" -- "1..1" featureModelMetamodel_FeatureModel : features14
+featureModelMetamodel_Feature "0..9999" -- "1..1" featureModelMetamodel_GroupMultiplicity : features17
+featureModelMetamodel_Feature "1..1" *-- "0..1" featureModelMetamodel_GroupMultiplicity : groupMultiplicity2
+featureModelMetamodel_ClonableFeature "1..1" *-- "1..1" featureModelMetamodel_Multiplicity_ : instanceMultiplicity9
+featureModelMetamodel_Feature "0..1" -- "1..1" featureModelMetamodel_Feature : parent7
+featureModelMetamodel_Feature "1..1" --* "1..1" featureModelMetamodel_FeatureModel : root10
+featureModelMetamodel_ConfigurationModel "1..1" *-- "0..9999" featureModelMetamodel_Selection : selections22
+@enduml

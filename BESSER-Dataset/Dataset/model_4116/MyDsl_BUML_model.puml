@@ -1,0 +1,120 @@
+@startuml
+class myDsl_AffectVar {
+}
+class myDsl_Commande {
+  + nop : str
+}
+class myDsl_Commandes {
+}
+class myDsl_Cons {
+}
+class myDsl_Expr {
+}
+class myDsl_ExprAnd {
+}
+class myDsl_ExprEq {
+}
+class myDsl_ExprNot {
+}
+class myDsl_ExprNotDo {
+}
+class myDsl_ExprNotNot {
+}
+class myDsl_ExprOr {
+}
+class myDsl_ExprSimple {
+  + symbole : str
+  + variable : str
+  + vide : str
+}
+class myDsl_Exprs {
+}
+class myDsl_Fonction {
+  + symbole : str
+}
+class myDsl_For {
+}
+class myDsl_Foreach {
+}
+class myDsl_Hd {
+}
+class myDsl_If {
+}
+class myDsl_Input {
+  + var1 : str
+  + var2 : str
+}
+class myDsl_LExpr {
+}
+class myDsl_Liste {
+}
+class myDsl_Model {
+}
+class myDsl_Output {
+  + var1 : str
+  + var2 : str
+}
+class myDsl_Programme {
+}
+class myDsl_SymboleEx {
+  + p : str
+}
+class myDsl_Tl {
+}
+class myDsl_Vars {
+  + var2 : str
+  + var3 : str
+}
+class myDsl_While {
+}
+myDsl_AffectVar "0..1" --* "1..1" myDsl_Commande : affectVar14
+myDsl_Commande "0..1" --* "1..1" myDsl_Commandes : com19
+myDsl_Commande "0..9999" --* "1..1" myDsl_Commandes : com211
+myDsl_Commandes "0..1" --* "1..1" myDsl_While : com330
+myDsl_Commandes "0..1" --* "1..1" myDsl_For : com436
+myDsl_Commandes "0..1" --* "1..1" myDsl_Fonction : com5
+myDsl_Commandes "0..1" --* "1..1" myDsl_If : com542
+myDsl_Commandes "0..1" --* "1..1" myDsl_If : com645
+myDsl_Commandes "0..1" --* "1..1" myDsl_Foreach : com754
+myDsl_Cons "0..1" --* "1..1" myDsl_ExprSimple : cons67
+myDsl_Expr "0..1" --* "1..1" myDsl_While : exp228
+myDsl_AffectVar "1..1" *-- "0..1" myDsl_Exprs : exp26
+myDsl_Expr "0..1" --* "1..1" myDsl_For : exp333
+myDsl_Expr "0..1" --* "1..1" myDsl_If : exp439
+myDsl_Expr "0..1" --* "1..1" myDsl_Foreach : exp548
+myDsl_Expr "0..1" --* "1..1" myDsl_Foreach : exp651
+myDsl_Expr "1..1" *-- "0..1" myDsl_ExprAnd : expA63
+myDsl_ExprEq "0..1" --* "1..1" myDsl_ExprNotNot : expEq1108
+myDsl_ExprEq "0..1" --* "1..1" myDsl_ExprNotDo : expEq2110
+myDsl_Expr "0..9999" --* "1..1" myDsl_LExpr : expLe91
+myDsl_ExprNot "0..9999" --* "1..1" myDsl_ExprOr : expN2101
+myDsl_ExprNot "0..1" --* "1..1" myDsl_ExprOr : expN99
+myDsl_ExprAnd "1..1" *-- "0..9999" myDsl_ExprOr : expO296
+myDsl_ExprAnd "1..1" *-- "0..1" myDsl_ExprOr : expO94
+myDsl_Expr "0..1" --* "1..1" myDsl_ExprEq : expR119
+myDsl_ExprEq "1..1" *-- "0..1" myDsl_ExprSimple : expS1113
+myDsl_ExprEq "1..1" *-- "0..1" myDsl_ExprSimple : expS2116
+myDsl_Expr "1..1" *-- "0..1" myDsl_ExprSimple : expS65
+myDsl_ExprNot "1..1" *-- "0..1" myDsl_ExprNotDo : exprNotDo106
+myDsl_ExprNot "1..1" *-- "0..1" myDsl_ExprNotNot : exprNotNot104
+myDsl_Expr "0..9999" --* "1..1" myDsl_Exprs : exprS260
+myDsl_Expr "0..1" --* "1..1" myDsl_Exprs : exprS57
+myDsl_Fonction "0..9999" --* "1..1" myDsl_Programme : fonct1
+myDsl_Commande "1..1" *-- "0..1" myDsl_For : forC18
+myDsl_Commande "1..1" *-- "0..1" myDsl_Foreach : foreachC22
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_Hd : hd71
+myDsl_Commande "1..1" *-- "0..1" myDsl_If : ifC20
+myDsl_Fonction "1..1" *-- "0..1" myDsl_Input : in_3
+myDsl_Cons "1..1" *-- "0..1" myDsl_LExpr : le177
+myDsl_LExpr "0..1" --* "1..1" myDsl_Liste : le279
+myDsl_Expr "0..1" --* "1..1" myDsl_Hd : le382
+myDsl_Expr "0..1" --* "1..1" myDsl_Tl : le485
+myDsl_LExpr "0..1" --* "1..1" myDsl_SymboleEx : le588
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_Liste : liste69
+myDsl_Fonction "1..1" *-- "0..1" myDsl_Output : out7
+myDsl_Model "1..1" *-- "0..1" myDsl_Programme : programme0
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_SymboleEx : symbolEx75
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_Tl : tl73
+myDsl_AffectVar "1..1" *-- "0..1" myDsl_Vars : var124
+myDsl_Commande "1..1" *-- "0..1" myDsl_While : whileC16
+@enduml

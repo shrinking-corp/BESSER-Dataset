@@ -1,0 +1,102 @@
+@startuml
+class AbstractTest {
+}
+class InterfaceTest {
+}
+class MultipleSuperTest {
+}
+class OperationsTest {
+}
+enum SerializableEnumTest {
+  name3
+  name4
+}
+enum UnserializableEnumTest {
+  name1
+  name2
+}
+abstract class exhaustive_AbstractTest {
+}
+class exhaustive_AttributesTest {
+  + changeableNo : str
+  + changeableYes : float
+  + defaultValue : str
+  + derivedNo : str
+  + derivedYes : str
+  + idNo : str
+  + idYes : str
+  + lowerBound0 : int
+  + lowerBound1 : str
+  + lowerBound2 : str
+  + lowerBoundN : str
+  + orderedYes : str
+  + orderenedNo : str
+  + transientNo : str
+  + transientYes : float
+  + uniqueNo : str
+  + uniqueYes : str
+  + unsettableNo : str
+  + unsettableYes : str
+  + upperBound0 : str
+  + upperBound1 : date
+  + upperBound2 : str
+  + upperBoundN : str
+  + volatileNo : str
+  + volatileYes : str
+}
+class exhaustive_BindedChildTest {
+}
+class exhaustive_GenericTest {
+  + genericAttr : str
+  + complexGenericOperation() : void
+  + genericOperationParameters(exhaustive_bar : str, exhaustive_foo : str) : void
+  + genericOperationReturn() : void
+  + genericOperationThrow() : void
+  + multipleBoundsGenericOperation() : void
+}
+abstract class exhaustive_InterfaceTest {
+}
+class exhaustive_MultipleBoundsGeneric {
+}
+class exhaustive_MultipleSuperTest {
+}
+class exhaustive_OperationsTest {
+  + empty() : void
+  + lowerBound1() : str
+  + lowerBound2() : InterfaceTest
+  + manyParameters(exhaustive_p1 : str, exhaustive_p2 : str) : void
+  + orderedNo() : void
+  + uniqueNo() : void
+  + upperBound2() : str
+  + upperBoundN() : str
+}
+class exhaustive_PartiallyBindedChildTest {
+}
+class exhaustive_ReferencesTest {
+}
+class exhaustive_UnbindedChildTest {
+}
+AbstractTest <|-- exhaustive_MultipleSuperTest
+AbstractTest <|-- exhaustive_ReferencesTest
+InterfaceTest <|-- exhaustive_AttributesTest
+InterfaceTest <|-- exhaustive_MultipleSuperTest
+MultipleSuperTest <|-- exhaustive_AttributesTest
+OperationsTest <|-- exhaustive_AbstractTest
+OperationsTest <|-- exhaustive_InterfaceTest
+exhaustive_AbstractTest "0..1" -- "1..1" exhaustive_ReferencesTest : changeableNo1
+exhaustive_AbstractTest "0..1" -- "1..1" exhaustive_ReferencesTest : changeableYes0
+exhaustive_MultipleSuperTest "0..1" --* "1..1" exhaustive_ReferencesTest : containmentYes4
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : derivedYes24
+exhaustive_AttributesTest "1..1" -- "1..1" exhaustive_ReferencesTest : lowerBound133
+exhaustive_AttributesTest "2..9999" -- "1..1" exhaustive_ReferencesTest : lowerBound236
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : opposite16
+exhaustive_AttributesTest "1..1" -- "0..1" exhaustive_ReferencesTest : opposite239
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : orderedFalse7
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : resolveProxiesFalse9
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : transientTrue12
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : uniqueFalse15
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : unsettableTrue18
+exhaustive_AttributesTest "0..2" -- "1..1" exhaustive_ReferencesTest : upperBound230
+exhaustive_AttributesTest "0..9999" -- "1..1" exhaustive_ReferencesTest : upperBoundN27
+exhaustive_AttributesTest "0..1" -- "1..1" exhaustive_ReferencesTest : volatileTrue21
+@enduml

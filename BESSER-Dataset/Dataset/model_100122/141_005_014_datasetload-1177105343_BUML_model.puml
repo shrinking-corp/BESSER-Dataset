@@ -1,0 +1,48 @@
+@startuml
+class DataSource {
+}
+abstract class datasetload_DataSource {
+  + Connected : bool
+  + Name : str
+  + connect() : void
+  + disconnect() : void
+  + loadTableImpl(datasetload_table : str) : void
+}
+class datasetload_DataSourceJdbc {
+  + DataBaseUser : str
+  + DataBaseUserPwd : str
+  + DefaultSchema : str
+}
+abstract class datasetload_Table {
+  + ColumnTableRowAttributes : str
+  + KeyColumns : int
+  + LastLoad : date
+  + Name : str
+  + NumberOfRows : int
+  + ParamTableGroupAttributes : str
+  + SQLStatement : str
+  + addRow(datasetload_row : str) : void
+  + getRow(datasetload_key : str) : str
+  + load() : void
+  + newRow() : str
+  + refresh() : void
+  + removeRow(datasetload_row : str) : void
+}
+abstract class datasetload_TableGroup {
+  + Name : str
+  + load() : void
+  + refresh() : void
+}
+abstract class datasetload_TableRow {
+  + Key : str
+  + NewRow : bool
+  + RowNumber : int
+  + refresh() : void
+}
+DataSource <|-- datasetload_DataSourceJdbc
+datasetload_DataSource "0..1" -- "1..1" datasetload_TableGroup : DataSource1
+datasetload_Table "1..1" -- "0..9999" datasetload_TableRow : Rows6
+datasetload_Table "0..1" -- "1..1" datasetload_TableRow : Table8
+datasetload_Table "1..1" -- "1..1" datasetload_TableGroup : TableGroup3
+datasetload_Table "0..9999" -- "1..1" datasetload_TableGroup : Tables0
+@enduml

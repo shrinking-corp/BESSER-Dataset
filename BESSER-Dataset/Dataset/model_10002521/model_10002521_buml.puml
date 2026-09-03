@@ -1,0 +1,70 @@
+@startuml
+class Authentication_Actor {
+}
+class Cancellation {
+  + amount : str
+  + customerID : str
+  + productID : str
+}
+class Client_Register_external {
+}
+class Customer {
+  + address : str
+  + loginName : str
+  + mobileNo : int
+}
+class Identity_Provider_Actor {
+}
+class Make_Purchase_external {
+}
+class New_Customer_Actor {
+}
+class Online_grocery_shopping_Component {
+}
+class Payment {
+  + amount : int
+  + customerId : str
+  + productID : str
+}
+class Product {
+  + name : str
+  + price : int
+  + productID : str
+  + quantity : int
+}
+class Registered_customer__Actor {
+}
+class Shopping_Cart {
+  + cartId : str
+  + dateAdded : str
+  + quantity : int
+}
+class Supplier {
+  + address : str
+  + suppID : str
+  + suppName : str
+}
+class View_Items_external {
+}
+class administrator {
+  + adminName : str
+  + email : str
+}
+class user {
+  + loginStatus : str
+  + password : str
+  + userID : str
+}
+class web_customer_Actor {
+}
+Customer "1..1" -- "0..9999" Shopping_Cart : Customer_Shopping_Cart
+Client_Register_external "0..1" -- "0..1" New_Customer_Actor : New_Customer_Client_Register
+New_Customer_Actor "0..1" -- "0..1" View_Items_external : New_Customer_View_Items
+Cancellation "1..1" -- "1..1" Product : Product_Cancellation
+Product "1..1" -- "0..9999" Supplier : Product_Supplier
+Make_Purchase_external "0..1" -- "0..1" Registered_customer__Actor : Registered_customer__Make_Purchase
+Registered_customer__Actor "0..1" -- "0..1" View_Items_external : Registered_customer__View_Items
+Payment "0..9999" -- "1..1" Shopping_Cart : Shopping_Cart_Payment
+Product "0..9999" -- "1..1" Shopping_Cart : Shopping_Cart_Product
+user "0..1" -- "0..1" user : user_user
+@enduml

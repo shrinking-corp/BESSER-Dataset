@@ -1,0 +1,400 @@
+@startuml
+class Conflict {
+}
+class Dependence {
+}
+class File {
+}
+class InstalledPackage {
+}
+class NamedElement {
+}
+class Package {
+}
+enum PriorityType {
+  extra
+  important
+  optional
+  required
+  standard
+}
+enum StatusType {
+  config_files
+  half_configured
+  half_installed
+  installed
+  not_installed
+  unpacked
+}
+class UnpackedPackage {
+}
+enum VersionType {
+  eq
+  ge
+  ggt
+  gt
+  le
+  llt
+  lt
+}
+class mancoosimm_Alternative {
+}
+class mancoosimm_AndConflict {
+}
+class mancoosimm_AndDep {
+}
+class mancoosimm_AndInv {
+}
+class mancoosimm_ApplicationMenuCatalog {
+}
+class mancoosimm_Atom {
+}
+class mancoosimm_BinPackage {
+}
+class mancoosimm_Boot {
+}
+class mancoosimm_ConfigFilesPackage {
+  + checkSum : str
+  + description : str
+  + maintainer : str
+  + priority : str
+  + section : str
+  + tag : str
+  + uploaders : str
+}
+class mancoosimm_Configuration {
+  + creationTime : str
+  + systemType : str
+}
+abstract class mancoosimm_Conflict {
+}
+abstract class mancoosimm_Dependence {
+}
+class mancoosimm_DesktopDB {
+}
+class mancoosimm_DocumentationFile {
+}
+class mancoosimm_EmacsPackage {
+}
+class mancoosimm_Environment {
+}
+class mancoosimm_File {
+  + checkSum : str
+  + description : str
+  + extension : str
+  + guid : bool
+  + isDirectory : bool
+  + isMissing : bool
+  + location : str
+  + permission : str
+  + size : int
+  + suid : bool
+}
+class mancoosimm_FileSystem {
+}
+class mancoosimm_GConf {
+}
+class mancoosimm_Group {
+}
+class mancoosimm_HalfConfiguredPackage {
+}
+class mancoosimm_HalfConfiguredReinstRequiredPackage {
+}
+class mancoosimm_HalfInstalledPackage {
+  + checkSum : str
+  + description : str
+  + maintainer : str
+  + priority : str
+  + section : str
+  + tag : str
+  + uploaders : str
+}
+class mancoosimm_HalfInstalledReinstRequiredPackage {
+  + checkSum : str
+  + description : str
+  + maintainer : str
+  + priority : str
+  + section : str
+  + tag : str
+  + uploaders : str
+}
+class mancoosimm_IconCache {
+  + mtime : str
+}
+class mancoosimm_InformationFile {
+}
+class mancoosimm_InstalledPackage {
+  + checkSum : str
+  + description : str
+  + fileSize : int
+  + installedSize : int
+  + maintainer : str
+  + priority : str
+  + section : str
+  + tag : str
+  + uploaders : str
+}
+class mancoosimm_Invariant {
+}
+class mancoosimm_LibraryCache {
+}
+class mancoosimm_Menu {
+}
+class mancoosimm_MenuEntry {
+}
+class mancoosimm_MimeType {
+  + extension : str
+  + name : str
+}
+class mancoosimm_MimeTypeHandler {
+}
+class mancoosimm_MimeTypeHandlerCache {
+}
+class mancoosimm_Module {
+}
+class mancoosimm_ModuleCache {
+  + version : str
+}
+abstract class mancoosimm_NamedElement {
+  + name : str
+}
+class mancoosimm_NotInstalledPackage {
+}
+class mancoosimm_NotInv {
+}
+class mancoosimm_OrConflict {
+}
+class mancoosimm_OrDep {
+}
+class mancoosimm_OrInv {
+}
+abstract class mancoosimm_Package {
+  + architecture : str
+  + version : str
+}
+class mancoosimm_PackageSetting {
+}
+class mancoosimm_SGMLCatalog {
+}
+class mancoosimm_SGMLDocument {
+}
+class mancoosimm_Service {
+}
+class mancoosimm_SharedLibrary {
+  + name : str
+  + version : str
+}
+class mancoosimm_SingleConflict {
+  + value : str
+  + version : str
+}
+class mancoosimm_SingleDep {
+  + value : str
+  + version : str
+}
+class mancoosimm_SkeeperCatalog {
+}
+class mancoosimm_SkeeperDocument {
+}
+class mancoosimm_SrcPackage {
+}
+class mancoosimm_UnpackedPackage {
+  + checkSum : str
+  + description : str
+  + maintainer : str
+  + priority : str
+  + section : str
+  + tag : str
+  + uploaders : str
+}
+class mancoosimm_User {
+}
+class mancoosimm_VirtualPackage {
+}
+class mancoosimm_XFont {
+}
+class mancoosimm_XFontCache {
+  + location : str
+}
+Conflict <|-- mancoosimm_AndConflict
+Conflict <|-- mancoosimm_OrConflict
+Conflict <|-- mancoosimm_SingleConflict
+Dependence <|-- mancoosimm_AndDep
+Dependence <|-- mancoosimm_OrDep
+Dependence <|-- mancoosimm_SingleDep
+File <|-- mancoosimm_DocumentationFile
+File <|-- mancoosimm_InformationFile
+InstalledPackage <|-- mancoosimm_BinPackage
+InstalledPackage <|-- mancoosimm_SrcPackage
+InstalledPackage <|-- mancoosimm_VirtualPackage
+NamedElement <|-- mancoosimm_Alternative
+NamedElement <|-- mancoosimm_ApplicationMenuCatalog
+NamedElement <|-- mancoosimm_Atom
+NamedElement <|-- mancoosimm_Configuration
+NamedElement <|-- mancoosimm_EmacsPackage
+NamedElement <|-- mancoosimm_Environment
+NamedElement <|-- mancoosimm_File
+NamedElement <|-- mancoosimm_FileSystem
+NamedElement <|-- mancoosimm_Group
+NamedElement <|-- mancoosimm_Invariant
+NamedElement <|-- mancoosimm_MenuEntry
+NamedElement <|-- mancoosimm_Module
+NamedElement <|-- mancoosimm_Package
+NamedElement <|-- mancoosimm_PackageSetting
+NamedElement <|-- mancoosimm_SGMLCatalog
+NamedElement <|-- mancoosimm_SGMLDocument
+NamedElement <|-- mancoosimm_Service
+NamedElement <|-- mancoosimm_SkeeperCatalog
+NamedElement <|-- mancoosimm_SkeeperDocument
+NamedElement <|-- mancoosimm_User
+NamedElement <|-- mancoosimm_XFont
+Package <|-- mancoosimm_ConfigFilesPackage
+Package <|-- mancoosimm_HalfInstalledPackage
+Package <|-- mancoosimm_HalfInstalledReinstRequiredPackage
+Package <|-- mancoosimm_InstalledPackage
+Package <|-- mancoosimm_NotInstalledPackage
+Package <|-- mancoosimm_UnpackedPackage
+UnpackedPackage <|-- mancoosimm_HalfConfiguredPackage
+UnpackedPackage <|-- mancoosimm_HalfConfiguredReinstRequiredPackage
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_FileSystem : allFiles134
+mancoosimm_Alternative "0..9999" --* "1..1" mancoosimm_Environment : alternatives102
+mancoosimm_AndConflict "0..1" --* "1..1" mancoosimm_Conflict : andConflict278
+mancoosimm_AndDep "0..1" --* "1..1" mancoosimm_Dependence : andDep62
+mancoosimm_AndInv "0..1" -- "1..1" mancoosimm_Invariant : and_80
+mancoosimm_DesktopDB "1..1" -- "1..1" mancoosimm_File : applications200
+mancoosimm_Atom "0..1" -- "1..1" mancoosimm_Invariant : atomEl79
+mancoosimm_BinPackage "0..9999" -- "1..1" mancoosimm_SrcPackage : buildConflicts53
+mancoosimm_BinPackage "0..9999" -- "1..1" mancoosimm_SrcPackage : buildDepends51
+mancoosimm_MimeTypeHandler "1..1" -- "1..1" mancoosimm_MimeTypeHandlerCache : cache211
+mancoosimm_MimeType "1..1" -- "1..1" mancoosimm_MimeTypeHandlerCache : cache215
+mancoosimm_ApplicationMenuCatalog "1..1" --* "1..1" mancoosimm_Menu : catalog146
+mancoosimm_File "1..1" *-- "0..9999" mancoosimm_File : childs167
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_GConf : confFiles136
+mancoosimm_ConfigFilesPackage "0..9999" --* "1..1" mancoosimm_Configuration : configFilesPackages6
+mancoosimm_Configuration "1..1" -- "1..1" mancoosimm_Environment : configuration122
+mancoosimm_Configuration "1..1" -- "1..1" mancoosimm_FileSystem : configuration132
+mancoosimm_Configuration "0..1" -- "1..1" mancoosimm_Package : configuration18
+mancoosimm_Conflict "1..1" -- "1..1" mancoosimm_SingleConflict : conflict277
+mancoosimm_AndConflict "1..1" -- "1..1" mancoosimm_Conflict : conflict288
+mancoosimm_Conflict "1..1" -- "1..1" mancoosimm_OrConflict : conflict292
+mancoosimm_Conflict "0..1" --* "1..1" mancoosimm_InstalledPackage : conflict46
+mancoosimm_Alternative "1..1" -- "1..1" mancoosimm_File : current179
+mancoosimm_AndDep "1..1" -- "1..1" mancoosimm_Dependence : dependence72
+mancoosimm_Dependence "1..1" -- "1..1" mancoosimm_OrDep : dependence75
+mancoosimm_Dependence "1..1" -- "1..1" mancoosimm_SingleDep : dependence77
+mancoosimm_PackageSetting "0..9999" -- "1..1" mancoosimm_PackageSetting : dependences192
+mancoosimm_Dependence "0..1" --* "1..1" mancoosimm_InstalledPackage : depends23
+mancoosimm_DesktopDB "1..1" --* "1..1" mancoosimm_Environment : desktopDb112
+mancoosimm_File "1..1" -- "1..1" mancoosimm_SGMLDocument : document248
+mancoosimm_File "1..1" -- "1..1" mancoosimm_SkeeperDocument : document257
+mancoosimm_DocumentationFile "0..9999" --* "1..1" mancoosimm_InstalledPackage : documentationFiles44
+mancoosimm_SGMLCatalog "1..1" -- "0..9999" mancoosimm_SGMLDocument : documents244
+mancoosimm_SkeeperCatalog "1..1" -- "0..9999" mancoosimm_SkeeperDocument : documents253
+mancoosimm_Invariant "1..1" -- "1..1" mancoosimm_NotInv : elem98
+mancoosimm_EmacsPackage "1..1" --* "1..1" mancoosimm_Environment : emacspkg108
+mancoosimm_InstalledPackage "0..9999" -- "1..1" mancoosimm_InstalledPackage : enhances32
+mancoosimm_Menu "1..1" *-- "0..9999" mancoosimm_MenuEntry : entries145
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_GConf : env141
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_Menu : env148
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_Service : env162
+mancoosimm_Alternative "1..1" -- "1..1" mancoosimm_Environment : env184
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_IconCache : env194
+mancoosimm_DesktopDB "1..1" -- "1..1" mancoosimm_Environment : env198
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_MimeTypeHandlerCache : env202
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_XFontCache : env218
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_LibraryCache : env227
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_ModuleCache : env235
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_SGMLCatalog : env242
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_SkeeperCatalog : env251
+mancoosimm_EmacsPackage "1..1" -- "1..1" mancoosimm_Environment : env262
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_User : env264
+mancoosimm_Environment "1..1" -- "1..1" mancoosimm_Group : env272
+mancoosimm_Configuration "1..1" *-- "1..1" mancoosimm_Environment : environment1
+mancoosimm_File "1..1" -- "1..1" mancoosimm_MenuEntry : executable153
+mancoosimm_File "1..1" -- "1..1" mancoosimm_Service : executable159
+mancoosimm_File "1..9999" -- "1..1" mancoosimm_XFont : file222
+mancoosimm_File "1..1" -- "1..1" mancoosimm_SharedLibrary : file230
+mancoosimm_File "1..1" -- "1..1" mancoosimm_Module : file238
+mancoosimm_Configuration "1..1" *-- "1..1" mancoosimm_FileSystem : fileSystem0
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_PackageSetting : files188
+mancoosimm_EmacsPackage "1..1" *-- "1..9999" mancoosimm_File : files260
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_InstalledPackage : files42
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_UnpackedPackage : files48
+mancoosimm_File "1..1" -- "0..1" mancoosimm_FileSystem : fs164
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_GConf : gconf127
+mancoosimm_File "1..1" -- "1..1" mancoosimm_Group : group174
+mancoosimm_Environment "1..1" *-- "1..9999" mancoosimm_Group : groups106
+mancoosimm_Group "1..9999" -- "1..1" mancoosimm_User : groups266
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_HalfConfiguredPackage : halfConfiguredPackages10
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_HalfConfiguredReinstRequiredPackage : halfConfiguredReinstRequiredPackages14
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_HalfInstalledPackage : halfInstalledPackages12
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_HalfInstalledReinstRequiredPackage : halfInstalledReinstRequiredPackages16
+mancoosimm_File "1..1" -- "1..1" mancoosimm_MimeTypeHandler : handler207
+mancoosimm_MimeTypeHandler "0..9999" --* "1..1" mancoosimm_MimeTypeHandlerCache : handlers204
+mancoosimm_File "1..1" -- "1..1" mancoosimm_User : home269
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_IconCache : iconCache110
+mancoosimm_File "1..1" -- "1..1" mancoosimm_IconCache : icons196
+mancoosimm_InstalledPackage "1..9999" -- "1..1" mancoosimm_VirtualPackage : impPackage59
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_InstalledPackage : installedPackages3
+mancoosimm_AndInv "1..1" -- "1..1" mancoosimm_Invariant : left86
+mancoosimm_Invariant "1..1" -- "1..1" mancoosimm_OrInv : left92
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_LibraryCache : libraryCache116
+mancoosimm_LibraryCache "1..1" -- "1..1" mancoosimm_SharedLibrary : libraryCache232
+mancoosimm_Alternative "1..1" -- "1..1" mancoosimm_File : location181
+mancoosimm_File "1..1" -- "1..1" mancoosimm_SGMLDocument : location245
+mancoosimm_File "1..1" -- "1..1" mancoosimm_SkeeperDocument : location254
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_LibraryCache : locations224
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_Menu : menu129
+mancoosimm_ApplicationMenuCatalog "1..1" -- "1..1" mancoosimm_Menu : menu143
+mancoosimm_Menu "1..1" -- "1..1" mancoosimm_MenuEntry : menu151
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_MimeTypeHandlerCache : mimeTypeHandlerCache114
+mancoosimm_MimeType "1..1" -- "0..9999" mancoosimm_MimeTypeHandler : mimeTypeHandlers213
+mancoosimm_MimeType "0..9999" --* "1..1" mancoosimm_MimeTypeHandlerCache : mimeTypes205
+mancoosimm_Environment "1..1" *-- "1..9999" mancoosimm_ModuleCache : moduleCache123
+mancoosimm_Module "1..1" -- "1..1" mancoosimm_ModuleCache : moduleCache240
+mancoosimm_Module "0..9999" --* "1..1" mancoosimm_ModuleCache : modules234
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_NotInstalledPackage : notInstalledPackages4
+mancoosimm_Invariant "1..1" -- "0..1" mancoosimm_NotInv : not_84
+mancoosimm_AndConflict "1..1" *-- "2..9999" mancoosimm_Conflict : ops286
+mancoosimm_Conflict "2..9999" --* "1..1" mancoosimm_OrConflict : ops290
+mancoosimm_AndDep "1..1" *-- "2..9999" mancoosimm_Dependence : ops70
+mancoosimm_Dependence "2..9999" --* "1..1" mancoosimm_OrDep : ops73
+mancoosimm_Conflict "1..1" *-- "0..1" mancoosimm_OrConflict : orConflict279
+mancoosimm_Dependence "1..1" *-- "0..1" mancoosimm_OrDep : orDep63
+mancoosimm_Invariant "1..1" -- "0..1" mancoosimm_OrInv : or_82
+mancoosimm_File "1..1" -- "1..1" mancoosimm_User : owner172
+mancoosimm_Package "1..1" *-- "0..1" mancoosimm_PackageSetting : packageSettings20
+mancoosimm_MenuEntry "1..1" -- "1..1" mancoosimm_MenuEntry : parent156
+mancoosimm_File "1..1" -- "0..1" mancoosimm_File : parent170
+mancoosimm_DocumentationFile "1..1" -- "1..1" mancoosimm_InstalledPackage : pkg178
+mancoosimm_Package "1..1" -- "1..1" mancoosimm_PackageSetting : pkg190
+mancoosimm_Conflict "1..1" -- "1..1" mancoosimm_Package : pkg283
+mancoosimm_Dependence "1..1" -- "1..1" mancoosimm_Package : pkg67
+mancoosimm_File "1..1" -- "0..9999" mancoosimm_PackageSetting : pkgSettings176
+mancoosimm_InstalledPackage "0..9999" -- "1..1" mancoosimm_InstalledPackage : predepends35
+mancoosimm_InstalledPackage "1..1" -- "1..1" mancoosimm_VirtualPackage : provides37
+mancoosimm_InstalledPackage "0..9999" -- "1..1" mancoosimm_InstalledPackage : recommends26
+mancoosimm_InstalledPackage "0..9999" -- "1..1" mancoosimm_InstalledPackage : replaces40
+mancoosimm_AndInv "1..1" -- "1..1" mancoosimm_Invariant : right89
+mancoosimm_Invariant "1..1" -- "1..1" mancoosimm_OrInv : right95
+mancoosimm_File "1..1" --* "1..1" mancoosimm_FileSystem : root131
+mancoosimm_Environment "1..1" -- "0..9999" mancoosimm_Service : runningServices101
+mancoosimm_File "0..9999" -- "1..1" mancoosimm_GConf : schemas138
+mancoosimm_Boot "1..1" -- "1..9999" mancoosimm_Service : services158
+mancoosimm_PackageSetting "1..1" -- "0..9999" mancoosimm_Service : services186
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_SGMLCatalog : sgmlCatalog120
+mancoosimm_LibraryCache "1..1" *-- "0..9999" mancoosimm_SharedLibrary : sharedLibraries226
+mancoosimm_Conflict "1..1" *-- "0..1" mancoosimm_SingleConflict : singleConflict281
+mancoosimm_Dependence "1..1" *-- "1..1" mancoosimm_SingleDep : singleDep65
+mancoosimm_Environment "1..1" *-- "1..1" mancoosimm_SkeeperCatalog : skeeperCatalog118
+mancoosimm_InstalledPackage "1..1" -- "1..1" mancoosimm_SrcPackage : sourcePackage21
+mancoosimm_BinPackage "1..1" -- "1..1" mancoosimm_SrcPackage : srcRef56
+mancoosimm_InstalledPackage "0..9999" -- "1..1" mancoosimm_InstalledPackage : suggests29
+mancoosimm_MimeType "0..1" -- "1..1" mancoosimm_MimeTypeHandler : type209
+mancoosimm_Configuration "1..1" *-- "0..9999" mancoosimm_UnpackedPackage : unpackedPackages8
+mancoosimm_Environment "1..1" *-- "1..9999" mancoosimm_User : users104
+mancoosimm_Group "1..1" -- "0..9999" mancoosimm_User : users274
+mancoosimm_XFont "1..1" -- "1..1" mancoosimm_XFontCache : xfontCache220
+mancoosimm_Environment "1..1" *-- "1..9999" mancoosimm_XFontCache : xfontCaches125
+mancoosimm_XFont "1..9999" --* "1..1" mancoosimm_XFontCache : xfonts217
+@enduml

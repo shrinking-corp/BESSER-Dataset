@@ -1,0 +1,97 @@
+@startuml
+class ArithmeticOperation {
+}
+class BinaryExpression {
+}
+class ComparisonOperator {
+}
+class Expression {
+}
+class Statement {
+}
+abstract class behaviour_ArithmeticOperation {
+}
+class behaviour_AssignmentStatement {
+  + varName : str
+}
+class behaviour_Behaviour {
+}
+abstract class behaviour_BinaryExpression {
+}
+class behaviour_CallFunctionStatement {
+  + nameFunc : str
+}
+abstract class behaviour_ComparisonOperator {
+}
+class behaviour_CondionalStatement {
+}
+class behaviour_DeclarationStatement {
+  + varName : str
+  + varType : str
+}
+class behaviour_Equals {
+}
+class behaviour_ExceptionStatement {
+}
+abstract class behaviour_Expression {
+}
+class behaviour_Function {
+  + name : str
+}
+class behaviour_FunctionCall {
+  + funcName : str
+}
+class behaviour_Literal {
+  + vlaue : str
+}
+class behaviour_LoopStatement {
+}
+class behaviour_Plus {
+}
+class behaviour_ReadLine {
+}
+class behaviour_ReturnStatement {
+}
+abstract class behaviour_Statement {
+}
+class behaviour_TryCatchStatement {
+}
+class behaviour_Variable {
+  + varName : str
+}
+ArithmeticOperation <|-- behaviour_Plus
+BinaryExpression <|-- behaviour_ArithmeticOperation
+BinaryExpression <|-- behaviour_ComparisonOperator
+ComparisonOperator <|-- behaviour_Equals
+Expression <|-- behaviour_BinaryExpression
+Expression <|-- behaviour_FunctionCall
+Expression <|-- behaviour_Literal
+Expression <|-- behaviour_ReadLine
+Expression <|-- behaviour_Variable
+Statement <|-- behaviour_AssignmentStatement
+Statement <|-- behaviour_CallFunctionStatement
+Statement <|-- behaviour_CondionalStatement
+Statement <|-- behaviour_DeclarationStatement
+Statement <|-- behaviour_ExceptionStatement
+Statement <|-- behaviour_LoopStatement
+Statement <|-- behaviour_ReturnStatement
+Statement <|-- behaviour_TryCatchStatement
+behaviour_CallFunctionStatement "1..1" *-- "0..9999" behaviour_Expression : arguments24
+behaviour_Expression "0..9999" --* "1..1" behaviour_FunctionCall : arguments33
+behaviour_AssignmentStatement "1..1" *-- "1..1" behaviour_Expression : assignExpression18
+behaviour_Statement "0..9999" --* "1..1" behaviour_TryCatchStatement : catchStatements28
+behaviour_CondionalStatement "1..1" *-- "0..9999" behaviour_Statement : elseStatements8
+behaviour_Behaviour "1..1" -- "1..1" behaviour_Function : entryFunction1
+behaviour_Function "1..1" *-- "0..9999" behaviour_Statement : functionBody4
+behaviour_Behaviour "1..1" *-- "1..9999" behaviour_Function : functions0
+behaviour_CondionalStatement "1..1" *-- "1..1" behaviour_Expression : ifExpression11
+behaviour_CondionalStatement "1..1" *-- "0..9999" behaviour_Statement : ifStatements6
+behaviour_DeclarationStatement "1..1" *-- "0..1" behaviour_Expression : initialExpression20
+behaviour_BinaryExpression "1..1" *-- "1..1" behaviour_Expression : leftSideExpression35
+behaviour_LoopStatement "1..1" *-- "0..9999" behaviour_Statement : loopBodyStatements15
+behaviour_Expression "1..1" --* "1..1" behaviour_LoopStatement : loopExpression13
+behaviour_Expression "1..1" --* "1..1" behaviour_ReturnStatement : returnExpression22
+behaviour_BinaryExpression "1..1" *-- "1..1" behaviour_Expression : rightSideExpression37
+behaviour_ExceptionStatement "1..1" *-- "1..1" behaviour_Expression : throwsExpression31
+behaviour_Statement "0..9999" --* "1..1" behaviour_TryCatchStatement : tryStatements26
+@enduml

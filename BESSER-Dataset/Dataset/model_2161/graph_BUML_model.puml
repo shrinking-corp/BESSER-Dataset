@@ -1,0 +1,36 @@
+@startuml
+enum Colors {
+  clean
+  performed
+  touched
+}
+class Edge {
+}
+class egt_ColorRegistry {
+  + images : str
+  + dispose() : void
+  + init() : void
+}
+class egt_DiEdge {
+}
+class egt_Edge {
+  + color : str
+  + weight : float
+}
+class egt_GraphModel {
+}
+class egt_SingleEdge {
+}
+class egt_Vertex {
+  + color : str
+  + index : int
+  + name : str
+}
+Edge <|-- egt_DiEdge
+Edge <|-- egt_SingleEdge
+egt_SingleEdge "1..1" -- "0..1" egt_SingleEdge : child9
+egt_ColorRegistry "0..1" --* "1..1" egt_GraphModel : colorRegistry6
+egt_Edge "0..9999" --* "1..1" egt_Vertex : edges0
+egt_Edge "1..1" -- "0..1" egt_Vertex : parentVertex1
+egt_GraphModel "1..1" *-- "0..9999" egt_Vertex : vertexes4
+@enduml

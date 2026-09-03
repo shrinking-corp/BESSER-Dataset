@@ -1,0 +1,86 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class publication102_Collaboration {
+  + ratio : int
+}
+abstract class publication102_Counted {
+  + id : int
+}
+class publication102_Keyword {
+  + description : str
+}
+class publication102_KnowledgeManager {
+}
+abstract class publication102_Labelled {
+  + lname : str
+}
+abstract class publication102_Named {
+  + name : str
+}
+class publication102_Paper {
+}
+class publication102_PaperKeyword {
+  + weight : int
+}
+class publication102_Paragraph {
+  + content : str
+}
+class publication102_Position {
+  + description : str
+}
+class publication102_PublicationStructure {
+}
+class publication102_Researcher {
+  + forName : str
+  + name : str
+}
+class publication102_Review {
+  + date : date
+}
+class publication102_ReviewNote {
+  + content : str
+}
+class publication102_Skill {
+  + description : str
+}
+class publication102_Write {
+  + timeSpent : int
+}
+Counted <|-- publication102_Paragraph
+Labelled <|-- publication102_Review
+Labelled <|-- publication102_Write
+Named <|-- publication102_Keyword
+Named <|-- publication102_KnowledgeManager
+Named <|-- publication102_Paper
+Named <|-- publication102_Paragraph
+Named <|-- publication102_Position
+Named <|-- publication102_PublicationStructure
+Named <|-- publication102_ReviewNote
+publication102_Keyword "0..9999" --* "1..1" publication102_KnowledgeManager : allkeywords40
+publication102_Paper "1..1" -- "0..9999" publication102_Researcher : authors11
+publication102_Paper "0..1" -- "1..1" publication102_Paper : citedBy15
+publication102_Collaboration "1..1" -- "0..1" publication102_Paper : col_paper46
+publication102_Collaboration "0..9999" --* "1..1" publication102_Researcher : collaborations8
+publication102_Keyword "0..1" -- "1..1" publication102_PaperKeyword : keyword43
+publication102_Paper "1..1" *-- "0..9999" publication102_PaperKeyword : keywords12
+publication102_KnowledgeManager "0..1" --* "1..1" publication102_PublicationStructure : knowledgeMan30
+publication102_Keyword "1..1" -- "0..9999" publication102_Paper : kpapers38
+publication102_Paper "0..9999" --* "1..1" publication102_PublicationStructure : papers27
+publication102_Paragraph "0..1" -- "1..1" publication102_Write : paragraph19
+publication102_Paper "1..1" *-- "0..9999" publication102_Paragraph : paragraphs10
+publication102_Position "0..1" -- "1..1" publication102_Position : parent36
+publication102_Position "0..9999" --* "1..1" publication102_PublicationStructure : positions32
+publication102_Paper "0..9999" -- "1..1" publication102_Researcher : res_papers3
+publication102_Position "0..1" -- "1..1" publication102_Researcher : res_position6
+publication102_PublicationStructure "1..1" *-- "0..9999" publication102_Researcher : researchers25
+publication102_Review "1..1" -- "0..1" publication102_ReviewNote : reviewNote22
+publication102_Researcher "1..1" *-- "0..9999" publication102_Review : reviews1
+publication102_Paragraph "1..1" *-- "0..9999" publication102_ReviewNote : reviews17
+publication102_Researcher "1..1" *-- "0..9999" publication102_Skill : skills4
+publication102_Researcher "1..1" *-- "0..9999" publication102_Write : writes0
+@enduml

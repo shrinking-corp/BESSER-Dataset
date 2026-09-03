@@ -1,0 +1,352 @@
+@startuml
+class Animal {
+}
+enum BeefBreed {
+  AB
+  AE
+  AF
+  AK
+  AL
+  AM
+  AN
+  AR
+  AU
+  AW
+  BA
+  BB
+  BD
+  BE
+  BF
+  BG
+  BH
+  BI
+  BL
+  BM
+  BN
+  BO
+  BQ
+  BR
+  BU
+  BW
+  CA
+  CB
+  CG
+  CH
+  CM
+  CN
+  CP
+  CU
+  DB
+  DE
+  DF
+  DJ
+  DL
+  DN
+  DR
+  DS
+  ER
+  FA
+  FB
+  FC
+  FL
+  FP
+  FR
+  GA
+  GE
+  GI
+  GR
+  GS
+  GV
+  GY
+  GZ
+  HB
+  HC
+  HH
+  HP
+  HY
+  IB
+  IS
+  KB
+  KY
+  LM
+  LO
+  LR
+  LU
+  MA
+  MC
+  ME
+  MG
+  MH
+  MI
+  ML
+  MO
+  MR
+  MU
+  NE
+  NM
+  NR
+  NS
+  PA
+  PI
+  PR
+  PZ
+  RA
+  RB
+  RD
+  RN
+  RO
+  RP
+  RR
+  RS
+  RW
+  SA
+  SB
+  SE
+  SG
+  SH
+  SI
+  SL
+  SM
+  SP
+  SS
+  SV
+  SW
+  SX
+  TA
+  TG
+  TI
+  TL
+  TN
+  TP
+  Unspecified
+  WB
+  WF
+  WP
+  XT
+  XX
+  YA
+}
+enum BisonBreed {
+  PB
+  Unspecified
+  WO
+}
+class Bovine {
+}
+enum DairyBreed {
+  AY
+  BS
+  FM
+  GD
+  GU
+  HO
+  JE
+  LD
+  MS
+  Unspecified
+  WW
+}
+class Event {
+}
+enum Sex {
+  C
+  F
+  M
+  S
+  Unspecified
+}
+enum SheepBreed {
+  BC
+  BF
+  BL
+  BO
+  BW
+  CD
+  CF
+  CL
+  CO
+  CP
+  CR
+  DH
+  DL
+  DP
+  ER
+  FB
+  FN
+  HL
+  HS
+  HY
+  IL
+  KA
+  KH
+  KK
+  LE
+  LI
+  LY
+  MM
+  MP
+  MT
+  NC
+  NL
+  OU
+  OX
+  PE
+  PO
+  RG
+  RI
+  RM
+  RV
+  RY
+  SC
+  SL
+  SR
+  ST
+  SU
+  SX
+  TA
+  TU
+  TX
+  Unspecified
+  XL
+  XM
+  ZS
+}
+enum SwineBreed {
+  BK
+  CW
+  DU
+  HA
+  LA
+  LB
+  LC
+  LW
+  PC
+  PE
+  RW
+  SO
+  TM
+  Unspecified
+  WS
+  YO
+}
+abstract class tracker_Animal {
+  + age : str
+  + birthDate : str
+  + breed : str
+  + id : str
+  + idNumber : str
+  + sex : str
+  + sexCode : str
+  + species : str
+  + speciesCode : str
+  + activeTag() : str
+  + addTemplate(tracker_eventTemplate : str) : void
+  + allEvents() : str
+}
+class tracker_AnimalMissing {
+}
+abstract class tracker_Bovine {
+}
+class tracker_BovineBeef {
+  + beefBreed : str
+}
+class tracker_BovineBison {
+  + buffaloBreed : str
+}
+abstract class tracker_BovineDairy {
+  + dairyBreed : str
+}
+class tracker_Died {
+}
+abstract class tracker_Event {
+  + comments : str
+  + correction : bool
+  + dateTime : str
+  + electronicallyRead : bool
+  + eventCode : int
+  + id : str
+  + idNumber : str
+}
+class tracker_Exported {
+}
+class tracker_FairRegistration {
+  + address : str
+  + club : str
+  + parent : str
+  + participant : str
+  + phone : str
+}
+class tracker_ICVI {
+}
+class tracker_Imported {
+}
+class tracker_LostTag {
+}
+class tracker_MovedIn {
+  + sourcePin : str
+}
+class tracker_MovedOut {
+  + destinationPin : str
+}
+class tracker_Ovine {
+  + sheepBreed : str
+}
+class tracker_Premises {
+  + emailContact : str
+  + premisesId : str
+  + addTemplate(tracker_ains : str, tracker_animalTemplate : str) : void
+  + eventHistory() : Event
+  + findAnimal(tracker_ains : str) : Animal
+}
+class tracker_ReplacedTag {
+  + oldAin : str
+}
+class tracker_Sighting {
+}
+class tracker_Slaughtered {
+}
+class tracker_Swine {
+  + swineBreed : str
+}
+class tracker_Tag {
+  + id : str
+  + idNumber : str
+  + usainNumberUsed : bool
+}
+class tracker_TagAllocated {
+}
+class tracker_TagApplied {
+}
+class tracker_TagRetired {
+}
+class tracker_WeighIn {
+  + weight : int
+}
+Animal <|-- tracker_Bovine
+Animal <|-- tracker_Ovine
+Animal <|-- tracker_Swine
+Bovine <|-- tracker_BovineBeef
+Bovine <|-- tracker_BovineBison
+Bovine <|-- tracker_BovineDairy
+Event <|-- tracker_AnimalMissing
+Event <|-- tracker_Died
+Event <|-- tracker_Exported
+Event <|-- tracker_FairRegistration
+Event <|-- tracker_ICVI
+Event <|-- tracker_Imported
+Event <|-- tracker_LostTag
+Event <|-- tracker_MovedIn
+Event <|-- tracker_MovedOut
+Event <|-- tracker_ReplacedTag
+Event <|-- tracker_Sighting
+Event <|-- tracker_Slaughtered
+Event <|-- tracker_TagAllocated
+Event <|-- tracker_TagApplied
+Event <|-- tracker_TagRetired
+Event <|-- tracker_WeighIn
+tracker_Animal "0..9999" --* "1..1" tracker_Premises : animals3
+tracker_Event "1..9999" --* "1..1" tracker_Tag : events1
+tracker_Event "1..1" -- "1..1" tracker_Tag : tag2
+tracker_Animal "1..1" *-- "1..9999" tracker_Tag : tags0
+tracker_Premises "1..1" *-- "0..9999" tracker_Tag : unAppliedTags5
+@enduml

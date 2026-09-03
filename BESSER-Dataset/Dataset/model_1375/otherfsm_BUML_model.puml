@@ -1,0 +1,57 @@
+@startuml
+class NamedElement {
+}
+class Pseudostate {
+}
+class State2 {
+}
+class Transition2 {
+}
+class finitestatemachines_FinalState {
+}
+class finitestatemachines_Fork {
+}
+class finitestatemachines_InitialState {
+}
+class finitestatemachines_Join2 {
+}
+class finitestatemachines_NamedElement {
+  + name : str
+}
+class finitestatemachines_Pseudostate {
+}
+class finitestatemachines_State2 {
+  + finalTime : int
+  + initialTime2 : int
+}
+class finitestatemachines_StateMachine {
+}
+class finitestatemachines_TimedTransition {
+  + duration : int
+}
+class finitestatemachines_Transition2 {
+  + finalTime2 : int
+  + initialTime : int
+}
+class finitestatemachines_Trigger2 {
+  + expression : str
+}
+NamedElement <|-- finitestatemachines_State2
+NamedElement <|-- finitestatemachines_StateMachine
+NamedElement <|-- finitestatemachines_Transition2
+Pseudostate <|-- finitestatemachines_Fork
+Pseudostate <|-- finitestatemachines_Join2
+State2 <|-- finitestatemachines_FinalState
+State2 <|-- finitestatemachines_InitialState
+State2 <|-- finitestatemachines_Pseudostate
+Transition2 <|-- finitestatemachines_TimedTransition
+finitestatemachines_State2 "1..1" -- "0..9999" finitestatemachines_Transition2 : incoming4
+finitestatemachines_State2 "1..1" -- "0..9999" finitestatemachines_Transition2 : outgoing2
+finitestatemachines_State2 "1..1" -- "1..1" finitestatemachines_Transition2 : source9
+finitestatemachines_StateMachine "1..1" -- "1..1" finitestatemachines_Transition2 : stateMachine12
+finitestatemachines_State2 "1..1" -- "0..1" finitestatemachines_StateMachine : stateMachine26
+finitestatemachines_State2 "0..9999" --* "1..1" finitestatemachines_StateMachine : states20
+finitestatemachines_State2 "1..1" -- "1..1" finitestatemachines_Transition2 : target7
+finitestatemachines_StateMachine "1..1" *-- "0..9999" finitestatemachines_Transition2 : transitions21
+finitestatemachines_Transition2 "1..1" *-- "0..1" finitestatemachines_Trigger2 : trigger11
+@enduml

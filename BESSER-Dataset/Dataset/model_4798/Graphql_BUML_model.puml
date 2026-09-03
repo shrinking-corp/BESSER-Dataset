@@ -1,0 +1,49 @@
+@startuml
+class Graphql_Attribute {
+  + isArray : str
+  + isNullable : str
+  + name : str
+  + typeName : str
+}
+class Graphql_Boolean {
+}
+class Graphql_Enum {
+}
+class Graphql_EnumValue {
+  + number : str
+  + value : str
+}
+class Graphql_Float {
+}
+class Graphql_ID {
+}
+class Graphql_Int {
+}
+abstract class Graphql_ScalarType {
+}
+class Graphql_Schema {
+  + name : str
+}
+class Graphql_String {
+}
+class Graphql_SystemType {
+}
+abstract class Graphql_Type {
+  + name : str
+}
+class ScalarType {
+}
+class Type {
+}
+ScalarType <|-- Graphql_Boolean
+ScalarType <|-- Graphql_Float
+ScalarType <|-- Graphql_ID
+ScalarType <|-- Graphql_Int
+ScalarType <|-- Graphql_String
+Type <|-- Graphql_Enum
+Type <|-- Graphql_ScalarType
+Type <|-- Graphql_SystemType
+Graphql_Attribute "1..9999" --* "1..1" Graphql_Type : attribute0
+Graphql_Enum "1..1" *-- "1..9999" Graphql_EnumValue : enumvalue3
+Graphql_Schema "1..1" *-- "1..9999" Graphql_Type : type1
+@enduml

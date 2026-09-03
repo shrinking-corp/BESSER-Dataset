@@ -1,0 +1,22 @@
+@startuml
+class NamedElement {
+}
+class yya_Alias {
+  + id : str
+}
+abstract class yya_NamedElement {
+  + name : str
+}
+class yya_RelatedTo {
+  + since : str
+}
+class yya_Thing {
+  + id : int
+}
+NamedElement <|-- yya_RelatedTo
+NamedElement <|-- yya_Thing
+yya_Alias "0..9999" --* "1..1" yya_NamedElement : aliases1
+yya_RelatedTo "1..1" -- "0..1" yya_Thing : fromThing2
+yya_RelatedTo "0..9999" --* "1..1" yya_Thing : relations0
+yya_RelatedTo "1..1" -- "0..1" yya_Thing : toThing3
+@enduml

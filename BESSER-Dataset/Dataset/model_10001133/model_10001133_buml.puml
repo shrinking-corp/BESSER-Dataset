@@ -1,0 +1,46 @@
+@startuml
+class Card {
+  + face : int
+  + suit : str
+}
+class CardGame {
+  + players : str
+  + round : int
+  + winner : Player
+}
+class Deck {
+  + deck : str
+  + size : int
+}
+class GameBoard {
+  + board : str
+  + drawCard : str
+  + score : str
+  + selectCard : str
+  + startGame : str
+}
+class GameController {
+  + cardGame : CardGame
+  + gameView : GameBoard
+}
+class MatchingGame {
+  + matches : int
+}
+class Player {
+  + hand : str
+  + score : int
+}
+class SheddingGame {
+}
+class TrickGame {
+  + trickRules : str
+}
+class int_Interface {
+}
+GameBoard "1..1" -- "1..1" GameController : Controller_GameBoard
+CardGame "1..1" -- "1..1" GameController : Game_Controller
+Card "1..9999" -- "1..1" Deck : contains
+CardGame "1..1" -- "1..1" Deck : drawsFrom
+CardGame "1..1" -- "1..9999" Player : hasA
+Card "1..9999" -- "1..1" Player : holds
+@enduml

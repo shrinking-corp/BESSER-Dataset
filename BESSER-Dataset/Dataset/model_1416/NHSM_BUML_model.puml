@@ -1,0 +1,16 @@
+@startuml
+class NHSM_State {
+  + name : str
+}
+class NHSM_StateMachine {
+  + name : str
+}
+class NHSM_Transition {
+}
+NHSM_State "1..1" -- "0..1" NHSM_StateMachine : machine2
+NHSM_StateMachine "0..1" -- "1..1" NHSM_Transition : machine8
+NHSM_State "1..1" -- "1..1" NHSM_Transition : source3
+NHSM_State "0..9999" --* "1..1" NHSM_StateMachine : states0
+NHSM_State "1..1" -- "1..1" NHSM_Transition : target5
+NHSM_StateMachine "1..1" *-- "0..9999" NHSM_Transition : transitions1
+@enduml

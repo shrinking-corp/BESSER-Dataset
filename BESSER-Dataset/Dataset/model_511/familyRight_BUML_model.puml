@@ -1,0 +1,30 @@
+@startuml
+class familyright_Daughter {
+  + age : int
+  + name : str
+}
+class familyright_Family {
+}
+class familyright_Father {
+  + address : str
+  + age : int
+  + name : str
+}
+class familyright_Mother {
+  + address : str
+  + age : int
+  + name : str
+}
+class familyright_Son {
+  + age : int
+  + name : str
+}
+familyright_Daughter "0..9999" --* "1..1" familyright_Family : daughters12
+familyright_Family "0..1" -- "1..1" familyright_Father : family0
+familyright_Family "0..1" -- "1..1" familyright_Mother : family1
+familyright_Family "0..1" -- "1..1" familyright_Son : family3
+familyright_Daughter "1..1" -- "0..1" familyright_Family : family5
+familyright_Family "1..1" *-- "0..1" familyright_Father : father7
+familyright_Family "1..1" *-- "0..1" familyright_Mother : mother8
+familyright_Family "1..1" *-- "0..9999" familyright_Son : sons10
+@enduml

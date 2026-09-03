@@ -1,0 +1,115 @@
+@startuml
+class Assistant {
+}
+enum Building {
+  A
+  B
+  C
+  D
+  E
+  F
+  G
+  H
+}
+class Course {
+}
+enum DayOfWeek {
+  Friday
+  Monday
+  Thursday
+  Tuesday
+  Wednesday
+}
+class Event {
+}
+class Lecture {
+}
+enum Motivation {
+  AVERAGE_INTEREST
+  HIGH_INTEREST
+  LOW_INTEREST
+}
+class Person {
+}
+class Professor {
+}
+class Room {
+}
+enum SalaryRank {
+  W1
+  W2
+  W3
+}
+class Student {
+}
+class Time {
+}
+class Tutorial {
+}
+class Visits {
+}
+class universityextended_University {
+}
+class universityextended_administration_Course {
+  + endOfCourse : date
+  + startOfCourse : date
+  + title : str
+}
+class universityextended_administration_Event {
+  + title : str
+}
+class universityextended_administration_Lecture {
+  + captions : str
+}
+class universityextended_administration_Room {
+  + building : str
+  + floor : int
+  + roomnumber : int
+}
+class universityextended_administration_Time {
+  + day : str
+  + endHour : int
+  + startHour : int
+}
+class universityextended_administration_Tutorial {
+}
+class universityextended_connection_Visits {
+  + motivation : str
+}
+class universityextended_people_Assistant {
+  + isDoctoralCandidate : bool
+}
+class universityextended_people_Person {
+  + name : str
+}
+class universityextended_people_Professor {
+  + rank : str
+}
+class universityextended_people_Student {
+  + matriculationnumber : str
+}
+Event <|-- universityextended_administration_Lecture
+Event <|-- universityextended_administration_Tutorial
+Person <|-- universityextended_people_Assistant
+Person <|-- universityextended_people_Professor
+Person <|-- universityextended_people_Student
+Course "1..1" -- "1..1" universityextended_administration_Lecture : course21
+Course "1..1" -- "1..1" universityextended_administration_Tutorial : course24
+Course "1..1" -- "1..1" universityextended_connection_Visits : course33
+Visits "0..9999" -- "1..1" universityextended_people_Student : courseVisit9
+Course "0..9999" --* "1..1" universityextended_University : courses3
+Lecture "1..1" --* "1..1" universityextended_administration_Course : lecture13
+Professor "1..1" -- "1..1" universityextended_administration_Lecture : lecturer23
+Lecture "0..9999" -- "1..1" universityextended_people_Professor : lectures11
+Person "0..9999" --* "1..1" universityextended_University : persons0
+Room "1..1" -- "1..1" universityextended_administration_Event : room30
+Room "0..9999" --* "1..1" universityextended_University : rooms7
+Student "1..1" -- "1..1" universityextended_connection_Visits : student35
+Time "1..1" -- "1..1" universityextended_administration_Event : time28
+Time "0..9999" --* "1..1" universityextended_University : times5
+Assistant "1..1" -- "1..1" universityextended_administration_Tutorial : tutor26
+Tutorial "0..9999" -- "1..1" universityextended_people_Assistant : tutorial12
+Tutorial "0..1" --* "1..1" universityextended_administration_Course : tutorial15
+Visits "0..9999" -- "1..1" universityextended_administration_Course : visitor18
+Visits "0..9999" --* "1..1" universityextended_University : visits1
+@enduml

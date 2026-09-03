@@ -1,0 +1,26 @@
+@startuml
+class Classifier {
+}
+class SimpleClass_Association {
+  + name : str
+}
+class SimpleClass_Attribute {
+  + is_primary : bool
+  + name : str
+}
+class SimpleClass_Class {
+  + is_persistent : bool
+}
+class SimpleClass_Classifier {
+  + name : str
+}
+class SimpleClass_PrimitiveDataType {
+}
+Classifier <|-- SimpleClass_Class
+Classifier <|-- SimpleClass_PrimitiveDataType
+SimpleClass_Attribute "0..9999" --* "1..1" SimpleClass_Class : attrs2
+SimpleClass_Association "1..1" -- "1..1" SimpleClass_Class : dest8
+SimpleClass_Class "1..1" -- "0..1" SimpleClass_Class : parent1
+SimpleClass_Association "1..1" -- "1..1" SimpleClass_Class : src6
+SimpleClass_Attribute "1..1" -- "1..1" SimpleClass_Classifier : type4
+@enduml

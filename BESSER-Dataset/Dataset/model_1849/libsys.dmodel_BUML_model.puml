@@ -1,0 +1,130 @@
+@startuml
+enum InstanceStatus {
+  AcquisitionProcess
+  Available
+  Borrowed
+  Missing
+  Overdue
+  ReadingRoom
+  ReservedAndAvailable
+  ReservedAndBorrowed
+}
+class Medium {
+}
+enum MediumCode {
+  CD
+  book
+  magazine
+  video
+}
+class libsys_BarCodeScanner {
+  + readUserNumber() : void
+}
+class libsys_Book {
+  + ISBN : str
+  + editor : str
+  + placeOfPublication : str
+  + publisher : str
+}
+class libsys_BorrowedEntry {
+  + returnDate : date
+}
+class libsys_CD {
+  + artists : str
+  + genres : str
+  + tracks : str
+}
+class libsys_ExtensionTime {
+}
+class libsys_IdentificationCard {
+  + userNumber : int
+}
+class libsys_Instance {
+  + comments : str
+  + components : str
+  + location : str
+  + rentalPeriod : str
+  + returnDate : date
+  + shelfmark : str
+  + status : str
+  + borrowInstance() : void
+  + extendRentalPeriod() : void
+  + reserveInstance() : void
+  + returnInstance() : void
+}
+class libsys_Librarian {
+}
+class libsys_Library {
+}
+class libsys_Magazine {
+  + articles : str
+  + publisher : str
+}
+class libsys_MediaAdministration {
+  + addNewMediaInstance() : void
+  + manageMedium() : void
+  + removeMediaInstance() : void
+  + searchMedium() : void
+}
+class libsys_Medium {
+  + additionalTitle : str
+  + authors : str
+  + identificationCode : str
+  + keywords : str
+  + partialShelfmark : str
+  + publicationYear : date
+  + title : str
+}
+class libsys_ReservationEntry {
+}
+class libsys_SearchCriterion {
+}
+class libsys_StatusSignal {
+}
+class libsys_Terminal {
+}
+class libsys_UnpaidFee {
+  + amount : int
+  + reason : str
+}
+class libsys_User {
+  + identifyToSystem() : void
+  + registerAtSystem() : void
+}
+class libsys_UserAccount {
+  + emailAddress : str
+  + lockIndication : bool
+  + postallAddress : str
+  + telephoneNumber : str
+  + unpaidFeeAmount : int
+  + userClassification : str
+  + userData : str
+  + userName : str
+  + userNumber : int
+  + validUntilDate : date
+}
+class libsys_UserAdministration {
+  + manageUserAccount() : void
+}
+class libsys_Video {
+  + actors : str
+  + genres : str
+}
+Medium <|-- libsys_Book
+Medium <|-- libsys_CD
+Medium <|-- libsys_Magazine
+Medium <|-- libsys_Video
+libsys_Instance "0..9999" -- "1..1" libsys_UserAccount : borrowedInstances6
+libsys_BorrowedEntry "0..9999" --* "1..1" libsys_Instance : borrowingList3
+libsys_Instance "0..9999" --* "1..1" libsys_Medium : instances0
+libsys_Librarian "0..9999" --* "1..1" libsys_Library : librarians18
+libsys_Library "1..1" *-- "0..9999" libsys_Medium : media16
+libsys_MediaAdministration "1..1" -- "0..9999" libsys_Medium : mediaEntries14
+libsys_Instance "1..1" *-- "0..9999" libsys_ReservationEntry : reservationList1
+libsys_Instance "0..9999" -- "1..1" libsys_UserAccount : reservationList9
+libsys_BorrowedEntry "1..1" -- "1..1" libsys_User : user23
+libsys_ReservationEntry "1..1" -- "1..1" libsys_User : user26
+libsys_User "1..1" *-- "1..1" libsys_UserAccount : userAccount5
+libsys_UserAccount "0..9999" -- "1..1" libsys_UserAdministration : userAccounts12
+libsys_Library "1..1" *-- "0..1" libsys_User : users20
+@enduml

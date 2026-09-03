@@ -1,0 +1,155 @@
+@startuml
+class Areas_del_Conocimiento {
+  + Departamentos : str
+  + NombreArea : str
+}
+class Brindar_Consultoria_external {
+}
+class Calcular {
+}
+class Class4 {
+}
+class Clientes_Actor {
+}
+class Component_Component {
+}
+class Creditos {
+  + Numeros : int
+}
+class Departamento {
+  + ID_Profesores : int
+}
+class Departamento_de_inventarios_y_suministros___DIS_Component {
+}
+class Dependencia {
+  + Codigo : str
+  + Nombre : str
+  + Responsable : str
+}
+class Dependencias_Actor {
+}
+class ELementos {
+  + Clasificacion : str
+  + REferencia : str
+}
+class Entregar_los_pedidos_external {
+}
+class Factura {
+  + Codigo : str
+  + Fecha : str
+}
+class Horas_de_clase {
+  + CreditosMateria : str
+  + TipoCreditos : str
+}
+class Impuesto {
+  + CalcularImpuesto : float
+  + Porcentae : float
+}
+class Javaaplication {
+}
+class Juridico_Actor {
+}
+class LogicaPresentacion___Factura_Component {
+}
+class Materias {
+  + Codigo : int
+  + Creditos : int
+  + Nombre : str
+  + Tipo : str
+}
+class Millenium_S_A_Component {
+}
+class Natural_Actor {
+}
+class OrdenesPedidos {
+  + Codigo : str
+  + Fecha : str
+}
+class Pedidos {
+  + Codigo : str
+  + Fecha : str
+}
+class Pemsum_Universitario {
+  + Materias : str
+  + Programa : str
+}
+class Persistencia___Factura_Component {
+}
+class Producto {
+  + CalcularCosto : int
+  + Cantidad : int
+  + Codigo : int
+  + Nombre : str
+  + Precio : int
+}
+class Profesor {
+  + Apellido : str
+  + Area : str
+  + ID : int
+  + Nombre : str
+}
+class Programa {
+  + Codigo : int
+  + Nombre : str
+}
+class Proveedor {
+  + Direccion : str
+  + Nit : str
+  + Razonsocial : str
+  + Telefonos : str
+}
+class Proveedores_Actor {
+}
+class Recibir_productos_external {
+}
+class Recivir_ordenes_de_suministro_external {
+}
+class Registrar_proveedores_external {
+}
+class Servidor_BD_Node {
+}
+class Servidor_Intel__Node {
+}
+class Servidor_WEB_Node {
+}
+class SolicitudSuministro {
+  + Codigo : str
+  + Fecha : str
+}
+class Venta {
+  + Codigo : int
+  + Fecha : str
+  + RealizarVenta : str
+}
+class asignacion_de_creditos {
+  + Cod_Materia : int
+}
+Materias "1..9999" -- "1..9999" Profesor : Asignada_por
+Departamento "1..1" -- "1..1" Pemsum_Universitario : Ayudan_a
+Areas_del_Conocimiento "1..9999" -- "1..1" Pemsum_Universitario : Ayudan_a1
+Calcular "0..1" -- "0..1" Javaaplication : Calcular_Javaaplication
+Brindar_Consultoria_external "0..1" -- "0..1" Clientes_Actor : Clientes_Brindar_Consultoria
+ELementos "1..9999" -- "0..9999" OrdenesPedidos : Conforma
+Materias "1..9999" -- "1..1" Pemsum_Universitario : Contiene
+Pemsum_Universitario "1..1" -- "1..9999" Programa : Contiene1
+Dependencias_Actor "0..1" -- "0..1" Entregar_los_pedidos_external : Dependencias_Entregar_los_pedidos
+Dependencias_Actor "0..1" -- "0..1" Recivir_ordenes_de_suministro_external : Dependencias_Recivir_ordenes_de_suministro
+Factura "0..9999" -- "1..1" Proveedor : Elabora
+OrdenesPedidos "0..9999" -- "1..1" Proveedor : Es_Enviado
+ELementos "1..9999" -- "0..9999" Factura : Factura
+Creditos "0..9999" -- "0..9999" asignacion_de_creditos : Forma
+OrdenesPedidos "0..1" -- "1..9999" SolicitudSuministro : Genera
+Areas_del_Conocimiento "1..9999" -- "0..9999" asignacion_de_creditos : Hace
+Departamento "1..1" -- "0..9999" asignacion_de_creditos : Hace1
+Impuesto "0..1" -- "0..1" Producto : Producto_Impuesto
+Pedidos "0..9999" -- "1..1" Proveedor : Provee
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_external : Proveedores_Recibir_productos
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Dependencia "1..1" -- "1..9999" SolicitudSuministro : Realiza
+ELementos "1..9999" -- "0..9999" SolicitudSuministro : Relasiona
+Creditos "0..9999" -- "1..1" Materias : Tiene
+Horas_de_clase "1..9999" -- "1..1" Materias : Tiene1
+Impuesto "0..1" -- "0..1" Venta : Venta_Impuesto
+Producto "0..1" -- "0..1" Venta : Venta_Producto
+@enduml

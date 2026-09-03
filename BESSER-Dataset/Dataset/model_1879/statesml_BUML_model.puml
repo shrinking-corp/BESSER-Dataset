@@ -1,0 +1,87 @@
+@startuml
+class Event {
+}
+class Node {
+}
+class statesml_Attribute {
+  + name : str
+}
+class statesml_ChangeEvent {
+  + isFulfilled : bool
+}
+class statesml_DataType {
+  + name : str
+}
+class statesml_DataTypeLibrary {
+  + name : str
+}
+class statesml_Edge {
+  + name : str
+}
+abstract class statesml_Event {
+  + name : str
+}
+class statesml_Function {
+  + name : str
+}
+abstract class statesml_Node {
+  + name : str
+}
+class statesml_Parameter {
+  + name : str
+}
+class statesml_SelectionConvergence {
+}
+class statesml_SelectionDivergence {
+}
+class statesml_State {
+  + isInitial : bool
+  + isTerminal : bool
+}
+class statesml_StatesML {
+}
+class statesml_SystemUnitLibrariy {
+  + name : str
+}
+class statesml_SystemUnits {
+  + name : str
+}
+class statesml_Transition {
+}
+class statesml_Trigger {
+  + fire() : void
+  + isActivated() : bool
+}
+Event <|-- statesml_ChangeEvent
+Node <|-- statesml_SelectionConvergence
+Node <|-- statesml_SelectionDivergence
+Node <|-- statesml_State
+Node <|-- statesml_Transition
+statesml_Attribute "0..9999" --* "1..1" statesml_SystemUnits : attribute1
+statesml_Attribute "0..9999" --* "1..1" statesml_StatesML : attribute46
+statesml_ChangeEvent "1..1" --* "1..1" statesml_Trigger : changeevent54
+statesml_DataType "1..1" --* "1..1" statesml_Parameter : datatype10
+statesml_DataType "0..9999" --* "1..1" statesml_DataTypeLibrary : datatype18
+statesml_Attribute "1..1" *-- "1..1" statesml_DataType : datatype8
+statesml_DataTypeLibrary "0..9999" --* "1..1" statesml_StatesML : datatypelibrary36
+statesml_Edge "0..9999" --* "1..1" statesml_StatesML : edge44
+statesml_Edge "1..9999" -- "1..1" statesml_Node : edge50
+statesml_Event "0..9999" --* "1..1" statesml_StatesML : event32
+statesml_Function "0..9999" --* "1..1" statesml_SystemUnits : function0
+statesml_DataType "1..1" *-- "0..9999" statesml_Function : function13
+statesml_Function "0..9999" -- "1..1" statesml_Node : function51
+statesml_Function "1..1" *-- "0..9999" statesml_Parameter : inParameter3
+statesml_Node "0..9999" --* "1..1" statesml_StatesML : node42
+statesml_Edge "1..1" -- "2..2" statesml_Node : node49
+statesml_Function "1..1" *-- "0..1" statesml_Parameter : returnParameter5
+statesml_SelectionConvergence "0..1" -- "1..1" statesml_Transition : selectionconvergence24
+statesml_SelectionDivergence "0..1" -- "1..1" statesml_State : selectiondivergence21
+statesml_State "0..1" -- "1..1" statesml_Transition : state23
+statesml_SelectionConvergence "1..1" -- "1..1" statesml_State : state29
+statesml_StatesML "1..1" *-- "0..9999" statesml_SystemUnitLibrariy : systemunitlibrariy39
+statesml_SystemUnitLibrariy "1..1" *-- "0..9999" statesml_SystemUnits : systemunits16
+statesml_StatesML "1..1" *-- "0..9999" statesml_SystemUnits : systemunits33
+statesml_State "1..1" -- "0..1" statesml_Transition : transition20
+statesml_SelectionDivergence "1..1" -- "2..9999" statesml_Transition : transition26
+statesml_ChangeEvent "0..1" -- "1..1" statesml_Transition : trigger22
+@enduml

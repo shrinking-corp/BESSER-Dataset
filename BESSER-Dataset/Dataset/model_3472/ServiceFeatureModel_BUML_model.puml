@@ -1,0 +1,116 @@
+@startuml
+enum AggregationRules {
+  AtLeastOnce
+  Maximum
+  Minimum
+  Product
+  Sum
+}
+enum AttributeDomain {
+  Boolean
+  Continuous
+}
+enum FeatureTypes {
+  AbstractFeature
+  GroupingFeature
+  InstanceFeature
+}
+class GroupRelationship {
+}
+enum ScaleOrders {
+  ExistenceIsBetter
+  HigherIsBetter
+  LowerIsBetter
+}
+class ServiceFeature {
+}
+class servicefeaturemodel_Attribute {
+  + id : str
+  + instantiationValue : str
+}
+class servicefeaturemodel_AttributeType {
+  + aggregationRule : str
+  + customAttributeTypePriority : int
+  + description : str
+  + domain : str
+  + name : str
+  + requirement : str
+  + requirementWeight : str
+  + scaleOrder : str
+  + toBeEvaluated : bool
+}
+class servicefeaturemodel_AttributeTypes {
+}
+class servicefeaturemodel_Configuration {
+  + description : str
+  + id : str
+  + name : str
+  + selected : bool
+  + validate(servicefeaturemodel_context : str, servicefeaturemodel_diagnostic : str) : bool
+}
+class servicefeaturemodel_Configurations {
+}
+class servicefeaturemodel_Excludes {
+}
+abstract class servicefeaturemodel_GroupRelationship {
+}
+class servicefeaturemodel_MandatoryServiceFeature {
+  + featureTypes : str
+}
+class servicefeaturemodel_OR {
+  + maxFeaturesToChoose : int
+  + minFeaturesToChoose : int
+}
+class servicefeaturemodel_OptionalServiceFeature {
+  + featureType : str
+}
+class servicefeaturemodel_Preference {
+  + creationDate : date
+  + description : str
+  + stakeholderGroup : str
+  + value : float
+}
+class servicefeaturemodel_Requires {
+}
+class servicefeaturemodel_Service {
+  + description : str
+  + id : str
+  + name : str
+}
+abstract class servicefeaturemodel_ServiceFeature {
+  + description : str
+  + id : str
+  + name : str
+  + required : bool
+  + requirementWeight : str
+}
+class servicefeaturemodel_ServiceFeatureDiagram {
+  + description : str
+  + id : str
+  + name : str
+}
+class servicefeaturemodel_XOR {
+}
+GroupRelationship <|-- servicefeaturemodel_OR
+GroupRelationship <|-- servicefeaturemodel_XOR
+ServiceFeature <|-- servicefeaturemodel_MandatoryServiceFeature
+ServiceFeature <|-- servicefeaturemodel_OptionalServiceFeature
+servicefeaturemodel_Attribute "1..1" -- "1..1" servicefeaturemodel_AttributeType : attributeType15
+servicefeaturemodel_AttributeTypes "1..1" --* "1..1" servicefeaturemodel_Service : attributeTypes3
+servicefeaturemodel_AttributeType "0..9999" --* "1..1" servicefeaturemodel_AttributeTypes : attributeTypes38
+servicefeaturemodel_Attribute "0..9999" --* "1..1" servicefeaturemodel_Configuration : attributes30
+servicefeaturemodel_Attribute "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : attributes5
+servicefeaturemodel_Configurations "1..1" --* "1..1" servicefeaturemodel_Service : configurations1
+servicefeaturemodel_Configuration "0..9999" --* "1..1" servicefeaturemodel_Configurations : configurations35
+servicefeaturemodel_Excludes "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : excludes10
+servicefeaturemodel_GroupRelationship "0..1" --* "1..1" servicefeaturemodel_ServiceFeature : groupRelationship6
+servicefeaturemodel_GroupRelationship "1..1" *-- "2..9999" servicefeaturemodel_OptionalServiceFeature : optionalServiceFeatures33
+servicefeaturemodel_Configuration "1..1" *-- "0..9999" servicefeaturemodel_Preference : preferences28
+servicefeaturemodel_Requires "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : requires8
+servicefeaturemodel_Requires "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : serviceFeature17
+servicefeaturemodel_Excludes "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : serviceFeature20
+servicefeaturemodel_Service "1..1" *-- "1..1" servicefeaturemodel_ServiceFeatureDiagram : serviceFeatureDiagram0
+servicefeaturemodel_ServiceFeature "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : serviceFeatures13
+servicefeaturemodel_ServiceFeature "0..9999" --* "1..1" servicefeaturemodel_ServiceFeatureDiagram : serviceFeatures23
+servicefeaturemodel_Configuration "1..1" -- "0..9999" servicefeaturemodel_ServiceFeature : serviceFeatures26
+@enduml

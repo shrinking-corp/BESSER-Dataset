@@ -1,0 +1,325 @@
+@startuml
+class abstraction_declaration {
+}
+class pascal_EObject {
+}
+class pascal_abstraction_declaration {
+  + forward : bool
+}
+class pascal_abstraction_heading {
+  + name : str
+  + returnType : str
+}
+class pascal_any_number {
+  + integer : str
+  + real : str
+}
+class pascal_array_type {
+}
+class pascal_assignment_statement {
+}
+class pascal_block {
+}
+class pascal_bound_specification {
+  + final : str
+  + initial : str
+  + name : str
+}
+class pascal_case_label_list {
+}
+class pascal_case_limb {
+}
+class pascal_case_statement {
+}
+class pascal_compound_statement {
+}
+class pascal_conditional_statement {
+}
+class pascal_conformant_array_schema {
+}
+class pascal_constant {
+  + boolLiteral : str
+  + name : str
+  + nil : str
+  + opterator : str
+  + string : str
+}
+class pascal_constant_definition {
+  + name : str
+}
+class pascal_constant_definition_part {
+}
+class pascal_dynamic_array_type {
+}
+class pascal_enumerated_type {
+}
+class pascal_expression {
+  + operators : str
+}
+class pascal_expression_list {
+}
+class pascal_factor {
+  + boolean : str
+  + nil : bool
+  + string : str
+}
+class pascal_field_list {
+}
+class pascal_file_type {
+}
+class pascal_fixed_part {
+}
+class pascal_for_statement {
+}
+class pascal_formal_parameter_list {
+}
+class pascal_formal_parameter_section {
+}
+class pascal_function_designator {
+  + name : str
+}
+class pascal_goto_statement {
+}
+class pascal_identifier_list {
+  + names : str
+}
+class pascal_if_statement {
+}
+class pascal_index_type {
+}
+class pascal_label {
+  + number : str
+}
+class pascal_label_declaration_part {
+}
+class pascal_number {
+}
+class pascal_packed_conformant_array_schema {
+  + name : str
+}
+class pascal_parameter_type {
+  + name : str
+}
+class pascal_pascal {
+}
+class pascal_pointer_type {
+}
+class pascal_procedure_and_function_declaration_part {
+}
+class pascal_program {
+}
+class pascal_program_heading_block {
+  + name : str
+}
+class pascal_record_section {
+}
+class pascal_record_type {
+  + endKeyword : str
+  + recordKeyword : str
+}
+class pascal_repeat_statement {
+}
+class pascal_repetitive_statement {
+}
+class pascal_set {
+  + brackets : str
+}
+class pascal_set_type {
+}
+class pascal_simple_expression {
+  + operators : str
+  + prefixOperator : str
+}
+class pascal_simple_statement {
+  + function_noargs : str
+}
+class pascal_simple_type {
+  + name : str
+}
+class pascal_statement {
+}
+class pascal_statement_part {
+}
+class pascal_statement_sequence {
+}
+class pascal_structured_statement {
+}
+class pascal_structured_type {
+  + packed : bool
+}
+class pascal_subrange_type {
+  + subrange : str
+}
+class pascal_tag_field {
+  + name : str
+}
+class pascal_term {
+  + operators : str
+}
+class pascal_type {
+}
+class pascal_type_definition {
+  + name : str
+}
+class pascal_type_definition_part {
+}
+class pascal_unpacked_conformant_array_schema {
+}
+class pascal_unpacked_structured_type {
+}
+class pascal_value_parameter_section {
+}
+class pascal_var_ {
+  + accessor : bool
+  + name : str
+}
+class pascal_variable {
+  + name : str
+}
+class pascal_variable_declaration_part {
+}
+class pascal_variable_identifier_list {
+  + names : str
+}
+class pascal_variable_parameter_section {
+}
+class pascal_variable_section {
+}
+class pascal_variant {
+}
+class pascal_variant_part {
+  + name : str
+}
+class pascal_while_statement {
+}
+class pascal_with_statement {
+}
+abstraction_declaration <|-- pascal_abstraction_heading
+pascal_block "1..1" *-- "0..1" pascal_procedure_and_function_declaration_part : abstraction15
+pascal_array_type "0..1" --* "1..1" pascal_unpacked_structured_type : array195
+pascal_conformant_array_schema "0..1" --* "1..1" pascal_parameter_type : array285
+pascal_var_ "0..1" --* "1..1" pascal_var_ : array44
+pascal_assignment_statement "0..1" --* "1..1" pascal_for_statement : assignment113
+pascal_assignment_statement "0..1" --* "1..1" pascal_simple_statement : assignment29
+pascal_abstraction_declaration "1..1" *-- "0..1" pascal_block : block263
+pascal_block "0..1" --* "1..1" pascal_program : block3
+pascal_bound_specification "0..1" --* "1..1" pascal_packed_conformant_array_schema : bound291
+pascal_bound_specification "0..9999" --* "1..1" pascal_unpacked_conformant_array_schema : bounds293
+pascal_case_statement "0..1" --* "1..1" pascal_conditional_statement : caseStmt124
+pascal_case_limb "0..9999" --* "1..1" pascal_case_statement : cases138
+pascal_case_label_list "0..1" --* "1..1" pascal_case_limb : cases140
+pascal_compound_statement "0..1" --* "1..1" pascal_structured_statement : compound84
+pascal_conditional_statement "0..1" --* "1..1" pascal_structured_statement : conditional88
+pascal_constant "0..1" --* "1..1" pascal_constant_definition : const164
+pascal_constant "0..1" --* "1..1" pascal_subrange_type : const187
+pascal_block "1..1" *-- "0..1" pascal_constant_definition_part : constant9
+pascal_case_label_list "1..1" *-- "0..9999" pascal_constant : constants145
+pascal_constant_definition "0..9999" --* "1..1" pascal_constant_definition_part : consts162
+pascal_dynamic_array_type "0..1" --* "1..1" pascal_unpacked_structured_type : dynamic197
+pascal_if_statement "1..1" *-- "0..1" pascal_statement : elseStatement132
+pascal_enumerated_type "0..1" --* "1..1" pascal_simple_type : enumerated179
+pascal_expression "0..1" --* "1..1" pascal_while_statement : expression101
+pascal_expression "0..1" --* "1..1" pascal_repeat_statement : expression110
+pascal_expression "0..1" --* "1..1" pascal_for_statement : expression116
+pascal_expression "0..1" --* "1..1" pascal_if_statement : expression126
+pascal_case_statement "1..1" *-- "0..1" pascal_expression : expression135
+pascal_assignment_statement "1..1" *-- "0..1" pascal_expression : expression37
+pascal_expression "0..1" --* "1..1" pascal_factor : expression70
+pascal_expression_list "0..1" --* "1..1" pascal_var_ : expressions41
+pascal_expression "0..9999" --* "1..1" pascal_expression_list : expressions52
+pascal_expression "1..1" *-- "0..9999" pascal_simple_expression : expressions55
+pascal_expression_list "0..1" --* "1..1" pascal_set : expressions78
+pascal_expression_list "0..1" --* "1..1" pascal_function_designator : expressions81
+pascal_factor "0..9999" --* "1..1" pascal_term : factors59
+pascal_field_list "0..1" --* "1..1" pascal_record_type : fields216
+pascal_field_list "0..1" --* "1..1" pascal_variant : fields241
+pascal_file_type "0..1" --* "1..1" pascal_unpacked_structured_type : file203
+pascal_constant "0..1" --* "1..1" pascal_subrange_type : finalConst184
+pascal_field_list "1..1" *-- "0..1" pascal_fixed_part : fixed218
+pascal_for_statement "0..1" --* "1..1" pascal_repetitive_statement : forStmt99
+pascal_abstraction_heading "0..1" --* "1..1" pascal_formal_parameter_section : function277
+pascal_function_designator "0..1" --* "1..1" pascal_simple_statement : function31
+pascal_factor "1..1" *-- "0..1" pascal_function_designator : function67
+pascal_abstraction_declaration "0..9999" --* "1..1" pascal_procedure_and_function_declaration_part : functions258
+pascal_goto_statement "0..1" --* "1..1" pascal_simple_statement : goto33
+pascal_program "1..1" *-- "0..1" pascal_program_heading_block : heading1
+pascal_abstraction_declaration "1..1" *-- "0..1" pascal_abstraction_heading : heading260
+pascal_enumerated_type "1..1" *-- "0..1" pascal_identifier_list : identifiers190
+pascal_variable_identifier_list "0..1" --* "1..1" pascal_variable_section : identifiers224
+pascal_identifier_list "0..1" --* "1..1" pascal_record_section : identifiers228
+pascal_identifier_list "0..1" --* "1..1" pascal_value_parameter_section : identifiers280
+pascal_identifier_list "0..1" --* "1..1" pascal_variable_parameter_section : identifiers299
+pascal_identifier_list "0..1" --* "1..1" pascal_program_heading_block : identifiers5
+pascal_if_statement "1..1" *-- "0..1" pascal_statement : ifStatement129
+pascal_conditional_statement "1..1" *-- "0..1" pascal_if_statement : ifStmt122
+pascal_array_type "1..1" *-- "0..9999" pascal_index_type : indexes205
+pascal_constant "0..1" --* "1..1" pascal_subrange_type : initialConst181
+pascal_goto_statement "1..1" *-- "0..1" pascal_label : label156
+pascal_label "0..1" --* "1..1" pascal_statement : label23
+pascal_block "1..1" *-- "0..1" pascal_label_declaration_part : label7
+pascal_label "0..9999" --* "1..1" pascal_label_declaration_part : labels159
+pascal_case_label_list "0..1" --* "1..1" pascal_variant : labels238
+pascal_factor "0..1" --* "1..1" pascal_factor : not_74
+pascal_constant "1..1" *-- "0..1" pascal_number : number147
+pascal_factor "1..1" *-- "0..1" pascal_number : number63
+pascal_any_number "0..1" --* "1..1" pascal_number : number76
+pascal_conformant_array_schema "1..1" *-- "0..1" pascal_packed_conformant_array_schema : packed287
+pascal_abstraction_heading "1..1" *-- "0..1" pascal_formal_parameter_list : parameters266
+pascal_formal_parameter_list "1..1" *-- "0..9999" pascal_formal_parameter_section : parameters268
+pascal_pointer_type "0..1" --* "1..1" pascal_type : pointer175
+pascal_var_ "0..1" --* "1..1" pascal_var_ : pointer50
+pascal_abstraction_heading "0..1" --* "1..1" pascal_formal_parameter_section : procedure274
+pascal_abstraction_heading "0..9999" --* "1..1" pascal_procedure_and_function_declaration_part : procedures256
+pascal_pascal "1..1" *-- "0..9999" pascal_program : program0
+pascal_record_type "0..1" --* "1..1" pascal_unpacked_structured_type : record199
+pascal_repeat_statement "0..1" --* "1..1" pascal_repetitive_statement : repeatStmt97
+pascal_repetitive_statement "0..1" --* "1..1" pascal_structured_statement : repetitive86
+pascal_fixed_part "1..1" *-- "0..9999" pascal_record_section : sections222
+pascal_variable_declaration_part "1..1" *-- "0..9999" pascal_variable_section : sections253
+pascal_repeat_statement "1..1" *-- "0..1" pascal_statement_sequence : sequence107
+pascal_statement_part "1..1" *-- "0..1" pascal_statement_sequence : sequence19
+pascal_compound_statement "1..1" *-- "0..1" pascal_statement_sequence : sequence92
+pascal_set_type "0..1" --* "1..1" pascal_unpacked_structured_type : set201
+pascal_factor "1..1" *-- "0..1" pascal_set : set65
+pascal_simple_type "0..1" --* "1..1" pascal_type : simple171
+pascal_simple_statement "0..1" --* "1..1" pascal_statement : simple25
+pascal_statement "0..1" --* "1..1" pascal_while_statement : statement104
+pascal_for_statement "1..1" *-- "0..1" pascal_statement : statement119
+pascal_case_limb "1..1" *-- "0..1" pascal_statement : statement142
+pascal_statement "0..1" --* "1..1" pascal_with_statement : statement153
+pascal_block "1..1" *-- "0..1" pascal_statement_part : statement17
+pascal_statement "0..9999" --* "1..1" pascal_statement_sequence : statements21
+pascal_structured_type "0..1" --* "1..1" pascal_type : structured173
+pascal_statement "1..1" *-- "0..1" pascal_structured_statement : structured27
+pascal_simple_type "1..1" *-- "0..1" pascal_subrange_type : subrange177
+pascal_tag_field "0..1" --* "1..1" pascal_variant_part : tag234
+pascal_EObject "0..9999" --* "1..1" pascal_simple_expression : terms57
+pascal_block "1..1" *-- "0..1" pascal_type_definition_part : type11
+pascal_type "0..1" --* "1..1" pascal_type_definition : type169
+pascal_structured_type "1..1" *-- "0..1" pascal_unpacked_structured_type : type193
+pascal_array_type "1..1" *-- "0..1" pascal_type : type207
+pascal_dynamic_array_type "1..1" *-- "0..1" pascal_type : type210
+pascal_index_type "1..1" *-- "0..1" pascal_simple_type : type213
+pascal_type "0..1" --* "1..1" pascal_variable_section : type225
+pascal_record_section "1..1" *-- "0..1" pascal_type : type231
+pascal_set_type "1..1" *-- "0..1" pascal_type : type244
+pascal_file_type "1..1" *-- "0..1" pascal_type : type247
+pascal_pointer_type "1..1" *-- "0..1" pascal_type : type250
+pascal_parameter_type "0..1" --* "1..1" pascal_value_parameter_section : type283
+pascal_parameter_type "0..1" --* "1..1" pascal_unpacked_conformant_array_schema : type296
+pascal_parameter_type "0..1" --* "1..1" pascal_variable_parameter_section : type302
+pascal_type_definition "0..9999" --* "1..1" pascal_type_definition_part : types167
+pascal_conformant_array_schema "1..1" *-- "0..1" pascal_unpacked_conformant_array_schema : unpacked289
+pascal_formal_parameter_section "1..1" *-- "0..1" pascal_value_parameter_section : value270
+pascal_block "1..1" *-- "0..1" pascal_variable_declaration_part : variable13
+pascal_formal_parameter_section "1..1" *-- "0..1" pascal_variable_parameter_section : variable272
+pascal_assignment_statement "1..1" *-- "0..1" pascal_variable : variable35
+pascal_var_ "0..1" --* "1..1" pascal_variable : variable39
+pascal_var_ "0..1" --* "1..1" pascal_var_ : variable47
+pascal_factor "1..1" *-- "0..1" pascal_variable : variable60
+pascal_variable "0..9999" --* "1..1" pascal_with_statement : variables150
+pascal_field_list "1..1" *-- "0..9999" pascal_variant_part : variants220
+pascal_variant "0..9999" --* "1..1" pascal_variant_part : variants236
+pascal_repetitive_statement "1..1" *-- "0..1" pascal_while_statement : whileStmt95
+pascal_structured_statement "1..1" *-- "0..1" pascal_with_statement : withStmt90
+@enduml

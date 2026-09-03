@@ -1,0 +1,43 @@
+@startuml
+class Arith {
+}
+class ArithOp {
+}
+class Stmt {
+}
+abstract class simpleal_Arith {
+}
+class simpleal_ArithLit {
+  + val : int
+}
+class simpleal_ArithMinus {
+}
+abstract class simpleal_ArithOp {
+}
+class simpleal_ArithPlus {
+}
+class simpleal_Assign {
+  + name : str
+}
+class simpleal_Block {
+}
+class simpleal_Print {
+  + name : str
+}
+abstract class simpleal_Stmt {
+}
+class simpleal_VarRef {
+  + name : str
+}
+Arith <|-- simpleal_ArithLit
+Arith <|-- simpleal_ArithOp
+Arith <|-- simpleal_VarRef
+ArithOp <|-- simpleal_ArithMinus
+ArithOp <|-- simpleal_ArithPlus
+Stmt <|-- simpleal_Assign
+Stmt <|-- simpleal_Print
+simpleal_Arith "0..1" --* "1..1" simpleal_ArithOp : lhs1
+simpleal_Arith "0..1" --* "1..1" simpleal_ArithOp : rhs2
+simpleal_Block "1..1" *-- "0..9999" simpleal_Stmt : stmts0
+simpleal_Arith "0..1" --* "1..1" simpleal_Assign : val5
+@enduml

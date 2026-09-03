@@ -1,0 +1,17 @@
+@startuml
+class Families_Family {
+  + address : str
+  + lastName : str
+}
+class Families_FamilyRegistry {
+}
+class Families_Member {
+  + age : int
+  + firstName : str
+}
+Families_Family "1..1" *-- "0..9999" Families_Member : children0
+Families_Family "0..9999" --* "1..1" Families_FamilyRegistry : families10
+Families_Family "1..1" *-- "0..1" Families_Member : father4
+Families_Family "0..1" -- "1..1" Families_Member : guardian7
+Families_Family "1..1" *-- "0..1" Families_Member : mother1
+@enduml

@@ -1,0 +1,107 @@
+@startuml
+abstract class AbstractBehavior {
+}
+abstract class AbstractProperty {
+}
+class Controller_Controller {
+  + attribute : str
+  + eventManager : Controller_EventManager
+  + inputController : Controller_InputController_Interface
+  + viewAccess : View_View
+  + worldAccess : Model_World
+}
+class Controller_EventManager {
+  + eventQueue : str
+  + queueLock : bool
+}
+class Controller_Event_union_ {
+  + EvenkKeyboard : str
+  + EventEmpty : str
+  + EventMouseButton : str
+  + EventMouseMotion : str
+  + EventMouseWheel : str
+  + EventQuit : str
+  + eventType : str
+}
+class Controller_InputController_Interface {
+}
+class Controller_Parser {
+}
+class Controller_SDLInputController {
+  + controllerPointer : Controller_Controller
+  + eventList : str
+}
+class Entity {
+  + behaviors : AbstractBehavior
+  + properties : AbstractProperty
+}
+class Model_Chunk {
+}
+class Model_Tile {
+  + id : int
+  + mod : int
+  + position : str
+  + type : int
+}
+class Model_World {
+}
+class Model_WorldGenerator {
+}
+class Table1 {
+  + ID : str
+  + table1ID : str
+  + table3ID : str
+}
+class Table2 {
+  + ID : str
+}
+class Table3 {
+  + ID : str
+}
+class View_Camera_Interface {
+}
+class View_Interface_Interface {
+}
+class View_Renderer_Interface {
+}
+class View_SDLCamera {
+}
+class View_SDLRenderer {
+  + camera : View_SDLCamera
+  + renderer : str
+  + tileset : View_SDLTexture
+  + viewPointer : View_View
+  + window : str
+}
+class View_SDLTexture {
+}
+class View_Texture_Interface {
+}
+class View_View {
+  + renderer : View_Renderer_Interface
+  + worldAccess : Model_World
+}
+class trans_Table {
+  + table1ID : str
+  + table2ID : str
+}
+View_SDLCamera "1..1" -- "1..1" View_View : Camera_View
+Model_Chunk "1..1" -- "0..9999" Model_Tile : Chunk_Tile
+Controller_Controller "0..9999" -- "1..1" View_View : Controller_View
+Controller_Controller "0..9999" -- "1..1" Model_World : Controller_World
+AbstractBehavior "0..9999" -- "0..9999" Entity : Entity_AbstractBehavior
+AbstractProperty "0..9999" -- "0..9999" Entity : Entity_AbstractProperty
+Controller_Controller "0..9999" -- "1..1" Controller_EventManager : EventManager_Controller
+Controller_EventManager "1..1" -- "0..9999" Controller_Event_union_ : EventManager_Event_union_
+Controller_Controller "0..9999" -- "1..1" Controller_InputController_Interface : InputController_Controller
+View_Renderer_Interface "0..1" -- "0..1" View_SDLRenderer : Renderer_SDLRenderer
+View_Renderer_Interface "1..1" -- "0..9999" View_Texture_Interface : Renderer_Texture
+View_SDLCamera "1..1" -- "1..1" View_SDLRenderer : SDLRenderer_SDLCamera
+View_SDLRenderer "1..1" -- "1..9999" View_SDLTexture : SDLRenderer_SDLTexture
+Table1 "0..1" -- "0..1" Table1 : Table1_Table1
+View_Renderer_Interface "1..1" -- "0..9999" View_View : View_Renderer
+Model_World "1..1" -- "0..9999" Model_WorldGenerator : WorldGenertor_World
+Model_Chunk "1..9999" -- "1..1" Model_World : World_Chunk
+Model_Chunk "9..9" -- "1..1" Model_World : World_Chunk2
+Model_World "1..1" -- "0..9999" View_View : World_Renderer
+@enduml

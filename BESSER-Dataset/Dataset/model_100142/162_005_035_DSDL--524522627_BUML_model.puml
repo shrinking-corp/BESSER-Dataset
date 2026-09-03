@@ -1,0 +1,58 @@
+@startuml
+class Property {
+}
+class Type {
+}
+class dSDL_Attribute {
+  + attributeName : str
+}
+class dSDL_AutoIncrement {
+  + autoIncrement : bool
+}
+class dSDL_Database {
+  + name : str
+}
+class dSDL_DateTime {
+  + date : str
+}
+class dSDL_ForeignKey {
+  + attributeName : str
+  + tableName : str
+}
+class dSDL_Integer {
+  + integer : str
+  + length : int
+}
+class dSDL_Nullable {
+  + nullable : bool
+}
+class dSDL_PrimaryKey {
+  + primaryKey : bool
+}
+class dSDL_Property {
+}
+class dSDL_Table {
+  + name : str
+}
+class dSDL_Text {
+  + text : str
+}
+class dSDL_Type {
+}
+class dSDL_Varchar {
+  + length : int
+  + varchar : str
+}
+Property <|-- dSDL_AutoIncrement
+Property <|-- dSDL_ForeignKey
+Property <|-- dSDL_Nullable
+Property <|-- dSDL_PrimaryKey
+Type <|-- dSDL_DateTime
+Type <|-- dSDL_Integer
+Type <|-- dSDL_Text
+Type <|-- dSDL_Varchar
+dSDL_Attribute "0..9999" --* "1..1" dSDL_Table : attribute1
+dSDL_Attribute "1..1" *-- "0..9999" dSDL_Property : property5
+dSDL_Database "1..1" *-- "0..9999" dSDL_Table : table0
+dSDL_Attribute "1..1" *-- "0..1" dSDL_Type : type3
+@enduml

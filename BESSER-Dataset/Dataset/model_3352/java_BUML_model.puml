@@ -1,0 +1,142 @@
+@startuml
+class Annotable {
+}
+class Classifier {
+}
+class Contained {
+}
+class Container {
+}
+class Statement {
+}
+abstract class java_Annotable {
+}
+class java_Annotation {
+}
+class java_AnnotationInstance {
+  + name : str
+}
+class java_AnnotationInstanceParameter {
+  + name : str
+}
+class java_AnnotationInstanceValue {
+  + id : int
+  + name : str
+  + value : str
+}
+class java_Argument {
+  + name : str
+  + order : int
+}
+class java_AssertStatement {
+}
+class java_Class {
+  + isAbstract : bool
+  + isFinal : bool
+  + isStatic : bool
+}
+abstract class java_Classifier {
+  + name : str
+}
+abstract class java_Contained {
+  + visibility : str
+}
+abstract class java_Container {
+}
+class java_Field {
+  + default : str
+  + isFinal : bool
+  + isStatic : bool
+  + name : str
+}
+class java_GETExpression {
+  + leftSide : str
+  + rightSide : str
+}
+class java_Generalization {
+  + name : str
+}
+class java_GenericBinding {
+  + name : str
+}
+class java_Import {
+  + name : str
+}
+class java_Interface {
+}
+class java_InterfaceImplementation {
+  + name : str
+}
+class java_Method {
+  + concurrency : str
+  + isAbstract : bool
+  + isDefault : bool
+  + isFinal : bool
+  + isStatic : bool
+  + name : str
+}
+class java_Package {
+  + name : str
+}
+abstract class java_Statement {
+  + name : str
+}
+class java_System {
+  + name : str
+}
+Annotable <|-- java_Classifier
+Annotable <|-- java_Field
+Annotable <|-- java_Method
+Classifier <|-- java_Annotation
+Classifier <|-- java_Class
+Classifier <|-- java_Interface
+Contained <|-- java_Classifier
+Contained <|-- java_Field
+Contained <|-- java_Interface
+Contained <|-- java_Method
+Container <|-- java_Classifier
+Container <|-- java_Interface
+Container <|-- java_Package
+Statement <|-- java_AssertStatement
+java_Annotable "0..1" -- "1..1" java_AnnotationInstance : annotable57
+java_Annotation "0..1" -- "1..1" java_AnnotationInstance : annotation55
+java_Annotable "1..1" *-- "0..9999" java_AnnotationInstance : annotationInstances54
+java_Argument "0..9999" --* "1..1" java_Method : arguments31
+java_AssertStatement "1..1" *-- "0..1" java_GETExpression : assertion40
+java_Method "1..1" *-- "0..9999" java_Statement : body37
+java_Contained "0..9999" --* "1..1" java_Container : containedElements46
+java_Contained "1..1" -- "0..1" java_Container : container27
+java_AssertStatement "0..1" -- "1..1" java_GETExpression : containerStatement41
+java_Classifier "0..1" -- "1..1" java_Field : containingClassifier21
+java_Classifier "0..1" -- "1..1" java_Method : containingClassifier32
+java_Class "1..1" -- "0..1" java_Class : extendedClass3
+java_Class "1..1" -- "0..1" java_Class : extendingClasses5
+java_Classifier "1..1" *-- "0..9999" java_Field : fields13
+java_Classifier "0..1" -- "1..1" java_Generalization : general9
+java_Classifier "1..1" *-- "0..1" java_Generalization : generalization17
+java_Classifier "0..1" -- "1..1" java_Generalization : generalizator10
+java_Classifier "1..1" *-- "0..9999" java_GenericBinding : genericBindings12
+java_Classifier "0..1" -- "1..1" java_InterfaceImplementation : implementer8
+java_Classifier "0..1" -- "1..1" java_Import : imported23
+java_Classifier "0..1" -- "1..1" java_Import : importing25
+java_Class "0..9999" -- "1..1" java_Contained : importingClasses28
+java_Classifier "1..1" *-- "0..9999" java_Import : imports18
+java_AnnotationInstance "0..1" -- "1..1" java_AnnotationInstanceParameter : instance59
+java_Interface "0..1" -- "1..1" java_InterfaceImplementation : interface7
+java_Classifier "1..1" *-- "0..9999" java_InterfaceImplementation : interfaceImplementations16
+java_Classifier "0..1" -- "1..1" java_GenericBinding : lowerBounding49
+java_Method "0..1" -- "1..1" java_Statement : method38
+java_Classifier "1..1" *-- "0..9999" java_Method : methods14
+java_Package "0..9999" --* "1..1" java_System : packages0
+java_AnnotationInstanceParameter "0..1" -- "1..1" java_AnnotationInstanceValue : parameter61
+java_AnnotationInstance "1..1" *-- "0..9999" java_AnnotationInstanceParameter : parameters56
+java_Classifier "0..9999" -- "1..1" java_Method : raisedExceptions34
+java_Classifier "0..1" -- "1..1" java_Method : returnType29
+java_Package "1..1" -- "0..1" java_System : system1
+java_Classifier "0..1" -- "1..1" java_Field : type19
+java_Argument "1..1" -- "0..1" java_Classifier : type42
+java_Classifier "0..9999" -- "1..1" java_GenericBinding : upperBoundings47
+java_Classifier "0..1" -- "1..1" java_GenericBinding : usingClassifier52
+java_Argument "1..1" -- "0..1" java_Method : usingMethod44
+java_AnnotationInstanceParameter "1..1" *-- "0..9999" java_AnnotationInstanceValue : values58
+@enduml

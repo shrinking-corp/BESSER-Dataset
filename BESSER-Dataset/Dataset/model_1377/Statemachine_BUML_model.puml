@@ -1,0 +1,49 @@
+@startuml
+class Command {
+}
+class Expression {
+}
+class statemachine_Command {
+}
+class statemachine_ExecuteCommand {
+  + operation : str
+}
+class statemachine_Expression {
+}
+class statemachine_PrintCommand {
+}
+class statemachine_SetCommand {
+  + signal : str
+}
+class statemachine_State {
+  + final : bool
+  + id : str
+  + initial : bool
+  + name : str
+}
+class statemachine_StatePropertyExpression {
+  + _property : str
+}
+class statemachine_Statemachine {
+}
+class statemachine_Transition {
+}
+class statemachine_VerbatimExpression {
+  + code : str
+}
+Command <|-- statemachine_ExecuteCommand
+Command <|-- statemachine_PrintCommand
+Command <|-- statemachine_SetCommand
+Expression <|-- statemachine_StatePropertyExpression
+Expression <|-- statemachine_VerbatimExpression
+statemachine_Command "0..9999" --* "1..1" statemachine_State : actions3
+statemachine_ExecuteCommand "1..1" *-- "0..9999" statemachine_Expression : arguments15
+statemachine_Expression "0..1" --* "1..1" statemachine_Transition : event11
+statemachine_State "0..1" -- "1..1" statemachine_Transition : sourceState5
+statemachine_State "0..1" -- "1..1" statemachine_StatePropertyExpression : state19
+statemachine_State "0..9999" --* "1..1" statemachine_Statemachine : states0
+statemachine_State "0..1" -- "1..1" statemachine_Transition : targetState8
+statemachine_Statemachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
+statemachine_Expression "0..1" --* "1..1" statemachine_SetCommand : value13
+statemachine_Expression "0..1" --* "1..1" statemachine_PrintCommand : value17
+@enduml

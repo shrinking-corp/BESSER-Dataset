@@ -1,0 +1,147 @@
+@startuml
+class Element {
+}
+class Metadata {
+}
+class dsl_Action {
+}
+class dsl_AndElement {
+}
+class dsl_AppMetaData {
+  + appID : str
+}
+class dsl_Boolean_Object {
+  + value : bool
+}
+class dsl_DiffElement {
+}
+class dsl_DivisionElement {
+}
+class dsl_Element {
+}
+class dsl_ElseDoSpec {
+}
+class dsl_ElseIfDoSpec {
+}
+class dsl_EnvironmentMetaData {
+}
+class dsl_EqualElement {
+}
+class dsl_IfDoSpec {
+}
+class dsl_LargerElement {
+}
+class dsl_LargerEqualElement {
+}
+class dsl_Metadata {
+}
+class dsl_MinusElement {
+}
+class dsl_ModuloElement {
+}
+class dsl_MultiplicationElement {
+}
+class dsl_NegateElement {
+}
+class dsl_Number_Object {
+  + value : str
+}
+class dsl_OrElement {
+}
+class dsl_PlusElement {
+}
+class dsl_Resource {
+  + name : str
+}
+class dsl_Resource_Object {
+}
+class dsl_RunTimeModel {
+}
+class dsl_ServiceMetaData {
+  + serviceID : str
+}
+class dsl_SmallerElement {
+}
+class dsl_SmallerEqualElement {
+}
+class dsl_Specification {
+  + priority : int
+  + specID : str
+}
+class dsl_State {
+  + name : str
+}
+class dsl_State_Object {
+}
+class dsl_Trigger {
+}
+Element <|-- dsl_AndElement
+Element <|-- dsl_Boolean_Object
+Element <|-- dsl_DiffElement
+Element <|-- dsl_DivisionElement
+Element <|-- dsl_EqualElement
+Element <|-- dsl_LargerElement
+Element <|-- dsl_LargerEqualElement
+Element <|-- dsl_MinusElement
+Element <|-- dsl_ModuloElement
+Element <|-- dsl_MultiplicationElement
+Element <|-- dsl_NegateElement
+Element <|-- dsl_Number_Object
+Element <|-- dsl_OrElement
+Element <|-- dsl_PlusElement
+Element <|-- dsl_Resource_Object
+Element <|-- dsl_SmallerElement
+Element <|-- dsl_SmallerEqualElement
+Element <|-- dsl_State_Object
+Metadata <|-- dsl_AppMetaData
+Metadata <|-- dsl_EnvironmentMetaData
+Metadata <|-- dsl_ServiceMetaData
+dsl_Action "0..9999" --* "1..1" dsl_IfDoSpec : action24
+dsl_Action "0..9999" --* "1..1" dsl_ElseIfDoSpec : action29
+dsl_Action "0..9999" --* "1..1" dsl_ElseDoSpec : action32
+dsl_AppMetaData "0..9999" --* "1..1" dsl_RunTimeModel : appData1
+dsl_Element "0..1" --* "1..1" dsl_IfDoSpec : condition22
+dsl_Element "0..1" --* "1..1" dsl_ElseIfDoSpec : condition26
+dsl_ElseDoSpec "0..1" --* "1..1" dsl_Specification : elseDo14
+dsl_ElseIfDoSpec "0..9999" --* "1..1" dsl_Specification : elseIfDo12
+dsl_EnvironmentMetaData "0..9999" --* "1..1" dsl_RunTimeModel : envData0
+dsl_Element "0..1" --* "1..1" dsl_NegateElement : exp113
+dsl_IfDoSpec "0..1" --* "1..1" dsl_Specification : ifdo10
+dsl_Element "0..1" --* "1..1" dsl_ModuloElement : left104
+dsl_Element "0..1" --* "1..1" dsl_OrElement : left44
+dsl_AndElement "1..1" *-- "0..1" dsl_Element : left49
+dsl_DiffElement "1..1" *-- "0..1" dsl_Element : left54
+dsl_Element "0..1" --* "1..1" dsl_EqualElement : left59
+dsl_Element "0..1" --* "1..1" dsl_LargerElement : left64
+dsl_Element "0..1" --* "1..1" dsl_LargerEqualElement : left69
+dsl_Element "0..1" --* "1..1" dsl_SmallerElement : left74
+dsl_Element "0..1" --* "1..1" dsl_SmallerEqualElement : left79
+dsl_Element "0..1" --* "1..1" dsl_PlusElement : left84
+dsl_Element "0..1" --* "1..1" dsl_MinusElement : left89
+dsl_Element "0..1" --* "1..1" dsl_MultiplicationElement : left94
+dsl_DivisionElement "1..1" *-- "0..1" dsl_Element : left99
+dsl_Resource "0..1" -- "1..1" dsl_Trigger : resource16
+dsl_Action "1..1" -- "0..1" dsl_Resource : resource38
+dsl_EnvironmentMetaData "1..1" *-- "0..9999" dsl_Resource : resources35
+dsl_DivisionElement "1..1" *-- "0..1" dsl_Element : right101
+dsl_Element "0..1" --* "1..1" dsl_ModuloElement : right106
+dsl_Element "0..1" --* "1..1" dsl_OrElement : right46
+dsl_AndElement "1..1" *-- "0..1" dsl_Element : right51
+dsl_DiffElement "1..1" *-- "0..1" dsl_Element : right56
+dsl_Element "0..1" --* "1..1" dsl_EqualElement : right61
+dsl_Element "0..1" --* "1..1" dsl_LargerElement : right66
+dsl_Element "0..1" --* "1..1" dsl_LargerEqualElement : right71
+dsl_Element "0..1" --* "1..1" dsl_SmallerElement : right76
+dsl_Element "0..1" --* "1..1" dsl_SmallerEqualElement : right81
+dsl_Element "0..1" --* "1..1" dsl_PlusElement : right86
+dsl_Element "0..1" --* "1..1" dsl_MinusElement : right91
+dsl_Element "0..1" --* "1..1" dsl_MultiplicationElement : right96
+dsl_RunTimeModel "1..1" *-- "0..9999" dsl_ServiceMetaData : servicesData3
+dsl_AppMetaData "1..1" *-- "0..9999" dsl_Specification : specifications6
+dsl_State "0..1" -- "1..1" dsl_Trigger : state19
+dsl_Action "1..1" *-- "0..1" dsl_State : state41
+dsl_Resource "1..1" *-- "0..9999" dsl_State : states5
+dsl_Specification "1..1" *-- "0..9999" dsl_Trigger : trigger8
+dsl_Resource "0..1" -- "1..1" dsl_Resource_Object : value109
+dsl_State "0..1" --* "1..1" dsl_State_Object : value111
+@enduml

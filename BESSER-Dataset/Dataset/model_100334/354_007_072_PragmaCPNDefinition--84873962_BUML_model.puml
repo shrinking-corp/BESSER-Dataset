@@ -1,0 +1,62 @@
+@startuml
+class Arc {
+}
+class CPN {
+}
+class Label {
+}
+class OntologyMember {
+}
+class Page {
+}
+class PetriNet {
+}
+class Place {
+}
+class Transition {
+}
+class pragmacpndefinition_Arc {
+}
+class pragmacpndefinition_OntologyDocument {
+  + iri : str
+  + path : str
+}
+abstract class pragmacpndefinition_OntologyMember {
+  + getOWLClass() : str
+}
+class pragmacpndefinition_Page {
+}
+class pragmacpndefinition_PetriNet {
+}
+class pragmacpndefinition_Place {
+}
+class pragmacpndefinition_Pragma {
+  + text : str
+}
+class pragmacpndefinition_PragmaCPN {
+}
+class pragmacpndefinition_PragmaticsOntology {
+  + manager : str
+  + addOntologyFromFile(pragmacpndefinition_file : str) : void
+  + getValidPragmatics(pragmacpndefinition_object : str) : str
+}
+class pragmacpndefinition_Transition {
+}
+Arc <|-- pragmacpndefinition_Arc
+CPN <|-- pragmacpndefinition_PragmaCPN
+Label <|-- pragmacpndefinition_Pragma
+Label <|-- pragmacpndefinition_PragmaticsOntology
+OntologyMember <|-- pragmacpndefinition_Arc
+OntologyMember <|-- pragmacpndefinition_Page
+OntologyMember <|-- pragmacpndefinition_Place
+OntologyMember <|-- pragmacpndefinition_Transition
+Page <|-- pragmacpndefinition_Page
+PetriNet <|-- pragmacpndefinition_PetriNet
+Place <|-- pragmacpndefinition_Place
+Transition <|-- pragmacpndefinition_Transition
+pragmacpndefinition_OntologyMember "1..1" *-- "0..9999" pragmacpndefinition_Pragma : Annotation6
+pragmacpndefinition_OntologyDocument "0..9999" --* "1..1" pragmacpndefinition_PragmaticsOntology : documents1
+pragmacpndefinition_PetriNet "0..1" -- "1..1" pragmacpndefinition_PragmaticsOntology : net2
+pragmacpndefinition_OntologyDocument "1..1" -- "0..1" pragmacpndefinition_PragmaticsOntology : ontology0
+pragmacpndefinition_PetriNet "1..1" *-- "0..1" pragmacpndefinition_PragmaticsOntology : ontology4
+@enduml

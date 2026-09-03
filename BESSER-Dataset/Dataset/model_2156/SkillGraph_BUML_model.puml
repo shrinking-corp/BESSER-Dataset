@@ -1,0 +1,52 @@
+@startuml
+enum Category {
+  action
+  actuator
+  main
+  observable_external_behavior
+  perception
+  planning
+  sensor
+}
+class SkillGraph_Edge {
+}
+class SkillGraph_Equation {
+  + equation : str
+}
+class SkillGraph_Graph {
+}
+class SkillGraph_Node {
+  + category : str
+  + name : str
+  + programPath : str
+}
+class SkillGraph_Parameter {
+  + abbreviation : str
+  + defaultValue : str
+  + name : str
+  + unit : str
+  + variable : bool
+}
+class SkillGraph_Requirement {
+  + comment : str
+  + term : str
+  + type : str
+}
+enum Type {
+  Functional_Safety_Requirement
+  Technical_Requirement
+  Technical_Safety_Requirement
+}
+SkillGraph_Edge "0..9999" --* "1..1" SkillGraph_Node : childEdges7
+SkillGraph_Edge "1..1" -- "1..1" SkillGraph_Node : childNode20
+SkillGraph_Equation "0..9999" --* "1..1" SkillGraph_Node : equations6
+SkillGraph_Graph "1..1" -- "1..1" SkillGraph_Parameter : graph0
+SkillGraph_Node "1..1" -- "1..1" SkillGraph_Requirement : node14
+SkillGraph_Equation "1..1" -- "1..1" SkillGraph_Node : node15
+SkillGraph_Graph "1..1" *-- "0..9999" SkillGraph_Node : nodes1
+SkillGraph_Graph "1..1" *-- "0..9999" SkillGraph_Parameter : parameterList5
+SkillGraph_Edge "1..1" -- "1..1" SkillGraph_Node : parentNode17
+SkillGraph_Node "1..1" -- "0..9999" SkillGraph_Node : parentNodes10
+SkillGraph_Node "1..1" *-- "0..9999" SkillGraph_Requirement : requirements12
+SkillGraph_Graph "1..1" *-- "1..1" SkillGraph_Node : rootNode2
+@enduml

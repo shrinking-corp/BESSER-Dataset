@@ -1,0 +1,63 @@
+@startuml
+class DynamicPage {
+}
+class Link {
+}
+class Page {
+}
+enum SWMLTypes {
+  Boolean
+  Email
+  Float
+  Integer
+  String
+}
+class swml_v2_Attribute {
+  + name : str
+  + type : str
+}
+class swml_v2_CLink {
+}
+class swml_v2_Class {
+  + name : str
+}
+class swml_v2_ContentLayer {
+}
+class swml_v2_DetailsPage {
+}
+abstract class swml_v2_DynamicPage {
+}
+class swml_v2_IndexPage {
+  + size : int
+}
+class swml_v2_Link {
+}
+class swml_v2_NCLink {
+}
+class swml_v2_NavigationLayer {
+}
+abstract class swml_v2_Page {
+  + name : str
+}
+class swml_v2_StaticPage {
+}
+class swml_v2_WebModel {
+  + name : str
+}
+DynamicPage <|-- swml_v2_DetailsPage
+DynamicPage <|-- swml_v2_IndexPage
+Link <|-- swml_v2_CLink
+Link <|-- swml_v2_NCLink
+Page <|-- swml_v2_DynamicPage
+Page <|-- swml_v2_StaticPage
+swml_v2_Attribute "1..9999" --* "1..1" swml_v2_Class : attributes10
+swml_v2_Class "1..9999" --* "1..1" swml_v2_ContentLayer : classes8
+swml_v2_ContentLayer "1..1" --* "1..1" swml_v2_WebModel : content1
+swml_v2_Class "1..1" -- "1..1" swml_v2_DynamicPage : displayedClass17
+swml_v2_NavigationLayer "1..1" -- "1..1" swml_v2_Page : homePage5
+swml_v2_NavigationLayer "1..1" --* "1..1" swml_v2_WebModel : hypertext0
+swml_v2_Link "0..9999" --* "1..1" swml_v2_Page : links15
+swml_v2_NavigationLayer "1..1" *-- "1..9999" swml_v2_Page : pages3
+swml_v2_Attribute "1..1" -- "1..1" swml_v2_Class : representativeAttribute12
+swml_v2_Link "1..1" -- "1..1" swml_v2_Page : target19
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+class AbstractTrace {
+}
+class GenNodeTrace {
+}
+class MatchingTrace {
+}
+abstract class trace_AbstractTrace {
+  + processed : bool
+  + visualID : int
+}
+class trace_GenChildNodeTrace {
+}
+class trace_GenCompartmentTrace {
+  + setContext(trace_genCompartment : str) : void
+}
+class trace_GenLinkLabelTrace {
+  + setContext(trace_genLinkLabel : str) : void
+}
+class trace_GenLinkTrace {
+  + setContext(trace_genLink : str) : void
+}
+class trace_GenNodeLabelTrace {
+  + setContext(trace_genNodeLabel : str) : void
+}
+class trace_GenNodeTrace {
+  + setContext(trace_genNode : str) : void
+}
+abstract class trace_MatchingTrace {
+  + queryText : str
+  + getEClassComparision(trace_eClass : str, trace_varName : str) : str
+  + getEStructuralFeatureComparison(trace_feature : str, trace_varName : str) : str
+  + getQueryContext() : str
+}
+class trace_ToolGroupTrace {
+  + setContext(trace_toolGroup : str) : void
+}
+class trace_TraceModel {
+  + getAllAbstractTraces() : str
+  + getLinkTrace(trace_visualID : str) : str
+  + getNodeTrace(trace_visualID : str) : str
+  + purgeUnprocessedTraces() : void
+}
+AbstractTrace <|-- trace_MatchingTrace
+GenNodeTrace <|-- trace_GenChildNodeTrace
+MatchingTrace <|-- trace_GenCompartmentTrace
+MatchingTrace <|-- trace_GenLinkLabelTrace
+MatchingTrace <|-- trace_GenLinkTrace
+MatchingTrace <|-- trace_GenNodeLabelTrace
+MatchingTrace <|-- trace_GenNodeTrace
+MatchingTrace <|-- trace_ToolGroupTrace
+trace_GenChildNodeTrace "0..9999" --* "1..1" trace_TraceModel : childNodeTraces1
+trace_GenCompartmentTrace "0..9999" --* "1..1" trace_GenNodeTrace : compartmentTraces9
+trace_GenLinkLabelTrace "0..9999" --* "1..1" trace_GenLinkTrace : linkLabelTraces11
+trace_GenLinkTrace "0..9999" --* "1..1" trace_TraceModel : linkTraces3
+trace_GenNodeLabelTrace "0..9999" --* "1..1" trace_GenNodeTrace : nodeLabelTraces7
+trace_GenNodeTrace "0..9999" --* "1..1" trace_TraceModel : nodeTraces0
+trace_ToolGroupTrace "0..9999" --* "1..1" trace_TraceModel : toolGroupTraces5
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+enum CarGroupKind {
+  compact
+  intermediate
+  luxury
+}
+class CarRental_Branch {
+  + location : str
+}
+class CarRental_Car {
+  + id : str
+}
+class CarRental_CarGroup {
+  + kind : str
+}
+class CarRental_Check {
+  + description : str
+}
+class CarRental_Customer {
+  + address : str
+}
+class CarRental_Employee {
+  + salary : float
+  + raiseSalary(CarRental_amount : str) : float
+}
+class CarRental_Person {
+  + age : int
+  + firstname : str
+  + isMarried : bool
+  + lastname : str
+  + email() : str
+  + updateAge(CarRental_newAge : str) : void
+}
+class CarRental_Rental {
+  + framDate : str
+  + untilDate : str
+}
+class CarRental_ServiceDepot {
+  + location : str
+}
+class Person {
+}
+Person <|-- CarRental_Customer
+Person <|-- CarRental_Employee
+CarRental_Branch "1..1" -- "1..1" CarRental_Rental : branch21
+CarRental_Branch "0..9999" -- "1..1" CarRental_CarGroup : branch26
+CarRental_Branch "1..1" -- "1..1" CarRental_Car : branch40
+CarRental_Branch "1..1" -- "0..9999" CarRental_Car : car11
+CarRental_Car "0..1" -- "1..1" CarRental_Rental : car17
+CarRental_Car "0..9999" -- "1..1" CarRental_CarGroup : car28
+CarRental_Branch "1..1" -- "0..9999" CarRental_CarGroup : carGroup12
+CarRental_CarGroup "1..1" -- "1..1" CarRental_Rental : carGroup23
+CarRental_Car "1..1" -- "1..1" CarRental_CarGroup : carGroup42
+CarRental_Customer "1..1" -- "1..1" CarRental_Rental : customer19
+CarRental_Branch "1..1" -- "0..9999" CarRental_Employee : employee8
+CarRental_Branch "1..1" -- "1..1" CarRental_Employee : employer2
+CarRental_CarGroup "1..1" -- "0..1" CarRental_CarGroup : higher35
+CarRental_CarGroup "1..1" -- "0..1" CarRental_CarGroup : lower38
+CarRental_Branch "0..1" -- "1..1" CarRental_Employee : managedBranch1
+CarRental_Branch "1..1" -- "1..1" CarRental_Employee : manager5
+CarRental_Customer "1..1" -- "0..9999" CarRental_Rental : rental0
+CarRental_Branch "1..1" -- "0..9999" CarRental_Rental : rental14
+CarRental_CarGroup "1..1" -- "0..9999" CarRental_Rental : rental31
+CarRental_Car "1..1" -- "0..1" CarRental_Rental : rental45
+@enduml

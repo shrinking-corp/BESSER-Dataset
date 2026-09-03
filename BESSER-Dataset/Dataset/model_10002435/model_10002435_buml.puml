@@ -1,0 +1,31 @@
+@startuml
+class Account {
+  + Password : int
+  + Username : str
+}
+class Customer {
+  + DOB : str
+  + Gender : str
+  + cellNo : float
+  + emailAddress : str
+  + name : str
+}
+class Item {
+  + colour : str
+  + price : float
+  + productId : str
+  + size : str
+}
+class Order {
+  + price : Item
+  + quantity : int
+}
+class Shopping_Cart {
+  + cartId : str
+}
+Order "0..1" -- "1..9999" Shopping_Cart : Orders_Friend
+Item "1..9999" -- "0..1" Shopping_Cart : Shopping_Cart_Login
+Account "0..1" -- "0..1" Item : User_Login
+Account "1..1" -- "0..1" Customer : User_Myprofile
+Account "1..1" -- "1..9999" Order : User_Post
+@enduml

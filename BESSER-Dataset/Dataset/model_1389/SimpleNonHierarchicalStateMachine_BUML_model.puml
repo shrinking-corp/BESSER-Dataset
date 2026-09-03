@@ -1,0 +1,27 @@
+@startuml
+class NHSM_FinalState {
+}
+class NHSM_InitialState {
+}
+class NHSM_State {
+  + memRequirement : int
+  + name : str
+}
+class NHSM_StateMachine {
+}
+class NHSM_Transition {
+  + cost : int
+  + effect : str
+  + trigger : str
+}
+class State {
+}
+State <|-- NHSM_FinalState
+State <|-- NHSM_InitialState
+NHSM_State "1..9999" --* "1..1" NHSM_StateMachine : ownedState7
+NHSM_StateMachine "1..1" *-- "0..9999" NHSM_Transition : ownedTransition8
+NHSM_State "1..1" -- "1..1" NHSM_StateMachine : owningStateMachine0
+NHSM_StateMachine "1..1" -- "1..1" NHSM_Transition : owningStateMachine5
+NHSM_State "1..1" -- "1..1" NHSM_Transition : source2
+NHSM_State "1..1" -- "1..1" NHSM_Transition : target1
+@enduml

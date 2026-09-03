@@ -1,0 +1,90 @@
+@startuml
+class BehavioralFeature {
+}
+class Class {
+}
+class Classifier {
+}
+class Feature {
+}
+class NamedElement {
+}
+class OO_concept_Behavior {
+}
+abstract class OO_concept_BehavioralFeature {
+}
+class OO_concept_Class {
+}
+abstract class OO_concept_Classifier {
+}
+class OO_concept_Dependency {
+}
+abstract class OO_concept_Feature {
+}
+class OO_concept_Generalization {
+}
+class OO_concept_Model {
+}
+abstract class OO_concept_NamedElement {
+  + isAbstract : bool
+  + name : str
+  + visibility : str
+}
+class OO_concept_Operation {
+}
+class OO_concept_Package {
+}
+abstract class OO_concept_PackageableElement {
+}
+class OO_concept_Parameter {
+}
+class OO_concept_Property {
+}
+abstract class OO_concept_Type {
+}
+abstract class OO_concept_TypedElement {
+}
+class Package {
+}
+class PackageableElement {
+}
+class Type {
+}
+class TypedElement {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+BehavioralFeature <|-- OO_concept_Operation
+Class <|-- OO_concept_Behavior
+Classifier <|-- OO_concept_Class
+Feature <|-- OO_concept_BehavioralFeature
+Feature <|-- OO_concept_Property
+NamedElement <|-- OO_concept_Feature
+NamedElement <|-- OO_concept_Package
+NamedElement <|-- OO_concept_Type
+NamedElement <|-- OO_concept_TypedElement
+Package <|-- OO_concept_Model
+PackageableElement <|-- OO_concept_Class
+PackageableElement <|-- OO_concept_Dependency
+PackageableElement <|-- OO_concept_Package
+Type <|-- OO_concept_Class
+TypedElement <|-- OO_concept_Operation
+TypedElement <|-- OO_concept_Parameter
+TypedElement <|-- OO_concept_Property
+OO_concept_Dependency "1..1" -- "1..9999" OO_concept_NamedElement : client12
+OO_concept_Classifier "1..1" -- "1..1" OO_concept_Generalization : general8
+OO_concept_Classifier "1..1" *-- "0..9999" OO_concept_Generalization : generalization15
+OO_concept_Behavior "0..9999" -- "1..1" OO_concept_BehavioralFeature : method17
+OO_concept_Class "1..1" *-- "0..9999" OO_concept_Classifier : nestedClassifier4
+OO_concept_Class "1..1" *-- "0..9999" OO_concept_Property : ownedAttribute2
+OO_concept_Class "1..1" *-- "0..9999" OO_concept_Operation : ownedOperation1
+OO_concept_Operation "1..1" *-- "0..9999" OO_concept_Parameter : ownedParameter6
+OO_concept_Package "1..1" *-- "0..9999" OO_concept_PackageableElement : packagedElement0
+OO_concept_Classifier "1..1" -- "1..1" OO_concept_Generalization : specific10
+OO_concept_Dependency "1..1" -- "1..9999" OO_concept_NamedElement : supplier11
+OO_concept_Type "0..1" -- "1..1" OO_concept_TypedElement : type16
+@enduml

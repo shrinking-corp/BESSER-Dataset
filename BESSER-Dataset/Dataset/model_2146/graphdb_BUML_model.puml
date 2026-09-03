@@ -1,0 +1,44 @@
+@startuml
+class Element {
+}
+class GraphElement {
+}
+enum PrimitiveType {
+  Boolean
+  Integer
+  Object
+  String
+}
+class graphdb_Edge {
+  + name : str
+  + type : str
+}
+abstract class graphdb_Element {
+}
+class graphdb_Graph {
+}
+abstract class graphdb_GraphElement {
+}
+class graphdb_Property {
+  + key : str
+  + type : str
+}
+class graphdb_Vertex {
+  + labels : str
+  + name : str
+}
+Element <|-- graphdb_GraphElement
+Element <|-- graphdb_Property
+GraphElement <|-- graphdb_Edge
+GraphElement <|-- graphdb_Vertex
+graphdb_Edge "0..9999" --* "1..1" graphdb_Graph : edges1
+graphdb_Edge "1..1" -- "0..1" graphdb_Graph : graph13
+graphdb_Graph "0..1" -- "1..1" graphdb_Vertex : graph8
+graphdb_Edge "1..1" -- "0..1" graphdb_Vertex : head11
+graphdb_Edge "0..9999" -- "1..1" graphdb_Vertex : inEdges4
+graphdb_Edge "0..9999" -- "1..1" graphdb_Vertex : outEdges6
+graphdb_GraphElement "0..1" -- "1..1" graphdb_Property : owner15
+graphdb_GraphElement "1..1" *-- "0..9999" graphdb_Property : properties3
+graphdb_Edge "1..1" -- "0..1" graphdb_Vertex : tail9
+graphdb_Graph "1..1" *-- "0..9999" graphdb_Vertex : vertices0
+@enduml

@@ -1,0 +1,500 @@
+@startuml
+class AbstractTimeConcept {
+}
+enum Aggregation {
+  COMPOSITE
+  NONE
+  SHARED
+}
+class BusinessConcept {
+}
+class BusinessElement {
+}
+class BusinessElementType {
+}
+class DataType {
+}
+abstract class ISO20022_AbstractTimeConcept {
+  + maxExclusive : str
+  + maxInclusive : str
+  + minExclusive : str
+  + minInclusive : str
+  + pattern : str
+}
+class ISO20022_Amount {
+}
+class ISO20022_ApplicationHeader {
+}
+class ISO20022_BusinessArea {
+  + code : str
+}
+class ISO20022_BusinessAssociationEnd {
+  + aggregation : str
+  + AtMostOneAggregatedEnd(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+  + ContextConsistentWithType(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_BusinessAttribute {
+  + BusinessAttributeHasExactlyOneType(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+  + NoDerivingCodeSetType(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_BusinessComponent {
+  + previousVersionDocumentation : str
+  + BusinessElementsHaveUniqueNames(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+abstract class ISO20022_BusinessConcept {
+}
+abstract class ISO20022_BusinessElement {
+  + isDerived : bool
+}
+abstract class ISO20022_BusinessElementType {
+}
+class ISO20022_BusinessProcessCatalogue {
+  + EntriesHaveUniqueName(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_BusinessRole {
+}
+class ISO20022_ChoiceComponent {
+  + AtLeastOneProperty(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_Code {
+  + codeName : str
+}
+class ISO20022_CodeSet {
+  + identificationScheme : str
+}
+class ISO20022_Constraint {
+  + errorCode : str
+  + errorText : str
+  + expression : str
+  + expressionLanguage : str
+  + injected : bool
+  + kind : str
+}
+class ISO20022_DataDictionary {
+  + EntriesHaveUniqueName(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+abstract class ISO20022_DataType {
+}
+class ISO20022_Diagram {
+  + content : str
+  + location : str
+}
+class ISO20022_Doclet {
+  + content : str
+  + type : str
+}
+class ISO20022_Encoding {
+}
+class ISO20022_EndPointCategory {
+}
+class ISO20022_ExternalSchema {
+  + namespaceList : str
+  + processContent : str
+}
+class ISO20022_Facet {
+  + name : str
+  + value : str
+}
+class ISO20022_IdentifierSet {
+  + identificationScheme : str
+}
+class ISO20022_Indicator {
+  + meaningWhenFalse : str
+  + meaningWhenTrue : str
+  + pattern : str
+}
+class ISO20022_Interaction {
+  + location : str
+}
+class ISO20022_InteractionActor {
+}
+class ISO20022_InteractionMessage {
+}
+class ISO20022_IsAnAlternativeFor {
+}
+abstract class ISO20022_LogicalType {
+}
+abstract class ISO20022_Member {
+}
+class ISO20022_MessageAssociationEnd {
+  + isComposite : bool
+}
+class ISO20022_MessageAttribute {
+  + MessageAttributeHasExactlyOneType(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_MessageBuildingBlock {
+  + MessageBuildingBlockHasExactlyOneType(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_MessageChoreography {
+}
+class ISO20022_MessageComponent {
+}
+abstract class ISO20022_MessageComponentType {
+  + isTechnical : bool
+  + tracePath : str
+}
+abstract class ISO20022_MessageConcept {
+}
+class ISO20022_MessageDefinition {
+  + previousVersionDocumentation : str
+  + rootElement : str
+  + urn : str
+  + visibility : str
+  + xmlName : str
+  + xmlTag : str
+  + BusinessAreaNameMatch(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_MessageDefinitionIdentifier {
+  + businessArea : str
+  + flavour : str
+  + messageFunctionality : str
+  + version : str
+}
+abstract class ISO20022_MessageElement {
+  + isDerived : bool
+  + isTechnical : bool
+  + tracePath : str
+  + CardinalityAlignment(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+  + NoMoreThanOneTrace(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+abstract class ISO20022_MessageElementContainer {
+  + MessageElementsHaveUniqueNames(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+  + technicalElement(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_MessageSet {
+  + GeneratedSyntaxDerivation(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+abstract class ISO20022_ModelEntity {
+  + objectIdentifier : str
+}
+abstract class ISO20022_MultiplicityEntity {
+  + maxOccurs : str
+  + minOccurs : str
+}
+class ISO20022_Quantity {
+  + unitCode : str
+}
+class ISO20022_Rate {
+  + baseUnitCode : str
+  + baseValue : str
+}
+class ISO20022_Repository {
+}
+abstract class ISO20022_RepositoryConcept {
+  + definition : str
+  + example : str
+  + name : str
+  + registrationStatus : str
+  + removalDate : date
+  + swiftRegistrationStatus : str
+  + swiftRemovalDate : date
+  + RemovalDateRegistrationStatus(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_SWIFTSolution {
+  + serviceName : str
+}
+class ISO20022_SemanticMarkup {
+  + type : str
+}
+class ISO20022_SemanticMarkupElement {
+  + name : str
+  + value : str
+}
+class ISO20022_Syntax {
+  + GeneratedForDerivation(ISO20022_context : str, ISO20022_diagnostics : str) : bool
+}
+class ISO20022_SyntaxMessageScheme {
+}
+class ISO20022_Text {
+}
+abstract class ISO20022_TopLevelCatalogueEntry {
+}
+abstract class ISO20022_TopLevelDictionaryEntry {
+}
+abstract class ISO20022_Type {
+}
+class ISO20022_UserDefined {
+  + _ : str
+  + namespaceList : str
+  + processContents : str
+}
+abstract class ISO20022_XMLMember {
+  + xmlTag : str
+}
+class ISO20022_XSDBinary {
+  + length : str
+  + maxLength : str
+  + minLength : str
+  + pattern : str
+}
+class ISO20022_XSDBoolean {
+}
+class ISO20022_XSDDate {
+}
+class ISO20022_XSDDateTime {
+}
+class ISO20022_XSDDay {
+}
+class ISO20022_XSDDecimal {
+  + fractionDigits : str
+  + maxExclusive : str
+  + maxInclusive : str
+  + minExclusive : str
+  + minInclusive : str
+  + pattern : str
+  + totalDigits : str
+}
+class ISO20022_XSDDuration {
+}
+class ISO20022_XSDID {
+}
+class ISO20022_XSDMonth {
+}
+class ISO20022_XSDMonthDay {
+}
+class ISO20022_XSDString {
+  + length : str
+  + maxLength : str
+  + minLength : str
+  + pattern : str
+}
+class ISO20022_XSDTime {
+}
+class ISO20022_XSDYear {
+}
+class ISO20022_XSDYearMonth {
+}
+class ISO20022_Xor {
+}
+class LogicalType {
+}
+class Member {
+}
+class MessageComponentType {
+}
+class MessageConcept {
+}
+class MessageDefinition {
+}
+class MessageElement {
+}
+class MessageElementContainer {
+}
+class MessageSet {
+}
+class ModelEntity {
+}
+class MultiplicityEntity {
+}
+enum Namespace {
+  any
+  list
+  other
+}
+enum ProcessContent {
+  LAX
+  SKIP
+  STRICT
+}
+enum RegistrationStatus {
+  NO_STATUS
+  OBSOLETE
+  PROVISIONALLY_REGISTERED
+  REGISTERED
+}
+class RepositoryConcept {
+}
+class TopLevelCatalogueEntry {
+}
+class TopLevelDictionaryEntry {
+}
+class Type {
+}
+enum Visibility {
+  DoNotShow
+  Draft
+  Outdated
+  _
+}
+class XMLMember {
+}
+class XSDBoolean {
+}
+class XSDDecimal {
+}
+class XSDString {
+}
+AbstractTimeConcept <|-- ISO20022_XSDDate
+AbstractTimeConcept <|-- ISO20022_XSDDateTime
+AbstractTimeConcept <|-- ISO20022_XSDDay
+AbstractTimeConcept <|-- ISO20022_XSDDuration
+AbstractTimeConcept <|-- ISO20022_XSDMonth
+AbstractTimeConcept <|-- ISO20022_XSDMonthDay
+AbstractTimeConcept <|-- ISO20022_XSDTime
+AbstractTimeConcept <|-- ISO20022_XSDYear
+AbstractTimeConcept <|-- ISO20022_XSDYearMonth
+BusinessConcept <|-- ISO20022_BusinessComponent
+BusinessConcept <|-- ISO20022_BusinessElement
+BusinessElement <|-- ISO20022_BusinessAssociationEnd
+BusinessElement <|-- ISO20022_BusinessAttribute
+BusinessElementType <|-- ISO20022_BusinessComponent
+BusinessElementType <|-- ISO20022_DataType
+DataType <|-- ISO20022_AbstractTimeConcept
+DataType <|-- ISO20022_XSDBinary
+DataType <|-- ISO20022_XSDBoolean
+DataType <|-- ISO20022_XSDDecimal
+DataType <|-- ISO20022_XSDString
+LogicalType <|-- ISO20022_DataType
+LogicalType <|-- ISO20022_MessageComponentType
+Member <|-- ISO20022_BusinessElement
+Member <|-- ISO20022_XMLMember
+MessageComponentType <|-- ISO20022_ExternalSchema
+MessageComponentType <|-- ISO20022_MessageElementContainer
+MessageComponentType <|-- ISO20022_UserDefined
+MessageConcept <|-- ISO20022_MessageComponentType
+MessageConcept <|-- ISO20022_MessageElement
+MessageDefinition <|-- ISO20022_ApplicationHeader
+MessageElement <|-- ISO20022_MessageAssociationEnd
+MessageElement <|-- ISO20022_MessageAttribute
+MessageElementContainer <|-- ISO20022_ChoiceComponent
+MessageElementContainer <|-- ISO20022_MessageComponent
+MessageSet <|-- ISO20022_SWIFTSolution
+ModelEntity <|-- ISO20022_BusinessConcept
+ModelEntity <|-- ISO20022_BusinessProcessCatalogue
+ModelEntity <|-- ISO20022_DataDictionary
+ModelEntity <|-- ISO20022_Doclet
+ModelEntity <|-- ISO20022_Encoding
+ModelEntity <|-- ISO20022_Facet
+ModelEntity <|-- ISO20022_MessageConcept
+ModelEntity <|-- ISO20022_Repository
+ModelEntity <|-- ISO20022_RepositoryConcept
+ModelEntity <|-- ISO20022_SemanticMarkup
+ModelEntity <|-- ISO20022_SemanticMarkupElement
+ModelEntity <|-- ISO20022_Syntax
+MultiplicityEntity <|-- ISO20022_Member
+RepositoryConcept <|-- ISO20022_BusinessRole
+RepositoryConcept <|-- ISO20022_Code
+RepositoryConcept <|-- ISO20022_Diagram
+RepositoryConcept <|-- ISO20022_Interaction
+RepositoryConcept <|-- ISO20022_InteractionActor
+RepositoryConcept <|-- ISO20022_InteractionMessage
+RepositoryConcept <|-- ISO20022_IsAnAlternativeFor
+RepositoryConcept <|-- ISO20022_Member
+RepositoryConcept <|-- ISO20022_TopLevelCatalogueEntry
+RepositoryConcept <|-- ISO20022_TopLevelDictionaryEntry
+RepositoryConcept <|-- ISO20022_Type
+RepositoryConcept <|-- ISO20022_Xor
+TopLevelCatalogueEntry <|-- ISO20022_BusinessArea
+TopLevelCatalogueEntry <|-- ISO20022_MessageChoreography
+TopLevelCatalogueEntry <|-- ISO20022_MessageSet
+TopLevelCatalogueEntry <|-- ISO20022_SyntaxMessageScheme
+TopLevelDictionaryEntry <|-- ISO20022_BusinessComponent
+TopLevelDictionaryEntry <|-- ISO20022_DataType
+TopLevelDictionaryEntry <|-- ISO20022_EndPointCategory
+TopLevelDictionaryEntry <|-- ISO20022_MessageComponentType
+Type <|-- ISO20022_BusinessElementType
+Type <|-- ISO20022_LogicalType
+Type <|-- ISO20022_MessageDefinition
+XMLMember <|-- ISO20022_MessageBuildingBlock
+XMLMember <|-- ISO20022_MessageElement
+XSDBoolean <|-- ISO20022_Indicator
+XSDDecimal <|-- ISO20022_Amount
+XSDDecimal <|-- ISO20022_Quantity
+XSDDecimal <|-- ISO20022_Rate
+XSDString <|-- ISO20022_CodeSet
+XSDString <|-- ISO20022_IdentifierSet
+XSDString <|-- ISO20022_Text
+XSDString <|-- ISO20022_XSDID
+ISO20022_Interaction "1..1" *-- "0..9999" ISO20022_InteractionActor : actors131
+ISO20022_BusinessAssociationEnd "0..9999" -- "1..1" ISO20022_BusinessComponent : associationDomain42
+ISO20022_BusinessRole "0..1" -- "1..1" ISO20022_InteractionActor : businessActor137
+ISO20022_BusinessArea "1..1" -- "1..1" ISO20022_MessageDefinition : businessArea101
+ISO20022_BusinessComponent "0..1" -- "1..1" ISO20022_MessageElement : businessComponentTrace16
+ISO20022_BusinessElement "0..1" -- "1..1" ISO20022_MessageElement : businessElementTrace17
+ISO20022_BusinessElement "1..1" -- "1..1" ISO20022_BusinessElementType : businessElementType64
+ISO20022_BusinessProcessCatalogue "1..1" --* "1..1" ISO20022_Repository : businessProcessCatalogue48
+ISO20022_BusinessProcessCatalogue "1..1" -- "1..1" ISO20022_TopLevelCatalogueEntry : businessProcessCatalogue58
+ISO20022_Code "0..9999" --* "1..1" ISO20022_CodeSet : code164
+ISO20022_BusinessAttribute "1..1" -- "0..1" ISO20022_BusinessComponent : complexType153
+ISO20022_MessageBuildingBlock "1..1" -- "0..1" ISO20022_MessageComponentType : complexType71
+ISO20022_MessageAttribute "1..1" -- "0..1" ISO20022_MessageComponentType : complexType83
+ISO20022_MessageElement "1..1" -- "1..1" ISO20022_MessageElementContainer : componentContext18
+ISO20022_Constraint "0..9999" --* "1..1" ISO20022_RepositoryConcept : constraint4
+ISO20022_Amount "1..1" -- "0..1" ISO20022_IdentifierSet : currencyIdentifierSet166
+ISO20022_DataDictionary "1..1" -- "1..1" ISO20022_TopLevelDictionaryEntry : dataDictionary44
+ISO20022_DataDictionary "1..1" --* "1..1" ISO20022_Repository : dataDictionary51
+ISO20022_MessageDefinition "1..1" -- "0..9999" ISO20022_SyntaxMessageScheme : derivation106
+ISO20022_CodeSet "1..1" -- "0..9999" ISO20022_CodeSet : derivation161
+ISO20022_BusinessElement "1..1" -- "0..9999" ISO20022_MessageElement : derivation62
+ISO20022_BusinessComponent "1..1" -- "0..9999" ISO20022_MessageComponentType : derivationComponent41
+ISO20022_BusinessComponent "1..1" -- "0..9999" ISO20022_MessageElement : derivationElement43
+ISO20022_LogicalType "1..1" -- "0..9999" ISO20022_LogicalType : derivations24
+ISO20022_LogicalType "1..1" -- "0..9999" ISO20022_LogicalType : derivedFroms27
+ISO20022_Diagram "0..1" -- "1..1" ISO20022_Interaction : diagram134
+ISO20022_Diagram "0..9999" --* "1..1" ISO20022_Repository : diagrams49
+ISO20022_Doclet "0..9999" --* "1..1" ISO20022_RepositoryConcept : doclet2
+ISO20022_BusinessComponent "1..1" *-- "0..9999" ISO20022_BusinessElement : element39
+ISO20022_BusinessComponent "1..1" -- "1..1" ISO20022_BusinessElement : elementContext65
+ISO20022_SemanticMarkup "1..1" *-- "0..9999" ISO20022_SemanticMarkupElement : elements10
+ISO20022_EndPointCategory "1..1" -- "0..9999" ISO20022_MessageElementContainer : endPoints167
+ISO20022_DataType "1..1" -- "0..9999" ISO20022_Facet : facets73
+ISO20022_MessageSet "0..9999" -- "1..1" ISO20022_Syntax : generatedFor149
+ISO20022_MessageSet "1..1" -- "1..9999" ISO20022_Syntax : generatedSyntax91
+ISO20022_MessageElement "0..9999" -- "1..1" ISO20022_Xor : impactedElements116
+ISO20022_MessageBuildingBlock "0..9999" -- "1..1" ISO20022_Xor : impactedMessageBuildingBlocks118
+ISO20022_Interaction "1..1" -- "1..1" ISO20022_InteractionActor : interaction138
+ISO20022_Interaction "1..1" -- "1..1" ISO20022_InteractionMessage : interaction145
+ISO20022_Interaction "0..9999" --* "1..1" ISO20022_MessageSet : interactions89
+ISO20022_IsAnAlternativeFor "0..9999" --* "1..1" ISO20022_LogicalType : isAnAlternativeFors22
+ISO20022_MessageDefinition "1..1" -- "0..1" ISO20022_MessageDefinition : master96
+ISO20022_Member "1..1" -- "1..1" ISO20022_Type : memberType20
+ISO20022_MessageBuildingBlock "1..9999" --* "1..1" ISO20022_MessageDefinition : messageBuildingBlock104
+ISO20022_MessageBuildingBlock "0..9999" -- "1..1" ISO20022_MessageComponentType : messageBuildingBlock67
+ISO20022_MessageChoreography "1..9999" -- "1..1" ISO20022_MessageDefinition : messageChoreography107
+ISO20022_MessageComponent "0..1" -- "1..1" ISO20022_Xor : messageComponent117
+ISO20022_BusinessArea "1..1" *-- "0..9999" ISO20022_MessageDefinition : messageDefinition114
+ISO20022_MessageDefinition "0..1" -- "1..1" ISO20022_Xor : messageDefinition121
+ISO20022_MessageChoreography "1..1" -- "1..9999" ISO20022_MessageDefinition : messageDefinition129
+ISO20022_MessageDefinition "0..9999" -- "1..1" ISO20022_MessageSet : messageDefinition88
+ISO20022_MessageDefinition "1..1" *-- "1..1" ISO20022_MessageDefinitionIdentifier : messageDefinitionIdentifier109
+ISO20022_MessageDefinition "0..9999" -- "1..1" ISO20022_SyntaxMessageScheme : messageDefinitionTrace126
+ISO20022_MessageElement "0..9999" --* "1..1" ISO20022_MessageElementContainer : messageElement79
+ISO20022_MessageDefinition "1..1" -- "0..9999" ISO20022_MessageSet : messageSet111
+ISO20022_Interaction "1..1" -- "1..1" ISO20022_MessageSet : messageSet135
+ISO20022_Encoding "1..1" -- "0..9999" ISO20022_MessageSet : messageSet86
+ISO20022_Interaction "1..1" *-- "0..9999" ISO20022_InteractionMessage : messages132
+ISO20022_ModelEntity "1..1" -- "0..9999" ISO20022_ModelEntity : nextVersions6
+ISO20022_MessageAssociationEnd "0..1" -- "1..1" ISO20022_MessageAssociationEnd : opposite14
+ISO20022_BusinessAssociationEnd "1..1" -- "0..1" ISO20022_BusinessAssociationEnd : opposite76
+ISO20022_Constraint "1..1" -- "1..1" ISO20022_RepositoryConcept : owner0
+ISO20022_Code "1..1" -- "1..1" ISO20022_CodeSet : owner155
+ISO20022_Encoding "1..9999" -- "1..1" ISO20022_Syntax : possibleEncodings147
+ISO20022_ModelEntity "1..1" -- "0..1" ISO20022_ModelEntity : previousVersion8
+ISO20022_InteractionActor "1..1" -- "1..1" ISO20022_InteractionMessage : receiver142
+ISO20022_DataDictionary "1..1" -- "1..1" ISO20022_Repository : repository45
+ISO20022_BusinessProcessCatalogue "1..1" -- "1..1" ISO20022_Repository : repository55
+ISO20022_Diagram "1..1" -- "1..1" ISO20022_Repository : repository60
+ISO20022_RepositoryConcept "1..1" *-- "0..9999" ISO20022_SemanticMarkup : semanticMarkup1
+ISO20022_InteractionActor "1..1" -- "1..1" ISO20022_InteractionMessage : sender140
+ISO20022_BusinessAttribute "1..1" -- "0..1" ISO20022_DataType : simpleType151
+ISO20022_DataType "0..1" -- "1..1" ISO20022_MessageBuildingBlock : simpleType70
+ISO20022_DataType "0..1" -- "1..1" ISO20022_MessageAttribute : simpleType81
+ISO20022_IsAnAlternativeFor "1..1" -- "1..1" ISO20022_LogicalType : source31
+ISO20022_BusinessComponent "1..1" -- "0..9999" ISO20022_BusinessComponent : subType34
+ISO20022_MessageDefinition "1..1" -- "0..9999" ISO20022_MessageDefinition : subsets99
+ISO20022_BusinessComponent "1..1" -- "0..1" ISO20022_BusinessComponent : superType37
+ISO20022_Encoding "1..1" -- "1..1" ISO20022_Syntax : syntax87
+ISO20022_IsAnAlternativeFor "1..1" -- "1..1" ISO20022_LogicalType : target30
+ISO20022_BusinessProcessCatalogue "1..1" -- "0..9999" ISO20022_TopLevelCatalogueEntry : topLevelCatalogueEntry54
+ISO20022_DataDictionary "1..1" -- "0..9999" ISO20022_TopLevelDictionaryEntry : topLevelDictionaryEntry46
+ISO20022_CodeSet "1..1" -- "0..1" ISO20022_CodeSet : trace157
+ISO20022_BusinessComponent "0..1" -- "1..1" ISO20022_MessageComponentType : trace68
+ISO20022_MessageAssociationEnd "1..1" -- "1..1" ISO20022_MessageComponentType : type12
+ISO20022_BusinessAssociationEnd "1..1" -- "1..1" ISO20022_BusinessComponent : type77
+ISO20022_Member "0..9999" -- "1..1" ISO20022_Type : typedMember21
+ISO20022_LogicalType "1..1" -- "0..9999" ISO20022_XMLMember : typedXMLMember29
+ISO20022_Encoding "1..9999" -- "1..1" ISO20022_MessageSet : validEncoding93
+ISO20022_LogicalType "1..1" -- "1..1" ISO20022_XMLMember : xmlMemberType19
+ISO20022_MessageDefinition "1..1" *-- "0..9999" ISO20022_Xor : xors102
+ISO20022_MessageComponent "1..1" *-- "0..9999" ISO20022_Xor : xors124
+@enduml

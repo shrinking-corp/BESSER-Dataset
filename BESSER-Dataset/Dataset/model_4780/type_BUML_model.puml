@@ -1,0 +1,123 @@
+@startuml
+class Categorized {
+}
+enum Containment {
+  Non
+  Source
+  Target
+}
+enum RelationType {
+  Many2Many
+  One2Many
+  One2One
+}
+class Relationship {
+}
+class Secured {
+}
+class TypeElement {
+}
+class TypePointer {
+}
+class type_Assosiation {
+  + containment : str
+  + internal : bool
+  + sourceOperation : str
+  + targetOperation : str
+  + type : str
+}
+class type_Attribute {
+  + name : str
+  + pk : bool
+  + uid : str
+}
+class type_AttributePointer {
+}
+class type_EnumAttribute {
+  + name : str
+  + uid : str
+  + value : str
+}
+class type_Enumerator {
+}
+class type_Generalization {
+}
+class type_Link {
+  + uid : str
+}
+class type_MethodPointer {
+}
+class type_Operation {
+  + name : str
+  + uid : str
+}
+class type_PackagePointer {
+}
+class type_Parameter {
+  + name : str
+  + order : int
+  + uid : str
+}
+class type_Primitive {
+}
+class type_PrimitivesGroup {
+}
+class type_References {
+}
+class type_Relationship {
+  + uid : str
+}
+class type_ReturnValue {
+  + uid : str
+}
+class type_Type {
+}
+class type_TypeElement {
+  + name : str
+  + uid : str
+}
+class type_TypeGroup {
+  + name : str
+  + uid : str
+}
+class type_TypePointer {
+}
+class type_TypeReference {
+}
+Categorized <|-- type_Attribute
+Categorized <|-- type_EnumAttribute
+Categorized <|-- type_Enumerator
+Categorized <|-- type_Operation
+Categorized <|-- type_Relationship
+Categorized <|-- type_Type
+Relationship <|-- type_Assosiation
+Relationship <|-- type_Generalization
+Relationship <|-- type_References
+Secured <|-- type_Operation
+TypeElement <|-- type_Enumerator
+TypeElement <|-- type_Primitive
+TypeElement <|-- type_Type
+TypeElement <|-- type_TypeReference
+TypePointer <|-- type_Attribute
+TypePointer <|-- type_Parameter
+TypePointer <|-- type_ReturnValue
+TypePointer <|-- type_TypeReference
+type_Attribute "0..1" -- "1..1" type_AttributePointer : attributeRef34
+type_Attribute "0..9999" --* "1..1" type_Type : attributes26
+type_Attribute "0..1" -- "1..1" type_Link : detailField20
+type_Assosiation "1..1" *-- "0..9999" type_Link : links14
+type_Assosiation "1..1" *-- "0..1" type_TypePointer : many2manyHelper15
+type_Attribute "0..1" -- "1..1" type_Link : masterField18
+type_MethodPointer "1..1" -- "0..1" type_Operation : methodRef32
+type_Operation "0..9999" --* "1..1" type_Type : operations28
+type_PackagePointer "1..1" -- "0..1" type_TypeGroup : packageRef12
+type_Operation "1..1" *-- "0..9999" type_Parameter : parameters23
+type_Primitive "0..9999" --* "1..1" type_PrimitivesGroup : primitives3
+type_Relationship "0..9999" --* "1..1" type_TypeGroup : relationships1
+type_Operation "1..1" *-- "0..1" type_ReturnValue : returnValue24
+type_Relationship "1..1" -- "0..1" type_TypeElement : source4
+type_Relationship "1..1" -- "0..1" type_TypeElement : target7
+type_TypeElement "0..1" -- "1..1" type_TypePointer : typeRef10
+type_TypeElement "0..9999" --* "1..1" type_TypeGroup : types0
+type_EnumAttribute "0..9999" --* "1..1" type_Enumerator : values31
+@enduml

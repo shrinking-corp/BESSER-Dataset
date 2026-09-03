@@ -1,0 +1,60 @@
+@startuml
+class Appointment {
+  + date : str
+  + location : str
+  + time : int
+}
+class Doctor {
+  + id : int
+  + name : str
+  + speciality : str
+}
+class Health_Records {
+  + healthhistory : str
+}
+class Medicine {
+  + amount : int
+  + code : int
+  + name : str
+  + price : str
+}
+class Nurse {
+  + id : int
+  + name : str
+}
+class Patient {
+  + healthrecords : str
+  + id : int
+  + name : str
+}
+class Person {
+  + email : str
+  + id : int
+  + job : str
+  + name : str
+}
+class Sickness {
+  + prescription : str
+  + recommendations : str
+  + symptoms : str
+}
+class Staff {
+  + job : str
+  + name : str
+}
+class Technician {
+  + id : int
+  + name : str
+}
+Appointment "0..1" -- "0..1" Doctor : Appointment_Doctor
+Appointment "0..1" -- "0..1" Patient : Appointment_Patient
+Doctor "0..1" -- "0..1" Health_Records : Doctor_Health_Records
+Doctor "0..1" -- "0..1" Medicine : Doctor_Medicine
+Health_Records "0..1" -- "0..1" Patient : Health_Records_Patient
+Patient "0..1" -- "0..1" Person : Person_Patient
+Person "0..1" -- "0..1" Staff : Person_Staff
+Patient "0..1" -- "0..1" Sickness : Sickness_Patient
+Doctor "0..1" -- "0..1" Staff : Staff_Doctor
+Nurse "0..1" -- "0..1" Staff : Staff_Nurse
+Staff "0..1" -- "0..1" Technician : Staff_Technician
+@enduml

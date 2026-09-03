@@ -1,0 +1,104 @@
+@startuml
+enum ActionTimeType {
+  AFTER
+  BEFORE
+  INSTEADOF
+}
+class Constraint {
+}
+class ENamedElement {
+}
+class ReferenceConstraint {
+}
+class SQLObject {
+}
+class Table {
+}
+class TableConstraint {
+}
+class TypedElement {
+}
+class UniqueConstraint {
+}
+class relational_BaseTable {
+}
+class relational_Column {
+  + defaultValue : str
+  + length : int
+  + nullable : bool
+}
+abstract class relational_Comment {
+  + description : str
+}
+abstract class relational_Constraint {
+}
+class relational_DataType {
+}
+abstract class relational_ENamedElement {
+  + name : str
+}
+class relational_ForeignKey {
+}
+class relational_PrimaryKey {
+}
+abstract class relational_ReferenceConstraint {
+}
+abstract class relational_SQLObject {
+  + description : str
+  + label : str
+}
+class relational_Schema {
+}
+abstract class relational_Table {
+}
+abstract class relational_TableConstraint {
+}
+class relational_Trigger {
+  + actionTime : str
+  + deleteType : bool
+  + insertType : bool
+  + updateType : bool
+}
+abstract class relational_TypedElement {
+}
+class relational_UniqueConstraint {
+}
+Constraint <|-- relational_TableConstraint
+ENamedElement <|-- relational_SQLObject
+ReferenceConstraint <|-- relational_ForeignKey
+ReferenceConstraint <|-- relational_UniqueConstraint
+SQLObject <|-- relational_Constraint
+SQLObject <|-- relational_DataType
+SQLObject <|-- relational_Schema
+SQLObject <|-- relational_Table
+SQLObject <|-- relational_Trigger
+SQLObject <|-- relational_TypedElement
+Table <|-- relational_BaseTable
+TableConstraint <|-- relational_ReferenceConstraint
+TypedElement <|-- relational_Column
+UniqueConstraint <|-- relational_PrimaryKey
+relational_BaseTable "1..1" -- "1..1" relational_TableConstraint : baseTable28
+relational_Column "1..9999" -- "1..1" relational_Table : columns19
+relational_Comment "0..9999" -- "1..1" relational_SQLObject : comments0
+relational_BaseTable "1..1" -- "0..9999" relational_TableConstraint : constraints27
+relational_DataType "1..1" -- "1..1" relational_TypedElement : dataType3
+relational_Column "1..1" -- "0..9999" relational_ForeignKey : foreignKey24
+relational_ForeignKey "0..9999" -- "1..1" relational_UniqueConstraint : foreignKey37
+relational_Column "1..9999" -- "1..1" relational_ReferenceConstraint : members29
+relational_Column "1..1" -- "1..9999" relational_ReferenceConstraint : referenceConstraint23
+relational_Column "1..9999" -- "1..1" relational_ForeignKey : referencedMembers34
+relational_BaseTable "1..1" -- "1..1" relational_ForeignKey : referencedTable31
+relational_BaseTable "1..1" -- "0..9999" relational_ForeignKey : referencingForeignKeys25
+relational_Schema "1..1" -- "1..1" relational_Table : schema13
+relational_Schema "1..1" -- "1..1" relational_Trigger : schema7
+relational_Comment "1..1" -- "1..1" relational_SQLObject : sqlobject1
+relational_Column "1..1" -- "1..1" relational_Table : table21
+relational_Table "1..1" -- "1..1" relational_Trigger : table8
+relational_Schema "1..1" -- "0..9999" relational_Table : tables4
+relational_Table "1..9999" -- "1..1" relational_Trigger : triggerTables11
+relational_Table "1..1" -- "0..9999" relational_Trigger : triggers15
+relational_Schema "1..1" -- "0..9999" relational_Trigger : triggers5
+relational_Table "1..1" -- "0..9999" relational_Trigger : triggersConstrainted17
+relational_DataType "1..1" -- "0..9999" relational_TypedElement : typedElement2
+relational_ForeignKey "1..1" -- "1..1" relational_UniqueConstraint : uniqueConstraint33
+@enduml

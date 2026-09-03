@@ -1,0 +1,48 @@
+@startuml
+class AnswerdBuilder {
+  + login : str
+  + password : str
+  + state : NuRightAnswer
+}
+class Answers {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Choices {
+  + creationDate : date
+}
+class ConcreteOtherAnswers {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class ConcreteRightAnswers {
+  + address : str
+  + email : str
+  + phone : str
+}
+class MCRightAnswer {
+  + price : float
+  + quantity : int
+}
+class MultipleChoicesAnswers {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : OtherAnswer
+  + total : float
+}
+enum NuRightAnswer {
+}
+class NumericAnswers {
+  + description : str
+  + name : str
+}
+enum OtherAnswer {
+}
+AnswerdBuilder "1..1" -- "1..1" ConcreteOtherAnswers : Customer_Account
+AnswerdBuilder "1..1" -- "1..1" ConcreteRightAnswers : WebUser_Customer
+@enduml

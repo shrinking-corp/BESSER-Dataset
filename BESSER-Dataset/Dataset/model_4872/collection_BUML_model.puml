@@ -1,0 +1,51 @@
+@startuml
+class ItemsCollection {
+}
+class collection_Category {
+}
+class collection_DataSet {
+}
+class collection_Item {
+}
+abstract class collection_ItemsCollection {
+}
+class collection_ManualCollection {
+  + addItem(collection_item : str) : str
+  + removeItem(collection_item : str) : str
+}
+class collection_MetaTag {
+}
+class collection_Organisation {
+}
+class collection_Person {
+}
+class collection_RemoteCollection {
+  + remoteURL : str
+}
+class collection_SmartInformationObjectCollection {
+  + includeContents : str
+  + includeOrganisations : str
+  + includePersons : str
+  + minimumAge : date
+  + addNegative(collection_item : str) : str
+  + addPositive(collection_item : str) : str
+  + remove(collection_item : str) : str
+}
+class collection_Tag {
+}
+ItemsCollection <|-- collection_ManualCollection
+ItemsCollection <|-- collection_RemoteCollection
+ItemsCollection <|-- collection_SmartInformationObjectCollection
+collection_DataSet "1..1" -- "1..1" collection_ItemsCollection : dataSet1
+collection_Item "0..9999" -- "1..1" collection_ItemsCollection : items0
+collection_Category "0..9999" -- "1..1" collection_SmartInformationObjectCollection : negativeCategories16
+collection_MetaTag "0..9999" -- "1..1" collection_SmartInformationObjectCollection : negativeMetaTags13
+collection_Organisation "0..9999" -- "1..1" collection_SmartInformationObjectCollection : negativeOrganisations24
+collection_Person "0..9999" -- "1..1" collection_SmartInformationObjectCollection : negativePersons19
+collection_SmartInformationObjectCollection "1..1" -- "0..9999" collection_Tag : negativeTags4
+collection_Category "0..9999" -- "1..1" collection_SmartInformationObjectCollection : positiveCategories9
+collection_MetaTag "0..9999" -- "1..1" collection_SmartInformationObjectCollection : positiveMetaTags7
+collection_Organisation "0..9999" -- "1..1" collection_SmartInformationObjectCollection : positiveOrganisations22
+collection_Person "0..9999" -- "1..1" collection_SmartInformationObjectCollection : positivePersons11
+collection_SmartInformationObjectCollection "1..1" -- "0..9999" collection_Tag : positiveTags3
+@enduml

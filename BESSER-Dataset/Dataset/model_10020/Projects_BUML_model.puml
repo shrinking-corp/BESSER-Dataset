@@ -1,0 +1,56 @@
+@startuml
+class Project {
+}
+enum ProjectSize {
+  big
+  medium
+  small
+}
+enum ProjectStatus {
+  active
+  finished
+  planned
+  suspended
+}
+class Projects_Company {
+  + name : str
+  + createProject(Projects_n : str, Projects_qs : str, Projects_s : str, Projects_ws : str) : str
+  + createWorker(Projects_qs : str) : str
+  + finish(Projects_p : str) : void
+  + fire(Projects_w : str) : void
+  + hire(Projects_w : str) : void
+  + start(Projects_p : str) : void
+}
+class Projects_Project {
+  + name : str
+  + size : str
+  + status : str
+  + isHelpful(Projects_w : str) : bool
+  + missingQualifications() : str
+}
+class Projects_Qualification {
+  + description : str
+}
+class Projects_Training {
+}
+class Projects_Worker {
+  + nickname : str
+  + salary : int
+  + isOverloaded() : bool
+}
+Project <|-- Projects_Training
+Projects_Company "1..1" -- "1..1" Projects_Project : company6
+Projects_Company "1..1" -- "1..9999" Projects_Worker : employees1
+Projects_Company "0..1" -- "1..1" Projects_Worker : employer2
+Projects_Project "1..1" -- "0..9999" Projects_Worker : members8
+Projects_Project "1..1" -- "0..9999" Projects_Project : predecessors15
+Projects_Company "1..1" -- "0..9999" Projects_Project : projects0
+Projects_Project "0..9999" -- "1..1" Projects_Qualification : projects22
+Projects_Project "0..9999" -- "1..1" Projects_Worker : projects4
+Projects_Qualification "1..9999" -- "1..1" Projects_Worker : qualifications3
+Projects_Project "1..1" -- "1..9999" Projects_Qualification : requirements11
+Projects_Project "1..1" -- "0..9999" Projects_Project : successors18
+Projects_Qualification "1..9999" -- "1..1" Projects_Training : trained25
+Projects_Qualification "1..1" -- "0..1" Projects_Training : trainings24
+Projects_Qualification "1..1" -- "0..9999" Projects_Worker : workers20
+@enduml

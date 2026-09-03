@@ -1,0 +1,37 @@
+@startuml
+class Error {
+}
+class errors_CheckError {
+  + nameCk : str
+  + nameTable : str
+  + porcent : str
+}
+class errors_ColumnCk {
+  + columnName : str
+}
+class errors_ColumnFk {
+  + nameColumn : str
+}
+class errors_Error {
+}
+class errors_Errores {
+}
+class errors_ForeignError {
+  + nameFk : str
+  + porcent : str
+}
+class errors_Table {
+  + nameTable : str
+}
+class errors_ValueCk {
+  + value : str
+}
+Error <|-- errors_CheckError
+Error <|-- errors_ForeignError
+errors_ColumnFk "0..9999" --* "1..1" errors_Table : columnCont5
+errors_CheckError "1..1" *-- "0..9999" errors_ColumnCk : columns7
+errors_Error "0..9999" --* "1..1" errors_Errores : errores0
+errors_ForeignError "1..1" *-- "0..1" errors_Table : tableCont1
+errors_ForeignError "1..1" *-- "0..1" errors_Table : tableRef2
+errors_ColumnCk "1..1" *-- "0..9999" errors_ValueCk : values8
+@enduml

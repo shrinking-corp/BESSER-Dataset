@@ -1,0 +1,375 @@
+@startuml
+class BindableValue {
+}
+enum BooleanOperator {
+  and_
+  equivalent
+  greater_than
+  greater_than_equal
+  less_than
+  less_than_equal
+  not_equivalent
+  or_
+}
+enum CVQualifier {
+  const
+  unqualified
+  volatile
+}
+class CodeBlock {
+}
+class Dependency {
+}
+class Directive {
+}
+class Element {
+}
+class ElementAccess {
+}
+enum ElementKind {
+  default
+  headerOnly
+  implOnly
+}
+class Expression {
+}
+class ExpressionStatement {
+}
+class FileDependency {
+}
+class FileName {
+}
+enum LinkageSpec {
+  extern
+  static
+  unspecified
+}
+class Literal {
+}
+class Name {
+}
+class NamedElement {
+}
+enum Operator {
+  add
+  assign
+  assign_add
+  bitwise_and
+  bitwise_or
+  subtract
+}
+enum Pointer {
+  const_pointer
+  const_volatile_pointer
+  invalid
+  pointer
+  volatile_pointer
+}
+enum PrimitiveType {
+  char
+  double
+  float
+  int16
+  int32
+  int8
+  long
+  uint16
+  uint32
+  uint8
+  void
+}
+class Sizeof {
+}
+class Statement {
+}
+class Structure {
+}
+class SwitchClause {
+}
+class UserElement {
+}
+class langc_AddressOfExpr {
+}
+class langc_BinaryOperation {
+  + operator : str
+}
+abstract class langc_BindableValue {
+}
+class langc_BlockInitializer {
+}
+class langc_BreakStatement {
+}
+class langc_BuiltInType {
+  + type : str
+}
+class langc_CastExpr {
+}
+class langc_CharacterLiteral {
+  + value : str
+}
+class langc_CodeBlob {
+  + markerComment : str
+  + text : str
+}
+class langc_CodeBlock {
+  + forceBraces : bool
+}
+class langc_ConditionalStatement {
+}
+abstract class langc_Dependency {
+}
+class langc_DependencyBlob {
+  + markerComment : str
+  + text : str
+}
+class langc_DependencyList {
+}
+class langc_DereferenceExpr {
+}
+abstract class langc_Directive {
+}
+abstract class langc_Element {
+}
+class langc_ElementAccess {
+}
+class langc_ElementList {
+}
+class langc_ElementReference {
+  + cvQualifier : str
+  + pointerSpec : str
+}
+class langc_Enum {
+}
+class langc_Enumerator {
+}
+class langc_Expression {
+  + precendence : int
+}
+class langc_ExpressionBlob {
+  + text : str
+}
+class langc_ExpressionStatement {
+}
+abstract class langc_FileDependency {
+}
+class langc_FileName {
+  + hasObjectCode : bool
+}
+class langc_FloatingLiteral {
+  + value : float
+}
+class langc_FolderName {
+  + api : bool
+}
+class langc_Function {
+  + linkage : str
+}
+class langc_FunctionAddress {
+}
+class langc_FunctionCall {
+}
+class langc_FunctionImplementation {
+}
+class langc_FunctionPointer {
+}
+class langc_IndexExpr {
+}
+class langc_IntegralLiteral {
+  + bytes : str
+  + signed : bool
+  + value : str
+}
+class langc_LabeledClause {
+}
+class langc_LinkableArtifact {
+  + name : str
+}
+abstract class langc_Literal {
+  + primitiveType : str
+}
+class langc_LogicalComparison {
+  + operator : str
+}
+class langc_Macro {
+}
+class langc_MemberAccess {
+}
+class langc_Name {
+  + name : str
+}
+abstract class langc_NamedElement {
+}
+class langc_NamedReference {
+}
+class langc_ReturnStatement {
+}
+abstract class langc_Sizeof {
+}
+class langc_SizeofExpr {
+}
+class langc_SizeofType {
+}
+abstract class langc_Statement {
+}
+class langc_StringLiteral {
+  + value : str
+}
+class langc_Struct {
+}
+abstract class langc_Structure {
+}
+class langc_SubSystem {
+  + name : str
+}
+class langc_SwitchClause {
+  + fallthrough : bool
+}
+class langc_SwitchStatement {
+}
+class langc_System {
+}
+class langc_SystemFileName {
+}
+class langc_SystemInclude {
+}
+class langc_Typedef {
+}
+class langc_Union {
+}
+abstract class langc_UserElement {
+  + kind : str
+}
+class langc_UserInclude {
+}
+class langc_VariableDeclaration {
+  + linkage : str
+}
+class langc_VariableDeclarationStatement {
+}
+class langc_WhileStatement {
+}
+BindableValue <|-- langc_ElementReference
+BindableValue <|-- langc_Enumerator
+BindableValue <|-- langc_Macro
+BindableValue <|-- langc_NamedElement
+CodeBlock <|-- langc_CodeBlob
+CodeBlock <|-- langc_ConditionalStatement
+CodeBlock <|-- langc_SwitchClause
+CodeBlock <|-- langc_WhileStatement
+Dependency <|-- langc_DependencyBlob
+Dependency <|-- langc_FileDependency
+Directive <|-- langc_Macro
+Element <|-- langc_BuiltInType
+Element <|-- langc_UserElement
+ElementAccess <|-- langc_MemberAccess
+Expression <|-- langc_AddressOfExpr
+Expression <|-- langc_BinaryOperation
+Expression <|-- langc_BlockInitializer
+Expression <|-- langc_CastExpr
+Expression <|-- langc_DereferenceExpr
+Expression <|-- langc_ElementAccess
+Expression <|-- langc_ExpressionBlob
+Expression <|-- langc_FunctionAddress
+Expression <|-- langc_FunctionCall
+Expression <|-- langc_IndexExpr
+Expression <|-- langc_Literal
+Expression <|-- langc_LogicalComparison
+Expression <|-- langc_Sizeof
+Expression <|-- langc_StringLiteral
+ExpressionStatement <|-- langc_ReturnStatement
+FileDependency <|-- langc_SystemInclude
+FileDependency <|-- langc_UserInclude
+FileName <|-- langc_SystemFileName
+Literal <|-- langc_CharacterLiteral
+Literal <|-- langc_FloatingLiteral
+Literal <|-- langc_IntegralLiteral
+Name <|-- langc_FileName
+Name <|-- langc_FolderName
+NamedElement <|-- langc_Enum
+NamedElement <|-- langc_Function
+NamedElement <|-- langc_Structure
+NamedElement <|-- langc_Typedef
+NamedElement <|-- langc_VariableDeclaration
+Sizeof <|-- langc_SizeofExpr
+Sizeof <|-- langc_SizeofType
+Statement <|-- langc_BreakStatement
+Statement <|-- langc_CodeBlock
+Statement <|-- langc_ExpressionStatement
+Statement <|-- langc_SwitchStatement
+Statement <|-- langc_VariableDeclarationStatement
+Structure <|-- langc_Struct
+Structure <|-- langc_Union
+SwitchClause <|-- langc_LabeledClause
+UserElement <|-- langc_FunctionImplementation
+UserElement <|-- langc_FunctionPointer
+UserElement <|-- langc_NamedElement
+langc_Expression "0..9999" --* "1..1" langc_FunctionCall : arguments24
+langc_Expression "1..1" --* "1..1" langc_IndexExpr : array124
+langc_ElementReference "1..1" *-- "0..9999" langc_Expression : arrayBounds17
+langc_LinkableArtifact "0..9999" --* "1..1" langc_System : artifacts145
+langc_CodeBlock "1..1" --* "1..1" langc_FunctionImplementation : body134
+langc_SwitchClause "0..9999" --* "1..1" langc_SwitchStatement : clauses100
+langc_Expression "1..1" --* "1..1" langc_SwitchStatement : condition101
+langc_Expression "1..1" --* "1..1" langc_WhileStatement : condition108
+langc_ConditionalStatement "1..1" *-- "1..1" langc_Expression : condition154
+langc_Expression "1..1" --* "1..1" langc_MemberAccess : container69
+langc_DependencyList "1..1" --* "1..1" langc_ElementList : declIncludes35
+langc_Function "1..1" *-- "0..1" langc_FunctionImplementation : defaultImpl7
+langc_FileName "0..1" -- "1..1" langc_UserElement : defn91
+langc_DependencyList "1..1" --* "1..1" langc_ElementList : defnIncludes37
+langc_CodeBlob "1..1" *-- "1..1" langc_DependencyBlob : dependencies147
+langc_Dependency "0..9999" --* "1..1" langc_DependencyList : dependencies94
+langc_Element "1..1" -- "1..1" langc_ElementReference : element15
+langc_ElementReference "1..1" --* "1..1" langc_VariableDeclaration : element62
+langc_ElementReference "1..1" --* "1..1" langc_Typedef : element67
+langc_ElementReference "1..1" -- "1..1" langc_SizeofType : element96
+langc_ElementList "1..1" *-- "0..9999" langc_UserElement : elements29
+langc_Enum "1..1" *-- "0..9999" langc_Enumerator : enumerators78
+langc_AddressOfExpr "1..1" *-- "1..1" langc_Expression : expr104
+langc_DereferenceExpr "1..1" *-- "1..1" langc_Expression : expr106
+langc_Expression "1..1" --* "1..1" langc_SizeofExpr : expr132
+langc_Expression "0..1" --* "1..1" langc_ExpressionStatement : expr45
+langc_CastExpr "1..1" *-- "1..1" langc_Expression : expr88
+langc_BlockInitializer "1..1" *-- "0..9999" langc_Expression : exprs120
+langc_FileDependency "1..1" -- "1..1" langc_FileName : filename84
+langc_ElementList "0..9999" -- "1..1" langc_SubSystem : files71
+langc_FolderName "0..9999" --* "1..1" langc_SubSystem : folders73
+langc_Function "1..1" -- "1..1" langc_FunctionImplementation : function137
+langc_Function "1..1" -- "1..1" langc_FunctionCall : function22
+langc_Function "1..1" -- "1..1" langc_FunctionAddress : function60
+langc_FunctionImplementation "0..9999" -- "1..1" langc_LinkableArtifact : functionImplementations148
+langc_Expression "1..1" --* "1..1" langc_IndexExpr : index122
+langc_Expression "0..1" --* "1..1" langc_VariableDeclaration : initializer64
+langc_Expression "1..9999" --* "1..1" langc_LabeledClause : labels98
+langc_Expression "1..1" --* "1..1" langc_LogicalComparison : lhs127
+langc_BinaryOperation "1..1" *-- "1..1" langc_Expression : lhs48
+langc_NamedReference "0..9999" --* "1..1" langc_Structure : members53
+langc_Name "1..1" --* "1..1" langc_NamedElement : name0
+langc_Macro "1..1" *-- "1..1" langc_Name : name115
+langc_ElementAccess "1..1" -- "1..1" langc_Name : name27
+langc_ElementList "1..1" *-- "1..1" langc_FileName : name30
+langc_Enumerator "1..1" *-- "1..1" langc_Name : name81
+langc_Name "1..1" -- "1..1" langc_NamedReference : name9
+langc_Macro "1..1" *-- "0..9999" langc_Name : parameters110
+langc_Function "1..1" *-- "0..9999" langc_NamedReference : parameters5
+langc_ElementReference "0..9999" --* "1..1" langc_FunctionPointer : parameters57
+langc_Name "0..1" -- "1..1" langc_Name : parent2
+langc_Directive "0..9999" --* "1..1" langc_ElementList : privateDirectives42
+langc_Directive "0..9999" --* "1..1" langc_ElementList : publicDirectives40
+langc_FolderName "0..9999" --* "1..1" langc_System : publicFolders142
+langc_FolderName "0..9999" --* "1..1" langc_SubSystem : publicFolders75
+langc_Expression "0..1" --* "1..1" langc_Macro : replacement112
+langc_ElementReference "1..1" --* "1..1" langc_Function : returnType4
+langc_ElementReference "1..1" --* "1..1" langc_FunctionPointer : returnType55
+langc_Expression "1..1" --* "1..1" langc_LogicalComparison : rhs129
+langc_BinaryOperation "1..1" *-- "1..1" langc_Expression : rhs50
+langc_LinkableArtifact "1..1" -- "0..9999" langc_UserElement : rootElements151
+langc_CodeBlock "1..1" *-- "0..9999" langc_Statement : statements47
+langc_SubSystem "0..9999" --* "1..1" langc_System : subSystems140
+langc_CastExpr "1..1" *-- "1..1" langc_ElementReference : targetType86
+langc_ElementReference "1..1" --* "1..1" langc_NamedReference : type12
+langc_ElementReference "1..1" -- "1..1" langc_Expression : type19
+langc_Element "0..9999" --* "1..1" langc_ElementList : types32
+langc_Enumerator "1..1" *-- "0..1" langc_IntegralLiteral : value79
+langc_VariableDeclaration "1..1" --* "1..1" langc_VariableDeclarationStatement : variable118
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+class Books_Author {
+  + name : str
+}
+class Books_Book {
+  + collecName : str
+  + title : str
+}
+class Books_Chapter {
+  + title : str
+}
+class Books_System {
+  + name : str
+}
+Books_Author "0..9999" --* "1..1" Books_System : authors1
+Books_Author "0..9999" -- "1..1" Books_Book : auths4
+Books_Book "0..9999" --* "1..1" Books_System : books0
+Books_Book "1..1" *-- "0..9999" Books_Chapter : chaps3
+Books_Book "1..1" -- "1..1" Books_Chapter : itsbook5
+Books_Author "1..1" -- "0..9999" Books_Book : mybs6
+@enduml

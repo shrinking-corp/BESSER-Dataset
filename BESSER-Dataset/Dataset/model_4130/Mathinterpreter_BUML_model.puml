@@ -1,0 +1,104 @@
+@startuml
+class DefParenthesis {
+}
+class MDExpression {
+}
+class MathExpression {
+}
+class MultiplyDivide {
+}
+class Number {
+}
+class PMExpression {
+}
+class PlusMinus {
+}
+class PowExpression {
+}
+class Power {
+}
+class Primary {
+}
+class mathinterpreter_DefParenthesis {
+}
+class mathinterpreter_DefineExpr {
+}
+class mathinterpreter_Divide {
+}
+class mathinterpreter_EObject {
+}
+class mathinterpreter_External {
+  + name : str
+}
+class mathinterpreter_Function {
+}
+class mathinterpreter_MDExpression {
+}
+class mathinterpreter_MathExpression {
+  + description : str
+}
+class mathinterpreter_Minus {
+}
+class mathinterpreter_Model {
+}
+class mathinterpreter_Multiply {
+}
+class mathinterpreter_MultiplyDivide {
+}
+class mathinterpreter_Negative {
+}
+class mathinterpreter_Number {
+  + value : int
+}
+class mathinterpreter_PMExpression {
+}
+class mathinterpreter_PMParenthesis {
+}
+class mathinterpreter_Plus {
+}
+class mathinterpreter_PlusMinus {
+}
+class mathinterpreter_Positive {
+}
+class mathinterpreter_Pow {
+}
+class mathinterpreter_PowExpression {
+}
+class mathinterpreter_Power {
+}
+class mathinterpreter_Primary {
+}
+class mathinterpreter_Variable {
+  + name : str
+}
+class mathinterpreter_VariableName {
+  + name : str
+}
+DefParenthesis <|-- mathinterpreter_DefineExpr
+MDExpression <|-- mathinterpreter_PowExpression
+MathExpression <|-- mathinterpreter_DefineExpr
+MathExpression <|-- mathinterpreter_Function
+MultiplyDivide <|-- mathinterpreter_Divide
+MultiplyDivide <|-- mathinterpreter_Multiply
+Number <|-- mathinterpreter_Negative
+Number <|-- mathinterpreter_Positive
+PMExpression <|-- mathinterpreter_MDExpression
+PlusMinus <|-- mathinterpreter_Minus
+PlusMinus <|-- mathinterpreter_Plus
+PowExpression <|-- mathinterpreter_Primary
+Power <|-- mathinterpreter_Pow
+Primary <|-- mathinterpreter_DefParenthesis
+Primary <|-- mathinterpreter_External
+Primary <|-- mathinterpreter_Number
+Primary <|-- mathinterpreter_PMParenthesis
+Primary <|-- mathinterpreter_VariableName
+mathinterpreter_External "1..1" *-- "0..9999" mathinterpreter_Primary : arguments7
+mathinterpreter_MathExpression "1..1" *-- "0..1" mathinterpreter_PMExpression : expression1
+mathinterpreter_PMExpression "0..1" --* "1..1" mathinterpreter_PMParenthesis : expression15
+mathinterpreter_PMExpression "0..1" --* "1..1" mathinterpreter_Variable : expression4
+mathinterpreter_PMExpression "1..1" *-- "0..1" mathinterpreter_PMExpression : left9
+mathinterpreter_MathExpression "0..9999" --* "1..1" mathinterpreter_Model : mathexpression0
+mathinterpreter_EObject "0..1" --* "1..1" mathinterpreter_PMExpression : operator11
+mathinterpreter_MDExpression "0..1" --* "1..1" mathinterpreter_PMExpression : right13
+mathinterpreter_DefineExpr "1..1" *-- "0..9999" mathinterpreter_Variable : variables3
+@enduml

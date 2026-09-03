@@ -1,0 +1,66 @@
+@startuml
+class Association {
+}
+class AttributeValue {
+}
+class classdiagram_Aggregation {
+}
+class classdiagram_Association {
+  + name : str
+  + sourceMultiplicity : int
+  + targetMultiplicity : int
+}
+class classdiagram_Attribute {
+  + is_primary : bool
+  + name : str
+}
+abstract class classdiagram_AttributeValue {
+}
+class classdiagram_Class {
+  + is_persistent : bool
+  + name : str
+}
+class classdiagram_Composition {
+}
+class classdiagram_Dependency {
+}
+class classdiagram_Diagram {
+}
+class classdiagram_Generalization {
+}
+class classdiagram_Interface {
+  + name : str
+}
+class classdiagram_InterfaceRealization {
+}
+class classdiagram_Method {
+  + name : str
+}
+class classdiagram_PrimitiveDataType {
+  + name : str
+}
+class classdiagram_Realization {
+}
+Association <|-- classdiagram_Aggregation
+Association <|-- classdiagram_Composition
+Association <|-- classdiagram_Dependency
+AttributeValue <|-- classdiagram_Class
+AttributeValue <|-- classdiagram_PrimitiveDataType
+classdiagram_Association "0..9999" --* "1..1" classdiagram_Diagram : associations1
+classdiagram_Attribute "0..9999" --* "1..1" classdiagram_Class : attribute13
+classdiagram_Attribute "0..9999" --* "1..1" classdiagram_Interface : attribute23
+classdiagram_Class "1..9999" --* "1..1" classdiagram_Diagram : classes0
+classdiagram_Diagram "1..1" *-- "0..9999" classdiagram_Generalization : generalizations5
+classdiagram_Class "1..1" *-- "0..9999" classdiagram_Method : method15
+classdiagram_Interface "1..1" *-- "0..9999" classdiagram_Method : method25
+classdiagram_Class "1..1" -- "1..1" classdiagram_Generalization : source17
+classdiagram_Interface "0..9999" -- "1..1" classdiagram_InterfaceRealization : source28
+classdiagram_Class "1..1" -- "1..1" classdiagram_Realization : source33
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : source7
+classdiagram_Association "1..1" -- "1..1" classdiagram_Class : target10
+classdiagram_Class "1..1" -- "1..1" classdiagram_Generalization : target20
+classdiagram_Class "0..9999" -- "1..1" classdiagram_InterfaceRealization : target30
+classdiagram_Class "1..9999" -- "1..1" classdiagram_Realization : target35
+classdiagram_Attribute "1..1" -- "1..1" classdiagram_AttributeValue : type38
+classdiagram_Diagram "1..1" *-- "0..9999" classdiagram_PrimitiveDataType : types3
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+enum PseudoStateType {
+  Choice
+  DeepHistory
+  EntryPoint
+  ExitPoint
+  Fork
+  Initial
+  Join
+  Junction
+  ShadowHistory
+  Terminate
+}
+class State {
+}
+class Vertex {
+}
+class stateChart_CompositeState {
+}
+class stateChart_FinalState {
+}
+class stateChart_PseudoState {
+  + PseudoStateType : str
+}
+class stateChart_Region {
+  + name : str
+  + note : str
+}
+class stateChart_SimpleState {
+}
+abstract class stateChart_State {
+  + action : str
+  + entry : str
+  + exit : str
+}
+class stateChart_StateMachine {
+  + name : str
+}
+class stateChart_Transient {
+  + effect : str
+  + guard : str
+  + name : str
+  + priority : int
+  + trigger : str
+}
+abstract class stateChart_Vertex {
+  + isActive : bool
+  + name : str
+  + note : str
+}
+State <|-- stateChart_CompositeState
+State <|-- stateChart_FinalState
+State <|-- stateChart_SimpleState
+Vertex <|-- stateChart_PseudoState
+Vertex <|-- stateChart_State
+stateChart_CompositeState "1..1" *-- "0..9999" stateChart_Region : element11
+stateChart_Region "1..1" --* "1..1" stateChart_StateMachine : mainRegion9
+stateChart_Transient "1..1" -- "1..1" stateChart_Vertex : source3
+stateChart_Transient "1..1" -- "1..1" stateChart_Vertex : target6
+stateChart_Region "1..1" *-- "0..9999" stateChart_Transient : transient0
+stateChart_Region "1..1" *-- "0..9999" stateChart_Vertex : vertex1
+@enduml

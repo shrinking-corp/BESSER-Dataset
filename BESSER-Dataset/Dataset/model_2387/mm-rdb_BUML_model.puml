@@ -1,0 +1,264 @@
+@startuml
+class Column {
+}
+class Index {
+}
+class ModelOperation {
+}
+class ModelRoot {
+}
+class Operations {
+}
+enum PrimitiveType {
+  boolean
+  char
+  float
+  int
+}
+class Schema {
+}
+class Sequence {
+}
+class Structure {
+}
+class Table {
+}
+class TableConstraint {
+}
+class mm_ops_AddColumn {
+  + defaultValue : str
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+  + type : str
+}
+class mm_ops_AddForeignKey {
+  + constrainedColumnName : str
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+  + targetTableName : str
+}
+class mm_ops_AddIndex {
+  + columnsNames : str
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_AddNotNull {
+  + constrainedColumnName : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_AddPrimaryKey {
+  + constrainedColumnName : str
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_AddSchema {
+  + name : str
+}
+class mm_ops_AddSequence {
+  + name : str
+  + owningSchemaName : str
+  + startValue : int
+}
+class mm_ops_AddTable {
+  + name : str
+  + owningSchemaName : str
+}
+class mm_ops_AddUnique {
+  + constrainedColumnNames : str
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_DeleteRows {
+  + owningSchemaName : str
+  + tableName : str
+  + whereCondition : str
+}
+class mm_ops_GenerateSequenceNumbers {
+  + columnName : str
+  + owningSchemaName : str
+  + sequenceName : str
+  + tableName : str
+}
+class mm_ops_HasNoInstances {
+  + owningSchemaName : str
+  + tableName : str
+}
+class mm_ops_HasNoOwnInstances {
+  + owningSchemaName : str
+  + tableName : str
+  + whereCondition : str
+}
+class mm_ops_InsertRows {
+  + owningSchemaName : str
+  + sourceColumnsNames : str
+  + sourceTableName : str
+  + targetColumnNames : str
+  + targetTableName : str
+  + whereCondition : str
+}
+abstract class mm_ops_ModelOperation {
+}
+class mm_ops_NillRows {
+  + columnName : str
+  + owningSchemaName : str
+  + tableName : str
+  + whereCondition : str
+}
+class mm_ops_RemoveColumn {
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_RemoveConstraint {
+  + name : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_RemoveDefaultValue {
+  + owningColumnName : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_RemoveIndex {
+  + name : str
+  + owningSchemaName : str
+}
+class mm_ops_RemoveNotNull {
+  + constrainedColumnName : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_RemoveSequence {
+  + name : str
+  + owningSchemaName : str
+}
+class mm_ops_RemoveTable {
+  + name : str
+  + owningSchemaName : str
+}
+class mm_ops_RenameColumn {
+  + name : str
+  + newName : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_RenameTable {
+  + name : str
+  + newName : str
+  + owningSchemaName : str
+}
+class mm_ops_SetColumnType {
+  + newType : str
+  + oldType : str
+  + owningColumnName : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_SetDefaultValue {
+  + newDefaultValue : str
+  + owningColumnName : str
+  + owningSchemaName : str
+  + owningTableName : str
+}
+class mm_ops_UpdateRows {
+  + owningSchemaName : str
+  + sourceColumnName : str
+  + sourceTableName : str
+  + targetColumnName : str
+  + targetTableName : str
+  + whereCondition : str
+}
+class mm_rdb_Column {
+  + defaultValue : str
+  + isNillable : str
+  + name : str
+  + type : str
+}
+class mm_rdb_ForeignKey {
+}
+class mm_rdb_Index {
+  + name : str
+}
+abstract class mm_rdb_ModelRoot {
+}
+class mm_rdb_Operations {
+}
+class mm_rdb_PrimaryKey {
+}
+class mm_rdb_Schema {
+  + name : str
+}
+class mm_rdb_Sequence {
+  + name : str
+  + startValue : int
+}
+class mm_rdb_Structure {
+}
+class mm_rdb_Table {
+  + name : str
+}
+abstract class mm_rdb_TableConstraint {
+  + name : str
+}
+class mm_rdb_Unique {
+}
+class ops_ModelOperation {
+}
+ModelOperation <|-- mm_ops_AddColumn
+ModelOperation <|-- mm_ops_AddForeignKey
+ModelOperation <|-- mm_ops_AddIndex
+ModelOperation <|-- mm_ops_AddNotNull
+ModelOperation <|-- mm_ops_AddPrimaryKey
+ModelOperation <|-- mm_ops_AddSchema
+ModelOperation <|-- mm_ops_AddSequence
+ModelOperation <|-- mm_ops_AddTable
+ModelOperation <|-- mm_ops_AddUnique
+ModelOperation <|-- mm_ops_DeleteRows
+ModelOperation <|-- mm_ops_GenerateSequenceNumbers
+ModelOperation <|-- mm_ops_HasNoInstances
+ModelOperation <|-- mm_ops_HasNoOwnInstances
+ModelOperation <|-- mm_ops_InsertRows
+ModelOperation <|-- mm_ops_NillRows
+ModelOperation <|-- mm_ops_RemoveColumn
+ModelOperation <|-- mm_ops_RemoveConstraint
+ModelOperation <|-- mm_ops_RemoveDefaultValue
+ModelOperation <|-- mm_ops_RemoveIndex
+ModelOperation <|-- mm_ops_RemoveNotNull
+ModelOperation <|-- mm_ops_RemoveSequence
+ModelOperation <|-- mm_ops_RemoveTable
+ModelOperation <|-- mm_ops_RenameColumn
+ModelOperation <|-- mm_ops_RenameTable
+ModelOperation <|-- mm_ops_SetColumnType
+ModelOperation <|-- mm_ops_SetDefaultValue
+ModelOperation <|-- mm_ops_UpdateRows
+ModelRoot <|-- mm_rdb_Operations
+ModelRoot <|-- mm_rdb_Structure
+TableConstraint <|-- mm_rdb_ForeignKey
+TableConstraint <|-- mm_rdb_PrimaryKey
+TableConstraint <|-- mm_rdb_Unique
+Column "1..9999" -- "1..1" mm_rdb_Index : columns12
+Column "0..9999" --* "1..1" mm_rdb_Table : columns15
+Column "1..1" -- "1..1" mm_rdb_PrimaryKey : constrainedColumn25
+Column "1..1" -- "1..1" mm_rdb_ForeignKey : constrainedColumn29
+TableConstraint "0..9999" --* "1..1" mm_rdb_Table : constraints17
+Index "0..9999" --* "1..1" mm_rdb_Schema : indexes6
+mm_rdb_Operations "1..1" *-- "0..9999" ops_ModelOperation : operations0
+Operations "1..1" -- "1..1" mm_ops_ModelOperation : owningOperations32
+Schema "1..1" -- "1..1" mm_rdb_Index : owningSchema10
+Schema "1..1" -- "1..1" mm_rdb_Table : owningSchema13
+Schema "1..1" -- "1..1" mm_rdb_Sequence : owningSchema8
+Structure "1..1" -- "1..1" mm_rdb_Schema : owningStructure2
+Table "1..1" -- "1..1" mm_rdb_Column : owningTable19
+Table "1..1" -- "1..1" mm_rdb_TableConstraint : owningTable21
+Schema "0..9999" --* "1..1" mm_rdb_Structure : schemas1
+Sequence "1..1" --* "1..1" mm_rdb_Schema : sequence4
+Table "0..9999" --* "1..1" mm_rdb_Schema : tables3
+Table "1..1" -- "1..1" mm_rdb_ForeignKey : targetTable27
+Column "0..9999" -- "1..1" mm_rdb_Unique : uniqueColumns23
+@enduml

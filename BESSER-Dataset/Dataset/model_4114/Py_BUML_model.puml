@@ -1,0 +1,98 @@
+@startuml
+class py_Affect {
+  + vars : str
+}
+class py_Command {
+}
+class py_Commands {
+}
+class py_Definition {
+}
+class py_EObject {
+}
+class py_Expr {
+}
+class py_ExprAnd {
+}
+class py_ExprCons {
+}
+class py_ExprEq {
+}
+class py_ExprHd {
+}
+class py_ExprList {
+}
+class py_ExprNot {
+}
+class py_ExprOr {
+}
+class py_ExprSimple {
+  + str : str
+  + sym : str
+  + varSimple : str
+}
+class py_ExprSym {
+  + arg1 : str
+}
+class py_ExprTl {
+}
+class py_For {
+}
+class py_Foreach {
+  + var : str
+}
+class py_FunctionP {
+  + name : str
+}
+class py_If {
+}
+class py_Input {
+  + vars : str
+}
+class py_LExpr {
+}
+class py_Nop {
+  + nop : str
+}
+class py_Output {
+  + vars : str
+}
+class py_Program {
+}
+class py_Wh {
+}
+class py_While {
+}
+py_ExprAnd "1..1" *-- "0..1" py_ExprSimple : arg142
+py_ExprOr "1..1" *-- "0..1" py_ExprSimple : arg146
+py_Expr "0..1" --* "1..1" py_ExprNot : arg163
+py_ExprEq "1..1" *-- "0..1" py_ExprSimple : arg165
+py_Expr "0..1" --* "1..1" py_ExprAnd : arg243
+py_Expr "0..1" --* "1..1" py_ExprOr : arg248
+py_Expr "0..9999" --* "1..1" py_ExprSym : arg261
+py_Expr "0..1" --* "1..1" py_ExprEq : arg267
+py_Expr "0..9999" --* "1..1" py_ExprList : arg55
+py_Expr "0..1" --* "1..1" py_ExprHd : arg57
+py_Expr "0..1" --* "1..1" py_ExprTl : arg59
+py_Command "1..1" *-- "0..1" py_EObject : cmd13
+py_Commands "0..1" --* "1..1" py_Foreach : cmd31
+py_Commands "0..1" --* "1..1" py_For : cmds26
+py_Commands "0..1" --* "1..1" py_While : cmds36
+py_Command "0..9999" --* "1..1" py_Commands : commands11
+py_Commands "0..1" --* "1..1" py_If : commands116
+py_Commands "0..1" --* "1..1" py_If : commands219
+py_Commands "0..1" --* "1..1" py_Definition : commands7
+py_Definition "0..1" --* "1..1" py_FunctionP : definition3
+py_Program "0..1" --* "1..1" py_Wh : elements0
+py_Expr "0..1" --* "1..1" py_If : expr15
+py_Expr "0..1" --* "1..1" py_Foreach : expr229
+py_Expr "0..1" --* "1..1" py_For : expr24
+py_Expr "0..1" --* "1..1" py_While : expr34
+py_EObject "0..1" --* "1..1" py_Expr : expr39
+py_Affect "1..1" *-- "0..9999" py_Expr : exprs22
+py_FunctionP "0..9999" --* "1..1" py_Program : functions1
+py_Definition "1..1" *-- "0..1" py_Input : input5
+py_ExprCons "1..1" *-- "0..1" py_LExpr : lexpr51
+py_Expr "0..9999" --* "1..1" py_LExpr : lexpr52
+py_Definition "1..1" *-- "0..1" py_Output : output9
+@enduml

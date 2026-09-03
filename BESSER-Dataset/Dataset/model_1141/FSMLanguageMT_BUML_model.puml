@@ -1,0 +1,26 @@
+@startuml
+class gemoc_FSM {
+  + name : bool
+  + initialize() : void
+  + main() : void
+  + print() : void
+  + setCurrentState(gemoc_state : str) : void
+}
+class gemoc_State {
+  + name : str
+  + isValidTrigger(gemoc_trigger : str) : void
+  + step(gemoc_inputString : str) : void
+}
+class gemoc_Transition {
+  + name : str
+  + trigger : str
+  + fire() : void
+}
+gemoc_FSM "0..1" -- "1..1" gemoc_State : fSM6
+gemoc_State "1..1" -- "0..1" gemoc_Transition : incoming3
+gemoc_State "1..1" -- "0..1" gemoc_Transition : outcoming4
+gemoc_State "0..1" -- "1..1" gemoc_Transition : src10
+gemoc_FSM "1..1" *-- "0..9999" gemoc_State : state0
+gemoc_State "0..1" -- "1..1" gemoc_Transition : state9
+gemoc_FSM "1..1" *-- "0..9999" gemoc_Transition : transition1
+@enduml

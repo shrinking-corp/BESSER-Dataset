@@ -1,0 +1,43 @@
+@startuml
+class Unit {
+}
+class units_pc_av_Advice {
+}
+class units_pc_av_BaseUnit {
+  + name : str
+}
+class units_pc_av_EObject {
+}
+class units_pc_av_GlobalScope {
+}
+class units_pc_av_PerJoinPointScope {
+}
+class units_pc_av_Pointcut {
+}
+class units_pc_av_Unit {
+}
+class units_pc_av_UnitCarryingElement {
+  + unitSpecification : str
+}
+class units_pc_av_UnitLiteral {
+}
+class units_pc_av_UnitMultiplication {
+}
+class units_pc_av_UnitPower {
+  + exponent : int
+}
+class units_pc_av_UnitRepository {
+}
+Unit <|-- units_pc_av_UnitLiteral
+Unit <|-- units_pc_av_UnitMultiplication
+Unit <|-- units_pc_av_UnitPower
+units_pc_av_BaseUnit "0..1" -- "1..1" units_pc_av_UnitLiteral : baseUnit6
+units_pc_av_EObject "0..9999" --* "1..1" units_pc_av_Pointcut : children8
+units_pc_av_Advice "1..1" *-- "0..9999" units_pc_av_EObject : children9
+units_pc_av_EObject "1..1" -- "1..1" units_pc_av_GlobalScope : scopedObject11
+units_pc_av_EObject "1..1" -- "1..1" units_pc_av_PerJoinPointScope : scopedObject13
+units_pc_av_Unit "0..1" -- "1..1" units_pc_av_UnitCarryingElement : unit0
+units_pc_av_Unit "0..1" --* "1..1" units_pc_av_UnitPower : unit4
+units_pc_av_BaseUnit "0..9999" --* "1..1" units_pc_av_UnitRepository : units1
+units_pc_av_Unit "0..9999" --* "1..1" units_pc_av_UnitMultiplication : units2
+@enduml

@@ -1,0 +1,63 @@
+@startuml
+class architectureTool_Attribute {
+  + Visable : str
+  + name : str
+  + type : str
+}
+class architectureTool_Class {
+}
+class architectureTool_Component {
+  + name : str
+}
+class architectureTool_Interface {
+}
+class architectureTool_Method {
+  + name : str
+  + parameter : str
+  + returnType : str
+  + visable : str
+}
+abstract class architectureTool_Port {
+  + name : str
+  + provided : str
+  + required : str
+  + simple : str
+  + type : str
+}
+class architectureTool_System {
+  + name : str
+}
+abstract class architectureTool_classMember {
+  + name : str
+}
+class classMember {
+}
+classMember <|-- architectureTool_Class
+classMember <|-- architectureTool_Interface
+architectureTool_Class "0..9999" -- "1..1" architectureTool_Class : Aggregation25
+architectureTool_Class "0..9999" -- "1..1" architectureTool_Class : Association13
+architectureTool_Component "1..1" -- "0..9999" architectureTool_System : ComponentDependence11
+architectureTool_Component "0..9999" -- "1..1" architectureTool_System : ComponentDependence41
+architectureTool_Class "0..9999" -- "1..1" architectureTool_Class : Generalization19
+architectureTool_Class "1..1" -- "0..9999" architectureTool_Interface : InterfaceAbstract15
+architectureTool_Interface "0..9999" -- "1..1" architectureTool_Interface : InterfaceDependence59
+architectureTool_Class "0..9999" -- "1..1" architectureTool_Interface : InterfaceRealize55
+architectureTool_System "0..9999" --* "1..1" architectureTool_System : System36
+architectureTool_System "1..1" -- "0..9999" architectureTool_System : SystemDependence28
+architectureTool_Attribute "0..9999" --* "1..1" architectureTool_classMember : attribute64
+architectureTool_Class "0..9999" --* "1..1" architectureTool_Component : class_4
+architectureTool_Component "0..9999" -- "1..1" architectureTool_Component : componentDependence2
+architectureTool_Component "0..9999" --* "1..1" architectureTool_Component : componentOfComponent7
+architectureTool_Component "0..9999" --* "1..1" architectureTool_System : componentOfSystem29
+architectureTool_Class "0..9999" -- "1..1" architectureTool_Class : composition22
+architectureTool_Component "1..1" *-- "0..9999" architectureTool_Interface : interfaceOfComponent9
+architectureTool_Interface "0..9999" --* "1..1" architectureTool_System : interfaceOfSystem38
+architectureTool_Method "0..9999" --* "1..1" architectureTool_classMember : method65
+architectureTool_Port "0..9999" -- "1..1" architectureTool_Port : portDependence47
+architectureTool_Component "1..1" *-- "0..9999" architectureTool_Port : portOfComponent0
+architectureTool_Port "0..9999" --* "1..1" architectureTool_System : portOfSystem32
+architectureTool_Interface "0..9999" -- "1..1" architectureTool_Port : providedRealize43
+architectureTool_Interface "1..1" -- "0..9999" architectureTool_Port : providedRealize52
+architectureTool_Interface "0..9999" -- "1..1" architectureTool_Port : requiredRealize49
+architectureTool_Interface "1..1" -- "0..9999" architectureTool_Port : requiredRealize61
+@enduml

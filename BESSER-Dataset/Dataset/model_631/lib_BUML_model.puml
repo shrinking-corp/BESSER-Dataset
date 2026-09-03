@@ -1,0 +1,34 @@
+@startuml
+class AbstractPerson {
+}
+abstract class library_AbstractPerson {
+  + name : str
+  + getFirstName() : str
+  + getLastName() : str
+}
+class library_Author {
+}
+class library_Book {
+  + isbn : str
+  + title : str
+}
+class library_Library {
+  + name : str
+}
+class library_Loan {
+}
+class library_Person {
+}
+class library_UoD {
+}
+AbstractPerson <|-- library_Author
+AbstractPerson <|-- library_Person
+library_Author "0..9999" --* "1..1" library_UoD : allAuthors3
+library_Library "0..9999" --* "1..1" library_UoD : allLibraries0
+library_Person "0..9999" --* "1..1" library_UoD : allPersons1
+library_Author "0..1" -- "1..1" library_Book : author5
+library_Book "0..1" -- "1..1" library_Loan : book15
+library_Book "0..9999" --* "1..1" library_Library : books7
+library_Loan "1..1" -- "0..1" library_Person : borrower12
+library_Library "1..1" *-- "0..9999" library_Loan : loans10
+@enduml

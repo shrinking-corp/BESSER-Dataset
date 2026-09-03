@@ -1,0 +1,37 @@
+@startuml
+class Book {
+  + author : str
+  + dueDate : str
+  + refNum : int
+  + title : str
+}
+class Computer {
+  + compID : int
+}
+class Magazine {
+  + issueNum : int
+  + location : str
+  + name : str
+}
+class Media {
+  + refNum : int
+  + type : int
+}
+class Patron {
+  + id : int
+  + name : str
+  + position : str
+}
+class Staff {
+  + id : int
+  + name : str
+}
+Book "0..1" -- "0..1" Patron : Patron_Book
+Computer "0..1" -- "0..1" Patron : Patron_Computer
+Magazine "0..1" -- "0..1" Patron : Patron_Magazine
+Media "0..1" -- "0..1" Patron : Patron_Media
+Book "0..1" -- "0..1" Staff : Staff_Book
+Computer "0..1" -- "0..1" Staff : Staff_Computer
+Magazine "0..1" -- "0..1" Staff : Staff_Magazine
+Media "0..1" -- "0..1" Staff : Staff_Media
+@enduml

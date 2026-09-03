@@ -1,0 +1,28 @@
+@startuml
+class model_Book {
+  + data : str
+  + tags : str
+  + title : str
+}
+class model_Library {
+}
+class model_Location {
+  + address : str
+  + id : str
+}
+class model_MappedLibrary {
+  + books : str
+}
+class model_Person {
+  + name : str
+}
+model_Book "1..1" -- "0..9999" model_Person : authors1
+model_Book "0..9999" -- "1..1" model_Person : books0
+model_Book "0..9999" --* "1..1" model_Library : books2
+model_Book "0..1" -- "1..1" model_Location : featuredBook8
+model_Book "0..1" -- "1..1" model_Library : latestBook5
+model_Location "0..1" --* "1..1" model_MappedLibrary : location11
+model_Library "1..1" *-- "0..1" model_Location : location3
+model_Book "0..9999" --* "1..1" model_MappedLibrary : rareBooks13
+model_Book "0..9999" --* "1..1" model_MappedLibrary : regularBooks16
+@enduml

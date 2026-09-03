@@ -1,0 +1,72 @@
+@startuml
+class Admin_Admin_Actor {
+}
+class Admin_Passager___conducteur_Actor {
+}
+class Admin_UseCase5_UseCase {
+}
+class Admin_add_trajet_UseCase {
+}
+class Admin_consulter_liste_utilis_UseCase {
+}
+class Admin_consulter_trajets_UseCase {
+}
+class Admin_modifier_utilis_UseCase {
+}
+class Admin_s_inscrire_UseCase {
+}
+class Admin_suppr_utils_UseCase {
+}
+class covoiturage_Avis {
+  + commentaire : str
+  + id : int
+  + note : int
+}
+class covoiturage_Personne {
+  + id : int
+  + mail : str
+  + nom : str
+  + prenom : str
+  + tel : str
+}
+class covoiturage_Preferences {
+  + id : int
+  + nomPref : str
+  + valeur : str
+}
+class covoiturage_Reservations {
+  + date : date
+  + id : int
+  + lieuDeDepose : str
+  + prix : int
+}
+class covoiturage_Ville {
+  + cp : str
+  + id : int
+  + nom : str
+}
+class covoiturage_Voiture {
+  + categorie : str
+  + climatiseur : bool
+  + confort : str
+  + couleur : str
+  + id : int
+  + marque : str
+  + model : str
+  + nbPlaces : int
+  + tabac : bool
+}
+Admin_Admin_Actor "0..1" -- "0..1" Admin_consulter_liste_utilis_UseCase : Actor_UseCase
+Admin_Admin_Actor "0..1" -- "0..1" Admin_modifier_utilis_UseCase : Actor_UseCase2
+Admin_Admin_Actor "0..1" -- "0..1" Admin_suppr_utils_UseCase : Actor_UseCase3
+Admin_Admin_Actor "0..1" -- "0..1" Admin_consulter_trajets_UseCase : Actor_UseCase4
+Admin_Admin_Actor "0..1" -- "0..1" Admin_UseCase5_UseCase : Actor_UseCase5
+covoiturage_Avis "0..9999" -- "0..1" covoiturage_Reservations : Avis_Evenement
+covoiturage_Avis "0..9999" -- "0..1" covoiturage_Personne : Avis_Personne
+covoiturage_Reservations "0..1" -- "1..9999" covoiturage_Ville : Evenement_Ville
+covoiturage_Personne "1..9999" -- "0..9999" covoiturage_Reservations : Personne_Evenement
+covoiturage_Personne "0..9999" -- "1..9999" covoiturage_Preferences : Personne_Preferences
+covoiturage_Personne "0..9999" -- "0..1" covoiturage_Ville : Personne_Ville
+covoiturage_Personne "1..1" -- "0..1" covoiturage_Voiture : Personne_Voiture
+Admin_Passager___conducteur_Actor "0..1" -- "0..1" Admin_s_inscrire_UseCase : UseCase6_Actor2
+@enduml

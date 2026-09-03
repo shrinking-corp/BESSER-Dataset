@@ -1,0 +1,18 @@
+@startuml
+class mm2_Book {
+  + name : str
+}
+class mm2_Library {
+  + name : str
+}
+class mm2_Loan {
+}
+class mm2_Member {
+  + name : str
+}
+mm2_Book "1..1" -- "1..1" mm2_Loan : book5
+mm2_Book "0..9999" --* "1..1" mm2_Library : books1
+mm2_Library "1..1" *-- "0..9999" mm2_Loan : loans3
+mm2_Loan "1..1" -- "1..1" mm2_Member : member8
+mm2_Library "1..1" *-- "0..9999" mm2_Member : members0
+@enduml

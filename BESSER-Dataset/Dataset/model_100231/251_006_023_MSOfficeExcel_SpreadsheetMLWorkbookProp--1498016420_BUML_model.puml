@@ -1,0 +1,245 @@
+@startuml
+enum CalculationWorkbookType {
+  cwt_automaticCalculation
+  cwt_manualCalculation
+  cwt_semiAutomaticCalculation
+}
+class Cell {
+}
+class ColOrRowElement {
+}
+class Column {
+}
+class Comment {
+}
+class CustomDocumentPropertiesCollection {
+}
+class CustomDocumentProperty {
+}
+class Data {
+}
+class DateTimeType {
+}
+enum DisplayDrawingObjectsType {
+  ddot_displayShapes
+  ddot_hideAll
+  ddot_placeHolders
+}
+class DocumentPropertiesCollection {
+}
+class ExcelWorkbook {
+}
+class Row {
+}
+class SmartTagType {
+}
+class SmartTagsCollection {
+}
+class SpreadsheetMLWorkbookProp_BooleanValue {
+  + value : str
+}
+class SpreadsheetMLWorkbookProp_Cell {
+  + arrayRange : str
+  + formula : str
+  + hRef : str
+  + mergeAcross : str
+  + mergeDown : str
+}
+abstract class SpreadsheetMLWorkbookProp_ColOrRowElement {
+  + hidden : str
+  + span : str
+}
+class SpreadsheetMLWorkbookProp_Column {
+  + autoFitWidth : str
+  + width : str
+}
+class SpreadsheetMLWorkbookProp_Comment {
+  + author : str
+  + showAlways : str
+}
+class SpreadsheetMLWorkbookProp_CustomDocumentPropertiesCollection {
+}
+class SpreadsheetMLWorkbookProp_CustomDocumentProperty {
+  + name : str
+}
+class SpreadsheetMLWorkbookProp_Data {
+}
+class SpreadsheetMLWorkbookProp_DateTimeType {
+  + day : str
+  + hour : str
+  + minute : str
+  + month : str
+  + second : str
+  + year : str
+}
+class SpreadsheetMLWorkbookProp_DateTimeTypeValue {
+}
+class SpreadsheetMLWorkbookProp_DocumentPropertiesCollection {
+  + appName : str
+  + author : str
+  + bytes : str
+  + category : str
+  + characters : str
+  + charactersWithSpaces : str
+  + company : str
+  + description : str
+  + guid : str
+  + hyperlinkBase : str
+  + keywords : str
+  + lastAuthor : str
+  + lines : str
+  + manager : str
+  + pages : str
+  + paragraphs : str
+  + presentationFormat : str
+  + revision : str
+  + subject : str
+  + title : str
+  + totalTime : str
+  + words : str
+}
+class SpreadsheetMLWorkbookProp_ErrorValue {
+}
+class SpreadsheetMLWorkbookProp_ExcelWorkbook {
+  + acceptLabelsInFormulas : str
+  + activeChart : str
+  + activeSheet : str
+  + calculation : str
+  + createBackup : str
+  + date1904 : str
+  + displayDrawingObjects : str
+  + displayInkNotes : str
+  + doNotCalculateBeforeSave : str
+  + doNotSaveLinkValues : str
+  + embedSaveSmartTags : str
+  + firstVisibleSheet : str
+  + futureVer : str
+  + hideHorizontalScrollBar : str
+  + hidePivotTableFieldList : str
+  + hideVerticalScrollBar : str
+  + hideWorkbookTabs : str
+  + iteration : str
+  + maxChange : str
+  + maxIterations : str
+  + noAutoRecover : str
+  + precisionAsDisplayed : str
+  + protectStructure : str
+  + protectWindows : str
+  + refModeR1C1 : str
+  + selectedSheets : str
+  + tabRatio : str
+  + uncalced : str
+  + windowHeight : str
+  + windowHidden : str
+  + windowIconic : str
+  + windowTopX : str
+  + windowTopY : str
+  + windowWidth : str
+}
+class SpreadsheetMLWorkbookProp_NumberValue {
+  + value : str
+}
+class SpreadsheetMLWorkbookProp_Row {
+  + autoFitHeight : str
+  + height : str
+}
+class SpreadsheetMLWorkbookProp_SmartTagType {
+  + name : str
+  + namespaceuri : str
+  + url : str
+}
+class SpreadsheetMLWorkbookProp_SmartTagsCollection {
+}
+class SpreadsheetMLWorkbookProp_StringValue {
+  + value : str
+}
+abstract class SpreadsheetMLWorkbookProp_StyledElement {
+}
+class SpreadsheetMLWorkbookProp_Table {
+  + defaultColumnWidth : str
+  + defaultRowHeight : str
+  + expandedColumnCount : str
+  + expandedRowCount : str
+  + fullColumns : str
+  + fullRows : str
+  + leftCell : str
+  + topCell : str
+}
+abstract class SpreadsheetMLWorkbookProp_TableElement {
+  + index : str
+}
+abstract class SpreadsheetMLWorkbookProp_ValueType {
+}
+class SpreadsheetMLWorkbookProp_VersionType {
+  + n : str
+  + nn : str
+}
+class SpreadsheetMLWorkbookProp_Workbook {
+}
+class SpreadsheetMLWorkbookProp_Worksheet {
+  + name : str
+}
+class StyledElement {
+}
+class Table {
+}
+class TableElement {
+}
+class ValueType {
+}
+class VersionType {
+}
+class Workbook {
+}
+class Worksheet {
+}
+ColOrRowElement <|-- SpreadsheetMLWorkbookProp_Column
+ColOrRowElement <|-- SpreadsheetMLWorkbookProp_Row
+StyledElement <|-- SpreadsheetMLWorkbookProp_Table
+StyledElement <|-- SpreadsheetMLWorkbookProp_TableElement
+TableElement <|-- SpreadsheetMLWorkbookProp_Cell
+TableElement <|-- SpreadsheetMLWorkbookProp_ColOrRowElement
+ValueType <|-- SpreadsheetMLWorkbookProp_BooleanValue
+ValueType <|-- SpreadsheetMLWorkbookProp_DateTimeTypeValue
+ValueType <|-- SpreadsheetMLWorkbookProp_ErrorValue
+ValueType <|-- SpreadsheetMLWorkbookProp_NumberValue
+ValueType <|-- SpreadsheetMLWorkbookProp_StringValue
+Cell "1..1" -- "1..1" SpreadsheetMLWorkbookProp_Comment : c_cell50
+Comment "0..1" --* "1..1" SpreadsheetMLWorkbookProp_Cell : c_comment49
+Data "0..1" --* "1..1" SpreadsheetMLWorkbookProp_Cell : c_data47
+Row "1..1" -- "1..1" SpreadsheetMLWorkbookProp_Cell : c_row45
+SmartTagsCollection "0..9999" --* "1..1" SpreadsheetMLWorkbookProp_Cell : c_smartTags43
+SpreadsheetMLWorkbookProp_Column "1..1" -- "1..1" Table : c_table37
+SpreadsheetMLWorkbookProp_CustomDocumentPropertiesCollection "1..1" -- "1..1" Workbook : cdp_workbook13
+Data "1..1" --* "1..1" SpreadsheetMLWorkbookProp_Comment : com_data52
+DateTimeType "0..1" --* "1..1" SpreadsheetMLWorkbookProp_DocumentPropertiesCollection : created7
+CustomDocumentProperty "1..9999" --* "1..1" SpreadsheetMLWorkbookProp_CustomDocumentPropertiesCollection : customDocumentProperties15
+CustomDocumentPropertiesCollection "1..1" -- "1..1" SpreadsheetMLWorkbookProp_CustomDocumentProperty : customDocumentProperty_cdpe16
+Cell "1..1" -- "1..1" SpreadsheetMLWorkbookProp_Data : d_cell54
+Comment "1..1" -- "1..1" SpreadsheetMLWorkbookProp_Data : d_comment56
+SpreadsheetMLWorkbookProp_DocumentPropertiesCollection "1..1" -- "1..1" Workbook : dp_workbook2
+SpreadsheetMLWorkbookProp_ExcelWorkbook "1..1" -- "1..1" Workbook : ew_workbook60
+DateTimeType "0..1" --* "1..1" SpreadsheetMLWorkbookProp_DocumentPropertiesCollection : lastPrinted4
+DateTimeType "0..1" --* "1..1" SpreadsheetMLWorkbookProp_DocumentPropertiesCollection : lastSaved10
+Cell "0..9999" --* "1..1" SpreadsheetMLWorkbookProp_Row : r_cells41
+SpreadsheetMLWorkbookProp_Row "1..1" -- "1..1" Table : r_table39
+SmartTagsCollection "1..1" -- "1..1" SpreadsheetMLWorkbookProp_SmartTagType : smartTagType_ste18
+SmartTagType "0..9999" --* "1..1" SpreadsheetMLWorkbookProp_SmartTagsCollection : smartTagTypes22
+Cell "1..1" -- "1..1" SpreadsheetMLWorkbookProp_SmartTagsCollection : st_cell21
+SpreadsheetMLWorkbookProp_SmartTagsCollection "1..1" -- "1..1" Workbook : st_workbook19
+Column "0..9999" --* "1..1" SpreadsheetMLWorkbookProp_Table : t_cols35
+Row "0..9999" --* "1..1" SpreadsheetMLWorkbookProp_Table : t_rows36
+SpreadsheetMLWorkbookProp_Table "1..1" -- "1..1" Worksheet : t_worksheet33
+DateTimeType "1..1" --* "1..1" SpreadsheetMLWorkbookProp_DateTimeTypeValue : value1
+SpreadsheetMLWorkbookProp_CustomDocumentProperty "1..1" *-- "1..1" ValueType : value17
+SpreadsheetMLWorkbookProp_Data "1..1" *-- "1..1" ValueType : value58
+SpreadsheetMLWorkbookProp_DocumentPropertiesCollection "1..1" *-- "0..1" VersionType : version3
+Data "1..1" -- "1..1" SpreadsheetMLWorkbookProp_ValueType : vt_data0
+CustomDocumentPropertiesCollection "0..1" --* "1..1" SpreadsheetMLWorkbookProp_Workbook : wb_customDocProperties26
+DocumentPropertiesCollection "0..1" --* "1..1" SpreadsheetMLWorkbookProp_Workbook : wb_docProperties25
+ExcelWorkbook "0..1" --* "1..1" SpreadsheetMLWorkbookProp_Workbook : wb_excelWorkbook28
+SmartTagsCollection "0..1" --* "1..1" SpreadsheetMLWorkbookProp_Workbook : wb_smartTags23
+SpreadsheetMLWorkbookProp_Workbook "1..1" *-- "0..9999" Worksheet : wb_worksheets29
+SpreadsheetMLWorkbookProp_Worksheet "1..1" *-- "0..1" Table : ws_table32
+SpreadsheetMLWorkbookProp_Worksheet "1..1" -- "1..1" Workbook : ws_workbook30
+@enduml

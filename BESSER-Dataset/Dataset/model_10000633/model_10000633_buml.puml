@@ -1,0 +1,74 @@
+@startuml
+class Administrator {
+  + admin_name : str
+  + password : str
+}
+class Advertiesment {
+  + advertiesment_id : int
+  + advertiser_id : str
+  + end_date : str
+  + start_date : str
+}
+class Advertiser {
+  + advertiesment_id : str
+  + advertiser_id : str
+}
+class Buyer {
+  + buyer_id : str
+}
+class Interface_Interface {
+}
+class Management {
+  + specialoffers : str
+  + suggetions : str
+}
+class Payment {
+  + card_no : str
+  + ex_date : str
+  + pay_amount : str
+  + pay_id : int
+  + pay_mode : str
+}
+class Property {
+  + address : str
+  + location : str
+  + property_id : str
+  + property_type : str
+}
+class Reg_User {
+  + Address : str
+  + password : str
+  + username : str
+}
+class Request {
+  + request_details : str
+  + request_id : int
+  + request_type : str
+  + requser_id : str
+}
+class Requirement {
+  + req_description : str
+  + requirement_location : str
+  + requirement_type : str
+  + user_id : str
+}
+class Seller {
+  + property_id : str
+  + seller_id : str
+}
+class Unreg_User {
+}
+class User {
+  + email : str
+  + location : str
+}
+Advertiesment "0..9999" -- "1..1" Advertiser : Advertiser_Advertiesment
+Payment "1..1" -- "0..9999" Property : Payment_Property
+Payment "1..1" -- "1..9999" Reg_User : Payment_Reg_User
+Buyer "1..1" -- "0..9999" Property : Property_Buyer
+Management "0..9999" -- "1..1" Property : Property_Management
+Property "0..9999" -- "1..1" Seller : Property_Seller
+Reg_User "1..9999" -- "0..9999" Requirement : Reg_User_Requirement
+Administrator "1..1" -- "1..9999" User : User_Administrator
+Request "0..9999" -- "1..1" User : User_Request
+@enduml

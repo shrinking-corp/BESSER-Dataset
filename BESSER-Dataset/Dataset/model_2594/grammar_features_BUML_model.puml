@@ -1,0 +1,83 @@
+@startuml
+class AbstractSuperclass {
+}
+class Child {
+}
+abstract class grammar_features_AbstractSuperclass {
+}
+class grammar_features_AlternativeSyntax {
+}
+abstract class grammar_features_Child {
+}
+class grammar_features_ClassWithAttributes {
+  + a1 : str
+  + a2 : bool
+}
+class grammar_features_CompoundOptional {
+}
+class grammar_features_CompoundPlus {
+}
+class grammar_features_CompoundStar {
+}
+class grammar_features_ConcreteSubclassA {
+}
+class grammar_features_ConcreteSubclassB {
+}
+class grammar_features_MandatoryContainment {
+}
+class grammar_features_MandatoryNonContainment {
+}
+class grammar_features_OptionalContainment {
+}
+class grammar_features_OptionalNonContainment {
+}
+class grammar_features_OptionalPrefix {
+}
+class grammar_features_PlusContainment {
+}
+class grammar_features_PlusNonContainment {
+}
+class grammar_features_PlusPrefix {
+}
+class grammar_features_Root {
+}
+class grammar_features_SecondRoot {
+}
+class grammar_features_StarContainment {
+}
+class grammar_features_StarNonContainment {
+}
+class grammar_features_StarPrefix {
+}
+class grammar_features_X {
+  + name : str
+}
+AbstractSuperclass <|-- grammar_features_ConcreteSubclassA
+AbstractSuperclass <|-- grammar_features_ConcreteSubclassB
+Child <|-- grammar_features_AbstractSuperclass
+Child <|-- grammar_features_AlternativeSyntax
+Child <|-- grammar_features_ClassWithAttributes
+Child <|-- grammar_features_CompoundOptional
+Child <|-- grammar_features_CompoundPlus
+Child <|-- grammar_features_CompoundStar
+Child <|-- grammar_features_MandatoryContainment
+Child <|-- grammar_features_MandatoryNonContainment
+Child <|-- grammar_features_OptionalContainment
+Child <|-- grammar_features_OptionalNonContainment
+Child <|-- grammar_features_OptionalPrefix
+Child <|-- grammar_features_PlusContainment
+Child <|-- grammar_features_PlusNonContainment
+Child <|-- grammar_features_PlusPrefix
+Child <|-- grammar_features_StarContainment
+Child <|-- grammar_features_StarNonContainment
+Child <|-- grammar_features_StarPrefix
+grammar_features_Child "0..9999" --* "1..1" grammar_features_Root : children0
+grammar_features_OptionalContainment "1..1" *-- "0..1" grammar_features_X : reference1
+grammar_features_MandatoryNonContainment "1..1" -- "1..1" grammar_features_X : reference10
+grammar_features_PlusNonContainment "1..1" -- "1..9999" grammar_features_X : reference12
+grammar_features_StarNonContainment "1..1" -- "0..9999" grammar_features_X : reference14
+grammar_features_MandatoryContainment "1..1" *-- "1..1" grammar_features_X : reference2
+grammar_features_PlusContainment "1..1" *-- "1..9999" grammar_features_X : reference4
+grammar_features_StarContainment "1..1" *-- "0..9999" grammar_features_X : reference6
+grammar_features_OptionalNonContainment "1..1" -- "0..1" grammar_features_X : reference8
+@enduml

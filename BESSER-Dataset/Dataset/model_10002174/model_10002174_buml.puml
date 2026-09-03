@@ -1,0 +1,52 @@
+@startuml
+class Comment {
+  + subject : str
+  + text : str
+}
+class Course {
+  + description : str
+  + material : str
+  + name : str
+}
+enum Enum {
+}
+class ImageQuestion {
+  + image : str
+}
+abstract class Question {
+  + definition : str
+  + explanation : str
+}
+class Rating {
+  + type : Enum
+  + value : int
+}
+class Section {
+  + material : str
+}
+class SoundQuestion {
+  + sound : str
+}
+class TextQuestion {
+  + caseSensitive : bool
+  + text : str
+}
+class User {
+  + avatar : str
+  + bio : str
+  + email : str
+  + level : int
+  + links : str
+  + nickname : str
+}
+Comment "0..9999" -- "0..1" Course : Course_Comment
+Course "1..1" -- "0..9999" Section : Course_Section
+Course "0..9999" -- "1..1" User : Course_User
+Comment "0..1" -- "0..9999" Rating : Rating_Comment
+Course "0..1" -- "0..9999" Rating : Rating_Course
+Rating "0..9999" -- "1..1" User : Rating_User
+Comment "0..9999" -- "0..1" Section : Section_Comment
+Question "0..9999" -- "1..1" Section : Section_Question
+Comment "0..9999" -- "1..1" User : User_Comment
+Course "0..9999" -- "0..9999" User : User_Course
+@enduml

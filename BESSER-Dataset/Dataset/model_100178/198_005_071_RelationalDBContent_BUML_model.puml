@@ -1,0 +1,33 @@
+@startuml
+class DataBase {
+}
+class NamedElement {
+}
+class RelationalDBContent_DataBase {
+  + SGBDname : str
+}
+abstract class RelationalDBContent_NamedElement {
+  + name : str
+}
+class RelationalDBContent_Table {
+}
+class RelationalDBContent_Tuple {
+}
+class RelationalDBContent_TupleElement {
+  + value : str
+}
+class Table {
+}
+class Tuple {
+}
+class TupleElement {
+}
+NamedElement <|-- RelationalDBContent_DataBase
+NamedElement <|-- RelationalDBContent_Table
+DataBase "1..1" -- "1..1" RelationalDBContent_Table : database1
+RelationalDBContent_Tuple "1..1" *-- "0..9999" TupleElement : elements5
+RelationalDBContent_Tuple "1..1" -- "1..1" Table : owner3
+RelationalDBContent_DataBase "1..1" *-- "0..9999" Table : tables0
+RelationalDBContent_TupleElement "1..1" -- "1..1" Tuple : tuple6
+RelationalDBContent_Table "1..1" *-- "0..9999" Tuple : tuples2
+@enduml

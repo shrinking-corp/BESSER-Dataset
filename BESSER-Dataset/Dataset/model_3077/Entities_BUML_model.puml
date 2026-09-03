@@ -1,0 +1,59 @@
+@startuml
+class Expression {
+}
+class FieldType {
+}
+class Statement {
+}
+class entities_AssignmentStatement {
+}
+class entities_BasicType {
+  + typeName : str
+}
+class entities_BoolConstant {
+  + value : str
+}
+class entities_Entity {
+  + name : str
+}
+class entities_EntityType {
+}
+class entities_Expression {
+}
+class entities_Field {
+  + name : str
+}
+class entities_FieldRef {
+}
+class entities_FieldType {
+}
+class entities_IntConstant {
+  + value : int
+}
+class entities_Model {
+}
+class entities_PrintStatement {
+}
+class entities_Statement {
+}
+class entities_StringConstant {
+  + value : str
+}
+Expression <|-- entities_BoolConstant
+Expression <|-- entities_FieldRef
+Expression <|-- entities_IntConstant
+Expression <|-- entities_StringConstant
+FieldType <|-- entities_BasicType
+FieldType <|-- entities_EntityType
+Statement <|-- entities_AssignmentStatement
+Statement <|-- entities_PrintStatement
+entities_AssignmentStatement "1..1" -- "0..1" entities_Field : assignee10
+entities_Entity "0..9999" --* "1..1" entities_Model : entities0
+entities_Entity "0..1" -- "1..1" entities_EntityType : entity14
+entities_Expression "0..1" --* "1..1" entities_Statement : expr8
+entities_Field "0..1" -- "1..1" entities_FieldRef : field16
+entities_Entity "1..1" *-- "0..9999" entities_Field : fields4
+entities_Entity "1..1" *-- "0..9999" entities_Statement : statements6
+entities_Entity "0..1" -- "1..1" entities_Entity : superType2
+entities_Field "1..1" *-- "0..1" entities_FieldType : type12
+@enduml

@@ -1,0 +1,105 @@
+@startuml
+class Admin {
+}
+class Book_a_ticek {
+  + date_ : str
+  + destination_city : str
+  + starting_city_ : str
+  + ticket_id_ : str
+  + time_ : str
+}
+class Cancle {
+  + ticket_id_ : str
+  + user_id_ : str
+}
+class Driver {
+}
+class Login {
+  + password_ : str
+  + username_ : str
+}
+class Pay {
+  + id_ : str
+}
+class Person {
+  + id_ : str
+  + name_ : str
+  + password_ : str
+  + phone_ : str
+}
+class Submit_information {
+  + name_ : str
+  + password_ : str
+  + phone_ : str
+  + username : str
+}
+class User {
+}
+class Userguest {
+}
+class admin_Actor {
+}
+class book_a_ticket_UseCase {
+}
+class browse_item_UseCase {
+}
+class cancle_UseCase {
+}
+class cancle_with_driver_UseCase {
+}
+class captcha_UseCase {
+}
+class changing_seats_by_admin_UseCase {
+}
+class driver_Actor {
+}
+class driver_planing_UseCase {
+}
+class enter_password_UseCase {
+}
+class enter_user_name_UseCase {
+}
+class exciting_package_UseCase {
+}
+class guest_user_Actor {
+}
+class login_UseCase {
+}
+class logout_UseCase {
+}
+class payment_UseCase {
+}
+class remove_user_UseCase {
+}
+class return_the_money_to_the_customer_UseCase {
+}
+class search_item__UseCase {
+}
+class send_message_to_number_registered_UseCase {
+}
+class submit_information_UseCase {
+}
+class ticket_printing_UseCase {
+}
+class user_Actor {
+}
+class view_item {
+  + ticket_id_ : str
+}
+class view_item_UseCase {
+}
+class view_seat_UseCase {
+}
+Book_a_ticek "0..1" -- "0..1" Cancle : Book_a_ticek_Cancle
+Book_a_ticek "0..1" -- "0..1" Pay : Book_a_ticek_Pay
+Driver "0..1" -- "0..1" User : Driver_User
+Login "0..1" -- "0..1" view_item : Login_view_item
+Login "0..1" -- "0..1" Person : Person_Login
+Submit_information "0..1" -- "0..1" Userguest : Submit_information_Userguest
+Userguest "0..1" -- "0..1" view_item : Userguest_view_item
+admin_Actor "0..1" -- "0..1" login_UseCase : admin_login
+driver_Actor "0..1" -- "0..1" login_UseCase : driver_login
+guest_user_Actor "0..1" -- "0..1" submit_information_UseCase : guest_user_submit_information
+guest_user_Actor "0..1" -- "0..1" view_item_UseCase : guest_user_view_item
+login_UseCase "0..1" -- "0..1" user_Actor : user_login
+@enduml

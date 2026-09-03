@@ -1,0 +1,82 @@
+@startuml
+class Avatar {
+}
+class Avatar1 {
+}
+class Avatar2 {
+}
+class Card {
+  + kind : Kind
+  + suit : Suit
+}
+class Card1 {
+  + kind : Kind1
+  + suit : Suit1
+}
+class Card2 {
+  + kind : Kind2
+  + suit : Suit2
+}
+class Deck {
+}
+class Deck1 {
+  + Card_cards_52_ : Card
+}
+class Deck2 {
+}
+abstract class Game {
+  + name : str
+}
+abstract class Game1 {
+  + name : str
+}
+abstract class Game2 {
+  + name : str
+}
+enum Kind {
+}
+enum Kind1 {
+}
+enum Kind2 {
+}
+abstract class Player {
+  + name : str
+}
+abstract class Player1 {
+  + hand : str
+  + name : str
+}
+abstract class Player2 {
+  + name : str
+}
+enum Suit {
+}
+enum Suit1 {
+}
+enum Suit2 {
+}
+class Theme {
+}
+class Theme1 {
+}
+class Theme2 {
+}
+Card "1..9999" -- "1..1" Deck : Deck_Card
+Card2 "1..9999" -- "1..1" Deck2 : Deck_Card2
+Card1 "1..9999" -- "1..1" Deck1 : Deck_Card3
+Deck "0..9999" -- "1..1" Theme : Deck_Theme
+Deck2 "0..9999" -- "1..1" Theme2 : Deck_Theme2
+Deck1 "0..9999" -- "1..1" Theme1 : Deck_Theme3
+Deck "1..9999" -- "0..9999" Game : Game_Deck
+Deck2 "1..9999" -- "0..9999" Game2 : Game_Deck2
+Deck1 "1..9999" -- "0..9999" Game1 : Game_Deck3
+Game "0..9999" -- "1..9999" Player : Game_Player
+Game2 "0..9999" -- "1..9999" Player2 : Game_Player2
+Game1 "0..9999" -- "1..9999" Player1 : Game_Player3
+Avatar "0..1" -- "0..9999" Player : Player_Avatar
+Avatar2 "0..1" -- "0..9999" Player2 : Player_Avatar2
+Avatar1 "0..1" -- "0..9999" Player1 : Player_Avatar3
+Card "1..9999" -- "0..1" Player : Player_Card
+Card2 "1..9999" -- "0..1" Player2 : Player_Card2
+Card1 "1..9999" -- "0..1" Player1 : Player_Card3
+@enduml

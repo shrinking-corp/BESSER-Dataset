@@ -1,0 +1,150 @@
+@startuml
+class Admin_Actor {
+}
+class Bayar_Tiket_external {
+}
+class Beli_Tiket_external {
+}
+class Lihat_Detail_Event_external {
+}
+class Lihat_Event_external {
+}
+class Lihat_Hasil_Jawaban__make_it_better__external {
+}
+class Lihat_Peserta_Belum_Bayar_external {
+}
+class Lihat_Peserta_Sudah_Bayar_external {
+}
+class Lihat_Ringkasan_Transaksi_external {
+}
+class Lihat_Seluruh_Peserta_external {
+}
+class Logout_external {
+}
+class Masuk_Link_Grup_Whatsapp_external {
+}
+class Melihat_pertanyaan__make_it_better__external {
+}
+class Peserta_Actor {
+}
+class Registrasi_external {
+}
+class Tambah_Event_external {
+}
+class Tambah_Kota_external {
+}
+class Tambah_Link_Grup_Whatsapp_external {
+}
+class Unduh_E_Ticket_external {
+}
+class Update_Profil_external {
+}
+class Update__isi__pertanyaan__make_it_better__external {
+}
+class _Component {
+}
+class admin {
+  + id_admin : int
+  + password : str
+  + username : str
+}
+class bookmark {
+  + id_bookmark : int
+  + id_event : int
+  + id_user : int
+}
+class e_ticket {
+  + bukti_trf : str
+  + date : str
+  + due_date : str
+  + id_event : int
+  + id_ticket : int
+  + id_user : int
+  + status : str
+}
+class event {
+  + deskripsi : str
+  + detail : str
+  + gambar : str
+  + harga_premium : int
+  + harga_reguler : int
+  + id_admin : int
+  + id_event : int
+  + id_kota : int
+  + latitude : str
+  + lokasi : str
+  + longitude : str
+  + nama_event : str
+  + tanggal : str
+}
+class kota {
+  + gambar : str
+  + id_kota : int
+  + nama_kota : str
+}
+class testimoni {
+  + akses_instagram : str
+  + buka_instagram : str
+  + id : int
+  + info_instagram : str
+  + kepuasan_instagram : str
+  + kritik : str
+  + mudah_info : str
+  + ptn : str
+  + pts_favorit : str
+  + sarana : str
+  + waktu_instagram : str
+}
+class transaksi {
+  + harga : int
+  + id_event : int
+  + id_kota : int
+  + id_orders : int
+  + nama_event : str
+  + tipe_tiket : str
+}
+class user {
+  + asal_kota : str
+  + asal_sekolah : str
+  + email : str
+  + gambar : str
+  + id_user : int
+  + instagram : str
+  + jenis_kelamin : str
+  + nama_lengkap : str
+  + no_telp : str
+  + password : str
+}
+Admin_Actor "0..1" -- "0..1" Lihat_Detail_Event_external : Admin_Lihat_Detail_Event
+Admin_Actor "0..1" -- "0..1" Lihat_Event_external : Admin_Lihat_Event
+Admin_Actor "0..1" -- "0..1" Lihat_Hasil_Jawaban__make_it_better__external : Admin_Lihat_Hasil_Jawaban__make_it_better_
+Admin_Actor "0..1" -- "0..1" Lihat_Peserta_Belum_Bayar_external : Admin_Lihat_Peserta_Belum_Bayar
+Admin_Actor "0..1" -- "0..1" Lihat_Peserta_Sudah_Bayar_external : Admin_Lihat_Peserta_Sudah_Bayar
+Admin_Actor "0..1" -- "0..1" Lihat_Seluruh_Peserta_external : Admin_Lihat_Seluruh_Peserta
+Admin_Actor "0..1" -- "0..1" Logout_external : Admin_Logout
+Admin_Actor "0..1" -- "0..1" Melihat_pertanyaan__make_it_better__external : Admin_Melihat_pertanyaan__make_it_better_
+Admin_Actor "0..1" -- "0..1" Tambah_Event_external : Admin_Tambah_Event
+Admin_Actor "0..1" -- "0..1" Tambah_Kota_external : Admin_Tambah_Kota
+Admin_Actor "0..1" -- "0..1" Tambah_Link_Grup_Whatsapp_external : Admin_Tambah_Link_Grup_Whatsapp
+Admin_Actor "0..1" -- "0..1" Lihat_Ringkasan_Transaksi_external : Lihat_Ringkasan_Transaksi_Admin
+Bayar_Tiket_external "0..1" -- "0..1" Peserta_Actor : Peserta_Bayar_Tiket
+Beli_Tiket_external "0..1" -- "0..1" Peserta_Actor : Peserta_Beli_Tiket
+Lihat_Detail_Event_external "0..1" -- "0..1" Peserta_Actor : Peserta_Lihat_Detail_Event
+Lihat_Event_external "0..1" -- "0..1" Peserta_Actor : Peserta_Lihat_Event
+Lihat_Ringkasan_Transaksi_external "0..1" -- "0..1" Peserta_Actor : Peserta_Lihat_Ringkasan_Transaksi
+Logout_external "0..1" -- "0..1" Peserta_Actor : Peserta_Logout
+Masuk_Link_Grup_Whatsapp_external "0..1" -- "0..1" Peserta_Actor : Peserta_Masuk_Link_Grup_Whatsapp
+Melihat_pertanyaan__make_it_better__external "0..1" -- "0..1" Peserta_Actor : Peserta_Melihat_pertanyaan__make_it_better_
+Peserta_Actor "0..1" -- "0..1" Registrasi_external : Peserta_Registrasi
+Peserta_Actor "0..1" -- "0..1" Unduh_E_Ticket_external : Peserta_Unduh_E_Ticket
+Peserta_Actor "0..1" -- "0..1" Update_Profil_external : Peserta_Update_Profil
+Peserta_Actor "0..1" -- "0..1" Update__isi__pertanyaan__make_it_better__external : Peserta_Update__isi__pertanyaan__make_it_better_
+admin "1..1" -- "1..9999" event : admin_event
+admin "1..1" -- "1..9999" testimoni : admin_testimoni
+bookmark "1..9999" -- "0..1" user : bookmark_user
+e_ticket "0..1" -- "1..1" event : event_e_ticket
+event "1..9999" -- "0..1" kota : event_kota
+event "0..1" -- "1..9999" transaksi : transaksi_event
+e_ticket "1..9999" -- "1..9999" user : user_e_ticket
+transaksi "1..9999" -- "0..1" user : user_transaksi
+@enduml

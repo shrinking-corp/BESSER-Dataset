@@ -1,0 +1,39 @@
+@startuml
+class Card {
+  + id : int
+  + name : str
+  + strength : str
+}
+class Deck {
+  + attribute : str
+  + attribute2 : str
+  + cards : str
+  + id : int
+  + players : str
+}
+class Game {
+  + deck : Deck
+  + id : str
+  + name : str
+  + players : str
+  + status : str
+}
+class Hand {
+  + cards : str
+  + game : Game
+  + id : int
+  + player : Player
+}
+class Player {
+  + cards : str
+  + game : Game
+  + hand : Hand
+  + id : int
+  + name : str
+}
+Card "0..9999" -- "1..1" Deck : Deck_Card
+Deck "0..1" -- "0..1" Game : Game_Deck
+Game "1..1" -- "0..9999" Player : Game_Player
+Deck "0..1" -- "0..9999" Hand : Hand_Deck
+Hand "1..1" -- "1..1" Player : Player_Hand
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class trace_EObject {
+}
+class trace_Trace {
+  + getAllMappedObjects() : str
+}
+class trace_TraceLink {
+  + name : str
+  + rationale : str
+  + requiredSimilarity : int
+  + similarity : int
+  + similarityMethod : int
+  + sourceValue : str
+  + targetValue : str
+  + sameAs(trace_tracelink : str) : bool
+}
+trace_EObject "0..1" -- "1..1" trace_TraceLink : source6
+trace_EObject "0..1" -- "1..1" trace_Trace : sourceModel1
+trace_EObject "0..1" -- "1..1" trace_TraceLink : target9
+trace_EObject "0..1" -- "1..1" trace_Trace : targetModel3
+trace_Trace "1..1" *-- "0..9999" trace_TraceLink : traces0
+@enduml

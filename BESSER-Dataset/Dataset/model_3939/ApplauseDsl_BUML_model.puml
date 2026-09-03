@@ -1,0 +1,222 @@
+@startuml
+enum ActionVerb {
+  add
+  display
+  edit
+}
+class Expression {
+}
+enum GestureKind {
+  longpress
+  swipe
+  tap
+}
+class NamedElement {
+}
+class PlatformMapping {
+}
+class RESTURL {
+}
+enum RESTVerb {
+  DELETE
+  GET
+  POST
+  PUT
+}
+class ReferrableElement {
+}
+enum ScreenKind {
+  DefaultDetails
+  DefaultList
+}
+class Type {
+}
+enum UIActionKind {
+  delete
+  navigate
+  performaction
+}
+class UIActionSpecification {
+}
+class UIComponentOrDataType {
+}
+class UrlFragment {
+}
+class applauseDsl_AbsoluteRESTURL {
+  + port : int
+}
+class applauseDsl_Attribute {
+  + many : bool
+  + name : str
+}
+class applauseDsl_AttributeReference {
+}
+class applauseDsl_DataSource {
+}
+class applauseDsl_DataSourceAccessMethod {
+  + name : str
+  + returnsMany : bool
+}
+class applauseDsl_DataSourceBodySpecification {
+}
+class applauseDsl_DataSourceCall {
+  + name : str
+}
+class applauseDsl_DataType {
+}
+class applauseDsl_Entity {
+  + abstract : bool
+}
+class applauseDsl_EntityMemberCall {
+}
+class applauseDsl_EntityMemberCallTail {
+}
+class applauseDsl_Expression {
+}
+class applauseDsl_ListItemCellDeclaration {
+}
+class applauseDsl_LoopVariable {
+}
+class applauseDsl_Model {
+}
+class applauseDsl_NamedElement {
+  + name : str
+}
+class applauseDsl_Parameter {
+}
+class applauseDsl_Platform {
+}
+class applauseDsl_PlatformMapping {
+}
+class applauseDsl_RESTMethodCall {
+}
+class applauseDsl_RESTSpecification {
+  + verb : str
+}
+class applauseDsl_RESTURL {
+}
+class applauseDsl_ReferrableElement {
+  + name : str
+}
+class applauseDsl_RelativeRESTURL {
+}
+class applauseDsl_Screen {
+  + kind : str
+  + title : str
+}
+class applauseDsl_ScreenListItemCell {
+}
+class applauseDsl_ScreenSection {
+  + title : str
+}
+class applauseDsl_ScreenSectionItems {
+}
+class applauseDsl_StringLiteral {
+  + value : str
+}
+class applauseDsl_Type {
+}
+class applauseDsl_TypeMapping {
+  + simpleName : str
+}
+class applauseDsl_UIAction {
+  + gesture : str
+  + icon : str
+  + order : int
+  + title : str
+}
+class applauseDsl_UIActionDeleteAction {
+}
+class applauseDsl_UIActionNavigateAction {
+  + actionVerb : str
+}
+class applauseDsl_UIActionSpecification {
+}
+class applauseDsl_UIComponentDeclaration {
+}
+class applauseDsl_UIComponentMemberCall {
+}
+class applauseDsl_UIComponentMemberConfiguration {
+}
+class applauseDsl_UIComponentMemberDeclaration {
+  + name : str
+}
+class applauseDsl_UIComponentOrDataType {
+}
+class applauseDsl_UrlFragment {
+}
+class applauseDsl_UrlPathFragment {
+  + name : str
+}
+class applauseDsl_Variable {
+}
+Expression <|-- applauseDsl_EntityMemberCall
+Expression <|-- applauseDsl_StringLiteral
+NamedElement <|-- applauseDsl_DataSource
+NamedElement <|-- applauseDsl_ListItemCellDeclaration
+NamedElement <|-- applauseDsl_Platform
+NamedElement <|-- applauseDsl_Screen
+NamedElement <|-- applauseDsl_Type
+NamedElement <|-- applauseDsl_UIComponentDeclaration
+PlatformMapping <|-- applauseDsl_TypeMapping
+RESTURL <|-- applauseDsl_AbsoluteRESTURL
+RESTURL <|-- applauseDsl_RelativeRESTURL
+ReferrableElement <|-- applauseDsl_LoopVariable
+ReferrableElement <|-- applauseDsl_Parameter
+Type <|-- applauseDsl_DataType
+Type <|-- applauseDsl_Entity
+UIActionSpecification <|-- applauseDsl_UIActionDeleteAction
+UIActionSpecification <|-- applauseDsl_UIActionNavigateAction
+UIComponentOrDataType <|-- applauseDsl_DataType
+UIComponentOrDataType <|-- applauseDsl_UIComponentDeclaration
+UrlFragment <|-- applauseDsl_UrlPathFragment
+UrlFragment <|-- applauseDsl_Variable
+applauseDsl_UIAction "1..1" *-- "0..1" applauseDsl_UIActionSpecification : action62
+applauseDsl_Screen "1..1" *-- "0..9999" applauseDsl_UIAction : actions42
+applauseDsl_ScreenListItemCell "1..1" *-- "0..9999" applauseDsl_UIAction : actions59
+applauseDsl_Attribute "0..9999" --* "1..1" applauseDsl_Entity : attributes3
+applauseDsl_AbsoluteRESTURL "0..1" --* "1..1" applauseDsl_DataSource : baseUrl9
+applauseDsl_DataSourceBodySpecification "0..1" --* "1..1" applauseDsl_RESTSpecification : body21
+applauseDsl_DataSourceBodySpecification "1..1" -- "0..1" applauseDsl_Parameter : bodycontents23
+applauseDsl_UIComponentMemberCall "1..1" -- "0..1" applauseDsl_UIComponentMemberDeclaration : component87
+applauseDsl_ScreenListItemCell "1..1" *-- "0..9999" applauseDsl_UIComponentMemberConfiguration : configurations57
+applauseDsl_DataSourceCall "0..1" --* "1..1" applauseDsl_Screen : datasource38
+applauseDsl_DataSourceCall "0..1" --* "1..1" applauseDsl_ScreenSection : datasource44
+applauseDsl_DataSourceCall "0..1" -- "1..1" applauseDsl_RESTMethodCall : datasource74
+applauseDsl_DataSource "0..1" -- "1..1" applauseDsl_DataSourceCall : datasource80
+applauseDsl_DataSourceAccessMethod "1..1" *-- "0..9999" applauseDsl_Parameter : declaredParameters15
+applauseDsl_Model "1..1" *-- "0..9999" applauseDsl_NamedElement : elements0
+applauseDsl_RESTURL "1..1" *-- "0..9999" applauseDsl_UrlFragment : fragments29
+applauseDsl_Attribute "0..1" -- "1..1" applauseDsl_EntityMemberCall : head93
+applauseDsl_Attribute "0..1" -- "1..1" applauseDsl_EntityMemberCallTail : head97
+applauseDsl_AbsoluteRESTURL "1..1" *-- "0..1" applauseDsl_UrlFragment : host31
+applauseDsl_Parameter "0..1" --* "1..1" applauseDsl_Screen : inputParameter36
+applauseDsl_ScreenSection "1..1" *-- "0..1" applauseDsl_ScreenSectionItems : items47
+applauseDsl_ScreenListItemCell "0..9999" --* "1..1" applauseDsl_ScreenSectionItems : items49
+applauseDsl_Platform "1..1" *-- "0..9999" applauseDsl_PlatformMapping : mappings7
+applauseDsl_UIComponentMemberCall "1..1" -- "0..1" applauseDsl_UIComponentMemberDeclaration : member90
+applauseDsl_ListItemCellDeclaration "1..1" *-- "0..9999" applauseDsl_UIComponentMemberDeclaration : members68
+applauseDsl_UIComponentDeclaration "1..1" *-- "0..9999" applauseDsl_UIComponentMemberDeclaration : members70
+applauseDsl_DataSource "1..1" *-- "0..9999" applauseDsl_DataSourceAccessMethod : methods13
+applauseDsl_Parameter "0..1" -- "1..1" applauseDsl_Variable : parameterReference34
+applauseDsl_RESTSpecification "1..1" *-- "0..1" applauseDsl_RESTURL : path19
+applauseDsl_DataSource "1..1" -- "0..1" applauseDsl_Entity : resourceType10
+applauseDsl_RESTMethodCall "0..1" --* "1..1" applauseDsl_ScreenListItemCell : restMethod53
+applauseDsl_DataSourceAccessMethod "0..1" -- "1..1" applauseDsl_RESTMethodCall : restMethod77
+applauseDsl_DataSourceAccessMethod "1..1" *-- "0..1" applauseDsl_RESTSpecification : restSpecification17
+applauseDsl_Screen "1..1" *-- "0..9999" applauseDsl_ScreenSection : sections40
+applauseDsl_Entity "1..1" -- "0..1" applauseDsl_Entity : superType2
+applauseDsl_EntityMemberCallTail "0..1" --* "1..1" applauseDsl_EntityMemberCallTail : tail101
+applauseDsl_EntityMemberCall "1..1" *-- "0..1" applauseDsl_EntityMemberCallTail : tail95
+applauseDsl_Screen "0..1" -- "1..1" applauseDsl_UIActionNavigateAction : targetScreen64
+applauseDsl_Parameter "1..1" -- "0..1" applauseDsl_Type : type26
+applauseDsl_Attribute "1..1" -- "0..1" applauseDsl_Type : type5
+applauseDsl_ListItemCellDeclaration "0..1" -- "1..1" applauseDsl_ScreenListItemCell : type51
+applauseDsl_UIComponentMemberDeclaration "1..1" -- "0..1" applauseDsl_UIComponentOrDataType : type72
+applauseDsl_DataType "0..1" -- "1..1" applauseDsl_TypeMapping : type8
+applauseDsl_UIComponentMemberCall "0..1" --* "1..1" applauseDsl_UIComponentMemberConfiguration : type83
+applauseDsl_Attribute "0..1" -- "1..1" applauseDsl_AttributeReference : value103
+applauseDsl_Expression "0..1" --* "1..1" applauseDsl_UIComponentMemberConfiguration : value85
+applauseDsl_LoopVariable "0..1" --* "1..1" applauseDsl_ScreenListItemCell : variable55
+applauseDsl_ReferrableElement "0..1" -- "1..1" applauseDsl_UIActionNavigateAction : variable66
+@enduml

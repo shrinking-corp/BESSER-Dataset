@@ -1,0 +1,78 @@
+@startuml
+class Appliances {
+}
+class Cart {
+}
+class CreditCardPayment {
+}
+class Customer {
+  + address : str
+  + firstName : str
+  + lastName : str
+  + phoneNo : int
+  + user_name : str
+}
+class DebitCardPayment {
+}
+class Electronics {
+}
+class Guest {
+}
+class List_Product_ {
+}
+class Order {
+  + deliveryDate : int
+  + items : List_Product_
+  + noOfItem : int
+  + orderId : int
+  + orderTotalAmount : int
+  + orderedOn : str
+  + shippingId : int
+  + status : str
+}
+class Ornaments {
+  + Name : str
+}
+class PaymentFactory {
+}
+class Payment_Interface {
+}
+class Product {
+  + description : str
+  + image : str
+  + price : int
+  + productId : int
+  + productName : str
+  + rating : int
+  + sellerInfo : Seller
+}
+class ProductListHelper {
+}
+class Seller {
+  + name : str
+  + rating : str
+  + sellerId : str
+}
+class ShippingInfo {
+  + deliveryAddress : str
+  + deliveryType : str
+  + estimatedDeliveryDate : str
+  + shippingCharges : int
+}
+class User {
+  + userId : int
+}
+class WishList {
+}
+Cart "0..1" -- "0..1" ProductListHelper : Cart_ProductListHelper
+Cart "0..1" -- "1..1" Customer : Customer_Cart
+Customer "1..1" -- "0..1" Order : Customer_Order
+Customer "1..1" -- "0..1" WishList : Customer_WishList
+Order "0..1" -- "1..1" ShippingInfo : Order_ShippingInfo
+Cart "1..1" -- "0..1" Product : Product_Cart
+Order "1..1" -- "1..9999" Product : Product_Order
+Product "0..1" -- "1..1" Seller : Product_Seller
+Product "0..1" -- "1..1" WishList : Product_WishList
+Product "1..9999" -- "1..1" User : User_Product
+ProductListHelper "1..1" -- "0..1" WishList : WishList_ProductListHelper
+@enduml

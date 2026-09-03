@@ -1,0 +1,28 @@
+@startuml
+class Grade {
+  + name : str
+}
+class Note {
+}
+class Schedule {
+}
+class Student {
+  + email : str
+  + name : str
+  + phone : str
+  + surname : str
+}
+class Subject {
+}
+class Teacher {
+  + email : str
+  + name : str
+  + phone : str
+  + surname : str
+}
+Grade "0..1" -- "0..1" Teacher : Grade_Teacher
+Note "0..1" -- "1..1" Subject : Note_Subject
+Schedule "1..1" -- "1..1" Student : Schedule_Student
+Grade "1..1" -- "0..1" Student : Student_Grade
+Student "0..1" -- "0..1" Subject : Student_Subject
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+class ExpMD {
+}
+class ExpMinusPlus {
+}
+class ExpMultDiv {
+}
+class ExpPM {
+}
+class Primary {
+}
+class assignment2_Div {
+}
+class assignment2_EObject {
+}
+class assignment2_Exp {
+}
+class assignment2_ExpMD {
+}
+class assignment2_ExpMinusPlus {
+}
+class assignment2_ExpMultDiv {
+}
+class assignment2_ExpPM {
+}
+class assignment2_MathExp {
+}
+class assignment2_Minus {
+}
+class assignment2_Model {
+}
+class assignment2_Mult {
+}
+class assignment2_Number {
+  + value : int
+}
+class assignment2_Parenthesis {
+}
+class assignment2_Plus {
+}
+class assignment2_Primary {
+}
+ExpMD <|-- assignment2_Div
+ExpMD <|-- assignment2_Mult
+ExpMinusPlus <|-- assignment2_ExpMultDiv
+ExpMultDiv <|-- assignment2_Exp
+ExpMultDiv <|-- assignment2_Primary
+ExpPM <|-- assignment2_Minus
+ExpPM <|-- assignment2_Plus
+Primary <|-- assignment2_Number
+Primary <|-- assignment2_Parenthesis
+assignment2_ExpMinusPlus "0..1" --* "1..1" assignment2_MathExp : exp1
+assignment2_ExpMinusPlus "0..1" --* "1..1" assignment2_Parenthesis : exp10
+assignment2_ExpMinusPlus "0..1" --* "1..1" assignment2_ExpMinusPlus : left4
+assignment2_MathExp "0..9999" --* "1..1" assignment2_Model : math0
+assignment2_EObject "0..1" --* "1..1" assignment2_ExpMinusPlus : operator6
+assignment2_ExpMinusPlus "1..1" *-- "0..1" assignment2_ExpMultDiv : right8
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+enum Bill_Details {
+}
+class Booking_Entity {
+  + CheckInDate : date
+  + NoOfDays : int
+  + address : str
+  + email : str
+  + phone : str
+}
+enum Booking_Status {
+}
+class CheckIn_Entity {
+  + CheckInStatus : str
+  + MobileKey : str
+  + PickUpAddress : str
+  + QRCode : str
+  + paymentMode : str
+}
+class CheckOut_Entity {
+  + ItemisedBillDetails : Bill_Details
+  + price : float
+}
+class FeedBack {
+  + FeedBackMessage : str
+  + Rating : str
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class PostStay_Entity {
+  + DiscountPoints : str
+  + PromotionPoints : str
+  + ThanksMessage : str
+}
+class StayIn_Entity {
+  + EntertainMentList : str
+  + InPremisesList : str
+  + oodList : str
+  + placeOfInterest : float
+  + promotionsList : str
+  + status : Booking_Status
+}
+class User_Entity {
+  + City : str
+  + Email : str
+  + login : str
+  + password : str
+}
+CheckIn_Entity "1..1" -- "0..9999" StayIn_Entity : Account_Order
+CheckOut_Entity "1..1" -- "0..9999" Payment : Account_Payment
+CheckIn_Entity "1..1" -- "1..1" PostStay_Entity : Account_ShoppingCart
+CheckOut_Entity "1..9999" -- "0..1" StayIn_Entity : Order_LineItem
+Payment "0..1" -- "1..1" StayIn_Entity : Payment_Order
+CheckOut_Entity "0..9999" -- "1..1" FeedBack : Product_LineItem
+CheckOut_Entity "1..1" -- "1..1" PostStay_Entity : ShoppingCart_LineItem
+Booking_Entity "1..1" -- "1..1" User_Entity : WebUser_Customer
+PostStay_Entity "0..1" -- "1..1" User_Entity : WebUser_ShoppingCart
+@enduml

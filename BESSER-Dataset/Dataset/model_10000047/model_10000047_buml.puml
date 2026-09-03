@@ -1,0 +1,118 @@
+@startuml
+class Administrator {
+  + password : str
+  + username : str
+}
+class Attendance {
+  + OT_hours : str
+  + att_id : str
+  + date : str
+  + in_time : str
+  + out_time : str
+  + work_hours : str
+}
+class Bonus {
+  + IDnum : int
+  + amount : str
+  + id : int
+  + type : str
+}
+class Daily_production {
+  + curr_qty : int
+  + date : str
+  + future_Qty : int
+  + item_code : str
+  + item_name : str
+  + pro_number : str
+  + section : int
+}
+class ETF_EPF {
+  + no : int
+  + rate : str
+  + type : str
+}
+class Employee {
+  + DOB : str
+  + address : str
+  + attendance_count : int
+  + email : str
+  + emp_id : str
+  + fname : str
+  + lname : str
+  + phone : int
+}
+class Interface_Interface {
+}
+class Items {
+  + description : str
+  + item_code : str
+  + item_id : str
+  + price_per_unit : str
+  + re_order_qty : str
+  + unit_of_measure : str
+}
+class Leave {
+  + date : str
+  + from : str
+  + leave_id : str
+  + leave_type : str
+  + to : str
+}
+class Order_Sent {
+  + Item_id : str
+  + order_status : str
+  + quantity : str
+  + sentOrder_id : str
+}
+class Orders {
+  + Quantity : str
+  + item_id : str
+  + order_date : str
+  + order_id : str
+  + price_per_unit : str
+  + recieved_date : str
+  + status : str
+  + total_amount : str
+}
+class Salary {
+  + Salary : str
+  + id : int
+  + position : str
+}
+class Section {
+  + description : str
+  + name : str
+  + section_id : str
+}
+class Staff {
+  + Position : str
+}
+class Stock {
+  + exp_date : str
+  + item_id : str
+  + quantity : str
+  + stock_id : str
+}
+class Supplier {
+  + Supplier_id : str
+  + address : str
+  + contact_no : int
+  + email : str
+  + name : str
+}
+class Worker {
+  + section : str
+  + team : int
+}
+Administrator "1..1" -- "1..9999" Orders : Administrator_Orders
+Attendance "0..1" -- "1..1" Employee : Employee_Attendance
+Employee "0..1" -- "1..1" Salary : Employee_Salary
+Employee "0..1" -- "1..9999" Section : Employee_Section
+Employee "1..1" -- "0..1" Leave : Leave_Employee
+Administrator "1..9999" -- "1..1" Order_Sent : Order_Sent_Administrator
+Items "1..9999" -- "1..9999" Orders : Orders_Items
+Bonus "0..1" -- "0..1" Salary : Salary_Bonus
+ETF_EPF "1..1" -- "0..1" Salary : Salary_ETF_EPF
+Items "1..9999" -- "1..9999" Stock : Stock_Items
+Orders "1..1" -- "1..9999" Supplier : Supplier_Orders
+@enduml

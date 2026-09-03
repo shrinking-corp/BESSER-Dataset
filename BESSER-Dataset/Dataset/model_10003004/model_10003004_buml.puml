@@ -1,0 +1,66 @@
+@startuml
+class Alarm {
+}
+class Alert {
+  + AlertID : int
+}
+class Datalog {
+}
+class Door_relay {
+  + DoorID : int
+  + DoorOpen : str
+}
+class End_Of_Day {
+  + EOT : int
+}
+class FactoryHolds {
+  + Alarm : str
+  + Control_panel : str
+  + Conveyor1 : str
+  + Conveyor2 : str
+  + Time : float
+}
+class Factory_Security_System {
+  + UserID : int
+}
+class FireAlarm_Sensor {
+  + DispenseSprinkler : bool
+  + SmokeAlarm : bool
+}
+class Gateway {
+  + Status : Gateway_01_Interface
+  + Update : float
+  + WebPLC_configure : Gateway_01_Interface
+}
+class Gateway2_Interface {
+}
+class Gateway_01_Interface {
+}
+class MQTT_Broker {
+  + DeviceID : int
+  + Publish : str
+  + Subscribe : str
+}
+class Modbus_Meter {
+  + MAC_ID : int
+}
+class OPC_UA {
+  + PC_ID : int
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Start_Of_Day {
+  + SOT : int
+}
+class UPS_SNMP {
+  + IP : str
+}
+End_Of_Day "0..1" -- "0..1" Gateway : End_Of_Day_Gateway
+Alert "0..1" -- "0..1" Factory_Security_System : Factory_Security_System_Alert
+Factory_Security_System "1..1" -- "1..1" Gateway : Factory_Security_System_System
+Gateway "1..1" -- "0..1" Sensor : Sensor_System
+Gateway "0..1" -- "0..1" Start_Of_Day : Start_Of_Day_Gateway
+FactoryHolds "0..1" -- "1..1" Gateway : System_FactoryHolds
+@enduml

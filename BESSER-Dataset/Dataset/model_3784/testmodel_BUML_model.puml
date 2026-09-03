@@ -1,0 +1,65 @@
+@startuml
+class EObject {
+}
+class TestType {
+}
+class test_StringToStringMap {
+  + key : str
+  + value : str
+}
+class test_StringToTestElementMap {
+  + key : str
+}
+class test_TestElement {
+  + description : str
+  + featureMapEntries : str
+  + name : str
+  + strings : str
+}
+class test_TestElementToStringMap {
+  + value : str
+}
+class test_TestElementToTestElementMap {
+}
+class test_TestType {
+  + name : str
+}
+class test_TypeWithFeatureMapContainment {
+  + mapContainment : str
+}
+class test_TypeWithFeatureMapNonContainment {
+  + map : str
+}
+EObject <|-- test_TestElement
+TestType <|-- test_TypeWithFeatureMapContainment
+TestType <|-- test_TypeWithFeatureMapNonContainment
+test_TestElement "1..1" *-- "0..1" test_TestElement : containedElement8
+test_TestElement "0..1" --* "1..1" test_TestElement : containedElement_NoOpposite49
+test_TestElement "1..1" *-- "0..9999" test_TestElement : containedElements240
+test_TestElement "1..1" *-- "0..9999" test_TestElement : containedElements3
+test_TestElement "0..9999" --* "1..1" test_TestElement : containedElements_NoOpposite46
+test_TestElement "1..1" -- "0..1" test_TestElement : container14
+test_TestElement "1..1" -- "0..1" test_TestElement : container243
+test_TestElement "1..1" *-- "0..9999" test_TestElementToTestElementMap : elementMap19
+test_TestElement "1..1" *-- "0..9999" test_TestElementToStringMap : elementToStringMap23
+test_TestElement "0..9999" --* "1..1" test_TestElement : featureMapReferences152
+test_TestElement "0..9999" --* "1..1" test_TestElement : featureMapReferences255
+test_TestType "0..9999" -- "1..1" test_TypeWithFeatureMapNonContainment : firstKey69
+test_TestType "0..9999" --* "1..1" test_TypeWithFeatureMapContainment : firstKeyContainment73
+test_TestElement "0..1" -- "1..1" test_TestElementToStringMap : key57
+test_TestElement "0..1" -- "1..1" test_TestElementToTestElementMap : key63
+test_TestElement "1..1" -- "0..9999" test_TestElement : nonContained_1ToN31
+test_TestElement "1..1" -- "0..9999" test_TestElement : nonContained_MToN37
+test_TestElement "1..1" -- "0..1" test_TestElement : nonContained_NTo128
+test_TestElement "1..1" -- "0..9999" test_TestElement : nonContained_NToM34
+test_TestElement "0..1" -- "1..1" test_TestElement : otherReference11
+test_TestElement "0..1" -- "1..1" test_TestElement : reference5
+test_TestElement "1..1" -- "0..9999" test_TestElement : references1
+test_TestType "0..9999" -- "1..1" test_TypeWithFeatureMapNonContainment : secondKey70
+test_TestType "0..9999" --* "1..1" test_TypeWithFeatureMapContainment : secondKeyContainment75
+test_TestElement "1..1" -- "0..1" test_TestElement : srefContainer17
+test_StringToTestElementMap "0..9999" --* "1..1" test_TestElement : stringToElementMap25
+test_StringToStringMap "0..9999" --* "1..1" test_TestElement : stringToStringMap21
+test_TestElement "0..1" -- "1..1" test_TestElementToTestElementMap : value60
+test_StringToTestElementMap "1..1" -- "0..1" test_TestElement : value66
+@enduml

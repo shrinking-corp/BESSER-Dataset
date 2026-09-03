@@ -1,0 +1,222 @@
+@startuml
+class ModuleElement {
+}
+class OclExpression {
+}
+class OclType {
+}
+class PrimitiveExp {
+}
+class docl_AddOpCallExp {
+}
+class docl_BagType {
+  + name : str
+}
+class docl_BoolOpCallExp {
+}
+class docl_BooleanLiteralExp {
+  + symbol : str
+}
+class docl_BooleanType {
+  + name : str
+}
+class docl_CollectionOpCallExp {
+}
+class docl_ComOpCallExp {
+}
+class docl_ElseIfThenExp {
+}
+class docl_EnvType {
+  + name : str
+}
+class docl_EqOpCallExp {
+}
+class docl_IfExp {
+}
+class docl_Import {
+  + name : str
+}
+class docl_IntegerType {
+  + name : str
+}
+class docl_InvalidLiteralExp {
+}
+class docl_IterateExp {
+}
+class docl_Iterator {
+  + name : str
+}
+class docl_IteratorExp {
+}
+class docl_LambdaExp {
+}
+class docl_LambdaType {
+  + name : str
+}
+class docl_LocalVariable {
+  + name : str
+}
+class docl_MapType {
+  + name : str
+}
+class docl_Module {
+  + name : str
+}
+class docl_ModuleElement {
+}
+class docl_MulOpCallExp {
+}
+class docl_NavigationExp {
+}
+class docl_NavigationOrAttributeCall {
+  + feature : str
+}
+class docl_NestedExp {
+}
+class docl_NullLiteralExp {
+}
+class docl_NumberLiteralExp {
+  + symbol : int
+}
+class docl_OclAnyType {
+  + name : str
+}
+class docl_OclExpression {
+  + elements : str
+  + name : str
+}
+class docl_OclModel {
+  + name : str
+}
+class docl_OclModelElementExp {
+  + name : str
+}
+class docl_OclType {
+}
+class docl_OperationCall {
+}
+class docl_OrderedSetType {
+  + name : str
+}
+class docl_PrimitiveExp {
+}
+class docl_Query {
+  + name : str
+}
+class docl_RealType {
+  + name : str
+}
+class docl_SelfExp {
+}
+class docl_SequenceType {
+  + name : str
+}
+class docl_SetType {
+  + name : str
+}
+class docl_StringLiteralExp {
+  + segments : str
+}
+class docl_StringType {
+  + name : str
+}
+class docl_TupleExp {
+}
+class docl_TuplePart {
+  + name : str
+}
+class docl_TupleType {
+}
+class docl_URI_ {
+  + authority : str
+  + fragment_ : str
+  + scheme : str
+}
+class docl_UnlimitedNaturalLiteralExp {
+}
+ModuleElement <|-- docl_Query
+OclExpression <|-- docl_AddOpCallExp
+OclExpression <|-- docl_BoolOpCallExp
+OclExpression <|-- docl_CollectionOpCallExp
+OclExpression <|-- docl_ComOpCallExp
+OclExpression <|-- docl_ElseIfThenExp
+OclExpression <|-- docl_EqOpCallExp
+OclExpression <|-- docl_IfExp
+OclExpression <|-- docl_IterateExp
+OclExpression <|-- docl_IteratorExp
+OclExpression <|-- docl_LambdaExp
+OclExpression <|-- docl_MulOpCallExp
+OclExpression <|-- docl_NavigationExp
+OclExpression <|-- docl_NavigationOrAttributeCall
+OclExpression <|-- docl_NestedExp
+OclExpression <|-- docl_OperationCall
+OclExpression <|-- docl_PrimitiveExp
+OclExpression <|-- docl_SelfExp
+OclExpression <|-- docl_TupleExp
+OclType <|-- docl_BagType
+OclType <|-- docl_BooleanType
+OclType <|-- docl_EnvType
+OclType <|-- docl_IntegerType
+OclType <|-- docl_LambdaType
+OclType <|-- docl_MapType
+OclType <|-- docl_OclAnyType
+OclType <|-- docl_OclModelElementExp
+OclType <|-- docl_OrderedSetType
+OclType <|-- docl_RealType
+OclType <|-- docl_SequenceType
+OclType <|-- docl_SetType
+OclType <|-- docl_StringType
+OclType <|-- docl_TupleType
+PrimitiveExp <|-- docl_BooleanLiteralExp
+PrimitiveExp <|-- docl_InvalidLiteralExp
+PrimitiveExp <|-- docl_NullLiteralExp
+PrimitiveExp <|-- docl_NumberLiteralExp
+PrimitiveExp <|-- docl_StringLiteralExp
+PrimitiveExp <|-- docl_UnlimitedNaturalLiteralExp
+docl_LambdaType "1..1" *-- "0..9999" docl_OclType : argsTypes47
+docl_CollectionOpCallExp "1..1" *-- "0..9999" docl_OclExpression : arguments77
+docl_OclExpression "0..9999" --* "1..1" docl_OperationCall : arguments92
+docl_OclExpression "0..1" --* "1..1" docl_Query : body10
+docl_IterateExp "1..1" *-- "0..1" docl_OclExpression : body84
+docl_IteratorExp "1..1" *-- "0..1" docl_OclExpression : body89
+docl_IfExp "1..1" *-- "0..1" docl_OclExpression : condition34
+docl_ElseIfThenExp "1..1" *-- "0..1" docl_OclExpression : condition98
+docl_OclType "0..1" --* "1..1" docl_SetType : elementType57
+docl_OclType "0..1" --* "1..1" docl_SequenceType : elementType59
+docl_OclType "0..1" --* "1..1" docl_OrderedSetType : elementType61
+docl_BagType "1..1" *-- "0..1" docl_OclType : elementType63
+docl_Module "1..1" *-- "0..9999" docl_ModuleElement : elements6
+docl_IfExp "1..1" *-- "0..1" docl_OclExpression : else_42
+docl_NestedExp "1..1" *-- "0..1" docl_OclExpression : exp103
+docl_LambdaExp "1..1" *-- "0..1" docl_OclExpression : expression94
+docl_IfExp "1..1" *-- "0..9999" docl_OclExpression : ifThen39
+docl_Import "0..9999" --* "1..1" docl_Module : imports4
+docl_OclExpression "0..1" --* "1..1" docl_OclExpression : in_14
+docl_OclExpression "0..1" --* "1..1" docl_TuplePart : init31
+docl_LocalVariable "1..1" *-- "0..1" docl_OclExpression : initExp26
+docl_Module "1..1" *-- "0..1" docl_OclModel : input1
+docl_IterateExp "1..1" *-- "0..9999" docl_Iterator : iterators79
+docl_Iterator "0..9999" --* "1..1" docl_IteratorExp : iterators87
+docl_MapType "1..1" *-- "0..1" docl_OclType : keyType52
+docl_OclExpression "1..1" *-- "0..1" docl_OclModel : model19
+docl_OclModel "0..1" --* "1..1" docl_OclModelElementExp : model45
+docl_TupleExp "1..1" *-- "0..9999" docl_TuplePart : parts96
+docl_IterateExp "1..1" *-- "0..1" docl_LocalVariable : result81
+docl_LambdaType "1..1" *-- "0..1" docl_OclType : returnType49
+docl_Module "1..1" *-- "0..1" docl_OclModel : source0
+docl_BoolOpCallExp "1..1" *-- "0..1" docl_OclExpression : source65
+docl_EqOpCallExp "1..1" *-- "0..1" docl_OclExpression : source67
+docl_ComOpCallExp "1..1" *-- "0..1" docl_OclExpression : source69
+docl_AddOpCallExp "1..1" *-- "0..1" docl_OclExpression : source71
+docl_MulOpCallExp "1..1" *-- "0..1" docl_OclExpression : source73
+docl_NavigationExp "1..1" *-- "0..1" docl_OclExpression : source75
+docl_OclExpression "0..1" --* "1..1" docl_OclExpression : target17
+docl_ElseIfThenExp "1..1" *-- "0..1" docl_OclExpression : then100
+docl_IfExp "1..1" *-- "0..1" docl_OclExpression : then36
+docl_Iterator "1..1" *-- "0..1" docl_OclType : type22
+docl_LocalVariable "1..1" *-- "0..1" docl_OclType : type23
+docl_OclType "0..1" --* "1..1" docl_TuplePart : type29
+docl_OclModel "1..1" *-- "0..1" docl_URI_ : uri8
+docl_MapType "1..1" *-- "0..1" docl_OclType : valueType54
+docl_LocalVariable "0..1" --* "1..1" docl_OclExpression : variable11
+@enduml

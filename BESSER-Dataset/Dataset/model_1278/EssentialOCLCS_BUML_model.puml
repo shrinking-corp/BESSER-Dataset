@@ -1,0 +1,214 @@
+@startuml
+class AbstractNameExpCS {
+}
+class BinaryOperatorCS {
+}
+class ExpCS {
+}
+class LiteralExpCS {
+}
+class ModelElementCS {
+}
+class Nameable {
+}
+class NamedElementCS {
+}
+class NamedExpCS {
+}
+enum NavigationRole {
+  ACCUMULATOR
+  EXPRESSION
+  ITERATOR
+}
+class OperatorCS {
+}
+class PrimitiveLiteralExpCS {
+}
+class RootCS {
+}
+class SpecificationCS {
+}
+class TypedRefCS {
+}
+class VariableCS {
+}
+abstract class essentialoclcs_AbstractNameExpCS {
+  + getNameExp() : str
+  + getNamedElement() : str
+  + getPathName() : str
+}
+class essentialoclcs_BinaryOperatorCS {
+}
+class essentialoclcs_BooleanLiteralExpCS {
+  + name : str
+}
+class essentialoclcs_CollectionLiteralExpCS {
+}
+class essentialoclcs_CollectionLiteralPartCS {
+}
+class essentialoclcs_CollectionTypeCS {
+  + name : str
+}
+class essentialoclcs_ConstructorExpCS {
+  + value : str
+}
+class essentialoclcs_ConstructorPartCS {
+}
+class essentialoclcs_ContextCS {
+}
+class essentialoclcs_ExpCS {
+}
+class essentialoclcs_ExpSpecificationCS {
+}
+class essentialoclcs_IfExpCS {
+}
+class essentialoclcs_IndexExpCS {
+  + atPre : bool
+}
+class essentialoclcs_InfixExpCS {
+}
+class essentialoclcs_InvalidLiteralExpCS {
+}
+class essentialoclcs_InvocationExpCS {
+}
+class essentialoclcs_LetExpCS {
+}
+class essentialoclcs_LetVariableCS {
+}
+class essentialoclcs_LiteralExpCS {
+}
+class essentialoclcs_NameExpCS {
+  + atPre : bool
+}
+abstract class essentialoclcs_NamedExpCS {
+}
+class essentialoclcs_NavigatingArgCS {
+  + prefix : str
+  + role : str
+}
+class essentialoclcs_NavigationOperatorCS {
+}
+class essentialoclcs_NestedExpCS {
+}
+class essentialoclcs_NullLiteralExpCS {
+}
+class essentialoclcs_NumberLiteralExpCS {
+  + name : str
+}
+abstract class essentialoclcs_OperatorCS {
+}
+class essentialoclcs_PathNameCS {
+}
+class essentialoclcs_PrefixExpCS {
+}
+class essentialoclcs_PrimitiveLiteralExpCS {
+}
+class essentialoclcs_Property {
+}
+class essentialoclcs_SelfExpCS {
+  + name : str
+}
+class essentialoclcs_StringLiteralExpCS {
+  + name : str
+}
+class essentialoclcs_TupleLiteralExpCS {
+}
+class essentialoclcs_TupleLiteralPartCS {
+}
+class essentialoclcs_Type {
+}
+class essentialoclcs_TypeLiteralExpCS {
+}
+class essentialoclcs_TypeNameExpCS {
+}
+class essentialoclcs_TypedRefCS {
+}
+class essentialoclcs_UnaryOperatorCS {
+}
+class essentialoclcs_UnlimitedNaturalLiteralExpCS {
+}
+class essentialoclcs_VariableCS {
+}
+AbstractNameExpCS <|-- essentialoclcs_NameExpCS
+AbstractNameExpCS <|-- essentialoclcs_NamedExpCS
+BinaryOperatorCS <|-- essentialoclcs_NavigationOperatorCS
+ExpCS <|-- essentialoclcs_AbstractNameExpCS
+ExpCS <|-- essentialoclcs_IfExpCS
+ExpCS <|-- essentialoclcs_InfixExpCS
+ExpCS <|-- essentialoclcs_LetExpCS
+ExpCS <|-- essentialoclcs_LetVariableCS
+ExpCS <|-- essentialoclcs_LiteralExpCS
+ExpCS <|-- essentialoclcs_NestedExpCS
+ExpCS <|-- essentialoclcs_OperatorCS
+ExpCS <|-- essentialoclcs_PrefixExpCS
+ExpCS <|-- essentialoclcs_SelfExpCS
+LiteralExpCS <|-- essentialoclcs_CollectionLiteralExpCS
+LiteralExpCS <|-- essentialoclcs_PrimitiveLiteralExpCS
+LiteralExpCS <|-- essentialoclcs_TupleLiteralExpCS
+LiteralExpCS <|-- essentialoclcs_TypeLiteralExpCS
+ModelElementCS <|-- essentialoclcs_CollectionLiteralPartCS
+ModelElementCS <|-- essentialoclcs_ConstructorPartCS
+ModelElementCS <|-- essentialoclcs_ExpCS
+ModelElementCS <|-- essentialoclcs_NavigatingArgCS
+Nameable <|-- essentialoclcs_CollectionTypeCS
+Nameable <|-- essentialoclcs_ConstructorPartCS
+NamedElementCS <|-- essentialoclcs_ContextCS
+NamedElementCS <|-- essentialoclcs_OperatorCS
+NamedElementCS <|-- essentialoclcs_VariableCS
+NamedExpCS <|-- essentialoclcs_ConstructorExpCS
+NamedExpCS <|-- essentialoclcs_IndexExpCS
+NamedExpCS <|-- essentialoclcs_InvocationExpCS
+OperatorCS <|-- essentialoclcs_BinaryOperatorCS
+OperatorCS <|-- essentialoclcs_UnaryOperatorCS
+PrimitiveLiteralExpCS <|-- essentialoclcs_BooleanLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialoclcs_InvalidLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialoclcs_NullLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialoclcs_NumberLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialoclcs_StringLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialoclcs_UnlimitedNaturalLiteralExpCS
+RootCS <|-- essentialoclcs_ContextCS
+SpecificationCS <|-- essentialoclcs_ExpSpecificationCS
+TypedRefCS <|-- essentialoclcs_CollectionTypeCS
+TypedRefCS <|-- essentialoclcs_TypeNameExpCS
+VariableCS <|-- essentialoclcs_LetVariableCS
+VariableCS <|-- essentialoclcs_TupleLiteralPartCS
+essentialoclcs_BinaryOperatorCS "1..1" -- "1..1" essentialoclcs_ExpCS : argument0
+essentialoclcs_InvocationExpCS "1..1" *-- "0..9999" essentialoclcs_NavigatingArgCS : argument42
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_IfExpCS : condition24
+essentialoclcs_Type "0..1" -- "1..1" essentialoclcs_TypeNameExpCS : element73
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_IfExpCS : elseExpression29
+essentialoclcs_CollectionLiteralPartCS "1..1" *-- "0..1" essentialoclcs_ExpCS : expressionCS4
+essentialoclcs_ExpCS "1..9999" --* "1..1" essentialoclcs_IndexExpCS : firstIndexes32
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_LetExpCS : in_44
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_NavigatingArgCS : init56
+essentialoclcs_ConstructorPartCS "1..1" *-- "1..1" essentialoclcs_ExpCS : initExpression15
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_VariableCS : initExpression77
+essentialoclcs_CollectionLiteralPartCS "1..1" *-- "0..1" essentialoclcs_ExpCS : lastExpressionCS7
+essentialoclcs_LetExpCS "0..1" -- "1..1" essentialoclcs_LetVariableCS : letExpression46
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_NavigatingArgCS : name51
+essentialoclcs_NameExpCS "0..1" --* "1..1" essentialoclcs_NamedExpCS : nameExp48
+essentialoclcs_InvocationExpCS "0..1" -- "1..1" essentialoclcs_NavigatingArgCS : navigatingExp50
+essentialoclcs_ContextCS "1..1" *-- "0..1" essentialoclcs_ExpCS : ownedExpression18
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_ExpSpecificationCS : ownedExpression22
+essentialoclcs_ExpCS "2..9999" --* "1..1" essentialoclcs_InfixExpCS : ownedExpression37
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_PrefixExpCS : ownedExpression65
+essentialoclcs_BinaryOperatorCS "1..9999" --* "1..1" essentialoclcs_InfixExpCS : ownedOperator39
+essentialoclcs_PrefixExpCS "1..1" *-- "0..9999" essentialoclcs_UnaryOperatorCS : ownedOperator64
+essentialoclcs_ConstructorExpCS "1..1" *-- "0..9999" essentialoclcs_ConstructorPartCS : ownedParts12
+essentialoclcs_CollectionLiteralExpCS "1..1" *-- "0..9999" essentialoclcs_CollectionLiteralPartCS : ownedParts2
+essentialoclcs_TupleLiteralExpCS "1..1" *-- "0..9999" essentialoclcs_TupleLiteralPartCS : ownedParts68
+essentialoclcs_CollectionLiteralExpCS "1..1" *-- "0..1" essentialoclcs_CollectionTypeCS : ownedType1
+essentialoclcs_CollectionTypeCS "1..1" *-- "0..1" essentialoclcs_TypedRefCS : ownedType10
+essentialoclcs_NavigatingArgCS "1..1" *-- "0..1" essentialoclcs_TypedRefCS : ownedType53
+essentialoclcs_TypeLiteralExpCS "1..1" *-- "1..1" essentialoclcs_TypedRefCS : ownedType69
+essentialoclcs_TypedRefCS "0..1" --* "1..1" essentialoclcs_VariableCS : ownedType75
+essentialoclcs_ExpCS "1..1" -- "0..1" essentialoclcs_OperatorCS : parent20
+essentialoclcs_NameExpCS "1..1" *-- "0..1" essentialoclcs_PathNameCS : pathName47
+essentialoclcs_PathNameCS "0..1" --* "1..1" essentialoclcs_TypeNameExpCS : pathName71
+essentialoclcs_ConstructorPartCS "1..1" -- "1..1" essentialoclcs_Property : property13
+essentialoclcs_ExpCS "0..9999" --* "1..1" essentialoclcs_IndexExpCS : secondIndexes34
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_NestedExpCS : source59
+essentialoclcs_ExpCS "1..1" -- "1..1" essentialoclcs_OperatorCS : source61
+essentialoclcs_ExpCS "0..1" --* "1..1" essentialoclcs_IfExpCS : thenExpression26
+essentialoclcs_LetExpCS "1..1" *-- "0..9999" essentialoclcs_LetVariableCS : variable43
+@enduml

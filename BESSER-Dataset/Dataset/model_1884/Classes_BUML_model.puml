@@ -1,0 +1,145 @@
+@startuml
+enum ChargeType {
+  Breakfast
+  CancellationFee
+  DoubleRoom
+  FamilySuite
+  LateCheckOutFee
+  SingleRoom
+}
+abstract class Classes_AdministratorProvides {
+  + addCreditCard(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : bool
+  + getBalance(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : float
+  + makeDeposit(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str, Classes_sum : str) : float
+  + removeCreditCard(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : bool
+}
+class Classes_Bill {
+}
+class Classes_Booking {
+  + bookingID : str
+  + checkIn : date
+  + checkOut : date
+  + numberOfGuests : str
+}
+class Classes_Charge {
+  + amount : int
+  + chargeType : str
+  + date : date
+}
+class Classes_Customer {
+}
+abstract class Classes_CustomerProvides {
+  + isCreditCardValid(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : bool
+  + makePayment(Classes_ccNumber : str, Classes_ccv : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str, Classes_sum : str) : bool
+}
+abstract class Classes_IBookingManagement {
+  + addCustomerInformationToBooking(Classes_bookingID : str, Classes_email : str, Classes_firstName : str, Classes_lastName : str, Classes_ph : str) : bool
+  + addExtraCharge(Classes_bookingID : str, Classes_charge : str, Classes_quantity : str) : str
+  + addRoomPending(Classes_bookingID : str, Classes_room : str) : str
+  + cancelBooking(Classes_bookingID : str) : str
+  + confirmBooking(Classes_bookingID : str) : str
+  + createPendingBooking(Classes_checkIn : str, Classes_checkOut : str, Classes_guestCount : str) : int
+  + getRoomsOfBooking(Classes_bookingID : str) : str
+  + searchRoom(Classes_checkIn : str, Classes_checkOut : str, Classes_maximumPrice : str, Classes_numberOfGuests : str, Classes_roomType : str) : str
+  + sendConfirmation(Classes_bookingID : str, Classes_message : str) : str
+  + updateBooking(Classes_bookingID : str, Classes_checkIn : str, Classes_checkOut : str, Classes_nrOfGuests : str, Classes_roomID : str) : str
+}
+class Classes_IBookingManagementImpl {
+}
+abstract class Classes_IFinance {
+  + bankSendInvoice() : void
+  + calculatePayment(Classes_bookingID : str) : int
+  + payBill(Classes_bookingID : str, Classes_ccNumber : str, Classes_ccv : str, Classes_cost : str, Classes_expiryMonth : str, Classes_expiryYear : str, Classes_firstName : str, Classes_lastName : str) : str
+}
+class Classes_IFinanceImpl {
+}
+abstract class Classes_IHotelManager {
+  + addStaffMember(Classes_address : str, Classes_admin : str, Classes_adminUsername : str, Classes_email : str, Classes_firstName : str, Classes_lastName : str, Classes_password : str, Classes_phoneNumber : str, Classes_username : str) : bool
+  + changeStatusOfRoom(Classes_roomID : str, Classes_staffMemberUsername : str, Classes_status : str) : str
+  + checkInBooking(Classes_bookingID : str, Classes_staffMemberUsername : str) : str
+  + checkOut(Classes_bookingID : str, Classes_staffMemberUsername : str) : str
+  + getStaffMemberAddress(Classes_username : str) : str
+  + getStaffMemberEmail(Classes_username : str) : str
+  + getStaffMemberFirstName(Classes_username : str) : str
+  + getStaffMemberLastName(Classes_username : str) : str
+  + getStaffMemberPassword(Classes_username : str) : str
+  + getStaffMemberPhoneNumber(Classes_username : str) : str
+  + isPasswordSecure(Classes_password : str) : bool
+  + isStaffMemberAdmin(Classes_username : str) : str
+  + isStaffMemberLoggedIn(Classes_username : str) : str
+  + isValidUsername(Classes_username : str) : bool
+  + login(Classes_password : str, Classes_username : str) : bool
+  + logout(Classes_username : str) : bool
+}
+class Classes_IHotelManagerImpl {
+}
+abstract class Classes_IPerson {
+  + address : str
+  + email : str
+  + firstName : str
+  + lastName : str
+  + phoneNumber : str
+}
+class Classes_Room {
+  + roomNumber : str
+  + status : str
+}
+class Classes_RoomType {
+  + description : str
+  + features : str
+  + numberOfGuests : str
+  + price : str
+  + roomTypeName : str
+}
+class Classes_StaffMember {
+  + admin : str
+  + isLoggedIn : bool
+  + password : str
+  + username : str
+}
+class IBookingManagement {
+}
+class IFinance {
+}
+class IHotelManager {
+}
+class IPerson {
+}
+enum RoomStatus {
+  Available
+  Cleaning
+  Maintenance
+  Occupied
+}
+enum RoomTypeName {
+  DoubleRoom
+  FamilySuite
+  SingleRoom
+}
+IBookingManagement <|-- Classes_IBookingManagementImpl
+IFinance <|-- Classes_IFinanceImpl
+IHotelManager <|-- Classes_IHotelManagerImpl
+IPerson <|-- Classes_Customer
+IPerson <|-- Classes_StaffMember
+Classes_Bill "1..1" -- "1..1" Classes_Booking : bill8
+Classes_Booking "0..9999" -- "1..1" Classes_Customer : booking11
+Classes_Booking "0..9999" -- "1..1" Classes_IBookingManagementImpl : bookingHistory21
+Classes_Booking "0..9999" -- "1..1" Classes_Room : bookings1
+Classes_Bill "1..1" -- "1..9999" Classes_Charge : charge35
+Classes_Booking "0..9999" -- "1..1" Classes_IBookingManagementImpl : confirmedBookings26
+Classes_Customer "0..9999" -- "1..1" Classes_IBookingManagementImpl : customer13
+Classes_Booking "1..1" -- "1..1" Classes_Customer : customer5
+Classes_CustomerProvides "1..1" -- "1..1" Classes_IFinanceImpl : customerProvides32
+Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_Room : iBookingManagementImpl2
+Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IHotelManagerImpl : iBookingManagementImpl30
+Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IFinanceImpl : iBookingManagementImpl33
+Classes_Booking "1..1" -- "1..1" Classes_IBookingManagementImpl : iBookingManagementImpl6
+Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IFinanceImpl : iFinanceImpl24
+Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IHotelManagerImpl : iHotelManagerImpl19
+Classes_Booking "0..9999" -- "1..1" Classes_IBookingManagementImpl : pendingBookings16
+Classes_IBookingManagementImpl "1..1" -- "0..9999" Classes_Room : room14
+Classes_Room "0..9999" -- "1..1" Classes_RoomType : room4
+Classes_Room "1..1" -- "1..1" Classes_RoomType : roomType0
+Classes_Booking "1..1" -- "0..9999" Classes_Room : rooms9
+Classes_IHotelManagerImpl "1..1" -- "0..9999" Classes_StaffMember : staff29
+@enduml

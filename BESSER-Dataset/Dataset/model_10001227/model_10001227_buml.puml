@@ -1,0 +1,90 @@
+@startuml
+class Add_item_UseCase {
+}
+class Add_pizza_UseCase {
+}
+class Add_to_cart_and_buy_UseCase {
+}
+class Admin {
+}
+class Admin_Actor {
+}
+class Change_password_UseCase {
+}
+class Change_toppings_UseCase {
+}
+class Create_your_own_pizza_UseCase {
+}
+class Customer {
+  + Name : str
+  + Password : str
+}
+class Customer_Actor {
+}
+class Edit____delete___view_menu_UseCase {
+}
+class Log_In_UseCase {
+}
+class Make_payment_UseCase {
+}
+class Manage_accounts_UseCase {
+}
+class Menu {
+  + Quantity : str
+  + toppings : str
+}
+class Online_payment_methods {
+}
+class Online_pizza_ordering {
+  + Ingredients : str
+  + Price : float
+  + pizza_type : str
+}
+class Order_tracking_UseCase {
+}
+class Pay_At_delivery_UseCase {
+}
+class Pay_cash_on_deliver {
+}
+class Pay_online_UseCase {
+}
+class Payment {
+}
+class Registration_UseCase {
+}
+class Update_order_UseCase {
+}
+class View_Pizza_types_UseCase {
+}
+class View_feedback_UseCase {
+}
+class View_pizza_sales_UseCase {
+}
+class View_side_orders_UseCase {
+}
+class Visit_home_page_UseCase {
+}
+class Write_feedback_UseCase {
+}
+Add_pizza_UseCase "0..1" -- "0..1" Admin_Actor : Add_pizza_Admin
+Add_to_cart_and_buy_UseCase "0..1" -- "0..1" Customer_Actor : Customer_Add_to_cart_and_buy
+Change_password_UseCase "0..1" -- "0..1" Customer_Actor : Customer_Change_password
+Customer_Actor "0..1" -- "0..1" Make_payment_UseCase : Customer_Make_payment
+Customer "1..9999" -- "0..1" Online_pizza_ordering : Customer_Online_pizza_ordering
+Customer_Actor "0..1" -- "0..1" Write_feedback_UseCase : Customer_Write_feedback
+Admin_Actor "0..1" -- "0..1" Edit____delete___view_menu_UseCase : Edit_menu_Admin
+Admin_Actor "0..1" -- "0..1" Manage_accounts_UseCase : Manage_accounts_Admin
+Create_your_own_pizza_UseCase "0..1" -- "0..1" Customer_Actor : Registered_User_Create_your_own_pizza
+Customer_Actor "0..1" -- "0..1" Order_tracking_UseCase : Registered_User_Order_tracking
+Customer_Actor "0..1" -- "0..1" View_Pizza_types_UseCase : Registered_User_View_Pizza_types
+Customer_Actor "0..1" -- "0..1" View_side_orders_UseCase : Registered_User_View_side_orders
+Customer_Actor "0..1" -- "0..1" Registration_UseCase : Registration_Customer
+Customer_Actor "0..1" -- "0..1" Log_In_UseCase : Sign_In_Customer
+Admin_Actor "0..1" -- "0..1" Update_order_UseCase : Update_order_Admin
+Admin_Actor "0..1" -- "0..1" View_feedback_UseCase : View_feedback_Admin
+Admin_Actor "0..1" -- "0..1" View_pizza_sales_UseCase : View_pizza_sales_Admin
+Customer_Actor "0..1" -- "0..1" Visit_home_page_UseCase : Visit_home_page_Customer
+Admin "1..1" -- "1..9999" Online_pizza_ordering : assoc__RwqMk5UFEeqqGZh46IEtXQ
+Customer "0..1" -- "1..9999" Payment : assoc__RwqMpJUFEeqqGZh46IEtXQ
+Menu "1..1" -- "1..1" Online_pizza_ordering : assoc__RwqMw5UFEeqqGZh46IEtXQ
+@enduml

@@ -1,0 +1,96 @@
+@startuml
+class Block {
+}
+class Conditional {
+}
+class FlowInstr {
+}
+class Item {
+}
+class JumpStmt {
+}
+class Stmt {
+}
+class Var {
+}
+class flowgraph_Block {
+}
+class flowgraph_Break {
+}
+abstract class flowgraph_Conditional {
+}
+class flowgraph_Continue {
+}
+class flowgraph_Exit {
+}
+class flowgraph_Expr {
+}
+abstract class flowgraph_FlowInstr {
+}
+class flowgraph_If {
+}
+abstract class flowgraph_Item {
+  + line : int
+  + txt : str
+}
+abstract class flowgraph_JumpStmt {
+}
+class flowgraph_Label {
+}
+class flowgraph_Loop {
+}
+class flowgraph_Method {
+}
+class flowgraph_Param {
+}
+class flowgraph_Return {
+}
+class flowgraph_SimpleStmt {
+  + functionAccess : str
+  + type : str
+  + valiableAccess : str
+}
+abstract class flowgraph_Stmt {
+}
+class flowgraph_Var {
+}
+Block <|-- flowgraph_Method
+Conditional <|-- flowgraph_If
+Conditional <|-- flowgraph_Loop
+FlowInstr <|-- flowgraph_Exit
+FlowInstr <|-- flowgraph_Expr
+FlowInstr <|-- flowgraph_JumpStmt
+FlowInstr <|-- flowgraph_Method
+FlowInstr <|-- flowgraph_Return
+FlowInstr <|-- flowgraph_SimpleStmt
+Item <|-- flowgraph_FlowInstr
+Item <|-- flowgraph_Stmt
+Item <|-- flowgraph_Var
+JumpStmt <|-- flowgraph_Break
+JumpStmt <|-- flowgraph_Continue
+Stmt <|-- flowgraph_Block
+Stmt <|-- flowgraph_Conditional
+Stmt <|-- flowgraph_JumpStmt
+Stmt <|-- flowgraph_Label
+Stmt <|-- flowgraph_Return
+Stmt <|-- flowgraph_SimpleStmt
+Var <|-- flowgraph_Param
+flowgraph_Loop "1..1" *-- "1..1" flowgraph_Stmt : body8
+flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_FlowInstr : cfNext13
+flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_FlowInstr : cfPrev15
+flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_Var : def_17
+flowgraph_FlowInstr "0..9999" -- "1..1" flowgraph_Var : definers23
+flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_FlowInstr : dfNext22
+flowgraph_If "1..1" *-- "0..1" flowgraph_Stmt : else_3
+flowgraph_Exit "1..1" --* "1..1" flowgraph_Method : exit6
+flowgraph_Conditional "1..1" *-- "1..1" flowgraph_Expr : expr10
+flowgraph_JumpStmt "0..9999" -- "1..1" flowgraph_Label : jumps30
+flowgraph_JumpStmt "1..1" -- "0..1" flowgraph_Label : label11
+flowgraph_Method "0..1" -- "1..1" flowgraph_Var : method27
+flowgraph_Label "1..1" *-- "1..1" flowgraph_Stmt : stmt28
+flowgraph_Block "1..1" *-- "0..9999" flowgraph_Stmt : stmts0
+flowgraph_If "1..1" *-- "1..1" flowgraph_Stmt : then1
+flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_Var : use19
+flowgraph_FlowInstr "0..9999" -- "1..1" flowgraph_Var : users25
+flowgraph_Method "1..1" *-- "0..9999" flowgraph_Var : vars7
+@enduml

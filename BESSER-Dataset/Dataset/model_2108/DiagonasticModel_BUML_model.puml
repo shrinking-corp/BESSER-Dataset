@@ -1,0 +1,185 @@
+@startuml
+class Action {
+}
+class BlockAction {
+}
+enum CreationModeEnum {
+  IMPORTED
+  USER_DEFINED
+}
+class DiagnosticParamValueType {
+}
+abstract class DiagonosticModel_Action {
+  + value : str
+  + valueTo : str
+  + wait : float
+}
+class DiagonosticModel_BlockAction {
+}
+class DiagonosticModel_CAPLParam {
+  + name : str
+  + type : str
+  + value : str
+}
+class DiagonosticModel_CAPLTestCase {
+  + name : str
+}
+class DiagonosticModel_CAPLTestStep {
+}
+class DiagonosticModel_CheckAction {
+  + operator : str
+}
+class DiagonosticModel_DiagnosticParam {
+  + copyToVar : str
+  + qualifier : str
+}
+abstract class DiagonosticModel_DiagnosticParamValueType {
+}
+class DiagonosticModel_DiagnosticRequest {
+}
+class DiagonosticModel_DiagnosticResponse {
+  + primitive : str
+}
+class DiagonosticModel_DiagnosticService {
+  + ecu : str
+  + result : str
+  + service : str
+}
+class DiagonosticModel_ExternalReference {
+  + owner : str
+  + title : str
+  + type : str
+  + url : str
+}
+class DiagonosticModel_ForLoop {
+  + loopVar : str
+  + startValue : int
+  + stopValue : int
+}
+class DiagonosticModel_ImportArtifact {
+  + path : str
+}
+class DiagonosticModel_OneOf {
+  + values : str
+}
+class DiagonosticModel_Range {
+  + from_ : int
+  + to : int
+}
+class DiagonosticModel_SetAction {
+}
+class DiagonosticModel_SignalType {
+  + MessageName : str
+  + creationMode : str
+  + lookupValues : str
+  + name : str
+  + namespace : str
+  + node : str
+  + type : str
+}
+class DiagonosticModel_TestCase {
+  + description : str
+  + executionStatus : str
+  + id : str
+  + name : str
+  + requirementID : str
+  + skip : bool
+}
+class DiagonosticModel_TestGroup {
+  + description : str
+  + name : str
+}
+class DiagonosticModel_TestSpecification {
+  + author : str
+  + description : str
+  + functionName : str
+  + functionVersion : str
+  + name : str
+  + version : str
+  + getSignals() : str
+}
+abstract class DiagonosticModel_TestStep {
+  + title : str
+}
+class DiagonosticModel_TracebilityArtifact {
+  + type : str
+  + url : str
+}
+class DiagonosticModel_Var {
+  + name : str
+}
+class DiagonosticModel_Variant {
+  + description : str
+  + name : str
+}
+class DiagonosticModel_WaitAction {
+}
+class DiagonosticModel_WhileLoop {
+  + operator : str
+  + value : str
+  + valueTo : str
+}
+enum ExecutionStatueTypeEnum {
+  FAIL
+  NOT_EXECUTED
+  PASS
+}
+enum OperatorTypeEnum {
+  bt
+  eq
+  gt
+  lt
+  ne
+}
+enum SignalTypeEnum {
+  ENVIRONMENT
+  SIGNAL
+  SYSTEM
+  UNDEFINED
+}
+class TestStep {
+}
+enum TraceabilityArtifactEnum {
+  BUG
+  OTHERS
+  REQUIREMENT
+  TEST
+}
+Action <|-- DiagonosticModel_CAPLTestStep
+Action <|-- DiagonosticModel_CheckAction
+Action <|-- DiagonosticModel_DiagnosticService
+Action <|-- DiagonosticModel_SetAction
+Action <|-- DiagonosticModel_WaitAction
+BlockAction <|-- DiagonosticModel_ForLoop
+BlockAction <|-- DiagonosticModel_WhileLoop
+DiagnosticParamValueType <|-- DiagonosticModel_OneOf
+DiagnosticParamValueType <|-- DiagonosticModel_Range
+DiagnosticParamValueType <|-- DiagonosticModel_Var
+TestStep <|-- DiagonosticModel_Action
+TestStep <|-- DiagonosticModel_BlockAction
+DiagonosticModel_CAPLTestCase "0..9999" --* "1..1" DiagonosticModel_TestSpecification : capltestcases1
+DiagonosticModel_CAPLTestCase "0..9999" --* "1..1" DiagonosticModel_TestGroup : capltestcases14
+DiagonosticModel_DiagnosticParam "0..9999" --* "1..1" DiagonosticModel_DiagnosticRequest : diagparam48
+DiagonosticModel_DiagnosticParam "0..9999" --* "1..1" DiagonosticModel_DiagnosticResponse : diagparam50
+DiagonosticModel_DiagnosticRequest "1..1" --* "1..1" DiagonosticModel_DiagnosticService : diagrequest38
+DiagonosticModel_DiagnosticResponse "1..1" --* "1..1" DiagonosticModel_DiagnosticService : diagresponse39
+DiagonosticModel_ExternalReference "0..1" -- "1..1" DiagonosticModel_TestCase : externalreference28
+DiagonosticModel_ExternalReference "0..1" --* "1..1" DiagonosticModel_TestGroup : externalreference9
+DiagonosticModel_ImportArtifact "0..9999" --* "1..1" DiagonosticModel_TestSpecification : importArtifacts5
+DiagonosticModel_SignalType "0..1" -- "1..1" DiagonosticModel_TestStep : key36
+DiagonosticModel_TestStep "0..1" -- "1..1" DiagonosticModel_TestStep : nextStep34
+DiagonosticModel_CAPLParam "0..9999" --* "1..1" DiagonosticModel_CAPLTestCase : parameters41
+DiagonosticModel_CAPLParam "0..9999" --* "1..1" DiagonosticModel_CAPLTestStep : parameters43
+DiagonosticModel_TestCase "1..1" *-- "0..9999" DiagonosticModel_TestStep : postConditions25
+DiagonosticModel_TestCase "1..1" *-- "0..9999" DiagonosticModel_TestStep : preConditions22
+DiagonosticModel_ImportArtifact "1..1" *-- "0..9999" DiagonosticModel_SignalType : signalType45
+DiagonosticModel_TestCase "0..9999" --* "1..1" DiagonosticModel_TestGroup : testCases7
+DiagonosticModel_TestGroup "0..9999" --* "1..1" DiagonosticModel_TestSpecification : testGroups0
+DiagonosticModel_TestGroup "0..9999" --* "1..1" DiagonosticModel_TestGroup : testGroups12
+DiagonosticModel_TestCase "1..1" *-- "0..9999" DiagonosticModel_TestStep : testSteps17
+DiagonosticModel_BlockAction "1..1" *-- "1..9999" DiagonosticModel_TestStep : testSteps55
+DiagonosticModel_TestCase "1..1" *-- "0..9999" DiagonosticModel_TracebilityArtifact : traceabilityArtifacts31
+DiagonosticModel_DiagnosticParam "1..1" *-- "1..1" DiagonosticModel_DiagnosticParamValueType : valueTypes53
+DiagonosticModel_TestCase "1..1" -- "0..9999" DiagonosticModel_Variant : variants19
+DiagonosticModel_TestSpecification "1..1" *-- "0..9999" DiagonosticModel_Variant : variants3
+@enduml

@@ -1,0 +1,160 @@
+@startuml
+class Brindar_consultorias_external {
+}
+class Calcular {
+}
+class Calcular_Actor {
+}
+class Clasificar_producto_external {
+}
+class Cliente2_Actor {
+}
+class Cliente_Actor {
+}
+class Clientes {
+}
+class Clientes_Actor {
+}
+class Contabilidad_y_Tesoreria_Actor {
+}
+class Departamento_de_Inventario_y_Suministros_DIS_Component {
+}
+class Dependencia {
+  + codigo : str
+  + nombre : str
+  + responsable : str
+}
+class Dependencias_Actor {
+}
+class Distribucion {
+  + EquipoDirectivo : str
+  + NroTrabajadoresBase : int
+  + PteEquipoDirectivo : str
+  + codigo : int
+  + razonSocial : str
+}
+class Elementos {
+  + clasificacion : str
+  + referencia : str
+}
+class EmpresasFiliales {
+  + codigo : int
+  + razonSocial : str
+}
+class Entregar_productos_external {
+}
+class Fabricacion {
+  + EquipoDirectivo : str
+  + NroTrabajadoresBase : int
+  + PteEquipoDirectivo : str
+  + codigo : int
+  + razonSocial : str
+}
+class Factura {
+  + codigo : str
+  + fecha : str
+}
+class Impuesto {
+  + porcentaje : float
+}
+class Informe {
+  + FilialesTrabajados : str
+  + HrsExtrasFiliales : str
+  + HrsTrabajadas : int
+  + codigo : int
+  + mesesTrabajadosFiliales : int
+  + nombreTrabajador : str
+}
+class Juridica_Actor {
+}
+class Millenium_Component {
+}
+class Natural_Actor {
+}
+class OrdenesPedidos {
+  + codigo : str
+  + fecha : str
+}
+class Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Principal {
+}
+class Producto {
+  + cantidad : int
+  + codigo : int
+  + nombre : str
+  + precio : float
+}
+class Proveedor {
+  + direccion : str
+  + nit : str
+  + razonSocial : str
+  + telefono : str
+}
+class Proveedores_Actor {
+}
+class Recibir_ordenes_de_suministro_external {
+}
+class Recibir_productos_o_pedidos_external {
+}
+class Registrar_proveedores_external {
+}
+class Responsable_de_inventario_Actor {
+}
+class Servicio_WEB_Movil___Recepcion_de_pedidos_Component {
+}
+class ServidorBD_Node {
+}
+class ServidorWEB_Node {
+}
+class Servidor_Intel_i8_Node {
+}
+class SolicitudSuministro {
+  + codigo : str
+  + fecha : str
+}
+class Trabajador {
+  + DNI : int
+  + HrsTrabajadasMes : int
+  + Sueldo : int
+  + nombre : str
+}
+class Venta {
+  + codigo : int
+  + fecha : str
+}
+class VentaCalzado {
+  + EquipoDirectivo : str
+  + NroTrabajadoresBase : int
+  + PteEquipoDirectivo : str
+  + codigo : int
+  + razonSocial : str
+}
+class logicaPresentacionFactura_Component {
+}
+class persistenciaFactura_Component {
+}
+Clasificar_producto_external "0..1" -- "0..1" Responsable_de_inventario_Actor : Actor_UseCase
+Calcular "0..1" -- "0..1" Clientes : Calcular_Clientes
+Brindar_consultorias_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_consultorias
+Contabilidad_y_Tesoreria_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Contabilidad_y_Tesoreria_Recibir_productos_o_pedidos
+Dependencias_Actor "0..1" -- "0..1" Entregar_productos_external : Dependencias_Entregar_productos
+Dependencias_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministro_external : Dependencias_Recibir_ordenes_de_suministro
+Principal "0..1" -- "0..1" Venta : Principal_Venta
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_Recibir_productos_o_pedidos
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Elementos "1..9999" -- "0..9999" OrdenesPedidos : conforma
+Producto "1..9999" -- "1..9999" Venta : contiene
+EmpresasFiliales "1..9999" -- "0..9999" Trabajador : contrata
+Factura "0..9999" -- "1..1" Proveedor : elabora
+OrdenesPedidos "0..9999" -- "1..1" Proveedor : es_enviado
+Elementos "1..9999" -- "0..9999" Factura : factura
+OrdenesPedidos "0..1" -- "1..9999" SolicitudSuministro : genera
+Pedidos "0..9999" -- "1..1" Proveedor : provee
+Dependencia "1..1" -- "0..1" SolicitudSuministro : realiza
+Informe "1..1" -- "0..9999" Trabajador : realiza_anualmente
+Elementos "1..9999" -- "0..9999" SolicitudSuministro : relaciona
+Impuesto "1..1" -- "1..1" Producto : tiene
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+class Account {
+  + accountNo : str
+  + balance : float
+  + type : AccountType
+}
+enum AccountType {
+}
+class CertificatesOfDepositAccount {
+  + interestRate : float
+  + timePeriod : int
+}
+class Customer {
+  + address : str
+  + dateOfBirth : date
+  + emailAddress : str
+  + name : str
+  + phoneNumber : str
+}
+class Login {
+  + lastLoginTime : date
+  + password : str
+  + securityAnswer : str
+  + securityQuestion : str
+  + username : str
+}
+class SavingsAccount {
+  + interestRate : float
+}
+class Transaction {
+  + amount : float
+  + id : int
+  + transactionTime : date
+  + type : TransactionType
+}
+enum TransactionType {
+}
+class TransferTransaction {
+  + sourceAccount : Account
+  + targetAccount : Account
+}
+Account "1..1" -- "0..9999" Transaction : Account_Transaction
+Customer "1..1" -- "0..1" Login : Customer_Login
+Account "1..9999" -- "1..1" Customer : association2
+@enduml

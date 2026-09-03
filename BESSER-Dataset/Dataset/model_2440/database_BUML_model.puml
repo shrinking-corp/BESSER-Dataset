@@ -1,0 +1,19 @@
+@startuml
+class database_Column {
+  + NotNull : bool
+  + PrimaryKey : bool
+  + name : str
+  + type : str
+}
+class database_Scheme {
+  + name : str
+}
+class database_Table {
+  + name : str
+}
+database_Column "0..9999" --* "1..1" database_Scheme : columns1
+database_Column "0..9999" --* "1..1" database_Table : columns3
+database_Column "0..1" -- "1..1" database_Column : fk6
+database_Column "1..1" -- "0..1" database_Table : table4
+database_Scheme "1..1" *-- "0..9999" database_Table : tables0
+@enduml

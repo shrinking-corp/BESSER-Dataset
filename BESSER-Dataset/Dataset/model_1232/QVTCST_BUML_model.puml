@@ -1,0 +1,27 @@
+@startuml
+class IdentifierCS {
+}
+class cst_CSTNode {
+}
+class cst_IHasName {
+}
+class cst_qvt_EObject {
+}
+class qvt_cst_ErrorNode {
+  + message : str
+}
+abstract class qvt_cst_IHasName {
+}
+class qvt_cst_IdentifiedCS {
+}
+class qvt_cst_IdentifierCS {
+  + value : str
+}
+cst_CSTNode <|-- qvt_cst_IdentifiedCS
+cst_CSTNode <|-- qvt_cst_IdentifierCS
+cst_IHasName <|-- qvt_cst_IdentifiedCS
+cst_IHasName <|-- qvt_cst_IdentifierCS
+cst_qvt_EObject "0..1" -- "1..1" qvt_cst_IdentifiedCS : astNode1
+cst_qvt_EObject "0..1" -- "1..1" qvt_cst_IdentifierCS : astNode3
+IdentifierCS "0..1" --* "1..1" qvt_cst_IdentifiedCS : identifier0
+@enduml

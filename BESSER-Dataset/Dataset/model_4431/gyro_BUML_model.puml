@@ -1,0 +1,111 @@
+@startuml
+class Action {
+}
+class Actuate {
+}
+class Behavior {
+}
+enum BumperKind {
+  Left
+  Right
+}
+class Condition {
+}
+enum DistanceKind {
+  Major
+  Minor
+}
+enum FailureState {
+  Failure
+  Running
+  Success
+}
+enum LightStatus {
+  Off
+  On
+}
+class Node {
+}
+enum RunningState {
+  Failure
+  Running
+  Success
+}
+enum SuccessState {
+  Failure
+  Running
+  Success
+}
+abstract class gyro_Action {
+}
+abstract class gyro_Actuate {
+}
+abstract class gyro_Behavior {
+}
+class gyro_Bumpers {
+  + bumperKind : str
+}
+class gyro_Child {
+}
+abstract class gyro_Condition {
+}
+class gyro_Distance {
+  + kind : str
+  + value : int
+}
+class gyro_GyroSpecification {
+  + name : str
+}
+class gyro_LED {
+  + status : str
+}
+class gyro_Motor {
+  + leftMotor : int
+  + rightMotor : int
+}
+abstract class gyro_Node {
+  + name : str
+}
+class gyro_Parallel {
+}
+class gyro_Priority {
+}
+class gyro_Sequential {
+}
+class gyro_Servo {
+  + maximalPosition : int
+  + minimalPosition : int
+  + step : int
+}
+class gyro_Sibling {
+}
+class gyro_StatusChange {
+  + changeFailure : str
+  + changeRunning : str
+  + changeSuccess : str
+}
+class gyro_Waiting {
+  + time : int
+}
+Action <|-- gyro_Actuate
+Action <|-- gyro_Condition
+Actuate <|-- gyro_LED
+Actuate <|-- gyro_Motor
+Actuate <|-- gyro_Servo
+Behavior <|-- gyro_Parallel
+Behavior <|-- gyro_Priority
+Behavior <|-- gyro_Sequential
+Behavior <|-- gyro_StatusChange
+Condition <|-- gyro_Bumpers
+Condition <|-- gyro_Distance
+Condition <|-- gyro_Waiting
+Node <|-- gyro_Action
+Node <|-- gyro_Behavior
+gyro_Child "0..9999" --* "1..1" gyro_GyroSpecification : child1
+gyro_GyroSpecification "1..1" *-- "0..9999" gyro_Sibling : next3
+gyro_GyroSpecification "1..1" *-- "0..9999" gyro_Node : nodes0
+gyro_Node "0..9999" -- "1..1" gyro_Sibling : source10
+gyro_Behavior "0..9999" -- "1..1" gyro_Child : source5
+gyro_Node "0..9999" -- "1..1" gyro_Sibling : target13
+gyro_Child "1..1" -- "0..9999" gyro_Node : target7
+@enduml

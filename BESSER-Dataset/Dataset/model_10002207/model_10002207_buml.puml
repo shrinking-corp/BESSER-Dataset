@@ -1,0 +1,65 @@
+@startuml
+class BlackJack {
+  + bet : int
+  + dealersHand : BlackJackPlayer
+  + deck : Deck
+  + handCount : int
+  + money : int
+  + playersHand : BlackJackPlayer
+}
+class BlackJackDriver {
+}
+class BlackJackPlayer {
+  + MaxNumCards : int
+  + cardCount : int
+  + cards__ : Card
+}
+class Blackjack_Bet_UseCase {
+}
+class Blackjack_Check_Win_Condition_UseCase {
+}
+class Blackjack_Deal_UseCase {
+}
+class Blackjack_Double_Down_UseCase {
+}
+class Blackjack_Exit_UseCase {
+}
+class Blackjack_Hit_UseCase {
+}
+class Blackjack_Play_Again_UseCase {
+}
+class Blackjack_Split_UseCase {
+}
+class Blackjack_Start_Game_UseCase {
+}
+class Blackjack_Stay_UseCase {
+}
+class Card {
+  + faceValue : str
+  + suit : str
+  + value : int
+}
+class Dealer_Actor {
+}
+class Deck {
+  + cardsUsed : int
+  + deck : Card
+}
+class Player_Actor {
+}
+BlackJack "1..1" -- "2..2" BlackJackPlayer : BlackJack_BlackJackPlayer
+BlackJack "1..1" -- "1..1" Deck : BlackJack_Deck
+Blackjack_Check_Win_Condition_UseCase "0..1" -- "0..1" Dealer_Actor : Dealer_Check_Win_Condition
+Blackjack_Deal_UseCase "0..1" -- "0..1" Dealer_Actor : Dealer_Deal
+Card "1..52" -- "1..1" Deck : Deck_Card
+Blackjack_Hit_UseCase "0..1" -- "0..1" Dealer_Actor : Hit_Dealer
+Blackjack_Bet_UseCase "0..1" -- "0..1" Player_Actor : Player_Bet
+Blackjack_Double_Down_UseCase "0..1" -- "0..1" Player_Actor : Player_Double_Down
+Blackjack_Exit_UseCase "0..1" -- "0..1" Player_Actor : Player_Exit
+Blackjack_Hit_UseCase "0..1" -- "0..1" Player_Actor : Player_Hit
+Blackjack_Play_Again_UseCase "0..1" -- "0..1" Player_Actor : Player_Play_Again
+Blackjack_Split_UseCase "0..1" -- "0..1" Player_Actor : Player_Split
+Blackjack_Start_Game_UseCase "0..1" -- "0..1" Player_Actor : Player_Start_Game
+Blackjack_Stay_UseCase "0..1" -- "0..1" Player_Actor : Player_Stay
+Blackjack_Stay_UseCase "0..1" -- "0..1" Dealer_Actor : Stay_Dealer
+@enduml

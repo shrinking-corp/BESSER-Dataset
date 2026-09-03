@@ -13,7 +13,7 @@ from besser.BUML.metamodel.structural import (
 
 # Classes
 cmt_Thing = Class(name="cmt_Thing")
-cmt_Meta_Reviewer = Class(name="cmt_Meta-Reviewer")
+cmt_Meta_Reviewer = Class(name="cmt_Meta_Reviewer")
 Reviewer = Class(name="Reviewer")
 cmt_Reviewer = Class(name="cmt_Reviewer")
 ConferenceMember = Class(name="ConferenceMember")
@@ -61,7 +61,7 @@ cmt_PaperAbstract = Class(name="cmt_PaperAbstract")
 cmt_PaperFullVersion = Class(name="cmt_PaperFullVersion")
 cmt_Administrator = Class(name="cmt_Administrator")
 SubjectArea = Class(name="SubjectArea")
-cmt_Meta_Review= Class(name="cmt_Meta-Review")
+cmt_Meta_Review= Class(name="cmt_Meta_Review")
 
 # cmt_Thing class attributes and methods
 
@@ -328,7 +328,7 @@ hasCo_author35: BinaryAssociation = BinaryAssociation(
     name="hasCo_author35",
     ends={
         Property(name="Co_author", type=cmt_Paper, multiplicity=Multiplicity(1, 1)),
-        Property(name="co-writePaper", type=Co_author, multiplicity=Multiplicity(0, 1))
+        Property(name="co_writePaper", type=Co_author, multiplicity=Multiplicity(0, 1))
     }
 )
 hasBid36: BinaryAssociation = BinaryAssociation(

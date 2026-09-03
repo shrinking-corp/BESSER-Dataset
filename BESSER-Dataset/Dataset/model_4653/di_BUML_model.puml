@@ -1,0 +1,49 @@
+@startuml
+class View {
+}
+class di_Bendpoint {
+  + sourceX : str
+  + sourceY : str
+  + targetX : str
+  + targetY : str
+}
+class di_Connector {
+  + source : str
+  + target : str
+}
+class di_Diagram {
+}
+class di_DocumentRoot {
+  + mixed : str
+}
+class di_EStringToStringMapEntry {
+}
+class di_Node {
+}
+class di_Style {
+  + name : str
+  + value : str
+}
+abstract class di_View {
+  + context : str
+  + definition : str
+  + id : str
+  + sourceConnector : str
+  + targetConnector : str
+}
+View <|-- di_Connector
+View <|-- di_Diagram
+View <|-- di_Node
+di_Bendpoint "0..9999" --* "1..1" di_Connector : bendpoint0
+di_Bendpoint "0..9999" --* "1..1" di_DocumentRoot : bendpoint7
+di_Node "0..9999" --* "1..1" di_View : child25
+di_Connector "0..9999" --* "1..1" di_Diagram : connector1
+di_Connector "0..9999" --* "1..1" di_DocumentRoot : connector10
+di_Diagram "0..9999" --* "1..1" di_DocumentRoot : diagram15
+di_DocumentRoot "1..1" *-- "0..9999" di_Node : node18
+di_DocumentRoot "1..1" *-- "0..9999" di_Style : style20
+di_Style "0..9999" --* "1..1" di_View : style22
+di_DocumentRoot "1..1" *-- "0..9999" di_View : view13
+di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xMLNSPrefixMap3
+di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xSISchemaLocation4
+@enduml

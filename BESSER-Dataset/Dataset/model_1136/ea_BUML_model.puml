@@ -1,0 +1,76 @@
+@startuml
+class Automaton {
+}
+class ExtendibleElement {
+}
+class ExtensionElement {
+}
+class IExtendible {
+}
+class IExtension {
+}
+class Module {
+}
+class State {
+}
+class Transition {
+}
+class ea_automata_Automaton {
+  + id : str
+  + name : str
+  + usedExtensionIds : str
+}
+class ea_automata_Module {
+}
+class ea_automata_State {
+  + id : str
+  + name : str
+}
+class ea_automata_Transition {
+  + id : str
+}
+class ea_extensions_BooleanExtension {
+  + value : bool
+}
+abstract class ea_extensions_ExtendibleElement {
+}
+abstract class ea_extensions_ExtensionElement {
+}
+abstract class ea_extensions_IExtendible {
+  + findExtension(ea_id : str) : str
+  + updateExtension(ea_extension : str) : void
+}
+abstract class ea_extensions_IExtension {
+  + id : str
+}
+class ea_extensions_IntegerExtension {
+  + value : int
+}
+class ea_extensions_StringExtension {
+  + value : str
+}
+class ea_extensions_StringListExtension {
+  + values : str
+}
+ExtendibleElement <|-- ea_automata_Automaton
+ExtendibleElement <|-- ea_automata_State
+ExtendibleElement <|-- ea_automata_Transition
+ExtensionElement <|-- ea_extensions_BooleanExtension
+ExtensionElement <|-- ea_extensions_IntegerExtension
+ExtensionElement <|-- ea_extensions_StringExtension
+ExtensionElement <|-- ea_extensions_StringListExtension
+IExtendible <|-- ea_extensions_ExtendibleElement
+IExtension <|-- ea_extensions_ExtensionElement
+Automaton "0..9999" --* "1..1" ea_automata_Module : automata15
+Automaton "0..1" -- "1..1" ea_automata_State : automaton4
+Automaton "0..1" -- "1..1" ea_automata_Transition : automaton9
+IExtension "0..9999" --* "1..1" ea_extensions_IExtendible : extensions17
+Transition "0..9999" -- "1..1" ea_automata_State : incoming5
+Module "0..1" -- "1..1" ea_automata_Automaton : module3
+Transition "0..9999" -- "1..1" ea_automata_State : outgoing7
+IExtendible "0..1" -- "1..1" ea_extensions_IExtension : owner18
+State "0..1" -- "1..1" ea_automata_Transition : source11
+State "0..9999" --* "1..1" ea_automata_Automaton : states0
+State "0..1" -- "1..1" ea_automata_Transition : target13
+Transition "0..9999" --* "1..1" ea_automata_Automaton : transitions1
+@enduml

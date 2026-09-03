@@ -1,0 +1,199 @@
+@startuml
+class AbstractState {
+}
+class AbstractTransition {
+}
+class AbstractTransitionEvent {
+}
+class AbstractUriLiteral {
+}
+class Action {
+}
+class Event {
+}
+class Expression {
+}
+class IntLiteral {
+}
+class Literal {
+}
+class ResourceImport {
+}
+class ResourceUriLiteral {
+}
+enum TimeUnit {
+  h
+  m
+  ms
+  s
+}
+class Typed {
+}
+abstract class scxmlxt_AbstractState {
+}
+abstract class scxmlxt_AbstractTransition {
+}
+abstract class scxmlxt_AbstractTransitionEvent {
+  + getSource() : str
+  + getTarget() : str
+}
+class scxmlxt_AbstractUriLiteral {
+  + uri : str
+}
+abstract class scxmlxt_Action {
+}
+class scxmlxt_AssignmentAction {
+}
+class scxmlxt_BooleanLiteral {
+  + booleanValue : bool
+}
+class scxmlxt_Condition {
+  + script : str
+}
+class scxmlxt_DelayLiteral {
+  + timeUnit : str
+}
+class scxmlxt_DomainDataImport {
+}
+class scxmlxt_DomainModelImport {
+}
+class scxmlxt_EClassifier {
+}
+class scxmlxt_EObject {
+}
+class scxmlxt_EObjectReference {
+}
+class scxmlxt_EObjectUriLiteral {
+  + uriFragment : str
+}
+class scxmlxt_EPath {
+}
+class scxmlxt_EStep {
+  + featureName : str
+}
+class scxmlxt_EStepFilter {
+  + freeVarName : str
+}
+class scxmlxt_EnterEvent {
+}
+abstract class scxmlxt_Event {
+}
+class scxmlxt_ExitEvent {
+}
+abstract class scxmlxt_Expression {
+}
+class scxmlxt_FloatLiteral {
+  + floatValue : float
+}
+class scxmlxt_InitialTransition {
+}
+class scxmlxt_IntLiteral {
+  + intValue : int
+}
+class scxmlxt_InternalTransition {
+}
+abstract class scxmlxt_Literal {
+}
+abstract class scxmlxt_ResourceImport {
+  + importURI : str
+}
+class scxmlxt_ResourceUriLiteral {
+  + resourceUri : str
+}
+class scxmlxt_ScriptAction {
+  + script : str
+}
+class scxmlxt_ScriptEvent {
+  + script : str
+}
+class scxmlxt_ScriptExpression {
+  + script : str
+}
+class scxmlxt_State {
+  + name : str
+}
+class scxmlxt_StateMachine {
+}
+class scxmlxt_StringLiteral {
+  + stringValue : str
+}
+class scxmlxt_SymbolicAction {
+  + name : str
+}
+class scxmlxt_SymbolicEvent {
+  + name : str
+}
+class scxmlxt_TimerEvent {
+}
+class scxmlxt_Transition {
+}
+class scxmlxt_TransitionEvent {
+}
+class scxmlxt_Typed {
+  + many : bool
+}
+class scxmlxt_UriLiteral {
+  + uriValue : str
+}
+class scxmlxt_VarDef {
+  + name : str
+}
+class scxmlxt_VarRef {
+}
+AbstractState <|-- scxmlxt_State
+AbstractState <|-- scxmlxt_StateMachine
+AbstractTransition <|-- scxmlxt_InternalTransition
+AbstractTransition <|-- scxmlxt_Transition
+AbstractTransitionEvent <|-- scxmlxt_EnterEvent
+AbstractTransitionEvent <|-- scxmlxt_ExitEvent
+AbstractTransitionEvent <|-- scxmlxt_TransitionEvent
+AbstractUriLiteral <|-- scxmlxt_ResourceUriLiteral
+AbstractUriLiteral <|-- scxmlxt_UriLiteral
+Action <|-- scxmlxt_AssignmentAction
+Action <|-- scxmlxt_ScriptAction
+Action <|-- scxmlxt_SymbolicAction
+Event <|-- scxmlxt_AbstractTransitionEvent
+Event <|-- scxmlxt_ScriptEvent
+Event <|-- scxmlxt_SymbolicEvent
+Event <|-- scxmlxt_TimerEvent
+Expression <|-- scxmlxt_EPath
+Expression <|-- scxmlxt_Literal
+Expression <|-- scxmlxt_ScriptExpression
+Expression <|-- scxmlxt_VarRef
+IntLiteral <|-- scxmlxt_DelayLiteral
+Literal <|-- scxmlxt_AbstractUriLiteral
+Literal <|-- scxmlxt_BooleanLiteral
+Literal <|-- scxmlxt_FloatLiteral
+Literal <|-- scxmlxt_IntLiteral
+Literal <|-- scxmlxt_StringLiteral
+ResourceImport <|-- scxmlxt_DomainDataImport
+ResourceImport <|-- scxmlxt_DomainModelImport
+ResourceUriLiteral <|-- scxmlxt_EObjectUriLiteral
+Typed <|-- scxmlxt_VarDef
+scxmlxt_AbstractTransition "1..1" *-- "0..1" scxmlxt_Action : action17
+scxmlxt_Action "0..1" --* "1..1" scxmlxt_InitialTransition : action5
+scxmlxt_AbstractTransition "1..1" *-- "0..1" scxmlxt_Condition : condition15
+scxmlxt_State "0..9999" -- "1..1" scxmlxt_StateMachine : currentStates1
+scxmlxt_Expression "0..1" --* "1..1" scxmlxt_TimerEvent : delay29
+scxmlxt_Expression "0..1" --* "1..1" scxmlxt_SymbolicAction : delay31
+scxmlxt_EObject "0..1" -- "1..1" scxmlxt_EObjectReference : eObject52
+scxmlxt_EClassifier "0..1" -- "1..1" scxmlxt_Typed : eType33
+scxmlxt_AbstractTransition "1..1" *-- "0..1" scxmlxt_Event : event13
+scxmlxt_Event "0..1" --* "1..1" scxmlxt_TimerEvent : event27
+scxmlxt_EStep "1..1" *-- "0..1" scxmlxt_EStepFilter : filter48
+scxmlxt_ResourceImport "0..9999" --* "1..1" scxmlxt_StateMachine : imports0
+scxmlxt_Expression "0..1" --* "1..1" scxmlxt_VarDef : init34
+scxmlxt_InitialTransition "0..1" --* "1..1" scxmlxt_State : initialTransition3
+scxmlxt_EStepFilter "1..1" *-- "0..1" scxmlxt_ScriptExpression : script50
+scxmlxt_State "0..1" -- "1..1" scxmlxt_TransitionEvent : source22
+scxmlxt_AbstractState "1..1" *-- "0..9999" scxmlxt_State : states7
+scxmlxt_EPath "1..1" *-- "0..9999" scxmlxt_EStep : steps46
+scxmlxt_State "0..1" -- "1..1" scxmlxt_Transition : target20
+scxmlxt_State "0..1" -- "1..1" scxmlxt_TransitionEvent : target24
+scxmlxt_AbstractState "1..1" *-- "0..9999" scxmlxt_AbstractTransition : transitions9
+scxmlxt_AssignmentAction "1..1" *-- "0..1" scxmlxt_Expression : value39
+scxmlxt_AssignmentAction "1..1" -- "0..1" scxmlxt_VarDef : var37
+scxmlxt_VarDef "0..1" -- "1..1" scxmlxt_VarRef : var42
+scxmlxt_EPath "1..1" *-- "0..1" scxmlxt_VarRef : var44
+scxmlxt_AbstractState "1..1" *-- "0..9999" scxmlxt_VarDef : variables11
+@enduml

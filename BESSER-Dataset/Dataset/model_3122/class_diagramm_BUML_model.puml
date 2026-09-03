@@ -1,0 +1,86 @@
+@startuml
+enum ModifierType {
+  abstract
+  final
+  private
+  protected
+  public
+  static
+}
+class RefAssociation {
+}
+class RefAttribute {
+}
+class RefClass {
+}
+class RefDataType {
+}
+class RefMethod {
+}
+class RefPackage {
+}
+class RefParameter {
+}
+class class_diagramm_Association {
+  + isAggregation : bool
+  + maxCardinality : int
+  + minCardinality : int
+  + name : str
+}
+class class_diagramm_Attribute {
+  + modifier : str
+  + name : str
+}
+class class_diagramm_Class {
+  + modifier : str
+  + name : str
+}
+class class_diagramm_DataType {
+  + name : str
+}
+class class_diagramm_Method {
+  + modifier : str
+  + name : str
+}
+class class_diagramm_Package {
+  + name : str
+}
+class class_diagramm_Parameter {
+  + name : str
+}
+abstract class class_diagramm_RefAssociation {
+}
+abstract class class_diagramm_RefAttribute {
+}
+abstract class class_diagramm_RefClass {
+}
+abstract class class_diagramm_RefDataType {
+}
+abstract class class_diagramm_RefMethod {
+}
+abstract class class_diagramm_RefPackage {
+}
+abstract class class_diagramm_RefParameter {
+}
+RefAssociation <|-- class_diagramm_Association
+RefAttribute <|-- class_diagramm_Attribute
+RefClass <|-- class_diagramm_Class
+RefDataType <|-- class_diagramm_DataType
+RefMethod <|-- class_diagramm_Method
+RefPackage <|-- class_diagramm_Package
+RefParameter <|-- class_diagramm_Parameter
+class_diagramm_Package "1..1" *-- "0..9999" class_diagramm_RefAssociation : associations0
+class_diagramm_Class "1..1" *-- "0..9999" class_diagramm_RefAttribute : attributes21
+class_diagramm_Package "1..1" *-- "0..9999" class_diagramm_RefClass : classes1
+class_diagramm_Class "1..1" *-- "0..9999" class_diagramm_RefMethod : methods23
+class_diagramm_Method "1..1" *-- "0..9999" class_diagramm_RefParameter : parameters5
+class_diagramm_Class "1..1" -- "0..1" class_diagramm_RefClass : parent19
+class_diagramm_Method "1..1" *-- "0..1" class_diagramm_RefDataType : primitive_return7
+class_diagramm_Attribute "1..1" *-- "0..1" class_diagramm_RefDataType : primitive_type11
+class_diagramm_Parameter "1..1" *-- "0..1" class_diagramm_RefDataType : primitive_type16
+class_diagramm_Method "1..1" -- "0..1" class_diagramm_RefClass : return_3
+class_diagramm_Association "1..1" -- "1..1" class_diagramm_RefClass : source25
+class_diagramm_Association "1..1" -- "1..1" class_diagramm_RefClass : target27
+class_diagramm_Parameter "1..1" -- "0..1" class_diagramm_RefClass : type14
+class_diagramm_Attribute "1..1" -- "0..1" class_diagramm_RefClass : type9
+@enduml

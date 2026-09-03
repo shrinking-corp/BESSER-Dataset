@@ -1,0 +1,100 @@
+@startuml
+class ASTNode {
+}
+class AbstractMethodDeclaration {
+}
+class AbstractTypeDeclaration {
+}
+class AbstractVariablesContainer {
+}
+class BodyDeclaration {
+}
+class Expression {
+}
+enum InheritanceKind {
+  abstract
+  final
+  none
+}
+abstract class JMM_ASTNode {
+}
+abstract class JMM_AbstractMethodDeclaration {
+}
+abstract class JMM_AbstractTypeDeclaration {
+}
+abstract class JMM_AbstractVariablesContainer {
+}
+class JMM_AnnotationTypeDeclaration {
+}
+abstract class JMM_BodyDeclaration {
+}
+class JMM_ClassDeclaration {
+}
+class JMM_ConstructorDeclaration {
+}
+abstract class JMM_Expression {
+}
+class JMM_FieldDeclaration {
+}
+class JMM_InterfaceDeclaration {
+}
+class JMM_MethodDeclaration {
+}
+class JMM_Model {
+  + name : str
+}
+class JMM_Modifier {
+  + inheritance : str
+}
+abstract class JMM_NamedElement {
+  + name : str
+  + proxy : bool
+}
+abstract class JMM_NamespaceAccess {
+}
+class JMM_Package {
+}
+abstract class JMM_Type {
+}
+class JMM_TypeAccess {
+}
+abstract class JMM_TypeDeclaration {
+}
+class NamedElement {
+}
+class NamespaceAccess {
+}
+class Type {
+}
+class TypeDeclaration {
+}
+ASTNode <|-- JMM_AbstractVariablesContainer
+ASTNode <|-- JMM_Expression
+ASTNode <|-- JMM_Modifier
+ASTNode <|-- JMM_NamedElement
+ASTNode <|-- JMM_NamespaceAccess
+AbstractMethodDeclaration <|-- JMM_ConstructorDeclaration
+AbstractMethodDeclaration <|-- JMM_MethodDeclaration
+AbstractTypeDeclaration <|-- JMM_AnnotationTypeDeclaration
+AbstractTypeDeclaration <|-- JMM_TypeDeclaration
+AbstractVariablesContainer <|-- JMM_FieldDeclaration
+BodyDeclaration <|-- JMM_AbstractMethodDeclaration
+BodyDeclaration <|-- JMM_AbstractTypeDeclaration
+BodyDeclaration <|-- JMM_FieldDeclaration
+Expression <|-- JMM_TypeAccess
+NamedElement <|-- JMM_BodyDeclaration
+NamedElement <|-- JMM_Package
+NamedElement <|-- JMM_Type
+NamespaceAccess <|-- JMM_TypeAccess
+Type <|-- JMM_AbstractTypeDeclaration
+TypeDeclaration <|-- JMM_ClassDeclaration
+TypeDeclaration <|-- JMM_InterfaceDeclaration
+JMM_AbstractTypeDeclaration "1..1" *-- "0..9999" JMM_BodyDeclaration : bodyDeclarations9
+JMM_BodyDeclaration "1..1" *-- "0..1" JMM_Modifier : modifier14
+JMM_Model "1..1" *-- "0..9999" JMM_Package : ownedElements0
+JMM_AbstractTypeDeclaration "0..9999" --* "1..1" JMM_Package : ownedElements7
+JMM_Package "0..9999" --* "1..1" JMM_Package : ownedPackages5
+JMM_ClassDeclaration "1..1" *-- "0..1" JMM_TypeAccess : superClass1
+JMM_AbstractTypeDeclaration "1..1" *-- "0..9999" JMM_TypeAccess : superInterfaces11
+JMM_Type "1..1" -- "1..1" JMM_TypeAccess : type2
+@enduml

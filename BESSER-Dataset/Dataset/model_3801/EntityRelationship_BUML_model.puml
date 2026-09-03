@@ -1,0 +1,150 @@
+@startuml
+class Connection_EntityRelationship {
+}
+class Elements_with_Attributes {
+}
+enum TypeAttribute {
+  Composite
+  Dependence_in_identification
+  Derived
+  Multivalued
+  Normal
+  Optional
+}
+enum TypeEntity {
+  Regular
+  Weak
+}
+enum TypeIdentifier {
+  AlternativeIdentifier
+  NoIdentifier
+  PrimaryIdentifier
+}
+enum TypeRelationship {
+  Regular
+  Weak_dependence_in_existence
+  Weak_dependence_in_identification
+}
+enum TypeRestriction {
+  Exclusion
+  Inclusion
+}
+enum TypeRestriction2 {
+  Exclusiveness
+  Inclusiveness
+}
+enum TypeRestrictionInheritance1 {
+  Partial
+  Total
+}
+enum TypeRestrictionInheritance2 {
+  Exclusive
+  Overlapped
+}
+class entityrelationship_Attribute {
+  + identifier : str
+  + name_attribute : str
+}
+class entityrelationship_Attribute_Composite {
+  + identifier_at_composite : str
+  + name_at_composite : str
+}
+class entityrelationship_Connection_ConnectionEntityRelationship2Attribute {
+}
+class entityrelationship_Connection_E_R_Restriction {
+  + type_restriction : str
+}
+class entityrelationship_Connection_Entity2Relationship {
+}
+abstract class entityrelationship_Connection_EntityRelationship {
+  + maximum_cardinality : str
+  + minimum_cardinality : str
+  + role : str
+}
+class entityrelationship_Connection_Generalization_Entity {
+  + maximum_cardinality : str
+  + minimum_cardinality : str
+}
+class entityrelationship_Connection_Relationship2Entity {
+}
+class entityrelationship_Connection_With_Attribute {
+  + type_attribute : str
+}
+class entityrelationship_Elements_with_Attributes {
+}
+class entityrelationship_Entity {
+  + name_entity : str
+  + type_entity : str
+}
+class entityrelationship_Entity_Relationship_Model {
+  + name : str
+}
+class entityrelationship_Generalization {
+  + restriction_inheritance_1 : str
+  + restriction_inheritance_2 : str
+}
+class entityrelationship_Relationship {
+  + cardinality : str
+  + name_relationship : str
+  + order : int
+  + type_relationship : str
+}
+class entityrelationship_Relationships_Restriction {
+  + type_restriction : str
+}
+Connection_EntityRelationship <|-- entityrelationship_Connection_Entity2Relationship
+Connection_EntityRelationship <|-- entityrelationship_Connection_Relationship2Entity
+Elements_with_Attributes <|-- entityrelationship_Entity
+Elements_with_Attributes <|-- entityrelationship_Relationship
+entityrelationship_Connection_Generalization_Entity "1..1" -- "1..1" entityrelationship_Entity : Connection_Entity77
+entityrelationship_Connection_Generalization_Entity "1..1" -- "1..1" entityrelationship_Generalization : Connection_Generalization75
+entityrelationship_Connection_ConnectionEntityRelationship2Attribute "0..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_HasConnectionEntityRelationship2Attribute7
+entityrelationship_Attribute "1..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_At15
+entityrelationship_Connection_With_Attribute "1..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_CEA13
+entityrelationship_Connection_Entity2Relationship "0..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_ConnectionEntity2Relationship3
+entityrelationship_Connection_Relationship2Entity "0..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_ConnectionRelationship2Entity5
+entityrelationship_Elements_with_Attributes "1..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_E0
+entityrelationship_Entity_Relationship_Model "1..1" *-- "0..9999" entityrelationship_Generalization : ERM_Has_G16
+entityrelationship_Connection_Generalization_Entity "2..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_Gen9
+entityrelationship_Entity_Relationship_Model "1..1" *-- "0..9999" entityrelationship_Relationships_Restriction : ERM_Has_Rt1
+entityrelationship_Connection_E_R_Restriction "0..9999" --* "1..1" entityrelationship_Entity_Relationship_Model : ERM_Has_Rt211
+entityrelationship_Attribute "1..1" -- "0..1" entityrelationship_Connection_ConnectionEntityRelationship2Attribute : attribute_connected_to_conection_entityrelationship_to_attribute47
+entityrelationship_Attribute "1..1" -- "1..1" entityrelationship_Attribute_Composite : attributes49
+entityrelationship_Attribute "1..1" *-- "0..9999" entityrelationship_Attribute_Composite : attributes_composites35
+entityrelationship_Attribute "1..1" -- "0..9999" entityrelationship_Attribute : attributes_identification37
+entityrelationship_Attribute "1..1" -- "1..1" entityrelationship_Connection_With_Attribute : connected39
+entityrelationship_Connection_With_Attribute "0..9999" -- "1..1" entityrelationship_Elements_with_Attributes : connected_with_attribute18
+entityrelationship_Attribute "1..1" -- "1..1" entityrelationship_Connection_With_Attribute : connection_attribute69
+entityrelationship_Connection_E_R_Restriction "1..1" -- "1..1" entityrelationship_Connection_EntityRelationship : connection_source_entity_relationship59
+entityrelationship_Connection_E_R_Restriction "1..1" -- "1..1" entityrelationship_Connection_EntityRelationship : connection_target_entity_relationship60
+entityrelationship_Connection_With_Attribute "1..1" -- "1..1" entityrelationship_Elements_with_Attributes : element71
+entityrelationship_Connection_Entity2Relationship "0..9999" -- "1..1" entityrelationship_Entity : entity_connected_to_entity2relationship21
+entityrelationship_Connection_Relationship2Entity "0..9999" -- "1..1" entityrelationship_Entity : entity_connected_to_relationship2entity23
+entityrelationship_Attribute "1..1" -- "0..1" entityrelationship_Attribute : inAttribute42
+entityrelationship_Attribute "0..1" -- "1..1" entityrelationship_Attribute_Composite : inAttribute51
+entityrelationship_Elements_with_Attributes "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel20
+entityrelationship_Attribute "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel44
+entityrelationship_Entity_Relationship_Model "0..1" -- "1..1" entityrelationship_Relationships_Restriction : inEntityRelationshipModel57
+entityrelationship_Connection_E_R_Restriction "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel63
+entityrelationship_Entity_Relationship_Model "0..1" -- "1..1" entityrelationship_Generalization : inEntityRelationshipModel67
+entityrelationship_Connection_With_Attribute "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel73
+entityrelationship_Connection_Generalization_Entity "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel80
+entityrelationship_Connection_Entity2Relationship "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel86
+entityrelationship_Connection_Relationship2Entity "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel92
+entityrelationship_Connection_ConnectionEntityRelationship2Attribute "1..1" -- "0..1" entityrelationship_Entity_Relationship_Model : inEntityRelationshipModel98
+entityrelationship_Connection_Entity2Relationship "0..9999" -- "1..1" entityrelationship_Relationship : relationship_connected_to_entity2relationship30
+entityrelationship_Connection_Relationship2Entity "0..9999" -- "1..1" entityrelationship_Relationship : relationship_connected_to_relationship2entity33
+entityrelationship_Connection_ConnectionEntityRelationship2Attribute "1..1" -- "1..1" entityrelationship_Connection_EntityRelationship : source_connection94
+entityrelationship_Connection_Entity2Relationship "1..1" -- "0..1" entityrelationship_Entity : source_entity82
+entityrelationship_Relationship "1..1" -- "1..1" entityrelationship_Relationships_Restriction : source_relationship53
+entityrelationship_Connection_Relationship2Entity "1..1" -- "0..1" entityrelationship_Relationship : source_relationship88
+entityrelationship_Relationship "1..1" -- "0..1" entityrelationship_Relationships_Restriction : source_restrictions27
+entityrelationship_Entity "1..1" -- "0..9999" entityrelationship_Generalization : subclass_generalizations25
+entityrelationship_Entity "2..9999" -- "1..1" entityrelationship_Generalization : subclasses65
+entityrelationship_Entity "1..1" -- "1..1" entityrelationship_Generalization : superclass66
+entityrelationship_Attribute "1..1" -- "1..1" entityrelationship_Connection_ConnectionEntityRelationship2Attribute : target_attribute96
+entityrelationship_Connection_Relationship2Entity "1..1" -- "0..1" entityrelationship_Entity : target_entity90
+entityrelationship_Relationship "1..1" -- "1..1" entityrelationship_Relationships_Restriction : target_relationship56
+entityrelationship_Connection_Entity2Relationship "1..1" -- "0..1" entityrelationship_Relationship : target_relationship84
+entityrelationship_Relationship "1..1" -- "0..9999" entityrelationship_Relationships_Restriction : target_restrictions28
+@enduml

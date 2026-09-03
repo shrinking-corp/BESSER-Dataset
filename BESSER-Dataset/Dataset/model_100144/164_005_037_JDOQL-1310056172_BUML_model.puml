@@ -1,0 +1,200 @@
+@startuml
+enum AdditionOperator {
+  add
+  subtract
+}
+enum ComparisonOperator {
+  equal
+  greaterEqual
+  greaterThen
+  instanceof
+  lessEqual
+  lessThen
+  notEqual
+}
+class Expression {
+}
+enum MultiplicationOperator {
+  divide
+  modulo
+  multiply
+}
+enum OrderByDirection {
+  asc
+  ascending
+  desc
+  descending
+}
+class OrderBySpec {
+}
+class ResultSpec {
+}
+class SubquerySelectClause {
+}
+enum UnaryOperator {
+  bitwiseNot
+  logicalNot
+  negative
+  positive
+}
+class jDOQL_AdditionExpression {
+  + operator : str
+}
+class jDOQL_Alias {
+  + identifier : str
+}
+class jDOQL_ComparisonOperatorExpression {
+  + operator : str
+}
+class jDOQL_ConditionalAndExpression {
+}
+class jDOQL_ConditionalOrExpression {
+}
+class jDOQL_EObject {
+}
+class jDOQL_Expression {
+  + castType : str
+  + direction : str
+  + id : str
+  + isDistinct : bool
+  + literal : str
+  + name : str
+  + parameterName : str
+  + this : str
+  + unaryOperator : str
+}
+class jDOQL_FieldAccessExpression {
+}
+class jDOQL_FromClause {
+  + candidateClassName : str
+  + isExcludeSubclasses : bool
+}
+class jDOQL_GroupByClause {
+}
+class jDOQL_HavingClause {
+}
+class jDOQL_ImportClause {
+  + importDeclarations : str
+}
+class jDOQL_IntoClause {
+  + resultClassName : str
+}
+class jDOQL_MultiplicationExpression {
+  + operator : str
+}
+class jDOQL_OrderByClause {
+}
+class jDOQL_OrderBySpec {
+}
+class jDOQL_ParameterDeclaration {
+  + declaredParameterName : str
+  + type : str
+}
+class jDOQL_ParametersClause {
+}
+class jDOQL_RangeClause {
+}
+class jDOQL_ResultClause {
+  + isDistinct : bool
+}
+class jDOQL_ResultNaming {
+  + identifier : str
+}
+class jDOQL_ResultSpec {
+}
+class jDOQL_SelectClause {
+  + isUnique : bool
+}
+class jDOQL_SimpleAndExpression {
+}
+class jDOQL_SimpleOrExpression {
+}
+class jDOQL_SingleStringJDOQL {
+}
+class jDOQL_Subquery {
+}
+class jDOQL_SubqueryFromClause {
+  + candidateClassName : str
+  + isExcludeSubclasses : bool
+}
+class jDOQL_SubqueryResultClause {
+  + isDistinct : bool
+}
+class jDOQL_SubquerySelectClause {
+}
+class jDOQL_VariableDeclaration {
+  + type : str
+  + variableName : str
+}
+class jDOQL_VariablesClause {
+}
+class jDOQL_WhereClause {
+}
+Expression <|-- jDOQL_AdditionExpression
+Expression <|-- jDOQL_ComparisonOperatorExpression
+Expression <|-- jDOQL_ConditionalAndExpression
+Expression <|-- jDOQL_ConditionalOrExpression
+Expression <|-- jDOQL_FieldAccessExpression
+Expression <|-- jDOQL_MultiplicationExpression
+Expression <|-- jDOQL_SimpleAndExpression
+Expression <|-- jDOQL_SimpleOrExpression
+Expression <|-- jDOQL_Subquery
+OrderBySpec <|-- jDOQL_Expression
+ResultSpec <|-- jDOQL_Expression
+SubquerySelectClause <|-- jDOQL_SelectClause
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : aggregateArgument81
+jDOQL_Alias "0..1" --* "1..1" jDOQL_SubqueryFromClause : alias41
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : arg87
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : beginIndex111
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : element84
+jDOQL_Expression "0..1" --* "1..1" jDOQL_RangeClause : end63
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : endIndex114
+jDOQL_Expression "0..1" --* "1..1" jDOQL_SubqueryFromClause : fieldAccessExpression38
+jDOQL_Expression "0..1" --* "1..1" jDOQL_WhereClause : filter43
+jDOQL_FromClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : fromClause1
+jDOQL_Subquery "1..1" *-- "0..1" jDOQL_SubqueryFromClause : fromClause18
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : fromIndex102
+jDOQL_GroupByClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : groupByClause11
+jDOQL_Expression "0..9999" --* "1..1" jDOQL_GroupByClause : grouping50
+jDOQL_Expression "0..1" --* "1..1" jDOQL_HavingClause : having55
+jDOQL_GroupByClause "1..1" *-- "0..1" jDOQL_HavingClause : havingClause53
+jDOQL_ImportClause "0..1" --* "1..1" jDOQL_Subquery : importClause29
+jDOQL_ImportClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : importClause9
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : index96
+jDOQL_IntoClause "0..1" --* "1..1" jDOQL_SelectClause : intoClause34
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : key90
+jDOQL_ConditionalOrExpression "1..1" *-- "0..1" jDOQL_Expression : left116
+jDOQL_ConditionalAndExpression "1..1" *-- "0..1" jDOQL_Expression : left118
+jDOQL_Expression "0..1" --* "1..1" jDOQL_SimpleOrExpression : left120
+jDOQL_Expression "0..1" --* "1..1" jDOQL_SimpleAndExpression : left122
+jDOQL_ComparisonOperatorExpression "1..1" *-- "0..1" jDOQL_Expression : left124
+jDOQL_AdditionExpression "1..1" *-- "0..1" jDOQL_Expression : left126
+jDOQL_Expression "0..1" --* "1..1" jDOQL_MultiplicationExpression : left128
+jDOQL_Expression "0..1" --* "1..1" jDOQL_FieldAccessExpression : left130
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : method72
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : number75
+jDOQL_OrderByClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : orderByClause13
+jDOQL_OrderByClause "1..1" *-- "0..9999" jDOQL_OrderBySpec : ordering58
+jDOQL_ParameterDeclaration "0..9999" --* "1..1" jDOQL_ParametersClause : parameterDeclarations48
+jDOQL_ParametersClause "0..1" --* "1..1" jDOQL_Subquery : parametersClause26
+jDOQL_ParametersClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : parametersClause7
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : persistable78
+jDOQL_RangeClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : rangeClause15
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : regex105
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : replacement108
+jDOQL_EObject "0..1" --* "1..1" jDOQL_SelectClause : resultClause32
+jDOQL_Expression "0..1" --* "1..1" jDOQL_SubqueryResultClause : resultExpression37
+jDOQL_Expression "1..1" *-- "0..1" jDOQL_ResultNaming : resultNaming66
+jDOQL_ResultClause "1..1" *-- "0..9999" jDOQL_ResultSpec : resultSpecs36
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : right69
+jDOQL_SelectClause "0..1" --* "1..1" jDOQL_SingleStringJDOQL : selectClause0
+jDOQL_Subquery "1..1" *-- "0..1" jDOQL_SubquerySelectClause : selectClause17
+jDOQL_Expression "0..1" --* "1..1" jDOQL_RangeClause : start60
+jDOQL_Expression "1..1" *-- "0..1" jDOQL_Expression : string99
+jDOQL_Expression "0..1" --* "1..1" jDOQL_Expression : value93
+jDOQL_VariableDeclaration "0..9999" --* "1..1" jDOQL_VariablesClause : variableDeclarations46
+jDOQL_Subquery "1..1" *-- "0..1" jDOQL_VariablesClause : variablesClause23
+jDOQL_SingleStringJDOQL "1..1" *-- "0..1" jDOQL_VariablesClause : variablesClause5
+jDOQL_Subquery "1..1" *-- "0..1" jDOQL_WhereClause : whereClause20
+jDOQL_SingleStringJDOQL "1..1" *-- "0..1" jDOQL_WhereClause : whereClause3
+@enduml

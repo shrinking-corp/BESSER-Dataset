@@ -1,0 +1,54 @@
+@startuml
+class Appliance {
+  + Brand : str
+  + Model : str
+  + Price : str
+  + Stock : int
+}
+class BackOrder {
+  + backOrderList : Order
+}
+class ClothesDryer {
+  + repairPlan : str
+}
+class ClothesWasher {
+  + repairPlan : str
+}
+class Customer {
+  + customerID : int
+  + name : str
+  + phoneNumber : int
+}
+class Dishwasher {
+}
+class Fridge {
+  + capacity : str
+}
+class Furnace {
+  + maximumHeatOutput : str
+}
+class KitchenRange {
+}
+class Order {
+  + appliance : Appliance
+  + customer : Customer
+}
+class OrderList {
+  + orderList : Order
+}
+class Store {
+  + customers : str
+  + inventory : str
+  + orders : str
+  + sales : str
+}
+Customer "1..1" -- "0..9999" Order : Customer_Order
+Customer "0..9999" -- "1..1" Store : Customer_Store
+Appliance "0..9999" -- "1..1" Order : Order_Appliance
+BackOrder "1..1" -- "0..9999" Order : Order_BackOrder
+Order "0..1" -- "1..1" OrderList : Order_OrderList
+Appliance "0..9999" -- "1..1" Store : Store_Appliance
+BackOrder "1..1" -- "1..1" Store : Store_BackOrder
+Order "0..9999" -- "1..1" Store : Store_Order
+OrderList "1..1" -- "1..1" Store : Store_OrderList
+@enduml

@@ -1,0 +1,97 @@
+@startuml
+class BinaryOperator {
+}
+class Dependency {
+}
+class Description {
+}
+class Requirement {
+}
+class SimpleDependency {
+}
+class Term {
+}
+class UnaryOperator {
+}
+class newP_AndOperartor {
+}
+abstract class newP_BinaryOperator {
+}
+class newP_CValue {
+}
+class newP_Category {
+  + name : str
+}
+abstract class newP_Dependency {
+}
+abstract class newP_Description {
+}
+class newP_FunctionalRequirement {
+}
+class newP_ICost {
+}
+class newP_NotOperator {
+}
+class newP_OrOperator {
+}
+class newP_Person {
+  + firstName : str
+  + lastName : str
+}
+class newP_QualityRequirement {
+}
+class newP_Refines {
+}
+abstract class newP_Requirement {
+  + identifier : str
+  + mandatory : bool
+  + name : str
+  + priority : int
+}
+class newP_RequirementTerm {
+}
+class newP_Requires {
+  + name : str
+}
+abstract class newP_SimpleDependency {
+  + name : str
+}
+class newP_Specification {
+  + name : str
+}
+abstract class newP_Term {
+}
+class newP_TextDescription {
+  + text : str
+}
+abstract class newP_UnaryOperator {
+  + name : str
+}
+BinaryOperator <|-- newP_AndOperartor
+BinaryOperator <|-- newP_OrOperator
+Dependency <|-- newP_Requires
+Dependency <|-- newP_SimpleDependency
+Description <|-- newP_TextDescription
+Requirement <|-- newP_FunctionalRequirement
+Requirement <|-- newP_QualityRequirement
+SimpleDependency <|-- newP_CValue
+SimpleDependency <|-- newP_ICost
+SimpleDependency <|-- newP_Refines
+Term <|-- newP_RequirementTerm
+Term <|-- newP_UnaryOperator
+UnaryOperator <|-- newP_BinaryOperator
+UnaryOperator <|-- newP_NotOperator
+newP_BinaryOperator "1..1" *-- "1..1" newP_Term : LHS22
+newP_Term "1..1" --* "1..1" newP_UnaryOperator : RHS18
+newP_Requires "1..1" *-- "1..1" newP_Term : RHS19
+newP_RequirementTerm "1..1" --* "1..1" newP_SimpleDependency : RHS21
+newP_Category "0..9999" -- "1..1" newP_Person : categories12
+newP_Category "0..9999" --* "1..1" newP_Specification : category8
+newP_Category "0..9999" --* "1..1" newP_Category : children6
+newP_Dependency "0..9999" --* "1..1" newP_Requirement : dependency1
+newP_Description "0..9999" --* "1..1" newP_Requirement : description0
+newP_Person "0..9999" --* "1..1" newP_Specification : person10
+newP_Requirement "1..1" -- "1..1" newP_RequirementTerm : requirement24
+newP_Category "1..1" *-- "0..9999" newP_Requirement : requirement3
+newP_Person "1..1" -- "0..9999" newP_Requirement : requirements15
+@enduml

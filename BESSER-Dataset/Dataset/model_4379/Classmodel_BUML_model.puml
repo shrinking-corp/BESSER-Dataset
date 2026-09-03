@@ -1,0 +1,143 @@
+@startuml
+class Element {
+}
+class Entity {
+}
+class Feature {
+}
+class Relationship {
+}
+enum Visibility {
+  PACKAGE_PRIVATE
+  PRIVATE
+  PROTECTED
+  PUBLIC
+}
+class classmodel_Aggregation {
+  + headLabel : str
+  + headNavigable : bool
+  + headVisibility : str
+  + tailLabel : str
+  + tailNavigable : bool
+  + tailVisibility : str
+}
+class classmodel_Annotation {
+}
+class classmodel_Array {
+}
+class classmodel_Association {
+  + headLabel : str
+  + headNavigable : bool
+  + headVisibility : str
+  + tailLabel : str
+  + tailNavigable : bool
+  + tailVisibility : str
+}
+class classmodel_Attribute {
+  + implicit : str
+  + static : bool
+}
+class classmodel_Classifier {
+  + constraint : str
+}
+class classmodel_Composition {
+  + headLabel : str
+  + headNavigable : bool
+  + headVisibility : str
+  + tailLabel : str
+  + tailNavigable : bool
+  + tailVisibility : str
+}
+class classmodel_Constant {
+}
+class classmodel_Datatype {
+}
+class classmodel_Dependency {
+}
+class classmodel_Element {
+}
+class classmodel_Entity {
+  + name : str
+}
+class classmodel_Enumeration {
+  + constraint : str
+}
+class classmodel_Feature {
+  + constraint : str
+  + name : str
+  + value : str
+  + visibility : str
+}
+class classmodel_Generalization {
+}
+class classmodel_Import {
+  + importURI : str
+}
+class classmodel_Model {
+}
+class classmodel_Multiplicity {
+  + lower : str
+  + upper : str
+}
+class classmodel_Operation {
+  + body : str
+  + static : bool
+}
+class classmodel_Package {
+  + name : str
+}
+class classmodel_Parameter {
+  + implicit : str
+  + name : str
+}
+class classmodel_Realization {
+}
+class classmodel_Reference {
+}
+class classmodel_Relationship {
+  + label : str
+}
+class classmodel_Type {
+  + visibility : str
+}
+Element <|-- classmodel_Entity
+Element <|-- classmodel_Package
+Element <|-- classmodel_Relationship
+Entity <|-- classmodel_Classifier
+Entity <|-- classmodel_Datatype
+Entity <|-- classmodel_Enumeration
+Feature <|-- classmodel_Attribute
+Feature <|-- classmodel_Constant
+Feature <|-- classmodel_Operation
+Relationship <|-- classmodel_Aggregation
+Relationship <|-- classmodel_Association
+Relationship <|-- classmodel_Composition
+Relationship <|-- classmodel_Dependency
+Relationship <|-- classmodel_Generalization
+Relationship <|-- classmodel_Realization
+classmodel_Annotation "0..9999" --* "1..1" classmodel_Element : annotation3
+classmodel_Array "0..9999" --* "1..1" classmodel_Reference : array50
+classmodel_Element "0..9999" --* "1..1" classmodel_Package : element5
+classmodel_Element "0..9999" --* "1..1" classmodel_Model : elements1
+classmodel_Enumeration "1..1" *-- "0..9999" classmodel_Feature : enumerator17
+classmodel_Classifier "1..1" *-- "0..9999" classmodel_Feature : feature11
+classmodel_Classifier "1..1" *-- "0..9999" classmodel_Type : generalization7
+classmodel_Entity "0..1" -- "1..1" classmodel_Relationship : head20
+classmodel_Association "1..1" *-- "0..1" classmodel_Multiplicity : headMultiplicity25
+classmodel_Aggregation "1..1" *-- "0..1" classmodel_Multiplicity : headMultiplicity29
+classmodel_Composition "1..1" *-- "0..1" classmodel_Multiplicity : headMultiplicity34
+classmodel_Import "0..9999" --* "1..1" classmodel_Model : imports0
+classmodel_Entity "0..1" -- "1..1" classmodel_Type : name13
+classmodel_Operation "1..1" *-- "0..9999" classmodel_Parameter : parameter39
+classmodel_Operation "1..1" *-- "0..1" classmodel_Reference : return_40
+classmodel_Array "1..1" *-- "0..1" classmodel_Multiplicity : size52
+classmodel_Entity "0..1" -- "1..1" classmodel_Relationship : tail22
+classmodel_Association "1..1" *-- "0..1" classmodel_Multiplicity : tailMultiplicity26
+classmodel_Aggregation "1..1" *-- "0..1" classmodel_Multiplicity : tailMultiplicity31
+classmodel_Composition "1..1" *-- "0..1" classmodel_Multiplicity : tailMultiplicity36
+classmodel_Parameter "1..1" *-- "0..1" classmodel_Reference : type42
+classmodel_Attribute "1..1" *-- "0..1" classmodel_Reference : type45
+classmodel_Entity "0..1" -- "1..1" classmodel_Reference : type47
+classmodel_Enumeration "1..1" *-- "0..1" classmodel_Type : upperClass15
+classmodel_Classifier "1..1" *-- "0..1" classmodel_Type : upperClass8
+@enduml

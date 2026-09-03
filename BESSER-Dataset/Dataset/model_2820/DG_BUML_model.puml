@@ -1,0 +1,293 @@
+@startuml
+class Canvas {
+}
+class Definition {
+}
+enum ElementKind {
+  canvas
+  circle
+  clipPath
+  ellipse
+  group
+  image
+  line
+  marker
+  path
+  polygon
+  polyline
+  rectangle
+  text
+  use
+}
+enum FontDecoration {
+  lineThrough
+  overline
+  underline
+}
+class Gradient {
+}
+class GraphicalElement {
+}
+class Group {
+}
+class MarkedElement {
+}
+class PaintServer {
+}
+class PathCommand {
+}
+enum TextAnchor {
+  end
+  middle
+  start
+}
+class Transform {
+}
+class dg_Bounds {
+}
+class dg_Canvas {
+  + canvasCannotHaveTransforms(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Circle {
+  + radius : str
+  + nonNegativeRadius(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_ClipPath {
+}
+class dg_ClosePath {
+}
+class dg_CubicCurveTo {
+}
+abstract class dg_Definition {
+  + id : str
+  + idCannotBeEmpty(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Definitions {
+}
+class dg_Dimension {
+}
+class dg_Ellipse {
+}
+class dg_EllipticalArcTo {
+  + isLargeArc : str
+  + isSweep : str
+  + rotation : str
+}
+abstract class dg_Gradient {
+}
+class dg_GradientStop {
+  + color : str
+  + offset : str
+  + opacity : str
+  + validOffset(dg_context : str, dg_diagnostics : str) : bool
+  + validOpacity(dg_context : str, dg_diagnostics : str) : bool
+}
+abstract class dg_GraphicalElement {
+  + class_ : str
+  + layoutData : str
+  + referencedClippathHasId(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Group {
+  + layout : str
+}
+class dg_Image {
+  + isAspectRatioPreserved : str
+  + source : str
+  + sourceCannotBeEmpty(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Line {
+}
+class dg_LineTo {
+}
+class dg_LinearGradient {
+  + validGradientVector(dg_context : str, dg_diagnostics : str) : bool
+}
+abstract class dg_MarkedElement {
+  + referencedEndMarkerHasId(dg_context : str, dg_diagnostics : str) : bool
+  + referencedMidMarkerHasId(dg_context : str, dg_diagnostics : str) : bool
+  + referencedStartMarkerHasId(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Marker {
+}
+class dg_Matrix {
+  + a : str
+  + b : str
+  + c : str
+  + d : str
+  + e : str
+  + f : str
+}
+class dg_MoveTo {
+}
+class dg_Paint {
+  + color : str
+  + referencedPaintServerHasId(dg_context : str, dg_diagnostics : str) : bool
+}
+abstract class dg_PaintServer {
+}
+class dg_Path {
+  + firstCommandMustBeMove(dg_context : str, dg_diagnostics : str) : bool
+}
+abstract class dg_PathCommand {
+  + isRelative : str
+}
+class dg_Pattern {
+}
+class dg_Point {
+}
+class dg_Polygon {
+}
+class dg_Polyline {
+}
+class dg_QuadraticCurveTo {
+}
+class dg_RadialGradient {
+  + radius : str
+  + validCenterPoint(dg_context : str, dg_diagnostics : str) : bool
+  + validFocusPoint(dg_context : str, dg_diagnostics : str) : bool
+  + validRadius(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Rectangle {
+  + cornerRadius : str
+  + nonNegativeCornerRadius(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_RootCanvas {
+  + backgroundColor : str
+  + script : str
+}
+class dg_Rotate {
+  + angle : str
+}
+class dg_Scale {
+  + factorX : str
+  + factorY : str
+  + nonnegativescale(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_Skew {
+  + angleX : str
+  + angleY : str
+}
+class dg_Style {
+  + fillOpacity : str
+  + fontBold : str
+  + fontDecoration : str
+  + fontItalic : str
+  + fontName : str
+  + fontSize : str
+  + strokeDashLength : str
+  + strokeOpacity : str
+  + strokeWidth : str
+  + validDashLengthSize(dg_context : str, dg_diagnostics : str) : bool
+  + validFillOpacity(dg_context : str, dg_diagnostics : str) : bool
+  + validFontSize(dg_context : str, dg_diagnostics : str) : bool
+  + validStrokeOpacity(dg_context : str, dg_diagnostics : str) : bool
+  + validStrokeWidth(dg_context : str, dg_diagnostics : str) : bool
+}
+class dg_StyleRule {
+}
+class dg_StyleSelector {
+  + class_ : str
+  + kind : str
+}
+class dg_StyleSheet {
+}
+class dg_Text {
+  + anchor : str
+  + data : str
+  + dataCannotBeEmpty(dg_context : str, dg_diagnostics : str) : bool
+}
+abstract class dg_Transform {
+}
+class dg_Translate {
+  + deltaX : str
+  + deltaY : str
+}
+class dg_Use {
+  + referencedElementHasId(dg_context : str, dg_diagnostics : str) : bool
+}
+Canvas <|-- dg_RootCanvas
+Definition <|-- dg_GraphicalElement
+Definition <|-- dg_PaintServer
+Gradient <|-- dg_LinearGradient
+Gradient <|-- dg_RadialGradient
+GraphicalElement <|-- dg_Circle
+GraphicalElement <|-- dg_Ellipse
+GraphicalElement <|-- dg_Group
+GraphicalElement <|-- dg_Image
+GraphicalElement <|-- dg_MarkedElement
+GraphicalElement <|-- dg_Rectangle
+GraphicalElement <|-- dg_Text
+GraphicalElement <|-- dg_Use
+Group <|-- dg_Canvas
+Group <|-- dg_ClipPath
+Group <|-- dg_Marker
+MarkedElement <|-- dg_Line
+MarkedElement <|-- dg_Path
+MarkedElement <|-- dg_Polygon
+MarkedElement <|-- dg_Polyline
+PaintServer <|-- dg_Gradient
+PaintServer <|-- dg_Pattern
+PathCommand <|-- dg_ClosePath
+PathCommand <|-- dg_CubicCurveTo
+PathCommand <|-- dg_EllipticalArcTo
+PathCommand <|-- dg_LineTo
+PathCommand <|-- dg_MoveTo
+PathCommand <|-- dg_QuadraticCurveTo
+Transform <|-- dg_Matrix
+Transform <|-- dg_Rotate
+Transform <|-- dg_Scale
+Transform <|-- dg_Skew
+Transform <|-- dg_Translate
+dg_Bounds "0..1" --* "1..1" dg_Canvas : bounds0
+dg_Bounds "1..1" --* "1..1" dg_Text : bounds105
+dg_Bounds "0..1" --* "1..1" dg_Use : bounds107
+dg_Bounds "1..1" --* "1..1" dg_Image : bounds54
+dg_Bounds "1..1" --* "1..1" dg_Pattern : bounds82
+dg_Bounds "1..1" --* "1..1" dg_Rectangle : bounds96
+dg_Point "0..1" --* "1..1" dg_Rotate : center103
+dg_Circle "1..1" *-- "1..1" dg_Point : center19
+dg_Ellipse "1..1" *-- "1..1" dg_Point : center39
+dg_Point "1..1" --* "1..1" dg_RadialGradient : center91
+dg_ClipPath "0..1" -- "1..1" dg_GraphicalElement : clipPath2
+dg_Path "1..1" *-- "1..9999" dg_PathCommand : command81
+dg_Point "1..1" --* "1..1" dg_QuadraticCurveTo : control48
+dg_Definition "0..9999" --* "1..1" dg_Definitions : definition29
+dg_Definitions "0..1" --* "1..1" dg_RootCanvas : definitions98
+dg_Line "1..1" *-- "1..1" dg_Point : end58
+dg_LinearGradient "1..1" *-- "1..1" dg_Point : end76
+dg_CubicCurveTo "1..1" *-- "1..1" dg_Point : endControl23
+dg_MarkedElement "1..1" -- "0..1" dg_Marker : endMarker61
+dg_RootCanvas "1..1" -- "0..9999" dg_StyleSheet : externalStyleSheet100
+dg_Paint "0..1" --* "1..1" dg_Style : fill9
+dg_Point "1..1" --* "1..1" dg_RadialGradient : focus93
+dg_GraphicalElement "1..1" -- "0..1" dg_Group : group3
+dg_GraphicalElement "0..9999" --* "1..1" dg_Group : member1
+dg_MarkedElement "1..1" -- "0..1" dg_Marker : midMarker62
+dg_Paint "1..1" -- "0..1" dg_PaintServer : paintServer14
+dg_CubicCurveTo "1..1" *-- "1..1" dg_Point : point26
+dg_EllipticalArcTo "1..1" *-- "1..1" dg_Point : point45
+dg_Point "1..1" --* "1..1" dg_QuadraticCurveTo : point50
+dg_LineTo "1..1" *-- "1..1" dg_Point : point79
+dg_MoveTo "1..1" *-- "1..1" dg_Point : point8
+dg_Point "3..9999" --* "1..1" dg_Polygon : point87
+dg_Point "2..9999" --* "1..1" dg_Polyline : point89
+dg_Dimension "1..1" --* "1..1" dg_Ellipse : radii41
+dg_Dimension "1..1" --* "1..1" dg_EllipticalArcTo : radii43
+dg_Marker "1..1" *-- "1..1" dg_Point : reference71
+dg_GraphicalElement "1..1" -- "1..1" dg_Use : referencedElement109
+dg_StyleRule "0..9999" --* "1..1" dg_StyleSheet : rule32
+dg_StyleRule "1..1" *-- "1..9999" dg_StyleSelector : selector34
+dg_Dimension "1..1" --* "1..1" dg_Marker : size68
+dg_Line "1..1" *-- "1..1" dg_Point : start56
+dg_LinearGradient "1..1" *-- "1..1" dg_Point : start74
+dg_CubicCurveTo "1..1" *-- "1..1" dg_Point : startControl21
+dg_MarkedElement "1..1" -- "0..1" dg_Marker : startMarker65
+dg_Gradient "1..1" *-- "2..9999" dg_GradientStop : stop53
+dg_Paint "0..1" --* "1..1" dg_Style : stroke11
+dg_Style "1..1" --* "1..1" dg_StyleRule : style36
+dg_GraphicalElement "1..1" *-- "0..1" dg_Style : style4
+dg_Definitions "1..1" *-- "0..1" dg_StyleSheet : styleSheet30
+dg_GraphicalElement "1..1" --* "1..1" dg_Pattern : tile84
+dg_PaintServer "1..1" *-- "0..9999" dg_Transform : transform16
+dg_GraphicalElement "1..1" *-- "0..9999" dg_Transform : transform6
+@enduml

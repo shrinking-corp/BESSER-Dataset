@@ -1,0 +1,36 @@
+@startuml
+class FeatureDescriptor {
+}
+class FeatureSetDescriptor {
+}
+class FeatureVersionDescriptor {
+}
+class features_Feature {
+  + description : str
+  + identifier : str
+  + name : str
+  + provider : str
+}
+abstract class features_FeatureDescriptor {
+}
+class features_FeatureSet {
+  + description : str
+  + identifier : str
+  + name : str
+}
+abstract class features_FeatureSetDescriptor {
+}
+class features_FeatureVersion {
+  + news : str
+  + version : str
+}
+abstract class features_FeatureVersionDescriptor {
+}
+FeatureDescriptor <|-- features_Feature
+FeatureSetDescriptor <|-- features_FeatureSet
+FeatureVersionDescriptor <|-- features_FeatureVersion
+features_Feature "1..1" -- "1..1" features_FeatureVersion : feature3
+features_Feature "1..1" -- "1..1" features_FeatureSet : featureSet1
+features_Feature "1..1" *-- "0..9999" features_FeatureVersion : featureVersions2
+features_Feature "0..9999" --* "1..1" features_FeatureSet : features0
+@enduml

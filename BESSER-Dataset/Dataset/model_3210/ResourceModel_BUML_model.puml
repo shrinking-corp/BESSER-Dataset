@@ -1,0 +1,22 @@
+@startuml
+class rm_Device {
+  + cacheSize : int
+}
+class rm_Memory {
+  + size : int
+}
+class rm_MemoryCellReference {
+  + endCellIndex : int
+  + startCellIndex : int
+}
+class rm_ResourceModel {
+}
+class rm_VariableReference {
+  + memoryCellIndex : int
+  + variable : str
+}
+rm_Device "1..9999" --* "1..1" rm_ResourceModel : devices0
+rm_Device "1..1" *-- "0..1" rm_MemoryCellReference : localMemoryCellReference3
+rm_Memory "1..1" --* "1..1" rm_ResourceModel : memory1
+rm_Memory "1..1" *-- "0..9999" rm_VariableReference : variableReferences5
+@enduml

@@ -1,0 +1,97 @@
+@startuml
+class Actor {
+}
+class Connection {
+}
+class Port {
+}
+abstract class adfg_Actor {
+  + name : str
+  + nbPorts : int
+  + priority : int
+  + procNumber : int
+  + sourceCode : str
+}
+class adfg_AffineRelation {
+  + d : int
+  + n : int
+  + phi : int
+}
+class adfg_AperiodicActor {
+  + capacity : str
+  + replenishmentPeriod : str
+}
+class adfg_Application {
+  + dynamicChecking : bool
+  + name : str
+  + nbGraphs : int
+  + nbProcessors : int
+  + schedulingAlgorithm : str
+  + sourceCode : str
+}
+class adfg_Channel {
+  + initial : int
+}
+class adfg_Connection {
+  + id : int
+  + size : int
+}
+class adfg_Graph {
+  + bufferingRequirements : int
+  + id : int
+  + name : str
+  + nbActors : int
+  + nbBuffers : int
+  + processorUtilization : float
+  + sourceCode : str
+}
+class adfg_GraphConnection {
+}
+class adfg_InputPort {
+}
+class adfg_LossyChannel {
+}
+class adfg_OutputPort {
+}
+class adfg_PeriodicActor {
+  + deadline : str
+  + period : str
+  + periodLowerBound : str
+  + periodUpperBound : str
+  + phase : str
+  + wcet : str
+}
+abstract class adfg_Port {
+  + name : str
+  + sequence : str
+  + type : str
+}
+Actor <|-- adfg_AperiodicActor
+Actor <|-- adfg_PeriodicActor
+Connection <|-- adfg_Channel
+Connection <|-- adfg_LossyChannel
+Port <|-- adfg_InputPort
+Port <|-- adfg_OutputPort
+adfg_Application "1..1" *-- "0..9999" adfg_GraphConnection : GraphConnections1
+adfg_AffineRelation "0..9999" -- "1..1" adfg_PeriodicActor : affineRelationSource36
+adfg_AffineRelation "0..9999" -- "1..1" adfg_PeriodicActor : affineRelationTarget39
+adfg_AffineRelation "0..9999" --* "1..1" adfg_Graph : affineRelations6
+adfg_Connection "0..1" -- "1..1" adfg_InputPort : connection32
+adfg_Connection "0..1" -- "1..1" adfg_OutputPort : connection34
+adfg_Connection "0..9999" --* "1..1" adfg_Graph : connections8
+adfg_Application "1..1" *-- "0..9999" adfg_Graph : graphs0
+adfg_Actor "0..9999" --* "1..1" adfg_Graph : nodes4
+adfg_Application "1..1" -- "1..1" adfg_GraphConnection : owner14
+adfg_Actor "1..1" -- "1..1" adfg_Graph : owner16
+adfg_AffineRelation "1..1" -- "1..1" adfg_Graph : owner23
+adfg_Connection "1..1" -- "1..1" adfg_Graph : owner28
+adfg_Application "1..1" -- "1..1" adfg_Graph : owner3
+adfg_Actor "1..1" -- "1..1" adfg_Port : owner30
+adfg_Actor "1..1" *-- "0..9999" adfg_Port : ports18
+adfg_Graph "1..1" -- "1..1" adfg_GraphConnection : source10
+adfg_AffineRelation "1..1" -- "1..1" adfg_PeriodicActor : source20
+adfg_Connection "1..1" -- "1..1" adfg_OutputPort : source25
+adfg_Graph "1..1" -- "1..1" adfg_GraphConnection : target11
+adfg_AffineRelation "1..1" -- "1..1" adfg_PeriodicActor : target21
+adfg_Connection "1..1" -- "1..1" adfg_InputPort : target26
+@enduml

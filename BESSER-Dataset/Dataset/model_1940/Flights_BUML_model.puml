@@ -1,0 +1,98 @@
+@startuml
+class FlightObject {
+}
+enum FlightState {
+  completed
+  inFlight
+  planned
+}
+class Flights_Airport {
+  + size : float
+}
+class Flights_Airports {
+}
+class Flights_Booking {
+}
+class Flights_Bookings {
+}
+class Flights_Flight {
+  + newAttribute : str
+}
+class Flights_FlightContainer {
+}
+class Flights_FlightModel {
+}
+abstract class Flights_FlightObject {
+  + ID : str
+}
+class Flights_Gate {
+  + position : int
+}
+class Flights_Person {
+  + travelState : str
+}
+class Flights_Persons {
+}
+class Flights_Plane {
+  + capacity : int
+}
+class Flights_Planes {
+}
+class Flights_Route {
+  + duration : int
+}
+class Flights_Routes {
+}
+class Flights_TimeStamp {
+  + time : str
+}
+class Flights_Travel {
+}
+enum TravelState {
+  checkedIn
+  luggageDroppedOf
+  onBoard
+  unknown
+}
+FlightObject <|-- Flights_Airport
+FlightObject <|-- Flights_Booking
+FlightObject <|-- Flights_Flight
+FlightObject <|-- Flights_Gate
+FlightObject <|-- Flights_Person
+FlightObject <|-- Flights_Plane
+FlightObject <|-- Flights_Route
+FlightObject <|-- Flights_Travel
+Flights_Airport "0..9999" --* "1..1" Flights_Airports : airports47
+Flights_Airports "1..1" --* "1..1" Flights_FlightModel : airports7
+Flights_Flight "1..1" *-- "1..1" Flights_TimeStamp : arrival26
+Flights_Bookings "1..1" --* "1..1" Flights_FlightModel : bookings1
+Flights_Booking "0..9999" --* "1..1" Flights_Bookings : bookings29
+Flights_Flight "1..1" *-- "1..1" Flights_TimeStamp : departure23
+Flights_FlightContainer "1..1" --* "1..1" Flights_FlightModel : flights0
+Flights_Flight "0..9999" --* "1..1" Flights_FlightContainer : flights13
+Flights_Flight "0..9999" -- "1..1" Flights_Route : flights35
+Flights_Flight "0..9999" -- "1..1" Flights_Travel : flights39
+Flights_Flight "0..9999" -- "1..1" Flights_Plane : flights57
+Flights_Airport "1..1" *-- "0..9999" Flights_Gate : gates49
+Flights_FlightModel "1..1" *-- "1..1" Flights_TimeStamp : globalTime11
+Flights_Flight "0..9999" -- "1..1" Flights_Gate : incomingFlights62
+Flights_Airport "1..1" -- "0..9999" Flights_Route : incomingRoutes53
+Flights_Flight "0..9999" -- "1..1" Flights_Gate : outgoingFlights59
+Flights_Airport "1..1" -- "0..9999" Flights_Route : outgoingRoutes51
+Flights_Person "0..1" -- "1..1" Flights_Travel : person41
+Flights_FlightModel "1..1" *-- "1..1" Flights_Persons : persons3
+Flights_Person "0..9999" --* "1..1" Flights_Persons : persons43
+Flights_Flight "1..1" -- "1..1" Flights_Plane : plane21
+Flights_Plane "0..9999" --* "1..1" Flights_Planes : planes55
+Flights_FlightModel "1..1" *-- "1..1" Flights_Planes : planes9
+Flights_Flight "1..1" -- "1..1" Flights_Route : route16
+Flights_Route "0..9999" --* "1..1" Flights_Routes : routes33
+Flights_FlightModel "1..1" *-- "1..1" Flights_Routes : routes5
+Flights_Flight "1..1" -- "1..1" Flights_Gate : src18
+Flights_Airport "1..1" -- "1..1" Flights_Route : src36
+Flights_Flight "1..1" -- "0..9999" Flights_Travel : travels15
+Flights_Booking "1..1" *-- "0..9999" Flights_Travel : travels31
+Flights_Person "1..1" -- "0..9999" Flights_Travel : travels45
+Flights_Flight "1..1" -- "1..1" Flights_Gate : trg19
+Flights_Airport "1..1" -- "1..1" Flights_Route : trg37
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+class Modifiable {
+}
+abstract class common_Comparable {
+}
+class common_DoubleValue {
+  + identifier : str
+  + value : float
+}
+class common_DoubleValueList {
+  + identifier : str
+}
+class common_DoubleValueMatrix {
+}
+class common_DublinCore {
+  + bibliographicCitation : str
+  + contributor : str
+  + coverage : str
+  + created : str
+  + creator : str
+  + date : str
+  + description : str
+  + format : str
+  + identifier : str
+  + language : str
+  + license : str
+  + publisher : str
+  + relation : str
+  + required : str
+  + rights : str
+  + source : str
+  + spatial : str
+  + subject : str
+  + title : str
+  + type : str
+  + valid : str
+  + populate() : str
+}
+abstract class common_Identifiable {
+  + typeURI : str
+  + uRI : str
+  + sane() : bool
+}
+class common_IdentifiableFilter {
+}
+class common_StringValue {
+  + value : str
+}
+class common_StringValueList {
+}
+Modifiable <|-- common_DoubleValue
+Modifiable <|-- common_StringValue
+common_DublinCore "1..1" --* "1..1" common_Identifiable : dublinCore0
+common_DoubleValueList "0..9999" --* "1..1" common_DoubleValueMatrix : valueLists2
+common_DoubleValue "0..9999" --* "1..1" common_DoubleValueList : values1
+common_StringValue "0..9999" --* "1..1" common_StringValueList : values4
+@enduml

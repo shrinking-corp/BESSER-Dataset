@@ -1,0 +1,111 @@
+@startuml
+enum Decoration {
+  diamond
+  empty
+  none
+  odiamond
+  open
+  triangle
+}
+enum DrawType {
+  diagram
+}
+class Item {
+}
+class NamedItem {
+}
+enum NodeColor {
+  gray95
+}
+enum NodeShape {
+  circle
+  doublecircle
+  record
+}
+enum NodeStyle {
+  italic
+  none
+  underline
+}
+enum NodeType {
+  markednode
+  node
+}
+class Relation {
+}
+class modeldraw_BooleanAttribute {
+  + negation : bool
+}
+class modeldraw_Content {
+  + symbol : str
+}
+class modeldraw_EAttribute {
+}
+class modeldraw_EClass {
+}
+class modeldraw_EEnumLiteral {
+}
+class modeldraw_EReference {
+}
+class modeldraw_Edge {
+}
+class modeldraw_Enumerator {
+  + value : str
+}
+class modeldraw_Information {
+}
+abstract class modeldraw_Item {
+}
+class modeldraw_Level {
+}
+class modeldraw_MutatorDraw {
+  + metamodel : str
+  + type : str
+}
+abstract class modeldraw_NamedItem {
+}
+class modeldraw_Node {
+  + color : str
+  + shape : str
+  + style : str
+  + type : str
+}
+class modeldraw_NodeEnumerator {
+}
+abstract class modeldraw_Relation {
+  + src_decoration : str
+  + tar_decoration : str
+}
+Item <|-- modeldraw_BooleanAttribute
+Item <|-- modeldraw_Information
+Item <|-- modeldraw_MutatorDraw
+Item <|-- modeldraw_NamedItem
+Item <|-- modeldraw_NodeEnumerator
+NamedItem <|-- modeldraw_Content
+NamedItem <|-- modeldraw_Node
+NamedItem <|-- modeldraw_Relation
+Relation <|-- modeldraw_Edge
+Relation <|-- modeldraw_Level
+modeldraw_EAttribute "1..1" -- "1..1" modeldraw_NodeEnumerator : att33
+modeldraw_EAttribute "0..1" -- "1..1" modeldraw_Information : att41
+modeldraw_BooleanAttribute "1..1" -- "1..1" modeldraw_EAttribute : att7
+modeldraw_EAttribute "0..1" -- "1..1" modeldraw_NamedItem : attName6
+modeldraw_BooleanAttribute "0..9999" --* "1..1" modeldraw_Node : attribute9
+modeldraw_Content "0..9999" --* "1..1" modeldraw_MutatorDraw : contents4
+modeldraw_Enumerator "0..9999" --* "1..1" modeldraw_NodeEnumerator : enumerator35
+modeldraw_Content "1..1" *-- "0..9999" modeldraw_Information : info47
+modeldraw_EAttribute "0..1" -- "1..1" modeldraw_Relation : label17
+modeldraw_EEnumLiteral "1..1" -- "1..1" modeldraw_Enumerator : literal37
+modeldraw_EClass "0..1" -- "1..1" modeldraw_Item : name0
+modeldraw_Content "1..1" *-- "0..9999" modeldraw_NodeEnumerator : nodenum44
+modeldraw_MutatorDraw "1..1" *-- "0..9999" modeldraw_Node : nodes1
+modeldraw_EReference "0..9999" -- "1..1" modeldraw_Node : reference12
+modeldraw_EReference "0..1" -- "1..1" modeldraw_Relation : reference14
+modeldraw_MutatorDraw "1..1" *-- "0..9999" modeldraw_Relation : relations2
+modeldraw_EReference "0..1" -- "1..1" modeldraw_Edge : source26
+modeldraw_EAttribute "0..1" -- "1..1" modeldraw_Relation : src_label20
+modeldraw_EAttribute "0..1" -- "1..1" modeldraw_Relation : tar_label23
+modeldraw_EReference "0..1" -- "1..1" modeldraw_Edge : target28
+modeldraw_EReference "1..1" -- "1..1" modeldraw_Information : type39
+modeldraw_EReference "0..1" -- "1..1" modeldraw_Level : upper31
+@enduml

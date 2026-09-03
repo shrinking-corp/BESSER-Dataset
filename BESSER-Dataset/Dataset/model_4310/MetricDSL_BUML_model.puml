@@ -1,0 +1,62 @@
+@startuml
+class Metric {
+}
+class MetricDefinition {
+}
+class Number {
+}
+class metricDSL_BoundAndWeight {
+}
+class metricDSL_Constant {
+  + value : float
+}
+class metricDSL_ExternalMetric {
+}
+class metricDSL_InternalMetric {
+  + description : str
+  + shortName : str
+}
+class metricDSL_Metric {
+  + name : str
+}
+class metricDSL_MetricAndWeight {
+}
+class metricDSL_MetricDefinition {
+}
+class metricDSL_MetricModel {
+  + importURI : str
+}
+class metricDSL_Number {
+  + name : str
+}
+class metricDSL_Parameter {
+  + defaultValue : float
+  + description : str
+  + shortname : str
+}
+class metricDSL_RatioMetric {
+}
+class metricDSL_StepwiseMetric {
+}
+class metricDSL_WeightedMetric {
+}
+Metric <|-- metricDSL_ExternalMetric
+Metric <|-- metricDSL_InternalMetric
+MetricDefinition <|-- metricDSL_RatioMetric
+MetricDefinition <|-- metricDSL_StepwiseMetric
+MetricDefinition <|-- metricDSL_WeightedMetric
+Number <|-- metricDSL_Constant
+Number <|-- metricDSL_Parameter
+metricDSL_InternalMetric "1..1" *-- "0..1" metricDSL_MetricDefinition : definition2
+metricDSL_Metric "0..1" -- "1..1" metricDSL_RatioMetric : denominatorMetric11
+metricDSL_Metric "0..1" -- "1..1" metricDSL_StepwiseMetric : innerMetric5
+metricDSL_Metric "0..1" -- "1..1" metricDSL_MetricAndWeight : metric20
+metricDSL_Metric "0..9999" --* "1..1" metricDSL_MetricModel : metrics0
+metricDSL_Metric "0..1" -- "1..1" metricDSL_RatioMetric : nominatorMetric9
+metricDSL_InternalMetric "1..1" *-- "0..9999" metricDSL_Number : parameter1
+metricDSL_BoundAndWeight "0..9999" --* "1..1" metricDSL_StepwiseMetric : steps7
+metricDSL_BoundAndWeight "1..1" -- "0..1" metricDSL_Number : upperBound14
+metricDSL_BoundAndWeight "1..1" -- "0..1" metricDSL_Number : weight17
+metricDSL_MetricAndWeight "1..1" -- "0..1" metricDSL_Number : weight23
+metricDSL_MetricAndWeight "0..9999" --* "1..1" metricDSL_WeightedMetric : weights4
+@enduml

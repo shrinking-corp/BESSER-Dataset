@@ -1,0 +1,47 @@
+@startuml
+class Arc {
+}
+class Element {
+}
+class Node {
+}
+abstract class petrinet_Arc {
+}
+abstract class petrinet_Element {
+}
+class petrinet_InputArc {
+}
+abstract class petrinet_Node {
+  + maxDelay : float
+  + minDelay : float
+  + name : str
+}
+class petrinet_OutputArc {
+}
+class petrinet_PetriNet {
+  + name : str
+}
+class petrinet_PetriNetRelationship {
+}
+class petrinet_Place {
+}
+class petrinet_System {
+}
+class petrinet_Transition {
+}
+Arc <|-- petrinet_InputArc
+Arc <|-- petrinet_OutputArc
+Element <|-- petrinet_Arc
+Element <|-- petrinet_Node
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Element "0..9999" --* "1..1" petrinet_PetriNet : elements3
+petrinet_OutputArc "1..1" -- "1..1" petrinet_Transition : from_12
+petrinet_InputArc "1..1" -- "1..1" petrinet_Place : from_16
+petrinet_PetriNet "1..1" -- "1..1" petrinet_PetriNetRelationship : from_5
+petrinet_PetriNetRelationship "0..9999" --* "1..1" petrinet_System : petrinetrelationships1
+petrinet_PetriNet "0..9999" --* "1..1" petrinet_System : petrinets0
+petrinet_OutputArc "1..1" -- "1..1" petrinet_Place : to11
+petrinet_InputArc "1..1" -- "1..1" petrinet_Transition : to14
+petrinet_PetriNet "1..1" -- "1..1" petrinet_PetriNetRelationship : to8
+@enduml

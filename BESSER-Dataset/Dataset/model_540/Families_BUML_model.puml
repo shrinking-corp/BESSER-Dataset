@@ -1,0 +1,68 @@
+@startuml
+class District {
+}
+enum DogBreed {
+  labrador
+  poodle
+}
+class NamedElement {
+}
+class Pet {
+}
+class families_Account {
+}
+class families_Band {
+}
+class families_Bike {
+}
+class families_District {
+}
+class families_Dog {
+  + breed : str
+  + loud : bool
+}
+class families_Family {
+  + address : str
+  + averageAge : float
+  + averageAgePrecise : float
+  + id : str
+  + lotteryNumbers : int
+  + nuclear : bool
+  + numberOfChildren : int
+}
+class families_Model {
+}
+abstract class families_NamedElement {
+  + name : str
+}
+class families_Person {
+}
+class families_Pet {
+  + male : bool
+}
+class families_Suburb {
+}
+District <|-- families_Suburb
+NamedElement <|-- families_Family
+NamedElement <|-- families_Model
+NamedElement <|-- families_Person
+NamedElement <|-- families_Pet
+Pet <|-- families_Dog
+families_Account "0..9999" --* "1..1" families_Person : accounts8
+families_Person "0..4" -- "1..1" families_Person : allParents18
+families_Model "1..1" *-- "0..9999" families_NamedElement : contents226
+families_Model "1..1" *-- "0..9999" families_NamedElement : contents25
+families_District "0..1" -- "1..1" families_Dog : district20
+families_District "0..1" -- "1..1" families_Family : district5
+families_District "1..1" *-- "1..9999" families_Dog : dogs23
+families_Dog "1..9999" -- "1..1" families_Family : dogs3
+families_District "1..1" *-- "1..9999" families_Family : families22
+families_Person "0..9999" -- "1..1" families_Person : friends12
+families_Family "1..1" *-- "0..9999" families_Person : members1
+families_Band "1..1" -- "3..9999" families_Person : members34
+families_Bike "1..1" -- "0..1" families_Family : owner31
+families_Person "0..2" -- "1..1" families_Person : parents15
+families_Family "1..1" -- "0..9999" families_Pet : pets0
+families_Bike "1..1" *-- "0..1" families_Person : rider29
+families_Account "0..9999" -- "1..1" families_Person : sharedAccounts6
+@enduml

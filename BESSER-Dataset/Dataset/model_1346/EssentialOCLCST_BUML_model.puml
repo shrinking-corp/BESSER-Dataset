@@ -1,0 +1,144 @@
+@startuml
+class CallArgumentsCS {
+}
+class CollectionLiteralExpCS {
+}
+class LiteralExpCS {
+}
+class OclExpressionCS {
+}
+class PrimitiveLiteralExpCS {
+}
+class TypeCS {
+}
+class TypeLiteralExpCS {
+}
+class VariableExpCS {
+}
+class essentialOCLCST_ArrowCallArgumentsCS {
+}
+class essentialOCLCST_BinaryExpressionCS {
+  + op : str
+}
+class essentialOCLCST_BooleanLiteralExpCS {
+  + value : str
+}
+class essentialOCLCST_CallArgumentsCS {
+}
+class essentialOCLCST_CallExpCS {
+}
+class essentialOCLCST_CollectionLiteralExpCS {
+}
+class essentialOCLCST_CollectionLiteralPartCS {
+}
+class essentialOCLCST_CollectionTypeCS {
+}
+class essentialOCLCST_DotIndexArgumentsCS {
+  + isPre : bool
+}
+class essentialOCLCST_IfExpCS {
+}
+class essentialOCLCST_IntegerLiteralExpCS {
+  + integerSymbol : str
+}
+class essentialOCLCST_InvalidLiteralExpCS {
+}
+class essentialOCLCST_LetExpCS {
+}
+class essentialOCLCST_LiteralExpCS {
+}
+class essentialOCLCST_NullLiteralExpCS {
+}
+class essentialOCLCST_OclExpressionCS {
+}
+class essentialOCLCST_PathNameCS {
+}
+class essentialOCLCST_PrimitiveLiteralExpCS {
+}
+class essentialOCLCST_RealLiteralExpCS {
+  + realSymbol : str
+}
+class essentialOCLCST_SimpleNameCS {
+  + value : str
+}
+class essentialOCLCST_StringLiteralExpCS {
+  + stringSymbol : str
+}
+class essentialOCLCST_TupleLiteralExpCS {
+}
+class essentialOCLCST_TupleTypeCS {
+  + value : str
+}
+class essentialOCLCST_TypeCS {
+}
+class essentialOCLCST_TypeLiteralExpCS {
+}
+class essentialOCLCST_UnaryExpressionCS {
+  + op : str
+}
+class essentialOCLCST_UnlimitedNaturalLiteralExpCS {
+}
+class essentialOCLCST_VariableCS {
+}
+class essentialOCLCST_VariableExpCS {
+}
+CallArgumentsCS <|-- essentialOCLCST_ArrowCallArgumentsCS
+CallArgumentsCS <|-- essentialOCLCST_DotIndexArgumentsCS
+CollectionLiteralExpCS <|-- essentialOCLCST_CollectionTypeCS
+CollectionLiteralExpCS <|-- essentialOCLCST_SimpleNameCS
+LiteralExpCS <|-- essentialOCLCST_CollectionLiteralExpCS
+LiteralExpCS <|-- essentialOCLCST_PrimitiveLiteralExpCS
+LiteralExpCS <|-- essentialOCLCST_TupleLiteralExpCS
+LiteralExpCS <|-- essentialOCLCST_TypeLiteralExpCS
+OclExpressionCS <|-- essentialOCLCST_BinaryExpressionCS
+OclExpressionCS <|-- essentialOCLCST_CallExpCS
+OclExpressionCS <|-- essentialOCLCST_IfExpCS
+OclExpressionCS <|-- essentialOCLCST_LetExpCS
+OclExpressionCS <|-- essentialOCLCST_LiteralExpCS
+OclExpressionCS <|-- essentialOCLCST_UnaryExpressionCS
+OclExpressionCS <|-- essentialOCLCST_VariableExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_BooleanLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_IntegerLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_InvalidLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_NullLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_RealLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_StringLiteralExpCS
+PrimitiveLiteralExpCS <|-- essentialOCLCST_UnlimitedNaturalLiteralExpCS
+TypeCS <|-- essentialOCLCST_CollectionTypeCS
+TypeCS <|-- essentialOCLCST_PathNameCS
+TypeCS <|-- essentialOCLCST_SimpleNameCS
+TypeCS <|-- essentialOCLCST_TupleTypeCS
+TypeLiteralExpCS <|-- essentialOCLCST_CollectionTypeCS
+TypeLiteralExpCS <|-- essentialOCLCST_PathNameCS
+TypeLiteralExpCS <|-- essentialOCLCST_SimpleNameCS
+TypeLiteralExpCS <|-- essentialOCLCST_TupleTypeCS
+VariableExpCS <|-- essentialOCLCST_SimpleNameCS
+essentialOCLCST_CallArgumentsCS "1..1" *-- "0..9999" essentialOCLCST_OclExpressionCS : arguments12
+essentialOCLCST_ArrowCallArgumentsCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : body4
+essentialOCLCST_CallArgumentsCS "0..9999" --* "1..1" essentialOCLCST_CallExpCS : callArguments17
+essentialOCLCST_CollectionLiteralPartCS "0..9999" --* "1..1" essentialOCLCST_CollectionTypeCS : collectionLiteralParts28
+essentialOCLCST_CollectionLiteralPartCS "0..9999" --* "1..1" essentialOCLCST_SimpleNameCS : collectionLiteralParts49
+essentialOCLCST_IfExpCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : condition33
+essentialOCLCST_IfExpCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : elseExpression38
+essentialOCLCST_CollectionLiteralPartCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : expressionCS20
+essentialOCLCST_LetExpCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : in_43
+essentialOCLCST_DotIndexArgumentsCS "1..1" *-- "0..9999" essentialOCLCST_OclExpressionCS : indexes31
+essentialOCLCST_OclExpressionCS "0..1" --* "1..1" essentialOCLCST_VariableCS : initExpression64
+essentialOCLCST_CollectionLiteralPartCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : lastExpressionCS22
+essentialOCLCST_BinaryExpressionCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : left6
+essentialOCLCST_SimpleNameCS "0..1" --* "1..1" essentialOCLCST_VariableCS : name58
+essentialOCLCST_TupleLiteralExpCS "1..1" *-- "0..9999" essentialOCLCST_VariableCS : part52
+essentialOCLCST_TupleTypeCS "1..1" *-- "0..9999" essentialOCLCST_VariableCS : part54
+essentialOCLCST_CallArgumentsCS "1..1" *-- "0..1" essentialOCLCST_PathNameCS : pathName11
+essentialOCLCST_BinaryExpressionCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : right8
+essentialOCLCST_PathNameCS "1..1" *-- "0..9999" essentialOCLCST_SimpleNameCS : simpleNames46
+essentialOCLCST_CallExpCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : source15
+essentialOCLCST_OclExpressionCS "0..1" --* "1..1" essentialOCLCST_UnaryExpressionCS : source56
+essentialOCLCST_IfExpCS "1..1" *-- "0..1" essentialOCLCST_OclExpressionCS : thenExpression35
+essentialOCLCST_TypeCS "0..1" --* "1..1" essentialOCLCST_VariableCS : type61
+essentialOCLCST_CollectionTypeCS "1..1" *-- "0..1" essentialOCLCST_TypeCS : typeCS26
+essentialOCLCST_CollectionTypeCS "1..1" *-- "0..1" essentialOCLCST_SimpleNameCS : value25
+essentialOCLCST_ArrowCallArgumentsCS "1..1" *-- "0..1" essentialOCLCST_VariableCS : variable10
+essentialOCLCST_ArrowCallArgumentsCS "1..1" *-- "0..1" essentialOCLCST_VariableCS : variable21
+essentialOCLCST_LetExpCS "1..1" *-- "0..9999" essentialOCLCST_VariableCS : variable41
+@enduml

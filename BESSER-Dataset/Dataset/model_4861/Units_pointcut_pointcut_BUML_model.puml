@@ -1,0 +1,37 @@
+@startuml
+class Unit {
+}
+class units_pc_pc_BaseUnit {
+  + name : str
+}
+class units_pc_pc_EObject {
+}
+class units_pc_pc_Pointcut {
+}
+class units_pc_pc_PointcutPointcut {
+}
+class units_pc_pc_Unit {
+}
+class units_pc_pc_UnitCarryingElement {
+  + unitSpecification : str
+}
+class units_pc_pc_UnitLiteral {
+}
+class units_pc_pc_UnitMultiplication {
+}
+class units_pc_pc_UnitPower {
+  + exponent : int
+}
+class units_pc_pc_UnitRepository {
+}
+Unit <|-- units_pc_pc_UnitLiteral
+Unit <|-- units_pc_pc_UnitMultiplication
+Unit <|-- units_pc_pc_UnitPower
+units_pc_pc_BaseUnit "0..1" -- "1..1" units_pc_pc_UnitLiteral : baseUnit6
+units_pc_pc_EObject "0..9999" --* "1..1" units_pc_pc_PointcutPointcut : children8
+units_pc_pc_EObject "0..9999" --* "1..1" units_pc_pc_Pointcut : children9
+units_pc_pc_Unit "0..1" -- "1..1" units_pc_pc_UnitCarryingElement : unit0
+units_pc_pc_Unit "0..1" --* "1..1" units_pc_pc_UnitPower : unit4
+units_pc_pc_BaseUnit "0..9999" --* "1..1" units_pc_pc_UnitRepository : units1
+units_pc_pc_Unit "0..9999" --* "1..1" units_pc_pc_UnitMultiplication : units2
+@enduml

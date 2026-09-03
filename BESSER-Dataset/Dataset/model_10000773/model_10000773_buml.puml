@@ -1,0 +1,61 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Curtains {
+  + CurtaiunID : int
+}
+class End_Of_Day {
+  + EOT : int
+}
+class HomeTheatre {
+  + SSID : str
+}
+class Kitchen {
+  + TimeID : str
+}
+class Light {
+  + LightID : int
+}
+class MotionSensor {
+}
+class PowerSystem {
+  + DeviceID : int
+}
+class ROOM {
+  + RoomID : str
+}
+class Security_System {
+  + UserID : int
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Speakers {
+  + SpeakerID : int
+}
+class Start_Of_Day {
+  + SOT : int
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+class TechSupport {
+  + TechID : int
+}
+class UserProfile {
+  + ProfileID : int
+}
+HomeTheatre "1..9999" -- "0..1" Speakers : HomeTheatre_Speakers
+HomeTheatre "0..1" -- "1..1" System : HomeTheatre_System
+Alert "0..1" -- "0..1" Security_System : Home_Security_System_Alert
+Security_System "1..1" -- "1..1" System : Home_Security_System_System
+End_Of_Day "0..1" -- "0..1" Kitchen : HouseHolds_End_Of_Day
+Kitchen "0..1" -- "0..1" Start_Of_Day : HouseHolds_Start_Of_Day
+PowerSystem "1..9999" -- "1..1" System : MicroPhone_System
+Curtains "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" System : Sensor_System
+Kitchen "0..1" -- "1..1" System : System_HouseHolds
+@enduml

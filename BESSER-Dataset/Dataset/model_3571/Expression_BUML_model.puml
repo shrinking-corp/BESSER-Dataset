@@ -1,0 +1,116 @@
+@startuml
+class Expression {
+}
+class FeatureCall {
+}
+class Literal {
+}
+class SyntaxElement {
+}
+class expression_BooleanLiteral {
+  + val : str
+}
+class expression_BooleanOperation {
+  + operator : str
+}
+class expression_Case {
+}
+class expression_CastedExpression {
+}
+class expression_ChainExpression {
+}
+class expression_CollectionExpression {
+  + var : str
+}
+class expression_ConstructorCallExpression {
+}
+class expression_Expression {
+}
+class expression_FeatureCall {
+  + name : str
+}
+class expression_GlobalVarExpression {
+  + name : str
+}
+class expression_Identifier {
+  + cl : str
+  + id : str
+}
+class expression_IfExpression {
+}
+class expression_IntegerLiteral {
+  + val : int
+}
+class expression_LetExpression {
+  + identifier : str
+}
+class expression_ListLiteral {
+}
+class expression_Literal {
+}
+class expression_NullLiteral {
+  + val : str
+}
+class expression_OperationCall {
+}
+class expression_RealLiteral {
+  + val : str
+}
+class expression_StringLiteral {
+  + val : str
+}
+class expression_SwitchExpression {
+}
+class expression_SyntaxElement {
+}
+class expression_TypeSelectExpression {
+}
+Expression <|-- expression_BooleanOperation
+Expression <|-- expression_CastedExpression
+Expression <|-- expression_ChainExpression
+Expression <|-- expression_CollectionExpression
+Expression <|-- expression_ConstructorCallExpression
+Expression <|-- expression_FeatureCall
+Expression <|-- expression_GlobalVarExpression
+Expression <|-- expression_IfExpression
+Expression <|-- expression_LetExpression
+Expression <|-- expression_ListLiteral
+Expression <|-- expression_Literal
+Expression <|-- expression_OperationCall
+Expression <|-- expression_SwitchExpression
+Expression <|-- expression_TypeSelectExpression
+FeatureCall <|-- expression_CollectionExpression
+FeatureCall <|-- expression_OperationCall
+FeatureCall <|-- expression_TypeSelectExpression
+Literal <|-- expression_BooleanLiteral
+Literal <|-- expression_IntegerLiteral
+Literal <|-- expression_NullLiteral
+Literal <|-- expression_RealLiteral
+Literal <|-- expression_StringLiteral
+SyntaxElement <|-- expression_Case
+SyntaxElement <|-- expression_Expression
+SyntaxElement <|-- expression_Identifier
+expression_Case "0..9999" --* "1..1" expression_SwitchExpression : case18
+expression_Case "1..1" *-- "0..1" expression_Expression : condition23
+expression_Expression "0..1" --* "1..1" expression_IfExpression : condition8
+expression_Expression "0..1" --* "1..1" expression_SwitchExpression : defaultExpr20
+expression_Expression "0..9999" --* "1..1" expression_ListLiteral : elements36
+expression_Expression "0..1" --* "1..1" expression_IfExpression : elsePart13
+expression_CollectionExpression "1..1" *-- "0..1" expression_Expression : exp40
+expression_ChainExpression "1..1" *-- "0..1" expression_Expression : first45
+expression_Identifier "0..1" --* "1..1" expression_Identifier : id143
+expression_BooleanOperation "1..1" *-- "0..1" expression_Expression : left50
+expression_ChainExpression "1..1" *-- "0..1" expression_Expression : next47
+expression_Expression "0..9999" --* "1..1" expression_OperationCall : params29
+expression_BooleanOperation "1..1" *-- "0..1" expression_Expression : right52
+expression_Expression "0..1" --* "1..1" expression_SwitchExpression : switchExpr16
+expression_Expression "0..1" --* "1..1" expression_LetExpression : target1
+expression_Expression "0..1" --* "1..1" expression_FeatureCall : target31
+expression_CastedExpression "1..1" *-- "0..1" expression_Expression : target5
+expression_Case "1..1" *-- "0..1" expression_Expression : thenPar26
+expression_Expression "0..1" --* "1..1" expression_IfExpression : thenPart10
+expression_FeatureCall "1..1" *-- "0..1" expression_Identifier : type33
+expression_ConstructorCallExpression "1..1" *-- "0..1" expression_Identifier : type38
+expression_CastedExpression "1..1" *-- "0..1" expression_Identifier : type4
+expression_Expression "0..1" --* "1..1" expression_LetExpression : varExpr0
+@enduml

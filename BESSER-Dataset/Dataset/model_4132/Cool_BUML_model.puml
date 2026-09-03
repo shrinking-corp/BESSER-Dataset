@@ -1,0 +1,167 @@
+@startuml
+class Expression {
+}
+class Feature_ {
+}
+class IdentifiableElement {
+}
+class Literal {
+}
+class PrimaryExpression {
+}
+class Type {
+}
+class cool_AdditionExpression {
+}
+class cool_AssignmentExpression {
+  + name : str
+}
+class cool_Attr {
+}
+class cool_BlockExpression {
+}
+class cool_BooleanLiteral {
+  + value : str
+}
+class cool_Case {
+}
+class cool_CaseExpression {
+}
+class cool_Class_ {
+}
+class cool_CompareExpression {
+  + op : str
+}
+class cool_ConditionalExpression {
+}
+class cool_DispatchExpression {
+}
+class cool_Div {
+}
+class cool_Expression {
+}
+class cool_Feature_ {
+}
+class cool_Formal {
+}
+class cool_IdentifiableElement {
+  + name : str
+}
+class cool_IdentifierRefExpression {
+}
+class cool_IntegerCompositeExpression {
+}
+class cool_IsvoidExpression {
+}
+class cool_LetDeclaration {
+}
+class cool_LetExpression {
+}
+class cool_Literal {
+}
+class cool_LoopExpression {
+}
+class cool_Method {
+}
+class cool_Minus {
+}
+class cool_MultiplicationExpression {
+}
+class cool_NegationExpression {
+}
+class cool_NewExpression {
+}
+class cool_NumberLiteral {
+  + value : int
+}
+class cool_ParenExpression {
+}
+class cool_PrimaryExpression {
+}
+class cool_Program {
+}
+class cool_SelfTypeLiteral {
+}
+class cool_StringLiteral {
+  + value : str
+}
+class cool_Type {
+}
+Expression <|-- cool_AdditionExpression
+Expression <|-- cool_CompareExpression
+Expression <|-- cool_Div
+Expression <|-- cool_Minus
+Expression <|-- cool_MultiplicationExpression
+Expression <|-- cool_PrimaryExpression
+Feature_ <|-- cool_Attr
+Feature_ <|-- cool_Method
+IdentifiableElement <|-- cool_Case
+IdentifiableElement <|-- cool_Class_
+IdentifiableElement <|-- cool_Feature_
+IdentifiableElement <|-- cool_Formal
+IdentifiableElement <|-- cool_LetDeclaration
+Literal <|-- cool_BooleanLiteral
+Literal <|-- cool_NumberLiteral
+Literal <|-- cool_StringLiteral
+PrimaryExpression <|-- cool_AssignmentExpression
+PrimaryExpression <|-- cool_BlockExpression
+PrimaryExpression <|-- cool_CaseExpression
+PrimaryExpression <|-- cool_ConditionalExpression
+PrimaryExpression <|-- cool_DispatchExpression
+PrimaryExpression <|-- cool_IdentifierRefExpression
+PrimaryExpression <|-- cool_IntegerCompositeExpression
+PrimaryExpression <|-- cool_IsvoidExpression
+PrimaryExpression <|-- cool_LetExpression
+PrimaryExpression <|-- cool_Literal
+PrimaryExpression <|-- cool_LoopExpression
+PrimaryExpression <|-- cool_NegationExpression
+PrimaryExpression <|-- cool_NewExpression
+PrimaryExpression <|-- cool_ParenExpression
+PrimaryExpression <|-- cool_SelfTypeLiteral
+Type <|-- cool_Class_
+cool_DispatchExpression "1..1" *-- "0..9999" cool_Expression : actual32
+cool_Expression "0..1" --* "1..1" cool_LoopExpression : body53
+cool_BlockExpression "1..1" *-- "0..9999" cool_Expression : body56
+cool_Expression "0..1" --* "1..1" cool_LetExpression : body61
+cool_Case "0..9999" --* "1..1" cool_CaseExpression : case72
+cool_DispatchExpression "0..1" --* "1..1" cool_DispatchExpression : chain36
+cool_Class_ "0..9999" --* "1..1" cool_Program : classes0
+cool_LetDeclaration "0..9999" --* "1..1" cool_LetExpression : declaration60
+cool_ConditionalExpression "1..1" *-- "0..1" cool_Expression : else_exp48
+cool_Expression "0..1" --* "1..1" cool_Method : expr13
+cool_Expression "0..1" --* "1..1" cool_ParenExpression : expr20
+cool_AssignmentExpression "1..1" *-- "0..1" cool_Expression : expr22
+cool_Expression "0..1" --* "1..1" cool_NegationExpression : expr24
+cool_Expression "0..1" --* "1..1" cool_IntegerCompositeExpression : expr26
+cool_Expression "0..1" --* "1..1" cool_IsvoidExpression : expr58
+cool_CaseExpression "1..1" *-- "0..1" cool_Expression : expr70
+cool_Case "1..1" *-- "0..1" cool_Expression : expr77
+cool_Class_ "1..1" *-- "0..9999" cool_Feature_ : features3
+cool_Formal "0..9999" --* "1..1" cool_Method : formals9
+cool_IdentifiableElement "0..1" -- "1..1" cool_IdentifierRefExpression : id19
+cool_Expression "0..1" --* "1..1" cool_LetDeclaration : init67
+cool_Attr "1..1" *-- "0..1" cool_Expression : init7
+cool_DispatchExpression "1..1" *-- "0..1" cool_PrimaryExpression : left38
+cool_CompareExpression "1..1" *-- "0..1" cool_Expression : left80
+cool_AdditionExpression "1..1" *-- "0..1" cool_Expression : left85
+cool_Expression "0..1" --* "1..1" cool_MultiplicationExpression : left95
+cool_Div "1..1" *-- "0..1" cool_Expression : op100
+cool_Expression "0..1" --* "1..1" cool_Minus : op90
+cool_Class_ "1..1" -- "0..1" cool_Type : parent1
+cool_ConditionalExpression "1..1" *-- "0..1" cool_Expression : pred43
+cool_Expression "0..1" --* "1..1" cool_LoopExpression : pred51
+cool_DispatchExpression "1..1" *-- "0..1" cool_IdentifierRefExpression : ref30
+cool_Method "1..1" -- "0..1" cool_Type : return_type10
+cool_Div "1..1" *-- "0..1" cool_Expression : right102
+cool_CompareExpression "1..1" *-- "0..1" cool_Expression : right82
+cool_AdditionExpression "1..1" *-- "0..1" cool_Expression : right87
+cool_Expression "0..1" --* "1..1" cool_Minus : right92
+cool_Expression "0..1" --* "1..1" cool_MultiplicationExpression : right97
+cool_ConditionalExpression "1..1" *-- "0..1" cool_Expression : then_exp45
+cool_Formal "1..1" -- "0..1" cool_Type : type_decl16
+cool_Attr "1..1" -- "0..1" cool_Type : type_decl5
+cool_LetDeclaration "1..1" -- "0..1" cool_Type : type_decl64
+cool_Case "1..1" -- "0..1" cool_Type : type_decl74
+cool_NewExpression "1..1" -- "0..1" cool_Type : type_name28
+cool_DispatchExpression "1..1" -- "0..1" cool_Type : type_name40
+@enduml

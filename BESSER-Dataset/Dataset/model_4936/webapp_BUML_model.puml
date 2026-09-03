@@ -1,0 +1,66 @@
+@startuml
+class Named {
+}
+class UIElement {
+}
+enum UIElementType {
+  input
+  output
+}
+class webapp_Attribute {
+  + type : str
+}
+class webapp_ClientPage {
+}
+class webapp_DataSourceManager {
+}
+class webapp_DataStructure {
+}
+class webapp_Form {
+}
+class webapp_ImageViewer {
+}
+abstract class webapp_Named {
+  + name : str
+}
+class webapp_ServerPage {
+  + request() : void
+  + response() : void
+}
+class webapp_Table {
+}
+class webapp_TextArea {
+}
+class webapp_UIElement {
+  + type : str
+}
+class webapp_WebApp {
+}
+Named <|-- webapp_Attribute
+Named <|-- webapp_ClientPage
+Named <|-- webapp_DataSourceManager
+Named <|-- webapp_DataStructure
+Named <|-- webapp_ServerPage
+Named <|-- webapp_UIElement
+Named <|-- webapp_WebApp
+UIElement <|-- webapp_Form
+UIElement <|-- webapp_ImageViewer
+UIElement <|-- webapp_Table
+UIElement <|-- webapp_TextArea
+webapp_Attribute "1..1" -- "1..1" webapp_DataStructure : attributeOf16
+webapp_ClientPage "1..9999" --* "1..1" webapp_WebApp : clientPages0
+webapp_ClientPage "1..1" *-- "0..9999" webapp_UIElement : composedOf20
+webapp_ClientPage "1..1" -- "1..1" webapp_ServerPage : connectsTo22
+webapp_DataStructure "1..1" -- "1..1" webapp_UIElement : content24
+webapp_DataSourceManager "0..9999" --* "1..1" webapp_WebApp : contentProviders5
+webapp_DataStructure "0..9999" --* "1..1" webapp_WebApp : entities3
+webapp_ClientPage "1..1" -- "1..1" webapp_ServerPage : generates7
+webapp_DataSourceManager "1..9999" -- "1..1" webapp_ServerPage : getContents8
+webapp_Attribute "1..1" -- "0..9999" webapp_DataStructure : linkedBy18
+webapp_Attribute "0..9999" -- "1..1" webapp_DataStructure : linkedTo12
+webapp_DataStructure "1..1" -- "1..9999" webapp_ServerPage : managedBy10
+webapp_DataStructure "1..9999" -- "1..1" webapp_ServerPage : manages9
+webapp_Attribute "0..9999" --* "1..1" webapp_DataStructure : parentOf11
+webapp_DataSourceManager "1..1" -- "1..9999" webapp_ServerPage : providesContent14
+webapp_ServerPage "1..9999" --* "1..1" webapp_WebApp : serverPages1
+@enduml

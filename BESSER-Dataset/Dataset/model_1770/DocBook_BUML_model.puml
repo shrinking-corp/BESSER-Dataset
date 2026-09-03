@@ -1,0 +1,23 @@
+@startuml
+class book_Article {
+  + title : str
+}
+class book_Book {
+  + title : str
+}
+class book_DocBook {
+}
+class book_Person {
+  + name : str
+}
+book_Article "0..9999" -- "1..1" book_Person : articles16
+book_Article "0..9999" --* "1..1" book_Book : articles5
+book_Book "1..1" -- "0..9999" book_Person : author3
+book_Article "1..1" -- "0..9999" book_Person : author9
+book_Book "0..9999" -- "1..1" book_Person : authored14
+book_Book "0..9999" --* "1..1" book_DocBook : book0
+book_Article "1..1" -- "1..1" book_Book : book7
+book_Book "1..1" -- "1..1" book_DocBook : docBook1
+book_Book "0..9999" -- "1..1" book_Person : edited12
+book_Book "1..1" -- "0..9999" book_Person : editor2
+@enduml

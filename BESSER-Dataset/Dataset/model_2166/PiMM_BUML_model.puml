@@ -1,0 +1,222 @@
+@startuml
+class AbstractActor {
+}
+class AbstractVertex {
+}
+class DataOutputPort {
+}
+class DataPort {
+}
+enum Direction {
+  IN
+  OUT
+}
+class ExecutableActor {
+}
+class ISetter {
+}
+class InterfaceActor {
+}
+class Parameter {
+}
+class Parameterizable {
+}
+class PiMMVisitable {
+}
+class Port {
+}
+enum PortMemoryAnnotation {
+  NONE
+  READ_ONLY
+  UNUSED
+  WRITE_ONLY
+}
+class Refinement {
+}
+abstract class pimm_AbstractActor {
+  + getAllPorts() : str
+}
+abstract class pimm_AbstractVertex {
+  + name : str
+}
+class pimm_Actor {
+  + configurationActor : bool
+  + memoryScriptPath : str
+}
+class pimm_BroadcastActor {
+}
+class pimm_ConfigInputInterface {
+}
+class pimm_ConfigInputPort {
+}
+class pimm_ConfigOutputInterface {
+}
+class pimm_ConfigOutputPort {
+}
+class pimm_DataInputInterface {
+}
+class pimm_DataInputPort {
+}
+class pimm_DataOutputInterface {
+}
+class pimm_DataOutputPort {
+}
+abstract class pimm_DataPort {
+  + annotation : str
+}
+class pimm_Delay {
+}
+class pimm_Dependency {
+}
+abstract class pimm_ExecutableActor {
+}
+class pimm_Expression {
+  + string : str
+  + evaluate() : str
+}
+class pimm_Fifo {
+  + id : str
+  + type : str
+}
+class pimm_ForkActor {
+}
+class pimm_FunctionParameter {
+  + direction : str
+  + isConfigurationParameter : bool
+  + name : str
+  + type : str
+}
+class pimm_FunctionPrototype {
+  + name : str
+}
+class pimm_HRefinement {
+}
+abstract class pimm_ISetter {
+  + getValue() : int
+}
+class pimm_InterfaceActor {
+  + kind : str
+}
+class pimm_JoinActor {
+}
+class pimm_Parameter {
+  + configurationInterface : bool
+  + isDependent() : bool
+  + isLocallyStatic() : bool
+}
+abstract class pimm_Parameterizable {
+  + getInputParameters() : str
+}
+class pimm_PiGraph {
+  + getActors() : str
+  + getAllParameters() : str
+  + getParametersNames() : str
+  + getVerticesNames() : str
+}
+abstract class pimm_Port {
+  + kind : str
+  + name : str
+}
+class pimm_Refinement {
+  + fileName : str
+  + filePath : str
+  + getAbstractActor() : AbstractActor
+}
+class pimm_RoundBufferActor {
+}
+abstract class pimm_visitor_PiMMVisitable {
+  + accept(pimm_subject : str) : void
+}
+abstract class pimm_visitor_PiMMVisitor {
+  + visit(pimm_subject : str) : void
+  + visitAbstractActor(pimm_subject : str) : void
+  + visitAbstractVertex(pimm_subject : str) : void
+  + visitActor(pimm_subject : str) : void
+  + visitBroadcastActor(pimm_subject : str) : void
+  + visitConfigInputInterface(pimm_subject : str) : void
+  + visitConfigInputPort(pimm_subject : str) : void
+  + visitConfigOutputInterface(pimm_subject : str) : void
+  + visitConfigOutputPort(pimm_subject : str) : void
+  + visitDataInputInterface(pimm_subject : str) : void
+  + visitDataInputPort(pimm_subject : str) : void
+  + visitDataOutputInterface(pimm_subject : str) : void
+  + visitDataOutputPort(pimm_subject : str) : void
+  + visitDataPort(pimm_subject : str) : void
+  + visitDelay(pimm_subject : str) : void
+  + visitDependency(pimm_subject : str) : void
+  + visitExecutableActor(pimm_subject : str) : void
+  + visitExpression(pimm_subject : str) : void
+  + visitFifo(pimm_subject : str) : void
+  + visitForkActor(pimm_subject : str) : void
+  + visitFunctionParameter(pimm_subject : str) : void
+  + visitFunctionPrototype(pimm_subject : str) : void
+  + visitHRefinement(pimm_subject : str) : void
+  + visitISetter(pimm_subject : str) : void
+  + visitInterfaceActor(pimm_subject : str) : void
+  + visitJoinActor(pimm_subject : str) : void
+  + visitParameter(pimm_subject : str) : void
+  + visitParameterizable(pimm_subject : str) : void
+  + visitPiGraph(pimm_subject : str) : void
+  + visitPort(pimm_subject : str) : void
+  + visitRefinement(pimm_subject : str) : void
+  + visitRoundBufferActor(pimm_subject : str) : void
+}
+AbstractActor <|-- pimm_ExecutableActor
+AbstractActor <|-- pimm_InterfaceActor
+AbstractActor <|-- pimm_PiGraph
+AbstractVertex <|-- pimm_AbstractActor
+AbstractVertex <|-- pimm_Parameter
+DataOutputPort <|-- pimm_ConfigOutputPort
+DataPort <|-- pimm_DataInputPort
+DataPort <|-- pimm_DataOutputPort
+ExecutableActor <|-- pimm_Actor
+ExecutableActor <|-- pimm_BroadcastActor
+ExecutableActor <|-- pimm_ForkActor
+ExecutableActor <|-- pimm_JoinActor
+ExecutableActor <|-- pimm_RoundBufferActor
+ISetter <|-- pimm_ConfigOutputPort
+ISetter <|-- pimm_Parameter
+InterfaceActor <|-- pimm_ConfigOutputInterface
+InterfaceActor <|-- pimm_DataInputInterface
+InterfaceActor <|-- pimm_DataOutputInterface
+Parameter <|-- pimm_ConfigInputInterface
+Parameterizable <|-- pimm_AbstractVertex
+Parameterizable <|-- pimm_Delay
+PiMMVisitable <|-- pimm_Dependency
+PiMMVisitable <|-- pimm_Expression
+PiMMVisitable <|-- pimm_Fifo
+PiMMVisitable <|-- pimm_FunctionParameter
+PiMMVisitable <|-- pimm_FunctionPrototype
+PiMMVisitable <|-- pimm_Parameterizable
+PiMMVisitable <|-- pimm_Port
+PiMMVisitable <|-- pimm_Refinement
+Port <|-- pimm_ConfigInputPort
+Port <|-- pimm_DataPort
+Refinement <|-- pimm_HRefinement
+pimm_ConfigInputPort "0..9999" --* "1..1" pimm_Parameterizable : configInputPorts0
+pimm_AbstractActor "1..1" *-- "0..9999" pimm_ConfigOutputPort : configOutputPorts4
+pimm_AbstractActor "1..1" *-- "0..9999" pimm_DataInputPort : dataInputPorts1
+pimm_AbstractActor "1..1" *-- "0..9999" pimm_DataOutputPort : dataOutputPorts2
+pimm_Delay "0..1" --* "1..1" pimm_Fifo : delay21
+pimm_Dependency "0..9999" --* "1..1" pimm_PiGraph : dependencies12
+pimm_Expression "1..1" --* "1..1" pimm_Parameter : expression27
+pimm_Delay "1..1" *-- "1..1" pimm_Expression : expression33
+pimm_DataPort "1..1" *-- "1..1" pimm_Expression : expression42
+pimm_Fifo "0..9999" --* "1..1" pimm_PiGraph : fifos8
+pimm_ConfigInputPort "1..1" -- "1..1" pimm_Dependency : getter30
+pimm_InterfaceActor "1..1" -- "1..1" pimm_Port : graphPort23
+pimm_ConfigInputPort "1..1" -- "1..1" pimm_Parameter : graphPort24
+pimm_ConfigInputPort "1..1" -- "0..1" pimm_Dependency : incomingDependency18
+pimm_DataInputPort "1..1" -- "0..1" pimm_Fifo : incomingFifo15
+pimm_FunctionPrototype "0..1" --* "1..1" pimm_HRefinement : initPrototype37
+pimm_FunctionPrototype "1..1" --* "1..1" pimm_HRefinement : loopPrototype36
+pimm_Dependency "0..9999" -- "1..1" pimm_ISetter : outgoingDependencies31
+pimm_DataOutputPort "1..1" -- "0..1" pimm_Fifo : outgoingFifo16
+pimm_Parameter "0..9999" --* "1..1" pimm_PiGraph : parameters10
+pimm_FunctionParameter "0..9999" --* "1..1" pimm_FunctionPrototype : parameters40
+pimm_Actor "1..1" *-- "1..1" pimm_Refinement : refinement14
+pimm_Dependency "1..1" -- "1..1" pimm_ISetter : setter29
+pimm_DataOutputPort "1..1" -- "1..1" pimm_Fifo : sourcePort19
+pimm_DataInputPort "1..1" -- "1..1" pimm_Fifo : targetPort20
+pimm_AbstractActor "0..9999" --* "1..1" pimm_PiGraph : vertices6
+@enduml

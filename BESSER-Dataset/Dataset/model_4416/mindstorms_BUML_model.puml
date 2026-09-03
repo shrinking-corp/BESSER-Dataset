@@ -1,0 +1,160 @@
+@startuml
+class Action {
+}
+class Behavior {
+}
+class Block {
+}
+class BlockContainer {
+}
+enum Color {
+  BLACK
+  BLUE
+  BROWN
+  CYAN
+  DARK_GRAY
+  GRAY
+  GREEN
+  LIGHT_GRAY
+  MAGENTA
+  NONE
+  ORANGE
+  PINK
+  RED
+  WHITE
+  YELLOW
+}
+class Condition {
+}
+class ConditionContainer {
+}
+class Flow {
+}
+class Instruction {
+}
+class NamedElement {
+}
+enum OperatorKind {
+  equal
+  lowerOrEqual
+  notEqual
+  upperOrEqual
+}
+class Sensor {
+}
+abstract class mindstorms_Action {
+}
+class mindstorms_Arbitrator {
+}
+class mindstorms_AvoidObstacle {
+}
+class mindstorms_Behavior {
+}
+abstract class mindstorms_Block {
+}
+abstract class mindstorms_BlockContainer {
+}
+class mindstorms_ColorSensor {
+  + color : str
+}
+abstract class mindstorms_Condition {
+}
+abstract class mindstorms_ConditionContainer {
+}
+class mindstorms_Delay {
+  + ms : int
+}
+class mindstorms_ExploreForward {
+}
+abstract class mindstorms_Flow {
+}
+class mindstorms_GoBackward {
+  + cm : int
+  + infinite : bool
+}
+class mindstorms_GoForward {
+  + cm : int
+  + infinite : bool
+}
+class mindstorms_GoTo {
+  + x : int
+  + y : int
+}
+class mindstorms_GoToEnemy {
+}
+class mindstorms_Grab {
+}
+class mindstorms_If {
+}
+abstract class mindstorms_Instruction {
+}
+class mindstorms_Main {
+}
+abstract class mindstorms_NamedElement {
+  + name : str
+}
+class mindstorms_Procedure {
+}
+class mindstorms_Release {
+}
+class mindstorms_ReturnBottleToBase {
+}
+class mindstorms_ReturnToBase {
+}
+class mindstorms_ReuseInstruction {
+}
+class mindstorms_Rotate {
+  + degrees : int
+  + random : bool
+}
+abstract class mindstorms_Sensor {
+}
+class mindstorms_TouchSensor {
+  + isPressed : bool
+}
+class mindstorms_UltrasonicSensor {
+  + operator : str
+  + value : float
+}
+class mindstorms_While {
+}
+Action <|-- mindstorms_Delay
+Action <|-- mindstorms_GoBackward
+Action <|-- mindstorms_GoForward
+Action <|-- mindstorms_GoTo
+Action <|-- mindstorms_GoToEnemy
+Action <|-- mindstorms_Grab
+Action <|-- mindstorms_Release
+Action <|-- mindstorms_ReturnToBase
+Action <|-- mindstorms_Rotate
+Behavior <|-- mindstorms_AvoidObstacle
+Behavior <|-- mindstorms_ExploreForward
+Behavior <|-- mindstorms_ReturnBottleToBase
+Block <|-- mindstorms_Action
+Block <|-- mindstorms_Flow
+BlockContainer <|-- mindstorms_Behavior
+BlockContainer <|-- mindstorms_Flow
+BlockContainer <|-- mindstorms_Procedure
+Condition <|-- mindstorms_Sensor
+ConditionContainer <|-- mindstorms_Arbitrator
+ConditionContainer <|-- mindstorms_Behavior
+ConditionContainer <|-- mindstorms_Flow
+Flow <|-- mindstorms_If
+Flow <|-- mindstorms_While
+Instruction <|-- mindstorms_Arbitrator
+Instruction <|-- mindstorms_Block
+Instruction <|-- mindstorms_Procedure
+Instruction <|-- mindstorms_ReuseInstruction
+NamedElement <|-- mindstorms_Behavior
+NamedElement <|-- mindstorms_Instruction
+NamedElement <|-- mindstorms_Sensor
+Sensor <|-- mindstorms_ColorSensor
+Sensor <|-- mindstorms_TouchSensor
+Sensor <|-- mindstorms_UltrasonicSensor
+mindstorms_Arbitrator "1..1" *-- "0..9999" mindstorms_Behavior : behaviors2
+mindstorms_Block "0..9999" --* "1..1" mindstorms_BlockContainer : blocks1
+mindstorms_Condition "0..1" --* "1..1" mindstorms_ConditionContainer : condition8
+mindstorms_Instruction "0..9999" --* "1..1" mindstorms_Main : instructions0
+mindstorms_Arbitrator "1..1" -- "0..9999" mindstorms_Behavior : reuse3
+mindstorms_Instruction "0..1" -- "1..1" mindstorms_ReuseInstruction : reuse6
+@enduml

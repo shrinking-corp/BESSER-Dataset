@@ -1,0 +1,29 @@
+@startuml
+enum TournamentType {
+  Amateur
+  Pro
+}
+class bowlingTournament_Game {
+  + frames : int
+}
+class bowlingTournament_League {
+  + name : str
+}
+class bowlingTournament_Matchup {
+}
+class bowlingTournament_Player {
+  + dateOfBirth : date
+  + height : float
+  + isProfessional : bool
+  + name : str
+}
+class bowlingTournament_Tournament {
+  + type : str
+}
+bowlingTournament_Game "0..2" --* "1..1" bowlingTournament_Matchup : games5
+bowlingTournament_League "0..9999" --* "1..1" bowlingTournament_Tournament : league2
+bowlingTournament_Game "1..1" -- "0..1" bowlingTournament_Matchup : matchup8
+bowlingTournament_Matchup "0..9999" --* "1..1" bowlingTournament_Tournament : matchups1
+bowlingTournament_League "1..1" *-- "0..9999" bowlingTournament_Player : player0
+bowlingTournament_Game "1..1" *-- "0..1" bowlingTournament_Player : player6
+@enduml

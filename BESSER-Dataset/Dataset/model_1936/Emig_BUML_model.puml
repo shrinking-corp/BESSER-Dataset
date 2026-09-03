@@ -1,0 +1,183 @@
+@startuml
+class BagExp {
+}
+class EAttribute {
+}
+class EClass {
+}
+class EPackage {
+}
+class EReference {
+}
+class MapExp {
+}
+class Migrator {
+}
+class OclExpression {
+}
+class OclUndefinedExp {
+}
+class OpDef {
+}
+class OrderedSetExp {
+}
+class SequenceExp {
+}
+class SetExp {
+}
+class SuperExp {
+}
+class TupleExp {
+}
+class VariableExp {
+}
+class emig_Artifact {
+  + type : str
+}
+class emig_Attribute {
+}
+class emig_BagExp {
+}
+class emig_Class {
+}
+class emig_DotNavigationObjDX {
+}
+class emig_DotNavigationObjSX {
+}
+class emig_EAttribute {
+}
+class emig_EAttributeOpDef {
+}
+class emig_EClass {
+}
+class emig_EClassOpDef {
+}
+class emig_EObject {
+}
+class emig_EPackage {
+}
+class emig_EPackageOpDef {
+}
+class emig_EReference {
+}
+class emig_EReferenceOpDef {
+}
+class emig_EStructuralFeature {
+}
+class emig_FilterMigrator {
+}
+class emig_MapExp {
+}
+class emig_MigrationLibrary {
+  + title : str
+}
+class emig_MigrationProgram {
+  + delta : str
+  + libs : str
+  + migr : str
+  + name : str
+}
+class emig_Migrator {
+}
+class emig_MigratorDX {
+  + name : str
+}
+class emig_MigratorSX {
+}
+class emig_MyModel {
+}
+class emig_NavigationOrAttributeCallExp {
+}
+class emig_OclExpression {
+}
+class emig_OclUndefinedExp {
+}
+class emig_OpDef {
+  + op : str
+}
+class emig_OrderedSetExp {
+}
+class emig_Package {
+}
+class emig_Parameter {
+  + name : str
+}
+class emig_Reference {
+}
+class emig_RewritingRule {
+}
+class emig_Rule {
+  + name : str
+}
+class emig_SequenceExp {
+}
+class emig_SetExp {
+}
+class emig_SuperExp {
+}
+class emig_TupleExp {
+}
+class emig_VariableDeclaration {
+}
+class emig_VariableExp {
+}
+class emig_setterDef {
+  + operator : str
+}
+BagExp <|-- emig_BagExp
+EAttribute <|-- emig_Attribute
+EClass <|-- emig_Class
+EPackage <|-- emig_Package
+EReference <|-- emig_Reference
+MapExp <|-- emig_MapExp
+Migrator <|-- emig_MigratorDX
+Migrator <|-- emig_MigratorSX
+OclExpression <|-- emig_NavigationOrAttributeCallExp
+OclUndefinedExp <|-- emig_OclUndefinedExp
+OpDef <|-- emig_EAttributeOpDef
+OpDef <|-- emig_EClassOpDef
+OpDef <|-- emig_EPackageOpDef
+OpDef <|-- emig_EReferenceOpDef
+OrderedSetExp <|-- emig_OrderedSetExp
+SequenceExp <|-- emig_SequenceExp
+SetExp <|-- emig_SetExp
+SuperExp <|-- emig_SuperExp
+TupleExp <|-- emig_TupleExp
+VariableExp <|-- emig_VariableExp
+emig_MigrationProgram "0..1" --* "1..1" emig_MyModel : MigrationProgr1
+emig_EAttributeOpDef "0..9999" --* "1..1" emig_EClassOpDef : attributes30
+emig_EClassOpDef "0..9999" --* "1..1" emig_EPackageOpDef : classes23
+emig_EClass "0..1" -- "1..1" emig_MigratorDX : elementDX62
+emig_EClass "0..1" -- "1..1" emig_MigratorSX : elementSX57
+emig_OpDef "0..1" --* "1..1" emig_Rule : filter12
+emig_FilterMigrator "0..9999" --* "1..1" emig_MigratorDX : filterDX65
+emig_FilterMigrator "0..9999" --* "1..1" emig_MigratorSX : filterSX60
+emig_EStructuralFeature "0..1" -- "1..1" emig_setterDef : metafeature44
+emig_MigrationLibrary "0..1" --* "1..1" emig_MyModel : migrationLib0
+emig_MigratorDX "0..9999" --* "1..1" emig_RewritingRule : migratorDX50
+emig_MigratorSX "0..9999" --* "1..1" emig_RewritingRule : migratorSX52
+emig_MigratorSX "0..9999" --* "1..1" emig_RewritingRule : migratorsSX48
+emig_MigratorSX "1..1" *-- "0..1" emig_VariableDeclaration : name55
+emig_DotNavigationObjSX "1..1" -- "0..1" emig_EObject : obj70
+emig_DotNavigationObjDX "1..1" -- "0..1" emig_EObject : obj74
+emig_Parameter "0..9999" --* "1..1" emig_setterDef : par46
+emig_EPackage "0..1" --* "1..1" emig_EPackageOpDef : ref20
+emig_EClass "0..1" --* "1..1" emig_EClassOpDef : ref27
+emig_EAttribute "0..1" --* "1..1" emig_EAttributeOpDef : ref36
+emig_EReference "0..1" --* "1..1" emig_EReferenceOpDef : ref41
+emig_DotNavigationObjSX "1..1" -- "0..1" emig_EStructuralFeature : ref71
+emig_DotNavigationObjDX "1..1" -- "0..1" emig_EStructuralFeature : ref76
+emig_EClassOpDef "1..1" *-- "0..9999" emig_EReferenceOpDef : references32
+emig_RewritingRule "0..9999" --* "1..1" emig_Rule : rewritingRules14
+emig_MigrationLibrary "1..1" *-- "0..9999" emig_Rule : rules3
+emig_MigrationProgram "1..1" *-- "0..9999" emig_Rule : rules9
+emig_OpDef "1..1" *-- "0..9999" emig_setterDef : setters16
+emig_FilterMigrator "1..1" *-- "0..1" emig_OclExpression : specification68
+emig_NavigationOrAttributeCallExp "1..1" *-- "0..1" emig_OclExpression : src79
+emig_EPackage "0..9999" -- "1..1" emig_MigrationProgram : transformationPackage7
+emig_Artifact "0..1" --* "1..1" emig_MigrationProgram : typeArt5
+emig_EPackage "0..1" --* "1..1" emig_EPackageOpDef : var18
+emig_EClass "0..1" --* "1..1" emig_EClassOpDef : var25
+emig_EAttribute "0..1" --* "1..1" emig_EAttributeOpDef : var34
+emig_EReference "0..1" --* "1..1" emig_EReferenceOpDef : var39
+@enduml

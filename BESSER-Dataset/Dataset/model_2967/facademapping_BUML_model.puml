@@ -1,0 +1,24 @@
+@startuml
+enum ExtensionDefinitionKind {
+  Association
+  Fusion
+  Generalization
+  MultiGeneralization
+}
+class Mapping {
+}
+class facademapping_EObject {
+}
+class facademapping_FacadeMappping {
+}
+class facademapping_Mapping {
+}
+class facademapping_StereotypedMapping {
+  + kind : str
+}
+Mapping <|-- facademapping_StereotypedMapping
+facademapping_EObject "1..9999" -- "1..1" facademapping_StereotypedMapping : appliedStereotypes4
+facademapping_FacadeMappping "1..1" *-- "0..9999" facademapping_Mapping : mappings6
+facademapping_EObject "1..1" -- "1..1" facademapping_Mapping : specificDomainElement1
+facademapping_EObject "1..1" -- "1..1" facademapping_Mapping : umlElement0
+@enduml

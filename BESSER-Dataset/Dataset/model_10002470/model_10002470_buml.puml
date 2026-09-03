@@ -1,0 +1,55 @@
+@startuml
+class Login {
+  + lastLoginTime : date
+  + password : str
+  + securityAnswer : str
+  + securityQuestion : str
+  + username : str
+}
+enum Medical_Record_AccountType {
+}
+class Medical_Record_CertificatesOfDepositAccount {
+  + interestRate : float
+  + timePeriod : int
+}
+class Medical_Record_CheckingAccount {
+  + name : str
+}
+class Medical_Record_NHS_Number {
+  + accountNo : str
+  + balance : float
+  + type : Medical_Record_AccountType
+}
+class Medical_Record_SavingsAccount {
+  + interestRate : float
+}
+class MyInterface_Interface {
+}
+class Patient {
+  + GP_Address : str
+  + address : str
+  + dateOfBirth : date
+  + emailAddress : str
+  + name : str
+  + phoneNumber : str
+}
+class transaction_Acute_Hospital {
+}
+class transaction_Community_Hospital {
+  + sourceAccount : Medical_Record_NHS_Number
+  + targetAccount : Medical_Record_NHS_Number
+}
+class transaction_Interface {
+  + amount : float
+  + id : int
+  + transactionTime : date
+  + type : transaction_TransactionType
+}
+class transaction_Mental_Health_Trust {
+}
+enum transaction_TransactionType {
+}
+Medical_Record_NHS_Number "1..1" -- "0..9999" transaction_Interface : Account_Transaction
+Login "0..1" -- "1..1" Patient : Customer_Login
+Medical_Record_NHS_Number "1..9999" -- "1..1" Patient : association2
+@enduml

@@ -1,0 +1,258 @@
+@startuml
+class AbstractMapping {
+}
+class ArithmeticExpression {
+}
+class BinaryExpression {
+}
+class CompositeMapping {
+}
+class ContentMapping {
+}
+class EqualityExpression {
+}
+class ExplicitMetamodel {
+}
+class Expression {
+}
+class LogicalExpression {
+}
+class MetamodelDeclaration {
+}
+class RelationalExpression {
+}
+class UnaryExpression {
+}
+abstract class transformation_AbstractMapping {
+}
+class transformation_Addition {
+}
+class transformation_And {
+}
+abstract class transformation_ArithmeticExpression {
+}
+abstract class transformation_BinaryExpression {
+}
+class transformation_BooleanLiteral {
+  + value : bool
+}
+class transformation_ClassLiteral {
+}
+class transformation_ClassMapping {
+  + default : bool
+}
+class transformation_CoalescingExpression {
+}
+class transformation_CompositeMapping {
+}
+class transformation_ConditionalExpression {
+}
+class transformation_ConditionalMapping {
+}
+abstract class transformation_ContentMapping {
+}
+class transformation_DataTypeMapping {
+}
+class transformation_Different {
+}
+class transformation_Division {
+}
+class transformation_EClass {
+}
+class transformation_EClassifier {
+}
+class transformation_EDataType {
+}
+class transformation_EEnumLiteral {
+}
+class transformation_EPackage {
+}
+class transformation_EStructuralFeature {
+}
+class transformation_ETypedElement {
+}
+class transformation_EnumLiteral {
+}
+class transformation_Equal {
+}
+abstract class transformation_EqualityExpression {
+}
+class transformation_ExplicitMetamodel {
+  + alias : str
+}
+abstract class transformation_Expression {
+}
+class transformation_ExtentExpression {
+}
+class transformation_ExtentMetamodel {
+  + generated : bool
+}
+class transformation_FeatureAccess {
+  + nullable : bool
+  + spreading : bool
+}
+class transformation_FeatureMapping {
+}
+class transformation_Greater {
+}
+class transformation_GreaterOrEqual {
+}
+class transformation_If {
+}
+class transformation_IntegerLiteral {
+  + value : int
+}
+class transformation_Invocation {
+}
+class transformation_Lambda {
+}
+class transformation_Less {
+}
+class transformation_LessOrEqual {
+}
+class transformation_Let {
+}
+abstract class transformation_LogicalExpression {
+}
+class transformation_Map {
+}
+abstract class transformation_MetamodelDeclaration {
+}
+class transformation_Minus {
+}
+class transformation_Multiplication {
+}
+class transformation_Negation {
+}
+class transformation_Or {
+}
+class transformation_OtherwiseClause {
+}
+class transformation_RealLiteral {
+  + value : float
+}
+abstract class transformation_RelationalExpression {
+}
+class transformation_ResultMapping {
+}
+class transformation_Source {
+}
+class transformation_SourceMetamodel {
+}
+class transformation_StringLiteral {
+  + value : str
+}
+class transformation_Subtraction {
+}
+class transformation_TargetMetamodel {
+}
+class transformation_Transformation {
+  + name : str
+}
+class transformation_TypeOfExpression {
+}
+abstract class transformation_UnaryExpression {
+}
+class transformation_VariableDefinition {
+  + name : str
+}
+class transformation_VariableInitialization {
+}
+class transformation_VariableUse {
+}
+class transformation_WhenClause {
+}
+AbstractMapping <|-- transformation_ClassMapping
+AbstractMapping <|-- transformation_DataTypeMapping
+ArithmeticExpression <|-- transformation_Addition
+ArithmeticExpression <|-- transformation_Division
+ArithmeticExpression <|-- transformation_Multiplication
+ArithmeticExpression <|-- transformation_Subtraction
+BinaryExpression <|-- transformation_ArithmeticExpression
+BinaryExpression <|-- transformation_CoalescingExpression
+BinaryExpression <|-- transformation_EqualityExpression
+BinaryExpression <|-- transformation_LogicalExpression
+BinaryExpression <|-- transformation_RelationalExpression
+CompositeMapping <|-- transformation_OtherwiseClause
+CompositeMapping <|-- transformation_WhenClause
+ContentMapping <|-- transformation_CompositeMapping
+ContentMapping <|-- transformation_ConditionalMapping
+ContentMapping <|-- transformation_FeatureMapping
+ContentMapping <|-- transformation_ResultMapping
+EqualityExpression <|-- transformation_Different
+EqualityExpression <|-- transformation_Equal
+ExplicitMetamodel <|-- transformation_SourceMetamodel
+ExplicitMetamodel <|-- transformation_TargetMetamodel
+Expression <|-- transformation_BinaryExpression
+Expression <|-- transformation_BooleanLiteral
+Expression <|-- transformation_ClassLiteral
+Expression <|-- transformation_ConditionalExpression
+Expression <|-- transformation_EnumLiteral
+Expression <|-- transformation_ExtentExpression
+Expression <|-- transformation_FeatureAccess
+Expression <|-- transformation_If
+Expression <|-- transformation_IntegerLiteral
+Expression <|-- transformation_Invocation
+Expression <|-- transformation_Lambda
+Expression <|-- transformation_Let
+Expression <|-- transformation_Map
+Expression <|-- transformation_RealLiteral
+Expression <|-- transformation_Source
+Expression <|-- transformation_StringLiteral
+Expression <|-- transformation_TypeOfExpression
+Expression <|-- transformation_UnaryExpression
+Expression <|-- transformation_VariableUse
+LogicalExpression <|-- transformation_And
+LogicalExpression <|-- transformation_Or
+MetamodelDeclaration <|-- transformation_ExplicitMetamodel
+MetamodelDeclaration <|-- transformation_ExtentMetamodel
+RelationalExpression <|-- transformation_Greater
+RelationalExpression <|-- transformation_GreaterOrEqual
+RelationalExpression <|-- transformation_Less
+RelationalExpression <|-- transformation_LessOrEqual
+UnaryExpression <|-- transformation_Minus
+UnaryExpression <|-- transformation_Negation
+transformation_CompositeMapping "1..1" *-- "0..9999" transformation_ContentMapping : children19
+transformation_Expression "1..1" --* "1..1" transformation_WhenClause : condition24
+transformation_Expression "0..1" --* "1..1" transformation_If : condition36
+transformation_ConditionalExpression "1..1" *-- "0..1" transformation_Expression : condition49
+transformation_ContentMapping "1..1" --* "1..1" transformation_DataTypeMapping : content10
+transformation_ClassMapping "1..1" *-- "1..1" transformation_ContentMapping : content16
+transformation_Expression "0..1" --* "1..1" transformation_If : elseExpression41
+transformation_EEnumLiteral "1..1" -- "1..1" transformation_EnumLiteral : enumConstant90
+transformation_ConditionalExpression "1..1" *-- "0..1" transformation_Expression : falseExpression54
+transformation_ETypedElement "0..1" -- "1..1" transformation_FeatureAccess : feature66
+transformation_Expression "0..1" --* "1..1" transformation_Invocation : function72
+transformation_BinaryExpression "1..1" *-- "0..1" transformation_Expression : left57
+transformation_AbstractMapping "0..9999" --* "1..1" transformation_Transformation : mappings1
+transformation_MetamodelDeclaration "0..9999" --* "1..1" transformation_Transformation : metamodelDeclarations0
+transformation_Expression "0..1" --* "1..1" transformation_FeatureAccess : object64
+transformation_Expression "1..1" --* "1..1" transformation_TypeOfExpression : object70
+transformation_ClassLiteral "1..1" -- "1..1" transformation_EClassifier : objectType88
+transformation_Expression "0..1" --* "1..1" transformation_UnaryExpression : operand62
+transformation_ConditionalMapping "1..1" *-- "1..1" transformation_OtherwiseClause : otherwiseClause22
+transformation_EPackage "1..1" -- "1..1" transformation_MetamodelDeclaration : package3
+transformation_Expression "0..9999" --* "1..1" transformation_Invocation : parameters74
+transformation_Lambda "1..1" *-- "0..9999" transformation_VariableDefinition : parameters77
+transformation_Expression "0..1" --* "1..1" transformation_Let : result46
+transformation_Expression "1..1" --* "1..1" transformation_Lambda : result79
+transformation_BinaryExpression "1..1" *-- "0..1" transformation_Expression : right59
+transformation_ClassMapping "1..1" -- "1..1" transformation_EClass : source12
+transformation_DataTypeMapping "1..1" -- "1..1" transformation_EDataType : source6
+transformation_Expression "0..1" --* "1..1" transformation_ExtentExpression : source68
+transformation_ExtentMetamodel "1..1" -- "1..1" transformation_SourceMetamodel : sourceMetamodel5
+transformation_ClassMapping "1..1" -- "1..1" transformation_EClass : target13
+transformation_EStructuralFeature "1..1" -- "1..1" transformation_FeatureMapping : target28
+transformation_DataTypeMapping "1..1" -- "1..1" transformation_EDataType : target7
+transformation_EClassifier "0..1" -- "1..1" transformation_Map : target84
+transformation_Expression "0..1" --* "1..1" transformation_If : thenExpression38
+transformation_ConditionalExpression "1..1" *-- "0..1" transformation_Expression : trueExpression51
+transformation_Expression "1..1" --* "1..1" transformation_ResultMapping : value26
+transformation_Expression "1..1" --* "1..1" transformation_FeatureMapping : value29
+transformation_Expression "1..1" --* "1..1" transformation_VariableInitialization : value33
+transformation_Expression "0..1" --* "1..1" transformation_Map : value82
+transformation_VariableDefinition "1..1" --* "1..1" transformation_VariableInitialization : variable32
+transformation_VariableDefinition "0..1" -- "1..1" transformation_VariableUse : variable86
+transformation_Let "1..1" *-- "0..9999" transformation_VariableInitialization : variables44
+transformation_ConditionalMapping "1..1" *-- "0..9999" transformation_WhenClause : whenClauses21
+@enduml

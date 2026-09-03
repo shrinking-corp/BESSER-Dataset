@@ -1,0 +1,93 @@
+@startuml
+class BinaryExp {
+}
+class ControlStructure {
+}
+class Expression {
+}
+class Instruction {
+}
+abstract class kmLogo_BinaryExp {
+}
+class kmLogo_Block {
+}
+class kmLogo_Constant {
+  + integerValue : str
+}
+class kmLogo_ControlStructure {
+}
+class kmLogo_Div {
+}
+class kmLogo_Equals {
+}
+abstract class kmLogo_Expression {
+}
+class kmLogo_For {
+}
+class kmLogo_Greater {
+}
+class kmLogo_If {
+}
+abstract class kmLogo_Instruction {
+}
+class kmLogo_JavaProgram {
+  + name : str
+}
+class kmLogo_Lower {
+}
+class kmLogo_Main {
+}
+class kmLogo_MethodeCall {
+}
+class kmLogo_MethodeDeclaration {
+  + name : str
+}
+class kmLogo_Minus {
+}
+class kmLogo_Mult {
+}
+class kmLogo_Parameter {
+  + name : str
+}
+class kmLogo_ParameterCall {
+}
+class kmLogo_Plus {
+}
+class kmLogo_While {
+}
+BinaryExp <|-- kmLogo_Div
+BinaryExp <|-- kmLogo_Equals
+BinaryExp <|-- kmLogo_Greater
+BinaryExp <|-- kmLogo_Lower
+BinaryExp <|-- kmLogo_Minus
+BinaryExp <|-- kmLogo_Mult
+BinaryExp <|-- kmLogo_Plus
+ControlStructure <|-- kmLogo_For
+ControlStructure <|-- kmLogo_If
+ControlStructure <|-- kmLogo_While
+Expression <|-- kmLogo_BinaryExp
+Expression <|-- kmLogo_Constant
+Expression <|-- kmLogo_MethodeCall
+Expression <|-- kmLogo_ParameterCall
+Instruction <|-- kmLogo_Block
+Instruction <|-- kmLogo_ControlStructure
+Instruction <|-- kmLogo_Expression
+Instruction <|-- kmLogo_MethodeDeclaration
+kmLogo_Block "1..1" --* "1..1" kmLogo_For : block15
+kmLogo_Block "1..1" --* "1..1" kmLogo_While : block17
+kmLogo_ControlStructure "1..1" *-- "0..1" kmLogo_Expression : condition13
+kmLogo_Block "0..1" --* "1..1" kmLogo_If : elsePart10
+kmLogo_Expression "0..9999" --* "1..1" kmLogo_MethodeCall : expression1
+kmLogo_Instruction "0..9999" --* "1..1" kmLogo_Main : instruction23
+kmLogo_Instruction "0..9999" --* "1..1" kmLogo_MethodeDeclaration : instruction26
+kmLogo_Block "1..1" *-- "0..9999" kmLogo_Instruction : instructions7
+kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : lhs2
+kmLogo_JavaProgram "1..1" *-- "0..1" kmLogo_Main : main20
+kmLogo_JavaProgram "1..1" *-- "0..9999" kmLogo_MethodeDeclaration : methodeDeclaration21
+kmLogo_MethodeCall "0..9999" -- "1..1" kmLogo_MethodeDeclaration : methodecall32
+kmLogo_MethodeCall "1..1" -- "1..1" kmLogo_MethodeDeclaration : methodedeclaration0
+kmLogo_Parameter "1..1" -- "1..1" kmLogo_ParameterCall : parameter19
+kmLogo_MethodeDeclaration "1..1" *-- "0..9999" kmLogo_Parameter : parameter29
+kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : rhs4
+kmLogo_Block "1..1" --* "1..1" kmLogo_If : thenPart8
+@enduml

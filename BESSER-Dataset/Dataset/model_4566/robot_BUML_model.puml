@@ -1,0 +1,249 @@
+@startuml
+enum AccessType {
+  PRIVATE
+  PUBLIC
+}
+enum AudioMode {
+  MONO
+  STEREO
+}
+class Channel {
+}
+class ChannelDevice {
+}
+enum ColorMode {
+  BLUE
+  GRAY
+  GREEN
+  RED
+  RED_GREEN
+  RGB
+}
+enum DataType {
+  BYTE
+  FLOAT
+  IMAGE
+  INTEGER
+  SHORT
+  STRING
+  UNSIGNED_BYTE
+  UNSIGNED_SHORT
+}
+class Device {
+}
+class Findable {
+}
+enum IoMode {
+  ANALOG_INPUT
+  DIGITAL_INPUT
+  DIGITAL_OUTPUT
+  NONE
+  PWM_OUTPUT
+  SERVO_OUTPUT
+}
+class LinearChannel {
+}
+enum LinearMode {
+  LINEAR
+  SUSTAIN
+}
+class MotoringDevice {
+}
+class NamedElement {
+}
+class SensoryDevice {
+}
+class Simulacra {
+}
+class Storable {
+}
+class robot_AudioChannel {
+}
+abstract class robot_Channel {
+  + isEnabled() : bool
+}
+abstract class robot_ChannelDevice {
+}
+class robot_ColorChannel {
+  + mode : str
+}
+class robot_Command {
+  + id : int
+}
+class robot_CommandChannel {
+}
+class robot_Control {
+  + frameLimit : int
+  + version : str
+}
+abstract class robot_Device {
+  + access : str
+  + dataSize : int
+  + dataType : str
+  + default : str
+  + max : str
+  + min : str
+  + proxy : bool
+  + addDeviceListener(robot_listener : str) : void
+  + e() : bool
+  + getDefault() : int
+  + getDefaultFloat() : float
+  + getDefaultImageData() : str
+  + getDefaultString() : str
+  + getDeviceListeners() : str
+  + getMax() : int
+  + getMaxFloat() : float
+  + getMaxString() : str
+  + getMin() : int
+  + getMinFloat() : float
+  + getMinString() : str
+  + getRootRoboid() : str
+  + isDataTypeOf(robot_device : str) : bool
+  + read(robot_data : str) : int
+  + readFloat(robot_data : str) : int
+  + readImageData(robot_imageData : str) : int
+  + readInt(robot_data : str) : int
+  + readString(robot_text : str) : int
+  + removeDeviceListener(robot_listener : str) : void
+  + setEvent() : void
+  + setFired() : void
+  + write(robot_imageData : str) : bool
+  + writeFloat(robot_data : str) : bool
+  + writeImageData(robot_imageData : str) : bool
+  + writeInt(robot_data : str) : bool
+  + writeString(robot_text : str) : bool
+}
+abstract class robot_DeviceListener {
+  + commandPerformed(robot_device : str) : void
+  + effectPerformed(robot_device : str) : void
+  + handleEvent(robot_device : str) : void
+  + stateChanged(robot_device : str) : void
+}
+class robot_Effector {
+  + sustain : int
+  + throttle : int
+  + hasNext() : bool
+}
+class robot_Event {
+  + id : int
+}
+class robot_FileChannel {
+}
+abstract class robot_Findable {
+  + findDevice(robot_name : str) : str
+  + findRoboid(robot_name : str) : str
+}
+class robot_LinearChannel {
+  + mode : str
+}
+class robot_MatrixChannel {
+}
+abstract class robot_MotoringDevice {
+}
+abstract class robot_NamedElement {
+  + comment : str
+  + literal : str
+  + name : str
+  + equalsContents(robot_obj : str) : bool
+  + getChildren() : str
+  + getFullName() : str
+  + getParent() : str
+}
+class robot_Port {
+  + mode : str
+}
+class robot_Protocol {
+  + bufferSize : int
+  + remainingBuffer : int
+  + version : str
+  + clearBuffer() : void
+  + getBufferId() : int
+  + getSimulacrum() : str
+  + setEvents() : void
+  + setSimulacrum(robot_isMaster : str, robot_simulacrum : str) : void
+}
+class robot_Roboid {
+  + address : str
+  + id : str
+  + provider : str
+  + uid : str
+  + version : str
+  + collectAllDevices(robot_devices : str) : str
+}
+class robot_Robot {
+  + provider : str
+  + standard : str
+  + version : str
+  + collectAllActiveDeviceNames(robot_names : str) : str
+  + collectAllDeviceNames(robot_names : str) : str
+  + collectAllDevices(robot_devices : str) : str
+  + getProtocol() : str
+}
+class robot_Sensor {
+  + throttle : int
+}
+abstract class robot_SensoryDevice {
+  + addReceptor(robot_receptor : str) : void
+  + removeReceptor(robot_receptor : str) : void
+}
+abstract class robot_Simulacra {
+  + canSend() : bool
+  + getSimulacrum(robot_deviceMap : str, robot_payload : str) : void
+  + isReceived() : bool
+  + setDeviceMap(robot_deviceMap : str, robot_index : str, robot_isMaster : str) : int
+  + setPayload(robot_isMaster : str, robot_simulacrum : str) : void
+  + updateDeviceState() : void
+}
+abstract class robot_Storable {
+  + clearDeviceMemory() : void
+  + createDeviceMemory() : void
+}
+class robot_TextChannel {
+}
+class robot_VoiceChannel {
+}
+Channel <|-- robot_AudioChannel
+Channel <|-- robot_ColorChannel
+Channel <|-- robot_CommandChannel
+Channel <|-- robot_FileChannel
+Channel <|-- robot_LinearChannel
+Channel <|-- robot_TextChannel
+Channel <|-- robot_VoiceChannel
+ChannelDevice <|-- robot_MotoringDevice
+ChannelDevice <|-- robot_Port
+Device <|-- robot_ChannelDevice
+Device <|-- robot_SensoryDevice
+Findable <|-- robot_Roboid
+Findable <|-- robot_Robot
+LinearChannel <|-- robot_MatrixChannel
+MotoringDevice <|-- robot_Command
+MotoringDevice <|-- robot_Effector
+NamedElement <|-- robot_Channel
+NamedElement <|-- robot_Control
+NamedElement <|-- robot_Device
+NamedElement <|-- robot_Protocol
+NamedElement <|-- robot_Roboid
+NamedElement <|-- robot_Robot
+SensoryDevice <|-- robot_Event
+SensoryDevice <|-- robot_Sensor
+Simulacra <|-- robot_Device
+Simulacra <|-- robot_Roboid
+Storable <|-- robot_Device
+Storable <|-- robot_Roboid
+Storable <|-- robot_Robot
+robot_Channel "0..9999" --* "1..1" robot_Control : channels13
+robot_Control "0..9999" --* "1..1" robot_Robot : controls1
+robot_Channel "1..1" -- "1..9999" robot_ChannelDevice : devices31
+robot_Device "0..9999" --* "1..1" robot_Roboid : devices8
+robot_Roboid "0..1" -- "1..1" robot_Roboid : hostRoboid11
+robot_Protocol "0..1" --* "1..1" robot_Roboid : protocol6
+robot_Sensor "1..1" -- "0..1" robot_Sensor : proxyFor16
+robot_Effector "0..1" -- "1..1" robot_Effector : proxyFor20
+robot_Command "1..1" -- "0..1" robot_Command : proxyFor23
+robot_Event "1..1" -- "0..1" robot_Event : proxyFor25
+robot_Port "1..1" -- "0..1" robot_Port : proxyFor30
+robot_Effector "0..9999" -- "1..1" robot_Sensor : receptors17
+robot_Command "0..9999" -- "1..1" robot_Event : receptors26
+robot_Roboid "1..9999" --* "1..1" robot_Robot : roboids0
+robot_Roboid "0..9999" --* "1..1" robot_Roboid : roboids4
+@enduml

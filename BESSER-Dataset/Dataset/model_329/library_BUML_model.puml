@@ -1,0 +1,32 @@
+@startuml
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class bz242995_Author {
+  + Name : str
+  + id : str
+}
+class bz242995_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class bz242995_Library {
+  + name : str
+}
+class bz242995_OneTimeWonder {
+  + Name : str
+  + id : str
+}
+class bz242995_Writer {
+  + name : str
+}
+bz242995_Book "1..1" -- "1..1" bz242995_Writer : author0
+bz242995_Book "0..9999" --* "1..1" bz242995_Library : books2
+bz242995_Book "0..9999" -- "1..1" bz242995_Writer : books4
+bz242995_Author "1..1" -- "1..1" bz242995_OneTimeWonder : theAuthor5
+bz242995_Author "1..1" -- "1..1" bz242995_OneTimeWonder : theBook6
+bz242995_Library "1..1" *-- "0..9999" bz242995_Writer : writers1
+@enduml

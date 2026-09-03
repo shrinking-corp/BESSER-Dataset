@@ -1,0 +1,171 @@
+@startuml
+class Constraint {
+}
+class Expression {
+}
+class PrologExpression {
+}
+class tExp_AndExpr {
+}
+class tExp_AtomExpression {
+  + atom : str
+}
+class tExp_Cardinality {
+  + maxCardinality : int
+  + minCardinality : int
+}
+class tExp_CatExpr {
+}
+class tExp_Channel {
+  + name : str
+  + reliability : str
+}
+class tExp_Constraint {
+  + parMax : str
+  + parMin : str
+  + split : str
+  + together : str
+}
+class tExp_Domainmodel {
+}
+class tExp_EventType {
+  + name : str
+}
+class tExp_Expression {
+  + eps : str
+  + operator : str
+  + variable : str
+}
+class tExp_FilterExpr {
+}
+class tExp_ListExpression {
+}
+class tExp_Msg {
+  + performative : str
+}
+class tExp_NumberExpression {
+  + value : str
+}
+class tExp_Partition {
+}
+class tExp_PrologExpression {
+  + op : str
+}
+class tExp_Role {
+  + args : str
+  + class_ : str
+  + name : str
+}
+class tExp_SeqExpr {
+}
+class tExp_ShuffleExpr {
+}
+class tExp_Singletons {
+  + maxSingletons : int
+  + minSingletons : int
+}
+class tExp_Size {
+  + maxSize : int
+  + minSize : int
+}
+class tExp_StringExpression {
+  + value : str
+}
+class tExp_Term {
+  + name : str
+}
+class tExp_TerminalExpr {
+}
+class tExp_Together {
+}
+class tExp_TraceExpression {
+  + bodyL : str
+  + channelsL : str
+  + constraintsL : str
+  + decentralized : str
+  + decentralizedL : str
+  + gui : str
+  + guiL : str
+  + minimal : str
+  + minimalL : str
+  + modules : str
+  + modulesL : str
+  + name : str
+  + partitionL : str
+  + rolesL : str
+  + threshold : str
+  + thresholdL : str
+  + typesL : str
+}
+class tExp_UnionExpr {
+}
+class tExp_VarExpr {
+}
+class tExp_VariableExpression {
+  + name : str
+}
+Constraint <|-- tExp_Cardinality
+Constraint <|-- tExp_Singletons
+Constraint <|-- tExp_Size
+Expression <|-- tExp_AndExpr
+Expression <|-- tExp_CatExpr
+Expression <|-- tExp_FilterExpr
+Expression <|-- tExp_SeqExpr
+Expression <|-- tExp_ShuffleExpr
+Expression <|-- tExp_TerminalExpr
+Expression <|-- tExp_UnionExpr
+Expression <|-- tExp_VarExpr
+PrologExpression <|-- tExp_AtomExpression
+PrologExpression <|-- tExp_ListExpression
+PrologExpression <|-- tExp_NumberExpression
+PrologExpression <|-- tExp_StringExpression
+PrologExpression <|-- tExp_VariableExpression
+tExp_Msg "1..1" -- "0..1" tExp_Role : async_receiver67
+tExp_Msg "1..1" -- "0..1" tExp_Role : async_sender58
+tExp_Expression "0..1" --* "1..1" tExp_Expression : bodyFilter33
+tExp_Expression "0..1" --* "1..1" tExp_Expression : bodySeq39
+tExp_Expression "0..1" --* "1..1" tExp_Expression : bodyVar21
+tExp_Channel "0..1" -- "1..1" tExp_EventType : channel55
+tExp_Channel "0..9999" --* "1..1" tExp_TraceExpression : channels16
+tExp_Msg "1..1" *-- "0..1" tExp_PrologExpression : conditions73
+tExp_Constraint "0..9999" --* "1..1" tExp_TraceExpression : constraints14
+tExp_Partition "1..1" *-- "0..9999" tExp_Together : constraints76
+tExp_Msg "1..1" *-- "0..1" tExp_PrologExpression : content70
+tExp_Domainmodel "1..1" *-- "0..9999" tExp_TraceExpression : elements0
+tExp_Expression "0..1" --* "1..1" tExp_Term : expr18
+tExp_Expression "0..1" --* "1..1" tExp_Expression : expr45
+tExp_EventType "1..1" *-- "0..1" tExp_PrologExpression : expr47
+tExp_Expression "1..1" *-- "0..9999" tExp_PrologExpression : exprs29
+tExp_EventType "1..1" *-- "0..9999" tExp_PrologExpression : exprs50
+tExp_Expression "0..1" --* "1..1" tExp_FilterExpr : filterExpr116
+tExp_Expression "1..1" *-- "0..1" tExp_PrologExpression : first26
+tExp_ListExpression "1..1" *-- "0..1" tExp_PrologExpression : head89
+tExp_AndExpr "1..1" *-- "0..1" tExp_Expression : left104
+tExp_CatExpr "1..1" *-- "0..1" tExp_Expression : left109
+tExp_PrologExpression "1..1" *-- "0..1" tExp_PrologExpression : left2
+tExp_Constraint "1..1" -- "0..9999" tExp_Role : left81
+tExp_Expression "0..1" --* "1..1" tExp_ShuffleExpr : left94
+tExp_Expression "0..1" --* "1..1" tExp_UnionExpr : left99
+tExp_EventType "1..1" *-- "0..9999" tExp_Msg : msgs53
+tExp_Partition "0..9999" --* "1..1" tExp_TraceExpression : partition12
+tExp_Msg "1..1" -- "0..1" tExp_Role : receiver61
+tExp_Expression "0..1" --* "1..1" tExp_UnionExpr : right101
+tExp_AndExpr "1..1" *-- "0..1" tExp_Expression : right106
+tExp_CatExpr "1..1" *-- "0..1" tExp_Expression : right111
+tExp_PrologExpression "0..1" --* "1..1" tExp_PrologExpression : right4
+tExp_Constraint "1..1" -- "0..9999" tExp_Role : right84
+tExp_Expression "0..1" --* "1..1" tExp_ShuffleExpr : right96
+tExp_Role "0..9999" -- "1..1" tExp_Together : roles78
+tExp_Role "0..9999" --* "1..1" tExp_TraceExpression : roles8
+tExp_Msg "1..1" -- "0..1" tExp_Role : sender64
+tExp_Expression "0..1" --* "1..1" tExp_SeqExpr : seqExpr114
+tExp_ListExpression "1..1" *-- "0..1" tExp_PrologExpression : tail91
+tExp_Expression "1..1" -- "0..1" tExp_Term : term41
+tExp_Expression "0..1" --* "1..1" tExp_TerminalExpr : terminalExpr120
+tExp_Term "0..9999" --* "1..1" tExp_TraceExpression : terms6
+tExp_AtomExpression "1..1" *-- "0..1" tExp_PrologExpression : terms87
+tExp_EventType "0..1" -- "1..1" tExp_Expression : typeFilter23
+tExp_EventType "0..1" -- "1..1" tExp_Expression : typeSeq35
+tExp_EventType "0..9999" --* "1..1" tExp_TraceExpression : types10
+tExp_Expression "0..1" --* "1..1" tExp_VarExpr : varExpr118
+@enduml

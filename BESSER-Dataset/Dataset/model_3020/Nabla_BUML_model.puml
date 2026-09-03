@@ -1,0 +1,348 @@
+@startuml
+class ArgOrVar {
+}
+class Connectivity {
+}
+class ConnectivityCall {
+}
+class Container {
+}
+class Expression {
+}
+class FunctionOrReduction {
+}
+class Instruction {
+}
+class Iterable {
+}
+class IterationBlock {
+}
+enum PrimitiveType {
+  Bool
+  Int
+  Real
+}
+class TimeIteratorRef {
+}
+class Var {
+}
+class nabla_Affectation {
+}
+class nabla_And {
+  + op : str
+}
+class nabla_Arg {
+}
+class nabla_ArgOrVar {
+  + name : str
+}
+class nabla_ArgOrVarRef {
+}
+class nabla_BaseType {
+  + primitive : str
+}
+class nabla_BaseTypeConstant {
+}
+class nabla_BoolConstant {
+  + value : bool
+}
+class nabla_Cardinality {
+}
+class nabla_Comparison {
+  + op : str
+}
+class nabla_Connectivity {
+  + name : str
+}
+class nabla_ConnectivityCall {
+}
+class nabla_ConnectivityVar {
+}
+class nabla_Container {
+}
+class nabla_ContractedIf {
+}
+class nabla_CurrentTimeIteratorRef {
+}
+class nabla_Div {
+  + op : str
+}
+class nabla_Equality {
+  + op : str
+}
+class nabla_Exit {
+  + message : str
+}
+class nabla_Expression {
+}
+class nabla_Function {
+  + external : bool
+}
+class nabla_FunctionCall {
+}
+class nabla_FunctionOrReduction {
+  + name : str
+}
+class nabla_If {
+}
+class nabla_Import {
+  + importedNamespace : str
+}
+class nabla_InitTimeIteratorRef {
+  + value : int
+}
+class nabla_Instruction {
+}
+class nabla_InstructionBlock {
+}
+class nabla_IntConstant {
+  + value : int
+}
+class nabla_Interval {
+  + from_ : int
+}
+class nabla_Item {
+  + name : str
+}
+class nabla_ItemDefinition {
+}
+class nabla_ItemRef {
+  + dec : int
+  + inc : int
+}
+class nabla_ItemType {
+  + name : str
+}
+class nabla_Iterable {
+}
+class nabla_IterationBlock {
+}
+class nabla_Job {
+  + name : str
+}
+class nabla_Loop {
+}
+class nabla_MaxConstant {
+  + type : str
+}
+class nabla_MinConstant {
+  + type : str
+}
+class nabla_Minus {
+  + op : str
+}
+class nabla_Modulo {
+  + op : str
+}
+class nabla_Mul {
+  + op : str
+}
+class nabla_MultipleConnectivity {
+}
+class nabla_MultipleConnectivityCall {
+}
+class nabla_NablaModule {
+  + name : str
+}
+class nabla_NextTimeIteratorRef {
+  + value : int
+}
+class nabla_Not {
+}
+class nabla_OptDefinition {
+}
+class nabla_Or {
+  + op : str
+}
+class nabla_Parenthesis {
+}
+class nabla_Plus {
+  + op : str
+}
+class nabla_RealConstant {
+  + value : float
+}
+class nabla_Reduction {
+}
+class nabla_ReductionCall {
+}
+class nabla_Return {
+}
+class nabla_SetDefinition {
+  + name : str
+}
+class nabla_SetRef {
+}
+class nabla_SimpleVar {
+}
+class nabla_SimpleVarDefinition {
+}
+class nabla_SingleConnectivity {
+}
+class nabla_SingleConnectivityCall {
+}
+class nabla_SingletonDefinition {
+}
+class nabla_SpaceIterator {
+}
+class nabla_TimeIterator {
+}
+class nabla_TimeIteratorDefinition {
+}
+class nabla_TimeIteratorRef {
+}
+class nabla_UnaryMinus {
+}
+class nabla_Var {
+}
+class nabla_VarGroupDeclaration {
+}
+class nabla_VectorConstant {
+}
+ArgOrVar <|-- nabla_Arg
+ArgOrVar <|-- nabla_TimeIterator
+ArgOrVar <|-- nabla_Var
+Connectivity <|-- nabla_MultipleConnectivity
+Connectivity <|-- nabla_SingleConnectivity
+ConnectivityCall <|-- nabla_MultipleConnectivityCall
+ConnectivityCall <|-- nabla_SingleConnectivityCall
+Container <|-- nabla_MultipleConnectivityCall
+Container <|-- nabla_SetRef
+Expression <|-- nabla_And
+Expression <|-- nabla_ArgOrVarRef
+Expression <|-- nabla_BaseTypeConstant
+Expression <|-- nabla_BoolConstant
+Expression <|-- nabla_Cardinality
+Expression <|-- nabla_Comparison
+Expression <|-- nabla_ContractedIf
+Expression <|-- nabla_Div
+Expression <|-- nabla_Equality
+Expression <|-- nabla_FunctionCall
+Expression <|-- nabla_IntConstant
+Expression <|-- nabla_MaxConstant
+Expression <|-- nabla_MinConstant
+Expression <|-- nabla_Minus
+Expression <|-- nabla_Modulo
+Expression <|-- nabla_Mul
+Expression <|-- nabla_Not
+Expression <|-- nabla_Or
+Expression <|-- nabla_Parenthesis
+Expression <|-- nabla_Plus
+Expression <|-- nabla_RealConstant
+Expression <|-- nabla_ReductionCall
+Expression <|-- nabla_UnaryMinus
+Expression <|-- nabla_VectorConstant
+FunctionOrReduction <|-- nabla_Function
+FunctionOrReduction <|-- nabla_Reduction
+Instruction <|-- nabla_Affectation
+Instruction <|-- nabla_Exit
+Instruction <|-- nabla_If
+Instruction <|-- nabla_InstructionBlock
+Instruction <|-- nabla_ItemDefinition
+Instruction <|-- nabla_Loop
+Instruction <|-- nabla_Return
+Instruction <|-- nabla_SetDefinition
+Instruction <|-- nabla_SimpleVarDefinition
+Instruction <|-- nabla_VarGroupDeclaration
+Iterable <|-- nabla_Loop
+Iterable <|-- nabla_ReductionCall
+IterationBlock <|-- nabla_Interval
+IterationBlock <|-- nabla_SpaceIterator
+TimeIteratorRef <|-- nabla_CurrentTimeIteratorRef
+TimeIteratorRef <|-- nabla_InitTimeIteratorRef
+TimeIteratorRef <|-- nabla_NextTimeIteratorRef
+Var <|-- nabla_ConnectivityVar
+Var <|-- nabla_SimpleVar
+nabla_Div "1..1" *-- "0..1" nabla_Expression : Left184
+nabla_Expression "0..1" --* "1..1" nabla_ReductionCall : arg124
+nabla_Expression "0..9999" --* "1..1" nabla_FunctionCall : args202
+nabla_ConnectivityCall "1..1" *-- "0..9999" nabla_ItemRef : args86
+nabla_FunctionOrReduction "1..1" *-- "0..1" nabla_Instruction : body107
+nabla_Instruction "0..1" --* "1..1" nabla_Loop : body44
+nabla_Expression "0..1" --* "1..1" nabla_TimeIterator : cond96
+nabla_ContractedIf "1..1" *-- "0..1" nabla_Expression : condition141
+nabla_Expression "0..1" --* "1..1" nabla_If : condition50
+nabla_Connectivity "0..9999" --* "1..1" nabla_NablaModule : connectivities3
+nabla_MultipleConnectivity "0..1" -- "1..1" nabla_MultipleConnectivityCall : connectivity87
+nabla_SingleConnectivity "0..1" -- "1..1" nabla_SingleConnectivityCall : connectivity89
+nabla_Cardinality "1..1" *-- "0..1" nabla_Container : container212
+nabla_Container "0..1" --* "1..1" nabla_SpaceIterator : container71
+nabla_SimpleVar "0..1" --* "1..1" nabla_SpaceIterator : counter68
+nabla_NablaModule "1..1" *-- "0..9999" nabla_VarGroupDeclaration : declarations13
+nabla_NablaModule "1..1" *-- "0..9999" nabla_SimpleVarDefinition : definitions11
+nabla_ContractedIf "1..1" *-- "0..1" nabla_Expression : else_146
+nabla_If "1..1" *-- "0..1" nabla_Instruction : else_55
+nabla_Expression "0..1" --* "1..1" nabla_Parenthesis : expression194
+nabla_Expression "0..1" --* "1..1" nabla_UnaryMinus : expression196
+nabla_Expression "0..1" --* "1..1" nabla_Not : expression198
+nabla_Expression "0..1" --* "1..1" nabla_Return : expression62
+nabla_Function "0..1" -- "1..1" nabla_FunctionCall : function200
+nabla_Function "0..9999" --* "1..1" nabla_NablaModule : functions7
+nabla_Import "0..9999" --* "1..1" nabla_NablaModule : imports0
+nabla_Arg "0..9999" --* "1..1" nabla_FunctionOrReduction : inArgs105
+nabla_BaseType "0..9999" --* "1..1" nabla_Function : inTypes110
+nabla_Connectivity "1..1" -- "0..9999" nabla_ItemType : inTypes23
+nabla_Interval "1..1" *-- "0..1" nabla_SimpleVar : index81
+nabla_ArgOrVarRef "1..1" *-- "0..9999" nabla_Expression : indices135
+nabla_Instruction "0..1" --* "1..1" nabla_Job : instruction29
+nabla_Instruction "0..9999" --* "1..1" nabla_InstructionBlock : instructions42
+nabla_Item "0..1" --* "1..1" nabla_ItemDefinition : item58
+nabla_Item "0..1" --* "1..1" nabla_SpaceIterator : item66
+nabla_Item "0..1" --* "1..1" nabla_SingletonDefinition : item75
+nabla_ItemType "0..9999" --* "1..1" nabla_NablaModule : itemTypes1
+nabla_NablaModule "1..1" *-- "0..1" nabla_TimeIteratorDefinition : iteration15
+nabla_Iterable "1..1" *-- "0..1" nabla_IterationBlock : iterationBlock31
+nabla_TimeIterator "0..9999" --* "1..1" nabla_TimeIteratorDefinition : iterators94
+nabla_Job "0..9999" --* "1..1" nabla_NablaModule : jobs17
+nabla_Expression "0..1" --* "1..1" nabla_Or : left149
+nabla_And "1..1" *-- "0..1" nabla_Expression : left154
+nabla_Equality "1..1" *-- "0..1" nabla_Expression : left159
+nabla_Comparison "1..1" *-- "0..1" nabla_Expression : left164
+nabla_Expression "0..1" --* "1..1" nabla_Plus : left169
+nabla_Expression "0..1" --* "1..1" nabla_Minus : left174
+nabla_Expression "0..1" --* "1..1" nabla_Mul : left179
+nabla_Expression "0..1" --* "1..1" nabla_Modulo : left189
+nabla_Affectation "1..1" *-- "0..1" nabla_ArgOrVarRef : left46
+nabla_Expression "0..1" --* "1..1" nabla_Interval : nbElems83
+nabla_NablaModule "1..1" *-- "0..9999" nabla_OptDefinition : options9
+nabla_Reduction "0..1" -- "1..1" nabla_ReductionCall : reduction122
+nabla_NablaModule "1..1" *-- "0..9999" nabla_Reduction : reductions5
+nabla_BaseType "0..1" --* "1..1" nabla_Function : returnType113
+nabla_Connectivity "1..1" -- "0..1" nabla_ItemType : returnType26
+nabla_Expression "0..1" --* "1..1" nabla_Or : right151
+nabla_And "1..1" *-- "0..1" nabla_Expression : right156
+nabla_Equality "1..1" *-- "0..1" nabla_Expression : right161
+nabla_Comparison "1..1" *-- "0..1" nabla_Expression : right166
+nabla_Expression "0..1" --* "1..1" nabla_Plus : right171
+nabla_Expression "0..1" --* "1..1" nabla_Minus : right176
+nabla_Expression "0..1" --* "1..1" nabla_Mul : right181
+nabla_Div "1..1" *-- "0..1" nabla_Expression : right186
+nabla_Expression "0..1" --* "1..1" nabla_Modulo : right191
+nabla_Affectation "1..1" *-- "0..1" nabla_Expression : right47
+nabla_Expression "0..1" --* "1..1" nabla_Reduction : seed116
+nabla_SingletonDefinition "0..9999" --* "1..1" nabla_SpaceIterator : singletons73
+nabla_BaseType "1..1" *-- "0..9999" nabla_Expression : sizes138
+nabla_ArgOrVarRef "1..1" *-- "0..9999" nabla_ItemRef : spaceIterators132
+nabla_ConnectivityVar "1..1" -- "0..9999" nabla_MultipleConnectivity : supports101
+nabla_ArgOrVar "0..1" -- "1..1" nabla_ArgOrVarRef : target127
+nabla_SetDefinition "0..1" -- "1..1" nabla_SetRef : target64
+nabla_Item "0..1" -- "1..1" nabla_ItemRef : target91
+nabla_TimeIterator "0..1" -- "1..1" nabla_TimeIteratorRef : target99
+nabla_ContractedIf "1..1" *-- "0..1" nabla_Expression : then143
+nabla_If "1..1" *-- "0..1" nabla_Instruction : then52
+nabla_ArgOrVarRef "1..1" *-- "0..9999" nabla_TimeIteratorRef : timeIterators129
+nabla_BaseType "0..1" --* "1..1" nabla_Reduction : type119
+nabla_BaseType "0..1" --* "1..1" nabla_BaseTypeConstant : type205
+nabla_BaseType "0..1" --* "1..1" nabla_VarGroupDeclaration : type38
+nabla_BaseTypeConstant "1..1" *-- "0..1" nabla_Expression : value207
+nabla_Expression "0..1" --* "1..1" nabla_OptDefinition : value21
+nabla_Expression "0..1" --* "1..1" nabla_SimpleVarDefinition : value35
+nabla_ItemDefinition "1..1" *-- "0..1" nabla_SingleConnectivityCall : value59
+nabla_MultipleConnectivityCall "0..1" --* "1..1" nabla_SetDefinition : value61
+nabla_SingleConnectivityCall "0..1" --* "1..1" nabla_SingletonDefinition : value78
+nabla_Expression "0..9999" --* "1..1" nabla_VectorConstant : values210
+nabla_OptDefinition "1..1" *-- "0..1" nabla_SimpleVar : variable19
+nabla_SimpleVar "0..1" --* "1..1" nabla_SimpleVarDefinition : variable32
+nabla_Var "0..9999" --* "1..1" nabla_VarGroupDeclaration : variables40
+nabla_FunctionOrReduction "1..1" *-- "0..9999" nabla_SimpleVar : vars103
+@enduml

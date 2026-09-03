@@ -1,0 +1,25 @@
+@startuml
+class AClass {
+}
+class BClass {
+}
+class testModel_AClass {
+  + AClassAttr1 : bool
+  + AClassAttr2 : str
+}
+class testModel_BClass {
+  + BClassAttr1 : bool
+  + BClassAttr2 : str
+}
+class testModel_CClass {
+  + CClassAttr1 : bool
+  + CClassAttr2 : str
+}
+class testModel_EObject {
+}
+AClass <|-- testModel_BClass
+BClass <|-- testModel_CClass
+testModel_AClass "1..1" *-- "0..1" testModel_BClass : AClassRef10
+testModel_BClass "1..1" *-- "0..9999" testModel_CClass : BClassRef11
+testModel_CClass "1..1" -- "0..1" testModel_EObject : CClassRef13
+@enduml

@@ -1,0 +1,90 @@
+@startuml
+class Brindar_consultoria_external {
+}
+class Clasificar_Producto_external {
+}
+class Cliente_Actor {
+}
+class Contabilidad_y_Tesoreria_Actor {
+}
+class Departamento_de_Inventarios_y_Suministros_DIS_Component {
+}
+class Dependencia {
+  + codigo : str
+  + nombre : str
+  + responsable : str
+}
+class Dependencia_Actor {
+}
+class Elementos {
+  + clasificacion : str
+  + referencia : str
+}
+class Entregar_productos_external {
+}
+class Factura {
+  + codigo : str
+  + fecha : str
+}
+class Juridica_Actor {
+}
+class LogicaPresentacion_Factura_Component {
+}
+class Millenium_Component {
+}
+class Natural_Actor {
+}
+class Ordenes_Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Persistencia_Factura_Component {
+}
+class Proveedor {
+  + direccion : str
+  + nit : str
+  + razonSocial : str
+  + telefonos : str
+}
+class Proveedores_Actor {
+}
+class Recibir_ordenes_de_suministro_external {
+}
+class Recibir_productos_o_pedidos_external {
+}
+class Registrar_proveedores_external {
+}
+class Responsable_Inventario_Actor {
+}
+class ServidorBSD_Node {
+}
+class ServidorWEB_Node {
+}
+class Servidor_intel_I8_Node {
+}
+class Sistema_WEB_Movil___Recepcion_de_Pedidos_Component {
+}
+class Solicitud_Suministros {
+  + codigo : str
+  + fecha : str
+}
+Brindar_consultoria_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_consultoria
+Dependencia_Actor "0..1" -- "0..1" Entregar_productos_external : Dependencia_Entregar_productos
+Dependencia "1..1" -- "1..9999" Solicitud_Suministros : Dependencia_Solicitud_Suministros
+Elementos "1..9999" -- "0..9999" Factura : Elementos_Factura
+Elementos "1..9999" -- "0..9999" Solicitud_Suministros : Elementos_Solicitud_Suministros
+Elementos "1..9999" -- "0..9999" Ordenes_Pedidos : Ordenes_Pedidos_Elementos
+Ordenes_Pedidos "0..9999" -- "0..1" Proveedor : Ordenes_Pedidos_Proveedor
+Factura "0..1" -- "0..1" Proveedor : Proveedor_Factura
+Pedidos "0..9999" -- "1..1" Proveedor : Proveedor_Pedidos
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_UseCase2
+Contabilidad_y_Tesoreria_Actor "0..1" -- "0..1" Registrar_proveedores_external : Registrar_proveedores_Contabilidad_y_Tesoreria
+Clasificar_Producto_external "0..1" -- "0..1" Responsable_Inventario_Actor : Responsable_Inventario_Clasificar_Producto
+Ordenes_Pedidos "0..1" -- "1..9999" Solicitud_Suministros : Solicitud_Suministros_Ordenes_Pedidos
+Dependencia_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministro_external : UseCase_Dependencia
+@enduml

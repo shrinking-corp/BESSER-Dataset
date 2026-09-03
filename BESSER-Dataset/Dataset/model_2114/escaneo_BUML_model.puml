@@ -1,0 +1,55 @@
+@startuml
+enum EAttackMethod {
+  Authentication
+  Authorization
+  PrivilegeScalation
+  SQLInjection
+  XSS
+}
+enum ESeverity {
+  High
+  Low
+  Medium
+}
+class securityTest_Attack {
+  + name : str
+  + severity : str
+}
+class securityTest_AuthSetting {
+  + loginMessagePattern : str
+  + loginTargetURL : str
+  + logoutMessagePattern : str
+  + passwordParam : str
+  + roles : str
+  + usernameParam : str
+}
+class securityTest_Input {
+  + name : str
+}
+class securityTest_Note {
+  + noteText : str
+}
+class securityTest_TargetOfEvaluation {
+  + domain : str
+  + ip : str
+  + port : str
+  + protocol : str
+}
+class securityTest_Test {
+  + date : date
+  + id : str
+  + name : str
+  + severity : str
+}
+class securityTest_WebComponent {
+  + path : str
+}
+securityTest_Attack "0..9999" -- "1..1" securityTest_Input : attacks14
+securityTest_AuthSetting "0..1" --* "1..1" securityTest_Test : authSetting5
+securityTest_TargetOfEvaluation "1..1" *-- "1..9999" securityTest_WebComponent : components7
+securityTest_Input "0..9999" --* "1..1" securityTest_WebComponent : inputs12
+securityTest_Note "0..1" --* "1..1" securityTest_Test : note3
+securityTest_Attack "1..9999" --* "1..1" securityTest_Test : possibleAttacks1
+securityTest_TargetOfEvaluation "1..1" --* "1..1" securityTest_Test : scope0
+securityTest_WebComponent "1..1" -- "0..9999" securityTest_WebComponent : targetLinks10
+@enduml

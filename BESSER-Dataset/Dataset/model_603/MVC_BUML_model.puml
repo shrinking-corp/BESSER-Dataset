@@ -1,0 +1,103 @@
+@startuml
+class Annotable {
+}
+enum AssociationType {
+}
+class UIComponent {
+}
+class mvc_Action {
+  + name : str
+}
+class mvc_Association {
+  + containment : bool
+  + lowerBound : int
+  + name : str
+  + type : str
+  + upperBound : int
+}
+class mvc_Attribute {
+  + name : str
+  + type : str
+}
+class mvc_Component {
+  + name : str
+}
+class mvc_Controller {
+  + name : str
+}
+class mvc_ControllerView {
+}
+class mvc_Entity {
+  + name : str
+}
+class mvc_Event {
+  + name : str
+}
+class mvc_EventAction {
+}
+class mvc_MVCModel {
+  + name : str
+  + version : str
+}
+class mvc_Model {
+  + name : str
+}
+class mvc_UIActions {
+}
+abstract class mvc_UIComponent {
+  + name : str
+  + type : str
+}
+class mvc_UIInput {
+}
+class mvc_UILayout {
+  + columns : int
+  + orientation : str
+}
+class mvc_View {
+  + name : str
+}
+Annotable <|-- mvc_Action
+Annotable <|-- mvc_Association
+Annotable <|-- mvc_Attribute
+Annotable <|-- mvc_Component
+Annotable <|-- mvc_Controller
+Annotable <|-- mvc_ControllerView
+Annotable <|-- mvc_Entity
+Annotable <|-- mvc_Event
+Annotable <|-- mvc_EventAction
+Annotable <|-- mvc_MVCModel
+Annotable <|-- mvc_Model
+Annotable <|-- mvc_UIComponent
+Annotable <|-- mvc_View
+UIComponent <|-- mvc_UIActions
+UIComponent <|-- mvc_UIInput
+UIComponent <|-- mvc_UILayout
+mvc_Action "1..1" -- "1..1" mvc_EventAction : action50
+mvc_Action "0..9999" --* "1..1" mvc_Controller : actions26
+mvc_Association "0..9999" --* "1..1" mvc_Model : associations1
+mvc_Attribute "0..9999" --* "1..1" mvc_Entity : attributes3
+mvc_Component "1..9999" --* "1..1" mvc_MVCModel : components24
+mvc_UIComponent "0..9999" --* "1..1" mvc_UILayout : components56
+mvc_Controller "0..9999" --* "1..1" mvc_MVCModel : controllers22
+mvc_Component "1..1" -- "1..9999" mvc_Controller : controllers47
+mvc_Controller "1..1" *-- "0..9999" mvc_EventAction : eventActions30
+mvc_Event "0..9999" --* "1..1" mvc_MVCModel : events20
+mvc_Event "0..9999" -- "1..1" mvc_EventAction : events53
+mvc_Entity "0..9999" -- "1..1" mvc_Entity : extends6
+mvc_UILayout "1..1" -- "0..9999" mvc_View : importView58
+mvc_MVCModel "1..1" *-- "0..9999" mvc_Model : models15
+mvc_ControllerView "1..1" -- "0..9999" mvc_Model : models44
+mvc_Action "1..1" -- "0..1" mvc_Event : postExecutionEvent35
+mvc_Action "1..1" -- "0..1" mvc_Event : preExecutionEvent32
+mvc_UILayout "0..1" --* "1..1" mvc_View : rootComponent14
+mvc_Entity "0..1" --* "1..1" mvc_Model : rootEntity0
+mvc_Association "1..1" -- "1..1" mvc_Entity : source8
+mvc_Association "1..1" -- "1..1" mvc_Entity : target11
+mvc_Event "0..1" -- "1..1" mvc_UIActions : triggerEvent63
+mvc_Action "1..1" -- "0..9999" mvc_Event : triggerEvents38
+mvc_Attribute "0..1" -- "1..1" mvc_UIInput : value61
+mvc_ControllerView "1..1" -- "1..1" mvc_View : view41
+mvc_MVCModel "1..1" *-- "0..9999" mvc_View : views17
+mvc_Controller "1..1" *-- "0..9999" mvc_ControllerView : views28
+@enduml

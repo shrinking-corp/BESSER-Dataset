@@ -1,0 +1,68 @@
+@startuml
+class Feature {
+}
+class Relation {
+}
+class Type {
+}
+class metamodel_AssociationEntity {
+}
+class metamodel_DatabaseConnection {
+  + jdbcDriver : str
+  + jdbcPassword : str
+  + jdbcPrefix : str
+  + jdbcUrl : str
+  + jdbcUser : str
+  + persistenceUnit : str
+}
+class metamodel_Datatype {
+}
+class metamodel_Entity {
+}
+class metamodel_Feature {
+  + name : str
+  + nullable : bool
+  + xmltransient : bool
+}
+class metamodel_ManyToMany {
+}
+class metamodel_Model {
+  + name : str
+}
+class metamodel_OneToMany {
+}
+class metamodel_OneToOne {
+}
+abstract class metamodel_Relation {
+  + optional : bool
+  + unidirectional : bool
+}
+abstract class metamodel_Type {
+  + name : str
+}
+class metamodel_idFeature {
+  + generationType : str
+}
+Feature <|-- metamodel_idFeature
+Relation <|-- metamodel_ManyToMany
+Relation <|-- metamodel_OneToMany
+Relation <|-- metamodel_OneToOne
+Type <|-- metamodel_AssociationEntity
+Type <|-- metamodel_Datatype
+Type <|-- metamodel_Entity
+Type <|-- metamodel_Relation
+metamodel_AssociationEntity "0..1" -- "1..1" metamodel_Relation : associates21
+metamodel_Entity "1..1" -- "0..9999" metamodel_Entity : bequeathesTo12
+metamodel_DatabaseConnection "0..1" --* "1..1" metamodel_Model : connector1
+metamodel_AssociationEntity "1..1" *-- "0..9999" metamodel_Feature : features22
+metamodel_Entity "1..1" *-- "0..9999" metamodel_Feature : features3
+metamodel_Entity "1..1" *-- "1..1" metamodel_idFeature : featuresId7
+metamodel_Entity "1..1" -- "0..1" metamodel_Entity : inherits10
+metamodel_Entity "1..1" -- "0..9999" metamodel_Relation : ownedBy5
+metamodel_Entity "1..1" -- "1..1" metamodel_Relation : owner17
+metamodel_Entity "1..1" -- "0..9999" metamodel_Relation : owns4
+metamodel_AssociationEntity "1..1" -- "1..1" metamodel_Relation : relation24
+metamodel_Entity "1..1" -- "1..1" metamodel_Relation : slave19
+metamodel_Feature "1..1" -- "0..1" metamodel_Type : type14
+metamodel_Model "1..1" *-- "0..9999" metamodel_Type : types0
+@enduml

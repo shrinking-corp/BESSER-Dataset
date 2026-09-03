@@ -1,0 +1,94 @@
+@startuml
+class Brindar_consultor_a_external {
+}
+class Clasificar_producto_external {
+}
+class Cliente_Actor {
+}
+class Contabilidad_y_Tesorer_a_Actor {
+}
+class Departamento_de_Inventarios_y_Suministros_DIS_Component {
+}
+class Dependencia {
+  + codgio : str
+  + nombre : str
+  + reponsable : str
+}
+class Dependencias_Actor {
+}
+class Elementos {
+  + clasificacion : str
+  + referencia : str
+}
+class Entregar_productos_external {
+}
+class Factura {
+  + codigo : str
+  + fecha : str
+}
+class Juridica_Actor {
+}
+class Millenium_S_A_Component {
+}
+class Natural_Actor {
+}
+class Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Persistencia_Factura_Component {
+}
+class Proveedor {
+  + direccion : str
+  + nit : str
+  + razonSocial : str
+  + telefono : str
+}
+class Proveedores_Actor {
+}
+class Recibir_ordenes_de_suministros_external {
+}
+class Recibir_productos_o_pedidos_external {
+}
+class Registrar_Proveedores_external {
+}
+class Responsable_inventariorio_Actor {
+}
+class Revisi_n_de_factura_external {
+}
+class ServidoWeb_Node {
+}
+class ServidorBD_Node {
+}
+class Servidor_Intel_i9_Node {
+}
+class Sistema_WEB_Movil___Recepci_n_de_pedidos_Component {
+}
+class SolicitudSuministro {
+  + fecha : str
+  + solicitud : str
+}
+class _rdenesPedido {
+  + codigo : str
+  + fecha : str
+}
+class logicaPresentacion_Factura_Component {
+}
+Juridica_Actor "0..1" -- "0..1" Natural_Actor : Actor_Actor2
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Actor_Recibir_productos
+Proveedores_Actor "0..1" -- "0..1" Registrar_Proveedores_external : Actor_Registrar_Proveedores
+Brindar_consultor_a_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_consultor_a
+Elementos "1..9999" -- "0..9999" _rdenesPedido : Conforma
+Dependencias_Actor "0..1" -- "0..1" Entregar_productos_external : Dependencias_Entregar_productos
+Dependencias_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministros_external : Dependencias_Recibir_ordenes_de_suministros
+Pedidos "0..9999" -- "1..1" Proveedor : Provee
+Contabilidad_y_Tesorer_a_Actor "0..1" -- "0..1" Registrar_Proveedores_external : Registrar_Proveedores_Contabilidad_y_Tesorer_a
+Clasificar_producto_external "0..1" -- "0..1" Responsable_inventariorio_Actor : Responsable_inventariorio_Clasificar_producto
+Responsable_inventariorio_Actor "0..1" -- "0..1" Revisi_n_de_factura_external : Responsable_inventariorio_Revisi_n_de_factura
+Factura "0..9999" -- "1..1" Proveedor : elabora
+Proveedor "1..1" -- "0..9999" _rdenesPedido : es_enviado
+Elementos "1..9999" -- "0..9999" Factura : factura
+SolicitudSuministro "1..9999" -- "0..1" _rdenesPedido : genera
+Dependencia "1..1" -- "1..9999" SolicitudSuministro : realiza
+Elementos "0..1" -- "0..1" SolicitudSuministro : relaciona
+@enduml

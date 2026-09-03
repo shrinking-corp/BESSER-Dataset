@@ -1,0 +1,105 @@
+@startuml
+class ArithmeticInfixOperator {
+}
+class BinaryOperator {
+}
+class ComparsionOperator {
+}
+class Expression {
+}
+class FunctionCallStatement {
+}
+class Statement {
+}
+abstract class behaviouralProgramMM_ArithmeticInfixOperator {
+}
+class behaviouralProgramMM_Assignment {
+  + VariableName : str
+}
+class behaviouralProgramMM_Behaviour {
+}
+abstract class behaviouralProgramMM_BinaryOperator {
+}
+abstract class behaviouralProgramMM_ComparsionOperator {
+}
+class behaviouralProgramMM_ConditionalBranch {
+}
+class behaviouralProgramMM_Equals {
+}
+abstract class behaviouralProgramMM_Expression {
+}
+class behaviouralProgramMM_Function {
+  + Name : str
+}
+class behaviouralProgramMM_FunctionCall {
+  + FuncName : str
+}
+class behaviouralProgramMM_FunctionCallStatement {
+  + FuncName : str
+}
+class behaviouralProgramMM_Instantiation {
+  + VarName : str
+  + VarType : str
+}
+class behaviouralProgramMM_Literal {
+  + Value : str
+}
+class behaviouralProgramMM_Loop {
+}
+class behaviouralProgramMM_Plus {
+}
+class behaviouralProgramMM_RaiseException {
+}
+class behaviouralProgramMM_ReadLine {
+}
+class behaviouralProgramMM_ReadLineStatement {
+}
+class behaviouralProgramMM_Return {
+}
+abstract class behaviouralProgramMM_Statement {
+}
+class behaviouralProgramMM_TryCatch {
+}
+class behaviouralProgramMM_Variable {
+  + VarName : str
+}
+class behaviouralProgramMM_WriteLineStatement {
+}
+ArithmeticInfixOperator <|-- behaviouralProgramMM_Plus
+BinaryOperator <|-- behaviouralProgramMM_ArithmeticInfixOperator
+BinaryOperator <|-- behaviouralProgramMM_ComparsionOperator
+ComparsionOperator <|-- behaviouralProgramMM_Equals
+Expression <|-- behaviouralProgramMM_BinaryOperator
+Expression <|-- behaviouralProgramMM_FunctionCall
+Expression <|-- behaviouralProgramMM_Literal
+Expression <|-- behaviouralProgramMM_ReadLine
+Expression <|-- behaviouralProgramMM_Variable
+FunctionCallStatement <|-- behaviouralProgramMM_ReadLineStatement
+FunctionCallStatement <|-- behaviouralProgramMM_WriteLineStatement
+Statement <|-- behaviouralProgramMM_Assignment
+Statement <|-- behaviouralProgramMM_ConditionalBranch
+Statement <|-- behaviouralProgramMM_FunctionCallStatement
+Statement <|-- behaviouralProgramMM_Instantiation
+Statement <|-- behaviouralProgramMM_Loop
+Statement <|-- behaviouralProgramMM_RaiseException
+Statement <|-- behaviouralProgramMM_Return
+Statement <|-- behaviouralProgramMM_TryCatch
+behaviouralProgramMM_ConditionalBranch "1..1" *-- "0..9999" behaviouralProgramMM_Statement : Ifstatements7
+behaviouralProgramMM_Expression "0..1" --* "1..1" behaviouralProgramMM_Instantiation : InitiationExpression22
+behaviouralProgramMM_Expression "0..9999" --* "1..1" behaviouralProgramMM_FunctionCall : arguments20
+behaviouralProgramMM_Expression "0..9999" --* "1..1" behaviouralProgramMM_FunctionCallStatement : arguments33
+behaviouralProgramMM_Assignment "1..1" *-- "1..1" behaviouralProgramMM_Expression : assignexpression6
+behaviouralProgramMM_Statement "0..9999" --* "1..1" behaviouralProgramMM_TryCatch : catch26
+behaviouralProgramMM_ConditionalBranch "1..1" *-- "0..9999" behaviouralProgramMM_Statement : elsestatements9
+behaviouralProgramMM_Expression "1..1" --* "1..1" behaviouralProgramMM_Return : expression24
+behaviouralProgramMM_Expression "1..1" --* "1..1" behaviouralProgramMM_RaiseException : expression31
+behaviouralProgramMM_Function "1..1" *-- "0..9999" behaviouralProgramMM_Statement : functionBody4
+behaviouralProgramMM_Behaviour "1..1" *-- "1..9999" behaviouralProgramMM_Function : functions0
+behaviouralProgramMM_ConditionalBranch "1..1" *-- "1..1" behaviouralProgramMM_Expression : ifexpression12
+behaviouralProgramMM_BinaryOperator "1..1" *-- "1..1" behaviouralProgramMM_Expression : leftSide35
+behaviouralProgramMM_Expression "1..1" --* "1..1" behaviouralProgramMM_Loop : loopexpression17
+behaviouralProgramMM_Loop "1..1" *-- "0..9999" behaviouralProgramMM_Statement : loopstatements15
+behaviouralProgramMM_BinaryOperator "1..1" *-- "1..1" behaviouralProgramMM_Expression : rightSide37
+behaviouralProgramMM_Behaviour "1..1" -- "1..1" behaviouralProgramMM_Function : startfunction1
+behaviouralProgramMM_Statement "0..9999" --* "1..1" behaviouralProgramMM_TryCatch : try_28
+@enduml

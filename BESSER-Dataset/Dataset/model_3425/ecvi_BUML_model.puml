@@ -1,0 +1,284 @@
+@startuml
+enum DocType {
+  Other
+  PDFCVI
+  PDFTestChart
+  ScannedPaperCVI
+  ScannedTestChart
+}
+enum ISO3166Country {
+  USA
+}
+enum MovementPurpose {
+  breeding
+  feeding
+  grazing
+  medicalTreatment
+  other
+  pet
+  race
+  rodeo
+  sale
+  show
+  slaughter
+  training
+}
+enum PhoneDevice {
+  Cellphone
+  Fax
+  Landline
+  Unknown
+}
+enum ProgramStatusName {
+  BovineTuberculosis
+  BrucellosisHerd
+  BrucellosisState
+}
+enum ProgramStatusValue {
+  Free
+  ModifiedAccredited
+  ModifiedAdvancedAccredited
+  Other
+}
+enum ResultName {
+  COMMENT
+  RESULT
+}
+enum Sex {
+  Female
+  GenderUnknown
+  Male
+  NeuteredMale
+  Other
+  SpayedFemale
+  TrueHermaphrodite
+}
+enum SpeciesCode {
+  BOV
+  CAP
+  CER
+  EQU
+  OVI
+  POR
+  UNK
+}
+enum TagType {
+  AIN
+  AMID
+  BRAND
+  BRANDIMAGE
+  BT
+  IMP
+  MGT
+  N840RFID
+  NAME
+  NPIN
+  NUES8
+  NUES9
+  OFORID
+  OTH
+  SGFLID
+  TAT
+  UN
+}
+enum UsState {
+  AA
+  AE
+  AK
+  AL
+  AP
+  AR
+  AS
+  AZ
+  CA
+  CO
+  CT
+  DC
+  DE
+  FL
+  FM
+  GA
+  GU
+  HI
+  IA
+  ID
+  IL
+  IN
+  KS
+  KY
+  LA
+  MA
+  MD
+  ME
+  MH
+  MI
+  MN
+  MO
+  MP
+  MS
+  MT
+  NC
+  ND
+  NE
+  NH
+  NJ
+  NM
+  NV
+  NY
+  OH
+  OK
+  OR
+  PA
+  PR
+  PW
+  RI
+  SC
+  SD
+  TN
+  TX
+  UT
+  VA
+  VI
+  VT
+  WA
+  WI
+  WV
+  WY
+}
+class ecvi_Accession {
+  + id : str
+  + infieldTest : str
+}
+class ecvi_Accessions {
+}
+class ecvi_Address {
+  + country : str
+  + county : str
+  + line1 : str
+  + line2 : str
+  + state : str
+  + town : str
+  + zIP : str
+}
+class ecvi_Animal {
+  + age : str
+  + breed : str
+  + inspectionDate : str
+  + sex : str
+  + sexDetail : str
+}
+class ecvi_AnimalTag {
+  + brandImage : str
+  + number : str
+  + type : str
+}
+class ecvi_Attachement {
+  + comment : str
+  + docType : str
+  + filename : str
+  + mimeType : str
+  + payload : str
+}
+class ecvi_Contact {
+  + premId : str
+  + premName : str
+}
+class ecvi_DocumentRoot {
+  + mixed : str
+}
+class ecvi_EStringToStringMapEntry {
+}
+class ecvi_Ecvi {
+  + cviNumber : str
+  + entryPermitNumber : str
+  + expirationDate : str
+  + group : str
+  + group1 : str
+  + issueDate : str
+  + shipmentDate : str
+  + speciesCode : str
+}
+class ecvi_GeoPoint {
+  + lat : str
+  + lng : str
+}
+class ecvi_GroupLot {
+  + age : str
+  + breed : str
+  + description : str
+  + quantity : str
+  + sex : str
+  + sexDetail : str
+  + species : str
+  + unit : str
+}
+class ecvi_Laboratory {
+  + accessionDate : str
+  + accessionNumber : str
+  + labName : str
+  + premId : str
+}
+class ecvi_MovementPurposes {
+  + movementPurpose : str
+}
+class ecvi_Person {
+  + name : str
+}
+class ecvi_PhoneNum {
+  + comment : str
+  + number : str
+  + type : str
+}
+class ecvi_Premises {
+  + premId : str
+  + premName : str
+}
+class ecvi_ProgramStatus {
+  + name : str
+  + value : str
+  + valueOther : str
+}
+class ecvi_ResultValue {
+  + resultFloat : str
+  + resultInteger : str
+  + resultName : str
+  + resultString : str
+}
+class ecvi_Test {
+  + idref : str
+  + testCode : str
+}
+class ecvi_Veterinarian {
+  + licenseIssueState : str
+  + licenseNumber : str
+  + nationalAccreditationNumber : str
+}
+ecvi_Accession "1..9999" --* "1..1" ecvi_Accessions : accession1
+ecvi_Accessions "0..1" --* "1..1" ecvi_Ecvi : accessions32
+ecvi_Address "0..1" --* "1..1" ecvi_Laboratory : address42
+ecvi_Address "1..1" --* "1..1" ecvi_Premises : address47
+ecvi_Address "0..1" --* "1..1" ecvi_Veterinarian : address60
+ecvi_Address "0..1" --* "1..1" ecvi_Contact : address7
+ecvi_Animal "0..9999" --* "1..1" ecvi_Ecvi : animal35
+ecvi_Animal "1..1" *-- "1..6" ecvi_AnimalTag : animalTag4
+ecvi_Attachement "0..9999" --* "1..1" ecvi_Ecvi : attachment40
+ecvi_Contact "0..1" --* "1..1" ecvi_Ecvi : consignee29
+ecvi_Contact "0..1" --* "1..1" ecvi_Ecvi : consignor26
+ecvi_Ecvi "1..1" *-- "1..1" ecvi_Premises : destination23
+ecvi_DocumentRoot "1..1" *-- "0..9999" ecvi_Ecvi : eCVI15
+ecvi_Address "1..1" *-- "0..1" ecvi_GeoPoint : geoPoint3
+ecvi_Ecvi "1..1" *-- "0..9999" ecvi_GroupLot : groupLot38
+ecvi_Accession "1..1" *-- "1..1" ecvi_Laboratory : laboratory0
+ecvi_Ecvi "1..1" *-- "1..1" ecvi_MovementPurposes : movementPurposes19
+ecvi_Ecvi "1..1" *-- "1..1" ecvi_Premises : origin21
+ecvi_Person "1..9999" --* "1..1" ecvi_Premises : person52
+ecvi_Person "1..1" --* "1..1" ecvi_Veterinarian : person57
+ecvi_Contact "1..1" *-- "1..9999" ecvi_Person : person9
+ecvi_Person "1..1" *-- "0..9999" ecvi_PhoneNum : phone45
+ecvi_Premises "1..1" *-- "0..9999" ecvi_ProgramStatus : programStatus50
+ecvi_ResultValue "1..9999" --* "1..1" ecvi_Test : result55
+ecvi_Animal "1..1" *-- "0..9999" ecvi_Test : test5
+ecvi_Ecvi "1..1" *-- "1..1" ecvi_Veterinarian : veterinarian17
+ecvi_DocumentRoot "1..1" *-- "0..9999" ecvi_EStringToStringMapEntry : xMLNSPrefixMap11
+ecvi_DocumentRoot "1..1" *-- "0..9999" ecvi_EStringToStringMapEntry : xSISchemaLocation12
+@enduml

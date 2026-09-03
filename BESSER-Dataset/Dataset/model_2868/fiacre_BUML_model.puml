@@ -1,0 +1,52 @@
+@startuml
+class EModelElement {
+}
+class State {
+}
+class fiacre_Component {
+  + ID : str
+}
+class fiacre_DataType {
+}
+class fiacre_Init {
+  + Assignment() : void
+}
+class fiacre_Process {
+  + ID : str
+}
+class fiacre_Program {
+}
+class fiacre_State {
+  + ID : str
+  + StateInvariant() : void
+}
+class fiacre_Transition {
+  + Action() : void
+  + Guard() : void
+  + Trigger() : void
+}
+class fiacre_Variable {
+  + ID : str
+}
+EModelElement <|-- fiacre_Component
+EModelElement <|-- fiacre_DataType
+EModelElement <|-- fiacre_Process
+EModelElement <|-- fiacre_Program
+EModelElement <|-- fiacre_State
+EModelElement <|-- fiacre_Transition
+EModelElement <|-- fiacre_Variable
+State <|-- fiacre_Init
+fiacre_Component "0..9999" --* "1..1" fiacre_Program : component14
+fiacre_Component "0..9999" -- "1..1" fiacre_Variable : component8
+fiacre_DataType "0..1" -- "1..1" fiacre_Variable : datatype6
+fiacre_Component "1..1" *-- "0..9999" fiacre_Process : process10
+fiacre_Process "0..9999" --* "1..1" fiacre_Program : process19
+fiacre_Process "0..9999" -- "1..1" fiacre_Variable : process7
+fiacre_Process "1..1" *-- "0..9999" fiacre_State : state1
+fiacre_State "0..9999" -- "1..1" fiacre_Transition : state5
+fiacre_State "1..1" -- "0..9999" fiacre_Transition : transition0
+fiacre_Process "1..1" *-- "0..9999" fiacre_Transition : transition2
+fiacre_Component "1..1" -- "0..9999" fiacre_Variable : variable12
+fiacre_Program "1..1" *-- "0..9999" fiacre_Variable : variable16
+fiacre_Process "1..1" -- "0..9999" fiacre_Variable : variable4
+@enduml

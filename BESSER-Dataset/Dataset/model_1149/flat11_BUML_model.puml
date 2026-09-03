@@ -1,0 +1,104 @@
+@startuml
+enum KindType {
+  assignment
+  comments
+  guard
+  invariant
+  select
+  synchronisation
+}
+class flat11_CommittedType {
+}
+class flat11_DocumentRoot {
+  + declaration : str
+  + imports : str
+  + instantiation : str
+  + mixed : str
+  + system : str
+}
+class flat11_EStringToStringMapEntry {
+}
+class flat11_InitType {
+  + ref : str
+}
+class flat11_LabelType {
+  + kind : str
+  + value : str
+  + x : str
+  + y : str
+}
+class flat11_LocationType {
+  + color : str
+  + id : str
+  + x : str
+  + y : str
+}
+class flat11_NailType {
+  + x : str
+  + y : str
+}
+class flat11_NameType {
+  + value : str
+  + x : str
+  + y : str
+}
+class flat11_NtaType {
+  + declaration : str
+  + imports : str
+  + instantiation : str
+  + system : str
+}
+class flat11_ParameterType {
+  + value : str
+  + x : str
+  + y : str
+}
+class flat11_SourceType {
+  + ref : str
+}
+class flat11_TargetType {
+  + ref : str
+}
+class flat11_TemplateType {
+  + declaration : str
+}
+class flat11_TransitionType {
+  + action : str
+  + color : str
+  + controllable : str
+  + id : str
+  + x : str
+  + y : str
+}
+class flat11_UrgentType {
+}
+flat11_CommittedType "0..1" --* "1..1" flat11_LocationType : committed39
+flat11_CommittedType "0..9999" --* "1..1" flat11_DocumentRoot : committed4
+flat11_InitType "0..1" --* "1..1" flat11_TemplateType : init54
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_InitType : init6
+flat11_LabelType "0..9999" --* "1..1" flat11_LocationType : label33
+flat11_LabelType "0..9999" --* "1..1" flat11_TransitionType : label66
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_LabelType : label8
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_LocationType : location10
+flat11_LocationType "0..9999" --* "1..1" flat11_TemplateType : location51
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_NailType : nail12
+flat11_NailType "0..9999" --* "1..1" flat11_TransitionType : nail69
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_NameType : name14
+flat11_LocationType "1..1" *-- "0..1" flat11_NameType : name30
+flat11_NameType "1..1" --* "1..1" flat11_TemplateType : name45
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_NtaType : nta16
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_ParameterType : parameter18
+flat11_ParameterType "0..1" --* "1..1" flat11_TemplateType : parameter48
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_SourceType : source20
+flat11_SourceType "1..1" --* "1..1" flat11_TransitionType : source60
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_TargetType : target22
+flat11_TargetType "1..1" --* "1..1" flat11_TransitionType : target63
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_TemplateType : template24
+flat11_NtaType "1..1" *-- "1..9999" flat11_TemplateType : template42
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_TransitionType : transition26
+flat11_TemplateType "1..1" *-- "0..9999" flat11_TransitionType : transition57
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_UrgentType : urgent28
+flat11_LocationType "1..1" *-- "0..1" flat11_UrgentType : urgent36
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_EStringToStringMapEntry : xMLNSPrefixMap0
+flat11_DocumentRoot "1..1" *-- "0..9999" flat11_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

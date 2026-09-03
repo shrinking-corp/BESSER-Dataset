@@ -1,0 +1,50 @@
+@startuml
+class Event {
+}
+class FTElement {
+}
+class Gate {
+}
+class ProbabalisticEvent {
+}
+class faultTree_AND_Gate {
+}
+class faultTree_BasicEvent {
+}
+class faultTree_Connector {
+}
+class faultTree_Event {
+  + description : str
+  + title : str
+}
+class faultTree_ExternalEvent {
+}
+abstract class faultTree_FTElement {
+}
+class faultTree_FaultTree {
+}
+abstract class faultTree_Gate {
+}
+class faultTree_IntermediateEvent {
+}
+class faultTree_OR_Gate {
+}
+abstract class faultTree_ProbabalisticEvent {
+  + probability : float
+}
+class faultTree_UndevelopedEvent {
+}
+Event <|-- faultTree_IntermediateEvent
+Event <|-- faultTree_ProbabalisticEvent
+FTElement <|-- faultTree_Connector
+FTElement <|-- faultTree_Event
+FTElement <|-- faultTree_FaultTree
+FTElement <|-- faultTree_Gate
+Gate <|-- faultTree_AND_Gate
+Gate <|-- faultTree_OR_Gate
+ProbabalisticEvent <|-- faultTree_BasicEvent
+ProbabalisticEvent <|-- faultTree_ExternalEvent
+ProbabalisticEvent <|-- faultTree_UndevelopedEvent
+faultTree_Connector "1..1" -- "0..1" faultTree_FTElement : source0
+faultTree_Connector "1..1" -- "0..1" faultTree_FTElement : target1
+@enduml

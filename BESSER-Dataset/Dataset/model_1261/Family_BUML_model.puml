@@ -1,0 +1,31 @@
+@startuml
+class Family {
+}
+enum Sexe {
+  FEMALE
+  MALE
+}
+class family_Address {
+  + street : str
+}
+class family_Car {
+  + numberOfSeats : str
+}
+class family_Family {
+  + favoriteHolidayDestinations : str
+  + hasASwimmingPool : bool
+  + numberOfPets : int
+  + surname : str
+}
+class family_Person {
+  + firstName : str
+  + sexe : str
+}
+class family_WealthyFamily {
+  + forbesRanking : int
+}
+Family <|-- family_WealthyFamily
+family_Address "0..1" --* "1..1" family_Family : address1
+family_Family "1..1" *-- "1..9999" family_Person : members0
+family_Car "0..9999" --* "1..1" family_Person : ownedCars3
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+enum Gender {
+  FEMALE
+  MALE
+  UNKNOWN
+}
+class test_AddressModel {
+  + differentPostAddress : bool
+  + houseNumber : str
+  + street : str
+  + validFrom : date
+  + validTo : date
+  + zipCode : str
+}
+class test_ConfigurationModel {
+}
+class test_TestModel {
+  + accountBalance : str
+  + age : int
+  + birthDate : date
+  + childCount : str
+  + gender : str
+  + isSelectable : str
+  + name : str
+  + overdrawAccount : str
+}
+test_AddressModel "1..1" --* "1..1" test_TestModel : address0
+test_ConfigurationModel "1..1" *-- "1..1" test_TestModel : testModel3
+test_ConfigurationModel "1..1" *-- "0..9999" test_TestModel : testModels1
+@enduml

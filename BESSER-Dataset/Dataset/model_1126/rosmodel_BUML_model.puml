@@ -1,0 +1,111 @@
+@startuml
+enum Datatype {
+  float32
+  float64
+  int16
+  int32
+  int64
+  int8
+  msg
+  string
+}
+class rosmodel_Action {
+  + name : str
+}
+class rosmodel_ActionClient {
+  + name : str
+}
+class rosmodel_ActionMessage {
+  + name : str
+}
+class rosmodel_ActionServer {
+  + name : str
+}
+class rosmodel_Event {
+  + name : str
+}
+class rosmodel_Field {
+  + name : str
+  + type : str
+}
+class rosmodel_Message {
+  + name : str
+}
+class rosmodel_Node {
+  + frequency : float
+  + name : str
+}
+class rosmodel_Package {
+  + author : str
+  + author_email : str
+  + depends : str
+  + description : str
+  + name : str
+}
+class rosmodel_Publisher {
+  + msg : str
+  + name : str
+  + queue_size : int
+}
+class rosmodel_ServiceClient {
+  + name : str
+}
+class rosmodel_ServiceServer {
+  + name : str
+}
+class rosmodel_ServiceType {
+  + name : str
+}
+class rosmodel_State {
+  + name : str
+}
+class rosmodel_Subscriber {
+  + msg : str
+  + name : str
+  + queue_size : int
+}
+class rosmodel_Topic {
+  + name : str
+}
+class rosmodel_Transition {
+  + name : str
+}
+rosmodel_Action "0..9999" --* "1..1" rosmodel_Node : action25
+rosmodel_Action "0..9999" --* "1..1" rosmodel_State : action70
+rosmodel_Action "0..1" -- "1..1" rosmodel_Transition : action88
+rosmodel_ActionClient "0..9999" --* "1..1" rosmodel_Node : actionclient17
+rosmodel_ActionMessage "0..1" -- "1..1" rosmodel_ActionServer : actionmessage58
+rosmodel_ActionClient "1..1" -- "0..1" rosmodel_ActionMessage : actionmessage61
+rosmodel_ActionMessage "0..9999" --* "1..1" rosmodel_Package : actionmessage7
+rosmodel_ActionServer "0..9999" --* "1..1" rosmodel_Node : actionserver19
+rosmodel_Action "0..1" -- "1..1" rosmodel_State : entryaction73
+rosmodel_Event "0..9999" --* "1..1" rosmodel_Node : event27
+rosmodel_Event "0..9999" --* "1..1" rosmodel_State : event79
+rosmodel_Action "0..1" -- "1..1" rosmodel_State : exitaction76
+rosmodel_ActionMessage "1..1" *-- "0..9999" rosmodel_Field : feedback55
+rosmodel_Field "0..9999" --* "1..1" rosmodel_Message : field35
+rosmodel_ActionMessage "1..1" *-- "0..9999" rosmodel_Field : goal49
+rosmodel_Action "0..1" -- "1..1" rosmodel_Transition : guard91
+rosmodel_Message "0..9999" --* "1..1" rosmodel_Package : message3
+rosmodel_Node "0..9999" --* "1..1" rosmodel_Package : node0
+rosmodel_Node "1..1" *-- "0..9999" rosmodel_Publisher : publisher9
+rosmodel_Field "0..9999" --* "1..1" rosmodel_ServiceType : request37
+rosmodel_Field "0..9999" --* "1..1" rosmodel_ServiceType : response40
+rosmodel_ActionMessage "1..1" *-- "0..9999" rosmodel_Field : result52
+rosmodel_Node "1..1" *-- "0..9999" rosmodel_ServiceClient : serviceclient13
+rosmodel_Node "1..1" *-- "0..9999" rosmodel_ServiceServer : serviceserver15
+rosmodel_ServiceServer "1..1" -- "0..1" rosmodel_ServiceType : servicetype43
+rosmodel_ServiceClient "1..1" -- "0..1" rosmodel_ServiceType : servicetype46
+rosmodel_Package "1..1" *-- "0..9999" rosmodel_ServiceType : servicetype5
+rosmodel_Subscriber "1..1" -- "1..1" rosmodel_Topic : source32
+rosmodel_State "1..1" -- "1..1" rosmodel_Transition : source82
+rosmodel_Node "1..1" *-- "0..9999" rosmodel_State : state21
+rosmodel_Node "1..1" *-- "0..9999" rosmodel_Subscriber : subscriber11
+rosmodel_State "0..9999" --* "1..1" rosmodel_State : substate68
+rosmodel_Publisher "1..1" -- "1..1" rosmodel_Topic : target29
+rosmodel_State "1..1" -- "1..1" rosmodel_Transition : target85
+rosmodel_Package "1..1" *-- "0..9999" rosmodel_Topic : topic1
+rosmodel_Node "1..1" *-- "0..9999" rosmodel_Transition : transition23
+rosmodel_State "1..1" *-- "0..9999" rosmodel_Transition : transition64
+rosmodel_Event "1..1" -- "0..1" rosmodel_Transition : transition94
+@enduml

@@ -1,0 +1,200 @@
+@startuml
+class ArchElementToArchElement {
+}
+class ArchitecturalElement {
+}
+class CriticalityLevel {
+}
+class FaultTreeNode {
+}
+class HazardElement {
+}
+class HazardRelation {
+}
+class MonitorToArchitecturalElement {
+}
+class SafetyCriticalRelation {
+}
+class SafetyTactic {
+}
+class SafetyViewpoint {
+}
+class State {
+}
+class safetyDSL_ANDNodeExpression {
+}
+class safetyDSL_ArchElementToArchElement {
+}
+class safetyDSL_ArchitecturalElement {
+  + name : str
+}
+class safetyDSL_CausedBy {
+}
+class safetyDSL_Causes {
+}
+class safetyDSL_ClassDef {
+  + name : str
+}
+class safetyDSL_ClassTestCaseRelation {
+  + testCases : str
+}
+class safetyDSL_Commands {
+}
+class safetyDSL_Consequence {
+}
+class safetyDSL_CriticalityLevel {
+}
+class safetyDSL_DerivedFrom {
+}
+class safetyDSL_Fault {
+}
+class safetyDSL_FaultAvoidance {
+}
+class safetyDSL_FaultContainment {
+}
+class safetyDSL_FaultDetection {
+}
+class safetyDSL_FaultTree {
+}
+class safetyDSL_FaultTreeNode {
+}
+class safetyDSL_Hazard {
+}
+class safetyDSL_HazardElement {
+  + name : str
+}
+class safetyDSL_HazardRelation {
+}
+class safetyDSL_HazardViewpoint {
+}
+class safetyDSL_ImplementationDetail {
+}
+class safetyDSL_Inits {
+}
+class safetyDSL_LevelA {
+}
+class safetyDSL_LevelB {
+}
+class safetyDSL_LevelC {
+}
+class safetyDSL_LevelD {
+}
+class safetyDSL_ModuleClassRelation {
+}
+class safetyDSL_Monitor {
+}
+class safetyDSL_MonitorToArchitecturalElement {
+}
+class safetyDSL_Monitors {
+}
+class safetyDSL_NonSafetyCritical {
+}
+class safetyDSL_ORNodeExpression {
+}
+class safetyDSL_Reads {
+}
+class safetyDSL_ReportsFault {
+}
+class safetyDSL_Restarts {
+}
+class safetyDSL_SafeState {
+}
+class safetyDSL_SafetyCritical {
+}
+class safetyDSL_SafetyCriticalRelation {
+}
+class safetyDSL_SafetyCriticalViewpoint {
+}
+class safetyDSL_SafetyFramework {
+}
+class safetyDSL_SafetyRequirement {
+}
+class safetyDSL_SafetyTactic {
+  + name : str
+  + type : str
+}
+class safetyDSL_SafetyTacticViewpoint {
+}
+class safetyDSL_SafetyViewpoint {
+  + name : str
+}
+class safetyDSL_Starts {
+}
+class safetyDSL_State {
+  + name : str
+}
+class safetyDSL_Stops {
+}
+class safetyDSL_Writes {
+}
+ArchElementToArchElement <|-- safetyDSL_Commands
+ArchElementToArchElement <|-- safetyDSL_Reads
+ArchElementToArchElement <|-- safetyDSL_Writes
+ArchitecturalElement <|-- safetyDSL_Monitor
+ArchitecturalElement <|-- safetyDSL_NonSafetyCritical
+ArchitecturalElement <|-- safetyDSL_SafetyCritical
+CriticalityLevel <|-- safetyDSL_LevelA
+CriticalityLevel <|-- safetyDSL_LevelB
+CriticalityLevel <|-- safetyDSL_LevelC
+CriticalityLevel <|-- safetyDSL_LevelD
+FaultTreeNode <|-- safetyDSL_ANDNodeExpression
+FaultTreeNode <|-- safetyDSL_ORNodeExpression
+HazardElement <|-- safetyDSL_Consequence
+HazardElement <|-- safetyDSL_Fault
+HazardElement <|-- safetyDSL_FaultTree
+HazardElement <|-- safetyDSL_Hazard
+HazardElement <|-- safetyDSL_SafetyRequirement
+HazardRelation <|-- safetyDSL_CausedBy
+HazardRelation <|-- safetyDSL_Causes
+HazardRelation <|-- safetyDSL_DerivedFrom
+MonitorToArchitecturalElement <|-- safetyDSL_Inits
+MonitorToArchitecturalElement <|-- safetyDSL_Monitors
+MonitorToArchitecturalElement <|-- safetyDSL_Restarts
+MonitorToArchitecturalElement <|-- safetyDSL_Starts
+MonitorToArchitecturalElement <|-- safetyDSL_Stops
+SafetyCriticalRelation <|-- safetyDSL_ArchElementToArchElement
+SafetyCriticalRelation <|-- safetyDSL_MonitorToArchitecturalElement
+SafetyCriticalRelation <|-- safetyDSL_ReportsFault
+SafetyTactic <|-- safetyDSL_FaultAvoidance
+SafetyTactic <|-- safetyDSL_FaultContainment
+SafetyTactic <|-- safetyDSL_FaultDetection
+SafetyViewpoint <|-- safetyDSL_HazardViewpoint
+SafetyViewpoint <|-- safetyDSL_SafetyCriticalViewpoint
+SafetyViewpoint <|-- safetyDSL_SafetyTacticViewpoint
+State <|-- safetyDSL_SafeState
+safetyDSL_ClassTestCaseRelation "0..9999" --* "1..1" safetyDSL_ImplementationDetail : classTestCaseRelations64
+safetyDSL_ClassDef "0..9999" --* "1..1" safetyDSL_ModuleClassRelation : classes69
+safetyDSL_ClassDef "0..1" -- "1..1" safetyDSL_ClassTestCaseRelation : clazz71
+safetyDSL_Causes "1..1" -- "0..9999" safetyDSL_Consequence : consequences21
+safetyDSL_ImplementationDetail "0..1" --* "1..1" safetyDSL_SafetyFramework : detail1
+safetyDSL_ArchElementToArchElement "1..1" -- "0..1" safetyDSL_ArchitecturalElement : element147
+safetyDSL_ArchElementToArchElement "1..1" -- "0..9999" safetyDSL_ArchitecturalElement : element249
+safetyDSL_ArchitecturalElement "0..9999" --* "1..1" safetyDSL_SafetyCriticalViewpoint : elements28
+safetyDSL_HazardElement "0..9999" --* "1..1" safetyDSL_HazardViewpoint : elements3
+safetyDSL_CausedBy "1..1" -- "0..1" safetyDSL_FaultTree : fault22
+safetyDSL_Fault "0..9999" -- "1..1" safetyDSL_SafetyTactic : handledFaults25
+safetyDSL_Hazard "0..1" -- "1..1" safetyDSL_HazardRelation : hazard17
+safetyDSL_SafetyCritical "1..1" -- "0..9999" safetyDSL_SafetyRequirement : implementedSafetyRequirements32
+safetyDSL_SafetyCritical "1..1" -- "0..9999" safetyDSL_SafetyTactic : implementedTactics35
+safetyDSL_Monitor "1..1" -- "0..9999" safetyDSL_SafetyTactic : implementedTactics45
+safetyDSL_FaultTreeNode "0..1" --* "1..1" safetyDSL_FaultTreeNode : left12
+safetyDSL_CriticalityLevel "0..1" --* "1..1" safetyDSL_SafetyCritical : level31
+safetyDSL_ArchitecturalElement "0..1" -- "1..1" safetyDSL_ModuleClassRelation : module66
+safetyDSL_ImplementationDetail "1..1" *-- "0..9999" safetyDSL_ModuleClassRelation : moduleClassRelations62
+safetyDSL_Monitor "0..1" -- "1..1" safetyDSL_MonitorToArchitecturalElement : monitor52
+safetyDSL_SafetyCriticalRelation "0..9999" --* "1..1" safetyDSL_SafetyCriticalViewpoint : relations29
+safetyDSL_HazardRelation "0..9999" --* "1..1" safetyDSL_HazardViewpoint : relations4
+safetyDSL_FaultTreeNode "0..1" --* "1..1" safetyDSL_FaultTreeNode : right15
+safetyDSL_FaultTree "1..1" *-- "0..1" safetyDSL_FaultTreeNode : rootNode8
+safetyDSL_ReportsFault "1..1" -- "0..1" safetyDSL_SafetyCritical : safetyCritical157
+safetyDSL_ReportsFault "1..1" -- "0..9999" safetyDSL_SafetyCritical : safetyCritical259
+safetyDSL_MonitorToArchitecturalElement "1..1" -- "0..9999" safetyDSL_SafetyCritical : safetyCritical54
+safetyDSL_DerivedFrom "1..1" -- "0..9999" safetyDSL_SafetyRequirement : safetyRequirements19
+safetyDSL_SafetyTactic "0..9999" --* "1..1" safetyDSL_SafetyTacticViewpoint : safetyTactics24
+safetyDSL_SafetyCritical "1..1" -- "0..9999" safetyDSL_State : states41
+safetyDSL_SafetyCritical "0..9999" -- "1..1" safetyDSL_SafetyCritical : subelements39
+safetyDSL_NonSafetyCritical "1..1" *-- "0..9999" safetyDSL_NonSafetyCritical : subelements44
+safetyDSL_SafetyRequirement "1..1" *-- "0..9999" safetyDSL_SafetyRequirement : subrequirements7
+safetyDSL_Fault "0..1" -- "1..1" safetyDSL_FaultTreeNode : value9
+safetyDSL_SafetyFramework "1..1" *-- "0..9999" safetyDSL_SafetyViewpoint : views0
+@enduml

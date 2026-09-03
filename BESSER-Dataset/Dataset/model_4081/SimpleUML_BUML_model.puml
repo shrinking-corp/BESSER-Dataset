@@ -1,0 +1,46 @@
+@startuml
+class SimpleUML_UmlAssociation {
+}
+class SimpleUML_UmlAttribute {
+}
+class SimpleUML_UmlClass {
+}
+class SimpleUML_UmlClassifier {
+}
+class SimpleUML_UmlModelElement {
+  + id : str
+  + umlKind : str
+  + umlName : str
+}
+class SimpleUML_UmlPackage {
+}
+class SimpleUML_UmlPackageElement {
+}
+class SimpleUML_UmlPrimitiveDataType {
+}
+class UmlClassifier {
+}
+class UmlModelElement {
+}
+class UmlPackageElement {
+}
+UmlClassifier <|-- SimpleUML_UmlClass
+UmlClassifier <|-- SimpleUML_UmlPrimitiveDataType
+UmlModelElement <|-- SimpleUML_UmlAttribute
+UmlModelElement <|-- SimpleUML_UmlPackage
+UmlModelElement <|-- SimpleUML_UmlPackageElement
+UmlPackageElement <|-- SimpleUML_UmlAssociation
+UmlPackageElement <|-- SimpleUML_UmlClassifier
+SimpleUML_UmlAttribute "0..9999" -- "1..1" SimpleUML_UmlClassifier : umlAttribute116
+SimpleUML_UmlAttribute "0..9999" --* "1..1" SimpleUML_UmlClass : umlAttribute9
+SimpleUML_UmlAssociation "1..1" -- "1..1" SimpleUML_UmlClass : umlDestination0
+SimpleUML_UmlAssociation "0..9999" -- "1..1" SimpleUML_UmlClass : umlForward6
+SimpleUML_UmlClass "1..1" -- "0..9999" SimpleUML_UmlClass : umlGeneral11
+SimpleUML_UmlPackage "0..1" -- "1..1" SimpleUML_UmlPackageElement : umlNamespace19
+SimpleUML_UmlPackage "1..1" *-- "0..9999" SimpleUML_UmlPackageElement : umlOwnedElement18
+SimpleUML_UmlAttribute "1..1" -- "0..1" SimpleUML_UmlClass : umlOwner3
+SimpleUML_UmlAssociation "0..9999" -- "1..1" SimpleUML_UmlClass : umlReverse7
+SimpleUML_UmlAssociation "1..1" -- "1..1" SimpleUML_UmlClass : umlSource1
+SimpleUML_UmlClass "1..1" -- "0..9999" SimpleUML_UmlClass : umlSpecific14
+SimpleUML_UmlAttribute "1..1" -- "0..1" SimpleUML_UmlClassifier : umlType5
+@enduml

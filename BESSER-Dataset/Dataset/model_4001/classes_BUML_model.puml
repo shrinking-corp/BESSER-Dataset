@@ -1,0 +1,30 @@
+@startuml
+enum Type {
+  bool
+  datetime
+  float
+  integer
+  string
+}
+class classes_Attribute {
+  + name : str
+  + type : str
+}
+class classes_Class {
+  + name : str
+}
+class classes_ClassDiagram {
+  + name : str
+}
+class classes_Reference {
+  + name : str
+}
+classes_Attribute "0..1" -- "1..1" classes_Class : _primary_key5
+classes_Attribute "0..9999" --* "1..1" classes_Class : attributes1
+classes_Class "0..9999" --* "1..1" classes_ClassDiagram : classes0
+classes_Attribute "1..1" -- "1..1" classes_Class : cls6
+classes_Class "1..1" -- "1..1" classes_Reference : cls8
+classes_Class "1..1" -- "1..1" classes_ClassDiagram : diagram4
+classes_Class "1..1" *-- "0..9999" classes_Reference : references2
+classes_Class "1..1" -- "1..1" classes_Reference : target10
+@enduml

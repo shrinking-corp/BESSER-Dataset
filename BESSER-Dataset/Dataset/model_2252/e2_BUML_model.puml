@@ -1,0 +1,65 @@
+@startuml
+class e2_AssignmentSubmission {
+  + Comments : str
+  + assessment : int
+}
+class e2_Assingnment {
+  + Content : str
+  + Deadline : date
+  + StartDate : date
+  + Title : str
+  + Type : str
+  + isMandatory : bool
+}
+class e2_Course {
+  + ID : str
+  + Name : str
+  + credit : float
+}
+class e2_EClass0 {
+}
+class e2_Goal {
+  + GoalID : str
+  + GoalText : str
+}
+class e2_Group {
+  + Name : str
+}
+class e2_Lecture {
+  + Date : date
+  + length : int
+}
+class e2_LectureContent {
+  + Material : str
+  + Type : str
+}
+class e2_Person {
+  + Name : str
+}
+class e2_SubGoal {
+  + GoalID : str
+  + GoalText : str
+}
+class e2_University {
+  + Name : str
+}
+e2_AssignmentSubmission "1..1" -- "1..1" e2_Person : AssesedBy33
+e2_AssignmentSubmission "1..1" -- "1..1" e2_Assingnment : Assignment30
+e2_Assingnment "0..9999" --* "1..1" e2_Course : Assingments11
+e2_Lecture "1..1" *-- "1..9999" e2_LectureContent : Content0
+e2_Course "0..9999" --* "1..1" e2_University : Courses38
+e2_Group "1..1" -- "2..3" e2_Person : GroupMember24
+e2_Lecture "1..1" -- "1..9999" e2_SubGoal : LearningGoals1
+e2_Course "1..1" *-- "1..9999" e2_Goal : LearningGoals22
+e2_Assingnment "1..1" -- "1..9999" e2_SubGoal : LearningGoals4
+e2_Assingnment "0..9999" --* "1..1" e2_LectureContent : LectureAssignment41
+e2_Course "1..1" -- "1..9999" e2_Person : Lecturerer8
+e2_Course "1..1" *-- "0..9999" e2_Lecture : Lectures14
+e2_Person "0..9999" --* "1..1" e2_University : Persons36
+e2_Course "1..1" *-- "0..9999" e2_Group : StudentGroups17
+e2_Course "1..1" -- "0..9999" e2_Person : Students6
+e2_Goal "1..1" *-- "1..9999" e2_SubGoal : SubGoals44
+e2_AssignmentSubmission "0..9999" --* "1..1" e2_Group : Submitted27
+e2_AssignmentSubmission "0..9999" --* "1..1" e2_Person : Submitted3
+e2_Course "1..1" -- "0..9999" e2_Person : TeachingAssistant19
+@enduml

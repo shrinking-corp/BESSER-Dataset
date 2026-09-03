@@ -1,0 +1,166 @@
+@startuml
+class Actuator {
+}
+enum AngleUnit {
+  degree
+  radian
+}
+class Block {
+}
+enum Color {
+  blue
+  green
+  none
+  red
+  yellow
+}
+class Command {
+}
+enum ComparisonOperator {
+  equals
+  greater
+  smaller
+  unequal
+}
+class Component {
+}
+enum LengthUnit {
+  cm
+  m
+  mm
+}
+class NamedElement {
+}
+class Quantity {
+}
+class SingleQuantity {
+}
+enum TimeUnit {
+  h
+  min
+  ms
+  ns
+  s
+}
+class Transition {
+}
+enum VelocityUnit {
+  cm_per_s
+  mm_per_s
+}
+abstract class roverml_Actuator {
+}
+class roverml_Angle {
+  + angleUnit : str
+}
+class roverml_Block {
+}
+abstract class roverml_Command {
+}
+class roverml_Compass {
+}
+class roverml_CompassTrigger {
+}
+abstract class roverml_Component {
+  + kind : str
+}
+class roverml_DistanceSensor {
+}
+class roverml_DistanceSensorTrigger {
+}
+class roverml_GPS {
+}
+class roverml_GpsTrigger {
+}
+class roverml_Length {
+  + lengthUnit : str
+}
+class roverml_Light {
+}
+class roverml_Motor {
+}
+class roverml_Move {
+}
+abstract class roverml_NamedElement {
+  + name : str
+}
+class roverml_Position {
+}
+abstract class roverml_Quantity {
+}
+class roverml_Repeat {
+  + count : int
+}
+class roverml_Rotate {
+}
+class roverml_Rover {
+}
+class roverml_RoverProgram {
+}
+class roverml_RoverSystem {
+}
+abstract class roverml_Sensor {
+}
+class roverml_SetLightColor {
+  + color : str
+}
+abstract class roverml_SingleQuantity {
+  + value : float
+}
+class roverml_Terminate {
+}
+class roverml_Time {
+  + timeUnit : str
+}
+class roverml_Transition {
+}
+abstract class roverml_TriggeredTransition {
+  + operator : str
+}
+class roverml_Velocity {
+  + velocityUnit : str
+}
+class roverml_Wait {
+}
+Actuator <|-- roverml_Light
+Actuator <|-- roverml_Motor
+Block <|-- roverml_Repeat
+Command <|-- roverml_Move
+Command <|-- roverml_Repeat
+Command <|-- roverml_Rotate
+Command <|-- roverml_SetLightColor
+Command <|-- roverml_Terminate
+Command <|-- roverml_Wait
+Component <|-- roverml_Actuator
+Component <|-- roverml_Sensor
+NamedElement <|-- roverml_Command
+NamedElement <|-- roverml_Component
+NamedElement <|-- roverml_Rover
+NamedElement <|-- roverml_RoverProgram
+NamedElement <|-- roverml_Transition
+Quantity <|-- roverml_Position
+Quantity <|-- roverml_SingleQuantity
+SingleQuantity <|-- roverml_Angle
+SingleQuantity <|-- roverml_Length
+SingleQuantity <|-- roverml_Time
+SingleQuantity <|-- roverml_Velocity
+Transition <|-- roverml_TriggeredTransition
+roverml_Angle "1..1" --* "1..1" roverml_Rotate : angle11
+roverml_Block "1..1" --* "1..1" roverml_RoverProgram : block0
+roverml_Block "1..1" *-- "0..9999" roverml_Command : commands15
+roverml_Component "0..9999" --* "1..1" roverml_Rover : components13
+roverml_Length "0..1" --* "1..1" roverml_Move : distance8
+roverml_Time "1..1" --* "1..1" roverml_Wait : duration12
+roverml_Command "1..1" -- "0..9999" roverml_Transition : incoming3
+roverml_Light "1..9999" -- "1..1" roverml_SetLightColor : lights10
+roverml_Command "1..1" -- "0..9999" roverml_Transition : outgoing4
+roverml_Rover "1..1" -- "1..1" roverml_RoverProgram : rover1
+roverml_RoverProgram "0..9999" --* "1..1" roverml_RoverSystem : roverPrograms29
+roverml_Rover "0..9999" --* "1..1" roverml_RoverSystem : rovers27
+roverml_Command "1..1" -- "1..1" roverml_Transition : source21
+roverml_Move "1..1" *-- "1..1" roverml_Velocity : speed7
+roverml_Command "1..1" -- "1..1" roverml_Transition : target24
+roverml_Block "1..1" *-- "0..9999" roverml_Transition : transitions18
+roverml_Length "1..1" --* "1..1" roverml_Position : x32
+roverml_Length "1..1" --* "1..1" roverml_Position : y34
+@enduml

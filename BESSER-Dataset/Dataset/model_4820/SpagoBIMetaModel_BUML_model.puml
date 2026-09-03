@@ -1,0 +1,281 @@
+@startuml
+class BusinessColumn {
+}
+class BusinessColumnSet {
+}
+class BusinessDomain {
+}
+class BusinessIdentifier {
+}
+class BusinessModel {
+}
+class BusinessRelationship {
+}
+class BusinessViewInnerJoinRelationship {
+}
+class CalculatedMember {
+}
+class Cube {
+}
+class Dimension {
+}
+class Hierarchy {
+}
+class Level {
+}
+class Measure {
+}
+class ModelObject {
+}
+class NamedSet {
+}
+class OlapModel {
+}
+class PhysicalColumn {
+}
+class PhysicalForeignKey {
+}
+class PhysicalModel {
+}
+class PhysicalPrimaryKey {
+}
+class PhysicalTable {
+}
+class VirtualCube {
+}
+class VirtualCubeDimension {
+}
+class VirtualCubeMeasure {
+}
+class business_model_Model {
+}
+class model_Model {
+}
+abstract class model_ModelObject {
+  + description : str
+  + id : str
+  + name : str
+  + uniqueName : str
+}
+class model_ModelProperty {
+  + value : str
+}
+class model_ModelPropertyCategory {
+  + description : str
+  + name : str
+}
+class model_ModelPropertyMapEntry {
+  + key : str
+}
+class model_ModelPropertyType {
+  + admissibleValues : str
+  + defaultValue : str
+  + description : str
+  + id : str
+  + name : str
+}
+class model_analytical_AnalyticalModel {
+}
+class model_behavioural_BehaviouralModel {
+}
+class model_business_BusinessColumn {
+}
+class model_business_BusinessColumnSet {
+}
+class model_business_BusinessDomain {
+}
+class model_business_BusinessIdentifier {
+}
+class model_business_BusinessModel {
+}
+class model_business_BusinessRelationship {
+}
+class model_business_BusinessTable {
+}
+class model_business_BusinessView {
+}
+class model_business_BusinessViewInnerJoinRelationship {
+}
+class model_business_CalculatedBusinessColumn {
+}
+class model_business_SimpleBusinessColumn {
+}
+class model_olap_CalculatedMember {
+}
+class model_olap_Cube {
+}
+class model_olap_Dimension {
+}
+class model_olap_Hierarchy {
+}
+class model_olap_Level {
+}
+class model_olap_Measure {
+}
+class model_olap_NamedSet {
+}
+class model_olap_OlapModel {
+}
+class model_olap_VirtualCube {
+}
+class model_olap_VirtualCubeDimension {
+}
+class model_olap_VirtualCubeMeasure {
+}
+class model_physical_PhysicalColumn {
+  + comment : str
+  + dataType : str
+  + decimalDigits : int
+  + defaultValue : str
+  + nullable : bool
+  + octectLength : int
+  + position : int
+  + radix : int
+  + size : int
+  + typeName : str
+}
+class model_physical_PhysicalForeignKey {
+  + destinationName : str
+  + sourceName : str
+}
+class model_physical_PhysicalModel {
+  + catalog : str
+  + databaseName : str
+  + databaseVersion : str
+  + schema : str
+}
+class model_physical_PhysicalPrimaryKey {
+}
+class model_physical_PhysicalTable {
+  + comment : str
+  + type : str
+}
+class olap_model_Model {
+}
+class physical_model_Model {
+}
+BusinessColumn <|-- model_business_CalculatedBusinessColumn
+BusinessColumn <|-- model_business_SimpleBusinessColumn
+BusinessColumnSet <|-- model_business_BusinessTable
+BusinessColumnSet <|-- model_business_BusinessView
+ModelObject <|-- model_Model
+ModelObject <|-- model_business_BusinessColumn
+ModelObject <|-- model_business_BusinessColumnSet
+ModelObject <|-- model_business_BusinessDomain
+ModelObject <|-- model_business_BusinessIdentifier
+ModelObject <|-- model_business_BusinessModel
+ModelObject <|-- model_business_BusinessRelationship
+ModelObject <|-- model_business_BusinessViewInnerJoinRelationship
+ModelObject <|-- model_olap_CalculatedMember
+ModelObject <|-- model_olap_Cube
+ModelObject <|-- model_olap_Dimension
+ModelObject <|-- model_olap_Hierarchy
+ModelObject <|-- model_olap_Level
+ModelObject <|-- model_olap_Measure
+ModelObject <|-- model_olap_NamedSet
+ModelObject <|-- model_olap_OlapModel
+ModelObject <|-- model_olap_VirtualCube
+ModelObject <|-- model_olap_VirtualCubeDimension
+ModelObject <|-- model_olap_VirtualCubeMeasure
+ModelObject <|-- model_physical_PhysicalColumn
+ModelObject <|-- model_physical_PhysicalForeignKey
+ModelObject <|-- model_physical_PhysicalModel
+ModelObject <|-- model_physical_PhysicalPrimaryKey
+ModelObject <|-- model_physical_PhysicalTable
+BusinessModel "0..9999" --* "1..1" model_Model : businessModels13
+CalculatedMember "0..1" -- "1..1" model_olap_Cube : calculatedMembers143
+CalculatedMember "0..9999" -- "1..1" model_olap_VirtualCube : calculatedMembers188
+BusinessColumn "0..1" -- "1..1" model_olap_Level : captionColumn167
+model_ModelPropertyCategory "1..1" -- "1..1" model_ModelPropertyType : category6
+BusinessColumn "0..1" -- "1..1" model_olap_Level : column159
+BusinessColumn "0..1" -- "1..1" model_olap_Measure : column175
+BusinessColumn "1..9999" -- "1..1" model_business_BusinessIdentifier : columns106
+PhysicalColumn "0..9999" --* "1..1" model_physical_PhysicalTable : columns30
+PhysicalColumn "1..9999" -- "1..1" model_physical_PhysicalPrimaryKey : columns37
+BusinessColumn "0..9999" --* "1..1" model_business_BusinessColumnSet : columns73
+Cube "0..1" -- "1..1" model_olap_Measure : cube173
+Cube "0..1" -- "1..1" model_olap_CalculatedMember : cube177
+Cube "0..1" -- "1..1" model_olap_NamedSet : cube181
+Cube "0..1" -- "1..1" model_olap_VirtualCubeDimension : cube196
+Cube "0..1" -- "1..1" model_olap_VirtualCubeMeasure : cube204
+Cube "0..9999" --* "1..1" model_olap_OlapModel : cubes129
+Cube "0..9999" -- "1..1" model_olap_VirtualCube : cubes183
+PhysicalColumn "0..9999" -- "1..1" model_business_BusinessViewInnerJoinRelationship : destinationColumns122
+PhysicalColumn "1..9999" -- "1..1" model_physical_PhysicalForeignKey : destinationColumns48
+BusinessColumn "0..9999" -- "1..1" model_business_BusinessRelationship : destinationColumns89
+PhysicalTable "1..1" -- "1..1" model_business_BusinessViewInnerJoinRelationship : destinationTable116
+PhysicalTable "1..1" -- "1..1" model_physical_PhysicalForeignKey : destinationTable45
+BusinessColumnSet "1..1" -- "1..1" model_business_BusinessRelationship : destinationTable83
+Dimension "0..1" -- "1..1" model_olap_Hierarchy : dimension154
+Dimension "0..1" -- "1..1" model_olap_VirtualCubeDimension : dimension198
+Dimension "0..9999" --* "1..1" model_olap_OlapModel : dimensions133
+Dimension "1..9999" -- "1..1" model_olap_Cube : dimensions139
+VirtualCubeDimension "0..1" -- "1..1" model_olap_VirtualCube : dimensions185
+BusinessDomain "0..9999" --* "1..1" model_business_BusinessModel : domains63
+PhysicalForeignKey "0..9999" --* "1..1" model_physical_PhysicalModel : foreignKeys26
+Hierarchy "1..9999" --* "1..1" model_olap_Dimension : hierarchies149
+Hierarchy "0..1" -- "1..1" model_olap_Level : hierarchy157
+Hierarchy "0..1" -- "1..1" model_olap_CalculatedMember : hierarchy179
+BusinessIdentifier "0..9999" --* "1..1" model_business_BusinessModel : identifiers61
+BusinessViewInnerJoinRelationship "0..9999" --* "1..1" model_business_BusinessModel : joinRelationships65
+BusinessViewInnerJoinRelationship "0..9999" -- "1..1" model_business_BusinessView : joinRelationships77
+Level "1..9999" --* "1..1" model_olap_Hierarchy : levels156
+Measure "0..1" -- "1..1" model_olap_VirtualCubeMeasure : measure206
+Measure "1..9999" --* "1..1" model_olap_Cube : measures142
+VirtualCubeMeasure "0..9999" -- "1..1" model_olap_VirtualCube : measures186
+BusinessModel "0..1" -- "1..1" model_business_BusinessIdentifier : model102
+BusinessModel "1..1" -- "1..1" model_business_BusinessViewInnerJoinRelationship : model112
+OlapModel "0..1" -- "1..1" model_olap_Cube : model135
+OlapModel "0..1" -- "1..1" model_olap_Dimension : model150
+OlapModel "0..1" -- "1..1" model_olap_VirtualCube : model191
+PhysicalModel "1..1" -- "1..1" model_physical_PhysicalTable : model28
+PhysicalModel "1..1" -- "1..1" model_physical_PhysicalPrimaryKey : model33
+PhysicalModel "0..1" -- "1..1" model_physical_PhysicalForeignKey : model51
+BusinessModel "1..1" -- "1..1" model_business_BusinessColumnSet : model70
+BusinessModel "1..1" -- "1..1" model_business_BusinessRelationship : model79
+BusinessModel "1..1" -- "1..1" model_business_BusinessDomain : model95
+BusinessColumn "0..1" -- "1..1" model_olap_Level : nameColumn164
+NamedSet "0..9999" --* "1..1" model_olap_Cube : namedSets145
+OlapModel "0..9999" --* "1..1" model_Model : olapModels15
+BusinessColumn "0..1" -- "1..1" model_olap_Level : ordinalColumn161
+model_ModelPropertyCategory "1..1" -- "0..1" model_ModelPropertyCategory : parentCategory1
+model_olap_OlapModel "1..1" -- "1..1" olap_model_Model : parentModel127
+model_physical_PhysicalModel "1..1" -- "1..1" physical_model_Model : parentModel22
+business_model_Model "1..1" -- "1..1" model_business_BusinessModel : parentModel53
+PhysicalColumn "1..1" -- "1..1" model_business_SimpleBusinessColumn : physicalColumn125
+PhysicalForeignKey "0..1" -- "1..1" model_business_BusinessRelationship : physicalForeignKey92
+PhysicalModel "1..1" -- "1..1" model_business_BusinessModel : physicalModel55
+PhysicalModel "0..9999" --* "1..1" model_Model : physicalModels12
+PhysicalPrimaryKey "0..1" -- "1..1" model_business_BusinessIdentifier : physicalPrimaryKey109
+PhysicalTable "1..1" -- "1..1" model_business_BusinessTable : physicalTable75
+PhysicalPrimaryKey "0..9999" --* "1..1" model_physical_PhysicalModel : primaryKeys24
+model_ModelObject "1..1" *-- "0..9999" model_ModelPropertyMapEntry : properties10
+model_Model "1..1" *-- "0..9999" model_ModelPropertyCategory : propertyCategories19
+BusinessColumn "0..9999" -- "1..1" model_olap_Level : propertyColumns170
+model_ModelProperty "1..1" -- "1..1" model_ModelPropertyType : propertyType7
+model_Model "1..1" *-- "0..9999" model_ModelPropertyType : propertyTypes17
+model_ModelPropertyCategory "1..1" -- "0..9999" model_ModelPropertyType : propertyTypes5
+BusinessRelationship "0..9999" --* "1..1" model_business_BusinessModel : relationships59
+BusinessRelationship "0..9999" -- "1..1" model_business_BusinessDomain : relationships99
+PhysicalColumn "0..9999" -- "1..1" model_business_BusinessViewInnerJoinRelationship : sourceColumns119
+PhysicalColumn "1..9999" -- "1..1" model_physical_PhysicalForeignKey : sourceColumns42
+BusinessColumn "0..9999" -- "1..1" model_business_BusinessRelationship : sourceColumns86
+PhysicalTable "1..1" -- "1..1" model_business_BusinessViewInnerJoinRelationship : sourceTable114
+PhysicalTable "1..1" -- "1..1" model_physical_PhysicalForeignKey : sourceTable40
+BusinessColumnSet "1..1" -- "1..1" model_business_BusinessRelationship : sourceTable81
+model_ModelPropertyCategory "0..9999" -- "1..1" model_ModelPropertyCategory : subCategories3
+BusinessColumnSet "1..1" -- "1..1" model_business_BusinessIdentifier : table104
+BusinessColumnSet "1..1" -- "1..1" model_olap_Cube : table137
+BusinessColumnSet "1..1" -- "1..1" model_olap_Dimension : table147
+BusinessColumnSet "0..1" -- "1..1" model_olap_Hierarchy : table152
+PhysicalTable "1..1" -- "1..1" model_physical_PhysicalColumn : table31
+PhysicalTable "1..1" -- "1..1" model_physical_PhysicalPrimaryKey : table35
+BusinessColumnSet "1..1" -- "1..1" model_business_BusinessColumn : table67
+PhysicalTable "0..9999" --* "1..1" model_physical_PhysicalModel : tables23
+BusinessColumnSet "0..9999" --* "1..1" model_business_BusinessModel : tables57
+BusinessColumnSet "0..9999" -- "1..1" model_business_BusinessDomain : tables97
+model_ModelProperty "0..1" --* "1..1" model_ModelPropertyMapEntry : value8
+VirtualCube "0..1" -- "1..1" model_olap_VirtualCubeDimension : virtualCube193
+VirtualCube "0..1" -- "1..1" model_olap_VirtualCubeMeasure : virtualCube201
+VirtualCube "0..9999" --* "1..1" model_olap_OlapModel : virtualCubes131
+@enduml

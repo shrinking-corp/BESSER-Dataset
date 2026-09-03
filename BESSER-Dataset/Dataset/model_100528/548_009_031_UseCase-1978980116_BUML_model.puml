@@ -1,0 +1,39 @@
+@startuml
+class useCase_Actor {
+  + name : str
+}
+class useCase_Case {
+  + name : str
+}
+class useCase_Extends {
+  + name : str
+  + rules : str
+}
+class useCase_ExtensionPoint {
+  + name : str
+}
+class useCase_Includes {
+  + name : str
+  + rules : str
+}
+class useCase_Inheritance {
+  + name : str
+}
+class useCase_Subsystem {
+  + name : str
+}
+class useCase_UseCase {
+}
+class useCase_Uses {
+  + multiplicity : str
+  + name : str
+}
+useCase_Actor "0..9999" --* "1..1" useCase_UseCase : actors1
+useCase_Case "0..9999" --* "1..1" useCase_Subsystem : cases3
+useCase_Case "1..1" *-- "0..9999" useCase_Extends : extends9
+useCase_Case "1..1" *-- "0..9999" useCase_ExtensionPoint : extensions5
+useCase_Case "1..1" *-- "0..9999" useCase_Includes : includes7
+useCase_Actor "1..1" *-- "0..9999" useCase_Inheritance : inheritances11
+useCase_Subsystem "0..9999" --* "1..1" useCase_UseCase : systems0
+useCase_Actor "1..1" *-- "0..9999" useCase_Uses : uses13
+@enduml

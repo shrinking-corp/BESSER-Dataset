@@ -1,0 +1,75 @@
+@startuml
+class MuddleElementType {
+}
+class PrimitiveType {
+}
+class Type {
+}
+class muddle_BooleanType {
+}
+class muddle_Feature {
+  + many : bool
+  + name : str
+  + primary : bool
+  + runtime : bool
+}
+class muddle_IntegerType {
+}
+class muddle_LinkElementType {
+}
+class muddle_Muddle {
+}
+class muddle_MuddleElement {
+  + id : str
+}
+class muddle_MuddleElementStyle {
+  + borderWidth : float
+  + color : str
+  + height : float
+  + labelFontSize : int
+  + shape : str
+  + width : float
+  + x : float
+  + y : float
+}
+class muddle_MuddleElementType {
+}
+abstract class muddle_PrimitiveType {
+}
+class muddle_RealType {
+}
+class muddle_Slot {
+  + values : str
+}
+class muddle_StringType {
+}
+abstract class muddle_Type {
+  + name : str
+}
+MuddleElementType <|-- muddle_LinkElementType
+PrimitiveType <|-- muddle_BooleanType
+PrimitiveType <|-- muddle_IntegerType
+PrimitiveType <|-- muddle_RealType
+PrimitiveType <|-- muddle_StringType
+Type <|-- muddle_MuddleElementType
+Type <|-- muddle_PrimitiveType
+muddle_Muddle "1..1" *-- "0..9999" muddle_MuddleElement : elements1
+muddle_Feature "0..1" -- "1..1" muddle_Slot : feature6
+muddle_Feature "0..9999" --* "1..1" muddle_MuddleElementType : features18
+muddle_MuddleElement "0..9999" -- "1..1" muddle_MuddleElementType : instances16
+muddle_Muddle "0..1" -- "1..1" muddle_MuddleElement : muddle4
+muddle_MuddleElement "0..1" -- "1..1" muddle_Slot : owningElement7
+muddle_Feature "1..1" -- "0..1" muddle_MuddleElementType : owningType12
+muddle_Feature "0..1" --* "1..1" muddle_LinkElementType : roleInSourceFeature31
+muddle_Feature "0..1" --* "1..1" muddle_LinkElementType : roleInTargetFeature34
+muddle_Feature "1..1" -- "0..9999" muddle_Slot : slots14
+muddle_MuddleElement "1..1" *-- "0..9999" muddle_Slot : slots2
+muddle_Feature "0..1" -- "1..1" muddle_LinkElementType : sourceFeature26
+muddle_MuddleElement "1..1" *-- "0..1" muddle_MuddleElementStyle : style5
+muddle_MuddleElementType "1..1" -- "0..9999" muddle_MuddleElementType : subTypes24
+muddle_MuddleElementType "1..1" -- "0..9999" muddle_MuddleElementType : superTypes21
+muddle_Feature "0..1" -- "1..1" muddle_LinkElementType : targetFeature28
+muddle_Feature "1..1" -- "0..1" muddle_Type : type10
+muddle_MuddleElement "1..1" -- "0..1" muddle_MuddleElementType : type3
+muddle_Muddle "1..1" *-- "0..9999" muddle_Type : types0
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+class Any {
+}
+abstract class trace_Any {
+}
+class trace_BoolAny {
+  + value : bool
+}
+class trace_DecimalAny {
+  + value : str
+}
+class trace_EObject {
+}
+class trace_IntAny {
+  + value : str
+}
+class trace_ObjectAny {
+}
+class trace_StringAny {
+  + value : str
+}
+class trace_Trace {
+  + name : str
+}
+Any <|-- trace_BoolAny
+Any <|-- trace_DecimalAny
+Any <|-- trace_IntAny
+Any <|-- trace_ObjectAny
+Any <|-- trace_StringAny
+trace_EObject "1..9999" -- "1..1" trace_Trace : rules3
+trace_Any "0..9999" --* "1..1" trace_Trace : sources0
+trace_EObject "1..1" -- "1..1" trace_Trace : target1
+trace_EObject "0..9999" -- "1..1" trace_ObjectAny : value6
+@enduml

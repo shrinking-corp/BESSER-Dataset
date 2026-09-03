@@ -1,0 +1,187 @@
+@startuml
+class CallExp {
+}
+enum CollectionKind {
+  Bag
+  Collection
+  OrderedSet
+  Sequence
+  Set
+}
+class CollectionLiteralExp {
+}
+class CollectionLiteralPart {
+}
+class CollectionType {
+}
+class EssentialOCL_AnyType {
+}
+class EssentialOCL_BagType {
+}
+class EssentialOCL_BooleanLiteralExp {
+  + booleanSymbol : str
+}
+abstract class EssentialOCL_CallExp {
+}
+class EssentialOCL_CollectionItem {
+}
+class EssentialOCL_CollectionLiteralExp {
+  + kind : str
+}
+abstract class EssentialOCL_CollectionLiteralPart {
+}
+class EssentialOCL_CollectionRange {
+}
+class EssentialOCL_CollectionType {
+}
+class EssentialOCL_EnumLiteralExp {
+}
+class EssentialOCL_ExpressionInOcl {
+}
+abstract class EssentialOCL_FeatureCallExp {
+}
+class EssentialOCL_IfExp {
+}
+class EssentialOCL_IntegerLiteralExp {
+  + integerSymbol : str
+}
+class EssentialOCL_InvalidLiteralExp {
+}
+class EssentialOCL_InvalidType {
+}
+class EssentialOCL_IterateExp {
+}
+class EssentialOCL_IteratorExp {
+}
+class EssentialOCL_LetExp {
+}
+abstract class EssentialOCL_LiteralExp {
+}
+abstract class EssentialOCL_LoopExp {
+}
+class EssentialOCL_NavigationCallExp {
+}
+class EssentialOCL_NullLiteralExp {
+}
+abstract class EssentialOCL_NumericLiteralExp {
+}
+abstract class EssentialOCL_OclExpression {
+}
+class EssentialOCL_OperationCallExp {
+}
+class EssentialOCL_OrderedSetType {
+}
+abstract class EssentialOCL_PrimitiveLiteralExp {
+}
+class EssentialOCL_PropertyCallExp {
+}
+class EssentialOCL_RealLiteralExp {
+  + realSymbol : str
+}
+class EssentialOCL_SequenceType {
+}
+class EssentialOCL_SetType {
+}
+class EssentialOCL_StringLiteralExp {
+  + stringSymbol : str
+}
+class EssentialOCL_TemplateParameterType {
+  + specification : str
+}
+class EssentialOCL_TupleLiteralExp {
+}
+class EssentialOCL_TupleLiteralPart {
+}
+class EssentialOCL_TupleType {
+}
+class EssentialOCL_TypeExp {
+}
+class EssentialOCL_UnlimitedNaturalExp {
+  + symbol : str
+}
+class EssentialOCL_Variable {
+}
+class EssentialOCL_VariableExp {
+}
+class EssentialOCL_VoidType {
+}
+class FeatureCallExp {
+}
+class LetExp {
+}
+class LiteralExp {
+}
+class LoopExp {
+}
+class NavigationCallExp {
+}
+class NumericLiteralExp {
+}
+class OclExpression {
+}
+class PrimitiveLiteralExp {
+}
+class TupleLiteralExp {
+}
+class TupleLiteralPart {
+}
+class Variable {
+}
+CallExp <|-- EssentialOCL_FeatureCallExp
+CallExp <|-- EssentialOCL_LoopExp
+CollectionLiteralPart <|-- EssentialOCL_CollectionItem
+CollectionLiteralPart <|-- EssentialOCL_CollectionRange
+CollectionType <|-- EssentialOCL_BagType
+CollectionType <|-- EssentialOCL_OrderedSetType
+CollectionType <|-- EssentialOCL_SequenceType
+CollectionType <|-- EssentialOCL_SetType
+FeatureCallExp <|-- EssentialOCL_NavigationCallExp
+FeatureCallExp <|-- EssentialOCL_OperationCallExp
+LiteralExp <|-- EssentialOCL_CollectionLiteralExp
+LiteralExp <|-- EssentialOCL_EnumLiteralExp
+LiteralExp <|-- EssentialOCL_InvalidLiteralExp
+LiteralExp <|-- EssentialOCL_NullLiteralExp
+LiteralExp <|-- EssentialOCL_PrimitiveLiteralExp
+LiteralExp <|-- EssentialOCL_TupleLiteralExp
+LoopExp <|-- EssentialOCL_IterateExp
+LoopExp <|-- EssentialOCL_IteratorExp
+NavigationCallExp <|-- EssentialOCL_PropertyCallExp
+NumericLiteralExp <|-- EssentialOCL_IntegerLiteralExp
+NumericLiteralExp <|-- EssentialOCL_RealLiteralExp
+NumericLiteralExp <|-- EssentialOCL_UnlimitedNaturalExp
+OclExpression <|-- EssentialOCL_CallExp
+OclExpression <|-- EssentialOCL_IfExp
+OclExpression <|-- EssentialOCL_LetExp
+OclExpression <|-- EssentialOCL_LiteralExp
+OclExpression <|-- EssentialOCL_LoopExp
+OclExpression <|-- EssentialOCL_TypeExp
+OclExpression <|-- EssentialOCL_VariableExp
+PrimitiveLiteralExp <|-- EssentialOCL_BooleanLiteralExp
+PrimitiveLiteralExp <|-- EssentialOCL_NumericLiteralExp
+PrimitiveLiteralExp <|-- EssentialOCL_StringLiteralExp
+EssentialOCL_OperationCallExp "1..1" *-- "0..9999" OclExpression : argument40
+EssentialOCL_LoopExp "1..1" *-- "1..1" OclExpression : body35
+EssentialOCL_ExpressionInOcl "1..1" *-- "1..1" OclExpression : bodyExpression10
+CollectionLiteralExp "1..1" -- "1..1" EssentialOCL_CollectionLiteralPart : collectionLiteralExp4
+EssentialOCL_IfExp "1..1" *-- "1..1" OclExpression : condition20
+EssentialOCL_ExpressionInOcl "1..1" *-- "0..1" Variable : contextVariable12
+EssentialOCL_IfExp "1..1" *-- "1..1" OclExpression : elseExpression22
+EssentialOCL_CollectionRange "1..1" *-- "1..1" OclExpression : first5
+EssentialOCL_LetExp "1..1" *-- "1..1" OclExpression : in_30
+EssentialOCL_Variable "1..1" *-- "0..1" OclExpression : initExpression47
+EssentialOCL_CollectionItem "1..1" *-- "1..1" OclExpression : item1
+EssentialOCL_LoopExp "1..1" *-- "0..9999" Variable : iterator37
+EssentialOCL_CollectionRange "1..1" *-- "1..1" OclExpression : last7
+EssentialOCL_Variable "1..1" -- "0..1" LetExp : letExp49
+EssentialOCL_ExpressionInOcl "1..1" *-- "0..9999" Variable : parameterVariable14
+CollectionLiteralPart "0..9999" --* "1..1" EssentialOCL_CollectionLiteralExp : part3
+EssentialOCL_TupleLiteralExp "1..1" *-- "0..9999" TupleLiteralPart : part42
+EssentialOCL_VariableExp "1..1" -- "0..1" Variable : referredVariable51
+EssentialOCL_IterateExp "1..1" *-- "0..1" Variable : result28
+EssentialOCL_ExpressionInOcl "1..1" *-- "0..1" Variable : resultVariable17
+EssentialOCL_CallExp "1..1" *-- "0..1" OclExpression : source0
+EssentialOCL_IfExp "1..1" *-- "1..1" OclExpression : thenExpression25
+EssentialOCL_TupleLiteralPart "1..1" -- "0..1" TupleLiteralExp : tupleLiteralExp43
+EssentialOCL_TupleLiteralPart "1..1" *-- "1..1" OclExpression : value44
+EssentialOCL_LetExp "1..1" *-- "1..1" Variable : variable32
+@enduml

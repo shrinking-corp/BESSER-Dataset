@@ -1,0 +1,98 @@
+@startuml
+class Control {
+}
+enum DateFormat {
+  DayMonthYear
+  YearMonthDay
+}
+class FormButton {
+}
+class NormalControl {
+}
+class Page {
+}
+class TextBox {
+}
+class webapp_CheckBox {
+  + text : str
+}
+abstract class webapp_Control {
+  + id : str
+  + name : str
+}
+class webapp_DateBox {
+  + format : str
+}
+class webapp_DropDownList {
+}
+class webapp_DynamicWebApp {
+  + name : str
+}
+class webapp_EmailBox {
+}
+abstract class webapp_FormButton {
+  + text : str
+}
+class webapp_FormPage {
+  + persist : bool
+}
+class webapp_Label {
+}
+class webapp_Link {
+}
+class webapp_ListElement {
+  + value : str
+}
+class webapp_NormalButton {
+}
+abstract class webapp_NormalControl {
+  + text : str
+}
+class webapp_NormalPage {
+}
+abstract class webapp_Page {
+  + default : bool
+  + name : str
+  + title : str
+}
+class webapp_PasswordBox {
+}
+class webapp_RadioButton {
+}
+class webapp_ResetButton {
+}
+class webapp_SubmitButton {
+}
+class webapp_TextBox {
+  + maxLength : int
+  + required : bool
+  + size : int
+  + text : str
+}
+Control <|-- webapp_CheckBox
+Control <|-- webapp_DropDownList
+Control <|-- webapp_FormButton
+Control <|-- webapp_Label
+Control <|-- webapp_Link
+Control <|-- webapp_NormalControl
+Control <|-- webapp_RadioButton
+Control <|-- webapp_TextBox
+FormButton <|-- webapp_ResetButton
+FormButton <|-- webapp_SubmitButton
+NormalControl <|-- webapp_Label
+NormalControl <|-- webapp_Link
+NormalControl <|-- webapp_NormalButton
+Page <|-- webapp_FormPage
+Page <|-- webapp_NormalPage
+TextBox <|-- webapp_DateBox
+TextBox <|-- webapp_EmailBox
+TextBox <|-- webapp_PasswordBox
+webapp_Control "1..9999" --* "1..1" webapp_FormPage : controls4
+webapp_NormalControl "0..9999" --* "1..1" webapp_NormalPage : controls6
+webapp_Link "1..1" -- "1..1" webapp_Page : destination7
+webapp_ListElement "2..9999" --* "1..1" webapp_RadioButton : elements10
+webapp_DropDownList "1..1" *-- "0..9999" webapp_ListElement : elements9
+webapp_FormPage "1..1" -- "0..1" webapp_Page : errorTarget1
+webapp_DynamicWebApp "1..1" *-- "1..9999" webapp_Page : pages12
+webapp_FormPage "1..1" -- "0..1" webapp_Page : successTarget0
+@enduml

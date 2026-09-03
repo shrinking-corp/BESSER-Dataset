@@ -1,0 +1,61 @@
+@startuml
+class Arc {
+}
+class Element {
+}
+class LocatedElement {
+}
+class NamedElement {
+}
+class PetriNet {
+}
+abstract class PetriNet_Arc {
+  + weight : str
+}
+abstract class PetriNet_Element {
+}
+abstract class PetriNet_LocatedElement {
+  + location : str
+}
+abstract class PetriNet_NamedElement {
+  + name : str
+}
+class PetriNet_PetriNet {
+}
+class PetriNet_Place {
+}
+class PetriNet_PlaceToTransition {
+}
+class PetriNet_Transition {
+}
+class PetriNet_TransitionToPlace {
+}
+class Place {
+}
+class PlaceToTransition {
+}
+class Transition {
+}
+class TransitionToPlace {
+}
+Arc <|-- PetriNet_PlaceToTransition
+Arc <|-- PetriNet_TransitionToPlace
+Element <|-- PetriNet_Place
+Element <|-- PetriNet_Transition
+LocatedElement <|-- PetriNet_NamedElement
+NamedElement <|-- PetriNet_Arc
+NamedElement <|-- PetriNet_Element
+NamedElement <|-- PetriNet_PetriNet
+Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs1
+Element "0..9999" --* "1..1" PetriNet_PetriNet : elements0
+PetriNet_PlaceToTransition "1..1" -- "1..1" Place : from_14
+PetriNet_TransitionToPlace "1..1" -- "1..1" Transition : from_16
+PetriNet_Place "1..1" -- "0..9999" TransitionToPlace : incomingArc4
+PetriNet_Transition "1..1" -- "1..9999" PlaceToTransition : incomingArc6
+PetriNet "1..1" -- "1..1" PetriNet_Arc : net12
+PetriNet "1..1" -- "1..1" PetriNet_Element : net3
+PetriNet_Place "1..1" -- "0..9999" PlaceToTransition : outgoingArc5
+PetriNet_Transition "1..1" -- "1..9999" TransitionToPlace : outgoingArc9
+PetriNet_PlaceToTransition "1..1" -- "1..1" Transition : to15
+PetriNet_TransitionToPlace "1..1" -- "1..1" Place : to19
+@enduml

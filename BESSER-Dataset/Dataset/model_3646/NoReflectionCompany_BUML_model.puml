@@ -1,0 +1,25 @@
+@startuml
+enum CompanySizeKind {
+  large
+  medium
+  small
+}
+class noreflectioncompany_Company {
+  + name : str
+  + size : str
+  + dummyInvariant(noreflectioncompany_context : str, noreflectioncompany_diagnostics : str) : bool
+}
+class noreflectioncompany_Employee {
+  + hasNameAsAttribute : bool
+  + name : str
+  + hasNameAsOperation() : bool
+  + noManagerImpliesDirectReports(noreflectioncompany_context : str, noreflectioncompany_diagnostics : str) : bool
+  + reportsTo(noreflectioncompany_manager : str) : bool
+}
+noreflectioncompany_Employee "0..9999" -- "1..1" noreflectioncompany_Employee : allReports8
+noreflectioncompany_Company "1..1" -- "1..1" noreflectioncompany_Employee : company3
+noreflectioncompany_Employee "0..9999" -- "1..1" noreflectioncompany_Employee : directReports5
+noreflectioncompany_Company "1..1" *-- "0..9999" noreflectioncompany_Employee : employees0
+noreflectioncompany_Employee "1..1" -- "0..1" noreflectioncompany_Employee : manager2
+noreflectioncompany_Employee "0..9999" -- "1..1" noreflectioncompany_Employee : reportingChain11
+@enduml

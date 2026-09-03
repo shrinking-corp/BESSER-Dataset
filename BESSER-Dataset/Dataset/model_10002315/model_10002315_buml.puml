@@ -1,0 +1,58 @@
+@startuml
+class Admin {
+  + Id : str
+  + Name : str
+  + Password : str
+}
+class Booking {
+  + Date : str
+  + Description : str
+  + Id : str
+  + Type : str
+}
+class Credit_Card {
+  + Card_No_ : str
+  + Pin_No_ : str
+}
+class Customer {
+  + Address : str
+  + Id : str
+  + Mobile_no___Email : str
+  + Name : str
+}
+class Debit_Card {
+  + Card_No_ : str
+  + Pin_No_ : str
+}
+class Hotel {
+  + Hotel_Address : str
+  + Hotel_ID : str
+  + Hotel_Name : str
+  + Hotel_Rent : str
+  + Hotel_Type : str
+}
+class Payment {
+  + Amount : str
+  + Customer_s_Id : str
+  + Payment_Date : str
+  + Payment_Description : str
+}
+class Room {
+  + Room_Id : str
+  + Room_description : str
+  + Room_number : str
+  + Room_type : str
+}
+Admin "0..1" -- "0..1" Booking : Admin_Booking
+Admin "0..1" -- "0..1" Hotel : Admin_Hotel
+Admin "0..1" -- "0..1" Room : Admin_Room
+Booking "0..1" -- "0..1" Hotel : Booking_Hotel
+Customer "0..1" -- "0..1" Hotel : Customer_Hotel
+Customer "0..1" -- "0..1" Payment : Customer_Payment
+Booking "0..1" -- "0..1" Payment : Payment_Booking
+Credit_Card "0..1" -- "0..1" Payment : Payment_Credit_Card
+Debit_Card "0..1" -- "0..1" Payment : Payment_Debit_Card
+Hotel "0..1" -- "0..1" Payment : Payment_Hotel
+Payment "0..1" -- "0..1" Room : Payment_Room
+Hotel "0..1" -- "0..1" Room : Room_Hotel
+@enduml

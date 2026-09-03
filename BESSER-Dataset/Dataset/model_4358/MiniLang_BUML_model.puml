@@ -1,0 +1,58 @@
+@startuml
+class ComparisonExpression {
+}
+class Expression {
+}
+class Statement {
+}
+class mini_lang_AssignmentStatement {
+}
+class mini_lang_Block {
+}
+abstract class mini_lang_ComparisonExpression {
+}
+class mini_lang_EqualsExpression {
+}
+abstract class mini_lang_Expression {
+}
+class mini_lang_ExpressionStatement {
+}
+class mini_lang_FOLCallExpression {
+  + iterator : str
+  + method : str
+}
+class mini_lang_IfStatement {
+}
+class mini_lang_MiniLang {
+}
+class mini_lang_NameExpression {
+  + name : str
+}
+class mini_lang_NotEqualsExpression {
+}
+class mini_lang_ReturnStatement {
+}
+abstract class mini_lang_Statement {
+}
+ComparisonExpression <|-- mini_lang_EqualsExpression
+ComparisonExpression <|-- mini_lang_NotEqualsExpression
+Expression <|-- mini_lang_ComparisonExpression
+Expression <|-- mini_lang_FOLCallExpression
+Expression <|-- mini_lang_NameExpression
+Statement <|-- mini_lang_AssignmentStatement
+Statement <|-- mini_lang_ExpressionStatement
+Statement <|-- mini_lang_IfStatement
+Statement <|-- mini_lang_ReturnStatement
+mini_lang_Block "0..1" --* "1..1" mini_lang_MiniLang : block0
+mini_lang_Expression "1..1" --* "1..1" mini_lang_FOLCallExpression : condition21
+mini_lang_Expression "1..1" --* "1..1" mini_lang_IfStatement : condition3
+mini_lang_Expression "1..1" --* "1..1" mini_lang_ExpressionStatement : expr12
+mini_lang_Expression "0..1" --* "1..1" mini_lang_ReturnStatement : expr14
+mini_lang_Block "1..1" --* "1..1" mini_lang_IfStatement : ifBody4
+mini_lang_ComparisonExpression "1..1" *-- "1..1" mini_lang_Expression : lhs16
+mini_lang_AssignmentStatement "1..1" *-- "1..1" mini_lang_Expression : lhs7
+mini_lang_ComparisonExpression "1..1" *-- "1..1" mini_lang_Expression : rhs18
+mini_lang_AssignmentStatement "1..1" *-- "1..1" mini_lang_Expression : rhs9
+mini_lang_Block "1..1" *-- "0..9999" mini_lang_Statement : statements1
+mini_lang_Expression "1..1" --* "1..1" mini_lang_FOLCallExpression : target23
+@enduml

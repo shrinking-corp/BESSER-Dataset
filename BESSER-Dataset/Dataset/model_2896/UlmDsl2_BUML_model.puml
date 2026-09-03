@@ -1,0 +1,79 @@
+@startuml
+class ulmDsl2_Attribute {
+  + desc : str
+  + name : str
+}
+class ulmDsl2_AttributeDecimalType {
+  + array : bool
+  + name : str
+  + precision : int
+  + scale : int
+}
+class ulmDsl2_AttributeFeatureType {
+}
+class ulmDsl2_AttributeStringType {
+  + array : bool
+  + length : int
+  + name : str
+}
+class ulmDsl2_AttributeType {
+  + name : str
+}
+class ulmDsl2_Context {
+  + name : str
+  + version : str
+}
+class ulmDsl2_EObject {
+}
+class ulmDsl2_Entity {
+  + desc : str
+  + name : str
+  + type : str
+}
+class ulmDsl2_EntityFeatureType {
+  + array : bool
+  + length : int
+}
+class ulmDsl2_Feature {
+  + identifier : bool
+  + mandatory : bool
+  + name : str
+}
+class ulmDsl2_FeatureType {
+}
+class ulmDsl2_Lookup {
+  + name : str
+}
+class ulmDsl2_LookupInt {
+  + description : str
+}
+class ulmDsl2_LookupIntValue {
+  + description : str
+  + value : int
+}
+class ulmDsl2_LookupString {
+  + description : str
+}
+class ulmDsl2_LookupStringValue {
+  + description : str
+  + value : str
+}
+class ulmDsl2_Model {
+  + name : str
+}
+ulmDsl2_Attribute "0..1" -- "1..1" ulmDsl2_AttributeFeatureType : attribute19
+ulmDsl2_Attribute "0..9999" --* "1..1" ulmDsl2_Context : attributes1
+ulmDsl2_Context "0..9999" --* "1..1" ulmDsl2_Model : contexts0
+ulmDsl2_Context "1..1" *-- "0..9999" ulmDsl2_Entity : entities5
+ulmDsl2_Entity "0..1" -- "1..1" ulmDsl2_EntityFeatureType : entity24
+ulmDsl2_Entity "1..1" *-- "0..9999" ulmDsl2_Feature : features12
+ulmDsl2_AttributeFeatureType "1..1" -- "0..1" ulmDsl2_Lookup : lookup21
+ulmDsl2_Context "1..1" *-- "0..9999" ulmDsl2_Lookup : lookups3
+ulmDsl2_Entity "1..1" -- "0..1" ulmDsl2_Entity : superType10
+ulmDsl2_Feature "1..1" *-- "0..1" ulmDsl2_FeatureType : type14
+ulmDsl2_EObject "0..1" --* "1..1" ulmDsl2_FeatureType : type16
+ulmDsl2_EObject "0..1" --* "1..1" ulmDsl2_Lookup : type26
+ulmDsl2_Attribute "1..1" *-- "0..1" ulmDsl2_EObject : type7
+ulmDsl2_LookupInt "1..1" *-- "0..9999" ulmDsl2_LookupIntValue : values29
+ulmDsl2_LookupString "1..1" *-- "0..9999" ulmDsl2_LookupStringValue : values30
+@enduml

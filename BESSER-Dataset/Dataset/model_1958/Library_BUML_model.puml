@@ -1,0 +1,73 @@
+@startuml
+class Command {
+}
+class Search {
+}
+class library_Add {
+  + isbn : str
+  + title : str
+  + year : str
+}
+class library_AddAuthor {
+  + isbn : str
+}
+class library_AddUser {
+  + age : str
+  + firstname : str
+  + secondname : str
+}
+class library_Author {
+  + firstname : str
+  + secondname : str
+}
+class library_ByAuthor {
+}
+class library_ByYear {
+  + year : str
+}
+class library_Check {
+  + isbn : str
+}
+class library_Command {
+}
+class library_Lend {
+  + firstname : str
+  + isbn : str
+  + secondname : str
+}
+class library_Model {
+}
+class library_Remove {
+  + isbn : str
+}
+class library_Return {
+  + firstname : str
+  + isbn : str
+  + secondname : str
+}
+class library_Search {
+}
+class library_Show {
+  + what : str
+}
+class library_ShowUserAccount {
+  + firstname : str
+  + secondname : str
+}
+Command <|-- library_Add
+Command <|-- library_AddAuthor
+Command <|-- library_AddUser
+Command <|-- library_Check
+Command <|-- library_Lend
+Command <|-- library_Remove
+Command <|-- library_Return
+Command <|-- library_Search
+Command <|-- library_Show
+Command <|-- library_ShowUserAccount
+Search <|-- library_ByAuthor
+Search <|-- library_ByYear
+library_AddAuthor "1..1" *-- "0..1" library_Author : author1
+library_Author "0..1" --* "1..1" library_ByAuthor : author2
+library_Add "1..1" *-- "0..9999" library_Author : authors4
+library_Command "0..9999" --* "1..1" library_Model : commands0
+@enduml

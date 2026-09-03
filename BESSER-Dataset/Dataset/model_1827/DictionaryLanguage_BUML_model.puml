@@ -1,0 +1,26 @@
+@startuml
+class DictionaryLanguage_Author {
+  + email : str
+}
+class DictionaryLanguage_Dictionary {
+  + title : str
+}
+class DictionaryLanguage_Entry {
+  + content : str
+  + level : str
+}
+class DictionaryLanguage_Library {
+  + name : str
+}
+class DictionaryLanguage_Shelf {
+  + description : str
+}
+DictionaryLanguage_Author "1..1" -- "1..1" DictionaryLanguage_Dictionary : author4
+DictionaryLanguage_Author "0..9999" --* "1..1" DictionaryLanguage_Library : author8
+DictionaryLanguage_Author "1..1" -- "0..9999" DictionaryLanguage_Dictionary : dictionary1
+DictionaryLanguage_Dictionary "0..9999" --* "1..1" DictionaryLanguage_Shelf : dictionary10
+DictionaryLanguage_Dictionary "1..1" *-- "0..9999" DictionaryLanguage_Entry : entry6
+DictionaryLanguage_Author "1..1" -- "1..1" DictionaryLanguage_Library : library0
+DictionaryLanguage_Dictionary "1..1" -- "1..1" DictionaryLanguage_Shelf : shelf3
+DictionaryLanguage_Library "1..1" *-- "0..9999" DictionaryLanguage_Shelf : shelf7
+@enduml

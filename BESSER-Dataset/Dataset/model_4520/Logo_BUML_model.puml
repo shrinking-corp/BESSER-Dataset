@@ -1,0 +1,35 @@
+@startuml
+class Instruction {
+}
+class logo_Forward {
+  + steps : int
+}
+class logo_Instruction {
+}
+class logo_Left {
+  + angle : int
+}
+class logo_LogoProgram {
+}
+class logo_Parameter {
+  + name : str
+}
+class logo_ProcCall {
+  + actualArgs : int
+}
+class logo_ProcDeclaration {
+  + name : str
+}
+class logo_Right {
+  + angle : int
+}
+Instruction <|-- logo_Forward
+Instruction <|-- logo_Left
+Instruction <|-- logo_ProcCall
+Instruction <|-- logo_ProcDeclaration
+Instruction <|-- logo_Right
+logo_Parameter "0..9999" --* "1..1" logo_ProcDeclaration : args1
+logo_ProcCall "1..1" -- "0..1" logo_ProcDeclaration : declaration5
+logo_Instruction "0..9999" --* "1..1" logo_LogoProgram : instructions0
+logo_Instruction "0..9999" --* "1..1" logo_ProcDeclaration : instructions2
+@enduml

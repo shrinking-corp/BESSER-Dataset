@@ -1,0 +1,23 @@
+@startuml
+class demo_model_Address {
+  + city : str
+  + country : str
+  + state : str
+  + street : str
+  + zipcode : int
+}
+class demo_model_Company {
+  + name : str
+}
+class demo_model_Employee {
+  + birthday : date
+  + email : str
+  + firstname : str
+  + lastname : str
+  + phone : str
+  + position : str
+}
+demo_model_Address "0..1" --* "1..1" demo_model_Employee : address2
+demo_model_Company "0..1" -- "1..1" demo_model_Employee : company1
+demo_model_Company "1..1" *-- "0..9999" demo_model_Employee : employees0
+@enduml

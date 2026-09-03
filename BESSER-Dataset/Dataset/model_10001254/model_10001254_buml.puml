@@ -1,0 +1,52 @@
+@startuml
+class Cliente {
+  + address : str
+  + dateOfBirth : date
+  + emailAddress : str
+  + name : str
+  + phoneNumber : str
+}
+enum Conta_AccountType {
+}
+class Conta_CertificatesOfDepositAccount {
+  + interestRate : float
+  + timePeriod : int
+}
+class Conta_CheckingAccount {
+  + name : str
+}
+class Conta_Conta {
+  + balance : float
+  + contanum : str
+  + type : Conta_AccountType
+}
+class Conta_SavingsAccount {
+  + interestRate : float
+}
+class Login {
+  + lastLoginTime : date
+  + password : str
+  + securityAnswer : str
+  + securityQuestion : str
+  + username : str
+}
+class transaction_DepositTransaction {
+}
+class transaction_Transaction {
+  + amount : float
+  + id : int
+  + transactionTime : date
+  + type : transaction_TransactionType
+}
+enum transaction_TransactionType {
+}
+class transaction_TransferTransaction {
+  + sourceAccount : Conta_Conta
+  + targetAccount : Conta_Conta
+}
+class transaction_WithdrawTransaction {
+}
+Conta_Conta "1..1" -- "0..9999" transaction_Transaction : Account_Transaction
+Cliente "1..1" -- "0..1" Login : Customer_Login
+Cliente "1..1" -- "1..9999" Conta_Conta : association2
+@enduml

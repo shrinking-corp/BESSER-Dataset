@@ -1,0 +1,36 @@
+@startuml
+class Element {
+}
+class pnml_ArcPlace2Transition {
+}
+class pnml_ArcTransition2Place {
+}
+abstract class pnml_Element {
+  + id : str
+  + location : str
+}
+class pnml_NetElement {
+  + name : str
+}
+class pnml_PNMLDocument {
+  + location : str
+}
+class pnml_PlaceElement {
+  + name : str
+  + tokens : int
+}
+class pnml_TransitionElement {
+  + name : str
+}
+Element <|-- pnml_ArcPlace2Transition
+Element <|-- pnml_ArcTransition2Place
+Element <|-- pnml_NetElement
+Element <|-- pnml_PlaceElement
+Element <|-- pnml_TransitionElement
+pnml_Element "0..9999" --* "1..1" pnml_NetElement : contents9
+pnml_NetElement "0..9999" --* "1..1" pnml_PNMLDocument : nets0
+pnml_ArcPlace2Transition "1..1" -- "0..1" pnml_PlaceElement : source1
+pnml_ArcTransition2Place "1..1" -- "0..1" pnml_TransitionElement : source6
+pnml_ArcPlace2Transition "1..1" -- "0..1" pnml_TransitionElement : target2
+pnml_ArcTransition2Place "1..1" -- "0..1" pnml_PlaceElement : target4
+@enduml

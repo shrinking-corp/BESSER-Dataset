@@ -1,0 +1,44 @@
+@startuml
+class Agent {
+  + Agent_ID : str
+  + BrojAgenta : int
+  + Ime : str
+  + JMBG : int
+  + Prezime : str
+}
+class Aran_man {
+  + Aranzman_ID : str
+  + Cena : str
+  + DatumPolaska : str
+  + DatumPovratka : str
+  + NazivAran_ : str
+  + SlobMesto : bool
+}
+class Kupac {
+  + BrojPasosa : int
+  + Grad : str
+  + Ime : str
+  + JMBG : int
+  + Kupac_ID : str
+  + Mobilni : int
+  + Prezime : str
+}
+class Osiguranje {
+  + BrojPolise : int
+  + Cena : str
+  + OsigKuca : str
+  + Osiguranje_ID : str
+  + PaketPokri_a : str
+}
+class Transakcija {
+  + Trans_ID : str
+  + datum_trans : str
+  + suma : str
+  + tip : str
+}
+Agent "0..9999" -- "0..9999" Aran_man : Agent_Aran_man
+Agent "1..1" -- "0..9999" Kupac : Agent_Kupac
+Kupac "0..9999" -- "0..1" Osiguranje : Osiguranje_Putnik
+Aran_man "0..9999" -- "1..1" Kupac : Putnik_Rezervisanje
+Kupac "0..9999" -- "1..9999" Transakcija : Transakcija_Kupac
+@enduml

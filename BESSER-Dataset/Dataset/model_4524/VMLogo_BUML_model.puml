@@ -1,0 +1,27 @@
+@startuml
+class vmlogo_CallStack {
+}
+class vmlogo_Point {
+  + x : float
+  + y : float
+}
+class vmlogo_Segment {
+}
+class vmlogo_StackFrame {
+}
+class vmlogo_Turtle {
+  + heading : float
+  + penUp : bool
+}
+class vmlogo_Variable {
+  + name : str
+  + value : float
+}
+vmlogo_Point "1..1" --* "1..1" vmlogo_Segment : begin5
+vmlogo_CallStack "1..1" --* "1..1" vmlogo_Turtle : callStack3
+vmlogo_Segment "0..9999" --* "1..1" vmlogo_Turtle : drawings1
+vmlogo_Point "1..1" --* "1..1" vmlogo_Segment : end8
+vmlogo_CallStack "1..1" *-- "0..9999" vmlogo_StackFrame : frames11
+vmlogo_Point "1..1" --* "1..1" vmlogo_Turtle : position0
+vmlogo_StackFrame "1..1" *-- "0..9999" vmlogo_Variable : variables13
+@enduml

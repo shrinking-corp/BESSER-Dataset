@@ -1,0 +1,50 @@
+@startuml
+class Admin {
+  + AdminFileName : str
+}
+class Course {
+  + CTutor : str
+  + Cid : str
+  + Cname : str
+  + Course_File_Name : str
+  + Course_REG : str
+  + Cprice : str
+}
+class Email {
+  + Email : str
+}
+class Exam {
+  + EID : str
+  + EName : str
+  + ETIME : str
+  + Exam_File_Name : str
+  + MaxGrade : str
+}
+class FileBinary {
+}
+class Finance {
+  + Cname : str
+  + coast : str
+}
+class ILogin_Interface {
+}
+class Insturctor {
+  + INfilename : str
+}
+class Person {
+  + PersonFName : str
+  + id : str
+  + phNum : str
+}
+class Student {
+  + grade : str
+  + s_age : int
+  + studentfname : str
+}
+Course "0..1" -- "0..1" FileBinary : Course_FileBinary
+Email "0..1" -- "0..1" FileBinary : Email_FileBinary
+Course "0..1" -- "0..1" Exam : Exam_Course
+Exam "0..1" -- "0..1" FileBinary : Exam_FileBinary
+FileBinary "0..1" -- "0..1" Insturctor : Insturctor_FileBinary
+FileBinary "0..1" -- "0..1" Student : Student_FileBinary
+@enduml

@@ -1,0 +1,102 @@
+@startuml
+enum Action {
+  CASCADE
+  NO_ACTION
+  RESTRICT
+  SET_DEFAULT
+  SET_NULL
+}
+class Constraints {
+}
+class DataType {
+}
+enum DeferrableAct {
+  DEFFERABLE
+  NOT_DEFFERABLE
+}
+enum DeferredAct {
+  INITIALLY_DEFERRED
+  INITIALLY_IMMEDIATE
+}
+class ModelElement {
+}
+class PKeyAndUnique {
+}
+enum ReferencingType {
+  DEFAULT
+  FULL
+  PARTIAL
+}
+class rdbms_CheckCon {
+  + checkCondition : str
+}
+class rdbms_Column {
+  + default : str
+  + length : int
+  + nullable : bool
+  + precision : int
+}
+abstract class rdbms_Constraints {
+  + deferrable : str
+  + deferred : str
+}
+abstract class rdbms_DataType {
+}
+class rdbms_Database {
+}
+class rdbms_ForeignKey {
+  + deleteActionRHS : str
+  + inverseReferentialIntegrityCon : bool
+  + match : str
+  + updateActionRHS : str
+}
+abstract class rdbms_ModelElement {
+  + name : str
+}
+abstract class rdbms_PKeyAndUnique {
+}
+class rdbms_PrimaryKeyCon {
+}
+class rdbms_SystemDataType {
+  + predefinedDecPlaces : int
+  + predefinedLength : int
+}
+class rdbms_Table {
+}
+class rdbms_UniqueCon {
+}
+class rdbms_UserDefinedDataType {
+  + defaultValue : str
+  + length : int
+  + precision : int
+}
+Constraints <|-- rdbms_CheckCon
+Constraints <|-- rdbms_ForeignKey
+Constraints <|-- rdbms_PKeyAndUnique
+DataType <|-- rdbms_SystemDataType
+DataType <|-- rdbms_UserDefinedDataType
+ModelElement <|-- rdbms_Column
+ModelElement <|-- rdbms_Constraints
+ModelElement <|-- rdbms_DataType
+ModelElement <|-- rdbms_Database
+ModelElement <|-- rdbms_Table
+PKeyAndUnique <|-- rdbms_PrimaryKeyCon
+PKeyAndUnique <|-- rdbms_UniqueCon
+rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : FKTable29
+rdbms_Column "1..9999" -- "1..1" rdbms_PKeyAndUnique : PKandUQColumns30
+rdbms_Column "1..1" -- "1..1" rdbms_DataType : columnDataType18
+rdbms_Column "1..1" -- "0..1" rdbms_ForeignKey : columnInFK16
+rdbms_Column "1..1" -- "0..1" rdbms_PKeyAndUnique : columnInPKandUQ14
+rdbms_Column "1..9999" --* "1..1" rdbms_Table : columns10
+rdbms_SystemDataType "1..1" -- "1..1" rdbms_UserDefinedDataType : dataType33
+rdbms_Database "1..1" *-- "0..9999" rdbms_SystemDataType : dataTypes3
+rdbms_Column "1..9999" -- "1..1" rdbms_ForeignKey : lhsAttr23
+rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : refersTo26
+rdbms_ForeignKey "1..1" -- "1..1" rdbms_PKeyAndUnique : rhsKey20
+rdbms_CheckCon "0..9999" --* "1..1" rdbms_Table : tableCHs12
+rdbms_ForeignKey "0..9999" --* "1..1" rdbms_Table : tableFKs5
+rdbms_PrimaryKeyCon "1..1" --* "1..1" rdbms_Table : tablePK6
+rdbms_Table "1..1" *-- "0..9999" rdbms_UniqueCon : tableUQ8
+rdbms_Database "1..1" *-- "0..9999" rdbms_Table : tables1
+rdbms_Database "1..1" *-- "0..9999" rdbms_UserDefinedDataType : userDefinedDataTypes0
+@enduml

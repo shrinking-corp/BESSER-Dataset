@@ -1,0 +1,53 @@
+@startuml
+class ATM_INFO {
+  + Location : str
+}
+class ATM_Transaction {
+  + Amount : int
+  + Date : str
+  + TransactionId : str
+}
+class Account {
+  + BranchLocation : str
+  + Owned_by : str
+  + Type : str
+}
+class Bank {
+  + BankId : str
+  + location : str
+}
+class CheckBalance {
+  + Query : str
+}
+class Current_Account {
+  + Acc_no : str
+  + Balance : str
+}
+class Customer {
+  + Address : str
+  + Id : str
+  + Name : str
+}
+class Debit_Card {
+  + Card_No : str
+  + Owned_By : str
+}
+class Savings_Account {
+  + Acc_no : str
+  + Balance : str
+}
+class Transfer_Money {
+  + ACC_NO : str
+  + amount : int
+}
+class Withdraw_Transaction {
+  + amount : int
+}
+ATM_INFO "0..1" -- "0..10000" ATM_Transaction : ATM_INFO_ATM_Transaction
+Account "0..1" -- "0..1" Debit_Card : Debit_Card_Account
+Customer "0..1" -- "0..5" Debit_Card : Debit_Card_Customer
+Debit_Card "0..1" -- "0..1" Debit_Card : Debit_Card_Debit_Card
+Bank "0..1" -- "0..10000" Debit_Card : Debit_Card_MyClass
+ATM_INFO "0..100" -- "0..1" Bank : MyClass_ATM_INFO
+Bank "0..1" -- "0..1000" Customer : MyClass_Customer
+@enduml

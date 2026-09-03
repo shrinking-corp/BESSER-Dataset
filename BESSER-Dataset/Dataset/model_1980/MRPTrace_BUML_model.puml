@@ -1,0 +1,36 @@
+@startuml
+class MRPTrace_Event {
+  + time : str
+}
+abstract class MRPTrace_NamedElement {
+  + name : str
+}
+class MRPTrace_RDMElement {
+}
+class MRPTrace_Trace {
+  + granularity : str
+}
+class MRPTrace_TraceEntry {
+  + description : str
+}
+class MRPTrace_TraceModel {
+}
+class NamedElement {
+}
+enum TimeUnit {
+  DAYS
+  HOURS
+  MICROSECONDS
+  MILLISECONDS
+  MINUTES
+  NANOSECONDS
+  SECONDS
+}
+NamedElement <|-- MRPTrace_Event
+NamedElement <|-- MRPTrace_Trace
+MRPTrace_RDMElement "0..9999" -- "1..1" MRPTrace_TraceEntry : affectedRDMElements6
+MRPTrace_Event "1..1" --* "1..1" MRPTrace_TraceEntry : cause8
+MRPTrace_Trace "1..1" *-- "0..9999" MRPTrace_TraceEntry : consistsOf1
+MRPTrace_TraceEntry "0..1" -- "1..1" MRPTrace_TraceEntry : nextEntry4
+MRPTrace_Trace "1..1" --* "1..1" MRPTrace_TraceModel : trace0
+@enduml

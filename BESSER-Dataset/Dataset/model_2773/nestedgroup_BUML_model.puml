@@ -1,0 +1,19 @@
+@startuml
+class nestedgroup_A {
+  + b : str
+  + group : str
+  + name : str
+}
+class nestedgroup_CType {
+  + cname : str
+  + cvalue : str
+}
+class nestedgroup_Element {
+  + mixed : str
+  + name : str
+  + true : str
+}
+nestedgroup_A "1..1" *-- "0..9999" nestedgroup_CType : c0
+nestedgroup_CType "1..9999" --* "1..1" nestedgroup_Element : c1
+nestedgroup_Element "1..1" --* "1..1" nestedgroup_Element : recursive4
+@enduml

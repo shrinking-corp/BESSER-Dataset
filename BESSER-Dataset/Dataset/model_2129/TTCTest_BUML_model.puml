@@ -1,0 +1,155 @@
+@startuml
+class Assertion {
+}
+class Class_Element {
+}
+class Condition {
+}
+class Containment {
+}
+class Implementation {
+}
+class Propose_Refactoring {
+}
+class Refactoring {
+}
+class Refactoring_Instance {
+}
+class Test_Step_Element {
+}
+class tTCTest_Assert_False {
+}
+class tTCTest_Assert_True {
+}
+class tTCTest_Assertion {
+}
+class tTCTest_Class_Element {
+  + name : str
+}
+class tTCTest_Classes {
+  + name : str
+}
+class tTCTest_Compile {
+}
+class tTCTest_Condition {
+}
+class tTCTest_Containment {
+}
+class tTCTest_Contains {
+}
+class tTCTest_Contains_Not {
+}
+class tTCTest_Create_Superclass_Refactoring {
+}
+class tTCTest_Expect_False {
+}
+class tTCTest_Expect_True {
+}
+class tTCTest_Fields {
+  + name : str
+}
+class tTCTest_Implementation {
+}
+class tTCTest_Implements {
+}
+class tTCTest_Implements_Not {
+}
+class tTCTest_Java_Class {
+  + class_name : str
+  + name : str
+  + package : str
+}
+class tTCTest_Java_Field {
+  + field_name : str
+}
+class tTCTest_Java_Method {
+  + method_name : str
+}
+class tTCTest_Methods {
+  + name : str
+}
+class tTCTest_No_Refactoring {
+}
+class tTCTest_Propose_Create_Superclass_Refactoring {
+}
+class tTCTest_Propose_Pullup_Method_Refactoring {
+}
+class tTCTest_Propose_Refactoring {
+}
+class tTCTest_Pull_Up_Refactoring {
+}
+class tTCTest_Refactoring {
+}
+class tTCTest_Refactoring_Instance {
+  + name : str
+}
+class tTCTest_Synchronize {
+}
+class tTCTest_Test_Case {
+  + description : str
+  + java_program : str
+  + name : str
+}
+class tTCTest_Test_File {
+  + name : str
+}
+class tTCTest_Test_Flow {
+}
+class tTCTest_Test_Step {
+}
+class tTCTest_Test_Step_Element {
+}
+class tTCTest_Warning {
+  + message : str
+}
+Assertion <|-- tTCTest_Assert_False
+Assertion <|-- tTCTest_Assert_True
+Class_Element <|-- tTCTest_Java_Field
+Class_Element <|-- tTCTest_Java_Method
+Condition <|-- tTCTest_Expect_False
+Condition <|-- tTCTest_Expect_True
+Containment <|-- tTCTest_Contains
+Containment <|-- tTCTest_Contains_Not
+Implementation <|-- tTCTest_Implements
+Implementation <|-- tTCTest_Implements_Not
+Propose_Refactoring <|-- tTCTest_Propose_Create_Superclass_Refactoring
+Propose_Refactoring <|-- tTCTest_Propose_Pullup_Method_Refactoring
+Refactoring <|-- tTCTest_No_Refactoring
+Refactoring <|-- tTCTest_Refactoring_Instance
+Refactoring_Instance <|-- tTCTest_Create_Superclass_Refactoring
+Refactoring_Instance <|-- tTCTest_Pull_Up_Refactoring
+Test_Step_Element <|-- tTCTest_Assertion
+Test_Step_Element <|-- tTCTest_Compile
+Test_Step_Element <|-- tTCTest_Condition
+Test_Step_Element <|-- tTCTest_Containment
+Test_Step_Element <|-- tTCTest_Implementation
+Test_Step_Element <|-- tTCTest_Synchronize
+Test_Step_Element <|-- tTCTest_Test_Step
+tTCTest_Classes "0..1" -- "1..1" tTCTest_Create_Superclass_Refactoring : child28
+tTCTest_Implementation "1..1" -- "0..1" tTCTest_Java_Class : child54
+tTCTest_Containment "1..1" -- "0..1" tTCTest_Java_Class : class_50
+tTCTest_Classes "1..1" -- "0..9999" tTCTest_Java_Class : classes9
+tTCTest_Class_Element "0..1" -- "1..1" tTCTest_Containment : contains52
+tTCTest_Test_Step "1..1" *-- "0..9999" tTCTest_Test_Step_Element : elements35
+tTCTest_Condition "1..1" *-- "0..9999" tTCTest_Test_Step_Element : false_steps45
+tTCTest_Fields "1..1" -- "0..9999" tTCTest_Java_Field : fields19
+tTCTest_Assertion "1..1" -- "0..1" tTCTest_Refactoring : input37
+tTCTest_Java_Class "0..9999" --* "1..1" tTCTest_Test_File : java_class1
+tTCTest_Classes "0..9999" --* "1..1" tTCTest_Test_File : java_classes3
+tTCTest_Java_Method "0..9999" --* "1..1" tTCTest_Test_File : java_method5
+tTCTest_Java_Method "0..1" -- "1..1" tTCTest_Pull_Up_Refactoring : method25
+tTCTest_Java_Method "0..9999" -- "1..1" tTCTest_Methods : methods15
+tTCTest_Java_Class "0..9999" -- "1..1" tTCTest_Java_Method : params12
+tTCTest_Java_Class "0..1" -- "1..1" tTCTest_Pull_Up_Refactoring : parent23
+tTCTest_Implementation "1..1" -- "0..1" tTCTest_Java_Class : parent56
+tTCTest_Condition "1..1" -- "0..1" tTCTest_Refactoring : refactoring38
+tTCTest_Propose_Refactoring "1..1" *-- "0..1" tTCTest_Refactoring : refactoring48
+tTCTest_Refactoring_Instance "0..9999" --* "1..1" tTCTest_Test_File : refactorings7
+tTCTest_Test_Flow "1..1" *-- "0..9999" tTCTest_Test_Step_Element : step33
+tTCTest_Create_Superclass_Refactoring "1..1" -- "0..1" tTCTest_Java_Class : target30
+tTCTest_Test_Case "0..9999" --* "1..1" tTCTest_Test_File : test_cases0
+tTCTest_Test_Case "1..1" *-- "0..1" tTCTest_Test_Flow : test_flow21
+tTCTest_Condition "1..1" *-- "0..9999" tTCTest_Test_Step_Element : true_steps40
+tTCTest_Java_Class "0..1" -- "1..1" tTCTest_Java_Field : type17
+tTCTest_Condition "1..1" *-- "0..1" tTCTest_Warning : warning43
+@enduml

@@ -1,0 +1,287 @@
+@startuml
+class ConnectionType {
+}
+class DepXYZ_IMPL {
+}
+class DepXY_IMPL {
+}
+class DepXZ_IMPL {
+}
+class DepX_Impl {
+}
+class DepYZ_IMPL {
+}
+class DepY_Impl {
+}
+class DepZ_Impl {
+}
+enum DirectionType {
+  BEHIND
+  FRONT
+  LEFT
+  RIGHT
+}
+enum EBool {
+  FALSE
+  TRUE
+}
+class InitialPosition {
+}
+class Limit {
+}
+enum Mode {
+  OFF
+  ON
+}
+class Movement {
+}
+class Root {
+}
+class Surface {
+}
+enum TypePrimitif {
+  boolType
+  intType
+  realType
+  stringType
+}
+enum Where {
+  INDOOR
+  OUTDOOR
+}
+class drn_And {
+  + name : str
+}
+class drn_Assignement {
+  + name : str
+}
+class drn_BACKWARD {
+}
+class drn_Bluetooth {
+}
+class drn_CARREXY {
+  + coteCST : int
+}
+class drn_CARREXZ {
+  + coteCST : int
+}
+class drn_CARREYZ {
+  + coteCST : int
+}
+class drn_CERCLEXY {
+  + rayonCST : int
+}
+class drn_CERCLEXZ {
+  + rayonCST : int
+}
+class drn_CERCLEYZ {
+  + rayonCST : int
+}
+class drn_Configuration {
+  + name : str
+}
+class drn_ConnectionType {
+  + adress : str
+  + name : str
+}
+class drn_Context {
+  + name : str
+  + where : str
+}
+class drn_DOWN {
+}
+class drn_Declaration {
+  + name : str
+  + typePrimitif : str
+}
+class drn_Definition {
+  + bool : str
+  + int : str
+  + real : str
+  + text : str
+}
+class drn_DepXYZ_IMPL {
+}
+class drn_DepXY_IMPL {
+  + name : str
+  + tempsCST : int
+}
+class drn_DepXZ_IMPL {
+  + name : str
+  + tempsCST : int
+}
+class drn_DepX_Impl {
+  + distanceCST : int
+  + name : str
+  + tempsCST : int
+}
+class drn_DepYZ_IMPL {
+  + name : str
+  + tempsCST : int
+}
+class drn_DepY_Impl {
+  + distanceCST : int
+  + name : str
+  + tempsCST : int
+}
+class drn_DepZ_Impl {
+  + distanceCST : int
+  + name : str
+  + tempsCST : int
+}
+class drn_Device {
+  + name : str
+}
+class drn_Element {
+  + name : str
+}
+class drn_Expression {
+  + repeatCST : int
+}
+class drn_FORWARD {
+}
+class drn_Flip {
+  + name : str
+}
+class drn_InitialDirection {
+  + value : str
+}
+class drn_InitialPosition {
+}
+class drn_InitialPositionX {
+  + value : int
+}
+class drn_InitialPositionY {
+  + value : int
+}
+class drn_LEFT {
+}
+class drn_Land {
+  + name : str
+}
+class drn_Library {
+  + name : str
+}
+class drn_Limit {
+  + name : str
+}
+class drn_MaxHeight {
+}
+class drn_MaxLength {
+}
+class drn_MaxSpeed {
+  + value : int
+}
+class drn_MaxWidth {
+}
+class drn_Model {
+}
+class drn_Movement {
+}
+class drn_RIGHT {
+}
+class drn_RefDevice {
+  + mode : str
+}
+class drn_RefPart {
+}
+class drn_RefPartLib {
+}
+class drn_Root {
+}
+class drn_Rotate {
+  + angleCST : str
+  + name : str
+  + tempsCST : int
+}
+class drn_Surface {
+  + value : int
+}
+class drn_TakeOff {
+  + name : str
+}
+class drn_TypeGeneric {
+  + name : str
+}
+class drn_UP {
+}
+class drn_Wait {
+  + name : str
+  + tempsCST : int
+}
+class drn_Wifi {
+}
+class drn_With {
+  + name : str
+}
+ConnectionType <|-- drn_Bluetooth
+ConnectionType <|-- drn_Wifi
+DepXYZ_IMPL <|-- drn_Flip
+DepXY_IMPL <|-- drn_CARREXY
+DepXY_IMPL <|-- drn_CERCLEXY
+DepXZ_IMPL <|-- drn_CARREXZ
+DepXZ_IMPL <|-- drn_CERCLEXZ
+DepX_Impl <|-- drn_LEFT
+DepX_Impl <|-- drn_RIGHT
+DepYZ_IMPL <|-- drn_CARREYZ
+DepYZ_IMPL <|-- drn_CERCLEYZ
+DepY_Impl <|-- drn_BACKWARD
+DepY_Impl <|-- drn_FORWARD
+DepZ_Impl <|-- drn_DOWN
+DepZ_Impl <|-- drn_UP
+InitialPosition <|-- drn_InitialDirection
+InitialPosition <|-- drn_InitialPositionX
+InitialPosition <|-- drn_InitialPositionY
+Limit <|-- drn_InitialPosition
+Limit <|-- drn_MaxSpeed
+Limit <|-- drn_Surface
+Movement <|-- drn_And
+Movement <|-- drn_DepXYZ_IMPL
+Movement <|-- drn_DepXY_IMPL
+Movement <|-- drn_DepXZ_IMPL
+Movement <|-- drn_DepX_Impl
+Movement <|-- drn_DepYZ_IMPL
+Movement <|-- drn_DepY_Impl
+Movement <|-- drn_DepZ_Impl
+Movement <|-- drn_Land
+Movement <|-- drn_RefPart
+Movement <|-- drn_RefPartLib
+Movement <|-- drn_Rotate
+Movement <|-- drn_TakeOff
+Movement <|-- drn_Wait
+Root <|-- drn_Configuration
+Root <|-- drn_Library
+Root <|-- drn_Model
+Surface <|-- drn_MaxHeight
+Surface <|-- drn_MaxLength
+Surface <|-- drn_MaxWidth
+drn_Assignement "0..9999" --* "1..1" drn_Library : assignement15
+drn_Assignement "0..1" -- "1..1" drn_RefPartLib : assignement34
+drn_Assignement "0..9999" --* "1..1" drn_Model : assignement5
+drn_Configuration "0..1" -- "1..1" drn_Model : config0
+drn_Configuration "1..1" *-- "0..1" drn_ConnectionType : connection13
+drn_Context "0..1" --* "1..1" drn_Model : context3
+drn_Declaration "0..9999" --* "1..1" drn_Device : declarations44
+drn_Definition "0..9999" --* "1..1" drn_RefDevice : definitions58
+drn_And "1..1" *-- "0..9999" drn_DepX_Impl : depx38
+drn_And "1..1" *-- "0..9999" drn_DepY_Impl : depy40
+drn_And "1..1" *-- "0..9999" drn_DepZ_Impl : depz42
+drn_Device "0..1" -- "1..1" drn_RefDevice : dev55
+drn_Configuration "1..1" *-- "0..9999" drn_Device : devices11
+drn_Element "0..9999" --* "1..1" drn_TypeGeneric : elements61
+drn_Declaration "0..1" -- "1..1" drn_Definition : left49
+drn_Library "0..1" -- "1..1" drn_RefPartLib : lib32
+drn_Library "0..9999" -- "1..1" drn_Model : libraries1
+drn_Context "1..1" *-- "0..9999" drn_Limit : limit18
+drn_Model "1..1" *-- "0..1" drn_RefPart : main7
+drn_Expression "1..1" *-- "0..1" drn_Movement : move22
+drn_Assignement "1..1" *-- "0..9999" drn_Expression : operandes20
+drn_RefDevice "0..9999" --* "1..1" drn_With : option53
+drn_Definition "1..1" -- "0..1" drn_Element : right51
+drn_And "1..1" *-- "0..9999" drn_Rotate : rotate37
+drn_Expression "0..9999" --* "1..1" drn_Expression : then27
+drn_Declaration "1..1" -- "0..1" drn_TypeGeneric : type46
+drn_Configuration "1..1" *-- "0..9999" drn_TypeGeneric : types9
+drn_Assignement "0..1" -- "1..1" drn_RefPart : variable_partie29
+drn_Expression "1..1" *-- "0..9999" drn_With : with_24
+@enduml

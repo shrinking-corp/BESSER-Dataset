@@ -1,0 +1,140 @@
+@startuml
+class Expression {
+}
+class Named {
+}
+class Statement {
+}
+class SubField {
+}
+class expressionDSL_And {
+}
+class expressionDSL_BinaryMinus {
+}
+class expressionDSL_BinaryPlus {
+}
+class expressionDSL_BooleanConstant {
+  + value : str
+}
+class expressionDSL_Comparison {
+  + op : str
+}
+class expressionDSL_ConstDef {
+  + type : str
+}
+class expressionDSL_Dim {
+  + arrayDimensions : int
+}
+class expressionDSL_Exponent {
+}
+class expressionDSL_Expression {
+}
+class expressionDSL_FunctionCall {
+}
+class expressionDSL_FunctionCallStatement {
+}
+class expressionDSL_FunctionDef {
+  + type : str
+}
+class expressionDSL_IntConstant {
+  + value : int
+}
+class expressionDSL_Model {
+}
+class expressionDSL_MulOrDiv {
+  + op : str
+}
+class expressionDSL_Named {
+  + name : str
+}
+class expressionDSL_Not {
+}
+class expressionDSL_Or {
+}
+class expressionDSL_QualifiedRef {
+}
+class expressionDSL_Statement {
+}
+class expressionDSL_StringConstant {
+  + value : str
+}
+class expressionDSL_StructDef {
+}
+class expressionDSL_SubField {
+}
+class expressionDSL_SubFieldDef {
+  + type : str
+}
+class expressionDSL_UnaryMinus {
+}
+class expressionDSL_UnaryPlus {
+}
+class expressionDSL_VariableArrayOrFunctionRef {
+}
+class expressionDSL_VariableAssignment {
+  + op : str
+}
+class expressionDSL_VariableDef {
+  + type : str
+}
+Expression <|-- expressionDSL_And
+Expression <|-- expressionDSL_BinaryMinus
+Expression <|-- expressionDSL_BinaryPlus
+Expression <|-- expressionDSL_BooleanConstant
+Expression <|-- expressionDSL_Comparison
+Expression <|-- expressionDSL_Exponent
+Expression <|-- expressionDSL_IntConstant
+Expression <|-- expressionDSL_MulOrDiv
+Expression <|-- expressionDSL_Not
+Expression <|-- expressionDSL_Or
+Expression <|-- expressionDSL_QualifiedRef
+Expression <|-- expressionDSL_StringConstant
+Expression <|-- expressionDSL_UnaryMinus
+Expression <|-- expressionDSL_UnaryPlus
+Expression <|-- expressionDSL_VariableArrayOrFunctionRef
+Named <|-- expressionDSL_ConstDef
+Named <|-- expressionDSL_FunctionDef
+Named <|-- expressionDSL_StructDef
+Named <|-- expressionDSL_SubFieldDef
+Named <|-- expressionDSL_VariableDef
+Statement <|-- expressionDSL_ConstDef
+Statement <|-- expressionDSL_FunctionCallStatement
+Statement <|-- expressionDSL_FunctionDef
+Statement <|-- expressionDSL_StructDef
+Statement <|-- expressionDSL_VariableAssignment
+Statement <|-- expressionDSL_VariableDef
+SubField <|-- expressionDSL_StructDef
+SubField <|-- expressionDSL_SubFieldDef
+expressionDSL_Expression "0..9999" --* "1..1" expressionDSL_FunctionCall : args17
+expressionDSL_Expression "0..9999" --* "1..1" expressionDSL_VariableArrayOrFunctionRef : args21
+expressionDSL_FunctionCall "0..1" --* "1..1" expressionDSL_FunctionCallStatement : call14
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_VariableAssignment : exp12
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_UnaryPlus : expr59
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_UnaryMinus : expr61
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_Not : expr63
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_QualifiedRef : head65
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_Or : left24
+expressionDSL_And "1..1" *-- "0..1" expressionDSL_Expression : left29
+expressionDSL_Comparison "1..1" *-- "0..1" expressionDSL_Expression : left34
+expressionDSL_BinaryPlus "1..1" *-- "0..1" expressionDSL_Expression : left39
+expressionDSL_BinaryMinus "1..1" *-- "0..1" expressionDSL_Expression : left44
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_MulOrDiv : left49
+expressionDSL_Exponent "1..1" *-- "0..1" expressionDSL_Expression : left54
+expressionDSL_Dim "0..1" --* "1..1" expressionDSL_VariableDef : options1
+expressionDSL_ConstDef "1..1" *-- "0..1" expressionDSL_Dim : options2
+expressionDSL_Dim "0..1" --* "1..1" expressionDSL_StructDef : options4
+expressionDSL_Dim "0..1" --* "1..1" expressionDSL_SubFieldDef : options8
+expressionDSL_FunctionCall "1..1" -- "0..1" expressionDSL_FunctionDef : ref15
+expressionDSL_Named "0..1" -- "1..1" expressionDSL_VariableArrayOrFunctionRef : ref20
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_Or : right26
+expressionDSL_And "1..1" *-- "0..1" expressionDSL_Expression : right31
+expressionDSL_Comparison "1..1" *-- "0..1" expressionDSL_Expression : right36
+expressionDSL_BinaryPlus "1..1" *-- "0..1" expressionDSL_Expression : right41
+expressionDSL_BinaryMinus "1..1" *-- "0..1" expressionDSL_Expression : right46
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_MulOrDiv : right51
+expressionDSL_Exponent "1..1" *-- "0..1" expressionDSL_Expression : right56
+expressionDSL_Model "1..1" *-- "0..9999" expressionDSL_Statement : statements0
+expressionDSL_StructDef "1..1" *-- "0..9999" expressionDSL_SubField : subFields6
+expressionDSL_Expression "0..1" --* "1..1" expressionDSL_QualifiedRef : tail67
+expressionDSL_VariableAssignment "1..1" -- "0..1" expressionDSL_VariableDef : tgtvar10
+@enduml

@@ -1,0 +1,86 @@
+@startuml
+enum Activity {
+  laying
+  sitting
+  standing
+}
+class NamedEntity {
+}
+enum Operator {
+  equal
+  inferior
+  superior
+}
+enum Precision {
+  m
+  ms
+  s
+}
+class Predicate {
+}
+class Sensor {
+}
+class smarthome_AnalogSensor {
+}
+class smarthome_CSVSensor {
+  + file : str
+}
+class smarthome_DigitalSensor {
+}
+class smarthome_Duration {
+  + precision : str
+  + time : int
+}
+class smarthome_Home {
+  + fileEvents : str
+}
+class smarthome_Mode {
+}
+abstract class smarthome_NamedEntity {
+  + name : str
+}
+class smarthome_Pattern {
+}
+class smarthome_Person {
+}
+class smarthome_PersonPredicate {
+  + activity : str
+}
+abstract class smarthome_Predicate {
+}
+class smarthome_Room {
+}
+class smarthome_Rule {
+}
+abstract class smarthome_Sensor {
+}
+class smarthome_SensorPredicate {
+  + operator : str
+  + value : float
+}
+class smarthome_Tag {
+}
+NamedEntity <|-- smarthome_Pattern
+NamedEntity <|-- smarthome_Person
+NamedEntity <|-- smarthome_Room
+NamedEntity <|-- smarthome_Sensor
+NamedEntity <|-- smarthome_Tag
+Predicate <|-- smarthome_PersonPredicate
+Predicate <|-- smarthome_SensorPredicate
+Sensor <|-- smarthome_AnalogSensor
+Sensor <|-- smarthome_DigitalSensor
+smarthome_Person "1..1" *-- "0..1" smarthome_Tag : ankleLeft15
+smarthome_Person "1..1" *-- "0..1" smarthome_Tag : ankleRight17
+smarthome_Person "1..1" *-- "0..1" smarthome_Tag : belt20
+smarthome_Person "1..1" *-- "0..1" smarthome_Tag : chest23
+smarthome_Duration "0..1" --* "1..1" smarthome_Rule : duration13
+smarthome_Home "1..1" -- "0..9999" smarthome_NamedEntity : monitoredEntities5
+smarthome_Home "1..1" *-- "0..9999" smarthome_Pattern : patterns3
+smarthome_Person "0..1" -- "1..1" smarthome_PersonPredicate : person28
+smarthome_Home "1..1" *-- "0..9999" smarthome_Person : persons1
+smarthome_Predicate "0..9999" --* "1..1" smarthome_Rule : predicates11
+smarthome_Home "1..1" *-- "0..9999" smarthome_Room : rooms0
+smarthome_Pattern "1..1" *-- "0..9999" smarthome_Rule : rules9
+smarthome_Sensor "0..1" -- "1..1" smarthome_SensorPredicate : sensor26
+smarthome_Room "1..1" *-- "0..9999" smarthome_Sensor : sensors7
+@enduml

@@ -1,0 +1,69 @@
+@startuml
+class DeprecatableElement {
+}
+class NamedElement {
+}
+enum ParameterTypes {
+  BOOLEAN
+  FLOAT
+  INTEGER
+  STRING
+}
+class sgen_DeprecatableElement {
+  + comment : str
+  + deprecated : bool
+}
+class sgen_EObject {
+}
+class sgen_Expression {
+}
+class sgen_FeatureConfiguration {
+  + getParameterValue(sgen_parameterName : str) : str
+}
+class sgen_FeatureParameter {
+  + optional : bool
+  + parameterType : str
+}
+class sgen_FeatureParameterValue {
+  + getBooleanValue() : bool
+  + getIntegerValue() : int
+  + getStringValue() : str
+  + setValue(sgen_value : str) : void
+}
+class sgen_FeatureType {
+  + optional : bool
+}
+class sgen_FeatureTypeLibrary {
+  + name : str
+}
+class sgen_GeneratorConfiguration {
+}
+class sgen_GeneratorEntry {
+  + contentType : str
+  + getFeatureConfiguration(sgen_featureName : str) : str
+  + getFeatureParameterValue(sgen_featureName : str, sgen_paramName : str) : str
+}
+class sgen_GeneratorModel {
+  + generatorId : str
+}
+class sgen_Property {
+}
+DeprecatableElement <|-- sgen_FeatureParameter
+DeprecatableElement <|-- sgen_FeatureType
+NamedElement <|-- sgen_FeatureParameter
+NamedElement <|-- sgen_FeatureType
+sgen_FeatureConfiguration "0..9999" --* "1..1" sgen_GeneratorConfiguration : configurations3
+sgen_EObject "0..1" -- "1..1" sgen_GeneratorEntry : elementRef11
+sgen_GeneratorEntry "0..9999" --* "1..1" sgen_GeneratorModel : entries0
+sgen_Expression "0..1" --* "1..1" sgen_FeatureParameterValue : expression18
+sgen_FeatureConfiguration "0..1" -- "1..1" sgen_FeatureParameterValue : featureConfiguration17
+sgen_FeatureParameter "1..1" -- "0..1" sgen_FeatureType : featureType6
+sgen_FeatureConfiguration "0..9999" --* "1..1" sgen_GeneratorEntry : features13
+sgen_FeatureType "1..1" -- "1..1" sgen_FeatureTypeLibrary : library5
+sgen_FeatureParameter "0..1" -- "1..1" sgen_FeatureParameterValue : parameter16
+sgen_FeatureConfiguration "1..1" *-- "0..9999" sgen_FeatureParameterValue : parameterValues10
+sgen_FeatureParameter "0..9999" --* "1..1" sgen_FeatureType : parameters4
+sgen_GeneratorModel "1..1" *-- "0..9999" sgen_Property : properties1
+sgen_FeatureConfiguration "1..1" -- "0..1" sgen_FeatureType : type7
+sgen_FeatureType "0..9999" --* "1..1" sgen_FeatureTypeLibrary : types20
+@enduml

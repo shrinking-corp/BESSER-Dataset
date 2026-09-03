@@ -1,0 +1,52 @@
+@startuml
+class Admin_ {
+  + ArrayList_member_ : str
+  + ArryList_Employee : str
+  + Password : str
+}
+class Appliacne {
+  + name : str
+  + price : int
+}
+class Employee {
+  + Designation : str
+  + Password : str
+  + name : str
+  + salary : int
+}
+class Furniture {
+  + name : str
+  + price : int
+}
+class Product {
+  + ArrayList_appliance_ : str
+  + ArrayList_food_ : str
+  + ArrayList_furniture_ : str
+  + typeOfItems : int
+}
+class Store {
+  + SName : str
+  + Sid : int
+}
+class customers {
+  + name : str
+  + shoppingCost : int
+}
+class food {
+  + name : str
+  + price : int
+}
+class member {
+  + memberType : str
+  + name : str
+  + password : str
+}
+Admin_ "0..1" -- "1..1" Employee : Admin__Workers
+Admin_ "0..1" -- "0..1" member : Admin__member
+Appliacne "1..1" -- "0..1" Product : Items_Appliacne
+Furniture "0..9999" -- "0..1" Product : Items_Furniture
+Product "0..1" -- "1..1" food : Items_food
+Employee "0..1" -- "0..1" Store : Store_Employee
+Product "0..1" -- "0..1" Store : Store_Product
+Store "0..1" -- "0..1" member : member_Store
+@enduml

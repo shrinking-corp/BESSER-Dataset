@@ -1,0 +1,67 @@
+@startuml
+class EA_Model_CrashedVehicle {
+}
+class EA_Model_DeceasedPerson {
+}
+class EA_Model_Driver {
+}
+class EA_Model_LivingPerson {
+}
+class EA_Model_Passenger {
+}
+class EA_Model_Person {
+}
+class EA_Model_RearEndCollision {
+}
+class EA_Model_RoadTrafficAccident {
+  + fatalvictims : int
+}
+class EA_Model_Roadway {
+}
+class EA_Model_RoadwayWithAccident {
+}
+class EA_Model_Travel {
+}
+class EA_Model_Traveler {
+}
+class EA_Model_TravelingVehicle {
+}
+class EA_Model_Vehicle {
+}
+class EA_Model_Victim {
+}
+class Person {
+}
+class RoadTrafficAccident {
+}
+class Roadway {
+}
+class Traveler {
+}
+class TravelingVehicle {
+}
+class Vehicle {
+}
+Person <|-- EA_Model_DeceasedPerson
+Person <|-- EA_Model_LivingPerson
+Person <|-- EA_Model_Traveler
+RoadTrafficAccident <|-- EA_Model_RearEndCollision
+Roadway <|-- EA_Model_RoadwayWithAccident
+Traveler <|-- EA_Model_Driver
+Traveler <|-- EA_Model_Passenger
+Traveler <|-- EA_Model_Victim
+TravelingVehicle <|-- EA_Model_CrashedVehicle
+Vehicle <|-- EA_Model_TravelingVehicle
+EA_Model_CrashedVehicle "1..1" -- "1..1" EA_Model_RoadTrafficAccident : accident0
+EA_Model_RoadTrafficAccident "1..1" -- "1..1" EA_Model_Victim : accident18
+EA_Model_CrashedVehicle "1..9999" -- "1..1" EA_Model_RoadwayWithAccident : crashedvehicle9
+EA_Model_RoadTrafficAccident "1..9999" -- "1..1" EA_Model_RoadwayWithAccident : roadtrafficaccident7
+EA_Model_CrashedVehicle "1..1" -- "1..1" EA_Model_RoadwayWithAccident : roadwaywithaccident1
+EA_Model_RoadTrafficAccident "1..1" -- "1..1" EA_Model_RoadwayWithAccident : roadwaywithaccident5
+EA_Model_Travel "1..1" -- "1..1" EA_Model_Traveler : travel15
+EA_Model_Travel "1..1" -- "1..1" EA_Model_TravelingVehicle : travel16
+EA_Model_Travel "1..1" -- "1..9999" EA_Model_Traveler : travelers12
+EA_Model_Travel "1..1" -- "1..1" EA_Model_TravelingVehicle : vehicle13
+EA_Model_CrashedVehicle "1..9999" -- "1..1" EA_Model_RoadTrafficAccident : vehicles2
+EA_Model_RoadTrafficAccident "1..1" -- "1..9999" EA_Model_Victim : victims3
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+class State {
+}
+class ioAutomaton_Actor {
+}
+class ioAutomaton_Automaton {
+}
+class ioAutomaton_AutomatonCollection {
+}
+class ioAutomaton_Operation {
+}
+class ioAutomaton_OutMessage {
+}
+class ioAutomaton_Return {
+}
+class ioAutomaton_State {
+}
+class ioAutomaton_SystemActor {
+}
+class ioAutomaton_Transition {
+}
+State <|-- ioAutomaton_State
+ioAutomaton_Automaton "0..9999" --* "1..1" ioAutomaton_AutomatonCollection : automaton0
+ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_Transition : automaton15
+ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_State : automaton9
+ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_AutomatonCollection : collection5
+ioAutomaton_State "1..1" -- "0..9999" ioAutomaton_Transition : incomingTransition13
+ioAutomaton_Automaton "1..1" *-- "1..1" ioAutomaton_SystemActor : mainActor1
+ioAutomaton_Operation "1..1" --* "1..1" ioAutomaton_Transition : operation19
+ioAutomaton_Operation "1..1" --* "1..1" ioAutomaton_OutMessage : operation26
+ioAutomaton_OutMessage "0..9999" --* "1..1" ioAutomaton_Transition : outMessage20
+ioAutomaton_State "1..1" -- "0..9999" ioAutomaton_Transition : outgoingTransition11
+ioAutomaton_State "1..1" -- "1..1" ioAutomaton_Transition : postState24
+ioAutomaton_State "1..1" -- "1..1" ioAutomaton_Transition : preState17
+ioAutomaton_Actor "1..1" --* "1..1" ioAutomaton_OutMessage : receiver29
+ioAutomaton_Return "1..1" --* "1..1" ioAutomaton_Transition : returnValue22
+ioAutomaton_OutMessage "1..1" *-- "1..1" ioAutomaton_Return : returnValue31
+ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_State : startState7
+ioAutomaton_Automaton "1..1" *-- "0..9999" ioAutomaton_State : state2
+ioAutomaton_Automaton "1..1" *-- "0..9999" ioAutomaton_Transition : transition3
+@enduml

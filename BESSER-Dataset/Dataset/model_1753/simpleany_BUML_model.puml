@@ -1,0 +1,32 @@
+@startuml
+class MixedBaseClass {
+}
+class MixedData {
+}
+class simpleanySimplified_Book {
+  + author : str
+  + name : str
+  + title : str
+}
+class simpleanySimplified_Description {
+  + keywords : str
+}
+class simpleanySimplified_Library {
+}
+abstract class simpleanySimplified_MixedBaseClass {
+}
+abstract class simpleanySimplified_MixedData {
+  + value : str
+}
+class simpleanySimplified_MixedFeature {
+}
+class simpleanySimplified_MixedText {
+}
+MixedBaseClass <|-- simpleanySimplified_Description
+MixedData <|-- simpleanySimplified_MixedFeature
+MixedData <|-- simpleanySimplified_MixedText
+simpleanySimplified_Book "0..9999" --* "1..1" simpleanySimplified_Library : books4
+simpleanySimplified_Book "1..1" *-- "0..1" simpleanySimplified_Description : description0
+simpleanySimplified_Description "0..9999" --* "1..1" simpleanySimplified_Description : descriptions2
+simpleanySimplified_MixedBaseClass "1..1" *-- "0..9999" simpleanySimplified_MixedData : mixed6
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+class Events {
+  + datetime : int
+  + id : int
+  + name : str
+  + user : str
+}
+class EventsProductGroup {
+  + Event : Events
+  + ProductGroup : ProductGroup
+  + id : int
+}
+class Product {
+  + id : int
+  + name : str
+}
+class ProductGroup {
+  + id : int
+  + name : str
+}
+class ProductGroupProduct {
+  + Product : Product
+  + ProductGroup : ProductGroup
+  + id : int
+  + weight : int
+}
+Events "0..1" -- "0..1" EventsProductGroup : EventsProductGroup_Events
+EventsProductGroup "0..1" -- "0..1" ProductGroup : EventsProductGroup_ProductGroup
+Product "0..1" -- "0..1" ProductGroupProduct : ProductGroupProduct_Product
+ProductGroup "0..1" -- "0..1" ProductGroupProduct : ProductGroupProduct_ProductGroup
+@enduml

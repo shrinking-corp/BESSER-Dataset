@@ -1,0 +1,18 @@
+@startuml
+class simplefsm_SimpleFiniteStateMachine {
+  + name : str
+}
+class simplefsm_State {
+  + action : str
+  + name : str
+}
+class simplefsm_Transition {
+  + event : str
+  + name : str
+}
+simplefsm_State "1..1" *-- "0..9999" simplefsm_Transition : outgoingTransitions1
+simplefsm_SimpleFiniteStateMachine "0..1" -- "1..1" simplefsm_State : owningFSM2
+simplefsm_State "0..1" -- "1..1" simplefsm_Transition : owningState4
+simplefsm_SimpleFiniteStateMachine "1..1" *-- "0..9999" simplefsm_State : states0
+simplefsm_State "0..1" -- "1..1" simplefsm_Transition : target3
+@enduml

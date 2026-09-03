@@ -1,0 +1,45 @@
+@startuml
+enum CourseStatus {
+  ELECTIVE
+  MANDATORY
+}
+enum SemesterType {
+  FALL
+  SPRING
+}
+class studyplan_Course {
+  + courseCode : int
+  + courseName : str
+  + credit : float
+  + status : str
+}
+class studyplan_CourseGroup {
+  + courseStatus : str
+  + group : str
+}
+class studyplan_FieldOfStudy {
+  + fieldName : str
+}
+class studyplan_Semester {
+  + semesterType : str
+  + year : int
+}
+class studyplan_Specialization {
+  + specName : str
+}
+class studyplan_StudyPlan {
+  + planName : str
+}
+studyplan_Course "0..1" --* "1..1" studyplan_CourseGroup : course25
+studyplan_CourseGroup "1..1" --* "1..1" studyplan_Specialization : courseGroup14
+studyplan_Course "1..1" -- "0..1" studyplan_CourseGroup : courseGroup8
+studyplan_Course "0..1" --* "1..1" studyplan_StudyPlan : courses1
+studyplan_Course "0..9999" --* "1..1" studyplan_Semester : courses5
+studyplan_FieldOfStudy "0..1" --* "1..1" studyplan_StudyPlan : program0
+studyplan_CourseGroup "1..1" *-- "0..1" studyplan_Semester : semester22
+studyplan_Semester "0..1" --* "1..1" studyplan_StudyPlan : semester3
+studyplan_FieldOfStudy "1..1" *-- "0..9999" studyplan_Semester : semesters19
+studyplan_Semester "0..9999" --* "1..1" studyplan_Specialization : semesters9
+studyplan_Specialization "0..9999" --* "1..1" studyplan_Specialization : specialization12
+studyplan_FieldOfStudy "1..1" *-- "0..1" studyplan_Specialization : specialization16
+@enduml

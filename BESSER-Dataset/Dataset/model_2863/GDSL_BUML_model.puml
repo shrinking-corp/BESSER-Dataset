@@ -1,0 +1,159 @@
+@startuml
+class AExp {
+}
+class AndAlsoExp {
+}
+class ApplyExp {
+}
+class CaseExp {
+}
+class ClosedExp {
+}
+class Decl {
+}
+class MExp {
+}
+class OrElseExp {
+}
+class RExp {
+}
+class SelectExp {
+}
+class gDSL_AExp {
+  + sym : str
+}
+class gDSL_AndAlsoExp {
+}
+class gDSL_ApplyExp {
+}
+class gDSL_Args {
+}
+class gDSL_AtomicExp {
+  + id : str
+}
+class gDSL_CONS {
+  + conName : str
+}
+class gDSL_CaseExp {
+  + name : str
+}
+class gDSL_ClosedExp {
+}
+class gDSL_ConDecl {
+}
+class gDSL_Decl {
+}
+class gDSL_DeclExport {
+}
+class gDSL_Exp {
+  + mid : str
+}
+class gDSL_Field {
+  + name : str
+}
+class gDSL_MExp {
+  + sign : str
+}
+class gDSL_Model {
+}
+class gDSL_MonadicExp {
+  + name : str
+}
+class gDSL_OrElseExp {
+}
+class gDSL_PAT {
+  + bitpat : str
+  + id : str
+  + int : str
+  + uscore : str
+}
+class gDSL_RExp {
+}
+class gDSL_SelectExp {
+  + symbol : str
+}
+class gDSL_Ty {
+  + type : str
+  + value : str
+}
+class gDSL_TyBind {
+  + name : str
+}
+class gDSL_TyElement {
+  + name : str
+}
+class gDSL_TyVars {
+}
+class gDSL_Type {
+  + name : str
+}
+class gDSL_Val {
+  + attr : str
+  + decPat : str
+  + mid : str
+  + name : str
+}
+class gDSL_ValueDecl {
+  + ids : str
+  + name : str
+}
+AExp <|-- gDSL_MExp
+AndAlsoExp <|-- gDSL_RExp
+ApplyExp <|-- gDSL_AtomicExp
+CaseExp <|-- gDSL_ClosedExp
+ClosedExp <|-- gDSL_OrElseExp
+Decl <|-- gDSL_DeclExport
+Decl <|-- gDSL_Type
+Decl <|-- gDSL_Val
+MExp <|-- gDSL_SelectExp
+OrElseExp <|-- gDSL_AndAlsoExp
+RExp <|-- gDSL_AExp
+SelectExp <|-- gDSL_ApplyExp
+gDSL_AExp "1..1" *-- "0..9999" gDSL_AExp : aexps85
+gDSL_ApplyExp "0..9999" --* "1..1" gDSL_SelectExp : applyexps88
+gDSL_ApplyExp "1..1" *-- "0..1" gDSL_Args : args91
+gDSL_Args "1..1" *-- "0..9999" gDSL_AtomicExp : args93
+gDSL_ApplyExp "1..1" *-- "0..1" gDSL_AtomicExp : atomicExp89
+gDSL_TyVars "1..1" *-- "0..9999" gDSL_Type : attr18
+gDSL_CaseExp "0..9999" --* "1..1" gDSL_Exp : caseExps56
+gDSL_CaseExp "1..1" *-- "0..1" gDSL_ClosedExp : closedExp59
+gDSL_ConDecl "0..9999" --* "1..1" gDSL_Type : conDecl8
+gDSL_Decl "0..9999" --* "1..1" gDSL_Model : decl0
+gDSL_ClosedExp "1..1" *-- "0..9999" gDSL_MonadicExp : doExp75
+gDSL_Ty "1..1" *-- "0..9999" gDSL_TyElement : elements31
+gDSL_CaseExp "0..1" --* "1..1" gDSL_ClosedExp : elseCaseExp72
+gDSL_Exp "0..1" --* "1..1" gDSL_Field : exp106
+gDSL_Exp "0..1" --* "1..1" gDSL_ValueDecl : exp109
+gDSL_Exp "0..1" --* "1..1" gDSL_Val : exp13
+gDSL_CaseExp "1..1" *-- "0..9999" gDSL_Exp : exp63
+gDSL_Exp "0..1" --* "1..1" gDSL_MonadicExp : exp77
+gDSL_AtomicExp "1..1" *-- "0..1" gDSL_Exp : expr98
+gDSL_AtomicExp "1..1" *-- "0..9999" gDSL_Exp : exps101
+gDSL_Exp "0..9999" --* "1..1" gDSL_Val : exps15
+gDSL_AtomicExp "1..1" *-- "0..9999" gDSL_Field : fields96
+gDSL_CaseExp "0..1" --* "1..1" gDSL_ClosedExp : ifCaseExp66
+gDSL_Ty "0..1" --* "1..1" gDSL_Ty : in_43
+gDSL_AndAlsoExp "0..1" --* "1..1" gDSL_OrElseExp : left80
+gDSL_MExp "1..1" *-- "0..9999" gDSL_MExp : mexps87
+gDSL_DeclExport "1..1" -- "0..1" gDSL_Val : name1
+gDSL_CONS "0..1" --* "1..1" gDSL_ConDecl : name21
+gDSL_CaseExp "0..1" --* "1..1" gDSL_Exp : name54
+gDSL_Ty "0..1" --* "1..1" gDSL_Ty : out46
+gDSL_Ty "0..9999" --* "1..1" gDSL_Ty : param34
+gDSL_PAT "0..1" --* "1..1" gDSL_PAT : pat113
+gDSL_CaseExp "1..1" *-- "0..9999" gDSL_PAT : pat61
+gDSL_Ty "0..1" --* "1..1" gDSL_Ty : r40
+gDSL_Ty "0..1" --* "1..1" gDSL_Ty : resType37
+gDSL_AndAlsoExp "0..9999" --* "1..1" gDSL_OrElseExp : right81
+gDSL_CaseExp "0..1" --* "1..1" gDSL_ClosedExp : thenCaseExp69
+gDSL_ConDecl "1..1" *-- "0..1" gDSL_Ty : ty23
+gDSL_Ty "1..1" *-- "0..9999" gDSL_TyBind : tyBind29
+gDSL_DeclExport "1..1" *-- "0..1" gDSL_TyVars : tyVars2
+gDSL_TyVars "0..1" --* "1..1" gDSL_Type : tyVars6
+gDSL_DeclExport "1..1" *-- "0..1" gDSL_Ty : type4
+gDSL_Ty "1..1" -- "0..1" gDSL_Type : typeRef26
+gDSL_AtomicExp "1..1" *-- "0..9999" gDSL_ValueDecl : valDecl104
+gDSL_Ty "0..1" --* "1..1" gDSL_Type : value10
+gDSL_Ty "0..1" --* "1..1" gDSL_TyBind : value48
+gDSL_Ty "0..1" --* "1..1" gDSL_TyElement : value51
+@enduml

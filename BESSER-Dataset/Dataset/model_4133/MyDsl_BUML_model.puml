@@ -1,0 +1,60 @@
+@startuml
+class Expression {
+}
+class Instance {
+}
+class myDsl_Classs {
+}
+class myDsl_Div {
+}
+class myDsl_Expression {
+}
+class myDsl_Instance {
+}
+class myDsl_Let {
+  + id : str
+}
+class myDsl_MathExp {
+  + text : str
+}
+class myDsl_Method {
+  + name : str
+}
+class myDsl_Minus {
+}
+class myDsl_Mult {
+}
+class myDsl_Num {
+  + value : int
+}
+class myDsl_Parameter {
+  + name : str
+}
+class myDsl_Plus {
+}
+class myDsl_Var {
+  + id : str
+}
+Expression <|-- myDsl_Div
+Expression <|-- myDsl_Let
+Expression <|-- myDsl_Minus
+Expression <|-- myDsl_Mult
+Expression <|-- myDsl_Num
+Expression <|-- myDsl_Plus
+Expression <|-- myDsl_Var
+Instance <|-- myDsl_MathExp
+Instance <|-- myDsl_Method
+myDsl_Expression "0..1" --* "1..1" myDsl_Let : binding23
+myDsl_Expression "0..1" --* "1..1" myDsl_Let : body25
+myDsl_Expression "0..1" --* "1..1" myDsl_MathExp : exp2
+myDsl_Classs "1..1" *-- "0..9999" myDsl_Instance : instances0
+myDsl_Expression "0..1" --* "1..1" myDsl_Mult : left13
+myDsl_Div "1..1" *-- "0..1" myDsl_Expression : left18
+myDsl_Expression "0..1" --* "1..1" myDsl_Plus : left3
+myDsl_Expression "0..1" --* "1..1" myDsl_Minus : left8
+myDsl_Method "1..1" *-- "0..9999" myDsl_Parameter : params1
+myDsl_Expression "0..1" --* "1..1" myDsl_Minus : right10
+myDsl_Expression "0..1" --* "1..1" myDsl_Mult : right15
+myDsl_Div "1..1" *-- "0..1" myDsl_Expression : right20
+myDsl_Expression "0..1" --* "1..1" myDsl_Plus : right5
+@enduml

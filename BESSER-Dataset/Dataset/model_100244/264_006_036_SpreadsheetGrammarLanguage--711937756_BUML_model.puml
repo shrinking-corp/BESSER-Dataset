@@ -1,0 +1,59 @@
+@startuml
+class ColumnDefinition {
+}
+class ColumnSpec {
+}
+class Element {
+}
+class spreadsheetGrammarLanguage_Block {
+}
+class spreadsheetGrammarLanguage_BlockSpec {
+}
+class spreadsheetGrammarLanguage_Column {
+  + multiple : bool
+  + name : str
+}
+class spreadsheetGrammarLanguage_ColumnDefinition {
+}
+class spreadsheetGrammarLanguage_ColumnSpec {
+}
+class spreadsheetGrammarLanguage_Element {
+  + name : str
+}
+class spreadsheetGrammarLanguage_Grammar {
+  + name : str
+}
+class spreadsheetGrammarLanguage_MandatoryColumn {
+}
+class spreadsheetGrammarLanguage_OptionalColumn {
+}
+class spreadsheetGrammarLanguage_RowSpec {
+  + header : str
+}
+class spreadsheetGrammarLanguage_Rule {
+}
+class spreadsheetGrammarLanguage_Syntax {
+  + is_id : bool
+  + is_int : bool
+  + is_string : bool
+  + token : str
+}
+class spreadsheetGrammarLanguage_SyntaxSeq {
+}
+ColumnDefinition <|-- spreadsheetGrammarLanguage_MandatoryColumn
+ColumnDefinition <|-- spreadsheetGrammarLanguage_OptionalColumn
+ColumnSpec <|-- spreadsheetGrammarLanguage_BlockSpec
+ColumnSpec <|-- spreadsheetGrammarLanguage_RowSpec
+Element <|-- spreadsheetGrammarLanguage_Block
+Element <|-- spreadsheetGrammarLanguage_Rule
+spreadsheetGrammarLanguage_Rule "1..1" *-- "0..9999" spreadsheetGrammarLanguage_SyntaxSeq : alternatives14
+spreadsheetGrammarLanguage_Block "1..1" *-- "0..9999" spreadsheetGrammarLanguage_Column : columns3
+spreadsheetGrammarLanguage_Column "1..1" *-- "0..1" spreadsheetGrammarLanguage_ColumnDefinition : def_5
+spreadsheetGrammarLanguage_Element "0..9999" --* "1..1" spreadsheetGrammarLanguage_Grammar : elements1
+spreadsheetGrammarLanguage_Block "0..1" -- "1..1" spreadsheetGrammarLanguage_BlockSpec : kind10
+spreadsheetGrammarLanguage_Syntax "0..9999" --* "1..1" spreadsheetGrammarLanguage_SyntaxSeq : parts16
+spreadsheetGrammarLanguage_Block "0..1" -- "1..1" spreadsheetGrammarLanguage_Grammar : root0
+spreadsheetGrammarLanguage_Rule "0..1" -- "1..1" spreadsheetGrammarLanguage_Syntax : rule12
+spreadsheetGrammarLanguage_ColumnDefinition "1..1" *-- "0..1" spreadsheetGrammarLanguage_ColumnSpec : spec7
+spreadsheetGrammarLanguage_RowSpec "1..1" *-- "0..1" spreadsheetGrammarLanguage_Syntax : syntax9
+@enduml

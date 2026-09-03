@@ -1,0 +1,49 @@
+@startuml
+class Bio_Info {
+  + age : str
+  + average_ratings : int
+  + favourite_cuisine : str
+  + name : str
+}
+class Browse_Recipes {
+  + description : str
+  + name : str
+}
+class Dessert {
+  + name : str
+}
+class Drinks {
+  + name : str
+}
+class Login {
+  + password : str
+  + username : str
+}
+class Main_Course {
+  + name : str
+}
+class Profile_Page {
+  + password : str
+  + username : str
+}
+class Return {
+}
+class Social_Media {
+  + name : str
+}
+class User {
+  + name : str
+}
+class Vegetarian {
+  + name : str
+}
+class Visitor_Comment {
+}
+User "1..1" -- "0..9999" Visitor_Comment : User_Friends
+Browse_Recipes "0..9999" -- "1..1" User : User_Group
+Social_Media "0..9999" -- "1..1" User : User_Hashtag
+Login "1..1" -- "1..1" User : User_Login
+Profile_Page "1..1" -- "1..1" User : User_Myprofile
+Bio_Info "0..9999" -- "1..1" User : User_Pages
+Return "0..9999" -- "1..1" User : User_Post
+@enduml

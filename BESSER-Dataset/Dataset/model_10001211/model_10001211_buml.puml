@@ -1,0 +1,28 @@
+@startuml
+class Card {
+  + suit : str
+  + value : int
+}
+class Deck {
+  + deck : str
+}
+class Game {
+  + players : str
+  + round : int
+  + winner : Player
+}
+class MatchingGame {
+}
+class Player {
+  + hand : str
+  + score : int
+}
+class SheddingGame {
+}
+class TrickGame {
+}
+Card "1..9999" -- "1..1" Deck : contains
+Deck "1..1" -- "1..1" Game : drawsFrom
+Card "1..9999" -- "1..1" Player : holds
+Game "1..1" -- "1..9999" Player : isPlayedBy
+@enduml

@@ -1,0 +1,387 @@
+@startuml
+class AbstractActor {
+}
+class Block {
+}
+class Connection {
+}
+class Declaration {
+}
+class Expression {
+}
+class ExpressionCall {
+}
+class LambdaExpression {
+}
+class LiteralExpression {
+}
+class Node {
+}
+class PortAccess {
+}
+class Scope {
+}
+class Statement {
+}
+class Type {
+}
+class Variable {
+}
+class ir_AbstractActor {
+}
+class ir_Action {
+  + tag : str
+}
+class ir_Actor {
+}
+class ir_ActorInstance {
+}
+class ir_Annotation {
+  + name : str
+}
+class ir_AnnotationArgument {
+  + id : str
+  + value : str
+}
+class ir_Assign {
+}
+class ir_BinaryExpression {
+  + operator : str
+}
+class ir_Block {
+}
+class ir_BooleanLiteral {
+  + value : bool
+}
+class ir_Connection {
+}
+class ir_Declaration {
+  + name : str
+}
+class ir_Expression {
+}
+class ir_ExpressionCall {
+}
+class ir_ExternalActor {
+}
+class ir_FloatLiteral {
+  + value : float
+}
+class ir_ForEach {
+}
+class ir_ForwardDeclaration {
+}
+class ir_FromSource {
+}
+class ir_FunctionCall {
+}
+class ir_Generator {
+}
+class ir_Guard {
+}
+class ir_IfExpression {
+}
+class ir_IfStatement {
+}
+class ir_IntegerLiteral {
+  + value : str
+}
+class ir_LambdaExpression {
+}
+class ir_ListExpression {
+}
+class ir_LiteralExpression {
+}
+class ir_Member {
+  + name : str
+}
+class ir_Namespace {
+  + name : str
+}
+class ir_Network {
+}
+class ir_Node {
+  + id : str
+}
+class ir_Point2PointConnection {
+}
+class ir_Port {
+  + name : str
+}
+class ir_PortAccess {
+}
+class ir_PortInstance {
+  + name : str
+}
+class ir_PortPeek {
+  + position : int
+}
+class ir_PortRead {
+}
+class ir_PortWrite {
+}
+class ir_ProcCall {
+}
+class ir_ProcExpression {
+}
+class ir_ReturnValue {
+}
+class ir_Schedule {
+  + PriorityGraph : str
+}
+class ir_Scope {
+}
+class ir_State {
+  + Action2TargetMap : str
+  + PriorityGraph : str
+  + name : str
+}
+class ir_Statement {
+}
+class ir_StringLiteral {
+  + value : str
+}
+class ir_TaggedExpression {
+  + tag : str
+}
+class ir_ToSink {
+}
+class ir_Type {
+}
+class ir_TypeActor {
+  + name : str
+  + namespace : str
+}
+class ir_TypeBool {
+}
+class ir_TypeConstructor {
+}
+class ir_TypeConstructorCall {
+  + name : str
+}
+class ir_TypeDeclaration {
+}
+class ir_TypeDeclarationImport {
+  + namespace : str
+}
+class ir_TypeExternal {
+  + name : str
+  + scopeName : str
+}
+class ir_TypeFloat {
+}
+class ir_TypeInt {
+}
+class ir_TypeLambda {
+}
+class ir_TypeList {
+}
+class ir_TypeProc {
+}
+class ir_TypeRecord {
+}
+class ir_TypeString {
+}
+class ir_TypeUint {
+}
+class ir_TypeUndef {
+}
+class ir_TypeUser {
+}
+class ir_UnaryExpression {
+  + operator : str
+}
+class ir_Variable {
+  + constant : bool
+  + parameter : bool
+}
+class ir_VariableExpression {
+}
+class ir_VariableExternal {
+}
+class ir_VariableImport {
+  + namespace : str
+}
+class ir_VariableReference {
+}
+class ir_WhileLoop {
+}
+AbstractActor <|-- ir_Actor
+AbstractActor <|-- ir_ExternalActor
+AbstractActor <|-- ir_Network
+Block <|-- ir_PortWrite
+Connection <|-- ir_FromSource
+Connection <|-- ir_Point2PointConnection
+Connection <|-- ir_ToSink
+Declaration <|-- ir_ForwardDeclaration
+Declaration <|-- ir_TypeConstructor
+Declaration <|-- ir_TypeDeclaration
+Declaration <|-- ir_TypeDeclarationImport
+Declaration <|-- ir_Variable
+Declaration <|-- ir_VariableExternal
+Declaration <|-- ir_VariableImport
+Expression <|-- ir_BinaryExpression
+Expression <|-- ir_ExpressionCall
+Expression <|-- ir_IfExpression
+Expression <|-- ir_LambdaExpression
+Expression <|-- ir_ListExpression
+Expression <|-- ir_LiteralExpression
+Expression <|-- ir_ProcExpression
+Expression <|-- ir_UnaryExpression
+Expression <|-- ir_VariableExpression
+ExpressionCall <|-- ir_FunctionCall
+ExpressionCall <|-- ir_TypeConstructorCall
+LambdaExpression <|-- ir_Guard
+LiteralExpression <|-- ir_BooleanLiteral
+LiteralExpression <|-- ir_FloatLiteral
+LiteralExpression <|-- ir_IntegerLiteral
+LiteralExpression <|-- ir_StringLiteral
+Node <|-- ir_Connection
+Node <|-- ir_Declaration
+Node <|-- ir_Expression
+Node <|-- ir_Member
+Node <|-- ir_Port
+Node <|-- ir_PortAccess
+Node <|-- ir_PortInstance
+Node <|-- ir_Scope
+Node <|-- ir_Statement
+Node <|-- ir_TypeRecord
+Node <|-- ir_VariableReference
+PortAccess <|-- ir_PortPeek
+PortAccess <|-- ir_PortRead
+PortAccess <|-- ir_PortWrite
+Scope <|-- ir_AbstractActor
+Scope <|-- ir_Action
+Scope <|-- ir_Block
+Scope <|-- ir_Generator
+Scope <|-- ir_LambdaExpression
+Scope <|-- ir_Namespace
+Scope <|-- ir_ProcExpression
+Statement <|-- ir_Assign
+Statement <|-- ir_Block
+Statement <|-- ir_ForEach
+Statement <|-- ir_IfStatement
+Statement <|-- ir_ProcCall
+Statement <|-- ir_ReturnValue
+Statement <|-- ir_WhileLoop
+Type <|-- ir_TypeActor
+Type <|-- ir_TypeBool
+Type <|-- ir_TypeExternal
+Type <|-- ir_TypeFloat
+Type <|-- ir_TypeInt
+Type <|-- ir_TypeLambda
+Type <|-- ir_TypeList
+Type <|-- ir_TypeProc
+Type <|-- ir_TypeRecord
+Type <|-- ir_TypeString
+Type <|-- ir_TypeUint
+Type <|-- ir_TypeUndef
+Type <|-- ir_TypeUser
+Variable <|-- ir_ActorInstance
+ir_Action "0..9999" -- "1..1" ir_Actor : actions16
+ir_ActorInstance "0..1" -- "1..1" ir_PortInstance : actor46
+ir_ActorInstance "0..9999" -- "1..1" ir_Network : actors23
+ir_AbstractActor "0..9999" -- "1..1" ir_Namespace : actors6
+ir_ActorInstance "1..1" -- "0..9999" ir_TaggedExpression : actualParameters41
+ir_Annotation "0..9999" -- "1..1" ir_Node : annotations4
+ir_Annotation "1..1" -- "0..9999" ir_AnnotationArgument : arguments255
+ir_Declaration "1..1" -- "0..9999" ir_TaggedExpression : attributes174
+ir_TaggedExpression "0..9999" -- "1..1" ir_TypeExternal : attributes212
+ir_Connection "1..1" -- "0..9999" ir_TaggedExpression : attributes94
+ir_Block "0..1" -- "1..1" ir_WhileLoop : body138
+ir_Block "0..1" -- "1..1" ir_ForEach : body142
+ir_Expression "0..1" -- "1..1" ir_LambdaExpression : body190
+ir_Block "0..1" -- "1..1" ir_ProcExpression : body198
+ir_Expression "0..1" -- "1..1" ir_WhileLoop : condition139
+ir_Expression "0..1" -- "1..1" ir_IfStatement : condition152
+ir_Expression "0..1" -- "1..1" ir_IfExpression : condition206
+ir_Connection "0..9999" -- "1..1" ir_Network : connections22
+ir_Connection "0..9999" -- "1..1" ir_PortInstance : connections43
+ir_TypeConstructor "0..1" -- "1..1" ir_TypeDeclaration : constructor244
+ir_Expression "1..1" -- "0..1" ir_Scope : context51
+ir_Variable "0..1" -- "1..1" ir_VariableReference : declaration112
+ir_Declaration "0..1" -- "1..1" ir_ForwardDeclaration : declaration177
+ir_Declaration "0..1" -- "1..1" ir_TypeUser : declaration225
+ir_Declaration "0..9999" -- "1..1" ir_Scope : declarations0
+ir_Block "0..1" -- "1..1" ir_IfStatement : elseBlock149
+ir_Expression "0..1" -- "1..1" ir_IfExpression : elseExpression203
+ir_Assign "1..1" -- "0..1" ir_Expression : expression125
+ir_Expression "0..1" -- "1..1" ir_TaggedExpression : expression54
+ir_Expression "0..9999" -- "1..1" ir_PortWrite : expressions163
+ir_Expression "0..9999" -- "1..1" ir_ListExpression : expressions65
+ir_Action "0..9999" -- "1..1" ir_Schedule : freeRunners249
+ir_Expression "0..1" -- "1..1" ir_FunctionCall : function86
+ir_ForEach "1..1" -- "0..9999" ir_Generator : generators144
+ir_Generator "0..9999" -- "1..1" ir_ListExpression : generators64
+ir_Action "1..1" -- "0..9999" ir_Guard : guards25
+ir_Expression "0..9999" -- "1..1" ir_ProcCall : inParameters130
+ir_Expression "0..9999" -- "1..1" ir_VariableReference : index114
+ir_Expression "0..9999" -- "1..1" ir_VariableExpression : index59
+ir_Expression "0..9999" -- "1..1" ir_Member : index71
+ir_Expression "0..1" -- "1..1" ir_Variable : initValue182
+ir_Schedule "1..1" -- "0..1" ir_State : initialState252
+ir_Action "0..9999" -- "1..1" ir_Actor : initializers17
+ir_AbstractActor "1..1" -- "0..9999" ir_Port : inputPorts9
+ir_Type "0..9999" -- "1..1" ir_TypeLambda : inputTypes227
+ir_Type "0..9999" -- "1..1" ir_TypeProc : inputTypes232
+ir_Action "1..1" -- "0..9999" ir_PortRead : inputs29
+ir_ActorInstance "1..1" -- "0..9999" ir_PortInstance : inputs36
+ir_Member "0..9999" -- "1..1" ir_VariableReference : member117
+ir_Member "0..9999" -- "1..1" ir_VariableExpression : member62
+ir_TypeRecord "1..1" -- "0..9999" ir_Variable : members223
+ir_BinaryExpression "1..1" -- "0..1" ir_Expression : operand177
+ir_BinaryExpression "1..1" -- "0..1" ir_Expression : operand279
+ir_Expression "0..1" -- "1..1" ir_UnaryExpression : operand82
+ir_ProcCall "1..1" -- "0..9999" ir_VariableReference : outParameters132
+ir_Scope "0..1" -- "1..1" ir_Scope : outer2
+ir_AbstractActor "1..1" -- "0..9999" ir_Port : outputPorts11
+ir_Type "0..1" -- "1..1" ir_TypeLambda : outputType229
+ir_Type "0..9999" -- "1..1" ir_TypeProc : outputTypes234
+ir_ProcExpression "1..1" -- "0..9999" ir_Variable : outputs195
+ir_Action "1..1" -- "0..9999" ir_PortWrite : outputs27
+ir_ActorInstance "1..1" -- "0..9999" ir_PortInstance : outputs38
+ir_AbstractActor "1..1" -- "0..9999" ir_Variable : parameters14
+ir_LambdaExpression "1..1" -- "0..9999" ir_Variable : parameters188
+ir_ProcExpression "1..1" -- "0..9999" ir_Variable : parameters193
+ir_TypeConstructor "1..1" -- "0..9999" ir_Variable : parameters238
+ir_Expression "0..9999" -- "1..1" ir_FunctionCall : parameters84
+ir_Expression "0..9999" -- "1..1" ir_TypeConstructorCall : parameters89
+ir_Guard "1..1" -- "0..9999" ir_PortPeek : peeks209
+ir_Port "0..1" -- "1..1" ir_PortAccess : port158
+ir_Declaration "0..1" -- "1..1" ir_ProcCall : procedure135
+ir_Expression "0..1" -- "1..1" ir_PortAccess : repeat160
+ir_Actor "1..1" -- "0..1" ir_Schedule : schedule20
+ir_Declaration "1..1" -- "0..1" ir_Scope : scope171
+ir_Port "0..1" -- "1..1" ir_ToSink : sink109
+ir_Expression "0..1" -- "1..1" ir_TypeInt : size214
+ir_Expression "0..1" -- "1..1" ir_TypeList : size216
+ir_Expression "0..1" -- "1..1" ir_TypeUint : size221
+ir_FromSource "1..1" -- "0..1" ir_Port : source104
+ir_PortInstance "0..1" -- "1..1" ir_ToSink : source107
+ir_Expression "0..1" -- "1..1" ir_Generator : source68
+ir_Point2PointConnection "1..1" -- "0..1" ir_PortInstance : source97
+ir_Block "1..1" -- "0..9999" ir_Statement : statements155
+ir_Action "1..1" -- "0..9999" ir_Statement : statements31
+ir_Schedule "1..1" -- "0..9999" ir_State : states247
+ir_FromSource "1..1" -- "0..1" ir_PortInstance : target102
+ir_Assign "1..1" -- "0..1" ir_VariableReference : target123
+ir_Point2PointConnection "1..1" -- "0..1" ir_PortInstance : target99
+ir_Block "0..1" -- "1..1" ir_IfStatement : thenBlock147
+ir_Expression "0..1" -- "1..1" ir_IfExpression : thenExpression201
+ir_Type "0..1" -- "1..1" ir_VariableReference : type120
+ir_ForwardDeclaration "1..1" -- "0..1" ir_Type : type179
+ir_Type "0..1" -- "1..1" ir_Variable : type185
+ir_Type "0..1" -- "1..1" ir_TypeList : type218
+ir_Type "0..1" -- "1..1" ir_TypeDeclaration : type241
+ir_Port "1..1" -- "0..1" ir_Type : type33
+ir_Expression "1..1" -- "0..1" ir_Type : type49
+ir_Type "0..1" -- "1..1" ir_VariableExternal : type5
+ir_AbstractActor "1..1" -- "0..1" ir_TypeActor : type7
+ir_Member "1..1" -- "0..1" ir_Type : type74
+ir_TypeConstructor "1..1" -- "0..1" ir_TypeDeclaration : typedef237
+ir_Declaration "0..1" -- "1..1" ir_TypeConstructorCall : typedef91
+ir_Expression "0..1" -- "1..1" ir_ReturnValue : value128
+ir_PortPeek "1..1" -- "0..1" ir_VariableReference : variable169
+ir_Declaration "0..1" -- "1..1" ir_VariableExpression : variable57
+ir_PortRead "1..1" -- "0..9999" ir_VariableReference : variables166
+@enduml

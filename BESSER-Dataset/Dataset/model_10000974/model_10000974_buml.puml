@@ -1,0 +1,104 @@
+@startuml
+class Appointment {
+  + Aid : str
+  + AppointmentDate : str
+  + AppointmentId : int
+  + AppointmentStatus : str
+  + AppointmentTime : str
+  + Did : int
+  + DoctorName : str
+  + PatientId : int
+  + PatientName : str
+  + Reason : str
+  + ServiceId : int
+}
+class Bill {
+  + BId : str
+  + BillDate : str
+  + BillId : int
+  + Did : int
+  + DoctorName : str
+  + PId : int
+  + PatientName : str
+  + TotalAmount : int
+}
+class Doctor {
+  + DId : str
+  + DateOfBirth : str
+  + DoctorId : int
+  + DoctorName : str
+  + Email : str
+  + PhoneNumber : str
+  + Speciality : str
+  + UserId : int
+}
+class DoctorSchedule {
+  + AvailableDate : str
+  + AvailableTime : str
+  + DSid : int
+  + DoctorId : str
+}
+class DoctorServices {
+  + SId : str
+  + ServiceDetails : str
+  + ServiceId : int
+  + ServiceName : str
+  + ServicePrice : str
+}
+class Patient {
+  + City : str
+  + DateOfBirth : str
+  + Email : str
+  + FirstName : str
+  + IsEmailConfirmed : str
+  + IsPhoneNumberConfirmed : str
+  + LastName : str
+  + PId : str
+  + PatientId : int
+  + PhoneNumber : str
+  + State : str
+  + StreetAddress : str
+  + UserId : int
+  + ZipCode : str
+  + activationcode : str
+}
+class Receptionist {
+  + DateOfBirth : str
+  + Email : str
+  + PhoneNumber : str
+  + RId : str
+  + ReceptionistId : int
+  + ReceptionistName : str
+  + UserId : int
+}
+class UserRoles {
+  + Id : int
+  + Name : str
+}
+class Users {
+  + AccessFailedCount : int
+  + Email : str
+  + EmailConfirmed : str
+  + Id : int
+  + LockoutEnabled : str
+  + LockoutEndDateUtc : str
+  + PasswordHash : str
+  + PhoneNumber : str
+  + PhoneNumberConfirmed : str
+  + SecurityStamp : str
+  + TwoFactorEnabled : str
+  + UserName : str
+}
+class UserwithRole {
+  + RoleId : int
+  + UserId : int
+}
+Appointment "0..9999" -- "0..9999" Doctor : Appointment_Doctor
+Appointment "0..9999" -- "0..9999" DoctorServices : DoctorServices_Appointment
+Bill "0..9999" -- "0..9999" Doctor : Doctor_Bill
+Doctor "0..9999" -- "0..9999" DoctorSchedule : Doctor_DoctorSchedule
+Appointment "0..9999" -- "0..9999" Patient : Patient_Appointment
+Bill "0..9999" -- "0..9999" Patient : Patient_Bill
+UserRoles "0..9999" -- "0..9999" UserwithRole : UserRoles_UserwithRole
+Users "0..9999" -- "0..9999" UserwithRole : Users_UserwithRole
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+class BooleanExpression {
+}
+class CompositeState {
+}
+class Event {
+}
+class Guard {
+}
+class State {
+}
+class StateMachine {
+}
+class StateVertex {
+}
+class Statecharts_BooleanExpression {
+  + value : str
+}
+class Statecharts_CompositeState {
+  + isConcurrent : str
+}
+class Statecharts_Event {
+}
+class Statecharts_Guard {
+}
+class Statecharts_State {
+}
+class Statecharts_StateMachine {
+}
+class Statecharts_StateVertex {
+}
+class Statecharts_Transition {
+}
+class Transition {
+}
+State <|-- Statecharts_CompositeState
+StateVertex <|-- Statecharts_State
+Event "0..9999" -- "1..1" Statecharts_State : deferrableEvents5
+Statecharts_Event "1..1" -- "0..9999" Transition : evt_container26
+BooleanExpression "1..1" -- "1..1" Statecharts_Guard : expression25
+Statecharts_Guard "1..1" -- "1..1" Transition : gua_container23
+Guard "0..1" --* "1..1" Statecharts_Transition : guard13
+Statecharts_StateVertex "1..1" -- "0..9999" Transition : incoming21
+Statecharts_State "1..1" *-- "0..9999" Transition : internalTransitions3
+Statecharts_StateVertex "1..1" -- "0..9999" Transition : outgoing19
+StateVertex "1..1" -- "1..1" Statecharts_Transition : source14
+StateMachine "1..1" -- "1..1" Statecharts_State : state_container2
+StateVertex "0..9999" --* "1..1" Statecharts_CompositeState : subVertexes6
+CompositeState "0..1" -- "1..1" Statecharts_StateVertex : sv_container18
+StateVertex "1..1" -- "1..1" Statecharts_Transition : target16
+State "0..9999" -- "1..1" Statecharts_Event : targets28
+State "0..9999" --* "1..1" Statecharts_StateMachine : top1
+StateMachine "0..1" -- "1..1" Statecharts_Transition : transSM_container7
+State "0..1" -- "1..1" Statecharts_Transition : transS_container9
+Statecharts_StateMachine "1..1" *-- "0..9999" Transition : transitions0
+Event "0..1" --* "1..1" Statecharts_Transition : trigger11
+@enduml

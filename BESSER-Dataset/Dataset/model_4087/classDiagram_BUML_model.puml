@@ -1,0 +1,50 @@
+@startuml
+class UMLDiagramItem {
+}
+class UMLElement {
+}
+class UMLIncrement {
+}
+class classDiagram_UMLAssoc {
+}
+class classDiagram_UMLCardinality {
+  + cardString : str
+}
+class classDiagram_UMLClass {
+}
+class classDiagram_UMLClassDiagram {
+}
+abstract class classDiagram_UMLDiagramItem {
+}
+abstract class classDiagram_UMLElement {
+  + name : str
+}
+abstract class classDiagram_UMLIncrement {
+}
+class classDiagram_UMLRole {
+  + adornment : str
+}
+class classDiagram_UMLStereotype {
+  + text : str
+}
+UMLDiagramItem <|-- classDiagram_UMLAssoc
+UMLDiagramItem <|-- classDiagram_UMLClass
+UMLElement <|-- classDiagram_UMLClassDiagram
+UMLElement <|-- classDiagram_UMLIncrement
+UMLIncrement <|-- classDiagram_UMLCardinality
+UMLIncrement <|-- classDiagram_UMLDiagramItem
+UMLIncrement <|-- classDiagram_UMLRole
+UMLIncrement <|-- classDiagram_UMLStereotype
+classDiagram_UMLCardinality "0..1" -- "1..1" classDiagram_UMLRole : card10
+classDiagram_UMLClassDiagram "0..1" -- "1..1" classDiagram_UMLElement : diagram8
+classDiagram_UMLClassDiagram "1..1" *-- "0..9999" classDiagram_UMLElement : elements5
+classDiagram_UMLIncrement "0..1" -- "1..1" classDiagram_UMLStereotype : increment15
+classDiagram_UMLAssoc "1..1" -- "0..1" classDiagram_UMLRole : leftRole0
+classDiagram_UMLCardinality "1..1" -- "0..1" classDiagram_UMLRole : revCard3
+classDiagram_UMLAssoc "0..1" -- "1..1" classDiagram_UMLRole : revLeftRole11
+classDiagram_UMLAssoc "0..1" -- "1..1" classDiagram_UMLRole : revRightRole12
+classDiagram_UMLAssoc "1..1" -- "0..1" classDiagram_UMLRole : rightRole1
+classDiagram_UMLClass "1..1" -- "0..9999" classDiagram_UMLRole : roles6
+classDiagram_UMLIncrement "1..1" -- "0..9999" classDiagram_UMLStereotype : stereotypes9
+classDiagram_UMLClass "0..1" -- "1..1" classDiagram_UMLRole : target14
+@enduml

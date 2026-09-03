@@ -1,0 +1,113 @@
+@startuml
+class DynamicNodeLabel {
+}
+class EarthSciencePopulationInitializer {
+}
+class IntegrationDecorator {
+}
+class IntegrationLabel {
+}
+class IntegrationLabelValue {
+}
+class LabelValue {
+}
+class Modifiable {
+}
+class NodeDecorator {
+}
+class PopulationInitializer {
+}
+class PopulationModel {
+}
+class PopulationModelLabel {
+}
+class PopulationModelLabelValue {
+}
+class StandardPopulationModel {
+}
+class standard_DemographicPopulationModel {
+}
+abstract class standard_EarthSciencePopulationInitializer {
+}
+abstract class standard_IntegrationDecorator {
+}
+abstract class standard_IntegrationLabel {
+}
+abstract class standard_IntegrationLabelValue {
+}
+class standard_PopulationGroup {
+  + fraction : float
+  + identifier : str
+}
+abstract class standard_PopulationInitializer {
+  + populationIdentifier : str
+  + targetISOKey : str
+}
+class standard_PopulationLabel {
+}
+abstract class standard_PopulationModel {
+  + name : str
+  + populationIdentifier : str
+  + targetISOKey : str
+}
+class standard_PopulationModelLabel {
+  + populationIdentifier : str
+}
+class standard_PopulationModelLabelValue {
+}
+class standard_SeasonalPopulationModel {
+  + modulationAmplitude : float
+  + period : float
+  + phase : float
+  + useLatitude : bool
+}
+class standard_StandardPopulationInitializer {
+  + individuals : float
+  + useDensity : bool
+}
+class standard_StandardPopulationModel {
+  + birthRate : float
+  + deathRate : float
+  + timePeriod : str
+}
+class standard_StandardPopulationModelLabel {
+}
+class standard_StandardPopulationModelLabelValue {
+  + births : float
+  + count : float
+  + deaths : float
+  + density : float
+  + incidence : float
+  + adjustDelta(standard_value : str) : bool
+}
+class standard_StochasticStandardPopulationModel {
+  + gain : float
+}
+class standard_YetiPopulationInitializer {
+}
+DynamicNodeLabel <|-- standard_PopulationModelLabel
+EarthSciencePopulationInitializer <|-- standard_YetiPopulationInitializer
+IntegrationDecorator <|-- standard_StandardPopulationModel
+IntegrationLabel <|-- standard_StandardPopulationModelLabel
+IntegrationLabelValue <|-- standard_StandardPopulationModelLabelValue
+LabelValue <|-- standard_PopulationModelLabelValue
+Modifiable <|-- standard_PopulationInitializer
+Modifiable <|-- standard_PopulationModel
+NodeDecorator <|-- standard_PopulationInitializer
+NodeDecorator <|-- standard_PopulationModel
+PopulationInitializer <|-- standard_EarthSciencePopulationInitializer
+PopulationInitializer <|-- standard_StandardPopulationInitializer
+PopulationModel <|-- standard_StandardPopulationModel
+PopulationModelLabel <|-- standard_StandardPopulationModelLabel
+PopulationModelLabelValue <|-- standard_StandardPopulationModelLabelValue
+StandardPopulationModel <|-- standard_DemographicPopulationModel
+StandardPopulationModel <|-- standard_SeasonalPopulationModel
+StandardPopulationModel <|-- standard_StochasticStandardPopulationModel
+standard_StandardPopulationModelLabel "1..1" -- "0..1" standard_StandardPopulationModelLabelValue : deltaValue1
+standard_StandardPopulationModelLabel "1..1" -- "0..1" standard_StandardPopulationModelLabelValue : errorScale11
+standard_StandardPopulationModelLabel "1..1" -- "0..1" standard_StandardPopulationModelLabelValue : originalValue8
+standard_DemographicPopulationModel "1..1" *-- "1..9999" standard_PopulationGroup : populationGroups14
+standard_PopulationLabel "0..1" -- "1..1" standard_PopulationModelLabel : populationLabel0
+standard_StandardPopulationModelLabel "1..1" -- "0..1" standard_StandardPopulationModelLabelValue : probeValue2
+standard_StandardPopulationModelLabel "1..1" -- "0..1" standard_StandardPopulationModelLabelValue : tempValue5
+@enduml

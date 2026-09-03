@@ -1,0 +1,48 @@
+@startuml
+class Admin {
+  + password : str
+  + username : str
+}
+class Birthday_Parties {
+}
+class Client {
+  + id : int
+}
+class Commercial_Events {
+}
+class Event {
+  + amount : int
+  + date : int
+  + eventhead : Eventhead
+  + eventid : int
+  + eventname : str
+  + eventype : str
+}
+class Eventhead {
+  + id : int
+}
+class Payment {
+  + amout : int
+  + paytype : str
+  + status : str
+}
+class Refreshment {
+}
+class User {
+  + fname : str
+  + lname : str
+  + password : str
+  + username : str
+}
+class Volunteer {
+  + id : int
+}
+class Weddings {
+}
+Admin "0..1" -- "0..1" Event : Admin_Event
+Event "0..1" -- "0..1" Refreshment : Event_Refreshment
+Client "0..1" -- "0..1" Payment : client_payment
+Event "0..1" -- "0..1" Eventhead : event_eventhead
+Client "0..1" -- "0..1" Event : takes_part
+Event "0..1" -- "0..1" Volunteer : volunteer_event
+@enduml

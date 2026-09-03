@@ -1,0 +1,197 @@
+@startuml
+class Author {
+}
+class AuthoredEntry {
+}
+class BIBTEXML_Article {
+  + note : str
+  + number : str
+  + pages : str
+  + volume : str
+}
+class BIBTEXML_Author {
+  + name : str
+}
+abstract class BIBTEXML_AuthoredEntry {
+}
+class BIBTEXML_BibtexFile {
+}
+class BIBTEXML_Book {
+  + address : str
+  + edition : str
+  + note : str
+  + number : str
+  + series : str
+  + volume : str
+}
+abstract class BIBTEXML_BookTitledEntry {
+  + booktitle : str
+}
+class BIBTEXML_Booklet {
+  + address : str
+  + howpublished : str
+  + note : str
+}
+class BIBTEXML_Conference {
+}
+abstract class BIBTEXML_DatedEntry {
+  + month : str
+  + year : str
+}
+abstract class BIBTEXML_EditoredEntry {
+  + editor : str
+}
+abstract class BIBTEXML_Entry {
+  + abstract : str
+  + id : str
+}
+class BIBTEXML_InBook {
+  + chapter : str
+  + type : str
+}
+class BIBTEXML_InCollection {
+  + chapter : str
+  + type : str
+}
+class BIBTEXML_InProceedings {
+  + pages : str
+}
+abstract class BIBTEXML_InstitutionEntry {
+  + institution : str
+}
+abstract class BIBTEXML_JournalEntry {
+  + journal : str
+}
+class BIBTEXML_Manual {
+  + address : str
+  + edition : str
+  + note : str
+  + organization : str
+}
+class BIBTEXML_MastersThesis {
+}
+class BIBTEXML_Misc {
+  + howpublished : str
+  + month : str
+  + note : str
+  + title : str
+  + year : str
+}
+abstract class BIBTEXML_NotedEntry {
+  + note : str
+}
+class BIBTEXML_PhdThesis {
+}
+class BIBTEXML_Proceedings {
+  + address : str
+  + editor : str
+  + note : str
+  + number : str
+  + organization : str
+  + publisher : str
+  + series : str
+  + volume : str
+}
+abstract class BIBTEXML_PublisheredEntry {
+  + publisher : str
+}
+abstract class BIBTEXML_SchoolEntry {
+  + school : str
+}
+class BIBTEXML_TechReport {
+  + address : str
+  + note : str
+  + number : str
+  + type : str
+}
+abstract class BIBTEXML_ThesisEntry {
+  + address : str
+  + note : str
+  + type : str
+}
+abstract class BIBTEXML_TitledEntry {
+  + title : str
+}
+class BIBTEXML_Unpublished {
+}
+class Book {
+}
+class BookTitledEntry {
+}
+class DatedEntry {
+}
+class EditoredEntry {
+}
+class Entry {
+}
+class InProceedings {
+}
+class InstitutionEntry {
+}
+class JournalEntry {
+}
+class NotedEntry {
+}
+class Proceedings {
+}
+class PublisheredEntry {
+}
+class SchoolEntry {
+}
+class ThesisEntry {
+}
+class TitledEntry {
+}
+AuthoredEntry <|-- BIBTEXML_Article
+AuthoredEntry <|-- BIBTEXML_Book
+AuthoredEntry <|-- BIBTEXML_InProceedings
+AuthoredEntry <|-- BIBTEXML_Manual
+AuthoredEntry <|-- BIBTEXML_TechReport
+AuthoredEntry <|-- BIBTEXML_ThesisEntry
+AuthoredEntry <|-- BIBTEXML_Unpublished
+Book <|-- BIBTEXML_InBook
+Book <|-- BIBTEXML_InCollection
+BookTitledEntry <|-- BIBTEXML_InCollection
+BookTitledEntry <|-- BIBTEXML_InProceedings
+DatedEntry <|-- BIBTEXML_Article
+DatedEntry <|-- BIBTEXML_Book
+DatedEntry <|-- BIBTEXML_Booklet
+DatedEntry <|-- BIBTEXML_Manual
+DatedEntry <|-- BIBTEXML_Proceedings
+DatedEntry <|-- BIBTEXML_TechReport
+DatedEntry <|-- BIBTEXML_ThesisEntry
+DatedEntry <|-- BIBTEXML_Unpublished
+EditoredEntry <|-- BIBTEXML_Book
+Entry <|-- BIBTEXML_AuthoredEntry
+Entry <|-- BIBTEXML_BookTitledEntry
+Entry <|-- BIBTEXML_DatedEntry
+Entry <|-- BIBTEXML_EditoredEntry
+Entry <|-- BIBTEXML_InstitutionEntry
+Entry <|-- BIBTEXML_JournalEntry
+Entry <|-- BIBTEXML_Misc
+Entry <|-- BIBTEXML_NotedEntry
+Entry <|-- BIBTEXML_PublisheredEntry
+Entry <|-- BIBTEXML_SchoolEntry
+Entry <|-- BIBTEXML_TitledEntry
+InProceedings <|-- BIBTEXML_Conference
+InstitutionEntry <|-- BIBTEXML_TechReport
+JournalEntry <|-- BIBTEXML_Article
+NotedEntry <|-- BIBTEXML_Unpublished
+Proceedings <|-- BIBTEXML_InProceedings
+PublisheredEntry <|-- BIBTEXML_Book
+SchoolEntry <|-- BIBTEXML_ThesisEntry
+ThesisEntry <|-- BIBTEXML_MastersThesis
+ThesisEntry <|-- BIBTEXML_PhdThesis
+TitledEntry <|-- BIBTEXML_Article
+TitledEntry <|-- BIBTEXML_Book
+TitledEntry <|-- BIBTEXML_Booklet
+TitledEntry <|-- BIBTEXML_Manual
+TitledEntry <|-- BIBTEXML_Proceedings
+TitledEntry <|-- BIBTEXML_TechReport
+TitledEntry <|-- BIBTEXML_ThesisEntry
+TitledEntry <|-- BIBTEXML_Unpublished
+Author "1..9999" --* "1..1" BIBTEXML_AuthoredEntry : authors1
+Author "0..9999" -- "1..1" BIBTEXML_Booklet : authors2
+Author "0..9999" -- "1..1" BIBTEXML_Misc : authors4
+BIBTEXML_BibtexFile "1..1" *-- "0..9999" Entry : entries0
+@enduml

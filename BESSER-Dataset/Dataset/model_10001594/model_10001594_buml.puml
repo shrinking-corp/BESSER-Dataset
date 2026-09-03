@@ -1,0 +1,76 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Camera {
+  + CameraID : int
+}
+class Door {
+  + DoorID : int
+}
+class End_Of_Day {
+  + EOT : int
+}
+class Entertainment {
+  + DeviceID : int
+}
+class FireAlarm_Sensor {
+  + DispenseSprinkler : bool
+  + SmokeAlarm : bool
+}
+class HomeTheatre {
+  + HTID : str
+}
+class Home_Security_System {
+  + UserID : int
+}
+class HouseHolds {
+  + Alarm : str
+  + Coffee : str
+  + DishWasher : str
+  + TimeID : str
+  + WashingMachine : str
+}
+class IOT {
+  + Status : bool
+  + Update : float
+}
+class Light {
+  + LightID : str
+}
+class MicroPhone {
+  + MicID : str
+}
+class Motion_Sensor {
+}
+class PressureSensor {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Speakers {
+  + SpeakerID : int
+}
+class Start_Of_Day {
+  + SOT : int
+}
+class TV {
+  + TVID : int
+}
+Camera "0..9999" -- "1..1" Door : Door_Camera
+Entertainment "1..1" -- "1..9999" HomeTheatre : HomeTheatre_Entertainment
+HomeTheatre "1..9999" -- "0..1" Speakers : HomeTheatre_Speakers
+HomeTheatre "0..1" -- "1..1" IOT : HomeTheatre_System
+HomeTheatre "1..9999" -- "1..1" TV : HomeTheatre_TV
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" IOT : Home_Security_System_System
+End_Of_Day "0..1" -- "0..1" HouseHolds : HouseHolds_End_Of_Day
+HouseHolds "0..1" -- "0..1" Start_Of_Day : HouseHolds_Start_Of_Day
+IOT "1..1" -- "1..9999" MicroPhone : MicroPhone_System
+Door "1..1" -- "1..1" Sensor : Sensor_Door
+IOT "1..1" -- "1..9999" Sensor : Sensor_System
+Entertainment "1..1" -- "1..9999" Speakers : Speakers_Entertainment
+HouseHolds "0..1" -- "1..1" IOT : System_HouseHolds
+Entertainment "1..1" -- "1..9999" TV : TV_Entertainment
+@enduml

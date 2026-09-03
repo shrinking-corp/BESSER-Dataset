@@ -1,0 +1,85 @@
+@startuml
+class Base {
+}
+class Org {
+}
+enum OrgType {
+  Discipline
+  Misc
+  Specjalization
+  department
+  major
+  school
+}
+enum Role {
+  student
+  teacher
+}
+class dXP_AcademicSession {
+  + endDate : str
+  + schoolYear : str
+  + startDate : str
+  + title : str
+  + type : str
+}
+abstract class dXP_Base {
+  + dateLastModified : str
+  + sourceId : str
+  + status : str
+}
+class dXP_Class {
+  + classCode : str
+  + classType : str
+  + location : str
+  + title : str
+}
+class dXP_Course {
+  + courseCode : str
+  + title : str
+}
+class dXP_Enrolment {
+  + primary : str
+  + role : str
+}
+class dXP_Metadata {
+  + key : str
+  + value : str
+}
+class dXP_OneRoster {
+}
+class dXP_Org {
+  + name : str
+  + type : str
+}
+class dXP_OrgUnit {
+}
+class dXP_User {
+  + enabledUser : str
+  + identifier : str
+  + role : str
+  + userName : str
+}
+class dXP_UserId {
+  + identifier : str
+  + type : str
+}
+Base <|-- dXP_AcademicSession
+Base <|-- dXP_Class
+Base <|-- dXP_Course
+Base <|-- dXP_Enrolment
+Base <|-- dXP_Org
+Base <|-- dXP_User
+Org <|-- dXP_OrgUnit
+dXP_AcademicSession "0..9999" --* "1..1" dXP_OneRoster : academicsession0
+dXP_Class "0..1" -- "1..1" dXP_Enrolment : class_19
+dXP_Class "0..9999" --* "1..1" dXP_Course : class_5
+dXP_AcademicSession "1..1" *-- "0..9999" dXP_Course : course7
+dXP_Enrolment "0..9999" --* "1..1" dXP_OneRoster : enrolment3
+dXP_Base "1..1" *-- "0..9999" dXP_Metadata : metadata6
+dXP_OneRoster "1..1" *-- "0..9999" dXP_Org : org1
+dXP_Org "1..1" *-- "0..9999" dXP_OrgUnit : orgunit14
+dXP_Enrolment "1..1" -- "0..1" dXP_OrgUnit : orgunit22
+dXP_AcademicSession "1..1" *-- "0..9999" dXP_User : user10
+dXP_Enrolment "1..1" -- "0..1" dXP_User : user16
+dXP_User "1..1" *-- "0..9999" dXP_UserId : userid12
+@enduml

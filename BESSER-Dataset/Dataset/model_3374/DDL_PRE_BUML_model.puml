@@ -1,0 +1,236 @@
+@startuml
+class Aproximado {
+}
+class Binaries {
+}
+class Bit {
+}
+class Bits {
+}
+class Characters {
+}
+class DDL_Aproximado {
+}
+class DDL_BFile {
+}
+class DDL_Binaries {
+}
+class DDL_BinaryDouble {
+}
+class DDL_BinaryFloat {
+}
+class DDL_Bit {
+}
+class DDL_BitVarying {
+}
+class DDL_Bits {
+  + n : str
+}
+class DDL_Blob {
+}
+class DDL_Char {
+}
+class DDL_CharVarying {
+}
+class DDL_Character {
+}
+class DDL_CharacterVarying {
+}
+class DDL_Characters {
+  + n : str
+}
+class DDL_Ck {
+  + nameCk : str
+  + status : str
+}
+class DDL_Clob {
+}
+class DDL_Column {
+  + columnName : str
+  + columnNull : bool
+  + commentColumn : str
+}
+class DDL_CommentColumn {
+  + columnComment : str
+  + columnName : str
+  + tableName : str
+}
+class DDL_CommentTable {
+  + tableComment : str
+  + tableName : str
+}
+class DDL_DDLDefinition {
+}
+class DDL_DataDefinition {
+}
+class DDL_DataType {
+}
+class DDL_Database {
+  + databaseName : str
+}
+class DDL_Date {
+}
+class DDL_DayTime {
+}
+class DDL_Decimal {
+  + precision : int
+  + scale : int
+}
+class DDL_DoublePrecision {
+}
+class DDL_Exacto {
+}
+class DDL_Fk {
+  + columnName : str
+  + columnReference : str
+  + nameFk : str
+  + status : str
+}
+class DDL_Float {
+  + precision : int
+}
+class DDL_Int {
+}
+class DDL_Integer {
+}
+class DDL_Intervals {
+}
+class DDL_Long {
+}
+class DDL_LongRaw {
+}
+class DDL_NChar {
+}
+class DDL_NCharVarying {
+}
+class DDL_NClob {
+}
+class DDL_NVarChar2 {
+}
+class DDL_NationalChar {
+}
+class DDL_NationalCharVarying {
+}
+class DDL_NationalCharacter {
+}
+class DDL_NationalCharacterVarying {
+}
+class DDL_Number {
+  + precision : int
+  + scale : int
+}
+class DDL_Numeric {
+  + precision : int
+  + scale : int
+}
+class DDL_Pk {
+  + columnName : str
+  + namePk : str
+}
+class DDL_Real {
+}
+class DDL_SmallInt {
+}
+class DDL_SmallInteger {
+}
+class DDL_Statement {
+}
+class DDL_Table {
+  + commentTable : str
+  + tableName : str
+}
+class DDL_Time {
+}
+class DDL_Times {
+}
+class DDL_Timestamp {
+  + precision : int
+}
+class DDL_Type {
+  + name : str
+}
+class DDL_ValuesCk {
+  + columnName : str
+  + comparator : str
+  + logConjuntion : str
+  + value : str
+}
+class DDL_VarChar {
+}
+class DDL_VarChar2 {
+}
+class DDL_YearMonth {
+}
+class DataDefinition {
+}
+class Exacto {
+}
+class Intervals {
+}
+class Statement {
+}
+class Times {
+}
+class Type {
+}
+Aproximado <|-- DDL_DoublePrecision
+Aproximado <|-- DDL_Float
+Aproximado <|-- DDL_Long
+Aproximado <|-- DDL_LongRaw
+Aproximado <|-- DDL_Real
+Binaries <|-- DDL_BFile
+Binaries <|-- DDL_BinaryDouble
+Binaries <|-- DDL_BinaryFloat
+Binaries <|-- DDL_Blob
+Bit <|-- DDL_BitVarying
+Bits <|-- DDL_Bit
+Characters <|-- DDL_Char
+Characters <|-- DDL_CharVarying
+Characters <|-- DDL_Character
+Characters <|-- DDL_CharacterVarying
+Characters <|-- DDL_Clob
+Characters <|-- DDL_NChar
+Characters <|-- DDL_NCharVarying
+Characters <|-- DDL_NClob
+Characters <|-- DDL_NVarChar2
+Characters <|-- DDL_NationalChar
+Characters <|-- DDL_NationalCharVarying
+Characters <|-- DDL_NationalCharacter
+Characters <|-- DDL_NationalCharacterVarying
+Characters <|-- DDL_VarChar
+Characters <|-- DDL_VarChar2
+DataDefinition <|-- DDL_CommentColumn
+DataDefinition <|-- DDL_CommentTable
+DataDefinition <|-- DDL_Database
+DataDefinition <|-- DDL_Table
+Exacto <|-- DDL_Decimal
+Exacto <|-- DDL_Int
+Exacto <|-- DDL_Integer
+Exacto <|-- DDL_Number
+Exacto <|-- DDL_Numeric
+Exacto <|-- DDL_SmallInt
+Exacto <|-- DDL_SmallInteger
+Intervals <|-- DDL_DayTime
+Intervals <|-- DDL_YearMonth
+Statement <|-- DDL_DataDefinition
+Times <|-- DDL_Date
+Times <|-- DDL_Time
+Times <|-- DDL_Timestamp
+Type <|-- DDL_Aproximado
+Type <|-- DDL_Binaries
+Type <|-- DDL_Bits
+Type <|-- DDL_Characters
+Type <|-- DDL_Exacto
+Type <|-- DDL_Intervals
+Type <|-- DDL_Times
+DDL_Ck "0..9999" --* "1..1" DDL_Table : checks17
+DDL_Column "1..1" -- "1..1" DDL_Type : columnType7
+DDL_Column "0..9999" --* "1..1" DDL_Table : columns9
+DDL_Fk "0..9999" --* "1..1" DDL_Table : columnsFk14
+DDL_Pk "0..1" --* "1..1" DDL_Table : columnsPk12
+DDL_DDLDefinition "1..1" *-- "0..1" DDL_DataType : dataType2
+DDL_Fk "1..1" -- "0..1" DDL_Table : references5
+DDL_DDLDefinition "1..1" *-- "0..9999" DDL_Statement : statements1
+DDL_DataType "1..1" *-- "0..9999" DDL_Type : types0
+DDL_Ck "1..1" *-- "0..9999" DDL_ValuesCk : valuesCk6
+@enduml

@@ -1,0 +1,77 @@
+@startuml
+enum Attitude {
+  cool
+  disgraceful
+  serious
+}
+class Day {
+}
+class Participant {
+}
+class Story {
+}
+class Task {
+}
+class conference_Conference {
+  + name : str
+}
+class conference_Day {
+  + name : str
+}
+class conference_Location {
+  + name : str
+}
+class conference_Person {
+  + name : str
+  + organisation : str
+}
+class conference_Subject {
+  + description : str
+  + isDone : bool
+}
+class conference_Talk {
+  + abstract : str
+  + duration : int
+  + name : str
+  + time : str
+}
+class conference_Track {
+  + name : str
+}
+class conference_makingOf_Day {
+  + name : str
+}
+class conference_makingOf_Participant {
+  + age : int
+  + attitude : str
+}
+class conference_makingOf_Story {
+  + name : str
+}
+class conference_makingOf_Task {
+  + name : str
+}
+class makingOf_conference_Person {
+}
+conference_Person "0..9999" -- "1..1" conference_Track : animators20
+conference_Day "0..1" -- "1..1" conference_Talk : day11
+conference_Conference "1..1" *-- "0..9999" conference_Day : days3
+Day "0..9999" --* "1..1" conference_makingOf_Story : days32
+Task "0..9999" --* "1..1" conference_makingOf_Day : ideas27
+Participant "0..9999" -- "1..1" conference_makingOf_Task : isInvolved34
+conference_Location "0..1" -- "1..1" conference_Talk : location13
+conference_Conference "1..1" *-- "0..9999" conference_Location : locations5
+Story "0..9999" --* "1..1" conference_Talk : makingOfStories9
+Participant "0..9999" --* "1..1" conference_makingOf_Day : participants30
+conference_makingOf_Participant "1..1" -- "0..1" makingOf_conference_Person : person36
+conference_Conference "1..1" *-- "0..9999" conference_Person : speakers1
+conference_Person "0..9999" -- "1..1" conference_Talk : speakers7
+conference_Subject "0..9999" --* "1..1" conference_Talk : subjects8
+conference_Person "1..1" -- "0..9999" conference_Talk : talks15
+conference_Talk "0..9999" --* "1..1" conference_Track : talks17
+conference_Day "1..1" -- "0..9999" conference_Talk : talks22
+conference_Location "1..1" -- "0..9999" conference_Talk : talks24
+Task "0..9999" --* "1..1" conference_makingOf_Day : tasks26
+conference_Conference "1..1" *-- "0..9999" conference_Track : tracks0
+conference_Person "1..1" -- "0..9999" conference_Track : tracks16
+@enduml

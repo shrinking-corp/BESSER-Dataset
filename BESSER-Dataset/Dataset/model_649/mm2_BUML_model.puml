@@ -1,0 +1,21 @@
+@startuml
+class mm2_Category {
+  + name : str
+}
+class mm2_Library {
+  + name : str
+}
+class mm2_Medium {
+  + name : str
+  + type : str
+}
+class mm2_Member {
+  + name : str
+}
+mm2_Category "0..9999" --* "1..1" mm2_Library : categories3
+mm2_Category "0..9999" --* "1..1" mm2_Category : categories6
+mm2_Medium "0..9999" -- "1..1" mm2_Member : loans11
+mm2_Library "1..1" *-- "0..9999" mm2_Medium : mediums1
+mm2_Category "1..1" *-- "0..9999" mm2_Medium : mediums8
+mm2_Library "1..1" *-- "0..9999" mm2_Member : members0
+@enduml

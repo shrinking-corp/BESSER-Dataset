@@ -1,0 +1,179 @@
+@startuml
+class Association {
+}
+class AtomicView {
+}
+class ContainerView {
+}
+class ElementView {
+}
+class EntitiesModel {
+}
+class Entity {
+}
+class EntityModelElement {
+}
+class Input {
+}
+class IterationFilter {
+}
+enum LayoutType {
+  LEFT_BAR
+  RIGHT_BAR
+  SINGLE_COLUMN
+  THREE_COLUMNS
+  TWO_COLUMNS
+}
+class Literal {
+}
+class Output {
+}
+class PageView {
+}
+class PropertyType {
+}
+class Selection {
+}
+class SiteView {
+}
+class StructuralFeature {
+}
+abstract class classLayout2Frontend_Entities_Association {
+  + many : bool
+}
+class classLayout2Frontend_Entities_Composition {
+}
+class classLayout2Frontend_Entities_EntitiesModel {
+  + name : str
+}
+class classLayout2Frontend_Entities_Entity {
+  + isAbstract : bool
+}
+abstract class classLayout2Frontend_Entities_EntityModelElement {
+  + description : str
+  + displayName : str
+  + name : str
+}
+class classLayout2Frontend_Entities_Enumeration {
+}
+class classLayout2Frontend_Entities_Literal {
+  + value : int
+}
+class classLayout2Frontend_Entities_PrimitiveType {
+}
+class classLayout2Frontend_Entities_Property {
+  + defaultValue : str
+}
+abstract class classLayout2Frontend_Entities_PropertyType {
+}
+class classLayout2Frontend_Entities_Reference {
+}
+abstract class classLayout2Frontend_Entities_StructuralFeature {
+  + required : bool
+}
+class classLayout2Frontend_Project {
+  + name : str
+}
+abstract class classLayout2Frontend_Views_AtomicView {
+}
+class classLayout2Frontend_Views_Autocomplete {
+  + multiple : bool
+}
+class classLayout2Frontend_Views_CheckList {
+}
+abstract class classLayout2Frontend_Views_ContainerView {
+}
+class classLayout2Frontend_Views_Dropdownlist {
+}
+abstract class classLayout2Frontend_Views_ElementView {
+  + description : str
+  + dsisplayName : str
+  + name : str
+}
+class classLayout2Frontend_Views_FileUpload {
+}
+class classLayout2Frontend_Views_Image {
+  + height : float
+  + width : float
+}
+abstract class classLayout2Frontend_Views_Input {
+  + label : str
+}
+class classLayout2Frontend_Views_InputForm {
+}
+class classLayout2Frontend_Views_InputText {
+  + multiline : bool
+}
+class classLayout2Frontend_Views_IterationContainer {
+}
+class classLayout2Frontend_Views_IterationFilter {
+}
+class classLayout2Frontend_Views_List {
+  + multiple : bool
+}
+abstract class classLayout2Frontend_Views_Output {
+}
+class classLayout2Frontend_Views_PageView {
+  + layoutType : str
+  + name : str
+}
+class classLayout2Frontend_Views_RadioButtonGroup {
+}
+abstract class classLayout2Frontend_Views_Selection {
+}
+class classLayout2Frontend_Views_SiteView {
+  + displayName : str
+  + name : str
+  + templateColor : str
+  + templateName : str
+}
+class classLayout2Frontend_Views_StaticContainer {
+}
+class classLayout2Frontend_Views_TextArea {
+  + value : str
+}
+Association <|-- classLayout2Frontend_Entities_Composition
+Association <|-- classLayout2Frontend_Entities_Reference
+AtomicView <|-- classLayout2Frontend_Views_Input
+AtomicView <|-- classLayout2Frontend_Views_Output
+ContainerView <|-- classLayout2Frontend_Views_InputForm
+ContainerView <|-- classLayout2Frontend_Views_IterationContainer
+ContainerView <|-- classLayout2Frontend_Views_StaticContainer
+ElementView <|-- classLayout2Frontend_Views_AtomicView
+ElementView <|-- classLayout2Frontend_Views_ContainerView
+EntityModelElement <|-- classLayout2Frontend_Entities_Entity
+EntityModelElement <|-- classLayout2Frontend_Entities_Literal
+EntityModelElement <|-- classLayout2Frontend_Entities_PropertyType
+EntityModelElement <|-- classLayout2Frontend_Entities_StructuralFeature
+Input <|-- classLayout2Frontend_Views_FileUpload
+Input <|-- classLayout2Frontend_Views_InputText
+Input <|-- classLayout2Frontend_Views_Selection
+Output <|-- classLayout2Frontend_Views_Image
+Output <|-- classLayout2Frontend_Views_TextArea
+PropertyType <|-- classLayout2Frontend_Entities_Enumeration
+PropertyType <|-- classLayout2Frontend_Entities_PrimitiveType
+Selection <|-- classLayout2Frontend_Views_Autocomplete
+Selection <|-- classLayout2Frontend_Views_CheckList
+Selection <|-- classLayout2Frontend_Views_Dropdownlist
+Selection <|-- classLayout2Frontend_Views_List
+Selection <|-- classLayout2Frontend_Views_RadioButtonGroup
+StructuralFeature <|-- classLayout2Frontend_Entities_Association
+StructuralFeature <|-- classLayout2Frontend_Entities_Property
+ContainerView "0..9999" --* "1..1" classLayout2Frontend_Project : containerViews5
+ElementView "0..9999" -- "1..1" classLayout2Frontend_Views_PageView : elementViews24
+ElementView "0..9999" --* "1..1" classLayout2Frontend_Views_ContainerView : elements17
+EntitiesModel "0..1" --* "1..1" classLayout2Frontend_Project : entitiesmodel0
+Entity "0..1" -- "1..1" classLayout2Frontend_Views_ContainerView : entity18
+Input "0..1" -- "1..1" classLayout2Frontend_Views_IterationFilter : input26
+IterationFilter "0..9999" --* "1..1" classLayout2Frontend_Views_IterationContainer : iterationFilters23
+Literal "0..9999" --* "1..1" classLayout2Frontend_Entities_Enumeration : literals14
+EntityModelElement "0..9999" --* "1..1" classLayout2Frontend_Entities_EntitiesModel : modelElements7
+PageView "0..9999" -- "1..1" classLayout2Frontend_Views_SiteView : pageViews15
+PageView "0..9999" --* "1..1" classLayout2Frontend_Project : pageViews3
+StructuralFeature "0..1" -- "1..1" classLayout2Frontend_Views_AtomicView : property21
+SiteView "0..9999" --* "1..1" classLayout2Frontend_Project : siteViews1
+StructuralFeature "0..9999" --* "1..1" classLayout2Frontend_Entities_Entity : structuralFeatures11
+Entity "0..1" -- "1..1" classLayout2Frontend_Entities_Entity : superclass9
+Entity "1..1" -- "1..1" classLayout2Frontend_Entities_Association : target8
+PropertyType "1..1" -- "1..1" classLayout2Frontend_Entities_Property : type13
+@enduml

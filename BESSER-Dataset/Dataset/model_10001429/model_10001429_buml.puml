@@ -1,0 +1,138 @@
+@startuml
+class Administrator {
+  + e_mail : str
+  + phone : str
+  + u_id : int
+  + username : str
+}
+class Bank_System_Actor {
+}
+class Category {
+  + name : str
+  + sequence_id : int
+  + u_id : int
+}
+class Checkout_UseCase {
+}
+class Class {
+}
+class Class1 {
+}
+class Class2 {
+}
+class Class21 {
+}
+class Component_Component {
+}
+class Customer {
+  + address : str
+  + e_mail : str
+  + name : str
+  + surname : str
+  + u_id : int
+}
+class Customer_Actor {
+}
+class Employee_Actor {
+}
+enum Enumeration {
+}
+class Manager_Actor {
+}
+class OrderDetails {
+  + order_id : int
+  + product_id : int
+  + product_name : str
+  + quantity : int
+}
+class Orders {
+  + customer_id : int
+  + dateCreated : str
+  + dateShipped : str
+  + status : int
+  + u_id : int
+}
+class Producer {
+  + country : str
+  + name : str
+  + u_id : int
+}
+class Product {
+  + price : str
+  + stock : int
+  + u_id : int
+}
+class ShoppingCart {
+  + cart_id : int
+  + product_id : int
+  + quantity : int
+}
+class Shopping_System_Login_UseCase {
+}
+class Shopping_System_Manage_Bills_UseCase {
+}
+class Shopping_System_Manage_Catalog_UseCase {
+}
+class Shopping_System_Manage_Order_UseCase {
+}
+class Shopping_System_Manage_Settings_UseCase {
+}
+class Shopping_System_Manage_ShopCart_UseCase {
+}
+class Shopping_System_Payment_UseCase {
+}
+class Shopping_System_Registration_UseCase {
+}
+class Shopping_System_Search_Product_UseCase {
+}
+class Statistics {
+  + click_homeCat : int
+  + click_homepage : int
+  + click_subCat : int
+  + clicks : int
+  + customer_id : int
+  + item_id : int
+}
+class SubCategory {
+  + cat_id : int
+  + id : int
+  + name : str
+}
+class User {
+  + e_mail : str
+  + name : str
+  + password : str
+  + phone : str
+  + u_id : int
+}
+class _Interface {
+}
+class inter {
+}
+Customer_Actor "0..1" -- "0..1" Shopping_System_Login_UseCase : Actor_Login
+Customer_Actor "0..1" -- "0..1" Shopping_System_Manage_Order_UseCase : Actor_Manage_Order
+Customer_Actor "0..1" -- "0..1" Shopping_System_Manage_ShopCart_UseCase : Actor_Manage_ShopCart
+Customer_Actor "0..1" -- "0..1" Shopping_System_Payment_UseCase : Actor_Payment
+Customer_Actor "0..1" -- "0..1" Shopping_System_Registration_UseCase : Actor_Registration
+Customer_Actor "0..1" -- "0..1" Shopping_System_Search_Product_UseCase : Actor_Search_Product
+Category "0..1" -- "0..1" Category : Category_Category
+Category "0..9999" -- "1..1" Category : Category_Category2
+Customer "1..1" -- "0..9999" Orders : Customer_Orders
+Customer "1..1" -- "1..1" ShoppingCart : Customer_ShoppingCart
+Customer "1..1" -- "1..1" Statistics : Customer_Statistics
+Employee_Actor "0..1" -- "0..1" Employee_Actor : Employee_Employee
+Employee_Actor "0..1" -- "0..1" Shopping_System_Login_UseCase : Employee_Login
+Employee_Actor "0..1" -- "0..1" Shopping_System_Manage_Order_UseCase : Employee_Manage_Order
+Employee_Actor "0..1" -- "0..1" Shopping_System_Manage_Bills_UseCase : Employee_Sales_Report
+Manager_Actor "0..1" -- "0..1" Shopping_System_Login_UseCase : Manager_Login
+Manager_Actor "0..1" -- "0..1" Shopping_System_Manage_Catalog_UseCase : Manager_Manage_Catalog
+Manager_Actor "0..1" -- "0..1" Shopping_System_Manage_Settings_UseCase : Manager_Manage_Settings
+OrderDetails "1..1" -- "1..1" Orders : Orders_OrderDetails
+Bank_System_Actor "0..1" -- "0..1" Shopping_System_Payment_UseCase : Payment_Bank_System
+Producer "1..1" -- "0..9999" Product : Producer_Product
+OrderDetails "1..1" -- "0..9999" Product : Product_OrderDetails
+Customer "0..1" -- "0..1" ShoppingCart : ShoppingCart_Customer
+Category "0..9999" -- "1..1" SubCategory : SubCategory_Category
+Category "1..1" -- "0..9999" SubCategory : SubCategory_Category2
+SubCategory "0..1" -- "0..1" SubCategory : SubCategory_SubCategory
+@enduml

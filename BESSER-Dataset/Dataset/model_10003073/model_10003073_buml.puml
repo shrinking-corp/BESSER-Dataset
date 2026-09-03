@@ -1,0 +1,59 @@
+@startuml
+class Booking {
+  + booking_id : int
+  + customer_name : str
+  + date : date
+  + endTime : str
+  + reservedTables : str
+  + startTime : str
+}
+class Cart {
+  + Product : Product
+}
+class Chef {
+}
+class Invoice {
+  + invoice_id : str
+  + orders : str
+}
+class Order {
+  + foodList : str
+  + order_id : str
+}
+class Product {
+  + Note : str
+  + food_id : str
+  + name : str
+  + price : float
+}
+class Registration {
+  + Email : str
+  + First_Name : str
+  + Gender : str
+  + Last_Name : str
+  + Password : str
+  + UserName : str
+  + attribute : str
+  + attribute5 : str
+}
+class ReservationManagementSystem {
+  + bookings : str
+}
+class StaffUI {
+}
+class Table {
+  + avaliable : bool
+  + numSeats : int
+  + table_id : str
+}
+class User {
+  + Passowrd : str
+  + User_Name : str
+}
+Order "1..1" -- "1..9999" Product : Order_Food
+Cart "1..1" -- "1..9999" Product : Product_Cart
+Booking "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
+Invoice "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Report
+Booking "1..1" -- "1..9999" Table : Table_Booking
+Order "1..1" -- "1..1" Table : Table_Order
+@enduml

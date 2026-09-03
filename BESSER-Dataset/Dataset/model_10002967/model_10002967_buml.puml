@@ -1,0 +1,246 @@
+@startuml
+class CATEGORIAS {
+  + _id : str
+  + createdAt : str
+  + name : str
+}
+class Class {
+}
+class EVENTS_HISTORY {
+  + _id : str
+  + createdAt : str
+  + eventId : str
+  + newValue : str
+  + oldValue : str
+  + userId : str
+}
+class EVENTS_LIST {
+  + _id : str
+  + createdAt : str
+  + description : str
+  + key : str
+}
+class FAVORITES {
+  + _id : str
+  + createdAt : str
+  + statusId : str
+  + storeId : str
+  + userId : str
+}
+class FEEDBACK {
+  + _id : str
+  + createdAt : str
+  + like : str
+  + linkInstagram : str
+  + linkYoutube : str
+  + photos : str
+  + productId : str
+  + updateAt : str
+  + userId : str
+  + wysiwyg : str
+}
+class FEEDBACK_COMMENT {
+  + _id : str
+  + comment : str
+  + createdAt : str
+  + feedbackId : str
+  + score : int
+  + userId : str
+}
+class FOLLOW {
+  + _id : str
+  + createdAt : str
+  + followers : str
+  + following : str
+  + followingGroup : str
+  + userId : str
+}
+class FOLLOW_MESSENGER {
+  + _id : str
+  + createdAt : str
+  + userId : str
+}
+class NOTIFICATION {
+  + _id : str
+  + code : str
+  + createdAt : str
+  + message : str
+  + userId : str
+}
+class PRODUCT {
+  + ShippingMethods : str
+  + _id : str
+  + attribute : str
+  + color : str
+  + createdAt : str
+  + description : str
+  + dimensions : str
+  + isNew : bool
+  + model : str
+  + name : str
+  + photos : str
+  + price : int
+  + quantity : int
+  + relatedProducts : str
+  + sold : int
+  + statusId : str
+  + storeId : str
+}
+class QUESTIONS {
+  + _id : str
+  + answer : str
+  + createdAt : str
+  + productId : str
+  + question : str
+  + score : int
+  + statusId : str
+  + userId : str
+}
+class REFUND {
+  + _id : str
+  + created_at : str
+  + message : str
+  + productId : str
+  + shoppingHistoryId : str
+  + storeId : str
+  + title : str
+  + userId : str
+}
+class REFUND_MESSAGES {
+  + _id : str
+  + attach : str
+  + created_at : str
+  + message : str
+  + userId : str
+}
+class ROLES {
+  + _id : str
+  + createdAt : str
+  + name : str
+}
+class SHIPPING_METHODS {
+  + _id : str
+  + address : str
+  + arrival : str
+  + createdAt : str
+  + name : str
+  + price : int
+}
+class SHOPPING_HISTORY {
+  + STATUS_SHOPPING_HIST_ID : str
+  + _id : str
+  + attribute : str
+  + comment : str
+  + created_at : str
+  + description : str
+  + isNew : bool
+  + isSold : bool
+  + name : str
+  + note : str
+  + photos : str
+  + price : int
+  + productId : str
+  + quantity : int
+  + score : int
+  + shipAddress : str
+  + shipArrival : str
+  + shipName : str
+  + shipPrice : int
+  + sold : int
+  + status : str
+  + storeId : str
+  + userId : str
+}
+class SHOPPING_MESSENGER {
+  + _id : str
+  + created_at : str
+  + message : str
+  + photos : str
+  + storeId : str
+  + userId : str
+}
+class SOCIAL_NETWORKS {
+  + _id : str
+  + facebook : str
+  + instagram : str
+  + twitter : str
+  + updateAt : str
+}
+class STATUS {
+  + _id : str
+  + createdAt : str
+  + name : str
+}
+class STATUS2 {
+  + _id : str
+  + name : str
+}
+class STATUS_SHOPPING_HISTORY {
+  + _id : str
+  + name : str
+}
+class STORE {
+  + _id : str
+  + address : str
+  + createdAt : str
+  + email : str
+  + name : str
+  + schedule : str
+  + statusId : str
+  + telephone : str
+  + updateAt : str
+}
+class SUBSCRIPTION_BENEFITS {
+  + _id : str
+  + description : str
+  + key_name : str
+}
+class USER {
+  + _id : str
+  + address : str
+  + createdAt : str
+  + email : str
+  + lastAccess : str
+  + name : str
+  + password : str
+  + status : str
+  + surname : str
+  + telephone : str
+  + updateAt : str
+  + verified : bool
+}
+class WHISES {
+  + _id : str
+  + createdAt : str
+  + productId : str
+  + statusId : str
+  + userId : str
+}
+CATEGORIAS "0..1" -- "1..9999" PRODUCT : CATEGORIAS_PRODUCTO
+PRODUCT "0..1" -- "0..1" QUESTIONS : COMMENTS_PRODUCT
+QUESTIONS "0..1" -- "0..1" USER : COMMENTS_USUARIO
+EVENTS_HISTORY "0..1" -- "0..1" EVENTS_LIST : EVENTS_LIST_EVENTS_HISTORY
+PRODUCT "0..1" -- "1..9999" WHISES : FAVORITES_PRODUCTO
+FAVORITES "0..1" -- "0..1" STORE : FAVORITES_STORE
+FAVORITES "0..1" -- "0..1" USER : FAVORITES_USER
+USER "0..1" -- "1..9999" WHISES : FAVORITES_USUARIO
+FEEDBACK "0..1" -- "0..1" USER : FEEDBACKS_USER
+FEEDBACK "0..1" -- "0..1" FEEDBACK_COMMENT : FEEDBACK_COMMENT_FEEDBACK
+FOLLOW "0..1" -- "0..1" USER : FRIEND_LIST_USER
+SHOPPING_HISTORY "0..1" -- "0..1" SHOPPING_MESSENGER : MESSENGER_SHOPPING_HISTORY
+NOTIFICATION "0..1" -- "0..1" USER : NOTIFICATION_USER
+PRODUCT "0..1" -- "1..9999" USER : PRODUCTO_USUARIO
+REFUND "0..1" -- "0..1" REFUND_MESSAGES : REFUND_MESSAGES_REFUND
+REFUND "0..1" -- "0..1" SHOPPING_HISTORY : REFUND_SHOPPING_HISTORY
+PRODUCT "0..1" -- "0..1" SHIPPING_METHODS : SHIPPING_PRODUCT
+SHIPPING_METHODS "0..1" -- "0..1" SHOPPING_HISTORY : SHIPPING_SHOPPING_CART
+PRODUCT "0..1" -- "0..1" SHOPPING_HISTORY : SHOPPING_CART_PRODUCT
+SHOPPING_HISTORY "0..1" -- "0..1" USER : SHOPPING_CART_USUARIO
+SHOPPING_HISTORY "0..1" -- "0..1" STORE : SHOPPING_HISTORY_STORE
+SOCIAL_NETWORKS "0..1" -- "0..1" USER : SOCIAL_NETWORKS_USER
+PRODUCT "0..1" -- "0..1" STATUS : STATUS_PRODUCT
+SHOPPING_HISTORY "0..1" -- "0..1" STATUS_SHOPPING_HISTORY : STATUS_SHOPPING_HISTORY_SHOPPING_HISTORY
+PRODUCT "0..1" -- "1..9999" STORE : STORE_PRODUCT
+STORE "0..1" -- "0..1" USER : STORE_USER
+ROLES "0..1" -- "1..9999" USER : roles_usuario
+@enduml

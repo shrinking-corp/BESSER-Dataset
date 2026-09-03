@@ -1,0 +1,360 @@
+@startuml
+class ASTNode {
+}
+class CallExp {
+}
+class CallOperationAction {
+}
+enum CollectionKind {
+  bag
+  collection
+  orderedSet
+  sequence
+  set
+}
+class CollectionLiteralPart {
+}
+class CollectionType {
+}
+class EClass {
+}
+class EClassifier {
+}
+class EDataType {
+}
+class ENamedElement {
+}
+class FeatureCallExp {
+}
+class LiteralExp {
+}
+class LoopExp {
+}
+class NavigationCallExp {
+}
+class NumericLiteralExp {
+}
+class OCLExpression {
+}
+class PrimitiveLiteralExp {
+}
+class PrimitiveReal {
+}
+class PrimitiveType {
+}
+class SendSignalAction {
+}
+class TupleLiteralPart {
+}
+class TypedElement {
+}
+class Variable {
+}
+class expressions_OCLExpression {
+}
+class expressions_ocl_EClass {
+}
+class expressions_ocl_EClassifier {
+}
+class expressions_ocl_EEnumLiteral {
+}
+class expressions_ocl_EObject {
+}
+class expressions_ocl_EOperation {
+}
+class expressions_ocl_EParameter {
+}
+class expressions_ocl_EStructuralFeature {
+}
+class ocl_expressions_AssociationClassCallExp {
+}
+class ocl_expressions_BooleanLiteralExp {
+  + booleanSymbol : str
+}
+abstract class ocl_expressions_CallExp {
+}
+class ocl_expressions_CollectionItem {
+}
+class ocl_expressions_CollectionLiteralExp {
+  + kind : str
+}
+class ocl_expressions_CollectionLiteralPart {
+}
+class ocl_expressions_CollectionRange {
+}
+class ocl_expressions_EnumLiteralExp {
+}
+abstract class ocl_expressions_FeatureCallExp {
+  + markedPre : bool
+}
+class ocl_expressions_IfExp {
+}
+class ocl_expressions_IntegerLiteralExp {
+  + integerSymbol : str
+}
+class ocl_expressions_InvalidLiteralExp {
+}
+class ocl_expressions_IterateExp {
+}
+class ocl_expressions_IteratorExp {
+}
+class ocl_expressions_LetExp {
+}
+abstract class ocl_expressions_LiteralExp {
+}
+class ocl_expressions_LoopExp {
+}
+class ocl_expressions_MessageExp {
+}
+abstract class ocl_expressions_NavigationCallExp {
+}
+class ocl_expressions_NullLiteralExp {
+}
+abstract class ocl_expressions_NumericLiteralExp {
+}
+abstract class ocl_expressions_OCLExpression {
+}
+class ocl_expressions_OperationCallExp {
+}
+abstract class ocl_expressions_PrimitiveLiteralExp {
+}
+class ocl_expressions_PropertyCallExp {
+}
+class ocl_expressions_RealLiteralExp {
+  + realSymbol : str
+}
+class ocl_expressions_StateExp {
+}
+class ocl_expressions_StringLiteralExp {
+  + stringSymbol : str
+}
+class ocl_expressions_TupleLiteralExp {
+}
+class ocl_expressions_TupleLiteralPart {
+}
+class ocl_expressions_TypeExp {
+}
+class ocl_expressions_UnspecifiedValueExp {
+}
+class ocl_expressions_Variable {
+}
+class ocl_expressions_VariableExp {
+}
+class ocl_query_Query {
+  + extentMap : str
+  + check(ocl_objects : str) : bool
+  + evaluate(ocl_objects : str) : str
+  + queryText() : str
+  + reject(ocl_objects : str) : str
+  + resultType() : EClassifier
+  + select(ocl_objects : str) : str
+}
+class ocl_types_AnyType {
+}
+class ocl_types_BagType {
+}
+class ocl_types_CollectionType {
+  + kind : str
+}
+class ocl_types_ElementType {
+}
+class ocl_types_InvalidType {
+}
+class ocl_types_MessageType {
+}
+class ocl_types_OrderedSetType {
+}
+class ocl_types_PrimitiveBoolean {
+}
+class ocl_types_PrimitiveInteger {
+}
+class ocl_types_PrimitiveReal {
+}
+class ocl_types_PrimitiveString {
+}
+abstract class ocl_types_PrimitiveType {
+}
+class ocl_types_SequenceType {
+}
+class ocl_types_SetType {
+}
+class ocl_types_TupleType {
+}
+class ocl_types_TypeType {
+}
+class ocl_types_VoidType {
+}
+class ocl_uml_CallOperationAction {
+}
+class ocl_uml_Constraint {
+  + instanceVarName : str
+  + stereotype : str
+}
+class ocl_uml_SendSignalAction {
+}
+abstract class ocl_uml_TypedElement {
+}
+abstract class ocl_utilities_ASTNode {
+  + endPosition : int
+  + startPosition : int
+}
+abstract class ocl_utilities_CallingASTNode {
+  + propertyEndPosition : int
+  + propertyStartPosition : int
+}
+abstract class ocl_utilities_PredefinedType {
+  + getCommonSupertype(ocl_type : str) : EClassifier
+  + getOperationCodeFor(ocl_operName : str) : int
+  + getOperationNameFor(ocl_opcode : str) : str
+  + getOperations() : str
+  + getRelationshipTo(ocl_type : str) : int
+  + getResultTypeFor(ocl_args : str, ocl_opcode : str, ocl_ownerType : str) : EClassifier
+}
+abstract class ocl_utilities_TypedASTNode {
+  + typeEndPosition : int
+  + typeStartPosition : int
+}
+class ocl_utilities_Visitable {
+  + accept(ocl_v : str) : str
+}
+class types_ocl_EClass {
+}
+class types_ocl_EClassifier {
+}
+class types_ocl_EOperation {
+}
+class uml_TypedElement {
+}
+class uml_ocl_EClass {
+}
+class uml_ocl_EClassifier {
+}
+class uml_ocl_ENamedElement {
+}
+class uml_ocl_EOperation {
+}
+class utilities_ASTNode {
+}
+class utilities_CallingASTNode {
+}
+class utilities_PredefinedType {
+}
+class utilities_TypedASTNode {
+}
+class utilities_Visitable {
+}
+ASTNode <|-- ocl_utilities_CallingASTNode
+ASTNode <|-- ocl_utilities_TypedASTNode
+CallExp <|-- ocl_expressions_FeatureCallExp
+CallExp <|-- ocl_expressions_LoopExp
+CollectionLiteralPart <|-- ocl_expressions_CollectionItem
+CollectionLiteralPart <|-- ocl_expressions_CollectionRange
+CollectionType <|-- ocl_types_BagType
+CollectionType <|-- ocl_types_OrderedSetType
+CollectionType <|-- ocl_types_SequenceType
+CollectionType <|-- ocl_types_SetType
+EClass <|-- ocl_types_ElementType
+EClass <|-- ocl_types_MessageType
+EClass <|-- ocl_types_TupleType
+EClassifier <|-- ocl_types_AnyType
+EClassifier <|-- ocl_types_InvalidType
+EClassifier <|-- ocl_types_TypeType
+EClassifier <|-- ocl_types_VoidType
+EDataType <|-- ocl_types_CollectionType
+EDataType <|-- ocl_types_PrimitiveType
+ENamedElement <|-- ocl_uml_Constraint
+ENamedElement <|-- ocl_uml_TypedElement
+FeatureCallExp <|-- ocl_expressions_NavigationCallExp
+FeatureCallExp <|-- ocl_expressions_OperationCallExp
+LiteralExp <|-- ocl_expressions_CollectionLiteralExp
+LiteralExp <|-- ocl_expressions_EnumLiteralExp
+LiteralExp <|-- ocl_expressions_InvalidLiteralExp
+LiteralExp <|-- ocl_expressions_NullLiteralExp
+LiteralExp <|-- ocl_expressions_PrimitiveLiteralExp
+LiteralExp <|-- ocl_expressions_TupleLiteralExp
+LoopExp <|-- ocl_expressions_IterateExp
+LoopExp <|-- ocl_expressions_IteratorExp
+NavigationCallExp <|-- ocl_expressions_AssociationClassCallExp
+NavigationCallExp <|-- ocl_expressions_PropertyCallExp
+NumericLiteralExp <|-- ocl_expressions_IntegerLiteralExp
+NumericLiteralExp <|-- ocl_expressions_RealLiteralExp
+OCLExpression <|-- ocl_expressions_IfExp
+OCLExpression <|-- ocl_expressions_LetExp
+OCLExpression <|-- ocl_expressions_LiteralExp
+OCLExpression <|-- ocl_expressions_StateExp
+OCLExpression <|-- ocl_expressions_TypeExp
+OCLExpression <|-- ocl_expressions_VariableExp
+PrimitiveLiteralExp <|-- ocl_expressions_BooleanLiteralExp
+PrimitiveLiteralExp <|-- ocl_expressions_NumericLiteralExp
+PrimitiveLiteralExp <|-- ocl_expressions_StringLiteralExp
+PrimitiveReal <|-- ocl_types_PrimitiveInteger
+PrimitiveType <|-- ocl_types_PrimitiveBoolean
+PrimitiveType <|-- ocl_types_PrimitiveReal
+PrimitiveType <|-- ocl_types_PrimitiveString
+TypedElement <|-- ocl_expressions_CollectionLiteralPart
+expressions_OCLExpression <|-- ocl_expressions_CallExp
+expressions_OCLExpression <|-- ocl_expressions_MessageExp
+expressions_OCLExpression <|-- ocl_expressions_UnspecifiedValueExp
+uml_TypedElement <|-- ocl_expressions_OCLExpression
+uml_TypedElement <|-- ocl_expressions_TupleLiteralPart
+uml_TypedElement <|-- ocl_expressions_Variable
+utilities_ASTNode <|-- ocl_expressions_OCLExpression
+utilities_CallingASTNode <|-- ocl_expressions_CallExp
+utilities_CallingASTNode <|-- ocl_expressions_MessageExp
+utilities_PredefinedType <|-- ocl_types_AnyType
+utilities_PredefinedType <|-- ocl_types_CollectionType
+utilities_PredefinedType <|-- ocl_types_InvalidType
+utilities_PredefinedType <|-- ocl_types_MessageType
+utilities_PredefinedType <|-- ocl_types_PrimitiveType
+utilities_PredefinedType <|-- ocl_types_TypeType
+utilities_PredefinedType <|-- ocl_types_VoidType
+utilities_TypedASTNode <|-- ocl_expressions_TupleLiteralPart
+utilities_TypedASTNode <|-- ocl_expressions_UnspecifiedValueExp
+utilities_TypedASTNode <|-- ocl_expressions_Variable
+utilities_TypedASTNode <|-- ocl_types_CollectionType
+utilities_Visitable <|-- ocl_expressions_OCLExpression
+utilities_Visitable <|-- ocl_expressions_TupleLiteralPart
+utilities_Visitable <|-- ocl_expressions_Variable
+utilities_Visitable <|-- ocl_uml_Constraint
+OCLExpression "0..9999" --* "1..1" ocl_expressions_MessageExp : argument36
+OCLExpression "0..9999" --* "1..1" ocl_expressions_OperationCallExp : argument47
+expressions_ocl_EStructuralFeature "0..1" -- "1..1" ocl_expressions_TupleLiteralPart : attribute57
+OCLExpression "0..1" --* "1..1" ocl_expressions_LoopExp : body29
+OCLExpression "0..1" --* "1..1" ocl_uml_Constraint : body68
+CallOperationAction "0..1" --* "1..1" ocl_expressions_MessageExp : calledOperation39
+OCLExpression "0..1" --* "1..1" ocl_expressions_IfExp : condition15
+ocl_uml_Constraint "1..1" -- "0..9999" uml_ocl_ENamedElement : constrainedElement70
+ocl_types_CollectionType "1..1" -- "0..1" types_ocl_EClassifier : elementType0
+OCLExpression "0..1" --* "1..1" ocl_expressions_IfExp : elseExpression20
+OCLExpression "0..1" -- "1..1" ocl_query_Query : expression74
+OCLExpression "1..1" --* "1..1" ocl_expressions_CollectionRange : first9
+OCLExpression "0..1" --* "1..1" ocl_expressions_LetExp : in_24
+OCLExpression "0..1" --* "1..1" ocl_expressions_Variable : initExpression61
+OCLExpression "1..1" --* "1..1" ocl_expressions_CollectionItem : item6
+Variable "0..9999" --* "1..1" ocl_expressions_LoopExp : iterator31
+OCLExpression "1..1" --* "1..1" ocl_expressions_CollectionRange : last11
+expressions_ocl_EStructuralFeature "0..1" -- "1..1" ocl_expressions_NavigationCallExp : navigationSource45
+ocl_uml_CallOperationAction "1..1" -- "1..1" uml_ocl_EOperation : operation67
+TupleLiteralPart "0..9999" --* "1..1" ocl_expressions_TupleLiteralExp : part54
+CollectionLiteralPart "0..9999" --* "1..1" ocl_expressions_CollectionLiteralExp : part8
+OCLExpression "0..9999" --* "1..1" ocl_expressions_NavigationCallExp : qualifier43
+expressions_ocl_EClass "0..1" -- "1..1" ocl_expressions_AssociationClassCallExp : referredAssociationClass4
+expressions_ocl_EEnumLiteral "0..1" -- "1..1" ocl_expressions_EnumLiteralExp : referredEnumLiteral14
+ocl_types_MessageType "1..1" -- "0..1" types_ocl_EOperation : referredOperation1
+expressions_ocl_EOperation "0..1" -- "1..1" ocl_expressions_OperationCallExp : referredOperation49
+expressions_ocl_EStructuralFeature "0..1" -- "1..1" ocl_expressions_PropertyCallExp : referredProperty51
+ocl_types_MessageType "1..1" -- "0..1" types_ocl_EClass : referredSignal2
+expressions_ocl_EObject "0..1" -- "1..1" ocl_expressions_StateExp : referredState53
+expressions_ocl_EClassifier "0..1" -- "1..1" ocl_expressions_TypeExp : referredType60
+Variable "0..1" -- "1..1" ocl_expressions_VariableExp : referredVariable65
+expressions_ocl_EParameter "0..1" -- "1..1" ocl_expressions_Variable : representedParameter63
+Variable "0..1" --* "1..1" ocl_expressions_IterateExp : result23
+SendSignalAction "0..1" --* "1..1" ocl_expressions_MessageExp : sentSignal41
+ocl_uml_SendSignalAction "1..1" -- "1..1" uml_ocl_EClass : signal72
+OCLExpression "0..1" --* "1..1" ocl_expressions_CallExp : source5
+OCLExpression "0..1" --* "1..1" ocl_expressions_MessageExp : target34
+OCLExpression "0..1" --* "1..1" ocl_expressions_IfExp : thenExpression17
+ocl_uml_TypedElement "1..1" -- "0..1" uml_ocl_EClassifier : type73
+OCLExpression "0..1" --* "1..1" ocl_expressions_TupleLiteralPart : value55
+Variable "0..1" --* "1..1" ocl_expressions_LetExp : variable26
+@enduml

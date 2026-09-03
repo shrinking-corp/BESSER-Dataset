@@ -1,0 +1,26 @@
+@startuml
+class End_User {
+  + login : str
+  + password : str
+  + userType : str
+}
+class Internet_Users {
+  + Database_Access : System_User
+}
+class System_User {
+  + login : str
+  + password : str
+}
+class Thick_Client_Users {
+  + Database_Access : System_User
+  + View_User : User_Admin_Module
+}
+class User_Admin_Module {
+  + Delete_User : System_User
+  + Generate_User : System_User
+  + View_User : End_User
+}
+System_User "0..9999" -- "1..1" User_Admin_Module : Account_Order
+End_User "1..1" -- "1..1" Thick_Client_Users : WebUser_Customer
+End_User "0..1" -- "1..1" Internet_Users : WebUser_SecurityServices
+@enduml

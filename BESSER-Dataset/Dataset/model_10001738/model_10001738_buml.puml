@@ -1,0 +1,59 @@
+@startuml
+class Add_new_alarm_external {
+}
+class Arduino {
+  + MicID : str
+}
+class Building_Owner__Actor {
+}
+class Close_Alarm_external {
+}
+class Count_Sensor {
+  + People_ : int
+}
+class Fire_Alarm_System__Component {
+}
+class Fire_Department__Actor {
+}
+class Firebase {
+}
+class Gas_Smoke_Sensor {
+  + CheckSmoke : bool
+  + SmokeAlarm : bool
+}
+class Mobile_App {
+  + AlarmID : int
+  + UserID : int
+}
+class Notify_User_of_fire_external {
+}
+class Sense_and_Update_Data_external {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Sensors_Actor {
+}
+class Temperature_Sensor {
+}
+class View_sensors_data_external {
+}
+class Web {
+  + HomeLoc : str
+  + OwnerData : str
+  + People_ : int
+  + SmokeValue : float
+  + TempValue : float
+}
+Arduino "1..1" -- "1..1" Firebase : Arduino__Firebase
+Add_new_alarm_external "0..1" -- "0..1" Building_Owner__Actor : Building_Owner__Add_Alarm
+Building_Owner__Actor "0..1" -- "0..1" Close_Alarm_external : Building_Owner__Close_Alarm
+Building_Owner__Actor "0..1" -- "0..1" Notify_User_of_fire_external : Building_Owner__Sense_and_Update_Data
+Building_Owner__Actor "0..1" -- "0..1" View_sensors_data_external : Building_Owner__View_Data
+Fire_Department__Actor "0..1" -- "0..1" Notify_User_of_fire_external : Fire_Department__Notify_User
+Firebase "0..1" -- "0..1" Web : Firebase_Web
+Firebase "1..1" -- "1..1" Mobile_App : Home_Security_System_System
+Arduino "1..1" -- "1..9999" Sensor : Sensor_System
+Sense_and_Update_Data_external "0..1" -- "0..1" Sensors_Actor : Sensors_Sense_and_Update_Data
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+class FSMException {
+}
+class fsm_FSM {
+  + reset() : void
+  + run() : void
+}
+class fsm_FSMException {
+}
+class fsm_NoInitialStateException {
+}
+class fsm_NoTransition {
+}
+class fsm_NonDeterminism {
+}
+class fsm_State {
+  + name : str
+  + step(fsm_c : str) : void
+}
+class fsm_Transition {
+  + input : str
+  + output : str
+  + fire() : void
+}
+FSMException <|-- fsm_NoInitialStateException
+FSMException <|-- fsm_NoTransition
+FSMException <|-- fsm_NonDeterminism
+fsm_FSM "1..1" -- "0..1" fsm_State : currentState2
+fsm_FSM "1..1" -- "1..9999" fsm_State : finalState5
+fsm_FSM "1..1" *-- "0..1" fsm_FSMException : fsmException10
+fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransition14
+fsm_FSM "1..1" -- "1..1" fsm_State : initialState1
+fsm_State "1..1" -- "0..9999" fsm_Transition : outgoingTransition13
+fsm_FSM "1..1" *-- "0..9999" fsm_State : ownedState0
+fsm_FSM "1..1" -- "1..1" fsm_State : owningFSM12
+fsm_State "1..1" -- "1..1" fsm_Transition : source16
+fsm_State "1..1" -- "1..1" fsm_Transition : target18
+fsm_FSM "1..1" *-- "0..9999" fsm_Transition : transition8
+@enduml

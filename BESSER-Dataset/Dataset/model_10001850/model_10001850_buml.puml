@@ -1,0 +1,68 @@
+@startuml
+class Admin {
+  + Contact_Us__ : Admin
+  + Help__ : Admin
+  + Reverse__ : Admin
+  + adminName : str
+  + attribute : str
+  + email : str
+}
+class Customer {
+  + address : str
+  + creditCardInfo : str
+  + customerName : str
+  + email : str
+  + login__ : Customer
+  + registration__ : Customer
+  + search__ : Customer
+  + shippingInfo : str
+}
+class Order_Details {
+  + Payment__ : Order_Details
+  + Report_Generation : Order_Details
+  + orderId : int
+  + productId : int
+  + productName : str
+  + quantity : int
+  + subTotal : int
+  + unitCost : int
+}
+class Orders {
+  + customerId : str
+  + customerName : str
+  + dateCreated : str
+  + dateShipped : str
+  + orderId : int
+  + shippingId : str
+  + status : str
+}
+class Shopping_cart {
+  + Add_items_to_shopping_cart__ : Shopping_cart
+  + Checkout__ : Shopping_cart
+  + Delete_from_Shopping_Cart__ : Shopping_cart
+  + cartId : int
+  + change_to_cart__ : Shopping_cart
+  + date : int
+  + productId : int
+  + quantity : int
+}
+class User {
+  + Logout__ : User
+  + Update_Account_Information__ : User
+  + View_Account_Purchase_History__ : User
+  + loginStatus : str
+  + password : str
+  + userId : str
+}
+class shippingInfo {
+  + View_Shipping_Status__ : shippingInfo
+  + shippingCost : int
+  + shippingId : int
+  + shippingRegionId : int
+  + shippingType : str
+}
+Customer "0..1" -- "0..1" Orders : Customer_Orders
+Customer "0..1" -- "0..1" Shopping_cart : Customer_Shopping_cart
+Order_Details "0..1" -- "0..1" Orders : Orders_Order_Details
+Orders "0..1" -- "0..1" shippingInfo : Orders_shippingInfo
+@enduml

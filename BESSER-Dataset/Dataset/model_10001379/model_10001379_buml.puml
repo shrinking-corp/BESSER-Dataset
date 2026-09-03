@@ -1,0 +1,52 @@
+@startuml
+class Farmer {
+  + _address : str
+  + _email : str
+  + _logincredentialsid : int
+  + _phone : int
+  + _username : str
+  + _usertypeid : int
+}
+class _LoginCredential {
+  + _loginid : str
+  + _password : str
+}
+class _OrderDetail {
+  + OrderId : int
+  + _orderdate : date
+  + _productid : int
+  + _quantity : int
+  + _totalamount : int
+  + _userid : int
+  + paymentInfoId : int
+}
+class _PaymentInfo {
+  + _cardname : str
+  + _cardno : int
+  + _cvv : int
+  + _expirydate : date
+  + _userid : int
+  + paymentId : int
+}
+class _Product {
+  + _description : str
+  + _name : str
+  + _price : int
+  + _producttypeid : int
+  + _stock : int
+}
+class _ProductType {
+  + _type : str
+}
+class _Shipment {
+  + orderId : int
+  + shipmentNumber : int
+}
+Farmer "1..1" -- "0..9999" _ProductType : Farmer__ProductType
+_Product "0..9999" -- "1..1" _ProductType : ProductType_Product
+Farmer "1..1" -- "0..9999" _Shipment : Ratings_Customer
+Farmer "1..1" -- "1..1" _LoginCredential : WebUser_Customer
+Farmer "1..1" -- "1..9999" _OrderDetail : _Customer__OrderDetails
+_OrderDetail "1..1" -- "1..1" _PaymentInfo : _PaymentInfo__OrderDetail
+_OrderDetail "0..9999" -- "0..9999" _Product : _Product__OrderDetails
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+class ArithmeticExpression {
+}
+class AtomicExpression {
+}
+class Expression {
+}
+class Statement {
+}
+class mpl_AddExpression {
+}
+class mpl_ArithmeticExpression {
+}
+class mpl_Assignment {
+}
+abstract class mpl_AtomicExpression {
+}
+abstract class mpl_Expression {
+}
+class mpl_ExpressionStatement {
+}
+class mpl_LiteralValue {
+  + rawValue : int
+}
+class mpl_Program {
+  + name : str
+}
+abstract class mpl_Statement {
+}
+class mpl_Variable {
+  + name : str
+}
+class mpl_VariableDeclaration {
+}
+class mpl_VariableRefrence {
+}
+ArithmeticExpression <|-- mpl_AddExpression
+AtomicExpression <|-- mpl_LiteralValue
+AtomicExpression <|-- mpl_VariableRefrence
+Expression <|-- mpl_ArithmeticExpression
+Expression <|-- mpl_AtomicExpression
+Statement <|-- mpl_Assignment
+Statement <|-- mpl_ExpressionStatement
+mpl_Expression "1..1" --* "1..1" mpl_ExpressionStatement : expression8
+mpl_Assignment "1..1" *-- "1..1" mpl_VariableRefrence : leftHandSide6
+mpl_ArithmeticExpression "1..1" *-- "1..1" mpl_Expression : operand112
+mpl_ArithmeticExpression "1..1" *-- "1..1" mpl_Expression : operand210
+mpl_Assignment "1..1" *-- "1..1" mpl_Expression : rightHandSide5
+mpl_Program "1..1" *-- "0..9999" mpl_Statement : statement1
+mpl_Variable "1..1" -- "1..1" mpl_VariableRefrence : variable15
+mpl_Variable "1..1" --* "1..1" mpl_VariableDeclaration : variable3
+mpl_Program "1..1" *-- "0..9999" mpl_VariableDeclaration : variabledeclarations0
+@enduml

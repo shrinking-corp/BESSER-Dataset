@@ -1,0 +1,123 @@
+@startuml
+class EClassifier {
+}
+class EDataType {
+}
+class ENamedElement {
+}
+class EStructuralFeature {
+}
+class ETypedElement {
+}
+class Ecore_EAttribute {
+  + iD : bool
+}
+class Ecore_EClass {
+  + abstract : bool
+  + interface : bool
+  + getEStructuralFeature(Ecore_featureName : str) : EStructuralFeature
+  + getFeatureCount() : int
+  + getFeatureID(Ecore_feature : str) : int
+  + isSuperTypeOf(Ecore_someClass : str) : bool
+}
+abstract class Ecore_EClassifier {
+  + defaultValue : str
+  + instanceClass : str
+  + instanceClassName : str
+  + instanceTypeName : str
+  + getClassifierID() : int
+  + isInstance(Ecore_object : str) : bool
+}
+class Ecore_EDataType {
+  + serializable : bool
+}
+class Ecore_EEnum {
+  + getEEnumLiteral(Ecore_value : str) : str
+  + getEEnumLiteralByLiteral(Ecore_literal : str) : str
+}
+class Ecore_EEnumLiteral {
+  + instance : str
+  + literal : str
+  + value : int
+}
+abstract class Ecore_ENamedElement {
+  + name : str
+}
+class Ecore_EOperation {
+}
+class Ecore_EPackage {
+  + nsPrefix : str
+  + nsURI : str
+  + getEClassifier(Ecore_name : str) : EClassifier
+}
+class Ecore_EParameter {
+}
+class Ecore_EReference {
+  + container : bool
+  + containment : bool
+  + resolveProxies : bool
+}
+class Ecore_EStringToStringMapEntry {
+  + key : str
+  + value : str
+}
+abstract class Ecore_EStructuralFeature {
+  + changeable : bool
+  + defaultValue : str
+  + defaultValueLiteral : str
+  + derived : bool
+  + transient : bool
+  + unsettable : bool
+  + volatile : bool
+  + getContainerClass() : void
+  + getFeatureID() : int
+}
+abstract class Ecore_ETypedElement {
+  + lowerBound : int
+  + many : bool
+  + ordered : bool
+  + required : bool
+  + unique : bool
+  + upperBound : int
+}
+EClassifier <|-- Ecore_EClass
+EClassifier <|-- Ecore_EDataType
+EDataType <|-- Ecore_EEnum
+ENamedElement <|-- Ecore_EClassifier
+ENamedElement <|-- Ecore_EEnumLiteral
+ENamedElement <|-- Ecore_EPackage
+ENamedElement <|-- Ecore_ETypedElement
+EStructuralFeature <|-- Ecore_EAttribute
+EStructuralFeature <|-- Ecore_EReference
+ETypedElement <|-- Ecore_EOperation
+ETypedElement <|-- Ecore_EParameter
+ETypedElement <|-- Ecore_EStructuralFeature
+Ecore_EAttribute "0..9999" -- "1..1" Ecore_EClass : eAllAttributes4
+Ecore_EClass "1..1" -- "0..9999" Ecore_EReference : eAllContainments15
+Ecore_EClass "1..1" -- "0..9999" Ecore_EOperation : eAllOperations18
+Ecore_EClass "1..1" -- "0..9999" Ecore_EReference : eAllReferences7
+Ecore_EClass "1..1" -- "0..9999" Ecore_EStructuralFeature : eAllStructuralFeatures20
+Ecore_EClass "0..9999" -- "1..1" Ecore_EClass : eAllSuperTypes23
+Ecore_EAttribute "1..1" -- "1..1" Ecore_EDataType : eAttributeType0
+Ecore_EAttribute "0..9999" -- "1..1" Ecore_EClass : eAttributes12
+Ecore_EClassifier "0..9999" --* "1..1" Ecore_EPackage : eClassifiers37
+Ecore_EClass "0..1" -- "1..1" Ecore_EOperation : eContainingClass33
+Ecore_EClass "0..1" -- "1..1" Ecore_EStructuralFeature : eContainingClass55
+Ecore_EEnum "0..1" -- "1..1" Ecore_EEnumLiteral : eEnum32
+Ecore_EClassifier "0..9999" -- "1..1" Ecore_EOperation : eExceptions35
+Ecore_EAttribute "0..1" -- "1..1" Ecore_EClass : eIDAttribute25
+Ecore_EAttribute "0..9999" -- "1..1" Ecore_EReference : eKeys52
+Ecore_EEnum "1..1" *-- "0..9999" Ecore_EEnumLiteral : eLiterals31
+Ecore_EOperation "0..1" -- "1..1" Ecore_EParameter : eOperation44
+Ecore_EClass "1..1" *-- "0..9999" Ecore_EOperation : eOperations3
+Ecore_EReference "0..1" -- "1..1" Ecore_EReference : eOpposite47
+Ecore_EClassifier "1..1" -- "0..1" Ecore_EPackage : ePackage30
+Ecore_EOperation "1..1" *-- "0..9999" Ecore_EParameter : eParameters34
+Ecore_EClass "1..1" -- "1..1" Ecore_EReference : eReferenceType49
+Ecore_EClass "1..1" -- "0..9999" Ecore_EReference : eReferences9
+Ecore_EClass "1..1" *-- "0..9999" Ecore_EStructuralFeature : eStructuralFeatures28
+Ecore_EPackage "1..1" *-- "0..9999" Ecore_EPackage : eSubpackages39
+Ecore_EPackage "1..1" -- "0..1" Ecore_EPackage : eSuperPackage42
+Ecore_EClass "1..1" -- "0..9999" Ecore_EClass : eSuperTypes2
+Ecore_EClassifier "0..1" -- "1..1" Ecore_ETypedElement : eType57
+@enduml

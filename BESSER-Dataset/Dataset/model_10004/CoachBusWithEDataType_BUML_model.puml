@@ -1,0 +1,87 @@
+@startuml
+class CoachBusWithEDataType_AdultTicket {
+  + isElderlyDiscount : bool
+}
+class CoachBusWithEDataType_BookingOffice {
+  + location : str
+  + name : str
+  + officeID : int
+}
+class CoachBusWithEDataType_ChildTicket {
+  + isSchoolTrip : bool
+}
+class CoachBusWithEDataType_Coach {
+  + id : int
+  + model : str
+  + name : str
+  + noOfSeats : int
+}
+class CoachBusWithEDataType_Employee {
+  + baseSalary : float
+  + id : int
+}
+class CoachBusWithEDataType_Manager {
+  + hasMBA : bool
+}
+class CoachBusWithEDataType_Passenger {
+  + age : int
+  + idCard : str
+  + name : str
+  + sex : str
+}
+class CoachBusWithEDataType_PrivateTrip {
+  + extras : str
+}
+class CoachBusWithEDataType_RegularTrip {
+}
+class CoachBusWithEDataType_SecurityGuard {
+  + shift : str
+}
+class CoachBusWithEDataType_Ticket {
+  + isRoundTrip : bool
+  + number : int
+  + price : float
+}
+class CoachBusWithEDataType_Trip {
+  + destination : str
+  + name : str
+  + number : int
+  + origin : str
+  + type : str
+}
+class CoachBusWithEDataType_VendingMachine {
+  + number : int
+}
+class Employee {
+}
+enum Sex {
+  female
+  male
+}
+class Ticket {
+}
+class Trip {
+}
+Employee <|-- CoachBusWithEDataType_Manager
+Employee <|-- CoachBusWithEDataType_SecurityGuard
+Ticket <|-- CoachBusWithEDataType_AdultTicket
+Ticket <|-- CoachBusWithEDataType_ChildTicket
+Trip <|-- CoachBusWithEDataType_PrivateTrip
+Trip <|-- CoachBusWithEDataType_RegularTrip
+CoachBusWithEDataType_Coach "1..1" -- "1..1" CoachBusWithEDataType_SecurityGuard : coach10
+CoachBusWithEDataType_Coach "1..9999" -- "1..1" CoachBusWithEDataType_Trip : coaches0
+CoachBusWithEDataType_BookingOffice "1..1" -- "1..9999" CoachBusWithEDataType_Coach : coaches14
+CoachBusWithEDataType_Coach "1..1" -- "0..9999" CoachBusWithEDataType_SecurityGuard : guards4
+CoachBusWithEDataType_BookingOffice "1..1" -- "0..1" CoachBusWithEDataType_Manager : manager16
+CoachBusWithEDataType_BookingOffice "0..1" -- "1..1" CoachBusWithEDataType_Manager : office12
+CoachBusWithEDataType_BookingOffice "1..1" -- "1..1" CoachBusWithEDataType_VendingMachine : office26
+CoachBusWithEDataType_BookingOffice "0..9999" -- "1..1" CoachBusWithEDataType_Coach : offices5
+CoachBusWithEDataType_Passenger "1..9999" -- "1..1" CoachBusWithEDataType_Trip : passengers1
+CoachBusWithEDataType_Passenger "1..1" -- "1..1" CoachBusWithEDataType_Ticket : psg19
+CoachBusWithEDataType_Ticket "0..9999" -- "1..1" CoachBusWithEDataType_VendingMachine : tickets24
+CoachBusWithEDataType_Passenger "1..1" -- "0..9999" CoachBusWithEDataType_Ticket : tickets9
+CoachBusWithEDataType_Coach "1..1" -- "1..9999" CoachBusWithEDataType_Trip : trips3
+CoachBusWithEDataType_Passenger "1..1" -- "1..9999" CoachBusWithEDataType_Trip : trips7
+CoachBusWithEDataType_Ticket "1..1" -- "1..1" CoachBusWithEDataType_VendingMachine : vm21
+CoachBusWithEDataType_BookingOffice "1..1" -- "0..9999" CoachBusWithEDataType_VendingMachine : vms17
+@enduml

@@ -1,0 +1,90 @@
+@startuml
+class Addressable {
+}
+class AudioVisualItem {
+}
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class CirculatingItem {
+}
+class Item {
+}
+class Lendable {
+}
+class Person {
+}
+abstract class library_Addressable {
+  + address : str
+}
+abstract class library_AudioVisualItem {
+  + damaged : bool
+  + minutesLength : int
+  + title : str
+}
+class library_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class library_BookOnTape {
+}
+class library_Borrower {
+}
+abstract class library_CirculatingItem {
+}
+class library_Employee {
+}
+abstract class library_Item {
+  + publicationDate : date
+}
+abstract class library_Lendable {
+  + copies : int
+}
+class library_Library {
+  + name : str
+  + people : str
+}
+abstract class library_Periodical {
+  + issuesPerYear : int
+  + title : str
+}
+class library_Person {
+  + firstName : str
+  + lastName : str
+}
+class library_VideoCassette {
+}
+class library_Writer {
+  + name : str
+}
+Addressable <|-- library_Library
+Addressable <|-- library_Person
+AudioVisualItem <|-- library_BookOnTape
+AudioVisualItem <|-- library_VideoCassette
+CirculatingItem <|-- library_AudioVisualItem
+CirculatingItem <|-- library_Book
+Item <|-- library_CirculatingItem
+Item <|-- library_Periodical
+Lendable <|-- library_CirculatingItem
+Person <|-- library_Borrower
+Person <|-- library_Employee
+Person <|-- library_Writer
+library_Book "1..1" -- "1..1" library_Writer : author0
+library_BookOnTape "1..1" -- "0..1" library_Writer : author18
+library_Book "0..9999" -- "1..1" library_Writer : books15
+library_Book "0..9999" --* "1..1" library_Library : books8
+library_Borrower "1..1" -- "0..9999" library_Lendable : borrowed23
+library_Borrower "0..9999" -- "1..1" library_Lendable : borrowers16
+library_Borrower "0..9999" --* "1..1" library_Library : borrowers4
+library_Library "1..1" *-- "0..9999" library_Library : branches11
+library_Person "0..9999" -- "1..1" library_VideoCassette : cast21
+library_Employee "0..9999" --* "1..1" library_Library : employees2
+library_Employee "0..1" -- "1..1" library_Employee : manager25
+library_Library "1..1" -- "0..1" library_Library : parentBranch13
+library_BookOnTape "1..1" -- "0..1" library_Person : reader17
+library_Item "0..9999" --* "1..1" library_Library : stock6
+library_Library "1..1" *-- "0..9999" library_Writer : writers1
+@enduml

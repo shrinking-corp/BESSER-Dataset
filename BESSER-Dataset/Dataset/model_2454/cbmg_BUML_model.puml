@@ -1,0 +1,28 @@
+@startuml
+class cbmg_RequestParameter {
+  + parameterName : str
+  + parameterValue : str
+}
+class cbmg_State {
+  + isEndState : bool
+  + isStartState : bool
+  + localAddr : str
+  + localName : str
+  + port : int
+  + requestURL : str
+}
+class cbmg_Transition {
+  + accept : str
+  + condition : str
+  + method : str
+  + nbrOfTransitions : int
+  + probability : float
+  + thinkTime : float
+}
+cbmg_State "1..1" -- "0..9999" cbmg_Transition : incomingTransitions1
+cbmg_State "1..1" -- "0..9999" cbmg_Transition : outgoingTransitions0
+cbmg_RequestParameter "0..9999" -- "1..1" cbmg_Transition : requestParameter_transition10
+cbmg_State "1..1" -- "1..1" cbmg_Transition : sourceState4
+cbmg_State "1..1" -- "1..1" cbmg_Transition : targetState7
+cbmg_RequestParameter "1..1" -- "0..1" cbmg_Transition : transition_RequestParameter12
+@enduml

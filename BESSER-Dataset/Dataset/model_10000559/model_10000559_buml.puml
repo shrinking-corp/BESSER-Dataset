@@ -1,0 +1,34 @@
+@startuml
+class genmymodelreverse_java_lang_Exception {
+}
+class hw3_Building {
+  + FLOORS : int
+  + floors : str
+}
+class hw3_Elevator {
+  + CAPACITY : int
+  + NUMBER_OF_FLOORS : int
+  + currentFloorIndex : int
+  + isGoingUp : bool
+  + numOfPassengers : int
+  + passengersToFloor : str
+}
+class hw3_ElevatorFullException {
+}
+class hw3_Floor {
+  + myFloorNumber : int
+  + passengersWaiting : int
+}
+class hw3_Passenger {
+  + UNDEFINED_FLOOR : int
+  + currentFloor : int
+  + destinationFloor : int
+  + id : int
+}
+hw3_Elevator "0..1" -- "0..9999" hw3_Passenger : boardedPassengers_Elevator_Passenger_3
+hw3_Building "0..1" -- "0..1" hw3_Elevator : building_Elevator_Building_1
+hw3_Floor "0..1" -- "0..9999" hw3_Passenger : downwardBound_Floor_Passenger_4
+hw3_Building "0..1" -- "0..1" hw3_Elevator : elevator_Building_Elevator_5
+hw3_Floor "0..1" -- "0..9999" hw3_Passenger : residents_Floor_Passenger_2
+hw3_Floor "0..1" -- "0..9999" hw3_Passenger : upwardBound_Floor_Passenger_0
+@enduml

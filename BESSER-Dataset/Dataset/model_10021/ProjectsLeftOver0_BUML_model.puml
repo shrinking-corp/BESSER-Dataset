@@ -1,0 +1,35 @@
+@startuml
+enum ProjectSize {
+  big
+  medium
+  small
+}
+enum ProjectStatus {
+  active
+  finished
+  planned
+  suspended
+}
+class Projects_Company {
+  + finish(Projects_p : str) : void
+  + fire(Projects_w : str) : void
+  + hire(Projects_w : str) : void
+  + start(Projects_p : str) : void
+}
+class Projects_Project {
+  + size : str
+  + status : str
+}
+class Projects_Qualification {
+}
+class Projects_Worker {
+}
+Projects_Company "1..1" -- "1..1" Projects_Project : company8
+Projects_Company "1..1" -- "1..9999" Projects_Worker : employees1
+Projects_Project "1..1" -- "0..9999" Projects_Worker : members11
+Projects_Project "0..9999" -- "1..1" Projects_Project : predecessors18
+Projects_Company "1..1" -- "0..9999" Projects_Project : projects0
+Projects_Project "0..9999" -- "1..1" Projects_Worker : projects5
+Projects_Qualification "1..9999" -- "1..1" Projects_Worker : qualifications3
+Projects_Project "1..1" -- "1..9999" Projects_Qualification : requirements14
+@enduml

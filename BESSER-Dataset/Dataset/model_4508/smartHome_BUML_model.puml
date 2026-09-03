@@ -1,0 +1,48 @@
+@startuml
+enum DurationUnit {
+  MINUTE
+  SECOND
+}
+enum Operator {
+  EQUALS
+  INFERIOR
+  SUPERIOR
+}
+class smartHome_Condition {
+  + operand : int
+  + operator : str
+}
+class smartHome_Duration {
+  + unit : str
+  + value : int
+}
+class smartHome_Event {
+  + description : str
+}
+class smartHome_Location {
+  + name : str
+}
+class smartHome_Rule {
+}
+class smartHome_Sensor {
+  + dataFile : str
+  + name : str
+  + value : int
+}
+class smartHome_SensorType {
+  + name : str
+}
+class smartHome_SensorValue {
+}
+class smartHome_SmartHome {
+}
+smartHome_Condition "1..9999" --* "1..1" smartHome_Rule : conditions10
+smartHome_Duration "1..1" --* "1..1" smartHome_Rule : duration14
+smartHome_Event "1..1" --* "1..1" smartHome_Rule : event12
+smartHome_Location "1..9999" --* "1..1" smartHome_SmartHome : locations3
+smartHome_Rule "1..9999" --* "1..1" smartHome_SmartHome : rules8
+smartHome_Condition "1..1" -- "1..1" smartHome_Sensor : sensor16
+smartHome_Sensor "1..1" -- "1..1" smartHome_SensorType : sensorType0
+smartHome_SensorType "1..9999" --* "1..1" smartHome_SmartHome : sensorTypes5
+smartHome_Location "1..1" *-- "0..9999" smartHome_Sensor : sensors1
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+class AI {
+}
+class Board {
+  + board : str
+}
+enum Color {
+}
+class Dice {
+}
+class EventHandler {
+}
+class Field {
+  + color : Color
+  + x : int
+  + y : int
+}
+class GameEngine {
+}
+class GameState {
+}
+class GraphicsGenerator {
+}
+class IOFilesManagement {
+}
+class Menu {
+}
+class Pawn {
+}
+class Player {
+  + color : Color
+  + type : PlayerType
+}
+enum PlayerType {
+}
+class Window {
+}
+Board "0..1" -- "0..1" GraphicsGenerator : Board_GraphicsGenerator
+Board "0..1" -- "0..1" Window : Board_Window
+Field "0..1" -- "0..1" GraphicsGenerator : Field_GraphicsGenerator
+Board "0..1" -- "0..1" GameEngine : GameEngine_Board
+EventHandler "0..1" -- "0..1" GameEngine : GameEngine_EventHandler
+GameEngine "0..1" -- "0..1" GameState : GameEngine_GameState
+GameState "0..1" -- "0..1" Menu : GameState_Menu
+GameState "0..1" -- "0..1" Player : GameState_Player
+GameState "1..1" -- "1..1" IOFilesManagement : IOFilesManagement_GameState
+AI "0..1" -- "0..1" Player : Player_AI
+Dice "1..1" -- "0..1" Player : Player_Dice
+GraphicsGenerator "0..1" -- "0..1" Window : Window_GraphicsGenerator
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+class Identifiable {
+}
+class emapsample_Book {
+  + title : str
+}
+class emapsample_BookStore {
+  + name : str
+}
+class emapsample_EStringToStringMapEntry {
+}
+class emapsample_StringToWriterMapEntry {
+  + key : str
+}
+class emapsample_Writer {
+  + name : str
+}
+class emapsample_WriterToBookMapEntry {
+}
+class emapsample_WriterToNameMapEntry {
+  + value : str
+}
+Identifiable <|-- emapsample_BookStore
+Identifiable <|-- emapsample_Writer
+emapsample_BookStore "1..1" *-- "0..9999" emapsample_WriterToBookMapEntry : booksByWriter1
+emapsample_Writer "1..1" -- "1..1" emapsample_WriterToNameMapEntry : key14
+emapsample_Writer "1..1" -- "1..1" emapsample_WriterToBookMapEntry : key8
+emapsample_BookStore "1..1" *-- "0..9999" emapsample_EStringToStringMapEntry : keyWords2
+emapsample_BookStore "1..1" *-- "0..9999" emapsample_WriterToNameMapEntry : namesByWriter4
+emapsample_Book "1..1" -- "1..1" emapsample_WriterToBookMapEntry : value11
+emapsample_StringToWriterMapEntry "1..1" -- "1..1" emapsample_Writer : value6
+emapsample_Book "1..1" *-- "0..9999" emapsample_StringToWriterMapEntry : writers0
+@enduml

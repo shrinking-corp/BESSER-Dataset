@@ -1,0 +1,169 @@
+@startuml
+class Assertion {
+}
+class Authorization {
+}
+class ComplianceAssertion {
+}
+enum HTTPMethod {
+  DELETE
+  GET
+  OPTIONS
+  POST
+  PUT
+  undefined
+}
+class HTTPStatusAssertion {
+}
+class HeaderAssertion {
+}
+class InputProperty {
+}
+class NamedElement {
+}
+class OutputProperty {
+}
+enum ParameterLocation {
+  body
+  formData
+  header
+  path
+  query
+  undefined
+}
+enum PathLanguage {
+  JSONPath
+  XPath
+  undefined
+}
+class PerformanceAssertion {
+}
+class Property {
+}
+class ResponseMessageAssertion {
+}
+enum SchemeType {
+  http
+  https
+  undefined
+}
+class TestStep {
+}
+class test_APIRequest {
+  + accept : str
+  + contentType : str
+  + operationId : str
+  + scheme : str
+}
+abstract class test_Assertion {
+  + errorMessage : str
+}
+abstract class test_Authorization {
+}
+class test_Basic {
+  + password : str
+  + username : str
+}
+abstract class test_ComplianceAssertion {
+  + path : str
+}
+abstract class test_HTTPStatusAssertion {
+  + code : str
+}
+abstract class test_HeaderAssertion {
+  + key : str
+}
+class test_HeaderEqualsAssertion {
+  + value : str
+}
+class test_HeaderExistsAssertion {
+}
+class test_HeaderProperty {
+}
+abstract class test_InputProperty {
+}
+class test_InvalidStatusCodesAssertion {
+}
+abstract class test_NamedElement {
+  + name : str
+}
+class test_OAuth2 {
+  + token : str
+}
+abstract class test_OutputProperty {
+}
+class test_Parameter {
+  + location : str
+  + name : str
+  + value : str
+}
+class test_ParameterProperty {
+}
+abstract class test_PerformanceAssertion {
+}
+abstract class test_Property {
+  + expression : str
+  + pathLanguage : str
+}
+class test_PropertyTransfer {
+}
+abstract class test_ResponseMessageAssertion {
+  + value : str
+}
+class test_ResponseMessageContainsAssertion {
+}
+class test_ResponseMessageEqualsAssertion {
+}
+class test_ResponseProperty {
+}
+class test_SLAAssertion {
+  + maxTime : str
+}
+class test_SchemaComplianceAssertion {
+}
+class test_TestCase {
+  + description : str
+}
+abstract class test_TestStep {
+}
+class test_TestSuite {
+  + api : str
+  + description : str
+}
+class test_ValidStatusCodesAssertion {
+}
+Assertion <|-- test_ComplianceAssertion
+Assertion <|-- test_HTTPStatusAssertion
+Assertion <|-- test_HeaderAssertion
+Assertion <|-- test_PerformanceAssertion
+Assertion <|-- test_ResponseMessageAssertion
+Authorization <|-- test_Basic
+Authorization <|-- test_OAuth2
+ComplianceAssertion <|-- test_SchemaComplianceAssertion
+HTTPStatusAssertion <|-- test_InvalidStatusCodesAssertion
+HTTPStatusAssertion <|-- test_ValidStatusCodesAssertion
+HeaderAssertion <|-- test_HeaderEqualsAssertion
+HeaderAssertion <|-- test_HeaderExistsAssertion
+InputProperty <|-- test_ParameterProperty
+NamedElement <|-- test_TestCase
+NamedElement <|-- test_TestStep
+NamedElement <|-- test_TestSuite
+OutputProperty <|-- test_HeaderProperty
+OutputProperty <|-- test_ResponseProperty
+PerformanceAssertion <|-- test_SLAAssertion
+Property <|-- test_InputProperty
+Property <|-- test_OutputProperty
+ResponseMessageAssertion <|-- test_ResponseMessageContainsAssertion
+ResponseMessageAssertion <|-- test_ResponseMessageEqualsAssertion
+TestStep <|-- test_APIRequest
+TestStep <|-- test_PropertyTransfer
+test_APIRequest "1..1" *-- "0..9999" test_Assertion : assertions4
+test_APIRequest "1..1" *-- "0..1" test_Authorization : authorization6
+test_Parameter "1..1" -- "1..1" test_ParameterProperty : parameter12
+test_APIRequest "1..1" *-- "0..9999" test_Parameter : parameters3
+test_APIRequest "1..1" -- "1..1" test_OutputProperty : request14
+test_Property "1..1" --* "1..1" test_PropertyTransfer : source8
+test_Property "1..1" --* "1..1" test_PropertyTransfer : target9
+test_TestCase "0..9999" --* "1..1" test_TestSuite : testCases0
+test_TestCase "1..1" *-- "0..9999" test_TestStep : testSteps1
+@enduml

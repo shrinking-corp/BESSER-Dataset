@@ -1,0 +1,224 @@
+@startuml
+class Article {
+}
+class Body {
+}
+class BodyElement {
+}
+class BodyElementContainer {
+}
+class Category {
+}
+class Chapter {
+}
+class EmbeddableElement {
+}
+class ExternalArticle {
+}
+class ExternalTarget {
+}
+class Factory {
+}
+class Formatter {
+}
+class Identifiable {
+}
+class LinkTarget {
+}
+class StructuralElement {
+}
+class article_Article {
+}
+abstract class article_Body {
+}
+abstract class article_BodyElement {
+  + tag : str
+}
+abstract class article_BodyElementContainer {
+}
+class article_Callout {
+}
+class article_Category {
+}
+class article_Chapter {
+}
+class article_Context {
+  + baseFolder : str
+  + project : str
+  + root : str
+}
+class article_Description {
+}
+class article_Diagram {
+}
+class article_Documentation {
+  + project : str
+}
+abstract class article_EmbeddableElement {
+  + doc : str
+}
+class article_Embedding {
+}
+class article_Excel {
+}
+class article_ExtensionPoint {
+  + name : str
+}
+class article_ExternalArticle {
+  + url : str
+}
+class article_ExternalTarget {
+  + url : str
+}
+abstract class article_Factory {
+}
+abstract class article_Formatter {
+}
+class article_HtmlFormatter {
+  + file : str
+}
+abstract class article_Identifiable {
+  + id : str
+}
+class article_Image {
+  + file : str
+}
+class article_ImageFactory {
+  + file : str
+}
+class article_ImageFormatter {
+  + file : str
+}
+class article_JavaElement {
+  + classFile : str
+}
+class article_JavaFormatter {
+}
+class article_JavaPackage {
+  + name : str
+}
+class article_Javadoc {
+}
+class article_Key {
+}
+class article_Link {
+}
+abstract class article_LinkTarget {
+  + defaultLabel : str
+  + tooltip : str
+  + linkFrom(article_source : str) : str
+}
+class article_Plugin {
+  + label : str
+  + name : str
+}
+class article_PluginResource {
+}
+class article_Schemadoc {
+}
+class article_Section {
+}
+class article_Selection {
+}
+class article_Snippet {
+  + title : str
+  + titleImage : str
+}
+class article_SourceCode {
+}
+abstract class article_StructuralElement {
+  + doc : str
+  + title : str
+}
+class article_Text {
+}
+class article_Toc {
+  + levels : int
+}
+class article_TreeFormatter {
+  + expandTo : int
+  + expanded : str
+  + file : str
+  + selected : str
+}
+class article_TreeNode {
+  + image : str
+  + label : str
+  + xmi_ID : str
+}
+class article_TreeNodeProperty {
+  + key : str
+  + value : str
+  + valueImage : str
+}
+class article_XmlFormatter {
+  + file : str
+}
+Article <|-- article_ExternalArticle
+Body <|-- article_Category
+Body <|-- article_Chapter
+BodyElement <|-- article_Diagram
+BodyElement <|-- article_Embedding
+BodyElement <|-- article_Excel
+BodyElement <|-- article_Image
+BodyElement <|-- article_Key
+BodyElement <|-- article_Link
+BodyElement <|-- article_Selection
+BodyElement <|-- article_Text
+BodyElement <|-- article_Toc
+BodyElementContainer <|-- article_Body
+BodyElementContainer <|-- article_Callout
+BodyElementContainer <|-- article_Description
+BodyElementContainer <|-- article_Section
+Category <|-- article_Javadoc
+Category <|-- article_Schemadoc
+Chapter <|-- article_Article
+EmbeddableElement <|-- article_Factory
+EmbeddableElement <|-- article_Snippet
+ExternalArticle <|-- article_PluginResource
+ExternalTarget <|-- article_SourceCode
+Factory <|-- article_ImageFactory
+Formatter <|-- article_HtmlFormatter
+Formatter <|-- article_ImageFormatter
+Formatter <|-- article_JavaFormatter
+Formatter <|-- article_TreeFormatter
+Formatter <|-- article_XmlFormatter
+Identifiable <|-- article_EmbeddableElement
+Identifiable <|-- article_LinkTarget
+LinkTarget <|-- article_ExternalTarget
+LinkTarget <|-- article_JavaElement
+LinkTarget <|-- article_Section
+LinkTarget <|-- article_StructuralElement
+StructuralElement <|-- article_Body
+StructuralElement <|-- article_Documentation
+article_Article "1..1" -- "1..1" article_Chapter : article7
+article_Callout "0..9999" --* "1..1" article_Snippet : callouts9
+article_Body "1..1" -- "0..1" article_Category : category25
+article_Chapter "1..1" -- "1..1" article_Section : chapter24
+article_StructuralElement "1..1" *-- "0..9999" article_StructuralElement : children15
+article_TreeNode "1..1" *-- "0..9999" article_TreeNode : children39
+article_BodyElement "1..1" -- "1..1" article_BodyElementContainer : container27
+article_Context "1..1" -- "1..1" article_Documentation : context0
+article_Documentation "1..1" -- "0..9999" article_Documentation : dependencies3
+article_Description "0..1" --* "1..1" article_Snippet : description12
+article_Documentation "1..1" -- "1..1" article_StructuralElement : documentation19
+article_Documentation "1..1" -- "1..1" article_EmbeddableElement : documentation22
+article_Context "1..1" *-- "1..9999" article_Documentation : documentations6
+article_EmbeddableElement "1..1" -- "1..1" article_Embedding : element29
+article_BodyElement "0..9999" --* "1..1" article_BodyElementContainer : elements26
+article_Documentation "1..1" *-- "0..9999" article_EmbeddableElement : embeddableElements1
+article_ExtensionPoint "0..9999" --* "1..1" article_Plugin : extensionPoints31
+article_Formatter "1..1" --* "1..1" article_Snippet : formatter10
+article_JavaPackage "1..9999" --* "1..1" article_Plugin : packages30
+article_StructuralElement "1..1" -- "0..1" article_StructuralElement : parent17
+article_JavaPackage "1..1" -- "1..1" article_Plugin : plugin33
+article_ExtensionPoint "1..1" -- "1..1" article_Plugin : plugin34
+article_Documentation "1..1" *-- "0..9999" article_Plugin : plugins4
+article_TreeNode "1..1" *-- "0..9999" article_TreeNodeProperty : properties40
+article_TreeNodeProperty "0..9999" --* "1..1" article_TreeNodeProperty : properties43
+article_Chapter "1..1" *-- "0..9999" article_Section : sections8
+article_Callout "1..1" -- "1..1" article_Snippet : snippet21
+article_Formatter "1..1" -- "1..1" article_Snippet : snippet36
+article_Description "1..1" -- "1..1" article_Snippet : snippet45
+article_Link "1..1" -- "0..1" article_LinkTarget : target28
+@enduml

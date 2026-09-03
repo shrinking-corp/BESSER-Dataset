@@ -1,0 +1,32 @@
+@startuml
+class Class_Attribute {
+  + multiValued : bool
+}
+class Class_Class {
+  + isAbstract : bool
+}
+abstract class Class_Classifier {
+}
+class Class_DataType {
+}
+abstract class Class_NamedElt {
+  + name : str
+}
+class Class_Package {
+}
+class Classifier {
+}
+class NamedElt {
+}
+Classifier <|-- Class_Class
+Classifier <|-- Class_DataType
+NamedElt <|-- Class_Attribute
+NamedElt <|-- Class_Classifier
+NamedElt <|-- Class_Package
+Class_Attribute "0..9999" --* "1..1" Class_Class : att4
+Class_Classifier "0..9999" --* "1..1" Class_Package : elems0
+Class_Attribute "1..1" -- "1..1" Class_Class : owner6
+Class_Classifier "1..1" -- "0..1" Class_Package : package1
+Class_Class "1..1" -- "0..9999" Class_Class : supers3
+Class_Attribute "1..1" -- "1..1" Class_Classifier : type5
+@enduml

@@ -1,0 +1,122 @@
+@startuml
+class AbstractView {
+}
+class FormWidget {
+}
+class NamedElement {
+}
+class Widget {
+}
+abstract class webapp_AbstractView {
+  + description : str
+}
+class webapp_Application {
+}
+class webapp_Attribute {
+  + defaultValue : str
+}
+class webapp_CheckBox {
+  + description : str
+}
+class webapp_Collection {
+}
+class webapp_Form {
+}
+abstract class webapp_FormWidget {
+  + label : str
+}
+class webapp_Gallery {
+  + imagesPath : str
+}
+class webapp_ImagesBlock {
+  + imagesPath : str
+}
+class webapp_Model {
+}
+class webapp_ModelView {
+}
+class webapp_NamedElement {
+  + name : str
+}
+class webapp_Operation {
+}
+class webapp_Parameter {
+}
+class webapp_Reference {
+}
+class webapp_Router {
+}
+class webapp_RouterMapping {
+  + path : str
+}
+class webapp_Section {
+  + description : str
+  + title : str
+}
+class webapp_Spinner {
+  + values : str
+}
+class webapp_StaticView {
+}
+class webapp_Table {
+  + bordered : bool
+  + columnNames : str
+  + rowNames : str
+  + striped : bool
+}
+class webapp_Text {
+  + columnNumber : int
+}
+class webapp_TextArea {
+}
+class webapp_Video {
+  + path : str
+}
+abstract class webapp_Widget {
+  + title : str
+}
+AbstractView <|-- webapp_ModelView
+AbstractView <|-- webapp_StaticView
+FormWidget <|-- webapp_CheckBox
+FormWidget <|-- webapp_Spinner
+FormWidget <|-- webapp_TextArea
+NamedElement <|-- webapp_AbstractView
+NamedElement <|-- webapp_Application
+NamedElement <|-- webapp_Attribute
+NamedElement <|-- webapp_Collection
+NamedElement <|-- webapp_Model
+NamedElement <|-- webapp_Operation
+NamedElement <|-- webapp_Parameter
+NamedElement <|-- webapp_Reference
+NamedElement <|-- webapp_Router
+Widget <|-- webapp_Form
+Widget <|-- webapp_Gallery
+Widget <|-- webapp_ImagesBlock
+Widget <|-- webapp_Table
+Widget <|-- webapp_Text
+Widget <|-- webapp_Video
+webapp_Application "1..1" -- "1..1" webapp_Model : application12
+webapp_Application "1..1" -- "1..1" webapp_Collection : application20
+webapp_Application "1..1" -- "1..1" webapp_Router : application23
+webapp_AbstractView "1..1" -- "1..1" webapp_Application : application30
+webapp_Attribute "0..9999" --* "1..1" webapp_Model : attributes7
+webapp_Collection "1..1" -- "1..1" webapp_ModelView : collection32
+webapp_Application "1..1" *-- "0..9999" webapp_Collection : collections1
+webapp_Form "1..1" -- "1..1" webapp_FormWidget : form40
+webapp_Form "1..1" *-- "1..9999" webapp_FormWidget : formWidgets39
+webapp_Router "1..1" *-- "1..9999" webapp_RouterMapping : mappings22
+webapp_Collection "1..1" -- "1..1" webapp_Model : model18
+webapp_Application "1..1" *-- "0..9999" webapp_Model : models5
+webapp_Model "1..1" *-- "0..9999" webapp_Operation : operations10
+webapp_AbstractView "1..1" -- "0..9999" webapp_Operation : operations27
+webapp_Operation "1..1" *-- "0..9999" webapp_Parameter : parameters16
+webapp_Model "1..1" *-- "0..9999" webapp_Reference : references8
+webapp_Application "1..1" *-- "1..1" webapp_Router : router0
+webapp_Section "1..1" -- "1..1" webapp_Widget : section37
+webapp_Section "1..9999" --* "1..1" webapp_StaticView : sections34
+webapp_Model "1..1" -- "1..1" webapp_Reference : type13
+webapp_AbstractView "1..1" -- "1..1" webapp_RouterMapping : view25
+webapp_Section "1..1" -- "1..1" webapp_StaticView : view36
+webapp_AbstractView "0..9999" --* "1..1" webapp_Application : views3
+webapp_Section "1..1" *-- "1..9999" webapp_Widget : widgets35
+@enduml

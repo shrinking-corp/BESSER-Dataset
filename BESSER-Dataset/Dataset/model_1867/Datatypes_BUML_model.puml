@@ -1,0 +1,37 @@
+@startuml
+class AbstractElement {
+}
+class DataType {
+}
+class datatypes_AbstractElement {
+}
+class datatypes_ComplexType {
+}
+class datatypes_DataType {
+  + name : str
+}
+class datatypes_DataTypeLibrary {
+  + name : str
+}
+class datatypes_Field {
+  + many : bool
+  + name : str
+}
+class datatypes_Import {
+  + importedNamespace : str
+}
+class datatypes_SimpleType {
+}
+class datatypes_TypeModel {
+}
+AbstractElement <|-- datatypes_DataType
+AbstractElement <|-- datatypes_DataTypeLibrary
+AbstractElement <|-- datatypes_Import
+DataType <|-- datatypes_ComplexType
+DataType <|-- datatypes_SimpleType
+datatypes_AbstractElement "0..9999" --* "1..1" datatypes_TypeModel : elements0
+datatypes_AbstractElement "0..9999" --* "1..1" datatypes_DataTypeLibrary : elements1
+datatypes_ComplexType "1..1" *-- "0..9999" datatypes_Field : fields5
+datatypes_ComplexType "1..1" -- "0..1" datatypes_ComplexType : superType4
+datatypes_DataType "0..1" -- "1..1" datatypes_Field : type7
+@enduml

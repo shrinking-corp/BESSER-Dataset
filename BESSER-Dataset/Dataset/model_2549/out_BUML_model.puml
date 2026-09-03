@@ -1,0 +1,20 @@
+@startuml
+class RootOut {
+}
+class out_D {
+  + name : str
+}
+class out_E {
+  + name : str
+}
+class out_RootContainer {
+}
+abstract class out_RootOut {
+}
+RootOut <|-- out_D
+RootOut <|-- out_E
+out_RootContainer "1..1" *-- "0..9999" out_RootOut : elements7
+out_D "0..1" -- "1..1" out_D : refD2
+out_D "0..1" -- "1..1" out_E : refD4
+out_D "1..1" *-- "0..9999" out_E : refE0
+@enduml

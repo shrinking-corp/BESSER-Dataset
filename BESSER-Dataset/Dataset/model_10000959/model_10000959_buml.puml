@@ -1,0 +1,36 @@
+@startuml
+class Card_Interface {
+}
+class Class {
+}
+class Deck {
+  + deck__ : Deck
+  + draw__ : str
+  + isEmpty__ : bool
+  + shuffle__ : str
+  + topcard : int
+}
+class Function {
+  + Score : int
+  + removedCard : int
+}
+class PlayerCPU_external {
+}
+class PlayerUser_external {
+}
+class Players {
+  + Player1 : Card_Interface
+  + Player2 : Card_Interface
+}
+class WAR {
+}
+Card_Interface "0..1" -- "0..1" Deck : Deck_Card
+Deck "0..1" -- "0..1" Function : Deck_Function
+Deck "0..1" -- "0..1" WAR : Deck_WAR
+Card_Interface "0..1" -- "0..1" Function : Function_Card
+Function "0..1" -- "0..1" PlayerCPU_external : Function_PlayerCPU
+Function "0..1" -- "0..1" PlayerUser_external : Function_PlayerUser
+Function "0..1" -- "0..1" Players : Function_Players
+Players "0..1" -- "0..1" WAR : Players_WAR
+Players "0..1" -- "0..1" WAR : WAR_Players
+@enduml

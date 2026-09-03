@@ -1,0 +1,29 @@
+@startuml
+class Person {
+}
+class familytree_FamilyTree {
+  + name : str
+}
+class familytree_Man {
+}
+abstract class familytree_Person {
+  + birthYear : int
+  + deathYear : int
+  + firstName : str
+  + lastName : str
+}
+class familytree_Wedding {
+}
+class familytree_Woman {
+}
+Person <|-- familytree_Man
+Person <|-- familytree_Woman
+familytree_Person "1..1" -- "0..9999" familytree_Person : children4
+familytree_Man "1..1" -- "1..1" familytree_Wedding : husband12
+familytree_Man "0..1" -- "1..1" familytree_Woman : husband9
+familytree_Person "1..1" -- "2..2" familytree_Person : parents6
+familytree_FamilyTree "1..1" *-- "1..9999" familytree_Person : persons0
+familytree_FamilyTree "1..1" *-- "0..9999" familytree_Wedding : weddings1
+familytree_Wedding "1..1" -- "1..1" familytree_Woman : wife10
+familytree_Man "1..1" -- "0..1" familytree_Woman : wife8
+@enduml

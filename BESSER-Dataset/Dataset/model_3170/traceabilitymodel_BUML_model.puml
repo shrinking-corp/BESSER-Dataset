@@ -1,0 +1,51 @@
+@startuml
+class traceabilitymodel_Block {
+  + ID : str
+  + endColumn : str
+  + endLine : str
+  + endPos : str
+  + protectedBlock : bool
+  + startColumn : str
+  + startLine : str
+  + startPos : str
+}
+class traceabilitymodel_File {
+  + ID : str
+  + URI : str
+  + name : str
+}
+class traceabilitymodel_MetaModel {
+  + name : str
+  + nsUri : str
+}
+class traceabilitymodel_ModelElementRef {
+  + ID : str
+  + featureRef : str
+  + name : str
+  + uri : str
+}
+class traceabilitymodel_Trace {
+  + sourceOperationID : str
+  + sourceOperationName : str
+  + specificationName : str
+}
+class traceabilitymodel_TraceModel {
+}
+class traceabilitymodel_TraceableSegment {
+  + endColumn : str
+  + endLine : str
+  + endPos : str
+  + startColumn : str
+  + startLine : str
+  + startPos : str
+}
+traceabilitymodel_Block "0..9999" --* "1..1" traceabilitymodel_File : blocks17
+traceabilitymodel_File "0..9999" --* "1..1" traceabilitymodel_TraceModel : files9
+traceabilitymodel_MetaModel "0..1" -- "1..1" traceabilitymodel_ModelElementRef : metaModel0
+traceabilitymodel_MetaModel "0..9999" --* "1..1" traceabilitymodel_TraceModel : metaModels14
+traceabilitymodel_ModelElementRef "0..9999" --* "1..1" traceabilitymodel_TraceModel : modelElementRefs11
+traceabilitymodel_ModelElementRef "1..1" -- "1..1" traceabilitymodel_Trace : originatinElement2
+traceabilitymodel_Trace "1..1" -- "1..1" traceabilitymodel_TraceableSegment : segment1
+traceabilitymodel_Trace "0..9999" --* "1..1" traceabilitymodel_TraceModel : trace7
+traceabilitymodel_Block "1..1" *-- "1..9999" traceabilitymodel_TraceableSegment : traceablesegment5
+@enduml

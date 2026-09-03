@@ -1,0 +1,248 @@
+@startuml
+enum CellType {
+  default
+  defaultWithDisclosure
+  double
+  maps
+  subtitle
+  value2
+}
+class CollectionExpression {
+}
+class CollectionFunction {
+}
+class Expression {
+}
+class ModelElement {
+}
+enum Position {
+  center
+  default
+  right
+}
+class PredefinedParameter {
+}
+class ScalarExpression {
+}
+class SectionedView {
+}
+class StringFunction {
+}
+class Type {
+}
+class VariableDeclaration {
+}
+class View {
+}
+class ViewAction {
+}
+class applauseDsl_ActionDelegate {
+}
+class applauseDsl_ApplauseModel {
+}
+class applauseDsl_Application {
+  + name : str
+  + tabbarApplication : bool
+}
+class applauseDsl_Button {
+  + handler : str
+}
+class applauseDsl_CollectionExpression {
+}
+class applauseDsl_CollectionFunction {
+}
+class applauseDsl_CollectionIterator {
+}
+class applauseDsl_CollectionLiteral {
+}
+class applauseDsl_Constant {
+  + language : str
+}
+class applauseDsl_ContentProvider {
+  + html : bool
+  + many : bool
+  + name : str
+  + resolver : bool
+  + xml : bool
+}
+class applauseDsl_CustomView {
+  + objclass : str
+}
+class applauseDsl_DetailsView {
+}
+class applauseDsl_Entity {
+}
+class applauseDsl_Expression {
+}
+class applauseDsl_ExternalOpen {
+}
+class applauseDsl_ModelElement {
+}
+class applauseDsl_NavigationBarItem {
+  + position : str
+}
+class applauseDsl_ObjectReference {
+}
+class applauseDsl_Parameter {
+}
+class applauseDsl_PredefinedParameter {
+}
+class applauseDsl_Property {
+  + derived : bool
+}
+class applauseDsl_ProviderConstruction {
+}
+class applauseDsl_ScalarExpression {
+}
+class applauseDsl_SectionCell {
+  + type : str
+}
+class applauseDsl_SectionId {
+}
+class applauseDsl_SectionedView {
+}
+class applauseDsl_SimpleType {
+  + platformType : str
+}
+class applauseDsl_StringConcat {
+}
+class applauseDsl_StringFunction {
+}
+class applauseDsl_StringLiteral {
+  + value : str
+}
+class applauseDsl_StringReplace {
+}
+class applauseDsl_StringSplit {
+}
+class applauseDsl_StringUrlConform {
+}
+class applauseDsl_TableView {
+}
+class applauseDsl_Type {
+  + name : str
+}
+class applauseDsl_TypeDescription {
+  + many : bool
+}
+class applauseDsl_VariableDeclaration {
+  + name : str
+}
+class applauseDsl_View {
+  + name : str
+}
+class applauseDsl_ViewAction {
+}
+class applauseDsl_ViewCall {
+}
+class applauseDsl_ViewForAllSections {
+}
+class applauseDsl_ViewHeader {
+}
+class applauseDsl_ViewSection {
+}
+class applauseDsl_WebView {
+}
+CollectionExpression <|-- applauseDsl_CollectionFunction
+CollectionExpression <|-- applauseDsl_CollectionLiteral
+CollectionExpression <|-- applauseDsl_ObjectReference
+CollectionFunction <|-- applauseDsl_StringSplit
+Expression <|-- applauseDsl_CollectionFunction
+Expression <|-- applauseDsl_CollectionLiteral
+Expression <|-- applauseDsl_ObjectReference
+Expression <|-- applauseDsl_StringFunction
+Expression <|-- applauseDsl_StringLiteral
+ModelElement <|-- applauseDsl_ContentProvider
+ModelElement <|-- applauseDsl_NavigationBarItem
+ModelElement <|-- applauseDsl_Type
+ModelElement <|-- applauseDsl_VariableDeclaration
+ModelElement <|-- applauseDsl_View
+PredefinedParameter <|-- applauseDsl_SectionId
+ScalarExpression <|-- applauseDsl_ObjectReference
+ScalarExpression <|-- applauseDsl_StringFunction
+ScalarExpression <|-- applauseDsl_StringLiteral
+SectionedView <|-- applauseDsl_DetailsView
+SectionedView <|-- applauseDsl_TableView
+StringFunction <|-- applauseDsl_StringConcat
+StringFunction <|-- applauseDsl_StringReplace
+StringFunction <|-- applauseDsl_StringUrlConform
+Type <|-- applauseDsl_Entity
+Type <|-- applauseDsl_SimpleType
+VariableDeclaration <|-- applauseDsl_CollectionIterator
+VariableDeclaration <|-- applauseDsl_Constant
+VariableDeclaration <|-- applauseDsl_Parameter
+VariableDeclaration <|-- applauseDsl_Property
+View <|-- applauseDsl_CustomView
+View <|-- applauseDsl_SectionedView
+View <|-- applauseDsl_WebView
+ViewAction <|-- applauseDsl_ActionDelegate
+ViewAction <|-- applauseDsl_ExternalOpen
+ViewAction <|-- applauseDsl_ViewCall
+applauseDsl_SectionCell "1..1" *-- "0..1" applauseDsl_ViewAction : action127
+applauseDsl_ObjectReference "0..1" --* "1..1" applauseDsl_ViewCall : action142
+applauseDsl_VariableDeclaration "0..9999" --* "1..1" applauseDsl_View : actions64
+applauseDsl_Application "1..1" *-- "0..1" applauseDsl_ScalarExpression : appicon16
+applauseDsl_ApplauseModel "1..1" *-- "0..1" applauseDsl_Application : application0
+applauseDsl_Expression "0..1" --* "1..1" applauseDsl_ProviderConstruction : argument55
+applauseDsl_SectionCell "1..1" *-- "0..1" applauseDsl_ViewAction : buttonAction129
+applauseDsl_Application "1..1" *-- "0..9999" applauseDsl_Button : buttons24
+applauseDsl_Button "0..9999" --* "1..1" applauseDsl_View : buttons61
+applauseDsl_SectionCell "0..9999" --* "1..1" applauseDsl_ViewSection : cells102
+applauseDsl_SectionCell "0..9999" --* "1..1" applauseDsl_ViewForAllSections : cells110
+applauseDsl_CollectionExpression "0..1" --* "1..1" applauseDsl_CollectionIterator : collection132
+applauseDsl_Parameter "0..1" --* "1..1" applauseDsl_SectionedView : content67
+applauseDsl_CustomView "1..1" *-- "0..1" applauseDsl_Parameter : content85
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_StringSplit : delimiter159
+applauseDsl_Property "1..1" *-- "0..1" applauseDsl_TypeDescription : description39
+applauseDsl_Parameter "1..1" *-- "0..1" applauseDsl_TypeDescription : description8
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_SectionCell : details118
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_ViewHeader : details93
+applauseDsl_ApplauseModel "1..1" *-- "0..9999" applauseDsl_ModelElement : elements1
+applauseDsl_Entity "1..1" -- "0..1" applauseDsl_Entity : extends36
+applauseDsl_SectionedView "1..1" *-- "0..1" applauseDsl_ViewForAllSections : forAllSections72
+applauseDsl_ViewForAllSections "0..1" --* "1..1" applauseDsl_WebView : forAllSections79
+applauseDsl_DetailsView "1..1" *-- "0..1" applauseDsl_ViewHeader : header76
+applauseDsl_ViewHeader "0..1" --* "1..1" applauseDsl_WebView : header77
+applauseDsl_Button "1..1" *-- "0..1" applauseDsl_ScalarExpression : icon29
+applauseDsl_NavigationBarItem "1..1" *-- "0..1" applauseDsl_ScalarExpression : icon3
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_SectionCell : image121
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_ViewHeader : image96
+applauseDsl_CollectionLiteral "1..1" *-- "0..9999" applauseDsl_ScalarExpression : items14
+applauseDsl_CollectionIterator "0..1" --* "1..1" applauseDsl_SectionCell : iterator113
+applauseDsl_Application "1..1" *-- "0..1" applauseDsl_ViewCall : mainview22
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_StringReplace : match149
+applauseDsl_ObjectReference "1..1" -- "0..1" applauseDsl_VariableDeclaration : object10
+applauseDsl_ContentProvider "1..1" *-- "0..1" applauseDsl_Parameter : parameter42
+applauseDsl_PredefinedParameter "0..1" --* "1..1" applauseDsl_ProviderConstruction : predefinedParameter57
+applauseDsl_Entity "1..1" *-- "0..9999" applauseDsl_Property : properties37
+applauseDsl_ProviderConstruction "0..1" --* "1..1" applauseDsl_ViewForAllSections : provider107
+applauseDsl_ProviderConstruction "0..1" --* "1..1" applauseDsl_ViewCall : provider139
+applauseDsl_ContentProvider "0..1" -- "1..1" applauseDsl_ProviderConstruction : provider53
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_SectionCell : query124
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_StringReplace : replacement152
+applauseDsl_SectionedView "1..1" *-- "0..9999" applauseDsl_ViewSection : sections74
+applauseDsl_ViewSection "0..9999" --* "1..1" applauseDsl_WebView : sections82
+applauseDsl_ContentProvider "1..1" *-- "0..1" applauseDsl_ScalarExpression : selection50
+applauseDsl_Application "1..1" *-- "0..1" applauseDsl_ScalarExpression : splash19
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_ViewHeader : subtitle90
+applauseDsl_SectionedView "0..1" -- "1..1" applauseDsl_SectionedView : superView70
+applauseDsl_ObjectReference "0..1" --* "1..1" applauseDsl_ObjectReference : tail12
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_SectionCell : text115
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_ViewForAllSections : title104
+applauseDsl_Button "1..1" *-- "0..1" applauseDsl_ScalarExpression : title26
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_View : title59
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_ViewHeader : title87
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_ViewSection : title99
+applauseDsl_NavigationBarItem "1..1" *-- "0..9999" applauseDsl_ScalarExpression : triggers4
+applauseDsl_ContentProvider "1..1" -- "0..1" applauseDsl_Type : type44
+applauseDsl_Type "0..1" -- "1..1" applauseDsl_TypeDescription : type7
+applauseDsl_ExternalOpen "1..1" *-- "0..1" applauseDsl_ScalarExpression : url134
+applauseDsl_ContentProvider "1..1" *-- "0..1" applauseDsl_ScalarExpression : url47
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_StringReplace : value147
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_StringUrlConform : value155
+applauseDsl_ScalarExpression "0..1" --* "1..1" applauseDsl_StringSplit : value157
+applauseDsl_Constant "1..1" *-- "0..9999" applauseDsl_ScalarExpression : value162
+applauseDsl_ScalarExpression "0..9999" --* "1..1" applauseDsl_StringConcat : values145
+applauseDsl_View "0..1" -- "1..1" applauseDsl_ViewCall : view136
+applauseDsl_Button "1..1" *-- "0..1" applauseDsl_ViewCall : view32
+@enduml

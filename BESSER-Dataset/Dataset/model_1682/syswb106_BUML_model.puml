@@ -1,0 +1,45 @@
+@startuml
+class syswb106_Component {
+}
+class syswb106_Function {
+}
+class syswb106_FunctionProperty {
+  + description : str
+}
+class syswb106_PatternCatalog {
+  + id : str
+}
+class syswb106_RelatedTo {
+  + since : str
+}
+class syswb106_System {
+}
+class syswb106_Thing {
+  + id : int
+}
+class syswb106_Thoughts {
+}
+class syswb106_Workbench {
+  + aprop : str
+}
+syswb106_Component "0..1" -- "1..1" syswb106_Function : allocatedTo35
+syswb106_Component "0..9999" -- "1..1" syswb106_Component : associations22
+syswb106_Function "0..1" -- "1..1" syswb106_Function : associations33
+syswb106_PatternCatalog "0..9999" --* "1..1" syswb106_Workbench : catalog7
+syswb106_Component "1..1" -- "0..9999" syswb106_Component : decompositions20
+syswb106_Function "0..9999" --* "1..1" syswb106_Function : decompositions27
+syswb106_RelatedTo "1..1" -- "0..1" syswb106_Thing : fromThing10
+syswb106_FunctionProperty "0..9999" --* "1..1" syswb106_Workbench : functionProperties5
+syswb106_Function "0..1" --* "1..1" syswb106_System : functionalArchitecture38
+syswb106_FunctionProperty "0..1" -- "1..1" syswb106_FunctionProperty : parent17
+syswb106_Function "0..9999" --* "1..1" syswb106_PatternCatalog : patterns44
+syswb106_Component "1..1" -- "0..9999" syswb106_Function : performs24
+syswb106_Component "0..1" --* "1..1" syswb106_System : physicalArchitecture41
+syswb106_Function "1..1" -- "0..9999" syswb106_FunctionProperty : property29
+syswb106_Thing "0..9999" -- "1..1" syswb106_Thoughts : relatedTo13
+syswb106_RelatedTo "0..9999" --* "1..1" syswb106_Thing : relations9
+syswb106_System "0..1" --* "1..1" syswb106_Workbench : systemView3
+syswb106_Thing "0..9999" --* "1..1" syswb106_Workbench : things0
+syswb106_Thoughts "0..9999" --* "1..1" syswb106_Workbench : thoughts1
+syswb106_RelatedTo "1..1" -- "0..1" syswb106_Thing : toThing11
+@enduml

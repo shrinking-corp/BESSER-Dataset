@@ -1,0 +1,37 @@
+@startuml
+class Logo_Back {
+}
+class Logo_Clear {
+}
+class Logo_Expression {
+  + eval(Logo_context : str) : void
+}
+class Logo_Forward {
+}
+class Logo_Left {
+}
+class Logo_LogoProgram {
+}
+class Logo_PenDown {
+}
+class Logo_PenUp {
+}
+abstract class Logo_Primitive {
+}
+class Logo_Right {
+}
+class Primitive {
+}
+Primitive <|-- Logo_Back
+Primitive <|-- Logo_Clear
+Primitive <|-- Logo_Forward
+Primitive <|-- Logo_Left
+Primitive <|-- Logo_PenDown
+Primitive <|-- Logo_PenUp
+Primitive <|-- Logo_Right
+Logo_Expression "0..1" --* "1..1" Logo_Left : angle4
+Logo_Expression "0..1" --* "1..1" Logo_Right : angle6
+Logo_LogoProgram "1..1" *-- "0..9999" Logo_Primitive : primitives0
+Logo_Back "1..1" *-- "1..1" Logo_Expression : steps1
+Logo_Expression "1..1" --* "1..1" Logo_Forward : steps2
+@enduml

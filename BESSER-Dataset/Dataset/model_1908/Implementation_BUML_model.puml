@@ -1,0 +1,368 @@
+@startuml
+class AdditionalServiceComponent_IAdditionalServiceAdministration {
+}
+class AdditionalServiceComponent_IEventManagement {
+}
+class BookingComponent_IBookingAdministration {
+}
+class BookingComponent_IBookingDecision {
+}
+class BookingComponent_IBookingInformation {
+}
+class DecisionSupportComponent_IDecisionSupport {
+}
+class Implementation_AdditionalServiceComponent {
+}
+class Implementation_AdditionalServiceComponent_AdditionalService {
+  + description : str
+  + name : str
+  + price : str
+  + usable : str
+  + createEvent(Implementation_currentAttendants : str, Implementation_dateTime : str, Implementation_location : str, Implementation_maxAttendants : str) : str
+  + editEvent(Implementation_currentAttendants : str, Implementation_dateTime : str, Implementation_location : str, Implementation_maxAttendants : str) : str
+  + findEvent(Implementation_dateTime : str, Implementation_location : str) : str
+  + findEvents(Implementation_dateTime : str) : str
+  + removeEvent(Implementation_dateTime : str, Implementation_location : str) : str
+  + removeEvents(Implementation_dateTime : str) : str
+}
+class Implementation_AdditionalServiceComponent_AdditionalServiceEvent {
+  + currentAttendants : str
+  + dateTime : date
+  + location : str
+  + maxAttendant : str
+}
+class Implementation_AdditionalServiceComponent_AdditionalServiceHandler {
+  + findService(Implementation_name : str) : str
+}
+abstract class Implementation_AdditionalServiceComponent_IAdditionalServiceAdministration {
+  + createAdditionalService(Implementation_description : str, Implementation_name : str, Implementation_price : str, Implementation_usable : str) : str
+  + createEvent(Implementation_currentAttendants : str, Implementation_dateTime : str, Implementation_location : str, Implementation_maxAttendants : str, Implementation_name : str) : str
+  + editAdditionalService(Implementation_description : str, Implementation_name : str, Implementation_oldName : str, Implementation_price : str, Implementation_usable : str) : str
+  + editEvent(Implementation_currentAttendants : str, Implementation_dateTime : str, Implementation_location : str, Implementation_maxAttendants : str, Implementation_name : str) : str
+  + removeAdditionalService(Implementation_name : str) : str
+  + removeEvent(Implementation_dateTime : str, Implementation_location : str, Implementation_name : str) : str
+  + removeEvents(Implementation_dateTime : str, Implementation_name : str) : str
+}
+abstract class Implementation_AdditionalServiceComponent_IEventManagement {
+  + addGuestToEvent(Implementation_dateTime : str, Implementation_guests : str, Implementation_location : str, Implementation_name : str) : str
+  + getEventCurrentAttendants(Implementation_dateTime : str, Implementation_location : str, Implementation_name : str) : str
+  + getEventMaxAttendants(Implementation_dateTime : str, Implementation_location : str, Implementation_name : str) : str
+  + getEvents(Implementation_name : str) : str
+  + getServicePrice(Implementation_name : str) : str
+  + getServices() : str
+  + removeGuestsFromEvent(Implementation_dateTime : str, Implementation_guests : str, Implementation_location : str, Implementation_name : str) : str
+}
+class Implementation_Bank {
+}
+abstract class Implementation_Bank_AdministratorProvides {
+  + addCreditCard(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : bool
+  + getBalance(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : float
+  + makeDeposit(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str, Implementation_sum : str) : float
+  + removeCreditCard(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : bool
+}
+abstract class Implementation_Bank_CustomerProvides {
+  + isCreditCardValid(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : bool
+  + makePayment(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str, Implementation_sum : str) : bool
+}
+class Implementation_BookingComponent {
+}
+class Implementation_BookingComponent_AdditionalService {
+  + dateTime : date
+  + guestCount : str
+  + location : str
+  + name : str
+  + price : int
+}
+class Implementation_BookingComponent_Booking {
+  + arrivalDate : date
+  + bookingReference : str
+  + currentCost : str
+  + departureDate : date
+  + isActive : str
+  + isPaid : str
+  + addAdditionalServiceToBooking(Implementation_dateTime : str, Implementation_guestCount : str, Implementation_location : str, Implementation_newService : str) : void
+  + addGuestToBooking(Implementation_address : str, Implementation_firstName : str, Implementation_lastName : str, Implementation_phoneNumber : str) : void
+  + addPaymentDetails(Implementation_address : str, Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : void
+  + addRoomToBooking(Implementation_roomPrice : str, Implementation_roomType : str) : void
+  + currentCost() : str
+  + generateReferenceNumber() : str
+  + getGuestsInBooking() : str
+  + getRoomTypesInBooking() : str
+  + removeAdditionalServiceFromBooking(Implementation_additionalServiceName : str) : void
+  + removeGuestFromBooking(Implementation_address : str, Implementation_firstName : str, Implementation_lastName : str) : void
+  + removeRoomFromBooking(Implementation_roomType : str) : void
+  + updateBooking(Implementation_arrivalDate : str, Implementation_departureDate : str) : void
+  + updatePaymentDetails(Implementation_address : str, Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : void
+}
+class Implementation_BookingComponent_BookingGuest {
+  + address : str
+  + firstName : str
+  + lastName : str
+  + phoneNumber : str
+}
+class Implementation_BookingComponent_BookingHandler {
+  + bookingAvailable(Implementation_endDate : str, Implementation_roomType : str, Implementation_startDate : str) : bool
+  + findBooking(Implementation_referenceNumber : str) : str
+  + findBookingsByDate(Implementation_endDate : str, Implementation_startDate : str) : str
+}
+abstract class Implementation_BookingComponent_IBookingAdministration {
+  + addAdditionalService(Implementation_additionalServiceName : str, Implementation_bookingReference : str, Implementation_cost : str) : str
+  + addGuestToBooking(Implementation_address : str, Implementation_bookingReference : str, Implementation_firstName : str, Implementation_lastName : str, Implementation_phoneNumber : str) : str
+  + addPaymentDetails(Implementation_bookingReference : str, Implementation_ccNumber : str, Implementation_ccv : str, Implementation_customerAddress : str, Implementation_customerFirstName : str, Implementation_customerLastName : str, Implementation_expiryMonth : str, Implementation_expiryYear : str) : str
+  + addRoom(Implementation_bookingReference : str, Implementation_price : str, Implementation_roomType : str) : str
+  + cancelBooking(Implementation_bookingReference : str) : str
+  + confirmBooking(Implementation_bookingReference : str) : str
+  + editBooking(Implementation_arrivalDate : str, Implementation_bookingReference : str, Implementation_departureDate : str) : str
+  + makeBooking(Implementation_arrivalDate : str, Implementation_customerSSN : str, Implementation_departureDate : str, Implementation_roomType : str) : str
+  + removeAdditionalService(Implementation_additionalServiceName : str, Implementation_bookingReference : str) : str
+  + removeGuest(Implementation_address : str, Implementation_bookingReference : str, Implementation_firstName : str, Implementation_lastName : str) : str
+  + removeRoom(Implementation_bookingReference : str, Implementation_roomType : str) : str
+}
+abstract class Implementation_BookingComponent_IBookingDecision {
+  + getDSSInfo() : str
+}
+abstract class Implementation_BookingComponent_IBookingInformation {
+  + findBookingsByDateAndType(Implementation_arrivalDate : str, Implementation_departureDate : str, Implementation_roomType : str) : int
+  + getGuestsInBooking(Implementation_bookingReference : str) : str
+  + getRoomTypesInBooking(Implementation_bookingReference : str) : str
+  + isPaidFor(Implementation_bookingReference : str) : str
+  + makePayment(Implementation_bookingReference : str) : str
+  + searchAvailableRoomTypes(Implementation_arrivalDate : str, Implementation_departureDate : str) : str
+  + searchForBooking(Implementation_bookingReference : str) : str
+}
+class Implementation_BookingComponent_PaymentDetails {
+  + address : str
+  + ccNumber : str
+  + ccv : str
+  + expiryMonth : str
+  + expiryYear : str
+  + firstName : str
+  + lastName : str
+  + generateID() : str
+}
+class Implementation_BookingComponent_RoomType {
+  + cost : str
+  + roomType : str
+}
+class Implementation_DecisionSupportComponent {
+}
+class Implementation_DecisionSupportComponent_AdditionalServiceDSSInfo {
+  + additionalServiceName : str
+  + additionalServicePrice : str
+}
+class Implementation_DecisionSupportComponent_BookingDSSInfo {
+  + address : str
+  + arrivalDate : str
+  + customerFirstName : str
+  + customerLastName : str
+  + departureDate : str
+  + numberOfGuests : str
+  + roomType : str
+  + addAdditionalService(Implementation_additionalServiceName : str, Implementation_additionalServicePrice : str) : void
+}
+class Implementation_DecisionSupportComponent_DSSController {
+  + countCustomerBooking(Implementation_bookingDSSInfo : str, Implementation_customerSSN : str) : str
+  + getPositionInList(Implementation_element : str, Implementation_listToCheck : str) : str
+}
+abstract class Implementation_DecisionSupportComponent_IDecisionSupport {
+  + countRoomType(Implementation_bookingDSSInfo : str, Implementation_roomType : str) : str
+  + getAllCustomerBookingFrequency() : str
+  + getAllRoomTypeFrequency() : str
+  + getCustomerBookingFrequency(Implementation_customerSSN : str) : str
+  + getDSSData() : void
+  + getDSSOccupancyInfo() : void
+  + getNumberOfOccupanciesOfRoom(Implementation_roomNumber : str) : str
+  + getRoomTypeFrequency(Implementation_roomType : str) : str
+}
+class Implementation_DecisionSupportComponent_OccupancyDSSInfo {
+  + checkInDateTime : str
+  + checkOutDateTime : str
+  + numberOfGuests : str
+  + roomNumber : str
+}
+class Implementation_OccupancyComponent {
+}
+class Implementation_OccupancyComponent_Guest {
+  + firstName : str
+  + lastName : str
+}
+abstract class Implementation_OccupancyComponent_IOccupancy {
+  + checkInGuest(Implementation_bookingReference : str, Implementation_firstName : str, Implementation_lastName : str, Implementation_partnerFirstName : str, Implementation_partnerLastName : str, Implementation_roomType : str) : void
+  + checkOutGuest(Implementation_firstName : str, Implementation_lastName : str, Implementation_roomNumber : str) : void
+  + getAvailableRooms(Implementation_roomType : str) : str
+  + isOccupied(Implementation_roomNumber : str) : str
+  + listGuestsInRoom(Implementation_roomNumber : str) : str
+  + numberOfGuestsInHotel() : str
+}
+abstract class Implementation_OccupancyComponent_IOccupancyDecision {
+  + getDSSOccupancyInfo() : str
+}
+class Implementation_OccupancyComponent_Occupancy {
+  + bookingReference : str
+  + checkInDateTime : str
+  + checkOutDateTime : str
+  + roomNumber : str
+  + addGuestToOccupancy(Implementation_firstName : str, Implementation_lastName : str) : str
+  + getPartner(Implementation_firstName : str, Implementation_lastName : str) : str
+  + listGuests() : str
+}
+class Implementation_OccupancyComponent_OccupancyHandler {
+  + findOccupancy(Implementation_bookingReference : str, Implementation_partnerFirstName : str, Implementation_partnerLastName : str) : str
+  + isInRoomTypes(Implementation_guestInRoomType : str, Implementation_roomTypes : str) : str
+}
+class Implementation_PaymentComponent {
+}
+abstract class Implementation_PaymentComponent_IPayment {
+  + addCC(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : str
+  + checkBalance(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : float
+  + makeDeposit(Implementation_amount : str, Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : float
+  + makePayment(Implementation_amount : str, Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : str
+  + removeCC(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : str
+  + validateCC(Implementation_ccNumber : str, Implementation_ccv : str, Implementation_expiryMonth : str, Implementation_expiryYear : str, Implementation_firstName : str, Implementation_lastName : str) : str
+}
+class Implementation_PaymentComponent_Payment {
+  + amount : float
+  + ccNumber : str
+  + ccv : str
+  + expiryMonth : str
+  + expiryYear : str
+  + firstName : str
+  + lastName : str
+}
+class Implementation_PaymentComponent_PaymentHandler {
+}
+class Implementation_RoomComponent {
+}
+class Implementation_RoomComponent_Bedroom {
+  + bedCount : str
+}
+class Implementation_RoomComponent_ConferenceRoom {
+  + conferencePhone : bool
+  + numberOfSeats : int
+  + projector : bool
+}
+abstract class Implementation_RoomComponent_IRoomAdministration {
+  + createBedRoom(Implementation_bedCount : str, Implementation_description : str, Implementation_price : str, Implementation_roomNumber : str, Implementation_roomTypeName : str, Implementation_usable : str) : void
+  + createConferenceRoom(Implementation_conferencePhone : str, Implementation_description : str, Implementation_numberOfSeats : str, Implementation_price : str, Implementation_projector : str, Implementation_roomNumber : str, Implementation_roomTypeName : str, Implementation_usable : str) : void
+  + editBedRoom(Implementation_bedCount : str, Implementation_currentRoomNumber : str, Implementation_description : str, Implementation_price : str, Implementation_roomNumber : str, Implementation_roomTypeName : str, Implementation_usable : str) : void
+  + editConferenceRoom(Implementation_conferencePhone : str, Implementation_currentRoomNumber : str, Implementation_description : str, Implementation_numberOfSeats : str, Implementation_price : str, Implementation_projector : str, Implementation_roomNumber : str, Implementation_roomTypeName : str, Implementation_usable : str) : void
+  + remove(Implementation_roomNumber : str) : void
+}
+abstract class Implementation_RoomComponent_IRoomInformation {
+  + countNumberOfTotalRooms() : str
+  + getAllRoomNumbers() : str
+  + getBedCountOfRoomType(Implementation_roomType : str) : str
+  + getCountOfRoomType(Implementation_roomType : str) : str
+  + getPriceOfRoomType(Implementation_roomType : str) : str
+  + getRoomInfo(Implementation_roomNumber : str) : str
+  + getRoomTypes() : str
+  + searchRoom(Implementation_roomTypeName : str) : str
+}
+class Implementation_RoomComponent_Room {
+  + description : str
+  + price : str
+  + roomNumber : str
+  + roomTypeName : str
+  + usable : str
+}
+class Implementation_RoomComponent_RoomHandler {
+}
+class Implementation_StaffComponent {
+}
+class Implementation_StaffComponent_AccountManager {
+  + findAccount(Implementation_ssn : str) : str
+}
+class Implementation_StaffComponent_Employee {
+  + email : str
+  + id : str
+  + name : str
+  + password : str
+  + phone : str
+  + ssn : str
+  + getEmployeeInfo() : str
+}
+abstract class Implementation_StaffComponent_IAccountAdministration {
+  + createAccount(Implementation_email : str, Implementation_name : str, Implementation_password : str, Implementation_phone : str, Implementation_ssn : str) : str
+  + editAccountDetails(Implementation_email : str, Implementation_name : str, Implementation_password : str, Implementation_phone : str, Implementation_ssn : str) : str
+  + removeAccount(Implementation_ssn : str) : str
+}
+abstract class Implementation_StaffComponent_IAuthentication {
+  + isLoggedIn(Implementation_ssn : str) : str
+  + logIn(Implementation_password : str, Implementation_ssn : str) : bool
+  + logOut(Implementation_ssn : str) : bool
+}
+class OccupancyComponent_IOccupancy {
+}
+class OccupancyComponent_IOccupancyDecision {
+}
+class PaymentComponent_IPayment {
+}
+class RoomComponent_IRoomAdministration {
+}
+class RoomComponent_IRoomInformation {
+}
+class RoomComponent_Room {
+}
+class StaffComponent_IAccountAdministration {
+}
+class StaffComponent_IAuthentication {
+}
+AdditionalServiceComponent_IAdditionalServiceAdministration <|-- Implementation_AdditionalServiceComponent
+AdditionalServiceComponent_IAdditionalServiceAdministration <|-- Implementation_AdditionalServiceComponent_AdditionalServiceHandler
+AdditionalServiceComponent_IEventManagement <|-- Implementation_AdditionalServiceComponent
+AdditionalServiceComponent_IEventManagement <|-- Implementation_AdditionalServiceComponent_AdditionalServiceHandler
+BookingComponent_IBookingAdministration <|-- Implementation_Bank
+BookingComponent_IBookingAdministration <|-- Implementation_BookingComponent_BookingHandler
+BookingComponent_IBookingDecision <|-- Implementation_Bank
+BookingComponent_IBookingDecision <|-- Implementation_BookingComponent_BookingHandler
+BookingComponent_IBookingInformation <|-- Implementation_Bank
+BookingComponent_IBookingInformation <|-- Implementation_BookingComponent_BookingHandler
+DecisionSupportComponent_IDecisionSupport <|-- Implementation_DecisionSupportComponent
+DecisionSupportComponent_IDecisionSupport <|-- Implementation_DecisionSupportComponent_DSSController
+OccupancyComponent_IOccupancy <|-- Implementation_OccupancyComponent_OccupancyHandler
+OccupancyComponent_IOccupancyDecision <|-- Implementation_OccupancyComponent_OccupancyHandler
+PaymentComponent_IPayment <|-- Implementation_PaymentComponent
+PaymentComponent_IPayment <|-- Implementation_PaymentComponent_PaymentHandler
+RoomComponent_IRoomAdministration <|-- Implementation_RoomComponent
+RoomComponent_IRoomAdministration <|-- Implementation_RoomComponent_RoomHandler
+RoomComponent_IRoomInformation <|-- Implementation_RoomComponent
+RoomComponent_IRoomInformation <|-- Implementation_RoomComponent_RoomHandler
+RoomComponent_Room <|-- Implementation_RoomComponent_Bedroom
+RoomComponent_Room <|-- Implementation_RoomComponent_ConferenceRoom
+StaffComponent_IAccountAdministration <|-- Implementation_StaffComponent
+StaffComponent_IAccountAdministration <|-- Implementation_StaffComponent_AccountManager
+StaffComponent_IAuthentication <|-- Implementation_StaffComponent
+StaffComponent_IAuthentication <|-- Implementation_StaffComponent_AccountManager
+Implementation_AdditionalServiceComponent_AdditionalService "0..9999" -- "1..1" Implementation_AdditionalServiceComponent_AdditionalServiceHandler : additionalService28
+Implementation_DecisionSupportComponent_AdditionalServiceDSSInfo "0..9999" -- "1..1" Implementation_DecisionSupportComponent_DSSController : additionalServiceDSSInfo6
+Implementation_AdditionalServiceComponent_AdditionalService "1..1" -- "0..9999" Implementation_AdditionalServiceComponent_AdditionalServiceEvent : additionalServiceEvent24
+Implementation_DecisionSupportComponent_AdditionalServiceDSSInfo "0..9999" -- "1..1" Implementation_DecisionSupportComponent_BookingDSSInfo : additionalServices0
+Implementation_BookingComponent_AdditionalService "0..9999" -- "1..1" Implementation_BookingComponent_Booking : additionalServices32
+Implementation_Bank_AdministratorProvides "1..1" -- "1..1" Implementation_PaymentComponent_PaymentHandler : administratorProvides22
+Implementation_BookingComponent_BookingHandler "1..1" -- "1..1" Implementation_StaffComponent_IAuthentication : authentication41
+Implementation_RoomComponent_RoomHandler "1..1" -- "1..1" Implementation_StaffComponent_IAuthentication : authenticator58
+Implementation_RoomComponent_Bedroom "0..9999" -- "1..1" Implementation_RoomComponent_RoomHandler : bedRooms60
+Implementation_DecisionSupportComponent_BookingDSSInfo "0..9999" -- "1..1" Implementation_DecisionSupportComponent_DSSController : bookingDSSInfo9
+Implementation_BookingComponent_Booking "0..9999" -- "1..1" Implementation_BookingComponent_BookingHandler : bookings39
+Implementation_RoomComponent_ConferenceRoom "0..9999" -- "1..1" Implementation_RoomComponent_RoomHandler : conferenceRooms62
+Implementation_Bank_CustomerProvides "1..1" -- "1..1" Implementation_PaymentComponent_PaymentHandler : customerProvides20
+Implementation_StaffComponent_AccountManager "1..1" -- "1..9999" Implementation_StaffComponent_Employee : employees52
+Implementation_OccupancyComponent_Guest "1..9999" -- "1..1" Implementation_OccupancyComponent_Occupancy : guests12
+Implementation_BookingComponent_Booking "1..1" -- "1..9999" Implementation_BookingComponent_BookingGuest : guests33
+Implementation_AdditionalServiceComponent_IEventManagement "1..1" -- "1..1" Implementation_BookingComponent_BookingHandler : iAdditionalServiceInformation47
+Implementation_AdditionalServiceComponent_AdditionalServiceHandler "1..1" -- "1..1" Implementation_StaffComponent_IAuthentication : iAuthentication30
+Implementation_StaffComponent_AccountManager "1..1" -- "1..1" Implementation_StaffComponent_IAuthentication : iAuthentication55
+Implementation_BookingComponent_IBookingInformation "1..1" -- "1..1" Implementation_OccupancyComponent_OccupancyHandler : iBooking14
+Implementation_BookingComponent_IBookingDecision "1..1" -- "1..1" Implementation_DecisionSupportComponent_DSSController : iBookingDecision2
+Implementation_DecisionSupportComponent_DSSController "1..1" -- "1..1" Implementation_OccupancyComponent_IOccupancyDecision : iOccupancyDecision1
+Implementation_BookingComponent_BookingHandler "1..1" -- "1..1" Implementation_PaymentComponent_IPayment : iPayment49
+Implementation_OccupancyComponent_OccupancyHandler "1..1" -- "1..1" Implementation_RoomComponent_IRoomInformation : iRoomInformation13
+Implementation_BookingComponent_BookingHandler "1..1" -- "1..1" Implementation_RoomComponent_IRoomInformation : iRoomInformation44
+Implementation_StaffComponent_AccountManager "1..1" -- "0..9999" Implementation_StaffComponent_Employee : loggedIn51
+Implementation_OccupancyComponent_Occupancy "0..9999" -- "1..1" Implementation_OccupancyComponent_OccupancyHandler : occupancy16
+Implementation_DecisionSupportComponent_DSSController "1..1" -- "0..9999" Implementation_DecisionSupportComponent_OccupancyDSSInfo : occupancyDSSInfo4
+Implementation_PaymentComponent_Payment "0..9999" -- "1..1" Implementation_PaymentComponent_PaymentHandler : payment19
+Implementation_BookingComponent_Booking "1..1" -- "1..1" Implementation_BookingComponent_PaymentDetails : paymentDetails35
+Implementation_BookingComponent_Booking "1..1" -- "1..9999" Implementation_BookingComponent_RoomType : rooms37
+Implementation_AdditionalServiceComponent_AdditionalService "1..1" -- "0..9999" Implementation_AdditionalServiceComponent_AdditionalServiceEvent : tempEvents25
+@enduml

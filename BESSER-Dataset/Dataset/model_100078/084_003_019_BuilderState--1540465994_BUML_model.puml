@@ -1,0 +1,46 @@
+@startuml
+class IEObjectDescription {
+}
+class IReferenceDescription {
+}
+class builderState_EClass {
+}
+class builderState_EObjectDescription {
+  + fragment : str
+}
+abstract class builderState_IEObjectDescription {
+  + name : str
+  + getEObjectOrProxy() : str
+  + getEObjectURI() : str
+  + getQualifiedName() : str
+  + getUserData(builderState_name : str) : str
+  + getUserDataKeys() : str
+}
+abstract class builderState_IReferenceDescription {
+  + containerEObjectURI : str
+  + indexInList : int
+  + sourceEObjectUri : str
+  + targetEObjectUri : str
+}
+class builderState_ReferenceDescription {
+  + externalFormOfEReference : str
+}
+class builderState_ResourceDescription {
+  + URI : str
+  + importedNames : str
+  + getExportedObjects(builderState_ignoreCase : str, builderState_name : str, builderState_type : str) : str
+  + getExportedObjectsByObject(builderState_object : str) : str
+  + getExportedObjectsByType(builderState_type : str) : str
+  + isEmpty() : bool
+}
+class builderState_UserDataEntry {
+  + key : str
+  + value : str
+}
+IEObjectDescription <|-- builderState_EObjectDescription
+IReferenceDescription <|-- builderState_ReferenceDescription
+builderState_EClass "1..1" -- "1..1" builderState_IEObjectDescription : eClass4
+builderState_IEObjectDescription "0..9999" --* "1..1" builderState_ResourceDescription : exportedObjects0
+builderState_IReferenceDescription "0..9999" --* "1..1" builderState_ResourceDescription : referenceDescriptions1
+builderState_EObjectDescription "1..1" *-- "0..9999" builderState_UserDataEntry : userData3
+@enduml

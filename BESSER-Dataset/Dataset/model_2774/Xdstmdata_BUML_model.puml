@@ -1,0 +1,54 @@
+@startuml
+class xDstmdata_cExtchannel {
+  + name : str
+  + tID : str
+  + tString : str
+}
+class xDstmdata_cIntchannel {
+  + bound : int
+  + name : str
+  + tID : str
+  + tString : str
+}
+class xDstmdata_channel_specifier {
+  + type : str
+}
+class xDstmdata_composingtype {
+  + tID : str
+  + tString : str
+}
+class xDstmdata_subtype {
+  + tID : str
+  + tString : str
+}
+class xDstmdata_tCompound {
+  + name : str
+}
+class xDstmdata_tEnum {
+  + literals : str
+  + name : str
+}
+class xDstmdata_tMultitype {
+  + name : str
+}
+class xDstmdata_tTypes {
+}
+class xDstmdata_vVariable {
+  + name : str
+  + tID : str
+  + tString : str
+}
+xDstmdata_cExtchannel "0..9999" --* "1..1" xDstmdata_tTypes : cExtchannel7
+xDstmdata_cIntchannel "0..9999" --* "1..1" xDstmdata_tTypes : cIntchannel5
+xDstmdata_composingtype "0..9999" --* "1..1" xDstmdata_tMultitype : composingtypes15
+xDstmdata_subtype "0..9999" --* "1..1" xDstmdata_tCompound : subtypes11
+xDstmdata_channel_specifier "0..1" --* "1..1" xDstmdata_subtype : tChn13
+xDstmdata_channel_specifier "0..1" --* "1..1" xDstmdata_composingtype : tChn17
+xDstmdata_cIntchannel "1..1" *-- "0..1" xDstmdata_channel_specifier : tChn20
+xDstmdata_cExtchannel "1..1" *-- "0..1" xDstmdata_channel_specifier : tChn23
+xDstmdata_channel_specifier "0..1" --* "1..1" xDstmdata_vVariable : tChn26
+xDstmdata_tCompound "0..9999" --* "1..1" xDstmdata_tTypes : tCompound1
+xDstmdata_tEnum "0..9999" --* "1..1" xDstmdata_tTypes : tEnum0
+xDstmdata_tMultitype "0..9999" --* "1..1" xDstmdata_tTypes : tMultitype3
+xDstmdata_tTypes "1..1" *-- "0..9999" xDstmdata_vVariable : vVariable9
+@enduml

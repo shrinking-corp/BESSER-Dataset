@@ -1,0 +1,89 @@
+@startuml
+class whileComp_Affectation {
+  + affectations : str
+}
+class whileComp_Command {
+}
+class whileComp_Commands {
+}
+class whileComp_Cons {
+  + cons : str
+}
+class whileComp_Definition {
+}
+class whileComp_EObject {
+}
+class whileComp_Expr {
+}
+class whileComp_ExprSimple {
+  + call : str
+  + ope : str
+  + valeur : str
+}
+class whileComp_For {
+}
+class whileComp_Foreach {
+}
+class whileComp_Function {
+  + function : str
+}
+class whileComp_Hd {
+  + hd : str
+}
+class whileComp_If {
+}
+class whileComp_Lexpr {
+}
+class whileComp_List {
+  + list : str
+}
+class whileComp_Nil2 {
+  + nil : str
+}
+class whileComp_Nop {
+  + nop : str
+}
+class whileComp_Not {
+  + not_ : str
+}
+class whileComp_Program {
+}
+class whileComp_Read {
+  + variable : str
+}
+class whileComp_Tl {
+  + tl : str
+}
+class whileComp_While {
+}
+class whileComp_Write {
+  + variable : str
+}
+whileComp_Command "0..1" --* "1..1" whileComp_Commands : command10
+whileComp_Command "1..1" *-- "0..1" whileComp_EObject : command15
+whileComp_Command "0..9999" --* "1..1" whileComp_Commands : commands12
+whileComp_Commands "0..1" --* "1..1" whileComp_If : commands127
+whileComp_Commands "0..1" --* "1..1" whileComp_Foreach : commands22
+whileComp_Commands "0..1" --* "1..1" whileComp_If : commands230
+whileComp_Commands "0..1" --* "1..1" whileComp_For : commands35
+whileComp_Commands "0..1" --* "1..1" whileComp_While : commands40
+whileComp_Commands "0..1" --* "1..1" whileComp_Definition : commands5
+whileComp_Definition "0..1" --* "1..1" whileComp_Function : definition1
+whileComp_Expr "0..1" --* "1..1" whileComp_ExprSimple : ex152
+whileComp_Expr "0..1" --* "1..1" whileComp_ExprSimple : ex255
+whileComp_Expr "0..1" --* "1..1" whileComp_Foreach : expr117
+whileComp_Expr "0..1" --* "1..1" whileComp_Foreach : expr219
+whileComp_Expr "0..1" --* "1..1" whileComp_If : expr25
+whileComp_Expr "0..1" --* "1..1" whileComp_For : expr33
+whileComp_Expr "0..1" --* "1..1" whileComp_While : expr38
+whileComp_Expr "0..1" --* "1..1" whileComp_ExprSimple : expr47
+whileComp_Expr "0..1" --* "1..1" whileComp_Lexpr : expr58
+whileComp_Expr "1..1" *-- "0..1" whileComp_ExprSimple : exprsimple43
+whileComp_Function "0..9999" --* "1..1" whileComp_Program : functions0
+whileComp_ExprSimple "1..1" *-- "0..1" whileComp_Lexpr : lexpr45
+whileComp_Lexpr "0..1" --* "1..1" whileComp_Lexpr : lexpr62
+whileComp_ExprSimple "1..1" *-- "0..1" whileComp_Not : n50
+whileComp_Definition "1..1" *-- "0..1" whileComp_Read : read3
+whileComp_Affectation "1..1" *-- "0..9999" whileComp_Expr : valeurs9
+whileComp_Definition "1..1" *-- "0..1" whileComp_Write : write7
+@enduml

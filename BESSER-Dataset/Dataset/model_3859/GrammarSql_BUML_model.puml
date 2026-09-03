@@ -1,0 +1,27 @@
+@startuml
+class grammarSql_Column {
+  + isNotNull : bool
+  + name : str
+  + type : str
+}
+class grammarSql_EObject {
+}
+class grammarSql_ForeignKey {
+}
+class grammarSql_Model {
+}
+class grammarSql_PrimaryKey {
+}
+class grammarSql_Reference {
+}
+class grammarSql_Table {
+  + name : str
+}
+grammarSql_Column "0..9999" -- "1..1" grammarSql_PrimaryKey : col3
+grammarSql_EObject "0..9999" --* "1..1" grammarSql_Table : elements1
+grammarSql_Column "0..9999" -- "1..1" grammarSql_Reference : fromC11
+grammarSql_Reference "1..1" -- "0..9999" grammarSql_Table : fromT8
+grammarSql_Column "0..9999" -- "1..1" grammarSql_ForeignKey : localColumns4
+grammarSql_ForeignKey "1..1" *-- "0..1" grammarSql_Reference : ref6
+grammarSql_Model "1..1" *-- "0..9999" grammarSql_Table : tables0
+@enduml

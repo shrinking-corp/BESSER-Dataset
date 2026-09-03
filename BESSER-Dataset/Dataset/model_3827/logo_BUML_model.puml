@@ -1,0 +1,172 @@
+@startuml
+class BinaryExpression {
+}
+class Block {
+}
+class Constant {
+}
+class ControlStatement {
+}
+class Expression {
+}
+class ExtendedExpression {
+}
+class ProcedureDefinition {
+}
+class Statement {
+}
+class Symbol {
+}
+class UnaryExpression {
+}
+class Value {
+}
+class expression_logo_Expression {
+}
+abstract class logo_Expression {
+}
+class logo_Logo {
+}
+class logo_Parameter {
+  + name : str
+}
+abstract class logo_Statement {
+}
+abstract class logo_Symbol {
+  + name : str
+}
+abstract class logo_Value {
+}
+class logo_binary_Div {
+}
+class logo_binary_Equals {
+}
+class logo_binary_Greater {
+}
+class logo_binary_Lower {
+}
+class logo_binary_Minus {
+}
+class logo_binary_Mult {
+}
+class logo_binary_Plus {
+}
+class logo_constant_BoolValue {
+  + value : bool
+}
+class logo_constant_IntValue {
+  + value : int
+}
+class logo_control_If {
+}
+class logo_control_Repeat {
+}
+class logo_control_While {
+}
+abstract class logo_expression_BinaryExpression {
+}
+abstract class logo_expression_Constant {
+}
+abstract class logo_expression_ExtendedExpression {
+}
+abstract class logo_expression_UnaryExpression {
+}
+class logo_expression_VariableRead {
+  + name : str
+}
+class logo_extended_And {
+}
+class logo_extended_Or {
+}
+class logo_statement_Block {
+}
+abstract class logo_statement_ControlStatement {
+}
+class logo_statement_Forward {
+}
+class logo_statement_Left {
+}
+class logo_statement_PenDown {
+}
+class logo_statement_PenUp {
+}
+class logo_statement_ProcedureCall {
+}
+class logo_statement_ProcedureDefinition {
+  + name : str
+}
+class logo_statement_Right {
+}
+class logo_symbol_Procedure {
+}
+class logo_symbol_Variable {
+}
+class logo_unary_Not {
+}
+class logo_unary_Opposite {
+}
+class logo_value_BoolValue {
+  + value : bool
+}
+class logo_value_IntValue {
+  + value : int
+}
+class statement_logo_Expression {
+}
+class statement_logo_Parameter {
+}
+class statement_logo_Statement {
+}
+BinaryExpression <|-- logo_binary_Div
+BinaryExpression <|-- logo_binary_Equals
+BinaryExpression <|-- logo_binary_Greater
+BinaryExpression <|-- logo_binary_Lower
+BinaryExpression <|-- logo_binary_Minus
+BinaryExpression <|-- logo_binary_Mult
+BinaryExpression <|-- logo_binary_Plus
+Constant <|-- logo_constant_BoolValue
+Constant <|-- logo_constant_IntValue
+ControlStatement <|-- logo_control_If
+ControlStatement <|-- logo_control_Repeat
+ControlStatement <|-- logo_control_While
+Expression <|-- logo_expression_BinaryExpression
+Expression <|-- logo_expression_Constant
+Expression <|-- logo_expression_ExtendedExpression
+Expression <|-- logo_expression_UnaryExpression
+Expression <|-- logo_expression_VariableRead
+ExtendedExpression <|-- logo_extended_And
+ExtendedExpression <|-- logo_extended_Or
+Statement <|-- logo_statement_Block
+Statement <|-- logo_statement_ControlStatement
+Statement <|-- logo_statement_Forward
+Statement <|-- logo_statement_Left
+Statement <|-- logo_statement_PenDown
+Statement <|-- logo_statement_PenUp
+Statement <|-- logo_statement_ProcedureCall
+Statement <|-- logo_statement_ProcedureDefinition
+Statement <|-- logo_statement_Right
+Symbol <|-- logo_symbol_Procedure
+Symbol <|-- logo_symbol_Variable
+UnaryExpression <|-- logo_unary_Not
+UnaryExpression <|-- logo_unary_Opposite
+Value <|-- logo_value_BoolValue
+Value <|-- logo_value_IntValue
+logo_statement_Right "1..1" *-- "1..1" statement_logo_Expression : angle1
+logo_statement_Left "1..1" *-- "1..1" statement_logo_Expression : angle2
+Block "1..1" --* "1..1" logo_control_While : block21
+Block "1..1" --* "1..1" logo_control_Repeat : block23
+logo_statement_ControlStatement "1..1" *-- "1..1" statement_logo_Expression : condition15
+ProcedureDefinition "1..1" -- "1..1" logo_statement_ProcedureCall : definition11
+Block "0..1" --* "1..1" logo_control_If : elseBlock18
+expression_logo_Expression "1..1" --* "1..1" logo_expression_UnaryExpression : expression29
+expression_logo_Expression "2..9999" --* "1..1" logo_expression_ExtendedExpression : expressions31
+Block "1..1" --* "1..1" logo_control_If : ifBlock17
+expression_logo_Expression "1..1" --* "1..1" logo_expression_BinaryExpression : leftExpression25
+logo_statement_ProcedureCall "1..1" *-- "0..9999" statement_logo_Expression : parameterValues9
+logo_statement_ProcedureDefinition "1..1" *-- "0..9999" statement_logo_Parameter : parameters6
+expression_logo_Expression "1..1" --* "1..1" logo_expression_BinaryExpression : rightExpression26
+logo_Logo "1..1" *-- "0..9999" logo_Statement : statements0
+logo_statement_Block "1..1" *-- "1..9999" statement_logo_Statement : statements13
+logo_statement_ProcedureDefinition "1..1" *-- "1..9999" statement_logo_Statement : statements7
+logo_statement_Forward "1..1" *-- "1..1" statement_logo_Expression : step4
+@enduml

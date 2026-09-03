@@ -1,0 +1,35 @@
+@startuml
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class library_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class library_Library {
+  + name : str
+}
+class library_Opinion {
+  + context : str
+  + text : str
+}
+class library_Review {
+  + positive : bool
+  + title : str
+}
+class library_Writer {
+  + name : str
+}
+library_Book "1..1" -- "1..1" library_Writer : author5
+library_Book "1..1" -- "1..1" library_Opinion : book11
+library_Book "1..1" -- "1..1" library_Review : book7
+library_Book "0..9999" --* "1..1" library_Library : books1
+library_Book "0..9999" -- "1..1" library_Writer : books3
+library_Opinion "0..9999" --* "1..1" library_Writer : opinions4
+library_Book "1..1" *-- "0..9999" library_Review : reviews6
+library_Opinion "1..1" -- "1..1" library_Writer : writer9
+library_Library "1..1" *-- "0..9999" library_Writer : writers0
+@enduml

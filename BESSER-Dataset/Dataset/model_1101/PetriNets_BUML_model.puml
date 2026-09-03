@@ -1,0 +1,23 @@
+@startuml
+class PetriNets_PetriNet {
+}
+class PetriNets_Place {
+  + bound : int
+  + itokens : int
+  + tokens() : int
+}
+class PetriNets_Token {
+}
+class PetriNets_Transition {
+  + priority : float
+}
+PetriNets_Place "1..1" *-- "0..9999" PetriNets_Token : ctokens4
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : inh12
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : ins7
+PetriNets_PetriNet "1..1" -- "1..1" PetriNets_Place : net3
+PetriNets_PetriNet "1..1" -- "1..1" PetriNets_Transition : net5
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : outs9
+PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Place : places0
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : read15
+PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Transition : trans1
+@enduml

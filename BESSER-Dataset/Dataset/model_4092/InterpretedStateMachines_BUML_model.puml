@@ -1,0 +1,111 @@
+@startuml
+class Behavior {
+}
+class Constraint {
+}
+class Event {
+}
+class NamedElement {
+}
+enum PseudostateKind {
+  choice
+  fork
+  initial
+  join
+  junction
+}
+class Region {
+}
+class State {
+}
+class StateMachine {
+}
+class Transition {
+}
+class Trigger {
+}
+class Vertex {
+}
+class almostuml_NamedElement {
+}
+class almostuml_Vertex {
+}
+class almostuml_statemachines_EventOccurrence {
+}
+class statemachines_CustomEvent {
+}
+class statemachines_CustomSystem {
+  + initialize(statemachines_args : str) : void
+  + main() : void
+}
+class statemachines_EventOccurrence {
+}
+class statemachines_Util {
+  + log(statemachines_l : str) : void
+}
+abstract class statemachines_almostuml_Behavior {
+}
+abstract class statemachines_almostuml_Constraint {
+}
+abstract class statemachines_almostuml_Event {
+}
+class statemachines_almostuml_FinalState {
+  + handle(statemachines_eventOccurrence : str) : void
+}
+abstract class statemachines_almostuml_NamedElement {
+  + name : str
+}
+class statemachines_almostuml_Pseudostate {
+  + kind : str
+}
+class statemachines_almostuml_Region {
+  + handleEvent(statemachines_eventOccurrence : str) : void
+  + initialize() : void
+}
+class statemachines_almostuml_State {
+  + handle(statemachines_eventOccurrence : str) : void
+  + setAsCurrent() : void
+}
+class statemachines_almostuml_StateMachine {
+  + run() : void
+}
+class statemachines_almostuml_Transition {
+  + fire() : void
+}
+class statemachines_almostuml_Trigger {
+}
+abstract class statemachines_almostuml_Vertex {
+}
+Event <|-- statemachines_CustomEvent
+NamedElement <|-- statemachines_almostuml_Behavior
+NamedElement <|-- statemachines_almostuml_Event
+NamedElement <|-- statemachines_almostuml_Region
+NamedElement <|-- statemachines_almostuml_StateMachine
+NamedElement <|-- statemachines_almostuml_Transition
+NamedElement <|-- statemachines_almostuml_Trigger
+NamedElement <|-- statemachines_almostuml_Vertex
+State <|-- statemachines_almostuml_FinalState
+State <|-- statemachines_almostuml_Pseudostate
+almostuml_NamedElement <|-- statemachines_almostuml_State
+almostuml_Vertex <|-- statemachines_almostuml_State
+Region "0..1" -- "1..1" statemachines_almostuml_Vertex : container23
+State "0..1" -- "1..1" statemachines_almostuml_Region : currentState11
+Behavior "0..1" -- "1..1" statemachines_almostuml_State : doActivity17
+Behavior "0..1" --* "1..1" statemachines_almostuml_Transition : effect34
+Behavior "0..1" -- "1..1" statemachines_almostuml_State : entry13
+statemachines_CustomEvent "1..1" -- "1..1" statemachines_EventOccurrence : event3
+Event "1..1" -- "1..1" statemachines_almostuml_Trigger : event37
+statemachines_CustomEvent "0..9999" --* "1..1" statemachines_CustomSystem : events1
+Behavior "0..1" -- "1..1" statemachines_almostuml_State : exit14
+Constraint "0..1" --* "1..1" statemachines_almostuml_Transition : guard32
+almostuml_statemachines_EventOccurrence "0..9999" --* "1..1" statemachines_almostuml_StateMachine : queue6
+Region "0..9999" --* "1..1" statemachines_almostuml_State : region20
+Region "1..9999" --* "1..1" statemachines_almostuml_StateMachine : region5
+Vertex "1..1" -- "1..1" statemachines_almostuml_Transition : source25
+StateMachine "0..1" -- "1..1" statemachines_almostuml_Region : stateMachine9
+StateMachine "1..1" --* "1..1" statemachines_CustomSystem : statemachine0
+Vertex "0..9999" --* "1..1" statemachines_almostuml_Region : subvertex7
+Vertex "1..1" -- "1..1" statemachines_almostuml_Transition : target27
+Transition "0..9999" --* "1..1" statemachines_almostuml_Region : transition8
+Trigger "0..9999" --* "1..1" statemachines_almostuml_Transition : trigger30
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+class Blackjack {
+  + croupier : Croupier
+  + joueurs : str
+}
+class Carte {
+  + ordre : str
+  + suit : int
+}
+class Croupier {
+  + main : str
+}
+class Joueur {
+  + main : str
+  + nom : str
+  + playerbank : int
+}
+class Main {
+  + bet : str
+  + cartes : str
+  + value : int
+}
+Blackjack "1..1" -- "1..1" Croupier : Blackjack_Dealer
+Blackjack "1..1" -- "1..9999" Joueur : Blackjack_Player
+Carte "1..9999" -- "1..1" Main : Card_Hand
+Croupier "1..1" -- "1..1" Main : Dealer_Hand
+Joueur "1..1" -- "1..9999" Main : Player_Hand
+@enduml

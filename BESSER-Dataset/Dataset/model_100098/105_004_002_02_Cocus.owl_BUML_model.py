@@ -59,7 +59,7 @@ Cocus_PaperFullVersion = Class(name="Cocus_PaperFullVersion")
 Cocus_Administrator = Class(name="Cocus_Administrator")
 SubjectArea = Class(name="SubjectArea")
 Meta_Reviewer = Class(name="Meta_Reviewer")
-Cocus_Meta_Review = Class(name="Cocus_Meta-Review")
+Cocus_Meta_Review = Class(name="Cocus_Meta_Review")
 Cocus_Workshop = Class(name="Cocus_Workshop")
 Cocus_Event = Class(name="Cocus_Event")
 Event_Tracks = Class(name="Event_Tracks")
@@ -491,7 +491,7 @@ hasCo_author43: BinaryAssociation = BinaryAssociation(
     name="hasCo_author43",
     ends={
         Property(name="Co_author", type=Cocus_Paper, multiplicity=Multiplicity(1, 1)),
-        Property(name="co-writePaper", type=Co_author, multiplicity=Multiplicity(0, 1))
+        Property(name="co_writePaper", type=Co_author, multiplicity=Multiplicity(0, 1))
     }
 )
 hasBid44: BinaryAssociation = BinaryAssociation(

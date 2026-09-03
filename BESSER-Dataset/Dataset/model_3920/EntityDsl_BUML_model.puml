@@ -1,0 +1,23 @@
+@startuml
+class Type {
+}
+class entityDsl_Entity {
+}
+class entityDsl_Model {
+}
+class entityDsl_Property {
+  + many : bool
+  + name : str
+}
+class entityDsl_SimpleType {
+}
+class entityDsl_Type {
+  + name : str
+}
+Type <|-- entityDsl_Entity
+Type <|-- entityDsl_SimpleType
+entityDsl_Model "1..1" *-- "0..9999" entityDsl_Type : elements0
+entityDsl_Entity "1..1" -- "0..1" entityDsl_Entity : extends2
+entityDsl_Entity "1..1" *-- "0..9999" entityDsl_Property : properties3
+entityDsl_Property "1..1" -- "0..1" entityDsl_Type : type5
+@enduml

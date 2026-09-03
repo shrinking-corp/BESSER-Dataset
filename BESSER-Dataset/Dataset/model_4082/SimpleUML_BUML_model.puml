@@ -1,0 +1,39 @@
+@startuml
+class Classifier {
+}
+class Feature {
+}
+class NamedElement {
+}
+class StructuralFeature {
+}
+class Type {
+}
+class simpleuml_Class {
+}
+abstract class simpleuml_Classifier {
+}
+abstract class simpleuml_Feature {
+}
+class simpleuml_Generalization {
+}
+abstract class simpleuml_NamedElement {
+  + name : str
+}
+class simpleuml_Property {
+}
+abstract class simpleuml_StructuralFeature {
+}
+abstract class simpleuml_Type {
+}
+Classifier <|-- simpleuml_Class
+Feature <|-- simpleuml_StructuralFeature
+NamedElement <|-- simpleuml_Feature
+NamedElement <|-- simpleuml_Type
+StructuralFeature <|-- simpleuml_Property
+Type <|-- simpleuml_Classifier
+simpleuml_Classifier "1..1" -- "1..1" simpleuml_Generalization : general3
+simpleuml_Classifier "1..1" *-- "0..9999" simpleuml_Generalization : generalization0
+simpleuml_Class "1..1" *-- "0..9999" simpleuml_Property : ownedAttribute1
+simpleuml_Classifier "1..1" -- "1..1" simpleuml_Generalization : specific2
+@enduml

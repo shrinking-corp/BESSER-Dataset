@@ -1,0 +1,410 @@
+@startuml
+class Argument {
+}
+enum ArithmeticOperatorType {
+  DIVISION
+  DOUBLEVERTICALBAR
+  EXPONENT
+  MINUS
+  MULTIPLICATION
+  NEGATIVE
+  PLUS
+  POSITIVE
+}
+enum BasicTypes {
+  BINARY_DOUBLE
+  BINARY_FLOAT
+  BINARY_INTEGER
+  BLOB
+  BOOLEAN
+  CHAR
+  CHARACTER
+  CLOB
+  DATE
+  DEC
+  DECIMAL
+  DOUBLE
+  FLOAT
+  INT
+  INTEGER
+  LONG
+  NATURAL
+  NCHAR
+  NUMBER
+  NUMERIC
+  NVARCHAR
+  NVARCHAR2
+  POSITIVE
+  REAL
+  ROWID
+  VARCHAR
+  VARCHAR2
+}
+enum BooleanOperatorType {
+  AND
+  EQUALS
+  GREATEREQUALS
+  GREATERTHAN
+  LESSEQUALS
+  LESSTHAN
+  NOT
+  NOTEQUALS
+  OR
+}
+class ControlSQLStatement {
+}
+class CursorDeclaration {
+}
+class Declaration {
+}
+class ExceptionSection {
+}
+class Expression {
+}
+class FunctionCallParameter {
+}
+class IfStatement {
+}
+enum LiteralExpressionType {
+  BOOLEAN
+  INTEGER
+  NULL
+  STRING
+}
+class LoopStatement {
+}
+class ModifySQLStatement {
+}
+class NamedElement {
+}
+class SQLCondition {
+}
+class SQLStatement {
+}
+class SelectStatement {
+}
+class Statement {
+}
+class StringOperation {
+}
+class TriggerBlock {
+}
+class Type {
+}
+class UpdatePair {
+}
+class VarRefExpression {
+}
+class VariableDeclaration {
+}
+class condition_SQLCondition {
+}
+class declaration_Declaration {
+}
+class declaration_NamedElement {
+}
+class expression_Expression {
+}
+class plsql_condition_BooleanCondition {
+  + type : str
+}
+class plsql_condition_ConditionComparison {
+  + type : str
+}
+class plsql_condition_NotCondition {
+}
+abstract class plsql_condition_SQLCondition {
+}
+class plsql_declaration_Argument {
+  + default : bool
+  + in_ : bool
+  + out : bool
+}
+class plsql_declaration_CursorDeclaration {
+}
+abstract class plsql_declaration_Declaration {
+}
+class plsql_declaration_FunctionDeclaration {
+}
+abstract class plsql_declaration_NamedElement {
+  + name : str
+}
+class plsql_declaration_PLSQLDefinition {
+}
+class plsql_declaration_Package {
+}
+class plsql_declaration_ProcedureDeclaration {
+}
+class plsql_declaration_TriggerBlock {
+}
+class plsql_declaration_VariableDeclaration {
+  + constant : bool
+  + default : bool
+  + notnull : bool
+}
+class plsql_expression_ArithmeticExpression {
+  + type : str
+}
+class plsql_expression_BooleanExpression {
+  + type : str
+}
+class plsql_expression_ConcatString {
+}
+abstract class plsql_expression_Expression {
+}
+class plsql_expression_FormsVarRef {
+  + reference : str
+}
+class plsql_expression_FoundExpression {
+}
+class plsql_expression_FunctionCallParameter {
+}
+class plsql_expression_InRangeExpression {
+}
+class plsql_expression_IsNullExpression {
+}
+class plsql_expression_LikeExpression {
+}
+class plsql_expression_LiteralExpression {
+  + type : str
+  + value : str
+}
+class plsql_expression_NotExpression {
+}
+class plsql_expression_PropertyAccess {
+  + propertyName : str
+}
+class plsql_expression_SQLCursor {
+}
+class plsql_expression_SQLVariable {
+}
+class plsql_expression_StringOperation {
+}
+abstract class plsql_expression_VarRefExpression {
+}
+class plsql_statement_AssignmentStatement {
+}
+class plsql_statement_BlockStatement {
+}
+class plsql_statement_CaseStatement {
+}
+class plsql_statement_CloseStatement {
+}
+class plsql_statement_CommitStatement {
+}
+class plsql_statement_ControlSQLStatement {
+}
+class plsql_statement_DeleteStatement {
+}
+class plsql_statement_ExceptionSection {
+  + exceptionNames : str
+}
+class plsql_statement_ExitStatement {
+}
+class plsql_statement_FetchStatement {
+}
+class plsql_statement_ForStatement {
+}
+class plsql_statement_FunctionCallStatement {
+}
+class plsql_statement_GotoStatement {
+}
+class plsql_statement_IfStatement {
+}
+class plsql_statement_InsertStatement {
+  + columns : str
+  + into : str
+}
+class plsql_statement_LockTableStatement {
+}
+class plsql_statement_LoopStatement {
+}
+class plsql_statement_ModifySQLStatement {
+}
+class plsql_statement_NullStatement {
+}
+class plsql_statement_OpenStatement {
+}
+class plsql_statement_RaiseStatement {
+  + exception : str
+}
+class plsql_statement_ReturnStatement {
+}
+class plsql_statement_RollbackStatement {
+}
+class plsql_statement_SQLStatement {
+}
+class plsql_statement_SavepointStatement {
+}
+class plsql_statement_SelectStatement {
+  + all : bool
+  + bulk : bool
+  + collect : bool
+  + distinct : bool
+  + from_ : str
+  + isCount : bool
+  + selectList : str
+  + unique : bool
+}
+class plsql_statement_SetTransactionStatement {
+}
+abstract class plsql_statement_Statement {
+}
+class plsql_statement_UpdatePair {
+  + column : str
+}
+class plsql_statement_UpdateStatement {
+  + table : str
+}
+class plsql_type_Datatype {
+  + name : str
+  + range : int
+}
+class plsql_type_GenericType {
+}
+class plsql_type_IndirectType {
+  + identifier : str
+  + range : int
+  + rowtype : bool
+  + type : bool
+}
+class plsql_type_Type {
+}
+abstract class plsql_type_TypedElement {
+}
+class statement_BlockStatement {
+}
+class statement_Statement {
+}
+class type_TypedElement {
+}
+ControlSQLStatement <|-- plsql_statement_CloseStatement
+ControlSQLStatement <|-- plsql_statement_CommitStatement
+ControlSQLStatement <|-- plsql_statement_FetchStatement
+ControlSQLStatement <|-- plsql_statement_LockTableStatement
+ControlSQLStatement <|-- plsql_statement_OpenStatement
+ControlSQLStatement <|-- plsql_statement_RollbackStatement
+ControlSQLStatement <|-- plsql_statement_SavepointStatement
+Declaration <|-- plsql_declaration_CursorDeclaration
+Declaration <|-- plsql_declaration_ProcedureDeclaration
+Expression <|-- plsql_expression_ArithmeticExpression
+Expression <|-- plsql_expression_FoundExpression
+Expression <|-- plsql_expression_InRangeExpression
+Expression <|-- plsql_expression_IsNullExpression
+Expression <|-- plsql_expression_LikeExpression
+Expression <|-- plsql_expression_LiteralExpression
+Expression <|-- plsql_expression_NotExpression
+Expression <|-- plsql_expression_PropertyAccess
+Expression <|-- plsql_expression_StringOperation
+Expression <|-- plsql_expression_VarRefExpression
+LoopStatement <|-- plsql_statement_ForStatement
+ModifySQLStatement <|-- plsql_statement_DeleteStatement
+ModifySQLStatement <|-- plsql_statement_InsertStatement
+ModifySQLStatement <|-- plsql_statement_SelectStatement
+ModifySQLStatement <|-- plsql_statement_SetTransactionStatement
+ModifySQLStatement <|-- plsql_statement_UpdateStatement
+NamedElement <|-- plsql_declaration_Declaration
+NamedElement <|-- plsql_declaration_Package
+NamedElement <|-- plsql_expression_FunctionCallParameter
+SQLCondition <|-- plsql_condition_BooleanCondition
+SQLCondition <|-- plsql_condition_ConditionComparison
+SQLCondition <|-- plsql_condition_NotCondition
+SQLStatement <|-- plsql_statement_ControlSQLStatement
+SQLStatement <|-- plsql_statement_ModifySQLStatement
+Statement <|-- plsql_statement_AssignmentStatement
+Statement <|-- plsql_statement_BlockStatement
+Statement <|-- plsql_statement_CaseStatement
+Statement <|-- plsql_statement_ExitStatement
+Statement <|-- plsql_statement_IfStatement
+Statement <|-- plsql_statement_LoopStatement
+Statement <|-- plsql_statement_NullStatement
+Statement <|-- plsql_statement_RaiseStatement
+Statement <|-- plsql_statement_ReturnStatement
+Statement <|-- plsql_statement_SQLStatement
+StringOperation <|-- plsql_expression_ConcatString
+Type <|-- plsql_type_Datatype
+Type <|-- plsql_type_GenericType
+Type <|-- plsql_type_IndirectType
+VarRefExpression <|-- plsql_expression_FormsVarRef
+VarRefExpression <|-- plsql_expression_SQLCursor
+VarRefExpression <|-- plsql_expression_SQLVariable
+condition_SQLCondition <|-- plsql_expression_BooleanExpression
+declaration_Declaration <|-- plsql_declaration_FunctionDeclaration
+declaration_Declaration <|-- plsql_declaration_VariableDeclaration
+declaration_NamedElement <|-- plsql_declaration_Argument
+declaration_NamedElement <|-- plsql_declaration_TriggerBlock
+declaration_NamedElement <|-- plsql_statement_FunctionCallStatement
+declaration_NamedElement <|-- plsql_statement_GotoStatement
+expression_Expression <|-- plsql_expression_BooleanExpression
+expression_Expression <|-- plsql_statement_FunctionCallStatement
+statement_BlockStatement <|-- plsql_declaration_TriggerBlock
+statement_Statement <|-- plsql_statement_FunctionCallStatement
+statement_Statement <|-- plsql_statement_GotoStatement
+type_TypedElement <|-- plsql_declaration_Argument
+type_TypedElement <|-- plsql_declaration_FunctionDeclaration
+type_TypedElement <|-- plsql_declaration_VariableDeclaration
+Argument "0..9999" --* "1..1" plsql_declaration_CursorDeclaration : arguments109
+Argument "0..9999" --* "1..1" plsql_declaration_ProcedureDeclaration : arguments112
+Argument "0..9999" --* "1..1" plsql_declaration_FunctionDeclaration : arguments120
+Expression "0..1" --* "1..1" plsql_declaration_VariableDeclaration : assign107
+Expression "0..1" --* "1..1" plsql_declaration_Argument : assign131
+Expression "0..1" --* "1..1" plsql_statement_IfStatement : condition4
+CursorDeclaration "0..1" -- "1..1" plsql_statement_CloseStatement : cursor28
+CursorDeclaration "0..1" -- "1..1" plsql_statement_FetchStatement : cursor29
+CursorDeclaration "0..1" -- "1..1" plsql_statement_OpenStatement : cursor33
+CursorDeclaration "0..1" -- "1..1" plsql_expression_FoundExpression : cursor77
+Declaration "0..9999" --* "1..1" plsql_declaration_ProcedureDeclaration : declarations114
+Declaration "0..9999" --* "1..1" plsql_declaration_FunctionDeclaration : declarations122
+Declaration "0..9999" --* "1..1" plsql_declaration_Package : declarations133
+Declaration "0..9999" --* "1..1" plsql_statement_BlockStatement : declarations21
+Statement "0..9999" --* "1..1" plsql_statement_IfStatement : elseStatements10
+IfStatement "0..9999" --* "1..1" plsql_statement_IfStatement : elsif8
+ExceptionSection "0..1" --* "1..1" plsql_declaration_FunctionDeclaration : exceptionSection128
+ExceptionSection "0..9999" --* "1..1" plsql_statement_BlockStatement : exceptionSections25
+SQLCondition "0..1" --* "1..1" plsql_condition_NotCondition : expr100
+Expression "0..1" --* "1..1" plsql_condition_ConditionComparison : expr1102
+Expression "0..1" --* "1..1" plsql_expression_BooleanExpression : expr155
+Expression "0..1" --* "1..1" plsql_expression_LikeExpression : expr172
+Expression "0..1" --* "1..1" plsql_expression_ArithmeticExpression : expr187
+SQLCondition "0..1" --* "1..1" plsql_condition_BooleanCondition : expr195
+Expression "0..1" --* "1..1" plsql_condition_ConditionComparison : expr2104
+Expression "0..1" --* "1..1" plsql_expression_BooleanExpression : expr257
+Expression "0..1" --* "1..1" plsql_expression_LikeExpression : expr274
+Expression "0..1" --* "1..1" plsql_expression_ArithmeticExpression : expr289
+SQLCondition "0..1" --* "1..1" plsql_condition_BooleanCondition : expr297
+Expression "0..1" --* "1..1" plsql_expression_NotExpression : expr60
+Expression "0..1" --* "1..1" plsql_expression_IsNullExpression : expr62
+Expression "0..1" --* "1..1" plsql_expression_InRangeExpression : expr64
+Expression "0..1" --* "1..1" plsql_expression_PropertyAccess : expr83
+Expression "1..1" --* "1..1" plsql_expression_FunctionCallParameter : expr85
+Expression "0..1" --* "1..1" plsql_statement_AssignmentStatement : expression0
+Expression "0..1" --* "1..1" plsql_statement_ReturnStatement : expression19
+Expression "1..1" --* "1..1" plsql_statement_UpdatePair : expression51
+Expression "0..9999" --* "1..1" plsql_statement_OpenStatement : exprs35
+Expression "0..9999" --* "1..1" plsql_expression_ConcatString : exprs92
+Statement "0..9999" --* "1..1" plsql_statement_IfStatement : ifStatements6
+VariableDeclaration "0..1" --* "1..1" plsql_statement_ForStatement : index15
+VarRefExpression "0..9999" --* "1..1" plsql_statement_FetchStatement : into31
+VarRefExpression "0..9999" --* "1..1" plsql_statement_SelectStatement : into38
+Expression "0..1" --* "1..1" plsql_expression_InRangeExpression : lower66
+Expression "0..9999" --* "1..1" plsql_statement_SelectStatement : orderBy42
+UpdatePair "0..9999" --* "1..1" plsql_statement_UpdateStatement : pairs47
+Expression "0..1" --* "1..1" plsql_statement_ForStatement : param16
+FunctionCallParameter "0..9999" --* "1..1" plsql_statement_FunctionCallStatement : parameters27
+Expression "1..1" --* "1..1" plsql_statement_AssignmentStatement : receptor1
+VariableDeclaration "0..1" -- "1..1" plsql_expression_SQLVariable : reference79
+CursorDeclaration "0..1" -- "1..1" plsql_expression_SQLCursor : reference81
+SelectStatement "0..1" --* "1..1" plsql_declaration_CursorDeclaration : select110
+Statement "0..9999" -- "1..1" plsql_declaration_ProcedureDeclaration : statements117
+Statement "0..9999" --* "1..1" plsql_declaration_FunctionDeclaration : statements125
+Statement "0..9999" --* "1..1" plsql_statement_LoopStatement : statements13
+Statement "0..9999" --* "1..1" plsql_declaration_Package : statements135
+Statement "0..9999" --* "1..1" plsql_statement_BlockStatement : statements22
+Statement "0..9999" --* "1..1" plsql_statement_ExceptionSection : statements53
+TriggerBlock "0..9999" --* "1..1" plsql_declaration_PLSQLDefinition : triggers138
+Type "1..1" --* "1..1" plsql_type_TypedElement : type94
+Expression "0..1" --* "1..1" plsql_expression_InRangeExpression : upper69
+Expression "0..9999" --* "1..1" plsql_statement_InsertStatement : values45
+SQLCondition "0..1" --* "1..1" plsql_statement_SelectStatement : where40
+SQLCondition "0..1" --* "1..1" plsql_statement_UpdateStatement : where48
+@enduml

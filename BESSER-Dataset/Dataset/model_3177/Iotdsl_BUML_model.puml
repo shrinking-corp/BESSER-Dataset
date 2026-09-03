@@ -1,0 +1,111 @@
+@startuml
+class Action {
+}
+class Expression {
+}
+class iotdsl_Action {
+}
+class iotdsl_And {
+}
+class iotdsl_Attribute {
+  + tag : str
+  + typeName : str
+  + value : str
+}
+class iotdsl_BoolConstant {
+  + value : str
+}
+class iotdsl_Comparison {
+  + op : str
+}
+class iotdsl_Device {
+  + name : str
+}
+class iotdsl_Equality {
+  + op : str
+}
+class iotdsl_Event {
+  + name : str
+}
+class iotdsl_Expression {
+}
+class iotdsl_IfBlock {
+}
+class iotdsl_IfStatement {
+}
+class iotdsl_IntConstant {
+  + value : int
+}
+class iotdsl_Iot {
+}
+class iotdsl_Minus {
+}
+class iotdsl_MulOrDiv {
+  + op : str
+}
+class iotdsl_Not {
+}
+class iotdsl_Or {
+}
+class iotdsl_Plus {
+}
+class iotdsl_State {
+  + name : str
+}
+class iotdsl_StringConstant {
+  + value : str
+}
+class iotdsl_Transition {
+  + name : str
+}
+class iotdsl_Variable {
+  + name : str
+}
+class iotdsl_VariableRef {
+}
+Action <|-- iotdsl_Expression
+Action <|-- iotdsl_Variable
+Expression <|-- iotdsl_And
+Expression <|-- iotdsl_BoolConstant
+Expression <|-- iotdsl_Comparison
+Expression <|-- iotdsl_Equality
+Expression <|-- iotdsl_IfStatement
+Expression <|-- iotdsl_IntConstant
+Expression <|-- iotdsl_Minus
+Expression <|-- iotdsl_MulOrDiv
+Expression <|-- iotdsl_Not
+Expression <|-- iotdsl_Or
+Expression <|-- iotdsl_Plus
+Expression <|-- iotdsl_StringConstant
+Expression <|-- iotdsl_VariableRef
+iotdsl_Attribute "0..1" --* "1..1" iotdsl_Device : attributes4
+iotdsl_Device "0..9999" --* "1..1" iotdsl_Iot : devices0
+iotdsl_Action "0..9999" --* "1..1" iotdsl_State : elements12
+iotdsl_IfBlock "0..1" --* "1..1" iotdsl_IfStatement : elseBlock25
+iotdsl_Event "0..1" -- "1..1" iotdsl_Transition : event14
+iotdsl_Device "1..1" *-- "0..9999" iotdsl_Event : events8
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Variable : expression20
+iotdsl_Expression "0..1" --* "1..1" iotdsl_IfStatement : expression21
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Not : expression66
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Or : left31
+iotdsl_And "1..1" *-- "0..1" iotdsl_Expression : left36
+iotdsl_Equality "1..1" *-- "0..1" iotdsl_Expression : left41
+iotdsl_Comparison "1..1" *-- "0..1" iotdsl_Expression : left46
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Plus : left51
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Minus : left56
+iotdsl_Expression "0..1" --* "1..1" iotdsl_MulOrDiv : left61
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Or : right33
+iotdsl_And "1..1" *-- "0..1" iotdsl_Expression : right38
+iotdsl_Equality "1..1" *-- "0..1" iotdsl_Expression : right43
+iotdsl_Comparison "1..1" *-- "0..1" iotdsl_Expression : right48
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Plus : right53
+iotdsl_Expression "0..1" --* "1..1" iotdsl_Minus : right58
+iotdsl_Expression "0..1" --* "1..1" iotdsl_MulOrDiv : right63
+iotdsl_State "0..1" -- "1..1" iotdsl_Transition : state17
+iotdsl_Action "0..9999" --* "1..1" iotdsl_IfBlock : statements28
+iotdsl_Device "1..1" *-- "0..9999" iotdsl_State : states6
+iotdsl_Device "0..1" -- "1..1" iotdsl_Device : superType2
+iotdsl_IfBlock "0..1" --* "1..1" iotdsl_IfStatement : thenBlock23
+iotdsl_Device "1..1" *-- "0..9999" iotdsl_Transition : transitions10
+iotdsl_Variable "0..1" -- "1..1" iotdsl_VariableRef : variable68
+@enduml

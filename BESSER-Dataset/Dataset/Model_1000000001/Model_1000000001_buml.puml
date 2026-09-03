@@ -1,0 +1,172 @@
+@startuml
+class Company {
+  + address : str
+  + city : str
+  + country : str
+  + created_at : datetime
+  + description : str
+  + id : int
+  + industry : Industry
+  + linkedin_url : str
+  + name : str
+  + phone : str
+  + size : CompanySize
+  + updated_at : datetime
+  + website : str
+}
+enum CompanySize {
+  ENTERPRISE
+  LARGE
+  MEDIUM
+  SMALL
+  STARTUP
+}
+class Contact {
+  + created_at : datetime
+  + email : str
+  + first_name : str
+  + id : int
+  + is_enriched : bool
+  + job_title : str
+  + last_name : str
+  + lead_score : int
+  + lead_score_level : LeadScoreLevel
+  + linkedin_url : str
+  + notes : str
+  + phone : str
+  + profile_picture_url : str
+  + updated_at : datetime
+}
+class EmailTemplate {
+  + body_template : str
+  + category : str
+  + created_at : datetime
+  + id : int
+  + name : str
+  + subject_template : str
+}
+class EnrichmentLog {
+  + enriched_at : datetime
+  + error_message : str
+  + id : int
+  + is_successful : bool
+  + linkedin_url : str
+}
+class GeneratedEmail {
+  + body : str
+  + created_at : datetime
+  + id : int
+  + is_sent : bool
+  + sent_at : datetime
+  + subject : str
+}
+enum Industry {
+  FINANCE
+  HEALTHCARE
+  MANUFACTURING
+  OTHER
+  RETAIL
+  SERVICES
+  TECHNOLOGY
+}
+class Interaction {
+  + content : str
+  + created_at : datetime
+  + direction : InteractionDirection
+  + id : int
+  + occurred_at : datetime
+  + subject : str
+  + type : InteractionType
+}
+enum InteractionDirection {
+  INBOUND
+  OUTBOUND
+}
+enum InteractionType {
+  CALL
+  EMAIL
+  MEETING
+  NOTE
+}
+enum LeadScoreLevel {
+  COLD
+  HOT
+  WARM
+}
+class Opportunity {
+  + closed_at : datetime
+  + created_at : datetime
+  + description : str
+  + expected_close_date : date
+  + id : int
+  + probability : int
+  + stage : OpportunityStage
+  + title : str
+  + updated_at : datetime
+  + value : float
+}
+enum OpportunityStage {
+  CLOSED_LOST
+  CLOSED_WON
+  NEGOTIATION
+  PROPOSAL
+  PROSPECTING
+  QUALIFICATION
+}
+class ScoreHistory {
+  + calculated_at : datetime
+  + id : int
+  + new_score : int
+  + old_score : int
+  + reason : str
+}
+class Tag {
+  + color : str
+  + id : int
+  + name : str
+}
+class Task {
+  + completed_at : datetime
+  + created_at : datetime
+  + description : str
+  + due_date : datetime
+  + id : int
+  + is_completed : bool
+  + title : str
+}
+class User {
+  + created_at : datetime
+  + email : str
+  + first_name : str
+  + id : int
+  + is_active : bool
+  + last_login : datetime
+  + last_name : str
+  + password_hash : str
+  + role : UserRole
+}
+enum UserRole {
+  ADMIN
+  SALES_MANAGER
+  SALES_REP
+}
+Company "0..9999" -- "1..1" User : company_created_by
+Company "0..9999" -- "0..9999" Tag : company_tag
+Company "0..1" -- "0..9999" Contact : contact_company
+Contact "0..9999" -- "1..1" User : contact_created_by
+Contact "0..9999" -- "0..9999" Tag : contact_tag
+Contact "1..1" -- "0..9999" GeneratedEmail : email_contact
+EmailTemplate "0..1" -- "0..9999" GeneratedEmail : email_template_link
+GeneratedEmail "0..9999" -- "1..1" User : email_user
+Contact "1..1" -- "0..9999" EnrichmentLog : enrichment_contact
+Contact "1..1" --* "0..9999" Interaction : interaction_contact
+Interaction "0..9999" -- "1..1" User : interaction_user
+Company "0..1" -- "0..9999" Opportunity : opportunity_company
+Contact "1..9999" -- "0..9999" Opportunity : opportunity_contact
+Opportunity "0..9999" -- "1..1" User : opportunity_owner
+Contact "1..1" --* "0..9999" ScoreHistory : score_contact
+Contact "0..1" -- "0..9999" Task : task_contact
+Opportunity "0..1" -- "0..9999" Task : task_opportunity
+Task "0..9999" -- "1..1" User : task_user
+EmailTemplate "0..9999" -- "1..1" User : template_user
+@enduml

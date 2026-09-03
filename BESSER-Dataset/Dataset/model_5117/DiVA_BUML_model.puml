@@ -1,0 +1,245 @@
+@startuml
+class Constraint {
+}
+class DiVAModelElement {
+}
+class Expression {
+}
+class Model {
+}
+class ModelContainer {
+}
+class NamedElement {
+}
+class NaryTerm {
+}
+class Rule {
+}
+class ScoredElement {
+}
+class Term {
+}
+class Variable {
+}
+class VariableTerm {
+}
+class VariableValue {
+}
+enum Verdict {
+  fail
+  none
+  pass_
+}
+class diva_AndTerm {
+}
+class diva_Annotation {
+  + key : str
+  + value : str
+}
+class diva_AspectModel {
+}
+class diva_BaseModel {
+  + weave() : void
+}
+class diva_BoolVariableValue {
+  + bool : bool
+}
+class diva_BooleanTerm {
+}
+class diva_BooleanVariable {
+}
+class diva_ConfigVariant {
+}
+class diva_Configuration {
+  + verdict : str
+}
+class diva_ConfigurationModel {
+}
+abstract class diva_Constraint {
+}
+class diva_Context {
+  + verdict : str
+}
+class diva_ContextExpression {
+}
+class diva_ContextModel {
+}
+abstract class diva_DiVAModelElement {
+}
+class diva_Dimension {
+  + lower : str
+  + upper : str
+}
+class diva_EnumLiteral {
+}
+class diva_EnumTerm {
+}
+class diva_EnumVariable {
+}
+class diva_EnumVariableValue {
+}
+class diva_Expression {
+  + text : str
+}
+class diva_Invariant {
+}
+abstract class diva_Model {
+  + uri : str
+}
+abstract class diva_ModelContainer {
+}
+class diva_MultiplicityConstraint {
+  + lower : str
+  + upper : str
+}
+abstract class diva_NamedElement {
+  + id : str
+  + name : str
+}
+abstract class diva_NaryTerm {
+}
+class diva_NotTerm {
+}
+class diva_OrTerm {
+}
+class diva_Priority {
+  + priority : int
+}
+class diva_PriorityRule {
+}
+class diva_Property {
+  + direction : str
+}
+class diva_PropertyLiteral {
+  + value : str
+}
+class diva_PropertyPriority {
+  + priority : str
+}
+class diva_PropertyValue {
+  + value : str
+}
+abstract class diva_Rule {
+}
+class diva_Scenario {
+}
+class diva_Score {
+  + score : int
+}
+abstract class diva_ScoredElement {
+  + totalScore : int
+}
+class diva_SimulationModel {
+}
+class diva_SuitableConfiguration {
+  + score : int
+}
+abstract class diva_Term {
+}
+class diva_VariabilityModel {
+}
+abstract class diva_Variable {
+}
+abstract class diva_VariableTerm {
+}
+abstract class diva_VariableValue {
+}
+class diva_Variant {
+  + weaveLevel : str
+}
+class diva_VariantExpression {
+}
+class diva_VariantTerm {
+}
+Constraint <|-- diva_Invariant
+Constraint <|-- diva_MultiplicityConstraint
+DiVAModelElement <|-- diva_Expression
+DiVAModelElement <|-- diva_Model
+DiVAModelElement <|-- diva_NamedElement
+DiVAModelElement <|-- diva_Priority
+DiVAModelElement <|-- diva_PropertyPriority
+DiVAModelElement <|-- diva_PropertyValue
+DiVAModelElement <|-- diva_Score
+DiVAModelElement <|-- diva_ScoredElement
+DiVAModelElement <|-- diva_SimulationModel
+DiVAModelElement <|-- diva_Term
+DiVAModelElement <|-- diva_VariableValue
+Expression <|-- diva_ContextExpression
+Expression <|-- diva_VariantExpression
+Model <|-- diva_AspectModel
+Model <|-- diva_BaseModel
+ModelContainer <|-- diva_VariabilityModel
+ModelContainer <|-- diva_Variant
+NamedElement <|-- diva_Constraint
+NamedElement <|-- diva_Context
+NamedElement <|-- diva_Dimension
+NamedElement <|-- diva_EnumLiteral
+NamedElement <|-- diva_Property
+NamedElement <|-- diva_PropertyLiteral
+NamedElement <|-- diva_Rule
+NamedElement <|-- diva_Scenario
+NamedElement <|-- diva_Variable
+NamedElement <|-- diva_Variant
+NaryTerm <|-- diva_AndTerm
+NaryTerm <|-- diva_OrTerm
+Rule <|-- diva_PriorityRule
+ScoredElement <|-- diva_ConfigVariant
+ScoredElement <|-- diva_Configuration
+Term <|-- diva_NaryTerm
+Term <|-- diva_NotTerm
+Term <|-- diva_VariableTerm
+Term <|-- diva_VariantTerm
+Variable <|-- diva_BooleanVariable
+Variable <|-- diva_EnumVariable
+VariableTerm <|-- diva_BooleanTerm
+VariableTerm <|-- diva_EnumTerm
+VariableValue <|-- diva_BoolVariableValue
+VariableValue <|-- diva_EnumVariableValue
+diva_Annotation "0..9999" --* "1..1" diva_DiVAModelElement : annotation54
+diva_ContextExpression "0..1" --* "1..1" diva_Variant : available25
+diva_ContextExpression "1..1" --* "1..1" diva_MultiplicityConstraint : available51
+diva_Configuration "0..9999" --* "1..1" diva_Context : configuration58
+diva_ConfigurationModel "1..1" *-- "0..9999" diva_SuitableConfiguration : configurations85
+diva_Constraint "0..9999" --* "1..1" diva_VariabilityModel : constraint7
+diva_Dimension "1..1" *-- "0..9999" diva_MultiplicityConstraint : constraints34
+diva_VariabilityModel "1..1" *-- "0..9999" diva_Variable : context0
+diva_ContextExpression "1..1" --* "1..1" diva_PriorityRule : context39
+diva_Context "0..9999" --* "1..1" diva_Scenario : context70
+diva_Variant "1..1" *-- "0..1" diva_VariantExpression : dependency23
+diva_Dimension "0..9999" --* "1..1" diva_VariabilityModel : dimension3
+diva_Expression "1..1" --* "1..1" diva_Invariant : expression10
+diva_EnumLiteral "1..9999" --* "1..1" diva_EnumVariable : literal11
+diva_Property "1..1" *-- "0..9999" diva_PropertyLiteral : literal43
+diva_EnumLiteral "1..1" -- "1..1" diva_EnumVariableValue : literal83
+diva_SimulationModel "1..1" -- "1..1" diva_VariabilityModel : model56
+diva_Model "1..1" --* "1..1" diva_ModelContainer : model91
+diva_Context "1..1" *-- "0..1" diva_VariantExpression : oracle60
+diva_PriorityRule "1..1" *-- "0..9999" diva_PropertyPriority : priority41
+diva_Context "1..1" *-- "0..9999" diva_Priority : priority63
+diva_Property "0..9999" --* "1..1" diva_VariabilityModel : property1
+diva_Dimension "1..1" -- "0..9999" diva_Property : property31
+diva_Property "1..1" -- "1..1" diva_PropertyValue : property45
+diva_Property "1..1" -- "1..1" diva_PropertyPriority : property48
+diva_Property "1..1" -- "1..1" diva_Score : property74
+diva_Priority "1..1" -- "1..1" diva_Property : property77
+diva_PropertyValue "0..9999" --* "1..1" diva_Variant : propertyValue21
+diva_ContextExpression "0..1" --* "1..1" diva_Variant : required27
+diva_Rule "0..9999" --* "1..1" diva_VariabilityModel : rule5
+diva_Scenario "0..9999" --* "1..1" diva_SimulationModel : scenario55
+diva_Score "0..9999" --* "1..1" diva_ScoredElement : score73
+diva_SimulationModel "0..1" --* "1..1" diva_VariabilityModel : simulation9
+diva_NotTerm "1..1" *-- "1..1" diva_Term : term12
+diva_NaryTerm "1..1" *-- "1..9999" diva_Term : term13
+diva_Expression "1..1" *-- "1..1" diva_Term : term36
+diva_Dimension "1..1" -- "1..1" diva_Variant : type20
+diva_EnumLiteral "1..1" -- "1..1" diva_EnumTerm : value18
+diva_Variable "1..1" -- "1..1" diva_VariableTerm : variable16
+diva_Context "1..1" *-- "0..9999" diva_VariableValue : variable57
+diva_Variable "1..1" -- "1..1" diva_VariableValue : variable80
+diva_ContextModel "1..1" *-- "0..9999" diva_VariableValue : variable89
+diva_Variant "1..1" -- "1..1" diva_VariantTerm : variant15
+diva_Dimension "1..1" *-- "0..9999" diva_Variant : variant30
+diva_ConfigVariant "0..9999" --* "1..1" diva_Configuration : variant65
+diva_ConfigVariant "1..1" -- "1..1" diva_Variant : variant67
+diva_ConfigVariant "0..9999" --* "1..1" diva_SuitableConfiguration : variant86
+@enduml

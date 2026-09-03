@@ -1,0 +1,270 @@
+@startuml
+class AbstractDepot {
+}
+class AbstractDepotType {
+}
+class AbstractMetaLab {
+}
+class ArtOuvrageType {
+}
+class ArtRevueType {
+}
+class Article {
+}
+class AutLabType {
+}
+class Auteur {
+}
+class AutreType {
+}
+class BrevetType {
+}
+class Connexion {
+}
+enum DateVisibleEnum {
+  15J
+  1A
+  1M
+  2A
+  3M
+  JAMAIS
+}
+class DepotsType {
+}
+class Entry {
+}
+enum FormatEnum {
+  ANNEX
+  DOC
+  PDF
+  PS
+  RTF
+  TEX
+  TXT
+}
+enum FormatWebEnum {
+  HTM
+  HTML
+  XML
+}
+abstract class HAL_AbstractDepot {
+  + nom : str
+}
+abstract class HAL_AbstractDepotType {
+}
+abstract class HAL_AbstractMetaLab {
+}
+class HAL_AffiliationType {
+  + ecole : str
+  + institution : str
+  + prive : str
+  + universite : str
+}
+class HAL_ArtJournal {
+}
+class HAL_ArtOuvrage {
+}
+abstract class HAL_ArtOuvrageType {
+  + annee : str
+  + edcom : str
+  + edsci : str
+  + serie : str
+  + titouv : str
+  + urldoi : str
+}
+class HAL_ArtRevue {
+}
+abstract class HAL_ArtRevueType {
+  + annee : str
+  + journal : str
+  + page : str
+  + urldoi : str
+  + volume : str
+}
+abstract class HAL_Article {
+}
+class HAL_ArticleRecent {
+}
+class HAL_ArticleRetro {
+  + dateRedaction : str
+}
+class HAL_AutLabType {
+}
+class HAL_Auteur {
+  + autrePrenom : str
+  + email : str
+  + nom : str
+  + prenom : str
+  + urlPerso : str
+}
+class HAL_Autre {
+}
+abstract class HAL_AutreType {
+  + annee : str
+  + description : str
+  + urldoi : str
+}
+class HAL_Brevet {
+}
+abstract class HAL_BrevetType {
+  + datebrevet : str
+  + numbrevet : str
+  + page : str
+  + pays : str
+}
+class HAL_Communication {
+}
+class HAL_Conference {
+}
+class HAL_Connexion {
+  + login : str
+  + password : str
+}
+class HAL_Depot {
+  + format : str
+}
+class HAL_DepotWeb {
+  + format : str
+}
+class HAL_DepotsType {
+}
+abstract class HAL_Entry {
+}
+class HAL_HAL {
+}
+class HAL_Laboratoire {
+  + id : str
+}
+class HAL_MetaArtNoticeType {
+  + abstract : str
+  + domain : str
+}
+class HAL_MetaArtType {
+  + abstract : str
+  + domain : str
+}
+class HAL_MetaLab {
+  + id : str
+}
+abstract class HAL_MetaType {
+  + classification : str
+  + collaboration : str
+  + comment : str
+  + datevisible : str
+  + financement : str
+  + idext : str
+  + isEpj : str
+  + isEpl : str
+  + keyword : str
+  + langue : str
+  + refInterne : str
+  + researchteam : str
+  + title : str
+}
+class HAL_Notice {
+}
+class HAL_Ouvrage {
+}
+abstract class HAL_OuvrageType {
+  + annee : str
+  + edcom : str
+  + page : str
+  + urldoi : str
+}
+abstract class HAL_ReferenceBiblioType {
+}
+class HAL_Server {
+}
+class HAL_TamponType {
+  + id : str
+}
+class HAL_These {
+}
+abstract class HAL_TheseType {
+  + codirecteur : str
+  + defencedate : str
+  + directeur : str
+  + niveau : str
+  + orgthe : str
+}
+class HAL_WebLink {
+  + identifiant : str
+}
+class HAL_Workshop {
+}
+abstract class HAL_WorkshopType {
+  + annee : str
+  + edcom : str
+  + edsci : str
+  + page : str
+  + pays : str
+  + serie : str
+  + titconf : str
+  + urldoi : str
+  + ville : str
+}
+class Laboratoire {
+}
+class MetaArtNoticeType {
+}
+class MetaArtType {
+}
+class MetaType {
+}
+class OuvrageType {
+}
+class ReferenceBiblioType {
+}
+class Server {
+}
+class TamponType {
+}
+class TheseType {
+}
+class WorkshopType {
+}
+AbstractDepot <|-- HAL_Depot
+AbstractDepot <|-- HAL_DepotWeb
+AbstractDepotType <|-- HAL_DepotsType
+AbstractDepotType <|-- HAL_WebLink
+AbstractMetaLab <|-- HAL_MetaLab
+ArtOuvrageType <|-- HAL_ArtOuvrage
+ArtRevueType <|-- HAL_ArtJournal
+ArtRevueType <|-- HAL_ArtRevue
+Article <|-- HAL_ArticleRecent
+Article <|-- HAL_ArticleRetro
+AutreType <|-- HAL_Autre
+BrevetType <|-- HAL_Brevet
+Entry <|-- HAL_Article
+Entry <|-- HAL_Notice
+MetaType <|-- HAL_MetaArtNoticeType
+MetaType <|-- HAL_MetaArtType
+OuvrageType <|-- HAL_Ouvrage
+ReferenceBiblioType <|-- HAL_ArtOuvrageType
+ReferenceBiblioType <|-- HAL_ArtRevueType
+ReferenceBiblioType <|-- HAL_AutreType
+ReferenceBiblioType <|-- HAL_BrevetType
+ReferenceBiblioType <|-- HAL_OuvrageType
+ReferenceBiblioType <|-- HAL_TheseType
+ReferenceBiblioType <|-- HAL_WorkshopType
+TheseType <|-- HAL_These
+WorkshopType <|-- HAL_Communication
+WorkshopType <|-- HAL_Conference
+WorkshopType <|-- HAL_Workshop
+AutLabType "1..1" --* "1..1" HAL_Entry : autLab3
+Auteur "1..9999" -- "1..1" HAL_AutLabType : auteurs13
+Connexion "1..1" --* "1..1" HAL_HAL : connexion0
+Entry "0..9999" --* "1..1" HAL_HAL : contents1
+AbstractDepot "1..9999" --* "1..1" HAL_DepotsType : depots19
+DepotsType "1..1" --* "1..1" HAL_ArticleRecent : fichiers7
+AbstractDepot "1..1" --* "1..1" HAL_ArticleRetro : fichiers8
+HAL_Auteur "1..1" -- "0..1" Laboratoire : lab16
+HAL_AutLabType "1..1" -- "1..9999" Laboratoire : laboratoires14
+HAL_Article "1..1" *-- "1..1" MetaArtType : metaArt6
+HAL_Notice "1..1" *-- "1..1" MetaArtNoticeType : metaArtNotice9
+AbstractMetaLab "1..1" --* "1..1" HAL_Laboratoire : metas18
+HAL_MetaArtType "1..1" *-- "0..1" ReferenceBiblioType : referenceBiblio10
+HAL_MetaArtNoticeType "1..1" *-- "1..1" ReferenceBiblioType : referenceBiblio11
+HAL_WebLink "1..1" *-- "1..1" Server : server21
+HAL_Entry "1..1" *-- "0..9999" TamponType : tampons4
+@enduml

@@ -1,0 +1,174 @@
+@startuml
+class Assignment {
+  + _attr : str
+  + _attr1 : int
+  + assignmentfile : str
+  + assignmenttitle : str
+  + class : int
+  + department : str
+  + duedate : int
+  + program : str
+  + section : str
+  + session : int
+}
+class CourseCalendar {
+  + endTime : int
+  + startTime : int
+}
+class Courses {
+  + _attr : str
+  + courseId : int
+  + courseName : str
+  + coursecode : int
+  + credithour : int
+}
+class Events {
+  + Evantname : str
+  + _attr : str
+  + eventId : int
+  + eventdescription : int
+  + eventtitle : int
+}
+class Quiz {
+  + _attr : str
+  + date : int
+  + department : str
+  + quizfile : str
+  + quiztitle : str
+  + scale : int
+  + subject : str
+  + timeduration : int
+}
+class Student {
+  + courseId : int
+  + courseName : str
+}
+class Student2 {
+  + courseId : int
+  + courseName : str
+}
+class Student3 {
+  + courseId : int
+  + courseName : str
+}
+class Student4 {
+  + courseId : int
+  + courseName : str
+}
+class Teacher {
+  + courseId : int
+  + courseName : str
+}
+class User {
+  + address : str
+  + email : str
+  + id : int
+  + name : str
+  + phnNo : int
+}
+class add_UseCase {
+}
+class admin_Actor {
+}
+class attendance {
+  + _attr : str
+  + absent : str
+  + attribute : str
+  + class : str
+  + class1 : str
+  + date : int
+  + day : str
+  + leave : str
+  + lecture : int
+  + present : str
+}
+class chatbox {
+  + _attr : str
+  + class : str
+  + messagedcription : int
+  + messagetitle : str
+  + messagetype : int
+}
+class courseCalendar_Actor {
+}
+class course_Actor {
+}
+class delete_UseCase {
+}
+class dropbox {
+  + _attr : str
+  + _attr1 : int
+  + class : int
+  + date : int
+  + department : str
+  + file : str
+  + filetype : str
+  + program : str
+  + section : str
+  + session : int
+}
+class modifyCalender4_UseCase {
+}
+class organisation_Actor {
+}
+class providedCourse___UseCase {
+}
+class publishCalender___UseCase {
+}
+class registerCourse_UseCase {
+}
+class result {
+  + _attr : str
+  + attribute : str
+  + class : str
+  + class1 : str
+  + finalmarks : int
+  + midmarks : int
+  + obtainedmarks : int
+  + practical : int
+  + sessional : int
+  + subject : str
+  + totalmarks : int
+}
+class searchCourse_UseCase {
+}
+class student {
+  + _attr : str
+  + _attr1 : str
+  + attribute : str
+  + e : str
+  + managestudent : str
+  + result : str
+}
+class student_Actor {
+}
+class teacher {
+}
+class timetable {
+  + _attr : str
+  + courseId : int
+  + courseName : str
+  + coursecode : int
+  + credithour : int
+  + date : int
+  + day : str
+  + lectime : int
+  + teacher : str
+}
+class user_Actor {
+}
+class viewCourse_UseCase {
+}
+Courses "1..9999" -- "1..9999" student : Admin_Courses
+Events "1..9999" -- "1..9999" student : Admin_Events
+Assignment "1..9999" -- "1..9999" student : Admin_student
+CourseCalendar "0..1" -- "0..1" Courses : Courses_CourseCalendar
+Courses "1..9999" -- "1..9999" Student : Courses_Student
+Quiz "1..9999" -- "1..9999" student : Teacher_User
+attendance "1..9999" -- "0..1" student : Teacher_attendance
+chatbox "0..9999" -- "0..1" student : Teacher_chatbox
+dropbox "0..9999" -- "1..9999" student : Teacher_dropbox
+result "1..9999" -- "0..1" student : Teacher_result
+Courses "0..1" -- "1..9999" teacher : teacher_Courses
+student "1..9999" -- "1..9999" timetable : timetable_Admin
+@enduml

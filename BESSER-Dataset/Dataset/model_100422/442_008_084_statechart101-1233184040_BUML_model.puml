@@ -1,0 +1,33 @@
+@startuml
+class NamedElement {
+}
+class Thing {
+}
+abstract class statechart101_NamedElement {
+  + name : str
+}
+class statechart101_State {
+  + activity : str
+  + label : str
+  + type : str
+}
+class statechart101_Thing {
+}
+class statechart101_Transition {
+  + expression : str
+}
+class statechart101_Variable {
+  + type : str
+  + value : str
+}
+NamedElement <|-- statechart101_State
+NamedElement <|-- statechart101_Transition
+NamedElement <|-- statechart101_Variable
+Thing <|-- statechart101_Variable
+statechart101_State "1..1" -- "0..1" statechart101_State : parentstate3
+statechart101_State "0..1" -- "1..1" statechart101_Transition : source8
+statechart101_State "1..1" *-- "0..9999" statechart101_State : substates1
+statechart101_State "0..1" -- "1..1" statechart101_Transition : target11
+statechart101_State "1..1" *-- "0..9999" statechart101_Transition : transitions6
+statechart101_State "1..1" *-- "0..9999" statechart101_Variable : variables5
+@enduml

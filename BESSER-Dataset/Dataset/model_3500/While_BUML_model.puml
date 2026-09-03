@@ -1,0 +1,71 @@
+@startuml
+class BinaryExp {
+}
+class BoolExp {
+}
+class Exp {
+}
+class Statement {
+}
+class while_AndExp {
+}
+class while_Assignment {
+}
+abstract class while_BinaryExp {
+}
+class while_BoolExp {
+}
+class while_EqExp {
+}
+abstract class while_Exp {
+}
+class while_If {
+}
+class while_NEqExp {
+}
+class while_Program {
+}
+class while_Ret {
+}
+abstract class while_Statement {
+}
+class while_Val {
+  + id : str
+}
+class while_Var {
+  + id : str
+}
+class while_VarExp {
+}
+class while_While {
+}
+BinaryExp <|-- while_AndExp
+BinaryExp <|-- while_EqExp
+BinaryExp <|-- while_NEqExp
+BoolExp <|-- while_AndExp
+BoolExp <|-- while_EqExp
+BoolExp <|-- while_NEqExp
+Exp <|-- while_BinaryExp
+Exp <|-- while_BoolExp
+Exp <|-- while_Val
+Exp <|-- while_VarExp
+Statement <|-- while_Assignment
+Statement <|-- while_If
+Statement <|-- while_Ret
+Statement <|-- while_While
+while_BoolExp "0..1" --* "1..1" while_If : condition12
+while_BoolExp "0..1" --* "1..1" while_While : condition5
+while_If "1..1" *-- "0..1" while_Statement : else_17
+while_Assignment "1..1" *-- "0..1" while_Exp : exp28
+while_Exp "0..1" --* "1..1" while_Ret : exp31
+while_Program "1..1" *-- "0..1" while_Statement : first0
+while_BinaryExp "1..1" *-- "0..1" while_Exp : lhs20
+while_Program "1..1" *-- "0..9999" while_Val : literals3
+while_Statement "1..1" *-- "0..1" while_Statement : next10
+while_BinaryExp "1..1" *-- "0..1" while_Exp : rhs21
+while_If "1..1" *-- "0..1" while_Statement : then14
+while_Statement "0..1" --* "1..1" while_While : then6
+while_Var "0..1" -- "1..1" while_VarExp : var24
+while_Assignment "1..1" -- "0..1" while_Var : var26
+while_Program "1..1" *-- "0..9999" while_Var : variables1
+@enduml

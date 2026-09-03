@@ -1,0 +1,115 @@
+@startuml
+class Base {
+}
+class BaseResource {
+}
+enum ResourceOriginType {
+  InBound
+  Internal
+  OutBound
+}
+class Service {
+}
+enum ServiceClassType {
+  Bronze
+  Gold
+  Silver
+}
+class services_CFSService {
+  + provider : str
+  + scenario : str
+}
+class services_CIID {
+  + commonCIID : str
+  + localCIID : str
+}
+class services_DateTimeRange {
+}
+class services_DerivedResource {
+}
+class services_DistributionEntry {
+  + resourceOrigin : str
+}
+class services_Expression {
+}
+class services_Lifecycle {
+}
+class services_NetXResource {
+}
+class services_Node {
+}
+class services_RFSService {
+  + functionalCategory : str
+}
+class services_ResourceForecast {
+}
+class services_ResourceMonitor {
+}
+class services_Service {
+  + serviceCategory : str
+  + serviceClass : str
+  + serviceDescription : str
+  + serviceName : str
+}
+class services_ServiceDistribution {
+}
+class services_ServiceForecast {
+  + name : str
+  + revision : str
+}
+class services_ServiceForecastUsers {
+}
+class services_ServiceMonitor {
+  + name : str
+  + revision : str
+}
+class services_ServiceProfile {
+  + name : str
+}
+class services_ServiceUser {
+  + description : str
+  + name : str
+}
+class services_Tolerance {
+}
+class services_Value {
+}
+Base <|-- services_CIID
+Base <|-- services_DistributionEntry
+Base <|-- services_Service
+Base <|-- services_ServiceDistribution
+Base <|-- services_ServiceForecast
+Base <|-- services_ServiceForecastUsers
+Base <|-- services_ServiceMonitor
+Base <|-- services_ServiceProfile
+Base <|-- services_ServiceUser
+BaseResource <|-- services_DerivedResource
+Service <|-- services_CFSService
+Service <|-- services_RFSService
+services_CIID "0..9999" --* "1..1" services_Service : cIID14
+services_DerivedResource "0..1" --* "1..1" services_DistributionEntry : distribution8
+services_DistributionEntry "0..9999" --* "1..1" services_ServiceDistribution : distributionEntries28
+services_Expression "0..1" -- "1..1" services_ServiceUser : expressionRef55
+services_Expression "0..9999" -- "1..1" services_ServiceDistribution : expressionRefs31
+services_DerivedResource "1..1" *-- "0..9999" services_Value : forecastValues1
+services_Lifecycle "0..1" --* "1..1" services_Service : lifecycle15
+services_Node "0..9999" -- "1..1" services_RFSService : nodes11
+services_DateTimeRange "0..1" --* "1..1" services_ServiceForecast : period33
+services_DateTimeRange "0..1" --* "1..1" services_ServiceMonitor : period45
+services_DerivedResource "0..9999" --* "1..1" services_ServiceProfile : profileResources50
+services_ResourceForecast "0..9999" --* "1..1" services_ServiceForecast : resourceForecasts37
+services_ResourceMonitor "0..9999" --* "1..1" services_ServiceMonitor : resourceMonitors48
+services_DistributionEntry "1..1" -- "0..1" services_NetXResource : resourceRef7
+services_Service "1..1" *-- "0..1" services_ServiceDistribution : serviceDistribution26
+services_ServiceForecast "1..1" *-- "0..9999" services_ServiceForecastUsers : serviceForecastUsers35
+services_Service "1..1" *-- "0..9999" services_ServiceForecast : serviceForecasts20
+services_Service "1..1" *-- "0..9999" services_ServiceMonitor : serviceMonitors22
+services_ServiceProfile "0..1" --* "1..1" services_ServiceUser : serviceProfile52
+services_ServiceForecastUsers "1..1" -- "0..1" services_ServiceUser : serviceUserRef42
+services_Service "1..1" -- "0..9999" services_ServiceUser : serviceUserRefs24
+services_Service "0..9999" --* "1..1" services_Service : services18
+services_RFSService "1..1" -- "0..9999" services_Tolerance : toleranceRefs12
+services_DerivedResource "1..1" *-- "0..9999" services_Value : trendedValues4
+services_ServiceForecastUsers "1..1" *-- "0..9999" services_Value : userValues39
+services_DerivedResource "1..1" *-- "0..9999" services_Value : values0
+@enduml

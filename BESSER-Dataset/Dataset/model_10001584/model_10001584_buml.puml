@@ -1,0 +1,74 @@
+@startuml
+class Books {
+  + ISBN_no : str
+  + author_name : str
+  + book_id : int
+  + book_qty : int
+  + publisher : str
+  + title : str
+}
+class Borrowed {
+  + borrowed_date : str
+  + returned_date : str
+}
+class Class {
+}
+class Fine {
+  + book_id : int
+  + borrowed_date : str
+  + fine_amount : int
+  + member_id : int
+  + returned_date : str
+}
+class Librarian {
+  + address : str
+  + cont_no : int
+  + dob : str
+  + fname : str
+  + gender : str
+  + lname : str
+  + member_id : int
+  + member_pwd : str
+}
+class Member {
+  + address : str
+  + cont_no : int
+  + dob : str
+  + fname : str
+  + gender : str
+  + lname : str
+  + member_id : int
+  + member_pwd : str
+}
+class Reserved {
+  + reserved_date : str
+}
+class Staff {
+  + Staff_ID : int
+  + address : str
+  + contact : int
+  + email : str
+  + fname : str
+  + gender : str
+  + lname : str
+  + password : str
+  + position : str
+  + username : str
+}
+class admin {
+  + Experience : str
+}
+class lecturer {
+  + module : str
+}
+Books "0..9999" -- "0..9999" Borrowed : Books_Borrowed
+Books "0..9999" -- "0..9999" Reserved : Books_Reserved
+Borrowed "0..9999" -- "0..9999" Member : Borrowed_Member
+Fine "0..9999" -- "1..1" Member : Fine_Member
+Books "0..9999" -- "0..9999" Librarian : Librarian_Books
+Fine "0..9999" -- "0..9999" Librarian : Librarian_Fine
+Librarian "0..9999" -- "0..9999" Member : Member_Librarian
+Staff "0..1" -- "0..1" admin : Registar_Staff2
+Member "0..9999" -- "0..9999" Reserved : Reserved_Member
+Staff "0..1" -- "0..1" lecturer : Staff_Professor2
+@enduml

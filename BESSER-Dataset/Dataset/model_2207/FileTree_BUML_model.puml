@@ -1,0 +1,43 @@
+@startuml
+class Container {
+}
+class FileTreeElement {
+}
+class filetree_AccessRight {
+  + readPermission : bool
+  + userId : str
+  + writePermission : bool
+}
+class filetree_Container {
+}
+class filetree_Directory {
+}
+class filetree_FileTree {
+}
+abstract class filetree_FileTreeElement {
+  + file : str
+  + name : str
+  + path : str
+}
+class filetree_H2HFile {
+}
+class filetree_PathToTreeElementMap {
+  + key : str
+}
+class filetree_User {
+  + password : str
+  + pin : str
+  + rootDir : str
+  + userId : str
+}
+Container <|-- filetree_Directory
+Container <|-- filetree_FileTree
+FileTreeElement <|-- filetree_Container
+FileTreeElement <|-- filetree_H2HFile
+filetree_AccessRight "0..9999" -- "1..1" filetree_FileTreeElement : accessRights2
+filetree_Container "1..1" *-- "0..9999" filetree_FileTreeElement : children3
+filetree_FileTree "1..1" *-- "0..9999" filetree_PathToTreeElementMap : elements0
+filetree_FileTree "0..1" -- "1..1" filetree_User : fileTree4
+filetree_Container "0..1" -- "1..1" filetree_FileTreeElement : parent1
+filetree_FileTreeElement "1..1" -- "1..1" filetree_PathToTreeElementMap : value6
+@enduml

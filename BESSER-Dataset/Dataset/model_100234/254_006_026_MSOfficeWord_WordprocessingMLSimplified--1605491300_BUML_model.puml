@@ -1,0 +1,167 @@
+@startuml
+class BlockLevelChunkElt {
+}
+class BlockLevelElt {
+}
+class BodyElt {
+}
+enum BreakType {
+  bt_column
+  bt_page
+  bt_text_wrapping
+}
+class FldCharElt {
+}
+enum FldCharTypeProperty {
+  fctp_begin
+  fctp_end
+  fctp_separate
+}
+class NoteElt {
+}
+enum NoteValue {
+  ftn_continuation_notice
+  ftn_continuation_separator
+  ftn_normal
+  ftn_separator
+}
+enum OnOffType {
+  oot_off
+  oot_on
+}
+class ParaContentElt {
+}
+class ParaElt {
+}
+class RunContentElt {
+}
+class RunElt {
+}
+class StringProperty {
+}
+class StringType {
+}
+class SymElt {
+}
+class WordDocument {
+}
+class WordprocessingMLBasicDef_AnnotationRef {
+}
+abstract class WordprocessingMLBasicDef_BlockLevelChunkElt {
+}
+abstract class WordprocessingMLBasicDef_BlockLevelElt {
+}
+class WordprocessingMLBasicDef_BodyElt {
+}
+class WordprocessingMLBasicDef_BreakElt {
+  + type : StringType
+}
+class WordprocessingMLBasicDef_ContinuationSeparator {
+}
+class WordprocessingMLBasicDef_Cr {
+}
+class WordprocessingMLBasicDef_DelInstrText {
+}
+class WordprocessingMLBasicDef_DelText {
+}
+class WordprocessingMLBasicDef_Endnote {
+}
+class WordprocessingMLBasicDef_EndnoteRef {
+}
+class WordprocessingMLBasicDef_FldChar {
+}
+class WordprocessingMLBasicDef_FldCharElt {
+  + fldCharType : StringType
+  + fldLock : StringType
+}
+class WordprocessingMLBasicDef_Footnote {
+}
+class WordprocessingMLBasicDef_FootnoteRef {
+}
+class WordprocessingMLBasicDef_InstrText {
+}
+class WordprocessingMLBasicDef_NoBreakHyphen {
+}
+abstract class WordprocessingMLBasicDef_NoteElt {
+  + suppressRef : StringType
+  + type : StringType
+}
+abstract class WordprocessingMLBasicDef_ParaContentElt {
+}
+class WordprocessingMLBasicDef_ParaElt {
+}
+class WordprocessingMLBasicDef_PgNum {
+}
+class WordprocessingMLBasicDef_Picture {
+}
+abstract class WordprocessingMLBasicDef_RunContentElt {
+}
+class WordprocessingMLBasicDef_RunElt {
+}
+class WordprocessingMLBasicDef_Separator {
+}
+class WordprocessingMLBasicDef_SoftHyphen {
+}
+class WordprocessingMLBasicDef_StringProperty {
+}
+class WordprocessingMLBasicDef_StringType {
+  + val : StringType
+}
+class WordprocessingMLBasicDef_SymElt {
+}
+class WordprocessingMLBasicDef_Symbol {
+}
+class WordprocessingMLBasicDef_Tab {
+}
+class WordprocessingMLBasicDef_Text {
+}
+class WordprocessingMLBasicDef_WordDocument {
+}
+BlockLevelChunkElt <|-- WordprocessingMLBasicDef_ParaElt
+BlockLevelElt <|-- WordprocessingMLBasicDef_BlockLevelChunkElt
+FldCharElt <|-- WordprocessingMLBasicDef_FldChar
+NoteElt <|-- WordprocessingMLBasicDef_Endnote
+NoteElt <|-- WordprocessingMLBasicDef_Footnote
+ParaContentElt <|-- WordprocessingMLBasicDef_RunElt
+RunContentElt <|-- WordprocessingMLBasicDef_AnnotationRef
+RunContentElt <|-- WordprocessingMLBasicDef_BreakElt
+RunContentElt <|-- WordprocessingMLBasicDef_ContinuationSeparator
+RunContentElt <|-- WordprocessingMLBasicDef_Cr
+RunContentElt <|-- WordprocessingMLBasicDef_DelInstrText
+RunContentElt <|-- WordprocessingMLBasicDef_DelText
+RunContentElt <|-- WordprocessingMLBasicDef_Endnote
+RunContentElt <|-- WordprocessingMLBasicDef_EndnoteRef
+RunContentElt <|-- WordprocessingMLBasicDef_FldChar
+RunContentElt <|-- WordprocessingMLBasicDef_Footnote
+RunContentElt <|-- WordprocessingMLBasicDef_FootnoteRef
+RunContentElt <|-- WordprocessingMLBasicDef_InstrText
+RunContentElt <|-- WordprocessingMLBasicDef_NoBreakHyphen
+RunContentElt <|-- WordprocessingMLBasicDef_PgNum
+RunContentElt <|-- WordprocessingMLBasicDef_Picture
+RunContentElt <|-- WordprocessingMLBasicDef_Separator
+RunContentElt <|-- WordprocessingMLBasicDef_SoftHyphen
+RunContentElt <|-- WordprocessingMLBasicDef_Symbol
+RunContentElt <|-- WordprocessingMLBasicDef_Tab
+RunContentElt <|-- WordprocessingMLBasicDef_Text
+StringType <|-- WordprocessingMLBasicDef_DelInstrText
+StringType <|-- WordprocessingMLBasicDef_DelText
+StringType <|-- WordprocessingMLBasicDef_InstrText
+StringType <|-- WordprocessingMLBasicDef_StringProperty
+StringType <|-- WordprocessingMLBasicDef_Text
+SymElt <|-- WordprocessingMLBasicDef_Symbol
+WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_BodyElt : be_wordDocument5
+BodyElt "1..1" -- "1..1" WordprocessingMLBasicDef_BlockLevelElt : ble_bodyElt7
+NoteElt "1..1" -- "1..1" WordprocessingMLBasicDef_BlockLevelElt : ble_note9
+BlockLevelElt "0..9999" --* "1..1" WordprocessingMLBasicDef_BodyElt : blockLevelElts6
+BodyElt "1..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : body4
+StringType "1..1" --* "1..1" WordprocessingMLBasicDef_SymElt : char17
+StringType "0..1" --* "1..1" WordprocessingMLBasicDef_FldCharElt : fldData20
+StringType "1..1" --* "1..1" WordprocessingMLBasicDef_SymElt : font16
+StringProperty "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : ignoreElements1
+StringProperty "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : ignoreSubtree0
+BlockLevelElt "1..9999" --* "1..1" WordprocessingMLBasicDef_NoteElt : n_blockLevelElts14
+ParaContentElt "0..9999" --* "1..1" WordprocessingMLBasicDef_ParaElt : pContentElts10
+ParaElt "1..1" -- "1..1" WordprocessingMLBasicDef_ParaContentElt : pce_pElt11
+RunContentElt "0..9999" --* "1..1" WordprocessingMLBasicDef_RunElt : rContentElts12
+RunElt "1..1" -- "1..1" WordprocessingMLBasicDef_RunContentElt : rce_rElt13
+@enduml

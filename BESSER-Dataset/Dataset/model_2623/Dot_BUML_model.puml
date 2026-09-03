@@ -1,0 +1,29 @@
+@startuml
+class Dot_DirectedArc {
+}
+class Dot_Graph {
+}
+class Dot_GraphElement {
+  + color : str
+  + label : str
+}
+class Dot_NamedElement {
+  + name : str
+}
+class Dot_Node {
+  + shape : str
+  + style : str
+}
+class GraphElement {
+}
+class NamedElement {
+}
+GraphElement <|-- Dot_DirectedArc
+GraphElement <|-- Dot_Node
+NamedElement <|-- Dot_Graph
+NamedElement <|-- Dot_GraphElement
+Dot_Graph "1..1" *-- "0..9999" Dot_GraphElement : contents0
+Dot_Graph "0..1" -- "1..1" Dot_GraphElement : graph1
+Dot_DirectedArc "1..1" -- "0..1" Dot_Node : sourceNode2
+Dot_DirectedArc "1..1" -- "0..1" Dot_Node : targetNode3
+@enduml

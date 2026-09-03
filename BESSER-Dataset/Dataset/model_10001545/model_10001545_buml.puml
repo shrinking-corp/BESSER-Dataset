@@ -1,0 +1,117 @@
+@startuml
+class Acteur_Actor {
+}
+class Avis {
+}
+class Avis1 {
+  + description : str
+  + note : int
+}
+class Avis2 {
+  + description : str
+  + note : int
+}
+class Chemin_Interface {
+}
+class Class {
+}
+class Conducteur {
+}
+class Conducteur1 {
+}
+class Contr_leur {
+}
+class Contr_leur_Actor {
+}
+class Lieu {
+}
+class Lieu1 {
+}
+class Passager {
+}
+class Passager1 {
+}
+class Persistance {
+}
+class Persistance_Actor {
+}
+class Personne {
+}
+enum Personne2 {
+}
+class Role {
+  + nbAvis : int
+}
+class Trajet {
+  + date : str
+  + depart : Lieu
+  + description : str
+  + destination : Lieu
+  + placesRestantes : int
+  + prix : int
+}
+class Trajet1 {
+  + dateFin : str
+  + datedebut : str
+  + lieuFin : Lieu
+  + lieudebut : Lieu
+}
+class Trajet2 {
+  + dateFin : str
+  + datedebut : str
+  + description : str
+  + lieuFin : Lieu
+  + lieudebut : Lieu
+  + placesRestantes : int
+  + prix : int
+}
+class Utilisateur {
+  + nbAvis : int
+  + nom : str
+  + photoDeProfil : str
+  + score : str
+}
+class Utilisateur1 {
+  + adresse : str
+  + age : int
+  + nom : str
+}
+class Utilisateur2 {
+  + adresse : str
+  + age : int
+  + nom : str
+  + photoDeProfil : str
+}
+class V_hicule {
+  + imatriculation : str
+  + marque : str
+  + modele : str
+  + propri_taire : Conducteur
+}
+class V_hicule1 {
+  + imatriculation : str
+  + marque : str
+  + modele : str
+  + nbPlaces : int
+  + propri_taire : Conducteur1
+}
+class Voiture {
+  + places : int
+}
+class ihm {
+}
+class ihm_Actor {
+}
+Conducteur1 "1..1" -- "0..9999" Trajet2 : Conducteur_Trajet
+Conducteur1 "1..1" -- "0..9999" V_hicule1 : Conducteur_V_hicule
+Lieu1 "1..1" -- "0..9999" Trajet2 : Lieu_Trajet
+Lieu1 "1..1" -- "0..9999" Trajet2 : Lieu_Trajet2
+Avis1 "0..9999" -- "1..1" Utilisateur : Personne_Avis
+Trajet "0..9999" -- "1..1" Utilisateur : Personne_Trajet
+Utilisateur "1..1" -- "0..9999" Voiture : Personne_Voiture
+Avis2 "0..9999" -- "1..1" Role : Role_Avis
+Conducteur "1..1" -- "0..9999" Trajet1 : Trajet_Conducteur
+Passager "1..9999" -- "1..1" Trajet1 : Trajet_Passager
+Role "1..2" -- "1..1" Utilisateur2 : Utilisateur_Role
+Conducteur "1..1" -- "1..9999" V_hicule : V_hicule_Conducteur
+@enduml

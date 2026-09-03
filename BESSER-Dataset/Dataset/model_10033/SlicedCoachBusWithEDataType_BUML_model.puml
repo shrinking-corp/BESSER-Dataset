@@ -1,0 +1,37 @@
+@startuml
+class CoachBusWithEDataType_AdultTicket {
+}
+class CoachBusWithEDataType_ChildTicket {
+}
+class CoachBusWithEDataType_Coach {
+  + noOfSeats : int
+}
+class CoachBusWithEDataType_Passenger {
+  + age : int
+  + sex : str
+}
+class CoachBusWithEDataType_PrivateTrip {
+}
+class CoachBusWithEDataType_RegularTrip {
+}
+class CoachBusWithEDataType_Ticket {
+  + number : int
+}
+class CoachBusWithEDataType_Trip {
+  + type : str
+}
+enum Sex {
+  female
+  male
+}
+class Ticket {
+}
+class Trip {
+}
+Ticket <|-- CoachBusWithEDataType_AdultTicket
+Ticket <|-- CoachBusWithEDataType_ChildTicket
+Trip <|-- CoachBusWithEDataType_PrivateTrip
+Trip <|-- CoachBusWithEDataType_RegularTrip
+CoachBusWithEDataType_Passenger "1..9999" -- "1..1" CoachBusWithEDataType_Trip : passengers1
+CoachBusWithEDataType_Coach "1..1" -- "1..9999" CoachBusWithEDataType_Trip : trips0
+@enduml

@@ -1,0 +1,149 @@
+@startuml
+class AbstractTypedIOPort {
+}
+class ActionPattern {
+}
+class ChannelSelector {
+}
+enum ChannelSelectorKeyword {
+  ALL
+  ANY
+}
+class JvmTypedObj {
+}
+class NamedObj {
+}
+class OutputAction {
+}
+class Parameter {
+}
+class PortPattern {
+}
+class ReAction {
+}
+class Relation {
+}
+class Variable {
+}
+class caltrop_ActionPattern {
+  + getGuardExpression() : str
+  + getPatternVariables() : str
+}
+class caltrop_ActorParameter {
+}
+class caltrop_CaltropActorImpl {
+}
+abstract class caltrop_ChannelSelector {
+}
+class caltrop_ConversionRelation {
+  + valueVar : str
+}
+class caltrop_EventAction {
+}
+class caltrop_EventPattern {
+  + _property : bool
+  + name : str
+  + qualifier : str
+  + variables : str
+}
+class caltrop_ExpressionChannelSelector {
+  + many : bool
+}
+class caltrop_FireAction {
+}
+class caltrop_FunctionDeclaration {
+}
+class caltrop_InputPattern {
+  + variables : str
+}
+class caltrop_JvmTypeReference {
+}
+class caltrop_JvmTypedObj {
+}
+class caltrop_KeywordChannelSelector {
+  + keyword : str
+}
+class caltrop_OutputAction {
+  + getInputPatterns() : str
+}
+class caltrop_OutputPattern {
+}
+class caltrop_Port {
+}
+abstract class caltrop_PortPattern {
+  + size() : int
+}
+class caltrop_ReAction {
+}
+class caltrop_Realm {
+  + key : str
+}
+class caltrop_Schedule {
+}
+class caltrop_State {
+}
+class caltrop_StateVariable {
+  + binding : bool
+  + constant : bool
+}
+class caltrop_Transition {
+}
+class caltrop_TypedInputPort {
+}
+class caltrop_TypedOutputPort {
+}
+class caltrop_XExpression {
+}
+AbstractTypedIOPort <|-- caltrop_TypedInputPort
+AbstractTypedIOPort <|-- caltrop_TypedOutputPort
+ActionPattern <|-- caltrop_EventPattern
+ActionPattern <|-- caltrop_InputPattern
+ChannelSelector <|-- caltrop_ExpressionChannelSelector
+ChannelSelector <|-- caltrop_KeywordChannelSelector
+JvmTypedObj <|-- caltrop_FunctionDeclaration
+NamedObj <|-- caltrop_OutputAction
+NamedObj <|-- caltrop_State
+OutputAction <|-- caltrop_ReAction
+Parameter <|-- caltrop_ActorParameter
+PortPattern <|-- caltrop_InputPattern
+PortPattern <|-- caltrop_OutputPattern
+ReAction <|-- caltrop_EventAction
+ReAction <|-- caltrop_FireAction
+Relation <|-- caltrop_ConversionRelation
+Variable <|-- caltrop_StateVariable
+caltrop_CaltropActorImpl "1..1" *-- "0..9999" caltrop_ReAction : actions1
+caltrop_OutputAction "0..9999" -- "1..1" caltrop_Transition : actions58
+caltrop_OutputAction "1..1" *-- "0..1" caltrop_XExpression : bodyExpression19
+caltrop_FunctionDeclaration "1..1" *-- "0..1" caltrop_XExpression : bodyExpression44
+caltrop_ChannelSelector "0..1" --* "1..1" caltrop_PortPattern : channels30
+caltrop_ConversionRelation "1..1" *-- "0..1" caltrop_XExpression : conversionExpression71
+caltrop_CaltropActorImpl "1..1" *-- "0..9999" caltrop_StateVariable : declarations0
+caltrop_OutputAction "1..1" *-- "0..1" caltrop_XExpression : delayExpression25
+caltrop_EventAction "1..1" *-- "0..9999" caltrop_EventPattern : eventPatterns61
+caltrop_CaltropActorImpl "1..1" *-- "0..9999" caltrop_FunctionDeclaration : functions5
+caltrop_OutputAction "1..1" *-- "0..1" caltrop_XExpression : guardExpression14
+caltrop_PortPattern "1..1" *-- "0..1" caltrop_XExpression : guardExpression34
+caltrop_EventPattern "1..1" *-- "0..1" caltrop_XExpression : guardExpression68
+caltrop_ConversionRelation "1..1" *-- "0..1" caltrop_XExpression : guardExpression73
+caltrop_CaltropActorImpl "1..1" *-- "0..9999" caltrop_OutputAction : initActions3
+caltrop_Schedule "1..1" -- "0..1" caltrop_State : initial49
+caltrop_FireAction "1..1" *-- "0..9999" caltrop_InputPattern : inputPatterns13
+caltrop_ExpressionChannelSelector "1..1" *-- "0..9999" caltrop_XExpression : keyExpressions40
+caltrop_OutputAction "1..1" *-- "0..9999" caltrop_OutputPattern : outputPatterns17
+caltrop_FunctionDeclaration "1..1" *-- "0..9999" caltrop_JvmTypedObj : parameters42
+caltrop_Port "0..1" -- "1..1" caltrop_PortPattern : portRef32
+caltrop_Realm "0..1" --* "1..1" caltrop_StateVariable : realm11
+caltrop_PortPattern "1..1" *-- "0..1" caltrop_XExpression : repeatExpression28
+caltrop_Schedule "0..1" -- "1..1" caltrop_State : schedule53
+caltrop_CaltropActorImpl "1..1" *-- "0..1" caltrop_Schedule : schedule7
+caltrop_State "0..1" -- "1..1" caltrop_Transition : source54
+caltrop_Schedule "1..1" *-- "0..9999" caltrop_State : states51
+caltrop_State "0..1" -- "1..1" caltrop_Transition : target56
+caltrop_FunctionDeclaration "1..1" *-- "0..9999" caltrop_JvmTypeReference : throwables47
+caltrop_EventPattern "1..1" *-- "0..1" caltrop_XExpression : timeExpression65
+caltrop_State "1..1" *-- "0..9999" caltrop_Transition : transitions52
+caltrop_OutputAction "1..1" *-- "0..1" caltrop_XExpression : updateExpression22
+caltrop_StateVariable "1..1" *-- "0..1" caltrop_XExpression : updateExpression9
+caltrop_OutputPattern "1..1" *-- "0..9999" caltrop_XExpression : valueExpressions37
+caltrop_EventPattern "1..1" -- "0..1" caltrop_StateVariable : varRef62
+@enduml

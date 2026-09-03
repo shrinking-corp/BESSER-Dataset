@@ -1,0 +1,97 @@
+@startuml
+class Administrator {
+  + Admin_ContactNo : str
+  + Admin_Email : str
+  + Admin_Id : int
+  + Admin_NIC : str
+  + Admin_Name : str
+  + Emp_DOB : date
+  + Emp_Date_Of_Joint : date
+  + Emp_Department : str
+  + Emp_Position : str
+}
+class Administrator_Actor {
+}
+class Attendance {
+  + AttendTime : str
+  + Attend_date : date
+  + Emp_id : str
+  + Leaving_Time : str
+}
+class Authentication_UseCase {
+}
+class Driving_Staff {
+  + Authendication_Mood : str
+  + Password : str
+  + PilotName : str
+  + Pilot_ContactNo : str
+}
+class Employee_Actor {
+}
+class Employee_Management_System_Component {
+}
+class Leave_Status {
+  + Emp_Id : int
+  + Leave_ApplyDate : date
+  + Leave_EndDate : date
+  + Leave_NoOfDays : int
+  + Leave_StartDate : date
+  + Leave_Status : str
+  + Leave_Title : str
+  + Leave_detail : str
+  + leave_id : int
+}
+class Login {
+  + Password : str
+  + UserName : str
+}
+class Login_external {
+}
+class Logout_external {
+}
+class Manager {
+  + Emp_Address : str
+  + Emp_DOB : date
+  + Emp_Date_Of_Joint : date
+  + Emp_Department : str
+  + Emp_NIC : str
+  + Emp_Position : str
+  + Mng_ContactNo : str
+  + Mng_Email : str
+  + Mng_Id : int
+  + Mng_Name : str
+  + Mng_Salary : float
+}
+class Salary {
+  + Emp_Id : int
+  + OverTime : str
+  + Sly_Basic : float
+  + Sly_Decrement : float
+  + Sly_Increment : float
+  + Sly_Netgross : float
+}
+class Salary_Management_UseCase {
+}
+class Staff {
+  + Authendication_Mood : str
+  + Password : str
+  + UserName : str
+}
+class Tuning_Staff {
+  + Address : str
+  + Authendication_Mood : str
+  + UserName : str
+}
+Administrator "0..1" -- "0..1" Login : Administrator_Login
+Administrator "0..1" -- "0..1" Manager : Administrator_Manager
+Attendance "0..1" -- "0..1" Manager : Employee_Attendance
+Leave_Status "0..1" -- "0..1" Manager : Employee_Leave
+Employee_Actor "0..1" -- "0..1" Login_external : Employee_Login
+Employee_Actor "0..1" -- "0..1" Logout_external : Employee_Logout
+Manager "0..1" -- "0..1" Salary : Employee_Salary
+Administrator "0..1" -- "0..1" Login : Login_Administrator
+Login "0..1" -- "0..1" Manager : Login_Manager
+Driving_Staff "0..1" -- "0..1" Staff : Staff_Driving_Staff
+Leave_Status "0..1" -- "0..1" Staff : Staff_Leave_Status
+Staff "0..1" -- "0..1" Tuning_Staff : Staff_Tuning_Staff
+@enduml

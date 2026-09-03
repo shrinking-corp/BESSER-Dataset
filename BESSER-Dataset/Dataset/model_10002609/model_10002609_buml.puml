@@ -1,0 +1,39 @@
+@startuml
+abstract class AcceleratorCard {
+}
+class CPU {
+}
+class Cache {
+  + chunck : str
+}
+abstract class Card {
+}
+abstract class DeviceCard {
+}
+class ExtensionBoard {
+}
+class Instruction {
+}
+class Machine {
+}
+class Memory_Interface {
+}
+abstract class Processor {
+}
+class Program {
+  + name : str
+}
+class RAM {
+}
+abstract class Sound {
+}
+AcceleratorCard "0..1" -- "1..1" CPU : AcceleratorCard_CPU
+Cache "0..1" -- "0..1" RAM : Cache_RAM
+Card "0..3" -- "0..9999" ExtensionBoard : ExtensionBoard_Card
+Card "0..3" -- "0..9999" Machine : Machine_Card
+Cache "0..9999" -- "0..9999" Machine : Machine_Memory
+AcceleratorCard "0..9999" -- "0..9999" Machine : Machine_Processor
+Cache "0..9999" -- "0..9999" Processor : Processor_Memory
+Processor "0..9999" -- "0..9999" Program : Processor_Program
+Instruction "0..9999" -- "0..9999" Program : Program_Instruction
+@enduml

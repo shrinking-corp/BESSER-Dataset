@@ -1,0 +1,185 @@
+@startuml
+class ArithOp {
+}
+class BoolOp {
+}
+class CmpOp {
+}
+class EvalFunRes {
+}
+class EvalRes {
+}
+class Expr {
+}
+class TopLevelCmd {
+}
+class boa_App {
+}
+abstract class boa_ArithOp {
+}
+class boa_ArithOpDivide {
+}
+class boa_ArithOpMinus {
+}
+class boa_ArithOpPlus {
+}
+class boa_ArithOpRemainder {
+}
+class boa_ArithOpTimes {
+}
+class boa_Assign {
+  + name : str
+}
+class boa_BObject {
+}
+class boa_Bool {
+  + value : bool
+}
+abstract class boa_BoolOp {
+}
+class boa_BoolOpAnd {
+}
+class boa_BoolOpOr {
+}
+abstract class boa_CmpOp {
+}
+class boa_CmpOpEqual {
+}
+class boa_CmpOpLess {
+}
+class boa_CmpOpUnequal {
+}
+class boa_Copy {
+}
+class boa_Ctx {
+}
+class boa_Def {
+  + name : str
+}
+class boa_EvalBoolRes {
+  + value : bool
+}
+class boa_EvalBoundFunRes {
+}
+class boa_EvalFunRes {
+  + name : str
+}
+class boa_EvalIntRes {
+  + value : int
+}
+class boa_EvalMapRes {
+}
+abstract class boa_EvalRes {
+}
+abstract class boa_Expr {
+}
+class boa_Field {
+  + name : str
+}
+class boa_File {
+}
+class boa_Fun {
+  + name : str
+}
+class boa_If {
+}
+class boa_Int {
+  + value : int
+}
+class boa_Let {
+  + name : str
+}
+class boa_Not {
+}
+class boa_Project {
+  + name : str
+}
+class boa_Seq {
+}
+class boa_Skip {
+}
+class boa_StringToEvalResMap {
+  + key : str
+}
+class boa_This {
+}
+abstract class boa_TopLevelCmd {
+}
+class boa_Var {
+  + name : str
+}
+class boa_With {
+}
+ArithOp <|-- boa_ArithOpDivide
+ArithOp <|-- boa_ArithOpMinus
+ArithOp <|-- boa_ArithOpPlus
+ArithOp <|-- boa_ArithOpRemainder
+ArithOp <|-- boa_ArithOpTimes
+BoolOp <|-- boa_BoolOpAnd
+BoolOp <|-- boa_BoolOpOr
+CmpOp <|-- boa_CmpOpEqual
+CmpOp <|-- boa_CmpOpLess
+CmpOp <|-- boa_CmpOpUnequal
+EvalFunRes <|-- boa_EvalBoundFunRes
+EvalRes <|-- boa_EvalBoolRes
+EvalRes <|-- boa_EvalFunRes
+EvalRes <|-- boa_EvalIntRes
+EvalRes <|-- boa_EvalMapRes
+Expr <|-- boa_App
+Expr <|-- boa_ArithOp
+Expr <|-- boa_Assign
+Expr <|-- boa_BObject
+Expr <|-- boa_Bool
+Expr <|-- boa_BoolOp
+Expr <|-- boa_CmpOp
+Expr <|-- boa_Copy
+Expr <|-- boa_Fun
+Expr <|-- boa_If
+Expr <|-- boa_Int
+Expr <|-- boa_Let
+Expr <|-- boa_Not
+Expr <|-- boa_Project
+Expr <|-- boa_Seq
+Expr <|-- boa_Skip
+Expr <|-- boa_This
+Expr <|-- boa_Var
+Expr <|-- boa_With
+TopLevelCmd <|-- boa_Def
+TopLevelCmd <|-- boa_Expr
+boa_Expr "1..1" --* "1..1" boa_Fun : body45
+boa_File "1..1" *-- "0..9999" boa_TopLevelCmd : commands0
+boa_Expr "1..1" --* "1..1" boa_If : cond32
+boa_Copy "1..1" *-- "1..1" boa_Expr : copy13
+boa_Ctx "1..1" -- "1..1" boa_EvalFunRes : ctx77
+boa_Expr "1..1" --* "1..1" boa_If : els37
+boa_Ctx "1..1" *-- "0..9999" boa_StringToEvalResMap : env67
+boa_Expr "1..1" --* "1..1" boa_Project : exp7
+boa_EvalFunRes "1..1" -- "1..1" boa_Expr : exp75
+boa_Def "1..1" *-- "1..1" boa_Expr : expr1
+boa_BObject "1..1" *-- "0..9999" boa_Field : fields9
+boa_Expr "1..1" --* "1..1" boa_With : lhs15
+boa_App "1..1" *-- "1..1" boa_Expr : lhs2
+boa_ArithOp "1..1" *-- "1..1" boa_Expr : lhs20
+boa_CmpOp "1..1" *-- "1..1" boa_Expr : lhs27
+boa_Expr "1..1" --* "1..1" boa_Let : lhs40
+boa_Assign "1..1" *-- "1..1" boa_Expr : lhs47
+boa_BoolOpAnd "1..1" *-- "1..1" boa_Expr : lhs52
+boa_BoolOpOr "1..1" *-- "1..1" boa_Expr : lhs57
+boa_Expr "1..1" --* "1..1" boa_Seq : lhs62
+boa_Expr "1..1" --* "1..1" boa_With : rhs17
+boa_ArithOp "1..1" *-- "1..1" boa_Expr : rhs22
+boa_CmpOp "1..1" *-- "1..1" boa_Expr : rhs29
+boa_App "1..1" *-- "1..1" boa_Expr : rhs4
+boa_Expr "1..1" --* "1..1" boa_Let : rhs42
+boa_Assign "1..1" *-- "1..1" boa_Expr : rhs49
+boa_BoolOpAnd "1..1" *-- "1..1" boa_Expr : rhs54
+boa_BoolOpOr "1..1" *-- "1..1" boa_Expr : rhs59
+boa_Expr "1..1" --* "1..1" boa_Seq : rhs64
+boa_Ctx "1..1" *-- "0..9999" boa_StringToEvalResMap : th68
+boa_EvalBoundFunRes "1..1" *-- "0..9999" boa_StringToEvalResMap : th80
+boa_Expr "1..1" --* "1..1" boa_If : thn34
+boa_Expr "1..1" --* "1..1" boa_Field : value10
+boa_Expr "1..1" --* "1..1" boa_Not : value25
+boa_EvalRes "1..1" -- "1..1" boa_StringToEvalResMap : value71
+boa_EvalMapRes "1..1" *-- "0..9999" boa_StringToEvalResMap : values73
+@enduml

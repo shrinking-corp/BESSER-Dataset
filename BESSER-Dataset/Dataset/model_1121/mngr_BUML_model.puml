@@ -1,0 +1,54 @@
+@startuml
+class NamedElement {
+}
+class mngr_ManagedElement {
+  + description : str
+}
+class mngr_Manager {
+}
+class mngr_ManagerParameter {
+  + LitteralBoolean : bool
+  + LitteralInteger : int
+  + LitteralString : str
+  + LitteralUnlimitedNatural : float
+  + isInput : bool
+}
+class mngr_ManagerState {
+  + Prob : float
+  + isEnd : bool
+  + isStart : bool
+}
+class mngr_ManagerTransition {
+  + Action : str
+  + Condition : str
+  + Event : str
+  + input : str
+  + output : str
+  + transProb : float
+  + transRate : float
+}
+class mngr_OpaqueExpression {
+}
+NamedElement <|-- mngr_ManagedElement
+NamedElement <|-- mngr_Manager
+NamedElement <|-- mngr_ManagerParameter
+NamedElement <|-- mngr_ManagerState
+NamedElement <|-- mngr_ManagerTransition
+mngr_ManagerParameter "0..9999" -- "1..1" mngr_ManagerState : contextParameters16
+mngr_Manager "1..1" *-- "0..9999" mngr_ManagerParameter : contextParameters5
+mngr_Manager "1..1" -- "0..9999" mngr_ManagerState : finalState2
+mngr_ManagerState "1..1" -- "0..9999" mngr_ManagerTransition : incomingTransition14
+mngr_Manager "1..1" -- "1..1" mngr_ManagerState : initialState1
+mngr_ManagedElement "1..9999" --* "1..1" mngr_Manager : managedElement7
+mngr_ManagerParameter "1..1" *-- "0..9999" mngr_OpaqueExpression : opaqueExpressions26
+mngr_ManagerState "1..1" -- "0..9999" mngr_ManagerTransition : outgoingTransition12
+mngr_Manager "1..1" *-- "0..9999" mngr_ManagerState : ownedState0
+mngr_Manager "1..1" *-- "0..9999" mngr_ManagerTransition : ownedTransition9
+mngr_Manager "1..1" -- "1..1" mngr_ManagerState : owningManager11
+mngr_Manager "1..1" -- "1..1" mngr_ManagerTransition : owningManager18
+mngr_Manager "1..1" -- "1..1" mngr_ManagerParameter : owningManager27
+mngr_ManagedElement "1..1" -- "1..1" mngr_Manager : owningManager30
+mngr_ManagerState "1..1" -- "1..1" mngr_ManagerTransition : source20
+mngr_ManagerParameter "1..1" -- "0..9999" mngr_ManagerState : state24
+mngr_ManagerState "1..1" -- "1..1" mngr_ManagerTransition : target22
+@enduml

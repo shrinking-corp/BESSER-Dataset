@@ -1,0 +1,79 @@
+@startuml
+class Block {
+}
+class NamedElement {
+}
+class Term {
+}
+class Vertex {
+}
+abstract class dependencies_Block {
+}
+class dependencies_CoreClass {
+}
+class dependencies_Create {
+}
+class dependencies_Domain {
+}
+class dependencies_EClass {
+}
+class dependencies_EPackage {
+}
+class dependencies_Edge {
+  + equal : bool
+  + referredTo : bool
+}
+class dependencies_Equivalence {
+}
+class dependencies_Graph {
+  + priority : str
+}
+abstract class dependencies_NamedElement {
+  + name : str
+}
+class dependencies_Operation {
+  + operationType : str
+}
+class dependencies_RCPackage {
+}
+class dependencies_Required {
+}
+class dependencies_RightTerm {
+  + value : str
+}
+class dependencies_SemiRequired {
+}
+class dependencies_SimpleTerm {
+}
+abstract class dependencies_Term {
+}
+abstract class dependencies_Vertex {
+}
+Block <|-- dependencies_Create
+Block <|-- dependencies_Required
+Block <|-- dependencies_SemiRequired
+NamedElement <|-- dependencies_CoreClass
+NamedElement <|-- dependencies_Domain
+NamedElement <|-- dependencies_Graph
+Term <|-- dependencies_RightTerm
+Term <|-- dependencies_SimpleTerm
+Vertex <|-- dependencies_CoreClass
+Vertex <|-- dependencies_Equivalence
+dependencies_CoreClass "0..1" -- "1..1" dependencies_SimpleTerm : coreClass21
+dependencies_Block "1..1" *-- "1..9999" dependencies_CoreClass : coreClasses13
+dependencies_Create "0..1" --* "1..1" dependencies_Domain : create9
+dependencies_Edge "0..9999" --* "1..1" dependencies_Vertex : edges16
+dependencies_Domain "1..2" --* "1..1" dependencies_Graph : modelDomains0
+dependencies_Equivalence "0..1" --* "1..1" dependencies_Graph : modelEquivalence1
+dependencies_Domain "1..1" -- "1..1" dependencies_EPackage : modelPackage3
+dependencies_Operation "1..1" --* "1..1" dependencies_RightTerm : operation27
+dependencies_Domain "1..1" -- "1..1" dependencies_RCPackage : rcPackage11
+dependencies_Domain "1..1" *-- "0..1" dependencies_Required : required5
+dependencies_Edge "1..1" *-- "1..1" dependencies_RightTerm : rightTerm19
+dependencies_Operation "1..1" *-- "1..2" dependencies_RightTerm : rightTerms32
+dependencies_EClass "0..1" -- "1..1" dependencies_SimpleTerm : role24
+dependencies_Domain "1..1" *-- "0..1" dependencies_SemiRequired : semiRequired7
+dependencies_Edge "1..1" *-- "1..1" dependencies_SimpleTerm : simpleTerm17
+dependencies_RightTerm "1..1" *-- "0..9999" dependencies_SimpleTerm : simpleTerms29
+dependencies_CoreClass "1..1" -- "1..1" dependencies_EClass : type14
+@enduml

@@ -1,0 +1,150 @@
+@startuml
+class AllModelType {
+}
+class CollectionReturnType {
+}
+class DefAttribute {
+}
+class DefCollectionTypeAttribute {
+}
+class DefIdAttribute {
+}
+class DefVariable {
+}
+class Element {
+}
+class Entity {
+}
+class Link {
+}
+class Method {
+}
+class ModelType {
+}
+class modelDsl_AllModelType {
+}
+class modelDsl_AllModelTypeCollection {
+}
+class modelDsl_AssociativeEntity {
+}
+class modelDsl_CollectionReturnType {
+  + collection : str
+}
+class modelDsl_DefAllModelTypeVariable {
+}
+class modelDsl_DefAttribute {
+}
+class modelDsl_DefCollectionTypeAttribute {
+  + name : str
+}
+class modelDsl_DefCollectionTypeVariable {
+}
+class modelDsl_DefIdAttribute {
+}
+class modelDsl_DefLinkVariable {
+  + name : str
+}
+class modelDsl_DefModelModelTypeCollectionVariable {
+}
+class modelDsl_DefModelSimpleTypeCollectionVariable {
+}
+class modelDsl_DefModelTypeVariable {
+  + name : str
+  + nullable : str
+}
+class modelDsl_DefSimpleVariable {
+  + nullable : str
+  + type : str
+}
+class modelDsl_DefVariable {
+  + name : str
+}
+class modelDsl_Element {
+  + name : str
+}
+class modelDsl_Entity {
+}
+class modelDsl_Enumerable {
+  + enums : str
+}
+class modelDsl_Link {
+}
+class modelDsl_Method {
+  + name : str
+}
+class modelDsl_MethodAllModelReturn {
+}
+class modelDsl_MethodCollectionReturn {
+}
+class modelDsl_MethodSimpleReturn {
+  + returnType : str
+}
+class modelDsl_Model {
+}
+class modelDsl_ModelType {
+}
+class modelDsl_ModelTypeCollection {
+  + collection : str
+}
+class modelDsl_Relation {
+  + multiplicity : str
+  + name : str
+  + navigable : str
+}
+class modelDsl_SimpleEntity {
+  + implementation : str
+}
+class modelDsl_SimpleLink {
+}
+class modelDsl_SimpleTypeCollection {
+  + type : str
+}
+class modelDsl_ValueType {
+}
+AllModelType <|-- modelDsl_Entity
+AllModelType <|-- modelDsl_ModelType
+CollectionReturnType <|-- modelDsl_AllModelTypeCollection
+CollectionReturnType <|-- modelDsl_SimpleTypeCollection
+DefAttribute <|-- modelDsl_DefCollectionTypeAttribute
+DefAttribute <|-- modelDsl_DefModelTypeVariable
+DefAttribute <|-- modelDsl_DefSimpleVariable
+DefCollectionTypeAttribute <|-- modelDsl_DefModelModelTypeCollectionVariable
+DefCollectionTypeAttribute <|-- modelDsl_DefModelSimpleTypeCollectionVariable
+DefIdAttribute <|-- modelDsl_DefLinkVariable
+DefIdAttribute <|-- modelDsl_DefModelTypeVariable
+DefIdAttribute <|-- modelDsl_DefSimpleVariable
+DefVariable <|-- modelDsl_DefAllModelTypeVariable
+DefVariable <|-- modelDsl_DefCollectionTypeVariable
+DefVariable <|-- modelDsl_DefSimpleVariable
+Element <|-- modelDsl_AllModelType
+Element <|-- modelDsl_SimpleLink
+Entity <|-- modelDsl_AssociativeEntity
+Entity <|-- modelDsl_SimpleEntity
+Link <|-- modelDsl_AssociativeEntity
+Link <|-- modelDsl_SimpleLink
+Method <|-- modelDsl_MethodAllModelReturn
+Method <|-- modelDsl_MethodCollectionReturn
+Method <|-- modelDsl_MethodSimpleReturn
+ModelType <|-- modelDsl_Enumerable
+ModelType <|-- modelDsl_ValueType
+modelDsl_DefAttribute "0..9999" --* "1..1" modelDsl_Entity : attributes1
+modelDsl_DefAttribute "0..9999" --* "1..1" modelDsl_ValueType : attributes9
+modelDsl_DefIdAttribute "0..9999" --* "1..1" modelDsl_SimpleEntity : attributesId6
+modelDsl_Element "0..9999" --* "1..1" modelDsl_Model : elements0
+modelDsl_Entity "1..1" *-- "0..9999" modelDsl_Method : methods2
+modelDsl_DefVariable "0..9999" --* "1..1" modelDsl_Method : parameters22
+modelDsl_Relation "0..9999" --* "1..1" modelDsl_SimpleLink : relations11
+modelDsl_AssociativeEntity "1..1" *-- "0..9999" modelDsl_Relation : relations8
+modelDsl_CollectionReturnType "0..1" --* "1..1" modelDsl_MethodCollectionReturn : returnType24
+modelDsl_AllModelType "0..1" -- "1..1" modelDsl_MethodAllModelReturn : returnType26
+modelDsl_SimpleEntity "1..1" -- "0..1" modelDsl_SimpleEntity : superClass5
+modelDsl_Entity "0..1" -- "1..1" modelDsl_Relation : type13
+modelDsl_AllModelType "0..1" -- "1..1" modelDsl_DefAllModelTypeVariable : type16
+modelDsl_DefModelTypeVariable "1..1" -- "0..1" modelDsl_ModelType : type17
+modelDsl_CollectionReturnType "0..1" --* "1..1" modelDsl_DefCollectionTypeVariable : type18
+modelDsl_DefModelModelTypeCollectionVariable "1..1" *-- "0..1" modelDsl_ModelTypeCollection : type19
+modelDsl_DefModelSimpleTypeCollectionVariable "1..1" *-- "0..1" modelDsl_SimpleTypeCollection : type20
+modelDsl_DefLinkVariable "1..1" -- "0..1" modelDsl_Link : type21
+modelDsl_AllModelType "0..1" -- "1..1" modelDsl_AllModelTypeCollection : type28
+modelDsl_ModelType "0..1" -- "1..1" modelDsl_ModelTypeCollection : type30
+@enduml

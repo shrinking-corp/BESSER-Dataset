@@ -1,0 +1,150 @@
+@startuml
+class Address {
+}
+class Booking {
+}
+class BookingHandler {
+}
+class Classes_BuisnessLogicLayer_PaymentHandler {
+  + makePayment(Classes_booking : str, Classes_paymentInfo : str) : void
+}
+class Classes_BuisnessLogicLayer_PaymentInfo {
+  + CVV : int
+  + CreditCard : int
+  + ExpiryDate : int
+  + PaymentComplete : bool
+}
+class Classes_Buissnesslayer_Address {
+  + city : str
+  + country : str
+  + postalNumber : int
+  + street : str
+}
+class Classes_Buissnesslayer_Booking {
+  + bookingID : int
+  + checkedIn : bool
+  + checkedOut : bool
+  + endDate : str
+  + extras : str
+  + guest : int
+  + nrOfGuests : int
+  + parkings : str
+  + payment : str
+  + paymentComplete : bool
+  + startDate : str
+}
+class Classes_Buissnesslayer_BookingHandler {
+  + CalculatePayment(Classes_booking : str) : int
+  + attemptBookRoom(Classes_booking : str) : bool
+  + cancelBooking(Classes_booking : str) : void
+  + changeBooking(Classes_booking : str) : void
+  + checkIn(Classes_booking : str) : void
+  + checkOut(Classes_booking : str) : void
+  + displayPaymentOptions() : str
+  + fetchAvailability(Classes_endDate : str, Classes_nrOfGuests : str, Classes_roomType : str, Classes_startDate : str) : str
+  + fetchAvailableExtras() : str
+  + fetchBooking(Classes_bookingID : str) : str
+  + sendErrorMsg() : void
+}
+class Classes_Buissnesslayer_Employee {
+  + ID : int
+  + Password : str
+}
+class Classes_Buissnesslayer_Guest {
+  + wrokAround : int
+}
+class Classes_Buissnesslayer_Room {
+  + roomType : int
+}
+abstract class Classes_Buissnesslayer_User {
+  + Email : str
+  + Name : str
+  + attemptCheckIn(Classes_booking : str) : void
+  + attemptCheckOut(Classes_booking : str) : void
+  + bookRoom(Classes_booking : str) : bool
+  + cancelBooking(Classes_booking : str) : void
+  + changeBooking(Classes_newBooking : str, Classes_oldBooking : str) : void
+}
+class Classes_Buissnesslayer_UserHandler {
+  + Users : str
+  + AddNewGuest(Classes_email : str) : str
+  + CreateEmployee(Classes_ID : str) : str
+  + identifyUser(Classes_email : str) : str
+  + isEmailValid(Classes_email : str) : bool
+  + sendEmailVerification(Classes_email : str) : void
+}
+class Classes_Datalayer_Database {
+  + extrasDB : str
+}
+class Classes_Interactionlayer_GUI {
+}
+class Classes_Interactionlayer_GUIController {
+  + displayBookingCancelled() : void
+  + displayBookingsByIDintbookingID(Classes_bookingID : str) : void
+  + displayDateOptions() : void
+  + displayError() : void
+  + displayExtras(Classes_extras : str) : void
+  + displayParkings(Classes_parkings : str) : void
+  + displayPaymentOption() : void
+  + displayRoomTypes() : int
+  + displayRoomsByID(Classes_bookingID : str) : void
+  + displayRoomsGrid(Classes_roomType : str) : void
+  + showAvailableRooms(Classes_endDate : str, Classes_nrOfGuests : str, Classes_roomType : str, Classes_startDate : str) : int
+}
+class Classes_Interactionlayer_LoginController {
+  + loginCreateGuest(Classes_email : str) : str
+  + loginEmployee(Classes_ID : str) : bool
+  + loginGuest(Classes_bookingID : str) : bool
+}
+class Classes_Interactionlayer_LoginController_DataType1 {
+}
+class Database {
+}
+class Employee {
+}
+class GUI {
+}
+class GUIController {
+}
+class Guest {
+}
+class LoginController {
+}
+class PaymentHandler {
+}
+class Room {
+}
+class User {
+}
+class UserHandler {
+}
+User <|-- Classes_Buissnesslayer_Employee
+User <|-- Classes_Buissnesslayer_Guest
+Booking "1..1" -- "1..1" Classes_Buissnesslayer_BookingHandler : Bookings15
+Classes_Buissnesslayer_Booking "1..1" -- "0..9999" Room : Rooms10
+Classes_Buissnesslayer_BookingHandler "1..1" -- "1..9999" User : User18
+Address "1..1" -- "1..1" Classes_Buissnesslayer_User : address28
+Booking "1..1" -- "1..1" Classes_Buissnesslayer_BookingHandler : booking13
+Booking "0..9999" -- "1..1" Classes_Datalayer_Database : bookingDB4
+BookingHandler "1..1" -- "1..1" Classes_Buissnesslayer_User : bookinghandler30
+BookingHandler "1..1" -- "1..1" Classes_Interactionlayer_GUIController : bookinghandler41
+Classes_Interactionlayer_LoginController "1..1" -- "1..1" User : currentUser46
+Classes_Buissnesslayer_BookingHandler "1..1" -- "1..1" Database : database19
+Classes_Buissnesslayer_UserHandler "1..1" -- "1..1" Database : database32
+Classes_Interactionlayer_GUIController "1..1" -- "1..1" GUI : display38
+Classes_Datalayer_Database "1..1" -- "0..9999" Employee : employeeDB2
+Classes_Interactionlayer_GUI "1..1" -- "1..1" GUIController : guicontroller37
+Classes_Interactionlayer_LoginController "1..1" -- "1..1" GUIController : guicontroller44
+Classes_Buissnesslayer_User "1..1" -- "1..1" LoginController : logincontroller24
+Classes_Buissnesslayer_UserHandler "1..1" -- "1..1" LoginController : logincontroller34
+Classes_Interactionlayer_GUIController "1..1" -- "1..1" LoginController : logincontroller39
+Classes_Interactionlayer_LoginController "1..1" -- "1..1" PaymentHandler : paymenthandler48
+Classes_BuisnessLogicLayer_PaymentInfo "1..1" -- "1..1" PaymentHandler : paymenthandler53
+Classes_Buissnesslayer_Booking "1..1" -- "1..9999" Room : room8
+Classes_Datalayer_Database "1..1" -- "0..9999" Room : roomDB6
+Classes_Datalayer_Database "1..1" -- "0..9999" Guest : userDB0
+Classes_Datalayer_Database "1..1" -- "1..1" UserHandler : userhandler1
+Classes_Buissnesslayer_BookingHandler "1..1" -- "1..1" UserHandler : userhandler21
+Classes_Buissnesslayer_User "1..1" -- "1..1" UserHandler : userhandler25
+Classes_Interactionlayer_LoginController "1..1" -- "1..1" UserHandler : userhandler50
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+enum FeatureKind {
+  attribute
+  containment
+  reference
+}
+class NamedElement {
+}
+class Type {
+}
+class myDSL_DataType {
+}
+class myDSL_Entity {
+  + abstract : bool
+}
+class myDSL_EntityModel {
+}
+class myDSL_Feature {
+  + kind : str
+}
+abstract class myDSL_NamedElement {
+  + name : str
+}
+abstract class myDSL_Type {
+}
+NamedElement <|-- myDSL_Feature
+NamedElement <|-- myDSL_Type
+Type <|-- myDSL_DataType
+Type <|-- myDSL_Entity
+myDSL_Entity "1..1" *-- "0..9999" myDSL_Feature : features0
+myDSL_Feature "1..1" -- "1..1" myDSL_Type : type2
+myDSL_EntityModel "1..1" *-- "0..9999" myDSL_Type : types1
+@enduml

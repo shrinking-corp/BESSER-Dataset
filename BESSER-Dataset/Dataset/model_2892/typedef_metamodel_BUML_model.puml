@@ -1,0 +1,84 @@
+@startuml
+enum CSIDatatypeCodes {
+  CSIBoolean
+  CSIByte
+  CSIDate
+  CSIDouble
+  CSIFloat
+  CSIInteger
+  CSILong
+  CSIString
+}
+enum CSIExceptionTypes {
+  SYSTEM
+  UNRECOVERABLE
+  USER
+}
+class Type {
+}
+class typedef_CSIDatatype {
+  + code : str
+  + nillable : bool
+}
+class typedef_DocumentRoot {
+}
+class typedef_Entity {
+  + versionuid : int
+}
+class typedef_EnumLiteral {
+  + name : str
+  + value : str
+}
+class typedef_EnumVal {
+}
+class typedef_Exception {
+  + exceptionType : str
+}
+class typedef_Feature {
+  + name : str
+}
+class typedef_PrimitiveType {
+  + nillable : bool
+  + typesetName : str
+}
+class typedef_TDAnnotationDetail {
+  + key : str
+  + value : str
+}
+class typedef_TDDocumentation {
+  + doc : str
+}
+abstract class typedef_Type {
+  + name : str
+}
+class typedef_TypeAnnotation {
+  + source : str
+}
+class typedef_TypeLanguageBinding {
+  + defaultInitValue : str
+  + lang : str
+  + langSpecificNS : str
+  + langSpecificType : str
+  + nullValueLiteral : str
+}
+class typedef_TypedArray {
+}
+Type <|-- typedef_CSIDatatype
+Type <|-- typedef_Entity
+Type <|-- typedef_EnumVal
+Type <|-- typedef_Exception
+Type <|-- typedef_PrimitiveType
+Type <|-- typedef_TypedArray
+typedef_Type "1..1" *-- "0..9999" typedef_TypeAnnotation : annotations1
+typedef_Type "0..1" -- "1..1" typedef_TypedArray : componentType12
+typedef_TDAnnotationDetail "0..9999" --* "1..1" typedef_TypeAnnotation : details14
+typedef_EnumLiteral "1..1" *-- "0..1" typedef_TDDocumentation : documentation21
+typedef_TDDocumentation "0..1" --* "1..1" typedef_Type : documentation3
+typedef_Feature "1..1" *-- "0..1" typedef_TDDocumentation : documentation9
+typedef_Entity "1..1" *-- "0..9999" typedef_Feature : features5
+typedef_PrimitiveType "1..1" *-- "0..9999" typedef_TypeLanguageBinding : languageBindings16
+typedef_EnumLiteral "0..9999" --* "1..1" typedef_EnumVal : literals19
+typedef_Feature "1..1" -- "0..1" typedef_Type : type6
+typedef_DocumentRoot "1..1" *-- "0..9999" typedef_Type : types0
+typedef_EnumVal "1..1" -- "0..1" typedef_Type : valueType17
+@enduml

@@ -1,0 +1,76 @@
+@startuml
+class Arrow {
+}
+class Category {
+}
+class NamedElement {
+}
+enum Scale {
+  four
+  nothing
+  one
+  three
+  two
+}
+class SourceNode {
+}
+class TargetNode {
+}
+abstract class relationworld_Arrow {
+  + validate() : bool
+}
+abstract class relationworld_Category {
+  + nom : str
+  + affectation(relationworld_cible : str, relationworld_source : str) : Arrow
+  + compare(relationworld_n1 : str, relationworld_n2 : str) : int
+}
+class relationworld_NamedElement {
+  + name : str
+}
+class relationworld_RelatedTo {
+  + validate() : bool
+}
+abstract class relationworld_SourceNode {
+  + compare(relationworld_noeud : str) : int
+  + pred() : SourceNode
+  + succ() : SourceNode
+}
+abstract class relationworld_TargetNode {
+  + compare(relationworld_noeud : str) : int
+  + pred() : TargetNode
+  + succ() : TargetNode
+}
+class relationworld_ThingA {
+  + since : date
+  + compare(relationworld_personne : str) : int
+  + pred() : str
+  + succ() : str
+}
+class relationworld_ThingB {
+  + step : str
+  + compare(relationworld_role : str) : int
+  + pred() : str
+  + succ() : str
+}
+class relationworld_World {
+  + affectation(relationworld_personne : str, relationworld_role : str) : str
+  + compare(relationworld_personne1 : str, relationworld_personne2 : str) : int
+}
+Arrow <|-- relationworld_RelatedTo
+Category <|-- relationworld_World
+NamedElement <|-- relationworld_RelatedTo
+NamedElement <|-- relationworld_ThingA
+NamedElement <|-- relationworld_ThingB
+SourceNode <|-- relationworld_ThingA
+TargetNode <|-- relationworld_ThingB
+relationworld_Arrow "1..1" -- "0..1" relationworld_TargetNode : cible12
+relationworld_Arrow "0..9999" -- "1..1" relationworld_Category : fleches16
+relationworld_RelatedTo "0..9999" --* "1..1" relationworld_World : relations8
+relationworld_Arrow "1..1" -- "0..1" relationworld_SourceNode : source11
+relationworld_Category "1..1" -- "0..9999" relationworld_SourceNode : sources14
+relationworld_Category "1..1" -- "0..9999" relationworld_TargetNode : targets19
+relationworld_RelatedTo "1..1" -- "0..1" relationworld_ThingA : thingA0
+relationworld_RelatedTo "1..1" -- "0..1" relationworld_ThingB : thingB1
+relationworld_ThingA "0..9999" --* "1..1" relationworld_World : thingsa3
+relationworld_ThingB "0..9999" --* "1..1" relationworld_World : thingsb5
+@enduml

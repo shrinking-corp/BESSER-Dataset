@@ -1,0 +1,32 @@
+@startuml
+class Node {
+}
+class petrinet_Arc {
+  + weight : int
+  + isEnabled() : bool
+}
+abstract class petrinet_Node {
+}
+class petrinet_PetriNet {
+  + name : str
+}
+class petrinet_Place {
+  + capacity : int
+  + hasCapacity(petrinet_amount : str) : bool
+}
+class petrinet_Token {
+}
+class petrinet_Transition {
+  + fire() : void
+  + isEnabled() : bool
+}
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_PetriNet : arcs1
+petrinet_Arc "0..9999" -- "1..1" petrinet_Node : in_4
+petrinet_Node "0..9999" --* "1..1" petrinet_PetriNet : nodes0
+petrinet_Arc "0..9999" -- "1..1" petrinet_Node : out3
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : source7
+petrinet_Arc "1..1" -- "1..1" petrinet_Node : target8
+petrinet_Place "1..1" *-- "0..9999" petrinet_Token : tokens6
+@enduml

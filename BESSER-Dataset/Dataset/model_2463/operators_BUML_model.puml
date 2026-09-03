@@ -1,0 +1,110 @@
+@startuml
+class Company {
+}
+enum MarkerKind {
+  ACTIONNEEDED
+  EXTERNALEVENT
+  INTERNALEVENT
+  THRESHOLDREACHED
+  value
+}
+class Relationship {
+}
+class operators_DiagramInfo {
+}
+class operators_Equipment {
+}
+class operators_EquipmentRelationship {
+}
+class operators_ExpansionExperience {
+  + duration : str
+}
+class operators_Function {
+}
+class operators_FunctionRelationship {
+}
+class operators_Lifecycle {
+}
+class operators_Marker {
+  + description : str
+  + kind : str
+}
+class operators_MetricSource {
+}
+class operators_NetXResource {
+}
+class operators_Network {
+  + createdDate : str
+  + description : str
+  + name : str
+}
+class operators_Node {
+  + nodeID : str
+}
+class operators_NodeType {
+}
+class operators_Operator {
+}
+class operators_Person {
+}
+class operators_Protocol {
+}
+class operators_Relationship {
+  + name : str
+}
+class operators_ResourceExpansion {
+}
+class operators_ResourceForecast {
+}
+class operators_ResourceMonitor {
+}
+class operators_Room {
+}
+class operators_Service {
+}
+class operators_ServiceUser {
+}
+class operators_Warehouse {
+  + description : str
+  + equipments : str
+  + name : str
+}
+Company <|-- operators_Operator
+Relationship <|-- operators_EquipmentRelationship
+Relationship <|-- operators_FunctionRelationship
+operators_Network "1..1" -- "0..1" operators_Person : createdByRef31
+operators_Node "1..1" -- "0..1" operators_Person : createdByRef37
+operators_DiagramInfo "0..9999" --* "1..1" operators_Network : diagrams17
+operators_Equipment "0..1" -- "1..1" operators_EquipmentRelationship : equipment1Ref0
+operators_Equipment "0..1" -- "1..1" operators_EquipmentRelationship : equipment2Ref1
+operators_Equipment "0..1" -- "1..1" operators_Marker : equipmentRef10
+operators_Equipment "0..1" -- "1..1" operators_ExpansionExperience : equipmentRef4
+operators_Equipment "0..9999" -- "1..1" operators_ResourceExpansion : equipmentRefs68
+operators_EquipmentRelationship "0..9999" --* "1..1" operators_Network : equipmentRelationships26
+operators_ExpansionExperience "0..9999" --* "1..1" operators_Operator : expansionExperiences55
+operators_Function "0..1" -- "1..1" operators_FunctionRelationship : function1Ref6
+operators_Function "0..1" -- "1..1" operators_FunctionRelationship : function2Ref7
+operators_Function "0..1" -- "1..1" operators_Marker : functionRef12
+operators_Function "0..9999" -- "1..1" operators_ResourceExpansion : functionRefs71
+operators_FunctionRelationship "0..9999" --* "1..1" operators_Network : functionRelationships23
+operators_Lifecycle "0..1" --* "1..1" operators_Node : lifecycle33
+operators_Marker "1..1" -- "0..1" operators_NetXResource : markerResourceRef15
+operators_Marker "0..9999" --* "1..1" operators_ResourceForecast : markers74
+operators_Marker "0..9999" --* "1..1" operators_ResourceMonitor : markers76
+operators_MetricSource "0..9999" --* "1..1" operators_Network : metricSources29
+operators_Network "0..9999" --* "1..1" operators_Network : networks21
+operators_Network "0..9999" --* "1..1" operators_Operator : networks45
+operators_Node "0..1" -- "1..1" operators_Relationship : nodeID1Ref58
+operators_Node "0..1" -- "1..1" operators_Relationship : nodeID2Ref60
+operators_Node "0..9999" -- "1..1" operators_ResourceExpansion : nodeRefs65
+operators_Node "1..1" *-- "0..9999" operators_NodeType : nodeType35
+operators_Network "1..1" *-- "0..9999" operators_Node : nodes18
+operators_Node "0..9999" --* "1..1" operators_Warehouse : nodes78
+operators_Node "1..1" -- "0..1" operators_NodeType : originalNodeTypeRef40
+operators_Protocol "0..1" -- "1..1" operators_Relationship : protocolRef63
+operators_Operator "1..1" *-- "0..9999" operators_ResourceExpansion : resourceExpansions53
+operators_Node "1..1" -- "0..1" operators_Room : roomRef43
+operators_Operator "1..1" *-- "0..9999" operators_ServiceUser : serviceUsers51
+operators_Operator "1..1" *-- "0..9999" operators_Service : services49
+operators_Operator "1..1" *-- "0..9999" operators_Warehouse : warehouses47
+@enduml

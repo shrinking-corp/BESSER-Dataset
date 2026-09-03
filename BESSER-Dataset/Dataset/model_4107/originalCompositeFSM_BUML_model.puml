@@ -1,0 +1,36 @@
+@startuml
+class AbstractState {
+}
+class NamedElement {
+}
+enum PseudostateKind {
+  initial
+}
+abstract class compositestates_AbstractState {
+}
+abstract class compositestates_NamedElement {
+  + name : str
+}
+class compositestates_Pseudostate {
+  + kind : str
+}
+class compositestates_Region {
+  + initRegion(compositestates_context : str) : void
+}
+class compositestates_State {
+  + evalState(compositestates_context : str) : void
+}
+class compositestates_Transition {
+}
+AbstractState <|-- compositestates_Pseudostate
+AbstractState <|-- compositestates_State
+NamedElement <|-- compositestates_Region
+compositestates_AbstractState "1..1" -- "0..9999" compositestates_Transition : incoming3
+compositestates_AbstractState "1..1" -- "0..9999" compositestates_Transition : outgoing4
+compositestates_Region "0..9999" --* "1..1" compositestates_State : ownedRegions2
+compositestates_AbstractState "1..1" -- "1..1" compositestates_Region : ownerRegion6
+compositestates_Region "1..1" -- "0..1" compositestates_State : ownerState1
+compositestates_AbstractState "1..1" -- "1..1" compositestates_Transition : source8
+compositestates_AbstractState "0..9999" --* "1..1" compositestates_Region : subvertex0
+compositestates_AbstractState "1..1" -- "1..1" compositestates_Transition : target10
+@enduml

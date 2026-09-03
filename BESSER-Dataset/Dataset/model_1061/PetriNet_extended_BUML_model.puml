@@ -1,0 +1,89 @@
+@startuml
+class Arc {
+}
+class Element {
+}
+class Execution {
+}
+class LocatedElement {
+}
+class Marking {
+}
+class Movement {
+}
+class NamedElement {
+}
+class PetriNet {
+}
+abstract class PetriNet_Arc {
+  + weight : str
+}
+abstract class PetriNet_Element {
+}
+class PetriNet_Execution {
+}
+abstract class PetriNet_LocatedElement {
+  + location : str
+}
+class PetriNet_Marking {
+}
+class PetriNet_Movement {
+}
+abstract class PetriNet_NamedElement {
+  + name : str
+}
+class PetriNet_PetriNet {
+}
+class PetriNet_Place {
+}
+class PetriNet_PlaceToTransition {
+}
+class PetriNet_Token {
+}
+class PetriNet_Transition {
+}
+class PetriNet_TransitionToPlace {
+}
+class Place {
+}
+class PlaceToTransition {
+}
+class Token {
+}
+class Transition {
+}
+class TransitionToPlace {
+}
+Arc <|-- PetriNet_PlaceToTransition
+Arc <|-- PetriNet_TransitionToPlace
+Element <|-- PetriNet_Place
+Element <|-- PetriNet_Transition
+LocatedElement <|-- PetriNet_NamedElement
+NamedElement <|-- PetriNet_Arc
+NamedElement <|-- PetriNet_Element
+NamedElement <|-- PetriNet_PetriNet
+Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs1
+Element "0..9999" --* "1..1" PetriNet_PetriNet : elements0
+Execution "1..1" -- "1..1" PetriNet_Marking : exec33
+Execution "1..1" -- "1..1" PetriNet_Movement : exec36
+Execution "0..9999" -- "1..1" PetriNet_PetriNet : execs3
+PetriNet_Movement "1..1" -- "1..1" Transition : fire38
+PetriNet_PlaceToTransition "1..1" -- "1..1" Place : from_16
+PetriNet_TransitionToPlace "1..1" -- "1..1" Transition : from_18
+PetriNet_Place "1..1" -- "0..9999" TransitionToPlace : incomingArc6
+PetriNet_Transition "1..1" -- "1..9999" PlaceToTransition : incomingArc8
+Marking "1..1" -- "1..1" PetriNet_Token : marking31
+Marking "0..9999" --* "1..1" PetriNet_Execution : markings26
+Movement "0..9999" --* "1..1" PetriNet_Execution : movements27
+PetriNet "1..1" -- "1..1" PetriNet_Arc : net14
+PetriNet "1..1" -- "1..1" PetriNet_Execution : net24
+PetriNet "1..1" -- "1..1" PetriNet_Element : net5
+PetriNet_Transition "1..1" -- "1..9999" TransitionToPlace : outgoingArc11
+PetriNet_Place "1..1" -- "0..9999" PlaceToTransition : outgoingArc7
+PetriNet_Token "1..1" -- "1..1" Place : placedAt29
+Marking "1..1" -- "1..1" PetriNet_Movement : source40
+Marking "1..1" -- "1..1" PetriNet_Movement : target43
+PetriNet_PlaceToTransition "1..1" -- "1..1" Transition : to17
+PetriNet_TransitionToPlace "1..1" -- "1..1" Place : to21
+PetriNet_Marking "1..1" *-- "0..9999" Token : tokens35
+@enduml

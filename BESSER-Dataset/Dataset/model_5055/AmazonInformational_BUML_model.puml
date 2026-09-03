@@ -1,0 +1,25 @@
+@startuml
+class amazoninformational_Invoice {
+}
+class amazoninformational_Order {
+}
+class amazoninformational_Package {
+}
+class amazoninformational_Payment {
+}
+class amazoninformational_Product {
+  + onHand : int
+}
+class amazoninformational_Shipment {
+}
+amazoninformational_Invoice "0..1" --* "1..1" amazoninformational_Order : invoice2
+amazoninformational_Order "0..1" -- "1..1" amazoninformational_Shipment : order11
+amazoninformational_Invoice "1..1" -- "1..1" amazoninformational_Order : order13
+amazoninformational_Order "1..1" -- "1..1" amazoninformational_Package : order8
+amazoninformational_Package "0..9999" -- "1..1" amazoninformational_Shipment : package9
+amazoninformational_Order "1..1" *-- "0..9999" amazoninformational_Package : packages4
+amazoninformational_Invoice "1..1" *-- "0..1" amazoninformational_Payment : payment15
+amazoninformational_Order "1..1" *-- "1..9999" amazoninformational_Product : products0
+amazoninformational_Package "1..1" -- "0..1" amazoninformational_Product : products6
+amazoninformational_Order "1..1" *-- "0..1" amazoninformational_Shipment : shipment1
+@enduml

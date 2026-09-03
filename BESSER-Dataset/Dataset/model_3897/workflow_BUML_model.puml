@@ -1,0 +1,53 @@
+@startuml
+class Parameter {
+}
+class Statement {
+}
+class workflow_Condition {
+  + description : str
+  + expression : str
+}
+class workflow_ForEach {
+  + element : str
+  + sequence : str
+}
+class workflow_InputParameter {
+}
+class workflow_OutputParameter {
+}
+abstract class workflow_Parameter {
+  + data : str
+  + option : str
+}
+class workflow_Program {
+  + description : str
+  + exec_order : int
+  + name_exec : str
+}
+class workflow_Recipe {
+  + name : str
+}
+class workflow_SimpleCommand {
+  + description : str
+}
+abstract class workflow_Statement {
+  + exec_order : int
+}
+class workflow_Workflow {
+  + name : str
+}
+Parameter <|-- workflow_InputParameter
+Parameter <|-- workflow_OutputParameter
+Statement <|-- workflow_Condition
+Statement <|-- workflow_ForEach
+Statement <|-- workflow_SimpleCommand
+workflow_Recipe "1..1" *-- "0..9999" workflow_Statement : commands1
+workflow_Condition "1..1" *-- "1..1" workflow_Statement : else_branch5
+workflow_InputParameter "0..1" -- "1..1" workflow_OutputParameter : link_to_inputparameter12
+workflow_InputParameter "1..1" -- "0..1" workflow_OutputParameter : link_to_outputparameter11
+workflow_Parameter "0..9999" --* "1..1" workflow_Program : parameters8
+workflow_Program "0..9999" --* "1..1" workflow_SimpleCommand : programs9
+workflow_Recipe "0..9999" --* "1..1" workflow_Workflow : recipes0
+workflow_ForEach "1..1" *-- "0..9999" workflow_Statement : statements15
+workflow_Condition "1..1" *-- "1..1" workflow_Statement : then_branch3
+@enduml

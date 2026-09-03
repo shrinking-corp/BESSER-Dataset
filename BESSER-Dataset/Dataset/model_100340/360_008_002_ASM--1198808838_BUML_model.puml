@@ -1,0 +1,221 @@
+@startuml
+class ASM_AccessUpdateFunction {
+  + type : str
+}
+class ASM_Argument {
+  + type : str
+}
+class ASM_Asm {
+  + returnType : str
+}
+class ASM_AsmInvocation {
+  + asmName : str
+}
+class ASM_Body {
+}
+class ASM_BooleanConstant {
+  + value : str
+}
+class ASM_ChooseRule {
+}
+class ASM_ConditionalRule {
+}
+abstract class ASM_Constant {
+}
+abstract class ASM_Declaration {
+}
+class ASM_DoForallRule {
+}
+abstract class ASM_ElementDecl {
+  + name : str
+}
+class ASM_ElseIf {
+}
+class ASM_ExtendRule {
+}
+class ASM_Extension {
+}
+class ASM_Function {
+  + isExternal : str
+  + returnType : str
+}
+class ASM_FunctionOrVariableTerm {
+}
+class ASM_Initialization {
+}
+class ASM_IntegerConstant {
+  + value : str
+}
+abstract class ASM_LocatedElement {
+  + location : str
+}
+class ASM_MetaInformation {
+  + usedAs : str
+}
+class ASM_OperatorTerm {
+  + opName : str
+}
+class ASM_Parameter {
+  + name : str
+  + type : str
+}
+class ASM_ReturnRule {
+}
+abstract class ASM_Rule {
+  + inSequence : str
+}
+class ASM_Signature {
+  + isMain : str
+  + name : str
+}
+class ASM_SkipRule {
+}
+class ASM_StringConstant {
+  + value : str
+}
+abstract class ASM_Term {
+}
+class ASM_UndefConstant {
+}
+class ASM_Universe {
+  + contents : str
+  + name : str
+}
+class ASM_UpdateRule {
+}
+class ASM_VariableDecl {
+}
+abstract class ASM_XAsmFile {
+}
+class ASM_XAsmSpec {
+}
+class AccessUpdateFunction {
+}
+enum AccessUpdateType {
+  access
+  update
+}
+class Argument {
+}
+class Asm {
+}
+enum AsmType {
+  function
+  subasm
+}
+class Body {
+}
+class Constant {
+}
+class Declaration {
+}
+class ElementDecl {
+}
+class ElseIf {
+}
+class Extension {
+}
+class Function {
+}
+class FunctionOrVariableTerm {
+}
+class Initialization {
+}
+class LocatedElement {
+}
+class MetaInformation {
+}
+class Parameter {
+}
+class Rule {
+}
+class Signature {
+}
+class Term {
+}
+class Universe {
+}
+class VariableDecl {
+}
+class XAsmFile {
+}
+Constant <|-- ASM_BooleanConstant
+Constant <|-- ASM_IntegerConstant
+Constant <|-- ASM_StringConstant
+Constant <|-- ASM_UndefConstant
+Declaration <|-- ASM_Function
+Declaration <|-- ASM_Universe
+ElementDecl <|-- ASM_Function
+ElementDecl <|-- ASM_VariableDecl
+LocatedElement <|-- ASM_AccessUpdateFunction
+LocatedElement <|-- ASM_Asm
+LocatedElement <|-- ASM_Declaration
+LocatedElement <|-- ASM_ElementDecl
+LocatedElement <|-- ASM_ElseIf
+LocatedElement <|-- ASM_Extension
+LocatedElement <|-- ASM_Initialization
+LocatedElement <|-- ASM_MetaInformation
+LocatedElement <|-- ASM_Parameter
+LocatedElement <|-- ASM_Rule
+LocatedElement <|-- ASM_Signature
+LocatedElement <|-- ASM_Term
+LocatedElement <|-- ASM_XAsmFile
+Rule <|-- ASM_AsmInvocation
+Rule <|-- ASM_ChooseRule
+Rule <|-- ASM_ConditionalRule
+Rule <|-- ASM_DoForallRule
+Rule <|-- ASM_ExtendRule
+Rule <|-- ASM_ReturnRule
+Rule <|-- ASM_SkipRule
+Rule <|-- ASM_UpdateRule
+Term <|-- ASM_Constant
+Term <|-- ASM_FunctionOrVariableTerm
+Term <|-- ASM_OperatorTerm
+VariableDecl <|-- ASM_Argument
+XAsmFile <|-- ASM_Body
+XAsmFile <|-- ASM_XAsmSpec
+ASM_XAsmSpec "1..1" *-- "1..9999" Asm : Asm0
+ASM_MetaInformation "1..1" *-- "0..9999" AccessUpdateFunction : accessUpdateFunctions14
+ASM_AsmInvocation "1..1" *-- "0..9999" Term : arguments32
+ASM_Signature "1..1" *-- "0..9999" Argument : arguments6
+ASM_Asm "1..1" *-- "1..1" Body : body4
+ASM_ChooseRule "1..1" *-- "1..1" VariableDecl : chooseId38
+ASM_DoForallRule "1..1" *-- "0..1" Term : condition56
+ASM_ConditionalRule "1..1" *-- "1..1" Term : condition62
+ASM_ElseIf "1..1" *-- "1..1" Term : condition72
+ASM_FunctionOrVariableTerm "1..1" -- "1..1" ElementDecl : declaration23
+ASM_Body "1..1" *-- "0..9999" Declaration : declarations7
+ASM_DoForallRule "1..1" *-- "1..9999" Rule : doRule59
+ASM_Extension "1..1" *-- "1..9999" VariableDecl : elements87
+ASM_ConditionalRule "1..1" *-- "0..1" ElseIf : elseIfRule70
+ASM_ElseIf "1..1" *-- "0..1" ElseIf : elseIfRule80
+ASM_ConditionalRule "1..1" *-- "0..1" Rule : elseRule67
+ASM_ElseIf "1..1" *-- "0..1" Rule : elseRule77
+ASM_ExtendRule "1..1" *-- "1..9999" Extension : extensions83
+ASM_UpdateRule "1..1" *-- "1..1" FunctionOrVariableTerm : function34
+ASM_AccessUpdateFunction "1..1" *-- "1..9999" Function : functions16
+ASM_ChooseRule "1..1" *-- "0..1" Term : guard42
+ASM_DoForallRule "1..1" *-- "1..1" VariableDecl : id51
+ASM_ChooseRule "1..1" *-- "1..9999" Rule : ifChoosenRules45
+ASM_ChooseRule "1..1" *-- "0..1" Rule : ifNotChoosenRule48
+ASM_ChooseRule "1..1" *-- "0..1" Universe : inSet39
+ASM_DoForallRule "1..1" *-- "0..1" Universe : inSet53
+ASM_Function "1..1" *-- "0..1" Term : initTerm18
+ASM_Body "1..1" *-- "0..1" Initialization : initialization8
+ASM_OperatorTerm "1..1" *-- "1..1" Term : leftExp27
+ASM_Asm "1..1" *-- "1..1" MetaInformation : metaInformation2
+ASM_Function "1..1" *-- "0..9999" Parameter : parameters17
+ASM_OperatorTerm "1..1" *-- "0..1" Term : rightExp29
+ASM_Body "1..1" *-- "0..9999" Rule : rules10
+ASM_Initialization "1..1" *-- "1..9999" Rule : rules21
+ASM_ExtendRule "1..1" *-- "1..9999" Rule : rules84
+ASM_Asm "1..1" *-- "1..1" Signature : signature1
+ASM_Universe "1..1" -- "0..9999" Universe : superUniverses20
+ASM_ReturnRule "1..1" *-- "1..1" Term : term92
+ASM_FunctionOrVariableTerm "1..1" *-- "0..9999" Term : terms24
+ASM_ConditionalRule "1..1" *-- "1..9999" Rule : thenRule64
+ASM_ElseIf "1..1" *-- "1..9999" Rule : thenRule74
+ASM_Extension "1..1" *-- "1..1" Universe : universe89
+ASM_UpdateRule "1..1" *-- "1..1" Term : updateTerm35
+ASM_MetaInformation "1..1" *-- "0..9999" Signature : usedAsIn12
+@enduml

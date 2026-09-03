@@ -1,0 +1,28 @@
+@startuml
+class State {
+}
+class complexStateMachineMetaModel_ComplexStateMachine {
+  + Name : str
+}
+class complexStateMachineMetaModel_CompositeState {
+}
+class complexStateMachineMetaModel_State {
+  + Name : str
+}
+class complexStateMachineMetaModel_Transition {
+  + Name : str
+}
+State <|-- complexStateMachineMetaModel_CompositeState
+complexStateMachineMetaModel_ComplexStateMachine "1..1" -- "1..1" complexStateMachineMetaModel_State : ComplexStateMachine10
+complexStateMachineMetaModel_ComplexStateMachine "1..1" -- "1..1" complexStateMachineMetaModel_Transition : ComplexStateMachine4
+complexStateMachineMetaModel_CompositeState "0..1" -- "1..1" complexStateMachineMetaModel_State : CompositeState16
+complexStateMachineMetaModel_State "1..1" -- "0..9999" complexStateMachineMetaModel_Transition : Incoming14
+complexStateMachineMetaModel_CompositeState "1..1" -- "0..1" complexStateMachineMetaModel_State : InitialState21
+complexStateMachineMetaModel_ComplexStateMachine "1..1" -- "0..1" complexStateMachineMetaModel_State : InitialState3
+complexStateMachineMetaModel_State "1..1" -- "0..9999" complexStateMachineMetaModel_Transition : Outgoing12
+complexStateMachineMetaModel_State "1..1" -- "1..1" complexStateMachineMetaModel_Transition : Source6
+complexStateMachineMetaModel_ComplexStateMachine "1..1" *-- "0..9999" complexStateMachineMetaModel_State : States0
+complexStateMachineMetaModel_CompositeState "1..1" -- "0..9999" complexStateMachineMetaModel_State : States18
+complexStateMachineMetaModel_State "1..1" -- "1..1" complexStateMachineMetaModel_Transition : Target8
+complexStateMachineMetaModel_ComplexStateMachine "1..1" *-- "0..9999" complexStateMachineMetaModel_Transition : Transitions1
+@enduml

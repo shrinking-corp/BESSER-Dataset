@@ -1,0 +1,82 @@
+@startuml
+class Service {
+}
+enum ServiceClassType {
+  Bronze
+  Gold
+  Silver
+}
+class services_CFSService {
+  + provider : str
+  + scenario : str
+}
+class services_CIID {
+  + commonCIID : str
+  + localCIID : str
+}
+class services_DateTimeRange {
+}
+class services_Expression {
+}
+class services_NetXResource {
+}
+class services_Node {
+}
+class services_RFSService {
+  + functionalCategory : str
+}
+class services_ResourceForecast {
+}
+class services_ResourceMonitor {
+}
+class services_Service {
+  + serviceCategory : str
+  + serviceClass : str
+  + serviceDescription : str
+  + serviceName : str
+}
+class services_ServiceDistribution {
+}
+class services_ServiceForecast {
+  + name : str
+  + revision : str
+}
+class services_ServiceForecastUsers {
+}
+class services_ServiceMonitor {
+  + name : str
+  + revision : str
+}
+class services_ServiceProfile {
+  + name : str
+}
+class services_ServiceUser {
+  + name : str
+}
+class services_Tolerance {
+}
+class services_Value {
+}
+Service <|-- services_CFSService
+Service <|-- services_RFSService
+services_CIID "0..9999" --* "1..1" services_Service : cIID3
+services_Expression "0..9999" -- "1..1" services_ServiceDistribution : expressionRefs17
+services_Expression "0..9999" -- "1..1" services_ServiceUser : expressionRefs40
+services_Node "0..9999" -- "1..1" services_RFSService : nodes0
+services_DateTimeRange "0..1" --* "1..1" services_ServiceForecast : period19
+services_DateTimeRange "0..1" --* "1..1" services_ServiceMonitor : period30
+services_NetXResource "0..9999" --* "1..1" services_ServiceProfile : profileResources35
+services_ResourceForecast "0..9999" --* "1..1" services_ServiceForecast : resourceForecasts23
+services_ResourceMonitor "0..9999" --* "1..1" services_ServiceMonitor : resourceMonitors33
+services_Service "1..1" *-- "0..1" services_ServiceDistribution : serviceDistribution13
+services_ServiceForecast "1..1" *-- "0..9999" services_ServiceForecastUsers : serviceForecastUsers21
+services_Service "1..1" *-- "0..9999" services_ServiceForecast : serviceForecasts7
+services_Service "1..1" *-- "0..9999" services_ServiceMonitor : serviceMonitors9
+services_ServiceProfile "0..1" --* "1..1" services_ServiceUser : serviceProfile37
+services_NetXResource "0..9999" --* "1..1" services_ServiceDistribution : serviceResources15
+services_ServiceForecastUsers "1..1" -- "0..1" services_ServiceUser : serviceUserRef27
+services_Service "1..1" -- "0..9999" services_ServiceUser : serviceUserRefs11
+services_Service "0..9999" --* "1..1" services_Service : services5
+services_RFSService "1..1" -- "0..9999" services_Tolerance : toleranceRefs1
+services_ServiceForecastUsers "1..1" *-- "0..9999" services_Value : userValues25
+@enduml

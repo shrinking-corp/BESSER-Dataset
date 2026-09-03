@@ -1,0 +1,67 @@
+@startuml
+class Arc {
+}
+class GenericPT {
+}
+class PTArc {
+}
+class PetriNet {
+}
+class PetriNetMM2_Arc {
+  + weight : int
+}
+class PetriNetMM2_GenericPT {
+  + label : str
+}
+class PetriNetMM2_PTArc {
+}
+class PetriNetMM2_PetriNet {
+  + name : str
+}
+class PetriNetMM2_PetriNetModel {
+}
+class PetriNetMM2_PetriNetModelElement {
+}
+class PetriNetMM2_Place {
+  + name : str
+  + relevance : int
+}
+class PetriNetMM2_TPArc {
+}
+class PetriNetMM2_Transition {
+  + name : str
+  + relevance : int
+}
+class PetriNetModel {
+}
+class PetriNetModelElement {
+}
+class Place {
+}
+class TPArc {
+}
+class Transition {
+}
+Arc <|-- PetriNetMM2_PTArc
+Arc <|-- PetriNetMM2_TPArc
+GenericPT <|-- PetriNetMM2_Place
+GenericPT <|-- PetriNetMM2_Transition
+PetriNetModelElement <|-- PetriNetMM2_Arc
+PetriNetModelElement <|-- PetriNetMM2_GenericPT
+PetriNetModelElement <|-- PetriNetMM2_PetriNet
+Arc "0..9999" --* "1..1" PetriNetMM2_PetriNet : arcs5
+PetriNetMM2_PTArc "1..1" -- "0..9999" Transition : dst19
+PetriNetMM2_TPArc "1..1" -- "0..9999" Place : dst24
+PetriNetMM2_PetriNetModel "1..1" *-- "0..9999" PetriNetModelElement : elements0
+PTArc "1..9999" -- "1..1" PetriNetMM2_Transition : in_11
+PetriNetMM2_Place "1..1" -- "0..9999" TPArc : in_8
+PetriNetMM2_PetriNetModelElement "1..1" -- "1..1" PetriNetModel : modelContainer1
+PetriNet "1..1" -- "1..1" PetriNetMM2_Place : net6
+PetriNet "1..1" -- "1..1" PetriNetMM2_Transition : net9
+PetriNetMM2_Transition "1..1" -- "1..9999" TPArc : out14
+PTArc "0..9999" -- "1..1" PetriNetMM2_Place : out7
+PetriNetMM2_PetriNet "1..1" *-- "0..9999" Place : places2
+PetriNetMM2_PTArc "1..1" -- "1..1" Place : src17
+PetriNetMM2_TPArc "1..1" -- "1..1" Transition : src21
+PetriNetMM2_PetriNet "1..1" *-- "0..9999" Transition : transitions3
+@enduml

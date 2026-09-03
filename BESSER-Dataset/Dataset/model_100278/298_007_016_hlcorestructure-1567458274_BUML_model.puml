@@ -1,0 +1,295 @@
+@startuml
+class Annotation {
+}
+enum CSS2Color {
+  AQUA
+  BLACK
+  BLUE
+  FUCHSIA
+  GRAY
+  GREEN
+  LIME
+  MAROON
+  NAVY
+  OLIVE
+  ORANGE
+  PURPLE
+  RED
+  SILVER
+  TEAL
+  WHITE
+  YELLOW
+}
+enum CSS2FontFamily {
+  ARIAL
+  GEORGIA
+  TIMES
+  TREBUCHET
+  VERDANA
+}
+enum CSS2FontSize {
+  LARGE
+  MEDIUM
+  SMALL
+  XLARGE
+  XSMALL
+  XXLARGE
+  XXSMALL
+}
+enum CSS2FontStyle {
+  ITALIC
+  NORMAL
+  OBLIQUE
+}
+enum CSS2FontWeight {
+  BOLD
+  BOLDER
+  LIGHTER
+  NORMAL
+}
+class Coordinate {
+}
+enum FontAlign {
+  CENTER
+  LEFT
+  RIGHT
+}
+enum FontDecoration {
+  LINETHROUGH
+  OVERLINE
+  UNDERLINE
+}
+enum Gradient {
+  DIAGONAL
+  HORIZONTAL
+  VERTICAL
+}
+class Graphics {
+}
+class HLCoreAnnotation {
+}
+class Label {
+}
+enum LineShape {
+  CURVE
+  LINE
+}
+enum LineStyle {
+  DASH
+  DOT
+  SOLID
+}
+class Node {
+}
+enum PNType {
+  COREMODEL
+  HLPN
+  PTHLPN
+  PTNET
+  SYMNET
+}
+class PlaceNode {
+}
+class PnObject {
+}
+class TransitionNode {
+}
+abstract class hlcorestructure_Annotation {
+}
+class hlcorestructure_AnnotationGraphics {
+}
+abstract class hlcorestructure_AnyObject {
+}
+class hlcorestructure_Arc {
+}
+class hlcorestructure_ArcGraphics {
+}
+abstract class hlcorestructure_Attribute {
+}
+class hlcorestructure_Condition {
+}
+abstract class hlcorestructure_Coordinate {
+  + x : str
+  + y : str
+}
+class hlcorestructure_Declaration {
+}
+class hlcorestructure_Declarations {
+}
+class hlcorestructure_Dimension {
+}
+class hlcorestructure_Fill {
+  + color : str
+  + gradientcolor : str
+  + gradientrotation : str
+  + image : str
+}
+class hlcorestructure_Font {
+  + align : str
+  + decoration : str
+  + family : str
+  + rotation : str
+  + size : str
+  + style : str
+  + weight : str
+}
+abstract class hlcorestructure_Graphics {
+}
+class hlcorestructure_HLAnnotation {
+}
+abstract class hlcorestructure_HLCoreAnnotation {
+  + text : str
+}
+class hlcorestructure_HLMarking {
+}
+abstract class hlcorestructure_Label {
+}
+class hlcorestructure_Line {
+  + color : str
+  + shape : str
+  + style : str
+  + width : str
+}
+class hlcorestructure_Name {
+  + text : str
+}
+abstract class hlcorestructure_Node {
+}
+class hlcorestructure_NodeGraphics {
+}
+class hlcorestructure_Offset {
+}
+class hlcorestructure_Page {
+}
+class hlcorestructure_PetriNet {
+  + id : str
+  + type : str
+}
+class hlcorestructure_PetriNetDoc {
+  + xmlns : str
+}
+class hlcorestructure_Place {
+}
+abstract class hlcorestructure_PlaceNode {
+}
+abstract class hlcorestructure_PnObject {
+  + id : str
+}
+class hlcorestructure_Position {
+}
+class hlcorestructure_RefPlace {
+}
+class hlcorestructure_RefTransition {
+}
+class hlcorestructure_Sort {
+}
+class hlcorestructure_Term {
+}
+class hlcorestructure_ToolInfo {
+  + formattedXMLBuffer : str
+  + tool : str
+  + toolInfoGrammarURI : str
+  + version : str
+}
+class hlcorestructure_Transition {
+}
+abstract class hlcorestructure_TransitionNode {
+}
+class hlcorestructure_Type {
+}
+Annotation <|-- hlcorestructure_HLCoreAnnotation
+Annotation <|-- hlcorestructure_Name
+Coordinate <|-- hlcorestructure_Dimension
+Coordinate <|-- hlcorestructure_Offset
+Coordinate <|-- hlcorestructure_Position
+Graphics <|-- hlcorestructure_AnnotationGraphics
+Graphics <|-- hlcorestructure_ArcGraphics
+Graphics <|-- hlcorestructure_NodeGraphics
+HLCoreAnnotation <|-- hlcorestructure_Condition
+HLCoreAnnotation <|-- hlcorestructure_Declaration
+HLCoreAnnotation <|-- hlcorestructure_HLAnnotation
+HLCoreAnnotation <|-- hlcorestructure_HLMarking
+HLCoreAnnotation <|-- hlcorestructure_Type
+Label <|-- hlcorestructure_Annotation
+Label <|-- hlcorestructure_Attribute
+Node <|-- hlcorestructure_PlaceNode
+Node <|-- hlcorestructure_TransitionNode
+PlaceNode <|-- hlcorestructure_Place
+PlaceNode <|-- hlcorestructure_RefPlace
+PnObject <|-- hlcorestructure_Arc
+PnObject <|-- hlcorestructure_Node
+PnObject <|-- hlcorestructure_Page
+TransitionNode <|-- hlcorestructure_RefTransition
+TransitionNode <|-- hlcorestructure_Transition
+hlcorestructure_Arc "0..9999" -- "1..1" hlcorestructure_Node : InArcs87
+hlcorestructure_Arc "0..9999" -- "1..1" hlcorestructure_Node : OutArcs89
+hlcorestructure_Annotation "1..1" *-- "0..1" hlcorestructure_AnnotationGraphics : annotationgraphics104
+hlcorestructure_Arc "1..1" *-- "0..1" hlcorestructure_ArcGraphics : arcgraphics83
+hlcorestructure_Condition "0..1" --* "1..1" hlcorestructure_Transition : condition102
+hlcorestructure_Annotation "0..1" -- "1..1" hlcorestructure_AnnotationGraphics : containerAnnotation59
+hlcorestructure_AnnotationGraphics "0..1" -- "1..1" hlcorestructure_Offset : containerAnnotationGraphics47
+hlcorestructure_AnnotationGraphics "0..1" -- "1..1" hlcorestructure_Fill : containerAnnotationGraphics62
+hlcorestructure_AnnotationGraphics "0..1" -- "1..1" hlcorestructure_Line : containerAnnotationGraphics70
+hlcorestructure_AnnotationGraphics "0..1" -- "1..1" hlcorestructure_Font : containerAnnotationGraphics93
+hlcorestructure_Arc "0..1" -- "1..1" hlcorestructure_HLAnnotation : containerArc118
+hlcorestructure_Arc "0..1" -- "1..1" hlcorestructure_ArcGraphics : containerArc78
+hlcorestructure_ArcGraphics "0..1" -- "1..1" hlcorestructure_Position : containerArcGraphics44
+hlcorestructure_ArcGraphics "0..1" -- "1..1" hlcorestructure_Line : containerArcGraphics67
+hlcorestructure_Dimension "1..1" -- "0..1" hlcorestructure_NodeGraphics : containerDNodeGraphics48
+hlcorestructure_Declaration "1..1" -- "0..1" hlcorestructure_Page : containerDeclarationPage123
+hlcorestructure_Declaration "1..1" -- "0..1" hlcorestructure_PetriNet : containerDeclarationPetriNet121
+hlcorestructure_Label "0..1" -- "1..1" hlcorestructure_ToolInfo : containerLabel30
+hlcorestructure_Name "1..1" -- "0..1" hlcorestructure_PetriNet : containerNamePetriNet20
+hlcorestructure_Name "1..1" -- "0..1" hlcorestructure_PnObject : containerNamePnObject22
+hlcorestructure_Node "0..1" -- "1..1" hlcorestructure_NodeGraphics : containerNode40
+hlcorestructure_Fill "1..1" -- "0..1" hlcorestructure_NodeGraphics : containerNodeGraphics60
+hlcorestructure_Line "1..1" -- "0..1" hlcorestructure_NodeGraphics : containerNodeGraphics65
+hlcorestructure_NodeGraphics "0..1" -- "1..1" hlcorestructure_Position : containerPNodeGraphics45
+hlcorestructure_Page "0..1" -- "1..1" hlcorestructure_PnObject : containerPage18
+hlcorestructure_NodeGraphics "1..1" -- "0..1" hlcorestructure_Page : containerPage41
+hlcorestructure_PetriNet "0..1" -- "1..1" hlcorestructure_ToolInfo : containerPetriNet25
+hlcorestructure_Page "1..1" -- "0..1" hlcorestructure_PetriNet : containerPetriNet8
+hlcorestructure_PetriNet "1..1" -- "1..1" hlcorestructure_PetriNetDoc : containerPetriNetDoc5
+hlcorestructure_Place "0..1" -- "1..1" hlcorestructure_Type : containerPlace109
+hlcorestructure_HLMarking "1..1" -- "0..1" hlcorestructure_Place : containerPlace111
+hlcorestructure_PnObject "0..1" -- "1..1" hlcorestructure_ToolInfo : containerPnObject27
+hlcorestructure_AnyObject "1..1" -- "0..1" hlcorestructure_ToolInfo : containerToolInfo106
+hlcorestructure_Condition "1..1" -- "0..1" hlcorestructure_Transition : containerTransition115
+hlcorestructure_Declaration "0..9999" --* "1..1" hlcorestructure_Page : declaration12
+hlcorestructure_Declaration "0..9999" --* "1..1" hlcorestructure_PetriNet : declaration6
+hlcorestructure_Dimension "0..1" --* "1..1" hlcorestructure_NodeGraphics : dimension36
+hlcorestructure_Fill "0..1" --* "1..1" hlcorestructure_NodeGraphics : fill37
+hlcorestructure_AnnotationGraphics "1..1" *-- "0..1" hlcorestructure_Fill : fill51
+hlcorestructure_AnnotationGraphics "1..1" *-- "0..1" hlcorestructure_Font : font57
+hlcorestructure_HLMarking "0..1" --* "1..1" hlcorestructure_Place : hlinitialMarking99
+hlcorestructure_Arc "1..1" *-- "0..1" hlcorestructure_HLAnnotation : hlinscription85
+hlcorestructure_Line "0..1" --* "1..1" hlcorestructure_NodeGraphics : line38
+hlcorestructure_AnnotationGraphics "1..1" *-- "0..1" hlcorestructure_Line : line54
+hlcorestructure_ArcGraphics "1..1" *-- "0..1" hlcorestructure_Line : line75
+hlcorestructure_Name "0..1" --* "1..1" hlcorestructure_PnObject : name14
+hlcorestructure_Name "0..1" --* "1..1" hlcorestructure_PetriNet : name2
+hlcorestructure_PetriNet "1..9999" --* "1..1" hlcorestructure_PetriNetDoc : nets0
+hlcorestructure_NodeGraphics "0..1" --* "1..1" hlcorestructure_Page : nodegraphics10
+hlcorestructure_Node "1..1" *-- "0..1" hlcorestructure_NodeGraphics : nodegraphics91
+hlcorestructure_Page "1..1" *-- "0..9999" hlcorestructure_PnObject : objects7
+hlcorestructure_AnnotationGraphics "1..1" *-- "0..1" hlcorestructure_Offset : offset50
+hlcorestructure_Page "1..9999" --* "1..1" hlcorestructure_PetriNet : pages1
+hlcorestructure_NodeGraphics "1..1" *-- "0..1" hlcorestructure_Position : position35
+hlcorestructure_ArcGraphics "1..1" *-- "0..9999" hlcorestructure_Position : positions73
+hlcorestructure_RefTransition "1..1" -- "1..1" hlcorestructure_TransitionNode : ref101
+hlcorestructure_PlaceNode "1..1" -- "1..1" hlcorestructure_RefPlace : ref103
+hlcorestructure_PlaceNode "1..1" -- "0..9999" hlcorestructure_RefPlace : referencingPlaces95
+hlcorestructure_RefTransition "0..9999" -- "1..1" hlcorestructure_TransitionNode : referencingTransitions96
+hlcorestructure_Arc "1..1" -- "1..1" hlcorestructure_Node : source79
+hlcorestructure_Sort "0..1" --* "1..1" hlcorestructure_Type : structure108
+hlcorestructure_HLMarking "1..1" *-- "0..1" hlcorestructure_Term : structure110
+hlcorestructure_Condition "1..1" *-- "0..1" hlcorestructure_Term : structure113
+hlcorestructure_HLAnnotation "1..1" *-- "0..1" hlcorestructure_Term : structure116
+hlcorestructure_Declaration "1..1" *-- "0..1" hlcorestructure_Declarations : structure120
+hlcorestructure_Arc "1..1" -- "1..1" hlcorestructure_Node : target81
+hlcorestructure_AnyObject "0..1" --* "1..1" hlcorestructure_ToolInfo : toolInfoModel32
+hlcorestructure_PnObject "1..1" *-- "0..9999" hlcorestructure_ToolInfo : toolspecifics16
+hlcorestructure_PetriNet "1..1" *-- "0..9999" hlcorestructure_ToolInfo : toolspecifics3
+hlcorestructure_Label "1..1" *-- "0..9999" hlcorestructure_ToolInfo : toolspecifics33
+hlcorestructure_Place "1..1" *-- "0..1" hlcorestructure_Type : type98
+@enduml

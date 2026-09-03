@@ -1,0 +1,26 @@
+@startuml
+class OclExpression {
+}
+class operators_IfExp {
+}
+abstract class operators_OclExpression {
+}
+class operators_OclType {
+}
+class operators_OperationCallExp {
+  + name : str
+}
+class operators_Type {
+  + isSameType(operators_t : str) : bool
+  + isSuperTypeOf(operators_t : str) : bool
+}
+OclExpression <|-- operators_IfExp
+OclExpression <|-- operators_OclType
+OclExpression <|-- operators_OperationCallExp
+operators_OclExpression "0..9999" --* "1..1" operators_OperationCallExp : arguments3
+operators_IfExp "1..1" *-- "1..1" operators_OclExpression : condition8
+operators_IfExp "1..1" *-- "1..1" operators_OclExpression : elseExpression11
+operators_OclExpression "1..1" --* "1..1" operators_OperationCallExp : source1
+operators_IfExp "1..1" *-- "1..1" operators_OclExpression : thenExpression6
+operators_OclExpression "1..1" *-- "0..1" operators_Type : type_0
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class company_Company {
+}
+class company_Dept {
+  + name : str
+}
+class company_Employee {
+  + salary : float
+}
+class company_Person {
+  + address : str
+  + name : str
+}
+class company_Subunit {
+}
+company_Company "1..1" *-- "0..9999" company_Dept : depts0
+company_Dept "0..1" --* "1..1" company_Subunit : du10
+company_Dept "1..1" *-- "1..1" company_Employee : manager1
+company_Employee "1..1" *-- "1..1" company_Person : person5
+company_Employee "0..1" --* "1..1" company_Subunit : pu7
+company_Dept "1..1" *-- "0..9999" company_Subunit : subunits3
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+class mydsl_Edge {
+  + label : str
+  + parsed_source : str
+  + parsed_target : str
+}
+class mydsl_Graph {
+  + name : str
+}
+class mydsl_Node {
+  + content : str
+  + isInvisible : bool
+  + name : str
+}
+mydsl_Edge "0..9999" --* "1..1" mydsl_Graph : edges0
+mydsl_Graph "1..1" *-- "0..9999" mydsl_Node : nodes1
+mydsl_Edge "1..1" -- "0..1" mydsl_Node : source9
+mydsl_Graph "0..9999" --* "1..1" mydsl_Graph : subgraphs4
+mydsl_Edge "1..1" -- "0..1" mydsl_Node : target6
+@enduml

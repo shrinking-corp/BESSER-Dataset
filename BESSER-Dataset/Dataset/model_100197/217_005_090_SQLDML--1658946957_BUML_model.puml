@@ -1,0 +1,147 @@
+@startuml
+class BinaryExp {
+}
+class ColumnExp {
+}
+class DataType {
+}
+class Expression {
+}
+class LocatedElement {
+}
+class NamedElement {
+}
+class Predicate {
+}
+class QueryStmt {
+}
+class SQLDML_AndExp {
+}
+abstract class SQLDML_BinaryExp {
+  + opName : str
+}
+class SQLDML_ColumnExp {
+  + alias : str
+}
+class SQLDML_DataType {
+}
+abstract class SQLDML_Expression {
+}
+class SQLDML_FunctionExp {
+  + name : str
+}
+class SQLDML_InExp {
+  + columnName : str
+}
+class SQLDML_InsertStmt {
+  + tableName : str
+}
+class SQLDML_IntegerValueExp {
+  + aValue : str
+}
+class SQLDML_LikeExp {
+  + columnName : str
+}
+class SQLDML_ListExp {
+}
+abstract class SQLDML_LocatedElement {
+  + commentsAfter : str
+  + commentsBefore : str
+  + location : str
+}
+abstract class SQLDML_NamedElement {
+  + name : str
+}
+class SQLDML_NotExp {
+  + opName : str
+}
+class SQLDML_OperationExp {
+  + optName : str
+}
+class SQLDML_OrExp {
+}
+abstract class SQLDML_Predicate {
+}
+class SQLDML_QueryPredicate {
+}
+abstract class SQLDML_QueryStmt {
+}
+class SQLDML_QueryStmtAllCol {
+}
+class SQLDML_QueryStmtCol {
+}
+class SQLDML_SQLRoot {
+}
+abstract class SQLDML_Statement {
+}
+class SQLDML_StringValueExp {
+  + aValue : str
+}
+class SQLDML_Table {
+  + alias : str
+}
+abstract class SQLDML_ValueExp {
+}
+class SQLDML_ViewStatement {
+  + name : str
+}
+class SQLDML_WhereClause {
+}
+class Statement {
+}
+class StringValueExp {
+}
+class Table {
+}
+class ValueExp {
+}
+class WhereClause {
+}
+BinaryExp <|-- SQLDML_AndExp
+BinaryExp <|-- SQLDML_OperationExp
+BinaryExp <|-- SQLDML_OrExp
+Expression <|-- SQLDML_BinaryExp
+Expression <|-- SQLDML_InExp
+Expression <|-- SQLDML_LikeExp
+Expression <|-- SQLDML_NotExp
+Expression <|-- SQLDML_Predicate
+Expression <|-- SQLDML_QueryPredicate
+LocatedElement <|-- SQLDML_Expression
+LocatedElement <|-- SQLDML_NamedElement
+LocatedElement <|-- SQLDML_SQLRoot
+LocatedElement <|-- SQLDML_Statement
+LocatedElement <|-- SQLDML_WhereClause
+NamedElement <|-- SQLDML_ColumnExp
+NamedElement <|-- SQLDML_DataType
+NamedElement <|-- SQLDML_Table
+Predicate <|-- SQLDML_ColumnExp
+Predicate <|-- SQLDML_FunctionExp
+Predicate <|-- SQLDML_ListExp
+Predicate <|-- SQLDML_ValueExp
+QueryStmt <|-- SQLDML_QueryStmtAllCol
+QueryStmt <|-- SQLDML_QueryStmtCol
+Statement <|-- SQLDML_InsertStmt
+Statement <|-- SQLDML_QueryStmt
+Statement <|-- SQLDML_ViewStatement
+ValueExp <|-- SQLDML_IntegerValueExp
+ValueExp <|-- SQLDML_StringValueExp
+Expression "0..9999" --* "1..1" SQLDML_FunctionExp : arguments31
+ColumnExp "1..9999" --* "1..1" SQLDML_ViewStatement : columns1
+Expression "1..9999" --* "1..1" SQLDML_QueryStmtCol : columns8
+SQLDML_QueryStmt "1..1" *-- "0..1" WhereClause : condition6
+Predicate "1..9999" --* "1..1" SQLDML_InExp : elements23
+Expression "0..9999" --* "1..1" SQLDML_ListExp : elements29
+Expression "1..1" --* "1..1" SQLDML_WhereClause : expression10
+SQLDML_LikeExp "1..1" *-- "1..1" StringValueExp : expression22
+Expression "1..1" --* "1..1" SQLDML_BinaryExp : leftExp12
+QueryStmt "1..1" --* "1..1" SQLDML_ViewStatement : query2
+QueryStmt "1..1" --* "1..1" SQLDML_QueryPredicate : query24
+Expression "1..1" --* "1..1" SQLDML_BinaryExp : rightExp14
+SQLDML_SQLRoot "1..1" *-- "0..9999" Statement : statements0
+SQLDML_QueryStmt "1..1" *-- "1..9999" Table : tables5
+DataType "1..1" --* "1..1" SQLDML_ColumnExp : type26
+DataType "0..1" --* "1..1" SQLDML_ValueExp : type27
+Expression "0..1" --* "1..1" SQLDML_NotExp : unused19
+Expression "1..1" --* "1..1" SQLDML_NotExp : valueExp17
+Expression "0..9999" --* "1..1" SQLDML_InsertStmt : values4
+@enduml

@@ -1,0 +1,208 @@
+@startuml
+class ElseIfCondition {
+}
+class go_ARIT_EXPR {
+  + atr : str
+  + num : str
+  + num1 : str
+  + num2 : str
+  + op : str
+}
+class go_ArrayType {
+  + qtd : str
+}
+class go_ArrayValue {
+}
+class go_Assignment {
+  + id : str
+  + qtd : str
+}
+class go_BINARY_EXP {
+  + arit : str
+}
+class go_BLOCK {
+}
+class go_BOOLEAN_VALUE {
+  + falso : str
+  + verdadeiro : str
+}
+class go_BOOL_OP {
+}
+class go_BasicType {
+  + boolean : str
+  + float : str
+  + int : str
+  + string : str
+}
+class go_COMPARISON {
+  + igual : str
+  + maiorigualque : str
+  + maiorque : str
+  + menorigualque : str
+  + menorque : str
+}
+class go_Chamada {
+}
+class go_Condition {
+}
+class go_Const {
+  + const : str
+}
+class go_EObject {
+}
+class go_EXPRESSAO {
+}
+class go_EXPRESSAOLINHA {
+}
+class go_ElseCondition {
+}
+class go_ElseIfCondition {
+}
+class go_ForClause {
+}
+class go_ForDecl {
+}
+class go_FunctionCall {
+  + id : str
+}
+class go_FunctionType {
+  + nome : str
+}
+class go_GoDecl {
+}
+class go_IDList {
+  + idList : str
+  + vir : str
+}
+class go_IGUAL {
+  + igual : str
+}
+class go_IfCondition {
+}
+class go_IfStmt {
+}
+class go_Init {
+}
+class go_InitStmt {
+}
+class go_LITERAIS_BASICOS {
+  + numero : str
+  + string : str
+}
+class go_LiteraisList {
+  + vir : str
+}
+class go_PARAMETER {
+  + id : str
+}
+class go_PARAMETERS_LIST {
+  + vir : str
+}
+class go_PONTOSIGUAL {
+  + op : str
+}
+class go_Parameters {
+}
+class go_PostStmt {
+}
+class go_RangeDecl {
+}
+class go_ReturnStmt {
+}
+class go_Signature {
+}
+class go_SignatureDel {
+  + id : str
+}
+class go_TIPO {
+}
+class go_Types {
+}
+class go_Var {
+  + var : str
+}
+class go_VarCall {
+  + id : str
+}
+class go_VarDecl {
+}
+ElseIfCondition <|-- go_IfCondition
+go_ArrayType "0..1" --* "1..1" go_Types : array160
+go_ArrayType "0..1" --* "1..1" go_VarDecl : array52
+go_ArrayValue "0..1" --* "1..1" go_EXPRESSAO : arrayValue92
+go_ARIT_EXPR "0..1" --* "1..1" go_PostStmt : art32
+go_Assignment "0..1" --* "1..1" go_EXPRESSAO : assignment86
+go_FunctionType "1..1" *-- "0..1" go_Signature : assinatura126
+go_IGUAL "0..1" --* "1..1" go_VarDecl : atribuicao46
+go_LITERAIS_BASICOS "0..1" --* "1..1" go_ReturnStmt : basic101
+go_BINARY_EXP "1..1" *-- "0..9999" go_LITERAIS_BASICOS : basic115
+go_BasicType "0..1" --* "1..1" go_Types : basic158
+go_ArrayType "1..1" *-- "0..1" go_BasicType : basic163
+go_EXPRESSAO "1..1" *-- "0..1" go_LITERAIS_BASICOS : basic84
+go_LITERAIS_BASICOS "0..1" --* "1..1" go_PARAMETER : basico152
+go_BINARY_EXP "0..1" --* "1..1" go_EXPRESSAO : binary_exp82
+go_BLOCK "0..1" --* "1..1" go_FunctionType : bloco128
+go_BINARY_EXP "1..1" *-- "0..1" go_BOOL_OP : bool124
+go_BOOLEAN_VALUE "0..1" --* "1..1" go_LITERAIS_BASICOS : booleano113
+go_Chamada "1..1" *-- "0..9999" go_EObject : cham169
+go_Chamada "0..1" --* "1..1" go_EXPRESSAO : cham97
+go_ForClause "0..1" --* "1..1" go_ForDecl : clause7
+go_ForDecl "1..1" *-- "0..1" go_GoDecl : comandos10
+go_COMPARISON "0..1" --* "1..1" go_Condition : comparador36
+go_Condition "0..1" --* "1..1" go_IfCondition : cond137
+go_Condition "0..1" --* "1..1" go_ForClause : condition25
+go_Const "0..1" --* "1..1" go_TIPO : constante71
+go_EXPRESSAO "1..1" *-- "0..1" go_FunctionType : declFunction79
+go_Assignment "1..1" *-- "0..1" go_PONTOSIGUAL : dois63
+go_GoDecl "0..9999" --* "1..1" go_Init : elements0
+go_ElseCondition "0..1" --* "1..1" go_IfStmt : else_186
+go_ElseIfCondition "0..9999" --* "1..1" go_IfStmt : elseif184
+go_EXPRESSAO "0..1" --* "1..1" go_EXPRESSAOLINHA : exp73
+go_EXPRESSAOLINHA "0..1" --* "1..1" go_EXPRESSAOLINHA : explinha77
+go_Condition "1..1" *-- "0..1" go_EXPRESSAO : expr134
+go_Condition "1..1" *-- "0..1" go_EXPRESSAO : expr238
+go_EXPRESSAOLINHA "0..1" --* "1..1" go_GoDecl : expressao5
+go_EXPRESSAOLINHA "0..1" --* "1..1" go_VarDecl : expressao54
+go_Assignment "1..1" *-- "0..1" go_EXPRESSAOLINHA : expressao66
+go_EXPRESSAO "1..1" *-- "0..1" go_ForDecl : for_89
+go_FunctionCall "0..1" --* "1..1" go_ReturnStmt : func103
+go_BINARY_EXP "1..1" *-- "0..9999" go_FunctionCall : func121
+go_FunctionCall "0..1" --* "1..1" go_RangeDecl : func21
+go_FunctionType "0..1" --* "1..1" go_GoDecl : func3
+go_IDList "0..9999" --* "1..1" go_RangeDecl : idList13
+go_ReturnStmt "1..1" *-- "0..1" go_VarCall : idVar106
+go_IfCondition "0..1" --* "1..1" go_IfStmt : if_181
+go_EXPRESSAO "1..1" *-- "0..1" go_IfStmt : if_99
+go_IGUAL "0..1" --* "1..1" go_RangeDecl : igual15
+go_Assignment "1..1" *-- "0..1" go_IGUAL : igual61
+go_ForClause "1..1" *-- "0..1" go_InitStmt : init23
+go_IDList "0..9999" --* "1..1" go_IDList : list42
+go_BLOCK "1..1" *-- "0..9999" go_EXPRESSAO : listaDeComandos144
+go_ArrayValue "1..1" *-- "0..1" go_LiteraisList : lit109
+go_EObject "0..9999" --* "1..1" go_LiteraisList : lit111
+go_PONTOSIGUAL "0..1" --* "1..1" go_RangeDecl : op17
+go_Parameters "0..1" --* "1..1" go_Signature : params130
+go_PARAMETERS_LIST "0..1" --* "1..1" go_Parameters : params135
+go_PARAMETER "0..9999" --* "1..1" go_PARAMETERS_LIST : params150
+go_FunctionCall "1..1" *-- "0..1" go_PARAMETERS_LIST : params166
+go_ForClause "1..1" *-- "0..1" go_PostStmt : post27
+go_PONTOSIGUAL "0..1" --* "1..1" go_VarDecl : pront49
+go_ForDecl "1..1" *-- "0..1" go_RangeDecl : range8
+go_Signature "1..1" *-- "0..1" go_Types : retorno132
+go_BLOCK "1..1" *-- "0..1" go_ReturnStmt : retorno147
+go_SignatureDel "0..1" --* "1..1" go_VarDecl : signature44
+go_EXPRESSAO "0..9999" --* "1..1" go_IfCondition : then139
+go_EXPRESSAO "0..9999" --* "1..1" go_ElseCondition : then142
+go_PARAMETER "1..1" *-- "0..1" go_Types : tipo155
+go_SignatureDel "1..1" *-- "0..1" go_TIPO : tipoDecl57
+go_SignatureDel "1..1" *-- "0..1" go_Types : type59
+go_GoDecl "1..1" *-- "0..1" go_VarDecl : var1
+go_ARIT_EXPR "1..1" *-- "0..1" go_VarCall : var1172
+go_ARIT_EXPR "1..1" *-- "0..1" go_VarCall : var178
+go_ARIT_EXPR "1..1" *-- "0..1" go_VarCall : var2175
+go_BINARY_EXP "1..1" *-- "0..9999" go_VarCall : varCal118
+go_InitStmt "1..1" *-- "0..1" go_VarDecl : varDecl29
+go_EXPRESSAO "1..1" *-- "0..1" go_VarDecl : variaveis94
+go_RangeDecl "1..1" *-- "0..1" go_VarCall : variavel19
+go_TIPO "1..1" *-- "0..1" go_Var : variavel69
+@enduml

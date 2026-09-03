@@ -1,0 +1,64 @@
+@startuml
+class Statement {
+}
+enum UserInstructionEnum {
+  AssertUIState
+  AssertUIValue
+  InstantiateUISUT
+  ManipulateUIControl
+  SendUITrigger
+  SetUIValue
+}
+class Variable {
+}
+class uitf_AssertInState {
+  + stateId : str
+}
+class uitf_Statement {
+  + description : str
+  + kind : str
+}
+class uitf_TestCase {
+  + id : str
+  + start() : void
+  + stop() : void
+}
+class uitf_TestSuite {
+  + id : str
+  + start() : void
+  + stop() : void
+}
+class uitf_TriggeredTransition {
+  + scriptStr : str
+  + transitionId : str
+}
+class uitf_UIControl {
+  + id : str
+}
+class uitf_UIControlVariable {
+}
+class uitf_UISUT {
+  + objectURI : str
+  + assertInState() : void
+  + onManipulateUIControl(uitf_controlPath : str, uitf_manipulationKind : str) : void
+  + onManipulateUIControlData(uitf_controlPath : str, uitf_controlPropertyKey : str, uitf_controlPropertyVal : str) : void
+  + onUITrigger(uitf_trigger : str) : void
+}
+class uitf_Variable {
+  + id : str
+  + assertValue() : void
+  + getValue() : str
+  + setValue(uitf_val : str) : void
+}
+Statement <|-- uitf_AssertInState
+Statement <|-- uitf_TriggeredTransition
+Variable <|-- uitf_UIControlVariable
+Variable <|-- uitf_UISUT
+uitf_Statement "0..9999" --* "1..1" uitf_TestCase : itsStatement1
+uitf_TestCase "0..9999" --* "1..1" uitf_TestSuite : itsTestCase3
+uitf_UIControl "0..9999" --* "1..1" uitf_UISUT : itsUICtrl7
+uitf_TestCase "1..1" *-- "1..1" uitf_UISUT : itsUISUT0
+uitf_UIControl "1..1" -- "0..1" uitf_Variable : itsVariable12
+uitf_UISUT "1..1" *-- "0..9999" uitf_Variable : itsVariable5
+uitf_Statement "1..1" -- "0..1" uitf_Variable : itsVariable9
+@enduml

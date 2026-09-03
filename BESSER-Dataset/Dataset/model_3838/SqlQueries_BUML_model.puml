@@ -1,0 +1,22 @@
+@startuml
+class NamedElement {
+}
+class sql_Column {
+}
+class sql_Model {
+}
+abstract class sql_NamedElement {
+  + name : str
+}
+class sql_SelectQuery {
+}
+class sql_Table {
+}
+NamedElement <|-- sql_Column
+NamedElement <|-- sql_Table
+sql_Column "0..9999" --* "1..1" sql_Table : columns3
+sql_SelectQuery "1..1" -- "1..9999" sql_Table : from_5
+sql_Model "1..1" *-- "0..9999" sql_SelectQuery : queries0
+sql_Model "1..1" *-- "0..9999" sql_Table : tables1
+sql_Column "1..9999" -- "1..1" sql_SelectQuery : what8
+@enduml

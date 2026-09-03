@@ -1,0 +1,23 @@
+@startuml
+class State {
+}
+class dsl_FSM {
+  + name : str
+}
+class dsl_InitialState {
+}
+class dsl_State {
+  + isFinal : bool
+  + name : str
+}
+class dsl_Transition {
+  + name : str
+  + trigger : str
+}
+State <|-- dsl_InitialState
+dsl_FSM "1..1" *-- "1..1" dsl_InitialState : initialstate3
+dsl_State "1..1" -- "1..1" dsl_Transition : source8
+dsl_FSM "1..1" *-- "0..9999" dsl_State : state0
+dsl_State "1..1" -- "1..1" dsl_Transition : target5
+dsl_FSM "1..1" *-- "0..9999" dsl_Transition : transition1
+@enduml

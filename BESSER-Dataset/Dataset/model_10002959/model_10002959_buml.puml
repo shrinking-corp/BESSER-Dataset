@@ -1,0 +1,57 @@
+@startuml
+class Address {
+  + City : str
+  + County : str
+  + Line1 : str
+  + Line_2 : str
+}
+class Base {
+  + isVegetarian : bool
+  + name : str
+}
+class Customer {
+  + customerID : int
+  + customerName : str
+  + phoneNumber : int
+}
+class GPSLocation {
+  + GPS : str
+}
+class MealDeal {
+  + description : str
+  + isVegetarian : bool
+  + name : str
+  + price : float
+}
+class Order {
+  + creditCardDetails : str
+  + date : str
+  + orderID : int
+  + orderNotes : str
+  + time : int
+}
+class Pizza {
+  + isVegetarian : bool
+  + price : float
+}
+class Sides {
+  + isVegetarian : bool
+  + name : str
+  + price : float
+}
+class Toppings {
+  + isVegetarian : bool
+  + name : str
+}
+Address "1..9999" -- "0..1" Customer : Customer_Address
+MealDeal "0..9999" -- "0..9999" Pizza : MealDeal_Pizza
+MealDeal "0..9999" -- "0..9999" Sides : MealDeal_Sides
+Address "0..1" -- "0..9999" Order : Order_Address
+Customer "1..1" -- "0..9999" Order : Order_Customer
+GPSLocation "0..1" -- "1..1" Order : Order_GPS_Location
+MealDeal "0..9999" -- "0..9999" Order : Order_MealDeal
+Order "0..1" -- "0..9999" Pizza : Order_Pizza
+Order "0..1" -- "0..9999" Sides : Order_Sides
+Base "1..1" -- "0..9999" Pizza : Pizza_Base
+Pizza "0..9999" -- "0..9999" Toppings : Pizza_Toppings
+@enduml

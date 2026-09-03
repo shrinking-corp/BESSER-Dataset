@@ -1,0 +1,117 @@
+@startuml
+class EModelElement {
+}
+class Event {
+}
+enum MessageEventKind {
+  ERROR
+  INSTANTIATED
+  RECEIVED
+  TRANSMITTED
+}
+enum ResourceEventKind {
+  ACQUIRED
+  RELEASED
+  REQUESTED
+}
+enum SchedulingEventKind {
+  ACTIVATED
+  BLOCKED
+  DEADLINE
+  RUNNING
+  SUSPENDED
+  TERMINATED
+}
+enum SliceKind {
+  AUTOMATON
+  FRAME
+  FUNCTION
+  FUNCTION_INSTANCE
+  JOB
+  LINK
+  OS
+  OTHER
+  PACKET
+  RESOURCE
+  STATE
+  TASK
+  TEMPORAL_CHAIN
+}
+class ValueChangeEvent {
+}
+class trace_DataSizeValueChangeEvent {
+  + value : str
+}
+class trace_DurationValueChangeEvent {
+  + value : str
+}
+class trace_EObject {
+}
+class trace_EStructuralFeature {
+}
+class trace_Event {
+  + timestamp : str
+}
+class trace_MessageEvent {
+  + kind : str
+}
+class trace_NumberValueChangeEvent {
+  + value : str
+}
+class trace_ObjectValueChangeEvent {
+}
+class trace_Properties {
+  + absoluteDeadline : str
+  + blockingTime : str
+  + executionTime : str
+  + index : str
+  + range : str
+  + remainingTime : str
+  + responseTime : str
+}
+class trace_ResourceEvent {
+  + kind : str
+}
+class trace_SchedulingEvent {
+  + kind : str
+}
+class trace_Slice {
+  + kind : str
+  + kindLabel : str
+  + name : str
+  + getAggregatedEvents() : Event
+  + getHierarchicalName(trace_separator : str) : str
+  + getLatestTimestamp() : str
+}
+class trace_Trace {
+  + hostId : str
+  + precision : str
+  + range : str
+}
+class trace_ValueChangeEvent {
+}
+EModelElement <|-- trace_Event
+EModelElement <|-- trace_Properties
+EModelElement <|-- trace_Slice
+EModelElement <|-- trace_Trace
+Event <|-- trace_MessageEvent
+Event <|-- trace_ResourceEvent
+Event <|-- trace_SchedulingEvent
+Event <|-- trace_ValueChangeEvent
+ValueChangeEvent <|-- trace_DataSizeValueChangeEvent
+ValueChangeEvent <|-- trace_DurationValueChangeEvent
+ValueChangeEvent <|-- trace_NumberValueChangeEvent
+ValueChangeEvent <|-- trace_ObjectValueChangeEvent
+trace_Event "1..1" -- "0..9999" trace_Slice : about3
+trace_Event "0..9999" --* "1..1" trace_Trace : events0
+trace_Event "0..9999" -- "1..1" trace_Slice : events5
+trace_EObject "0..1" -- "1..1" trace_ValueChangeEvent : object19
+trace_Slice "1..1" *-- "0..9999" trace_Slice : ownedSubSlices9
+trace_Slice "1..1" -- "0..1" trace_Slice : parent11
+trace_Properties "0..1" --* "1..1" trace_Slice : properties13
+trace_EStructuralFeature "1..1" -- "1..1" trace_ValueChangeEvent : property18
+trace_Slice "0..9999" --* "1..1" trace_Trace : slices1
+trace_Slice "0..9999" -- "1..1" trace_Slice : subSlices16
+trace_Event "1..1" -- "1..1" trace_Trace : trace2
+trace_EObject "1..1" -- "1..1" trace_ObjectValueChangeEvent : value21
+@enduml

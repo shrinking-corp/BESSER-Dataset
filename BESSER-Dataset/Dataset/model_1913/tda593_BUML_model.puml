@@ -1,0 +1,446 @@
+@startuml
+class BankingManager {
+}
+class Bill {
+}
+class BillManager {
+}
+class BookingManager {
+}
+class CreditCardManager {
+}
+enum DisabilityApproval {
+}
+class Discount {
+}
+class DiscountManager {
+}
+class KeyCardManager {
+}
+class LegalEntity {
+}
+class LegalEntityManager {
+}
+class Room {
+}
+enum RoomApproval {
+}
+class RoomManager {
+}
+class ServiceManager {
+}
+class billing_AdminDiscountManager {
+}
+class billing_AdminServiceManager {
+}
+class billing_Bill {
+}
+class billing_BillDataService {
+}
+class billing_CreditCardInformationDataService {
+}
+class billing_Discount {
+}
+class billing_DiscountDataService {
+}
+class billing_DiscountLimit {
+}
+class billing_DiscountManagerImpl {
+}
+class billing_Purchase {
+}
+class billing_Service {
+}
+class billing_ServiceDataService {
+}
+class billing_ServiceManagerImpl {
+}
+class booking_Booking {
+}
+class booking_BookingDataService {
+}
+class booking_BookingManager {
+}
+class booking_LegalEntity {
+}
+class booking_LegalEntityDataService {
+}
+class booking_Person {
+}
+class booking_RoomStay {
+}
+class booking_StayRequest {
+}
+class booking_TravelInformation {
+}
+class facilities_AdminKeyCardManager {
+}
+class facilities_AdminRoomManager {
+}
+class facilities_KeyCard {
+}
+class facilities_KeyCardDataService {
+}
+class facilities_KeyCardManager {
+}
+class facilities_KeyCardManagerImpl {
+}
+class facilities_Room {
+}
+class facilities_RoomDataService {
+}
+class facilities_RoomManager {
+}
+class facilities_RoomManagerImpl {
+}
+class facilities_RoomType {
+}
+class facilities_RoomTypeDataService {
+}
+abstract class tda593_billing_AdminDiscountManager {
+  + addAllowedUsers(tda593_discount : str, tda593_legalEntities : str) : void
+  + addPercentageDiscount(tda593_code : str, tda593_name : str, tda593_percentage : str) : str
+  + addSumDiscount(tda593_code : str, tda593_name : str, tda593_sum : str) : str
+  + createDiscountLimitForDiscount(tda593_discount : str, tda593_from_ : str, tda593_to : str, tda593_users : str, tda593_usesAmount : str) : void
+  + setAmountLimit(tda593_discount : str, tda593_usesAmount : str) : void
+  + setDateRangeLimit(tda593_discount : str, tda593_validFrom : str, tda593_validTo : str) : void
+}
+class tda593_billing_AdminDiscountManagerImpl {
+}
+abstract class tda593_billing_AdminServiceManager {
+  + createService(tda593_name : str, tda593_price : str) : str
+  + removeService(tda593_service : str) : void
+}
+class tda593_billing_AdminServiceManagerImpl {
+}
+abstract class tda593_billing_BankingManager {
+  + isCreditCardValid(tda593_ccNumber : str, tda593_ccv : str, tda593_expiryMonth : str, tda593_expiryYear : str, tda593_firstName : str, tda593_lastName : str) : bool
+  + makePayment(tda593_ccNumber : str, tda593_ccv : str, tda593_expiryMonth : str, tda593_expiryYear : str, tda593_firstName : str, tda593_lastName : str, tda593_sum : str) : bool
+}
+class tda593_billing_BankingManagerImpl {
+}
+class tda593_billing_Bill {
+  + date : date
+  + id : int
+  + isPaid : bool
+  + isPublished : bool
+  + addSubBill(tda593_subBill : str) : void
+  + applyDiscount(tda593_discount : str) : void
+  + getPrice() : float
+  + publishBill() : void
+  + registerPurchase(tda593_purchase : str) : void
+  + removeDiscount(tda593_discount : str) : void
+  + removeSubBill(tda593_subBill : str) : void
+  + unPublishBill() : void
+  + unregisterPurchase(tda593_purchase : str) : void
+}
+class tda593_billing_BillDataService {
+  + getAll(tda593_customer : str) : str
+  + getBookingBill(tda593_booking : str) : str
+}
+abstract class tda593_billing_BillManager {
+  + addSubBill(tda593_subBill : str, tda593_toBill : str) : void
+  + applyDiscount(tda593_bill : str, tda593_discount : str) : void
+  + billItem(tda593_bill : str, tda593_quantity : str, tda593_service : str) : void
+  + createBill(tda593_customer : str) : str
+  + createBookingBill(tda593_booking : str, tda593_customer : str) : str
+  + getBill(tda593_id : str) : str
+  + getBills(tda593_customer : str) : str
+  + getBookingBill(tda593_booking : str) : str
+  + getUnpaidBills(tda593_customer : str) : str
+  + markBillAsPaid(tda593_bankingManager : str, tda593_bill : str, tda593_creditCardManager : str, tda593_isPaid : str) : bool
+  + publishBill(tda593_bill : str) : void
+}
+class tda593_billing_BillManagerImpl {
+}
+class tda593_billing_BookingBill {
+}
+class tda593_billing_CreditCardInformation {
+  + cardNumber : str
+  + ccv : str
+  + expirationDate : date
+  + firstName : str
+  + lastName : str
+}
+class tda593_billing_CreditCardInformationDataService {
+  + getByLegalEntity(tda593_legalEntityId : str) : str
+}
+abstract class tda593_billing_CreditCardManager {
+  + getCreditCardInformation(tda593_legalEntity : str) : str
+  + revalidateCreditCardInformation(tda593_bankingManager : str, tda593_legalEntity : str) : bool
+  + setCreditCardInformation(tda593_cardNumber : str, tda593_ccv : str, tda593_expirationDate : str, tda593_firstname : str, tda593_lastname : str, tda593_legalEntity : str, tda593_validator : str) : bool
+}
+class tda593_billing_CreditCardManagerImpl {
+}
+abstract class tda593_billing_Discount {
+  + code : str
+  + name : str
+  + getPriceWithDiscount(tda593_price : str) : float
+}
+class tda593_billing_DiscountDataService {
+}
+class tda593_billing_DiscountLimit {
+  + endDate : date
+  + id : int
+  + startDate : date
+  + timesLeftToUse : int
+}
+abstract class tda593_billing_DiscountManager {
+  + getDiscount(tda593_code : str) : str
+}
+class tda593_billing_DiscountManagerImpl {
+}
+class tda593_billing_PercentageDiscount {
+  + percentage : float
+}
+class tda593_billing_Purchase {
+  + id : int
+  + price : float
+  + quantity : int
+}
+class tda593_billing_Service {
+  + id : int
+  + name : str
+  + price : float
+}
+class tda593_billing_ServiceDataService {
+}
+abstract class tda593_billing_ServiceManager {
+  + getAllServices() : str
+  + getService(tda593_id : str) : str
+}
+class tda593_billing_ServiceManagerImpl {
+}
+class tda593_billing_SumDiscount {
+  + discountSum : float
+}
+class tda593_booking_Booking {
+  + endDate : date
+  + id : int
+  + isCanceled : bool
+  + price : float
+  + specialRequest : str
+  + startDate : date
+  + getGuests() : str
+  + getStayRequests() : str
+  + registerTravelInformation(tda593_travelInformation : str) : void
+  + unregisterTravelInformation(tda593_travelInformation : str) : void
+}
+class tda593_booking_BookingDataService {
+  + beginTransaction() : void
+  + commitTransaction() : void
+  + getAll(tda593_from_ : str, tda593_roomNumber : str, tda593_to : str) : str
+  + rollbackTransaction() : void
+}
+abstract class tda593_booking_BookingManager {
+  + addStayRequest(tda593_booking : str, tda593_stayRequest : str) : str
+  + cancelBooking(tda593_booking : str) : void
+  + changeBookingDates(tda593_booking : str, tda593_newEnd : str, tda593_newStart : str) : bool
+  + checkIn(tda593_booking : str, tda593_guests : str) : void
+  + checkOut(tda593_booking : str) : void
+  + createBooking(tda593_customer : str, tda593_from_ : str, tda593_room : str, tda593_to : str) : str
+  + getActiveBooking(tda593_roomNumber : str) : str
+  + getAvailableRoomTypeAmount(tda593_from_ : str, tda593_roomType : str, tda593_to : str) : int
+  + getAvailableRoomTypeAmounts(tda593_from_ : str, tda593_to : str) : void
+  + getAvailableRooms(tda593_from_ : str, tda593_roomType : str, tda593_to : str) : str
+  + getBooking(tda593_bookingId : str) : str
+  + getBookings(tda593_customer : str) : str
+  + getStayRequests() : void
+  + isRoomAvailable(tda593_from_ : str, tda593_roomNumber : str, tda593_to : str) : bool
+  + isRoomTypeAvailable(tda593_from_ : str, tda593_roomType : str, tda593_to : str) : bool
+  + registerRoom(tda593_booking : str, tda593_room : str) : void
+  + removeStayRequest(tda593_booking : str, tda593_stayRequest : str) : void
+  + setSpecialRequest(tda593_booking : str, tda593_specialRequest : str) : void
+}
+class tda593_booking_BookingManagerImpl {
+}
+abstract class tda593_booking_LegalEntity {
+  + email : str
+  + id : int
+  + phone : str
+  + getName() : str
+}
+class tda593_booking_LegalEntityDataService {
+  + findOrganization(tda593_name : str) : str
+  + findPerson(tda593_firstname : str, tda593_lastname : str) : str
+  + getOrganization(tda593_organizationNumber : str) : str
+  + getPerson(tda593_SSN : str) : str
+}
+abstract class tda593_booking_LegalEntityManager {
+  + createOrganization(tda593_email : str, tda593_name : str, tda593_organizationNumber : str, tda593_phone : str) : str
+  + createPerson(tda593_SSN : str, tda593_email : str, tda593_firstname : str, tda593_lastname : str, tda593_phone : str) : str
+  + findOrganization(tda593_name : str) : str
+  + findPerson(tda593_firstname : str, tda593_lastname : str) : str
+  + getLegalEntity(tda593_id : str) : str
+  + getOrganization(tda593_organizationNumber : str) : str
+  + getPerson(tda593_SSN : str) : str
+}
+class tda593_booking_LegalEntityManagerImpl {
+}
+class tda593_booking_Organization {
+  + name : str
+  + organizationNumber : str
+}
+class tda593_booking_Person {
+  + firstname : str
+  + lastname : str
+  + socialSecurityNumber : str
+}
+class tda593_booking_RoomStay {
+  + active : bool
+  + id : int
+}
+class tda593_booking_StayRequest {
+  + id : int
+  + text : str
+  + timeStamp : date
+}
+class tda593_booking_TravelInformation {
+  + comment : str
+  + id : int
+  + trackingId : str
+}
+abstract class tda593_california_DataService {
+  + count() : int
+  + delete(tda593_object : str) : void
+  + exist(tda593_object : str) : bool
+  + get(tda593_id : str) : void
+  + getAll() : void
+  + set(tda593_object : str) : void
+  + setAll(tda593_objects : str) : void
+}
+abstract class tda593_facilities_AdminKeyCardManager {
+  + addKeyCard(tda593_cardNumber : str) : void
+  + removeKeyCard(tda593_cardNumber : str) : void
+}
+class tda593_facilities_AdminKeyCardManagerImpl {
+}
+abstract class tda593_facilities_AdminRoomManager {
+  + addConferenceRoom(tda593_description : str, tda593_disabilityApprovals : str, tda593_equipment : str, tda593_floor : str, tda593_number : str, tda593_numberOfSeats : str, tda593_photos : str, tda593_roomType : str) : str
+  + addGuestRoom(tda593_description : str, tda593_disabilityApprovals : str, tda593_floor : str, tda593_number : str, tda593_numberOfBeds : str, tda593_numberOfExtraBeds : str, tda593_photos : str, tda593_roomType : str) : str
+  + addRoomType(tda593_description : str, tda593_name : str, tda593_price : str, tda593_roomApprovals : str) : str
+  + removeRoom(tda593_roomNumber : str) : bool
+  + removeRoomType(tda593_roomType : str) : bool
+}
+class tda593_facilities_AdminRoomManagerImpl {
+}
+class tda593_facilities_ConferenceRoom {
+  + equipment : str
+  + numberOfSeats : int
+}
+class tda593_facilities_GuestRoom {
+  + numberOfBeds : int
+  + numberOfExtrabeds : int
+}
+class tda593_facilities_KeyCard {
+  + id : str
+}
+class tda593_facilities_KeyCardDataService {
+}
+abstract class tda593_facilities_KeyCardManager {
+  + getKeyCard(tda593_keyCardNbr : str) : str
+}
+class tda593_facilities_KeyCardManagerImpl {
+}
+abstract class tda593_facilities_Room {
+  + description : str
+  + disabilityApprovals : str
+  + floor : int
+  + isBeingCleaned : bool
+  + isOperational : bool
+  + photos : str
+  + roomNumber : str
+  + registerKeyCard(tda593_keyCard : str) : void
+  + unregisterKeyCard(tda593_keyCard : str) : void
+  + unregisterKeyCards() : void
+}
+class tda593_facilities_RoomDataService {
+  + getAllConferenceRooms() : str
+  + getAllGuestRooms() : str
+  + getConferenceRoom(tda593_id : str) : str
+  + getGuestRoom(tda593_id : str) : str
+}
+abstract class tda593_facilities_RoomManager {
+  + getConferenceRooms() : str
+  + getGuestRooms() : str
+  + getRoom(tda593_roomNumber : str) : str
+  + getRoomType(tda593_name : str) : str
+  + getRoomTypeAmount(tda593_roomType : str) : int
+  + getRoomTypeAmounts() : void
+  + getRoomTypes() : str
+  + getRooms() : str
+  + registerKeyCard(tda593_keyCardNbr : str, tda593_roomNumber : str) : void
+  + setIsBeingCleaned(tda593_room : str, tda593_value : str) : void
+  + unregisterAllKeyCards(tda593_roomNumber : str) : void
+  + unregisterKeyCard(tda593_keyCardNbr : str, tda593_roomNumber : str) : void
+}
+class tda593_facilities_RoomManagerImpl {
+}
+class tda593_facilities_RoomType {
+  + description : str
+  + name : str
+  + price : float
+  + roomApprovals : str
+}
+class tda593_facilities_RoomTypeDataService {
+}
+BankingManager <|-- tda593_billing_BankingManagerImpl
+Bill <|-- tda593_billing_BookingBill
+BillManager <|-- tda593_billing_BillManagerImpl
+BookingManager <|-- tda593_booking_BookingManagerImpl
+CreditCardManager <|-- tda593_billing_CreditCardManagerImpl
+Discount <|-- tda593_billing_PercentageDiscount
+Discount <|-- tda593_billing_SumDiscount
+DiscountManager <|-- tda593_billing_AdminDiscountManager
+DiscountManager <|-- tda593_billing_DiscountManagerImpl
+KeyCardManager <|-- tda593_facilities_AdminKeyCardManager
+KeyCardManager <|-- tda593_facilities_KeyCardManagerImpl
+LegalEntity <|-- tda593_booking_Organization
+LegalEntity <|-- tda593_booking_Person
+LegalEntityManager <|-- tda593_booking_LegalEntityManagerImpl
+Room <|-- tda593_facilities_ConferenceRoom
+Room <|-- tda593_facilities_GuestRoom
+RoomManager <|-- tda593_facilities_AdminRoomManager
+RoomManager <|-- tda593_facilities_RoomManagerImpl
+ServiceManager <|-- tda593_billing_AdminServiceManager
+ServiceManager <|-- tda593_billing_ServiceManagerImpl
+billing_AdminDiscountManager <|-- tda593_billing_AdminDiscountManagerImpl
+billing_AdminServiceManager <|-- tda593_billing_AdminServiceManagerImpl
+billing_DiscountManagerImpl <|-- tda593_billing_AdminDiscountManagerImpl
+billing_ServiceManagerImpl <|-- tda593_billing_AdminServiceManagerImpl
+facilities_AdminKeyCardManager <|-- tda593_facilities_AdminKeyCardManagerImpl
+facilities_AdminRoomManager <|-- tda593_facilities_AdminRoomManagerImpl
+facilities_KeyCardManagerImpl <|-- tda593_facilities_AdminKeyCardManagerImpl
+facilities_RoomManagerImpl <|-- tda593_facilities_AdminRoomManagerImpl
+facilities_KeyCard "0..9999" -- "1..1" tda593_facilities_Room : allowedKeyCards0
+booking_LegalEntity "0..9999" -- "1..1" tda593_billing_DiscountLimit : allowedUsers10
+billing_BillDataService "1..1" -- "1..1" tda593_billing_BillManagerImpl : billDataService24
+booking_Booking "1..1" -- "1..1" tda593_billing_BookingBill : booking21
+booking_BookingDataService "1..1" -- "1..1" tda593_booking_BookingManagerImpl : bookingDataService45
+booking_BookingManager "1..1" -- "1..1" tda593_billing_BillManagerImpl : bookingManager25
+billing_CreditCardInformationDataService "1..1" -- "1..1" tda593_billing_CreditCardManagerImpl : creditCardInformationDataService27
+booking_LegalEntity "1..1" -- "1..1" tda593_billing_Bill : customer15
+billing_DiscountDataService "1..1" -- "1..1" tda593_billing_DiscountManagerImpl : discountDataService11
+billing_DiscountLimit "0..1" -- "1..1" tda593_billing_Discount : discountLimit9
+facilities_KeyCardDataService "1..1" -- "1..1" tda593_facilities_KeyCardManagerImpl : keyCardDataService8
+facilities_KeyCardManager "1..1" -- "1..1" tda593_facilities_RoomManagerImpl : keyCardManager6
+booking_LegalEntity "0..1" -- "1..1" tda593_billing_CreditCardInformation : legalEntity22
+booking_LegalEntityDataService "1..1" -- "1..1" tda593_booking_LegalEntityManagerImpl : legalEntityDataService48
+booking_TravelInformation "0..1" -- "1..1" tda593_booking_TravelInformation : predecessor38
+billing_Purchase "0..9999" -- "1..1" tda593_billing_Bill : purchases12
+booking_Person "0..9999" -- "1..1" tda593_booking_RoomStay : registeredPersons41
+booking_LegalEntity "1..1" -- "1..1" tda593_booking_Booking : responsible33
+facilities_Room "1..1" -- "1..1" tda593_booking_RoomStay : room43
+facilities_RoomDataService "1..1" -- "1..1" tda593_facilities_RoomManagerImpl : roomDataService3
+facilities_RoomManager "1..1" -- "1..1" tda593_booking_BookingManagerImpl : roomManager46
+booking_RoomStay "0..1" -- "1..1" tda593_booking_Booking : roomStay36
+facilities_RoomType "1..1" -- "1..1" tda593_facilities_Room : roomType1
+facilities_RoomType "1..1" -- "1..1" tda593_booking_Booking : roomType29
+facilities_RoomTypeDataService "1..1" -- "1..1" tda593_facilities_RoomManagerImpl : roomTypeDataService4
+billing_Service "1..1" -- "1..1" tda593_billing_Purchase : service20
+billing_ServiceDataService "1..1" -- "1..1" tda593_billing_ServiceManagerImpl : serviceDataService28
+booking_StayRequest "0..9999" -- "1..1" tda593_booking_RoomStay : stayRequest40
+billing_Bill "0..9999" -- "1..1" tda593_billing_Bill : subBills18
+booking_TravelInformation "0..1" -- "1..1" tda593_booking_Booking : travelInformation31
+billing_Discount "0..9999" -- "1..1" tda593_billing_Bill : usedDiscounts13
+@enduml

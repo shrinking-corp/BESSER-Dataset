@@ -1,0 +1,79 @@
+@startuml
+class Add_Course_UseCase {
+}
+class Add_Evalutaions_Assignments_Exams_UseCase {
+}
+class Add_Instructor_UseCase {
+}
+class Add_Student_UseCase {
+}
+class Admin_Actor {
+}
+class Answer {
+}
+class Course {
+}
+class Exam {
+}
+class ExamResult {
+}
+class Generate_Report_UseCase {
+}
+class Grade_Evalutations_Assignment_Exams_UseCase {
+}
+class Instructor {
+}
+class Instructor_Actor {
+}
+class Login_UseCase {
+}
+class Login_UseCase1 {
+}
+class Login_UseCase2 {
+}
+class Logout_UseCase {
+}
+class Modify_Delete_Courses_UseCase {
+}
+class Modify_Delete_Evalutaions_Assignments_Exams_UseCase {
+}
+class Modify_Delete_Instructor_UseCase {
+}
+class Modify_Delete_Student_UseCase {
+}
+class Question {
+}
+class Register_drop_course_UseCase {
+}
+class School_Admin {
+}
+class Student {
+}
+class Student_Actor {
+}
+class Submit_Exam_Assignment_UseCase {
+}
+class User {
+}
+class View_Grades_UseCase {
+}
+Admin_Actor "0..1" -- "0..1" Login_UseCase : Admin_Login
+Admin_Actor "0..1" -- "0..1" Logout_UseCase : Admin_Logout
+Course "1..1" -- "1..9999" Exam : Course_Exam
+Exam "1..9999" -- "1..9999" Question : Exam_Question
+Instructor_Actor "0..1" -- "0..1" Login_UseCase1 : Instructor_Login
+Instructor_Actor "0..1" -- "0..1" Logout_UseCase : Instructor_Logout
+Add_Course_UseCase "0..1" -- "0..1" Login_UseCase : Login_Add_Course
+Add_Evalutaions_Assignments_Exams_UseCase "0..1" -- "0..1" Login_UseCase1 : Login_Add_Evalutaions_Assignments_Exams
+Add_Instructor_UseCase "0..1" -- "0..1" Login_UseCase : Login_Add_Instructor
+Add_Student_UseCase "0..1" -- "0..1" Login_UseCase : Login_Add_Student
+Generate_Report_UseCase "0..1" -- "0..1" Login_UseCase1 : Login_Generate_Report
+Login_UseCase2 "0..1" -- "0..1" Register_drop_course_UseCase : Login_Register_drop_course
+Login_UseCase2 "0..1" -- "0..1" Student_Actor : Login_Student
+Login_UseCase2 "0..1" -- "0..1" View_Grades_UseCase : Login_View_Grades
+Answer "1..1" -- "1..1" Question : Question_Answer
+Course "1..9999" -- "1..9999" School_Admin : School_Admin_Course
+Course "1..9999" -- "1..9999" Student : Student_Course
+Logout_UseCase "0..1" -- "0..1" Student_Actor : Student_Logout
+Login_UseCase2 "0..1" -- "0..1" Submit_Exam_Assignment_UseCase : Submit_Exam_Assignment_Login
+@enduml

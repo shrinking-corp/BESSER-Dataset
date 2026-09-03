@@ -1,0 +1,35 @@
+@startuml
+enum CardSuit {
+}
+enum CardTitle {
+}
+class Cards {
+  + suit : CardSuit
+  + title : CardTitle
+  + value : int
+}
+class Dealer {
+  + cards : Cards
+  + name : str
+}
+class Deck {
+}
+class Game {
+  + winner : Player
+}
+class Hand {
+  + value : HandValue
+}
+class HandValue {
+}
+class Player {
+  + name : str
+}
+Dealer "1..1" -- "1..1" Deck : Dealer_Deck
+Cards "52..52" -- "1..1" Deck : Deck_Cards
+Dealer "1..1" -- "1..1" Game : Game_Dealer
+Hand "0..1" -- "0..1" HandValue : HandValue_Hand
+Cards "5..5" -- "1..1" Hand : Hand_Cards
+Hand "1..1" -- "1..1" Player : Hand_Player
+Game "1..1" -- "2..9" Player : Player_Game
+@enduml

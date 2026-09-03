@@ -1,0 +1,99 @@
+@startuml
+class SmartHouse_AirConditioner {
+  + freshAir : bool
+  + level : str
+}
+class SmartHouse_CoffeeMaker {
+  + loaded : bool
+  + on : bool
+  + warming : bool
+}
+class SmartHouse_Cooker {
+  + on : bool
+}
+class SmartHouse_EV {
+  + charging : bool
+  + level : str
+  + name : str
+  + pluged : bool
+}
+class SmartHouse_Gate {
+  + outlocked : bool
+}
+class SmartHouse_Heating {
+  + level : int
+  + name : str
+}
+class SmartHouse_House {
+  + eprice : str
+  + name : str
+  + outtemp : str
+  + time : str
+}
+class SmartHouse_Light {
+  + level : str
+}
+class SmartHouse_Person {
+  + name : str
+}
+class SmartHouse_Projector {
+  + brightness : str
+  + on : bool
+  + volume : str
+}
+class SmartHouse_Room {
+  + air : int
+  + bright : str
+  + name : str
+  + temp : float
+}
+class SmartHouse_Security {
+  + on : bool
+}
+class SmartHouse_Sensor {
+  + air : bool
+  + battery : str
+  + brightness : bool
+  + circle : str
+  + temp : bool
+}
+class SmartHouse_WashingMachine {
+  + loaded : bool
+  + on : bool
+}
+class SmartHouse_WaterHeater {
+  + boost : bool
+  + on : bool
+  + temp : str
+}
+class SmartHouse_Window {
+  + curtainOn : bool
+  + name : str
+  + opened : bool
+}
+SmartHouse_AirConditioner "0..9999" --* "1..1" SmartHouse_Room : ac24
+SmartHouse_CoffeeMaker "0..1" --* "1..1" SmartHouse_Room : cm37
+SmartHouse_Cooker "0..1" --* "1..1" SmartHouse_Room : cooker33
+SmartHouse_EV "0..9999" --* "1..1" SmartHouse_House : ev4
+SmartHouse_Gate "0..1" --* "1..1" SmartHouse_House : gate6
+SmartHouse_Heating "0..9999" --* "1..1" SmartHouse_Room : heating20
+SmartHouse_Gate "1..1" -- "1..1" SmartHouse_House : house10
+SmartHouse_House "1..1" -- "1..1" SmartHouse_Security : house11
+SmartHouse_House "1..1" -- "1..1" SmartHouse_WaterHeater : house13
+SmartHouse_EV "1..1" -- "1..1" SmartHouse_House : house15
+SmartHouse_House "0..1" -- "1..1" SmartHouse_Room : house17
+SmartHouse_Light "0..9999" --* "1..1" SmartHouse_Room : light22
+SmartHouse_House "1..1" *-- "0..9999" SmartHouse_Person : member1
+SmartHouse_Person "0..9999" -- "1..1" SmartHouse_Room : occupied26
+SmartHouse_Projector "1..1" --* "1..1" SmartHouse_Room : projector31
+SmartHouse_House "1..1" *-- "0..9999" SmartHouse_Room : room0
+SmartHouse_AirConditioner "1..1" -- "1..1" SmartHouse_Room : room39
+SmartHouse_Projector "1..1" -- "1..1" SmartHouse_Room : room41
+SmartHouse_Room "1..1" -- "1..1" SmartHouse_WashingMachine : room43
+SmartHouse_CoffeeMaker "1..1" -- "1..1" SmartHouse_Room : room45
+SmartHouse_House "1..1" *-- "0..1" SmartHouse_Security : sec8
+SmartHouse_Room "1..1" *-- "0..9999" SmartHouse_Sensor : sensor29
+SmartHouse_House "1..1" *-- "0..1" SmartHouse_WaterHeater : wh2
+SmartHouse_Room "1..1" *-- "0..9999" SmartHouse_Window : window19
+SmartHouse_Room "1..1" *-- "0..1" SmartHouse_WashingMachine : wm35
+@enduml

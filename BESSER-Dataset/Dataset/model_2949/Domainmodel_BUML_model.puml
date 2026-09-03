@@ -1,0 +1,25 @@
+@startuml
+class Type {
+}
+class domainmodel_DataType {
+  + name : str
+}
+class domainmodel_Domainmodel {
+}
+class domainmodel_Entity {
+  + name : str
+}
+class domainmodel_Feature {
+  + many : bool
+  + name : str
+  + s : str
+  + type : str
+}
+class domainmodel_Type {
+}
+Type <|-- domainmodel_Entity
+domainmodel_Domainmodel "1..1" *-- "0..9999" domainmodel_Type : elements0
+domainmodel_Entity "1..1" *-- "0..9999" domainmodel_Feature : features5
+domainmodel_DataType "0..1" --* "1..1" domainmodel_Type : sd1
+domainmodel_Entity "1..1" -- "0..1" domainmodel_Entity : superType4
+@enduml

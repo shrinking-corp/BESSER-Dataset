@@ -1,0 +1,79 @@
+@startuml
+class Administrator {
+  + adminID : int
+  + email : str
+  + name : str
+  + password : str
+  + phoneNo : str
+}
+class AdvSearch {
+  + bookAuthor : str
+  + bookHighCost : str
+  + bookLowCost : str
+  + bookTitle : str
+  + categoryID : str
+}
+class Book {
+  + authorName : str
+  + bookID : int
+  + bookName : str
+  + categoryID : int
+  + imageURL : str
+  + notes : str
+  + price : str
+  + productURL : str
+  + rating : int
+}
+class BookSet {
+  + bookID : int
+  + bookName : str
+}
+class BooksOrder {
+  + customerID : int
+  + orderID : int
+  + price : str
+  + quantity : int
+}
+class Category {
+  + categoryID : int
+  + categoryName : str
+}
+class Customer {
+  + CCinfo : str
+  + address : str
+  + customerID : str
+  + email : str
+  + name : str
+  + password : str
+  + phoneNo : int
+}
+class Search {
+  + bookTitle : str
+  + categoryID : str
+}
+class SessionManager {
+  + categoryName : str
+  + userID : int
+}
+class ShoppingCart {
+  + customerID : int
+  + orderID : int
+  + price : str
+}
+class User {
+  + loginStatus : str
+  + password : str
+  + userID : int
+}
+AdvSearch "0..9999" -- "0..9999" BookSet : BookSet_AdvSearch
+BookSet "0..9999" -- "0..9999" Search : BookSet_Search
+Administrator "1..1" -- "0..9999" BooksOrder : BooksOrder_Administrator
+Book "1..9999" -- "1..1" BooksOrder : BooksOrder_Book
+Book "1..1" -- "1..9999" Category : Category_Book
+BooksOrder "1..1" -- "0..9999" Customer : Customer_BooksOrder
+Customer "1..9999" -- "1..1" ShoppingCart : Customer_ShoppingCart
+Category "0..1" -- "1..1" SessionManager : SessionManager_Category
+SessionManager "0..1" -- "1..1" User : SessionManager_User
+BooksOrder "1..9999" -- "1..1" ShoppingCart : ShoppingCart_BooksOrder
+User "0..1" -- "0..1" User : User_User
+@enduml

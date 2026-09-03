@@ -1,0 +1,109 @@
+@startuml
+class datatypes_Array {
+  + data : datatypes_Value
+}
+class datatypes_Bool {
+  + data : bool
+}
+class datatypes_Documents {
+  + data : datatypes_Json
+  + file : str
+  + file_name : str
+  + tab_counter : int
+}
+class datatypes_Json {
+  + values : datatypes_Value
+}
+class datatypes_Number {
+  + data : int
+}
+class datatypes_String {
+  + data : datatypes_String
+}
+abstract class datatypes_Value {
+  + attribute : str
+}
+class marketing_Product {
+  + active : bool
+  + busId : user_Business
+  + ccategory : system_Category
+  + created : date
+  + expires : date
+  + id : str
+  + name : str
+  + price : float
+  + reviews : marketing_Review
+}
+class marketing_Review {
+  + description : str
+  + id : str
+  + product : marketing_Product
+  + rating : datatypes_Number
+  + user : user_User
+}
+class system_Category {
+  + icon : str
+  + id : str
+  + name : str
+  + parent : system_Category
+  + section : str
+}
+class user_Address {
+  + country : datatypes_String
+  + postcode : str
+  + state : str
+  + street : str
+  + suburb : str
+}
+class user_Business {
+  + address : user_Address
+  + adminUser : user_User
+  + avgRatings : datatypes_Number
+  + category : str
+  + description : str
+  + email : str
+  + gallery : datatypes_Array
+  + id : datatypes_String
+  + logo : str
+  + mapRef : datatypes_String
+  + name : datatypes_String
+  + phone : str
+  + products : marketing_Product
+  + providers : user_Provider
+  + staffUsers : user_User
+  + subCategories : datatypes_Array
+  + tags : user_Tags
+  + website : str
+}
+class user_Provider {
+  + displayName : str
+  + email : str
+  + photoURL : str
+  + providerId : str
+  + uid : str
+}
+class user_Tags {
+  + id : str
+  + name : str
+}
+class user_User {
+  + address : user_Address
+  + business : user_Business
+  + displayName : str
+  + email : str
+  + fiirstName : datatypes_String
+  + id : datatypes_String
+  + interests : system_Category
+  + lastName : datatypes_String
+  + phone : datatypes_String
+  + photoURL : str
+  + provider : user_Provider
+  + purchaseHistory : marketing_Product
+  + reviews : marketing_Review
+  + wishlist : marketing_Product
+}
+user_Business "0..9999" -- "1..1" user_Tags : Business_Tags
+user_Business "1..9999" -- "1..9999" user_Provider : Provider_Business
+user_Provider "1..9999" -- "1..9999" user_User : Provider_User
+user_Address "1..1" -- "0..1" user_User : User_Address
+@enduml

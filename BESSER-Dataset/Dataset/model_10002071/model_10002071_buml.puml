@@ -1,0 +1,74 @@
+@startuml
+class CentreHospitalier {
+  + descriptionCentre : str
+  + nomCentre : str
+  + numeroCentre : int
+}
+class Consultion {
+  + dateConsultation : str
+  + description : str
+  + heure : str
+  + numeroConsultation : int
+}
+class DossierPatient {
+  + dateCreation : int
+  + heure : int
+  + infoAntecedant : str
+  + nomDossier : str
+  + numeroPatient : int
+}
+class Examen {
+  + dateProvisoir : str
+  + heure : str
+  + motif : str
+  + numeroExamen : int
+}
+class Medecin {
+  + dateNaissance : str
+  + nomMedecin : str
+  + numeroMedecin : int
+  + prenomMedecin : str
+  + specialite : str
+}
+class Patient {
+  + agePatient : int
+  + lieuResidence : str
+  + nomPatient : str
+  + numeroPatien : int
+  + prenomPatien : str
+  + profession : str
+}
+class Programme {
+  + date : str
+  + heure : str
+  + numeroProgramme : str
+}
+class Rendez_Vous {
+  + dateRDV : str
+  + heure : str
+  + lieuRDV : str
+  + numeroRdV : int
+}
+class ResultatExamen {
+  + infoResultat : str
+  + numeroResultat : int
+}
+class Secretaire_external {
+}
+class Service {
+  + descriptionService : str
+  + nomService : str
+  + numeroService : int
+}
+DossierPatient "1..9999" -- "0..1" Patient : DossierPatient_Patient
+Medecin "0..1" -- "0..1" Service : Medecin_Service
+Patient "1..1" -- "1..9999" Rendez_Vous : Patient_Rendez_Vous
+Patient "0..1" -- "0..1" ResultatExamen : Patient_ResultatExamen
+Medecin "0..1" -- "0..1" Programme : Programme_Medecin
+Consultion "0..1" -- "0..1" Rendez_Vous : Rendez_Vous_Consultion
+Examen "0..1" -- "0..1" Rendez_Vous : Rendez_Vous_Examen
+Medecin "0..1" -- "0..1" Rendez_Vous : Rendez_Vous_Medecin
+Medecin "0..1" -- "0..1" ResultatExamen : ResultatExamen_Medecin
+ResultatExamen "0..9999" -- "1..1" Secretaire_external : Secretaire_ResultatExamen
+CentreHospitalier "1..1" -- "1..9999" Service : Service_CentreHospitalier
+@enduml

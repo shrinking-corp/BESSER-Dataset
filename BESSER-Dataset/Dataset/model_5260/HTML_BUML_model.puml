@@ -1,0 +1,101 @@
+@startuml
+class HTMLElement {
+}
+class HTML_A {
+  + ref : str
+}
+class HTML_B {
+}
+class HTML_BR {
+}
+class HTML_DIV {
+  + align : str
+}
+class HTML_FONT {
+  + color : str
+  + face : str
+  + size : str
+  + value : str
+}
+class HTML_HR {
+  + color : str
+}
+class HTML_HTML {
+}
+class HTML_HTMLElement {
+}
+class HTML_I {
+}
+class HTML_IMG {
+  + border : str
+  + height : str
+  + src : str
+  + width : str
+}
+class HTML_P {
+  + align : str
+}
+class HTML_S {
+}
+class HTML_SPAN {
+}
+class HTML_Style {
+  + key : str
+  + value : str
+}
+class HTML_TABLE {
+  + align : str
+  + bgcolor : str
+  + border : int
+  + cellpadding : str
+  + cellspacing : str
+  + width : str
+}
+class HTML_TD {
+  + align : str
+  + bgcolor : str
+  + colspan : str
+  + height : str
+  + rowspan : str
+  + valign : str
+  + width : str
+}
+class HTML_TR {
+  + align : str
+  + bgcolor : str
+  + height : str
+  + valign : str
+}
+class HTML_U {
+}
+enum StyleKey {
+  backgroundColor
+  color
+  display
+  lineHeight
+  padding
+  textAlign
+  textDecoration
+  width
+}
+HTMLElement <|-- HTML_A
+HTMLElement <|-- HTML_B
+HTMLElement <|-- HTML_BR
+HTMLElement <|-- HTML_DIV
+HTMLElement <|-- HTML_FONT
+HTMLElement <|-- HTML_HR
+HTMLElement <|-- HTML_I
+HTMLElement <|-- HTML_IMG
+HTMLElement <|-- HTML_P
+HTMLElement <|-- HTML_S
+HTMLElement <|-- HTML_SPAN
+HTMLElement <|-- HTML_TABLE
+HTMLElement <|-- HTML_TD
+HTMLElement <|-- HTML_TR
+HTMLElement <|-- HTML_U
+HTML_HTMLElement "0..9999" --* "1..1" HTML_HTMLElement : elements2
+HTML_HTML "1..1" *-- "0..9999" HTML_HTMLElement : htmlElements0
+HTML_HTMLElement "1..1" *-- "0..9999" HTML_Style : styles4
+HTML_TD "0..9999" --* "1..1" HTML_TR : tds7
+HTML_TABLE "1..1" *-- "0..9999" HTML_TR : trs6
+@enduml

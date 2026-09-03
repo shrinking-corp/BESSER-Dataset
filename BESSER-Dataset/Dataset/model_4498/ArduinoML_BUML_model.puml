@@ -1,0 +1,46 @@
+@startuml
+class ArduinoCard_Actuator {
+}
+abstract class ArduinoCard_Block {
+  + isAnalogic : str
+  + name : str
+  + pinNumber : int
+}
+abstract class ArduinoCard_BlockInteraction {
+  + isHigh : bool
+  + name : str
+}
+class ArduinoCard_Card {
+}
+class ArduinoCard_Command {
+}
+class ArduinoCard_Condition {
+}
+class ArduinoCard_Sensor {
+}
+class ArduinoCard_State {
+  + isInitial : bool
+  + name : str
+}
+class ArduinoCard_Transition {
+  + name : str
+}
+class Block {
+}
+class BlockInteraction {
+}
+Block <|-- ArduinoCard_Actuator
+Block <|-- ArduinoCard_Sensor
+BlockInteraction <|-- ArduinoCard_Command
+BlockInteraction <|-- ArduinoCard_Condition
+ArduinoCard_Actuator "1..1" -- "1..1" ArduinoCard_Command : Actuator10
+ArduinoCard_BlockInteraction "1..9999" --* "1..1" ArduinoCard_Card : BlockInteractions17
+ArduinoCard_Block "1..9999" --* "1..1" ArduinoCard_Card : Blocks19
+ArduinoCard_Command "1..9999" -- "1..1" ArduinoCard_State : Command1
+ArduinoCard_Condition "1..9999" -- "1..1" ArduinoCard_Transition : Condition7
+ArduinoCard_Condition "1..1" -- "1..1" ArduinoCard_Sensor : Sensor3
+ArduinoCard_Card "1..1" *-- "1..9999" ArduinoCard_State : States12
+ArduinoCard_State "1..1" -- "1..9999" ArduinoCard_Transition : Transitions0
+ArduinoCard_Card "1..1" *-- "1..9999" ArduinoCard_Transition : Transitions14
+ArduinoCard_State "1..1" -- "1..1" ArduinoCard_Transition : nextState4
+@enduml

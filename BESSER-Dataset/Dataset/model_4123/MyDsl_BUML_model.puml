@@ -1,0 +1,107 @@
+@startuml
+class Condition {
+}
+class myDsl_ABin {
+}
+class myDsl_AccSucc {
+}
+class myDsl_Affectation {
+}
+class myDsl_COMPARATEUR {
+  + comparateur : str
+}
+class myDsl_Commande {
+}
+class myDsl_Commandes {
+}
+class myDsl_Condition {
+}
+class myDsl_EObject {
+}
+class myDsl_ElemSimple {
+  + symb : str
+}
+class myDsl_ExprSimple {
+  + symb : str
+}
+class myDsl_Expression {
+}
+class myDsl_Fonction {
+  + nom : str
+}
+class myDsl_For {
+}
+class myDsl_ForEach {
+}
+class myDsl_If {
+}
+class myDsl_Input {
+  + in_ : str
+}
+class myDsl_Lexpr {
+}
+class myDsl_Nill {
+  + nil : str
+}
+class myDsl_Nop {
+  + nop : str
+}
+class myDsl_Not {
+  + not_ : str
+}
+class myDsl_OpAccSucc {
+  + op : str
+}
+class myDsl_OpConstructeur {
+  + op : str
+}
+class myDsl_Output {
+  + out : str
+}
+class myDsl_Program {
+}
+class myDsl_Variable {
+  + variable : str
+}
+class myDsl_While {
+}
+Condition <|-- myDsl_Not
+myDsl_ABin "0..1" --* "1..1" myDsl_ExprSimple : abin52
+myDsl_AccSucc "0..1" --* "1..1" myDsl_ExprSimple : accsucc54
+myDsl_Commandes "0..1" --* "1..1" myDsl_If : cmdsElse22
+myDsl_Commandes "0..1" --* "1..1" myDsl_For : cmdsFor32
+myDsl_Commandes "0..1" --* "1..1" myDsl_ForEach : cmdsFor40
+myDsl_Commandes "0..1" --* "1..1" myDsl_If : cmdsIf19
+myDsl_Commandes "0..1" --* "1..1" myDsl_While : cmdsWh27
+myDsl_Commande "1..1" *-- "0..1" myDsl_EObject : commande12
+myDsl_Commande "0..1" --* "1..1" myDsl_Commandes : commande7
+myDsl_Commandes "0..1" --* "1..1" myDsl_Fonction : commandes3
+myDsl_Commande "0..9999" --* "1..1" myDsl_Commandes : commandes9
+myDsl_COMPARATEUR "0..1" --* "1..1" myDsl_Condition : comp69
+myDsl_Expression "0..1" --* "1..1" myDsl_If : cond17
+myDsl_Expression "0..1" --* "1..1" myDsl_While : cond25
+myDsl_Expression "0..1" --* "1..1" myDsl_For : cond30
+myDsl_Condition "0..1" --* "1..1" myDsl_Expression : cond43
+myDsl_ExprSimple "0..1" --* "1..1" myDsl_Lexpr : e158
+myDsl_Condition "1..1" *-- "0..1" myDsl_ExprSimple : e166
+myDsl_ABin "1..1" *-- "0..1" myDsl_Expression : e176
+myDsl_Condition "1..1" *-- "0..1" myDsl_Expression : e271
+myDsl_ABin "1..1" *-- "0..1" myDsl_Expression : e279
+myDsl_Expression "0..1" --* "1..1" myDsl_ForEach : elem35
+myDsl_ElemSimple "0..1" --* "1..1" myDsl_ExprSimple : elemSimple56
+myDsl_Affectation "1..1" *-- "0..9999" myDsl_Expression : elm15
+myDsl_Expression "0..1" --* "1..1" myDsl_ForEach : ensemble37
+myDsl_AccSucc "1..1" *-- "0..1" myDsl_ExprSimple : expr84
+myDsl_Expression "0..1" --* "1..1" myDsl_Not : expr87
+myDsl_ExprSimple "0..1" --* "1..1" myDsl_Expression : exprs45
+myDsl_Fonction "0..9999" --* "1..1" myDsl_Program : fonctions0
+myDsl_Fonction "1..1" *-- "0..1" myDsl_Input : in_1
+myDsl_Lexpr "0..1" --* "1..1" myDsl_Lexpr : lexpr61
+myDsl_ElemSimple "1..1" *-- "0..1" myDsl_Lexpr : lexpr63
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_Nill : nil47
+myDsl_ABin "1..1" *-- "0..1" myDsl_OpConstructeur : op74
+myDsl_AccSucc "1..1" *-- "0..1" myDsl_OpAccSucc : op82
+myDsl_Fonction "1..1" *-- "0..1" myDsl_Output : out5
+myDsl_Affectation "1..1" *-- "0..9999" myDsl_Variable : variable14
+myDsl_ExprSimple "1..1" *-- "0..1" myDsl_Variable : variable49
+@enduml

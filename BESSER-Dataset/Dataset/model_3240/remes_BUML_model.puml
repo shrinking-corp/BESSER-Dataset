@@ -1,0 +1,147 @@
+@startuml
+class ActionRoot {
+}
+class ControlPath {
+}
+class EntryPoint {
+}
+class ExitPoint {
+}
+class LogicalRoot {
+}
+class Mode {
+}
+class Point {
+}
+enum PrimitiveTypes {
+  boolean
+  clock
+  float
+  integer
+  natural
+}
+class Referable {
+}
+class ResourceRoot {
+}
+enum ResourceTypes {
+  bandwidth
+  cpu
+  memory
+  port
+  power
+}
+class remes_CompositeEntryPoint {
+}
+class remes_CompositeExitPoint {
+}
+class remes_CompositeMode {
+}
+class remes_ConditionalConnector {
+}
+class remes_Constant {
+  + global_ : bool
+  + type : str
+  + value : str
+}
+abstract class remes_ControlPath {
+  + name : str
+}
+class remes_Edge {
+  + actionBody : str
+  + actionGuard : str
+}
+class remes_EntryPoint {
+}
+class remes_ExitPoint {
+}
+class remes_InitEdge {
+  + initialization : str
+}
+class remes_InitPoint {
+}
+abstract class remes_Mode {
+  + initialization : str
+  + findConstantByName(remes_name : str) : str
+  + findResourceByName(remes_name : str) : str
+  + findVariableByName(remes_name : str) : str
+}
+abstract class remes_Point {
+}
+abstract class remes_Referable {
+  + name : str
+}
+class remes_RemesDiagram {
+}
+class remes_Resource {
+  + expression : str
+  + type : str
+}
+class remes_SubMode {
+  + invariant : str
+  + isUrgent : bool
+}
+class remes_Variable {
+  + global_ : bool
+  + readable : bool
+  + type : str
+  + value : str
+  + vectorSize : int
+  + writable : bool
+}
+class remes_WriteEdge {
+}
+class remes_WritePoint {
+}
+ControlPath <|-- remes_ConditionalConnector
+ControlPath <|-- remes_Mode
+EntryPoint <|-- remes_CompositeExitPoint
+ExitPoint <|-- remes_CompositeEntryPoint
+Mode <|-- remes_CompositeMode
+Mode <|-- remes_SubMode
+Point <|-- remes_EntryPoint
+Point <|-- remes_ExitPoint
+Point <|-- remes_InitPoint
+Point <|-- remes_WritePoint
+Referable <|-- remes_Constant
+Referable <|-- remes_Resource
+Referable <|-- remes_Variable
+remes_CompositeEntryPoint "1..1" -- "0..1" remes_CompositeMode : composite33
+remes_CompositeExitPoint "1..1" -- "0..1" remes_CompositeMode : composite35
+remes_CompositeEntryPoint "1..1" --* "1..1" remes_CompositeMode : compositeEntryPoint14
+remes_CompositeExitPoint "1..1" --* "1..1" remes_CompositeMode : compositeExitPoint15
+remes_CompositeMode "1..1" *-- "0..9999" remes_ConditionalConnector : conditionalConnectors10
+remes_Edge "1..1" -- "1..1" remes_ExitPoint : connectFrom39
+remes_InitEdge "1..1" -- "1..1" remes_InitPoint : connectFrom45
+remes_ExitPoint "1..1" -- "1..1" remes_WriteEdge : connectFrom59
+remes_Edge "1..1" -- "1..1" remes_EntryPoint : connectTo41
+remes_EntryPoint "1..1" -- "1..1" remes_InitEdge : connectTo47
+remes_WriteEdge "1..1" -- "1..1" remes_WritePoint : connectTo57
+remes_Constant "0..9999" --* "1..1" remes_Mode : constants7
+remes_CompositeMode "1..1" -- "1..1" remes_InitPoint : container24
+remes_ControlPath "0..1" -- "1..1" remes_EntryPoint : container27
+remes_ControlPath "0..1" -- "1..1" remes_ExitPoint : container31
+remes_CompositeMode "1..1" -- "1..1" remes_WritePoint : container60
+remes_Edge "0..9999" -- "1..1" remes_EntryPoint : entryEdges26
+remes_ControlPath "1..1" *-- "1..1" remes_EntryPoint : entryPoint1
+remes_Edge "0..9999" --* "1..1" remes_ExitPoint : exitEdges28
+remes_ControlPath "1..1" *-- "1..1" remes_ExitPoint : exitPoint2
+remes_InitEdge "0..1" --* "1..1" remes_InitPoint : initEdge23
+remes_CompositeMode "1..1" *-- "1..1" remes_InitPoint : initPoint12
+remes_Mode "0..9999" --* "1..1" remes_RemesDiagram : modes0
+remes_CompositeMode "0..1" -- "1..1" remes_SubMode : parent19
+remes_CompositeMode "0..1" -- "1..1" remes_ConditionalConnector : parent21
+ActionRoot "0..1" --* "1..1" remes_Edge : parsedActionBody43
+LogicalRoot "0..1" --* "1..1" remes_Edge : parsedActionGuard37
+ResourceRoot "0..1" --* "1..1" remes_Resource : parsedExpression54
+ActionRoot "0..1" --* "1..1" remes_InitEdge : parsedInitialization48
+LogicalRoot "0..1" --* "1..1" remes_SubMode : parsedInvariant20
+remes_Mode "1..1" *-- "0..9999" remes_Resource : resources5
+remes_Mode "1..1" -- "1..1" remes_Variable : scope51
+remes_Mode "1..1" -- "1..1" remes_Resource : scope52
+remes_Constant "1..1" -- "1..1" remes_Mode : scope55
+remes_CompositeMode "1..1" *-- "1..9999" remes_SubMode : subModes9
+remes_Mode "1..1" *-- "0..9999" remes_Variable : variables4
+remes_WriteEdge "0..9999" --* "1..1" remes_WritePoint : writeEdges62
+remes_CompositeMode "1..1" *-- "1..1" remes_WritePoint : writePoint17
+@enduml

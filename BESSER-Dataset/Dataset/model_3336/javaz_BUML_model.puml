@@ -1,0 +1,78 @@
+@startuml
+class JavaElement {
+}
+enum JavaKind {
+  CLASS
+  EXCEPTION
+  INTERFACE
+}
+enum JavaParameterKind {
+  IN
+  INOUT
+  OUT
+  RETURN
+}
+enum JavaVisibilityKind {
+  PACKAGE
+  PRIVATE
+  PROTECTED
+  PUBLIC
+}
+class javaz_Block {
+  + content : str
+}
+class javaz_Field {
+  + final : bool
+  + static : bool
+  + transient : bool
+  + type : str
+  + visibility : str
+  + volatile : bool
+}
+class javaz_JavaClass {
+  + final : bool
+  + kind : str
+  + needToGenerate : bool
+  + public : bool
+  + rewritable : bool
+}
+class javaz_JavaElement {
+  + name : str
+}
+class javaz_JavaPackageX {
+  + needToGenerate : bool
+}
+class javaz_JavaParameter {
+  + final : bool
+  + kind : str
+  + parameterKind : str
+  + type : str
+}
+class javaz_Javaz {
+}
+class javaz_Method {
+  + abstract : bool
+  + constructor : bool
+  + final : bool
+  + native : bool
+  + static : bool
+  + synchronized : bool
+  + visibility : str
+}
+JavaElement <|-- javaz_Field
+JavaElement <|-- javaz_JavaClass
+JavaElement <|-- javaz_JavaPackageX
+JavaElement <|-- javaz_JavaParameter
+JavaElement <|-- javaz_Javaz
+JavaElement <|-- javaz_Method
+javaz_Block "0..1" --* "1..1" javaz_Method : block21
+javaz_JavaClass "0..9999" --* "1..1" javaz_Javaz : classes1
+javaz_JavaClass "0..1" -- "1..1" javaz_JavaClass : extends14
+javaz_Field "0..9999" --* "1..1" javaz_JavaClass : fields5
+javaz_JavaClass "0..9999" -- "1..1" javaz_JavaClass : implements17
+javaz_JavaClass "0..9999" -- "1..1" javaz_JavaClass : imports8
+javaz_JavaClass "1..1" *-- "0..9999" javaz_Method : methods3
+javaz_JavaClass "1..1" -- "0..1" javaz_JavaPackageX : package10
+javaz_JavaPackageX "0..9999" --* "1..1" javaz_Javaz : packages0
+javaz_JavaParameter "0..9999" --* "1..1" javaz_Method : parameters19
+@enduml

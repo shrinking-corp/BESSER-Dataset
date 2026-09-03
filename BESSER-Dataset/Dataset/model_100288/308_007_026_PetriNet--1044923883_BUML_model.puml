@@ -1,0 +1,35 @@
+@startuml
+enum ArcKind {
+  normal
+  read_arc
+}
+class Node {
+}
+class petriNet_Arc {
+  + kind : str
+  + weight : int
+}
+abstract class petriNet_Node {
+  + name : str
+}
+class petriNet_PetriNet {
+  + name : str
+}
+class petriNet_Place {
+  + marking : int
+}
+class petriNet_Transition {
+  + max_time : int
+  + min_time : int
+}
+Node <|-- petriNet_Place
+Node <|-- petriNet_Transition
+petriNet_Arc "0..9999" --* "1..1" petriNet_PetriNet : arcs1
+petriNet_Arc "0..9999" -- "1..1" petriNet_Node : incomings6
+petriNet_Arc "1..1" -- "1..1" petriNet_PetriNet : net12
+petriNet_Node "1..1" -- "1..1" petriNet_PetriNet : net3
+petriNet_Node "0..9999" --* "1..1" petriNet_PetriNet : nodes0
+petriNet_Arc "0..9999" -- "1..1" petriNet_Node : outgoings4
+petriNet_Arc "1..1" -- "1..1" petriNet_Node : source10
+petriNet_Arc "1..1" -- "1..1" petriNet_Node : target8
+@enduml

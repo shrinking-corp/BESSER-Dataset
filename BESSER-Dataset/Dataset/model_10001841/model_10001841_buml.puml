@@ -1,0 +1,81 @@
+@startuml
+class Administrator {
+  + Name : Administrator
+  + Privilege : str
+}
+class Course {
+  + _1_Course : Department
+  + _2_Course : Department
+  + _3_Course : Department
+  + _4_Course : Department
+}
+class Dean {
+  + Employees : Dean
+}
+class Department {
+  + CS : str
+  + CSSE : str
+  + IS : str
+  + ITM : str
+  + JUR : str
+  + MCM : str
+}
+class Library {
+  + Books : Library
+  + Materials : Library
+}
+class Moderator {
+  + Name : Moderator
+}
+class News_in_Dl {
+  + Hyperlink : str
+  + Opens_news : Moderator
+  + Update_news : Moderator
+}
+class Other_employees {
+  + Name : str
+  + Position : str
+}
+class Questionnaire_survey {
+  + Students : str
+  + Teachers : str
+}
+class Schedule {
+  + Course : Schedule
+  + Teacher : Schedule
+}
+class Students {
+  + Course : Course
+  + ID : Students
+  + Name : str
+}
+class Teachers {
+  + Course : Course
+  + Department : Department
+  + ID : Teachers
+  + Info : Teachers
+  + Name : str
+  + Rank : Teachers
+}
+class Team {
+  + Footballs_teams : Students
+  + Ministry : str
+  + President : str
+  + Robotric_teams : Students
+}
+class Training_materials_IITU {
+  + Materials : str
+}
+Administrator "0..1" -- "0..1" Course : Administrator_Course
+Administrator "0..1" -- "0..1" Dean : Administrator_Dean
+Administrator "0..1" -- "0..1" Moderator : Administrator_Moderator
+Administrator "0..1" -- "0..1" Teachers : Administrator_Teachers
+Course "0..1" -- "0..1" Department : Course_Department
+Course "0..1" -- "0..1" Students : Course_Students
+Dean "0..1" -- "0..1" News_in_Dl : Dean_News_in_Dl
+Department "0..1" -- "0..1" Students : Department_Students
+Course "0..1" -- "0..1" Teachers : Teachers_Course
+Schedule "0..1" -- "0..1" Teachers : Teachers_Schedule
+Students "0..1" -- "0..1" Teachers : Teachers_Students
+Students "0..1" -- "0..1" Team : Team_Students
+@enduml

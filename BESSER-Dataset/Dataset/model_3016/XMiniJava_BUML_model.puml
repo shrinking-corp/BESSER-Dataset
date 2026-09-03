@@ -1,0 +1,419 @@
+@startuml
+enum AccessLevel {
+  PRIVATE
+  PROTECTED
+  PUBLIC
+}
+class Assignee {
+}
+class Call {
+}
+class Expression {
+}
+class Member {
+}
+class NamedElement {
+}
+class SingleTypeRef {
+}
+class Statement {
+}
+class Symbol {
+}
+class TypeDeclaration {
+}
+class TypeRef {
+}
+class TypedDeclaration {
+}
+class Value {
+}
+class miniJava_And {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_ArrayAccess {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_ArrayInstance {
+  + size : str
+}
+class miniJava_ArrayLength {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_ArrayRefValue {
+  + copy() : Value
+}
+class miniJava_ArrayTypeRef {
+}
+class miniJava_Assignee {
+}
+class miniJava_Assignment {
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_Block {
+  + evaluateStatement(miniJava_state : str) : void
+  + evaluateStatementKeepContext(miniJava_state : str) : void
+}
+class miniJava_BoolConstant {
+  + value : str
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_BooleanTypeRef {
+}
+class miniJava_BooleanValue {
+  + value : bool
+  + copy() : Value
+  + customToString() : void
+}
+class miniJava_Call {
+}
+class miniJava_Class {
+  + abstract : bool
+}
+class miniJava_ClassRef {
+  + compare(miniJava_other : str) : void
+}
+class miniJava_Context {
+  + createChildContext() : str
+  + findBinding(miniJava_symbol : str) : str
+  + findCurrentContext() : str
+}
+class miniJava_Division {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Equality {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Expression {
+  + evaluateExpression(miniJava_state : str) : str
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_Field {
+}
+class miniJava_FieldAccess {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_FieldBinding {
+}
+class miniJava_ForStatement {
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_Frame {
+  + findCurrentContext() : str
+  + findCurrentFrame() : str
+}
+class miniJava_IfStatement {
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_Import {
+  + importedNamespace : str
+}
+class miniJava_Inequality {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Inferior {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_InferiorOrEqual {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_IntConstant {
+  + value : int
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_IntegerTypeRef {
+}
+class miniJava_IntegerValue {
+  + value : str
+  + copy() : Value
+  + customToString() : void
+}
+class miniJava_Interface {
+}
+class miniJava_Member {
+  + access : str
+}
+class miniJava_Method {
+  + abstract : bool
+  + static : bool
+  + call(miniJava_state : str) : void
+  + findOverride(miniJava_c : str) : str
+}
+class miniJava_MethodCall {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_MethodCall2 {
+}
+class miniJava_Minus {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Multiplication {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_NamedElement {
+  + name : str
+}
+class miniJava_Neg {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_NewArray {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_NewCall {
+}
+class miniJava_NewObject {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Not {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Null {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_NullValue {
+  + copy() : Value
+}
+class miniJava_ObjectInstance {
+}
+class miniJava_ObjectRefValue {
+  + copy() : Value
+  + customToString() : void
+}
+class miniJava_Or {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_OutputStream {
+  + stream : str
+}
+class miniJava_Parameter {
+  + compare(miniJava_other : str) : void
+}
+class miniJava_Plus {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_PrintStatement {
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_Program {
+  + name : str
+  + execute() : str
+  + initialize(miniJava_args : str) : void
+  + main() : void
+}
+class miniJava_Return {
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_SingleTypeRef {
+}
+class miniJava_State {
+  + findCurrentContext() : str
+  + findCurrentFrame() : str
+  + popCurrentContext() : void
+  + popCurrentFrame() : void
+  + println(miniJava_string : str) : void
+  + pushNewContext() : void
+  + pushNewFrame(miniJava_c : str, miniJava_newContext : str, miniJava_receiver : str) : void
+}
+class miniJava_Statement {
+  + evaluateStatement(miniJava_state : str) : void
+}
+class miniJava_StringConstant {
+  + value : str
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_StringTypeRef {
+}
+class miniJava_StringValue {
+  + value : str
+  + copy() : Value
+  + customToString() : void
+}
+class miniJava_Super {
+}
+class miniJava_Superior {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_SuperiorOrEqual {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_Symbol {
+}
+class miniJava_SymbolBinding {
+}
+class miniJava_SymbolRef {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_This {
+  + evaluateExpression(miniJava_state : str) : str
+}
+class miniJava_TypeDeclaration {
+  + accessLevel : str
+}
+class miniJava_TypeRef {
+  + compare(miniJava_other : str) : void
+}
+class miniJava_TypedDeclaration {
+}
+class miniJava_Value {
+  + copy() : str
+  + customToString() : void
+}
+class miniJava_VariableDeclaration {
+}
+class miniJava_VoidTypeRef {
+}
+class miniJava_WhileStatement {
+  + evaluateStatement(miniJava_state : str) : void
+}
+Assignee <|-- miniJava_Expression
+Assignee <|-- miniJava_VariableDeclaration
+Call <|-- miniJava_MethodCall2
+Call <|-- miniJava_NewCall
+Expression <|-- miniJava_And
+Expression <|-- miniJava_ArrayAccess
+Expression <|-- miniJava_ArrayLength
+Expression <|-- miniJava_BoolConstant
+Expression <|-- miniJava_Division
+Expression <|-- miniJava_Equality
+Expression <|-- miniJava_FieldAccess
+Expression <|-- miniJava_Inequality
+Expression <|-- miniJava_Inferior
+Expression <|-- miniJava_InferiorOrEqual
+Expression <|-- miniJava_IntConstant
+Expression <|-- miniJava_MethodCall
+Expression <|-- miniJava_Minus
+Expression <|-- miniJava_Multiplication
+Expression <|-- miniJava_Neg
+Expression <|-- miniJava_NewArray
+Expression <|-- miniJava_NewObject
+Expression <|-- miniJava_Not
+Expression <|-- miniJava_Null
+Expression <|-- miniJava_Or
+Expression <|-- miniJava_Plus
+Expression <|-- miniJava_StringConstant
+Expression <|-- miniJava_Super
+Expression <|-- miniJava_Superior
+Expression <|-- miniJava_SuperiorOrEqual
+Expression <|-- miniJava_SymbolRef
+Expression <|-- miniJava_This
+Member <|-- miniJava_Field
+Member <|-- miniJava_Method
+NamedElement <|-- miniJava_TypeDeclaration
+NamedElement <|-- miniJava_TypedDeclaration
+SingleTypeRef <|-- miniJava_BooleanTypeRef
+SingleTypeRef <|-- miniJava_ClassRef
+SingleTypeRef <|-- miniJava_IntegerTypeRef
+SingleTypeRef <|-- miniJava_StringTypeRef
+SingleTypeRef <|-- miniJava_VoidTypeRef
+Statement <|-- miniJava_Assignment
+Statement <|-- miniJava_Block
+Statement <|-- miniJava_Expression
+Statement <|-- miniJava_ForStatement
+Statement <|-- miniJava_IfStatement
+Statement <|-- miniJava_PrintStatement
+Statement <|-- miniJava_Return
+Statement <|-- miniJava_WhileStatement
+Symbol <|-- miniJava_Parameter
+Symbol <|-- miniJava_VariableDeclaration
+TypeDeclaration <|-- miniJava_Class
+TypeDeclaration <|-- miniJava_Interface
+TypeRef <|-- miniJava_ArrayTypeRef
+TypeRef <|-- miniJava_SingleTypeRef
+TypedDeclaration <|-- miniJava_Member
+TypedDeclaration <|-- miniJava_Symbol
+Value <|-- miniJava_ArrayRefValue
+Value <|-- miniJava_BooleanValue
+Value <|-- miniJava_IntegerValue
+Value <|-- miniJava_NullValue
+Value <|-- miniJava_ObjectRefValue
+Value <|-- miniJava_StringValue
+miniJava_Expression "0..9999" --* "1..1" miniJava_MethodCall : args134
+miniJava_Expression "0..9999" --* "1..1" miniJava_NewObject : args139
+miniJava_ArrayLength "1..1" *-- "0..1" miniJava_Expression : array118
+miniJava_ArrayInstance "0..9999" --* "1..1" miniJava_State : arraysHeap170
+miniJava_Assignee "0..1" --* "1..1" miniJava_Assignment : assignee47
+miniJava_Context "1..1" *-- "0..9999" miniJava_SymbolBinding : bindings148
+miniJava_Block "0..1" --* "1..1" miniJava_WhileStatement : block31
+miniJava_Block "0..1" --* "1..1" miniJava_ForStatement : block41
+miniJava_Block "0..1" --* "1..1" miniJava_Method : body12
+miniJava_Call "0..1" --* "1..1" miniJava_Frame : call172
+miniJava_Context "1..1" *-- "0..1" miniJava_Context : childContext152
+miniJava_Frame "1..1" *-- "0..1" miniJava_Frame : childFrame178
+miniJava_Program "1..1" *-- "0..9999" miniJava_TypeDeclaration : classes1
+miniJava_Expression "0..1" --* "1..1" miniJava_WhileStatement : condition29
+miniJava_Expression "0..1" --* "1..1" miniJava_ForStatement : condition35
+miniJava_Assignment "0..1" --* "1..1" miniJava_ForStatement : declaration34
+miniJava_Expression "0..1" --* "1..1" miniJava_Field : defaultValue14
+miniJava_Block "0..1" --* "1..1" miniJava_IfStatement : elseBlock26
+miniJava_Expression "0..1" --* "1..1" miniJava_Not : expression120
+miniJava_Expression "0..1" --* "1..1" miniJava_Neg : expression122
+miniJava_Expression "0..1" --* "1..1" miniJava_PrintStatement : expression17
+miniJava_Expression "0..1" --* "1..1" miniJava_Return : expression19
+miniJava_Expression "0..1" --* "1..1" miniJava_IfStatement : expression21
+miniJava_Field "0..1" -- "1..1" miniJava_FieldAccess : field126
+miniJava_Field "1..1" -- "1..1" miniJava_FieldBinding : field159
+miniJava_FieldBinding "0..9999" --* "1..1" miniJava_ObjectInstance : fieldbindings192
+miniJava_Interface "0..9999" -- "1..1" miniJava_TypeDeclaration : implements5
+miniJava_Import "0..9999" --* "1..1" miniJava_Program : imports0
+miniJava_ArrayAccess "1..1" *-- "0..1" miniJava_Expression : index115
+miniJava_Frame "1..1" -- "0..1" miniJava_ObjectInstance : instance174
+miniJava_ObjectInstance "0..1" -- "1..1" miniJava_ObjectRefValue : instance201
+miniJava_ArrayInstance "0..1" -- "1..1" miniJava_ArrayRefValue : instance203
+miniJava_Expression "0..1" --* "1..1" miniJava_Multiplication : left103
+miniJava_Division "1..1" *-- "0..1" miniJava_Expression : left108
+miniJava_Expression "0..1" --* "1..1" miniJava_Or : left53
+miniJava_And "1..1" *-- "0..1" miniJava_Expression : left58
+miniJava_Equality "1..1" *-- "0..1" miniJava_Expression : left63
+miniJava_Expression "0..1" --* "1..1" miniJava_Inequality : left68
+miniJava_Expression "0..1" --* "1..1" miniJava_SuperiorOrEqual : left73
+miniJava_Expression "0..1" --* "1..1" miniJava_InferiorOrEqual : left78
+miniJava_Expression "0..1" --* "1..1" miniJava_Superior : left83
+miniJava_Expression "0..1" --* "1..1" miniJava_Inferior : left88
+miniJava_Expression "0..1" --* "1..1" miniJava_Plus : left93
+miniJava_Expression "0..1" --* "1..1" miniJava_Minus : left98
+miniJava_Member "0..9999" --* "1..1" miniJava_TypeDeclaration : members7
+miniJava_Method "0..1" -- "1..1" miniJava_MethodCall : method131
+miniJava_MethodCall "1..1" -- "1..1" miniJava_MethodCall2 : methodcall190
+miniJava_NewCall "1..1" -- "1..1" miniJava_NewObject : new188
+miniJava_ArrayAccess "1..1" *-- "0..1" miniJava_Expression : object113
+miniJava_ObjectInstance "0..9999" --* "1..1" miniJava_State : objectsHeap166
+miniJava_OutputStream "0..1" --* "1..1" miniJava_State : outputStream168
+miniJava_Method "1..1" *-- "0..9999" miniJava_Parameter : params11
+miniJava_Context "1..1" -- "0..1" miniJava_Context : parentContext150
+miniJava_Frame "1..1" -- "0..1" miniJava_Frame : parentFrame180
+miniJava_Assignment "0..1" --* "1..1" miniJava_ForStatement : progression38
+miniJava_Expression "0..1" --* "1..1" miniJava_FieldAccess : receiver124
+miniJava_Expression "0..1" --* "1..1" miniJava_MethodCall : receiver129
+miniJava_ClassRef "1..1" -- "0..1" miniJava_TypeDeclaration : referencedClass44
+miniJava_Frame "1..1" *-- "0..1" miniJava_Value : returnValue185
+miniJava_Expression "0..1" --* "1..1" miniJava_Minus : right100
+miniJava_Expression "0..1" --* "1..1" miniJava_Multiplication : right105
+miniJava_Division "1..1" *-- "0..1" miniJava_Expression : right110
+miniJava_Expression "0..1" --* "1..1" miniJava_Or : right55
+miniJava_And "1..1" *-- "0..1" miniJava_Expression : right60
+miniJava_Equality "1..1" *-- "0..1" miniJava_Expression : right65
+miniJava_Expression "0..1" --* "1..1" miniJava_Inequality : right70
+miniJava_Expression "0..1" --* "1..1" miniJava_SuperiorOrEqual : right75
+miniJava_Expression "0..1" --* "1..1" miniJava_InferiorOrEqual : right80
+miniJava_Expression "0..1" --* "1..1" miniJava_Superior : right85
+miniJava_Expression "0..1" --* "1..1" miniJava_Inferior : right90
+miniJava_Expression "0..1" --* "1..1" miniJava_Plus : right95
+miniJava_Context "0..1" --* "1..1" miniJava_Frame : rootContext182
+miniJava_Frame "0..1" --* "1..1" miniJava_State : rootFrame164
+miniJava_Expression "0..1" --* "1..1" miniJava_NewArray : size144
+miniJava_Program "1..1" *-- "0..1" miniJava_State : state3
+miniJava_Block "1..1" *-- "0..9999" miniJava_Statement : statements15
+miniJava_Class "1..1" -- "0..1" miniJava_Class : superClass10
+miniJava_Symbol "0..1" -- "1..1" miniJava_SymbolRef : symbol147
+miniJava_Symbol "1..1" -- "1..1" miniJava_SymbolBinding : symbol156
+miniJava_Block "0..1" --* "1..1" miniJava_IfStatement : thenBlock23
+miniJava_Class "0..1" -- "1..1" miniJava_NewObject : type137
+miniJava_NewArray "1..1" *-- "0..1" miniJava_TypeRef : type142
+miniJava_Class "1..1" -- "1..1" miniJava_ObjectInstance : type195
+miniJava_TypeRef "0..1" --* "1..1" miniJava_TypedDeclaration : typeRef46
+miniJava_ArrayTypeRef "1..1" *-- "0..1" miniJava_SingleTypeRef : typeRef52
+miniJava_SymbolBinding "1..1" *-- "0..1" miniJava_Value : value154
+miniJava_FieldBinding "1..1" *-- "0..1" miniJava_Value : value161
+miniJava_ArrayInstance "1..1" *-- "0..9999" miniJava_Value : value198
+miniJava_Assignment "1..1" *-- "0..1" miniJava_Expression : value49
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+class BlackJackMain {
+}
+class Card {
+  + rank : Rank
+  + suit : Suit
+}
+class Deck {
+  + cardsDealt : str
+  + deck : str
+}
+class Game {
+  + dealerCards : str
+  + playerCards : str
+}
+class List_Card__external {
+}
+class Player {
+  + money : int
+  + name : str
+}
+enum Rank {
+}
+enum Suit {
+}
+Card "0..1" -- "0..1" Deck : Card_Deck
+Deck "0..1" -- "0..1" Game : Deck_Game
+BlackJackMain "0..1" -- "0..1" Game : Game_BlackJackMain
+Deck "0..1" -- "0..1" List_Card__external : List_Card__Deck
+BlackJackMain "0..1" -- "0..1" Player : Player_BlackJackMain
+Deck "0..1" -- "0..1" Player : Player_Deck
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+class Airport {
+  + Address : str
+  + AirportID : str
+  + AirportName : str
+}
+class Customers {
+  + Email : str
+  + IdCustomer : str
+  + NameCustomer : str
+  + Password : str
+}
+enum Enumeration {
+}
+class Flight {
+  + Date : str
+  + FlightNumber : str
+}
+class Plane {
+  + Capacity : int
+  + PlaneId : str
+  + PlaneName : str
+}
+class Reservation {
+}
+class Routes {
+  + DestinationAirport : str
+  + OriginAirport : str
+  + RouteID : str
+}
+class Seats {
+  + Availability : bool
+  + SeatNumber : int
+}
+class Ticket {
+  + DateTime : str
+  + Gate : str
+  + Price : str
+  + TicketID : str
+  + TicketType : str
+}
+Customers "0..9999" -- "1..1" Reservation : Customers_Reservation
+Flight "1..9999" -- "1..9999" Reservation : Flight_Reservation
+Flight "1..9999" -- "1..1" Routes : Flight_Routes
+Flight "1..9999" -- "1..9999" Ticket : Flight_Ticket
+Flight "1..9999" -- "1..9999" Plane : Plane_Flight
+Airport "1..9999" -- "1..9999" Routes : Routes_Airport
+Plane "1..9999" -- "0..9999" Seats : Seats_Plane
+@enduml

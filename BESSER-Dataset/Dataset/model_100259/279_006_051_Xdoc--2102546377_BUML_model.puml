@@ -1,0 +1,174 @@
+@startuml
+class AbstractSection {
+}
+class Chapter {
+}
+class Identifiable {
+}
+class MarkUp {
+}
+class MarkupInCode {
+}
+class Part {
+}
+class Section {
+}
+class Section2 {
+}
+class xdoc_AbstractSection {
+}
+class xdoc_Anchor {
+}
+class xdoc_Chapter {
+}
+class xdoc_ChapterRef {
+}
+class xdoc_Code {
+  + contents : str
+}
+class xdoc_CodeBlock {
+}
+class xdoc_CodeRef {
+}
+class xdoc_Document {
+}
+class xdoc_EObject {
+}
+class xdoc_Emphasize {
+}
+class xdoc_Glossary {
+}
+class xdoc_GlossaryEntry {
+  + alias : str
+  + name : str
+}
+class xdoc_Identifiable {
+  + name : str
+}
+class xdoc_ImageProxy {
+}
+class xdoc_ImageRef {
+  + caption : str
+  + clazz : str
+  + name : str
+  + path : str
+  + style : str
+}
+class xdoc_Item {
+}
+class xdoc_JvmDeclaredType {
+}
+class xdoc_LangDef {
+  + keywords : str
+  + name : str
+}
+class xdoc_Link {
+  + text : str
+  + url : str
+}
+class xdoc_MarkUp {
+}
+class xdoc_MarkupInCode {
+}
+class xdoc_OrderedList {
+}
+class xdoc_Part {
+}
+class xdoc_PartRef {
+}
+class xdoc_Ref {
+}
+class xdoc_Section {
+}
+class xdoc_Section2 {
+}
+class xdoc_Section2Ref {
+}
+class xdoc_Section3 {
+}
+class xdoc_Section4 {
+}
+class xdoc_SectionRef {
+}
+class xdoc_Table {
+}
+class xdoc_TableData {
+}
+class xdoc_TableRow {
+}
+class xdoc_TextOrMarkup {
+}
+class xdoc_TextPart {
+  + text : str
+}
+class xdoc_Todo {
+  + text : str
+}
+class xdoc_UnorderedList {
+}
+class xdoc_XdocFile {
+}
+AbstractSection <|-- xdoc_Chapter
+AbstractSection <|-- xdoc_Document
+AbstractSection <|-- xdoc_Part
+AbstractSection <|-- xdoc_Section
+AbstractSection <|-- xdoc_Section2
+AbstractSection <|-- xdoc_Section3
+AbstractSection <|-- xdoc_Section4
+Chapter <|-- xdoc_ChapterRef
+Identifiable <|-- xdoc_AbstractSection
+Identifiable <|-- xdoc_Anchor
+MarkUp <|-- xdoc_Anchor
+MarkUp <|-- xdoc_CodeBlock
+MarkUp <|-- xdoc_CodeRef
+MarkUp <|-- xdoc_Emphasize
+MarkUp <|-- xdoc_ImageRef
+MarkUp <|-- xdoc_Link
+MarkUp <|-- xdoc_OrderedList
+MarkUp <|-- xdoc_Ref
+MarkUp <|-- xdoc_Table
+MarkUp <|-- xdoc_Todo
+MarkUp <|-- xdoc_UnorderedList
+MarkupInCode <|-- xdoc_Anchor
+MarkupInCode <|-- xdoc_Emphasize
+MarkupInCode <|-- xdoc_Ref
+MarkupInCode <|-- xdoc_Todo
+Part <|-- xdoc_PartRef
+Section2 <|-- xdoc_Section2Ref
+Section <|-- xdoc_SectionRef
+xdoc_CodeRef "1..1" *-- "0..1" xdoc_TextOrMarkup : altText54
+xdoc_Document "1..1" *-- "0..1" xdoc_TextOrMarkup : authors2
+xdoc_Chapter "0..1" -- "1..1" xdoc_ChapterRef : chapter15
+xdoc_Chapter "0..9999" --* "1..1" xdoc_Document : chapters5
+xdoc_Chapter "0..9999" --* "1..1" xdoc_Part : chapters68
+xdoc_AbstractSection "1..1" *-- "0..9999" xdoc_TextOrMarkup : contents30
+xdoc_EObject "0..9999" --* "1..1" xdoc_TextOrMarkup : contents33
+xdoc_TableData "1..1" *-- "0..9999" xdoc_TextOrMarkup : contents38
+xdoc_Emphasize "1..1" *-- "0..9999" xdoc_TextOrMarkup : contents41
+xdoc_Ref "1..1" *-- "0..9999" xdoc_TextOrMarkup : contents44
+xdoc_Item "1..1" *-- "0..9999" xdoc_TextOrMarkup : contents50
+xdoc_CodeBlock "1..1" *-- "0..9999" xdoc_EObject : contents58
+xdoc_TableData "0..9999" --* "1..1" xdoc_TableRow : data36
+xdoc_GlossaryEntry "1..1" *-- "1..9999" xdoc_TextOrMarkup : description63
+xdoc_CodeRef "1..1" -- "0..1" xdoc_JvmDeclaredType : element53
+xdoc_Document "1..1" *-- "0..1" xdoc_Glossary : glossary9
+xdoc_Glossary "1..1" *-- "1..9999" xdoc_GlossaryEntry : glossaryEntry65
+xdoc_ImageProxy "0..1" -- "1..1" xdoc_ImageRef : image57
+xdoc_Item "0..9999" --* "1..1" xdoc_OrderedList : items47
+xdoc_Item "0..9999" --* "1..1" xdoc_UnorderedList : items48
+xdoc_Document "1..1" *-- "0..9999" xdoc_LangDef : langDefs7
+xdoc_CodeBlock "1..1" -- "0..1" xdoc_LangDef : language60
+xdoc_AbstractSection "0..1" --* "1..1" xdoc_XdocFile : mainSection0
+xdoc_Part "0..1" -- "1..1" xdoc_PartRef : part71
+xdoc_Document "1..1" *-- "0..9999" xdoc_Part : parts11
+xdoc_Identifiable "0..1" -- "1..1" xdoc_Ref : ref43
+xdoc_Table "1..1" *-- "0..9999" xdoc_TableRow : rows35
+xdoc_Section "0..1" -- "1..1" xdoc_SectionRef : section19
+xdoc_Section2 "0..1" -- "1..1" xdoc_Section2Ref : section223
+xdoc_Chapter "1..1" *-- "0..9999" xdoc_Section : subSections13
+xdoc_Section "1..1" *-- "0..9999" xdoc_Section2 : subSections17
+xdoc_Section2 "1..1" *-- "0..9999" xdoc_Section3 : subSections21
+xdoc_Section3 "1..1" *-- "0..9999" xdoc_Section4 : subSections25
+xdoc_Document "1..1" *-- "0..1" xdoc_TextOrMarkup : subtitle1
+xdoc_AbstractSection "1..1" *-- "0..1" xdoc_TextOrMarkup : title27
+@enduml

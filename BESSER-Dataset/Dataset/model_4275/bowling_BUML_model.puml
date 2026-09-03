@@ -1,0 +1,49 @@
+@startuml
+enum TournamentType {
+  Amateur
+  Pro
+}
+class bowling_Game {
+  + frames : int
+}
+class bowling_League {
+  + name : str
+}
+class bowling_Matchup {
+  + date : date
+}
+class bowling_Player {
+  + dateOfBirth : date
+  + eMail : str
+  + height : float
+  + isAvailable : bool
+  + isProfessional : bool
+  + name : str
+  + notes : str
+  + street : str
+  + streetNumber : int
+  + telephon : str
+  + hasCorrectStreetNumber(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasDateOfBirth(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasGame(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasHeight(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasIsAvailable(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasName(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasNotes(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasStreet(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasTelephon(bowling_context : str, bowling_diagnosticianChain : str) : bool
+}
+class bowling_Tournament {
+  + title : str
+  + type : str
+  + hasLeague(bowling_context : str, bowling_diagnosticianChain : str) : bool
+  + hasTounamentPro(bowling_context : str, bowling_diagnosticianChain : str) : bool
+}
+bowling_Game "0..9999" -- "1..1" bowling_Player : games0
+bowling_Game "0..2" --* "1..1" bowling_Matchup : games6
+bowling_League "0..1" -- "1..1" bowling_Tournament : league3
+bowling_Game "1..1" -- "1..1" bowling_Matchup : matchup8
+bowling_Matchup "0..9999" --* "1..1" bowling_Tournament : matchups2
+bowling_Game "1..1" -- "0..1" bowling_Player : player9
+bowling_League "1..1" *-- "0..9999" bowling_Player : players1
+@enduml

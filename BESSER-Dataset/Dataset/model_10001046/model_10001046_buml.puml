@@ -1,0 +1,37 @@
+@startuml
+abstract class Account {
+  + MAX_HOLDERS : str
+  + accId : str
+  + accNumber : str
+  + balance : str
+  + openDate : str
+}
+class Bank {
+}
+class CheckTransaction {
+  + memo : str
+}
+class CheckingAccount {
+}
+class CoDTransaction {
+  + endDate : str
+  + interestRate : str
+  + startDate : str
+}
+class Customer {
+  + name : str
+  + taxId : str
+}
+class SavingAccount {
+}
+class Transaction {
+  + holder : Customer
+  + transactionAmount : str
+  + transactionDate : str
+  + transactionType : str
+}
+Account "1..2" -- "0..9999" Transaction : Account_Transaction
+Account "0..9999" -- "1..1" Bank : Bank_Account
+Bank "1..1" -- "0..9999" Customer : Bank_Customer
+Account "1..9999" -- "1..2" Customer : is_owner_of
+@enduml

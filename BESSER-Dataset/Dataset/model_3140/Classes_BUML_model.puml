@@ -1,0 +1,80 @@
+@startuml
+class BuiltInType {
+}
+class Content {
+}
+class Description {
+}
+class Type {
+}
+class Value {
+}
+enum Visibility {
+  private
+  protected
+  public
+}
+class classes_Association {
+  + name : str
+}
+class classes_Attribute {
+  + name : str
+  + visibility : str
+}
+class classes_BuiltInType {
+}
+class classes_Class {
+  + name : str
+}
+class classes_ClassModel {
+}
+class classes_ClassRef {
+}
+class classes_Constant {
+  + name : str
+}
+class classes_ConstantRef {
+}
+class classes_Content {
+}
+class classes_Description {
+  + description : str
+}
+class classes_IntegerLiteral {
+  + value : int
+}
+class classes_IntegerType {
+}
+class classes_StringType {
+}
+class classes_Type {
+}
+class classes_Value {
+}
+BuiltInType <|-- classes_IntegerType
+BuiltInType <|-- classes_StringType
+Content <|-- classes_Association
+Content <|-- classes_Class
+Content <|-- classes_Constant
+Description <|-- classes_Association
+Description <|-- classes_Attribute
+Description <|-- classes_Class
+Description <|-- classes_Constant
+Type <|-- classes_BuiltInType
+Type <|-- classes_ClassRef
+Value <|-- classes_ConstantRef
+Value <|-- classes_IntegerLiteral
+classes_Attribute "0..9999" --* "1..1" classes_Class : attributes15
+classes_ClassModel "1..1" *-- "0..9999" classes_Content : content0
+classes_Constant "1..1" *-- "0..1" classes_Value : initial1
+classes_Attribute "1..1" *-- "0..1" classes_Value : lowerBound19
+classes_Association "1..1" *-- "0..1" classes_Value : lowerBound6
+classes_Association "1..1" -- "0..1" classes_Class : source2
+classes_Class "0..9999" --* "1..1" classes_Class : subClasses13
+classes_Class "0..1" -- "1..1" classes_ClassRef : target25
+classes_Constant "0..1" -- "1..1" classes_ConstantRef : target27
+classes_Association "1..1" -- "0..1" classes_Class : target3
+classes_Attribute "1..1" *-- "0..1" classes_Type : type17
+classes_Attribute "1..1" *-- "0..1" classes_Value : upperBound22
+classes_Association "1..1" *-- "0..1" classes_Value : upperBound9
+@enduml

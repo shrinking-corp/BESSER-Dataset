@@ -1,0 +1,71 @@
+@startuml
+class AbstractRequirement {
+}
+class Attribute {
+}
+class CoverLink {
+}
+class Document {
+}
+class ElementWithIL {
+}
+class MacroRequirement {
+}
+class Project {
+}
+abstract class Reqtify_AbstractRequirement {
+}
+class Reqtify_Attribute {
+  + value : str
+}
+class Reqtify_CoverLink {
+}
+class Reqtify_Document {
+}
+abstract class Reqtify_ElementWithIL {
+  + label : str
+  + name : str
+}
+class Reqtify_MacroRequirement {
+}
+class Reqtify_Project {
+}
+class Reqtify_Requirement {
+}
+class Reqtify_Section {
+}
+abstract class Reqtify_TextElement {
+  + description : str
+}
+abstract class Reqtify_TypedElement {
+  + type : str
+}
+class Section {
+}
+class TextElement {
+}
+class TypedElement {
+}
+AbstractRequirement <|-- Reqtify_MacroRequirement
+AbstractRequirement <|-- Reqtify_Requirement
+ElementWithIL <|-- Reqtify_Document
+ElementWithIL <|-- Reqtify_TextElement
+TextElement <|-- Reqtify_AbstractRequirement
+TextElement <|-- Reqtify_Section
+TypedElement <|-- Reqtify_Attribute
+TypedElement <|-- Reqtify_CoverLink
+TypedElement <|-- Reqtify_ElementWithIL
+Attribute "0..9999" --* "1..1" Reqtify_AbstractRequirement : attribute14
+AbstractRequirement "0..9999" --* "1..1" Reqtify_MacroRequirement : contains16
+CoverLink "0..9999" --* "1..1" Reqtify_AbstractRequirement : coverLinks13
+Document "0..1" -- "1..1" Reqtify_Section : document3
+Document "1..9999" --* "1..1" Reqtify_Project : documents0
+MacroRequirement "0..1" -- "1..1" Reqtify_AbstractRequirement : isContained12
+AbstractRequirement "1..1" -- "1..1" Reqtify_CoverLink : linkWith18
+Project "1..1" -- "1..1" Reqtify_Document : project1
+AbstractRequirement "0..9999" --* "1..1" Reqtify_Section : requirements9
+Reqtify_AbstractRequirement "1..1" -- "0..1" Section : section10
+Reqtify_Section "1..1" *-- "0..9999" Section : sectionChildren5
+Reqtify_Section "1..1" -- "0..1" Section : sectionParent7
+Reqtify_Document "1..1" *-- "0..9999" Section : sections2
+@enduml

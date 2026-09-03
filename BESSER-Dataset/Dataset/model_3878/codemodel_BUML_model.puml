@@ -1,0 +1,105 @@
+@startuml
+class AssignmentStmt {
+}
+class CMElement {
+}
+class DataType {
+}
+class Expression {
+}
+class Statement {
+}
+class Variable {
+}
+abstract class codemodel_CMElement {
+  + name : str
+}
+class codemodel_CodeModule {
+}
+abstract class codemodel_DataType {
+  + basetype : str
+}
+class codemodel_Function {
+  + identifier : str
+}
+class codemodel_FunctionArgument {
+}
+class codemodel_GlobalVariable {
+}
+class codemodel_LocalVariable {
+}
+class codemodel_MatrixType {
+  + columns : str
+  + rows : str
+}
+class codemodel_ScalarType {
+}
+abstract class codemodel_Variable {
+  + constant : bool
+  + identifier : str
+}
+class codemodel_VectorType {
+  + size : str
+}
+class codemodel_expressions_BinaryExp {
+  + operator : str
+}
+abstract class codemodel_expressions_Expression {
+}
+class codemodel_expressions_LiteralExp {
+  + value : str
+}
+class codemodel_expressions_VariableExp {
+}
+class codemodel_statements_AssignmentStmt {
+}
+class codemodel_statements_CompositeStmt {
+}
+class codemodel_statements_ForStmt {
+}
+class codemodel_statements_IfStmt {
+}
+abstract class codemodel_statements_Statement {
+}
+class expressions_codemodel_Variable {
+}
+CMElement <|-- codemodel_CodeModule
+CMElement <|-- codemodel_DataType
+CMElement <|-- codemodel_Function
+CMElement <|-- codemodel_Variable
+CMElement <|-- codemodel_expressions_Expression
+CMElement <|-- codemodel_statements_Statement
+DataType <|-- codemodel_MatrixType
+DataType <|-- codemodel_ScalarType
+DataType <|-- codemodel_VectorType
+Expression <|-- codemodel_expressions_BinaryExp
+Expression <|-- codemodel_expressions_LiteralExp
+Expression <|-- codemodel_expressions_VariableExp
+Statement <|-- codemodel_statements_AssignmentStmt
+Statement <|-- codemodel_statements_CompositeStmt
+Statement <|-- codemodel_statements_ForStmt
+Statement <|-- codemodel_statements_IfStmt
+Variable <|-- codemodel_FunctionArgument
+Variable <|-- codemodel_GlobalVariable
+Variable <|-- codemodel_LocalVariable
+codemodel_Function "1..1" *-- "0..9999" codemodel_FunctionArgument : arguments7
+Statement "0..9999" --* "1..1" codemodel_Function : body11
+Expression "1..1" --* "1..1" codemodel_statements_IfStmt : condition25
+Expression "1..1" --* "1..1" codemodel_statements_ForStmt : condition34
+codemodel_CodeModule "1..1" *-- "1..9999" codemodel_DataType : dataTypes3
+Statement "0..1" --* "1..1" codemodel_statements_IfStmt : elseStmt30
+Statement "1..1" --* "1..1" codemodel_statements_ForStmt : forStmt40
+codemodel_CodeModule "1..1" *-- "0..9999" codemodel_Function : functions1
+codemodel_CodeModule "1..1" *-- "0..9999" codemodel_GlobalVariable : globalVariables0
+Expression "1..1" --* "1..1" codemodel_statements_ForStmt : increment37
+AssignmentStmt "1..1" --* "1..1" codemodel_statements_ForStmt : init33
+Expression "1..1" --* "1..1" codemodel_expressions_BinaryExp : left14
+Expression "1..1" --* "1..1" codemodel_statements_AssignmentStmt : leftExp18
+codemodel_Function "1..1" *-- "0..9999" codemodel_LocalVariable : localVariables9
+codemodel_expressions_VariableExp "1..1" -- "1..1" expressions_codemodel_Variable : referencedVariable13
+Expression "1..1" --* "1..1" codemodel_expressions_BinaryExp : right15
+Expression "1..1" --* "1..1" codemodel_statements_AssignmentStmt : rightExp20
+Statement "0..9999" --* "1..1" codemodel_statements_CompositeStmt : statements23
+Statement "1..1" --* "1..1" codemodel_statements_IfStmt : thenStmt27
+codemodel_DataType "1..1" -- "1..1" codemodel_Variable : type5
+@enduml

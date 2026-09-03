@@ -1,0 +1,124 @@
+@startuml
+class AbstractGraph {
+}
+class Attributable {
+}
+class Attribute {
+}
+class Commentable {
+}
+enum Compass {
+  APPROPRIATE
+  CENTER
+  EAST
+  NORTH
+  NORTH_EAST
+  NORTH_WEST
+  SOUTH
+  SOUTH_EAST
+  SOUTH_WEST
+  WEST
+}
+class Connectable {
+}
+class Identifiable {
+}
+class Statement {
+}
+class StrictIdentifiable {
+}
+class gv_AList {
+}
+abstract class gv_AbstractGraph {
+}
+class gv_AssignmentStatement {
+  + left : str
+  + right : str
+}
+abstract class gv_Attributable {
+}
+class gv_Attribute {
+  + key : str
+  + value : str
+}
+class gv_AttributeList {
+}
+class gv_AttributeStatement {
+  + context : str
+}
+abstract class gv_Commentable {
+  + comments : str
+}
+abstract class gv_Connectable {
+}
+class gv_EdgeStatement {
+}
+class gv_Graph {
+  + strict : str
+  + type : str
+}
+abstract class gv_Identifiable {
+  + id : str
+}
+class gv_NodeID {
+}
+class gv_NodeStatement {
+}
+class gv_Port {
+  + compass : str
+}
+abstract class gv_Statement {
+}
+class gv_StatementList {
+}
+abstract class gv_StrictIdentifiable {
+  + id : str
+}
+class gv_Subgraph {
+  + type : str
+}
+class gv_Target {
+  + operation : str
+}
+AbstractGraph <|-- gv_Graph
+AbstractGraph <|-- gv_Subgraph
+Attributable <|-- gv_EdgeStatement
+Attributable <|-- gv_NodeStatement
+Attribute <|-- gv_NodeStatement
+Commentable <|-- gv_AList
+Commentable <|-- gv_AssignmentStatement
+Commentable <|-- gv_Attribute
+Commentable <|-- gv_AttributeList
+Commentable <|-- gv_AttributeStatement
+Commentable <|-- gv_EdgeStatement
+Commentable <|-- gv_Graph
+Commentable <|-- gv_NodeID
+Commentable <|-- gv_Port
+Commentable <|-- gv_StatementList
+Commentable <|-- gv_Subgraph
+Commentable <|-- gv_Target
+Connectable <|-- gv_NodeID
+Connectable <|-- gv_Subgraph
+Identifiable <|-- gv_AbstractGraph
+Identifiable <|-- gv_Port
+Statement <|-- gv_AssignmentStatement
+Statement <|-- gv_AttributeStatement
+Statement <|-- gv_EdgeStatement
+Statement <|-- gv_NodeStatement
+StrictIdentifiable <|-- gv_NodeID
+gv_AList "1..1" *-- "1..1" gv_Attribute : attribute1
+gv_AttributeList "1..1" --* "1..1" gv_AttributeStatement : attributes12
+gv_Attributable "1..1" *-- "0..1" gv_AttributeList : attributes5
+gv_AList "1..1" --* "1..1" gv_AttributeList : list6
+gv_AttributeList "1..1" *-- "0..1" gv_AttributeList : next10
+gv_Target "0..1" --* "1..1" gv_Target : next_target26
+gv_NodeID "1..1" --* "1..1" gv_NodeStatement : node_id17
+gv_NodeID "1..1" *-- "0..1" gv_Port : port18
+gv_Connectable "1..1" --* "1..1" gv_EdgeStatement : source14
+gv_Statement "1..1" --* "1..1" gv_StatementList : statement20
+gv_AbstractGraph "1..1" *-- "0..1" gv_StatementList : statements0
+gv_StatementList "0..1" --* "1..1" gv_StatementList : tail23
+gv_AList "0..1" --* "1..1" gv_AList : tail3
+gv_EdgeStatement "1..1" *-- "1..1" gv_Target : target15
+gv_Connectable "1..1" --* "1..1" gv_Target : target28
+@enduml

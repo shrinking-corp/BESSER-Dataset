@@ -1,0 +1,26 @@
+@startuml
+class ocldriven_Dependancy {
+}
+class ocldriven_Library {
+}
+class ocldriven_Loans {
+  + date : date
+}
+class ocldriven_Media {
+  + copies : str
+  + name : str
+}
+class ocldriven_Member {
+  + name : str
+}
+ocldriven_Dependancy "1..1" -- "0..1" ocldriven_Media : after16
+ocldriven_Dependancy "1..1" -- "0..1" ocldriven_Media : before13
+ocldriven_Dependancy "0..9999" --* "1..1" ocldriven_Library : dependancies4
+ocldriven_Library "0..1" -- "1..1" ocldriven_Member : library11
+ocldriven_Library "0..1" -- "1..1" ocldriven_Media : library6
+ocldriven_Library "1..1" *-- "0..9999" ocldriven_Loans : loans3
+ocldriven_Loans "1..1" -- "1..1" ocldriven_Media : media9
+ocldriven_Library "1..1" *-- "0..9999" ocldriven_Media : medias0
+ocldriven_Loans "1..1" -- "1..1" ocldriven_Member : member7
+ocldriven_Library "1..1" *-- "0..9999" ocldriven_Member : members1
+@enduml

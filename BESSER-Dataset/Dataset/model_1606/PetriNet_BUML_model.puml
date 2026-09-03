@@ -1,0 +1,30 @@
+@startuml
+class NamedElement {
+}
+class NetElement {
+}
+abstract class pn_NamedElement {
+  + name : str
+}
+class pn_Net {
+  + incrementalID : str
+}
+abstract class pn_NetElement {
+}
+class pn_Place {
+  + noOfTokens : int
+}
+class pn_Transition {
+}
+NamedElement <|-- pn_Net
+NamedElement <|-- pn_NetElement
+NamedElement <|-- pn_Place
+NetElement <|-- pn_Place
+NetElement <|-- pn_Transition
+pn_Net "1..1" *-- "0..9999" pn_NetElement : elements0
+pn_Net "1..1" -- "1..1" pn_NetElement : net1
+pn_Place "0..9999" -- "1..1" pn_Transition : srcP2T3
+pn_Place "1..1" -- "0..9999" pn_Transition : srcT2P6
+pn_Place "1..1" -- "0..9999" pn_Transition : trgP2T5
+pn_Place "0..9999" -- "1..1" pn_Transition : trgT2P2
+@enduml

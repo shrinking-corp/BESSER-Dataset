@@ -1,0 +1,62 @@
+@startuml
+class Type {
+}
+enum Visibility {
+  Final
+  Initial
+}
+class stateMachine_Command {
+  + name : str
+}
+class stateMachine_Condition {
+  + name : str
+}
+class stateMachine_DeclaredParameter {
+}
+class stateMachine_Event {
+  + name : str
+}
+class stateMachine_FloatType {
+}
+class stateMachine_Modifier {
+  + visibility : str
+}
+class stateMachine_State {
+  + name : str
+}
+class stateMachine_StateMachine {
+  + name : str
+}
+class stateMachine_StringType {
+}
+class stateMachine_Test {
+}
+class stateMachine_Transition {
+}
+class stateMachine_Type {
+  + type : str
+}
+class stateMachine_VarName {
+  + value : str
+}
+class stateMachine_model {
+}
+Type <|-- stateMachine_FloatType
+Type <|-- stateMachine_StringType
+stateMachine_Command "0..9999" -- "1..1" stateMachine_State : actions22
+stateMachine_DeclaredParameter "0..9999" --* "1..1" stateMachine_Test : args20
+stateMachine_Command "0..9999" --* "1..1" stateMachine_StateMachine : commands3
+stateMachine_Condition "0..1" --* "1..1" stateMachine_Transition : condition33
+stateMachine_Event "0..1" -- "1..1" stateMachine_Transition : event27
+stateMachine_Event "0..9999" --* "1..1" stateMachine_StateMachine : events1
+stateMachine_State "0..1" -- "1..1" stateMachine_StateMachine : finalstates10
+stateMachine_State "0..1" -- "1..1" stateMachine_StateMachine : initialstates7
+stateMachine_DeclaredParameter "1..1" *-- "0..1" stateMachine_VarName : name35
+stateMachine_Event "1..1" *-- "0..1" stateMachine_Type : returnType13
+stateMachine_State "0..1" -- "1..1" stateMachine_Transition : state30
+stateMachine_StateMachine "0..9999" --* "1..1" stateMachine_model : statemachine0
+stateMachine_State "0..9999" --* "1..1" stateMachine_StateMachine : states5
+stateMachine_Event "1..1" *-- "0..9999" stateMachine_Test : tests15
+stateMachine_State "1..1" *-- "0..9999" stateMachine_Transition : transitions25
+stateMachine_Test "1..1" *-- "0..9999" stateMachine_Type : types17
+@enduml

@@ -1,0 +1,96 @@
+@startuml
+class Event {
+}
+class Gate {
+}
+class IDBase {
+}
+class fault_tree_AND {
+}
+class fault_tree_BasicEvent {
+  + probability : float
+}
+class fault_tree_ErrorInstance {
+  + name : str
+}
+class fault_tree_ErrorType {
+  + name : str
+}
+abstract class fault_tree_Event {
+  + description : str
+  + name : str
+}
+class fault_tree_FailureInstance {
+  + name : str
+}
+class fault_tree_FailureType {
+  + name : str
+}
+class fault_tree_FaultTree {
+}
+abstract class fault_tree_Gate {
+}
+class fault_tree_Hazard {
+}
+class fault_tree_Inhibit {
+}
+class fault_tree_IntermediateEvent {
+}
+class fault_tree_OR {
+}
+class fault_tree_PriorAND {
+}
+class fault_tree_UndevelopedEvent {
+}
+class fault_tree_XOR {
+}
+Event <|-- fault_tree_BasicEvent
+Event <|-- fault_tree_Hazard
+Event <|-- fault_tree_IntermediateEvent
+Event <|-- fault_tree_UndevelopedEvent
+Gate <|-- fault_tree_AND
+Gate <|-- fault_tree_Inhibit
+Gate <|-- fault_tree_OR
+Gate <|-- fault_tree_PriorAND
+Gate <|-- fault_tree_XOR
+IDBase <|-- fault_tree_ErrorInstance
+IDBase <|-- fault_tree_ErrorType
+IDBase <|-- fault_tree_Event
+IDBase <|-- fault_tree_FailureInstance
+IDBase <|-- fault_tree_FailureType
+IDBase <|-- fault_tree_FaultTree
+IDBase <|-- fault_tree_Gate
+fault_tree_ErrorInstance "1..9999" -- "1..1" fault_tree_ErrorType : error38
+fault_tree_BasicEvent "0..1" -- "1..1" fault_tree_ErrorInstance : error43
+fault_tree_ErrorInstance "0..9999" --* "1..1" fault_tree_FaultTree : error_instance62
+fault_tree_ErrorType "0..9999" --* "1..1" fault_tree_FaultTree : error_type65
+fault_tree_FailureInstance "1..1" -- "0..1" fault_tree_IntermediateEvent : event33
+fault_tree_Event "0..9999" --* "1..1" fault_tree_FaultTree : event53
+fault_tree_FailureInstance "0..9999" --* "1..1" fault_tree_FaultTree : failure_instance56
+fault_tree_FailureType "0..9999" --* "1..1" fault_tree_FaultTree : failure_type59
+fault_tree_FaultTree "1..1" *-- "0..9999" fault_tree_Gate : gate51
+fault_tree_FaultTree "1..1" *-- "1..1" fault_tree_Hazard : hazard49
+fault_tree_Hazard "1..1" -- "0..1" fault_tree_IntermediateEvent : inEvent0
+fault_tree_Event "0..1" -- "1..1" fault_tree_IntermediateEvent : inEvent17
+fault_tree_Event "0..9999" -- "1..1" fault_tree_Gate : inputEvents3
+fault_tree_Event "1..1" -- "0..1" fault_tree_Gate : inputGate10
+fault_tree_Gate "1..1" -- "0..9999" fault_tree_Gate : inputGates2
+fault_tree_FailureInstance "0..9999" -- "1..1" fault_tree_IntermediateEvent : instance15
+fault_tree_FailureInstance "1..9999" -- "1..1" fault_tree_FailureType : instance22
+fault_tree_BasicEvent "1..1" -- "0..9999" fault_tree_ErrorInstance : instance35
+fault_tree_Event "0..1" -- "1..1" fault_tree_IntermediateEvent : outEvent19
+fault_tree_BasicEvent "1..1" -- "0..1" fault_tree_IntermediateEvent : outEvent36
+fault_tree_Event "0..1" -- "1..1" fault_tree_Gate : outputEvent7
+fault_tree_Event "1..1" -- "0..1" fault_tree_Gate : outputGate11
+fault_tree_Gate "0..1" -- "1..1" fault_tree_Gate : outputGate5
+fault_tree_ErrorInstance "0..1" -- "1..1" fault_tree_FailureInstance : previousError31
+fault_tree_FailureInstance "1..1" -- "0..1" fault_tree_FailureInstance : previousFailure30
+fault_tree_Event "1..1" -- "0..1" fault_tree_FaultTree : root13
+fault_tree_FailureType "1..1" -- "0..1" fault_tree_FaultTree : root24
+fault_tree_FailureInstance "1..1" -- "0..1" fault_tree_FaultTree : root27
+fault_tree_ErrorType "1..1" -- "0..1" fault_tree_FaultTree : root41
+fault_tree_ErrorInstance "1..1" -- "0..1" fault_tree_FaultTree : root47
+fault_tree_FaultTree "0..1" -- "1..1" fault_tree_Gate : root9
+fault_tree_FailureInstance "1..1" -- "1..1" fault_tree_FailureType : type26
+fault_tree_ErrorInstance "1..1" -- "1..1" fault_tree_ErrorType : type45
+@enduml

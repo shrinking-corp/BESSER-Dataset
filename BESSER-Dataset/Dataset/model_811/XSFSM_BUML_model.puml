@@ -1,0 +1,50 @@
+@startuml
+class NamedElement {
+}
+class fsm_Buffer {
+  + currentValues : str
+  + initialValue : str
+  + dequeue() : void
+  + enqueue(fsm_v : str) : void
+  + initialize() : void
+}
+class fsm_FSMSystem {
+  + initialize() : void
+}
+abstract class fsm_NamedElement {
+  + name : str
+}
+class fsm_State {
+  + step(fsm_inputString : str) : void
+}
+class fsm_StateMachine {
+  + consummedString : str
+  + producedString : str
+  + unprocessedString : str
+  + initializeModel() : void
+  + run() : void
+}
+class fsm_Transition {
+  + input : str
+  + output : str
+  + fire() : void
+}
+NamedElement <|-- fsm_Buffer
+NamedElement <|-- fsm_FSMSystem
+NamedElement <|-- fsm_State
+NamedElement <|-- fsm_StateMachine
+NamedElement <|-- fsm_Transition
+fsm_State "0..1" -- "1..1" fsm_StateMachine : currentState4
+fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransitions9
+fsm_State "1..1" -- "1..1" fsm_StateMachine : initialState1
+fsm_Buffer "1..1" -- "0..9999" fsm_StateMachine : inputs19
+fsm_State "1..1" -- "0..9999" fsm_Transition : outgoingTransitions8
+fsm_Buffer "1..1" -- "0..9999" fsm_StateMachine : outputs22
+fsm_Buffer "0..9999" --* "1..1" fsm_FSMSystem : ownedBuffer17
+fsm_FSMSystem "1..1" *-- "0..9999" fsm_StateMachine : ownedStateMachines15
+fsm_State "0..9999" --* "1..1" fsm_StateMachine : ownedStates0
+fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : ownedTransitions2
+fsm_State "1..1" -- "1..1" fsm_StateMachine : owningFSM7
+fsm_State "1..1" -- "1..1" fsm_Transition : source11
+fsm_State "1..1" -- "1..1" fsm_Transition : target13
+@enduml

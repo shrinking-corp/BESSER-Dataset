@@ -1,0 +1,25 @@
+@startuml
+class Board {
+}
+class Card {
+  + card : CardType
+}
+enum CardType {
+}
+enum Color {
+}
+class Dice {
+  + value : int
+}
+class Pawn {
+  + color : Color
+  + position : int
+}
+class Player {
+  + name : str
+}
+Board "0..1" -- "1..9999" Card : Board_Card
+Board "1..1" -- "1..9999" Player : Board_Player
+Dice "0..1" -- "0..1" Player : Player_Dice
+Pawn "0..1" -- "0..1" Player : Player_Pawn
+@enduml

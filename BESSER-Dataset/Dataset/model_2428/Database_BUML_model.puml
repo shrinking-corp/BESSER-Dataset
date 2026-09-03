@@ -1,0 +1,31 @@
+@startuml
+enum DataType {
+  Date
+  Float
+  Int
+  String
+}
+class database_Column {
+  + IsPrimaryKey : bool
+  + Name : str
+  + Type : str
+}
+class database_Database {
+}
+class database_ForeignKey {
+  + Name : str
+}
+class database_Table {
+  + Name : str
+}
+database_Column "1..1" -- "1..1" database_Table : ColumnTable4
+database_Database "1..1" *-- "0..9999" database_ForeignKey : DbFK0
+database_Database "1..1" -- "1..1" database_ForeignKey : DbFkRoot15
+database_Database "1..1" *-- "0..9999" database_Table : DbTable1
+database_Database "1..1" -- "1..1" database_Table : DbTableRoot2
+database_Column "1..9999" -- "1..1" database_ForeignKey : SourceColumn10
+database_ForeignKey "1..1" -- "1..1" database_Table : SourceTable6
+database_Column "1..9999" --* "1..1" database_Table : TableColumn3
+database_Column "1..9999" -- "1..1" database_ForeignKey : TargetColumn12
+database_ForeignKey "1..1" -- "1..1" database_Table : TargetTable7
+@enduml

@@ -1,0 +1,132 @@
+@startuml
+class DataType {
+}
+class Event {
+}
+class Node {
+}
+class Parameter {
+}
+class State {
+}
+class statesml_Attribute {
+  + name : str
+}
+class statesml_Boolean {
+}
+class statesml_ChangeEvent {
+}
+class statesml_ChangeExpression {
+  + fulfilled : bool
+}
+abstract class statesml_DataType {
+  + name : str
+}
+class statesml_DataTypeLibrary {
+  + name : str
+}
+class statesml_Edge {
+  + name : str
+}
+abstract class statesml_Event {
+  + name : str
+}
+class statesml_Function {
+  + name : str
+}
+class statesml_FunctionCall {
+}
+class statesml_IncomingParameter {
+}
+class statesml_InitialState {
+}
+class statesml_Integer {
+}
+class statesml_MiddleState {
+}
+abstract class statesml_Node {
+  + name : str
+}
+abstract class statesml_Parameter {
+  + name : str
+}
+class statesml_ParameterValue {
+}
+class statesml_ReturnParameter {
+}
+class statesml_SelectionConvergence {
+}
+class statesml_SelectionDivergence {
+}
+abstract class statesml_State {
+}
+class statesml_StateSystem {
+}
+class statesml_StateSystemModel {
+  + name : str
+}
+class statesml_StatesModel {
+}
+class statesml_String {
+}
+class statesml_SystemUnit {
+  + name : str
+}
+class statesml_SystemUnitLibrary {
+  + name : str
+}
+class statesml_SystemUnitModel {
+  + name : str
+}
+class statesml_TerminalState {
+}
+class statesml_Transition {
+}
+class statesml_Trigger {
+}
+DataType <|-- statesml_Boolean
+DataType <|-- statesml_Integer
+DataType <|-- statesml_String
+Event <|-- statesml_ChangeEvent
+Node <|-- statesml_SelectionConvergence
+Node <|-- statesml_SelectionDivergence
+Node <|-- statesml_State
+Node <|-- statesml_Transition
+Parameter <|-- statesml_IncomingParameter
+Parameter <|-- statesml_ReturnParameter
+State <|-- statesml_InitialState
+State <|-- statesml_MiddleState
+State <|-- statesml_TerminalState
+statesml_Attribute "0..9999" --* "1..1" statesml_SystemUnit : attribute12
+statesml_Attribute "0..9999" --* "1..1" statesml_StateSystem : attribute33
+statesml_Attribute "0..1" -- "1..1" statesml_IncomingParameter : attribute49
+statesml_ChangeEvent "1..1" *-- "1..1" statesml_ChangeExpression : changeexpression57
+statesml_Attribute "1..1" -- "1..1" statesml_DataType : datatype1
+statesml_DataType "0..9999" --* "1..1" statesml_DataTypeLibrary : datatype18
+statesml_DataType "1..1" -- "1..1" statesml_Parameter : datatype25
+statesml_DataTypeLibrary "0..9999" --* "1..1" statesml_SystemUnitModel : datatypelibrary2
+statesml_Edge "0..9999" --* "1..1" statesml_StateSystem : edge31
+statesml_Event "0..9999" --* "1..1" statesml_StateSystem : event36
+statesml_Event "1..1" -- "1..1" statesml_Trigger : event46
+statesml_Function "0..9999" --* "1..1" statesml_SystemUnit : function15
+statesml_Function "1..1" -- "1..1" statesml_FunctionCall : function52
+statesml_ChangeExpression "1..1" -- "1..1" statesml_Function : function58
+statesml_DataType "1..1" *-- "0..9999" statesml_Function : function6
+statesml_FunctionCall "0..9999" --* "1..1" statesml_State : functioncall44
+statesml_Edge "0..9999" -- "1..1" statesml_Node : incoming39
+statesml_Function "1..1" -- "0..9999" statesml_IncomingParameter : incomingparameter23
+statesml_ChangeExpression "1..1" *-- "0..9999" statesml_IncomingParameter : incomingparameter61
+statesml_IncomingParameter "0..9999" --* "1..1" statesml_ParameterValue : incomingparameter64
+statesml_Node "0..9999" --* "1..1" statesml_StateSystem : node29
+statesml_Edge "0..9999" -- "1..1" statesml_Node : outgoing38
+statesml_FunctionCall "1..1" *-- "0..9999" statesml_ParameterValue : parametervalue55
+statesml_Function "1..1" *-- "0..1" statesml_ReturnParameter : returnparameter21
+statesml_Edge "1..1" -- "1..1" statesml_Node : source41
+statesml_StateSystem "1..1" --* "1..1" statesml_StateSystemModel : statesystem27
+statesml_StateSystemModel "0..1" --* "1..1" statesml_SystemUnit : statesystemmodel10
+statesml_SystemUnit "0..9999" --* "1..1" statesml_SystemUnitLibrary : systemunit8
+statesml_SystemUnitLibrary "0..9999" --* "1..1" statesml_SystemUnitModel : systemunitlibrary4
+statesml_StatesModel "1..1" *-- "0..9999" statesml_SystemUnitModel : systemunits0
+statesml_Edge "1..1" -- "1..1" statesml_Node : target42
+statesml_Transition "1..1" *-- "0..9999" statesml_Trigger : trigger45
+@enduml

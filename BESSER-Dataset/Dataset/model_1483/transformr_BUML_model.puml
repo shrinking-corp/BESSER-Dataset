@@ -1,0 +1,122 @@
+@startuml
+class BinaryConstraint {
+}
+class Constraint {
+}
+class Executable {
+}
+class Expression {
+}
+class Graph {
+}
+class GraphElement {
+}
+class NamedElement {
+}
+class Pattern {
+}
+class PatternConstraint {
+}
+class TypedElement {
+}
+class transformr_And {
+}
+class transformr_Assignment {
+}
+class transformr_Attribute {
+  + setEType(transformr_eattribute : str) : void
+}
+abstract class transformr_BinaryConstraint {
+}
+class transformr_Block {
+}
+class transformr_Branch {
+}
+abstract class transformr_Constraint {
+}
+class transformr_Edge {
+  + getSource() : str
+  + setEType(transformr_ereference : str) : void
+  + setSource(transformr_source : str) : void
+}
+abstract class transformr_Executable {
+}
+class transformr_Exists {
+}
+class transformr_Expression {
+  + expression : str
+}
+class transformr_ForAll {
+}
+class transformr_Graph {
+}
+abstract class transformr_GraphElement {
+}
+abstract class transformr_NamedElement {
+  + name : str
+}
+class transformr_Node {
+  + setEType(transformr_eclass : str) : void
+}
+class transformr_Not {
+}
+class transformr_Or {
+}
+class transformr_Pattern {
+}
+abstract class transformr_PatternConstraint {
+}
+class transformr_Rule {
+}
+abstract class transformr_TypedElement {
+  + type : str
+}
+class transformr_Variable {
+}
+class transformr_VariableConstraint {
+}
+BinaryConstraint <|-- transformr_And
+BinaryConstraint <|-- transformr_Or
+Constraint <|-- transformr_BinaryConstraint
+Constraint <|-- transformr_Not
+Constraint <|-- transformr_PatternConstraint
+Constraint <|-- transformr_VariableConstraint
+Executable <|-- transformr_Block
+Executable <|-- transformr_Branch
+Executable <|-- transformr_Rule
+Expression <|-- transformr_Assignment
+Expression <|-- transformr_VariableConstraint
+Graph <|-- transformr_Pattern
+GraphElement <|-- transformr_Edge
+GraphElement <|-- transformr_Node
+NamedElement <|-- transformr_Attribute
+NamedElement <|-- transformr_Executable
+NamedElement <|-- transformr_Graph
+NamedElement <|-- transformr_GraphElement
+NamedElement <|-- transformr_Variable
+Pattern <|-- transformr_Rule
+PatternConstraint <|-- transformr_Exists
+PatternConstraint <|-- transformr_ForAll
+TypedElement <|-- transformr_Attribute
+TypedElement <|-- transformr_GraphElement
+transformr_Assignment "0..9999" --* "1..1" transformr_Rule : assignments15
+transformr_Attribute "0..9999" --* "1..1" transformr_Node : attributes3
+transformr_Constraint "1..1" --* "1..1" transformr_Not : child19
+transformr_Block "1..1" -- "0..9999" transformr_Executable : children41
+transformr_Constraint "0..1" --* "1..1" transformr_Pattern : constraint8
+transformr_GraphElement "0..9999" --* "1..1" transformr_Rule : creations11
+transformr_GraphElement "0..9999" -- "1..1" transformr_Rule : deletions12
+transformr_Edge "0..9999" --* "1..1" transformr_Node : edges1
+transformr_Branch "1..1" -- "1..1" transformr_Executable : else_38
+transformr_Branch "1..1" -- "0..1" transformr_Pattern : if_34
+transformr_Expression "1..1" -- "0..9999" transformr_Variable : involvedVariables29
+transformr_BinaryConstraint "1..1" *-- "1..1" transformr_Constraint : left21
+transformr_Graph "1..1" *-- "0..9999" transformr_Node : nodes0
+transformr_BinaryConstraint "1..1" *-- "1..1" transformr_Constraint : right23
+transformr_Pattern "0..1" --* "1..1" transformr_PatternConstraint : subpattern17
+transformr_Edge "1..1" -- "1..1" transformr_Node : target5
+transformr_Attribute "1..1" -- "1..1" transformr_Variable : targetAttribute26
+transformr_Assignment "1..1" -- "1..1" transformr_Variable : targetVariable31
+transformr_Branch "1..1" -- "1..1" transformr_Executable : then36
+transformr_Pattern "1..1" *-- "0..9999" transformr_Variable : variables9
+@enduml

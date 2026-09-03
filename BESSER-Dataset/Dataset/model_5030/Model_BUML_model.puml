@@ -1,0 +1,43 @@
+@startuml
+enum ShipmentStatus {
+  ASSIGNED
+  DELIVERED
+  NEW
+  UNDERWAY
+}
+class pickupnet_Address {
+  + text : str
+}
+class pickupnet_Customer {
+  + id : str
+  + name : str
+  + twitterUserName : str
+}
+class pickupnet_Driver {
+  + id : str
+  + name : str
+}
+class pickupnet_GeoLocation {
+  + lat : float
+  + lon : float
+}
+class pickupnet_Shipment {
+  + id : str
+  + status : str
+}
+class pickupnet_Station {
+  + acceptShipment(pickupnet_shipment : str) : void
+  + registerCustomer(pickupnet_customer : str) : void
+  + registerDriver(pickupnet_driver : str) : void
+}
+pickupnet_Driver "1..1" -- "0..9999" pickupnet_Shipment : assignments5
+pickupnet_Customer "0..9999" --* "1..1" pickupnet_Station : customers0
+pickupnet_Driver "0..1" -- "1..1" pickupnet_Shipment : driver8
+pickupnet_Driver "0..9999" --* "1..1" pickupnet_Station : drivers1
+pickupnet_Address "1..1" *-- "1..1" pickupnet_GeoLocation : geoLocation15
+pickupnet_Customer "1..1" -- "1..1" pickupnet_Shipment : orderer9
+pickupnet_Customer "1..1" *-- "0..9999" pickupnet_Shipment : orders6
+pickupnet_Address "1..1" --* "1..1" pickupnet_Shipment : pickUpAddress12
+pickupnet_Address "1..1" --* "1..1" pickupnet_Shipment : shipToAddress10
+pickupnet_Shipment "0..9999" -- "1..1" pickupnet_Station : shipments3
+@enduml

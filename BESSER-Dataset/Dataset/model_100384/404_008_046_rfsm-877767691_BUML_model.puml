@@ -1,0 +1,43 @@
+@startuml
+class Node {
+}
+class rfsm_Connector {
+  + public : bool
+}
+class rfsm_Event {
+  + eventliteral : str
+}
+class rfsm_Function {
+  + sourcecode : str
+}
+class rfsm_History {
+  + depth : int
+  + hot : bool
+}
+class rfsm_Node {
+  + name : str
+}
+class rfsm_State {
+}
+class rfsm_Transition {
+  + priority_number : int
+  + LCA(rfsm_one : str, rfsm_two : str) : str
+  + isAncestor(rfsm_one : str, rfsm_two : str) : str
+}
+Node <|-- rfsm_Connector
+Node <|-- rfsm_State
+rfsm_Function "0..1" --* "1..1" rfsm_State : doo4
+rfsm_Function "0..1" --* "1..1" rfsm_Transition : effect22
+rfsm_Function "0..1" --* "1..1" rfsm_State : entry3
+rfsm_Event "0..9999" --* "1..1" rfsm_Transition : events17
+rfsm_Function "0..1" --* "1..1" rfsm_State : exit7
+rfsm_Function "0..1" --* "1..1" rfsm_Transition : guard19
+rfsm_Connector "1..1" *-- "0..1" rfsm_History : history10
+rfsm_State "1..1" -- "1..1" rfsm_Transition : owner11
+rfsm_Event "1..1" -- "0..1" rfsm_Transition : owner25
+rfsm_Node "1..1" -- "0..1" rfsm_State : parent0
+rfsm_Node "1..1" -- "1..1" rfsm_Transition : source13
+rfsm_Node "0..9999" --* "1..1" rfsm_State : subnodes2
+rfsm_Node "1..1" -- "1..1" rfsm_Transition : target14
+rfsm_State "1..1" *-- "0..9999" rfsm_Transition : transitions1
+@enduml

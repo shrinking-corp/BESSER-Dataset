@@ -1,0 +1,120 @@
+@startuml
+class Another_Login {
+  + facebook_id : int
+  + id : int
+  + user_id : int
+}
+class Class {
+}
+class Comment {
+  + comment_id : int
+  + content : int
+  + creation_date : str
+  + id : int
+  + post_id : int
+  + user_id : int
+}
+class Cryptostream {
+  + blocked_user_id : int
+  + id : int
+  + user_id : int
+}
+class Following_Hashtag {
+  + hashtag_id : int
+  + id : int
+  + user_id : int
+}
+class Hashtag {
+  + id : int
+  + tag : str
+}
+class Key {
+  + Length : str
+  + Value : str
+  + coordinat_y : int
+  + id : int
+}
+class Like {
+  + date_sent : str
+  + id : int
+  + post_id : int
+  + user_id : int
+}
+class Mention {
+  + id : int
+  + post_id : int
+  + user_id : int
+}
+class Message {
+  + creation_date : str
+  + date_seen : str
+  + id : int
+  + is_deleted : bool
+  + message : str
+  + receiver_id : int
+  + sender_id : int
+}
+class N_Disturb_User {
+  + disturb_user_id : int
+  + id : int
+  + user_id : int
+}
+class Post {
+  + creation_date : str
+  + date_update : str
+  + hashtag_id : int
+  + id : int
+  + location_id : int
+  + status : str
+  + text : str
+  + total_like : int
+}
+class Principal {
+  + creation_date : str
+  + followers_id : int
+  + id : int
+  + status : str
+  + user_id : int
+}
+class Reciever {
+  + id : int
+  + is_active : bool
+  + is_admin : bool
+  + is_private : bool
+  + mail : str
+  + name : str
+  + password : str
+  + phone : str
+  + surname : str
+  + user_id : int
+  + username : str
+}
+class Sender {
+  + creation_date : str
+  + following_id : int
+  + id : int
+  + status : str
+  + user_id : int
+}
+Comment "0..1" -- "0..9999" Comment : Comment_Comment
+Comment "0..9999" -- "1..1" Post : Comment_Post
+Following_Hashtag "1..1" -- "1..1" Hashtag : Hashtag_Following_Hashtag
+Hashtag "0..9999" -- "0..9999" Post : Hashtag_Post
+Key "0..1" -- "0..1" Reciever : Key_Reciever
+Key "0..1" -- "0..1" Sender : Key_Sender
+Like "0..9999" -- "1..1" Post : Like_Post
+Key "0..1" -- "1..1" Post : Location_Post
+Mention "0..9999" -- "1..1" Post : Post_Mention
+Post "0..9999" -- "1..1" Reciever : Post_User
+Principal "0..1" -- "0..1" Reciever : Principal_Reciever
+Another_Login "1..1" -- "1..1" Reciever : User_Another_Login
+Cryptostream "0..9999" -- "1..1" Reciever : User_Blocked_User
+Comment "0..9999" -- "1..1" Reciever : User_Comment
+Principal "0..9999" -- "0..9999" Reciever : User_Followers
+Reciever "0..9999" -- "0..9999" Sender : User_Following
+Following_Hashtag "0..9999" -- "0..9999" Reciever : User_Following_Hashtag
+Like "0..1" -- "0..1" Reciever : User_Like
+Mention "1..1" -- "1..1" Reciever : User_Mention
+Message "0..9999" -- "1..9999" Reciever : User_Message
+N_Disturb_User "0..9999" -- "1..1" Reciever : User_N_Disturb_User
+@enduml

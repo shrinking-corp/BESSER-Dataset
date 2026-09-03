@@ -1,0 +1,214 @@
+@startuml
+class AbstractModel {
+}
+enum FunctionDomain {
+  form
+  space
+  time
+}
+class Indexable {
+}
+class ModelElement {
+}
+class Port {
+}
+class Sequence {
+}
+class SequenceNode {
+}
+abstract class effbdpattern_AbstractModel {
+  + name : str
+  + version : str
+}
+class effbdpattern_Allocation {
+  + id : str
+  + redundant : bool
+}
+class effbdpattern_And {
+}
+class effbdpattern_Component {
+}
+class effbdpattern_Condition {
+  + name : str
+}
+class effbdpattern_Context {
+  + description : str
+}
+class effbdpattern_Description {
+  + content : str
+}
+class effbdpattern_Domain {
+  + description : str
+  + name : str
+}
+class effbdpattern_Feature {
+  + description : str
+  + name : str
+}
+class effbdpattern_Final {
+}
+class effbdpattern_Flow {
+  + flowName : str
+}
+class effbdpattern_Force {
+  + description : str
+  + scale : int
+  + value : int
+}
+class effbdpattern_Function {
+  + domain : str
+}
+class effbdpattern_FunctionProperty {
+  + description : str
+}
+class effbdpattern_Impact {
+  + scale : int
+  + value : int
+}
+abstract class effbdpattern_Indexable {
+}
+class effbdpattern_InputPort {
+}
+class effbdpattern_Item {
+  + name : str
+}
+class effbdpattern_Iteration {
+}
+class effbdpattern_Keyword {
+  + value : str
+}
+class effbdpattern_Loop {
+}
+class effbdpattern_LoopExit {
+}
+class effbdpattern_Model {
+}
+abstract class effbdpattern_ModelElement {
+  + modelId : int
+  + modelName : str
+}
+class effbdpattern_Or {
+}
+class effbdpattern_OutputPort {
+}
+class effbdpattern_Parameter {
+  + name : str
+}
+class effbdpattern_PatternCatalog {
+  + id : str
+}
+class effbdpattern_PatternModel {
+}
+abstract class effbdpattern_Port {
+  + id : str
+}
+class effbdpattern_Problem {
+  + description : str
+  + name : str
+}
+abstract class effbdpattern_Sequence {
+}
+abstract class effbdpattern_SequenceNode {
+  + name : str
+  + tMax : int
+  + tMin : int
+}
+class effbdpattern_Start {
+}
+class effbdpattern_SystemPattern {
+  + alias : str
+  + challeng : str
+  + creationDate : date
+  + description : str
+  + knownApplications : str
+  + name : str
+  + patternId : int
+}
+class effbdpattern_Token {
+}
+class effbdpattern_Workbench {
+}
+AbstractModel <|-- effbdpattern_Model
+AbstractModel <|-- effbdpattern_PatternModel
+Indexable <|-- effbdpattern_AbstractModel
+Indexable <|-- effbdpattern_Context
+Indexable <|-- effbdpattern_Domain
+Indexable <|-- effbdpattern_ModelElement
+Indexable <|-- effbdpattern_Problem
+Indexable <|-- effbdpattern_SystemPattern
+ModelElement <|-- effbdpattern_Component
+ModelElement <|-- effbdpattern_Function
+Port <|-- effbdpattern_InputPort
+Port <|-- effbdpattern_OutputPort
+Sequence <|-- effbdpattern_And
+Sequence <|-- effbdpattern_Final
+Sequence <|-- effbdpattern_Iteration
+Sequence <|-- effbdpattern_Loop
+Sequence <|-- effbdpattern_LoopExit
+Sequence <|-- effbdpattern_Or
+Sequence <|-- effbdpattern_Start
+SequenceNode <|-- effbdpattern_Function
+SequenceNode <|-- effbdpattern_Sequence
+effbdpattern_Allocation "0..9999" --* "1..1" effbdpattern_Workbench : allocations56
+effbdpattern_SystemPattern "0..9999" -- "1..1" effbdpattern_SystemPattern : antiPatterns114
+effbdpattern_ModelElement "0..1" -- "1..1" effbdpattern_Parameter : concreteRole62
+effbdpattern_Condition "0..1" -- "1..1" effbdpattern_Force : condition88
+effbdpattern_Condition "0..9999" --* "1..1" effbdpattern_Workbench : conditions47
+effbdpattern_Condition "0..9999" -- "1..1" effbdpattern_Context : conditions65
+effbdpattern_Context "0..1" -- "1..1" effbdpattern_SystemPattern : context104
+effbdpattern_Context "0..9999" --* "1..1" effbdpattern_Workbench : contexts49
+effbdpattern_SequenceNode "1..1" -- "0..9999" effbdpattern_SequenceNode : controlFlowEdge19
+effbdpattern_Function "1..1" *-- "0..9999" effbdpattern_Function : decompositions1
+effbdpattern_Component "1..1" *-- "0..9999" effbdpattern_Component : decompositions73
+effbdpattern_Port "1..1" -- "0..1" effbdpattern_Port : delegate21
+effbdpattern_Description "0..9999" --* "1..1" effbdpattern_Function : descriptions9
+effbdpattern_Domain "0..1" -- "1..1" effbdpattern_SystemPattern : domain110
+effbdpattern_AbstractModel "1..1" -- "0..1" effbdpattern_Domain : domain79
+effbdpattern_Domain "0..9999" --* "1..1" effbdpattern_Workbench : domains41
+effbdpattern_SystemPattern "0..9999" -- "1..1" effbdpattern_SystemPattern : equivalentPatterns123
+effbdpattern_Feature "0..1" -- "1..1" effbdpattern_Impact : feature97
+effbdpattern_Feature "0..9999" --* "1..1" effbdpattern_Workbench : features45
+effbdpattern_Feature "0..9999" -- "1..1" effbdpattern_Problem : featuresToOptimize93
+effbdpattern_Flow "0..9999" --* "1..1" effbdpattern_Function : flows3
+effbdpattern_Force "0..9999" --* "1..1" effbdpattern_Problem : forces96
+effbdpattern_AbstractModel "1..1" -- "0..9999" effbdpattern_AbstractModel : fragments84
+effbdpattern_Allocation "1..1" -- "0..1" effbdpattern_Function : fromFunction140
+effbdpattern_FunctionProperty "0..9999" --* "1..1" effbdpattern_Workbench : functionProperties37
+effbdpattern_Function "0..1" --* "1..1" effbdpattern_Model : functionalArchitecture134
+effbdpattern_Function "0..1" --* "1..1" effbdpattern_PatternModel : functionalPattern68
+effbdpattern_Impact "0..9999" --* "1..1" effbdpattern_SystemPattern : impacts128
+effbdpattern_Function "1..1" *-- "0..9999" effbdpattern_InputPort : inputPorts7
+effbdpattern_Flow "1..1" -- "0..9999" effbdpattern_InputPort : inputflowEdge22
+effbdpattern_Flow "1..1" *-- "0..9999" effbdpattern_Item : items25
+effbdpattern_Keyword "0..9999" --* "1..1" effbdpattern_Workbench : keywords43
+effbdpattern_Indexable "1..1" -- "0..9999" effbdpattern_Keyword : keywords59
+effbdpattern_ModelElement "0..1" -- "1..1" effbdpattern_SystemPattern : modelElement129
+effbdpattern_Function "1..1" *-- "0..9999" effbdpattern_OutputPort : outputPorts5
+effbdpattern_Flow "0..9999" -- "1..1" effbdpattern_OutputPort : outputflowEdge27
+effbdpattern_Parameter "0..9999" --* "1..1" effbdpattern_SystemPattern : parameters101
+effbdpattern_Function "1..1" -- "0..1" effbdpattern_Function : parent16
+effbdpattern_FunctionProperty "0..1" -- "1..1" effbdpattern_FunctionProperty : parent31
+effbdpattern_Component "1..1" -- "0..1" effbdpattern_Component : parent76
+effbdpattern_AbstractModel "1..1" -- "0..1" effbdpattern_AbstractModel : parent82
+effbdpattern_ModelElement "1..1" -- "0..1" effbdpattern_SystemPattern : pattern58
+effbdpattern_Impact "1..1" -- "0..1" effbdpattern_SystemPattern : pattern99
+effbdpattern_PatternCatalog "0..1" --* "1..1" effbdpattern_Workbench : patternCatalog53
+effbdpattern_PatternModel "0..1" --* "1..1" effbdpattern_SystemPattern : patternModel125
+effbdpattern_ModelElement "0..1" -- "1..1" effbdpattern_Parameter : patternRole61
+effbdpattern_Function "0..9999" --* "1..1" effbdpattern_PatternCatalog : patterns33
+effbdpattern_Component "0..1" --* "1..1" effbdpattern_Model : physicalArchitecture137
+effbdpattern_Component "0..1" --* "1..1" effbdpattern_PatternModel : physicalPattern70
+effbdpattern_Problem "0..1" -- "1..1" effbdpattern_SystemPattern : problem107
+effbdpattern_Force "1..1" -- "0..1" effbdpattern_Problem : problem87
+effbdpattern_Problem "0..9999" --* "1..1" effbdpattern_Workbench : problems39
+effbdpattern_Function "1..1" -- "0..9999" effbdpattern_FunctionProperty : property13
+effbdpattern_SystemPattern "0..9999" -- "1..1" effbdpattern_SystemPattern : relatedPatterns120
+effbdpattern_SystemPattern "0..9999" -- "1..1" effbdpattern_SystemPattern : requestedPatterns117
+effbdpattern_Function "1..1" *-- "0..9999" effbdpattern_Sequence : sequenceNodes2
+effbdpattern_PatternCatalog "1..1" *-- "0..9999" effbdpattern_SystemPattern : systemPatterns35
+effbdpattern_Allocation "1..1" -- "0..1" effbdpattern_Component : toComponent143
+effbdpattern_Function "1..1" *-- "0..9999" effbdpattern_Token : tokens11
+effbdpattern_PatternModel "0..9999" -- "1..1" effbdpattern_Problem : useCasesBeforePattern90
+effbdpattern_Model "0..1" -- "1..1" effbdpattern_Model : versionBeforePattern132
+effbdpattern_Model "0..9999" --* "1..1" effbdpattern_Workbench : workingModels51
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+class Amalgamate_Middle_Cards_UseCase {
+}
+class Automatic_play_UseCase {
+}
+class Board {
+  + board : Card
+  + boardGui : Card
+  + scores : Card
+}
+class Card {
+  + cardNames : str
+  + name : str
+  + suit : CardSuits
+}
+enum CardSuits {
+}
+class CardTable {
+  + cards : Card
+  + done : bool
+  + stage : str
+}
+class Deal_A_Card_external {
+}
+class Deck {
+  + card : Card
+  + deck___ : str
+}
+class Display_Rulebook_UseCase {
+}
+class Display_leaderboard_UseCase {
+}
+class Game {
+  + board : Board
+  + deck : Deck
+  + scan : str
+}
+class Game_Component {
+}
+class Move_a_Card_one_Space_external {
+}
+class Move_a_Card_two_Spaces_UseCase {
+}
+class Print_Cards_text_form__UseCase {
+}
+class Rules {
+}
+class Shuffle_Deck_external {
+}
+class User_Actor {
+}
+Card "0..9999" -- "0..1" Deck : Deck_Card
+Board "0..1" -- "1..1" Game : Game_Board
+Deck "0..9999" -- "1..1" Game : Game_Deck
+Game "1..1" -- "1..1" Rules : Game_Rules
+Amalgamate_Middle_Cards_UseCase "0..1" -- "0..1" User_Actor : User_Amalgamate_Middle_Cards
+Automatic_play_UseCase "0..1" -- "0..1" User_Actor : User_Automatic_play
+Deal_A_Card_external "0..1" -- "0..1" User_Actor : User_Deal_A_Card
+Display_Rulebook_UseCase "0..1" -- "0..1" User_Actor : User_Display_Rulebook
+Display_leaderboard_UseCase "0..1" -- "0..1" User_Actor : User_Display_leaderboard
+Move_a_Card_one_Space_external "0..1" -- "0..1" User_Actor : User_Move_a_Card_one_Space
+Move_a_Card_two_Spaces_UseCase "0..1" -- "0..1" User_Actor : User_Move_a_Card_two_Spaces
+Print_Cards_text_form__UseCase "0..1" -- "0..1" User_Actor : User_Print_Cards_text_form_
+Shuffle_Deck_external "0..1" -- "0..1" User_Actor : User_Shuffle_Deck
+@enduml

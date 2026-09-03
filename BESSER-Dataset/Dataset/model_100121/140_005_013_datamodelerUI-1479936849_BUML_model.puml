@@ -1,0 +1,24 @@
+@startuml
+class Database {
+}
+class Diagram {
+}
+class Schema {
+}
+class schema_DataModelerNamedElement {
+}
+class schema_FunctionalElement {
+}
+class ui_diagram_DMDiagram {
+}
+class ui_project_Project {
+  + application : str
+  + description : str
+  + isValid(ui_context : str, ui_diagnostics : str) : bool
+}
+Diagram <|-- ui_diagram_DMDiagram
+schema_DataModelerNamedElement <|-- ui_project_Project
+schema_FunctionalElement <|-- ui_project_Project
+Database "0..1" --* "1..1" ui_project_Project : database0
+Schema "0..9999" --* "1..1" ui_project_Project : schemas1
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+class EModelElement {
+}
+enum Month {
+  April
+  August
+  December
+  February
+  January
+  July
+  June
+  March
+  May
+  November
+  October
+  September
+}
+class Person {
+}
+class family_Family {
+  + name : str
+}
+class family_Man {
+}
+abstract class family_Person {
+  + birthCity : str
+  + birthDay : int
+  + birthMonth : str
+  + birthYear : int
+  + firstName : str
+  + lastName : str
+}
+class family_Woman {
+}
+EModelElement <|-- family_Family
+EModelElement <|-- family_Person
+Person <|-- family_Man
+Person <|-- family_Woman
+family_Person "0..9999" -- "1..1" family_Person : children12
+family_Family "0..9999" --* "1..1" family_Family : families4
+family_Man "0..1" -- "1..1" family_Person : father6
+family_Man "0..1" -- "1..1" family_Woman : husband17
+family_Family "1..1" *-- "0..9999" family_Man : men0
+family_Person "1..1" -- "0..1" family_Woman : mother8
+family_Man "1..1" -- "0..1" family_Woman : wife14
+family_Family "1..1" *-- "0..9999" family_Woman : women1
+@enduml

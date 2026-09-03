@@ -1,0 +1,135 @@
+@startuml
+class Adaptation {
+}
+class InstantiationStrategy {
+}
+class ScopedInstantiation {
+}
+class SetAdaptation {
+}
+class UnsetAdaptation {
+}
+class adaptations_smartadapters4MODERATES_Action {
+}
+class adaptations_smartadapters4MODERATES_ActionBlock {
+}
+class adaptations_smartadapters4MODERATES_AnnotatedElement {
+}
+class adaptations_smartadapters4MODERATES_CompositeState {
+}
+class adaptations_smartadapters4MODERATES_Event {
+}
+class adaptations_smartadapters4MODERATES_Expression {
+}
+class adaptations_smartadapters4MODERATES_PlatformAnnotation {
+}
+class adaptations_smartadapters4MODERATES_Property {
+}
+class adaptations_smartadapters4MODERATES_State {
+}
+class adaptations_smartadapters4MODERATES_Transition {
+}
+abstract class smartadapters4MODERATES_Adaptation {
+}
+class smartadapters4MODERATES_AdviceModel {
+}
+class smartadapters4MODERATES_Aspect {
+  + name : str
+}
+class smartadapters4MODERATES_AspectModelElement {
+}
+abstract class smartadapters4MODERATES_CloneAdaptation {
+}
+abstract class smartadapters4MODERATES_CreateAdaptation {
+}
+class smartadapters4MODERATES_GlobalInstantiation {
+}
+abstract class smartadapters4MODERATES_InstantiationStrategy {
+}
+class smartadapters4MODERATES_PerElementMatch {
+}
+class smartadapters4MODERATES_PerRoleMatch {
+}
+class smartadapters4MODERATES_PointcutModel {
+}
+abstract class smartadapters4MODERATES_ScopedInstantiation {
+}
+abstract class smartadapters4MODERATES_SetAdaptation {
+}
+abstract class smartadapters4MODERATES_UnsetAdaptation {
+}
+class smartadapters4MODERATES_adaptations_SetActionBlock {
+}
+class smartadapters4MODERATES_adaptations_SetAnnotatedElement {
+}
+class smartadapters4MODERATES_adaptations_SetCompositeState {
+}
+class smartadapters4MODERATES_adaptations_SetState {
+}
+class smartadapters4MODERATES_adaptations_SetTransition {
+}
+class smartadapters4MODERATES_adaptations_UnsetCompositeState {
+}
+class smartadapters4MODERATES_adaptations_UnsetState {
+}
+class smartadapters4MODERATES_adaptations_UnsetTransition {
+}
+Adaptation <|-- smartadapters4MODERATES_CloneAdaptation
+Adaptation <|-- smartadapters4MODERATES_CreateAdaptation
+Adaptation <|-- smartadapters4MODERATES_SetAdaptation
+Adaptation <|-- smartadapters4MODERATES_UnsetAdaptation
+InstantiationStrategy <|-- smartadapters4MODERATES_GlobalInstantiation
+InstantiationStrategy <|-- smartadapters4MODERATES_ScopedInstantiation
+ScopedInstantiation <|-- smartadapters4MODERATES_PerElementMatch
+ScopedInstantiation <|-- smartadapters4MODERATES_PerRoleMatch
+SetAdaptation <|-- smartadapters4MODERATES_adaptations_SetActionBlock
+SetAdaptation <|-- smartadapters4MODERATES_adaptations_SetAnnotatedElement
+SetAdaptation <|-- smartadapters4MODERATES_adaptations_SetCompositeState
+SetAdaptation <|-- smartadapters4MODERATES_adaptations_SetState
+SetAdaptation <|-- smartadapters4MODERATES_adaptations_SetTransition
+UnsetAdaptation <|-- smartadapters4MODERATES_adaptations_UnsetCompositeState
+UnsetAdaptation <|-- smartadapters4MODERATES_adaptations_UnsetState
+UnsetAdaptation <|-- smartadapters4MODERATES_adaptations_UnsetTransition
+adaptations_smartadapters4MODERATES_AnnotatedElement "1..1" -- "1..1" smartadapters4MODERATES_adaptations_SetAnnotatedElement : AnnotatedElementToSet94
+adaptations_smartadapters4MODERATES_CompositeState "1..1" -- "1..1" smartadapters4MODERATES_adaptations_SetCompositeState : CompositeStateToSet17
+adaptations_smartadapters4MODERATES_CompositeState "1..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetCompositeState : CompositeStateToUnset23
+adaptations_smartadapters4MODERATES_State "1..1" -- "1..1" smartadapters4MODERATES_adaptations_SetState : StateToSet31
+adaptations_smartadapters4MODERATES_State "1..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetState : StateToUnset45
+adaptations_smartadapters4MODERATES_Transition "1..1" -- "1..1" smartadapters4MODERATES_adaptations_SetTransition : TransitionToSet62
+adaptations_smartadapters4MODERATES_Transition "1..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetTransition : TransitionToUnset77
+adaptations_smartadapters4MODERATES_Action "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetTransition : action68
+adaptations_smartadapters4MODERATES_Action "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetTransition : action85
+adaptations_smartadapters4MODERATES_Action "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetActionBlock : actions98
+smartadapters4MODERATES_Adaptation "0..9999" --* "1..1" smartadapters4MODERATES_Aspect : adapt5
+smartadapters4MODERATES_AdviceModel "1..1" --* "1..1" smartadapters4MODERATES_Aspect : advice1
+smartadapters4MODERATES_AspectModelElement "0..9999" -- "1..1" smartadapters4MODERATES_InstantiationStrategy : adviceElements12
+adaptations_smartadapters4MODERATES_PlatformAnnotation "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetAnnotatedElement : annotations95
+adaptations_smartadapters4MODERATES_ActionBlock "1..1" -- "1..1" smartadapters4MODERATES_adaptations_SetActionBlock : blockToSet97
+smartadapters4MODERATES_AdviceModel "1..1" *-- "0..9999" smartadapters4MODERATES_AspectModelElement : content7
+smartadapters4MODERATES_AspectModelElement "0..9999" --* "1..1" smartadapters4MODERATES_PointcutModel : content9
+adaptations_smartadapters4MODERATES_Action "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetState : entry38
+adaptations_smartadapters4MODERATES_Action "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetState : entry53
+adaptations_smartadapters4MODERATES_Event "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetTransition : event64
+adaptations_smartadapters4MODERATES_Event "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_UnsetTransition : event79
+adaptations_smartadapters4MODERATES_Action "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetState : exit40
+adaptations_smartadapters4MODERATES_Action "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetState : exit56
+adaptations_smartadapters4MODERATES_Expression "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetTransition : guard66
+adaptations_smartadapters4MODERATES_Expression "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetTransition : guard82
+adaptations_smartadapters4MODERATES_Transition "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetState : incoming35
+adaptations_smartadapters4MODERATES_Transition "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_UnsetState : incoming50
+adaptations_smartadapters4MODERATES_State "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetCompositeState : initial20
+adaptations_smartadapters4MODERATES_State "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetCompositeState : initial28
+adaptations_smartadapters4MODERATES_Transition "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetState : outgoing33
+adaptations_smartadapters4MODERATES_Transition "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_UnsetState : outgoing47
+smartadapters4MODERATES_Aspect "1..1" *-- "0..1" smartadapters4MODERATES_PointcutModel : pointcut0
+smartadapters4MODERATES_AspectModelElement "0..9999" -- "1..1" smartadapters4MODERATES_ScopedInstantiation : pointcutElements15
+adaptations_smartadapters4MODERATES_Property "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetState : properties43
+adaptations_smartadapters4MODERATES_Property "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_UnsetState : properties59
+adaptations_smartadapters4MODERATES_State "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetTransition : source74
+adaptations_smartadapters4MODERATES_State "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetTransition : source91
+smartadapters4MODERATES_Aspect "1..1" *-- "0..9999" smartadapters4MODERATES_InstantiationStrategy : strategies3
+adaptations_smartadapters4MODERATES_State "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_SetCompositeState : substate18
+adaptations_smartadapters4MODERATES_State "0..9999" -- "1..1" smartadapters4MODERATES_adaptations_UnsetCompositeState : substate25
+adaptations_smartadapters4MODERATES_State "0..1" -- "1..1" smartadapters4MODERATES_adaptations_SetTransition : target71
+adaptations_smartadapters4MODERATES_State "0..1" -- "1..1" smartadapters4MODERATES_adaptations_UnsetTransition : target88
+@enduml

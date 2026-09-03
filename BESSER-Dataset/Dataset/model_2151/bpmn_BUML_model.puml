@@ -1,0 +1,168 @@
+@startuml
+class Activity {
+}
+enum ActivityType {
+  EventEndCancel
+  EventEndCompensation
+  EventEndEmpty
+  EventEndError
+  EventEndLink
+  EventEndMessage
+  EventEndMultiple
+  EventEndTerminate
+  EventIntermediateCancel
+  EventIntermediateCompensation
+  EventIntermediateEmpty
+  EventIntermediateError
+  EventIntermediateLink
+  EventIntermediateMessage
+  EventIntermediateMultiple
+  EventIntermediateRule
+  EventIntermediateTimer
+  EventStartEmpty
+  EventStartLink
+  EventStartMessage
+  EventStartMultiple
+  EventStartRule
+  EventStartTimer
+  GatewayComplex
+  GatewayDataBasedExclusive
+  GatewayDataBasedInclusive
+  GatewayEventBasedExclusive
+  GatewayParallel
+  SubProcess
+  Task
+}
+class Artifact {
+}
+class ArtifactsContainer {
+}
+enum DirectionType {
+  Both
+  From
+  None_
+  To
+}
+class EModelElement {
+}
+class Graph {
+}
+class Identifiable {
+}
+class IdentifiableNode {
+}
+class NamedBpmnObject {
+}
+enum SequenceFlowConditionType {
+  Default
+  Expression
+  None_
+}
+class Vertex {
+}
+class bpmn_Activity {
+  + activityType : str
+  + looping : str
+  + orderedMessages : str
+}
+class bpmn_Artifact {
+}
+class bpmn_ArtifactsContainer {
+}
+class bpmn_Association {
+  + direction : str
+}
+class bpmn_BpmnDiagram {
+  + author : str
+  + title : str
+}
+class bpmn_DataObject {
+}
+class bpmn_Graph {
+}
+class bpmn_Group {
+}
+class bpmn_Identifiable {
+  + iD : str
+}
+class bpmn_IdentifiableNode {
+}
+class bpmn_Lane {
+}
+class bpmn_MessagingEdge {
+}
+class bpmn_NamedBpmnObject {
+  + documentation : str
+  + name : str
+  + ncname : str
+}
+class bpmn_Pool {
+}
+class bpmn_SequenceEdge {
+  + conditionType : str
+  + isDefault : str
+}
+class bpmn_SubProcess {
+  + isTransaction : str
+}
+class bpmn_TextAnnotation {
+}
+class bpmn_Vertex {
+}
+Activity <|-- bpmn_SubProcess
+Artifact <|-- bpmn_DataObject
+Artifact <|-- bpmn_Group
+Artifact <|-- bpmn_TextAnnotation
+ArtifactsContainer <|-- bpmn_BpmnDiagram
+ArtifactsContainer <|-- bpmn_Graph
+EModelElement <|-- bpmn_Association
+EModelElement <|-- bpmn_Identifiable
+Graph <|-- bpmn_Pool
+Graph <|-- bpmn_SubProcess
+Identifiable <|-- bpmn_Artifact
+Identifiable <|-- bpmn_BpmnDiagram
+Identifiable <|-- bpmn_IdentifiableNode
+Identifiable <|-- bpmn_Lane
+Identifiable <|-- bpmn_MessagingEdge
+Identifiable <|-- bpmn_SequenceEdge
+IdentifiableNode <|-- bpmn_Graph
+IdentifiableNode <|-- bpmn_Vertex
+NamedBpmnObject <|-- bpmn_Activity
+NamedBpmnObject <|-- bpmn_Artifact
+NamedBpmnObject <|-- bpmn_ArtifactsContainer
+NamedBpmnObject <|-- bpmn_Lane
+NamedBpmnObject <|-- bpmn_MessagingEdge
+NamedBpmnObject <|-- bpmn_Pool
+NamedBpmnObject <|-- bpmn_SequenceEdge
+Vertex <|-- bpmn_Activity
+bpmn_Activity "0..9999" -- "1..1" bpmn_Group : activities22
+bpmn_Activity "0..9999" -- "1..1" bpmn_Lane : activities26
+bpmn_Artifact "0..9999" --* "1..1" bpmn_ArtifactsContainer : artifacts10
+bpmn_Artifact "1..1" -- "0..1" bpmn_ArtifactsContainer : artifactsContainer9
+bpmn_Association "0..9999" -- "1..1" bpmn_IdentifiableNode : associations23
+bpmn_Artifact "1..1" *-- "0..9999" bpmn_Association : associations7
+bpmn_BpmnDiagram "0..1" -- "1..1" bpmn_MessagingEdge : bpmnDiagram30
+bpmn_BpmnDiagram "0..1" -- "1..1" bpmn_Pool : bpmnDiagram37
+bpmn_Activity "1..1" -- "0..1" bpmn_SubProcess : eventHandlerFor4
+bpmn_Activity "0..9999" --* "1..1" bpmn_SubProcess : eventHandlers44
+bpmn_Graph "0..1" -- "1..1" bpmn_SequenceEdge : graph39
+bpmn_Graph "0..1" -- "1..1" bpmn_Vertex : graph52
+bpmn_Activity "1..1" -- "0..9999" bpmn_Group : groups3
+bpmn_SequenceEdge "0..9999" -- "1..1" bpmn_Vertex : incomingEdges49
+bpmn_Activity "1..1" -- "0..9999" bpmn_MessagingEdge : incomingMessages0
+bpmn_Activity "1..1" -- "0..1" bpmn_Lane : lane5
+bpmn_Lane "0..9999" --* "1..1" bpmn_Pool : lanes35
+bpmn_BpmnDiagram "1..1" *-- "0..9999" bpmn_MessagingEdge : messages16
+bpmn_SequenceEdge "0..9999" -- "1..1" bpmn_Vertex : outgoingEdges46
+bpmn_Activity "1..1" -- "0..9999" bpmn_MessagingEdge : outgoingMessages1
+bpmn_Lane "1..1" -- "0..1" bpmn_Pool : pool28
+bpmn_BpmnDiagram "1..1" *-- "0..9999" bpmn_Pool : pools15
+bpmn_Graph "1..1" *-- "0..9999" bpmn_SequenceEdge : sequenceEdges20
+bpmn_Artifact "0..1" -- "1..1" bpmn_Association : source11
+bpmn_Activity "0..1" -- "1..1" bpmn_MessagingEdge : source31
+bpmn_SequenceEdge "1..1" -- "0..1" bpmn_Vertex : source40
+bpmn_Association "1..1" -- "0..1" bpmn_IdentifiableNode : target13
+bpmn_Activity "0..1" -- "1..1" bpmn_MessagingEdge : target33
+bpmn_SequenceEdge "1..1" -- "0..1" bpmn_Vertex : target42
+bpmn_Graph "1..1" *-- "0..9999" bpmn_Vertex : vertices19
+@enduml

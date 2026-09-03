@@ -1,0 +1,39 @@
+@startuml
+class Arc {
+}
+class NamedElement {
+}
+class Node {
+}
+abstract class PN_Arc {
+}
+class PN_InputArc {
+}
+abstract class PN_NamedElement {
+  + name : str
+}
+abstract class PN_Node {
+}
+class PN_OutputArc {
+}
+class PN_PetriNet {
+  + name : str
+}
+class PN_Place {
+}
+class PN_Transition {
+  + maxDelay : float
+  + minDelay : float
+}
+Arc <|-- PN_InputArc
+Arc <|-- PN_OutputArc
+NamedElement <|-- PN_Arc
+NamedElement <|-- PN_Node
+Node <|-- PN_Place
+Node <|-- PN_Transition
+PN_NamedElement "0..9999" --* "1..1" PN_PetriNet : elements0
+PN_OutputArc "1..1" -- "1..1" PN_Transition : from_1
+PN_InputArc "1..1" -- "1..1" PN_Place : from_4
+PN_OutputArc "1..1" -- "1..1" PN_Place : to2
+PN_InputArc "1..1" -- "1..1" PN_Transition : to6
+@enduml

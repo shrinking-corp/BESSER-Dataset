@@ -1,0 +1,46 @@
+@startuml
+class TreeConstraint {
+}
+class sPLOT2CoCo_CrossTreeConstraint {
+  + type : str
+}
+class sPLOT2CoCo_FM {
+}
+class sPLOT2CoCo_Feature {
+  + name : str
+}
+class sPLOT2CoCo_FeatureAttribute {
+  + attributeType : str
+  + defaultValue : int
+  + maxValue : int
+  + minValue : int
+  + nullValue : int
+}
+class sPLOT2CoCo_MandatoryTreeConstraint {
+}
+class sPLOT2CoCo_OptionalTreeConstraint {
+}
+class sPLOT2CoCo_OrAlternativeTreeConstraint {
+  + max : int
+  + min : int
+}
+class sPLOT2CoCo_ParentChildConstraint {
+}
+class sPLOT2CoCo_TreeConstraint {
+}
+TreeConstraint <|-- sPLOT2CoCo_MandatoryTreeConstraint
+TreeConstraint <|-- sPLOT2CoCo_OptionalTreeConstraint
+TreeConstraint <|-- sPLOT2CoCo_OrAlternativeTreeConstraint
+sPLOT2CoCo_FM "1..1" *-- "0..9999" sPLOT2CoCo_FeatureAttribute : attributes3
+sPLOT2CoCo_CrossTreeConstraint "0..9999" --* "1..1" sPLOT2CoCo_FM : crossTreeConstraints5
+sPLOT2CoCo_CrossTreeConstraint "1..1" -- "0..1" sPLOT2CoCo_Feature : feature118
+sPLOT2CoCo_Feature "0..1" -- "1..1" sPLOT2CoCo_MandatoryTreeConstraint : feature12
+sPLOT2CoCo_Feature "0..1" -- "1..1" sPLOT2CoCo_OptionalTreeConstraint : feature14
+sPLOT2CoCo_CrossTreeConstraint "1..1" -- "0..1" sPLOT2CoCo_Feature : feature221
+sPLOT2CoCo_Feature "0..1" -- "1..1" sPLOT2CoCo_FeatureAttribute : feature24
+sPLOT2CoCo_FM "1..1" *-- "0..9999" sPLOT2CoCo_Feature : features0
+sPLOT2CoCo_Feature "0..9999" -- "1..1" sPLOT2CoCo_OrAlternativeTreeConstraint : features16
+sPLOT2CoCo_Feature "0..1" -- "1..1" sPLOT2CoCo_ParentChildConstraint : parent7
+sPLOT2CoCo_FM "1..1" *-- "0..9999" sPLOT2CoCo_ParentChildConstraint : relationships1
+sPLOT2CoCo_ParentChildConstraint "1..1" *-- "0..9999" sPLOT2CoCo_TreeConstraint : treeConstraints10
+@enduml

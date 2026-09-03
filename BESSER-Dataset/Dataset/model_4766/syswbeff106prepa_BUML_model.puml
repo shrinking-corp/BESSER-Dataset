@@ -1,0 +1,47 @@
+@startuml
+class AbstractFunction {
+}
+class Port {
+}
+abstract class syswbeff106prepa_AbstractFunction {
+  + name : str
+}
+class syswbeff106prepa_Flow {
+}
+class syswbeff106prepa_Function {
+}
+class syswbeff106prepa_InputPort {
+}
+class syswbeff106prepa_OutputPort {
+}
+class syswbeff106prepa_Pattern {
+}
+class syswbeff106prepa_PatternCatalog {
+  + id : str
+}
+abstract class syswbeff106prepa_Port {
+  + name : str
+}
+class syswbeff106prepa_System {
+  + id : str
+}
+class syswbeff106prepa_Workbench {
+}
+AbstractFunction <|-- syswbeff106prepa_Function
+AbstractFunction <|-- syswbeff106prepa_Pattern
+Port <|-- syswbeff106prepa_InputPort
+Port <|-- syswbeff106prepa_OutputPort
+syswbeff106prepa_AbstractFunction "1..1" -- "0..1" syswbeff106prepa_AbstractFunction : associations1
+syswbeff106prepa_PatternCatalog "0..9999" --* "1..1" syswbeff106prepa_Workbench : catalog12
+syswbeff106prepa_Pattern "0..1" -- "1..1" syswbeff106prepa_Pattern : equivalent16
+syswbeff106prepa_Function "0..9999" --* "1..1" syswbeff106prepa_Function : fdecompositions22
+syswbeff106prepa_AbstractFunction "1..1" *-- "0..9999" syswbeff106prepa_Flow : flows6
+syswbeff106prepa_Flow "1..1" -- "0..1" syswbeff106prepa_OutputPort : from_24
+syswbeff106prepa_Function "0..1" --* "1..1" syswbeff106prepa_System : functionalArchitecture8
+syswbeff106prepa_AbstractFunction "1..1" *-- "0..9999" syswbeff106prepa_InputPort : inputports2
+syswbeff106prepa_AbstractFunction "1..1" *-- "0..9999" syswbeff106prepa_OutputPort : outputports4
+syswbeff106prepa_Pattern "0..9999" --* "1..1" syswbeff106prepa_PatternCatalog : patterns9
+syswbeff106prepa_Pattern "0..9999" --* "1..1" syswbeff106prepa_Pattern : pdecompositions19
+syswbeff106prepa_System "0..1" --* "1..1" syswbeff106prepa_Workbench : systemView10
+syswbeff106prepa_Flow "1..1" -- "0..1" syswbeff106prepa_InputPort : to27
+@enduml

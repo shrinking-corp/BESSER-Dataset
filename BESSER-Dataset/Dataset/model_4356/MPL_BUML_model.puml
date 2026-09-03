@@ -1,0 +1,134 @@
+@startuml
+class AtomicExpression {
+}
+class BinaryExpression {
+}
+class Expression {
+}
+class Operation {
+}
+class Statement {
+}
+class UnaryExpression {
+}
+class mpl_AddExpression {
+}
+class mpl_Assignment {
+}
+class mpl_AssignmentStatement {
+}
+abstract class mpl_AtomicExpression {
+}
+abstract class mpl_BinaryExpression {
+}
+class mpl_Block {
+}
+class mpl_Comparison {
+  + operator : str
+}
+class mpl_DivExpression {
+}
+abstract class mpl_Expression {
+}
+class mpl_ExpressionStatement {
+}
+class mpl_ForLoop {
+  + increment : bool
+}
+class mpl_Function {
+}
+class mpl_IfStatement {
+}
+class mpl_LiteralValue {
+  + rawValue : int
+}
+class mpl_MPLModel {
+}
+class mpl_MultExpression {
+}
+abstract class mpl_Operation {
+  + name : str
+}
+class mpl_OperationCall {
+}
+class mpl_ParenthesisExpression {
+}
+class mpl_Procedure {
+}
+class mpl_Program {
+}
+class mpl_ReturnStatement {
+}
+abstract class mpl_Statement {
+}
+class mpl_SubExpression {
+}
+class mpl_TraceStatement {
+}
+abstract class mpl_UnaryExpression {
+}
+class mpl_UnaryMinusExpression {
+}
+class mpl_Variable {
+  + name : str
+  + value : int
+}
+class mpl_VariableDeclaration {
+}
+class mpl_VariableReference {
+}
+class mpl_WhileLoop {
+}
+AtomicExpression <|-- mpl_LiteralValue
+AtomicExpression <|-- mpl_OperationCall
+AtomicExpression <|-- mpl_VariableReference
+BinaryExpression <|-- mpl_AddExpression
+BinaryExpression <|-- mpl_DivExpression
+BinaryExpression <|-- mpl_MultExpression
+BinaryExpression <|-- mpl_SubExpression
+Expression <|-- mpl_AtomicExpression
+Expression <|-- mpl_BinaryExpression
+Expression <|-- mpl_UnaryExpression
+Operation <|-- mpl_Function
+Operation <|-- mpl_Procedure
+Operation <|-- mpl_Program
+Statement <|-- mpl_AssignmentStatement
+Statement <|-- mpl_ExpressionStatement
+Statement <|-- mpl_ForLoop
+Statement <|-- mpl_IfStatement
+Statement <|-- mpl_ReturnStatement
+Statement <|-- mpl_TraceStatement
+Statement <|-- mpl_WhileLoop
+UnaryExpression <|-- mpl_ParenthesisExpression
+UnaryExpression <|-- mpl_UnaryMinusExpression
+mpl_Assignment "1..1" --* "1..1" mpl_AssignmentStatement : assignment46
+mpl_Block "1..1" --* "1..1" mpl_WhileLoop : block33
+mpl_Block "1..1" --* "1..1" mpl_ForLoop : block38
+mpl_Block "1..1" --* "1..1" mpl_Operation : block53
+mpl_Comparison "1..1" --* "1..1" mpl_IfStatement : condition25
+mpl_Comparison "1..1" --* "1..1" mpl_WhileLoop : condition35
+mpl_Block "0..1" --* "1..1" mpl_IfStatement : else_22
+mpl_Expression "1..1" --* "1..1" mpl_ExpressionStatement : expression7
+mpl_Assignment "1..1" --* "1..1" mpl_ForLoop : index40
+mpl_Expression "0..1" --* "1..1" mpl_VariableDeclaration : initialValue1
+mpl_Assignment "1..1" *-- "1..1" mpl_VariableReference : leftHandSide3
+mpl_BinaryExpression "1..1" *-- "1..1" mpl_Expression : operand114
+mpl_Expression "1..1" --* "1..1" mpl_UnaryExpression : operand12
+mpl_Comparison "1..1" *-- "1..1" mpl_Expression : operand130
+mpl_BinaryExpression "1..1" *-- "1..1" mpl_Expression : operand216
+mpl_Comparison "1..1" *-- "1..1" mpl_Expression : operand227
+mpl_Operation "1..1" -- "1..1" mpl_OperationCall : operation60
+mpl_MPLModel "1..1" *-- "0..9999" mpl_Operation : operations64
+mpl_Operation "1..1" *-- "0..9999" mpl_VariableDeclaration : parameters48
+mpl_Expression "0..9999" --* "1..1" mpl_OperationCall : parameters58
+mpl_MPLModel "1..1" *-- "1..1" mpl_Program : program63
+mpl_Assignment "1..1" *-- "1..1" mpl_Expression : rightHandSide4
+mpl_Block "1..1" *-- "0..9999" mpl_Statement : statements19
+mpl_Block "1..1" --* "1..1" mpl_IfStatement : then20
+mpl_Expression "1..1" --* "1..1" mpl_ForLoop : upperBound43
+mpl_Expression "0..1" --* "1..1" mpl_ReturnStatement : value56
+mpl_Variable "1..1" --* "1..1" mpl_VariableDeclaration : variable0
+mpl_Variable "1..1" -- "1..1" mpl_VariableReference : variable9
+mpl_Operation "1..1" *-- "0..9999" mpl_VariableDeclaration : variableDeclarations50
+mpl_TraceStatement "1..1" *-- "1..1" mpl_VariableReference : variableReference67
+@enduml

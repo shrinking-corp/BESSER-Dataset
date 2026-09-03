@@ -1,0 +1,97 @@
+@startuml
+class BinaryExpression {
+}
+class IntegerExpression {
+}
+class NeighborsExpression {
+}
+class UnaryExpression {
+}
+class rule_Add {
+}
+class rule_And {
+}
+class rule_BinaryExpression {
+}
+class rule_CellularAutomata {
+}
+class rule_Conditional {
+}
+class rule_CurrentCellPopulation {
+}
+class rule_Div {
+}
+class rule_Equal {
+}
+class rule_Greater {
+}
+class rule_IntegerExpression {
+}
+class rule_IntegerLiteral {
+  + val : int
+}
+class rule_Lower {
+}
+class rule_Max {
+}
+class rule_Min {
+}
+class rule_Minus {
+}
+class rule_Mod {
+}
+class rule_Mult {
+}
+class rule_NeighborsExpression {
+}
+class rule_Not {
+}
+class rule_Or {
+}
+class rule_PopulationRange {
+  + lowerRange : int
+  + upperRange : int
+}
+class rule_Rule {
+}
+class rule_Size {
+}
+class rule_Sum {
+}
+class rule_UMinus {
+}
+class rule_UnaryExpression {
+}
+BinaryExpression <|-- rule_Add
+BinaryExpression <|-- rule_And
+BinaryExpression <|-- rule_Div
+BinaryExpression <|-- rule_Equal
+BinaryExpression <|-- rule_Greater
+BinaryExpression <|-- rule_Lower
+BinaryExpression <|-- rule_Minus
+BinaryExpression <|-- rule_Mod
+BinaryExpression <|-- rule_Mult
+BinaryExpression <|-- rule_Or
+IntegerExpression <|-- rule_BinaryExpression
+IntegerExpression <|-- rule_Conditional
+IntegerExpression <|-- rule_CurrentCellPopulation
+IntegerExpression <|-- rule_IntegerLiteral
+IntegerExpression <|-- rule_NeighborsExpression
+IntegerExpression <|-- rule_UnaryExpression
+NeighborsExpression <|-- rule_Max
+NeighborsExpression <|-- rule_Min
+NeighborsExpression <|-- rule_Size
+NeighborsExpression <|-- rule_Sum
+UnaryExpression <|-- rule_Not
+UnaryExpression <|-- rule_UMinus
+rule_Conditional "1..1" *-- "1..1" rule_IntegerExpression : condition10
+rule_PopulationRange "0..1" --* "1..1" rule_Rule : filter1
+rule_Conditional "1..1" *-- "1..1" rule_IntegerExpression : ifFalseExpression7
+rule_Conditional "1..1" *-- "1..1" rule_IntegerExpression : ifTrueExpression5
+rule_BinaryExpression "1..1" *-- "1..1" rule_IntegerExpression : left15
+rule_NeighborsExpression "1..1" *-- "0..1" rule_PopulationRange : neighborsFilter13
+rule_IntegerExpression "1..1" --* "1..1" rule_Rule : nextVal0
+rule_BinaryExpression "1..1" *-- "1..1" rule_IntegerExpression : right17
+rule_CellularAutomata "1..1" *-- "1..9999" rule_Rule : rules20
+rule_IntegerExpression "1..1" --* "1..1" rule_UnaryExpression : target3
+@enduml

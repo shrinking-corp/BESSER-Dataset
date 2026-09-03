@@ -1,0 +1,33 @@
+@startuml
+enum FeatureKind {
+  attribute
+  containment
+  reference
+}
+class NamedElement {
+}
+class Type {
+}
+class forms_DataType {
+}
+class forms_Entity {
+  + abstract : bool
+}
+class forms_EntityModel {
+}
+class forms_Feature {
+  + kind : str
+}
+abstract class forms_NamedElement {
+  + name : str
+}
+abstract class forms_Type {
+}
+NamedElement <|-- forms_Feature
+NamedElement <|-- forms_Type
+Type <|-- forms_DataType
+Type <|-- forms_Entity
+forms_Entity "1..1" *-- "0..9999" forms_Feature : features0
+forms_Feature "1..1" -- "1..1" forms_Type : type2
+forms_EntityModel "1..1" *-- "0..9999" forms_Type : types1
+@enduml

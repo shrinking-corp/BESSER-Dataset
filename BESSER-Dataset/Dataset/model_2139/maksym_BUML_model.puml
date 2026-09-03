@@ -1,0 +1,88 @@
+@startuml
+class Action {
+}
+class ActivityNode {
+}
+class ControlNode {
+}
+enum Direction {
+  IN
+  OUT
+}
+class Element {
+}
+enum ExpansionMode {
+  ITERATIVE
+  PARALLEL
+}
+class ObjectNode {
+}
+enum Status {
+  ACTIVE
+  DONE
+  INACTIVE
+}
+class UML_Activity_mine_Action {
+  + inputs : str
+  + outputs : str
+}
+class UML_Activity_mine_Activity {
+}
+class UML_Activity_mine_ActivityEdge {
+  + objectFlow : bool
+}
+class UML_Activity_mine_ActivityFinalNode {
+}
+class UML_Activity_mine_ActivityInitialNode {
+}
+abstract class UML_Activity_mine_ActivityNode {
+}
+class UML_Activity_mine_ActivityParameterNode {
+  + parameter : str
+}
+abstract class UML_Activity_mine_ControlNode {
+}
+class UML_Activity_mine_DatastoreNode {
+}
+abstract class UML_Activity_mine_Element {
+  + elementID : str
+  + name : str
+  + properties : str
+}
+class UML_Activity_mine_ExpansionNode {
+}
+class UML_Activity_mine_ExpansionRegion {
+}
+class UML_Activity_mine_Fork {
+}
+class UML_Activity_mine_Join {
+}
+class UML_Activity_mine_ObjectNode {
+  + objects : str
+  + upperBound : str
+}
+Action <|-- UML_Activity_mine_ExpansionRegion
+ActivityNode <|-- UML_Activity_mine_Action
+ActivityNode <|-- UML_Activity_mine_ControlNode
+ActivityNode <|-- UML_Activity_mine_ObjectNode
+ControlNode <|-- UML_Activity_mine_ActivityFinalNode
+ControlNode <|-- UML_Activity_mine_ActivityInitialNode
+ControlNode <|-- UML_Activity_mine_Fork
+ControlNode <|-- UML_Activity_mine_Join
+Element <|-- UML_Activity_mine_Activity
+Element <|-- UML_Activity_mine_ActivityEdge
+Element <|-- UML_Activity_mine_ActivityNode
+ObjectNode <|-- UML_Activity_mine_ActivityParameterNode
+ObjectNode <|-- UML_Activity_mine_DatastoreNode
+ObjectNode <|-- UML_Activity_mine_ExpansionNode
+UML_Activity_mine_Activity "1..1" *-- "1..9999" UML_Activity_mine_ActivityEdge : edges1
+UML_Activity_mine_ActivityEdge "1..9999" -- "1..1" UML_Activity_mine_ExpansionRegion : edges13
+UML_Activity_mine_ActivityEdge "0..9999" -- "1..1" UML_Activity_mine_ActivityNode : incoming6
+UML_Activity_mine_ExpansionNode "1..9999" -- "1..1" UML_Activity_mine_ExpansionRegion : inputCollections9
+UML_Activity_mine_Activity "1..1" *-- "1..9999" UML_Activity_mine_ActivityNode : nodes0
+UML_Activity_mine_ActivityNode "1..9999" --* "1..1" UML_Activity_mine_ExpansionRegion : nodes16
+UML_Activity_mine_ActivityEdge "0..9999" -- "1..1" UML_Activity_mine_ActivityNode : outgoing7
+UML_Activity_mine_ExpansionNode "0..9999" -- "1..1" UML_Activity_mine_ExpansionRegion : outputCollections10
+UML_Activity_mine_ActivityEdge "1..1" -- "1..1" UML_Activity_mine_ActivityNode : source4
+UML_Activity_mine_ActivityEdge "1..1" -- "1..1" UML_Activity_mine_ActivityNode : target3
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+class comicBookCollection_Book {
+  + publicationDate : str
+  + title : str
+}
+class comicBookCollection_ComicBookCollection {
+}
+class comicBookCollection_Person {
+  + name : str
+}
+class comicBookCollection_Publisher {
+  + publishingName : str
+}
+class comicBookCollection_Series {
+  + seriesTitle : str
+}
+comicBookCollection_Book "1..1" *-- "0..9999" comicBookCollection_Person : artists10
+comicBookCollection_Book "0..9999" --* "1..1" comicBookCollection_Series : booksInSeries3
+comicBookCollection_Book "1..1" -- "0..1" comicBookCollection_Person : coverArtist13
+comicBookCollection_Book "1..1" *-- "0..9999" comicBookCollection_Person : editors7
+comicBookCollection_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection_Publisher : publishers0
+comicBookCollection_Publisher "1..1" *-- "0..9999" comicBookCollection_Series : series1
+comicBookCollection_Book "1..1" *-- "0..9999" comicBookCollection_Person : writers5
+@enduml

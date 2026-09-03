@@ -1,0 +1,269 @@
+@startuml
+class AbstractState {
+}
+class AsynchronousGate {
+}
+class ControlPort {
+}
+class DataPort {
+}
+class DataSynchronisation {
+}
+enum DataType {
+  Boolean
+  Double
+  Float
+  Integer
+  Real
+}
+class EModelElement {
+}
+class ENamedElement {
+}
+class Flow {
+}
+class Gate {
+}
+class IdentifiedItem {
+}
+class InputPort {
+}
+class MergeGate {
+}
+class MessagePort {
+}
+class ModelContent {
+}
+class NamedItem {
+}
+class OutputPort {
+}
+class Port {
+}
+class SplitGate {
+}
+class State {
+}
+class SynchronousGate {
+}
+class TraceableElement {
+}
+abstract class sam_AbstractState {
+}
+abstract class sam_AsynchronousGate {
+}
+class sam_Automaton {
+}
+class sam_ControlFlow {
+}
+class sam_ControlMerge {
+}
+abstract class sam_ControlPort {
+}
+class sam_DataComposition {
+}
+class sam_DataDecomposition {
+}
+class sam_DataFlow {
+  + type : str
+}
+class sam_DataMerge {
+}
+abstract class sam_DataPort {
+}
+class sam_DataStore {
+}
+abstract class sam_DataSynchronisation {
+}
+class sam_EObject {
+}
+abstract class sam_Flow {
+}
+class sam_FlowGroup {
+  + globalComment : str
+}
+abstract class sam_Gate {
+}
+abstract class sam_IdentifiedItem {
+  + comment : str
+  + requirements : str
+}
+class sam_InControlPort {
+}
+class sam_InDataPort {
+}
+class sam_InMessagePort {
+}
+class sam_InitialState {
+}
+abstract class sam_InputPort {
+}
+class sam_MacroState {
+}
+abstract class sam_MergeGate {
+}
+class sam_MessageFlow {
+}
+class sam_MessageMerge {
+}
+abstract class sam_MessagePort {
+}
+class sam_MessageSplit {
+}
+class sam_Model {
+}
+abstract class sam_ModelContent {
+}
+class sam_MultiPort {
+}
+abstract class sam_NamedItem {
+  + name : str
+}
+class sam_OutControlPort {
+}
+class sam_OutDataPort {
+}
+class sam_OutMessagePort {
+}
+abstract class sam_OutputPort {
+}
+abstract class sam_Port {
+  + isIn() : bool
+  + isOut() : bool
+}
+abstract class sam_SplitGate {
+}
+class sam_State {
+}
+abstract class sam_SynchronousGate {
+}
+class sam_System {
+}
+class sam_TraceableElement {
+}
+class sam_Transition {
+  + condition : str
+  + emission : str
+  + priority : str
+}
+AbstractState <|-- sam_MacroState
+AbstractState <|-- sam_State
+AsynchronousGate <|-- sam_MergeGate
+AsynchronousGate <|-- sam_SplitGate
+ControlPort <|-- sam_InControlPort
+ControlPort <|-- sam_OutControlPort
+DataPort <|-- sam_InDataPort
+DataPort <|-- sam_OutDataPort
+DataSynchronisation <|-- sam_DataComposition
+DataSynchronisation <|-- sam_DataDecomposition
+EModelElement <|-- sam_IdentifiedItem
+ENamedElement <|-- sam_FlowGroup
+Flow <|-- sam_ControlFlow
+Flow <|-- sam_DataFlow
+Flow <|-- sam_MessageFlow
+Gate <|-- sam_AsynchronousGate
+Gate <|-- sam_SynchronousGate
+IdentifiedItem <|-- sam_Gate
+IdentifiedItem <|-- sam_NamedItem
+InputPort <|-- sam_InControlPort
+InputPort <|-- sam_InDataPort
+InputPort <|-- sam_InMessagePort
+MergeGate <|-- sam_ControlMerge
+MergeGate <|-- sam_DataMerge
+MergeGate <|-- sam_MessageMerge
+MessagePort <|-- sam_InMessagePort
+MessagePort <|-- sam_OutMessagePort
+ModelContent <|-- sam_Automaton
+ModelContent <|-- sam_System
+NamedItem <|-- sam_AbstractState
+NamedItem <|-- sam_DataStore
+NamedItem <|-- sam_Flow
+NamedItem <|-- sam_ModelContent
+NamedItem <|-- sam_MultiPort
+NamedItem <|-- sam_Port
+NamedItem <|-- sam_TraceableElement
+OutputPort <|-- sam_OutControlPort
+OutputPort <|-- sam_OutDataPort
+OutputPort <|-- sam_OutMessagePort
+Port <|-- sam_ControlPort
+Port <|-- sam_DataPort
+Port <|-- sam_InputPort
+Port <|-- sam_MessagePort
+Port <|-- sam_OutputPort
+SplitGate <|-- sam_MessageSplit
+State <|-- sam_InitialState
+SynchronousGate <|-- sam_DataSynchronisation
+TraceableElement <|-- sam_System
+TraceableElement <|-- sam_Transition
+sam_AbstractState "0..9999" --* "1..1" sam_MacroState : composition11
+sam_MessageFlow "1..1" -- "1..9999" sam_MessagePort : dest101
+sam_State "1..1" -- "1..1" sam_Transition : dest15
+sam_ControlFlow "1..1" -- "1..9999" sam_ControlPort : dest55
+sam_DataFlow "1..1" -- "1..9999" sam_DataPort : dest59
+sam_FlowGroup "0..9999" --* "1..1" sam_Model : flowGroups85
+sam_Flow "0..9999" -- "1..1" sam_FlowGroup : flows112
+sam_Flow "1..1" -- "1..1" sam_FlowGroup : group69
+sam_DataSynchronisation "1..1" *-- "1..9999" sam_InDataPort : in_118
+sam_InMessagePort "1..1" --* "1..1" sam_MessageSplit : in_123
+sam_DataMerge "1..1" *-- "1..9999" sam_InDataPort : in_129
+sam_ControlMerge "1..1" *-- "1..9999" sam_InControlPort : in_134
+sam_InMessagePort "1..9999" --* "1..1" sam_MessageMerge : in_139
+sam_DataStore "1..1" *-- "1..1" sam_InDataPort : in_64
+sam_State "1..1" -- "0..9999" sam_Transition : inlink13
+sam_Flow "0..1" -- "1..1" sam_Port : inlink43
+sam_Automaton "1..1" -- "0..1" sam_Automaton : isInstanceOf10
+sam_Port "0..1" -- "1..1" sam_Port : isInstanceOf52
+sam_System "1..1" -- "0..1" sam_System : isInstanceOf82
+sam_MultiPort "0..1" -- "1..1" sam_MultiPort : isInstanceOf98
+sam_ModelContent "0..9999" --* "1..1" sam_System : listElements79
+sam_Flow "0..9999" --* "1..1" sam_System : listFlows77
+sam_ModelContent "1..1" *-- "0..9999" sam_MultiPort : listMultiPort91
+sam_MultiPort "1..1" *-- "1..9999" sam_Port : listPort92
+sam_Automaton "1..1" *-- "0..9999" sam_Port : listPorts5
+sam_Port "0..9999" --* "1..1" sam_System : listPorts70
+sam_AbstractState "1..9999" --* "1..1" sam_Automaton : listStates7
+sam_DataStore "0..9999" --* "1..1" sam_System : listStores72
+sam_Gate "0..9999" --* "1..1" sam_System : listSynchronisation75
+sam_Automaton "1..1" *-- "0..9999" sam_Transition : listTransitions3
+sam_MessageMerge "0..1" -- "1..1" sam_OutMessagePort : merge104
+sam_InMessagePort "1..1" -- "0..1" sam_MessageMerge : merge109
+sam_ControlMerge "0..1" -- "1..1" sam_InControlPort : merge20
+sam_DataMerge "0..1" -- "1..1" sam_InDataPort : merge25
+sam_ControlMerge "0..1" -- "1..1" sam_OutControlPort : merge28
+sam_DataMerge "0..1" -- "1..1" sam_OutDataPort : merge38
+sam_FlowGroup "1..1" -- "1..1" sam_Model : model114
+sam_Model "1..1" *-- "1..1" sam_ModelContent : modelContent83
+sam_DataSynchronisation "1..1" *-- "1..9999" sam_OutDataPort : out120
+sam_DataMerge "1..1" *-- "1..9999" sam_OutDataPort : out131
+sam_ControlMerge "1..1" *-- "1..9999" sam_OutControlPort : out136
+sam_MessageMerge "1..1" *-- "1..9999" sam_OutMessagePort : out142
+sam_DataStore "1..1" *-- "1..1" sam_OutDataPort : out65
+sam_MessageSplit "1..1" *-- "1..1" sam_OutControlPort : outControl127
+sam_MessageSplit "1..1" *-- "1..1" sam_OutDataPort : outData124
+sam_AbstractState "1..1" -- "0..9999" sam_Transition : outlink2
+sam_Flow "0..1" -- "1..1" sam_Port : outlink42
+sam_ModelContent "1..1" -- "1..1" sam_MultiPort : parent95
+sam_AbstractState "1..1" -- "0..1" sam_Automaton : parentAutomaton1
+sam_Automaton "1..1" -- "1..1" sam_Transition : parentAutomaton16
+sam_Automaton "0..1" -- "1..1" sam_Port : parentAutomaton46
+sam_DataStore "0..1" -- "1..1" sam_InDataPort : parentDataStore21
+sam_DataStore "0..1" -- "1..1" sam_OutDataPort : parentDataStore30
+sam_Model "0..1" -- "1..1" sam_ModelContent : parentModel88
+sam_MultiPort "0..1" -- "1..1" sam_Port : parentMultiPort49
+sam_AbstractState "1..1" -- "0..1" sam_MacroState : parentState0
+sam_DataSynchronisation "0..1" -- "1..1" sam_InDataPort : parentSync23
+sam_DataSynchronisation "0..1" -- "1..1" sam_OutDataPort : parentSync33
+sam_Gate "1..1" -- "1..1" sam_System : parentSystem116
+sam_Port "1..1" -- "0..1" sam_System : parentSystem41
+sam_DataStore "1..1" -- "1..1" sam_System : parentSystem62
+sam_Flow "1..1" -- "1..1" sam_System : parentSystem67
+sam_ModelContent "1..1" -- "0..1" sam_System : parentSystem89
+sam_EObject "0..1" -- "1..1" sam_Model : requirementModel87
+sam_MessageFlow "1..1" -- "1..1" sam_MessagePort : source100
+sam_AbstractState "1..1" -- "1..1" sam_Transition : source18
+sam_ControlFlow "1..1" -- "1..1" sam_ControlPort : source54
+sam_DataFlow "1..1" -- "1..1" sam_DataPort : source58
+sam_InMessagePort "1..1" -- "0..1" sam_MessageSplit : split106
+sam_MessageSplit "0..1" -- "1..1" sam_OutControlPort : split27
+sam_MessageSplit "0..1" -- "1..1" sam_OutDataPort : split36
+@enduml

@@ -1,0 +1,98 @@
+@startuml
+class DataKind {
+}
+enum KindHintType {
+  AVG
+  BH
+}
+class Mapping {
+}
+class MappingRecord {
+}
+enum ObjectKindType {
+  EQUIPMENT
+  FUNCTION
+  NODE
+  RELATIONSHIP
+}
+enum ValueKindType {
+  DATETIME
+  METRIC
+  NULL
+  PERIOD
+}
+class metrics_DataKind {
+}
+class metrics_DateTimeRange {
+}
+class metrics_IdentifierDataKind {
+  + objectKind : str
+  + objectProperty : str
+}
+class metrics_Mapping {
+}
+class metrics_MappingCSV {
+}
+class metrics_MappingRDBMS {
+}
+class metrics_MappingRecord {
+  + message : str
+}
+class metrics_MappingRecordXLS {
+  + column : str
+  + row : str
+}
+class metrics_MappingStatistic {
+  + message : str
+  + totalRecords : str
+}
+class metrics_MappingXLS {
+  + firstDataRow : str
+  + headerRow : str
+  + sheetNumber : str
+}
+class metrics_MappingXLSColumn {
+  + column : str
+}
+class metrics_Metric {
+  + description : str
+  + measurementKind : str
+  + measurementPoint : str
+  + metricCalculation : str
+  + name : str
+}
+class metrics_MetricSource {
+  + metricLocation : str
+  + name : str
+}
+class metrics_MetricValueRange {
+  + kindHint : str
+  + periodHint : str
+}
+class metrics_Unit {
+}
+class metrics_Value {
+}
+class metrics_ValueDataKind {
+  + kindHint : str
+  + valueKind : str
+}
+DataKind <|-- metrics_IdentifierDataKind
+DataKind <|-- metrics_ValueDataKind
+Mapping <|-- metrics_MappingCSV
+Mapping <|-- metrics_MappingRDBMS
+Mapping <|-- metrics_MappingXLS
+MappingRecord <|-- metrics_MappingRecordXLS
+metrics_DataKind "0..1" --* "1..1" metrics_MappingXLSColumn : dataType4
+metrics_MappingRecord "0..9999" --* "1..1" metrics_MappingStatistic : failedRecords0
+metrics_MappingXLS "1..1" *-- "0..9999" metrics_MappingXLSColumn : mappingColumns3
+metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : mappingDuration1
+metrics_Mapping "0..1" --* "1..1" metrics_MetricSource : metricMapping12
+metrics_Metric "0..1" -- "1..1" metrics_ValueDataKind : metricRef17
+metrics_Metric "0..9999" -- "1..1" metrics_MetricSource : metricRefs11
+metrics_Metric "1..1" -- "0..1" metrics_MetricSource : metricSourceRef8
+metrics_MetricValueRange "1..1" *-- "0..9999" metrics_Value : metricValues16
+metrics_Metric "1..1" *-- "0..9999" metrics_Metric : metrics7
+metrics_MappingStatistic "0..9999" --* "1..1" metrics_MetricSource : statistics13
+metrics_Metric "1..1" -- "0..1" metrics_Unit : unitRef9
+@enduml

@@ -1,0 +1,88 @@
+@startuml
+class ModelElement {
+}
+enum OperatorType {
+  AND
+  OR
+  XOR
+}
+class UniverityU_Courses {
+  + CFU : int
+  + Name : str
+  + Semester : str
+}
+class UniverityU_Person {
+  + Email : str
+  + Name : str
+}
+class UniverityU_University {
+}
+abstract class UniverityU_uncertainty_ModelElement {
+}
+abstract class UniverityU_uncertainty_UData {
+  + name : str
+  + utype : str
+}
+abstract class UniverityU_uncertainty_aCourses {
+}
+abstract class UniverityU_uncertainty_aPerson {
+}
+abstract class UniverityU_uncertainty_aUniversity {
+}
+class UniverityU_uncertainty_uCourses {
+}
+class UniverityU_uncertainty_uPerson {
+}
+class UniverityU_uncertainty_uUniversity {
+}
+class aCourses {
+}
+class aPerson {
+}
+class aUniversity {
+}
+class uCourses {
+}
+class uPerson {
+}
+class uUniversity {
+}
+class uncertainty_ModelElement {
+}
+class uncertainty_UData {
+}
+class uncertainty_aCourses {
+}
+class uncertainty_aPerson {
+}
+class uncertainty_aUniversity {
+}
+uncertainty_ModelElement <|-- UniverityU_Courses
+uncertainty_ModelElement <|-- UniverityU_Person
+uncertainty_ModelElement <|-- UniverityU_University
+uncertainty_UData <|-- UniverityU_uncertainty_uCourses
+uncertainty_UData <|-- UniverityU_uncertainty_uPerson
+uncertainty_UData <|-- UniverityU_uncertainty_uUniversity
+uncertainty_aCourses <|-- UniverityU_Courses
+uncertainty_aCourses <|-- UniverityU_uncertainty_uCourses
+uncertainty_aPerson <|-- UniverityU_Person
+uncertainty_aPerson <|-- UniverityU_uncertainty_uPerson
+uncertainty_aUniversity <|-- UniverityU_University
+uncertainty_aUniversity <|-- UniverityU_uncertainty_uUniversity
+UniverityU_University "1..1" *-- "0..9999" aCourses : Courses8
+UniverityU_Courses "1..1" *-- "0..1" aPerson : Professor1
+UniverityU_Courses "1..1" *-- "0..9999" aPerson : Student3
+ModelElement "0..9999" -- "1..1" UniverityU_uncertainty_ModelElement : exclude11
+ModelElement "0..9999" -- "1..1" UniverityU_uncertainty_ModelElement : include10
+UniverityU_Courses "1..1" -- "0..9999" aCourses : links0
+UniverityU_Person "1..1" -- "0..1" aPerson : relatives6
+UniverityU_uncertainty_uCourses "1..1" *-- "0..9999" aCourses : uleft14
+UniverityU_uncertainty_uPerson "1..1" *-- "0..9999" aPerson : uleft21
+UniverityU_uncertainty_uUniversity "1..1" *-- "0..9999" aUniversity : uleft28
+UniverityU_uncertainty_uCourses "1..1" *-- "0..9999" uCourses : upoint19
+UniverityU_uncertainty_uPerson "1..1" *-- "0..9999" uPerson : upoint26
+UniverityU_uncertainty_uUniversity "1..1" *-- "0..9999" uUniversity : upoint32
+UniverityU_uncertainty_uCourses "1..1" *-- "0..9999" aCourses : uright16
+UniverityU_uncertainty_uPerson "1..1" *-- "0..9999" aPerson : uright23
+UniverityU_uncertainty_uUniversity "1..1" *-- "0..9999" aUniversity : uright29
+@enduml

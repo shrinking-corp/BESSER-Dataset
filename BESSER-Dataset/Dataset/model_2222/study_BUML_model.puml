@@ -1,0 +1,66 @@
+@startuml
+enum grades {
+  A
+  B
+  C
+  D
+  E
+  F
+}
+class study_Course {
+  + code : str
+  + credits : float
+  + name : str
+  + season : str
+  + year : int
+}
+class study_Department {
+  + code : str
+  + name : str
+}
+class study_Program {
+  + code : str
+  + name : str
+  + numYears : int
+}
+class study_Semester {
+  + season : str
+  + year : int
+}
+class study_Specialisation {
+  + name : str
+  + requirement : str
+}
+class study_Student {
+  + name : str
+}
+class study_StudyPlan {
+  + chooseCourse(study_course : str, study_studyplan : str) : void
+}
+class study_courseAllocation {
+  + grade : str
+}
+study_Course "0..1" -- "1..1" study_courseAllocation : course43
+study_Course "0..9999" --* "1..1" study_Department : courses0
+study_Course "1..9999" -- "1..1" study_Semester : courses30
+study_StudyPlan "1..1" *-- "0..9999" study_courseAllocation : courses36
+study_Department "1..1" -- "1..1" study_Student : department12
+study_Course "1..1" -- "1..1" study_Department : department16
+study_Department "1..1" -- "1..1" study_Specialisation : department25
+study_Department "0..1" -- "1..1" study_Semester : department31
+study_Department "1..1" -- "1..1" study_Program : department9
+study_Program "1..1" -- "1..1" study_Specialisation : program18
+study_Department "1..1" *-- "0..9999" study_Program : programs1
+study_Semester "1..1" --* "1..1" study_StudyPlan : semester34
+study_Semester "2..9999" -- "1..1" study_Specialisation : semesters23
+study_Department "1..1" *-- "0..9999" study_Semester : semesters7
+study_Semester "1..1" -- "1..1" study_Specialisation : specialisation28
+study_Program "1..1" -- "1..9999" study_Specialisation : specialisations10
+study_Specialisation "0..2" -- "1..1" study_Student : specialisations15
+study_Department "1..1" *-- "1..9999" study_Specialisation : specialisations5
+study_Student "1..1" -- "1..1" study_StudyPlan : student38
+study_Specialisation "1..1" -- "1..1" study_Student : students20
+study_Department "1..1" *-- "0..9999" study_Student : students3
+study_Student "1..1" *-- "1..1" study_StudyPlan : studyPlan14
+study_StudyPlan "0..1" -- "1..1" study_courseAllocation : studyPlan40
+@enduml

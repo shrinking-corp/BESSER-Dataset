@@ -1,0 +1,71 @@
+@startuml
+class Browse_Categories_UseCase {
+}
+class Customer {
+  + CustomerId : int
+  + Delivery_address : str
+  + Email_Address : str
+  + Full_Name : str
+  + Password : str
+}
+class Display_Login_Error_UseCase {
+}
+class Existing_Customer_Actor {
+}
+class Login_UseCase {
+}
+class New_Customer_Actor {
+}
+class Order {
+  + CustomerId : int
+  + OrderDate : str
+  + OrderId : int
+  + ShipDate : str
+}
+class OrderDetails {
+  + OrderId : int
+  + ProductId : int
+  + Quantity : int
+  + UnitCost : int
+}
+class Place_Order_UseCase {
+}
+class Product {
+  + CategoryId : int
+  + Description : str
+  + ModelName : str
+  + ModelNumber : int
+  + ProductId : int
+  + UnitCost : int
+}
+class Product_Recommendation_UseCase {
+}
+class Product_search_UseCase {
+}
+class Registration_UseCase {
+}
+class Shopping_Cart {
+  + CartId : int
+  + DateCreated : int
+  + ProductId : int
+  + Quantity : int
+  + RecordId : int
+}
+class UseCase2_UseCase {
+}
+class UseCase_UseCase {
+}
+class User {
+  + Password : str
+  + UserId : int
+}
+class Verify_Password_UseCase {
+}
+Customer "1..1" -- "1..1" Shopping_Cart : Customer_Shopping_Cart
+Browse_Categories_UseCase "0..1" -- "0..1" Existing_Customer_Actor : Existing_Customer_Browse_Products
+Existing_Customer_Actor "0..1" -- "0..1" Login_UseCase : Existing_Customer_Login
+Existing_Customer_Actor "0..1" -- "0..1" Place_Order_UseCase : Existing_Customer_Place_Order
+Order "1..1" -- "1..1" OrderDetails : Order_OrderDetails
+Order "0..1" -- "0..1" Product : Product_Order
+Product "0..1" -- "1..1" Shopping_Cart : Shopping_Cart_Product
+@enduml

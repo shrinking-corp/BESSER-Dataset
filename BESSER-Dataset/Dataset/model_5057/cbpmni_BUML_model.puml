@@ -1,0 +1,54 @@
+@startuml
+class FlowNodeInst {
+}
+enum FlowNodeStatusType {
+  ABORTED
+  COMPLETED
+  INACTIVE
+  READY
+  RUNNING
+}
+class cbpmni_ActivityInst {
+}
+class cbpmni_Branch {
+}
+class cbpmni_BranchInst {
+}
+class cbpmni_ConstraintInst {
+}
+class cbpmni_EObject {
+}
+class cbpmni_EventInst {
+}
+class cbpmni_FlowNode {
+}
+abstract class cbpmni_FlowNodeInst {
+  + status : str
+  + EOperation0() : void
+}
+class cbpmni_OCLConstraint {
+}
+class cbpmni_ProcessInst {
+  + setupProcessInstance() : void
+}
+class cbpmni_ProcessModel {
+}
+class cbpmni_SplitInst {
+}
+FlowNodeInst <|-- cbpmni_ActivityInst
+FlowNodeInst <|-- cbpmni_EventInst
+FlowNodeInst <|-- cbpmni_SplitInst
+cbpmni_Branch "0..1" -- "1..1" cbpmni_BranchInst : branchDef21
+cbpmni_BranchInst "0..9999" --* "1..1" cbpmni_SplitInst : branches20
+cbpmni_ConstraintInst "1..1" -- "1..1" cbpmni_OCLConstraint : constraintDef26
+cbpmni_ConstraintInst "1..1" -- "0..9999" cbpmni_EObject : extension23
+cbpmni_FlowNodeInst "0..9999" --* "1..1" cbpmni_ProcessInst : flowNodes3
+cbpmni_ActivityInst "1..1" -- "0..9999" cbpmni_EObject : inputs15
+cbpmni_FlowNodeInst "1..1" -- "0..1" cbpmni_FlowNodeInst : next9
+cbpmni_FlowNode "0..1" -- "1..1" cbpmni_FlowNodeInst : nodeDef6
+cbpmni_ActivityInst "1..1" -- "0..9999" cbpmni_EObject : outputs17
+cbpmni_ActivityInst "1..1" *-- "0..9999" cbpmni_ConstraintInst : postconditions12
+cbpmni_ActivityInst "1..1" *-- "0..9999" cbpmni_ConstraintInst : preconditions11
+cbpmni_ProcessInst "1..1" -- "0..1" cbpmni_ProcessModel : processDef0
+cbpmni_FlowNodeInst "0..9999" -- "1..1" cbpmni_ProcessInst : tokens1
+@enduml

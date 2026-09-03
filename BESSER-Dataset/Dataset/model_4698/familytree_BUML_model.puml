@@ -1,0 +1,35 @@
+@startuml
+class Person {
+}
+enum RelationshipStatus {
+  Divorced
+  Liaised
+  Married
+  Single
+  Widowed
+}
+class familytree_FamilyTree {
+}
+class familytree_Man {
+}
+abstract class familytree_Person {
+  + dayOfBirth : date
+  + dayOfDeath : date
+  + died : bool
+  + firstName : str
+  + imagePaths : str
+  + locationOfBirth : str
+  + nameOfBirth : str
+  + relationshipStatus : str
+  + secondName : str
+}
+class familytree_Woman {
+}
+Person <|-- familytree_Man
+Person <|-- familytree_Woman
+familytree_Person "1..1" -- "0..9999" familytree_Person : children1
+familytree_Person "1..1" -- "0..1" familytree_Person : inRelationTo9
+familytree_Person "1..1" -- "0..1" familytree_Person : inRelationWith6
+familytree_FamilyTree "1..1" *-- "0..9999" familytree_Person : members11
+familytree_Person "1..1" -- "0..2" familytree_Person : parents3
+@enduml

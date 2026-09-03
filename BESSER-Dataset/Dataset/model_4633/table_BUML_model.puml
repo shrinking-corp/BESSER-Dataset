@@ -1,0 +1,343 @@
+@startuml
+class BackgroundConditionalStyle {
+}
+class BackgroundStyleDescription {
+}
+class CellUpdater {
+}
+class ColorDescription {
+}
+class ColumnMapping {
+}
+class CreateCellTool {
+}
+class CreateColumnTool {
+}
+class CreateCrossColumnTool {
+}
+class CreateLineTool {
+}
+class CreateTool {
+}
+class DColumn {
+}
+class DRepresentation {
+}
+class DRepresentationElement {
+}
+class DSemanticDecorator {
+}
+class DTableElement {
+}
+class DTableElementStyle {
+}
+class DeleteColumnTool {
+}
+class DeleteLineTool {
+}
+class DeleteTool {
+}
+class ElementColumnMapping {
+}
+class FeatureColumnMapping {
+}
+class ForegroundConditionalStyle {
+}
+class ForegroundStyleDescription {
+}
+class IntersectionMapping {
+}
+class LabelEditTool {
+}
+class LineContainer {
+}
+class LineMapping {
+}
+class RepresentationCreationDescription {
+}
+class RepresentationElementMapping {
+}
+class RepresentationNavigationDescription {
+}
+class TableDescription {
+}
+class TableMapping {
+}
+class TableTool {
+}
+class TableVariable {
+}
+class description_AbstractVariable {
+}
+class description_CellUpdater {
+}
+class description_ColumnMapping {
+}
+class description_DocumentedElement {
+}
+class description_EndUserDocumentedElement {
+}
+class description_RepresentationDescription {
+}
+class description_StyleUpdater {
+}
+class description_TableMapping {
+}
+class description_TableTool {
+}
+class description_table_EObject {
+}
+class table_DCell {
+  + label : str
+}
+class table_DCellStyle {
+}
+abstract class table_DColumn {
+  + label : str
+  + visible : bool
+  + width : int
+}
+class table_DFeatureColumn {
+  + featureName : str
+}
+class table_DLine {
+  + collapsed : bool
+  + label : str
+  + visible : bool
+}
+class table_DTable {
+  + headerColumnWidth : int
+}
+abstract class table_DTableElement {
+}
+class table_DTableElementStyle {
+  + backgroundColor : str
+  + defaultBackgroundStyle : bool
+  + defaultForegroundStyle : bool
+  + foregroundColor : str
+  + labelFormat : str
+  + labelSize : int
+}
+abstract class table_DTableElementSynchronizer {
+  + refresh(table_line : str) : void
+}
+class table_DTargetColumn {
+}
+abstract class table_LineContainer {
+}
+class table_description_BackgroundConditionalStyle {
+  + predicateExpression : str
+}
+class table_description_BackgroundStyleDescription {
+}
+class table_description_CellUpdater {
+  + canEdit : str
+  + getCreateCell() : str
+  + getLabelComputationExpression() : str
+}
+class table_description_ColumnMapping {
+  + headerLabelExpression : str
+  + initialWidth : int
+}
+class table_description_CreateCellTool {
+}
+class table_description_CreateColumnTool {
+}
+class table_description_CreateCrossColumnTool {
+}
+class table_description_CreateLineTool {
+}
+abstract class table_description_CreateTool {
+}
+class table_description_CrossTableDescription {
+}
+class table_description_DeleteColumnTool {
+}
+class table_description_DeleteLineTool {
+}
+abstract class table_description_DeleteTool {
+}
+class table_description_EditionTableDescription {
+}
+class table_description_ElementColumnMapping {
+  + domainClass : str
+  + semanticCandidatesExpression : str
+}
+class table_description_FeatureColumnMapping {
+  + featureName : str
+  + featureParentExpression : str
+  + labelExpression : str
+}
+class table_description_ForegroundConditionalStyle {
+  + predicateExpression : str
+}
+class table_description_ForegroundStyleDescription {
+  + labelFormat : str
+  + labelSize : int
+}
+class table_description_IntersectionMapping {
+  + columnFinderExpression : str
+  + domainClass : str
+  + labelExpression : str
+  + lineFinderExpression : str
+  + preconditionExpression : str
+  + semanticCandidatesExpression : str
+  + useDomainClass : bool
+}
+class table_description_LabelEditTool {
+}
+class table_description_LineMapping {
+  + domainClass : str
+  + headerLabelExpression : str
+  + semanticCandidatesExpression : str
+}
+abstract class table_description_StyleUpdater {
+}
+class table_description_TableCreationDescription {
+}
+abstract class table_description_TableDescription {
+  + domainClass : str
+  + initialHeaderColumnWidth : int
+  + preconditionExpression : str
+}
+class table_description_TableMapping {
+  + semanticElements : str
+}
+class table_description_TableNavigationDescription {
+}
+class table_description_TableTool {
+}
+class table_description_TableVariable {
+  + documentation : str
+}
+class tool_AbstractToolDescription {
+}
+class tool_EditMaskVariables {
+}
+class tool_ModelOperation {
+}
+class tool_RepresentationCreationDescription {
+}
+class tool_RepresentationNavigationDescription {
+}
+class tool_VariableContainer {
+}
+CreateTool <|-- table_description_CreateColumnTool
+CreateTool <|-- table_description_CreateCrossColumnTool
+CreateTool <|-- table_description_CreateLineTool
+DColumn <|-- table_DFeatureColumn
+DColumn <|-- table_DTargetColumn
+DRepresentation <|-- table_DTable
+DRepresentationElement <|-- table_DTableElement
+DSemanticDecorator <|-- table_DCell
+DSemanticDecorator <|-- table_DTargetColumn
+DSemanticDecorator <|-- table_LineContainer
+DTableElement <|-- table_DCell
+DTableElement <|-- table_DColumn
+DTableElement <|-- table_DLine
+DTableElementStyle <|-- table_DCellStyle
+DeleteTool <|-- table_description_DeleteColumnTool
+DeleteTool <|-- table_description_DeleteLineTool
+LineContainer <|-- table_DLine
+LineContainer <|-- table_DTable
+RepresentationCreationDescription <|-- table_description_TableCreationDescription
+RepresentationElementMapping <|-- table_description_TableMapping
+RepresentationNavigationDescription <|-- table_description_TableNavigationDescription
+TableDescription <|-- table_description_CrossTableDescription
+TableDescription <|-- table_description_EditionTableDescription
+TableMapping <|-- table_description_ColumnMapping
+TableTool <|-- table_description_LabelEditTool
+description_AbstractVariable <|-- table_description_TableVariable
+description_CellUpdater <|-- table_description_FeatureColumnMapping
+description_CellUpdater <|-- table_description_IntersectionMapping
+description_ColumnMapping <|-- table_description_ElementColumnMapping
+description_ColumnMapping <|-- table_description_FeatureColumnMapping
+description_DocumentedElement <|-- table_description_TableDescription
+description_EndUserDocumentedElement <|-- table_description_TableDescription
+description_RepresentationDescription <|-- table_description_TableDescription
+description_StyleUpdater <|-- table_description_ElementColumnMapping
+description_StyleUpdater <|-- table_description_FeatureColumnMapping
+description_StyleUpdater <|-- table_description_IntersectionMapping
+description_StyleUpdater <|-- table_description_LineMapping
+description_TableMapping <|-- table_description_IntersectionMapping
+description_TableMapping <|-- table_description_LineMapping
+description_TableTool <|-- table_description_CreateCellTool
+description_TableTool <|-- table_description_CreateTool
+description_TableTool <|-- table_description_DeleteTool
+tool_AbstractToolDescription <|-- table_description_CreateCellTool
+tool_AbstractToolDescription <|-- table_description_CreateTool
+tool_AbstractToolDescription <|-- table_description_DeleteTool
+tool_VariableContainer <|-- table_description_TableVariable
+FeatureColumnMapping "1..9999" -- "1..1" table_description_EditionTableDescription : allColumnMappings76
+CreateLineTool "0..9999" -- "1..1" table_description_TableDescription : allCreateLine67
+LineMapping "1..9999" -- "1..1" table_description_TableDescription : allLineMappings59
+table_description_TableDescription "1..1" -- "0..9999" tool_RepresentationCreationDescription : allRepresentationCreationDescriptions42
+table_description_TableDescription "1..1" -- "0..9999" tool_RepresentationNavigationDescription : allRepresentationNavigationDescriptions50
+LineMapping "0..9999" -- "1..1" table_description_LineMapping : allSubLines89
+ColorDescription "1..1" -- "1..1" table_description_BackgroundStyleDescription : backgroundColor138
+BackgroundConditionalStyle "0..9999" --* "1..1" table_description_StyleUpdater : backgroundConditionalStyle108
+TableMapping "0..1" -- "1..1" table_DCellStyle : backgroundStyleOrigin25
+table_DCell "0..9999" -- "1..1" table_DColumn : cells28
+table_DCell "0..9999" --* "1..1" table_DLine : cells5
+table_DCell "1..1" -- "0..1" table_DColumn : column13
+ColumnMapping "1..1" -- "1..1" table_description_IntersectionMapping : columnMapping112
+table_DColumn "0..9999" --* "1..1" table_DTable : columns0
+table_DLine "1..1" -- "0..1" table_LineContainer : container6
+CreateCellTool "0..1" --* "1..1" table_description_IntersectionMapping : create115
+CreateLineTool "0..9999" --* "1..1" table_description_LineMapping : create94
+CreateColumnTool "0..9999" --* "1..1" table_description_ElementColumnMapping : create98
+CreateCrossColumnTool "0..9999" --* "1..1" table_description_CrossTableDescription : createColumn83
+table_DCell "1..1" *-- "0..1" table_DCellStyle : currentStyle16
+table_DColumn "1..1" *-- "0..1" table_DTableElementStyle : currentStyle35
+table_DLine "1..1" *-- "0..1" table_DTableElementStyle : currentStyle9
+BackgroundStyleDescription "0..1" --* "1..1" table_description_StyleUpdater : defaultBackground106
+ForegroundStyleDescription "0..1" --* "1..1" table_description_StyleUpdater : defaultForeground103
+DeleteColumnTool "0..1" --* "1..1" table_description_ElementColumnMapping : delete100
+DeleteLineTool "0..1" --* "1..1" table_description_LineMapping : delete97
+TableDescription "0..1" -- "1..1" table_DTable : description1
+LabelEditTool "0..1" --* "1..1" table_description_CellUpdater : directEdit102
+table_description_TableTool "1..1" *-- "1..1" tool_ModelOperation : firstModelOperation118
+ColorDescription "1..1" -- "1..1" table_description_ForegroundStyleDescription : foreGroundColor137
+ForegroundConditionalStyle "0..9999" --* "1..1" table_description_StyleUpdater : foregroundConditionalStyle104
+TableMapping "0..1" -- "1..1" table_DCellStyle : foregroundStyleOrigin22
+description_table_EObject "0..9999" --* "1..1" table_description_TableDescription : importedElements70
+IntersectionMapping "0..9999" --* "1..1" table_description_CrossTableDescription : intersection80
+IntersectionMapping "0..1" -- "1..1" table_DCell : intersectionMapping20
+table_DCell "1..1" -- "0..1" table_DLine : line11
+LineMapping "1..9999" -- "1..1" table_description_IntersectionMapping : lineMapping110
+table_DLine "0..9999" --* "1..1" table_LineContainer : lines3
+ElementColumnMapping "1..1" -- "1..1" table_description_CreateColumnTool : mapping121
+ElementColumnMapping "1..1" -- "1..1" table_description_CreateCrossColumnTool : mapping123
+LineMapping "0..1" -- "1..1" table_description_CreateLineTool : mapping125
+IntersectionMapping "1..1" -- "1..1" table_description_CreateCellTool : mapping129
+ElementColumnMapping "1..1" -- "1..1" table_description_DeleteColumnTool : mapping132
+LineMapping "1..1" -- "1..1" table_description_DeleteLineTool : mapping134
+table_description_LabelEditTool "1..1" *-- "1..1" tool_EditMaskVariables : mask120
+table_description_CreateCellTool "1..1" *-- "1..1" tool_EditMaskVariables : mask127
+table_DCell "0..9999" -- "1..1" table_DColumn : orderedCells32
+table_DCell "0..9999" -- "1..1" table_DLine : orderedCells7
+ColumnMapping "1..1" -- "1..1" table_DColumn : originMapping30
+LineMapping "1..1" -- "1..1" table_DLine : originMapping4
+FeatureColumnMapping "1..9999" --* "1..1" table_description_EditionTableDescription : ownedColumnMappings72
+ElementColumnMapping "1..9999" --* "1..1" table_description_CrossTableDescription : ownedColumnMappings79
+CreateLineTool "0..9999" --* "1..1" table_description_TableDescription : ownedCreateLine62
+LineMapping "1..9999" --* "1..1" table_description_TableDescription : ownedLineMappings53
+table_description_TableDescription "1..1" *-- "0..9999" tool_RepresentationCreationDescription : ownedRepresentationCreationDescriptions38
+table_description_TableDescription "1..1" *-- "0..9999" tool_RepresentationNavigationDescription : ownedRepresentationNavigationDescriptions45
+LineMapping "0..9999" --* "1..1" table_description_LineMapping : ownedSubLines85
+FeatureColumnMapping "0..9999" -- "1..1" table_description_EditionTableDescription : reusedColumnMappings73
+CreateLineTool "0..9999" -- "1..1" table_description_TableDescription : reusedCreateLine64
+LineMapping "0..9999" -- "1..1" table_description_LineMapping : reusedInMappings92
+LineMapping "0..9999" -- "1..1" table_description_TableDescription : reusedLineMappings56
+table_description_TableDescription "1..1" -- "0..9999" tool_RepresentationCreationDescription : reusedRepresentationCreationDescriptions39
+table_description_TableDescription "1..1" -- "0..9999" tool_RepresentationNavigationDescription : reusedRepresentationNavigationDescriptions47
+LineMapping "0..9999" -- "1..1" table_description_LineMapping : reusedSubLines87
+ForegroundStyleDescription "0..1" --* "1..1" table_description_ForegroundConditionalStyle : style140
+BackgroundStyleDescription "0..1" --* "1..1" table_description_BackgroundConditionalStyle : style142
+table_DColumn "1..1" -- "0..1" table_DTable : table31
+TableDescription "1..1" -- "1..1" table_description_TableCreationDescription : tableDescription144
+TableDescription "1..1" -- "1..1" table_description_TableNavigationDescription : tableDescription146
+TableMapping "0..1" -- "1..1" table_DTableElement : tableElementMapping2
+CellUpdater "0..1" -- "1..1" table_DCell : updater18
+TableVariable "0..9999" --* "1..1" table_description_TableTool : variables117
+@enduml

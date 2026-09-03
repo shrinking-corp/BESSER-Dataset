@@ -1,0 +1,27 @@
+@startuml
+class NamedElement {
+}
+abstract class tsm_NamedElement {
+  + name : str
+}
+class tsm_State {
+}
+class tsm_StateMachine {
+}
+class tsm_TimeEvent {
+  + time : int
+}
+class tsm_Transition {
+}
+NamedElement <|-- tsm_State
+NamedElement <|-- tsm_StateMachine
+NamedElement <|-- tsm_Transition
+tsm_State "1..1" -- "0..9999" tsm_Transition : incoming6
+tsm_State "1..1" -- "0..9999" tsm_Transition : outgoing7
+tsm_State "1..1" -- "1..1" tsm_Transition : source12
+tsm_State "1..1" -- "1..1" tsm_StateMachine : start3
+tsm_State "0..9999" --* "1..1" tsm_StateMachine : states0
+tsm_State "1..1" -- "1..1" tsm_Transition : target11
+tsm_TimeEvent "1..1" --* "1..1" tsm_Transition : timer9
+tsm_StateMachine "1..1" *-- "0..9999" tsm_Transition : transitions1
+@enduml

@@ -1,0 +1,210 @@
+@startuml
+class Constant {
+}
+class Declaration {
+}
+class EnumMemberValue {
+}
+class Expression {
+}
+class File {
+}
+class IntegerType {
+}
+class InterfaceMember {
+}
+class Literal {
+}
+class PrimitiveType {
+}
+class Type {
+}
+class UnionMember {
+}
+class fIDL_ArrayType {
+}
+class fIDL_Attribute {
+  + name : str
+  + value : str
+}
+class fIDL_AttributedDeclaration {
+}
+class fIDL_BooleanLiteral {
+  + isTrue : bool
+}
+class fIDL_BooleanType {
+}
+class fIDL_ConstDeclaration {
+}
+class fIDL_Constant {
+  + ci : str
+}
+class fIDL_Declaration {
+  + name : str
+}
+class fIDL_EnumDeclaration {
+}
+class fIDL_EnumMember {
+  + name : str
+}
+class fIDL_EnumMemberValue {
+  + value : str
+}
+class fIDL_Expression {
+}
+class fIDL_File {
+}
+class fIDL_Float32Type {
+}
+class fIDL_Float64Type {
+}
+class fIDL_HandleType {
+  + nullable : bool
+  + type : str
+}
+class fIDL_IdentifierType {
+  + nullable : bool
+}
+class fIDL_Int16Type {
+}
+class fIDL_Int32Type {
+}
+class fIDL_Int64Type {
+}
+class fIDL_Int8Type {
+}
+class fIDL_IntegerType {
+}
+class fIDL_InterfaceDeclaration {
+}
+class fIDL_InterfaceMember {
+}
+class fIDL_InterfaceMethod {
+}
+class fIDL_InterfaceParameters {
+  + name : str
+  + resultName : str
+}
+class fIDL_LibraryHeader {
+  + name : str
+}
+class fIDL_Literal {
+}
+class fIDL_NumberLiteral {
+}
+class fIDL_Parameter {
+  + name : str
+}
+class fIDL_ParameterList {
+}
+class fIDL_PrimitiveType {
+}
+class fIDL_RequestType {
+  + nullable : bool
+}
+class fIDL_StatusType {
+}
+class fIDL_StringLiteral {
+}
+class fIDL_StringType {
+  + nullable : bool
+}
+class fIDL_StructDeclaration {
+}
+class fIDL_StructField {
+  + name : str
+}
+class fIDL_StructMember {
+}
+class fIDL_Type {
+}
+class fIDL_Uint16Type {
+}
+class fIDL_Uint32Type {
+}
+class fIDL_Uint64Type {
+}
+class fIDL_Uint8Type {
+}
+class fIDL_UnionDeclaration {
+}
+class fIDL_UnionField {
+  + name : str
+}
+class fIDL_UnionMember {
+}
+class fIDL_Using {
+  + importedNamespace : str
+  + name : str
+}
+class fIDL_VectorType {
+  + nullable : bool
+}
+Constant <|-- fIDL_Literal
+Declaration <|-- fIDL_ConstDeclaration
+Declaration <|-- fIDL_EnumDeclaration
+Declaration <|-- fIDL_InterfaceDeclaration
+Declaration <|-- fIDL_StructDeclaration
+Declaration <|-- fIDL_UnionDeclaration
+EnumMemberValue <|-- fIDL_Expression
+Expression <|-- fIDL_BooleanLiteral
+Expression <|-- fIDL_NumberLiteral
+Expression <|-- fIDL_StringLiteral
+File <|-- fIDL_LibraryHeader
+IntegerType <|-- fIDL_Int16Type
+IntegerType <|-- fIDL_Int32Type
+IntegerType <|-- fIDL_Int64Type
+IntegerType <|-- fIDL_Int8Type
+IntegerType <|-- fIDL_Uint16Type
+IntegerType <|-- fIDL_Uint32Type
+IntegerType <|-- fIDL_Uint64Type
+IntegerType <|-- fIDL_Uint8Type
+InterfaceMember <|-- fIDL_ConstDeclaration
+InterfaceMember <|-- fIDL_InterfaceMethod
+Literal <|-- fIDL_Expression
+PrimitiveType <|-- fIDL_BooleanType
+PrimitiveType <|-- fIDL_Float32Type
+PrimitiveType <|-- fIDL_Float64Type
+PrimitiveType <|-- fIDL_IntegerType
+PrimitiveType <|-- fIDL_StatusType
+Type <|-- fIDL_ArrayType
+Type <|-- fIDL_HandleType
+Type <|-- fIDL_IdentifierType
+Type <|-- fIDL_PrimitiveType
+Type <|-- fIDL_RequestType
+Type <|-- fIDL_StringType
+Type <|-- fIDL_VectorType
+UnionMember <|-- fIDL_UnionField
+fIDL_Attribute "0..9999" --* "1..1" fIDL_AttributedDeclaration : attributes3
+fIDL_ConstDeclaration "0..1" --* "1..1" fIDL_StructMember : constant35
+fIDL_ArrayType "1..1" *-- "0..1" fIDL_Constant : constraint54
+fIDL_Constant "0..1" --* "1..1" fIDL_VectorType : constraint59
+fIDL_Constant "0..1" --* "1..1" fIDL_StringType : constraint62
+fIDL_AttributedDeclaration "1..1" *-- "0..1" fIDL_Declaration : declaration5
+fIDL_AttributedDeclaration "0..9999" --* "1..1" fIDL_LibraryHeader : declarations1
+fIDL_StructField "0..1" --* "1..1" fIDL_StructMember : field33
+fIDL_UnionDeclaration "1..1" *-- "0..9999" fIDL_UnionMember : fields46
+fIDL_EnumDeclaration "1..1" *-- "0..9999" fIDL_EnumMember : members11
+fIDL_InterfaceDeclaration "1..1" *-- "0..9999" fIDL_InterfaceMember : members17
+fIDL_StructDeclaration "1..1" *-- "0..9999" fIDL_StructMember : members32
+fIDL_ConstDeclaration "0..9999" --* "1..1" fIDL_UnionDeclaration : members44
+fIDL_InterfaceMethod "1..1" *-- "0..1" fIDL_InterfaceParameters : method20
+fIDL_Expression "0..1" --* "1..1" fIDL_InterfaceMethod : ordinal19
+fIDL_InterfaceParameters "1..1" *-- "0..1" fIDL_ParameterList : parameters22
+fIDL_Parameter "0..9999" --* "1..1" fIDL_ParameterList : parameters27
+fIDL_Declaration "0..1" -- "1..1" fIDL_IdentifierType : ref50
+fIDL_Declaration "0..1" -- "1..1" fIDL_RequestType : ref64
+fIDL_InterfaceParameters "1..1" *-- "0..1" fIDL_ParameterList : result24
+fIDL_InterfaceDeclaration "1..1" -- "0..9999" fIDL_InterfaceDeclaration : superInterfaces16
+fIDL_EnumDeclaration "1..1" *-- "0..1" fIDL_IntegerType : type10
+fIDL_Parameter "1..1" *-- "0..1" fIDL_Type : type29
+fIDL_StructField "1..1" *-- "0..1" fIDL_Type : type38
+fIDL_Type "0..1" --* "1..1" fIDL_UnionField : type48
+fIDL_ArrayType "1..1" *-- "0..1" fIDL_Type : type52
+fIDL_Type "0..1" --* "1..1" fIDL_VectorType : type57
+fIDL_ConstDeclaration "1..1" *-- "0..1" fIDL_Type : type7
+fIDL_LibraryHeader "1..1" *-- "0..9999" fIDL_Using : usings0
+fIDL_EnumMember "1..1" *-- "0..1" fIDL_EnumMemberValue : value13
+fIDL_Constant "0..1" --* "1..1" fIDL_StructField : value41
+fIDL_ConstDeclaration "1..1" *-- "0..1" fIDL_Constant : value8
+@enduml

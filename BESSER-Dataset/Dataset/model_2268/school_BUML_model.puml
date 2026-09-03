@@ -1,0 +1,69 @@
+@startuml
+enum SchoolElement {
+  Course
+  CourseOfStudy
+  Faculty
+  School
+  Student
+  Teacher
+}
+class school_BooleanExpr {
+  + lhs : str
+  + operator : str
+  + rhs : str
+}
+class school_Course {
+  + courseNumber : str
+  + name : str
+}
+class school_CourseOfStudy {
+  + name : str
+}
+class school_CourseResult {
+  + grade : str
+}
+class school_Faculty {
+  + name : str
+}
+class school_Query {
+  + type : str
+}
+class school_School {
+  + name : str
+}
+class school_SchoolDatabase {
+}
+class school_Student {
+  + name : str
+  + studentNumber : str
+}
+class school_Teacher {
+  + name : str
+}
+class school_Where {
+}
+school_BooleanExpr "0..1" --* "1..1" school_BooleanExpr : and_36
+school_BooleanExpr "1..1" --* "1..1" school_Where : booleanexpr33
+school_Course "0..9999" -- "1..1" school_CourseOfStudy : course10
+school_Course "1..1" -- "1..1" school_CourseResult : course27
+school_Course "0..9999" --* "1..1" school_School : course3
+school_CourseOfStudy "0..9999" --* "1..1" school_School : courseofstudy1
+school_CourseOfStudy "1..1" -- "1..1" school_Student : courseofstudy21
+school_CourseOfStudy "0..9999" -- "1..1" school_Faculty : courseofstudy9
+school_Course "1..1" *-- "0..9999" school_CourseResult : courseresult19
+school_Course "0..9999" -- "1..1" school_Student : enrolledIn20
+school_Course "1..1" -- "0..9999" school_Student : enrolledStudent16
+school_Faculty "0..9999" --* "1..1" school_School : faculty0
+school_CourseOfStudy "1..1" -- "1..1" school_Faculty : faculty13
+school_BooleanExpr "0..1" --* "1..1" school_BooleanExpr : or_39
+school_Query "0..9999" --* "1..1" school_SchoolDatabase : query43
+school_School "1..1" --* "1..1" school_SchoolDatabase : school41
+school_CourseOfStudy "1..1" -- "0..9999" school_Student : student14
+school_CourseResult "1..1" -- "1..1" school_Student : student25
+school_Query "1..1" -- "0..1" school_Student : student29
+school_School "1..1" *-- "0..9999" school_Student : student5
+school_Course "1..1" -- "1..1" school_Teacher : taughtBy18
+school_School "1..1" *-- "0..9999" school_Teacher : teacher7
+school_Course "0..9999" -- "1..1" school_Teacher : teaches23
+school_Query "1..1" *-- "0..1" school_Where : where31
+@enduml

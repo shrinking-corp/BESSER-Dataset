@@ -1,0 +1,40 @@
+@startuml
+class Account {
+  + Address : str
+}
+class Customer {
+  + Customer_ID : int
+  + Name : str
+}
+class Items {
+  + Description : str
+}
+class Order {
+  + Order_ID : int
+}
+class Payment {
+  + Date : int
+  + Payment_ID : int
+}
+class Products {
+  + Product_ID : int
+}
+class Shopping_Cart {
+  + Date : int
+}
+class Warehouse {
+  + Warehouse_branch : str
+}
+Account "0..1" -- "0..1" Customer : Account_Customer
+Account "1..1" -- "0..1" Order : Account_Order
+Account "1..1" -- "1..1" Customer : Customer_Account
+Customer "1..1" -- "1..9999" Order : Customer_Order
+Customer "1..1" -- "1..1" Payment : Customer_Payment
+Customer "1..9999" -- "1..9999" Products : Customer_Products
+Customer "1..9999" -- "1..1" Shopping_Cart : Customer_Shopping_Cart
+Account "0..1" -- "0..1" Order : Order_Account
+Account "0..1" -- "0..1" Order : Order_Account2
+Order "1..1" -- "1..1" Payment : Payment__Order
+Items "1..9999" -- "1..1" Shopping_Cart : Shopping_Cart_Items
+Products "1..9999" -- "1..9999" Warehouse : Warehouse_Products
+@enduml

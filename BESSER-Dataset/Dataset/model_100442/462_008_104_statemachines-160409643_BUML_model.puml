@@ -1,0 +1,76 @@
+@startuml
+class AbstractExtension {
+}
+class AbstractNode {
+}
+class Diagram {
+}
+class Event {
+}
+class EventBCommentedElement {
+}
+class EventBElement {
+}
+class EventBLabeled {
+}
+class EventBNamed {
+}
+class EventBNamedCommentedElement {
+}
+class Invariant {
+}
+class StatemachineOwner {
+}
+enum TranslationKind {
+  MULTIVAR
+  REFINEDVAR
+  SINGLEVAR
+}
+abstract class statemachines_AbstractNode {
+}
+class statemachines_EventBElement {
+}
+class statemachines_EventBNamedCommentedElement {
+}
+class statemachines_Final {
+}
+class statemachines_Initial {
+}
+class statemachines_State {
+  + active : bool
+}
+class statemachines_Statemachine {
+  + selfName : str
+  + translation : str
+}
+abstract class statemachines_StatemachineOwner {
+}
+class statemachines_Transition {
+  + operations : str
+}
+AbstractExtension <|-- statemachines_Statemachine
+AbstractNode <|-- statemachines_Final
+AbstractNode <|-- statemachines_Initial
+AbstractNode <|-- statemachines_State
+Diagram <|-- statemachines_Statemachine
+EventBCommentedElement <|-- statemachines_Transition
+EventBElement <|-- statemachines_AbstractNode
+EventBLabeled <|-- statemachines_Transition
+EventBNamed <|-- statemachines_State
+EventBNamedCommentedElement <|-- statemachines_Statemachine
+StatemachineOwner <|-- statemachines_State
+Event "0..9999" -- "1..1" statemachines_Transition : elaborates13
+statemachines_AbstractNode "1..1" -- "0..9999" statemachines_Transition : incoming20
+statemachines_EventBNamedCommentedElement "0..1" -- "1..1" statemachines_Statemachine : instances6
+Invariant "0..9999" --* "1..1" statemachines_State : invariants25
+statemachines_AbstractNode "0..9999" --* "1..1" statemachines_Statemachine : nodes2
+statemachines_AbstractNode "1..1" -- "0..9999" statemachines_Transition : outgoing21
+statemachines_Statemachine "1..1" -- "0..1" statemachines_Statemachine : refines1
+statemachines_State "1..1" -- "0..1" statemachines_State : refines24
+statemachines_AbstractNode "1..1" -- "1..1" statemachines_Transition : source11
+statemachines_EventBElement "0..1" -- "1..1" statemachines_Transition : sourceContainer15
+statemachines_Statemachine "0..9999" --* "1..1" statemachines_StatemachineOwner : statemachines8
+statemachines_AbstractNode "1..1" -- "1..1" statemachines_Transition : target10
+statemachines_EventBElement "0..1" -- "1..1" statemachines_Transition : targetContainer17
+statemachines_Statemachine "1..1" *-- "0..9999" statemachines_Transition : transitions4
+@enduml

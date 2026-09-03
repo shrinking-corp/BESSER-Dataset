@@ -1,0 +1,469 @@
+@startuml
+class ActionStep {
+}
+class CallConsumer1 {
+}
+class CallSource1 {
+}
+class CaseItem {
+}
+class DBConnectionId {
+}
+class DBQueryId {
+}
+class DBQueryParamId {
+}
+class DBResultSetId {
+}
+enum DebugLevel {
+  Debug
+  Error
+  Info
+  Warn
+}
+class DynamicValue {
+}
+enum DynamicValueType {
+  Custom
+  LiteralText
+  ScriptText
+  VariableName
+}
+class Finally {
+}
+class GetColMapping {
+}
+class Initiator {
+}
+class InputItem {
+}
+enum InputType {
+  Value
+  Variable
+}
+class Item {
+}
+class Output {
+}
+class OutputParameter {
+}
+enum OutputType {
+  Choice
+  Default
+  Error
+}
+class PlatformDisposition {
+}
+class ProductIdentifiable {
+}
+class QueryParamMapping {
+}
+class SafiCall {
+}
+class Saflet {
+}
+class SafletContext {
+}
+class SafletEnvironment {
+}
+class SafletScript {
+}
+class SafletScriptEnvironment {
+}
+class SafletScriptFactory {
+}
+class ScriptScope {
+}
+class ScriptScopeFactory {
+}
+class SetColMapping {
+}
+class ThreadSensitive {
+}
+class actionstep_ActionStep {
+}
+class actionstep_Heavyweight {
+}
+class actionstep_ParameterizedActionstep {
+}
+class actionstep_core_EObject {
+}
+class actionstep_core_EStringToStringMapEntry {
+}
+abstract class core_PlatformDisposition {
+  + platformDependant : bool
+  + platformID : str
+}
+abstract class core_ProductIdentifiable {
+  + productId : str
+}
+class core_ThreadSensitive {
+  + cleanup() : void
+}
+abstract class core_actionstep_ActionStep {
+  + active : bool
+  + name : str
+  + paused : bool
+  + beginProcessing(core_context : str) : void
+  + createDefaultOutputs() : void
+  + executeScript(core_scriptName : str, core_scriptText : str) : str
+  + handleException(core_context : str, core_e : str) : void
+  + resolveDynamicValue(core_context : str, core_dynamicValue : str) : str
+}
+class core_actionstep_Assignment {
+}
+class core_actionstep_CaseItem {
+}
+class core_actionstep_Choice {
+}
+class core_actionstep_CloseDBConnection {
+}
+class core_actionstep_DBConnectionId {
+  + id : str
+  + jdbcConnection : str
+}
+class core_actionstep_DBQueryId {
+  + id : str
+  + jdbcStatement : str
+}
+class core_actionstep_DBQueryParamId {
+  + id : str
+  + index : int
+}
+class core_actionstep_DBResultSetId {
+  + id : str
+  + jDBCResultSet : str
+  + name : str
+}
+class core_actionstep_DebugLog {
+  + debugLevel : str
+}
+class core_actionstep_DeleteRow {
+}
+class core_actionstep_DynamicValue {
+  + text : str
+  + type : str
+}
+class core_actionstep_ExecuteQuery {
+  + resultSetName : str
+}
+class core_actionstep_ExecuteScript {
+}
+class core_actionstep_ExecuteUpdate {
+}
+class core_actionstep_Finally {
+}
+class core_actionstep_GetColMapping {
+  + getAsDatatype : str
+}
+class core_actionstep_GetColValue {
+  + getAsDatatype : str
+}
+class core_actionstep_GetColValues {
+}
+abstract class core_actionstep_Heavyweight {
+}
+class core_actionstep_IfThen {
+}
+class core_actionstep_InputItem {
+  + parameterName : str
+  + required : bool
+}
+class core_actionstep_InsertRow {
+}
+class core_actionstep_InvokeSaflet {
+  + labelText : str
+}
+class core_actionstep_Item {
+  + labelText : str
+}
+class core_actionstep_MoveToFirstRow {
+}
+class core_actionstep_MoveToInsertRow {
+}
+class core_actionstep_MoveToLastRow {
+}
+class core_actionstep_MoveToRow {
+}
+class core_actionstep_NextRow {
+}
+class core_actionstep_OpenDBConnection {
+}
+class core_actionstep_OpenQuery {
+  + holdabilityMode : str
+  + readOnly : bool
+  + scrollMode : str
+  + scrollable : bool
+  + useCache : bool
+}
+class core_actionstep_Output {
+  + name : str
+  + outputType : str
+}
+class core_actionstep_OutputParameter {
+}
+abstract class core_actionstep_ParameterizedActionstep {
+}
+abstract class core_actionstep_ParameterizedInitiator {
+  + getOutputMap() : void
+}
+class core_actionstep_PreviousRow {
+}
+class core_actionstep_QueryParamMapping {
+  + setAsDatatype : str
+}
+class core_actionstep_RunQuery {
+  + readOnly : bool
+  + resultSetName : str
+  + scrollable : bool
+  + refreshParams(core_qry : str) : void
+}
+class core_actionstep_SetColMapping {
+  + setAsDatatype : str
+}
+class core_actionstep_SetColValue {
+  + setAsDatatype : str
+}
+class core_actionstep_SetColValues {
+}
+class core_actionstep_SetQueryParam {
+  + paramDatatype : str
+}
+class core_actionstep_UpdatetRow {
+}
+abstract class core_call_CallConsumer1 {
+}
+abstract class core_call_CallConsumer2 {
+}
+abstract class core_call_CallSource1 {
+}
+abstract class core_call_CallSource2 {
+}
+abstract class core_call_SafiCall {
+  + name : str
+  + uuid : str
+}
+abstract class core_initiator_Initiator {
+  + acceptsRequest(core_context : str) : bool
+  + beginProcessing() : void
+  + initialize(core_context : str) : void
+}
+abstract class core_initiator_InitiatorInfo {
+}
+abstract class core_saflet_Saflet {
+  + active : bool
+  + description : str
+  + id : int
+  + name : str
+  + version : str
+  + addActionStep(core_actionstep : str) : void
+  + addScript(core_name : str, core_scriptText : str) : str
+  + getActionStep(core_name : str) : str
+  + getScript(core_name : str) : str
+  + init() : void
+  + initializeScriptableObjects() : void
+}
+abstract class core_saflet_SafletContext {
+  + exceptions : str
+  + sessionVariables : str
+  + addException(core_e : str) : void
+  + addOrUpdateVariable(core_v : str) : void
+  + getSessionVar(core_name : str) : str
+  + getVariable(core_name : str) : str
+  + getVariableRawValue(core_name : str) : str
+  + init() : void
+  + merge(core_context : str) : void
+  + preHandoffPrep(core_call : str) : void
+  + removeVariable(core_name : str) : str
+  + setSessionVar(core_name : str, core_value : str) : void
+  + setVariableRawValue(core_name : str, core_value : str) : void
+}
+abstract class core_saflet_SafletEnvironment {
+  + getGlobalExecutor() : str
+  + getGlobalVariable(core_name : str) : str
+  + getGlobalVariableValue(core_name : str) : str
+  + getSaflet(core_coreServerId : str, core_path : str) : str
+  + setGlobalVariableValue(core_name : str, core_value : str) : void
+}
+class core_scripting_RhinoSafletScript {
+  + rhinoScript : str
+}
+class core_scripting_RhinoSafletScriptEnvironment {
+}
+class core_scripting_RhinoSafletScriptFactory {
+}
+class core_scripting_RhinoScriptScope {
+}
+class core_scripting_RhinoScriptScopeFactory {
+}
+abstract class core_scripting_SafletScript {
+  + name : str
+  + scriptText : str
+  + execute(core_scope : str) : str
+}
+abstract class core_scripting_SafletScriptEnvironment {
+}
+abstract class core_scripting_SafletScriptFactory {
+  + getSafletScript(core_name : str, core_scriptText : str) : str
+}
+abstract class core_scripting_ScriptScope {
+  + scopeObject : str
+  + exposeObjectToScript(core_name : str, core_value : str) : void
+  + getScopedObject(core_name : str) : str
+  + removeObjectFromScope(core_name : str) : void
+  + updateVariablesFromScope(core_isDebug : str, core_safletEnvironment : str, core_variables : str) : void
+}
+abstract class core_scripting_ScriptScopeFactory {
+}
+class initiator_Initiator {
+}
+class saflet_core_Variable {
+}
+ActionStep <|-- core_actionstep_Assignment
+ActionStep <|-- core_actionstep_Choice
+ActionStep <|-- core_actionstep_CloseDBConnection
+ActionStep <|-- core_actionstep_DebugLog
+ActionStep <|-- core_actionstep_DeleteRow
+ActionStep <|-- core_actionstep_ExecuteScript
+ActionStep <|-- core_actionstep_ExecuteUpdate
+ActionStep <|-- core_actionstep_Finally
+ActionStep <|-- core_actionstep_GetColValue
+ActionStep <|-- core_actionstep_GetColValues
+ActionStep <|-- core_actionstep_IfThen
+ActionStep <|-- core_actionstep_InsertRow
+ActionStep <|-- core_actionstep_InvokeSaflet
+ActionStep <|-- core_actionstep_MoveToFirstRow
+ActionStep <|-- core_actionstep_MoveToInsertRow
+ActionStep <|-- core_actionstep_MoveToLastRow
+ActionStep <|-- core_actionstep_MoveToRow
+ActionStep <|-- core_actionstep_NextRow
+ActionStep <|-- core_actionstep_OpenQuery
+ActionStep <|-- core_actionstep_ParameterizedActionstep
+ActionStep <|-- core_actionstep_PreviousRow
+ActionStep <|-- core_actionstep_SetColValue
+ActionStep <|-- core_actionstep_SetColValues
+ActionStep <|-- core_actionstep_SetQueryParam
+ActionStep <|-- core_initiator_Initiator
+CallConsumer1 <|-- core_call_CallConsumer2
+CallSource1 <|-- core_call_CallSource2
+CaseItem <|-- core_actionstep_InputItem
+InputItem <|-- core_actionstep_OutputParameter
+Item <|-- core_actionstep_CaseItem
+Item <|-- core_actionstep_GetColMapping
+Item <|-- core_actionstep_QueryParamMapping
+Item <|-- core_actionstep_SetColMapping
+PlatformDisposition <|-- core_actionstep_ActionStep
+PlatformDisposition <|-- core_call_SafiCall
+PlatformDisposition <|-- core_saflet_Saflet
+ProductIdentifiable <|-- core_actionstep_ActionStep
+SafletScript <|-- core_scripting_RhinoSafletScript
+SafletScriptEnvironment <|-- core_scripting_RhinoSafletScriptEnvironment
+SafletScriptFactory <|-- core_scripting_RhinoSafletScriptFactory
+ScriptScope <|-- core_scripting_RhinoScriptScope
+ScriptScopeFactory <|-- core_scripting_RhinoScriptScopeFactory
+ThreadSensitive <|-- core_actionstep_ActionStep
+ThreadSensitive <|-- core_actionstep_DBConnectionId
+ThreadSensitive <|-- core_actionstep_DBQueryId
+ThreadSensitive <|-- core_actionstep_DBResultSetId
+ThreadSensitive <|-- core_actionstep_DynamicValue
+ThreadSensitive <|-- core_actionstep_Item
+ThreadSensitive <|-- core_call_SafiCall
+ThreadSensitive <|-- core_saflet_Saflet
+ThreadSensitive <|-- core_saflet_SafletContext
+ThreadSensitive <|-- core_saflet_SafletEnvironment
+actionstep_ActionStep <|-- core_actionstep_ExecuteQuery
+actionstep_ActionStep <|-- core_actionstep_OpenDBConnection
+actionstep_ActionStep <|-- core_actionstep_RunQuery
+actionstep_ActionStep <|-- core_actionstep_UpdatetRow
+actionstep_Heavyweight <|-- core_actionstep_ExecuteQuery
+actionstep_Heavyweight <|-- core_actionstep_OpenDBConnection
+actionstep_Heavyweight <|-- core_actionstep_RunQuery
+actionstep_Heavyweight <|-- core_actionstep_UpdatetRow
+actionstep_ParameterizedActionstep <|-- core_actionstep_ParameterizedInitiator
+initiator_Initiator <|-- core_actionstep_ParameterizedInitiator
+ActionStep "0..9999" --* "1..1" core_saflet_Saflet : actionsteps161
+DynamicValue "0..1" --* "1..1" core_actionstep_IfThen : booleanExpression23
+SafiCall "0..1" -- "1..1" core_call_CallConsumer1 : call1176
+SafiCall "0..1" -- "1..1" core_call_CallConsumer2 : call2178
+CaseItem "0..9999" --* "1..1" core_actionstep_Choice : choices16
+DynamicValue "0..1" --* "1..1" core_actionstep_GetColMapping : column107
+DynamicValue "0..1" --* "1..1" core_actionstep_SetColMapping : column110
+DynamicValue "0..1" --* "1..1" core_actionstep_GetColValue : column67
+DynamicValue "0..1" --* "1..1" core_actionstep_SetColValue : column76
+GetColMapping "0..9999" --* "1..1" core_actionstep_GetColValues : columnMappings72
+SetColMapping "0..9999" --* "1..1" core_actionstep_SetColValues : columnMappings84
+DBConnectionId "0..1" -- "1..1" core_actionstep_RunQuery : connection115
+DBConnectionId "0..1" --* "1..1" core_actionstep_OpenDBConnection : connection37
+DBConnectionId "0..1" -- "1..1" core_actionstep_CloseDBConnection : connection38
+DBConnectionId "0..1" -- "1..1" core_actionstep_OpenQuery : connection41
+actionstep_core_EStringToStringMapEntry "0..9999" --* "1..1" core_actionstep_DynamicValue : data21
+Output "0..1" -- "1..1" core_actionstep_ActionStep : defaultOutput2
+DynamicValue "0..1" --* "1..1" core_actionstep_CaseItem : dynamicValue11
+Output "0..1" -- "1..1" core_actionstep_ActionStep : errorOutput4
+Finally "0..1" -- "1..1" core_saflet_Saflet : finally_167
+ScriptScope "0..1" -- "1..1" core_scripting_ScriptScopeFactory : globalScriptScope152
+Initiator "0..1" -- "1..1" core_saflet_Saflet : initiator155
+InputItem "0..9999" --* "1..1" core_actionstep_ParameterizedActionstep : inputs13
+DynamicValue "0..1" --* "1..1" core_actionstep_DebugLog : logFilename34
+DynamicValue "0..1" --* "1..1" core_actionstep_DebugLog : message32
+SafiCall "0..1" --* "1..1" core_call_CallSource1 : newCall1173
+SafiCall "0..1" --* "1..1" core_call_CallSource2 : newCall2174
+OutputParameter "0..9999" --* "1..1" core_actionstep_ParameterizedActionstep : outputParameters14
+Output "0..9999" --* "1..1" core_actionstep_ActionStep : outputs0
+QueryParamMapping "0..9999" --* "1..1" core_actionstep_RunQuery : paramMappings120
+DBQueryParamId "0..1" --* "1..1" core_actionstep_SetQueryParam : parameter46
+ActionStep "0..1" -- "1..1" core_actionstep_Output : parent26
+ActionStep "0..1" -- "1..1" core_actionstep_Item : parentActionStep136
+Saflet "0..1" -- "1..1" core_saflet_SafletContext : parentSaflet169
+actionstep_core_EObject "0..1" --* "1..1" core_actionstep_DynamicValue : payload20
+DBQueryId "0..1" --* "1..1" core_actionstep_RunQuery : query117
+DBQueryId "0..1" --* "1..1" core_actionstep_OpenQuery : query40
+DBQueryId "0..1" -- "1..1" core_actionstep_SetQueryParam : query48
+DBQueryId "0..1" -- "1..1" core_actionstep_ExecuteUpdate : query51
+DBQueryId "0..1" -- "1..1" core_actionstep_ExecuteQuery : query56
+DBQueryParamId "0..1" --* "1..1" core_actionstep_QueryParamMapping : queryParam131
+DBResultSetId "0..1" -- "1..1" core_actionstep_MoveToFirstRow : resultSet101
+DBResultSetId "0..1" -- "1..1" core_actionstep_PreviousRow : resultSet103
+DBResultSetId "0..1" --* "1..1" core_actionstep_RunQuery : resultSet122
+DBResultSetId "0..1" --* "1..1" core_actionstep_ExecuteQuery : resultSet58
+DBResultSetId "0..1" -- "1..1" core_actionstep_NextRow : resultSet60
+DBResultSetId "0..1" -- "1..1" core_actionstep_GetColValue : resultSet62
+DBResultSetId "0..1" -- "1..1" core_actionstep_GetColValues : resultSet70
+DBResultSetId "0..1" -- "1..1" core_actionstep_SetColValue : resultSet74
+DBResultSetId "0..1" -- "1..1" core_actionstep_SetColValues : resultSet82
+DBResultSetId "0..1" -- "1..1" core_actionstep_UpdatetRow : resultSet86
+DBResultSetId "0..1" -- "1..1" core_actionstep_MoveToRow : resultSet88
+DBResultSetId "0..1" -- "1..1" core_actionstep_MoveToLastRow : resultSet93
+DBResultSetId "0..1" -- "1..1" core_actionstep_DeleteRow : resultSet95
+DBResultSetId "0..1" -- "1..1" core_actionstep_MoveToInsertRow : resultSet97
+DBResultSetId "0..1" -- "1..1" core_actionstep_InsertRow : resultSet99
+DynamicValue "0..1" --* "1..1" core_actionstep_MoveToRow : rowNum90
+DynamicValue "0..1" --* "1..1" core_actionstep_RunQuery : rowsUpdatedVar125
+DynamicValue "0..1" --* "1..1" core_actionstep_ExecuteUpdate : rowsUpdatedVar53
+Saflet "0..1" -- "1..1" core_actionstep_ActionStep : saflet1
+SafletContext "0..1" --* "1..1" core_saflet_Saflet : safletContext156
+SafletEnvironment "0..1" -- "1..1" core_saflet_Saflet : safletEnvironment165
+ScriptScope "0..1" -- "1..1" core_saflet_Saflet : safletScope158
+SafletScript "0..1" -- "1..1" core_scripting_SafletScriptFactory : safletScript148
+SafletScriptFactory "0..1" -- "1..1" core_scripting_SafletScriptEnvironment : safletScriptFactory144
+ScriptScope "0..1" -- "1..1" core_scripting_ScriptScopeFactory : scriptScope150
+ScriptScopeFactory "0..1" -- "1..1" core_scripting_SafletScriptEnvironment : scriptScopeFactory146
+DynamicValue "0..1" --* "1..1" core_actionstep_ExecuteScript : scriptText28
+SafletScriptEnvironment "0..1" -- "1..1" core_saflet_Saflet : scriptingEnvironment163
+SafletScript "0..1" -- "1..1" core_scripting_SafletScriptEnvironment : sharedSafletScript141
+ScriptScope "0..1" -- "1..1" core_scripting_SafletScriptEnvironment : sharedScriptScope142
+DynamicValue "0..1" --* "1..1" core_actionstep_RunQuery : sql128
+ActionStep "0..1" -- "1..1" core_actionstep_Output : target25
+ActionStep "0..1" -- "1..1" core_actionstep_Item : targetActionStep138
+DynamicValue "0..1" --* "1..1" core_actionstep_InvokeSaflet : targetSafletPath30
+DynamicValue "0..1" --* "1..1" core_actionstep_SetColMapping : value112
+DynamicValue "0..1" --* "1..1" core_actionstep_QueryParamMapping : value133
+DynamicValue "0..1" --* "1..1" core_actionstep_Choice : value17
+DynamicValue "0..1" --* "1..1" core_actionstep_SetQueryParam : value44
+DynamicValue "0..1" --* "1..1" core_actionstep_Assignment : value7
+DynamicValue "0..1" --* "1..1" core_actionstep_SetColValue : value79
+DynamicValue "0..1" --* "1..1" core_actionstep_GetColMapping : variableName105
+DynamicValue "0..1" --* "1..1" core_actionstep_GetColValue : variableName64
+DynamicValue "0..1" --* "1..1" core_actionstep_Assignment : variableName8
+core_saflet_SafletContext "1..1" *-- "0..9999" saflet_core_Variable : variables171
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+class Account {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class Customer {
+  + address : str
+  + email : str
+  + phone : str
+}
+class LineItem {
+  + price : float
+  + quantity : int
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : OrderStatus
+  + total : float
+}
+enum OrderStatus {
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Product {
+  + description : str
+  + name : str
+}
+class ShoppingCart {
+  + creationDate : date
+}
+enum UserState {
+}
+class WebUser {
+  + login : str
+  + password : str
+  + state : UserState
+}
+Account "1..1" -- "0..9999" Order : Account_Order
+Account "1..1" -- "0..9999" Payment : Account_Payment
+Account "1..1" -- "1..1" ShoppingCart : Account_ShoppingCart
+Account "1..1" -- "1..1" Customer : Customer_Account
+LineItem "1..9999" -- "0..1" Order : Order_LineItem
+Order "1..1" -- "0..1" Payment : Payment_Order
+LineItem "0..9999" -- "1..1" Product : Product_LineItem
+LineItem "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+Customer "1..1" -- "1..1" WebUser : WebUser_Customer
+ShoppingCart "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+@enduml

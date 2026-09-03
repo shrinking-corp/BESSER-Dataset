@@ -1,0 +1,36 @@
+@startuml
+class model_Course {
+  + ID : int
+  + name : str
+}
+class model_Delivery {
+  + ID : int
+  + answer : str
+  + group_number : int
+  + submission_date : date
+}
+class model_Exercise {
+  + ID : int
+  + deadline_date : date
+}
+class model_Response {
+  + ID : int
+  + comment : str
+  + ok : bool
+}
+class model_Student {
+  + ID : int
+  + name : str
+}
+class model_root {
+}
+model_Exercise "1..1" -- "0..9999" model_Student : assignedTo13
+model_Course "0..9999" -- "1..1" model_Student : attends5
+model_Course "1..1" *-- "0..9999" model_Exercise : contains16
+model_Course "0..9999" --* "1..1" model_root : containsCourse1
+model_Delivery "0..9999" --* "1..1" model_root : containsDelivery3
+model_Student "0..9999" --* "1..1" model_root : containsStudent0
+model_Delivery "1..1" *-- "0..1" model_Response : evaluates19
+model_Delivery "0..9999" -- "1..1" model_Exercise : hasSubmitted11
+model_Delivery "0..9999" -- "1..1" model_Student : submits8
+@enduml

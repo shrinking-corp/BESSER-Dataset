@@ -1,0 +1,103 @@
+@startuml
+class AuthoredEntry {
+}
+class BibTeXEntry {
+}
+class Book {
+}
+class BookTitledEntry {
+}
+class DatedEntry {
+}
+class Proceedings {
+}
+class ThesisEntry {
+}
+class TitledEntry {
+}
+class bibtex_Article {
+  + journal : str
+}
+class bibtex_Author {
+  + author : str
+}
+abstract class bibtex_AuthoredEntry {
+}
+abstract class bibtex_BibTeXEntry {
+  + id : str
+}
+class bibtex_BibTeXFile {
+}
+class bibtex_Book {
+  + publisher : str
+}
+abstract class bibtex_BookTitledEntry {
+  + booktitle : str
+}
+class bibtex_Booklet {
+}
+abstract class bibtex_DatedEntry {
+  + year : str
+}
+class bibtex_InBook {
+  + chapter : int
+}
+class bibtex_InCollection {
+}
+class bibtex_InProceedings {
+}
+class bibtex_Manual {
+}
+class bibtex_MasterThesis {
+}
+class bibtex_Misc {
+}
+class bibtex_PhDThesis {
+}
+class bibtex_Proceedings {
+}
+class bibtex_TechReport {
+}
+abstract class bibtex_ThesisEntry {
+  + school : str
+}
+abstract class bibtex_TitledEntry {
+  + title : str
+}
+class bibtex_Unpublished {
+  + note : str
+}
+AuthoredEntry <|-- bibtex_Article
+AuthoredEntry <|-- bibtex_Book
+AuthoredEntry <|-- bibtex_InProceedings
+AuthoredEntry <|-- bibtex_TechReport
+AuthoredEntry <|-- bibtex_ThesisEntry
+AuthoredEntry <|-- bibtex_Unpublished
+BibTeXEntry <|-- bibtex_AuthoredEntry
+BibTeXEntry <|-- bibtex_BookTitledEntry
+BibTeXEntry <|-- bibtex_DatedEntry
+BibTeXEntry <|-- bibtex_Misc
+BibTeXEntry <|-- bibtex_TitledEntry
+Book <|-- bibtex_InBook
+Book <|-- bibtex_InCollection
+BookTitledEntry <|-- bibtex_InCollection
+BookTitledEntry <|-- bibtex_InProceedings
+DatedEntry <|-- bibtex_Article
+DatedEntry <|-- bibtex_Book
+DatedEntry <|-- bibtex_Booklet
+DatedEntry <|-- bibtex_Proceedings
+DatedEntry <|-- bibtex_TechReport
+DatedEntry <|-- bibtex_ThesisEntry
+Proceedings <|-- bibtex_InProceedings
+ThesisEntry <|-- bibtex_MasterThesis
+ThesisEntry <|-- bibtex_PhDThesis
+TitledEntry <|-- bibtex_Article
+TitledEntry <|-- bibtex_Book
+TitledEntry <|-- bibtex_Manual
+TitledEntry <|-- bibtex_Proceedings
+TitledEntry <|-- bibtex_TechReport
+TitledEntry <|-- bibtex_ThesisEntry
+TitledEntry <|-- bibtex_Unpublished
+bibtex_Author "1..9999" --* "1..1" bibtex_AuthoredEntry : authors1
+bibtex_BibTeXEntry "0..9999" --* "1..1" bibtex_BibTeXFile : entries0
+@enduml

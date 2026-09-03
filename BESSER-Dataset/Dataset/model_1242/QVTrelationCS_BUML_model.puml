@@ -1,0 +1,165 @@
+@startuml
+class AbstractDomainCS {
+}
+class ClassCS {
+}
+class ExpCS {
+}
+class ModelElementCS {
+}
+class Nameable {
+}
+class NamedElementCS {
+}
+class Relation {
+}
+class RootPackageCS {
+}
+class TemplateCS {
+}
+class TemplateVariableCS {
+}
+class TypedElementCS {
+}
+abstract class qvtrelationcs_AbstractDomainCS {
+}
+class qvtrelationcs_Class {
+}
+class qvtrelationcs_CollectionTemplateCS {
+}
+class qvtrelationcs_DefaultValueCS {
+}
+class qvtrelationcs_DomainCS {
+  + implementedBy : str
+  + isCheckonly : bool
+  + isEnforce : bool
+  + isReplace : bool
+}
+class qvtrelationcs_DomainPatternCS {
+}
+class qvtrelationcs_Element {
+}
+class qvtrelationcs_ElementTemplateCS {
+}
+class qvtrelationcs_ExpCS {
+}
+class qvtrelationcs_KeyDeclCS {
+}
+class qvtrelationcs_ModelDeclCS {
+}
+class qvtrelationcs_Namespace {
+}
+class qvtrelationcs_ObjectTemplateCS {
+}
+class qvtrelationcs_ParamDeclarationCS {
+}
+class qvtrelationcs_PathNameCS {
+}
+class qvtrelationcs_PatternCS {
+}
+class qvtrelationcs_PredicateCS {
+}
+class qvtrelationcs_PrimitiveTypeDomainCS {
+}
+class qvtrelationcs_Property {
+}
+class qvtrelationcs_PropertyTemplateCS {
+}
+class qvtrelationcs_QueryCS {
+}
+class qvtrelationcs_RelationCS {
+  + isDefault : bool
+  + isTop : bool
+}
+abstract class qvtrelationcs_TemplateCS {
+}
+abstract class qvtrelationcs_TemplateVariableCS {
+}
+class qvtrelationcs_TopLevelCS {
+}
+class qvtrelationcs_Transformation {
+}
+class qvtrelationcs_TransformationCS {
+}
+class qvtrelationcs_TypedModel {
+}
+class qvtrelationcs_TypedRefCS {
+}
+class qvtrelationcs_UnitCS {
+}
+class qvtrelationcs_VarDeclarationCS {
+}
+class qvtrelationcs_VarDeclarationIdCS {
+}
+class qvtrelationcs_Variable {
+}
+AbstractDomainCS <|-- qvtrelationcs_DomainCS
+AbstractDomainCS <|-- qvtrelationcs_PrimitiveTypeDomainCS
+ClassCS <|-- qvtrelationcs_TransformationCS
+ExpCS <|-- qvtrelationcs_TemplateCS
+ModelElementCS <|-- qvtrelationcs_AbstractDomainCS
+ModelElementCS <|-- qvtrelationcs_DefaultValueCS
+ModelElementCS <|-- qvtrelationcs_DomainPatternCS
+ModelElementCS <|-- qvtrelationcs_KeyDeclCS
+ModelElementCS <|-- qvtrelationcs_PatternCS
+ModelElementCS <|-- qvtrelationcs_PredicateCS
+ModelElementCS <|-- qvtrelationcs_PropertyTemplateCS
+ModelElementCS <|-- qvtrelationcs_UnitCS
+ModelElementCS <|-- qvtrelationcs_VarDeclarationCS
+Nameable <|-- qvtrelationcs_AbstractDomainCS
+NamedElementCS <|-- qvtrelationcs_ModelDeclCS
+NamedElementCS <|-- qvtrelationcs_RelationCS
+NamedElementCS <|-- qvtrelationcs_TemplateVariableCS
+NamedElementCS <|-- qvtrelationcs_VarDeclarationIdCS
+RootPackageCS <|-- qvtrelationcs_TopLevelCS
+TemplateCS <|-- qvtrelationcs_CollectionTemplateCS
+TemplateCS <|-- qvtrelationcs_ObjectTemplateCS
+TemplateVariableCS <|-- qvtrelationcs_ElementTemplateCS
+TemplateVariableCS <|-- qvtrelationcs_PrimitiveTypeDomainCS
+TemplateVariableCS <|-- qvtrelationcs_TemplateCS
+TypedElementCS <|-- qvtrelationcs_ParamDeclarationCS
+TypedElementCS <|-- qvtrelationcs_QueryCS
+qvtrelationcs_Class "0..1" -- "1..1" qvtrelationcs_KeyDeclCS : classId26
+qvtrelationcs_Transformation "0..9999" -- "1..1" qvtrelationcs_TransformationCS : extends69
+qvtrelationcs_ElementTemplateCS "1..1" -- "0..1" qvtrelationcs_Variable : identifier17
+qvtrelationcs_Element "1..9999" -- "1..1" qvtrelationcs_UnitCS : identifiers83
+qvtrelationcs_ModelDeclCS "1..1" -- "0..9999" qvtrelationcs_Namespace : metamodelIds28
+qvtrelationcs_DomainCS "1..1" -- "0..1" qvtrelationcs_TypedModel : modelId6
+Relation "0..1" -- "1..1" qvtrelationcs_RelationCS : overrides47
+qvtrelationcs_ExpCS "1..1" --* "1..1" qvtrelationcs_PredicateCS : ownedCondition31
+qvtrelationcs_DefaultValueCS "0..9999" --* "1..1" qvtrelationcs_DomainCS : ownedDefaultValues9
+qvtrelationcs_AbstractDomainCS "0..9999" --* "1..1" qvtrelationcs_RelationCS : ownedDomains50
+qvtrelationcs_ExpCS "0..1" --* "1..1" qvtrelationcs_PropertyTemplateCS : ownedExpression40
+qvtrelationcs_ExpCS "0..1" --* "1..1" qvtrelationcs_QueryCS : ownedExpression44
+qvtrelationcs_ExpCS "0..1" --* "1..1" qvtrelationcs_TemplateCS : ownedGuardExpression58
+qvtrelationcs_DomainCS "1..1" *-- "0..1" qvtrelationcs_ExpCS : ownedImplementedBy12
+qvtrelationcs_TopLevelCS "1..1" *-- "0..9999" qvtrelationcs_UnitCS : ownedImportClauses63
+qvtrelationcs_DefaultValueCS "1..1" *-- "1..1" qvtrelationcs_ExpCS : ownedInitExpression3
+qvtrelationcs_ExpCS "0..1" --* "1..1" qvtrelationcs_VarDeclarationCS : ownedInitExpression85
+qvtrelationcs_KeyDeclCS "0..9999" --* "1..1" qvtrelationcs_TransformationCS : ownedKeyDecls71
+qvtrelationcs_CollectionTemplateCS "1..1" *-- "1..9999" qvtrelationcs_TemplateVariableCS : ownedMemberIdentifiers0
+qvtrelationcs_ModelDeclCS "0..9999" --* "1..1" qvtrelationcs_TransformationCS : ownedModelDecls66
+qvtrelationcs_PathNameCS "0..1" --* "1..1" qvtrelationcs_PropertyTemplateCS : ownedOppositePropertyId37
+qvtrelationcs_KeyDeclCS "1..1" *-- "0..9999" qvtrelationcs_PathNameCS : ownedOppositePropertyIds23
+qvtrelationcs_ParamDeclarationCS "0..9999" --* "1..1" qvtrelationcs_QueryCS : ownedParameters43
+qvtrelationcs_KeyDeclCS "1..1" *-- "0..1" qvtrelationcs_PathNameCS : ownedPathName20
+qvtrelationcs_PathNameCS "0..1" --* "1..1" qvtrelationcs_TransformationCS : ownedPathName74
+qvtrelationcs_DomainCS "1..1" *-- "0..9999" qvtrelationcs_DomainPatternCS : ownedPattern7
+qvtrelationcs_PatternCS "1..1" *-- "1..9999" qvtrelationcs_PredicateCS : ownedPredicates30
+qvtrelationcs_ObjectTemplateCS "1..1" *-- "0..9999" qvtrelationcs_PropertyTemplateCS : ownedPropertyTemplates29
+qvtrelationcs_QueryCS "0..9999" --* "1..1" qvtrelationcs_TransformationCS : ownedQueries77
+qvtrelationcs_RelationCS "0..9999" --* "1..1" qvtrelationcs_TransformationCS : ownedRelations80
+qvtrelationcs_CollectionTemplateCS "1..1" *-- "0..1" qvtrelationcs_ElementTemplateCS : ownedRestIdentifier1
+qvtrelationcs_DomainPatternCS "1..1" *-- "0..1" qvtrelationcs_TemplateCS : ownedTemplate15
+qvtrelationcs_TopLevelCS "1..1" *-- "0..9999" qvtrelationcs_TransformationCS : ownedTransformations64
+qvtrelationcs_TemplateVariableCS "1..1" *-- "0..1" qvtrelationcs_TypedRefCS : ownedType61
+qvtrelationcs_TypedRefCS "0..1" --* "1..1" qvtrelationcs_VarDeclarationCS : ownedType88
+qvtrelationcs_VarDeclarationCS "1..1" *-- "0..9999" qvtrelationcs_VarDeclarationIdCS : ownedVarDeclarationIds91
+qvtrelationcs_RelationCS "1..1" *-- "0..9999" qvtrelationcs_VarDeclarationCS : ownedVarDeclarations48
+qvtrelationcs_PatternCS "0..1" --* "1..1" qvtrelationcs_RelationCS : ownedWhen52
+qvtrelationcs_PatternCS "0..1" --* "1..1" qvtrelationcs_RelationCS : ownedWhere55
+qvtrelationcs_ObjectTemplateCS "0..1" -- "1..1" qvtrelationcs_PropertyTemplateCS : owningObjectTemplate34
+qvtrelationcs_Property "0..1" -- "1..1" qvtrelationcs_PropertyTemplateCS : propertyId35
+qvtrelationcs_DefaultValueCS "1..1" -- "1..1" qvtrelationcs_Variable : propertyId4
+qvtrelationcs_KeyDeclCS "1..1" -- "0..9999" qvtrelationcs_Property : propertyIds21
+@enduml

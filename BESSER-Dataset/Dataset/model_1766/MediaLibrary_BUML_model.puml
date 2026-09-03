@@ -1,0 +1,91 @@
+@startuml
+class Artifact {
+}
+class Device {
+}
+class DurationArtifact {
+}
+abstract class MediaLibrary_Artifact {
+}
+class MediaLibrary_AudioBook {
+}
+class MediaLibrary_Computer {
+}
+abstract class MediaLibrary_Device {
+}
+abstract class MediaLibrary_DurationArtifact {
+  + duration : int
+}
+class MediaLibrary_EReader {
+  + audioEnabled : str
+  + videoEnabled : str
+}
+class MediaLibrary_Ebook {
+}
+class MediaLibrary_Ecosystem {
+}
+class MediaLibrary_ExternalSource {
+  + sourceType : str
+}
+class MediaLibrary_Image {
+}
+class MediaLibrary_Library {
+}
+class MediaLibrary_MediaCollection {
+}
+abstract class MediaLibrary_MediaSource {
+}
+class MediaLibrary_MusicTrack {
+}
+abstract class MediaLibrary_NamedElement {
+  + name : str
+}
+class MediaLibrary_Smartphone {
+}
+class MediaLibrary_Store {
+}
+class MediaLibrary_Tablet {
+}
+class MediaLibrary_Video {
+}
+class MediaSource {
+}
+class NamedElement {
+}
+enum SourceType {
+  CASSETTE
+  CD
+  DVD
+  HDD
+  OTHER
+  VHS
+}
+Artifact <|-- MediaLibrary_DurationArtifact
+Artifact <|-- MediaLibrary_Ebook
+Artifact <|-- MediaLibrary_Image
+Device <|-- MediaLibrary_Computer
+Device <|-- MediaLibrary_EReader
+Device <|-- MediaLibrary_Smartphone
+Device <|-- MediaLibrary_Tablet
+DurationArtifact <|-- MediaLibrary_AudioBook
+DurationArtifact <|-- MediaLibrary_MusicTrack
+DurationArtifact <|-- MediaLibrary_Video
+MediaSource <|-- MediaLibrary_ExternalSource
+MediaSource <|-- MediaLibrary_Store
+NamedElement <|-- MediaLibrary_Artifact
+NamedElement <|-- MediaLibrary_Device
+NamedElement <|-- MediaLibrary_Library
+NamedElement <|-- MediaLibrary_MediaCollection
+NamedElement <|-- MediaLibrary_MediaSource
+MediaLibrary_Device "1..1" -- "0..9999" MediaLibrary_MediaCollection : collections13
+MediaLibrary_Library "1..1" *-- "0..9999" MediaLibrary_MediaCollection : collections5
+MediaLibrary_Artifact "0..9999" -- "1..1" MediaLibrary_MediaSource : contents16
+MediaLibrary_Device "1..9999" --* "1..1" MediaLibrary_Ecosystem : devices1
+MediaLibrary_Device "1..1" -- "1..1" MediaLibrary_MediaCollection : host9
+MediaLibrary_Device "1..1" -- "0..9999" MediaLibrary_MediaCollection : hostOf12
+MediaLibrary_Ecosystem "1..1" *-- "1..9999" MediaLibrary_Library : libraries0
+MediaLibrary_Ecosystem "1..1" *-- "1..9999" MediaLibrary_MediaSource : mediaSources3
+MediaLibrary_Artifact "1..9999" --* "1..1" MediaLibrary_MediaCollection : members7
+MediaLibrary_Artifact "1..1" -- "1..1" MediaLibrary_MediaSource : origin15
+MediaLibrary_Device "1..9999" -- "1..1" MediaLibrary_MediaCollection : syncedDevices10
+@enduml

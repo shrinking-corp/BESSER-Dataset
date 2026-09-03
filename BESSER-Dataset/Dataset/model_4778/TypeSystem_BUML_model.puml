@@ -1,0 +1,146 @@
+@startuml
+class ArrayType {
+}
+class DataType {
+}
+class Expression {
+}
+class Literal {
+}
+class NumericLiteral {
+}
+class NumericType {
+}
+enum OperatorKind {
+  Add
+  Divide
+  ElementWiseDivide
+  ElementWiseMultiply
+  ElementWisePower
+  EqualTo
+  GreaterThan
+  GreaterThanOrEqualTo
+  Implies
+  LessThan
+  LessThanOrEqualTo
+  LogicalAnd
+  LogicalNot
+  LogicalOr
+  Multiply
+  Negate
+  NotEqualTo
+  Power
+  Root
+  Subtract
+  Transpose
+}
+class PrimitiveType {
+}
+class UnitProduct {
+}
+class typesystem_AnyDataType {
+}
+class typesystem_ArrayDimension {
+}
+class typesystem_ArrayType {
+  + dimensional : bool
+  + dimensionality : int
+  + multidimensional : bool
+}
+class typesystem_BooleanLiteral {
+  + true : bool
+}
+class typesystem_BooleanType {
+}
+class typesystem_ComplexType {
+}
+abstract class typesystem_DataType {
+  + evaluate(typesystem_n : str, typesystem_operator : str) : str
+  + isAssignableFrom(typesystem_other : str) : bool
+  + isEquivalentTo(typesystem_other : str) : bool
+}
+class typesystem_Expression {
+}
+class typesystem_GaussianType {
+}
+class typesystem_IntegerLiteral {
+  + value : str
+}
+class typesystem_IntegerType {
+}
+class typesystem_InvalidDataType {
+}
+class typesystem_Literal {
+}
+class typesystem_NumericLiteral {
+  + modifier : str
+}
+class typesystem_NumericType {
+}
+class typesystem_PrimitiveType {
+}
+class typesystem_RealLiteral {
+  + value : float
+}
+class typesystem_RealType {
+}
+class typesystem_StringLiteral {
+  + value : str
+}
+class typesystem_StringType {
+}
+class typesystem_TensorType {
+  + matrix : bool
+  + vector : bool
+}
+class typesystem_Unit {
+  + scale : int
+  + wildcard : bool
+  + evaluate(typesystem_n : str, typesystem_operator : str) : str
+  + getNormalized() : str
+  + isEquivalentTo(typesystem_ignoreScale : str, typesystem_other : str) : bool
+}
+class typesystem_UnitDenominator {
+}
+class typesystem_UnitFactor {
+  + exponent : int
+  + symbol : str
+}
+class typesystem_UnitNumerator {
+}
+abstract class typesystem_UnitProduct {
+  + getFactor(typesystem_symbol : str) : str
+}
+class typesystem_UnitType {
+}
+ArrayType <|-- typesystem_TensorType
+DataType <|-- typesystem_AnyDataType
+DataType <|-- typesystem_ArrayType
+DataType <|-- typesystem_InvalidDataType
+DataType <|-- typesystem_PrimitiveType
+DataType <|-- typesystem_UnitType
+Expression <|-- typesystem_Literal
+Literal <|-- typesystem_BooleanLiteral
+Literal <|-- typesystem_NumericLiteral
+Literal <|-- typesystem_StringLiteral
+NumericLiteral <|-- typesystem_IntegerLiteral
+NumericLiteral <|-- typesystem_RealLiteral
+NumericType <|-- typesystem_ComplexType
+NumericType <|-- typesystem_GaussianType
+NumericType <|-- typesystem_IntegerType
+NumericType <|-- typesystem_RealType
+PrimitiveType <|-- typesystem_BooleanType
+PrimitiveType <|-- typesystem_NumericType
+PrimitiveType <|-- typesystem_StringType
+UnitProduct <|-- typesystem_UnitDenominator
+UnitProduct <|-- typesystem_UnitNumerator
+typesystem_ArrayType "1..1" *-- "0..1" typesystem_DataType : definedElementType2
+typesystem_Unit "1..1" *-- "0..1" typesystem_UnitDenominator : denominator11
+typesystem_ArrayDimension "0..9999" --* "1..1" typesystem_ArrayType : dimensions5
+typesystem_ArrayType "1..1" -- "0..1" typesystem_DataType : elementType1
+typesystem_UnitFactor "0..9999" --* "1..1" typesystem_UnitProduct : factors13
+typesystem_Unit "1..1" *-- "0..1" typesystem_UnitNumerator : numerator9
+typesystem_ArrayDimension "1..1" *-- "0..1" typesystem_Expression : size7
+typesystem_NumericType "1..1" *-- "1..1" typesystem_Unit : unit0
+typesystem_NumericLiteral "1..1" *-- "1..1" typesystem_Unit : unit14
+@enduml

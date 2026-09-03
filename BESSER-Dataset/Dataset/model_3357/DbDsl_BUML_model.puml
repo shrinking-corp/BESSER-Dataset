@@ -1,0 +1,32 @@
+@startuml
+class AbstractDataType {
+}
+class Root {
+}
+class dbDsl_AbstractColumnMapper {
+}
+class dbDsl_AbstractDataType {
+}
+class dbDsl_CharType {
+}
+class dbDsl_Column {
+  + name : str
+}
+class dbDsl_Database {
+  + name : str
+}
+class dbDsl_NumberType {
+}
+class dbDsl_Root {
+}
+class dbDsl_Table {
+  + name : str
+}
+AbstractDataType <|-- dbDsl_CharType
+AbstractDataType <|-- dbDsl_NumberType
+Root <|-- dbDsl_Database
+dbDsl_Column "0..9999" --* "1..1" dbDsl_Table : columns1
+dbDsl_AbstractColumnMapper "0..1" --* "1..1" dbDsl_Column : mapper5
+dbDsl_Database "1..1" *-- "0..9999" dbDsl_Table : tables0
+dbDsl_AbstractDataType "0..1" --* "1..1" dbDsl_Column : type3
+@enduml

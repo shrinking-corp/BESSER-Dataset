@@ -1,0 +1,82 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Camera {
+  + CameraID : int
+}
+class Door {
+  + DoorID : int
+}
+class Door_Sensor {
+}
+class Entertainment {
+  + DeviceID : int
+}
+class Evening {
+  + Night : int
+}
+class FireAlarm_Sensor {
+  + SmokeAlarm : bool
+}
+class HomeTheatre {
+  + HTID : str
+}
+class Home_Security_System {
+  + UserID : int
+}
+class Light {
+  + LightID : str
+}
+class Morning {
+  + Morn : int
+}
+class Motion_Sensor {
+}
+class MyHome {
+  + Alarm : str
+  + Coffee : str
+  + DishWasher : str
+  + TimeID : str
+  + WashingMachine : str
+}
+class Newsfeed {
+  + Calendar : str
+  + Email : str
+  + News : str
+  + TimeID : str
+  + weather : str
+}
+class Radio {
+  + RadioID : int
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class System___mirror {
+  + Display_feed : Newsfeed
+  + PhoneConnect : bool
+  + Status : bool
+  + Update : float
+  + security : Home_Security_System
+}
+class TV {
+  + TVID : int
+}
+Camera "0..9999" -- "1..1" Door : Door_Camera
+Entertainment "1..1" -- "1..9999" HomeTheatre : HomeTheatre_Entertainment
+HomeTheatre "1..9999" -- "0..1" Radio : HomeTheatre_Speakers
+HomeTheatre "0..1" -- "1..1" System___mirror : HomeTheatre_System
+HomeTheatre "1..9999" -- "1..1" TV : HomeTheatre_TV
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" System___mirror : Home_Security_System_System
+Evening "0..1" -- "0..1" MyHome : HouseHolds_End_Of_Day
+Morning "0..1" -- "0..1" MyHome : HouseHolds_Start_Of_Day
+Door "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" System___mirror : Sensor_System
+Entertainment "1..1" -- "1..9999" Radio : Speakers_Entertainment
+MyHome "0..1" -- "1..1" System___mirror : System_HouseHolds
+Newsfeed "0..1" -- "1..1" System___mirror : System___mirror_Newsfeed
+Entertainment "1..1" -- "1..9999" TV : TV_Entertainment
+@enduml

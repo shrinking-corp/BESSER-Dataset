@@ -1,0 +1,26 @@
+@startuml
+class tdt4250_Course {
+  + code : str
+  + level : str
+  + name : str
+  + study_points : float
+}
+class tdt4250_Specialisation {
+  + name : str
+}
+class tdt4250_Student {
+  + current_semester : int
+  + studentID : int
+}
+class tdt4250_StudyProgram {
+  + name : str
+  + number_of_semesters : int
+}
+tdt4250_Course "0..9999" -- "1..1" tdt4250_Student : courses5
+tdt4250_Course "0..9999" -- "1..1" tdt4250_Specialisation : elective_courses14
+tdt4250_Course "0..9999" -- "1..1" tdt4250_Specialisation : obligatory_courses11
+tdt4250_Course "0..9999" -- "1..1" tdt4250_StudyProgram : obligatory_courses3
+tdt4250_Specialisation "0..10" --* "1..1" tdt4250_StudyProgram : specialisations1
+tdt4250_Student "0..9999" -- "1..1" tdt4250_StudyProgram : students0
+tdt4250_Specialisation "1..1" *-- "0..9999" tdt4250_Student : students8
+@enduml

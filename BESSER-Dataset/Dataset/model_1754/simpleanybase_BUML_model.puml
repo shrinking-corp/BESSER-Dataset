@@ -1,0 +1,24 @@
+@startuml
+class simpleany_BookType {
+  + author : str
+  + name : str
+  + title : str
+}
+class simpleany_Description {
+  + keyword : str
+  + mixed : str
+}
+class simpleany_DocumentRoot {
+  + mixed : str
+}
+class simpleany_EStringToStringMapEntry {
+}
+class simpleany_LibraryType {
+}
+simpleany_BookType "0..9999" --* "1..1" simpleany_LibraryType : book10
+simpleany_BookType "1..1" *-- "0..1" simpleany_Description : description0
+simpleany_Description "0..9999" --* "1..1" simpleany_Description : description2
+simpleany_DocumentRoot "1..1" *-- "0..9999" simpleany_LibraryType : library8
+simpleany_DocumentRoot "1..1" *-- "0..9999" simpleany_EStringToStringMapEntry : xMLNSPrefixMap4
+simpleany_DocumentRoot "1..1" *-- "0..9999" simpleany_EStringToStringMapEntry : xSISchemaLocation5
+@enduml

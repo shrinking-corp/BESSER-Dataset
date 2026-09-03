@@ -1,0 +1,202 @@
+@startuml
+class DSL_Expression {
+}
+class DSL_REF {
+}
+class sensinact_DSL_CEP_AFTER {
+}
+class sensinact_DSL_CEP_AVG {
+}
+class sensinact_DSL_CEP_BEFORE {
+}
+class sensinact_DSL_CEP_COINCIDE {
+}
+class sensinact_DSL_CEP_COUNT {
+}
+class sensinact_DSL_CEP_DURATION {
+}
+class sensinact_DSL_CEP_DURATION_MIN {
+  + min : str
+}
+class sensinact_DSL_CEP_DURATION_SEC {
+  + sec : str
+}
+class sensinact_DSL_CEP_MAX {
+}
+class sensinact_DSL_CEP_MIN {
+}
+class sensinact_DSL_CEP_STATEMENT {
+}
+class sensinact_DSL_CEP_SUM {
+}
+class sensinact_DSL_ECA_STATEMENT {
+}
+class sensinact_DSL_ElseDo {
+}
+class sensinact_DSL_ElseIfDo {
+}
+class sensinact_DSL_Expression {
+}
+class sensinact_DSL_Expression_And {
+}
+class sensinact_DSL_Expression_Diff {
+}
+class sensinact_DSL_Expression_Division {
+}
+class sensinact_DSL_Expression_Equal {
+}
+class sensinact_DSL_Expression_Larger {
+}
+class sensinact_DSL_Expression_Larger_Equal {
+}
+class sensinact_DSL_Expression_Minus {
+}
+class sensinact_DSL_Expression_Modulo {
+}
+class sensinact_DSL_Expression_Multiplication {
+}
+class sensinact_DSL_Expression_Negate {
+}
+class sensinact_DSL_Expression_Or {
+}
+class sensinact_DSL_Expression_Plus {
+}
+class sensinact_DSL_Expression_Smaller {
+}
+class sensinact_DSL_Expression_Smaller_Equal {
+}
+class sensinact_DSL_FLAG_AUTOSTART {
+  + activated : bool
+}
+class sensinact_DSL_IfDo {
+}
+class sensinact_DSL_ListActions {
+}
+class sensinact_DSL_ListParam {
+}
+class sensinact_DSL_Object_Boolean {
+  + value : bool
+}
+class sensinact_DSL_Object_Number {
+  + value : str
+}
+class sensinact_DSL_Object_Ref {
+}
+class sensinact_DSL_Object_String {
+  + value : str
+}
+class sensinact_DSL_On {
+}
+class sensinact_DSL_REF {
+  + name : str
+}
+class sensinact_DSL_REF_CONDITION {
+}
+class sensinact_DSL_Resource {
+  + deviceID : str
+  + gatewayID : str
+  + resourceID : str
+  + serviceID : str
+}
+class sensinact_DSL_ResourceAction {
+  + actiontype : str
+  + variable : str
+}
+class sensinact_DSL_SENSINACT {
+}
+class sensinact_EObject {
+}
+class sensinact_Sensinact {
+}
+DSL_Expression <|-- sensinact_DSL_Expression_And
+DSL_Expression <|-- sensinact_DSL_Expression_Diff
+DSL_Expression <|-- sensinact_DSL_Expression_Division
+DSL_Expression <|-- sensinact_DSL_Expression_Equal
+DSL_Expression <|-- sensinact_DSL_Expression_Larger
+DSL_Expression <|-- sensinact_DSL_Expression_Larger_Equal
+DSL_Expression <|-- sensinact_DSL_Expression_Minus
+DSL_Expression <|-- sensinact_DSL_Expression_Modulo
+DSL_Expression <|-- sensinact_DSL_Expression_Multiplication
+DSL_Expression <|-- sensinact_DSL_Expression_Negate
+DSL_Expression <|-- sensinact_DSL_Expression_Or
+DSL_Expression <|-- sensinact_DSL_Expression_Plus
+DSL_Expression <|-- sensinact_DSL_Expression_Smaller
+DSL_Expression <|-- sensinact_DSL_Expression_Smaller_Equal
+DSL_Expression <|-- sensinact_DSL_Object_Boolean
+DSL_Expression <|-- sensinact_DSL_Object_Number
+DSL_Expression <|-- sensinact_DSL_Object_Ref
+DSL_Expression <|-- sensinact_DSL_Object_String
+DSL_REF <|-- sensinact_DSL_CEP_STATEMENT
+DSL_REF <|-- sensinact_DSL_Resource
+sensinact_DSL_ListActions "1..1" *-- "0..9999" sensinact_DSL_ResourceAction : actionList93
+sensinact_DSL_IfDo "1..1" *-- "0..1" sensinact_DSL_ListActions : actions21
+sensinact_DSL_ElseIfDo "1..1" *-- "0..1" sensinact_DSL_ListActions : actions26
+sensinact_DSL_ElseDo "1..1" *-- "0..1" sensinact_DSL_ListActions : actions29
+sensinact_DSL_FLAG_AUTOSTART "0..1" --* "1..1" sensinact_DSL_SENSINACT : autostart1
+sensinact_DSL_CEP_STATEMENT "0..9999" --* "1..1" sensinact_DSL_SENSINACT : cep5
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_IfDo : condition19
+sensinact_DSL_ElseIfDo "1..1" *-- "0..1" sensinact_DSL_Expression : condition23
+sensinact_DSL_SENSINACT "0..1" --* "1..1" sensinact_Sensinact : eca0
+sensinact_DSL_ECA_STATEMENT "0..1" --* "1..1" sensinact_DSL_SENSINACT : eca9
+sensinact_DSL_ECA_STATEMENT "1..1" *-- "0..9999" sensinact_DSL_ElseIfDo : elseIfdo15
+sensinact_DSL_ECA_STATEMENT "1..1" *-- "0..1" sensinact_DSL_ElseDo : elsedo17
+sensinact_DSL_CEP_AFTER "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : end43
+sensinact_DSL_CEP_BEFORE "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : end54
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Negate : exp170
+sensinact_DSL_ECA_STATEMENT "1..1" *-- "0..1" sensinact_DSL_IfDo : ifdo13
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Or : left103
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_And : left108
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Diff : left113
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Equal : left118
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Larger : left123
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Larger_Equal : left128
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Smaller : left133
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Smaller_Equal : left138
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Plus : left143
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Minus : left148
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Multiplication : left153
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Division : left158
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Modulo : left163
+sensinact_DSL_ListParam "0..1" --* "1..1" sensinact_DSL_ResourceAction : listParam98
+sensinact_DSL_On "0..1" --* "1..1" sensinact_DSL_SENSINACT : on7
+sensinact_DSL_CEP_STATEMENT "1..1" *-- "0..1" sensinact_EObject : operation34
+sensinact_DSL_Expression "0..9999" --* "1..1" sensinact_DSL_ListParam : param100
+sensinact_DSL_CEP_AFTER "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref136
+sensinact_DSL_CEP_BEFORE "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref146
+sensinact_DSL_CEP_COINCIDE "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref157
+sensinact_DSL_CEP_AFTER "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref238
+sensinact_DSL_CEP_BEFORE "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref248
+sensinact_DSL_CEP_COINCIDE "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref259
+sensinact_DSL_REF "0..1" -- "1..1" sensinact_DSL_REF_CONDITION : ref32
+sensinact_DSL_CEP_MIN "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref65
+sensinact_DSL_CEP_MAX "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref70
+sensinact_DSL_CEP_AVG "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref75
+sensinact_DSL_CEP_SUM "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref80
+sensinact_DSL_CEP_COUNT "1..1" *-- "0..1" sensinact_DSL_REF_CONDITION : ref85
+sensinact_DSL_REF "0..1" -- "1..1" sensinact_DSL_ResourceAction : ref95
+sensinact_DSL_Resource "0..9999" --* "1..1" sensinact_DSL_SENSINACT : resources3
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Or : right105
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_And : right110
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Diff : right115
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Equal : right120
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Larger : right125
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Larger_Equal : right130
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Smaller : right135
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Smaller_Equal : right140
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Plus : right145
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Minus : right150
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Multiplication : right155
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Division : right160
+sensinact_DSL_Expression "0..1" --* "1..1" sensinact_DSL_Expression_Modulo : right165
+sensinact_DSL_CEP_AFTER "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : start41
+sensinact_DSL_CEP_BEFORE "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : start51
+sensinact_DSL_On "1..1" *-- "0..9999" sensinact_DSL_REF_CONDITION : triggers11
+sensinact_DSL_CEP_DURATION "1..1" *-- "0..9999" sensinact_EObject : units90
+sensinact_DSL_Object_Ref "1..1" -- "0..1" sensinact_DSL_REF : value168
+sensinact_DSL_CEP_COINCIDE "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : window62
+sensinact_DSL_CEP_DURATION "0..1" --* "1..1" sensinact_DSL_CEP_MIN : window67
+sensinact_DSL_CEP_DURATION "0..1" --* "1..1" sensinact_DSL_CEP_MAX : window72
+sensinact_DSL_CEP_AVG "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : window77
+sensinact_DSL_CEP_DURATION "0..1" --* "1..1" sensinact_DSL_CEP_SUM : window82
+sensinact_DSL_CEP_COUNT "1..1" *-- "0..1" sensinact_DSL_CEP_DURATION : window87
+@enduml

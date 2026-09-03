@@ -1,0 +1,45 @@
+@startuml
+class Account {
+  + Branch : str
+  + Department : str
+  + class : str
+  + email : str
+  + name : str
+  + password : str
+}
+class Admin {
+}
+class Alumni {
+  + Report : Message
+  + _F : Friend
+  + __M : Message
+}
+class Friend {
+  + acceptornot : bool
+  + friend____ : str
+}
+class HomePage {
+  + __friendpost : HomePage
+}
+class Message {
+  + message : str
+  + reciver : str
+  + sender : str
+}
+class Student {
+  + Report : Message
+  + _F : Friend
+  + __M : Message
+}
+Account "0..1" -- "0..1" Admin : Account_Admin
+Account "0..1" -- "0..1" Alumni : Account_Alumni
+Admin "0..1" -- "0..1" Alumni : Alumni_Admin
+Alumni "0..1" -- "0..1" HomePage : Alumni_HomePage
+Alumni "0..1" -- "0..1" Message : Alumni_Message
+Admin "0..1" -- "0..1" HomePage : HomePage_Admin
+Admin "0..1" -- "0..1" Message : Message_Admin
+Admin "0..1" -- "0..1" Student : Student_Admin
+Friend "0..1" -- "0..1" Student : User_Friend
+HomePage "0..1" -- "0..1" Student : User_HomePage
+Message "0..1" -- "0..1" Student : User_Message
+@enduml

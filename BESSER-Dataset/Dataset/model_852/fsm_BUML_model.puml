@@ -1,0 +1,18 @@
+@startuml
+class FSM_State {
+  + isAccepting : bool
+  + name : str
+}
+class FSM_StateMachine {
+  + name : str
+}
+class FSM_Transition {
+  + input : str
+}
+FSM_State "1..1" -- "0..9999" FSM_Transition : incoming5
+FSM_State "1..1" *-- "0..9999" FSM_Transition : outgoing4
+FSM_State "1..1" -- "1..1" FSM_Transition : source7
+FSM_State "1..1" -- "1..1" FSM_StateMachine : startState1
+FSM_State "0..9999" --* "1..1" FSM_StateMachine : states0
+FSM_State "0..1" -- "1..1" FSM_Transition : target8
+@enduml

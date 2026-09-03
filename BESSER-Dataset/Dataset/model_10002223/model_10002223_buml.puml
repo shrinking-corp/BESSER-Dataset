@@ -1,0 +1,33 @@
+@startuml
+class DaysAttended {
+  + Additional_hours__ : str
+  + Emp_BasicSalary : str
+  + Emp_Id : str
+}
+class Employee {
+  + Emp_FName : str
+  + Emp_Id : str
+  + Emp_Name : str
+}
+class Login {
+  + Password : str
+  + User_Name : str
+}
+class Salary {
+  + Bonus__ : str
+  + Days_attended : int
+  + Emp_Id : str
+  + Net_Salary : str
+}
+class Work_days {
+  + Days_Attended : int
+  + _No__of_working_days_ : int
+}
+DaysAttended "1..1" -- "1..1" Salary : DaysAttended_Salary
+DaysAttended "0..9999" -- "0..9999" Work_days : DaysAttended_Work_days
+DaysAttended "0..9999" -- "1..1" Employee : Employee_DaysAttended
+Employee "1..1" -- "1..1" Salary : Employee_Salary
+Employee "0..9999" -- "1..1" Salary : Employee_Salary2
+Employee "0..9999" -- "1..1" Login : Login_Employee
+Salary "0..9999" -- "0..9999" Work_days : Work_days_Salary
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class NamedElement {
+}
+class yye_Alias {
+  + id : str
+}
+class yye_Base {
+  + id : int
+}
+class yye_Foo {
+  + id : str
+}
+abstract class yye_NamedElement {
+  + name : str
+}
+class yye_Relation {
+  + since : str
+}
+NamedElement <|-- yye_Base
+NamedElement <|-- yye_Relation
+yye_Alias "0..9999" --* "1..1" yye_NamedElement : aliases2
+yye_Base "1..1" *-- "0..9999" yye_Foo : foos1
+yye_Base "0..1" -- "1..1" yye_Relation : fromThing3
+yye_Base "1..1" *-- "0..9999" yye_Relation : relations0
+yye_Relation "0..9999" --* "1..1" yye_Relation : subRelations7
+yye_Base "0..1" -- "1..1" yye_Relation : toThing4
+@enduml

@@ -1,0 +1,124 @@
+@startuml
+enum Classifier {
+  Class
+  Double
+  Integer
+  String
+}
+class DEVS {
+}
+enum LogicOperators {
+  and_
+  not_
+  or_
+}
+enum MathOperators {
+  divide
+  minus
+  multiple
+  plus
+}
+class Model_AtomicDEVS {
+}
+class Model_ConfTrans {
+}
+class Model_CoupledDEVS {
+}
+abstract class Model_DEVS {
+  + name : str
+}
+class Model_EIC {
+}
+class Model_EOC {
+}
+class Model_Event {
+}
+class Model_Expression {
+  + operator : str
+}
+class Model_ExtTrans {
+}
+class Model_IC {
+}
+class Model_IPort {
+}
+class Model_IntTransition {
+}
+class Model_OPort {
+}
+class Model_Phase {
+  + phaseID : str
+  + timeAdvance : float
+}
+abstract class Model_PhaseTransition {
+}
+abstract class Model_Port {
+  + portId : str
+  + portType : str
+}
+abstract class Model_Predicate {
+}
+class Model_Property {
+}
+class Model_SimplePredicate {
+  + operator : str
+}
+class Model_Variable {
+  + domain : str
+  + name : str
+}
+class PhaseTransition {
+}
+class Port {
+}
+class Predicate {
+}
+enum RelationalOperators {
+  equals
+  greater
+  greater_or_equals
+  lesser
+  lesser_or_equals
+  not_equals
+}
+DEVS <|-- Model_AtomicDEVS
+DEVS <|-- Model_CoupledDEVS
+PhaseTransition <|-- Model_ConfTrans
+PhaseTransition <|-- Model_ExtTrans
+PhaseTransition <|-- Model_IntTransition
+Port <|-- Model_IPort
+Port <|-- Model_OPort
+Predicate <|-- Model_Expression
+Predicate <|-- Model_SimplePredicate
+Model_DEVS "1..1" -- "0..1" Model_DEVS : container1
+Model_AtomicDEVS "1..1" *-- "0..9999" Model_ConfTrans : deltaConf7
+Model_AtomicDEVS "1..1" *-- "0..9999" Model_ExtTrans : deltaExt9
+Model_AtomicDEVS "1..1" *-- "0..9999" Model_IntTransition : deltaInt6
+Model_CoupledDEVS "1..1" *-- "0..9999" Model_EIC : eics17
+Model_CoupledDEVS "1..1" *-- "0..9999" Model_EOC : eocs21
+Model_CoupledDEVS "1..1" *-- "0..9999" Model_IC : ics19
+Model_EIC "1..1" -- "1..1" Model_IPort : influencee28
+Model_IC "1..1" -- "0..1" Model_IPort : influencee34
+Model_EOC "1..1" -- "0..1" Model_OPort : influencee40
+Model_EIC "1..1" -- "1..1" Model_IPort : influencer25
+Model_IC "1..1" -- "0..1" Model_OPort : influencer31
+Model_EOC "1..1" -- "0..1" Model_OPort : influencer37
+Model_ConfTrans "1..1" -- "0..9999" Model_Event : inputs48
+Model_Event "0..9999" -- "1..1" Model_ExtTrans : inputs51
+Model_DEVS "1..1" *-- "0..9999" Model_IPort : iports2
+Model_Expression "1..1" *-- "1..1" Model_Predicate : lhs68
+Model_DEVS "1..1" *-- "0..9999" Model_OPort : oports4
+Model_Event "0..9999" -- "1..1" Model_IntTransition : outputs43
+Model_ConfTrans "1..1" -- "0..9999" Model_Event : outputs45
+Model_DEVS "1..1" -- "1..1" Model_Port : owner23
+Model_AtomicDEVS "1..1" *-- "1..9999" Model_Phase : phases11
+Model_Predicate "1..9999" -- "1..1" Model_Property : predicates59
+Model_Phase "1..1" *-- "1..1" Model_Property : proprty57
+Model_Expression "1..1" *-- "1..1" Model_Predicate : rhs70
+Model_Phase "1..1" -- "1..1" Model_PhaseTransition : sourcePhase61
+Model_AtomicDEVS "1..1" *-- "0..9999" Model_Variable : stateVars13
+Model_CoupledDEVS "1..1" *-- "1..9999" Model_DEVS : subModels15
+Model_Phase "1..1" -- "1..1" Model_PhaseTransition : targetPhase63
+Model_Event "1..1" -- "1..1" Model_Port : targetPort54
+Model_SimplePredicate "1..1" -- "1..1" Model_Variable : variable66
+@enduml

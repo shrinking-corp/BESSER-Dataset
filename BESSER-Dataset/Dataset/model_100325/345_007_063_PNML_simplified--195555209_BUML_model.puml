@@ -1,0 +1,80 @@
+@startuml
+class IdedElement {
+}
+class Label {
+}
+class LabeledElement {
+}
+class LocatedElement {
+}
+class Name {
+}
+class NetContent {
+}
+class NetContentElement {
+}
+class NetElement {
+}
+class PNMLDocument {
+}
+class PNML_Arc {
+}
+abstract class PNML_IdedElement {
+  + id : str
+}
+class PNML_Label {
+  + text : str
+}
+abstract class PNML_LabeledElement {
+}
+abstract class PNML_LocatedElement {
+  + location : str
+}
+class PNML_Name {
+}
+abstract class PNML_NetContent {
+}
+abstract class PNML_NetContentElement {
+}
+class PNML_NetElement {
+}
+class PNML_PNMLDocument {
+}
+class PNML_Place {
+}
+class PNML_Transition {
+}
+class PNML_URI {
+  + value : str
+}
+class URI {
+}
+IdedElement <|-- PNML_Arc
+IdedElement <|-- PNML_NetContentElement
+IdedElement <|-- PNML_NetElement
+LabeledElement <|-- PNML_Name
+LocatedElement <|-- PNML_IdedElement
+LocatedElement <|-- PNML_Label
+LocatedElement <|-- PNML_LabeledElement
+LocatedElement <|-- PNML_NetContent
+LocatedElement <|-- PNML_PNMLDocument
+LocatedElement <|-- PNML_URI
+NetContent <|-- PNML_Arc
+NetContent <|-- PNML_NetContentElement
+NetContentElement <|-- PNML_Place
+NetContentElement <|-- PNML_Transition
+NetContent "0..9999" --* "1..1" PNML_NetElement : contents5
+PNMLDocument "1..1" -- "1..1" PNML_NetElement : document4
+LabeledElement "1..1" -- "1..1" PNML_Label : labeledElement13
+Label "0..9999" --* "1..1" PNML_LabeledElement : labels12
+Name "0..1" --* "1..1" PNML_NetContent : name10
+Name "0..1" --* "1..1" PNML_NetElement : name6
+NetElement "0..1" -- "1..1" PNML_Name : net14
+NetElement "1..1" -- "1..1" PNML_NetContent : net8
+NetContent "0..1" -- "1..1" PNML_Name : netContent16
+NetElement "1..9999" --* "1..1" PNML_PNMLDocument : nets1
+NetContentElement "1..1" -- "1..1" PNML_Arc : source19
+NetContentElement "1..1" -- "1..1" PNML_Arc : target20
+PNML_NetElement "1..1" *-- "1..1" URI : type2
+PNML_PNMLDocument "1..1" *-- "1..1" URI : xmlns0
+@enduml

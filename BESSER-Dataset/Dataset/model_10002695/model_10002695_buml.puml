@@ -1,0 +1,35 @@
+@startuml
+class Account {
+  + Valid_invalid : str
+  + open : date
+}
+class Classes {
+  + Name : str
+  + quantity : str
+}
+class Order {
+  + Items : str
+  + number : str
+}
+class Payment {
+  + Paytment_type : str
+}
+class Product {
+  + description : str
+  + name : str
+}
+class ShoppingCart {
+  + Update_cart : date
+}
+class User {
+  + login : str
+  + password : str
+}
+Account "1..1" -- "0..9999" Order : Account_Order
+Account "1..1" -- "1..1" ShoppingCart : Account_ShoppingCart
+Classes "1..9999" -- "0..1" Order : Order_LineItem
+Order "1..1" -- "0..1" Payment : Payment_Order
+Classes "0..9999" -- "1..1" Product : Product_LineItem
+Classes "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+ShoppingCart "0..1" -- "1..1" User : WebUser_ShoppingCart
+@enduml

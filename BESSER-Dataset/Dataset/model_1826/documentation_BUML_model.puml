@@ -1,0 +1,61 @@
+@startuml
+class Documentation_Book {
+  + title : str
+}
+class Documentation_EmphasisValue {
+  + role : str
+  + value : str
+}
+class Documentation_InformalTableValue {
+}
+class Documentation_InformalTableValueBody {
+}
+class Documentation_InformalTableValueEntry {
+  + value : str
+}
+class Documentation_InformalTableValueGroup {
+  + cols : int
+}
+class Documentation_InformalTableValueHead {
+}
+class Documentation_InformalTableValueRow {
+}
+class Documentation_ItemizedListValue {
+}
+class Documentation_ItemizedListValueItem {
+}
+class Documentation_Paragraph {
+}
+abstract class Documentation_ParagraphValue {
+}
+class Documentation_Section {
+  + title : str
+}
+class Documentation_TextualValue {
+  + value : str
+}
+class Documentation_XRefValue {
+}
+class Paragraph {
+}
+class ParagraphValue {
+}
+Paragraph <|-- Documentation_ItemizedListValueItem
+ParagraphValue <|-- Documentation_EmphasisValue
+ParagraphValue <|-- Documentation_InformalTableValue
+ParagraphValue <|-- Documentation_ItemizedListValue
+ParagraphValue <|-- Documentation_TextualValue
+ParagraphValue <|-- Documentation_XRefValue
+Documentation_Book "1..1" *-- "0..9999" Documentation_Section : content0
+Documentation_InformalTableValueEntry "0..9999" --* "1..1" Documentation_InformalTableValueRow : entry21
+Documentation_ItemizedListValue "1..1" *-- "0..9999" Documentation_ItemizedListValueItem : items8
+Documentation_Section "1..1" -- "1..1" Documentation_XRefValue : linkend9
+Documentation_Paragraph "0..9999" --* "1..1" Documentation_Section : para5
+Documentation_InformalTableValueHead "1..1" *-- "0..9999" Documentation_InformalTableValueRow : rows16
+Documentation_InformalTableValueBody "1..1" *-- "0..9999" Documentation_InformalTableValueRow : rows18
+Documentation_Section "0..9999" --* "1..1" Documentation_Section : section3
+Documentation_InformalTableValueBody "0..1" --* "1..1" Documentation_InformalTableValueGroup : tbody14
+Documentation_InformalTableValue "1..1" *-- "1..1" Documentation_InformalTableValueGroup : tgroup11
+Documentation_InformalTableValueGroup "1..1" *-- "0..1" Documentation_InformalTableValueHead : thead12
+Documentation_Paragraph "1..1" *-- "0..9999" Documentation_ParagraphValue : values1
+@enduml

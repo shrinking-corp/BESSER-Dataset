@@ -1,0 +1,23 @@
+@startuml
+class Expression {
+}
+class expression_BinaryExpression {
+}
+abstract class expression_Expression {
+  + calculatedValue : float
+}
+class expression_ExpressionStatement {
+}
+class expression_IntegerExpression {
+  + value : float
+}
+class expression_UnaryExpression {
+}
+Expression <|-- expression_BinaryExpression
+Expression <|-- expression_IntegerExpression
+Expression <|-- expression_UnaryExpression
+expression_Expression "0..1" --* "1..1" expression_UnaryExpression : expression4
+expression_Expression "1..1" --* "1..1" expression_ExpressionStatement : expression6
+expression_BinaryExpression "1..1" *-- "1..1" expression_Expression : leftSide0
+expression_BinaryExpression "1..1" *-- "1..1" expression_Expression : rightSide1
+@enduml

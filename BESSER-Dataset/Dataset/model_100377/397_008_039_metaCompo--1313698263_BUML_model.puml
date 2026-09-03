@@ -1,0 +1,52 @@
+@startuml
+enum mIO {
+  in_
+  inout
+  out
+}
+class metaCompo_mComp {
+  + name : str
+  + type : str
+}
+class metaCompo_mFSM {
+  + name : str
+}
+class metaCompo_mPort {
+  + io : str
+  + name : str
+  + type : str
+}
+class metaCompo_mState {
+  + name : str
+}
+class metaCompo_mTransition {
+  + action : str
+  + guard : str
+  + name : str
+  + triggerExp : str
+}
+class metaCompo_mVariable {
+  + name : str
+  + type : str
+}
+metaCompo_mComp "1..1" *-- "1..9999" metaCompo_mFSM : FSMs4
+metaCompo_mComp "1..1" *-- "0..9999" metaCompo_mVariable : compVar5
+metaCompo_mComp "1..1" -- "1..1" metaCompo_mFSM : component13
+metaCompo_mPort "1..1" -- "0..1" metaCompo_mVariable : connToVar10
+metaCompo_mPort "0..1" -- "1..1" metaCompo_mPort : connectedTo8
+metaCompo_mState "1..1" -- "1..1" metaCompo_mTransition : destination35
+metaCompo_mFSM "1..1" -- "0..1" metaCompo_mState : finalState19
+metaCompo_mFSM "1..1" *-- "0..9999" metaCompo_mVariable : fsmVar14
+metaCompo_mState "1..1" -- "0..9999" metaCompo_mTransition : incomingTransitions28
+metaCompo_mFSM "1..1" -- "1..1" metaCompo_mState : initialState17
+metaCompo_mState "1..1" *-- "0..9999" metaCompo_mTransition : outgoingTransitions27
+metaCompo_mFSM "1..1" -- "1..1" metaCompo_mState : owningFSM22
+metaCompo_mComp "1..1" *-- "0..9999" metaCompo_mPort : ports2
+metaCompo_mState "1..1" -- "1..1" metaCompo_mTransition : source33
+metaCompo_mState "1..1" *-- "0..9999" metaCompo_mVariable : stateVar24
+metaCompo_mFSM "1..1" *-- "0..9999" metaCompo_mState : states16
+metaCompo_mComp "1..1" *-- "0..9999" metaCompo_mComp : subComps1
+metaCompo_mState "0..9999" --* "1..1" metaCompo_mState : subStates31
+metaCompo_mTransition "1..1" -- "0..9999" metaCompo_mVariable : trigerringVar37
+metaCompo_mPort "0..9999" -- "1..1" metaCompo_mTransition : triggeringPort39
+@enduml

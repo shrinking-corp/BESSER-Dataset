@@ -1,0 +1,134 @@
+@startuml
+class Collection {
+}
+class FloatingPoint {
+}
+class Int {
+}
+class OpenDDSLib {
+}
+class SignedInt {
+}
+class Simple {
+}
+class Type {
+}
+class UnsignedInt {
+}
+class types_Array {
+}
+class types_Boolean {
+}
+class types_Branch {
+}
+class types_Case {
+  + literal : str
+}
+class types_Char {
+}
+abstract class types_Collection {
+  + length : str
+}
+class types_DataLib {
+}
+class types_Double {
+}
+class types_Enum {
+  + literals : str
+  + name : str
+}
+class types_Field {
+  + name : str
+}
+class types_Float {
+}
+abstract class types_FloatingPoint {
+}
+abstract class types_Int {
+}
+class types_Key {
+}
+class types_Long {
+}
+class types_LongDouble {
+}
+class types_LongLong {
+}
+class types_Octet {
+}
+class types_Sequence {
+}
+class types_Short {
+}
+abstract class types_SignedInt {
+}
+abstract class types_Simple {
+}
+class types_String {
+}
+class types_Struct {
+  + isDcpsDataType : bool
+  + name : str
+}
+abstract class types_Type {
+}
+class types_Typedef {
+  + name : str
+}
+class types_ULong {
+}
+class types_ULongLong {
+}
+class types_UShort {
+}
+class types_Union {
+  + name : str
+}
+abstract class types_UnsignedInt {
+}
+class types_WChar {
+}
+class types_WString {
+}
+Collection <|-- types_Array
+Collection <|-- types_Sequence
+Collection <|-- types_String
+Collection <|-- types_WString
+FloatingPoint <|-- types_Double
+FloatingPoint <|-- types_Float
+FloatingPoint <|-- types_LongDouble
+Int <|-- types_SignedInt
+Int <|-- types_UnsignedInt
+OpenDDSLib <|-- types_DataLib
+SignedInt <|-- types_Long
+SignedInt <|-- types_LongLong
+SignedInt <|-- types_Short
+Simple <|-- types_Boolean
+Simple <|-- types_Char
+Simple <|-- types_Enum
+Simple <|-- types_FloatingPoint
+Simple <|-- types_Int
+Simple <|-- types_Octet
+Simple <|-- types_WChar
+Type <|-- types_Collection
+Type <|-- types_Simple
+Type <|-- types_Struct
+Type <|-- types_Typedef
+Type <|-- types_Union
+UnsignedInt <|-- types_ULong
+UnsignedInt <|-- types_ULongLong
+UnsignedInt <|-- types_UShort
+types_Branch "1..9999" --* "1..1" types_Union : branches18
+types_Branch "1..1" *-- "1..9999" types_Case : cases2
+types_Field "0..1" --* "1..1" types_Union : default23
+types_Branch "1..1" *-- "1..1" types_Field : field1
+types_Field "1..1" -- "1..1" types_Key : field7
+types_Field "1..9999" --* "1..1" types_Struct : fields11
+types_Key "0..9999" --* "1..1" types_Struct : keys13
+types_Array "1..1" -- "1..1" types_Type : subtype0
+types_Sequence "1..1" -- "1..1" types_Type : subtype9
+types_Type "1..1" -- "1..1" types_Union : switch20
+types_Type "1..1" -- "1..1" types_Typedef : type16
+types_Field "1..1" -- "1..1" types_Type : type4
+types_DataLib "1..1" *-- "0..9999" types_Type : types26
+@enduml

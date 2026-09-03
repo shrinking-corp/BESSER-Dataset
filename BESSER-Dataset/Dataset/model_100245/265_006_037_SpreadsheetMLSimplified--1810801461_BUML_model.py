@@ -133,7 +133,7 @@ gen_BooleanValue_ValueType = Generalization(general=ValueType, specific=BooleanV
 
 # Domain Model
 domain_model = DomainModel(
-    name="",
+    name="SpreadsheetMLSimplified",
     types={Workbook, Worksheet, Table, Column, Row, ColOrRowElement, Cell, TableElement, ErrorValue, Data, ValueType, NumberValue, StringValue, BooleanValue},
     associations={worksheets0, rows5, table1, columns3, cells7, data9, value11},
     generalizations={gen_Cell_TableElement, gen_Column_ColOrRowElement, gen_Row_ColOrRowElement, gen_ColOrRowElement_TableElement, gen_ErrorValue_ValueType, gen_NumberValue_ValueType, gen_StringValue_ValueType, gen_BooleanValue_ValueType},

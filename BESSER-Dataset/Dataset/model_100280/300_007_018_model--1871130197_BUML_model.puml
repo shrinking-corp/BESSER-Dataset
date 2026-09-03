@@ -1,0 +1,195 @@
+@startuml
+class Annotation {
+}
+class CPNToolsTransitionAddin {
+}
+class HLAnnotation {
+}
+class HLAnnotationAddin {
+}
+class HLArcAddin {
+}
+enum HLArcType {
+  Normal
+  Test
+}
+class HLPlaceAddin {
+}
+class HLTransitionAddin {
+}
+class HasGraphics {
+}
+class HasId {
+}
+class HasLabel {
+}
+class HasName {
+}
+class HasToolInfo {
+}
+class Label {
+}
+class Node {
+}
+class Object {
+}
+class Place {
+}
+class PlaceNode {
+}
+class TransitionNode {
+}
+abstract class model_Annotation {
+}
+class model_Arc {
+}
+abstract class model_Attribute {
+}
+abstract class model_CPNToolsTransitionAddin {
+}
+class model_Code {
+}
+class model_Condition {
+}
+class model_DeclarationStructure {
+}
+class model_FusionGroup {
+}
+class model_HLAnnotation {
+}
+abstract class model_HLAnnotationAddin {
+  + text : str
+}
+abstract class model_HLArcAddin {
+  + type : str
+}
+abstract class model_HLArcType_1 {
+}
+class model_HLDeclaration {
+}
+class model_HLMarking {
+}
+abstract class model_HLPlaceAddin {
+}
+abstract class model_HLTransitionAddin {
+}
+abstract class model_HasId {
+  + id : str
+}
+abstract class model_HasLabel {
+}
+abstract class model_HasName {
+}
+abstract class model_HasToolInfo {
+}
+class model_Instance {
+  + subPageID : str
+}
+abstract class model_Label {
+  + asString() : str
+}
+class model_Name {
+}
+abstract class model_Node {
+}
+abstract class model_Object {
+}
+class model_Page {
+}
+class model_ParameterAssignment {
+  + parameter : str
+  + value : str
+}
+class model_PetriNet {
+  + type : str
+}
+class model_Place {
+}
+abstract class model_PlaceNode {
+}
+class model_RefPlace {
+}
+class model_RefTrans {
+}
+class model_Time {
+}
+class model_ToolInfo {
+  + tool : str
+  + version : str
+}
+class model_Transition {
+}
+abstract class model_TransitionNode {
+}
+class model_Type {
+}
+Annotation <|-- model_Code
+Annotation <|-- model_Condition
+Annotation <|-- model_HLAnnotation
+Annotation <|-- model_HLDeclaration
+Annotation <|-- model_HLMarking
+Annotation <|-- model_Time
+Annotation <|-- model_Type
+CPNToolsTransitionAddin <|-- model_TransitionNode
+HLAnnotation <|-- model_Name
+HLAnnotationAddin <|-- model_Annotation
+HLArcAddin <|-- model_Arc
+HLPlaceAddin <|-- model_PlaceNode
+HLTransitionAddin <|-- model_TransitionNode
+HasGraphics <|-- model_Annotation
+HasGraphics <|-- model_Object
+HasId <|-- model_Arc
+HasId <|-- model_HLDeclaration
+HasId <|-- model_Object
+HasId <|-- model_Page
+HasId <|-- model_PetriNet
+HasLabel <|-- model_Object
+HasLabel <|-- model_Page
+HasLabel <|-- model_PetriNet
+HasName <|-- model_Object
+HasName <|-- model_Page
+HasName <|-- model_PetriNet
+HasToolInfo <|-- model_Label
+HasToolInfo <|-- model_Object
+HasToolInfo <|-- model_PetriNet
+Label <|-- model_Annotation
+Label <|-- model_Attribute
+Node <|-- model_Instance
+Node <|-- model_PlaceNode
+Node <|-- model_TransitionNode
+Object <|-- model_Node
+Place <|-- model_FusionGroup
+PlaceNode <|-- model_Place
+PlaceNode <|-- model_RefPlace
+TransitionNode <|-- model_RefTrans
+TransitionNode <|-- model_Transition
+model_Arc "0..9999" --* "1..1" model_Page : arc17
+model_CPNToolsTransitionAddin "1..1" -- "0..1" model_Code : code33
+model_Condition "0..1" -- "1..1" model_HLTransitionAddin : condition32
+model_FusionGroup "0..9999" --* "1..1" model_PetriNet : fusionGroups22
+model_HLAnnotation "0..1" --* "1..1" model_HLArcAddin : hlinscription31
+model_HLMarking "0..1" -- "1..1" model_HLPlaceAddin : initialMarking29
+model_Instance "0..1" -- "1..1" model_ParameterAssignment : instance38
+model_HasLabel "1..1" *-- "0..9999" model_Label : label4
+model_HasName "1..1" -- "0..1" model_Name : name5
+model_Object "0..9999" --* "1..1" model_Page : object15
+model_Object "1..1" -- "1..1" model_Page : page12
+model_Page "1..9999" --* "1..1" model_PetriNet : page20
+model_Arc "1..1" -- "1..1" model_Page : page3
+model_Instance "1..1" *-- "0..9999" model_ParameterAssignment : parameterAssignment37
+model_HasToolInfo "1..1" -- "1..1" model_ToolInfo : parent27
+model_HasLabel "1..1" -- "1..1" model_Label : parent8
+model_Page "1..1" -- "1..1" model_PetriNet : petriNet14
+model_FusionGroup "1..1" -- "0..1" model_PetriNet : petriNet39
+model_Place "1..1" -- "1..1" model_RefPlace : ref25
+model_RefTrans "1..1" -- "1..1" model_TransitionNode : ref26
+model_Place "1..1" -- "0..9999" model_RefPlace : references24
+model_Arc "1..1" -- "1..1" model_Node : source0
+model_Arc "0..9999" -- "1..1" model_Node : sourceArc9
+model_DeclarationStructure "0..1" --* "1..1" model_HLDeclaration : structure36
+model_Arc "1..1" -- "1..1" model_Node : target1
+model_Arc "0..9999" -- "1..1" model_Node : targetArc10
+model_CPNToolsTransitionAddin "1..1" -- "0..1" model_Time : time34
+model_HasToolInfo "1..1" *-- "0..9999" model_ToolInfo : toolinfo6
+model_HLPlaceAddin "1..1" -- "0..1" model_Type : type28
+@enduml

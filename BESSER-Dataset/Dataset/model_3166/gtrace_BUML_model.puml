@@ -1,0 +1,46 @@
+@startuml
+class TTrace {
+}
+class gtrace_MClassifier {
+}
+class gtrace_MElement {
+}
+class gtrace_MOperation {
+}
+class gtrace_MState {
+}
+class gtrace_MStateMachine {
+}
+class gtrace_RRequirement {
+}
+class gtrace_RScenario {
+}
+class gtrace_RScenarioStep {
+}
+class gtrace_TRequirementTrace {
+}
+class gtrace_TScenarioStepTrace {
+}
+class gtrace_TScenarioTrace {
+}
+abstract class gtrace_TTrace {
+  + reviewed : str
+}
+class gtrace_TTraceModel {
+  + name : str
+}
+TTrace <|-- gtrace_TRequirementTrace
+TTrace <|-- gtrace_TScenarioStepTrace
+TTrace <|-- gtrace_TScenarioTrace
+gtrace_MClassifier "0..1" -- "1..1" gtrace_TScenarioTrace : classifier11
+gtrace_MOperation "0..1" -- "1..1" gtrace_TScenarioStepTrace : operation17
+gtrace_RRequirement "1..1" -- "1..1" gtrace_TRequirementTrace : requirement5
+gtrace_TRequirementTrace "0..9999" --* "1..1" gtrace_TTraceModel : requirementTrace0
+gtrace_RScenario "1..1" -- "1..1" gtrace_TScenarioTrace : scenario9
+gtrace_RScenarioStep "1..1" -- "1..1" gtrace_TScenarioStepTrace : scenarioStep15
+gtrace_TScenarioStepTrace "0..9999" --* "1..1" gtrace_TTraceModel : scenarioStepTrace3
+gtrace_TScenarioTrace "0..9999" --* "1..1" gtrace_TTraceModel : scenarioTrace1
+gtrace_MState "0..1" -- "1..1" gtrace_TScenarioStepTrace : state19
+gtrace_MStateMachine "0..1" -- "1..1" gtrace_TScenarioTrace : stateMachine13
+gtrace_MElement "1..1" -- "1..1" gtrace_TRequirementTrace : structuralElement7
+@enduml

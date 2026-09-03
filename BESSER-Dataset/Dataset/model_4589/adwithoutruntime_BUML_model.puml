@@ -1,0 +1,156 @@
+@startuml
+class Action {
+}
+class ActivityEdge {
+}
+class ActivityNode {
+}
+enum BooleanBinaryOperator {
+  AND
+  OR
+}
+class BooleanExpression {
+}
+enum BooleanUnaryOperator {
+  NOT
+}
+class ControlNode {
+}
+class ExecutableNode {
+}
+class Expression {
+}
+class FinalNode {
+}
+enum IntegerCalculationOperator {
+  ADD
+  SUBRACT
+}
+enum IntegerComparisonOperator {
+  EQUALS
+  GREATER
+  GREATER_EQUALS
+  SMALLER
+  SMALLER_EQUALS
+}
+class IntegerExpression {
+}
+class NamedElement {
+}
+class Value {
+}
+class Variable {
+}
+abstract class adwithoutruntime_Action {
+}
+class adwithoutruntime_Activity {
+}
+abstract class adwithoutruntime_ActivityEdge {
+}
+class adwithoutruntime_ActivityFinalNode {
+}
+abstract class adwithoutruntime_ActivityNode {
+}
+class adwithoutruntime_BooleanBinaryExpression {
+  + operator : str
+}
+abstract class adwithoutruntime_BooleanExpression {
+}
+class adwithoutruntime_BooleanUnaryExpression {
+  + operator : str
+}
+class adwithoutruntime_BooleanValue {
+  + value : bool
+}
+class adwithoutruntime_BooleanVariable {
+}
+class adwithoutruntime_ControlFlow {
+}
+abstract class adwithoutruntime_ControlNode {
+}
+class adwithoutruntime_DecisionNode {
+}
+abstract class adwithoutruntime_ExecutableNode {
+}
+abstract class adwithoutruntime_Expression {
+}
+abstract class adwithoutruntime_FinalNode {
+}
+class adwithoutruntime_ForkNode {
+}
+class adwithoutruntime_InitialNode {
+}
+class adwithoutruntime_IntegerCalculationExpression {
+  + operator : str
+}
+class adwithoutruntime_IntegerComparisonExpression {
+  + operator : str
+}
+abstract class adwithoutruntime_IntegerExpression {
+}
+class adwithoutruntime_IntegerValue {
+  + value : int
+}
+class adwithoutruntime_IntegerVariable {
+}
+class adwithoutruntime_JoinNode {
+}
+class adwithoutruntime_MergeNode {
+}
+abstract class adwithoutruntime_NamedElement {
+  + name : str
+}
+class adwithoutruntime_OpaqueAction {
+}
+abstract class adwithoutruntime_Value {
+}
+abstract class adwithoutruntime_Variable {
+  + name : str
+}
+Action <|-- adwithoutruntime_OpaqueAction
+ActivityEdge <|-- adwithoutruntime_ControlFlow
+ActivityNode <|-- adwithoutruntime_ControlNode
+ActivityNode <|-- adwithoutruntime_ExecutableNode
+BooleanExpression <|-- adwithoutruntime_BooleanBinaryExpression
+BooleanExpression <|-- adwithoutruntime_BooleanUnaryExpression
+ControlNode <|-- adwithoutruntime_DecisionNode
+ControlNode <|-- adwithoutruntime_FinalNode
+ControlNode <|-- adwithoutruntime_ForkNode
+ControlNode <|-- adwithoutruntime_InitialNode
+ControlNode <|-- adwithoutruntime_JoinNode
+ControlNode <|-- adwithoutruntime_MergeNode
+ExecutableNode <|-- adwithoutruntime_Action
+Expression <|-- adwithoutruntime_BooleanExpression
+Expression <|-- adwithoutruntime_IntegerExpression
+FinalNode <|-- adwithoutruntime_ActivityFinalNode
+IntegerExpression <|-- adwithoutruntime_IntegerCalculationExpression
+IntegerExpression <|-- adwithoutruntime_IntegerComparisonExpression
+NamedElement <|-- adwithoutruntime_Activity
+NamedElement <|-- adwithoutruntime_ActivityEdge
+NamedElement <|-- adwithoutruntime_ActivityNode
+Value <|-- adwithoutruntime_BooleanValue
+Value <|-- adwithoutruntime_IntegerValue
+Variable <|-- adwithoutruntime_BooleanVariable
+Variable <|-- adwithoutruntime_IntegerVariable
+adwithoutruntime_Activity "1..1" -- "1..1" adwithoutruntime_ActivityNode : activity10
+adwithoutruntime_BooleanExpression "1..1" -- "1..1" adwithoutruntime_BooleanVariable : assignee26
+adwithoutruntime_IntegerCalculationExpression "1..1" -- "1..1" adwithoutruntime_IntegerVariable : assignee28
+adwithoutruntime_BooleanVariable "1..1" -- "1..1" adwithoutruntime_IntegerComparisonExpression : assignee30
+adwithoutruntime_Value "0..1" --* "1..1" adwithoutruntime_Variable : currentValue19
+adwithoutruntime_Activity "1..1" *-- "0..9999" adwithoutruntime_ActivityEdge : edges1
+adwithoutruntime_Expression "0..9999" --* "1..1" adwithoutruntime_OpaqueAction : expressions16
+adwithoutruntime_BooleanVariable "0..1" -- "1..1" adwithoutruntime_ControlFlow : guard15
+adwithoutruntime_ActivityEdge "0..9999" -- "1..1" adwithoutruntime_ActivityNode : incoming8
+adwithoutruntime_Value "0..1" --* "1..1" adwithoutruntime_Variable : initialValue17
+adwithoutruntime_Activity "1..1" *-- "0..9999" adwithoutruntime_Variable : inputs4
+adwithoutruntime_Activity "1..1" *-- "0..9999" adwithoutruntime_Variable : locals2
+adwithoutruntime_Activity "1..1" *-- "0..9999" adwithoutruntime_ActivityNode : nodes0
+adwithoutruntime_IntegerExpression "1..1" -- "0..1" adwithoutruntime_IntegerVariable : operand123
+adwithoutruntime_BooleanBinaryExpression "1..1" -- "1..1" adwithoutruntime_BooleanVariable : operand134
+adwithoutruntime_IntegerExpression "1..1" -- "0..1" adwithoutruntime_IntegerVariable : operand222
+adwithoutruntime_BooleanBinaryExpression "1..1" -- "1..1" adwithoutruntime_BooleanVariable : operand236
+adwithoutruntime_BooleanUnaryExpression "1..1" -- "1..1" adwithoutruntime_BooleanVariable : operand32
+adwithoutruntime_ActivityEdge "0..9999" -- "1..1" adwithoutruntime_ActivityNode : outgoing7
+adwithoutruntime_ActivityEdge "1..1" -- "1..1" adwithoutruntime_ActivityNode : source11
+adwithoutruntime_ActivityEdge "1..1" -- "1..1" adwithoutruntime_ActivityNode : target13
+@enduml

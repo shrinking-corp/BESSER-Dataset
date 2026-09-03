@@ -1,0 +1,55 @@
+@startuml
+class NamedElement {
+}
+class Type {
+}
+class smalluml_Association {
+}
+class smalluml_Boolean {
+}
+class smalluml_Class {
+}
+class smalluml_Diagram {
+}
+class smalluml_Float {
+}
+class smalluml_Heritage {
+}
+class smalluml_Int {
+}
+class smalluml_Method {
+}
+class smalluml_NamedElement {
+  + name : str
+}
+class smalluml_Role {
+  + lower : int
+  + upper : int
+}
+class smalluml_String {
+}
+class smalluml_Type {
+}
+NamedElement <|-- smalluml_Association
+NamedElement <|-- smalluml_Class
+NamedElement <|-- smalluml_Heritage
+NamedElement <|-- smalluml_Method
+NamedElement <|-- smalluml_Role
+NamedElement <|-- smalluml_Type
+Type <|-- smalluml_Boolean
+Type <|-- smalluml_Float
+Type <|-- smalluml_Int
+Type <|-- smalluml_String
+smalluml_Association "0..9999" --* "1..1" smalluml_Diagram : assoc21
+smalluml_Class "1..1" *-- "0..9999" smalluml_Type : attribute1
+smalluml_Heritage "1..1" *-- "1..1" smalluml_Role : child15
+smalluml_Class "1..1" --* "1..1" smalluml_Role : class_18
+smalluml_Class "0..9999" --* "1..1" smalluml_Diagram : class_26
+smalluml_Diagram "1..1" *-- "0..9999" smalluml_Heritage : heritage23
+smalluml_Class "1..1" *-- "0..9999" smalluml_Method : method0
+smalluml_Heritage "1..1" *-- "1..1" smalluml_Role : mother13
+smalluml_Method "1..1" *-- "0..9999" smalluml_Type : parameters3
+smalluml_Method "1..1" *-- "0..1" smalluml_Type : return_6
+smalluml_Association "1..1" *-- "1..1" smalluml_Role : used9
+smalluml_Association "1..1" *-- "1..1" smalluml_Role : user10
+@enduml

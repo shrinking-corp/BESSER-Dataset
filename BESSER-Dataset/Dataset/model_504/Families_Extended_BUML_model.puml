@@ -1,0 +1,59 @@
+@startuml
+class Member {
+}
+class NamedElement {
+}
+class families_Child {
+}
+class families_City {
+}
+class families_Company {
+}
+class families_Country {
+}
+class families_Family {
+  + lastName : str
+}
+abstract class families_Member {
+  + firstName : str
+}
+abstract class families_NamedElement {
+  + name : str
+}
+class families_Neighborhood {
+}
+class families_Parent {
+}
+class families_School {
+}
+class families_Service {
+}
+Member <|-- families_Child
+Member <|-- families_Parent
+NamedElement <|-- families_City
+NamedElement <|-- families_Company
+NamedElement <|-- families_Country
+NamedElement <|-- families_Neighborhood
+NamedElement <|-- families_School
+families_City "1..9999" --* "1..1" families_Country : cities1
+families_City "1..1" -- "0..9999" families_Company : companies20
+families_Company "0..9999" --* "1..1" families_Country : companies3
+families_Family "1..9999" -- "1..1" families_Neighborhood : contains18
+families_Child "0..9999" --* "1..1" families_Family : daughters10
+families_Company "1..1" -- "0..9999" families_Parent : employees31
+families_Country "1..1" *-- "1..9999" families_Family : families0
+families_Family "1..1" -- "1..1" families_Member : family33
+families_Family "1..1" *-- "0..2" families_Parent : fathers5
+families_Child "1..1" -- "1..1" families_School : goesTo17
+families_City "1..9999" -- "1..1" families_Company : isIn32
+families_City "1..1" -- "1..1" families_Member : livesIn35
+families_Family "1..1" *-- "0..2" families_Parent : mothers7
+families_City "1..1" *-- "1..9999" families_Neighborhood : neighborhoods22
+families_School "1..1" *-- "0..9999" families_Service : ordinary25
+families_Family "1..1" -- "1..1" families_Neighborhood : registeredIn15
+families_Neighborhood "1..1" *-- "0..9999" families_School : schools19
+families_Child "0..9999" --* "1..1" families_Family : sons12
+families_School "1..1" *-- "0..9999" families_Service : special27
+families_Child "0..9999" -- "1..1" families_School : students30
+families_Company "0..1" -- "1..1" families_Parent : worksIn16
+@enduml

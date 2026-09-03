@@ -1,0 +1,132 @@
+@startuml
+enum CourseWorkType {
+  Exercise
+  InDepth
+  Lecture
+}
+enum EvaluationType {
+  Assignment
+  Exam
+  Project
+}
+enum RoleType {
+  Lecturer
+  Student
+  Supervisor
+}
+enum StudyProgramType {
+  MTDT
+  MTMART
+}
+class oving4_Assignment {
+  + deadline : str
+}
+class oving4_Course {
+  + code : str
+  + content : str
+  + credits : float
+  + examEndDate : str
+  + examStartDate : str
+  + name : str
+}
+class oving4_CourseInstance {
+  + sumExerciseHours : int
+  + sumInDepthHours : int
+  + sumLectureHours : int
+}
+class oving4_CourseWork {
+  + isMandatory : bool
+  + name : str
+  + type : str
+}
+class oving4_Department {
+  + name : str
+}
+class oving4_Evaluation {
+  + completed : bool
+  + creditsReceived : float
+  + description : str
+  + totalPercentageResult : float
+}
+class oving4_EvaluationElement {
+  + attended : bool
+  + percentageResult : float
+  + type : str
+  + weight : float
+}
+class oving4_Exam {
+  + endDate : str
+  + previousEndDate : str
+  + previousStartDate : str
+  + startDate : str
+}
+class oving4_Person {
+  + first_name : str
+  + last_name : str
+  + name : str
+  + studyCredits : float
+  + cancelExam(oving4_course : str) : bool
+  + signUpForExam(oving4_course : str) : bool
+  + takeExam(oving4_course : str, oving4_percentageResult : str) : bool
+}
+class oving4_PersonRole {
+  + type : str
+}
+class oving4_Precondition {
+  + creditReduction : float
+  + isMandatory : bool
+}
+class oving4_Project {
+  + deadline : str
+}
+class oving4_Root {
+}
+class oving4_StudyProgram {
+  + type : str
+}
+class oving4_TimeTable {
+  + isRestrictedToProgramsInParallell : bool
+}
+class oving4_TimeTableElement {
+  + date : str
+  + durationInMinutes : int
+  + room : str
+}
+oving4_Assignment "1..1" -- "1..1" oving4_EvaluationElement : belongToEvEl61
+oving4_EvaluationElement "1..1" -- "1..1" oving4_Exam : belongsToEvaluationElement56
+oving4_EvaluationElement "1..1" -- "1..1" oving4_Project : belongsToEvaluationel57
+oving4_Assignment "1..1" --* "1..1" oving4_EvaluationElement : containsAssignment55
+oving4_Course "0..9999" -- "1..1" oving4_StudyProgram : containsCourse10
+oving4_CourseInstance "1..1" *-- "0..9999" oving4_CourseWork : containsCourseWork23
+oving4_Evaluation "1..1" *-- "0..9999" oving4_EvaluationElement : containsElement44
+oving4_CourseInstance "1..1" *-- "0..9999" oving4_Evaluation : containsEvaluation26
+oving4_EvaluationElement "1..1" *-- "1..1" oving4_Exam : containsExam53
+oving4_EvaluationElement "1..1" -- "1..1" oving4_Project : containsProject54
+oving4_TimeTable "1..1" *-- "0..9999" oving4_TimeTableElement : containsTimeTableElement36
+oving4_Course "1..1" *-- "0..9999" oving4_CourseInstance : courseInstance16
+oving4_CourseInstance "1..1" -- "1..1" oving4_Evaluation : courseInstance45
+oving4_Department "1..1" -- "1..1" oving4_PersonRole : employedByDepartment34
+oving4_PersonRole "1..1" -- "0..1" oving4_StudyProgram : employedOfStudyProgram30
+oving4_PersonRole "0..1" -- "1..1" oving4_StudyProgram : hasEmployee11
+oving4_Department "1..1" -- "0..9999" oving4_PersonRole : hasEmployee9
+oving4_Evaluation "0..9999" -- "1..1" oving4_Person : hasEvaluation15
+oving4_CourseInstance "1..1" -- "0..9999" oving4_PersonRole : hasMember24
+oving4_PersonRole "0..9999" -- "1..1" oving4_Project : hasMembers59
+oving4_Course "1..1" *-- "0..9999" oving4_Precondition : hasPrecondition18
+oving4_Person "1..1" *-- "0..9999" oving4_PersonRole : hasRole13
+oving4_CourseInstance "1..1" *-- "1..1" oving4_TimeTable : hasTimeTable20
+oving4_CourseInstance "0..9999" -- "1..1" oving4_PersonRole : memberOfCourse32
+oving4_Course "1..1" -- "1..1" oving4_CourseInstance : ownedBy21
+oving4_CourseInstance "1..1" -- "1..1" oving4_TimeTable : ownedByCourseInstance40
+oving4_Course "0..9999" --* "1..1" oving4_Department : ownsCourse7
+oving4_Department "0..9999" --* "1..1" oving4_Root : ownsDepartment0
+oving4_Person "0..9999" --* "1..1" oving4_Root : ownsPerson1
+oving4_Project "0..9999" --* "1..1" oving4_Root : ownsProject5
+oving4_Root "1..1" *-- "0..9999" oving4_StudyProgram : ownsStudyProgram3
+oving4_Person "0..1" -- "1..1" oving4_PersonRole : person29
+oving4_Evaluation "1..1" -- "1..1" oving4_Person : personEvaluated42
+oving4_Course "0..1" -- "1..1" oving4_Precondition : preconditionCourse47
+oving4_Course "1..1" -- "1..1" oving4_StudyProgram : studyprogram17
+oving4_CourseWork "1..1" -- "1..1" oving4_TimeTableElement : usedByCourseWork50
+oving4_StudyProgram "0..1" -- "1..1" oving4_TimeTable : usedByStudyProgram37
+@enduml

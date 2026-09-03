@@ -1,0 +1,49 @@
+@startuml
+class Admin {
+}
+class Class {
+}
+class Department {
+  + dept_id : int
+  + dept_name : str
+}
+enum Enumeration {
+}
+class Interface_Interface {
+}
+class Person {
+  + address : str
+  + date_of_birth : str
+  + department : str
+  + email : str
+  + id : int
+  + name : str
+  + password : int
+  + username : str
+}
+class barcode {
+}
+class controller {
+}
+class course {
+  + course_id : int
+  + course_name : str
+  + course_preq : str
+  + credit_hours : int
+}
+class staff_member {
+}
+class student {
+  + major_dept : str
+  + minor_dept : str
+}
+Admin "1..9999" -- "1..9999" controller : Admin_controller
+Admin "1..9999" -- "1..9999" staff_member : Admin_staff_member
+Department "1..9999" -- "1..9999" course : Department_course
+Department "1..9999" -- "1..9999" student : Department_student
+controller "1..9999" -- "1..9999" staff_member : controller_staff_member
+Admin "1..9999" -- "1..9999" course : course_Admin
+Person "1..9999" -- "1..9999" course : course_Person
+barcode "1..9999" -- "1..9999" student : student_barcode
+course "1..1" -- "1..9999" student : student_course
+@enduml

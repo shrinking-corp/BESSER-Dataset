@@ -1,0 +1,69 @@
+@startuml
+class Account {
+}
+abstract class BankingSystem_Account {
+  + accountNumber : str
+  + balance : float
+}
+class BankingSystem_Bank {
+  + bankId : int
+  + description : str
+  + name : str
+}
+class BankingSystem_Branch {
+  + branchId : int
+  + location : str
+  + name : str
+  + phoneNumber : str
+}
+class BankingSystem_Chequing {
+}
+class BankingSystem_Customer {
+  + address : str
+  + age : int
+  + customerType : str
+  + name : str
+  + phoneNumber : str
+}
+abstract class BankingSystem_Employee {
+  + eaddress : str
+  + eage : int
+  + eid : int
+  + ename : str
+  + ephoneNumber : str
+  + isCustomer : bool
+}
+class BankingSystem_Financial_Representative {
+}
+class BankingSystem_Loan {
+  + amount : float
+  + duration : int
+  + interestRate : float
+  + loanNumber : str
+}
+class BankingSystem_Saving {
+  + interestRate : float
+}
+enum CustomerType {
+  Adult
+  Senior
+  Youth
+}
+class Employee {
+}
+Account <|-- BankingSystem_Chequing
+Account <|-- BankingSystem_Saving
+Employee <|-- BankingSystem_Financial_Representative
+BankingSystem_Customer "0..9999" -- "1..1" BankingSystem_Financial_Representative : a17
+BankingSystem_Account "1..9999" --* "1..1" BankingSystem_Customer : accounts7
+BankingSystem_Bank "1..1" -- "1..1" BankingSystem_Branch : bank4
+BankingSystem_Branch "1..1" -- "1..1" BankingSystem_Employee : branch13
+BankingSystem_Branch "1..1" -- "1..1" BankingSystem_Customer : branch5
+BankingSystem_Bank "1..1" *-- "1..9999" BankingSystem_Branch : branches0
+BankingSystem_Account "1..1" -- "1..1" BankingSystem_Customer : customer11
+BankingSystem_Customer "1..1" -- "1..1" BankingSystem_Loan : customer15
+BankingSystem_Branch "1..1" *-- "1..9999" BankingSystem_Customer : customers1
+BankingSystem_Branch "1..1" *-- "1..9999" BankingSystem_Employee : employees2
+BankingSystem_Customer "1..1" *-- "0..9999" BankingSystem_Loan : loans8
+BankingSystem_Customer "1..1" -- "0..9999" BankingSystem_Financial_Representative : representative10
+@enduml

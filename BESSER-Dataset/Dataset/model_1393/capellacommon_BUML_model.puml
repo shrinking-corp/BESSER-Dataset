@@ -1,0 +1,147 @@
+@startuml
+class AbstractBehavior {
+}
+class AbstractEvent {
+}
+class AbstractState {
+}
+class CapellaElement {
+}
+enum ChangeEventKind {
+  WHEN
+}
+class IState {
+}
+class ModelElement {
+}
+class NamedElement {
+}
+class Pseudostate {
+}
+class State {
+}
+class StateEvent {
+}
+class Structure {
+}
+enum TimeEventKind {
+  AFTER
+  AT
+}
+class TraceableElement {
+}
+enum TransitionKind {
+  external
+  internal
+  local
+}
+class capellacommon_AbstractCapability {
+}
+abstract class capellacommon_AbstractCapabilityPkg {
+}
+class capellacommon_AbstractEvent {
+}
+class capellacommon_AbstractFunction {
+}
+abstract class capellacommon_AbstractState {
+}
+class capellacommon_ChangeEvent {
+  + kind : str
+}
+class capellacommon_ChoicePseudoState {
+}
+class capellacommon_Constraint {
+}
+class capellacommon_DeepHistoryPseudoState {
+}
+class capellacommon_EntryPointPseudoState {
+}
+class capellacommon_ExitPointPseudoState {
+}
+class capellacommon_FinalState {
+}
+class capellacommon_ForkPseudoState {
+}
+class capellacommon_FunctionalChain {
+}
+class capellacommon_GenericTrace {
+}
+class capellacommon_InitialPseudoState {
+}
+class capellacommon_JoinPseudoState {
+}
+class capellacommon_Mode {
+}
+abstract class capellacommon_Pseudostate {
+}
+class capellacommon_Region {
+}
+class capellacommon_ShallowHistoryPseudoState {
+}
+class capellacommon_State {
+}
+abstract class capellacommon_StateEvent {
+}
+class capellacommon_StateMachine {
+}
+class capellacommon_StateTransition {
+  + kind : str
+  + triggerDescription : str
+}
+class capellacommon_TerminatePseudoState {
+}
+class capellacommon_TimeEvent {
+  + kind : str
+  + time : str
+}
+class capellacommon_TraceableElement {
+}
+AbstractBehavior <|-- capellacommon_StateMachine
+AbstractEvent <|-- capellacommon_StateEvent
+AbstractState <|-- capellacommon_Pseudostate
+AbstractState <|-- capellacommon_State
+CapellaElement <|-- capellacommon_GenericTrace
+CapellaElement <|-- capellacommon_StateMachine
+CapellaElement <|-- capellacommon_StateTransition
+IState <|-- capellacommon_AbstractState
+ModelElement <|-- capellacommon_GenericTrace
+ModelElement <|-- capellacommon_StateTransition
+NamedElement <|-- capellacommon_AbstractState
+NamedElement <|-- capellacommon_Region
+NamedElement <|-- capellacommon_StateEvent
+NamedElement <|-- capellacommon_StateTransition
+Pseudostate <|-- capellacommon_ChoicePseudoState
+Pseudostate <|-- capellacommon_DeepHistoryPseudoState
+Pseudostate <|-- capellacommon_EntryPointPseudoState
+Pseudostate <|-- capellacommon_ExitPointPseudoState
+Pseudostate <|-- capellacommon_ForkPseudoState
+Pseudostate <|-- capellacommon_InitialPseudoState
+Pseudostate <|-- capellacommon_JoinPseudoState
+Pseudostate <|-- capellacommon_ShallowHistoryPseudoState
+Pseudostate <|-- capellacommon_TerminatePseudoState
+State <|-- capellacommon_FinalState
+State <|-- capellacommon_Mode
+StateEvent <|-- capellacommon_ChangeEvent
+StateEvent <|-- capellacommon_TimeEvent
+Structure <|-- capellacommon_AbstractCapabilityPkg
+TraceableElement <|-- capellacommon_GenericTrace
+capellacommon_AbstractCapability "0..9999" -- "1..1" capellacommon_State : availableAbstractCapabilities18
+capellacommon_AbstractFunction "0..9999" -- "1..1" capellacommon_State : availableAbstractFunctions14
+capellacommon_FunctionalChain "0..9999" -- "1..1" capellacommon_State : availableFunctionalChains16
+capellacommon_Constraint "0..1" -- "1..1" capellacommon_StateEvent : condition42
+capellacommon_AbstractEvent "0..1" -- "1..1" capellacommon_State : doActivity20
+capellacommon_AbstractEvent "0..1" -- "1..1" capellacommon_StateTransition : effect33
+capellacommon_Constraint "0..1" -- "1..1" capellacommon_StateTransition : guard25
+capellacommon_AbstractState "0..9999" -- "1..1" capellacommon_Region : involvedStates9
+capellacommon_Region "0..9999" --* "1..1" capellacommon_State : ownedRegions12
+capellacommon_Region "0..9999" --* "1..1" capellacommon_StateMachine : ownedRegions4
+capellacommon_AbstractState "0..9999" --* "1..1" capellacommon_Region : ownedStates5
+capellacommon_Region "1..1" *-- "0..9999" capellacommon_StateTransition : ownedTransitions7
+capellacommon_AbstractState "0..9999" -- "1..1" capellacommon_AbstractState : realizedAbstractStates23
+capellacommon_StateTransition "0..9999" -- "1..1" capellacommon_StateTransition : realizedStateTransitions40
+capellacommon_GenericTrace "1..1" -- "1..1" capellacommon_TraceableElement : source0
+capellacommon_AbstractState "1..1" -- "1..1" capellacommon_StateTransition : source27
+capellacommon_GenericTrace "1..1" -- "1..1" capellacommon_TraceableElement : target1
+capellacommon_AbstractState "1..1" -- "1..1" capellacommon_StateTransition : target30
+capellacommon_AbstractEvent "0..9999" -- "1..1" capellacommon_StateTransition : triggers36
+@enduml

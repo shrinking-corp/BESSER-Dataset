@@ -1,0 +1,46 @@
+@startuml
+class NamedElement {
+}
+class ktest401_Article {
+  + aid : str
+}
+class ktest401_EClass0 {
+}
+class ktest401_EClass1 {
+  + bar : str
+  + foo : str
+}
+class ktest401_Line {
+  + articleAid : str
+  + quant : int
+}
+abstract class ktest401_NamedElement {
+  + name : str
+}
+class ktest401_RelatedTo {
+  + since : str
+}
+class ktest401_Thing {
+  + id : int
+}
+class ktest401_World {
+}
+NamedElement <|-- ktest401_Article
+NamedElement <|-- ktest401_EClass0
+NamedElement <|-- ktest401_EClass1
+NamedElement <|-- ktest401_Line
+NamedElement <|-- ktest401_RelatedTo
+NamedElement <|-- ktest401_Thing
+ktest401_EClass1 "1..1" -- "0..1" ktest401_RelatedTo : EReference019
+ktest401_EClass0 "0..1" -- "1..1" ktest401_EClass1 : EReference122
+ktest401_EClass0 "0..9999" --* "1..1" ktest401_Thing : e0s6
+ktest401_Article "0..9999" --* "1..1" ktest401_World : e1s1
+ktest401_EClass1 "0..9999" --* "1..1" ktest401_RelatedTo : e1s11
+ktest401_RelatedTo "1..1" -- "0..1" ktest401_Thing : fromThing8
+ktest401_Line "0..9999" --* "1..1" ktest401_Thing : lines4
+ktest401_RelatedTo "0..9999" --* "1..1" ktest401_Thing : relations3
+ktest401_Line "1..1" -- "0..1" ktest401_Thing : src13
+ktest401_Thing "0..9999" --* "1..1" ktest401_World : things0
+ktest401_RelatedTo "1..1" -- "0..1" ktest401_Thing : toThing9
+ktest401_Article "0..1" -- "1..1" ktest401_Line : trg16
+@enduml

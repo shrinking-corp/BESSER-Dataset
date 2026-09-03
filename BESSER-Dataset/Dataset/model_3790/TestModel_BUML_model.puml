@@ -1,0 +1,93 @@
+@startuml
+enum ProblemType {
+  ASSERTION
+  ASSUMPTION
+  ERROR
+}
+enum ProgressState {
+  COMPLETED
+  NOT_STARTED
+  RUNNING
+  STOPPED
+}
+class TestContainer {
+}
+class TestElement {
+}
+class TestProblem {
+}
+enum TestState {
+  ERROR
+  FAILURE
+  IGNORED
+  NOT_RUN
+  PASS
+}
+class TraceElement {
+}
+class model_ComparisonProblem {
+  + actual : str
+  + expected : str
+}
+class model_Metadata {
+  + key : str
+  + value : str
+}
+class model_TestCaseElement {
+}
+class model_TestContainer {
+  + getAssumptionMismatchCount() : int
+  + getCompletedCount() : int
+  + getErrorCount() : int
+  + getFailureCount() : int
+  + getIgnoredCount() : int
+  + getMergedTestState() : str
+  + getTestCaseCount() : int
+  + updateProgressState() : void
+}
+abstract class model_TestElement {
+  + description : str
+  + elementUnderTest : str
+  + endTimestamp : str
+  + name : str
+  + progressState : str
+  + startTimestamp : str
+  + target : str
+  + testState : str
+  + getDuration() : str
+  + getImageDescriptor() : str
+  + getRoot() : str
+  + hasWrongAssumption() : bool
+  + isErrorOrFailure() : bool
+  + isRunning() : bool
+  + open() : void
+}
+class model_TestProblem {
+  + message : str
+  + problemType : str
+  + getTestElement() : TestElement
+}
+class model_TestRoot {
+  + testRunner : str
+}
+abstract class model_TraceElement {
+  + message : str
+  + getImageDescriptor() : str
+  + getProblem() : TestProblem
+  + open() : void
+}
+class model_TraceException {
+}
+class model_TraceStackframe {
+}
+TestContainer <|-- model_TestRoot
+TestElement <|-- model_TestCaseElement
+TestElement <|-- model_TestContainer
+TestProblem <|-- model_ComparisonProblem
+TraceElement <|-- model_TraceException
+TraceElement <|-- model_TraceStackframe
+model_TestContainer "1..1" *-- "0..9999" model_TestElement : children2
+model_TestContainer "0..1" -- "1..1" model_TestElement : parent0
+model_TestElement "1..1" *-- "0..1" model_TestProblem : problem1
+model_TestProblem "1..1" *-- "0..9999" model_TraceElement : trace3
+@enduml

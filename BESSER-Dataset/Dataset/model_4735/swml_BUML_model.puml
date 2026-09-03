@@ -1,0 +1,58 @@
+@startuml
+enum DataType {
+  Boolean
+  Float
+  Integer
+  String
+}
+class DynamicPage {
+}
+class WebPage {
+}
+class swml_Attribute {
+  + dataType : str
+  + name : str
+}
+class swml_DynamicPage {
+}
+class swml_Entity {
+  + name : str
+}
+class swml_EntityPage {
+}
+class swml_Icon {
+  + image : str
+}
+class swml_IndexPage {
+}
+class swml_Link {
+  + href : str
+}
+class swml_Relationship {
+  + lowerBound : int
+  + role : str
+  + upperBound : int
+}
+class swml_StaticPage {
+}
+class swml_WebApplication {
+  + name : str
+}
+class swml_WebPage {
+  + relativeUrl : str
+  + title : str
+}
+DynamicPage <|-- swml_EntityPage
+DynamicPage <|-- swml_IndexPage
+WebPage <|-- swml_DynamicPage
+WebPage <|-- swml_StaticPage
+swml_Attribute "0..9999" --* "1..1" swml_Entity : attributes3
+swml_Entity "0..9999" --* "1..1" swml_WebApplication : entities0
+swml_StaticPage "1..1" -- "1..1" swml_WebApplication : homePage1
+swml_DynamicPage "1..1" *-- "1..1" swml_Icon : icon15
+swml_Attribute "1..1" --* "1..1" swml_Entity : id5
+swml_Link "0..9999" --* "1..1" swml_StaticPage : links13
+swml_Entity "1..1" -- "1..1" swml_Relationship : referencedEntity10
+swml_Entity "1..1" *-- "0..9999" swml_Relationship : relationships8
+swml_DynamicPage "1..1" -- "1..1" swml_Entity : type16
+@enduml

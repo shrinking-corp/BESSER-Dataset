@@ -1,0 +1,24 @@
+@startuml
+class Property {
+}
+class entities_Entity {
+  + name : str
+}
+class entities_Model {
+}
+class entities_Property {
+  + name : str
+}
+class entities_ReferenceProperty {
+  + many : bool
+}
+class entities_SimpleProperty {
+  + type : str
+}
+Property <|-- entities_ReferenceProperty
+Property <|-- entities_SimpleProperty
+entities_Entity "0..9999" --* "1..1" entities_Model : entities0
+entities_Entity "1..1" *-- "0..9999" entities_Property : properties4
+entities_Entity "0..1" -- "1..1" entities_Entity : superType2
+entities_Entity "0..1" -- "1..1" entities_ReferenceProperty : type6
+@enduml

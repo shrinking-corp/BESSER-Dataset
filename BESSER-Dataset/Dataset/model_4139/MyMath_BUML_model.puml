@@ -1,0 +1,33 @@
+@startuml
+class Expression {
+}
+class myMath_Add {
+}
+class myMath_Div {
+}
+class myMath_Expression {
+}
+class myMath_MathExp {
+}
+class myMath_Mult {
+}
+class myMath_Num {
+  + value : int
+}
+class myMath_Sub {
+}
+Expression <|-- myMath_Add
+Expression <|-- myMath_Div
+Expression <|-- myMath_Mult
+Expression <|-- myMath_Num
+Expression <|-- myMath_Sub
+myMath_Expression "0..1" --* "1..1" myMath_MathExp : exp0
+myMath_Add "1..1" *-- "0..1" myMath_Expression : left1
+myMath_Expression "0..1" --* "1..1" myMath_Mult : left11
+myMath_Div "1..1" *-- "0..1" myMath_Expression : left16
+myMath_Expression "0..1" --* "1..1" myMath_Sub : left6
+myMath_Expression "0..1" --* "1..1" myMath_Mult : right13
+myMath_Div "1..1" *-- "0..1" myMath_Expression : right18
+myMath_Add "1..1" *-- "0..1" myMath_Expression : right3
+myMath_Expression "0..1" --* "1..1" myMath_Sub : right8
+@enduml

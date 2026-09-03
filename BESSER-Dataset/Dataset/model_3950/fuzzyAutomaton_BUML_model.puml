@@ -1,0 +1,78 @@
+@startuml
+class Action {
+}
+enum FuzzyRelationType {
+  EQ
+  GTE
+  LTE
+  TERN
+}
+enum TNormType {
+  GODEL
+  HAMACHER
+}
+abstract class fuzzyAutomaton_Action {
+  + name : str
+}
+class fuzzyAutomaton_FuzzyAutomaton {
+  + name : str
+  + tNorm : str
+}
+class fuzzyAutomaton_FuzzyConstraint {
+  + name : str
+  + tNorm : str
+}
+class fuzzyAutomaton_FuzzyRelation {
+  + delta : str
+  + expression1 : str
+  + expression2 : str
+  + expression3 : str
+  + tFRelation : str
+}
+class fuzzyAutomaton_Input {
+}
+class fuzzyAutomaton_Output {
+  + expression : str
+}
+class fuzzyAutomaton_State {
+  + isInitial : str
+}
+class fuzzyAutomaton_Transition {
+}
+class fuzzyAutomaton_TransitionFeature {
+  + name : str
+}
+class fuzzyAutomaton_VarTransformation {
+  + name : str
+}
+class fuzzyAutomaton_VarUpdate {
+  + expression : str
+}
+class fuzzyAutomaton_Variable {
+  + name : str
+  + value : str
+}
+class fuzzyAutomaton_VariableSet {
+  + name : str
+}
+Action <|-- fuzzyAutomaton_Input
+Action <|-- fuzzyAutomaton_Output
+fuzzyAutomaton_Action "1..1" --* "1..1" fuzzyAutomaton_TransitionFeature : action18
+fuzzyAutomaton_Transition "1..1" -- "1..1" fuzzyAutomaton_TransitionFeature : feature13
+fuzzyAutomaton_Transition "1..9999" -- "1..1" fuzzyAutomaton_TransitionFeature : featureToTransition16
+fuzzyAutomaton_FuzzyConstraint "0..1" --* "1..1" fuzzyAutomaton_TransitionFeature : fuzzyConstraint20
+fuzzyAutomaton_FuzzyConstraint "1..1" *-- "1..9999" fuzzyAutomaton_FuzzyRelation : fuzzyRelations26
+fuzzyAutomaton_State "1..1" -- "0..9999" fuzzyAutomaton_Transition : incoming7
+fuzzyAutomaton_State "1..1" -- "0..9999" fuzzyAutomaton_Transition : outgoing8
+fuzzyAutomaton_Input "1..1" -- "0..9999" fuzzyAutomaton_Variable : parameters24
+fuzzyAutomaton_State "1..1" -- "1..1" fuzzyAutomaton_Transition : source10
+fuzzyAutomaton_FuzzyAutomaton "1..1" *-- "1..9999" fuzzyAutomaton_State : states0
+fuzzyAutomaton_State "1..1" -- "1..1" fuzzyAutomaton_Transition : target11
+fuzzyAutomaton_FuzzyAutomaton "1..1" *-- "1..9999" fuzzyAutomaton_TransitionFeature : transitionFeatures5
+fuzzyAutomaton_FuzzyAutomaton "1..1" *-- "1..9999" fuzzyAutomaton_Transition : transitions1
+fuzzyAutomaton_TransitionFeature "1..1" *-- "0..1" fuzzyAutomaton_VarTransformation : varTransformation22
+fuzzyAutomaton_VarTransformation "1..1" *-- "1..9999" fuzzyAutomaton_VarUpdate : varUpdates28
+fuzzyAutomaton_VarUpdate "1..1" -- "1..1" fuzzyAutomaton_Variable : variable30
+fuzzyAutomaton_FuzzyAutomaton "1..1" *-- "1..1" fuzzyAutomaton_VariableSet : variableSet3
+fuzzyAutomaton_Variable "1..9999" --* "1..1" fuzzyAutomaton_VariableSet : variables14
+@enduml

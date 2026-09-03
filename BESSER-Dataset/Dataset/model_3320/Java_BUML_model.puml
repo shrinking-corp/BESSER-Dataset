@@ -1,0 +1,229 @@
+@startuml
+class Return_value {
+}
+class java_Ampersand_Rule {
+  + a1 : str
+  + a2 : str
+}
+class java_Arg_List {
+}
+class java_Bit_Expression_NR {
+}
+class java_Cast_Expression {
+}
+class java_Class_declaration {
+  + className : str
+  + extend : str
+  + implement : str
+  + implements : str
+  + modifiers : str
+}
+class java_Compilation_unit {
+}
+class java_Constructor_declaration {
+  + modifiers : str
+  + name : str
+}
+class java_Creating_Expression {
+  + className : str
+  + typeSpecifier : str
+}
+class java_Do_Statement {
+}
+class java_EObject {
+}
+class java_Expression {
+  + name : str
+  + null : str
+  + super : str
+  + this : str
+}
+class java_Expression_aux {
+  + bitSign : str
+  + logicalSign : str
+  + name : str
+  + numericSign : str
+  + sgin : str
+  + stringSign : str
+  + testingSign : str
+}
+class java_Field_declaration {
+  + debug : str
+  + doc : str
+}
+class java_Float_Literal {
+  + decimalDigits1 : int
+  + decimalDigits2 : int
+  + exp : str
+}
+class java_For_Statement {
+  + pv : str
+}
+class java_Head {
+}
+class java_If_Statement {
+}
+class java_Import_statement {
+  + classname : str
+  + packagename : str
+}
+class java_Interface_declaration {
+  + extend : str
+  + extends : str
+  + interfaceName : str
+  + modifiers : str
+}
+class java_Literal_Expression {
+  + char : str
+  + exp : str
+  + exp1 : int
+  + string : str
+}
+class java_Logical_Expression_NR {
+  + false : str
+  + true : str
+}
+class java_Method_call {
+}
+class java_Method_declaration {
+  + debug : str
+  + modifiers : str
+  + name : str
+}
+class java_Numeric_Expression_NR {
+  + sinal_numeric : str
+}
+class java_Package_statement {
+  + name : str
+}
+class java_Parameter {
+  + name : str
+}
+class java_Parameter_list {
+}
+class java_Parameter_list_method_call {
+  + name : str
+  + parameters : str
+}
+class java_Return_Statement {
+}
+class java_Return_value {
+  + name : str
+}
+class java_Statement {
+  + name : str
+}
+class java_Statement_block {
+}
+class java_Static_initializer {
+  + static : str
+}
+class java_Switch_Statement {
+}
+class java_Try_statement {
+  + catchs : str
+  + finally_ : str
+  + try_ : str
+}
+class java_Type {
+  + name : str
+}
+class java_Type_declaration {
+  + doc : str
+}
+class java_Variable_declaration {
+  + modifiers : str
+}
+class java_Variable_declarator {
+  + name : str
+}
+class java_Variable_initializer {
+}
+class java_While_Statement {
+}
+Return_value <|-- java_Literal_Expression
+Return_value <|-- java_Method_call
+java_Ampersand_Rule "0..1" --* "1..1" java_Expression_aux : ampersand82
+java_Arg_List "0..1" --* "1..1" java_Expression_aux : argList65
+java_Arg_List "0..1" --* "1..1" java_Creating_Expression : argList89
+java_Expression "1..1" *-- "0..1" java_Expression_aux : aux53
+java_Expression_aux "0..1" --* "1..1" java_Expression_aux : aux68
+java_Bit_Expression_NR "0..1" --* "1..1" java_Expression : bitExpression57
+java_Expression "0..9999" --* "1..1" java_Switch_Statement : case_exp152
+java_Cast_Expression "0..1" --* "1..1" java_Expression : castExpression59
+java_Statement "0..9999" --* "1..1" java_Try_statement : catchStatements202
+java_Creating_Expression "0..1" --* "1..1" java_Expression : creatingExpression61
+java_Do_Statement "0..1" --* "1..1" java_Statement : doStatement130
+java_Compilation_unit "0..9999" --* "1..1" java_Head : elements0
+java_If_Statement "1..1" *-- "0..1" java_Statement : elseStatement191
+java_Expression "0..1" --* "1..1" java_Expression_aux : exp179
+java_Expression "0..1" --* "1..1" java_Expression_aux : exp276
+java_Float_Literal "0..1" --* "1..1" java_Literal_Expression : exp287
+java_Bit_Expression_NR "1..1" *-- "0..1" java_Expression : expression101
+java_Expression "0..1" --* "1..1" java_Logical_Expression_NR : expression104
+java_Arg_List "1..1" *-- "0..1" java_Expression : expression107
+java_Expression "0..1" --* "1..1" java_Numeric_Expression_NR : expression113
+java_Expression "0..1" --* "1..1" java_For_Statement : expression161
+java_Expression "0..1" --* "1..1" java_While_Statement : expression173
+java_Do_Statement "1..1" *-- "0..1" java_Expression : expression182
+java_Expression "0..1" --* "1..1" java_If_Statement : expression185
+java_Expression "0..1" --* "1..1" java_For_Statement : expression2164
+java_Expression "0..1" --* "1..1" java_Expression_aux : expression270
+java_Expression "0..1" --* "1..1" java_For_Statement : expression3167
+java_Expression "0..1" --* "1..1" java_Variable_initializer : expression43
+java_Creating_Expression "1..1" *-- "0..1" java_Expression : expression92
+java_Cast_Expression "1..1" *-- "0..1" java_Expression : expression98
+java_Expression "0..1" --* "1..1" java_Expression_aux : expressionBit84
+java_Expression "0..1" --* "1..1" java_Expression_aux : expressionComma73
+java_Arg_List "1..1" *-- "0..9999" java_Expression : expressions110
+java_Expression "0..1" --* "1..1" java_Statement : expressionx125
+java_Class_declaration "1..1" *-- "0..9999" java_Field_declaration : fields10
+java_Field_declaration "0..9999" --* "1..1" java_Interface_declaration : fields9
+java_Statement "0..1" --* "1..1" java_Try_statement : finallyStatement205
+java_For_Statement "0..1" --* "1..1" java_Statement : forStatement134
+java_If_Statement "0..1" --* "1..1" java_Statement : ifStatement128
+java_Compilation_unit "1..1" *-- "0..9999" java_Import_statement : imports3
+java_Variable_declarator "1..1" *-- "0..1" java_Variable_initializer : initializer41
+java_Expression "1..1" *-- "0..1" java_Literal_Expression : literalExpression63
+java_Expression "1..1" *-- "0..1" java_Logical_Expression_NR : logicalExpression55
+java_Statement_block "0..1" --* "1..1" java_Static_initializer : name116
+java_EObject "0..1" --* "1..1" java_Field_declaration : name12
+java_Variable_declaration "1..1" *-- "0..1" java_Variable_declarator : name36
+java_EObject "0..1" --* "1..1" java_Type_declaration : name7
+java_Variable_declaration "1..1" *-- "0..9999" java_Variable_declarator : names38
+java_Expression "1..1" *-- "0..1" java_Numeric_Expression_NR : numericExpression351
+java_Compilation_unit "1..1" *-- "0..1" java_Package_statement : package1
+java_Method_declaration "1..1" *-- "0..1" java_Parameter_list : parameter16
+java_Method_call "1..1" *-- "0..1" java_Parameter_list_method_call : parameter20
+java_Parameter "0..1" --* "1..1" java_Parameter_list : parameter26
+java_Parameter "0..9999" --* "1..1" java_Try_statement : parameters199
+java_Constructor_declaration "1..1" *-- "0..1" java_Parameter_list : parameters21
+java_Parameter "0..9999" --* "1..1" java_Parameter_list : parameters28
+java_Return_Statement "0..1" --* "1..1" java_Statement : returnSmt120
+java_Return_Statement "1..1" *-- "0..1" java_Return_value : rv194
+java_Statement "0..1" --* "1..1" java_Statement : statement144
+java_For_Statement "1..1" *-- "0..1" java_Statement : statement170
+java_Statement "0..1" --* "1..1" java_While_Statement : statement176
+java_Do_Statement "1..1" *-- "0..1" java_Statement : statement179
+java_Method_declaration "1..1" *-- "0..1" java_Statement_block : statement18
+java_If_Statement "1..1" *-- "0..1" java_Statement : statement188
+java_Constructor_declaration "1..1" *-- "0..1" java_Statement_block : statement23
+java_Statement "1..1" *-- "0..1" java_Statement_block : statementBlock138
+java_Statement "0..9999" --* "1..1" java_Statement_block : statements118
+java_Statement "0..9999" --* "1..1" java_Switch_Statement : statements155
+java_Expression "0..1" --* "1..1" java_Switch_Statement : sw_exp149
+java_Statement "1..1" *-- "0..1" java_Switch_Statement : switchStatement136
+java_Statement "0..1" --* "1..1" java_Try_statement : tryStatement196
+java_Statement "1..1" *-- "0..1" java_Try_statement : try_141
+java_Method_declaration "1..1" *-- "0..1" java_Type : type15
+java_Parameter "1..1" *-- "0..1" java_Type : type31
+java_Type "0..1" --* "1..1" java_Variable_declaration : type34
+java_Cast_Expression "1..1" *-- "0..1" java_Type : type95
+java_Compilation_unit "1..1" *-- "0..9999" java_Type_declaration : type_declarations5
+java_Statement "1..1" *-- "0..1" java_Variable_declaration : variable122
+java_For_Statement "1..1" *-- "0..1" java_Variable_declaration : variable158
+java_Statement "1..1" *-- "0..1" java_Variable_declarator : variableDeclarator146
+java_Variable_initializer "0..9999" --* "1..1" java_Variable_initializer : variableIniatializer249
+java_Variable_initializer "0..1" --* "1..1" java_Variable_initializer : variableInitializer146
+java_Statement "1..1" *-- "0..1" java_While_Statement : whileStatement132
+@enduml

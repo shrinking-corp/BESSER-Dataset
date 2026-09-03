@@ -1,0 +1,40 @@
+@startuml
+class Aircraft {
+  + flightState : FlightState
+  + state : MaintenanceState
+}
+class Airline {
+  + id : str
+}
+class Airport {
+  + id : str
+}
+class Captain {
+}
+class CoPilot {
+}
+class Company {
+}
+class Flight {
+  + arrivalTime : date
+  + departureTime : date
+  + id : int
+}
+enum FlightState {
+}
+enum MaintenanceState {
+}
+class Navigator {
+}
+class Pilot {
+}
+Aircraft "0..9999" -- "1..9999" Captain : Aircraft_Captain
+Aircraft "0..9999" -- "1..9999" CoPilot : Aircraft_CoPilot
+Aircraft "0..9999" -- "0..9999" Pilot : Aircraft_Pilot
+Aircraft "0..9999" -- "0..9999" Airline : Airline_Aircraft
+Airline "1..1" -- "0..9999" Flight : Airline_Flight
+Company "1..1" -- "1..9999" Pilot : Company_Pilot
+Aircraft "1..1" -- "0..9999" Flight : Flight_Aircraft
+Airport "1..1" -- "0..9999" Flight : Flights_Airport
+Airport "1..1" -- "0..9999" Flight : Flights_Airport2
+@enduml

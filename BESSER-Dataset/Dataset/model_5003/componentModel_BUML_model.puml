@@ -1,0 +1,186 @@
+@startuml
+class Action {
+}
+class AssemblyViewType {
+}
+class Component {
+}
+class DelegationConnector {
+}
+class ParameterTyp {
+}
+class SimpleParameterType {
+}
+class Type {
+}
+class ViewPoint {
+}
+class ViewType {
+}
+class componentModel_Action {
+}
+class componentModel_AllocationViewType {
+}
+class componentModel_AssemblyConnector {
+}
+class componentModel_AssemblyContext {
+  + name : str
+}
+class componentModel_AssemblyViewPoint {
+}
+class componentModel_AssemblyViewType {
+}
+class componentModel_Boolean {
+}
+class componentModel_Branch {
+}
+class componentModel_Char {
+}
+class componentModel_ComplexParameterType {
+}
+class componentModel_Component {
+  + name : str
+}
+class componentModel_CompositeComponent {
+}
+class componentModel_Date {
+}
+abstract class componentModel_DelegationConnector {
+}
+class componentModel_DeploymentViewPoint {
+}
+class componentModel_Double {
+}
+class componentModel_EnvironmentViewType {
+}
+class componentModel_ExternalCall {
+}
+class componentModel_Float {
+}
+class componentModel_Int {
+}
+class componentModel_Interface {
+  + name : str
+}
+class componentModel_InterfaceServiceMapTuple {
+}
+class componentModel_InternalAction {
+}
+class componentModel_List {
+}
+class componentModel_Long {
+}
+class componentModel_Loop {
+}
+class componentModel_Map {
+}
+class componentModel_Parameter {
+  + name : str
+}
+abstract class componentModel_ParameterTyp {
+}
+class componentModel_ProvidedDelegationConnector {
+}
+class componentModel_ProvidedRole {
+  + name : str
+}
+class componentModel_Repository {
+}
+class componentModel_RepositoryViewType {
+}
+class componentModel_RequiredDelegationConnector {
+}
+class componentModel_RequiredRole {
+  + name : str
+}
+class componentModel_Service {
+}
+class componentModel_ServiceEffectSpecification {
+}
+class componentModel_Signature {
+  + name : str
+}
+abstract class componentModel_SimpleParameterType {
+}
+class componentModel_String {
+}
+class componentModel_System {
+}
+class componentModel_SystemIndependentViewPoint {
+}
+abstract class componentModel_Type {
+}
+abstract class componentModel_ViewPoint {
+}
+abstract class componentModel_ViewType {
+}
+abstract class componentModel_Void {
+}
+Action <|-- componentModel_Branch
+Action <|-- componentModel_ExternalCall
+Action <|-- componentModel_InternalAction
+Action <|-- componentModel_Loop
+AssemblyViewType <|-- componentModel_AssemblyContext
+Component <|-- componentModel_CompositeComponent
+DelegationConnector <|-- componentModel_ProvidedDelegationConnector
+DelegationConnector <|-- componentModel_RequiredDelegationConnector
+ParameterTyp <|-- componentModel_ComplexParameterType
+ParameterTyp <|-- componentModel_SimpleParameterType
+SimpleParameterType <|-- componentModel_Boolean
+SimpleParameterType <|-- componentModel_Char
+SimpleParameterType <|-- componentModel_Date
+SimpleParameterType <|-- componentModel_Double
+SimpleParameterType <|-- componentModel_Float
+SimpleParameterType <|-- componentModel_Int
+SimpleParameterType <|-- componentModel_List
+SimpleParameterType <|-- componentModel_Long
+SimpleParameterType <|-- componentModel_Map
+SimpleParameterType <|-- componentModel_Parameter
+SimpleParameterType <|-- componentModel_String
+Type <|-- componentModel_ParameterTyp
+Type <|-- componentModel_Void
+ViewPoint <|-- componentModel_AssemblyViewPoint
+ViewPoint <|-- componentModel_DeploymentViewPoint
+ViewPoint <|-- componentModel_SystemIndependentViewPoint
+ViewType <|-- componentModel_AllocationViewType
+ViewType <|-- componentModel_AssemblyViewType
+ViewType <|-- componentModel_EnvironmentViewType
+ViewType <|-- componentModel_Repository
+ViewType <|-- componentModel_RepositoryViewType
+componentModel_Action "1..9999" --* "1..1" componentModel_ServiceEffectSpecification : actions16
+componentModel_Action "1..9999" --* "1..1" componentModel_Branch : actions18
+componentModel_Action "1..9999" --* "1..1" componentModel_Loop : actions20
+componentModel_AssemblyConnector "0..9999" -- "1..1" componentModel_Component : assemblyConnectors7
+componentModel_AssemblyContext "0..9999" --* "1..1" componentModel_System : assemblycontext50
+componentModel_AssemblyContext "0..1" -- "1..1" componentModel_RequiredRole : assemblycontext55
+componentModel_AssemblyContext "0..1" -- "1..1" componentModel_ProvidedRole : assemblycontext59
+componentModel_Component "0..9999" --* "1..1" componentModel_Repository : component0
+componentModel_Service "1..1" *-- "1..9999" componentModel_Signature : correspondence47
+componentModel_Component "1..1" -- "0..9999" componentModel_DelegationConnector : delegationConnectors9
+componentModel_AssemblyContext "0..9999" -- "1..1" componentModel_CompositeComponent : encapsulated70
+componentModel_Interface "0..9999" --* "1..1" componentModel_Repository : interface1
+componentModel_Interface "1..9999" -- "1..1" componentModel_System : interface52
+componentModel_Interface "0..1" -- "1..1" componentModel_RequiredRole : interface56
+componentModel_Interface "0..1" -- "1..1" componentModel_ProvidedRole : interface61
+componentModel_Component "1..1" -- "0..9999" componentModel_InterfaceServiceMapTuple : interfaceServiceMap5
+componentModel_AssemblyContext "1..1" -- "0..1" componentModel_Component : ownerComponent29
+componentModel_Parameter "1..1" -- "1..1" componentModel_ParameterTyp : parameterTyp74
+componentModel_Parameter "0..9999" --* "1..1" componentModel_Signature : parameters40
+componentModel_Interface "0..1" -- "1..1" componentModel_InterfaceServiceMapTuple : providedInterface11
+componentModel_Interface "1..1" -- "1..1" componentModel_ProvidedDelegationConnector : providedInterface64
+componentModel_AssemblyContext "1..1" -- "0..1" componentModel_ProvidedRole : providedrole26
+componentModel_AssemblyConnector "1..1" -- "0..1" componentModel_ProvidedRole : providedrole31
+componentModel_ProvidedDelegationConnector "1..1" -- "1..1" componentModel_ProvidedRole : providedrole66
+componentModel_Repository "0..9999" -- "1..1" componentModel_RepositoryViewType : repositories72
+componentModel_Interface "0..9999" --* "1..1" componentModel_Service : required44
+componentModel_Interface "1..1" -- "1..1" componentModel_RequiredDelegationConnector : requiredInterface37
+componentModel_ExternalCall "1..1" -- "0..1" componentModel_Service : requiredService22
+componentModel_AssemblyContext "1..1" -- "0..1" componentModel_RequiredRole : requiredrole27
+componentModel_AssemblyConnector "1..1" -- "0..1" componentModel_RequiredRole : requiredrole33
+componentModel_RequiredDelegationConnector "1..1" -- "1..1" componentModel_RequiredRole : requiredrole35
+componentModel_Signature "1..1" -- "1..1" componentModel_Type : returnType42
+componentModel_InterfaceServiceMapTuple "1..1" -- "0..9999" componentModel_Service : service14
+componentModel_Component "1..1" -- "0..1" componentModel_ServiceEffectSpecification : serviceeffectspecification3
+componentModel_Interface "1..1" *-- "0..9999" componentModel_Signature : signatures24
+componentModel_ViewPoint "1..1" *-- "0..9999" componentModel_ViewType : viewTypes69
+@enduml

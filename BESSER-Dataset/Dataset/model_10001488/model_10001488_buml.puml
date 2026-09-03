@@ -1,0 +1,33 @@
+@startuml
+class Admin {
+  + password : str
+  + uname : str
+}
+class Doctor {
+  + email : str
+  + password : str
+}
+class Insurance {
+  + email : str
+  + password : str
+}
+class Patient {
+  + email : str
+  + password : str
+}
+class UseCase3_UseCase {
+}
+class user {
+  + address : str
+  + email : str
+  + name : str
+  + password : str
+  + phone_number : int
+}
+Admin "1..1" -- "1..9999" Doctor : Admin_Doctor
+Admin "1..1" -- "1..9999" Patient : Admin_Patient
+Admin "1..1" -- "1..1" user : Admin_user
+Doctor "1..1" -- "1..9999" Patient : Doctor_Patient
+Insurance "0..1" -- "0..1" user : Insurance_user
+Doctor "0..1" -- "0..1" user : user_Doctor
+@enduml

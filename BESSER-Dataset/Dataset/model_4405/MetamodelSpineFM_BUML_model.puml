@@ -1,0 +1,220 @@
+@startuml
+class Action {
+}
+class CompositeConfiguration {
+}
+class Configuration {
+}
+class ConfigurationProcessStep {
+}
+class ConfigurationState {
+}
+class Constraint {
+}
+class Context {
+}
+class DEAssociation {
+}
+class DEAssociationEnd {
+}
+class DomainElement {
+}
+class Feature {
+}
+class FeatureModel {
+}
+class GlobalContext {
+}
+class Group {
+}
+enum GroupState {
+  ALTERNATIVE
+  MANDATORY
+  MUTEX
+  OPTIONAL
+  OR
+}
+class Link {
+}
+class LocalContext {
+}
+class MultipleSoftwareProductLine {
+}
+class MultiplicityElement {
+}
+class RestrictionFunction {
+}
+class Rule {
+}
+abstract class spinefm_ActionModel_Action {
+  + id : str
+  + applyAction(spinefm_confName : str, spinefm_fma : str) : void
+  + isSameObject(spinefm_o : str) : bool
+}
+class spinefm_ActionModel_ActionAddCTConstraint {
+}
+class spinefm_ActionModel_ActionDeselect {
+}
+class spinefm_ActionModel_ActionSelect {
+}
+class spinefm_ActionModel_ConfigurationState {
+  + id : str
+  + isIncludedIn(spinefm_otherState : str) : bool
+}
+class spinefm_ActionModel_RestrictionFunction {
+  + id : str
+  + createAndAssociateInverseRestFunc() : str
+}
+class spinefm_ActionModel_Rule {
+  + id : str
+  + createInverseRule() : str
+}
+class spinefm_ConfigurationModel_CompositeConfiguration {
+  + name : str
+  + addConfiguration(spinefm_conf : str) : void
+  + createConfigurationLink(spinefm_asso : str, spinefm_confSource : str, spinefm_confTarget : str) : void
+  + getCompatibleConfigurations(spinefm_asso : str, spinefm_confSource : str) : str
+  + getConfigurationByName(spinefm_confName : str) : str
+  + isValid() : bool
+}
+class spinefm_ConfigurationModel_Configuration {
+  + description : str
+  + id : str
+  + canBeLinked(spinefm_association : str) : bool
+  + getFeatureModel() : str
+  + getLinkedConfigurationsOfDomainElement(spinefm_de : str) : str
+  + isCompletlyLinked() : bool
+}
+class spinefm_ConfigurationModel_Link {
+  + id : str
+  + getAssociatedConfiguration(spinefm_conf : str) : str
+}
+class spinefm_FMModel_Constraint {
+  + Rule : str
+}
+class spinefm_FMModel_Feature {
+  + id : str
+  + name : str
+  + getAllChildrenFeatures() : str
+}
+class spinefm_FMModel_FeatureModel {
+  + id : str
+  + name : str
+  + addFeature(spinefm_feature : str, spinefm_name : str, spinefm_state : str) : void
+  + getFeatureFromName(spinefm_name : str) : str
+  + getStateFT(spinefm_feature : str) : str
+}
+class spinefm_FMModel_Group {
+  + state : str
+  + getAllChildren() : str
+}
+class spinefm_MSPLModel_DEAssociation {
+  + id : str
+  + computeActionsToDo(spinefm_CPSSource : str, spinefm_CPSTarget : str) : str
+  + createAndAssociateInverseAssociation() : str
+}
+class spinefm_MSPLModel_DEAssociationEnd {
+  + id : str
+}
+class spinefm_MSPLModel_DomainElement {
+  + id : str
+  + getSourcedAssociations() : str
+}
+class spinefm_MSPLModel_MultipleSoftwareProductLine {
+  + getDomainElementByName(spinefm_name : str) : str
+  + getValidAssociationsForSourceAndTarget(spinefm_source : str, spinefm_target : str) : str
+}
+class spinefm_MSPLModel_MultiplicityElement {
+  + id : str
+  + lowerBound : int
+  + upperBound : int
+  + isExactlyOne() : bool
+  + isLowerThanUpperBound(spinefm_value : str) : bool
+  + respectBoundaries(spinefm_value : str) : bool
+}
+class spinefm_ProcessModel_ConfigurationProcessStep {
+  + description : str
+  + id : str
+  + userConfig : bool
+  + addActionToDo(spinefm_a : str) : void
+  + alreadyHaveAction(spinefm_a : str) : bool
+  + apply() : bool
+  + getConfName() : str
+  + getState() : str
+  + isCompatibleWithConfiguration(spinefm_conf : str) : bool
+  + isComplete() : bool
+  + mergeWithExternalCPS(spinefm_cps : str) : void
+  + setFMA(spinefm_fma : str) : void
+}
+abstract class spinefm_ProcessModel_Context {
+  + id : str
+  + addCPS(spinefm_cps : str) : void
+  + getCPSOfDE(spinefm_de : str) : str
+  + mergeExternalCPS(spinefm_externalCPS : str) : void
+}
+class spinefm_ProcessModel_ContextManager {
+  + createNewContext() : str
+  + getContextFromId(spinefm_id : str) : str
+  + init() : void
+  + linkConfigurationsAndManageContexts(spinefm_association : str, spinefm_confSource : str, spinefm_confTarget : str) : str
+  + propagate(spinefm_CPS : str, spinefm_context : str) : void
+  + setFMAdapter(spinefm_fma : str) : void
+}
+class spinefm_ProcessModel_DeletedContextInformations {
+  + deletedContext : str
+}
+class spinefm_ProcessModel_GlobalContext {
+}
+class spinefm_ProcessModel_LocalContext {
+}
+Action <|-- spinefm_ActionModel_ActionAddCTConstraint
+Action <|-- spinefm_ActionModel_ActionDeselect
+Action <|-- spinefm_ActionModel_ActionSelect
+Context <|-- spinefm_ProcessModel_GlobalContext
+Context <|-- spinefm_ProcessModel_LocalContext
+ConfigurationProcessStep "1..1" -- "1..1" spinefm_ConfigurationModel_Configuration : CPS29
+ConfigurationProcessStep "1..9999" --* "1..1" spinefm_ProcessModel_Context : CPS56
+MultiplicityElement "1..1" --* "1..1" spinefm_MSPLModel_DEAssociationEnd : LinkMultiplicity18
+MultiplicityElement "1..1" --* "1..1" spinefm_MSPLModel_DomainElement : MultiplicityElement22
+Action "1..1" --* "1..1" spinefm_ActionModel_Rule : actions80
+Action "0..9999" -- "1..1" spinefm_ProcessModel_ConfigurationProcessStep : actionsDone45
+Action "0..9999" -- "1..1" spinefm_ProcessModel_ConfigurationProcessStep : actionsToDo49
+DomainElement "1..1" -- "1..1" spinefm_MSPLModel_DEAssociationEnd : apply_on19
+DEAssociation "0..9999" --* "1..1" spinefm_MSPLModel_MultipleSoftwareProductLine : associations7
+DEAssociation "0..9999" -- "1..1" spinefm_MSPLModel_DomainElement : belongs_to26
+Link "0..9999" -- "1..1" spinefm_ConfigurationModel_Configuration : belongs_to30
+Group "0..9999" --* "1..1" spinefm_FMModel_Feature : children3
+Configuration "0..1" -- "1..1" spinefm_ProcessModel_ConfigurationProcessStep : configuration54
+CompositeConfiguration "1..1" --* "1..1" spinefm_ProcessModel_GlobalContext : configuration58
+Configuration "1..9999" -- "1..1" spinefm_ProcessModel_LocalContext : configurations59
+Constraint "1..1" -- "1..1" spinefm_ActionModel_ActionAddCTConstraint : constraint90
+Constraint "0..9999" --* "1..1" spinefm_FMModel_FeatureModel : constraints1
+Context "1..1" -- "1..1" spinefm_ProcessModel_ConfigurationProcessStep : context52
+Feature "0..9999" -- "1..1" spinefm_ActionModel_ConfigurationState : deselectedFeatures74
+DomainElement "1..1" -- "1..1" spinefm_ProcessModel_ConfigurationProcessStep : domainElement46
+DomainElement "1..9999" --* "1..1" spinefm_MSPLModel_MultipleSoftwareProductLine : domainElements6
+Feature "0..1" -- "1..1" spinefm_ActionModel_Action : feature85
+Feature "1..9999" --* "1..1" spinefm_FMModel_Group : features4
+FeatureModel "1..1" -- "1..1" spinefm_ActionModel_ConfigurationState : fm77
+FeatureModel "1..1" -- "1..1" spinefm_ActionModel_Action : fm87
+GlobalContext "1..1" --* "1..1" spinefm_ProcessModel_ContextManager : globalContext62
+DEAssociation "1..1" -- "1..1" spinefm_MSPLModel_DEAssociation : inverse15
+RestrictionFunction "1..1" -- "1..1" spinefm_ActionModel_RestrictionFunction : inverse69
+Link "0..9999" --* "1..1" spinefm_ConfigurationModel_CompositeConfiguration : links42
+LocalContext "0..9999" --* "1..1" spinefm_ProcessModel_ContextManager : localContexts64
+MultipleSoftwareProductLine "1..1" -- "1..1" spinefm_ProcessModel_ContextManager : mspl61
+FeatureModel "1..1" -- "1..1" spinefm_MSPLModel_DomainElement : refers_on24
+DEAssociation "1..1" -- "1..1" spinefm_ConfigurationModel_Link : relatedAssociation34
+Context "0..1" -- "1..1" spinefm_ProcessModel_DeletedContextInformations : replacedBy66
+RestrictionFunction "0..9999" --* "1..1" spinefm_MSPLModel_DEAssociation : restrictionFunction9
+Feature "1..1" --* "1..1" spinefm_FMModel_FeatureModel : root0
+Rule "1..9999" --* "1..1" spinefm_ActionModel_RestrictionFunction : rules68
+Feature "1..9999" -- "1..1" spinefm_ActionModel_ConfigurationState : selectedFeatures72
+DEAssociationEnd "1..1" --* "1..1" spinefm_MSPLModel_DEAssociation : source10
+Configuration "1..1" -- "1..1" spinefm_ConfigurationModel_Link : source33
+ConfigurationState "1..1" --* "1..1" spinefm_ConfigurationModel_Configuration : state31
+ConfigurationState "1..1" --* "1..1" spinefm_ActionModel_Rule : state82
+Configuration "0..9999" --* "1..1" spinefm_ConfigurationModel_CompositeConfiguration : subConfigurations40
+DEAssociationEnd "1..1" --* "1..1" spinefm_MSPLModel_DEAssociation : target12
+Configuration "1..1" -- "1..1" spinefm_ConfigurationModel_Link : target37
+@enduml

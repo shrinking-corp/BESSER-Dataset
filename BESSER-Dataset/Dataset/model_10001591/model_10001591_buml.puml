@@ -1,0 +1,44 @@
+@startuml
+class Bill {
+  + GuestName : str
+  + bill_No : int
+}
+class Database {
+  + Details : str
+  + income : int
+  + service : str
+}
+class Guest {
+  + Address : str
+  + Room : int
+  + credit_card : int
+  + id : int
+  + name : str
+  + phoneNo : int
+}
+class Inventory {
+  + Status : str
+  + type : str
+}
+class Manager {
+  + id : int
+  + name : str
+}
+class Receptionist {
+  + Id : int
+  + name : str
+}
+class Room {
+  + RatesofRoom : int
+  + roomNo : int
+  + typeOfRoom : str
+}
+Bill "1..1" -- "1..1" Guest : Guest_Bill
+Guest "1..1" -- "1..1" Room : Guest_Room
+Inventory "1..1" -- "1..1" Manager : Inventory_Manager
+Database "1..1" -- "1..1" Manager : Manager_Database
+Bill "1..9999" -- "1..9999" Receptionist : Receptionist_Bill
+Database "1..1" -- "1..9999" Receptionist : Receptionist_Database
+Manager "1..1" -- "1..9999" Receptionist : Receptionist_Manager
+Receptionist "1..9999" -- "1..9999" Room : Receptionist_Room
+@enduml

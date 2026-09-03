@@ -1,0 +1,39 @@
+@startuml
+class Books_Database_Actor {
+}
+class Issue_Book_external {
+}
+class Librarian_Actor {
+}
+abstract class Library_Management_System_Component {
+}
+class Organise_Book_details_external {
+}
+class Pay_Fine_external {
+}
+class Register_Member_external {
+}
+class Requests_for_Book_Borrow_external {
+}
+class Return_Book_external {
+}
+class Search_for_Books_external {
+}
+class T {
+}
+class User_Actor {
+}
+class User_Database_Actor {
+}
+class Validation_external {
+}
+Issue_Book_external "0..1" -- "0..1" Librarian_Actor : Issue_Book_Librarian
+Books_Database_Actor "0..1" -- "0..1" Organise_Book_details_external : Organise_Book_details_Books_Database
+Librarian_Actor "0..1" -- "0..1" Pay_Fine_external : Pay_Fine_Librarian
+Books_Database_Actor "0..1" -- "0..1" Search_for_Books_external : Search_for_Books_Books_Database
+Register_Member_external "0..1" -- "0..1" User_Database_Actor : User_Database_Register_Member
+User_Database_Actor "0..1" -- "0..1" Validation_external : User_Database_Validation
+Requests_for_Book_Borrow_external "0..1" -- "0..1" User_Actor : User_Requests_for_Book_Borrow
+Return_Book_external "0..1" -- "0..1" User_Actor : User_Return_Book
+Search_for_Books_external "0..1" -- "0..1" User_Actor : User_Search_for_Books
+@enduml

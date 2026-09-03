@@ -1,0 +1,32 @@
+@startuml
+class Begin_Game_UseCase {
+}
+class Change_Deck__Image_Changes__UseCase {
+}
+class Match_Pairs_of_Cards_Together_Until_No_Cards_Remain_or_Mismatch_UseCase {
+}
+class MemoryGame_Card {
+  + deck : MemoryGame_Deck
+  + id : int
+  + image : str
+  + isShowing : bool
+  + position : int
+}
+class MemoryGame_Deck {
+  + cards : MemoryGame_Card
+  + id : int
+  + image : str
+}
+class Player_Actor {
+}
+class Quit_UseCase {
+}
+class Shuffle_Deck__Restart_Game__UseCase {
+}
+MemoryGame_Card "0..9999" -- "1..1" MemoryGame_Deck : Deck_Card
+Change_Deck__Image_Changes__UseCase "0..1" -- "0..1" Player_Actor : Player_Change_Deck__Image_Changes_
+Match_Pairs_of_Cards_Together_Until_No_Cards_Remain_or_Mismatch_UseCase "0..1" -- "0..1" Player_Actor : Player_Match_Pairs_of_Cards_Together_Until_No_Cards_Remain_or_Mismatch
+Player_Actor "0..1" -- "0..1" Quit_UseCase : Player_Quit
+Player_Actor "0..1" -- "0..1" Shuffle_Deck__Restart_Game__UseCase : Player_Shuffle_Deck__Start_New_Game_
+Begin_Game_UseCase "0..1" -- "0..1" Player_Actor : Player_Start_New_Game
+@enduml

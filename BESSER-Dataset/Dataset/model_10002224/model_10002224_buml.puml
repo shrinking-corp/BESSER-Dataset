@@ -1,0 +1,70 @@
+@startuml
+class Address {
+  + city : str
+  + country : str
+  + id : int
+  + street : str
+  + zipCode : str
+}
+class Basket {
+  + id : int
+  + updatedAt : str
+}
+class Buyer {
+  + email : str
+}
+class Category {
+  + id : int
+  + name : str
+  + photoPath : str
+}
+class Offer {
+  + beginDate : str
+  + discount : int
+  + endDate : str
+  + id : int
+}
+class Order {
+  + amount : int
+  + createdAt : str
+  + id : int
+}
+class Position {
+  + createdAt : str
+  + id : int
+  + latitude : str
+  + longitude : str
+}
+class Product {
+  + description : str
+  + id : int
+  + name : str
+  + photoPath : str
+  + price : int
+}
+class Seller {
+  + registerNumber : str
+}
+class Store {
+  + id : int
+  + name : str
+  + photoPath : str
+}
+class User {
+  + attribute : str
+  + firstname : str
+  + id : str
+  + lastname : str
+  + password : str
+  + username : str
+}
+Address "1..1" -- "1..1" Position : Address_Position
+Basket "1..1" -- "1..1" Buyer : Buyer_Basket
+Buyer "1..1" -- "0..9999" Order : Buyer_Order
+Buyer "1..1" -- "1..1" Position : Buyer_Position
+Category "1..1" -- "0..9999" Product : Category_Product
+Offer "0..9999" -- "1..1" Product : Product_Offer
+Seller "1..1" -- "1..1" Store : Seller_Store
+Address "1..1" -- "1..1" Store : Store_Address
+Product "0..9999" -- "1..1" Store : Store_Product
+@enduml

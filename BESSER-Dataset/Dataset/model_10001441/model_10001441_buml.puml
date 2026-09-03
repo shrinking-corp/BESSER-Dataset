@@ -1,0 +1,118 @@
+@startuml
+class Analyse2_AvisGlobal {
+  + Commentaires : str
+  + nbAvis : int
+  + notes : str
+}
+class Analyse2_Compte {
+  + login : str
+  + motdepasse : str
+}
+class Analyse2_Criteres {
+  + amabilite : int
+  + qualit_ : int
+  + rapidite : int
+  + rapportQualitePrix : int
+  + respectHoraires : int
+}
+class Analyse2_Fast_Food {
+  + Adresse : str
+  + Ville : str
+  + description : str
+  + horaires : str
+  + nbPlaces : int
+  + nom : str
+  + numeroTel : str
+  + photos : str
+  + prixMax : int
+  + prixMin : int
+  + proprietaire : str
+  + reviews : str
+  + siteDeCommande : str
+}
+class Analyse2_Moderateurs {
+}
+class Analyse2_Review {
+  + Commentaire : str
+  + lesNotes : str
+  + utilite : str
+}
+class Analyse2_Utilisateur {
+}
+class Analyse_Compte {
+  + login : str
+  + motdepasse : str
+}
+class Analyse_Criteres {
+  + amabilite : int
+  + qualit_ : int
+  + rapidite : int
+  + rapportQualitePrix : int
+  + respectHoraires : int
+}
+class Analyse_Fast_Food {
+  + Adresse : str
+  + Ville : str
+  + horaires : str
+  + nbPlaces : int
+  + nom : str
+  + notes : str
+  + numeroTel : str
+  + photos : str
+  + prixMax : int
+  + prixMin : int
+  + proprietaire : str
+}
+class Analyse_Moderateurs {
+}
+class Analyse_Review {
+  + Commentaire : str
+  + NoteGlobale : int
+  + lesNotes : str
+}
+class Analyse_Utilisateur {
+}
+class AvisGlobal {
+  + Commentaires : str
+  + diagramme : str
+  + nbAvis : int
+  + note : str
+}
+class Commentaire {
+  + auteur : Analyse_Compte
+  + commentaire : str
+}
+class Controlleur_Actor {
+}
+class FicheRestaurant {
+  + nom : str
+}
+enum IHM {
+}
+enum Information {
+}
+class Photo {
+}
+class Pr_sentation {
+  + adresse : str
+  + description : str
+  + numTel : str
+  + ouverture : str
+  + siteDeCommande : str
+}
+Analyse2_AvisGlobal "1..1" -- "1..1" Analyse2_Fast_Food : AvisGlobal_Fast_Food
+AvisGlobal "1..1" -- "1..1" FicheRestaurant : AvisGlobal_FicheRestaurant
+AvisGlobal "1..1" -- "0..9999" Commentaire : Commentaire_AvisGlobal
+Analyse_Compte "1..1" -- "0..9999" Analyse_Review : Compte_Review
+Analyse2_Compte "1..1" -- "0..9999" Analyse2_Review : Compte_Review1
+Analyse_Compte "0..1" -- "1..1" Analyse_Utilisateur : Compte_Utilisateur
+Analyse2_Compte "0..1" -- "1..1" Analyse2_Utilisateur : Compte_Utilisateur1
+Analyse_Criteres "0..9999" -- "0..9999" Analyse_Review : Criteres_Review
+Analyse2_Criteres "0..9999" -- "0..9999" Analyse2_Review : Criteres_Review1
+FicheRestaurant "1..1" -- "0..9999" Photo : FicheRestaurant_Photo
+Analyse_Compte "1..1" -- "1..1" Analyse_Moderateurs : Moderateurs_Compte
+Analyse2_Compte "1..1" -- "1..1" Analyse2_Moderateurs : Moderateurs_Compte1
+FicheRestaurant "1..1" -- "1..1" Pr_sentation : Pr_sentation_FicheRestaurant
+Analyse_Fast_Food "1..1" -- "0..9999" Analyse_Review : Review_Fast_Food
+Analyse2_Fast_Food "1..1" -- "0..9999" Analyse2_Review : Review_Fast_Food1
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+class Employee {
+}
+class iOI_Company {
+  + name : str
+}
+class iOI_Department {
+  + name : str
+}
+class iOI_Employee {
+  + name : str
+  + salary : int
+}
+class iOI_Manager {
+}
+class iOI_Model {
+  + name : str
+}
+class iOI_Position {
+  + name : str
+}
+Employee <|-- iOI_Manager
+iOI_Company "0..9999" --* "1..1" iOI_Model : companies0
+iOI_Company "1..1" *-- "0..9999" iOI_Department : departments5
+iOI_Department "1..1" *-- "0..9999" iOI_Employee : employees9
+iOI_Department "1..1" *-- "0..1" iOI_Manager : manager7
+iOI_Company "1..1" *-- "0..9999" iOI_Position : positions2
+iOI_Department "0..1" --* "1..1" iOI_Department : sub_department13
+iOI_Employee "1..1" -- "0..1" iOI_Position : works_on1
+@enduml

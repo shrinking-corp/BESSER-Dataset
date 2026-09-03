@@ -1,0 +1,97 @@
+@startuml
+class Class {
+}
+class Classifier {
+}
+class Element {
+}
+class Feature {
+}
+class NamedElement {
+}
+class Package {
+}
+class PackageableElement {
+}
+class Type {
+}
+class TypedElement {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class uml_Behavior {
+}
+class uml_Class {
+  + isAbstract : str
+  + isLeaf : str
+}
+abstract class uml_Classifier {
+}
+class uml_Dependency {
+}
+abstract class uml_Element {
+}
+abstract class uml_Feature {
+}
+class uml_Model {
+}
+abstract class uml_NamedElement {
+  + name : str
+  + visibility : str
+}
+class uml_Operation {
+}
+class uml_Package {
+}
+abstract class uml_PackageableElement {
+}
+class uml_Parameter {
+}
+class uml_Property {
+}
+abstract class uml_Type {
+}
+abstract class uml_TypedElement {
+}
+Class <|-- uml_Behavior
+Classifier <|-- uml_Class
+Element <|-- uml_Classifier
+Element <|-- uml_Dependency
+Element <|-- uml_NamedElement
+Element <|-- uml_Operation
+Element <|-- uml_Package
+Element <|-- uml_PackageableElement
+Element <|-- uml_Parameter
+Element <|-- uml_Property
+Feature <|-- uml_Operation
+Feature <|-- uml_Property
+NamedElement <|-- uml_Classifier
+NamedElement <|-- uml_Feature
+NamedElement <|-- uml_Operation
+NamedElement <|-- uml_Package
+NamedElement <|-- uml_PackageableElement
+NamedElement <|-- uml_Property
+NamedElement <|-- uml_TypedElement
+Package <|-- uml_Model
+PackageableElement <|-- uml_Dependency
+PackageableElement <|-- uml_Package
+PackageableElement <|-- uml_Type
+Type <|-- uml_Classifier
+TypedElement <|-- uml_Parameter
+TypedElement <|-- uml_Property
+uml_Dependency "1..1" -- "1..9999" uml_NamedElement : client14
+uml_Class "1..1" -- "0..9999" uml_Classifier : generalizationGeneral9
+uml_Behavior "0..9999" -- "1..1" uml_Operation : method1
+uml_Class "1..1" *-- "0..9999" uml_Classifier : nestedClassifier3
+uml_Class "1..1" *-- "0..9999" uml_Property : ownedAttribute7
+uml_Class "1..1" *-- "0..9999" uml_Operation : ownedOperation4
+uml_Operation "1..1" *-- "0..9999" uml_Parameter : ownedParameter0
+uml_Element "1..1" -- "0..1" uml_Element : owner19
+uml_Package "1..1" *-- "0..9999" uml_PackageableElement : packagedElement12
+uml_Dependency "1..1" -- "1..9999" uml_NamedElement : supplier13
+uml_Type "0..1" -- "1..1" uml_TypedElement : type17
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+class Address {
+}
+class GlobalLocation {
+}
+enum OrderStatus {
+  BackOrder
+  Complete
+  Pending
+}
+abstract class epo2_Address {
+  + country : str
+  + name : str
+}
+class epo2_Customer {
+  + customerID : int
+}
+class epo2_GlobalAddress {
+  + location : str
+}
+class epo2_GlobalLocation {
+  + countryCode : int
+}
+class epo2_Item {
+  + USPrice : int
+  + comment : str
+  + partNum : str
+  + productName : str
+  + quantity : int
+  + shipDate : str
+}
+class epo2_PurchaseOrder {
+  + comment : str
+  + orderDate : str
+  + status : str
+  + totalAmount : int
+}
+class epo2_Supplier {
+  + name : str
+}
+class epo2_USAddress {
+  + city : str
+  + state : str
+  + street : str
+  + zip : int
+}
+Address <|-- epo2_GlobalAddress
+Address <|-- epo2_USAddress
+GlobalLocation <|-- epo2_GlobalAddress
+epo2_Address "1..1" --* "1..1" epo2_PurchaseOrder : billTo2
+epo2_Customer "1..1" -- "1..1" epo2_PurchaseOrder : customer6
+epo2_Customer "0..9999" --* "1..1" epo2_Supplier : customers10
+epo2_Item "0..9999" --* "1..1" epo2_PurchaseOrder : items1
+epo2_Item "1..1" -- "1..1" epo2_PurchaseOrder : order0
+epo2_PurchaseOrder "0..9999" --* "1..1" epo2_Supplier : orders11
+epo2_Customer "1..1" -- "0..9999" epo2_PurchaseOrder : orders20
+epo2_PurchaseOrder "0..9999" -- "1..1" epo2_Supplier : pendingOrders14
+epo2_PurchaseOrder "0..1" -- "1..1" epo2_PurchaseOrder : previousOrder8
+epo2_Address "0..1" --* "1..1" epo2_PurchaseOrder : shipTo3
+epo2_PurchaseOrder "0..9999" -- "1..1" epo2_Supplier : shippedOrders17
+@enduml

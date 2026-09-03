@@ -1,0 +1,54 @@
+@startuml
+class Admin {
+}
+class Bank {
+  + Account_no : int
+  + Account_type : str
+  + Online_payment_ID_and_password : str
+}
+class Cash_on_delievery {
+  + Address : str
+  + Amount : str
+  + Customer_Name : str
+  + Phone_number : int
+}
+class Category {
+  + ID : int
+  + Type : str
+}
+class Customer {
+}
+class Food_Items {
+  + Item_Name : str
+  + Items_Detail : str
+  + Items_ID : int
+  + Items_Manage : Admin
+  + Items_Price : int
+  + item_photo : str
+}
+class Payment {
+  + Amount : int
+  + Payment_Option : str
+}
+class System_order {
+  + Customer_ID : int
+  + Customer_Name : str
+  + Date : int
+  + Delivery_Charges : int
+  + Order_ID : int
+  + Payment_Option : str
+  + Time : int
+  + Total : int
+}
+class User {
+  + User_ID : int
+  + User_Name : str
+  + User_Password : str
+  + User_Type : str
+}
+Admin "1..1" -- "1..9999" Food_Items : Admin_Food_Items
+Customer "1..9999" -- "0..1" Food_Items : Customer_Food_Items
+Category "1..1" -- "0..9999" Food_Items : Food_Items_Category
+Customer "0..1" -- "0..1" System_order : System_order_Customer
+Payment "1..9999" -- "1..9999" System_order : System_order_Payment
+@enduml

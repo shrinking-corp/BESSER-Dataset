@@ -1,0 +1,177 @@
+@startuml
+class AISystem {
+  + data : str
+  + licensing : LicensingType
+  + settings : str
+  + source : str
+  + version : str
+}
+abstract class AssessmentElement {
+  + description : str
+  + name : str
+}
+class ConfParam {
+  + param_type : str
+  + value : str
+}
+class Configuration {
+}
+class Dataset {
+  + dataset_type : DatasetType
+  + licensing : LicensingType
+  + source : str
+  + version : str
+}
+enum DatasetType {
+  Test
+  Training
+  Validation
+}
+class Datashape {
+  + accepted_target_values : str
+}
+class Derived {
+  + expression : str
+}
+class Direct {
+}
+class Element {
+}
+class Evaluation {
+  + status : EvaluationStatus
+}
+enum EvaluationStatus {
+  Archived
+  Custom
+  Done
+  Pending
+  Processing
+}
+class Feature {
+  + feature_type : str
+  + max_value : float
+  + min_value : float
+}
+class LegalRequirement {
+  + legal_ref : str
+  + principle : str
+  + standard : str
+}
+enum LicensingType {
+  Open_Source
+  Proprietary
+}
+class Measure {
+  + error : str
+  + uncertainty : float
+  + unit : str
+  + value : str
+}
+class Metric {
+}
+class MetricCategory {
+}
+class Observation {
+  + observer : str
+  + whenObserved : datetime
+}
+class Project {
+  + name : str
+  + status : ProjectStatus
+}
+enum ProjectStatus {
+  Archived
+  Closed
+  Created
+  Pending
+  Ready
+}
+enum TagsSector {
+  Agriculture
+  Competition
+  Defence
+  Economz
+  Education
+  Environment
+  Health
+  Inclusive_development
+  Innovation
+  Investment
+  Trade
+}
+enum TagsTargetSystem {
+  AI_Safety_and_Governance
+  Agents_and_Agentic_Systems
+  Audio
+  Computer_Vision
+  Decision_and_Optimization
+  Emerging_Other
+  Knowledge_and_Retrival
+  Multimodal
+  Natural_Language_Processing
+  Predictive_and_Analytical_AI
+  Recommendation_and_Personalization
+  Reinforcement_Learning_and_Control
+  Tabular_and_Structured_Data
+}
+enum TagsVerificationTarget {
+  Accountability
+  Diversity_Nondiscrimination_and_Fairness
+  Human_Agency_and_Oversight
+  Privacy_and_Data_Governance
+  Risk_management
+  Societal_and_enviornmanetal_wellbeing
+  Technical_Robustness__and_Saftey
+  Transparency
+}
+class Tool {
+  + branch : str
+  + licensing : LicensingType
+  + project : str
+  + project_maturity : str
+  + provider : str
+  + scientific_reference : str
+  + sector : TagsSector
+  + target_legal_requirements : str
+  + target_system : TagsTargetSystem
+  + verification_targets : TagsVerificationTarget
+  + verification_type : VerificationType
+  + version : str
+}
+enum VerificationType {
+  Case_1
+  Case_2
+  Case_3
+}
+AssessmentElement <|-- ConfParam
+AssessmentElement <|-- Configuration
+AssessmentElement <|-- Element
+AssessmentElement <|-- Metric
+AssessmentElement <|-- MetricCategory
+AssessmentElement <|-- Observation
+AssessmentElement <|-- Tool
+Element <|-- AISystem
+Element <|-- Dataset
+Element <|-- Feature
+Metric <|-- Derived
+Metric <|-- Direct
+AISystem "0..9999" -- "1..9999" Dataset : AISystem_Dataset
+ConfParam "0..9999" -- "1..1" Configuration : ConfParam_Configuration
+Configuration "1..1" -- "0..9999" Evaluation : Configuration_Evaluation
+Dataset "1..1" -- "0..9999" Observation : Dataset_Observation
+Dataset "0..9999" -- "1..1" Datashape : Datashape_Dataset
+Datashape "0..9999" -- "0..9999" Feature : Datashape_Feature
+Datashape "1..1" -- "0..9999" Feature : Datashape_Feature_1
+Derived "0..9999" -- "1..9999" Metric : Derived_Metric
+Element "0..9999" -- "0..9999" Evaluation : Evaluation_Element
+Evaluation "1..1" -- "0..9999" Observation : Evaluation_Observation
+LegalRequirement "0..9999" -- "1..1" Project : LegalRequirement_Project
+Element "1..1" -- "0..9999" Measure : Measure_Element
+Measure "0..9999" -- "1..1" Metric : Measure_Metric
+Measure "0..9999" -- "1..1" Observation : Measure_Observation
+Metric "0..9999" -- "0..9999" MetricCategory : MetricCategory_Metric
+Element "0..9999" -- "0..1" Project : Project_Element
+Evaluation "0..9999" -- "1..1" Project : Project_Evaluation
+Observation "0..9999" -- "1..1" Tool : Tool_Observation
+Element "1..1" -- "0..9999" Evaluation : evaluates_eval
+@enduml

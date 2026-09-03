@@ -1,0 +1,65 @@
+@startuml
+class AbstractDefinition {
+}
+class Expression {
+}
+class Statement {
+}
+class arithmetics_AbstractDefinition {
+  + name : str
+}
+class arithmetics_DeclaredParameter {
+}
+class arithmetics_Definition {
+}
+class arithmetics_Div {
+}
+class arithmetics_Evaluation {
+}
+class arithmetics_Expression {
+}
+class arithmetics_FunctionCall {
+}
+class arithmetics_Import {
+}
+class arithmetics_Minus {
+}
+class arithmetics_Module {
+  + name : str
+}
+class arithmetics_Multi {
+}
+class arithmetics_NumberLiteral {
+  + value : str
+}
+class arithmetics_Plus {
+}
+class arithmetics_Statement {
+}
+AbstractDefinition <|-- arithmetics_DeclaredParameter
+AbstractDefinition <|-- arithmetics_Definition
+Expression <|-- arithmetics_Div
+Expression <|-- arithmetics_FunctionCall
+Expression <|-- arithmetics_Minus
+Expression <|-- arithmetics_Multi
+Expression <|-- arithmetics_NumberLiteral
+Expression <|-- arithmetics_Plus
+Statement <|-- arithmetics_Definition
+Statement <|-- arithmetics_Evaluation
+arithmetics_Expression "0..9999" --* "1..1" arithmetics_FunctionCall : args32
+arithmetics_DeclaredParameter "0..9999" --* "1..1" arithmetics_Definition : args6
+arithmetics_Definition "1..1" *-- "0..1" arithmetics_Expression : expr7
+arithmetics_Evaluation "1..1" *-- "0..1" arithmetics_Expression : expression9
+arithmetics_AbstractDefinition "0..1" -- "1..1" arithmetics_FunctionCall : func31
+arithmetics_Import "0..9999" --* "1..1" arithmetics_Module : imports0
+arithmetics_Expression "0..1" --* "1..1" arithmetics_Plus : left11
+arithmetics_Expression "0..1" --* "1..1" arithmetics_Minus : left16
+arithmetics_Expression "0..1" --* "1..1" arithmetics_Multi : left21
+arithmetics_Div "1..1" *-- "0..1" arithmetics_Expression : left26
+arithmetics_Import "1..1" -- "0..1" arithmetics_Module : module3
+arithmetics_Expression "0..1" --* "1..1" arithmetics_Plus : right13
+arithmetics_Expression "0..1" --* "1..1" arithmetics_Minus : right18
+arithmetics_Expression "0..1" --* "1..1" arithmetics_Multi : right23
+arithmetics_Div "1..1" *-- "0..1" arithmetics_Expression : right28
+arithmetics_Module "1..1" *-- "0..9999" arithmetics_Statement : statements1
+@enduml

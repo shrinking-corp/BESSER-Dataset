@@ -1,0 +1,57 @@
+@startuml
+class ASort {
+}
+class ATerm {
+}
+class adt_ADT {
+  + name : str
+}
+abstract class adt_ASort {
+  + name : str
+  + isSubSortOf(adt_sort : str) : bool
+}
+abstract class adt_ATerm {
+  + symbol : str
+}
+class adt_Equation {
+}
+class adt_Operation {
+  + name : str
+}
+class adt_Signature {
+  + ops : str
+}
+class adt_Sort {
+}
+class adt_SubSort {
+}
+class adt_Term {
+}
+class adt_Variable {
+}
+class adt_VariableDeclaration {
+  + name : str
+}
+ASort <|-- adt_Sort
+ASort <|-- adt_SubSort
+ATerm <|-- adt_Term
+ATerm <|-- adt_Variable
+adt_ADT "1..1" -- "1..1" adt_ATerm : adt26
+adt_Operation "0..9999" -- "1..1" adt_Signature : allOperations6
+adt_Variable "1..1" -- "0..1" adt_VariableDeclaration : declaration36
+adt_ADT "1..1" *-- "0..9999" adt_Equation : equations3
+adt_ASort "0..9999" -- "1..1" adt_Operation : formalParameters23
+adt_Operation "1..9999" --* "1..1" adt_Signature : generators14
+adt_ATerm "1..1" --* "1..1" adt_Equation : leftHandTerm38
+adt_Operation "1..1" -- "1..1" adt_Term : operationSymbol31
+adt_Operation "0..9999" --* "1..1" adt_Signature : operations11
+adt_ASort "1..1" -- "1..1" adt_Operation : returnType20
+adt_ATerm "1..1" --* "1..1" adt_Equation : rightHandTerm41
+adt_ADT "1..1" *-- "1..1" adt_Signature : signature0
+adt_ASort "1..1" -- "1..1" adt_VariableDeclaration : sort17
+adt_ASort "1..1" -- "1..1" adt_ATerm : sort28
+adt_ASort "1..9999" --* "1..1" adt_Signature : sorts8
+adt_ATerm "0..9999" --* "1..1" adt_Term : subterms33
+adt_ASort "1..1" -- "1..1" adt_SubSort : superSort5
+adt_ADT "1..1" *-- "0..9999" adt_VariableDeclaration : variables1
+@enduml

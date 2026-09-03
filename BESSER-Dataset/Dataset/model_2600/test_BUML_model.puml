@@ -1,0 +1,17 @@
+@startuml
+enum MyEnum {
+  X
+  Y
+}
+class SubpackageMetaClass {
+}
+class test_MyMetaClass {
+  + enumAttr : str
+  + name : str
+}
+class test_subpackage_SubpackageMetaClass {
+  + name : str
+}
+test_MyMetaClass "1..1" *-- "0..9999" test_MyMetaClass : children1
+SubpackageMetaClass "0..1" --* "1..1" test_MyMetaClass : subPackageRef2
+@enduml

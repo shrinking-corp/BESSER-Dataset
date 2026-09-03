@@ -1,0 +1,86 @@
+@startuml
+class Benanntes {
+}
+class UML_14_Aufzaehlung {
+}
+class UML_14_Aufzaehlungswert {
+  + wert : str
+}
+abstract class UML_14_Benanntes {
+  + beschreibung : str
+}
+class UML_14_Eigenschaft {
+  + initialWert : str
+  + sichtbarkeit : str
+}
+class UML_14_Einfach {
+}
+class UML_14_Einschraenkung {
+  + beschreibung : str
+}
+class UML_14_InstanzAnzahl {
+  + obergrenze : str
+  + untergrenze : str
+}
+class UML_14_Kommentar {
+  + inhalt : str
+}
+class UML_14_Konzept {
+  + istAktiev : str
+}
+class UML_14_MethodenWert {
+  + art : str
+  + standartWert : str
+}
+class UML_14_Schachtel {
+}
+class UML_14_Verbindung {
+}
+class UML_14_Verbindungsende {
+  + istNavigierbar : str
+  + sichtbarkeit : str
+}
+class UML_14_Vererbung {
+  + unterscheidung : str
+}
+class UML_14_Verhalten {
+  + inhlat : str
+  + sichtbarkeit : str
+}
+class UML_14_root {
+}
+Benanntes <|-- UML_14_Aufzaehlung
+Benanntes <|-- UML_14_Eigenschaft
+Benanntes <|-- UML_14_Einfach
+Benanntes <|-- UML_14_Konzept
+Benanntes <|-- UML_14_MethodenWert
+Benanntes <|-- UML_14_Schachtel
+Benanntes <|-- UML_14_Verbindung
+Benanntes <|-- UML_14_Verbindungsende
+Benanntes <|-- UML_14_Verhalten
+UML_14_InstanzAnzahl "0..1" --* "1..1" UML_14_Verbindungsende : anzahlInstanzen20
+UML_14_Eigenschaft "1..1" *-- "0..1" UML_14_InstanzAnzahl : anzahlInstanzen5
+UML_14_Aufzaehlung "0..1" -- "1..1" UML_14_MethodenWert : aufzaehlungsTyp0
+UML_14_Aufzaehlung "0..1" -- "1..1" UML_14_Eigenschaft : aufzaehlungsTyp6
+UML_14_Eigenschaft "0..1" --* "1..1" UML_14_Verbindungsende : auszeichner23
+UML_14_Eigenschaft "0..9999" --* "1..1" UML_14_Konzept : eigenschaften26
+UML_14_Eigenschaft "1..1" -- "0..1" UML_14_Einfach : einfacherTyp9
+UML_14_Einfach "0..1" -- "1..1" UML_14_MethodenWert : einfacherWert1
+UML_14_Benanntes "1..1" *-- "0..9999" UML_14_Einschraenkung : einschraenkungen53
+UML_14_Konzept "0..9999" -- "1..1" UML_14_Vererbung : eltern13
+UML_14_Schachtel "0..9999" --* "1..1" UML_14_root : geschachtelt34
+UML_14_Konzept "0..9999" -- "1..1" UML_14_Vererbung : kind12
+UML_14_Benanntes "1..1" *-- "0..9999" UML_14_Kommentar : kommentare52
+UML_14_Verbindung "1..1" -- "1..1" UML_14_Verbindungsende : link17
+UML_14_Aufzaehlung "0..9999" --* "1..1" UML_14_Schachtel : seineAufzaehlungen41
+UML_14_Einfach "0..9999" --* "1..1" UML_14_Schachtel : seineEinfachenTypen49
+UML_14_Konzept "0..9999" --* "1..1" UML_14_Schachtel : seineKlassen35
+UML_14_Schachtel "0..9999" --* "1..1" UML_14_Schachtel : seinePakete39
+UML_14_Schachtel "1..1" *-- "0..9999" UML_14_Verbindung : seineVerbindungen47
+UML_14_Schachtel "1..1" *-- "0..9999" UML_14_Vererbung : seineVererbungen44
+UML_14_Konzept "0..1" -- "1..1" UML_14_Verbindungsende : teilnehmer18
+UML_14_Verbindung "1..1" *-- "2..9999" UML_14_Verbindungsende : verbinder16
+UML_14_Konzept "1..1" *-- "0..9999" UML_14_Verhalten : verhalten29
+UML_14_MethodenWert "0..1" --* "1..1" UML_14_Verhalten : verhaltensWerte3
+UML_14_Aufzaehlung "1..1" *-- "1..9999" UML_14_Aufzaehlungswert : zeichen32
+@enduml

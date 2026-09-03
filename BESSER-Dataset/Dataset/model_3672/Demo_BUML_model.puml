@@ -1,0 +1,21 @@
+@startuml
+class Demo_Department {
+  + budget : int
+  + location : bool
+  + name : bool
+}
+class Demo_Employee {
+  + name : bool
+  + salary : int
+}
+class Demo_Project {
+  + budget : int
+  + name : bool
+}
+Demo_Department "1..1" -- "1..1" Demo_Project : Controls_department7
+Demo_Department "1..1" -- "0..9999" Demo_Project : Controls_project3
+Demo_Department "1..9999" -- "1..1" Demo_Employee : WorksIn_department0
+Demo_Department "1..1" -- "0..9999" Demo_Employee : WorksIn_employee2
+Demo_Employee "0..9999" -- "1..1" Demo_Project : WorksOn_employee5
+Demo_Employee "1..1" -- "0..9999" Demo_Project : WorksOn_project1
+@enduml

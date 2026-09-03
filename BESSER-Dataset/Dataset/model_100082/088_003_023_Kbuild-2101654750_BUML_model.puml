@@ -1,0 +1,133 @@
+@startuml
+class Assign {
+}
+class AssignExtra {
+}
+class BuildEntry {
+}
+class If {
+}
+class Object_M {
+}
+class Object_Y {
+}
+class ShellCmd {
+}
+class Value {
+}
+class VarSlashSym {
+}
+class kbuild_Assign {
+}
+class kbuild_AssignExtra {
+}
+class kbuild_BuildEntry {
+}
+class kbuild_EObject {
+}
+class kbuild_Entry {
+}
+class kbuild_HostProgram {
+  + name : str
+}
+class kbuild_If {
+}
+class kbuild_IfEq {
+}
+class kbuild_IfNEq {
+}
+class kbuild_Ifndef {
+  + name : str
+}
+class kbuild_Include {
+}
+class kbuild_Model {
+}
+class kbuild_MyVariable {
+  + name : str
+}
+class kbuild_Obj_m {
+}
+class kbuild_Obj_y {
+}
+class kbuild_Object {
+}
+class kbuild_ObjectDir {
+}
+class kbuild_ObjectFile {
+}
+class kbuild_ObjectShellChar {
+  + value : str
+}
+class kbuild_ObjectShellCmd {
+}
+class kbuild_ObjectSingleFile {
+  + name : str
+}
+class kbuild_ObjectString {
+}
+class kbuild_ObjectVariable {
+  + additional : str
+}
+class kbuild_Object_M {
+}
+class kbuild_Object_Y {
+}
+class kbuild_ShellCmd {
+  + name : str
+}
+class kbuild_ShellPart {
+}
+class kbuild_Target {
+}
+class kbuild_Value {
+}
+class kbuild_Values {
+}
+class kbuild_VarSlashSym {
+  + name : str
+}
+class kbuild_Variable {
+}
+Assign <|-- kbuild_Values
+AssignExtra <|-- kbuild_Assign
+BuildEntry <|-- kbuild_HostProgram
+BuildEntry <|-- kbuild_IfEq
+BuildEntry <|-- kbuild_IfNEq
+BuildEntry <|-- kbuild_Ifndef
+BuildEntry <|-- kbuild_MyVariable
+BuildEntry <|-- kbuild_Object
+BuildEntry <|-- kbuild_Target
+If <|-- kbuild_Variable
+Object_M <|-- kbuild_Obj_m
+Object_Y <|-- kbuild_Obj_y
+ShellCmd <|-- kbuild_Include
+Value <|-- kbuild_ObjectDir
+Value <|-- kbuild_ObjectFile
+Value <|-- kbuild_ObjectShellChar
+Value <|-- kbuild_ObjectShellCmd
+Value <|-- kbuild_ObjectSingleFile
+Value <|-- kbuild_ObjectString
+Value <|-- kbuild_ObjectVariable
+VarSlashSym <|-- kbuild_Variable
+kbuild_BuildEntry "0..9999" --* "1..1" kbuild_Model : buildEntry0
+kbuild_ShellCmd "0..1" --* "1..1" kbuild_ShellPart : cmd18
+kbuild_EObject "0..1" --* "1..1" kbuild_If : elsevalue10
+kbuild_Assign "0..1" --* "1..1" kbuild_HostProgram : inner23
+kbuild_Value "0..9999" --* "1..1" kbuild_Values : items13
+kbuild_If "1..1" *-- "0..1" kbuild_ShellCmd : shell6
+kbuild_ShellCmd "1..1" *-- "0..9999" kbuild_ShellPart : shellPart14
+kbuild_Target "1..1" *-- "0..1" kbuild_Values : target25
+kbuild_ShellPart "1..1" *-- "0..1" kbuild_VarSlashSym : val16
+kbuild_BuildEntry "1..1" *-- "0..1" kbuild_EObject : value1
+kbuild_AssignExtra "0..1" --* "1..1" kbuild_Obj_y : value32
+kbuild_AssignExtra "0..1" --* "1..1" kbuild_Obj_m : value34
+kbuild_ObjectVariable "1..1" *-- "0..1" kbuild_Variable : value36
+kbuild_ObjectShellCmd "1..1" *-- "0..1" kbuild_ShellCmd : value38
+kbuild_AssignExtra "0..1" --* "1..1" kbuild_Entry : value4
+kbuild_EObject "0..1" --* "1..1" kbuild_If : value7
+kbuild_Target "1..1" *-- "0..9999" kbuild_Values : values27
+kbuild_HostProgram "1..1" *-- "0..1" kbuild_Variable : variable21
+kbuild_Entry "1..1" *-- "0..1" kbuild_Variable : variable3
+kbuild_MyVariable "1..1" *-- "0..1" kbuild_Variable : variable30
+@enduml

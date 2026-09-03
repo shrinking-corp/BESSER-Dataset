@@ -1,0 +1,69 @@
+@startuml
+class WinFormControlType {
+}
+class entityDsl_Attribute {
+  + name : str
+  + required : str
+}
+class entityDsl_CheckBox {
+}
+class entityDsl_ComboBox {
+}
+class entityDsl_ComboBoxItem {
+  + text : str
+}
+class entityDsl_DataType {
+  + type : str
+}
+class entityDsl_Domainmodel {
+  + applicationName : str
+}
+class entityDsl_Entity {
+  + name : str
+}
+class entityDsl_Label {
+  + text : str
+}
+class entityDsl_RadioButton {
+  + text : str
+}
+class entityDsl_RadioButtonGroup {
+}
+class entityDsl_Spinner {
+  + defaultValue : int
+  + maximumValue : int
+  + minimumValue : int
+}
+class entityDsl_TextBox {
+  + maxTextLength : int
+  + minTextLength : int
+  + name : str
+}
+class entityDsl_TrackBar {
+  + defaultTick : int
+  + denominator : int
+  + increment : int
+  + maximumValue : int
+  + minimumValue : int
+  + stringValues : str
+}
+class entityDsl_WinFormControlType {
+  + name : str
+}
+WinFormControlType <|-- entityDsl_CheckBox
+WinFormControlType <|-- entityDsl_ComboBox
+WinFormControlType <|-- entityDsl_RadioButtonGroup
+WinFormControlType <|-- entityDsl_Spinner
+WinFormControlType <|-- entityDsl_TrackBar
+entityDsl_Attribute "0..9999" --* "1..1" entityDsl_Entity : attributes1
+entityDsl_RadioButton "0..9999" --* "1..1" entityDsl_RadioButtonGroup : buttons10
+entityDsl_TextBox "0..1" --* "1..1" entityDsl_WinFormControlType : controlType7
+entityDsl_DataType "0..1" --* "1..1" entityDsl_RadioButtonGroup : dataType11
+entityDsl_DataType "0..1" --* "1..1" entityDsl_TextBox : dataType14
+entityDsl_ComboBox "1..1" *-- "0..1" entityDsl_DataType : dataType18
+entityDsl_DataType "0..1" --* "1..1" entityDsl_TrackBar : dataType9
+entityDsl_Domainmodel "1..1" *-- "0..9999" entityDsl_Entity : elements0
+entityDsl_Attribute "1..1" *-- "0..1" entityDsl_WinFormControlType : inputType3
+entityDsl_ComboBox "1..1" *-- "0..9999" entityDsl_ComboBoxItem : items17
+entityDsl_Attribute "1..1" *-- "0..1" entityDsl_Label : labelText5
+@enduml

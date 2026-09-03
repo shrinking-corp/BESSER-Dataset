@@ -1,0 +1,81 @@
+@startuml
+class Step {
+}
+class StructValue {
+}
+class Value {
+}
+class trace_ArrayValue {
+}
+class trace_Assignment {
+  + assignmentType : str
+  + baseName : str
+  + displayName : str
+  + id : str
+  + getType() : str
+  + getValue(trace_expression : str) : Value
+}
+class trace_Failure {
+  + reason : str
+}
+class trace_FunctionCall {
+  + displayName : str
+  + id : str
+}
+class trace_FunctionReturn {
+  + displayName : str
+  + id : str
+}
+class trace_Location {
+  + file : str
+  + function : str
+  + line : str
+}
+class trace_LocationOnly {
+}
+class trace_NameToValueMap {
+  + key : str
+}
+class trace_Output {
+  + text : str
+}
+class trace_SimpleValue {
+  + value : str
+}
+class trace_Step {
+  + hidden : str
+  + number : str
+  + thread : str
+  + interpret(trace_context : str) : str
+}
+class trace_StructValue {
+}
+class trace_Trace {
+}
+class trace_UnionValue {
+}
+class trace_Value {
+  + type : str
+  + compare(trace_old : str, trace_parentPath : str) : void
+  + getChildrenCount() : str
+  + getUserFriendlyRepresentation(trace_abridged : str) : str
+  + getValue(trace_expression : str) : Value
+  + listChildren(trace_requestedExpression : str) : void
+}
+Step <|-- trace_Assignment
+Step <|-- trace_Failure
+Step <|-- trace_FunctionCall
+Step <|-- trace_FunctionReturn
+Step <|-- trace_LocationOnly
+Step <|-- trace_Output
+StructValue <|-- trace_UnionValue
+Value <|-- trace_ArrayValue
+Value <|-- trace_SimpleValue
+Value <|-- trace_StructValue
+trace_Location "1..1" --* "1..1" trace_Step : location5
+trace_Step "0..9999" --* "1..1" trace_Trace : steps8
+trace_Assignment "1..1" -- "1..1" trace_Value : value1
+trace_NameToValueMap "1..1" *-- "1..1" trace_Value : value3
+trace_ArrayValue "1..1" -- "0..9999" trace_Value : values0
+trace_NameToValueMap "0..9999" --* "1..1" trace_StructValue : values6
+@enduml

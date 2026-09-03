@@ -1,0 +1,34 @@
+@startuml
+class school_ClassGroup {
+  + name : str
+}
+class school_ClassLevel {
+  + level : int
+}
+class school_NewEClass7 {
+}
+class school_Room {
+  + location : str
+  + AffectTeacher(school_t : str) : str
+}
+class school_SchoolYear {
+  + year : date
+}
+class school_Student {
+  + name : str
+}
+class school_Teacher {
+  + name : str
+}
+class school_store {
+  + lastIn : str
+}
+school_ClassGroup "0..9999" --* "1..1" school_SchoolYear : ecole10
+school_ClassGroup "1..1" -- "0..9999" school_Student : eleves0
+school_SchoolYear "1..1" *-- "0..9999" school_Student : eleves12
+school_ClassLevel "0..9999" --* "1..1" school_SchoolYear : niveau15
+school_ClassGroup "1..1" -- "1..1" school_ClassLevel : niveau3
+school_ClassGroup "1..1" -- "0..9999" school_Teacher : prof1
+school_Room "0..1" -- "1..1" school_Teacher : room7
+school_ClassGroup "1..1" -- "0..1" school_Room : salle5
+@enduml

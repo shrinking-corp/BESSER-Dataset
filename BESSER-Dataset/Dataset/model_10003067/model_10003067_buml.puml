@@ -1,0 +1,106 @@
+@startuml
+enum ArrayList_Instruction_ {
+}
+enum ArrayList_Integer_ {
+}
+enum ArrayList_Interrupter_ {
+}
+enum ArrayList_ProcessData_ {
+}
+class ArrayList_ProgramFileData_ {
+}
+class CPU {
+  + registers : str
+}
+class Class {
+}
+class Clock {
+  + clockCycle : int
+}
+class Exit {
+}
+class Font {
+}
+class Hard_Drive {
+  + memory : str
+}
+class Instruction_Interface {
+}
+class JFrame {
+}
+class JLabel {
+}
+class JScrollPane {
+}
+class JTable {
+}
+class JTextArea {
+}
+class JTextField {
+}
+class Memory {
+  + memory : Memory__
+  + table : Page__
+}
+enum Memory__ {
+}
+class Object {
+}
+class Operating_System {
+  + clock : Clock
+  + cpu : CPU
+  + hardDrive : Hard_Drive
+  + memory : Memory
+  + prompt : Prompt
+  + taskManager : Task_Manager
+}
+enum Page__ {
+}
+class Process {
+  + memoryUseage : int
+  + name : str
+  + processState : str
+  + registers : str
+}
+class ProcessData {
+  + instructions : ArrayList_Instruction_
+  + memory : int
+  + name : str
+  + startTime : str
+}
+class ProgramFileData {
+  + instructions : ArrayList_Instruction_
+  + memory : int
+  + name : str
+}
+class Prompt {
+  + FONT_SIZE : int
+  + commandLine : JTextField
+  + frameFont : Font
+  + output : JTextArea
+}
+class Request {
+  + endAddress : int
+  + processID : int
+  + startAddress : int
+}
+class Task_Manager {
+  + amountofFreeMemory : JLabel
+  + amountofUsedMemory : JLabel
+  + contactTable : JTable
+  + numberOfProcesses : JLabel
+  + scrollPane : JScrollPane
+}
+Exit "0..1" -- "0..1" Operating_System : Exit_Operating_System
+Exit "0..1" -- "0..1" Process : Exit_Process
+Hard_Drive "0..1" -- "0..1" Request : Hard_Drive_Request
+Instruction_Interface "0..1" -- "0..1" ProcessData : Instruction_ProcessData
+CPU "0..1" -- "0..1" Operating_System : Operating_System_CPU
+Clock "0..1" -- "0..1" Operating_System : Operating_System_Clock
+Hard_Drive "0..1" -- "0..1" Operating_System : Operating_System_Hard_Drive
+Memory "0..1" -- "0..1" Operating_System : Operating_System_Memory
+Operating_System "0..1" -- "0..1" Prompt : Operating_System_Prompt
+Operating_System "0..1" -- "0..1" Task_Manager : Operating_System_Task_Manager
+Instruction_Interface "0..1" -- "0..1" ProgramFileData : ProgramFileData_Instruction
+Process "0..1" -- "0..1" Task_Manager : Task_Manager_Process
+@enduml

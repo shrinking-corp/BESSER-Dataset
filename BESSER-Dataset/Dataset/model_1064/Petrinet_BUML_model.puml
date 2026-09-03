@@ -1,0 +1,39 @@
+@startuml
+class Arc {
+}
+class NamedElement {
+}
+abstract class petrinet_Arc {
+  + weight : int
+}
+class petrinet_NamedElement {
+  + name : str
+}
+class petrinet_PTArc {
+}
+class petrinet_Petrinet {
+}
+class petrinet_Place {
+}
+class petrinet_TPArc {
+}
+class petrinet_Transition {
+}
+Arc <|-- petrinet_PTArc
+Arc <|-- petrinet_TPArc
+NamedElement <|-- petrinet_Petrinet
+NamedElement <|-- petrinet_Place
+NamedElement <|-- petrinet_Transition
+petrinet_PTArc "1..1" -- "1..1" petrinet_Transition : dst14
+petrinet_Place "1..1" -- "1..1" petrinet_TPArc : dst18
+petrinet_PTArc "0..1" -- "1..1" petrinet_Transition : in_11
+petrinet_Place "1..1" -- "0..1" petrinet_TPArc : in_5
+petrinet_Petrinet "1..1" -- "1..1" petrinet_Place : net3
+petrinet_Petrinet "1..1" -- "1..1" petrinet_Transition : net6
+petrinet_PTArc "0..9999" --* "1..1" petrinet_Place : out4
+petrinet_TPArc "0..9999" --* "1..1" petrinet_Transition : out8
+petrinet_Petrinet "1..1" *-- "1..9999" petrinet_Place : places0
+petrinet_PTArc "1..1" -- "1..1" petrinet_Place : src16
+petrinet_TPArc "1..1" -- "1..1" petrinet_Transition : src21
+petrinet_Petrinet "1..1" *-- "1..9999" petrinet_Transition : transitions1
+@enduml

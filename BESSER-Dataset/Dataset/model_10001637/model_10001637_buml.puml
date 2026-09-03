@@ -1,0 +1,54 @@
+@startuml
+class Auftrag {
+  + anzahl : str
+  + keks : str
+  + name : str
+}
+class DateiEA {
+}
+class Plaetzchen {
+  + backzeit : str
+  + belag : str
+  + breite : str
+  + form : str
+  + laenge : str
+  + teig : str
+  + temperatur : str
+}
+class PlaetzchenAnzeigeForm {
+  + breite : str
+  + form : str
+  + laenge : str
+}
+class PlaetzchenDesignerForm {
+  + BLECHBREITE : str
+  + BLECHLAENGE : str
+  + datei : str
+  + neuerAuftrag : str
+  + neuesPlaetzchen : str
+  + plaetzchenGeaendert : bool
+}
+class Zutat {
+  + einheit : str
+  + menge : str
+  + name : str
+}
+class Zutaten {
+  + zutaten : str
+}
+class ZutatenEingabeForm {
+  + neueZutat : str
+}
+Auftrag "0..1" -- "0..1" DateiEA : DateiEA_Auftrag
+DateiEA "0..1" -- "0..1" Plaetzchen : DateiEA_Plaetzchen
+Auftrag "0..1" -- "0..1" PlaetzchenDesignerForm : PlaetzchenDesignerForm_Auftrag
+DateiEA "0..1" -- "0..1" PlaetzchenDesignerForm : PlaetzchenDesignerForm_DateiEA
+Plaetzchen "0..1" -- "0..1" PlaetzchenDesignerForm : PlaetzchenDesignerForm_Plaetzchen
+PlaetzchenAnzeigeForm "0..1" -- "0..1" PlaetzchenDesignerForm : PlaetzchenDesignerForm_PlaetzchenAnzeigeForm
+Auftrag "0..1" -- "0..1" Plaetzchen : Plaetzchen_Auftrag
+Plaetzchen "0..1" -- "0..1" Zutaten : Plaetzchen_Teig
+Plaetzchen "0..1" -- "0..1" Zutat : Plaetzchen_Zutat
+Zutat "0..1" -- "0..1" Zutaten : Teig_Zutat
+PlaetzchenDesignerForm "0..1" -- "0..1" ZutatenEingabeForm : ZutatenEingabe_PlaetzchenDesignerForm
+Zutat "0..1" -- "0..1" ZutatenEingabeForm : ZutatenEingabe_Zutat
+@enduml

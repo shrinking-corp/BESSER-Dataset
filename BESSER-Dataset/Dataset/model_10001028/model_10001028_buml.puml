@@ -1,0 +1,58 @@
+@startuml
+class Customer {
+  + address : str
+  + dateOfBirth : date
+  + emailAddress : str
+  + name : str
+  + phoneNumber : str
+}
+class Login {
+  + lastLoginTime : date
+  + password : str
+  + securityAnswer : str
+  + securityQuestion : str
+  + username : str
+}
+enum Native_App_AccountType {
+}
+class Native_App_Activity___ViewController___WmMediaPagerEvents {
+  + accountNo : str
+  + balance : float
+  + type : Native_App_AccountType
+}
+class Native_App_CertificatesOfDepositAccount {
+  + interestRate : float
+  + timePeriod : int
+}
+class Native_App_CheckingAccount {
+  + name : str
+}
+class Native_App_SavingsAccount {
+  + interestRate : float
+}
+class WmMediaPager_Mini_App_DepositTransaction {
+}
+enum WmMediaPager_Mini_App_TransactionType {
+}
+class WmMediaPager_Mini_App_TransferTransaction {
+  + sourceAccount : Native_App_Activity___ViewController___WmMediaPagerEvents
+  + targetAccount : Native_App_Activity___ViewController___WmMediaPagerEvents
+}
+class WmMediaPager_Mini_App_WithdrawTransaction {
+}
+class WmMediaPager_Mini_App_WmMediaPager {
+  + amount : float
+  + id : int
+  + transactionTime : date
+  + type : WmMediaPager_Mini_App_TransactionType
+}
+class WmMediaPager_Mini_App_WmMediaPagerEvents {
+  + amount : float
+  + id : int
+  + transactionTime : date
+  + type : WmMediaPager_Mini_App_TransactionType
+}
+Native_App_Activity___ViewController___WmMediaPagerEvents "1..1" -- "0..9999" WmMediaPager_Mini_App_WmMediaPager : Account_Transaction
+Customer "1..1" -- "0..1" Login : Customer_Login
+Customer "1..1" -- "1..9999" Native_App_Activity___ViewController___WmMediaPagerEvents : association2
+@enduml

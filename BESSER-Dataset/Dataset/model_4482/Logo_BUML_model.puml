@@ -1,0 +1,129 @@
+@startuml
+enum ArithmeticOperator {
+  div
+  minus
+  mult
+  plus
+}
+class BinaryExpr {
+}
+enum BooleanOperator {
+  diff
+  equal
+  greaterThan
+  lowerThan
+}
+class ControlStructure {
+}
+class Expression {
+}
+class Instruction {
+}
+class Literal {
+}
+class Logo_ArithmeticExpr {
+  + operator : str
+}
+class Logo_Assignation {
+}
+class Logo_Back {
+}
+abstract class Logo_BinaryExpr {
+}
+class Logo_Block {
+}
+class Logo_Boolean {
+  + value : bool
+}
+class Logo_BooleanExpr {
+  + operator : str
+}
+abstract class Logo_ControlStructure {
+}
+class Logo_Double {
+  + value : float
+}
+abstract class Logo_Expression {
+}
+class Logo_Forward {
+}
+class Logo_If {
+}
+abstract class Logo_Instruction {
+}
+class Logo_Integer {
+  + value : int
+}
+class Logo_Left {
+}
+abstract class Logo_Literal {
+}
+class Logo_LogoProgram {
+}
+abstract class Logo_Primitive {
+}
+class Logo_Procedure {
+  + name : str
+}
+class Logo_ProcedureCall {
+}
+class Logo_Right {
+}
+class Logo_String {
+  + value : str
+}
+class Logo_VarDecl {
+  + name : str
+}
+class Logo_VarReference {
+}
+class Logo_Void {
+}
+class Logo_While {
+}
+class Primitive {
+}
+BinaryExpr <|-- Logo_ArithmeticExpr
+BinaryExpr <|-- Logo_BooleanExpr
+ControlStructure <|-- Logo_Block
+ControlStructure <|-- Logo_If
+ControlStructure <|-- Logo_While
+Expression <|-- Logo_BinaryExpr
+Expression <|-- Logo_Literal
+Expression <|-- Logo_ProcedureCall
+Expression <|-- Logo_VarReference
+Instruction <|-- Logo_Assignation
+Instruction <|-- Logo_ControlStructure
+Instruction <|-- Logo_Expression
+Instruction <|-- Logo_Primitive
+Instruction <|-- Logo_Procedure
+Instruction <|-- Logo_VarDecl
+Literal <|-- Logo_Boolean
+Literal <|-- Logo_Double
+Literal <|-- Logo_Integer
+Literal <|-- Logo_String
+Literal <|-- Logo_Void
+Primitive <|-- Logo_Back
+Primitive <|-- Logo_Forward
+Primitive <|-- Logo_Left
+Primitive <|-- Logo_Right
+Logo_Expression "1..1" --* "1..1" Logo_Left : angle4
+Logo_Expression "1..1" --* "1..1" Logo_Right : angle6
+Logo_Block "0..1" --* "1..1" Logo_If : body12
+Logo_Block "0..1" --* "1..1" Logo_While : body19
+Logo_Block "0..1" --* "1..1" Logo_Procedure : body29
+Logo_Expression "1..1" --* "1..1" Logo_If : condition13
+Logo_Assignation "1..1" *-- "1..1" Logo_Expression : expr37
+Logo_Expression "1..1" --* "1..1" Logo_VarDecl : expr8
+Logo_Expression "1..1" --* "1..1" Logo_While : guard21
+Logo_Instruction "0..9999" --* "1..1" Logo_LogoProgram : instructions0
+Logo_Block "1..1" *-- "0..9999" Logo_Instruction : instructions16
+Logo_BinaryExpr "1..1" *-- "1..1" Logo_Expression : leftExpr24
+Logo_VarDecl "1..1" -- "1..1" Logo_VarReference : ref10
+Logo_Procedure "0..1" -- "1..1" Logo_ProcedureCall : ref33
+Logo_Assignation "1..1" -- "1..1" Logo_VarDecl : ref35
+Logo_Literal "0..1" --* "1..1" Logo_Procedure : returnType31
+Logo_BinaryExpr "1..1" *-- "1..1" Logo_Expression : rightExpr26
+Logo_Expression "1..1" --* "1..1" Logo_Forward : steps1
+Logo_Back "1..1" *-- "1..1" Logo_Expression : steps2
+@enduml

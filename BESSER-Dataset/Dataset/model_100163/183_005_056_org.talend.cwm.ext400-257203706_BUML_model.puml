@@ -1,0 +1,120 @@
+@startuml
+class Catalog {
+}
+class Column {
+}
+class Content {
+}
+class DataManager {
+}
+class DataProvider {
+}
+enum DevelopmentStatus {
+  DRAFT
+  PROD
+}
+class Document {
+}
+class Element {
+}
+class Machine {
+}
+class Procedure {
+}
+class ProviderConnection {
+}
+class SQLSimpleType {
+}
+class Schema {
+}
+class SoftwareSystem {
+}
+class Table {
+}
+class TdSqlDataType {
+}
+class TdXMLContent {
+}
+class TdXMLDocument {
+}
+class TdXMLElement {
+}
+class Trigger {
+}
+class View {
+}
+class cwm_relational_TdCatalog {
+  + addSchema(cwm_schema : str) : bool
+}
+class cwm_relational_TdColumn {
+  + javaType : int
+  + getContentType() : str
+  + setContentType(cwm_contentType : str) : void
+}
+class cwm_relational_TdProcedure {
+}
+class cwm_relational_TdSchema {
+}
+class cwm_relational_TdSqlDataType {
+  + autoIncrement : str
+  + caseSensitive : str
+  + javaDataType : int
+  + localTypeName : str
+  + nullable : str
+  + searchable : str
+  + unsignedAttribute : str
+}
+class cwm_relational_TdTable {
+}
+class cwm_relational_TdTrigger {
+}
+class cwm_relational_TdView {
+}
+class cwm_softwaredeployment_TdDataManager {
+}
+class cwm_softwaredeployment_TdDataProvider {
+}
+class cwm_softwaredeployment_TdMachine {
+}
+class cwm_softwaredeployment_TdProviderConnection {
+  + connectionString : str
+  + driverClassName : str
+  + login : str
+  + password : str
+}
+class cwm_softwaredeployment_TdSoftwareSystem {
+}
+class cwm_xml_TdXMLContent {
+}
+class cwm_xml_TdXMLDocument {
+  + xsdFilePath : str
+}
+class cwm_xml_TdXMLElement {
+  + javaType : str
+  + getContentType() : str
+  + setContentType(cwm_contentType : str) : void
+}
+class xml_cwm_EObject {
+}
+Catalog <|-- cwm_relational_TdCatalog
+Column <|-- cwm_relational_TdColumn
+Content <|-- cwm_xml_TdXMLContent
+DataManager <|-- cwm_softwaredeployment_TdDataManager
+DataProvider <|-- cwm_softwaredeployment_TdDataProvider
+Document <|-- cwm_xml_TdXMLDocument
+Element <|-- cwm_xml_TdXMLElement
+Machine <|-- cwm_softwaredeployment_TdMachine
+Procedure <|-- cwm_relational_TdProcedure
+ProviderConnection <|-- cwm_softwaredeployment_TdProviderConnection
+SQLSimpleType <|-- cwm_relational_TdSqlDataType
+Schema <|-- cwm_relational_TdSchema
+SoftwareSystem <|-- cwm_softwaredeployment_TdSoftwareSystem
+Table <|-- cwm_relational_TdTable
+Trigger <|-- cwm_relational_TdTrigger
+View <|-- cwm_relational_TdView
+TdXMLDocument "0..1" -- "1..1" cwm_xml_TdXMLElement : ownedDocument2
+TdSqlDataType "0..1" --* "1..1" cwm_relational_TdColumn : sqlDataType0
+TdXMLContent "0..1" --* "1..1" cwm_xml_TdXMLElement : xmlContent4
+TdXMLElement "0..9999" --* "1..1" cwm_xml_TdXMLContent : xmlElements6
+cwm_xml_TdXMLElement "1..1" -- "0..1" xml_cwm_EObject : xsdElementDeclaration1
+@enduml

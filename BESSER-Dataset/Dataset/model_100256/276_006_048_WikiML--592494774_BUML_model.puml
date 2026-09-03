@@ -1,0 +1,134 @@
+@startuml
+class AbstractFormattedInlineContent {
+}
+class AbstractUnformattedInlineContent {
+}
+class AnyText {
+}
+enum HorizontalAlign {
+  right
+}
+class HyperLink {
+}
+class ParagraphTypes {
+}
+class Template {
+}
+enum ViewType {
+  thumb
+}
+class wikiML_AboutTemplate {
+}
+class wikiML_AbstractFormattedInlineContent {
+}
+class wikiML_AbstractUnformattedInlineContent {
+}
+class wikiML_AnyText {
+}
+class wikiML_AnyTextSequence {
+}
+class wikiML_BlockQuote {
+}
+class wikiML_Bold {
+}
+class wikiML_Category {
+  + value : str
+}
+class wikiML_External {
+  + name : str
+}
+class wikiML_Heading2 {
+}
+class wikiML_Heading3 {
+}
+class wikiML_Heading4 {
+}
+class wikiML_Heading5 {
+}
+class wikiML_HyperLink {
+}
+class wikiML_Image {
+  + hAlign : str
+  + name : str
+  + type : str
+}
+class wikiML_Internal {
+}
+class wikiML_Italic {
+}
+class wikiML_ItalicBold {
+}
+class wikiML_MainTemplate {
+}
+class wikiML_OrderListItem {
+}
+class wikiML_OrderedList {
+}
+class wikiML_Paragraph {
+  + paragraph : str
+}
+class wikiML_ParagraphTypes {
+}
+class wikiML_QuoteTemplate {
+}
+class wikiML_Template {
+  + type : str
+}
+class wikiML_Text {
+  + name : str
+}
+class wikiML_UnorderListItem {
+  + level : str
+}
+class wikiML_UnorderedList {
+}
+class wikiML_WikiPage {
+  + name : str
+}
+AbstractFormattedInlineContent <|-- wikiML_Bold
+AbstractFormattedInlineContent <|-- wikiML_Italic
+AbstractFormattedInlineContent <|-- wikiML_ItalicBold
+AbstractUnformattedInlineContent <|-- wikiML_HyperLink
+AbstractUnformattedInlineContent <|-- wikiML_Text
+AnyText <|-- wikiML_AbstractFormattedInlineContent
+AnyText <|-- wikiML_AbstractUnformattedInlineContent
+HyperLink <|-- wikiML_External
+HyperLink <|-- wikiML_Internal
+ParagraphTypes <|-- wikiML_AnyText
+ParagraphTypes <|-- wikiML_BlockQuote
+ParagraphTypes <|-- wikiML_Category
+ParagraphTypes <|-- wikiML_Heading2
+ParagraphTypes <|-- wikiML_Heading3
+ParagraphTypes <|-- wikiML_Heading4
+ParagraphTypes <|-- wikiML_Heading5
+ParagraphTypes <|-- wikiML_Image
+ParagraphTypes <|-- wikiML_OrderedList
+ParagraphTypes <|-- wikiML_Paragraph
+ParagraphTypes <|-- wikiML_Template
+ParagraphTypes <|-- wikiML_UnorderedList
+Template <|-- wikiML_AboutTemplate
+Template <|-- wikiML_MainTemplate
+Template <|-- wikiML_QuoteTemplate
+wikiML_AbstractUnformattedInlineContent "0..1" --* "1..1" wikiML_Image : altText19
+wikiML_AnyText "0..1" --* "1..1" wikiML_HyperLink : altText34
+wikiML_Internal "1..1" *-- "0..1" wikiML_Text : anchor37
+wikiML_AnyTextSequence "0..1" --* "1..1" wikiML_Image : caption20
+wikiML_AnyTextSequence "0..1" --* "1..1" wikiML_BlockQuote : content1
+wikiML_AboutTemplate "1..1" *-- "0..9999" wikiML_AnyTextSequence : content2
+wikiML_AnyTextSequence "0..9999" --* "1..1" wikiML_MainTemplate : content4
+wikiML_AnyText "0..9999" --* "1..1" wikiML_AnyTextSequence : content40
+wikiML_ParagraphTypes "0..9999" --* "1..1" wikiML_WikiPage : elements0
+wikiML_Paragraph "0..1" --* "1..1" wikiML_UnorderedList : end10
+wikiML_OrderedList "1..1" *-- "0..1" wikiML_Paragraph : end7
+wikiML_AbstractUnformattedInlineContent "0..1" --* "1..1" wikiML_Heading2 : headingValue224
+wikiML_AbstractUnformattedInlineContent "0..1" --* "1..1" wikiML_Heading3 : headingValue326
+wikiML_AbstractUnformattedInlineContent "0..1" --* "1..1" wikiML_Heading4 : headingValue428
+wikiML_AbstractUnformattedInlineContent "0..1" --* "1..1" wikiML_Heading5 : headingValue530
+wikiML_OrderListItem "0..9999" --* "1..1" wikiML_OrderedList : items6
+wikiML_UnorderListItem "0..9999" --* "1..1" wikiML_UnorderedList : items9
+wikiML_AnyTextSequence "0..1" --* "1..1" wikiML_UnorderListItem : itemtext13
+wikiML_AnyTextSequence "0..1" --* "1..1" wikiML_OrderListItem : itemtext16
+wikiML_Internal "1..1" -- "0..1" wikiML_WikiPage : link35
+wikiML_Category "1..1" *-- "0..1" wikiML_Text : name23
+wikiML_AbstractFormattedInlineContent "1..1" *-- "0..1" wikiML_AbstractUnformattedInlineContent : name32
+@enduml

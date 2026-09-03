@@ -1,0 +1,31 @@
+@startuml
+class docbook_BookType {
+  + info : str
+  + title : str
+}
+class docbook_ChapterType {
+  + mixed : str
+  + para : str
+  + title : str
+}
+class docbook_DocumentRoot {
+  + info : str
+  + mixed : str
+  + para : str
+  + title : str
+}
+class docbook_EStringToStringMapEntry {
+}
+class docbook_Sect1Type {
+  + mixed : str
+  + para : str
+  + title : str
+}
+docbook_BookType "0..9999" --* "1..1" docbook_DocumentRoot : book7
+docbook_BookType "1..1" *-- "1..9999" docbook_ChapterType : chapter0
+docbook_ChapterType "0..9999" --* "1..1" docbook_DocumentRoot : chapter10
+docbook_ChapterType "1..1" *-- "0..9999" docbook_Sect1Type : sect11
+docbook_DocumentRoot "1..1" *-- "0..9999" docbook_Sect1Type : sect113
+docbook_DocumentRoot "1..1" *-- "0..9999" docbook_EStringToStringMapEntry : xMLNSPrefixMap3
+docbook_DocumentRoot "1..1" *-- "0..9999" docbook_EStringToStringMapEntry : xSISchemaLocation4
+@enduml

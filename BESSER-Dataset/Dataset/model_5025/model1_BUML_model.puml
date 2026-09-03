@@ -1,0 +1,75 @@
+@startuml
+class Address {
+}
+class Order {
+}
+class OrderDetail {
+}
+enum VAT {
+  vat0
+  vat15
+  vat7
+}
+class model1_Address {
+  + city : str
+  + name : str
+  + street : str
+}
+class model1_Category {
+  + name : str
+}
+class model1_Company {
+}
+class model1_Customer {
+}
+abstract class model1_Order {
+}
+class model1_OrderAddress {
+  + testAttribute : bool
+}
+class model1_OrderDetail {
+  + price : float
+}
+class model1_Product1 {
+  + description : str
+  + name : str
+  + vat : str
+}
+class model1_ProductToOrder {
+}
+class model1_PurchaseOrder {
+  + date : date
+}
+class model1_SalesOrder {
+  + id : int
+}
+class model1_Supplier {
+  + preferred : bool
+}
+Address <|-- model1_Company
+Address <|-- model1_Customer
+Address <|-- model1_OrderAddress
+Address <|-- model1_Supplier
+Order <|-- model1_OrderAddress
+Order <|-- model1_PurchaseOrder
+Order <|-- model1_SalesOrder
+OrderDetail <|-- model1_OrderAddress
+model1_Category "0..9999" --* "1..1" model1_Company : categories0
+model1_Category "0..9999" --* "1..1" model1_Category : categories20
+model1_Customer "1..1" -- "1..1" model1_SalesOrder : customer18
+model1_Company "1..1" *-- "0..9999" model1_Customer : customers3
+model1_Product1 "0..1" -- "1..1" model1_ProductToOrder : key26
+model1_Order "1..1" -- "1..1" model1_OrderDetail : order14
+model1_Customer "1..1" *-- "0..9999" model1_ProductToOrder : orderByProduct11
+model1_Order "1..1" *-- "0..9999" model1_OrderDetail : orderDetails13
+model1_OrderDetail "0..9999" -- "1..1" model1_Product1 : orderDetails24
+model1_OrderDetail "1..1" -- "0..1" model1_Product1 : product15
+model1_Category "1..1" *-- "0..9999" model1_Product1 : products22
+model1_Company "1..1" *-- "0..9999" model1_PurchaseOrder : purchaseOrders5
+model1_PurchaseOrder "0..9999" -- "1..1" model1_Supplier : purchaseOrders9
+model1_Customer "1..1" -- "0..9999" model1_SalesOrder : salesOrders10
+model1_Company "1..1" *-- "0..9999" model1_SalesOrder : salesOrders7
+model1_PurchaseOrder "1..1" -- "1..1" model1_Supplier : supplier17
+model1_Company "1..1" *-- "0..9999" model1_Supplier : suppliers1
+model1_ProductToOrder "1..1" -- "0..1" model1_SalesOrder : value29
+@enduml

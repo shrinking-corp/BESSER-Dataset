@@ -1,0 +1,22 @@
+@startuml
+class hbmapkeys_Book {
+  + title : str
+}
+class hbmapkeys_City {
+  + name : str
+}
+class hbmapkeys_StringToWriterMapEntry {
+  + key : str
+}
+class hbmapkeys_Writer {
+  + name : str
+}
+class hbmapkeys_WriterToCityMapEntry {
+}
+hbmapkeys_Book "1..1" *-- "0..9999" hbmapkeys_WriterToCityMapEntry : cityByWriter1
+hbmapkeys_City "1..1" -- "1..1" hbmapkeys_Writer : cityWriter3
+hbmapkeys_Writer "0..1" -- "1..1" hbmapkeys_WriterToCityMapEntry : key7
+hbmapkeys_City "0..1" -- "1..1" hbmapkeys_WriterToCityMapEntry : value10
+hbmapkeys_StringToWriterMapEntry "1..1" -- "0..1" hbmapkeys_Writer : value4
+hbmapkeys_Book "1..1" *-- "0..9999" hbmapkeys_StringToWriterMapEntry : writersByName0
+@enduml

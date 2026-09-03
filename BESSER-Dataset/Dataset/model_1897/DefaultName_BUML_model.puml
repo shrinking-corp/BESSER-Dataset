@@ -1,0 +1,246 @@
+@startuml
+enum BehaviorType {
+  ExternalInput
+  ExternalOutput
+  Guard
+  InternalInput
+  InternalOutput
+  Selection
+  StateRealization
+}
+enum Branch {
+  Alternative
+  Parallel
+}
+enum Composition {
+  Atomic
+  Sequential
+}
+enum EventType {
+  ExternalInput
+  ExternalOutput
+  InternalInput
+  InternalOutput
+}
+class GUI {
+}
+class GUIImplementable {
+}
+class Layout {
+}
+class Node {
+}
+enum Operator {
+  BranchKill
+  Conjunction
+  Disjunction
+  ExclusiveOR
+  NoOperator
+  Reference
+  Reversion
+  Synchronize
+}
+enum SpecialEdgeEnum {
+  BranchKill
+  Reference
+  Reversion
+  Synchronize
+}
+enum TraceabilityStatus {
+  Deleted
+  DesignRefinement
+  Implied
+  Missing
+  Original
+  Updated
+}
+class graphbt_AlternativeClass {
+  + alternativeAttribute : str
+}
+class graphbt_Attribute {
+  + name : str
+  + type : str
+  + value : str
+}
+class graphbt_Author {
+  + contact : str
+  + name : str
+  + role : str
+}
+class graphbt_AuthorList {
+}
+class graphbt_BEModel {
+  + name : str
+  + subtitle : str
+  + version : str
+}
+class graphbt_Behavior {
+  + behaviorDesc : str
+  + behaviorName : str
+  + behaviorRef : str
+  + behaviorType : str
+  + technicalDetail : str
+}
+class graphbt_BehaviorTree {
+  + name : str
+}
+class graphbt_Button {
+  + label : str
+}
+class graphbt_CTEdge {
+}
+class graphbt_Component {
+  + componentDesc : str
+  + componentName : str
+  + componentRef : str
+  + enumerated : bool
+  + id : int
+  + getAttribute(graphbt_name : str) : str
+}
+class graphbt_ComponentList {
+}
+class graphbt_Edge {
+  + branch : str
+  + composition : str
+}
+class graphbt_EmptyNode {
+  + label : str
+}
+class graphbt_Formula {
+  + formulaName : str
+}
+class graphbt_FormulaList {
+}
+class graphbt_GUI {
+  + codeImplementation : str
+  + identifier : str
+}
+class graphbt_GUIImplementable {
+}
+class graphbt_Information {
+  + key : str
+  + value : str
+}
+class graphbt_InputGUI {
+}
+class graphbt_InputType {
+}
+class graphbt_Layout {
+  + cRef : str
+  + height : int
+  + width : int
+  + x : int
+  + y : int
+  + z : int
+}
+class graphbt_LayoutList {
+}
+class graphbt_Libraries {
+}
+class graphbt_Library {
+  + desc : str
+  + id : str
+  + location : str
+  + name : str
+  + text : str
+}
+class graphbt_Link {
+}
+class graphbt_MapInformation {
+  + getValue(graphbt_key : str) : str
+  + setValue(graphbt_key : str, graphbt_value : str) : void
+}
+class graphbt_MethodDeclaration {
+  + name : str
+  + type : str
+}
+class graphbt_Node {
+  + id : str
+  + index : int
+}
+class graphbt_OperatorClass {
+  + operatorLiteral : str
+}
+class graphbt_OutputGUI {
+}
+class graphbt_OutputType {
+}
+class graphbt_Parameter {
+  + name : str
+  + type : str
+}
+class graphbt_Requirement {
+  + Description : str
+  + Id : str
+  + Key : str
+  + Requirement : str
+}
+class graphbt_RequirementList {
+  + projectId : str
+}
+class graphbt_SpecialEdge {
+  + destination : int
+  + type : str
+}
+class graphbt_StandardNode {
+  + behaviorRef : str
+  + componentRef : str
+  + label : str
+  + leaf : bool
+  + operator : str
+  + traceabilityLink : str
+  + traceabilityStatus : str
+}
+class graphbt_State {
+  + desc : str
+  + name : str
+  + ref : str
+}
+class graphbt_TraceabilityStatusClass {
+  + traceabilityStatusLiteral : str
+}
+GUI <|-- graphbt_InputGUI
+GUI <|-- graphbt_OutputGUI
+GUIImplementable <|-- graphbt_InputType
+GUIImplementable <|-- graphbt_OutputType
+Layout <|-- graphbt_Button
+Node <|-- graphbt_EmptyNode
+Node <|-- graphbt_StandardNode
+graphbt_Attribute "0..9999" --* "1..1" graphbt_Component : attributes32
+graphbt_MapInformation "1..1" --* "1..1" graphbt_State : attributes45
+graphbt_Attribute "0..9999" --* "1..1" graphbt_Library : attributes55
+graphbt_AuthorList "0..1" --* "1..1" graphbt_BEModel : authorList16
+graphbt_Author "0..9999" -- "1..1" graphbt_AuthorList : authors83
+graphbt_Behavior "0..9999" --* "1..1" graphbt_Component : behaviors41
+graphbt_Behavior "0..9999" --* "1..1" graphbt_Library : behaviors52
+graphbt_Edge "1..1" *-- "1..9999" graphbt_Link : childNode24
+graphbt_BEModel "1..1" *-- "1..1" graphbt_ComponentList : componentList1
+graphbt_Component "1..9999" --* "1..1" graphbt_ComponentList : components60
+graphbt_Edge "1..1" -- "0..1" graphbt_Node : container26
+graphbt_BEModel "1..1" *-- "1..1" graphbt_BehaviorTree : dbt0
+graphbt_Edge "0..1" --* "1..1" graphbt_Node : edge20
+graphbt_BEModel "1..1" -- "0..9999" graphbt_StandardNode : errorReversionNode11
+graphbt_Formula "0..9999" -- "1..1" graphbt_FormulaList : formula66
+graphbt_BEModel "1..1" *-- "1..1" graphbt_FormulaList : formulaList5
+graphbt_Libraries "1..1" *-- "0..9999" graphbt_Library : import_76
+graphbt_Information "0..9999" --* "1..1" graphbt_MapInformation : info74
+graphbt_Component "1..1" -- "0..1" graphbt_State : initialState35
+graphbt_BEModel "1..1" *-- "0..1" graphbt_LayoutList : layoutList14
+graphbt_Layout "0..9999" --* "1..1" graphbt_LayoutList : layouts81
+graphbt_BEModel "1..1" *-- "1..1" graphbt_Libraries : libraries7
+graphbt_Library "1..1" *-- "0..9999" graphbt_MethodDeclaration : methods47
+graphbt_MethodDeclaration "1..1" *-- "0..9999" graphbt_Parameter : parameters79
+graphbt_StandardNode "0..1" -- "1..1" graphbt_StandardNode : parent30
+graphbt_Component "0..9999" -- "1..1" graphbt_Component : relatedTo39
+graphbt_BEModel "1..1" *-- "1..1" graphbt_RequirementList : requirementList3
+graphbt_Requirement "0..9999" --* "1..1" graphbt_RequirementList : requirements63
+graphbt_BEModel "1..1" -- "0..9999" graphbt_StandardNode : reversionNode9
+graphbt_BehaviorTree "1..1" -- "1..1" graphbt_Node : rootNode18
+graphbt_Link "1..1" -- "0..1" graphbt_Node : source71
+graphbt_Node "1..1" -- "0..1" graphbt_SpecialEdge : specialE22
+graphbt_Component "1..1" *-- "0..9999" graphbt_State : state33
+graphbt_Library "1..1" *-- "0..9999" graphbt_State : states49
+graphbt_Link "1..1" *-- "0..1" graphbt_Node : target68
+graphbt_Requirement "1..1" -- "0..9999" graphbt_StandardNode : traceabilityLink58
+graphbt_Component "1..1" *-- "0..9999" graphbt_Library : uses43
+@enduml

@@ -1,0 +1,104 @@
+@startuml
+class Alerted_to_Prepare_drinks_UseCase {
+}
+class Alerted_to_Prepare_drinks_external {
+}
+class Alerted_to_Prepare_food_UseCase {
+}
+class Alerted_to_Prepare_food_external {
+}
+class Alerted_to_Serve_Food_UseCase {
+}
+class Alerted_to_Serve_Food_external {
+}
+class Alerted_to_Serve_drinks_UseCase {
+}
+class Alerted_to_Serve_drinks_external {
+}
+class Bar_Staff_Actor {
+}
+class Bill {
+}
+class Change_Order_UseCase {
+}
+class Diner_Actor {
+}
+class Discount {
+  + discountAmount : int
+}
+class Drinks {
+  + beer : str
+  + cocktail : str
+  + softDrink : str
+  + spirits : str
+  + wine : str
+}
+class Grant_discount_UseCase {
+}
+class Grant_discount_external {
+}
+class Input_Order_UseCase {
+}
+class Input_Order_external {
+}
+class Input_payment_details_UseCase {
+}
+class Input_payment_details_external {
+}
+class Kitchen_Staff_Actor {
+}
+class Management_Actor {
+}
+class Menu {
+  + desert : str
+  + mainCourse : str
+  + specialCourse : str
+  + starter : str
+}
+class Order {
+}
+class Order_food_UseCase {
+}
+class Order_food_UseCase1 {
+}
+class Pay_for_food_UseCase {
+}
+class Pay_for_food_UseCase1 {
+}
+class Payment {
+  + paymentType : str
+}
+class Print_bill_UseCase {
+}
+class Print_bill_external {
+}
+class Table {
+  + tableID : int
+}
+class View_statistics_UseCase {
+}
+class View_statistics_external {
+}
+class Waiter_Actor {
+}
+class _Component {
+}
+Alerted_to_Prepare_drinks_external "0..1" -- "0..1" Bar_Staff_Actor : Bar_Staff_Alerted_to_Prepare_drinks
+Bill "0..1" -- "0..9999" Discount : Bill_Discount
+Bill "1..1" -- "0..9999" Order : Bill_Order
+Bill "0..9999" -- "1..1" Payment : Bill_Payment
+Bill "1..1" -- "0..1" Table : Bill_Table
+Diner_Actor "0..1" -- "0..1" Order_food_UseCase1 : Diner_Order_food
+Diner_Actor "0..1" -- "0..1" Pay_for_food_UseCase1 : Diner_Pay_for_food
+Alerted_to_Prepare_food_external "0..1" -- "0..1" Kitchen_Staff_Actor : Kitchen_Staff_Alerted_to_Prepare_food
+Grant_discount_external "0..1" -- "0..1" Management_Actor : Management_Grant_discount
+Management_Actor "0..1" -- "0..1" View_statistics_external : Management_View_statistics
+Drinks "0..9999" -- "0..1" Order : Order_Drinks
+Menu "0..9999" -- "0..1" Order : Order_Menu
+Alerted_to_Serve_Food_external "0..1" -- "0..1" Waiter_Actor : Waiter_Alerted_to_Serve_Food
+Alerted_to_Serve_drinks_external "0..1" -- "0..1" Waiter_Actor : Waiter_Alerted_to_Serve_drinks
+Input_Order_external "0..1" -- "0..1" Waiter_Actor : Waiter_Input_Order
+Input_Order_external "0..1" -- "0..1" Waiter_Actor : Waiter_Input_Order2
+Input_payment_details_external "0..1" -- "0..1" Waiter_Actor : Waiter_Input_payment_details
+Print_bill_external "0..1" -- "0..1" Waiter_Actor : Waiter_Print_bill
+@enduml

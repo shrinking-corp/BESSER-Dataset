@@ -1,0 +1,136 @@
+@startuml
+class Element {
+}
+class dsl_Action {
+}
+class dsl_AndElement {
+}
+class dsl_AppMetaData {
+  + appID : str
+}
+class dsl_Boolean_Object {
+  + value : bool
+}
+class dsl_DiffElement {
+}
+class dsl_DivisionElement {
+}
+class dsl_Element {
+}
+class dsl_ElseDoSpec {
+}
+class dsl_ElseIfDoSpec {
+}
+class dsl_EnvironmentMetaData {
+}
+class dsl_EqualElement {
+}
+class dsl_IfDoSpec {
+}
+class dsl_LargerElement {
+}
+class dsl_LargerEqualElement {
+}
+class dsl_MinusElement {
+}
+class dsl_ModuloElement {
+}
+class dsl_MultiplicationElement {
+}
+class dsl_NegateElement {
+}
+class dsl_Number_Object {
+  + value : str
+}
+class dsl_OrElement {
+}
+class dsl_PlusElement {
+}
+class dsl_Resource {
+  + name : str
+}
+class dsl_Resource_Object {
+}
+class dsl_RunTimeModel {
+}
+class dsl_SmallerElement {
+}
+class dsl_SmallerEqualElement {
+}
+class dsl_Specification {
+  + priority : int
+  + specID : str
+}
+class dsl_State {
+  + name : str
+}
+class dsl_State_Object {
+}
+class dsl_Trigger {
+}
+Element <|-- dsl_AndElement
+Element <|-- dsl_Boolean_Object
+Element <|-- dsl_DiffElement
+Element <|-- dsl_DivisionElement
+Element <|-- dsl_EqualElement
+Element <|-- dsl_LargerElement
+Element <|-- dsl_LargerEqualElement
+Element <|-- dsl_MinusElement
+Element <|-- dsl_ModuloElement
+Element <|-- dsl_MultiplicationElement
+Element <|-- dsl_NegateElement
+Element <|-- dsl_Number_Object
+Element <|-- dsl_OrElement
+Element <|-- dsl_PlusElement
+Element <|-- dsl_Resource_Object
+Element <|-- dsl_SmallerElement
+Element <|-- dsl_SmallerEqualElement
+Element <|-- dsl_State_Object
+dsl_Action "0..9999" --* "1..1" dsl_IfDoSpec : action22
+dsl_Action "0..9999" --* "1..1" dsl_ElseIfDoSpec : action27
+dsl_Action "0..9999" --* "1..1" dsl_ElseDoSpec : action30
+dsl_AppMetaData "0..9999" --* "1..1" dsl_RunTimeModel : appData1
+dsl_Element "0..1" --* "1..1" dsl_IfDoSpec : condition20
+dsl_Element "0..1" --* "1..1" dsl_ElseIfDoSpec : condition24
+dsl_ElseDoSpec "0..1" --* "1..1" dsl_Specification : elseDo12
+dsl_ElseIfDoSpec "0..9999" --* "1..1" dsl_Specification : elseIfDo10
+dsl_EnvironmentMetaData "0..9999" --* "1..1" dsl_RunTimeModel : envData0
+dsl_Element "0..1" --* "1..1" dsl_NegateElement : exp111
+dsl_IfDoSpec "0..1" --* "1..1" dsl_Specification : ifdo8
+dsl_Element "0..1" --* "1..1" dsl_ModuloElement : left102
+dsl_Element "0..1" --* "1..1" dsl_OrElement : left42
+dsl_AndElement "1..1" *-- "0..1" dsl_Element : left47
+dsl_DiffElement "1..1" *-- "0..1" dsl_Element : left52
+dsl_Element "0..1" --* "1..1" dsl_EqualElement : left57
+dsl_Element "0..1" --* "1..1" dsl_LargerElement : left62
+dsl_Element "0..1" --* "1..1" dsl_LargerEqualElement : left67
+dsl_Element "0..1" --* "1..1" dsl_SmallerElement : left72
+dsl_Element "0..1" --* "1..1" dsl_SmallerEqualElement : left77
+dsl_Element "0..1" --* "1..1" dsl_PlusElement : left82
+dsl_Element "0..1" --* "1..1" dsl_MinusElement : left87
+dsl_Element "0..1" --* "1..1" dsl_MultiplicationElement : left92
+dsl_DivisionElement "1..1" *-- "0..1" dsl_Element : left97
+dsl_Resource "0..1" -- "1..1" dsl_Trigger : resource14
+dsl_Action "1..1" -- "0..1" dsl_Resource : resource36
+dsl_EnvironmentMetaData "1..1" *-- "0..9999" dsl_Resource : resources33
+dsl_Element "0..1" --* "1..1" dsl_ModuloElement : right104
+dsl_Element "0..1" --* "1..1" dsl_OrElement : right44
+dsl_AndElement "1..1" *-- "0..1" dsl_Element : right49
+dsl_DiffElement "1..1" *-- "0..1" dsl_Element : right54
+dsl_Element "0..1" --* "1..1" dsl_EqualElement : right59
+dsl_Element "0..1" --* "1..1" dsl_LargerElement : right64
+dsl_Element "0..1" --* "1..1" dsl_LargerEqualElement : right69
+dsl_Element "0..1" --* "1..1" dsl_SmallerElement : right74
+dsl_Element "0..1" --* "1..1" dsl_SmallerEqualElement : right79
+dsl_Element "0..1" --* "1..1" dsl_PlusElement : right84
+dsl_Element "0..1" --* "1..1" dsl_MinusElement : right89
+dsl_Element "0..1" --* "1..1" dsl_MultiplicationElement : right94
+dsl_DivisionElement "1..1" *-- "0..1" dsl_Element : right99
+dsl_AppMetaData "1..1" *-- "0..1" dsl_Specification : specification4
+dsl_State "0..1" --* "1..1" dsl_Trigger : state17
+dsl_Action "1..1" *-- "0..1" dsl_State : state39
+dsl_Resource "1..1" *-- "0..9999" dsl_State : states3
+dsl_Specification "1..1" *-- "0..9999" dsl_Trigger : trigger6
+dsl_Resource "0..1" -- "1..1" dsl_Resource_Object : value107
+dsl_State "0..1" --* "1..1" dsl_State_Object : value109
+@enduml

@@ -1,0 +1,90 @@
+@startuml
+abstract class BasePlayer {
+  + isBusted : bool
+}
+class BlackjackGame {
+  + bet : int
+  + dealer : Dealer
+  + deck : Deck
+  + player : Player
+}
+class Card {
+  + Count : int
+  + avatar : str
+  + name : str
+  + rank : str
+  + suit : str
+  + valueHard : str
+  + valueSoft : str
+}
+class Dealer {
+  + cardTotalLimit : int
+  + hand : Hand
+}
+class Deck {
+  + cards : Card
+}
+class GameLauncher {
+  + blackjack : BlackjackGame
+  + login : LoginView
+}
+class GameView {
+  + bet : JLabel
+  + dealButton : JButton
+  + doubleButton : JButton
+  + hitButton : JButton
+  + showStrategy : bool
+  + splitButton : JButton
+  + standButton : JButton
+}
+class Hand {
+  + cards : Card
+  + total : int
+}
+class JButton {
+}
+class JLabel {
+}
+class LoginView {
+  + user : Profile
+}
+class Player {
+  + hand : Hand
+  + money : int
+  + profile : Profile
+}
+class PlayerView {
+  + busted : JLabel
+  + cardLabels : JLabel
+  + cardTotal : JLabel
+  + moneyBox : JLabel
+  + player : BasePlayer
+  + status : JLabel
+}
+class Profile {
+  + money : int
+  + username : str
+}
+class Strategy {
+  + game : BlackjackGame
+}
+class UseCase_UseCase {
+}
+class User_Actor {
+}
+BasePlayer "0..1" -- "0..1" PlayerView : BasePlayer_PlayerView
+BlackjackGame "0..1" -- "0..1" Deck : Blackjack_Deck
+BlackjackGame "0..1" -- "0..1" GameView : Blackjack_GameView
+BlackjackGame "0..1" -- "0..1" Strategy : Blackjack_Strategy
+BlackjackGame "0..1" -- "0..1" Dealer : Dealer_Blackjack
+Dealer "1..1" -- "1..1" Hand : Dealer_Hand
+Card "0..9999" -- "0..1" Deck : Deck_Card
+GameLauncher "0..1" -- "0..1" LoginView : GameLauncher_LoginView
+Card "0..9999" -- "0..1" Hand : Hand_Card
+LoginView "0..1" -- "0..1" Profile : LoginView_Profile2
+GameView "0..1" -- "1..9999" PlayerView : PlayerView_GameView
+BlackjackGame "0..1" -- "0..1" Player : Player_Blackjack
+Hand "1..9999" -- "1..1" Player : Player_Hand
+Player "0..1" -- "0..1" Profile : Player_Profile
+BlackjackGame "0..1" -- "0..1" Profile : Profile_Blackjack
+@enduml

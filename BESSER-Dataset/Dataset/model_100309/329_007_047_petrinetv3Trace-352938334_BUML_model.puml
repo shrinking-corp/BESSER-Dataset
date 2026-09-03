@@ -1,0 +1,125 @@
+@startuml
+class BigStep {
+}
+class MSEOccurrence {
+}
+class Petrinetv3_Net_Initialize {
+}
+class Petrinetv3_Net_Run {
+}
+class Petrinetv3_Net_Run_AbstractSubStep {
+}
+class Petrinetv3_Net_TickEnabledTransitions {
+}
+class Petrinetv3_Transition_Fire {
+}
+class Place_tokens_Value {
+}
+class SmallStep {
+}
+class State {
+}
+class Step {
+}
+class Steps_Petrinetv3_Net_Run_AbstractSubStep {
+}
+class Steps_SmallStep {
+}
+class Transition_clock_Value {
+}
+class petrinetv3Trace_States_Place_tokens_Value {
+}
+class petrinetv3Trace_States_State {
+}
+class petrinetv3Trace_States_Transition_clock_Value {
+  + clock : int
+}
+abstract class petrinetv3Trace_Steps_BigStep {
+}
+class petrinetv3Trace_Steps_Petrinetv3_Net_Initialize {
+  + getCaller() : str
+}
+class petrinetv3Trace_Steps_Petrinetv3_Net_Run {
+  + getCaller() : str
+}
+abstract class petrinetv3Trace_Steps_Petrinetv3_Net_Run_AbstractSubStep {
+}
+class petrinetv3Trace_Steps_Petrinetv3_Net_Run_ImplicitStep {
+}
+class petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions {
+  + getCaller() : str
+}
+class petrinetv3Trace_Steps_Petrinetv3_Transition_Fire {
+  + getCaller() : str
+}
+class petrinetv3Trace_Steps_RootImplicitStep {
+}
+abstract class petrinetv3Trace_Steps_SmallStep {
+}
+abstract class petrinetv3Trace_Steps_Step {
+}
+class petrinetv3Trace_Trace {
+}
+class petrinetv3Trace_petrinetv3_TracedPlace {
+}
+class petrinetv3Trace_petrinetv3_TracedToken {
+}
+class petrinetv3Trace_petrinetv3_TracedTransition {
+}
+class petrinetv3_TracedPlace {
+}
+class petrinetv3_TracedToken {
+}
+class petrinetv3_TracedTransition {
+}
+class petrinetv3_petrinetv3Trace_Net {
+}
+class petrinetv3_petrinetv3Trace_Place {
+}
+class petrinetv3_petrinetv3Trace_Token {
+}
+class petrinetv3_petrinetv3Trace_Transition {
+}
+BigStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_Run
+MSEOccurrence <|-- petrinetv3Trace_Steps_Step
+SmallStep <|-- petrinetv3Trace_Steps_RootImplicitStep
+Step <|-- petrinetv3Trace_Steps_BigStep
+Step <|-- petrinetv3Trace_Steps_SmallStep
+Steps_Petrinetv3_Net_Run_AbstractSubStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_Initialize
+Steps_Petrinetv3_Net_Run_AbstractSubStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_Run_ImplicitStep
+Steps_Petrinetv3_Net_Run_AbstractSubStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions
+Steps_Petrinetv3_Net_Run_AbstractSubStep <|-- petrinetv3Trace_Steps_Petrinetv3_Transition_Fire
+Steps_SmallStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_Initialize
+Steps_SmallStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_Run_ImplicitStep
+Steps_SmallStep <|-- petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions
+Steps_SmallStep <|-- petrinetv3Trace_Steps_Petrinetv3_Transition_Fire
+Petrinetv3_Net_Initialize "0..9999" -- "1..1" petrinetv3Trace_Trace : Petrinetv3_Net_Initialize_Sequence0
+Petrinetv3_Net_Run "0..9999" -- "1..1" petrinetv3Trace_Trace : Petrinetv3_Net_Run_Sequence1
+Petrinetv3_Net_TickEnabledTransitions "0..9999" -- "1..1" petrinetv3Trace_Trace : Petrinetv3_Net_TickEnabledTransitions_Sequence3
+Petrinetv3_Transition_Fire "0..9999" -- "1..1" petrinetv3Trace_Trace : Petrinetv3_Transition_Fire_Sequence5
+Transition_clock_Value "0..9999" --* "1..1" petrinetv3Trace_petrinetv3_TracedTransition : clockSequence42
+Step "0..9999" -- "1..1" petrinetv3Trace_States_State : endedSteps27
+State "0..1" -- "1..1" petrinetv3Trace_Steps_Step : endingState18
+petrinetv3Trace_petrinetv3_TracedTransition "1..1" -- "1..9999" petrinetv3_TracedPlace : input45
+petrinetv3Trace_petrinetv3_TracedPlace "1..1" -- "0..1" petrinetv3_petrinetv3Trace_Place : originalObject37
+petrinetv3Trace_petrinetv3_TracedTransition "1..1" -- "0..1" petrinetv3_petrinetv3Trace_Transition : originalObject47
+petrinetv3Trace_petrinetv3_TracedTransition "1..1" -- "1..9999" petrinetv3_TracedPlace : output49
+petrinetv3Trace_States_Place_tokens_Value "1..1" -- "1..1" petrinetv3_TracedPlace : parent22
+petrinetv3Trace_States_Transition_clock_Value "1..1" -- "1..1" petrinetv3_TracedTransition : parent34
+petrinetv3Trace_petrinetv3_TracedTransition "1..1" -- "1..1" petrinetv3_petrinetv3Trace_Net : parentNet52
+petrinetv3Trace_Trace "1..1" *-- "0..9999" petrinetv3_TracedPlace : petrinetv3_tracedPlaces7
+petrinetv3Trace_Trace "1..1" *-- "0..9999" petrinetv3_TracedToken : petrinetv3_tracedTokens9
+petrinetv3Trace_Trace "1..1" *-- "0..9999" petrinetv3_TracedTransition : petrinetv3_tracedTransitions11
+Place_tokens_Value "0..9999" -- "1..1" petrinetv3Trace_States_State : place_tokens_Values29
+Step "0..9999" --* "1..1" petrinetv3Trace_Trace : rootSteps13
+Step "0..9999" -- "1..1" petrinetv3Trace_States_State : startedSteps30
+State "1..1" -- "1..1" petrinetv3Trace_Steps_Step : startingState20
+State "1..9999" -- "1..1" petrinetv3Trace_States_Place_tokens_Value : states23
+State "1..9999" -- "1..1" petrinetv3Trace_States_Transition_clock_Value : states35
+State "0..9999" --* "1..1" petrinetv3Trace_Trace : statesTrace15
+Petrinetv3_Net_Run_AbstractSubStep "0..9999" --* "1..1" petrinetv3Trace_Steps_Petrinetv3_Net_Run : subSteps17
+petrinetv3Trace_States_Place_tokens_Value "1..1" -- "0..9999" petrinetv3_TracedToken : tokens25
+petrinetv3Trace_petrinetv3_TracedPlace "1..1" -- "0..9999" petrinetv3_petrinetv3Trace_Token : tokens38
+Place_tokens_Value "0..9999" --* "1..1" petrinetv3Trace_petrinetv3_TracedPlace : tokensSequence40
+Transition_clock_Value "0..9999" -- "1..1" petrinetv3Trace_States_State : transition_clock_Values32
+@enduml

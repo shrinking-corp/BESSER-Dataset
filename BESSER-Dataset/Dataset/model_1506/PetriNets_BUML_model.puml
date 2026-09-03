@@ -1,0 +1,23 @@
+@startuml
+class NamedElement {
+}
+abstract class PetriNet_NamedElement {
+  + name : str
+}
+class PetriNet_Net {
+}
+class PetriNet_Place {
+}
+class PetriNet_Transition {
+}
+NamedElement <|-- PetriNet_Place
+NamedElement <|-- PetriNet_Transition
+PetriNet_Net "1..1" -- "1..1" PetriNet_Transition : cnet12
+PetriNet_Net "1..1" -- "1..1" PetriNet_Place : cnet7
+PetriNet_Net "1..1" *-- "0..9999" PetriNet_Place : places0
+PetriNet_Place "0..9999" -- "1..1" PetriNet_Transition : postp10
+PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : postt3
+PetriNet_Place "0..9999" -- "1..1" PetriNet_Transition : prep8
+PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : pret5
+PetriNet_Net "1..1" *-- "0..9999" PetriNet_Transition : transitions1
+@enduml

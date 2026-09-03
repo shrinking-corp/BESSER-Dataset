@@ -1,0 +1,123 @@
+@startuml
+class BooleanExpression {
+}
+class BooleanOperation {
+}
+class IntComparison {
+}
+class IntExpression {
+}
+class IntOperation {
+}
+class Statement {
+}
+class VariableRef {
+}
+class minilang_And {
+}
+class minilang_Block {
+}
+class minilang_Boolean {
+  + value : bool
+}
+class minilang_BooleanAssignment {
+}
+class minilang_BooleanExpression {
+}
+class minilang_BooleanOperation {
+}
+class minilang_BooleanVariableRef {
+}
+class minilang_Divide {
+}
+class minilang_Equal {
+}
+class minilang_Greater {
+}
+class minilang_GreaterOrEqual {
+}
+class minilang_If {
+}
+class minilang_IntAssignment {
+}
+abstract class minilang_IntComparison {
+}
+class minilang_IntExpression {
+}
+class minilang_IntOperation {
+}
+class minilang_IntVariableRef {
+}
+class minilang_Integer {
+  + value : int
+}
+class minilang_Less {
+}
+class minilang_LessOrEqual {
+}
+class minilang_Minus {
+}
+class minilang_Multiply {
+}
+class minilang_Not {
+}
+class minilang_Or {
+}
+class minilang_Plus {
+}
+class minilang_PrintStr {
+  + value : str
+}
+class minilang_PrintVar {
+  + value : str
+}
+class minilang_Statement {
+}
+class minilang_VariableRef {
+  + name : str
+}
+class minilang_While {
+}
+BooleanExpression <|-- minilang_Boolean
+BooleanExpression <|-- minilang_BooleanOperation
+BooleanExpression <|-- minilang_BooleanVariableRef
+BooleanExpression <|-- minilang_IntComparison
+BooleanExpression <|-- minilang_Not
+BooleanOperation <|-- minilang_And
+BooleanOperation <|-- minilang_Or
+IntComparison <|-- minilang_Equal
+IntComparison <|-- minilang_Greater
+IntComparison <|-- minilang_GreaterOrEqual
+IntComparison <|-- minilang_Less
+IntComparison <|-- minilang_LessOrEqual
+IntExpression <|-- minilang_IntOperation
+IntExpression <|-- minilang_IntVariableRef
+IntExpression <|-- minilang_Integer
+IntOperation <|-- minilang_Divide
+IntOperation <|-- minilang_Minus
+IntOperation <|-- minilang_Multiply
+IntOperation <|-- minilang_Plus
+Statement <|-- minilang_BooleanAssignment
+Statement <|-- minilang_IntAssignment
+Statement <|-- minilang_PrintStr
+Statement <|-- minilang_PrintVar
+VariableRef <|-- minilang_BooleanVariableRef
+VariableRef <|-- minilang_IntVariableRef
+minilang_Block "1..1" -- "1..1" minilang_While : body34
+minilang_BooleanExpression "1..1" --* "1..1" minilang_If : condition24
+minilang_BooleanExpression "1..1" --* "1..1" minilang_While : condition32
+minilang_Block "0..1" --* "1..1" minilang_If : else_29
+minilang_BooleanExpression "1..1" --* "1..1" minilang_Not : expression4
+minilang_IntExpression "1..1" --* "1..1" minilang_IntOperation : left1
+minilang_BooleanExpression "1..1" --* "1..1" minilang_BooleanOperation : left10
+minilang_IntComparison "1..1" *-- "1..1" minilang_IntExpression : left7
+minilang_IntExpression "1..1" --* "1..1" minilang_IntOperation : right0
+minilang_BooleanExpression "1..1" --* "1..1" minilang_BooleanOperation : right12
+minilang_IntComparison "1..1" *-- "1..1" minilang_IntExpression : right5
+minilang_Block "1..1" *-- "0..9999" minilang_Statement : statement23
+minilang_Block "1..1" --* "1..1" minilang_If : then26
+minilang_BooleanAssignment "1..1" *-- "1..1" minilang_BooleanExpression : value16
+minilang_IntAssignment "1..1" *-- "1..1" minilang_IntExpression : value20
+minilang_BooleanAssignment "1..1" *-- "1..1" minilang_BooleanVariableRef : variable15
+minilang_IntAssignment "1..1" *-- "1..1" minilang_IntVariableRef : variable19
+@enduml

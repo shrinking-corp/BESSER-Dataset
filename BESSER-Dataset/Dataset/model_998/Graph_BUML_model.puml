@@ -1,0 +1,27 @@
+@startuml
+class Named {
+}
+class graph_Edge {
+  + exact : bool
+  + pathDiscoveredByHeuristic : str
+}
+class graph_Graph {
+  + owner : str
+}
+class graph_Named {
+  + name : str
+}
+class graph_Node {
+  + derivedOrNotExists : bool
+  + type : str
+  + uri : str
+}
+Named <|-- graph_Edge
+Named <|-- graph_Graph
+Named <|-- graph_Node
+graph_Edge "1..1" -- "1..1" graph_Node : discoverBy9
+graph_Edge "0..9999" --* "1..1" graph_Graph : edges1
+graph_Graph "1..1" *-- "0..9999" graph_Node : nodes0
+graph_Edge "1..1" -- "1..1" graph_Node : source3
+graph_Edge "1..1" -- "1..1" graph_Node : target6
+@enduml

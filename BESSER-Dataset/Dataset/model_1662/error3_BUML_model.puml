@@ -1,0 +1,56 @@
+@startuml
+class AbstractComponent {
+}
+class NamedElement {
+}
+class error3_AbstractComponent {
+  + name : str
+}
+class error3_Bazbar {
+  + b : str
+}
+class error3_Binding {
+  + type : str
+}
+class error3_Level2 {
+}
+abstract class error3_NamedElement {
+  + name : str
+}
+class error3_NestedComponent {
+}
+class error3_Provided {
+  + ip : str
+}
+class error3_RecursiveComponen {
+}
+class error3_RelatedTo {
+  + since : str
+}
+class error3_Required {
+  + ir : str
+}
+class error3_Thing {
+  + id : int
+}
+class error3_World {
+}
+AbstractComponent <|-- error3_Level2
+AbstractComponent <|-- error3_NestedComponent
+AbstractComponent <|-- error3_RecursiveComponen
+NamedElement <|-- error3_RelatedTo
+NamedElement <|-- error3_Thing
+error3_Bazbar "0..9999" --* "1..1" error3_RecursiveComponen : bazbars19
+error3_Binding "0..9999" --* "1..1" error3_Required : bindings5
+error3_RecursiveComponen "0..9999" --* "1..1" error3_RecursiveComponen : components22
+error3_RelatedTo "1..1" -- "0..1" error3_Thing : fromThing2
+error3_NestedComponent "0..9999" --* "1..1" error3_RecursiveComponen : levels117
+error3_Level2 "0..9999" --* "1..1" error3_NestedComponent : levels216
+error3_AbstractComponent "1..1" *-- "0..9999" error3_Provided : providedInterfaces13
+error3_RelatedTo "0..9999" --* "1..1" error3_Thing : relations1
+error3_AbstractComponent "1..1" *-- "0..9999" error3_Required : requiredInterfaces11
+error3_Binding "1..1" -- "0..1" error3_Required : src6
+error3_Thing "0..9999" --* "1..1" error3_World : things0
+error3_RelatedTo "1..1" -- "0..1" error3_Thing : toThing3
+error3_Binding "1..1" -- "0..1" error3_Provided : trg9
+@enduml

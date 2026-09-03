@@ -1,0 +1,49 @@
+@startuml
+enum BehaviorKind {
+  ACTIVITY
+  OPAQUE_BEHAVIOR
+  STATE_MACHINE
+}
+class EventRule {
+}
+class TimeEventRule {
+}
+class umlTransition_AbsoluteTimeEventRule {
+}
+class umlTransition_AnyReceiveEventRule {
+  + isAReceiveEvent : str
+}
+class umlTransition_CallOrSignalEventRule {
+}
+class umlTransition_ChangeEventRule {
+  + exp : str
+}
+class umlTransition_EffectRule {
+  + behaviorName : str
+  + kind : str
+}
+class umlTransition_EventRule {
+}
+class umlTransition_GuardRule {
+  + constraint : str
+}
+class umlTransition_NamedElement {
+}
+class umlTransition_RelativeTimeEventRule {
+}
+class umlTransition_TimeEventRule {
+  + expr : str
+}
+class umlTransition_TransitionRule {
+}
+EventRule <|-- umlTransition_AnyReceiveEventRule
+EventRule <|-- umlTransition_CallOrSignalEventRule
+EventRule <|-- umlTransition_ChangeEventRule
+EventRule <|-- umlTransition_TimeEventRule
+TimeEventRule <|-- umlTransition_AbsoluteTimeEventRule
+TimeEventRule <|-- umlTransition_RelativeTimeEventRule
+umlTransition_EffectRule "0..1" --* "1..1" umlTransition_TransitionRule : effect3
+umlTransition_GuardRule "0..1" --* "1..1" umlTransition_TransitionRule : guard1
+umlTransition_CallOrSignalEventRule "1..1" -- "0..1" umlTransition_NamedElement : operationOrSignal5
+umlTransition_EventRule "0..9999" --* "1..1" umlTransition_TransitionRule : triggers0
+@enduml

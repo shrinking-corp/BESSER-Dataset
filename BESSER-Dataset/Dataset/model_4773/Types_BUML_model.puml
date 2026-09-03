@@ -1,0 +1,47 @@
+@startuml
+class Type {
+}
+class TypeReference {
+}
+class UserType {
+}
+class types_ArrayType {
+  + size : int
+}
+class types_ClassType {
+}
+class types_EObject {
+}
+class types_Operation {
+  + name : str
+}
+class types_PrimitiveType {
+}
+class types_Property {
+  + name : str
+}
+class types_ServiceType {
+}
+class types_Type {
+  + name : str
+}
+class types_TypeReference {
+}
+class types_UserType {
+}
+Type <|-- types_PrimitiveType
+Type <|-- types_UserType
+TypeReference <|-- types_ArrayType
+UserType <|-- types_ClassType
+UserType <|-- types_ServiceType
+types_Property "0..9999" --* "1..1" types_ServiceType : configurations11
+types_EObject "0..1" --* "1..1" types_Operation : expression21
+types_Operation "0..9999" --* "1..1" types_ServiceType : operations13
+types_Operation "1..1" *-- "0..9999" types_Property : parameters18
+types_ClassType "1..1" -- "0..1" types_ClassType : parent1
+types_ClassType "1..1" *-- "0..9999" types_Property : properties2
+types_TypeReference "1..1" *-- "0..1" types_TypeReference : remainder9
+types_Operation "1..1" *-- "1..1" types_TypeReference : type15
+types_Property "1..1" *-- "1..1" types_TypeReference : type4
+types_Type "0..1" -- "1..1" types_TypeReference : type6
+@enduml

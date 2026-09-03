@@ -1,0 +1,44 @@
+@startuml
+class feaMo_FeamoFSelector {
+}
+class feaMo_FeamoFeatureConfig {
+  + name : str
+}
+class feaMo_Feature {
+  + name : str
+}
+class feaMo_FeatureConstraint {
+  + rel : str
+}
+class feaMo_FeatureDef {
+}
+class feaMo_FeatureDetails {
+}
+class feaMo_FeatureGroup {
+}
+class feaMo_FeatureModel {
+  + name : str
+}
+class feaMo_Model {
+}
+class feaMo_SimpleFeature {
+}
+feaMo_FeatureGroup "1..1" *-- "0..9999" feaMo_SimpleFeature : alt13
+feaMo_FeamoFeatureConfig "0..9999" --* "1..1" feaMo_Model : configs1
+feaMo_FeatureConstraint "0..9999" --* "1..1" feaMo_FeatureModel : constraints7
+feaMo_FeatureDef "0..9999" --* "1..1" feaMo_FeatureModel : defs5
+feaMo_FeatureDef "1..1" *-- "0..1" feaMo_FeatureDetails : details27
+feaMo_FeatureDetails "0..1" --* "1..1" feaMo_FeatureModel : details3
+feaMo_Feature "0..1" -- "1..1" feaMo_FeatureConstraint : feature130
+feaMo_Feature "0..1" -- "1..1" feaMo_FeatureConstraint : feature233
+feaMo_Feature "0..1" -- "1..1" feaMo_FeatureDef : feature24
+feaMo_FeamoFSelector "1..1" -- "0..9999" feaMo_Feature : feature36
+feaMo_FeatureModel "0..9999" --* "1..1" feaMo_Model : featureModels0
+feaMo_FeamoFeatureConfig "1..1" -- "0..1" feaMo_FeatureModel : fm38
+feaMo_FeatureDetails "1..1" *-- "0..9999" feaMo_FeatureGroup : groups9
+feaMo_Feature "0..1" --* "1..1" feaMo_SimpleFeature : mandatory19
+feaMo_Feature "0..1" --* "1..1" feaMo_SimpleFeature : optional21
+feaMo_FeatureGroup "1..1" *-- "0..9999" feaMo_SimpleFeature : or_16
+feaMo_FeamoFeatureConfig "1..1" -- "0..9999" feaMo_Feature : selected41
+feaMo_FeatureGroup "1..1" *-- "0..1" feaMo_SimpleFeature : simple11
+@enduml

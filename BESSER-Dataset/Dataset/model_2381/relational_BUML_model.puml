@@ -1,0 +1,156 @@
+@startuml
+enum ActionGranularityType {
+  ROW
+  STATEMENT
+}
+enum ActionTimeType {
+  AFTER
+  BEFORE
+  INSTEADOF
+}
+class Constraint {
+}
+class DataType {
+}
+class DistinctUserDefinedType {
+}
+class ENamedElement {
+}
+class ReferenceConstraint {
+}
+enum ReferentialActionType {
+  CASCADE
+  NO_ACTION
+  RESTRICT
+  SET_DEFAULT
+  SET_NULL
+}
+class SQLObject {
+}
+class Table {
+}
+class TableConstraint {
+}
+class TypedElement {
+}
+class UniqueConstraint {
+}
+class UserDefinedType {
+}
+class relational_Assertion {
+  + searchCondition : str
+}
+class relational_BaseTable {
+}
+class relational_CheckConstraint {
+  + searchCondition : str
+}
+class relational_Column {
+  + defaultValue : str
+  + length : int
+  + nullable : bool
+  + srid : str
+}
+abstract class relational_Comment {
+  + description : str
+}
+abstract class relational_Constraint {
+}
+class relational_DataType {
+}
+class relational_DistinctUserDefinedType {
+}
+class relational_Domain {
+  + defaultValue : str
+  + nullable : bool
+}
+abstract class relational_ENamedElement {
+  + name : str
+}
+class relational_ForeignKey {
+  + onDelete : str
+  + onUpdate : str
+}
+class relational_PrimaryKey {
+}
+abstract class relational_ReferenceConstraint {
+}
+abstract class relational_SQLObject {
+  + description : str
+  + label : str
+}
+class relational_Schema {
+}
+abstract class relational_Table {
+}
+abstract class relational_TableConstraint {
+}
+class relational_Trigger {
+  + actionGranularity : str
+  + actionTime : str
+  + condition : str
+  + deleteType : bool
+  + insertType : bool
+  + newRow : str
+  + newTable : str
+  + oldRow : str
+  + oldTable : str
+  + statementSQL : str
+  + updateType : bool
+}
+abstract class relational_TypedElement {
+}
+class relational_UniqueConstraint {
+}
+class relational_UserDefinedType {
+}
+Constraint <|-- relational_Assertion
+Constraint <|-- relational_TableConstraint
+DataType <|-- relational_UserDefinedType
+DistinctUserDefinedType <|-- relational_Domain
+ENamedElement <|-- relational_SQLObject
+ReferenceConstraint <|-- relational_ForeignKey
+ReferenceConstraint <|-- relational_UniqueConstraint
+SQLObject <|-- relational_Constraint
+SQLObject <|-- relational_DataType
+SQLObject <|-- relational_Schema
+SQLObject <|-- relational_Table
+SQLObject <|-- relational_Trigger
+SQLObject <|-- relational_TypedElement
+Table <|-- relational_BaseTable
+TableConstraint <|-- relational_CheckConstraint
+TableConstraint <|-- relational_ReferenceConstraint
+TypedElement <|-- relational_Column
+UniqueConstraint <|-- relational_PrimaryKey
+UserDefinedType <|-- relational_DistinctUserDefinedType
+relational_Assertion "0..9999" -- "1..1" relational_Schema : assertions7
+relational_BaseTable "1..1" -- "1..1" relational_TableConstraint : baseTable32
+relational_Column "1..9999" -- "1..1" relational_Table : columns23
+relational_Comment "0..9999" -- "1..1" relational_SQLObject : comments0
+relational_CheckConstraint "0..1" -- "1..1" relational_Domain : constraint47
+relational_BaseTable "1..1" -- "0..9999" relational_TableConstraint : constraints31
+relational_DataType "1..1" -- "1..1" relational_TypedElement : dataType3
+relational_Column "1..1" -- "0..9999" relational_ForeignKey : foreignKey28
+relational_ForeignKey "0..9999" -- "1..1" relational_UniqueConstraint : foreignKey41
+relational_Column "1..9999" -- "1..1" relational_ReferenceConstraint : members33
+relational_Column "1..1" -- "1..9999" relational_ReferenceConstraint : referenceConstraint27
+relational_Column "1..9999" -- "1..1" relational_ForeignKey : referencedMembers38
+relational_BaseTable "1..1" -- "1..1" relational_ForeignKey : referencedTable35
+relational_DataType "0..1" -- "1..1" relational_Domain : referencedType48
+relational_BaseTable "1..1" -- "0..9999" relational_ForeignKey : referencingForeignKeys29
+relational_Schema "1..1" -- "1..1" relational_Trigger : schema11
+relational_Schema "1..1" -- "1..1" relational_Table : schema17
+relational_Assertion "1..1" -- "1..1" relational_Schema : schema43
+relational_Schema "1..1" -- "1..1" relational_UserDefinedType : schema45
+relational_Comment "1..1" -- "1..1" relational_SQLObject : sqlobject1
+relational_Table "1..1" -- "1..1" relational_Trigger : table12
+relational_Column "1..1" -- "1..1" relational_Table : table25
+relational_Schema "1..1" -- "0..9999" relational_Table : tables4
+relational_Table "1..9999" -- "1..1" relational_Trigger : triggerTables15
+relational_Table "1..1" -- "0..9999" relational_Trigger : triggers19
+relational_Schema "1..1" -- "0..9999" relational_Trigger : triggers5
+relational_Table "1..1" -- "0..9999" relational_Trigger : triggersConstrainted21
+relational_DataType "1..1" -- "0..9999" relational_TypedElement : typedElement2
+relational_ForeignKey "1..1" -- "1..1" relational_UniqueConstraint : uniqueConstraint37
+relational_Schema "1..1" -- "0..9999" relational_UserDefinedType : userDefinedTypes9
+@enduml

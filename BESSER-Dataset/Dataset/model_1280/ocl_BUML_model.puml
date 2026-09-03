@@ -1,0 +1,199 @@
+@startuml
+class EAssociationEnd {
+}
+class EAttribute {
+}
+class ECallExp {
+}
+class EClassifier {
+}
+class ECollectionType {
+}
+class EDataType {
+}
+class EEntity {
+}
+class EFeatureCallExp {
+}
+enum EIteratorKind {
+  collect
+  exists
+  forAll
+  select
+}
+class ELiteralExp {
+}
+class ELoopExp {
+}
+enum EMultiplicity {
+  many
+  one
+}
+class ENavigationCallExp {
+}
+class ENumericLiteralExp {
+}
+class EOclExpression {
+}
+class EOperationCallExp {
+}
+enum EOperator {
+  AND
+  OR
+  allInstances
+  equal
+  flatten
+  greater
+  greaterOrEqual
+  isEmpty
+  isUnique
+  less
+  lessOrEqual
+  notEmpty
+  notEqual
+  oclIsUndefined
+  size
+}
+class EPrimitiveType {
+}
+class ESignal {
+}
+class EVariable {
+}
+class ocl_dm_EAssociationEnd {
+  + mult : str
+  + name : str
+}
+class ocl_dm_EAttribute {
+  + name : str
+  + type : str
+}
+class ocl_dm_EDataModel {
+}
+class ocl_dm_EEntity {
+  + name : str
+}
+class ocl_exp_EAssociationClassCallExp {
+}
+class ocl_exp_EBooleanLiteralExp {
+  + booleanValue : str
+}
+abstract class ocl_exp_ECallExp {
+}
+abstract class ocl_exp_EFeatureCallExp {
+}
+class ocl_exp_EIntegerLiteralExp {
+  + integerValue : str
+}
+class ocl_exp_EIteratorExp {
+  + kind : str
+}
+abstract class ocl_exp_ELiteralExp {
+}
+abstract class ocl_exp_ELoopExp {
+}
+abstract class ocl_exp_ENavigationCallExp {
+}
+abstract class ocl_exp_ENumericLiteralExp {
+}
+abstract class ocl_exp_EOclExpression {
+}
+class ocl_exp_EOperationCallExp {
+  + referredOperation : str
+}
+abstract class ocl_exp_EPrimitiveType {
+}
+class ocl_exp_EPropertyCallExp {
+}
+class ocl_exp_EStringLiteralExp {
+  + stringValue : str
+}
+class ocl_exp_ETypeExp {
+}
+class ocl_exp_EVariable {
+  + name : str
+}
+class ocl_exp_EVariableExp {
+}
+class ocl_type_EAnyType {
+}
+class ocl_type_EBagType {
+}
+abstract class ocl_type_EClassifier {
+}
+class ocl_type_ECollectionType {
+}
+abstract class ocl_type_EDataType {
+}
+class ocl_type_EInvalidType {
+}
+class ocl_type_EMessageType {
+  + referredOperation : str
+}
+class ocl_type_EOrderedSetType {
+}
+class ocl_type_EPrimitiveType {
+}
+class ocl_type_ESequenceType {
+}
+class ocl_type_ESetType {
+}
+class ocl_type_ESignal {
+}
+class ocl_type_ETupleType {
+}
+class ocl_type_EVoidType {
+}
+ECallExp <|-- ocl_exp_EFeatureCallExp
+ECallExp <|-- ocl_exp_ELoopExp
+EClassifier <|-- ocl_dm_EEntity
+EClassifier <|-- ocl_type_EAnyType
+EClassifier <|-- ocl_type_EDataType
+EClassifier <|-- ocl_type_EInvalidType
+EClassifier <|-- ocl_type_EMessageType
+EClassifier <|-- ocl_type_EVoidType
+ECollectionType <|-- ocl_type_EBagType
+ECollectionType <|-- ocl_type_EOrderedSetType
+ECollectionType <|-- ocl_type_ESequenceType
+ECollectionType <|-- ocl_type_ESetType
+EDataType <|-- ocl_type_ECollectionType
+EDataType <|-- ocl_type_EPrimitiveType
+EDataType <|-- ocl_type_ETupleType
+EFeatureCallExp <|-- ocl_exp_ENavigationCallExp
+EFeatureCallExp <|-- ocl_exp_EOperationCallExp
+ELiteralExp <|-- ocl_exp_EPrimitiveType
+ELoopExp <|-- ocl_exp_EIteratorExp
+ENavigationCallExp <|-- ocl_exp_EAssociationClassCallExp
+ENavigationCallExp <|-- ocl_exp_EPropertyCallExp
+ENumericLiteralExp <|-- ocl_exp_EIntegerLiteralExp
+EOclExpression <|-- ocl_exp_ECallExp
+EOclExpression <|-- ocl_exp_ELiteralExp
+EOclExpression <|-- ocl_exp_ETypeExp
+EOclExpression <|-- ocl_exp_EVariableExp
+EPrimitiveType <|-- ocl_exp_EBooleanLiteralExp
+EPrimitiveType <|-- ocl_exp_ENumericLiteralExp
+EPrimitiveType <|-- ocl_exp_EStringLiteralExp
+ECallExp "0..1" -- "1..1" ocl_exp_EOclExpression : appliedElement23
+EOclExpression "0..9999" --* "1..1" ocl_exp_EOperationCallExp : argument32
+EAttribute "0..9999" --* "1..1" ocl_dm_EEntity : attributes1
+EOclExpression "1..1" --* "1..1" ocl_exp_ELoopExp : body11
+EEntity "0..9999" --* "1..1" ocl_dm_EDataModel : classes7
+EClassifier "1..1" -- "1..1" ocl_type_ECollectionType : elementType35
+EAssociationEnd "0..9999" --* "1..1" ocl_dm_EEntity : ends0
+EOclExpression "0..1" --* "1..1" ocl_exp_EVariable : initExpression17
+EVariable "0..1" -- "1..1" ocl_exp_EOclExpression : initializedElement24
+EVariable "0..9999" --* "1..1" ocl_exp_ELoopExp : iterator12
+ELoopExp "0..1" -- "1..1" ocl_exp_EOclExpression : loopBodyOwner21
+ELoopExp "0..1" -- "1..1" ocl_exp_EVariable : loopExp16
+EAssociationEnd "1..1" -- "1..1" ocl_dm_EAssociationEnd : opp4
+EOperationCallExp "0..1" -- "1..1" ocl_exp_EOclExpression : parentCall26
+ENavigationCallExp "0..1" -- "1..1" ocl_exp_EOclExpression : parentNav27
+EOclExpression "0..9999" --* "1..1" ocl_exp_ENavigationCallExp : qualifier30
+EAssociationEnd "1..1" -- "1..1" ocl_exp_EAssociationClassCallExp : referredAssociationEnds14
+EAttribute "1..1" -- "1..1" ocl_exp_EPropertyCallExp : referredProperty19
+ESignal "0..1" -- "1..1" ocl_type_EMessageType : referredSignal34
+EClassifier "1..1" -- "1..1" ocl_exp_ETypeExp : referredType10
+EVariable "0..1" -- "1..1" ocl_exp_EVariableExp : referredVariable9
+EOclExpression "0..1" --* "1..1" ocl_exp_ECallExp : source28
+EEntity "1..1" -- "1..1" ocl_dm_EAssociationEnd : target3
+@enduml

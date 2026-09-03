@@ -1,0 +1,167 @@
+@startuml
+enum CapacityType {
+  aggressivity
+  awareness
+  draft
+  escapeMechanics
+  experience
+  farm
+  leadership
+  metaGame
+  objectivePlay
+  pathing
+  patience
+  playmakingMechanics
+  positioning
+  splitPush
+  steal
+  stressManagement
+  teamPlay
+}
+enum GroupStageType {
+  allStarsGroup
+  league
+  msiGroup
+  msiPlayIn
+  riftRivalsGroup
+  worldsGroup
+  worldsPlayIn
+}
+enum MatchType {
+  final
+  group
+  quarterFinal
+  semiFinal
+  singleRoundElimination
+}
+class Person {
+}
+enum Position {
+  attackDamageCarry
+  jungle
+  midLane
+  support
+  topLane
+}
+enum Season {
+  spring
+  summer
+}
+enum TournamentType {
+  allStars
+  midSeasonInvitational
+  playOff
+  promotion
+  regionals
+  riftRivals
+  worlds
+}
+class eSport_Capacity {
+  + type : str
+  + value : int
+}
+class eSport_Coach {
+}
+class eSport_Country {
+  + name : str
+}
+class eSport_FinalStage {
+  + maxNbGames : int
+}
+class eSport_Group {
+}
+class eSport_GroupStage {
+  + maxNbGames : int
+  + meetingsInSameGroup : int
+  + meetingsWithOtherGroups : int
+  + type : str
+}
+class eSport_League {
+  + name : str
+  + season : str
+  + size : int
+  + year : int
+}
+class eSport_Match {
+  + loserWins : int
+  + type : str
+}
+abstract class eSport_Person {
+  + age : int
+  + description : str
+  + name : str
+}
+class eSport_Player {
+  + position : str
+}
+class eSport_Qualification {
+  + name : str
+}
+class eSport_Root {
+}
+class eSport_Team {
+  + championshipPoints : int
+  + name : str
+}
+class eSport_Tournament {
+  + name : str
+  + size : int
+  + type : str
+  + year : int
+}
+class eSport_Zone {
+  + name : str
+}
+Person <|-- eSport_Coach
+Person <|-- eSport_Player
+eSport_Tournament "1..1" -- "0..9999" eSport_Zone : allowedZones4
+eSport_Capacity "0..9999" --* "1..1" eSport_Person : capacities20
+eSport_Coach "0..1" --* "1..1" eSport_Team : coach36
+eSport_Country "0..9999" --* "1..1" eSport_Zone : countries29
+eSport_Country "0..9999" -- "1..1" eSport_Tournament : countries3
+eSport_Country "0..9999" --* "1..1" eSport_Root : countries97
+eSport_Country "0..1" -- "1..1" eSport_Person : country18
+eSport_FinalStage "0..1" -- "1..1" eSport_Match : finalstage50
+eSport_FinalStage "0..9999" -- "1..1" eSport_Team : finalstages45
+eSport_FinalStage "0..9999" --* "1..1" eSport_Tournament : finalstages6
+eSport_Group "0..1" -- "1..1" eSport_Match : group48
+eSport_Group "0..9999" -- "1..1" eSport_Team : groups40
+eSport_Group "0..9999" --* "1..1" eSport_GroupStage : groups64
+eSport_GroupStage "0..1" --* "1..1" eSport_League : groupstage14
+eSport_Group "1..1" -- "0..1" eSport_GroupStage : groupstage57
+eSport_GroupStage "0..9999" --* "1..1" eSport_Tournament : groupstages7
+eSport_GroupStage "1..1" -- "0..1" eSport_League : league68
+eSport_League "0..1" -- "1..1" eSport_Qualification : leagueFrom82
+eSport_League "0..9999" -- "1..1" eSport_Zone : leagues28
+eSport_League "0..9999" --* "1..1" eSport_Root : leagues88
+eSport_Group "1..1" *-- "0..9999" eSport_Match : matchs59
+eSport_FinalStage "1..1" *-- "0..9999" eSport_Match : matchs71
+eSport_Match "0..9999" -- "1..1" eSport_Team : matchsLost43
+eSport_Match "0..9999" -- "1..1" eSport_Team : matchsWon42
+eSport_Country "1..1" -- "0..9999" eSport_Person : persons25
+eSport_Person "0..9999" --* "1..1" eSport_Root : persons92
+eSport_Player "0..9999" --* "1..1" eSport_Team : players35
+eSport_Qualification "0..9999" --* "1..1" eSport_Root : qualifications95
+eSport_League "1..1" -- "0..9999" eSport_Qualification : qualifiesFor16
+eSport_Qualification "0..1" -- "1..1" eSport_Tournament : qualifiesFor9
+eSport_Qualification "0..9999" -- "1..1" eSport_Tournament : qualifiesFrom10
+eSport_Player "1..1" -- "0..1" eSport_Team : team0
+eSport_Coach "1..1" -- "0..1" eSport_Team : team1
+eSport_Match "1..1" -- "0..1" eSport_Team : teamLoser55
+eSport_Match "1..1" -- "0..1" eSport_Team : teamWinner53
+eSport_Team "0..9999" --* "1..1" eSport_Zone : teams32
+eSport_Group "1..1" -- "0..9999" eSport_Team : teams61
+eSport_FinalStage "1..1" -- "0..9999" eSport_Team : teams75
+eSport_Root "1..1" *-- "0..9999" eSport_Team : teams90
+eSport_GroupStage "1..1" -- "0..1" eSport_Tournament : tournament66
+eSport_FinalStage "1..1" -- "0..1" eSport_Tournament : tournament73
+eSport_Qualification "1..1" -- "0..1" eSport_Tournament : tournamentFrom78
+eSport_Qualification "1..1" -- "0..1" eSport_Tournament : tournamentTo80
+eSport_Country "1..1" -- "0..9999" eSport_Tournament : tournaments21
+eSport_Tournament "0..9999" -- "1..1" eSport_Zone : tournaments26
+eSport_Root "1..1" *-- "0..9999" eSport_Tournament : tournaments86
+eSport_League "1..1" -- "0..1" eSport_Zone : zone12
+eSport_Country "1..1" -- "0..1" eSport_Zone : zone22
+eSport_Team "1..1" -- "0..1" eSport_Zone : zone38
+eSport_Root "1..1" *-- "0..9999" eSport_Zone : zones85
+@enduml

@@ -1,0 +1,179 @@
+@startuml
+enum AccessModifiers {
+  default
+  private
+  protected
+  public
+}
+class ArithmeticExpression {
+}
+class BinaryExpression {
+}
+class Declaration {
+}
+class EqualityExpression {
+}
+class Expression {
+}
+enum Languages {
+  CPP
+  CS
+  Java
+  Python
+}
+class LogicExpression {
+}
+class Statement {
+}
+enum Type {
+  boolean
+  double
+  float
+  int
+  long
+  string
+  void
+}
+class UnaryExpression {
+}
+class workflow_Addition {
+}
+class workflow_And {
+}
+abstract class workflow_ArithmeticExpression {
+}
+abstract class workflow_BinaryExpression {
+}
+class workflow_Block {
+}
+class workflow_CompilationUnit {
+  + language : str
+  + name : str
+}
+class workflow_Constant {
+  + asBoolean : str
+  + asInteger : str
+  + asReal : str
+  + asString : str
+}
+abstract class workflow_Declaration {
+  + name : str
+}
+class workflow_Division {
+}
+class workflow_Equal {
+}
+abstract class workflow_EqualityExpression {
+}
+abstract class workflow_Expression {
+}
+class workflow_GreaterThan {
+}
+class workflow_GreaterThanOrEqual {
+}
+class workflow_If {
+}
+class workflow_LessThan {
+}
+class workflow_LessThanOrEqual {
+}
+abstract class workflow_LogicExpression {
+}
+class workflow_Multiplication {
+}
+class workflow_Not {
+}
+class workflow_NotEqual {
+}
+class workflow_Or {
+}
+class workflow_ParameterDeclaration {
+  + type : str
+}
+class workflow_ProcedureCall {
+  + name : str
+}
+abstract class workflow_ProcedureDeclaration {
+  + accessModifier : str
+  + returnType : str
+}
+class workflow_ProcedureReturn {
+}
+class workflow_Read {
+  + type : str
+}
+abstract class workflow_Statement {
+}
+class workflow_Subtraction {
+}
+class workflow_UMinus {
+}
+abstract class workflow_UnaryExpression {
+}
+class workflow_Variable {
+  + name : str
+}
+class workflow_VariableAssignment {
+}
+class workflow_VariableDeclaration {
+  + isConstant : str
+  + type : str
+}
+class workflow_While {
+}
+class workflow_Write {
+}
+ArithmeticExpression <|-- workflow_Addition
+ArithmeticExpression <|-- workflow_Division
+ArithmeticExpression <|-- workflow_Multiplication
+ArithmeticExpression <|-- workflow_Subtraction
+BinaryExpression <|-- workflow_ArithmeticExpression
+BinaryExpression <|-- workflow_EqualityExpression
+BinaryExpression <|-- workflow_LogicExpression
+Declaration <|-- workflow_ParameterDeclaration
+Declaration <|-- workflow_ProcedureDeclaration
+Declaration <|-- workflow_VariableDeclaration
+EqualityExpression <|-- workflow_Equal
+EqualityExpression <|-- workflow_GreaterThan
+EqualityExpression <|-- workflow_GreaterThanOrEqual
+EqualityExpression <|-- workflow_LessThan
+EqualityExpression <|-- workflow_LessThanOrEqual
+EqualityExpression <|-- workflow_NotEqual
+Expression <|-- workflow_BinaryExpression
+Expression <|-- workflow_Constant
+Expression <|-- workflow_ProcedureCall
+Expression <|-- workflow_UnaryExpression
+Expression <|-- workflow_Variable
+LogicExpression <|-- workflow_And
+LogicExpression <|-- workflow_Or
+Statement <|-- workflow_Block
+Statement <|-- workflow_Declaration
+Statement <|-- workflow_Expression
+Statement <|-- workflow_If
+Statement <|-- workflow_ProcedureReturn
+Statement <|-- workflow_Read
+Statement <|-- workflow_VariableAssignment
+Statement <|-- workflow_While
+Statement <|-- workflow_Write
+UnaryExpression <|-- workflow_Not
+UnaryExpression <|-- workflow_UMinus
+workflow_Block "0..1" --* "1..1" workflow_If : Alternative6
+workflow_Expression "0..9999" --* "1..1" workflow_ProcedureCall : Argument31
+workflow_Block "1..1" --* "1..1" workflow_While : Body11
+workflow_Block "1..1" --* "1..1" workflow_ProcedureDeclaration : Body26
+workflow_Block "1..1" --* "1..1" workflow_If : Body3
+workflow_Expression "1..1" --* "1..1" workflow_If : Condition2
+workflow_Expression "1..1" --* "1..1" workflow_While : Condition9
+workflow_Expression "0..1" --* "1..1" workflow_ProcedureReturn : Expression18
+workflow_Variable "1..1" --* "1..1" workflow_VariableAssignment : LValue14
+workflow_BinaryExpression "1..1" *-- "1..1" workflow_Expression : Operand135
+workflow_BinaryExpression "1..1" *-- "1..1" workflow_Expression : Operand237
+workflow_Expression "1..1" --* "1..1" workflow_UnaryExpression : Operand33
+workflow_ParameterDeclaration "0..9999" --* "1..1" workflow_ProcedureDeclaration : Parameter29
+workflow_Expression "1..1" --* "1..1" workflow_VariableAssignment : RValue15
+workflow_Block "1..1" *-- "0..9999" workflow_Statement : Statement1
+workflow_ProcedureDeclaration "1..1" *-- "0..9999" workflow_VariableDeclaration : Variables24
+workflow_CompilationUnit "1..1" *-- "0..9999" workflow_ProcedureDeclaration : declarations0
+workflow_Read "1..1" *-- "1..1" workflow_Variable : rVar22
+workflow_Variable "1..1" --* "1..1" workflow_Write : wVar20
+@enduml

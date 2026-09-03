@@ -1,0 +1,71 @@
+@startuml
+class AnnotationAttribute {
+}
+class Literal {
+}
+enum LiteralType {
+  BOOL
+  CHAR
+  INT
+  REAL
+}
+class NumberLiteral {
+}
+class base_Annotation {
+}
+class base_AnnotationAttribute {
+  + name : str
+  + optional : bool
+}
+class base_AnnotationType {
+  + name : str
+  + targets : str
+}
+class base_BooleanLiteral {
+  + isTrue : bool
+}
+class base_Documentation {
+  + lines : str
+}
+class base_EnumAnnotationAttribute {
+  + values : str
+}
+class base_Import {
+  + importURI : str
+  + importedNamespace : str
+}
+class base_IntLiteral {
+  + value : str
+}
+class base_KeyValue {
+  + key : str
+}
+class base_Literal {
+}
+class base_LiteralArray {
+}
+class base_NumberLiteral {
+}
+class base_RealLiteral {
+  + value : float
+}
+class base_SimpleAnnotationAttribute {
+  + type : str
+}
+class base_StringLiteral {
+  + value : str
+}
+AnnotationAttribute <|-- base_EnumAnnotationAttribute
+AnnotationAttribute <|-- base_SimpleAnnotationAttribute
+Literal <|-- base_BooleanLiteral
+Literal <|-- base_NumberLiteral
+Literal <|-- base_StringLiteral
+NumberLiteral <|-- base_IntLiteral
+NumberLiteral <|-- base_RealLiteral
+base_Annotation "1..1" *-- "0..9999" base_KeyValue : attributes1
+base_AnnotationAttribute "0..9999" --* "1..1" base_AnnotationType : attributes7
+base_AnnotationType "1..1" *-- "0..1" base_Documentation : docu5
+base_Literal "0..9999" --* "1..1" base_LiteralArray : literals9
+base_Annotation "1..1" -- "0..1" base_AnnotationType : type0
+base_KeyValue "1..1" *-- "0..1" base_Literal : value3
+@enduml

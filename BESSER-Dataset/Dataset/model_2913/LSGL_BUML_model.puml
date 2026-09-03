@@ -1,0 +1,73 @@
+@startuml
+class Type {
+}
+class lSGL_Annotation {
+  + name : str
+  + value : str
+}
+class lSGL_Attribute {
+  + isArray : bool
+  + isList : bool
+  + isMap : bool
+  + name : str
+}
+class lSGL_AttributeType {
+  + nullable : bool
+  + typeName : str
+}
+class lSGL_Config {
+  + name : str
+}
+class lSGL_ConfigProperty {
+  + name : str
+  + value : str
+}
+class lSGL_Entity {
+}
+class lSGL_Enum {
+}
+class lSGL_EnumItem {
+  + name : str
+  + value : str
+}
+class lSGL_Generator {
+  + name : str
+}
+class lSGL_GeneratorAnnotation {
+}
+class lSGL_GeneratorConfig {
+  + cfgName : str
+  + values : str
+}
+class lSGL_Model {
+}
+class lSGL_Projection {
+  + excluding : bool
+  + name : str
+}
+class lSGL_Type {
+  + name : str
+}
+Type <|-- lSGL_Entity
+Type <|-- lSGL_Enum
+lSGL_Annotation "0..9999" --* "1..1" lSGL_Attribute : annotations21
+lSGL_Attribute "0..9999" --* "1..1" lSGL_Entity : attributes17
+lSGL_Attribute "0..9999" --* "1..1" lSGL_Projection : attributes43
+lSGL_Config "0..1" -- "1..1" lSGL_GeneratorAnnotation : configItem32
+lSGL_Config "0..9999" --* "1..1" lSGL_Generator : configs7
+lSGL_GeneratorAnnotation "1..1" *-- "0..9999" lSGL_GeneratorConfig : customConfig35
+lSGL_Entity "0..1" -- "1..1" lSGL_Projection : entity40
+lSGL_Generator "0..1" -- "1..1" lSGL_GeneratorAnnotation : generator29
+lSGL_Entity "1..1" *-- "0..9999" lSGL_GeneratorAnnotation : generatorAnnotations13
+lSGL_GeneratorAnnotation "0..9999" --* "1..1" lSGL_Projection : generatorAnnotations37
+lSGL_Generator "0..9999" --* "1..1" lSGL_Model : generators0
+lSGL_Enum "1..1" *-- "0..9999" lSGL_EnumItem : items12
+lSGL_Attribute "1..1" *-- "0..1" lSGL_AttributeType : key23
+lSGL_Model "1..1" *-- "0..9999" lSGL_Projection : projections3
+lSGL_ConfigProperty "0..9999" --* "1..1" lSGL_Generator : properties5
+lSGL_Config "1..1" *-- "0..9999" lSGL_ConfigProperty : properties9
+lSGL_Entity "0..1" -- "1..1" lSGL_Entity : superClass15
+lSGL_AttributeType "1..1" -- "0..1" lSGL_Type : type19
+lSGL_Attribute "1..1" *-- "0..1" lSGL_AttributeType : type26
+lSGL_Model "1..1" *-- "0..9999" lSGL_Type : types1
+@enduml

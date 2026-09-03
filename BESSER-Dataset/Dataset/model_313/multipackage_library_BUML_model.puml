@@ -1,0 +1,30 @@
+@startuml
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class Writer {
+}
+class library_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class library_Library {
+  + name : str
+  + reserve(library_books : str) : void
+}
+class library_people_Writer {
+  + name : str
+}
+class people_library_Book {
+}
+class people_library_Car {
+}
+Writer "0..1" -- "1..1" library_Book : author0
+library_Book "0..9999" --* "1..1" library_Library : books3
+library_people_Writer "1..1" -- "0..9999" people_library_Book : books5
+library_people_Writer "1..1" -- "0..1" people_library_Car : car6
+Writer "0..9999" --* "1..1" library_Library : writers1
+@enduml

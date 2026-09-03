@@ -1,0 +1,1826 @@
+@startuml
+enum AccessPolicyKind {
+  Other
+  Read
+  ReadWrite
+  Undef
+  Write
+}
+class Action {
+}
+class Activity {
+}
+class Alloc_Allocated {
+}
+class Alloc_MARTE_Abstraction {
+}
+class Alloc_MARTE_ActivityPartition {
+}
+class Alloc_MARTE_Comment {
+}
+class Alloc_MARTE_Dependency {
+}
+class Alloc_MARTE_Element {
+}
+class Alloc_MARTE_NamedElement {
+}
+class Allocate {
+}
+enum AllocationEndKind {
+}
+enum AllocationKind {
+}
+enum AllocationNature {
+  spatialDistribution
+  timeScheduling
+}
+class ArrivalPattern {
+}
+enum AssignmentKind {
+  behavioral
+  hybrid
+  structural
+}
+enum AssignmentNature {
+}
+enum CacheType {
+  data
+  instruction
+  other
+  undef
+  unified
+}
+enum CallConcurrencyKind {
+  concurrent
+  guarded
+  sequential
+}
+enum ClientServerKind {
+  proreq
+  provided
+  required
+}
+enum ComponentKind {
+  card
+  channel
+  chip
+  other
+  port
+  undef
+  unit
+}
+enum ComponentState {
+  operating
+  other
+  storage
+  undef
+}
+enum ConcurrencyKind {
+  parallel
+  reader
+  writer
+}
+enum ConcurrentAccessProtocolKind {
+  NoPreemption
+  Other
+  PCP
+  PIP
+  Undef
+}
+enum ConditionType {
+  altitude
+  humidity
+  other
+  shock
+  temperature
+  undef
+  vibration
+}
+enum ConstraintKind {
+  contract
+  offered
+  required
+}
+class CoreElements_Configuration {
+}
+class CoreElements_MARTE_Package {
+}
+class CoreElements_MARTE_State {
+}
+class CoreElements_MARTE_StateMachine {
+}
+class CoreElements_MARTE_StructuredClassifier {
+}
+class CoreElements_MARTE_Transition {
+}
+class CoreElements_Mode {
+}
+enum DataPoolOrderingKind {
+  FIFO
+  LIFO
+  UserDefined
+}
+class DataTypes_MARTE_DataType {
+}
+class DataTypes_MARTE_Property {
+}
+enum ExecutionKind {
+  deferred
+  localImmediate
+  remoteImmediate
+}
+enum FlowDirectionKind {
+  in_
+  inout
+  out
+}
+class GCM_ClientServerSpecification {
+}
+class GCM_MARTE_AnyReceiveEvent {
+}
+class GCM_MARTE_Behavior {
+}
+class GCM_MARTE_BehavioralFeature {
+}
+class GCM_MARTE_Classifier {
+}
+class GCM_MARTE_Feature {
+}
+class GCM_MARTE_Interface {
+}
+class GCM_MARTE_InvocationAction {
+}
+class GCM_MARTE_Port {
+}
+class GCM_MARTE_Property {
+}
+class GCM_MARTE_Trigger {
+}
+class GQAM_GaCommStep {
+}
+class GQAM_GaEventTrace {
+}
+class GQAM_GaExecHost {
+}
+class GQAM_GaRequestedService {
+}
+class GQAM_GaResourcesPlatform {
+}
+class GQAM_GaScenario {
+}
+class GQAM_GaStep {
+}
+class GQAM_GaTimedObs {
+}
+class GQAM_GaWorkloadBehavior {
+}
+class GQAM_GaWorkloadEvent {
+}
+class GQAM_GaWorkloadGenerator {
+}
+class GQAM_MARTE_Behavior {
+}
+class GQAM_MARTE_Classifier {
+}
+class GQAM_MARTE_NamedElement {
+}
+class GQAM_MARTE_Operation {
+}
+class GQAM_MARTE_TimeEvent {
+}
+class GQAM_MARTE_TimeObservation {
+}
+class GRM_CommunicationEndPoint {
+}
+class GRM_CommunicationMedia {
+}
+class GRM_ComputingResource {
+}
+class GRM_DeviceResource {
+}
+class GRM_MARTE_Behavior {
+}
+class GRM_MARTE_BehavioralFeature {
+}
+class GRM_MARTE_Classifier {
+}
+class GRM_MARTE_Collaboration {
+}
+class GRM_MARTE_CollaborationUse {
+}
+class GRM_MARTE_ConnectableElement {
+}
+class GRM_MARTE_Connector {
+}
+class GRM_MARTE_ExecutionSpecification {
+}
+class GRM_MARTE_InstanceSpecification {
+}
+class GRM_MARTE_Lifeline {
+}
+class GRM_MARTE_NamedElement {
+}
+class GRM_MARTE_OpaqueExpression {
+}
+class GRM_MARTE_Property {
+}
+class GRM_MutualExclusionResource {
+}
+class GRM_ProcessingResource {
+}
+class GRM_Resource {
+}
+class GRM_ResourceUsage {
+}
+class GRM_SchedulableResource {
+}
+class GRM_Scheduler {
+}
+class GRM_SecondaryScheduler {
+}
+class GRM_StorageResource {
+}
+class GRM_SynchronizationResource {
+}
+class GRM_TimingResource {
+}
+class GaAnalysisContext {
+}
+class GaCommHost {
+}
+class GaCommStep {
+}
+class GaExecHost {
+}
+class GaScenario {
+}
+class GaStep {
+}
+class GaTimedObs {
+}
+class GrService {
+}
+class HLAM_MARTE_Behavior {
+}
+class HLAM_MARTE_BehavioralFeature {
+}
+class HLAM_MARTE_BehavioredClassifier {
+}
+class HLAM_MARTE_Comment {
+}
+class HLAM_MARTE_InvocationAction {
+}
+class HLAM_MARTE_Message {
+}
+class HLAM_MARTE_Operation {
+}
+class HLAM_MARTE_Port {
+}
+class HLAM_MARTE_Signal {
+}
+class HLAM_RtSpecification {
+}
+class HwCommunicationResource {
+}
+class HwCommunication_HwArbiter {
+}
+class HwCommunication_HwCommunicationResource {
+}
+class HwCommunication_HwConnection {
+}
+class HwCommunication_HwEndPoint {
+}
+class HwCommunication_HwMedia {
+}
+class HwCommunication_HwPort {
+}
+class HwComponent {
+}
+class HwComputingResource {
+}
+class HwComputing_HwBranchPredictor {
+}
+class HwComputing_HwComputingResource {
+}
+class HwComputing_HwISA {
+}
+class HwComputing_HwProcessor {
+}
+class HwComputing_PLD_Organization {
+}
+class HwDevice {
+}
+class HwDeviceFunction_HwDeviceFunction {
+}
+class HwDevice_HwPeripheral {
+}
+class HwDiagram_MARTE_DataType {
+}
+class HwEndPoint {
+}
+class HwGeneral_HwResource {
+}
+class HwGeneral_HwResourceService {
+}
+class HwGeneral_MARTE_Activity {
+}
+class HwGeneral_MARTE_Operation {
+}
+class HwIO_HwLine {
+}
+class HwIO_HwPin {
+}
+class HwI_O {
+}
+class HwLayout_Env_Condition {
+}
+class HwLayout_HwComponent {
+}
+class HwMedia {
+}
+class HwMemory {
+}
+class HwMemory_CacheStructure {
+}
+class HwMemory_HwCache {
+}
+class HwMemory_HwMemory {
+}
+class HwMemory_HwRAM {
+}
+class HwMemory_MemoryOrganization {
+}
+class HwMemory_Timing {
+}
+class HwPackage_HwPackage {
+}
+class HwPackage_HwPackagePin {
+}
+class HwPackage_HwWire {
+}
+class HwPeripheral_MARTE_InputPin {
+}
+class HwPeripheral_MARTE_Operation {
+}
+class HwPeripheral_MARTE_OutputPin {
+}
+class HwPeripheral_OperationImpl {
+}
+class HwPeripheral_PeripheralActivity {
+}
+class HwPeripheral_RegisterAction {
+}
+class HwProtocol_HwProtocol {
+}
+class HwProtocol_MARTE_Operation {
+}
+class HwRegister_HwRegister {
+}
+class HwResource {
+}
+class HwStorageManager {
+}
+class HwStorageManager_HwMMU {
+}
+class HwStorageManager_HwStorageManager {
+}
+class HwTimingResource {
+}
+class HwTiming_HwClock {
+}
+enum ISA_Type {
+  CISC
+  RISC
+  SIMD
+  VLIW
+  other
+  undef
+}
+class IntegerInterval {
+}
+class IntegerMatrix {
+}
+class IntegerVector {
+}
+enum InterruptKind {
+  HardwareInterruption
+  Other
+  ProcessorDetectedException
+  ProgrammedException
+  Undef
+}
+class InterruptResource {
+}
+enum LaxityKind {
+  hard
+  other
+  soft
+}
+class LinkTopology {
+}
+class MARTE_Alloc_Allocate {
+  + kind : str
+  + nature : str
+}
+class MARTE_Alloc_AllocateActivityGroup {
+}
+class MARTE_Alloc_Allocated {
+}
+class MARTE_Alloc_Assign {
+}
+class MARTE_Alloc_NfpRefine {
+}
+class MARTE_CoreElements_Configuration {
+}
+class MARTE_CoreElements_Mode {
+}
+class MARTE_CoreElements_ModeBehavior {
+}
+class MARTE_CoreElements_ModeTransition {
+}
+class MARTE_DataTypes_BoundedSubtype {
+  + isMaxOpen : bool
+  + isMinOpen : bool
+  + maxValue : str
+  + minValue : str
+}
+class MARTE_DataTypes_ChoiceType {
+}
+class MARTE_DataTypes_CollectionType {
+}
+class MARTE_DataTypes_IntervalType {
+}
+class MARTE_DataTypes_TupleType {
+}
+class MARTE_GCM_ClientServerFeature {
+  + kind : str
+}
+class MARTE_GCM_ClientServerPort {
+  + isConjugated : str
+  + kind : str
+  + specificationKind : str
+}
+class MARTE_GCM_ClientServerSpecification {
+}
+class MARTE_GCM_DataEvent {
+}
+class MARTE_GCM_DataPool {
+  + ordering : str
+}
+class MARTE_GCM_FlowPort {
+  + direction : str
+  + isAtomic : str
+  + isConjugated : str
+}
+class MARTE_GCM_FlowProperty {
+  + direction : str
+}
+class MARTE_GCM_FlowSpecification {
+}
+class MARTE_GCM_GCMInvocationAction {
+}
+class MARTE_GCM_GCMTrigger {
+}
+class MARTE_GQAM_GaAcqStep {
+}
+class MARTE_GQAM_GaAnalysisContext {
+}
+class MARTE_GQAM_GaCommChannel {
+}
+class MARTE_GQAM_GaCommHost {
+}
+class MARTE_GQAM_GaCommStep {
+}
+class MARTE_GQAM_GaEventTrace {
+  + content : str
+  + format : str
+  + location : str
+}
+class MARTE_GQAM_GaExecHost {
+}
+class MARTE_GQAM_GaLatencyObs {
+}
+class MARTE_GQAM_GaRelStep {
+}
+class MARTE_GQAM_GaRequestedService {
+}
+class MARTE_GQAM_GaResourcesPlatform {
+}
+class MARTE_GQAM_GaScenario {
+}
+class MARTE_GQAM_GaStep {
+}
+class MARTE_GQAM_GaTimedObs {
+  + laxity : str
+}
+class MARTE_GQAM_GaWorkloadBehavior {
+}
+class MARTE_GQAM_GaWorkloadEvent {
+}
+class MARTE_GQAM_GaWorkloadGenerator {
+}
+class MARTE_GRM_Acquire {
+  + isBlocking : str
+}
+class MARTE_GRM_ClockResource {
+}
+class MARTE_GRM_CommunicationEndPoint {
+}
+class MARTE_GRM_CommunicationMedia {
+  + transmMode : str
+}
+class MARTE_GRM_ComputingResource {
+}
+class MARTE_GRM_ConcurrencyResource {
+}
+class MARTE_GRM_DeviceResource {
+}
+class MARTE_GRM_GrService {
+}
+class MARTE_GRM_MutualExclusionResource {
+  + otherProtectProtocol : str
+  + protectKind : str
+}
+class MARTE_GRM_ProcessingResource {
+}
+class MARTE_GRM_Release {
+}
+class MARTE_GRM_Resource {
+  + isProtected : str
+}
+class MARTE_GRM_ResourceUsage {
+}
+class MARTE_GRM_SchedulableResource {
+}
+class MARTE_GRM_Scheduler {
+  + isPreemptible : str
+  + otherSchedPolicy : str
+  + schedPolicy : str
+}
+class MARTE_GRM_SecondaryScheduler {
+}
+class MARTE_GRM_StorageResource {
+}
+class MARTE_GRM_SynchronizationResource {
+}
+class MARTE_GRM_TimerResource {
+  + isPeriodic : str
+}
+class MARTE_GRM_TimingResource {
+}
+class MARTE_HLAM_PpUnit {
+  + concPolicy : str
+}
+class MARTE_HLAM_RtAction {
+  + isAtomic : str
+  + synchKind : str
+}
+class MARTE_HLAM_RtFeature {
+}
+class MARTE_HLAM_RtService {
+  + concPolicy : str
+  + exeKind : str
+  + isAtomic : str
+  + synchKind : str
+}
+class MARTE_HLAM_RtSpecification {
+}
+class MARTE_HLAM_RtUnit {
+  + isDynamic : str
+  + isMain : str
+  + queueSchedPolicy : str
+  + queueSize : str
+  + srPoolPolicy : str
+  + srPoolSize : str
+}
+class MARTE_HwCommunication_HwArbiter {
+}
+class MARTE_HwCommunication_HwBridge {
+}
+class MARTE_HwCommunication_HwBus {
+}
+class MARTE_HwCommunication_HwCommunicationResource {
+}
+class MARTE_HwCommunication_HwConnection {
+}
+class MARTE_HwCommunication_HwEndPoint {
+}
+class MARTE_HwCommunication_HwMedia {
+}
+class MARTE_HwCommunication_HwPort {
+}
+class MARTE_HwComputing_HwASIC {
+}
+class MARTE_HwComputing_HwBranchPredictor {
+}
+class MARTE_HwComputing_HwComputingResource {
+}
+class MARTE_HwComputing_HwISA {
+  + type : str
+}
+class MARTE_HwComputing_HwMCU {
+}
+class MARTE_HwComputing_HwPLD {
+  + technology : str
+}
+class MARTE_HwComputing_HwProcessor {
+}
+class MARTE_HwComputing_PLD_Organization {
+  + class_ : str
+}
+class MARTE_HwDatasheet_HwDatasheet {
+  + name : str
+  + revision : str
+}
+class MARTE_HwDeviceFunction_HwDeviceFunction {
+}
+class MARTE_HwDevice_HWActuator {
+}
+class MARTE_HwDevice_HWSensor {
+}
+class MARTE_HwDevice_HwDevice {
+}
+class MARTE_HwDevice_HwI_O {
+}
+class MARTE_HwDevice_HwPeripheral {
+}
+class MARTE_HwDevice_HwSupport {
+}
+class MARTE_HwDiagram_HwBlockDiagram {
+  + name : str
+}
+class MARTE_HwDiagram_HwCircuitDiagram {
+  + name : str
+}
+class MARTE_HwDiagram_HwHRMDiagram {
+  + name : str
+}
+class MARTE_HwDiagram_SRMDiagram {
+}
+class MARTE_HwGeneral_HwResource {
+  + name : str
+}
+class MARTE_HwGeneral_HwResourceService {
+}
+class MARTE_HwIO_HwLine {
+}
+class MARTE_HwIO_HwPin {
+}
+class MARTE_HwLayout_Env_Condition {
+  + status : str
+  + type : str
+}
+class MARTE_HwLayout_HwComponent {
+  + kind : str
+}
+class MARTE_HwMemory_CacheStructure {
+}
+class MARTE_HwMemory_HwCache {
+  + repl_Policy : str
+  + type : str
+  + writePolicy : str
+}
+class MARTE_HwMemory_HwDrive {
+}
+class MARTE_HwMemory_HwMemory {
+}
+class MARTE_HwMemory_HwRAM {
+  + repl_Policy : str
+  + writePolicy : str
+}
+class MARTE_HwMemory_HwROM {
+  + type : str
+}
+class MARTE_HwMemory_MemoryOrganization {
+}
+class MARTE_HwMemory_Timing {
+}
+class MARTE_HwPackage_HwPackage {
+  + name : str
+  + packageType : str
+  + pinNum : int
+}
+class MARTE_HwPackage_HwPackagePin {
+  + altNames : str
+  + pinNo : str
+}
+class MARTE_HwPackage_HwWire {
+}
+class MARTE_HwPeripheral_OperationImpl {
+}
+class MARTE_HwPeripheral_PeripheralActivity {
+}
+class MARTE_HwPeripheral_ReadRegisterAction {
+}
+abstract class MARTE_HwPeripheral_RegisterAction {
+}
+class MARTE_HwPeripheral_WriteRegisterAction {
+}
+class MARTE_HwPower_HwCoolingSupply {
+}
+class MARTE_HwPower_HwPowerSupply {
+}
+class MARTE_HwProtocol_HwProtocol {
+  + name : str
+}
+class MARTE_HwRegister_HwRegister {
+  + address : str
+}
+class MARTE_HwStorageManager_HwDMA {
+}
+class MARTE_HwStorageManager_HwMMU {
+}
+class MARTE_HwStorageManager_HwStorageManager {
+}
+class MARTE_HwTiming_HwClock {
+}
+class MARTE_HwTiming_HwTimer {
+}
+class MARTE_HwTiming_HwTimingResource {
+}
+class MARTE_NFPs_Dimension {
+  + baseExponent : int
+  + symbol : str
+}
+class MARTE_NFPs_Nfp {
+}
+class MARTE_NFPs_NfpConstraint {
+  + kind : str
+}
+class MARTE_NFPs_NfpType {
+}
+class MARTE_NFPs_Unit {
+  + convFactor : str
+  + offsetFactor : str
+}
+class MARTE_PAM_PaCommStep {
+}
+class MARTE_PAM_PaLogicalResource {
+}
+class MARTE_PAM_PaRequestedStep {
+}
+class MARTE_PAM_PaResPassStep {
+}
+class MARTE_PAM_PaRunTInstance {
+  + unbddPool : str
+}
+class MARTE_PAM_PaStep {
+  + extOpDemand : str
+}
+class MARTE_RSM_DefaultLink {
+}
+class MARTE_RSM_Distribute {
+}
+class MARTE_RSM_InterRepetition {
+  + isModulo : str
+}
+abstract class MARTE_RSM_LinkTopology {
+}
+class MARTE_RSM_Reshape {
+}
+class MARTE_RSM_Shaped {
+}
+class MARTE_RSM_Tiler {
+}
+class MARTE_SAM_SaAnalysisContext {
+  + optCriterion : str
+}
+class MARTE_SAM_SaCommHost {
+}
+class MARTE_SAM_SaCommStep {
+}
+class MARTE_SAM_SaEndtoEndFlow {
+}
+class MARTE_SAM_SaExecHost {
+}
+class MARTE_SAM_SaSchedObs {
+}
+class MARTE_SAM_SaSharedResource {
+}
+class MARTE_SAM_SaStep {
+}
+class MARTE_SW_Brokering_DeviceBroker {
+  + accessPolicy : str
+  + isBuffered : str
+  + name : str
+}
+class MARTE_SW_Brokering_MemoryBroker {
+  + accessPolicy : str
+}
+class MARTE_SW_Concurrency_Alarm {
+  + isWatchdog : str
+}
+class MARTE_SW_Concurrency_EntryPoint {
+  + isReentrant : str
+}
+class MARTE_SW_Concurrency_InterruptResource {
+  + isMaskable : str
+  + kind : str
+}
+class MARTE_SW_Concurrency_MemoryPartition {
+}
+abstract class MARTE_SW_Concurrency_SwConcurrentResource {
+  + activationCapacity : str
+}
+class MARTE_SW_Concurrency_SwSchedulableResource {
+  + isPreemptable : str
+  + isStaticSchedulingFeature : str
+}
+class MARTE_SW_Concurrency_SwTimerResource {
+}
+class MARTE_SW_Interaction_MessageComResource {
+  + isFixedMessageSize : str
+  + mechanism : str
+  + messageQueuePolicy : str
+}
+class MARTE_SW_Interaction_NotificationResource {
+  + mechanism : str
+  + occurence : str
+}
+class MARTE_SW_Interaction_SharedDataComResource {
+}
+abstract class MARTE_SW_Interaction_SwCommunicationResource {
+}
+abstract class MARTE_SW_Interaction_SwInteractionResource {
+  + isIntraMemoryPartitionInteraction : bool
+  + waitingQueueCapacity : str
+  + waitingQueuePolicy : str
+}
+class MARTE_SW_Interaction_SwMutualExclusionResource {
+  + concurrentAccessProtocol : str
+  + mechanism : str
+}
+abstract class MARTE_SW_Interaction_SwSynchronizationResource {
+}
+class MARTE_SW_ResourceCore_SwAccessService {
+  + isModifier : str
+}
+abstract class MARTE_SW_ResourceCore_SwResource {
+}
+class MARTE_Time_Clock {
+  + standard : str
+}
+class MARTE_Time_ClockConstraint {
+  + isChronometricBased : str
+  + isCoincidenceBased : str
+  + isPrecedenceBased : bool
+}
+class MARTE_Time_ClockType {
+  + isLogical : str
+  + nature : str
+}
+class MARTE_Time_TimedConstraint {
+  + interpretation : str
+}
+class MARTE_Time_TimedDomain {
+}
+class MARTE_Time_TimedDurationObservation {
+  + obsKind : str
+}
+abstract class MARTE_Time_TimedElement {
+}
+class MARTE_Time_TimedEvent {
+  + repetition : str
+}
+class MARTE_Time_TimedInstantObservation {
+  + obsKind : str
+}
+abstract class MARTE_Time_TimedObservation {
+}
+class MARTE_Time_TimedProcessing {
+}
+class MARTE_Time_TimedValueSpecification {
+  + interpretation : str
+}
+class MARTE_Variables_ExpressionContext {
+}
+class MARTE_Variables_Var {
+  + dir : str
+}
+enum MessageResourceKind {
+  Blackboard
+  MessageQueue
+  Other
+  Pipe
+  Undef
+}
+class MutualExclusionResource {
+}
+enum MutualExclusionResourceKind {
+  BooleanSemaphore
+  CountSemaphore
+  Mutex
+  Other
+  Undef
+}
+class NFP_Area {
+}
+class NFP_Boolean {
+}
+class NFP_DataSize {
+}
+class NFP_DataTxRate {
+}
+class NFP_DateTime {
+}
+class NFP_Duration {
+}
+class NFP_Energy {
+}
+class NFP_Frequency {
+}
+class NFP_FrequencyInterval {
+}
+class NFP_Integer {
+}
+class NFP_Length {
+}
+class NFP_Natural {
+}
+class NFP_NaturalInterval {
+}
+class NFP_Percentage {
+}
+class NFP_Power {
+}
+class NFP_Price {
+}
+class NFP_Real {
+}
+class NFP_String {
+}
+class NFPs_Dimension {
+}
+class NFPs_MARTE_Constraint {
+}
+class NFPs_MARTE_Enumeration {
+}
+class NFPs_MARTE_EnumerationLiteral {
+}
+class NFPs_MARTE_Property {
+}
+class NFPs_NfpConstraint {
+}
+class NFPs_Unit {
+}
+class NfpConstraint {
+}
+enum NotificationKind {
+  Bounded
+  Memorized
+  Memoryless
+  Other
+  Undef
+}
+enum NotificationResourceKind {
+  Barrier
+  Event
+  Other
+  Undef
+}
+class Operation {
+}
+enum OptimallityCriterionKind {
+  meetHardDeadlines
+  minimizeMissedDeadlines
+  minimizedMeanTardiness
+  other
+  undef
+}
+class PAM_MARTE_NamedElement {
+}
+class PAM_PaStep {
+}
+enum PLD_Class {
+  hierarchicalPLD
+  other
+  rowBased
+  seaOfGates
+  symetricalArray
+  undef
+}
+enum PLD_Technology {
+  SRAM
+  antifuse
+  flash
+  other
+  undef
+}
+enum PoolMgtPolicyKind {
+  dynamic
+  exception
+  infiniteWait
+  other
+  timedWait
+}
+enum PortSpecificationKind {
+  atomic
+  featureBased
+  interfaceBased
+}
+class ProcessingResource {
+}
+enum QueuePolicyKind {
+  FIFO
+  LIFO
+  Other
+  Priority
+  Undef
+}
+enum ROM_Type {
+  EEPROM
+  EPROM
+  Flash
+  OTP_EPROM
+  maskedROM
+  other
+  undef
+}
+class RSM_MARTE_Connector {
+}
+class RSM_MARTE_ConnectorEnd {
+}
+class RSM_MARTE_MultiplicityElement {
+}
+class Realnterval {
+}
+class RegisterAction {
+}
+enum Repl_Policy {
+  FIFO
+  LRU
+  NFU
+  other
+  random
+  undef
+}
+class Resource {
+}
+class SAM_MARTE_BehavioralFeature {
+}
+class SAM_MARTE_NamedElement {
+}
+class SAM_SaSharedResource {
+}
+class SW_Brokering_DeviceBroker {
+}
+class SW_Brokering_MARTE_Activity {
+}
+class SW_Brokering_MARTE_BehavioralFeature {
+}
+class SW_Brokering_MARTE_Operation {
+}
+class SW_Brokering_MARTE_TypedElement {
+}
+class SW_Concurrency_MARTE_BehavioralFeature {
+}
+class SW_Concurrency_MARTE_Element {
+}
+class SW_Concurrency_MARTE_NamedElement {
+}
+class SW_Concurrency_MARTE_Namespace {
+}
+class SW_Concurrency_MARTE_TypedElement {
+}
+class SW_Concurrency_SwConcurrentResource {
+}
+class SW_Interaction_MARTE_BehavioralFeature {
+}
+class SW_Interaction_MARTE_TypedElement {
+}
+class SW_Interaction_SwInteractionResource {
+}
+class SW_Interaction_SwSynchronizationResource {
+}
+class SW_ResourceCore_MARTE_BehavioralFeature {
+}
+class SW_ResourceCore_MARTE_Property {
+}
+class SW_ResourceCore_MARTE_TypedElement {
+}
+class SchedParameters {
+}
+class SchedulableResource {
+}
+class Scheduler {
+}
+class ShapeSpecification {
+}
+class SwCommunicationResource {
+}
+class SwConcurrentResource {
+}
+class SwResource {
+}
+class SwSynchronizationResource {
+}
+enum SynchronizationKind {
+  asynchronous
+  delayedSynchronous
+  other
+  rendezVous
+  synchronous
+}
+class TilerSpecification {
+}
+class Time_Clock {
+}
+class Time_ClockType {
+}
+class Time_MARTE_Action {
+}
+class Time_MARTE_Behavior {
+}
+class Time_MARTE_Class {
+}
+class Time_MARTE_DurationObservation {
+}
+class Time_MARTE_Enumeration {
+}
+class Time_MARTE_Event {
+}
+class Time_MARTE_InstanceSpecification {
+}
+class Time_MARTE_Message {
+}
+class Time_MARTE_Namespace {
+}
+class Time_MARTE_Operation {
+}
+class Time_MARTE_Property {
+}
+class Time_MARTE_TimeEvent {
+}
+class Time_MARTE_TimeObservation {
+}
+class Time_MARTE_ValueSpecification {
+}
+class Time_TimedElement {
+}
+class Time_TimedInstantObservation {
+}
+class Time_TimedProcessing {
+}
+class TimedElement {
+}
+class TimedObservation {
+}
+class TimerResource {
+}
+class TimingResource {
+}
+class TupleType {
+}
+class UtilityType {
+}
+enum VariableDirectionKind {
+  in_
+  inout
+  out
+}
+class Variables_ExpressionContext {
+}
+class Variables_MARTE_NamedElement {
+}
+class Variables_MARTE_Property {
+}
+enum WritePolicy {
+  other
+  undef
+  writeBack
+  writeThrough
+}
+Action <|-- MARTE_HwPeripheral_RegisterAction
+Activity <|-- MARTE_HwPeripheral_PeripheralActivity
+Allocate <|-- MARTE_RSM_Distribute
+Allocate <|-- MARTE_SW_Concurrency_EntryPoint
+CoreElements_Configuration <|-- MARTE_GQAM_GaAnalysisContext
+GQAM_GaCommStep <|-- MARTE_PAM_PaCommStep
+GQAM_GaRequestedService <|-- MARTE_PAM_PaRequestedStep
+GRM_CommunicationEndPoint <|-- MARTE_HwCommunication_HwEndPoint
+GRM_CommunicationMedia <|-- MARTE_GQAM_GaCommHost
+GRM_CommunicationMedia <|-- MARTE_HwCommunication_HwMedia
+GRM_CommunicationMedia <|-- MARTE_SW_Interaction_SwCommunicationResource
+GRM_ComputingResource <|-- MARTE_GQAM_GaExecHost
+GRM_ComputingResource <|-- MARTE_HwComputing_HwComputingResource
+GRM_DeviceResource <|-- MARTE_HwDevice_HwDevice
+GRM_MutualExclusionResource <|-- MARTE_SW_Interaction_SwMutualExclusionResource
+GRM_ResourceUsage <|-- MARTE_GQAM_GaScenario
+GRM_SchedulableResource <|-- MARTE_SW_Concurrency_SwSchedulableResource
+GRM_Scheduler <|-- MARTE_GQAM_GaCommHost
+GRM_Scheduler <|-- MARTE_GQAM_GaExecHost
+GRM_StorageResource <|-- MARTE_HwMemory_HwMemory
+GRM_StorageResource <|-- MARTE_HwStorageManager_HwStorageManager
+GRM_SynchronizationResource <|-- MARTE_SW_Interaction_SwSynchronizationResource
+GRM_TimingResource <|-- MARTE_HwTiming_HwTimingResource
+GaAnalysisContext <|-- MARTE_SAM_SaAnalysisContext
+GaCommHost <|-- MARTE_SAM_SaCommHost
+GaCommStep <|-- MARTE_SAM_SaCommStep
+GaExecHost <|-- MARTE_SAM_SaExecHost
+GaScenario <|-- MARTE_GQAM_GaStep
+GaStep <|-- MARTE_GQAM_GaAcqStep
+GaStep <|-- MARTE_GQAM_GaCommStep
+GaStep <|-- MARTE_GQAM_GaRelStep
+GaStep <|-- MARTE_GQAM_GaRequestedService
+GaStep <|-- MARTE_PAM_PaResPassStep
+GaStep <|-- MARTE_PAM_PaStep
+GaStep <|-- MARTE_SAM_SaStep
+GaTimedObs <|-- MARTE_GQAM_GaLatencyObs
+GaTimedObs <|-- MARTE_SAM_SaSchedObs
+GrService <|-- MARTE_GRM_Acquire
+GrService <|-- MARTE_GRM_Release
+GrService <|-- MARTE_HwGeneral_HwResourceService
+GrService <|-- MARTE_SW_ResourceCore_SwAccessService
+HwCommunicationResource <|-- MARTE_HwCommunication_HwArbiter
+HwCommunication_HwArbiter <|-- MARTE_HwStorageManager_HwDMA
+HwCommunication_HwCommunicationResource <|-- MARTE_HwCommunication_HwEndPoint
+HwCommunication_HwCommunicationResource <|-- MARTE_HwCommunication_HwMedia
+HwComponent <|-- MARTE_HwPower_HwCoolingSupply
+HwComponent <|-- MARTE_HwPower_HwPowerSupply
+HwComputingResource <|-- MARTE_HwComputing_HwASIC
+HwComputingResource <|-- MARTE_HwComputing_HwMCU
+HwComputingResource <|-- MARTE_HwComputing_HwPLD
+HwComputingResource <|-- MARTE_HwComputing_HwProcessor
+HwDevice <|-- MARTE_HwDevice_HwI_O
+HwDevice <|-- MARTE_HwDevice_HwPeripheral
+HwDevice <|-- MARTE_HwDevice_HwSupport
+HwEndPoint <|-- MARTE_HwCommunication_HwPort
+HwEndPoint <|-- MARTE_HwIO_HwPin
+HwEndPoint <|-- MARTE_HwPackage_HwPackagePin
+HwGeneral_HwResource <|-- MARTE_HwComputing_HwComputingResource
+HwGeneral_HwResource <|-- MARTE_HwDevice_HwDevice
+HwGeneral_HwResource <|-- MARTE_HwMemory_HwMemory
+HwGeneral_HwResource <|-- MARTE_HwStorageManager_HwStorageManager
+HwGeneral_HwResource <|-- MARTE_HwTiming_HwTimingResource
+HwI_O <|-- MARTE_HwDevice_HWActuator
+HwI_O <|-- MARTE_HwDevice_HWSensor
+HwMedia <|-- MARTE_HwCommunication_HwBridge
+HwMedia <|-- MARTE_HwCommunication_HwBus
+HwMedia <|-- MARTE_HwCommunication_HwConnection
+HwMedia <|-- MARTE_HwIO_HwLine
+HwMedia <|-- MARTE_HwPackage_HwWire
+HwMemory <|-- MARTE_HwMemory_HwCache
+HwMemory <|-- MARTE_HwMemory_HwDrive
+HwMemory <|-- MARTE_HwMemory_HwRAM
+HwMemory <|-- MARTE_HwMemory_HwROM
+HwMemory <|-- MARTE_HwRegister_HwRegister
+HwResource <|-- MARTE_HwCommunication_HwCommunicationResource
+HwResource <|-- MARTE_HwComputing_HwBranchPredictor
+HwResource <|-- MARTE_HwComputing_HwISA
+HwResource <|-- MARTE_HwLayout_HwComponent
+HwStorageManager <|-- MARTE_HwStorageManager_HwMMU
+HwStorageManager_HwStorageManager <|-- MARTE_HwStorageManager_HwDMA
+HwTimingResource <|-- MARTE_HwTiming_HwClock
+HwTimingResource <|-- MARTE_HwTiming_HwTimer
+InterruptResource <|-- MARTE_SW_Concurrency_Alarm
+LinkTopology <|-- MARTE_RSM_DefaultLink
+LinkTopology <|-- MARTE_RSM_InterRepetition
+LinkTopology <|-- MARTE_RSM_Reshape
+LinkTopology <|-- MARTE_RSM_Tiler
+MutualExclusionResource <|-- MARTE_SAM_SaSharedResource
+NFPs_NfpConstraint <|-- MARTE_Time_ClockConstraint
+NFPs_NfpConstraint <|-- MARTE_Time_TimedConstraint
+NfpConstraint <|-- MARTE_GQAM_GaTimedObs
+Operation <|-- MARTE_HwDeviceFunction_HwDeviceFunction
+Operation <|-- MARTE_HwPeripheral_OperationImpl
+PAM_PaStep <|-- MARTE_PAM_PaCommStep
+PAM_PaStep <|-- MARTE_PAM_PaRequestedStep
+ProcessingResource <|-- MARTE_GRM_CommunicationMedia
+ProcessingResource <|-- MARTE_GRM_ComputingResource
+ProcessingResource <|-- MARTE_GRM_DeviceResource
+RegisterAction <|-- MARTE_HwPeripheral_ReadRegisterAction
+RegisterAction <|-- MARTE_HwPeripheral_WriteRegisterAction
+Resource <|-- MARTE_GRM_CommunicationEndPoint
+Resource <|-- MARTE_GRM_ConcurrencyResource
+Resource <|-- MARTE_GRM_MutualExclusionResource
+Resource <|-- MARTE_GRM_ProcessingResource
+Resource <|-- MARTE_GRM_SchedulableResource
+Resource <|-- MARTE_GRM_Scheduler
+Resource <|-- MARTE_GRM_StorageResource
+Resource <|-- MARTE_GRM_SynchronizationResource
+Resource <|-- MARTE_GRM_TimingResource
+Resource <|-- MARTE_HwGeneral_HwResource
+Resource <|-- MARTE_PAM_PaLogicalResource
+Resource <|-- MARTE_SW_ResourceCore_SwResource
+SW_Concurrency_SwConcurrentResource <|-- MARTE_SW_Concurrency_SwSchedulableResource
+SW_Interaction_SwInteractionResource <|-- MARTE_SW_Interaction_SwCommunicationResource
+SW_Interaction_SwInteractionResource <|-- MARTE_SW_Interaction_SwSynchronizationResource
+SW_Interaction_SwSynchronizationResource <|-- MARTE_SW_Interaction_SwMutualExclusionResource
+SchedulableResource <|-- MARTE_GQAM_GaCommChannel
+Scheduler <|-- MARTE_GRM_SecondaryScheduler
+SwCommunicationResource <|-- MARTE_SW_Interaction_MessageComResource
+SwCommunicationResource <|-- MARTE_SW_Interaction_SharedDataComResource
+SwConcurrentResource <|-- MARTE_SW_Concurrency_InterruptResource
+SwResource <|-- MARTE_SW_Brokering_DeviceBroker
+SwResource <|-- MARTE_SW_Brokering_MemoryBroker
+SwResource <|-- MARTE_SW_Concurrency_MemoryPartition
+SwResource <|-- MARTE_SW_Concurrency_SwConcurrentResource
+SwResource <|-- MARTE_SW_Interaction_SwInteractionResource
+SwSynchronizationResource <|-- MARTE_SW_Interaction_NotificationResource
+Time_TimedElement <|-- MARTE_Time_ClockConstraint
+Time_TimedElement <|-- MARTE_Time_TimedConstraint
+Time_TimedProcessing <|-- MARTE_GQAM_GaScenario
+TimedElement <|-- MARTE_Time_TimedEvent
+TimedElement <|-- MARTE_Time_TimedObservation
+TimedElement <|-- MARTE_Time_TimedProcessing
+TimedElement <|-- MARTE_Time_TimedValueSpecification
+TimedObservation <|-- MARTE_Time_TimedDurationObservation
+TimedObservation <|-- MARTE_Time_TimedInstantObservation
+TimerResource <|-- MARTE_SW_Concurrency_SwTimerResource
+TimingResource <|-- MARTE_GRM_ClockResource
+TimingResource <|-- MARTE_GRM_TimerResource
+TupleType <|-- MARTE_NFPs_NfpType
+Variables_ExpressionContext <|-- MARTE_GQAM_GaAnalysisContext
+IntegerInterval "0..1" --* "1..1" MARTE_SAM_SaExecHost : ISRprioRange1076
+MARTE_SAM_SaExecHost "1..1" *-- "0..1" NFP_Duration : ISRswitchT1073
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" NFP_DateTime : absDl277
+MARTE_SW_Interaction_SwMutualExclusionResource "1..1" -- "0..9999" SW_Interaction_MARTE_TypedElement : accessTokenElements792
+MARTE_SW_ResourceCore_SwAccessService "1..1" -- "1..1" SW_ResourceCore_MARTE_Property : accessedElement623
+GRM_Resource "0..1" -- "1..1" MARTE_GQAM_GaAcqStep : acqRes933
+MARTE_SW_Interaction_SwMutualExclusionResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : acquireServices797
+MARTE_SAM_SaSharedResource "1..1" *-- "0..9999" NFP_Duration : acquisT1046
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : activateServices640
+HwGeneral_MARTE_Activity "0..9999" --* "1..1" MARTE_HwGeneral_HwResource : activities523
+MARTE_SW_Brokering_DeviceBroker "1..1" *-- "0..9999" SW_Brokering_MARTE_Activity : activities737
+MARTE_HwMemory_HwMemory "1..1" *-- "0..1" NFP_DataSize : adressSize412
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : adressSpace629
+MARTE_HwCommunication_HwBus "1..1" *-- "0..1" NFP_DataSize : adressWidth371
+Alloc_Allocated "0..9999" -- "1..1" MARTE_Alloc_Allocated : allocatedFrom30
+MARTE_GRM_ResourceUsage "1..1" *-- "0..9999" NFP_DataSize : allocatedMemory160
+Alloc_Allocated "0..9999" -- "1..1" MARTE_Alloc_Allocated : allocatedTo28
+HwCommunication_HwArbiter "0..9999" -- "1..1" MARTE_HwCommunication_HwMedia : arbiters370
+MARTE_HwComputing_HwProcessor "1..1" -- "0..1" NFP_DataSize : architecture306
+MARTE_HwLayout_HwComponent "1..1" -- "0..1" NFP_Area : area526
+MARTE_HwMemory_CacheStructure "1..1" *-- "0..1" NFP_Natural : associativity433
+MARTE_HwCommunication_HwMedia "1..1" *-- "0..1" NFP_DataTxRate : bandWidth368
+MARTE_NFPs_Dimension "1..1" -- "0..9999" NFPs_Dimension : baseDimension15
+DataTypes_MARTE_Property "1..1" -- "1..1" MARTE_DataTypes_BoundedSubtype : baseType213
+MARTE_NFPs_Unit "1..1" -- "0..1" NFPs_Unit : baseUnit1
+Alloc_MARTE_Abstraction "1..1" -- "1..1" MARTE_Alloc_Allocate : base_Abstraction46
+MARTE_Time_TimedProcessing "1..1" -- "1..1" Time_MARTE_Action : base_Action87
+Alloc_MARTE_ActivityPartition "1..1" -- "1..1" MARTE_Alloc_AllocateActivityGroup : base_ActivityPartition33
+GCM_MARTE_AnyReceiveEvent "1..1" -- "1..1" MARTE_GCM_DataEvent : base_AnyReceiveEvent823
+GRM_MARTE_Behavior "1..1" -- "1..1" MARTE_GRM_GrService : base_Behavior152
+GQAM_MARTE_Behavior "1..1" -- "1..1" MARTE_GQAM_GaWorkloadGenerator : base_Behavior835
+MARTE_Time_TimedProcessing "1..1" -- "1..1" Time_MARTE_Behavior : base_Behavior88
+MARTE_SAM_SaCommStep "1..1" -- "1..1" SAM_MARTE_BehavioralFeature : base_BehavioralFeature1008
+MARTE_SAM_SaStep "1..1" -- "1..1" SAM_MARTE_BehavioralFeature : base_BehavioralFeature1010
+GRM_MARTE_BehavioralFeature "1..1" -- "1..1" MARTE_GRM_GrService : base_BehavioralFeature150
+HLAM_MARTE_BehavioralFeature "1..1" -- "1..1" MARTE_HLAM_RtFeature : base_BehavioralFeature258
+HLAM_MARTE_BehavioralFeature "1..1" -- "1..1" MARTE_HLAM_RtAction : base_BehavioralFeature294
+HLAM_MARTE_BehavioralFeature "1..1" -- "1..1" MARTE_HLAM_RtService : base_BehavioralFeature300
+GCM_MARTE_BehavioralFeature "1..1" -- "1..1" MARTE_GCM_ClientServerFeature : base_BehavioralFeature815
+HLAM_MARTE_BehavioredClassifier "1..1" -- "1..1" MARTE_HLAM_RtUnit : base_BehavioredClassifier248
+HLAM_MARTE_BehavioredClassifier "1..1" -- "1..1" MARTE_HLAM_PpUnit : base_BehavioredClassifier255
+MARTE_Time_ClockType "1..1" -- "1..1" Time_MARTE_Class : base_Class77
+GRM_MARTE_Classifier "0..1" -- "1..1" MARTE_GRM_Resource : base_Classifier105
+GQAM_MARTE_Classifier "1..1" -- "1..1" MARTE_GQAM_GaResourcesPlatform : base_Classifier980
+GRM_MARTE_Collaboration "1..1" -- "1..1" MARTE_GRM_GrService : base_Collaboration154
+GRM_MARTE_CollaborationUse "1..1" -- "1..1" MARTE_GRM_GrService : base_CollaborationUse156
+HLAM_MARTE_Comment "1..1" -- "1..1" MARTE_HLAM_RtSpecification : base_Comment290
+Alloc_MARTE_Comment "1..1" -- "1..1" MARTE_Alloc_Assign : base_Comment44
+GRM_MARTE_ConnectableElement "0..1" -- "1..1" MARTE_GRM_Resource : base_ConnectableElement109
+GRM_MARTE_Connector "0..1" -- "1..1" MARTE_GRM_CommunicationMedia : base_Connector136
+MARTE_RSM_LinkTopology "1..1" -- "1..1" RSM_MARTE_Connector : base_Connector179
+MARTE_RSM_Tiler "1..1" -- "1..1" RSM_MARTE_ConnectorEnd : base_ConnectorEnd205
+MARTE_NFPs_NfpConstraint "1..1" -- "1..1" NFPs_MARTE_Constraint : base_Constraint4
+DataTypes_MARTE_DataType "1..1" -- "1..1" MARTE_DataTypes_BoundedSubtype : base_DataType214
+DataTypes_MARTE_DataType "1..1" -- "1..1" MARTE_DataTypes_IntervalType : base_DataType218
+DataTypes_MARTE_DataType "1..1" -- "1..1" MARTE_DataTypes_CollectionType : base_DataType223
+DataTypes_MARTE_DataType "1..1" -- "1..1" MARTE_DataTypes_ChoiceType : base_DataType231
+DataTypes_MARTE_DataType "1..1" -- "1..1" MARTE_DataTypes_TupleType : base_DataType236
+Alloc_MARTE_Dependency "1..1" -- "1..1" MARTE_Alloc_NfpRefine : base_Dependency34
+MARTE_Time_TimedDurationObservation "1..1" -- "1..1" Time_MARTE_DurationObservation : base_DurationObservation82
+MARTE_NFPs_Dimension "1..1" -- "1..1" NFPs_MARTE_Enumeration : base_Enumeration16
+MARTE_NFPs_Unit "1..1" -- "1..1" NFPs_MARTE_EnumerationLiteral : base_EnumerationLiteral2
+GRM_MARTE_ExecutionSpecification "1..1" -- "1..1" MARTE_GRM_GrService : base_ExecutionSpecification148
+GRM_MARTE_InstanceSpecification "0..1" -- "1..1" MARTE_GRM_Resource : base_InstanceSpecification103
+MARTE_Time_Clock "1..1" -- "1..1" Time_MARTE_InstanceSpecification : base_InstanceSpecification51
+GCM_MARTE_Interface "1..1" -- "1..1" MARTE_GCM_ClientServerSpecification : base_Interface811
+GCM_MARTE_Interface "1..1" -- "1..1" MARTE_GCM_FlowSpecification : base_Interface813
+HLAM_MARTE_InvocationAction "1..1" -- "1..1" MARTE_HLAM_RtFeature : base_InvocationAction265
+HLAM_MARTE_InvocationAction "1..1" -- "1..1" MARTE_HLAM_RtAction : base_InvocationAction297
+GCM_MARTE_InvocationAction "1..1" -- "1..1" MARTE_GCM_GCMInvocationAction : base_InvocationAction819
+GRM_MARTE_Lifeline "0..1" -- "1..1" MARTE_GRM_Resource : base_Lifeline107
+HLAM_MARTE_Message "1..1" -- "1..1" MARTE_HLAM_RtFeature : base_Message259
+MARTE_Time_TimedProcessing "1..1" -- "1..1" Time_MARTE_Message : base_Message90
+MARTE_RSM_Shaped "1..1" -- "1..1" RSM_MARTE_MultiplicityElement : base_MultiplicityElement209
+MARTE_PAM_PaRunTInstance "1..1" -- "1..1" PAM_MARTE_NamedElement : base_NamedElement1117
+GRM_MARTE_NamedElement "1..1" -- "1..1" MARTE_GRM_ResourceUsage : base_NamedElement169
+MARTE_Variables_ExpressionContext "1..1" -- "1..1" Variables_MARTE_NamedElement : base_NamedElement212
+Alloc_MARTE_NamedElement "1..1" -- "1..1" MARTE_Alloc_Allocated : base_NamedElement27
+GQAM_MARTE_NamedElement "1..1" -- "1..1" MARTE_GQAM_GaEventTrace : base_NamedElement837
+GQAM_MARTE_NamedElement "1..1" -- "1..1" MARTE_GQAM_GaWorkloadEvent : base_NamedElement848
+GQAM_MARTE_NamedElement "1..1" -- "1..1" MARTE_GQAM_GaWorkloadBehavior : base_NamedElement969
+MARTE_SAM_SaEndtoEndFlow "1..1" -- "1..1" SAM_MARTE_NamedElement : base_NamedElement998
+MARTE_Time_TimedDomain "1..1" -- "1..1" Time_MARTE_Namespace : base_Namespace50
+MARTE_SW_Concurrency_MemoryPartition "1..1" -- "1..1" SW_Concurrency_MARTE_Namespace : base_Namespace716
+GQAM_MARTE_Operation "1..1" -- "1..1" MARTE_GQAM_GaRequestedService : base_Operation928
+CoreElements_MARTE_Package "1..1" -- "1..1" MARTE_CoreElements_Configuration : base_Package21
+HLAM_MARTE_Port "1..1" -- "1..1" MARTE_HLAM_RtFeature : base_Port263
+GCM_MARTE_Port "1..1" -- "1..1" MARTE_GCM_FlowPort : base_Port801
+GCM_MARTE_Port "1..1" -- "1..1" MARTE_GCM_ClientServerPort : base_Port802
+MARTE_NFPs_Nfp "1..1" -- "1..1" NFPs_MARTE_Property : base_Property0
+GRM_MARTE_Property "0..1" -- "1..1" MARTE_GRM_Resource : base_Property101
+MARTE_Variables_Var "1..1" -- "1..1" Variables_MARTE_Property : base_Property211
+MARTE_Time_Clock "1..1" -- "1..1" Time_MARTE_Property : base_Property57
+GCM_MARTE_Property "1..1" -- "1..1" MARTE_GCM_FlowProperty : base_Property800
+GCM_MARTE_Property "1..1" -- "1..1" MARTE_GCM_DataPool : base_Property826
+HLAM_MARTE_Signal "1..1" -- "1..1" MARTE_HLAM_RtFeature : base_Signal261
+CoreElements_MARTE_State "1..1" -- "1..1" MARTE_CoreElements_Mode : base_State26
+CoreElements_MARTE_StateMachine "1..1" -- "1..1" MARTE_CoreElements_ModeBehavior : base_StateMachine19
+CoreElements_MARTE_StructuredClassifier "1..1" -- "1..1" MARTE_CoreElements_Configuration : base_StructuredClassifier20
+MARTE_Time_TimedEvent "1..1" -- "1..1" Time_MARTE_TimeEvent : base_TimeEvent83
+MARTE_Time_TimedInstantObservation "1..1" -- "1..1" Time_MARTE_TimeObservation : base_TimeObservation81
+CoreElements_MARTE_Transition "1..1" -- "1..1" MARTE_CoreElements_ModeTransition : base_Transition18
+GCM_MARTE_Trigger "1..1" -- "1..1" MARTE_GCM_GCMTrigger : base_Trigger816
+MARTE_Time_TimedValueSpecification "1..1" -- "1..1" Time_MARTE_ValueSpecification : base_ValueSpecification80
+MARTE_PAM_PaStep "1..1" *-- "0..9999" NFP_Real : behavCount1087
+GQAM_GaScenario "0..9999" -- "1..1" MARTE_PAM_PaStep : behavDemand1084
+GQAM_GaScenario "0..1" -- "1..1" MARTE_GQAM_GaStep : behavior900
+GQAM_GaScenario "0..9999" -- "1..1" MARTE_GQAM_GaWorkloadBehavior : behavior964
+MARTE_HwMemory_CacheStructure "1..1" *-- "0..1" NFP_DataSize : blockSize430
+MARTE_SAM_SaSchedObs "1..1" *-- "0..9999" NFP_Duration : blockT1054
+MARTE_GRM_CommunicationMedia "1..1" *-- "0..9999" NFP_Duration : blockT138
+MARTE_GQAM_GaStep "1..1" *-- "0..1" NFP_Duration : blockT879
+HwComputing_HwComputingResource "0..9999" --* "1..1" MARTE_HwComputing_HwPLD : blocksComputing354
+HwMemory_HwRAM "0..9999" --* "1..1" MARTE_HwComputing_HwPLD : blocksRAM352
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" NFP_Duration : boundDl279
+HwMemory_HwRAM "0..1" --* "1..1" MARTE_HwMemory_HwDrive : buffer461
+HwMemory_HwCache "0..9999" --* "1..1" MARTE_HwComputing_HwProcessor : caches333
+MARTE_SAM_SaSharedResource "1..1" *-- "0..1" NFP_Integer : capacity1038
+MARTE_GRM_CommunicationMedia "1..1" *-- "0..9999" NFP_DataTxRate : capacity143
+MARTE_HwPower_HwPowerSupply "1..1" *-- "0..1" NFP_Energy : capacity560
+GQAM_GaWorkloadEvent "0..1" -- "1..1" MARTE_GQAM_GaScenario : cause851
+MARTE_GRM_MutualExclusionResource "1..1" *-- "0..1" NFP_Integer : ceiling125
+DataTypes_MARTE_Property "0..9999" -- "1..1" MARTE_DataTypes_ChoiceType : choiceAttrib226
+GCM_MARTE_Classifier "1..1" -- "1..1" MARTE_GCM_DataEvent : classifier824
+MARTE_SW_Interaction_NotificationResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : clearServices789
+MARTE_GQAM_GaExecHost "1..1" *-- "0..1" NFP_Duration : clockOvh914
+MARTE_SW_Brokering_DeviceBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : closeServices721
+MARTE_GQAM_GaExecHost "1..1" *-- "0..1" NFP_Duration : cntxtSwT911
+DataTypes_MARTE_Property "1..1" -- "1..1" MARTE_DataTypes_CollectionType : collectionAttrib221
+MARTE_GQAM_GaExecHost "1..1" *-- "0..1" NFP_Duration : commRcvOvh908
+MARTE_GQAM_GaExecHost "1..1" *-- "0..1" NFP_Duration : commTxOvh906
+HwProtocol_HwProtocol "0..9999" -- "1..1" MARTE_HwDevice_HwDevice : compliant476
+HwGeneral_HwResource "0..9999" --* "1..1" MARTE_HwDatasheet_HwDatasheet : components573
+HwGeneral_HwResource "0..9999" --* "1..1" MARTE_HwDiagram_HwBlockDiagram : components586
+HwPackage_HwPackage "0..9999" --* "1..1" MARTE_HwDiagram_HwCircuitDiagram : components589
+HwGeneral_HwResource "0..9999" --* "1..1" MARTE_HwDiagram_HwHRMDiagram : components594
+GRM_SchedulableResource "0..1" -- "1..1" MARTE_GQAM_GaStep : concurRes891
+MARTE_SW_Concurrency_MemoryPartition "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : concurrentResources705
+HwCommunication_HwMedia "0..9999" -- "1..1" MARTE_HwCommunication_HwEndPoint : connectedTo382
+HwCommunication_HwConnection "0..9999" --* "1..1" MARTE_HwDiagram_HwBlockDiagram : connections584
+HwCommunication_HwMedia "0..9999" --* "1..1" MARTE_HwDiagram_HwHRMDiagram : connections596
+MARTE_Alloc_NfpRefine "1..1" -- "0..9999" NFPs_NfpConstraint : constraint35
+MARTE_HwGeneral_HwResourceService "1..1" *-- "0..1" NFP_Power : consumption503
+MARTE_GQAM_GaAnalysisContext "1..1" *-- "0..9999" NFP_String : context972
+MARTE_SW_Brokering_DeviceBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : controlServices723
+HwCommunication_HwMedia "0..9999" -- "1..1" MARTE_HwCommunication_HwArbiter : controlledMedias367
+MARTE_HwPower_HwCoolingSupply "1..1" *-- "0..1" NFP_Power : coolingPower563
+MARTE_HwTiming_HwTimer "1..1" *-- "0..1" NFP_DataSize : counterWidth470
+MARTE_SW_ResourceCore_SwResource "1..1" -- "0..9999" SW_ResourceCore_MARTE_BehavioralFeature : createServices615
+HwDiagram_MARTE_DataType "0..9999" --* "1..1" MARTE_HwDiagram_HwHRMDiagram : datatypes602
+MARTE_SAM_SaCommStep "1..1" *-- "0..1" NFP_Duration : deadline1000
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Duration : deadline1012
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : deadlineElements685
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : deadlineTypeElements688
+DataTypes_MARTE_Property "0..1" -- "1..1" MARTE_DataTypes_ChoiceType : defaultAttrib228
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : delayServices694
+MARTE_SW_ResourceCore_SwResource "1..1" -- "0..9999" SW_ResourceCore_MARTE_BehavioralFeature : deleteServices617
+GQAM_GaWorkloadEvent "0..9999" -- "1..1" MARTE_GQAM_GaWorkloadBehavior : demand966
+GRM_SecondaryScheduler "0..1" -- "1..1" MARTE_GRM_SchedulableResource : dependentScheduler129
+MARTE_HwMemory_Timing "1..1" *-- "0..1" NFP_String : description422
+MARTE_HwGeneral_HwResource "1..1" *-- "0..1" NFP_String : description508
+MARTE_HwLayout_Env_Condition "1..1" *-- "0..1" NFP_String : description554
+MARTE_HwDiagram_SRMDiagram "1..1" *-- "0..9999" SW_Brokering_DeviceBroker : devices604
+MARTE_SW_Brokering_DeviceBroker "1..1" -- "0..9999" SW_Brokering_MARTE_TypedElement : devices720
+MARTE_HwLayout_HwComponent "1..1" *-- "0..3" NFP_Length : dimensions525
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : disableConcurrencyServices655
+MARTE_HwGeneral_HwResourceService "1..1" *-- "0..1" NFP_Power : dissipation505
+HwComputing_HwProcessor "0..9999" -- "1..1" MARTE_HwStorageManager_HwDMA : drivenBy393
+MARTE_GRM_TimerResource "1..1" *-- "0..1" NFP_Duration : duration145
+MARTE_Time_TimedProcessing "1..1" *-- "0..1" Time_MARTE_ValueSpecification : duration92
+MARTE_SW_Concurrency_SwTimerResource "1..1" -- "0..1" SW_Concurrency_MARTE_TypedElement : durationElements703
+GQAM_GaScenario "0..1" -- "1..1" MARTE_GQAM_GaWorkloadEvent : effect844
+MARTE_GRM_StorageResource "1..1" *-- "0..1" NFP_Integer : elementSize111
+MARTE_GRM_CommunicationMedia "1..1" *-- "0..1" NFP_Integer : elementSize134
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : enableConcurrencyServices643
+MARTE_SAM_SaEndtoEndFlow "1..1" *-- "0..9999" NFP_Duration : end2EndD992
+MARTE_SAM_SaEndtoEndFlow "1..1" *-- "0..9999" NFP_Duration : end2EndT989
+GQAM_MARTE_TimeObservation "0..9999" -- "1..1" MARTE_GQAM_GaTimedObs : endObs930
+HwCommunication_HwEndPoint "0..9999" --* "1..1" MARTE_HwGeneral_HwResource : endPoints517
+MARTE_GRM_ResourceUsage "1..1" *-- "0..9999" NFP_Energy : energy167
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_Element : entryPoints627
+MARTE_Time_TimedEvent "1..1" *-- "0..1" Time_MARTE_ValueSpecification : every84
+MARTE_GRM_ResourceUsage "1..1" *-- "0..9999" NFP_Duration : execTime158
+MARTE_SW_Concurrency_MemoryPartition "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : exit713
+MARTE_NFPs_NfpType "1..1" -- "0..1" NFPs_MARTE_Property : exprAttrib12
+MARTE_PAM_PaStep "1..1" *-- "0..9999" NFP_Real : extOpCount1081
+MARTE_HwComputing_HwISA "1..1" *-- "0..1" NFP_String : family338
+GCM_MARTE_Feature "1..1" -- "1..1" MARTE_GCM_GCMTrigger : feature817
+GCM_ClientServerSpecification "0..1" -- "1..1" MARTE_GCM_ClientServerPort : featuresSpec809
+MARTE_Time_TimedProcessing "1..1" -- "0..1" Time_MARTE_Event : finish97
+IntegerMatrix "0..1" --* "1..1" MARTE_RSM_Tiler : fitting199
+MARTE_SW_Interaction_NotificationResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : flushServices780
+MARTE_SW_Concurrency_MemoryPartition "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : fork710
+MARTE_HwGeneral_HwResource "1..1" *-- "0..1" NFP_Frequency : frequency519
+MARTE_RSM_Distribute "1..1" *-- "1..1" TilerSpecification : fromTiler185
+Alloc_MARTE_Element "1..9999" -- "1..1" MARTE_Alloc_Assign : from_39
+HwDeviceFunction_HwDeviceFunction "0..9999" --* "1..1" MARTE_HwDevice_HwDevice : functions475
+GQAM_GaWorkloadGenerator "0..1" -- "1..1" MARTE_GQAM_GaWorkloadEvent : generator840
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Operation : getTime69
+MARTE_HwLayout_HwComponent "1..1" *-- "0..2" NFP_Natural : grid530
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : heapSizeElements670
+GQAM_GaExecHost "0..1" -- "1..1" MARTE_PAM_PaRunTInstance : host1108
+GRM_ComputingResource "0..1" -- "1..1" MARTE_GRM_Scheduler : host118
+GRM_Scheduler "0..1" -- "1..1" MARTE_GRM_SchedulableResource : host130
+GQAM_GaExecHost "0..1" -- "1..1" MARTE_GQAM_GaStep : host893
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Duration : hostDemand852
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Real : hostDemandOps855
+HwGeneral_HwResource "0..9999" --* "1..1" MARTE_HwDiagram_SRMDiagram : hwcomponents605
+MARTE_SW_ResourceCore_SwResource "1..1" -- "0..9999" SW_ResourceCore_MARTE_TypedElement : identifierElements608
+HwProtocol_HwProtocol "0..9999" -- "1..1" MARTE_HwDevice_HwPeripheral : implements491
+MARTE_Alloc_Assign "1..1" -- "0..9999" NFPs_NfpConstraint : impliedConstraint37
+MARTE_Alloc_Allocate "1..1" -- "0..9999" NFPs_NfpConstraint : impliedConstraint47
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Operation : indexToValue74
+MARTE_SW_ResourceCore_SwResource "1..1" -- "0..9999" SW_ResourceCore_MARTE_BehavioralFeature : initializeServices620
+HwTiming_HwClock "0..1" -- "1..1" MARTE_HwTiming_HwTimer : inputClock473
+GCM_MARTE_Behavior "0..1" -- "1..1" MARTE_GCM_DataPool : insertion828
+MARTE_HwComputing_HwISA "1..1" *-- "0..1" NFP_DataSize : inst_Width339
+GRM_SchedulableResource "0..1" -- "1..1" MARTE_PAM_PaRunTInstance : instance1105
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Duration : interOccT858
+DataTypes_MARTE_Property "1..1" -- "1..1" MARTE_DataTypes_IntervalType : intervalAttrib216
+MARTE_HwComputing_HwProcessor "1..1" -- "0..1" NFP_Real : ipc311
+MARTE_GQAM_GaStep "1..1" *-- "0..1" NFP_Boolean : isAtomic877
+MARTE_SAM_SaSharedResource "1..1" *-- "0..1" NFP_Boolean : isConsum1043
+MARTE_HwMemory_HwRAM "1..1" *-- "0..1" NFP_Boolean : isNonVolatile454
+MARTE_SAM_SaSharedResource "1..1" *-- "0..1" NFP_Boolean : isPreemp1040
+MARTE_SAM_SaCommHost "1..1" *-- "0..1" NFP_Boolean : isSched1060
+MARTE_SAM_SaExecHost "1..1" *-- "0..1" NFP_Boolean : isSched1065
+MARTE_SAM_SaAnalysisContext "1..1" *-- "0..1" NFP_Boolean : isSched982
+MARTE_SAM_SaEndtoEndFlow "1..1" *-- "0..1" NFP_Boolean : isSched984
+MARTE_HwCommunication_HwBus "1..1" *-- "0..1" NFP_Boolean : isSerial378
+MARTE_HwMemory_HwRAM "1..1" *-- "0..1" NFP_Boolean : isStatic451
+MARTE_HwCommunication_HwBus "1..1" *-- "0..1" NFP_Boolean : isSynchronous376
+MARTE_HwMemory_HwRAM "1..1" *-- "0..1" NFP_Boolean : isSynchronous448
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : joinServices697
+MARTE_GQAM_GaLatencyObs "1..1" *-- "0..9999" NFP_Duration : latency943
+MARTE_HwMemory_HwCache "1..1" *-- "0..1" NFP_Natural : level464
+HwIO_HwLine "0..9999" -- "1..1" MARTE_HwIO_HwPin : lines572
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : lockServices747
+HLAM_MARTE_Operation "0..1" -- "1..1" MARTE_HLAM_RtUnit : main243
+GRM_Scheduler "0..1" -- "1..1" MARTE_GRM_ProcessingResource : mainScheduler123
+HwMemory_HwMemory "0..9999" -- "1..1" MARTE_HwStorageManager_HwStorageManager : managedMemories387
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : mapServices753
+MARTE_SW_Concurrency_InterruptResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : maskElements675
+MARTE_SW_Interaction_NotificationResource "1..1" -- "0..9999" SW_Interaction_MARTE_TypedElement : maskElements777
+MARTE_GQAM_GaLatencyObs "1..1" *-- "0..9999" NFP_Duration : maxJitter951
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Property : maxValAttr63
+MARTE_GQAM_GaExecHost "1..1" *-- "0..1" NFP_DataSize : memSize919
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_TypedElement : memories739
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_TypedElement : memoryBlockAdressElements741
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_TypedElement : memoryBlockSizeElements744
+MARTE_HwStorageManager_HwMMU "1..1" *-- "0..1" NFP_Boolean : memoryProtection401
+MARTE_HLAM_RtUnit "1..1" *-- "0..1" NFP_DataSize : memorySize245
+MARTE_HLAM_PpUnit "1..1" *-- "0..1" NFP_DataSize : memorySize253
+MARTE_HwMemory_HwMemory "1..1" *-- "0..1" NFP_DataSize : memorySize410
+MARTE_SW_ResourceCore_SwResource "1..1" -- "0..1" SW_ResourceCore_MARTE_TypedElement : memorySizeFootprint612
+MARTE_SW_Concurrency_MemoryPartition "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : memorySpaces707
+MARTE_SW_Interaction_MessageComResource "1..1" -- "0..9999" SW_Interaction_MARTE_TypedElement : messageQueueCapacityElements766
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : messageResources661
+MARTE_SW_Interaction_MessageComResource "1..1" -- "0..9999" SW_Interaction_MARTE_TypedElement : messageSizeElements764
+MARTE_HwComputing_HwProcessor "1..1" *-- "0..1" NFP_Natural : mips308
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" NFP_Percentage : miss285
+MARTE_GQAM_GaLatencyObs "1..1" *-- "0..9999" NFP_Real : miss945
+CoreElements_Mode "0..9999" -- "1..1" MARTE_CoreElements_Configuration : mode23
+CoreElements_Mode "0..9999" -- "1..1" MARTE_NFPs_NfpConstraint : mode5
+MARTE_HLAM_RtUnit "1..1" *-- "0..1" NFP_DataSize : msgMaxSize250
+MARTE_GRM_ResourceUsage "1..1" *-- "0..9999" NFP_DataSize : msgSize176
+MARTE_HLAM_RtAction "1..1" *-- "0..1" NFP_DataSize : msgSize292
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : mutualExclusionResources664
+MARTE_HwComputing_HwProcessor "1..1" *-- "0..1" NFP_Natural : nbALUs323
+MARTE_HwMemory_MemoryOrganization "1..1" *-- "0..1" NFP_Natural : nbBanks441
+MARTE_HwStorageManager_HwDMA "1..1" *-- "0..1" NFP_Natural : nbChannels388
+MARTE_HwComputing_PLD_Organization "1..1" *-- "0..1" NFP_Natural : nbColumns304
+MARTE_HwMemory_MemoryOrganization "1..1" *-- "0..1" NFP_Natural : nbColumns438
+MARTE_HwComputing_HwProcessor "1..1" *-- "0..1" NFP_Natural : nbCores314
+MARTE_HwTiming_HwTimer "1..1" *-- "0..1" NFP_Natural : nbCounters468
+MARTE_HwStorageManager_HwMMU "1..1" -- "0..1" NFP_Natural : nbEntries404
+MARTE_HwComputing_HwProcessor "1..1" *-- "0..1" NFP_Natural : nbFPUs326
+MARTE_HwComputing_HwPLD "1..1" *-- "0..1" NFP_Natural : nbFlipFlops349
+MARTE_HwComputing_HwPLD "1..1" *-- "0..1" NFP_Natural : nbLUTs343
+MARTE_HwLayout_HwComponent "1..1" *-- "0..1" NFP_Natural : nbPins533
+MARTE_HwComputing_HwProcessor "1..1" *-- "0..1" NFP_Natural : nbPipelines317
+MARTE_HwComputing_PLD_Organization "1..1" *-- "0..1" NFP_Integer : nbRows302
+MARTE_HwMemory_MemoryOrganization "1..1" *-- "0..1" NFP_Natural : nbRows436
+MARTE_HwMemory_CacheStructure "1..1" *-- "0..1" NFP_Natural : nbSets428
+MARTE_HwComputing_HwProcessor "1..1" *-- "0..1" NFP_Natural : nbStages320
+MARTE_HwComputing_HwPLD "1..1" *-- "0..1" NFP_Natural : ndLUT_Inputs346
+MARTE_PAM_PaStep "1..1" *-- "0..1" NFP_Boolean : noSync1079
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Duration : nonpreemptionBlocking1027
+MARTE_HwMemory_Timing "1..1" *-- "0..1" NFP_String : notation420
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : notificationResources667
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Integer : numberSelfSuspensions1035
+ArrivalPattern "0..1" --* "1..1" MARTE_HLAM_RtSpecification : occKind270
+MARTE_SW_Interaction_NotificationResource "1..1" -- "0..9999" SW_Interaction_MARTE_TypedElement : occurenceCountElements775
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Property : offsetAttr66
+MARTE_Time_TimedElement "1..1" -- "1..9999" Time_Clock : on79
+GCM_MARTE_Feature "1..1" -- "1..1" MARTE_GCM_GCMInvocationAction : onFeature820
+MARTE_HwComputing_HwComputingResource "1..1" *-- "0..1" NFP_FrequencyInterval : op_Frequencies337
+MARTE_SW_Brokering_DeviceBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : openServices726
+HLAM_MARTE_Behavior "0..1" -- "1..1" MARTE_HLAM_RtUnit : operationalMode241
+HwPeripheral_OperationImpl "0..9999" --* "1..1" MARTE_HwDevice_HwPeripheral : operationimpls493
+HwGeneral_MARTE_Operation "0..9999" --* "1..1" MARTE_HwGeneral_HwResource : operations521
+HwProtocol_MARTE_Operation "0..9999" --* "1..1" MARTE_HwProtocol_HwProtocol : operations581
+MARTE_SW_Brokering_DeviceBroker "1..1" *-- "0..9999" SW_Brokering_MARTE_Operation : operations735
+HwComputing_PLD_Organization "0..1" --* "1..1" MARTE_HwComputing_HwPLD : organization342
+HwMemory_MemoryOrganization "0..1" --* "1..1" MARTE_HwMemory_HwRAM : organization447
+HwMemory_MemoryOrganization "0..1" --* "1..1" MARTE_HwMemory_HwROM : organization457
+IntegerVector "0..1" --* "1..1" MARTE_RSM_Tiler : origin195
+MARTE_SAM_SaSchedObs "1..1" *-- "0..9999" NFP_Integer : overlaps1057
+HwPeripheral_MARTE_Operation "0..1" -- "1..1" MARTE_HwPeripheral_OperationImpl : override565
+HwGeneral_HwResource "0..9999" --* "1..1" MARTE_HwGeneral_HwResource : ownedHW515
+HwComputing_HwISA "0..9999" --* "1..1" MARTE_HwComputing_HwProcessor : ownedISAs329
+HwStorageManager_HwMMU "0..9999" --* "1..1" MARTE_HwComputing_HwProcessor : ownedMMUs335
+HwMemory_HwCache "0..9999" --* "1..1" MARTE_HwStorageManager_HwMMU : ownedTLBs407
+GRM_Resource "0..1" -- "1..1" MARTE_GRM_GrService : owner147
+HwGeneral_HwResourceService "0..9999" --* "1..1" MARTE_HwGeneral_HwResource : p_HW_Services510
+HwPackage_HwPackage "0..9999" --* "1..1" MARTE_HwComputing_HwMCU : packages361
+HwPackage_HwPackage "0..9999" --* "1..1" MARTE_HwDevice_HwDevice : packages479
+MARTE_GRM_CommunicationEndPoint "1..1" *-- "0..1" NFP_Integer : packetSize113
+MARTE_GQAM_GaCommChannel "1..1" *-- "0..1" NFP_DataSize : packetSize959
+MARTE_GRM_CommunicationMedia "1..1" *-- "0..9999" NFP_Duration : packetT140
+ArrivalPattern "0..1" --* "1..1" MARTE_GQAM_GaWorkloadEvent : pattern838
+MARTE_RSM_Distribute "1..1" *-- "1..1" ShapeSpecification : patternShape181
+MARTE_RSM_Reshape "1..1" *-- "1..1" ShapeSpecification : patternShape190
+IntegerMatrix "0..1" --* "1..1" MARTE_RSM_Tiler : paving197
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : periodElements631
+HwPeripheral_PeripheralActivity "0..9999" --* "1..1" MARTE_HwDevice_HwPeripheral : peripheralActivities501
+HwDevice_HwPeripheral "0..9999" --* "1..1" MARTE_HwComputing_HwMCU : peripherals357
+MARTE_HwStorageManager_HwMMU "1..1" *-- "0..1" NFP_DataSize : physicalAddrSpace398
+HwIO_HwPin "0..9999" --* "1..1" MARTE_HwComputing_HwMCU : pins363
+HwIO_HwPin "0..9999" -- "1..1" MARTE_HwCommunication_HwPort : pins384
+HwIO_HwPin "0..9999" --* "1..1" MARTE_HwDevice_HwDevice : pins482
+HwPackage_HwPackagePin "0..9999" --* "1..1" MARTE_HwPackage_HwPackage : pins578
+HwPackage_HwPackagePin "0..1" -- "1..1" MARTE_HwIO_HwPin : pkgPin571
+GQAM_GaResourcesPlatform "1..9999" -- "1..1" MARTE_GQAM_GaAnalysisContext : platform976
+MARTE_PAM_PaLogicalResource "1..1" *-- "1..1" NFP_Integer : poolSize1100
+MARTE_PAM_PaRunTInstance "1..1" *-- "0..1" NFP_Integer : poolSize1103
+MARTE_GQAM_GaWorkloadGenerator "1..1" *-- "0..1" NFP_Integer : pop833
+HwCommunication_HwPort "0..9999" --* "1..1" MARTE_HwComputing_HwMCU : ports365
+HwCommunication_HwPort "0..9999" --* "1..1" MARTE_HwDevice_HwDevice : ports488
+MARTE_HwLayout_HwComponent "1..1" *-- "0..2" NFP_NaturalInterval : position528
+MARTE_GRM_ResourceUsage "1..1" *-- "0..9999" NFP_Power : powerPeak165
+HwGeneral_HwResourceService "0..9999" --* "1..1" MARTE_HwLayout_HwComponent : poweredServices543
+HwComputing_HwBranchPredictor "0..9999" --* "1..1" MARTE_HwComputing_HwProcessor : predictors331
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Duration : preemptT1021
+MARTE_HwLayout_HwComponent "1..1" *-- "0..1" NFP_Price : price539
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" NFP_Integer : priority287
+MARTE_GQAM_GaStep "1..1" *-- "0..1" NFP_Integer : priority888
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : priorityElements634
+MARTE_GQAM_GaStep "1..1" *-- "0..1" NFP_Real : prob885
+GRM_ProcessingResource "0..9999" -- "1..1" MARTE_GRM_Scheduler : processingUnits116
+HwComputing_HwProcessor "0..9999" --* "1..1" MARTE_HwComputing_HwMCU : processor356
+GRM_MutualExclusionResource "0..9999" -- "1..1" MARTE_GRM_Scheduler : protectedSharedRsources120
+HwProtocol_HwProtocol "0..9999" -- "1..1" MARTE_HwCommunication_HwConnection : protocols386
+HwProtocol_HwProtocol "0..9999" --* "1..1" MARTE_HwDatasheet_HwDatasheet : protocols575
+HwProtocol_HwProtocol "0..9999" --* "1..1" MARTE_HwDiagram_HwBlockDiagram : protocols582
+HwProtocol_HwProtocol "0..9999" --* "1..1" MARTE_HwDiagram_HwHRMDiagram : protocols599
+GCM_MARTE_Interface "0..9999" -- "1..1" MARTE_GCM_ClientServerPort : provInterface804
+HwLayout_Env_Condition "0..9999" --* "1..1" MARTE_HwLayout_HwComponent : r_Conditions541
+HwGeneral_HwResourceService "0..9999" -- "1..1" MARTE_HwGeneral_HwResource : r_HW_Services512
+MARTE_HwLayout_Env_Condition "1..1" *-- "0..1" Realnterval : range556
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" NFP_Duration : rdTime282
+MARTE_SW_Brokering_DeviceBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : readServices729
+MARTE_SW_Interaction_SharedDataComResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : readServices760
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Duration : readyT1024
+MARTE_SW_Interaction_MessageComResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : receiveServices772
+HwIO_HwPin "0..9999" -- "1..1" MARTE_HwPackage_HwPackagePin : refpin579
+HwCommunication_HwPort "0..9999" -- "1..1" MARTE_HwDevice_HwPeripheral : refports498
+HwRegister_HwRegister "0..9999" -- "1..1" MARTE_HwDevice_HwPeripheral : refsfr495
+HwRegister_HwRegister "0..1" -- "1..1" MARTE_HwPeripheral_RegisterAction : register566
+HwPeripheral_RegisterAction "0..9999" --* "1..1" MARTE_HwPeripheral_PeripheralActivity : registerActions570
+HwRegister_HwRegister "0..9999" --* "1..1" MARTE_HwDevice_HwDevice : registers485
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" NFP_Duration : relDl274
+GRM_Resource "0..1" -- "1..1" MARTE_GQAM_GaRelStep : relRes938
+MARTE_SW_Interaction_SwMutualExclusionResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : releaseServices794
+MARTE_SAM_SaSharedResource "1..1" *-- "0..9999" NFP_Duration : releaseT1049
+MARTE_GQAM_GaStep "1..1" *-- "0..1" NFP_Real : rep882
+IntegerVector "1..1" --* "1..1" MARTE_RSM_InterRepetition : repetitionShapeDependence180
+MARTE_RSM_Distribute "1..1" *-- "1..1" ShapeSpecification : repetitionSpace182
+MARTE_RSM_Reshape "1..1" *-- "1..1" ShapeSpecification : repetitonShape192
+GCM_MARTE_Interface "0..9999" -- "1..1" MARTE_GCM_ClientServerPort : reqInterface806
+MARTE_GRM_Resource "1..1" *-- "0..1" NFP_Integer : resMult100
+MARTE_PAM_PaResPassStep "1..1" *-- "0..1" NFP_Integer : resUnits1092
+MARTE_GQAM_GaAcqStep "1..1" *-- "0..1" NFP_Integer : resUnits935
+MARTE_GQAM_GaRelStep "1..1" *-- "0..1" NFP_Integer : resUnits940
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Property : resolAttr60
+GRM_Resource "0..1" -- "1..1" MARTE_PAM_PaResPassStep : resource1090
+GRM_Resource "0..9999" -- "1..1" MARTE_GQAM_GaResourcesPlatform : resources978
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Duration : respT864
+HwPeripheral_MARTE_OutputPin "0..1" --* "1..1" MARTE_HwPeripheral_ReadRegisterAction : result569
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : resumeServices646
+GQAM_GaStep "0..1" -- "1..1" MARTE_GQAM_GaScenario : root873
+MARTE_SW_Concurrency_EntryPoint "1..1" -- "1..1" SW_Concurrency_MARTE_BehavioralFeature : routine624
+MARTE_SW_Concurrency_InterruptResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : routineConnectServices678
+MARTE_SW_Concurrency_InterruptResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : routineDisconnectServices681
+MARTE_SAM_SaCommStep "1..1" *-- "0..1" NFP_Real : schSlack1005
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Real : schSlack1018
+MARTE_SAM_SaCommHost "1..1" *-- "0..1" NFP_Real : schSlack1062
+MARTE_SAM_SaExecHost "1..1" *-- "0..1" NFP_Real : schSlack1067
+MARTE_SAM_SaEndtoEndFlow "1..1" *-- "0..1" NFP_Real : schSlack986
+MARTE_GRM_SchedulableResource "1..1" *-- "0..9999" SchedParameters : schedParams128
+IntegerInterval "0..1" --* "1..1" MARTE_GQAM_GaExecHost : schedPriRange917
+MARTE_SAM_SaExecHost "1..1" *-- "0..1" NFP_Real : schedUtiliz1070
+GRM_SchedulableResource "0..9999" -- "1..1" MARTE_GRM_Scheduler : schedulableResources121
+GRM_MARTE_OpaqueExpression "0..1" -- "1..1" MARTE_GRM_Scheduler : schedule115
+GRM_Scheduler "0..1" -- "1..1" MARTE_GRM_MutualExclusionResource : scheduler127
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "1..1" SW_Concurrency_MARTE_NamedElement : schedulers684
+MARTE_HwMemory_HwDrive "1..1" *-- "0..1" NFP_DataSize : sectorSize459
+GCM_MARTE_Behavior "0..1" -- "1..1" MARTE_GCM_DataPool : selection830
+MARTE_GQAM_GaStep "1..1" *-- "0..1" NFP_Duration : selfDelay903
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Duration : selfSuspensionBlocking1032
+MARTE_SW_Interaction_MessageComResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : sendServices769
+MARTE_GQAM_GaStep "1..1" *-- "0..9999" NFP_Real : servCount897
+GQAM_GaRequestedService "0..9999" -- "1..1" MARTE_GQAM_GaStep : servDemand895
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Operation : setTime71
+HwRegister_HwRegister "0..9999" --* "1..1" MARTE_HwComputing_HwMCU : sfr359
+MARTE_RSM_Shaped "1..1" *-- "1..1" ShapeSpecification : shape207
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : shareDataResources658
+MARTE_SAM_SaStep "1..1" -- "0..9999" SAM_SaSharedResource : sharedRes1030
+HwCommunication_HwMedia "0..9999" -- "1..1" MARTE_HwCommunication_HwBridge : sides381
+MARTE_SW_Interaction_NotificationResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : signalServices783
+MARTE_SAM_SaCommStep "1..1" *-- "0..1" NFP_Duration : spareCap1002
+MARTE_SAM_SaStep "1..1" *-- "0..1" NFP_Duration : spareCap1015
+HLAM_RtSpecification "1..9999" -- "1..1" MARTE_HLAM_RtFeature : specification267
+MARTE_GRM_ProcessingResource "1..1" *-- "0..1" NFP_Real : speedFactor122
+MARTE_HLAM_RtUnit "1..1" *-- "0..1" NFP_Duration : srPoolWaitingTime239
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : stackSizeElements637
+MARTE_Time_TimedProcessing "1..1" -- "0..1" Time_MARTE_Event : start95
+GQAM_MARTE_TimeObservation "0..9999" -- "1..1" MARTE_GQAM_GaTimedObs : startObs929
+MARTE_SW_ResourceCore_SwResource "1..1" -- "0..9999" SW_ResourceCore_MARTE_TypedElement : stateElements609
+MARTE_HwLayout_HwComponent "1..1" *-- "0..1" NFP_Power : staticConsumption546
+MARTE_HwLayout_HwComponent "1..1" *-- "0..1" NFP_Power : staticDissipation549
+HwMemory_CacheStructure "0..1" --* "1..1" MARTE_HwMemory_HwCache : structure466
+HwLayout_HwComponent "0..9999" --* "1..1" MARTE_HwLayout_HwComponent : subComponents552
+GRM_ResourceUsage "0..9999" -- "1..1" MARTE_GRM_ResourceUsage : subUsage171
+MARTE_HwPower_HwPowerSupply "1..1" *-- "0..1" NFP_Power : suppliedPower558
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : suspendServices649
+MARTE_SAM_SaSchedObs "1..1" *-- "0..9999" NFP_Integer : suspentions1052
+MARTE_HLAM_RtSpecification "1..1" -- "0..1" Time_TimedInstantObservation : tRef272
+MARTE_SW_Concurrency_SwConcurrentResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : terminateServices652
+MARTE_PAM_PaLogicalResource "1..1" *-- "0..1" NFP_Frequency : throughput1097
+MARTE_PAM_PaRunTInstance "1..1" *-- "0..1" NFP_Frequency : throughput1114
+MARTE_HwMemory_HwMemory "1..1" *-- "0..1" NFP_DataTxRate : throughput417
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Frequency : throughput861
+MARTE_GQAM_GaExecHost "1..1" *-- "0..9999" NFP_Frequency : throughput925
+MARTE_GQAM_GaCommHost "1..1" *-- "0..9999" NFP_Frequency : throughput954
+MARTE_RSM_Tiler "1..1" *-- "0..1" TilerSpecification : tiler202
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : timeSliceElements691
+GQAM_MARTE_TimeEvent "0..1" -- "1..1" MARTE_GQAM_GaWorkloadEvent : timedEvent846
+MARTE_SW_Concurrency_Alarm "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : timers718
+GQAM_GaTimedObs "0..9999" -- "1..1" MARTE_GQAM_GaScenario : timing875
+GQAM_GaTimedObs "0..9999" -- "1..1" MARTE_SAM_SaEndtoEndFlow : timing995
+HwMemory_Timing "0..9999" --* "1..1" MARTE_HwMemory_HwMemory : timings415
+Alloc_MARTE_Element "1..9999" -- "1..1" MARTE_Alloc_Assign : to41
+MARTE_RSM_Distribute "1..1" *-- "1..1" TilerSpecification : toTiler187
+GQAM_GaEventTrace "0..1" -- "1..1" MARTE_GQAM_GaWorkloadEvent : trace842
+MARTE_HwStorageManager_HwDMA "1..1" *-- "0..1" NFP_DataSize : transferWidth390
+DataTypes_MARTE_Property "0..9999" -- "1..1" MARTE_DataTypes_TupleType : tupleAttrib234
+MARTE_Time_Clock "1..1" -- "1..1" Time_ClockType : type52
+ArrivalPattern "0..1" --* "1..1" MARTE_SW_Concurrency_SwConcurrentResource : type625
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : unMapServices756
+MARTE_Time_Clock "1..1" -- "0..1" NFPs_Unit : unit54
+MARTE_NFPs_NfpType "1..1" -- "0..1" NFPs_MARTE_Property : unitAttrib9
+MARTE_Time_ClockType "1..1" -- "0..1" Time_MARTE_Enumeration : unitType59
+MARTE_SW_Brokering_MemoryBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : unlockServices750
+MARTE_GRM_ResourceUsage "1..1" *-- "0..9999" NFP_DataSize : usedMemory162
+GRM_Resource "0..9999" -- "1..1" MARTE_GRM_ResourceUsage : usedResources173
+MARTE_HLAM_RtSpecification "1..1" *-- "0..1" UtilityType : utility269
+MARTE_GQAM_GaLatencyObs "1..1" *-- "0..9999" UtilityType : utility948
+MARTE_PAM_PaLogicalResource "1..1" *-- "0..1" NFP_Real : utilization1095
+MARTE_PAM_PaRunTInstance "1..1" *-- "0..1" NFP_Real : utilization1111
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Real : utilization867
+MARTE_GQAM_GaExecHost "1..1" *-- "0..9999" NFP_Real : utilization922
+MARTE_GQAM_GaCommHost "1..1" *-- "0..9999" NFP_Real : utilization956
+MARTE_GQAM_GaScenario "1..1" *-- "0..9999" NFP_Real : utilizationOnHost870
+MARTE_GQAM_GaCommChannel "1..1" *-- "0..9999" NFP_Real : utlization961
+MARTE_HwMemory_Timing "1..1" *-- "0..1" NFP_Duration : value425
+HwPeripheral_MARTE_InputPin "0..1" --* "1..1" MARTE_HwPeripheral_WriteRegisterAction : value568
+MARTE_NFPs_NfpType "1..1" -- "0..1" NFPs_MARTE_Property : valueAttrib7
+MARTE_SW_Concurrency_InterruptResource "1..1" -- "0..9999" SW_Concurrency_MARTE_TypedElement : vectorElements673
+MARTE_HwStorageManager_HwMMU "1..1" *-- "0..1" NFP_DataSize : virtualAddrSpace396
+GRM_SchedulableResource "0..9999" -- "1..1" MARTE_GRM_SecondaryScheduler : virtualProcessingUnits132
+MARTE_SW_Interaction_NotificationResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : waitServices786
+MARTE_SW_Interaction_SwInteractionResource "1..1" -- "0..9999" SW_Interaction_MARTE_TypedElement : waitingPolicyElements759
+MARTE_HwLayout_HwComponent "1..1" *-- "0..1" NFP_Real : weight536
+HwPackage_HwWire "0..9999" -- "1..1" MARTE_HwPackage_HwPackagePin : wire580
+HwPackage_HwWire "0..9999" --* "1..1" MARTE_HwDiagram_HwCircuitDiagram : wires591
+MARTE_HwMemory_MemoryOrganization "1..1" *-- "0..1" NFP_DataSize : wordSize444
+MARTE_HwCommunication_HwBus "1..1" *-- "0..1" NFP_DataSize : wordWidth373
+GQAM_GaWorkloadBehavior "1..9999" -- "1..1" MARTE_GQAM_GaAnalysisContext : workload974
+MARTE_SW_Brokering_DeviceBroker "1..1" -- "0..9999" SW_Brokering_MARTE_BehavioralFeature : writeServices732
+MARTE_SW_Interaction_SharedDataComResource "1..1" -- "0..9999" SW_Interaction_MARTE_BehavioralFeature : writeServices761
+MARTE_SW_Concurrency_SwSchedulableResource "1..1" -- "0..9999" SW_Concurrency_MARTE_BehavioralFeature : yieldServices700
+@enduml

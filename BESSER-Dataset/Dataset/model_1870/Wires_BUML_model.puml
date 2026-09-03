@@ -1,0 +1,150 @@
+@startuml
+class ActualParameter {
+}
+class AtomicModelTransformation {
+}
+class ConnectableElement {
+}
+class DataType {
+}
+class FormalParameter {
+}
+class Query {
+}
+class Transformation {
+}
+class TransformationType {
+}
+class Type {
+}
+class TypedElement {
+}
+class WiresElement {
+}
+class WiresSpecification {
+}
+abstract class Wires_ActualParameter {
+}
+class Wires_AtomicModelTransfomationType {
+}
+class Wires_AtomicModelTransformation {
+}
+class Wires_BasicData {
+  + path : str
+}
+class Wires_BasicDataType {
+}
+class Wires_CompositeTransformation {
+}
+class Wires_CompositeTransformationType {
+}
+abstract class Wires_ConnectableElement {
+  + name : str
+}
+class Wires_DataFlow {
+}
+abstract class Wires_DataType {
+}
+class Wires_DecisionNode {
+  + expression : str
+}
+abstract class Wires_FormalParameter {
+  + typeName : str
+}
+class Wires_GenericQuery {
+}
+class Wires_GenericTransformation {
+}
+class Wires_IdentityTransformation {
+}
+class Wires_InputActualParameter {
+}
+class Wires_InputFormalParameter {
+}
+class Wires_Library {
+  + name : str
+  + path : str
+}
+class Wires_LibraryRef {
+  + name : str
+}
+class Wires_Model {
+  + path : str
+}
+class Wires_ModelType {
+  + uri : str
+}
+class Wires_OutputActualParameter {
+}
+class Wires_OutputFormalParameter {
+}
+class Wires_Query {
+}
+class Wires_QueryType {
+}
+abstract class Wires_Transformation {
+}
+abstract class Wires_TransformationType {
+}
+abstract class Wires_Type {
+  + path : str
+}
+class Wires_TypeParameter {
+}
+abstract class Wires_TypedElement {
+}
+abstract class Wires_WiresElement {
+}
+class Wires_WiresSpecification {
+}
+ActualParameter <|-- Wires_InputActualParameter
+ActualParameter <|-- Wires_OutputActualParameter
+ActualParameter <|-- Wires_TypeParameter
+AtomicModelTransformation <|-- Wires_GenericTransformation
+AtomicModelTransformation <|-- Wires_IdentityTransformation
+ConnectableElement <|-- Wires_Type
+ConnectableElement <|-- Wires_TypedElement
+DataType <|-- Wires_BasicDataType
+DataType <|-- Wires_ModelType
+FormalParameter <|-- Wires_InputFormalParameter
+FormalParameter <|-- Wires_OutputFormalParameter
+Query <|-- Wires_GenericQuery
+Transformation <|-- Wires_AtomicModelTransformation
+Transformation <|-- Wires_CompositeTransformation
+Transformation <|-- Wires_Query
+TransformationType <|-- Wires_AtomicModelTransfomationType
+TransformationType <|-- Wires_CompositeTransformationType
+TransformationType <|-- Wires_QueryType
+Type <|-- Wires_DataType
+Type <|-- Wires_FormalParameter
+Type <|-- Wires_TransformationType
+TypedElement <|-- Wires_ActualParameter
+TypedElement <|-- Wires_BasicData
+TypedElement <|-- Wires_Model
+TypedElement <|-- Wires_Transformation
+WiresElement <|-- Wires_ConnectableElement
+WiresElement <|-- Wires_DataFlow
+WiresElement <|-- Wires_DecisionNode
+WiresElement <|-- Wires_Library
+WiresSpecification <|-- Wires_CompositeTransformationType
+Wires_DecisionNode "0..1" -- "1..1" Wires_Transformation : controlNode3
+Wires_WiresElement "0..9999" --* "1..1" Wires_WiresSpecification : els27
+Wires_DecisionNode "1..1" -- "0..9999" Wires_Transformation : falseBranch9
+Wires_InputActualParameter "0..9999" --* "1..1" Wires_Transformation : inParams0
+Wires_DecisionNode "1..1" *-- "1..9999" Wires_InputActualParameter : inParams12
+Wires_InputFormalParameter "0..9999" --* "1..1" Wires_TransformationType : inParams21
+Wires_ConnectableElement "1..1" -- "0..9999" Wires_DataFlow : incoming24
+Wires_LibraryRef "0..9999" --* "1..1" Wires_TransformationType : libraries19
+Wires_Library "1..1" *-- "0..9999" Wires_LibraryRef : libraries30
+Wires_Library "1..1" -- "1..1" Wires_LibraryRef : library28
+Wires_OutputActualParameter "0..9999" --* "1..1" Wires_Transformation : outParams1
+Wires_OutputFormalParameter "0..9999" --* "1..1" Wires_TransformationType : outParams18
+Wires_ConnectableElement "1..1" -- "0..9999" Wires_DataFlow : outgoing25
+Wires_ConnectableElement "1..1" -- "1..1" Wires_DataFlow : src16
+Wires_ConnectableElement "1..1" -- "1..1" Wires_DataFlow : target15
+Wires_DecisionNode "1..1" -- "0..9999" Wires_Transformation : trueBranch6
+Wires_Type "0..1" -- "1..1" Wires_TypedElement : type5
+Wires_DataType "1..1" -- "1..1" Wires_FormalParameter : typeEl23
+Wires_GenericTransformation "1..1" *-- "1..1" Wires_TypeParameter : typeParam33
+Wires_GenericQuery "1..1" *-- "1..1" Wires_TypeParameter : typeParam34
+@enduml

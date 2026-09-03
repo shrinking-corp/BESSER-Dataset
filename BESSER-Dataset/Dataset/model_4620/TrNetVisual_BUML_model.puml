@@ -1,0 +1,217 @@
+@startuml
+class Action {
+}
+class ApplicationCondition {
+}
+class AttributeCalculation {
+}
+class Calculation {
+}
+class FlowRule {
+}
+class NodePattern {
+}
+class Operand {
+}
+class Operator {
+}
+class Parameter {
+}
+class ParameterRef {
+}
+class Restriction {
+}
+class Result {
+}
+abstract class trnetvisual_Action {
+}
+class trnetvisual_AntiOperand {
+}
+class trnetvisual_AnyOperand {
+}
+class trnetvisual_AnyResult {
+}
+abstract class trnetvisual_ApplicationCondition {
+}
+abstract class trnetvisual_AttributeCalculation {
+}
+class trnetvisual_AttributePattern {
+  + expectedNumberOfDistinctValues : float
+  + name : str
+}
+abstract class trnetvisual_Calculation {
+}
+class trnetvisual_Combinator {
+}
+class trnetvisual_Different {
+}
+class trnetvisual_EdgePattern {
+  + name : str
+}
+class trnetvisual_Eventually {
+}
+class trnetvisual_External {
+}
+class trnetvisual_ExternalActionCall {
+  + id : str
+  + qualifiedName : str
+}
+class trnetvisual_ExternalActionCallParameter {
+}
+class trnetvisual_ExternalAttributeCalculationCall {
+  + id : str
+  + qualifiedName : str
+}
+class trnetvisual_ExternalAttributeCalculationCallParameter {
+}
+class trnetvisual_ExternalCalculationCall {
+  + id : str
+  + qualifiedName : str
+}
+class trnetvisual_ExternalCalculationCallParameter {
+}
+class trnetvisual_ExternalConditionCall {
+  + id : str
+  + qualifiedName : str
+}
+class trnetvisual_ExternalConditionCallParameter {
+}
+abstract class trnetvisual_FlowRule {
+}
+class trnetvisual_Keep {
+}
+class trnetvisual_MandatoryNode {
+}
+class trnetvisual_Next {
+}
+class trnetvisual_NextDerived {
+}
+abstract class trnetvisual_NodePattern {
+  + expectedNumberOfDistinctValues : float
+  + id : str
+  + name : str
+}
+abstract class trnetvisual_Operand {
+  + index : int
+}
+abstract class trnetvisual_Operator {
+  + id : str
+}
+class trnetvisual_OptionalNode {
+}
+class trnetvisual_OptionalOperand {
+}
+abstract class trnetvisual_Parameter {
+}
+class trnetvisual_ParameterRef {
+  + index : int
+}
+class trnetvisual_Pattern {
+  + expected_size : float
+  + id : str
+}
+abstract class trnetvisual_Restriction {
+}
+abstract class trnetvisual_Result {
+}
+class trnetvisual_Same {
+}
+class trnetvisual_SomeOperand {
+  + count : int
+}
+class trnetvisual_SomeResult {
+  + count : int
+}
+class trnetvisual_TrNetModel {
+  + id : str
+}
+Action <|-- trnetvisual_ExternalActionCall
+ApplicationCondition <|-- trnetvisual_ExternalConditionCall
+AttributeCalculation <|-- trnetvisual_ExternalAttributeCalculationCall
+Calculation <|-- trnetvisual_ExternalCalculationCall
+FlowRule <|-- trnetvisual_Eventually
+FlowRule <|-- trnetvisual_Next
+FlowRule <|-- trnetvisual_NextDerived
+NodePattern <|-- trnetvisual_MandatoryNode
+NodePattern <|-- trnetvisual_OptionalNode
+Operand <|-- trnetvisual_AntiOperand
+Operand <|-- trnetvisual_AnyOperand
+Operand <|-- trnetvisual_OptionalOperand
+Operand <|-- trnetvisual_SomeOperand
+Operator <|-- trnetvisual_Combinator
+Operator <|-- trnetvisual_External
+Parameter <|-- trnetvisual_AttributePattern
+Parameter <|-- trnetvisual_Calculation
+Parameter <|-- trnetvisual_NodePattern
+ParameterRef <|-- trnetvisual_ExternalActionCallParameter
+ParameterRef <|-- trnetvisual_ExternalAttributeCalculationCallParameter
+ParameterRef <|-- trnetvisual_ExternalCalculationCallParameter
+ParameterRef <|-- trnetvisual_ExternalConditionCallParameter
+Restriction <|-- trnetvisual_AttributeCalculation
+Restriction <|-- trnetvisual_Different
+Restriction <|-- trnetvisual_Keep
+Restriction <|-- trnetvisual_Same
+Result <|-- trnetvisual_AnyResult
+Result <|-- trnetvisual_SomeResult
+trnetvisual_Action "0..9999" --* "1..1" trnetvisual_Operator : actions74
+trnetvisual_AttributePattern "1..1" -- "0..1" trnetvisual_ExternalAttributeCalculationCall : attributeExternalCalculationCall55
+trnetvisual_AttributePattern "0..9999" --* "1..1" trnetvisual_NodePattern : attributes22
+trnetvisual_Calculation "0..9999" --* "1..1" trnetvisual_TrNetModel : calculations11
+trnetvisual_ApplicationCondition "0..9999" --* "1..1" trnetvisual_Operator : conditions72
+trnetvisual_Different "0..9999" -- "1..1" trnetvisual_NodePattern : differentIn28
+trnetvisual_Different "0..9999" -- "1..1" trnetvisual_NodePattern : differentOut30
+trnetvisual_EdgePattern "0..9999" --* "1..1" trnetvisual_Pattern : edges40
+trnetvisual_ExternalActionCallParameter "0..9999" -- "1..1" trnetvisual_Parameter : externalActionCallRef94
+trnetvisual_ExternalAttributeCalculationCallParameter "0..9999" -- "1..1" trnetvisual_Parameter : externalAttributeCalculationCallRef90
+trnetvisual_ExternalCalculationCallParameter "0..9999" -- "1..1" trnetvisual_Parameter : externalCalculationCallRef96
+trnetvisual_ExternalConditionCallParameter "0..9999" -- "1..1" trnetvisual_Parameter : externalConditionCallRef92
+trnetvisual_FlowRule "0..9999" -- "1..1" trnetvisual_Operator : flowIn69
+trnetvisual_FlowRule "0..9999" -- "1..1" trnetvisual_Operator : flowOut67
+trnetvisual_FlowRule "0..9999" --* "1..1" trnetvisual_TrNetModel : flowRules9
+trnetvisual_EdgePattern "0..9999" -- "1..1" trnetvisual_NodePattern : incoming13
+trnetvisual_Pattern "1..1" -- "0..9999" trnetvisual_Result : incomingResults43
+trnetvisual_Keep "0..9999" -- "1..1" trnetvisual_NodePattern : keepIn23
+trnetvisual_Keep "0..9999" -- "1..1" trnetvisual_NodePattern : keepOut25
+trnetvisual_NodePattern "1..9999" --* "1..1" trnetvisual_Pattern : nodes38
+trnetvisual_Operand "0..9999" --* "1..1" trnetvisual_TrNetModel : operands5
+trnetvisual_Operand "0..9999" -- "1..1" trnetvisual_Operator : operands62
+trnetvisual_Operator "1..1" -- "1..1" trnetvisual_Result : operator78
+trnetvisual_Operand "1..1" -- "1..1" trnetvisual_Operator : operator79
+trnetvisual_Operator "0..9999" --* "1..1" trnetvisual_TrNetModel : operators1
+trnetvisual_EdgePattern "0..9999" -- "1..1" trnetvisual_NodePattern : outgoing14
+trnetvisual_Operand "0..9999" -- "1..1" trnetvisual_Pattern : outgoingOperands45
+trnetvisual_ExternalAttributeCalculationCall "1..1" -- "1..1" trnetvisual_ExternalAttributeCalculationCallParameter : owner104
+trnetvisual_ExternalConditionCall "1..1" -- "1..1" trnetvisual_ExternalConditionCallParameter : owner107
+trnetvisual_ExternalActionCall "1..1" -- "1..1" trnetvisual_ExternalActionCallParameter : owner111
+trnetvisual_ExternalCalculationCall "1..1" -- "1..1" trnetvisual_ExternalCalculationCallParameter : owner118
+trnetvisual_AttributePattern "1..1" -- "1..1" trnetvisual_NodePattern : ownerNode56
+trnetvisual_ExternalAttributeCalculationCallParameter "1..1" -- "1..1" trnetvisual_Parameter : parameter106
+trnetvisual_ExternalConditionCallParameter "1..1" -- "1..1" trnetvisual_Parameter : parameter109
+trnetvisual_ExternalActionCallParameter "1..1" -- "1..1" trnetvisual_Parameter : parameter113
+trnetvisual_ExternalCalculationCallParameter "1..1" -- "1..1" trnetvisual_Parameter : parameter120
+trnetvisual_ExternalActionCall "1..1" *-- "0..9999" trnetvisual_ExternalActionCallParameter : parameters101
+trnetvisual_ExternalCalculationCall "1..1" *-- "0..9999" trnetvisual_ExternalCalculationCallParameter : parameters115
+trnetvisual_ExternalAttributeCalculationCall "1..1" *-- "0..9999" trnetvisual_ExternalAttributeCalculationCallParameter : parameters89
+trnetvisual_ExternalConditionCall "1..1" *-- "0..9999" trnetvisual_ExternalConditionCallParameter : parameters98
+trnetvisual_NodePattern "1..1" -- "1..1" trnetvisual_Pattern : pattern21
+trnetvisual_EdgePattern "1..1" -- "1..1" trnetvisual_Pattern : pattern36
+trnetvisual_Pattern "1..1" -- "1..1" trnetvisual_Result : pattern76
+trnetvisual_Operand "1..1" -- "1..1" trnetvisual_Pattern : pattern81
+trnetvisual_Pattern "0..9999" --* "1..1" trnetvisual_TrNetModel : patterns0
+trnetvisual_Restriction "0..9999" --* "1..1" trnetvisual_TrNetModel : restrictions3
+trnetvisual_AttributePattern "1..1" -- "1..1" trnetvisual_ExternalAttributeCalculationCall : result87
+trnetvisual_Operator "1..1" -- "0..9999" trnetvisual_Result : results64
+trnetvisual_Result "0..9999" --* "1..1" trnetvisual_TrNetModel : results7
+trnetvisual_NodePattern "1..1" -- "0..9999" trnetvisual_Same : sameIn18
+trnetvisual_NodePattern "1..1" -- "0..9999" trnetvisual_Same : sameOut16
+trnetvisual_EdgePattern "1..1" -- "1..1" trnetvisual_NodePattern : source33
+trnetvisual_NodePattern "1..1" -- "1..1" trnetvisual_Same : source47
+trnetvisual_Different "1..1" -- "1..1" trnetvisual_NodePattern : source51
+trnetvisual_Keep "1..1" -- "1..1" trnetvisual_NodePattern : source58
+trnetvisual_FlowRule "1..1" -- "1..1" trnetvisual_Operator : source83
+trnetvisual_EdgePattern "1..1" -- "1..1" trnetvisual_NodePattern : target34
+trnetvisual_NodePattern "1..1" -- "1..1" trnetvisual_Same : target49
+trnetvisual_Different "1..1" -- "1..1" trnetvisual_NodePattern : target53
+trnetvisual_Keep "1..1" -- "1..1" trnetvisual_NodePattern : target60
+trnetvisual_FlowRule "1..1" -- "1..1" trnetvisual_Operator : target85
+@enduml

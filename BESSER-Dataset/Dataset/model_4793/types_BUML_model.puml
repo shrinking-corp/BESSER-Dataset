@@ -1,0 +1,162 @@
+@startuml
+class CaseLabel {
+}
+class Declarator {
+}
+class FileRegion {
+}
+class IdlType {
+}
+class IdlTypeDcl {
+}
+class MemberContainer {
+}
+class PrimitiveType {
+}
+class TemplateType {
+}
+class Typed {
+}
+class TypedElement {
+}
+class types_Any {
+}
+class types_Boolean {
+}
+class types_Case {
+}
+abstract class types_CaseLabel {
+}
+class types_Declarator {
+}
+class types_DefaultCaseLabel {
+}
+class types_Double {
+}
+class types_ElementSpec {
+}
+class types_EnumType {
+}
+class types_Enumeration {
+}
+class types_ExprCaseLabel {
+}
+class types_Expression {
+}
+class types_FixedPtType {
+}
+class types_Float {
+}
+class types_ForwardDcl {
+}
+class types_IdlChar {
+}
+class types_IdlObject {
+}
+class types_IdlString {
+}
+class types_IdlType {
+}
+class types_IdlWChar {
+}
+class types_Long {
+}
+class types_LongDouble {
+}
+class types_LongLong {
+}
+class types_Octet {
+}
+class types_PrimitiveType {
+}
+class types_SequenceType {
+}
+class types_Short {
+}
+class types_StructForwardDcl {
+}
+class types_StructType {
+}
+class types_Switch {
+}
+abstract class types_TemplateType {
+}
+class types_TypeDef {
+}
+class types_ULong {
+}
+class types_ULongLong {
+}
+class types_UShort {
+}
+class types_UnionForwardDcl {
+}
+class types_UnionType {
+}
+class types_ValueBaseType {
+}
+class types_VoidType {
+}
+class types_WChar {
+}
+class types_WString {
+}
+CaseLabel <|-- types_DefaultCaseLabel
+CaseLabel <|-- types_ExprCaseLabel
+Declarator <|-- types_Enumeration
+FileRegion <|-- types_Case
+FileRegion <|-- types_CaseLabel
+FileRegion <|-- types_ElementSpec
+FileRegion <|-- types_Switch
+IdlType <|-- types_PrimitiveType
+IdlType <|-- types_TemplateType
+IdlType <|-- types_VoidType
+IdlTypeDcl <|-- types_EnumType
+IdlTypeDcl <|-- types_Enumeration
+IdlTypeDcl <|-- types_StructForwardDcl
+IdlTypeDcl <|-- types_StructType
+IdlTypeDcl <|-- types_TypeDef
+IdlTypeDcl <|-- types_UnionForwardDcl
+IdlTypeDcl <|-- types_UnionType
+MemberContainer <|-- types_StructType
+PrimitiveType <|-- types_Any
+PrimitiveType <|-- types_Boolean
+PrimitiveType <|-- types_Double
+PrimitiveType <|-- types_Float
+PrimitiveType <|-- types_IdlChar
+PrimitiveType <|-- types_IdlObject
+PrimitiveType <|-- types_IdlWChar
+PrimitiveType <|-- types_Long
+PrimitiveType <|-- types_LongDouble
+PrimitiveType <|-- types_LongLong
+PrimitiveType <|-- types_Octet
+PrimitiveType <|-- types_Short
+PrimitiveType <|-- types_ULong
+PrimitiveType <|-- types_ULongLong
+PrimitiveType <|-- types_UShort
+PrimitiveType <|-- types_ValueBaseType
+PrimitiveType <|-- types_WChar
+TemplateType <|-- types_FixedPtType
+TemplateType <|-- types_IdlString
+TemplateType <|-- types_SequenceType
+TemplateType <|-- types_WString
+Typed <|-- types_SequenceType
+TypedElement <|-- types_TypeDef
+types_Case "0..9999" --* "1..1" types_Switch : cases4
+types_Declarator "0..1" --* "1..1" types_ElementSpec : declarator14
+types_EnumType "1..1" *-- "0..9999" types_Enumeration : enumerators16
+types_ExprCaseLabel "1..1" *-- "0..1" types_Expression : expr10
+types_Expression "0..1" --* "1..1" types_FixedPtType : expr125
+types_Expression "0..1" --* "1..1" types_FixedPtType : expr227
+types_UnionForwardDcl "0..1" -- "1..1" types_UnionType : forwardDcl0
+types_StructForwardDcl "0..1" -- "1..1" types_StructType : forwardDcl18
+types_ForwardDcl "0..1" --* "1..1" types_StructType : forwardDeclaration17
+types_Switch "0..1" --* "1..1" types_UnionType : idlSwitch1
+types_UnionForwardDcl "1..1" -- "0..1" types_UnionType : implementation22
+types_StructForwardDcl "1..1" -- "0..1" types_StructType : implementation23
+types_Case "1..1" *-- "0..9999" types_CaseLabel : labels6
+types_Expression "0..1" --* "1..1" types_TemplateType : size20
+types_Case "1..1" *-- "0..1" types_ElementSpec : spec8
+types_ElementSpec "1..1" -- "0..1" types_IdlType : type11
+types_IdlType "0..1" -- "1..1" types_Switch : type2
+@enduml

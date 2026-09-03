@@ -1,0 +1,34 @@
+@startuml
+class RDBMS_Column {
+  + name : str
+  + type : str
+}
+class RDBMS_ForeignKey {
+  + name : str
+}
+class RDBMS_Key {
+  + name : str
+}
+class RDBMS_Schema {
+  + name : str
+}
+class RDBMS_Table {
+  + name : str
+}
+RDBMS_Column "1..9999" -- "1..1" RDBMS_Key : column20
+RDBMS_Column "1..9999" -- "1..1" RDBMS_ForeignKey : column31
+RDBMS_Column "0..9999" --* "1..1" RDBMS_Table : column4
+RDBMS_ForeignKey "0..9999" --* "1..1" RDBMS_Schema : foreignKey1
+RDBMS_Column "1..1" -- "0..9999" RDBMS_ForeignKey : hasForeignKey15
+RDBMS_ForeignKey "0..9999" -- "1..1" RDBMS_Table : hasForeignKey7
+RDBMS_Column "1..1" -- "0..9999" RDBMS_Key : hasKey12
+RDBMS_Key "0..1" --* "1..1" RDBMS_Table : hasKey5
+RDBMS_Column "1..1" -- "1..1" RDBMS_Table : owner10
+RDBMS_Key "1..1" -- "1..1" RDBMS_Table : owner18
+RDBMS_ForeignKey "1..1" -- "1..1" RDBMS_Table : owner29
+RDBMS_ForeignKey "0..9999" -- "1..1" RDBMS_Key : referredBy23
+RDBMS_ForeignKey "1..1" -- "1..1" RDBMS_Key : refersTo27
+RDBMS_ForeignKey "1..1" -- "1..1" RDBMS_Schema : schema25
+RDBMS_Schema "1..1" -- "1..1" RDBMS_Table : schema3
+RDBMS_Schema "1..1" *-- "0..9999" RDBMS_Table : table0
+@enduml

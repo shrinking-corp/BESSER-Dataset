@@ -1,0 +1,92 @@
+@startuml
+class Action {
+}
+class Actuate {
+}
+class Behavior {
+}
+class Condition {
+}
+class Node {
+}
+abstract class farrusco_Action {
+  + name : str
+}
+class farrusco_ActionChild {
+}
+abstract class farrusco_Actuate {
+}
+abstract class farrusco_Behavior {
+  + Name : str
+}
+class farrusco_Child {
+}
+abstract class farrusco_Condition {
+}
+class farrusco_IRdist {
+  + distancia : int
+  + how_sucess : bool
+}
+class farrusco_LED {
+  + on_off : bool
+}
+class farrusco_LeftBumper {
+}
+class farrusco_Motors {
+  + MotorLeft : int
+  + MotorRight : int
+}
+class farrusco_Next {
+}
+class farrusco_Node {
+}
+class farrusco_Paralell {
+}
+class farrusco_Prior {
+}
+class farrusco_RightBumper {
+}
+class farrusco_Robot {
+  + Name : str
+}
+class farrusco_Sequential {
+}
+class farrusco_ServoRange {
+  + inc : int
+  + max : int
+  + min : int
+}
+class farrusco_StateOverride {
+  + fail_policy : int
+  + runn_policy : int
+  + succ_policy : int
+}
+class farrusco_Wait {
+  + time : int
+}
+Action <|-- farrusco_Actuate
+Action <|-- farrusco_Condition
+Actuate <|-- farrusco_LED
+Actuate <|-- farrusco_Motors
+Actuate <|-- farrusco_ServoRange
+Behavior <|-- farrusco_Paralell
+Behavior <|-- farrusco_Prior
+Behavior <|-- farrusco_Sequential
+Behavior <|-- farrusco_StateOverride
+Condition <|-- farrusco_IRdist
+Condition <|-- farrusco_LeftBumper
+Condition <|-- farrusco_RightBumper
+Condition <|-- farrusco_Wait
+Node <|-- farrusco_Action
+Node <|-- farrusco_Behavior
+farrusco_ActionChild "0..9999" --* "1..1" farrusco_Robot : actionChild1
+farrusco_Child "0..9999" --* "1..1" farrusco_Robot : child3
+farrusco_Next "0..9999" --* "1..1" farrusco_Robot : next5
+farrusco_Node "0..9999" --* "1..1" farrusco_Robot : nodes0
+farrusco_Next "1..1" -- "0..9999" farrusco_Node : source12
+farrusco_ActionChild "1..1" -- "0..1" farrusco_Behavior : source18
+farrusco_Behavior "0..9999" -- "1..1" farrusco_Child : source7
+farrusco_Next "1..1" -- "0..9999" farrusco_Node : target15
+farrusco_Action "0..9999" -- "1..1" farrusco_ActionChild : target21
+farrusco_Behavior "0..9999" -- "1..1" farrusco_Child : target9
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class DFAAutomaton_AlphabetSymbol {
+  + symbol : str
+}
+class DFAAutomaton_Automaton {
+  + name : str
+}
+class DFAAutomaton_CompositeState {
+}
+class DFAAutomaton_State {
+  + isFinal : bool
+  + isInitial : bool
+  + name : str
+}
+class DFAAutomaton_Transition {
+}
+class State {
+}
+State <|-- DFAAutomaton_CompositeState
+DFAAutomaton_AlphabetSymbol "0..9999" --* "1..1" DFAAutomaton_Automaton : alphabet3
+DFAAutomaton_State "1..1" -- "1..1" DFAAutomaton_Transition : from_6
+DFAAutomaton_State "1..1" -- "0..9999" DFAAutomaton_Transition : incoming5
+DFAAutomaton_Automaton "1..1" *-- "0..9999" DFAAutomaton_State : states0
+DFAAutomaton_AlphabetSymbol "0..1" -- "1..1" DFAAutomaton_Transition : symbol10
+DFAAutomaton_State "1..1" -- "1..1" DFAAutomaton_Transition : to9
+DFAAutomaton_Automaton "1..1" *-- "0..9999" DFAAutomaton_Transition : transitions1
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+class Customer_Actor {
+}
+class Digitalk_Actor {
+}
+class Login_UseCase {
+}
+class Payment_express_Actor {
+}
+class Purchase_Credit_UseCase {
+}
+class Register_UseCase {
+}
+class ShoppingCartExample_Account {
+  + id : int
+}
+class ShoppingCartExample_Customer {
+}
+class ShoppingCartExample_LineItem {
+  + price : int
+  + quantity : int
+}
+class ShoppingCartExample_Order {
+  + id : int
+}
+class ShoppingCartExample_ShoppingCart {
+  + creationDate : date
+}
+class Top_UP_via_card_voucher_UseCase {
+}
+class View_Dashboard_UseCase {
+}
+class View_Static_Content_UseCase {
+}
+ShoppingCartExample_Account "1..1" -- "1..1" ShoppingCartExample_Customer : Account_Customer
+ShoppingCartExample_Account "1..1" -- "1..1" ShoppingCartExample_ShoppingCart : Account_ShoppingCart
+Customer_Actor "0..1" -- "0..1" Register_UseCase : Customer_CSR_Register
+Customer_Actor "0..1" -- "0..1" Login_UseCase : Customer_Login
+Customer_Actor "0..1" -- "0..1" Purchase_Credit_UseCase : Customer_Purchase_Credit
+Customer_Actor "0..1" -- "0..1" Top_UP_via_card_voucher_UseCase : Customer_Top_UP_via_card_voucher
+Customer_Actor "0..1" -- "0..1" View_Dashboard_UseCase : Customer_View_Dashboard
+Customer_Actor "0..1" -- "0..1" View_Static_Content_UseCase : Customer_View_Static_Content
+ShoppingCartExample_LineItem "1..9999" -- "1..1" ShoppingCartExample_Order : Order_Line
+Payment_express_Actor "0..1" -- "0..1" Purchase_Credit_UseCase : Payment_express_Purchase_Credit
+Digitalk_Actor "0..1" -- "0..1" Purchase_Credit_UseCase : Purchase_Credit_Digitalk
+Digitalk_Actor "0..1" -- "0..1" Register_UseCase : Register_Digitalk
+ShoppingCartExample_Order "0..9999" -- "1..1" ShoppingCartExample_ShoppingCart : ShoppingCart_Order
+Digitalk_Actor "0..1" -- "0..1" Top_UP_via_card_voucher_UseCase : Top_UP_via_card_voucher_Digitalk
+Digitalk_Actor "0..1" -- "0..1" View_Dashboard_UseCase : View_Dashboard_Digitalk
+@enduml

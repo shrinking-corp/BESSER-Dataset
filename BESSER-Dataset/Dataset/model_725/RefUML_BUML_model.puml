@@ -1,0 +1,417 @@
+@startuml
+enum AggregationKind {
+  composite
+  none
+  shared
+}
+class Classifier {
+}
+class DataType {
+}
+class DirectedRelationship {
+}
+class EModelElement {
+}
+class Element {
+}
+class Expression {
+}
+class Feature {
+}
+class InstanceSpecification {
+}
+class LiteralSpecification {
+}
+class MultiplicityElement {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class Package {
+}
+class PackageableElement {
+}
+class RedefinableElement {
+}
+class RefUML_Association {
+  + isDerived : str
+  + getEndTypes() : str
+  + isBinary() : str
+}
+class RefUML_Class {
+  + isActive : str
+  + createOwnedOperation(RefUML_name : str, RefUML_parameterNames : str, RefUML_parameterTypes : str, RefUML_returnType : str) : void
+  + isMetaclass() : str
+}
+abstract class RefUML_Classifier {
+  + isAbstract : str
+  + allFeatures() : str
+  + allParents() : Classifier
+  + conformsTo(RefUML_other : str) : str
+  + getAllAttributes() : str
+  + getGenerals() : Classifier
+  + getInheritedMembers() : NamedElement
+  + hasCollectiveAncestor() : bool
+  + hasCollectiveInstances() : bool
+  + hasCollectiveOffspring() : bool
+  + hasFunctionalComplexInstances() : bool
+  + hasKindAncestor() : bool
+  + hasKindOffspring() : bool
+  + hasQuantityAncestor() : bool
+  + hasQuantityInstances() : bool
+  + hasQuantityOffspring() : bool
+  + hasVisibilityOf(RefUML_n : str) : str
+  + inherit(RefUML_inhs : str) : NamedElement
+  + inheritableMembers(RefUML_c : str) : NamedElement
+  + maySpecializeType(RefUML_c : str) : str
+  + parents() : Classifier
+}
+class RefUML_Comment {
+  + body : str
+}
+class RefUML_Constraintx {
+}
+class RefUML_DataType {
+  + createOwnedAttribute(RefUML_lower : str, RefUML_name : str, RefUML_type : str, RefUML_upper : str) : str
+  + createOwnedOperation(RefUML_name : str, RefUML_parameterNames : str, RefUML_parameterTypes : str, RefUML_returnType : str) : void
+}
+class RefUML_Dependency {
+}
+abstract class RefUML_DirectedRelationship {
+}
+abstract class RefUML_Element {
+  + addKeyword(RefUML_keyword : str) : str
+  + allOwnedElements() : Element
+  + createEAnnotation(RefUML_source : str) : str
+  + destroy() : void
+  + getApplicableStereotype(RefUML_qualifiedName : str) : void
+  + getAppliedStereotype(RefUML_qualifiedName : str) : void
+  + getKeywords() : str
+  + getModel() : str
+  + getNearestPackage() : str
+  + getRelationships(RefUML_eClass : str) : str
+  + getRequiredStereotype(RefUML_qualifiedName : str) : void
+  + getSourceDirectedRelationships(RefUML_eClass : str) : str
+  + getStereotypeApplications() : str
+  + getTargetDirectedRelationships(RefUML_eClass : str) : str
+  + hasKeyword(RefUML_keyword : str) : str
+  + mustBeOwned() : str
+  + removeKeyword(RefUML_keyword : str) : str
+}
+class RefUML_ElementImport {
+  + alias : str
+  + visibility : str
+  + getName() : str
+}
+class RefUML_Enumeration {
+}
+class RefUML_EnumerationLiteral {
+}
+class RefUML_Expression {
+  + symbol : str
+}
+abstract class RefUML_Feature {
+  + isStatic : str
+}
+class RefUML_Generalization {
+  + isSubstitutable : str
+}
+class RefUML_GeneralizationSet {
+  + isCovering : str
+  + isDisjoint : str
+}
+class RefUML_InstanceSpecification {
+}
+class RefUML_InstanceValue {
+}
+class RefUML_LiteralBoolean {
+  + value : str
+}
+class RefUML_LiteralInteger {
+  + value : str
+}
+class RefUML_LiteralNull {
+}
+abstract class RefUML_LiteralSpecification {
+}
+class RefUML_LiteralString {
+  + value : str
+}
+class RefUML_LiteralUnlimitedNatural {
+  + value : str
+}
+class RefUML_Model {
+  + viewpoint : str
+  + isMetamodel() : str
+}
+abstract class RefUML_MultiplicityElement {
+  + isOrdered : str
+  + isUnique : str
+  + lower : str
+  + upper : str
+  + compatibleWith(RefUML_other : str) : str
+  + getLower() : str
+  + getUpper() : str
+  + includesCardinality(RefUML_C : str) : str
+  + includesMultiplicity(RefUML_M : str) : str
+  + is(RefUML_lowerbound : str, RefUML_upperbound : str) : str
+  + isMultivalued() : str
+  + lowerBound() : str
+  + setLower(RefUML_newLower : str) : void
+  + setUpper(RefUML_newUpper : str) : void
+  + upperBound() : str
+}
+abstract class RefUML_NamedElement {
+  + name : str
+  + qualifiedName : str
+  + visibility : str
+  + allNamespaces() : Namespace
+  + allOwningPackages() : str
+  + createDependency(RefUML_supplier : str) : str
+  + createUsage(RefUML_supplier : str) : void
+  + getLabel(RefUML_localize : str) : str
+  + getQualifiedName() : str
+  + isDistinguishableFrom(RefUML_n : str, RefUML_ns : str) : str
+  + separator() : str
+}
+abstract class RefUML_Namespace {
+  + createElementImport(RefUML_element : str, RefUML_visibility : str) : str
+  + createPackageImport(RefUML_package_ : str, RefUML_visibility : str) : str
+  + excludeCollisions(RefUML_imps : str) : PackageableElement
+  + getImportedElements() : PackageableElement
+  + getImportedMembers() : PackageableElement
+  + getImportedPackages() : str
+  + getNamesOfMember(RefUML_element : str) : str
+  + importMembers(RefUML_imps : str) : PackageableElement
+  + membersAreDistinguishable() : str
+}
+class RefUML_OpaqueExpression {
+  + body : str
+  + language : str
+  + getResult() : void
+  + isIntegral() : str
+  + isNonNegative() : str
+  + isPositive() : str
+  + value() : str
+}
+class RefUML_Package {
+  + createOwnedClass(RefUML_isAbstract : str, RefUML_name : str) : str
+  + createOwnedEnumeration(RefUML_name : str) : str
+  + createOwnedInterface(RefUML_name : str) : void
+  + createOwnedPrimitiveType(RefUML_name : str) : str
+  + getAppliedProfile(RefUML_qualifiedName : str, RefUML_recurse : str) : void
+  + isModelLibrary() : str
+  + makesVisible(RefUML_el : str) : str
+  + visibleMembers() : PackageableElement
+}
+class RefUML_PackageImport {
+  + visibility : str
+}
+class RefUML_PackageMerge {
+}
+abstract class RefUML_PackageableElement {
+}
+class RefUML_PrimitiveType {
+}
+class RefUML_Property {
+  + aggregation : str
+  + default : str
+  + isComposite : str
+  + isDerived : str
+  + isDerivedUnion : str
+  + getDefault() : str
+  + getOpposite() : str
+  + getOtherEnd() : str
+  + isAttribute(RefUML_p : str) : str
+  + isComposite() : str
+  + isNavigable() : str
+  + isSetDefault() : str
+  + setBooleanDefaultValue(RefUML_value : str) : void
+  + setDefault(RefUML_newDefault : str) : void
+  + setIntegerDefaultValue(RefUML_value : str) : void
+  + setIsComposite(RefUML_newIsComposite : str) : void
+  + setIsNavigable(RefUML_isNavigable : str) : void
+  + setNullDefaultValue() : void
+  + setOpposite(RefUML_newOpposite : str) : void
+  + setStringDefaultValue(RefUML_value : str) : void
+  + setUnlimitedNaturalDefaultValue(RefUML_value : str) : void
+  + subsettingContext() : Type
+  + unsetDefault() : void
+}
+abstract class RefUML_RedefinableElement {
+  + isLeaf : str
+  + isConsistentWith(RefUML_redefinee : str) : str
+  + isRedefinitionContextValid(RefUML_redefined : str) : str
+}
+abstract class RefUML_Relationship {
+}
+class RefUML_Slot {
+}
+class RefUML_StringExpression {
+}
+abstract class RefUML_StructuralFeature {
+  + isReadOnly : str
+}
+abstract class RefUML_Type {
+  + conformsTo(RefUML_other : str) : str
+  + createAssociation(RefUML_end1Aggregation : str, RefUML_end1IsNavigable : str, RefUML_end1Lower : str, RefUML_end1Name : str, RefUML_end1Type : str, RefUML_end1Upper : str, RefUML_end2Aggregation : str, RefUML_end2IsNavigable : str, RefUML_end2Lower : str, RefUML_end2Name : str, RefUML_end2Upper : str) : str
+  + getAssociations() : str
+}
+abstract class RefUML_TypedElement {
+}
+abstract class RefUML_ValueSpecification {
+  + booleanValue() : str
+  + integerValue() : str
+  + isComputable() : str
+  + isNull() : str
+  + stringValue() : str
+  + unlimitedValue() : str
+}
+class Relationship {
+}
+class StructuralFeature {
+}
+class Type {
+}
+class TypedElement {
+}
+class ValueSpecification {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+Classifier <|-- RefUML_Association
+Classifier <|-- RefUML_Class
+Classifier <|-- RefUML_DataType
+DataType <|-- RefUML_Enumeration
+DataType <|-- RefUML_PrimitiveType
+DirectedRelationship <|-- RefUML_Dependency
+DirectedRelationship <|-- RefUML_ElementImport
+DirectedRelationship <|-- RefUML_Generalization
+DirectedRelationship <|-- RefUML_PackageImport
+DirectedRelationship <|-- RefUML_PackageMerge
+EModelElement <|-- RefUML_Element
+Element <|-- RefUML_Comment
+Element <|-- RefUML_MultiplicityElement
+Element <|-- RefUML_NamedElement
+Element <|-- RefUML_Relationship
+Element <|-- RefUML_Slot
+Expression <|-- RefUML_StringExpression
+Feature <|-- RefUML_StructuralFeature
+InstanceSpecification <|-- RefUML_EnumerationLiteral
+LiteralSpecification <|-- RefUML_LiteralBoolean
+LiteralSpecification <|-- RefUML_LiteralInteger
+LiteralSpecification <|-- RefUML_LiteralNull
+LiteralSpecification <|-- RefUML_LiteralString
+LiteralSpecification <|-- RefUML_LiteralUnlimitedNatural
+MultiplicityElement <|-- RefUML_StructuralFeature
+NamedElement <|-- RefUML_Namespace
+NamedElement <|-- RefUML_PackageableElement
+NamedElement <|-- RefUML_RedefinableElement
+NamedElement <|-- RefUML_TypedElement
+Namespace <|-- RefUML_Classifier
+Namespace <|-- RefUML_Package
+Package <|-- RefUML_Model
+PackageableElement <|-- RefUML_Constraintx
+PackageableElement <|-- RefUML_Dependency
+PackageableElement <|-- RefUML_GeneralizationSet
+PackageableElement <|-- RefUML_InstanceSpecification
+PackageableElement <|-- RefUML_Package
+PackageableElement <|-- RefUML_Type
+PackageableElement <|-- RefUML_ValueSpecification
+RedefinableElement <|-- RefUML_Classifier
+RedefinableElement <|-- RefUML_Feature
+Relationship <|-- RefUML_Association
+Relationship <|-- RefUML_DirectedRelationship
+StructuralFeature <|-- RefUML_Property
+Type <|-- RefUML_Classifier
+TypedElement <|-- RefUML_StructuralFeature
+TypedElement <|-- RefUML_ValueSpecification
+ValueSpecification <|-- RefUML_Expression
+ValueSpecification <|-- RefUML_InstanceValue
+ValueSpecification <|-- RefUML_LiteralSpecification
+ValueSpecification <|-- RefUML_OpaqueExpression
+RefUML_Comment "1..1" -- "0..9999" RefUML_Element : annotatedElement0
+RefUML_Association "0..1" -- "1..1" RefUML_Property : association117
+RefUML_Classifier "1..1" -- "0..9999" RefUML_Property : attribute76
+RefUML_Class "0..1" -- "1..1" RefUML_Property : class_101
+RefUML_Classifier "0..9999" -- "1..1" RefUML_InstanceSpecification : classifier141
+RefUML_Dependency "1..1" -- "1..9999" RefUML_NamedElement : client22
+RefUML_Dependency "0..9999" -- "1..1" RefUML_NamedElement : clientDependency17
+RefUML_Constraintx "1..1" -- "0..9999" RefUML_Element : constrainedElement49
+RefUML_Constraintx "1..1" -- "0..1" RefUML_Namespace : context53
+RefUML_DataType "0..1" -- "1..1" RefUML_Property : datatype102
+RefUML_Property "1..1" *-- "0..1" RefUML_ValueSpecification : defaultValue108
+RefUML_Slot "1..1" -- "1..1" RefUML_StructuralFeature : definingFeature147
+RefUML_ElementImport "0..9999" --* "1..1" RefUML_Namespace : elementImport30
+RefUML_Association "1..1" -- "1..9999" RefUML_Type : endType61
+RefUML_Enumeration "0..1" -- "1..1" RefUML_EnumerationLiteral : enumeration140
+RefUML_Classifier "1..1" -- "0..9999" RefUML_Feature : feature67
+RefUML_Classifier "0..9999" -- "1..1" RefUML_Feature : featuringClassifier94
+RefUML_Classifier "0..9999" -- "1..1" RefUML_Classifier : general74
+RefUML_Classifier "1..1" -- "1..1" RefUML_Generalization : general84
+RefUML_Classifier "1..1" *-- "0..9999" RefUML_Generalization : generalization65
+RefUML_Generalization "0..9999" -- "1..1" RefUML_GeneralizationSet : generalization92
+RefUML_Generalization "1..1" -- "0..9999" RefUML_GeneralizationSet : generalizationSet86
+RefUML_ElementImport "1..1" -- "1..1" RefUML_PackageableElement : importedElement41
+RefUML_Namespace "1..1" -- "0..9999" RefUML_PackageableElement : importedMember36
+RefUML_Package "1..1" -- "1..1" RefUML_PackageImport : importedPackage45
+RefUML_ElementImport "1..1" -- "1..1" RefUML_Namespace : importingNamespace43
+RefUML_Namespace "1..1" -- "1..1" RefUML_PackageImport : importingNamespace47
+RefUML_Classifier "1..1" -- "0..9999" RefUML_NamedElement : inheritedMember68
+RefUML_InstanceSpecification "1..1" -- "1..1" RefUML_InstanceValue : instance152
+RefUML_MultiplicityElement "1..1" *-- "0..1" RefUML_ValueSpecification : lowerValue98
+RefUML_NamedElement "0..9999" -- "1..1" RefUML_Namespace : member34
+RefUML_Association "1..1" -- "2..9999" RefUML_Property : memberEnd59
+RefUML_Package "1..1" -- "1..1" RefUML_PackageMerge : mergedPackage135
+RefUML_NamedElement "1..1" *-- "0..1" RefUML_StringExpression : nameExpression19
+RefUML_NamedElement "1..1" -- "0..1" RefUML_Namespace : namespace18
+RefUML_Association "1..1" -- "0..9999" RefUML_Property : navigableOwnedEnd63
+RefUML_Class "1..1" *-- "0..9999" RefUML_Classifier : nestedClassifier119
+RefUML_Package "1..1" -- "0..9999" RefUML_Package : nestedPackage13
+RefUML_Package "1..1" -- "0..1" RefUML_Package : nestingPackage15
+RefUML_Expression "1..1" *-- "0..9999" RefUML_ValueSpecification : operand133
+RefUML_Property "0..1" -- "1..1" RefUML_Property : opposite112
+RefUML_Class "1..1" *-- "0..9999" RefUML_Property : ownedAttribute124
+RefUML_DataType "1..1" *-- "0..9999" RefUML_Property : ownedAttribute126
+RefUML_Comment "0..9999" --* "1..1" RefUML_Element : ownedComment6
+RefUML_Element "1..1" -- "0..9999" RefUML_Element : ownedElement2
+RefUML_Association "1..1" *-- "0..9999" RefUML_Property : ownedEnd58
+RefUML_Enumeration "1..1" *-- "0..9999" RefUML_EnumerationLiteral : ownedLiteral139
+RefUML_NamedElement "0..9999" -- "1..1" RefUML_Namespace : ownedMember39
+RefUML_Constraintx "0..9999" --* "1..1" RefUML_Namespace : ownedRule33
+RefUML_Package "1..1" -- "0..9999" RefUML_Type : ownedType9
+RefUML_Element "1..1" -- "0..1" RefUML_Element : owner4
+RefUML_Association "0..1" -- "1..1" RefUML_Property : owningAssociation107
+RefUML_StringExpression "1..1" -- "0..1" RefUML_StringExpression : owningExpression131
+RefUML_InstanceSpecification "1..1" -- "1..1" RefUML_Slot : owningInstance151
+RefUML_Package "0..1" -- "1..1" RefUML_Type : package56
+RefUML_Namespace "1..1" *-- "0..9999" RefUML_PackageImport : packageImport31
+RefUML_Package "1..1" *-- "0..9999" RefUML_PackageMerge : packageMerge10
+RefUML_Package "1..1" *-- "0..9999" RefUML_PackageableElement : packagedElement11
+RefUML_Classifier "0..1" -- "1..1" RefUML_GeneralizationSet : powertype90
+RefUML_Classifier "1..1" -- "0..9999" RefUML_GeneralizationSet : powertypeExtent66
+RefUML_Package "1..1" -- "1..1" RefUML_PackageMerge : receivingPackage137
+RefUML_Classifier "0..9999" -- "1..1" RefUML_Classifier : redefinedClassifier71
+RefUML_RedefinableElement "1..1" -- "0..9999" RefUML_RedefinableElement : redefinedElement80
+RefUML_Property "0..9999" -- "1..1" RefUML_Property : redefinedProperty105
+RefUML_Classifier "0..9999" -- "1..1" RefUML_RedefinableElement : redefinitionContext81
+RefUML_Element "1..9999" -- "1..1" RefUML_Relationship : relatedElement28
+RefUML_InstanceSpecification "1..1" *-- "0..9999" RefUML_Slot : slot143
+RefUML_DirectedRelationship "1..1" -- "1..9999" RefUML_Element : source23
+RefUML_Classifier "1..1" -- "1..1" RefUML_Generalization : specific88
+RefUML_InstanceSpecification "1..1" *-- "0..1" RefUML_ValueSpecification : specification144
+RefUML_Constraintx "1..1" *-- "1..1" RefUML_ValueSpecification : specification51
+RefUML_StringExpression "1..1" *-- "0..9999" RefUML_StringExpression : subExpression129
+RefUML_Property "0..9999" -- "1..1" RefUML_Property : subsettedProperty115
+RefUML_Class "0..9999" -- "1..1" RefUML_Class : superClass122
+RefUML_Dependency "1..1" -- "1..9999" RefUML_NamedElement : supplier20
+RefUML_DirectedRelationship "1..1" -- "1..9999" RefUML_Element : target25
+RefUML_Type "0..1" -- "1..1" RefUML_TypedElement : type55
+RefUML_MultiplicityElement "1..1" *-- "0..1" RefUML_ValueSpecification : upperValue96
+RefUML_Slot "1..1" *-- "0..9999" RefUML_ValueSpecification : value148
+@enduml

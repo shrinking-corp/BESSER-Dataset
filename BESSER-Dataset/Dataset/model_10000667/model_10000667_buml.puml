@@ -1,0 +1,56 @@
+@startuml
+class Customer {
+  + CustNumber : int
+}
+class Employee {
+  + EmployeeID : int
+  + Role : str
+  + Salary : float
+  + StoreID : int
+}
+class Inventory {
+  + ItemID : int
+  + Quantity : float
+  + StoreID : int
+}
+class Items {
+  + ItemID : int
+  + Name : str
+}
+class Menu {
+  + MenuItem : str
+}
+class Order {
+  + CustNumber : int
+  + ItemName : str
+  + MenuItem : int
+  + OrderDate : date
+  + OrderID : int
+}
+class PurchaseOrder {
+  + Date : date
+  + ItemID : int
+  + Price : float
+  + PurchaseOrderID : int
+  + Quantity : float
+  + VendorID : int
+}
+class Store {
+  + Address : str
+  + Name : str
+  + StoreID : int
+}
+class Vendor {
+  + Address : str
+  + ItemID : int
+  + VendorID : int
+}
+Customer "0..1" -- "1..9999" Order : Customer_Order
+Inventory "0..1" -- "1..9999" Items : Inventory_Items2
+Inventory "1..1" -- "1..9999" Store : Inventory_Store
+Items "1..9999" -- "0..1" Menu : Menu_Items
+Menu "1..9999" -- "0..1" Order : Menu_Order
+Items "1..9999" -- "1..1" PurchaseOrder : PurchaseOrder_Items
+Employee "1..9999" -- "1..1" Store : Store_Employee
+PurchaseOrder "1..9999" -- "1..1" Vendor : Vendor_PurchaseOrder
+@enduml

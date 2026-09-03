@@ -1,0 +1,169 @@
+@startuml
+class ArtifactElement {
+}
+class JavaDataField {
+}
+class JavaDataType {
+}
+class JavaElement {
+}
+class JavaSpringWebApplicationProject {
+}
+class JavaUserDefinedType {
+}
+class MicroserviceProject {
+}
+class PSM_ApplicationProject {
+  + ProjectArtifactId : str
+}
+class PSM_ArtifactElement {
+  + ArtifactFileName : str
+  + GeneratingLinesOfCode : str
+  + ParentProjectName : str
+}
+class PSM_ConfigurationProperty {
+  + ConfigurationProfile : str
+  + FullyQualifiedPropertyName : str
+  + PropertyValue : str
+}
+class PSM_DependencyLibrary {
+  + LibraryGroupName : str
+  + LibraryName : str
+  + LibraryScope : str
+}
+class PSM_DistributedApplicationProject {
+  + ApplicationName : str
+  + ProjectPackageURL : str
+}
+class PSM_DockerContainerDefinition {
+  + BuildField : str
+  + ContainerName : str
+  + GeneratesLogs : bool
+  + ImageField : str
+}
+class PSM_DockerContainerLink {
+  + DependencyOrder : int
+  + LinksDependsOnField : str
+}
+class PSM_DockerContainerPort {
+  + ExposesPortsField : str
+}
+class PSM_JavaAnnotation {
+  + AnnotationName : str
+}
+class PSM_JavaAnnotationParameter {
+  + ParameterName : str
+  + ParameterValue : str
+}
+class PSM_JavaClassType {
+}
+class PSM_JavaDataField {
+  + FieldValue : str
+}
+class PSM_JavaDataType {
+  + IsPrimitive : bool
+  + JsonSchema : str
+  + PackageName : str
+}
+class PSM_JavaElement {
+  + ElementIdentifier : str
+  + ElementProfile : str
+}
+class PSM_JavaInterfaceType {
+}
+class PSM_JavaMethod {
+  + RootCallingMethod : str
+}
+class PSM_JavaMethodParameter {
+  + ParameterOrder : int
+}
+class PSM_JavaSpringMVCApplicationProject {
+}
+class PSM_JavaSpringWebApplicationProject {
+}
+class PSM_JavaSpringWebFluxApplicationProject {
+}
+class PSM_JavaUserDefinedType {
+}
+class PSM_MicroserviceProject {
+  + ProjectArtifactId : str
+}
+class PSM_RootPSM {
+}
+class PSM_SpringBootApplicationLayer {
+}
+class PSM_SpringComponentLayer {
+}
+class PSM_SpringConfigurationLayer {
+}
+class PSM_SpringControllerLayer {
+}
+class PSM_SpringDomainLayer {
+}
+class PSM_SpringFeignClientLayer {
+}
+class PSM_SpringModelPojoLayer {
+}
+class PSM_SpringRepositoryLayer {
+}
+class PSM_SpringServiceLayer {
+}
+class PSM_SpringWebApplicationLayer {
+  + LayerName : str
+}
+class SpringWebApplicationLayer {
+}
+ArtifactElement <|-- PSM_ApplicationProject
+ArtifactElement <|-- PSM_ConfigurationProperty
+ArtifactElement <|-- PSM_DependencyLibrary
+ArtifactElement <|-- PSM_DockerContainerDefinition
+ArtifactElement <|-- PSM_DockerContainerLink
+ArtifactElement <|-- PSM_DockerContainerPort
+ArtifactElement <|-- PSM_JavaAnnotation
+ArtifactElement <|-- PSM_JavaAnnotationParameter
+ArtifactElement <|-- PSM_JavaElement
+ArtifactElement <|-- PSM_MicroserviceProject
+ArtifactElement <|-- PSM_SpringWebApplicationLayer
+JavaDataField <|-- PSM_JavaMethodParameter
+JavaDataType <|-- PSM_JavaUserDefinedType
+JavaElement <|-- PSM_JavaDataField
+JavaElement <|-- PSM_JavaDataType
+JavaElement <|-- PSM_JavaMethod
+JavaSpringWebApplicationProject <|-- PSM_JavaSpringMVCApplicationProject
+JavaSpringWebApplicationProject <|-- PSM_JavaSpringWebFluxApplicationProject
+JavaUserDefinedType <|-- PSM_JavaClassType
+JavaUserDefinedType <|-- PSM_JavaInterfaceType
+MicroserviceProject <|-- PSM_JavaSpringWebApplicationProject
+SpringWebApplicationLayer <|-- PSM_SpringBootApplicationLayer
+SpringWebApplicationLayer <|-- PSM_SpringComponentLayer
+SpringWebApplicationLayer <|-- PSM_SpringConfigurationLayer
+SpringWebApplicationLayer <|-- PSM_SpringControllerLayer
+SpringWebApplicationLayer <|-- PSM_SpringDomainLayer
+SpringWebApplicationLayer <|-- PSM_SpringFeignClientLayer
+SpringWebApplicationLayer <|-- PSM_SpringModelPojoLayer
+SpringWebApplicationLayer <|-- PSM_SpringRepositoryLayer
+SpringWebApplicationLayer <|-- PSM_SpringServiceLayer
+PSM_JavaAnnotation "0..9999" --* "1..1" PSM_JavaElement : annotations18
+PSM_DistributedApplicationProject "1..1" --* "1..1" PSM_RootPSM : application0
+PSM_ApplicationProject "1..1" --* "1..1" PSM_DistributedApplicationProject : application_project3
+PSM_DistributedApplicationProject "1..1" *-- "1..9999" PSM_DockerContainerDefinition : containers1
+PSM_JavaUserDefinedType "0..9999" --* "1..1" PSM_JavaUserDefinedType : defines30
+PSM_JavaUserDefinedType "1..9999" --* "1..1" PSM_SpringWebApplicationLayer : elements16
+PSM_JavaUserDefinedType "0..9999" --* "1..1" PSM_JavaUserDefinedType : extends24
+PSM_JavaDataField "0..9999" --* "1..1" PSM_JavaUserDefinedType : fields32
+PSM_JavaClassType "1..1" *-- "0..9999" PSM_JavaInterfaceType : implements34
+PSM_JavaUserDefinedType "0..9999" --* "1..1" PSM_JavaUserDefinedType : imports27
+PSM_JavaMethod "0..9999" --* "1..1" PSM_JavaMethod : invokes43
+PSM_JavaSpringWebApplicationProject "1..1" *-- "2..9999" PSM_SpringWebApplicationLayer : layers14
+PSM_DependencyLibrary "1..9999" --* "1..1" PSM_MicroserviceProject : libraries11
+PSM_DockerContainerDefinition "1..1" *-- "0..9999" PSM_DockerContainerLink : links5
+PSM_JavaMethod "1..9999" --* "1..1" PSM_JavaUserDefinedType : methods21
+PSM_ApplicationProject "1..1" *-- "1..9999" PSM_MicroserviceProject : modules9
+PSM_JavaAnnotation "1..1" *-- "0..9999" PSM_JavaAnnotationParameter : parameters19
+PSM_JavaMethod "1..1" *-- "0..9999" PSM_JavaMethodParameter : parameters38
+PSM_JavaMethod "1..1" *-- "1..1" PSM_JavaUserDefinedType : parent35
+PSM_DockerContainerDefinition "1..1" *-- "1..9999" PSM_DockerContainerPort : ports7
+PSM_ConfigurationProperty "1..9999" --* "1..1" PSM_JavaSpringWebApplicationProject : properties13
+PSM_JavaDataType "0..1" --* "1..1" PSM_JavaMethod : returns40
+PSM_JavaDataField "1..1" *-- "1..1" PSM_JavaDataType : type45
+@enduml

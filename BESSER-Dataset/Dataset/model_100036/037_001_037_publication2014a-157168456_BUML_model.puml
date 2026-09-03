@@ -1,0 +1,96 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+enum SequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+abstract class publication2014a_Counted {
+  + id : int
+}
+abstract class publication2014a_Labelled {
+  + lname : str
+}
+abstract class publication2014a_Named {
+  + name : str
+}
+class publication2014a_Paper {
+}
+class publication2014a_Paragraph {
+  + content : str
+}
+class publication2014a_Progress {
+  + percent : int
+  + time : int
+}
+class publication2014a_PublicationPhase {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class publication2014a_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class publication2014a_PublicationStructure {
+}
+class publication2014a_PublicationSystem {
+}
+class publication2014a_Researcher {
+  + forName : str
+  + name : str
+  + position : str
+}
+class publication2014a_Review {
+}
+class publication2014a_ReviewNote {
+  + content : str
+}
+class publication2014a_Rule {
+  + key : str
+  + text : str
+}
+class publication2014a_Sequence {
+  + sequenceType : str
+}
+class publication2014a_Write {
+}
+Counted <|-- publication2014a_Paragraph
+Labelled <|-- publication2014a_Progress
+Labelled <|-- publication2014a_Review
+Labelled <|-- publication2014a_Write
+Named <|-- publication2014a_Paper
+Named <|-- publication2014a_Paragraph
+Named <|-- publication2014a_PublicationProcess
+Named <|-- publication2014a_PublicationStructure
+Named <|-- publication2014a_ReviewNote
+publication2014a_Paper "1..1" -- "0..9999" publication2014a_Researcher : authors22
+publication2014a_PublicationPhase "1..1" *-- "0..9999" publication2014a_Sequence : linksToSuccessors3
+publication2014a_PublicationPhase "1..1" -- "0..9999" publication2014a_Researcher : neededPerson5
+publication2014a_Paper "0..1" -- "1..1" publication2014a_Progress : paper28
+publication2014a_Paper "0..9999" -- "1..1" publication2014a_Researcher : papers19
+publication2014a_Paper "0..9999" --* "1..1" publication2014a_PublicationStructure : papers38
+publication2014a_Paragraph "0..1" -- "1..1" publication2014a_Write : paragraph30
+publication2014a_Paper "1..1" *-- "0..9999" publication2014a_Paragraph : paragraphs20
+publication2014a_PublicationPhase "0..9999" -- "1..1" publication2014a_Researcher : phaseParticipation15
+publication2014a_PublicationPhase "0..9999" --* "1..1" publication2014a_PublicationProcess : phases0
+publication2014a_PublicationPhase "1..1" -- "1..1" publication2014a_Sequence : predecessor12
+publication2014a_Progress "1..1" -- "0..1" publication2014a_PublicationProcess : process26
+publication2014a_PublicationProcess "0..1" --* "1..1" publication2014a_PublicationSystem : processView41
+publication2014a_Paper "1..1" *-- "0..9999" publication2014a_Progress : progress21
+publication2014a_PublicationProcess "1..1" *-- "0..9999" publication2014a_Rule : publicationRules1
+publication2014a_PublicationStructure "1..1" *-- "0..9999" publication2014a_Researcher : researchers36
+publication2014a_Review "1..1" -- "0..1" publication2014a_ReviewNote : reviewNote33
+publication2014a_Researcher "1..1" *-- "0..9999" publication2014a_Review : reviews17
+publication2014a_Paragraph "1..1" *-- "0..9999" publication2014a_ReviewNote : reviews24
+publication2014a_PublicationPhase "1..1" -- "0..9999" publication2014a_Rule : rules6
+publication2014a_PublicationStructure "0..1" --* "1..1" publication2014a_PublicationSystem : structuralView43
+publication2014a_PublicationPhase "1..1" -- "1..1" publication2014a_Sequence : successor9
+publication2014a_Researcher "1..1" *-- "0..9999" publication2014a_Write : writes16
+@enduml

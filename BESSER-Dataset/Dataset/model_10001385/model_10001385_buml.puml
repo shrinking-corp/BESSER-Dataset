@@ -1,0 +1,54 @@
+@startuml
+class Agenda {
+  + annee : str
+}
+class AgendaPartage {
+}
+class Compte {
+  + login : str
+  + password : str
+  + typeCompte : str
+}
+abstract class Employe {
+  + dateDebut : str
+  + dateFin : str
+  + joursVacance : int
+  + salaire : int
+}
+class EmployeAdministratif {
+  + formation : str
+}
+class Medecin {
+  + specialisation : str
+}
+class Patient {
+  + allergies : str
+  + antecedent : str
+  + traitement : str
+}
+abstract class Personne {
+  + adresse : str
+  + dateNaissance : str
+  + email : str
+  + nom : str
+  + prenom : str
+  + telPrive : str
+}
+class RDV {
+  + date : str
+  + duree : int
+  + heure : str
+}
+class Test {
+  + Prenom : str
+}
+Agenda "1..9999" -- "1..1" AgendaPartage : AgendaPartage_Agenda
+Agenda "1..1" -- "0..9999" RDV : Agenda_RDV
+AgendaPartage "1..1" -- "1..9999" EmployeAdministratif : EmployeAdministratif_AgendaPartage
+EmployeAdministratif "0..9999" -- "0..9999" RDV : EmployeAdministratif_RDV
+Compte "1..2" -- "1..1" Employe : Employe_Compte
+Agenda "1..1" -- "1..1" Medecin : Medecin_Agenda
+Medecin "1..1" -- "1..9999" Patient : Medecin_Patient
+Compte "0..1" -- "1..1" Patient : Patient_Compte
+Patient "1..1" -- "0..9999" RDV : RDV_Patient
+@enduml

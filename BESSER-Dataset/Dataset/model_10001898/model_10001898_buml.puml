@@ -1,0 +1,146 @@
+@startuml
+class Actor_Actor {
+}
+class Brinda_consultoria_external {
+}
+class Clasificar_Producto_external {
+}
+class Comprador {
+  + Nombre : str
+  + identificacion : str
+  + telefono : str
+}
+class Departamento {
+}
+class Departamento_de_Inventarios_y_Suministros___Dis_Component {
+}
+class Departamento_de_contabilidad_y_tesoreria_Actor {
+}
+class Dependencia {
+  + codigo : str
+  + nombre : str
+  + responsable : str
+}
+class Dependencia_Actor {
+}
+class Ejecuci_n {
+  + codigo : str
+}
+class Elementos {
+  + clasificacion : str
+  + referencia : str
+}
+class Encargos {
+  + codigo : str
+  + detalles : str
+}
+class Factura {
+  + codigo : str
+  + fecha : str
+}
+class Generar_ordenes_de_pedidos_external {
+}
+class Historial_trabajadores {
+  + TrabajoAntiguo : str
+  + codigo : str
+  + horasTrabajadas : str
+}
+class Juridica_Actor {
+}
+class Mileninum_Component {
+}
+class Natural_Actor {
+}
+class Obras {
+  + codigo : str
+  + direccion : str
+}
+class OrdenesPedido {
+  + codigo : str
+  + fecha : str
+}
+class Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Permisos {
+  + Codigo : str
+  + Estado : str
+  + Fecha : str
+}
+class Planos {
+  + Codigo : str
+  + Escala : str
+  + Fecha : str
+}
+class PlanosTerreno {
+  + Ublicacion : str
+}
+class Profesores {
+}
+class Proveedores {
+  + direccion : str
+  + nit : str
+  + razonSocial : str
+  + telefonos : int
+}
+class Proveedores_Actor {
+}
+class Recibir_ordenes_de_suministro_external {
+}
+class Recibir_productos_y_pedidos_external {
+}
+class Registrar_proveedores_external {
+}
+class Servidor_intel_i8_Node {
+}
+class Sistema_Electrico {
+  + codigo : str
+}
+class Sistema_WEB_Movil___Recceci_n_de_pedidos_Component {
+}
+class Sistema_desplegable {
+  + codigo : str
+}
+class SolucitudSuministro {
+  + codigo : str
+  + fecha : str
+}
+class Trabajadores {
+  + Telefono : int
+  + identificacion : str
+  + nombre : str
+}
+class _reasConocimiento {
+}
+class facturas_pagos_ {
+  + codigo : str
+  + pagoNomina : int
+  + total : str
+}
+Brinda_consultoria_external "0..1" -- "0..1" Departamento_de_contabilidad_y_tesoreria_Actor : Aciente_Brinda_consultoria
+Actor_Actor "0..1" -- "0..1" Clasificar_Producto_external : Actor_Clasificar_Producto
+Departamento "1..1" -- "1..9999" _reasConocimiento : Departamento__reasConocimiento
+Departamento_de_contabilidad_y_tesoreria_Actor "0..1" -- "0..1" Recibir_productos_y_pedidos_external : Departamento_de_contabilidad_y_tesoreria_Recibir_productos_y_pedidos
+Dependencia_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministro_external : Dependencia_Generar_ordenes_de_pedidos
+Dependencia_Actor "0..1" -- "0..1" Generar_ordenes_de_pedidos_external : Dependencia_Generar_ordenes_de_pedidos_2
+Pedidos "0..9999" -- "1..1" Proveedores : Provee
+Dependencia "1..1" -- "1..9999" SolucitudSuministro : Realiza
+Obras "1..1" -- "0..9999" Trabajadores : Realiza1
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_y_pedidos_external : Recibir_productos_y_pedidos_Proveedores
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Registrar_proveedores_Proveedores
+Profesores "0..9999" -- "1..1" _reasConocimiento : _reasConocimiento_Profesores
+Elementos "1..9999" -- "0..9999" OrdenesPedido : conformada
+Historial_trabajadores "0..9999" -- "1..1" Trabajadores : contiene
+Factura "0..9999" -- "1..1" Proveedores : elabora
+OrdenesPedido "0..9999" -- "1..1" Proveedores : es_enviado
+Elementos "1..9999" -- "1..9999" Factura : factura
+Trabajadores "0..9999" -- "1..1" facturas_pagos_ : factura1
+OrdenesPedido "0..1" -- "1..9999" SolucitudSuministro : genera
+Obras "1..1" -- "0..9999" facturas_pagos_ : genera1
+Comprador "1..1" -- "1..9999" Encargos : hace
+Obras "1..1" -- "0..9999" Planos : nesecita
+Encargos "1..1" -- "1..9999" Obras : realiza
+Elementos "1..9999" -- "0..1" SolucitudSuministro : relaciona
+Permisos "1..9999" -- "1..1" Planos : requiere
+@enduml

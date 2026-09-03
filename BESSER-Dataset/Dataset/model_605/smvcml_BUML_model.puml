@@ -1,0 +1,87 @@
+@startuml
+enum AttributeType {
+  BIGINTEGER
+  DOUBLE
+  OID
+  VARCHAR
+  VOID
+}
+class Component {
+}
+class Controller {
+}
+class EntityComponent {
+}
+enum Operation {
+  _create
+  delete
+  forward
+  read
+  readALL
+  readONE
+  update
+}
+class SMVC_Attribute {
+  + multiValued : bool
+  + name : str
+  + type : str
+}
+abstract class SMVC_Component {
+}
+class SMVC_Controller {
+  + operation : str
+  + url : str
+}
+class SMVC_DataAccessObject {
+  + name : str
+  + showDirectInstancesOnly : bool
+}
+class SMVC_Entity {
+  + name : str
+}
+abstract class SMVC_EntityComponent {
+}
+class SMVC_EntityController {
+  + returnKOURL : str
+  + returnOKURL : str
+}
+class SMVC_Form {
+}
+class SMVC_Link {
+  + url : str
+}
+class SMVC_List {
+}
+class SMVC_Page {
+  + title : str
+}
+class SMVC_SMVCApplication {
+  + name : str
+}
+class SMVC_SupportedOperation {
+  + operationKind : str
+  + url : str
+}
+class SMVC_View {
+  + text : str
+}
+Component <|-- SMVC_EntityComponent
+Controller <|-- SMVC_EntityController
+EntityComponent <|-- SMVC_Form
+EntityComponent <|-- SMVC_List
+SMVC_Attribute "0..9999" --* "1..1" SMVC_Entity : attributes18
+SMVC_Attribute "1..1" -- "0..1" SMVC_Entity : complexType20
+SMVC_Component "0..9999" --* "1..1" SMVC_View : components27
+SMVC_Controller "0..9999" --* "1..1" SMVC_SMVCApplication : controller1
+SMVC_DataAccessObject "1..1" -- "1..1" SMVC_EntityController : dao13
+SMVC_DataAccessObject "0..9999" --* "1..1" SMVC_SMVCApplication : daos4
+SMVC_Entity "0..9999" --* "1..1" SMVC_SMVCApplication : entities6
+SMVC_Entity "1..1" -- "1..1" SMVC_EntityComponent : entity29
+SMVC_DataAccessObject "1..1" -- "1..1" SMVC_Entity : forEntity15
+SMVC_Controller "1..1" --* "1..1" SMVC_SMVCApplication : homeController0
+SMVC_Link "0..9999" --* "1..1" SMVC_Page : links23
+SMVC_Controller "1..1" *-- "1..1" SMVC_Page : page11
+SMVC_Controller "1..1" *-- "0..9999" SMVC_Controller : subController9
+SMVC_List "1..1" *-- "0..4" SMVC_SupportedOperation : supportedOperations31
+SMVC_Page "1..1" *-- "1..1" SMVC_View : view25
+@enduml

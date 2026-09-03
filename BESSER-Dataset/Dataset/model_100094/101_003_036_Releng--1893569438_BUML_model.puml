@@ -1,0 +1,40 @@
+@startuml
+enum BuildType {
+  I
+  M
+  N
+  R
+  S
+}
+class Repository {
+}
+class releng_BuildJob {
+  + buckminsterComponent : str
+  + name : str
+  + sourceBranch : str
+  + types : str
+}
+class releng_CompositeRepository {
+}
+class releng_Criterion {
+  + description : str
+}
+class releng_Promotion {
+  + buildType : str
+}
+class releng_Repository {
+  + location : str
+}
+class releng_Server {
+  + name : str
+}
+Repository <|-- releng_CompositeRepository
+releng_BuildJob "0..1" -- "1..1" releng_Promotion : build7
+releng_BuildJob "0..9999" --* "1..1" releng_Server : buildJobs0
+releng_Criterion "0..9999" --* "1..1" releng_Promotion : criteria10
+releng_CompositeRepository "1..1" -- "1..9999" releng_Repository : elements12
+releng_BuildJob "1..1" *-- "0..9999" releng_Promotion : promotions6
+releng_Repository "0..9999" --* "1..1" releng_Server : repositories1
+releng_BuildJob "1..1" *-- "1..1" releng_Repository : result3
+releng_Promotion "1..1" -- "1..1" releng_Repository : target8
+@enduml

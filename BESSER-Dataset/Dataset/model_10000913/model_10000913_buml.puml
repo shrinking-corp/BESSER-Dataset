@@ -1,0 +1,53 @@
+@startuml
+class Online_Shopping_System_Account {
+  + Closed : str
+  + ID : str
+  + Open : str
+  + billing_address : str
+  + is_closed : bool
+}
+class Online_Shopping_System_Customer {
+  + Address : str
+  + Email : str
+  + ID : str
+  + Phone : str
+}
+class Online_Shopping_System_Line_item {
+  + price : str
+  + quantity : int
+}
+class Online_Shopping_System_Order {
+  + Number : str
+  + Ship_to : str
+  + ordered : str
+  + shipped : str
+  + status : str
+  + total : str
+}
+class Online_Shopping_System_Payment {
+  + Details : str
+  + ID : str
+  + Paid : str
+  + Total : str
+}
+class Online_Shopping_System_Product {
+  + ID : str
+  + Name : str
+  + Supplier : str
+}
+class Online_Shopping_System_Shopping_Cart {
+  + created : str
+}
+class Online_Shopping_System_Web_User {
+  + login_id : str
+  + passwd : str
+}
+Online_Shopping_System_Account "1..1" -- "0..9999" Online_Shopping_System_Order : Account_Order
+Online_Shopping_System_Account "1..1" -- "1..1" Online_Shopping_System_Customer : Customer_Account
+Online_Shopping_System_Line_item "0..9999" -- "1..1" Online_Shopping_System_Product : Line_item_Product
+Online_Shopping_System_Line_item "0..9999" -- "1..1" Online_Shopping_System_Order : Order_Line_item
+Online_Shopping_System_Account "1..1" -- "1..9999" Online_Shopping_System_Payment : Payment_Account
+Online_Shopping_System_Line_item "0..9999" -- "1..1" Online_Shopping_System_Shopping_Cart : Shopping_Cart_Line_item
+Online_Shopping_System_Customer "1..1" -- "0..1" Online_Shopping_System_Web_User : Web_User_Customer
+Online_Shopping_System_Shopping_Cart "0..1" -- "1..1" Online_Shopping_System_Web_User : Web_User_Shopping_Cart
+@enduml

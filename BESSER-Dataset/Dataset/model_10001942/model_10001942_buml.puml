@@ -1,0 +1,82 @@
+@startuml
+class AddAlarm {
+  + AlarmName : str
+}
+class Add_new_alarm_external {
+}
+class Alarm {
+  + AlarmID : str
+}
+class Arduino {
+}
+class Building_Owner__Actor {
+}
+class Count_Sensor {
+  + People_ : int
+}
+class Disable_detector_external {
+}
+class Fire_Alarm_System__Component {
+}
+class Fire_Department__Actor {
+}
+class Firebase {
+}
+class Gas_Smoke_Sensor {
+  + CheckSmoke : bool
+  + SmokeAlarm : bool
+}
+class MobileApp {
+  + AlarmID : int
+  + UserID : int
+}
+class Notification {
+  + SmokeThreshold : float
+  + TempThreshold : float
+}
+class Notify_User_of_fire_external {
+}
+class Sense_and_Update_Data_external {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Sensors_Actor {
+}
+class Set_time_external {
+}
+class Temperature_Sensor {
+}
+class TurnDownAlarm {
+}
+class ViewTemp_Smoke {
+  + SmokeValue : float
+  + TempValue : float
+}
+class View_sensors_data_external {
+}
+class WebPage {
+  + HomeLoc : str
+  + OwnerData : str
+  + People_ : int
+  + SmokeValue : float
+  + TempValue : float
+}
+AddAlarm "1..1" -- "1..1" Alarm : AddAlarm_Alarm
+Alarm "1..9999" -- "1..1" MobileApp : Alarm_Mobile_App
+Arduino "1..1" -- "1..1" Firebase : Arduino__Firebase
+Add_new_alarm_external "0..1" -- "0..1" Building_Owner__Actor : Building_Owner__Add_Alarm
+Building_Owner__Actor "0..1" -- "0..1" Disable_detector_external : Building_Owner__Close_Alarm
+Building_Owner__Actor "0..1" -- "0..1" Notify_User_of_fire_external : Building_Owner__Sense_and_Update_Data
+Building_Owner__Actor "0..1" -- "0..1" Set_time_external : Building_Owner__Set_Time
+Building_Owner__Actor "0..1" -- "0..1" View_sensors_data_external : Building_Owner__View_Data
+Fire_Department__Actor "0..1" -- "0..1" Notify_User_of_fire_external : Fire_Department__Notify_User
+Firebase "1..1" -- "1..1" WebPage : Firebase_Web
+Firebase "1..1" -- "1..1" MobileApp : Home_Security_System_System
+Alarm "1..9999" -- "1..1" Notification : Notification_Alarm
+Arduino "1..1" -- "0..9999" Sensor : Sensor_System
+Sense_and_Update_Data_external "0..1" -- "0..1" Sensors_Actor : Sensors_Sense_and_Update_Data
+Alarm "1..1" -- "1..1" TurnDownAlarm : TurnDownAlarm_Alarm
+Alarm "1..1" -- "1..1" ViewTemp_Smoke : ViewTemp_Smoke_Alarm
+@enduml

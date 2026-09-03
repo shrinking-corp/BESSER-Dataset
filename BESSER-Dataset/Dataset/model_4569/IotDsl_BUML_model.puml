@@ -1,0 +1,184 @@
+@startuml
+class Capability {
+}
+class Content {
+}
+class DeclaredType {
+}
+enum DefaultType {
+  Boolean
+  Integer
+  Real
+  String
+  Void
+}
+class Expression {
+}
+class Feature {
+}
+class Node {
+}
+enum Operator {
+  equal
+  geq
+  greater
+  leq
+  lesser
+  neq
+}
+enum Protocol {
+  dds
+  ip
+  mqtt
+  zigbee
+  zwave
+}
+class TimingExpression {
+}
+class Type {
+}
+enum Unit {
+  hour
+  milli
+  min
+  sec
+}
+class Value {
+}
+class iotdsl_Actuating {
+}
+class iotdsl_AfterExpression {
+}
+class iotdsl_AndExpression {
+}
+class iotdsl_Attribute {
+  + name : str
+}
+class iotdsl_BoolConstant {
+  + value : str
+}
+abstract class iotdsl_Capability {
+}
+class iotdsl_CommunicationPath {
+  + protocol : str
+}
+class iotdsl_Configuration {
+  + confname : str
+}
+abstract class iotdsl_Content {
+}
+abstract class iotdsl_DeclaredType {
+}
+class iotdsl_Delay {
+  + time : int
+  + unit : str
+}
+class iotdsl_Device {
+}
+class iotdsl_EnumLiteral {
+  + name : str
+}
+class iotdsl_Enumeration {
+}
+class iotdsl_EventOccurrence {
+  + operator : str
+}
+abstract class iotdsl_Expression {
+}
+abstract class iotdsl_Feature {
+  + name : str
+}
+class iotdsl_Gateway {
+}
+class iotdsl_Import {
+  + importedNamespace : str
+}
+class iotdsl_IntConstant {
+  + value : int
+}
+class iotdsl_IotModel {
+  + name : str
+}
+abstract class iotdsl_Node {
+}
+class iotdsl_NodeInstance {
+  + name : str
+}
+class iotdsl_NotExpression {
+}
+class iotdsl_Parameter {
+  + name : str
+}
+class iotdsl_PrimitiveType {
+}
+class iotdsl_Property {
+}
+class iotdsl_Reaction {
+}
+class iotdsl_Rule {
+  + name : str
+}
+class iotdsl_Sensing {
+}
+class iotdsl_StringConstant {
+  + value : str
+}
+abstract class iotdsl_TimingExpression {
+}
+abstract class iotdsl_Type {
+  + name : str
+}
+class iotdsl_Value {
+}
+class iotdsl_WithinExpression {
+}
+Capability <|-- iotdsl_Actuating
+Capability <|-- iotdsl_Sensing
+Content <|-- iotdsl_Configuration
+Content <|-- iotdsl_Rule
+Content <|-- iotdsl_Type
+DeclaredType <|-- iotdsl_Enumeration
+DeclaredType <|-- iotdsl_Node
+Expression <|-- iotdsl_AndExpression
+Expression <|-- iotdsl_EventOccurrence
+Expression <|-- iotdsl_NotExpression
+Expression <|-- iotdsl_TimingExpression
+Feature <|-- iotdsl_Capability
+Feature <|-- iotdsl_Property
+Node <|-- iotdsl_Device
+Node <|-- iotdsl_Gateway
+TimingExpression <|-- iotdsl_AfterExpression
+TimingExpression <|-- iotdsl_WithinExpression
+Type <|-- iotdsl_DeclaredType
+Type <|-- iotdsl_PrimitiveType
+Value <|-- iotdsl_BoolConstant
+Value <|-- iotdsl_IntConstant
+Value <|-- iotdsl_StringConstant
+iotdsl_Attribute "0..9999" --* "1..1" iotdsl_EventOccurrence : attributes30
+iotdsl_Attribute "0..9999" --* "1..1" iotdsl_Reaction : attributes40
+iotdsl_EventOccurrence "1..1" -- "1..1" iotdsl_Sensing : capability28
+iotdsl_Actuating "1..1" -- "1..1" iotdsl_Reaction : capability38
+iotdsl_Content "0..9999" --* "1..1" iotdsl_IotModel : content1
+iotdsl_Delay "1..1" --* "1..1" iotdsl_WithinExpression : delay53
+iotdsl_EventOccurrence "1..1" --* "1..1" iotdsl_NotExpression : event24
+iotdsl_Device "1..1" *-- "0..9999" iotdsl_Feature : features4
+iotdsl_Expression "1..1" --* "1..1" iotdsl_TimingExpression : following48
+iotdsl_Import "0..9999" --* "1..1" iotdsl_IotModel : imports0
+iotdsl_EventOccurrence "1..1" -- "1..1" iotdsl_NodeInstance : instance25
+iotdsl_NodeInstance "1..1" -- "1..1" iotdsl_Reaction : instance35
+iotdsl_AndExpression "1..1" *-- "1..1" iotdsl_Expression : left43
+iotdsl_EnumLiteral "1..9999" --* "1..1" iotdsl_Enumeration : literals3
+iotdsl_Configuration "1..1" *-- "0..9999" iotdsl_NodeInstance : nodes9
+iotdsl_Capability "1..1" *-- "0..9999" iotdsl_Parameter : parameters6
+iotdsl_CommunicationPath "0..9999" --* "1..1" iotdsl_Configuration : paths10
+iotdsl_Expression "1..1" --* "1..1" iotdsl_TimingExpression : preceding50
+iotdsl_Reaction "1..9999" --* "1..1" iotdsl_Rule : reactions22
+iotdsl_AndExpression "1..1" *-- "1..1" iotdsl_Expression : right45
+iotdsl_CommunicationPath "1..1" -- "1..1" iotdsl_NodeInstance : source15
+iotdsl_CommunicationPath "1..1" -- "1..1" iotdsl_NodeInstance : taget18
+iotdsl_Expression "1..1" --* "1..1" iotdsl_Rule : triggers21
+iotdsl_NodeInstance "1..1" -- "1..1" iotdsl_Type : type12
+iotdsl_Parameter "1..1" -- "1..1" iotdsl_Type : type7
+iotdsl_EventOccurrence "1..1" *-- "0..1" iotdsl_Value : value32
+iotdsl_Property "1..1" *-- "1..1" iotdsl_Value : value5
+@enduml

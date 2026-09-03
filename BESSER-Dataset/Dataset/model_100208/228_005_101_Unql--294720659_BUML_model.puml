@@ -1,0 +1,22 @@
+@startuml
+class unql_Connection {
+  + name : str
+  + password : str
+  + url : str
+  + username : str
+}
+class unql_Definition {
+  + name : str
+  + type : str
+}
+class unql_Program {
+}
+class unql_Select {
+  + attributes : str
+  + conditions : str
+  + relations : str
+}
+unql_Connection "0..9999" --* "1..1" unql_Program : connections1
+unql_Definition "0..9999" --* "1..1" unql_Program : definitions0
+unql_Program "1..1" *-- "0..9999" unql_Select : queries3
+@enduml

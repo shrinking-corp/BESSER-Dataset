@@ -1,0 +1,90 @@
+@startuml
+class NamedElement {
+}
+enum PseudoStateKind {
+  choice
+  deep
+  fork
+  initial
+  join
+  none
+  shallow
+  terminate
+}
+class State {
+}
+enum TransitionKind {
+  external
+  internal
+  local
+}
+class Vertex {
+}
+class state_Behaviour {
+  + body : str
+  + language : str
+}
+class state_Constraint {
+}
+class state_Event {
+  + body : str
+}
+class state_FinalState {
+}
+abstract class state_NamedElement {
+  + id : str
+  + name : str
+}
+class state_OpaqueExpression {
+  + body : str
+}
+class state_PseudoState {
+  + kind : str
+}
+class state_Region {
+}
+class state_State {
+  + isComposite : bool
+  + isSimple : bool
+}
+class state_StateMachine {
+}
+class state_StateModel {
+}
+class state_Transition {
+  + kind : str
+}
+class state_Trigger {
+}
+abstract class state_Vertex {
+}
+NamedElement <|-- state_Region
+NamedElement <|-- state_State
+NamedElement <|-- state_StateMachine
+NamedElement <|-- state_Transition
+NamedElement <|-- state_Trigger
+NamedElement <|-- state_Vertex
+State <|-- state_FinalState
+Vertex <|-- state_PseudoState
+Vertex <|-- state_State
+state_State "1..1" *-- "1..9999" state_Trigger : defferableTrigger1
+state_Behaviour "0..1" --* "1..1" state_State : doActivity3
+state_Behaviour "0..1" --* "1..1" state_Transition : effect34
+state_Behaviour "0..1" --* "1..1" state_State : entry5
+state_Event "1..1" --* "1..1" state_Trigger : event39
+state_Behaviour "0..1" --* "1..1" state_State : exit8
+state_Constraint "0..1" --* "1..1" state_Transition : guard32
+state_Transition "1..9999" -- "1..1" state_Vertex : incoming24
+state_Transition "1..9999" -- "1..1" state_Vertex : outgoing23
+state_NamedElement "1..1" --* "1..1" state_StateModel : packagedElment41
+state_Region "1..9999" --* "1..1" state_State : region0
+state_Region "1..9999" --* "1..1" state_StateMachine : region20
+state_Transition "1..1" -- "1..1" state_Vertex : source26
+state_Constraint "1..1" *-- "1..1" state_OpaqueExpression : specification37
+state_Region "1..1" -- "0..1" state_State : state11
+state_Region "1..1" -- "0..1" state_StateMachine : stateMachine16
+state_Region "1..1" *-- "1..9999" state_Vertex : subVertex14
+state_Transition "1..1" -- "1..1" state_Vertex : target27
+state_Region "1..1" *-- "1..9999" state_Transition : transition18
+state_Transition "1..1" *-- "1..1" state_Trigger : trigger29
+@enduml

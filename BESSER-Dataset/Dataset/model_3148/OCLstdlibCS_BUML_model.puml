@@ -1,0 +1,81 @@
+@startuml
+class AttributeCS {
+}
+class ConstraintCS {
+}
+class ElementCS {
+}
+class JavaImplementationCS {
+}
+class Nameable {
+}
+class NamedElementCS {
+}
+class OperationCS {
+}
+class PackageCS {
+}
+class RootPackageCS {
+}
+class StructuredClassCS {
+}
+class oclstdlibcs_JavaClassCS {
+}
+abstract class oclstdlibcs_JavaImplementationCS {
+}
+class oclstdlibcs_LibClassCS {
+}
+class oclstdlibcs_LibCoercionCS {
+}
+class oclstdlibcs_LibConstraintCS {
+}
+class oclstdlibcs_LibIterationCS {
+  + isInvalidating : str
+  + isValidating : str
+}
+class oclstdlibcs_LibOperationCS {
+  + isInvalidating : str
+  + isStatic : str
+  + isValidating : str
+}
+class oclstdlibcs_LibPackageCS {
+}
+class oclstdlibcs_LibPropertyCS {
+  + isStatic : str
+}
+class oclstdlibcs_LibRootPackageCS {
+}
+class oclstdlibcs_MetaclassNameCS {
+  + name : str
+}
+class oclstdlibcs_ParameterCS {
+}
+class oclstdlibcs_Precedence {
+}
+class oclstdlibcs_PrecedenceCS {
+  + isRightAssociative : bool
+}
+AttributeCS <|-- oclstdlibcs_LibPropertyCS
+ConstraintCS <|-- oclstdlibcs_LibConstraintCS
+ElementCS <|-- oclstdlibcs_JavaImplementationCS
+ElementCS <|-- oclstdlibcs_MetaclassNameCS
+JavaImplementationCS <|-- oclstdlibcs_LibCoercionCS
+JavaImplementationCS <|-- oclstdlibcs_LibIterationCS
+JavaImplementationCS <|-- oclstdlibcs_LibOperationCS
+JavaImplementationCS <|-- oclstdlibcs_LibPropertyCS
+Nameable <|-- oclstdlibcs_MetaclassNameCS
+NamedElementCS <|-- oclstdlibcs_JavaClassCS
+NamedElementCS <|-- oclstdlibcs_PrecedenceCS
+OperationCS <|-- oclstdlibcs_LibCoercionCS
+OperationCS <|-- oclstdlibcs_LibIterationCS
+OperationCS <|-- oclstdlibcs_LibOperationCS
+PackageCS <|-- oclstdlibcs_LibPackageCS
+RootPackageCS <|-- oclstdlibcs_LibRootPackageCS
+StructuredClassCS <|-- oclstdlibcs_LibClassCS
+oclstdlibcs_JavaClassCS "0..1" -- "1..1" oclstdlibcs_JavaImplementationCS : implementation0
+oclstdlibcs_LibClassCS "1..1" -- "0..1" oclstdlibcs_MetaclassNameCS : metaclassName1
+oclstdlibcs_LibIterationCS "1..1" *-- "0..9999" oclstdlibcs_ParameterCS : ownedAccumulators2
+oclstdlibcs_LibIterationCS "1..1" *-- "0..9999" oclstdlibcs_ParameterCS : ownedIterators3
+oclstdlibcs_LibPackageCS "1..1" *-- "0..9999" oclstdlibcs_PrecedenceCS : ownedPrecedences7
+oclstdlibcs_LibOperationCS "1..1" -- "0..1" oclstdlibcs_Precedence : precedence6
+@enduml

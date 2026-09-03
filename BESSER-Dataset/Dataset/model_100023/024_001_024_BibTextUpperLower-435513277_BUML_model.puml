@@ -1,0 +1,35 @@
+@startuml
+class Attribute {
+}
+class BibTextEntry {
+}
+class BibText_Article {
+}
+abstract class BibText_Attribute {
+  + value : str
+}
+class BibText_Author {
+  + name : str
+}
+abstract class BibText_BibTextEntry {
+  + key : str
+}
+class BibText_BibTextFile {
+}
+abstract class BibText_LocatedElement {
+  + location : str
+}
+class BibText_Year {
+}
+class LocatedElement {
+}
+Attribute <|-- BibText_Year
+BibTextEntry <|-- BibText_Article
+BibTextEntry <|-- BibText_Author
+LocatedElement <|-- BibText_Attribute
+LocatedElement <|-- BibText_BibTextEntry
+BibText_Article "0..9999" --* "1..1" BibText_Author : articles4
+BibText_Attribute "0..5" --* "1..1" BibText_BibTextEntry : attributes1
+BibText_Article "1..1" -- "1..1" BibText_Author : author3
+BibText_BibTextEntry "2..4" --* "1..1" BibText_BibTextFile : entries0
+@enduml

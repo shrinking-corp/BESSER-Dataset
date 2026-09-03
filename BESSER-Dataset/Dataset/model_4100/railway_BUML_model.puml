@@ -1,0 +1,68 @@
+@startuml
+enum Position {
+  DIVERGING
+  FAILURE
+  STRAIGHT
+}
+class RailwayElement {
+}
+enum Signal {
+  FAILURE
+  GO
+  STOP
+}
+class TrackElement {
+}
+class railway_RailwayContainer {
+}
+abstract class railway_RailwayElement {
+  + _id : int
+}
+class railway_Region {
+}
+class railway_Route {
+}
+class railway_Segment {
+  + length : int
+}
+class railway_Semaphore {
+  + signal : str
+}
+class railway_Sensor {
+}
+class railway_Switch {
+  + currentPosition : str
+}
+class railway_SwitchPosition {
+  + position : str
+}
+abstract class railway_TrackElement {
+}
+RailwayElement <|-- railway_Region
+RailwayElement <|-- railway_Route
+RailwayElement <|-- railway_Semaphore
+RailwayElement <|-- railway_Sensor
+RailwayElement <|-- railway_SwitchPosition
+RailwayElement <|-- railway_TrackElement
+TrackElement <|-- railway_Segment
+TrackElement <|-- railway_Switch
+railway_TrackElement "0..9999" -- "1..1" railway_TrackElement : connectsTo5
+railway_Region "1..1" *-- "0..9999" railway_TrackElement : elements32
+railway_Route "1..1" -- "1..1" railway_Semaphore : entry16
+railway_Route "1..1" -- "1..1" railway_Semaphore : exit20
+railway_Route "1..1" *-- "0..9999" railway_SwitchPosition : follows18
+railway_Switch "1..1" -- "1..1" railway_TrackElement : from_13
+railway_Route "1..1" -- "2..9999" railway_Sensor : gathers23
+railway_Switch "1..1" -- "1..1" railway_TrackElement : left8
+railway_Sensor "0..9999" -- "1..1" railway_TrackElement : monitoredBy3
+railway_Sensor "1..1" -- "0..9999" railway_TrackElement : monitors27
+railway_Segment "1..1" -- "2..2" railway_TrackElement : neighbors1
+railway_Switch "1..1" -- "0..9999" railway_SwitchPosition : positions7
+railway_RailwayContainer "1..1" *-- "0..9999" railway_Region : regions30
+railway_Switch "1..1" -- "1..1" railway_TrackElement : right10
+railway_Route "1..1" -- "1..1" railway_SwitchPosition : route26
+railway_RailwayContainer "1..1" *-- "0..9999" railway_Route : routes28
+railway_Segment "1..1" *-- "0..9999" railway_Semaphore : semaphores0
+railway_Region "1..1" *-- "0..9999" railway_Sensor : sensors35
+railway_Switch "1..1" -- "1..1" railway_SwitchPosition : target25
+@enduml

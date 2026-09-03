@@ -1,0 +1,80 @@
+@startuml
+class Activity {
+  + ActivityID : int
+  + ActivitySubType : int
+  + ActivityType : int
+  + NewValue : str
+  + PrevValue : str
+  + Project : str
+  + Seen : bool
+  + User : str
+}
+class Attachment {
+  + AttachmentID : int
+  + Created : str
+  + Extension : str
+  + Name : str
+  + Path : str
+  + Project : str
+  + Size : str
+  + User : str
+}
+class AuthenticationService {
+  + attribute : str
+  + attribute2 : str
+  + attribute3 : str
+  + attribute4 : str
+  + authState : str
+  + role : String
+  + user : str
+}
+class ChatService {
+  + attribute : str
+  + attribute2 : str
+  + attribute3 : str
+  + itemsCollection : str
+  + salasCollection : str
+  + usuario : Usuario_Interface
+}
+class Comment {
+  + CommentID : int
+  + Content : str
+  + Created : str
+  + Project : str
+  + User : str
+}
+class Mensaje_Interface {
+}
+class Role {
+  + Name : String
+  + descripcion : str
+  + nombre : String
+}
+class RoomService {
+  + idiomas : str
+  + itemsCollection : str
+  + niveles : str
+  + roomsCollection : str
+}
+class Room_Interface {
+}
+class SpeechRecognitionService {
+  + _attr : str
+  + grabando : bool
+  + speechRecognition : str
+}
+enum String {
+}
+class Usuario_Interface {
+}
+AuthenticationService "0..1" -- "0..1" AuthenticationService : AuthenticationService_AuthenticationService
+ChatService "0..1" -- "0..1" Room_Interface : ChatService_Room
+ChatService "0..1" -- "0..1" SpeechRecognitionService : ChatService_SpeechRecognitionService
+ChatService "1..1" -- "1..1" Mensaje_Interface : Mensaje_ChatService
+Mensaje_Interface "0..1" -- "0..1" SpeechRecognitionService : Mensaje_SpeechRecognitionService
+RoomService "0..1" -- "0..1" Room_Interface : Room_RoomService
+AuthenticationService "0..1" -- "0..1" Usuario_Interface : Usuario_AuthenticationService
+Mensaje_Interface "1..1" -- "1..9999" Usuario_Interface : Usuario_Mensaje
+Role "0..9999" -- "1..1" Usuario_Interface : Usuario_Role
+Room_Interface "0..9999" -- "0..9999" Usuario_Interface : Usuario_Room
+@enduml

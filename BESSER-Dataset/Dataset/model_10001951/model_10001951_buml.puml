@@ -1,0 +1,83 @@
+@startuml
+class Brindar_Consultorias_external {
+}
+class Clasificar_producto_external {
+}
+class Cliente_Actor {
+}
+class Contabilidad_y_tesoreria_Actor {
+}
+class Departamento_de_Inventarios_y_Suministros_Dis_Component {
+}
+class Dependencias_Actor {
+}
+class Elementos {
+  + clasificacion : str
+  + referencia : str
+}
+class Entregar_productos_external {
+}
+class Factura {
+  + codigo : str
+  + fecha : str
+}
+class Juridica_Actor {
+}
+class Millenium_Component {
+}
+class Natural_Actor {
+}
+class OrdenesPedidos {
+  + codigo : str
+  + fecha : str
+}
+class Pedidos {
+  + codigo : str
+  + fecha : str
+}
+class Proveedor {
+  + direccion : str
+  + nit : str
+  + nombre : str
+  + telefono : str
+}
+class Proveedores_Actor {
+}
+class Recibir_ordenes_de_suministros_external {
+}
+class Recibir_productos_o_pedidos_external {
+}
+class Registrar_proveedores_external {
+}
+class Responsable_inventario_Actor {
+}
+class Revisi_n_de_factura_external {
+}
+class Sistema_Web_Movil___Reccepci_n_de_pedidos_Component {
+}
+class SolicitudSuministros {
+  + codigo : str
+  + fecha : str
+}
+class dependencia {
+  + codigo : str
+  + nombre : str
+  + responsable : str
+}
+Brindar_Consultorias_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_Consultorias
+Dependencias_Actor "0..1" -- "0..1" Entregar_productos_external : Dependencias_Entregar_productos
+Dependencias_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministros_external : Dependencias_Recibir_ordenes_de_suministros
+Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_Recibir_productos_o_pedidos
+Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Contabilidad_y_tesoreria_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Recibir_productos_o_pedidos_Actor
+Clasificar_producto_external "0..1" -- "0..1" Responsable_inventario_Actor : Responsable_inventario_Clasificar_roducto
+Responsable_inventario_Actor "0..1" -- "0..1" Revisi_n_de_factura_external : Responsable_inventario_Revisi_n_de_factura
+Elementos "1..9999" -- "0..9999" OrdenesPedidos : conforma
+Factura "0..9999" -- "1..1" Proveedor : elabora
+OrdenesPedidos "0..9999" -- "1..1" Proveedor : es_enviado
+Elementos "1..9999" -- "0..9999" Factura : factura
+OrdenesPedidos "0..1" -- "1..9999" SolicitudSuministros : genera
+Pedidos "0..9999" -- "1..1" Proveedor : provee
+SolicitudSuministros "1..9999" -- "1..1" dependencia : realiza
+Elementos "1..9999" -- "0..9999" SolicitudSuministros : relaciona
+@enduml

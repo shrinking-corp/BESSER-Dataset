@@ -1,0 +1,40 @@
+@startuml
+enum BasicType {
+  BOOL
+  CHAR
+  INT
+  REAL
+}
+class rdpl_Column {
+  + ctype : str
+  + name : str
+  + stype : str
+}
+class rdpl_ForeignKey {
+}
+class rdpl_Record {
+}
+class rdpl_RecordElement {
+  + value : str
+}
+class rdpl_Schema {
+  + name : str
+}
+class rdpl_Table {
+  + name : str
+}
+class rdpl_Type {
+  + name : str
+}
+rdpl_Column "1..9999" -- "1..1" rdpl_ForeignKey : columns15
+rdpl_Column "0..9999" --* "1..1" rdpl_Table : columns3
+rdpl_Record "0..9999" --* "1..1" rdpl_Table : content8
+rdpl_Record "1..1" *-- "0..9999" rdpl_RecordElement : elements18
+rdpl_ForeignKey "0..9999" --* "1..1" rdpl_Table : foreignKeys10
+rdpl_Column "0..9999" -- "1..1" rdpl_Table : keyColumns5
+rdpl_ForeignKey "1..1" -- "1..1" rdpl_Table : references12
+rdpl_Schema "1..1" *-- "0..9999" rdpl_Table : tables0
+rdpl_Column "1..1" -- "1..1" rdpl_RecordElement : type20
+rdpl_Column "1..1" -- "1..1" rdpl_Type : type23
+rdpl_Schema "1..1" *-- "0..9999" rdpl_Type : types1
+@enduml

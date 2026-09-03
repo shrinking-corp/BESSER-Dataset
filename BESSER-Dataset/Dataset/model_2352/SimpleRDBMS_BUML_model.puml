@@ -1,0 +1,37 @@
+@startuml
+class RModelElement {
+}
+class rdbms_Column {
+  + type : str
+}
+class rdbms_ForeignKey {
+}
+class rdbms_Key {
+}
+abstract class rdbms_RModelElement {
+  + kind : str
+  + name : str
+}
+class rdbms_Schema {
+}
+class rdbms_Table {
+}
+RModelElement <|-- rdbms_Column
+RModelElement <|-- rdbms_ForeignKey
+RModelElement <|-- rdbms_Key
+RModelElement <|-- rdbms_Schema
+RModelElement <|-- rdbms_Table
+rdbms_Column "0..9999" -- "1..1" rdbms_Key : column11
+rdbms_Column "0..9999" --* "1..1" rdbms_Table : columns16
+rdbms_Column "0..9999" -- "1..1" rdbms_ForeignKey : columns5
+rdbms_Column "1..1" -- "0..9999" rdbms_ForeignKey : foreignKeys1
+rdbms_ForeignKey "0..9999" --* "1..1" rdbms_Table : foreignKeys22
+rdbms_Key "0..9999" --* "1..1" rdbms_Table : keys19
+rdbms_Column "1..1" -- "0..9999" rdbms_Key : keys3
+rdbms_Column "1..1" -- "1..1" rdbms_Table : owner0
+rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : owner6
+rdbms_Key "1..1" -- "1..1" rdbms_Table : owner9
+rdbms_ForeignKey "1..1" -- "1..1" rdbms_Key : refersTo4
+rdbms_Schema "1..1" -- "1..1" rdbms_Table : schema18
+rdbms_Schema "1..1" *-- "0..9999" rdbms_Table : tables14
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+class Chef {
+}
+class Order {
+  + foodList : str
+  + order_id : str
+}
+class Table {
+  + avaliable : bool
+  + numSeats : int
+  + table_id : str
+}
+class Waiter {
+}
+class app {
+  + name : str
+  + user_id : str
+}
+class customer {
+}
+class manger {
+}
+class meal {
+  + meal_id : str
+  + name : str
+  + prepared : bool
+  + price : float
+  + served : bool
+}
+class system {
+  + name : str
+  + user_id : str
+}
+Chef "0..1" -- "0..1" system : Chef_system
+Order "1..1" -- "1..9999" meal : Order_Food
+Table "0..1" -- "0..1" app : Table_app
+Table "0..1" -- "0..1" Waiter : Waiter_Table
+Waiter "0..1" -- "0..1" app : Waiter_app
+Order "0..1" -- "0..1" app : app_Order
+Order "0..1" -- "0..1" customer : customer__Order
+manger "0..1" -- "0..1" system : manger_system
+app "0..1" -- "0..1" system : system_app
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+class ASPT_TraceEdge {
+  + ids : str
+  + idsx : str
+  + idt : str
+  + idtx : str
+}
+class ASPT_TraceElement {
+  + id : str
+  + idx : str
+  + metamodel : str
+  + type : str
+}
+class ASPT_TraceLink {
+  + idref : str
+  + idrefx : str
+  + relation : str
+}
+class ASPT_TraceModel {
+  + ID : str
+  + MMS : str
+}
+class ASPT_TraceNbEdge {
+}
+class ASPT_TraceNbNode {
+}
+class ASPT_TraceNbProp {
+}
+class ASPT_TraceNode {
+}
+class ASPT_TraceProp {
+  + idp : str
+  + idpx : str
+  + value : str
+}
+class TraceEdge {
+}
+class TraceElement {
+}
+class TraceNode {
+}
+class TraceProp {
+}
+TraceEdge <|-- ASPT_TraceNbEdge
+TraceElement <|-- ASPT_TraceEdge
+TraceElement <|-- ASPT_TraceLink
+TraceElement <|-- ASPT_TraceNode
+TraceElement <|-- ASPT_TraceProp
+TraceNode <|-- ASPT_TraceNbNode
+TraceProp <|-- ASPT_TraceNbProp
+ASPT_TraceElement "0..9999" --* "1..1" ASPT_TraceModel : traceelements1
+ASPT_TraceLink "0..9999" --* "1..1" ASPT_TraceModel : tracelinks0
+@enduml

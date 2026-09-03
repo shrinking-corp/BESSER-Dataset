@@ -1,0 +1,20 @@
+@startuml
+class DML_Column {
+  + columnName : str
+}
+class DML_InsertInto {
+  + tableName : str
+}
+class DML_InsertsStatements {
+}
+class DML_Registry {
+}
+class DML_Value {
+  + value : str
+}
+DML_Column "1..1" -- "1..1" DML_Value : column7
+DML_Column "0..9999" --* "1..1" DML_InsertInto : columns3
+DML_InsertInto "0..9999" --* "1..1" DML_InsertsStatements : insertsInto0
+DML_InsertInto "1..1" *-- "1..1" DML_Registry : registry1
+DML_Registry "1..1" *-- "0..9999" DML_Value : registryValues5
+@enduml

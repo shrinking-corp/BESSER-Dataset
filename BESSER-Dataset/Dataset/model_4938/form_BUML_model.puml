@@ -1,0 +1,75 @@
+@startuml
+class DisplayElement {
+}
+class InputElement {
+}
+class PageElement {
+}
+enum SelectionType {
+  CHECKBOX
+  COMBOBOX
+  RADIO
+}
+enum TextInputType {
+  ENCRYPTED_TEXTFIELD
+  TEXTAREA
+  TEXTFIELD
+}
+abstract class fml_DisplayElement {
+}
+class fml_Form {
+}
+class fml_Heading {
+  + Level : str
+  + Text : str
+}
+abstract class fml_InputElement {
+  + isMandatory : bool
+}
+class fml_List {
+  + isOrdered : bool
+}
+class fml_ListItem {
+  + Text : str
+}
+class fml_Page {
+  + Title : str
+  + isWelcome : bool
+}
+abstract class fml_PageElement {
+  + ID : str
+}
+class fml_SelectField {
+  + Label : str
+  + Type : str
+}
+class fml_SelectionItem {
+  + Text : str
+  + preselected : bool
+  + selected : bool
+}
+class fml_TextInput {
+  + Content : str
+  + Label : str
+  + Type : str
+}
+class fml_TextParagraph {
+  + Text : str
+}
+DisplayElement <|-- fml_Heading
+DisplayElement <|-- fml_List
+DisplayElement <|-- fml_TextParagraph
+InputElement <|-- fml_SelectField
+InputElement <|-- fml_TextInput
+PageElement <|-- fml_DisplayElement
+PageElement <|-- fml_InputElement
+fml_Page "1..1" *-- "0..9999" fml_PageElement : consists4
+fml_List "1..1" *-- "1..9999" fml_ListItem : consists7
+fml_SelectField "1..1" *-- "1..9999" fml_SelectionItem : consists8
+fml_SelectField "0..1" -- "1..1" fml_SelectionItem : contained11
+fml_Page "0..1" -- "1..1" fml_PageElement : contained5
+fml_PageElement "0..9999" -- "1..1" fml_SelectionItem : displayElementVisible13
+fml_Form "1..1" *-- "1..9999" fml_Page : organized0
+fml_Page "0..1" -- "1..1" fml_Page : predecessor2
+fml_PageElement "1..1" -- "0..9999" fml_SelectionItem : visibleIfSelected6
+@enduml

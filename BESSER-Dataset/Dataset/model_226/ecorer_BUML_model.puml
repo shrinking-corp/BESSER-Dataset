@@ -1,0 +1,186 @@
+@startuml
+class EClassifier {
+}
+class EDataType {
+}
+class EModelElement {
+}
+class ENamedElement {
+}
+class EStructuralFeature {
+}
+class ETypedElement {
+}
+class ecorer_EAnnotation {
+  + source : str
+}
+class ecorer_EAttribute {
+  + iD : bool
+}
+class ecorer_EClass {
+  + abstract : bool
+  + interface : bool
+  + getEOperation(ecorer_operationID : str) : str
+  + getEStructuralFeature(ecorer_featureID : str) : EStructuralFeature
+  + getFeatureCount() : int
+  + getFeatureID(ecorer_feature : str) : int
+  + getOperationCount() : int
+  + getOperationID(ecorer_operation : str) : int
+  + getOverride(ecorer_operation : str) : str
+  + isSuperTypeOf(ecorer_someClass : str) : bool
+}
+abstract class ecorer_EClassifier {
+  + defaultValue : str
+  + instanceClass : str
+  + instanceClassName : str
+  + instanceTypeName : str
+  + getClassifierID() : int
+  + isInstance(ecorer_object : str) : bool
+}
+class ecorer_EDataType {
+  + serializable : bool
+}
+class ecorer_EEnum {
+  + getEEnumLiteral(ecorer_value : str) : str
+  + getEEnumLiteralByLiteral(ecorer_literal : str) : str
+}
+class ecorer_EEnumLiteral {
+  + instance : str
+  + literal : str
+  + value : int
+}
+class ecorer_EFactory {
+  + convertToString(ecorer_eDataType : str, ecorer_instanceValue : str) : str
+  + create(ecorer_eClass : str) : str
+  + createFromString(ecorer_eDataType : str, ecorer_literalValue : str) : str
+}
+class ecorer_EGenericType {
+}
+abstract class ecorer_EModelElement {
+  + getEAnnotation(ecorer_source : str) : str
+}
+abstract class ecorer_ENamedElement {
+  + name : str
+}
+class ecorer_EObject {
+  + eAllContents() : void
+  + eClass() : str
+  + eContainer() : str
+  + eContainingFeature() : EStructuralFeature
+  + eContainmentFeature() : str
+  + eContents() : void
+  + eCrossReferences() : void
+  + eGet(ecorer_feature : str, ecorer_resolve : str) : str
+  + eInvoke(ecorer_arguments : str, ecorer_operation : str) : str
+  + eIsProxy() : bool
+  + eIsSet(ecorer_feature : str) : bool
+  + eResource() : str
+  + eSet(ecorer_feature : str, ecorer_newValue : str) : void
+  + eUnset(ecorer_feature : str) : void
+}
+class ecorer_EOperation {
+  + getOperationID() : int
+  + isOverrideOf(ecorer_someOperation : str) : bool
+}
+class ecorer_EPackage {
+  + nsPrefix : str
+  + nsURI : str
+  + getEClassifier(ecorer_name : str) : EClassifier
+}
+class ecorer_EParameter {
+}
+class ecorer_EReference {
+  + container : bool
+  + containment : bool
+  + resolveProxies : bool
+}
+class ecorer_EStringToStringMapEntry {
+  + key : str
+  + value : str
+}
+abstract class ecorer_EStructuralFeature {
+  + changeable : bool
+  + defaultValue : str
+  + defaultValueLiteral : str
+  + derived : bool
+  + transient : bool
+  + unsettable : bool
+  + volatile : bool
+  + getContainerClass() : void
+  + getFeatureID() : int
+}
+class ecorer_ETypeParameter {
+}
+abstract class ecorer_ETypedElement {
+  + lowerBound : int
+  + many : bool
+  + ordered : bool
+  + required : bool
+  + unique : bool
+  + upperBound : int
+}
+EClassifier <|-- ecorer_EClass
+EClassifier <|-- ecorer_EDataType
+EDataType <|-- ecorer_EEnum
+EModelElement <|-- ecorer_EAnnotation
+EModelElement <|-- ecorer_EFactory
+EModelElement <|-- ecorer_ENamedElement
+ENamedElement <|-- ecorer_EClassifier
+ENamedElement <|-- ecorer_EEnumLiteral
+ENamedElement <|-- ecorer_EPackage
+ENamedElement <|-- ecorer_ETypeParameter
+ENamedElement <|-- ecorer_ETypedElement
+EStructuralFeature <|-- ecorer_EAttribute
+EStructuralFeature <|-- ecorer_EReference
+ETypedElement <|-- ecorer_EOperation
+ETypedElement <|-- ecorer_EParameter
+ETypedElement <|-- ecorer_EStructuralFeature
+ecorer_EAnnotation "1..1" *-- "0..9999" ecorer_EObject : contents3
+ecorer_EAnnotation "1..1" *-- "0..9999" ecorer_EStringToStringMapEntry : details1
+ecorer_EAttribute "0..9999" -- "1..1" ecorer_EClass : eAllAttributes11
+ecorer_EClass "1..1" -- "0..9999" ecorer_EReference : eAllContainments22
+ecorer_EClass "1..1" -- "0..9999" ecorer_EGenericType : eAllGenericSuperTypes39
+ecorer_EClass "1..1" -- "0..9999" ecorer_EOperation : eAllOperations25
+ecorer_EClass "1..1" -- "0..9999" ecorer_EReference : eAllReferences14
+ecorer_EClass "1..1" -- "0..9999" ecorer_EStructuralFeature : eAllStructuralFeatures27
+ecorer_EClass "0..9999" -- "1..1" ecorer_EClass : eAllSuperTypes30
+ecorer_EAnnotation "0..9999" --* "1..1" ecorer_EModelElement : eAnnotations48
+ecorer_EAttribute "1..1" -- "1..1" ecorer_EDataType : eAttributeType0
+ecorer_EAttribute "0..9999" -- "1..1" ecorer_EClass : eAttributes19
+ecorer_EGenericType "0..9999" --* "1..1" ecorer_ETypeParameter : eBounds105
+ecorer_EClassifier "0..1" -- "1..1" ecorer_EGenericType : eClassifier102
+ecorer_EClassifier "0..9999" --* "1..1" ecorer_EPackage : eClassifiers61
+ecorer_EClass "0..1" -- "1..1" ecorer_EOperation : eContainingClass49
+ecorer_EClass "0..1" -- "1..1" ecorer_EStructuralFeature : eContainingClass80
+ecorer_EEnum "0..1" -- "1..1" ecorer_EEnumLiteral : eEnum45
+ecorer_EClassifier "0..9999" -- "1..1" ecorer_EOperation : eExceptions54
+ecorer_EFactory "1..1" -- "1..1" ecorer_EPackage : eFactoryInstance60
+ecorer_EGenericType "0..9999" --* "1..1" ecorer_EOperation : eGenericExceptions57
+ecorer_EClass "1..1" *-- "0..9999" ecorer_EGenericType : eGenericSuperTypes37
+ecorer_EGenericType "0..1" --* "1..1" ecorer_ETypedElement : eGenericType84
+ecorer_EAttribute "0..1" -- "1..1" ecorer_EClass : eIDAttribute32
+ecorer_EAttribute "0..9999" -- "1..1" ecorer_EReference : eKeys77
+ecorer_EEnum "1..1" *-- "0..9999" ecorer_EEnumLiteral : eLiterals44
+ecorer_EGenericType "0..1" --* "1..1" ecorer_EGenericType : eLowerBound97
+ecorer_EAnnotation "1..1" -- "0..1" ecorer_EModelElement : eModelElement2
+ecorer_EOperation "0..1" -- "1..1" ecorer_EParameter : eOperation69
+ecorer_EClass "1..1" *-- "0..9999" ecorer_EOperation : eOperations10
+ecorer_EReference "0..1" -- "1..1" ecorer_EReference : eOpposite72
+ecorer_EClassifier "1..1" -- "0..1" ecorer_EPackage : ePackage42
+ecorer_EFactory "1..1" -- "1..1" ecorer_EPackage : ePackage46
+ecorer_EOperation "1..1" *-- "0..9999" ecorer_EParameter : eParameters53
+ecorer_EClassifier "1..1" -- "1..1" ecorer_EGenericType : eRawType93
+ecorer_EClass "1..1" -- "1..1" ecorer_EReference : eReferenceType74
+ecorer_EClass "1..1" -- "0..9999" ecorer_EReference : eReferences16
+ecorer_EClass "1..1" *-- "0..9999" ecorer_EStructuralFeature : eStructuralFeatures35
+ecorer_EPackage "1..1" *-- "0..9999" ecorer_EPackage : eSubpackages64
+ecorer_EPackage "1..1" -- "0..1" ecorer_EPackage : eSuperPackage67
+ecorer_EClass "1..1" -- "0..9999" ecorer_EClass : eSuperTypes9
+ecorer_EClassifier "0..1" -- "1..1" ecorer_ETypedElement : eType82
+ecorer_EGenericType "0..9999" --* "1..1" ecorer_EGenericType : eTypeArguments91
+ecorer_EGenericType "1..1" -- "0..1" ecorer_ETypeParameter : eTypeParameter99
+ecorer_EClassifier "1..1" *-- "0..9999" ecorer_ETypeParameter : eTypeParameters43
+ecorer_EOperation "1..1" *-- "0..9999" ecorer_ETypeParameter : eTypeParameters50
+ecorer_EGenericType "0..1" --* "1..1" ecorer_EGenericType : eUpperBound88
+ecorer_EAnnotation "1..1" -- "0..9999" ecorer_EObject : references5
+@enduml

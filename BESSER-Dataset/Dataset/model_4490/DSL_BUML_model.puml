@@ -1,0 +1,114 @@
+@startuml
+enum ActionEnum {
+  BACKWARD
+  FORWARD
+  STOP
+}
+class Actions {
+}
+enum ColorEnum {
+  BLACK
+  BLUE
+  BROWN
+  GREEN
+  NONE
+  RED
+  WHITE
+  YELLOW
+}
+enum EdgeEnum {
+  BACK
+  FRONTLEFT
+  FRONTRIGHT
+}
+class Expression {
+}
+enum FBEnum {
+  BACKWARD
+  FORWARD
+}
+enum LREnum {
+  LEFT
+  RIGHT
+}
+class RotateMovementAction {
+}
+class RotatePoints {
+}
+enum TouchEnum {
+  LEFT
+  RIGHT
+}
+class dSL_ANDexpression {
+}
+class dSL_Actions {
+}
+class dSL_Behaviors {
+  + name : str
+}
+class dSL_ColorLiteral {
+  + color : str
+}
+class dSL_DistanceLiteral {
+  + distance : int
+}
+class dSL_EdgeLiteral {
+  + edge : str
+}
+class dSL_Expression {
+}
+class dSL_ExpressionBracket {
+}
+class dSL_LeftMovementAction {
+}
+class dSL_LeftRotatePoint {
+  + leftdir : str
+}
+class dSL_MiddleRotatePoint {
+  + middledir : str
+}
+class dSL_MovementAction {
+  + actionenum : str
+}
+class dSL_ORexpression {
+}
+class dSL_RightMovementAction {
+}
+class dSL_RightRotatePoint {
+  + rightdir : str
+}
+class dSL_RobotBehavior {
+}
+class dSL_RotateMovementAction {
+}
+class dSL_RotatePoints {
+  + degrees : int
+}
+class dSL_TouchLiteral {
+  + touch : str
+}
+Actions <|-- dSL_LeftMovementAction
+Actions <|-- dSL_RightMovementAction
+Actions <|-- dSL_RotateMovementAction
+Expression <|-- dSL_ANDexpression
+Expression <|-- dSL_ColorLiteral
+Expression <|-- dSL_DistanceLiteral
+Expression <|-- dSL_EdgeLiteral
+Expression <|-- dSL_ExpressionBracket
+Expression <|-- dSL_ORexpression
+Expression <|-- dSL_TouchLiteral
+RotateMovementAction <|-- dSL_RotatePoints
+RotatePoints <|-- dSL_LeftRotatePoint
+RotatePoints <|-- dSL_MiddleRotatePoint
+RotatePoints <|-- dSL_RightRotatePoint
+dSL_Actions "0..9999" --* "1..1" dSL_Behaviors : actionlist3
+dSL_Behaviors "0..9999" --* "1..1" dSL_RobotBehavior : behaviorlist0
+dSL_Expression "0..1" --* "1..1" dSL_ExpressionBracket : exp8
+dSL_ANDexpression "1..1" *-- "0..1" dSL_Expression : left10
+dSL_Expression "0..1" --* "1..1" dSL_ORexpression : left15
+dSL_LeftMovementAction "1..1" *-- "0..1" dSL_MovementAction : leftmove5
+dSL_ANDexpression "1..1" *-- "0..1" dSL_Expression : right12
+dSL_Expression "0..1" --* "1..1" dSL_ORexpression : right17
+dSL_MovementAction "0..1" --* "1..1" dSL_RightMovementAction : rightmove6
+dSL_Behaviors "1..1" *-- "0..1" dSL_Expression : sensorExpression1
+@enduml

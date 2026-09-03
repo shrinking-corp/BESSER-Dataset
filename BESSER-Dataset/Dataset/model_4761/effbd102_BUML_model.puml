@@ -1,0 +1,80 @@
+@startuml
+enum FunctionDomain {
+  form
+  space
+  time
+}
+class Port {
+}
+class ProcessNode {
+}
+class Sequence {
+}
+class SequenceNode {
+}
+class effbd102_And {
+}
+class effbd102_Description {
+  + content : str
+}
+class effbd102_Final {
+}
+class effbd102_Flow {
+}
+class effbd102_Function {
+  + domain : str
+  + maxDuration : float
+  + minDuration : float
+}
+class effbd102_InputPort {
+}
+class effbd102_Item {
+  + name : str
+}
+class effbd102_Iteration {
+}
+class effbd102_Loop {
+}
+class effbd102_LoopExit {
+}
+class effbd102_Or {
+}
+class effbd102_OutputPort {
+}
+abstract class effbd102_Port {
+  + id : str
+}
+abstract class effbd102_ProcessNode {
+  + label : str
+}
+abstract class effbd102_Sequence {
+}
+abstract class effbd102_SequenceNode {
+  + name : str
+}
+class effbd102_Start {
+}
+Port <|-- effbd102_InputPort
+Port <|-- effbd102_OutputPort
+ProcessNode <|-- effbd102_Flow
+ProcessNode <|-- effbd102_Function
+Sequence <|-- effbd102_And
+Sequence <|-- effbd102_Final
+Sequence <|-- effbd102_Iteration
+Sequence <|-- effbd102_Loop
+Sequence <|-- effbd102_LoopExit
+Sequence <|-- effbd102_Or
+Sequence <|-- effbd102_Start
+SequenceNode <|-- effbd102_Function
+SequenceNode <|-- effbd102_Sequence
+effbd102_SequenceNode "1..1" -- "0..9999" effbd102_SequenceNode : controlFlowEdge13
+effbd102_Function "1..1" *-- "0..9999" effbd102_Function : decompositions1
+effbd102_Description "0..9999" --* "1..1" effbd102_Function : descriptions10
+effbd102_Flow "0..9999" --* "1..1" effbd102_Function : flows4
+effbd102_Function "1..1" *-- "0..9999" effbd102_InputPort : inputPorts8
+effbd102_Flow "1..1" -- "0..9999" effbd102_InputPort : inputflowEdge14
+effbd102_Flow "1..1" *-- "0..9999" effbd102_Item : items17
+effbd102_Function "1..1" *-- "0..9999" effbd102_OutputPort : outputPorts6
+effbd102_Flow "0..9999" -- "1..1" effbd102_OutputPort : outputflowEdge19
+effbd102_Function "1..1" *-- "0..9999" effbd102_Sequence : sequenceNodes2
+@enduml

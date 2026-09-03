@@ -1,0 +1,31 @@
+@startuml
+class Classifier {
+}
+class PackageElement {
+}
+class UMLModelElement {
+}
+class simpleUml_Association {
+}
+class simpleUml_Attribute {
+}
+class simpleUml_Class {
+}
+abstract class simpleUml_Classifier {
+}
+class simpleUml_Package {
+}
+abstract class simpleUml_PackageElement {
+}
+class simpleUml_UMLModelElement {
+  + kind : str
+  + name : str
+}
+Classifier <|-- simpleUml_Class
+PackageElement <|-- simpleUml_Classifier
+UMLModelElement <|-- simpleUml_Package
+UMLModelElement <|-- simpleUml_PackageElement
+simpleUml_Attribute "0..9999" -- "1..1" simpleUml_Class : attribute1
+simpleUml_Package "1..1" -- "0..9999" simpleUml_PackageElement : elements0
+simpleUml_Package "0..1" -- "1..1" simpleUml_PackageElement : namespace2
+@enduml

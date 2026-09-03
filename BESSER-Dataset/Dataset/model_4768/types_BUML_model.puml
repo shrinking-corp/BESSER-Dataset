@@ -1,0 +1,128 @@
+@startuml
+class CollectionType {
+}
+class EStructuralFeature {
+}
+class Metaclass {
+}
+class PrimitiveType {
+}
+class RefType {
+}
+class ReflectiveType {
+}
+class Type {
+}
+class TypeError {
+}
+class types_BagType {
+}
+class types_BooleanType {
+}
+abstract class types_CollectionType {
+}
+class types_EClass {
+}
+class types_EObject {
+}
+class types_EmptyCollection {
+}
+class types_EmptyCollectionType {
+}
+class types_EnumType {
+  + name : str
+}
+class types_FloatType {
+}
+class types_IntegerType {
+}
+class types_MapType {
+}
+class types_MetaModel {
+  + name : str
+}
+class types_Metaclass {
+  + explicitOcurrence : bool
+  + name : str
+}
+class types_OclUndefinedType {
+}
+class types_OrderedSetType {
+}
+abstract class types_PrimitiveType {
+}
+class types_RefType {
+}
+class types_ReflectiveClass {
+}
+abstract class types_ReflectiveType {
+}
+class types_SequenceType {
+}
+class types_SetType {
+}
+class types_StringType {
+}
+class types_ThisModuleType {
+}
+class types_TupleAttribute {
+  + name : str
+}
+class types_TupleType {
+}
+abstract class types_Type {
+  + mayBeUndefined : bool
+  + metamodelRef : str
+  + multivalued : bool
+}
+class types_TypeError {
+}
+class types_UnionType {
+}
+class types_Unknown {
+}
+class types_UnknownFeature {
+}
+class types_UnresolvedTypeError {
+}
+CollectionType <|-- types_BagType
+CollectionType <|-- types_OrderedSetType
+CollectionType <|-- types_SequenceType
+CollectionType <|-- types_SetType
+EStructuralFeature <|-- types_UnknownFeature
+Metaclass <|-- types_UnresolvedTypeError
+PrimitiveType <|-- types_BooleanType
+PrimitiveType <|-- types_FloatType
+PrimitiveType <|-- types_IntegerType
+PrimitiveType <|-- types_StringType
+RefType <|-- types_Metaclass
+RefType <|-- types_Unknown
+ReflectiveType <|-- types_ReflectiveClass
+Type <|-- types_CollectionType
+Type <|-- types_EmptyCollection
+Type <|-- types_EmptyCollectionType
+Type <|-- types_EnumType
+Type <|-- types_MapType
+Type <|-- types_OclUndefinedType
+Type <|-- types_PrimitiveType
+Type <|-- types_RefType
+Type <|-- types_ReflectiveType
+Type <|-- types_ThisModuleType
+Type <|-- types_TupleType
+Type <|-- types_TypeError
+Type <|-- types_UnionType
+TypeError <|-- types_UnresolvedTypeError
+types_TupleAttribute "0..9999" --* "1..1" types_TupleType : attributes3
+types_CollectionType "1..1" -- "1..1" types_Type : containedType23
+types_EObject "1..1" -- "1..1" types_EnumType : eenum14
+types_MapType "1..1" -- "1..1" types_Type : keyType4
+types_BooleanType "1..1" -- "0..9999" types_Metaclass : kindOfTypes2
+types_EClass "1..1" -- "1..1" types_Metaclass : klass16
+types_MetaModel "1..1" -- "1..1" types_Metaclass : model19
+types_Type "1..1" -- "1..1" types_Type : noCastedType1
+types_Type "0..9999" -- "1..1" types_UnionType : possibleTypes21
+types_EObject "0..1" -- "1..1" types_TypeError : problem12
+types_EClass "1..1" -- "1..1" types_UnknownFeature : theContainingClass13
+types_TupleAttribute "1..1" -- "1..1" types_Type : type9
+types_MapType "1..1" -- "1..1" types_Type : valueType6
+@enduml

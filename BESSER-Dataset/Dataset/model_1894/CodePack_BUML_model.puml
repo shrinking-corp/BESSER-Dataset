@@ -1,0 +1,251 @@
+@startuml
+class Backend_CodePack_BankComponent {
+}
+class Booking {
+}
+class CheckInHandler {
+}
+class CodePack_Backend_CheckInHandler {
+}
+class CodePack_Backend_CustomerHandler {
+}
+class CodePack_Backend_ManagementHandler {
+}
+class CodePack_Backend_ReceptionHandler {
+}
+class CodePack_CheckInMachine {
+  + startUI() : void
+}
+class CodePack_DataBank {
+}
+class CodePack_DataModels_Bill {
+  + booking_id : int
+  + total_price : float
+}
+class CodePack_DataModels_Booking {
+  + bonus_points_used : int
+  + contact_email : str
+  + contact_name : str
+  + contact_phone : int
+  + customer_id : int
+  + date_check_in : date
+  + date_check_out : date
+  + id : int
+  + isCheckedIn : bool
+  + payment_id : int
+  + total_price : float
+}
+class CodePack_DataModels_Customer {
+  + bonus_points : int
+  + customer_id : int
+  + date_of_birth : date
+  + e_mail : str
+  + first_name : str
+  + last_name : str
+  + password : str
+  + payment_id : int
+  + phone_no : int
+}
+class CodePack_DataModels_ExtraService {
+  + booking_id : int
+  + date_end : date
+  + date_start : date
+  + total_price : float
+  + type : str
+}
+class CodePack_DataModels_Guest {
+  + booking_id : int
+  + name : str
+}
+class CodePack_DataModels_PaymentData {
+  + cc_ccv : str
+  + cc_first_name : str
+  + cc_last_name : str
+  + cc_month : int
+  + cc_number : str
+  + cc_year : int
+  + id : int
+}
+class CodePack_DataModels_Room {
+  + description : str
+  + isAvailable : bool
+  + number : int
+  + room_type : str
+}
+class CodePack_DataModels_RoomBooked {
+  + booking_id : int
+  + date_end : date
+  + date_start : date
+  + room_number : int
+}
+class CodePack_DataModels_RoomType {
+  + description : str
+  + max_guests : int
+  + rate : float
+  + typename : str
+}
+class CodePack_DataModels_ServiceType {
+  + description : str
+  + price : float
+  + type_name : str
+}
+class CodePack_DataModels_StaffMember {
+  + email : str
+  + full_name : str
+  + password : str
+  + pers_no : str
+  + phone_no : int
+  + role_name : str
+}
+class CodePack_DataModels_StaffRole {
+  + canManageAccounts : bool
+  + canManageBookings : bool
+  + canManageRooms : bool
+  + canManageServices : bool
+  + name : str
+}
+abstract class CodePack_IBookings {
+  + cancelBooking(CodePack_booking_id : str) : bool
+  + createBooking(CodePack_contact_data : str, CodePack_date_check_in : str, CodePack_date_check_out : str, CodePack_number_of_guests : str, CodePack_payment_data : str, CodePack_rooms : str, CodePack_services : str) : str
+  + createBookingForCustomer(CodePack_bonus_points_used : str, CodePack_customer_id : str, CodePack_date_check_in : str, CodePack_date_check_out : str, CodePack_number_of_guests : str, CodePack_rooms : str, CodePack_services : str) : str
+  + getAvailableRooms(CodePack_date_end : str, CodePack_date_start : str) : str
+  + getAvailableServices() : str
+  + getBookingForId(CodePack_booking_id : str) : str
+  + getBookingsForCustomer(CodePack_customer_id : str) : str
+  + getPaymentForBooking(CodePack_booking_id : str) : str
+  + isRoomAvailable(CodePack_date_end : str, CodePack_date_start : str, CodePack_room_number : str) : bool
+  + sendComfimationMail(CodePack_booking : str) : void
+  + updateRoomForBooking(CodePack_booking_id : str, CodePack_new_room : str, CodePack_old_room : str) : bool
+  + updateServiceForBooking(CodePack_new_service : str, CodePack_old_service_id : str) : bool
+  + updateTimeForBooking(CodePack_booking_id : str, CodePack_new_check_in : str, CodePack_new_check_out : str) : bool
+}
+abstract class CodePack_ICheckIn {
+  + assignGuestToBooking(CodePack_booking_id : str, CodePack_guest_name : str) : str
+  + validateBooking(CodePack_booking_id : str) : bool
+}
+abstract class CodePack_IManagement {
+  + addRoom(CodePack_description : str, CodePack_isAvailable : str, CodePack_number : str, CodePack_type : str) : bool
+  + addRoomType(CodePack_description : str, CodePack_max_guests : str, CodePack_name : str, CodePack_rate : str) : bool
+  + getAllRooms() : str
+  + getRoom(CodePack_number : str) : str
+  + getRoomTypes() : str
+  + getServiceTypes() : str
+  + removeRoom(CodePack_number : str) : bool
+  + removeRoomType(CodePack_type_name : str) : bool
+  + removeServiceType(CodePack_serviceType : str) : bool
+  + updateRoom(CodePack_room : str) : bool
+  + updateRoomType(CodePack_roomType : str) : bool
+  + updateServiceType(CodePack_serviceType : str) : bool
+}
+abstract class CodePack_IReceptionOperations_rename_required {
+  + generateBill(CodePack_booking_id : str) : str
+  + generateReceipt(CodePack_bill : str) : str
+  + isCheckedIn(CodePack_booking_id : str) : bool
+}
+abstract class CodePack_IStaffAdmin {
+  + addStaffRole(CodePack_canManageAccounts : str, CodePack_canManageBookings : str, CodePack_canManageRooms : str, CodePack_canManageServices : str, CodePack_name : str) : str
+  + getAllStaffAccounts() : str
+  + getStaffAccount(CodePack_pers_no : str) : str
+  + getStaffRoles() : str
+  + registerStaffAccount(CodePack_email : str, CodePack_name : str, CodePack_pers_no : str, CodePack_phone_no : str, CodePack_role_name : str) : str
+  + removeStaffAccount(CodePack_account : str) : bool
+  + removeStaffRole(CodePack_role : str) : bool
+  + updateStaffAccount(CodePack_account : str) : bool
+  + updateStaffRole(CodePack_role : str) : bool
+}
+abstract class CodePack_IStaffAuthentication {
+  + getRoleForStaff(CodePack_pers_no : str) : str
+  + login(CodePack_e_mail : str, CodePack_password : str) : str
+}
+abstract class CodePack_IUserAccount {
+  + getCustomerInfo(CodePack_customer_id : str) : str
+  + isEmailAvailable(CodePack_e_mail : str) : bool
+  + login(CodePack_e_mail : str, CodePack_password : str) : int
+  + registerCustomer(CodePack_date_of_birth : str, CodePack_e_mail : str, CodePack_first_name : str, CodePack_last_name : str, CodePack_password : str, CodePack_phone_no : str) : bool
+  + updateCustomerCC(CodePack_cc_ccv : str, CodePack_cc_month : str, CodePack_cc_number : str, CodePack_cc_year : str, CodePack_customer_id : str, CodePack_name_first : str, CodePack_name_last : str) : bool
+  + updateCustomerInfo(CodePack_customer_id : str, CodePack_e_mail : str, CodePack_phone_no : str) : bool
+  + updateCustomerPwd(CodePack_customer_id : str, CodePack_pwd_new : str, CodePack_pwd_old : str) : bool
+}
+class CodePack_Shared_ContactData {
+  + e_mail : str
+  + full_name : str
+  + phone_no : int
+}
+class CodePack_StaffGUI {
+  + startUI() : void
+}
+class CodePack_UserGUI {
+  + startUI() : void
+}
+class Customer {
+}
+class CustomerHandler {
+}
+class ExtraService {
+}
+class Guest {
+}
+class IBookings {
+}
+class ICheckIn {
+}
+class IManagement {
+}
+class IReceptionOperations_rename_required {
+}
+class IStaffAdmin {
+}
+class IStaffAuthentication {
+}
+class IUserAccount {
+}
+class ManagementHandler {
+}
+class PaymentData {
+}
+class ReceptionHandler {
+}
+class Room {
+}
+class RoomBooked {
+}
+class RoomType {
+}
+class ServiceType {
+}
+class StaffMember {
+}
+class StaffRole {
+}
+IBookings <|-- CodePack_IReceptionOperations_rename_required
+IBookings <|-- CodePack_IUserAccount
+ICheckIn <|-- CodePack_Backend_CheckInHandler
+ICheckIn <|-- CodePack_IReceptionOperations_rename_required
+IManagement <|-- CodePack_Backend_ManagementHandler
+IReceptionOperations_rename_required <|-- CodePack_Backend_ReceptionHandler
+IStaffAdmin <|-- CodePack_IManagement
+IStaffAuthentication <|-- CodePack_IManagement
+IStaffAuthentication <|-- CodePack_IReceptionOperations_rename_required
+IUserAccount <|-- CodePack_Backend_CustomerHandler
+CodePack_DataBank "1..1" -- "1..9999" Guest : GuestList20
+Backend_CodePack_BankComponent "1..1" -- "1..1" CodePack_Backend_CustomerHandler : bankComponent35
+Backend_CodePack_BankComponent "1..1" -- "1..1" CodePack_Backend_ReceptionHandler : bankComponent36
+Booking "1..1" -- "1..1" CodePack_DataModels_RoomBooked : booking26
+Booking "1..9999" -- "1..1" CodePack_DataBank : bookingList6
+CheckInHandler "0..1" -- "1..1" CodePack_CheckInMachine : checkInHandler4
+CodePack_UserGUI "1..1" -- "0..1" CustomerHandler : customerHandler3
+CodePack_DataBank "1..1" -- "1..9999" Customer : customerList8
+CodePack_DataBank "1..1" -- "1..9999" ExtraService : extraServiceList16
+CodePack_StaffGUI "1..1" -- "0..1" ManagementHandler : managementHandler0
+CodePack_DataBank "1..1" -- "1..9999" PaymentData : paymentDataList12
+CodePack_StaffGUI "1..1" -- "0..1" ReceptionHandler : receptionHandler1
+CodePack_DataModels_Booking "1..1" -- "1..1" Room : room33
+CodePack_DataBank "1..1" -- "1..9999" RoomBooked : roomBookedList14
+CodePack_DataBank "1..1" -- "1..9999" Room : roomList5
+CodePack_DataBank "1..1" -- "1..9999" RoomType : roomTypeList10
+CodePack_DataModels_Bill "1..1" -- "1..9999" Room : rooms_booked28
+CodePack_DataBank "1..1" -- "1..9999" ServiceType : serviceTypeList18
+CodePack_DataModels_Bill "1..1" -- "1..9999" ExtraService : services_ordered30
+CodePack_DataBank "1..1" -- "1..9999" StaffMember : staffMemberList24
+CodePack_DataBank "1..1" -- "1..9999" StaffRole : staffRoleList22
+@enduml

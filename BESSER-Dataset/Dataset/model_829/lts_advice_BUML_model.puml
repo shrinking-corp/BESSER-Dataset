@@ -1,0 +1,32 @@
+@startuml
+class lts_av_Advice {
+}
+class lts_av_EObject {
+}
+class lts_av_GlobalScope {
+}
+class lts_av_LTS {
+  + name : str
+}
+class lts_av_PerJoinPointScope {
+}
+class lts_av_State {
+  + name : str
+}
+class lts_av_Transition {
+  + input : str
+  + output : str
+}
+lts_av_Advice "1..1" *-- "0..9999" lts_av_EObject : children16
+lts_av_LTS "1..1" -- "0..1" lts_av_State : currentState2
+lts_av_LTS "1..1" -- "0..9999" lts_av_State : finalState5
+lts_av_State "1..1" -- "0..9999" lts_av_Transition : incomingTransition10
+lts_av_LTS "1..1" -- "0..1" lts_av_State : initialState1
+lts_av_State "1..1" *-- "0..9999" lts_av_Transition : outgoingTransition9
+lts_av_LTS "1..1" *-- "0..9999" lts_av_State : ownedState0
+lts_av_LTS "0..1" -- "1..1" lts_av_State : owningLTS8
+lts_av_EObject "1..1" -- "1..1" lts_av_GlobalScope : scopedObject17
+lts_av_EObject "1..1" -- "1..1" lts_av_PerJoinPointScope : scopedObject19
+lts_av_State "0..1" -- "1..1" lts_av_Transition : source12
+lts_av_State "0..1" -- "1..1" lts_av_Transition : target14
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+class wheel_State {
+  + name : str
+}
+class wheel_Transition {
+  + speed : str
+  + time : str
+}
+class wheel_WheelSM {
+}
+wheel_State "1..1" -- "1..1" wheel_Transition : Source12
+wheel_State "0..1" -- "1..1" wheel_WheelSM : finalState1
+wheel_State "1..1" -- "0..1" wheel_Transition : incomingTransition5
+wheel_State "0..1" -- "1..1" wheel_WheelSM : initialState0
+wheel_State "1..1" *-- "0..1" wheel_Transition : outgoingTransition7
+wheel_State "0..9999" --* "1..1" wheel_WheelSM : ownedState4
+wheel_State "1..1" -- "1..1" wheel_WheelSM : owningFSM8
+wheel_State "0..1" -- "1..1" wheel_Transition : target9
+@enduml

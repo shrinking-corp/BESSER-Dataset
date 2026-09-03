@@ -1,0 +1,50 @@
+@startuml
+class Client {
+  + address : str
+  + dateOfBirth : date
+  + emailAddress : str
+  + name : str
+  + phoneNumber : str
+}
+class ClientType {
+}
+class Login {
+  + lastLoginTime : date
+  + password : str
+  + securityAnswer : str
+  + securityQuestion : str
+  + username : str
+}
+class client_ClientAccount {
+  + clientNo : str
+  + type : ClientType
+}
+class client_HomeOwner {
+  + name : str
+}
+class client_Realtor {
+  + name : str
+}
+class virtualtour_ArchiveVirtual {
+}
+class virtualtour_LinkVirtual {
+}
+class virtualtour_TakePicture {
+}
+class virtualtour_Transaction {
+  + id : int
+  + transactionTime : date
+  + type : virtualtour_TransactionType
+}
+enum virtualtour_TransactionType {
+}
+class virtualtour_UploadFloorplan {
+}
+class virtualtour_UploadPicture {
+}
+client_ClientAccount "1..1" -- "0..9999" virtualtour_Transaction : Account_Transaction
+virtualtour_ArchiveVirtual "0..1" -- "0..1" virtualtour_Transaction : ArchiveVirtual_Transaction
+Client "1..1" -- "0..1" Login : Customer_Login
+virtualtour_LinkVirtual "0..1" -- "0..1" virtualtour_Transaction : LinkVirtual_Transaction
+Client "1..1" -- "1..9999" client_ClientAccount : association2
+@enduml

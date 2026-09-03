@@ -1,0 +1,40 @@
+@startuml
+class UMLRealTimeStateMach_Operation {
+}
+class UMLRealTimeStateMach_Pseudostate {
+}
+class UMLRealTimeStateMach_RTPseudostate {
+  + RTstatemachinesdonotsupportconcurrencyorshallowhistory(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+}
+class UMLRealTimeStateMach_RTRegion {
+  + RegionsinRTstatemachinescannothaveafinalstate(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+}
+class UMLRealTimeStateMach_RTState {
+  + AcomposteRTstatehasexactlyoneregion(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + Constraint5(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + RTdoesnotsupportsubmachinestates(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + RTstatemachinescannothaveanydeferredtriggers(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + RTstatemachinesdonotsupportdoactivities(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+}
+class UMLRealTimeStateMach_RTStateMachine {
+  + isPassive : str
+  + AnRTstatemachinehasexactlyoneregion(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + AnRTstatemachineisneverreentrant(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + Passivestatemachineareonlyallowedonpassivedataclasses(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + RTstatemachinesdonothaveparametersorparametersets(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+  + RTstatemachinesmusthaveacontextanditmustbeaClass(UMLRealTimeStateMach_context : str, UMLRealTimeStateMach_diagnostics : str) : bool
+}
+class UMLRealTimeStateMach_RTTrigger {
+}
+class UMLRealTimeStateMach_Region {
+}
+class UMLRealTimeStateMach_State {
+}
+class UMLRealTimeStateMach_StateMachine {
+}
+UMLRealTimeStateMach_Operation "1..1" -- "1..1" UMLRealTimeStateMach_RTTrigger : base_Operation4
+UMLRealTimeStateMach_Pseudostate "1..1" -- "1..1" UMLRealTimeStateMach_RTPseudostate : base_Pseudostate3
+UMLRealTimeStateMach_RTRegion "1..1" -- "1..1" UMLRealTimeStateMach_Region : base_Region1
+UMLRealTimeStateMach_RTState "1..1" -- "1..1" UMLRealTimeStateMach_State : base_State2
+UMLRealTimeStateMach_RTStateMachine "1..1" -- "1..1" UMLRealTimeStateMach_StateMachine : base_StateMachine0
+@enduml

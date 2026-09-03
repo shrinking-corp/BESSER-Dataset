@@ -1,0 +1,104 @@
+@startuml
+class BooleanBinaryExpression {
+}
+class BooleanCompareExpression {
+}
+class BooleanExpression {
+}
+class IntBinaryExpression {
+}
+class IntExpression {
+}
+class IntOperation {
+}
+class State {
+}
+class gfsm_BooleanAnd {
+}
+abstract class gfsm_BooleanBinaryExpression {
+}
+abstract class gfsm_BooleanCompareExpression {
+}
+class gfsm_BooleanEqual {
+}
+abstract class gfsm_BooleanExpression {
+}
+class gfsm_BooleanGreaterThan {
+}
+class gfsm_BooleanOr {
+}
+class gfsm_ConstExpr {
+  + value : int
+}
+class gfsm_FSM {
+  + name : str
+}
+class gfsm_FinalState {
+}
+class gfsm_InitialState {
+}
+class gfsm_IntAdd {
+}
+abstract class gfsm_IntBinaryExpression {
+}
+class gfsm_IntBlock {
+}
+abstract class gfsm_IntExpression {
+}
+class gfsm_IntMult {
+}
+class gfsm_IntNeg {
+}
+abstract class gfsm_IntOperation {
+}
+class gfsm_IntVarAssign {
+  + name : str
+}
+class gfsm_IntVarRef {
+  + name : str
+}
+class gfsm_State {
+  + name : str
+}
+class gfsm_Transition {
+  + event : str
+}
+BooleanBinaryExpression <|-- gfsm_BooleanAnd
+BooleanBinaryExpression <|-- gfsm_BooleanOr
+BooleanCompareExpression <|-- gfsm_BooleanEqual
+BooleanCompareExpression <|-- gfsm_BooleanGreaterThan
+BooleanExpression <|-- gfsm_BooleanBinaryExpression
+BooleanExpression <|-- gfsm_BooleanCompareExpression
+IntBinaryExpression <|-- gfsm_IntAdd
+IntBinaryExpression <|-- gfsm_IntMult
+IntExpression <|-- gfsm_ConstExpr
+IntExpression <|-- gfsm_IntBinaryExpression
+IntExpression <|-- gfsm_IntNeg
+IntExpression <|-- gfsm_IntVarRef
+IntOperation <|-- gfsm_IntBlock
+IntOperation <|-- gfsm_IntVarAssign
+State <|-- gfsm_FinalState
+State <|-- gfsm_InitialState
+gfsm_BooleanBinaryExpression "1..1" *-- "1..1" gfsm_BooleanExpression : boolExpression133
+gfsm_BooleanBinaryExpression "1..1" *-- "1..1" gfsm_BooleanExpression : boolExpression235
+gfsm_FSM "1..1" -- "0..1" gfsm_State : currentState20
+gfsm_IntBinaryExpression "1..1" *-- "1..1" gfsm_IntExpression : expression123
+gfsm_BooleanCompareExpression "1..1" *-- "1..1" gfsm_IntExpression : expression138
+gfsm_IntBinaryExpression "1..1" *-- "1..1" gfsm_IntExpression : expression224
+gfsm_BooleanCompareExpression "1..1" *-- "1..1" gfsm_IntExpression : expression240
+gfsm_IntExpression "1..1" --* "1..1" gfsm_IntNeg : expression27
+gfsm_IntExpression "1..1" --* "1..1" gfsm_IntVarAssign : expression29
+gfsm_State "1..1" -- "1..1" gfsm_Transition : from_2
+gfsm_FSM "1..1" -- "1..1" gfsm_Transition : fsm1
+gfsm_FSM "1..1" -- "1..1" gfsm_State : fsm9
+gfsm_BooleanExpression "1..1" --* "1..1" gfsm_Transition : guard0
+gfsm_IntOperation "1..1" --* "1..1" gfsm_State : inExpression5
+gfsm_State "1..1" -- "0..9999" gfsm_Transition : incommingtransitions12
+gfsm_FSM "1..1" -- "1..1" gfsm_InitialState : initialstate19
+gfsm_IntBlock "1..1" *-- "0..9999" gfsm_IntVarAssign : operations31
+gfsm_IntOperation "1..1" --* "1..1" gfsm_State : outExpression6
+gfsm_State "1..1" -- "0..9999" gfsm_Transition : outgoingtransitions11
+gfsm_FSM "1..1" *-- "0..9999" gfsm_State : states14
+gfsm_State "1..1" -- "1..1" gfsm_Transition : to3
+gfsm_FSM "1..1" *-- "0..9999" gfsm_Transition : transitions16
+@enduml

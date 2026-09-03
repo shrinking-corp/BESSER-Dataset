@@ -1,0 +1,25 @@
+@startuml
+class traceability_EDFD {
+}
+class traceability_EDFDGraphTrace {
+}
+class traceability_EDFDToGraph {
+}
+class traceability_Graph {
+}
+class traceability_GraphEndToEndTrace {
+}
+class traceability_Identifiable {
+}
+class traceability_NamedEntity {
+}
+traceability_EDFDGraphTrace "1..1" -- "0..9999" traceability_NamedEntity : edfdElements10
+traceability_EDFDGraphTrace "0..9999" --* "1..1" traceability_EDFDToGraph : edfdGraphTraces0
+traceability_EDFD "0..1" -- "1..1" traceability_EDFDToGraph : edfds1
+traceability_GraphEndToEndTrace "1..1" -- "0..9999" traceability_Identifiable : endtoendGraphElements14
+traceability_EDFDToGraph "1..1" -- "0..1" traceability_Graph : endtoendgraph5
+traceability_EDFDGraphTrace "1..1" -- "0..9999" traceability_Identifiable : graphElements12
+traceability_GraphEndToEndTrace "1..1" -- "0..9999" traceability_Identifiable : graphElements17
+traceability_EDFDToGraph "1..1" *-- "0..9999" traceability_GraphEndToEndTrace : graphEndToEndTrace8
+traceability_EDFDToGraph "1..1" -- "0..1" traceability_Graph : graphs3
+@enduml

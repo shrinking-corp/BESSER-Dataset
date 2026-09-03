@@ -1,0 +1,25 @@
+@startuml
+class SM_FinalState {
+}
+class SM_InitialState {
+}
+class SM_State {
+  + name : str
+}
+class SM_StateMachine {
+}
+class SM_Transition {
+  + effect : str
+  + trigger : str
+}
+class State {
+}
+State <|-- SM_FinalState
+State <|-- SM_InitialState
+SM_State "1..9999" --* "1..1" SM_StateMachine : ownedState7
+SM_StateMachine "1..1" *-- "0..9999" SM_Transition : ownedTransition8
+SM_State "1..1" -- "1..1" SM_StateMachine : owningStateMachine0
+SM_StateMachine "1..1" -- "1..1" SM_Transition : owningStateMachine5
+SM_State "1..1" -- "1..1" SM_Transition : source2
+SM_State "1..1" -- "1..1" SM_Transition : target1
+@enduml

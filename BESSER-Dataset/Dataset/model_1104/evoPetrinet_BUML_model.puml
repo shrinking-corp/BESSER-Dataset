@@ -1,0 +1,62 @@
+@startuml
+class Arc {
+}
+class Element {
+}
+class LocatedElement {
+}
+class NamedElement {
+}
+class PetriNet {
+}
+class Place {
+}
+class PlaceToTransition {
+}
+class Transition {
+}
+class TransitionToPlace {
+}
+abstract class evoPetrinet_Arc {
+  + weight : str
+}
+abstract class evoPetrinet_Element {
+}
+abstract class evoPetrinet_LocatedElement {
+  + location : str
+}
+abstract class evoPetrinet_NamedElement {
+  + name : str
+}
+class evoPetrinet_PetriNet {
+}
+class evoPetrinet_PetriNetModel {
+}
+class evoPetrinet_Place {
+}
+class evoPetrinet_PlaceToTransition {
+}
+class evoPetrinet_Transition {
+}
+class evoPetrinet_TransitionToPlace {
+}
+Arc <|-- evoPetrinet_PlaceToTransition
+Arc <|-- evoPetrinet_TransitionToPlace
+Element <|-- evoPetrinet_Arc
+Element <|-- evoPetrinet_Place
+Element <|-- evoPetrinet_Transition
+LocatedElement <|-- evoPetrinet_NamedElement
+NamedElement <|-- evoPetrinet_Element
+NamedElement <|-- evoPetrinet_PetriNet
+Transition "1..1" -- "1..1" evoPetrinet_PlaceToTransition : dst13
+Place "1..1" -- "1..1" evoPetrinet_TransitionToPlace : dst17
+Element "0..9999" --* "1..1" evoPetrinet_PetriNet : elements1
+TransitionToPlace "0..9999" -- "1..1" evoPetrinet_Place : incomingArc4
+PlaceToTransition "1..9999" -- "1..1" evoPetrinet_Transition : incomingArc6
+PetriNet "1..1" -- "1..1" evoPetrinet_Element : net2
+PetriNet "0..9999" --* "1..1" evoPetrinet_PetriNetModel : nets0
+PlaceToTransition "0..9999" -- "1..1" evoPetrinet_Place : outgoingArc5
+TransitionToPlace "1..9999" -- "1..1" evoPetrinet_Transition : outgoingArc9
+Place "1..1" -- "1..1" evoPetrinet_PlaceToTransition : src12
+Transition "1..1" -- "1..1" evoPetrinet_TransitionToPlace : src14
+@enduml

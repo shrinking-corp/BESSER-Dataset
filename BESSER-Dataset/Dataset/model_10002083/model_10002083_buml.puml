@@ -1,0 +1,64 @@
+@startuml
+class Class {
+}
+class mypackage_Admin {
+}
+class mypackage_Assignment {
+  + Deadline : str
+  + StrartDate : str
+  + number : int
+}
+class mypackage_Book {
+  + BId : str
+  + BName : str
+  + Price : str
+}
+class mypackage_Course {
+  + CId : str
+  + CName : str
+  + CourseFileName : str
+  + CreditHours : int
+}
+class mypackage_Exam {
+  + EId : str
+  + EName : str
+  + ExamsFileName : str
+  + MaxGrade : str
+}
+class mypackage_Exceptions {
+}
+class mypackage_FileManager {
+}
+class mypackage_Perosn {
+  + Pass : str
+  + UserName : str
+  + age : int
+  + fName : str
+  + id : int
+  + lname : str
+}
+class mypackage_Staff {
+  + salary : str
+}
+class mypackage_Student {
+  + grade : str
+  + level : int
+  + studentFileName : str
+}
+class mypackage_Tutor {
+  + TutorFileName : str
+  + WorkingHours : str
+}
+class mypackage_studentAffairsEmp {
+  + EmpFileName : str
+}
+mypackage_Book "0..1" -- "0..1" mypackage_FileManager : Book_FileManager
+mypackage_Assignment "0..1" -- "0..1" mypackage_Course : Course_Assignment
+mypackage_Book "0..1" -- "0..1" mypackage_Course : Course_Book
+mypackage_Course "0..1" -- "0..1" mypackage_Exam : Course_Exam
+mypackage_Course "0..1" -- "0..1" mypackage_FileManager : FileManager_Course
+mypackage_Exam "0..1" -- "0..1" mypackage_FileManager : FileManager_Exam
+mypackage_FileManager "0..1" -- "0..1" mypackage_Perosn : FileManager_Perosn
+mypackage_Assignment "0..1" -- "0..1" mypackage_Student : Student_Assignment
+mypackage_Assignment "0..1" -- "0..1" mypackage_Tutor : Tutor_Assignment
+@enduml

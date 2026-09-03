@@ -1,0 +1,60 @@
+@startuml
+enum BooleanOperator {
+  Equal
+  Unequal
+}
+enum DataType {
+  Boolean
+  Number
+  String
+}
+class Guard {
+}
+enum NumberOperator {
+  Equal
+  Unequal
+}
+enum StringOperator {
+  Equal
+  Unequal
+}
+class automata_Action {
+}
+class automata_Automaton {
+}
+class automata_BooleanGuard {
+  + operator : str
+  + value : bool
+}
+class automata_Guard {
+}
+class automata_NumberGuard {
+  + operator : str
+  + value : str
+}
+class automata_State {
+  + initial : bool
+  + name : str
+}
+class automata_StringGuard {
+  + operator : str
+  + value : str
+}
+class automata_Transition {
+}
+class automata_Variable {
+  + name : str
+  + type : str
+}
+Guard <|-- automata_BooleanGuard
+Guard <|-- automata_NumberGuard
+Guard <|-- automata_StringGuard
+automata_Guard "1..1" --* "1..1" automata_Transition : guard11
+automata_Guard "1..1" -- "1..1" automata_Variable : source13
+automata_State "1..1" -- "1..1" automata_Transition : source5
+automata_Automaton "1..1" *-- "0..9999" automata_State : states0
+automata_Action "1..1" -- "1..1" automata_Variable : target16
+automata_State "1..1" -- "1..1" automata_Transition : target8
+automata_Automaton "1..1" *-- "0..9999" automata_Transition : transitions1
+automata_Automaton "1..1" *-- "0..9999" automata_Variable : variables3
+@enduml

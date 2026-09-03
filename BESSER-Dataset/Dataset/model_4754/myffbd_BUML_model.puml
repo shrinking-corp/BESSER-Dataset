@@ -1,0 +1,76 @@
+@startuml
+enum FunctionDomain {
+  form
+  space
+  time
+}
+class Port {
+}
+class SequenceNode {
+}
+class myffbd_And {
+}
+class myffbd_Description {
+  + content : str
+}
+class myffbd_Final {
+}
+class myffbd_Flow {
+}
+class myffbd_Function {
+  + domain : str
+  + tMax : int
+  + tMin : int
+}
+class myffbd_InputPort {
+}
+class myffbd_Item {
+  + name : str
+}
+class myffbd_Iteration {
+}
+class myffbd_Loop {
+}
+class myffbd_LoopExit {
+}
+class myffbd_Or {
+}
+class myffbd_OutputPort {
+}
+abstract class myffbd_Port {
+  + id : str
+}
+class myffbd_PortType {
+  + type : str
+}
+abstract class myffbd_SequenceNode {
+  + name : str
+}
+class myffbd_Start {
+}
+class myffbd_Token {
+}
+Port <|-- myffbd_InputPort
+Port <|-- myffbd_OutputPort
+SequenceNode <|-- myffbd_And
+SequenceNode <|-- myffbd_Final
+SequenceNode <|-- myffbd_Function
+SequenceNode <|-- myffbd_Iteration
+SequenceNode <|-- myffbd_Loop
+SequenceNode <|-- myffbd_LoopExit
+SequenceNode <|-- myffbd_Or
+SequenceNode <|-- myffbd_Start
+myffbd_SequenceNode "0..9999" -- "1..1" myffbd_SequenceNode : controlFlowEdge15
+myffbd_Function "1..1" *-- "0..9999" myffbd_Function : decompositions1
+myffbd_Description "0..9999" --* "1..1" myffbd_Function : descriptions8
+myffbd_Flow "0..9999" --* "1..1" myffbd_Port : flows17
+myffbd_Function "1..1" *-- "0..9999" myffbd_InputPort : inputPorts6
+myffbd_Flow "1..1" *-- "0..9999" myffbd_Item : items24
+myffbd_Function "1..1" *-- "0..9999" myffbd_OutputPort : outputPorts4
+myffbd_Function "1..1" *-- "0..9999" myffbd_PortType : portTypes12
+myffbd_Function "1..1" *-- "0..9999" myffbd_SequenceNode : sequenceNodes2
+myffbd_Flow "1..1" -- "0..1" myffbd_Port : src21
+myffbd_Function "1..1" *-- "0..9999" myffbd_Token : tokens10
+myffbd_Flow "1..1" -- "0..1" myffbd_Port : trg26
+myffbd_Port "1..1" -- "0..1" myffbd_PortType : type18
+@enduml

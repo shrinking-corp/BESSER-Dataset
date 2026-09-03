@@ -1,0 +1,63 @@
+@startuml
+class Named {
+}
+class NamedElement {
+}
+class systemworkbench102_Component {
+}
+class systemworkbench102_Function {
+}
+class systemworkbench102_FunctionProperty {
+  + description : str
+}
+class systemworkbench102_Named {
+  + ident : str
+}
+abstract class systemworkbench102_NamedElement {
+  + name : str
+}
+class systemworkbench102_PatternCatalog {
+  + id : int
+}
+class systemworkbench102_RelatedTo {
+  + since : str
+}
+class systemworkbench102_System {
+}
+class systemworkbench102_Thing {
+  + id : int
+}
+class systemworkbench102_Thoughts {
+}
+class systemworkbench102_Workbench {
+  + aprop : str
+}
+Named <|-- systemworkbench102_Component
+Named <|-- systemworkbench102_Function
+Named <|-- systemworkbench102_FunctionProperty
+Named <|-- systemworkbench102_System
+Named <|-- systemworkbench102_Workbench
+NamedElement <|-- systemworkbench102_RelatedTo
+NamedElement <|-- systemworkbench102_Thing
+NamedElement <|-- systemworkbench102_Thoughts
+systemworkbench102_Component "0..1" -- "1..1" systemworkbench102_Function : allocatedTo35
+systemworkbench102_Component "0..9999" -- "1..1" systemworkbench102_Component : associations22
+systemworkbench102_Function "0..1" -- "1..1" systemworkbench102_Function : associations33
+systemworkbench102_PatternCatalog "0..9999" --* "1..1" systemworkbench102_Workbench : catalog7
+systemworkbench102_Component "1..1" -- "0..9999" systemworkbench102_Component : decompositions20
+systemworkbench102_Function "0..9999" --* "1..1" systemworkbench102_Function : decompositions27
+systemworkbench102_RelatedTo "1..1" -- "0..1" systemworkbench102_Thing : fromThing10
+systemworkbench102_FunctionProperty "0..9999" --* "1..1" systemworkbench102_Workbench : functionProperties5
+systemworkbench102_Function "0..1" --* "1..1" systemworkbench102_System : functionalArchitecture38
+systemworkbench102_FunctionProperty "0..1" -- "1..1" systemworkbench102_FunctionProperty : parent17
+systemworkbench102_Function "0..9999" -- "1..1" systemworkbench102_PatternCatalog : patterns44
+systemworkbench102_Component "1..1" -- "0..9999" systemworkbench102_Function : performs24
+systemworkbench102_Component "0..1" --* "1..1" systemworkbench102_System : physicalArchitecture41
+systemworkbench102_Function "1..1" -- "0..9999" systemworkbench102_FunctionProperty : property29
+systemworkbench102_Thing "0..9999" -- "1..1" systemworkbench102_Thoughts : relatedTo13
+systemworkbench102_RelatedTo "0..9999" --* "1..1" systemworkbench102_Thing : relations9
+systemworkbench102_System "0..1" --* "1..1" systemworkbench102_Workbench : systemView3
+systemworkbench102_Thing "0..9999" --* "1..1" systemworkbench102_Workbench : things0
+systemworkbench102_Thoughts "0..9999" --* "1..1" systemworkbench102_Workbench : thoughts1
+systemworkbench102_RelatedTo "1..1" -- "0..1" systemworkbench102_Thing : toThing11
+@enduml

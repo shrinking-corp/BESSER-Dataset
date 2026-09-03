@@ -1,0 +1,50 @@
+@startuml
+class Buch {
+  + Autor : str
+  + ISBN : str
+}
+class Entlehnausweis {
+  + g_ltigKeitsDatum : str
+  + id : int
+}
+class Entlehnung {
+  + ausLeihDatun : str
+  + ausLeihFrist : str
+  + maxAnzahlFristTage : int
+  + rueckGDatum : str
+}
+abstract class Entleihungsgegenstand {
+  + einkaufspreis : str
+  + kurzbeschreibung : str
+  + titel : str
+}
+class Exemplar {
+  + exemplarNummer : str
+}
+enum ExemplarStatus {
+}
+class Kunde {
+  + Anschrift : str
+  + Name : str
+}
+class Reservierung {
+  + reservierungsDatum : str
+  + reservierungsEnde : str
+}
+class Videos_DVDS {
+  + AnzahlEntlehnungen : int
+  + Laufzeit : int
+  + Regisseur : str
+  + entLeihungsGeb_hr : str
+}
+class Zeitschrift {
+  + Ausgabe : str
+  + Jahrgang : int
+}
+Entleihungsgegenstand "1..1" -- "0..1" Exemplar : Entleihungsgegenstand_Exemplar
+Entlehnung "0..9999" -- "1..9999" Exemplar : Exemplar_Entlehnung
+Entlehnausweis "0..1" -- "1..1" Kunde : Kunde_Entlehnausweis
+Entlehnung "0..9999" -- "1..1" Kunde : Kunde_Entlehnung
+Kunde "1..1" -- "0..9999" Reservierung : Kunde_Reservierung
+Exemplar "1..9999" -- "0..9999" Reservierung : Reservierung_Exemplar
+@enduml

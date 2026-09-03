@@ -1,0 +1,58 @@
+@startuml
+class Anmelden {
+  + email : str
+  + passwort : str
+}
+class Beitrag {
+  + Audio : str
+  + foto : str
+  + privatph_re : str
+  + text : str
+  + video : str
+}
+class Benutzer {
+  + Info : str
+  + Nachname : str
+  + Vorname : str
+  + profilbild : str
+}
+class Freund {
+}
+class Group {
+  + name : str
+}
+class Hashtag {
+  + name : str
+  + numOfRepeat : int
+}
+class Kommentare {
+  + text : str
+}
+class Privat {
+}
+class Registrieren {
+  + email : str
+  + email1 : str
+  + geburtsdatum : str
+  + geschlecht : str
+  + nachname : str
+  + passwort : str
+  + vorname : str
+}
+class Ver_ffentlich {
+}
+class _unnamed {
+  + maxChars : str
+}
+Beitrag "0..9999" -- "1..9999" Group : Group_Beitrag
+Beitrag "1..1" -- "0..9999" Kommentare : Kommentare_Post
+Beitrag "1..1" -- "1..1" Ver_ffentlich : Post_public
+Beitrag "1..1" -- "1..1" Privat : Post_secret
+Benutzer "1..1" -- "0..9999" Freund : User_Friends
+Benutzer "1..1" -- "0..9999" Group : User_Group
+Benutzer "1..1" -- "0..9999" Hashtag : User_Hashtag
+Anmelden "1..1" -- "1..1" Benutzer : User_Login
+Benutzer "1..1" -- "0..9999" _unnamed : User_Message
+Beitrag "0..9999" -- "1..1" Benutzer : User_Post
+Benutzer "1..1" -- "1..1" Registrieren : User_Registeration
+@enduml

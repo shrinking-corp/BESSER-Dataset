@@ -1,0 +1,251 @@
+@startuml
+class BinaryFormula {
+}
+class Formula {
+}
+class GraphElement {
+}
+class ModelElement {
+}
+class MultiUnit {
+}
+class NamedElement {
+}
+enum ParameterKind {
+  IN
+  INOUT
+  OUT
+  UNKNOWN
+  VAR
+}
+class UnaryFormula {
+}
+class UnaryUnit {
+}
+class Unit {
+}
+class henshin_And {
+}
+class henshin_Annotation {
+  + key : str
+  + value : str
+}
+class henshin_Attribute {
+  + constant : str
+  + null : bool
+  + value : str
+  + getActionAttribute() : str
+}
+class henshin_AttributeCondition {
+  + conditionText : str
+}
+abstract class henshin_BinaryFormula {
+}
+class henshin_ConditionalUnit {
+}
+class henshin_EAttribute {
+}
+class henshin_EClass {
+}
+class henshin_EClassifier {
+}
+class henshin_EPackage {
+}
+class henshin_EReference {
+}
+class henshin_Edge {
+  + index : str
+  + indexConstant : str
+  + getActionEdge() : str
+}
+abstract class henshin_Formula {
+  + isFalse() : bool
+  + isTrue() : bool
+}
+class henshin_Graph {
+  + createNAC(henshin_name : str) : str
+  + createPAC(henshin_name : str) : str
+  + getEdges(henshin_edgeType : str) : str
+  + getNAC(henshin_name : str) : str
+  + getNACs() : str
+  + getNestedConditions() : str
+  + getNode(henshin_name : str) : str
+  + getNodes(henshin_nodeType : str) : str
+  + getPAC(henshin_name : str) : str
+  + getPACs() : str
+  + getRule() : str
+  + isLhs() : bool
+  + isNestedCondition() : bool
+  + isRhs() : bool
+  + removeEdge(henshin_edge : str) : bool
+  + removeNestedCondition(henshin_nestedCondition : str) : bool
+  + removeNode(henshin_node : str) : bool
+}
+abstract class henshin_GraphElement {
+  + action : str
+  + getGraph() : str
+}
+class henshin_IndependentUnit {
+}
+class henshin_IteratedUnit {
+  + iterations : str
+}
+class henshin_LoopUnit {
+}
+class henshin_Mapping {
+}
+abstract class henshin_ModelElement {
+}
+class henshin_Module {
+  + getAllRules() : str
+  + getSubModule(henshin_name : str) : str
+  + getUnit(henshin_name : str) : str
+}
+abstract class henshin_MultiUnit {
+}
+abstract class henshin_NamedElement {
+  + description : str
+  + name : str
+}
+class henshin_NestedCondition {
+  + getHost() : str
+  + isNAC() : bool
+  + isPAC() : bool
+}
+class henshin_Node {
+  + getActionAttributes(henshin_action : str) : str
+  + getActionNode() : str
+  + getAllEdges() : str
+  + getAttribute(henshin_type : str) : str
+  + getIncoming(henshin_source : str, henshin_type : str) : str
+  + getOutgoing(henshin_target : str, henshin_type : str) : str
+}
+class henshin_Not {
+}
+class henshin_Or {
+}
+class henshin_Parameter {
+  + kind : str
+}
+class henshin_ParameterMapping {
+}
+class henshin_PriorityUnit {
+}
+class henshin_Rule {
+  + checkDangling : bool
+  + injectiveMatching : bool
+  + javaImports : str
+  + canCreateEdge(henshin_source : str, henshin_target : str, henshin_type : str) : bool
+  + createEdge(henshin_source : str, henshin_target : str, henshin_type : str) : str
+  + createNode(henshin_type : str) : str
+  + getActionEdges(henshin_action : str) : str
+  + getActionNodes(henshin_action : str) : str
+  + getAllJavaImports() : str
+  + getAllMappings() : str
+  + getAllMultiRules() : str
+  + getKernelRule() : str
+  + getMultiRule(henshin_name : str) : str
+  + getMultiRulePath(henshin_multiRule : str) : str
+  + getParameterNodes() : str
+  + getRootRule() : str
+  + isMultiRule() : bool
+  + removeAttribute(henshin_attribute : str, henshin_removeMapped : str) : bool
+  + removeEdge(henshin_edge : str, henshin_removeMapped : str) : bool
+  + removeNode(henshin_node : str, henshin_removeMapped : str) : bool
+}
+class henshin_SequentialUnit {
+  + rollback : bool
+  + strict : bool
+}
+abstract class henshin_UnaryFormula {
+}
+abstract class henshin_UnaryUnit {
+}
+abstract class henshin_Unit {
+  + activated : bool
+  + getModule() : str
+  + getParameter(henshin_parameter : str) : str
+  + getSubUnits(henshin_deep : str) : str
+}
+class henshin_Xor {
+}
+BinaryFormula <|-- henshin_And
+BinaryFormula <|-- henshin_Or
+BinaryFormula <|-- henshin_Xor
+Formula <|-- henshin_BinaryFormula
+Formula <|-- henshin_NestedCondition
+Formula <|-- henshin_UnaryFormula
+GraphElement <|-- henshin_Attribute
+GraphElement <|-- henshin_Edge
+GraphElement <|-- henshin_Node
+ModelElement <|-- henshin_Annotation
+ModelElement <|-- henshin_Attribute
+ModelElement <|-- henshin_BinaryFormula
+ModelElement <|-- henshin_Edge
+ModelElement <|-- henshin_Mapping
+ModelElement <|-- henshin_NamedElement
+ModelElement <|-- henshin_NestedCondition
+ModelElement <|-- henshin_ParameterMapping
+ModelElement <|-- henshin_UnaryFormula
+MultiUnit <|-- henshin_IndependentUnit
+MultiUnit <|-- henshin_PriorityUnit
+MultiUnit <|-- henshin_SequentialUnit
+NamedElement <|-- henshin_AttributeCondition
+NamedElement <|-- henshin_Graph
+NamedElement <|-- henshin_Module
+NamedElement <|-- henshin_Node
+NamedElement <|-- henshin_Parameter
+NamedElement <|-- henshin_Unit
+UnaryFormula <|-- henshin_Not
+UnaryUnit <|-- henshin_IteratedUnit
+UnaryUnit <|-- henshin_LoopUnit
+Unit <|-- henshin_ConditionalUnit
+Unit <|-- henshin_MultiUnit
+Unit <|-- henshin_Rule
+Unit <|-- henshin_UnaryUnit
+henshin_Annotation "0..9999" --* "1..1" henshin_ModelElement : annotations0
+henshin_AttributeCondition "0..9999" --* "1..1" henshin_Rule : attributeConditions19
+henshin_Attribute "0..9999" --* "1..1" henshin_Node : attributes42
+henshin_Formula "1..1" --* "1..1" henshin_UnaryFormula : child82
+henshin_Graph "0..1" --* "1..1" henshin_NestedCondition : conclusion77
+henshin_Edge "0..9999" --* "1..1" henshin_Graph : edges37
+henshin_ConditionalUnit "1..1" -- "0..1" henshin_Unit : else_74
+henshin_Formula "0..1" --* "1..1" henshin_Graph : formula39
+henshin_Graph "0..1" -- "1..1" henshin_Node : graph43
+henshin_Edge "1..1" -- "0..1" henshin_Graph : graph53
+henshin_ConditionalUnit "1..1" -- "1..1" henshin_Unit : if_69
+henshin_Mapping "1..1" -- "1..1" henshin_Node : image62
+henshin_EPackage "0..9999" -- "1..1" henshin_Module : imports6
+henshin_Edge "0..9999" -- "1..1" henshin_Node : incoming44
+henshin_Graph "0..9999" --* "1..1" henshin_Module : instances9
+henshin_BinaryFormula "1..1" *-- "1..1" henshin_Formula : left84
+henshin_Graph "1..1" --* "1..1" henshin_Rule : lhs14
+henshin_Mapping "0..9999" --* "1..1" henshin_Rule : mappings20
+henshin_Mapping "0..9999" --* "1..1" henshin_NestedCondition : mappings79
+henshin_Mapping "0..9999" --* "1..1" henshin_Rule : multiMappings25
+henshin_Rule "0..9999" --* "1..1" henshin_Rule : multiRules23
+henshin_Attribute "1..1" -- "0..1" henshin_Node : node56
+henshin_Graph "1..1" *-- "0..9999" henshin_Node : nodes36
+henshin_Mapping "1..1" -- "1..1" henshin_Node : origin59
+henshin_Edge "0..9999" -- "1..1" henshin_Node : outgoing46
+henshin_ParameterMapping "0..9999" --* "1..1" henshin_Unit : parameterMappings12
+henshin_Parameter "0..9999" --* "1..1" henshin_Unit : parameters11
+henshin_Graph "1..1" --* "1..1" henshin_Rule : rhs16
+henshin_BinaryFormula "1..1" *-- "1..1" henshin_Formula : right86
+henshin_AttributeCondition "1..1" -- "1..1" henshin_Rule : rule58
+henshin_Parameter "1..1" -- "1..1" henshin_ParameterMapping : source30
+henshin_Edge "1..1" -- "1..1" henshin_Node : source48
+henshin_Module "1..1" *-- "0..9999" henshin_Module : subModules2
+henshin_UnaryUnit "1..1" -- "1..1" henshin_Unit : subUnit65
+henshin_MultiUnit "1..1" -- "0..9999" henshin_Unit : subUnits67
+henshin_Module "1..1" -- "0..1" henshin_Module : superModule4
+henshin_Parameter "1..1" -- "1..1" henshin_ParameterMapping : target33
+henshin_Edge "1..1" -- "1..1" henshin_Node : target50
+henshin_ConditionalUnit "1..1" -- "1..1" henshin_Unit : then71
+henshin_EClassifier "0..1" -- "1..1" henshin_Parameter : type29
+henshin_EClass "0..1" -- "1..1" henshin_Node : type41
+henshin_EReference "0..1" -- "1..1" henshin_Edge : type52
+henshin_Attribute "1..1" -- "0..1" henshin_EAttribute : type55
+henshin_Parameter "1..1" -- "0..1" henshin_Unit : unit28
+henshin_Module "1..1" *-- "0..9999" henshin_Unit : units7
+@enduml

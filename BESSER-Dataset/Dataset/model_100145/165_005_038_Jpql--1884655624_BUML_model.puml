@@ -1,0 +1,275 @@
+@startuml
+class Expression {
+}
+class ExpressionTerm {
+}
+class FromEntry {
+}
+class FromJoin {
+}
+class InExpression {
+}
+class JPQLQuery {
+}
+enum Operator {
+  equal
+  greaterEqual
+  greaterThen
+  lessEqual
+  lessThen
+  notEqual
+}
+class SelectAggregateExpression {
+}
+class SelectExpression {
+}
+class Value {
+}
+class Variable {
+}
+class jpql_AliasAttributeExpression {
+  + attributes : str
+}
+class jpql_AllExpression {
+}
+class jpql_AndExpression {
+}
+class jpql_AnyExpression {
+}
+class jpql_AvgAggregate {
+}
+class jpql_BetweenExpression {
+  + isNot : bool
+}
+class jpql_BooleanExpression {
+  + value : bool
+}
+class jpql_CollectionExpression {
+  + isNot : bool
+}
+class jpql_CountAggregate {
+}
+class jpql_DateTimeExpression {
+  + value : str
+}
+class jpql_DeleteClause {
+}
+class jpql_DeleteStatement {
+}
+class jpql_EmptyComparisonExpression {
+  + isNot : bool
+}
+class jpql_ExistsExpression {
+  + isNot : bool
+}
+class jpql_Expression {
+}
+class jpql_ExpressionTerm {
+}
+class jpql_FromClass {
+  + type : str
+}
+class jpql_FromClause {
+}
+class jpql_FromCollection {
+}
+class jpql_FromEntry {
+}
+class jpql_FromJoin {
+  + isFetch : bool
+}
+class jpql_Function {
+  + name : str
+}
+class jpql_HavingClause {
+}
+class jpql_Import {
+  + importURI : str
+}
+class jpql_InExpression {
+  + isNot : bool
+}
+class jpql_InQueryExpression {
+}
+class jpql_InSeqExpression {
+}
+class jpql_InnerJoin {
+}
+class jpql_IntegerExpression {
+  + value : int
+}
+class jpql_JPQLQuery {
+}
+class jpql_Join {
+}
+class jpql_LeftJoin {
+  + isOuter : bool
+}
+class jpql_LikeExpression {
+  + isNot : bool
+  + pattern : str
+}
+class jpql_MaxAggregate {
+}
+class jpql_MinAggregate {
+}
+class jpql_NamedQuery {
+  + name : str
+}
+class jpql_NullComparisonExpression {
+  + isNot : bool
+}
+class jpql_NullExpression {
+  + value : str
+}
+class jpql_OperatorExpression {
+  + operator : str
+}
+class jpql_OrExpression {
+}
+class jpql_OrderClause {
+  + isAsc : bool
+  + isDesc : bool
+}
+class jpql_OrderItem {
+  + feature : str
+}
+class jpql_ParameterExpression {
+  + name : str
+}
+class jpql_QueryModule {
+}
+class jpql_SelectAggregateExpression {
+  + isDistinct : bool
+}
+class jpql_SelectClause {
+  + isDistinct : bool
+}
+class jpql_SelectConstructorExpression {
+  + name : str
+}
+class jpql_SelectExpression {
+}
+class jpql_SelectFromClause {
+}
+class jpql_SelectStatement {
+}
+class jpql_SetClause {
+}
+class jpql_SomeExpression {
+}
+class jpql_StringExpression {
+  + value : str
+}
+class jpql_SumAggregate {
+}
+class jpql_UpdateClause {
+}
+class jpql_UpdateItem {
+}
+class jpql_UpdateStatement {
+}
+class jpql_Value {
+}
+class jpql_Variable {
+}
+class jpql_VariableDeclaration {
+  + name : str
+}
+class jpql_WhereClause {
+}
+Expression <|-- jpql_AllExpression
+Expression <|-- jpql_AndExpression
+Expression <|-- jpql_AnyExpression
+Expression <|-- jpql_BetweenExpression
+Expression <|-- jpql_CollectionExpression
+Expression <|-- jpql_EmptyComparisonExpression
+Expression <|-- jpql_ExistsExpression
+Expression <|-- jpql_ExpressionTerm
+Expression <|-- jpql_InExpression
+Expression <|-- jpql_LikeExpression
+Expression <|-- jpql_NullComparisonExpression
+Expression <|-- jpql_OperatorExpression
+Expression <|-- jpql_OrExpression
+Expression <|-- jpql_SomeExpression
+ExpressionTerm <|-- jpql_SelectStatement
+ExpressionTerm <|-- jpql_Variable
+FromEntry <|-- jpql_FromClass
+FromEntry <|-- jpql_FromCollection
+FromJoin <|-- jpql_InnerJoin
+FromJoin <|-- jpql_Join
+FromJoin <|-- jpql_LeftJoin
+InExpression <|-- jpql_InQueryExpression
+InExpression <|-- jpql_InSeqExpression
+JPQLQuery <|-- jpql_DeleteStatement
+JPQLQuery <|-- jpql_SelectStatement
+JPQLQuery <|-- jpql_UpdateStatement
+SelectAggregateExpression <|-- jpql_AvgAggregate
+SelectAggregateExpression <|-- jpql_CountAggregate
+SelectAggregateExpression <|-- jpql_MaxAggregate
+SelectAggregateExpression <|-- jpql_MinAggregate
+SelectAggregateExpression <|-- jpql_SumAggregate
+SelectExpression <|-- jpql_AliasAttributeExpression
+SelectExpression <|-- jpql_SelectAggregateExpression
+SelectExpression <|-- jpql_SelectConstructorExpression
+Value <|-- jpql_BooleanExpression
+Value <|-- jpql_DateTimeExpression
+Value <|-- jpql_IntegerExpression
+Value <|-- jpql_NullExpression
+Value <|-- jpql_StringExpression
+Variable <|-- jpql_AliasAttributeExpression
+Variable <|-- jpql_ParameterExpression
+Variable <|-- jpql_Value
+jpql_AliasAttributeExpression "1..1" -- "0..1" jpql_VariableDeclaration : alias100
+jpql_AliasAttributeExpression "0..1" --* "1..1" jpql_UpdateItem : alias29
+jpql_JPQLQuery "0..1" --* "1..1" jpql_QueryModule : defaultQuery1
+jpql_DeleteClause "0..1" --* "1..1" jpql_DeleteStatement : deleteClause33
+jpql_Expression "0..9999" --* "1..1" jpql_OrExpression : entries105
+jpql_AndExpression "1..1" *-- "0..9999" jpql_Expression : entries107
+jpql_SelectClause "1..1" *-- "0..9999" jpql_SelectExpression : expressions41
+jpql_DeleteClause "1..1" *-- "0..1" jpql_FromClause : fromClause34
+jpql_FromClause "0..1" --* "1..1" jpql_SelectFromClause : fromClause38
+jpql_FromEntry "0..9999" --* "1..1" jpql_UpdateClause : fromEntries24
+jpql_FromClause "1..1" *-- "0..9999" jpql_FromEntry : fromEntries47
+jpql_HavingClause "0..1" --* "1..1" jpql_SelectStatement : having11
+jpql_Expression "0..1" --* "1..1" jpql_HavingClause : having15
+jpql_Import "0..9999" --* "1..1" jpql_QueryModule : imports0
+jpql_AliasAttributeExpression "0..1" --* "1..1" jpql_SelectAggregateExpression : item43
+jpql_SetClause "1..1" *-- "0..9999" jpql_UpdateItem : items27
+jpql_AliasAttributeExpression "0..9999" --* "1..1" jpql_SelectConstructorExpression : items45
+jpql_InSeqExpression "1..1" *-- "0..9999" jpql_Variable : items88
+jpql_FromClass "1..1" *-- "0..9999" jpql_FromJoin : joins52
+jpql_OperatorExpression "1..1" *-- "0..1" jpql_Variable : lhs64
+jpql_CollectionExpression "1..1" *-- "0..1" jpql_Variable : lhs75
+jpql_NullComparisonExpression "1..1" *-- "0..1" jpql_Variable : lhs80
+jpql_EmptyComparisonExpression "1..1" *-- "0..1" jpql_Variable : lhs82
+jpql_LikeExpression "1..1" *-- "0..1" jpql_Variable : lhs84
+jpql_InExpression "1..1" *-- "0..1" jpql_Variable : lhs86
+jpql_BetweenExpression "1..1" *-- "0..1" jpql_Variable : lhs92
+jpql_BetweenExpression "1..1" *-- "0..1" jpql_Value : max97
+jpql_BetweenExpression "1..1" *-- "0..1" jpql_Value : min94
+jpql_NamedQuery "0..9999" --* "1..1" jpql_QueryModule : namedQueries3
+jpql_OrderClause "0..1" --* "1..1" jpql_SelectStatement : order13
+jpql_OrderClause "1..1" *-- "0..9999" jpql_OrderItem : ordering17
+jpql_Function "1..1" *-- "0..9999" jpql_Variable : params103
+jpql_AliasAttributeExpression "0..1" --* "1..1" jpql_FromCollection : path53
+jpql_AliasAttributeExpression "0..1" --* "1..1" jpql_FromJoin : path55
+jpql_JPQLQuery "0..1" --* "1..1" jpql_NamedQuery : query5
+jpql_ExistsExpression "1..1" *-- "0..1" jpql_SelectStatement : query67
+jpql_AllExpression "1..1" *-- "0..1" jpql_SelectStatement : query69
+jpql_AnyExpression "1..1" *-- "0..1" jpql_SelectStatement : query71
+jpql_SelectStatement "0..1" --* "1..1" jpql_SomeExpression : query73
+jpql_InQueryExpression "1..1" *-- "0..1" jpql_SelectStatement : query90
+jpql_ExpressionTerm "0..1" --* "1..1" jpql_OperatorExpression : rhs65
+jpql_AliasAttributeExpression "0..1" --* "1..1" jpql_CollectionExpression : rhs77
+jpql_SelectClause "0..1" --* "1..1" jpql_SelectFromClause : selectClause36
+jpql_SelectFromClause "0..1" --* "1..1" jpql_SelectStatement : selectFromClause10
+jpql_SetClause "0..1" --* "1..1" jpql_UpdateStatement : setClause22
+jpql_UpdateClause "0..1" --* "1..1" jpql_UpdateStatement : updateClause21
+jpql_UpdateItem "1..1" *-- "0..1" jpql_Value : value31
+jpql_FromEntry "0..1" -- "1..1" jpql_OrderItem : var19
+jpql_FromEntry "1..1" *-- "0..1" jpql_VariableDeclaration : variable50
+jpql_FromJoin "1..1" *-- "0..1" jpql_VariableDeclaration : variable58
+jpql_JPQLQuery "1..1" *-- "0..1" jpql_WhereClause : whereClause8
+jpql_Expression "0..1" --* "1..1" jpql_WhereClause : whereEntry61
+@enduml

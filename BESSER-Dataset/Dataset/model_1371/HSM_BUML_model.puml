@@ -1,0 +1,30 @@
+@startuml
+class HSM_AbstractState {
+}
+abstract class HSM_HSM_AbstractState {
+  + name : str
+}
+class HSM_HSM_CompositeState {
+}
+class HSM_HSM_InitialState {
+}
+class HSM_HSM_RegularState {
+}
+class HSM_HSM_StateMachine {
+  + name : str
+}
+class HSM_HSM_Transition {
+  + label : str
+}
+HSM_AbstractState <|-- HSM_HSM_CompositeState
+HSM_AbstractState <|-- HSM_HSM_InitialState
+HSM_AbstractState <|-- HSM_HSM_RegularState
+HSM_HSM_AbstractState "1..1" -- "0..1" HSM_HSM_CompositeState : compositeState10
+HSM_HSM_AbstractState "1..1" -- "1..1" HSM_HSM_Transition : source4
+HSM_HSM_StateMachine "0..1" -- "1..1" HSM_HSM_Transition : stateMachine3
+HSM_HSM_AbstractState "1..1" -- "0..1" HSM_HSM_StateMachine : stateMachine8
+HSM_HSM_AbstractState "0..9999" --* "1..1" HSM_HSM_StateMachine : states1
+HSM_HSM_AbstractState "0..9999" -- "1..1" HSM_HSM_CompositeState : states12
+HSM_HSM_AbstractState "1..1" -- "1..1" HSM_HSM_Transition : target5
+HSM_HSM_StateMachine "1..1" *-- "0..9999" HSM_HSM_Transition : transitions0
+@enduml

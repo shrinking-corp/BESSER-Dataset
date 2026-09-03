@@ -1,0 +1,153 @@
+@startuml
+enum Gender {
+  female
+  male
+}
+enum RandLColor {
+  gold
+  silver
+}
+class RoyalAndLoyal_Burning {
+}
+class RoyalAndLoyal_Container_RandL {
+}
+class RoyalAndLoyal_Customer {
+  + age : int
+  + gender : str
+  + isMale : bool
+  + name : str
+  + title : str
+  + age() : int
+  + birthdayHappens() : void
+  + updateName(RoyalAndLoyal_name : str) : void
+}
+class RoyalAndLoyal_CustomerCard {
+  + color : str
+  + printedName : str
+  + valid : bool
+  + getTransactions(RoyalAndLoyal_from_ : str, RoyalAndLoyal_until : str) : Transaction
+}
+class RoyalAndLoyal_Date {
+  + day : int
+  + month : int
+  + year : int
+  + fromYMD(RoyalAndLoyal_k : str, RoyalAndLoyal_m : str, RoyalAndLoyal_y : str) : str
+  + isAfter(RoyalAndLoyal_t : str) : bool
+  + isBefore(RoyalAndLoyal_t : str) : bool
+  + isEqual(RoyalAndLoyal_t : str) : bool
+}
+class RoyalAndLoyal_Earning {
+}
+class RoyalAndLoyal_LoyaltyAccount {
+  + number : int
+  + points : int
+  + totalPointsEarned : int
+  + burn(RoyalAndLoyal_i : str) : void
+  + earn(RoyalAndLoyal_i : str) : void
+  + getCustomerName() : str
+  + isEmpty() : bool
+}
+class RoyalAndLoyal_LoyaltyProgram {
+  + name : str
+  + addService(RoyalAndLoyal_l : str, RoyalAndLoyal_p : str, RoyalAndLoyal_s : str) : void
+  + addTransaction(RoyalAndLoyal_accNr : str, RoyalAndLoyal_amnt : str, RoyalAndLoyal_d : str, RoyalAndLoyal_pName : str, RoyalAndLoyal_servId : str) : void
+  + enroll(RoyalAndLoyal_c : str) : void
+  + enrollAndCreateCustomer(RoyalAndLoyal_d : str, RoyalAndLoyal_n : str) : str
+  + getServices(RoyalAndLoyal_pp : str) : str
+  + selectPopularPartners(RoyalAndLoyal_d : str) : str
+}
+class RoyalAndLoyal_Membership {
+}
+class RoyalAndLoyal_ProgramPartner {
+  + name : str
+  + numberOfCustomers : int
+}
+class RoyalAndLoyal_Service {
+  + condition : bool
+  + description : str
+  + pointsBurned : int
+  + pointsEarned : int
+  + serviceNr : int
+  + calcPoints() : int
+  + upgradePointsEarned(RoyalAndLoyal_amount : str) : void
+}
+class RoyalAndLoyal_ServiceLevel {
+  + name : str
+}
+abstract class RoyalAndLoyal_Transaction {
+  + amount : float
+  + points : int
+  + program() : str
+}
+class RoyalAndLoyal_TransactionReport {
+  + balance : int
+  + name : str
+  + number : int
+  + totalBurned : int
+  + totalEarned : int
+}
+class RoyalAndLoyal_TransactionReportLine {
+  + amount : float
+  + partnerName : str
+  + points : int
+  + serviceDesc : str
+}
+class Transaction {
+}
+Transaction <|-- RoyalAndLoyal_Burning
+Transaction <|-- RoyalAndLoyal_Earning
+RoyalAndLoyal_LoyaltyAccount "1..1" -- "0..1" RoyalAndLoyal_Membership : Membership11
+RoyalAndLoyal_Membership "0..9999" -- "1..1" RoyalAndLoyal_ServiceLevel : Membership2
+RoyalAndLoyal_CustomerCard "1..1" -- "0..1" RoyalAndLoyal_Membership : Membership36
+RoyalAndLoyal_LoyaltyAccount "0..1" -- "1..1" RoyalAndLoyal_Transaction : account4
+RoyalAndLoyal_LoyaltyAccount "0..1" -- "1..1" RoyalAndLoyal_Membership : account46
+RoyalAndLoyal_Service "0..9999" -- "1..1" RoyalAndLoyal_ServiceLevel : availableServices1
+RoyalAndLoyal_CustomerCard "0..1" -- "1..1" RoyalAndLoyal_TransactionReport : card25
+RoyalAndLoyal_CustomerCard "0..1" -- "1..1" RoyalAndLoyal_Membership : card43
+RoyalAndLoyal_CustomerCard "0..1" -- "1..1" RoyalAndLoyal_Transaction : card8
+RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_CustomerCard : cards96
+RoyalAndLoyal_Membership "1..1" -- "0..1" RoyalAndLoyal_ServiceLevel : currentLevel41
+RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_Membership : custmemberships98
+RoyalAndLoyal_Customer "1..1" *-- "0..1" RoyalAndLoyal_Date : dateOfBirth91
+RoyalAndLoyal_ProgramPartner "1..1" -- "0..9999" RoyalAndLoyal_Service : deliveredServices15
+RoyalAndLoyal_Date "0..1" --* "1..1" RoyalAndLoyal_TransactionReport : from_21
+RoyalAndLoyal_Service "0..1" -- "1..1" RoyalAndLoyal_Transaction : generatedBy5
+RoyalAndLoyal_CustomerCard "1..1" *-- "0..1" RoyalAndLoyal_Date : goodThru27
+RoyalAndLoyal_Service "1..1" -- "0..1" RoyalAndLoyal_ServiceLevel : level89
+RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..9999" RoyalAndLoyal_ServiceLevel : levels110
+RoyalAndLoyal_TransactionReport "1..1" -- "0..9999" RoyalAndLoyal_TransactionReportLine : lines24
+RoyalAndLoyal_LoyaltyProgram "1..1" -- "0..9999" RoyalAndLoyal_Membership : loymemberships115
+RoyalAndLoyal_CustomerCard "1..1" *-- "0..1" RoyalAndLoyal_ServiceLevel : myLevel33
+RoyalAndLoyal_Customer "0..1" -- "1..1" RoyalAndLoyal_CustomerCard : owner35
+RoyalAndLoyal_Customer "0..9999" -- "1..1" RoyalAndLoyal_LoyaltyProgram : participants112
+RoyalAndLoyal_Customer "1..1" -- "1..1" RoyalAndLoyal_Membership : participants50
+RoyalAndLoyal_ProgramPartner "0..1" -- "1..1" RoyalAndLoyal_Service : partner86
+RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..9999" RoyalAndLoyal_ProgramPartner : partners108
+RoyalAndLoyal_LoyaltyProgram "0..1" -- "1..1" RoyalAndLoyal_ServiceLevel : program0
+RoyalAndLoyal_LoyaltyProgram "1..9999" -- "1..1" RoyalAndLoyal_ProgramPartner : programs17
+RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..1" RoyalAndLoyal_Membership : programs49
+RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_LoyaltyProgram : programs94
+RoyalAndLoyal_Burning "0..9999" --* "1..1" RoyalAndLoyal_Container_RandL : ref_RandL_Burning82
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Customer : ref_RandL_Customer52
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_CustomerCard : ref_RandL_CustomerCard57
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Date : ref_RandL_Date54
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Earning : ref_RandL_Earning69
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_LoyaltyAccount : ref_RandL_LoyaltyAccount71
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_LoyaltyProgram : ref_RandL_LoyaltyProgram66
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Membership : ref_RandL_Membership60
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_ProgramPartner : ref_RandL_ProgramPartner80
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Service : ref_RandL_Service63
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_ServiceLevel : ref_RandL_ServiceLevel74
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_TransactionReport : ref_RandL_TransactionReport77
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_TransactionReportLine : ref_RandL_TransactionReportLine84
+RoyalAndLoyal_TransactionReport "0..1" -- "1..1" RoyalAndLoyal_TransactionReportLine : report107
+RoyalAndLoyal_Date "0..1" --* "1..1" RoyalAndLoyal_Transaction : tDate3
+RoyalAndLoyal_Transaction "0..1" -- "1..1" RoyalAndLoyal_TransactionReportLine : transaction104
+RoyalAndLoyal_LoyaltyAccount "1..1" -- "0..9999" RoyalAndLoyal_Transaction : transactions13
+RoyalAndLoyal_CustomerCard "1..1" -- "0..9999" RoyalAndLoyal_Transaction : transactions38
+RoyalAndLoyal_Service "1..1" -- "0..9999" RoyalAndLoyal_Transaction : transactions87
+RoyalAndLoyal_Date "0..1" --* "1..1" RoyalAndLoyal_TransactionReportLine : trlDate101
+RoyalAndLoyal_Date "0..1" --* "1..1" RoyalAndLoyal_TransactionReport : until19
+RoyalAndLoyal_LoyaltyAccount "1..1" -- "0..9999" RoyalAndLoyal_Service : usedServices10
+RoyalAndLoyal_CustomerCard "1..1" *-- "0..1" RoyalAndLoyal_Date : validFrom30
+@enduml

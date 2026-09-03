@@ -1,0 +1,108 @@
+@startuml
+class ASD_Annotation {
+  + key : str
+  + value : str
+}
+class ASD_Assertion {
+  + dimension : str
+  + dimensionType : str
+  + lType : str
+  + maxVal : float
+  + minVal : float
+  + role : str
+  + subset : str
+}
+class ASD_AssertionSet {
+  + lType : str
+}
+class ASD_InfoType {
+  + subset : str
+  + valueRange : str
+  + valueType : str
+}
+class ASD_InfoTypeImported {
+  + url : str
+}
+class ASD_Message {
+  + role : str
+  + subset : str
+}
+abstract class ASD_NamedElement {
+  + name : str
+}
+class ASD_Operation {
+  + messagePattern : str
+}
+class ASD_Profile {
+}
+class ASD_ServiceDescription {
+}
+enum EEnumDimensionType {
+  antitonic
+  monotonic
+}
+enum EEnumIntention {
+  expectation
+  offering
+}
+enum EEnumMes {
+  fault
+  input
+  output
+}
+enum EEnumOp {
+  notification
+  oneway
+  requestresponse
+  solicitresponse
+}
+enum EEnumSubset {
+  exp
+  off
+  pro
+  req
+}
+enum EEnumValueType {
+  date
+  document
+  double
+  float
+  int
+  string
+}
+enum EEnumlogicalType {
+  AND
+  OR
+}
+class InfoType {
+}
+class NamedElement {
+}
+InfoType <|-- ASD_InfoTypeImported
+NamedElement <|-- ASD_Assertion
+NamedElement <|-- ASD_AssertionSet
+NamedElement <|-- ASD_InfoType
+NamedElement <|-- ASD_Message
+NamedElement <|-- ASD_Operation
+NamedElement <|-- ASD_Profile
+NamedElement <|-- ASD_ServiceDescription
+ASD_Annotation "0..9999" --* "1..1" ASD_NamedElement : annotations29
+ASD_Assertion "1..9999" --* "1..1" ASD_AssertionSet : assertions26
+ASD_Message "1..9999" --* "1..1" ASD_Operation : contents5
+ASD_InfoType "1..1" *-- "0..9999" ASD_InfoType : infoType12
+ASD_InfoType "1..9999" -- "1..1" ASD_Message : infoType7
+ASD_InfoType "0..9999" --* "1..1" ASD_ServiceDescription : infotypes1
+ASD_InfoType "1..1" -- "0..9999" ASD_Message : message16
+ASD_Message "1..1" -- "0..1" ASD_Operation : operation9
+ASD_Operation "0..9999" --* "1..1" ASD_ServiceDescription : operations0
+ASD_Annotation "1..1" -- "0..1" ASD_NamedElement : owner30
+ASD_AssertionSet "1..1" -- "0..1" ASD_Profile : profile24
+ASD_Profile "0..9999" --* "1..1" ASD_ServiceDescription : profiles3
+ASD_InfoType "0..1" -- "1..1" ASD_InfoType : ref14
+ASD_Operation "1..9999" -- "1..1" ASD_Profile : refers20
+ASD_InfoType "1..1" -- "0..1" ASD_ServiceDescription : service18
+ASD_Profile "1..1" -- "0..1" ASD_ServiceDescription : service22
+ASD_Operation "1..1" -- "0..1" ASD_ServiceDescription : service6
+ASD_Assertion "1..1" -- "0..1" ASD_AssertionSet : set27
+ASD_AssertionSet "1..9999" --* "1..1" ASD_Profile : sets21
+@enduml

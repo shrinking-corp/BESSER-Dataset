@@ -1,0 +1,167 @@
+@startuml
+class Extendable {
+}
+class GraphElement {
+}
+class ParameterBinding {
+}
+class Pattern {
+}
+class PatternElement {
+}
+class graphpattern_Assignment {
+}
+class graphpattern_Association {
+}
+class graphpattern_AttributePattern {
+  + constant : str
+  + value : str
+  + variables : str
+  + isConstant() : bool
+  + isExpression() : bool
+  + isVariable() : bool
+}
+class graphpattern_Bundle {
+}
+class graphpattern_DependencyEdge {
+}
+class graphpattern_DependencyGraph {
+}
+class graphpattern_DependencyNode {
+}
+class graphpattern_EAttribute {
+}
+class graphpattern_EClass {
+}
+class graphpattern_EObject {
+}
+class graphpattern_EObjectList {
+  + label : str
+}
+class graphpattern_EPackage {
+}
+class graphpattern_EReference {
+}
+class graphpattern_EdgePattern {
+}
+abstract class graphpattern_Extendable {
+}
+abstract class graphpattern_GraphElement {
+}
+class graphpattern_GraphPattern {
+}
+abstract class graphpattern_Matching {
+  + add(graphpattern_match : str) : void
+  + clear() : void
+  + contains(graphpattern_match : str) : bool
+  + isEmpty() : bool
+  + iterator() : str
+  + remove(graphpattern_match : str) : bool
+  + size() : int
+}
+class graphpattern_NodePattern {
+  + getAdjacent() : str
+  + getAttribute(graphpattern_type : str) : str
+  + getIncident(graphpattern_adjacent : str) : str
+  + getIncoming(graphpattern_type : str) : str
+  + getIncomings(graphpattern_type : str) : str
+  + getOutgoing(graphpattern_stereotype : str, graphpattern_target : str, graphpattern_type : str) : str
+  + getOutgoings(graphpattern_type : str) : str
+  + removeIncident(graphpattern_node : str) : str
+}
+class graphpattern_ObjectBinding {
+}
+class graphpattern_Parameter {
+}
+abstract class graphpattern_ParameterBinding {
+}
+class graphpattern_Pattern {
+  + getAllGraphPatterns() : str
+  + getGraph(graphpattern_name : str) : str
+  + getParameter(graphpattern_name : str) : str
+  + getPattern(graphpattern_name : str) : Pattern
+}
+abstract class graphpattern_PatternElement {
+  + description : str
+  + name : str
+}
+class graphpattern_Profile {
+  + description : str
+  + id : str
+  + name : str
+  + getStereotype(graphpattern_name : str) : str
+}
+abstract class graphpattern_Resource {
+}
+class graphpattern_Stereotype {
+  + name : str
+}
+class graphpattern_SubGraph {
+}
+class graphpattern_ValueBinding {
+  + value : str
+}
+Extendable <|-- graphpattern_PatternElement
+GraphElement <|-- graphpattern_AttributePattern
+GraphElement <|-- graphpattern_EdgePattern
+GraphElement <|-- graphpattern_NodePattern
+ParameterBinding <|-- graphpattern_ObjectBinding
+ParameterBinding <|-- graphpattern_ValueBinding
+Pattern <|-- graphpattern_Bundle
+PatternElement <|-- graphpattern_Association
+PatternElement <|-- graphpattern_GraphElement
+PatternElement <|-- graphpattern_GraphPattern
+PatternElement <|-- graphpattern_Parameter
+PatternElement <|-- graphpattern_Pattern
+PatternElement <|-- graphpattern_SubGraph
+graphpattern_Assignment "1..1" *-- "0..9999" graphpattern_ParameterBinding : assignment71
+graphpattern_Assignment "0..9999" --* "1..1" graphpattern_Pattern : assignments34
+graphpattern_Association "0..9999" --* "1..1" graphpattern_NodePattern : associations13
+graphpattern_AttributePattern "0..9999" --* "1..1" graphpattern_NodePattern : attributes8
+graphpattern_Bundle "0..1" -- "1..1" graphpattern_Pattern : bundle36
+graphpattern_EObject "0..9999" -- "1..1" graphpattern_EObjectList : content43
+graphpattern_EObject "0..9999" --* "1..1" graphpattern_Resource : contents86
+graphpattern_DependencyGraph "0..1" --* "1..1" graphpattern_GraphPattern : dependencyGraph2
+graphpattern_Bundle "1..1" -- "0..9999" graphpattern_EPackage : domains29
+graphpattern_DependencyEdge "0..9999" --* "1..1" graphpattern_DependencyGraph : edges51
+graphpattern_GraphElement "0..9999" -- "1..1" graphpattern_SubGraph : elements77
+graphpattern_DependencyGraph "1..1" -- "0..1" graphpattern_GraphPattern : graph46
+graphpattern_GraphElement "1..1" -- "1..1" graphpattern_GraphPattern : graph82
+graphpattern_GraphPattern "0..9999" --* "1..1" graphpattern_Pattern : graphs31
+graphpattern_EdgePattern "0..9999" -- "1..1" graphpattern_NodePattern : incomings11
+graphpattern_DependencyEdge "0..9999" -- "1..1" graphpattern_DependencyNode : incomings55
+graphpattern_DependencyGraph "1..1" -- "0..9999" graphpattern_DependencyNode : independent45
+graphpattern_EObject "0..9999" -- "1..1" graphpattern_Matching : matches25
+graphpattern_Matching "0..1" --* "1..1" graphpattern_NodePattern : matching9
+graphpattern_AttributePattern "1..1" -- "0..1" graphpattern_NodePattern : node23
+graphpattern_Matching "1..1" -- "0..1" graphpattern_NodePattern : node26
+graphpattern_GraphPattern "1..1" *-- "0..9999" graphpattern_NodePattern : nodes0
+graphpattern_DependencyGraph "1..1" *-- "0..9999" graphpattern_DependencyNode : nodes48
+graphpattern_DependencyNode "1..1" -- "0..9999" graphpattern_NodePattern : nodes58
+graphpattern_EdgePattern "1..1" -- "0..1" graphpattern_EdgePattern : opposite19
+graphpattern_EdgePattern "0..9999" --* "1..1" graphpattern_NodePattern : outgoings5
+graphpattern_DependencyEdge "0..9999" -- "1..1" graphpattern_DependencyNode : outgoings53
+graphpattern_Parameter "1..1" -- "1..1" graphpattern_ParameterBinding : parameter70
+graphpattern_Parameter "0..9999" --* "1..1" graphpattern_Pattern : parameters32
+graphpattern_GraphPattern "1..1" -- "1..1" graphpattern_Pattern : pattern1
+graphpattern_Parameter "1..1" -- "0..1" graphpattern_Pattern : pattern41
+graphpattern_Assignment "1..1" -- "0..1" graphpattern_Pattern : pattern73
+graphpattern_Pattern "0..9999" --* "1..1" graphpattern_Pattern : patterns39
+graphpattern_Profile "1..1" -- "1..1" graphpattern_Stereotype : profile69
+graphpattern_Bundle "1..1" -- "0..9999" graphpattern_Profile : profiles28
+graphpattern_EdgePattern "1..1" -- "1..1" graphpattern_NodePattern : source16
+graphpattern_DependencyEdge "1..1" -- "0..1" graphpattern_DependencyNode : source61
+graphpattern_Association "1..1" -- "1..1" graphpattern_NodePattern : source66
+graphpattern_Profile "1..1" *-- "0..9999" graphpattern_Stereotype : stereotypes85
+graphpattern_Extendable "1..1" -- "0..9999" graphpattern_Stereotype : stereotypes88
+graphpattern_GraphPattern "1..1" *-- "0..9999" graphpattern_SubGraph : subgraphs3
+graphpattern_SubGraph "0..9999" --* "1..1" graphpattern_SubGraph : subgraphs79
+graphpattern_GraphElement "1..1" -- "0..9999" graphpattern_SubGraph : subgraphs81
+graphpattern_EdgePattern "1..1" -- "1..1" graphpattern_NodePattern : target15
+graphpattern_DependencyEdge "1..1" -- "0..1" graphpattern_DependencyNode : target63
+graphpattern_Association "1..1" -- "1..1" graphpattern_GraphElement : target68
+graphpattern_EReference "1..1" -- "1..1" graphpattern_EdgePattern : type20
+graphpattern_AttributePattern "1..1" -- "1..1" graphpattern_EAttribute : type22
+graphpattern_EClass "1..1" -- "1..1" graphpattern_NodePattern : type6
+graphpattern_EObject "0..1" -- "1..1" graphpattern_ObjectBinding : value75
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+class Element {
+}
+class Node {
+}
+class petrinet2_Arc {
+}
+abstract class petrinet2_Element {
+  + name : str
+}
+abstract class petrinet2_Node {
+}
+class petrinet2_Petrinet {
+}
+class petrinet2_Place {
+}
+class petrinet2_Transition {
+  + maxDelay : float
+  + minDelay : float
+}
+Element <|-- petrinet2_Arc
+Element <|-- petrinet2_Node
+Node <|-- petrinet2_Place
+Node <|-- petrinet2_Transition
+petrinet2_Arc "1..1" -- "1..1" petrinet2_Node : From2
+petrinet2_Arc "1..1" -- "1..1" petrinet2_Node : To1
+petrinet2_Element "0..9999" --* "1..1" petrinet2_Petrinet : elements0
+@enduml

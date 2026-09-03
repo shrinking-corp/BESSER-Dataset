@@ -1,0 +1,39 @@
+@startuml
+class AbstractClass {
+}
+class Triangles_A_Class {
+}
+abstract class Triangles_AbstractClass {
+  + flag : bool
+  + id : int
+  + name : str
+}
+class Triangles_B_Class {
+}
+class Triangles_C_Class {
+}
+class Triangles_Container {
+}
+class Triangles_D_Class {
+}
+class Triangles_E_Class {
+}
+AbstractClass <|-- Triangles_A_Class
+AbstractClass <|-- Triangles_B_Class
+AbstractClass <|-- Triangles_C_Class
+AbstractClass <|-- Triangles_D_Class
+AbstractClass <|-- Triangles_E_Class
+Triangles_A_Class "0..9999" --* "1..1" Triangles_Container : a0
+Triangles_A_Class "0..9999" -- "1..1" Triangles_B_Class : a12
+Triangles_A_Class "0..9999" -- "1..1" Triangles_C_Class : a16
+Triangles_A_Class "0..9999" -- "1..1" Triangles_D_Class : a24
+Triangles_B_Class "0..9999" --* "1..1" Triangles_Container : b1
+Triangles_B_Class "0..9999" -- "1..1" Triangles_C_Class : b18
+Triangles_B_Class "0..9999" -- "1..1" Triangles_E_Class : b21
+Triangles_A_Class "1..1" -- "0..9999" Triangles_B_Class : b9
+Triangles_A_Class "1..1" -- "0..9999" Triangles_C_Class : c10
+Triangles_B_Class "1..1" -- "0..9999" Triangles_C_Class : c13
+Triangles_C_Class "0..9999" --* "1..1" Triangles_Container : c3
+Triangles_Container "1..1" *-- "0..9999" Triangles_D_Class : d5
+Triangles_Container "1..1" *-- "0..9999" Triangles_E_Class : e7
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+class ActivityEdge {
+}
+class ActivityGroup {
+}
+class ActivityNode {
+}
+class ValueSpecification {
+}
+class minuml2_Activity {
+}
+class minuml2_ActivityEdge {
+}
+class minuml2_ActivityFinalNode {
+}
+abstract class minuml2_ActivityGroup {
+}
+class minuml2_ActivityNode {
+}
+class minuml2_ActivityPartition {
+}
+class minuml2_ControlFlow {
+}
+class minuml2_DecisionNode {
+}
+class minuml2_ForkNode {
+}
+class minuml2_JoinNode {
+}
+class minuml2_ObjectFlow {
+}
+class minuml2_OpaqueAction {
+}
+class minuml2_OpaqueExpression {
+  + body : str
+  + language : str
+}
+class minuml2_ValueSpecification {
+}
+ActivityEdge <|-- minuml2_ControlFlow
+ActivityEdge <|-- minuml2_ObjectFlow
+ActivityGroup <|-- minuml2_ActivityPartition
+ActivityNode <|-- minuml2_ActivityFinalNode
+ActivityNode <|-- minuml2_DecisionNode
+ActivityNode <|-- minuml2_ForkNode
+ActivityNode <|-- minuml2_JoinNode
+ActivityNode <|-- minuml2_OpaqueAction
+ValueSpecification <|-- minuml2_OpaqueExpression
+minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityEdge : edges1
+minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityGroup : groups3
+minuml2_ActivityEdge "1..1" *-- "0..1" minuml2_ValueSpecification : guard11
+minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityNode : nodes0
+minuml2_ActivityEdge "1..1" -- "1..1" minuml2_ActivityNode : source5
+minuml2_ActivityEdge "1..1" -- "1..1" minuml2_ActivityNode : target8
+@enduml

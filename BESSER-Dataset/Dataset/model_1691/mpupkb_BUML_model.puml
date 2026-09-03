@@ -1,0 +1,23 @@
+@startuml
+class NamedElement {
+}
+class mpupkb_Comment {
+  + content : str
+}
+abstract class mpupkb_NamedElement {
+  + name : str
+}
+class mpupkb_Own {
+  + ownerName : str
+  + since : str
+}
+class mpupkb_Thing {
+  + id : int
+}
+NamedElement <|-- mpupkb_Own
+NamedElement <|-- mpupkb_Thing
+mpupkb_Comment "0..1" --* "1..1" mpupkb_NamedElement : comment2
+mpupkb_Own "0..9999" --* "1..1" mpupkb_Thing : ownershi1
+mpupkb_Own "0..1" -- "1..1" mpupkb_Thing : ownership0
+mpupkb_Own "1..1" -- "0..1" mpupkb_Thing : thing3
+@enduml

@@ -1,0 +1,149 @@
+@startuml
+class Action {
+}
+class sparrow_Action {
+  + name : str
+}
+class sparrow_Callprocess {
+  + datasource : str
+  + source : str
+  + target : str
+  + value : str
+}
+class sparrow_Catch {
+  + name : str
+}
+class sparrow_Copydata {
+  + source : str
+  + to : str
+  + value : str
+}
+class sparrow_Doozle {
+  + on : str
+  + target : str
+  + value : str
+}
+class sparrow_Dropfile {
+  + target : str
+}
+class sparrow_Expression {
+  + lhs : str
+  + operator : str
+  + rhs : str
+}
+class sparrow_FBCLead {
+  + accessToken : str
+  + accountId : str
+  + appSecret : str
+  + campaignId : str
+  + target : str
+  + value : str
+}
+class sparrow_Fetch {
+  + source : str
+  + value : str
+}
+class sparrow_Finally {
+  + name : str
+}
+class sparrow_GooglecalPUT {
+  + authstore : str
+  + key : str
+  + source : str
+  + useraccount : str
+  + value : str
+}
+class sparrow_LoadCsv {
+  + delim : str
+  + source : str
+  + to : str
+  + value : str
+}
+class sparrow_Process {
+  + name : str
+}
+class sparrow_Rest {
+  + ackdata : str
+  + ackdatato : str
+  + authtoken : str
+  + headerdata : str
+  + headerdatafrom : str
+  + method : str
+  + parentName : str
+  + parentdata : str
+  + postdatafrom : str
+  + resourcedatafrom : str
+  + url : str
+  + urldata : str
+}
+class sparrow_RestPart {
+  + partData : str
+  + partName : str
+}
+class sparrow_SlackPUT {
+  + channel : str
+  + team : str
+  + value : str
+}
+class sparrow_Sms {
+  + target : str
+  + value : str
+}
+class sparrow_Transform {
+  + on : str
+  + value : str
+}
+class sparrow_TrelloGET {
+  + authtoken : str
+  + board : str
+  + key : str
+  + target : str
+  + useraccount : str
+  + value : str
+}
+class sparrow_TrelloPUT {
+  + authtoken : str
+  + key : str
+  + list : str
+  + source : str
+  + useraccount : str
+  + value : str
+}
+class sparrow_Try {
+  + name : str
+}
+class sparrow_Updatedaudit {
+  + logsink : str
+  + value : str
+}
+class sparrow_WriteCsv {
+  + delim : str
+  + source : str
+  + to : str
+  + value : str
+}
+Action <|-- sparrow_Callprocess
+Action <|-- sparrow_Copydata
+Action <|-- sparrow_Doozle
+Action <|-- sparrow_Dropfile
+Action <|-- sparrow_FBCLead
+Action <|-- sparrow_Fetch
+Action <|-- sparrow_GooglecalPUT
+Action <|-- sparrow_LoadCsv
+Action <|-- sparrow_Rest
+Action <|-- sparrow_SlackPUT
+Action <|-- sparrow_Sms
+Action <|-- sparrow_Transform
+Action <|-- sparrow_TrelloGET
+Action <|-- sparrow_TrelloPUT
+Action <|-- sparrow_Updatedaudit
+Action <|-- sparrow_WriteCsv
+sparrow_Action "0..9999" --* "1..1" sparrow_Catch : action10
+sparrow_Action "0..9999" --* "1..1" sparrow_Try : action5
+sparrow_Action "0..9999" --* "1..1" sparrow_Finally : action7
+sparrow_Catch "0..1" --* "1..1" sparrow_Process : catch1
+sparrow_Action "1..1" *-- "0..1" sparrow_Expression : condition13
+sparrow_Finally "0..1" --* "1..1" sparrow_Process : finally_3
+sparrow_Rest "1..1" *-- "0..9999" sparrow_RestPart : parts15
+sparrow_Process "1..1" *-- "0..1" sparrow_Try : try_0
+@enduml

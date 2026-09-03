@@ -1,0 +1,25 @@
+@startuml
+class fowlerdsl_Command {
+  + code : str
+  + name : str
+}
+class fowlerdsl_Event {
+  + code : str
+  + name : str
+  + resetting : bool
+}
+class fowlerdsl_State {
+  + name : str
+}
+class fowlerdsl_Statemachine {
+}
+class fowlerdsl_Transition {
+}
+fowlerdsl_Command "0..9999" -- "1..1" fowlerdsl_State : actions5
+fowlerdsl_Command "0..9999" --* "1..1" fowlerdsl_Statemachine : commands1
+fowlerdsl_Event "0..1" -- "1..1" fowlerdsl_Transition : event10
+fowlerdsl_Event "0..9999" --* "1..1" fowlerdsl_Statemachine : events0
+fowlerdsl_State "0..1" -- "1..1" fowlerdsl_Transition : state13
+fowlerdsl_State "0..9999" --* "1..1" fowlerdsl_Statemachine : states3
+fowlerdsl_State "1..1" *-- "0..9999" fowlerdsl_Transition : transitions8
+@enduml

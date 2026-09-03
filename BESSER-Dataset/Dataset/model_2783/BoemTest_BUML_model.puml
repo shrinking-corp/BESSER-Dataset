@@ -1,0 +1,45 @@
+@startuml
+class A {
+}
+enum AnEnumeration {
+  LITERAL0
+  LITERAL1
+  LITERAL2
+}
+class B {
+}
+class BoemTest_A {
+}
+class BoemTest_B {
+  + enumAttr : str
+}
+class BoemTest_BNode {
+}
+class BoemTest_C {
+}
+abstract class BoemTest_NamedElement {
+  + name : str
+}
+class BoemTest_Node {
+}
+class NamedElement {
+}
+A <|-- BoemTest_B
+B <|-- BoemTest_C
+NamedElement <|-- BoemTest_A
+NamedElement <|-- BoemTest_Node
+BoemTest_A "0..9999" --* "1..1" BoemTest_A : autoContainementA14
+BoemTest_A "1..1" *-- "0..1" BoemTest_Node : childNodeA4
+BoemTest_B "1..1" *-- "0..1" BoemTest_Node : childNodeB18
+BoemTest_C "1..1" *-- "0..1" BoemTest_Node : childNodeC25
+BoemTest_Node "0..9999" --* "1..1" BoemTest_Node : children35
+BoemTest_A "1..1" *-- "0..9999" BoemTest_Node : childrenNode2A1
+BoemTest_A "1..1" *-- "0..9999" BoemTest_Node : childrenNodeA0
+BoemTest_B "1..1" *-- "0..9999" BoemTest_Node : childrenNodeB16
+BoemTest_B "1..1" -- "0..1" BoemTest_BNode : childrenNodeBNode21
+BoemTest_C "1..1" *-- "0..9999" BoemTest_Node : childrenNodeC23
+BoemTest_A "1..1" -- "0..1" BoemTest_Node : referenceNodeA10
+BoemTest_C "1..1" -- "0..1" BoemTest_Node : referenceNodeC31
+BoemTest_A "1..1" -- "0..9999" BoemTest_Node : referencesNodeA7
+BoemTest_C "1..1" -- "0..9999" BoemTest_Node : referencesNodeC28
+@enduml

@@ -1,0 +1,114 @@
+@startuml
+class Administrator {
+  + password : str
+  + username : str
+}
+class CheckStatus {
+  + complaintid : str
+}
+class Customer {
+  + name : str
+  + password : str
+  + userid : int
+}
+class DBDetails {
+  + iIssessionout : bool
+  + isloggedin : bool
+}
+class D_B_details {
+  + logged_in : str
+  + session_out : str
+}
+class Login {
+  + password : str
+  + username : str
+}
+class Logout {
+  + sessionout : int
+}
+class MonitorComplaint {
+  + complaintid : int
+  + complainttype : str
+  + date : date
+}
+class RegisterComplaint {
+  + complainttype : str
+  + description : str
+}
+class UpdateStatus {
+  + isupdated : bool
+}
+class administrator {
+  + password : str
+  + username : str
+}
+class administrator_Actor {
+}
+class check_status {
+  + complaint : str
+}
+class client_Actor {
+}
+class create_user_UseCase {
+}
+class customer {
+  + address : str
+  + email_id : int
+  + name : str
+  + product_id : str
+}
+class find_out_fault_UseCase {
+}
+class login {
+  + password : str
+  + username : str
+}
+class login_UseCase {
+}
+class login_technical_UseCase {
+}
+class logout {
+  + session_out : str
+}
+class logout_UseCase {
+}
+class logout_technician_UseCase {
+}
+class monitor_complaint {
+  + complaint_type : str
+  + complaintid : int
+  + date : str
+}
+class new_complaint_details_UseCase {
+}
+class register_complaint {
+  + complaint_type : str
+  + description : str
+}
+class register_complaint_UseCase {
+}
+class search_user_UseCase {
+}
+class send_to_admin_UseCase {
+}
+class technical_team_Actor {
+}
+class update_status {
+  + supdate : str
+}
+class view_status_UseCase {
+}
+administrator_Actor "0..1" -- "0..1" create_user_UseCase : administrator_create_user
+administrator_Actor "0..1" -- "0..1" login_UseCase : administrator_login
+administrator_Actor "0..1" -- "0..1" logout_UseCase : administrator_logout
+administrator_Actor "0..1" -- "0..1" search_user_UseCase : administrator_search_user
+client_Actor "0..1" -- "0..1" login_UseCase : client_login
+client_Actor "0..1" -- "0..1" logout_UseCase : client_logout
+client_Actor "0..1" -- "0..1" register_complaint_UseCase : client_register_complaint
+client_Actor "0..1" -- "0..1" view_status_UseCase : client_view_status
+find_out_fault_UseCase "0..1" -- "0..1" technical_team_Actor : technical_team_find_out_fault
+login_technical_UseCase "0..1" -- "0..1" technical_team_Actor : technical_team_login_technical
+logout_technician_UseCase "0..1" -- "0..1" technical_team_Actor : technical_team_logout_technician
+new_complaint_details_UseCase "0..1" -- "0..1" technical_team_Actor : technical_team_new_complaint_details
+send_to_admin_UseCase "0..1" -- "0..1" technical_team_Actor : technical_team_send_to_admin
+@enduml

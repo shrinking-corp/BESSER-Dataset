@@ -1,0 +1,27 @@
+@startuml
+class Interface {
+}
+class adlsimple_Base {
+}
+class adlsimple_Binding {
+}
+class adlsimple_Component {
+  + name : str
+}
+abstract class adlsimple_Interface {
+  + name : str
+  + signature : str
+}
+class adlsimple_Provided {
+}
+class adlsimple_Required {
+}
+Interface <|-- adlsimple_Provided
+Interface <|-- adlsimple_Required
+adlsimple_Binding "0..9999" --* "1..1" adlsimple_Interface : bindings3
+adlsimple_Base "1..1" *-- "0..9999" adlsimple_Component : components10
+adlsimple_Binding "1..1" -- "0..1" adlsimple_Interface : from_4
+adlsimple_Component "1..1" *-- "0..9999" adlsimple_Provided : providedInterfaces1
+adlsimple_Component "1..1" *-- "0..9999" adlsimple_Required : requiredInterfaces0
+adlsimple_Binding "1..1" -- "0..1" adlsimple_Interface : to7
+@enduml

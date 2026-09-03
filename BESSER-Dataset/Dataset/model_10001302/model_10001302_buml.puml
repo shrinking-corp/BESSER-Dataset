@@ -1,0 +1,56 @@
+@startuml
+class Administrator {
+  + email : str
+  + user_id : int
+  + user_name : str
+}
+class Booking {
+  + Restaurant_id : str
+  + booking_id : int
+  + customer_id : str
+  + date : date
+  + endTime : str
+  + person : int
+  + reservedTables : str
+  + startTime : str
+}
+class CustomerUI {
+}
+class List__ {
+}
+class List_re_ {
+}
+class List_reservation_ {
+}
+class Management_UI {
+}
+class Reservation_status {
+  + report_id : str
+  + reservation : List_reservation_
+}
+class Restaurant_Reservation_System {
+  + Menu : str
+  + bookings : str
+}
+class Restaurant_owner {
+  + email : str
+  + user_id : str
+  + username : str
+}
+class Staff {
+  + name : str
+  + type : str
+  + user_id : str
+}
+class Table {
+  + numSeats : int
+  + quantity : int
+  + table_id : str
+}
+CustomerUI "0..9999" -- "1..1" Restaurant_Reservation_System : CustomerUI_ReservationManagementSystem
+Booking "0..9999" -- "1..1" Restaurant_Reservation_System : ReservationManagementSystem_Booking
+Reservation_status "0..9999" -- "1..1" Restaurant_Reservation_System : ReservationManagementSystem_Report
+Restaurant_Reservation_System "1..1" -- "0..9999" Staff : Staff_ReservationManagementSystem
+Management_UI "0..9999" -- "0..9999" Staff : Staff_StaffUI
+Booking "1..1" -- "1..9999" Table : Table_Booking
+@enduml

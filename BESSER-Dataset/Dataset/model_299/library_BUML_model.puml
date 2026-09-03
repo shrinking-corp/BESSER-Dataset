@@ -1,0 +1,53 @@
+@startuml
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class library_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class library_Chapter {
+  + name : str
+}
+class library_Community {
+  + name : str
+}
+class library_CommunityRole {
+  + role : str
+}
+class library_Library {
+  + name : str
+}
+class library_Opinion {
+  + context : str
+  + text : str
+}
+class library_Review {
+  + positive : bool
+  + title : str
+}
+class library_Writer {
+  + name : str
+}
+library_Book "1..1" -- "1..1" library_Writer : author10
+library_Book "1..1" -- "1..1" library_Review : book17
+library_Book "1..1" -- "1..1" library_Opinion : book21
+library_Book "0..9999" --* "1..1" library_Library : books1
+library_Book "0..9999" -- "1..1" library_Writer : books4
+library_Book "0..2" --* "1..1" library_Writer : brochures5
+library_Book "1..1" *-- "0..9999" library_Chapter : chapters12
+library_Community "0..9999" --* "1..1" library_Library : communities3
+library_Community "0..1" -- "1..1" library_CommunityRole : community27
+library_Community "1..1" -- "0..1" library_Library : library26
+library_Book "1..1" -- "0..2" library_Opinion : opinions14
+library_Opinion "0..2" --* "1..1" library_Writer : opinions8
+library_CommunityRole "1..1" -- "0..9999" library_Writer : participants29
+library_CommunityRole "0..9999" -- "1..1" library_Writer : participates9
+library_Book "1..1" *-- "0..9999" library_Review : reviews11
+library_Community "1..1" *-- "1..9999" library_CommunityRole : roles24
+library_Opinion "1..1" -- "1..1" library_Writer : writer19
+library_Library "1..1" *-- "0..9999" library_Writer : writers0
+@enduml

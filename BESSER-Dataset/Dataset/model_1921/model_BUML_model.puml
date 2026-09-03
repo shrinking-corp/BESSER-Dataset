@@ -1,0 +1,244 @@
+@startuml
+class AdminInterface {
+}
+class BookingController {
+}
+class CustomerInterface {
+}
+class DatabaseInterface {
+}
+class ReceptionistInterface {
+}
+class model_Admin {
+}
+class model_AdminController {
+  + AdminController(model_expenseExpert : str, model_promotionExpert : str, model_roomExpert : str, model_userExpert : str) : void
+}
+abstract class model_AdminInterface {
+  + AdminController(model_expenseExpert : str, model_promotionExpert : str, model_roomExpert : str, model_userExpert : str) : void
+  + createExpense(model_expense : str) : str
+  + createPromotion(model_promotion : str) : str
+  + createRoom(model_room : str) : str
+  + createUser(model_user : str) : str
+  + login(model_name : str, model_password : str) : str
+  + removeExpense(model_expense : str) : str
+  + removePromotion(model_promotion : str) : str
+  + removeRoom(model_room : str) : str
+  + removeUser(model_user : str) : str
+  + updateExpense(model_expense : str) : str
+  + updatePromotion(model_promotion : str) : str
+  + updateRoom(model_room : str) : bool
+  + updateUser(model_user : str) : str
+  + viewExpenses() : str
+  + viewPromotions() : str
+  + viewRooms() : str
+  + viewUsers() : str
+}
+class model_BankComponent {
+}
+abstract class model_BankInterface {
+}
+class model_Booking {
+  + checkedIn : str
+  + fromDate : date
+  + id : int
+  + promotion : str
+  + roomTypes : str
+  + toDate : date
+  + wishes : str
+  + Booking(model_customer : str, model_fromDate : str, model_id : str, model_promotionCode : str, model_receipt : str, model_roomTypes : str, model_rooms : str, model_toDate : str, model_wishes : str) : void
+}
+class model_BookingController {
+  + BookingController(model_bookingExpert : str, model_expenseExpert : str, model_promotionExpert : str, model_receiptExpert : str, model_roomExpert : str) : void
+}
+class model_BookingExpert {
+  + BookingExpert(model_database : str) : void
+  + addBooking(model_booking : str) : str
+  + checkIn(model_booking : str, model_rooms : str) : bool
+  + checkOut(model_booking : str) : bool
+  + getAllBookings(model_dateFrom : str, model_dateTo : str, model_surname : str) : str
+  + getBooking(model_ID : str) : str
+  + removeBooking(model_booking : str) : bool
+  + updateBooking(model_booking : str) : bool
+}
+class model_Customer {
+  + adress : str
+  + ccNumber : str
+  + ccv : str
+  + email : str
+  + expiringMonth : str
+  + expiringYear : str
+  + firstName : str
+  + surname : str
+  + Customer(model_address : str, model_ccExpiringMonth : str, model_ccExpiringYear : str, model_ccNumber : str, model_ccv : str, model_email : str, model_firstName : str, model_surname : str) : void
+}
+abstract class model_CustomerInterface {
+  + createBooking(model_customer : str, model_fromDate : str, model_promotion : str, model_receipt : str, model_roomTypes : str, model_toDate : str, model_wishes : str) : bool
+  + createCustomer(model_address : str, model_ccNumber : str, model_ccv : str, model_email : str, model_expiringMonth : str, model_expriningYear : str, model_firstName : str, model_surname : str) : str
+  + pay(model_customer : str, model_receipt : str) : bool
+  + searchRooms(model_dateFrom : str, model_dateTo : str, model_numberOfGuests : str, model_numberOfRooms : str) : str
+  + validateCard(model_customer : str) : bool
+}
+class model_Customers {
+}
+abstract class model_DatabaseInterface {
+  + query(model_query : str) : str
+  + send(model_query : str) : bool
+}
+class model_EmailSender {
+  + send(model_booking : str) : bool
+}
+class model_Expense {
+  + date : date
+  + description : str
+  + fixed : bool
+  + id : int
+  + name : str
+  + price : float
+  + receiptId : int
+  + Expense(model_date : str, model_description : str, model_id : str, model_isFixed : str, model_name : str, model_price : str, model_receiptID : str) : void
+}
+class model_ExpenseExpert {
+  + ExpenseExpert(model_database : str) : void
+  + addExpense(model_expense : str) : str
+  + getAllExpense(model_receiptID : str) : str
+  + getExpense(model_ID : str) : str
+  + removeExpense(model_ID : str) : bool
+  + updateExpense(model_expense : str) : bool
+}
+class model_HotelComponent {
+}
+class model_MSAccessDB {
+  + closeConnection() : void
+  + openConnection() : bool
+}
+class model_Payment {
+  + isCreditCardValid(model_customer : str) : bool
+  + makePayment(model_amount : str, model_customer : str) : bool
+}
+class model_Promotion {
+  + code : str
+  + description : str
+  + expirationDate : date
+  + percentage : str
+  + roomType : str
+  + validFrom : date
+  + validTo : date
+  + Promotion(model_code : str, model_description : str, model_expirationDate : str, model_percentage : str, model_roomType : str, model_vaildFrom : str, model_vaildTo : str) : void
+  + calculateDiscount(model_room : str) : float
+}
+class model_PromotionExpert {
+  + PromotionExpert(model_database : str) : void
+  + addPromotion(model_promotion : str) : str
+  + getAllPromotions() : str
+  + getPromotion(model_promotionCode : str) : str
+  + removePromotion(model_code : str) : bool
+  + updatePromotion(model_promotion : str) : bool
+}
+class model_Receipt {
+  + Date : date
+  + id : int
+  + totalCost : float
+  + Receipt(model_date : str, model_expenses : str, model_id : str) : void
+  + addExpense(model_expense : str) : bool
+  + getAllExpenses() : str
+  + removeExpense(model_expense : str) : bool
+}
+class model_ReceiptExpert {
+  + ReceiptExpert(model_database : str) : void
+  + addReceipt(model_receipt : str) : str
+  + combine(model_receiptList : str) : str
+  + getAllReceipt() : str
+  + getReceipt(model_ID : str) : str
+  + removeReceipt(model_receipt : str) : bool
+  + updateReceipt(model_receipt : str) : bool
+}
+class model_Receptionist {
+}
+class model_ReceptionistController {
+  + ReceptionistController(model_bookingExpert : str, model_expenseExpert : str, model_promotionExpert : str, model_receiptExpert : str, model_roomExpert : str, model_userExpert : str) : void
+}
+abstract class model_ReceptionistInterface {
+  + checkIn(model_booking : str, model_rooms : str) : bool
+  + checkOut(model_booking : str) : bool
+  + createResident(model_firstName : str, model_passportNumber : str, model_surname : str) : str
+  + getBooking(model_bookingNumber : str) : str
+  + login(model_name : str, model_password : str) : bool
+  + removeBooking(model_booking : str) : str
+  + viewAllBookings(model_dateFrom : str, model_dateTo : str, model_surname : str) : str
+  + viewUnOccupiedRooms() : str
+}
+class model_Resident {
+  + firstName : str
+  + id : str
+  + surname : str
+  + Resident(model_firstName : str, model_id : str, model_surname : str) : void
+}
+class model_Room {
+  + beds : str
+  + clean : str
+  + description : str
+  + number : str
+  + status : str
+  + type : str
+  + Room(model_beds : str, model_description : str, model_number : str, model_price : str, model_receipt : str, model_status : str, model_type : str) : void
+}
+class model_RoomExpert {
+  + RoomExpert(model_database : str) : void
+  + addRoom(model_room : str) : str
+  + getAllRooms() : str
+  + getAvailableRoomTypes(model_from_ : str, model_numberOfGuests : str, model_numberOfRooms : str, model_to : str) : str
+  + getRoom(model_roomNumber : str) : str
+  + getUnoccupiedRooms() : str
+  + removeRoom(model_room : str) : bool
+  + updateRoom(model_room : str) : bool
+}
+class model_User {
+  + administrator : str
+  + firstName : str
+  + id : str
+  + password : str
+  + receptionist : str
+  + surname : str
+  + User(model_administrator : str, model_firstName : str, model_id : str, model_password : str, model_receptionist : str, model_surname : str) : void
+}
+class model_UserExpert {
+  + UserExpert(model_database : str) : void
+  + addUser(model_user : str) : str
+  + getAllUsers() : str
+  + getUser(model_ID : str) : str
+  + login(model_name : str, model_password : str) : bool
+  + removeUser(model_ID : str) : bool
+  + updateUser(model_user : str) : bool
+}
+AdminInterface <|-- model_AdminController
+BookingController <|-- model_ReceptionistController
+CustomerInterface <|-- model_BookingController
+DatabaseInterface <|-- model_MSAccessDB
+ReceptionistInterface <|-- model_ReceptionistController
+model_BookingController "1..1" -- "1..1" model_BookingExpert : bookingExpert28
+model_Booking "1..1" -- "1..1" model_Customer : customer8
+model_DatabaseInterface "1..1" -- "1..1" model_RoomExpert : database15
+model_DatabaseInterface "1..1" -- "1..1" model_ExpenseExpert : database16
+model_DatabaseInterface "1..1" -- "1..1" model_UserExpert : database18
+model_DatabaseInterface "1..1" -- "1..1" model_PromotionExpert : database20
+model_BookingExpert "1..1" -- "1..1" model_DatabaseInterface : database22
+model_DatabaseInterface "1..1" -- "1..1" model_ReceiptExpert : database24
+model_BookingController "1..1" -- "1..1" model_DatabaseInterface : databaseInterface34
+model_AdminController "1..1" -- "1..1" model_DatabaseInterface : databaseInterface51
+model_BookingController "1..1" -- "1..1" model_ExpenseExpert : expenseExpert37
+model_AdminController "1..1" -- "1..1" model_ExpenseExpert : expenseExpert45
+model_Expense "0..9999" -- "1..1" model_Receipt : expenses5
+model_Expense "1..1" -- "1..1" model_Room : price0
+model_AdminController "1..1" -- "1..1" model_PromotionExpert : promoExpert48
+model_BookingController "1..1" -- "1..1" model_PromotionExpert : promotionExpert31
+model_Receipt "1..1" -- "1..1" model_Room : receipt1
+model_Booking "1..1" -- "1..1" model_Receipt : receipt9
+model_BookingController "1..1" -- "1..1" model_ReceiptExpert : receiptExpert40
+model_Resident "0..9999" -- "1..1" model_Room : residents3
+model_Booking "1..1" -- "0..9999" model_Room : room12
+model_BookingController "1..1" -- "1..1" model_RoomExpert : room26
+model_AdminController "1..1" -- "1..1" model_RoomExpert : roomExpert54
+model_AdminController "1..1" -- "1..1" model_UserExpert : userExpert43
+model_ReceptionistController "1..1" -- "1..1" model_UserExpert : userExpert57
+@enduml

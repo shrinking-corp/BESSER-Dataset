@@ -1,0 +1,33 @@
+@startuml
+class State {
+}
+abstract class basicfsm_Action {
+}
+abstract class basicfsm_Guard {
+}
+class basicfsm_InitialState {
+}
+class basicfsm_Machine {
+  + name : str
+}
+class basicfsm_State {
+  + name : str
+}
+class basicfsm_Trans {
+  + event : str
+}
+class basicfsm_VarDecl {
+  + name : str
+  + value : str
+}
+State <|-- basicfsm_InitialState
+basicfsm_Action "0..1" --* "1..1" basicfsm_Trans : action13
+basicfsm_State "1..1" *-- "0..9999" basicfsm_VarDecl : decls6
+basicfsm_Guard "0..1" --* "1..1" basicfsm_Trans : guard11
+basicfsm_State "1..1" -- "0..9999" basicfsm_Trans : in_3
+basicfsm_State "1..1" -- "0..9999" basicfsm_Trans : out4
+basicfsm_State "0..1" -- "1..1" basicfsm_Trans : src8
+basicfsm_Machine "1..1" *-- "0..9999" basicfsm_State : states0
+basicfsm_State "0..1" -- "1..1" basicfsm_Trans : tgt9
+basicfsm_Machine "1..1" *-- "0..9999" basicfsm_Trans : trans1
+@enduml

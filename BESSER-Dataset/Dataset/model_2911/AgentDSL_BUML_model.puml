@@ -1,0 +1,45 @@
+@startuml
+class Type {
+}
+class agentDSL_Attribute {
+  + many : bool
+  + name : str
+}
+class agentDSL_Entity {
+}
+class agentDSL_Function {
+}
+class agentDSL_Goal {
+  + name : str
+}
+class agentDSL_JAVAID {
+  + name : str
+}
+class agentDSL_Model {
+}
+class agentDSL_Outcome {
+}
+class agentDSL_Task {
+}
+class agentDSL_Type {
+  + name : str
+}
+class agentDSL_TypeDef {
+}
+Type <|-- agentDSL_Entity
+Type <|-- agentDSL_Function
+Type <|-- agentDSL_Outcome
+Type <|-- agentDSL_Task
+Type <|-- agentDSL_TypeDef
+agentDSL_Attribute "0..9999" --* "1..1" agentDSL_Outcome : attributes10
+agentDSL_Attribute "0..9999" --* "1..1" agentDSL_Goal : attributes15
+agentDSL_Attribute "0..9999" --* "1..1" agentDSL_Function : attributes18
+agentDSL_Attribute "0..9999" --* "1..1" agentDSL_Entity : attributes4
+agentDSL_Attribute "0..9999" --* "1..1" agentDSL_Task : attributes6
+agentDSL_Goal "0..1" --* "1..1" agentDSL_Outcome : goal13
+agentDSL_JAVAID "0..1" --* "1..1" agentDSL_TypeDef : mappedType1
+agentDSL_Outcome "0..1" --* "1..1" agentDSL_Task : outcome8
+agentDSL_Entity "1..1" -- "0..1" agentDSL_Entity : superEntity3
+agentDSL_Attribute "1..1" -- "0..1" agentDSL_Type : type20
+agentDSL_Model "1..1" *-- "0..9999" agentDSL_Type : types0
+@enduml

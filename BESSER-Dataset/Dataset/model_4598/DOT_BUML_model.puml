@@ -1,0 +1,166 @@
+@startuml
+class Arc {
+}
+class Compartment {
+}
+class ComplexNodeShape {
+}
+class DOT_Anchor {
+  + name : str
+}
+abstract class DOT_Arc {
+  + constraint : bool
+  + decorate : bool
+  + group : str
+  + minlen : int
+  + sameHead : str
+  + sameTail : str
+}
+class DOT_ArrowShape {
+  + clipping : str
+  + isPlain : bool
+  + size : int
+}
+abstract class DOT_Compartment {
+}
+class DOT_ComplexLabel {
+}
+abstract class DOT_ComplexNodeShape {
+}
+class DOT_DirectedArc {
+  + head_lp : float
+  + tail_lp : float
+}
+class DOT_Graph {
+  + boundingBox : str
+  + center : bool
+  + compound : bool
+  + concentrate : bool
+  + labeljust : str
+  + labelloc : str
+  + nodeSeparation : float
+  + ordering : str
+  + rankDir : str
+  + ratio : str
+  + size : str
+  + type : str
+}
+abstract class DOT_GraphElement {
+  + color : str
+  + name : str
+  + style : str
+}
+class DOT_HorizontalCompartment {
+}
+abstract class DOT_Label {
+}
+class DOT_Layer {
+  + layerSeparator : str
+}
+class DOT_MNodeShape {
+}
+class DOT_Node {
+  + fixedSize : bool
+  + fontname : str
+  + fontsize : int
+  + height : int
+  + width : int
+}
+abstract class DOT_NodeShape {
+}
+abstract class DOT_Nodelike {
+}
+class DOT_PointNodeShape {
+}
+class DOT_PolygonNodeShape {
+  + distortion : int
+  + isRegular : bool
+  + orientation : int
+  + sides : int
+  + skew : int
+}
+class DOT_RecordNodeShape {
+}
+abstract class DOT_Shape {
+  + height : int
+  + peripheries : int
+  + width : int
+}
+class DOT_SimpleCompartment {
+  + content : str
+}
+class DOT_SimpleLabel {
+  + content : str
+}
+class DOT_SimpleNodeShape {
+}
+class DOT_SubGraph {
+  + labelloc : str
+}
+class DOT_UndirectedArc {
+}
+class DOT_VerticalCompartment {
+}
+class GraphElement {
+}
+class Label {
+}
+class NodeShape {
+}
+class Nodelike {
+}
+class Shape {
+}
+Arc <|-- DOT_DirectedArc
+Arc <|-- DOT_UndirectedArc
+Compartment <|-- DOT_HorizontalCompartment
+Compartment <|-- DOT_SimpleCompartment
+Compartment <|-- DOT_VerticalCompartment
+ComplexNodeShape <|-- DOT_MNodeShape
+ComplexNodeShape <|-- DOT_PolygonNodeShape
+ComplexNodeShape <|-- DOT_RecordNodeShape
+GraphElement <|-- DOT_Arc
+GraphElement <|-- DOT_Graph
+GraphElement <|-- DOT_Layer
+GraphElement <|-- DOT_Nodelike
+GraphElement <|-- DOT_Shape
+Label <|-- DOT_ComplexLabel
+Label <|-- DOT_SimpleLabel
+NodeShape <|-- DOT_ComplexNodeShape
+NodeShape <|-- DOT_PointNodeShape
+NodeShape <|-- DOT_SimpleNodeShape
+Nodelike <|-- DOT_Node
+Nodelike <|-- DOT_SubGraph
+Shape <|-- DOT_ArrowShape
+Shape <|-- DOT_NodeShape
+DOT_Anchor "0..1" -- "1..1" DOT_Compartment : anchor5
+DOT_Arc "0..9999" -- "1..1" DOT_Layer : arcs14
+DOT_ArrowShape "0..1" --* "1..1" DOT_DirectedArc : arrowHead42
+DOT_ArrowShape "0..1" --* "1..1" DOT_DirectedArc : arrowTail48
+DOT_Label "0..1" --* "1..1" DOT_MNodeShape : bottomlabel53
+DOT_Compartment "1..9999" --* "1..1" DOT_ComplexLabel : compartments1
+DOT_Compartment "1..1" *-- "0..1" DOT_Compartment : compartments4
+DOT_Compartment "1..1" -- "0..1" DOT_ComplexLabel : complexLabel2
+DOT_GraphElement "0..1" -- "1..1" DOT_Label : element0
+DOT_Arc "1..1" -- "1..1" DOT_Nodelike : fromNode32
+DOT_Graph "1..1" -- "1..1" DOT_Layer : graph16
+DOT_Graph "0..1" -- "1..1" DOT_Nodelike : graph23
+DOT_DirectedArc "1..1" -- "0..1" DOT_Label : headlabel43
+DOT_GraphElement "1..1" *-- "0..1" DOT_Label : label8
+DOT_Graph "1..1" *-- "0..9999" DOT_Layer : layers10
+DOT_Layer "0..9999" -- "1..1" DOT_Nodelike : layers26
+DOT_Arc "1..1" -- "0..9999" DOT_Layer : layers36
+DOT_Arc "1..1" -- "0..1" DOT_Nodelike : lhead38
+DOT_Arc "1..1" -- "0..1" DOT_Nodelike : ltail39
+DOT_Layer "1..1" -- "0..9999" DOT_Nodelike : nodes12
+DOT_Nodelike "0..9999" --* "1..1" DOT_SubGraph : nodes29
+DOT_Graph "1..1" *-- "0..9999" DOT_Nodelike : nodes9
+DOT_Nodelike "1..1" -- "0..1" DOT_SubGraph : owner18
+DOT_Arc "0..9999" -- "1..1" DOT_Nodelike : referredBy21
+DOT_Arc "0..9999" -- "1..1" DOT_Nodelike : refers19
+DOT_Node "1..1" *-- "0..1" DOT_NodeShape : shape31
+DOT_Anchor "1..1" -- "0..1" DOT_Compartment : source6
+DOT_DirectedArc "1..1" -- "0..1" DOT_Label : taillabel45
+DOT_Arc "1..1" -- "1..1" DOT_Nodelike : toNode34
+DOT_Label "0..1" --* "1..1" DOT_MNodeShape : toplabel51
+@enduml

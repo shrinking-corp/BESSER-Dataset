@@ -1,0 +1,30 @@
+@startuml
+class Node {
+}
+class PetriNetElement {
+}
+class pETRI_Arc {
+  + multiplicity : int
+  + readOnly : bool
+}
+class pETRI_Node {
+  + name : str
+}
+class pETRI_PetriNet {
+  + name : str
+}
+class pETRI_PetriNetElement {
+}
+class pETRI_Place {
+  + marking : int
+}
+class pETRI_Transition {
+}
+Node <|-- pETRI_Place
+Node <|-- pETRI_Transition
+PetriNetElement <|-- pETRI_Arc
+PetriNetElement <|-- pETRI_Node
+pETRI_PetriNet "1..1" *-- "0..9999" pETRI_PetriNetElement : petriNetElements0
+pETRI_Arc "1..1" -- "0..1" pETRI_Node : predecessor1
+pETRI_Arc "1..1" -- "0..1" pETRI_Node : successor2
+@enduml

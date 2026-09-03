@@ -1,0 +1,20 @@
+@startuml
+class traces_SimulatorRun {
+  + behaviorName : str
+  + id : int
+  + timestamp : date
+}
+class traces_Value {
+  + clockMax : float
+  + clockMin : float
+  + valueMax : float
+  + valueMin : float
+}
+class traces_Variable {
+  + name : str
+}
+traces_SimulatorRun "1..1" -- "1..1" traces_Variable : run1
+traces_Value "0..9999" --* "1..1" traces_Variable : values2
+traces_Value "1..1" -- "1..1" traces_Variable : variable3
+traces_SimulatorRun "1..1" *-- "0..9999" traces_Variable : variables0
+@enduml

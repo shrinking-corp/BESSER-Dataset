@@ -1,0 +1,55 @@
+@startuml
+class Payment {
+  + cardNo : int
+  + cardType : char
+  + customerName : char
+  + customerName1 : char
+}
+class admin {
+  + user_mobile : int
+  + user_name : str
+  + user_type : int
+}
+class cart {
+  + NumberOfProduct : int
+  + id : int
+  + price : str
+  + product1 : char
+  + product2 : char
+  + productn : char
+  + total : str
+}
+class char {
+}
+class customer {
+  + address : char
+  + email : char
+  + name : char
+  + password : int
+  + phone : int
+}
+class delivery {
+  + name : char
+  + password : char
+}
+class gest {
+}
+class product {
+  + group : char
+  + id : int
+  + name : char
+  + subgroub : char
+}
+class supplier {
+  + name : char
+  + password : int
+}
+Payment "0..1" -- "0..1" customer : Payment_customer
+admin "0..1" -- "0..1" product : admin_product
+cart "0..1" -- "0..1" customer : customer_cart
+customer "0..1" -- "0..1" product : customer_product
+Payment "0..1" -- "0..1" delivery : delivery_Payment
+delivery "0..1" -- "0..1" product : delivery_product
+gest "0..1" -- "0..1" product : product_gest
+product "0..1" -- "0..1" supplier : supplier_product
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+class CoachBus_AdultTicket {
+  + isElderlyDiscount : bool
+}
+class CoachBus_BookingOffice {
+  + location : str
+  + name : str
+  + officeID : int
+}
+class CoachBus_ChildTicket {
+  + isSchoolTrip : bool
+}
+class CoachBus_Coach {
+  + id : int
+  + model : str
+  + name : str
+  + noOfSeats : int
+}
+class CoachBus_Employee {
+  + baseSalary : float
+  + id : int
+}
+class CoachBus_Manager {
+  + hasMBA : bool
+}
+class CoachBus_Passenger {
+  + age : int
+  + idCard : str
+  + name : str
+}
+class CoachBus_PrivateTrip {
+  + extras : str
+}
+class CoachBus_RegularTrip {
+}
+class CoachBus_SecurityGuard {
+  + shift : str
+}
+class CoachBus_Ticket {
+  + isRoundTrip : bool
+  + number : int
+  + price : float
+}
+class CoachBus_Trip {
+  + destination : str
+  + name : str
+  + number : int
+  + origin : str
+  + type : str
+}
+class CoachBus_VendingMachine {
+  + number : int
+}
+class Employee {
+}
+class Ticket {
+}
+class Trip {
+}
+Employee <|-- CoachBus_Manager
+Employee <|-- CoachBus_SecurityGuard
+Ticket <|-- CoachBus_AdultTicket
+Ticket <|-- CoachBus_ChildTicket
+Trip <|-- CoachBus_PrivateTrip
+Trip <|-- CoachBus_RegularTrip
+CoachBus_Coach "1..1" -- "1..1" CoachBus_SecurityGuard : coach10
+CoachBus_Coach "1..9999" -- "1..1" CoachBus_Trip : coaches0
+CoachBus_BookingOffice "1..1" -- "1..9999" CoachBus_Coach : coaches14
+CoachBus_Coach "1..1" -- "0..9999" CoachBus_SecurityGuard : guards4
+CoachBus_BookingOffice "1..1" -- "0..1" CoachBus_Manager : manager16
+CoachBus_BookingOffice "0..1" -- "1..1" CoachBus_Manager : office12
+CoachBus_BookingOffice "1..1" -- "1..1" CoachBus_VendingMachine : office26
+CoachBus_BookingOffice "0..9999" -- "1..1" CoachBus_Coach : offices5
+CoachBus_Passenger "1..9999" -- "1..1" CoachBus_Trip : passengers1
+CoachBus_Passenger "1..1" -- "1..1" CoachBus_Ticket : psg19
+CoachBus_Ticket "0..9999" -- "1..1" CoachBus_VendingMachine : tickets24
+CoachBus_Passenger "1..1" -- "0..9999" CoachBus_Ticket : tickets9
+CoachBus_Coach "1..1" -- "1..9999" CoachBus_Trip : trips3
+CoachBus_Passenger "1..1" -- "1..9999" CoachBus_Trip : trips7
+CoachBus_Ticket "1..1" -- "1..1" CoachBus_VendingMachine : vm21
+CoachBus_BookingOffice "1..1" -- "0..9999" CoachBus_VendingMachine : vms17
+@enduml

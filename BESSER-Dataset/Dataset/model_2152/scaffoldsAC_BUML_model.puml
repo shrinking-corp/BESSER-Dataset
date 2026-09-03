@@ -1,0 +1,20 @@
+@startuml
+class scaffolds_Contig {
+  + length : int
+  + multiplicity : int
+}
+class scaffolds_Edge {
+  + distance : int
+  + weight : int
+}
+class scaffolds_ScaffoldGraph {
+}
+class scaffolds_Vertex {
+  + num : int
+}
+scaffolds_Contig "0..9999" --* "1..1" scaffolds_ScaffoldGraph : contigs0
+scaffolds_Edge "0..9999" --* "1..1" scaffolds_ScaffoldGraph : edges1
+scaffolds_Edge "0..9999" -- "1..1" scaffolds_Vertex : edges6
+scaffolds_Contig "1..1" *-- "2..2" scaffolds_Vertex : vertices3
+scaffolds_Edge "1..1" -- "2..2" scaffolds_Vertex : vertices5
+@enduml

@@ -1,0 +1,161 @@
+@startuml
+class Base {
+}
+class DataKind {
+}
+enum DatabaseTypeType {
+  Oracle
+  Postgres
+}
+enum FixedMetricRetentionPeriod {
+  Always
+  OneMonth
+  OneWeek
+  OneYear
+}
+enum KindHintType {
+  AVG
+  BH
+}
+class Mapping {
+}
+enum ObjectKindType {
+  EQUIPMENT
+  FUNCTION
+  NODE
+  RELATIONSHIP
+}
+class Rule {
+}
+enum ValueKindType {
+  DATE
+  DATETIME
+  INTERVAL
+  METRIC
+  NULL
+  TIME
+}
+class metrics_DataKind {
+}
+class metrics_DateTimeRange {
+}
+class metrics_Expression {
+}
+class metrics_IdentifierDataKind {
+  + objectKind : str
+  + objectProperty : str
+  + pattern : str
+}
+class metrics_Mapping {
+  + firstDataRow : str
+  + headerRow : str
+  + intervalHint : str
+}
+class metrics_MappingCSV {
+  + delimiter : str
+  + filterPattern : str
+}
+class metrics_MappingColumn {
+  + column : str
+}
+class metrics_MappingExternal {
+  + classURI : str
+  + pluginID : str
+}
+class metrics_MappingRDBMS {
+  + databaseType : str
+  + dateFormat : str
+  + dateTimeFormat : str
+  + password : str
+  + query : str
+  + timeFormat : str
+  + user : str
+}
+class metrics_MappingRecord {
+  + column : str
+  + count : str
+  + message : str
+}
+class metrics_MappingStatistic {
+  + intervalEstimate : str
+  + message : str
+  + totalRecords : str
+}
+class metrics_MappingXLS {
+  + filterPattern : str
+  + sheetNumber : str
+}
+class metrics_Metric {
+  + description : str
+  + measurementKind : str
+  + measurementPoint : str
+  + name : str
+}
+class metrics_MetricAggregationRule {
+}
+class metrics_MetricAggregationRules {
+}
+class metrics_MetricRetentionPeriods {
+  + metricRetentionPeriods : str
+}
+class metrics_MetricRetentionRule {
+  + intervalHint : str
+  + period : str
+}
+class metrics_MetricRetentionRules {
+}
+class metrics_MetricSource {
+  + filterPattern : str
+  + metricLocation : str
+  + name : str
+}
+class metrics_MetricValueRange {
+  + intervalHint : str
+  + kindHint : str
+}
+class metrics_RuleSet {
+}
+class metrics_Unit {
+}
+class metrics_Value {
+}
+class metrics_ValueDataKind {
+  + format : str
+  + kindHint : str
+  + valueKind : str
+}
+Base <|-- metrics_Mapping
+Base <|-- metrics_MappingColumn
+Base <|-- metrics_MappingRecord
+Base <|-- metrics_MappingStatistic
+Base <|-- metrics_Metric
+Base <|-- metrics_MetricSource
+DataKind <|-- metrics_IdentifierDataKind
+DataKind <|-- metrics_ValueDataKind
+Mapping <|-- metrics_MappingCSV
+Mapping <|-- metrics_MappingExternal
+Mapping <|-- metrics_MappingRDBMS
+Mapping <|-- metrics_MappingXLS
+Rule <|-- metrics_MetricAggregationRule
+Rule <|-- metrics_MetricRetentionRule
+metrics_Expression "0..1" -- "1..1" metrics_MetricAggregationRule : aggregationExpression23
+metrics_Mapping "1..1" *-- "0..9999" metrics_MappingColumn : dataMappingColumns1
+metrics_DataKind "0..1" --* "1..1" metrics_MappingColumn : dataType4
+metrics_Expression "0..1" -- "1..1" metrics_Metric : expressionRef17
+metrics_MappingRecord "0..9999" --* "1..1" metrics_MappingStatistic : failedRecords6
+metrics_Mapping "1..1" *-- "0..9999" metrics_MappingColumn : headerMappingColumns0
+metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : mappingDuration7
+metrics_MetricAggregationRule "0..9999" --* "1..1" metrics_MetricAggregationRules : metricAggregationRules25
+metrics_MetricSource "1..1" -- "0..1" metrics_RuleSet : metricAggregationRules34
+metrics_Mapping "0..1" --* "1..1" metrics_MetricSource : metricMapping28
+metrics_Metric "0..1" -- "1..1" metrics_ValueDataKind : metricRef40
+metrics_MetricRetentionRule "0..9999" --* "1..1" metrics_MetricRetentionRules : metricRetentionRules27
+metrics_MetricSource "1..1" -- "0..1" metrics_RuleSet : metricRetentionRules36
+metrics_Metric "1..1" -- "0..1" metrics_MetricSource : metricSourceRef19
+metrics_MetricValueRange "1..1" *-- "0..9999" metrics_Value : metricValues39
+metrics_Metric "1..1" *-- "0..9999" metrics_Metric : metrics16
+metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : periodEstimate9
+metrics_MappingStatistic "0..9999" --* "1..1" metrics_MetricSource : statistics31
+metrics_MappingStatistic "0..9999" --* "1..1" metrics_MappingStatistic : subStatistics13
+metrics_Metric "1..1" -- "0..1" metrics_Unit : unitRef21
+@enduml

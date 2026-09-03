@@ -1,0 +1,86 @@
+@startuml
+class Behaviour_Colour {
+  + attribute : str
+}
+class Behaviour_ConditionalTransition {
+}
+abstract class Behaviour_Connection {
+}
+class Behaviour_DefaultPlace {
+}
+class Behaviour_Description {
+}
+abstract class Behaviour_Place {
+}
+class Behaviour_PostTransitionConnection {
+}
+class Behaviour_PreTransitionConnection {
+  + requiredTokenAmount : int
+}
+abstract class Behaviour_QueuePlace {
+}
+class Behaviour_Server {
+  + capacity : int
+}
+class Behaviour_StartPlace {
+  + spawnPolicy : str
+}
+class Behaviour_StochasticTransition {
+}
+class Behaviour_Token {
+}
+abstract class Behaviour_Transition {
+}
+class Behaviour_TransitionFunction {
+  + transitionFunction : str
+}
+class Behaviour_WaitingLine {
+  + schedulingPolicy : str
+}
+class Connection {
+}
+class Identifier {
+}
+class Place {
+}
+class Transition {
+}
+Connection <|-- Behaviour_PostTransitionConnection
+Connection <|-- Behaviour_PreTransitionConnection
+Identifier <|-- Behaviour_Colour
+Identifier <|-- Behaviour_Connection
+Identifier <|-- Behaviour_Description
+Identifier <|-- Behaviour_Place
+Identifier <|-- Behaviour_Token
+Identifier <|-- Behaviour_Transition
+Place <|-- Behaviour_DefaultPlace
+Place <|-- Behaviour_QueuePlace
+Place <|-- Behaviour_Server
+Place <|-- Behaviour_StartPlace
+Place <|-- Behaviour_WaitingLine
+Transition <|-- Behaviour_ConditionalTransition
+Transition <|-- Behaviour_StochasticTransition
+Behaviour_Connection "0..9999" --* "1..1" Behaviour_Description : arrows32
+Behaviour_Colour "0..9999" --* "1..1" Behaviour_Token : attributes30
+Behaviour_Token "0..9999" --* "1..1" Behaviour_TransitionFunction : emittedToken46
+Behaviour_PreTransitionConnection "1..9999" -- "1..1" Behaviour_Transition : incommingEdges2
+Behaviour_PostTransitionConnection "0..9999" -- "1..1" Behaviour_Transition : outgoingEdges1
+Behaviour_Description "1..1" *-- "1..9999" Behaviour_Place : place34
+Behaviour_Connection "1..1" -- "1..1" Behaviour_Place : place4
+Behaviour_DefaultPlace "1..1" -- "1..9999" Behaviour_PostTransitionConnection : postTransitions11
+Behaviour_PostTransitionConnection "1..9999" -- "1..1" Behaviour_WaitingLine : postTransitions27
+Behaviour_PreTransitionConnection "1..1" -- "1..1" Behaviour_Server : preTransition23
+Behaviour_PreTransitionConnection "1..9999" -- "1..1" Behaviour_StartPlace : preTransitions17
+Behaviour_DefaultPlace "1..1" -- "1..9999" Behaviour_PreTransitionConnection : preTransitions9
+Behaviour_QueuePlace "1..1" *-- "1..1" Behaviour_Server : server14
+Behaviour_Server "1..1" -- "1..1" Behaviour_WaitingLine : server26
+Behaviour_Place "1..1" -- "0..9999" Behaviour_Token : token0
+Behaviour_Description "1..1" *-- "0..9999" Behaviour_Token : token40
+Behaviour_Description "1..1" *-- "1..9999" Behaviour_Transition : transition37
+Behaviour_Connection "1..1" -- "1..1" Behaviour_Transition : transition6
+Behaviour_PostTransitionConnection "1..1" -- "1..1" Behaviour_TransitionFunction : transitionConnection43
+Behaviour_ConditionalTransition "1..1" *-- "0..9999" Behaviour_TransitionFunction : transitionFunction19
+Behaviour_StochasticTransition "1..1" *-- "0..9999" Behaviour_TransitionFunction : transitionFunction20
+Behaviour_QueuePlace "1..1" *-- "1..1" Behaviour_WaitingLine : waitingLine15
+Behaviour_Server "1..1" -- "1..1" Behaviour_WaitingLine : waitingLine22
+@enduml

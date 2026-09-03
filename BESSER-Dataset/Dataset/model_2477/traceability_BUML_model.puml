@@ -1,0 +1,59 @@
+@startuml
+class traceability_Category {
+  + name : str
+}
+class traceability_DiffCategory {
+  + modelIndex : int
+  + name : str
+  + unequal : bool
+}
+class traceability_EObject {
+}
+class traceability_LogEntry {
+  + comment : str
+  + message : str
+  + messageType : int
+  + severity : int
+}
+class traceability_Trace {
+  + comment : str
+  + description : str
+  + value : str
+}
+class traceability_TraceComment {
+  + column : str
+  + comment : str
+  + date : date
+  + username : str
+}
+class traceability_TraceDiff {
+  + comment : str
+}
+class traceability_TraceDiffs {
+}
+class traceability_Traces {
+  + comments : str
+  + date : date
+  + fullName : str
+  + location : str
+  + originalSourceURL : str
+  + uriMap : str
+  + username : str
+}
+traceability_Trace "1..1" *-- "0..9999" traceability_Trace : children5
+traceability_LogEntry "1..1" *-- "0..9999" traceability_TraceComment : comments13
+traceability_TraceComment "0..9999" --* "1..1" traceability_TraceDiff : comments26
+traceability_Trace "1..1" *-- "0..9999" traceability_TraceComment : comments9
+traceability_TraceDiffs "1..1" -- "0..9999" traceability_Traces : comparedTraces31
+traceability_Category "1..1" *-- "0..9999" traceability_EObject : contents33
+traceability_DiffCategory "1..1" *-- "0..9999" traceability_TraceDiff : diffs29
+traceability_EObject "0..1" -- "1..1" traceability_TraceComment : narrowDown35
+traceability_Trace "1..1" -- "0..1" traceability_Trace : parent7
+traceability_EObject "0..9999" -- "1..1" traceability_LogEntry : participants11
+traceability_EObject "0..9999" -- "1..1" traceability_TraceDiff : participants24
+traceability_EObject "0..9999" -- "1..1" traceability_Trace : source0
+traceability_EObject "0..1" -- "1..1" traceability_Traces : sourceModel16
+traceability_EObject "0..9999" -- "1..1" traceability_Trace : target1
+traceability_EObject "0..1" -- "1..1" traceability_Traces : targetModel18
+traceability_EObject "0..9999" --* "1..1" traceability_Traces : traces21
+@enduml

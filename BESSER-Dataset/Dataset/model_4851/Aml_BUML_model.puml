@@ -1,0 +1,95 @@
+@startuml
+class AbstractElements {
+}
+enum Color {
+  Black
+  Green
+  Grey
+  Red
+  White
+}
+class SuperEntity {
+}
+class aml_AbstractElements {
+  + name : str
+}
+class aml_Aml {
+}
+class aml_Cable {
+}
+class aml_ColorFeature {
+  + name : str
+  + value : str
+}
+class aml_Drive {
+}
+class aml_Entity {
+}
+class aml_Feature {
+  + name : str
+  + value : str
+}
+class aml_FormFeature {
+  + name : str
+  + value : int
+}
+class aml_LengthFeature {
+  + name : str
+  + value : float
+}
+class aml_MaxFeature {
+  + name : str
+  + value : int
+}
+class aml_MinMax {
+}
+class aml_NetWorkFeature {
+  + name : str
+  + value : str
+}
+class aml_PriceRule {
+}
+class aml_ProductPUIDFeature {
+  + name : str
+  + values : int
+}
+class aml_SizeFeature {
+  + name : str
+  + value : int
+}
+class aml_SpeedFeature {
+  + name : str
+  + value : float
+}
+class aml_SuperEntity {
+}
+class aml_TargetGroupFeature {
+  + name : str
+  + value : str
+}
+class aml_TypeFeature {
+  + name : str
+  + value : str
+}
+AbstractElements <|-- aml_Entity
+AbstractElements <|-- aml_MinMax
+AbstractElements <|-- aml_PriceRule
+AbstractElements <|-- aml_SuperEntity
+SuperEntity <|-- aml_Cable
+SuperEntity <|-- aml_Drive
+aml_Cable "1..1" *-- "0..1" aml_ColorFeature : colorFeature13
+aml_AbstractElements "0..9999" --* "1..1" aml_Aml : elements0
+aml_Feature "0..9999" --* "1..1" aml_PriceRule : features20
+aml_Entity "1..1" *-- "0..9999" aml_Feature : features23
+aml_Drive "1..1" *-- "0..1" aml_FormFeature : formFeature11
+aml_Cable "1..1" *-- "0..1" aml_LengthFeature : lengthFeature16
+aml_MaxFeature "0..1" --* "1..1" aml_MinMax : maxFeature4
+aml_Cable "1..1" *-- "0..1" aml_NetWorkFeature : networkFeature14
+aml_MinMax "1..1" *-- "0..1" aml_ProductPUIDFeature : productPuidsFeature2
+aml_Drive "1..1" *-- "0..1" aml_SizeFeature : sizeFeature7
+aml_Drive "1..1" *-- "0..1" aml_SpeedFeature : speedFeature9
+aml_MinMax "0..1" -- "1..1" aml_PriceRule : superType18
+aml_Entity "1..1" -- "0..1" aml_SuperEntity : superType22
+aml_MinMax "1..1" *-- "0..1" aml_TargetGroupFeature : targetGroupFeature1
+aml_Drive "1..1" *-- "0..1" aml_TypeFeature : typeFeature6
+@enduml

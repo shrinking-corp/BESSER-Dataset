@@ -1,0 +1,37 @@
+@startuml
+class Organization {
+}
+class Person {
+}
+class project_Adult {
+}
+class project_Child {
+}
+class project_Enrollment {
+}
+class project_Integer {
+}
+class project_Organization {
+}
+class project_Person {
+}
+class project_Student {
+}
+class project_Teenager {
+}
+class project_University {
+}
+Organization <|-- project_University
+Person <|-- project_Adult
+Person <|-- project_Child
+Person <|-- project_Student
+Person <|-- project_Teenager
+project_Enrollment "0..9999" -- "1..1" project_Integer : enrollments0
+project_Enrollment "1..9999" -- "1..1" project_Student : enrollments2
+project_Enrollment "1..9999" -- "1..1" project_University : enrollments5
+project_Enrollment "1..1" -- "1..1" project_Integer : id12
+project_Enrollment "1..1" -- "1..1" project_Student : student9
+project_Student "1..9999" -- "1..1" project_University : students4
+project_Student "1..1" -- "1..9999" project_University : universities1
+project_Enrollment "1..1" -- "1..1" project_University : university7
+@enduml

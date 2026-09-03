@@ -1,0 +1,89 @@
+@startuml
+class AbstractFunction {
+}
+enum FunctionDomain {
+  form
+  space
+  time
+}
+class Port {
+}
+class ProcessNode {
+}
+class Sequence {
+}
+class SequenceNode {
+}
+abstract class effbd902_AbstractFunction {
+  + id : str
+}
+class effbd902_And {
+}
+class effbd902_Description {
+  + content : str
+}
+class effbd902_Final {
+}
+class effbd902_Flow {
+}
+class effbd902_Function {
+  + domain : str
+}
+class effbd902_InputPort {
+}
+class effbd902_Item {
+  + name : str
+}
+class effbd902_Iteration {
+}
+class effbd902_Loop {
+}
+class effbd902_LoopExit {
+}
+class effbd902_Or {
+}
+class effbd902_OutputPort {
+}
+abstract class effbd902_Port {
+  + id : str
+}
+abstract class effbd902_ProcessNode {
+  + label : str
+}
+abstract class effbd902_Sequence {
+}
+abstract class effbd902_SequenceNode {
+  + name : str
+  + tMax : int
+  + tMin : int
+}
+class effbd902_Start {
+}
+class effbd902_Token {
+}
+AbstractFunction <|-- effbd902_Function
+Port <|-- effbd902_InputPort
+Port <|-- effbd902_OutputPort
+ProcessNode <|-- effbd902_Flow
+ProcessNode <|-- effbd902_Function
+Sequence <|-- effbd902_And
+Sequence <|-- effbd902_Final
+Sequence <|-- effbd902_Iteration
+Sequence <|-- effbd902_Loop
+Sequence <|-- effbd902_LoopExit
+Sequence <|-- effbd902_Or
+Sequence <|-- effbd902_Start
+SequenceNode <|-- effbd902_Function
+SequenceNode <|-- effbd902_Sequence
+effbd902_SequenceNode "1..1" -- "0..9999" effbd902_SequenceNode : controlFlowEdge14
+effbd902_AbstractFunction "0..9999" --* "1..1" effbd902_Function : decompositions0
+effbd902_Description "0..9999" --* "1..1" effbd902_Function : descriptions9
+effbd902_Flow "0..9999" --* "1..1" effbd902_Function : flows3
+effbd902_Function "1..1" *-- "0..9999" effbd902_InputPort : inputPorts7
+effbd902_Flow "1..1" -- "0..9999" effbd902_InputPort : inputflowEdge15
+effbd902_Flow "1..1" *-- "0..9999" effbd902_Item : items18
+effbd902_Function "1..1" *-- "0..9999" effbd902_OutputPort : outputPorts5
+effbd902_Flow "0..9999" -- "1..1" effbd902_OutputPort : outputflowEdge20
+effbd902_Function "1..1" *-- "0..9999" effbd902_Sequence : sequenceNodes1
+effbd902_Function "1..1" *-- "0..9999" effbd902_Token : tokens11
+@enduml

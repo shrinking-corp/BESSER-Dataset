@@ -1,0 +1,34 @@
+@startuml
+enum Event {
+  RECEIVE
+  SEND
+}
+enum TypeOfChannel {
+  Asynchronous
+  Synchronous
+}
+class amf_Channel {
+  + Type : str
+  + name : str
+}
+class amf_Network {
+  + name : str
+}
+class amf_State {
+  + name : str
+}
+class amf_Statemachine {
+  + name : str
+}
+class amf_Transition {
+  + event : str
+}
+amf_Channel "0..9999" --* "1..1" amf_Network : channel0
+amf_Channel "0..1" -- "1..1" amf_Transition : channel13
+amf_State "0..1" -- "1..1" amf_Statemachine : initialstate3
+amf_State "0..1" -- "1..1" amf_Transition : source10
+amf_State "0..9999" --* "1..1" amf_Statemachine : state5
+amf_Network "1..1" *-- "0..9999" amf_Statemachine : statemachine1
+amf_State "0..1" -- "1..1" amf_Transition : target16
+amf_Statemachine "1..1" *-- "0..9999" amf_Transition : transition8
+@enduml

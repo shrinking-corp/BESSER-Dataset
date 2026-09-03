@@ -139,7 +139,7 @@ Unnamed1: Constraint = Constraint(
 # Domain Model
 domain_model = DomainModel(
     name="FeatureModel",
-    types={FeatureModel_FeatureModel, FeatureModel_RootFeature, FeatureModel_FeatureConstraint, FeatureModel_ConfigConstraint, FeatureModel_Constraint, Constraint, FeatureModel_Feature, FeatureModel_And, ConfigConstraint, FeatureModel_Or, FeatureModel_Xor, kind, Type},
+    types={FeatureModel_FeatureModel, FeatureModel_RootFeature, FeatureModel_FeatureConstraint, FeatureModel_ConfigConstraint, FeatureModel_Constraint, Constraint_, FeatureModel_Feature, FeatureModel_And, ConfigConstraint, FeatureModel_Or, FeatureModel_Xor, kind, Type},
     associations={RootFeature0, FConst1, ConfConst3, Features5, Config7, ConfFeatures8},
     constraints={Unnamed, Unnamed1},
     generalizations={gen_FeatureModel_FeatureConstraint_Constraint, gen_FeatureModel_ConfigConstraint_Constraint, gen_FeatureModel_And_ConfigConstraint, gen_FeatureModel_Or_ConfigConstraint, gen_FeatureModel_Xor_ConfigConstraint},

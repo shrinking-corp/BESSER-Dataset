@@ -1,0 +1,152 @@
+@startuml
+class Block {
+}
+class CSTNode {
+}
+class Comment {
+}
+class EPackage {
+}
+class ModuleElement {
+}
+enum OpenModeKind {
+  Append
+  OverWrite
+}
+class TemplateExpression {
+}
+enum VisibilityKind {
+  Private
+  Protected
+  Public
+}
+class cst_Block {
+}
+abstract class cst_CSTNode {
+  + endPosition : int
+  + startPosition : int
+}
+class cst_Comment {
+  + body : str
+}
+class cst_Documentation {
+}
+class cst_EPackage {
+}
+class cst_FileBlock {
+  + openMode : str
+}
+class cst_ForBlock {
+}
+class cst_IfBlock {
+}
+class cst_InitSection {
+}
+class cst_LetBlock {
+}
+class cst_Macro {
+  + type : str
+}
+class cst_ModelExpression {
+  + body : str
+}
+class cst_Module {
+}
+abstract class cst_ModuleElement {
+  + name : str
+  + visibility : str
+}
+class cst_ModuleExtendsValue {
+  + name : str
+}
+class cst_ModuleImportsValue {
+  + name : str
+}
+class cst_ProtectedAreaBlock {
+}
+class cst_Query {
+  + type : str
+}
+class cst_Template {
+}
+class cst_TemplateExpression {
+}
+class cst_TemplateOverridesValue {
+  + name : str
+}
+class cst_TextExpression {
+  + value : str
+}
+class cst_TraceBlock {
+}
+class cst_TypedModel {
+}
+class cst_Variable {
+  + name : str
+  + type : str
+}
+Block <|-- cst_FileBlock
+Block <|-- cst_ForBlock
+Block <|-- cst_IfBlock
+Block <|-- cst_LetBlock
+Block <|-- cst_Macro
+Block <|-- cst_ProtectedAreaBlock
+Block <|-- cst_Template
+Block <|-- cst_TraceBlock
+CSTNode <|-- cst_InitSection
+CSTNode <|-- cst_Module
+CSTNode <|-- cst_ModuleElement
+CSTNode <|-- cst_ModuleExtendsValue
+CSTNode <|-- cst_ModuleImportsValue
+CSTNode <|-- cst_TemplateExpression
+CSTNode <|-- cst_TemplateOverridesValue
+CSTNode <|-- cst_TypedModel
+CSTNode <|-- cst_Variable
+Comment <|-- cst_Documentation
+EPackage <|-- cst_Module
+ModuleElement <|-- cst_Comment
+ModuleElement <|-- cst_Macro
+ModuleElement <|-- cst_Query
+ModuleElement <|-- cst_Template
+TemplateExpression <|-- cst_Block
+TemplateExpression <|-- cst_Comment
+TemplateExpression <|-- cst_ModelExpression
+TemplateExpression <|-- cst_TextExpression
+cst_ModelExpression "0..1" --* "1..1" cst_ModelExpression : after29
+cst_ForBlock "1..1" *-- "0..1" cst_ModelExpression : after50
+cst_ModelExpression "0..1" --* "1..1" cst_ModelExpression : before23
+cst_ForBlock "1..1" *-- "0..1" cst_ModelExpression : before44
+cst_Block "1..1" *-- "0..9999" cst_TemplateExpression : body32
+cst_FileBlock "1..1" *-- "0..1" cst_ModelExpression : charset77
+cst_Documentation "0..1" --* "1..1" cst_Module : documentation7
+cst_ModelExpression "0..1" --* "1..1" cst_ModelExpression : each26
+cst_ForBlock "1..1" *-- "0..1" cst_ModelExpression : each47
+cst_IfBlock "0..9999" --* "1..1" cst_IfBlock : elseIf62
+cst_LetBlock "1..1" *-- "0..9999" cst_LetBlock : elseLet65
+cst_Block "0..1" --* "1..1" cst_IfBlock : else_58
+cst_Block "0..1" --* "1..1" cst_LetBlock : else_66
+cst_ModelExpression "0..1" --* "1..1" cst_Query : expression86
+cst_Module "1..1" *-- "0..9999" cst_ModuleExtendsValue : extends3
+cst_FileBlock "1..1" *-- "1..1" cst_ModelExpression : fileUrl72
+cst_ModelExpression "0..1" --* "1..1" cst_Template : guard14
+cst_ForBlock "1..1" *-- "0..1" cst_ModelExpression : guard53
+cst_IfBlock "1..1" *-- "1..1" cst_ModelExpression : ifExpr56
+cst_Module "1..1" *-- "0..9999" cst_ModuleImportsValue : imports5
+cst_Block "1..1" *-- "0..1" cst_InitSection : init31
+cst_ModelExpression "0..1" --* "1..1" cst_Variable : initExpression19
+cst_Module "1..1" *-- "1..9999" cst_TypedModel : input0
+cst_ForBlock "1..1" *-- "1..1" cst_ModelExpression : iterSet41
+cst_LetBlock "1..1" *-- "1..1" cst_Variable : letVariable69
+cst_ForBlock "1..1" *-- "1..1" cst_Variable : loopVariable39
+cst_ModelExpression "1..1" --* "1..1" cst_ProtectedAreaBlock : marker37
+cst_ModelExpression "1..1" --* "1..1" cst_TraceBlock : modelElement80
+cst_Template "1..1" *-- "0..9999" cst_TemplateOverridesValue : overrides11
+cst_Module "1..1" *-- "1..9999" cst_ModuleElement : ownedModuleElement1
+cst_Template "1..1" *-- "0..9999" cst_Variable : parameter12
+cst_Macro "1..1" *-- "0..9999" cst_Variable : parameter82
+cst_Query "1..1" *-- "0..9999" cst_Variable : parameter84
+cst_ModelExpression "0..1" --* "1..1" cst_Template : post16
+cst_EPackage "1..9999" -- "1..1" cst_TypedModel : takesTypesFrom9
+cst_FileBlock "1..1" *-- "0..1" cst_ModelExpression : uniqId74
+cst_InitSection "1..1" *-- "1..9999" cst_Variable : variable34
+@enduml

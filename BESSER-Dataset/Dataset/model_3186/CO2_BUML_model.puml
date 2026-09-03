@@ -1,0 +1,316 @@
+@startuml
+class Action {
+}
+class ActionType {
+}
+class Contract {
+}
+class Expression {
+}
+class Placeholder {
+}
+class Prefix {
+}
+class Process {
+}
+class ReceiveGroup {
+}
+class SendGroup {
+}
+class Type {
+}
+class VariableDeclaration {
+}
+class co2_Action {
+  + name : str
+}
+class co2_ActionType {
+  + value : str
+}
+class co2_AndExpression {
+}
+class co2_ArithmeticSigned {
+}
+class co2_Ask {
+  + formula : str
+}
+class co2_BoolPlaceholder {
+}
+class co2_BooleanLiteral {
+  + value : str
+}
+class co2_BooleanNegation {
+}
+class co2_BooleanType {
+}
+class co2_CO2System {
+}
+class co2_Case {
+}
+class co2_Comparison {
+  + op : str
+}
+class co2_Contract {
+}
+class co2_ContractDefinition {
+  + name : str
+}
+class co2_ContractReference {
+}
+class co2_ContractsAndProcessesDeclaration {
+}
+class co2_DelimitedProcess {
+}
+class co2_DoInput {
+}
+class co2_DoOutput {
+}
+class co2_EmptyContract {
+  + value : str
+}
+class co2_EmptyProcess {
+  + value : str
+}
+class co2_Equals {
+  + op : str
+}
+class co2_Expression {
+}
+class co2_ExtAction {
+}
+class co2_ExtSum {
+}
+class co2_HonestyDeclaration {
+}
+class co2_IfThenElse {
+}
+class co2_Import {
+  + importedNamespace : str
+}
+class co2_Input {
+}
+class co2_IntAction {
+}
+class co2_IntActionType {
+}
+class co2_IntPlaceholder {
+}
+class co2_IntSum {
+}
+class co2_IntType {
+}
+class co2_Minus {
+}
+class co2_MultiOrDiv {
+  + op : str
+}
+class co2_NumberLiteral {
+  + value : int
+}
+class co2_OrExpression {
+}
+class co2_PackageDeclaration {
+  + name : str
+  + single : bool
+}
+class co2_ParallelProcesses {
+}
+class co2_Placeholder {
+}
+class co2_Plus {
+}
+class co2_Prefix {
+}
+class co2_Process {
+}
+class co2_ProcessCall {
+}
+class co2_ProcessDefinition {
+  + name : str
+  + withoutRestrictions : bool
+}
+class co2_Receive {
+  + timeout : bool
+}
+class co2_ReceiveGroup {
+}
+class co2_Retract {
+}
+class co2_RetractedProcess {
+}
+class co2_Send {
+}
+class co2_SendGroup {
+}
+class co2_Session {
+}
+class co2_SessionType {
+}
+class co2_StringActionType {
+}
+class co2_StringLiteral {
+  + value : str
+}
+class co2_StringPlaceholder {
+}
+class co2_StringType {
+}
+class co2_Sum {
+}
+class co2_SwitchCase {
+  + default : bool
+}
+class co2_Tau {
+}
+class co2_Tell {
+}
+class co2_TellAndReturn {
+}
+class co2_TellAndWait {
+  + timeout : bool
+}
+class co2_TimeoutProcess {
+}
+class co2_Type {
+  + value : str
+}
+class co2_UnitActionType {
+}
+class co2_Variable {
+}
+class co2_VariableDeclaration {
+  + name : str
+}
+class co2_VariableReference {
+}
+Action <|-- co2_ExtAction
+Action <|-- co2_IntAction
+ActionType <|-- co2_IntActionType
+ActionType <|-- co2_StringActionType
+ActionType <|-- co2_UnitActionType
+Contract <|-- co2_ContractReference
+Contract <|-- co2_EmptyContract
+Contract <|-- co2_ExtSum
+Contract <|-- co2_IntSum
+Expression <|-- co2_AndExpression
+Expression <|-- co2_ArithmeticSigned
+Expression <|-- co2_BooleanLiteral
+Expression <|-- co2_BooleanNegation
+Expression <|-- co2_Comparison
+Expression <|-- co2_Equals
+Expression <|-- co2_Minus
+Expression <|-- co2_MultiOrDiv
+Expression <|-- co2_NumberLiteral
+Expression <|-- co2_OrExpression
+Expression <|-- co2_Placeholder
+Expression <|-- co2_Plus
+Expression <|-- co2_StringLiteral
+Expression <|-- co2_VariableReference
+Placeholder <|-- co2_BoolPlaceholder
+Placeholder <|-- co2_IntPlaceholder
+Placeholder <|-- co2_StringPlaceholder
+Prefix <|-- co2_Ask
+Prefix <|-- co2_DoInput
+Prefix <|-- co2_DoOutput
+Prefix <|-- co2_Retract
+Prefix <|-- co2_Tau
+Prefix <|-- co2_Tell
+Process <|-- co2_EmptyProcess
+Process <|-- co2_IfThenElse
+Process <|-- co2_ParallelProcesses
+Process <|-- co2_ProcessCall
+Process <|-- co2_ReceiveGroup
+Process <|-- co2_RetractedProcess
+Process <|-- co2_SendGroup
+Process <|-- co2_Sum
+Process <|-- co2_SwitchCase
+Process <|-- co2_TellAndReturn
+Process <|-- co2_TellAndWait
+ReceiveGroup <|-- co2_Receive
+SendGroup <|-- co2_Send
+Type <|-- co2_BooleanType
+Type <|-- co2_IntType
+Type <|-- co2_SessionType
+Type <|-- co2_StringType
+VariableDeclaration <|-- co2_Session
+VariableDeclaration <|-- co2_Variable
+co2_IntAction "0..1" -- "1..1" co2_Send : action82
+co2_DoOutput "1..1" -- "0..1" co2_IntAction : actionName49
+co2_DoInput "1..1" -- "0..1" co2_ExtAction : actionName56
+co2_IntAction "0..9999" --* "1..1" co2_IntSum : actions133
+co2_ExtAction "0..9999" --* "1..1" co2_ExtSum : actions135
+co2_ExtAction "0..9999" -- "1..1" co2_Input : actions98
+co2_Case "1..1" *-- "0..1" co2_Process : caseProc117
+co2_Case "0..9999" --* "1..1" co2_SwitchCase : cases109
+co2_Contract "0..1" --* "1..1" co2_Session : contract124
+co2_Contract "0..1" --* "1..1" co2_ContractDefinition : contract130
+co2_Contract "0..1" --* "1..1" co2_Tell : contract40
+co2_ContractDefinition "0..1" -- "1..1" co2_Session : contractReference127
+co2_ContractDefinition "0..1" -- "1..1" co2_Tell : contractReference42
+co2_ContractDefinition "0..9999" --* "1..1" co2_ContractsAndProcessesDeclaration : contracts7
+co2_CO2System "1..1" *-- "0..1" co2_ContractsAndProcessesDeclaration : contractsAndProcessesDeclaration3
+co2_Process "0..1" --* "1..1" co2_SwitchCase : defaultProc111
+co2_IfThenElse "1..1" *-- "0..1" co2_Process : else_28
+co2_Expression "0..1" --* "1..1" co2_SwitchCase : exp107
+co2_BooleanNegation "1..1" *-- "0..1" co2_Expression : expression178
+co2_ArithmeticSigned "1..1" *-- "0..1" co2_Expression : expression180
+co2_DelimitedProcess "1..1" *-- "0..9999" co2_Variable : freeNames18
+co2_CO2System "1..1" *-- "0..1" co2_HonestyDeclaration : honesty1
+co2_Expression "0..1" --* "1..1" co2_IfThenElse : if_24
+co2_Input "0..9999" --* "1..1" co2_Receive : inputs91
+co2_Expression "0..1" --* "1..1" co2_OrExpression : left143
+co2_AndExpression "1..1" *-- "0..1" co2_Expression : left148
+co2_Comparison "1..1" *-- "0..1" co2_Expression : left153
+co2_Equals "1..1" *-- "0..1" co2_Expression : left158
+co2_Expression "0..1" --* "1..1" co2_Plus : left163
+co2_Expression "0..1" --* "1..1" co2_Minus : left168
+co2_Expression "0..1" --* "1..1" co2_MultiOrDiv : left173
+co2_Case "1..1" *-- "0..1" co2_Expression : match114
+co2_Action "1..1" *-- "0..1" co2_Contract : next138
+co2_Prefix "1..1" *-- "0..1" co2_Process : next36
+co2_Process "0..1" --* "1..1" co2_Send : next80
+co2_Input "1..1" *-- "0..1" co2_Process : next95
+co2_CO2System "1..1" *-- "0..1" co2_PackageDeclaration : package0
+co2_ProcessDefinition "1..1" *-- "0..9999" co2_Variable : params12
+co2_Expression "0..9999" --* "1..1" co2_ProcessCall : params33
+co2_Prefix "0..9999" --* "1..1" co2_Sum : prefixes23
+co2_ParallelProcesses "0..1" --* "1..1" co2_ProcessDefinition : process14
+co2_Process "0..1" --* "1..1" co2_RetractedProcess : process141
+co2_DelimitedProcess "1..1" *-- "0..1" co2_Process : process21
+co2_Process "0..1" --* "1..1" co2_TellAndReturn : process64
+co2_Process "0..1" --* "1..1" co2_TellAndWait : process69
+co2_DelimitedProcess "0..9999" --* "1..1" co2_ParallelProcesses : processes16
+co2_HonestyDeclaration "1..1" -- "0..9999" co2_ProcessDefinition : processes5
+co2_ContractsAndProcessesDeclaration "1..1" *-- "0..9999" co2_ProcessDefinition : processes9
+co2_VariableDeclaration "0..1" -- "1..1" co2_VariableReference : ref182
+co2_ContractDefinition "0..1" -- "1..1" co2_ContractReference : ref184
+co2_ProcessCall "1..1" -- "0..1" co2_ProcessDefinition : reference31
+co2_Expression "0..1" --* "1..1" co2_OrExpression : right145
+co2_AndExpression "1..1" *-- "0..1" co2_Expression : right150
+co2_Comparison "1..1" *-- "0..1" co2_Expression : right155
+co2_Equals "1..1" *-- "0..1" co2_Expression : right160
+co2_Expression "0..1" --* "1..1" co2_Plus : right165
+co2_Expression "0..1" --* "1..1" co2_Minus : right170
+co2_Expression "0..1" --* "1..1" co2_MultiOrDiv : right175
+co2_Input "1..1" -- "0..1" co2_VariableDeclaration : session104
+co2_Tell "1..1" -- "0..1" co2_VariableDeclaration : session39
+co2_Retract "1..1" -- "0..1" co2_VariableDeclaration : session45
+co2_DoOutput "1..1" -- "0..1" co2_VariableDeclaration : session47
+co2_DoInput "1..1" -- "0..1" co2_VariableDeclaration : session54
+co2_Ask "1..1" -- "0..1" co2_VariableDeclaration : session61
+co2_Session "0..1" --* "1..1" co2_TellAndReturn : session63
+co2_Session "0..1" --* "1..1" co2_TellAndWait : session67
+co2_Send "1..1" -- "0..1" co2_VariableDeclaration : session88
+co2_Process "0..1" --* "1..1" co2_TimeoutProcess : tProcess77
+co2_IfThenElse "1..1" *-- "0..1" co2_Process : then25
+co2_TellAndWait "1..1" *-- "0..1" co2_TimeoutProcess : timeoutValue72
+co2_Receive "1..1" *-- "0..1" co2_TimeoutProcess : timeoutValue92
+co2_Placeholder "1..1" *-- "0..1" co2_Type : type120
+co2_Type "0..1" --* "1..1" co2_Variable : type121
+co2_Action "1..1" *-- "0..1" co2_ActionType : type137
+co2_DoOutput "1..1" *-- "0..1" co2_Expression : value51
+co2_Expression "0..1" --* "1..1" co2_TimeoutProcess : value74
+co2_Expression "0..1" --* "1..1" co2_Send : value85
+co2_Input "1..1" *-- "0..1" co2_Variable : variable101
+co2_DoInput "1..1" *-- "0..1" co2_Variable : variable58
+@enduml

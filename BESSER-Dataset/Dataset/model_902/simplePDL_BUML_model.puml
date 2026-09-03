@@ -1,0 +1,44 @@
+@startuml
+enum ParameterDirectionKind {
+  in_
+  inout
+  out
+}
+class WorkDefinition {
+}
+enum WorkSequenceType {
+  finishToStart
+  finishTofinish
+  startToFinish
+  startToStart
+}
+class simplePDL_Activity {
+}
+class simplePDL_Process {
+  + name : str
+}
+class simplePDL_SubProcess {
+}
+abstract class simplePDL_WorkDefinition {
+  + name : str
+}
+class simplePDL_WorkDefinitionParameter {
+  + parameterKind : str
+}
+class simplePDL_WorkProduct {
+  + name : str
+}
+class simplePDL_WorkSequence {
+  + linkType : str
+}
+WorkDefinition <|-- simplePDL_Activity
+WorkDefinition <|-- simplePDL_SubProcess
+simplePDL_Process "1..1" *-- "1..9999" simplePDL_WorkDefinition : activities0
+simplePDL_WorkDefinition "0..9999" -- "1..1" simplePDL_WorkSequence : linksToPredecessors9
+simplePDL_WorkDefinition "0..9999" -- "1..1" simplePDL_WorkSequence : linksToSuccessors8
+simplePDL_WorkDefinitionParameter "1..1" -- "1..1" simplePDL_WorkProduct : parameterType11
+simplePDL_WorkDefinition "1..1" *-- "0..9999" simplePDL_WorkDefinitionParameter : parameters6
+simplePDL_WorkDefinition "1..1" -- "1..1" simplePDL_WorkSequence : predecessor3
+simplePDL_WorkDefinition "1..1" -- "1..1" simplePDL_WorkSequence : successor4
+simplePDL_Process "1..1" *-- "0..9999" simplePDL_WorkSequence : workSequences1
+@enduml

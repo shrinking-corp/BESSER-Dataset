@@ -1,0 +1,90 @@
+@startuml
+class CaseStyle {
+}
+enum FontOption {
+  BOLD
+  ITALIC
+  STRIKE
+  UNDERLINE
+}
+class Parameter {
+}
+class Pattern {
+}
+class Styling_BooleanParameter {
+  + value : bool
+}
+abstract class Styling_CaseStyle {
+  + getImage() : str
+  + getStyledString(Styling_object : str) : str
+}
+class Styling_ConstantPattern {
+  + value : str
+}
+class Styling_Default {
+}
+class Styling_EObject {
+}
+class Styling_EObjectParameter {
+}
+class Styling_IPredicate {
+}
+class Styling_Icon {
+  + image : str
+}
+class Styling_IntParameter {
+  + value : int
+}
+class Styling_ModelPattern {
+  + attributeName : str
+}
+class Styling_OperationPattern {
+  + operation : str
+}
+abstract class Styling_Parameter {
+  + name : str
+  + getObjectValue() : str
+}
+abstract class Styling_Pattern {
+  + getPattern() : str
+  + getPatternValue(Styling_object : str) : str
+}
+class Styling_Segment {
+  + getColor() : str
+  + getFont() : str
+  + setColor(Styling_color : str) : void
+}
+class Styling_StringParameter {
+  + value : str
+}
+class Styling_Style {
+  + appliedFonts : str
+  + color : str
+}
+class Styling_Styling {
+}
+class Styling_StylingModel {
+  + modeName : str
+}
+class Styling_StylingPredicate {
+}
+CaseStyle <|-- Styling_Default
+CaseStyle <|-- Styling_StylingPredicate
+Parameter <|-- Styling_BooleanParameter
+Parameter <|-- Styling_EObjectParameter
+Parameter <|-- Styling_IntParameter
+Parameter <|-- Styling_StringParameter
+Pattern <|-- Styling_ConstantPattern
+Pattern <|-- Styling_ModelPattern
+Pattern <|-- Styling_OperationPattern
+Styling_Default "1..1" --* "1..1" Styling_StylingModel : default1
+Styling_CaseStyle "1..1" *-- "1..1" Styling_Icon : icon10
+Styling_Styling "1..1" *-- "0..9999" Styling_StylingModel : models12
+Styling_OperationPattern "1..1" *-- "0..9999" Styling_Parameter : parameters14
+Styling_Pattern "1..1" --* "1..1" Styling_Segment : pattern5
+Styling_IPredicate "0..1" -- "1..1" Styling_StylingPredicate : predicate3
+Styling_CaseStyle "1..1" *-- "1..9999" Styling_Segment : segments7
+Styling_Segment "1..1" *-- "1..1" Styling_Style : style4
+Styling_CaseStyle "0..9999" --* "1..1" Styling_StylingModel : styles0
+Styling_EObject "0..1" -- "1..1" Styling_EObjectParameter : value15
+@enduml

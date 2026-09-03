@@ -1,0 +1,55 @@
+@startuml
+class MatchArgument {
+}
+class Trace {
+}
+enum TraceState {
+  UNUSED
+  USED
+}
+class viewmodeltrace_Constraint {
+}
+class viewmodeltrace_ConstraintTrace {
+}
+class viewmodeltrace_EObject {
+}
+class viewmodeltrace_EObjectMatchArgument {
+}
+class viewmodeltrace_JavaObjectMatchArgument {
+  + value : str
+}
+class viewmodeltrace_LogicModel {
+}
+abstract class viewmodeltrace_MatchArgument {
+  + parameterName : str
+}
+class viewmodeltrace_MatchArgumentTuple {
+}
+class viewmodeltrace_StringVariablePair {
+  + key : str
+}
+abstract class viewmodeltrace_Trace {
+  + state : str
+  + traceName : str
+}
+class viewmodeltrace_Variable {
+}
+class viewmodeltrace_VariableInstantiationTrace {
+}
+class viewmodeltrace_ViewModelTrace {
+  + traceModelId : str
+}
+MatchArgument <|-- viewmodeltrace_EObjectMatchArgument
+MatchArgument <|-- viewmodeltrace_JavaObjectMatchArgument
+Trace <|-- viewmodeltrace_ConstraintTrace
+Trace <|-- viewmodeltrace_VariableInstantiationTrace
+viewmodeltrace_MatchArgumentTuple "0..1" --* "1..1" viewmodeltrace_Trace : argumentTuple5
+viewmodeltrace_Constraint "0..9999" --* "1..1" viewmodeltrace_ConstraintTrace : constraints13
+viewmodeltrace_MatchArgument "0..9999" --* "1..1" viewmodeltrace_MatchArgumentTuple : elements3
+viewmodeltrace_ConstraintTrace "1..1" *-- "0..9999" viewmodeltrace_Variable : localVariables11
+viewmodeltrace_LogicModel "0..1" -- "1..1" viewmodeltrace_ViewModelTrace : logicModel0
+viewmodeltrace_Trace "0..9999" --* "1..1" viewmodeltrace_ViewModelTrace : traces1
+viewmodeltrace_EObject "0..1" -- "1..1" viewmodeltrace_EObjectMatchArgument : value4
+viewmodeltrace_StringVariablePair "1..1" *-- "0..1" viewmodeltrace_Variable : value9
+viewmodeltrace_StringVariablePair "0..9999" --* "1..1" viewmodeltrace_VariableInstantiationTrace : variables8
+@enduml

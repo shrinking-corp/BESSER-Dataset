@@ -1,0 +1,312 @@
+@startuml
+class Action {
+}
+class Block {
+}
+class BufferFunction {
+}
+class Chart {
+}
+class Data {
+}
+enum DataType {
+  BOOLEAN
+  BUS
+  DOUBLE
+  INHERIT
+  INT16
+  INT32
+  INT8
+  SINGLE
+  UINT16
+  UINT32
+  UINT8
+}
+class Element {
+}
+class EmbeddedFunction {
+}
+class Event {
+}
+class InPortBlock {
+}
+class Node {
+}
+class PortBlock {
+}
+class SimulinkFile {
+}
+class State {
+}
+class StateflowElement {
+}
+class StateflowMachine {
+}
+enum SubStateType {
+  EXCLUSIVE
+  PARALLEL
+}
+class SubSystem {
+}
+class Transition {
+}
+enum TriggerEvent {
+  Either
+  Falling
+  Rising
+}
+abstract class simulink_Block {
+  + name : str
+  + getFullyQualifiedName() : str
+}
+class simulink_Bus {
+  + name : str
+}
+class simulink_BusCreator {
+}
+class simulink_BusElement {
+  + dimensions : str
+  + name : str
+  + type : str
+}
+class simulink_BusSelector {
+}
+class simulink_ChartBlock {
+}
+class simulink_Constant {
+  + type : str
+  + value : str
+}
+class simulink_DigitalClock {
+  + sampleTime : float
+}
+abstract class simulink_Element {
+  + id : str
+  + getParameter(simulink_name : str) : str
+}
+class simulink_EmbeddedMatlabFunction {
+  + code : str
+}
+class simulink_EnablePort {
+}
+class simulink_InPortBlock {
+}
+class simulink_LibraryReference {
+}
+class simulink_Line {
+}
+class simulink_MiscBlock {
+  + type : str
+}
+class simulink_OutPortBlock {
+}
+class simulink_Parameter {
+  + name : str
+  + type : str
+  + value : str
+}
+class simulink_PortBlock {
+  + dimensions : str
+  + initialCondition : str
+  + type : str
+}
+class simulink_SimulinkContainer {
+}
+abstract class simulink_SimulinkFile {
+}
+class simulink_SimulinkLibrary {
+}
+class simulink_SimulinkModel {
+}
+class simulink_SubSystem {
+  + getBlockByName(simulink_name : str) : Block
+}
+class simulink_TriggerPort {
+  + triggerInput : str
+}
+class simulink_UnitDelay {
+}
+class simulink_ZeroOrderHold {
+  + sampleTime : str
+}
+class simulink_buffer_BufferFunction {
+  + bufferSize : int
+}
+class simulink_buffer_CheckQueue {
+}
+class simulink_buffer_Dequeue {
+}
+class simulink_buffer_Enqueue {
+}
+class simulink_buffer_SharedCheckQueue {
+}
+class simulink_buffer_SharedDequeue {
+}
+class simulink_buffer_SharedEnqueue {
+}
+class simulink_msglib_CommunicationSwitch {
+  + debug : int
+}
+class simulink_msglib_LinkLayer {
+  + bufferOverflowPossible : bool
+  + bufferSize : int
+  + delayMax : str
+  + delayMin : str
+  + messageLossProbability : int
+  + messageMapping : str
+  + messageRetransmission : bool
+  + sourceBufferSize : int
+}
+class simulink_reconfiguration_FadingComponent {
+  + time : int
+}
+class simulink_reconfiguration_MultiSourceControl {
+}
+class simulink_reconfiguration_MultiTargetControl {
+}
+class simulink_stateflow_Action {
+  + expression : str
+}
+class simulink_stateflow_Chart {
+}
+class simulink_stateflow_Data {
+  + name : str
+  + size : str
+  + type : str
+  + value : str
+}
+class simulink_stateflow_EmbeddedFunction {
+  + code : str
+  + name : str
+}
+class simulink_stateflow_Event {
+  + name : str
+}
+class simulink_stateflow_History {
+}
+class simulink_stateflow_Junction {
+}
+abstract class simulink_stateflow_Node {
+}
+class simulink_stateflow_State {
+  + initial : bool
+  + name : str
+  + priority : int
+  + subStateType : str
+  + getSubState(simulink_name : str) : str
+}
+class simulink_stateflow_StateflowElement {
+}
+class simulink_stateflow_StateflowMachine {
+}
+class simulink_stateflow_Transition {
+  + priority : int
+}
+class stateflow_simulink_ChartBlock {
+}
+class stateflow_simulink_SimulinkFile {
+}
+Block <|-- simulink_BusCreator
+Block <|-- simulink_BusSelector
+Block <|-- simulink_ChartBlock
+Block <|-- simulink_Constant
+Block <|-- simulink_DigitalClock
+Block <|-- simulink_EmbeddedMatlabFunction
+Block <|-- simulink_LibraryReference
+Block <|-- simulink_MiscBlock
+Block <|-- simulink_PortBlock
+Block <|-- simulink_SubSystem
+Block <|-- simulink_UnitDelay
+Block <|-- simulink_ZeroOrderHold
+Block <|-- simulink_msglib_CommunicationSwitch
+Block <|-- simulink_msglib_LinkLayer
+Block <|-- simulink_reconfiguration_FadingComponent
+Block <|-- simulink_reconfiguration_MultiSourceControl
+Block <|-- simulink_reconfiguration_MultiTargetControl
+BufferFunction <|-- simulink_buffer_CheckQueue
+BufferFunction <|-- simulink_buffer_Dequeue
+BufferFunction <|-- simulink_buffer_Enqueue
+BufferFunction <|-- simulink_buffer_SharedCheckQueue
+BufferFunction <|-- simulink_buffer_SharedDequeue
+BufferFunction <|-- simulink_buffer_SharedEnqueue
+Element <|-- simulink_Block
+Element <|-- simulink_Bus
+Element <|-- simulink_Line
+Element <|-- simulink_SimulinkContainer
+Element <|-- simulink_stateflow_StateflowElement
+EmbeddedFunction <|-- simulink_buffer_BufferFunction
+InPortBlock <|-- simulink_EnablePort
+InPortBlock <|-- simulink_TriggerPort
+Node <|-- simulink_stateflow_History
+Node <|-- simulink_stateflow_Junction
+Node <|-- simulink_stateflow_State
+PortBlock <|-- simulink_InPortBlock
+PortBlock <|-- simulink_OutPortBlock
+SimulinkFile <|-- simulink_SimulinkLibrary
+SimulinkFile <|-- simulink_SimulinkModel
+State <|-- simulink_stateflow_Chart
+StateflowElement <|-- simulink_stateflow_Action
+StateflowElement <|-- simulink_stateflow_Data
+StateflowElement <|-- simulink_stateflow_EmbeddedFunction
+StateflowElement <|-- simulink_stateflow_Event
+StateflowElement <|-- simulink_stateflow_Node
+StateflowElement <|-- simulink_stateflow_StateflowMachine
+StateflowElement <|-- simulink_stateflow_Transition
+SubSystem <|-- simulink_SimulinkFile
+Action "0..9999" --* "1..1" simulink_stateflow_Transition : action91
+simulink_Block "0..9999" -- "1..1" simulink_SubSystem : allBlocks24
+simulink_Block "1..1" -- "1..1" simulink_InPortBlock : block26
+simulink_Block "1..1" -- "1..1" simulink_OutPortBlock : block35
+simulink_stateflow_Chart "1..1" -- "0..1" stateflow_simulink_ChartBlock : block57
+simulink_Block "0..9999" --* "1..1" simulink_SubSystem : blocks19
+simulink_Bus "0..1" -- "1..1" simulink_Line : bus15
+simulink_Bus "0..1" -- "1..1" simulink_BusCreator : bus41
+simulink_Bus "0..1" -- "1..1" simulink_BusSelector : bus43
+simulink_Bus "0..1" -- "1..1" simulink_BusElement : bus45
+simulink_Bus "0..9999" --* "1..1" simulink_SimulinkFile : buses33
+Chart "1..1" -- "1..1" simulink_ChartBlock : chart37
+Chart "1..9999" --* "1..1" simulink_stateflow_StateflowMachine : charts48
+Data "0..9999" --* "1..1" simulink_stateflow_EmbeddedFunction : constant107
+Data "0..9999" --* "1..1" simulink_stateflow_State : constant76
+Action "0..9999" --* "1..1" simulink_stateflow_State : duringAction70
+simulink_Bus "1..1" *-- "0..9999" simulink_BusElement : elements39
+EmbeddedFunction "0..9999" --* "1..1" simulink_stateflow_State : embeddedFunctions63
+Action "0..9999" --* "1..1" simulink_stateflow_State : entryAction65
+Event "0..1" -- "1..1" simulink_stateflow_Transition : event86
+Event "0..9999" --* "1..1" simulink_stateflow_State : events61
+Action "0..9999" --* "1..1" simulink_stateflow_State : exitAction67
+Action "0..9999" --* "1..1" simulink_stateflow_Transition : guard88
+simulink_Block "1..1" *-- "0..9999" simulink_InPortBlock : inPorts2
+Transition "0..9999" -- "1..1" simulink_stateflow_Node : incoming95
+simulink_Block "1..1" -- "0..9999" simulink_Line : incomingLines4
+Action "0..9999" --* "1..1" simulink_stateflow_State : initial_guard79
+Data "0..9999" --* "1..1" simulink_stateflow_Chart : input54
+Data "0..9999" --* "1..1" simulink_stateflow_EmbeddedFunction : input99
+simulink_SimulinkContainer "1..1" *-- "0..9999" simulink_SimulinkLibrary : libraries29
+simulink_Line "0..9999" --* "1..1" simulink_SubSystem : lines17
+Data "0..9999" --* "1..1" simulink_stateflow_EmbeddedFunction : local104
+Data "0..9999" --* "1..1" simulink_stateflow_State : local73
+StateflowMachine "1..1" -- "1..1" simulink_stateflow_Chart : machine51
+simulink_stateflow_StateflowMachine "1..1" -- "1..1" stateflow_simulink_SimulinkFile : model50
+simulink_SimulinkContainer "1..1" *-- "0..9999" simulink_SimulinkModel : models28
+Node "0..9999" --* "1..1" simulink_stateflow_State : nodes58
+simulink_Block "1..1" *-- "0..9999" simulink_OutPortBlock : outPorts1
+Transition "0..9999" -- "1..1" simulink_stateflow_Node : outgoing97
+simulink_Block "1..1" -- "0..9999" simulink_Line : outgoingLines5
+Data "0..9999" --* "1..1" simulink_stateflow_EmbeddedFunction : output101
+Data "0..9999" --* "1..1" simulink_stateflow_Chart : output53
+simulink_Element "1..1" *-- "0..9999" simulink_Parameter : parameters8
+simulink_Block "1..1" -- "0..1" simulink_SubSystem : parent0
+State "0..1" -- "1..1" simulink_stateflow_Node : parent94
+simulink_SimulinkContainer "0..1" -- "1..1" simulink_SimulinkModel : root7
+Node "0..1" -- "1..1" simulink_stateflow_Transition : source82
+simulink_Block "1..1" -- "1..1" simulink_Line : sourceBlock12
+simulink_Block "1..1" -- "1..1" simulink_LibraryReference : sourceBlock30
+simulink_Line "1..1" -- "1..1" simulink_OutPortBlock : sourcePort9
+StateflowMachine "0..1" --* "1..1" simulink_SimulinkFile : stateflowMachine32
+simulink_SubSystem "0..9999" -- "1..1" simulink_SubSystem : subSystems22
+Node "0..1" -- "1..1" simulink_stateflow_Transition : target84
+simulink_Block "1..1" -- "1..1" simulink_Line : targetBlock13
+simulink_InPortBlock "1..1" -- "1..1" simulink_Line : targetPort10
+Transition "0..9999" --* "1..1" simulink_stateflow_State : transitions60
+@enduml

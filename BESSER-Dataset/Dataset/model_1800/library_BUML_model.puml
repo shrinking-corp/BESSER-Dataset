@@ -1,0 +1,193 @@
+@startuml
+class Company {
+}
+enum LevelType {
+  AMBER
+  GREEN
+  RED
+  YELLOW
+}
+enum OSIType {
+  Application
+  DataLink
+  Network
+  Physiscal
+  Presentation
+  Session
+  Transport
+}
+enum RedundancyType {
+  _11
+  n
+  n1
+}
+enum StateType {
+  ACTIVE
+  DEFECT
+  IDLE
+  RESERVED
+  STANDBY
+}
+class library_Company {
+}
+class library_DiagramInfo {
+}
+class library_Equipment {
+  + count : str
+  + description : str
+  + equipmentCode : str
+  + equipmentName : str
+  + position : str
+  + redundancy : str
+  + state : str
+}
+class library_EquipmentGroup {
+  + count : str
+  + description : str
+  + name : str
+}
+class library_EquipmentRelationship {
+}
+class library_Expression {
+  + expressionLines : str
+  + name : str
+}
+class library_Function {
+  + description : str
+  + functionName : str
+}
+class library_FunctionRelationship {
+}
+class library_Library {
+  + name : str
+}
+class library_Lifecycle {
+}
+class library_Message {
+  + name : str
+}
+class library_Meta {
+  + author : str
+  + description : str
+  + version : str
+}
+class library_Metric {
+}
+class library_MetricValueRange {
+}
+class library_MultiImage {
+}
+class library_NetXResource {
+  + detailDisplay : str
+  + expressionName : str
+  + longName : str
+  + shortName : str
+  + summaryDisplay : str
+}
+class library_NodeType {
+}
+class library_Parameter {
+  + description : str
+  + expressionName : str
+  + modifiable : str
+  + name : str
+  + value : str
+}
+class library_Procedure {
+  + name : str
+}
+class library_ProductInfo {
+  + availableDate : str
+  + endOfSalesDate : str
+  + endOfSupportDate : str
+  + productCode : str
+  + salesCode : str
+  + underDevelopmentDate : str
+}
+class library_Protocol {
+  + description : str
+  + name : str
+  + oSI : str
+  + specification : str
+}
+class library_ServiceProfile {
+}
+class library_Tolerance {
+  + expression : str
+  + level : str
+  + name : str
+}
+class library_Unit {
+  + code : str
+  + description : str
+  + name : str
+}
+class library_Value {
+}
+class library_Vendor {
+}
+Company <|-- library_Vendor
+library_Equipment "1..1" -- "0..9999" library_NetXResource : allEquipmentResources21
+library_EquipmentGroup "1..1" -- "0..9999" library_NetXResource : allEquipmentResources43
+library_Equipment "0..9999" -- "1..1" library_Equipment : allEquipments25
+library_Equipment "0..9999" -- "1..1" library_EquipmentGroup : allEquipments46
+library_Function "1..1" -- "0..9999" library_NetXResource : allFunctionResources80
+library_Function "0..9999" -- "1..1" library_Function : allFunctions84
+library_Company "0..1" -- "1..1" library_Protocol : bodyRef146
+library_NetXResource "1..1" *-- "0..9999" library_Value : capacityValues114
+library_DiagramInfo "0..9999" --* "1..1" library_Equipment : diagrams1
+library_DiagramInfo "0..9999" --* "1..1" library_EquipmentGroup : diagrams29
+library_DiagramInfo "0..9999" --* "1..1" library_Function : diagrams53
+library_Equipment "1..1" -- "0..9999" library_Expression : equipmentExpressionRefs14
+library_EquipmentGroup "0..9999" -- "1..1" library_Expression : equipmentGroupRefs51
+library_EquipmentGroup "1..1" *-- "0..9999" library_NetXResource : equipmentGroupResources32
+library_Equipment "1..1" *-- "0..9999" library_EquipmentGroup : equipmentGroups6
+library_Equipment "1..1" -- "0..9999" library_Metric : equipmentMetricRefs10
+library_Equipment "0..9999" -- "1..1" library_ProductInfo : equipmentRef135
+library_Equipment "0..9999" -- "1..1" library_EquipmentGroup : equipmentRefs37
+library_Equipment "0..9999" -- "1..1" library_Expression : equipmentRefs49
+library_Equipment "1..1" -- "0..9999" library_EquipmentRelationship : equipmentRelationshipRefs12
+library_Equipment "1..1" *-- "0..9999" library_NetXResource : equipmentResources8
+library_Equipment "0..9999" --* "1..1" library_NodeType : equipments131
+library_Equipment "0..9999" --* "1..1" library_Equipment : equipments4
+library_Equipment "0..9999" --* "1..1" library_Library : equipments90
+library_EquipmentGroup "1..1" -- "0..9999" library_Expression : expressionRefs35
+library_Expression "0..9999" --* "1..1" library_Library : expressions105
+library_NetXResource "1..1" *-- "0..9999" library_Value : forecastCapacityValues116
+library_NetXResource "1..1" *-- "0..9999" library_Value : forecastValues119
+library_Expression "0..9999" -- "1..1" library_Function : functionExpressionRefs69
+library_Function "1..1" -- "0..9999" library_Metric : functionMetricRefs64
+library_Expression "1..1" -- "0..9999" library_Function : functionRefs50
+library_Function "1..1" -- "0..9999" library_FunctionRelationship : functionRelationshipRefs67
+library_Function "1..1" *-- "0..9999" library_NetXResource : functionResources61
+library_Function "0..9999" --* "1..1" library_NodeType : functions128
+library_Function "0..9999" --* "1..1" library_Function : functions59
+library_Function "0..9999" --* "1..1" library_Library : functions86
+library_MultiImage "0..1" --* "1..1" library_Unit : icons148
+library_Equipment "1..1" *-- "0..1" library_MultiImage : icons27
+library_Function "1..1" *-- "0..1" library_MultiImage : icons55
+library_Function "0..9999" -- "1..1" library_ProductInfo : licensedFunctionRef137
+library_Equipment "1..1" *-- "0..1" library_Lifecycle : lifecycle0
+library_Message "0..9999" --* "1..1" library_Procedure : messages134
+library_MetricValueRange "0..9999" --* "1..1" library_NetXResource : metricValueRanges112
+library_Library "1..1" *-- "0..9999" library_Metric : metrics93
+library_NodeType "0..9999" -- "1..1" library_ProductInfo : nodeTypeRef140
+library_Library "1..1" *-- "0..9999" library_NodeType : nodeTypes88
+library_Equipment "1..1" -- "0..9999" library_Parameter : parameterRefs19
+library_EquipmentGroup "1..1" -- "0..9999" library_Parameter : parameterRefs40
+library_Function "1..1" -- "0..9999" library_Parameter : parameterRefs77
+library_Library "1..1" *-- "0..9999" library_Parameter : parameters96
+library_Procedure "0..9999" --* "1..1" library_Protocol : procedures143
+library_ProductInfo "0..9999" --* "1..1" library_Vendor : products151
+library_Equipment "1..1" -- "0..9999" library_Protocol : protocolRefs17
+library_Function "1..1" -- "0..9999" library_Protocol : protocolRefs74
+library_Library "1..1" *-- "0..9999" library_Protocol : protocols99
+library_Expression "1..1" -- "0..9999" library_ServiceProfile : serviceProfileRefs52
+library_Equipment "1..1" -- "0..9999" library_Tolerance : toleranceRefs15
+library_Function "1..1" -- "0..9999" library_Tolerance : toleranceRefs71
+library_Library "1..1" *-- "0..9999" library_Tolerance : tolerances102
+library_NetXResource "1..1" *-- "0..9999" library_Value : trendedValues122
+library_NetXResource "1..1" -- "0..1" library_Unit : unitRef125
+library_Library "1..1" *-- "0..9999" library_Unit : units108
+library_Library "1..1" *-- "0..1" library_Meta : version110
+@enduml

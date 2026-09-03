@@ -1,0 +1,53 @@
+@startuml
+class Expr {
+}
+enum Ops {
+  Equal
+  Minus
+  Plus
+}
+class fl_Apply {
+  + name : str
+}
+class fl_Argument {
+  + name : str
+}
+class fl_Binary {
+  + ops : str
+}
+class fl_DocumentRoot {
+  + mixed : str
+}
+class fl_EStringToStringMapEntry {
+}
+abstract class fl_Expr {
+}
+class fl_Function {
+  + arg : str
+  + name : str
+}
+class fl_IfThenElse {
+}
+class fl_Literal {
+  + info : str
+}
+class fl_ProgramType {
+}
+Expr <|-- fl_Apply
+Expr <|-- fl_Argument
+Expr <|-- fl_Binary
+Expr <|-- fl_IfThenElse
+Expr <|-- fl_Literal
+fl_Apply "1..1" *-- "1..9999" fl_Expr : arg0
+fl_Expr "1..1" --* "1..1" fl_IfThenElse : elseExpr22
+fl_DocumentRoot "1..1" *-- "0..9999" fl_Expr : fragment10
+fl_Function "1..9999" --* "1..1" fl_ProgramType : function25
+fl_Expr "1..1" --* "1..1" fl_IfThenElse : ifExpr17
+fl_Binary "1..1" *-- "1..1" fl_Expr : left1
+fl_DocumentRoot "1..1" *-- "0..9999" fl_ProgramType : program13
+fl_Expr "1..1" --* "1..1" fl_Function : rhs15
+fl_Binary "1..1" *-- "1..1" fl_Expr : right3
+fl_Expr "1..1" --* "1..1" fl_IfThenElse : thenExpr19
+fl_DocumentRoot "1..1" *-- "0..9999" fl_EStringToStringMapEntry : xMLNSPrefixMap6
+fl_DocumentRoot "1..1" *-- "0..9999" fl_EStringToStringMapEntry : xSISchemaLocation7
+@enduml

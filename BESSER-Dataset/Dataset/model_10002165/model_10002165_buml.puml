@@ -1,0 +1,68 @@
+@startuml
+class Add_Book_UseCase {
+}
+class Add_book__to_cart_UseCase {
+}
+class Administrator {
+  + adminID : int
+  + email : str
+  + name : str
+}
+class Administrator_Actor {
+}
+class Bank_Mobile_Money_Agent_Actor {
+}
+class Book {
+  + author : str
+  + bookID : int
+  + category : Customer
+  + description : str
+  + price : int
+  + title : str
+}
+class Category {
+  + categoryID : int
+  + categoryName : str
+}
+class Confirm_Payment_UseCase {
+}
+class Customer {
+  + CustomerID : int
+  + email : str
+  + username : str
+}
+class Customer_Actor {
+}
+class Edit_Book_UseCase {
+}
+class Log_in_UseCase {
+}
+class Logout_UseCase {
+}
+class Make_Payment_UseCase {
+}
+class Search_Book_UseCase {
+}
+class Sign_up_UseCase {
+}
+Add_Book_UseCase "0..1" -- "0..1" Administrator_Actor : Administrator_Add_Book
+Administrator "0..1" -- "0..1" Administrator : Administrator_Administrator
+Administrator "0..1" -- "0..1" Book : Administrator_Book
+Administrator "1..1" -- "1..9999" Book : Administrator_Book2
+Administrator_Actor "0..1" -- "0..1" Confirm_Payment_UseCase : Administrator_Confirm_Payment
+Administrator "1..1" -- "1..9999" Customer : Administrator_Customer
+Administrator_Actor "0..1" -- "0..1" Edit_Book_UseCase : Administrator_Edit_Book
+Bank_Mobile_Money_Agent_Actor "0..1" -- "0..1" Confirm_Payment_UseCase : Bank_Mobile_Money_Agent_Confirm_Payment
+Book "1..9999" -- "1..9999" Category : Category_Book
+Category "0..1" -- "0..1" Category : Category_Category
+Add_book__to_cart_UseCase "0..1" -- "0..1" Customer_Actor : Customer_Add_book__to_cart
+Book "0..1" -- "0..1" Customer : Customer_Book
+Book "1..9999" -- "1..1" Customer : Customer_Book2
+Customer "0..1" -- "0..1" Customer : Customer_Customer
+Customer_Actor "0..1" -- "0..1" Log_in_UseCase : Customer_Log_in
+Customer_Actor "0..1" -- "0..1" Logout_UseCase : Customer_Logout
+Customer_Actor "0..1" -- "0..1" Make_Payment_UseCase : Customer_Make_Payment
+Customer_Actor "0..1" -- "0..1" Search_Book_UseCase : Customer_Search_Book
+Customer_Actor "0..1" -- "0..1" Sign_up_UseCase : Customer_Sign_up
+Logout_UseCase "0..1" -- "0..1" Logout_UseCase : Logout_Logout
+@enduml

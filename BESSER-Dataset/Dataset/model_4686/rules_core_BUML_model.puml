@@ -1,0 +1,55 @@
+@startuml
+class BinaryExp {
+}
+class Expression {
+}
+class rules_core_BinaryExp {
+}
+class rules_core_Constant {
+  + integerValue : int
+}
+class rules_core_Div {
+}
+class rules_core_Equals {
+}
+abstract class rules_core_Expression {
+}
+class rules_core_Filter {
+}
+class rules_core_Greater {
+}
+class rules_core_If {
+}
+class rules_core_Lower {
+}
+class rules_core_Max {
+}
+class rules_core_Min {
+}
+class rules_core_Minus {
+}
+class rules_core_Mult {
+}
+class rules_core_Plus {
+}
+class rules_core_Rule {
+}
+BinaryExp <|-- rules_core_Div
+BinaryExp <|-- rules_core_Equals
+BinaryExp <|-- rules_core_Greater
+BinaryExp <|-- rules_core_Lower
+BinaryExp <|-- rules_core_Max
+BinaryExp <|-- rules_core_Min
+BinaryExp <|-- rules_core_Minus
+BinaryExp <|-- rules_core_Mult
+BinaryExp <|-- rules_core_Plus
+Expression <|-- rules_core_BinaryExp
+Expression <|-- rules_core_Constant
+Expression <|-- rules_core_If
+rules_core_Expression "1..1" --* "1..1" rules_core_Rule : condition0
+rules_core_Expression "0..1" --* "1..1" rules_core_If : condition6
+rules_core_Expression "0..1" --* "1..1" rules_core_If : elsePart11
+rules_core_BinaryExp "1..1" *-- "1..1" rules_core_Expression : lhs3
+rules_core_BinaryExp "1..1" *-- "1..1" rules_core_Expression : rhs1
+rules_core_Expression "0..1" --* "1..1" rules_core_If : thenPart8
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Alert2 {
+  + AlertID : int
+}
+class Arduino {
+  + MicID : str
+}
+class Count_people {
+  + _attr : int
+}
+class Firebase {
+  + Status : bool
+  + Update : float
+}
+class Gas_Smoke_Sensor {
+  + DispenseSprinkler : bool
+  + SmokeAlarm : bool
+}
+class Mobile_App {
+  + UserID : int
+}
+class PressureSensor {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Temperature_Sensor {
+}
+class Web {
+}
+Alert2 "0..1" -- "0..1" Web : Alert2_Web
+Arduino "1..1" -- "1..1" Firebase : Arduino__Firebase
+Firebase "0..1" -- "0..1" Web : Firebase_Web
+Alert "0..1" -- "0..1" Mobile_App : Home_Security_System_Alert
+Firebase "1..1" -- "1..1" Mobile_App : Home_Security_System_System
+Count_people "1..1" -- "1..1" Sensor : Sensor_Door
+Arduino "1..1" -- "1..9999" Sensor : Sensor_System
+@enduml

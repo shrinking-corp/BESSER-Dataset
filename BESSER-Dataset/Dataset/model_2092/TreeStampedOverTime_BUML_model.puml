@@ -1,0 +1,27 @@
+@startuml
+class ChangingOverTime_BindingKind {
+}
+class ChangingOverTime_Entity {
+}
+class ChangingOverTime_LinkKind {
+}
+class ChangingOverTime_NodeKind {
+}
+class ChangingOverTime_TimeStampedElement {
+  + effectiveDate : date
+  + expirationDate : date
+}
+class ChangingOverTime_Tree {
+}
+class TimeStampedElement {
+}
+TimeStampedElement <|-- ChangingOverTime_BindingKind
+TimeStampedElement <|-- ChangingOverTime_Entity
+TimeStampedElement <|-- ChangingOverTime_NodeKind
+ChangingOverTime_LinkKind "1..1" -- "1..1" ChangingOverTime_NodeKind : child7
+ChangingOverTime_BindingKind "1..1" -- "1..1" ChangingOverTime_Entity : entity3
+ChangingOverTime_BindingKind "1..1" -- "1..1" ChangingOverTime_NodeKind : node2
+ChangingOverTime_LinkKind "1..1" -- "1..1" ChangingOverTime_NodeKind : parent5
+ChangingOverTime_NodeKind "1..1" --* "1..1" ChangingOverTime_Tree : root0
+ChangingOverTime_NodeKind "1..1" -- "0..1" ChangingOverTime_Tree : tree1
+@enduml

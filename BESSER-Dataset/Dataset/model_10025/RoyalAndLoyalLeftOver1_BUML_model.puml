@@ -1,0 +1,37 @@
+@startuml
+class RoyalAndLoyal_Container_RandL {
+}
+class RoyalAndLoyal_Customer {
+}
+class RoyalAndLoyal_CustomerCard {
+  + valid : bool
+}
+class RoyalAndLoyal_LoyaltyProgram {
+  + addService(RoyalAndLoyal_l : str, RoyalAndLoyal_p : str, RoyalAndLoyal_s : str) : void
+  + enroll(RoyalAndLoyal_c : str) : void
+}
+class RoyalAndLoyal_ProgramPartner {
+  + numberOfCustomers : int
+}
+class RoyalAndLoyal_Service {
+}
+class RoyalAndLoyal_ServiceLevel {
+}
+RoyalAndLoyal_Service "0..9999" -- "1..1" RoyalAndLoyal_ServiceLevel : availableServices5
+RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_CustomerCard : cards21
+RoyalAndLoyal_ProgramPartner "1..1" -- "0..9999" RoyalAndLoyal_Service : deliveredServices27
+RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..9999" RoyalAndLoyal_ServiceLevel : levels1
+RoyalAndLoyal_CustomerCard "1..1" *-- "0..1" RoyalAndLoyal_ServiceLevel : myLevel22
+RoyalAndLoyal_Customer "0..1" -- "1..1" RoyalAndLoyal_CustomerCard : owner25
+RoyalAndLoyal_Customer "0..9999" -- "1..1" RoyalAndLoyal_LoyaltyProgram : participants2
+RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..9999" RoyalAndLoyal_ProgramPartner : partners0
+RoyalAndLoyal_LoyaltyProgram "0..1" -- "1..1" RoyalAndLoyal_ServiceLevel : program4
+RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_LoyaltyProgram : programs19
+RoyalAndLoyal_LoyaltyProgram "1..9999" -- "1..1" RoyalAndLoyal_ProgramPartner : programs30
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Customer : ref_RandL_Customer6
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_CustomerCard : ref_RandL_CustomerCard7
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_LoyaltyProgram : ref_RandL_LoyaltyProgram12
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_ProgramPartner : ref_RandL_ProgramPartner17
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Service : ref_RandL_Service9
+RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_ServiceLevel : ref_RandL_ServiceLevel14
+@enduml

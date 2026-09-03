@@ -1,0 +1,33 @@
+@startuml
+class ACADEMIC_PAGE {
+  + BRANCH : str
+  + STUDIES : str
+}
+class DATABASE_SYSTEM {
+  + Content : bool
+}
+class LoginPage {
+  + User_name : str
+}
+class PERSONAL_PAGE {
+  + BRANCH : str
+  + YEAR : int
+}
+class PLACEMENTS_PAGE {
+  + BRANCH : str
+  + INTREST : str
+  + SALARY : int
+}
+class T {
+}
+class WELCOME_PAGE {
+  + academic : str
+  + personal : str
+  + placements : str
+}
+PERSONAL_PAGE "0..1" -- "0..1" WELCOME_PAGE : PERSONAL_PAGE_WELCOME_PAGE
+ACADEMIC_PAGE "0..9999" -- "1..1" WELCOME_PAGE : User_Group
+LoginPage "1..1" -- "1..1" WELCOME_PAGE : User_Myprofile
+DATABASE_SYSTEM "0..9999" -- "1..1" WELCOME_PAGE : User_Post
+PLACEMENTS_PAGE "0..1" -- "0..1" WELCOME_PAGE : WELCOME_PAGE_PLACEMENTS_PAGE
+@enduml

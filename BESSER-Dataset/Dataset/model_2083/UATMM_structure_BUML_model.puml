@@ -1,0 +1,84 @@
+@startuml
+class Connector {
+}
+enum EdgeKind {
+  DEPENDENCY
+  TRIGGER
+}
+enum Nature {
+  Attack
+  Fault
+  Hybrid
+}
+enum RoleType {
+  Contributing
+  Counteracting
+}
+class UATMM_structure_AND {
+}
+class UATMM_structure_AttackTree {
+}
+class UATMM_structure_Connector {
+}
+class UATMM_structure_Edge {
+  + edgeKind : str
+}
+class UATMM_structure_FDEP {
+}
+class UATMM_structure_KofN {
+  + Threshold : int
+}
+class UATMM_structure_Node {
+  + id : str
+  + label : str
+  + nature : str
+  + role : str
+}
+class UATMM_structure_OR {
+}
+class UATMM_structure_PAND {
+}
+class UATMM_structure_RDEP {
+  + factor : float
+}
+class UATMM_structure_SAND {
+}
+class UATMM_structure_SOR {
+}
+class UATMM_structure_Spare {
+}
+class UATMM_structure_TAND {
+}
+class UATMM_structure_TreeMetaData {
+  + Key : str
+  + Value : str
+}
+class UATMM_structure_Weighted {
+  + Treshold : float
+  + Weights : float
+}
+class UATMM_structure_XOR {
+}
+Connector <|-- UATMM_structure_AND
+Connector <|-- UATMM_structure_FDEP
+Connector <|-- UATMM_structure_KofN
+Connector <|-- UATMM_structure_OR
+Connector <|-- UATMM_structure_PAND
+Connector <|-- UATMM_structure_RDEP
+Connector <|-- UATMM_structure_SAND
+Connector <|-- UATMM_structure_SOR
+Connector <|-- UATMM_structure_Spare
+Connector <|-- UATMM_structure_TAND
+Connector <|-- UATMM_structure_Weighted
+Connector <|-- UATMM_structure_XOR
+UATMM_structure_AttackTree "1..1" *-- "0..9999" UATMM_structure_Edge : Edges4
+UATMM_structure_AttackTree "1..1" *-- "1..9999" UATMM_structure_Node : Nodes1
+UATMM_structure_AttackTree "1..1" -- "1..1" UATMM_structure_Node : Root0
+UATMM_structure_Edge "1..1" -- "1..1" UATMM_structure_Node : Source17
+UATMM_structure_Edge "1..1" -- "1..1" UATMM_structure_Node : Target14
+UATMM_structure_Node "1..1" -- "0..9999" UATMM_structure_Node : children10
+UATMM_structure_Connector "0..1" --* "1..1" UATMM_structure_Node : connector8
+UATMM_structure_Connector "1..1" -- "1..1" UATMM_structure_Node : gate20
+UATMM_structure_AttackTree "1..1" *-- "0..9999" UATMM_structure_TreeMetaData : metadata6
+UATMM_structure_Node "1..1" -- "0..9999" UATMM_structure_Node : parents12
+@enduml

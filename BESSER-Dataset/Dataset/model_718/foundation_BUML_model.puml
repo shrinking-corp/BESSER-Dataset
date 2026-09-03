@@ -1,0 +1,432 @@
+@startuml
+enum AggregationKind {
+  aggregate
+  composite
+  none
+}
+class Artifact {
+}
+class Association {
+}
+class AssociationEnd {
+}
+class AssociationEndRole {
+}
+class Attribute {
+}
+class BehavioralFeature {
+}
+class Binding {
+}
+class BooleanExpression {
+}
+class CallAction {
+}
+enum CallConcurrencyKind {
+  concurrent
+  guarded
+  sequential
+}
+class CallEvent {
+}
+enum ChangeableKind {
+  addOnly
+  changeable
+  frozen
+}
+class Classifier {
+}
+class Collaboration {
+}
+class Comment {
+}
+class Component {
+}
+class Constraint {
+}
+class CreateAction {
+}
+class DataType {
+}
+class Dependency {
+}
+class Element {
+}
+class ElementResidence {
+}
+class Enumeration {
+}
+class EnumerationLiteral {
+}
+class Expression {
+}
+class Feature {
+}
+class Flow {
+}
+class GeneralizableElement {
+}
+class Generalization_ {
+}
+class MappingExpression {
+}
+class Method {
+}
+class ModelElement {
+}
+class MultiplicityRange {
+}
+class Multiplicity_ {
+}
+class Namespace {
+}
+class Node {
+}
+class Operation {
+}
+enum OrderingKind {
+  ordered
+  unordered
+}
+class Parameter {
+}
+enum ParameterDirectionKind {
+  in_
+  inout
+  out
+  return_
+}
+class PresentationElement {
+}
+class ProcedureExpression {
+}
+enum PseudostateKind {
+  choice
+  deepHistory
+  fork
+  initial
+  join
+  junction
+  shallowHistory
+}
+class Relationship {
+}
+enum ScopeKind {
+  classifier
+  instance
+}
+class Signal {
+}
+class StateMachine {
+}
+class Stereotype {
+}
+class StructuralFeature {
+}
+class TagDefinition {
+}
+class TaggedValue {
+}
+class TemplateArgument {
+}
+class TemplateParameter {
+}
+class TypeExpression {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class core_Association {
+}
+class core_Class {
+}
+class core_GeneralizableElement {
+}
+class core_Namespace {
+}
+class core_Relationship {
+}
+class foundation_core_Abstraction {
+}
+class foundation_core_Artifact {
+}
+class foundation_core_Association {
+}
+class foundation_core_AssociationClass {
+}
+class foundation_core_AssociationEnd {
+  + aggregation : str
+  + changeability : str
+  + isNavigable : str
+  + ordering : str
+  + targetScope : str
+}
+class foundation_core_Attribute {
+}
+abstract class foundation_core_BehavioralFeature {
+  + isQuery : str
+}
+class foundation_core_Binding {
+}
+class foundation_core_Class {
+  + isActive : str
+}
+abstract class foundation_core_Classifier {
+}
+class foundation_core_Comment {
+  + body : str
+}
+class foundation_core_Component {
+}
+class foundation_core_Constraint {
+}
+class foundation_core_DataType {
+}
+class foundation_core_Dependency {
+}
+abstract class foundation_core_Element {
+}
+class foundation_core_ElementResidence {
+  + visibility : str
+}
+class foundation_core_Enumeration {
+}
+class foundation_core_EnumerationLiteral {
+}
+abstract class foundation_core_Feature {
+  + ownerScope : str
+}
+class foundation_core_Flow {
+}
+abstract class foundation_core_GeneralizableElement {
+  + isAbstract : str
+  + isLeaf : str
+  + isRoot : str
+}
+class foundation_core_Generalization_ {
+  + discriminator : str
+}
+class foundation_core_Interface {
+}
+class foundation_core_Method {
+}
+abstract class foundation_core_ModelElement {
+  + isSpecification : str
+  + name : str
+  + visibility : str
+}
+abstract class foundation_core_Namespace {
+}
+class foundation_core_Node {
+}
+class foundation_core_Operation {
+  + concurrency : str
+  + isAbstract : str
+  + isLeaf : str
+  + isRoot : str
+  + specification : str
+}
+class foundation_core_Parameter {
+  + kind : str
+}
+class foundation_core_Permission {
+}
+abstract class foundation_core_PresentationElement {
+}
+class foundation_core_Primitive {
+}
+class foundation_core_ProgrammingLanguageDataType {
+}
+abstract class foundation_core_Relationship {
+}
+class foundation_core_Stereotype {
+  + baseClass : str
+  + icon : str
+}
+abstract class foundation_core_StructuralFeature {
+  + changeability : str
+  + ordering : str
+  + targetScope : str
+}
+class foundation_core_TagDefinition {
+  + tagType : str
+}
+class foundation_core_TaggedValue {
+  + dataValue : str
+}
+class foundation_core_TemplateArgument {
+}
+class foundation_core_TemplateParameter {
+}
+class foundation_core_Usage {
+}
+class foundation_data_types_ActionExpression {
+}
+class foundation_data_types_ArgListsExpression {
+}
+class foundation_data_types_BooleanExpression {
+}
+class foundation_data_types_Expression {
+  + body : str
+  + language : str
+}
+class foundation_data_types_IterationExpression {
+}
+class foundation_data_types_MappingExpression {
+}
+class foundation_data_types_MultiplicityRange {
+  + lower : str
+  + upper : str
+}
+class foundation_data_types_Multiplicity_ {
+}
+class foundation_data_types_ObjectSetExpression {
+}
+class foundation_data_types_ProcedureExpression {
+}
+class foundation_data_types_TimeExpression {
+}
+class foundation_data_types_TypeExpression {
+}
+BehavioralFeature <|-- foundation_core_Method
+BehavioralFeature <|-- foundation_core_Operation
+Classifier <|-- foundation_core_Artifact
+Classifier <|-- foundation_core_Class
+Classifier <|-- foundation_core_Component
+Classifier <|-- foundation_core_DataType
+Classifier <|-- foundation_core_Interface
+Classifier <|-- foundation_core_Node
+DataType <|-- foundation_core_Enumeration
+DataType <|-- foundation_core_Primitive
+DataType <|-- foundation_core_ProgrammingLanguageDataType
+Dependency <|-- foundation_core_Abstraction
+Dependency <|-- foundation_core_Binding
+Dependency <|-- foundation_core_Permission
+Dependency <|-- foundation_core_Usage
+Element <|-- foundation_core_ModelElement
+Element <|-- foundation_core_PresentationElement
+Expression <|-- foundation_data_types_ActionExpression
+Expression <|-- foundation_data_types_ArgListsExpression
+Expression <|-- foundation_data_types_BooleanExpression
+Expression <|-- foundation_data_types_IterationExpression
+Expression <|-- foundation_data_types_MappingExpression
+Expression <|-- foundation_data_types_ObjectSetExpression
+Expression <|-- foundation_data_types_ProcedureExpression
+Expression <|-- foundation_data_types_TimeExpression
+Expression <|-- foundation_data_types_TypeExpression
+Feature <|-- foundation_core_BehavioralFeature
+Feature <|-- foundation_core_StructuralFeature
+GeneralizableElement <|-- foundation_core_Stereotype
+ModelElement <|-- foundation_core_AssociationEnd
+ModelElement <|-- foundation_core_Comment
+ModelElement <|-- foundation_core_Constraint
+ModelElement <|-- foundation_core_EnumerationLiteral
+ModelElement <|-- foundation_core_Feature
+ModelElement <|-- foundation_core_GeneralizableElement
+ModelElement <|-- foundation_core_Namespace
+ModelElement <|-- foundation_core_Parameter
+ModelElement <|-- foundation_core_Relationship
+ModelElement <|-- foundation_core_TagDefinition
+ModelElement <|-- foundation_core_TaggedValue
+Relationship <|-- foundation_core_Dependency
+Relationship <|-- foundation_core_Flow
+Relationship <|-- foundation_core_Generalization_
+StructuralFeature <|-- foundation_core_Attribute
+core_Association <|-- foundation_core_AssociationClass
+core_Class <|-- foundation_core_AssociationClass
+core_GeneralizableElement <|-- foundation_core_Association
+core_GeneralizableElement <|-- foundation_core_Classifier
+core_Namespace <|-- foundation_core_Classifier
+core_Relationship <|-- foundation_core_Association
+ModelElement "0..9999" -- "1..1" foundation_core_Comment : annotatedElement95
+TemplateArgument "1..9999" --* "1..1" foundation_core_Binding : argument89
+AssociationEnd "0..9999" -- "1..1" foundation_core_Classifier : association27
+Association "1..1" -- "1..1" foundation_core_AssociationEnd : association41
+AssociationEnd "0..1" -- "1..1" foundation_core_Attribute : associationEnd56
+AssociationEndRole "0..9999" -- "1..1" foundation_core_Attribute : associationEndRole58
+StateMachine "0..9999" -- "1..1" foundation_core_ModelElement : behavior18
+BehavioralFeature "0..1" -- "1..1" foundation_core_Parameter : behavioralFeature72
+Binding "1..1" -- "1..1" foundation_core_TemplateArgument : binding136
+BooleanExpression "0..1" --* "1..1" foundation_core_Constraint : body47
+ProcedureExpression "0..1" --* "1..1" foundation_core_Method : body75
+CallAction "0..9999" -- "1..1" foundation_core_Operation : callAction65
+GeneralizableElement "1..1" -- "1..1" foundation_core_Generalization_ : child77
+ModelElement "1..9999" -- "1..1" foundation_core_Dependency : client82
+Dependency "0..9999" -- "1..1" foundation_core_ModelElement : clientDependency3
+Collaboration "0..9999" -- "1..1" foundation_core_Classifier : collaboration33
+Collaboration "0..9999" -- "1..1" foundation_core_Operation : collaboration68
+Comment "0..9999" -- "1..1" foundation_core_ModelElement : comment11
+AssociationEnd "2..9999" --* "1..1" foundation_core_Association : connection52
+ModelElement "0..9999" -- "1..1" foundation_core_Constraint : constrainedElement48
+Stereotype "0..1" -- "1..1" foundation_core_Constraint : constrainedStereotype50
+Constraint "0..9999" -- "1..1" foundation_core_ModelElement : constraint4
+Component "1..1" -- "1..1" foundation_core_ElementResidence : container103
+CreateAction "0..9999" -- "1..1" foundation_core_Classifier : createAction32
+ModelElement "0..1" -- "1..1" foundation_core_TemplateParameter : defaultElement105
+Expression "0..1" --* "1..1" foundation_core_Parameter : defaultValue70
+TagDefinition "0..9999" --* "1..1" foundation_core_Stereotype : definedTag114
+Component "0..9999" -- "1..1" foundation_core_Node : deployedComponent94
+Node "0..9999" -- "1..1" foundation_core_Component : deploymentLocation90
+ElementResidence "0..9999" -- "1..1" foundation_core_ModelElement : elementResidence12
+Enumeration "1..1" -- "1..1" foundation_core_EnumerationLiteral : enumeration113
+TypeExpression "0..1" --* "1..1" foundation_core_ProgrammingLanguageDataType : expression133
+ModelElement "0..9999" -- "1..1" foundation_core_Stereotype : extendedElement116
+Feature "0..9999" --* "1..1" foundation_core_Classifier : feature23
+Generalization_ "0..9999" -- "1..1" foundation_core_GeneralizableElement : generalization19
+Artifact "0..9999" -- "1..1" foundation_core_Component : implementation93
+Component "0..9999" -- "1..1" foundation_core_Artifact : implementationLocation134
+Expression "0..1" --* "1..1" foundation_core_Attribute : initialValue55
+EnumerationLiteral "1..9999" --* "1..1" foundation_core_Enumeration : literal112
+MappingExpression "0..1" --* "1..1" foundation_core_Abstraction : mapping86
+Method "0..9999" -- "1..1" foundation_core_Operation : method63
+ModelElement "1..1" -- "1..1" foundation_core_TaggedValue : modelElement127
+ModelElement "1..1" -- "1..1" foundation_core_TemplateArgument : modelElement137
+Multiplicity_ "1..1" -- "1..1" foundation_data_types_MultiplicityRange : multiplicity1
+Multiplicity_ "0..1" --* "1..1" foundation_core_TagDefinition : multiplicity120
+Multiplicity_ "0..1" --* "1..1" foundation_core_StructuralFeature : multiplicity35
+Multiplicity_ "0..1" --* "1..1" foundation_core_AssociationEnd : multiplicity39
+Namespace "0..1" -- "1..1" foundation_core_ModelElement : namespace2
+CallEvent "0..9999" -- "1..1" foundation_core_Operation : occurrence66
+ModelElement "0..9999" --* "1..1" foundation_core_Namespace : ownedElement22
+Stereotype "0..1" -- "1..1" foundation_core_TagDefinition : owner122
+Classifier "0..1" -- "1..1" foundation_core_Feature : owner34
+ModelElement "1..1" --* "1..1" foundation_core_TemplateParameter : parameter109
+Parameter "0..9999" --* "1..1" foundation_core_BehavioralFeature : parameter59
+GeneralizableElement "1..1" -- "1..1" foundation_core_Generalization_ : parent78
+Classifier "1..1" -- "1..1" foundation_core_AssociationEnd : participant43
+Classifier "0..1" -- "1..1" foundation_core_Generalization_ : powertype80
+Generalization_ "0..9999" -- "1..1" foundation_core_Classifier : powertypeRange30
+PresentationElement "0..9999" -- "1..1" foundation_core_ModelElement : presentation7
+Attribute "0..9999" --* "1..1" foundation_core_AssociationEnd : qualifier42
+Signal "0..9999" -- "1..1" foundation_core_BehavioralFeature : raisedSignal61
+MultiplicityRange "1..9999" --* "1..1" foundation_data_types_Multiplicity_ : range0
+TaggedValue "0..9999" -- "1..1" foundation_core_ModelElement : referenceTag16
+ModelElement "0..9999" -- "1..1" foundation_core_TaggedValue : referenceValue131
+ModelElement "1..1" -- "1..1" foundation_core_ElementResidence : resident101
+ElementResidence "0..9999" --* "1..1" foundation_core_Component : residentElement91
+ModelElement "0..9999" -- "1..1" foundation_core_Flow : source99
+Flow "0..9999" -- "1..1" foundation_core_ModelElement : sourceFlow9
+Generalization_ "0..9999" -- "1..1" foundation_core_GeneralizableElement : specialization20
+Classifier "0..9999" -- "1..1" foundation_core_AssociationEnd : specification45
+Operation "1..1" -- "1..1" foundation_core_Method : specification76
+AssociationEnd "0..9999" -- "1..1" foundation_core_Classifier : specifiedEnd28
+Stereotype "0..9999" -- "1..1" foundation_core_ModelElement : stereotype14
+Constraint "0..9999" --* "1..1" foundation_core_Stereotype : stereotypeConstraint118
+ModelElement "0..9999" -- "1..1" foundation_core_PresentationElement : subject87
+ModelElement "1..9999" -- "1..1" foundation_core_Dependency : supplier84
+Dependency "0..9999" -- "1..1" foundation_core_ModelElement : supplierDependency5
+TaggedValue "0..9999" --* "1..1" foundation_core_ModelElement : taggedValue15
+ModelElement "0..9999" -- "1..1" foundation_core_Flow : target97
+Flow "0..9999" -- "1..1" foundation_core_ModelElement : targetFlow8
+ModelElement "1..1" -- "1..1" foundation_core_TemplateParameter : template107
+TemplateParameter "0..9999" --* "1..1" foundation_core_ModelElement : templateParameter13
+TagDefinition "1..1" -- "1..1" foundation_core_TaggedValue : type129
+Classifier "1..1" -- "1..1" foundation_core_StructuralFeature : type37
+Classifier "1..1" -- "1..1" foundation_core_Parameter : type73
+StructuralFeature "0..9999" -- "1..1" foundation_core_Classifier : typedFeature24
+Parameter "0..9999" -- "1..1" foundation_core_Classifier : typedParameter25
+TaggedValue "0..9999" -- "1..1" foundation_core_TagDefinition : typedValue124
+@enduml

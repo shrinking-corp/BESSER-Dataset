@@ -1,0 +1,81 @@
+@startuml
+class BooleanOperation {
+}
+class ComparisonOperator {
+}
+class Condition {
+}
+class Existence {
+}
+class model_And {
+}
+abstract class model_BooleanOperation {
+}
+class model_Column {
+  + name : str
+}
+class model_ColumnAlias {
+  + name : str
+}
+class model_Comparison {
+  + lhs : str
+  + rhs : str
+}
+abstract class model_ComparisonOperator {
+}
+abstract class model_Condition {
+}
+class model_Equals {
+}
+abstract class model_Existence {
+}
+class model_Exists {
+}
+class model_From {
+}
+class model_GreaterThan {
+}
+class model_LessThan {
+}
+class model_NotEquals {
+}
+class model_NotExists {
+}
+class model_Or {
+}
+class model_Select {
+}
+class model_Table {
+  + name : str
+}
+class model_TableAlias {
+  + name : str
+}
+class model_Union {
+}
+class model_Where {
+}
+BooleanOperation <|-- model_And
+BooleanOperation <|-- model_Or
+ComparisonOperator <|-- model_Equals
+ComparisonOperator <|-- model_GreaterThan
+ComparisonOperator <|-- model_LessThan
+ComparisonOperator <|-- model_NotEquals
+Condition <|-- model_Comparison
+Condition <|-- model_Existence
+Existence <|-- model_Exists
+Existence <|-- model_NotExists
+model_BooleanOperation "0..1" --* "1..1" model_Condition : booleanoperation20
+model_Column "1..9999" --* "1..1" model_Select : column0
+model_Column "1..1" *-- "0..1" model_ColumnAlias : columnalias7
+model_Comparison "1..1" *-- "1..1" model_ComparisonOperator : comparisonoperator23
+model_Condition "1..1" --* "1..1" model_Where : condition13
+model_BooleanOperation "1..1" *-- "1..1" model_Condition : condition15
+model_From "1..1" --* "1..1" model_Select : from_1
+model_Select "1..1" --* "1..1" model_Union : select17
+model_Existence "1..1" *-- "1..1" model_Select : select24
+model_From "1..1" *-- "1..9999" model_Table : table9
+model_Table "1..1" *-- "0..1" model_TableAlias : tablealias11
+model_Select "1..1" *-- "0..1" model_Union : union5
+model_Select "1..1" *-- "0..1" model_Where : where3
+@enduml

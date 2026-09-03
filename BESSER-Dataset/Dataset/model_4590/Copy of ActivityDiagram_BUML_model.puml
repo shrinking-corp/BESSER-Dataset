@@ -1,0 +1,90 @@
+@startuml
+class ADElement {
+}
+class ActivityNode {
+}
+class ControlNode {
+}
+class FinalNode {
+}
+class ObjectNode {
+}
+abstract class activitydiagram_ADElement {
+  + name : str
+}
+class activitydiagram_AcceptSignalNode {
+  + signalId : str
+}
+class activitydiagram_ActionNode {
+}
+class activitydiagram_Activity {
+}
+class activitydiagram_ActivityEdge {
+  + guard : bool
+}
+class activitydiagram_ActivityFinalNode {
+}
+abstract class activitydiagram_ActivityNode {
+  + current : bool
+}
+class activitydiagram_ActivityParameterNode {
+  + parameter : str
+}
+abstract class activitydiagram_ControlNode {
+}
+class activitydiagram_DataStoreNode {
+}
+class activitydiagram_DecisionNode {
+}
+class activitydiagram_ExpansionNode {
+}
+abstract class activitydiagram_FinalNode {
+}
+class activitydiagram_FlowFinalNode {
+}
+class activitydiagram_ForkNode {
+}
+class activitydiagram_InitialNode {
+}
+class activitydiagram_JoinNode {
+}
+class activitydiagram_MergeNode {
+}
+abstract class activitydiagram_ObjectNode {
+}
+class activitydiagram_Pin {
+}
+class activitydiagram_SignalNode {
+  + signalId : str
+}
+class activitydiagram_TimeEventNode {
+  + cycle : str
+}
+ADElement <|-- activitydiagram_Activity
+ADElement <|-- activitydiagram_ActivityEdge
+ADElement <|-- activitydiagram_ActivityNode
+ActivityNode <|-- activitydiagram_AcceptSignalNode
+ActivityNode <|-- activitydiagram_ActionNode
+ActivityNode <|-- activitydiagram_ControlNode
+ActivityNode <|-- activitydiagram_ObjectNode
+ActivityNode <|-- activitydiagram_SignalNode
+ActivityNode <|-- activitydiagram_TimeEventNode
+ControlNode <|-- activitydiagram_DecisionNode
+ControlNode <|-- activitydiagram_FinalNode
+ControlNode <|-- activitydiagram_ForkNode
+ControlNode <|-- activitydiagram_InitialNode
+ControlNode <|-- activitydiagram_JoinNode
+ControlNode <|-- activitydiagram_MergeNode
+FinalNode <|-- activitydiagram_ActivityFinalNode
+FinalNode <|-- activitydiagram_FlowFinalNode
+ObjectNode <|-- activitydiagram_ActivityParameterNode
+ObjectNode <|-- activitydiagram_DataStoreNode
+ObjectNode <|-- activitydiagram_ExpansionNode
+ObjectNode <|-- activitydiagram_Pin
+activitydiagram_ADElement "1..1" -- "1..1" activitydiagram_Activity : activityDiag1
+activitydiagram_ADElement "0..9999" --* "1..1" activitydiagram_Activity : contains0
+activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_ActivityNode : sedges2
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ActivityNode : source5
+activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ActivityNode : target6
+activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_ActivityNode : tedges3
+@enduml

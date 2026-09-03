@@ -1,0 +1,31 @@
+@startuml
+class project_CommitterShip {
+  + end : date
+  + start : date
+}
+class project_Foundation {
+}
+class project_Person {
+  + email : str
+  + firstname : str
+  + image : str
+  + lastname : str
+}
+class project_Project {
+  + devmail : str
+  + end : date
+  + homepage : str
+  + longname : str
+  + shortname : str
+  + start : date
+}
+project_CommitterShip "0..9999" --* "1..1" project_Project : committers5
+project_CommitterShip "0..9999" -- "1..1" project_Person : committerships15
+project_Project "1..1" -- "0..1" project_Project : parent7
+project_CommitterShip "1..1" -- "0..1" project_Person : person14
+project_Foundation "1..1" *-- "0..9999" project_Person : persons1
+project_CommitterShip "1..1" -- "0..1" project_Project : project12
+project_Person "0..9999" -- "1..1" project_Project : projectleads9
+project_Foundation "1..1" *-- "0..9999" project_Project : projects0
+project_Project "1..1" *-- "0..9999" project_Project : subprojects4
+@enduml

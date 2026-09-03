@@ -1,0 +1,133 @@
+@startuml
+class Conncection {
+}
+class FCORE_Attribute {
+  + max : int
+  + min : int
+  + name : str
+  + value : int
+}
+class FCORE_AttributeConstraint {
+  + equation : str
+}
+class FCORE_AttributeConstraintConnection {
+}
+class FCORE_CardinalityConnection {
+  + max : int
+  + min : int
+}
+abstract class FCORE_Conncection {
+}
+class FCORE_ExcludesFeatureConstraint {
+}
+abstract class FCORE_Feature {
+  + name : str
+  + selected : bool
+}
+abstract class FCORE_FeatureConstraint {
+}
+class FCORE_FeatureGroup {
+  + max : int
+  + min : int
+}
+class FCORE_FeatureModel {
+}
+class FCORE_FeatureToGroupConnection {
+}
+class FCORE_GroupFeature {
+}
+class FCORE_GroupToFeatureConnection {
+}
+abstract class FCORE_Influence {
+  + contribution : float
+}
+class FCORE_InfluenceAttribute {
+}
+class FCORE_InfluenceFeature {
+}
+class FCORE_MandatoryConnection {
+}
+class FCORE_OptionalConnection {
+}
+class FCORE_RequiresFeatureConstraint {
+}
+class FCORE_RootFeature {
+}
+abstract class FCORE_SingleFeatureConnection {
+}
+class FCORE_Softgoal {
+  + name : str
+  + weighting : str
+}
+class FCORE_SolitaryFeature {
+  + max : int
+  + min : int
+}
+class Feature {
+}
+class FeatureConstraint {
+}
+class Influence {
+}
+class SingleFeatureConnection {
+}
+Conncection <|-- FCORE_AttributeConstraintConnection
+Conncection <|-- FCORE_FeatureConstraint
+Conncection <|-- FCORE_FeatureToGroupConnection
+Conncection <|-- FCORE_GroupToFeatureConnection
+Conncection <|-- FCORE_Influence
+Conncection <|-- FCORE_SingleFeatureConnection
+Feature <|-- FCORE_GroupFeature
+Feature <|-- FCORE_RootFeature
+Feature <|-- FCORE_SolitaryFeature
+FeatureConstraint <|-- FCORE_ExcludesFeatureConstraint
+FeatureConstraint <|-- FCORE_RequiresFeatureConstraint
+Influence <|-- FCORE_InfluenceAttribute
+Influence <|-- FCORE_InfluenceFeature
+SingleFeatureConnection <|-- FCORE_CardinalityConnection
+SingleFeatureConnection <|-- FCORE_MandatoryConnection
+SingleFeatureConnection <|-- FCORE_OptionalConnection
+FCORE_AttributeConstraintConnection "0..9999" --* "1..1" FCORE_FeatureModel : AttributeConstraintConnections29
+FCORE_Attribute "1..1" -- "1..1" FCORE_InfluenceAttribute : attribute63
+FCORE_AttributeConstraint "1..1" -- "0..1" FCORE_AttributeConstraintConnection : attributeConstraintConnection53
+FCORE_AttributeConstraintConnection "0..9999" -- "1..1" FCORE_Feature : attributeConstraints31
+FCORE_AttributeConstraint "0..9999" --* "1..1" FCORE_FeatureModel : attributeConstraints9
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_InfluenceAttribute : attributeInfluences19
+FCORE_Attribute "0..9999" --* "1..1" FCORE_Feature : attributes32
+FCORE_Attribute "0..9999" --* "1..1" FCORE_FeatureModel : attributes7
+FCORE_ExcludesFeatureConstraint "0..9999" --* "1..1" FCORE_FeatureModel : excludesFeatureConstraints13
+FCORE_Feature "1..1" -- "1..1" FCORE_InfluenceFeature : feature61
+FCORE_Feature "1..1" -- "0..9999" FCORE_FeatureConstraint : featureConstraintsEnds35
+FCORE_Feature "1..1" -- "0..9999" FCORE_FeatureConstraint : featureConstraintsStarts34
+FCORE_Feature "1..1" -- "1..1" FCORE_FeatureConstraint : featureEnd58
+FCORE_FeatureGroup "0..9999" --* "1..1" FCORE_FeatureModel : featureGroups5
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_InfluenceFeature : featureInfluences17
+FCORE_Feature "1..1" -- "1..1" FCORE_FeatureConstraint : featureStart57
+FCORE_FeatureGroup "1..1" -- "1..1" FCORE_FeatureToGroupConnection : featureToGroupConnection46
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_FeatureToGroupConnection : featureToGroupConnections25
+FCORE_Feature "1..1" -- "0..9999" FCORE_FeatureToGroupConnection : featureToGroupConnections40
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_GroupFeature : groupFeatures1
+FCORE_GroupFeature "1..1" -- "1..1" FCORE_GroupToFeatureConnection : groupToFeatureConnection44
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_GroupToFeatureConnection : groupToFeatureConnections27
+FCORE_FeatureGroup "1..1" -- "2..9999" FCORE_GroupToFeatureConnection : groupToFeatureConnections49
+FCORE_SingleFeatureConnection "1..1" -- "1..1" FCORE_SolitaryFeature : incomingSingleFeatureConnection42
+FCORE_Influence "0..9999" -- "1..1" FCORE_Softgoal : influence56
+FCORE_Feature "1..1" -- "0..9999" FCORE_InfluenceFeature : influences37
+FCORE_Attribute "1..1" -- "0..9999" FCORE_InfluenceAttribute : influences52
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_MandatoryConnection : mandatoryConnections21
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_OptionalConnection : optionalConnections23
+FCORE_Feature "1..1" -- "0..9999" FCORE_SingleFeatureConnection : outgoingSingleFeatureConnections38
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_RequiresFeatureConstraint : requiresFeatureConstraints11
+FCORE_FeatureModel "1..1" *-- "1..1" FCORE_RootFeature : rootFeature0
+FCORE_Influence "1..1" -- "1..1" FCORE_Softgoal : softgoal60
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_Softgoal : softgoals15
+FCORE_FeatureModel "1..1" *-- "0..9999" FCORE_SolitaryFeature : solitaryFeatures3
+FCORE_Feature "1..1" -- "1..1" FCORE_SingleFeatureConnection : source65
+FCORE_Feature "1..1" -- "1..1" FCORE_FeatureToGroupConnection : source68
+FCORE_FeatureGroup "1..1" -- "1..1" FCORE_GroupToFeatureConnection : source71
+FCORE_AttributeConstraintConnection "1..1" -- "1..1" FCORE_Feature : source74
+FCORE_SingleFeatureConnection "1..1" -- "1..1" FCORE_SolitaryFeature : target67
+FCORE_FeatureGroup "1..1" -- "1..1" FCORE_FeatureToGroupConnection : target70
+FCORE_GroupFeature "1..1" -- "1..1" FCORE_GroupToFeatureConnection : target73
+FCORE_AttributeConstraint "1..1" -- "1..1" FCORE_AttributeConstraintConnection : target76
+@enduml

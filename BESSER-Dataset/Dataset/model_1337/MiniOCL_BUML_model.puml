@@ -1,0 +1,168 @@
+@startuml
+class BooleanLiteralExpCS {
+}
+class CallExpCS {
+}
+class ExpCS {
+}
+class LiteralExpCS {
+}
+class LogicExpCS {
+}
+class LoopExpCS {
+}
+class NavigationExpCS {
+}
+class NavigationPathCS {
+}
+class PathCS {
+}
+class PrimaryExpCS {
+}
+class miniOCL_AccVarCS {
+  + accVarName : str
+}
+class miniOCL_BooleanExpCS {
+  + boolSymbol : bool
+}
+class miniOCL_BooleanLiteralExpCS {
+}
+class miniOCL_CallExpCS {
+}
+class miniOCL_ClassCS {
+  + name : str
+}
+class miniOCL_CollectExpCS {
+}
+class miniOCL_ConstraintCS {
+}
+class miniOCL_EStructuralFeature {
+}
+class miniOCL_ExistsExpCS {
+}
+class miniOCL_ExpCS {
+}
+class miniOCL_ForAllExpCS {
+}
+class miniOCL_IntLiteralExpCS {
+  + intSymbol : int
+}
+class miniOCL_InvariantCS {
+}
+class miniOCL_IterateExpCS {
+}
+class miniOCL_IteratorVarCS {
+  + itName : str
+}
+class miniOCL_LiteralExpCS {
+}
+class miniOCL_LogicExpCS {
+  + op : str
+}
+class miniOCL_LoopExpCS {
+  + logicOp : str
+}
+class miniOCL_NameExpCS {
+}
+class miniOCL_NavigationExpCS {
+}
+class miniOCL_NavigationNameExpCS {
+}
+class miniOCL_NavigationPathCS {
+}
+class miniOCL_NavigationPathElementCS {
+}
+class miniOCL_NavigationPathNameCS {
+}
+class miniOCL_NavigationPathVariableCS {
+  + varName : str
+}
+class miniOCL_OperationCS {
+  + name : str
+}
+class miniOCL_PackageCS {
+  + name : str
+}
+class miniOCL_ParameterCS {
+  + name : str
+}
+class miniOCL_PathCS {
+}
+class miniOCL_PathElementCS {
+}
+class miniOCL_PathNameCS {
+}
+class miniOCL_PathVariableCS {
+  + varName : str
+}
+class miniOCL_PrimaryExpCS {
+}
+class miniOCL_PropertyCS {
+  + name : str
+}
+class miniOCL_RootCS {
+}
+class miniOCL_RoundedBracketClauseCS {
+}
+class miniOCL_StringLiteralExpCS {
+  + stringSymbol : str
+}
+BooleanLiteralExpCS <|-- miniOCL_BooleanExpCS
+CallExpCS <|-- miniOCL_PrimaryExpCS
+ExpCS <|-- miniOCL_LogicExpCS
+LiteralExpCS <|-- miniOCL_BooleanLiteralExpCS
+LiteralExpCS <|-- miniOCL_IntLiteralExpCS
+LiteralExpCS <|-- miniOCL_StringLiteralExpCS
+LogicExpCS <|-- miniOCL_CallExpCS
+LoopExpCS <|-- miniOCL_CollectExpCS
+LoopExpCS <|-- miniOCL_ExistsExpCS
+LoopExpCS <|-- miniOCL_ForAllExpCS
+LoopExpCS <|-- miniOCL_IterateExpCS
+NavigationExpCS <|-- miniOCL_LoopExpCS
+NavigationExpCS <|-- miniOCL_NameExpCS
+NavigationExpCS <|-- miniOCL_NavigationNameExpCS
+NavigationPathCS <|-- miniOCL_NavigationPathElementCS
+NavigationPathCS <|-- miniOCL_NavigationPathVariableCS
+PathCS <|-- miniOCL_PathElementCS
+PathCS <|-- miniOCL_PathVariableCS
+PrimaryExpCS <|-- miniOCL_LiteralExpCS
+PrimaryExpCS <|-- miniOCL_NavigationExpCS
+miniOCL_AccVarCS "1..1" *-- "0..1" miniOCL_ExpCS : accInitExp62
+miniOCL_AccVarCS "1..1" *-- "0..1" miniOCL_PathNameCS : accType59
+miniOCL_AccVarCS "0..1" --* "1..1" miniOCL_IterateExpCS : accVar58
+miniOCL_AccVarCS "0..9999" --* "1..1" miniOCL_ExistsExpCS : accVars71
+miniOCL_AccVarCS "0..9999" --* "1..1" miniOCL_ForAllExpCS : accVars84
+miniOCL_ExpCS "0..9999" --* "1..1" miniOCL_RoundedBracketClauseCS : args65
+miniOCL_ExpCS "0..1" --* "1..1" miniOCL_OperationCS : body22
+miniOCL_CallExpCS "0..1" --* "1..1" miniOCL_NameExpCS : callExp48
+miniOCL_CallExpCS "0..1" --* "1..1" miniOCL_NavigationNameExpCS : callExp77
+miniOCL_ClassCS "0..9999" --* "1..1" miniOCL_PackageCS : classes6
+miniOCL_ConstraintCS "0..9999" --* "1..1" miniOCL_RootCS : contraints1
+miniOCL_ExpCS "0..1" --* "1..1" miniOCL_InvariantCS : exp32
+miniOCL_ExpCS "0..9999" --* "1..1" miniOCL_LoopExpCS : exp52
+miniOCL_NameExpCS "1..1" *-- "0..1" miniOCL_PathNameCS : expName44
+miniOCL_NavigationNameExpCS "1..1" *-- "0..1" miniOCL_NavigationPathNameCS : expName73
+miniOCL_ClassCS "1..1" *-- "0..1" miniOCL_PathNameCS : extends8
+miniOCL_ConstraintCS "1..1" *-- "0..9999" miniOCL_InvariantCS : invariants30
+miniOCL_IteratorVarCS "1..1" *-- "0..1" miniOCL_PathNameCS : itType55
+miniOCL_IteratorVarCS "0..1" --* "1..1" miniOCL_LoopExpCS : itVar51
+miniOCL_LogicExpCS "1..1" *-- "0..1" miniOCL_LogicExpCS : left36
+miniOCL_CallExpCS "1..1" *-- "0..1" miniOCL_NavigationExpCS : navExp42
+miniOCL_ClassCS "1..1" *-- "0..9999" miniOCL_OperationCS : operations12
+miniOCL_PackageCS "0..9999" --* "1..1" miniOCL_RootCS : packages0
+miniOCL_PackageCS "0..9999" --* "1..1" miniOCL_PackageCS : packages4
+miniOCL_OperationCS "1..1" *-- "0..9999" miniOCL_ParameterCS : params17
+miniOCL_PathCS "0..9999" --* "1..1" miniOCL_PathNameCS : path68
+miniOCL_NavigationPathCS "0..9999" --* "1..1" miniOCL_NavigationPathNameCS : path80
+miniOCL_EStructuralFeature "0..1" -- "1..1" miniOCL_PathElementCS : pathName70
+miniOCL_EStructuralFeature "0..1" -- "1..1" miniOCL_NavigationPathElementCS : pathName82
+miniOCL_ClassCS "1..1" *-- "0..9999" miniOCL_PropertyCS : properties10
+miniOCL_OperationCS "1..1" *-- "0..1" miniOCL_PathNameCS : resultRef19
+miniOCL_CallExpCS "0..1" --* "1..1" miniOCL_LogicExpCS : right37
+miniOCL_NameExpCS "1..1" *-- "0..1" miniOCL_RoundedBracketClauseCS : roundedBrackets46
+miniOCL_NavigationNameExpCS "1..1" *-- "0..1" miniOCL_RoundedBracketClauseCS : roundedBrackets74
+miniOCL_CallExpCS "0..1" --* "1..1" miniOCL_CallExpCS : source40
+miniOCL_PathNameCS "0..1" --* "1..1" miniOCL_PropertyCS : typeRef14
+miniOCL_ParameterCS "1..1" *-- "0..1" miniOCL_PathNameCS : typeRef24
+miniOCL_ConstraintCS "1..1" *-- "0..1" miniOCL_PathNameCS : typeRef27
+@enduml

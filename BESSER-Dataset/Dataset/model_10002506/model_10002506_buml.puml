@@ -1,0 +1,55 @@
+@startuml
+abstract class AcceleratorCard {
+}
+class CPU {
+}
+class Cache {
+  + chunck : str
+}
+abstract class Card {
+}
+abstract class DeviceCard {
+}
+class ExtensionBoard {
+}
+class FastCard {
+}
+class GenericSound {
+}
+class Instruction {
+}
+class Machine {
+}
+class Memory_Interface {
+}
+abstract class Processor {
+}
+class Program {
+  + name : str
+}
+class RAM {
+}
+abstract class Sound {
+}
+class Vendor1Adapter {
+}
+class Vendor1Sound {
+}
+class Vendor2Adapter {
+}
+class Vendor2Sound {
+}
+AcceleratorCard "0..1" -- "0..1" CPU : AcceleratorCard_CPU
+Cache "0..1" -- "1..1" RAM : Cache_RAM
+Card "0..9999" -- "0..9999" ExtensionBoard : ExtensionBoard_Card
+Card "0..3" -- "0..9999" Machine : Machine_Card
+Machine "0..9999" -- "0..9999" Memory_Interface : Machine_Memory
+Machine "0..9999" -- "0..9999" Processor : Machine_Processor
+Machine "0..1" -- "0..1" Processor : Machine_Processor2
+Machine "0..1" -- "0..1" Processor : Processor_Machine
+Memory_Interface "0..9999" -- "0..9999" Processor : Processor_Memory
+Processor "0..9999" -- "0..9999" Program : Processor_Program
+Instruction "0..9999" -- "0..9999" Program : Program_Instruction
+Vendor1Adapter "0..9999" -- "0..9999" Vendor1Sound : Vendor1Adapter_Vendor1Sound
+Vendor2Adapter "0..9999" -- "0..9999" Vendor2Sound : Vendor2Adapter_Vendor2Sound
+@enduml

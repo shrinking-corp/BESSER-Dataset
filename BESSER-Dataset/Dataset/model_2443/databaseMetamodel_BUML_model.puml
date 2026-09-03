@@ -1,0 +1,22 @@
+@startuml
+class databaseMetamodel_Column {
+  + hasFKOrder : int
+  + hasPKOrder : int
+  + name : str
+  + type : str
+}
+class databaseMetamodel_Database {
+}
+class databaseMetamodel_Relation {
+  + isJoinTable : bool
+  + isSelfJoinTable : bool
+  + name : str
+}
+databaseMetamodel_Column "1..9999" --* "1..1" databaseMetamodel_Relation : hasColumns1
+databaseMetamodel_Column "0..9999" -- "1..1" databaseMetamodel_Relation : hasForeignKey6
+databaseMetamodel_Column "1..9999" -- "1..1" databaseMetamodel_Relation : hasPrimaryKey3
+databaseMetamodel_Column "1..1" -- "0..9999" databaseMetamodel_Relation : isForeignKeyToRelation15
+databaseMetamodel_Column "0..9999" -- "1..1" databaseMetamodel_Column : isForeinKeyToColumn13
+databaseMetamodel_Relation "1..1" -- "0..2" databaseMetamodel_Relation : referencesRelation10
+databaseMetamodel_Database "1..1" *-- "0..9999" databaseMetamodel_Relation : relation0
+@enduml

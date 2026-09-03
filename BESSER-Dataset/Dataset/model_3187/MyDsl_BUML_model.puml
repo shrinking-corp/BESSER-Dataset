@@ -1,0 +1,132 @@
+@startuml
+class BasicType {
+}
+class ElementType {
+}
+class Expression {
+}
+class Member {
+}
+class myDsl_And {
+}
+class myDsl_ArrayElement {
+}
+class myDsl_ArrayType {
+}
+class myDsl_Attribute {
+  + name : str
+}
+class myDsl_BasicType {
+}
+class myDsl_BoolConstant {
+  + value : str
+}
+class myDsl_BoolType {
+  + value : str
+}
+class myDsl_Comparison {
+  + op : str
+}
+class myDsl_Condition {
+}
+class myDsl_ElementType {
+}
+class myDsl_Entity {
+  + name : str
+}
+class myDsl_EntityType {
+}
+class myDsl_Equality {
+  + op : str
+}
+class myDsl_Expression {
+}
+class myDsl_IntConstant {
+  + value : int
+}
+class myDsl_IntType {
+  + value : int
+}
+class myDsl_IsServer {
+  + value : str
+}
+class myDsl_Member {
+}
+class myDsl_Minus {
+}
+class myDsl_Model {
+}
+class myDsl_MulOrDiv {
+  + op : str
+}
+class myDsl_Not {
+}
+class myDsl_Or {
+}
+class myDsl_Plus {
+}
+class myDsl_Rule {
+}
+class myDsl_StringConstant {
+  + value : str
+}
+class myDsl_StringType {
+  + value : str
+}
+class myDsl_ValueType {
+}
+class myDsl_VariableConstant {
+}
+class myDsl_Verb {
+  + qa : str
+  + verb : str
+}
+BasicType <|-- myDsl_BoolType
+BasicType <|-- myDsl_IntType
+BasicType <|-- myDsl_StringType
+ElementType <|-- myDsl_ArrayType
+ElementType <|-- myDsl_BasicType
+ElementType <|-- myDsl_EntityType
+Expression <|-- myDsl_And
+Expression <|-- myDsl_BoolConstant
+Expression <|-- myDsl_Comparison
+Expression <|-- myDsl_Equality
+Expression <|-- myDsl_IntConstant
+Expression <|-- myDsl_Minus
+Expression <|-- myDsl_MulOrDiv
+Expression <|-- myDsl_Not
+Expression <|-- myDsl_Or
+Expression <|-- myDsl_Plus
+Expression <|-- myDsl_StringConstant
+Expression <|-- myDsl_VariableConstant
+Member <|-- myDsl_Entity
+Member <|-- myDsl_Verb
+myDsl_ArrayElement "0..9999" --* "1..1" myDsl_ArrayType : arrayElements10
+myDsl_Attribute "0..9999" --* "1..1" myDsl_Entity : attributes2
+myDsl_Condition "0..1" --* "1..1" myDsl_Rule : condition14
+myDsl_ElementType "0..1" --* "1..1" myDsl_ValueType : elementType6
+myDsl_Entity "0..1" -- "1..1" myDsl_EntityType : entity8
+myDsl_Condition "1..1" *-- "0..1" myDsl_Expression : expression19
+myDsl_Expression "0..1" --* "1..1" myDsl_Not : expression56
+myDsl_Entity "1..1" *-- "0..1" myDsl_IsServer : is_1
+myDsl_Expression "0..1" --* "1..1" myDsl_Or : left21
+myDsl_And "1..1" *-- "0..1" myDsl_Expression : left26
+myDsl_Equality "1..1" *-- "0..1" myDsl_Expression : left31
+myDsl_Comparison "1..1" *-- "0..1" myDsl_Expression : left36
+myDsl_Expression "0..1" --* "1..1" myDsl_Plus : left41
+myDsl_Expression "0..1" --* "1..1" myDsl_Minus : left46
+myDsl_Expression "0..1" --* "1..1" myDsl_MulOrDiv : left51
+myDsl_Member "0..9999" --* "1..1" myDsl_Model : members0
+myDsl_Expression "0..1" --* "1..1" myDsl_Or : right23
+myDsl_And "1..1" *-- "0..1" myDsl_Expression : right28
+myDsl_Equality "1..1" *-- "0..1" myDsl_Expression : right33
+myDsl_Comparison "1..1" *-- "0..1" myDsl_Expression : right38
+myDsl_Expression "0..1" --* "1..1" myDsl_Plus : right43
+myDsl_Expression "0..1" --* "1..1" myDsl_Minus : right48
+myDsl_Expression "0..1" --* "1..1" myDsl_MulOrDiv : right53
+myDsl_Rule "0..9999" --* "1..1" myDsl_Verb : rules13
+myDsl_ArrayType "0..1" --* "1..1" myDsl_Rule : url16
+myDsl_ArrayElement "1..1" *-- "0..1" myDsl_BasicType : value11
+myDsl_Attribute "1..1" *-- "0..1" myDsl_ValueType : value4
+myDsl_Attribute "0..1" -- "1..1" myDsl_VariableConstant : value58
+@enduml

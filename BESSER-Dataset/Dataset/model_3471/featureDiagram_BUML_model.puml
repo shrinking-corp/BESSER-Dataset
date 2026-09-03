@@ -1,0 +1,62 @@
+@startuml
+class Constraint {
+}
+class Feature {
+}
+class Operator {
+}
+class featureDiagram_And {
+}
+class featureDiagram_Card {
+}
+abstract class featureDiagram_Constraint {
+}
+class featureDiagram_ConstraintEdge {
+}
+class featureDiagram_Feature {
+  + name : str
+  + optional : str
+  + selected : str
+}
+class featureDiagram_FeatureDiagram {
+  + graphTypeTree : str
+}
+class featureDiagram_Model {
+  + name : str
+}
+class featureDiagram_Mutex {
+}
+abstract class featureDiagram_Operator {
+}
+class featureDiagram_Opt {
+}
+class featureDiagram_Or {
+}
+class featureDiagram_PrimitiveFeature {
+}
+class featureDiagram_Require {
+}
+class featureDiagram_Xor {
+}
+Constraint <|-- featureDiagram_Mutex
+Constraint <|-- featureDiagram_Require
+Feature <|-- featureDiagram_PrimitiveFeature
+Operator <|-- featureDiagram_And
+Operator <|-- featureDiagram_Card
+Operator <|-- featureDiagram_Opt
+Operator <|-- featureDiagram_Or
+Operator <|-- featureDiagram_Xor
+featureDiagram_Feature "1..1" -- "0..9999" featureDiagram_Feature : children9
+featureDiagram_Constraint "0..1" --* "1..1" featureDiagram_ConstraintEdge : constraint17
+featureDiagram_ConstraintEdge "0..9999" --* "1..1" featureDiagram_FeatureDiagram : constraintEdges2
+featureDiagram_Feature "0..9999" --* "1..1" featureDiagram_FeatureDiagram : features0
+featureDiagram_Feature "1..1" *-- "0..9999" featureDiagram_Model : models6
+featureDiagram_Feature "1..1" *-- "0..1" featureDiagram_Operator : operator5
+featureDiagram_Constraint "1..1" -- "0..1" featureDiagram_ConstraintEdge : owningCE23
+featureDiagram_Feature "0..1" -- "1..1" featureDiagram_Operator : owningFeature21
+featureDiagram_Feature "1..1" -- "1..1" featureDiagram_FeatureDiagram : owningFeatureDiagram4
+featureDiagram_Feature "1..1" -- "0..9999" featureDiagram_Feature : parents12
+featureDiagram_Feature "1..1" -- "1..1" featureDiagram_FeatureDiagram : root1
+featureDiagram_ConstraintEdge "1..1" -- "0..1" featureDiagram_Feature : source18
+featureDiagram_ConstraintEdge "1..1" -- "0..1" featureDiagram_Feature : target14
+@enduml

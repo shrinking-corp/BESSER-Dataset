@@ -1,0 +1,49 @@
+@startuml
+class Class {
+}
+class Feature {
+}
+class NamedElement {
+}
+class simple_OO_concept_Attribute {
+}
+class simple_OO_concept_Behavior {
+}
+class simple_OO_concept_Class {
+  + isAbstract : bool
+}
+class simple_OO_concept_Dependency {
+}
+abstract class simple_OO_concept_Feature {
+  + isPrivate : bool
+  + isProtected : bool
+  + isPublic : bool
+}
+abstract class simple_OO_concept_NamedElement {
+  + name : str
+}
+class simple_OO_concept_Operation {
+}
+class simple_OO_concept_Package {
+}
+class simple_OO_concept_Parameter {
+}
+Class <|-- simple_OO_concept_Behavior
+Feature <|-- simple_OO_concept_Attribute
+Feature <|-- simple_OO_concept_Operation
+NamedElement <|-- simple_OO_concept_Attribute
+NamedElement <|-- simple_OO_concept_Class
+NamedElement <|-- simple_OO_concept_Operation
+NamedElement <|-- simple_OO_concept_Package
+simple_OO_concept_Attribute "0..9999" --* "1..1" simple_OO_concept_Class : attributes8
+simple_OO_concept_Attribute "1..1" -- "0..1" simple_OO_concept_Class : atttype15
+simple_OO_concept_Class "0..9999" --* "1..1" simple_OO_concept_Package : classes0
+simple_OO_concept_Dependency "1..1" -- "1..9999" simple_OO_concept_NamedElement : client5
+simple_OO_concept_Dependency "0..9999" --* "1..1" simple_OO_concept_Package : dependencies1
+simple_OO_concept_Behavior "0..9999" -- "1..1" simple_OO_concept_Operation : method20
+simple_OO_concept_Class "1..1" *-- "0..9999" simple_OO_concept_Operation : operations10
+simple_OO_concept_Operation "1..1" *-- "0..9999" simple_OO_concept_Parameter : parameters18
+simple_OO_concept_Class "0..9999" -- "1..1" simple_OO_concept_Class : parents13
+simple_OO_concept_Class "0..1" -- "1..1" simple_OO_concept_Parameter : partype22
+simple_OO_concept_Dependency "1..1" -- "1..9999" simple_OO_concept_NamedElement : supplier3
+@enduml

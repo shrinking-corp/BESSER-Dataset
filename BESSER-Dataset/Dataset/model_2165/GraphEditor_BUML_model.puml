@@ -1,0 +1,58 @@
+@startuml
+enum FunctionType {
+  Boolean
+  Gausian
+}
+class GraphElement {
+}
+enum MessageType {
+  MarginalEdge
+  VariableToFactor
+}
+class Node {
+}
+enum VariableType {
+  Boolean
+  Categorial
+  Real
+}
+class graphEditor_Edge {
+}
+class graphEditor_Factornode {
+  + type : str
+  + values : str
+}
+class graphEditor_Graph {
+  + name : str
+  + result : str
+  + getConnectingVariablenodes(graphEditor_node : str) : str
+  + getGraphElement(graphEditor_id : str) : str
+}
+abstract class graphEditor_GraphElement {
+  + id : str
+}
+class graphEditor_Message {
+  + count : int
+  + type : str
+}
+abstract class graphEditor_Node {
+  + name : str
+}
+class graphEditor_Variablenode {
+  + isKnown : bool
+  + type : str
+  + values : float
+}
+GraphElement <|-- graphEditor_Edge
+GraphElement <|-- graphEditor_Message
+GraphElement <|-- graphEditor_Node
+Node <|-- graphEditor_Factornode
+Node <|-- graphEditor_Variablenode
+graphEditor_Edge "0..9999" --* "1..1" graphEditor_Graph : edges1
+graphEditor_Edge "1..1" -- "1..1" graphEditor_Node : from_11
+graphEditor_Message "1..1" -- "1..1" graphEditor_Node : from_5
+graphEditor_Graph "1..1" *-- "0..9999" graphEditor_Message : messages3
+graphEditor_Graph "1..1" *-- "0..9999" graphEditor_Node : nodes0
+graphEditor_Edge "1..1" -- "1..1" graphEditor_Node : to14
+graphEditor_Message "1..1" -- "1..1" graphEditor_Node : to8
+@enduml

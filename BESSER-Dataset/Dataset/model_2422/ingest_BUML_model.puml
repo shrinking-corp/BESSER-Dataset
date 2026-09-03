@@ -1,0 +1,43 @@
+@startuml
+class SqoopHiveImport {
+}
+class SqoopImport {
+}
+class ingest_Catalogue {
+}
+class ingest_Database {
+  + jdbcDriver : str
+  + jdbcPassword : str
+  + jdbcUrl : str
+  + jdbcUser : str
+  + label : str
+}
+class ingest_DbColumn {
+  + jdbcPrecision : int
+  + jdbcScale : int
+  + jdbcType : int
+  + name : str
+}
+class ingest_DbSchema {
+  + name : str
+}
+class ingest_DbTable {
+  + name : str
+}
+class ingest_SqoopHiveImport {
+  + targetHiveDatabase : str
+  + targetHiveTable : str
+}
+class ingest_SqoopHiveIncrementalImport {
+}
+class ingest_SqoopImport {
+}
+SqoopHiveImport <|-- ingest_SqoopHiveIncrementalImport
+SqoopImport <|-- ingest_SqoopHiveImport
+ingest_DbColumn "1..1" -- "1..1" ingest_SqoopHiveIncrementalImport : checkColumn7
+ingest_DbColumn "0..9999" --* "1..1" ingest_DbTable : columns1
+ingest_Catalogue "1..1" *-- "0..9999" ingest_Database : databases9
+ingest_Database "1..1" *-- "0..9999" ingest_DbSchema : schemas0
+ingest_DbTable "1..1" *-- "0..9999" ingest_SqoopImport : sqoopImports2
+ingest_DbSchema "1..1" *-- "0..9999" ingest_DbTable : tables4
+@enduml

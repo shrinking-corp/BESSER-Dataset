@@ -1,0 +1,23 @@
+@startuml
+class petrinet_Box {
+  + id : int
+  + name : str
+}
+class petrinet_Net {
+}
+class petrinet_Place {
+  + id : int
+  + name : str
+}
+class petrinet_Transition {
+  + id : int
+  + name : str
+}
+petrinet_Box "0..9999" -- "1..1" petrinet_Transition : box1
+petrinet_Box "0..9999" --* "1..1" petrinet_Net : box11
+petrinet_Box "1..1" -- "0..9999" petrinet_Place : place14
+petrinet_Place "0..9999" -- "1..1" petrinet_Transition : place3
+petrinet_Net "1..1" *-- "0..9999" petrinet_Place : place6
+petrinet_Place "1..1" -- "0..9999" petrinet_Transition : transition0
+petrinet_Net "1..1" *-- "0..9999" petrinet_Transition : transition8
+@enduml

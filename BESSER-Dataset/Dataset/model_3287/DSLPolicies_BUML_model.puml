@@ -1,0 +1,35 @@
+@startuml
+class dSLPolicies_AlgorithmType {
+  + type : str
+}
+class dSLPolicies_GraphElement {
+  + name : str
+}
+class dSLPolicies_GraphPolicies {
+  + graphModelPolicies : str
+}
+class dSLPolicies_Model {
+}
+class dSLPolicies_PathGeneratorStopCondition {
+}
+class dSLPolicies_Policies {
+  + nocheck : bool
+  + sync : bool
+}
+class dSLPolicies_Severity {
+  + level : str
+}
+class dSLPolicies_StopCondition {
+  + pathtype : str
+  + percentage : str
+  + value : int
+}
+dSLPolicies_AlgorithmType "0..1" --* "1..1" dSLPolicies_PathGeneratorStopCondition : algorithmType7
+dSLPolicies_GraphPolicies "0..9999" --* "1..1" dSLPolicies_Model : graphPolicies0
+dSLPolicies_GraphElement "0..1" --* "1..1" dSLPolicies_StopCondition : graphelement14
+dSLPolicies_PathGeneratorStopCondition "0..9999" --* "1..1" dSLPolicies_Policies : pathgenerator3
+dSLPolicies_GraphPolicies "1..1" *-- "0..9999" dSLPolicies_Policies : policies1
+dSLPolicies_Policies "1..1" *-- "0..1" dSLPolicies_Severity : severity5
+dSLPolicies_PathGeneratorStopCondition "1..1" *-- "0..1" dSLPolicies_StopCondition : stopCondition9
+dSLPolicies_PathGeneratorStopCondition "1..1" *-- "0..1" dSLPolicies_StopCondition : stopConditionype11
+@enduml

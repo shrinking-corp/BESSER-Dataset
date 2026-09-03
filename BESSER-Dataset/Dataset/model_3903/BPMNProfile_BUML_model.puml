@@ -1,0 +1,1102 @@
+@startuml
+enum AdHocOrdering {
+  parallel
+  sequential
+}
+enum AssociationDirection {
+  both
+  none
+  one
+}
+class BPMNActivity {
+}
+class BPMNArtifact {
+}
+class BPMNCollaboration {
+}
+class BPMNEvent {
+}
+class BPMNExpression {
+}
+class BPMNProfile_AcceptEventAction {
+}
+class BPMNProfile_Action {
+}
+class BPMNProfile_Activity {
+}
+class BPMNProfile_ActivityGroup {
+}
+class BPMNProfile_ActivityNode {
+}
+class BPMNProfile_ActivityParameterNode {
+}
+class BPMNProfile_ActivityPartition {
+}
+class BPMNProfile_AdHocSubProcess {
+  + cancelRemainingInstances : str
+  + ordering : str
+  + AdHocSubProcesscancelRemainingInstances(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Assignment {
+}
+class BPMNProfile_Auditing {
+}
+abstract class BPMNProfile_BPMNActivity {
+  + completionQuantity : str
+  + isForCompensation : str
+  + startQuantity : str
+  + BPMNActivityboundaryEventsRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNActivitycontainer(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNActivitydefault(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNActivityloopCharacteristics(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNActivityproperties(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNActivityresources(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+abstract class BPMNProfile_BPMNArtifact {
+}
+class BPMNProfile_BPMNAssociation {
+  + associationDirection : str
+  + AssociationEnd(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BPMNCollaboration {
+  + isClosed : str
+  + Collaborationparticipants(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+abstract class BPMNProfile_BPMNEvent {
+}
+class BPMNProfile_BPMNExpression {
+}
+class BPMNProfile_BPMNExtension {
+  + mustUnderstand : str
+}
+class BPMNProfile_BPMNInterface {
+  + BPMNInterfacecallableElements(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNInterfaceoperations(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Interfaceoperationmultiplicity(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + InterfaceownedOperation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BPMNMessage {
+  + MessageitemRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BPMNOperation {
+  + BPMNOperationerrorRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNOperationinMessageRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNOperationoutMessageRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + BPMNOperationowner(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BPMNProcess {
+  + isClosed : str
+  + isExecutable : str
+  + processType : str
+  + ProcessflowElements(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ProcesslaneSets(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Processproperties(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ProcesssupportedInterfaceRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Processsupports(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BPMNProperty {
+  + BPMNPropertyapply(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Propertynotation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BPMNRelationship {
+  + direction : str
+  + type : str
+}
+class BPMNProfile_BPMNSignal {
+  + BPMNSignalstructureRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+abstract class BPMNProfile_BaseElement {
+  + id : str
+}
+class BPMNProfile_Behavior {
+}
+class BPMNProfile_BoundaryEvent {
+  + cancelActivity : str
+  + boundaryEventattachedToRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_BusinessRuleTask {
+  + implementation : str
+  + BusinessRuleTaskimplementation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_CallActivity {
+  + CallActivitycalledElementRefvalues(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_CallBehaviorAction {
+}
+class BPMNProfile_CallConversation {
+  + CallConversationcalledCollaborationRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + CallConversationparticipantAssociations(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_CallEvent {
+}
+class BPMNProfile_CallOperationAction {
+}
+abstract class BPMNProfile_CallableElement {
+  + CallableEelementsupportedInterfaceRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + CallableElementresources(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_CancelEventDefinition {
+}
+abstract class BPMNProfile_CatchEvent {
+  + parallelMultiple : str
+  + catchEventeventDefinitionsRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Category {
+}
+class BPMNProfile_CategoryValue {
+}
+class BPMNProfile_ChangeEvent {
+}
+class BPMNProfile_Class {
+}
+class BPMNProfile_Collaboration {
+}
+class BPMNProfile_CollaborationUse {
+}
+class BPMNProfile_Comment {
+}
+class BPMNProfile_CompensateEventDefinition {
+  + waitForCompletion : str
+}
+class BPMNProfile_ComplexBehaviorDefinition {
+}
+class BPMNProfile_ComplexGateway {
+  + complexGatewayactivationCondition(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + complexGatewaydefault(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + complexGatewayjoinSpec(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ConditionalEventDefinition {
+  + conditionalEventDefinitioncondition(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Constraint {
+}
+class BPMNProfile_ControlFlow {
+}
+class BPMNProfile_ControlNode {
+}
+class BPMNProfile_Conversation {
+}
+class BPMNProfile_ConversationLink {
+}
+abstract class BPMNProfile_ConversationNode {
+  + ConversationNodeparticipantRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_CorrelationKey {
+}
+class BPMNProfile_CorrelationProperty {
+}
+class BPMNProfile_CorrelationPropertyBinding {
+}
+class BPMNProfile_CorrelationPropertyRetrievalExpression {
+}
+class BPMNProfile_CorrelationSubscription {
+}
+abstract class BPMNProfile_DataAssociation {
+  + DataAssociationsource(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + DataAssociationtarget(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + DataAssociationtransformation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataInput {
+  + isCollection : str
+  + DataInputAssociation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + DataInputitemSubjectRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + DataInputnotation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataInputAssociation {
+  + dataInputAssociationsource(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + dataInputAssociationtarget(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataObject {
+  + isCollection : str
+  + DataObjectdataState(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataObjectReference {
+  + DataObjectRefdataState(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + DataObjectRefsourcetarget(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataOutput {
+  + isCollection : str
+  + DataOutputitemSubjectRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + DataOutputnotation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataOutputAssociation {
+  + dataOutputAssociationsource(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + dataOutputAssociationtarget(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_DataState {
+}
+class BPMNProfile_DataStore {
+  + capacity : str
+  + isUnlimited : str
+}
+class BPMNProfile_DataStoreNode {
+}
+class BPMNProfile_DataStoreReference {
+}
+class BPMNProfile_DecisionNode {
+}
+class BPMNProfile_Definitions {
+  + exporter : str
+  + exporterVersion : str
+  + expressionLanguage : str
+  + targetNamespace : str
+  + typeLanguage : str
+}
+class BPMNProfile_Dependency {
+}
+class BPMNProfile_Documentation {
+  + text : str
+  + textFormat : str
+}
+class BPMNProfile_Element {
+}
+class BPMNProfile_EndEvent {
+}
+class BPMNProfile_Enumeration {
+}
+class BPMNProfile_EnumerationLiteral {
+}
+class BPMNProfile_Error {
+  + errorCode : str
+}
+class BPMNProfile_ErrorEventDefinition {
+}
+class BPMNProfile_Escalation {
+  + escalationCode : str
+  + EscalationstructureRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_EscalationEventDefinition {
+}
+class BPMNProfile_Event {
+}
+class BPMNProfile_EventBasedGateway {
+  + eventGatewayType : str
+  + instantiate : str
+}
+abstract class BPMNProfile_EventDefinition {
+}
+class BPMNProfile_ExclusiveGateway {
+  + exclusiveGatewaydefault(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ExpansionRegion {
+}
+class BPMNProfile_ExtensionAttributeDefinition {
+  + isReference : str
+  + type : str
+}
+class BPMNProfile_ExtensionAttributeValue {
+}
+class BPMNProfile_ExtensionDefinition {
+}
+class BPMNProfile_FinalNode {
+}
+abstract class BPMNProfile_FlowElement {
+}
+abstract class BPMNProfile_FlowElementsContainer {
+}
+class BPMNProfile_FlowFinalNode {
+}
+abstract class BPMNProfile_FlowNode {
+}
+class BPMNProfile_ForkNode {
+}
+class BPMNProfile_FormalExpression {
+  + FormalExpressionevaluatesToTypeRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+abstract class BPMNProfile_Gateway {
+}
+class BPMNProfile_GlobalBusinessRuleTask {
+  + implementation : str
+  + GlobalBusinessRuleTaskimplementation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_GlobalConversation {
+  + GlobalConversationcontainedelements(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_GlobalManualTask {
+}
+class BPMNProfile_GlobalScriptTask {
+  + script : str
+  + scriptFormat : str
+  + GlobalScriptTaskscript(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + GlobalScriptTaskscriptFormat(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_GlobalTask {
+  + GlobalTasksupportedInterfaceRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_GlobalUserTask {
+  + implementation : str
+  + GlobalUserTaskimplementation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + GlobalUserTaskrenderings(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Group {
+}
+class BPMNProfile_HumanPerformer {
+}
+class BPMNProfile_Image {
+}
+class BPMNProfile_ImplicitThrowEvent {
+}
+class BPMNProfile_Import {
+  + importType : str
+  + location : str
+  + namespace : str
+}
+class BPMNProfile_InclusiveGateway {
+  + inclusiveGatewaydefault(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_InformationFlow {
+}
+class BPMNProfile_InitialNode {
+}
+class BPMNProfile_InputOutputBinding {
+}
+class BPMNProfile_InputOutputSpecification {
+}
+class BPMNProfile_InputPin {
+}
+class BPMNProfile_InputSet {
+  + InputSetdataInputRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + InputSetoptionalInputRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + InputSetwhileExecutingInputRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_InstanceSpecification {
+}
+abstract class BPMNProfile_InteractionNode {
+}
+class BPMNProfile_Interface {
+}
+class BPMNProfile_IntermediateCatchEvent {
+}
+class BPMNProfile_IntermediateThrowEvent {
+}
+class BPMNProfile_InterruptibleActivityRegion {
+}
+abstract class BPMNProfile_ItemAwareElement {
+  + ItemAwareElementdataState(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ItemDefinition {
+  + isCollection : str
+  + itemKind : str
+  + ItemDefinitionstructureRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_JoinNode {
+}
+class BPMNProfile_Lane {
+  + LanechildLaneSet(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + LaneflowNodeRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + LanelaneSet(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + LanepartitionElementRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_LaneSet {
+  + LaneSet(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + LaneSetflowElementsContainer(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + LaneSetlanes(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + LaneSetparentLane(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_LinkEventDefinition {
+}
+abstract class BPMNProfile_LoopCharacteristics {
+}
+class BPMNProfile_LoopNode {
+}
+class BPMNProfile_ManualTask {
+}
+class BPMNProfile_MergeNode {
+}
+class BPMNProfile_MessageEventDefinition {
+}
+class BPMNProfile_MessageFlow {
+  + MessageFlowmessageRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + MessageFlowsourceRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + MessageFlowtargetRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_MessageFlowAssociation {
+  + MessageFlowAssociationinnerMessageFlowRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + MessageFlowAssociationouterMessageFlowRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Monitoring {
+}
+class BPMNProfile_MultiInstanceLoopCharacteristics {
+  + behavior : str
+  + isSequential : str
+  + MultiinstanceLoopCharacteristicstarget(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_MultiplicityElement {
+}
+abstract class BPMNProfile_NonExclusiveGateway {
+}
+class BPMNProfile_ObjectFlow {
+}
+class BPMNProfile_OpaqueAction {
+}
+class BPMNProfile_OpaqueBehavior {
+}
+class BPMNProfile_OpaqueExpression {
+}
+class BPMNProfile_Operation {
+}
+class BPMNProfile_OutputPin {
+}
+class BPMNProfile_OutputSet {
+  + OutputSetdataOutputRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + OutputSetoptionalOutputRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + OutputSetwhileExecutingOutputRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Package {
+}
+class BPMNProfile_PackageImport {
+}
+class BPMNProfile_PackageableElement {
+}
+class BPMNProfile_ParallelGateway {
+}
+class BPMNProfile_Parameter {
+}
+class BPMNProfile_ParameterSet {
+}
+class BPMNProfile_Participant {
+  + ParticipantinterfaceRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ParticipantmultiplicityMaximum(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ParticipantmultiplicityMinimum(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Participantownership(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ParticipantprocessRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Participantrealizationsupplier(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + Participanttype(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + participantpartnerEntityRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + participantpartnerRoleRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ParticipantAssociation {
+  + ParticipantAssociationinnerParticipantRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ParticipantAssociationouterParticipantRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ParticipantMultiplicity {
+  + maximum : str
+  + minimum : str
+}
+class BPMNProfile_PartnerEntity {
+  + PartnerEntityparticipantRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_PartnerRole {
+  + PartnerRoleparticipantRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Performer {
+}
+class BPMNProfile_PotentialOwner {
+}
+class BPMNProfile_Property {
+}
+class BPMNProfile_ReceiveTask {
+  + implementation : str
+  + instantiate : str
+  + ReceiveTaskoperationRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Rendering {
+}
+class BPMNProfile_Resource {
+  + ResourceresourceParameters(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ResourceAssignmentExpression {
+  + ResourceAssignmentExpressionexpression(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ResourceParameter {
+  + isRequired : str
+  + ResourceParameterisRequired(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceParameterowner(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceParametertype(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ResourceParameterBinding {
+  + ResourceParameterBindingexpression(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceParameterBindingparameterRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ResourceRole {
+  + ResourceRoleisRequired(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceRoleowner(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceRoleprocess(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceRoleresourceParameterBindings(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ResourceRoleresourceRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+abstract class BPMNProfile_RootElement {
+}
+class BPMNProfile_ScriptTask {
+  + script : str
+  + scriptFormat : str
+  + ScriptTaskscript(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ScriptTaskscriptFormat(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_SendObjectAction {
+}
+class BPMNProfile_SendTask {
+  + implementation : str
+  + SendTaskoperationRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_SequenceFlow {
+  + isImmediate : str
+  + SequenceFlowconditionExpression(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + SequenceFlowsourceRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + SequenceFlowtargetRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_ServiceTask {
+  + implementation : str
+  + ServiceTaskinputSet(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ServiceTaskoperationRef(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + ServiceTaskoutputSet(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_SignalEventDefinition {
+}
+class BPMNProfile_Slot {
+}
+class BPMNProfile_StandardLoopCharacteristics {
+  + loopMaximum : str
+  + testBefore : str
+  + StandardLoopCharacteristicsloopCondition(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + StandardLoopCharacteristicstestBefore(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_StartEvent {
+  + isInterrupting : str
+}
+class BPMNProfile_State {
+}
+class BPMNProfile_Stereotype {
+}
+class BPMNProfile_StructuredActivityNode {
+}
+class BPMNProfile_SubConversation {
+  + SubConversationconnectedelements(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_SubProcess {
+  + triggeredByEvent : str
+  + SubProcesstriggeredByEvent(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_Task {
+}
+class BPMNProfile_TerminateEventDefinition {
+}
+class BPMNProfile_TextAnnotation {
+  + text : str
+  + textFormat : str
+}
+abstract class BPMNProfile_ThrowEvent {
+  + ThrowEventeventDefinitionRefs(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BPMNProfile_TimerEventDefinition {
+}
+class BPMNProfile_Transaction {
+  + method : str
+}
+class BPMNProfile_TypedElement {
+}
+class BPMNProfile_UserTask {
+  + implementation : str
+  + UserTaskimplementation(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+  + UserTaskrenderings(BPMNProfile_context : str, BPMNProfile_diagnostics : str) : bool
+}
+class BaseElement {
+}
+class CallableElement {
+}
+class CatchEvent {
+}
+class ConversationNode {
+}
+class DataAssociation {
+}
+enum EventBasedGatewayType {
+  exclusive
+  parallel
+}
+class EventDefinition {
+}
+class FlowElement {
+}
+class FlowElementsContainer {
+}
+class FlowNode {
+}
+class Gateway {
+}
+enum GatewayDirection {
+  converging
+  diverging
+  mixed
+  unspecified
+}
+class GlobalTask {
+}
+class HumanPerformer {
+}
+class InteractionNode {
+}
+class ItemAwareElement {
+}
+class ItemDefinition {
+}
+enum ItemKind {
+  information
+  physical
+}
+class LoopCharacteristics {
+}
+enum MultiInstanceBehavior {
+  all
+  complex
+  none
+  one
+}
+class NonExclusiveGateway {
+}
+class Performer {
+}
+enum ProcessType {
+  none
+  private
+  public
+}
+enum RelationshipDirection {
+  backward
+  both
+  forward
+  none
+}
+class ResourceRole {
+}
+class RootElement {
+}
+class SubProcess {
+}
+class Task {
+}
+class ThrowEvent {
+}
+BPMNActivity <|-- BPMNProfile_CallActivity
+BPMNActivity <|-- BPMNProfile_SubProcess
+BPMNActivity <|-- BPMNProfile_Task
+BPMNArtifact <|-- BPMNProfile_BPMNAssociation
+BPMNArtifact <|-- BPMNProfile_Group
+BPMNArtifact <|-- BPMNProfile_TextAnnotation
+BPMNCollaboration <|-- BPMNProfile_GlobalConversation
+BPMNEvent <|-- BPMNProfile_CatchEvent
+BPMNEvent <|-- BPMNProfile_ThrowEvent
+BPMNExpression <|-- BPMNProfile_FormalExpression
+BPMNExpression <|-- BPMNProfile_ResourceAssignmentExpression
+BaseElement <|-- BPMNProfile_Assignment
+BaseElement <|-- BPMNProfile_Auditing
+BaseElement <|-- BPMNProfile_BPMNArtifact
+BaseElement <|-- BPMNProfile_BPMNExpression
+BaseElement <|-- BPMNProfile_BPMNOperation
+BaseElement <|-- BPMNProfile_BPMNRelationship
+BaseElement <|-- BPMNProfile_CategoryValue
+BaseElement <|-- BPMNProfile_ComplexBehaviorDefinition
+BaseElement <|-- BPMNProfile_ConversationLink
+BaseElement <|-- BPMNProfile_CorrelationKey
+BaseElement <|-- BPMNProfile_CorrelationProperty
+BaseElement <|-- BPMNProfile_CorrelationPropertyBinding
+BaseElement <|-- BPMNProfile_CorrelationPropertyRetrievalExpression
+BaseElement <|-- BPMNProfile_CorrelationSubscription
+BaseElement <|-- BPMNProfile_DataAssociation
+BaseElement <|-- BPMNProfile_DataState
+BaseElement <|-- BPMNProfile_Definitions
+BaseElement <|-- BPMNProfile_Documentation
+BaseElement <|-- BPMNProfile_FlowElement
+BaseElement <|-- BPMNProfile_FlowElementsContainer
+BaseElement <|-- BPMNProfile_InputOutputBinding
+BaseElement <|-- BPMNProfile_InputOutputSpecification
+BaseElement <|-- BPMNProfile_InputSet
+BaseElement <|-- BPMNProfile_ItemAwareElement
+BaseElement <|-- BPMNProfile_Lane
+BaseElement <|-- BPMNProfile_LaneSet
+BaseElement <|-- BPMNProfile_LoopCharacteristics
+BaseElement <|-- BPMNProfile_MessageFlow
+BaseElement <|-- BPMNProfile_MessageFlowAssociation
+BaseElement <|-- BPMNProfile_Monitoring
+BaseElement <|-- BPMNProfile_OutputSet
+BaseElement <|-- BPMNProfile_Participant
+BaseElement <|-- BPMNProfile_ParticipantAssociation
+BaseElement <|-- BPMNProfile_ParticipantMultiplicity
+BaseElement <|-- BPMNProfile_Rendering
+BaseElement <|-- BPMNProfile_ResourceParameter
+BaseElement <|-- BPMNProfile_ResourceParameterBinding
+BaseElement <|-- BPMNProfile_ResourceRole
+BaseElement <|-- BPMNProfile_RootElement
+CallableElement <|-- BPMNProfile_BPMNProcess
+CallableElement <|-- BPMNProfile_GlobalTask
+CatchEvent <|-- BPMNProfile_BoundaryEvent
+CatchEvent <|-- BPMNProfile_IntermediateCatchEvent
+CatchEvent <|-- BPMNProfile_StartEvent
+ConversationNode <|-- BPMNProfile_CallConversation
+ConversationNode <|-- BPMNProfile_Conversation
+ConversationNode <|-- BPMNProfile_SubConversation
+DataAssociation <|-- BPMNProfile_DataInputAssociation
+DataAssociation <|-- BPMNProfile_DataOutputAssociation
+EventDefinition <|-- BPMNProfile_CancelEventDefinition
+EventDefinition <|-- BPMNProfile_CompensateEventDefinition
+EventDefinition <|-- BPMNProfile_ConditionalEventDefinition
+EventDefinition <|-- BPMNProfile_ErrorEventDefinition
+EventDefinition <|-- BPMNProfile_EscalationEventDefinition
+EventDefinition <|-- BPMNProfile_LinkEventDefinition
+EventDefinition <|-- BPMNProfile_MessageEventDefinition
+EventDefinition <|-- BPMNProfile_SignalEventDefinition
+EventDefinition <|-- BPMNProfile_TerminateEventDefinition
+EventDefinition <|-- BPMNProfile_TimerEventDefinition
+FlowElement <|-- BPMNProfile_DataObject
+FlowElement <|-- BPMNProfile_DataObjectReference
+FlowElement <|-- BPMNProfile_DataStoreReference
+FlowElement <|-- BPMNProfile_FlowNode
+FlowElement <|-- BPMNProfile_SequenceFlow
+FlowElementsContainer <|-- BPMNProfile_BPMNProcess
+FlowElementsContainer <|-- BPMNProfile_SubProcess
+FlowNode <|-- BPMNProfile_BPMNActivity
+FlowNode <|-- BPMNProfile_BPMNEvent
+FlowNode <|-- BPMNProfile_Gateway
+Gateway <|-- BPMNProfile_EventBasedGateway
+Gateway <|-- BPMNProfile_ExclusiveGateway
+Gateway <|-- BPMNProfile_NonExclusiveGateway
+GlobalTask <|-- BPMNProfile_GlobalBusinessRuleTask
+GlobalTask <|-- BPMNProfile_GlobalManualTask
+GlobalTask <|-- BPMNProfile_GlobalScriptTask
+GlobalTask <|-- BPMNProfile_GlobalUserTask
+HumanPerformer <|-- BPMNProfile_PotentialOwner
+InteractionNode <|-- BPMNProfile_ConversationNode
+ItemAwareElement <|-- BPMNProfile_BPMNProperty
+ItemAwareElement <|-- BPMNProfile_DataInput
+ItemAwareElement <|-- BPMNProfile_DataObject
+ItemAwareElement <|-- BPMNProfile_DataObjectReference
+ItemAwareElement <|-- BPMNProfile_DataOutput
+ItemAwareElement <|-- BPMNProfile_DataStoreReference
+ItemDefinition <|-- BPMNProfile_BPMNMessage
+ItemDefinition <|-- BPMNProfile_BPMNSignal
+ItemDefinition <|-- BPMNProfile_Error
+ItemDefinition <|-- BPMNProfile_Escalation
+ItemDefinition <|-- BPMNProfile_Resource
+LoopCharacteristics <|-- BPMNProfile_MultiInstanceLoopCharacteristics
+LoopCharacteristics <|-- BPMNProfile_StandardLoopCharacteristics
+NonExclusiveGateway <|-- BPMNProfile_ComplexGateway
+NonExclusiveGateway <|-- BPMNProfile_InclusiveGateway
+NonExclusiveGateway <|-- BPMNProfile_ParallelGateway
+Performer <|-- BPMNProfile_HumanPerformer
+ResourceRole <|-- BPMNProfile_Performer
+RootElement <|-- BPMNProfile_BPMNCollaboration
+RootElement <|-- BPMNProfile_BPMNInterface
+RootElement <|-- BPMNProfile_CallableElement
+RootElement <|-- BPMNProfile_Category
+RootElement <|-- BPMNProfile_DataStore
+RootElement <|-- BPMNProfile_EventDefinition
+RootElement <|-- BPMNProfile_ItemDefinition
+RootElement <|-- BPMNProfile_PartnerEntity
+RootElement <|-- BPMNProfile_PartnerRole
+SubProcess <|-- BPMNProfile_AdHocSubProcess
+SubProcess <|-- BPMNProfile_Transaction
+Task <|-- BPMNProfile_BusinessRuleTask
+Task <|-- BPMNProfile_ManualTask
+Task <|-- BPMNProfile_ReceiveTask
+Task <|-- BPMNProfile_ScriptTask
+Task <|-- BPMNProfile_SendTask
+Task <|-- BPMNProfile_ServiceTask
+Task <|-- BPMNProfile_UserTask
+ThrowEvent <|-- BPMNProfile_EndEvent
+ThrowEvent <|-- BPMNProfile_ImplicitThrowEvent
+ThrowEvent <|-- BPMNProfile_IntermediateThrowEvent
+BPMNProfile_CategoryValue "1..9999" -- "1..1" BPMNProfile_FlowElement : _categoryValueRef11
+BPMNProfile_CategoryValue "0..1" -- "1..1" BPMNProfile_Group : _categoryValueRef569
+BPMNProfile_CallConversation "1..1" -- "1..1" BPMNProfile_CollaborationUse : _collaborationUse602
+BPMNProfile_DataStore "0..1" -- "1..1" BPMNProfile_DataStoreReference : _dataStore584
+BPMNProfile_BPMNEvent "1..1" -- "1..9999" BPMNProfile_EventDefinition : _eventDefinitions473
+BPMNProfile_Element "0..1" -- "1..1" BPMNProfile_Lane : _partitionElement62
+BPMNProfile_LinkEventDefinition "1..1" -- "0..1" BPMNProfile_LinkEventDefinition : _target545
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_ComplexGateway : activationCondition90
+BPMNProfile_BPMNActivity "1..1" -- "0..1" BPMNProfile_Class : activityClass442
+BPMNProfile_BPMNActivity "0..1" -- "1..1" BPMNProfile_CompensateEventDefinition : activityRef435
+BPMNProfile_Assignment "1..9999" -- "1..1" BPMNProfile_DataAssociation : assignment492
+BPMNProfile_BPMNActivity "1..1" -- "1..1" BPMNProfile_BoundaryEvent : attachedToRef462
+BPMNProfile_Auditing "0..1" -- "1..1" BPMNProfile_BPMNProcess : auditing131
+BPMNProfile_Auditing "0..1" -- "1..1" BPMNProfile_FlowElement : auditing8
+BPMNProfile_AcceptEventAction "1..1" -- "1..1" BPMNProfile_CatchEvent : base_AcceptEventAction465
+BPMNProfile_AcceptEventAction "1..1" -- "1..1" BPMNProfile_ReceiveTask : base_AcceptEventAction645
+BPMNProfile_Action "1..1" -- "1..1" BPMNProfile_InputOutputSpecification : base_Action158
+BPMNProfile_Action "1..1" -- "1..1" BPMNProfile_BPMNActivity : base_Action439
+BPMNProfile_Activity "1..1" -- "1..1" BPMNProfile_BPMNProcess : base_Activity135
+BPMNProfile_ActivityGroup "1..1" -- "1..1" BPMNProfile_Gateway : base_ActivityGroup5
+BPMNProfile_ActivityNode "1..1" -- "1..1" BPMNProfile_FlowNode : base_ActivityNode7
+BPMNProfile_ActivityParameterNode "1..1" -- "1..1" BPMNProfile_DataInput : base_ActivityParameterNode172
+BPMNProfile_ActivityParameterNode "1..1" -- "1..1" BPMNProfile_DataOutput : base_ActivityParameterNode207
+BPMNProfile_ActivityPartition "1..1" -- "1..1" BPMNProfile_LaneSet : base_ActivityPartition53
+BPMNProfile_ActivityPartition "1..1" -- "1..1" BPMNProfile_Group : base_ActivityPartition567
+BPMNProfile_ActivityPartition "1..1" -- "1..1" BPMNProfile_Lane : base_ActivityPartition59
+BPMNProfile_Behavior "1..1" -- "1..1" BPMNProfile_CallableElement : base_Behavior148
+BPMNProfile_Behavior "1..1" -- "1..1" BPMNProfile_InputOutputSpecification : base_Behavior155
+BPMNProfile_CallActivity "1..1" -- "1..1" BPMNProfile_CallBehaviorAction : base_CallBehaviorAction614
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_CompensateEventDefinition : base_CallEvent436
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_EscalationEventDefinition : base_CallEvent507
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_SignalEventDefinition : base_CallEvent521
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_MessageEventDefinition : base_CallEvent536
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_LinkEventDefinition : base_CallEvent549
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_ErrorEventDefinition : base_CallEvent553
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_TerminateEventDefinition : base_CallEvent557
+BPMNProfile_CallEvent "1..1" -- "1..1" BPMNProfile_CancelEventDefinition : base_CallEvent559
+BPMNProfile_CallOperationAction "1..1" -- "1..1" BPMNProfile_ThrowEvent : base_CallOperationAction525
+BPMNProfile_CallOperationAction "1..1" -- "1..1" BPMNProfile_SendTask : base_CallOperationAction633
+BPMNProfile_CallOperationAction "1..1" -- "1..1" BPMNProfile_ServiceTask : base_CallOperationAction651
+BPMNProfile_ChangeEvent "1..1" -- "1..1" BPMNProfile_TimerEventDefinition : base_ChangeEvent518
+BPMNProfile_ChangeEvent "1..1" -- "1..1" BPMNProfile_ConditionalEventDefinition : base_ChangeEvent539
+BPMNProfile_Class "1..1" -- "1..1" BPMNProfile_ItemDefinition : base_Class186
+BPMNProfile_Class "1..1" -- "1..1" BPMNProfile_PartnerRole : base_Class320
+BPMNProfile_Class "1..1" -- "1..1" BPMNProfile_CorrelationKey : base_Class356
+BPMNProfile_Class "1..1" -- "1..1" BPMNProfile_CorrelationSubscription : base_Class380
+BPMNProfile_Auditing "1..1" -- "1..1" BPMNProfile_Class : base_Class43
+BPMNProfile_Class "1..1" -- "1..1" BPMNProfile_Monitoring : base_Class45
+BPMNProfile_Class "1..1" -- "1..1" BPMNProfile_DataStore : base_Class579
+BPMNProfile_BPMNCollaboration "1..1" -- "1..1" BPMNProfile_Collaboration : base_Collaboration271
+BPMNProfile_Comment "1..1" -- "1..1" BPMNProfile_Documentation : base_Comment32
+BPMNProfile_Comment "1..1" -- "1..1" BPMNProfile_TextAnnotation : base_Comment561
+BPMNProfile_BPMNRelationship "1..1" -- "1..1" BPMNProfile_Constraint : base_Constraint120
+BPMNProfile_ComplexBehaviorDefinition "1..1" -- "1..1" BPMNProfile_ControlFlow : base_ControlFlow624
+BPMNProfile_ControlFlow "1..1" -- "1..1" BPMNProfile_SequenceFlow : base_ControlFlow76
+BPMNProfile_ControlNode "1..1" -- "1..1" BPMNProfile_Gateway : base_ControlNode4
+BPMNProfile_BPMNProperty "1..1" -- "1..1" BPMNProfile_DataStoreNode : base_DataStoreNode397
+BPMNProfile_DataObjectReference "1..1" -- "1..1" BPMNProfile_DataStoreNode : base_DataStoreNode573
+BPMNProfile_DataObject "1..1" -- "1..1" BPMNProfile_DataStoreNode : base_DataStoreNode576
+BPMNProfile_DataStoreNode "1..1" -- "1..1" BPMNProfile_DataStoreReference : base_DataStoreNode586
+BPMNProfile_DecisionNode "1..1" -- "1..1" BPMNProfile_ExclusiveGateway : base_DecisionNode93
+BPMNProfile_Dependency "1..1" -- "1..1" BPMNProfile_InputOutputBinding : base_Dependency261
+BPMNProfile_Dependency "1..1" -- "1..1" BPMNProfile_ParticipantAssociation : base_Dependency279
+BPMNProfile_ConversationLink "1..1" -- "1..1" BPMNProfile_Dependency : base_Dependency311
+BPMNProfile_Dependency "1..1" -- "1..1" BPMNProfile_MessageFlowAssociation : base_Dependency324
+BPMNProfile_CorrelationPropertyRetrievalExpression "1..1" -- "1..1" BPMNProfile_Dependency : base_Dependency369
+BPMNProfile_BPMNAssociation "1..1" -- "1..1" BPMNProfile_Dependency : base_Dependency39
+BPMNProfile_Assignment "1..1" -- "1..1" BPMNProfile_Dependency : base_Dependency494
+BPMNProfile_BaseElement "1..1" -- "1..1" BPMNProfile_Element : base_Element14
+BPMNProfile_Element "1..1" -- "1..1" BPMNProfile_InteractionNode : base_Element302
+BPMNProfile_Category "1..1" -- "1..1" BPMNProfile_Enumeration : base_Enumeration563
+BPMNProfile_CategoryValue "1..1" -- "1..1" BPMNProfile_EnumerationLiteral : base_EnumerationLiteral48
+BPMNProfile_Event "1..1" -- "1..1" BPMNProfile_EventDefinition : base_Event438
+BPMNProfile_ExpansionRegion "1..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : base_ExpansionRegion661
+BPMNProfile_EndEvent "1..1" -- "1..1" BPMNProfile_FinalNode : base_FinalNode524
+BPMNProfile_FlowFinalNode "1..1" -- "1..1" BPMNProfile_ThrowEvent : base_FlowFinalNode526
+BPMNProfile_ForkNode "1..1" -- "1..1" BPMNProfile_NonExclusiveGateway : base_ForkNode2
+BPMNProfile_EventBasedGateway "1..1" -- "1..1" BPMNProfile_ForkNode : base_ForkNode82
+BPMNProfile_Image "1..1" -- "1..1" BPMNProfile_Rendering : base_Image594
+BPMNProfile_InformationFlow "1..1" -- "1..1" BPMNProfile_MessageFlow : base_InformationFlow333
+BPMNProfile_ConversationNode "1..1" -- "1..1" BPMNProfile_InformationFlow : base_InformationFlow344
+BPMNProfile_CatchEvent "1..1" -- "1..1" BPMNProfile_InitialNode : base_InitialNode466
+BPMNProfile_DataInput "1..1" -- "1..1" BPMNProfile_InputPin : base_InputPin168
+BPMNProfile_InstanceSpecification "1..1" -- "1..1" BPMNProfile_PartnerEntity : base_InstanceSpecification318
+BPMNProfile_BPMNInterface "1..1" -- "1..1" BPMNProfile_Interface : base_Interface227
+BPMNProfile_EventBasedGateway "1..1" -- "1..1" BPMNProfile_InterruptibleActivityRegion : base_InterruptibleActivityRegion86
+BPMNProfile_JoinNode "1..1" -- "1..1" BPMNProfile_NonExclusiveGateway : base_JoinNode1
+BPMNProfile_LoopNode "1..1" -- "1..1" BPMNProfile_StandardLoopCharacteristics : base_LoopNode639
+BPMNProfile_ExclusiveGateway "1..1" -- "1..1" BPMNProfile_MergeNode : base_MergeNode94
+BPMNProfile_MultiplicityElement "1..1" -- "1..1" BPMNProfile_ParticipantMultiplicity : base_MultiplicityElement316
+BPMNProfile_DataAssociation "1..1" -- "1..1" BPMNProfile_ObjectFlow : base_ObjectFlow482
+BPMNProfile_OpaqueAction "1..1" -- "1..1" BPMNProfile_UserTask : base_OpaqueAction589
+BPMNProfile_ManualTask "1..1" -- "1..1" BPMNProfile_OpaqueAction : base_OpaqueAction598
+BPMNProfile_BusinessRuleTask "1..1" -- "1..1" BPMNProfile_OpaqueAction : base_OpaqueAction618
+BPMNProfile_OpaqueAction "1..1" -- "1..1" BPMNProfile_ScriptTask : base_OpaqueAction629
+BPMNProfile_GlobalTask "1..1" -- "1..1" BPMNProfile_OpaqueBehavior : base_OpaqueBehavior431
+BPMNProfile_BPMNExpression "1..1" -- "1..1" BPMNProfile_OpaqueExpression : base_OpaqueExpression80
+BPMNProfile_BPMNOperation "1..1" -- "1..1" BPMNProfile_Operation : base_Operation237
+BPMNProfile_DataOutput "1..1" -- "1..1" BPMNProfile_OutputPin : base_OutputPin202
+BPMNProfile_Definitions "1..1" -- "1..1" BPMNProfile_Package : base_Package101
+BPMNProfile_Import "1..1" -- "1..1" BPMNProfile_PackageImport : base_PackageImport115
+BPMNProfile_PackageableElement "1..1" -- "1..1" BPMNProfile_RootElement : base_PackageableElement99
+BPMNProfile_DataInput "1..1" -- "1..1" BPMNProfile_Parameter : base_Parameter170
+BPMNProfile_DataOutput "1..1" -- "1..1" BPMNProfile_Parameter : base_Parameter204
+BPMNProfile_InputSet "1..1" -- "1..1" BPMNProfile_ParameterSet : base_ParameterSet195
+BPMNProfile_OutputSet "1..1" -- "1..1" BPMNProfile_ParameterSet : base_ParameterSet217
+BPMNProfile_Participant "1..1" -- "1..1" BPMNProfile_Property : base_Property288
+BPMNProfile_ExtensionAttributeDefinition "1..1" -- "1..1" BPMNProfile_Property : base_Property30
+BPMNProfile_CorrelationProperty "1..1" -- "1..1" BPMNProfile_Property : base_Property361
+BPMNProfile_CorrelationPropertyBinding "1..1" -- "1..1" BPMNProfile_Property : base_Property388
+BPMNProfile_Property "1..1" -- "1..1" BPMNProfile_ResourceRole : base_Property402
+BPMNProfile_Property "1..1" -- "1..1" BPMNProfile_ResourceParameter : base_Property416
+BPMNProfile_IntermediateThrowEvent "1..1" -- "1..1" BPMNProfile_SendObjectAction : base_SendObjectAction556
+BPMNProfile_ExtensionAttributeValue "1..1" -- "1..1" BPMNProfile_Slot : base_Slot23
+BPMNProfile_ResourceParameterBinding "1..1" -- "1..1" BPMNProfile_Slot : base_Slot422
+BPMNProfile_DataState "1..1" -- "1..1" BPMNProfile_State : base_State184
+BPMNProfile_BPMNExtension "1..1" -- "1..1" BPMNProfile_Stereotype : base_Stereotype109
+BPMNProfile_ExtensionDefinition "1..1" -- "1..1" BPMNProfile_Stereotype : base_Stereotype34
+BPMNProfile_LoopCharacteristics "1..1" -- "1..1" BPMNProfile_StructuredActivityNode : base_StructuredActivityNode503
+BPMNProfile_StructuredActivityNode "1..1" -- "1..1" BPMNProfile_SubProcess : base_StructuredActivityNode609
+BPMNProfile_EventBasedGateway "1..1" -- "1..1" BPMNProfile_StructuredActivityNode : base_StructuredActivityNode84
+BPMNProfile_ItemAwareElement "1..1" -- "1..1" BPMNProfile_TypedElement : base_TypedElement180
+BPMNProfile_BPMNActivity "1..1" -- "1..9999" BPMNProfile_BoundaryEvent : boundaryEventRefs451
+BPMNProfile_BPMNInterface "1..1" -- "1..9999" BPMNProfile_CallableElement : callableElements234
+BPMNProfile_BPMNCollaboration "0..1" -- "1..1" BPMNProfile_CallConversation : calledCollaborationRef603
+BPMNProfile_CallActivity "1..1" -- "0..1" BPMNProfile_CallableElement : calledElementRef615
+BPMNProfile_CategoryValue "1..1" -- "1..9999" BPMNProfile_FlowElement : categorizedFlowElements49
+BPMNProfile_Category "1..1" -- "1..9999" BPMNProfile_CategoryValue : categoryValue564
+BPMNProfile_Lane "1..1" -- "1..1" BPMNProfile_LaneSet : childLaneSet71
+BPMNProfile_BPMNCollaboration "1..1" -- "1..1" BPMNProfile_ConversationLink : collaboration310
+BPMNProfile_AdHocSubProcess "1..1" -- "1..1" BPMNProfile_BPMNExpression : completionCondition627
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : completionCondition658
+BPMNProfile_ComplexBehaviorDefinition "1..9999" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : complexBehaviorDefinition681
+BPMNProfile_BPMNExpression "1..1" -- "1..1" BPMNProfile_ConditionalEventDefinition : condition541
+BPMNProfile_ComplexBehaviorDefinition "1..1" -- "1..1" BPMNProfile_FormalExpression : condition620
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_SequenceFlow : conditionExpression78
+BPMNProfile_FlowElement "1..1" -- "1..1" BPMNProfile_FlowElementsContainer : container12
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_ConversationLink : conversationLinks266
+BPMNProfile_ConversationNode "1..9999" -- "1..1" BPMNProfile_SubConversation : conversationNodes600
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_ConversationNode : conversations273
+BPMNProfile_CorrelationKey "1..1" -- "1..1" BPMNProfile_CorrelationSubscription : correlationKeyRef383
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_CorrelationKey : correlationKeys275
+BPMNProfile_ConversationNode "1..1" -- "1..9999" BPMNProfile_CorrelationKey : correlationKeys350
+BPMNProfile_CorrelationPropertyBinding "1..9999" -- "1..1" BPMNProfile_CorrelationSubscription : correlationPropertyBinding386
+BPMNProfile_CorrelationKey "1..1" -- "1..9999" BPMNProfile_CorrelationProperty : correlationPropertyRef359
+BPMNProfile_CorrelationProperty "1..1" -- "1..1" BPMNProfile_CorrelationPropertyBinding : correlationPropertyRef394
+BPMNProfile_CorrelationProperty "1..1" -- "1..9999" BPMNProfile_CorrelationPropertyRetrievalExpression : correlationPropertyRetrievalExpression367
+BPMNProfile_BPMNProcess "1..1" -- "1..9999" BPMNProfile_CorrelationSubscription : correlationSubscriptions137
+BPMNProfile_DataInputAssociation "1..9999" -- "1..1" BPMNProfile_ThrowEvent : dataInputAssociation528
+BPMNProfile_BPMNActivity "1..1" -- "1..9999" BPMNProfile_DataInputAssociation : dataInputAssociations453
+BPMNProfile_DataInput "1..9999" -- "1..1" BPMNProfile_InputSet : dataInputRefs200
+BPMNProfile_DataInput "1..9999" -- "1..1" BPMNProfile_InputOutputSpecification : dataInputs160
+BPMNProfile_DataObject "1..1" -- "1..1" BPMNProfile_DataObjectReference : dataObjectRef572
+BPMNProfile_CatchEvent "1..1" -- "1..9999" BPMNProfile_DataOutputAssociation : dataOutputAssociation468
+BPMNProfile_BPMNActivity "1..1" -- "1..9999" BPMNProfile_DataOutputAssociation : dataOutputAssociations455
+BPMNProfile_DataOutput "1..9999" -- "1..1" BPMNProfile_OutputSet : dataOutputRefs226
+BPMNProfile_DataOutput "1..9999" -- "1..1" BPMNProfile_InputOutputSpecification : dataOutputs162
+BPMNProfile_CorrelationPropertyBinding "1..1" -- "1..1" BPMNProfile_FormalExpression : dataPath391
+BPMNProfile_DataState "1..9999" -- "1..1" BPMNProfile_ItemAwareElement : dataState179
+BPMNProfile_InclusiveGateway "1..1" -- "0..1" BPMNProfile_SequenceFlow : default0
+BPMNProfile_BPMNActivity "1..1" -- "0..1" BPMNProfile_SequenceFlow : default448
+BPMNProfile_ComplexGateway "1..1" -- "0..1" BPMNProfile_SequenceFlow : default88
+BPMNProfile_ExclusiveGateway "1..1" -- "0..1" BPMNProfile_SequenceFlow : default96
+BPMNProfile_Definitions "0..1" -- "1..1" BPMNProfile_RootElement : definition100
+BPMNProfile_BPMNExtension "1..1" -- "1..1" BPMNProfile_ExtensionDefinition : definition112
+BPMNProfile_BPMNRelationship "1..1" -- "1..1" BPMNProfile_Definitions : definition128
+BPMNProfile_BPMNCollaboration "0..1" -- "1..1" BPMNProfile_BPMNProcess : definitionalCollaborationRef133
+BPMNProfile_Definitions "1..1" -- "1..1" BPMNProfile_Import : definitions117
+BPMNProfile_BaseElement "1..1" -- "1..9999" BPMNProfile_Documentation : documentation16
+BPMNProfile_BPMNOperation "1..1" -- "1..9999" BPMNProfile_Error : errorRef247
+BPMNProfile_Error "0..1" -- "1..1" BPMNProfile_ErrorEventDefinition : errorRef551
+BPMNProfile_Escalation "0..1" -- "1..1" BPMNProfile_EscalationEventDefinition : escalationRef506
+BPMNProfile_FormalExpression "1..1" -- "1..1" BPMNProfile_ItemDefinition : evaluatesToTypeRef377
+BPMNProfile_ComplexBehaviorDefinition "1..1" -- "0..1" BPMNProfile_ImplicitThrowEvent : event622
+BPMNProfile_BPMNEvent "1..1" -- "0..1" BPMNProfile_Class : eventClass471
+BPMNProfile_BPMNEvent "1..1" -- "1..9999" BPMNProfile_EventDefinition : eventDefinitionRefs479
+BPMNProfile_BPMNExpression "1..1" -- "1..1" BPMNProfile_ResourceAssignmentExpression : expression411
+BPMNProfile_BPMNExpression "1..1" -- "1..1" BPMNProfile_ResourceParameterBinding : expression428
+BPMNProfile_ExtensionAttributeDefinition "1..1" -- "1..1" BPMNProfile_ExtensionAttributeValue : extensionAttributeDefinition28
+BPMNProfile_ExtensionAttributeDefinition "1..9999" -- "1..1" BPMNProfile_ExtensionDefinition : extensionAttributeDefinitions36
+BPMNProfile_BaseElement "1..1" -- "1..9999" BPMNProfile_ExtensionDefinition : extensionDefinitions18
+BPMNProfile_BaseElement "1..1" -- "1..9999" BPMNProfile_ExtensionAttributeValue : extensionValues13
+BPMNProfile_BPMNExtension "1..9999" -- "1..1" BPMNProfile_Definitions : extensions102
+BPMNProfile_FlowElement "1..9999" -- "1..1" BPMNProfile_FlowElementsContainer : flowElements51
+BPMNProfile_FlowElementsContainer "0..1" -- "1..1" BPMNProfile_LaneSet : flowElementsContainer57
+BPMNProfile_FlowNode "1..9999" -- "1..1" BPMNProfile_Lane : flowNodeRefs65
+BPMNProfile_Assignment "1..1" -- "1..1" BPMNProfile_BPMNExpression : from_497
+BPMNProfile_LaneSet "1..9999" -- "1..1" BPMNProfile_SubProcess : hasLaneSets611
+BPMNProfile_BPMNInterface "1..1" -- "0..1" BPMNProfile_Element : implementationRef229
+BPMNProfile_BPMNOperation "1..1" -- "0..1" BPMNProfile_Element : implementationRef239
+BPMNProfile_Import "0..1" -- "1..1" BPMNProfile_ItemDefinition : import_192
+BPMNProfile_Definitions "1..1" -- "1..9999" BPMNProfile_Import : imports104
+BPMNProfile_BPMNMessage "1..1" -- "1..1" BPMNProfile_BPMNOperation : inMessageRef242
+BPMNProfile_BPMNAssociation "1..9999" -- "1..1" BPMNProfile_BaseElement : incoming21
+BPMNProfile_ConversationLink "1..1" -- "1..1" BPMNProfile_InteractionNode : incomingConversationLinks307
+BPMNProfile_MessageFlow "1..1" -- "1..1" BPMNProfile_MessageFlowAssociation : innerMessageFlowRef327
+BPMNProfile_Participant "1..1" -- "1..1" BPMNProfile_ParticipantAssociation : innerParticipantRef282
+BPMNProfile_DataInput "1..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : inputDataItem672
+BPMNProfile_InputOutputBinding "1..1" -- "1..1" BPMNProfile_InputSet : inputDataRef252
+BPMNProfile_DataInput "1..1" -- "1..9999" BPMNProfile_InputSet : inputSetRefs174
+BPMNProfile_DataInput "1..1" -- "1..9999" BPMNProfile_InputSet : inputSetWithOptional175
+BPMNProfile_DataInput "1..1" -- "1..9999" BPMNProfile_InputSet : inputSetWithWhileExecuting177
+BPMNProfile_InputOutputSpecification "1..1" -- "1..9999" BPMNProfile_InputSet : inputSets164
+BPMNProfile_BPMNInterface "1..9999" -- "1..1" BPMNProfile_Participant : interfaceRefs299
+BPMNProfile_CallableElement "1..1" -- "1..9999" BPMNProfile_InputOutputBinding : ioBinding153
+BPMNProfile_CallableElement "1..1" -- "0..1" BPMNProfile_InputOutputSpecification : ioSpecification149
+BPMNProfile_InputOutputSpecification "0..1" -- "1..1" BPMNProfile_Task : ioSpecification592
+BPMNProfile_BPMNMessage "1..1" -- "0..1" BPMNProfile_ItemDefinition : itemRef249
+BPMNProfile_ItemAwareElement "1..1" -- "0..1" BPMNProfile_ItemDefinition : itemSubjectRef182
+BPMNProfile_DataStore "1..1" -- "0..1" BPMNProfile_ItemDefinition : itemSubjectRef581
+BPMNProfile_Lane "1..1" -- "1..1" BPMNProfile_LaneSet : laneSet74
+BPMNProfile_FlowElementsContainer "1..1" -- "1..9999" BPMNProfile_LaneSet : laneSets50
+BPMNProfile_Lane "1..9999" -- "1..1" BPMNProfile_LaneSet : lanes54
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : loopCardinality656
+BPMNProfile_BPMNActivity "1..1" -- "0..1" BPMNProfile_LoopCharacteristics : loopCharacteristics457
+BPMNProfile_BPMNExpression "1..1" -- "1..1" BPMNProfile_StandardLoopCharacteristics : loopCondition640
+BPMNProfile_ItemAwareElement "0..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : loopDataInputRef663
+BPMNProfile_ItemAwareElement "0..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : loopDataOutputRef666
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_MessageFlowAssociation : messageFlowAssociations267
+BPMNProfile_ConversationNode "1..1" -- "1..9999" BPMNProfile_MessageFlow : messageFlowRefs347
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_MessageFlow : messageFlows269
+BPMNProfile_CorrelationPropertyRetrievalExpression "1..1" -- "1..1" BPMNProfile_FormalExpression : messagePath375
+BPMNProfile_BPMNMessage "0..1" -- "1..1" BPMNProfile_MessageFlow : messageRef341
+BPMNProfile_BPMNMessage "1..1" -- "1..1" BPMNProfile_CorrelationPropertyRetrievalExpression : messageRef372
+BPMNProfile_BPMNMessage "0..1" -- "1..1" BPMNProfile_MessageEventDefinition : messageRef531
+BPMNProfile_BPMNMessage "0..1" -- "1..1" BPMNProfile_SendTask : messageRef631
+BPMNProfile_BPMNMessage "0..1" -- "1..1" BPMNProfile_ReceiveTask : messageRef643
+BPMNProfile_BPMNProcess "1..1" -- "0..1" BPMNProfile_Monitoring : monitoring139
+BPMNProfile_FlowElement "1..1" -- "0..1" BPMNProfile_Monitoring : monitoring9
+BPMNProfile_EventDefinition "0..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : noneBehaviorEventRef678
+BPMNProfile_EventDefinition "0..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : oneBehaviorEventRef675
+BPMNProfile_BPMNOperation "1..1" -- "1..1" BPMNProfile_InputOutputBinding : operationRef258
+BPMNProfile_BPMNOperation "0..1" -- "1..1" BPMNProfile_MessageEventDefinition : operationRef533
+BPMNProfile_BPMNOperation "0..1" -- "1..1" BPMNProfile_SendTask : operationRef636
+BPMNProfile_BPMNOperation "0..1" -- "1..1" BPMNProfile_ReceiveTask : operationRef648
+BPMNProfile_BPMNOperation "0..1" -- "1..1" BPMNProfile_ServiceTask : operationRef653
+BPMNProfile_BPMNInterface "1..1" -- "1..9999" BPMNProfile_BPMNOperation : operations232
+BPMNProfile_DataInput "1..9999" -- "1..1" BPMNProfile_InputSet : optionalInputRefs197
+BPMNProfile_DataOutput "1..9999" -- "1..1" BPMNProfile_OutputSet : optionalOutputRefs220
+BPMNProfile_BPMNMessage "0..1" -- "1..1" BPMNProfile_BPMNOperation : outMessageRef244
+BPMNProfile_MessageFlow "1..1" -- "1..1" BPMNProfile_MessageFlowAssociation : outerMessageFlowRef330
+BPMNProfile_Participant "1..1" -- "1..1" BPMNProfile_ParticipantAssociation : outerParticipantRef285
+BPMNProfile_BPMNAssociation "1..9999" -- "1..1" BPMNProfile_BaseElement : outgoing20
+BPMNProfile_ConversationLink "1..9999" -- "1..1" BPMNProfile_InteractionNode : outgoingConversationLinks304
+BPMNProfile_DataOutput "1..1" -- "1..1" BPMNProfile_MultiInstanceLoopCharacteristics : outputDataItem669
+BPMNProfile_InputOutputBinding "1..1" -- "1..1" BPMNProfile_OutputSet : outputDataRef255
+BPMNProfile_DataOutput "1..1" -- "1..9999" BPMNProfile_OutputSet : outputSetRefs210
+BPMNProfile_DataOutput "1..1" -- "1..9999" BPMNProfile_OutputSet : outputSetWithOptional211
+BPMNProfile_DataOutput "1..1" -- "1..9999" BPMNProfile_OutputSet : outputSetWithWhileExecuting214
+BPMNProfile_InputOutputSpecification "1..1" -- "1..9999" BPMNProfile_OutputSet : outputSets166
+BPMNProfile_ResourceParameter "1..1" -- "1..1" BPMNProfile_ResourceParameterBinding : parameterRef425
+BPMNProfile_Lane "1..9999" -- "1..1" BPMNProfile_LaneSet : parentLane55
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_ParticipantAssociation : participantAssociations264
+BPMNProfile_CallConversation "1..1" -- "1..9999" BPMNProfile_ParticipantAssociation : participantAssociations606
+BPMNProfile_Participant "1..1" -- "0..1" BPMNProfile_ParticipantMultiplicity : participantMultiplicity294
+BPMNProfile_Participant "1..9999" -- "1..1" BPMNProfile_PartnerEntity : participantRef319
+BPMNProfile_Participant "1..9999" -- "1..1" BPMNProfile_PartnerRole : participantRef322
+BPMNProfile_ConversationNode "1..1" -- "2..9999" BPMNProfile_Participant : participantRefs353
+BPMNProfile_BPMNCollaboration "1..1" -- "1..9999" BPMNProfile_Participant : participants277
+BPMNProfile_BaseElement "0..1" -- "1..1" BPMNProfile_Lane : partitionElementRef68
+BPMNProfile_Participant "1..1" -- "1..9999" BPMNProfile_PartnerEntity : partnerEntityRef296
+BPMNProfile_Participant "1..1" -- "1..9999" BPMNProfile_PartnerRole : partnerRoleRef297
+BPMNProfile_BPMNProcess "0..1" -- "1..1" BPMNProfile_ResourceRole : process410
+BPMNProfile_BPMNProcess "0..1" -- "1..1" BPMNProfile_Participant : processRef291
+BPMNProfile_BPMNProcess "1..1" -- "1..9999" BPMNProfile_BPMNProperty : properties145
+BPMNProfile_BPMNActivity "1..1" -- "1..9999" BPMNProfile_BPMNProperty : properties445
+BPMNProfile_BPMNEvent "1..1" -- "1..9999" BPMNProfile_BPMNProperty : properties476
+BPMNProfile_BPMNRelationship "1..9999" -- "1..1" BPMNProfile_Definitions : relationships106
+BPMNProfile_Rendering "1..9999" -- "1..1" BPMNProfile_UserTask : renderings590
+BPMNProfile_GlobalUserTask "1..1" -- "1..9999" BPMNProfile_Rendering : renderings596
+BPMNProfile_ResourceAssignmentExpression "0..1" -- "1..1" BPMNProfile_ResourceRole : resourceAssignmentExpression404
+BPMNProfile_ResourceParameterBinding "1..9999" -- "1..1" BPMNProfile_ResourceRole : resourceParameterBindings408
+BPMNProfile_Resource "1..1" -- "1..9999" BPMNProfile_ResourceParameter : resourceParameters414
+BPMNProfile_Resource "0..1" -- "1..1" BPMNProfile_ResourceRole : resourceRef406
+BPMNProfile_BPMNProcess "1..1" -- "1..9999" BPMNProfile_ResourceRole : resources147
+BPMNProfile_GlobalTask "1..1" -- "1..9999" BPMNProfile_ResourceRole : resources432
+BPMNProfile_BPMNActivity "1..1" -- "1..9999" BPMNProfile_ResourceRole : resources459
+BPMNProfile_Definitions "1..1" -- "1..9999" BPMNProfile_RootElement : rootElements108
+BPMNProfile_BPMNSignal "0..1" -- "1..1" BPMNProfile_SignalEventDefinition : signalRef520
+BPMNProfile_LinkEventDefinition "1..1" -- "1..9999" BPMNProfile_LinkEventDefinition : source547
+BPMNProfile_ConversationLink "1..1" -- "1..1" BPMNProfile_InteractionNode : sourceRef314
+BPMNProfile_InteractionNode "1..1" -- "1..1" BPMNProfile_MessageFlow : sourceRef335
+BPMNProfile_BPMNAssociation "1..1" -- "1..1" BPMNProfile_BaseElement : sourceRef41
+BPMNProfile_DataAssociation "1..1" -- "1..1" BPMNProfile_ItemAwareElement : sourceRef483
+BPMNProfile_BPMNRelationship "1..1" -- "1..9999" BPMNProfile_Element : sources125
+BPMNProfile_Element "0..1" -- "1..1" BPMNProfile_ItemDefinition : structureRef189
+BPMNProfile_BPMNInterface "1..9999" -- "1..1" BPMNProfile_CallableElement : supportedInterfaceRefs151
+BPMNProfile_BPMNProcess "1..1" -- "1..1" BPMNProfile_BPMNProcess : supports143
+BPMNProfile_ConversationLink "1..1" -- "1..1" BPMNProfile_InteractionNode : targetRef313
+BPMNProfile_InteractionNode "1..1" -- "1..1" BPMNProfile_MessageFlow : targetRef338
+BPMNProfile_BPMNAssociation "1..1" -- "1..1" BPMNProfile_BaseElement : targetRef40
+BPMNProfile_DataAssociation "1..1" -- "1..1" BPMNProfile_ItemAwareElement : targetRef486
+BPMNProfile_BPMNRelationship "1..1" -- "1..9999" BPMNProfile_Element : targets122
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_TimerEventDefinition : timeCycle510
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_TimerEventDefinition : timeDate512
+BPMNProfile_BPMNExpression "0..1" -- "1..1" BPMNProfile_TimerEventDefinition : timeDuration515
+BPMNProfile_Assignment "1..1" -- "1..1" BPMNProfile_BPMNExpression : to500
+BPMNProfile_DataAssociation "1..1" -- "1..1" BPMNProfile_FormalExpression : transformation489
+BPMNProfile_CorrelationProperty "1..1" -- "0..1" BPMNProfile_ItemDefinition : type364
+BPMNProfile_ItemDefinition "0..1" -- "1..1" BPMNProfile_ResourceParameter : type419
+BPMNProfile_BPMNProperty "1..1" -- "1..1" BPMNProfile_Property : umlProperty399
+BPMNProfile_Element "0..1" -- "1..1" BPMNProfile_ExtensionAttributeValue : valueRef25
+BPMNProfile_DataInput "1..9999" -- "1..1" BPMNProfile_InputSet : whileExecutingInputRefs198
+BPMNProfile_DataOutput "1..9999" -- "1..1" BPMNProfile_OutputSet : whileExecutingOutputRefs223
+@enduml

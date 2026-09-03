@@ -1,0 +1,57 @@
+@startuml
+class Address {
+  + city : str
+  + country : str
+  + postalcode : str
+  + state : str
+  + street : str
+}
+class Clothes {
+  + color : str
+  + typeofclothe : str
+}
+class CustomerInfo {
+  + Cid : int
+  + Cname : str
+  + billingaddress : str
+  + password : str
+  + shippingaddress : str
+}
+class Electronic {
+  + brand : str
+}
+class Items {
+  + itemid : int
+}
+class OnlineShopping {
+}
+class Order {
+  + Orderid : int
+  + customerid : int
+  + customername : str
+  + datecreated : int
+  + shippinddate : int
+  + shippingid : int
+  + statues : str
+}
+class RetailStore {
+}
+class ShippingCart {
+  + cartID : int
+  + dateAdded : int
+  + productID : int
+  + quantity : int
+}
+class Shopping_Interface {
+}
+class payment {
+  + amount : int
+  + cardID : int
+}
+Address "0..1" -- "0..1" CustomerInfo : CustomerInfo_Address
+CustomerInfo "0..1" -- "0..1" ShippingCart : CustomerInfo_ShippingCart
+CustomerInfo "0..1" -- "0..1" OnlineShopping : OnlineShopping_CustomerInfo
+Items "0..1" -- "0..1" OnlineShopping : OnlineShopping_Items
+OnlineShopping "0..1" -- "0..1" Order : OnlineShopping_Order
+Order "0..1" -- "0..1" payment : Order_payment
+@enduml

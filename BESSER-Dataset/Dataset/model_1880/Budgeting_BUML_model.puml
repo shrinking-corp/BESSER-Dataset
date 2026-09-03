@@ -1,0 +1,89 @@
+@startuml
+class ActualEntry {
+}
+class BudgetEntry {
+}
+class BudgetingFile {
+}
+class Category {
+}
+enum MonthEnum {
+  APRIL
+  AUGUST
+  DECEMBER
+  FEBRUARY
+  JANUARY
+  JULY
+  JUNE
+  MARCH
+  MAY
+  NOVEMBER
+  OCTOBER
+  SEPTEMBER
+}
+class Transaction {
+}
+class budgeting_ActualAmountEntry {
+  + amount : str
+}
+class budgeting_ActualEntry {
+}
+class budgeting_ActualTransactionEntry {
+}
+class budgeting_BudgetAmountEntry {
+  + amount : str
+}
+class budgeting_BudgetEntry {
+}
+class budgeting_BudgetFactorEntry {
+  + factor : float
+}
+class budgeting_BudgetingFile {
+}
+class budgeting_CardTransaction {
+  + day : int
+  + from_ : str
+}
+class budgeting_CashTransaction {
+  + day : str
+}
+class budgeting_Category {
+  + name : str
+}
+class budgeting_ExpenseCategory {
+  + patterns : str
+}
+class budgeting_IncomeCategory {
+}
+class budgeting_Library {
+  + name : str
+}
+class budgeting_Month {
+  + name : str
+}
+class budgeting_Transaction {
+  + amount : str
+}
+class budgeting_Year {
+  + name : int
+}
+ActualEntry <|-- budgeting_ActualAmountEntry
+ActualEntry <|-- budgeting_ActualTransactionEntry
+BudgetEntry <|-- budgeting_BudgetAmountEntry
+BudgetEntry <|-- budgeting_BudgetFactorEntry
+BudgetingFile <|-- budgeting_Library
+BudgetingFile <|-- budgeting_Year
+Category <|-- budgeting_ExpenseCategory
+Category <|-- budgeting_IncomeCategory
+Transaction <|-- budgeting_CardTransaction
+Transaction <|-- budgeting_CashTransaction
+budgeting_ActualEntry "0..9999" --* "1..1" budgeting_Month : actualEntries7
+budgeting_BudgetEntry "0..1" -- "1..1" budgeting_BudgetFactorEntry : baseEntry15
+budgeting_BudgetEntry "0..9999" --* "1..1" budgeting_Month : budgetEntries5
+budgeting_Category "0..9999" --* "1..1" budgeting_Library : categories0
+budgeting_ActualEntry "1..1" -- "0..1" budgeting_Category : category12
+budgeting_BudgetEntry "1..1" -- "0..1" budgeting_Category : category9
+budgeting_Library "0..1" -- "1..1" budgeting_Year : library1
+budgeting_Month "0..9999" --* "1..1" budgeting_Year : months3
+budgeting_ActualTransactionEntry "1..1" *-- "0..9999" budgeting_Transaction : transactions17
+@enduml

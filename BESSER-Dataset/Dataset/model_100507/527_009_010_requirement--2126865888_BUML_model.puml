@@ -1,0 +1,42 @@
+@startuml
+class NamedElement {
+}
+enum RequirementType {
+  functional
+  technical
+}
+class requirement_Category {
+  + id : str
+}
+class requirement_EObject {
+}
+abstract class requirement_NamedElement {
+  + name : str
+}
+class requirement_Repository {
+}
+class requirement_Requirement {
+  + acceptanceCriteria : str
+  + createdOn : date
+  + id : str
+  + modifiedOn : date
+  + rationale : str
+  + statement : str
+  + status : str
+  + subtype : str
+  + type : str
+  + version : int
+}
+NamedElement <|-- requirement_Category
+NamedElement <|-- requirement_Repository
+NamedElement <|-- requirement_Requirement
+requirement_Category "0..1" -- "1..1" requirement_Requirement : category14
+requirement_Category "0..9999" --* "1..1" requirement_Repository : mainCategories0
+requirement_Category "1..1" -- "0..1" requirement_Category : parentCategory8
+requirement_EObject "0..9999" -- "1..1" requirement_Repository : referencedObject1
+requirement_Category "1..1" -- "0..9999" requirement_EObject : referencedObject10
+requirement_EObject "0..9999" -- "1..1" requirement_Requirement : referencedObject12
+requirement_Category "1..1" -- "0..1" requirement_Repository : repository6
+requirement_Category "1..1" *-- "0..9999" requirement_Requirement : requirements2
+requirement_Category "1..1" *-- "0..9999" requirement_Category : subCategories4
+@enduml

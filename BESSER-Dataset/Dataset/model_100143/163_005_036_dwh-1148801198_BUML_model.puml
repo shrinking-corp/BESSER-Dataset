@@ -1,0 +1,186 @@
+@startuml
+class DescribedElement {
+}
+class FQNamedElement {
+}
+enum FieldType {
+  ABSOLUTE
+  RELATIVE
+}
+class IColumn {
+}
+class IFile {
+}
+class Mapping {
+}
+class NamedElement {
+}
+class SeparatedElement {
+}
+class Task {
+}
+class Type {
+}
+class model_Column {
+}
+class model_Database {
+  + dsn : str
+}
+class model_DescribedElement {
+  + description : str
+}
+class model_Domain {
+  + type : str
+}
+class model_FQNamedElement {
+  + getFQName() : str
+}
+class model_Field {
+  + length : str
+  + position : str
+  + type : str
+}
+class model_File {
+  + files : str
+  + numberOfHeaderLines : str
+}
+class model_FileSet {
+  + hostname : str
+}
+class model_IColumn {
+}
+class model_IFile {
+}
+class model_Mapping {
+  + expression : str
+}
+class model_MappingExport {
+}
+class model_MappingFile {
+}
+class model_MappingImport {
+}
+class model_MappingSQL {
+}
+class model_NamedElement {
+  + name : str
+}
+class model_NativeSQLType {
+}
+class model_SCTFile {
+  + file : str
+}
+class model_Schema {
+}
+class model_SeparatedElement {
+  + separator : str
+}
+class model_Site {
+}
+class model_Table {
+}
+abstract class model_Task {
+  + fileName : str
+}
+class model_TaskExport {
+}
+class model_TaskFile {
+}
+class model_TaskImport {
+}
+class model_TaskSQL {
+}
+class model_TaskSet {
+}
+class model_Type {
+}
+class model_User {
+  + password : str
+}
+class model_View {
+  + sql : str
+}
+DescribedElement <|-- model_Database
+DescribedElement <|-- model_FileSet
+DescribedElement <|-- model_IColumn
+DescribedElement <|-- model_IFile
+DescribedElement <|-- model_Schema
+DescribedElement <|-- model_Site
+DescribedElement <|-- model_Table
+DescribedElement <|-- model_Task
+DescribedElement <|-- model_TaskSet
+DescribedElement <|-- model_Type
+DescribedElement <|-- model_User
+DescribedElement <|-- model_View
+FQNamedElement <|-- model_Domain
+FQNamedElement <|-- model_IColumn
+FQNamedElement <|-- model_Table
+FQNamedElement <|-- model_User
+FQNamedElement <|-- model_View
+IColumn <|-- model_Column
+IColumn <|-- model_Field
+IFile <|-- model_File
+IFile <|-- model_SCTFile
+Mapping <|-- model_MappingExport
+Mapping <|-- model_MappingFile
+Mapping <|-- model_MappingImport
+Mapping <|-- model_MappingSQL
+NamedElement <|-- model_Database
+NamedElement <|-- model_FileSet
+NamedElement <|-- model_IColumn
+NamedElement <|-- model_IFile
+NamedElement <|-- model_Schema
+NamedElement <|-- model_Site
+NamedElement <|-- model_Table
+NamedElement <|-- model_Task
+NamedElement <|-- model_TaskSet
+NamedElement <|-- model_Type
+NamedElement <|-- model_User
+NamedElement <|-- model_View
+SeparatedElement <|-- model_Field
+SeparatedElement <|-- model_File
+Task <|-- model_TaskExport
+Task <|-- model_TaskFile
+Task <|-- model_TaskImport
+Task <|-- model_TaskSQL
+Type <|-- model_Domain
+Type <|-- model_NativeSQLType
+model_Column "0..9999" --* "1..1" model_Table : columns12
+model_Column "0..9999" --* "1..1" model_SCTFile : columns18
+model_Database "0..9999" --* "1..1" model_Site : databases81
+model_Domain "0..9999" --* "1..1" model_SCTFile : domains20
+model_Domain "0..9999" --* "1..1" model_Schema : domains6
+model_Field "0..9999" --* "1..1" model_File : fields17
+model_FileSet "0..9999" --* "1..1" model_Site : fileSets83
+model_FileSet "1..1" *-- "0..9999" model_IFile : files16
+model_MappingImport "0..9999" --* "1..1" model_TaskImport : map54
+model_MappingFile "0..9999" --* "1..1" model_TaskFile : map62
+model_MappingExport "0..9999" --* "1..1" model_TaskExport : map70
+model_MappingSQL "0..9999" --* "1..1" model_TaskSQL : map78
+model_Task "0..9999" -- "1..1" model_TaskSet : preconditions43
+model_Task "0..9999" -- "1..1" model_Task : preconditions47
+model_Schema "0..1" -- "1..1" model_User : schema3
+model_Database "1..1" *-- "0..9999" model_Schema : schemas1
+model_IColumn "0..9999" -- "1..1" model_MappingImport : source23
+model_Field "0..9999" -- "1..1" model_MappingFile : source27
+model_Column "0..9999" -- "1..1" model_MappingExport : source32
+model_Column "0..9999" -- "1..1" model_MappingSQL : source37
+model_IFile "1..1" -- "1..1" model_TaskImport : source49
+model_File "1..1" -- "1..1" model_TaskFile : source57
+model_Table "1..1" -- "1..1" model_TaskExport : source65
+model_Table "1..1" -- "1..1" model_TaskSQL : source73
+model_Schema "1..1" *-- "0..9999" model_Table : tables8
+model_Column "1..1" -- "1..1" model_MappingImport : target24
+model_Field "1..1" -- "1..1" model_MappingFile : target29
+model_IColumn "1..1" -- "1..1" model_MappingExport : target34
+model_Column "0..9999" -- "1..1" model_MappingSQL : target39
+model_Table "1..1" -- "1..1" model_TaskImport : target51
+model_File "1..1" -- "1..1" model_TaskFile : target59
+model_IFile "1..1" -- "1..1" model_TaskExport : target67
+model_Table "1..1" -- "1..1" model_TaskSQL : target75
+model_Site "1..1" *-- "0..9999" model_TaskSet : taskSets86
+model_Task "0..9999" --* "1..1" model_TaskSet : tasks42
+model_Column "1..1" -- "1..1" model_Type : type14
+model_Database "1..1" *-- "0..9999" model_User : users0
+model_Schema "1..1" *-- "0..9999" model_View : views10
+@enduml

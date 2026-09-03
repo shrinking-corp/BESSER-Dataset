@@ -1,0 +1,55 @@
+@startuml
+class domain_Authentification {
+  + id : str
+  + password : str
+}
+class domain_Avis {
+  + commentaire : str
+  + id : int
+  + note : int
+}
+class domain_Profil {
+  + id : int
+  + mail : str
+  + nom : str
+  + prenom : str
+  + role : domain_Role
+  + tel : str
+}
+class domain_Reservation {
+  + dateReservation : date
+  + id : int
+  + id2 : int
+}
+enum domain_Role {
+}
+class domain_Trajet {
+  + date : date
+  + depart : domain_Ville
+  + destination : domain_Ville
+  + id : int
+  + prix : int
+}
+class domain_Ville {
+  + cp : int
+  + id : int
+  + nom : str
+}
+class domain_Voiture {
+  + categorie : str
+  + confort : str
+  + id : int
+  + marque : str
+  + model : str
+  + nbPlaces : int
+}
+domain_Avis "0..9999" -- "0..1" domain_Trajet : Avis_Evenement
+domain_Avis "0..9999" -- "0..1" domain_Profil : Avis_Personne
+domain_Profil "1..9999" -- "0..9999" domain_Trajet : Personne_Evenement
+domain_Authentification "1..9999" -- "0..9999" domain_Profil : Personne_Preferences
+domain_Profil "0..9999" -- "0..1" domain_Ville : Personne_Ville
+domain_Profil "1..9999" -- "0..1" domain_Reservation : Profil_Reservation
+domain_Reservation "1..9999" -- "0..1" domain_Trajet : Trajet_Reservation
+domain_Trajet "1..1" -- "1..1" domain_Ville : Ville_Trajet
+domain_Profil "0..1" -- "0..1" domain_Voiture : Voiture_Passager
+@enduml

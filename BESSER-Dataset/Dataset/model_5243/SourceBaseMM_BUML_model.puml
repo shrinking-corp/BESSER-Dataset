@@ -1,0 +1,28 @@
+@startuml
+class SElement {
+}
+class sbase_EObject {
+}
+class sbase_SElement {
+}
+class sbase_SRoot {
+}
+class sbase_X {
+  + name : str
+}
+class sbase_Y {
+  + name : str
+}
+class sbase_Z {
+}
+SElement <|-- sbase_SRoot
+SElement <|-- sbase_X
+SElement <|-- sbase_Y
+SElement <|-- sbase_Z
+sbase_EObject "0..1" -- "1..1" sbase_SElement : ast6
+sbase_SRoot "1..1" *-- "0..9999" sbase_X : ownedX5
+sbase_X "1..1" *-- "0..9999" sbase_Y : ownsY0
+sbase_Y "1..1" *-- "0..1" sbase_Z : ownsZ1
+sbase_X "0..1" -- "1..1" sbase_Y : toX2
+sbase_Y "0..1" -- "1..1" sbase_Z : toY3
+@enduml

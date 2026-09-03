@@ -1,0 +1,19 @@
+@startuml
+class education_Course {
+  + name : str
+}
+class education_School {
+  + address : str
+  + name : str
+  + phone : str
+}
+class education_Student {
+  + name : str
+}
+education_Course "0..9999" -- "1..1" education_School : courses1
+education_Course "0..9999" -- "1..1" education_Student : courses6
+education_Course "1..1" -- "1..1" education_School : school12
+education_School "1..9999" -- "1..1" education_Student : schools3
+education_School "1..1" -- "0..9999" education_Student : students0
+education_Course "1..1" -- "0..9999" education_Student : students9
+@enduml

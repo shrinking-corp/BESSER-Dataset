@@ -1,0 +1,38 @@
+@startuml
+class GenericPlace {
+}
+abstract class extendedPetriNets_GenericPlace {
+  + capacity : int
+  + name : str
+  + numberOfTokens : int
+}
+class extendedPetriNets_InputArc {
+  + weight : int
+}
+class extendedPetriNets_InputPort {
+}
+class extendedPetriNets_OutputArc {
+  + weight : int
+}
+class extendedPetriNets_OutputPort {
+}
+class extendedPetriNets_PetriNet {
+  + name : str
+}
+class extendedPetriNets_Place {
+}
+class extendedPetriNets_Transition {
+  + name : str
+}
+GenericPlace <|-- extendedPetriNets_InputPort
+GenericPlace <|-- extendedPetriNets_OutputPort
+GenericPlace <|-- extendedPetriNets_Place
+extendedPetriNets_GenericPlace "0..1" -- "1..1" extendedPetriNets_InputArc : InputArcFromPlace10
+extendedPetriNets_InputArc "1..1" -- "0..1" extendedPetriNets_Transition : InputArcToTransition7
+extendedPetriNets_OutputArc "1..1" -- "0..1" extendedPetriNets_Transition : OutputArcFromTransition13
+extendedPetriNets_GenericPlace "0..1" -- "1..1" extendedPetriNets_OutputArc : OutputArcToPlace16
+extendedPetriNets_GenericPlace "0..9999" --* "1..1" extendedPetriNets_PetriNet : containsGenericPlaces0
+extendedPetriNets_InputArc "0..9999" --* "1..1" extendedPetriNets_PetriNet : containsInputArcs3
+extendedPetriNets_OutputArc "0..9999" --* "1..1" extendedPetriNets_PetriNet : containsOutputArcs5
+extendedPetriNets_PetriNet "1..1" *-- "0..9999" extendedPetriNets_Transition : containsTransitions1
+@enduml

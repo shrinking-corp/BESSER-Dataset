@@ -1,0 +1,107 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class publication101_Collaboration {
+  + ratio : int
+}
+abstract class publication101_Counted {
+  + id : int
+}
+class publication101_Keyword {
+  + description : str
+}
+class publication101_KnowledgeManager {
+}
+abstract class publication101_Labelled {
+  + lname : str
+}
+abstract class publication101_Named {
+  + name : str
+}
+class publication101_Paper {
+}
+class publication101_PaperKeyword {
+  + weight : int
+}
+class publication101_Paragraph {
+  + content : str
+}
+class publication101_Phase {
+  + name : str
+}
+class publication101_Position {
+  + description : str
+}
+class publication101_Progress {
+  + percent : int
+}
+class publication101_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class publication101_PublicationStructure {
+}
+class publication101_PublicationSystem {
+}
+class publication101_Researcher {
+  + forName : str
+  + name : str
+}
+class publication101_Review {
+  + date : date
+}
+class publication101_ReviewNote {
+  + content : str
+}
+class publication101_Skill {
+  + description : str
+}
+class publication101_Write {
+  + timeSpent : int
+}
+Counted <|-- publication101_Paragraph
+Labelled <|-- publication101_Progress
+Labelled <|-- publication101_Review
+Labelled <|-- publication101_Write
+Named <|-- publication101_Keyword
+Named <|-- publication101_KnowledgeManager
+Named <|-- publication101_Paper
+Named <|-- publication101_Paragraph
+Named <|-- publication101_Position
+Named <|-- publication101_PublicationProcess
+Named <|-- publication101_PublicationStructure
+Named <|-- publication101_PublicationSystem
+Named <|-- publication101_ReviewNote
+publication101_Keyword "0..9999" --* "1..1" publication101_KnowledgeManager : allkeywords51
+publication101_Paper "1..1" -- "0..9999" publication101_Researcher : authors13
+publication101_Paper "0..1" -- "1..1" publication101_Paper : citedBy17
+publication101_Collaboration "1..1" -- "0..1" publication101_Paper : col_paper57
+publication101_Collaboration "0..9999" --* "1..1" publication101_Researcher : collaborations9
+publication101_Keyword "0..1" -- "1..1" publication101_PaperKeyword : keyword54
+publication101_Paper "1..1" *-- "0..9999" publication101_PaperKeyword : keywords14
+publication101_KnowledgeManager "0..1" --* "1..1" publication101_PublicationStructure : knowledgeMan36
+publication101_Keyword "1..1" -- "0..9999" publication101_Paper : kpapers49
+publication101_Paper "0..1" -- "1..1" publication101_Progress : paper23
+publication101_Paper "0..9999" --* "1..1" publication101_PublicationStructure : papers33
+publication101_Paragraph "0..1" -- "1..1" publication101_Write : paragraph25
+publication101_Paper "1..1" *-- "0..9999" publication101_Paragraph : paragraphs11
+publication101_Position "0..1" -- "1..1" publication101_Position : parent47
+publication101_Phase "0..9999" --* "1..1" publication101_PublicationProcess : phases0
+publication101_Position "0..9999" --* "1..1" publication101_PublicationSystem : positions43
+publication101_Progress "1..1" -- "0..1" publication101_PublicationProcess : process21
+publication101_PublicationProcess "0..1" --* "1..1" publication101_PublicationSystem : processView38
+publication101_Paper "1..1" *-- "0..9999" publication101_Progress : progress12
+publication101_Paper "0..9999" -- "1..1" publication101_Researcher : res_papers4
+publication101_Position "0..1" -- "1..1" publication101_Researcher : res_position7
+publication101_PublicationStructure "1..1" *-- "0..9999" publication101_Researcher : researchers31
+publication101_Review "1..1" -- "0..1" publication101_ReviewNote : reviewNote28
+publication101_Paragraph "1..1" *-- "0..9999" publication101_ReviewNote : reviews19
+publication101_Researcher "1..1" *-- "0..9999" publication101_Review : reviews2
+publication101_Researcher "1..1" *-- "0..9999" publication101_Skill : skills5
+publication101_PublicationStructure "0..1" --* "1..1" publication101_PublicationSystem : structuralView40
+publication101_Researcher "1..1" *-- "0..9999" publication101_Write : writes1
+@enduml

@@ -1,0 +1,137 @@
+@startuml
+class Activity {
+}
+class ActivityEdge {
+}
+class ActivityGroup {
+}
+class ActivityNode {
+}
+class ControlNode {
+}
+class ExecutableNode {
+}
+class FinalNode {
+}
+class NamedElement {
+}
+class ObjectNode {
+}
+class Pin {
+}
+class activity_AcceptEventAction {
+}
+class activity_AcceptTimeEventAction {
+}
+class activity_Action {
+}
+class activity_Activity {
+}
+abstract class activity_ActivityEdge {
+}
+class activity_ActivityFinalNode {
+}
+abstract class activity_ActivityGroup {
+  + name : str
+}
+abstract class activity_ActivityNode {
+}
+class activity_ActivityParameterNode {
+  + name : str
+}
+class activity_ActivityPartition {
+}
+class activity_CentralBufferNode {
+}
+class activity_Connector {
+}
+class activity_ControlFlow {
+}
+abstract class activity_ControlNode {
+}
+class activity_DataStoreNode {
+}
+class activity_DecisionNode {
+}
+abstract class activity_ExecutableNode {
+}
+abstract class activity_FinalNode {
+}
+class activity_FlowFinalNode {
+}
+class activity_ForkNode {
+}
+class activity_InitialNode {
+}
+class activity_InputPin {
+}
+class activity_InterruptEdge {
+}
+class activity_InterruptibleActivityRegion {
+}
+class activity_JoinNode {
+}
+class activity_MergeNode {
+}
+abstract class activity_NamedElement {
+  + Name : str
+  + qualifiedName : str
+}
+class activity_Object {
+}
+class activity_ObjectFlow {
+}
+abstract class activity_ObjectNode {
+}
+class activity_OutputPin {
+}
+abstract class activity_Pin {
+}
+class activity_SendSignalAction {
+}
+Activity <|-- activity_ActivityGroup
+Activity <|-- activity_ActivityParameterNode
+ActivityEdge <|-- activity_ControlFlow
+ActivityEdge <|-- activity_InterruptEdge
+ActivityEdge <|-- activity_ObjectFlow
+ActivityGroup <|-- activity_ActivityPartition
+ActivityGroup <|-- activity_InterruptibleActivityRegion
+ActivityNode <|-- activity_ControlNode
+ActivityNode <|-- activity_ExecutableNode
+ActivityNode <|-- activity_ObjectNode
+ControlNode <|-- activity_Connector
+ControlNode <|-- activity_DecisionNode
+ControlNode <|-- activity_FinalNode
+ControlNode <|-- activity_ForkNode
+ControlNode <|-- activity_InitialNode
+ControlNode <|-- activity_JoinNode
+ControlNode <|-- activity_MergeNode
+ExecutableNode <|-- activity_AcceptEventAction
+ExecutableNode <|-- activity_AcceptTimeEventAction
+ExecutableNode <|-- activity_Action
+ExecutableNode <|-- activity_SendSignalAction
+FinalNode <|-- activity_ActivityFinalNode
+FinalNode <|-- activity_FlowFinalNode
+NamedElement <|-- activity_ActivityEdge
+NamedElement <|-- activity_ActivityNode
+ObjectNode <|-- activity_CentralBufferNode
+ObjectNode <|-- activity_DataStoreNode
+ObjectNode <|-- activity_Object
+ObjectNode <|-- activity_Pin
+Pin <|-- activity_InputPin
+Pin <|-- activity_OutputPin
+activity_Activity "1..1" *-- "0..9999" activity_ActivityGroup : activityGroups7
+activity_Activity "1..1" -- "0..9999" activity_ActivityPartition : activityPartion5
+activity_ActivityPartition "0..9999" --* "1..1" activity_ActivityPartition : activityPartions19
+activity_Activity "1..1" *-- "0..1" activity_ActivityParameterNode : activityparameternode3
+activity_Connector "1..1" -- "0..1" activity_Connector : connected22
+activity_Activity "1..1" *-- "0..9999" activity_ActivityEdge : edges0
+activity_ActivityNode "0..9999" --* "1..1" activity_ActivityParameterNode : inBorder9
+activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : incoming15
+activity_Action "1..1" *-- "0..9999" activity_InputPin : input24
+activity_Activity "1..1" *-- "0..9999" activity_ActivityNode : nodes1
+activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : outgoing16
+activity_Action "1..1" *-- "0..9999" activity_OutputPin : output23
+activity_ActivityEdge "1..1" -- "0..1" activity_ActivityNode : source13
+activity_ActivityEdge "1..1" -- "0..1" activity_ActivityNode : target12
+@enduml

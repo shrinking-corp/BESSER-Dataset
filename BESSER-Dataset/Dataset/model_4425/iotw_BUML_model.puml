@@ -1,0 +1,202 @@
+@startuml
+enum ConnectionKind {
+  STATE_FLOW
+}
+class ConnectivityControl {
+}
+class Control {
+}
+class IOControl {
+}
+class InputControl {
+}
+class Mainboard {
+}
+class OutputControl {
+}
+enum RouterKind {
+  BENDPOINT
+  MANHATTAN
+}
+class StateControl {
+}
+enum TypeData {
+  JSON
+  XML
+}
+class iotw_ArduinoUNOR3 {
+  + pin0 : str
+  + pin1 : str
+  + pin10 : str
+  + pin11 : str
+  + pin12 : str
+  + pin13 : str
+  + pin2 : str
+  + pin3 : str
+  + pin4 : str
+  + pin5 : str
+  + pin6 : str
+  + pin7 : str
+  + pin8 : str
+  + pin9 : str
+  + pinA0 : str
+  + pinA1 : str
+  + pinA2 : str
+  + pinA3 : str
+  + pinA4 : str
+  + pinA5 : str
+}
+class iotw_BluetoothHC06 {
+  + pinGND : str
+  + pinRXD : str
+  + pinTXD : str
+  + pinVCC : str
+}
+class iotw_Button {
+  + pin1 : str
+}
+class iotw_Buzzer {
+  + pin1 : str
+  + pin2 : str
+}
+class iotw_Connection {
+  + bendpoints : str
+  + kind : str
+  + label : str
+  + routerKind : str
+}
+abstract class iotw_ConnectivityControl {
+  + constraints : str
+  + getPinConnecteds() : str
+  + getPins() : str
+  + modifyPin(iotw_pin : str) : void
+}
+abstract class iotw_Control {
+  + id : str
+  + name : str
+}
+abstract class iotw_DataControl {
+  + constraints : str
+  + location : str
+  + type : str
+}
+class iotw_DataExplorer {
+}
+class iotw_Decision {
+}
+class iotw_EndPoint {
+}
+class iotw_I2CLCD2004 {
+  + pinGND : str
+  + pinSCL : str
+  + pinSDA : str
+  + pinVcc : str
+}
+abstract class iotw_IOControl {
+  + constraints : str
+  + getPinConnecteds() : str
+  + getPins() : str
+  + modifyPin(iotw_pin : str) : void
+}
+abstract class iotw_InputControl {
+}
+class iotw_Keypad4x4 {
+  + cols : int
+  + keys : str
+  + nameButton0 : str
+  + nameButton1 : str
+  + nameButton2 : str
+  + nameButton3 : str
+  + nameButton4 : str
+  + nameButton5 : str
+  + nameButton6 : str
+  + nameButton7 : str
+  + nameButton8 : str
+  + nameButton9 : str
+  + nameButtonA : str
+  + nameButtonAsterisk : str
+  + nameButtonB : str
+  + nameButtonC : str
+  + nameButtonD : str
+  + nameButtonHash : str
+  + pin1 : str
+  + pin2 : str
+  + pin3 : str
+  + pin4 : str
+  + pin5 : str
+  + pin6 : str
+  + pin7 : str
+  + pin8 : str
+  + rows : int
+  + getButton(iotw_name : str) : str
+}
+class iotw_LED {
+  + pin1 : str
+  + pin2 : str
+}
+abstract class iotw_Mainboard {
+  + name : str
+  + addConnectivity(iotw_control : str) : void
+  + addControl(iotw_control : str) : void
+  + findPin(iotw_pin : str) : str
+  + getPinConnecteds() : str
+  + getPins() : str
+  + modifyPin(iotw_pin : str) : void
+  + removeConnectivity(iotw_control : str) : void
+  + removeControl(iotw_control : str) : void
+}
+abstract class iotw_OutputControl {
+}
+class iotw_StartPoint {
+}
+abstract class iotw_StateControl {
+  + constraints : str
+}
+class iotw_StateFrame {
+  + content : str
+}
+class iotw_StateSchema {
+}
+class iotw_WifiESP8266 {
+  + Host : str
+  + Password : str
+  + Port : int
+  + SSID : str
+  + pinCHPD : str
+  + pinGND : str
+  + pinRX : str
+  + pinTX : str
+  + pinVcc : str
+}
+ConnectivityControl <|-- iotw_BluetoothHC06
+ConnectivityControl <|-- iotw_WifiESP8266
+Control <|-- iotw_ConnectivityControl
+Control <|-- iotw_DataControl
+Control <|-- iotw_IOControl
+Control <|-- iotw_StateControl
+IOControl <|-- iotw_InputControl
+IOControl <|-- iotw_OutputControl
+InputControl <|-- iotw_Button
+InputControl <|-- iotw_Keypad4x4
+Mainboard <|-- iotw_ArduinoUNOR3
+OutputControl <|-- iotw_Buzzer
+OutputControl <|-- iotw_I2CLCD2004
+OutputControl <|-- iotw_LED
+StateControl <|-- iotw_Decision
+StateControl <|-- iotw_EndPoint
+StateControl <|-- iotw_StartPoint
+StateControl <|-- iotw_StateFrame
+iotw_ConnectivityControl "0..9999" --* "1..1" iotw_Mainboard : connectivities10
+iotw_Connection "0..9999" --* "1..1" iotw_StateSchema : connnections14
+iotw_StateControl "0..9999" --* "1..1" iotw_StateSchema : controls12
+iotw_IOControl "0..9999" --* "1..1" iotw_Mainboard : controls9
+iotw_DataControl "1..1" -- "0..1" iotw_DataExplorer : dataExplorer7
+iotw_DataControl "0..9999" --* "1..1" iotw_DataExplorer : datas8
+iotw_Connection "0..9999" -- "1..1" iotw_StateControl : incomings3
+iotw_IOControl "1..1" -- "0..1" iotw_Mainboard : mainboard0
+iotw_ConnectivityControl "1..1" -- "0..1" iotw_Mainboard : mainboard1
+iotw_Connection "0..9999" -- "1..1" iotw_StateControl : outgoings4
+iotw_Connection "1..1" -- "0..1" iotw_Control : source15
+iotw_Connection "1..1" -- "0..1" iotw_StateSchema : stateSchema20
+iotw_Connection "1..1" -- "0..1" iotw_Control : target17
+@enduml

@@ -1,0 +1,355 @@
+@startuml
+enum AssignTypeDatatype {
+  addattribute
+  delete
+  firstchild
+  lastchild
+  nextsibling
+  previoussibling
+  replace
+  replacechildren
+}
+enum BindingDatatype {
+  early
+  late
+}
+enum BooleanDatatype {
+  false
+  true
+}
+enum ExmodeDatatype {
+  lax
+  strict
+}
+enum HistoryTypeDatatype {
+  deep
+  shallow
+}
+enum TransitionTypeDatatype {
+  external
+  internal
+}
+class scxml_DocumentRoot {
+  + mixed : str
+}
+class scxml_EStringToStringMapEntry {
+}
+class scxml_ScxmlAssignType {
+  + any : str
+  + anyAttribute : str
+  + attr : str
+  + expr : str
+  + location : str
+  + mixed : str
+  + type : str
+}
+class scxml_ScxmlCancelType {
+  + any : str
+  + anyAttribute : str
+  + scxmlExtraContent : str
+  + sendid : str
+  + sendidexpr : str
+}
+class scxml_ScxmlContentType {
+  + any : str
+  + anyAttribute : str
+  + expr : str
+  + mixed : str
+}
+class scxml_ScxmlDataType {
+  + any : str
+  + anyAttribute : str
+  + expr : str
+  + id : str
+  + mixed : str
+  + src : str
+}
+class scxml_ScxmlDatamodelType {
+  + any : str
+  + anyAttribute : str
+  + scxmlExtraContent : str
+}
+class scxml_ScxmlDonedataType {
+  + anyAttribute : str
+}
+class scxml_ScxmlElseType {
+  + anyAttribute : str
+}
+class scxml_ScxmlElseifType {
+  + anyAttribute : str
+  + cond : str
+}
+class scxml_ScxmlFinalType {
+  + any : str
+  + anyAttribute : str
+  + id : str
+  + scxmlFinalMix : str
+}
+class scxml_ScxmlFinalizeType {
+  + any : str
+  + anyAttribute : str
+  + scxmlCoreExecutablecontent : str
+}
+class scxml_ScxmlForeachType {
+  + any : str
+  + anyAttribute : str
+  + array : str
+  + index : str
+  + item : str
+  + scxmlCoreExecutablecontent : str
+}
+class scxml_ScxmlHistoryType {
+  + any : str
+  + any1 : str
+  + anyAttribute : str
+  + id : str
+  + scxmlExtraContent : str
+  + scxmlExtraContent1 : str
+  + type : str
+}
+class scxml_ScxmlIfType {
+  + any : str
+  + any1 : str
+  + any2 : str
+  + anyAttribute : str
+  + cond : str
+  + scxmlCoreExecutablecontent : str
+  + scxmlCoreExecutablecontent1 : str
+  + scxmlCoreExecutablecontent2 : str
+}
+class scxml_ScxmlInitialType {
+  + any : str
+  + any1 : str
+  + anyAttribute : str
+  + scxmlExtraContent : str
+  + scxmlExtraContent1 : str
+}
+class scxml_ScxmlInvokeType {
+  + any : str
+  + anyAttribute : str
+  + autoforward : str
+  + id : str
+  + idlocation : str
+  + namelist : str
+  + scxmlInvokeMix : str
+  + src : str
+  + srcexpr : str
+  + type : str
+  + typeexpr : str
+}
+class scxml_ScxmlLogType {
+  + any : str
+  + anyAttribute : str
+  + expr : str
+  + label : str
+  + scxmlExtraContent : str
+}
+class scxml_ScxmlOnentryType {
+  + any : str
+  + anyAttribute : str
+  + scxmlCoreExecutablecontent : str
+}
+class scxml_ScxmlOnexitType {
+  + any : str
+  + anyAttribute : str
+  + scxmlCoreExecutablecontent : str
+}
+class scxml_ScxmlParallelType {
+  + any : str
+  + anyAttribute : str
+  + id : str
+  + scxmlParallelMix : str
+}
+class scxml_ScxmlParamType {
+  + any : str
+  + anyAttribute : str
+  + expr : str
+  + location : str
+  + name : str
+  + scxmlExtraContent : str
+}
+class scxml_ScxmlRaiseType {
+  + anyAttribute : str
+  + event : str
+}
+class scxml_ScxmlScriptType {
+  + any : str
+  + anyAttribute : str
+  + mixed : str
+  + scxmlExtraContent : str
+  + src : str
+}
+class scxml_ScxmlScxmlType {
+  + any : str
+  + anyAttribute : str
+  + binding : str
+  + datamodel1 : str
+  + exmode : str
+  + initial : str
+  + name : str
+  + scxmlScxmlMix : str
+  + version : str
+}
+class scxml_ScxmlSendType {
+  + any : str
+  + anyAttribute : str
+  + delay : str
+  + delayexpr : str
+  + event : str
+  + eventexpr : str
+  + id : str
+  + idlocation : str
+  + namelist : str
+  + scxmlSendMix : str
+  + target : str
+  + targetexpr : str
+  + type : str
+  + typeexpr : str
+}
+class scxml_ScxmlStateType {
+  + any : str
+  + anyAttribute : str
+  + id : str
+  + initial1 : str
+  + scxmlStateMix : str
+}
+class scxml_ScxmlTransitionType {
+  + any : str
+  + anyAttribute : str
+  + cond : str
+  + event : str
+  + scxmlCoreExecutablecontent : str
+  + target : str
+  + type : str
+}
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlForeachType : assign113
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlIfType : assign1167
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlIfType : assign140
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlIfType : assign2194
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlOnentryType : assign230
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlOnexitType : assign254
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlTransitionType : assign353
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlAssignType : assign4
+scxml_ScxmlAssignType "0..9999" --* "1..1" scxml_ScxmlFinalizeType : assign80
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlIfType : cancel1173
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlForeachType : cancel119
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlIfType : cancel146
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlIfType : cancel2200
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlOnentryType : cancel236
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlOnexitType : cancel260
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlTransitionType : cancel359
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlCancelType : cancel6
+scxml_ScxmlCancelType "0..9999" --* "1..1" scxml_ScxmlFinalizeType : cancel86
+scxml_ScxmlContentType "0..9999" --* "1..1" scxml_ScxmlInvokeType : content206
+scxml_ScxmlContentType "0..9999" --* "1..1" scxml_ScxmlSendType : content302
+scxml_ScxmlContentType "0..1" --* "1..1" scxml_ScxmlDonedataType : content59
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlContentType : content8
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlDataType : data10
+scxml_ScxmlDataType "0..9999" --* "1..1" scxml_ScxmlDatamodelType : data56
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlDatamodelType : datamodel12
+scxml_ScxmlDatamodelType "0..9999" --* "1..1" scxml_ScxmlParallelType : datamodel281
+scxml_ScxmlDatamodelType "0..9999" --* "1..1" scxml_ScxmlScxmlType : datamodel296
+scxml_ScxmlDatamodelType "0..9999" --* "1..1" scxml_ScxmlStateType : datamodel332
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlDonedataType : donedata14
+scxml_ScxmlDonedataType "0..9999" --* "1..1" scxml_ScxmlFinalType : donedata95
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlElseType : else_16
+scxml_ScxmlElseType "0..1" --* "1..1" scxml_ScxmlIfType : else_176
+scxml_ScxmlElseifType "0..1" --* "1..1" scxml_ScxmlIfType : elseif149
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlElseifType : elseif18
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlFinalType : final20
+scxml_ScxmlFinalType "0..9999" --* "1..1" scxml_ScxmlScxmlType : final293
+scxml_ScxmlFinalType "0..9999" --* "1..1" scxml_ScxmlStateType : final326
+scxml_ScxmlFinalizeType "0..9999" --* "1..1" scxml_ScxmlInvokeType : finalize212
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlFinalizeType : finalize22
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlForeachType : foreach105
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlIfType : foreach1158
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlIfType : foreach131
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlIfType : foreach2185
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlOnentryType : foreach221
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlForeachType : foreach24
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlOnexitType : foreach245
+scxml_ScxmlForeachType "0..9999" --* "1..1" scxml_ScxmlTransitionType : foreach344
+scxml_ScxmlFinalizeType "1..1" *-- "0..9999" scxml_ScxmlForeachType : foreach71
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlHistoryType : history26
+scxml_ScxmlHistoryType "0..9999" --* "1..1" scxml_ScxmlParallelType : history278
+scxml_ScxmlHistoryType "0..9999" --* "1..1" scxml_ScxmlStateType : history329
+scxml_ScxmlIfType "0..9999" --* "1..1" scxml_ScxmlIfType : if1156
+scxml_ScxmlIfType "0..9999" --* "1..1" scxml_ScxmlIfType : if2183
+scxml_ScxmlForeachType "1..1" *-- "0..9999" scxml_ScxmlIfType : if_101
+scxml_ScxmlIfType "0..9999" --* "1..1" scxml_ScxmlIfType : if_129
+scxml_ScxmlIfType "0..9999" --* "1..1" scxml_ScxmlOnentryType : if_218
+scxml_ScxmlIfType "0..9999" --* "1..1" scxml_ScxmlOnexitType : if_242
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlIfType : if_28
+scxml_ScxmlIfType "0..9999" --* "1..1" scxml_ScxmlTransitionType : if_341
+scxml_ScxmlFinalizeType "1..1" *-- "0..9999" scxml_ScxmlIfType : if_68
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlInitialType : initial30
+scxml_ScxmlInitialType "0..9999" --* "1..1" scxml_ScxmlStateType : initial317
+scxml_ScxmlInvokeType "0..9999" --* "1..1" scxml_ScxmlParallelType : invoke284
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlInvokeType : invoke32
+scxml_ScxmlInvokeType "0..9999" --* "1..1" scxml_ScxmlStateType : invoke335
+scxml_ScxmlForeachType "1..1" *-- "0..9999" scxml_ScxmlLogType : log116
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlLogType : log1170
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlLogType : log143
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlLogType : log2197
+scxml_ScxmlLogType "0..9999" --* "1..1" scxml_ScxmlOnentryType : log233
+scxml_ScxmlLogType "0..9999" --* "1..1" scxml_ScxmlOnexitType : log257
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlLogType : log34
+scxml_ScxmlLogType "0..9999" --* "1..1" scxml_ScxmlTransitionType : log356
+scxml_ScxmlFinalizeType "1..1" *-- "0..9999" scxml_ScxmlLogType : log83
+scxml_ScxmlOnentryType "0..9999" --* "1..1" scxml_ScxmlParallelType : onentry263
+scxml_ScxmlOnentryType "0..9999" --* "1..1" scxml_ScxmlStateType : onentry308
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlOnentryType : onentry36
+scxml_ScxmlFinalType "1..1" *-- "0..9999" scxml_ScxmlOnentryType : onentry89
+scxml_ScxmlOnexitType "0..9999" --* "1..1" scxml_ScxmlParallelType : onexit266
+scxml_ScxmlOnexitType "0..9999" --* "1..1" scxml_ScxmlStateType : onexit311
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlOnexitType : onexit38
+scxml_ScxmlFinalType "1..1" *-- "0..9999" scxml_ScxmlOnexitType : onexit92
+scxml_ScxmlParallelType "0..9999" --* "1..1" scxml_ScxmlParallelType : parallel276
+scxml_ScxmlParallelType "0..9999" --* "1..1" scxml_ScxmlScxmlType : parallel290
+scxml_ScxmlParallelType "0..9999" --* "1..1" scxml_ScxmlStateType : parallel323
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlParallelType : parallel40
+scxml_ScxmlInvokeType "1..1" *-- "0..9999" scxml_ScxmlParamType : param209
+scxml_ScxmlParamType "0..9999" --* "1..1" scxml_ScxmlSendType : param305
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlParamType : param42
+scxml_ScxmlDonedataType "1..1" *-- "0..9999" scxml_ScxmlParamType : param62
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise1152
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise2179
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise_125
+scxml_ScxmlOnentryType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise_215
+scxml_ScxmlOnexitType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise_239
+scxml_ScxmlRaiseType "0..9999" --* "1..1" scxml_ScxmlTransitionType : raise_338
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise_44
+scxml_ScxmlFinalizeType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise_65
+scxml_ScxmlForeachType "1..1" *-- "0..9999" scxml_ScxmlRaiseType : raise_98
+scxml_ScxmlForeachType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script110
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script1164
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script137
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script2191
+scxml_ScxmlOnentryType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script227
+scxml_ScxmlOnexitType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script251
+scxml_ScxmlScriptType "0..9999" --* "1..1" scxml_ScxmlScxmlType : script299
+scxml_ScxmlScriptType "0..9999" --* "1..1" scxml_ScxmlTransitionType : script350
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlScriptType : script46
+scxml_ScxmlFinalizeType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script77
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlScxmlType : scxml48
+scxml_ScxmlForeachType "1..1" *-- "0..9999" scxml_ScxmlSendType : send107
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlSendType : send1161
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlSendType : send134
+scxml_ScxmlIfType "1..1" *-- "0..9999" scxml_ScxmlSendType : send2188
+scxml_ScxmlOnentryType "1..1" *-- "0..9999" scxml_ScxmlSendType : send224
+scxml_ScxmlOnexitType "1..1" *-- "0..9999" scxml_ScxmlSendType : send248
+scxml_ScxmlSendType "0..9999" --* "1..1" scxml_ScxmlTransitionType : send347
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlSendType : send50
+scxml_ScxmlFinalizeType "1..1" *-- "0..9999" scxml_ScxmlSendType : send74
+scxml_ScxmlParallelType "1..1" *-- "0..9999" scxml_ScxmlStateType : state272
+scxml_ScxmlScxmlType "1..1" *-- "0..9999" scxml_ScxmlStateType : state287
+scxml_ScxmlStateType "0..9999" --* "1..1" scxml_ScxmlStateType : state321
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlStateType : state52
+scxml_ScxmlHistoryType "1..1" *-- "1..1" scxml_ScxmlTransitionType : transition122
+scxml_ScxmlInitialType "1..1" *-- "1..1" scxml_ScxmlTransitionType : transition203
+scxml_ScxmlParallelType "1..1" *-- "0..9999" scxml_ScxmlTransitionType : transition269
+scxml_ScxmlStateType "1..1" *-- "0..9999" scxml_ScxmlTransitionType : transition314
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlTransitionType : transition54
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_EStringToStringMapEntry : xMLNSPrefixMap0
+scxml_DocumentRoot "1..1" *-- "0..9999" scxml_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

@@ -1,0 +1,73 @@
+@startuml
+class AntScripts_Attribute {
+  + value : str
+}
+abstract class AntScripts_CommentableElement {
+  + comment : str
+}
+abstract class AntScripts_DescribableElement {
+  + description : str
+}
+abstract class AntScripts_NamedElement {
+  + name : str
+}
+class AntScripts_Project {
+}
+class AntScripts_Property {
+  + classpath : str
+  + classpathref : str
+  + environment : str
+  + file : str
+  + location : str
+  + name : str
+  + prefix : str
+  + refid : str
+  + resource : str
+  + url : str
+  + value : str
+}
+class AntScripts_Target {
+  + if_ : str
+  + unless : str
+}
+class AntScripts_Task {
+}
+abstract class AntScripts_TaskElement {
+}
+class AntScripts_TaskParameter {
+}
+class Attribute {
+}
+class CommentableElement {
+}
+class DescribableElement {
+}
+class NamedElement {
+}
+class Property {
+}
+class Target {
+}
+class Task {
+}
+class TaskElement {
+}
+CommentableElement <|-- AntScripts_Project
+CommentableElement <|-- AntScripts_Target
+CommentableElement <|-- AntScripts_TaskElement
+DescribableElement <|-- AntScripts_Project
+DescribableElement <|-- AntScripts_Target
+NamedElement <|-- AntScripts_Attribute
+NamedElement <|-- AntScripts_Project
+NamedElement <|-- AntScripts_Target
+NamedElement <|-- AntScripts_TaskElement
+TaskElement <|-- AntScripts_Task
+TaskElement <|-- AntScripts_TaskParameter
+AntScripts_TaskElement "1..1" *-- "0..9999" Attribute : attributes10
+AntScripts_Project "1..1" -- "0..1" Target : defaultTarget3
+AntScripts_Target "1..1" -- "0..9999" Target : depends7
+AntScripts_TaskElement "1..1" *-- "0..9999" TaskElement : elements11
+AntScripts_Project "1..1" *-- "0..9999" Property : properties0
+AntScripts_Project "1..1" *-- "0..9999" Target : targets1
+AntScripts_Target "1..1" *-- "0..9999" Task : tasks6
+@enduml

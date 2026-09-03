@@ -1,0 +1,39 @@
+@startuml
+class RModelElement {
+}
+class rdbmsMM_Column {
+  + type : str
+}
+class rdbmsMM_ForeignKey {
+}
+class rdbmsMM_Key {
+}
+abstract class rdbmsMM_RModelElement {
+  + kind : str
+  + name : str
+}
+class rdbmsMM_Schema {
+}
+class rdbmsMM_Table {
+}
+RModelElement <|-- rdbmsMM_Column
+RModelElement <|-- rdbmsMM_ForeignKey
+RModelElement <|-- rdbmsMM_Key
+RModelElement <|-- rdbmsMM_Schema
+RModelElement <|-- rdbmsMM_Table
+rdbmsMM_Column "0..9999" -- "1..1" rdbmsMM_ForeignKey : column10
+rdbmsMM_Column "0..9999" -- "1..1" rdbmsMM_Key : column14
+rdbmsMM_Column "0..9999" --* "1..1" rdbmsMM_Table : column22
+rdbmsMM_ForeignKey "0..9999" -- "1..1" rdbmsMM_Table : foreignKey27
+rdbmsMM_Column "1..1" -- "1..9999" rdbmsMM_ForeignKey : foreignKey3
+rdbmsMM_Column "1..1" -- "1..9999" rdbmsMM_Key : key1
+rdbmsMM_Key "0..9999" --* "1..1" rdbmsMM_Table : key24
+rdbmsMM_Column "1..1" -- "1..1" rdbmsMM_Table : owner0
+rdbmsMM_Key "1..1" -- "1..1" rdbmsMM_Table : owner12
+rdbmsMM_ForeignKey "1..1" -- "1..1" rdbmsMM_Table : owner8
+rdbmsMM_ForeignKey "1..9999" -- "1..1" rdbmsMM_Key : referedBy17
+rdbmsMM_ForeignKey "1..1" -- "1..1" rdbmsMM_Key : refersTo6
+rdbmsMM_Schema "1..1" -- "1..1" rdbmsMM_Table : schema21
+rdbmsMM_ForeignKey "1..1" -- "1..1" rdbmsMM_Schema : schema5
+rdbmsMM_Schema "1..1" *-- "0..9999" rdbmsMM_Table : tables19
+@enduml

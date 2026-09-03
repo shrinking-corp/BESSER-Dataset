@@ -1,0 +1,46 @@
+@startuml
+abstract class Algorithm {
+  + TimeBetweenFloors : str
+}
+class Building {
+  + Controller : Controller
+  + ElevatorBays : str
+}
+abstract class Button {
+  + Clicked : str
+  + FloorNumber : int
+  + IsOn : bool
+}
+class Controller {
+}
+enum Direction {
+}
+class Elevator {
+  + ArrivedAtFloor : str
+  + CurrentFloor : int
+  + CurrentMovement : str
+  + ElevatorBayNumber : int
+  + ElevatorNumber : int
+  + FloorButtons : str
+}
+class ElevatorBay {
+  + BayNumber : int
+  + Elevators : str
+  + UpDownButtons : str
+}
+class FloorButton {
+  + Elevator : Elevator
+}
+class UpDownButton {
+  + Direction : Direction
+  + ElevatorBay : ElevatorBay
+}
+class object {
+}
+Building "0..1" -- "0..1" Controller : Building_Controller
+Building "1..1" -- "1..9999" ElevatorBay : Building_ElevatorBay
+Elevator "1..9999" -- "1..1" ElevatorBay : ElevatorBay_Elevator
+ElevatorBay "1..1" -- "1..9999" UpDownButton : ElevatorBay_UpDownButton
+Button "0..1" -- "0..1" Elevator : Elevator_Button
+Elevator "1..1" -- "1..9999" FloorButton : Elevator_FloorButton
+@enduml

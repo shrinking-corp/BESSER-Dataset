@@ -1,0 +1,15 @@
+@startuml
+class Library_Book {
+  + title : str
+}
+class Library_Library {
+  + name : str
+}
+class Library_Writer {
+  + name : str
+}
+Library_Book "1..1" -- "0..9999" Library_Writer : author3
+Library_Book "0..9999" --* "1..1" Library_Library : books1
+Library_Book "0..9999" -- "1..1" Library_Writer : books4
+Library_Library "1..1" *-- "0..9999" Library_Writer : writers0
+@enduml

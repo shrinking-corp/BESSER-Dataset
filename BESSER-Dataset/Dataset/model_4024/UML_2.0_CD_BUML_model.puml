@@ -1,0 +1,84 @@
+@startuml
+class DataType {
+}
+class NamedElement {
+}
+class uml2CD_Association {
+  + isDerived : str
+}
+class uml2CD_Class {
+  + active : str
+}
+class uml2CD_Comment {
+  + value : str
+}
+class uml2CD_Constraint {
+  + specification : str
+}
+abstract class uml2CD_DataType {
+}
+class uml2CD_Enumeration {
+}
+class uml2CD_EnumerationLiteral {
+}
+class uml2CD_Generalization {
+  + isSubstitutable : str
+}
+class uml2CD_GeneralizationSet {
+  + isCovering : str
+  + isDisjoint : str
+}
+abstract class uml2CD_NamedElement {
+  + name : str
+}
+class uml2CD_Operation {
+  + body : str
+  + isQuery : str
+  + visibility : str
+}
+class uml2CD_Package {
+}
+class uml2CD_Parameter {
+  + defaultValue : str
+  + kind : str
+}
+class uml2CD_PrimitiveType {
+}
+class uml2CD_Property {
+  + aggregation : str
+  + isDerived : str
+  + lower : str
+  + upper : str
+}
+class uml2CD_UMLModel {
+}
+DataType <|-- uml2CD_Enumeration
+DataType <|-- uml2CD_PrimitiveType
+NamedElement <|-- uml2CD_Association
+NamedElement <|-- uml2CD_Class
+NamedElement <|-- uml2CD_DataType
+NamedElement <|-- uml2CD_EnumerationLiteral
+NamedElement <|-- uml2CD_Operation
+NamedElement <|-- uml2CD_Package
+NamedElement <|-- uml2CD_Property
+uml2CD_Comment "0..1" --* "1..1" uml2CD_NamedElement : comments0
+uml2CD_Constraint "0..1" --* "1..1" uml2CD_NamedElement : constraints1
+uml2CD_Enumeration "0..1" -- "1..1" uml2CD_Parameter : enumType23
+uml2CD_Class "1..1" -- "1..1" uml2CD_Generalization : general15
+uml2CD_Generalization "1..1" -- "0..9999" uml2CD_GeneralizationSet : generalizationSet21
+uml2CD_Association "1..1" -- "1..9999" uml2CD_Property : memberEnd35
+uml2CD_Package "1..1" *-- "0..9999" uml2CD_Package : nestedPackage4
+uml2CD_Class "1..1" *-- "0..9999" uml2CD_Property : ownedAttribute33
+uml2CD_Association "1..1" *-- "0..9999" uml2CD_Property : ownedEnd38
+uml2CD_Enumeration "1..1" *-- "0..9999" uml2CD_EnumerationLiteral : ownedLiteral41
+uml2CD_Class "1..1" *-- "0..9999" uml2CD_Operation : ownedOperation30
+uml2CD_Association "0..9999" --* "1..1" uml2CD_Package : packagedAssoc9
+uml2CD_Class "0..9999" --* "1..1" uml2CD_Package : packagedClass5
+uml2CD_Enumeration "0..9999" --* "1..1" uml2CD_Package : packagedEnum7
+uml2CD_Generalization "0..9999" --* "1..1" uml2CD_Package : packagedGeneralizations11
+uml2CD_Package "1..1" *-- "0..9999" uml2CD_PrimitiveType : packagedPrimitive13
+uml2CD_Package "0..9999" --* "1..1" uml2CD_UMLModel : packages43
+uml2CD_Parameter "1..1" -- "0..1" uml2CD_PrimitiveType : primitiveType25
+uml2CD_Operation "1..1" -- "0..9999" uml2CD_Operation : redefinedOperation29
+uml2CD_Class "1..1" -- "1..1" uml2CD_Generalization : specific18
+@enduml

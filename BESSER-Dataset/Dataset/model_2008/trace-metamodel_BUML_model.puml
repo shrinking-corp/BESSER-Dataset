@@ -1,0 +1,54 @@
+@startuml
+enum ParamterKindEnum {
+  IN
+  INOUT
+  OUT
+  RETURN
+}
+class Step {
+}
+class Value {
+}
+class trace_BigStep {
+}
+class trace_LiteralValue {
+}
+class trace_ModelState {
+}
+class trace_ObjectState {
+}
+class trace_ParameterValue {
+  + DirectionKind : str
+}
+class trace_RefValue {
+}
+class trace_SmallStep {
+}
+abstract class trace_Step {
+}
+class trace_Trace {
+}
+class trace_TracedObject {
+}
+abstract class trace_Value {
+}
+Step <|-- trace_BigStep
+Step <|-- trace_SmallStep
+Value <|-- trace_LiteralValue
+Value <|-- trace_RefValue
+trace_BigStep "1..1" *-- "0..9999" trace_Step : children24
+trace_ModelState "0..9999" --* "1..1" trace_Trace : modelstate1
+trace_RefValue "1..1" -- "0..1" trace_TracedObject : objectstate19
+trace_ModelState "1..1" -- "0..9999" trace_ObjectState : objectstates21
+trace_ObjectState "1..9999" -- "1..1" trace_TracedObject : objectstates25
+trace_ObjectState "0..9999" --* "1..1" trace_Trace : objectstates3
+trace_ParameterValue "0..9999" --* "1..1" trace_Step : parametervalue12
+trace_BigStep "0..1" -- "1..1" trace_Step : parent14
+trace_ModelState "0..1" -- "1..1" trace_Step : state9
+trace_Step "0..9999" --* "1..1" trace_Trace : steps0
+trace_ObjectState "1..1" -- "1..1" trace_TracedObject : tracedobject18
+trace_Trace "1..1" *-- "0..9999" trace_TracedObject : tracedobject5
+trace_ObjectState "1..1" *-- "0..9999" trace_Value : value15
+trace_ParameterValue "1..1" -- "0..9999" trace_Value : value26
+trace_Trace "1..1" *-- "0..9999" trace_Value : values7
+@enduml

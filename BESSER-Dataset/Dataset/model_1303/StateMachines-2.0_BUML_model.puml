@@ -1,0 +1,65 @@
+@startuml
+enum PseudoStateKind {
+  choice
+  deepHistory
+  entryPoint
+  exitPoint
+  fork
+  initial
+  join
+  junction
+  shallowHistory
+  terminate
+}
+class State {
+}
+class StateMachines_Behavior {
+}
+class StateMachines_ConnectionPointReference {
+}
+class StateMachines_FinalState {
+}
+class StateMachines_Pseudostate {
+  + kind : str
+}
+class StateMachines_Region {
+}
+class StateMachines_State {
+}
+class StateMachines_StateMachine {
+}
+class StateMachines_Transition {
+  + kind : str
+}
+class StateMachines_Trigger {
+}
+class StateMachines_Vertex {
+}
+enum TransitionKind {
+  external
+  internal
+  local
+}
+class Vertex {
+}
+State <|-- StateMachines_FinalState
+Vertex <|-- StateMachines_ConnectionPointReference
+Vertex <|-- StateMachines_Pseudostate
+Vertex <|-- StateMachines_State
+StateMachines_ConnectionPointReference "0..9999" --* "1..1" StateMachines_State : connection25
+StateMachines_Pseudostate "0..9999" --* "1..1" StateMachines_State : connectionPoint15
+StateMachines_State "1..1" *-- "0..9999" StateMachines_Trigger : deferrableTrigger27
+StateMachines_Behavior "0..1" --* "1..1" StateMachines_State : doActivity22
+StateMachines_Behavior "0..1" --* "1..1" StateMachines_State : entry17
+StateMachines_ConnectionPointReference "1..1" -- "0..9999" StateMachines_Pseudostate : entry33
+StateMachines_Behavior "0..1" --* "1..1" StateMachines_State : exit19
+StateMachines_ConnectionPointReference "1..1" -- "0..9999" StateMachines_Pseudostate : exit36
+StateMachines_Transition "0..9999" -- "1..1" StateMachines_Vertex : incoming8
+StateMachines_Transition "0..9999" -- "1..1" StateMachines_Vertex : outgoing5
+StateMachines_Region "1..9999" --* "1..1" StateMachines_StateMachine : region0
+StateMachines_Region "0..9999" --* "1..1" StateMachines_State : region13
+StateMachines_State "1..1" -- "0..1" StateMachines_StateMachine : submachine30
+StateMachines_Region "1..1" -- "0..9999" StateMachines_Vertex : subvertex1
+StateMachines_Region "1..1" -- "0..9999" StateMachines_Transition : transition3
+StateMachines_Transition "1..1" -- "0..9999" StateMachines_Trigger : trigger11
+@enduml

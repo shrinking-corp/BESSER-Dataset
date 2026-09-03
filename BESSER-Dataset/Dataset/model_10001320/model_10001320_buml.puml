@@ -1,0 +1,64 @@
+@startuml
+class Agenda {
+}
+class Cid {
+  + Codigo : str
+  + Descricao : str
+  + Id : int
+}
+class Consulta {
+  + DataHora : str
+  + MedicoId : Funcionario
+  + PacienteId : Paciente
+  + Queixas : str
+}
+class ConsultaCid {
+  + CidId : int
+  + ConsultaId : int
+}
+class ConsultaExame {
+  + Entregue : bool
+}
+class ConsultaMedicamento {
+  + MedicamentoId : Medicamento
+  + Posologia : str
+}
+class Especialidade {
+  + Descricao : str
+  + Id : int
+}
+class Exame {
+  + Codigo : str
+  + Descricao : str
+  + Id : int
+}
+class Funcionario {
+  + Id : int
+  + Login : str
+  + Nome : str
+  + Perfil : int
+  + Senha : str
+}
+class Medicamento {
+  + Fabricante : str
+  + Id : int
+  + NomeComercial : str
+  + NomeGenerico : str
+}
+class Paciente {
+  + CPF : str
+  + DataNascimento : str
+  + Id : int
+  + Nome : str
+  + NomeMae : str
+}
+Agenda "1..9999" -- "1..1" Especialidade : Agenda_Especialidade
+Agenda "0..1" -- "1..1" Funcionario : Agenda_Funcionario
+Cid "0..1" -- "0..1" ConsultaCid : Cid_ConsultaCid
+Consulta "0..1" -- "0..1" ConsultaMedicamento : ConsultaMedicamento_Consulta
+ConsultaMedicamento "0..1" -- "0..1" Medicamento : ConsultaMedicamento_Medicamento
+Consulta "0..9999" -- "0..1" ConsultaCid : Consulta_ConsultaCid
+Consulta "0..1" -- "0..1" ConsultaExame : Consulta_ConsultaExame
+ConsultaExame "0..1" -- "0..1" Exame : Exame_ConsultaExame
+Consulta "0..9999" -- "0..1" Paciente : Paciente_Consulta
+@enduml

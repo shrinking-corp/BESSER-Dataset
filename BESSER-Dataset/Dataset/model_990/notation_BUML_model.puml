@@ -1,0 +1,61 @@
+@startuml
+class BendPoint {
+}
+class DiagramElement {
+}
+class Identifier {
+}
+class Node {
+}
+class notation_AbsoluteBendPoint {
+  + x : int
+  + y : int
+}
+class notation_Anchor {
+  + x : int
+  + y : int
+}
+abstract class notation_BendPoint {
+}
+abstract class notation_DiagramElement {
+  + persistent : bool
+  + visible : bool
+}
+class notation_EObject {
+}
+class notation_Edge {
+}
+class notation_HierarchicalNode {
+}
+class notation_Node {
+  + height : int
+  + width : int
+  + x : int
+  + y : int
+}
+class notation_RelativeBendPoint {
+  + sourceX : int
+  + sourceY : int
+  + targetX : int
+  + targetY : int
+}
+BendPoint <|-- notation_AbsoluteBendPoint
+BendPoint <|-- notation_RelativeBendPoint
+DiagramElement <|-- notation_Edge
+DiagramElement <|-- notation_Node
+Identifier <|-- notation_DiagramElement
+Node <|-- notation_HierarchicalNode
+notation_BendPoint "0..9999" --* "1..1" notation_Edge : bendPoints14
+notation_BendPoint "1..1" -- "1..1" notation_Edge : edge20
+notation_Edge "0..9999" --* "1..1" notation_HierarchicalNode : edges17
+notation_Edge "0..9999" -- "1..1" notation_Node : incoming2
+notation_DiagramElement "1..1" -- "0..1" notation_EObject : model0
+notation_HierarchicalNode "1..1" *-- "0..9999" notation_Node : nodes15
+notation_Edge "0..9999" -- "1..1" notation_Node : outgoing1
+notation_HierarchicalNode "0..1" -- "1..1" notation_Node : parent4
+notation_Edge "1..1" -- "0..1" notation_HierarchicalNode : parent8
+notation_Edge "1..1" -- "1..1" notation_Node : source5
+notation_Anchor "0..1" --* "1..1" notation_Edge : sourceAnchor10
+notation_Edge "1..1" -- "1..1" notation_Node : target6
+notation_Anchor "0..1" --* "1..1" notation_Edge : targetAnchor11
+@enduml

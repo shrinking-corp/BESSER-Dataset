@@ -1,0 +1,53 @@
+@startuml
+class BooleanValue {
+  + value : bool
+}
+class Cell {
+  + formula : str
+}
+class ColOrRowElement {
+  + hidden : bool
+  + span : int
+}
+class Column {
+}
+class Data {
+}
+class ErrorValue {
+}
+class NumberValue {
+  + value : float
+}
+class Row {
+}
+class StringValue {
+  + value : str
+}
+class Table {
+}
+class TableElement {
+  + index : int
+}
+class ValueType {
+}
+class Workbook {
+}
+class Worksheet {
+  + name : str
+}
+ColOrRowElement <|-- Column
+ColOrRowElement <|-- Row
+TableElement <|-- Cell
+TableElement <|-- ColOrRowElement
+ValueType <|-- BooleanValue
+ValueType <|-- ErrorValue
+ValueType <|-- NumberValue
+ValueType <|-- StringValue
+Cell "1..9999" --* "1..1" Row : cells7
+Column "1..9999" --* "1..1" Table : columns3
+Cell "1..1" *-- "0..9999" Data : data9
+Row "1..9999" --* "1..1" Table : rows5
+Table "0..1" --* "1..1" Worksheet : table1
+Data "1..1" *-- "1..1" ValueType : value11
+Workbook "1..1" *-- "1..9999" Worksheet : worksheets0
+@enduml

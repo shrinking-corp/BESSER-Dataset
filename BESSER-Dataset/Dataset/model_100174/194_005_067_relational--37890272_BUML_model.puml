@@ -1,0 +1,198 @@
+@startuml
+class ColumnSet {
+}
+enum DirectionKind {
+  IN
+  INOUT
+  OUT
+  RETURN
+  UNKNOWN
+}
+enum MultiplicityKind {
+  MANY
+  ONE
+  UNSPECIFIED
+  ZERO_TO_MANY
+  ZERO_TO_ONE
+}
+enum NullableType {
+  NO_NULLS
+  NULLABLE
+  NULLABLE_UNKNOWN
+}
+enum ProcedureUpdateCount {
+  AUTO
+  MULTIPLE
+  ONE
+  ZERO
+}
+class RelationalEntity {
+}
+class Relationship {
+}
+enum SearchabilityType {
+  ALL_EXCEPT_LIKE
+  LIKE_ONLY
+  SEARCHABLE
+  UNSEARCHABLE
+}
+class Table {
+}
+class UniqueKey {
+}
+class relational_AccessPattern {
+}
+class relational_BaseTable {
+}
+class relational_Catalog {
+}
+class relational_Column {
+  + autoIncremented : bool
+  + caseSensitive : bool
+  + characterSetName : str
+  + collationName : str
+  + currency : bool
+  + defaultValue : str
+  + distinctValueCount : int
+  + fixedLength : bool
+  + format : str
+  + length : int
+  + maximumValue : str
+  + minimumValue : str
+  + nativeType : str
+  + nullValueCount : int
+  + nullable : str
+  + precision : int
+  + radix : int
+  + scale : int
+  + searchability : str
+  + selectable : bool
+  + signed : bool
+  + updateable : bool
+}
+abstract class relational_ColumnSet {
+}
+class relational_EObject {
+}
+class relational_ForeignKey {
+  + foreignKeyMultiplicity : str
+  + primaryKeyMultiplicity : str
+}
+class relational_Index {
+  + autoUpdate : bool
+  + filterCondition : str
+  + nullable : bool
+  + unique : bool
+}
+class relational_LogicalRelationship {
+}
+class relational_LogicalRelationshipEnd {
+  + multiplicity : str
+}
+class relational_PrimaryKey {
+}
+class relational_Procedure {
+  + function : bool
+  + updateCount : str
+}
+class relational_ProcedureParameter {
+  + defaultValue : str
+  + direction : str
+  + length : int
+  + nativeType : str
+  + nullable : str
+  + precision : int
+  + radix : int
+  + scale : int
+}
+class relational_ProcedureResult {
+}
+abstract class relational_RelationalEntity {
+  + name : str
+  + nameInSource : str
+}
+abstract class relational_Relationship {
+}
+class relational_Schema {
+}
+abstract class relational_Table {
+  + cardinality : int
+  + materialized : bool
+  + supportsUpdate : bool
+  + system : bool
+}
+class relational_UniqueConstraint {
+}
+abstract class relational_UniqueKey {
+  + getTable() : str
+}
+class relational_View {
+}
+ColumnSet <|-- relational_ProcedureResult
+ColumnSet <|-- relational_Table
+RelationalEntity <|-- relational_AccessPattern
+RelationalEntity <|-- relational_Catalog
+RelationalEntity <|-- relational_Column
+RelationalEntity <|-- relational_ColumnSet
+RelationalEntity <|-- relational_Index
+RelationalEntity <|-- relational_LogicalRelationshipEnd
+RelationalEntity <|-- relational_Procedure
+RelationalEntity <|-- relational_ProcedureParameter
+RelationalEntity <|-- relational_Relationship
+RelationalEntity <|-- relational_Schema
+RelationalEntity <|-- relational_UniqueKey
+Relationship <|-- relational_ForeignKey
+Relationship <|-- relational_LogicalRelationship
+Table <|-- relational_BaseTable
+Table <|-- relational_View
+UniqueKey <|-- relational_PrimaryKey
+UniqueKey <|-- relational_UniqueConstraint
+relational_AccessPattern "0..9999" --* "1..1" relational_Table : accessPatterns1
+relational_AccessPattern "0..9999" -- "1..1" relational_Column : accessPatterns11
+relational_Catalog "0..1" -- "1..1" relational_Schema : catalog18
+relational_Catalog "0..1" -- "1..1" relational_Table : catalog2
+relational_Catalog "0..1" -- "1..1" relational_Procedure : catalog56
+relational_Catalog "0..1" -- "1..1" relational_Index : catalog66
+relational_Catalog "0..1" -- "1..1" relational_LogicalRelationship : catalog80
+relational_Column "1..9999" -- "1..1" relational_ForeignKey : columns28
+relational_Column "1..9999" -- "1..1" relational_UniqueKey : columns35
+relational_Column "1..9999" -- "1..1" relational_Index : columns63
+relational_AccessPattern "1..1" -- "1..9999" relational_Column : columns75
+relational_Column "1..9999" --* "1..1" relational_ColumnSet : columns99
+relational_LogicalRelationship "1..1" *-- "2..9999" relational_LogicalRelationshipEnd : ends85
+relational_ForeignKey "0..9999" -- "1..1" relational_UniqueKey : foreignKeys37
+relational_Column "1..1" -- "0..9999" relational_ForeignKey : foreignKeys9
+relational_BaseTable "1..1" *-- "0..9999" relational_ForeignKey : foreignKeys92
+relational_Index "0..9999" --* "1..1" relational_Schema : indexes22
+relational_Catalog "1..1" *-- "0..9999" relational_Index : indexes44
+relational_Column "1..1" -- "0..9999" relational_Index : indexes7
+relational_LogicalRelationship "0..9999" --* "1..1" relational_Schema : logicalRelationships25
+relational_LogicalRelationshipEnd "0..9999" -- "1..1" relational_Table : logicalRelationships4
+relational_Catalog "1..1" *-- "0..9999" relational_LogicalRelationship : logicalRelationships50
+relational_Column "1..1" -- "0..1" relational_ColumnSet : owner14
+relational_Procedure "1..1" *-- "0..9999" relational_ProcedureParameter : parameters55
+relational_BaseTable "1..1" *-- "0..1" relational_PrimaryKey : primaryKey95
+relational_Procedure "0..1" -- "1..1" relational_ProcedureResult : procedure101
+relational_Procedure "0..1" -- "1..1" relational_ProcedureParameter : procedure69
+relational_Procedure "0..9999" --* "1..1" relational_Schema : procedures20
+relational_Catalog "1..1" *-- "0..9999" relational_Procedure : procedures41
+relational_LogicalRelationship "1..1" -- "1..1" relational_LogicalRelationshipEnd : relationship90
+relational_Procedure "1..1" *-- "0..1" relational_ProcedureResult : result59
+relational_Schema "0..1" -- "1..1" relational_Table : schema0
+relational_Procedure "1..1" -- "0..1" relational_Schema : schema53
+relational_Index "1..1" -- "0..1" relational_Schema : schema61
+relational_LogicalRelationship "1..1" -- "0..1" relational_Schema : schema82
+relational_Catalog "1..1" *-- "0..9999" relational_Schema : schemas39
+relational_BaseTable "0..1" -- "1..1" relational_PrimaryKey : table27
+relational_BaseTable "0..1" -- "1..1" relational_ForeignKey : table32
+relational_BaseTable "0..1" -- "1..1" relational_UniqueConstraint : table73
+relational_AccessPattern "1..1" -- "0..1" relational_Table : table77
+relational_LogicalRelationshipEnd "1..1" -- "1..1" relational_Table : table87
+relational_Schema "1..1" *-- "0..9999" relational_Table : tables17
+relational_Catalog "1..1" *-- "0..9999" relational_Table : tables47
+relational_Column "1..1" -- "1..1" relational_EObject : type16
+relational_EObject "1..1" -- "1..1" relational_ProcedureParameter : type71
+relational_BaseTable "1..1" *-- "0..9999" relational_UniqueConstraint : uniqueConstraints97
+relational_ForeignKey "1..1" -- "1..1" relational_UniqueKey : uniqueKey29
+relational_Column "1..1" -- "0..9999" relational_UniqueKey : uniqueKeys6
+@enduml

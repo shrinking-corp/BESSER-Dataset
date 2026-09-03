@@ -1,0 +1,99 @@
+@startuml
+class AbstractAction {
+}
+class AbstractBehavior {
+}
+class AbstractNamedElement {
+}
+class ActivityEdge {
+}
+class ActivityNode {
+}
+class ModelElement {
+}
+class ObjectNode {
+}
+enum ObjectNodeKind {
+  NoBuffer
+  Overwrite
+  Unspecified
+}
+enum ObjectNodeOrderingKind {
+  FIFO
+  LIFO
+  ordered
+  unordered
+}
+class Pin {
+}
+class TraceableElement {
+}
+abstract class activity_AbstractAction {
+}
+abstract class activity_AbstractActivity {
+  + isReadOnly : bool
+  + isSingleExecution : bool
+}
+class activity_AbstractBehavior {
+}
+abstract class activity_AcceptEventAction {
+  + isUnmarshall : bool
+}
+abstract class activity_ActivityEdge {
+  + kindOfRate : str
+}
+abstract class activity_ActivityNode {
+}
+abstract class activity_ActivityPartition {
+  + isDimension : bool
+  + isExternal : bool
+}
+class activity_IState {
+}
+abstract class activity_InputPin {
+}
+abstract class activity_ObjectFlow {
+  + isMulticast : bool
+  + isMultireceive : bool
+}
+abstract class activity_ObjectNode {
+  + isControlType : bool
+  + kindOfNode : str
+  + ordering : str
+}
+abstract class activity_OutputPin {
+}
+abstract class activity_Pin {
+  + isControl : bool
+}
+class activity_ValueSpecification {
+}
+AbstractAction <|-- activity_AcceptEventAction
+AbstractBehavior <|-- activity_AbstractActivity
+AbstractNamedElement <|-- activity_AbstractAction
+AbstractNamedElement <|-- activity_ActivityNode
+AbstractNamedElement <|-- activity_ActivityPartition
+AbstractNamedElement <|-- activity_ObjectNode
+ActivityEdge <|-- activity_ObjectFlow
+ActivityNode <|-- activity_AbstractAction
+ActivityNode <|-- activity_ObjectNode
+ModelElement <|-- activity_ActivityEdge
+ModelElement <|-- activity_ActivityPartition
+ObjectNode <|-- activity_Pin
+Pin <|-- activity_InputPin
+Pin <|-- activity_OutputPin
+TraceableElement <|-- activity_AbstractActivity
+activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : guard9
+activity_IState "0..9999" -- "1..1" activity_ObjectNode : inState26
+activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : incoming18
+activity_AbstractAction "1..1" *-- "0..9999" activity_InputPin : inputs21
+activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : outgoing15
+activity_AbstractAction "1..1" *-- "0..9999" activity_OutputPin : outputs22
+activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : probability1
+activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : rate0
+activity_AbstractBehavior "0..1" -- "1..1" activity_ObjectNode : selection28
+activity_ActivityEdge "1..1" -- "1..1" activity_ActivityNode : source6
+activity_ActivityEdge "1..1" -- "1..1" activity_ActivityNode : target4
+activity_ObjectNode "1..1" *-- "0..1" activity_ValueSpecification : upperBound24
+activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : weight12
+@enduml

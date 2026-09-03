@@ -1,0 +1,111 @@
+@startuml
+class ActiveStructureElement {
+}
+class BusinessElement {
+}
+class MotivationElement {
+}
+class Requirement {
+}
+class StrategyElement {
+}
+abstract class archimate_ActiveStructureElement {
+  + name : str
+}
+class archimate_ArchimateDiagram {
+}
+class archimate_Assessment {
+}
+abstract class archimate_BusinessElement {
+  + name : str
+  + refinementType : str
+  + relationType : str
+}
+class archimate_BusinessProcess {
+}
+class archimate_Constraint {
+}
+class archimate_Driver {
+}
+class archimate_Goal {
+}
+class archimate_Meaning {
+}
+abstract class archimate_MotivationElement {
+  + name : str
+  + refinementType : str
+  + relationType : str
+}
+class archimate_Outcome {
+}
+class archimate_Principle {
+}
+class archimate_Requirement {
+}
+class archimate_Resource {
+}
+class archimate_Stakeholder {
+}
+abstract class archimate_StrategyElement {
+  + name : str
+  + refinementType : str
+  + relationType : str
+}
+class archimate_Value {
+}
+enum refinement {
+  AND
+  OR
+}
+enum relationType {
+  association
+  composition
+  influences
+  realization
+  trigger
+}
+ActiveStructureElement <|-- archimate_Stakeholder
+BusinessElement <|-- archimate_BusinessProcess
+MotivationElement <|-- archimate_Assessment
+MotivationElement <|-- archimate_Driver
+MotivationElement <|-- archimate_Goal
+MotivationElement <|-- archimate_Meaning
+MotivationElement <|-- archimate_Outcome
+MotivationElement <|-- archimate_Principle
+MotivationElement <|-- archimate_Requirement
+MotivationElement <|-- archimate_Value
+Requirement <|-- archimate_Constraint
+StrategyElement <|-- archimate_Resource
+archimate_ActiveStructureElement "0..9999" --* "1..1" archimate_ArchimateDiagram : activestructureelement0
+archimate_Assessment "0..9999" -- "1..1" archimate_Driver : assessment31
+archimate_Assessment "0..9999" -- "1..1" archimate_Goal : assessment39
+archimate_ArchimateDiagram "1..1" *-- "0..9999" archimate_BusinessElement : bussinesselement3
+archimate_MotivationElement "0..9999" --* "1..1" archimate_MotivationElement : children20
+archimate_StrategyElement "0..9999" --* "1..1" archimate_StrategyElement : children53
+archimate_BusinessElement "0..9999" --* "1..1" archimate_BusinessElement : children59
+archimate_Assessment "1..1" -- "0..9999" archimate_Driver : driver35
+archimate_Driver "0..9999" -- "1..1" archimate_Goal : driver37
+archimate_Driver "1..1" -- "0..9999" archimate_Goal : goal30
+archimate_Assessment "1..1" -- "0..9999" archimate_Goal : goal33
+archimate_Goal "0..9999" -- "1..1" archimate_Requirement : goal49
+archimate_MotivationElement "0..9999" -- "1..1" archimate_MotivationElement : influences17
+archimate_MotivationElement "0..9999" -- "1..1" archimate_StrategyElement : influences55
+archimate_BusinessElement "1..1" -- "0..9999" archimate_MotivationElement : influences64
+archimate_ActiveStructureElement "0..9999" -- "1..1" archimate_ActiveStructureElement : influences8
+archimate_Meaning "0..9999" -- "1..1" archimate_Stakeholder : meaning13
+archimate_ArchimateDiagram "1..1" *-- "0..9999" archimate_MotivationElement : motivationelement1
+archimate_MotivationElement "0..9999" -- "1..1" archimate_MotivationElement : negativeInfluence23
+archimate_BusinessElement "1..1" -- "0..9999" archimate_MotivationElement : negativeInfluence70
+archimate_Outcome "0..9999" -- "1..1" archimate_Value : outcome28
+archimate_Goal "0..9999" -- "1..1" archimate_Outcome : outcome42
+archimate_Outcome "0..9999" -- "1..1" archimate_Principle : outcome45
+archimate_Outcome "0..9999" -- "1..1" archimate_Requirement : outcome47
+archimate_BusinessElement "1..1" -- "0..9999" archimate_MotivationElement : realizes61
+archimate_Meaning "1..1" -- "0..9999" archimate_Stakeholder : stakeholder25
+archimate_Stakeholder "0..9999" -- "1..1" archimate_Value : stakeholder26
+archimate_ArchimateDiagram "1..1" *-- "0..9999" archimate_StrategyElement : strategyelement5
+archimate_ActiveStructureElement "1..1" -- "0..9999" archimate_MotivationElement : target10
+archimate_BusinessElement "0..1" -- "1..1" archimate_BusinessElement : triggers68
+archimate_Stakeholder "1..1" -- "0..9999" archimate_Value : value14
+archimate_Outcome "1..1" -- "0..9999" archimate_Value : value43
+@enduml

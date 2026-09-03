@@ -1,0 +1,85 @@
+@startuml
+class Ball {
+}
+enum BallType {
+  dot_ball
+  four_runs
+  one_run
+  six_runs
+  three_runs
+  two_runs
+}
+enum ExtraType {
+  Bye
+  LegBye
+  NoBall
+  Wide
+}
+enum HowOut {
+  Bowled
+  Caught
+  Lbw
+  Run_Out
+  Stumped
+}
+class model_Ball {
+  + runValue : int
+  + runs : str
+  + switchEnds : str
+}
+class model_ExtraBall {
+  + extraType : str
+  + isValidBall : str
+}
+class model_Game {
+  + date : date
+  + venue : str
+}
+class model_Innings {
+  + Summary : str
+  + noOvers : int
+  + overCount : str
+  + total : int
+  + wicketsDown : int
+  + bowlBall() : void
+  + newOver(model_bowler : str) : str
+}
+class model_Over {
+  + BALLS_IN_OVER : int
+  + isComplete : bool
+  + runs : int
+  + validBalls : int
+}
+class model_Player {
+  + howOut : str
+  + name : str
+  + noBallsFaced : int
+  + noOversBowled : str
+  + runsScored : int
+}
+class model_Team {
+  + name : str
+}
+class model_WicketBall {
+  + howOut : str
+}
+Ball <|-- model_ExtraBall
+Ball <|-- model_WicketBall
+model_Player "1..1" -- "1..1" model_WicketBall : assists27
+model_Ball "0..9999" --* "1..1" model_Over : balls15
+model_Ball "0..9999" -- "1..1" model_Player : ballsFaced20
+model_Ball "1..1" -- "1..1" model_Player : batsman18
+model_Innings "1..1" -- "1..1" model_Team : battingSide4
+model_Over "1..1" -- "1..1" model_Player : bowler17
+model_Innings "1..1" -- "1..1" model_Team : bowlingSide7
+model_Innings "1..1" -- "1..1" model_Player : facingBat10
+model_Game "1..1" *-- "1..9999" model_Innings : innings0
+model_Innings "1..1" -- "1..1" model_Over : innings16
+model_Innings "1..1" -- "1..1" model_Player : nonFacingBat12
+model_Innings "1..1" *-- "0..9999" model_Over : overs3
+model_Over "0..9999" -- "1..1" model_Player : oversBowled21
+model_Player "1..1" -- "1..1" model_WicketBall : playerOut29
+model_Player "0..9999" --* "1..1" model_Team : players24
+model_Game "1..1" *-- "1..9999" model_Team : team1
+model_Player "1..1" -- "0..1" model_WicketBall : wicketball23
+@enduml

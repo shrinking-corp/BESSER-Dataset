@@ -1,0 +1,81 @@
+@startuml
+class FromAttribute {
+}
+class FromAttributeOwner {
+}
+class ToColumn {
+}
+class umltordbms_Association {
+}
+class umltordbms_AssociationToForeignKey {
+  + name : str
+}
+class umltordbms_Attribute {
+}
+class umltordbms_AttributeToColumn {
+}
+class umltordbms_Class {
+}
+class umltordbms_ClassToTable {
+  + name : str
+}
+class umltordbms_Column {
+}
+class umltordbms_ForeignKey {
+}
+abstract class umltordbms_FromAttribute {
+  + kind : str
+  + name : str
+}
+abstract class umltordbms_FromAttributeOwner {
+}
+class umltordbms_Key {
+}
+class umltordbms_NonLeafAttribute {
+}
+class umltordbms_Package {
+}
+class umltordbms_PackageToSchema {
+  + name : str
+}
+class umltordbms_PrimitiveDataType {
+}
+class umltordbms_PrimitiveToName {
+  + name : str
+  + typeName : str
+}
+class umltordbms_Schema {
+}
+class umltordbms_Table {
+}
+class umltordbms_ToColumn {
+}
+FromAttribute <|-- umltordbms_AttributeToColumn
+FromAttribute <|-- umltordbms_NonLeafAttribute
+FromAttributeOwner <|-- umltordbms_ClassToTable
+FromAttributeOwner <|-- umltordbms_NonLeafAttribute
+ToColumn <|-- umltordbms_AssociationToForeignKey
+ToColumn <|-- umltordbms_AttributeToColumn
+ToColumn <|-- umltordbms_ClassToTable
+umltordbms_Association "0..1" -- "1..1" umltordbms_AssociationToForeignKey : association3
+umltordbms_AssociationToForeignKey "0..9999" --* "1..1" umltordbms_ClassToTable : associationsToForeignKeys8
+umltordbms_Attribute "0..1" -- "1..1" umltordbms_FromAttribute : attribute18
+umltordbms_ClassToTable "0..9999" --* "1..1" umltordbms_PackageToSchema : classesToTables22
+umltordbms_Column "0..1" -- "1..1" umltordbms_ToColumn : column34
+umltordbms_AssociationToForeignKey "1..1" -- "0..1" umltordbms_ForeignKey : foreignKey5
+umltordbms_FromAttribute "0..1" --* "1..1" umltordbms_FromAttributeOwner : fromAttributes20
+umltordbms_AttributeToColumn "0..9999" -- "1..1" umltordbms_FromAttribute : leafs16
+umltordbms_FromAttribute "1..1" -- "0..1" umltordbms_FromAttributeOwner : owner15
+umltordbms_AssociationToForeignKey "1..1" -- "0..1" umltordbms_ClassToTable : owner2
+umltordbms_PackageToSchema "0..1" -- "1..1" umltordbms_PrimitiveToName : owner30
+umltordbms_ClassToTable "1..1" -- "0..1" umltordbms_PackageToSchema : owner7
+umltordbms_ClassToTable "1..1" -- "0..1" umltordbms_Key : primaryKey13
+umltordbms_PrimitiveDataType "1..1" -- "1..1" umltordbms_PrimitiveToName : primitive32
+umltordbms_PackageToSchema "1..1" *-- "0..9999" umltordbms_PrimitiveToName : primitivesToNames25
+umltordbms_AssociationToForeignKey "1..1" -- "0..1" umltordbms_ClassToTable : referenced1
+umltordbms_PackageToSchema "1..1" -- "1..1" umltordbms_Schema : schema28
+umltordbms_ClassToTable "1..1" -- "0..1" umltordbms_Table : table11
+umltordbms_AttributeToColumn "1..1" -- "0..1" umltordbms_PrimitiveToName : type0
+umltordbms_Class "0..1" -- "1..1" umltordbms_ClassToTable : umlClass9
+umltordbms_Package "1..1" -- "1..1" umltordbms_PackageToSchema : umlPackage27
+@enduml

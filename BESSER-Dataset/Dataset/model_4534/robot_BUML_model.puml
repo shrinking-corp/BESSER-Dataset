@@ -1,0 +1,56 @@
+@startuml
+class ExpBool {
+}
+class Instruction {
+}
+class robot_And {
+}
+class robot_Bip {
+}
+abstract class robot_ExpBool {
+}
+class robot_HasTurned {
+}
+class robot_If {
+}
+abstract class robot_Instruction {
+}
+class robot_Move {
+}
+class robot_Not {
+}
+class robot_Obstacle {
+}
+class robot_Program {
+}
+class robot_SetTurnAngle {
+}
+class robot_StopEngine {
+}
+class robot_StopProgram {
+}
+class robot_Turn {
+}
+class robot_While {
+}
+ExpBool <|-- robot_And
+ExpBool <|-- robot_HasTurned
+ExpBool <|-- robot_If
+ExpBool <|-- robot_Not
+ExpBool <|-- robot_Obstacle
+ExpBool <|-- robot_While
+Instruction <|-- robot_Bip
+Instruction <|-- robot_Move
+Instruction <|-- robot_SetTurnAngle
+Instruction <|-- robot_StopEngine
+Instruction <|-- robot_StopProgram
+Instruction <|-- robot_Turn
+robot_ExpBool "1..9999" --* "1..1" robot_While : expbool1
+robot_ExpBool "1..9999" --* "1..1" robot_Not : expbool5
+robot_ExpBool "1..9999" --* "1..1" robot_If : expbool7
+robot_Instruction "1..9999" --* "1..1" robot_Program : instruction0
+robot_Instruction "1..9999" --* "1..1" robot_While : instruction2
+robot_If "1..1" *-- "0..9999" robot_Instruction : instruction9
+robot_And "1..1" *-- "1..9999" robot_ExpBool : left12
+robot_And "1..1" *-- "1..9999" robot_ExpBool : right14
+@enduml

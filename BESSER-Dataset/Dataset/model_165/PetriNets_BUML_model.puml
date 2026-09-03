@@ -1,0 +1,42 @@
+@startuml
+class Arc {
+}
+abstract class PetriNets_Arc {
+  + weight : int
+}
+class PetriNets_ArcPT {
+}
+class PetriNets_ArcTP {
+}
+class PetriNets_PetriNet {
+}
+class PetriNets_Place {
+  + bound : int
+  + itokens : int
+  + tokens() : int
+}
+class PetriNets_Token {
+}
+class PetriNets_Transition {
+  + priority : float
+  + inputs() : str
+  + outputs() : str
+}
+Arc <|-- PetriNets_ArcPT
+Arc <|-- PetriNets_ArcTP
+PetriNets_Arc "0..9999" --* "1..1" PetriNets_PetriNet : arcs3
+PetriNets_Place "1..1" *-- "0..9999" PetriNets_Token : ctokens5
+PetriNets_ArcTP "1..1" -- "1..1" PetriNets_Transition : from_10
+PetriNets_ArcPT "1..1" -- "1..1" PetriNets_Place : from_6
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : inh23
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : ins17
+PetriNets_PetriNet "1..1" -- "1..1" PetriNets_Transition : net15
+PetriNets_PetriNet "1..1" -- "1..1" PetriNets_Place : net4
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : outs20
+PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Place : places0
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : read26
+PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : reset29
+PetriNets_ArcTP "1..1" -- "1..1" PetriNets_Place : to12
+PetriNets_ArcPT "1..1" -- "1..1" PetriNets_Transition : to8
+PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Transition : trans1
+@enduml

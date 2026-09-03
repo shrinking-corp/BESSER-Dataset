@@ -1,0 +1,66 @@
+@startuml
+class RentalObject {
+}
+enum StreetType {
+  Road
+  Street
+}
+class rental_Address {
+  + city : str
+  + number : int
+  + streetName : str
+  + streetType : str
+  + zipCode : str
+}
+class rental_Car {
+  + licensePlate : str
+}
+class rental_Customer {
+  + firstName : str
+  + lastName : str
+  + addLicense(rental_license : str) : void
+  + getDisplayName() : str
+}
+class rental_Device {
+  + height : int
+  + length : int
+  + serialNumber : str
+  + width : int
+}
+class rental_License {
+  + number : int
+  + validityDate : date
+  + isValid() : bool
+}
+class rental_Rental {
+  + endDate : date
+  + startDate : date
+  + nbDaysBooked() : int
+}
+class rental_RentalAgency {
+  + name : str
+  + book(rental_customer : str, rental_from_ : str, rental_rentedObject : str, rental_to : str) : str
+  + isAvailable(rental_from_ : str, rental_rentedObject : str, rental_to : str) : bool
+}
+class rental_RentalObject {
+  + ID : str
+  + available : bool
+  + name : str
+  + rent(rental_customer : str) : str
+}
+RentalObject <|-- rental_Car
+RentalObject <|-- rental_Device
+rental_Customer "0..1" -- "1..1" rental_License : EReference014
+rental_Address "1..1" --* "1..1" rental_RentalAgency : address0
+rental_Address "1..1" --* "1..1" rental_Customer : address6
+rental_Customer "1..1" -- "1..1" rental_Rental : customer16
+rental_Customer "0..9999" --* "1..1" rental_RentalAgency : customers2
+rental_Customer "1..1" *-- "0..9999" rental_License : licenses8
+rental_RentalAgency "1..1" *-- "0..9999" rental_RentalObject : objectsToRent1
+rental_Customer "0..1" -- "1..1" rental_License : owner12
+rental_RentalAgency "1..1" -- "1..1" rental_RentalObject : parentAgency10
+rental_Rental "1..1" -- "1..1" rental_RentalAgency : parentAgency20
+rental_Customer "1..1" -- "1..1" rental_RentalAgency : parentAgency9
+rental_Rental "0..9999" --* "1..1" rental_RentalAgency : rentals4
+rental_Rental "1..1" -- "1..1" rental_RentalObject : rentedObject18
+@enduml

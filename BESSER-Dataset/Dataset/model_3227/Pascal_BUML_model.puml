@@ -1,0 +1,295 @@
+@startuml
+class label_declaration_part {
+}
+class parameterList {
+}
+class pascal_actualParameter {
+}
+class pascal_assignmentStatement {
+}
+class pascal_block {
+}
+class pascal_caseListElement {
+}
+class pascal_caseStatement {
+}
+class pascal_compoundStatement {
+}
+class pascal_conditionalStatement {
+}
+class pascal_constList {
+}
+class pascal_constant {
+  + bool : str
+  + sign : str
+  + string : str
+}
+class pascal_constantChr {
+}
+class pascal_constantDefinition {
+}
+class pascal_constantDefinitionPart {
+}
+class pascal_expression {
+  + relationaloperator : str
+}
+class pascal_factor {
+  + bool : str
+}
+class pascal_fieldList {
+}
+class pascal_fixedPart {
+}
+class pascal_formalParameterList {
+}
+class pascal_formalParameterSection {
+}
+class pascal_functionDeclaration {
+}
+class pascal_functionDesignator {
+}
+class pascal_functionType {
+}
+class pascal_gotoStatement {
+}
+class pascal_identifier {
+  + identifier : str
+}
+class pascal_identifierList {
+}
+class pascal_label {
+}
+class pascal_label_declaration_part {
+}
+class pascal_parameterGroup {
+}
+class pascal_parameterList {
+}
+class pascal_pascal {
+}
+class pascal_pointerType {
+}
+class pascal_procedureAndFunctionDeclarationPart {
+}
+class pascal_procedureDeclaration {
+}
+class pascal_procedureOrFunctionDeclaration {
+}
+class pascal_procedureType {
+}
+class pascal_program {
+}
+class pascal_programHeading {
+}
+class pascal_recordSection {
+}
+class pascal_recordType {
+}
+class pascal_scalarType {
+}
+class pascal_signedFactor {
+}
+class pascal_simpleExpression {
+  + additiveoperator : str
+}
+class pascal_simpleStatement {
+}
+class pascal_simpleType {
+}
+class pascal_statement {
+}
+class pascal_statements {
+}
+class pascal_stringtype {
+}
+class pascal_structuredStatement {
+}
+class pascal_structuredType {
+}
+class pascal_subrangeType {
+}
+class pascal_tag {
+}
+class pascal_term {
+  + multiplicativeoperator : str
+}
+class pascal_type {
+}
+class pascal_typeDefinition {
+}
+class pascal_typeDefinitionPart {
+}
+class pascal_typeIdentifier {
+  + boolean : str
+  + char : str
+  + integer : str
+  + real : str
+  + string : str
+}
+class pascal_unlabelledStatement {
+}
+class pascal_unpackedStructuredType {
+}
+class pascal_unsignedConstant {
+  + string_literal : str
+}
+class pascal_unsignedInteger {
+  + number : str
+}
+class pascal_unsignedNumber {
+  + unsignedReal : str
+}
+class pascal_usesUnitsPart {
+}
+class pascal_variable {
+}
+class pascal_variableDeclaration {
+}
+class pascal_variableDeclarationPart {
+}
+class pascal_variant {
+}
+class pascal_variantPart {
+}
+class statement {
+}
+class variant {
+}
+label_declaration_part <|-- pascal_label
+parameterList <|-- pascal_actualParameter
+statement <|-- pascal_label
+variant <|-- pascal_constant
+pascal_actualParameter "1..1" *-- "0..9999" pascal_actualParameter : actualParameter297
+pascal_assignmentStatement "0..1" --* "1..1" pascal_simpleStatement : assignmentStatement244
+pascal_block "0..1" --* "1..1" pascal_procedureDeclaration : block217
+pascal_block "0..1" --* "1..1" pascal_functionDeclaration : block229
+pascal_block "0..1" --* "1..1" pascal_program : block3
+pascal_caseListElement "0..9999" --* "1..1" pascal_caseStatement : caseListElement1321
+pascal_caseListElement "0..1" --* "1..1" pascal_caseStatement : caseListElement319
+pascal_caseStatement "0..1" --* "1..1" pascal_conditionalStatement : caseStatement314
+pascal_block "1..1" *-- "0..1" pascal_compoundStatement : compoundStatement27
+pascal_compoundStatement "0..1" --* "1..1" pascal_structuredStatement : compoundStatement304
+pascal_conditionalStatement "0..1" --* "1..1" pascal_structuredStatement : conditionalStatement307
+pascal_caseListElement "1..1" *-- "0..1" pascal_constList : constList327
+pascal_constList "1..1" *-- "0..9999" pascal_constant : constant1189
+pascal_constant "0..1" --* "1..1" pascal_subrangeType : constant131
+pascal_constList "1..1" *-- "0..1" pascal_constant : constant187
+pascal_constant "0..1" --* "1..1" pascal_subrangeType : constant2134
+pascal_constant "0..1" --* "1..1" pascal_constantDefinition : constant41
+pascal_constant "0..9999" --* "1..1" pascal_constant : constant51
+pascal_constantChr "0..1" --* "1..1" pascal_unsignedConstant : constantChr287
+pascal_constant "1..1" *-- "0..1" pascal_constantChr : constantChr48
+pascal_constantDefinition "0..9999" --* "1..1" pascal_constantDefinitionPart : constantDefinition36
+pascal_block "1..1" *-- "0..9999" pascal_constantDefinitionPart : constantDefinitionParts17
+pascal_expression "0..1" --* "1..1" pascal_variableDeclaration : expression203
+pascal_assignmentStatement "1..1" *-- "0..1" pascal_expression : expression248
+pascal_expression "0..1" --* "1..1" pascal_expression : expression257
+pascal_expression "0..1" --* "1..1" pascal_factor : expression271
+pascal_actualParameter "1..1" *-- "0..1" pascal_expression : expression298
+pascal_caseStatement "1..1" *-- "0..1" pascal_expression : expression316
+pascal_factor "0..1" --* "1..1" pascal_signedFactor : factor269
+pascal_factor "0..1" --* "1..1" pascal_factor : factor277
+pascal_fieldList "0..1" --* "1..1" pascal_recordType : fieldList150
+pascal_constant "1..1" *-- "0..1" pascal_fieldList : fieldList53
+pascal_fieldList "1..1" *-- "0..1" pascal_fixedPart : fixedPart153
+pascal_formalParameterList "0..1" --* "1..1" pascal_procedureType : formalParameterList107
+pascal_formalParameterList "0..1" --* "1..1" pascal_procedureDeclaration : formalParameterList214
+pascal_formalParameterList "0..1" --* "1..1" pascal_functionDeclaration : formalParameterList223
+pascal_formalParameterList "0..1" --* "1..1" pascal_functionType : formalParameterList78
+pascal_formalParameterList "1..1" *-- "0..9999" pascal_formalParameterSection : formalParameterSection284
+pascal_formalParameterList "1..1" *-- "0..1" pascal_formalParameterSection : formalParameterSection82
+pascal_functionDeclaration "0..1" --* "1..1" pascal_procedureOrFunctionDeclaration : functionDeclaration209
+pascal_factor "1..1" *-- "0..1" pascal_functionDesignator : functionDesignator279
+pascal_functionType "0..1" --* "1..1" pascal_typeDefinition : functionType74
+pascal_gotoStatement "0..1" --* "1..1" pascal_simpleStatement : gotoStatement242
+pascal_program "1..1" *-- "0..1" pascal_programHeading : head1
+pascal_identifier "0..1" --* "1..1" pascal_programHeading : identifer5
+pascal_identifier "0..1" --* "1..1" pascal_typeIdentifier : identifier104
+pascal_identifier "0..1" --* "1..1" pascal_stringtype : identifier144
+pascal_identifier "0..1" --* "1..1" pascal_tag : identifier178
+pascal_identifier "0..1" --* "1..1" pascal_procedureDeclaration : identifier211
+pascal_functionDeclaration "1..1" *-- "0..1" pascal_identifier : identifier220
+pascal_identifier "0..1" --* "1..1" pascal_unlabelledStatement : identifier237
+pascal_identifier "0..1" --* "1..1" pascal_variable : identifier251
+pascal_functionDesignator "1..1" *-- "0..1" pascal_identifier : identifier290
+pascal_identifier "0..1" --* "1..1" pascal_label : identifier33
+pascal_constantDefinition "1..1" *-- "0..1" pascal_identifier : identifier38
+pascal_constant "1..1" *-- "0..1" pascal_identifier : identifier45
+pascal_identifier "0..1" --* "1..1" pascal_typeDefinition : identifier69
+pascal_identifier "0..1" --* "1..1" pascal_identifierList : identifier9
+pascal_identifier "0..9999" --* "1..1" pascal_identifierList : identifierList112
+pascal_identifierList "0..1" --* "1..1" pascal_scalarType : identifierList128
+pascal_identifierList "0..1" --* "1..1" pascal_recordSection : identifierList165
+pascal_identifierList "0..1" --* "1..1" pascal_variableDeclaration : identifierList197
+pascal_identifierList "0..1" --* "1..1" pascal_usesUnitsPart : identifierList61
+pascal_identifierList "0..1" --* "1..1" pascal_programHeading : identifierList7
+pascal_identifierList "0..1" --* "1..1" pascal_parameterGroup : identifierList98
+pascal_block "1..1" *-- "0..9999" pascal_label_declaration_part : label15
+pascal_label "1..1" *-- "0..9999" pascal_label : label30
+pascal_gotoStatement "1..1" *-- "0..1" pascal_label : label301
+pascal_formalParameterSection "1..1" *-- "0..9999" pascal_parameterGroup : parameterGroup289
+pascal_formalParameterSection "1..1" *-- "0..9999" pascal_parameterGroup : parameterGroup392
+pascal_formalParameterSection "1..1" *-- "0..9999" pascal_parameterGroup : parameterGroup495
+pascal_formalParameterSection "1..1" *-- "0..1" pascal_parameterGroup : parameterGroup87
+pascal_parameterList "0..1" --* "1..1" pascal_unlabelledStatement : parameterList240
+pascal_functionDesignator "1..1" *-- "0..1" pascal_parameterList : parameterList293
+pascal_pointerType "0..1" --* "1..1" pascal_type : pointerType114
+pascal_block "1..1" *-- "0..9999" pascal_procedureAndFunctionDeclarationPart : procedureAndFunctionDeclarationParts23
+pascal_procedureDeclaration "0..1" --* "1..1" pascal_procedureOrFunctionDeclaration : procedureDeclaration207
+pascal_procedureAndFunctionDeclarationPart "1..1" *-- "0..1" pascal_procedureOrFunctionDeclaration : procedureOrFunctionDeclaration205
+pascal_procedureType "0..1" --* "1..1" pascal_typeDefinition : procedureType76
+pascal_pascal "1..1" *-- "0..9999" pascal_program : program0
+pascal_fixedPart "1..1" *-- "0..9999" pascal_recordSection : recordSection1162
+pascal_fixedPart "1..1" *-- "0..1" pascal_recordSection : recordSection160
+pascal_recordType "0..1" --* "1..1" pascal_unpackedStructuredType : recordType142
+pascal_scalarType "0..1" --* "1..1" pascal_simpleType : scalarType119
+pascal_signedFactor "0..1" --* "1..1" pascal_term : signedFactor264
+pascal_expression "1..1" *-- "0..1" pascal_simpleExpression : simpleExpression254
+pascal_simpleExpression "0..1" --* "1..1" pascal_simpleExpression : simpleExpression262
+pascal_simpleStatement "0..1" --* "1..1" pascal_unlabelledStatement : simpleStatement233
+pascal_simpleType "0..1" --* "1..1" pascal_type : simpleType110
+pascal_statement "0..9999" --* "1..1" pascal_statements : statement311
+pascal_caseListElement "1..1" *-- "0..1" pascal_statement : statement330
+pascal_compoundStatement "1..1" *-- "0..1" pascal_statements : statements309
+pascal_caseStatement "1..1" *-- "0..1" pascal_statements : statements324
+pascal_simpleType "1..1" *-- "0..1" pascal_stringtype : stringtype126
+pascal_structuredStatement "0..1" --* "1..1" pascal_unlabelledStatement : structuredStatement235
+pascal_structuredType "0..1" --* "1..1" pascal_type : structuredType112
+pascal_simpleType "1..1" *-- "0..1" pascal_subrangeType : subrangeType121
+pascal_tag "0..1" --* "1..1" pascal_variantPart : tag171
+pascal_simpleExpression "1..1" *-- "0..1" pascal_term : term259
+pascal_term "0..1" --* "1..1" pascal_term : term267
+pascal_recordSection "1..1" *-- "0..1" pascal_type : type168
+pascal_type "0..1" --* "1..1" pascal_variableDeclaration : type200
+pascal_type "0..1" --* "1..1" pascal_typeDefinition : type72
+pascal_typeDefinition "0..9999" --* "1..1" pascal_typeDefinitionPart : typeDefinition166
+pascal_typeDefinition "0..1" --* "1..1" pascal_typeDefinitionPart : typeDefinition64
+pascal_block "1..1" *-- "0..9999" pascal_typeDefinitionPart : typeDefinitionParts19
+pascal_parameterGroup "1..1" *-- "0..1" pascal_typeIdentifier : typeIdentifier101
+pascal_pointerType "1..1" *-- "0..1" pascal_typeIdentifier : typeIdentifier116
+pascal_tag "1..1" *-- "0..9999" pascal_typeIdentifier : typeIdentifier1184
+pascal_simpleType "1..1" *-- "0..1" pascal_typeIdentifier : typeIdentifier123
+pascal_tag "1..1" *-- "0..1" pascal_typeIdentifier : typeIdentifier181
+pascal_functionDeclaration "1..1" *-- "0..1" pascal_typeIdentifier : typeIdentifier226
+pascal_functionType "1..1" *-- "0..1" pascal_typeIdentifier : typeIdentifier80
+pascal_statement "1..1" *-- "0..1" pascal_unlabelledStatement : unlabelledStatement232
+pascal_structuredType "1..1" *-- "0..9999" pascal_unpackedStructuredType : unpackedStructuredType1139
+pascal_structuredType "1..1" *-- "0..1" pascal_unpackedStructuredType : unpackedStructuredType137
+pascal_factor "1..1" *-- "0..1" pascal_unsignedConstant : unsignedConstant274
+pascal_label "1..1" *-- "0..1" pascal_unsignedInteger : unsignedInteger31
+pascal_constantChr "1..1" *-- "0..1" pascal_unsignedInteger : unsignedInteger55
+pascal_unsignedInteger "0..1" --* "1..1" pascal_unsignedNumber : unsignedInteger58
+pascal_stringtype "1..1" *-- "0..1" pascal_unsignedNumber : unsignedNumber147
+pascal_unsignedConstant "1..1" *-- "0..1" pascal_unsignedNumber : unsignedNumber284
+pascal_constant "1..1" *-- "0..1" pascal_unsignedNumber : unsignedNumber43
+pascal_block "1..1" *-- "0..9999" pascal_usesUnitsPart : usesUnitsParts25
+pascal_assignmentStatement "1..1" *-- "0..1" pascal_variable : variable246
+pascal_factor "1..1" *-- "0..1" pascal_variable : variable281
+pascal_variableDeclaration "0..9999" --* "1..1" pascal_variableDeclarationPart : variableDeclaration1194
+pascal_variableDeclaration "0..1" --* "1..1" pascal_variableDeclarationPart : variableDeclaration192
+pascal_block "1..1" *-- "0..9999" pascal_variableDeclarationPart : variableDeclarationParts21
+pascal_variant "0..9999" --* "1..1" pascal_variantPart : variant1175
+pascal_variant "0..1" --* "1..1" pascal_variantPart : variant173
+pascal_fieldList "1..1" *-- "0..9999" pascal_variantPart : variantPart1157
+pascal_fieldList "1..1" *-- "0..1" pascal_variantPart : variantPart155
+@enduml

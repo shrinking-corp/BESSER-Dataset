@@ -1,0 +1,39 @@
+@startuml
+class GameRound {
+}
+class PlayCard {
+}
+class Player {
+  + bid : int
+  + stack : int
+}
+class PlayerView {
+}
+class PokerTable {
+}
+class PokerTableView {
+}
+class RANK_external {
+}
+class Role_external {
+}
+class SUIT_external {
+}
+class StandardDeck {
+}
+class T {
+}
+abstract class __abstract___BaseDeck {
+}
+PlayCard "52..52" -- "1..1" __abstract___BaseDeck : Deck_Card
+GameRound "0..9999" -- "1..1" PokerTable : Has_had
+PlayCard "2..2" -- "0..1" Player : Pelaaja_Kortti
+Player "2..9999" -- "1..1" PokerTable : PeliPoyta_Pelaaja
+PlayCard "1..1" -- "1..1" RANK_external : PlayCard_RANK
+PlayCard "1..1" -- "1..1" SUIT_external : PlayCard_SUIT
+Player "1..1" -- "1..2" Role_external : Player_Role
+PokerTable "1..1" -- "1..1" PokerTableView : PokerTableView_PokerTable
+Player "1..1" -- "1..1" PokerTable : PokerTable_Player
+PlayCard "0..5" -- "0..1" PokerTable : Table_Card
+PokerTable "1..1" -- "1..1" __abstract___BaseDeck : Table_Deck
+@enduml

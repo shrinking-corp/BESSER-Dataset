@@ -1,0 +1,32 @@
+@startuml
+enum ArcKindType {
+  normal
+  read_arc
+}
+class Noeud {
+}
+class petrinet_Arc {
+  + arcType : str
+  + name : str
+  + weight : int
+}
+class petrinet_Noeud {
+  + name : str
+}
+class petrinet_PetriNet {
+  + name : str
+}
+class petrinet_Place {
+  + marking : int
+}
+class petrinet_Transition {
+  + maxTime : int
+  + minTime : int
+}
+Noeud <|-- petrinet_Place
+Noeud <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_PetriNet : arcs1
+petrinet_Noeud "0..9999" --* "1..1" petrinet_PetriNet : noeuds0
+petrinet_Arc "1..1" -- "0..1" petrinet_Noeud : source3
+petrinet_Arc "1..1" -- "0..1" petrinet_Noeud : target6
+@enduml

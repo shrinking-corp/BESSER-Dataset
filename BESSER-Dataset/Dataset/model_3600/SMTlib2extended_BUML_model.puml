@@ -1,0 +1,165 @@
+@startuml
+class BinaryExpression {
+}
+class CardExpression {
+}
+class ConstExpression {
+}
+class Expression {
+}
+class NAryExpression {
+}
+class NamedElement {
+}
+class SMTlib2extended_AddExpression {
+}
+class SMTlib2extended_AndExpression {
+}
+class SMTlib2extended_BinaryExpression {
+}
+class SMTlib2extended_BitstringExpression {
+  + value : str
+}
+class SMTlib2extended_Bitvector {
+  + width : int
+}
+class SMTlib2extended_BvAndExpression {
+}
+class SMTlib2extended_BvNotExpression {
+}
+class SMTlib2extended_BvOrExpression {
+}
+class SMTlib2extended_BvXorExpression {
+}
+class SMTlib2extended_CardEqExpression {
+}
+class SMTlib2extended_CardExpression {
+  + k : int
+}
+class SMTlib2extended_CardGeExpression {
+}
+class SMTlib2extended_CardGtExpression {
+}
+class SMTlib2extended_CardLeExpression {
+}
+class SMTlib2extended_CardLtExpression {
+}
+class SMTlib2extended_ConcatExpression {
+}
+class SMTlib2extended_ConstBooleanExpression {
+  + value : bool
+}
+abstract class SMTlib2extended_ConstExpression {
+}
+class SMTlib2extended_ConstIntegerExpression {
+  + value : int
+  + width : int
+}
+class SMTlib2extended_DivExpression {
+}
+class SMTlib2extended_EqualsExpression {
+}
+class SMTlib2extended_Expression {
+}
+class SMTlib2extended_ExtractIndexExpression {
+  + end : int
+  + start : int
+}
+class SMTlib2extended_GreaterEqualsExpression {
+}
+class SMTlib2extended_GreaterExpression {
+}
+class SMTlib2extended_ImpliesExpression {
+}
+class SMTlib2extended_Instance {
+}
+class SMTlib2extended_IteExpression {
+}
+class SMTlib2extended_LessEqualsExpression {
+}
+class SMTlib2extended_LessExpression {
+}
+class SMTlib2extended_ModExpression {
+}
+class SMTlib2extended_MulExpression {
+}
+class SMTlib2extended_NAryExpression {
+}
+class SMTlib2extended_NamedElement {
+  + name : str
+}
+class SMTlib2extended_NandExpression {
+}
+class SMTlib2extended_NotExpression {
+}
+class SMTlib2extended_OneHotExpression {
+}
+class SMTlib2extended_OrExpression {
+}
+class SMTlib2extended_Predicate {
+}
+class SMTlib2extended_SubExpression {
+}
+class SMTlib2extended_UnaryExpression {
+}
+class SMTlib2extended_Variable {
+}
+class SMTlib2extended_VariableExpression {
+}
+class UnaryExpression {
+}
+class Variable {
+}
+BinaryExpression <|-- SMTlib2extended_AddExpression
+BinaryExpression <|-- SMTlib2extended_BvAndExpression
+BinaryExpression <|-- SMTlib2extended_BvOrExpression
+BinaryExpression <|-- SMTlib2extended_BvXorExpression
+BinaryExpression <|-- SMTlib2extended_DivExpression
+BinaryExpression <|-- SMTlib2extended_EqualsExpression
+BinaryExpression <|-- SMTlib2extended_GreaterEqualsExpression
+BinaryExpression <|-- SMTlib2extended_GreaterExpression
+BinaryExpression <|-- SMTlib2extended_ImpliesExpression
+BinaryExpression <|-- SMTlib2extended_LessEqualsExpression
+BinaryExpression <|-- SMTlib2extended_LessExpression
+BinaryExpression <|-- SMTlib2extended_ModExpression
+BinaryExpression <|-- SMTlib2extended_MulExpression
+BinaryExpression <|-- SMTlib2extended_NandExpression
+BinaryExpression <|-- SMTlib2extended_SubExpression
+CardExpression <|-- SMTlib2extended_CardEqExpression
+CardExpression <|-- SMTlib2extended_CardGeExpression
+CardExpression <|-- SMTlib2extended_CardGtExpression
+CardExpression <|-- SMTlib2extended_CardLeExpression
+CardExpression <|-- SMTlib2extended_CardLtExpression
+ConstExpression <|-- SMTlib2extended_BitstringExpression
+ConstExpression <|-- SMTlib2extended_ConstBooleanExpression
+ConstExpression <|-- SMTlib2extended_ConstIntegerExpression
+Expression <|-- SMTlib2extended_BinaryExpression
+Expression <|-- SMTlib2extended_CardExpression
+Expression <|-- SMTlib2extended_ConstExpression
+Expression <|-- SMTlib2extended_IteExpression
+Expression <|-- SMTlib2extended_NAryExpression
+Expression <|-- SMTlib2extended_UnaryExpression
+Expression <|-- SMTlib2extended_VariableExpression
+NAryExpression <|-- SMTlib2extended_AndExpression
+NAryExpression <|-- SMTlib2extended_ConcatExpression
+NAryExpression <|-- SMTlib2extended_OrExpression
+NamedElement <|-- SMTlib2extended_Expression
+NamedElement <|-- SMTlib2extended_Variable
+UnaryExpression <|-- SMTlib2extended_BvNotExpression
+UnaryExpression <|-- SMTlib2extended_ExtractIndexExpression
+UnaryExpression <|-- SMTlib2extended_NotExpression
+UnaryExpression <|-- SMTlib2extended_OneHotExpression
+Variable <|-- SMTlib2extended_Bitvector
+Variable <|-- SMTlib2extended_Predicate
+SMTlib2extended_Expression "0..9999" --* "1..1" SMTlib2extended_Instance : assertions1
+SMTlib2extended_Expression "1..1" -- "1..1" SMTlib2extended_IteExpression : condition14
+SMTlib2extended_Expression "1..1" -- "1..1" SMTlib2extended_IteExpression : elseexpr19
+SMTlib2extended_Expression "1..1" -- "1..1" SMTlib2extended_UnaryExpression : expr12
+SMTlib2extended_CardExpression "1..1" -- "0..9999" SMTlib2extended_Expression : expressions22
+SMTlib2extended_Expression "0..9999" -- "1..1" SMTlib2extended_NAryExpression : expressions5
+SMTlib2extended_BinaryExpression "1..1" -- "1..1" SMTlib2extended_Expression : lhs7
+SMTlib2extended_BinaryExpression "1..1" -- "1..1" SMTlib2extended_Expression : rhs9
+SMTlib2extended_Expression "1..1" -- "1..1" SMTlib2extended_IteExpression : thenexpr16
+SMTlib2extended_Variable "1..1" -- "1..1" SMTlib2extended_VariableExpression : variable3
+SMTlib2extended_Instance "1..1" *-- "0..9999" SMTlib2extended_Variable : variables0
+@enduml

@@ -1,0 +1,119 @@
+@startuml
+class AbstractElement {
+}
+class Expression {
+}
+enum Type {
+  Boolean
+  Double
+  INT
+  STRING
+}
+class testintentionsAssistance_AbstractElement {
+}
+class testintentionsAssistance_And {
+}
+class testintentionsAssistance_Boolean {
+  + value : str
+}
+class testintentionsAssistance_Comparison {
+  + op : str
+}
+class testintentionsAssistance_Data {
+}
+class testintentionsAssistance_DomainDeclaration {
+  + name : str
+}
+class testintentionsAssistance_Double {
+  + value : str
+}
+class testintentionsAssistance_Equality {
+  + op : str
+}
+class testintentionsAssistance_Expression {
+}
+class testintentionsAssistance_Function {
+  + methode : str
+}
+class testintentionsAssistance_INT {
+  + value : int
+}
+class testintentionsAssistance_Import {
+  + importedNamespace : str
+}
+class testintentionsAssistance_Inst {
+}
+class testintentionsAssistance_Minus {
+}
+class testintentionsAssistance_Model {
+}
+class testintentionsAssistance_MulOrDiv {
+  + op : str
+}
+class testintentionsAssistance_Not {
+}
+class testintentionsAssistance_Or {
+}
+class testintentionsAssistance_OutVariable {
+  + name : str
+  + type : str
+}
+class testintentionsAssistance_Plus {
+}
+class testintentionsAssistance_STRING {
+  + value : str
+}
+class testintentionsAssistance_TestIntention {
+  + description : str
+}
+class testintentionsAssistance_Variable {
+  + name : str
+  + type : str
+}
+class testintentionsAssistance_VariableRef {
+}
+AbstractElement <|-- testintentionsAssistance_Data
+AbstractElement <|-- testintentionsAssistance_DomainDeclaration
+AbstractElement <|-- testintentionsAssistance_Function
+AbstractElement <|-- testintentionsAssistance_Import
+AbstractElement <|-- testintentionsAssistance_TestIntention
+Expression <|-- testintentionsAssistance_And
+Expression <|-- testintentionsAssistance_Boolean
+Expression <|-- testintentionsAssistance_Comparison
+Expression <|-- testintentionsAssistance_Double
+Expression <|-- testintentionsAssistance_Equality
+Expression <|-- testintentionsAssistance_INT
+Expression <|-- testintentionsAssistance_Minus
+Expression <|-- testintentionsAssistance_MulOrDiv
+Expression <|-- testintentionsAssistance_Not
+Expression <|-- testintentionsAssistance_Or
+Expression <|-- testintentionsAssistance_Plus
+Expression <|-- testintentionsAssistance_STRING
+Expression <|-- testintentionsAssistance_VariableRef
+testintentionsAssistance_Function "1..1" -- "0..1" testintentionsAssistance_Variable : arg16
+testintentionsAssistance_Function "1..1" -- "0..9999" testintentionsAssistance_Variable : arg4
+testintentionsAssistance_DomainDeclaration "0..9999" --* "1..1" testintentionsAssistance_Model : elements0
+testintentionsAssistance_AbstractElement "0..9999" --* "1..1" testintentionsAssistance_DomainDeclaration : elements1
+testintentionsAssistance_Expression "0..9999" --* "1..1" testintentionsAssistance_TestIntention : expression15
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Not : expression55
+testintentionsAssistance_Data "1..1" *-- "0..9999" testintentionsAssistance_Inst : inst9
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Or : left20
+testintentionsAssistance_And "1..1" *-- "0..1" testintentionsAssistance_Expression : left25
+testintentionsAssistance_Equality "1..1" *-- "0..1" testintentionsAssistance_Expression : left30
+testintentionsAssistance_Comparison "1..1" *-- "0..1" testintentionsAssistance_Expression : left35
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Plus : left40
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Minus : left45
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_MulOrDiv : left50
+testintentionsAssistance_Function "1..1" *-- "0..9999" testintentionsAssistance_OutVariable : out3
+testintentionsAssistance_OutVariable "0..1" -- "1..1" testintentionsAssistance_TestIntention : outvar17
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Or : right22
+testintentionsAssistance_And "1..1" *-- "0..1" testintentionsAssistance_Expression : right27
+testintentionsAssistance_Equality "1..1" *-- "0..1" testintentionsAssistance_Expression : right32
+testintentionsAssistance_Comparison "1..1" *-- "0..1" testintentionsAssistance_Expression : right37
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Plus : right42
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_Minus : right47
+testintentionsAssistance_Expression "0..1" --* "1..1" testintentionsAssistance_MulOrDiv : right52
+testintentionsAssistance_Expression "0..9999" --* "1..1" testintentionsAssistance_Inst : valeur13
+testintentionsAssistance_Inst "1..1" *-- "0..9999" testintentionsAssistance_Variable : variable10
+testintentionsAssistance_Variable "0..1" -- "1..1" testintentionsAssistance_VariableRef : variable57
+@enduml

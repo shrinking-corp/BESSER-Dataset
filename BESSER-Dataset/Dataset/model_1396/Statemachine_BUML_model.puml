@@ -1,0 +1,38 @@
+@startuml
+class Signal {
+}
+class statemachine_Command {
+  + newValue : bool
+}
+class statemachine_Condition {
+}
+class statemachine_Event {
+  + value : bool
+}
+class statemachine_InputSignal {
+}
+class statemachine_OutputSignal {
+}
+class statemachine_Signal {
+  + name : str
+}
+class statemachine_State {
+  + name : str
+}
+class statemachine_Statemachine {
+}
+class statemachine_Transition {
+}
+Signal <|-- statemachine_InputSignal
+Signal <|-- statemachine_OutputSignal
+statemachine_Command "0..9999" --* "1..1" statemachine_State : commands3
+statemachine_Condition "0..1" --* "1..1" statemachine_Transition : condition10
+statemachine_Condition "1..1" *-- "0..9999" statemachine_Event : events15
+statemachine_State "0..9999" --* "1..1" statemachine_State : nestedStates8
+statemachine_Event "1..1" -- "0..1" statemachine_Signal : signal17
+statemachine_Command "1..1" -- "0..1" statemachine_Signal : signal20
+statemachine_Signal "0..9999" --* "1..1" statemachine_Statemachine : signals0
+statemachine_State "0..1" -- "1..1" statemachine_Transition : state12
+statemachine_State "0..9999" --* "1..1" statemachine_Statemachine : states1
+statemachine_State "1..1" *-- "0..9999" statemachine_Transition : transitions5
+@enduml

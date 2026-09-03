@@ -1,0 +1,33 @@
+@startuml
+class Section {
+}
+class TitledElement {
+}
+class docbook_Article {
+}
+class docbook_Book {
+}
+class docbook_DocBook {
+}
+class docbook_Para {
+  + content : str
+}
+class docbook_Sect1 {
+}
+class docbook_Sect2 {
+}
+abstract class docbook_Section {
+}
+abstract class docbook_TitledElement {
+  + title : str
+}
+Section <|-- docbook_Sect1
+Section <|-- docbook_Sect2
+TitledElement <|-- docbook_Article
+TitledElement <|-- docbook_Section
+docbook_Article "0..9999" --* "1..1" docbook_Book : articles1
+docbook_Book "0..9999" --* "1..1" docbook_DocBook : books0
+docbook_Para "0..9999" --* "1..1" docbook_Section : paras5
+docbook_Article "1..1" *-- "0..9999" docbook_Sect1 : sections_13
+docbook_Sect1 "1..1" *-- "0..9999" docbook_Sect2 : sections_26
+@enduml

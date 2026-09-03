@@ -1,0 +1,190 @@
+@startuml
+class ADT {
+}
+class AbstractEquation {
+}
+class AbstractOperation {
+}
+class CondEquation {
+}
+class Condition {
+}
+class Equation {
+}
+class Operation {
+}
+class SOS_AlgebraicCondition {
+}
+class SOS_AlgebraicConditionList {
+}
+class SOS_Conclusion {
+}
+abstract class SOS_Condition {
+}
+class SOS_PremisseList {
+}
+class SOS_Rule {
+}
+class SOS_Semantics {
+}
+class SOS_Transition {
+}
+class SOS_TypeJudment {
+}
+class SOS_adtmm_ADT {
+  + name : str
+}
+abstract class SOS_adtmm_AbstractEquation {
+}
+abstract class SOS_adtmm_AbstractGenericOp {
+}
+abstract class SOS_adtmm_AbstractOperation {
+  + name : str
+}
+abstract class SOS_adtmm_AbstractSort {
+}
+class SOS_adtmm_AtomicSort {
+}
+class SOS_adtmm_CTerm {
+  + iter : int
+}
+class SOS_adtmm_CondEquation {
+}
+class SOS_adtmm_Equation {
+}
+class SOS_adtmm_Inequation {
+}
+class SOS_adtmm_Operation {
+}
+abstract class SOS_adtmm_Sort {
+}
+class SOS_adtmm_SortDeclaration {
+  + name : str
+}
+abstract class SOS_adtmm_Term {
+}
+class SOS_adtmm_Variable {
+  + name : str
+}
+class SOS_adtmm_VariableRef {
+}
+class SOS_set_Excluding {
+}
+class SOS_set_ExistsIn {
+}
+class SOS_set_ForAllIn {
+}
+class SOS_set_Intersection {
+}
+class SOS_set_ModelClassAttribute {
+  + attributeName : str
+}
+class SOS_set_ModelRelation {
+  + referenceName : str
+}
+class SOS_set_ModelSet {
+}
+class SOS_set_ModelSort {
+  + className : str
+  + packageName : str
+}
+class SOS_set_Set {
+}
+class SOS_set_SetConstructor {
+}
+abstract class SOS_set_SetMembership {
+}
+abstract class SOS_set_SetOperator {
+}
+abstract class SOS_set_SetTerm {
+}
+class SOS_set_Union {
+}
+class SetMembership {
+}
+class SetOperator {
+}
+class SetTerm {
+}
+class Sort {
+}
+class SortDeclaration {
+}
+class Term {
+}
+class Variable {
+}
+class VariableRef {
+}
+class set_SOS_AlgebraicConditionList {
+}
+AbstractEquation <|-- SOS_adtmm_Equation
+AbstractEquation <|-- SOS_adtmm_Inequation
+AbstractOperation <|-- SOS_adtmm_AbstractGenericOp
+AbstractOperation <|-- SOS_adtmm_Operation
+Condition <|-- SOS_AlgebraicCondition
+Condition <|-- SOS_Transition
+Condition <|-- SOS_TypeJudment
+SetMembership <|-- SOS_set_ExistsIn
+SetMembership <|-- SOS_set_ForAllIn
+SetOperator <|-- SOS_set_Excluding
+SetOperator <|-- SOS_set_Intersection
+SetOperator <|-- SOS_set_Union
+SetTerm <|-- SOS_set_ModelSet
+SetTerm <|-- SOS_set_SetConstructor
+SetTerm <|-- SOS_set_SetMembership
+SetTerm <|-- SOS_set_SetOperator
+Sort <|-- SOS_adtmm_AtomicSort
+Sort <|-- SOS_set_ModelSort
+Sort <|-- SOS_set_Set
+Term <|-- SOS_adtmm_CTerm
+Term <|-- SOS_adtmm_VariableRef
+Term <|-- SOS_set_ModelClassAttribute
+Term <|-- SOS_set_ModelRelation
+Term <|-- SOS_set_SetTerm
+SOS_PremisseList "0..1" --* "1..1" SOS_Rule : assumes3
+SOS_Conclusion "1..1" --* "1..1" SOS_Rule : concludes5
+SOS_adtmm_AtomicSort "1..1" -- "1..1" SortDeclaration : declaration77
+SOS_Transition "1..1" *-- "0..1" Term : environment24
+SOS_TypeJudment "1..1" *-- "0..1" Term : environment27
+SOS_Conclusion "1..1" *-- "1..1" SOS_Condition : has14
+SOS_AlgebraicCondition "1..1" --* "1..1" SOS_AlgebraicConditionList : has36
+SOS_Condition "1..1" --* "1..1" SOS_PremisseList : has9
+SOS_adtmm_CTerm "1..1" *-- "0..1" Term : iterTerm69
+SOS_Transition "1..1" *-- "1..1" Term : label17
+SOS_TypeJudment "1..1" *-- "1..1" Term : leftHandSide29
+SOS_set_SetMembership "1..1" *-- "1..1" Term : leftHandSide79
+SOS_set_SetOperator "1..1" *-- "1..1" Term : leftHandSide84
+SOS_set_SetConstructor "1..1" *-- "0..1" Term : member90
+SOS_PremisseList "0..1" --* "1..1" SOS_PremisseList : next12
+SOS_AlgebraicConditionList "0..1" --* "1..1" SOS_AlgebraicConditionList : next39
+Operation "1..1" -- "1..1" SOS_adtmm_CTerm : op66
+SOS_adtmm_Operation "1..1" *-- "0..9999" Sort : operationSorts52
+CondEquation "0..9999" --* "1..1" SOS_adtmm_ADT : ownedAxioms50
+AbstractEquation "1..9999" --* "1..1" SOS_AlgebraicCondition : ownedConditions35
+AbstractEquation "0..9999" --* "1..1" SOS_adtmm_CondEquation : ownedConditions58
+Equation "1..1" --* "1..1" SOS_adtmm_CondEquation : ownedEquation60
+Operation "0..9999" --* "1..1" SOS_adtmm_ADT : ownedGenerators44
+SOS_adtmm_AbstractEquation "1..1" *-- "1..1" Term : ownedLeftTerm74
+Operation "0..9999" --* "1..1" SOS_adtmm_ADT : ownedOperations42
+SOS_adtmm_AbstractEquation "1..1" *-- "1..1" Term : ownedRightTerm72
+SOS_adtmm_ADT "1..1" *-- "0..9999" SortDeclaration : ownedSorts41
+SOS_adtmm_CTerm "1..1" *-- "0..9999" Term : ownedTerms64
+SOS_adtmm_ADT "1..1" *-- "0..9999" Variable : ownedVariables47
+SOS_Rule "1..1" *-- "0..9999" Variable : ownedVariables7
+SOS_Transition "1..1" *-- "1..1" Term : posState21
+SOS_Transition "1..1" *-- "1..1" Term : preState18
+SOS_adtmm_Operation "1..1" *-- "1..1" Sort : result53
+SOS_TypeJudment "1..1" *-- "1..1" Term : rightHandSide32
+SOS_set_SetMembership "1..1" *-- "1..1" Term : rightHandSide81
+SOS_set_SetOperator "1..1" *-- "1..1" Term : rightHandSide86
+SOS_Rule "0..9999" --* "1..1" SOS_Semantics : rules0
+SOS_set_ModelClassAttribute "1..1" *-- "1..1" VariableRef : selector97
+ADT "0..9999" --* "1..1" SOS_Semantics : signature1
+SOS_set_Set "1..1" *-- "1..1" Sort : sort99
+SOS_set_ModelRelation "1..1" *-- "1..1" VariableRef : source93
+SOS_set_SetConstructor "1..1" *-- "0..1" set_SOS_AlgebraicConditionList : suchThat89
+SOS_set_ModelRelation "1..1" *-- "1..1" VariableRef : target94
+SOS_adtmm_VariableRef "1..1" -- "1..1" Variable : variable62
+SOS_adtmm_Variable "1..1" *-- "0..1" Sort : variableSort56
+@enduml

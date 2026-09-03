@@ -1,0 +1,132 @@
+@startuml
+class Actor {
+}
+class Effect {
+}
+class dsl_Actor {
+  + name : str
+}
+class dsl_ActorList {
+  + trigger : str
+}
+class dsl_AnimtationActor {
+  + animName : str
+  + cycle : str
+  + speed : str
+}
+class dsl_Color {
+  + a : int
+  + b : int
+  + g : int
+  + r : int
+}
+class dsl_DamageEffect {
+  + amount : int
+}
+class dsl_Effect {
+  + name : str
+}
+class dsl_LauncherEffect {
+}
+class dsl_Model {
+}
+class dsl_ModelActor {
+  + modelPath : str
+  + scale : int
+}
+class dsl_Mover {
+  + heightmap : str
+  + name : str
+  + pathfindingMode : str
+  + standingMode : str
+}
+class dsl_ParticleActor {
+  + add : str
+  + directionBone : str
+  + duration : int
+  + emissionBone : str
+  + endSize : str
+  + maxCount : int
+  + maxLife : str
+  + minLife : str
+  + nbCol : int
+  + nbRow : int
+  + perSecond : int
+  + spritePath : str
+  + startSize : str
+  + startVariation : str
+}
+class dsl_PersistentEffect {
+  + durations : str
+  + periodCount : int
+  + ranges : str
+}
+class dsl_Projectile {
+  + mass : int
+  + name : str
+  + precision : str
+  + speed : int
+}
+class dsl_Race {
+  + name : str
+}
+class dsl_Turrent {
+  + boneName : str
+  + idleSpeed : int
+  + name : str
+  + onIdle : str
+  + speed : int
+}
+class dsl_Unit {
+  + mass : str
+  + maxHealth : int
+  + name : str
+  + radius : str
+  + separationRadius : str
+  + sight : int
+  + speed : str
+  + uIName : str
+}
+class dsl_UnitWeaponLink {
+}
+class dsl_Weapon {
+  + directionBone : str
+  + name : str
+  + period : int
+  + range : str
+  + scanRange : int
+  + sourceBone : str
+  + uIName : str
+}
+Actor <|-- dsl_AnimtationActor
+Actor <|-- dsl_ModelActor
+Actor <|-- dsl_ParticleActor
+Effect <|-- dsl_DamageEffect
+Effect <|-- dsl_LauncherEffect
+Effect <|-- dsl_PersistentEffect
+dsl_Actor "0..1" -- "1..1" dsl_ActorList : actor20
+dsl_Actor "0..1" -- "1..1" dsl_Unit : actor31
+dsl_Actor "0..1" -- "1..1" dsl_Weapon : actor43
+dsl_Actor "0..1" -- "1..1" dsl_Projectile : actor56
+dsl_ActorList "0..9999" --* "1..1" dsl_ModelActor : actorlist15
+dsl_Actor "0..9999" --* "1..1" dsl_Model : actors7
+dsl_Effect "0..1" -- "1..1" dsl_Weapon : effect40
+dsl_Effect "0..9999" -- "1..1" dsl_PersistentEffect : effects46
+dsl_Effect "0..9999" -- "1..1" dsl_LauncherEffect : effects48
+dsl_Effect "0..9999" --* "1..1" dsl_Model : effects9
+dsl_Color "0..1" --* "1..1" dsl_ParticleActor : endColor17
+dsl_Mover "0..1" -- "1..1" dsl_Unit : mover26
+dsl_Mover "0..1" -- "1..1" dsl_Projectile : mover53
+dsl_Model "1..1" *-- "0..9999" dsl_Mover : movers5
+dsl_Model "1..1" *-- "0..9999" dsl_Projectile : projectiles13
+dsl_LauncherEffect "1..1" -- "0..9999" dsl_Projectile : projectiles50
+dsl_Race "0..1" -- "1..1" dsl_Unit : race23
+dsl_Model "1..1" *-- "0..9999" dsl_Race : races3
+dsl_Color "0..1" --* "1..1" dsl_ParticleActor : startColor16
+dsl_Turrent "0..1" -- "1..1" dsl_UnitWeaponLink : turrent37
+dsl_Model "1..1" *-- "0..9999" dsl_Turrent : turrents11
+dsl_Model "1..1" *-- "0..9999" dsl_Unit : units1
+dsl_UnitWeaponLink "1..1" -- "0..1" dsl_Weapon : weapon34
+dsl_Model "1..1" *-- "0..9999" dsl_Weapon : weapons0
+dsl_Unit "1..1" *-- "0..9999" dsl_UnitWeaponLink : weapons29
+@enduml

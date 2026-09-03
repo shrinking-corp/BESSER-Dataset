@@ -1,0 +1,66 @@
+@startuml
+class ActivityEdge {
+}
+class ActivityNode {
+}
+class ModelElement {
+}
+class minuml2_Activity {
+}
+class minuml2_ActivityEdge {
+}
+class minuml2_ActivityFinalNode {
+}
+abstract class minuml2_ActivityNode {
+}
+class minuml2_ActivityPartition {
+}
+class minuml2_ControlFlow {
+}
+class minuml2_DecisionNode {
+}
+class minuml2_ForkNode {
+}
+class minuml2_InitialNode {
+}
+class minuml2_JoinNode {
+}
+class minuml2_ModelElement {
+  + name : str
+}
+class minuml2_ObjectFlow {
+}
+class minuml2_ObjectNode {
+}
+class minuml2_OpaqueAction {
+}
+class minuml2_OpaqueExpression {
+  + body : str
+  + language : str
+}
+ActivityEdge <|-- minuml2_ControlFlow
+ActivityEdge <|-- minuml2_ObjectFlow
+ActivityNode <|-- minuml2_ActivityFinalNode
+ActivityNode <|-- minuml2_DecisionNode
+ActivityNode <|-- minuml2_ForkNode
+ActivityNode <|-- minuml2_InitialNode
+ActivityNode <|-- minuml2_JoinNode
+ActivityNode <|-- minuml2_ObjectNode
+ActivityNode <|-- minuml2_OpaqueAction
+ModelElement <|-- minuml2_Activity
+ModelElement <|-- minuml2_ActivityEdge
+ModelElement <|-- minuml2_ActivityNode
+ModelElement <|-- minuml2_ActivityPartition
+minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityEdge : edge2
+minuml2_ActivityEdge "0..9999" -- "1..1" minuml2_ActivityPartition : edges10
+minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityPartition : group4
+minuml2_ActivityEdge "1..1" *-- "1..1" minuml2_OpaqueExpression : guard19
+minuml2_ActivityEdge "0..9999" -- "1..1" minuml2_ActivityNode : incoming14
+minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityNode : node1
+minuml2_ActivityNode "0..9999" -- "1..1" minuml2_ActivityPartition : nodes7
+minuml2_ActivityEdge "0..9999" -- "1..1" minuml2_ActivityNode : outgoing13
+minuml2_ActivityPartition "0..1" -- "1..1" minuml2_ModelElement : partition0
+minuml2_ActivityEdge "1..1" -- "1..1" minuml2_ActivityNode : source16
+minuml2_ActivityEdge "1..1" -- "1..1" minuml2_ActivityNode : target17
+minuml2_ModelElement "1..1" --* "1..1" minuml2_ObjectFlow : type21
+@enduml

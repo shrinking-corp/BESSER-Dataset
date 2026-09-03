@@ -1,0 +1,26 @@
+@startuml
+class Measurement {
+}
+class ModelElement {
+}
+class metrics_ComplexMeasurement {
+}
+class metrics_LinkMeasurement {
+}
+abstract class metrics_Measurement {
+  + error : str
+  + name : str
+  + tag : str
+}
+class metrics_Observation {
+}
+class metrics_ValueMeasurement {
+  + value : str
+}
+Measurement <|-- metrics_ComplexMeasurement
+Measurement <|-- metrics_LinkMeasurement
+Measurement <|-- metrics_ValueMeasurement
+ModelElement "0..1" -- "1..1" metrics_LinkMeasurement : elements0
+metrics_ComplexMeasurement "1..1" *-- "0..9999" metrics_Measurement : measurements1
+metrics_Measurement "0..9999" --* "1..1" metrics_Observation : measurements2
+@enduml

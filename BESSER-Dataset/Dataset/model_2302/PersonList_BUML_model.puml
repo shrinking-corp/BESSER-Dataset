@@ -1,0 +1,42 @@
+@startuml
+enum Gender {
+  Female
+  Male
+}
+class Person {
+}
+class PersonList_Female {
+}
+class PersonList_List {
+}
+class PersonList_LivingPlace {
+}
+class PersonList_Male {
+}
+abstract class PersonList_Person {
+  + name : str
+}
+abstract class PersonList_Place {
+  + address : str
+}
+class PersonList_WorkPlace {
+}
+class PersonList_WorkingPosition {
+  + description : str
+}
+class Place {
+}
+Person <|-- PersonList_Female
+Person <|-- PersonList_Male
+Place <|-- PersonList_LivingPlace
+Place <|-- PersonList_WorkPlace
+PersonList_LivingPlace "1..1" -- "1..1" PersonList_Person : home4
+PersonList_List "1..1" -- "1..1" PersonList_Person : list2
+PersonList_List "1..1" *-- "0..9999" PersonList_Person : members0
+PersonList_Person "1..1" -- "1..1" PersonList_WorkingPosition : persons11
+PersonList_LivingPlace "1..1" -- "0..9999" PersonList_Person : persons8
+PersonList_List "1..1" -- "0..1" PersonList_Place : places1
+PersonList_WorkPlace "1..1" -- "0..1" PersonList_WorkingPosition : position6
+PersonList_WorkPlace "1..1" -- "1..1" PersonList_WorkingPosition : works10
+PersonList_Person "1..1" *-- "1..1" PersonList_WorkingPosition : works3
+@enduml

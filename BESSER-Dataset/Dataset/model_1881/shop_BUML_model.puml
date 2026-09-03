@@ -1,0 +1,75 @@
+@startuml
+class Payment {
+}
+enum PaymentType {
+  CASH
+  CHEQUE
+  ELECTRONIC
+}
+class Person {
+}
+class Valuable {
+}
+class shop_AccountBook {
+  + cashFlow : float
+  + depositCash(shop_cashValue : str, shop_date : str) : void
+  + depositCheques(shop_cheques : str, shop_date : str) : void
+}
+class shop_BankOperation {
+  + description : str
+}
+class shop_CashPayment {
+}
+class shop_ChequePayment {
+  + depositDate : date
+  + deposited : bool
+}
+class shop_Customer {
+}
+class shop_ElectronicPayment {
+}
+class shop_Employee {
+}
+abstract class shop_Payment {
+  + type : str
+}
+abstract class shop_Person {
+  + address : str
+  + birthDate : date
+  + emails : str
+  + firstName : str
+  + lastName : str
+  + phoneNumbers : str
+  + getDisplayName() : str
+}
+class shop_Sale {
+  + description : str
+}
+class shop_Shop {
+}
+abstract class shop_Valuable {
+  + date : date
+  + value : float
+}
+Payment <|-- shop_CashPayment
+Payment <|-- shop_ChequePayment
+Payment <|-- shop_ElectronicPayment
+Person <|-- shop_Customer
+Person <|-- shop_Employee
+Valuable <|-- shop_BankOperation
+Valuable <|-- shop_Payment
+Valuable <|-- shop_Sale
+shop_AccountBook "1..1" --* "1..1" shop_Shop : accountBook5
+shop_AccountBook "1..1" *-- "0..9999" shop_BankOperation : bankOperations15
+shop_Customer "1..1" -- "1..1" shop_Sale : customer7
+shop_Customer "0..9999" --* "1..1" shop_Shop : customers0
+shop_Employee "0..9999" --* "1..1" shop_Shop : employees3
+shop_Employee "1..9999" -- "1..1" shop_Sale : employees8
+shop_Payment "0..9999" --* "1..1" shop_Sale : payments10
+shop_AccountBook "1..1" -- "0..9999" shop_Payment : payments17
+shop_Payment "1..1" -- "0..1" shop_Sale : sale13
+shop_Sale "0..9999" --* "1..1" shop_Shop : sales1
+shop_Employee "1..1" -- "0..9999" shop_Sale : sales11
+shop_Customer "1..1" -- "0..9999" shop_Sale : sales6
+shop_AccountBook "1..1" -- "1..1" shop_Shop : shop16
+@enduml

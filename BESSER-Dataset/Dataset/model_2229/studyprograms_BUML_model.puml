@@ -1,0 +1,63 @@
+@startuml
+enum Access {
+  M1A
+  M2A
+  NoAccess
+  O
+  VA
+  VB
+}
+enum AvailableSemesters {
+  Both
+  Fall
+  Spring
+}
+enum Level {
+  Bachelor
+  Master
+}
+enum SemesterType {
+  Fall
+  Spring
+}
+class studyprograms_Course {
+  + availableSemester : str
+  + code : str
+  + ects : float
+  + level : str
+  + name : str
+}
+class studyprograms_CourseAccess {
+  + Access : str
+}
+class studyprograms_Department {
+  + code : str
+  + name : str
+}
+class studyprograms_IndividualStudyPlan {
+  + studentNo : str
+}
+class studyprograms_Programme {
+  + code : str
+  + duration : int
+  + name : str
+  + startYear : int
+}
+class studyprograms_Semester {
+  + semesterCode : str
+  + semesterType : str
+  + year : int
+}
+class studyprograms_Specialisation {
+  + name : str
+  + startSemester : int
+}
+studyprograms_CourseAccess "0..9999" --* "1..1" studyprograms_Semester : courseAccess8
+studyprograms_Course "0..9999" -- "1..1" studyprograms_CourseAccess : courses10
+studyprograms_Course "0..9999" --* "1..1" studyprograms_Department : courses14
+studyprograms_Department "1..1" *-- "0..9999" studyprograms_Programme : programmes12
+studyprograms_Programme "1..1" *-- "0..9999" studyprograms_Semester : semesters1
+studyprograms_Semester "0..9999" --* "1..1" studyprograms_Specialisation : semesters3
+studyprograms_IndividualStudyPlan "1..1" *-- "0..9999" studyprograms_Semester : semesters6
+studyprograms_Programme "1..1" *-- "0..9999" studyprograms_Specialisation : specialisations0
+@enduml

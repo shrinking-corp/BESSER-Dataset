@@ -1,0 +1,100 @@
+@startuml
+class AbstractState {
+}
+class NamedElement {
+}
+class Pseudostate {
+}
+class State {
+}
+class Statement {
+}
+class Trigger {
+}
+abstract class fsm_AbstractState {
+}
+class fsm_AndTrigger {
+}
+class fsm_Conditional {
+}
+class fsm_Constraint {
+}
+class fsm_DeepHistory {
+}
+class fsm_FinalState {
+}
+class fsm_Fork {
+}
+class fsm_InitialState {
+}
+class fsm_Join {
+}
+class fsm_Junction {
+}
+class fsm_NamedElement {
+  + name : str
+}
+class fsm_NotTrigger {
+}
+class fsm_OrTrigger {
+}
+class fsm_Program {
+}
+abstract class fsm_Pseudostate {
+}
+class fsm_Region {
+}
+class fsm_ShallowHistory {
+}
+class fsm_State {
+}
+class fsm_StateMachine {
+}
+abstract class fsm_Statement {
+}
+class fsm_Transition {
+}
+class fsm_Trigger {
+  + expression : str
+}
+AbstractState <|-- fsm_Pseudostate
+AbstractState <|-- fsm_State
+NamedElement <|-- fsm_AbstractState
+NamedElement <|-- fsm_Region
+NamedElement <|-- fsm_StateMachine
+NamedElement <|-- fsm_Transition
+Pseudostate <|-- fsm_Conditional
+Pseudostate <|-- fsm_DeepHistory
+Pseudostate <|-- fsm_Fork
+Pseudostate <|-- fsm_InitialState
+Pseudostate <|-- fsm_Join
+Pseudostate <|-- fsm_Junction
+Pseudostate <|-- fsm_ShallowHistory
+State <|-- fsm_FinalState
+Statement <|-- fsm_Program
+Trigger <|-- fsm_AndTrigger
+Trigger <|-- fsm_NotTrigger
+Trigger <|-- fsm_OrTrigger
+fsm_Program "0..1" --* "1..1" fsm_State : doActivity9
+fsm_Statement "0..9999" --* "1..1" fsm_Transition : effect24
+fsm_Program "0..1" --* "1..1" fsm_State : entry10
+fsm_Program "0..1" --* "1..1" fsm_State : exit13
+fsm_Constraint "1..1" --* "1..1" fsm_Transition : guard26
+fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : incoming5
+fsm_AndTrigger "1..1" -- "1..1" fsm_Trigger : left30
+fsm_OrTrigger "1..1" -- "1..1" fsm_Trigger : left35
+fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : outgoing6
+fsm_Region "0..9999" --* "1..1" fsm_State : ownedRegions16
+fsm_AbstractState "1..1" -- "1..1" fsm_Region : ownerRegion8
+fsm_Region "1..1" -- "0..1" fsm_State : ownerState4
+fsm_Region "0..9999" --* "1..1" fsm_StateMachine : regions0
+fsm_AndTrigger "1..1" -- "1..1" fsm_Trigger : right32
+fsm_OrTrigger "1..1" -- "1..1" fsm_Trigger : right37
+fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source22
+fsm_Program "1..1" *-- "0..9999" fsm_Statement : statements40
+fsm_AbstractState "0..9999" --* "1..1" fsm_Region : subvertex1
+fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target20
+fsm_Region "1..1" *-- "0..9999" fsm_Transition : transitions2
+fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger18
+fsm_NotTrigger "1..1" -- "1..1" fsm_Trigger : trigger28
+@enduml

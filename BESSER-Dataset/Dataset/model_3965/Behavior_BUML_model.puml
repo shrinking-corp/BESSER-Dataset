@@ -1,0 +1,180 @@
+@startuml
+class Behavior {
+}
+class BehavioralFeature {
+}
+class BehavioredClassifier {
+}
+class Class {
+}
+class Classifier {
+}
+class Element {
+}
+class Event {
+}
+class ExecutionSpecification {
+}
+class Feature {
+}
+class InteractionFragment {
+}
+class MessageEnd {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class Object {
+}
+class OccurrenceSpecification {
+}
+class RedefinableElement {
+}
+class behavior_Actor {
+}
+abstract class behavior_Behavior {
+}
+class behavior_BehaviorExecutionSpecification {
+}
+abstract class behavior_BehavioralFeature {
+}
+abstract class behavior_BehavioredClassifier {
+}
+class behavior_Class {
+}
+abstract class behavior_Classifier {
+  + isAbstract : bool
+}
+class behavior_Comment {
+  + body : str
+}
+class behavior_Connector {
+}
+class behavior_CreatEvent {
+}
+class behavior_DestructionEvent {
+}
+abstract class behavior_Element {
+}
+abstract class behavior_Event {
+}
+class behavior_ExecutionEvent {
+}
+class behavior_ExecutionOccurrenceSpecification {
+}
+abstract class behavior_ExecutionSpecification {
+}
+abstract class behavior_Feature {
+  + isStatic : bool
+}
+class behavior_GeneralOrdering {
+}
+class behavior_Interaction {
+}
+abstract class behavior_InteractionFragment {
+}
+class behavior_Lifeline {
+}
+class behavior_Message {
+  + MessageOrder : int
+}
+class behavior_MessageEnd {
+}
+class behavior_MessageOccurrenceSpecification {
+}
+abstract class behavior_NamedElement {
+  + Archpoint : bool
+  + name : str
+}
+class behavior_Namespace {
+}
+class behavior_Object {
+}
+class behavior_OccurrenceSpecification {
+}
+class behavior_Operation {
+}
+abstract class behavior_RedefinableElement {
+}
+Behavior <|-- behavior_Interaction
+BehavioralFeature <|-- behavior_Operation
+BehavioredClassifier <|-- behavior_Class
+BehavioredClassifier <|-- behavior_Object
+Class <|-- behavior_Behavior
+Classifier <|-- behavior_BehavioredClassifier
+Element <|-- behavior_Comment
+Element <|-- behavior_NamedElement
+Event <|-- behavior_CreatEvent
+Event <|-- behavior_DestructionEvent
+Event <|-- behavior_ExecutionEvent
+ExecutionSpecification <|-- behavior_BehaviorExecutionSpecification
+Feature <|-- behavior_BehavioralFeature
+Feature <|-- behavior_Connector
+InteractionFragment <|-- behavior_ExecutionSpecification
+InteractionFragment <|-- behavior_Interaction
+InteractionFragment <|-- behavior_OccurrenceSpecification
+MessageEnd <|-- behavior_MessageOccurrenceSpecification
+NamedElement <|-- behavior_BehavioralFeature
+NamedElement <|-- behavior_Event
+NamedElement <|-- behavior_GeneralOrdering
+NamedElement <|-- behavior_InteractionFragment
+NamedElement <|-- behavior_Lifeline
+NamedElement <|-- behavior_Message
+NamedElement <|-- behavior_MessageEnd
+NamedElement <|-- behavior_Namespace
+NamedElement <|-- behavior_RedefinableElement
+Namespace <|-- behavior_Classifier
+Object <|-- behavior_Actor
+OccurrenceSpecification <|-- behavior_ExecutionOccurrenceSpecification
+OccurrenceSpecification <|-- behavior_MessageOccurrenceSpecification
+RedefinableElement <|-- behavior_Feature
+behavior_BehavioredClassifier "1..1" -- "1..1" behavior_Lifeline : actor46
+behavior_GeneralOrdering "1..1" -- "1..1" behavior_OccurrenceSpecification : after89
+behavior_Comment "1..1" -- "0..9999" behavior_Element : annotatedElement64
+behavior_GeneralOrdering "1..1" -- "1..1" behavior_OccurrenceSpecification : before88
+behavior_BehaviorExecutionSpecification "0..9999" --* "1..1" behavior_Lifeline : behaviorExecution47
+behavior_Behavior "0..1" -- "1..1" behavior_BehavioredClassifier : classifierBehavior6
+behavior_Connector "0..1" -- "1..1" behavior_Message : connector40
+behavior_Behavior "1..1" -- "0..1" behavior_BehavioredClassifier : context1
+behavior_Behavior "0..9999" -- "1..1" behavior_Connector : contract78
+behavior_InteractionFragment "1..1" -- "0..9999" behavior_Lifeline : covered59
+behavior_InteractionFragment "0..9999" -- "1..1" behavior_Lifeline : coveredBy42
+behavior_DestructionEvent "0..9999" --* "1..1" behavior_Interaction : destructionevent52
+behavior_Interaction "0..1" -- "1..1" behavior_InteractionFragment : enclosingInteraction61
+behavior_DestructionEvent "1..1" -- "1..1" behavior_Lifeline : end81
+behavior_DestructionEvent "1..1" -- "1..1" behavior_Lifeline : endby45
+behavior_Event "1..1" -- "1..1" behavior_MessageOccurrenceSpecification : event85
+behavior_ExecutionOccurrenceSpecification "1..1" -- "1..1" behavior_ExecutionSpecification : execution86
+behavior_Classifier "1..1" -- "0..9999" behavior_Feature : feature20
+behavior_Classifier "0..9999" -- "1..1" behavior_Feature : featuringClassifier67
+behavior_ExecutionSpecification "1..1" -- "1..1" behavior_OccurrenceSpecification : finish72
+behavior_Interaction "1..1" *-- "0..9999" behavior_InteractionFragment : fragment48
+behavior_Classifier "0..9999" -- "1..1" behavior_Classifier : general18
+behavior_GeneralOrdering "0..1" --* "1..1" behavior_InteractionFragment : generalOrdering63
+behavior_BehavioredClassifier "1..1" -- "1..1" behavior_Lifeline : include12
+behavior_Classifier "1..1" -- "0..9999" behavior_NamedElement : inheritedMember13
+behavior_Interaction "1..1" -- "1..1" behavior_Message : interaction35
+behavior_Interaction "1..1" -- "1..1" behavior_Lifeline : interaction43
+behavior_DestructionEvent "1..1" -- "0..1" behavior_Interaction : interaction83
+behavior_Interaction "1..1" *-- "0..9999" behavior_Lifeline : lifeline54
+behavior_Interaction "1..1" *-- "0..9999" behavior_Message : message57
+behavior_Message "0..1" -- "1..1" behavior_MessageEnd : message75
+behavior_Behavior "0..9999" -- "1..1" behavior_BehavioralFeature : method0
+behavior_Class "1..1" -- "0..9999" behavior_Classifier : nestedClassifier21
+behavior_BehavioredClassifier "0..9999" --* "1..1" behavior_Interaction : object50
+behavior_Behavior "0..9999" --* "1..1" behavior_BehavioredClassifier : ownedBehavior9
+behavior_Comment "0..9999" --* "1..1" behavior_Element : ownedComment28
+behavior_Element "0..9999" -- "1..1" behavior_Element : ownedElement33
+behavior_Element "0..1" -- "1..1" behavior_Element : owner30
+behavior_Message "1..1" -- "0..1" behavior_MessageEnd : receiveEvent36
+behavior_RedefinableElement "0..9999" -- "1..1" behavior_RedefinableElement : redefinableELement26
+behavior_Behavior "0..9999" -- "1..1" behavior_Behavior : redefinedBehavior4
+behavior_Classifier "0..9999" -- "1..1" behavior_Classifier : redefinedClassifier15
+behavior_Classifier "0..9999" -- "1..1" behavior_RedefinableElement : redefinitionContext23
+behavior_Message "1..1" -- "0..1" behavior_MessageEnd : sendEvent37
+behavior_Behavior "1..1" -- "0..1" behavior_BehavioralFeature : specification2
+behavior_ExecutionSpecification "1..1" -- "1..1" behavior_OccurrenceSpecification : start71
+behavior_GeneralOrdering "0..9999" -- "1..1" behavior_OccurrenceSpecification : toAfter68
+behavior_GeneralOrdering "0..9999" -- "1..1" behavior_OccurrenceSpecification : toBefore69
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+enum Rating {
+  BAD
+  GOOD
+  MEDIUM
+  NO_RATING
+}
+class library_Author {
+  + name : str
+}
+class library_Book {
+  + name : str
+  + rating : str
+}
+class library_Library {
+  + name : str
+}
+library_Author "0..1" -- "1..1" library_Book : author3
+library_Author "0..9999" --* "1..1" library_Library : authors0
+library_Book "0..9999" --* "1..1" library_Library : books1
+@enduml

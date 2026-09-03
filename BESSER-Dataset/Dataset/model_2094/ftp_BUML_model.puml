@@ -1,0 +1,235 @@
+@startuml
+class AnalogConnection {
+}
+class Component {
+}
+class CompositionElement {
+}
+class Connection {
+}
+class DigintalConnection {
+}
+class FTNode {
+}
+class Port {
+}
+class PrimitiveComponent {
+}
+enum SignalValues {
+  any
+  off
+  on
+}
+class TypedPortValue {
+}
+enum VisualValues {
+  any
+  dark
+  light
+}
+class ftp_AnalogBattery {
+  + voltage : float
+}
+class ftp_AnalogConnection {
+}
+class ftp_AnalogLamp {
+}
+class ftp_AnalogSwitch {
+}
+class ftp_And {
+}
+class ftp_AndGate {
+}
+class ftp_Capacitor {
+}
+class ftp_Component {
+  + name : str
+  + type : str
+}
+class ftp_ComposedComponent {
+}
+class ftp_CompositionElement {
+}
+class ftp_Connection {
+}
+class ftp_DFlipFlop {
+}
+class ftp_DigintalConnection {
+}
+class ftp_DigitalBattery {
+}
+class ftp_DigitalLamp {
+}
+class ftp_DigitalSwitch {
+}
+class ftp_ElectricalConnection {
+}
+class ftp_ElectricalPort {
+}
+class ftp_ElectricalValue {
+  + anyCurrent : bool
+  + anyVoltage : bool
+  + current : float
+  + voltage : float
+}
+class ftp_FTNode {
+}
+class ftp_Fault {
+  + description : str
+}
+class ftp_FaultTree {
+}
+class ftp_FaultTreeContext {
+}
+class ftp_FloatValue {
+  + value : float
+}
+class ftp_HydraulicConnection {
+}
+class ftp_HydraulicPort {
+}
+class ftp_HydraulicValue {
+  + anyFlow : bool
+  + anyPressure : bool
+  + flow : float
+  + pressure : float
+}
+class ftp_MechanicalConnection {
+}
+class ftp_MechanicalPort {
+}
+class ftp_NTransistor {
+}
+class ftp_Not {
+}
+class ftp_Observation {
+  + faultLimit : int
+  + name : str
+  + buildFaultTree() : str
+}
+class ftp_OrGate {
+}
+class ftp_PTransistor {
+}
+class ftp_Port {
+  + name : str
+  + type : str
+  + newPortValue() : str
+}
+class ftp_PortValue {
+}
+class ftp_PrimitiveComponent {
+}
+class ftp_Resistor {
+  + resistance : float
+}
+class ftp_RootEvent {
+  + observation : str
+}
+class ftp_SignalConnection {
+}
+class ftp_SignalConstant {
+  + value : str
+}
+class ftp_SignalPort {
+}
+class ftp_SignalValue {
+  + signal : str
+}
+class ftp_TypedPortValue {
+}
+class ftp_VisualConnection {
+}
+class ftp_VisualPort {
+}
+class ftp_VisualValue {
+  + bulb : str
+}
+class ftp_Xor {
+}
+AnalogConnection <|-- ftp_ElectricalConnection
+AnalogConnection <|-- ftp_HydraulicConnection
+AnalogConnection <|-- ftp_MechanicalConnection
+Component <|-- ftp_ComposedComponent
+Component <|-- ftp_PrimitiveComponent
+CompositionElement <|-- ftp_Component
+CompositionElement <|-- ftp_Connection
+Connection <|-- ftp_AnalogConnection
+Connection <|-- ftp_DigintalConnection
+Connection <|-- ftp_VisualConnection
+DigintalConnection <|-- ftp_SignalConnection
+FTNode <|-- ftp_AndGate
+FTNode <|-- ftp_Fault
+FTNode <|-- ftp_OrGate
+FTNode <|-- ftp_RootEvent
+Port <|-- ftp_ElectricalPort
+Port <|-- ftp_HydraulicPort
+Port <|-- ftp_MechanicalPort
+Port <|-- ftp_SignalPort
+Port <|-- ftp_VisualPort
+PrimitiveComponent <|-- ftp_AnalogBattery
+PrimitiveComponent <|-- ftp_AnalogLamp
+PrimitiveComponent <|-- ftp_AnalogSwitch
+PrimitiveComponent <|-- ftp_And
+PrimitiveComponent <|-- ftp_Capacitor
+PrimitiveComponent <|-- ftp_DFlipFlop
+PrimitiveComponent <|-- ftp_DigitalBattery
+PrimitiveComponent <|-- ftp_DigitalLamp
+PrimitiveComponent <|-- ftp_DigitalSwitch
+PrimitiveComponent <|-- ftp_NTransistor
+PrimitiveComponent <|-- ftp_Not
+PrimitiveComponent <|-- ftp_PTransistor
+PrimitiveComponent <|-- ftp_Resistor
+PrimitiveComponent <|-- ftp_SignalConstant
+PrimitiveComponent <|-- ftp_Xor
+TypedPortValue <|-- ftp_ElectricalValue
+TypedPortValue <|-- ftp_FloatValue
+TypedPortValue <|-- ftp_HydraulicValue
+TypedPortValue <|-- ftp_SignalValue
+TypedPortValue <|-- ftp_VisualValue
+ftp_DFlipFlop "1..1" *-- "1..1" ftp_SignalPort : clockPort89
+ftp_Component "1..1" -- "1..1" ftp_Observation : component8
+ftp_ComposedComponent "1..1" *-- "0..9999" ftp_CompositionElement : composition18
+ftp_ComposedComponent "1..1" --* "1..1" ftp_FaultTreeContext : composition98
+ftp_NTransistor "1..1" *-- "1..1" ftp_SignalPort : drain76
+ftp_PTransistor "1..1" *-- "1..1" ftp_SignalPort : drain84
+ftp_FaultTree "0..1" --* "1..1" ftp_Observation : faulttree11
+ftp_Connection "1..1" -- "1..1" ftp_Port : fromPort14
+ftp_FTNode "1..9999" --* "1..1" ftp_FaultTree : ftnodes0
+ftp_NTransistor "1..1" *-- "1..1" ftp_SignalPort : gate71
+ftp_PTransistor "1..1" *-- "1..1" ftp_SignalPort : gate79
+ftp_ElectricalPort "1..1" --* "1..1" ftp_Resistor : inPort27
+ftp_AnalogBattery "1..1" *-- "1..1" ftp_ElectricalPort : inPort31
+ftp_AnalogSwitch "1..1" *-- "1..1" ftp_ElectricalPort : inPort36
+ftp_AnalogLamp "1..1" *-- "1..1" ftp_ElectricalPort : inPort43
+ftp_DigitalBattery "1..1" *-- "1..1" ftp_SignalPort : inPort50
+ftp_DigitalSwitch "1..1" *-- "1..1" ftp_SignalPort : inPort55
+ftp_DigitalLamp "1..1" *-- "1..1" ftp_SignalPort : inPort63
+ftp_DFlipFlop "1..1" *-- "1..1" ftp_SignalPort : inPort87
+ftp_FTNode "1..9999" -- "1..1" ftp_RootEvent : inputs103
+ftp_FTNode "2..9999" -- "1..1" ftp_OrGate : inputs4
+ftp_AndGate "1..1" -- "2..9999" ftp_FTNode : inputs6
+ftp_AnalogLamp "1..1" *-- "1..1" ftp_VisualPort : lightPort48
+ftp_DigitalLamp "1..1" *-- "1..1" ftp_VisualPort : lightPort68
+ftp_FaultTreeContext "1..1" *-- "0..9999" ftp_Observation : observations100
+ftp_SignalConstant "1..1" *-- "1..1" ftp_SignalPort : outPort105
+ftp_ElectricalPort "1..1" --* "1..1" ftp_Resistor : outPort28
+ftp_AnalogBattery "1..1" *-- "1..1" ftp_ElectricalPort : outPort33
+ftp_AnalogSwitch "1..1" *-- "1..1" ftp_ElectricalPort : outPort40
+ftp_AnalogLamp "1..1" *-- "1..1" ftp_ElectricalPort : outPort45
+ftp_DigitalBattery "1..1" *-- "1..1" ftp_SignalPort : outPort52
+ftp_DigitalSwitch "1..1" *-- "1..1" ftp_SignalPort : outPort60
+ftp_DigitalLamp "1..1" *-- "1..1" ftp_SignalPort : outPort65
+ftp_DFlipFlop "1..1" *-- "1..1" ftp_SignalPort : outPort92
+ftp_Port "1..1" -- "1..1" ftp_PortValue : port22
+ftp_Observation "1..1" *-- "0..9999" ftp_PortValue : portValues9
+ftp_ComposedComponent "1..1" *-- "0..9999" ftp_Port : ports19
+ftp_FTNode "1..1" -- "1..1" ftp_FaultTree : root1
+ftp_AnalogSwitch "1..1" *-- "1..1" ftp_SignalPort : setPort38
+ftp_DigitalSwitch "1..1" *-- "1..1" ftp_SignalPort : setPort57
+ftp_NTransistor "1..1" *-- "1..1" ftp_SignalPort : source73
+ftp_PTransistor "1..1" *-- "1..1" ftp_SignalPort : source81
+ftp_DFlipFlop "1..1" *-- "1..1" ftp_SignalPort : statePort95
+ftp_Connection "1..1" -- "1..1" ftp_Port : toPort15
+ftp_PortValue "1..1" *-- "1..1" ftp_TypedPortValue : value25
+@enduml

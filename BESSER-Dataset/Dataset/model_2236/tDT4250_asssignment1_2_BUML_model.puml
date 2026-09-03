@@ -1,0 +1,40 @@
+@startuml
+enum Fall_or_spring {
+  Fall
+  Spring
+}
+class tDT4250_asssignment1_2_Course {
+  + Code : str
+  + Credits : float
+  + ExamDate : str
+  + Name : str
+  + StartDate : str
+}
+class tDT4250_asssignment1_2_Program {
+  + Credits : str
+  + Name : str
+}
+class tDT4250_asssignment1_2_Program_course {
+  + Fall_or_spring : str
+  + Mandatory : bool
+}
+class tDT4250_asssignment1_2_Semester {
+  + Credits : str
+  + Number : int
+}
+class tDT4250_asssignment1_2_Semester_Course {
+  + Fall_or_spring : str
+  + Mandatory : bool
+}
+class tDT4250_asssignment1_2_Specialization {
+  + Name : str
+}
+tDT4250_asssignment1_2_Course "0..9999" -- "1..1" tDT4250_asssignment1_2_Semester_Course : course13
+tDT4250_asssignment1_2_Course "0..9999" --* "1..1" tDT4250_asssignment1_2_Program_course : course15
+tDT4250_asssignment1_2_Program "1..1" *-- "0..9999" tDT4250_asssignment1_2_Program_course : program_course1
+tDT4250_asssignment1_2_Program "1..1" *-- "0..9999" tDT4250_asssignment1_2_Semester : semester3
+tDT4250_asssignment1_2_Semester "0..9999" --* "1..1" tDT4250_asssignment1_2_Specialization : semester5
+tDT4250_asssignment1_2_Semester "1..1" *-- "0..9999" tDT4250_asssignment1_2_Semester_Course : semester_course11
+tDT4250_asssignment1_2_Program "1..1" *-- "0..9999" tDT4250_asssignment1_2_Specialization : specialization0
+tDT4250_asssignment1_2_Specialization "1..1" -- "0..9999" tDT4250_asssignment1_2_Specialization : specialization9
+@enduml

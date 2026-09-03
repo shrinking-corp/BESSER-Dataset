@@ -1,0 +1,25 @@
+@startuml
+class Error {
+}
+class errors_Column {
+}
+abstract class errors_Error {
+  + apply : bool
+  + id : int
+}
+class errors_Errores {
+}
+class errors_Fk {
+}
+class errors_ForeignError {
+  + porcent : int
+}
+class errors_Table {
+}
+Error <|-- errors_ForeignError
+errors_Error "0..9999" --* "1..1" errors_Errores : errores0
+errors_Fk "0..1" -- "1..1" errors_ForeignError : fk7
+errors_Column "0..9999" -- "1..1" errors_ForeignError : fkColumns5
+errors_ForeignError "1..1" -- "0..1" errors_Table : tableCont1
+errors_ForeignError "1..1" -- "0..1" errors_Table : tableRef2
+@enduml

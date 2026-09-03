@@ -1,0 +1,67 @@
+@startuml
+class Administrator_Actor {
+}
+class Attendance {
+  + AttendTime : str
+  + Attend_date : date
+  + Emp_id : str
+  + Leaving_Time : str
+}
+class Authenticate_staff {
+  + Authendication_Mood : str
+  + Password : str
+  + UserName : str
+}
+class Authentication_UseCase {
+}
+class Employee_Actor {
+}
+class Employee_Management_System_Component {
+}
+class Login {
+  + Password : str
+  + UserName : str
+}
+class Login_external {
+}
+class Logout_external {
+}
+class Mission {
+  + mission_EndDate : date
+  + mission_NoOfDays : int
+  + mission_StartDate : date
+  + mission_Status : str
+  + mission_Title : str
+  + mission_detail : str
+  + mission_id : int
+  + staff_Id : int
+}
+class Salary {
+  + Emp_Id : int
+  + OverTime : str
+  + Sly_Basic : float
+  + Sly_Decrement : float
+  + Sly_Increment : float
+  + Sly_Netgross : float
+}
+class Salary_Management_UseCase {
+}
+class staff_member {
+  + staff_Address : str
+  + staff_ContactNo : str
+  + staff_DOB : date
+  + staff_Date_Of_Joint : date
+  + staff_Department : str
+  + staff_Email : str
+  + staff_Id : int
+  + staff_NIC : str
+  + staff_Name : str
+  + staff_Position : str
+  + staff_Salary : float
+}
+Attendance "0..1" -- "0..1" staff_member : Employee_Attendance
+Mission "0..1" -- "0..1" staff_member : Employee_Leave
+Employee_Actor "0..1" -- "0..1" Login_external : Employee_Login
+Employee_Actor "0..1" -- "0..1" Logout_external : Employee_Logout
+Salary "0..1" -- "0..1" staff_member : Employee_Salary
+@enduml

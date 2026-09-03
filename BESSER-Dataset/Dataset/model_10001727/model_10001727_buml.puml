@@ -1,0 +1,55 @@
+@startuml
+class asks_feedback_UseCase {
+}
+class cancelorder_UseCase {
+}
+class checks_availability_of_item_UseCase {
+}
+class creditcard {
+  + expirationdate : date
+  + issuer : str
+  + number : int
+}
+class customer {
+  + addresstobill : int
+  + addresstoship : int
+  + name : str
+}
+class customer_Actor {
+}
+class gives_feedback_UseCase {
+}
+class itemtopurchase {
+  + itemtopurchase : int
+  + quantity : int
+}
+class placeorder_UseCase {
+}
+class preferredcustomer {
+  + discount : int
+}
+class purchase_UseCase {
+}
+class requests_to_rate_the_website_UseCase {
+}
+class selectsitem_UseCase {
+}
+class shoppingcart {
+  + salestax : int
+  + subtotal : int
+  + total : int
+}
+class shoppingcart_Actor {
+}
+creditcard "0..1" -- "0..1" customer : creditcard_customer
+checks_availability_of_item_UseCase "0..1" -- "0..1" customer_Actor : customer_checks_availability_of_item
+customer_Actor "0..1" -- "0..1" purchase_UseCase : customer_purchase
+customer_Actor "0..1" -- "0..1" gives_feedback_UseCase : gives_feedback_customer
+customer_Actor "0..1" -- "0..1" selectsitem_UseCase : selectsitem_customer
+asks_feedback_UseCase "0..1" -- "0..1" shoppingcart_Actor : shoppingcart_asks_feedback
+cancelorder_UseCase "0..1" -- "0..1" shoppingcart_Actor : shoppingcart_cancelorder
+gives_feedback_UseCase "0..1" -- "0..1" shoppingcart_Actor : shoppingcart_gives_feedback
+itemtopurchase "0..1" -- "0..1" shoppingcart : shoppingcart_itemtopurchase
+placeorder_UseCase "0..1" -- "0..1" shoppingcart_Actor : shoppingcart_placeorder
+requests_to_rate_the_website_UseCase "0..1" -- "0..1" shoppingcart_Actor : shoppingcart_requests_to_rate_the_website
+@enduml

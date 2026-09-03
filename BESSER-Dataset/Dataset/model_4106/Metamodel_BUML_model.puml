@@ -1,0 +1,57 @@
+@startuml
+class Concept_IndividualContainer {
+}
+class Concept_Route {
+}
+class Concept_Segment {
+  + Segment_length : int
+}
+class Concept_Sensor {
+}
+class Concept_Signal {
+  + Signal_actualState : str
+}
+class Concept_Switch {
+  + Switch_actualState : str
+}
+class Concept_SwitchPosition {
+  + SwitchPosition_switchState : str
+}
+class Concept_Thing {
+}
+class Concept_Trackelement {
+}
+enum SignalStateKind {
+  SignalStateKind_FAILURE
+  SignalStateKind_GO
+  SignalStateKind_STOP
+}
+enum SwitchStateKind {
+  PointStateKind_FAILURE
+  PointStateKind_LEFT
+  PointStateKind_RIGHT
+  PointStateKind_STRAIGHT
+}
+class Thing {
+}
+class Trackelement {
+}
+Thing <|-- Concept_Route
+Thing <|-- Concept_Sensor
+Thing <|-- Concept_Signal
+Thing <|-- Concept_SwitchPosition
+Thing <|-- Concept_Trackelement
+Trackelement <|-- Concept_Segment
+Trackelement <|-- Concept_Switch
+Concept_Route "1..1" -- "1..1" Concept_Signal : Route_entry4
+Concept_Route "1..1" -- "1..1" Concept_Signal : Route_exit7
+Concept_Route "1..1" -- "2..9999" Concept_Sensor : Route_routeDefinition10
+Concept_Route "1..1" -- "0..9999" Concept_SwitchPosition : Route_switchPosition5
+Concept_Sensor "1..1" -- "0..9999" Concept_Trackelement : Sensor_trackElement14
+Concept_Route "1..1" -- "1..1" Concept_SwitchPosition : SwitchPosition_route13
+Concept_Switch "1..1" -- "1..1" Concept_SwitchPosition : SwitchPosition_switch12
+Concept_Switch "1..1" -- "0..9999" Concept_SwitchPosition : Switch_switchPosition3
+Concept_Trackelement "1..1" -- "0..9999" Concept_Trackelement : TrackElement_connectsTo2
+Concept_Sensor "0..9999" -- "1..1" Concept_Trackelement : TrackElement_sensor0
+Concept_IndividualContainer "1..1" *-- "0..9999" Concept_Thing : contains15
+@enduml

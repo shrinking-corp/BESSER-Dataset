@@ -1,0 +1,659 @@
+@startuml
+class AbstractMetadataObject {
+}
+class Connection {
+}
+class Content {
+}
+class DataManager {
+}
+enum DevelopmentStatus {
+  DRAFT
+  PROD
+}
+class ElementType {
+}
+enum Escape {
+  CSV
+  Delimited
+}
+class Expression {
+}
+enum FieldSeparator {
+  Alt_65
+  Comma
+  Custom_ANSI
+  Custom_RegExp
+  Custom_UTF8
+  Semicolon
+  Space
+  Tabulation
+}
+class FileConnection {
+}
+enum FileFormat {
+  MAC
+  UNIX
+  WINDOWS
+}
+enum Function {
+  Empty
+  Length
+  Lower_case
+  Lower_case_first
+  Match
+  Upper_case
+  Upper_case_first
+}
+enum LogicalOperator {
+  And
+  Or
+}
+enum MDMConnectionProtocol {
+  HTTP
+}
+class Machine {
+}
+enum MdmConceptType {
+  INPUT
+  OUTPUT
+  RECEIVE
+}
+class MetadataColumn {
+}
+class MetadataTable {
+}
+class ModelElement {
+}
+enum Operator {
+  Equals
+  Greater
+  Greater_or_equals
+  Lower
+  Lower_or_equals
+  Not_equals
+}
+class Package {
+}
+class Procedure {
+}
+enum RowSeparator {
+  Custom_String
+  Standart_EOL
+}
+enum RuleType {
+  BASIC
+  CUSTOM
+  REFERENCE
+}
+class SAPFunctionParameterTable {
+}
+class SQLSimpleType {
+}
+class Schema {
+}
+class SoftwareSystem {
+}
+class TdTable {
+}
+class Trigger {
+}
+abstract class connection_AbstractMetadataObject {
+  + comment : str
+  + divergency : bool
+  + id : str
+  + label : str
+  + properties : str
+  + readOnly : bool
+  + synchronised : bool
+}
+class connection_BRMSConnection {
+  + className : str
+  + moduleUsed : str
+  + package : str
+  + tacWebappName : str
+  + urlName : str
+  + xmlField : str
+}
+class connection_CDCConnection {
+}
+class connection_CDCType {
+  + journalName : str
+  + linkDB : str
+}
+class connection_Concept {
+  + LoopExpression : str
+  + LoopLimit : str
+  + conceptType : str
+  + inputModel : bool
+  + xPathPrefix : str
+}
+class connection_ConceptTarget {
+  + RelativeLoopExpression : str
+  + targetName : str
+}
+class connection_ConditionType {
+  + function : str
+  + inputColumn : str
+  + operator : str
+  + value : str
+}
+class connection_Connection {
+  + ContextId : str
+  + ContextMode : bool
+  + contextName : str
+  + version : str
+}
+class connection_DatabaseConnection {
+  + AdditionalParams : str
+  + DBRootPath : str
+  + DatabaseType : str
+  + DatasourceName : str
+  + DbmsId : str
+  + DriverClass : str
+  + DriverJarPath : str
+  + FileFieldName : str
+  + NullChar : str
+  + Password : str
+  + Port : str
+  + ProductId : str
+  + SID : str
+  + SQLMode : bool
+  + ServerName : str
+  + SqlSynthax : str
+  + StandardSQL : bool
+  + StringQuote : str
+  + SystemSQL : bool
+  + URL : str
+  + UiSchema : str
+  + Username : str
+  + cdcTypeMode : str
+  + dbVersionString : str
+}
+class connection_DelimitedFileConnection {
+  + FieldSeparatorType : str
+  + splitRecord : bool
+}
+class connection_EDIFACTColumn {
+  + EDIColumnName : str
+  + EDIXpath : str
+}
+class connection_EDIFACTConnection {
+  + FileName : str
+  + XmlName : str
+  + XmlPath : str
+}
+class connection_EbcdicConnection {
+  + DataFile : str
+  + MidFile : str
+}
+class connection_FTPConnection {
+  + CustomEncode : str
+  + Ecoding : str
+  + FTPS : bool
+  + Host : str
+  + KeystoreFile : str
+  + KeystorePassword : str
+  + Method : str
+  + Mode : str
+  + Password : str
+  + Port : str
+  + Proxyhost : str
+  + Proxypassword : str
+  + Proxyport : str
+  + Proxyuser : str
+  + SFTP : bool
+  + Username : str
+  + Usesocks : bool
+}
+abstract class connection_FileConnection {
+  + CsvOption : bool
+  + Encoding : str
+  + EscapeChar : str
+  + EscapeType : str
+  + FieldSeparatorValue : str
+  + FilePath : str
+  + FirstLineCaption : bool
+  + FooterValue : str
+  + Format : str
+  + HeaderValue : str
+  + LimitValue : str
+  + RemoveEmptyRow : bool
+  + RowSeparatorType : str
+  + RowSeparatorValue : str
+  + Server : str
+  + TextEnclosure : str
+  + TextIdentifier : str
+  + UseFooter : bool
+  + UseHeader : bool
+  + UseLimit : bool
+}
+class connection_FileExcelConnection {
+  + SheetName : str
+  + advancedSpearator : bool
+  + decimalSeparator : str
+  + firstColumn : str
+  + lastColumn : str
+  + selectAllSheets : bool
+  + sheetColumns : str
+  + sheetList : str
+  + thousandSeparator : str
+}
+class connection_GenericPackage {
+}
+class connection_GenericSchemaConnection {
+  + mappingTypeId : str
+  + mappingTypeUsed : bool
+}
+class connection_HL7Connection {
+  + EndChar : str
+  + StartChar : str
+  + outputFilePath : str
+}
+class connection_HL7FileNode {
+  + Attribute : str
+  + DefaultValue : str
+  + FilePath : str
+  + Order : int
+  + RelatedColumn : str
+  + Repeatable : bool
+}
+class connection_HeaderFooterConnection {
+  + imports : str
+  + isHeader : bool
+  + libraries : str
+  + mainCode : str
+}
+class connection_InnerJoinMap {
+  + key : str
+  + value : str
+}
+class connection_InputSAPFunctionParameterTable {
+}
+class connection_LDAPSchemaConnection {
+  + Aliases : str
+  + BaseDNs : str
+  + BindPassword : str
+  + BindPrincipal : str
+  + CountLimit : str
+  + EncryptionMethodName : str
+  + Filter : str
+  + GetBaseDNsFromRoot : bool
+  + Host : str
+  + LimitValue : int
+  + Port : str
+  + Protocol : str
+  + Referrals : str
+  + ReturnAttributes : str
+  + SavePassword : bool
+  + SelectedDN : str
+  + Separator : str
+  + StorePath : str
+  + TimeOutLimit : str
+  + UseAdvanced : bool
+  + UseAuthen : bool
+  + UseLimit : bool
+  + Value : str
+}
+class connection_LdifFileConnection {
+  + FilePath : str
+  + LimitEntry : int
+  + Server : str
+  + UseLimit : bool
+  + value : str
+}
+class connection_MDMConnection {
+  + Datacluster : str
+  + Datamodel : str
+  + Password : str
+  + Port : str
+  + Server : str
+  + Universe : str
+  + Username : str
+  + context : str
+  + protocol : str
+  + getConnectionString() : str
+}
+class connection_Metadata {
+}
+class connection_MetadataColumn {
+  + defaultValue : str
+  + displayField : str
+  + key : bool
+  + nullable : bool
+  + originalField : str
+  + originalLength : str
+  + pattern : str
+  + relatedEntity : str
+  + relationshipType : str
+  + sourceType : str
+  + talendType : str
+}
+class connection_MetadataTable {
+  + activatedCDC : bool
+  + attachedCDC : bool
+  + sourceName : str
+  + tableType : str
+}
+class connection_OutputSAPFunctionParameterTable {
+}
+class connection_PositionalFileConnection {
+}
+class connection_QueriesConnection {
+}
+class connection_Query {
+  + contextMode : bool
+  + value : str
+}
+class connection_RegexpFileConnection {
+  + FieldSeparatorType : str
+}
+class connection_SAPConnection {
+  + Client : str
+  + Host : str
+  + Language : str
+  + Password : str
+  + SystemNumber : str
+  + Username : str
+  + currentFucntion : str
+  + jcoVersion : str
+}
+class connection_SAPFunctionParameterColumn {
+  + DataType : str
+  + Length : str
+  + ParameterType : str
+  + StructureOrTableName : str
+  + Value : str
+  + setDescription(connection_description : str) : void
+}
+class connection_SAPFunctionParameterTable {
+}
+class connection_SAPFunctionUnit {
+  + OutputTableName : str
+  + OutputType : str
+  + setDocument(connection_document : str) : void
+}
+class connection_SAPIDocUnit {
+  + gatewayService : str
+  + htmlFile : str
+  + programId : str
+  + useHtmlOutput : bool
+  + useXmlOutput : bool
+  + xmlFile : str
+}
+class connection_SAPTestInputParameterTable {
+}
+class connection_SalesforceModuleUnit {
+  + moduleName : str
+}
+class connection_SalesforceSchemaConnection {
+  + batchSize : str
+  + moduleName : str
+  + password : str
+  + proxyHost : str
+  + proxyPassword : str
+  + proxyPort : str
+  + proxyUsername : str
+  + queryCondition : str
+  + timeOut : str
+  + useAlphbet : bool
+  + useCustomModuleName : bool
+  + useHttpProxy : bool
+  + useProxy : bool
+  + userName : str
+  + webServiceUrl : str
+}
+class connection_SchemaTarget {
+  + RelativeXPathQuery : str
+  + TagName : str
+}
+class connection_SubscriberTable {
+  + system : bool
+}
+class connection_ValidationRulesConnection {
+  + baseColumnNames : str
+  + baseSchema : str
+  + isDelete : bool
+  + isDisallow : bool
+  + isInsert : bool
+  + isRejectLink : bool
+  + isSelect : bool
+  + isUpdate : bool
+  + javaCondition : str
+  + logicalOperator : str
+  + refColumnNames : str
+  + refSchema : str
+  + sqlCondition : str
+  + type : str
+}
+class connection_WSDLParameter {
+  + Column : str
+  + Element : str
+  + Expression : str
+  + ParameterInfo : str
+  + ParameterInfoParent : str
+  + source : str
+}
+class connection_WSDLSchemaConnection {
+  + Encoding : str
+  + EndpointURI : str
+  + Password : str
+  + UserName : str
+  + Value : str
+  + WSDL : str
+  + isInputModel : bool
+  + methodName : str
+  + needAuth : bool
+  + parameters : str
+  + portName : str
+  + portNameSpace : str
+  + proxyHost : str
+  + proxyPassword : str
+  + proxyPort : str
+  + proxyUser : str
+  + serverName : str
+  + serverNameSpace : str
+  + timeOut : int
+  + useProxy : bool
+}
+class connection_XMLFileNode {
+  + Attribute : str
+  + DefaultValue : str
+  + Order : int
+  + RelatedColumn : str
+  + Type : str
+  + XMLPath : str
+}
+class connection_XmlFileConnection {
+  + Encoding : str
+  + Guess : bool
+  + MaskXPattern : str
+  + XmlFilePath : str
+  + XsdFilePath : str
+  + fileContent : str
+  + inputModel : bool
+  + outputFilePath : str
+}
+class connection_XmlXPathLoopDescriptor {
+  + AbsoluteXPathQuery : str
+  + LimitBoucle : str
+}
+class connection_relational_TdColumn {
+  + getContentType() : str
+  + getJavaType() : int
+  + setContentType(connection_contentType : str) : void
+}
+class connection_relational_TdExpression {
+  + modificationDate : str
+  + name : str
+  + version : str
+}
+class connection_relational_TdProcedure {
+}
+class connection_relational_TdSqlDataType {
+  + autoIncrement : str
+  + caseSensitive : str
+  + javaDataType : int
+  + localTypeName : str
+  + nullable : str
+  + searchable : str
+  + unsignedAttribute : str
+}
+class connection_relational_TdTable {
+}
+class connection_relational_TdTrigger {
+}
+class connection_relational_TdView {
+}
+class connection_softwaredeployment_TdDataManager {
+}
+class connection_softwaredeployment_TdMachine {
+}
+class connection_softwaredeployment_TdSoftwareSystem {
+}
+class connection_xml_TdXmlContent {
+}
+class connection_xml_TdXmlElementType {
+  + javaType : str
+  + getContentType() : str
+  + setContentType(connection_contentType : str) : void
+}
+class connection_xml_TdXmlSchema {
+  + xsdFilePath : str
+}
+class core_Class {
+}
+class record_Field {
+}
+class relational_Table {
+}
+class relational_TdSqlDataType {
+}
+class relational_View {
+}
+class softwaredeployment_DataProvider {
+}
+class xml_TdXmlContent {
+}
+class xml_TdXmlElementType {
+}
+class xml_TdXmlSchema {
+}
+class xml_connection_EObject {
+}
+AbstractMetadataObject <|-- connection_CDCType
+AbstractMetadataObject <|-- connection_Connection
+AbstractMetadataObject <|-- connection_Metadata
+AbstractMetadataObject <|-- connection_MetadataColumn
+AbstractMetadataObject <|-- connection_MetadataTable
+AbstractMetadataObject <|-- connection_Query
+AbstractMetadataObject <|-- connection_SAPFunctionParameterColumn
+AbstractMetadataObject <|-- connection_SAPFunctionParameterTable
+AbstractMetadataObject <|-- connection_SAPFunctionUnit
+AbstractMetadataObject <|-- connection_SAPIDocUnit
+AbstractMetadataObject <|-- connection_SalesforceModuleUnit
+Connection <|-- connection_BRMSConnection
+Connection <|-- connection_DatabaseConnection
+Connection <|-- connection_EDIFACTConnection
+Connection <|-- connection_FTPConnection
+Connection <|-- connection_FileConnection
+Connection <|-- connection_GenericSchemaConnection
+Connection <|-- connection_HeaderFooterConnection
+Connection <|-- connection_LDAPSchemaConnection
+Connection <|-- connection_LdifFileConnection
+Connection <|-- connection_MDMConnection
+Connection <|-- connection_SAPConnection
+Connection <|-- connection_SalesforceSchemaConnection
+Connection <|-- connection_ValidationRulesConnection
+Connection <|-- connection_WSDLSchemaConnection
+Connection <|-- connection_XmlFileConnection
+Content <|-- connection_xml_TdXmlContent
+DataManager <|-- connection_softwaredeployment_TdDataManager
+ElementType <|-- connection_xml_TdXmlElementType
+Expression <|-- connection_relational_TdExpression
+FileConnection <|-- connection_DelimitedFileConnection
+FileConnection <|-- connection_EbcdicConnection
+FileConnection <|-- connection_FileExcelConnection
+FileConnection <|-- connection_HL7Connection
+FileConnection <|-- connection_PositionalFileConnection
+FileConnection <|-- connection_RegexpFileConnection
+Machine <|-- connection_softwaredeployment_TdMachine
+MetadataColumn <|-- connection_EDIFACTColumn
+MetadataColumn <|-- connection_relational_TdColumn
+MetadataTable <|-- connection_relational_TdTable
+MetadataTable <|-- connection_relational_TdView
+ModelElement <|-- connection_AbstractMetadataObject
+Package <|-- connection_GenericPackage
+Procedure <|-- connection_relational_TdProcedure
+SAPFunctionParameterTable <|-- connection_InputSAPFunctionParameterTable
+SAPFunctionParameterTable <|-- connection_OutputSAPFunctionParameterTable
+SAPFunctionParameterTable <|-- connection_SAPTestInputParameterTable
+SQLSimpleType <|-- connection_relational_TdSqlDataType
+Schema <|-- connection_xml_TdXmlSchema
+SoftwareSystem <|-- connection_softwaredeployment_TdSoftwareSystem
+TdTable <|-- connection_Concept
+TdTable <|-- connection_SubscriberTable
+Trigger <|-- connection_relational_TdTrigger
+core_Class <|-- connection_MetadataTable
+record_Field <|-- connection_MetadataColumn
+relational_Table <|-- connection_relational_TdTable
+relational_View <|-- connection_relational_TdView
+softwaredeployment_DataProvider <|-- connection_Connection
+connection_SAPConnection "1..1" *-- "0..9999" connection_SAPFunctionUnit : Funtions12
+connection_SAPConnection "1..1" *-- "0..9999" connection_SAPIDocUnit : IDocs14
+connection_InputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : InputParameterTable16
+connection_MetadataTable "0..1" --* "1..1" connection_SAPFunctionUnit : MetadataTable19
+connection_MetadataTable "0..1" --* "1..1" connection_SalesforceModuleUnit : MetadataTable93
+connection_OutputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : OutputParameterTable17
+connection_SAPFunctionParameterColumn "1..1" -- "0..1" connection_SAPFunctionParameterTable : ParameterTable29
+connection_SAPFunctionUnit "1..1" *-- "0..1" connection_SAPTestInputParameterTable : TestInputParameterTable25
+connection_CDCConnection "0..1" -- "1..1" connection_CDCType : cdcConnection64
+connection_CDCConnection "0..1" --* "1..1" connection_DatabaseConnection : cdcConns10
+connection_CDCConnection "1..1" *-- "0..9999" connection_CDCType : cdcTypes61
+connection_MetadataColumn "0..9999" -- "1..1" connection_MetadataTable : columns3
+connection_SAPFunctionParameterColumn "0..9999" --* "1..1" connection_SAPFunctionParameterTable : columns30
+connection_Concept "1..1" *-- "0..9999" connection_ConceptTarget : conceptTargets69
+connection_ConditionType "0..9999" --* "1..1" connection_ValidationRulesConnection : conditions90
+connection_SAPConnection "0..1" -- "1..1" connection_SAPFunctionUnit : connection21
+connection_SAPConnection "0..1" -- "1..1" connection_SAPIDocUnit : connection27
+connection_Connection "0..1" -- "1..1" connection_QueriesConnection : connection46
+connection_XmlFileConnection "0..1" -- "1..1" connection_XmlXPathLoopDescriptor : connection51
+connection_Connection "0..1" -- "1..1" connection_MetadataTable : connection6
+connection_CDCConnection "1..1" -- "0..1" connection_DatabaseConnection : connection60
+connection_SalesforceModuleUnit "1..1" -- "0..1" connection_SalesforceSchemaConnection : connection95
+connection_Connection "0..9999" --* "1..1" connection_Metadata : connections0
+connection_InputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit31
+connection_OutputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit33
+connection_SAPFunctionUnit "0..1" -- "1..1" connection_SAPTestInputParameterTable : functionUnit67
+connection_XMLFileNode "0..9999" --* "1..1" connection_XmlFileConnection : group37
+connection_Concept "1..1" *-- "0..9999" connection_XMLFileNode : group71
+connection_BRMSConnection "1..1" *-- "0..9999" connection_XMLFileNode : group84
+connection_InnerJoinMap "0..9999" --* "1..1" connection_ValidationRulesConnection : innerJoins91
+connection_XMLFileNode "0..9999" --* "1..1" connection_XmlFileConnection : loop41
+connection_Concept "1..1" *-- "0..9999" connection_XMLFileNode : loop77
+connection_BRMSConnection "1..1" *-- "0..9999" connection_XMLFileNode : loop87
+connection_SalesforceModuleUnit "0..9999" --* "1..1" connection_SalesforceSchemaConnection : modules58
+connection_WSDLParameter "0..9999" --* "1..1" connection_WSDLSchemaConnection : outputParameter55
+connection_xml_TdXmlElementType "1..1" -- "0..1" xml_TdXmlSchema : ownedDocument101
+connection_WSDLParameter "0..9999" --* "1..1" connection_WSDLSchemaConnection : parameterValue54
+connection_Connection "1..1" *-- "0..1" connection_QueriesConnection : queries1
+connection_QueriesConnection "0..1" -- "1..1" connection_Query : queries49
+connection_QueriesConnection "1..1" *-- "0..9999" connection_Query : query47
+connection_XMLFileNode "0..9999" --* "1..1" connection_XmlFileConnection : root38
+connection_Concept "1..1" *-- "0..9999" connection_XMLFileNode : root74
+connection_HL7Connection "1..1" *-- "0..9999" connection_HL7FileNode : root81
+connection_BRMSConnection "1..1" *-- "0..9999" connection_XMLFileNode : root82
+connection_XmlFileConnection "1..1" *-- "0..9999" connection_XmlXPathLoopDescriptor : schema35
+connection_SchemaTarget "1..1" -- "0..1" connection_XmlXPathLoopDescriptor : schema44
+connection_Concept "0..1" -- "1..1" connection_ConceptTarget : schema80
+connection_SchemaTarget "0..9999" --* "1..1" connection_XmlXPathLoopDescriptor : schemaTargets52
+connection_Concept "0..9999" --* "1..1" connection_MDMConnection : schemas9
+connection_relational_TdColumn "1..1" *-- "0..1" relational_TdSqlDataType : sqlDataType99
+connection_CDCType "1..1" *-- "0..9999" connection_SubscriberTable : subscribers62
+connection_MetadataColumn "1..1" -- "0..1" connection_MetadataTable : table2
+connection_MetadataTable "0..9999" --* "1..1" connection_SAPFunctionUnit : tables22
+connection_MetadataTable "0..9999" --* "1..1" connection_SalesforceModuleUnit : tables96
+connection_xml_TdXmlElementType "1..1" *-- "0..1" xml_TdXmlContent : xmlContent103
+connection_xml_TdXmlContent "1..1" *-- "0..9999" xml_TdXmlElementType : xmlElements105
+connection_xml_TdXmlElementType "1..1" -- "0..1" xml_connection_EObject : xsdElementDeclaration100
+@enduml

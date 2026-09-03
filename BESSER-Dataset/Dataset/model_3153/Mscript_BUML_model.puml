@@ -1,0 +1,424 @@
+@startuml
+enum AdditiveOperator {
+  Add
+  Subtract
+}
+enum AssertionStatusKind {
+  Error
+  Fatal
+  Info
+  Warning
+}
+class BuiltinDefinition {
+}
+class CallableElement {
+}
+class DataTypeDefinition {
+}
+class Definition {
+}
+enum EqualityOperator {
+  EqualTo
+  NotEqualTo
+}
+class Expression {
+}
+class FeatureCall {
+}
+enum FunctionKind {
+  Continuous
+  Stateful
+  Stateless
+}
+enum MultiplicativeOperator {
+  Divide
+  ElementWiseDivide
+  ElementWiseMultiply
+  Multiply
+}
+class ParameterDeclaration {
+}
+enum PostfixOperator {
+  Transpose
+}
+enum PowerOperator {
+  ElementWisePower
+  Power
+}
+class PrimitiveStepExpression {
+}
+enum RelationalOperator {
+  GreaterThan
+  GreaterThanOrEqualTo
+  LessThan
+  LessThanOrEqualTo
+}
+class Statement {
+}
+class StepExpression {
+}
+enum UnaryOperator {
+  LogicalNot
+  Negate
+}
+class ast_AdditiveExpression {
+  + operator : str
+}
+class ast_AdditiveStepExpression {
+  + operator : str
+}
+class ast_AlgorithmExpression {
+}
+class ast_ArrayConcatenationOperator {
+}
+class ast_ArrayConstructionIterationClause {
+  + variableName : str
+}
+class ast_ArrayConstructionOperator {
+}
+class ast_ArrayElementAccess {
+}
+class ast_ArraySubscript {
+  + slice : bool
+}
+class ast_Assertion {
+  + static : bool
+  + statusKind : str
+}
+class ast_Assignment {
+}
+class ast_BreakStatement {
+}
+class ast_BuiltinDefinition {
+}
+class ast_BuiltinFunction {
+}
+class ast_BuiltinVariable {
+}
+abstract class ast_CallableElement {
+  + getName() : str
+  + getQualifiedName() : str
+}
+class ast_Check {
+}
+class ast_Compound {
+}
+class ast_ContinueStatement {
+}
+class ast_DataType {
+}
+abstract class ast_DataTypeDefinition {
+}
+class ast_DataTypeSpecifier {
+}
+abstract class ast_Definition {
+  + name : str
+}
+class ast_DerivativeOperator {
+}
+class ast_DoWhileStatement {
+}
+class ast_EndExpression {
+}
+class ast_EnumerationDefinition {
+}
+class ast_EnumerationLiteralDeclaration {
+  + name : str
+}
+class ast_EqualityExpression {
+  + operator : str
+}
+class ast_Equation {
+  + initial : bool
+}
+class ast_Expression {
+}
+class ast_ExpressionList {
+}
+abstract class ast_FeatureCall {
+}
+class ast_ForStatement {
+}
+class ast_FunctionCall {
+}
+class ast_FunctionDefinition {
+  + kind : str
+}
+class ast_FunctionObjectDeclaration {
+  + name : str
+}
+class ast_IfExpression {
+  + static : bool
+}
+class ast_IfStatement {
+}
+class ast_ImpliesExpression {
+}
+class ast_InputParameterDeclaration {
+}
+class ast_IterationAccumulator {
+  + name : str
+}
+class ast_IterationCall {
+  + identifier : str
+}
+class ast_IterationVariable {
+  + name : str
+}
+class ast_LetExpression {
+}
+class ast_LetExpressionVariableDeclaration {
+}
+class ast_LetExpressionVariableDeclarationPart {
+  + name : str
+}
+class ast_LogicalAndExpression {
+}
+class ast_LogicalOrExpression {
+}
+class ast_MemberVariableAccess {
+}
+class ast_Module {
+}
+class ast_MultiplicativeExpression {
+  + operator : str
+}
+class ast_NegateStepExpression {
+}
+class ast_OutputParameterDeclaration {
+}
+abstract class ast_ParameterDeclaration {
+  + name : str
+}
+class ast_ParenthesizedExpression {
+}
+class ast_PostfixExpression {
+  + operator : str
+}
+class ast_PowerExpression {
+  + operator : str
+}
+abstract class ast_PrimitiveStepExpression {
+}
+class ast_PrimitiveType {
+}
+class ast_RangeExpression {
+}
+class ast_RangeStepExpression {
+}
+class ast_RelationalExpression {
+  + operator : str
+}
+class ast_ReturnStatement {
+}
+class ast_StateVariableDeclaration {
+  + name : str
+}
+abstract class ast_Statement {
+}
+abstract class ast_StepExpression {
+}
+class ast_StepLiteral {
+  + value : int
+}
+class ast_StepN {
+}
+class ast_StructDefinition {
+}
+class ast_StructMemberDeclaration {
+  + name : str
+}
+class ast_SwitchCase {
+}
+class ast_SwitchExpression {
+  + static : bool
+}
+class ast_TemplateParameterDeclaration {
+}
+class ast_TypeAliasDefinition {
+}
+class ast_TypeTestExpression {
+}
+class ast_UnaryExpression {
+  + operator : str
+}
+class ast_Unit {
+}
+class ast_UnitConstructionOperator {
+}
+class ast_VariableAccess {
+  + isInitial() : bool
+}
+class ast_VariableDeclaration {
+  + name : str
+}
+class ast_WhileStatement {
+}
+BuiltinDefinition <|-- ast_BuiltinFunction
+BuiltinDefinition <|-- ast_BuiltinVariable
+CallableElement <|-- ast_BuiltinDefinition
+CallableElement <|-- ast_FunctionDefinition
+CallableElement <|-- ast_FunctionObjectDeclaration
+CallableElement <|-- ast_IterationAccumulator
+CallableElement <|-- ast_IterationVariable
+CallableElement <|-- ast_LetExpressionVariableDeclarationPart
+CallableElement <|-- ast_ParameterDeclaration
+CallableElement <|-- ast_StateVariableDeclaration
+CallableElement <|-- ast_VariableDeclaration
+DataTypeDefinition <|-- ast_EnumerationDefinition
+DataTypeDefinition <|-- ast_StructDefinition
+DataTypeDefinition <|-- ast_TypeAliasDefinition
+Definition <|-- ast_BuiltinDefinition
+Definition <|-- ast_DataTypeDefinition
+Definition <|-- ast_FunctionDefinition
+Expression <|-- ast_AdditiveExpression
+Expression <|-- ast_AlgorithmExpression
+Expression <|-- ast_ArrayConcatenationOperator
+Expression <|-- ast_ArrayConstructionOperator
+Expression <|-- ast_ArrayElementAccess
+Expression <|-- ast_DerivativeOperator
+Expression <|-- ast_EndExpression
+Expression <|-- ast_EqualityExpression
+Expression <|-- ast_FeatureCall
+Expression <|-- ast_IfExpression
+Expression <|-- ast_ImpliesExpression
+Expression <|-- ast_IterationCall
+Expression <|-- ast_LetExpression
+Expression <|-- ast_LogicalAndExpression
+Expression <|-- ast_LogicalOrExpression
+Expression <|-- ast_MemberVariableAccess
+Expression <|-- ast_MultiplicativeExpression
+Expression <|-- ast_ParenthesizedExpression
+Expression <|-- ast_PostfixExpression
+Expression <|-- ast_PowerExpression
+Expression <|-- ast_RangeExpression
+Expression <|-- ast_RelationalExpression
+Expression <|-- ast_SwitchExpression
+Expression <|-- ast_TypeTestExpression
+Expression <|-- ast_UnaryExpression
+Expression <|-- ast_UnitConstructionOperator
+FeatureCall <|-- ast_FunctionCall
+FeatureCall <|-- ast_VariableAccess
+ParameterDeclaration <|-- ast_InputParameterDeclaration
+ParameterDeclaration <|-- ast_OutputParameterDeclaration
+ParameterDeclaration <|-- ast_TemplateParameterDeclaration
+PrimitiveStepExpression <|-- ast_StepLiteral
+PrimitiveStepExpression <|-- ast_StepN
+Statement <|-- ast_Assignment
+Statement <|-- ast_BreakStatement
+Statement <|-- ast_Compound
+Statement <|-- ast_ContinueStatement
+Statement <|-- ast_DoWhileStatement
+Statement <|-- ast_ForStatement
+Statement <|-- ast_IfStatement
+Statement <|-- ast_ReturnStatement
+Statement <|-- ast_VariableDeclaration
+Statement <|-- ast_WhileStatement
+StepExpression <|-- ast_AdditiveStepExpression
+StepExpression <|-- ast_NegateStepExpression
+StepExpression <|-- ast_PrimitiveStepExpression
+StepExpression <|-- ast_RangeStepExpression
+ast_IterationAccumulator "0..1" --* "1..1" ast_IterationCall : accumulator92
+ast_Expression "0..9999" --* "1..1" ast_FunctionCall : arguments184
+ast_ArrayElementAccess "1..1" *-- "0..1" ast_Expression : array81
+ast_Assertion "0..9999" --* "1..1" ast_FunctionDefinition : assertions12
+ast_Expression "0..1" --* "1..1" ast_LetExpressionVariableDeclaration : assignedExpression57
+ast_AlgorithmExpression "1..1" *-- "0..1" ast_Compound : body191
+ast_Statement "0..1" --* "1..1" ast_WhileStatement : body211
+ast_DoWhileStatement "1..1" *-- "0..1" ast_Statement : body216
+ast_ForStatement "1..1" *-- "0..1" ast_Statement : body230
+ast_Expression "0..1" --* "1..1" ast_IterationCall : breakCondition94
+ast_Expression "0..1" --* "1..1" ast_SwitchCase : caseExpression75
+ast_SwitchCase "0..9999" --* "1..1" ast_SwitchExpression : cases70
+ast_Check "0..9999" --* "1..1" ast_FunctionDefinition : checks11
+ast_ArrayConstructionIterationClause "1..1" *-- "0..1" ast_Expression : collectionExpression108
+ast_Expression "0..1" --* "1..1" ast_ForStatement : collectionExpression224
+ast_Expression "0..1" --* "1..1" ast_IfStatement : condition201
+ast_Expression "0..1" --* "1..1" ast_WhileStatement : condition209
+ast_DoWhileStatement "1..1" *-- "0..1" ast_Expression : condition214
+ast_Expression "0..1" --* "1..1" ast_ForStatement : condition227
+ast_Assertion "1..1" *-- "0..1" ast_Expression : condition28
+ast_Expression "0..1" --* "1..1" ast_IfExpression : condition60
+ast_Expression "0..1" --* "1..1" ast_SwitchExpression : controlExpression68
+ast_ForStatement "1..1" *-- "0..1" ast_IterationVariable : declaredIterationVariable219
+ast_Expression "0..1" --* "1..1" ast_SwitchExpression : defaultExpression72
+ast_DataType "0..1" --* "1..1" ast_DataTypeSpecifier : definedType48
+ast_Definition "0..9999" --* "1..1" ast_Module : definitions0
+ast_Expression "0..1" --* "1..1" ast_IfExpression : elseExpression65
+ast_IfStatement "1..1" *-- "0..1" ast_Statement : elseStatement206
+ast_RangeStepExpression "1..1" *-- "0..1" ast_StepExpression : end174
+ast_Equation "0..9999" --* "1..1" ast_FunctionDefinition : equations18
+ast_Expression "0..1" --* "1..1" ast_PowerExpression : exponent162
+ast_Expression "0..1" --* "1..1" ast_TypeTestExpression : expression145
+ast_Assignment "1..1" *-- "0..1" ast_Expression : expression196
+ast_Expression "0..1" --* "1..1" ast_ReturnStatement : expression233
+ast_ArraySubscript "1..1" *-- "0..1" ast_Expression : expression85
+ast_Expression "0..1" --* "1..1" ast_IterationCall : expression97
+ast_ArrayConstructionOperator "1..1" *-- "0..9999" ast_Expression : expressions104
+ast_Expression "0..9999" --* "1..1" ast_ExpressionList : expressions112
+ast_Expression "0..9999" --* "1..1" ast_ParenthesizedExpression : expressions116
+ast_CallableElement "0..1" -- "1..1" ast_FeatureCall : feature169
+ast_Check "1..1" -- "1..1" ast_FunctionDefinition : function20
+ast_FunctionDefinition "0..1" -- "1..1" ast_FunctionObjectDeclaration : functionName34
+ast_FunctionDefinition "1..1" *-- "0..9999" ast_FunctionObjectDeclaration : functionObjectDeclarations14
+ast_Expression "0..1" --* "1..1" ast_IterationAccumulator : initializer100
+ast_Expression "0..1" --* "1..1" ast_VariableDeclaration : initializer199
+ast_FunctionDefinition "1..1" *-- "0..9999" ast_InputParameterDeclaration : inputParameterDeclarations7
+ast_Check "1..1" *-- "0..9999" ast_DataTypeSpecifier : inputParameterTypes22
+ast_ArrayConstructionIterationClause "0..9999" --* "1..1" ast_ArrayConstructionOperator : iterationClauses106
+ast_CallableElement "0..1" -- "1..1" ast_ForStatement : iterationVariable221
+ast_Equation "1..1" *-- "0..1" ast_Expression : leftHandSide40
+ast_Expression "0..1" --* "1..1" ast_ImpliesExpression : leftOperand120
+ast_Expression "0..1" --* "1..1" ast_LogicalOrExpression : leftOperand125
+ast_Expression "0..1" --* "1..1" ast_LogicalAndExpression : leftOperand130
+ast_EqualityExpression "1..1" *-- "0..1" ast_Expression : leftOperand135
+ast_Expression "0..1" --* "1..1" ast_RelationalExpression : leftOperand140
+ast_AdditiveExpression "1..1" *-- "0..1" ast_Expression : leftOperand150
+ast_Expression "0..1" --* "1..1" ast_MultiplicativeExpression : leftOperand155
+ast_AdditiveStepExpression "1..1" *-- "0..1" ast_StepExpression : leftOperand177
+ast_EnumerationDefinition "1..1" *-- "0..9999" ast_EnumerationLiteralDeclaration : literalDeclarations1
+ast_StructDefinition "1..1" *-- "0..9999" ast_StructMemberDeclaration : memberDeclarations3
+ast_CallableElement "0..1" -- "1..1" ast_MemberVariableAccess : memberVariable188
+ast_Assertion "1..1" *-- "0..1" ast_Expression : message31
+ast_Expression "0..1" --* "1..1" ast_PowerExpression : operand160
+ast_Expression "0..1" --* "1..1" ast_UnaryExpression : operand165
+ast_Expression "0..1" --* "1..1" ast_PostfixExpression : operand167
+ast_NegateStepExpression "1..1" *-- "0..1" ast_StepExpression : operand182
+ast_Expression "0..9999" --* "1..1" ast_RangeExpression : operands118
+ast_FunctionDefinition "1..1" *-- "0..9999" ast_OutputParameterDeclaration : outputParameterDeclarations9
+ast_Check "1..1" *-- "0..9999" ast_DataTypeSpecifier : outputParameterTypes25
+ast_LetExpressionVariableDeclaration "1..1" *-- "0..9999" ast_LetExpressionVariableDeclarationPart : parts55
+ast_Expression "0..1" --* "1..1" ast_SwitchCase : resultExpression78
+ast_Equation "1..1" *-- "0..1" ast_Expression : rightHandSide43
+ast_Expression "0..1" --* "1..1" ast_ImpliesExpression : rightOperand122
+ast_Expression "0..1" --* "1..1" ast_LogicalOrExpression : rightOperand127
+ast_Expression "0..1" --* "1..1" ast_LogicalAndExpression : rightOperand132
+ast_EqualityExpression "1..1" *-- "0..1" ast_Expression : rightOperand137
+ast_Expression "0..1" --* "1..1" ast_RelationalExpression : rightOperand142
+ast_AdditiveExpression "1..1" *-- "0..1" ast_Expression : rightOperand152
+ast_Expression "0..1" --* "1..1" ast_MultiplicativeExpression : rightOperand157
+ast_AdditiveStepExpression "1..1" *-- "0..1" ast_StepExpression : rightOperand179
+ast_ArrayConcatenationOperator "1..1" *-- "0..9999" ast_ExpressionList : rows111
+ast_RangeStepExpression "1..1" *-- "0..1" ast_StepExpression : start172
+ast_FunctionDefinition "1..1" *-- "0..9999" ast_StateVariableDeclaration : stateVariableDeclarations16
+ast_Compound "1..1" *-- "0..9999" ast_Statement : statements192
+ast_StepExpression "0..1" --* "1..1" ast_VariableAccess : stepExpression171
+ast_ArrayElementAccess "1..1" *-- "0..9999" ast_ArraySubscript : subscripts83
+ast_Expression "0..1" --* "1..1" ast_MemberVariableAccess : target186
+ast_Assignment "1..1" *-- "0..1" ast_Expression : target194
+ast_Expression "0..1" --* "1..1" ast_IterationCall : target88
+ast_Expression "0..1" --* "1..1" ast_LetExpression : targetExpression52
+ast_Check "1..1" *-- "0..9999" ast_Expression : templateArguments21
+ast_Expression "0..9999" --* "1..1" ast_FunctionObjectDeclaration : templateArguments37
+ast_FunctionDefinition "1..1" *-- "0..9999" ast_TemplateParameterDeclaration : templateParameterDeclarations6
+ast_Expression "0..1" --* "1..1" ast_IfExpression : thenExpression62
+ast_IfStatement "1..1" *-- "0..1" ast_Statement : thenStatement203
+ast_DataTypeSpecifier "0..1" --* "1..1" ast_TypeTestExpression : type147
+ast_PrimitiveType "0..1" --* "1..1" ast_TypeAliasDefinition : type2
+ast_DataTypeSpecifier "0..1" --* "1..1" ast_StructMemberDeclaration : type4
+ast_DataType "0..1" -- "1..1" ast_DataTypeSpecifier : type46
+ast_Unit "0..1" --* "1..1" ast_UnitConstructionOperator : unit115
+ast_CallableElement "0..1" -- "1..1" ast_DerivativeOperator : variable103
+ast_LetExpression "1..1" *-- "0..9999" ast_LetExpressionVariableDeclaration : variableDeclarations51
+ast_IterationCall "1..1" *-- "0..9999" ast_IterationVariable : variables90
+@enduml

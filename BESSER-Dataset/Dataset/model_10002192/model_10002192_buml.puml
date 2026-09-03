@@ -1,0 +1,52 @@
+@startuml
+class Card {
+  + _address : str
+  + _email : str
+  + _logincredentialsid : int
+  + _phone : int
+  + _username : str
+  + _usertypeid : int
+}
+class Transaction {
+  + orderId : int
+  + shipmentNumber : int
+}
+class _Fee {
+  + _description : str
+  + _name : str
+  + _price : int
+  + _producttypeid : int
+  + _stock : int
+}
+class _LoginCredential {
+  + _loginid : str
+  + _password : str
+}
+class _OrderDetail {
+  + OrderId : int
+  + _orderdate : date
+  + _productid : int
+  + _quantity : int
+  + _totalamount : int
+  + _userid : int
+  + paymentInfoId : int
+}
+class _PaymentInfo {
+  + _cardname : str
+  + _cardno : int
+  + _cvv : int
+  + _expirydate : date
+  + _userid : int
+  + paymentId : int
+}
+class _TransactionType {
+  + _type : str
+}
+Card "1..1" -- "0..9999" _TransactionType : Farmer__ProductType
+_Fee "0..9999" -- "1..1" _TransactionType : ProductType_Product
+Card "1..1" -- "0..9999" Transaction : Ratings_Customer
+Card "1..1" -- "1..1" _LoginCredential : WebUser_Customer
+Card "1..1" -- "1..9999" _OrderDetail : _Customer__OrderDetails
+_OrderDetail "1..1" -- "1..1" _PaymentInfo : _PaymentInfo__OrderDetail
+_Fee "0..9999" -- "0..9999" _OrderDetail : _Product__OrderDetails
+@enduml

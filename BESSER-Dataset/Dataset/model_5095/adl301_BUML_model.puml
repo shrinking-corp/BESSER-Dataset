@@ -1,0 +1,59 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+class NamedElement {
+}
+class Type {
+}
+abstract class adl301_AbstractComponent {
+}
+class adl301_Attribute {
+  + name : str
+  + value : str
+}
+class adl301_Attributes {
+  + signature : str
+}
+class adl301_Binding {
+}
+class adl301_Component {
+}
+class adl301_Content {
+  + class_ : str
+  + language : str
+}
+abstract class adl301_Interface {
+}
+class adl301_Item {
+}
+abstract class adl301_NamedElement {
+  + name : str
+}
+class adl301_Provided {
+}
+class adl301_Required {
+}
+abstract class adl301_Type {
+  + signature : str
+}
+AbstractComponent <|-- adl301_Component
+Interface <|-- adl301_Type
+NamedElement <|-- adl301_Binding
+NamedElement <|-- adl301_Component
+NamedElement <|-- adl301_Interface
+NamedElement <|-- adl301_Item
+Type <|-- adl301_Provided
+Type <|-- adl301_Required
+adl301_AbstractComponent "1..1" *-- "0..1" adl301_Attributes : attributes1
+adl301_Attribute "0..9999" --* "1..1" adl301_Attributes : attributes14
+adl301_Binding "0..9999" --* "1..1" adl301_Interface : bindings7
+adl301_AbstractComponent "1..1" *-- "0..1" adl301_Content : content0
+adl301_Binding "1..1" -- "0..1" adl301_Interface : from_8
+adl301_Item "0..9999" --* "1..1" adl301_Type : items18
+adl301_AbstractComponent "1..1" *-- "0..9999" adl301_Provided : providedInterfaces5
+adl301_AbstractComponent "1..1" *-- "0..9999" adl301_Required : requiredInterfaces3
+adl301_Component "1..1" *-- "0..9999" adl301_Component : subComponents17
+adl301_Binding "1..1" -- "0..1" adl301_Interface : to11
+@enduml

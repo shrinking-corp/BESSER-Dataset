@@ -1,0 +1,37 @@
+@startuml
+class ProductSpaceElement {
+}
+class UUIDElement {
+}
+class list_ProductSpaceElement {
+}
+class list_VersionedList {
+  + getAllOccurrencesOf(list_element : str) : str
+  + getEdge(list_from_ : str, list_to : str) : str
+  + linearize() : ProductSpaceElement
+}
+class list_VersionedListEdge {
+}
+class list_VersionedListStartReference {
+}
+class list_VersionedListVertex {
+}
+ProductSpaceElement <|-- list_VersionedList
+ProductSpaceElement <|-- list_VersionedListEdge
+ProductSpaceElement <|-- list_VersionedListStartReference
+ProductSpaceElement <|-- list_VersionedListVertex
+UUIDElement <|-- list_VersionedListVertex
+list_VersionedList "1..1" *-- "0..9999" list_VersionedListEdge : edges1
+list_ProductSpaceElement "0..1" -- "1..1" list_VersionedListVertex : element5
+list_VersionedListEdge "0..9999" -- "1..1" list_VersionedListVertex : incomingEdges6
+list_VersionedList "0..1" -- "1..1" list_VersionedListVertex : list10
+list_VersionedList "0..1" -- "1..1" list_VersionedListEdge : list17
+list_VersionedList "0..1" -- "1..1" list_VersionedListStartReference : list21
+list_VersionedListEdge "0..9999" -- "1..1" list_VersionedListVertex : outgoingEdges8
+list_VersionedListEdge "1..1" -- "0..1" list_VersionedListVertex : sink15
+list_VersionedListEdge "1..1" -- "0..1" list_VersionedListVertex : source13
+list_VersionedListStartReference "0..1" -- "1..1" list_VersionedListVertex : startRef11
+list_VersionedList "1..1" *-- "0..9999" list_VersionedListStartReference : startVertices3
+list_VersionedListStartReference "1..1" -- "0..1" list_VersionedListVertex : vertex19
+list_VersionedList "1..1" *-- "0..9999" list_VersionedListVertex : vertices0
+@enduml

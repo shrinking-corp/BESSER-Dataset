@@ -1,0 +1,278 @@
+@startuml
+class CallableRelation {
+}
+enum ClosureType {
+  original
+  reflexive_transitive
+  transitive
+}
+enum CompareFeature {
+  equality
+  inequality
+}
+class ComputationValue {
+}
+class Constraint {
+}
+class EntityType {
+}
+enum ExecutionType {
+  incremental
+  search
+  unspecified
+}
+class Expression {
+}
+class LiteralValueReference {
+}
+enum ParameterDirection {
+  in_
+  inout
+  out
+}
+class RelationType {
+}
+class Type {
+}
+class UnaryTypeConstraint {
+}
+class ValueReference {
+}
+class Variable {
+}
+class XImportSection {
+}
+class vql_AggregatedValue {
+  + toString() : str
+}
+class vql_Annotation {
+  + name : str
+  + toString() : str
+}
+class vql_AnnotationParameter {
+  + name : str
+  + toString() : str
+}
+class vql_BoolValue {
+  + toString() : str
+}
+abstract class vql_CallableRelation {
+  + transitive : str
+}
+class vql_CheckConstraint {
+  + toString() : str
+}
+class vql_ClassType {
+  + toString() : str
+}
+class vql_CompareConstraint {
+  + feature : str
+  + toString() : str
+}
+class vql_ComputationValue {
+  + toString() : str
+}
+class vql_Constraint {
+}
+class vql_EClassifier {
+}
+class vql_EClassifierConstraint {
+  + toString() : str
+}
+class vql_EEnum {
+}
+class vql_EEnumLiteral {
+}
+class vql_EPackage {
+}
+class vql_EStructuralFeature {
+}
+class vql_EntityType {
+}
+class vql_EnumValue {
+  + toString() : str
+}
+class vql_Expression {
+  + toString() : str
+}
+class vql_FunctionEvaluationValue {
+  + toString() : str
+}
+class vql_JavaType {
+  + toString() : str
+}
+class vql_JvmDeclaredType {
+}
+class vql_JvmType {
+}
+class vql_ListValue {
+  + toString() : str
+}
+class vql_LiteralValueReference {
+  + toString() : str
+}
+class vql_LocalVariable {
+  + toString() : str
+}
+class vql_Modifiers {
+  + execution : str
+  + private : bool
+  + toString() : str
+}
+class vql_NumberValue {
+  + negative : bool
+  + toString() : str
+}
+class vql_PackageImport {
+  + alias : str
+  + toString() : str
+}
+class vql_Parameter {
+  + direction : str
+  + toString() : str
+}
+class vql_ParameterRef {
+  + toString() : str
+}
+class vql_PathExpressionConstraint {
+  + toString() : str
+}
+class vql_Pattern {
+  + name : str
+  + toString() : str
+}
+class vql_PatternBody {
+  + name : str
+  + toString() : str
+}
+class vql_PatternCall {
+  + toString() : str
+}
+class vql_PatternCompositionConstraint {
+  + negative : bool
+  + toString() : str
+}
+class vql_PatternImport {
+  + packageName : str
+  + toString() : str
+}
+class vql_PatternModel {
+  + packageName : str
+  + toString() : str
+}
+class vql_ReferenceType {
+  + toString() : str
+}
+class vql_RelationType {
+  + toString() : str
+}
+class vql_StringValue {
+  + value : str
+  + toString() : str
+}
+class vql_Type {
+  + typename : str
+  + toString() : str
+}
+class vql_TypeCheckConstraint {
+  + toString() : str
+}
+abstract class vql_UnaryTypeConstraint {
+}
+class vql_VQLImportSection {
+  + toString() : str
+}
+class vql_ValueReference {
+  + toString() : str
+}
+class vql_Variable {
+  + name : str
+  + toString() : str
+}
+class vql_VariableReference {
+  + aggregator : bool
+  + var : str
+  + toString() : str
+}
+class vql_XBooleanLiteral {
+}
+class vql_XExpression {
+}
+class vql_XNumberLiteral {
+}
+CallableRelation <|-- vql_PathExpressionConstraint
+CallableRelation <|-- vql_PatternCall
+CallableRelation <|-- vql_UnaryTypeConstraint
+ComputationValue <|-- vql_AggregatedValue
+ComputationValue <|-- vql_FunctionEvaluationValue
+Constraint <|-- vql_CheckConstraint
+Constraint <|-- vql_CompareConstraint
+Constraint <|-- vql_EClassifierConstraint
+Constraint <|-- vql_PathExpressionConstraint
+Constraint <|-- vql_PatternCompositionConstraint
+Constraint <|-- vql_TypeCheckConstraint
+EntityType <|-- vql_ClassType
+EntityType <|-- vql_JavaType
+Expression <|-- vql_ValueReference
+Expression <|-- vql_Variable
+LiteralValueReference <|-- vql_BoolValue
+LiteralValueReference <|-- vql_ListValue
+LiteralValueReference <|-- vql_NumberValue
+LiteralValueReference <|-- vql_StringValue
+RelationType <|-- vql_ReferenceType
+Type <|-- vql_EntityType
+Type <|-- vql_RelationType
+UnaryTypeConstraint <|-- vql_EClassifierConstraint
+UnaryTypeConstraint <|-- vql_TypeCheckConstraint
+ValueReference <|-- vql_ComputationValue
+ValueReference <|-- vql_EnumValue
+ValueReference <|-- vql_LiteralValueReference
+ValueReference <|-- vql_VariableReference
+Variable <|-- vql_LocalVariable
+Variable <|-- vql_Parameter
+Variable <|-- vql_ParameterRef
+XImportSection <|-- vql_VQLImportSection
+vql_AggregatedValue "1..1" -- "0..1" vql_JvmType : aggregateType81
+vql_AggregatedValue "1..1" -- "0..1" vql_JvmDeclaredType : aggregator76
+vql_Annotation "0..9999" --* "1..1" vql_Pattern : annotations23
+vql_Pattern "1..1" *-- "0..9999" vql_PatternBody : bodies29
+vql_CallableRelation "0..1" --* "1..1" vql_PatternCompositionConstraint : call52
+vql_AggregatedValue "1..1" *-- "0..1" vql_CallableRelation : call78
+vql_JavaType "1..1" -- "0..1" vql_JvmDeclaredType : classRef51
+vql_ClassType "1..1" -- "0..1" vql_EClassifier : classname20
+vql_Constraint "0..9999" --* "1..1" vql_PatternBody : constraints39
+vql_PathExpressionConstraint "1..1" *-- "0..1" vql_ValueReference : dst67
+vql_EPackage "0..1" -- "1..1" vql_PackageImport : ePackage3
+vql_PathExpressionConstraint "1..1" *-- "0..9999" vql_ReferenceType : edgeTypes59
+vql_EEnum "0..1" -- "1..1" vql_EnumValue : enumeration10
+vql_CheckConstraint "1..1" *-- "0..1" vql_XExpression : expression58
+vql_FunctionEvaluationValue "1..1" *-- "0..1" vql_XExpression : expression74
+vql_PatternModel "1..1" *-- "0..1" vql_VQLImportSection : importPackages13
+vql_CompareConstraint "1..1" *-- "0..1" vql_ValueReference : leftOperand53
+vql_EEnumLiteral "0..1" -- "1..1" vql_EnumValue : literal11
+vql_ClassType "1..1" -- "0..1" vql_PackageImport : metamodel18
+vql_Modifiers "0..1" --* "1..1" vql_Pattern : modifiers25
+vql_PackageImport "0..9999" --* "1..1" vql_VQLImportSection : packageImport0
+vql_Pattern "1..1" *-- "0..9999" vql_Variable : parameters27
+vql_Annotation "1..1" *-- "0..9999" vql_AnnotationParameter : parameters31
+vql_PatternCall "1..1" *-- "0..9999" vql_ValueReference : parameters46
+vql_Pattern "0..1" -- "1..1" vql_PatternImport : pattern5
+vql_PatternImport "0..9999" --* "1..1" vql_VQLImportSection : patternImport1
+vql_Pattern "0..1" -- "1..1" vql_PatternCall : patternRef44
+vql_Pattern "0..9999" --* "1..1" vql_PatternModel : patterns15
+vql_Pattern "0..9999" --* "1..1" vql_PatternImport : patterns7
+vql_ParameterRef "1..1" -- "0..1" vql_Variable : referredParam49
+vql_EStructuralFeature "0..1" -- "1..1" vql_ReferenceType : refname22
+vql_CompareConstraint "1..1" *-- "0..1" vql_ValueReference : rightOperand55
+vql_ClassType "0..1" --* "1..1" vql_PathExpressionConstraint : sourceType61
+vql_PathExpressionConstraint "1..1" *-- "0..1" vql_VariableReference : src64
+vql_Type "0..1" --* "1..1" vql_Variable : type35
+vql_EntityType "0..1" --* "1..1" vql_UnaryTypeConstraint : type83
+vql_AnnotationParameter "1..1" *-- "0..1" vql_ValueReference : value33
+vql_NumberValue "1..1" *-- "0..1" vql_XNumberLiteral : value70
+vql_BoolValue "1..1" *-- "0..1" vql_XBooleanLiteral : value71
+vql_ListValue "1..1" *-- "0..9999" vql_ValueReference : values72
+vql_UnaryTypeConstraint "1..1" *-- "0..1" vql_VariableReference : var84
+vql_Variable "0..1" -- "1..1" vql_VariableReference : variable37
+vql_PatternBody "1..1" *-- "0..9999" vql_Variable : variables41
+@enduml

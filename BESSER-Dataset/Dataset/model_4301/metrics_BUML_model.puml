@@ -1,0 +1,141 @@
+@startuml
+class Base {
+}
+class DataKind {
+}
+enum DatabaseTypeType {
+  Oracle
+  Postgres
+}
+enum KindHintType {
+  AVG
+  BH
+}
+class Mapping {
+}
+enum MetricRetentionPeriod {
+  Always
+  OneMonth
+  OneWeek
+  OneYear
+}
+enum ObjectKindType {
+  EQUIPMENT
+  FUNCTION
+  NODE
+  RELATIONSHIP
+}
+enum ValueKindType {
+  DATE
+  DATETIME
+  INTERVAL
+  METRIC
+  NULL
+  TIME
+}
+class metrics_DataKind {
+}
+class metrics_DateTimeRange {
+}
+class metrics_Expression {
+}
+class metrics_IdentifierDataKind {
+  + objectKind : str
+  + objectProperty : str
+  + pattern : str
+}
+class metrics_Mapping {
+  + firstDataRow : str
+  + headerRow : str
+  + intervalHint : str
+}
+class metrics_MappingCSV {
+  + delimiter : str
+  + filterPattern : str
+}
+class metrics_MappingColumn {
+  + column : str
+}
+class metrics_MappingRDBMS {
+  + databaseType : str
+  + dateFormat : str
+  + dateTimeFormat : str
+  + password : str
+  + query : str
+  + timeFormat : str
+  + user : str
+}
+class metrics_MappingRecord {
+  + column : str
+  + count : str
+  + message : str
+}
+class metrics_MappingStatistic {
+  + intervalEstimate : str
+  + message : str
+  + totalRecords : str
+}
+class metrics_MappingXLS {
+  + filterPattern : str
+  + sheetNumber : str
+}
+class metrics_Metric {
+  + description : str
+  + measurementKind : str
+  + measurementPoint : str
+  + name : str
+}
+class metrics_MetricRetentionRule {
+  + intervalHint : str
+  + name : str
+  + period : str
+}
+class metrics_MetricRetentionRules {
+}
+class metrics_MetricSource {
+  + filterPattern : str
+  + metricLocation : str
+  + name : str
+}
+class metrics_MetricValueRange {
+  + intervalHint : str
+  + kindHint : str
+}
+class metrics_Unit {
+}
+class metrics_Value {
+}
+class metrics_ValueDataKind {
+  + format : str
+  + kindHint : str
+  + valueKind : str
+}
+Base <|-- metrics_Mapping
+Base <|-- metrics_MappingColumn
+Base <|-- metrics_MappingRecord
+Base <|-- metrics_MappingStatistic
+Base <|-- metrics_Metric
+Base <|-- metrics_MetricSource
+DataKind <|-- metrics_IdentifierDataKind
+DataKind <|-- metrics_ValueDataKind
+Mapping <|-- metrics_MappingCSV
+Mapping <|-- metrics_MappingRDBMS
+Mapping <|-- metrics_MappingXLS
+metrics_Mapping "1..1" *-- "0..9999" metrics_MappingColumn : dataMappingColumns1
+metrics_DataKind "0..1" --* "1..1" metrics_MappingColumn : dataType4
+metrics_Expression "0..1" -- "1..1" metrics_Metric : expressionRef17
+metrics_MappingRecord "0..9999" --* "1..1" metrics_MappingStatistic : failedRecords6
+metrics_Mapping "1..1" *-- "0..9999" metrics_MappingColumn : headerMappingColumns0
+metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : mappingDuration7
+metrics_Mapping "0..1" --* "1..1" metrics_MetricSource : metricMapping27
+metrics_Metric "0..1" -- "1..1" metrics_ValueDataKind : metricRef34
+metrics_MetricRetentionRule "0..9999" --* "1..1" metrics_MetricRetentionRules : metricRetentionRules25
+metrics_Metric "1..1" -- "0..1" metrics_MetricSource : metricSourceRef19
+metrics_MetricValueRange "1..1" *-- "0..9999" metrics_Value : metricValues33
+metrics_Metric "1..1" *-- "0..9999" metrics_Metric : metrics16
+metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : periodEstimate9
+metrics_Expression "0..1" -- "1..1" metrics_MetricRetentionRule : retentionExpression23
+metrics_MappingStatistic "0..9999" --* "1..1" metrics_MetricSource : statistics30
+metrics_MappingStatistic "0..9999" --* "1..1" metrics_MappingStatistic : subStatistics13
+metrics_Metric "1..1" -- "0..1" metrics_Unit : unitRef21
+@enduml

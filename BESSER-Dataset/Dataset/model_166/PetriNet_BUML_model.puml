@@ -1,0 +1,49 @@
+@startuml
+class Arc {
+}
+class Element {
+}
+abstract class petrinet_metamodel_Arc {
+  + weight : int
+}
+abstract class petrinet_metamodel_Element {
+  + comments : str
+  + name : str
+}
+class petrinet_metamodel_PetriNet {
+}
+class petrinet_metamodel_Place {
+  + coordinates : int
+  + fill_colour : str
+  + radius : int
+}
+class petrinet_metamodel_PlaceToTransArc {
+}
+class petrinet_metamodel_Rectangle {
+  + start_end_coordinates : int
+}
+class petrinet_metamodel_TransToPlaceArc {
+}
+class petrinet_metamodel_Transition {
+}
+Arc <|-- petrinet_metamodel_PlaceToTransArc
+Arc <|-- petrinet_metamodel_TransToPlaceArc
+Element <|-- petrinet_metamodel_PetriNet
+Element <|-- petrinet_metamodel_Place
+Element <|-- petrinet_metamodel_Transition
+petrinet_metamodel_Arc "0..9999" --* "1..1" petrinet_metamodel_PetriNet : arcs3
+petrinet_metamodel_Rectangle "1..1" -- "0..1" petrinet_metamodel_Transition : belongs_to26
+petrinet_metamodel_Place "1..1" -- "0..9999" petrinet_metamodel_TransToPlaceArc : incoming4
+petrinet_metamodel_PlaceToTransArc "1..9999" -- "1..1" petrinet_metamodel_Transition : incoming9
+petrinet_metamodel_TransToPlaceArc "1..9999" -- "1..1" petrinet_metamodel_Transition : outgoing12
+petrinet_metamodel_Place "1..1" -- "0..9999" petrinet_metamodel_PlaceToTransArc : outgoing5
+petrinet_metamodel_PetriNet "1..1" -- "1..1" petrinet_metamodel_Place : petrinet6
+petrinet_metamodel_PetriNet "0..1" -- "1..1" petrinet_metamodel_Transition : petrinet7
+petrinet_metamodel_PetriNet "1..1" *-- "1..9999" petrinet_metamodel_Place : places0
+petrinet_metamodel_Rectangle "0..1" --* "1..1" petrinet_metamodel_Transition : rectangle15
+petrinet_metamodel_Place "1..1" -- "1..1" petrinet_metamodel_PlaceToTransArc : source16
+petrinet_metamodel_TransToPlaceArc "1..1" -- "1..1" petrinet_metamodel_Transition : source20
+petrinet_metamodel_PlaceToTransArc "1..1" -- "1..1" petrinet_metamodel_Transition : target18
+petrinet_metamodel_Place "1..1" -- "1..1" petrinet_metamodel_TransToPlaceArc : target23
+petrinet_metamodel_PetriNet "1..1" *-- "0..9999" petrinet_metamodel_Transition : transitions1
+@enduml

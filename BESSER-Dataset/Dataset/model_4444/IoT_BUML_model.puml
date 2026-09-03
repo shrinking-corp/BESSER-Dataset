@@ -1,0 +1,83 @@
+@startuml
+class ioT_Destination {
+  + name : str
+}
+class ioT_DestinationType {
+  + name : str
+}
+class ioT_DestinationTypes {
+}
+class ioT_Device {
+  + name : str
+}
+class ioT_DeviceType {
+  + name : str
+}
+class ioT_DeviceTypes {
+}
+class ioT_EObject {
+}
+class ioT_FetchData {
+}
+class ioT_FetchDataCondition {
+  + condition : str
+}
+class ioT_FetchDataExpression {
+  + timeUnit : str
+}
+class ioT_Ip {
+  + ip : int
+}
+class ioT_Method {
+  + name : str
+  + parameters : str
+}
+class ioT_Portnumber {
+  + number : int
+}
+class ioT_Sensor {
+  + name : str
+}
+class ioT_SensorGetMethod {
+}
+class ioT_SensorGroup {
+  + name : str
+}
+class ioT_SensorType {
+  + name : str
+}
+class ioT_SensorTypes {
+}
+class ioT_Server {
+  + name : str
+}
+class ioT_ServerType {
+  + name : str
+}
+class ioT_ServerTypes {
+}
+class ioT_System {
+}
+class ioT_Time {
+  + time : int
+}
+ioT_EObject "0..1" --* "1..1" ioT_FetchData : conExp31
+ioT_EObject "0..1" -- "1..1" ioT_FetchData : destination28
+ioT_Device "1..1" -- "0..1" ioT_EObject : devices13
+ioT_FetchDataExpression "1..1" *-- "0..1" ioT_Time : duration34
+ioT_EObject "0..1" -- "1..1" ioT_FetchData : filter26
+ioT_Ip "0..1" --* "1..1" ioT_Server : ip19
+ioT_Method "0..1" --* "1..1" ioT_SensorGetMethod : method6
+ioT_Portnumber "0..1" --* "1..1" ioT_Server : port21
+ioT_Sensor "0..9999" -- "1..1" ioT_SensorGroup : sensors4
+ioT_EObject "0..9999" --* "1..1" ioT_System : system0
+ioT_Device "1..1" -- "0..1" ioT_DeviceType : type11
+ioT_Server "1..1" -- "0..1" ioT_ServerType : type17
+ioT_Sensor "1..1" -- "0..1" ioT_SensorType : type2
+ioT_Destination "1..1" -- "0..1" ioT_DestinationType : type24
+ioT_SensorGetMethod "1..1" -- "0..1" ioT_SensorType : type7
+ioT_SensorType "0..9999" --* "1..1" ioT_SensorTypes : types1
+ioT_DeviceType "0..9999" --* "1..1" ioT_DeviceTypes : types10
+ioT_ServerType "0..9999" --* "1..1" ioT_ServerTypes : types16
+ioT_DestinationType "0..9999" --* "1..1" ioT_DestinationTypes : types23
+@enduml

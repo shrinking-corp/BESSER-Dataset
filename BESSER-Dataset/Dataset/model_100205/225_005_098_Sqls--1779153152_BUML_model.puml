@@ -1,0 +1,209 @@
+@startuml
+class SqlExpr {
+}
+class SqlSentence {
+}
+class TableConstraint {
+}
+class TriggerAction {
+}
+enum TriggerTime {
+  AFTER
+  BEFORE
+}
+class Type {
+}
+class sqls_Column {
+  + name : str
+  + null : bool
+  + primaryKey : bool
+}
+class sqls_ColumnRef {
+}
+class sqls_Delete {
+}
+class sqls_DeleteTable {
+}
+class sqls_Enum {
+}
+class sqls_EnumElement {
+  + name : str
+  + text : str
+}
+class sqls_Function {
+}
+class sqls_Get {
+}
+class sqls_Import {
+}
+class sqls_Insert {
+}
+class sqls_InsertStatement {
+}
+class sqls_NewColumn {
+}
+class sqls_OldColumn {
+}
+class sqls_OrderingTerm {
+  + asc : bool
+  + desc : bool
+}
+class sqls_ResultColumn {
+  + name : str
+}
+class sqls_Select {
+  + all : bool
+}
+class sqls_SelectList {
+}
+class sqls_SqlBinaryExpr {
+  + op : str
+}
+class sqls_SqlExpr {
+}
+class sqls_SqlFunction {
+}
+class sqls_SqlLibrary {
+  + database : str
+  + version : int
+}
+class sqls_SqlMethod {
+  + array : bool
+  + name : str
+}
+class sqls_SqlMethodRef {
+}
+class sqls_SqlNested {
+}
+class sqls_SqlNumberLiteral {
+  + value : int
+}
+class sqls_SqlParam {
+  + name : str
+}
+class sqls_SqlPlaceholder {
+}
+class sqls_SqlSentence {
+}
+class sqls_SqlStringLiteral {
+  + value : str
+}
+class sqls_SqlType {
+}
+class sqls_Table {
+  + name : str
+}
+class sqls_TableConstraint {
+}
+class sqls_TableRef {
+  + alias : str
+}
+class sqls_Tag {
+  + name : str
+}
+class sqls_Trigger {
+  + name : str
+  + time : str
+}
+class sqls_TriggerAction {
+}
+class sqls_TriggerDelete {
+}
+class sqls_TriggerInsert {
+}
+class sqls_TriggerUpdate {
+}
+class sqls_Type {
+}
+class sqls_TypeDef {
+}
+class sqls_UniqueTableConstraint {
+  + name : str
+}
+class sqls_Update {
+}
+class sqls_UpdateColumnExpression {
+}
+SqlExpr <|-- sqls_ColumnRef
+SqlExpr <|-- sqls_NewColumn
+SqlExpr <|-- sqls_OldColumn
+SqlExpr <|-- sqls_SqlBinaryExpr
+SqlExpr <|-- sqls_SqlFunction
+SqlExpr <|-- sqls_SqlNested
+SqlExpr <|-- sqls_SqlNumberLiteral
+SqlExpr <|-- sqls_SqlParam
+SqlExpr <|-- sqls_SqlPlaceholder
+SqlExpr <|-- sqls_SqlStringLiteral
+SqlSentence <|-- sqls_Delete
+SqlSentence <|-- sqls_DeleteTable
+SqlSentence <|-- sqls_Get
+SqlSentence <|-- sqls_Insert
+SqlSentence <|-- sqls_InsertStatement
+SqlSentence <|-- sqls_Select
+SqlSentence <|-- sqls_SqlMethodRef
+SqlSentence <|-- sqls_Update
+TableConstraint <|-- sqls_UniqueTableConstraint
+TriggerAction <|-- sqls_TriggerDelete
+TriggerAction <|-- sqls_TriggerInsert
+TriggerAction <|-- sqls_TriggerUpdate
+Type <|-- sqls_Enum
+Type <|-- sqls_TypeDef
+sqls_Trigger "1..1" *-- "0..1" sqls_TriggerAction : action103
+sqls_Column "0..1" -- "1..1" sqls_NewColumn : column119
+sqls_Column "0..1" -- "1..1" sqls_OldColumn : column121
+sqls_Column "0..1" -- "1..1" sqls_ColumnRef : column127
+sqls_Column "0..1" -- "1..1" sqls_UpdateColumnExpression : column92
+sqls_Column "0..9999" -- "1..1" sqls_TriggerUpdate : columns134
+sqls_Column "0..9999" -- "1..1" sqls_UniqueTableConstraint : columns31
+sqls_Column "0..9999" -- "1..1" sqls_InsertStatement : columns74
+sqls_Table "1..1" *-- "0..9999" sqls_TableConstraint : constraints23
+sqls_Column "1..1" *-- "0..1" sqls_SqlExpr : defaultValue28
+sqls_Enum "1..1" *-- "0..9999" sqls_EnumElement : elements111
+sqls_SqlLibrary "1..1" *-- "0..9999" sqls_Type : enums3
+sqls_SqlExpr "0..1" --* "1..1" sqls_SqlNested : expression123
+sqls_OrderingTerm "1..1" *-- "0..1" sqls_SqlExpr : expression41
+sqls_ResultColumn "1..1" *-- "0..1" sqls_SqlExpr : expression43
+sqls_SqlExpr "0..1" --* "1..1" sqls_UpdateColumnExpression : expression95
+sqls_InsertStatement "1..1" *-- "0..9999" sqls_SqlExpr : expressions77
+sqls_Column "0..9999" --* "1..1" sqls_Table : fields21
+sqls_Select "1..1" *-- "0..1" sqls_TableRef : from_49
+sqls_Function "0..1" -- "1..1" sqls_SqlFunction : function66
+sqls_Import "0..9999" --* "1..1" sqls_SqlLibrary : imports0
+sqls_SqlBinaryExpr "1..1" *-- "0..1" sqls_SqlExpr : left114
+sqls_Select "1..1" *-- "0..1" sqls_SqlExpr : limit57
+sqls_Select "1..1" *-- "0..1" sqls_SqlExpr : limitOffset60
+sqls_SqlMethod "0..1" -- "1..1" sqls_SqlMethodRef : method130
+sqls_SqlLibrary "1..1" *-- "0..9999" sqls_SqlMethod : methods12
+sqls_OrderingTerm "0..9999" --* "1..1" sqls_Select : orderingTerms54
+sqls_SqlExpr "0..9999" --* "1..1" sqls_SqlType : params16
+sqls_SqlExpr "0..9999" --* "1..1" sqls_SqlFunction : params67
+sqls_ResultColumn "0..9999" --* "1..1" sqls_SelectList : resultColumns45
+sqls_SqlBinaryExpr "1..1" *-- "0..1" sqls_SqlExpr : right116
+sqls_Select "1..1" *-- "0..1" sqls_SelectList : selectList47
+sqls_SqlMethod "1..1" *-- "0..9999" sqls_SqlSentence : sql39
+sqls_SqlType "0..1" --* "1..1" sqls_TypeDef : sqlType112
+sqls_SqlSentence "0..9999" --* "1..1" sqls_Trigger : sqls108
+sqls_Table "0..1" -- "1..1" sqls_Trigger : table105
+sqls_DeleteTable "1..1" -- "0..1" sqls_Table : table132
+sqls_Table "0..1" -- "1..1" sqls_TableRef : table63
+sqls_Insert "1..1" -- "0..1" sqls_Table : table70
+sqls_InsertStatement "1..1" -- "0..1" sqls_Table : table72
+sqls_Delete "1..1" -- "0..1" sqls_Table : table80
+sqls_Table "0..1" -- "1..1" sqls_Update : table85
+sqls_Get "1..1" -- "0..1" sqls_Table : table98
+sqls_ColumnRef "1..1" -- "0..1" sqls_TableRef : tableRef125
+sqls_SqlLibrary "1..1" *-- "0..9999" sqls_Table : tables8
+sqls_SqlLibrary "1..1" *-- "0..9999" sqls_Tag : tags1
+sqls_Tag "0..9999" -- "1..1" sqls_Trigger : tags100
+sqls_Table "1..1" -- "0..9999" sqls_Tag : tags18
+sqls_SqlMethod "1..1" -- "0..9999" sqls_Tag : tags33
+sqls_SqlLibrary "1..1" *-- "0..9999" sqls_Trigger : triggers10
+sqls_SqlType "1..1" -- "0..1" sqls_Type : type14
+sqls_Column "1..1" *-- "0..1" sqls_SqlType : type25
+sqls_SqlMethod "1..1" -- "0..1" sqls_Table : type36
+sqls_SqlLibrary "1..1" *-- "0..9999" sqls_Type : types5
+sqls_Update "1..1" *-- "0..9999" sqls_UpdateColumnExpression : updateColumnExpressions87
+sqls_Select "1..1" *-- "0..1" sqls_SqlExpr : where51
+sqls_Delete "1..1" *-- "0..1" sqls_SqlExpr : where82
+sqls_SqlExpr "0..1" --* "1..1" sqls_Update : where89
+@enduml

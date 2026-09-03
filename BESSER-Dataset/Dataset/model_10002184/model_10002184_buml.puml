@@ -1,0 +1,73 @@
+@startuml
+class Aranzman {
+  + AranzmanID : int
+  + CenaAranzmana : str
+  + DatumAranzmana : str
+  + HotelID : int
+  + KorisnikID : int
+  + NazivAranzmana : str
+  + OpisAranzmana : str
+  + VodicID : int
+}
+class Drzava {
+  + DrzavaID : int
+  + NazivDrzave : str
+}
+class Grad {
+  + DrzavaID : int
+  + GradID : int
+  + NazivGrada : str
+}
+class Hotel {
+  + AdresaHotela : str
+  + GradID : int
+  + HotelID : int
+  + KontaktHotela : str
+  + NazivHotela : str
+}
+class Korisnik {
+  + AdresaKorisnika : str
+  + GradKorisnika : str
+  + ImeKorisnika : str
+  + JMBG : str
+  + KontaktKorisnika : str
+  + KorisnikID : int
+  + Password : str
+  + PrezimeKorisnika : str
+  + Username : str
+}
+class Putnik {
+  + AdresaPutnika : str
+  + AranzmanID : int
+  + BrojPasosa : int
+  + GradPutnika : str
+  + ImePutnika : str
+  + JMBG : str
+  + KontaktPutnika : str
+  + PrezimePutnika : str
+  + PutnikID : int
+}
+class Uplata {
+  + DatumUplate : str
+  + Iznos : str
+  + NazivUplate : str
+  + PutnikID : int
+  + UplataID : int
+}
+class Vodic {
+  + AdresaVodica : str
+  + GradVodica : str
+  + ImeVodica : str
+  + JMBG : str
+  + KontaktVodica : str
+  + PrezimeVodica : str
+  + VodicID : int
+}
+Aranzman "0..9999" -- "1..1" Hotel : Aranzman_Hotel
+Drzava "1..1" -- "1..9999" Grad : Drzava_Grad
+Grad "1..1" -- "0..9999" Hotel : Grad_Hotel
+Aranzman "0..9999" -- "1..1" Korisnik : Korisnik_Aranzman
+Aranzman "1..1" -- "0..9999" Putnik : Putnik_Aranzman
+Putnik "1..1" -- "1..9999" Uplata : Uplata_Putnik
+Aranzman "0..9999" -- "1..1" Vodic : Vodic_Aranzman
+@enduml

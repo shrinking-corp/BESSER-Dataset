@@ -1,0 +1,83 @@
+@startuml
+class LRBAC_Banker {
+}
+class LRBAC_Coder {
+}
+class LRBAC_EClass0 {
+}
+class LRBAC_EClass1 {
+}
+class LRBAC_Execute {
+}
+class LRBAC_Location {
+  + LocName : str
+  + UpdateLocName(LRBAC_name : str) : void
+}
+class LRBAC_Object {
+  + ObjID : int
+  + UpdateObjID(LRBAC_id : str) : void
+}
+class LRBAC_Operation {
+}
+class LRBAC_Permission {
+  + PermName : str
+  + UpdatePermName(LRBAC_name : str) : void
+}
+class LRBAC_Read {
+}
+class LRBAC_Role {
+  + RoleName : str
+  + AddAssignLoc(LRBAC_l : str) : void
+  + UpdateRoleName(LRBAC_name : str) : void
+}
+class LRBAC_Session {
+  + MaxRoles : int
+  + UpdateMaxRoles(LRBAC_NoOfRoles : str) : void
+}
+class LRBAC_User {
+  + Age : int
+  + Gender : str
+  + UserID : int
+  + UserName : str
+  + AssignRole(LRBAC_r : str) : void
+  + UpdateAge(LRBAC_age : str) : str
+  + UpdateLoc(LRBAC_l : str) : void
+  + UpdateUserID(LRBAC_id : str) : void
+  + UpdateUserName(LRBAC_name : str) : str
+}
+class LRBAC_Write {
+}
+class Operation {
+}
+class User {
+}
+Operation <|-- LRBAC_Execute
+Operation <|-- LRBAC_Read
+Operation <|-- LRBAC_Write
+User <|-- LRBAC_Banker
+User <|-- LRBAC_Coder
+LRBAC_Location "0..9999" -- "1..1" LRBAC_Role : AssignLoc8
+LRBAC_Role "1..1" -- "0..9999" LRBAC_User : AssignUser6
+LRBAC_Role "0..9999" -- "1..1" LRBAC_User : AssignedRoles1
+LRBAC_EClass0 "0..1" --* "1..1" LRBAC_Read : EReference037
+LRBAC_EClass1 "1..1" *-- "0..1" LRBAC_Read : EReference038
+LRBAC_Location "1..1" -- "0..9999" LRBAC_Role : LocAssign15
+LRBAC_Location "1..1" -- "0..9999" LRBAC_Object : LocObj17
+LRBAC_Location "1..1" -- "0..9999" LRBAC_User : LocUser13
+LRBAC_Location "1..1" -- "1..1" LRBAC_Object : ObjLoc31
+LRBAC_Location "1..1" -- "1..1" LRBAC_Permission : ObjLocPerm29
+LRBAC_Object "1..1" -- "0..9999" LRBAC_Permission : ObjPerm33
+LRBAC_Operation "1..1" -- "0..9999" LRBAC_Permission : OperPerm35
+LRBAC_Object "1..1" -- "1..1" LRBAC_Permission : PermObj23
+LRBAC_Location "1..1" -- "0..9999" LRBAC_Permission : PermObjLoc20
+LRBAC_Operation "1..1" -- "1..1" LRBAC_Permission : PermOper22
+LRBAC_Permission "1..1" -- "1..1" LRBAC_Role : PermRole25
+LRBAC_Location "1..1" -- "0..9999" LRBAC_Permission : PermRoleLoc18
+LRBAC_Location "1..1" -- "1..1" LRBAC_Permission : RoleLocPerm27
+LRBAC_Permission "0..9999" -- "1..1" LRBAC_Role : RolePerm12
+LRBAC_Role "1..1" -- "0..9999" LRBAC_Session : RoleSess10
+LRBAC_Role "0..9999" -- "1..1" LRBAC_Session : SessRole3
+LRBAC_Session "1..1" -- "1..1" LRBAC_User : SessUser5
+LRBAC_Location "1..1" -- "1..1" LRBAC_User : UserLoc2
+LRBAC_Session "0..9999" -- "1..1" LRBAC_User : UserSess0
+@enduml

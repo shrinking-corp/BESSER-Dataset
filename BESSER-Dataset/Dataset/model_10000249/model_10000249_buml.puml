@@ -1,0 +1,59 @@
+@startuml
+class ADMIN {
+  + id : str
+  + password : str
+}
+class FACULTY {
+  + id : str
+  + password : str
+}
+class STUDENT {
+  + id : str
+}
+class _Component {
+}
+class admin_Actor {
+}
+class answer_attendance_call_external {
+}
+class faculty_Actor {
+}
+class generate_class_wise_attendance_report_external {
+}
+class login_external {
+}
+class logout_external {
+}
+class modify_list_of_students_external {
+}
+class post_attendance_external {
+}
+class send_attendance_sms_external {
+}
+class student_Actor {
+}
+class take_attendance_call_external {
+}
+class view_cumiliative_attendance_external {
+}
+class view_subject_wise_attendance_external {
+}
+ADMIN "1..1" -- "1..9999" FACULTY : FACULTY_ADMIN
+FACULTY "1..9999" -- "1..9999" STUDENT : FACULTY_STUDENT
+ADMIN "1..1" -- "1..9999" STUDENT : STUDENT_ADMIN
+admin_Actor "0..1" -- "0..1" login_external : admin_login
+admin_Actor "0..1" -- "0..1" logout_external : admin_logout
+admin_Actor "0..1" -- "0..1" modify_list_of_students_external : admin_modify_list_of_students
+faculty_Actor "0..1" -- "0..1" generate_class_wise_attendance_report_external : faculty_generate_class_wise_attendance_report
+faculty_Actor "0..1" -- "0..1" take_attendance_call_external : faculty_give_attendance
+faculty_Actor "0..1" -- "0..1" login_external : faculty_login
+faculty_Actor "0..1" -- "0..1" logout_external : faculty_logout
+faculty_Actor "0..1" -- "0..1" post_attendance_external : faculty_post_attendance
+faculty_Actor "0..1" -- "0..1" send_attendance_sms_external : faculty_send_attendance_sms
+faculty_Actor "0..1" -- "0..1" view_cumiliative_attendance_external : faculty_view_cumiliative_attendance
+answer_attendance_call_external "0..1" -- "0..1" student_Actor : student_answer_attendance_call
+login_external "0..1" -- "0..1" student_Actor : student_login
+logout_external "0..1" -- "0..1" student_Actor : student_logout
+student_Actor "0..1" -- "0..1" view_cumiliative_attendance_external : student_view_cumiliative_attendance
+student_Actor "0..1" -- "0..1" view_subject_wise_attendance_external : student_view_subject_wise_attendance
+@enduml

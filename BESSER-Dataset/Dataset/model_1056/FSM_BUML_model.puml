@@ -1,0 +1,24 @@
+@startuml
+class fSM_EnumerationLiteral {
+  + name : str
+}
+class fSM_EnumerationType {
+  + name : str
+}
+class fSM_FSM {
+}
+class fSM_Model {
+}
+class fSM_State {
+}
+class fSM_Transition {
+}
+fSM_FSM "0..9999" --* "1..1" fSM_Model : fsm1
+fSM_EnumerationLiteral "0..1" -- "1..1" fSM_State : literal8
+fSM_EnumerationLiteral "0..9999" --* "1..1" fSM_EnumerationType : literals15
+fSM_State "1..1" *-- "0..9999" fSM_Transition : outgoingTransition10
+fSM_FSM "1..1" *-- "0..9999" fSM_State : ownedState6
+fSM_State "0..1" -- "1..1" fSM_Transition : target12
+fSM_EnumerationType "0..1" -- "1..1" fSM_FSM : type3
+fSM_EnumerationType "0..9999" --* "1..1" fSM_Model : types0
+@enduml

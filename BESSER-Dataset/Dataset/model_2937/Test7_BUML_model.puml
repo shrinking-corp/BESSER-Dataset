@@ -1,0 +1,65 @@
+@startuml
+class SolutionConstraint {
+}
+class test7_AttributeType {
+  + name : str
+}
+class test7_AttributeTypeElement {
+  + dataType : str
+  + name : str
+}
+class test7_Feature {
+  + name : str
+}
+class test7_FeatureAttribute {
+  + name : str
+}
+class test7_FeatureAttributeElement {
+  + value : str
+}
+class test7_FeatureAttributeReference {
+}
+class test7_FiniteDomainSC {
+}
+class test7_FiniteDomainSCValueReference {
+  + value : str
+}
+class test7_HardLimitSC {
+  + op1 : str
+  + op2 : str
+  + value1 : str
+  + value2 : str
+}
+class test7_Model {
+}
+class test7_OptimizationSC {
+  + funct : str
+}
+class test7_SelectionStateSC {
+  + state : str
+}
+class test7_SolutionConstraint {
+  + name : str
+  + type : str
+}
+SolutionConstraint <|-- test7_FiniteDomainSC
+SolutionConstraint <|-- test7_HardLimitSC
+SolutionConstraint <|-- test7_OptimizationSC
+SolutionConstraint <|-- test7_SelectionStateSC
+test7_AttributeType "0..1" -- "1..1" test7_FeatureAttribute : attrType12
+test7_AttributeType "0..1" -- "1..1" test7_OptimizationSC : attrType22
+test7_AttributeType "0..1" -- "1..1" test7_HardLimitSC : attrType24
+test7_AttributeType "0..9999" --* "1..1" test7_Model : attributeTypes0
+test7_Feature "1..1" *-- "0..9999" test7_FeatureAttributeReference : attributes19
+test7_AttributeType "1..1" *-- "0..9999" test7_AttributeTypeElement : elements7
+test7_Feature "0..1" -- "1..1" test7_SelectionStateSC : feature26
+test7_Feature "0..1" -- "1..1" test7_FiniteDomainSC : feature28
+test7_FeatureAttribute "0..1" -- "1..1" test7_FiniteDomainSC : featureAttr30
+test7_FeatureAttribute "0..9999" --* "1..1" test7_Model : featureAttributes1
+test7_Feature "0..9999" --* "1..1" test7_Model : features3
+test7_AttributeType "1..1" -- "0..1" test7_AttributeType : independentAttrType10
+test7_FeatureAttribute "0..1" -- "1..1" test7_FeatureAttributeReference : name17
+test7_Model "1..1" *-- "0..9999" test7_SolutionConstraint : solutionConstraints5
+test7_FeatureAttribute "1..1" *-- "0..9999" test7_FeatureAttributeElement : values15
+test7_FiniteDomainSC "1..1" *-- "0..9999" test7_FiniteDomainSCValueReference : values33
+@enduml

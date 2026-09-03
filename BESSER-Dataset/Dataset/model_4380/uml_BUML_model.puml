@@ -1,0 +1,42 @@
+@startuml
+class NamedElement {
+}
+class Relations {
+}
+class euml_Attribute {
+}
+class euml_Class {
+}
+class euml_Dependecy {
+}
+class euml_Generalization {
+}
+abstract class euml_NamedElement {
+  + name : str
+}
+class euml_Operation {
+}
+class euml_Package {
+}
+class euml_Realization {
+}
+abstract class euml_Relations {
+}
+NamedElement <|-- euml_Attribute
+NamedElement <|-- euml_Class
+NamedElement <|-- euml_Operation
+NamedElement <|-- euml_Package
+Relations <|-- euml_Dependecy
+Relations <|-- euml_Generalization
+Relations <|-- euml_Realization
+euml_Attribute "0..9999" --* "1..1" euml_Class : attributes6
+euml_Class "0..9999" --* "1..1" euml_Package : classes0
+euml_Class "1..1" *-- "0..9999" euml_Dependecy : dependencies4
+euml_Class "1..1" *-- "0..9999" euml_Generalization : generalizations12
+euml_Class "1..1" *-- "0..9999" euml_Operation : operations8
+euml_Package "0..9999" --* "1..1" euml_Package : packages2
+euml_Class "1..1" *-- "0..9999" euml_Realization : realizations10
+euml_Class "0..1" -- "1..1" euml_Operation : returnType17
+euml_NamedElement "0..1" -- "1..1" euml_Relations : target20
+euml_Attribute "1..1" -- "0..1" euml_Class : type14
+@enduml

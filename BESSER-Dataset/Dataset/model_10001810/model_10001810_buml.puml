@@ -1,0 +1,90 @@
+@startuml
+class Adresse {
+  + code_postal : int
+  + geocode : str
+  + id : int
+  + num_ro : int
+  + t_l_phone : str
+  + utilisateur_id : int
+  + ville : str
+  + voie : str
+}
+class Cat_gorie {
+  + id : int
+  + nom : str
+}
+class Class {
+}
+class Commande {
+  + _tat : int
+  + date : int
+  + id : int
+  + paiement : str
+  + utilisateur_id : int
+}
+class Etat {
+  + id : int
+  + nom : str
+  + verrouillage : bool
+}
+class Ingr_dient {
+  + id : int
+  + nom : str
+  + poids : str
+  + unit_ : str
+}
+class Livraison {
+  + client_id : int
+  + commande_id : int
+  + geocode : str
+  + id : int
+  + livreur_id : int
+}
+class Pizzeria {
+  + adresse_id : int
+  + id : int
+  + nom : str
+}
+class Produit {
+  + categorie_id : int
+  + id : int
+  + nom : str
+  + prix : str
+}
+class R_le {
+  + id : int
+  + type : str
+}
+class Recette {
+  + id : int
+  + produit_id : int
+}
+class Stock {
+  + date_modification : int
+  + disponibilit_ : bool
+  + ingredient_id : int
+  + quantit_ : int
+}
+class Utilisateur {
+  + civilit_ : str
+  + date_naissance : str
+  + email : str
+  + id : int
+  + mot_de_passe : str
+  + nom : str
+  + pizzeria_id : int
+  + prenom : str
+  + role_id : int
+}
+Commande "0..1" -- "0..1" Utilisateur : Commande_Utilisateur
+Commande "0..1" -- "0..1" Etat : Etat_Commande
+Commande "0..1" -- "0..1" Livraison : Livraison_Commande
+Livraison "1..9999" -- "1..1" Utilisateur : Livraison_Utilisateur
+Livraison "1..9999" -- "1..1" Utilisateur : Livraison_Utilisateur2
+Adresse "1..1" -- "1..1" Pizzeria : Pizzeria_Adresse
+Cat_gorie "1..1" -- "1..9999" Produit : Produit_Cat_gorie
+Produit "1..1" -- "1..1" Recette : Produit_Recette
+Ingr_dient "1..1" -- "1..1" Stock : Stock_Ingr_dient
+Pizzeria "0..1" -- "0..1" Utilisateur : Utilisateur_Pizzeria
+R_le "1..1" -- "1..9999" Utilisateur : Utilisateur_R_le
+@enduml

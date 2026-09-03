@@ -1,0 +1,152 @@
+@startuml
+class Behavior {
+}
+class BehaviorStateMachines_Namespace {
+}
+class BehaviorStateMachines_RedefinableElement {
+}
+class BehaviorStateMachines_Vertex {
+}
+class Classifier {
+}
+class ConnectionPointReference {
+}
+class Constraint {
+}
+class DirectedRelationship {
+}
+class NamedElement {
+}
+class Operation {
+}
+class ProtocolConformance {
+}
+class ProtocolStateMachine {
+}
+class Pseudostate {
+}
+class Region {
+}
+class State {
+}
+class StateMachine {
+}
+abstract class StateMachines_BehaviorStateMachines_Behavior {
+}
+abstract class StateMachines_BehaviorStateMachines_Classifier {
+}
+class StateMachines_BehaviorStateMachines_ConnectionPointReference {
+}
+abstract class StateMachines_BehaviorStateMachines_Constraint {
+}
+class StateMachines_BehaviorStateMachines_FinalState {
+}
+abstract class StateMachines_BehaviorStateMachines_NamedElement {
+}
+abstract class StateMachines_BehaviorStateMachines_Namespace {
+}
+class StateMachines_BehaviorStateMachines_Pseudostate {
+}
+abstract class StateMachines_BehaviorStateMachines_RedefinableElement {
+}
+class StateMachines_BehaviorStateMachines_Region {
+}
+class StateMachines_BehaviorStateMachines_State {
+  + isComposite : bool
+  + isOrthogonal : bool
+  + isSimple : bool
+  + isSubmachineState : bool
+}
+class StateMachines_BehaviorStateMachines_StateMachine {
+}
+class StateMachines_BehaviorStateMachines_TimeEvent {
+}
+class StateMachines_BehaviorStateMachines_Transition {
+  + kind : str
+}
+abstract class StateMachines_BehaviorStateMachines_Trigger {
+}
+abstract class StateMachines_BehaviorStateMachines_Vertex {
+}
+abstract class StateMachines_ProtocolStateMachines_DirectedRelationship {
+}
+class StateMachines_ProtocolStateMachines_Interface {
+}
+class StateMachines_ProtocolStateMachines_Operation {
+}
+class StateMachines_ProtocolStateMachines_Port {
+}
+class StateMachines_ProtocolStateMachines_ProtocolConformance {
+}
+class StateMachines_ProtocolStateMachines_ProtocolStateMachine {
+}
+class StateMachines_ProtocolStateMachines_ProtocolTransition {
+}
+class Transition {
+}
+enum TransitionKind {
+  external
+  internal
+}
+class Trigger {
+}
+class Vertex {
+}
+Behavior <|-- StateMachines_BehaviorStateMachines_StateMachine
+BehaviorStateMachines_Namespace <|-- StateMachines_BehaviorStateMachines_Region
+BehaviorStateMachines_Namespace <|-- StateMachines_BehaviorStateMachines_State
+BehaviorStateMachines_Namespace <|-- StateMachines_BehaviorStateMachines_Transition
+BehaviorStateMachines_RedefinableElement <|-- StateMachines_BehaviorStateMachines_Region
+BehaviorStateMachines_RedefinableElement <|-- StateMachines_BehaviorStateMachines_State
+BehaviorStateMachines_RedefinableElement <|-- StateMachines_BehaviorStateMachines_Transition
+BehaviorStateMachines_Vertex <|-- StateMachines_BehaviorStateMachines_State
+Classifier <|-- StateMachines_ProtocolStateMachines_Interface
+DirectedRelationship <|-- StateMachines_ProtocolStateMachines_ProtocolConformance
+NamedElement <|-- StateMachines_BehaviorStateMachines_Vertex
+State <|-- StateMachines_BehaviorStateMachines_FinalState
+StateMachine <|-- StateMachines_ProtocolStateMachines_ProtocolStateMachine
+Transition <|-- StateMachines_ProtocolStateMachines_ProtocolTransition
+Vertex <|-- StateMachines_BehaviorStateMachines_ConnectionPointReference
+Vertex <|-- StateMachines_BehaviorStateMachines_Pseudostate
+ProtocolConformance "0..9999" --* "1..1" StateMachines_ProtocolStateMachines_ProtocolStateMachine : conformance70
+ConnectionPointReference "0..9999" --* "1..1" StateMachines_BehaviorStateMachines_State : connection44
+Pseudostate "0..9999" --* "1..1" StateMachines_BehaviorStateMachines_StateMachine : connectionPoint1
+Pseudostate "0..9999" --* "1..1" StateMachines_BehaviorStateMachines_State : connectionPoint45
+Region "0..1" -- "1..1" StateMachines_BehaviorStateMachines_Vertex : container19
+Region "0..1" -- "1..1" StateMachines_BehaviorStateMachines_Transition : container30
+StateMachines_BehaviorStateMachines_State "1..1" *-- "0..9999" Trigger : deferrableTrigger53
+Behavior "0..1" --* "1..1" StateMachines_BehaviorStateMachines_State : doActivity58
+Behavior "0..1" --* "1..1" StateMachines_BehaviorStateMachines_Transition : effect25
+Pseudostate "0..1" -- "1..1" StateMachines_BehaviorStateMachines_ConnectionPointReference : entry39
+Behavior "0..1" --* "1..1" StateMachines_BehaviorStateMachines_State : entry61
+Pseudostate "0..1" -- "1..1" StateMachines_BehaviorStateMachines_ConnectionPointReference : exit37
+Behavior "0..1" --* "1..1" StateMachines_BehaviorStateMachines_State : exit55
+Region "0..1" -- "1..1" StateMachines_BehaviorStateMachines_Region : extendedRegion13
+StateMachine "0..9999" -- "1..1" StateMachines_BehaviorStateMachines_StateMachine : extendedStateMachine3
+ProtocolStateMachine "1..1" -- "1..1" StateMachines_ProtocolStateMachines_ProtocolConformance : generalMachine72
+Constraint "0..1" --* "1..1" StateMachines_BehaviorStateMachines_Transition : guard28
+StateMachines_BehaviorStateMachines_Vertex "1..1" -- "0..9999" Transition : incoming17
+StateMachines_BehaviorStateMachines_Vertex "1..1" -- "0..9999" Transition : outgoing15
+Constraint "0..1" --* "1..1" StateMachines_ProtocolStateMachines_ProtocolTransition : postCondition80
+Constraint "0..1" --* "1..1" StateMachines_ProtocolStateMachines_ProtocolTransition : preCondition78
+ProtocolStateMachine "0..1" -- "1..1" StateMachines_ProtocolStateMachines_Port : protocol74
+ProtocolStateMachine "0..1" --* "1..1" StateMachines_ProtocolStateMachines_Interface : protocol76
+State "0..1" -- "1..1" StateMachines_BehaviorStateMachines_State : redefinedState67
+StateMachines_BehaviorStateMachines_Transition "1..1" -- "0..1" Transition : redefinedTransition32
+Operation "0..9999" -- "1..1" StateMachines_ProtocolStateMachines_ProtocolTransition : referred83
+Region "1..9999" --* "1..1" StateMachines_BehaviorStateMachines_StateMachine : region0
+Region "0..9999" --* "1..1" StateMachines_BehaviorStateMachines_State : region50
+StateMachines_BehaviorStateMachines_Transition "1..1" -- "1..1" Vertex : source21
+ProtocolStateMachine "1..1" -- "1..1" StateMachines_ProtocolStateMachines_ProtocolConformance : specificMachine71
+State "0..1" -- "1..1" StateMachines_BehaviorStateMachines_Region : state10
+State "0..1" -- "1..1" StateMachines_BehaviorStateMachines_Pseudostate : state35
+State "0..1" -- "1..1" StateMachines_BehaviorStateMachines_ConnectionPointReference : state42
+Constraint "0..1" --* "1..1" StateMachines_BehaviorStateMachines_State : stateInvariant64
+StateMachine "0..1" -- "1..1" StateMachines_BehaviorStateMachines_Region : stateMachine6
+StateMachine "0..1" -- "1..1" StateMachines_BehaviorStateMachines_State : submachine48
+State "0..9999" -- "1..1" StateMachines_BehaviorStateMachines_StateMachine : submachineState2
+StateMachines_BehaviorStateMachines_Region "1..1" *-- "0..9999" Vertex : subvertex5
+StateMachines_BehaviorStateMachines_Transition "1..1" -- "1..1" Vertex : target23
+StateMachines_BehaviorStateMachines_Region "1..1" *-- "0..9999" Transition : transition8
+StateMachines_BehaviorStateMachines_Transition "1..1" *-- "0..1" Trigger : trigger26
+@enduml

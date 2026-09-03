@@ -1,0 +1,27 @@
+@startuml
+class DB_Column {
+}
+class DB_Database {
+}
+abstract class DB_DatabaseElement {
+}
+abstract class DB_NamedElement {
+  + name : str
+}
+class DB_Table {
+}
+class DB_Type {
+}
+class DatabaseElement {
+}
+class NamedElement {
+}
+DatabaseElement <|-- DB_Table
+DatabaseElement <|-- DB_Type
+NamedElement <|-- DB_Column
+NamedElement <|-- DB_DatabaseElement
+DB_Column "0..9999" --* "1..1" DB_Table : columns1
+DB_Database "1..1" *-- "0..9999" DB_DatabaseElement : contents0
+DB_Column "0..9999" -- "1..1" DB_Table : primaryKeys2
+DB_Column "1..1" -- "0..1" DB_Type : type5
+@enduml

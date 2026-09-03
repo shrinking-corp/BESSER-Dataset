@@ -1,0 +1,91 @@
+@startuml
+class Action {
+}
+enum BooleanOperator {
+  Equal
+  Unequal
+}
+class Guard {
+}
+enum NumberOperator {
+  Equal
+  GreaterOrEqualThan
+  GreaterThan
+  LessOrEqualThan
+  LessThan
+  Unequal
+}
+enum StringOperator {
+  Equal
+  Unequal
+}
+class Variable {
+}
+abstract class automata_Action {
+}
+class automata_Automaton {
+}
+class automata_BooleanAction {
+  + value : bool
+}
+class automata_BooleanGuard {
+  + operator : str
+  + value : bool
+}
+class automata_BooleanVariable {
+  + initialValue : bool
+}
+abstract class automata_Guard {
+}
+class automata_NumberAction {
+  + value : str
+}
+class automata_NumberGuard {
+  + operator : str
+  + value : str
+}
+class automata_NumberVariable {
+  + initialValue : str
+}
+class automata_State {
+  + initial : bool
+  + name : str
+}
+class automata_StringAction {
+  + value : str
+}
+class automata_StringGuard {
+  + operator : str
+  + value : str
+}
+class automata_StringVariable {
+  + initialValue : str
+}
+class automata_Transition {
+}
+abstract class automata_Variable {
+  + name : str
+}
+Action <|-- automata_BooleanAction
+Action <|-- automata_NumberAction
+Action <|-- automata_StringAction
+Guard <|-- automata_BooleanGuard
+Guard <|-- automata_NumberGuard
+Guard <|-- automata_StringGuard
+Variable <|-- automata_BooleanVariable
+Variable <|-- automata_NumberVariable
+Variable <|-- automata_StringVariable
+automata_Action "1..1" --* "1..1" automata_Transition : action13
+automata_Guard "1..1" --* "1..1" automata_Transition : guard11
+automata_BooleanGuard "1..1" -- "1..1" automata_BooleanVariable : source15
+automata_StringGuard "1..1" -- "1..1" automata_StringVariable : source16
+automata_NumberGuard "1..1" -- "1..1" automata_NumberVariable : source17
+automata_State "1..1" -- "1..1" automata_Transition : source5
+automata_Automaton "1..1" *-- "0..9999" automata_State : states0
+automata_StringAction "1..1" -- "1..1" automata_StringVariable : target18
+automata_NumberAction "1..1" -- "1..1" automata_NumberVariable : target20
+automata_BooleanAction "1..1" -- "1..1" automata_BooleanVariable : target22
+automata_State "1..1" -- "1..1" automata_Transition : target8
+automata_Automaton "1..1" *-- "0..9999" automata_Transition : transitions1
+automata_Automaton "1..1" *-- "0..9999" automata_Variable : variables3
+@enduml

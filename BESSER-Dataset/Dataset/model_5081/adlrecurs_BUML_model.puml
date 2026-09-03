@@ -1,0 +1,59 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+class NamedElement {
+}
+class Type {
+}
+abstract class adlrecurs_AbstractComponent {
+}
+class adlrecurs_Attribute {
+  + name : str
+  + value : str
+}
+class adlrecurs_Attributes {
+  + signature : str
+}
+class adlrecurs_Binding {
+}
+class adlrecurs_Component {
+}
+class adlrecurs_Content {
+  + class_ : str
+  + language : str
+}
+abstract class adlrecurs_Interface {
+}
+class adlrecurs_Item {
+}
+abstract class adlrecurs_NamedElement {
+  + name : str
+}
+class adlrecurs_Provided {
+}
+class adlrecurs_Required {
+}
+abstract class adlrecurs_Type {
+  + signature : str
+}
+AbstractComponent <|-- adlrecurs_Component
+Interface <|-- adlrecurs_Type
+NamedElement <|-- adlrecurs_Binding
+NamedElement <|-- adlrecurs_Component
+NamedElement <|-- adlrecurs_Interface
+NamedElement <|-- adlrecurs_Item
+Type <|-- adlrecurs_Provided
+Type <|-- adlrecurs_Required
+adlrecurs_AbstractComponent "1..1" *-- "0..1" adlrecurs_Attributes : attributes1
+adlrecurs_Attribute "0..9999" --* "1..1" adlrecurs_Attributes : attributes14
+adlrecurs_Binding "0..9999" --* "1..1" adlrecurs_Interface : bindings7
+adlrecurs_AbstractComponent "1..1" *-- "0..1" adlrecurs_Content : content0
+adlrecurs_Binding "1..1" -- "0..1" adlrecurs_Interface : from_8
+adlrecurs_Item "0..9999" --* "1..1" adlrecurs_Type : items18
+adlrecurs_AbstractComponent "1..1" *-- "0..9999" adlrecurs_Provided : providedInterfaces5
+adlrecurs_AbstractComponent "1..1" *-- "0..9999" adlrecurs_Required : requiredInterfaces3
+adlrecurs_Component "1..1" *-- "0..9999" adlrecurs_Component : subComponents17
+adlrecurs_Binding "1..1" -- "0..1" adlrecurs_Interface : to11
+@enduml

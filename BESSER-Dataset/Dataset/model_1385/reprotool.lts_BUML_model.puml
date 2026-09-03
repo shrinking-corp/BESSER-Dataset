@@ -1,0 +1,38 @@
+@startuml
+class State {
+}
+class TransitionalState {
+}
+class UseCaseStep {
+}
+class lts2_AbortState {
+}
+class lts2_FinalState {
+}
+class lts2_InitialState {
+}
+abstract class lts2_LTSGenerator {
+  + processUseCase(lts2_useCase : str) : void
+}
+abstract class lts2_State {
+}
+class lts2_StateMachine {
+}
+class lts2_Transition {
+}
+class lts2_TransitionalState {
+}
+State <|-- lts2_AbortState
+State <|-- lts2_FinalState
+State <|-- lts2_TransitionalState
+TransitionalState <|-- lts2_InitialState
+lts2_AbortState "0..1" --* "1..1" lts2_StateMachine : abortState5
+lts2_FinalState "1..1" --* "1..1" lts2_StateMachine : finalState3
+lts2_InitialState "1..1" --* "1..1" lts2_StateMachine : initialState0
+lts2_LTSGenerator "1..1" *-- "1..1" lts2_StateMachine : labelTransitionSystem12
+UseCaseStep "1..1" -- "1..1" lts2_Transition : relatedStep9
+lts2_Transition "1..1" -- "1..1" lts2_TransitionalState : sourceState11
+lts2_State "1..1" -- "1..1" lts2_Transition : targetState8
+lts2_StateMachine "1..1" *-- "0..9999" lts2_TransitionalState : transitionalStates1
+lts2_Transition "1..9999" --* "1..1" lts2_TransitionalState : transitions7
+@enduml

@@ -1,0 +1,75 @@
+@startuml
+class marketing_Product {
+  + active : bool
+  + busId : user_Business
+  + ccategory : system_Category
+  + created : date
+  + expires : date
+  + id : str
+  + name : str
+  + price : float
+  + reviews : marketing_Review
+}
+class marketing_Review {
+  + description : str
+  + id : str
+  + product : marketing_Product
+  + rating : str
+  + user : user_User
+}
+class system_Category {
+  + icon : str
+  + id : str
+  + name : str
+  + parent : system_Category
+  + section : str
+}
+class user_Address {
+  + country : str
+  + postcode : str
+  + state : str
+  + street : str
+  + suburb : str
+}
+class user_Business {
+  + address : user_Address
+  + adminUser : user_User
+  + avgRatings : str
+  + category : str
+  + email : str
+  + id : str
+  + name : str
+  + phone : str
+  + products : marketing_Product
+  + staffUsers : user_User
+  + tags : user_Tags
+  + website : str
+}
+class user_Provider {
+  + displayName : str
+  + email : str
+  + photoURL : str
+  + providerId : str
+  + uid : str
+}
+class user_Tags {
+  + id : str
+  + name : str
+}
+class user_User {
+  + address : user_Address
+  + business : user_Business
+  + displayName : str
+  + email : str
+  + fiirstName : str
+  + id : str
+  + interests : system_Category
+  + lastName : str
+  + phone : str
+  + photoURL : str
+  + provider : user_Provider
+  + purchaseHistory : marketing_Product
+  + reviews : marketing_Review
+  + wishlist : marketing_Product
+}
+@enduml

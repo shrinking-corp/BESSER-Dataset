@@ -1,0 +1,41 @@
+@startuml
+class comicBookCollection2_Artist {
+  + name : str
+}
+class comicBookCollection2_Book {
+  + name : str
+  + publicationDate : str
+}
+class comicBookCollection2_ComicBookCollection {
+}
+class comicBookCollection2_Editor {
+  + name : str
+}
+class comicBookCollection2_Publisher {
+  + publishersName : str
+}
+class comicBookCollection2_Series {
+  + seriesName : str
+}
+class comicBookCollection2_Writer {
+  + name : str
+}
+comicBookCollection2_Artist "0..9999" --* "1..1" comicBookCollection2_ComicBookCollection : artists1
+comicBookCollection2_Artist "1..9999" -- "1..1" comicBookCollection2_Book : artists14
+comicBookCollection2_Book "0..9999" --* "1..1" comicBookCollection2_ComicBookCollection : books0
+comicBookCollection2_Artist "1..1" -- "0..9999" comicBookCollection2_Book : booksArtistFor21
+comicBookCollection2_Artist "1..1" -- "0..9999" comicBookCollection2_Book : booksCoverArtistFor23
+comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Editor : booksEditorFor25
+comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Series : booksInSeries12
+comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Publisher : booksPublished11
+comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Writer : booksWriterFor27
+comicBookCollection2_Artist "1..1" -- "1..1" comicBookCollection2_Book : coverArtist17
+comicBookCollection2_Book "1..1" -- "1..9999" comicBookCollection2_Editor : editors15
+comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Editor : editors3
+comicBookCollection2_Book "1..1" -- "1..1" comicBookCollection2_Publisher : publisher19
+comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Publisher : publishingCompanies7
+comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Series : series9
+comicBookCollection2_Book "1..1" -- "1..1" comicBookCollection2_Series : seriesPartOf20
+comicBookCollection2_Book "1..1" -- "1..9999" comicBookCollection2_Writer : writers16
+comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Writer : writers5
+@enduml

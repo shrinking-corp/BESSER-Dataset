@@ -1,0 +1,73 @@
+@startuml
+class Command {
+}
+class SuperCommand {
+}
+class helloWeb_Backward {
+  + distance : str
+}
+class helloWeb_Command {
+}
+class helloWeb_Down {
+  + distance : str
+}
+class helloWeb_FeatureMatch {
+  + image_name : str
+}
+class helloWeb_Forward {
+  + distance : str
+}
+class helloWeb_FunctionName {
+  + func_name : str
+}
+class helloWeb_Left {
+  + distance : str
+}
+class helloWeb_Main {
+  + land : str
+  + takeoff : str
+}
+class helloWeb_Program {
+}
+class helloWeb_RecordedFlight {
+  + video_name : str
+}
+class helloWeb_Right {
+  + distance : str
+}
+class helloWeb_RotateL {
+  + angle : int
+}
+class helloWeb_RotateR {
+  + angle : int
+}
+class helloWeb_Snapshot {
+  + image_name : str
+}
+class helloWeb_SuperCommand {
+}
+class helloWeb_Up {
+  + distance : str
+}
+class helloWeb_UserFunction {
+  + name : str
+}
+class helloWeb_Wait {
+  + seconds : str
+}
+Command <|-- helloWeb_Backward
+Command <|-- helloWeb_Down
+Command <|-- helloWeb_Forward
+Command <|-- helloWeb_Left
+Command <|-- helloWeb_Right
+Command <|-- helloWeb_RotateL
+Command <|-- helloWeb_RotateR
+Command <|-- helloWeb_Snapshot
+Command <|-- helloWeb_Up
+Command <|-- helloWeb_Wait
+SuperCommand <|-- helloWeb_Command
+SuperCommand <|-- helloWeb_FunctionName
+helloWeb_Main "1..1" *-- "0..9999" helloWeb_SuperCommand : commands1
+helloWeb_Command "0..9999" --* "1..1" helloWeb_UserFunction : func3
+helloWeb_Main "0..1" --* "1..1" helloWeb_Program : main0
+@enduml

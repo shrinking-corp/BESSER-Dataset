@@ -1,0 +1,86 @@
+@startuml
+class DModel {
+}
+enum EsmLayoutDirection {
+  DEFAULT
+  DOWN
+  LEFT
+  RIGHT
+  UP
+}
+class EsmState {
+}
+enum EsmStateKind {
+  FINAL
+  INITIAL
+  NORMAL
+}
+class IDiagramRoot {
+}
+class IEsmLayout {
+}
+class IEsmState {
+}
+class IEsmStateModel {
+}
+class INavigableMemberContainer {
+}
+class IStaticReferenceTarget {
+}
+class esm_DEntityType {
+}
+class esm_DExpression {
+}
+class esm_DRichText {
+}
+class esm_DState {
+}
+class esm_DStateEvent {
+}
+class esm_EsmCompositeState {
+}
+class esm_EsmConcurrentState {
+}
+class esm_EsmDerivedState {
+}
+class esm_EsmEntityStateModel {
+}
+class esm_EsmState {
+}
+class esm_EsmSubStateModel {
+}
+class esm_EsmTransition {
+}
+abstract class esm_IEsmLayout {
+  + direction : str
+}
+abstract class esm_IEsmState {
+  + kind : str
+}
+abstract class esm_IEsmStateModel {
+}
+DModel <|-- esm_EsmEntityStateModel
+EsmState <|-- esm_EsmDerivedState
+IDiagramRoot <|-- esm_EsmEntityStateModel
+IEsmLayout <|-- esm_EsmTransition
+IEsmLayout <|-- esm_IEsmStateModel
+IEsmState <|-- esm_EsmCompositeState
+IEsmState <|-- esm_EsmConcurrentState
+IEsmState <|-- esm_EsmState
+IEsmStateModel <|-- esm_EsmCompositeState
+IEsmStateModel <|-- esm_EsmEntityStateModel
+IEsmStateModel <|-- esm_EsmSubStateModel
+INavigableMemberContainer <|-- esm_EsmEntityStateModel
+IStaticReferenceTarget <|-- esm_EsmEntityStateModel
+esm_DRichText "0..1" --* "1..1" esm_IEsmState : description6
+esm_DStateEvent "0..1" -- "1..1" esm_EsmTransition : event16
+esm_DExpression "0..1" --* "1..1" esm_EsmDerivedState : expression8
+esm_DEntityType "0..1" -- "1..1" esm_EsmEntityStateModel : forType0
+esm_DState "0..1" -- "1..1" esm_EsmTransition : from_10
+esm_DExpression "0..1" --* "1..1" esm_EsmTransition : guard18
+esm_DState "0..1" -- "1..1" esm_IEsmState : state4
+esm_IEsmState "0..9999" --* "1..1" esm_IEsmStateModel : states1
+esm_EsmConcurrentState "1..1" *-- "0..9999" esm_EsmSubStateModel : subStates9
+esm_DState "0..1" -- "1..1" esm_EsmTransition : to13
+esm_EsmTransition "0..9999" --* "1..1" esm_IEsmStateModel : transitions2
+@enduml

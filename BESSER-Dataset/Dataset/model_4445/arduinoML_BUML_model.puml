@@ -1,0 +1,83 @@
+@startuml
+class Brick {
+}
+enum Compare {
+  einf
+  equal
+  esup
+  inf
+  sup
+}
+class NamedElement {
+}
+enum Signal {
+  HIGH
+  LOW
+}
+enum Time_unit {
+  min
+  ms
+  s
+}
+class Transition {
+}
+class arduinoML_Action {
+  + value : str
+}
+class arduinoML_Actuator {
+}
+class arduinoML_Analog {
+  + debug : bool
+}
+class arduinoML_App {
+  + monitoring : bool
+}
+abstract class arduinoML_Brick {
+  + pin : int
+}
+class arduinoML_Digital {
+}
+class arduinoML_Mode {
+}
+abstract class arduinoML_NamedElement {
+  + name : str
+}
+class arduinoML_State {
+}
+abstract class arduinoML_Transition {
+  + a_values : int
+  + comp : str
+  + d_values : str
+  + time : int
+  + unit : str
+}
+class arduinoML_TransitionMode {
+}
+class arduinoML_TransitionState {
+}
+Brick <|-- arduinoML_Actuator
+Brick <|-- arduinoML_Analog
+Brick <|-- arduinoML_Digital
+NamedElement <|-- arduinoML_App
+NamedElement <|-- arduinoML_Brick
+NamedElement <|-- arduinoML_Mode
+NamedElement <|-- arduinoML_State
+Transition <|-- arduinoML_TransitionMode
+Transition <|-- arduinoML_TransitionState
+arduinoML_Action "1..9999" --* "1..1" arduinoML_State : actions6
+arduinoML_Action "1..1" -- "1..1" arduinoML_Actuator : actuator8
+arduinoML_Analog "0..9999" -- "1..1" arduinoML_Transition : analogs11
+arduinoML_Brick "0..9999" --* "1..1" arduinoML_Mode : bricks13
+arduinoML_App "1..1" *-- "1..9999" arduinoML_Brick : bricks4
+arduinoML_Digital "0..9999" -- "1..1" arduinoML_Transition : digitals10
+arduinoML_Mode "1..1" -- "1..1" arduinoML_State : initial19
+arduinoML_App "1..1" -- "0..1" arduinoML_Mode : initial_mode0
+arduinoML_Mode "1..1" -- "1..1" arduinoML_TransitionMode : mode26
+arduinoML_App "1..1" *-- "1..9999" arduinoML_Mode : modes1
+arduinoML_Mode "1..1" -- "1..1" arduinoML_TransitionMode : next_mode27
+arduinoML_State "1..1" -- "1..1" arduinoML_TransitionState : next_state23
+arduinoML_State "1..1" -- "1..1" arduinoML_TransitionState : state25
+arduinoML_Mode "1..1" *-- "1..9999" arduinoML_State : states16
+arduinoML_Mode "1..1" *-- "1..9999" arduinoML_TransitionMode : transitions_mode22
+arduinoML_State "1..1" *-- "1..9999" arduinoML_TransitionState : transitions_state7
+@enduml

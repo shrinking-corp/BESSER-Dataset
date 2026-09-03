@@ -1,0 +1,115 @@
+@startuml
+enum CourseWorkType {
+  LABHOUR
+  LECTURE
+}
+enum DeadlineEvaluation {
+  ASSIGNMENT
+  PROJECT
+}
+class Evaluation {
+}
+class PersonRole {
+}
+enum StudyProgramCode {
+  BIT
+  MIT
+  MTDT
+  MTIØT
+}
+class course_desc_Course {
+  + Code : str
+  + Content : str
+  + Credits : str
+  + name : str
+}
+class course_desc_CourseCoordinator {
+}
+class course_desc_CourseInstance {
+  + LabHours : float
+  + LectureHours : float
+  + Year : int
+}
+class course_desc_CoursePreconditions {
+  + isRecommended : bool
+  + isRequired : bool
+  + reductionPoints : float
+}
+class course_desc_CourseWork {
+  + Duration : int
+  + Room : str
+  + Type : str
+  + isMandatory : bool
+  + isRestricted : bool
+}
+class course_desc_Department {
+  + name : str
+}
+abstract class course_desc_Evaluation {
+  + Percentage : float
+}
+class course_desc_EvaluationWithDeadline {
+  + deadlineEvaluation : str
+}
+class course_desc_Exam {
+  + date : date
+  + duration : float
+  + place : str
+}
+class course_desc_Lecturer {
+}
+class course_desc_Person {
+  + fullName : str
+  + lastName : str
+  + name : str
+  + personNr : str
+}
+abstract class course_desc_PersonRole {
+}
+class course_desc_Student {
+  + totalStudyPoints : float
+  + cancelExam(course_desc_exam : str) : bool
+  + signUpForExam(course_desc_exam : str) : bool
+  + takeExam(course_desc_exam : str) : bool
+}
+class course_desc_StudyProgram {
+  + studyCode : str
+}
+class course_desc_Timetable {
+}
+class course_desc_Univ {
+}
+Evaluation <|-- course_desc_EvaluationWithDeadline
+Evaluation <|-- course_desc_Exam
+PersonRole <|-- course_desc_CourseCoordinator
+PersonRole <|-- course_desc_Lecturer
+PersonRole <|-- course_desc_Student
+course_desc_Department "1..1" -- "1..1" course_desc_StudyProgram : belongs26
+course_desc_CourseInstance "0..1" -- "1..1" course_desc_Evaluation : belongsTo13
+course_desc_Course "1..1" -- "1..1" course_desc_CoursePreconditions : belongsTo20
+course_desc_CourseInstance "0..1" -- "1..1" course_desc_Lecturer : belongsTo32
+course_desc_CourseCoordinator "1..1" -- "0..1" course_desc_CourseInstance : belongsTo35
+course_desc_Exam "0..9999" -- "1..1" course_desc_Student : finishedExams31
+course_desc_CourseCoordinator "0..9999" --* "1..1" course_desc_CourseInstance : hasCourseCoordinator8
+course_desc_CourseWork "0..9999" --* "1..1" course_desc_Timetable : hasCourseWork16
+course_desc_Course "0..9999" --* "1..1" course_desc_Univ : hasCourses39
+course_desc_Department "0..9999" --* "1..1" course_desc_Univ : hasDepartment38
+course_desc_CourseInstance "1..1" *-- "1..9999" course_desc_Evaluation : hasEvaluations4
+course_desc_Exam "0..9999" -- "1..1" course_desc_Student : hasExams30
+course_desc_Course "1..1" -- "0..9999" course_desc_CourseInstance : hasInstance0
+course_desc_CourseInstance "1..1" *-- "0..9999" course_desc_Lecturer : hasLecturers6
+course_desc_Person "0..9999" --* "1..1" course_desc_Univ : hasPersons42
+course_desc_CoursePreconditions "0..9999" --* "1..1" course_desc_Univ : hasPrecond44
+course_desc_Course "1..1" -- "0..9999" course_desc_CoursePreconditions : hasPrecondition1
+course_desc_Exam "1..1" -- "0..9999" course_desc_Student : hasRegisteredStudents15
+course_desc_Person "1..1" -- "0..9999" course_desc_PersonRole : hasRole28
+course_desc_Student "0..9999" --* "1..1" course_desc_Univ : hasStudents47
+course_desc_CourseInstance "1..1" *-- "1..9999" course_desc_Timetable : hasTimetable2
+course_desc_Course "1..1" -- "1..1" course_desc_CourseInstance : instanceOfCourse3
+course_desc_CourseInstance "1..1" -- "1..1" course_desc_Department : isInstanceOf5
+course_desc_Person "0..1" -- "1..1" course_desc_PersonRole : linkedTo29
+course_desc_Department "1..1" *-- "1..9999" course_desc_StudyProgram : manages12
+course_desc_Course "0..9999" -- "1..1" course_desc_StudyProgram : offers23
+course_desc_StudyProgram "0..9999" -- "1..1" course_desc_Timetable : programs18
+course_desc_CourseInstance "0..9999" --* "1..1" course_desc_Department : responsible10
+@enduml

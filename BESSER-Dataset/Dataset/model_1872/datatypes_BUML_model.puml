@@ -1,0 +1,46 @@
+@startuml
+class ComplexType {
+}
+class DataType {
+}
+class IDLReference {
+}
+abstract class datatypes_ComplexType {
+  + getLabel() : str
+}
+class datatypes_CustomType {
+}
+abstract class datatypes_DataType {
+  + name : str
+}
+class datatypes_Field {
+  + description : str
+  + measureUnit : str
+  + name : str
+}
+abstract class datatypes_IDLReference {
+}
+class datatypes_RosIDLReference {
+  + namespace : str
+  + rosPackage : str
+}
+class datatypes_SimpleType {
+}
+class datatypes_TypesLibrary {
+  + name : str
+}
+class datatypes_VectorType {
+}
+ComplexType <|-- datatypes_CustomType
+ComplexType <|-- datatypes_IDLReference
+ComplexType <|-- datatypes_VectorType
+DataType <|-- datatypes_ComplexType
+DataType <|-- datatypes_SimpleType
+IDLReference <|-- datatypes_RosIDLReference
+datatypes_CustomType "1..1" *-- "1..9999" datatypes_Field : fields5
+datatypes_TypesLibrary "1..1" -- "0..9999" datatypes_TypesLibrary : includes2
+datatypes_DataType "1..1" -- "1..1" datatypes_VectorType : template4
+datatypes_DataType "1..1" -- "1..1" datatypes_Field : type6
+datatypes_DataType "0..9999" --* "1..1" datatypes_TypesLibrary : types0
+datatypes_DataType "1..1" -- "1..1" datatypes_TypesLibrary : typesLibrary3
+@enduml

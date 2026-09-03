@@ -1,0 +1,67 @@
+@startuml
+class AIPlayer {
+}
+class Board {
+}
+class Board1 {
+  + boardSize : int
+}
+class BoardGUI {
+  + frame : JFrame
+}
+class Chance {
+  + amount : Random
+}
+class Class {
+}
+class Dice {
+  + firstValue : int
+  + randomNumber : Random
+  + secondValue : int
+}
+class FreeParking {
+}
+class IncomeTax {
+  + taxRate : float
+}
+class JFrame {
+}
+class Jail {
+  + JailPosition : int
+  + jailFine : int
+}
+class Money {
+  + money : int
+}
+class Player {
+  + INITIAL_MONEY : int
+  + INITIAL_POSITION : int
+  + PASS_GO_MONEY : int
+  + board : Board
+  + inJail : bool
+  + isAI : bool
+  + isBankrupt : bool
+  + isRetire : bool
+  + money : Money
+  + name : str
+  + position : int
+  + property : str
+  + rand : Random
+}
+class PlayerIcon {
+  + icon : str
+}
+enum Property {
+}
+class Random {
+}
+Board1 "1..1" -- "1..1" BoardGUI : BoardGUI_Board
+Board1 "1..1" -- "0..9999" Chance : Board_Chance
+Board1 "1..1" -- "1..1" Dice : Board_Dice
+Board1 "1..1" -- "1..1" FreeParking : Board_FreeParking
+Board1 "1..1" -- "1..1" IncomeTax : Board_IncomeTax
+Board1 "1..1" -- "1..1" Jail : Board_Jail
+Board1 "1..1" -- "0..9999" Player : Board_Player
+Money "1..1" -- "1..1" Player : Money_Player
+BoardGUI "1..1" -- "0..9999" PlayerIcon : PlayerIcon_BoardGUI
+@enduml

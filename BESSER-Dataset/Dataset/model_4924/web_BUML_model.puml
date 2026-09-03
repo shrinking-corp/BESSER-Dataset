@@ -1,0 +1,112 @@
+@startuml
+class Container {
+}
+class Content {
+}
+class Page {
+}
+enum ReleaseType {
+  milestone
+  nightly
+  release
+}
+enum VersionState {
+  IN_DEVELOPMENT
+  PLANNED
+  RELEASED
+}
+class web_Author {
+  + email : str
+  + name : str
+  + plusLink : str
+}
+abstract class web_Container {
+}
+abstract class web_Content {
+}
+class web_ContentPage {
+}
+class web_FooterEntry {
+  + link : str
+  + name : str
+}
+class web_Gallery {
+  + label : str
+}
+class web_GalleryContent {
+}
+class web_HtmlContent {
+  + data : str
+}
+class web_Image {
+  + label : str
+  + src : str
+}
+class web_Link {
+  + label : str
+  + target : str
+}
+class web_NewsEntry {
+  + date : date
+  + description : str
+  + title : str
+}
+class web_NewsFeedPage {
+}
+abstract class web_Page {
+  + id : str
+  + name : str
+}
+class web_Release {
+  + alternateMsiName : str
+  + buildId : str
+  + date : date
+  + javadoc : bool
+  + name : str
+  + releaseNotesLink : str
+  + type : str
+  + unqualifiedName : str
+}
+class web_ReleaseSection {
+}
+class web_Site {
+  + description : str
+  + name : str
+}
+class web_SocialBar {
+}
+class web_SocialInformation {
+  + facebookUrl : str
+  + plusUrl : str
+  + twitterUrl : str
+  + url : str
+}
+class web_Version {
+  + name : str
+  + state : str
+}
+Container <|-- web_ContentPage
+Container <|-- web_NewsEntry
+Content <|-- web_GalleryContent
+Content <|-- web_HtmlContent
+Content <|-- web_ReleaseSection
+Content <|-- web_SocialBar
+Page <|-- web_ContentPage
+Page <|-- web_NewsFeedPage
+web_Author "1..1" -- "1..1" web_NewsEntry : author13
+web_Author "0..9999" --* "1..1" web_Site : author4
+web_Container "1..1" *-- "0..9999" web_Content : content16
+web_FooterEntry "0..9999" --* "1..1" web_Site : footer1
+web_Gallery "0..9999" --* "1..1" web_Site : galleries10
+web_Gallery "1..1" -- "1..1" web_GalleryContent : gallery22
+web_Gallery "1..1" *-- "0..9999" web_Image : images20
+web_SocialBar "1..1" *-- "0..1" web_SocialInformation : information24
+web_Link "0..9999" --* "1..1" web_Site : links6
+web_NewsEntry "0..9999" --* "1..1" web_Site : news2
+web_Page "0..9999" --* "1..1" web_Site : pages0
+web_Release "0..1" -- "1..1" web_ReleaseSection : release18
+web_Release "0..9999" --* "1..1" web_Version : releases19
+web_Page "1..1" -- "0..1" web_Site : site12
+web_Release "1..1" -- "0..1" web_Version : version17
+web_Site "1..1" *-- "0..9999" web_Version : versions8
+@enduml

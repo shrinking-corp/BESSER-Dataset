@@ -1,0 +1,32 @@
+@startuml
+class Column {
+}
+class DataBase {
+}
+class NamedElement {
+}
+class RelationalDBSchema_Column {
+  + dataType : str
+  + defaultValue : str
+  + null : str
+}
+class RelationalDBSchema_DataBase {
+  + SGBDname : str
+}
+abstract class RelationalDBSchema_NamedElement {
+  + name : str
+}
+class RelationalDBSchema_Table {
+}
+class Table {
+}
+NamedElement <|-- RelationalDBSchema_Column
+NamedElement <|-- RelationalDBSchema_DataBase
+NamedElement <|-- RelationalDBSchema_Table
+Column "0..9999" --* "1..1" RelationalDBSchema_Table : columns2
+DataBase "1..1" -- "1..1" RelationalDBSchema_Table : database1
+Column "0..9999" -- "1..1" RelationalDBSchema_Table : key3
+RelationalDBSchema_Column "1..1" -- "0..1" Table : keyOf7
+RelationalDBSchema_Column "1..1" -- "1..1" Table : owner5
+RelationalDBSchema_DataBase "1..1" *-- "0..9999" Table : tables0
+@enduml

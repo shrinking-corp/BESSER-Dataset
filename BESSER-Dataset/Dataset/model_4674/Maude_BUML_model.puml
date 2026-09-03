@@ -1,0 +1,216 @@
+@startuml
+class Condition {
+}
+class EquationalCond {
+}
+class MaudeTopEl {
+}
+class Maude_BooleanCond {
+}
+class Maude_CompModExp {
+}
+abstract class Maude_Condition {
+}
+class Maude_Constant {
+  + op : str
+}
+class Maude_EqualCond {
+}
+class Maude_Equation {
+}
+abstract class Maude_EquationalCond {
+}
+class Maude_FModule {
+}
+class Maude_FTheory {
+}
+class Maude_InstModExp {
+}
+class Maude_Kind {
+}
+class Maude_LabelMapping {
+  + from_ : str
+  + to : str
+}
+class Maude_MatchingCond {
+}
+class Maude_MaudeSpec {
+}
+abstract class Maude_MaudeTopEl {
+  + name : str
+}
+class Maude_Membership {
+}
+class Maude_MembershipCond {
+}
+abstract class Maude_ModElement {
+}
+abstract class Maude_ModExpression {
+}
+class Maude_ModImportation {
+}
+abstract class Maude_Module {
+}
+class Maude_ModuleIdModExp {
+}
+class Maude_OpMapping {
+  + to : str
+}
+class Maude_OpTypedMapping {
+  + atts : str
+  + to : str
+}
+class Maude_Operation {
+  + atts : str
+  + name : str
+}
+class Maude_Parameter {
+  + label : str
+}
+class Maude_RecTerm {
+  + op : str
+}
+abstract class Maude_RenMapping {
+}
+class Maude_RenModExp {
+}
+class Maude_RewriteCond {
+}
+class Maude_Rule {
+}
+class Maude_SModule {
+}
+class Maude_STheory {
+}
+class Maude_Sort {
+}
+class Maude_SortMapping {
+  + to : str
+}
+abstract class Maude_Statement {
+  + atts : str
+  + label : str
+}
+class Maude_SubsortRel {
+}
+abstract class Maude_Term {
+}
+class Maude_TermMapping {
+}
+abstract class Maude_Theory {
+}
+class Maude_TheoryIdModExp {
+}
+abstract class Maude_Type {
+  + name : str
+}
+class Maude_Variable {
+  + name : str
+}
+class Maude_View {
+}
+abstract class Maude_ViewMapping {
+}
+class ModElement {
+}
+class ModExpression {
+}
+class Module {
+}
+class RenMapping {
+}
+class Statement {
+}
+class Term {
+}
+class Theory {
+}
+class Type {
+}
+class ViewMapping {
+}
+Condition <|-- Maude_EquationalCond
+Condition <|-- Maude_RewriteCond
+EquationalCond <|-- Maude_BooleanCond
+EquationalCond <|-- Maude_EqualCond
+EquationalCond <|-- Maude_MatchingCond
+EquationalCond <|-- Maude_MembershipCond
+MaudeTopEl <|-- Maude_Module
+MaudeTopEl <|-- Maude_Theory
+MaudeTopEl <|-- Maude_View
+ModElement <|-- Maude_ModImportation
+ModElement <|-- Maude_Operation
+ModElement <|-- Maude_Sort
+ModElement <|-- Maude_Statement
+ModElement <|-- Maude_SubsortRel
+ModExpression <|-- Maude_CompModExp
+ModExpression <|-- Maude_InstModExp
+ModExpression <|-- Maude_ModuleIdModExp
+ModExpression <|-- Maude_Parameter
+ModExpression <|-- Maude_RenModExp
+ModExpression <|-- Maude_TheoryIdModExp
+Module <|-- Maude_FModule
+Module <|-- Maude_SModule
+RenMapping <|-- Maude_LabelMapping
+RenMapping <|-- Maude_OpMapping
+RenMapping <|-- Maude_OpTypedMapping
+RenMapping <|-- Maude_SortMapping
+Statement <|-- Maude_Equation
+Statement <|-- Maude_Membership
+Statement <|-- Maude_Rule
+Term <|-- Maude_Constant
+Term <|-- Maude_RecTerm
+Term <|-- Maude_Variable
+Theory <|-- Maude_FTheory
+Theory <|-- Maude_STheory
+Type <|-- Maude_Kind
+Type <|-- Maude_Sort
+ViewMapping <|-- Maude_RenMapping
+ViewMapping <|-- Maude_TermMapping
+Maude_RecTerm "1..1" *-- "1..9999" Maude_Term : args69
+Maude_Operation "1..1" -- "0..9999" Maude_Type : arity38
+Maude_Operation "1..1" -- "0..1" Maude_Type : coarity37
+Maude_Condition "0..9999" --* "1..1" Maude_Statement : conds41
+Maude_MaudeSpec "1..1" *-- "0..9999" Maude_MaudeTopEl : els0
+Maude_ModElement "0..9999" --* "1..1" Maude_Theory : els17
+Maude_ModElement "0..9999" --* "1..1" Maude_Module : els18
+Maude_View "1..1" *-- "0..9999" Maude_ViewMapping : els77
+Maude_ModExpression "1..1" --* "1..1" Maude_View : from_71
+Maude_Term "1..1" --* "1..1" Maude_TermMapping : from_79
+Maude_Sort "1..1" -- "1..1" Maude_SortMapping : from_84
+Maude_OpTypedMapping "1..1" -- "1..1" Maude_Operation : from_86
+Maude_OpMapping "1..1" -- "1..1" Maude_Operation : from_88
+Maude_ModExpression "1..1" --* "1..1" Maude_ModImportation : imports26
+Maude_Kind "1..1" -- "1..1" Maude_Sort : kind31
+Maude_Equation "1..1" *-- "1..1" Maude_Term : lhs45
+Maude_Rule "1..1" *-- "0..1" Maude_Term : lhs50
+Maude_Condition "1..1" *-- "1..1" Maude_Term : lhs55
+Maude_ModExpression "1..1" --* "1..1" Maude_Parameter : modExp15
+Maude_InstModExp "1..1" *-- "1..1" Maude_ModExpression : modExp4
+Maude_ModExpression "1..1" --* "1..1" Maude_RenModExp : modExp7
+Maude_CompModExp "1..1" *-- "2..9999" Maude_ModExpression : modExps11
+Maude_Module "1..1" -- "1..1" Maude_ModuleIdModExp : module13
+Maude_ModElement "1..1" -- "0..1" Maude_Module : module23
+Maude_Module "1..1" *-- "0..9999" Maude_Parameter : params20
+Maude_MaudeSpec "1..1" -- "0..9999" Maude_MaudeTopEl : printableEls1
+Maude_RenMapping "1..9999" --* "1..1" Maude_RenModExp : renamings9
+Maude_Equation "1..1" *-- "1..1" Maude_Term : rhs47
+Maude_Rule "1..1" *-- "0..1" Maude_Term : rhs52
+Maude_RewriteCond "1..1" *-- "1..1" Maude_Term : rhs58
+Maude_MembershipCond "1..1" -- "1..1" Maude_Sort : rhs60
+Maude_MatchingCond "1..1" *-- "1..1" Maude_Term : rhs62
+Maude_EqualCond "1..1" *-- "1..1" Maude_Term : rhs64
+Maude_Membership "1..1" -- "1..1" Maude_Sort : sort43
+Maude_Kind "1..1" -- "1..9999" Maude_Sort : sorts32
+Maude_Sort "1..1" -- "0..9999" Maude_SubsortRel : subsortRels28
+Maude_Sort "1..9999" -- "1..1" Maude_SubsortRel : subsorts33
+Maude_Sort "1..1" -- "0..9999" Maude_SubsortRel : supersortRels29
+Maude_Sort "1..9999" -- "1..1" Maude_SubsortRel : supersorts35
+Maude_Membership "1..1" *-- "1..1" Maude_Term : term42
+Maude_Theory "1..1" -- "1..1" Maude_TheoryIdModExp : theory14
+Maude_ModElement "1..1" -- "0..1" Maude_Theory : theory24
+Maude_ModExpression "1..1" --* "1..1" Maude_View : to74
+Maude_Term "1..1" --* "1..1" Maude_TermMapping : to81
+Maude_Term "1..1" -- "1..1" Maude_Type : type66
+Maude_InstModExp "1..1" -- "1..9999" Maude_View : views5
+@enduml

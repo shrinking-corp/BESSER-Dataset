@@ -1,0 +1,197 @@
+@startuml
+class BibType {
+}
+class bibtex_Address {
+  + address : str
+}
+class bibtex_Article {
+}
+class bibtex_Author {
+  + author : str
+}
+class bibtex_BibType {
+}
+class bibtex_Book {
+}
+class bibtex_Booklet {
+}
+class bibtex_Booktitle {
+  + booktitle : str
+}
+class bibtex_Chapter {
+  + chapter : str
+}
+class bibtex_CiteKey {
+  + citeKey : str
+}
+class bibtex_Conference {
+}
+class bibtex_Crossref {
+  + crossref : str
+}
+class bibtex_Edition {
+  + edition : str
+}
+class bibtex_Editor {
+  + editor : str
+}
+class bibtex_Howpublished {
+  + howpublished : str
+}
+class bibtex_Inbook {
+  + author : bool
+  + editor : bool
+}
+class bibtex_Incollection {
+}
+class bibtex_Inproceedings {
+}
+class bibtex_Institution {
+  + institution : str
+}
+class bibtex_Journal {
+  + journal : str
+}
+class bibtex_Key {
+  + key : str
+}
+class bibtex_Manual {
+}
+class bibtex_Mastersthesis {
+}
+class bibtex_Misc {
+}
+class bibtex_Model {
+}
+class bibtex_Month {
+  + month : str
+}
+class bibtex_Note {
+  + note : str
+}
+class bibtex_Number {
+  + number : str
+}
+class bibtex_Organization {
+  + organization : str
+}
+class bibtex_Pages {
+  + pages : str
+}
+class bibtex_Phdthesis {
+}
+class bibtex_Proceedings {
+}
+class bibtex_Publisher {
+  + publisher : str
+}
+class bibtex_School {
+  + school : str
+}
+class bibtex_Series {
+  + series : str
+}
+class bibtex_Techreport {
+}
+class bibtex_Title {
+  + title : str
+}
+class bibtex_Type {
+  + type : str
+}
+class bibtex_Unpublished {
+}
+class bibtex_Volume {
+  + volume : str
+}
+class bibtex_Year {
+  + year : str
+}
+BibType <|-- bibtex_Article
+BibType <|-- bibtex_Book
+BibType <|-- bibtex_Booklet
+BibType <|-- bibtex_Conference
+BibType <|-- bibtex_Inbook
+BibType <|-- bibtex_Incollection
+BibType <|-- bibtex_Inproceedings
+BibType <|-- bibtex_Manual
+BibType <|-- bibtex_Mastersthesis
+BibType <|-- bibtex_Misc
+BibType <|-- bibtex_Phdthesis
+BibType <|-- bibtex_Proceedings
+BibType <|-- bibtex_Techreport
+BibType <|-- bibtex_Unpublished
+bibtex_Address "0..1" --* "1..1" bibtex_Inproceedings : address121
+bibtex_Address "0..1" --* "1..1" bibtex_Manual : address129
+bibtex_Address "0..1" --* "1..1" bibtex_Mastersthesis : address139
+bibtex_Address "0..1" --* "1..1" bibtex_Phdthesis : address152
+bibtex_Address "0..1" --* "1..1" bibtex_Proceedings : address163
+bibtex_Address "0..1" --* "1..1" bibtex_Techreport : address175
+bibtex_Address "0..1" --* "1..1" bibtex_Book : address33
+bibtex_Address "0..1" --* "1..1" bibtex_Booklet : address41
+bibtex_Address "0..1" --* "1..1" bibtex_Conference : address59
+bibtex_Address "0..1" --* "1..1" bibtex_Inbook : address75
+bibtex_Address "0..1" --* "1..1" bibtex_Incollection : address98
+bibtex_Author "0..1" --* "1..1" bibtex_Inproceedings : author101
+bibtex_Author "0..1" --* "1..1" bibtex_Manual : author124
+bibtex_Article "1..1" *-- "0..1" bibtex_Author : author13
+bibtex_Author "0..1" --* "1..1" bibtex_Mastersthesis : author135
+bibtex_Author "0..1" --* "1..1" bibtex_Misc : author142
+bibtex_Author "0..1" --* "1..1" bibtex_Phdthesis : author147
+bibtex_Author "0..1" --* "1..1" bibtex_Techreport : author166
+bibtex_Author "0..1" --* "1..1" bibtex_Unpublished : author178
+bibtex_Author "0..1" --* "1..1" bibtex_Book : author23
+bibtex_Author "0..1" --* "1..1" bibtex_Booklet : author37
+bibtex_Author "0..1" --* "1..1" bibtex_Conference : author44
+bibtex_Author "0..1" --* "1..1" bibtex_Incollection : author81
+bibtex_BibType "0..9999" --* "1..1" bibtex_Model : bibEntry0
+bibtex_Booktitle "0..1" --* "1..1" bibtex_Inproceedings : booktitle103
+bibtex_Booktitle "0..1" --* "1..1" bibtex_Conference : booktitle46
+bibtex_Booktitle "0..1" --* "1..1" bibtex_Incollection : booktitle83
+bibtex_Chapter "0..1" --* "1..1" bibtex_Inbook : chapter64
+bibtex_BibType "1..1" *-- "0..1" bibtex_CiteKey : citeKey1
+bibtex_Edition "0..1" --* "1..1" bibtex_Manual : edition132
+bibtex_Book "1..1" *-- "0..1" bibtex_Edition : edition35
+bibtex_Edition "0..1" --* "1..1" bibtex_Inbook : edition78
+bibtex_Editor "0..1" --* "1..1" bibtex_Inproceedings : editor106
+bibtex_Editor "0..1" --* "1..1" bibtex_Proceedings : editor155
+bibtex_Book "1..1" *-- "0..1" bibtex_Editor : editor26
+bibtex_Conference "1..1" *-- "0..1" bibtex_Editor : editor48
+bibtex_Editor "0..1" --* "1..1" bibtex_Incollection : editor86
+bibtex_Howpublished "0..1" --* "1..1" bibtex_Misc : howpublished144
+bibtex_Booklet "1..1" *-- "0..1" bibtex_Howpublished : howpublished39
+bibtex_Institution "0..1" --* "1..1" bibtex_Techreport : institution168
+bibtex_Article "1..1" *-- "0..1" bibtex_Journal : journal14
+bibtex_BibType "1..1" *-- "0..1" bibtex_Key : key11
+bibtex_BibType "1..1" *-- "0..1" bibtex_Month : month7
+bibtex_BibType "1..1" *-- "0..1" bibtex_Note : note9
+bibtex_Number "0..1" --* "1..1" bibtex_Techreport : number172
+bibtex_Article "1..1" *-- "0..1" bibtex_Number : number18
+bibtex_Inproceedings "1..1" *-- "0..1" bibtex_Organization : organization115
+bibtex_Manual "1..1" *-- "0..1" bibtex_Organization : organization126
+bibtex_Organization "0..1" --* "1..1" bibtex_Proceedings : organization160
+bibtex_Conference "1..1" *-- "0..1" bibtex_Organization : organization54
+bibtex_Incollection "1..1" *-- "0..1" bibtex_Organization : organization92
+bibtex_Inproceedings "1..1" *-- "0..1" bibtex_Pages : pages112
+bibtex_Article "1..1" *-- "0..1" bibtex_Pages : pages20
+bibtex_Conference "1..1" *-- "0..1" bibtex_Pages : pages51
+bibtex_Inbook "1..1" *-- "0..1" bibtex_Pages : pages66
+bibtex_Incollection "1..1" *-- "0..1" bibtex_Pages : pages89
+bibtex_Inproceedings "1..1" *-- "0..1" bibtex_Publisher : publisher118
+bibtex_Proceedings "1..1" *-- "0..1" bibtex_Publisher : publisher157
+bibtex_Book "1..1" *-- "0..1" bibtex_Publisher : publisher22
+bibtex_Conference "1..1" *-- "0..1" bibtex_Publisher : publisher56
+bibtex_Inbook "1..1" *-- "0..1" bibtex_Publisher : publisher62
+bibtex_Incollection "1..1" *-- "0..1" bibtex_Publisher : publisher95
+bibtex_Mastersthesis "1..1" *-- "0..1" bibtex_School : school137
+bibtex_Phdthesis "1..1" *-- "0..1" bibtex_School : school149
+bibtex_Inproceedings "1..1" *-- "0..1" bibtex_Series : series109
+bibtex_Book "1..1" *-- "0..1" bibtex_Series : series31
+bibtex_Inbook "1..1" *-- "0..1" bibtex_Series : series72
+bibtex_BibType "1..1" *-- "0..1" bibtex_Title : title3
+bibtex_Techreport "1..1" *-- "0..1" bibtex_Type : type170
+bibtex_Article "1..1" *-- "0..1" bibtex_Volume : volume16
+bibtex_Book "1..1" *-- "0..1" bibtex_Volume : volume28
+bibtex_Inbook "1..1" *-- "0..1" bibtex_Volume : volume69
+bibtex_BibType "1..1" *-- "0..1" bibtex_Year : year5
+@enduml

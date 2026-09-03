@@ -1,0 +1,32 @@
+@startuml
+class NamedElement {
+}
+class fsmcore_Constraint {
+}
+class fsmcore_NamedElement {
+  + name : str
+}
+class fsmcore_Program {
+}
+class fsmcore_State {
+}
+class fsmcore_StateMachine {
+}
+class fsmcore_Transition {
+}
+class fsmcore_Trigger {
+  + expression : str
+}
+NamedElement <|-- fsmcore_State
+NamedElement <|-- fsmcore_StateMachine
+NamedElement <|-- fsmcore_Transition
+fsmcore_Program "0..1" --* "1..1" fsmcore_State : doAction3
+fsmcore_Constraint "0..1" --* "1..1" fsmcore_Transition : guard8
+fsmcore_State "1..1" -- "0..9999" fsmcore_Transition : incoming5
+fsmcore_State "1..1" -- "0..9999" fsmcore_Transition : outgoing6
+fsmcore_State "1..1" -- "1..1" fsmcore_Transition : source13
+fsmcore_State "0..9999" --* "1..1" fsmcore_StateMachine : states0
+fsmcore_State "1..1" -- "1..1" fsmcore_Transition : target12
+fsmcore_StateMachine "1..1" *-- "0..9999" fsmcore_Transition : transitions1
+fsmcore_Transition "1..1" *-- "0..1" fsmcore_Trigger : trigger10
+@enduml

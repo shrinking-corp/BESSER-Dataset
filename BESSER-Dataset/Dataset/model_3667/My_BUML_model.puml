@@ -1,0 +1,26 @@
+@startuml
+class exo1_Company {
+}
+class exo1_Departement {
+  + budget : int
+  + location : str
+  + name : str
+}
+class exo1_Employee {
+  + name : str
+  + salary : str
+}
+class exo1_Project {
+  + budget : int
+  + name : str
+}
+exo1_Departement "1..1" -- "1..1" exo1_Project : departement2
+exo1_Company "1..1" *-- "0..9999" exo1_Departement : departements14
+exo1_Departement "1..9999" -- "1..1" exo1_Employee : departements8
+exo1_Departement "1..1" -- "0..9999" exo1_Employee : employees1
+exo1_Company "1..1" *-- "0..9999" exo1_Employee : employees11
+exo1_Employee "0..9999" -- "1..1" exo1_Project : employees3
+exo1_Departement "1..1" -- "0..9999" exo1_Project : projects0
+exo1_Employee "1..1" -- "0..9999" exo1_Project : projects6
+exo1_Company "1..1" *-- "0..9999" exo1_Project : projets12
+@enduml

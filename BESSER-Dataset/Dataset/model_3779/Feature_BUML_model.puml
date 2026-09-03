@@ -1,0 +1,33 @@
+@startuml
+class SimpleFeature {
+}
+class SimpleIdentifier {
+}
+class feature_AnnotatedSimpleFeature {
+}
+class feature_EvidenceCode {
+}
+class feature_Feature {
+}
+class feature_FeatureSet {
+}
+class feature_SimpleFeature {
+  + valueString : str
+}
+class feature_SimpleIdentifier {
+}
+class feature_SimpleOntologyTerm {
+}
+class feature_Value {
+}
+SimpleFeature <|-- feature_AnnotatedSimpleFeature
+SimpleFeature <|-- feature_Feature
+SimpleFeature <|-- feature_FeatureSet
+SimpleIdentifier <|-- feature_SimpleFeature
+feature_AnnotatedSimpleFeature "1..1" -- "0..9999" feature_SimpleIdentifier : annotations0
+feature_FeatureSet "1..1" -- "0..9999" feature_SimpleFeature : features6
+feature_EvidenceCode "0..9999" -- "1..1" feature_Feature : supportingEvidence4
+feature_SimpleFeature "1..1" -- "0..1" feature_SimpleOntologyTerm : type7
+feature_Feature "1..1" -- "1..1" feature_SimpleOntologyTerm : unit2
+feature_Feature "1..1" -- "0..9999" feature_Value : values1
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+class Constraint {
+}
+class Feature {
+}
+class FeatureElement {
+}
+class Operator {
+}
+class featureDiagram_Alternative {
+}
+class featureDiagram_Attribute {
+  + name : str
+  + type : str
+  + value : str
+}
+class featureDiagram_Card {
+  + max : int
+  + min : int
+}
+abstract class featureDiagram_Constraint {
+}
+class featureDiagram_ConstraintEdge {
+}
+class featureDiagram_EObject {
+}
+class featureDiagram_Feature {
+  + name : str
+  + selected : bool
+}
+class featureDiagram_FeatureDiagram {
+  + graphTypeTree : bool
+}
+class featureDiagram_FeatureElement {
+}
+class featureDiagram_Mandatory {
+}
+class featureDiagram_Mutex {
+}
+class featureDiagram_Operator {
+  + name : str
+}
+class featureDiagram_Opt {
+}
+class featureDiagram_Or {
+}
+class featureDiagram_PrimitiveFeature {
+}
+class featureDiagram_Require {
+}
+Constraint <|-- featureDiagram_Mutex
+Constraint <|-- featureDiagram_Require
+Feature <|-- featureDiagram_PrimitiveFeature
+FeatureElement <|-- featureDiagram_Attribute
+FeatureElement <|-- featureDiagram_Constraint
+FeatureElement <|-- featureDiagram_ConstraintEdge
+FeatureElement <|-- featureDiagram_Feature
+FeatureElement <|-- featureDiagram_FeatureDiagram
+FeatureElement <|-- featureDiagram_Operator
+Operator <|-- featureDiagram_Alternative
+Operator <|-- featureDiagram_Card
+Operator <|-- featureDiagram_Mandatory
+Operator <|-- featureDiagram_Opt
+Operator <|-- featureDiagram_Or
+featureDiagram_Attribute "0..9999" --* "1..1" featureDiagram_Feature : attributes6
+featureDiagram_Constraint "0..1" --* "1..1" featureDiagram_ConstraintEdge : constraint16
+featureDiagram_ConstraintEdge "0..9999" --* "1..1" featureDiagram_FeatureDiagram : constraintEdges2
+featureDiagram_Feature "0..9999" --* "1..1" featureDiagram_FeatureDiagram : features0
+featureDiagram_Feature "1..9999" -- "1..1" featureDiagram_Operator : features22
+featureDiagram_EObject "0..9999" -- "1..1" featureDiagram_Feature : modelElements11
+featureDiagram_Feature "1..1" *-- "0..9999" featureDiagram_Operator : operator5
+featureDiagram_Constraint "1..1" -- "0..1" featureDiagram_ConstraintEdge : owningCE24
+featureDiagram_Feature "0..1" -- "1..1" featureDiagram_Operator : owningFeature20
+featureDiagram_Attribute "1..1" -- "0..1" featureDiagram_Feature : owningFeature25
+featureDiagram_Feature "1..1" -- "0..1" featureDiagram_FeatureDiagram : owningFeatureDiagram4
+featureDiagram_Feature "1..1" -- "0..9999" featureDiagram_Operator : owningOperator8
+featureDiagram_Feature "1..1" -- "1..1" featureDiagram_FeatureDiagram : root1
+featureDiagram_ConstraintEdge "1..1" -- "0..1" featureDiagram_Feature : source17
+featureDiagram_ConstraintEdge "1..1" -- "0..1" featureDiagram_Feature : target13
+@enduml

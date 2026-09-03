@@ -1,0 +1,139 @@
+@startuml
+class ConstantExpression {
+}
+class GenericExpression {
+}
+class SimpleStatement {
+}
+class SimpleVariableDeclaration {
+}
+class Statement {
+}
+class simplejava_Assignment {
+}
+class simplejava_BooleanExpression {
+  + value : bool
+}
+class simplejava_ClassDeclaration {
+  + name : str
+}
+class simplejava_ConstantExpression {
+}
+class simplejava_ForInStatement {
+}
+class simplejava_ForStatement {
+}
+class simplejava_GenericExpression {
+}
+class simplejava_IfStatement {
+}
+class simplejava_Import {
+  + imported : str
+}
+class simplejava_IntegerExpression {
+  + value : int
+}
+class simplejava_Method {
+  + name : str
+  + static : bool
+}
+class simplejava_MethodBlock {
+  + generated : bool
+}
+class simplejava_MethodCall {
+  + methodName : str
+  + thisObject : bool
+}
+class simplejava_NullExpression {
+}
+class simplejava_PackageDeclaration {
+  + name : str
+}
+class simplejava_Parameter {
+  + name : str
+}
+class simplejava_ParanthesisOrBinaryExpression {
+  + type : str
+}
+class simplejava_ReturnStatement {
+}
+class simplejava_SimpleJava {
+}
+class simplejava_SimpleStatement {
+}
+class simplejava_SimpleVariableDeclaration {
+}
+class simplejava_Statement {
+}
+class simplejava_StringExpression {
+  + value : str
+}
+class simplejava_Type {
+  + typeName : str
+}
+class simplejava_UnaryExpression {
+  + type : str
+}
+class simplejava_VariableDeclaration {
+}
+class simplejava_VariableExpression {
+}
+class simplejava_WhileStatement {
+}
+ConstantExpression <|-- simplejava_BooleanExpression
+ConstantExpression <|-- simplejava_IntegerExpression
+ConstantExpression <|-- simplejava_NullExpression
+ConstantExpression <|-- simplejava_StringExpression
+GenericExpression <|-- simplejava_ConstantExpression
+GenericExpression <|-- simplejava_MethodCall
+GenericExpression <|-- simplejava_ParanthesisOrBinaryExpression
+GenericExpression <|-- simplejava_UnaryExpression
+GenericExpression <|-- simplejava_VariableExpression
+SimpleStatement <|-- simplejava_Assignment
+SimpleStatement <|-- simplejava_SimpleVariableDeclaration
+SimpleVariableDeclaration <|-- simplejava_VariableDeclaration
+Statement <|-- simplejava_Assignment
+Statement <|-- simplejava_ForInStatement
+Statement <|-- simplejava_ForStatement
+Statement <|-- simplejava_IfStatement
+Statement <|-- simplejava_MethodBlock
+Statement <|-- simplejava_MethodCall
+Statement <|-- simplejava_ReturnStatement
+Statement <|-- simplejava_VariableDeclaration
+Statement <|-- simplejava_WhileStatement
+simplejava_GenericExpression "0..1" --* "1..1" simplejava_ParanthesisOrBinaryExpression : argument80
+simplejava_ClassDeclaration "1..1" *-- "0..9999" simplejava_Parameter : attribute5
+simplejava_ForStatement "1..1" *-- "0..1" simplejava_Statement : body47
+simplejava_ForInStatement "1..1" *-- "0..1" simplejava_Statement : body55
+simplejava_Statement "0..1" --* "1..1" simplejava_WhileStatement : body60
+simplejava_ClassDeclaration "0..1" --* "1..1" simplejava_SimpleJava : clazz3
+simplejava_IfStatement "1..1" *-- "0..1" simplejava_ParanthesisOrBinaryExpression : condition33
+simplejava_ForStatement "1..1" *-- "0..1" simplejava_GenericExpression : condition41
+simplejava_ParanthesisOrBinaryExpression "0..1" --* "1..1" simplejava_WhileStatement : condition58
+simplejava_Method "1..1" *-- "0..1" simplejava_MethodBlock : content20
+simplejava_ForStatement "1..1" *-- "0..1" simplejava_SimpleStatement : continuation44
+simplejava_IfStatement "1..1" *-- "0..1" simplejava_MethodBlock : else_37
+simplejava_GenericExpression "0..1" --* "1..1" simplejava_VariableDeclaration : expression26
+simplejava_Assignment "1..1" *-- "0..1" simplejava_GenericExpression : expression30
+simplejava_ForInStatement "1..1" *-- "0..1" simplejava_GenericExpression : expression52
+simplejava_GenericExpression "0..1" --* "1..1" simplejava_ReturnStatement : expression63
+simplejava_Import "0..9999" --* "1..1" simplejava_SimpleJava : imports1
+simplejava_ForStatement "1..1" *-- "0..1" simplejava_SimpleStatement : init40
+simplejava_Method "0..1" -- "1..1" simplejava_MethodCall : method67
+simplejava_ClassDeclaration "1..1" *-- "0..9999" simplejava_Method : method7
+simplejava_MethodCall "1..1" -- "0..1" simplejava_Parameter : object65
+simplejava_PackageDeclaration "0..1" --* "1..1" simplejava_SimpleJava : package0
+simplejava_Method "1..1" *-- "0..9999" simplejava_Parameter : parameter17
+simplejava_Parameter "0..1" --* "1..1" simplejava_VariableDeclaration : parameter24
+simplejava_Assignment "1..1" -- "0..1" simplejava_Parameter : parameter28
+simplejava_GenericExpression "0..9999" --* "1..1" simplejava_MethodCall : parameter70
+simplejava_Method "1..1" *-- "0..1" simplejava_Type : returnType14
+simplejava_GenericExpression "0..1" --* "1..1" simplejava_UnaryExpression : source73
+simplejava_GenericExpression "0..1" --* "1..1" simplejava_ParanthesisOrBinaryExpression : source77
+simplejava_MethodBlock "1..1" *-- "0..9999" simplejava_Statement : statements22
+simplejava_ForInStatement "1..1" *-- "0..1" simplejava_Parameter : subparameter50
+simplejava_IfStatement "1..1" *-- "0..1" simplejava_MethodBlock : then34
+simplejava_Parameter "1..1" *-- "0..1" simplejava_Type : type9
+simplejava_ClassDeclaration "0..1" -- "1..1" simplejava_Type : typeRef11
+simplejava_Parameter "0..1" -- "1..1" simplejava_VariableExpression : variable75
+@enduml

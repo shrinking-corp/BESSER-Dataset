@@ -1,0 +1,345 @@
+@startuml
+enum Role {
+  Actor
+  Adapter
+  Analyst
+  Animator
+  Annotator
+  Applicant
+  Architect
+  Arranger
+  Art_copyist
+  Artist
+  Artistic_director
+  Assignee
+  Associated_name
+  Attributed_name
+  Auctioneer
+  Author
+  Author_in_quotations_or_text_abstracts
+  Author_of_afterword_colophon_etc
+  Author_of_dialog
+  Author_of_introduction
+  Author_of_screenplay
+  Bibliographic_antecedent
+  Binder
+  Binding_designer
+  Blurb_writer
+  Book_designer
+  Book_producer
+  Bookjacket_designer
+  Bookplate_designer
+  Bookseller
+  Calligrapher
+  Cartographer
+  Censor
+  Choreographer
+  Cinematographer
+  Client
+  Collaborator
+  Collector
+  Collotyper
+  Colorist
+  Commentator
+  Commentator_for_written_text
+  Compiler
+  Complainant
+  Complainant_appellant
+  Complainant_appellee
+  Composer
+  Compositor
+  Conceptor
+  Conductor
+  Conservator
+  Consultant
+  Consultant_to_a_project
+  Contestant
+  Contestant_appellant
+  Contestant_appellee
+  Contestee
+  Contestee_appellant
+  Contestee_appellee
+  Contractor
+  Contributor
+  Copyright_claimant
+  Copyright_holder
+  Corrector
+  Correspondent
+  Costume_designer
+  Cover_designer
+  Creator
+  Curator
+  Dancer
+  Data_contributor
+  Data_manager
+  Dedicatee
+  Dedicator
+  Defendant
+  Defendant_appellant
+  Defendant_appellee
+  Degree_grantor
+  Delineator
+  Depicted
+  Depositor
+  Designer
+  Director
+  Dissertant
+  Distribution_place
+  Distributor
+  Donor
+  Draftsman
+  Dubious_author
+  Editor
+  Electrician
+  Electrotyper
+  Engineer
+  Engraver
+  Etcher
+  Event_place
+  Expert
+  Facsimilist
+  Field_director
+  Film_editor
+  First_party
+  Forger
+  Former_owner
+  Funder
+  Geographic_information_specialist
+  Graphic_technician
+  Honoree
+  Host
+  Illuminator
+  Illustrator
+  Inscriber
+  Instrumentalist
+  Interviewee
+  Interviewer
+  Inventor
+  Laboratory
+  Laboratory_director
+  Landscape_architect
+  Lead
+  Lender
+  Libelant
+  Libelant_appellant
+  Libelant_appellee
+  Libelee
+  Libelee_appellant
+  Libelee_appellee
+  Librettist
+  Licensee
+  Licensor
+  Lighting_designer
+  Lithographer
+  Lyricist
+  Manufacture_place
+  Manufacturer
+  Marbler
+  Markup_editor
+  Metadata_contact
+  Metal_engraver
+  Moderator
+  Monitor
+  Music_copyist
+  Musical_director
+  Musician
+  Narrator
+  Opponent
+  Organizer_of_meeting
+  Originator
+  Other
+  Owner
+  Papermaker
+  Patent_applicant
+  Patent_holder
+  Patron
+  Performer
+  Permitting_agency
+  Photographer
+  Plaintiff
+  Plaintiff_appellant
+  Plaintiff_appellee
+  Platemaker
+  Printer
+  Printer_of_plates
+  Printmaker
+  Process_contact
+  Producer
+  Production_manager
+  Production_personnel
+  Production_place
+  Programmer
+  Project_director
+  Proofreader
+  Publication_place
+  Publisher
+  Publishing_director
+  Puppeteer
+  Recipient
+  Recording_engineer
+  Redactor
+  Renderer
+  Reporter
+  Repository
+  Research_team_head
+  Research_team_member
+  Researcher
+  Respondent
+  Respondent_appellant
+  Respondent_appellee
+  Responsible_party
+  Restager
+  Reviewer
+  Rubricator
+  Scenarist
+  Scientific_advisor
+  Scribe
+  Sculptor
+  Second_party
+  Secretary
+  Set_designer
+  Signer
+  Singer
+  Sound_designer
+  Speaker
+  Sponsor
+  Stage_manager
+  Standards_body
+  Stereotyper
+  Storyteller
+  Supporting_host
+  Surveyor
+  Teacher
+  Technical_director
+  Thesis_advisor
+  Transcriber
+  Translator
+  Type_designer
+  Typographer
+  University_place
+  Videographer
+  Vocalist
+  Witness
+  Wood_engraver
+  Woodcutter
+  Writer_of_accompanying_material
+}
+enum Type {
+  Acknowledgements
+  Bibliography
+  Colophon
+  Copyright
+  Cover
+  Dedication
+  Epigraph
+  Foreword
+  Glossary
+  Illustrations
+  Index
+  Notes
+  Preface
+  TOC
+  Tables
+  Text
+  Title
+}
+class opf_Contributor {
+}
+class opf_Coverage {
+}
+class opf_Creator {
+}
+class opf_Date {
+}
+class opf_Description {
+}
+class opf_Format {
+}
+class opf_Guide {
+}
+class opf_Identifier {
+}
+class opf_Item {
+  + fallback : str
+  + fallback_style : str
+  + file : str
+  + generated : bool
+  + href : str
+  + id : str
+  + media_type : str
+  + noToc : bool
+  + required_modules : str
+  + required_namespace : str
+  + sourcePath : str
+  + title : str
+}
+class opf_Itemref {
+  + idref : str
+  + linear : str
+}
+class opf_Language {
+}
+class opf_Manifest {
+}
+class opf_Meta {
+  + content : str
+  + name : str
+}
+class opf_Metadata {
+}
+class opf_Package {
+  + generateCoverHTML : bool
+  + generateTableOfContents : bool
+  + includeReferencedResources : bool
+  + uniqueIdentifier : str
+  + version : str
+}
+class opf_Publisher {
+}
+class opf_Reference {
+  + href : str
+  + title : str
+  + type : str
+}
+class opf_Relation {
+}
+class opf_Rights {
+}
+class opf_Source {
+}
+class opf_Spine {
+  + toc : str
+}
+class opf_Subject {
+}
+class opf_Title {
+}
+class opf_Tours {
+}
+class opf_Type {
+}
+opf_Contributor "0..9999" --* "1..1" opf_Metadata : contributors19
+opf_Coverage "0..9999" --* "1..1" opf_Metadata : coverages35
+opf_Creator "0..9999" --* "1..1" opf_Metadata : creators11
+opf_Date "0..9999" --* "1..1" opf_Metadata : dates21
+opf_Description "0..9999" --* "1..1" opf_Metadata : descriptions15
+opf_Format "0..9999" --* "1..1" opf_Metadata : formats25
+opf_Guide "0..1" --* "1..1" opf_Package : guide5
+opf_Guide "1..1" *-- "0..9999" opf_Reference : guideItems45
+opf_Identifier "1..9999" --* "1..1" opf_Metadata : identifiers27
+opf_Item "1..9999" --* "1..1" opf_Manifest : items41
+opf_Language "1..9999" --* "1..1" opf_Metadata : languages31
+opf_Manifest "1..1" --* "1..1" opf_Package : manifest1
+opf_Metadata "1..1" --* "1..1" opf_Package : metadata0
+opf_Meta "0..9999" --* "1..1" opf_Metadata : metas39
+opf_Metadata "1..1" *-- "0..9999" opf_Publisher : publishers17
+opf_Metadata "1..1" *-- "0..9999" opf_Relation : relations33
+opf_Metadata "1..1" *-- "0..9999" opf_Rights : rights37
+opf_Metadata "1..1" *-- "0..9999" opf_Source : sources29
+opf_Package "1..1" *-- "1..1" opf_Spine : spine3
+opf_Itemref "0..9999" --* "1..1" opf_Spine : spineItems43
+opf_Metadata "1..1" *-- "1..9999" opf_Subject : subjects13
+opf_Metadata "1..1" *-- "1..9999" opf_Title : titles9
+opf_Package "1..1" -- "0..1" opf_Tours : tours7
+opf_Metadata "1..1" *-- "0..9999" opf_Type : types23
+@enduml

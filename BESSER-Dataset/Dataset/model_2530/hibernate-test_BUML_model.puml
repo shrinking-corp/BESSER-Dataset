@@ -1,0 +1,64 @@
+@startuml
+enum Bz387752_Enum {
+  VAL0
+  VAL1
+}
+class Bz398057A {
+}
+class Bz398057B {
+}
+class HibernateTest_Bz356181_Main {
+  + nonTransient : str
+  + transient : str
+}
+class HibernateTest_Bz356181_NonTransient {
+}
+class HibernateTest_Bz356181_Transient {
+}
+class HibernateTest_Bz380987_Group {
+}
+class HibernateTest_Bz380987_Person {
+  + name : str
+}
+class HibernateTest_Bz380987_Place {
+  + name : str
+}
+class HibernateTest_Bz387752_Main {
+  + enumSettable : str
+  + enumUnsettable : str
+  + strSettable : str
+  + strUnsettable : str
+}
+class HibernateTest_Bz397682C {
+  + dbId : str
+}
+class HibernateTest_Bz397682P {
+  + dbId : str
+}
+class HibernateTest_Bz398057A {
+  + dbId : str
+}
+class HibernateTest_Bz398057A1 {
+}
+class HibernateTest_Bz398057B {
+  + dbId : str
+  + value : float
+}
+class HibernateTest_Bz398057B1 {
+  + valueStr : str
+}
+Bz398057A <|-- HibernateTest_Bz398057A1
+Bz398057B <|-- HibernateTest_Bz398057B1
+HibernateTest_Bz380987_Group "0..9999" -- "1..1" HibernateTest_Bz380987_Person : group9
+HibernateTest_Bz398057A "1..1" *-- "0..9999" HibernateTest_Bz398057B : listOfB12
+HibernateTest_Bz397682C "0..9999" --* "1..1" HibernateTest_Bz397682P : listOfC14
+HibernateTest_Bz356181_Main "0..1" -- "1..1" HibernateTest_Bz356181_NonTransient : main3
+HibernateTest_Bz380987_Group "1..1" -- "0..9999" HibernateTest_Bz380987_Person : people6
+HibernateTest_Bz380987_Person "0..9999" -- "1..1" HibernateTest_Bz380987_Place : people7
+HibernateTest_Bz380987_Person "1..1" -- "0..9999" HibernateTest_Bz380987_Place : places10
+HibernateTest_Bz397682C "1..1" -- "0..1" HibernateTest_Bz397682C : refToC17
+HibernateTest_Bz398057A "0..1" -- "1..1" HibernateTest_Bz398057B : refToClassA13
+HibernateTest_Bz397682C "1..1" -- "0..1" HibernateTest_Bz397682P : refToP15
+HibernateTest_Bz356181_Main "1..1" -- "0..1" HibernateTest_Bz356181_NonTransient : transientOtherRef1
+HibernateTest_Bz356181_Main "1..1" -- "0..1" HibernateTest_Bz356181_Transient : transientRef0
+@enduml

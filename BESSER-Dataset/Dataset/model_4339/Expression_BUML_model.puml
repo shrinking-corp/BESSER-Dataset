@@ -1,0 +1,190 @@
+@startuml
+class AssignmentStatement {
+}
+class Expression {
+}
+class ExpressionRest {
+}
+class Function {
+}
+class KeyValuePairRest {
+}
+class Phrase {
+}
+class Statement {
+}
+class Term {
+}
+class expression_AndExpression {
+  + op : str
+}
+class expression_Apply {
+}
+class expression_AssignmentStatement {
+}
+class expression_Count {
+}
+class expression_DashExpression {
+  + op : str
+}
+class expression_Designator {
+}
+class expression_DoubleValue {
+  + value : float
+}
+class expression_EObject {
+}
+class expression_EqualityExpression {
+  + op : str
+}
+class expression_Expression {
+}
+class expression_ExpressionList {
+}
+class expression_ExpressionRest {
+}
+class expression_FirstIn {
+}
+class expression_ForallIn {
+}
+class expression_FunctionCall {
+}
+class expression_IntegerValue {
+  + value : int
+}
+class expression_KeyValuePair {
+  + key : str
+}
+class expression_KeyValuePairRest {
+}
+class expression_LastIn {
+}
+class expression_List {
+}
+class expression_Map {
+}
+class expression_Model {
+}
+class expression_OrExpression {
+  + op : str
+}
+class expression_Phrase {
+}
+class expression_PointExpression {
+  + op : str
+}
+class expression_PowExpression {
+  + op : str
+}
+class expression_Procedure {
+}
+class expression_ProcedureCall {
+}
+class expression_QualifierExpression {
+  + op : str
+}
+class expression_Reduce {
+}
+class expression_SelfAssignmentStatement {
+}
+class expression_Statement {
+}
+class expression_StatementList {
+}
+class expression_StringValue {
+  + value : str
+}
+class expression_StructureExpression {
+}
+class expression_Sum {
+}
+class expression_Term {
+}
+class expression_ThereIsIn {
+}
+class expression_UnaryExpression {
+}
+class expression_VariableAssignmentStatement {
+}
+AssignmentStatement <|-- expression_SelfAssignmentStatement
+AssignmentStatement <|-- expression_VariableAssignmentStatement
+Expression <|-- expression_AndExpression
+Expression <|-- expression_Apply
+Expression <|-- expression_Count
+Expression <|-- expression_DashExpression
+Expression <|-- expression_EqualityExpression
+Expression <|-- expression_FirstIn
+Expression <|-- expression_ForallIn
+Expression <|-- expression_FunctionCall
+Expression <|-- expression_LastIn
+Expression <|-- expression_Map
+Expression <|-- expression_OrExpression
+Expression <|-- expression_PointExpression
+Expression <|-- expression_PowExpression
+Expression <|-- expression_QualifierExpression
+Expression <|-- expression_Reduce
+Expression <|-- expression_StructureExpression
+Expression <|-- expression_Sum
+Expression <|-- expression_Term
+Expression <|-- expression_ThereIsIn
+Expression <|-- expression_UnaryExpression
+ExpressionRest <|-- expression_Expression
+KeyValuePairRest <|-- expression_KeyValuePair
+Phrase <|-- expression_Expression
+Phrase <|-- expression_StatementList
+Statement <|-- expression_AssignmentStatement
+Term <|-- expression_Designator
+Term <|-- expression_DoubleValue
+Term <|-- expression_IntegerValue
+Term <|-- expression_List
+Term <|-- expression_StringValue
+expression_Apply "1..1" *-- "0..1" expression_Expression : applyExpr95
+expression_Expression "0..1" --* "1..1" expression_Expression : condition8
+expression_Designator "0..1" --* "1..1" expression_VariableAssignmentStatement : designator6
+expression_Expression "0..1" --* "1..1" expression_UnaryExpression : expr100
+expression_Expression "0..1" --* "1..1" expression_ThereIsIn : expr67
+expression_Expression "0..1" --* "1..1" expression_ForallIn : expr69
+expression_Expression "0..1" --* "1..1" expression_FirstIn : expr71
+expression_Expression "0..1" --* "1..1" expression_LastIn : expr73
+expression_Count "1..1" *-- "0..1" expression_Expression : expr75
+expression_Expression "0..1" --* "1..1" expression_Reduce : expr77
+expression_Expression "0..1" --* "1..1" expression_Sum : expr85
+expression_Expression "0..1" --* "1..1" expression_Map : expr90
+expression_Apply "1..1" *-- "0..1" expression_Expression : expr97
+expression_AssignmentStatement "1..1" *-- "0..1" expression_Expression : expression5
+Function "0..1" -- "1..1" expression_FunctionCall : function10
+expression_Statement "0..1" --* "1..1" expression_StatementList : head1
+expression_Expression "0..1" --* "1..1" expression_ExpressionList : head17
+expression_Expression "0..1" --* "1..1" expression_Reduce : initValue82
+expression_KeyValuePair "0..1" --* "1..1" expression_StructureExpression : keyValuePair105
+expression_Expression "0..1" --* "1..1" expression_OrExpression : left32
+expression_AndExpression "1..1" *-- "0..1" expression_Expression : left37
+expression_EqualityExpression "1..1" *-- "0..1" expression_Expression : left42
+expression_DashExpression "1..1" *-- "0..1" expression_Expression : left47
+expression_Expression "0..1" --* "1..1" expression_PointExpression : left52
+expression_Expression "0..1" --* "1..1" expression_PowExpression : left57
+expression_Expression "0..1" --* "1..1" expression_QualifierExpression : left62
+expression_ExpressionList "0..1" --* "1..1" expression_FunctionCall : params11
+expression_ExpressionList "0..1" --* "1..1" expression_ProcedureCall : params14
+expression_Model "1..1" *-- "0..1" expression_Phrase : phrase0
+expression_Procedure "0..1" -- "1..1" expression_ProcedureCall : procedure13
+expression_KeyValuePair "1..1" *-- "0..9999" expression_KeyValuePairRest : rest24
+expression_Expression "0..1" --* "1..1" expression_OrExpression : right34
+expression_AndExpression "1..1" *-- "0..1" expression_Expression : right39
+expression_EqualityExpression "1..1" *-- "0..1" expression_Expression : right44
+expression_DashExpression "1..1" *-- "0..1" expression_Expression : right49
+expression_Expression "0..1" --* "1..1" expression_PointExpression : right54
+expression_Expression "0..1" --* "1..1" expression_PowExpression : right59
+expression_Expression "0..1" --* "1..1" expression_QualifierExpression : right64
+expression_Expression "0..1" --* "1..1" expression_UnaryExpression : structuredExpression102
+expression_Expression "0..1" --* "1..1" expression_Term : structuredExpression26
+expression_Expression "0..9999" --* "1..1" expression_StructureExpression : structuredExpressions107
+expression_ExpressionList "1..1" *-- "0..9999" expression_ExpressionRest : tail20
+expression_StatementList "0..1" --* "1..1" expression_StatementList : tail3
+expression_List "1..1" *-- "0..9999" expression_Term : terms28
+expression_Expression "0..1" --* "1..1" expression_Reduce : usingExpr79
+expression_Expression "0..1" --* "1..1" expression_Sum : usingExpr87
+expression_Expression "0..1" --* "1..1" expression_Map : usingExpr92
+expression_Expression "0..1" --* "1..1" expression_KeyValuePair : value22
+expression_Designator "1..1" -- "0..1" expression_EObject : value30
+@enduml

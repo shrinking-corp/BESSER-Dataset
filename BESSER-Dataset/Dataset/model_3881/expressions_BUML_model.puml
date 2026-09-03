@@ -1,0 +1,58 @@
+@startuml
+class BinaryOperator {
+}
+class Expression {
+}
+class UnaryOperator {
+}
+abstract class expressions_BinaryOperator {
+}
+class expressions_Div {
+}
+abstract class expressions_Expression {
+}
+class expressions_Function {
+  + name : str
+}
+class expressions_FunctionCall {
+}
+class expressions_Minus {
+}
+class expressions_Model {
+}
+class expressions_Mul {
+}
+class expressions_Neg {
+}
+class expressions_Number {
+  + value : int
+}
+class expressions_Parameter {
+  + name : str
+}
+class expressions_ParameterAccess {
+}
+class expressions_Plus {
+}
+abstract class expressions_UnaryOperator {
+}
+BinaryOperator <|-- expressions_Div
+BinaryOperator <|-- expressions_Minus
+BinaryOperator <|-- expressions_Mul
+BinaryOperator <|-- expressions_Plus
+Expression <|-- expressions_BinaryOperator
+Expression <|-- expressions_FunctionCall
+Expression <|-- expressions_Number
+Expression <|-- expressions_ParameterAccess
+Expression <|-- expressions_UnaryOperator
+UnaryOperator <|-- expressions_Neg
+expressions_Expression "0..9999" --* "1..1" expressions_FunctionCall : arguments14
+expressions_Expression "1..1" --* "1..1" expressions_Function : body1
+expressions_Function "1..1" -- "1..1" expressions_FunctionCall : function12
+expressions_Function "0..9999" --* "1..1" expressions_Model : functions17
+expressions_Expression "1..1" --* "1..1" expressions_UnaryOperator : op10
+expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op15
+expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op27
+expressions_Parameter "1..1" -- "1..1" expressions_ParameterAccess : parameter3
+expressions_Function "1..1" *-- "0..9999" expressions_Parameter : parameters0
+@enduml

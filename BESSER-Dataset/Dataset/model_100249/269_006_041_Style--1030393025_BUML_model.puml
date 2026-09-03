@@ -1,0 +1,123 @@
+@startuml
+class Color {
+}
+enum ColorConstants {
+  BLACK
+  BLUE
+  CYAN
+  DARK_BLUE
+  DARK_GRAY
+  DARK_GREEN
+  DARK_ORANGE
+  GRAY
+  GREEN
+  LIGHT_BLUE
+  LIGHT_GRAY
+  LIGHT_GREEN
+  LIGHT_LIGHT_GRAY
+  LIGHT_ORANGE
+  NULL
+  ORANGE
+  RED
+  WHITE
+  YELLOW
+}
+class ColorOrGradient {
+}
+class ColorWithTransparency {
+}
+enum GradientAllignment {
+  HORIZONTAL
+  NULL
+  VERTICAL
+}
+enum LineStyle {
+  DASH
+  DASHDOT
+  DASHDOTDOT
+  DOT
+  NULL
+  SOLID
+}
+class StyleContainerElement {
+}
+enum YesNoBool {
+  NO
+  NULL
+  YES
+}
+class styles_Color {
+}
+class styles_ColorConstantRef {
+  + value : str
+}
+class styles_ColorOrGradient {
+}
+class styles_ColorWithTransparency {
+}
+class styles_Gradient {
+}
+class styles_GradientColorArea {
+  + offset : float
+}
+class styles_GradientLayout {
+}
+class styles_GradientRef {
+}
+class styles_HighlightingValues {
+}
+class styles_JvmTypeReference {
+}
+class styles_RGBColor {
+  + blue : int
+  + green : int
+  + red : int
+}
+class styles_Style {
+}
+class styles_StyleContainer {
+}
+class styles_StyleContainerElement {
+  + description : str
+  + name : str
+}
+class styles_StyleLayout {
+  + fontBold : str
+  + fontItalic : str
+  + fontName : str
+  + fontSize : int
+  + gradient_orientation : str
+  + lineStyle : str
+  + lineWidth : int
+  + transparency : float
+}
+class styles_Transparent {
+  + transparent : bool
+}
+Color <|-- styles_ColorConstantRef
+Color <|-- styles_RGBColor
+ColorOrGradient <|-- styles_Color
+ColorOrGradient <|-- styles_GradientRef
+ColorOrGradient <|-- styles_Transparent
+ColorWithTransparency <|-- styles_Color
+ColorWithTransparency <|-- styles_Transparent
+StyleContainerElement <|-- styles_Gradient
+StyleContainerElement <|-- styles_Style
+styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : allowed24
+styles_GradientColorArea "0..9999" --* "1..1" styles_GradientLayout : area16
+styles_ColorOrGradient "0..1" --* "1..1" styles_StyleLayout : background8
+styles_Color "0..1" --* "1..1" styles_GradientColorArea : color30
+styles_Color "0..1" --* "1..1" styles_StyleLayout : fontColor14
+styles_GradientRef "1..1" *-- "0..1" styles_JvmTypeReference : gradientRef33
+styles_Gradient "0..1" -- "1..1" styles_GradientRef : gradientRefFromDsl35
+styles_HighlightingValues "0..1" --* "1..1" styles_StyleLayout : highlighting10
+styles_Style "1..1" *-- "0..1" styles_StyleLayout : layout5
+styles_Gradient "1..1" *-- "0..1" styles_GradientLayout : layout7
+styles_ColorWithTransparency "0..1" --* "1..1" styles_StyleLayout : lineColor12
+styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : multiselected21
+styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : selected18
+styles_StyleContainer "1..1" *-- "0..9999" styles_StyleContainerElement : styleContainerElement0
+styles_JvmTypeReference "0..1" --* "1..1" styles_Style : superStyle1
+styles_Style "0..1" -- "1..1" styles_Style : superStyleFromDsl3
+styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : unallowed27
+@enduml

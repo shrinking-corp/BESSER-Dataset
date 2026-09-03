@@ -1,0 +1,33 @@
+@startuml
+class smachDSL_ActionClient {
+  + actionname : str
+  + actiontype : str
+  + name : str
+}
+class smachDSL_ActionState {
+  + name : str
+}
+class smachDSL_PrimitivePackage {
+}
+class smachDSL_ServiceClient {
+  + name : str
+  + servicename : str
+  + servicesrv : str
+}
+class smachDSL_StateMachine {
+  + name : str
+}
+class smachDSL_Test {
+  + ros : str
+}
+class smachDSL_Transition {
+  + outcome : str
+}
+smachDSL_ActionClient "0..9999" --* "1..1" smachDSL_StateMachine : actionclients1
+smachDSL_ActionState "0..9999" --* "1..1" smachDSL_StateMachine : actionsstates5
+smachDSL_ActionClient "0..1" -- "1..1" smachDSL_ActionState : clientname7
+smachDSL_ServiceClient "0..9999" --* "1..1" smachDSL_StateMachine : serviceclients3
+smachDSL_ActionState "0..1" -- "1..1" smachDSL_Transition : state12
+smachDSL_PrimitivePackage "1..1" *-- "0..9999" smachDSL_StateMachine : statemachines0
+smachDSL_ActionState "1..1" *-- "0..9999" smachDSL_Transition : transitions10
+@enduml

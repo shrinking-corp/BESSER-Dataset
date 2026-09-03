@@ -1,0 +1,45 @@
+@startuml
+class Calculate_caloriesBurnt {
+  + CaloriesBurnt : str
+  + Name : str
+  + Steps : int
+}
+class Count_Steps {
+  + Steps : int
+}
+class Count_Steps_and_Calories {
+  + CaloriesBurnt : str
+  + Name : str
+  + Steps : int
+}
+class Draw_Path {
+  + Name : str
+  + Route : str
+}
+class Give_Name {
+  + Name : str
+}
+class Give_Weight {
+  + Weight : int
+}
+class Update_Data {
+  + Name : str
+  + Weight : int
+}
+class User {
+  + Calories_Burnt : str
+  + Name : str
+  + Path_Drawn : str
+  + Steps : int
+  + Weight : int
+}
+class Weekly_Chart {
+  + CaloriesBurnt : str
+  + Name : str
+  + Steps : int
+}
+Calculate_caloriesBurnt "0..1" -- "0..1" Count_Steps_and_Calories : Count_Steps_and_Calories__Calculate_caloriesBurnt
+Count_Steps "0..1" -- "0..1" Count_Steps_and_Calories : Count_Steps_and_Calories__Count_Steps
+Give_Name "0..1" -- "0..1" Update_Data : Update_Data__Give_Name
+Give_Weight "0..1" -- "0..1" Update_Data : Update_Data__Give_Weight
+@enduml

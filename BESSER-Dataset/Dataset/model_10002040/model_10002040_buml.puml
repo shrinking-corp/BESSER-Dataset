@@ -1,0 +1,124 @@
+@startuml
+class Appointment {
+  + attribute : str
+  + date : str
+  + doctoradi : int
+  + no : str
+  + room : int
+  + time : str
+}
+class Bill {
+  + amount : str
+  + no : int
+  + patientno : int
+}
+class Corporation {
+  + address : str
+  + name : str
+  + no : int
+}
+class Disease {
+  + code : int
+  + name : str
+  + type : str
+}
+class Doctor {
+  + corporation : str
+  + registorno : str
+  + specialization : str
+}
+class Examination {
+  + Appointmentid : int
+  + attribute : str
+  + diagnosisid : int
+  + no : int
+}
+class Hospitals {
+  + address : str
+  + name : str
+  + no : int
+  + type : str
+}
+class Medicine {
+  + code : int
+  + name : str
+  + price : str
+  + type : str
+}
+class Patient {
+  + address : str
+  + address1 : str
+  + attribute : str
+  + birth : str
+  + birth1 : str
+  + gender : str
+  + gender1 : str
+  + name : str
+  + name1 : str
+  + tcno : str
+  + tcno1 : str
+  + telno : str
+  + telno1 : str
+}
+class Patient_Medicines {
+  + medicines : str
+  + no : int
+  + patientno : str
+  + quantities : int
+}
+class Patient_Prescription {
+  + code : int
+  + code1 : int
+  + date : str
+  + diseaseid : int
+  + medicineid : int
+  + patientid : int
+}
+class Personel {
+  + attribute : str
+  + attribute7 : str
+  + corporation : str
+  + gender : str
+  + name : str
+  + name1 : str
+  + position : str
+  + registerno : str
+  + tcno : str
+  + tcno1 : str
+}
+class Receptionist {
+  + checkroom : str
+  + no : int
+}
+class Room {
+  + buildingname : str
+  + floor : int
+  + no : int
+}
+class diagnosis {
+  + diagnoses : str
+  + id : int
+}
+Corporation "0..1" -- "1..9999" Personel : Corporation_Personel
+Appointment "1..9999" -- "1..1" Doctor : Doctor_Appointment
+Doctor "0..1" -- "1..1" Personel : Doctor_Personel
+Appointment "1..1" -- "0..1" Examination : Examination_Appointment
+Examination "1..1" -- "1..9999" diagnosis : Examination_diagnosis
+Hospitals "0..1" -- "1..9999" Personel : Hospitals_Personel
+Appointment "1..9999" -- "1..1" Patient : Patient_Appointment
+Patient "0..1" -- "0..1" Personel : Patient_Doctor
+Patient "0..1" -- "0..1" Personel : Patient_Doctor2
+Medicine "1..9999" -- "1..1" Patient_Medicines : Patient_Medicines_Medicine
+Patient "0..1" -- "0..1" Patient_Medicines : Patient_Patient_Medicines
+Patient "1..1" -- "0..1" Patient_Prescription : Patient_Patient_Prescription
+Disease "0..1" -- "0..1" Patient_Prescription : Patient_Prescription_Disease
+Patient_Medicines "1..1" -- "1..9999" Patient_Prescription : Patient_Prescription_Patient_Medicines
+Corporation "0..1" -- "1..9999" Personel : Personel_Corporation
+Doctor "0..1" -- "1..1" Personel : Personel_Doctor
+Hospitals "0..1" -- "0..1" Personel : Personel_Hospitals
+Personel "1..1" -- "0..1" Receptionist : Personel_Receptionist
+Patient "1..1" -- "1..1" Receptionist : Receptionist_Patient
+Personel "1..1" -- "0..1" Receptionist : Receptionist_Personel
+Appointment "1..1" -- "1..1" Room : Room_Appointment
+Disease "1..9999" -- "1..1" diagnosis : diagnosis_Disease
+@enduml

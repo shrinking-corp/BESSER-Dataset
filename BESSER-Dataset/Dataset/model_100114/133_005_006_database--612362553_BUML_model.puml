@@ -1,0 +1,120 @@
+@startuml
+class AbstractTable {
+}
+class DatabaseElement {
+}
+class NamedElement {
+}
+class TableContainer {
+}
+class TypesLibraryUser {
+}
+abstract class database_AbstractTable {
+}
+class database_Column {
+  + autoincrement : bool
+  + defaultValue : str
+  + inForeignKey : bool
+  + inPrimaryKey : bool
+  + nullable : bool
+  + unique : bool
+  + addToPrimaryKey() : void
+  + addToUniqueIndex() : void
+  + removeFromPrimaryKey() : void
+  + removeFromUniqueIndex() : void
+}
+class database_Constraint {
+  + expression : str
+}
+class database_DataBase {
+  + url : str
+}
+abstract class database_DatabaseElement {
+  + ID : str
+  + comments : str
+}
+class database_ForeignKey {
+  + getSourceTable() : str
+  + getTargetTable() : str
+}
+class database_ForeignKeyElement {
+}
+class database_Index {
+  + cardinality : int
+  + indexType : str
+  + qualifier : str
+  + unique : bool
+}
+class database_IndexElement {
+  + asc : bool
+}
+abstract class database_NamedElement {
+  + name : str
+}
+class database_PrimaryKey {
+}
+class database_Schema {
+}
+class database_Sequence {
+  + increment : int
+  + maxValue : int
+  + minValue : int
+  + start : int
+}
+class database_Table {
+}
+abstract class database_TableContainer {
+}
+class database_Type {
+}
+class database_UserDefinedTypesLibrary {
+}
+class database_View {
+  + query : str
+}
+AbstractTable <|-- database_Table
+AbstractTable <|-- database_View
+DatabaseElement <|-- database_ForeignKeyElement
+DatabaseElement <|-- database_IndexElement
+DatabaseElement <|-- database_NamedElement
+NamedElement <|-- database_AbstractTable
+NamedElement <|-- database_Column
+NamedElement <|-- database_Constraint
+NamedElement <|-- database_ForeignKey
+NamedElement <|-- database_Index
+NamedElement <|-- database_PrimaryKey
+NamedElement <|-- database_Sequence
+NamedElement <|-- database_TableContainer
+TableContainer <|-- database_DataBase
+TableContainer <|-- database_Schema
+TypesLibraryUser <|-- database_DataBase
+database_Column "0..1" -- "1..1" database_IndexElement : column45
+database_Column "0..9999" -- "1..1" database_PrimaryKey : columns29
+database_AbstractTable "1..1" *-- "0..9999" database_Column : columns3
+database_Constraint "0..9999" --* "1..1" database_Table : constraints25
+database_DataBase "1..1" *-- "0..9999" database_UserDefinedTypesLibrary : defines1
+database_Index "1..1" *-- "0..9999" database_IndexElement : elements17
+database_ForeignKey "1..1" *-- "0..9999" database_ForeignKeyElement : elements34
+database_Column "0..1" -- "1..1" database_ForeignKeyElement : fkColumn40
+database_Column "1..1" -- "0..9999" database_ForeignKeyElement : foreignKeyElements10
+database_ForeignKey "0..9999" --* "1..1" database_Table : foreignKeys23
+database_Column "1..1" -- "0..9999" database_ForeignKey : foreignKeys8
+database_Column "1..1" -- "0..9999" database_IndexElement : indexElements6
+database_Index "0..9999" --* "1..1" database_Table : indexes27
+database_Column "1..1" -- "0..9999" database_Index : indexes5
+database_AbstractTable "1..1" -- "1..1" database_Column : owner15
+database_Index "1..1" -- "1..1" database_Table : owner19
+database_PrimaryKey "1..1" -- "1..1" database_Table : owner31
+database_ForeignKey "1..1" -- "1..1" database_Table : owner36
+database_AbstractTable "1..1" -- "1..1" database_TableContainer : owner4
+database_Constraint "1..1" -- "1..1" database_Table : owner47
+database_Column "0..1" -- "1..1" database_ForeignKeyElement : pkColumn42
+database_PrimaryKey "0..1" --* "1..1" database_Table : primaryKey20
+database_Column "1..1" -- "0..1" database_PrimaryKey : primaryKey7
+database_DataBase "1..1" *-- "0..9999" database_Schema : schemas0
+database_Column "1..1" -- "0..1" database_Sequence : sequence13
+database_Sequence "0..9999" --* "1..1" database_TableContainer : sequences52
+database_AbstractTable "0..9999" --* "1..1" database_TableContainer : tables49
+database_ForeignKey "1..1" -- "0..1" database_Table : target38
+database_Column "1..1" *-- "1..1" database_Type : type11
+@enduml

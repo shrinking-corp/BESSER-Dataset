@@ -1,0 +1,83 @@
+@startuml
+class Admin {
+  + password : str
+  + userID : int
+  + userName : str
+}
+class Attendance {
+  + attendanceID : int
+  + checkInTime : str
+  + checkOutTime : str
+}
+class Calender_Event {
+  + admin : Admin
+  + category : str
+  + date : str
+  + description : str
+  + eventType : str
+  + nomarlUser : Normal_user
+  + participantAmount : str
+  + time : str
+  + volunteer : Volunteer
+}
+class Donations {
+  + amount : int
+  + cardNumber : int
+  + cardType : str
+  + expirationDate : int
+  + issuerName : str
+}
+class Executive_Director {
+  + password : str
+  + userID : int
+  + userName : str
+}
+class Logout {
+}
+class Mail {
+  + emailID : str
+  + sendBy : str
+  + sendTo : str
+  + subject : str
+}
+class Normal_user {
+  + password : str
+  + userID : int
+  + userName : str
+}
+class Profile {
+  + first_Name : str
+  + last_Name : str
+  + password : str
+  + phone_Number : int
+  + user_Name : str
+}
+class System_Login {
+  + loggedinTime : str
+  + loggedoutTime : str
+  + userID : Profile
+}
+class Volunteer {
+  + password : str
+  + userID : int
+  + userName : str
+}
+class Volunteer_Forms {
+  + password : str
+  + userID : int
+  + userName : str
+}
+class void {
+}
+Admin "0..9999" -- "0..9999" Calender_Event : Admin_Calender_Event
+Admin "0..9999" -- "0..1" Donations : Admin_Donations
+Admin "0..1" -- "0..9999" Mail : Admin_Mail
+Calender_Event "0..9999" -- "0..1" Normal_user : Normal_user_Calender_Event
+Donations "0..1" -- "0..9999" Normal_user : Normal_user_Donations
+Attendance "0..1" -- "0..1" Profile : Profile_Attendance
+Calender_Event "0..9999" -- "0..9999" Executive_Director : SuperAdmin_Calender_Event
+Donations "0..1" -- "0..9999" Executive_Director : SuperAdmin_Donations
+Executive_Director "0..1" -- "0..9999" Mail : SuperAdmin_Mail
+Calender_Event "0..9999" -- "0..9999" Volunteer : Volunteer_Calender_Event
+Donations "0..1" -- "0..9999" Volunteer : Volunteer_Donations
+@enduml

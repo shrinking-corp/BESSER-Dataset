@@ -1,0 +1,171 @@
+@startuml
+class jbatch_Analyzer {
+  + ref : str
+}
+class jbatch_Batchlet {
+  + ref : str
+}
+class jbatch_CheckpointAlgorithm {
+  + ref : str
+}
+class jbatch_Chunk {
+  + checkpointPolicy : str
+  + itemCount : str
+  + retryLimit : str
+  + skipLimit : str
+  + timeLimit : str
+}
+class jbatch_Collector {
+  + ref : str
+}
+class jbatch_Decision {
+  + id : str
+  + ref : str
+  + transitionElements : str
+}
+class jbatch_DocumentRoot {
+  + mixed : str
+}
+class jbatch_EStringToStringMapEntry {
+}
+class jbatch_End {
+  + exitStatus : str
+  + on : str
+}
+class jbatch_ExceptionClassFilter {
+}
+class jbatch_ExcludeType {
+  + class_ : str
+}
+class jbatch_Fail {
+  + exitStatus : str
+  + on : str
+}
+class jbatch_Flow {
+  + group : str
+  + id : str
+  + next1 : str
+  + transitionElements : str
+}
+class jbatch_IncludeType {
+  + class_ : str
+}
+class jbatch_ItemProcessor {
+  + ref : str
+}
+class jbatch_ItemReader {
+  + ref : str
+}
+class jbatch_ItemWriter {
+  + ref : str
+}
+class jbatch_Job {
+  + group : str
+  + id : str
+  + restartable : str
+  + version : str
+}
+class jbatch_Listener {
+  + ref : str
+}
+class jbatch_Listeners {
+}
+class jbatch_Next {
+  + on : str
+  + to : str
+}
+class jbatch_Partition {
+}
+class jbatch_PartitionMapper {
+  + ref : str
+}
+class jbatch_PartitionPlan {
+  + partitions : str
+  + threads : str
+}
+class jbatch_PartitionReducer {
+  + ref : str
+}
+class jbatch_Properties {
+  + partition : str
+}
+class jbatch_Property {
+  + name : str
+  + value : str
+}
+class jbatch_Split {
+  + id : str
+  + next : str
+}
+class jbatch_Step {
+  + allowStartIfComplete : str
+  + id : str
+  + next1 : str
+  + startLimit : str
+  + transitionElements : str
+}
+class jbatch_Stop {
+  + exitStatus : str
+  + on : str
+  + restart : str
+}
+jbatch_Analyzer "0..1" --* "1..1" jbatch_Partition : analyzer101
+jbatch_Batchlet "0..1" --* "1..1" jbatch_Step : batchlet126
+jbatch_CheckpointAlgorithm "0..1" --* "1..1" jbatch_Chunk : checkpointAlgorithm10
+jbatch_Chunk "0..1" --* "1..1" jbatch_Step : chunk129
+jbatch_Collector "0..1" --* "1..1" jbatch_Partition : collector98
+jbatch_Decision "0..9999" --* "1..1" jbatch_Flow : decision43
+jbatch_Decision "0..9999" --* "1..1" jbatch_Job : decision78
+jbatch_End "0..9999" --* "1..1" jbatch_Step : end135
+jbatch_Decision "1..1" *-- "0..9999" jbatch_End : end25
+jbatch_End "0..9999" --* "1..1" jbatch_Flow : end52
+jbatch_ExceptionClassFilter "1..1" *-- "0..9999" jbatch_ExcludeType : exclude41
+jbatch_Fail "0..9999" --* "1..1" jbatch_Step : fail138
+jbatch_Decision "1..1" *-- "0..9999" jbatch_Fail : fail27
+jbatch_Fail "0..9999" --* "1..1" jbatch_Flow : fail55
+jbatch_Flow "0..9999" --* "1..1" jbatch_Split : flow117
+jbatch_Flow "0..9999" --* "1..1" jbatch_Flow : flow46
+jbatch_Flow "0..9999" --* "1..1" jbatch_Job : flow81
+jbatch_ExceptionClassFilter "1..1" *-- "0..9999" jbatch_IncludeType : include39
+jbatch_DocumentRoot "1..1" *-- "0..9999" jbatch_Job : job37
+jbatch_Listener "0..9999" --* "1..1" jbatch_Listeners : listener92
+jbatch_Listeners "0..1" --* "1..1" jbatch_Step : listeners123
+jbatch_Job "1..1" *-- "0..1" jbatch_Listeners : listeners76
+jbatch_Partition "1..1" *-- "0..1" jbatch_PartitionMapper : mapper95
+jbatch_Next "0..9999" --* "1..1" jbatch_Step : next141
+jbatch_Decision "1..1" *-- "0..9999" jbatch_Next : next29
+jbatch_Flow "1..1" *-- "0..9999" jbatch_Next : next58
+jbatch_Chunk "1..1" *-- "0..1" jbatch_ExceptionClassFilter : noRollbackExceptionClasses18
+jbatch_Partition "0..1" --* "1..1" jbatch_Step : partition132
+jbatch_Partition "1..1" *-- "0..1" jbatch_PartitionPlan : plan96
+jbatch_Chunk "1..1" *-- "0..1" jbatch_ItemProcessor : processor6
+jbatch_Analyzer "1..1" *-- "0..1" jbatch_Properties : properties0
+jbatch_Batchlet "1..1" *-- "0..1" jbatch_Properties : properties1
+jbatch_PartitionMapper "1..1" *-- "0..1" jbatch_Properties : properties106
+jbatch_PartitionPlan "1..1" *-- "0..9999" jbatch_Properties : properties109
+jbatch_PartitionReducer "1..1" *-- "0..1" jbatch_Properties : properties112
+jbatch_Properties "0..1" --* "1..1" jbatch_Step : properties120
+jbatch_Collector "1..1" *-- "0..1" jbatch_Properties : properties21
+jbatch_Decision "1..1" *-- "0..1" jbatch_Properties : properties23
+jbatch_CheckpointAlgorithm "1..1" *-- "0..1" jbatch_Properties : properties3
+jbatch_ItemProcessor "1..1" *-- "0..1" jbatch_Properties : properties64
+jbatch_ItemReader "1..1" *-- "0..1" jbatch_Properties : properties67
+jbatch_ItemWriter "1..1" *-- "0..1" jbatch_Properties : properties70
+jbatch_Job "1..1" *-- "0..1" jbatch_Properties : properties73
+jbatch_Listener "1..1" *-- "0..1" jbatch_Properties : properties90
+jbatch_Properties "1..1" *-- "0..9999" jbatch_Property : property115
+jbatch_Chunk "1..1" *-- "1..1" jbatch_ItemReader : reader5
+jbatch_Partition "1..1" *-- "0..1" jbatch_PartitionReducer : reducer104
+jbatch_Chunk "1..1" *-- "0..1" jbatch_ExceptionClassFilter : retryableExceptionClasses15
+jbatch_Chunk "1..1" *-- "0..1" jbatch_ExceptionClassFilter : skippableExceptionClasses13
+jbatch_Flow "1..1" *-- "0..9999" jbatch_Split : split48
+jbatch_Job "1..1" *-- "0..9999" jbatch_Split : split84
+jbatch_Flow "1..1" *-- "0..9999" jbatch_Step : step50
+jbatch_Job "1..1" *-- "0..9999" jbatch_Step : step87
+jbatch_Step "1..1" *-- "0..9999" jbatch_Stop : stop144
+jbatch_Decision "1..1" *-- "0..9999" jbatch_Stop : stop31
+jbatch_Flow "1..1" *-- "0..9999" jbatch_Stop : stop61
+jbatch_Chunk "1..1" *-- "1..1" jbatch_ItemWriter : writer8
+jbatch_DocumentRoot "1..1" *-- "0..9999" jbatch_EStringToStringMapEntry : xMLNSPrefixMap33
+jbatch_DocumentRoot "1..1" *-- "0..9999" jbatch_EStringToStringMapEntry : xSISchemaLocation34
+@enduml

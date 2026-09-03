@@ -1,0 +1,27 @@
+@startuml
+class mmb_Automaton {
+  + Name : str
+}
+class mmb_Mode {
+  + Dimension : float
+  + InitialState : bool
+  + Name : str
+  + Shape : str
+}
+class mmb_Model {
+  + Name : str
+}
+class mmb_Modification {
+  + VarName : str
+  + VarType : str
+}
+class mmb_Transition {
+  + Event : str
+}
+mmb_Mode "1..1" *-- "0..9999" mmb_Modification : Modifications5
+mmb_Automaton "1..9999" --* "1..1" mmb_Model : automata0
+mmb_Automaton "1..1" *-- "1..9999" mmb_Mode : modes1
+mmb_Mode "1..1" -- "1..1" mmb_Transition : sourceMode7
+mmb_Mode "1..1" -- "1..1" mmb_Transition : targetMode10
+mmb_Automaton "1..1" *-- "0..9999" mmb_Transition : transistions3
+@enduml

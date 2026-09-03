@@ -1,0 +1,557 @@
+@startuml
+enum AnnotationKind {
+  ASSURED
+  DETERMINED
+  ISOLATED
+  PARALLEL
+}
+enum AssignmentOperator {
+  ANDASSIGN
+  ASSIGN
+  DIVASSIGN
+  LSHIFTASSIGN
+  MINUSASSIGN
+  MODASSIGN
+  MULTASSIGN
+  ORASSIGN
+  PLUSASSIGN
+  RSHIFTASSIGN
+  URSHIFTASSIGN
+  XORASSIGN
+}
+enum BooleanValue {
+  FALSE
+  TRUE
+}
+enum CollectOrIterateOperator {
+  COLLECT
+  ITERATE
+}
+class Expression {
+}
+enum ForAllOrExistsOrOneOperator {
+  EXISTS
+  FORALL
+  ONE
+}
+class LITERAL {
+}
+enum LinkOperationKind {
+  CLEAR
+  CREATE
+  DESTROY
+  DESTROY_OBJECT
+}
+class NUMBER_LITERAL {
+}
+class NUMBER_LITERAL_WITHOUT_SUFFIX {
+}
+class NonLiteralValueSpecification {
+}
+enum ParameterDirection {
+  IN
+  INOUT
+  OUT
+}
+enum SelectOrRejectOperator {
+  REJECT
+  SELECT
+}
+class SequenceElement {
+}
+class SequenceExpansionExpression {
+}
+class Statement {
+}
+class SuffixExpression {
+}
+class ValueSpecification {
+}
+class alf_AcceptBlock {
+}
+class alf_AcceptClause {
+  + name : str
+}
+class alf_AcceptStatement {
+}
+class alf_AccessCompletion {
+}
+class alf_AdditiveExpression {
+  + op : str
+}
+class alf_AndExpression {
+}
+class alf_AnnotatedStatement {
+}
+class alf_Annotation {
+  + args : str
+  + kind : str
+}
+class alf_AssignmentCompletion {
+  + op : str
+}
+class alf_BOOLEAN_LITERAL {
+  + value : str
+}
+class alf_Block {
+}
+class alf_BlockStatement {
+}
+class alf_BreakStatement {
+}
+class alf_ClassExtentExpression {
+}
+class alf_ClassificationClause {
+}
+class alf_ClassificationExpression {
+  + op : str
+}
+class alf_ClassificationFromClause {
+}
+class alf_ClassificationToClause {
+}
+class alf_ClassifyStatement {
+}
+class alf_CollectOrIterateOperation {
+  + expr1 : str
+  + expr2 : str
+  + expr3 : str
+  + expr4 : str
+  + op : str
+}
+class alf_CompoundAcceptStatementCompletion {
+}
+class alf_ConcurrentClauses {
+}
+class alf_ConditionalAndExpression {
+}
+class alf_ConditionalOrExpression {
+}
+class alf_ConditionalTestExpression {
+}
+class alf_DoStatement {
+}
+class alf_DocumentedStatement {
+  + comment : str
+}
+class alf_EmptyStatement {
+}
+class alf_EqualityExpression {
+  + op : str
+}
+class alf_ExclusiveOrExpression {
+}
+class alf_Expression {
+}
+class alf_FinalClause {
+}
+class alf_ForAllOrExistsOrOneOperation {
+  + expr1 : str
+  + expr2 : str
+  + expr3 : str
+  + expr4 : str
+  + op : str
+}
+class alf_ForControl {
+}
+class alf_ForStatement {
+}
+class alf_FormalParameter {
+  + direction : str
+  + name : str
+}
+class alf_FormalParameterList {
+}
+class alf_FormalParameters {
+}
+class alf_INTEGER_LITERAL {
+}
+class alf_INTEGER_LITERAL_WITHOUT_SUFFIX {
+}
+class alf_IfStatement {
+}
+class alf_InclusiveOrExpression {
+}
+class alf_InlineStatement {
+  + body : str
+  + langageName : str
+}
+class alf_InstanceCreationExpression {
+}
+class alf_InstanceCreationInvocationStatement {
+}
+class alf_InvocationOrAssignementOrDeclarationStatement {
+}
+class alf_IsUniqueOperation {
+  + name : str
+}
+class alf_LITERAL {
+}
+class alf_LinkOperationExpression {
+  + kind : str
+}
+class alf_LinkOperationTuple {
+}
+class alf_LinkOperationTupleElement {
+  + objectOrRole : str
+}
+class alf_LocalNameDeclarationStatement {
+  + multiplicityIndicator : bool
+  + varName : str
+}
+class alf_LoopVariableDefinition {
+  + name : str
+}
+class alf_MultiplicativeExpression {
+  + op : str
+}
+class alf_Multiplicity {
+  + nonUnique : bool
+  + ordered : bool
+  + sequence : bool
+}
+class alf_MultiplicityRange {
+}
+class alf_NUMBER_LITERAL {
+  + value : str
+}
+class alf_NUMBER_LITERAL_WITHOUT_SUFFIX {
+  + value : str
+}
+class alf_NameExpression {
+  + id : str
+  + postfixOp : str
+  + prefixOp : str
+}
+class alf_NamedTemplateBinding {
+  + formal : str
+}
+class alf_NonEmptyStatementSequence {
+}
+class alf_NonFinalClause {
+}
+class alf_NonLiteralValueSpecification {
+}
+class alf_NullExpression {
+}
+class alf_OperationCallExpression {
+  + operationName : str
+}
+class alf_OperationCallExpressionWithoutDot {
+  + operationName : str
+}
+class alf_OperationDeclaration {
+  + name : str
+}
+class alf_OperationDefinitionOrStub {
+}
+class alf_Operations {
+  + imports : str
+}
+class alf_ParenthesizedExpression {
+}
+class alf_PartialSequenceConstructionCompletion {
+}
+class alf_PrimaryExpression {
+}
+class alf_PropertyCallExpression {
+  + propertyName : str
+}
+class alf_QualifiedNameList {
+}
+class alf_QualifiedNamePath {
+}
+class alf_QualifiedNameWithBinding {
+  + id : str
+}
+class alf_ReclassifyAllClause {
+}
+class alf_RedefinitionClause {
+}
+class alf_RelationalExpression {
+  + op : str
+}
+class alf_ReturnStatement {
+}
+class alf_STRING_LITERAL {
+  + value : str
+}
+class alf_SelectOrRejectOperation {
+  + expr1 : str
+  + expr2 : str
+  + expr3 : str
+  + expr4 : str
+  + op : str
+}
+class alf_SequenceConstructionCompletion {
+  + multiplicityIndicator : bool
+}
+class alf_SequenceConstructionExpression {
+}
+class alf_SequenceConstructionOrAccessCompletion {
+  + multiplicityIndicator : bool
+}
+class alf_SequenceElement {
+}
+class alf_SequenceExpansionExpression {
+}
+class alf_SequenceOperationExpression {
+  + operationName : str
+}
+class alf_SequenceReductionExpression {
+  + isOrdered : bool
+}
+class alf_SequentialClauses {
+}
+class alf_ShiftExpression {
+  + op : str
+}
+class alf_SimpleAcceptStatementCompletion {
+}
+class alf_Statement {
+}
+class alf_StatementSequence {
+}
+class alf_SuffixExpression {
+}
+class alf_SuperInvocationExpression {
+  + className : str
+}
+class alf_SuperInvocationStatement {
+}
+class alf_SwitchCase {
+}
+class alf_SwitchClause {
+}
+class alf_SwitchDefaultClause {
+}
+class alf_SwitchStatement {
+}
+class alf_TemplateBinding {
+}
+class alf_Test {
+}
+class alf_ThisExpression {
+}
+class alf_ThisInvocationStatement {
+}
+class alf_Tuple {
+}
+class alf_TupleElement {
+}
+class alf_TypeName {
+}
+class alf_TypePart {
+}
+class alf_UNLIMITED_LITERAL {
+}
+class alf_UNLIMITED_LITERAL_WITHOUT_SUFFIX {
+}
+class alf_UnaryExpression {
+  + op : str
+}
+class alf_UnqualifiedName {
+  + name : str
+}
+class alf_ValueSpecification {
+}
+class alf_VariableDeclarationCompletion {
+  + multiplicityIndicator : bool
+  + variableName : str
+}
+class alf_WhileStatement {
+}
+Expression <|-- alf_ConditionalTestExpression
+LITERAL <|-- alf_BOOLEAN_LITERAL
+LITERAL <|-- alf_NUMBER_LITERAL
+LITERAL <|-- alf_STRING_LITERAL
+NUMBER_LITERAL <|-- alf_INTEGER_LITERAL
+NUMBER_LITERAL <|-- alf_UNLIMITED_LITERAL
+NUMBER_LITERAL_WITHOUT_SUFFIX <|-- alf_INTEGER_LITERAL_WITHOUT_SUFFIX
+NUMBER_LITERAL_WITHOUT_SUFFIX <|-- alf_UNLIMITED_LITERAL_WITHOUT_SUFFIX
+NonLiteralValueSpecification <|-- alf_InstanceCreationExpression
+NonLiteralValueSpecification <|-- alf_NameExpression
+NonLiteralValueSpecification <|-- alf_ParenthesizedExpression
+NonLiteralValueSpecification <|-- alf_SuperInvocationExpression
+NonLiteralValueSpecification <|-- alf_ThisExpression
+SequenceElement <|-- alf_Expression
+SequenceElement <|-- alf_SequenceConstructionExpression
+SequenceExpansionExpression <|-- alf_CollectOrIterateOperation
+SequenceExpansionExpression <|-- alf_ForAllOrExistsOrOneOperation
+SequenceExpansionExpression <|-- alf_IsUniqueOperation
+SequenceExpansionExpression <|-- alf_SelectOrRejectOperation
+Statement <|-- alf_AcceptStatement
+Statement <|-- alf_AnnotatedStatement
+Statement <|-- alf_BlockStatement
+Statement <|-- alf_BreakStatement
+Statement <|-- alf_ClassifyStatement
+Statement <|-- alf_DoStatement
+Statement <|-- alf_EmptyStatement
+Statement <|-- alf_ForStatement
+Statement <|-- alf_IfStatement
+Statement <|-- alf_InlineStatement
+Statement <|-- alf_InstanceCreationInvocationStatement
+Statement <|-- alf_InvocationOrAssignementOrDeclarationStatement
+Statement <|-- alf_LocalNameDeclarationStatement
+Statement <|-- alf_ReturnStatement
+Statement <|-- alf_SuperInvocationStatement
+Statement <|-- alf_SwitchStatement
+Statement <|-- alf_ThisInvocationStatement
+Statement <|-- alf_WhileStatement
+SuffixExpression <|-- alf_LinkOperationExpression
+SuffixExpression <|-- alf_OperationCallExpression
+SuffixExpression <|-- alf_PropertyCallExpression
+SuffixExpression <|-- alf_SequenceExpansionExpression
+SuffixExpression <|-- alf_SequenceOperationExpression
+SuffixExpression <|-- alf_SequenceReductionExpression
+ValueSpecification <|-- alf_InstanceCreationExpression
+ValueSpecification <|-- alf_LITERAL
+ValueSpecification <|-- alf_NameExpression
+ValueSpecification <|-- alf_NullExpression
+ValueSpecification <|-- alf_ParenthesizedExpression
+ValueSpecification <|-- alf_SuperInvocationExpression
+ValueSpecification <|-- alf_ThisExpression
+alf_InstanceCreationExpression "0..1" --* "1..1" alf_InstanceCreationInvocationStatement : _new320
+alf_SuperInvocationExpression "0..1" --* "1..1" alf_SuperInvocationStatement : _super313
+alf_ThisExpression "0..1" --* "1..1" alf_ThisInvocationStatement : _this315
+alf_AcceptBlock "0..9999" --* "1..1" alf_CompoundAcceptStatementCompletion : acceptBlock276
+alf_AccessCompletion "0..1" --* "1..1" alf_SequenceConstructionOrAccessCompletion : accessCompletion171
+alf_AccessCompletion "1..1" *-- "0..1" alf_Expression : accessIndex177
+alf_NamedTemplateBinding "1..1" *-- "0..1" alf_QualifiedNameWithBinding : actual56
+alf_AnnotatedStatement "1..1" *-- "0..1" alf_Annotation : annotation195
+alf_Expression "0..1" --* "1..1" alf_TupleElement : argument67
+alf_AssignmentCompletion "0..9999" --* "1..1" alf_Test : assignExpression34
+alf_AssignmentCompletion "0..1" --* "1..1" alf_InvocationOrAssignementOrDeclarationStatement : assignmentCompletion310
+alf_AssignmentCompletion "0..1" --* "1..1" alf_ThisInvocationStatement : assignmentCompletion317
+alf_QualifiedNameWithBinding "0..1" --* "1..1" alf_SequenceReductionExpression : behavior138
+alf_QualifiedNameWithBinding "1..1" *-- "0..1" alf_TemplateBinding : binding59
+alf_NamedTemplateBinding "0..9999" --* "1..1" alf_TemplateBinding : bindings54
+alf_AnnotatedStatement "1..1" *-- "0..1" alf_Block : block196
+alf_Block "0..1" --* "1..1" alf_BlockStatement : block202
+alf_Block "0..1" --* "1..1" alf_NonFinalClause : block219
+alf_Block "0..1" --* "1..1" alf_FinalClause : block222
+alf_Block "0..1" --* "1..1" alf_WhileStatement : block246
+alf_Block "0..1" --* "1..1" alf_DoStatement : block249
+alf_Block "0..1" --* "1..1" alf_ForStatement : block255
+alf_Block "0..1" --* "1..1" alf_CompoundAcceptStatementCompletion : block273
+alf_AcceptBlock "1..1" *-- "0..1" alf_Block : block281
+alf_Block "0..1" --* "1..1" alf_Test : block38
+alf_Block "0..1" --* "1..1" alf_OperationDefinitionOrStub : body3
+alf_NonLiteralValueSpecification "0..1" --* "1..1" alf_ParenthesizedExpression : casted149
+alf_ClassificationClause "1..1" *-- "0..1" alf_ClassificationFromClause : classifyFromClause291
+alf_ClassificationClause "1..1" *-- "0..1" alf_ClassificationToClause : classifyToClause293
+alf_AcceptClause "0..1" --* "1..1" alf_AcceptStatement : clause268
+alf_AcceptBlock "1..1" *-- "0..1" alf_AcceptClause : clause278
+alf_ClassificationClause "0..1" --* "1..1" alf_ClassifyStatement : clause289
+alf_AcceptStatement "1..1" *-- "0..1" alf_CompoundAcceptStatementCompletion : compoundAccept271
+alf_ConcurrentClauses "0..9999" --* "1..1" alf_SequentialClauses : conccurentClauses212
+alf_Expression "0..1" --* "1..1" alf_NonFinalClause : condition216
+alf_Expression "0..1" --* "1..1" alf_WhileStatement : condition244
+alf_DoStatement "1..1" *-- "0..1" alf_Expression : condition251
+alf_InstanceCreationExpression "1..1" *-- "0..1" alf_QualifiedNameWithBinding : constructor161
+alf_ForControl "0..1" --* "1..1" alf_ForStatement : control254
+alf_OperationDeclaration "0..1" --* "1..1" alf_OperationDefinitionOrStub : declaration1
+alf_SwitchDefaultClause "0..1" --* "1..1" alf_SwitchStatement : defaultClause229
+alf_AdditiveExpression "1..1" *-- "0..9999" alf_MultiplicativeExpression : exp101
+alf_MultiplicativeExpression "1..1" *-- "0..9999" alf_UnaryExpression : exp103
+alf_PrimaryExpression "0..1" --* "1..1" alf_UnaryExpression : exp105
+alf_ConditionalOrExpression "0..1" --* "1..1" alf_ConditionalTestExpression : exp70
+alf_ConditionalAndExpression "0..9999" --* "1..1" alf_ConditionalOrExpression : exp77
+alf_ConditionalAndExpression "1..1" *-- "0..9999" alf_InclusiveOrExpression : exp79
+alf_ExclusiveOrExpression "0..9999" --* "1..1" alf_InclusiveOrExpression : exp81
+alf_AndExpression "0..9999" --* "1..1" alf_ExclusiveOrExpression : exp83
+alf_AndExpression "1..1" *-- "0..9999" alf_EqualityExpression : exp85
+alf_ClassificationExpression "0..9999" --* "1..1" alf_EqualityExpression : exp87
+alf_ClassificationExpression "1..1" *-- "0..1" alf_RelationalExpression : exp89
+alf_AdditiveExpression "0..9999" --* "1..1" alf_ShiftExpression : exp99
+alf_Expression "0..1" --* "1..1" alf_ParenthesizedExpression : expOrTypeCast147
+alf_Expression "0..1" --* "1..1" alf_IsUniqueOperation : expr145
+alf_Expression "0..1" --* "1..1" alf_LoopVariableDefinition : expression1260
+alf_SequenceConstructionExpression "0..1" --* "1..1" alf_SequenceConstructionOrAccessCompletion : expression175
+alf_PartialSequenceConstructionCompletion "1..1" *-- "0..1" alf_SequenceConstructionExpression : expression180
+alf_SequenceConstructionCompletion "1..1" *-- "0..1" alf_SequenceConstructionExpression : expression183
+alf_Expression "0..1" --* "1..1" alf_SwitchStatement : expression225
+alf_Expression "0..1" --* "1..1" alf_LoopVariableDefinition : expression2263
+alf_Expression "0..1" --* "1..1" alf_SwitchCase : expression235
+alf_Expression "0..1" --* "1..1" alf_ReturnStatement : expression266
+alf_ClassifyStatement "1..1" *-- "0..1" alf_Expression : expression287
+alf_Expression "0..9999" --* "1..1" alf_Test : expression33
+alf_FinalClause "0..1" --* "1..1" alf_IfStatement : finalClause210
+alf_FormalParameter "0..9999" --* "1..1" alf_FormalParameterList : formalParameter13
+alf_FormalParameterList "0..1" --* "1..1" alf_FormalParameters : formalParameterList11
+alf_FormalParameters "0..1" --* "1..1" alf_OperationDeclaration : formalParameters5
+alf_Expression "0..1" --* "1..1" alf_PropertyCallExpression : index119
+alf_Expression "0..1" --* "1..1" alf_LocalNameDeclarationStatement : init206
+alf_AssignmentCompletion "0..1" --* "1..1" alf_VariableDeclarationCompletion : initValue322
+alf_NameExpression "1..1" *-- "0..1" alf_Tuple : invocationCompletion43
+alf_RelationalExpression "1..1" *-- "0..1" alf_ShiftExpression : left94
+alf_LinkOperationTuple "1..1" *-- "0..9999" alf_LinkOperationTupleElement : linkOperationTupleElement125
+alf_ForControl "1..1" *-- "0..1" alf_LoopVariableDefinition : loopVariableDefinition258
+alf_MultiplicityRange "1..1" *-- "0..1" alf_NUMBER_LITERAL_WITHOUT_SUFFIX : lower24
+alf_Multiplicity "0..1" --* "1..1" alf_TypePart : multiplicity20
+alf_QualifiedNamePath "1..1" *-- "0..9999" alf_UnqualifiedName : namespace50
+alf_ConcurrentClauses "1..1" *-- "0..9999" alf_NonFinalClause : nonFinalClause214
+alf_LinkOperationTupleElement "1..1" *-- "0..1" alf_ValueSpecification : objectValueSpec130
+alf_OperationCallExpression "0..1" --* "1..1" alf_SuperInvocationExpression : operationCall158
+alf_OperationCallExpressionWithoutDot "0..1" --* "1..1" alf_SuperInvocationExpression : operationCallWithoutDot156
+alf_OperationDefinitionOrStub "0..9999" --* "1..1" alf_Operations : operations0
+alf_NameExpression "1..1" *-- "0..1" alf_QualifiedNamePath : path42
+alf_PrimaryExpression "1..1" *-- "0..1" alf_ValueSpecification : prefix107
+alf_QualifiedNameWithBinding "0..1" --* "1..1" alf_TypeName : qualifiedName29
+alf_QualifiedNameList "1..1" *-- "0..9999" alf_QualifiedNameWithBinding : qualifiedName303
+alf_AcceptClause "1..1" *-- "0..1" alf_QualifiedNameList : qualifiedNameList284
+alf_ClassificationFromClause "1..1" *-- "0..1" alf_QualifiedNameList : qualifiedNameList297
+alf_ClassificationToClause "1..1" *-- "0..1" alf_QualifiedNameList : qualifiedNameList300
+alf_Multiplicity "1..1" *-- "0..1" alf_MultiplicityRange : range22
+alf_Expression "0..1" --* "1..1" alf_SequenceConstructionExpression : rangeUpper188
+alf_ClassificationClause "1..1" *-- "0..1" alf_ReclassifyAllClause : reclassyAllClause295
+alf_QualifiedNameList "0..1" --* "1..1" alf_RedefinitionClause : redefinedOperations31
+alf_OperationDeclaration "1..1" *-- "0..1" alf_RedefinitionClause : redefinition9
+alf_QualifiedNameWithBinding "0..1" --* "1..1" alf_QualifiedNameWithBinding : remaining63
+alf_OperationDeclaration "1..1" *-- "0..1" alf_TypePart : returnType7
+alf_RelationalExpression "1..1" *-- "0..1" alf_ShiftExpression : right96
+alf_AssignmentCompletion "1..1" *-- "0..1" alf_Expression : rightHandSide325
+alf_Expression "0..1" --* "1..1" alf_LinkOperationTupleElement : roleIndex127
+alf_Block "1..1" *-- "0..1" alf_StatementSequence : sequence191
+alf_PartialSequenceConstructionCompletion "0..1" --* "1..1" alf_SequenceConstructionOrAccessCompletion : sequenceCompletion173
+alf_NameExpression "1..1" *-- "0..1" alf_SequenceConstructionOrAccessCompletion : sequenceConstructionCompletion45
+alf_InstanceCreationExpression "1..1" *-- "0..1" alf_SequenceConstructionCompletion : sequenceConstuctionCompletion166
+alf_SequenceConstructionExpression "1..1" *-- "0..9999" alf_SequenceElement : sequenceElement186
+alf_IfStatement "1..1" *-- "0..1" alf_SequentialClauses : sequentialClausses209
+alf_AcceptStatement "1..1" *-- "0..1" alf_SimpleAcceptStatementCompletion : simpleAccept269
+alf_DocumentedStatement "1..1" *-- "0..1" alf_Statement : statement199
+alf_DocumentedStatement "0..9999" --* "1..1" alf_NonEmptyStatementSequence : statement241
+alf_NonEmptyStatementSequence "0..1" --* "1..1" alf_SwitchClause : statementSequence233
+alf_NonEmptyStatementSequence "0..1" --* "1..1" alf_SwitchDefaultClause : statementSequence238
+alf_DocumentedStatement "0..9999" --* "1..1" alf_StatementSequence : statements193
+alf_Statement "0..9999" --* "1..1" alf_Test : statements36
+alf_OperationCallExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix111
+alf_OperationCallExpressionWithoutDot "1..1" *-- "0..1" alf_SuffixExpression : suffix116
+alf_PropertyCallExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix121
+alf_SequenceOperationExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix135
+alf_SequenceReductionExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix140
+alf_SequenceExpansionExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix143
+alf_ParenthesizedExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix151
+alf_SuffixExpression "0..1" --* "1..1" alf_ThisExpression : suffix154
+alf_InstanceCreationExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix168
+alf_LITERAL "1..1" *-- "0..1" alf_SuffixExpression : suffix41
+alf_NameExpression "1..1" *-- "0..1" alf_SuffixExpression : suffix47
+alf_SwitchCase "0..9999" --* "1..1" alf_SwitchClause : switchCase231
+alf_SwitchClause "0..9999" --* "1..1" alf_SwitchStatement : switchClause227
+alf_TemplateBinding "0..1" --* "1..1" alf_UnqualifiedName : templateBinding52
+alf_OperationCallExpression "1..1" *-- "0..1" alf_Tuple : tuple109
+alf_OperationCallExpressionWithoutDot "1..1" *-- "0..1" alf_Tuple : tuple114
+alf_LinkOperationExpression "1..1" *-- "0..1" alf_LinkOperationTuple : tuple124
+alf_SequenceOperationExpression "1..1" *-- "0..1" alf_Tuple : tuple133
+alf_InstanceCreationExpression "1..1" *-- "0..1" alf_Tuple : tuple163
+alf_Tuple "1..1" *-- "0..9999" alf_TupleElement : tupleElements65
+alf_FormalParameter "1..1" *-- "0..1" alf_TypePart : type15
+alf_LocalNameDeclarationStatement "1..1" *-- "0..1" alf_QualifiedNameWithBinding : type204
+alf_TypeName "0..1" --* "1..1" alf_TypePart : typeName18
+alf_ClassificationExpression "1..1" *-- "0..1" alf_NameExpression : typeName91
+alf_InvocationOrAssignementOrDeclarationStatement "1..1" *-- "0..1" alf_NameExpression : typePart_OR_assignedPart_OR_invocationPart306
+alf_MultiplicityRange "1..1" *-- "0..1" alf_NUMBER_LITERAL_WITHOUT_SUFFIX : upper26
+alf_InvocationOrAssignementOrDeclarationStatement "1..1" *-- "0..1" alf_VariableDeclarationCompletion : variableDeclarationCompletion308
+alf_ConditionalTestExpression "0..1" --* "1..1" alf_ConditionalTestExpression : whenFalse75
+alf_ConditionalTestExpression "0..1" --* "1..1" alf_ConditionalTestExpression : whenTrue72
+@enduml

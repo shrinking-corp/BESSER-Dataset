@@ -1,0 +1,29 @@
+@startuml
+class nupn_EStringToStringMapEntry {
+}
+class nupn_NUPNToolspecificType {
+  + mixed : str
+  + tool : str
+  + version : str
+}
+class nupn_SizeType {
+  + arcs : str
+  + places : str
+  + transitions : str
+}
+class nupn_StructureType {
+  + root : str
+  + safe : str
+  + units : str
+}
+class nupn_UnitType {
+  + id : str
+  + places : str
+  + subunits : str
+}
+nupn_NUPNToolspecificType "1..1" *-- "1..1" nupn_SizeType : size1
+nupn_NUPNToolspecificType "1..1" *-- "1..1" nupn_StructureType : structure2
+nupn_StructureType "1..1" *-- "1..9999" nupn_UnitType : unit0
+nupn_EStringToStringMapEntry "0..9999" --* "1..1" nupn_NUPNToolspecificType : xMLNSPrefixMap5
+nupn_EStringToStringMapEntry "0..9999" --* "1..1" nupn_NUPNToolspecificType : xSISchemaLocation7
+@enduml

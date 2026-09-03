@@ -1,0 +1,56 @@
+@startuml
+class Cluster {
+  + populate : str
+}
+class LineItem {
+  + price : float
+  + quantity : int
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : OrderStatus
+  + total : float
+}
+enum OrderStatus {
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Product {
+  + description : str
+  + name : str
+}
+class RadixClient {
+  + password : str
+  + redisUrl : str
+  + state : UserState
+}
+class Redis {
+}
+class RedisStateStore {
+  + RadixClient : RadixClient
+  + cluster : Cluster
+  + log : str
+}
+class ShoppingCart {
+  + creationDate : date
+}
+enum UserState {
+}
+Order "0..9999" -- "1..1" Redis : Account_Order
+Payment "0..9999" -- "1..1" Redis : Account_Payment
+Redis "1..1" -- "1..1" ShoppingCart : Account_ShoppingCart
+Cluster "0..1" -- "0..1" Redis : Cluster_Redis
+Redis "1..1" -- "1..1" RedisStateStore : Customer_Account
+LineItem "1..9999" -- "0..1" Order : Order_LineItem
+Order "1..1" -- "0..1" Payment : Payment_Order
+LineItem "0..9999" -- "1..1" Product : Product_LineItem
+RadixClient "0..1" -- "0..1" RedisStateStore : RadixClient_RedisClient
+LineItem "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+RadixClient "1..1" -- "0..1" ShoppingCart : WebUser_ShoppingCart
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+class Constraint {
+}
+class Group {
+}
+class featureModel_Constraint {
+  + nameA : str
+  + nameB : str
+}
+class featureModel_Constraints {
+}
+class featureModel_ExcludeConstraint {
+}
+class featureModel_Feature {
+  + name : str
+}
+class featureModel_FeatureModel {
+}
+class featureModel_Group {
+}
+class featureModel_ImplyConstraint {
+}
+class featureModel_PropFormula {
+}
+class featureModel_Proposition {
+  + nameA : str
+  + nameRest : str
+}
+Constraint <|-- featureModel_ExcludeConstraint
+Constraint <|-- featureModel_ImplyConstraint
+Group <|-- featureModel_Feature
+featureModel_Feature "1..1" *-- "0..9999" featureModel_Group : children5
+featureModel_Constraints "0..9999" --* "1..1" featureModel_FeatureModel : constraints1
+featureModel_Constraint "0..9999" --* "1..1" featureModel_Constraints : constraints7
+featureModel_PropFormula "1..1" *-- "0..9999" featureModel_Proposition : firstProp9
+featureModel_FeatureModel "1..1" *-- "0..9999" featureModel_PropFormula : propFormula3
+featureModel_PropFormula "1..1" *-- "0..9999" featureModel_Proposition : rest11
+featureModel_Feature "0..9999" --* "1..1" featureModel_FeatureModel : rootFeature0
+@enduml

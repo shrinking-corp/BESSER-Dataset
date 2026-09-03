@@ -1,0 +1,90 @@
+@startuml
+class Annotable {
+}
+enum AssociationType {
+}
+class mvc_Action {
+  + name : str
+}
+class mvc_Association {
+  + containment : bool
+  + lowerBound : int
+  + name : str
+  + type : str
+  + upperBound : int
+}
+class mvc_Attribute {
+  + name : str
+  + type : str
+}
+class mvc_Component {
+  + name : str
+}
+class mvc_Controller {
+  + name : str
+}
+class mvc_ControllerView {
+}
+class mvc_Entity {
+  + name : str
+}
+class mvc_Event {
+  + name : str
+}
+class mvc_EventAction {
+}
+class mvc_MVCModel {
+  + name : str
+  + version : str
+}
+class mvc_Model {
+  + name : str
+}
+class mvc_UIComponent {
+  + id : str
+  + layout : str
+  + name : str
+  + type : str
+}
+class mvc_View {
+  + name : str
+}
+Annotable <|-- mvc_Action
+Annotable <|-- mvc_Association
+Annotable <|-- mvc_Attribute
+Annotable <|-- mvc_Component
+Annotable <|-- mvc_Controller
+Annotable <|-- mvc_ControllerView
+Annotable <|-- mvc_Entity
+Annotable <|-- mvc_Event
+Annotable <|-- mvc_EventAction
+Annotable <|-- mvc_MVCModel
+Annotable <|-- mvc_Model
+Annotable <|-- mvc_UIComponent
+Annotable <|-- mvc_View
+mvc_Action "1..1" -- "1..1" mvc_EventAction : action56
+mvc_Action "0..9999" --* "1..1" mvc_Controller : actions32
+mvc_Association "0..9999" --* "1..1" mvc_Model : associations1
+mvc_Attribute "0..9999" --* "1..1" mvc_Entity : attributes3
+mvc_UIComponent "0..9999" --* "1..1" mvc_UIComponent : childs16
+mvc_Component "1..9999" --* "1..1" mvc_MVCModel : components30
+mvc_Controller "0..9999" --* "1..1" mvc_MVCModel : controllers28
+mvc_Component "1..1" -- "1..9999" mvc_Controller : controllers53
+mvc_Controller "1..1" *-- "0..9999" mvc_EventAction : eventActions36
+mvc_Event "0..9999" -- "1..1" mvc_UIComponent : events18
+mvc_Event "0..9999" --* "1..1" mvc_MVCModel : events25
+mvc_Event "0..9999" -- "1..1" mvc_EventAction : events59
+mvc_Entity "0..9999" -- "1..1" mvc_Entity : extends6
+mvc_MVCModel "1..1" *-- "0..9999" mvc_Model : models20
+mvc_ControllerView "1..1" -- "0..9999" mvc_Model : models50
+mvc_Action "1..1" -- "0..1" mvc_Event : postExecutionEvent41
+mvc_Action "1..1" -- "0..1" mvc_Event : preExecutionEvent38
+mvc_UIComponent "0..1" --* "1..1" mvc_View : rootComponent14
+mvc_Entity "0..1" --* "1..1" mvc_Model : rootEntity0
+mvc_Association "1..1" -- "1..1" mvc_Entity : source8
+mvc_Association "1..1" -- "1..1" mvc_Entity : target11
+mvc_Action "1..1" -- "0..9999" mvc_Event : triggerEvents44
+mvc_ControllerView "1..1" -- "1..1" mvc_View : view47
+mvc_MVCModel "1..1" *-- "0..9999" mvc_View : views22
+mvc_Controller "1..1" *-- "0..9999" mvc_ControllerView : views34
+@enduml

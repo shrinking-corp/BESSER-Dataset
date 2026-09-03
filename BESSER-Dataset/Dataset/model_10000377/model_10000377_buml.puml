@@ -1,0 +1,60 @@
+@startuml
+class Admin {
+  + mail_ID : str
+  + name : str
+}
+class Admin_Actor {
+}
+class Class {
+  + attribute : str
+}
+class Faculty {
+  + emp_ID : str
+  + mail_ID : str
+  + name : str
+}
+class Faculty__Actor {
+}
+class Login_UseCase {
+}
+class Logout_UseCase {
+}
+class Manage_Student___Faculty_List_UseCase {
+}
+class Post_Questions_UseCase {
+}
+class SignUp_UseCase {
+}
+class Student {
+  + mail_ID : str
+  + name : str
+  + reg_Num : str
+}
+class Student_Actor {
+}
+class Upload_Materials_UseCase {
+}
+class View_Questions_And_Post_Answers_UseCase {
+}
+class View_The_Uploaded_Materials_UseCase {
+}
+class View___Modify_the_Uploaded_Materials_UseCase {
+}
+Admin_Actor "0..1" -- "0..1" Logout_UseCase : Admin_Logout
+Admin_Actor "0..1" -- "0..1" Manage_Student___Faculty_List_UseCase : Admin_Manage_Student___Faculty_List
+Admin_Actor "0..1" -- "0..1" View___Modify_the_Uploaded_Materials_UseCase : Admin_View___Modify_the_Uploaded_Materials
+Admin "1..1" -- "0..9999" Faculty : Faculty_Admin
+Admin "0..1" -- "0..9999" Student : Student_Admin
+Faculty "0..9999" -- "0..9999" Student : Student_Faculty
+Login_UseCase "0..1" -- "0..1" Student_Actor : Student_Login
+Logout_UseCase "0..1" -- "0..1" Student_Actor : Student_Logout
+Post_Questions_UseCase "0..1" -- "0..1" Student_Actor : Student_Post_Questions
+SignUp_UseCase "0..1" -- "0..1" Student_Actor : Student_SignUp
+Student_Actor "0..1" -- "0..1" View_The_Uploaded_Materials_UseCase : Student_View_The_Uploaded_Materials
+Faculty__Actor "0..1" -- "0..1" Login_UseCase : Teacher_Login
+Faculty__Actor "0..1" -- "0..1" Logout_UseCase : Teacher_Logout
+Faculty__Actor "0..1" -- "0..1" SignUp_UseCase : Teacher_SignUp
+Faculty__Actor "0..1" -- "0..1" Upload_Materials_UseCase : Teacher_Upload_Materials
+Faculty__Actor "0..1" -- "0..1" View_Questions_And_Post_Answers_UseCase : Teacher_View_Questions_And_Post_Answers
+Faculty__Actor "0..1" -- "0..1" View___Modify_the_Uploaded_Materials_UseCase : Teacher_View___Modify_the_Uploaded_Materials
+@enduml

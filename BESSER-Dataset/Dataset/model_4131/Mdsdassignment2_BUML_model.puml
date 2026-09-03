@@ -1,0 +1,42 @@
+@startuml
+class ExpOp {
+}
+class mdsdassignment2_Add {
+}
+class mdsdassignment2_Div {
+}
+class mdsdassignment2_Exp {
+}
+class mdsdassignment2_ExpOp {
+}
+class mdsdassignment2_MathExp {
+}
+class mdsdassignment2_Mult {
+}
+class mdsdassignment2_Num {
+  + value : int
+}
+class mdsdassignment2_Parenthesis {
+}
+class mdsdassignment2_Sub {
+}
+ExpOp <|-- mdsdassignment2_Add
+ExpOp <|-- mdsdassignment2_Div
+ExpOp <|-- mdsdassignment2_Mult
+ExpOp <|-- mdsdassignment2_Num
+ExpOp <|-- mdsdassignment2_Parenthesis
+ExpOp <|-- mdsdassignment2_Sub
+mdsdassignment2_Exp "0..1" --* "1..1" mdsdassignment2_MathExp : exp0
+mdsdassignment2_Exp "0..1" --* "1..1" mdsdassignment2_Parenthesis : exp9
+mdsdassignment2_Exp "1..1" *-- "0..1" mdsdassignment2_ExpOp : left1
+mdsdassignment2_Add "1..1" *-- "0..1" mdsdassignment2_ExpOp : left11
+mdsdassignment2_ExpOp "0..1" --* "1..1" mdsdassignment2_Sub : left16
+mdsdassignment2_ExpOp "0..1" --* "1..1" mdsdassignment2_Mult : left21
+mdsdassignment2_Div "1..1" *-- "0..1" mdsdassignment2_ExpOp : left26
+mdsdassignment2_Exp "1..1" *-- "0..1" mdsdassignment2_ExpOp : operator3
+mdsdassignment2_Add "1..1" *-- "0..1" mdsdassignment2_ExpOp : right13
+mdsdassignment2_ExpOp "0..1" --* "1..1" mdsdassignment2_Sub : right18
+mdsdassignment2_ExpOp "0..1" --* "1..1" mdsdassignment2_Mult : right23
+mdsdassignment2_Div "1..1" *-- "0..1" mdsdassignment2_ExpOp : right28
+mdsdassignment2_Exp "0..1" --* "1..1" mdsdassignment2_Exp : right7
+@enduml

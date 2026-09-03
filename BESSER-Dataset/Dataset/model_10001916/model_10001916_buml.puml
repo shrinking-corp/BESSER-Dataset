@@ -1,0 +1,142 @@
+@startuml
+class Billing_system {
+  + course_fees : int_Interface
+  + course_status : str
+}
+class Groups {
+  + id : Passenger
+  + names : str
+  + passenger_amount : int_Interface
+}
+class Owner {
+  + email : str
+  + items : str
+}
+class Parents {
+}
+class Passenger {
+  + baggage : int_Interface
+  + check_in : bool
+  + id : int_Interface
+  + pass : str
+}
+class Professor {
+  + course_id : int_Interface
+  + course_name : str
+  + professor_id : int_Interface
+  + professor_name : str
+}
+class Register {
+  + course_id : str
+  + course_name : str
+  + professer_id : Professor
+  + professor_name : Professor
+  + student_id : student
+  + student_name : student
+}
+class School_administrator {
+}
+class attendance_manager {
+  + Excuse_of_Absenties : str
+  + identify_students : str
+  + student_names : str
+}
+class bank {
+  + bank_name : str
+}
+enum bo {
+}
+class booking_clerk {
+}
+class clinical {
+  + id : int_Interface
+  + name : str
+  + salary : int_Interface
+}
+class compuer {
+}
+class course {
+  + course_id : int_Interface
+  + course_name : str
+  + placed_on : str
+  + teached_by : str
+}
+class customer {
+  + _attr : str
+  + customer_Id : int_Interface
+  + customer_name : str
+}
+class doctor {
+  + attendance : bool
+  + doctor_id : int_Interface
+  + doctor_name : str
+  + salary : int_Interface
+}
+class duties_manager {
+  + make_attendence : bool
+}
+class income_manager {
+  + duty_hours : int_Interface
+  + manager_id : int_Interface
+  + manager_name : str
+}
+class individual {
+  + pass : Passenger
+}
+class int_Interface {
+}
+class kiosk {
+  + discount : int_Interface
+  + newsletters : str
+  + saving : int_Interface
+}
+class kiosk1 {
+  + check_in : Passenger
+}
+class patient {
+  + disease : str
+  + patient_id : int_Interface
+  + patient_name : str
+}
+class pharmacy {
+  + medicines : str
+  + price : int_Interface
+}
+class student {
+  + no_of_courses : int_Interface
+  + student_id : int_Interface
+  + student_name : str
+}
+class students {
+  + student_id_ : int_Interface
+  + student_name : str
+}
+class teacher {
+}
+Groups "0..1" -- "0..1" booking_clerk : Groups__booking_clerk
+Owner "1..1" -- "1..1" kiosk : Owner_kiosk
+Parents "0..1" -- "0..1" attendance_manager : Parents_attendance_manager
+Groups "0..1" -- "0..1" Passenger : Passenger_Groups
+Passenger "1..9999" -- "1..9999" booking_clerk : Passenger__booking_clerk
+Professor "1..9999" -- "1..9999" Register : Professor_Register
+Parents "1..9999" -- "0..1" School_administrator : School_administrator_Parents
+School_administrator "0..1" -- "0..1" attendance_manager : School_administrator_attendance_manager
+attendance_manager "0..1" -- "0..1" teacher : attendance_manager_teacher
+clinical "1..9999" -- "1..1" duties_manager : clinical__duties_manager
+compuer "1..1" -- "1..1" kiosk : compuer_kiosk
+compuer "1..1" -- "1..9999" customer : customer_compuer
+customer "1..9999" -- "1..1" kiosk : customer_kiosk
+doctor "1..9999" -- "1..1" duties_manager : doctor__duties_manager
+bank "1..1" -- "1..1" income_manager : income_manager_bank
+Passenger "0..1" -- "0..1" individual : individual_Passenger
+booking_clerk "0..1" -- "0..1" individual : individual__booking_clerk
+Passenger "0..1" -- "0..1" kiosk1 : kiosk_Passenger
+patient "1..9999" -- "0..1" pharmacy : patient__pharmacy
+doctor "1..9999" -- "1..1" patient : patient_class_doctor
+Billing_system "0..1" -- "1..9999" student : student_Billing_system
+Professor "1..1" -- "1..9999" student : student_Professor
+Register "1..9999" -- "1..9999" student : student_Register
+course "1..9999" -- "0..1" student : student_course
+School_administrator "1..1" -- "0..1" students : students_School_administrator
+attendance_manager "1..1" -- "1..9999" students : students_attendance_manager
+@enduml

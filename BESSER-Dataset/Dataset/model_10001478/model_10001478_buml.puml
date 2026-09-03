@@ -1,0 +1,36 @@
+@startuml
+class Customer {
+  + location : str
+  + name : str
+}
+class Customer_Actor {
+}
+class Online_Order_and_CC_Processing {
+  + order : str
+  + payment : str
+  + paymentApproved : bool
+}
+class Online_Order_and_CC_processing_Actor {
+}
+class Store_POS_System {
+  + print : str
+}
+class chefTicket {
+}
+class createOrder {
+  + orderedItems : str
+}
+class deleteOrder {
+}
+class updatePayment {
+  + paymentInformation : str
+}
+class viewOrder {
+}
+Customer "0..1" -- "0..1" Online_Order_and_CC_Processing : Customer_Online_Order_and_CC_Processing
+Customer "0..1" -- "0..1" createOrder : Customer_createOrder
+Customer "0..1" -- "0..1" deleteOrder : Customer_deleteOrder
+Customer "0..1" -- "0..1" updatePayment : Customer_updatePayment
+Online_Order_and_CC_Processing "0..1" -- "0..1" chefTicket : Online_Order_and_CC_Processing_chefTicket
+Store_POS_System "0..1" -- "0..1" chefTicket : chefTicket_Store_POS_System
+@enduml

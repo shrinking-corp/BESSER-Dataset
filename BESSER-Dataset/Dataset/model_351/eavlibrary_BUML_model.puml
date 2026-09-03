@@ -1,0 +1,27 @@
+@startuml
+enum BookCategory {
+  Biography
+  Mystery
+  ScienceFiction
+}
+class eavlibrary_Book {
+  + category : str
+  + pages : str
+  + test : str
+  + title : str
+}
+class eavlibrary_City {
+  + name : str
+}
+class eavlibrary_Library {
+  + name : str
+}
+class eavlibrary_Writer {
+  + name : str
+}
+eavlibrary_Book "1..1" -- "1..1" eavlibrary_Writer : author0
+eavlibrary_Book "0..9999" --* "1..1" eavlibrary_Library : books2
+eavlibrary_Book "0..9999" -- "1..1" eavlibrary_Writer : books4
+eavlibrary_City "1..1" -- "1..1" eavlibrary_Writer : city5
+eavlibrary_Library "1..1" *-- "0..9999" eavlibrary_Writer : writers1
+@enduml

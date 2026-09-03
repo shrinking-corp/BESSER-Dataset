@@ -1,0 +1,27 @@
+@startuml
+class NamedElement {
+}
+abstract class workbench101_NamedElement {
+  + name : str
+}
+class workbench101_RelatedTo {
+  + since : str
+}
+class workbench101_Thing {
+  + id : int
+}
+class workbench101_Thoughts {
+}
+class workbench101_Workbench {
+  + aprop : str
+}
+NamedElement <|-- workbench101_RelatedTo
+NamedElement <|-- workbench101_Thing
+NamedElement <|-- workbench101_Thoughts
+workbench101_RelatedTo "1..1" -- "0..1" workbench101_Thing : fromThing4
+workbench101_Thing "0..9999" -- "1..1" workbench101_Thoughts : relatedTo7
+workbench101_RelatedTo "0..9999" --* "1..1" workbench101_Thing : relations3
+workbench101_Thing "0..9999" --* "1..1" workbench101_Workbench : things0
+workbench101_Thoughts "0..9999" --* "1..1" workbench101_Workbench : thoughts1
+workbench101_RelatedTo "1..1" -- "0..1" workbench101_Thing : toThing5
+@enduml

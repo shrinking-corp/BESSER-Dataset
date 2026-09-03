@@ -1,0 +1,174 @@
+@startuml
+class Account {
+}
+class Bill {
+}
+class Booking {
+}
+class Classes_mdsdAccount_Account {
+  + accountID : str
+  + email : str
+  + isLoggedIn : bool
+  + name : str
+  + password : str
+}
+class Classes_mdsdAccount_AccountController {
+}
+abstract class Classes_mdsdAccount_BookingToAccount {
+  + getAccount(Classes_email : str) : str
+  + isUserLoggedIn(Classes_accountId : str) : bool
+}
+abstract class Classes_mdsdAccount_CustomerAccount {
+  + addPet(Classes_accountID : str, Classes_name : str, Classes_type : str) : void
+  + createAccount(Classes_customerEmail : str, Classes_customerName : str, Classes_password : str) : str
+  + login(Classes_email : str, Classes_password : str) : void
+  + logout(Classes_accountId : str) : void
+  + removePet(Classes_accountID : str, Classes_name : str, Classes_type : str) : void
+}
+class Classes_mdsdAccount_Pet {
+  + name : str
+  + type : str
+}
+abstract class Classes_mdsdAdmin_Admin {
+  + addRoom(Classes_room : str, Classes_status : str, Classes_type : str) : str
+  + createStaff(Classes_SSN : str, Classes_name : str, Classes_password : str, Classes_rank : str) : str
+  + modifyStaff(Classes_SSN : str, Classes_newName : str, Classes_newRank : str) : void
+  + removeRoom(Classes_number : str) : void
+  + removeStaff(Classes_SSN : str) : void
+}
+class Classes_mdsdAdmin_AdminController {
+  + isLoggedIn(Classes_ssn : str) : bool
+}
+abstract class Classes_mdsdAdmin_BookingToAdmin {
+  + getPetTypes() : str
+}
+class Classes_mdsdAdmin_HotelStaff {
+  + Name : str
+  + SSN : str
+  + isLoggedIn : bool
+  + password : str
+  + rank : int
+}
+class Classes_mdsdAdmin_Room {
+  + number : int
+  + status : str
+  + type : str
+}
+abstract class Classes_mdsdAdmin_Staff {
+  + changeRoomStatus(Classes_roomNumber : str, Classes_status : str) : void
+  + staffLogin(Classes_password : str, Classes_ssn : str) : void
+  + staffLogout(Classes_ssn : str) : void
+}
+class Classes_mdsdBilling_Bill {
+  + ID : str
+  + isPaid : bool
+  + getTotalAmount() : float
+}
+class Classes_mdsdBilling_BillingController {
+}
+abstract class Classes_mdsdBilling_BookingToBill {
+  + addTransaction(Classes_amount : str, Classes_booking : str, Classes_description : str) : void
+}
+abstract class Classes_mdsdBilling_CustomerBilling {
+}
+abstract class Classes_mdsdBilling_StaffBilling {
+  + giveRefund(Classes_billId : str, Classes_transaction : str) : void
+  + isPaid(Classes_billID : str) : bool
+  + modifyBill(Classes_billID : str, Classes_newPrice : str, Classes_transaction : str) : void
+  + printReceipt(Classes_billID : str) : void
+}
+class Classes_mdsdBilling_Transaction {
+  + description : str
+  + price : float
+}
+class Classes_mdsdBooking_Booking {
+  + bill_Id : str
+  + bookingId : str
+  + customerEmail : str
+  + customerName : str
+  + dateFrom : date
+  + dateTo : date
+  + isCheckedIn : bool
+  + isCheckedOut : bool
+  + petName : str
+  + roomNumber : int
+}
+class Classes_mdsdBooking_BookingController {
+  + getBookingList(Classes_email : str) : str
+}
+class Classes_mdsdBooking_Meal {
+  + amountOfFood : float
+  + foodType : str
+  + price : float
+  + schedule : str
+}
+class Classes_mdsdBooking_Service {
+  + description : str
+  + price : float
+}
+abstract class Classes_mdsdBooking_StaffBooking {
+  + addNewService(Classes_description : str, Classes_price : str) : void
+  + checkIn(Classes_bookingID : str, Classes_rooms : str) : void
+  + checkOut(Classes_bills : str, Classes_bookingID : str, Classes_rooms : str) : bool
+}
+abstract class Classes_mdsdBooking_UserBooking {
+  + cancelBooking(Classes_bookingId : str) : void
+  + enterCustomerInfo(Classes_booking : str, Classes_customerEmail : str, Classes_customerName : str, Classes_petName : str, Classes_rooms : str) : void
+  + enterDatesOfStay(Classes_petType : str, Classes_rooms : str, Classes_stayFrom : str, Classes_stayTo : str) : str
+  + enterMealInfo(Classes_amountOfFood : str, Classes_bookingId : str, Classes_foodType : str, Classes_price : str, Classes_schedule : str) : void
+  + enterService(Classes_bookingId : str, Classes_service : str) : void
+  + modifyBooking(Classes_bookingId : str) : void
+}
+class HotelStaff {
+}
+class Meal {
+}
+class Pet {
+}
+class Room {
+}
+class Service {
+}
+class Transaction {
+}
+class mdsdAccount_BookingToAccount {
+}
+class mdsdAccount_CustomerAccount {
+}
+class mdsdAdmin_Admin {
+}
+class mdsdAdmin_BookingToAdmin {
+}
+class mdsdAdmin_Staff {
+}
+class mdsdBilling_BookingToBill {
+}
+class mdsdBilling_CustomerBilling {
+}
+class mdsdBilling_StaffBilling {
+}
+class mdsdBooking_StaffBooking {
+}
+class mdsdBooking_UserBooking {
+}
+mdsdAccount_BookingToAccount <|-- Classes_mdsdAccount_AccountController
+mdsdAccount_CustomerAccount <|-- Classes_mdsdAccount_AccountController
+mdsdAdmin_Admin <|-- Classes_mdsdAdmin_AdminController
+mdsdAdmin_BookingToAdmin <|-- Classes_mdsdAdmin_AdminController
+mdsdAdmin_Staff <|-- Classes_mdsdAdmin_AdminController
+mdsdBilling_BookingToBill <|-- Classes_mdsdBilling_BillingController
+mdsdBilling_CustomerBilling <|-- Classes_mdsdBilling_BillingController
+mdsdBilling_StaffBilling <|-- Classes_mdsdBilling_BillingController
+mdsdBooking_StaffBooking <|-- Classes_mdsdBooking_BookingController
+mdsdBooking_UserBooking <|-- Classes_mdsdBooking_BookingController
+Account "0..9999" --* "1..1" Classes_mdsdAccount_AccountController : accounts13
+Bill "0..9999" --* "1..1" Classes_mdsdBilling_BillingController : bills0
+Classes_mdsdBooking_Booking "1..1" -- "0..9999" Service : bookedServices5
+Booking "0..9999" --* "1..1" Classes_mdsdBooking_BookingController : bookings2
+Classes_mdsdBooking_Booking "1..1" *-- "1..1" Meal : mealInfo7
+Classes_mdsdAccount_Account "1..1" -- "0..9999" Pet : pets12
+Classes_mdsdAdmin_AdminController "1..1" *-- "0..9999" Room : rooms9
+Classes_mdsdBooking_BookingController "1..1" *-- "0..9999" Service : services3
+Classes_mdsdAdmin_AdminController "1..1" *-- "0..9999" HotelStaff : staff10
+Classes_mdsdBilling_Bill "1..1" *-- "0..9999" Transaction : transactions1
+@enduml

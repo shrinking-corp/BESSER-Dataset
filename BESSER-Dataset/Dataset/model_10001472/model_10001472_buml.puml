@@ -1,0 +1,43 @@
+@startuml
+class Check_in_Guest_UseCase {
+}
+class Check_out_Guest_UseCase {
+}
+class Guest {
+  + Address : str
+  + Name : str
+}
+class Guest_Actor {
+}
+class Hotel_Manager_Actor {
+}
+class Hotel_System_Component {
+}
+class Look_up_Reservation_UseCase {
+}
+class Make__Reservation_external {
+}
+class Receptionist_Actor {
+}
+class Register_as_new_customer_UseCase {
+}
+class Reservation {
+  + End : str
+  + Reservation_id : int
+  + Start : str
+}
+class Room {
+  + Guests : int
+  + Number : int
+}
+class View_Month_s_Statistics_UseCase {
+}
+class inte {
+}
+Guest_Actor "0..1" -- "0..1" Make__Reservation_external : Guest_Make__Reservation
+Guest "1..9999" -- "0..1" Reservation : Guest_Reservation
+Hotel_Manager_Actor "0..1" -- "0..1" View_Month_s_Statistics_UseCase : Hotel_Manager_View_Month_s_Statistics
+Check_in_Guest_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Check_in_Guest
+Check_out_Guest_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Check_out_Guest
+Reservation "0..9999" -- "0..1" Room : Reservation_Room
+@enduml

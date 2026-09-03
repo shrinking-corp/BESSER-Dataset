@@ -1,0 +1,75 @@
+@startuml
+class uml_DocumentRoot {
+  + mixed : str
+}
+class uml_EStringToStringMapEntry {
+}
+class uml_UML {
+}
+class uml_association {
+  + destination : str
+  + kind : str
+  + name : str
+  + oID : str
+  + source : str
+}
+class uml_attribute {
+  + kind : str
+  + name : str
+  + oID : str
+}
+class uml_attributes {
+  + group : str
+}
+class uml_class_ {
+  + kind : str
+  + name : str
+  + oID : str
+}
+class uml_classifiersAndAssociations {
+  + group : str
+}
+class uml_generalClass {
+}
+class uml_ownerClassifier {
+}
+class uml_package_ {
+  + kind : str
+  + name : str
+  + oID : str
+}
+class uml_packages {
+  + group : str
+}
+class uml_primitiveDataType {
+  + kind : str
+  + name : str
+  + oID : str
+}
+uml_association "0..9999" --* "1..1" uml_classifiersAndAssociations : association11
+uml_DocumentRoot "1..1" *-- "0..9999" uml_association : association17
+uml_attribute "0..9999" --* "1..1" uml_attributes : attribute1
+uml_DocumentRoot "1..1" *-- "0..9999" uml_attribute : attribute20
+uml_DocumentRoot "1..1" *-- "0..9999" uml_attributes : attributes23
+uml_attributes "1..1" --* "1..1" uml_class_ : attributes4
+uml_DocumentRoot "1..1" *-- "0..9999" uml_class_ : class_26
+uml_class_ "0..1" --* "1..1" uml_generalClass : class_47
+uml_class_ "0..1" --* "1..1" uml_ownerClassifier : class_50
+uml_class_ "0..9999" --* "1..1" uml_classifiersAndAssociations : class_7
+uml_DocumentRoot "1..1" *-- "0..9999" uml_classifiersAndAssociations : classifiersAndAssociations29
+uml_classifiersAndAssociations "1..1" --* "1..1" uml_package_ : classifiersAndAssociations56
+uml_class_ "1..1" *-- "1..1" uml_generalClass : generalClass3
+uml_DocumentRoot "1..1" *-- "0..9999" uml_generalClass : generalClass32
+uml_attribute "1..1" *-- "1..1" uml_ownerClassifier : ownerClassifier0
+uml_DocumentRoot "1..1" *-- "0..9999" uml_ownerClassifier : ownerClassifier35
+uml_DocumentRoot "1..1" *-- "0..9999" uml_package_ : package38
+uml_package_ "0..9999" --* "1..1" uml_packages : package59
+uml_DocumentRoot "1..1" *-- "0..9999" uml_packages : packages40
+uml_UML "1..1" *-- "1..1" uml_packages : packages62
+uml_DocumentRoot "1..1" *-- "0..9999" uml_primitiveDataType : primitiveDataType42
+uml_ownerClassifier "1..1" *-- "0..1" uml_primitiveDataType : primitiveDataType53
+uml_classifiersAndAssociations "1..1" *-- "0..9999" uml_primitiveDataType : primitiveDataType9
+uml_DocumentRoot "1..1" *-- "0..9999" uml_UML : uML45
+uml_DocumentRoot "1..1" *-- "0..9999" uml_EStringToStringMapEntry : xMLNSPrefixMap13
+uml_DocumentRoot "1..1" *-- "0..9999" uml_EStringToStringMapEntry : xSISchemaLocation14
+@enduml

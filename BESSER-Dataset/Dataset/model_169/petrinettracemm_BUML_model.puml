@@ -1,0 +1,146 @@
+@startuml
+class EventOccurrence {
+}
+class Events {
+}
+class Events_trace_EObject {
+}
+class Events_trace_GlobalState {
+}
+class Events_trace_Net {
+}
+class Events_trace_Transition {
+}
+class Net_mainEntryEventOccurrence {
+}
+class Net_mainExitEventOccurrence {
+}
+class Net_runEntryEventOccurrence {
+}
+class Net_runExitEventOccurrence {
+}
+class Place_addTokenEntryEventOccurrence {
+}
+class Place_addTokenExitEventOccurrence {
+}
+class Place_removeTokenEntryEventOccurrence {
+}
+class Place_removeTokenExitEventOccurrence {
+}
+class Place_tokens_State {
+}
+class States_trace_GlobalState {
+}
+class TracedObjects {
+}
+class Transition_fireEntryEventOccurrence {
+}
+class Transition_fireExitEventOccurrence {
+}
+class Transition_isEnabledEntryEventOccurrence {
+}
+class Transition_isEnabledExitEventOccurrence {
+}
+class petrinet_TracedPlace {
+}
+class petrinet_trace_Place {
+}
+abstract class trace_Events_EventOccurrence {
+}
+class trace_Events_Events {
+}
+class trace_Events_Net_mainEntryEventOccurrence {
+}
+class trace_Events_Net_mainExitEventOccurrence {
+}
+class trace_Events_Net_runEntryEventOccurrence {
+}
+class trace_Events_Net_runExitEventOccurrence {
+}
+class trace_Events_Place_addTokenEntryEventOccurrence {
+}
+class trace_Events_Place_addTokenExitEventOccurrence {
+}
+class trace_Events_Place_removeTokenEntryEventOccurrence {
+}
+class trace_Events_Place_removeTokenExitEventOccurrence {
+}
+class trace_Events_Transition_fireEntryEventOccurrence {
+}
+class trace_Events_Transition_fireExitEventOccurrence {
+}
+class trace_Events_Transition_isEnabledEntryEventOccurrence {
+}
+class trace_Events_Transition_isEnabledExitEventOccurrence {
+}
+class trace_GlobalState {
+}
+class trace_Net {
+}
+class trace_States_Place_tokens_State {
+  + tokens : int
+}
+class trace_StaticObjectsPools {
+}
+class trace_Trace {
+}
+class trace_Traced_TracedObjects {
+}
+class trace_Transition {
+}
+class trace_petrinet_TracedPlace {
+  + initialTokens : int
+  + name : str
+}
+EventOccurrence <|-- trace_Events_Net_mainEntryEventOccurrence
+EventOccurrence <|-- trace_Events_Net_mainExitEventOccurrence
+EventOccurrence <|-- trace_Events_Net_runEntryEventOccurrence
+EventOccurrence <|-- trace_Events_Net_runExitEventOccurrence
+EventOccurrence <|-- trace_Events_Place_addTokenEntryEventOccurrence
+EventOccurrence <|-- trace_Events_Place_addTokenExitEventOccurrence
+EventOccurrence <|-- trace_Events_Place_removeTokenEntryEventOccurrence
+EventOccurrence <|-- trace_Events_Place_removeTokenExitEventOccurrence
+EventOccurrence <|-- trace_Events_Transition_fireEntryEventOccurrence
+EventOccurrence <|-- trace_Events_Transition_fireExitEventOccurrence
+EventOccurrence <|-- trace_Events_Transition_isEnabledEntryEventOccurrence
+EventOccurrence <|-- trace_Events_Transition_isEnabledExitEventOccurrence
+Net_mainEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Net_mainEntryEventOccurrence_Trace14
+Net_mainExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Net_mainExitEventOccurrence_Trace15
+Net_runEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Net_runEntryEventOccurrence_Trace17
+Net_runExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Net_runExitEventOccurrence_Trace19
+Place_addTokenEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Place_addTokenEntryEventOccurrence_Trace21
+Place_addTokenExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Place_addTokenExitEventOccurrence_Trace23
+Place_removeTokenEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Place_removeTokenEntryEventOccurrence_Trace25
+Place_removeTokenExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Place_removeTokenExitEventOccurrence_Trace27
+Transition_fireEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Transition_fireEntryEventOccurrence_Trace33
+Transition_fireExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Transition_fireExitEventOccurrence_Trace35
+Transition_isEnabledEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Transition_isEnabledEntryEventOccurrence_Trace29
+Transition_isEnabledExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : Transition_isEnabledExitEventOccurrence_Trace31
+Net_mainEntryEventOccurrence "0..1" -- "1..1" trace_Events_Net_mainExitEventOccurrence : correspondingEntryEvent38
+Net_runEntryEventOccurrence "0..1" -- "1..1" trace_Events_Net_runExitEventOccurrence : correspondingEntryEvent42
+Place_addTokenEntryEventOccurrence "0..1" -- "1..1" trace_Events_Place_addTokenExitEventOccurrence : correspondingEntryEvent45
+Place_removeTokenEntryEventOccurrence "0..1" -- "1..1" trace_Events_Place_removeTokenExitEventOccurrence : correspondingEntryEvent49
+Transition_isEnabledEntryEventOccurrence "0..1" -- "1..1" trace_Events_Transition_isEnabledExitEventOccurrence : correspondingEntryEvent52
+Transition_fireEntryEventOccurrence "0..1" -- "1..1" trace_Events_Transition_fireExitEventOccurrence : correspondingEntryEvent58
+Events "1..1" --* "1..1" trace_Trace : events1
+EventOccurrence "0..9999" -- "1..1" trace_GlobalState : eventsTriggeredDuringState7
+States_trace_GlobalState "1..9999" -- "1..1" trace_States_Place_tokens_State : globalStates61
+trace_GlobalState "0..9999" --* "1..1" trace_Trace : globalTrace0
+petrinet_trace_Place "0..1" -- "1..1" trace_petrinet_TracedPlace : originalObject65
+petrinet_TracedPlace "1..1" -- "1..1" trace_States_Place_tokens_State : parent60
+petrinet_TracedPlace "0..9999" --* "1..1" trace_Traced_TracedObjects : petrinet_tracedPlaces63
+Place_tokens_State "0..9999" -- "1..1" trace_GlobalState : place_tokens_States8
+trace_Net "0..9999" --* "1..1" trace_StaticObjectsPools : pool_Nets11
+trace_StaticObjectsPools "1..1" *-- "0..9999" trace_Transition : pool_Transitions9
+Events_trace_EObject "0..1" -- "1..1" trace_Events_Transition_isEnabledExitEventOccurrence : returnReturn54
+Events_trace_GlobalState "1..1" -- "1..1" trace_Events_EventOccurrence : stateDuringWhichTriggered13
+trace_StaticObjectsPools "1..1" --* "1..1" trace_Trace : staticObjectsPools5
+Events_trace_Net "0..1" -- "1..1" trace_Events_Net_mainEntryEventOccurrence : thisParam37
+Events_trace_Net "0..1" -- "1..1" trace_Events_Net_runEntryEventOccurrence : thisParam40
+petrinet_TracedPlace "0..1" -- "1..1" trace_Events_Place_addTokenEntryEventOccurrence : thisParam44
+petrinet_TracedPlace "0..1" -- "1..1" trace_Events_Place_removeTokenEntryEventOccurrence : thisParam47
+Events_trace_Transition "0..1" -- "1..1" trace_Events_Transition_isEnabledEntryEventOccurrence : thisParam51
+Events_trace_Transition "0..1" -- "1..1" trace_Events_Transition_fireEntryEventOccurrence : thisParam56
+Place_tokens_State "0..9999" --* "1..1" trace_petrinet_TracedPlace : tokensTrace66
+TracedObjects "1..1" --* "1..1" trace_Trace : tracedObjects3
+@enduml

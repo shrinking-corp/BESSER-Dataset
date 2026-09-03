@@ -1,0 +1,89 @@
+@startuml
+class Arc {
+}
+class ArcToPlace {
+}
+class ArcToTransition {
+}
+class Node {
+}
+enum NodeType {
+  inout
+  input
+  internal
+  output
+}
+class Place {
+}
+class PlaceReference {
+}
+class Transition {
+}
+class ptnetLoLA_Annotation {
+  + text : str
+}
+class ptnetLoLA_Arc {
+  + weight : int
+}
+class ptnetLoLA_ArcToPlace {
+}
+class ptnetLoLA_ArcToPlaceExt {
+  + probability : float
+}
+class ptnetLoLA_ArcToTransition {
+}
+class ptnetLoLA_ArcToTransitionExt {
+  + probability : float
+}
+class ptnetLoLA_Marking {
+}
+class ptnetLoLA_Node {
+  + name : str
+  + type : str
+}
+class ptnetLoLA_Place {
+  + finalMarking : int
+  + token : int
+}
+class ptnetLoLA_PlaceExt {
+  + isStart : bool
+  + probability : float
+}
+class ptnetLoLA_PlaceReference {
+}
+class ptnetLoLA_PtNet {
+}
+class ptnetLoLA_RefMarkedPlace {
+  + token : int
+}
+class ptnetLoLA_Transition {
+}
+class ptnetLoLA_TransitionExt {
+  + cost : float
+  + maxTime : int
+  + minTime : int
+  + probability : float
+}
+Arc <|-- ptnetLoLA_ArcToPlace
+Arc <|-- ptnetLoLA_ArcToTransition
+ArcToPlace <|-- ptnetLoLA_ArcToPlaceExt
+ArcToTransition <|-- ptnetLoLA_ArcToTransitionExt
+Node <|-- ptnetLoLA_Place
+Node <|-- ptnetLoLA_Transition
+Place <|-- ptnetLoLA_PlaceExt
+PlaceReference <|-- ptnetLoLA_RefMarkedPlace
+Transition <|-- ptnetLoLA_TransitionExt
+ptnetLoLA_Annotation "0..1" --* "1..1" ptnetLoLA_Node : annotation12
+ptnetLoLA_Annotation "0..1" --* "1..1" ptnetLoLA_PtNet : annotation5
+ptnetLoLA_Arc "0..9999" --* "1..1" ptnetLoLA_PtNet : arcs7
+ptnetLoLA_Marking "0..1" --* "1..1" ptnetLoLA_PtNet : finalMarking9
+ptnetLoLA_Arc "0..9999" -- "1..1" ptnetLoLA_Node : incoming14
+ptnetLoLA_Marking "1..1" --* "1..1" ptnetLoLA_PtNet : initialMarking3
+ptnetLoLA_Arc "0..9999" -- "1..1" ptnetLoLA_Node : outgoing15
+ptnetLoLA_Place "1..1" -- "1..1" ptnetLoLA_PlaceReference : place19
+ptnetLoLA_Place "0..9999" --* "1..1" ptnetLoLA_PtNet : places0
+ptnetLoLA_Marking "1..1" *-- "0..9999" ptnetLoLA_RefMarkedPlace : places17
+ptnetLoLA_Arc "1..1" -- "1..1" ptnetLoLA_Node : source21
+ptnetLoLA_Arc "1..1" -- "1..1" ptnetLoLA_Node : target22
+ptnetLoLA_PtNet "1..1" *-- "0..9999" ptnetLoLA_Transition : transitions1
+@enduml

@@ -1,0 +1,111 @@
+@startuml
+class Admin_Actor {
+}
+class ApplicationUtils {
+}
+class Application_Actor {
+}
+class ApplyLeaveRequest {
+}
+class Apply_Leave_UseCase {
+}
+class ApproveOrRejectStatus {
+}
+class Approve_RejectRequests_UseCase {
+}
+class Approver_Jobs_UseCase {
+}
+class AutoApproval_UseCase {
+}
+class CancelLeaveRequest {
+}
+class Cancel_Leaves_UseCase {
+}
+class Change_Password_UseCase {
+}
+class CreateUserAction {
+  + employee : Employee_Actor
+}
+class CreateUser_UseCase {
+}
+class Credit_Leaves_UseCase {
+}
+class EligibilityQuery {
+}
+class Employee {
+  + employeeId : str
+  + employeeName : str
+  + jobLevel : int
+  + leavesTaken : str
+  + managerId : str
+  + noOfLeaves : int
+  + password : str
+}
+class Employee_Actor {
+}
+class LeaveApplication {
+  + applicationId : str
+  + approverComments : str
+  + employeeId : str
+  + fromDate : date
+  + reason : str
+  + status : str
+  + toDate : date
+}
+class LeaveBalanceQuery {
+}
+class LeaveHistoryQuery {
+  + fromDate : date
+  + toDate : date
+}
+enum LeaveStatus {
+}
+class LeaveStatusQuery {
+}
+class Leave_Request_Status_UseCase {
+}
+class LoginAction {
+  + employee : Employee_Actor
+}
+class Login_UseCase {
+}
+class Query {
+  + requestId : str
+  + user : Employee_Actor
+}
+class Query_Eligibility_UseCase {
+}
+class Query_Leave_Balance_UseCase {
+}
+class Query_Leave_History_UseCase {
+}
+class Request {
+  + leaveApplication : LeaveApplication
+  + requestId : str
+}
+class SendNotification_UseCase {
+}
+class UpdateCalendar {
+}
+class Update_Calendar_UseCase {
+}
+class WithdrawLeaveRequest {
+}
+class Withdraw_Application_UseCase {
+}
+class _UseCase {
+}
+Admin_Actor "0..1" -- "0..1" CreateUser_UseCase : Admin_CreateUser
+Admin_Actor "0..1" -- "0..1" Update_Calendar_UseCase : Admin_Update_Calendar
+Application_Actor "0..1" -- "0..1" AutoApproval_UseCase : Application_AutoApproval
+Application_Actor "0..1" -- "0..1" _UseCase : Application_GenerateSummary
+Application_Actor "0..1" -- "0..1" SendNotification_UseCase : Application_SendNotification
+Application_Actor "0..1" -- "0..1" Credit_Leaves_UseCase : Credit_Leaves_Application
+Apply_Leave_UseCase "0..1" -- "0..1" Employee_Actor : Employee_Apply_Leave
+Approver_Jobs_UseCase "0..1" -- "0..1" Employee_Actor : Employee_Approver_Jobs
+Employee_Actor "0..1" -- "0..1" Leave_Request_Status_UseCase : Employee_Leave_Request_Status
+Employee_Actor "0..1" -- "0..1" Login_UseCase : User_Login
+Employee_Actor "0..1" -- "0..1" Query_Eligibility_UseCase : User_Query_Eligibility
+Employee_Actor "0..1" -- "0..1" Query_Leave_Balance_UseCase : User_Query_Leave_Balance
+Employee_Actor "0..1" -- "0..1" Query_Leave_History_UseCase : User_Query_Leave_History
+@enduml

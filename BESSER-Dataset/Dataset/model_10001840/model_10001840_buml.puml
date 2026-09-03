@@ -1,0 +1,102 @@
+@startuml
+class Admin {
+  + ID_admin : int
+  + attribute : str
+  + insertData : str
+  + password : str
+  + username : str
+}
+class Admin_Actor {
+}
+class Cancel_Pemesanan_UseCase {
+}
+class Check_Out_UseCase {
+}
+class Check_in_UseCase {
+}
+class Denda {
+  + ID_Denda : int
+  + ID_Reservasi : int
+  + jumlah : int
+  + keterangan : str
+}
+class Denda_UseCase {
+}
+enum Enumeration {
+}
+class Kamar {
+  + _attr : str
+  + jumlah_bed : int
+  + no_kamar : int
+  + status : str
+  + tipe : str
+}
+class Kamar_Deluxe_UseCase {
+}
+class Kamar_Keluarga_UseCase {
+}
+class Kamar_Standard_UseCase {
+}
+class Kirim_e_booking_email_UseCase {
+}
+class Login_UseCase {
+}
+class Melakukan_pembayaran_UseCase {
+}
+class Melakukan_reservasi_kamar_UseCase {
+}
+class Melihat_Katalog_Kamar_UseCase {
+}
+class Mengirim_e_bukti_Bayar_UseCase {
+}
+class Pembayaran {
+  + ID_Pembayaran : int
+  + ID_Reservasi : int
+  + deadline_bayar : str
+  + jumlah : int
+  + status : str
+}
+class Pemesan {
+  + Alamat : str
+  + Emai : str
+  + NIK : int
+  + Nama : str
+  + password : str
+  + phone_number : str
+  + username : str
+}
+class Pemesan_Actor {
+}
+class Pengunjung_Actor {
+}
+class Register_UseCase {
+}
+class ReservasiKamar {
+  + ID_Reservasi : int
+  + ID_admin : int
+  + ID_pembayaran : int
+  + NIK : int
+  + no_kamar : int
+  + tgl_end_booking : str
+  + tgl_start_booking : str
+}
+class hjb_Interface {
+}
+Admin_Actor "0..1" -- "0..1" Kirim_e_booking_email_UseCase : Admin_Kirim_e_booking_email
+Admin_Actor "0..1" -- "0..1" Mengirim_e_bukti_Bayar_UseCase : Admin_UseCase3
+Denda "0..9999" -- "1..1" ReservasiKamar : Denda_ReservasiKamar
+Kamar "0..1" -- "0..1" ReservasiKamar : Kamar_ReservasiKamar
+Melakukan_pembayaran_UseCase "0..1" -- "0..1" Melakukan_reservasi_kamar_UseCase : Melakukan_reservasi_kamar_Melakukan_pembayaran
+Melakukan_reservasi_kamar_UseCase "0..1" -- "0..1" Mengirim_e_bukti_Bayar_UseCase : Melakukan_reservasi_kamar_Mengirim_e_bukti_Bayar
+Pembayaran "1..1" -- "1..1" ReservasiKamar : Pembayaran_ReservasiKamar
+Check_Out_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_Check_Out
+Check_in_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_Check_in
+Login_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_Melakukan_reservasi_kamar
+Pemesan "1..1" -- "1..9999" ReservasiKamar : Pemesan_ReservasiKamar
+Melihat_Katalog_Kamar_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_UseCase2
+Check_Out_UseCase "0..1" -- "0..1" Pengunjung_Actor : Pengunjung_Check_Out
+Check_in_UseCase "0..1" -- "0..1" Pengunjung_Actor : Pengunjung_Check_in
+Pengunjung_Actor "0..1" -- "0..1" Register_UseCase : Pengunjung_Memasukkan_data_identitas
+Melihat_Katalog_Kamar_UseCase "0..1" -- "0..1" Pengunjung_Actor : Pengunjung_UseCase
+Admin "1..1" -- "1..9999" ReservasiKamar : ReservasiKamar_Admin
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+enum Color {
+  COLOR_BLACK
+  COLOR_BLUE
+  COLOR_GREEN
+  COLOR_OFF
+  COLOR_ORANGE
+  COLOR_RED
+  COLOR_WHITE
+}
+enum LED_Color {
+  LED_GREEN
+  LED_OFF
+  LED_ORANGE
+  LED_RED
+}
+class marsRover_EObject {
+}
+class marsRover_Robot {
+  + drive_speed : int
+  + name : str
+  + slave_address : str
+  + special_speed : int
+}
+class marsRover_after_action {
+  + action : str
+}
+class marsRover_avoid_lakes {
+  + name : str
+}
+class marsRover_avoid_obstacles {
+  + name : str
+}
+class marsRover_bumpers {
+  + name : str
+}
+class marsRover_color_indication {
+  + color : str
+  + name : str
+}
+class marsRover_detect_lakes {
+  + lakes_colors : str
+  + name : str
+  + number_of_lakes : int
+}
+class marsRover_detect_rocks {
+  + name : str
+  + number_of_rocks : int
+}
+class marsRover_indication {
+  + name : str
+}
+class marsRover_message {
+  + msg : str
+  + name : str
+}
+class marsRover_mission {
+  + name : str
+}
+class marsRover_park {
+  + name : str
+}
+class marsRover_push_obstacles {
+  + name : str
+}
+class marsRover_sound {
+  + duration : int
+  + frequency : int
+  + name : str
+}
+class marsRover_ultra {
+  + distance : int
+  + name : str
+}
+marsRover_after_action "0..1" --* "1..1" marsRover_detect_lakes : after_examinating5
+marsRover_after_action "0..1" --* "1..1" marsRover_detect_rocks : after_examinating6
+marsRover_after_action "1..1" *-- "0..9999" marsRover_indication : indicate8
+marsRover_Robot "1..1" *-- "0..9999" marsRover_mission : missions0
+marsRover_EObject "0..9999" --* "1..1" marsRover_avoid_obstacles : sensors3
+marsRover_EObject "0..1" --* "1..1" marsRover_mission : type1
+marsRover_EObject "0..1" --* "1..1" marsRover_indication : type10
+@enduml

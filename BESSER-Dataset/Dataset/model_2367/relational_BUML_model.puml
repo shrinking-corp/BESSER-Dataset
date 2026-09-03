@@ -1,0 +1,48 @@
+@startuml
+class ModelElement {
+}
+enum Type {
+  CHAR
+  DATE
+  FLOAT
+  NUMERIC
+  TIME
+  VARCHAR
+}
+class relational_Column {
+  + isPrimaryKey : bool
+  + isUnique : bool
+  + name : str
+  + type : str
+}
+class relational_Database {
+  + name : str
+  + url : str
+}
+class relational_ForeignKey {
+  + name : str
+}
+abstract class relational_ModelElement {
+  + comment : str
+}
+class relational_Schema {
+  + name : str
+}
+class relational_Table {
+  + name : str
+}
+ModelElement <|-- relational_Column
+ModelElement <|-- relational_Database
+ModelElement <|-- relational_ForeignKey
+ModelElement <|-- relational_Schema
+ModelElement <|-- relational_Table
+relational_ForeignKey "1..1" -- "1..1" relational_Table : foreignTable9
+relational_Column "0..9999" --* "1..1" relational_Table : ownedColumns4
+relational_ForeignKey "0..9999" --* "1..1" relational_Table : ownedForeignKeys6
+relational_Database "1..1" *-- "0..9999" relational_Schema : ownedSchemas0
+relational_Schema "1..1" *-- "0..9999" relational_Table : ownedTables1
+relational_Column "1..1" -- "1..1" relational_Table : owner12
+relational_Database "1..1" -- "1..1" relational_Schema : owner3
+relational_Schema "1..1" -- "1..1" relational_Table : owner7
+relational_ForeignKey "1..1" -- "1..1" relational_Table : sourceTable11
+@enduml

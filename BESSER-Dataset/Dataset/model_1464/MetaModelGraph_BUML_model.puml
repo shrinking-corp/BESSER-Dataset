@@ -1,0 +1,80 @@
+@startuml
+enum EnumModular {
+  AbstractPackage
+  AbstractPackageUnit
+  AbstractUnit
+  Default
+  InsidePackage
+  InsideProject
+  InsideUnit
+  Package
+  Project
+  RecursionAbstractPackage
+  RecursionAbstractUnit
+  RecursionPackage
+  RecursionUnit
+  Unit
+}
+class MetaModelGraph_Composition {
+}
+class MetaModelGraph_EAttribute {
+}
+class MetaModelGraph_EClass {
+}
+class MetaModelGraph_EReference {
+}
+class MetaModelGraph_Graph {
+  + amountAbstractEClasses : int
+  + amountConcreteEClass : int
+  + amountEClasses : int
+}
+class MetaModelGraph_Node {
+  + enumModularNotation : str
+  + extension : str
+  + icon : str
+  + insideRecursion : bool
+}
+class MetaModelGraph_Reference {
+}
+abstract class MetaModelGraph_Relation {
+}
+class MetaModelGraph_SubClass {
+}
+class MetaModelGraph_SubGraph {
+  + amountEClassesOut : int
+  + amountOfAbstractEClass : int
+  + amountOfConcreteEClass : int
+  + amountOfParentAbstractEClass : int
+  + amountOfParentEClass : int
+  + amountOfRecursionPackages : int
+  + amountPackages : int
+  + amountRecursionUnits : int
+  + amountUnits : int
+  + height : int
+}
+class Relation {
+}
+Relation <|-- MetaModelGraph_Composition
+Relation <|-- MetaModelGraph_Reference
+Relation <|-- MetaModelGraph_SubClass
+MetaModelGraph_Composition "0..9999" -- "1..1" MetaModelGraph_Node : compositions16
+MetaModelGraph_Composition "0..9999" -- "1..1" MetaModelGraph_Node : directComposition31
+MetaModelGraph_Node "1..1" -- "0..9999" MetaModelGraph_SubClass : directSubclasses28
+MetaModelGraph_EClass "0..1" -- "1..1" MetaModelGraph_Node : eClass21
+MetaModelGraph_EClass "0..9999" -- "1..1" MetaModelGraph_Graph : eClassAbstract3
+MetaModelGraph_EClass "0..9999" -- "1..1" MetaModelGraph_Graph : eClassList1
+MetaModelGraph_EClass "0..9999" -- "1..1" MetaModelGraph_SubGraph : eClassesListOut10
+MetaModelGraph_Composition "1..1" -- "0..1" MetaModelGraph_EReference : eReference36
+MetaModelGraph_EReference "0..1" -- "1..1" MetaModelGraph_Reference : eReference40
+MetaModelGraph_Node "0..9999" -- "1..1" MetaModelGraph_Node : listNodes26
+MetaModelGraph_EAttribute "0..1" -- "1..1" MetaModelGraph_Node : name33
+MetaModelGraph_Node "0..9999" --* "1..1" MetaModelGraph_SubGraph : nodes6
+MetaModelGraph_Composition "1..1" -- "0..1" MetaModelGraph_Node : parentNode38
+MetaModelGraph_Node "1..1" -- "0..9999" MetaModelGraph_Reference : references17
+MetaModelGraph_Node "1..1" -- "0..9999" MetaModelGraph_Relation : relations24
+MetaModelGraph_Relation "0..9999" --* "1..1" MetaModelGraph_SubGraph : relations8
+MetaModelGraph_Node "0..1" -- "1..1" MetaModelGraph_SubGraph : root13
+MetaModelGraph_Node "1..1" -- "0..9999" MetaModelGraph_SubClass : subClasses19
+MetaModelGraph_Graph "1..1" *-- "0..9999" MetaModelGraph_SubGraph : subgraph0
+MetaModelGraph_Node "0..1" -- "1..1" MetaModelGraph_Relation : target35
+@enduml

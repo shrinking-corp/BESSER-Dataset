@@ -1,0 +1,226 @@
+@startuml
+class CloudElement {
+}
+class Component {
+}
+class ExecutionPlatform {
+}
+class ExternalComponent {
+}
+class InternalComponent {
+}
+enum Language {
+  BASH
+  JAVA
+  PYTHON
+}
+class MasterSlavePlatform {
+}
+class PeerToPeerPlatform {
+}
+class Port {
+}
+enum ProviderType {
+  FCO
+  Openstack
+}
+enum VMSize {
+  Large
+  Medium
+  Small
+}
+class ddsm_Artifact {
+  + arguments : str
+  + artifactPath : str
+  + language : str
+  + resources : str
+}
+class ddsm_CassandraCluster {
+}
+class ddsm_ClientNode {
+  + numberOfSubmissions : int
+  + skipRunningJob : bool
+}
+abstract class ddsm_CloudElement {
+  + description : str
+  + elementId : str
+}
+abstract class ddsm_Component {
+}
+class ddsm_Crontab {
+  + dayOfMonth : int
+  + dayOfWeek : int
+  + hour : int
+  + min : int
+  + month : int
+}
+class ddsm_DDSM {
+  + description : str
+  + modelId : str
+}
+class ddsm_ExecutionBinding {
+}
+abstract class ddsm_ExecutionPlatform {
+}
+class ddsm_ExternalComponent {
+  + endPoint : str
+  + location : str
+  + login : str
+  + password : str
+  + region : str
+  + serviceType : str
+}
+class ddsm_HDFSCluster {
+}
+class ddsm_InternalComponent {
+}
+class ddsm_JobSubmission {
+  + applicationArguments : str
+  + artifactUrl : str
+  + mainClass : str
+}
+class ddsm_KafkaCluster {
+}
+class ddsm_MasterNode {
+}
+class ddsm_MasterSlavePlatform {
+}
+class ddsm_PeerNode {
+}
+class ddsm_PeerToPeerPlatform {
+}
+class ddsm_PeersQuorum {
+}
+abstract class ddsm_Port {
+  + isLocal : bool
+  + portNumber : str
+}
+class ddsm_Property {
+  + propertyId : str
+  + value : str
+}
+class ddsm_ProvidedExecutionPlatform {
+}
+class ddsm_ProvidedPort {
+}
+class ddsm_Provider {
+  + credentialsPath : str
+  + type : str
+}
+class ddsm_Relationship {
+}
+class ddsm_RequiredExecutionPlatform {
+  + isMandatory : bool
+}
+class ddsm_RequiredPort {
+  + isMandatory : bool
+}
+class ddsm_Resource {
+  + resourceId : str
+}
+class ddsm_SlaveNode {
+}
+class ddsm_SparkCluster {
+  + UIPort : int
+  + driverCores : int
+  + driverMemory : int
+  + maxResultSize : int
+  + sparkExecutorMemory : int
+}
+class ddsm_StormCluster {
+  + cpuCapacity : int
+  + heartbeatFrequency : int
+  + memoryCapacity : int
+  + monitorFrequency : int
+  + queueSize : int
+  + retryInterval : int
+  + retryTimes : int
+  + supervisorFrequency : int
+  + taskTimeout : int
+  + workerStartTimeout : int
+}
+class ddsm_VM {
+  + genericSize : str
+  + imageId : str
+  + instances : int
+  + is64os : str
+  + maxCores : str
+  + maxRam : str
+  + maxStorage : str
+  + minCores : str
+  + minRam : str
+  + minStorage : str
+  + os : str
+  + privateKey : str
+  + providerSpecificTypeName : str
+  + publicAddress : str
+  + publicPorts : int
+  + securityGroup : str
+  + sshKey : str
+}
+class ddsm_YarnCluster {
+}
+class ddsm_ZookeeperCluster {
+  + initLimit : int
+  + syncLimit : int
+  + tickTime : int
+}
+CloudElement <|-- ddsm_Component
+CloudElement <|-- ddsm_ExecutionBinding
+CloudElement <|-- ddsm_ExecutionPlatform
+CloudElement <|-- ddsm_JobSubmission
+CloudElement <|-- ddsm_Port
+CloudElement <|-- ddsm_Provider
+CloudElement <|-- ddsm_Relationship
+Component <|-- ddsm_ExternalComponent
+Component <|-- ddsm_InternalComponent
+ExecutionPlatform <|-- ddsm_ProvidedExecutionPlatform
+ExecutionPlatform <|-- ddsm_RequiredExecutionPlatform
+ExternalComponent <|-- ddsm_VM
+InternalComponent <|-- ddsm_ClientNode
+InternalComponent <|-- ddsm_MasterNode
+InternalComponent <|-- ddsm_MasterSlavePlatform
+InternalComponent <|-- ddsm_PeerNode
+InternalComponent <|-- ddsm_PeerToPeerPlatform
+InternalComponent <|-- ddsm_PeersQuorum
+InternalComponent <|-- ddsm_SlaveNode
+MasterSlavePlatform <|-- ddsm_HDFSCluster
+MasterSlavePlatform <|-- ddsm_SparkCluster
+MasterSlavePlatform <|-- ddsm_StormCluster
+MasterSlavePlatform <|-- ddsm_YarnCluster
+PeerToPeerPlatform <|-- ddsm_CassandraCluster
+PeerToPeerPlatform <|-- ddsm_KafkaCluster
+PeerToPeerPlatform <|-- ddsm_ZookeeperCluster
+Port <|-- ddsm_ProvidedPort
+Port <|-- ddsm_RequiredPort
+ddsm_Artifact "0..9999" --* "1..1" ddsm_DDSM : artifacts51
+ddsm_PeerNode "1..1" -- "1..1" ddsm_PeersQuorum : belongsToQuorum58
+ddsm_CloudElement "0..9999" --* "1..1" ddsm_DDSM : cloudelement43
+ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : configure5
+ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : destroy14
+ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : download3
+ddsm_MasterNode "1..1" -- "1..1" ddsm_SlaveNode : hasMaster57
+ddsm_ClientNode "1..1" -- "0..1" ddsm_Crontab : hasSchedule55
+ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : install17
+ddsm_Component "1..1" -- "1..1" ddsm_ProvidedPort : owner26
+ddsm_Component "1..1" -- "1..1" ddsm_ProvidedExecutionPlatform : owner29
+ddsm_DDSM "1..1" *-- "0..9999" ddsm_Property : properties45
+ddsm_CloudElement "1..1" *-- "0..9999" ddsm_Property : property1
+ddsm_Component "1..1" *-- "0..9999" ddsm_ProvidedExecutionPlatform : providedexecutionplatform21
+ddsm_ExecutionBinding "1..1" -- "1..1" ddsm_ProvidedExecutionPlatform : providedexecutionplatform39
+ddsm_Component "1..1" *-- "0..9999" ddsm_ProvidedPort : providedport20
+ddsm_ProvidedPort "1..1" -- "1..1" ddsm_Relationship : providedport32
+ddsm_ExternalComponent "1..1" -- "1..1" ddsm_Provider : provider42
+ddsm_InternalComponent "1..1" *-- "0..9999" ddsm_RequiredExecutionPlatform : requiredexecutionplatform24
+ddsm_ExecutionBinding "1..1" -- "1..1" ddsm_RequiredExecutionPlatform : requiredexecutionplatform37
+ddsm_InternalComponent "1..1" *-- "0..9999" ddsm_RequiredPort : requiredport23
+ddsm_Relationship "1..1" -- "1..1" ddsm_RequiredPort : requiredport34
+ddsm_MasterSlavePlatform "1..1" -- "1..1" ddsm_RequiredExecutionPlatform : requiresMasterVm61
+ddsm_PeerToPeerPlatform "1..1" *-- "1..9999" ddsm_RequiredExecutionPlatform : requiresPeerVm59
+ddsm_MasterSlavePlatform "1..1" -- "1..9999" ddsm_RequiredExecutionPlatform : requiresSlaveVm63
+ddsm_CloudElement "1..1" *-- "0..9999" ddsm_Resource : resource0
+ddsm_DDSM "1..1" *-- "0..9999" ddsm_Resource : resources48
+ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : start8
+ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : stop11
+ddsm_ClientNode "1..1" -- "1..1" ddsm_JobSubmission : submits54
+@enduml

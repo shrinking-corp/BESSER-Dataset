@@ -1,0 +1,385 @@
+@startuml
+class AbstractCategory {
+}
+enum BillingType {
+  CONFIRMATION
+  CREDIT
+  DELIVERY
+  DUNNING
+  INVOICE
+  LETTER
+  NONE
+  OFFER
+  ORDER
+  PROFORMA
+}
+class Contact {
+}
+enum ContactType {
+  BILLING
+  DELIVERY
+}
+class Document {
+}
+class IDescribableEntity {
+}
+class IEntity {
+}
+enum ItemType {
+  DELIVERY_PART
+  FREETEXT
+  POSITION
+  SUBTOTAL
+}
+enum ReliabilityType {
+  GOOD
+  MEDIUM
+  NONE
+  POOR
+}
+enum ShippingVatType {
+  SHIPPINGVATFIX
+  SHIPPINGVATGROSS
+  SHIPPINGVATNET
+}
+enum VoucherType {
+  EXPENDITURE
+  RECEIPTVOUCHER
+}
+abstract class model_AbstractCategory {
+}
+class model_Address {
+  + city : str
+  + cityAddon : str
+  + countryCode : str
+  + manualAddress : str
+  + street : str
+  + zip : str
+}
+class model_BankAccount {
+  + accountHolder : str
+  + bankCode : str
+  + bankName : str
+  + bic : str
+  + iban : str
+}
+class model_CEFACTCode {
+  + abbreviation_de : str
+  + abbreviation_en : str
+  + code : str
+  + name_de : str
+  + target : str
+}
+class model_Confirmation {
+}
+abstract class model_Contact {
+  + birthday : date
+  + company : str
+  + contactType : str
+  + customerNumber : str
+  + discount : str
+  + email : str
+  + fax : str
+  + firstName : str
+  + gender : str
+  + gln : str
+  + mandateReference : str
+  + mobile : str
+  + note : str
+  + phone : str
+  + reliability : str
+  + supplierNumber : str
+  + title : str
+  + useNetGross : str
+  + useSalesEqualizationTax : str
+  + vatNumber : str
+  + vatNumberValid : str
+  + webshopName : str
+  + website : str
+}
+class model_ContactCategory {
+}
+class model_Credit {
+}
+class model_Creditor {
+}
+class model_Debitor {
+}
+class model_Delivery {
+}
+abstract class model_Document {
+  + addressFirstLine : str
+  + billingType : str
+  + consultant : str
+  + customerRef : str
+  + deposit : str
+  + documentDate : date
+  + dueDays : str
+  + itemsRebate : str
+  + message : str
+  + message2 : str
+  + message3 : str
+  + netGross : str
+  + odtPath : str
+  + orderDate : date
+  + paid : str
+  + paidValue : str
+  + payDate : date
+  + pdfPath : str
+  + printTemplate : str
+  + printed : str
+  + progress : str
+  + serviceDate : date
+  + shippingAutoVat : str
+  + shippingValue : str
+  + totalValue : str
+  + transactionId : str
+  + vestingPeriodEnd : date
+  + vestingPeriodStart : date
+  + webshopDate : date
+  + webshopId : str
+}
+class model_DocumentItem {
+  + description : str
+  + gtin : str
+  + itemNumber : str
+  + itemRebate : str
+  + itemType : str
+  + noVat : str
+  + optional : str
+  + originQuantity : str
+  + picture : str
+  + posNr : str
+  + price : str
+  + quantity : str
+  + quantityUnit : str
+  + tara : str
+  + vestingPeriodEnd : date
+  + vestingPeriodStart : date
+  + weight : str
+}
+class model_Dunning {
+  + dunningLevel : str
+}
+abstract class model_IDescribableEntity {
+  + description : str
+}
+abstract class model_IEntity {
+  + dateAdded : date
+  + deleted : str
+  + id : str
+  + modified : date
+  + modifiedBy : str
+  + name : str
+  + validFrom : date
+  + validTo : date
+  + isSameAs() : str
+}
+class model_IndividualDocumentInfo {
+  + noVatDescription : str
+  + noVatName : str
+  + paymentDescription : str
+  + paymentName : str
+  + paymentText : str
+  + shippingAutoVat : str
+  + shippingDescription : str
+  + shippingName : str
+  + shippingValue : str
+  + shippingVatDescription : str
+  + shippingVatValue : str
+}
+class model_Invoice {
+}
+class model_ItemAccountType {
+  + value : str
+}
+class model_ItemListTypeCategory {
+}
+class model_Letter {
+}
+class model_Offer {
+}
+class model_Order {
+}
+class model_Payment {
+  + code : str
+  + depositText : str
+  + description : str
+  + discountDays : str
+  + discountValue : str
+  + netDays : str
+  + paidText : str
+  + unpaidText : str
+}
+class model_Product {
+  + block1 : str
+  + block2 : str
+  + block3 : str
+  + block4 : str
+  + block5 : str
+  + cdf01 : str
+  + cdf02 : str
+  + cdf03 : str
+  + costPrice : str
+  + gtin : str
+  + itemNumber : str
+  + picture : str
+  + price1 : str
+  + price2 : str
+  + price3 : str
+  + price4 : str
+  + price5 : str
+  + quantity : str
+  + quantityUnit : str
+  + sellingUnit : str
+  + webshopId : str
+  + weight : str
+}
+class model_ProductBlockPrice {
+  + block : str
+  + price : str
+}
+class model_ProductCategory {
+}
+class model_ProductOptions {
+  + attributeValue : str
+  + sequenceNumber : str
+}
+class model_Proforma {
+}
+class model_Role {
+}
+class model_Shipping {
+  + autoVat : str
+  + code : str
+  + shippingValue : str
+}
+class model_ShippingCategory {
+}
+class model_Tenant {
+}
+class model_TextCategory {
+}
+class model_TextModule {
+  + text : str
+}
+class model_User {
+  + password : str
+  + userName : str
+}
+class model_UserProperty {
+  + default : str
+  + global_ : str
+  + user : str
+  + value : str
+}
+class model_VAT {
+  + description : str
+  + salesEqualizationTax : str
+  + taxValue : str
+}
+class model_VATCategory {
+}
+class model_Voucher {
+  + discounted : str
+  + doNotBook : str
+  + documentNumber : str
+  + paidValue : str
+  + totalValue : str
+  + voucherDate : date
+  + voucherNumber : str
+  + voucherType : str
+}
+class model_VoucherCategory {
+}
+class model_VoucherItem {
+  + itemVoucherType : str
+  + posNr : str
+  + price : str
+}
+class model_WebShop {
+  + webshopVendor : str
+  + webshopVersion : str
+}
+class model_WebshopStateMapping {
+  + fakturamaOrderState : str
+  + webshopState : str
+}
+AbstractCategory <|-- model_ContactCategory
+AbstractCategory <|-- model_ItemListTypeCategory
+AbstractCategory <|-- model_ProductCategory
+AbstractCategory <|-- model_ShippingCategory
+AbstractCategory <|-- model_TextCategory
+AbstractCategory <|-- model_VATCategory
+AbstractCategory <|-- model_VoucherCategory
+Contact <|-- model_Creditor
+Contact <|-- model_Debitor
+Document <|-- model_Confirmation
+Document <|-- model_Credit
+Document <|-- model_Delivery
+Document <|-- model_Dunning
+Document <|-- model_Invoice
+Document <|-- model_Letter
+Document <|-- model_Offer
+Document <|-- model_Order
+Document <|-- model_Proforma
+IDescribableEntity <|-- model_Product
+IDescribableEntity <|-- model_Shipping
+IEntity <|-- model_AbstractCategory
+IEntity <|-- model_Address
+IEntity <|-- model_BankAccount
+IEntity <|-- model_CEFACTCode
+IEntity <|-- model_Contact
+IEntity <|-- model_Document
+IEntity <|-- model_DocumentItem
+IEntity <|-- model_IDescribableEntity
+IEntity <|-- model_IndividualDocumentInfo
+IEntity <|-- model_ItemAccountType
+IEntity <|-- model_Payment
+IEntity <|-- model_ProductBlockPrice
+IEntity <|-- model_ProductOptions
+IEntity <|-- model_Role
+IEntity <|-- model_Tenant
+IEntity <|-- model_TextModule
+IEntity <|-- model_User
+IEntity <|-- model_UserProperty
+IEntity <|-- model_VAT
+IEntity <|-- model_Voucher
+IEntity <|-- model_VoucherItem
+IEntity <|-- model_WebShop
+IEntity <|-- model_WebshopStateMapping
+model_Voucher "1..1" *-- "0..1" model_VoucherCategory : account38
+model_ItemAccountType "0..1" --* "1..1" model_VoucherItem : accountType41
+model_Document "1..1" *-- "0..1" model_IndividualDocumentInfo : additionalInfo12
+model_Address "0..1" --* "1..1" model_Contact : address2
+model_Contact "0..1" -- "1..1" model_Contact : alternateContacts4
+model_Product "1..1" -- "0..9999" model_ProductOptions : attributes53
+model_BankAccount "0..1" -- "1..1" model_Contact : bankAccount10
+model_Contact "0..1" --* "1..1" model_Document : billingContact13
+model_Product "1..1" -- "1..9999" model_ProductBlockPrice : blockPrices58
+model_Product "1..1" -- "0..1" model_ProductCategory : categories51
+model_Contact "1..1" -- "0..1" model_ContactCategory : categories6
+model_Shipping "1..1" -- "0..1" model_ShippingCategory : categories63
+model_TextCategory "0..1" -- "1..1" model_TextModule : categories65
+model_ItemAccountType "1..1" -- "0..1" model_ItemListTypeCategory : category46
+model_Payment "1..1" -- "0..1" model_VoucherCategory : category48
+model_VAT "1..1" -- "0..1" model_VATCategory : category69
+model_Contact "0..1" --* "1..1" model_Document : deliveryContact16
+model_Document "1..1" -- "0..1" model_Invoice : invoiceReference19
+model_DocumentItem "1..1" -- "0..1" model_VAT : itemVat35
+model_Document "1..1" -- "0..9999" model_DocumentItem : items21
+model_Voucher "1..1" *-- "0..9999" model_VoucherItem : items39
+model_Document "1..1" *-- "0..1" model_VAT : noVatReference23
+model_AbstractCategory "1..1" *-- "0..1" model_AbstractCategory : parent1
+model_Document "1..1" *-- "0..1" model_Payment : payment25
+model_Contact "1..1" -- "0..1" model_Payment : payment8
+model_DocumentItem "1..1" -- "0..1" model_Product : product33
+model_Role "0..9999" -- "1..1" model_User : roles67
+model_Document "1..1" *-- "0..1" model_Shipping : shipping28
+model_Shipping "1..1" -- "1..1" model_VAT : shippingVat60
+model_Document "0..1" --* "1..1" model_Document : sourceDocument31
+model_WebShop "1..1" *-- "0..9999" model_WebshopStateMapping : stateMapping71
+model_Tenant "0..1" -- "1..1" model_User : tenant66
+model_VAT "0..1" -- "1..1" model_VoucherItem : vat43
+model_Product "1..1" -- "0..1" model_VAT : vat55
+@enduml

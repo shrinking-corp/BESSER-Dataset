@@ -1,0 +1,24 @@
+@startuml
+class NamedElementCS {
+}
+class classescs_ClassCS {
+}
+abstract class classescs_NamedElementCS {
+  + name : str
+}
+class classescs_PackageCS {
+}
+class classescs_PathElementCS {
+}
+class classescs_PathNameCS {
+}
+class classescs_RootCS {
+}
+NamedElementCS <|-- classescs_ClassCS
+NamedElementCS <|-- classescs_PackageCS
+NamedElementCS <|-- classescs_PathElementCS
+classescs_ClassCS "1..1" *-- "0..1" classescs_PathNameCS : extends1
+classescs_ClassCS "0..9999" --* "1..1" classescs_PackageCS : ownedClasses0
+classescs_PackageCS "0..1" -- "1..1" classescs_RootCS : ownedPackages5
+classescs_PathElementCS "1..9999" --* "1..1" classescs_PathNameCS : path3
+@enduml

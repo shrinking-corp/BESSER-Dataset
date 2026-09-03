@@ -1,0 +1,74 @@
+@startuml
+class DiagramElement {
+}
+class Edge {
+}
+class Node {
+}
+class Shape {
+}
+class di_Bounds {
+}
+abstract class di_Diagram {
+  + documentation : str
+  + id : str
+  + name : str
+  + resolution : str
+}
+abstract class di_DiagramElement {
+  + anyAttribute : str
+  + id : str
+}
+class di_DocumentRoot {
+  + mixed : str
+}
+class di_EStringToStringMapEntry {
+}
+abstract class di_Edge {
+}
+class di_ExtensionType {
+  + any : str
+}
+abstract class di_Label {
+}
+abstract class di_LabeledEdge {
+}
+abstract class di_LabeledShape {
+}
+abstract class di_Node {
+}
+abstract class di_Plane {
+  + diagramElementGroup : str
+}
+class di_Point {
+}
+abstract class di_Shape {
+}
+abstract class di_Style {
+  + id : str
+}
+DiagramElement <|-- di_Edge
+DiagramElement <|-- di_Node
+Edge <|-- di_LabeledEdge
+Node <|-- di_Label
+Node <|-- di_Plane
+Node <|-- di_Shape
+Shape <|-- di_LabeledShape
+di_Bounds "0..1" --* "1..1" di_Label : bounds2
+di_Bounds "1..1" --* "1..1" di_Shape : bounds5
+di_Diagram "0..9999" --* "1..1" di_DocumentRoot : diagram14
+di_DiagramElement "0..9999" --* "1..1" di_DocumentRoot : diagramElement11
+di_DiagramElement "0..9999" --* "1..1" di_Plane : diagramElement3
+di_DocumentRoot "1..1" *-- "0..9999" di_Edge : edge16
+di_DiagramElement "1..1" *-- "0..1" di_ExtensionType : extension0
+di_DocumentRoot "1..1" *-- "0..9999" di_Label : label19
+di_DocumentRoot "1..1" *-- "0..9999" di_LabeledEdge : labeledEdge22
+di_DocumentRoot "1..1" *-- "0..9999" di_LabeledShape : labeledShape24
+di_DocumentRoot "1..1" *-- "0..9999" di_Node : node26
+di_DocumentRoot "1..1" *-- "0..9999" di_Plane : plane28
+di_DocumentRoot "1..1" *-- "0..9999" di_Shape : shape31
+di_DocumentRoot "1..1" *-- "0..9999" di_Style : style34
+di_Edge "1..1" *-- "2..9999" di_Point : waypoint1
+di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xMLNSPrefixMap7
+di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xSISchemaLocation8
+@enduml

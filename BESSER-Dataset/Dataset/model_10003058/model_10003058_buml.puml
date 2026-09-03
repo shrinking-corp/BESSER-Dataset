@@ -1,0 +1,34 @@
+@startuml
+class Administrator {
+  + Account : str
+  + Fullname : str
+}
+class Bank {
+  + Account : int
+  + Name : str
+}
+class Customer {
+  + Card_details : int
+  + Fullname : str
+  + Gender : str
+  + Location : str
+}
+class Flight {
+  + Destination : str
+  + Id : Flight
+  + Name : str
+  + Number_of_seats : int
+  + Source : str
+  + Time : int
+}
+class Ticket {
+  + Customer_Name : str
+  + Id : int
+  + Price : bool
+  + Type : str
+}
+Bank "1..1" -- "1..9999" Customer : Bank_Customer
+Administrator "1..1" -- "1..9999" Customer : Customer_Administrator
+Customer "1..1" -- "1..9999" Ticket : Ticket_Customer
+Flight "1..1" -- "1..9999" Ticket : Ticket_Flight
+@enduml

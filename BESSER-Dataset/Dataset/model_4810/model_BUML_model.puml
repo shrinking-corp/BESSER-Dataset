@@ -1,0 +1,25 @@
+@startuml
+class model_App {
+  + auth(model_login : str, model_password : str) : void
+  + authFailure() : void
+  + authSuccess(model_token : str) : void
+  + result(model_result : str) : void
+  + service(model_params : str, model_service : str, model_token : str) : void
+}
+class model_Param {
+  + name : str
+  + value : str
+}
+class model_Service {
+  + acceptedParams : str
+  + methodName : str
+  + name : str
+}
+class model_User {
+  + name : str
+  + password : str
+}
+model_Service "1..1" -- "0..9999" model_User : allowedUsers0
+model_App "1..1" *-- "0..9999" model_Service : services3
+model_App "1..1" *-- "0..9999" model_User : users1
+@enduml

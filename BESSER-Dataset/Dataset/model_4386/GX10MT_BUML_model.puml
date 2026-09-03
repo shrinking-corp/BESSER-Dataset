@@ -1,0 +1,154 @@
+@startuml
+class BoolExpression {
+}
+class ControlStructure {
+}
+class Expression {
+}
+class IntBinaryOperation {
+}
+class IntExpression {
+}
+class Statement {
+}
+class gx10_And {
+}
+class gx10_Async {
+}
+class gx10_Block {
+  + context : int
+  + initBlock() : void
+}
+abstract class gx10_BoolExpression {
+  + getCurrentValue() : void
+}
+class gx10_BoolVar {
+  + evaluate() : void
+}
+class gx10_BoolVarAccess {
+  + getCurrentValue() : void
+}
+abstract class gx10_ControlStructure {
+}
+class gx10_Equal {
+  + evaluate() : void
+  + getCurrentValue() : void
+}
+abstract class gx10_Expression {
+}
+class gx10_False {
+  + getCurrentValue() : void
+}
+class gx10_Finish {
+}
+class gx10_If {
+}
+abstract class gx10_IntBinaryOperation {
+  + evaluate() : void
+}
+class gx10_IntConst {
+  + value : bool
+  + getCurrentValue() : void
+}
+abstract class gx10_IntExpression {
+  + getCurrentValue() : void
+}
+class gx10_IntVar {
+  + evaluate() : void
+}
+class gx10_IntVarAccess {
+  + getCurrentValue() : void
+}
+class gx10_Method {
+  + name : str
+}
+class gx10_MethodCall {
+  + call() : void
+}
+class gx10_MethodCallParameter {
+  + name : str
+}
+class gx10_Not {
+  + getCurrentValue() : void
+}
+class gx10_Plus {
+  + evaluate() : void
+  + getCurrentValue() : void
+}
+class gx10_Print {
+  + print() : void
+}
+class gx10_Program {
+}
+class gx10_Referentiable {
+  + name : int
+}
+abstract class gx10_Statement {
+}
+class gx10_Time {
+  + evaluate() : void
+  + getCurrentValue() : void
+}
+class gx10_True {
+  + getCurrentValue() : void
+}
+class gx10_While {
+}
+BoolExpression <|-- gx10_And
+BoolExpression <|-- gx10_BoolVarAccess
+BoolExpression <|-- gx10_Equal
+BoolExpression <|-- gx10_False
+BoolExpression <|-- gx10_Not
+BoolExpression <|-- gx10_True
+ControlStructure <|-- gx10_If
+ControlStructure <|-- gx10_While
+Expression <|-- gx10_BoolExpression
+Expression <|-- gx10_BoolVar
+Expression <|-- gx10_IntExpression
+Expression <|-- gx10_MethodCall
+IntBinaryOperation <|-- gx10_Plus
+IntBinaryOperation <|-- gx10_Time
+IntExpression <|-- gx10_IntBinaryOperation
+IntExpression <|-- gx10_IntConst
+IntExpression <|-- gx10_IntVarAccess
+Statement <|-- gx10_Async
+Statement <|-- gx10_Block
+Statement <|-- gx10_ControlStructure
+Statement <|-- gx10_Expression
+Statement <|-- gx10_Finish
+Statement <|-- gx10_IntVar
+Statement <|-- gx10_Print
+gx10_Async "1..1" *-- "1..1" gx10_Statement : asyncBlock30
+gx10_Block "1..1" *-- "0..9999" gx10_Statement : blockStatements8
+gx10_BoolExpression "1..1" --* "1..1" gx10_BoolVar : boolVarExpr38
+gx10_BoolVar "1..1" *-- "1..1" gx10_Referentiable : boolVarName40
+gx10_BoolVarAccess "1..1" -- "1..1" gx10_Referentiable : boolVarRef50
+gx10_Method "1..1" -- "0..9999" gx10_MethodCall : calledBy5
+gx10_BoolExpression "1..1" --* "1..1" gx10_ControlStructure : controlStructureCondition10
+gx10_Block "1..1" --* "1..1" gx10_If : elseBlock14
+gx10_Finish "1..1" *-- "1..1" gx10_Statement : finishStatement35
+gx10_Block "0..1" -- "1..1" gx10_Statement : inBlock9
+gx10_MethodCall "1..1" -- "1..1" gx10_MethodCallParameter : inMethodCall58
+gx10_IntExpression "1..1" -- "0..1" gx10_MethodCallParameter : inMethodCallParameter11
+gx10_Method "1..1" -- "1..1" gx10_Program : inProgram2
+gx10_IntExpression "1..1" --* "1..1" gx10_IntVar : intVarExpr43
+gx10_IntVar "1..1" *-- "1..1" gx10_Referentiable : intVarName45
+gx10_IntVarAccess "1..1" -- "1..1" gx10_Referentiable : intVarRef48
+gx10_And "1..1" *-- "1..1" gx10_BoolExpression : leftAndExpression21
+gx10_IntBinaryOperation "1..1" *-- "1..1" gx10_IntExpression : leftBinaryExpression26
+gx10_Equal "1..1" *-- "1..1" gx10_IntExpression : leftEqual52
+gx10_Block "1..1" --* "1..1" gx10_Method : methodBlock3
+gx10_IntExpression "1..1" --* "1..1" gx10_MethodCallParameter : methodCallParameterExpr57
+gx10_MethodCall "1..1" *-- "0..9999" gx10_MethodCallParameter : methodCallParameters33
+gx10_Method "1..1" *-- "0..9999" gx10_Referentiable : methodParameters6
+gx10_Method "1..1" -- "1..1" gx10_MethodCall : methodToCall31
+gx10_Method "0..9999" --* "1..1" gx10_Program : methods0
+gx10_BoolExpression "1..1" --* "1..1" gx10_Not : notExpression19
+gx10_And "1..1" *-- "1..1" gx10_BoolExpression : rightAndExpression23
+gx10_IntBinaryOperation "1..1" *-- "1..1" gx10_IntExpression : rightBinaryExpression27
+gx10_Equal "1..1" *-- "1..1" gx10_IntExpression : rightEqual54
+gx10_Method "1..1" -- "1..1" gx10_Program : startMethod1
+gx10_Block "1..1" --* "1..1" gx10_If : thenBlock12
+gx10_Expression "1..1" --* "1..1" gx10_Print : toPrint37
+gx10_Block "1..1" --* "1..1" gx10_While : whileBlock17
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+abstract class fragdial101_AbstractComponent {
+  + name : str
+}
+class fragdial101_Attribute {
+  + name : str
+  + value : str
+}
+class fragdial101_Attributes {
+  + signature : str
+}
+class fragdial101_Binding {
+}
+class fragdial101_Component {
+}
+class fragdial101_Content {
+  + class_ : str
+  + language : str
+}
+class fragdial101_Controller {
+  + descriptor : str
+  + language : str
+}
+class fragdial101_Include {
+  + file : str
+}
+abstract class fragdial101_Interface {
+  + cardinality : str
+  + contingency : str
+  + name : str
+  + signature : str
+  + startProperty : str
+}
+class fragdial101_Ldflag {
+  + value : str
+}
+class fragdial101_Output {
+  + format : str
+}
+class fragdial101_Provided {
+}
+class fragdial101_Required {
+}
+AbstractComponent <|-- fragdial101_Component
+Interface <|-- fragdial101_Provided
+Interface <|-- fragdial101_Required
+fragdial101_AbstractComponent "1..1" *-- "0..1" fragdial101_Attributes : attributes1
+fragdial101_Attribute "0..9999" --* "1..1" fragdial101_Attributes : attributes25
+fragdial101_Binding "0..9999" --* "1..1" fragdial101_Interface : bindings11
+fragdial101_AbstractComponent "1..1" *-- "0..1" fragdial101_Content : content0
+fragdial101_AbstractComponent "1..1" -- "1..1" fragdial101_Content : contentParent18
+fragdial101_AbstractComponent "1..1" *-- "0..1" fragdial101_Controller : controller5
+fragdial101_Binding "1..1" -- "0..1" fragdial101_Interface : from_12
+fragdial101_Content "1..1" *-- "0..9999" fragdial101_Include : includes21
+fragdial101_Content "1..1" *-- "0..9999" fragdial101_Ldflag : ldflags23
+fragdial101_AbstractComponent "1..1" *-- "0..1" fragdial101_Output : output3
+fragdial101_AbstractComponent "1..1" *-- "0..9999" fragdial101_Provided : providedInterfaces9
+fragdial101_AbstractComponent "1..1" *-- "0..9999" fragdial101_Required : requiredInterfaces7
+fragdial101_Component "1..1" *-- "0..9999" fragdial101_Component : subComponents28
+fragdial101_Binding "1..1" -- "0..1" fragdial101_Interface : to15
+@enduml

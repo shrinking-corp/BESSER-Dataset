@@ -1,0 +1,33 @@
+@startuml
+enum FeatureKind {
+  attribute
+  containment
+  reference
+}
+class NamedElement {
+}
+class Type {
+}
+class hbmxml_DataType {
+}
+class hbmxml_Entity {
+  + abstract : bool
+}
+class hbmxml_EntityModel {
+}
+class hbmxml_Feature {
+  + kind : str
+}
+abstract class hbmxml_NamedElement {
+  + name : str
+}
+abstract class hbmxml_Type {
+}
+NamedElement <|-- hbmxml_Feature
+NamedElement <|-- hbmxml_Type
+Type <|-- hbmxml_DataType
+Type <|-- hbmxml_Entity
+hbmxml_Entity "1..1" *-- "0..9999" hbmxml_Feature : features0
+hbmxml_Feature "1..1" -- "1..1" hbmxml_Type : type2
+hbmxml_EntityModel "1..1" *-- "0..9999" hbmxml_Type : types1
+@enduml

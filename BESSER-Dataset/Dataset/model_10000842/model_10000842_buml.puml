@@ -1,0 +1,95 @@
+@startuml
+class AccountInfo {
+  + ID : int
+  + accountNumber : int
+  + bankBranch : str
+  + bankName : str
+  + name : str
+  + routingNumber : int
+}
+class Administrator {
+  + address : str
+  + adminType : str
+  + dateOfBirth : date
+  + emailId : str
+  + name : str
+  + phone : int
+  + userId : int
+}
+class CardInfo {
+  + CVV : int
+  + ID : int
+  + billingAddress : str
+  + expiryDate : date
+  + name : str
+  + number : int
+}
+class Farmer {
+  + CardInfo : str
+  + accountInfoID : int
+  + address : str
+  + dateOfBirth : date
+  + emailId : str
+  + name : str
+  + phone : int
+  + type : str
+  + userId : int
+}
+class Farmer_produces {
+  + ID : int
+  + farmerID : int
+  + productList : str
+}
+class Order {
+  + cardDetails : str
+  + productDetails : str
+  + purchaseDate : date
+  + transactionID : int
+}
+class Products {
+  + ID : int
+  + description : str
+  + discount : int
+  + farmerID : str
+  + inventoryID : str
+  + name : str
+  + rating : int
+  + reviews : str
+  + selling_price : float
+}
+class Retailer {
+  + CardInfo : int
+  + Photo : str
+  + address : str
+  + dateOfBirth : date
+  + emailId : str
+  + name : str
+  + phone : int
+  + userId : int
+}
+class Retailer_Cart {
+  + product : Products
+  + quantity___product : float
+  + userID : int
+}
+class User {
+  + Id : int
+  + password : str
+  + userName : str
+  + userType : str
+}
+class rating___review {
+  + ID : int
+  + inventoryID : str
+  + name : str
+  + rating : int
+  + retailerID : str
+  + reviews : str
+}
+CardInfo "0..1" -- "0..1" Retailer : Customer_CardInfo
+Order "0..1" -- "0..1" Retailer : Customer_Order
+Retailer "1..1" -- "1..1" Retailer_Cart : Customer_ShoppingCart
+Farmer "0..1" -- "0..1" Order : Order_Farmer
+Farmer "0..1" -- "0..1" Products : Product_Farmer_Farmer
+AccountInfo "0..1" -- "0..1" Farmer : Seller_AccountInfo
+@enduml

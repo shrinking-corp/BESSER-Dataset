@@ -1,0 +1,23 @@
+@startuml
+class DirectedGraph_Edge {
+  + label : str
+  + weight : str
+}
+class DirectedGraph_Graph {
+}
+abstract class DirectedGraph_GraphElement {
+}
+class DirectedGraph_Node {
+  + label : str
+}
+class GraphElement {
+}
+GraphElement <|-- DirectedGraph_Edge
+GraphElement <|-- DirectedGraph_Node
+DirectedGraph_Graph "1..1" *-- "0..9999" DirectedGraph_GraphElement : contents0
+DirectedGraph_Graph "0..1" -- "1..1" DirectedGraph_GraphElement : graph1
+DirectedGraph_Edge "0..9999" -- "1..1" DirectedGraph_Node : incoming3
+DirectedGraph_Edge "0..9999" -- "1..1" DirectedGraph_Node : outgoing2
+DirectedGraph_Edge "1..1" -- "0..1" DirectedGraph_Node : source5
+DirectedGraph_Edge "1..1" -- "0..1" DirectedGraph_Node : target6
+@enduml

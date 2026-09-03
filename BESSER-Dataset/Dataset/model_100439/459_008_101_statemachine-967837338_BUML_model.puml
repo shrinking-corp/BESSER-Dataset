@@ -1,0 +1,95 @@
+@startuml
+class Action {
+}
+class IDBase {
+}
+class NameBase {
+}
+class State {
+}
+class StateAction {
+}
+class StateVertex {
+}
+class statechart_Action {
+  + value : str
+}
+class statechart_CompositeState {
+  + isConcurrent : bool
+}
+class statechart_DO {
+}
+class statechart_ENTRY {
+}
+class statechart_EXIT {
+}
+class statechart_Event {
+  + name : str
+}
+class statechart_Guard {
+  + expression : str
+}
+class statechart_Label {
+  + name : str
+}
+class statechart_State {
+}
+abstract class statechart_StateAction {
+}
+class statechart_StateMachine {
+  + name : str
+}
+class statechart_StateMachineRoot {
+}
+class statechart_StateVertex {
+}
+class statechart_Transition {
+  + description : str
+}
+class statechart_TransitionAction {
+}
+Action <|-- statechart_StateAction
+Action <|-- statechart_TransitionAction
+IDBase <|-- statechart_Action
+IDBase <|-- statechart_Event
+IDBase <|-- statechart_Guard
+IDBase <|-- statechart_Label
+IDBase <|-- statechart_StateMachine
+IDBase <|-- statechart_StateMachineRoot
+IDBase <|-- statechart_StateVertex
+IDBase <|-- statechart_Transition
+NameBase <|-- statechart_StateVertex
+State <|-- statechart_CompositeState
+StateAction <|-- statechart_DO
+StateAction <|-- statechart_ENTRY
+StateAction <|-- statechart_EXIT
+StateVertex <|-- statechart_State
+statechart_State "0..1" -- "1..1" statechart_StateMachine : InitialState6
+statechart_StateMachine "0..1" -- "1..1" statechart_StateMachineRoot : InitialStateMachine1
+statechart_Transition "0..1" -- "1..1" statechart_TransitionAction : act_container33
+statechart_Transition "1..1" *-- "0..1" statechart_TransitionAction : action24
+statechart_State "0..1" -- "1..1" statechart_StateAction : action_container41
+statechart_State "1..1" *-- "0..9999" statechart_StateAction : actions14
+statechart_Action "0..9999" -- "1..1" statechart_StateMachine : calledByAction5
+statechart_Event "0..9999" -- "1..1" statechart_State : deferrableEvents12
+statechart_Event "1..1" -- "0..1" statechart_Transition : evt_container29
+statechart_Guard "1..1" -- "1..1" statechart_Transition : gua_container31
+statechart_Guard "0..1" --* "1..1" statechart_Transition : guard23
+statechart_StateVertex "1..1" -- "0..9999" statechart_Transition : incoming38
+statechart_State "1..1" *-- "0..9999" statechart_Transition : internalTransitions10
+statechart_Label "0..9999" --* "1..1" statechart_StateVertex : label40
+statechart_StateVertex "1..1" -- "0..9999" statechart_Transition : outgoing36
+statechart_StateVertex "1..1" -- "1..1" statechart_Transition : source25
+statechart_Action "1..1" -- "0..1" statechart_StateMachine : stateMachineCall16
+statechart_State "1..1" -- "0..1" statechart_StateMachine : state_container8
+statechart_StateMachine "1..1" -- "0..1" statechart_StateMachineRoot : statemachine_container4
+statechart_StateMachine "0..9999" --* "1..1" statechart_StateMachineRoot : subStateMachines0
+statechart_CompositeState "1..1" *-- "0..9999" statechart_StateVertex : subVertexes15
+statechart_CompositeState "0..1" -- "1..1" statechart_StateVertex : sv_container35
+statechart_StateVertex "1..1" -- "1..1" statechart_Transition : target27
+statechart_State "0..9999" --* "1..1" statechart_StateMachine : top3
+statechart_StateMachine "0..1" -- "1..1" statechart_Transition : transSM_container18
+statechart_State "0..1" -- "1..1" statechart_Transition : transS_container20
+statechart_StateMachine "1..1" *-- "0..9999" statechart_Transition : transitions2
+statechart_Event "0..1" --* "1..1" statechart_Transition : trigger22
+@enduml

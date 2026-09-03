@@ -1,0 +1,55 @@
+@startuml
+class ProcessElement {
+}
+enum WorkSequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+class iritpdl_Guidance {
+  + text : str
+}
+class iritpdl_Process {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class iritpdl_ProcessElement {
+}
+class iritpdl_Resource {
+  + occurrences : int
+}
+class iritpdl_ResourceConf {
+  + name : str
+}
+class iritpdl_ResourceType {
+  + name : str
+  + occurrences : int
+}
+class iritpdl_WorkDefinition {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class iritpdl_WorkSequence {
+  + linkType : str
+}
+ProcessElement <|-- iritpdl_WorkDefinition
+ProcessElement <|-- iritpdl_WorkSequence
+iritpdl_ProcessElement "0..9999" --* "1..1" iritpdl_WorkDefinition : children9
+iritpdl_Guidance "0..9999" --* "1..1" iritpdl_Process : guidanceGFX1
+iritpdl_Guidance "0..9999" -- "1..1" iritpdl_ProcessElement : guides13
+iritpdl_WorkDefinition "1..1" -- "0..9999" iritpdl_WorkSequence : linksToPredecessors5
+iritpdl_WorkDefinition "1..1" -- "0..9999" iritpdl_WorkSequence : linksToSuccessors6
+iritpdl_Resource "0..9999" --* "1..1" iritpdl_ResourceConf : neededResources24
+iritpdl_ProcessElement "1..1" -- "0..1" iritpdl_WorkDefinition : parent16
+iritpdl_WorkDefinition "1..1" -- "1..1" iritpdl_WorkSequence : predecessor10
+iritpdl_Process "1..1" *-- "0..9999" iritpdl_ProcessElement : processElements0
+iritpdl_Resource "1..1" -- "1..1" iritpdl_ResourceConf : resourceConf20
+iritpdl_ResourceConf "1..9999" --* "1..1" iritpdl_WorkDefinition : resourceConf8
+iritpdl_Process "1..1" *-- "0..9999" iritpdl_ResourceType : resources3
+iritpdl_WorkDefinition "1..1" -- "1..1" iritpdl_WorkSequence : successor11
+iritpdl_Resource "1..1" -- "1..1" iritpdl_ResourceType : type18
+iritpdl_ResourceConf "1..1" -- "1..1" iritpdl_WorkDefinition : workDefinition22
+@enduml

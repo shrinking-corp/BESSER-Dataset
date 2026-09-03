@@ -1,0 +1,40 @@
+@startuml
+class PackagedType {
+}
+class Type {
+}
+class entities_Entity {
+}
+class entities_JAVAID {
+  + name : str
+}
+class entities_Model {
+}
+class entities_Package {
+}
+class entities_PackagedType {
+  + name : str
+}
+class entities_Property {
+  + many : bool
+  + name : str
+}
+class entities_SimpleType {
+}
+class entities_Type {
+}
+class entities_TypeDef {
+  + name : str
+}
+PackagedType <|-- entities_Package
+PackagedType <|-- entities_Type
+Type <|-- entities_Entity
+Type <|-- entities_SimpleType
+entities_Model "1..1" *-- "0..9999" entities_Package : elements0
+entities_Entity "1..1" -- "0..1" entities_Entity : extends6
+entities_JAVAID "0..1" --* "1..1" entities_TypeDef : mappedType1
+entities_Entity "1..1" -- "0..1" entities_Package : package10
+entities_Package "1..1" *-- "0..9999" entities_PackagedType : properties2
+entities_Entity "1..1" *-- "0..9999" entities_Property : properties7
+entities_Property "1..1" -- "0..1" entities_Type : type4
+@enduml

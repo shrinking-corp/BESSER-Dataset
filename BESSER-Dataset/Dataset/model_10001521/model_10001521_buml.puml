@@ -1,0 +1,73 @@
+@startuml
+class AcademicRecords {
+  + attendance : Attendance
+  + dues : int
+  + result : AcademicResult
+  + student : Student
+}
+class AcademicResult {
+  + semester : int
+}
+class Administrator {
+  + administratorID : int
+  + name : str
+}
+class Administrator_Actor {
+}
+class Attendance {
+  + course : Course
+  + student : Student
+}
+class Course {
+  + courseName : str
+  + subjectCode : str
+}
+class Department {
+  + course : Course
+  + name : str
+}
+class Dues {
+  + amount : int
+  + student : Student
+}
+class ELibrary {
+}
+class FacultyInfo {
+  + department : Department
+  + facultyID : str
+  + facultyName : str
+}
+class Package_UseCase {
+}
+class Package_getResult_UseCase {
+}
+class Portal {
+}
+class Student {
+  + branch : Department
+  + name : str
+  + scholarNo : int
+  + semester : int
+}
+class StudentPortal {
+}
+class Student_Actor {
+}
+class Teacher_Actor {
+}
+class UseCase2_UseCase {
+}
+class UseCase_UseCase {
+}
+AcademicRecords "0..1" -- "0..1" AcademicResult : AcademicRecords_AcademicResult
+AcademicRecords "0..1" -- "0..1" Administrator : AcademicRecords_Administrator
+AcademicRecords "0..1" -- "0..1" Student : AcademicRecords_Student
+AcademicRecords "0..1" -- "0..1" Attendance : Attendance_AcademicRecords
+Course "0..1" -- "0..1" Department : Department_Course
+Department "0..1" -- "0..1" Student : Department_Student
+Dues "0..1" -- "0..1" Portal : Dues_Portal
+Department "0..1" -- "0..1" FacultyInfo : FacultyInfo_Department
+AcademicRecords "0..1" -- "0..1" Portal : Portal_AcademicRecords
+Portal "0..1" -- "0..1" StudentPortal : Portal_StudentPortal
+Package_getResult_UseCase "0..1" -- "0..1" Student_Actor : Student_getResult
+@enduml

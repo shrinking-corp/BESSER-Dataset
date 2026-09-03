@@ -1,0 +1,256 @@
+@startuml
+class AbstractToolDescription {
+}
+class ColorDescription {
+}
+class ConditionalStyleDescription {
+}
+class ConditionalTreeItemStyleDescription {
+}
+class DRepresentation {
+}
+class DRepresentationElement {
+}
+class DSemanticDecorator {
+}
+class DTreeElement {
+}
+class DTreeItemContainer {
+}
+class IdentifiedElement {
+}
+class LabelStyle {
+}
+class PrecedingSiblingsVariables {
+}
+class RepresentationCreationDescription {
+}
+class RepresentationElementMapping {
+}
+class RepresentationNavigationDescription {
+}
+class Style {
+}
+class StyleUpdater {
+}
+class TreeDescription {
+}
+enum TreeDragSource {
+  BOTH
+  PROJECT_EXPLORER
+  TREE
+}
+class TreeItemContainerDropTool {
+}
+class TreeItemCreationTool {
+}
+class TreeItemDeletionTool {
+}
+class TreeItemDragTool {
+}
+class TreeItemEditionTool {
+}
+class TreeItemMapping {
+}
+class TreeItemMappingContainer {
+}
+class TreeItemStyleDescription {
+}
+class TreeItemTool {
+}
+class TreeItemUpdater {
+}
+class TreeMapping {
+}
+class TreePopupMenu {
+}
+class TreeVariable {
+}
+class description_AbstractVariable {
+}
+class description_RepresentationDescription {
+}
+class description_StyleUpdater {
+}
+class description_TreeItemMappingContainer {
+}
+class description_TreeItemTool {
+}
+class description_TreeItemUpdater {
+}
+class description_TreeMapping {
+}
+class style_LabelStyleDescription {
+}
+class style_StyleDescription {
+}
+class tool_ContainerViewVariable {
+}
+class tool_DropContainerVariable {
+}
+class tool_EditMaskVariables {
+}
+class tool_ElementDropVariable {
+}
+class tool_MappingBasedToolDescription {
+}
+class tool_MenuItemOrRef {
+}
+class tool_ModelOperation {
+}
+class tool_RepresentationCreationDescription {
+}
+class tool_RepresentationNavigationDescription {
+}
+class tool_VariableContainer {
+}
+class tree_DTree {
+}
+class tree_DTreeElement {
+}
+class tree_DTreeElementSynchronizer {
+  + refresh(tree_DTreeItem : str) : void
+}
+class tree_DTreeItem {
+  + expanded : bool
+}
+abstract class tree_DTreeItemContainer {
+}
+class tree_EObject {
+}
+class tree_TreeItemStyle {
+  + backgroundColor : str
+}
+class tree_description_ConditionalTreeItemStyleDescription {
+}
+class tree_description_PrecedingSiblingsVariables {
+}
+class tree_description_StyleUpdater {
+}
+class tree_description_TreeCreationDescription {
+}
+class tree_description_TreeDescription {
+  + domainClass : str
+  + preconditionExpression : str
+}
+class tree_description_TreeItemContainerDropTool {
+  + dragSource : str
+}
+class tree_description_TreeItemCreationTool {
+}
+class tree_description_TreeItemDeletionTool {
+}
+class tree_description_TreeItemDragTool {
+  + dragSourceType : str
+  + getBestTreeItemMapping() : str
+}
+class tree_description_TreeItemEditionTool {
+}
+class tree_description_TreeItemMapping {
+  + domainClass : str
+  + preconditionExpression : str
+  + semanticCandidatesExpression : str
+}
+abstract class tree_description_TreeItemMappingContainer {
+}
+class tree_description_TreeItemStyleDescription {
+}
+abstract class tree_description_TreeItemTool {
+}
+class tree_description_TreeItemUpdater {
+  + getCreateTreeItem() : str
+  + getLabelComputationExpression() : str
+}
+class tree_description_TreeMapping {
+  + semanticElements : str
+}
+class tree_description_TreeNavigationDescription {
+}
+class tree_description_TreePopupMenu {
+}
+class tree_description_TreeVariable {
+  + documentation : str
+}
+AbstractToolDescription <|-- tree_description_TreeItemTool
+AbstractToolDescription <|-- tree_description_TreePopupMenu
+ConditionalStyleDescription <|-- tree_description_ConditionalTreeItemStyleDescription
+DRepresentation <|-- tree_DTree
+DRepresentationElement <|-- tree_DTreeElement
+DSemanticDecorator <|-- tree_DTreeItemContainer
+DTreeElement <|-- tree_DTreeItem
+DTreeItemContainer <|-- tree_DTree
+DTreeItemContainer <|-- tree_DTreeItem
+IdentifiedElement <|-- tree_DTreeElementSynchronizer
+LabelStyle <|-- tree_TreeItemStyle
+RepresentationCreationDescription <|-- tree_description_TreeCreationDescription
+RepresentationElementMapping <|-- tree_description_TreeMapping
+RepresentationNavigationDescription <|-- tree_description_TreeNavigationDescription
+Style <|-- tree_TreeItemStyle
+TreeItemTool <|-- tree_description_TreeItemDeletionTool
+TreeItemTool <|-- tree_description_TreeItemEditionTool
+TreeVariable <|-- tree_description_PrecedingSiblingsVariables
+description_AbstractVariable <|-- tree_description_TreeVariable
+description_RepresentationDescription <|-- tree_description_TreeDescription
+description_StyleUpdater <|-- tree_description_TreeItemMapping
+description_TreeItemMappingContainer <|-- tree_description_TreeDescription
+description_TreeItemMappingContainer <|-- tree_description_TreeItemMapping
+description_TreeItemTool <|-- tree_description_TreeItemContainerDropTool
+description_TreeItemTool <|-- tree_description_TreeItemCreationTool
+description_TreeItemTool <|-- tree_description_TreeItemDragTool
+description_TreeItemUpdater <|-- tree_description_TreeItemMapping
+description_TreeMapping <|-- tree_description_TreeItemMapping
+style_LabelStyleDescription <|-- tree_description_TreeItemStyleDescription
+style_StyleDescription <|-- tree_description_TreeItemStyleDescription
+tool_MappingBasedToolDescription <|-- tree_description_TreeItemContainerDropTool
+tool_MappingBasedToolDescription <|-- tree_description_TreeItemCreationTool
+tool_MappingBasedToolDescription <|-- tree_description_TreeItemDragTool
+tool_VariableContainer <|-- tree_description_TreeVariable
+TreeItemMapping "1..1" -- "1..1" tree_DTreeItem : actualMapping6
+TreeItemMapping "0..9999" -- "1..1" tree_description_TreeItemMapping : allSubMappings20
+ColorDescription "1..1" -- "1..1" tree_description_TreeItemStyleDescription : backgroundColor34
+ConditionalTreeItemStyleDescription "0..9999" --* "1..1" tree_description_StyleUpdater : conditionalStyles85
+tree_DTreeItem "1..1" -- "0..1" tree_DTreeItemContainer : container8
+TreeItemMappingContainer "1..9999" -- "1..1" tree_description_TreeItemDragTool : containers47
+TreeItemCreationTool "0..9999" --* "1..1" tree_description_TreeItemMapping : create27
+TreeItemCreationTool "0..9999" --* "1..1" tree_description_TreeDescription : createTreeItem13
+TreeItemStyleDescription "1..1" --* "1..1" tree_description_StyleUpdater : defaultStyle83
+TreeItemDeletionTool "0..1" --* "1..1" tree_description_TreeItemMapping : delete26
+TreeDescription "1..1" -- "1..1" tree_DTree : description1
+TreeItemEditionTool "0..1" --* "1..1" tree_description_TreeItemUpdater : directEdit87
+TreeItemDragTool "0..9999" --* "1..1" tree_description_TreeItemMapping : dndTools30
+TreeItemContainerDropTool "0..9999" --* "1..1" tree_description_TreeItemMappingContainer : dropTools90
+tool_ElementDropVariable "1..1" --* "1..1" tree_description_TreeItemDragTool : element43
+tool_ElementDropVariable "1..1" --* "1..1" tree_description_TreeItemContainerDropTool : element56
+tool_ElementDropVariable "1..1" --* "1..1" tree_description_TreeItemEditionTool : element71
+tool_ModelOperation "0..1" --* "1..1" tree_description_TreeItemTool : firstModelOperation36
+TreeItemMapping "0..9999" -- "1..1" tree_description_TreeItemCreationTool : mapping65
+TreeItemMapping "0..9999" -- "1..1" tree_description_TreeItemEditionTool : mapping68
+TreeItemMapping "1..1" -- "1..1" tree_description_TreeItemDeletionTool : mapping77
+tool_EditMaskVariables "1..1" --* "1..1" tree_description_TreeItemEditionTool : mask67
+tool_MenuItemOrRef "0..9999" --* "1..1" tree_description_TreePopupMenu : menuItemDescriptions92
+tool_DropContainerVariable "1..1" --* "1..1" tree_description_TreeItemDragTool : newContainer40
+tool_DropContainerVariable "1..1" --* "1..1" tree_description_TreeItemContainerDropTool : newContainer53
+tool_ContainerViewVariable "1..1" --* "1..1" tree_description_TreeItemDragTool : newViewContainer45
+tool_ContainerViewVariable "1..1" --* "1..1" tree_description_TreeItemContainerDropTool : newViewContainer59
+tool_DropContainerVariable "1..1" --* "1..1" tree_description_TreeItemDragTool : oldContainer39
+tool_DropContainerVariable "1..1" --* "1..1" tree_description_TreeItemContainerDropTool : oldContainer51
+tool_RepresentationCreationDescription "0..9999" --* "1..1" tree_description_TreeDescription : ownedRepresentationCreationDescriptions14
+tool_RepresentationNavigationDescription "0..9999" --* "1..1" tree_description_TreeDescription : ownedRepresentationNavigationDescriptions16
+tree_DTreeItem "1..1" *-- "1..1" tree_TreeItemStyle : ownedStyle5
+tree_DTreeItem "0..9999" --* "1..1" tree_DTreeItemContainer : ownedTreeItems4
+TreePopupMenu "0..9999" --* "1..1" tree_description_TreeItemMapping : popupMenus32
+PrecedingSiblingsVariables "1..1" --* "1..1" tree_description_TreeItemDragTool : precedingSiblings49
+PrecedingSiblingsVariables "1..1" --* "1..1" tree_description_TreeItemContainerDropTool : precedingSiblings62
+TreeItemMapping "0..9999" -- "1..1" tree_description_TreeItemMapping : reusedTreeItemMappings18
+tool_ElementDropVariable "1..1" --* "1..1" tree_description_TreeItemEditionTool : root74
+tree_DTree "1..1" -- "0..9999" tree_EObject : semanticElements0
+TreeItemMapping "0..1" -- "1..1" tree_description_TreeItemMapping : specialize23
+TreeItemStyleDescription "0..1" --* "1..1" tree_description_ConditionalTreeItemStyleDescription : style35
+StyleUpdater "0..1" -- "1..1" tree_DTreeItem : styleUpdater9
+TreeItemMapping "0..9999" --* "1..1" tree_description_TreeItemMappingContainer : subItemMappings88
+TreeDescription "1..1" -- "1..1" tree_description_TreeCreationDescription : treeDescription79
+TreeDescription "1..1" -- "1..1" tree_description_TreeNavigationDescription : treeDescription81
+TreeMapping "0..1" -- "1..1" tree_DTreeElement : treeElementMapping3
+TreeItemUpdater "0..1" -- "1..1" tree_DTreeItem : updater11
+TreeVariable "0..9999" --* "1..1" tree_description_TreeItemTool : variables37
+@enduml

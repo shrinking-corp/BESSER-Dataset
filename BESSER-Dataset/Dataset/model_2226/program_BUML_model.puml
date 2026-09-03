@@ -1,0 +1,43 @@
+@startuml
+enum CourseStatus {
+  ELECTIVE
+  MANDATORY
+}
+class Program_Course {
+  + code : str
+  + credit : float
+  + name : str
+}
+class Program_Department {
+  + name : str
+}
+class Program_Program {
+  + name : str
+  + year : float
+}
+class Program_Semester {
+  + code : str
+  + name : str
+  + status : str
+}
+class Program_SemesterCourse {
+  + status : str
+}
+class Program_Specialization {
+  + name : str
+}
+enum SemesterStatus {
+  FALL
+  SPRING
+}
+Program_Course "0..1" -- "1..1" Program_SemesterCourse : course10
+Program_Course "1..9999" --* "1..1" Program_Department : courses15
+Program_Course "1..1" -- "0..1" Program_Department : department12
+Program_Department "1..1" *-- "1..9999" Program_Program : programs13
+Program_Semester "0..1" -- "1..1" Program_SemesterCourse : semester11
+Program_Semester "1..1" *-- "0..9999" Program_SemesterCourse : semesterCourses9
+Program_Program "1..1" *-- "0..9999" Program_Semester : semesters0
+Program_Semester "0..9999" --* "1..1" Program_Specialization : semesters3
+Program_Program "1..1" *-- "0..9999" Program_Specialization : specializations1
+Program_Specialization "0..9999" --* "1..1" Program_Specialization : specializations7
+@enduml

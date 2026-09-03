@@ -1,0 +1,55 @@
+@startuml
+class NamedElement {
+}
+class SuperType {
+}
+class smalluml_Association {
+}
+class smalluml_Attribute {
+}
+class smalluml_Class {
+  + isAbstract : bool
+}
+class smalluml_Enumeration {
+  + enumeration : str
+}
+abstract class smalluml_NamedElement {
+  + name : str
+}
+class smalluml_Operation {
+  + isAbstract : bool
+}
+class smalluml_Package {
+}
+class smalluml_Parameter {
+}
+class smalluml_Role {
+  + lowerBound : int
+  + upperBound : int
+}
+abstract class smalluml_SuperType {
+}
+class smalluml_Type {
+}
+NamedElement <|-- smalluml_Association
+NamedElement <|-- smalluml_Attribute
+NamedElement <|-- smalluml_Operation
+NamedElement <|-- smalluml_Package
+NamedElement <|-- smalluml_Parameter
+NamedElement <|-- smalluml_Role
+NamedElement <|-- smalluml_SuperType
+SuperType <|-- smalluml_Class
+SuperType <|-- smalluml_Enumeration
+SuperType <|-- smalluml_Type
+smalluml_Association "0..9999" --* "1..1" smalluml_Package : association22
+smalluml_Attribute "0..9999" --* "1..1" smalluml_Class : attribute11
+smalluml_Class "1..1" -- "1..1" smalluml_Role : class_1
+smalluml_Package "1..1" *-- "0..9999" smalluml_SuperType : elements20
+smalluml_Class "1..1" *-- "0..9999" smalluml_Operation : operation14
+smalluml_Operation "1..1" *-- "0..9999" smalluml_Parameter : parameters4
+smalluml_Operation "1..1" -- "0..1" smalluml_SuperType : returnType5
+smalluml_Association "1..1" *-- "2..9999" smalluml_Role : role2
+smalluml_Class "0..1" -- "1..1" smalluml_Class : super18
+smalluml_Attribute "1..1" -- "1..1" smalluml_SuperType : type0
+smalluml_Parameter "1..1" -- "1..1" smalluml_SuperType : type8
+@enduml

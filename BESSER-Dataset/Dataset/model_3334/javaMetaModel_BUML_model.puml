@@ -1,0 +1,84 @@
+@startuml
+enum Direction {
+  input
+  return_
+}
+class JElement {
+}
+class JFeature {
+}
+class JField {
+}
+class JParameter {
+}
+enum PrimitiveType {
+  JBoolean
+  JByte
+  JChar
+  JDouble
+  JFloat
+  JInt
+  JLong
+  JShort
+}
+enum ReferenceType {
+  JArrayType
+  JClassType
+  JInterfaceType
+}
+enum Vis {
+  private
+  protected
+  public
+}
+class javaMetaModel_JAttribute {
+  + primitiveType : str
+}
+class javaMetaModel_JClass {
+  + isAbstract : bool
+  + isFinal : bool
+}
+class javaMetaModel_JElement {
+  + name : str
+}
+abstract class javaMetaModel_JFeature {
+  + isStatic : bool
+  + visibility : str
+}
+abstract class javaMetaModel_JField {
+}
+class javaMetaModel_JMethod {
+}
+class javaMetaModel_JPackage {
+}
+abstract class javaMetaModel_JParameter {
+  + direction : str
+}
+class javaMetaModel_JPrimitiveTypePar {
+  + primitiveType : str
+}
+class javaMetaModel_JReference {
+  + refType : str
+}
+class javaMetaModel_JReferenceTypePar {
+  + refType : str
+}
+JElement <|-- javaMetaModel_JClass
+JElement <|-- javaMetaModel_JFeature
+JElement <|-- javaMetaModel_JPackage
+JElement <|-- javaMetaModel_JParameter
+JFeature <|-- javaMetaModel_JField
+JFeature <|-- javaMetaModel_JMethod
+JField <|-- javaMetaModel_JAttribute
+JField <|-- javaMetaModel_JReference
+JParameter <|-- javaMetaModel_JPrimitiveTypePar
+JParameter <|-- javaMetaModel_JReferenceTypePar
+javaMetaModel_JClass "0..9999" --* "1..1" javaMetaModel_JPackage : jclass9
+javaMetaModel_JClass "1..1" *-- "0..9999" javaMetaModel_JFeature : jfeature1
+javaMetaModel_JMethod "1..1" *-- "0..9999" javaMetaModel_JParameter : jparameter0
+javaMetaModel_JClass "1..1" -- "0..9999" javaMetaModel_JClass : jsubClass5
+javaMetaModel_JClass "1..1" -- "0..1" javaMetaModel_JClass : jsuperClass7
+javaMetaModel_JMethod "0..1" -- "1..1" javaMetaModel_JParameter : owner12
+javaMetaModel_JClass "0..1" -- "1..1" javaMetaModel_JFeature : owner13
+javaMetaModel_JClass "1..1" -- "0..1" javaMetaModel_JPackage : owner3
+@enduml

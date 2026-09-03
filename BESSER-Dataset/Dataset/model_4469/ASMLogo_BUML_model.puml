@@ -1,0 +1,117 @@
+@startuml
+class BinaryExp {
+}
+class ControlStructure {
+}
+class Expression {
+}
+class Instruction {
+}
+class Primitive {
+}
+class logoASM_Back {
+}
+abstract class logoASM_BinaryExp {
+}
+class logoASM_Block {
+}
+class logoASM_Clear {
+}
+class logoASM_Constant {
+  + integerValue : int
+}
+class logoASM_ControlStructure {
+}
+class logoASM_Div {
+}
+class logoASM_Equals {
+}
+abstract class logoASM_Expression {
+}
+class logoASM_Forward {
+}
+class logoASM_Greater {
+}
+class logoASM_If {
+}
+abstract class logoASM_Instruction {
+}
+class logoASM_Left {
+}
+class logoASM_LogoProgram {
+}
+class logoASM_Lower {
+}
+class logoASM_Minus {
+}
+class logoASM_Mult {
+}
+class logoASM_Parameter {
+  + name : str
+}
+class logoASM_ParameterCall {
+}
+class logoASM_PenDown {
+}
+class logoASM_PenUp {
+}
+class logoASM_Plus {
+}
+abstract class logoASM_Primitive {
+}
+class logoASM_ProcCall {
+}
+class logoASM_ProcDeclaration {
+  + name : str
+}
+class logoASM_Repeat {
+}
+class logoASM_Right {
+}
+class logoASM_While {
+}
+BinaryExp <|-- logoASM_Div
+BinaryExp <|-- logoASM_Equals
+BinaryExp <|-- logoASM_Greater
+BinaryExp <|-- logoASM_Lower
+BinaryExp <|-- logoASM_Minus
+BinaryExp <|-- logoASM_Mult
+BinaryExp <|-- logoASM_Plus
+ControlStructure <|-- logoASM_If
+ControlStructure <|-- logoASM_Repeat
+ControlStructure <|-- logoASM_While
+Expression <|-- logoASM_BinaryExp
+Expression <|-- logoASM_Constant
+Expression <|-- logoASM_ParameterCall
+Expression <|-- logoASM_ProcCall
+Instruction <|-- logoASM_Block
+Instruction <|-- logoASM_ControlStructure
+Instruction <|-- logoASM_Expression
+Instruction <|-- logoASM_Primitive
+Instruction <|-- logoASM_ProcDeclaration
+Primitive <|-- logoASM_Back
+Primitive <|-- logoASM_Clear
+Primitive <|-- logoASM_Forward
+Primitive <|-- logoASM_Left
+Primitive <|-- logoASM_PenDown
+Primitive <|-- logoASM_PenUp
+Primitive <|-- logoASM_Right
+logoASM_Expression "0..9999" --* "1..1" logoASM_ProcCall : actualArgs12
+logoASM_Expression "0..1" --* "1..1" logoASM_Left : angle3
+logoASM_Expression "0..1" --* "1..1" logoASM_Right : angle5
+logoASM_Parameter "0..9999" --* "1..1" logoASM_ProcDeclaration : args16
+logoASM_Block "1..1" --* "1..1" logoASM_Repeat : block29
+logoASM_Block "1..1" --* "1..1" logoASM_While : block31
+logoASM_ControlStructure "1..1" *-- "0..1" logoASM_Expression : condition27
+logoASM_ProcCall "1..1" -- "1..1" logoASM_ProcDeclaration : declaration14
+logoASM_Block "0..1" --* "1..1" logoASM_If : elsePart24
+logoASM_Instruction "0..9999" --* "1..1" logoASM_ProcDeclaration : instructions18
+logoASM_Block "1..1" *-- "0..9999" logoASM_Instruction : instructions20
+logoASM_Instruction "0..9999" --* "1..1" logoASM_LogoProgram : instructions35
+logoASM_BinaryExp "1..1" *-- "1..1" logoASM_Expression : lhs7
+logoASM_Parameter "1..1" -- "1..1" logoASM_ParameterCall : parameter33
+logoASM_BinaryExp "1..1" *-- "1..1" logoASM_Expression : rhs9
+logoASM_Back "1..1" *-- "1..1" logoASM_Expression : steps0
+logoASM_Expression "1..1" --* "1..1" logoASM_Forward : steps1
+logoASM_Block "1..1" --* "1..1" logoASM_If : thenPart22
+@enduml

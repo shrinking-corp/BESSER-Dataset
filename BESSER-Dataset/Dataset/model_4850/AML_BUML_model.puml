@@ -1,0 +1,392 @@
+@startuml
+enum ObjectType {
+  argument
+  collection
+  discoveryMethod
+  exhibit
+  group
+  memo
+  person
+  template
+}
+enum ObjectType1 {
+  argument
+  collection
+  discoveryMethod
+  exhibit
+  group
+  memo
+  person
+  template
+}
+enum ObjectType2 {
+  MISC
+  SEQUENTIAL
+  VERSIONING
+  argument
+  group
+  template
+}
+enum ObjectType3 {
+  argument
+  collection
+  discoveryMethod
+  exhibit
+  group
+  memo
+  person
+  template
+}
+enum Type {
+  Template
+  Url
+  Urldir
+}
+class aml_AggregationRule {
+}
+class aml_AmlDocument {
+  + group : str
+  + version : str
+}
+class aml_Annotation {
+  + group : str
+  + id : str
+  + mixed : str
+}
+class aml_Answer {
+  + group : str
+  + questionId : str
+  + rationale : str
+}
+class aml_Argument {
+  + id : str
+}
+class aml_ArgumentTemplate {
+  + idRef : str
+  + value : str
+}
+class aml_Belief {
+  + description : str
+  + label : str
+  + ordinal : str
+  + symbol : str
+}
+class aml_Choice {
+  + description : str
+  + label : str
+  + ordinal : str
+  + symbol : str
+}
+class aml_Collection {
+  + group : str
+  + id : str
+  + label : str
+  + label1 : str
+  + objectType : str
+}
+class aml_CollectionItem {
+  + idRef : str
+  + objectType : str
+  + ordinal : str
+}
+class aml_Coverage {
+  + group : str
+  + mixed : str
+}
+class aml_CreatingTool {
+  + label : str
+  + toolType : str
+  + version : str
+}
+class aml_Creator {
+  + description : str
+  + idRef : str
+  + objectType : str
+}
+class aml_Dependent {
+  + idRef : str
+  + ordinal : str
+}
+class aml_DiscoveryMethod {
+  + autoTrigger : str
+  + description : str
+  + id : str
+  + importType : str
+  + label : str
+  + type : str
+  + url : str
+}
+class aml_DocumentRoot {
+  + actor : str
+  + body : str
+  + date : str
+  + department : str
+  + description : str
+  + description1 : str
+  + email : str
+  + event : str
+  + firstName : str
+  + id : str
+  + idRef : str
+  + label : str
+  + label1 : str
+  + lastName : str
+  + middleName : str
+  + mixed : str
+  + nickName : str
+  + organization : str
+  + perspective : str
+  + rationale : str
+  + region : str
+  + securityMarking : str
+  + subject : str
+  + symbol : str
+  + title : str
+  + url : str
+}
+class aml_EObject {
+}
+class aml_EStringToStringMapEntry {
+}
+class aml_End {
+  + scheme : str
+  + value : str
+}
+class aml_Evidence {
+  + id : str
+  + label : str
+  + ordinal : str
+}
+class aml_EvidenceExhibit {
+  + idRef : str
+  + questionId : str
+  + value : str
+}
+class aml_Exhibit {
+  + id : str
+}
+class aml_Flag {
+  + description : str
+  + flagType : str
+  + label : str
+}
+class aml_Interval {
+  + max : str
+  + min : str
+}
+class aml_List {
+  + group : str
+}
+class aml_Memo {
+  + body : str
+  + id : str
+  + subject : str
+  + type : str
+}
+class aml_MetaData {
+  + date : str
+  + description : str
+  + group : str
+  + securityMarking : str
+  + subject : str
+  + title : str
+}
+class aml_NationState {
+  + actor : str
+  + event : str
+  + group : str
+  + perspective : str
+  + region : str
+}
+class aml_Parameter {
+  + symbol : str
+}
+class aml_Period {
+  + group : str
+  + label : str
+}
+class aml_Person {
+  + department : str
+  + description : str
+  + email : str
+  + firstName : str
+  + id : str
+  + lastName : str
+  + middleName : str
+  + nickName : str
+  + organization : str
+}
+class aml_Publisher {
+  + description : str
+  + idRef : str
+  + objectType : str
+}
+class aml_Question {
+  + amplification : str
+  + description : str
+  + group : str
+  + id : str
+  + label : str
+}
+class aml_QuestionRelationships {
+}
+class aml_Reader {
+  + description : str
+  + idRef : str
+  + objectType : str
+}
+class aml_Relevance {
+  + description : str
+  + label : str
+  + ordinal : str
+  + symbol : str
+}
+class aml_Reliability {
+  + description : str
+  + label : str
+  + ordinal : str
+  + symbol : str
+}
+class aml_Start {
+  + scheme : str
+  + value : str
+}
+class aml_Template {
+  + id : str
+}
+class aml_Value {
+  + group : str
+  + mixed : str
+  + type : str
+  + unit : str
+}
+class aml_Witness {
+  + description : str
+  + idRef : str
+  + timestamp : str
+}
+aml_AggregationRule "0..9999" --* "1..1" aml_Answer : aggregationRule26
+aml_AggregationRule "0..9999" --* "1..1" aml_Question : aggregationRule304
+aml_AggregationRule "0..9999" --* "1..1" aml_DocumentRoot : aggregationRule73
+aml_AmlDocument "0..9999" --* "1..1" aml_DocumentRoot : amlDocument76
+aml_Annotation "0..9999" --* "1..1" aml_Evidence : annotation217
+aml_Annotation "0..9999" --* "1..1" aml_Exhibit : annotation226
+aml_Annotation "0..9999" --* "1..1" aml_Answer : annotation23
+aml_Annotation "0..9999" --* "1..1" aml_Question : annotation310
+aml_Annotation "0..9999" --* "1..1" aml_Template : annotation319
+aml_Annotation "0..9999" --* "1..1" aml_Argument : annotation38
+aml_Annotation "0..9999" --* "1..1" aml_Collection : annotation52
+aml_Annotation "0..9999" --* "1..1" aml_DiscoveryMethod : annotation66
+aml_Annotation "0..9999" --* "1..1" aml_DocumentRoot : annotation79
+aml_Answer "0..9999" --* "1..1" aml_Argument : answer43
+aml_Answer "0..9999" --* "1..1" aml_DocumentRoot : answer82
+aml_EObject "0..1" --* "1..1" aml_Exhibit : archive220
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : archive85
+aml_AmlDocument "1..1" *-- "0..9999" aml_Argument : argument4
+aml_Argument "0..9999" --* "1..1" aml_DocumentRoot : argument88
+aml_Argument "1..1" *-- "1..1" aml_ArgumentTemplate : argumentTemplate41
+aml_ArgumentTemplate "0..1" --* "1..1" aml_Collection : argumentTemplate57
+aml_ArgumentTemplate "0..1" --* "1..1" aml_DiscoveryMethod : argumentTemplate63
+aml_ArgumentTemplate "0..9999" --* "1..1" aml_DocumentRoot : argumentTemplate91
+aml_Answer "1..1" *-- "0..9999" aml_Belief : belief20
+aml_Belief "0..9999" --* "1..1" aml_DocumentRoot : belief94
+aml_Choice "0..9999" --* "1..1" aml_Question : choice298
+aml_Choice "0..9999" --* "1..1" aml_DocumentRoot : choice97
+aml_AmlDocument "1..1" *-- "0..9999" aml_Collection : collection8
+aml_Collection "0..9999" --* "1..1" aml_DocumentRoot : collection99
+aml_CollectionItem "0..9999" --* "1..1" aml_DocumentRoot : collectionItem102
+aml_Collection "1..1" *-- "0..9999" aml_CollectionItem : collectionItem60
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : contributor105
+aml_EObject "0..9999" --* "1..1" aml_MetaData : contributor250
+aml_Coverage "0..9999" --* "1..1" aml_DocumentRoot : coverage108
+aml_Coverage "0..9999" --* "1..1" aml_MetaData : coverage271
+aml_CreatingTool "0..9999" --* "1..1" aml_DocumentRoot : creatingTool111
+aml_CreatingTool "0..1" --* "1..1" aml_Template : creatingTool316
+aml_Argument "1..1" *-- "0..1" aml_CreatingTool : creatingTool36
+aml_Collection "1..1" *-- "0..1" aml_CreatingTool : creatingTool49
+aml_Creator "0..9999" --* "1..1" aml_DocumentRoot : creator114
+aml_Creator "1..9999" --* "1..1" aml_Memo : creator235
+aml_Creator "0..9999" --* "1..1" aml_MetaData : creator241
+aml_Dependent "0..9999" --* "1..1" aml_DocumentRoot : dependent116
+aml_Dependent "0..9999" --* "1..1" aml_QuestionRelationships : dependent292
+aml_DiscoveryMethod "0..9999" --* "1..1" aml_DocumentRoot : discoveryMethod118
+aml_AmlDocument "1..1" *-- "0..9999" aml_DiscoveryMethod : discoveryMethod14
+aml_DiscoveryMethod "0..9999" --* "1..1" aml_Question : discoveryMethod307
+aml_Answer "1..1" *-- "0..9999" aml_DiscoveryMethod : discoveryMethod31
+aml_DocumentRoot "1..1" *-- "0..9999" aml_End : end121
+aml_End "0..9999" --* "1..1" aml_Period : end289
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Evidence : evidence123
+aml_Answer "1..1" *-- "0..9999" aml_Evidence : evidence29
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EvidenceExhibit : evidenceExhibit126
+aml_Evidence "1..1" *-- "1..1" aml_EvidenceExhibit : evidenceExhibit205
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Exhibit : exhibit128
+aml_AmlDocument "1..1" *-- "0..9999" aml_Exhibit : exhibit6
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Flag : flag131
+aml_Annotation "1..1" *-- "0..9999" aml_Flag : flag18
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : format134
+aml_EObject "0..9999" --* "1..1" aml_MetaData : format256
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : identifier137
+aml_EObject "0..9999" --* "1..1" aml_MetaData : identifier259
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : image140
+aml_EObject "0..9999" --* "1..1" aml_MetaData : image277
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Interval : interval143
+aml_Interval "0..9999" --* "1..1" aml_Value : interval325
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : language145
+aml_EObject "0..9999" --* "1..1" aml_MetaData : language265
+aml_EObject "0..9999" --* "1..1" aml_List : li232
+aml_DocumentRoot "1..1" *-- "0..9999" aml_List : list148
+aml_List "0..9999" --* "1..1" aml_Value : list328
+aml_AmlDocument "1..1" *-- "0..9999" aml_Memo : memo12
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Memo : memo150
+aml_Annotation "1..1" *-- "0..9999" aml_Memo : memo16
+aml_DocumentRoot "1..1" *-- "0..9999" aml_MetaData : metaData153
+aml_Exhibit "1..1" *-- "0..1" aml_MetaData : metaData223
+aml_MetaData "0..1" --* "1..1" aml_Template : metaData313
+aml_Argument "1..1" *-- "0..1" aml_MetaData : metaData34
+aml_Collection "1..1" *-- "0..1" aml_MetaData : metaData46
+aml_AggregationRule "1..1" *-- "0..1" aml_EObject : method0
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : method156
+aml_DocumentRoot "1..1" *-- "0..9999" aml_NationState : nationState159
+aml_Coverage "1..1" *-- "0..9999" aml_NationState : nationState62
+aml_AggregationRule "1..1" *-- "0..9999" aml_Parameter : parameter1
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Parameter : parameter162
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Period : period165
+aml_NationState "1..1" *-- "0..9999" aml_Period : period280
+aml_AmlDocument "1..1" *-- "0..9999" aml_Person : person10
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Person : person167
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Publisher : publisher170
+aml_MetaData "1..1" *-- "0..9999" aml_Publisher : publisher247
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Question : question172
+aml_Question "0..9999" --* "1..1" aml_Template : question322
+aml_Collection "1..1" *-- "0..1" aml_Question : question55
+aml_DocumentRoot "1..1" *-- "0..9999" aml_QuestionRelationships : questionRelationships175
+aml_Question "1..1" *-- "0..9999" aml_QuestionRelationships : questionRelationships301
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Reader : reader177
+aml_Memo "1..1" *-- "0..9999" aml_Reader : reader238
+aml_MetaData "1..1" *-- "0..9999" aml_Reader : reader244
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : relation179
+aml_EObject "0..9999" --* "1..1" aml_MetaData : relation268
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Relevance : relevance182
+aml_Evidence "1..1" *-- "0..1" aml_Relevance : relevance208
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Reliability : reliability184
+aml_Evidence "1..1" *-- "0..1" aml_Reliability : reliability211
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : rights186
+aml_EObject "0..9999" --* "1..1" aml_MetaData : rights274
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : source189
+aml_EObject "0..9999" --* "1..1" aml_MetaData : source262
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Start : start192
+aml_Period "1..1" *-- "0..9999" aml_Start : start286
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Template : template194
+aml_AmlDocument "1..1" *-- "0..9999" aml_Template : template3
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EObject : type197
+aml_EObject "0..9999" --* "1..1" aml_MetaData : type253
+aml_EObject "0..9999" --* "1..1" aml_Question : type295
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Value : value200
+aml_Parameter "1..1" *-- "0..1" aml_Value : value283
+aml_DocumentRoot "1..1" *-- "0..9999" aml_Witness : witness202
+aml_Answer "1..1" *-- "0..9999" aml_Witness : witness21
+aml_Evidence "1..1" *-- "0..1" aml_Witness : witness214
+aml_Flag "1..1" *-- "0..1" aml_Witness : witness229
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EStringToStringMapEntry : xMLNSPrefixMap69
+aml_DocumentRoot "1..1" *-- "0..9999" aml_EStringToStringMapEntry : xSISchemaLocation70
+@enduml

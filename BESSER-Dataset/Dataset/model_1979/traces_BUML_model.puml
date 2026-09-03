@@ -1,0 +1,30 @@
+@startuml
+enum ParameterType {
+  source
+  target
+  used
+}
+class traces_EObject {
+}
+class traces_Model {
+  + uriModel : str
+}
+class traces_Trace {
+  + ruleInfo : str
+  + ruleName : str
+  + timestamp : str
+}
+class traces_TraceElement {
+  + traceType : str
+  + typeName : str
+  + value : str
+}
+class traces_TraceRecord {
+  + name : str
+}
+traces_EObject "0..1" -- "1..1" traces_TraceElement : element5
+traces_Trace "1..1" *-- "0..9999" traces_TraceElement : elements3
+traces_EObject "1..1" -- "1..1" traces_Model : modelRoot7
+traces_Model "1..9999" --* "1..1" traces_TraceRecord : models1
+traces_Trace "0..9999" --* "1..1" traces_TraceRecord : traces0
+@enduml

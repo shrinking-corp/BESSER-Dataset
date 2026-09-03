@@ -1,0 +1,37 @@
+@startuml
+class Noeud {
+}
+class PetriNetElt {
+}
+enum TypeArc {
+  ArcSimple
+  ReadArc
+}
+class petriNet_Arc {
+  + poids : int
+  + typeArc : str
+}
+abstract class petriNet_Noeud {
+  + name : str
+}
+class petriNet_PetriNet {
+  + name : str
+}
+abstract class petriNet_PetriNetElt {
+}
+class petriNet_Place {
+  + jeton : int
+}
+class petriNet_Transition {
+}
+Noeud <|-- petriNet_Place
+Noeud <|-- petriNet_Transition
+PetriNetElt <|-- petriNet_Arc
+PetriNetElt <|-- petriNet_Noeud
+petriNet_PetriNet "1..1" -- "1..1" petriNet_PetriNetElt : net6
+petriNet_Arc "0..9999" -- "1..1" petriNet_Noeud : noeudsPredecesseurs1
+petriNet_Arc "0..9999" -- "1..1" petriNet_Noeud : noeudsSuccesseurs0
+petriNet_PetriNet "1..1" *-- "0..9999" petriNet_PetriNetElt : petrinetelt7
+petriNet_Arc "1..1" -- "0..1" petriNet_Noeud : predecesseur3
+petriNet_Arc "1..1" -- "0..1" petriNet_Noeud : successeur4
+@enduml

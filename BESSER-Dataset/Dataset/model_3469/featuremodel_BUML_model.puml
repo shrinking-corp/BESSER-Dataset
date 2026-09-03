@@ -1,0 +1,96 @@
+@startuml
+class AttributeType {
+}
+class AttributeValue {
+}
+class Rule {
+}
+enum VariabilityType {
+  alternative
+  mandatory
+  optional
+  or_
+}
+class featuremodel_Attribute {
+  + id : str
+  + name : str
+  + setable : bool
+}
+abstract class featuremodel_AttributeType {
+}
+class featuremodel_AttributeTypeBoolean {
+}
+class featuremodel_AttributeTypeEObject {
+}
+class featuremodel_AttributeTypeInt {
+}
+class featuremodel_AttributeTypeString {
+}
+abstract class featuremodel_AttributeValue {
+}
+class featuremodel_AttributeValueBoolean {
+  + value : bool
+}
+class featuremodel_AttributeValueEObject {
+}
+class featuremodel_AttributeValueInt {
+  + value : int
+}
+class featuremodel_AttributeValueString {
+  + value : str
+}
+class featuremodel_Constraint {
+  + id : str
+  + getModel() : str
+}
+class featuremodel_Description {
+  + id : str
+  + text : str
+}
+class featuremodel_EObject {
+}
+class featuremodel_Feature {
+  + id : str
+  + name : str
+  + type : str
+  + getModel() : str
+  + getParent() : str
+  + getParentGroup() : str
+  + getVariabilityType() : str
+}
+class featuremodel_FeatureModel {
+  + id : str
+  + version : str
+}
+class featuremodel_Group {
+  + id : str
+  + lower : int
+  + upper : int
+}
+class featuremodel_Rule {
+  + code : str
+  + language : str
+}
+AttributeType <|-- featuremodel_AttributeTypeBoolean
+AttributeType <|-- featuremodel_AttributeTypeEObject
+AttributeType <|-- featuremodel_AttributeTypeInt
+AttributeType <|-- featuremodel_AttributeTypeString
+AttributeValue <|-- featuremodel_AttributeValueBoolean
+AttributeValue <|-- featuremodel_AttributeValueEObject
+AttributeValue <|-- featuremodel_AttributeValueInt
+AttributeValue <|-- featuremodel_AttributeValueString
+Rule <|-- featuremodel_Constraint
+featuremodel_Attribute "0..9999" --* "1..1" featuremodel_FeatureModel : attributes1
+featuremodel_Attribute "0..9999" --* "1..1" featuremodel_Feature : attributes15
+featuremodel_Feature "1..1" *-- "0..9999" featuremodel_Group : children18
+featuremodel_Constraint "0..9999" --* "1..1" featuremodel_FeatureModel : constraints5
+featuremodel_Attribute "1..1" *-- "1..1" featuremodel_AttributeValue : defaultValue24
+featuremodel_Description "0..1" --* "1..1" featuremodel_FeatureModel : description0
+featuremodel_Description "0..1" --* "1..1" featuremodel_Feature : description12
+featuremodel_Attribute "1..1" *-- "0..1" featuremodel_Description : description21
+featuremodel_Constraint "1..1" *-- "0..1" featuremodel_Description : description7
+featuremodel_Feature "1..9999" --* "1..1" featuremodel_Group : features10
+featuremodel_Feature "1..1" --* "1..1" featuremodel_FeatureModel : root3
+featuremodel_Attribute "1..1" *-- "1..1" featuremodel_AttributeType : type26
+featuremodel_AttributeValueEObject "1..1" *-- "0..1" featuremodel_EObject : value28
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+class prosjekt_Course {
+  + code : str
+  + name : str
+  + studyPoints : float
+}
+class prosjekt_CourseCoordinator {
+}
+class prosjekt_Department {
+  + name : str
+  + shortName : str
+}
+class prosjekt_Person {
+  + name : str
+}
+class prosjekt_Semester {
+  + amountA : int
+  + amountB : int
+  + amountC : int
+  + amountD : int
+  + amountE : int
+  + amountF : int
+  + averageGrade : float
+  + name : str
+}
+class prosjekt_University {
+  + name : str
+  + shortName : str
+}
+prosjekt_Course "0..1" -- "1..1" prosjekt_CourseCoordinator : course13
+prosjekt_Course "0..9999" --* "1..1" prosjekt_Department : course2
+prosjekt_Course "0..1" -- "1..1" prosjekt_Semester : course8
+prosjekt_Course "1..1" -- "1..1" prosjekt_Department : department4
+prosjekt_Department "0..9999" --* "1..1" prosjekt_University : departments0
+prosjekt_CourseCoordinator "1..1" -- "0..1" prosjekt_Person : person14
+prosjekt_CourseCoordinator "0..9999" --* "1..1" prosjekt_Person : roles12
+prosjekt_Course "1..1" *-- "0..9999" prosjekt_Semester : semester6
+prosjekt_Department "1..1" *-- "0..9999" prosjekt_Person : staff3
+prosjekt_Department "1..1" -- "1..1" prosjekt_University : university1
+prosjekt_Department "0..1" -- "1..1" prosjekt_Person : worksForDepartment10
+@enduml

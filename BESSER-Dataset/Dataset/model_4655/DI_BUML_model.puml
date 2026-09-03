@@ -1,0 +1,74 @@
+@startuml
+class DiagramElement {
+}
+class Edge {
+}
+class Node {
+}
+class Shape {
+}
+class mtm_di_Bounds {
+}
+abstract class mtm_di_Diagram {
+  + documentation : str
+  + id : str
+  + name : str
+  + resolution : str
+}
+abstract class mtm_di_DiagramElement {
+  + anyAttribute : str
+  + id : str
+}
+class mtm_di_DocumentRoot {
+  + mixed : str
+}
+class mtm_di_EStringToStringMapEntry {
+}
+abstract class mtm_di_Edge {
+}
+class mtm_di_ExtensionType {
+  + any : str
+}
+abstract class mtm_di_Label {
+}
+abstract class mtm_di_LabeledEdge {
+}
+abstract class mtm_di_LabeledShape {
+}
+abstract class mtm_di_Node {
+}
+abstract class mtm_di_Plane {
+  + diagramElementGroup : str
+}
+class mtm_di_Point {
+}
+abstract class mtm_di_Shape {
+}
+abstract class mtm_di_Style {
+  + id : str
+}
+DiagramElement <|-- mtm_di_Edge
+DiagramElement <|-- mtm_di_Node
+Edge <|-- mtm_di_LabeledEdge
+Node <|-- mtm_di_Label
+Node <|-- mtm_di_Plane
+Node <|-- mtm_di_Shape
+Shape <|-- mtm_di_LabeledShape
+mtm_di_Bounds "0..1" --* "1..1" mtm_di_Label : bounds2
+mtm_di_Bounds "1..1" --* "1..1" mtm_di_Shape : bounds5
+mtm_di_Diagram "0..9999" --* "1..1" mtm_di_DocumentRoot : diagram14
+mtm_di_DiagramElement "0..9999" --* "1..1" mtm_di_DocumentRoot : diagramElement11
+mtm_di_DiagramElement "0..9999" --* "1..1" mtm_di_Plane : diagramElement3
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_Edge : edge16
+mtm_di_DiagramElement "1..1" *-- "0..1" mtm_di_ExtensionType : extension0
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_Label : label19
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_LabeledEdge : labeledEdge22
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_LabeledShape : labeledShape24
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_Node : node26
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_Plane : plane28
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_Shape : shape31
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_Style : style34
+mtm_di_Edge "1..1" *-- "2..9999" mtm_di_Point : waypoint1
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_EStringToStringMapEntry : xMLNSPrefixMap7
+mtm_di_DocumentRoot "1..1" *-- "0..9999" mtm_di_EStringToStringMapEntry : xSISchemaLocation8
+@enduml

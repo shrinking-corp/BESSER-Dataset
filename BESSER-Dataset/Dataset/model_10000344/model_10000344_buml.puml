@@ -1,0 +1,52 @@
+@startuml
+class Cuenta {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class ItemOrden {
+  + price : float
+  + quantity : int
+}
+class Licor {
+  + description : str
+  + name : str
+}
+class Login {
+  + login : str
+  + password : str
+  + state : str
+}
+class Orden {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : str
+  + total : float
+}
+class Pago {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Vendedor {
+  + address : str
+  + email : str
+  + phone : str
+}
+class Venta {
+  + creationDate : date
+}
+Cuenta "1..1" -- "0..9999" Orden : Account_Order
+Cuenta "1..1" -- "0..9999" Pago : Account_Payment
+Cuenta "1..1" -- "1..1" Venta : Account_ShoppingCart
+Cuenta "1..1" -- "1..1" Vendedor : Customer_Account
+ItemOrden "1..9999" -- "0..1" Orden : Order_LineItem
+Orden "1..1" -- "0..1" Pago : Payment_Order
+ItemOrden "0..9999" -- "1..1" Licor : Product_LineItem
+ItemOrden "1..1" -- "1..1" Venta : ShoppingCart_LineItem
+Login "1..1" -- "1..1" Vendedor : WebUser_Customer
+Login "1..1" -- "0..1" Venta : WebUser_ShoppingCart
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+class expression {
+}
+class pascal_EObject {
+}
+class pascal_Pascal {
+}
+class pascal_arit_expression {
+  + value : str
+}
+class pascal_atrib {
+  + var_id : str
+}
+class pascal_block {
+}
+class pascal_expression {
+}
+class pascal_program {
+  + name : str
+}
+class pascal_rel_expression {
+  + close : str
+  + first : str
+  + op : str
+  + open : str
+  + second : str
+}
+class pascal_repetitive_arit_expression {
+  + op : str
+  + value : str
+}
+class pascal_statement {
+}
+class pascal_var_block {
+}
+class pascal_var_decl {
+  + value : str
+  + var_id : str
+  + var_type : str
+}
+class pascal_var_list {
+  + var_id : str
+  + var_ids : str
+  + var_type : str
+}
+enum type {
+  BOOLEAN
+  INTEGER
+  STRING
+}
+expression <|-- pascal_arit_expression
+expression <|-- pascal_rel_expression
+pascal_atrib "0..9999" --* "1..1" pascal_statement : atrib_block9
+pascal_Pascal "1..1" *-- "0..9999" pascal_var_block : declarations1
+pascal_atrib "1..1" *-- "0..1" pascal_expression : exp11
+pascal_arit_expression "1..1" *-- "0..9999" pascal_repetitive_arit_expression : exp13
+pascal_repetitive_arit_expression "0..9999" --* "1..1" pascal_repetitive_arit_expression : exp15
+pascal_Pascal "1..1" *-- "0..1" pascal_program : head0
+pascal_Pascal "1..1" *-- "0..9999" pascal_block : scope3
+pascal_block "1..1" *-- "0..9999" pascal_statement : statements7
+pascal_EObject "0..9999" --* "1..1" pascal_var_block : var_statements5
+@enduml

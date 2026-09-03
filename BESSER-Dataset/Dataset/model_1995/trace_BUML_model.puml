@@ -1,0 +1,42 @@
+@startuml
+enum ReferenceMappingType {
+  MAPPED
+  NONE
+  TRANSLATED
+}
+class trace_AttributeMapping {
+}
+class trace_ClassMapping {
+}
+class trace_EAttribute {
+}
+class trace_EClass {
+}
+class trace_EPackage {
+}
+class trace_EReference {
+}
+class trace_EStructuralFeature {
+}
+class trace_ReferenceMapping {
+  + type : str
+}
+class trace_Trace {
+  + addAttributeMapping(trace_image : str, trace_proto : str) : void
+  + addClassMapping(trace_image : str, trace_proto : str) : str
+  + addReferenceMapping(trace_image : str, trace_proto : str, trace_type : str) : void
+}
+trace_AttributeMapping "0..9999" --* "1..1" trace_Trace : attributeMappings11
+trace_ClassMapping "0..9999" --* "1..1" trace_Trace : classMappings9
+trace_ClassMapping "1..1" -- "1..1" trace_EClass : image18
+trace_AttributeMapping "1..1" -- "1..1" trace_EAttribute : image23
+trace_EStructuralFeature "1..1" -- "1..1" trace_ReferenceMapping : image28
+trace_EPackage "1..1" -- "1..1" trace_Trace : input0
+trace_EClass "1..1" -- "1..1" trace_Trace : inputModelRoot4
+trace_EPackage "1..1" -- "1..1" trace_Trace : output1
+trace_EClass "1..1" -- "1..1" trace_Trace : outputModelRoot6
+trace_ClassMapping "1..1" -- "1..1" trace_EClass : proto15
+trace_AttributeMapping "1..1" -- "1..1" trace_EAttribute : proto21
+trace_EReference "1..1" -- "1..1" trace_ReferenceMapping : proto26
+trace_ReferenceMapping "0..9999" --* "1..1" trace_Trace : referenceMappings13
+@enduml

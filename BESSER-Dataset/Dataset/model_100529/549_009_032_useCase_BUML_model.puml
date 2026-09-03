@@ -1,0 +1,39 @@
+@startuml
+class Actor {
+}
+class Extend {
+}
+class Include {
+}
+class NamedElement {
+}
+class UseCase {
+}
+class UseCase_Actor {
+}
+class UseCase_Association {
+}
+class UseCase_BehavioredClassifier {
+}
+class UseCase_Extend {
+}
+class UseCase_Include {
+}
+abstract class UseCase_NamedElement {
+  + name : str
+}
+class UseCase_UseCase {
+}
+class UseCase_UseCaseContainer {
+}
+NamedElement <|-- UseCase_Actor
+NamedElement <|-- UseCase_Association
+NamedElement <|-- UseCase_UseCase
+Actor "0..1" -- "1..1" UseCase_Association : actor7
+Extend "1..9999" --* "1..1" UseCase_UseCase : extend1
+UseCase "1..9999" -- "1..1" UseCase_Extend : extension3
+Include "1..9999" --* "1..1" UseCase_UseCase : include0
+UseCase "1..9999" -- "1..1" UseCase_Include : includingCase4
+NamedElement "0..9999" --* "1..1" UseCase_UseCaseContainer : ownedElement6
+UseCase "0..1" -- "1..1" UseCase_Association : useCase8
+@enduml

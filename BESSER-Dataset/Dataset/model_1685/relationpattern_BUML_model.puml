@@ -1,0 +1,78 @@
+@startuml
+class Arrow {
+}
+class Category {
+}
+class NamedElement {
+}
+enum Scale {
+  four
+  nothing
+  one
+  three
+  two
+}
+class SourceNode {
+}
+class TargetNode {
+}
+abstract class relationpattern_Arrow {
+  + validate() : bool
+}
+abstract class relationpattern_Category {
+  + nom : str
+  + affectation(relationpattern_cible : str, relationpattern_source : str) : Arrow
+  + affectationInterval(relationpattern_target : str) : SourceNode
+  + compare(relationpattern_n1 : str, relationpattern_n2 : str) : int
+}
+class relationpattern_NamedElement {
+  + name : str
+}
+class relationpattern_RelatedTo {
+  + validate() : bool
+}
+abstract class relationpattern_SourceNode {
+  + compare(relationpattern_noeud : str) : int
+  + pred() : SourceNode
+  + succ() : SourceNode
+}
+abstract class relationpattern_TargetNode {
+  + compare(relationpattern_noeud : str) : int
+  + pred() : TargetNode
+  + succ() : TargetNode
+}
+class relationpattern_ThingA {
+  + since : date
+  + compare(relationpattern_personne : str) : int
+  + pred() : str
+  + succ() : str
+}
+class relationpattern_ThingB {
+  + step : str
+  + compare(relationpattern_role : str) : int
+  + pred() : str
+  + succ() : str
+}
+class relationpattern_World {
+  + affectation(relationpattern_personne : str, relationpattern_role : str) : str
+  + affectationInterval(relationpattern_thingb : str) : str
+  + compare(relationpattern_personne1 : str, relationpattern_personne2 : str) : int
+}
+Arrow <|-- relationpattern_RelatedTo
+Category <|-- relationpattern_World
+NamedElement <|-- relationpattern_RelatedTo
+NamedElement <|-- relationpattern_ThingA
+NamedElement <|-- relationpattern_ThingB
+SourceNode <|-- relationpattern_ThingA
+TargetNode <|-- relationpattern_ThingB
+relationpattern_Arrow "1..1" -- "0..1" relationpattern_TargetNode : cible12
+relationpattern_Arrow "0..9999" -- "1..1" relationpattern_Category : fleches16
+relationpattern_RelatedTo "0..9999" --* "1..1" relationpattern_World : relations8
+relationpattern_Arrow "1..1" -- "0..1" relationpattern_SourceNode : source11
+relationpattern_Category "1..1" -- "0..9999" relationpattern_SourceNode : sources14
+relationpattern_Category "1..1" -- "0..9999" relationpattern_TargetNode : targets19
+relationpattern_RelatedTo "1..1" -- "0..1" relationpattern_ThingA : thingA0
+relationpattern_RelatedTo "1..1" -- "0..1" relationpattern_ThingB : thingB1
+relationpattern_ThingA "0..9999" --* "1..1" relationpattern_World : thingsa3
+relationpattern_ThingB "0..9999" --* "1..1" relationpattern_World : thingsb5
+@enduml

@@ -1,0 +1,78 @@
+@startuml
+class Etunit_DocumentRoot {
+  + mixed : str
+  + systemErr : str
+  + systemOut : str
+}
+class Etunit_EStringToStringMapEntry {
+}
+class Etunit_ErrorType {
+  + message : str
+  + mixed : str
+  + type : str
+}
+class Etunit_FailureType {
+  + message : str
+  + mixed : str
+  + type : str
+}
+class Etunit_PropertiesType {
+}
+class Etunit_PropertyType {
+  + name : str
+  + value : str
+}
+class Etunit_SkippedType {
+  + message : str
+  + mixed : str
+}
+class Etunit_TestcaseType {
+  + assertions : str
+  + classname : str
+  + name : str
+  + status : str
+  + systemErr : str
+  + systemOut : str
+  + time : str
+}
+class Etunit_TestsuiteType {
+  + disabled : str
+  + errors : str
+  + failures : str
+  + hostname : str
+  + id : str
+  + name : str
+  + package : str
+  + skipped : str
+  + systemErr : str
+  + systemOut : str
+  + tests : str
+  + time : str
+  + timestamp : str
+}
+class Etunit_TestsuitesType {
+  + disabled : str
+  + errors : str
+  + failures : str
+  + name : str
+  + tests : str
+  + time : str
+}
+Etunit_ErrorType "0..9999" --* "1..1" Etunit_TestcaseType : error26
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_ErrorType : error4
+Etunit_FailureType "0..9999" --* "1..1" Etunit_TestcaseType : failure29
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_FailureType : failure6
+Etunit_PropertiesType "0..1" --* "1..1" Etunit_TestsuiteType : properties35
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_PropertiesType : properties8
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_PropertyType : property10
+Etunit_PropertiesType "1..1" *-- "1..9999" Etunit_PropertyType : property20
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_SkippedType : skipped12
+Etunit_SkippedType "0..1" --* "1..1" Etunit_TestcaseType : skipped23
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_TestcaseType : testcase14
+Etunit_TestcaseType "0..9999" --* "1..1" Etunit_TestsuiteType : testcase38
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_TestsuiteType : testsuite16
+Etunit_TestsuiteType "0..9999" --* "1..1" Etunit_TestsuitesType : testsuite32
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_TestsuitesType : testsuites18
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_EStringToStringMapEntry : xMLNSPrefixMap0
+Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

@@ -1,0 +1,136 @@
+@startuml
+class DescribedEntity {
+}
+class IdentifiableEntity {
+}
+enum InvitationEventType {
+  CHANGED
+  GENERATED
+}
+enum InvitationReply {
+  ACCEPTED
+  NO_REPLY
+  REJECTED
+}
+class Serializable {
+}
+class pokerleague_Competition {
+  + defaultBuyIn : int
+  + defaultMaxPlayers : int
+  + defaultMinPlayers : int
+  + defaultTournamentAnnouncementLead : int
+  + defaultTournamentInvitationClosure : int
+  + defaultTournamentInvitationContact : str
+  + endDate : date
+  + minimalAttendance : int
+  + startDate : date
+}
+class pokerleague_DataStructureVersion {
+  + currentVersion : str
+  + id : int
+}
+class pokerleague_DataVersion {
+  + currentVersion : str
+  + id : int
+}
+abstract class pokerleague_DescribedEntity {
+  + description : str
+  + name : str
+}
+class pokerleague_Game {
+  + buyIn : int
+  + ordinal : int
+}
+abstract class pokerleague_IdentifiableEntity {
+  + id : int
+  + obsolete : bool
+  + proxy : bool
+}
+class pokerleague_Invitation {
+  + ordinal : int
+  + reply : str
+  + uuid : str
+}
+class pokerleague_InvitationEvent {
+  + eventTime : str
+  + eventType : str
+  + sent : bool
+}
+class pokerleague_Player {
+  + active : bool
+  + emailAddress : str
+  + firstName : str
+  + lastName : str
+  + nick : str
+}
+class pokerleague_PlayerInGame {
+  + rank : int
+}
+class pokerleague_PrizeMoneyFormula {
+  + rank : int
+  + relativePrizeMoney : int
+}
+class pokerleague_PrizeMoneyRule {
+  + numberOfPlayers : int
+}
+class pokerleague_PrizeMoneyRuleSet {
+}
+abstract class pokerleague_Serializable {
+}
+class pokerleague_Settings {
+  + adminPassword : str
+  + defaultTimeZone : str
+  + id : int
+  + smtpFrom : str
+  + smtpHost : str
+  + smtpPassword : str
+  + smtpPort : str
+  + smtpUser : str
+  + urlBase : str
+}
+class pokerleague_Tournament {
+  + defaultBuyIn : int
+  + maxPlayers : int
+  + minPlayers : int
+  + tournamentAnnouncementLead : int
+  + tournamentEnd : str
+  + tournamentInvitationClosure : int
+  + tournamentInvitationContact : str
+  + tournamentStart : str
+}
+DescribedEntity <|-- pokerleague_Competition
+DescribedEntity <|-- pokerleague_PrizeMoneyRuleSet
+DescribedEntity <|-- pokerleague_Tournament
+IdentifiableEntity <|-- pokerleague_DescribedEntity
+IdentifiableEntity <|-- pokerleague_Game
+IdentifiableEntity <|-- pokerleague_Invitation
+IdentifiableEntity <|-- pokerleague_InvitationEvent
+IdentifiableEntity <|-- pokerleague_Player
+IdentifiableEntity <|-- pokerleague_PlayerInGame
+IdentifiableEntity <|-- pokerleague_PrizeMoneyFormula
+IdentifiableEntity <|-- pokerleague_PrizeMoneyRule
+Serializable <|-- pokerleague_DataStructureVersion
+Serializable <|-- pokerleague_DataVersion
+Serializable <|-- pokerleague_IdentifiableEntity
+Serializable <|-- pokerleague_Settings
+pokerleague_Competition "0..1" -- "1..1" pokerleague_Tournament : competition12
+pokerleague_Competition "1..1" -- "0..1" pokerleague_PrizeMoneyRuleSet : defaultPrizeMoneyRuleSet5
+pokerleague_PrizeMoneyRuleSet "0..1" -- "1..1" pokerleague_Tournament : defaultPrizeMoneyRuleSet9
+pokerleague_Invitation "1..1" *-- "0..9999" pokerleague_InvitationEvent : events19
+pokerleague_Game "0..1" -- "1..1" pokerleague_PlayerInGame : game29
+pokerleague_Game "0..9999" --* "1..1" pokerleague_Tournament : games13
+pokerleague_Invitation "0..1" -- "1..1" pokerleague_InvitationEvent : invitation20
+pokerleague_Invitation "0..9999" --* "1..1" pokerleague_Tournament : invitations11
+pokerleague_Invitation "1..1" -- "0..1" pokerleague_Player : player17
+pokerleague_Player "0..1" -- "1..1" pokerleague_PlayerInGame : player27
+pokerleague_Competition "1..1" -- "0..9999" pokerleague_Player : players7
+pokerleague_Game "1..1" *-- "0..9999" pokerleague_PlayerInGame : playersInGame26
+pokerleague_PrizeMoneyFormula "0..9999" --* "1..1" pokerleague_PrizeMoneyRule : prizeMoneyFormulas2
+pokerleague_PrizeMoneyFormula "1..1" -- "0..1" pokerleague_PrizeMoneyRule : prizeMoneyRule3
+pokerleague_PrizeMoneyRule "1..1" -- "0..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRuleSet1
+pokerleague_Game "1..1" -- "0..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRuleSet24
+pokerleague_PrizeMoneyRule "0..9999" --* "1..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRules0
+pokerleague_Invitation "1..1" -- "0..1" pokerleague_Tournament : tournament15
+pokerleague_Game "1..1" -- "0..1" pokerleague_Tournament : tournament22
+pokerleague_Competition "1..1" *-- "0..9999" pokerleague_Tournament : tournaments6
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+class Account {
+  + billingAddress : str
+  + id : int
+  + openDate : date
+}
+class Class {
+  + attribute : str
+}
+class Customer {
+  + emailAddress : str
+  + firstname : str
+  + id : int
+  + isBan : bool
+  + lastname : str
+  + login : str
+  + password : str
+}
+class Item {
+  + id : int
+  + price : float
+  + quantity : int
+}
+class Order {
+  + finalTotal : float
+  + id : int
+  + shippingAddress : str
+  + status : OrderStatus
+}
+enum OrderStatus {
+}
+class Payment {
+  + comments : str
+  + id : int
+  + total : int
+}
+class Product {
+  + description : str
+  + id : int
+  + name : str
+}
+class ShoppingCart {
+  + creationDate : date
+  + id : int
+}
+Customer "1..1" -- "0..1" ShoppingCart : association2
+Account "1..1" -- "1..1" Customer : association3
+Account "1..1" -- "1..1" ShoppingCart : association4
+Account "1..1" -- "0..9999" Payment : association5
+Order "1..1" -- "1..1" Payment : association6
+Item "0..9999" -- "1..1" ShoppingCart : association7
+Item "1..9999" -- "1..1" Product : association8
+@enduml

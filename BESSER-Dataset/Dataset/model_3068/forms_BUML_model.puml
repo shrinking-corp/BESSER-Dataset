@@ -1,0 +1,149 @@
+@startuml
+class Attribute {
+}
+class AttributePageElement {
+}
+enum AttributeType {
+  Boolean
+  Date
+  Email
+  Integer
+  None_
+  String
+  Text
+  Time
+  Year
+}
+enum BooleanOperators {
+  AND
+  OR
+}
+class Column {
+}
+class Condition {
+}
+enum ConditionType {
+  Disable
+  Enable
+  Hide
+  Show
+}
+class Entity {
+}
+class Enumeration {
+}
+class Form {
+}
+class Literal {
+}
+class Page {
+}
+class PageElement {
+}
+class Relationship {
+}
+class RelationshipPageElement {
+}
+class forms_EFML_model {
+}
+class forms_entityModeling_Attribute {
+  + mandatory : bool
+  + name : str
+  + type : str
+}
+abstract class forms_entityModeling_AttributePageElement {
+  + valueOfAttribute : str
+  + enterValues() : void
+}
+class forms_entityModeling_AttributeValueCondition {
+}
+class forms_entityModeling_Column {
+}
+class forms_entityModeling_CompositeCondition {
+  + booleanOperator : str
+}
+abstract class forms_entityModeling_Condition {
+  + conditionID : str
+  + type : str
+}
+class forms_entityModeling_DateSelectionField {
+}
+class forms_entityModeling_Entity {
+  + name : str
+}
+class forms_entityModeling_Enumeration {
+  + name : str
+}
+class forms_entityModeling_Form {
+  + description : str
+  + name : str
+  + title : str
+}
+class forms_entityModeling_List {
+}
+class forms_entityModeling_Literal {
+  + name : str
+  + value : str
+}
+class forms_entityModeling_Page {
+  + title : str
+}
+abstract class forms_entityModeling_PageElement {
+  + elementID : str
+  + label : str
+}
+class forms_entityModeling_Relationship {
+  + lowerBound : int
+  + name : str
+  + upperBound : int
+}
+abstract class forms_entityModeling_RelationshipPageElement {
+}
+class forms_entityModeling_SelectionField {
+}
+class forms_entityModeling_Table {
+}
+class forms_entityModeling_Textarea {
+}
+class forms_entityModeling_Textfield {
+  + allowedValueFormat : str
+}
+class forms_entityModeling_TimeSelectionField {
+}
+AttributePageElement <|-- forms_entityModeling_DateSelectionField
+AttributePageElement <|-- forms_entityModeling_SelectionField
+AttributePageElement <|-- forms_entityModeling_Textarea
+AttributePageElement <|-- forms_entityModeling_Textfield
+AttributePageElement <|-- forms_entityModeling_TimeSelectionField
+Condition <|-- forms_entityModeling_AttributeValueCondition
+Condition <|-- forms_entityModeling_CompositeCondition
+PageElement <|-- forms_entityModeling_AttributePageElement
+PageElement <|-- forms_entityModeling_RelationshipPageElement
+RelationshipPageElement <|-- forms_entityModeling_List
+RelationshipPageElement <|-- forms_entityModeling_Table
+Column "1..9999" --* "1..1" forms_entityModeling_Table : Columns43
+Entity "0..9999" -- "1..1" forms_entityModeling_List : alreadyEnteredEntity41
+Attribute "1..1" -- "1..1" forms_entityModeling_Column : attribute44
+Attribute "1..1" -- "1..1" forms_entityModeling_AttributePageElement : attributeToEnterValues34
+Attribute "0..9999" --* "1..1" forms_entityModeling_Entity : attributes9
+Condition "2..2" --* "1..1" forms_entityModeling_CompositeCondition : composedConditions48
+Condition "0..1" --* "1..1" forms_entityModeling_Page : condition30
+Condition "0..1" --* "1..1" forms_entityModeling_PageElement : condition32
+Form "1..1" -- "1..1" forms_entityModeling_RelationshipPageElement : editingForm38
+Entity "0..9999" --* "1..1" forms_EFML_model : entities0
+Entity "1..1" -- "1..1" forms_entityModeling_Form : entity25
+Enumeration "0..1" -- "1..1" forms_entityModeling_Attribute : enumerationType17
+Enumeration "0..9999" --* "1..1" forms_EFML_model : enumerations1
+Form "0..9999" --* "1..1" forms_EFML_model : forms5
+Attribute "0..1" --* "1..1" forms_entityModeling_Entity : id8
+Literal "1..9999" --* "1..1" forms_entityModeling_Enumeration : literals19
+Relationship "0..1" -- "1..1" forms_entityModeling_Relationship : opposite22
+PageElement "0..9999" --* "1..1" forms_entityModeling_Page : pageElements29
+Page "0..9999" --* "1..1" forms_entityModeling_Form : pages27
+Relationship "1..1" -- "1..1" forms_entityModeling_RelationshipPageElement : relationshipToEnterValues36
+Relationship "0..9999" --* "1..1" forms_entityModeling_Entity : relationships15
+Entity "0..1" -- "1..1" forms_entityModeling_Entity : superType12
+Entity "1..1" -- "1..1" forms_entityModeling_Relationship : target20
+Attribute "0..1" -- "1..1" forms_entityModeling_AttributeValueCondition : value46
+Form "1..1" --* "1..1" forms_EFML_model : welcomeForm3
+@enduml

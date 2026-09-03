@@ -1,0 +1,311 @@
+@startuml
+class AbstractAction {
+}
+class AssemblyContext {
+}
+class Automaton {
+}
+class BasicComponent {
+}
+class BranchAction {
+}
+class ComponentType {
+}
+class ComponentTypeImplementation {
+}
+class ComposedStructure {
+}
+class CompositeDataType {
+}
+class Connector {
+}
+class DataType {
+}
+class DelegationConnector {
+}
+class Entity {
+}
+class ExceptionType {
+}
+class InnerDeclaration {
+}
+class Interface {
+}
+class InterfaceProvidingEntity {
+}
+class InterfaceProvidingRequiringEntity {
+}
+class InterfaceRequiringEntity {
+}
+class InternalBehaviour {
+}
+class NamedElement {
+}
+class Parameter {
+}
+enum PrimitiveType {
+  BOOL
+  BYTE
+  CHAR
+  DOUBLE
+  INT
+  LONG
+  STRING
+}
+class ProbabilisticBranchTransition {
+}
+class ProvidedRole {
+}
+class Repository {
+}
+class RepositoryComponent {
+}
+class RequiredRole {
+}
+class Role {
+}
+class ServiceEffectSpecification {
+}
+class Signature {
+}
+class cm_composition_AssemblyConnector {
+  + AssemblyConnectorsReferencedInterfacesMustMatch(cm_context : str, cm_diagnostics : str) : bool
+  + AssemblyConnectorsReferencedProvidedRolesAndChildContextMustMatch(cm_context : str, cm_diagnostics : str) : bool
+  + AssemblyConnectorsReferencedRequiredRoleAndChildContextMustMatch(cm_context : str, cm_diagnostics : str) : bool
+}
+class cm_composition_AssemblyContext {
+}
+abstract class cm_composition_ComposedProvidingRequiringEntity {
+}
+abstract class cm_composition_ComposedStructure {
+  + MultipleConnectorsConstraint(cm_context : str, cm_diagnostics : str) : bool
+  + MultipleConnectorsConstraintForAssemblyConnectors(cm_context : str, cm_diagnostics : str) : bool
+}
+abstract class cm_composition_Connector {
+}
+abstract class cm_composition_DelegationConnector {
+}
+abstract class cm_composition_Entity {
+}
+abstract class cm_composition_Identifier {
+  + id : str
+  + idHasToBeUnique(cm_context : str, cm_diagnostics : str) : bool
+}
+abstract class cm_composition_InterfaceProvidingEntity {
+}
+abstract class cm_composition_InterfaceProvidingRequiringEntity {
+}
+abstract class cm_composition_InterfaceRequiringEntity {
+}
+abstract class cm_composition_NamedElement {
+  + entityName : str
+}
+class cm_composition_ProvidedDelegationConnector {
+  + ComponentOfAssemblyContextAndInnerRoleProvidingComponentNeedToBeTheSame(cm_context : str, cm_diagnostics : str) : bool
+  + ProvidedDelegationConnectorandtheconnectedComponentmustbepartofthesamecompositestructure(cm_context : str, cm_diagnostics : str) : bool
+}
+class cm_composition_RequiredDelegationConnector {
+}
+class cm_composition_SubSystem {
+}
+class cm_composition_System {
+  + SystemMustHaveAtLeastOneProvidedRole(cm_context : str, cm_diagnostics : str) : bool
+}
+class cm_repository_BasicComponent {
+}
+class cm_repository_CollectionDataType {
+}
+class cm_repository_ComponentType {
+}
+abstract class cm_repository_ComponentTypeImplementation {
+}
+class cm_repository_CompositeComponent {
+  + ProvideSameInterfaces(cm_context : str, cm_diagnostics : str) : bool
+  + RequireSameInterfaces(cm_context : str, cm_diagnostics : str) : bool
+}
+class cm_repository_CompositeDataType {
+}
+abstract class cm_repository_DataType {
+}
+class cm_repository_ExceptionType {
+  + message : str
+  + name : str
+}
+class cm_repository_InnerDeclaration {
+}
+class cm_repository_Interface {
+}
+class cm_repository_Parameter {
+  + name : str
+}
+class cm_repository_PrimitiveDataType {
+  + type : str
+}
+class cm_repository_ProvidedRole {
+}
+class cm_repository_Repository {
+  + description : str
+}
+abstract class cm_repository_RepositoryComponent {
+}
+class cm_repository_RequiredRole {
+}
+abstract class cm_repository_Role {
+}
+class cm_repository_Signature {
+}
+abstract class cm_seff_AbstractAction {
+}
+abstract class cm_seff_Automaton {
+}
+class cm_seff_BranchAction {
+}
+class cm_seff_ExternalCallAction {
+}
+class cm_seff_InternalAction {
+}
+class cm_seff_InternalBehaviour {
+}
+class cm_seff_ProbabilisticBranchTransition {
+  + branchProbability : float
+}
+abstract class cm_seff_ServiceEffectSpecification {
+}
+class cm_seff_SimpleBehaviorSpecification {
+}
+class cm_seff_StartAction {
+}
+class cm_seff_StopAction {
+}
+class composition_ComposedProvidingRequiringEntity {
+}
+class composition_ComposedStructure {
+}
+class composition_Entity {
+}
+class composition_Identifier {
+}
+class composition_InterfaceProvidingEntity {
+}
+class composition_InterfaceProvidingRequiringEntity {
+}
+class composition_InterfaceRequiringEntity {
+}
+class composition_NamedElement {
+}
+class repository_ComponentTypeImplementation {
+}
+class repository_DataType {
+}
+class repository_RepositoryComponent {
+}
+class seff_Automaton {
+}
+class seff_ServiceEffectSpecification {
+}
+AbstractAction <|-- cm_seff_BranchAction
+AbstractAction <|-- cm_seff_ExternalCallAction
+AbstractAction <|-- cm_seff_InternalAction
+AbstractAction <|-- cm_seff_StartAction
+AbstractAction <|-- cm_seff_StopAction
+ComponentTypeImplementation <|-- cm_repository_BasicComponent
+Connector <|-- cm_composition_AssemblyConnector
+Connector <|-- cm_composition_DelegationConnector
+DataType <|-- cm_repository_PrimitiveDataType
+DelegationConnector <|-- cm_composition_ProvidedDelegationConnector
+DelegationConnector <|-- cm_composition_RequiredDelegationConnector
+Entity <|-- cm_composition_AssemblyContext
+Entity <|-- cm_composition_ComposedStructure
+Entity <|-- cm_composition_Connector
+Entity <|-- cm_composition_InterfaceProvidingEntity
+Entity <|-- cm_composition_InterfaceRequiringEntity
+Entity <|-- cm_repository_Interface
+Entity <|-- cm_repository_Repository
+Entity <|-- cm_repository_Role
+Entity <|-- cm_repository_Signature
+Entity <|-- cm_seff_AbstractAction
+InterfaceProvidingRequiringEntity <|-- cm_repository_RepositoryComponent
+NamedElement <|-- cm_repository_InnerDeclaration
+RepositoryComponent <|-- cm_repository_ComponentType
+RepositoryComponent <|-- cm_repository_ComponentTypeImplementation
+Role <|-- cm_repository_ProvidedRole
+Role <|-- cm_repository_RequiredRole
+composition_ComposedProvidingRequiringEntity <|-- cm_composition_SubSystem
+composition_ComposedProvidingRequiringEntity <|-- cm_composition_System
+composition_ComposedProvidingRequiringEntity <|-- cm_repository_CompositeComponent
+composition_ComposedStructure <|-- cm_composition_ComposedProvidingRequiringEntity
+composition_Entity <|-- cm_composition_System
+composition_Entity <|-- cm_repository_CollectionDataType
+composition_Entity <|-- cm_repository_CompositeDataType
+composition_Entity <|-- cm_seff_ProbabilisticBranchTransition
+composition_Identifier <|-- cm_composition_Entity
+composition_InterfaceProvidingEntity <|-- cm_composition_InterfaceProvidingRequiringEntity
+composition_InterfaceProvidingRequiringEntity <|-- cm_composition_ComposedProvidingRequiringEntity
+composition_InterfaceRequiringEntity <|-- cm_composition_InterfaceProvidingRequiringEntity
+composition_NamedElement <|-- cm_composition_Entity
+repository_ComponentTypeImplementation <|-- cm_repository_CompositeComponent
+repository_DataType <|-- cm_repository_CollectionDataType
+repository_DataType <|-- cm_repository_CompositeDataType
+repository_RepositoryComponent <|-- cm_composition_SubSystem
+seff_Automaton <|-- cm_seff_ProbabilisticBranchTransition
+seff_Automaton <|-- cm_seff_SimpleBehaviorSpecification
+seff_ServiceEffectSpecification <|-- cm_seff_SimpleBehaviorSpecification
+AssemblyContext "1..1" -- "1..1" cm_composition_ProvidedDelegationConnector : assemblyContext48
+AssemblyContext "1..1" -- "1..1" cm_composition_RequiredDelegationConnector : assemblyContext55
+AssemblyContext "0..9999" --* "1..1" cm_composition_ComposedStructure : assemblyContexts41
+BasicComponent "1..1" -- "1..1" cm_seff_ServiceEffectSpecification : basicComponent79
+BranchAction "1..1" -- "1..1" cm_seff_ProbabilisticBranchTransition : branchAction101
+ProbabilisticBranchTransition "0..1" -- "1..1" cm_seff_InternalBehaviour : branchTransition84
+ProbabilisticBranchTransition "0..9999" --* "1..1" cm_seff_BranchAction : branchTransitions99
+Signature "1..1" -- "1..1" cm_seff_ExternalCallAction : calledService94
+RepositoryComponent "0..9999" --* "1..1" cm_repository_Repository : components9
+CompositeDataType "1..1" -- "1..1" cm_repository_InnerDeclaration : compositeDataType38
+Connector "0..9999" --* "1..1" cm_composition_ComposedStructure : connectors42
+DataType "1..1" -- "1..1" cm_repository_InnerDeclaration : dataType36
+DataType "1..1" -- "1..1" cm_repository_Parameter : dataType5
+DataType "0..9999" --* "1..1" cm_repository_Repository : dataTypes13
+Signature "1..1" -- "1..1" cm_seff_ServiceEffectSpecification : describedService77
+RepositoryComponent "1..1" -- "1..1" cm_composition_AssemblyContext : encapsulatedComponent71
+ExceptionType "0..9999" --* "1..1" cm_repository_Signature : exceptions22
+ComponentType "0..9999" -- "1..1" cm_repository_ComponentTypeImplementation : implementedComponentTypes1
+InnerDeclaration "0..9999" --* "1..1" cm_repository_CompositeDataType : innerDeclaration35
+ProvidedRole "1..1" -- "1..1" cm_composition_ProvidedDelegationConnector : innerProvidedRole44
+RequiredRole "1..1" -- "1..1" cm_composition_RequiredDelegationConnector : innerRequiredRole51
+DataType "1..1" -- "1..1" cm_repository_CollectionDataType : innerType32
+Interface "1..1" -- "1..1" cm_repository_Signature : interface27
+Interface "0..9999" --* "1..1" cm_repository_Repository : interfaces10
+InternalBehaviour "0..1" -- "1..1" cm_seff_AbstractAction : internalBehaviour90
+InternalBehaviour "0..9999" --* "1..1" cm_seff_ServiceEffectSpecification : internalBehaviours80
+ProvidedRole "1..1" -- "1..1" cm_composition_ProvidedDelegationConnector : outerProvidedRole45
+RequiredRole "1..1" -- "1..1" cm_composition_RequiredDelegationConnector : outerRequiredRole52
+Parameter "0..9999" --* "1..1" cm_repository_Signature : parameters23
+Interface "0..9999" -- "1..1" cm_repository_Interface : parentInterfaces16
+ComposedStructure "1..1" -- "1..1" cm_composition_Connector : parentStructure40
+ComposedStructure "1..1" -- "1..1" cm_composition_AssemblyContext : parentStructure69
+CompositeDataType "0..9999" -- "1..1" cm_repository_CompositeDataType : parentType34
+AbstractAction "0..1" -- "1..1" cm_seff_AbstractAction : predecessor86
+Interface "1..1" -- "1..1" cm_repository_ProvidedRole : providedInterface4
+ProvidedRole "1..1" -- "1..1" cm_composition_AssemblyConnector : providedRole63
+ProvidedRole "0..9999" --* "1..1" cm_composition_InterfaceProvidingEntity : providedRoles73
+AssemblyContext "1..1" -- "1..1" cm_composition_AssemblyConnector : providingAssemblyContext60
+InterfaceProvidingEntity "1..1" -- "1..1" cm_repository_ProvidedRole : providingEntity3
+Repository "1..1" -- "1..1" cm_repository_Interface : repository18
+Repository "1..1" -- "1..1" cm_repository_RepositoryComponent : repository2
+Repository "1..1" -- "1..1" cm_repository_DataType : repository7
+Interface "1..1" -- "1..1" cm_repository_RequiredRole : requiredInterface30
+RequiredRole "1..1" -- "1..1" cm_composition_AssemblyConnector : requiredRole66
+RequiredRole "0..9999" --* "1..1" cm_composition_InterfaceRequiringEntity : requiredRoles75
+AssemblyContext "1..1" -- "1..1" cm_composition_AssemblyConnector : requiringAssemblyContext58
+InterfaceRequiringEntity "1..1" -- "1..1" cm_repository_RequiredRole : requiringEntity29
+DataType "0..1" -- "1..1" cm_repository_Signature : returnType24
+RequiredRole "1..1" -- "1..1" cm_seff_ExternalCallAction : role96
+ServiceEffectSpecification "0..9999" --* "1..1" cm_repository_BasicComponent : serviceEffectSpecifications0
+ServiceEffectSpecification "1..1" -- "1..1" cm_seff_InternalBehaviour : serviceEffectSpecifications82
+Signature "0..1" -- "1..1" cm_repository_Parameter : signature6
+Signature "0..9999" --* "1..1" cm_repository_Interface : signatures20
+Automaton "0..1" -- "1..1" cm_seff_AbstractAction : specification92
+AbstractAction "0..9999" --* "1..1" cm_seff_Automaton : steps104
+AbstractAction "0..9999" --* "1..1" cm_seff_InternalBehaviour : steps85
+AbstractAction "0..1" -- "1..1" cm_seff_AbstractAction : successor88
+ProbabilisticBranchTransition "0..1" -- "1..1" cm_seff_SimpleBehaviorSpecification : transition102
+@enduml

@@ -1,0 +1,167 @@
+@startuml
+class ADMIN {
+}
+class Add_Course_UseCase {
+}
+class Address_UseCase {
+}
+class Admin {
+  + Name : str
+  + User_status : str
+  + attribute : str
+  + courseList : str
+  + registrarList : str
+}
+class CORPORATE_CLIENT_Actor {
+}
+class Class {
+}
+class Class_Course_List_UseCase {
+}
+class CompleteCourse_UseCase {
+}
+class Corporate_Client_Actor {
+}
+class Corporate_UseCase {
+}
+class Course {
+  + Description : str
+  + courseCode : int
+  + courseName : str
+  + end_date : str
+  + start_date : str
+}
+class Courses_Component {
+}
+class Create_Course_UseCase {
+}
+class Drop_Course_UseCase {
+}
+enum Enumeration {
+}
+enum Enumeration1 {
+}
+class Grade_Course_UseCase {
+}
+class LearningMaterial_UseCase {
+}
+class Login_UseCase {
+}
+class Modify_Course_UseCase {
+}
+class Name_UseCase {
+}
+class Registrar {
+  + Status : Enumeration
+  + _attr : str
+  + courseList : str
+}
+class Remove_Course_UseCase {
+}
+class Reports_UseCase {
+}
+class Select_Course_List_UseCase {
+}
+class Show_Course_UseCase {
+}
+class Show_Grade_UseCase {
+}
+enum Status {
+}
+class Student {
+  + phone : int
+  + studentRate : int
+  + student_ID : int
+  + student_name : str
+}
+class Student_Actor {
+}
+class Student_ID_UseCase {
+}
+class TEACHER_Actor {
+}
+class Teacher {
+  + class_list : str
+  + phone : int
+  + teacher_ID : int
+  + teacher_name : str
+}
+class Teacher_Actor {
+}
+class Traning_Admin_Actor {
+}
+class Update_Registar_UseCase {
+}
+class UseCase_UseCase {
+}
+class User_Info_UseCase {
+}
+class _UseCase {
+}
+class class_Student_Registration {
+}
+class class_Student_Registration_Admin {
+}
+class class_Student_Registration_Corporate {
+}
+class class_Student_Registration_Student {
+  + Function : Add_Course_UseCase
+  + Integer : str
+  + String : Name_UseCase
+  + String1 : Student_ID_UseCase
+  + String2 : Address_UseCase
+  + attribute : str
+}
+class class_Student_Registration_Teacher {
+}
+class corprateClient {
+  + client_ID : int
+  + client_name : str
+  + companyRate : int
+  + phone : int
+}
+class courseList {
+  + Class : Add_Course_UseCase
+  + currentCourse : Course
+}
+class registeredUser {
+  + Id : int
+  + Status : str
+}
+Add_Course_UseCase "0..1" -- "0..1" Corporate_Client_Actor : Add_Course_Corporate_Client
+Admin "1..1" -- "1..9999" registeredUser : Admin_registeredUser
+Admin "1..1" -- "1..9999" registeredUser : Admin_registeredUser2
+Add_Course_UseCase "0..1" -- "0..1" CORPORATE_CLIENT_Actor : CORPORATE_CLIENT_AddCourse
+CORPORATE_CLIENT_Actor "0..1" -- "0..1" Drop_Course_UseCase : CORPORATE_CLIENT_DropCourse
+CORPORATE_CLIENT_Actor "0..1" -- "0..1" Show_Course_UseCase : CORPORATE_CLIENT_ShowCourse
+Corporate_Client_Actor "0..1" -- "0..1" Login_UseCase : Corporate_Client_Login
+Corporate_Client_Actor "0..1" -- "0..1" Show_Course_UseCase : Corporate_Client_Show_Course
+Corporate_Client_Actor "0..1" -- "0..1" Show_Grade_UseCase : Corporate_Client_Show_Grade
+Course "1..1" -- "0..9999" Student : Course_Student
+Course "1..1" -- "0..9999" corprateClient : Course_corprateClient
+Corporate_Client_Actor "0..1" -- "0..1" Drop_Course_UseCase : Drop_Course_Corporate_Client
+CompleteCourse_UseCase "0..1" -- "0..1" Student_Actor : FIND_CLASS_STUDENT
+Grade_Course_UseCase "0..1" -- "0..1" Teacher_Actor : Grade_Course_Teacher
+Reports_UseCase "0..1" -- "0..1" Traning_Admin_Actor : Reports_TRAINING_ADMIN
+Add_Course_UseCase "0..1" -- "0..1" Student_Actor : STUDENT_AddCourse
+Drop_Course_UseCase "0..1" -- "0..1" Student_Actor : STUDENT_DropCourse
+Add_Course_UseCase "0..1" -- "0..1" Student_Actor : STUDENT_REGISTER
+Show_Course_UseCase "0..1" -- "0..1" Student_Actor : STUDENT_ShowCourse
+Select_Course_List_UseCase "0..1" -- "0..1" Teacher_Actor : Select_Class_List_Teacher
+Login_UseCase "0..1" -- "0..1" Student_Actor : Student_Login
+Show_Grade_UseCase "0..1" -- "0..1" Student_Actor : Student_Show_Grade
+Course "1..1" -- "0..9999" Student : Student_addCourse
+Show_Course_UseCase "0..1" -- "0..1" TEACHER_Actor : TEACHER_ShowCourse
+Create_Course_UseCase "0..1" -- "0..1" Traning_Admin_Actor : TRAINING_ADMIN_CreateCourse
+Modify_Course_UseCase "0..1" -- "0..1" Traning_Admin_Actor : TRAINING_ADMIN_ModifyCourse
+Remove_Course_UseCase "0..1" -- "0..1" Traning_Admin_Actor : TRAINING_ADMIN_RemoveCourse
+Show_Course_UseCase "0..1" -- "0..1" Traning_Admin_Actor : TRAINING_ADMIN_ShowCourse
+Login_UseCase "0..1" -- "0..1" Teacher_Actor : Teacher_Login
+Show_Course_UseCase "0..1" -- "0..1" Teacher_Actor : Teacher_Show_Course
+Teacher "1..1" -- "0..1" courseList : Teacher_classSchedule
+Class_Course_List_UseCase "0..1" -- "0..1" Traning_Admin_Actor : Traning_Admin_Class_Course_List
+Login_UseCase "0..1" -- "0..1" Traning_Admin_Actor : Traning_Admin_Login
+Traning_Admin_Actor "0..1" -- "0..1" User_Info_UseCase : Traning_Admin_User_Info
+Traning_Admin_Actor "0..1" -- "0..1" Update_Registar_UseCase : Update_Registar_Traning_Admin
+Course "0..1" -- "1..1" courseList : courseList_Course
+@enduml

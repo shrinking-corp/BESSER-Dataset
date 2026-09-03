@@ -1,0 +1,40 @@
+@startuml
+class FNamedElement {
+}
+class Person {
+}
+enum SexType {
+  female
+  male
+}
+class family_Child {
+}
+abstract class family_FNamedElement {
+  + name : str
+}
+class family_Family {
+}
+class family_Father {
+}
+class family_Mother {
+}
+abstract class family_Person {
+  + age : int
+  + sex : str
+}
+FNamedElement <|-- family_Family
+FNamedElement <|-- family_Person
+Person <|-- family_Child
+Person <|-- family_Father
+Person <|-- family_Mother
+family_Child "0..9999" -- "1..1" family_Family : children5
+family_Child "0..9999" -- "1..1" family_Father : children7
+family_Child "0..9999" -- "1..1" family_Mother : children9
+family_Family "1..1" -- "0..1" family_Father : father1
+family_Child "1..1" -- "0..1" family_Father : father14
+family_Father "0..1" -- "1..1" family_Mother : husband11
+family_Family "1..1" *-- "1..9999" family_Person : members0
+family_Child "1..1" -- "0..1" family_Mother : mother12
+family_Family "1..1" -- "0..1" family_Mother : mother3
+family_Father "1..1" -- "0..1" family_Mother : wife8
+@enduml

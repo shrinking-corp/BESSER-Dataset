@@ -1,0 +1,85 @@
+@startuml
+class DataElement {
+}
+enum DataTypes {
+  boolean
+  double
+  int
+}
+enum IOTypes {
+  input
+  local
+  output
+}
+class Node {
+}
+enum PseudoTypes {
+  choice
+  deepHistory
+  entryPoint
+  exitPoint
+  fork
+  initial
+  join
+  junction
+  shallowHistory
+  terminate
+}
+class State {
+}
+enum TriggerTypes {
+  either
+  falling
+  functionCall
+  rising
+}
+class statemachine_DataElement {
+  + ioType : str
+  + name : str
+  + port : int
+}
+class statemachine_Event {
+  + trigger : str
+}
+class statemachine_FinalState {
+}
+class statemachine_Node {
+  + id : int
+  + name : str
+}
+class statemachine_Pseudostate {
+  + pseudoType : str
+}
+class statemachine_Region {
+  + priority : int
+}
+class statemachine_State {
+  + do : str
+  + entry : str
+  + exit : str
+}
+class statemachine_Statechart {
+  + UUID : str
+  + name : str
+}
+class statemachine_Transition {
+  + expression : str
+  + id : int
+  + priority : int
+}
+class statemachine_Variable {
+  + dataType : str
+}
+DataElement <|-- statemachine_Event
+DataElement <|-- statemachine_Variable
+Node <|-- statemachine_Pseudostate
+Node <|-- statemachine_State
+State <|-- statemachine_FinalState
+statemachine_DataElement "0..9999" --* "1..1" statemachine_Statechart : dataElement8
+statemachine_Region "0..9999" --* "1..1" statemachine_State : region6
+statemachine_Region "1..9999" --* "1..1" statemachine_Statechart : region9
+statemachine_Node "1..1" -- "1..1" statemachine_Transition : sourceNode3
+statemachine_Node "0..9999" --* "1..1" statemachine_Region : state0
+statemachine_Node "1..1" -- "1..1" statemachine_Transition : targetNode1
+statemachine_Statechart "1..1" *-- "0..9999" statemachine_Transition : transition12
+@enduml

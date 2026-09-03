@@ -1,0 +1,56 @@
+@startuml
+class Class {
+}
+class Type {
+}
+enum Visibility {
+  private
+  public
+}
+class tallerE1Java_Annotation {
+  + content : str
+  + type : str
+}
+class tallerE1Java_Attribute {
+  + name : str
+  + visibility : str
+}
+abstract class tallerE1Java_Class {
+}
+class tallerE1Java_Container {
+  + type : str
+}
+class tallerE1Java_DAOClass {
+}
+class tallerE1Java_EntityClass {
+}
+class tallerE1Java_Package {
+  + name : str
+}
+class tallerE1Java_PrimitiveType {
+}
+class tallerE1Java_Program {
+}
+class tallerE1Java_TestClass {
+}
+abstract class tallerE1Java_Type {
+  + name : str
+}
+Class <|-- tallerE1Java_DAOClass
+Class <|-- tallerE1Java_EntityClass
+Class <|-- tallerE1Java_TestClass
+Type <|-- tallerE1Java_Class
+Type <|-- tallerE1Java_Container
+Type <|-- tallerE1Java_PrimitiveType
+tallerE1Java_Annotation "0..9999" --* "1..1" tallerE1Java_Attribute : annotations11
+tallerE1Java_Attribute "0..9999" --* "1..1" tallerE1Java_Class : attributes7
+tallerE1Java_Class "0..9999" --* "1..1" tallerE1Java_Package : classes5
+tallerE1Java_Container "0..9999" --* "1..1" tallerE1Java_Program : containerTypes3
+tallerE1Java_DAOClass "0..1" -- "1..1" tallerE1Java_TestClass : dao17
+tallerE1Java_DAOClass "1..1" -- "0..9999" tallerE1Java_EntityClass : entities16
+tallerE1Java_EntityClass "0..1" -- "1..1" tallerE1Java_TestClass : entity19
+tallerE1Java_Package "0..9999" --* "1..1" tallerE1Java_Program : packages0
+tallerE1Java_Container "1..1" -- "0..1" tallerE1Java_Type : param13
+tallerE1Java_PrimitiveType "0..9999" --* "1..1" tallerE1Java_Program : primitiveTypes1
+tallerE1Java_Attribute "1..1" -- "0..1" tallerE1Java_Type : type9
+@enduml

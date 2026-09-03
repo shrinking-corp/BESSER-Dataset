@@ -1,0 +1,60 @@
+@startuml
+class Literal {
+}
+class Named {
+}
+class d3ql_AggregateRoot {
+}
+class d3ql_Alias {
+}
+class d3ql_BooleanLiteral {
+  + value : str
+}
+class d3ql_EObject {
+}
+class d3ql_FromStatement {
+}
+class d3ql_FunctionArgument {
+}
+class d3ql_FunctionCall {
+  + function : str
+}
+class d3ql_IntegerLiteral {
+  + value : int
+}
+class d3ql_Literal {
+}
+class d3ql_Named {
+  + name : str
+}
+class d3ql_PathElement {
+  + name : str
+}
+class d3ql_PathExpression {
+}
+class d3ql_Query {
+}
+class d3ql_SelectExpression {
+}
+class d3ql_SelectStatement {
+}
+class d3ql_StringLiteral {
+  + value : str
+}
+Literal <|-- d3ql_BooleanLiteral
+Literal <|-- d3ql_IntegerLiteral
+Literal <|-- d3ql_StringLiteral
+Named <|-- d3ql_AggregateRoot
+Named <|-- d3ql_Alias
+d3ql_AggregateRoot "0..9999" --* "1..1" d3ql_FromStatement : aggregates3
+d3ql_Alias "0..1" --* "1..1" d3ql_SelectExpression : alias11
+d3ql_AggregateRoot "1..1" *-- "0..1" d3ql_Alias : alias5
+d3ql_FunctionArgument "0..9999" --* "1..1" d3ql_FunctionCall : arguments17
+d3ql_EObject "0..1" --* "1..1" d3ql_SelectExpression : expression9
+d3ql_SelectExpression "0..9999" --* "1..1" d3ql_SelectStatement : expressions7
+d3ql_FromStatement "0..1" --* "1..1" d3ql_Query : fromStatement0
+d3ql_Named "0..1" -- "1..1" d3ql_PathExpression : head14
+d3ql_Query "1..1" *-- "0..1" d3ql_SelectStatement : selectStatement1
+d3ql_PathElement "0..9999" --* "1..1" d3ql_PathExpression : tail15
+d3ql_EObject "0..1" --* "1..1" d3ql_FunctionArgument : value18
+@enduml

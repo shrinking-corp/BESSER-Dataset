@@ -1,0 +1,81 @@
+@startuml
+class Admin {
+  + id : int
+  + password : str
+  + userName : str
+}
+class Cart {
+  + TotalBill : int
+  + id : int
+}
+class Customer {
+  + id : int
+  + password : str
+  + userName : str
+}
+class ExerciseMachine {
+  + id : int
+  + name : str
+  + size : int
+  + type : str
+}
+class MediDevices {
+  + id : str
+  + name : str
+  + type : str
+}
+class Medicine {
+  + formula : str
+  + id : int
+  + name : str
+  + potency : str
+}
+class Order {
+  + id : int
+  + orderDate : str
+  + orderStatus : str
+  + quantity : int
+}
+class PaymentMethod {
+  + cashOnDelievery : str
+  + online : str
+  + paymentType : str
+}
+class Person {
+  + Address : str
+  + DOB : str
+  + Email : str
+  + LastName : str
+  + Name : str
+  + Phone : int
+}
+class Product {
+  + color : str
+  + expiry : str
+  + manufecturedDate : str
+  + manufecturer : str
+  + name : str
+  + pID : str
+  + price : int
+}
+class Registration {
+  + Address : str
+  + DOB : str
+  + Email : str
+  + LastName : str
+  + Password : str
+  + Phone : int
+  + UserName : str
+  + name : str
+}
+Admin "0..1" -- "0..1" Product : Admin_Product
+Admin "0..1" -- "0..1" Registration : Admin_Registration
+Cart "0..1" -- "0..1" PaymentMethod : Cart_PaymentMethod
+Cart "0..1" -- "0..1" Order : Order_Cart
+Person "0..1" -- "0..1" Product : Person_Product
+Person "0..1" -- "0..1" Registration : Person_Registration
+ExerciseMachine "0..1" -- "0..1" Product : Product_ExerciseMachine
+MediDevices "0..1" -- "0..1" Product : Product_MediDevices
+Medicine "0..1" -- "0..1" Product : Product_Medicine
+Order "0..1" -- "0..1" Product : Product_Order
+@enduml

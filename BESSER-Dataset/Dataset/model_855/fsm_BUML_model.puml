@@ -1,0 +1,38 @@
+@startuml
+class fsm_Buffer {
+  + currentValues : str
+  + initialValue : str
+  + name : str
+}
+class fsm_FSM {
+  + consummedString : str
+  + name : str
+  + underProcessTrigger : str
+}
+class fsm_State {
+  + name : str
+}
+class fsm_System {
+}
+class fsm_Transition {
+  + action : str
+  + name : str
+  + trigger : str
+}
+fsm_FSM "1..1" -- "0..1" fsm_State : currentState7
+fsm_FSM "0..1" -- "1..1" fsm_State : fsm14
+fsm_FSM "0..1" -- "1..1" fsm_Transition : fsm23
+fsm_State "1..1" -- "0..9999" fsm_Transition : incoming10
+fsm_Buffer "1..1" -- "0..1" fsm_FSM : incomingFSM17
+fsm_FSM "1..1" -- "0..1" fsm_State : initialState6
+fsm_Buffer "0..1" -- "1..1" fsm_FSM : inputBuffer3
+fsm_State "1..1" -- "0..9999" fsm_Transition : outgoing12
+fsm_Buffer "1..1" -- "0..1" fsm_FSM : outgoingFSM15
+fsm_Buffer "0..1" -- "1..1" fsm_FSM : outputBuffer4
+fsm_Buffer "0..9999" --* "1..1" fsm_System : ownedBuffers27
+fsm_FSM "0..9999" --* "1..1" fsm_System : ownedFsms25
+fsm_FSM "1..1" *-- "0..9999" fsm_State : ownedStates0
+fsm_FSM "1..1" *-- "0..9999" fsm_Transition : ownedTransitions1
+fsm_State "0..1" -- "1..1" fsm_Transition : src21
+fsm_State "0..1" -- "1..1" fsm_Transition : tgt19
+@enduml

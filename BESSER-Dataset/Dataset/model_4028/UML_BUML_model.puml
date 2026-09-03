@@ -1,0 +1,106 @@
+@startuml
+class Attribute {
+}
+class Class {
+}
+class Element {
+}
+class Package {
+}
+class PackageableElement {
+}
+class TypedElement {
+}
+class UML_Association {
+}
+class UML_Attribute {
+}
+class UML_Class {
+}
+abstract class UML_Element {
+  + name : str
+  + visibility : str
+}
+class UML_Enumeration {
+}
+class UML_EnumerationLiteral {
+}
+class UML_Generalization {
+}
+class UML_Interface {
+}
+class UML_LiteralInteger {
+}
+class UML_LiteralUnlimitedNatural {
+  + value : int
+}
+class UML_Model {
+}
+class UML_Operation {
+}
+class UML_Package {
+}
+class UML_PackageableElement {
+}
+class UML_Parameter {
+  + direction : str
+}
+class UML_PrimitiveType {
+}
+class UML_Property {
+  + isStatic : bool
+}
+class UML_TemplateBinding {
+}
+class UML_TemplateParameterSubstitution {
+}
+class UML_TypedElement {
+}
+Attribute <|-- UML_Property
+Class <|-- UML_Enumeration
+Class <|-- UML_Interface
+Element <|-- UML_Generalization
+Element <|-- UML_PackageableElement
+Element <|-- UML_TemplateBinding
+Element <|-- UML_TemplateParameterSubstitution
+Element <|-- UML_TypedElement
+Package <|-- UML_Association
+Package <|-- UML_Class
+Package <|-- UML_EnumerationLiteral
+Package <|-- UML_LiteralInteger
+Package <|-- UML_LiteralUnlimitedNatural
+Package <|-- UML_Model
+Package <|-- UML_Operation
+Package <|-- UML_PrimitiveType
+PackageableElement <|-- UML_Package
+TypedElement <|-- UML_Attribute
+TypedElement <|-- UML_Parameter
+UML_Package "0..1" --* "1..1" UML_TemplateParameterSubstitution : actual56
+UML_Association "0..1" -- "1..1" UML_Property : association7
+UML_Association "0..1" -- "1..1" UML_Property : associationEnd14
+UML_Package "0..1" -- "1..1" UML_TemplateBinding : boundElement64
+UML_Class "0..1" -- "1..1" UML_Operation : class_20
+UML_Enumeration "0..9999" --* "1..1" UML_EnumerationLiteral : classifier37
+UML_Enumeration "0..1" -- "1..1" UML_EnumerationLiteral : enumeration38
+UML_Class "0..1" -- "1..1" UML_Generalization : general44
+UML_Class "1..1" *-- "0..9999" UML_Generalization : generalization30
+UML_Interface "0..1" -- "1..1" UML_Property : interface17
+UML_Interface "0..1" -- "1..1" UML_Operation : interface22
+UML_LiteralInteger "0..1" --* "1..1" UML_TypedElement : lowerValue3
+UML_Association "1..1" -- "0..9999" UML_Property : memberEnd50
+UML_Class "0..9999" --* "1..1" UML_Class : nestedClassifier35
+UML_Attribute "0..9999" --* "1..1" UML_Class : ownedAttribute25
+UML_Association "1..1" -- "0..9999" UML_Property : ownedEnd53
+UML_Enumeration "1..1" *-- "0..9999" UML_EnumerationLiteral : ownedLiteral41
+UML_Class "1..1" *-- "0..9999" UML_Operation : ownedOperation27
+UML_Operation "1..1" *-- "0..9999" UML_Parameter : ownedParameter19
+UML_Association "0..1" -- "1..1" UML_Property : owningAssociation11
+UML_Package "0..9999" --* "1..1" UML_PackageableElement : packagedElement0
+UML_TemplateBinding "1..1" *-- "0..9999" UML_TemplateParameterSubstitution : parameterSubstitution61
+UML_Property "1..1" *-- "0..9999" UML_Property : qualifier9
+UML_Class "0..1" -- "1..1" UML_Generalization : specific47
+UML_Class "1..1" *-- "0..9999" UML_TemplateBinding : templateBinding32
+UML_TemplateBinding "0..1" -- "1..1" UML_TemplateParameterSubstitution : templateBinding58
+UML_Package "0..1" -- "1..1" UML_TypedElement : type1
+UML_LiteralUnlimitedNatural "0..1" --* "1..1" UML_TypedElement : upperValue5
+@enduml

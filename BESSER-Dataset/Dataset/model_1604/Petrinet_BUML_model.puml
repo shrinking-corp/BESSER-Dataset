@@ -1,0 +1,39 @@
+@startuml
+class Edge {
+}
+class Node {
+}
+class Petrinet {
+}
+class PetrinetDSL_Edge {
+}
+class PetrinetDSL_Node {
+}
+class PetrinetDSL_PTEdge {
+}
+class PetrinetDSL_Petrinet {
+  + description : str
+  + name : str
+}
+class PetrinetDSL_Place {
+}
+class PetrinetDSL_TPEdge {
+}
+class PetrinetDSL_Token {
+}
+class PetrinetDSL_Transition {
+}
+Edge <|-- PetrinetDSL_PTEdge
+Edge <|-- PetrinetDSL_TPEdge
+Node <|-- PetrinetDSL_Place
+Node <|-- PetrinetDSL_Token
+Node <|-- PetrinetDSL_Transition
+Petrinet <|-- PetrinetDSL_Edge
+Petrinet <|-- PetrinetDSL_Node
+PetrinetDSL_PTEdge "1..1" -- "0..1" PetrinetDSL_Place : fromPlace3
+PetrinetDSL_TPEdge "1..1" -- "0..1" PetrinetDSL_Transition : fromTransition7
+PetrinetDSL_Petrinet "1..1" *-- "0..9999" PetrinetDSL_Petrinet : mapelements1
+PetrinetDSL_Place "0..1" -- "1..1" PetrinetDSL_TPEdge : toPlace9
+PetrinetDSL_PTEdge "1..1" -- "0..1" PetrinetDSL_Transition : toTransition5
+PetrinetDSL_Place "1..1" *-- "0..9999" PetrinetDSL_Token : tokens2
+@enduml

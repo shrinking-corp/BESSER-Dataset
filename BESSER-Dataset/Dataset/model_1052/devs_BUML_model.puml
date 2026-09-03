@@ -1,0 +1,52 @@
+@startuml
+class Event {
+}
+class Transition {
+}
+class devs_AtomicModel {
+  + name : str
+}
+class devs_Event {
+  + name : str
+}
+class devs_ExternalTransition {
+}
+class devs_InputEvent {
+}
+class devs_InternalTransition {
+}
+class devs_OutputEvent {
+}
+class devs_OutputFunction {
+  + name : str
+}
+class devs_State {
+  + lifeTime : float
+  + name : str
+}
+class devs_Transition {
+  + name : str
+}
+Event <|-- devs_InputEvent
+Event <|-- devs_OutputEvent
+Transition <|-- devs_ExternalTransition
+Transition <|-- devs_InternalTransition
+devs_AtomicModel "1..1" -- "1..1" devs_State : atomicModel14
+devs_AtomicModel "1..1" -- "1..1" devs_Event : atomicModel15
+devs_AtomicModel "1..1" -- "1..1" devs_Transition : atomicModel24
+devs_AtomicModel "1..1" -- "1..1" devs_OutputFunction : atomicModel30
+devs_AtomicModel "1..1" *-- "0..9999" devs_Event : event1
+devs_ExternalTransition "0..9999" -- "1..1" devs_InputEvent : externalTransition17
+devs_State "1..1" -- "0..9999" devs_Transition : in_7
+devs_ExternalTransition "1..1" -- "1..1" devs_InputEvent : inputEvent26
+devs_State "1..1" -- "0..9999" devs_Transition : out9
+devs_OutputFunction "1..1" -- "1..1" devs_State : outF11
+devs_OutputEvent "1..1" -- "1..1" devs_OutputFunction : outputEvent29
+devs_OutputEvent "1..1" -- "0..9999" devs_OutputFunction : outputFunction18
+devs_AtomicModel "1..1" *-- "0..9999" devs_OutputFunction : outputFunction5
+devs_State "1..1" -- "1..1" devs_Transition : source20
+devs_OutputFunction "1..1" -- "1..1" devs_State : source27
+devs_AtomicModel "1..1" *-- "1..9999" devs_State : state0
+devs_State "1..1" -- "1..1" devs_Transition : target22
+devs_AtomicModel "1..1" *-- "0..9999" devs_Transition : transition3
+@enduml

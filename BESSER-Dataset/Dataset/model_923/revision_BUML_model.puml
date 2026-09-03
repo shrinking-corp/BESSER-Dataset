@@ -1,0 +1,115 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class PlaceHolder {
+}
+enum SequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+abstract class revision_Counted {
+  + id : int
+}
+abstract class revision_Labelled {
+  + lname : str
+}
+abstract class revision_Named {
+  + name : str
+}
+class revision_Paper {
+}
+class revision_Paragraph {
+  + content : str
+}
+abstract class revision_PlaceHolder {
+}
+class revision_PlaceHolderPP {
+}
+class revision_PlaceHolderRn {
+}
+class revision_PlaceHolderRs {
+}
+class revision_PlaceHolderRule {
+}
+class revision_Progress {
+  + percent : int
+}
+class revision_PublicationPhase {
+  + maxTime : int
+  + minTime : int
+  + name : str
+}
+class revision_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class revision_PublicationStructure {
+}
+class revision_PublicationSystem {
+}
+class revision_Researcher {
+  + forName : str
+  + name : str
+  + position : str
+}
+class revision_Review {
+}
+class revision_ReviewNote {
+  + content : str
+}
+class revision_Rule {
+  + key : str
+  + text : str
+}
+class revision_Sequence {
+  + sequenceType : str
+}
+class revision_Write {
+}
+Counted <|-- revision_Paragraph
+Labelled <|-- revision_Progress
+Labelled <|-- revision_Review
+Labelled <|-- revision_Write
+Named <|-- revision_Paper
+Named <|-- revision_Paragraph
+Named <|-- revision_PublicationProcess
+Named <|-- revision_PublicationStructure
+Named <|-- revision_ReviewNote
+PlaceHolder <|-- revision_PlaceHolderPP
+PlaceHolder <|-- revision_PlaceHolderRn
+PlaceHolder <|-- revision_PlaceHolderRs
+PlaceHolder <|-- revision_PlaceHolderRule
+revision_Paper "1..1" -- "0..9999" revision_Researcher : authors28
+revision_PublicationPhase "1..1" *-- "0..9999" revision_Sequence : linksToSuccessors3
+revision_PublicationPhase "1..1" -- "0..9999" revision_Researcher : neededPerson5
+revision_Paper "0..1" -- "1..1" revision_Progress : paper36
+revision_Paper "0..9999" -- "1..1" revision_Researcher : papers23
+revision_Paper "0..9999" --* "1..1" revision_PublicationStructure : papers46
+revision_Paragraph "0..1" -- "1..1" revision_Write : paragraph38
+revision_Paper "1..1" *-- "0..9999" revision_Paragraph : paragraphs26
+revision_PublicationPhase "0..9999" -- "1..1" revision_Researcher : phaseParticipation19
+revision_PublicationPhase "0..9999" --* "1..1" revision_PublicationProcess : phases0
+revision_PlaceHolderRule "0..1" --* "1..1" revision_Rule : placeholder17
+revision_PlaceHolderRs "0..1" --* "1..1" revision_Researcher : placeholder24
+revision_PlaceHolderRn "0..1" --* "1..1" revision_ReviewNote : placeholder32
+revision_PlaceHolderPP "0..1" --* "1..1" revision_PublicationPhase : placeholder9
+revision_PublicationPhase "1..1" -- "1..1" revision_Sequence : predecessor14
+revision_Progress "1..1" -- "0..1" revision_PublicationProcess : process34
+revision_PublicationProcess "0..1" --* "1..1" revision_PublicationSystem : processView49
+revision_Paper "1..1" *-- "0..9999" revision_Progress : progress27
+revision_PublicationProcess "1..1" *-- "0..9999" revision_Rule : publicationRules1
+revision_PublicationStructure "1..1" *-- "0..9999" revision_Researcher : researchers44
+revision_Review "1..1" -- "0..1" revision_ReviewNote : reviewNote41
+revision_Researcher "1..1" *-- "0..9999" revision_Review : reviews21
+revision_Paragraph "1..1" *-- "0..9999" revision_ReviewNote : reviews30
+revision_PublicationPhase "1..1" -- "0..9999" revision_Rule : rules6
+revision_PublicationStructure "0..1" --* "1..1" revision_PublicationSystem : structuralView51
+revision_PublicationPhase "1..1" -- "1..1" revision_Sequence : successor11
+revision_Researcher "1..1" *-- "0..9999" revision_Write : writes20
+@enduml

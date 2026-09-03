@@ -1,0 +1,61 @@
+@startuml
+enum AccessModifier {
+  default
+  private
+  protected
+  public
+}
+class Classifier {
+}
+class ModelingConcept {
+}
+class classDiagram_Attribute {
+  + accessModifier : str
+  + isStatic : bool
+}
+class classDiagram_Class {
+  + accessModifier : str
+  + isAbstract : bool
+  + isStatic : bool
+}
+class classDiagram_ClassModel {
+}
+abstract class classDiagram_Classifier {
+}
+class classDiagram_ElementType {
+  + isCollection : bool
+}
+class classDiagram_Method {
+  + accessModifier : str
+  + body : str
+  + isAbstract : bool
+  + isStatic : bool
+}
+abstract class classDiagram_ModelingConcept {
+  + name : str
+}
+class classDiagram_Package {
+}
+class classDiagram_Type {
+}
+Classifier <|-- classDiagram_Class
+Classifier <|-- classDiagram_Type
+ModelingConcept <|-- classDiagram_Attribute
+ModelingConcept <|-- classDiagram_Classifier
+ModelingConcept <|-- classDiagram_Method
+ModelingConcept <|-- classDiagram_Package
+classDiagram_Class "0..9999" --* "1..1" classDiagram_Package : classes10
+classDiagram_ModelingConcept "0..9999" --* "1..1" classDiagram_Package : elements3
+classDiagram_Attribute "0..9999" --* "1..1" classDiagram_Class : fields12
+classDiagram_Class "1..1" *-- "0..9999" classDiagram_Method : methods19
+classDiagram_Package "1..1" -- "0..1" classDiagram_Package : package6
+classDiagram_ClassModel "1..1" *-- "1..9999" classDiagram_Package : packages0
+classDiagram_Attribute "0..9999" --* "1..1" classDiagram_Method : parameters26
+classDiagram_ElementType "0..1" --* "1..1" classDiagram_Method : returnType23
+classDiagram_Package "1..1" *-- "0..9999" classDiagram_Package : subpackages8
+classDiagram_Class "1..1" -- "0..9999" classDiagram_Class : subtypes17
+classDiagram_Class "1..1" -- "0..9999" classDiagram_Class : supertypes15
+classDiagram_Attribute "1..1" *-- "1..1" classDiagram_ElementType : type21
+classDiagram_Classifier "1..1" -- "1..1" classDiagram_ElementType : type29
+classDiagram_ClassModel "1..1" *-- "0..9999" classDiagram_Type : types1
+@enduml

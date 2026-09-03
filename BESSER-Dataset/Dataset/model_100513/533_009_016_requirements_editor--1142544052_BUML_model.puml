@@ -1,0 +1,90 @@
+@startuml
+class Argument {
+}
+enum BinaryOperator {
+  AND
+  OR
+}
+class Dependency {
+}
+class Description {
+}
+class Requirement {
+}
+class SimpleDependency {
+}
+abstract class requirements_editor_Argument {
+}
+class requirements_editor_BinaryOperatorArgument {
+  + operator : str
+}
+class requirements_editor_CValue {
+}
+class requirements_editor_Category {
+  + name : str
+}
+abstract class requirements_editor_Dependency {
+}
+abstract class requirements_editor_Description {
+}
+class requirements_editor_DocumentRoot {
+  + name : str
+}
+class requirements_editor_FunctionalRequirement {
+}
+class requirements_editor_ICost {
+}
+class requirements_editor_NOTOperator {
+}
+class requirements_editor_Person {
+  + name : str
+}
+class requirements_editor_QualityRequirement {
+}
+class requirements_editor_Refines {
+}
+abstract class requirements_editor_Requirement {
+  + identifier : str
+  + isMandatory : bool
+  + name : str
+  + priority : int
+  + findLeafNodes(requirements_editor_argument : str) : str
+}
+class requirements_editor_RequirementArgument {
+}
+class requirements_editor_Requires {
+}
+abstract class requirements_editor_SimpleDependency {
+  + comment : str
+}
+class requirements_editor_TextualDescription {
+  + description : str
+}
+Argument <|-- requirements_editor_BinaryOperatorArgument
+Argument <|-- requirements_editor_NOTOperator
+Argument <|-- requirements_editor_RequirementArgument
+Dependency <|-- requirements_editor_Requires
+Dependency <|-- requirements_editor_SimpleDependency
+Description <|-- requirements_editor_TextualDescription
+Requirement <|-- requirements_editor_FunctionalRequirement
+Requirement <|-- requirements_editor_QualityRequirement
+SimpleDependency <|-- requirements_editor_CValue
+SimpleDependency <|-- requirements_editor_ICost
+SimpleDependency <|-- requirements_editor_Refines
+requirements_editor_Argument "1..1" --* "1..1" requirements_editor_Requires : argument15
+requirements_editor_Argument "1..1" --* "1..1" requirements_editor_NOTOperator : argument27
+requirements_editor_Category "1..1" -- "1..1" requirements_editor_Person : categoryOwnedBy6
+requirements_editor_Dependency "0..9999" --* "1..1" requirements_editor_Requirement : dependencySource2
+requirements_editor_Requirement "1..1" -- "1..1" requirements_editor_SimpleDependency : dependencyTarget13
+requirements_editor_Description "1..1" --* "1..1" requirements_editor_Requirement : description0
+requirements_editor_Argument "1..1" --* "1..1" requirements_editor_BinaryOperatorArgument : leftSideArgument18
+requirements_editor_DocumentRoot "1..1" *-- "0..9999" requirements_editor_Person : person25
+requirements_editor_Category "0..9999" -- "1..1" requirements_editor_Person : personOwnsCategory12
+requirements_editor_Person "1..1" -- "0..9999" requirements_editor_Requirement : personOwnsRequirement11
+requirements_editor_Requirement "1..1" -- "1..1" requirements_editor_RequirementArgument : requirement21
+requirements_editor_Category "1..1" *-- "0..9999" requirements_editor_Requirement : requirement8
+requirements_editor_Person "1..1" -- "1..1" requirements_editor_Requirement : requirementOwnedBy1
+requirements_editor_Argument "1..1" --* "1..1" requirements_editor_BinaryOperatorArgument : rightSideArgument16
+requirements_editor_Category "0..9999" --* "1..1" requirements_editor_DocumentRoot : rootCategories23
+requirements_editor_Category "1..1" *-- "0..9999" requirements_editor_Category : subcategoryOf5
+@enduml

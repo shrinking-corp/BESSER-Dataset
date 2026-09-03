@@ -1,0 +1,107 @@
+@startuml
+enum Campus {
+  Gjøvik
+  Trondheim
+  Web
+  Ålesund
+}
+enum EducationLevel {
+  bachelor
+  master
+  oneYear
+  phd
+}
+enum EvaluationType {
+  approved
+  grade
+}
+enum Semester {
+  autumn
+  spring
+}
+enum WorkForm {
+  home
+  oral
+  written
+}
+class courceList_Cource {
+  + code : str
+  + location : str
+  + name : str
+}
+class courceList_CourceSpecification {
+  + credits : float
+  + language : str
+  + name : str
+  + semester : str
+  + specificationYear : int
+  + version : str
+}
+class courceList_Department {
+  + abbreviation : str
+  + name : str
+}
+class courceList_EvaluationForm {
+  + evaluationType : str
+}
+class courceList_Exam {
+  + date : date
+  + form : str
+  + lenght : int
+  + weight : int
+}
+class courceList_Professor {
+  + name : str
+  + title : str
+}
+class courceList_Specialisation {
+  + name : str
+  + startSemester : int
+}
+class courceList_Student {
+  + nr : int
+}
+class courceList_StudyCourceRelation {
+  + status : str
+  + year : int
+}
+class courceList_StudyGeneralization {
+  + abbreviation : str
+  + campus : str
+  + educationLevel : str
+  + name : str
+  + nrOfYears : int
+}
+class courceList_StudyProgram {
+  + year : int
+}
+class courceList_Work {
+  + weight : int
+}
+courceList_CourceSpecification "1..1" -- "0..1" courceList_Professor : coordinator41
+courceList_Cource "1..1" *-- "1..9999" courceList_CourceSpecification : corseSpecifications6
+courceList_CourceSpecification "0..1" -- "1..1" courceList_EvaluationForm : cource18
+courceList_CourceSpecification "1..1" -- "1..1" courceList_StudyCourceRelation : cource23
+courceList_Specialisation "1..1" *-- "1..9999" courceList_StudyCourceRelation : cource29
+courceList_Cource "1..1" -- "1..1" courceList_CourceSpecification : cource39
+courceList_Specialisation "0..9999" --* "1..1" courceList_StudyProgram : cource8
+courceList_Cource "1..9999" --* "1..1" courceList_Department : course1
+courceList_Department "0..1" -- "1..1" courceList_Professor : department27
+courceList_Department "0..1" -- "1..1" courceList_StudyGeneralization : department48
+courceList_Cource "1..1" -- "0..1" courceList_Department : department5
+courceList_EvaluationForm "0..1" -- "1..1" courceList_Exam : evaluationForm14
+courceList_EvaluationForm "0..1" -- "1..1" courceList_Work : evaluationForm21
+courceList_CourceSpecification "1..1" *-- "0..1" courceList_EvaluationForm : evaluationForm43
+courceList_EvaluationForm "1..1" *-- "0..1" courceList_Exam : exam15
+courceList_Specialisation "1..1" *-- "0..9999" courceList_Specialisation : furtherSpecialisation34
+courceList_StudyGeneralization "0..1" -- "1..1" courceList_StudyProgram : generalization9
+courceList_Specialisation "1..1" -- "0..1" courceList_Specialisation : hostSpecialisation37
+courceList_Department "1..1" *-- "1..9999" courceList_Professor : professor3
+courceList_Specialisation "0..1" -- "1..1" courceList_StudyCourceRelation : specialisation24
+courceList_Student "0..9999" --* "1..1" courceList_StudyProgram : student12
+courceList_Department "1..1" *-- "1..9999" courceList_StudyGeneralization : studyProgram0
+courceList_Specialisation "1..1" -- "0..1" courceList_StudyProgram : studyProgram30
+courceList_StudyGeneralization "1..1" *-- "1..9999" courceList_StudyProgram : studyProgram46
+courceList_Student "1..1" -- "1..1" courceList_StudyProgram : studyProgram7
+courceList_EvaluationForm "1..1" *-- "0..1" courceList_Work : work16
+@enduml

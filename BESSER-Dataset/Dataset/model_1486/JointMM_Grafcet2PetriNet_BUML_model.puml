@@ -1,0 +1,107 @@
+@startuml
+class SrcConnection {
+}
+class SrcElement {
+}
+class SrcLocatedElement {
+}
+class SrcNamedElement {
+}
+class TrgArc {
+}
+class TrgElement {
+}
+class TrgLocatedElement {
+}
+class TrgNamedElement {
+}
+class jointPackage_Grafcet2PetriNet_JointMM {
+}
+abstract class jointPackage_Grafcet2PetriNet_SrcConnection {
+}
+abstract class jointPackage_Grafcet2PetriNet_SrcElement {
+}
+class jointPackage_Grafcet2PetriNet_SrcGrafcet {
+}
+abstract class jointPackage_Grafcet2PetriNet_SrcLocatedElement {
+  + location : str
+}
+abstract class jointPackage_Grafcet2PetriNet_SrcNamedElement {
+  + name : str
+}
+class jointPackage_Grafcet2PetriNet_SrcStep {
+  + action : str
+  + isActive : bool
+  + isInitial : bool
+}
+class jointPackage_Grafcet2PetriNet_SrcStepToTransition {
+}
+class jointPackage_Grafcet2PetriNet_SrcTransition {
+  + condition : str
+}
+class jointPackage_Grafcet2PetriNet_SrcTransitionToStep {
+}
+abstract class jointPackage_Grafcet2PetriNet_TrgArc {
+  + weight : int
+}
+abstract class jointPackage_Grafcet2PetriNet_TrgElement {
+}
+abstract class jointPackage_Grafcet2PetriNet_TrgLocatedElement {
+  + location : str
+}
+abstract class jointPackage_Grafcet2PetriNet_TrgNamedElement {
+  + name : str
+}
+class jointPackage_Grafcet2PetriNet_TrgPetriNet {
+}
+class jointPackage_Grafcet2PetriNet_TrgPlace {
+}
+class jointPackage_Grafcet2PetriNet_TrgPlaceToTransition {
+}
+class jointPackage_Grafcet2PetriNet_TrgTransition {
+}
+class jointPackage_Grafcet2PetriNet_TrgTransitionToPlace {
+}
+SrcConnection <|-- jointPackage_Grafcet2PetriNet_SrcStepToTransition
+SrcConnection <|-- jointPackage_Grafcet2PetriNet_SrcTransitionToStep
+SrcElement <|-- jointPackage_Grafcet2PetriNet_SrcStep
+SrcElement <|-- jointPackage_Grafcet2PetriNet_SrcTransition
+SrcLocatedElement <|-- jointPackage_Grafcet2PetriNet_SrcNamedElement
+SrcNamedElement <|-- jointPackage_Grafcet2PetriNet_SrcConnection
+SrcNamedElement <|-- jointPackage_Grafcet2PetriNet_SrcElement
+SrcNamedElement <|-- jointPackage_Grafcet2PetriNet_SrcGrafcet
+TrgArc <|-- jointPackage_Grafcet2PetriNet_TrgPlaceToTransition
+TrgArc <|-- jointPackage_Grafcet2PetriNet_TrgTransitionToPlace
+TrgElement <|-- jointPackage_Grafcet2PetriNet_TrgPlace
+TrgElement <|-- jointPackage_Grafcet2PetriNet_TrgTransition
+TrgLocatedElement <|-- jointPackage_Grafcet2PetriNet_TrgNamedElement
+TrgNamedElement <|-- jointPackage_Grafcet2PetriNet_TrgArc
+TrgNamedElement <|-- jointPackage_Grafcet2PetriNet_TrgElement
+TrgNamedElement <|-- jointPackage_Grafcet2PetriNet_TrgPetriNet
+jointPackage_Grafcet2PetriNet_TrgArc "0..9999" --* "1..1" jointPackage_Grafcet2PetriNet_TrgPetriNet : arcs26
+jointPackage_Grafcet2PetriNet_SrcConnection "0..9999" --* "1..1" jointPackage_Grafcet2PetriNet_SrcGrafcet : connections4
+jointPackage_Grafcet2PetriNet_TrgElement "0..9999" --* "1..1" jointPackage_Grafcet2PetriNet_TrgPetriNet : elements25
+jointPackage_Grafcet2PetriNet_SrcElement "0..9999" --* "1..1" jointPackage_Grafcet2PetriNet_SrcGrafcet : elements3
+jointPackage_Grafcet2PetriNet_SrcStep "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_SrcStepToTransition : from_17
+jointPackage_Grafcet2PetriNet_SrcTransition "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_SrcTransitionToStep : from_19
+jointPackage_Grafcet2PetriNet_TrgPlace "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_TrgPlaceToTransition : from_42
+jointPackage_Grafcet2PetriNet_TrgTransition "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_TrgTransitionToPlace : from_44
+jointPackage_Grafcet2PetriNet_SrcConnection "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_SrcGrafcet : grafcet15
+jointPackage_Grafcet2PetriNet_SrcElement "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_SrcGrafcet : grafcet6
+jointPackage_Grafcet2PetriNet_TrgPlace "1..1" -- "0..9999" jointPackage_Grafcet2PetriNet_TrgTransitionToPlace : incomingArc30
+jointPackage_Grafcet2PetriNet_TrgPlaceToTransition "1..9999" -- "1..1" jointPackage_Grafcet2PetriNet_TrgTransition : incomingArc34
+jointPackage_Grafcet2PetriNet_SrcStep "1..1" -- "0..9999" jointPackage_Grafcet2PetriNet_SrcTransitionToStep : incomingConnections7
+jointPackage_Grafcet2PetriNet_SrcStepToTransition "0..9999" -- "1..1" jointPackage_Grafcet2PetriNet_SrcTransition : incomingConnections9
+jointPackage_Grafcet2PetriNet_TrgElement "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_TrgPetriNet : net28
+jointPackage_Grafcet2PetriNet_TrgArc "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_TrgPetriNet : net40
+jointPackage_Grafcet2PetriNet_TrgPlace "1..1" -- "0..9999" jointPackage_Grafcet2PetriNet_TrgPlaceToTransition : outgoingArc32
+jointPackage_Grafcet2PetriNet_TrgTransition "1..1" -- "1..9999" jointPackage_Grafcet2PetriNet_TrgTransitionToPlace : outgoingArc37
+jointPackage_Grafcet2PetriNet_SrcTransition "1..1" -- "0..9999" jointPackage_Grafcet2PetriNet_SrcTransitionToStep : outgoingConnections12
+jointPackage_Grafcet2PetriNet_SrcStep "1..1" -- "0..9999" jointPackage_Grafcet2PetriNet_SrcStepToTransition : outgoingConnections8
+jointPackage_Grafcet2PetriNet_JointMM "1..1" *-- "1..1" jointPackage_Grafcet2PetriNet_SrcGrafcet : sourceRoot0
+jointPackage_Grafcet2PetriNet_JointMM "1..1" *-- "1..1" jointPackage_Grafcet2PetriNet_TrgPetriNet : targetRoot1
+jointPackage_Grafcet2PetriNet_SrcStepToTransition "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_SrcTransition : to18
+jointPackage_Grafcet2PetriNet_SrcStep "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_SrcTransitionToStep : to22
+jointPackage_Grafcet2PetriNet_TrgPlaceToTransition "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_TrgTransition : to43
+jointPackage_Grafcet2PetriNet_TrgPlace "1..1" -- "1..1" jointPackage_Grafcet2PetriNet_TrgTransitionToPlace : to47
+@enduml

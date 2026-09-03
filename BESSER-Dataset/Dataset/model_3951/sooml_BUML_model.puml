@@ -1,0 +1,118 @@
+@startuml
+class Action {
+}
+class CallOperationAction {
+}
+enum DataType {
+  Boolean
+  Complex
+  Integer
+  String
+}
+class Guard {
+}
+class IsInStateCondition {
+}
+class NamedElement {
+}
+class StructuralFeature {
+}
+abstract class sooml_Action {
+}
+class sooml_Attribute {
+  + dataType : str
+}
+abstract class sooml_CallOperationAction {
+}
+class sooml_CallParameterOperationAction {
+}
+class sooml_CallReferenceOperationAction {
+}
+class sooml_Class {
+}
+class sooml_EntryOperation {
+}
+class sooml_Event {
+}
+abstract class sooml_Guard {
+}
+abstract class sooml_IsInStateCondition {
+}
+abstract class sooml_NamedElement {
+  + name : str
+}
+class sooml_Operation {
+}
+class sooml_Package {
+}
+class sooml_Parameter {
+  + dataType : str
+}
+class sooml_ParameterBinding {
+}
+class sooml_ParameterIsInStateCondition {
+}
+class sooml_Reference {
+}
+class sooml_ReferenceAssignmentAction {
+}
+class sooml_ReferenceIsInStateCondition {
+}
+class sooml_State {
+}
+class sooml_StateMachine {
+}
+abstract class sooml_StructuralFeature {
+  + lowerBound : int
+  + upperBound : int
+}
+class sooml_Transition {
+}
+Action <|-- sooml_CallOperationAction
+Action <|-- sooml_ReferenceAssignmentAction
+CallOperationAction <|-- sooml_CallParameterOperationAction
+CallOperationAction <|-- sooml_CallReferenceOperationAction
+Guard <|-- sooml_IsInStateCondition
+IsInStateCondition <|-- sooml_ParameterIsInStateCondition
+IsInStateCondition <|-- sooml_ReferenceIsInStateCondition
+NamedElement <|-- sooml_Class
+NamedElement <|-- sooml_Operation
+NamedElement <|-- sooml_Package
+NamedElement <|-- sooml_Parameter
+NamedElement <|-- sooml_State
+NamedElement <|-- sooml_StructuralFeature
+StructuralFeature <|-- sooml_Attribute
+StructuralFeature <|-- sooml_Reference
+sooml_Action "0..9999" --* "1..1" sooml_Transition : actions27
+sooml_CallParameterOperationAction "1..1" -- "1..1" sooml_Parameter : callObjectViaParameter63
+sooml_CallReferenceOperationAction "1..1" -- "0..1" sooml_Reference : callObjectViaReference61
+sooml_CallOperationAction "1..1" -- "1..1" sooml_Operation : calledOperation42
+sooml_EntryOperation "1..1" -- "1..1" sooml_Operation : calledOperation54
+sooml_Class "0..1" -- "1..1" sooml_Parameter : classType39
+sooml_Class "1..1" -- "1..1" sooml_StateMachine : class_18
+sooml_Class "0..9999" --* "1..1" sooml_Package : classes0
+sooml_EntryOperation "0..1" --* "1..1" sooml_State : entryOperation25
+sooml_Event "1..1" --* "1..1" sooml_Transition : event31
+sooml_Class "1..1" *-- "0..9999" sooml_StructuralFeature : features9
+sooml_Guard "0..1" --* "1..1" sooml_Transition : guard29
+sooml_IsInStateCondition "1..1" -- "1..1" sooml_State : inState52
+sooml_State "1..1" -- "1..1" sooml_StateMachine : initialState20
+sooml_Event "1..1" -- "1..1" sooml_Operation : operation36
+sooml_Class "1..1" *-- "0..9999" sooml_Operation : operations7
+sooml_Reference "0..1" -- "1..1" sooml_Reference : opposite14
+sooml_Package "1..1" *-- "0..9999" sooml_Package : packages2
+sooml_Operation "1..1" *-- "0..9999" sooml_Parameter : parameter16
+sooml_CallOperationAction "1..1" *-- "0..9999" sooml_ParameterBinding : parameter44
+sooml_Parameter "1..1" -- "1..1" sooml_ParameterIsInStateCondition : parameter59
+sooml_Parameter "1..1" -- "1..1" sooml_ReferenceAssignmentAction : parameter65
+sooml_Parameter "1..1" -- "1..1" sooml_ParameterBinding : parameterBinding49
+sooml_Package "1..1" -- "0..1" sooml_Package : parentPackage4
+sooml_Reference "1..1" -- "1..1" sooml_ReferenceIsInStateCondition : reference57
+sooml_Reference "1..1" -- "1..1" sooml_ReferenceAssignmentAction : reference67
+sooml_Class "1..1" *-- "1..1" sooml_StateMachine : stateMachine6
+sooml_State "0..9999" --* "1..1" sooml_StateMachine : states19
+sooml_ParameterBinding "1..1" -- "0..1" sooml_StructuralFeature : structuralFeatureBinding46
+sooml_State "1..1" -- "1..1" sooml_Transition : target33
+sooml_State "1..1" *-- "0..9999" sooml_Transition : transitions23
+sooml_Class "1..1" -- "1..1" sooml_Reference : type11
+@enduml

@@ -1,0 +1,139 @@
+@startuml
+enum Byte {
+}
+class cpu_ArithmeticExecutableInstruction {
+  + d : int
+  + s1 : int
+  + s2 : int
+}
+class cpu_CPU {
+  + cache : memory_Memory
+  + cpuid : int
+  + cpuids : int
+  + dmaChannel : str
+  + executeTime : int
+  + idleTime : int
+  + log : str
+  + numProcesses : int
+  + pcb : pcb_PCB
+  + previousInstruction : cpu_ExecutableInstruction
+  + register : memory_Memory
+  + shutdown : bool
+}
+class cpu_ConditionalExecutableInstruction {
+  + bReg : int
+  + cache : memory_Memory
+  + cpu : cpu_CPU
+  + dReg : int
+  + data : int
+}
+class cpu_DMAChannel {
+  + mmu : str
+}
+abstract class cpu_ExecutableInstruction {
+  + registers : memory_Memory
+  + type : cpu_InstructionSet
+}
+class cpu_IOExecutableInstruction {
+  + address : int
+  + reg1 : int
+  + reg2 : int
+}
+enum cpu_InstructionSet {
+}
+class cpu_UnconditionalJumpExecutableInstruction {
+  + address : int
+  + cpu : cpu_CPU
+}
+enum driver_CPUSchedulingPolicy {
+}
+class driver_Dispatcher {
+  + cpus : cpu_CPU
+  + mmu : memory_MMU
+  + taskManager : pcb_TaskManager
+}
+class driver_Driver {
+  + cacheSize : int
+  + cpus : cpu_CPU
+  + disk : memory_Memory
+  + dispatcher : driver_Dispatcher
+  + executeTimes : int
+  + idleTimes : int
+  + loader : driver_Loader
+  + ramSize : int
+  + registerSize : int
+  + scheduler : driver_Scheduler
+  + taskManager : pcb_TaskManager
+  + threads : str
+}
+class driver_Loader {
+  + currAddress : int
+  + disk : memory_Memory
+  + endInputBufferAddres : int
+  + endInstructionAddress : int
+  + endOutputBufferAddress : int
+  + endTempBufferAddress : int
+  + inputBuffSize : int
+  + instructionsLength : int
+  + outputBuffSize : int
+  + pid : int
+  + priority : int
+  + processList : pcb_TaskManager
+  + programFile : str
+  + startInputBufferAddress : int
+  + startInstructionAddress : int
+  + startOutputBufferAddress : int
+  + startTempBufferAddress : int
+  + tempBuffSize : int
+}
+class driver_Scheduler {
+  + disk : memory_Memory
+  + mmu : memory_MMU
+  + schedulingMethod : driver_CPUSchedulingPolicy
+  + taskManager : pcb_TaskManager
+}
+class java_lang_Runnable_Interface {
+}
+class memory_MMU {
+  + RAM : memory_Memory
+}
+class memory_Memory {
+  + storage : memory_Word
+}
+class memory_Word {
+  + data : int
+}
+class pcb_PCB {
+  + clock : int
+  + cpuid : int
+  + elapsedRunTime : int
+  + elapsedWaitTime : int
+  + executionCount : int
+  + inputBufferLength : int
+  + instructionLength : int
+  + numIO : int
+  + outputBufferLength : int
+  + pid : int
+  + priority : int
+  + programCounter : int
+  + startDiskInputBufferAddress : int
+  + startDiskInstructionAddress : int
+  + startDiskOutputBufferAddress : int
+  + startDiskTempBufferAddress : int
+  + tempBufferLength : int
+}
+enum pcb_PCB_Status {
+}
+class pcb_TaskManager {
+  + processes : pcb_PCB
+}
+cpu_CPU "1..1" -- "1..1" cpu_DMAChannel : CPU_DMAChannel
+cpu_CPU "1..9999" -- "1..1" driver_Driver : Driver_CPU
+driver_Dispatcher "1..1" -- "1..1" driver_Driver : Driver_Dispatcher
+driver_Driver "0..9999" -- "1..1" driver_Loader : Driver_Loader
+driver_Driver "1..1" -- "1..1" driver_Scheduler : Driver_Scheduler
+memory_MMU "0..1" -- "1..1" memory_Memory : MMU_Memory
+memory_Memory "0..9999" -- "0..9999" memory_Word : Memory_Word
+pcb_PCB "0..9999" -- "1..1" pcb_TaskManager : PCB_TaskManager
+driver_Driver "1..1" -- "1..1" pcb_TaskManager : TaskManager_Driver
+@enduml

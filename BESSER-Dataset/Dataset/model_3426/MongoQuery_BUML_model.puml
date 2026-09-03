@@ -1,0 +1,43 @@
+@startuml
+class Query {
+}
+class mongoQuery_Array {
+}
+class mongoQuery_FieldSelection {
+  + enabled : int
+  + key : str
+}
+class mongoQuery_JsonDate {
+  + dateString : str
+  + day : int
+  + hour : int
+  + millisecond : int
+  + milliseconds : int
+  + minute : int
+  + month : int
+  + second : int
+  + year : int
+}
+class mongoQuery_Query {
+  + integerValue : int
+  + key : str
+  + numberValue : float
+  + stringValue : str
+}
+class mongoQuery_QueryObject {
+}
+class mongoQuery_Selection {
+}
+class mongoQuery_Selector {
+}
+Query <|-- mongoQuery_QueryObject
+mongoQuery_Array "0..1" --* "1..1" mongoQuery_Query : arrayValue10
+mongoQuery_JsonDate "0..1" --* "1..1" mongoQuery_Query : dateValue8
+mongoQuery_FieldSelection "0..9999" --* "1..1" mongoQuery_Selection : fields3
+mongoQuery_Query "0..9999" --* "1..1" mongoQuery_QueryObject : members18
+mongoQuery_Query "0..1" --* "1..1" mongoQuery_Query : objectValue13
+mongoQuery_Query "0..1" --* "1..1" mongoQuery_Selector : query0
+mongoQuery_Selection "0..1" --* "1..1" mongoQuery_Selector : selection1
+mongoQuery_Query "0..1" --* "1..1" mongoQuery_Query : value6
+mongoQuery_Array "1..1" *-- "0..9999" mongoQuery_Query : values15
+@enduml

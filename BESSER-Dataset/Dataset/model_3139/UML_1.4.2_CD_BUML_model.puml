@@ -1,0 +1,223 @@
+@startuml
+enum AggregationKind {
+  aggregate
+  composite
+  none
+}
+class Association {
+}
+class BehavioralFeature {
+}
+enum ChangeableKind {
+  addOnly
+  changeable
+  frozen
+}
+class Class {
+}
+class Classifier {
+}
+class DataType {
+}
+class Dependency {
+}
+class Element {
+}
+class Feature {
+}
+class GeneralizableElement {
+}
+class ModelElement {
+}
+class NameSpace {
+}
+enum OrderingKind {
+  ordered
+  unordered
+}
+enum ParameterDirectionKind {
+  in_
+  inout
+  out
+  return_
+}
+class Relationship {
+}
+enum ScopeKind {
+  classifier
+  instance
+}
+class StructuralFeature {
+}
+class UML_14_Abstraction {
+}
+class UML_14_Association {
+}
+class UML_14_AssociationClass {
+}
+class UML_14_AssociationEnd {
+  + aggregation : str
+  + changeability : str
+  + isNavigable : bool
+  + targetScope : str
+  + visibility : str
+}
+class UML_14_Attribute {
+  + initialValue : str
+}
+abstract class UML_14_BehavioralFeature {
+  + isQuery : bool
+}
+class UML_14_Binding {
+}
+class UML_14_Class {
+  + isActive : bool
+}
+abstract class UML_14_Classifier {
+}
+class UML_14_Comment {
+  + body : str
+}
+abstract class UML_14_Constraint {
+  + body : str
+}
+class UML_14_DataType {
+}
+class UML_14_Dependency {
+}
+abstract class UML_14_Element {
+}
+class UML_14_ElementOwnership {
+  + isSpecification : bool
+  + visibility : str
+}
+class UML_14_Enumeration {
+}
+class UML_14_EnumerationLiteral {
+}
+abstract class UML_14_Feature {
+  + ownerScope : str
+  + visibility : str
+}
+abstract class UML_14_GeneralizableElement {
+  + isAbstract : bool
+  + isLeaf : bool
+  + isRoot : bool
+}
+class UML_14_Generalization {
+  + discriminator : str
+}
+class UML_14_Interface {
+}
+class UML_14_Method {
+  + body : str
+}
+abstract class UML_14_ModelElement {
+  + name : str
+}
+class UML_14_Multiplicity {
+}
+class UML_14_MultiplicityRange {
+  + lower : int
+  + upper : int
+}
+abstract class UML_14_NameSpace {
+}
+class UML_14_Operation {
+  + isAbstract : bool
+  + isLeaf : bool
+  + isRoot : bool
+  + specification : str
+}
+abstract class UML_14_Parameter {
+  + defaultValue : str
+  + kind : str
+}
+class UML_14_Permission {
+}
+class UML_14_Primitive {
+}
+abstract class UML_14_Relationship {
+}
+abstract class UML_14_StructuralFeature {
+  + changeability : str
+  + ordering : str
+  + targetScope : str
+}
+class UML_14_Usage {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+Association <|-- UML_14_AssociationClass
+BehavioralFeature <|-- UML_14_Method
+BehavioralFeature <|-- UML_14_Operation
+Class <|-- UML_14_AssociationClass
+Classifier <|-- UML_14_Class
+Classifier <|-- UML_14_DataType
+Classifier <|-- UML_14_Interface
+DataType <|-- UML_14_Enumeration
+DataType <|-- UML_14_Primitive
+Dependency <|-- UML_14_Abstraction
+Dependency <|-- UML_14_Binding
+Dependency <|-- UML_14_Permission
+Dependency <|-- UML_14_Usage
+Element <|-- UML_14_ModelElement
+Feature <|-- UML_14_BehavioralFeature
+Feature <|-- UML_14_StructuralFeature
+GeneralizableElement <|-- UML_14_Association
+GeneralizableElement <|-- UML_14_Classifier
+ModelElement <|-- UML_14_AssociationEnd
+ModelElement <|-- UML_14_Constraint
+ModelElement <|-- UML_14_EnumerationLiteral
+ModelElement <|-- UML_14_Feature
+ModelElement <|-- UML_14_GeneralizableElement
+ModelElement <|-- UML_14_NameSpace
+ModelElement <|-- UML_14_Parameter
+ModelElement <|-- UML_14_Relationship
+NameSpace <|-- UML_14_Classifier
+Relationship <|-- UML_14_Association
+Relationship <|-- UML_14_Dependency
+Relationship <|-- UML_14_Generalization
+StructuralFeature <|-- UML_14_Attribute
+UML_14_Comment "1..1" -- "0..1" UML_14_ModelElement : annotatedElement55
+UML_14_AssociationEnd "0..1" -- "1..1" UML_14_Classifier : association19
+UML_14_Association "1..1" -- "1..1" UML_14_AssociationEnd : association40
+UML_14_AssociationEnd "0..1" -- "1..1" UML_14_Attribute : associationEnd31
+UML_14_GeneralizableElement "0..9999" -- "1..1" UML_14_Generalization : child33
+UML_14_Dependency "1..1" -- "1..9999" UML_14_ModelElement : client51
+UML_14_Dependency "0..9999" -- "1..1" UML_14_ModelElement : clientDependency3
+UML_14_Comment "0..9999" -- "1..1" UML_14_ModelElement : comments1
+UML_14_Association "1..1" *-- "2..9999" UML_14_AssociationEnd : connection38
+UML_14_Constraint "1..1" -- "0..9999" UML_14_ModelElement : constrainedElement12
+UML_14_Constraint "0..9999" -- "1..1" UML_14_ModelElement : constraint0
+UML_14_Enumeration "1..1" -- "1..1" UML_14_EnumerationLiteral : enumeration54
+UML_14_BehavioralFeature "0..1" -- "1..1" UML_14_Parameter : feature11
+UML_14_Classifier "1..1" *-- "0..9999" UML_14_Feature : feature13
+UML_14_GeneralizableElement "1..1" -- "0..9999" UML_14_Generalization : generalization6
+UML_14_Enumeration "1..1" *-- "1..9999" UML_14_EnumerationLiteral : literal53
+UML_14_Multiplicity "0..1" --* "1..1" UML_14_StructuralFeature : multiplicity24
+UML_14_Multiplicity "1..1" -- "1..1" UML_14_MultiplicityRange : multiplicity29
+UML_14_AssociationEnd "1..1" *-- "0..1" UML_14_Multiplicity : multiplicity46
+UML_14_Method "1..1" -- "1..9999" UML_14_Operation : operation30
+UML_14_Classifier "0..1" -- "1..1" UML_14_Feature : owner5
+UML_14_BehavioralFeature "1..1" *-- "0..9999" UML_14_Parameter : parameter25
+UML_14_GeneralizableElement "0..9999" -- "1..1" UML_14_Generalization : parent34
+UML_14_AssociationEnd "1..1" -- "0..1" UML_14_Classifier : participant41
+UML_14_Classifier "0..1" -- "1..1" UML_14_Generalization : powertype36
+UML_14_Classifier "1..1" -- "0..9999" UML_14_Generalization : powertypeRange17
+UML_14_AssociationEnd "1..1" *-- "0..1" UML_14_Attribute : qualifier48
+UML_14_Multiplicity "1..1" *-- "1..9999" UML_14_MultiplicityRange : range28
+UML_14_GeneralizableElement "1..1" -- "0..9999" UML_14_Generalization : specialization7
+UML_14_AssociationEnd "1..1" -- "0..1" UML_14_Classifier : specification44
+UML_14_AssociationEnd "0..1" -- "1..1" UML_14_Classifier : specifiedEnd20
+UML_14_Dependency "1..1" -- "1..9999" UML_14_ModelElement : supplier49
+UML_14_Dependency "0..9999" -- "1..1" UML_14_ModelElement : supplierDependency2
+UML_14_Classifier "1..1" -- "1..1" UML_14_StructuralFeature : type22
+UML_14_Classifier "1..1" -- "1..1" UML_14_Parameter : type9
+UML_14_Classifier "1..1" -- "0..9999" UML_14_StructuralFeature : typedFeature15
+UML_14_Classifier "1..1" -- "0..9999" UML_14_Parameter : typedParameter14
+@enduml

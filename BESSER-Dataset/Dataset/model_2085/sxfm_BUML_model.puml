@@ -1,0 +1,121 @@
+@startuml
+class CardinalizedElement {
+}
+class CommonFeature {
+}
+class ConstraintableElement {
+}
+class ContainableElement {
+}
+class ContainerElement {
+}
+enum DecisionType {
+  autocompleted
+  manual
+  propagated
+}
+class Feature {
+}
+class Literal {
+}
+class VariableFeature {
+}
+class sxfm_Atom {
+}
+abstract class sxfm_CardinalizedElement {
+  + maxCardinality : int
+  + minCardinality : int
+}
+abstract class sxfm_CommonFeature {
+}
+class sxfm_Constraint {
+  + id : int
+}
+abstract class sxfm_ConstraintableElement {
+}
+class sxfm_ConstraintsSet {
+}
+abstract class sxfm_ContainableElement {
+}
+abstract class sxfm_ContainerElement {
+}
+class sxfm_Data {
+  + name : str
+  + value : str
+}
+abstract class sxfm_Feature {
+  + description : str
+  + id : str
+  + name : str
+  + treeLevel : int
+}
+class sxfm_FeatureChoice {
+  + decisionStep : int
+  + decisionType : str
+  + selected : bool
+}
+class sxfm_FeatureModel {
+  + name : str
+}
+class sxfm_FeatureModelConfiguaration {
+}
+class sxfm_FeatureTree {
+}
+class sxfm_Group {
+  + id : str
+}
+class sxfm_GroupedFeature {
+}
+abstract class sxfm_Literal {
+}
+class sxfm_Mandatory {
+}
+class sxfm_MetadataSet {
+}
+class sxfm_Not {
+}
+class sxfm_Optional {
+}
+class sxfm_Or {
+}
+class sxfm_Root {
+}
+abstract class sxfm_VariableFeature {
+}
+CardinalizedElement <|-- sxfm_Group
+CommonFeature <|-- sxfm_Mandatory
+CommonFeature <|-- sxfm_Root
+ConstraintableElement <|-- sxfm_GroupedFeature
+ConstraintableElement <|-- sxfm_Mandatory
+ConstraintableElement <|-- sxfm_Optional
+ContainableElement <|-- sxfm_Mandatory
+ContainableElement <|-- sxfm_Optional
+ContainerElement <|-- sxfm_GroupedFeature
+ContainerElement <|-- sxfm_Mandatory
+ContainerElement <|-- sxfm_Optional
+ContainerElement <|-- sxfm_Root
+Feature <|-- sxfm_GroupedFeature
+Feature <|-- sxfm_Mandatory
+Feature <|-- sxfm_Optional
+Feature <|-- sxfm_Root
+Literal <|-- sxfm_Atom
+Literal <|-- sxfm_Not
+VariableFeature <|-- sxfm_GroupedFeature
+VariableFeature <|-- sxfm_Optional
+sxfm_ContainableElement "0..9999" --* "1..1" sxfm_ContainerElement : childrenFeatures16
+sxfm_Literal "2..9999" --* "1..1" sxfm_Or : clause18
+sxfm_FeatureModel "1..1" *-- "0..9999" sxfm_FeatureModelConfiguaration : configuration9
+sxfm_Constraint "0..9999" --* "1..1" sxfm_ConstraintsSet : constraints13
+sxfm_ConstraintsSet "0..1" --* "1..1" sxfm_FeatureModel : constraintsSet4
+sxfm_Data "0..9999" --* "1..1" sxfm_MetadataSet : data22
+sxfm_Atom "1..1" --* "1..1" sxfm_Not : feature17
+sxfm_Atom "1..1" -- "1..1" sxfm_ConstraintableElement : feature20
+sxfm_Feature "1..1" -- "1..1" sxfm_FeatureChoice : feature26
+sxfm_FeatureChoice "0..9999" --* "1..1" sxfm_FeatureModelConfiguaration : featureChoice24
+sxfm_FeatureModel "1..1" *-- "0..1" sxfm_MetadataSet : featureModelInfo7
+sxfm_FeatureModel "1..1" *-- "0..1" sxfm_FeatureTree : featureTree5
+sxfm_Group "1..1" *-- "1..9999" sxfm_GroupedFeature : groupedFeatures1
+sxfm_Feature "1..1" *-- "0..9999" sxfm_Group : groups0
+sxfm_Constraint "1..1" *-- "1..1" sxfm_Or : or_3
+sxfm_FeatureTree "1..1" *-- "1..1" sxfm_Root : root11
+@enduml

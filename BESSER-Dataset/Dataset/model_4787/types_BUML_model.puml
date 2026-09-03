@@ -1,0 +1,41 @@
+@startuml
+class Feature {
+}
+class NamedElement {
+}
+class TypedElement {
+}
+class types_Event {
+}
+abstract class types_Feature {
+}
+class types_Library {
+  + id : str
+}
+class types_Operation {
+}
+class types_Parameter {
+}
+class types_Property {
+}
+class types_Type {
+}
+abstract class types_TypedElement {
+}
+Feature <|-- types_Event
+Feature <|-- types_Operation
+Feature <|-- types_Property
+NamedElement <|-- types_Feature
+NamedElement <|-- types_Parameter
+NamedElement <|-- types_Type
+TypedElement <|-- types_Feature
+TypedElement <|-- types_Parameter
+types_Feature "0..9999" --* "1..1" types_Type : features1
+types_Library "0..1" -- "1..1" types_Type : owningLibrary4
+types_Operation "0..1" -- "1..1" types_Parameter : owningOperation8
+types_Feature "1..1" -- "0..1" types_Type : owningType5
+types_Operation "1..1" *-- "0..9999" types_Parameter : parameters7
+types_Type "1..1" -- "0..9999" types_Type : superTypes3
+types_Type "0..1" -- "1..1" types_TypedElement : type9
+types_Library "1..1" *-- "0..9999" types_Type : types0
+@enduml

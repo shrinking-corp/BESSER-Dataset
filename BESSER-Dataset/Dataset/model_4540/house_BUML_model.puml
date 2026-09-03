@@ -1,0 +1,98 @@
+@startuml
+class Action {
+}
+class Actor {
+}
+class Condition {
+}
+class Container {
+}
+class Element {
+}
+abstract class House2_Action {
+}
+abstract class House2_Actor {
+}
+class House2_Boiler {
+  + isOn : bool
+}
+class House2_BooleanAction {
+  + switchTo : bool
+}
+abstract class House2_Condition {
+}
+abstract class House2_Container {
+}
+class House2_ControlRule {
+}
+abstract class House2_Element {
+}
+class House2_EqualCondition {
+  + boolcond : bool
+  + valuecond : float
+}
+class House2_GreaterThanCondition {
+  + threshold : float
+}
+class House2_House {
+}
+class House2_Lamp {
+  + isOn : bool
+}
+class House2_LessThanCondition {
+  + threshold : float
+}
+abstract class House2_NamedElement {
+  + name : str
+}
+class House2_RainSensor {
+  + active : bool
+}
+class House2_RollerBlind {
+  + isUp : bool
+}
+class House2_Room {
+}
+abstract class House2_Sensor {
+}
+class House2_TemperatureSensor {
+  + temp : float
+}
+class House2_TwilightSwitch {
+  + active : bool
+}
+class House2_ValueAction {
+  + switchToValue : float
+}
+class NamedElement {
+}
+class Sensor {
+}
+Action <|-- House2_BooleanAction
+Action <|-- House2_ValueAction
+Actor <|-- House2_Boiler
+Actor <|-- House2_Lamp
+Actor <|-- House2_RollerBlind
+Condition <|-- House2_EqualCondition
+Condition <|-- House2_GreaterThanCondition
+Condition <|-- House2_LessThanCondition
+Container <|-- House2_House
+Container <|-- House2_Room
+Element <|-- House2_House
+NamedElement <|-- House2_Actor
+NamedElement <|-- House2_Container
+NamedElement <|-- House2_Element
+NamedElement <|-- House2_Sensor
+Sensor <|-- House2_RainSensor
+Sensor <|-- House2_TemperatureSensor
+Sensor <|-- House2_TwilightSwitch
+House2_Action "0..1" --* "1..1" House2_ControlRule : action10
+House2_Action "1..1" *-- "0..1" House2_Actor : actor15
+House2_Condition "0..1" --* "1..1" House2_ControlRule : condition8
+House2_ControlRule "0..9999" --* "1..1" House2_House : controlRules1
+House2_Container "1..1" *-- "0..9999" House2_Element : elements3
+House2_Container "0..1" -- "1..1" House2_Sensor : isLocatedIn4
+House2_Actor "1..1" -- "0..1" House2_Container : isLocatedIn6
+House2_House "1..1" *-- "0..9999" House2_Room : rooms0
+House2_Condition "1..1" *-- "0..1" House2_Sensor : sensor12
+@enduml

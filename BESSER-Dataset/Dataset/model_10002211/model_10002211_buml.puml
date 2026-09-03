@@ -1,0 +1,83 @@
+@startuml
+class BaseDateInformation {
+  + CreateDate : str
+  + CreatedBy : str
+  + LastModifedBy : str
+  + LastModifedDate : str
+}
+class Category {
+  + CategoryID : int
+  + CategoryName : str
+  + Description : str
+  + isActive : bool
+}
+class Customer {
+  + Address : str
+  + CustomerID : int
+  + CustomerName : str
+  + Email : str
+  + Gender : int
+  + Phone : str
+}
+class FlashSale {
+  + Description : str
+  + DiscountAmount : int
+  + DiscountPercent : int
+  + FlashSaleID : int
+  + FlashSaleName : str
+  + OnlineShopID : int
+}
+class OnlineShop {
+  + OnlineShopID : int
+  + OnlineShopName : str
+  + ShopCategoryID : int
+  + isActive : bool
+}
+class Order {
+  + OrderCustomerID : int
+  + OrderDate : str
+  + OrderID : int
+  + ReceiveCustomerID : int
+  + ShopOnlineID : int
+  + Status : bool
+  + TotalDiscount : str
+  + TotalPrice : str
+  + UserID : int
+}
+class Product {
+  + CategoryID : int
+  + Description : str
+  + Image : str
+  + OnlineShopID : int
+  + Price : str
+  + ProductID : int
+  + ProductName : str
+  + isActive : bool
+}
+class Role {
+  + Description : str
+  + RoleID : int
+  + RoleName : str
+  + isActive : bool
+}
+class User {
+  + Password : str
+  + RegisterDate : str
+  + RoleID : int
+  + UserID : str
+  + Username : str
+  + isActive : bool
+}
+BaseDateInformation "0..1" -- "0..1" Category : BaseDateInformation_Category
+BaseDateInformation "0..1" -- "0..1" FlashSale : BaseDateInformation_FlashSale
+BaseDateInformation "0..1" -- "0..1" OnlineShop : BaseDateInformation_OnlineShop
+BaseDateInformation "0..1" -- "0..1" Product : BaseDateInformation_Product
+Category "0..1" -- "0..1" OnlineShop : Category_OnlineShop
+Category "1..1" -- "0..9999" Product : Category_Product
+Customer "0..1" -- "0..1" Order : Customer_Order
+FlashSale "0..1" -- "0..1" OnlineShop : OnlineShop_FlashSale
+OnlineShop "0..1" -- "0..1" Order : OnlineShop_Order
+OnlineShop "0..1" -- "0..1" User : OnlineShop_User
+OnlineShop "0..1" -- "0..1" Product : Product_OnlineShop
+Role "0..1" -- "0..1" User : User_Role
+@enduml

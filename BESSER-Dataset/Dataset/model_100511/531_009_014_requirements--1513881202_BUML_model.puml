@@ -1,0 +1,115 @@
+@startuml
+class AnnotableElement {
+}
+enum AnnotationStatus {
+  Duplicate
+  Fixed
+  Incomplete
+  Invalid
+  New
+  Wontfix
+}
+enum AttributeType {
+  NumericalValue
+  Other
+  TemporalValue
+  TextualValue
+}
+class BasicElement {
+}
+class ModelElement {
+}
+class Organization {
+}
+enum PriorityLevel {
+  High
+  Low
+  Normal
+  VeryHigh
+  VeryLow
+}
+enum PrivilegeNature {
+  create
+  delete
+  read
+  update
+}
+class requirements_Agent {
+  + isHuman : bool
+}
+class requirements_AnnotableElement {
+}
+class requirements_Annotation {
+  + annotation : str
+  + author : str
+  + comment : str
+  + date : date
+  + id : str
+  + status : str
+}
+class requirements_Attribute {
+  + type : str
+}
+abstract class requirements_BasicElement {
+  + documentation : str
+  + id : str
+  + name : str
+}
+class requirements_Entity {
+}
+class requirements_Goal {
+  + priority : str
+  + synopsis : str
+}
+class requirements_GoalStep {
+}
+abstract class requirements_ModelElement {
+}
+class requirements_Organization {
+}
+class requirements_Privilege {
+  + category : str
+}
+class requirements_PrivilegeGroup {
+  + documentation : str
+}
+class requirements_Process {
+}
+class requirements_RelationShip {
+  + sourceMax : int
+  + sourceMin : int
+  + targetMax : int
+  + targetMin : int
+}
+class requirements_RequirementsDefinition {
+  + date : date
+  + version : str
+}
+AnnotableElement <|-- requirements_Agent
+AnnotableElement <|-- requirements_Goal
+AnnotableElement <|-- requirements_Organization
+BasicElement <|-- requirements_AnnotableElement
+BasicElement <|-- requirements_Attribute
+BasicElement <|-- requirements_Entity
+BasicElement <|-- requirements_RelationShip
+ModelElement <|-- requirements_BasicElement
+ModelElement <|-- requirements_PrivilegeGroup
+Organization <|-- requirements_Process
+Organization <|-- requirements_RequirementsDefinition
+requirements_AnnotableElement "1..1" *-- "0..9999" requirements_Annotation : annotation30
+requirements_Attribute "0..9999" --* "1..1" requirements_Entity : attributes2
+requirements_ModelElement "0..9999" --* "1..1" requirements_Organization : childElements9
+requirements_BasicElement "1..1" -- "1..1" requirements_Privilege : element18
+requirements_Entity "1..1" -- "1..1" requirements_PrivilegeGroup : entryPoint19
+requirements_Agent "1..1" -- "0..9999" requirements_Goal : isResponsible10
+requirements_Goal "0..9999" -- "1..1" requirements_GoalStep : nextGoals25
+requirements_Entity "1..1" -- "0..1" requirements_Entity : parent1
+requirements_Goal "1..1" *-- "0..9999" requirements_PrivilegeGroup : privilegeGroup14
+requirements_Privilege "0..9999" --* "1..1" requirements_PrivilegeGroup : privileges22
+requirements_GoalStep "1..1" -- "0..1" requirements_Process : process28
+requirements_Agent "0..9999" -- "1..1" requirements_Goal : responsible13
+requirements_Entity "1..1" -- "1..1" requirements_RelationShip : source4
+requirements_Goal "1..1" *-- "0..9999" requirements_GoalStep : step16
+requirements_Goal "1..1" *-- "0..9999" requirements_Goal : subgoals12
+requirements_Entity "1..1" -- "1..1" requirements_RelationShip : target6
+@enduml

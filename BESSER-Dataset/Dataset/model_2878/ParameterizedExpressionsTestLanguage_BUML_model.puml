@@ -1,0 +1,70 @@
+@startuml
+class Expression {
+}
+class Statement {
+}
+class parameterizedExpressionsTestLanguage_AssignmentExpression {
+  + op : str
+}
+class parameterizedExpressionsTestLanguage_Block {
+}
+class parameterizedExpressionsTestLanguage_CommaExpression {
+}
+class parameterizedExpressionsTestLanguage_Expression {
+}
+class parameterizedExpressionsTestLanguage_ExpressionStatement {
+}
+class parameterizedExpressionsTestLanguage_FunctionDeclaration {
+  + generator : bool
+  + name : str
+}
+class parameterizedExpressionsTestLanguage_IdentifierRef {
+  + id : str
+}
+class parameterizedExpressionsTestLanguage_IndexedAccessExpression {
+}
+class parameterizedExpressionsTestLanguage_LabelledStatement {
+  + name : str
+}
+class parameterizedExpressionsTestLanguage_ParameterizedPropertyAccessExpression {
+  + _property : str
+}
+class parameterizedExpressionsTestLanguage_RelationalExpression {
+  + op : str
+}
+class parameterizedExpressionsTestLanguage_ShiftExpression {
+  + op : str
+}
+class parameterizedExpressionsTestLanguage_Statement {
+}
+class parameterizedExpressionsTestLanguage_YieldExpression {
+  + many : bool
+}
+Expression <|-- parameterizedExpressionsTestLanguage_AssignmentExpression
+Expression <|-- parameterizedExpressionsTestLanguage_CommaExpression
+Expression <|-- parameterizedExpressionsTestLanguage_IdentifierRef
+Expression <|-- parameterizedExpressionsTestLanguage_IndexedAccessExpression
+Expression <|-- parameterizedExpressionsTestLanguage_ParameterizedPropertyAccessExpression
+Expression <|-- parameterizedExpressionsTestLanguage_RelationalExpression
+Expression <|-- parameterizedExpressionsTestLanguage_ShiftExpression
+Expression <|-- parameterizedExpressionsTestLanguage_YieldExpression
+Statement <|-- parameterizedExpressionsTestLanguage_Block
+Statement <|-- parameterizedExpressionsTestLanguage_ExpressionStatement
+Statement <|-- parameterizedExpressionsTestLanguage_FunctionDeclaration
+Statement <|-- parameterizedExpressionsTestLanguage_LabelledStatement
+parameterizedExpressionsTestLanguage_Block "0..1" --* "1..1" parameterizedExpressionsTestLanguage_FunctionDeclaration : body0
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_YieldExpression : expression28
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_ExpressionStatement : expression3
+parameterizedExpressionsTestLanguage_CommaExpression "1..1" *-- "0..9999" parameterizedExpressionsTestLanguage_Expression : exprs30
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_IndexedAccessExpression : index8
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_ShiftExpression : lhs13
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_RelationalExpression : lhs18
+parameterizedExpressionsTestLanguage_AssignmentExpression "1..1" *-- "0..1" parameterizedExpressionsTestLanguage_Expression : lhs23
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_ShiftExpression : rhs15
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_RelationalExpression : rhs20
+parameterizedExpressionsTestLanguage_AssignmentExpression "1..1" *-- "0..1" parameterizedExpressionsTestLanguage_Expression : rhs25
+parameterizedExpressionsTestLanguage_LabelledStatement "1..1" *-- "0..1" parameterizedExpressionsTestLanguage_Statement : statement4
+parameterizedExpressionsTestLanguage_Block "1..1" *-- "0..9999" parameterizedExpressionsTestLanguage_Statement : statements1
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_ParameterizedPropertyAccessExpression : target11
+parameterizedExpressionsTestLanguage_Expression "0..1" --* "1..1" parameterizedExpressionsTestLanguage_IndexedAccessExpression : target6
+@enduml

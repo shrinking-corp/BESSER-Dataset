@@ -1,0 +1,177 @@
+@startuml
+class Expression {
+}
+class NamePattern {
+}
+class NamedElements {
+}
+class OperatorPattern {
+}
+class ParamValue {
+}
+class tgg_Adornment {
+  + value : str
+}
+class tgg_AttrCond {
+}
+class tgg_AttrCondDef {
+  + userDefined : bool
+}
+class tgg_AttrCondDefLibrary {
+}
+class tgg_AttributeAssignment {
+  + op : str
+}
+class tgg_AttributeConstraint {
+  + op : str
+}
+class tgg_AttributeExpression {
+}
+class tgg_ComplementRule {
+}
+class tgg_ContextLinkVariablePattern {
+}
+class tgg_ContextObjectVariablePattern {
+  + name : str
+}
+class tgg_CorrType {
+}
+class tgg_CorrVariablePattern {
+}
+class tgg_EAttribute {
+}
+class tgg_EClass {
+}
+class tgg_EDataType {
+}
+class tgg_EEnum {
+}
+class tgg_EEnumLiteral {
+}
+class tgg_EObject {
+}
+class tgg_EPackage {
+}
+class tgg_EReference {
+}
+class tgg_EnumExpression {
+}
+class tgg_Expression {
+}
+class tgg_Import {
+  + name : str
+}
+class tgg_LinkVariablePattern {
+}
+class tgg_LiteralExpression {
+  + value : str
+}
+class tgg_LocalVariable {
+  + name : str
+}
+class tgg_Nac {
+}
+class tgg_NamePattern {
+}
+class tgg_NamedElements {
+  + name : str
+}
+class tgg_ObjectVariablePattern {
+}
+class tgg_Operator {
+  + value : str
+}
+class tgg_OperatorPattern {
+}
+class tgg_Param {
+  + paramName : str
+}
+class tgg_ParamValue {
+}
+class tgg_Rule {
+  + abstractRule : bool
+}
+class tgg_Schema {
+}
+class tgg_TripleGraphGrammarFile {
+}
+class tgg_Using {
+  + importedNamespace : str
+}
+Expression <|-- tgg_AttributeExpression
+Expression <|-- tgg_EnumExpression
+Expression <|-- tgg_LiteralExpression
+NamePattern <|-- tgg_CorrVariablePattern
+NamePattern <|-- tgg_ObjectVariablePattern
+NamedElements <|-- tgg_AttrCondDef
+NamedElements <|-- tgg_AttrCondDefLibrary
+NamedElements <|-- tgg_ComplementRule
+NamedElements <|-- tgg_CorrType
+NamedElements <|-- tgg_Nac
+NamedElements <|-- tgg_NamePattern
+NamedElements <|-- tgg_Rule
+NamedElements <|-- tgg_Schema
+OperatorPattern <|-- tgg_LinkVariablePattern
+OperatorPattern <|-- tgg_NamePattern
+ParamValue <|-- tgg_Expression
+ParamValue <|-- tgg_LocalVariable
+tgg_Adornment "0..9999" --* "1..1" tgg_AttrCondDef : allowedGenAdornments34
+tgg_Adornment "0..9999" --* "1..1" tgg_AttrCondDef : allowedSyncAdornments32
+tgg_AttrCond "0..9999" --* "1..1" tgg_ComplementRule : attrConditions127
+tgg_AttrCond "0..9999" --* "1..1" tgg_Nac : attrConditions139
+tgg_AttrCond "0..9999" --* "1..1" tgg_Rule : attrConditions52
+tgg_AttributeExpression "1..1" -- "0..1" tgg_EAttribute : attribute101
+tgg_AttributeConstraint "1..1" -- "0..1" tgg_EAttribute : attribute87
+tgg_AttributeAssignment "1..1" -- "0..1" tgg_EAttribute : attribute91
+tgg_AttributeAssignment "0..9999" --* "1..1" tgg_ObjectVariablePattern : attributeAssignments74
+tgg_AttrCondDef "0..9999" --* "1..1" tgg_Schema : attributeCondDefs20
+tgg_AttrCondDef "0..9999" --* "1..1" tgg_AttrCondDefLibrary : attributeCondDefs59
+tgg_AttributeConstraint "0..9999" --* "1..1" tgg_ObjectVariablePattern : attributeConstraints76
+tgg_AttributeConstraint "0..9999" --* "1..1" tgg_ContextObjectVariablePattern : attributeConstraints82
+tgg_ComplementRule "0..9999" --* "1..1" tgg_TripleGraphGrammarFile : complementRules7
+tgg_ComplementRule "1..1" *-- "0..9999" tgg_CorrVariablePattern : correspondencePatterns124
+tgg_CorrVariablePattern "0..9999" --* "1..1" tgg_Rule : correspondencePatterns50
+tgg_CorrType "0..9999" --* "1..1" tgg_Schema : correspondenceTypes18
+tgg_EEnum "0..1" -- "1..1" tgg_EnumExpression : eenum97
+tgg_Import "0..9999" --* "1..1" tgg_TripleGraphGrammarFile : imports0
+tgg_ComplementRule "1..1" -- "0..1" tgg_Rule : kernel115
+tgg_AttrCondDefLibrary "0..1" --* "1..1" tgg_TripleGraphGrammarFile : library11
+tgg_LinkVariablePattern "0..9999" --* "1..1" tgg_ObjectVariablePattern : linkVariablePatterns78
+tgg_ContextLinkVariablePattern "0..9999" --* "1..1" tgg_ContextObjectVariablePattern : linkVariablePatterns85
+tgg_EEnumLiteral "0..1" -- "1..1" tgg_EnumExpression : literal98
+tgg_Nac "0..9999" --* "1..1" tgg_TripleGraphGrammarFile : nacs9
+tgg_AttrCond "1..1" -- "0..1" tgg_AttrCondDef : name54
+tgg_AttributeExpression "1..1" -- "0..1" tgg_EObject : objectVar100
+tgg_Operator "0..1" --* "1..1" tgg_OperatorPattern : op142
+tgg_AttrCondDef "1..1" *-- "0..9999" tgg_Param : params30
+tgg_Nac "1..1" -- "0..1" tgg_Rule : rule130
+tgg_Rule "0..9999" --* "1..1" tgg_TripleGraphGrammarFile : rules5
+tgg_Schema "0..1" --* "1..1" tgg_TripleGraphGrammarFile : schema3
+tgg_Rule "1..1" -- "0..1" tgg_Schema : schema42
+tgg_CorrType "1..1" -- "0..1" tgg_EClass : source25
+tgg_CorrVariablePattern "1..1" -- "0..1" tgg_ObjectVariablePattern : source65
+tgg_ComplementRule "1..1" *-- "0..9999" tgg_ObjectVariablePattern : sourcePatterns118
+tgg_ContextObjectVariablePattern "0..9999" --* "1..1" tgg_Nac : sourcePatterns133
+tgg_ObjectVariablePattern "0..9999" --* "1..1" tgg_Rule : sourcePatterns45
+tgg_EPackage "0..9999" -- "1..1" tgg_Schema : sourceTypes13
+tgg_CorrType "0..1" -- "1..1" tgg_CorrType : super23
+tgg_Rule "0..9999" -- "1..1" tgg_Rule : supertypes40
+tgg_LinkVariablePattern "1..1" -- "0..1" tgg_ObjectVariablePattern : target106
+tgg_ContextLinkVariablePattern "1..1" -- "0..1" tgg_ContextObjectVariablePattern : target112
+tgg_CorrType "1..1" -- "0..1" tgg_EClass : target27
+tgg_CorrVariablePattern "1..1" -- "0..1" tgg_ObjectVariablePattern : target68
+tgg_ComplementRule "1..1" *-- "0..9999" tgg_ObjectVariablePattern : targetPatterns121
+tgg_ContextObjectVariablePattern "0..9999" --* "1..1" tgg_Nac : targetPatterns136
+tgg_ObjectVariablePattern "0..9999" --* "1..1" tgg_Rule : targetPatterns47
+tgg_EPackage "0..9999" -- "1..1" tgg_Schema : targetTypes15
+tgg_EReference "0..1" -- "1..1" tgg_LinkVariablePattern : type104
+tgg_ContextLinkVariablePattern "1..1" -- "0..1" tgg_EReference : type109
+tgg_EDataType "0..1" -- "1..1" tgg_Param : type37
+tgg_CorrType "0..1" -- "1..1" tgg_CorrVariablePattern : type62
+tgg_EClass "0..1" -- "1..1" tgg_ObjectVariablePattern : type71
+tgg_ContextObjectVariablePattern "1..1" -- "0..1" tgg_EClass : type80
+tgg_TripleGraphGrammarFile "1..1" *-- "0..9999" tgg_Using : using1
+tgg_AttributeConstraint "1..1" *-- "0..1" tgg_Expression : valueExp89
+tgg_AttributeAssignment "1..1" *-- "0..1" tgg_Expression : valueExp94
+tgg_AttrCond "1..1" *-- "0..9999" tgg_ParamValue : values57
+@enduml

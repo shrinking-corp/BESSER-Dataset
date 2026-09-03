@@ -1,0 +1,54 @@
+@startuml
+class JSFLibrary {
+}
+enum JSFVersion {
+  UNKNOWN
+  v1_1
+  v1_2
+}
+class jsflibraryregistry_ArchiveFile {
+  + RelativeDestLocation : str
+  + RelativeToWorkspace : bool
+  + SourceLocation : str
+  + copyTo(jsflibraryregistry_baseDestLocation : str) : bool
+  + equals(jsflibraryregistry_object : str) : bool
+  + exists() : bool
+  + getName() : str
+  + getPath() : str
+  + getResolvedSourceLocation() : str
+  + hashCode() : int
+}
+class jsflibraryregistry_JSFLibrary {
+  + Deployed : bool
+  + ID : str
+  + Implementation : bool
+  + JSFVersion : str
+  + Name : str
+  + containsArchiveFile(jsflibraryregistry_fullPath : str) : bool
+  + copyTo(jsflibraryregistry_baseDestLocation : str) : bool
+  + getLabel() : str
+  + getWorkingCopy() : str
+  + updateValues(jsflibraryregistry_otherLibrary : str) : void
+}
+class jsflibraryregistry_JSFLibraryRegistry {
+  + DefaultImplementationID : str
+  + addJSFLibrary(jsflibraryregistry_library : str) : bool
+  + getAllJSFLibraries() : str
+  + getDefaultImplementation() : str
+  + getImplJSFLibraries() : str
+  + getJSFLibrariesByName(jsflibraryregistry_name : str) : str
+  + getJSFLibraryByID(jsflibraryregistry_ID : str) : str
+  + getNonImplJSFLibraries() : str
+  + removeJSFLibrary(jsflibraryregistry_library : str) : bool
+  + setDefaultImplementation(jsflibraryregistry_implementation : str) : void
+}
+class jsflibraryregistry_PluginProvidedJSFLibrary {
+  + Label : str
+  + pluginID : str
+}
+JSFLibrary <|-- jsflibraryregistry_PluginProvidedJSFLibrary
+jsflibraryregistry_ArchiveFile "0..9999" --* "1..1" jsflibraryregistry_JSFLibrary : ArchiveFiles3
+jsflibraryregistry_JSFLibrary "0..9999" --* "1..1" jsflibraryregistry_JSFLibraryRegistry : JSFLibraries0
+jsflibraryregistry_ArchiveFile "1..1" -- "1..1" jsflibraryregistry_JSFLibrary : JSFLibrary4
+jsflibraryregistry_JSFLibraryRegistry "1..1" *-- "0..9999" jsflibraryregistry_PluginProvidedJSFLibrary : PluginProvidedJSFLibraries1
+@enduml

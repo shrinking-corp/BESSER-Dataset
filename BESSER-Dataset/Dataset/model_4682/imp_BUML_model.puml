@@ -1,0 +1,87 @@
+@startuml
+enum BinaryOp {
+  ADD
+  AND
+  EQ
+  GEQ
+  GT
+  LEQ
+  LT
+  MUL
+  OR
+  SUB
+}
+class Expr {
+}
+class Stmt {
+}
+enum UnaryOp {
+  NEGATE
+  NOT
+}
+class Value {
+}
+class imp_Assign {
+  + name : str
+}
+class imp_Binary {
+  + op : str
+}
+class imp_Block {
+}
+class imp_BoolValue {
+  + value : bool
+}
+abstract class imp_Expr {
+}
+class imp_If {
+}
+class imp_IntConst {
+  + value : int
+}
+class imp_IntValue {
+  + value : int
+}
+class imp_Skip {
+}
+abstract class imp_Stmt {
+}
+class imp_Store {
+}
+class imp_StringToValueMap {
+  + key : str
+}
+class imp_Unary {
+  + op : str
+}
+abstract class imp_Value {
+}
+class imp_Var {
+  + name : str
+}
+class imp_While {
+}
+Expr <|-- imp_Binary
+Expr <|-- imp_IntConst
+Expr <|-- imp_Unary
+Expr <|-- imp_Var
+Stmt <|-- imp_Assign
+Stmt <|-- imp_Block
+Stmt <|-- imp_If
+Stmt <|-- imp_Skip
+Stmt <|-- imp_While
+Value <|-- imp_BoolValue
+Value <|-- imp_IntValue
+imp_Stmt "1..1" --* "1..1" imp_While : body12
+imp_Expr "1..1" --* "1..1" imp_While : cond10
+imp_Expr "1..1" --* "1..1" imp_If : cond2
+imp_Assign "1..1" *-- "1..1" imp_Expr : exp0
+imp_Expr "1..1" --* "1..1" imp_Unary : expr15
+imp_Binary "1..1" *-- "1..1" imp_Expr : lhs17
+imp_If "1..1" *-- "1..1" imp_Stmt : lhs4
+imp_Binary "1..1" *-- "1..1" imp_Expr : rhs19
+imp_If "1..1" *-- "1..1" imp_Stmt : rhs7
+imp_Block "1..1" *-- "0..9999" imp_Stmt : stmts1
+imp_StringToValueMap "1..1" *-- "1..1" imp_Value : value23
+imp_Store "1..1" *-- "0..9999" imp_StringToValueMap : values22
+@enduml

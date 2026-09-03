@@ -1,0 +1,45 @@
+@startuml
+class Consulta {
+  + Administrador : int
+  + mail : int
+  + nombre : str
+  + telefono : int
+}
+class Empleado {
+  + address : str
+  + email : str
+  + phone : str
+}
+enum UserState {
+}
+class cliente {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class lugar {
+  + Id_lugar : int
+  + attribute : str
+  + nombre : int
+}
+class producto {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : str
+  + total : float
+}
+class provvedor {
+  + description : str
+  + name : str
+}
+class venta {
+  + price : float
+  + quantity : int
+}
+producto "0..1" -- "1..9999" venta : Order_LineItem
+cliente "0..1" -- "1..1" producto : Payment_Order
+lugar "1..1" -- "1..1" venta : ShoppingCart_LineItem
+Consulta "1..1" -- "0..1" lugar : WebUser_ShoppingCart
+@enduml

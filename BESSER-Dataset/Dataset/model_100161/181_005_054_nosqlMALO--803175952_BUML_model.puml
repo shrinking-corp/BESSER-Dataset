@@ -1,0 +1,77 @@
+@startuml
+enum CollectionTypeType {
+  list
+  set
+}
+class ColumnFamily {
+}
+class DataStructureType {
+}
+enum PrimitiveTypeType {
+  ascii
+  bigint
+  blob
+  boolean
+  counter
+  decimal
+  double
+  float
+  inet
+  int
+  text
+  timestamp
+  timeuuid
+  uuid
+  varchar
+  varint
+}
+enum ReplicaPlacementStrategies {
+  NetworkTopologyStrategy
+  OldNetworkTopologyStrategy
+  SimpleStrategy
+}
+class Type {
+}
+class nosql_CollectionType {
+  + keyType : str
+  + kind : str
+}
+class nosql_Column {
+  + name : str
+}
+abstract class nosql_ColumnFamily {
+  + name : str
+}
+abstract class nosql_DataStructureType {
+}
+class nosql_DynamicColumnFamily {
+}
+class nosql_KeySpace {
+  + name : str
+  + replicaPlacementStrategy : str
+  + replicationFactor : str
+}
+class nosql_MapType {
+  + baseType : str
+  + keyType : str
+}
+class nosql_PrimitiveType {
+  + kind : str
+}
+class nosql_StaticColumnFamily {
+}
+abstract class nosql_Type {
+}
+ColumnFamily <|-- nosql_DynamicColumnFamily
+ColumnFamily <|-- nosql_StaticColumnFamily
+DataStructureType <|-- nosql_CollectionType
+DataStructureType <|-- nosql_MapType
+Type <|-- nosql_DataStructureType
+Type <|-- nosql_PrimitiveType
+nosql_Column "1..9999" -- "1..1" nosql_DynamicColumnFamily : clusteringKey11
+nosql_ColumnFamily "0..9999" --* "1..1" nosql_KeySpace : columnFamilies0
+nosql_Column "1..9999" --* "1..1" nosql_ColumnFamily : columns4
+nosql_ColumnFamily "1..1" -- "1..1" nosql_KeySpace : keyspace1
+nosql_Column "1..9999" -- "1..1" nosql_ColumnFamily : primaryKey6
+nosql_Column "1..1" *-- "1..1" nosql_Type : type9
+@enduml

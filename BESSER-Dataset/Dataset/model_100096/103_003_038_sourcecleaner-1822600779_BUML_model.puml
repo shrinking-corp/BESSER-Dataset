@@ -1,0 +1,115 @@
+@startuml
+class LocatedElement {
+}
+class Source {
+}
+class sourcecleaner_Build {
+}
+class sourcecleaner_ClassPath {
+  + name : str
+}
+class sourcecleaner_Configuration {
+  + location : str
+  + temp : str
+}
+class sourcecleaner_Dependency {
+  + diagraph : bool
+  + name : str
+  + reexport : bool
+  + version : str
+}
+class sourcecleaner_Export {
+  + name : str
+}
+class sourcecleaner_Extension {
+  + clazz : str
+  + diagraph : bool
+  + extra : str
+  + id : str
+  + name : str
+  + pointId : str
+}
+class sourcecleaner_ExtensionAttribute {
+  + name : str
+  + value : str
+}
+class sourcecleaner_ExtensionPoint {
+  + diagraph : bool
+  + id : str
+  + name : str
+  + schema : str
+}
+class sourcecleaner_ExtensionReference {
+  + java : str
+  + name : str
+  + package : str
+  + project : str
+}
+class sourcecleaner_Java {
+  + package : str
+}
+abstract class sourcecleaner_LocatedElement {
+  + absolutePath : str
+  + name : str
+}
+class sourcecleaner_Manifest {
+  + diagraph : bool
+  + executionEnvironment : str
+  + lazy : bool
+  + singleton : bool
+  + symbolicName : str
+  + vendor : str
+  + version : str
+  + versionId : str
+  + versionQualifier : str
+}
+class sourcecleaner_Plugin {
+  + extra : str
+}
+class sourcecleaner_Project {
+  + id : int
+  + workspace : str
+}
+class sourcecleaner_Schema {
+  + extensionId : str
+  + extensionName : str
+  + pluginName : str
+}
+abstract class sourcecleaner_Source {
+  + comment : str
+  + content : str
+  + handled : bool
+  + mark : bool
+}
+LocatedElement <|-- sourcecleaner_Project
+LocatedElement <|-- sourcecleaner_Source
+Source <|-- sourcecleaner_Build
+Source <|-- sourcecleaner_Java
+Source <|-- sourcecleaner_Manifest
+Source <|-- sourcecleaner_Plugin
+Source <|-- sourcecleaner_Schema
+sourcecleaner_Extension "1..1" *-- "0..9999" sourcecleaner_ExtensionAttribute : attributes17
+sourcecleaner_Build "0..1" --* "1..1" sourcecleaner_Project : build4
+sourcecleaner_ClassPath "0..9999" --* "1..1" sourcecleaner_Manifest : classpathes12
+sourcecleaner_Dependency "0..9999" --* "1..1" sourcecleaner_Manifest : dependencies11
+sourcecleaner_Dependency "1..1" -- "0..1" sourcecleaner_Manifest : dependency20
+sourcecleaner_Export "0..9999" --* "1..1" sourcecleaner_Manifest : exports14
+sourcecleaner_Extension "1..1" -- "0..1" sourcecleaner_ExtensionPoint : extensionPoint16
+sourcecleaner_ExtensionPoint "0..9999" --* "1..1" sourcecleaner_Plugin : extensionPoints28
+sourcecleaner_Extension "0..9999" -- "1..1" sourcecleaner_ExtensionPoint : extensions23
+sourcecleaner_Extension "0..9999" --* "1..1" sourcecleaner_Plugin : extensions26
+sourcecleaner_Extension "1..1" -- "0..1" sourcecleaner_Java : implements18
+sourcecleaner_ExtensionReference "1..1" -- "0..1" sourcecleaner_Java : javaclass39
+sourcecleaner_Manifest "0..1" --* "1..1" sourcecleaner_Project : manifest2
+sourcecleaner_ExtensionPoint "1..1" -- "0..1" sourcecleaner_Plugin : plugin24
+sourcecleaner_Plugin "0..1" --* "1..1" sourcecleaner_Project : plugin6
+sourcecleaner_Java "1..1" -- "0..1" sourcecleaner_Project : project10
+sourcecleaner_Plugin "1..1" -- "0..1" sourcecleaner_Project : project30
+sourcecleaner_Project "0..1" -- "1..1" sourcecleaner_Schema : project34
+sourcecleaner_Configuration "1..1" *-- "0..9999" sourcecleaner_Project : projects0
+sourcecleaner_ExtensionReference "0..9999" --* "1..1" sourcecleaner_Schema : references33
+sourcecleaner_Dependency "1..1" -- "0..1" sourcecleaner_Manifest : requerant22
+sourcecleaner_ExtensionReference "1..1" -- "0..1" sourcecleaner_Schema : schema37
+sourcecleaner_Project "1..1" *-- "0..1" sourcecleaner_Schema : schema8
+sourcecleaner_Java "0..9999" --* "1..1" sourcecleaner_Project : sources1
+@enduml

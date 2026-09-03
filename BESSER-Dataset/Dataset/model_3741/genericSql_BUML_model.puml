@@ -1,0 +1,64 @@
+@startuml
+class Constraint {
+}
+class NamedElement {
+}
+enum Type {
+  bigInt
+  boolean
+  byteArray
+  date
+  double
+  int
+  undefined
+  varchar
+}
+class genericsql_Check {
+  + expression : str
+}
+abstract class genericsql_Constraint {
+}
+class genericsql_DataBase {
+}
+class genericsql_Field {
+  + autoIcrement : bool
+  + defaultValue : str
+  + notNull : bool
+  + size : int
+  + specificType : str
+  + type : str
+  + unique : bool
+}
+class genericsql_ForeignKey {
+}
+abstract class genericsql_NamedElement {
+  + comment : str
+  + name : str
+}
+class genericsql_PrimaryKey {
+}
+class genericsql_Table {
+}
+class genericsql_Unique {
+}
+Constraint <|-- genericsql_Check
+Constraint <|-- genericsql_Unique
+NamedElement <|-- genericsql_DataBase
+NamedElement <|-- genericsql_Field
+NamedElement <|-- genericsql_ForeignKey
+NamedElement <|-- genericsql_PrimaryKey
+NamedElement <|-- genericsql_Table
+genericsql_Constraint "1..1" -- "1..9999" genericsql_Field : constrainedFields20
+genericsql_Constraint "0..9999" --* "1..1" genericsql_Table : constraints6
+genericsql_DataBase "1..1" -- "1..1" genericsql_Table : database7
+genericsql_Field "1..9999" --* "1..1" genericsql_Table : fields4
+genericsql_Field "0..9999" -- "1..1" genericsql_ForeignKey : foreignFields11
+genericsql_ForeignKey "0..9999" --* "1..1" genericsql_Table : foreignKeys2
+genericsql_Field "1..9999" -- "1..1" genericsql_PrimaryKey : primaryFields8
+genericsql_PrimaryKey "0..1" --* "1..1" genericsql_Table : primaryKey1
+genericsql_ForeignKey "1..1" -- "1..1" genericsql_PrimaryKey : refersTo15
+genericsql_ForeignKey "1..1" -- "0..1" genericsql_Table : table13
+genericsql_Field "1..1" -- "1..1" genericsql_Table : table18
+genericsql_PrimaryKey "1..1" -- "0..1" genericsql_Table : table9
+genericsql_DataBase "1..1" *-- "1..9999" genericsql_Table : tables0
+@enduml

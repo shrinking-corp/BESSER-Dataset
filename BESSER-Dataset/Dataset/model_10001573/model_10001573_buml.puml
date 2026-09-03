@@ -1,0 +1,92 @@
+@startuml
+class Customer {
+  + DiscountSlab_list_ : PurchaseAmountSlab
+  + shoppingCart : ShoppingCart
+  + type : CustomerType
+}
+class CustomerHandler {
+  + password : str
+  + populate : str
+  + state : CustomerType
+}
+enum CustomerType {
+}
+enum Enumeration {
+}
+class Item {
+  + name : str
+  + price : float
+  + quantity : int
+}
+class LZUser2 {
+  + password : str
+  + populate : str
+  + state : CustomerType
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : str
+  + total : float
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class PremiumCustomer {
+  + RadixClient : str
+  + email : str
+  + log : str
+}
+class PremiumDiscountSlab {
+  + PremiumSlab_list_ : PurchaseAmountSlab
+  + RadixClient : str
+  + email : str
+  + log : str
+}
+class PurchaseAmountSlab {
+  + discount : float
+  + from : float
+  + to : float
+}
+class RegularCustomer {
+  + RadixClient : str
+  + email : str
+  + log : str
+}
+class RegularDiscountSlab {
+  + RadixClient : str
+  + RegularSlab_list_ : PurchaseAmountSlab
+  + RegularSlab_list__ : PurchaseAmountSlab
+  + _attr : str
+  + attribute : str
+  + attribute2 : str
+  + email : str
+  + log : str
+}
+class SalesPerson {
+  + password : str
+  + populate : str
+  + state : CustomerType
+}
+class ShoppingCart {
+  + Items_list_ : Item
+  + _attr : date
+}
+Customer "1..1" -- "0..9999" Order : Account_Order
+Customer "1..1" -- "0..9999" Payment : Account_Payment
+Customer "0..1" -- "0..1" CustomerHandler : CustomerHandler_Customer
+Customer "1..1" -- "1..1" PremiumCustomer : Customer_Account
+Customer "0..1" -- "0..1" Customer : Customer_Customer
+Customer "0..1" -- "0..1" PurchaseAmountSlab : Customer_PurchaseAmountSlab
+Customer "0..1" -- "0..1" ShoppingCart : Customer_ShoppingCart
+Customer "0..1" -- "0..1" ShoppingCart : Customer_ShoppingCart2
+Item "0..1" -- "0..1" Item : Item_Item
+Order "1..1" -- "0..1" Payment : Payment_Order
+PremiumDiscountSlab "1..9999" -- "0..1" PurchaseAmountSlab : PremiumDiscountSlab_PurchaseAmountSlab
+PurchaseAmountSlab "0..1" -- "1..9999" RegularDiscountSlab : RegularDiscountSlab_PurchaseAmountSlab
+Item "0..1" -- "1..9999" ShoppingCart : ShoppingCart_Item
+@enduml

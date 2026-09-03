@@ -1,0 +1,98 @@
+@startuml
+class Action {
+}
+class AnalogAction {
+}
+enum AnalogComparison {
+  EQUAL
+  GREATER
+  GREATEREQ
+  LOWER
+  LOWEREQ
+}
+class Brick {
+}
+class Condition {
+}
+enum DigitalState {
+  OFF
+  ON
+}
+class NamedElement {
+}
+enum TimeComparison {
+  AFTER
+  BEFORE
+}
+class arduinoml_AMLMachine {
+  + frequency : int
+}
+class arduinoml_AMLState {
+}
+abstract class arduinoml_Action {
+}
+abstract class arduinoml_AnalogAction {
+}
+class arduinoml_AnalogActionSensor {
+}
+class arduinoml_AnalogActionValue {
+  + value : int
+}
+class arduinoml_AnalogActuator {
+}
+class arduinoml_AnalogCondition {
+  + aComp : str
+  + value : int
+}
+class arduinoml_AnalogSensor {
+}
+abstract class arduinoml_Brick {
+  + pin : int
+}
+abstract class arduinoml_Condition {
+}
+class arduinoml_DigitalAction {
+  + dState : str
+}
+class arduinoml_DigitalActuator {
+}
+class arduinoml_DigitalCondition {
+  + dState : str
+}
+class arduinoml_DigitalSensor {
+}
+abstract class arduinoml_NamedElement {
+  + name : str
+}
+class arduinoml_TimeCondition {
+  + tComp : str
+  + time : int
+}
+class arduinoml_Transition {
+}
+Action <|-- arduinoml_AnalogAction
+Action <|-- arduinoml_DigitalAction
+AnalogAction <|-- arduinoml_AnalogActionSensor
+AnalogAction <|-- arduinoml_AnalogActionValue
+Brick <|-- arduinoml_AnalogActuator
+Brick <|-- arduinoml_AnalogSensor
+Brick <|-- arduinoml_DigitalActuator
+Brick <|-- arduinoml_DigitalSensor
+Condition <|-- arduinoml_AnalogCondition
+Condition <|-- arduinoml_DigitalCondition
+Condition <|-- arduinoml_TimeCondition
+NamedElement <|-- arduinoml_AMLState
+NamedElement <|-- arduinoml_Brick
+arduinoml_AMLState "1..1" *-- "0..9999" arduinoml_Action : actions8
+arduinoml_DigitalAction "1..1" -- "1..1" arduinoml_DigitalActuator : actuator16
+arduinoml_AnalogAction "1..1" -- "1..1" arduinoml_AnalogActuator : actuator18
+arduinoml_AMLMachine "1..1" *-- "0..9999" arduinoml_Brick : bricks0
+arduinoml_Condition "1..9999" --* "1..1" arduinoml_Transition : conditions13
+arduinoml_AMLState "1..1" -- "1..1" arduinoml_Transition : goto10
+arduinoml_DigitalCondition "1..1" -- "1..1" arduinoml_DigitalSensor : sensor15
+arduinoml_AnalogCondition "1..1" -- "1..1" arduinoml_AnalogSensor : sensor17
+arduinoml_AnalogActionSensor "1..1" -- "1..1" arduinoml_AnalogSensor : sensor19
+arduinoml_AMLMachine "1..1" -- "1..1" arduinoml_AMLState : start3
+arduinoml_AMLMachine "1..1" *-- "1..9999" arduinoml_AMLState : states1
+arduinoml_AMLState "1..1" *-- "0..9999" arduinoml_Transition : transitions6
+@enduml

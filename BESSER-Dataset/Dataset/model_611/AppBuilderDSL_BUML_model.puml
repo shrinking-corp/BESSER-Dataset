@@ -1,0 +1,253 @@
+@startuml
+class AbstractElement {
+}
+class Action {
+}
+class ConditionExpression {
+}
+class Control {
+}
+class DataBinding {
+}
+enum Device {
+  android2
+  android4
+  ipad
+  iphone
+}
+class Instruction {
+}
+class Layout {
+}
+class Screen {
+}
+class Service {
+}
+class SetInstructionAssignment {
+}
+class Type {
+}
+class Value {
+}
+class appBuilderDSL_AbstractElement {
+  + name : str
+}
+class appBuilderDSL_Action {
+}
+class appBuilderDSL_AppBuilder {
+}
+class appBuilderDSL_Attribute {
+  + name : str
+  + type : str
+}
+class appBuilderDSL_Business {
+}
+class appBuilderDSL_Button {
+  + name : str
+}
+class appBuilderDSL_CompositeConditionExpression {
+}
+class appBuilderDSL_CompositeScreen {
+}
+class appBuilderDSL_Condition {
+  + name : str
+}
+class appBuilderDSL_ConditionExpression {
+}
+class appBuilderDSL_Control {
+}
+class appBuilderDSL_ControlValue {
+  + controlAccess : str
+}
+class appBuilderDSL_Controller {
+}
+class appBuilderDSL_DataBinding {
+  + controlAccess : str
+}
+class appBuilderDSL_DataType {
+}
+class appBuilderDSL_DynamicValue {
+  + type : str
+  + variableName : str
+}
+class appBuilderDSL_Entity {
+}
+class appBuilderDSL_EntryParameters {
+}
+class appBuilderDSL_EnumDataBinding {
+  + enumClassName : str
+}
+class appBuilderDSL_ExecuteAction {
+}
+class appBuilderDSL_Expression {
+  + terms : str
+}
+class appBuilderDSL_Feature {
+  + many : bool
+  + name : str
+}
+class appBuilderDSL_GridLayout {
+  + columns : int
+}
+class appBuilderDSL_Import {
+  + importedNamespace : str
+}
+class appBuilderDSL_InitAction {
+}
+class appBuilderDSL_InstanceService {
+  + instanceName : str
+}
+class appBuilderDSL_Instruction {
+}
+class appBuilderDSL_Label {
+  + name : str
+}
+class appBuilderDSL_Layout {
+  + type : str
+}
+class appBuilderDSL_List {
+  + name : str
+}
+class appBuilderDSL_Main {
+  + appName : str
+  + appVersion : str
+  + devices : str
+  + generalStyle : str
+}
+class appBuilderDSL_Model {
+}
+class appBuilderDSL_NamespaceDeclation {
+}
+class appBuilderDSL_Navigate {
+  + params : str
+}
+class appBuilderDSL_RestCall {
+  + url : str
+}
+class appBuilderDSL_RowLayout {
+}
+class appBuilderDSL_Screen {
+  + name : str
+}
+class appBuilderDSL_ScreenLayout {
+}
+class appBuilderDSL_Service {
+}
+class appBuilderDSL_SetInstruction {
+  + modelAccess : str
+}
+class appBuilderDSL_SetInstructionAssignment {
+}
+class appBuilderDSL_SimpleConditionExpression {
+  + variableName : str
+}
+class appBuilderDSL_SimpleDataBinding {
+  + modelAccess : str
+}
+class appBuilderDSL_SimpleScreen {
+}
+class appBuilderDSL_System {
+}
+class appBuilderDSL_Text {
+  + name : str
+}
+class appBuilderDSL_Type {
+  + name : str
+}
+class appBuilderDSL_Ui {
+}
+class appBuilderDSL_UiAction {
+  + name : str
+}
+class appBuilderDSL_UiListenerBinding {
+  + controlAccess : str
+}
+class appBuilderDSL_ValidationBinding {
+  + controlAccess : str
+}
+class appBuilderDSL_Validator {
+}
+class appBuilderDSL_Value {
+}
+class appBuilderDSL_View {
+}
+AbstractElement <|-- appBuilderDSL_NamespaceDeclation
+AbstractElement <|-- appBuilderDSL_System
+Action <|-- appBuilderDSL_UiAction
+ConditionExpression <|-- appBuilderDSL_CompositeConditionExpression
+ConditionExpression <|-- appBuilderDSL_SimpleConditionExpression
+Control <|-- appBuilderDSL_Button
+Control <|-- appBuilderDSL_Label
+Control <|-- appBuilderDSL_Layout
+Control <|-- appBuilderDSL_List
+Control <|-- appBuilderDSL_ScreenLayout
+Control <|-- appBuilderDSL_Text
+DataBinding <|-- appBuilderDSL_EnumDataBinding
+DataBinding <|-- appBuilderDSL_SimpleDataBinding
+Instruction <|-- appBuilderDSL_ExecuteAction
+Instruction <|-- appBuilderDSL_Navigate
+Instruction <|-- appBuilderDSL_SetInstruction
+Layout <|-- appBuilderDSL_GridLayout
+Layout <|-- appBuilderDSL_RowLayout
+Screen <|-- appBuilderDSL_CompositeScreen
+Screen <|-- appBuilderDSL_SimpleScreen
+Service <|-- appBuilderDSL_InstanceService
+SetInstructionAssignment <|-- appBuilderDSL_ControlValue
+SetInstructionAssignment <|-- appBuilderDSL_DynamicValue
+SetInstructionAssignment <|-- appBuilderDSL_RestCall
+Type <|-- appBuilderDSL_DataType
+Type <|-- appBuilderDSL_Entity
+Value <|-- appBuilderDSL_DynamicValue
+appBuilderDSL_Action "0..1" -- "1..1" appBuilderDSL_UiListenerBinding : action43
+appBuilderDSL_Action "0..1" -- "1..1" appBuilderDSL_ExecuteAction : action69
+appBuilderDSL_Action "0..9999" --* "1..1" appBuilderDSL_Controller : actions29
+appBuilderDSL_SetInstruction "1..1" *-- "0..1" appBuilderDSL_SetInstructionAssignment : assignment65
+appBuilderDSL_Attribute "0..9999" --* "1..1" appBuilderDSL_EntryParameters : attributes23
+appBuilderDSL_Attribute "0..9999" --* "1..1" appBuilderDSL_Model : attributes73
+appBuilderDSL_Business "0..1" --* "1..1" appBuilderDSL_System : business1
+appBuilderDSL_Condition "0..1" -- "1..1" appBuilderDSL_ValidationBinding : condition39
+appBuilderDSL_Condition "1..1" *-- "0..1" appBuilderDSL_ConditionExpression : conditionExpression57
+appBuilderDSL_Condition "0..9999" --* "1..1" appBuilderDSL_Validator : conditions54
+appBuilderDSL_CompositeConditionExpression "1..1" -- "0..9999" appBuilderDSL_Condition : conditions59
+appBuilderDSL_Control "0..1" -- "1..1" appBuilderDSL_ValidationBinding : control41
+appBuilderDSL_Control "0..1" -- "1..1" appBuilderDSL_UiListenerBinding : control46
+appBuilderDSL_Control "0..1" -- "1..1" appBuilderDSL_DataBinding : control49
+appBuilderDSL_Control "0..1" -- "1..1" appBuilderDSL_ControlValue : control71
+appBuilderDSL_Controller "0..1" --* "1..1" appBuilderDSL_SimpleScreen : controller21
+appBuilderDSL_Control "0..9999" --* "1..1" appBuilderDSL_Layout : controls78
+appBuilderDSL_List "1..1" *-- "0..1" appBuilderDSL_Value : cssStyle84
+appBuilderDSL_Text "1..1" *-- "0..1" appBuilderDSL_Value : cssStyle91
+appBuilderDSL_Button "1..1" *-- "0..1" appBuilderDSL_Value : cssStyle96
+appBuilderDSL_DataBinding "0..9999" --* "1..1" appBuilderDSL_InitAction : databindings31
+appBuilderDSL_AbstractElement "0..9999" --* "1..1" appBuilderDSL_AppBuilder : elements0
+appBuilderDSL_Business "1..1" *-- "0..9999" appBuilderDSL_Service : elements4
+appBuilderDSL_EntryParameters "0..1" --* "1..1" appBuilderDSL_SimpleScreen : entryParameters16
+appBuilderDSL_DynamicValue "1..1" *-- "0..1" appBuilderDSL_Expression : expression90
+appBuilderDSL_Entity "1..1" *-- "0..9999" appBuilderDSL_Feature : features107
+appBuilderDSL_Controller "1..1" *-- "0..1" appBuilderDSL_InitAction : initAction25
+appBuilderDSL_InitAction "1..1" *-- "0..9999" appBuilderDSL_Instruction : instructions37
+appBuilderDSL_Instruction "0..9999" --* "1..1" appBuilderDSL_UiAction : instructions61
+appBuilderDSL_List "1..1" *-- "0..1" appBuilderDSL_Value : labelprovider83
+appBuilderDSL_CompositeScreen "1..1" *-- "0..9999" appBuilderDSL_Layout : layouts103
+appBuilderDSL_Layout "0..9999" --* "1..1" appBuilderDSL_View : layouts76
+appBuilderDSL_Main "0..1" --* "1..1" appBuilderDSL_Ui : main6
+appBuilderDSL_Model "0..1" --* "1..1" appBuilderDSL_SimpleScreen : model17
+appBuilderDSL_Attribute "0..1" -- "1..1" appBuilderDSL_SimpleDataBinding : model52
+appBuilderDSL_Attribute "0..1" -- "1..1" appBuilderDSL_SetInstruction : model63
+appBuilderDSL_Label "1..1" *-- "0..1" appBuilderDSL_Value : resourceKey101
+appBuilderDSL_Text "1..1" *-- "0..1" appBuilderDSL_Value : resourceKey93
+appBuilderDSL_Button "1..1" *-- "0..1" appBuilderDSL_Value : resourceKey98
+appBuilderDSL_Main "1..1" -- "0..1" appBuilderDSL_Screen : screen13
+appBuilderDSL_Navigate "1..1" -- "0..1" appBuilderDSL_Screen : screen67
+appBuilderDSL_Screen "0..1" -- "1..1" appBuilderDSL_ScreenLayout : screen81
+appBuilderDSL_Screen "0..9999" --* "1..1" appBuilderDSL_Ui : screens11
+appBuilderDSL_Service "0..9999" --* "1..1" appBuilderDSL_Ui : services8
+appBuilderDSL_Entity "1..1" -- "0..1" appBuilderDSL_Entity : superType106
+appBuilderDSL_List "1..1" *-- "0..1" appBuilderDSL_Value : tooltip87
+appBuilderDSL_Feature "1..1" -- "0..1" appBuilderDSL_Type : type109
+appBuilderDSL_System "1..1" *-- "0..1" appBuilderDSL_Ui : ui2
+appBuilderDSL_InitAction "1..1" *-- "0..9999" appBuilderDSL_UiListenerBinding : uiListenerBindingss33
+appBuilderDSL_InitAction "1..1" *-- "0..9999" appBuilderDSL_ValidationBinding : validationBindings35
+appBuilderDSL_Controller "1..1" *-- "0..1" appBuilderDSL_Validator : validator27
+appBuilderDSL_SimpleScreen "1..1" *-- "0..1" appBuilderDSL_View : view19
+@enduml

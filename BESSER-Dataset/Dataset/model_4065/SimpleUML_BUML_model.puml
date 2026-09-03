@@ -1,0 +1,45 @@
+@startuml
+class Classifier {
+}
+class PackageElement {
+}
+class UMLModelElement {
+}
+class simpleuml_Association {
+}
+class simpleuml_Attribute {
+}
+class simpleuml_Class {
+}
+abstract class simpleuml_Classifier {
+}
+class simpleuml_Package {
+}
+abstract class simpleuml_PackageElement {
+}
+class simpleuml_PrimitiveDataType {
+}
+abstract class simpleuml_UMLModelElement {
+  + kind : str
+  + name : str
+}
+Classifier <|-- simpleuml_Class
+Classifier <|-- simpleuml_PrimitiveDataType
+PackageElement <|-- simpleuml_Association
+PackageElement <|-- simpleuml_Classifier
+UMLModelElement <|-- simpleuml_Attribute
+UMLModelElement <|-- simpleuml_Package
+UMLModelElement <|-- simpleuml_PackageElement
+simpleuml_Attribute "0..9999" --* "1..1" simpleuml_Class : attributes9
+simpleuml_Association "1..1" -- "1..1" simpleuml_Class : destination4
+simpleuml_Package "1..1" *-- "0..9999" simpleuml_PackageElement : elements18
+simpleuml_Association "0..9999" -- "1..1" simpleuml_Class : forward8
+simpleuml_Class "1..1" -- "0..9999" simpleuml_Class : general6
+simpleuml_Class "1..1" -- "0..9999" simpleuml_Class : generalOpposite14
+simpleuml_Package "0..1" -- "1..1" simpleuml_PackageElement : namespace19
+simpleuml_Attribute "1..1" -- "1..1" simpleuml_Class : owner1
+simpleuml_Association "0..9999" -- "1..1" simpleuml_Class : reverse10
+simpleuml_Association "1..1" -- "1..1" simpleuml_Class : source2
+simpleuml_Attribute "1..1" -- "1..1" simpleuml_Classifier : type0
+simpleuml_Attribute "0..9999" -- "1..1" simpleuml_Classifier : typeOpposite16
+@enduml

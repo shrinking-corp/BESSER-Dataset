@@ -1,0 +1,116 @@
+@startuml
+class Expression {
+}
+class Instruction {
+}
+class logo_Backward {
+}
+class logo_Block {
+}
+class logo_Clear {
+}
+class logo_Constant {
+  + integerValue : int
+}
+class logo_Div {
+}
+class logo_Equals {
+}
+class logo_Expression {
+}
+class logo_Forward {
+}
+class logo_Greater {
+}
+class logo_If {
+}
+class logo_Instruction {
+}
+class logo_Left {
+}
+class logo_LogoProgram {
+}
+class logo_Lower {
+}
+class logo_Minus {
+}
+class logo_Mult {
+}
+class logo_Parameter {
+  + name : str
+}
+class logo_ParameterCall {
+}
+class logo_PenDown {
+}
+class logo_PenUp {
+}
+class logo_Plus {
+}
+class logo_ProcCall {
+}
+class logo_ProcDeclaration {
+  + name : str
+}
+class logo_Repeat {
+}
+class logo_Right {
+}
+class logo_While {
+}
+Expression <|-- logo_Constant
+Expression <|-- logo_Div
+Expression <|-- logo_Equals
+Expression <|-- logo_Greater
+Expression <|-- logo_Lower
+Expression <|-- logo_Minus
+Expression <|-- logo_Mult
+Expression <|-- logo_ParameterCall
+Expression <|-- logo_Plus
+Instruction <|-- logo_Backward
+Instruction <|-- logo_Block
+Instruction <|-- logo_Clear
+Instruction <|-- logo_Forward
+Instruction <|-- logo_If
+Instruction <|-- logo_Left
+Instruction <|-- logo_ParameterCall
+Instruction <|-- logo_PenDown
+Instruction <|-- logo_PenUp
+Instruction <|-- logo_ProcCall
+Instruction <|-- logo_ProcDeclaration
+Instruction <|-- logo_Repeat
+Instruction <|-- logo_Right
+Instruction <|-- logo_While
+logo_Expression "0..9999" --* "1..1" logo_ProcCall : actualArgs9
+logo_Expression "0..1" --* "1..1" logo_Left : angle4
+logo_Expression "0..1" --* "1..1" logo_Right : angle6
+logo_Parameter "0..9999" --* "1..1" logo_ProcDeclaration : args12
+logo_Block "0..1" --* "1..1" logo_Repeat : block29
+logo_Block "0..1" --* "1..1" logo_While : block34
+logo_Expression "0..1" --* "1..1" logo_If : condition19
+logo_Expression "0..1" --* "1..1" logo_Repeat : condition27
+logo_Expression "0..1" --* "1..1" logo_While : condition32
+logo_ProcCall "1..1" -- "0..1" logo_ProcDeclaration : declaration8
+logo_Block "0..1" --* "1..1" logo_If : elsePart24
+logo_Instruction "0..9999" --* "1..1" logo_LogoProgram : instructions0
+logo_Instruction "0..9999" --* "1..1" logo_ProcDeclaration : instructions14
+logo_Block "1..1" *-- "0..9999" logo_Instruction : instructions17
+logo_Equals "1..1" *-- "0..1" logo_Expression : lhs39
+logo_Expression "0..1" --* "1..1" logo_Greater : lhs44
+logo_Expression "0..1" --* "1..1" logo_Lower : lhs49
+logo_Expression "0..1" --* "1..1" logo_Plus : lhs54
+logo_Expression "0..1" --* "1..1" logo_Minus : lhs59
+logo_Expression "0..1" --* "1..1" logo_Mult : lhs64
+logo_Div "1..1" *-- "0..1" logo_Expression : lhs69
+logo_Parameter "0..1" -- "1..1" logo_ParameterCall : parameter37
+logo_Equals "1..1" *-- "0..1" logo_Expression : rhs41
+logo_Expression "0..1" --* "1..1" logo_Greater : rhs46
+logo_Expression "0..1" --* "1..1" logo_Lower : rhs51
+logo_Expression "0..1" --* "1..1" logo_Plus : rhs56
+logo_Expression "0..1" --* "1..1" logo_Minus : rhs61
+logo_Expression "0..1" --* "1..1" logo_Mult : rhs66
+logo_Div "1..1" *-- "0..1" logo_Expression : rhs71
+logo_Backward "1..1" *-- "0..1" logo_Expression : steps1
+logo_Expression "0..1" --* "1..1" logo_Forward : steps2
+logo_Block "0..1" --* "1..1" logo_If : thenPart21
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+class Adresse {
+}
+class Adresse__ndern_external {
+}
+class Banksystem_Component {
+}
+class Bibliothek_Component {
+}
+class Bibliothekar_Actor {
+}
+class Buch_suchen_external {
+}
+class Geld_abheben_external {
+}
+class Kunde_Actor {
+}
+class Kunde_Actor1 {
+}
+class Leser_Actor {
+}
+class Lieferant_Actor {
+}
+class Medien_ausleihen_external {
+}
+class Medienr_ckgabe_external {
+}
+class Selbstbedienungsterminal_Actor {
+}
+class Terminal_Actor {
+}
+class Verwaltung_Actor {
+}
+class ausstehende_Mahnung_versenden_external {
+}
+Bibliothekar_Actor "0..1" -- "0..1" Medien_ausleihen_external : Bibliothekar_Medien_ausleihen
+Bibliothekar_Actor "0..1" -- "0..1" Medienr_ckgabe_external : Bibliothekar_Medienr_ckgabe
+Geld_abheben_external "0..1" -- "0..1" Kunde_Actor : Kunde_Geld_abheben
+Adresse__ndern_external "0..1" -- "0..1" Leser_Actor : Leser_Adresse__ndern
+Buch_suchen_external "0..1" -- "0..1" Leser_Actor : Leser_Buch_suchen
+Leser_Actor "0..1" -- "0..1" Medien_ausleihen_external : Leser_Medien_ausleihen
+Leser_Actor "0..1" -- "0..1" Medienr_ckgabe_external : Leser_Medienr_ckgabe
+Adresse__ndern_external "0..1" -- "0..1" Selbstbedienungsterminal_Actor : Selbstbedienungsterminal_Adresse__ndern
+Buch_suchen_external "0..1" -- "0..1" Selbstbedienungsterminal_Actor : Selbstbedienungsterminal_Buch_suchen
+Geld_abheben_external "0..1" -- "0..1" Terminal_Actor : Terminal_Geld_abheben
+Verwaltung_Actor "0..1" -- "0..1" ausstehende_Mahnung_versenden_external : Verwaltung_ausstehende_Mahnung_versenden
+@enduml

@@ -1,0 +1,152 @@
+@startuml
+class Add_Book_UseCase {
+}
+class Add_Member_UseCase {
+}
+class Add_to_Borrow_basket_UseCase {
+}
+class Authentication_UseCase {
+}
+class Bank_Accounting_Actor {
+}
+class Bank_Server_Side_Authentication_UseCase {
+}
+class Billing_UseCase {
+}
+class Billing_UseCase1 {
+}
+class Book {
+  + BookID : int
+  + BookName : str
+  + LibraryID : int
+  + Price : int
+  + PubName : str
+}
+class BookBorrow {
+  + BookID : int
+  + BorrowID : int
+  + InDate : str
+  + OutDate : str
+  + UserCode : Enter__Username_UseCase
+}
+class Book_Delivery__UseCase {
+}
+class Book_Maintenance__UseCase {
+}
+class Borrow_Book_UseCase {
+}
+class Capatcha_UseCase {
+}
+class Cash_UseCase {
+}
+class Credit_Card_Authentication_Service_Actor {
+}
+class Credit_Card_UseCase {
+}
+class Credit_Card_UseCase1 {
+}
+class Debit_Card_UseCase {
+}
+class Delete_Book_UseCase {
+}
+class Enter_Password_UseCase {
+}
+class Enter__Username_UseCase {
+}
+class Generating_Membership_Card_UseCase {
+}
+class Guest {
+  + GuestID : int
+}
+class Guest_Actor {
+}
+class ID_Authentication_Server_Actor {
+}
+class ID_Authentication_Server_UseCase {
+}
+class Librarian {
+  + Department : str
+  + LibID : int
+}
+class Librarian_Actor {
+}
+class Library {
+  + Address : str
+  + LibraryID : int
+}
+class List_view__UseCase {
+}
+class Log_in_UseCase {
+}
+class PayPal_Authentication_Service_Actor {
+}
+class PayPal_UseCase {
+}
+class PayPal_UseCase1 {
+}
+class Payment_Authentecation_System_Actor {
+}
+class Payment_System_UseCase {
+}
+class Payment_UseCase {
+}
+class Person {
+  + BirthDay : str
+  + LibraryID : int
+  + PersonID : int
+  + PersonName : str
+}
+class Person_Actor {
+}
+class Recieving_Book_UseCase {
+}
+class Registration__UseCase {
+}
+class Remove_Member_UseCase {
+}
+class Searching_UseCase {
+}
+class Suggestion_UseCase {
+}
+class User {
+  + Active : bool
+  + Address : str
+  + Mail : str
+  + Phone : int
+  + RegistrationDate : str
+  + UserCode : int
+  + attribute : str
+}
+class User_Actor {
+}
+class User_Maintenance_UseCase {
+}
+class View_Books_UseCase {
+}
+class Viewing_Books_UseCase {
+}
+class _UseCase {
+}
+Bank_Accounting_Actor "0..1" -- "0..1" Bank_Server_Side_Authentication_UseCase : Bank_Accounting_Bank_Server_Side_Authentication
+BookBorrow "1..9999" -- "1..9999" User : BookBorrow_User
+Book "1..9999" -- "1..9999" BookBorrow : Book_BookBorrow
+Book "1..9999" -- "1..9999" Library : Book_Library
+Borrow_Book_UseCase "0..1" -- "0..1" ID_Authentication_Server_Actor : Borrow_Book_Authentication_Server
+Credit_Card_Authentication_Service_Actor "0..1" -- "0..1" Credit_Card_UseCase1 : Credit_Card_Authentication_Service_Credit_Card
+Guest_Actor "0..1" -- "0..1" View_Books_UseCase : Guest_View_Books
+Authentication_UseCase "0..1" -- "0..1" ID_Authentication_Server_Actor : ID_Authentication_Server_Authentication
+ID_Authentication_Server_Actor "0..1" -- "0..1" Log_in_UseCase : ID_Authentication_Server_Log_in
+Add_Book_UseCase "0..1" -- "0..1" Librarian_Actor : Librarian_Add_Book
+Librarian_Actor "0..1" -- "0..1" User_Maintenance_UseCase : Librarian_Add_User
+Book_Maintenance__UseCase "0..1" -- "0..1" Librarian_Actor : Librarian_Book_Maintenance
+Delete_Book_UseCase "0..1" -- "0..1" Librarian_Actor : Librarian_Delete_Book
+Library "1..9999" -- "1..9999" Person : Library_Person
+PayPal_Authentication_Service_Actor "0..1" -- "0..1" PayPal_UseCase1 : PayPal_Authentication_Service_PayPal
+Credit_Card_UseCase1 "0..1" -- "0..1" Payment_Authentecation_System_Actor : Payment_Authentecation_System_Credit_Card
+PayPal_UseCase1 "0..1" -- "0..1" Payment_Authentecation_System_Actor : Payment_Authentecation_System_PayPal
+Payment_System_UseCase "0..1" -- "0..1" _UseCase : Payment_System_Payment_Authentecation_System
+Borrow_Book_UseCase "0..1" -- "0..1" User_Actor : Person_Borrow_Book
+User_Actor "0..1" -- "0..1" View_Books_UseCase : Person_View_Books
+Log_in_UseCase "0..1" -- "0..1" Person_Actor : Registered_User_Log_in
+ID_Authentication_Server_Actor "0..1" -- "0..1" View_Books_UseCase : View_Books_Authentication_Server
+@enduml

@@ -1,0 +1,134 @@
+@startuml
+class AtomicExpression {
+}
+enum AttributeComparisonOperator {
+  equal
+  greaterThan
+  greaterThanOrEqual
+  lessThan
+  lessThanOrEqual
+  unequal
+}
+class AttributeOperand {
+}
+class BinaryExpression {
+}
+class Domain {
+}
+class Expression {
+}
+class Identifiable {
+}
+enum SelectedState {
+  deselected
+  selected
+  undetermined
+}
+class UnaryExpression {
+}
+class feature_AndExpression {
+}
+class feature_Annotation {
+}
+abstract class feature_AtomicExpression {
+}
+class feature_Attribute {
+  + name : str
+  + value : str
+}
+class feature_AttributeComparisonExpression {
+  + operator : str
+}
+abstract class feature_AttributeOperand {
+}
+class feature_AttributeReference {
+}
+class feature_AttributeValueLiteral {
+  + value : str
+}
+abstract class feature_BinaryExpression {
+}
+class feature_Constraint {
+}
+class feature_ContinuousDomain {
+}
+abstract class feature_Domain {
+}
+class feature_EnumDomain {
+  + values : str
+}
+class feature_ExcludesExpression {
+}
+abstract class feature_Expression {
+}
+class feature_Feature {
+  + name : str
+  + selected : str
+}
+class feature_FeatureModel {
+  + name : str
+}
+class feature_FeatureReference {
+}
+class feature_Group {
+  + maxCardinality : int
+  + minCardinality : int
+}
+abstract class feature_Identifiable {
+  + id : str
+}
+class feature_ImpliesExpression {
+}
+class feature_Interval {
+  + lowerBound : int
+  + upperBound : int
+}
+class feature_NestedExpression {
+}
+class feature_NotExpression {
+}
+class feature_OrExpression {
+}
+abstract class feature_UnaryExpression {
+}
+AtomicExpression <|-- feature_AttributeComparisonExpression
+AtomicExpression <|-- feature_FeatureReference
+AttributeOperand <|-- feature_AttributeReference
+AttributeOperand <|-- feature_AttributeValueLiteral
+BinaryExpression <|-- feature_AndExpression
+BinaryExpression <|-- feature_ExcludesExpression
+BinaryExpression <|-- feature_ImpliesExpression
+BinaryExpression <|-- feature_OrExpression
+Domain <|-- feature_ContinuousDomain
+Domain <|-- feature_EnumDomain
+Expression <|-- feature_AtomicExpression
+Expression <|-- feature_BinaryExpression
+Expression <|-- feature_UnaryExpression
+Identifiable <|-- feature_Constraint
+Identifiable <|-- feature_Feature
+Identifiable <|-- feature_Group
+UnaryExpression <|-- feature_NestedExpression
+UnaryExpression <|-- feature_NotExpression
+feature_Annotation "0..9999" --* "1..1" feature_Feature : annotations12
+feature_AttributeComparisonExpression "1..1" *-- "1..1" feature_AttributeOperand : attribute134
+feature_AttributeComparisonExpression "1..1" *-- "1..1" feature_AttributeOperand : attribute235
+feature_Attribute "1..1" -- "1..1" feature_AttributeReference : attribute38
+feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes8
+feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures15
+feature_FeatureModel "1..1" *-- "0..9999" feature_FeatureModel : children3
+feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints6
+feature_Attribute "1..1" *-- "1..1" feature_Domain : domain21
+feature_Constraint "1..1" *-- "1..1" feature_Expression : expression17
+feature_Attribute "1..1" -- "1..1" feature_Feature : feature19
+feature_Annotation "1..1" -- "1..1" feature_Feature : feature22
+feature_Feature "1..1" -- "1..1" feature_FeatureReference : feature32
+feature_Feature "1..1" *-- "0..9999" feature_Group : groups9
+feature_ContinuousDomain "1..1" *-- "1..9999" feature_Interval : intervals24
+feature_BinaryExpression "1..1" *-- "1..1" feature_Expression : operand127
+feature_BinaryExpression "1..1" *-- "1..1" feature_Expression : operand229
+feature_Expression "1..1" --* "1..1" feature_UnaryExpression : operand25
+feature_FeatureModel "1..1" -- "0..1" feature_FeatureModel : parent1
+feature_Feature "1..1" -- "1..1" feature_Group : parentFeature14
+feature_Feature "1..1" -- "0..1" feature_Group : parentGroup10
+feature_Feature "1..1" --* "1..1" feature_FeatureModel : root5
+@enduml

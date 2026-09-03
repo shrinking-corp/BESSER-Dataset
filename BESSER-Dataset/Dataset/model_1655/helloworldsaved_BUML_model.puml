@@ -1,0 +1,25 @@
+@startuml
+class NamedElement {
+}
+class helloworldsaved_Alias {
+  + id : str
+}
+abstract class helloworldsaved_NamedElement {
+  + name : str
+}
+class helloworldsaved_RelatedTo {
+  + since : str
+}
+class helloworldsaved_Thing {
+  + id : int
+}
+class helloworldsaved_World {
+}
+NamedElement <|-- helloworldsaved_RelatedTo
+NamedElement <|-- helloworldsaved_Thing
+helloworldsaved_Alias "0..9999" --* "1..1" helloworldsaved_NamedElement : aliases2
+helloworldsaved_RelatedTo "1..1" -- "0..1" helloworldsaved_Thing : fromThing3
+helloworldsaved_RelatedTo "0..9999" --* "1..1" helloworldsaved_Thing : relations1
+helloworldsaved_Thing "0..9999" --* "1..1" helloworldsaved_World : things0
+helloworldsaved_RelatedTo "1..1" -- "0..1" helloworldsaved_Thing : toThing4
+@enduml

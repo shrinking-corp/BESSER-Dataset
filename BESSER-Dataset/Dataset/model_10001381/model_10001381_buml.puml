@@ -1,0 +1,47 @@
+@startuml
+class HashTags {
+  + allHashTags : str
+}
+class Page {
+  + admin : User
+  + description : str
+  + fans : User__
+  + nFans : int
+  + name : str
+  + posts : str
+}
+class Post {
+  + nComments : int
+  + nLikes : int
+  + nShares : int
+  + owner : User
+  + privateMode : bool
+}
+class Team {
+  + admins : User__
+  + description : str
+  + members : User__
+  + nMembers : int
+  + name : str
+  + posts : str
+}
+class User {
+  + gender : str
+  + name : str
+  + pages : str
+  + password : str
+  + phone : str
+  + team : str
+  + username : str
+}
+class User2_Interface {
+}
+class User__ {
+}
+Post "0..1" -- "0..1" Team : Post_Group
+HashTags "0..1" -- "0..1" Post : Post_HashTags
+Page "0..1" -- "0..1" Post : Post_Page
+Team "1..1" -- "0..9999" User : User_Group2
+Page "1..1" -- "0..9999" User : User_Page
+Post "1..1" -- "1..1" User : User_Post
+@enduml

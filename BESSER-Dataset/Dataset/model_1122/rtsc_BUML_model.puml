@@ -1,0 +1,119 @@
+@startuml
+class Behavior {
+}
+class BehavioralElement {
+}
+class Event {
+}
+class NamedElement {
+}
+class Vertex {
+}
+abstract class rtsc_Behavior {
+}
+abstract class rtsc_BehavioralElement {
+}
+class rtsc_Clock {
+}
+class rtsc_ClockConstraint {
+  + bound : int
+}
+class rtsc_ClockResetEvent {
+}
+class rtsc_Connector {
+}
+class rtsc_CoordinationProtocol {
+}
+abstract class rtsc_Event {
+}
+class rtsc_Guard {
+  + value : str
+}
+class rtsc_Message {
+}
+class rtsc_MessageBuffer {
+}
+class rtsc_MessageEvent {
+}
+class rtsc_MessageType {
+}
+class rtsc_MessageTypeRepository {
+}
+abstract class rtsc_NamedElement {
+  + name : str
+}
+class rtsc_Port {
+}
+class rtsc_Realtimestatechart {
+}
+class rtsc_State {
+  + final : bool
+  + initial : bool
+}
+class rtsc_System {
+}
+class rtsc_Transition {
+}
+class rtsc_Variable {
+  + initialValue : str
+}
+class rtsc_VariableAssignmentEvent {
+  + value : str
+}
+abstract class rtsc_Vertex {
+}
+Behavior <|-- rtsc_Realtimestatechart
+BehavioralElement <|-- rtsc_Port
+Event <|-- rtsc_ClockResetEvent
+Event <|-- rtsc_MessageEvent
+Event <|-- rtsc_VariableAssignmentEvent
+NamedElement <|-- rtsc_BehavioralElement
+NamedElement <|-- rtsc_Clock
+NamedElement <|-- rtsc_CoordinationProtocol
+NamedElement <|-- rtsc_MessageType
+NamedElement <|-- rtsc_Realtimestatechart
+NamedElement <|-- rtsc_State
+NamedElement <|-- rtsc_Transition
+NamedElement <|-- rtsc_Variable
+Vertex <|-- rtsc_State
+rtsc_Behavior "0..1" -- "1..1" rtsc_BehavioralElement : behavior1
+rtsc_Behavior "0..1" -- "1..1" rtsc_Port : behaviour44
+rtsc_Behavior "1..1" *-- "0..1" rtsc_BehavioralElement : behaviouralElement0
+rtsc_Clock "1..1" -- "1..1" rtsc_ClockConstraint : clock38
+rtsc_Clock "1..1" -- "1..1" rtsc_ClockResetEvent : clock70
+rtsc_ClockConstraint "0..9999" --* "1..1" rtsc_Transition : clockConstraints27
+rtsc_Clock "0..9999" --* "1..1" rtsc_Realtimestatechart : clocks7
+rtsc_Connector "0..1" -- "1..1" rtsc_Port : connector46
+rtsc_Connector "1..1" --* "1..1" rtsc_CoordinationProtocol : connector54
+rtsc_Connector "1..1" -- "2..2" rtsc_Port : endpoints50
+rtsc_Event "0..9999" --* "1..1" rtsc_State : entryEvents17
+rtsc_Event "0..9999" --* "1..1" rtsc_Transition : events33
+rtsc_Event "0..9999" --* "1..1" rtsc_State : exitEvents19
+rtsc_Guard "0..9999" --* "1..1" rtsc_Transition : guards26
+rtsc_MessageBuffer "0..1" --* "1..1" rtsc_Port : incomingBuffer45
+rtsc_State "1..1" -- "0..9999" rtsc_Transition : incomingTransitions13
+rtsc_Realtimestatechart "1..1" -- "1..1" rtsc_State : initialState4
+rtsc_MessageEvent "1..1" -- "1..1" rtsc_MessageType : messageType68
+rtsc_MessageTypeRepository "1..1" --* "1..1" rtsc_System : messageTypeRepo63
+rtsc_MessageType "0..9999" --* "1..1" rtsc_MessageTypeRepository : messageTypes65
+rtsc_State "1..1" -- "0..9999" rtsc_Transition : outgoingTransitions15
+rtsc_Realtimestatechart "1..1" -- "1..1" rtsc_State : owningRTSC12
+rtsc_MessageBuffer "1..1" -- "1..1" rtsc_Port : port47
+rtsc_CoordinationProtocol "1..1" -- "2..2" rtsc_Port : ports52
+rtsc_CoordinationProtocol "0..9999" --* "1..1" rtsc_System : protocol60
+rtsc_State "1..1" -- "1..1" rtsc_Transition : source22
+rtsc_Realtimestatechart "1..1" -- "1..1" rtsc_Transition : statechart29
+rtsc_Realtimestatechart "0..1" -- "1..1" rtsc_Variable : statechart40
+rtsc_Clock "1..1" -- "1..1" rtsc_Realtimestatechart : statechart42
+rtsc_Realtimestatechart "0..9999" --* "1..1" rtsc_System : statecharts58
+rtsc_Realtimestatechart "1..1" *-- "0..9999" rtsc_State : states3
+rtsc_Realtimestatechart "0..9999" --* "1..1" rtsc_State : subStatecharts9
+rtsc_State "1..1" -- "1..1" rtsc_Transition : target24
+rtsc_Realtimestatechart "1..1" *-- "0..9999" rtsc_Transition : transitions2
+rtsc_MessageType "0..9999" -- "1..1" rtsc_Transition : triggerMessage31
+rtsc_Message "1..1" -- "1..1" rtsc_MessageType : type56
+rtsc_MessageBuffer "1..1" -- "1..9999" rtsc_MessageType : types48
+rtsc_Guard "1..1" -- "0..1" rtsc_Variable : variable36
+rtsc_Variable "1..1" -- "1..1" rtsc_VariableAssignmentEvent : variable72
+rtsc_Realtimestatechart "1..1" *-- "0..9999" rtsc_Variable : variables5
+@enduml

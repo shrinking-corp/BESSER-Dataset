@@ -1,0 +1,45 @@
+@startuml
+class Accounts_Section_Actor {
+}
+class Bed_Allotment_external {
+}
+class Check_for_Appointments_UseCase {
+}
+class Class {
+}
+class Doctor_Actor {
+}
+class Draw_Salary_external {
+}
+class Generate_Bill_external {
+}
+class Handle_Medical_Reports_UseCase {
+}
+class Patient_Actor {
+}
+class Patient_Hospital_Registration_external {
+}
+class Patient_Information_external {
+}
+class Receptionist_Actor {
+}
+class Schedule_Patient_Appointments_external {
+}
+class System_Component {
+}
+Bed_Allotment_external "0..1" -- "0..1" Patient_Actor : Bed_Allotment_Patient
+Check_for_Appointments_UseCase "0..1" -- "0..1" Patient_Actor : Check_for_Appointments_Patient
+Accounts_Section_Actor "0..1" -- "0..1" Draw_Salary_external : Draw_Salary_Accounts_Section
+Accounts_Section_Actor "0..1" -- "0..1" Generate_Bill_external : Generate_Bill_Accounts_Section
+Generate_Bill_external "0..1" -- "0..1" Patient_Actor : Generate_Bill_Patient
+Doctor_Actor "0..1" -- "0..1" Handle_Medical_Reports_UseCase : Handle_Medical_Reports_Doctor
+Doctor_Actor "0..1" -- "0..1" Patient_Information_external : Patient_Information_Doctor
+Check_for_Appointments_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Check_for_Appointments
+Draw_Salary_external "0..1" -- "0..1" Receptionist_Actor : Receptionist_Draw_Salary
+Generate_Bill_external "0..1" -- "0..1" Receptionist_Actor : Receptionist_Generate_Bill
+Handle_Medical_Reports_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Handle_Medical_Reports
+Patient_Hospital_Registration_external "0..1" -- "0..1" Receptionist_Actor : Receptionist_Patient_Hospital_Registration
+Patient_Information_external "0..1" -- "0..1" Receptionist_Actor : Receptionist_Patient_Information
+Doctor_Actor "0..1" -- "0..1" Schedule_Patient_Appointments_external : Schedule_Patient_Appointments__Doctor
+Patient_Actor "0..1" -- "0..1" Schedule_Patient_Appointments_external : Schedule_Patient_Appointments__Patient
+@enduml

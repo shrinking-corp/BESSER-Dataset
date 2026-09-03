@@ -1,0 +1,126 @@
+@startuml
+class AttributePageElement {
+}
+enum AttributeType {
+  Boolean
+  Date
+  Email
+  Integer
+  None_
+  String
+  Text
+  Time
+  Year
+}
+class Condition {
+}
+enum ConditionType {
+  Disable
+  Enable
+  Hide
+  Show
+}
+enum Operators {
+  AND
+  OR
+}
+class PageElement {
+}
+class RelationshipPageElement {
+}
+class forms_Attribute {
+  + mandatory : bool
+  + name : str
+  + type : str
+}
+abstract class forms_AttributePageElement {
+}
+class forms_AttributeValueCondition {
+  + value : str
+}
+class forms_Column {
+}
+class forms_CompositeCondition {
+  + operator : str
+}
+abstract class forms_Condition {
+  + conditionID : str
+  + type : str
+}
+class forms_DateSelectionField {
+}
+class forms_EFML {
+}
+class forms_Entity {
+  + name : str
+}
+class forms_Enumeration {
+  + name : str
+}
+class forms_Form {
+  + description : str
+  + mainForm : bool
+  + name : str
+  + title : str
+}
+class forms_List {
+}
+class forms_Literal {
+  + name : str
+  + value : str
+}
+class forms_Page {
+  + title : str
+}
+abstract class forms_PageElement {
+  + elementID : str
+  + label : str
+}
+class forms_Relationship {
+  + lowerBound : int
+  + name : str
+  + upperBound : int
+}
+abstract class forms_RelationshipPageElement {
+}
+class forms_SelectionField {
+}
+class forms_Table {
+}
+class forms_TextArea {
+}
+class forms_TextField {
+  + format : str
+}
+class forms_TimeSelectionField {
+}
+AttributePageElement <|-- forms_DateSelectionField
+AttributePageElement <|-- forms_SelectionField
+AttributePageElement <|-- forms_TextArea
+AttributePageElement <|-- forms_TextField
+AttributePageElement <|-- forms_TimeSelectionField
+Condition <|-- forms_AttributeValueCondition
+Condition <|-- forms_CompositeCondition
+PageElement <|-- forms_AttributePageElement
+PageElement <|-- forms_RelationshipPageElement
+RelationshipPageElement <|-- forms_List
+RelationshipPageElement <|-- forms_Table
+forms_Attribute "1..1" -- "1..1" forms_AttributePageElement : attribute30
+forms_Attribute "0..9999" --* "1..1" forms_Entity : attributes3
+forms_Column "0..9999" --* "1..1" forms_Table : columns34
+forms_CompositeCondition "1..1" -- "2..2" forms_Condition : conditions38
+forms_Form "1..1" -- "1..1" forms_RelationshipPageElement : editingForm32
+forms_EFML "1..1" *-- "1..9999" forms_Entity : entities0
+forms_Entity "1..1" -- "1..1" forms_Form : entity23
+forms_Attribute "1..1" -- "1..1" forms_Column : entityAttribute35
+forms_Attribute "1..1" -- "0..1" forms_Enumeration : enumerationType13
+forms_EFML "1..1" *-- "0..9999" forms_Form : forms1
+forms_Attribute "1..1" -- "1..1" forms_Entity : id5
+forms_Enumeration "1..1" *-- "1..9999" forms_Literal : literals15
+forms_Relationship "0..1" -- "1..1" forms_Relationship : opposite18
+forms_Page "1..1" *-- "0..9999" forms_PageElement : pageElements28
+forms_Form "1..1" *-- "0..9999" forms_Page : pages26
+forms_Entity "1..1" *-- "0..9999" forms_Relationship : relationships8
+forms_Entity "0..1" -- "1..1" forms_Entity : superType11
+forms_Entity "1..1" -- "1..1" forms_Relationship : target20
+@enduml

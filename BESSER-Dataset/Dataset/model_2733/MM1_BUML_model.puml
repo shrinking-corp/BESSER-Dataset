@@ -1,0 +1,33 @@
+@startuml
+class A {
+}
+class AA {
+}
+class B {
+}
+class SuperA {
+}
+class testmerge_A {
+}
+class testmerge_AA {
+}
+class testmerge_AAA {
+}
+class testmerge_B {
+  + anAttribute : str
+  + getA(testmerge_paramB : str) : str
+}
+class testmerge_C {
+}
+class testmerge_SubB {
+}
+class testmerge_SuperA {
+}
+A <|-- testmerge_AA
+AA <|-- testmerge_AAA
+B <|-- testmerge_SubB
+SuperA <|-- testmerge_A
+testmerge_A "0..1" -- "1..1" testmerge_B : toA1
+testmerge_A "1..1" -- "0..1" testmerge_B : toB0
+testmerge_AAA "1..1" *-- "0..1" testmerge_C : toC2
+@enduml

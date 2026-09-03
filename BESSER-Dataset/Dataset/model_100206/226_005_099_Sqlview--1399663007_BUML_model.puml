@@ -1,0 +1,76 @@
+@startuml
+class sqlview_Attribute {
+  + name : str
+}
+class sqlview_Class {
+  + name : str
+}
+class sqlview_Comparison {
+}
+class sqlview_Condition {
+}
+class sqlview_EObject {
+}
+class sqlview_EclExpression {
+  + value : str
+}
+class sqlview_Expression {
+}
+class sqlview_From {
+}
+class sqlview_Join {
+}
+class sqlview_JoinLeft {
+}
+class sqlview_JoinRight {
+}
+class sqlview_Left {
+}
+class sqlview_Metamodel {
+  + metamodelURL : str
+}
+class sqlview_MetamodelName {
+  + name : str
+}
+class sqlview_Model {
+  + viewName : str
+}
+class sqlview_Relation {
+  + name : str
+}
+class sqlview_Right {
+  + value : str
+}
+class sqlview_Select {
+  + select : str
+}
+class sqlview_SelectAttribute {
+}
+sqlview_Attribute "0..9999" --* "1..1" sqlview_SelectAttribute : attribute18
+sqlview_Attribute "0..1" --* "1..1" sqlview_Left : attributeWhereLeft51
+sqlview_Attribute "0..1" --* "1..1" sqlview_Right : attributeWhereRight60
+sqlview_Class "0..9999" --* "1..1" sqlview_JoinLeft : classLeft31
+sqlview_Class "0..9999" --* "1..1" sqlview_JoinRight : classRight37
+sqlview_Class "0..9999" --* "1..1" sqlview_SelectAttribute : class_16
+sqlview_Class "0..9999" -- "1..1" sqlview_Left : class_48
+sqlview_Class "0..9999" -- "1..1" sqlview_Right : class_57
+sqlview_Condition "0..9999" --* "1..1" sqlview_Expression : condition9
+sqlview_Expression "0..9999" --* "1..1" sqlview_Model : expression1
+sqlview_Expression "1..1" *-- "0..9999" sqlview_From : from_7
+sqlview_From "1..1" *-- "0..9999" sqlview_Join : join20
+sqlview_Join "1..1" *-- "0..9999" sqlview_JoinLeft : joinLeft22
+sqlview_Join "1..1" *-- "0..9999" sqlview_JoinRight : joinRight24
+sqlview_Comparison "1..1" *-- "0..9999" sqlview_Left : left42
+sqlview_Metamodel "0..9999" --* "1..1" sqlview_Model : metamodel0
+sqlview_MetamodelName "0..9999" -- "1..1" sqlview_SelectAttribute : metamodel13
+sqlview_Left "1..1" -- "0..9999" sqlview_MetamodelName : metamodel45
+sqlview_MetamodelName "0..9999" -- "1..1" sqlview_Right : metamodel54
+sqlview_JoinLeft "1..1" -- "0..9999" sqlview_MetamodelName : metamodelLeft28
+sqlview_Metamodel "1..1" *-- "0..9999" sqlview_MetamodelName : metamodelName3
+sqlview_JoinRight "1..1" -- "0..9999" sqlview_MetamodelName : metamodelRight34
+sqlview_Join "1..1" *-- "0..9999" sqlview_Relation : relation26
+sqlview_Comparison "1..1" *-- "0..9999" sqlview_Right : right43
+sqlview_Expression "1..1" *-- "0..9999" sqlview_Select : select5
+sqlview_Select "1..1" *-- "0..9999" sqlview_SelectAttribute : selectAttribute11
+sqlview_Condition "1..1" *-- "0..9999" sqlview_EObject : value40
+@enduml

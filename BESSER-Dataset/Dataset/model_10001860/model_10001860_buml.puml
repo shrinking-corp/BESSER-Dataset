@@ -1,0 +1,44 @@
+@startuml
+class Event {
+  + location : str
+  + name : str
+  + time : str
+}
+class Interest {
+  + discription : str
+  + name : str
+}
+class Login {
+  + password : str
+  + username : str
+}
+class Notification {
+  + update : str
+}
+class Post {
+  + info : str
+}
+class Profile {
+  + interests : str
+  + password : str
+  + username : str
+}
+class Registration {
+  + fname : str
+  + lname : str
+  + password : str
+  + userName : str
+}
+class User {
+  + fname : str
+  + lname : str
+  + username : str
+}
+Notification "0..9999" -- "1..1" User : User_Friends
+Interest "0..9999" -- "1..1" User : User_Group
+Login "1..1" -- "1..1" User : User_Login
+Event "0..9999" -- "1..1" User : User_Message
+Profile "1..1" -- "1..1" User : User_Myprofile
+Interest "1..1" -- "0..9999" Post : User_Pages
+Registration "1..1" -- "1..1" User : User_Registeration
+@enduml

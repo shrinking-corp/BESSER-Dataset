@@ -1,0 +1,147 @@
+@startuml
+class Counted {
+}
+class Labelled {
+}
+class Named {
+}
+class StateMachineObject {
+}
+enum StateType {
+  final
+  initial
+  ongoing
+}
+class research32_Action {
+  + actionLabel : str
+  + actionStatement : str
+}
+class research32_Collaboration {
+  + ratio : int
+}
+abstract class research32_Counted {
+  + id : int
+}
+class research32_Keyword {
+  + word : str
+}
+class research32_KnowledgeManager {
+}
+abstract class research32_Labelled {
+  + lname : str
+}
+abstract class research32_Named {
+  + name : str
+}
+class research32_Paper {
+}
+class research32_PaperKeyword {
+  + weight : int
+}
+class research32_Paragraph {
+  + content : str
+}
+class research32_Phase {
+  + name : str
+}
+class research32_Position {
+  + description : str
+}
+class research32_Progress {
+  + percent : int
+}
+class research32_PublicationProcess {
+  + maxTime : int
+  + minTime : int
+}
+class research32_PublicationStatus {
+  + label : str
+}
+class research32_PublicationStructure {
+}
+class research32_PublicationSystem {
+}
+class research32_Researcher {
+  + forName : str
+  + name : str
+}
+class research32_Review {
+  + date : date
+}
+class research32_ReviewNote {
+  + content : str
+}
+class research32_Skill {
+  + description : str
+}
+class research32_State {
+  + id : int
+  + kind : str
+  + name : str
+}
+abstract class research32_StateMachineObject {
+  + label : str
+}
+class research32_StateMachineVariable {
+}
+class research32_Transition {
+  + guardExpression : str
+  + guardLabel : str
+}
+class research32_Write {
+  + timeSpent : int
+}
+Counted <|-- research32_Paragraph
+Labelled <|-- research32_Progress
+Labelled <|-- research32_Review
+Labelled <|-- research32_Write
+Named <|-- research32_Keyword
+Named <|-- research32_KnowledgeManager
+Named <|-- research32_Paper
+Named <|-- research32_Paragraph
+Named <|-- research32_Position
+Named <|-- research32_PublicationProcess
+Named <|-- research32_PublicationStructure
+Named <|-- research32_PublicationSystem
+Named <|-- research32_ReviewNote
+StateMachineObject <|-- research32_State
+StateMachineObject <|-- research32_Transition
+research32_Keyword "0..9999" --* "1..1" research32_KnowledgeManager : allkeywords55
+research32_Paper "1..1" -- "0..9999" research32_Researcher : authors13
+research32_Paper "0..1" -- "1..1" research32_Paper : citedBy17
+research32_Collaboration "1..1" -- "0..1" research32_Paper : col_paper61
+research32_Collaboration "0..9999" --* "1..1" research32_Researcher : collaborations9
+research32_Keyword "0..1" -- "1..1" research32_PaperKeyword : keyword58
+research32_Paper "1..1" *-- "0..9999" research32_PaperKeyword : keywords14
+research32_KnowledgeManager "0..1" --* "1..1" research32_PublicationStructure : knowledgeMan38
+research32_Keyword "1..1" -- "0..9999" research32_Paper : kpapers53
+research32_PublicationStatus "1..1" *-- "0..9999" research32_StateMachineVariable : machineVariables64
+research32_Action "0..1" -- "1..1" research32_Action : next83
+research32_Paper "0..1" -- "1..1" research32_Progress : paper25
+research32_Paper "0..9999" --* "1..1" research32_PublicationStructure : papers35
+research32_Paragraph "0..1" -- "1..1" research32_Write : paragraph27
+research32_Paper "1..1" *-- "0..9999" research32_Paragraph : paragraphs11
+research32_Position "0..1" -- "1..1" research32_Position : parent51
+research32_Phase "0..9999" --* "1..1" research32_PublicationProcess : phases0
+research32_Position "0..9999" --* "1..1" research32_PublicationSystem : positions47
+research32_Progress "1..1" -- "0..1" research32_PublicationProcess : process23
+research32_PublicationProcess "0..1" --* "1..1" research32_PublicationSystem : processView42
+research32_Paper "1..1" *-- "0..9999" research32_Progress : progress12
+research32_PublicationStatus "1..1" *-- "0..9999" research32_State : pubStates66
+research32_Paper "0..9999" -- "1..1" research32_Researcher : res_papers4
+research32_Position "0..1" -- "1..1" research32_Researcher : res_position7
+research32_PublicationStructure "1..1" *-- "0..9999" research32_Researcher : researchers33
+research32_Review "1..1" -- "0..1" research32_ReviewNote : reviewNote30
+research32_Researcher "1..1" *-- "0..9999" research32_Review : reviews2
+research32_Paragraph "1..1" *-- "0..9999" research32_ReviewNote : reviews21
+research32_Action "0..9999" --* "1..1" research32_State : s_actions79
+research32_Researcher "1..1" *-- "0..9999" research32_Skill : skills5
+research32_State "0..1" -- "1..1" research32_Transition : source70
+research32_Paper "1..1" -- "0..1" research32_State : state19
+research32_PublicationStatus "0..1" --* "1..1" research32_PublicationStructure : status40
+research32_PublicationStructure "0..1" --* "1..1" research32_PublicationSystem : structuralView44
+research32_Action "0..9999" --* "1..1" research32_Transition : t_actions69
+research32_State "0..1" -- "1..1" research32_Transition : target73
+research32_State "1..1" *-- "0..9999" research32_Transition : transitions76
+research32_Researcher "1..1" *-- "0..9999" research32_Write : writes1
+@enduml

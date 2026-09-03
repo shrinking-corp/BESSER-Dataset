@@ -1,0 +1,146 @@
+@startuml
+class Account {
+}
+class ContactMethod {
+}
+class Device {
+}
+class Party {
+}
+class TransactionInitiator {
+}
+abstract class bank_Account {
+  + balance : str
+  + description : str
+  + number : str
+  + periodStart : int
+}
+class bank_Bank {
+}
+class bank_Banker {
+}
+class bank_BankerTransaction {
+}
+class bank_Card {
+  + activated : date
+  + deactivated : date
+  + expires : date
+  + id : str
+  + issued : date
+  + virtual : bool
+}
+abstract class bank_ContactMethod {
+  + description : str
+  + name : str
+}
+class bank_Customer {
+}
+class bank_CustomerAccount {
+}
+abstract class bank_Device {
+}
+class bank_DeviceTransaction {
+}
+class bank_EMail {
+  + eMailAddress : str
+}
+class bank_InternalAccount {
+}
+class bank_Merchant {
+}
+class bank_MobilePhone {
+  + key : str
+  + number : str
+}
+class bank_OnlineSession {
+  + end : date
+  + internetAddress : str
+  + start : date
+}
+class bank_OnlineTransaction {
+}
+abstract class bank_Party {
+  + name : str
+}
+class bank_Phone {
+  + areaCode : int
+  + countryCode : int
+  + extension : int
+  + phoneNumber : int
+}
+class bank_PointOfSale {
+  + id : str
+}
+class bank_PostalAddress {
+  + city : str
+  + country : str
+  + line1 : str
+  + line2 : str
+  + postalCode : str
+  + stateProvince : str
+}
+class bank_Product {
+  + description : str
+  + name : str
+}
+class bank_Statement {
+  + closingBalance : str
+  + closingDate : date
+  + openingBalance : str
+  + openingDate : date
+}
+class bank_Token {
+  + value : str
+}
+class bank_TokenTransaction {
+}
+abstract class bank_Transaction {
+  + amount : str
+  + comment : str
+  + date : date
+  + id : str
+}
+abstract class bank_TransactionInitiator {
+}
+class bank_WebAddress {
+  + url : str
+}
+Account <|-- bank_CustomerAccount
+Account <|-- bank_InternalAccount
+ContactMethod <|-- bank_EMail
+ContactMethod <|-- bank_Phone
+ContactMethod <|-- bank_PostalAddress
+ContactMethod <|-- bank_WebAddress
+Device <|-- bank_Card
+Device <|-- bank_MobilePhone
+Party <|-- bank_Bank
+Party <|-- bank_Banker
+Party <|-- bank_Customer
+Party <|-- bank_Merchant
+TransactionInitiator <|-- bank_Banker
+TransactionInitiator <|-- bank_Device
+TransactionInitiator <|-- bank_OnlineSession
+TransactionInitiator <|-- bank_Token
+bank_Customer "1..1" -- "0..9999" bank_CustomerAccount : accounts10
+bank_Account "0..9999" --* "1..1" bank_Bank : accounts4
+bank_Bank "1..1" *-- "0..9999" bank_Banker : bankers8
+bank_ContactMethod "0..9999" --* "1..1" bank_Party : contactMethods0
+bank_Statement "1..1" -- "1..1" bank_Transaction : credit16
+bank_Bank "1..1" *-- "0..9999" bank_Customer : customers6
+bank_Statement "1..1" -- "1..1" bank_Transaction : debit15
+bank_CustomerAccount "1..1" *-- "0..9999" bank_Device : devices31
+bank_Transaction "1..1" -- "0..1" bank_TransactionInitiator : initiator18
+bank_PointOfSale "1..1" *-- "0..1" bank_PostalAddress : location21
+bank_Card "1..1" -- "0..1" bank_Merchant : lockedTo24
+bank_Merchant "1..1" -- "1..1" bank_Token : merchant37
+bank_Bank "1..1" *-- "0..9999" bank_Merchant : merchants1
+bank_Customer "1..1" *-- "0..9999" bank_OnlineSession : onlineSessions11
+bank_Customer "0..9999" -- "1..1" bank_CustomerAccount : owners36
+bank_DeviceTransaction "1..1" -- "0..1" bank_PointOfSale : pointOfSale29
+bank_Merchant "1..1" *-- "0..9999" bank_PointOfSale : pointsOfSale19
+bank_CustomerAccount "1..1" -- "1..1" bank_Product : product33
+bank_Bank "1..1" *-- "0..9999" bank_Product : products2
+bank_Card "0..1" -- "1..1" bank_Card : replaces27
+bank_Account "1..1" *-- "0..9999" bank_Statement : statements13
+bank_Device "1..1" *-- "0..9999" bank_Token : tokens23
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+class Arc {
+}
+class petriNetz_Arc {
+  + weight : int
+}
+class petriNetz_PTArc {
+}
+class petriNetz_Petrinet {
+  + name : str
+}
+class petriNetz_Place {
+  + name : str
+}
+class petriNetz_TPArc {
+}
+class petriNetz_Token {
+}
+class petriNetz_Transition {
+  + name : str
+}
+Arc <|-- petriNetz_PTArc
+Arc <|-- petriNetz_TPArc
+petriNetz_Arc "0..9999" --* "1..1" petriNetz_Petrinet : arcs3
+petriNetz_PTArc "0..9999" --* "1..1" petriNetz_Transition : in_11
+petriNetz_Place "1..1" *-- "0..9999" petriNetz_TPArc : in_9
+petriNetz_TPArc "0..9999" --* "1..1" petriNetz_Transition : out14
+petriNetz_PTArc "0..9999" --* "1..1" petriNetz_Place : out7
+petriNetz_Petrinet "1..1" *-- "0..9999" petriNetz_Place : places0
+petriNetz_PTArc "1..1" -- "0..1" petriNetz_Place : src17
+petriNetz_TPArc "1..1" -- "0..1" petriNetz_Transition : src26
+petriNetz_Place "1..1" *-- "0..9999" petriNetz_Token : tokens5
+petriNetz_Petrinet "1..1" *-- "0..9999" petriNetz_Transition : transitions1
+petriNetz_PTArc "1..1" -- "0..1" petriNetz_Transition : trg20
+petriNetz_Place "0..1" -- "1..1" petriNetz_TPArc : trg23
+@enduml

@@ -1,0 +1,120 @@
+@startuml
+class AbstractResource {
+}
+class Slot {
+}
+abstract class migration_AbstractResource {
+  + encoding : str
+  + uri : str
+}
+class migration_AttributeSlot {
+  + values : str
+}
+class migration_EAttribute {
+}
+class migration_EClass {
+}
+class migration_EPackage {
+}
+class migration_EReference {
+}
+class migration_Instance {
+  + uri : str
+  + uuid : str
+  + add(migration_featureName : str, migration_index : str, migration_value : str) : void
+  + copy() : str
+  + evaluate(migration_expression : str) : void
+  + get(migration_featureName : str) : void
+  + getContainer() : str
+  + getContainerReference() : str
+  + getContents() : str
+  + getEClass() : str
+  + getInverse(migration_referenceName : str) : str
+  + getLink(migration_reference : str) : str
+  + getLinks(migration_reference : str) : str
+  + getResource() : str
+  + getSlot(migration_feature : str) : str
+  + instanceOf(migration_eClass : str) : bool
+  + isProxy() : bool
+  + isSet(migration_feature : str) : bool
+  + migrate(migration_className : str) : void
+  + remove(migration_featureName : str, migration_value : str) : void
+  + set(migration_featureName : str, migration_value : str) : void
+  + unset(migration_feature : str) : void
+  + validate(migration_chain : str) : bool
+}
+class migration_Metamodel {
+  + delete(migration_metamodelElement : str) : void
+  + getEAllSubTypes(migration_eClass : str) : str
+  + getEAttribute(migration_name : str) : str
+  + getEClass(migration_name : str) : str
+  + getEClassifier(migration_name : str) : str
+  + getEDataType(migration_name : str) : str
+  + getEEnum(migration_name : str) : str
+  + getEEnumLiteral(migration_name : str) : str
+  + getEFeature(migration_name : str) : str
+  + getEPackage(migration_name : str) : str
+  + getEPackages() : str
+  + getEReference(migration_name : str) : str
+  + getESubTypes(migration_eClass : str) : str
+  + getElement(migration_name : str) : str
+  + getInverse(migration_metamodelElement : str, migration_reference : str) : void
+  + setDefaultPackage(migration_packageName : str) : void
+  + setEOpposite(migration_opposite : str, migration_reference : str) : void
+  + validate() : void
+}
+class migration_MetamodelResource {
+}
+class migration_Model {
+  + reflection : bool
+  + checkConformance() : void
+  + commit() : void
+  + createExtentMap() : void
+  + delete(migration_instance : str) : void
+  + getAllInstances(migration_className : str) : str
+  + getInstances(migration_className : str) : str
+  + getType(migration_eClass : str) : str
+  + newInstance(migration_className : str) : str
+  + newResource(migration_uri : str) : str
+  + validate() : void
+}
+class migration_ModelResource {
+}
+class migration_ReferenceSlot {
+}
+class migration_Repository {
+}
+abstract class migration_Slot {
+  + getEFeature() : str
+}
+class migration_Type {
+  + newInstance() : str
+}
+AbstractResource <|-- migration_MetamodelResource
+AbstractResource <|-- migration_ModelResource
+Slot <|-- migration_AttributeSlot
+Slot <|-- migration_ReferenceSlot
+migration_EPackage "0..1" -- "1..1" migration_Metamodel : defaultPackage30
+migration_AttributeSlot "1..1" -- "1..1" migration_EAttribute : eAttribute22
+migration_EClass "1..1" -- "1..1" migration_Type : eClass12
+migration_EReference "1..1" -- "1..1" migration_ReferenceSlot : eReference23
+migration_Instance "1..1" -- "1..1" migration_Slot : instance20
+migration_Instance "0..9999" --* "1..1" migration_Type : instances13
+migration_Metamodel "1..1" --* "1..1" migration_Repository : metamodel1
+migration_Metamodel "0..1" -- "1..1" migration_Model : metamodel3
+migration_Metamodel "0..1" -- "1..1" migration_MetamodelResource : metamodel34
+migration_Model "1..1" --* "1..1" migration_Repository : model0
+migration_Model "0..1" -- "1..1" migration_ModelResource : model10
+migration_Model "1..1" -- "1..1" migration_Type : model14
+migration_Instance "1..1" -- "0..9999" migration_ReferenceSlot : references19
+migration_Metamodel "1..1" -- "0..1" migration_Repository : repository27
+migration_Model "1..1" -- "0..1" migration_Repository : repository7
+migration_Metamodel "1..1" *-- "0..9999" migration_MetamodelResource : resources26
+migration_Model "1..1" *-- "0..9999" migration_ModelResource : resources5
+migration_Instance "0..9999" -- "1..1" migration_ModelResource : rootInstances9
+migration_EPackage "0..9999" -- "1..1" migration_MetamodelResource : rootPackages32
+migration_Instance "1..1" *-- "0..9999" migration_Slot : slots16
+migration_Instance "1..1" -- "1..1" migration_Type : type17
+migration_Model "1..1" *-- "0..9999" migration_Type : types4
+migration_Instance "0..9999" -- "1..1" migration_ReferenceSlot : values24
+@enduml

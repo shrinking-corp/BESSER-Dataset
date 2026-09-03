@@ -1,0 +1,43 @@
+@startuml
+enum DataType {
+  int
+  string
+}
+class Feature {
+}
+class Ref {
+}
+class myDot_Attribute {
+  + type : str
+}
+class myDot_DotExpression {
+}
+class myDot_Entity {
+  + name : str
+}
+class myDot_EntityRef {
+}
+class myDot_Feature {
+  + name : str
+}
+class myDot_Model {
+}
+class myDot_Ref {
+}
+class myDot_Reference {
+}
+class myDot_Usage {
+}
+Feature <|-- myDot_Attribute
+Feature <|-- myDot_Reference
+Ref <|-- myDot_DotExpression
+Ref <|-- myDot_EntityRef
+myDot_Entity "0..9999" --* "1..1" myDot_Model : entities0
+myDot_Entity "0..1" -- "1..1" myDot_EntityRef : entity14
+myDot_Entity "1..1" *-- "0..9999" myDot_Feature : features3
+myDot_Ref "0..1" --* "1..1" myDot_Usage : ref7
+myDot_DotExpression "1..1" *-- "0..1" myDot_Ref : ref9
+myDot_DotExpression "1..1" -- "0..1" myDot_Feature : tail11
+myDot_Entity "0..1" -- "1..1" myDot_Reference : type5
+myDot_Model "1..1" *-- "0..9999" myDot_Usage : usages1
+@enduml

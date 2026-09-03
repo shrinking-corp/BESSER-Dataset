@@ -1,0 +1,51 @@
+@startuml
+class Check_In_Item_external {
+}
+class Check_Out_Item_external {
+}
+class Extended_Checkout_external {
+}
+class Faculty {
+}
+class Faculty_Actor {
+}
+class Library_Management_Component {
+}
+class Library_Staff_Actor {
+}
+class Manage_Computer_Terminals_external {
+}
+class Manage_Reference_Materials_external {
+}
+class Order_New_Resources_external {
+}
+class Organize_Books_external {
+}
+class Patron {
+  + isMember : bool
+}
+class Patron_Actor {
+}
+class Renew_Magazine_Subscriptions_external {
+}
+class Request_Book_external {
+}
+class Reserve_Book_For_Semester_external {
+}
+class Student {
+}
+class Student_Actor {
+}
+Extended_Checkout_external "0..1" -- "0..1" Faculty_Actor : Faculty_Extended_Checkout
+Faculty_Actor "0..1" -- "0..1" Reserve_Book_For_Semester_external : Faculty_Reserve_Book_For_Semester
+Library_Staff_Actor "0..1" -- "0..1" Manage_Computer_Terminals_external : Library_Staff_Manage_Computer_Terminals
+Library_Staff_Actor "0..1" -- "0..1" Manage_Reference_Materials_external : Library_Staff_Manage_Reference_Materirals
+Library_Staff_Actor "0..1" -- "0..1" Order_New_Resources_external : Library_Staff_Order_New_Resources
+Library_Staff_Actor "0..1" -- "0..1" Organize_Books_external : Library_Staff_Organize_Books
+Library_Staff_Actor "0..1" -- "0..1" Renew_Magazine_Subscriptions_external : Library_Staff_Renew_Magazine_Subscriptions
+Library_Staff_Actor "0..1" -- "0..1" Reserve_Book_For_Semester_external : Library_Staff_Reserve_Book_For_Semester
+Check_In_Item_external "0..1" -- "0..1" Patron_Actor : Patron_Check_In_Books
+Check_Out_Item_external "0..1" -- "0..1" Patron_Actor : Patron_Check_Out_Books
+Patron_Actor "0..1" -- "0..1" Request_Book_external : Patron_Request_Book
+Extended_Checkout_external "0..1" -- "0..1" Student_Actor : Student_Extended_Checkout
+@enduml

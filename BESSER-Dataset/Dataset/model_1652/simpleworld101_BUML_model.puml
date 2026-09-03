@@ -1,0 +1,38 @@
+@startuml
+class Named {
+}
+class simpleworld101_Element {
+  + description : str
+}
+abstract class simpleworld101_Named {
+  + name : str
+}
+class simpleworld101_Part {
+  + content : str
+  + id : int
+}
+class simpleworld101_Person {
+  + foreName : str
+  + name : str
+}
+class simpleworld101_Relations {
+  + since : int
+}
+class simpleworld101_Thing {
+}
+class simpleworld101_World {
+}
+Named <|-- simpleworld101_Part
+Named <|-- simpleworld101_Thing
+Named <|-- simpleworld101_World
+simpleworld101_Part "0..9999" --* "1..1" simpleworld101_Thing : components6
+simpleworld101_Element "0..9999" --* "1..1" simpleworld101_Person : elements1
+simpleworld101_Thing "1..1" -- "0..1" simpleworld101_Thing : parent10
+simpleworld101_Part "0..1" -- "1..1" simpleworld101_Relations : parts12
+simpleworld101_Person "0..9999" --* "1..1" simpleworld101_World : persons15
+simpleworld101_Person "0..9999" -- "1..1" simpleworld101_Thing : persons8
+simpleworld101_Person "1..1" *-- "0..9999" simpleworld101_Relations : relations0
+simpleworld101_Person "1..1" -- "0..1" simpleworld101_Thing : thing3
+simpleworld101_Thing "0..9999" --* "1..1" simpleworld101_World : things17
+simpleworld101_Person "1..1" -- "0..9999" simpleworld101_Thing : things5
+@enduml

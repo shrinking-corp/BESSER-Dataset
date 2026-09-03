@@ -1,0 +1,113 @@
+@startuml
+class DataReaderWriter {
+}
+class DomainEntity {
+}
+class Entity {
+}
+class PublisherSubscriber {
+}
+class dcps_DataReader {
+}
+abstract class dcps_DataReaderWriter {
+  + copyFromTopicQos : bool
+}
+class dcps_DataWriter {
+}
+class dcps_DeadlineQosPolicy {
+}
+class dcps_DestinationOrderQosPolicy {
+}
+class dcps_Domain {
+  + domainId : str
+}
+class dcps_DomainParticipant {
+}
+class dcps_DurabilityQosPolicy {
+}
+class dcps_DurabilityServiceQosPolicy {
+}
+class dcps_EntityFactoryQosPolicy {
+}
+class dcps_GroupDataQosPolicy {
+}
+class dcps_HistoryQosPolicy {
+}
+class dcps_LatencyBudgetQosPolicy {
+}
+class dcps_LifespanQosPolicy {
+}
+class dcps_LivelinessQosPolicy {
+}
+class dcps_OwnershipQosPolicy {
+}
+class dcps_OwnershipStrengthQosPolicy {
+}
+class dcps_PartitionQosPolicy {
+}
+class dcps_PresentationQosPolicy {
+}
+class dcps_Publisher {
+}
+abstract class dcps_PublisherSubscriber {
+  + transportId : int
+}
+class dcps_ReaderDataLifecycleQosPolicy {
+}
+class dcps_ReliabilityQosPolicy {
+}
+class dcps_ResourceLimitsQosPolicy {
+}
+class dcps_Subscriber {
+}
+class dcps_TimeBasedFilterQosPolicy {
+}
+class dcps_Topic {
+}
+class dcps_TopicDescription {
+}
+class dcps_TransportPriorityQosPolicy {
+}
+class dcps_UserDataQosPolicy {
+}
+class dcps_WriterDataLifecycleQosPolicy {
+}
+DataReaderWriter <|-- dcps_DataReader
+DataReaderWriter <|-- dcps_DataWriter
+DomainEntity <|-- dcps_DataReaderWriter
+DomainEntity <|-- dcps_DomainParticipant
+DomainEntity <|-- dcps_PublisherSubscriber
+Entity <|-- dcps_Domain
+PublisherSubscriber <|-- dcps_Publisher
+PublisherSubscriber <|-- dcps_Subscriber
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_DeadlineQosPolicy : deadline21
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_DestinationOrderQosPolicy : destination_order22
+dcps_Domain "1..1" -- "1..1" dcps_DomainParticipant : domain0
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_DurabilityQosPolicy : durability24
+dcps_DataWriter "1..1" -- "0..1" dcps_DurabilityServiceQosPolicy : durability_service47
+dcps_DomainParticipant "1..1" -- "0..1" dcps_EntityFactoryQosPolicy : entity_factory5
+dcps_EntityFactoryQosPolicy "0..1" -- "1..1" dcps_PublisherSubscriber : entity_factory9
+dcps_GroupDataQosPolicy "0..1" -- "1..1" dcps_PublisherSubscriber : group_data11
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_HistoryQosPolicy : history26
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_LatencyBudgetQosPolicy : latency_budget28
+dcps_DataWriter "1..1" -- "0..1" dcps_LifespanQosPolicy : lifespan55
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_LivelinessQosPolicy : liveliness30
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_OwnershipQosPolicy : ownership32
+dcps_DataWriter "1..1" -- "0..1" dcps_OwnershipStrengthQosPolicy : ownership_strength49
+dcps_PartitionQosPolicy "0..1" -- "1..1" dcps_PublisherSubscriber : partition15
+dcps_PresentationQosPolicy "0..1" -- "1..1" dcps_PublisherSubscriber : presentation13
+dcps_DomainParticipant "1..1" *-- "0..9999" dcps_Publisher : publishers1
+dcps_DataReader "1..1" -- "0..1" dcps_ReaderDataLifecycleQosPolicy : reader_data_lifecycle41
+dcps_DataReader "1..9999" --* "1..1" dcps_Subscriber : readers17
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_ReliabilityQosPolicy : reliability34
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_ResourceLimitsQosPolicy : resource_limits36
+dcps_DomainParticipant "1..1" *-- "0..9999" dcps_Subscriber : subscribers3
+dcps_DataReader "1..1" -- "0..1" dcps_TimeBasedFilterQosPolicy : time_based_filter43
+dcps_DataReader "1..1" -- "1..1" dcps_TopicDescription : topic45
+dcps_DataWriter "1..1" -- "1..1" dcps_Topic : topic57
+dcps_DataWriter "1..1" -- "0..1" dcps_TransportPriorityQosPolicy : transport_priority51
+dcps_DataReaderWriter "1..1" -- "0..1" dcps_UserDataQosPolicy : user_data38
+dcps_DomainParticipant "1..1" -- "0..1" dcps_UserDataQosPolicy : user_data7
+dcps_DataWriter "1..1" -- "0..1" dcps_WriterDataLifecycleQosPolicy : writer_data_lifecycle53
+dcps_DataWriter "1..9999" --* "1..1" dcps_Publisher : writers19
+@enduml

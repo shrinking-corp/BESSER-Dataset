@@ -1,0 +1,54 @@
+@startuml
+enum InvoiceState {
+  Invoiced
+  New
+  Paid
+}
+class NamedElement {
+}
+class accounting_Client {
+}
+class accounting_ClientDatabase {
+}
+class accounting_Deliverable {
+  + dueDate : date
+  + unitAmount : float
+}
+class accounting_Employee {
+  + emails : str
+}
+class accounting_EmployeeDatabase {
+}
+class accounting_Invoice {
+  + id : str
+  + invoiceDate : date
+  + state : str
+  + unitAmount : float
+}
+abstract class accounting_NamedElement {
+  + name : str
+}
+class accounting_Order {
+  + id : str
+  + paymentOffset : int
+  + pricePerUnit : float
+  + validateUnitAmount(accounting_context : str, accounting_diagnosticChain : str) : bool
+}
+class accounting_Project {
+}
+NamedElement <|-- accounting_Client
+NamedElement <|-- accounting_Employee
+NamedElement <|-- accounting_Project
+accounting_Employee "0..1" -- "1..1" accounting_Invoice : advisor5
+accounting_Client "1..1" -- "1..1" accounting_Project : client10
+accounting_Client "0..9999" --* "1..1" accounting_ClientDatabase : clients15
+accounting_Deliverable "0..9999" --* "1..1" accounting_Order : deliverables1
+accounting_Employee "0..9999" --* "1..1" accounting_EmployeeDatabase : employees16
+accounting_Invoice "0..9999" --* "1..1" accounting_Order : invoices2
+accounting_Employee "0..1" -- "1..1" accounting_Project : liason13
+accounting_Deliverable "1..1" -- "1..1" accounting_Order : order4
+accounting_Invoice "1..1" -- "1..1" accounting_Order : order6
+accounting_Order "0..9999" --* "1..1" accounting_Project : orders11
+accounting_Order "1..1" -- "1..1" accounting_Project : project0
+accounting_Client "1..1" *-- "1..9999" accounting_Project : projects8
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+class Expression {
+}
+class mathDSL_Div {
+}
+class mathDSL_Expression {
+}
+class mathDSL_Math {
+}
+class mathDSL_Minus {
+}
+class mathDSL_Multi {
+}
+class mathDSL_NumberLiteral {
+  + value : str
+}
+class mathDSL_Plus {
+}
+Expression <|-- mathDSL_Div
+Expression <|-- mathDSL_Minus
+Expression <|-- mathDSL_Multi
+Expression <|-- mathDSL_NumberLiteral
+Expression <|-- mathDSL_Plus
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Math : expression0
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Plus : left1
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Multi : left11
+mathDSL_Div "1..1" *-- "0..1" mathDSL_Expression : left16
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Minus : left6
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Multi : right13
+mathDSL_Div "1..1" *-- "0..1" mathDSL_Expression : right18
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Plus : right3
+mathDSL_Expression "0..1" --* "1..1" mathDSL_Minus : right8
+@enduml

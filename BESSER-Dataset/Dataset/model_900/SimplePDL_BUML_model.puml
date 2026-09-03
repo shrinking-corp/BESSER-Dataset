@@ -1,0 +1,23 @@
+@startuml
+enum WorkSequenceType {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+class simplepdl_Process {
+  + name : str
+}
+class simplepdl_WorkDefinition {
+  + name : str
+}
+class simplepdl_WorkSequence {
+  + linkType : str
+}
+simplepdl_Process "1..1" *-- "1..9999" simplepdl_WorkDefinition : activities0
+simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors3
+simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors4
+simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor6
+simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor7
+simplepdl_Process "1..1" *-- "0..9999" simplepdl_WorkSequence : workSequences1
+@enduml

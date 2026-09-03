@@ -1,0 +1,93 @@
+@startuml
+class DatabaseResourceData {
+}
+class ExtensibleModel {
+}
+class oracle_DatabaseModuleExtensibleProperty {
+  + bizPkg : str
+  + space : str
+  + splitField : str
+  + splitNum : str
+  + startDate : str
+  + tableType : str
+}
+class oracle_OracleIndexProperty {
+  + reverse : bool
+}
+class oracle_OracleModuleProperty {
+  + space : str
+}
+class oracle_OraclePrivilege {
+  + decription : str
+  + name : str
+  + type : str
+}
+class oracle_OracleSequenceProperty {
+  + space : str
+}
+class oracle_OracleSpaceResourceData {
+}
+class oracle_OracleTableProperty {
+  + space : str
+  + tabletype : str
+}
+class oracle_OracleUser {
+  + attributes : str
+  + decription : str
+  + defaultTableSpace : str
+  + enable : bool
+  + name : str
+  + password : str
+}
+class oracle_OracleUserResourceData {
+}
+class oracle_OracleViewProperty {
+  + space : str
+}
+class oracle_SequenceResourceData {
+  + cache : str
+  + cycle : bool
+  + increment : str
+  + isHistory : bool
+  + maxValue : str
+  + minValue : str
+  + start : str
+  + tableName : str
+  + useCache : bool
+}
+class oracle_TableSpace {
+  + chineseName : str
+  + description : str
+  + file : str
+  + logicName : str
+  + name : str
+  + size : str
+  + user : str
+}
+class oracle_TableSpaceRelation {
+  + indexSpace : str
+  + mainSpace : str
+}
+class oracle_TriggerResourceData {
+  + sql : str
+}
+enum table_type {
+  COMMON
+  TEMP_NO_VALUE
+  TEMP_WITH_VALUE
+}
+DatabaseResourceData <|-- oracle_OracleSpaceResourceData
+DatabaseResourceData <|-- oracle_OracleUserResourceData
+DatabaseResourceData <|-- oracle_SequenceResourceData
+DatabaseResourceData <|-- oracle_TriggerResourceData
+ExtensibleModel <|-- oracle_DatabaseModuleExtensibleProperty
+ExtensibleModel <|-- oracle_OraclePrivilege
+ExtensibleModel <|-- oracle_OracleUser
+ExtensibleModel <|-- oracle_TableSpace
+ExtensibleModel <|-- oracle_TableSpaceRelation
+oracle_OraclePrivilege "0..9999" --* "1..1" oracle_OracleUserResourceData : privileges4
+oracle_OraclePrivilege "0..9999" -- "1..1" oracle_OracleUser : privileges6
+oracle_OracleSpaceResourceData "1..1" *-- "0..9999" oracle_TableSpaceRelation : relations1
+oracle_OracleSpaceResourceData "1..1" *-- "0..9999" oracle_TableSpace : spaces0
+oracle_OracleUser "0..9999" --* "1..1" oracle_OracleUserResourceData : users3
+@enduml

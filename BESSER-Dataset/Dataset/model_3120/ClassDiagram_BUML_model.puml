@@ -1,0 +1,42 @@
+@startuml
+class Attribute {
+}
+class Class {
+}
+class ClassDiagram_Attribute {
+  + multiValued : str
+}
+class ClassDiagram_Class {
+  + isAbstract : str
+}
+abstract class ClassDiagram_Classifier {
+}
+class ClassDiagram_DataType {
+}
+abstract class ClassDiagram_NamedElement {
+  + name : str
+}
+class ClassDiagram_Package {
+}
+class ClassDiagram_System {
+}
+class Classifier {
+}
+class NamedElement {
+}
+class Package {
+}
+Classifier <|-- ClassDiagram_Class
+Classifier <|-- ClassDiagram_DataType
+NamedElement <|-- ClassDiagram_Attribute
+NamedElement <|-- ClassDiagram_Classifier
+NamedElement <|-- ClassDiagram_Package
+NamedElement <|-- ClassDiagram_System
+Attribute "0..9999" --* "1..1" ClassDiagram_Class : attr3
+ClassDiagram_Package "1..1" *-- "0..9999" Classifier : ownedElement0
+ClassDiagram_Classifier "1..1" -- "1..1" Package : owner1
+Class "1..1" -- "1..1" ClassDiagram_Attribute : owner7
+ClassDiagram_System "1..1" *-- "0..9999" Package : packages9
+Class "0..9999" -- "1..1" ClassDiagram_Class : super2
+ClassDiagram_Attribute "1..1" -- "1..1" Classifier : type5
+@enduml

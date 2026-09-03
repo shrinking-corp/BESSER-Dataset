@@ -1,0 +1,39 @@
+@startuml
+class Arc {
+}
+class Node {
+}
+abstract class petrinet_Arc {
+  + weight : int
+}
+abstract class petrinet_Node {
+  + name : str
+}
+class petrinet_PetriNet {
+  + name : str
+}
+class petrinet_Place {
+  + capacity : int
+  + tokens : int
+}
+class petrinet_PlaceTransitionArc {
+}
+class petrinet_Transition {
+}
+class petrinet_TransitionPlaceArc {
+}
+Arc <|-- petrinet_PlaceTransitionArc
+Arc <|-- petrinet_TransitionPlaceArc
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_PetriNet : arcs19
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_PlaceTransitionArc : inputArcs13
+petrinet_Node "0..9999" --* "1..1" petrinet_PetriNet : nodes21
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_TransitionPlaceArc : outputArcs16
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Place : places8
+petrinet_Place "0..1" -- "1..1" petrinet_PlaceTransitionArc : ptFromPlace0
+petrinet_PlaceTransitionArc "1..1" -- "0..1" petrinet_Transition : ptToTransition1
+petrinet_Transition "0..1" -- "1..1" petrinet_TransitionPlaceArc : tpFromTransition3
+petrinet_Place "0..1" -- "1..1" petrinet_TransitionPlaceArc : tpToPlace5
+petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions10
+@enduml

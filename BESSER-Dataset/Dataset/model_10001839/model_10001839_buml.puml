@@ -1,0 +1,91 @@
+@startuml
+class Account {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+class Admin_Actor {
+}
+class Administrator {
+  + Email : str
+  + IDAdm : int
+  + Last_name : str
+  + Name : str
+  + Password : str
+}
+class AjoutProduit_UseCase {
+}
+class Customer {
+  + Email : str
+  + IDCust : int
+  + Last_name : str
+  + Name : str
+  + Password : str
+}
+class Customer_Support {
+  + Email : str
+  + ID : int
+  + Password : str
+}
+class LineItem {
+  + price : float
+  + quantity : int
+}
+class MyActor_Actor {
+}
+class Order {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : str
+  + total : float
+}
+class Payment {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Product {
+  + description : str
+  + name : str
+}
+class Shop_Owner {
+  + Email : str
+  + IDSowner : int
+  + Last_name : str
+  + Name : str
+  + Password : str
+}
+class ShoppingCart {
+  + creationDate : date
+}
+class Visitor {
+}
+class Webuser_Actor {
+}
+Account "1..1" -- "0..9999" Order : Account_Order
+Account "1..1" -- "0..9999" Payment : Account_Payment
+Account "1..1" -- "1..1" ShoppingCart : Account_ShoppingCart
+Account "1..1" -- "0..1" ShoppingCart : Account_ShoppingCart2
+Administrator "0..1" -- "1..9999" Customer : Administrator_Customer
+Administrator "1..1" -- "1..9999" Product : Administrator_Product
+Account "1..1" -- "1..1" Customer : Customer_Account
+Customer "0..1" -- "0..1" Customer_Support : Customer_Support_Customer
+LineItem "0..9999" -- "1..1" Product : LineItem_Product
+LineItem "1..9999" -- "0..1" Order : Order_LineItem
+Account "0..1" -- "0..1" Payment : Payment_Account
+Order "1..1" -- "0..1" Payment : Payment_Order
+Account "0..1" -- "1..9999" Product : Product_Account
+Product "1..9999" -- "0..1" ShoppingCart : Product_ShoppingCart
+Product "1..9999" -- "1..1" Shop_Owner : Shop_Owner_Product
+LineItem "0..9999" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+Order "0..1" -- "0..1" ShoppingCart : ShoppingCart_Order
+Administrator "1..1" -- "1..9999" Shop_Owner : Vendors_Administrator
+Product "1..9999" -- "1..1" Shop_Owner : Vendors_Product
+Product "0..9999" -- "1..1" Visitor : Visitor_Product
+Customer "1..1" -- "1..1" Visitor : WebUser_Customer
+ShoppingCart "1..1" -- "1..1" Visitor : WebUser_ShoppingCart
+Admin_Actor "0..1" -- "0..1" AjoutProduit_UseCase : association2
+@enduml

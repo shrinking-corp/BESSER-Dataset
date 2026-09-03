@@ -1,0 +1,68 @@
+@startuml
+class Guard {
+}
+class NamedElement {
+}
+class tfsm_EvaluateGuard {
+  + condition : str
+  + evaluate() : bool
+}
+class tfsm_EventGuard {
+}
+class tfsm_FSMClock {
+  + ticks() : void
+}
+class tfsm_FSMEvent {
+  + occurs() : void
+}
+abstract class tfsm_Guard {
+}
+abstract class tfsm_NamedElement {
+  + name : str
+}
+class tfsm_State {
+  + onEnter() : void
+  + onLeave() : void
+}
+class tfsm_TFSM {
+  + initialize() : void
+}
+class tfsm_TemporalGuard {
+  + afterDuration : int
+}
+class tfsm_TimedSystem {
+  + initialize() : void
+}
+class tfsm_Transition {
+  + action : str
+  + fire() : void
+}
+Guard <|-- tfsm_EvaluateGuard
+Guard <|-- tfsm_EventGuard
+Guard <|-- tfsm_TemporalGuard
+NamedElement <|-- tfsm_FSMClock
+NamedElement <|-- tfsm_FSMEvent
+NamedElement <|-- tfsm_Guard
+NamedElement <|-- tfsm_State
+NamedElement <|-- tfsm_TFSM
+NamedElement <|-- tfsm_TimedSystem
+NamedElement <|-- tfsm_Transition
+tfsm_FSMEvent "0..9999" -- "1..1" tfsm_Transition : generatedEvents18
+tfsm_FSMClock "0..9999" --* "1..1" tfsm_TimedSystem : globalClocks30
+tfsm_FSMEvent "0..9999" --* "1..1" tfsm_TimedSystem : globalEvents33
+tfsm_State "1..1" -- "0..9999" tfsm_Transition : incomingTransitions10
+tfsm_State "1..1" -- "1..1" tfsm_TFSM : initialState1
+tfsm_FSMClock "1..1" --* "1..1" tfsm_TFSM : localClock4
+tfsm_FSMEvent "0..9999" --* "1..1" tfsm_TFSM : localEvents2
+tfsm_FSMClock "1..1" -- "1..1" tfsm_TemporalGuard : onClock21
+tfsm_State "1..1" -- "0..9999" tfsm_Transition : outgoingTransitions9
+tfsm_Guard "1..1" --* "1..1" tfsm_Transition : ownedGuard16
+tfsm_State "0..9999" --* "1..1" tfsm_TFSM : ownedStates0
+tfsm_TFSM "1..1" *-- "0..9999" tfsm_Transition : ownedTransitions6
+tfsm_State "1..1" -- "1..1" tfsm_TFSM : owningFSM8
+tfsm_FSMEvent "1..1" -- "0..9999" tfsm_Transition : sollicitingTransitions25
+tfsm_State "1..1" -- "1..1" tfsm_Transition : source12
+tfsm_State "1..1" -- "1..1" tfsm_Transition : target14
+tfsm_TFSM "0..9999" --* "1..1" tfsm_TimedSystem : tfsms28
+tfsm_EventGuard "1..1" -- "1..1" tfsm_FSMEvent : triggeringEvent23
+@enduml

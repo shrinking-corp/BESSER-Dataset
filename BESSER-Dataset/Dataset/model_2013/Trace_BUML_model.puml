@@ -1,0 +1,29 @@
+@startuml
+class Call {
+}
+class Index {
+}
+class Level {
+}
+class Trace {
+}
+class Trace_Call {
+  + CPUTime : str
+  + DBAccessesNumber : str
+  + DBRowsNumber : str
+  + methodName : str
+}
+class Trace_Index {
+  + value : str
+}
+class Trace_Level {
+}
+class Trace_Trace {
+  + name : str
+}
+Call "0..9999" --* "1..1" Trace_Level : calls2
+Index "1..9999" --* "1..1" Trace_Call : indexes5
+Level "1..1" -- "1..1" Trace_Call : level3
+Level "0..9999" --* "1..1" Trace_Trace : levels0
+Trace "1..1" -- "1..1" Trace_Level : trace1
+@enduml

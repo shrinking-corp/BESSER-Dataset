@@ -1,0 +1,182 @@
+@startuml
+class AbstractEvent {
+}
+enum EventType {
+  CHECK_IN
+  CHECK_OUT
+}
+class IBooking {
+}
+class IEvent {
+}
+class IHotelCustomerProvides {
+}
+class IHotelRoomProvider {
+}
+class IRoom {
+}
+class IRoomType {
+}
+class bookingSystem_IBooking {
+}
+class bookingSystem_IEvent {
+}
+class bookingSystem_IHotelBookingManager {
+}
+class bookingSystem_IHotelCustomerProvides {
+}
+class roomManager_IHotelRoomManager {
+}
+class roomManager_IHotelRoomProvider {
+}
+class roomManager_IHotelStartupProvies {
+}
+class roomManager_IRoom {
+}
+class roomManager_IRoomType {
+}
+abstract class se_bookingSystem_AbstractEvent {
+  + bookingID : int
+  + eventType : str
+  + timestamp : str
+}
+class se_bookingSystem_Booking {
+  + endDate : str
+  + firstName : str
+  + id : int
+  + lastName : str
+  + startDate : str
+}
+class se_bookingSystem_BookingSystem {
+  + bookingId : int
+}
+class se_bookingSystem_CheckInEvent {
+}
+class se_bookingSystem_CheckOutEvent {
+}
+class se_bookingSystem_FreeRoomTypesDTO {
+  + numBeds : int
+  + numFreeRooms : int
+  + pricePerNight : float
+  + roomTypeDescription : str
+}
+abstract class se_bookingSystem_IBooking {
+  + addRoom(se_room : str) : bool
+  + checkInRoom(se_roomToCheckIn : str) : bool
+  + checkOutRoom(se_roomToCheckOut : str) : bool
+  + getCheckedInRooms() : str
+  + getEndDate() : str
+  + getFirstName() : str
+  + getID() : int
+  + getLastName() : str
+  + getRooms() : str
+  + getStartDate() : str
+  + setEndDate(se_endDate : str) : void
+  + setRooms(se_rooms : str) : void
+  + setStartDate(se_startDate : str) : void
+}
+abstract class se_bookingSystem_IEvent {
+  + getBookingId() : int
+  + getTimestamp() : str
+  + getType() : str
+}
+abstract class se_bookingSystem_IHotelBookingManager {
+  + addExtraCostToRoom(se_bookingId : str, se_descriptionOfCost : str, se_priceOfCost : str, se_roomNumber : str) : void
+  + cancelBooking(se_bookingId : str) : void
+  + editBookingPeriod(se_bookingId : str, se_endDate : str, se_startDate : str) : bool
+  + editBookingRooms(se_bookingID : str, se_numOfRooms : str, se_roomType : str) : void
+  + initiateCheckin(se_bookingId : str) : str
+  + listBooking() : str
+  + listCheckins(se_endTime : str, se_startTime : str) : str
+  + listCheckouts(se_endTime : str, se_startTime : str) : str
+  + listOccupiedRooms(se_date : str) : str
+}
+abstract class se_bookingSystem_IHotelCustomerProvides {
+  + addRoomToBooking(se_bookingID : str, se_roomTypeDescription : str) : bool
+  + checkInRoom(se_bookingId : str, se_roomTypeDescription : str) : int
+  + confirmBooking(se_bookingID : str) : bool
+  + getFreeRooms(se_endDate : str, se_numBeds : str, se_startDate : str) : str
+  + initiateBooking(se_endDate : str, se_firstName : str, se_lastName : str, se_startDate : str) : int
+  + initiateCheckout(se_bookingID : str) : float
+  + initiateRoomCheckout(se_bookingId : str, se_roomNumber : str) : float
+  + payDuringCheckout(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str) : bool
+  + payRoomDuringCheckout(se_ccNumber : str, se_ccv : str, se_expiryMonth : str, se_expiryYear : str, se_firstName : str, se_lastName : str, se_roomNumber : str) : bool
+}
+abstract class se_roomManager_IHotelRoomManager {
+  + addRoom(se_roomNumber : str, se_roomType : str) : bool
+  + addRoomType(se_description : str, se_name : str, se_numberOfBeds : str, se_price : str) : bool
+  + blockRoom(se_roomNumber : str) : void
+  + changeRoomType(se_roomNumber : str, se_roomType : str) : bool
+  + getRoomTypes() : str
+  + removeRoom(se_roomNumber : str) : str
+  + removeRoomType(se_roomType : str) : str
+  + unblockRoom(se_roomNumber : str) : void
+  + updateRoomType(se_description : str, se_name : str, se_numberOfBeds : str, se_price : str, se_roomType : str) : void
+}
+abstract class se_roomManager_IHotelRoomProvider {
+  + getRooms() : str
+}
+abstract class se_roomManager_IHotelStartupProvies {
+  + startup(se_numRoom : str) : void
+}
+abstract class se_roomManager_IRoom {
+  + addExtraCost(se_extraCostPrice : str) : void
+  + getExtraCostDescription() : str
+  + getExtraCostPrice() : float
+  + getRoomNumber() : int
+  + getRoomType() : str
+  + isBlocked() : bool
+  + isOccupied() : bool
+  + setExtraCostDescription(se_extraCostDescription : str) : void
+  + setIsBlocked(se_blocked : str) : void
+  + setOccupied(se_status : str) : void
+  + setRoomType(se_roomType : str) : void
+}
+abstract class se_roomManager_IRoomType {
+  + getDescription() : str
+  + getName() : str
+  + getNumberOfBeds() : int
+  + getPrice() : float
+  + setDescription(se_description : str) : void
+  + setName(se_name : str) : void
+  + setNumberOfBeds(se_beds : str) : void
+  + setPrice(se_price : str) : void
+}
+class se_roomManager_Room {
+  + blocked : bool
+  + extraCostDescriptions : str
+  + extraCostPrice : float
+  + occupied : bool
+  + roomNumber : int
+}
+class se_roomManager_RoomManager {
+}
+class se_roomManager_RoomType {
+  + description : str
+  + name : str
+  + numberOfBeds : int
+  + price : float
+}
+AbstractEvent <|-- se_bookingSystem_CheckInEvent
+AbstractEvent <|-- se_bookingSystem_CheckOutEvent
+IBooking <|-- se_bookingSystem_Booking
+IEvent <|-- se_bookingSystem_AbstractEvent
+IHotelCustomerProvides <|-- se_bookingSystem_IHotelBookingManager
+IHotelRoomProvider <|-- se_roomManager_IHotelRoomManager
+IRoom <|-- se_roomManager_Room
+IRoomType <|-- se_roomManager_RoomType
+bookingSystem_IHotelBookingManager <|-- se_bookingSystem_BookingSystem
+bookingSystem_IHotelCustomerProvides <|-- se_bookingSystem_BookingSystem
+roomManager_IHotelRoomManager <|-- se_roomManager_RoomManager
+roomManager_IHotelRoomProvider <|-- se_roomManager_RoomManager
+roomManager_IHotelStartupProvies <|-- se_roomManager_RoomManager
+bookingSystem_IBooking "0..9999" -- "1..1" se_bookingSystem_BookingSystem : bookings1
+roomManager_IRoom "0..9999" -- "1..1" se_bookingSystem_Booking : checkedInRooms9
+bookingSystem_IEvent "0..9999" -- "1..1" se_bookingSystem_BookingSystem : events0
+roomManager_IRoom "0..9999" -- "1..1" se_bookingSystem_Booking : roomList7
+roomManager_IHotelRoomProvider "1..1" -- "1..1" se_bookingSystem_BookingSystem : roomProvider3
+roomManager_IRoomType "1..1" -- "1..1" se_roomManager_Room : roomType16
+roomManager_IRoomType "0..9999" -- "1..1" se_roomManager_RoomManager : roomTypes12
+roomManager_IRoom "0..9999" -- "1..1" se_roomManager_RoomManager : rooms13
+roomManager_IRoom "0..9999" -- "1..1" se_bookingSystem_BookingSystem : rooms5
+@enduml

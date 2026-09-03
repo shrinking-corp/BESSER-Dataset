@@ -1,0 +1,43 @@
+@startuml
+class feature_Annotation {
+}
+class feature_Attribute {
+  + name : str
+  + type : str
+  + value : str
+}
+class feature_Constraint {
+  + expression : str
+  + language : str
+}
+class feature_Feature {
+  + maxCardinality : int
+  + minCardinality : int
+  + name : str
+  + isMandatory() : bool
+}
+class feature_FeatureModel {
+  + name : str
+  + getAllFeatures() : str
+  + getMandatoryFeatures() : str
+}
+class feature_Group {
+  + maxCardinality : int
+  + minCardinality : int
+}
+feature_Annotation "0..9999" --* "1..1" feature_Feature : annotations15
+feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes11
+feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures19
+feature_FeatureModel "1..1" *-- "0..9999" feature_FeatureModel : children4
+feature_Constraint "1..1" -- "1..9999" feature_Feature : constrainedFeatures21
+feature_FeatureModel "1..1" -- "0..1" feature_FeatureModel : constrainingFeatureModel9
+feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints0
+feature_Constraint "0..9999" -- "1..1" feature_Feature : constraints17
+feature_Attribute "1..1" -- "1..1" feature_Feature : feature23
+feature_Annotation "1..1" -- "1..1" feature_Feature : feature25
+feature_Feature "1..1" *-- "0..9999" feature_Group : groups12
+feature_FeatureModel "1..1" -- "0..1" feature_FeatureModel : parent6
+feature_Feature "1..1" -- "1..1" feature_Group : parentFeature18
+feature_Feature "1..1" -- "0..1" feature_Group : parentGroup13
+feature_Feature "0..1" --* "1..1" feature_FeatureModel : root1
+@enduml

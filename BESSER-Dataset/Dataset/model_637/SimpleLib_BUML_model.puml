@@ -1,0 +1,23 @@
+@startuml
+class lib_Address {
+  + postalCode : str
+}
+class lib_Book {
+  + title : str
+}
+class lib_Cafeteria {
+  + name : str
+}
+class lib_Library {
+  + name : str
+}
+class lib_Person {
+  + name : str
+}
+lib_Address "1..1" --* "1..1" lib_Library : address1
+lib_Book "0..9999" --* "1..1" lib_Library : books0
+lib_Cafeteria "0..1" --* "1..1" lib_Library : cafeteria4
+lib_Library "0..1" -- "1..1" lib_Person : library6
+lib_Cafeteria "1..1" -- "1..1" lib_Library : library7
+lib_Library "1..1" *-- "0..9999" lib_Person : writers3
+@enduml

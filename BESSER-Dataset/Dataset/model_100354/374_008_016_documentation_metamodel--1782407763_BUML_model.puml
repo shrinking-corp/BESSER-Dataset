@@ -1,0 +1,61 @@
+@startuml
+class Behavior {
+}
+enum PseudostateKind {
+  choice
+  deepHistory
+  entryPoint
+  exitPoint
+  fork
+  initial
+  join
+  junction
+  shallowHistory
+  terminate
+}
+class State {
+}
+class Vertex {
+}
+class uml_Activity {
+}
+abstract class uml_Behavior {
+  + name : str
+}
+class uml_FinalState {
+}
+class uml_Pseudostate {
+  + kind : str
+}
+class uml_Region {
+}
+class uml_State {
+}
+class uml_StateMachine {
+}
+class uml_Transition {
+  + name : str
+}
+class uml_Trigger {
+  + name : str
+}
+abstract class uml_Vertex {
+  + name : str
+}
+Behavior <|-- uml_Activity
+Behavior <|-- uml_StateMachine
+State <|-- uml_FinalState
+Vertex <|-- uml_Pseudostate
+Vertex <|-- uml_State
+uml_Region "0..1" -- "1..1" uml_Vertex : container13
+uml_Behavior "0..1" --* "1..1" uml_State : doActivity19
+uml_Behavior "0..1" --* "1..1" uml_Transition : effect1
+uml_Behavior "0..1" --* "1..1" uml_State : entry14
+uml_Behavior "0..1" --* "1..1" uml_State : exit16
+uml_Region "1..9999" --* "1..1" uml_StateMachine : region0
+uml_Transition "1..1" -- "1..1" uml_Vertex : source6
+uml_Region "1..1" *-- "0..9999" uml_Vertex : subvertex9
+uml_Transition "1..1" -- "1..1" uml_Vertex : target4
+uml_Region "1..1" *-- "0..9999" uml_Transition : transition10
+uml_Transition "1..1" *-- "0..9999" uml_Trigger : trigger2
+@enduml

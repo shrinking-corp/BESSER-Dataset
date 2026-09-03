@@ -1,0 +1,29 @@
+@startuml
+class AbstractMachineElement {
+}
+class AbstractStateElement {
+}
+enum VisibilityType {
+  PRIVATE
+  PUBLIC
+}
+abstract class stateMachine_AbstractMachineElement {
+}
+abstract class stateMachine_AbstractStateElement {
+  + name : str
+}
+class stateMachine_State {
+}
+class stateMachine_StateMachine {
+  + name : str
+}
+class stateMachine_StateTransition {
+  + visibility : str
+}
+AbstractMachineElement <|-- stateMachine_AbstractStateElement
+AbstractMachineElement <|-- stateMachine_StateTransition
+AbstractStateElement <|-- stateMachine_State
+stateMachine_AbstractMachineElement "0..9999" --* "1..1" stateMachine_StateMachine : elements4
+stateMachine_AbstractStateElement "1..1" -- "1..1" stateMachine_StateTransition : from_0
+stateMachine_AbstractStateElement "1..1" -- "1..1" stateMachine_StateTransition : to1
+@enduml

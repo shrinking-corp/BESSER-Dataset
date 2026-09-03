@@ -1,0 +1,65 @@
+@startuml
+class Exame {
+}
+class clinicasaudeperfeita_Analisa_consulta_UseCase {
+}
+class clinicasaudeperfeita_Compromisso {
+  + data : str
+  + descricao : str
+  + hora : str
+}
+class clinicasaudeperfeita_Consulta {
+  + data : str
+  + exame : Exame
+  + hora : str
+  + marcada : bool
+  + medicamentos : clinicasaudeperfeita_Medicamento
+  + medico : clinicasaudeperfeita_Medico
+  + orientacoesMedicas : str
+  + paciente : clinicasaudeperfeita_Paciente
+  + problemasPaciente : str
+  + realizada : bool
+}
+class clinicasaudeperfeita_Consulta_UseCase {
+}
+class clinicasaudeperfeita_Exame {
+  + nome : str
+}
+class clinicasaudeperfeita_Marca_consulta_UseCase {
+}
+class clinicasaudeperfeita_Medicamento {
+  + nome : str
+}
+class clinicasaudeperfeita_Medico {
+  + agenda : clinicasaudeperfeita_Compromisso
+  + cpf : str
+  + idade : int
+  + nome : str
+}
+class clinicasaudeperfeita_Medico_Actor {
+}
+class clinicasaudeperfeita_Paciente {
+  + cSus : str
+  + cpf : str
+  + idade : int
+  + nome : str
+}
+class clinicasaudeperfeita_Paciente_Actor {
+}
+class clinicasaudeperfeita_Recepcionista {
+  + cpf : str
+  + idade : int
+  + nome : str
+}
+class clinicasaudeperfeita_Recepcionista_Actor {
+}
+clinicasaudeperfeita_Compromisso "0..9999" -- "0..1" clinicasaudeperfeita_Medico : Compromisso_Medico
+clinicasaudeperfeita_Consulta_UseCase "0..1" -- "0..1" clinicasaudeperfeita_Medico_Actor : Consulta_Medico
+clinicasaudeperfeita_Consulta "0..1" -- "0..9999" clinicasaudeperfeita_Exame : Exame_Consulta
+clinicasaudeperfeita_Consulta "0..1" -- "0..9999" clinicasaudeperfeita_Medicamento : Medicamento_Consulta
+clinicasaudeperfeita_Consulta "0..9999" -- "1..1" clinicasaudeperfeita_Medico : Medico_Consulta
+clinicasaudeperfeita_Consulta "0..9999" -- "1..1" clinicasaudeperfeita_Paciente : Paciente_Consulta
+clinicasaudeperfeita_Analisa_consulta_UseCase "0..1" -- "0..1" clinicasaudeperfeita_Paciente_Actor : Paciente_analizaConsulta
+clinicasaudeperfeita_Consulta "0..9999" -- "1..1" clinicasaudeperfeita_Recepcionista : Recepcionista_Consulta
+clinicasaudeperfeita_Marca_consulta_UseCase "0..1" -- "0..1" clinicasaudeperfeita_Recepcionista_Actor : Recepcionista_Marca_consulta
+@enduml

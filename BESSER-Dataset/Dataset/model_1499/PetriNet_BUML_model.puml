@@ -1,0 +1,30 @@
+@startuml
+enum ArcType {
+  Normal
+  Read_arc
+}
+class PetriElement {
+}
+class PetriNet_Arc {
+  + poids : str
+  + type : str
+}
+class PetriNet_PetriElement {
+  + name : str
+}
+class PetriNet_Place {
+  + borne : str
+  + nbJeton : str
+}
+class PetriNet_ReseauPetri {
+  + name : str
+}
+class PetriNet_Transition {
+}
+PetriElement <|-- PetriNet_Place
+PetriElement <|-- PetriNet_Transition
+PetriNet_Arc "0..9999" --* "1..1" PetriNet_ReseauPetri : arcs6
+PetriNet_Arc "1..1" -- "1..1" PetriNet_PetriElement : debut0
+PetriNet_PetriElement "0..9999" --* "1..1" PetriNet_ReseauPetri : elements4
+PetriNet_Arc "1..1" -- "1..1" PetriNet_PetriElement : fin1
+@enduml

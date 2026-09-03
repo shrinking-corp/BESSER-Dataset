@@ -1,0 +1,50 @@
+@startuml
+class Conge {
+  + adresse : str
+  + datedebut : str
+  + datefin : str
+  + id : int
+}
+class Employ_ {
+  + ID : int
+  + adresse : str
+  + nom : str
+  + poste : str
+  + prenom : str
+}
+class EtatConge {
+  + idEtat : int
+  + nom : str
+}
+class abs {
+  + idab : int
+  + motif : str
+  + nbrjr : int
+}
+class administrateur {
+  + secteur : str
+}
+class reduire {
+}
+class retard {
+  + idretad : int
+  + motif : str
+  + nbrminute : int
+}
+class salari_ {
+  + departement : str
+}
+class typeEmploy_ {
+  + id : str
+}
+class typecong_ {
+  + idconge : int
+}
+Conge "0..9999" -- "0..1" EtatConge : Conge_EtatConge
+Conge "0..9999" -- "0..1" typecong_ : Conge_typecong_
+Conge "0..1" -- "0..9999" Employ_ : Employ__Conge
+Employ_ "0..9999" -- "1..1" typeEmploy_ : Employ__typeEmploy_
+Employ_ "0..1" -- "0..9999" abs : abs_Employ_
+Employ_ "0..1" -- "0..9999" retard : retard_Employ_
+Conge "0..1" -- "0..9999" salari_ : salari__Conge
+@enduml

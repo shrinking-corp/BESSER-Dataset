@@ -1,0 +1,284 @@
+@startuml
+class AggregatingSIDiseaseModel {
+}
+class AggregatingSIRDiseaseModel {
+}
+class DiseaseModel {
+}
+class DiseaseModelLabel {
+}
+class DiseaseModelLabelValue {
+}
+class DiseaseModelState {
+}
+class DynamicNodeLabel {
+}
+class Infector {
+}
+class IntegrationDecorator {
+}
+class IntegrationLabel {
+}
+class IntegrationLabelValue {
+}
+class LabelValue {
+}
+class Modifiable {
+}
+class NodeDecorator {
+}
+class SEIR {
+}
+class SI {
+}
+class SIInfector {
+}
+class SILabelValue {
+}
+class SIR {
+}
+class SIRLabelValue {
+}
+class SanityChecker {
+}
+class StandardDiseaseModel {
+}
+class StandardDiseaseModelLabel {
+}
+class StandardDiseaseModelLabelValue {
+}
+class StandardDiseaseModelState {
+}
+class StandardInfector {
+}
+class StandardStochasticDiseaseModel {
+}
+class StochasticDiseaseModel {
+}
+class standard_AggregatingDiseaseModelState {
+}
+class standard_AggregatingSEIRDiseaseModel {
+}
+class standard_AggregatingSIDiseaseModel {
+}
+class standard_AggregatingSIRDiseaseModel {
+}
+class standard_DeterministicSEIRDiseaseModel {
+}
+class standard_DeterministicSIDiseaseModel {
+}
+class standard_DeterministicSIRDiseaseModel {
+}
+abstract class standard_DiseaseModel {
+  + backgroundBirthRate : float
+  + backgroundMortalityRate : float
+  + diseaseName : str
+  + finiteDifference : bool
+  + frequencyDependent : bool
+  + populationIdentifier : str
+  + relativeTolerance : float
+  + timePeriod : str
+  + createDiseaseModelLabel() : str
+  + createDiseaseModelLabelValue() : str
+  + createDiseaseModelState() : str
+  + createInfector() : str
+  + getAdjustedBackgroundBirthRate(standard_timeDelta : str) : float
+  + getAdjustedBackgroundMortalityRate(standard_timeDelta : str) : float
+  + initializeDiseaseState(standard_diseaseModelLabel : str) : void
+}
+abstract class standard_DiseaseModelLabel {
+}
+abstract class standard_DiseaseModelLabelValue {
+  + diseaseDeaths : float
+  + incidence : float
+  + populationCount : float
+  + add(standard_value : str) : str
+  + scale(standard_scaleFactor : str) : str
+  + set(standard_value : str) : str
+  + sub(standard_value : str) : str
+  + zeroOutPopulationCount() : void
+}
+abstract class standard_DiseaseModelState {
+}
+abstract class standard_Infector {
+  + diseaseName : str
+  + infectPercentage : bool
+  + populationIdentifier : str
+  + targetISOKey : str
+  + targetURI : str
+}
+class standard_InfectorInoculatorCollection {
+  + importFolder : str
+}
+abstract class standard_IntegrationDecorator {
+  + isDeterministic() : bool
+}
+abstract class standard_IntegrationLabel {
+}
+abstract class standard_IntegrationLabelValue {
+}
+class standard_PopulationLabel {
+}
+class standard_PopulationModelLabel {
+}
+abstract class standard_SEIR {
+  + incubationRate : float
+  + getAdjustedIncubationRate(standard_timeDelta : str) : float
+}
+class standard_SEIRLabel {
+}
+class standard_SEIRLabelValue {
+  + e : float
+}
+abstract class standard_SI {
+  + characteristicMixingDistance : float
+  + infectiousMortality : float
+  + infectiousMortalityRate : float
+  + nonLinearityCoefficient : float
+  + physicallyAdjacentInfectiousProportion : float
+  + recoveryRate : float
+  + roadNetworkInfectiousProportion : float
+  + transmissionRate : float
+  + getAdjustedInfectiousMortalityRate(standard_timeDelta : str) : float
+  + getAdjustedRecoveryRate(standard_timeDelta : str) : float
+  + getAdjustedTransmissionRate(standard_timeDelta : str) : float
+  + getEffectiveInfectious(standard_diseaseLabel : str, standard_node : str, standard_onsiteInfectious : str) : float
+  + getNormalizedEffectiveInfectious(standard_diseaseLabel : str, standard_node : str, standard_onsiteInfectious : str) : float
+}
+class standard_SIDiseaseModelState {
+}
+class standard_SIInfector {
+  + infectiousCount : float
+}
+class standard_SILabel {
+}
+class standard_SILabelValue {
+  + i : float
+}
+abstract class standard_SIR {
+  + immunityLossRate : float
+  + getAdjustedImmunityLossRate(standard_timeDelta : str) : float
+}
+class standard_SIRInoculator {
+  + inoculatePercentage : bool
+  + inoculatedPercentage : float
+}
+class standard_SIRLabel {
+}
+class standard_SIRLabelValue {
+  + r : float
+}
+abstract class standard_SanityChecker {
+}
+abstract class standard_StandardDiseaseModel {
+  + referencePopulationDensity : float
+  + totalArea : float
+  + totalPopulationCount : float
+  + totalPopulationCountReciprocal : float
+  + addToTotalArea(standard_area : str) : void
+  + addToTotalPopulationCount(standard_populationCount : str) : void
+  + calculateDelta(standard_labels : str, standard_time : str, standard_timeDelta : str) : void
+  + computeTotalPopulationCountReciprocal() : float
+  + doModelSpecificAdjustments(standard_label : str) : void
+}
+abstract class standard_StandardDiseaseModelLabel {
+}
+abstract class standard_StandardDiseaseModelLabelValue {
+  + s : float
+}
+abstract class standard_StandardDiseaseModelState {
+  + areaRatio : float
+}
+abstract class standard_StandardInfector {
+}
+abstract class standard_StandardStochasticDiseaseModel {
+  + gain : float
+  + computeNoise() : float
+}
+abstract class standard_StochasticDiseaseModel {
+  + randomGenerator : str
+  + seed : str
+}
+class standard_StochasticPoissonSEIRDiseaseModel {
+}
+class standard_StochasticPoissonSIDiseaseModel {
+}
+class standard_StochasticPoissonSIRDiseaseModel {
+}
+class standard_StochasticSEIRDiseaseModel {
+}
+class standard_StochasticSIDiseaseModel {
+}
+class standard_StochasticSIRDiseaseModel {
+}
+AggregatingSIDiseaseModel <|-- standard_AggregatingSIRDiseaseModel
+AggregatingSIRDiseaseModel <|-- standard_AggregatingSEIRDiseaseModel
+DiseaseModel <|-- standard_StandardDiseaseModel
+DiseaseModel <|-- standard_StochasticDiseaseModel
+DiseaseModelLabel <|-- standard_StandardDiseaseModelLabel
+DiseaseModelLabelValue <|-- standard_StandardDiseaseModelLabelValue
+DiseaseModelState <|-- standard_AggregatingDiseaseModelState
+DiseaseModelState <|-- standard_StandardDiseaseModelState
+DynamicNodeLabel <|-- standard_DiseaseModelLabel
+Infector <|-- standard_StandardInfector
+IntegrationDecorator <|-- standard_StandardDiseaseModel
+IntegrationLabel <|-- standard_StandardDiseaseModelLabel
+IntegrationLabelValue <|-- standard_DiseaseModelLabelValue
+LabelValue <|-- standard_DiseaseModelLabelValue
+Modifiable <|-- standard_DiseaseModel
+Modifiable <|-- standard_Infector
+Modifiable <|-- standard_InfectorInoculatorCollection
+NodeDecorator <|-- standard_DiseaseModel
+NodeDecorator <|-- standard_Infector
+NodeDecorator <|-- standard_InfectorInoculatorCollection
+SEIR <|-- standard_DeterministicSEIRDiseaseModel
+SEIR <|-- standard_StochasticPoissonSEIRDiseaseModel
+SEIR <|-- standard_StochasticSEIRDiseaseModel
+SI <|-- standard_AggregatingSIDiseaseModel
+SI <|-- standard_DeterministicSIDiseaseModel
+SI <|-- standard_SIR
+SI <|-- standard_StochasticPoissonSIDiseaseModel
+SI <|-- standard_StochasticSIDiseaseModel
+SIInfector <|-- standard_SIRInoculator
+SILabelValue <|-- standard_SIRLabelValue
+SIR <|-- standard_DeterministicSIRDiseaseModel
+SIR <|-- standard_SEIR
+SIR <|-- standard_StochasticPoissonSIRDiseaseModel
+SIR <|-- standard_StochasticSIRDiseaseModel
+SIRLabelValue <|-- standard_SEIRLabelValue
+SanityChecker <|-- standard_DiseaseModel
+StandardDiseaseModel <|-- standard_SI
+StandardDiseaseModelLabel <|-- standard_SEIRLabel
+StandardDiseaseModelLabel <|-- standard_SILabel
+StandardDiseaseModelLabel <|-- standard_SIRLabel
+StandardDiseaseModelLabelValue <|-- standard_SILabelValue
+StandardDiseaseModelState <|-- standard_SIDiseaseModelState
+StandardInfector <|-- standard_SIInfector
+StandardStochasticDiseaseModel <|-- standard_StochasticSEIRDiseaseModel
+StandardStochasticDiseaseModel <|-- standard_StochasticSIDiseaseModel
+StandardStochasticDiseaseModel <|-- standard_StochasticSIRDiseaseModel
+StochasticDiseaseModel <|-- standard_StandardStochasticDiseaseModel
+standard_AggregatingDiseaseModelState "1..1" -- "0..9999" standard_SILabel : childrensLabels48
+standard_SILabel "1..1" -- "0..1" standard_SILabelValue : deltaValue22
+standard_SIRLabel "1..1" -- "0..1" standard_SIRLabelValue : deltaValue35
+standard_SEIRLabel "1..1" -- "0..1" standard_SEIRLabelValue : deltaValue9
+standard_Infector "1..1" -- "0..1" standard_StandardDiseaseModel : diseaseModel5
+standard_DiseaseModelLabel "1..1" *-- "0..1" standard_DiseaseModelState : diseaseModelState1
+standard_SEIRLabel "1..1" -- "0..1" standard_SEIRLabelValue : errorScale19
+standard_SILabel "1..1" -- "0..1" standard_SILabelValue : errorScale32
+standard_SIRLabel "1..1" -- "0..1" standard_SIRLabelValue : errorScale45
+standard_DiseaseModelLabel "0..1" -- "1..1" standard_DiseaseModelState : label4
+standard_DiseaseModelLabel "0..9999" -- "1..1" standard_Infector : labelsToInfect6
+standard_Infector "0..9999" --* "1..1" standard_InfectorInoculatorCollection : list50
+standard_SEIRLabel "1..1" -- "0..1" standard_SEIRLabelValue : originalValue16
+standard_SILabel "1..1" -- "0..1" standard_SILabelValue : originalValue29
+standard_SIRLabel "1..1" -- "0..1" standard_SIRLabelValue : originalValue42
+standard_DiseaseModelLabel "1..1" -- "0..1" standard_PopulationLabel : populationLabel0
+standard_DiseaseModelLabel "1..1" -- "0..1" standard_PopulationModelLabel : populationModelLabel2
+standard_SEIRLabel "1..1" -- "0..1" standard_SEIRLabelValue : probeValue10
+standard_SILabel "1..1" -- "0..1" standard_SILabelValue : probeValue23
+standard_SIRLabel "1..1" -- "0..1" standard_SIRLabelValue : probeValue36
+standard_SEIRLabel "1..1" -- "0..1" standard_SEIRLabelValue : tempValue13
+standard_SILabel "1..1" -- "0..1" standard_SILabelValue : tempValue26
+standard_SIRLabel "1..1" -- "0..1" standard_SIRLabelValue : tempValue39
+@enduml

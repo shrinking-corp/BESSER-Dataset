@@ -1,0 +1,22 @@
+@startuml
+class Type {
+}
+class entity_Datatype {
+}
+class entity_Domain {
+  + name : str
+}
+class entity_Entity {
+}
+class entity_Feature {
+  + name : str
+}
+abstract class entity_Type {
+  + name : str
+}
+Type <|-- entity_Datatype
+Type <|-- entity_Entity
+entity_Entity "1..1" *-- "0..9999" entity_Feature : features1
+entity_Feature "1..1" -- "0..1" entity_Type : type2
+entity_Domain "1..1" *-- "0..9999" entity_Type : types0
+@enduml

@@ -1,0 +1,87 @@
+@startuml
+class Actor_Actor {
+}
+class Benutzer {
+  + name : str
+  + passwortHash : str
+}
+class UseCase_UseCase {
+}
+class WIS_Herde {
+  + name : str
+}
+class WIS_HiTierImport {
+  + datum : str
+}
+class WIS_Tier {
+  + BTV4 : str
+  + BTV8 : str
+  + LOM : int
+  + UDNummer : str
+  + eigeneAngaben : str
+  + geburtsdatum : str
+  + istAktiv : bool
+  + istWeiblich : bool
+  + letzteKalbung : str
+  + name : str
+  + transponderNummer : str
+}
+class WIS_Weide {
+  + FACTCode : int
+  + LPRVertrag : str
+  + bemerkung : str
+  + farbe : str
+  + groesse : int
+  + istAktiv : bool
+  + istBetriebsfremdeFlaeche : bool
+  + name : str
+  + schlagnummer : int
+}
+class WIS_WeideBemerkung {
+  + bemerkung : str
+  + datum : str
+  + weideFACTCode : str
+  + weideName : str
+  + weideSchlagnummer : str
+}
+class WIS_Weidefl_che {
+  + farbe : str
+  + groesse : int
+  + name : str
+  + schlagnummer : str
+}
+class WIS_Weidegang {
+  + ausfallgrund : str
+  + datum : str
+  + herdeFarbe : str
+  + herdeName : str
+  + istAusgefallen : bool
+  + tierLOM : str
+  + tierName : str
+  + weideFACTCode : str
+  + weideName : str
+  + weideSchlagnummer : str
+}
+class Weidegang2 {
+  + ausfallgrund : str
+  + datum : str
+  + herdeFarbe : str
+  + herdeName : str
+  + istAusgefallen : bool
+  + tierName : str
+  + weideFACTCode : str
+  + weideName : str
+  + weideSchlagnummer : str
+}
+Benutzer "1..1" -- "0..9999" WIS_Herde : Herde_Benutzer
+Benutzer "1..1" -- "0..1" WIS_HiTierImport : HiTierImport_Benutzer
+Benutzer "1..1" -- "0..9999" WIS_Tier : Tier_Benutzer
+WIS_Herde "0..1" -- "0..9999" WIS_Tier : Tier_Herde
+WIS_HiTierImport "1..1" -- "0..9999" WIS_Tier : Tier_HiTierImport
+Benutzer "0..1" -- "0..1" WIS_Weide : Weide_Benutzer
+WIS_Weide "1..1" -- "0..9999" WIS_Weidefl_che : Weide_Weidefl_che
+Benutzer "1..1" -- "0..9999" WIS_Weidegang : Weidegang_Benutzer
+WIS_Herde "1..1" -- "0..9999" WIS_Weidegang : Weidegang_Herde
+WIS_Tier "1..1" -- "0..9999" WIS_Weidegang : Weidegang_Tier
+WIS_Weide "1..1" -- "0..9999" WIS_Weidegang : Weidegang_Weide
+@enduml

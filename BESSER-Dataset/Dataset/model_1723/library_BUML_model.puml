@@ -1,0 +1,20 @@
+@startuml
+class library_Book {
+  + Name : str
+  + genre : str
+}
+class library_Fiction {
+  + Name : str
+}
+class library_Library {
+  + Name : str
+}
+class library_NonFiction {
+  + Name : str
+}
+library_Book "0..9999" --* "1..1" library_Library : books1
+library_Fiction "0..1" --* "1..1" library_Library : fiction6
+library_Book "0..9999" -- "1..1" library_NonFiction : members0
+library_Book "0..9999" -- "1..1" library_Fiction : members8
+library_Library "1..1" *-- "0..1" library_NonFiction : nonfiction3
+@enduml

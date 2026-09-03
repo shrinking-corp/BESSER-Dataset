@@ -1,0 +1,830 @@
+@startuml
+enum AccessType {
+  internal
+  read
+  write
+}
+enum AttrGetParams {
+  name
+  type
+  value
+}
+enum AttrSetParams {
+  value
+}
+enum ButtonType {
+  defcancel
+  defno
+  defok
+  defretry
+  defyes
+  ok
+  okcancel
+  retrycancel
+  yesno
+  yesnocancel
+}
+enum Color {
+  aliceblue
+  antiquewhite
+  aqua
+  aquamarine
+  azure
+  beige
+  bisque
+  black
+  blanchedalmond
+  blue
+  blueviolet
+  brown
+  burlywood
+  cadetblue
+  chartreuse
+  chocolate
+  coral
+  cornflowerblue
+  cornsilk
+  crimson
+  cyan
+  darkblue
+  darkcyan
+  darkgoldenrod
+  darkgray
+  darkgreen
+  darkkhaki
+  darkmagenta
+  darkolivegreen
+  darkorange
+  darkorchid
+  darkred
+  darksalmon
+  darkseagreen
+  darkslateblue
+  darkslategray
+  darkturquoise
+  darkviolet
+  deeppink
+  deepskyblue
+  dimgray
+  dodgerblue
+  firebrick
+  floralwhite
+  forestgreen
+  fuchsia
+  gainsboro
+  ghostwhite
+  gold
+  goldenrod
+  gray
+  green
+  greenyellow
+  honeydew
+  hotpink
+  indianred
+  indigo
+  ivory
+  khaki
+  lavender
+  lavenderblush
+  lawngreen
+  lemonchiffon
+  lightblue
+  lightcoral
+  lightcyan
+  lightgoldenrodyellow
+  lightgray
+  lightgreen
+  lightmagenta
+  lightpink
+  lightsalmon
+  lightseagreen
+  lightskyblue
+  lightslategray
+  lightsteelblue
+  lightyellow
+  lime
+  limegreen
+  linen
+  magenta
+  maroon
+  mediumaquamarine
+  mediumblue
+  mediumorchid
+  mediumpurple
+  mediumseagreen
+  mediumslateblue
+  mediumspringgreen
+  mediumturquoise
+  mediumvioletred
+  midnightblue
+  mintcream
+  mistyrose
+  moccasin
+  navajowhite
+  navy
+  oldlace
+  olive
+  olivedrab
+  orange
+  orangered
+  orchid
+  palegoldenrod
+  palegreen
+  paleturquoise
+  palevioletred
+  papayawhip
+  peachpuff
+  peru
+  pink
+  plum
+  powderblue
+  purple
+  red
+  rosybrown
+  royalblue
+  saddlebrown
+  salmon
+  sandybrown
+  seagreen
+  seashell
+  sienna
+  silver
+  skyblue
+  slateblue
+  slategray
+  snow
+  springgreen
+  steelblue
+  tan
+  teal
+  thistle
+  tomato
+  turquoise
+  violet
+  wheat
+  white
+  whitesmoke
+  yellow
+  yellowgreen
+}
+enum EventName {
+  aftercreatemodelingconnector
+  aftercreatemodelingnode
+  aftereditattributevalue
+  beforecreatemodel
+  beforecreaterelationinstance
+  beforedeleteinstance
+  beforedeletemodel
+  beforediscardmodel
+  beforesavemodel
+  createinstance
+  createmodel
+  createrelationinstance
+  deleteinstance
+  deletemodel
+  deleterelationinstance
+  discardinstance
+  discardmodel
+  openmodel
+  renameinstance
+  savemodel
+  setattributevalue
+  toolinitialized
+}
+class Expression {
+}
+enum Font {
+  arial
+  arialblack
+  comicsansms
+  couriernew
+  georgia
+  impact
+  lucidaconsole
+  lucidasansunicode
+  mssansserif
+  msserif
+  palatinolinotype
+  symbol
+  tahoma
+  timesnewroman
+  trebuchetms
+  verdana
+  webdings
+  windings
+}
+enum SimpleType {
+  Double
+  Int
+  String
+}
+class mMDSL_AdditionExpression {
+}
+class mMDSL_Algorithm {
+  + name : str
+}
+class mMDSL_AlgorithmOperation {
+}
+class mMDSL_AndExpression {
+}
+class mMDSL_Attribute {
+  + access : str
+  + name : str
+}
+class mMDSL_AttributeGet {
+  + attrgetparams : str
+}
+class mMDSL_AttributeOperation {
+}
+class mMDSL_AttributeSet {
+  + attrsetparams : str
+  + valueRealNumber : str
+  + valueString : str
+}
+class mMDSL_BreakContinue {
+  + break_ : str
+  + continue_ : str
+}
+class mMDSL_Circle {
+  + cx : str
+  + cy : str
+  + r : str
+}
+class mMDSL_Class {
+  + name : str
+}
+class mMDSL_ClassAttribute {
+  + name : str
+}
+class mMDSL_ClassInstance {
+}
+class mMDSL_ClassInstanceCreate {
+  + name : str
+}
+class mMDSL_ClassInstanceDelete {
+}
+class mMDSL_ClassInstanceGet {
+}
+class mMDSL_ClassInstanceGetAll {
+}
+class mMDSL_ClassInstanceSet {
+}
+class mMDSL_CompareExpression {
+}
+class mMDSL_ContextItem {
+}
+class mMDSL_CurveTo {
+}
+class mMDSL_DirCreate {
+  + dirname : str
+}
+class mMDSL_DirDelete {
+  + dirname : str
+}
+class mMDSL_DirGetWorking {
+}
+class mMDSL_DirList {
+  + dirname : str
+}
+class mMDSL_DirOperation {
+}
+class mMDSL_DirSetWorking {
+  + dirname : str
+}
+class mMDSL_EObject {
+}
+class mMDSL_EditBox {
+  + okbuttontext : str
+  + text : str
+  + title : str
+}
+class mMDSL_Ellipse {
+  + cx : str
+  + cy : str
+  + rx : str
+  + ry : str
+}
+class mMDSL_EllipticalArc {
+}
+class mMDSL_EmbedCode {
+  + embeddedcode : str
+  + name : str
+}
+class mMDSL_EmbedCodeType {
+  + name : str
+}
+class mMDSL_EmbedPlatformType {
+  + name : str
+}
+class mMDSL_EnumType {
+}
+class mMDSL_Enumeration {
+  + enumvalues : str
+  + name : str
+}
+class mMDSL_EqualExpression {
+}
+class mMDSL_ErrorBox {
+  + buttontype : str
+  + text : str
+  + title : str
+}
+class mMDSL_Event {
+  + name : str
+}
+class mMDSL_Expr {
+}
+class mMDSL_Expression {
+  + false : str
+  + true : str
+  + valueRealNumber : str
+  + valueString : str
+}
+class mMDSL_FileCopy {
+  + dest : str
+  + src : str
+}
+class mMDSL_FileCreate {
+  + filename : str
+}
+class mMDSL_FileDelete {
+  + filename : str
+}
+class mMDSL_FileOperation {
+}
+class mMDSL_FileRead {
+  + filename : str
+}
+class mMDSL_FileWrite {
+  + append : str
+  + filename : str
+  + text : str
+}
+class mMDSL_FillColor {
+  + color : str
+  + hexcolor : str
+}
+class mMDSL_FontFamily {
+  + font : str
+  + fontstr : str
+}
+class mMDSL_ForLoop {
+  + interval : int
+  + start : int
+  + stop : int
+}
+class mMDSL_HorizontalLineTo {
+}
+class mMDSL_IncludeLibrary {
+  + name : str
+}
+class mMDSL_IncludeLibraryType {
+  + name : str
+}
+class mMDSL_InfoBox {
+  + text : str
+  + title : str
+}
+class mMDSL_InsertContextItem {
+  + context : str
+  + name : str
+}
+class mMDSL_InsertEmbedCode {
+}
+class mMDSL_InsertMenuItem {
+  + menu : str
+  + name : str
+}
+class mMDSL_InstanceOperation {
+}
+class mMDSL_ItemOperation {
+}
+class mMDSL_Line {
+  + x1 : str
+  + x2 : str
+  + y1 : str
+  + y2 : str
+}
+class mMDSL_LineTo {
+}
+class mMDSL_LoopStatement {
+}
+class mMDSL_MenuItem {
+}
+class mMDSL_Metamodel {
+}
+class mMDSL_Method {
+}
+class mMDSL_MethodName {
+  + name : str
+}
+class mMDSL_Mode {
+  + name : str
+}
+class mMDSL_ModelCreate {
+  + name : str
+}
+class mMDSL_ModelDelete {
+}
+class mMDSL_ModelDiscard {
+}
+class mMDSL_ModelIsLoaded {
+}
+class mMDSL_ModelLoad {
+}
+class mMDSL_ModelOperation {
+}
+class mMDSL_ModelSave {
+}
+class mMDSL_ModelType {
+  + name : str
+}
+class mMDSL_MoveTo {
+}
+class mMDSL_MultiplicationExpression {
+}
+class mMDSL_OperatorAdd {
+  + add : str
+  + subtract : str
+}
+class mMDSL_OperatorAnd {
+  + and_ : str
+}
+class mMDSL_OperatorAssign {
+  + assign : str
+}
+class mMDSL_OperatorCompare {
+  + greater : str
+  + greaterequal : str
+  + lesser : str
+  + lesserequal : str
+}
+class mMDSL_OperatorEqual {
+  + equal : str
+  + notequal : str
+}
+class mMDSL_OperatorMultiply {
+  + divide : str
+  + modulo : str
+  + multiply : str
+}
+class mMDSL_OperatorMultyAssign {
+  + addassign : str
+  + divassign : str
+  + multiassign : str
+  + subassign : str
+}
+class mMDSL_OperatorOr {
+  + or_ : str
+}
+class mMDSL_OperatorUnary {
+  + not_ : str
+}
+class mMDSL_OrExpression {
+}
+class mMDSL_Path {
+}
+class mMDSL_PathData {
+  + closepath : str
+}
+class mMDSL_PathParametersA {
+  + largearcflag : str
+  + rx : str
+  + ry : str
+  + sweepflag : str
+  + x : str
+  + xaxisrot : str
+  + y : str
+}
+class mMDSL_PathParametersC {
+  + x : str
+  + x1 : str
+  + x2 : str
+  + y : str
+  + y1 : str
+  + y2 : str
+}
+class mMDSL_PathParametersHV {
+  + x : str
+}
+class mMDSL_PathParametersMLT {
+  + x : str
+  + y : str
+}
+class mMDSL_PathParametersQ {
+  + x : str
+  + x1 : str
+  + y : str
+  + y1 : str
+}
+class mMDSL_PathParametersS {
+  + x : str
+  + x2 : str
+  + y : str
+  + y2 : str
+}
+class mMDSL_Points {
+  + x : str
+  + y : str
+}
+class mMDSL_Polygon {
+}
+class mMDSL_Polyline {
+}
+class mMDSL_QuadraticBezierCurve {
+}
+class mMDSL_Rectangle {
+  + height : str
+  + width : str
+  + x : str
+  + y : str
+}
+class mMDSL_RefName {
+}
+class mMDSL_Reference {
+  + name : str
+}
+class mMDSL_Relation {
+  + name : str
+}
+class mMDSL_RelationInstance {
+}
+class mMDSL_RelationInstanceCreate {
+  + name : str
+}
+class mMDSL_RelationInstanceDelete {
+}
+class mMDSL_RelationInstanceGet {
+}
+class mMDSL_RelationInstanceGetAll {
+}
+class mMDSL_RelationInstanceSet {
+}
+class mMDSL_RemoveContextItem {
+}
+class mMDSL_RemoveMenuItem {
+}
+class mMDSL_Root {
+}
+class mMDSL_SVGCommand {
+}
+class mMDSL_SelectionStatement {
+}
+class mMDSL_SimpleUI {
+}
+class mMDSL_SmoothCurveTo {
+}
+class mMDSL_SmoothQuadraticBezierCurveTo {
+}
+class mMDSL_Statement {
+}
+class mMDSL_StrokeColor {
+  + color : str
+  + hexcolor : str
+}
+class mMDSL_SymbolClass {
+  + name : str
+}
+class mMDSL_SymbolRelation {
+  + name : str
+}
+class mMDSL_SymbolStyle {
+  + fontsize : str
+  + name : str
+  + strokewidth : str
+}
+class mMDSL_Text {
+  + fontsize : str
+  + value : str
+  + x : str
+  + y : str
+}
+class mMDSL_Type {
+  + simpletype : str
+}
+class mMDSL_VarStatement {
+}
+class mMDSL_Variable {
+  + name : str
+}
+class mMDSL_VerticalLineTo {
+}
+class mMDSL_ViewBox {
+  + text : str
+  + title : str
+}
+class mMDSL_WarningBox {
+  + buttontype : str
+  + text : str
+  + title : str
+}
+class mMDSL_WhileLoop {
+}
+Expression <|-- mMDSL_AdditionExpression
+Expression <|-- mMDSL_AndExpression
+Expression <|-- mMDSL_CompareExpression
+Expression <|-- mMDSL_EqualExpression
+Expression <|-- mMDSL_MultiplicationExpression
+Expression <|-- mMDSL_OrExpression
+mMDSL_Algorithm "0..9999" --* "1..1" mMDSL_Method : algorithm34
+mMDSL_Algorithm "0..1" -- "1..1" mMDSL_Event : algorithmname483
+mMDSL_AlgorithmOperation "0..1" --* "1..1" mMDSL_Statement : algorithmoperation223
+mMDSL_AlgorithmOperation "0..1" --* "1..1" mMDSL_VarStatement : algorithmoperation270
+mMDSL_Expression "0..1" --* "1..1" mMDSL_Expression : atomic307
+mMDSL_Attribute "0..1" -- "1..1" mMDSL_VarStatement : attribute276
+mMDSL_Attribute "0..9999" --* "1..1" mMDSL_Metamodel : attribute42
+mMDSL_Attribute "0..9999" --* "1..1" mMDSL_Class : attribute54
+mMDSL_Attribute "0..9999" --* "1..1" mMDSL_Relation : attribute74
+mMDSL_AttributeGet "0..1" --* "1..1" mMDSL_AttributeOperation : attributeget476
+mMDSL_Attribute "0..1" -- "1..1" mMDSL_AttributeOperation : attributename473
+mMDSL_AlgorithmOperation "1..1" *-- "0..1" mMDSL_AttributeOperation : attributeoperation331
+mMDSL_AttributeOperation "1..1" *-- "0..1" mMDSL_AttributeSet : attributeset478
+mMDSL_BreakContinue "0..9999" --* "1..1" mMDSL_WhileLoop : breakcontinue252
+mMDSL_BreakContinue "0..9999" --* "1..1" mMDSL_ForLoop : breakcontinue257
+mMDSL_Circle "0..1" --* "1..1" mMDSL_SVGCommand : circle134
+mMDSL_Class "0..1" -- "1..1" mMDSL_VarStatement : class_273
+mMDSL_Class "0..9999" --* "1..1" mMDSL_Metamodel : class_38
+mMDSL_Class "1..1" *-- "0..9999" mMDSL_ClassAttribute : classattribute52
+mMDSL_ClassInstance "0..1" --* "1..1" mMDSL_InstanceOperation : classinstance413
+mMDSL_ClassInstance "1..1" *-- "0..1" mMDSL_ClassInstanceCreate : classinstancecreate417
+mMDSL_ClassInstance "1..1" *-- "0..1" mMDSL_ClassInstanceDelete : classinstancedelete419
+mMDSL_ClassInstanceCreate "0..1" -- "1..1" mMDSL_RelationInstanceCreate : classinstancefrom455
+mMDSL_ClassInstance "1..1" *-- "0..1" mMDSL_ClassInstanceGet : classinstanceget421
+mMDSL_ClassInstance "1..1" *-- "0..1" mMDSL_ClassInstanceGetAll : classinstancegetall425
+mMDSL_ClassInstance "1..1" *-- "0..1" mMDSL_ClassInstanceSet : classinstanceset423
+mMDSL_ClassInstanceCreate "0..1" -- "1..1" mMDSL_RelationInstanceCreate : classinstanceto458
+mMDSL_Class "0..9999" -- "1..1" mMDSL_Mode : classname106
+mMDSL_Class "0..1" -- "1..1" mMDSL_RefName : classname90
+mMDSL_Class "0..9999" -- "1..1" mMDSL_ModelType : classname98
+mMDSL_EmbedCode "0..1" -- "1..1" mMDSL_InsertEmbedCode : codesnippetname22
+mMDSL_Expr "0..1" --* "1..1" mMDSL_WhileLoop : condition246
+mMDSL_ContextItem "0..1" --* "1..1" mMDSL_ItemOperation : contextitem367
+mMDSL_InsertContextItem "0..1" -- "1..1" mMDSL_RemoveContextItem : contextitem380
+mMDSL_CurveTo "0..1" --* "1..1" mMDSL_PathData : curveto173
+mMDSL_DirCreate "0..1" --* "1..1" mMDSL_DirOperation : dircreate347
+mMDSL_DirDelete "0..1" --* "1..1" mMDSL_DirOperation : dirdelete349
+mMDSL_DirGetWorking "0..1" --* "1..1" mMDSL_DirOperation : dirgetworking345
+mMDSL_DirList "0..1" --* "1..1" mMDSL_DirOperation : dirlist351
+mMDSL_AlgorithmOperation "1..1" *-- "0..1" mMDSL_DirOperation : diroperation323
+mMDSL_DirOperation "1..1" *-- "0..1" mMDSL_DirSetWorking : dirsetworking343
+mMDSL_EditBox "0..1" --* "1..1" mMDSL_SimpleUI : editbox353
+mMDSL_Ellipse "0..1" --* "1..1" mMDSL_SVGCommand : ellipse136
+mMDSL_EllipticalArc "0..1" --* "1..1" mMDSL_PathData : ellipticalarc181
+mMDSL_SelectionStatement "1..1" *-- "0..9999" mMDSL_Statement : elseblock239
+mMDSL_SelectionStatement "1..1" *-- "0..9999" mMDSL_Statement : elseifblock236
+mMDSL_Expr "0..9999" --* "1..1" mMDSL_SelectionStatement : elseifcondition233
+mMDSL_EmbedCode "0..9999" --* "1..1" mMDSL_Root : embedcode9
+mMDSL_EmbedCode "1..1" -- "0..1" mMDSL_EmbedCodeType : embedcodetype19
+mMDSL_EmbedCodeType "0..9999" --* "1..1" mMDSL_Root : embedcodetype5
+mMDSL_EmbedCode "0..1" -- "1..1" mMDSL_VarStatement : embeddedcode291
+mMDSL_EmbedCode "1..1" -- "0..1" mMDSL_EmbedPlatformType : embedplatformtype16
+mMDSL_EmbedPlatformType "0..9999" --* "1..1" mMDSL_Root : embedplatformtype3
+mMDSL_Enumeration "0..9999" --* "1..1" mMDSL_Method : enumeration24
+mMDSL_EnumType "0..1" --* "1..1" mMDSL_Type : enumtype93
+mMDSL_ErrorBox "0..1" --* "1..1" mMDSL_SimpleUI : errorbox357
+mMDSL_Event "0..9999" --* "1..1" mMDSL_Method : event36
+mMDSL_Expr "1..1" *-- "0..1" mMDSL_Expression : expr299
+mMDSL_Expr "0..1" --* "1..1" mMDSL_VarStatement : expression267
+mMDSL_Expression "0..1" --* "1..1" mMDSL_Expression : expression310
+mMDSL_FileCopy "0..1" --* "1..1" mMDSL_FileOperation : filecopy333
+mMDSL_FileCreate "0..1" --* "1..1" mMDSL_FileOperation : filecreate337
+mMDSL_FileDelete "0..1" --* "1..1" mMDSL_FileOperation : filedelete335
+mMDSL_AlgorithmOperation "1..1" *-- "0..1" mMDSL_FileOperation : fileoperation321
+mMDSL_FileOperation "1..1" *-- "0..1" mMDSL_FileRead : fileread339
+mMDSL_FileOperation "1..1" *-- "0..1" mMDSL_FileWrite : filewrite341
+mMDSL_FillColor "0..1" --* "1..1" mMDSL_Text : fillcolor163
+mMDSL_FillColor "0..1" --* "1..1" mMDSL_SymbolStyle : fillcolor204
+mMDSL_FontFamily "0..1" --* "1..1" mMDSL_Text : fontfamily161
+mMDSL_FontFamily "0..1" --* "1..1" mMDSL_SymbolStyle : fontfamily209
+mMDSL_ForLoop "1..1" *-- "0..9999" mMDSL_Statement : forblock254
+mMDSL_ForLoop "0..1" --* "1..1" mMDSL_LoopStatement : forloop244
+mMDSL_Class "0..1" -- "1..1" mMDSL_Relation : fromclassname68
+mMDSL_SymbolClass "1..1" -- "0..1" mMDSL_SymbolStyle : globalstyle112
+mMDSL_SymbolRelation "1..1" -- "0..1" mMDSL_SymbolStyle : globalstyle117
+mMDSL_HorizontalLineTo "0..1" --* "1..1" mMDSL_PathData : horizontallineto169
+mMDSL_SelectionStatement "1..1" *-- "0..9999" mMDSL_Statement : ifblock230
+mMDSL_Expr "0..1" --* "1..1" mMDSL_SelectionStatement : ifcondition228
+mMDSL_IncludeLibrary "0..9999" --* "1..1" mMDSL_Root : includelibrary7
+mMDSL_IncludeLibraryType "0..9999" --* "1..1" mMDSL_Root : includelibrarytype1
+mMDSL_IncludeLibrary "1..1" -- "0..1" mMDSL_IncludeLibraryType : includelibrarytype13
+mMDSL_InfoBox "0..1" --* "1..1" mMDSL_SimpleUI : infobox355
+mMDSL_ContextItem "1..1" *-- "0..1" mMDSL_InsertContextItem : insertcontextitem376
+mMDSL_InsertEmbedCode "0..1" --* "1..1" mMDSL_SVGCommand : insertembedcode129
+mMDSL_InsertEmbedCode "0..9999" --* "1..1" mMDSL_SymbolStyle : insertembedcode212
+mMDSL_InsertEmbedCode "0..1" --* "1..1" mMDSL_Statement : insertembedcode225
+mMDSL_Class "1..1" *-- "0..9999" mMDSL_InsertEmbedCode : insertembedcode57
+mMDSL_InsertEmbedCode "0..9999" --* "1..1" mMDSL_Relation : insertembedcode77
+mMDSL_InsertMenuItem "0..1" --* "1..1" mMDSL_MenuItem : insertmenuitem369
+mMDSL_AlgorithmOperation "1..1" *-- "0..1" mMDSL_InstanceOperation : instanceoperation329
+mMDSL_ItemOperation "0..1" --* "1..1" mMDSL_SimpleUI : itemoperation363
+mMDSL_Expression "0..1" --* "1..1" mMDSL_Expression : left316
+mMDSL_Line "0..1" --* "1..1" mMDSL_SVGCommand : line138
+mMDSL_LineTo "0..1" --* "1..1" mMDSL_PathData : lineto167
+mMDSL_LoopStatement "0..1" --* "1..1" mMDSL_Statement : loop219
+mMDSL_ItemOperation "1..1" *-- "0..1" mMDSL_MenuItem : menuitem365
+mMDSL_InsertMenuItem "0..1" -- "1..1" mMDSL_RemoveMenuItem : menuitemname373
+mMDSL_Metamodel "0..1" --* "1..1" mMDSL_Method : metamodel32
+mMDSL_Method "0..1" --* "1..1" mMDSL_Root : method11
+mMDSL_MethodName "0..1" --* "1..1" mMDSL_Root : methodname0
+mMDSL_ModelCreate "0..1" --* "1..1" mMDSL_ModelOperation : modelcreate383
+mMDSL_ModelDelete "0..1" --* "1..1" mMDSL_ModelOperation : modeldelete385
+mMDSL_ModelDiscard "0..1" --* "1..1" mMDSL_ModelOperation : modeldiscard387
+mMDSL_ModelIsLoaded "0..1" --* "1..1" mMDSL_ModelOperation : modelisloaded393
+mMDSL_ModelLoad "0..1" --* "1..1" mMDSL_ModelOperation : modelload391
+mMDSL_ModelCreate "0..1" -- "1..1" mMDSL_ModelDelete : modelname398
+mMDSL_ModelCreate "0..1" -- "1..1" mMDSL_ModelDiscard : modelname401
+mMDSL_ModelCreate "0..1" -- "1..1" mMDSL_ModelSave : modelname404
+mMDSL_ModelCreate "0..1" -- "1..1" mMDSL_ModelLoad : modelname407
+mMDSL_ModelCreate "0..1" -- "1..1" mMDSL_ModelIsLoaded : modelname410
+mMDSL_AlgorithmOperation "1..1" *-- "0..1" mMDSL_ModelOperation : modeloperation327
+mMDSL_ModelOperation "1..1" *-- "0..1" mMDSL_ModelSave : modelsave389
+mMDSL_ModelType "0..1" -- "1..1" mMDSL_VarStatement : modeltype294
+mMDSL_ModelCreate "1..1" -- "0..1" mMDSL_ModelType : modeltype395
+mMDSL_Metamodel "1..1" *-- "0..9999" mMDSL_ModelType : modeltype44
+mMDSL_ModelType "0..1" -- "1..1" mMDSL_RefName : modeltypename87
+mMDSL_Mode "0..9999" --* "1..1" mMDSL_ModelType : modename104
+mMDSL_MoveTo "0..1" --* "1..1" mMDSL_PathData : moveto165
+mMDSL_OperatorAssign "1..1" *-- "0..1" mMDSL_OperatorMultyAssign : multyassign297
+mMDSL_EnumType "1..1" -- "0..1" mMDSL_Enumeration : name95
+mMDSL_Class "0..1" -- "1..1" mMDSL_ClassInstanceCreate : nameofclass427
+mMDSL_Class "0..1" -- "1..1" mMDSL_ClassInstanceGetAll : nameofclass436
+mMDSL_ClassInstanceCreate "0..1" -- "1..1" mMDSL_ClassInstanceDelete : nameofclassinstance430
+mMDSL_ClassInstanceCreate "0..1" -- "1..1" mMDSL_ClassInstanceGet : nameofclassinstance433
+mMDSL_ClassInstanceCreate "0..1" -- "1..1" mMDSL_ClassInstanceSet : nameofclassinstance439
+mMDSL_Relation "0..1" -- "1..1" mMDSL_RelationInstanceCreate : nameofrelation452
+mMDSL_Relation "0..1" -- "1..1" mMDSL_RelationInstanceGetAll : nameofrelation467
+mMDSL_RelationInstanceCreate "0..1" -- "1..1" mMDSL_RelationInstanceDelete : nameofrelationinstance461
+mMDSL_RelationInstanceCreate "0..1" -- "1..1" mMDSL_RelationInstanceGet : nameofrelationinstance464
+mMDSL_RelationInstanceCreate "0..1" -- "1..1" mMDSL_RelationInstanceSet : nameofrelationinstance470
+mMDSL_EObject "0..1" --* "1..1" mMDSL_Expression : op301
+mMDSL_OperatorAssign "0..1" --* "1..1" mMDSL_Variable : opassing260
+mMDSL_Expression "0..1" --* "1..1" mMDSL_Expression : operand304
+mMDSL_MoveTo "1..1" *-- "0..9999" mMDSL_PathParametersMLT : parameters183
+mMDSL_LineTo "1..1" *-- "0..9999" mMDSL_PathParametersMLT : parameters185
+mMDSL_HorizontalLineTo "1..1" *-- "0..9999" mMDSL_PathParametersHV : parameters188
+mMDSL_PathParametersHV "0..9999" --* "1..1" mMDSL_VerticalLineTo : parameters190
+mMDSL_CurveTo "1..1" *-- "0..9999" mMDSL_PathParametersC : parameters193
+mMDSL_PathParametersS "0..9999" --* "1..1" mMDSL_SmoothCurveTo : parameters195
+mMDSL_PathParametersQ "0..9999" --* "1..1" mMDSL_QuadraticBezierCurve : parameters197
+mMDSL_PathParametersMLT "0..9999" --* "1..1" mMDSL_SmoothQuadraticBezierCurveTo : parameters199
+mMDSL_EllipticalArc "1..1" *-- "0..9999" mMDSL_PathParametersA : parameters202
+mMDSL_Class "0..1" -- "1..1" mMDSL_Class : parentclassname47
+mMDSL_Relation "0..1" -- "1..1" mMDSL_Relation : parentrelationname63
+mMDSL_Path "0..1" --* "1..1" mMDSL_SVGCommand : path144
+mMDSL_Path "1..1" *-- "0..9999" mMDSL_PathData : pathdata159
+mMDSL_Points "0..9999" --* "1..1" mMDSL_Polyline : points154
+mMDSL_Points "0..9999" --* "1..1" mMDSL_Polygon : points156
+mMDSL_Polygon "0..1" --* "1..1" mMDSL_SVGCommand : polygon142
+mMDSL_Polyline "0..1" --* "1..1" mMDSL_SVGCommand : polyline140
+mMDSL_PathData "1..1" *-- "0..1" mMDSL_QuadraticBezierCurve : quadraticbeziercurve177
+mMDSL_Rectangle "0..1" --* "1..1" mMDSL_SVGCommand : rectangle132
+mMDSL_Reference "0..1" -- "1..1" mMDSL_VarStatement : reference279
+mMDSL_Class "1..1" *-- "0..9999" mMDSL_Reference : reference60
+mMDSL_RefName "0..1" --* "1..1" mMDSL_Reference : refname85
+mMDSL_Metamodel "1..1" *-- "0..9999" mMDSL_Relation : relation40
+mMDSL_InstanceOperation "1..1" *-- "0..1" mMDSL_RelationInstance : relationinstance415
+mMDSL_RelationInstance "1..1" *-- "0..1" mMDSL_RelationInstanceCreate : relationinstancecreate442
+mMDSL_RelationInstance "1..1" *-- "0..1" mMDSL_RelationInstanceDelete : relationinstancedelete444
+mMDSL_RelationInstance "1..1" *-- "0..1" mMDSL_RelationInstanceGet : relationinstanceget446
+mMDSL_RelationInstance "1..1" *-- "0..1" mMDSL_RelationInstanceGetAll : relationinstancegetall450
+mMDSL_RelationInstance "1..1" *-- "0..1" mMDSL_RelationInstanceSet : relationinstanceset448
+mMDSL_ModelType "1..1" -- "0..9999" mMDSL_Relation : relationname101
+mMDSL_Mode "1..1" -- "0..9999" mMDSL_Relation : relationname109
+mMDSL_ContextItem "1..1" *-- "0..1" mMDSL_RemoveContextItem : removecontextitem378
+mMDSL_MenuItem "1..1" *-- "0..1" mMDSL_RemoveMenuItem : removemenuitem371
+mMDSL_Expression "0..1" --* "1..1" mMDSL_Expression : right319
+mMDSL_SelectionStatement "0..1" --* "1..1" mMDSL_Statement : selection217
+mMDSL_AlgorithmOperation "1..1" *-- "0..1" mMDSL_SimpleUI : simpleui325
+mMDSL_PathData "1..1" *-- "0..1" mMDSL_SmoothCurveTo : smoothcurveto175
+mMDSL_PathData "1..1" *-- "0..1" mMDSL_SmoothQuadraticBezierCurveTo : smoothquadraticbeziercurveto179
+mMDSL_Algorithm "1..1" *-- "0..9999" mMDSL_Statement : stmnt215
+mMDSL_StrokeColor "0..1" --* "1..1" mMDSL_SymbolStyle : strokecolor207
+mMDSL_SVGCommand "0..9999" --* "1..1" mMDSL_SymbolClass : svgcommand115
+mMDSL_SVGCommand "0..9999" --* "1..1" mMDSL_SymbolRelation : svgcommandsfrom120
+mMDSL_SVGCommand "0..9999" --* "1..1" mMDSL_SymbolRelation : svgcommandsmiddle123
+mMDSL_SVGCommand "0..9999" --* "1..1" mMDSL_SymbolRelation : svgcommandsto126
+mMDSL_Method "1..1" *-- "0..9999" mMDSL_SymbolClass : symbolclass28
+mMDSL_SymbolClass "0..1" -- "1..1" mMDSL_VarStatement : symbolclass282
+mMDSL_Class "1..1" -- "0..1" mMDSL_SymbolClass : symbolclass49
+mMDSL_SymbolRelation "0..1" -- "1..1" mMDSL_VarStatement : symbolrelation285
+mMDSL_Method "1..1" *-- "0..9999" mMDSL_SymbolRelation : symbolrelation30
+mMDSL_Relation "1..1" -- "0..1" mMDSL_SymbolRelation : symbolrelation65
+mMDSL_SVGCommand "1..1" *-- "0..1" mMDSL_SymbolStyle : symbolstyle148
+mMDSL_Method "1..1" *-- "0..9999" mMDSL_SymbolStyle : symbolstyle26
+mMDSL_SymbolStyle "0..1" -- "1..1" mMDSL_VarStatement : symbolstyle288
+mMDSL_SVGCommand "1..1" -- "0..1" mMDSL_SymbolStyle : symbolstyleref151
+mMDSL_SVGCommand "1..1" *-- "0..1" mMDSL_Text : text146
+mMDSL_Class "0..1" -- "1..1" mMDSL_Relation : toclassname71
+mMDSL_Attribute "1..1" *-- "0..1" mMDSL_Type : type80
+mMDSL_ClassAttribute "1..1" *-- "0..1" mMDSL_Type : type82
+mMDSL_AttributeSet "1..1" -- "0..1" mMDSL_Variable : valueVariable480
+mMDSL_Statement "1..1" *-- "0..1" mMDSL_Variable : variable221
+mMDSL_Variable "0..1" -- "1..1" mMDSL_Variable : variable265
+mMDSL_Expression "1..1" -- "0..1" mMDSL_Variable : variable312
+mMDSL_VarStatement "0..1" --* "1..1" mMDSL_Variable : varstatement262
+mMDSL_PathData "1..1" *-- "0..1" mMDSL_VerticalLineTo : verticallineto171
+mMDSL_SimpleUI "1..1" *-- "0..1" mMDSL_ViewBox : viewbox361
+mMDSL_SimpleUI "1..1" *-- "0..1" mMDSL_WarningBox : warningbox359
+mMDSL_Statement "0..9999" --* "1..1" mMDSL_WhileLoop : whileblock249
+mMDSL_LoopStatement "1..1" *-- "0..1" mMDSL_WhileLoop : whiletloop242
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+class AbstractLink {
+}
+class CompositeLink {
+}
+abstract class etrace_AbstractLink {
+}
+class etrace_CompositeLink {
+  + createCompositeLink(etrace_links : str, etrace_source : str, etrace_target : str, etrace_type : str) : CompositeLink
+  + createLink(etrace_source : str, etrace_target : str, etrace_type : str) : str
+}
+class etrace_EObject {
+}
+class etrace_ETrace {
+  + name : str
+}
+class etrace_Link {
+}
+class etrace_LinkType {
+  + description : str
+  + example : str
+  + name : str
+  + purpose : str
+  + uses : str
+}
+AbstractLink <|-- etrace_CompositeLink
+AbstractLink <|-- etrace_Link
+CompositeLink <|-- etrace_ETrace
+etrace_AbstractLink "0..9999" --* "1..1" etrace_CompositeLink : children19
+etrace_EObject "0..9999" --* "1..1" etrace_ETrace : deletedElement13
+etrace_EObject "0..9999" --* "1..1" etrace_ETrace : externalElement16
+etrace_AbstractLink "1..1" -- "0..1" etrace_EObject : source0
+etrace_LinkType "1..1" -- "0..9999" etrace_LinkType : subType7
+etrace_LinkType "1..1" -- "0..1" etrace_LinkType : superType9
+etrace_AbstractLink "1..1" -- "0..1" etrace_EObject : target1
+etrace_AbstractLink "1..1" -- "1..1" etrace_LinkType : type4
+etrace_ETrace "1..1" *-- "0..9999" etrace_LinkType : typeList11
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+abstract class AbstractVehicle {
+  + licensePlate : str
+  + restrictions : spotRestriction
+  + type : str
+}
+class Bus {
+}
+class Car {
+}
+class MotorCycle {
+}
+class ParkingLot {
+  + hourlyPrice : int
+  + maxSize : int
+}
+class Parking_Record {
+  + hourlyRate : int
+  + ownerName : str
+  + ownerPhone : str
+  + parkTime : str
+  + releaseTime : str
+  + spot : Spot
+  + totalCost : int
+  + vehicleColor : str
+  + vehicleLicensePlate : str
+  + vehicleModel : str
+}
+class Spot {
+  + covered : bool
+  + isDisabledSpot : bool
+  + isValet : bool
+  + level : int
+  + section : str
+  + spotNumber : int
+  + spotType : spotType
+  + status : spotStatus
+}
+class VehicleInterface_Interface {
+}
+class spotRestriction {
+  + size : int
+  + spotType : spotType
+}
+enum spotStatus {
+}
+enum spotType {
+}
+enum vehicleStatus {
+}
+ParkingLot "1..1" -- "0..9999" Parking_Record : ParkingLot_Parking_Record
+Parking_Record "0..9999" -- "1..1" Spot : Spot_Parking_Record
+ParkingLot "1..1" -- "1..9999" Spot : spot_ParkingLot
+@enduml

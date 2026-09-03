@@ -1,0 +1,26 @@
+@startuml
+enum WorkSequenceKind {
+  finishToFinish
+  finishToStart
+  startToFinish
+  startToStart
+}
+class spem_Activity {
+  + durationmax : int
+  + durationmin : int
+  + name : str
+}
+class spem_Process {
+}
+class spem_WorkSequence {
+  + kind : str
+}
+spem_Activity "0..9999" --* "1..1" spem_Process : activities0
+spem_Activity "1..1" -- "0..9999" spem_WorkSequence : linkToPredecessor5
+spem_Activity "1..1" -- "0..9999" spem_WorkSequence : linkToSuccessor3
+spem_Activity "1..1" -- "1..1" spem_WorkSequence : predecessor10
+spem_Process "1..1" -- "1..1" spem_WorkSequence : process12
+spem_Activity "1..1" -- "1..1" spem_Process : process7
+spem_Activity "1..1" -- "1..1" spem_WorkSequence : successor8
+spem_Process "1..1" *-- "0..9999" spem_WorkSequence : workSquences1
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+class stateMachine_State {
+  + name : str
+  + status : bool
+}
+class stateMachine_StateMachine {
+  + name : str
+}
+class stateMachine_Transition {
+  + action : str
+  + name : str
+  + trigger : str
+}
+stateMachine_State "1..1" -- "0..9999" stateMachine_Transition : Outgoing6
+stateMachine_State "0..1" -- "1..1" stateMachine_Transition : from_9
+stateMachine_State "1..1" -- "0..9999" stateMachine_Transition : incoming7
+stateMachine_State "0..1" -- "1..1" stateMachine_StateMachine : initialState3
+stateMachine_State "0..9999" --* "1..1" stateMachine_StateMachine : state0
+stateMachine_State "0..1" -- "1..1" stateMachine_Transition : target10
+stateMachine_StateMachine "1..1" *-- "0..9999" stateMachine_Transition : transition1
+@enduml

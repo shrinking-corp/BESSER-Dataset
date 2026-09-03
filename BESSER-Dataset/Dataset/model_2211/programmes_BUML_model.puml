@@ -1,0 +1,49 @@
+@startuml
+enum Access {
+  M1A
+  M2A
+  NA
+  O
+  VA
+}
+enum SemesterSeason {
+  Fall
+  Spring
+}
+class StudyProgrammes_Course {
+  + availableSemesters : str
+  + code : str
+  + credits : float
+  + name : str
+}
+class StudyProgrammes_CourseAccess {
+  + access : str
+}
+class StudyProgrammes_Department {
+  + name : str
+}
+class StudyProgrammes_Programme {
+  + code : str
+  + name : str
+  + semestersBeforeSpecialization : int
+  + startYear : int
+  + totalNumberOfSemesters : int
+}
+class StudyProgrammes_Semester {
+  + code : str
+  + semesterSeason : str
+  + year : int
+}
+class StudyProgrammes_Specialization {
+  + lengthInSemesters : int
+  + name : str
+  + startSemester : int
+}
+StudyProgrammes_Course "1..1" -- "1..1" StudyProgrammes_CourseAccess : course12
+StudyProgrammes_CourseAccess "0..9999" --* "1..1" StudyProgrammes_Semester : courseAccesses10
+StudyProgrammes_Course "0..9999" --* "1..1" StudyProgrammes_Department : courses1
+StudyProgrammes_Department "1..1" *-- "0..9999" StudyProgrammes_Programme : programmes0
+StudyProgrammes_Programme "1..1" *-- "0..9999" StudyProgrammes_Semester : semesters5
+StudyProgrammes_Semester "0..9999" --* "1..1" StudyProgrammes_Specialization : semesters7
+StudyProgrammes_Programme "1..1" *-- "0..9999" StudyProgrammes_Specialization : specializations3
+@enduml

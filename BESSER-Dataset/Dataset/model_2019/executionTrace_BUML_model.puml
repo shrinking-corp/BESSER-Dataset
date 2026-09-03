@@ -1,0 +1,115 @@
+@startuml
+class Execution {
+}
+class executionTrace_ActivityEdgeTraversal {
+}
+class executionTrace_ActivityExecution {
+}
+class executionTrace_ActivityNodeExecution {
+}
+class executionTrace_AttributeValueSet {
+  + instanceObject : str
+  + newValue : str
+}
+abstract class executionTrace_Execution {
+  + executionFinishedTimeStamp : str
+  + executionStartedTimeStamp : str
+  + executionTime : str
+  + executionTimeMsec : str
+}
+class executionTrace_ExecutionTrace {
+  + description : str
+  + totalExecutionTime : str
+  + totalExecutionTimeMsec : str
+}
+class executionTrace_ExpressionEvaluation {
+  + result : str
+}
+class executionTrace_InstanceLinkCreation {
+}
+class executionTrace_InstanceLinkDeletion {
+}
+abstract class executionTrace_InstanceLinkModification {
+  + sourceInstanceObject : str
+  + targetInstanceObject : str
+}
+class executionTrace_InstanceObjectCreation {
+}
+class executionTrace_InstanceObjectDeletion {
+}
+abstract class executionTrace_InstanceObjectModification {
+  + instanceObject : str
+}
+abstract class executionTrace_LinkCheck {
+  + targetObject : str
+}
+class executionTrace_LinkCheckFailed {
+}
+class executionTrace_LinkCheckSuccessful {
+}
+class executionTrace_MapEntry {
+  + key : str
+  + value : str
+}
+class executionTrace_StoryPatternApplication {
+}
+abstract class executionTrace_StoryPatternConstraintEvaluation {
+}
+class executionTrace_StoryPatternConstraintHolds {
+}
+class executionTrace_StoryPatternConstraintViolated {
+}
+abstract class executionTrace_StoryPatternExecution {
+}
+class executionTrace_StoryPatternInitialization {
+}
+abstract class executionTrace_StoryPatternLinkExecution {
+  + sourceObject : str
+}
+class executionTrace_StoryPatternMatching {
+  + successful : bool
+}
+class executionTrace_StoryPatternObjectBindingRevoked {
+  + previousValue : str
+}
+class executionTrace_StoryPatternObjectBound {
+  + value : str
+}
+abstract class executionTrace_StoryPatternObjectConstraintEvaluation {
+}
+class executionTrace_StoryPatternObjectConstraintHolds {
+}
+class executionTrace_StoryPatternObjectConstraintViolated {
+}
+abstract class executionTrace_StoryPatternObjectExecution {
+}
+class executionTrace_StoryPatternObjectNotBound {
+}
+class executionTrace_TraversingLink {
+}
+class executionTrace_VariableChanged {
+  + oldValue : str
+}
+class executionTrace_VariableCreated {
+}
+class executionTrace_VariableDeleted {
+}
+abstract class executionTrace_VariableModification {
+  + value : str
+  + variableName : str
+}
+Execution <|-- executionTrace_ActivityEdgeTraversal
+Execution <|-- executionTrace_ActivityExecution
+Execution <|-- executionTrace_ActivityNodeExecution
+Execution <|-- executionTrace_AttributeValueSet
+Execution <|-- executionTrace_ExpressionEvaluation
+Execution <|-- executionTrace_InstanceLinkModification
+Execution <|-- executionTrace_InstanceObjectModification
+Execution <|-- executionTrace_StoryPatternExecution
+Execution <|-- executionTrace_StoryPatternLinkExecution
+Execution <|-- executionTrace_StoryPatternObjectExecution
+Execution <|-- executionTrace_VariableModification
+executionTrace_Execution "1..1" -- "0..1" executionTrace_Execution : container4
+executionTrace_Execution "1..1" *-- "0..9999" executionTrace_Execution : elements2
+executionTrace_Execution "0..9999" --* "1..1" executionTrace_ExecutionTrace : executions0
+@enduml

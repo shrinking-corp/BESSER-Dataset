@@ -1,0 +1,513 @@
+@startuml
+enum AggregationType {
+  Continuous
+  Integration
+  Maintenance
+  Nightly
+  Release
+  Stable
+}
+enum Architecture {
+  IA64
+  IA64_32
+  PPC
+  PPC64
+  S390
+  S390X
+  Sparc
+  X86
+  X86_64
+}
+enum AvailableFrom {
+  AGGREGATION
+  CONTRIBUTION
+  REPOSITORY
+  VALIDATION_SET
+}
+class Bundle {
+}
+class Bundles {
+}
+class Categories {
+}
+class Category {
+}
+class DescriptionProvider {
+}
+class EnabledStatusProvider {
+}
+class Feature {
+}
+class Features {
+}
+class Fragment {
+}
+class Fragments {
+}
+class IProvidedCapability {
+}
+class IRequirement {
+}
+class IUDetails {
+}
+class IUPresentation {
+}
+class IUPresentationWithDetails {
+}
+class IdentificationProvider {
+}
+class InfosProvider {
+}
+class InstallableUnitRequest {
+}
+enum InstallableUnitType {
+  BUNDLE
+  CATEGORY
+  FEATURE
+  FRAGMENT
+  OTHER
+  PRODUCT
+}
+class InstallableUnits {
+}
+class LabelProvider {
+}
+class Licenses {
+}
+class MapRule {
+}
+class MappedUnit {
+}
+class MetadataRepositoryReference {
+}
+class MetadataRepositoryStructuredView {
+}
+class Miscellaneous {
+}
+enum OperatingSystem {
+  AIX
+  HPUX
+  Linux
+  MacOSX
+  QNX
+  Solaris
+  Win32
+}
+class OtherIU {
+}
+enum PackedStrategy {
+  Copy
+  Skip
+  Unpack
+  UnpackAsSibling
+  Verify
+}
+class Product {
+}
+class Products {
+}
+class Properties {
+}
+class ProvidedCapabilities {
+}
+class ProvidedCapabilityWrapper {
+}
+class RepositoryReferences {
+}
+class RequirementWrapper {
+}
+class Requirements {
+}
+enum StatusCode {
+  BROKEN
+  OK
+  WAITING
+}
+class StatusProvider {
+}
+class Touchpoints {
+}
+enum VersionMatch {
+  ABOVE
+  BELOW
+  MATCHES
+}
+enum WindowSystem {
+  Carbon
+  Cocoa
+  GTK
+  Motif
+  Photon
+  Win32
+}
+class aggregator_Aggregation {
+  + buildRoot : str
+  + label : str
+  + mavenResult : bool
+  + packedStrategy : str
+  + sendmail : bool
+  + type : str
+  + getAllContributions(aggregator_enabledOnly : str) : str
+  + getAllMetadataRepositoryReferences(aggregator_enabledOnly : str) : str
+  + getValidationSets(aggregator_enabledOnly : str) : str
+}
+class aggregator_AvailableVersion {
+  + availableFrom : str
+  + filter : str
+  + version : str
+  + versionMatch : str
+}
+class aggregator_AvailableVersionsHeader {
+}
+class aggregator_Bundle {
+}
+class aggregator_Category {
+  + labelOverride : str
+}
+abstract class aggregator_ChildrenProvider {
+}
+class aggregator_Configuration {
+  + architecture : str
+  + operatingSystem : str
+  + windowSystem : str
+  + getName() : str
+  + getOSGiEnvironmentString() : str
+}
+class aggregator_Contact {
+  + email : str
+  + name : str
+}
+class aggregator_Contribution {
+  + label : str
+  + getAllMavenMappings() : str
+  + getRepositories(aggregator_enabledOnly : str) : str
+}
+class aggregator_CustomCategory {
+  + description : str
+  + identifier : str
+  + label : str
+}
+class aggregator_DescriptionProvider {
+  + description : str
+}
+abstract class aggregator_EnabledStatusProvider {
+  + branchEnabled : bool
+  + enabled : bool
+}
+class aggregator_ExclusionRule {
+}
+class aggregator_Feature {
+}
+abstract class aggregator_IdentificationProvider {
+  + getIdentification() : str
+}
+class aggregator_InfosProvider {
+  + errors : str
+  + infos : str
+  + warnings : str
+}
+abstract class aggregator_InstallableUnitRequest {
+  + name : str
+  + versionRange : str
+  + isBranchEnabled() : bool
+  + isMappedRepositoryBroken() : bool
+  + resolveAsSingleton(aggregator_forceResolve : str) : str
+  + resolveAvailableVersions(aggregator_updateOnly : str) : void
+}
+abstract class aggregator_LabelProvider {
+  + label : str
+}
+abstract class aggregator_MapRule {
+}
+class aggregator_MappedRepository {
+  + categoryPrefix : str
+  + mirrorArtifacts : bool
+  + getMapRules(aggregator_enabledOnly : str) : MapRule
+  + getUnits(aggregator_enabledOnly : str) : MappedUnit
+  + isMapExclusive() : bool
+}
+abstract class aggregator_MappedUnit {
+  + getFilter() : void
+  + getRequirement() : str
+}
+class aggregator_MavenItem {
+  + artifactId : str
+  + groupId : str
+}
+class aggregator_MavenMapping {
+  + artifactId : str
+  + groupId : str
+  + namePattern : str
+  + map(aggregator_installableUnitID : str) : str
+}
+class aggregator_MetadataRepository {
+}
+class aggregator_MetadataRepositoryReference {
+  + location : str
+  + nature : str
+  + cancelRepositoryLoad() : void
+  + getAggregation() : str
+  + getResolvedLocation() : str
+  + isBranchEnabled() : bool
+  + onRepositoryLoad() : void
+  + startRepositoryLoad(aggregator_forceReload : str) : void
+}
+class aggregator_Product {
+}
+class aggregator_Property {
+  + key : str
+  + value : str
+}
+class aggregator_Status {
+  + code : str
+  + message : str
+}
+abstract class aggregator_StatusProvider {
+}
+class aggregator_ValidConfigurationsRule {
+}
+class aggregator_ValidationSet {
+  + abstract : bool
+  + extension : bool
+  + label : str
+  + getAllContributions() : str
+  + getAllValidationRepositories() : MetadataRepositoryReference
+  + getDeclaredContributions() : str
+  + getDeclaredValidationRepositories() : MetadataRepositoryReference
+  + isExtensionOf(aggregator_validationSet : str) : bool
+}
+class aggregator_p2view_Bundle {
+}
+class aggregator_p2view_Bundles {
+}
+class aggregator_p2view_Categories {
+}
+class aggregator_p2view_Category {
+  + getNotNullBundleContainer() : str
+  + getNotNullCategoryContainer() : str
+  + getNotNullFeatureContainer() : str
+  + getNotNullFragmentContainer() : str
+  + getNotNullProductContainer() : str
+  + isNested() : bool
+}
+class aggregator_p2view_Feature {
+  + getNotNullBundleContainer() : str
+  + getNotNullFeatureContainer() : str
+  + getNotNullFragmentContainer() : str
+}
+class aggregator_p2view_Features {
+}
+class aggregator_p2view_Fragment {
+}
+class aggregator_p2view_Fragments {
+}
+class aggregator_p2view_IUDetails {
+}
+abstract class aggregator_p2view_IUPresentation {
+  + description : str
+  + filter : str
+  + id : str
+  + label : str
+  + name : str
+  + type : str
+  + version : str
+}
+abstract class aggregator_p2view_IUPresentationWithDetails {
+  + detailsResolved : str
+}
+class aggregator_p2view_InstallableUnits {
+  + getNotNullBundleContainer() : str
+  + getNotNullCategoryContainer() : str
+  + getNotNullFeatureContainer() : str
+  + getNotNullFragmentContainer() : str
+  + getNotNullMiscellaneousContainer() : str
+  + getNotNullProductContainer() : str
+}
+class aggregator_p2view_Licenses {
+}
+class aggregator_p2view_MetadataRepositoryStructuredView {
+  + loaded : bool
+  + location : str
+  + name : str
+}
+class aggregator_p2view_Miscellaneous {
+}
+class aggregator_p2view_OtherIU {
+}
+class aggregator_p2view_Product {
+  + getNotNullBundleContainer() : str
+  + getNotNullFeatureContainer() : str
+  + getNotNullFragmentContainer() : str
+}
+class aggregator_p2view_Products {
+}
+class aggregator_p2view_Properties {
+}
+class aggregator_p2view_ProvidedCapabilities {
+}
+class aggregator_p2view_ProvidedCapabilityWrapper {
+}
+class aggregator_p2view_RepositoryBrowser {
+  + loading : bool
+}
+class aggregator_p2view_RepositoryReferences {
+}
+class aggregator_p2view_RequirementWrapper {
+}
+class aggregator_p2view_Requirements {
+}
+class aggregator_p2view_Touchpoints {
+}
+class p2view_IUDetails {
+}
+class p2view_IUPresentation {
+}
+class p2view_aggregator_ICopyright {
+}
+class p2view_aggregator_IInstallableUnit {
+}
+class p2view_aggregator_ILicense {
+}
+class p2view_aggregator_IProvidedCapability {
+}
+class p2view_aggregator_IRepositoryReference {
+}
+class p2view_aggregator_IRequirement {
+}
+class p2view_aggregator_ITouchpointData {
+}
+class p2view_aggregator_ITouchpointType {
+}
+class p2view_aggregator_IUpdateDescriptor {
+}
+class p2view_aggregator_MetadataRepository {
+}
+class p2view_aggregator_Property {
+}
+Bundle <|-- aggregator_p2view_Fragment
+DescriptionProvider <|-- aggregator_Aggregation
+DescriptionProvider <|-- aggregator_Contribution
+DescriptionProvider <|-- aggregator_InstallableUnitRequest
+DescriptionProvider <|-- aggregator_MapRule
+DescriptionProvider <|-- aggregator_MappedRepository
+DescriptionProvider <|-- aggregator_ValidationSet
+EnabledStatusProvider <|-- aggregator_Configuration
+EnabledStatusProvider <|-- aggregator_Contribution
+EnabledStatusProvider <|-- aggregator_MapRule
+EnabledStatusProvider <|-- aggregator_MappedUnit
+EnabledStatusProvider <|-- aggregator_MetadataRepositoryReference
+EnabledStatusProvider <|-- aggregator_ValidationSet
+IProvidedCapability <|-- aggregator_p2view_ProvidedCapabilityWrapper
+IRequirement <|-- aggregator_p2view_RequirementWrapper
+IUPresentation <|-- aggregator_p2view_Category
+IUPresentationWithDetails <|-- aggregator_p2view_Bundle
+IUPresentationWithDetails <|-- aggregator_p2view_Feature
+IUPresentationWithDetails <|-- aggregator_p2view_OtherIU
+IUPresentationWithDetails <|-- aggregator_p2view_Product
+IdentificationProvider <|-- aggregator_Contribution
+IdentificationProvider <|-- aggregator_MappedRepository
+IdentificationProvider <|-- aggregator_MappedUnit
+IdentificationProvider <|-- aggregator_ValidationSet
+InfosProvider <|-- aggregator_Aggregation
+InfosProvider <|-- aggregator_Contribution
+InfosProvider <|-- aggregator_CustomCategory
+InfosProvider <|-- aggregator_InstallableUnitRequest
+InfosProvider <|-- aggregator_MavenMapping
+InfosProvider <|-- aggregator_MetadataRepositoryReference
+InfosProvider <|-- aggregator_ValidationSet
+InstallableUnitRequest <|-- aggregator_MapRule
+InstallableUnitRequest <|-- aggregator_MappedUnit
+LabelProvider <|-- aggregator_p2view_ProvidedCapabilityWrapper
+LabelProvider <|-- aggregator_p2view_RequirementWrapper
+MapRule <|-- aggregator_ExclusionRule
+MapRule <|-- aggregator_ValidConfigurationsRule
+MappedUnit <|-- aggregator_Bundle
+MappedUnit <|-- aggregator_Category
+MappedUnit <|-- aggregator_Feature
+MappedUnit <|-- aggregator_Product
+MetadataRepositoryReference <|-- aggregator_MappedRepository
+StatusProvider <|-- aggregator_Aggregation
+StatusProvider <|-- aggregator_Contribution
+StatusProvider <|-- aggregator_CustomCategory
+StatusProvider <|-- aggregator_InstallableUnitRequest
+StatusProvider <|-- aggregator_MavenMapping
+StatusProvider <|-- aggregator_MetadataRepositoryReference
+StatusProvider <|-- aggregator_ValidationSet
+p2view_IUDetails <|-- aggregator_p2view_IUPresentationWithDetails
+p2view_IUPresentation <|-- aggregator_p2view_IUPresentationWithDetails
+aggregator_Aggregation "1..1" -- "1..1" aggregator_Contact : aggregation12
+IUPresentation "0..9999" --* "1..1" aggregator_p2view_InstallableUnits : allIUs74
+aggregator_AvailableVersion "0..9999" -- "1..1" aggregator_AvailableVersionsHeader : availableVersions10
+aggregator_AvailableVersion "0..9999" --* "1..1" aggregator_InstallableUnitRequest : availableVersions23
+aggregator_AvailableVersionsHeader "0..1" --* "1..1" aggregator_InstallableUnitRequest : availableVersionsHeader22
+aggregator_Aggregation "1..1" -- "0..1" aggregator_Contact : buildmaster6
+Bundles "0..1" --* "1..1" aggregator_p2view_Product : bundleContainer119
+Bundles "0..1" --* "1..1" aggregator_p2view_Category : bundleContainer56
+Bundles "0..1" --* "1..1" aggregator_p2view_Feature : bundleContainer65
+Bundles "0..1" --* "1..1" aggregator_p2view_InstallableUnits : bundleContainer84
+aggregator_Bundle "0..9999" --* "1..1" aggregator_MappedRepository : bundles27
+Bundle "0..9999" -- "1..1" aggregator_p2view_Bundles : bundles50
+aggregator_CustomCategory "0..9999" -- "1..1" aggregator_Feature : categories20
+aggregator_Category "0..9999" --* "1..1" aggregator_MappedRepository : categories31
+Category "0..9999" -- "1..1" aggregator_p2view_Categories : categories62
+Categories "0..1" --* "1..1" aggregator_p2view_Category : categoryContainer51
+Categories "0..1" --* "1..1" aggregator_p2view_InstallableUnits : categoryContainer75
+aggregator_Aggregation "1..1" *-- "1..9999" aggregator_Configuration : configurations1
+aggregator_Contact "0..9999" -- "1..1" aggregator_Contribution : contacts14
+aggregator_Aggregation "1..1" *-- "0..9999" aggregator_Contact : contacts5
+aggregator_Contribution "0..9999" --* "1..1" aggregator_ValidationSet : contributions39
+aggregator_p2view_IUDetails "1..1" *-- "0..1" p2view_aggregator_ICopyright : copyright101
+aggregator_Aggregation "1..1" *-- "0..9999" aggregator_CustomCategory : customCategories3
+aggregator_ValidationSet "0..9999" -- "1..1" aggregator_ValidationSet : extends46
+Features "0..1" --* "1..1" aggregator_p2view_Product : featureContainer117
+Features "0..1" --* "1..1" aggregator_p2view_Category : featureContainer52
+Features "0..1" --* "1..1" aggregator_p2view_Feature : featureContainer63
+Features "0..1" --* "1..1" aggregator_p2view_InstallableUnits : featureContainer78
+aggregator_CustomCategory "1..1" -- "0..9999" aggregator_Feature : features21
+aggregator_Feature "0..9999" --* "1..1" aggregator_MappedRepository : features29
+Feature "0..9999" -- "1..1" aggregator_p2view_Features : features71
+Fragments "0..1" --* "1..1" aggregator_p2view_Product : fragmentContainer122
+Fragments "0..1" --* "1..1" aggregator_p2view_Category : fragmentContainer58
+Fragments "0..1" --* "1..1" aggregator_p2view_Feature : fragmentContainer68
+Fragments "0..1" --* "1..1" aggregator_p2view_InstallableUnits : fragmentContainer87
+Fragment "0..9999" -- "1..1" aggregator_p2view_Fragments : fragments73
+aggregator_p2view_ProvidedCapabilityWrapper "1..1" -- "1..1" p2view_aggregator_IProvidedCapability : genuine128
+aggregator_p2view_RequirementWrapper "1..1" -- "1..1" p2view_aggregator_IRequirement : genuine131
+aggregator_p2view_IUPresentation "1..1" -- "0..1" p2view_aggregator_IInstallableUnit : installableUnit105
+InstallableUnits "0..1" --* "1..1" aggregator_p2view_MetadataRepositoryStructuredView : installableUnitList108
+aggregator_AvailableVersionsHeader "1..1" -- "1..1" aggregator_InstallableUnitRequest : installableUnitRequest11
+IUDetails "0..1" --* "1..1" aggregator_p2view_Category : iuDetails60
+aggregator_p2view_Licenses "1..1" -- "0..9999" p2view_aggregator_ILicense : licenses106
+Licenses "0..1" --* "1..1" aggregator_p2view_IUDetails : licensesContainer103
+aggregator_MapRule "0..9999" --* "1..1" aggregator_MappedRepository : mapRules33
+aggregator_Contribution "1..1" *-- "0..9999" aggregator_MavenMapping : mavenMappings17
+aggregator_Aggregation "1..1" *-- "0..9999" aggregator_MavenMapping : mavenMappings8
+aggregator_p2view_MetadataRepositoryStructuredView "1..1" *-- "1..1" p2view_aggregator_MetadataRepository : metadataRepository112
+aggregator_MetadataRepository "0..1" -- "1..1" aggregator_MetadataRepositoryReference : metadataRepository37
+Miscellaneous "0..1" --* "1..1" aggregator_p2view_InstallableUnits : miscellaneousContainer90
+OtherIU "0..9999" -- "1..1" aggregator_p2view_Miscellaneous : others116
+Products "0..1" --* "1..1" aggregator_p2view_Category : productContainer54
+Products "0..1" --* "1..1" aggregator_p2view_InstallableUnits : productContainer81
+Product "0..9999" -- "1..1" aggregator_p2view_Products : products125
+aggregator_MappedRepository "1..1" *-- "0..9999" aggregator_Product : products25
+Properties "0..1" --* "1..1" aggregator_p2view_MetadataRepositoryStructuredView : properties109
+Properties "0..1" --* "1..1" aggregator_p2view_IUDetails : propertiesContainer95
+aggregator_p2view_Properties "1..1" *-- "0..9999" p2view_aggregator_Property : propertyList126
+ProvidedCapabilityWrapper "0..9999" --* "1..1" aggregator_p2view_ProvidedCapabilities : providedCapabilities127
+ProvidedCapabilities "0..1" --* "1..1" aggregator_p2view_IUDetails : providedCapabilitiesContainer93
+MetadataRepositoryStructuredView "0..9999" -- "1..1" aggregator_p2view_RepositoryBrowser : repositories107
+aggregator_Contribution "1..1" *-- "0..9999" aggregator_MappedRepository : repositories13
+RepositoryReferences "0..1" -- "1..1" aggregator_p2view_MetadataRepositoryStructuredView : repositoryReferences114
+aggregator_p2view_RepositoryReferences "1..1" -- "0..9999" p2view_aggregator_IRepositoryReference : repositoryReferences129
+RequirementWrapper "0..9999" --* "1..1" aggregator_p2view_Requirements : requirements130
+Requirements "0..1" --* "1..1" aggregator_p2view_IUDetails : requirementsContainer92
+aggregator_Status "1..1" -- "1..1" aggregator_StatusProvider : status38
+aggregator_p2view_Touchpoints "1..1" -- "0..9999" p2view_aggregator_ITouchpointData : touchpointDataList133
+aggregator_p2view_Touchpoints "1..1" -- "0..1" p2view_aggregator_ITouchpointType : touchpointType132
+Touchpoints "0..1" --* "1..1" aggregator_p2view_IUDetails : touchpointsContainer97
+aggregator_p2view_IUDetails "1..1" *-- "0..1" p2view_aggregator_IUpdateDescriptor : updateDescriptor99
+aggregator_Configuration "0..9999" -- "1..1" aggregator_MappedUnit : validConfigurations35
+aggregator_Configuration "0..9999" -- "1..1" aggregator_ValidConfigurationsRule : validConfigurations48
+aggregator_MetadataRepositoryReference "0..9999" --* "1..1" aggregator_ValidationSet : validationRepositories42
+aggregator_Aggregation "1..1" *-- "0..9999" aggregator_ValidationSet : validationSets0
+@enduml

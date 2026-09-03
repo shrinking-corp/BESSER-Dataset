@@ -1,0 +1,129 @@
+@startuml
+enum ActivityType {
+  BUSINESSRULE
+  MANUAL
+  RECEIVE
+  SEND
+  SERVICE
+  USER
+}
+enum DataObjectType {
+  INFORMATIONAL
+  PHYSICAL
+}
+enum DecisionType {
+  EXCLUSIVE
+  INCLUSIVE
+}
+class EObject {
+}
+class Event {
+}
+enum EventType {
+  EEnumLiteral0
+}
+class FlowNode {
+}
+enum FlowNodeInstanceStatus {
+  FAILED
+  INIT
+  INTERRUPTED
+  STARTED
+  SUCCESS
+}
+enum GatewayType {
+  JOIN
+  SPLIT
+}
+class SplitGateway {
+}
+class cbpmn_Activity {
+  + type : str
+}
+class cbpmn_Branch {
+  + default : bool
+  + getFirstNode() : FlowNode
+  + getLastNode() : FlowNode
+}
+class cbpmn_DataObject {
+}
+class cbpmn_DataObjectReference {
+  + higherBound : int
+  + lowerBound : int
+  + name : str
+}
+class cbpmn_DecisionGateway {
+  + type : str
+  + addBranchWithCondition(cbpmn_branch : str, cbpmn_condition : str, cbpmn_default : str) : void
+  + getDefaultBranch() : str
+  + getRandomBranch() : str
+}
+class cbpmn_EClass {
+}
+class cbpmn_EObject {
+}
+class cbpmn_EndEvent {
+}
+abstract class cbpmn_Event {
+}
+abstract class cbpmn_FlowNode {
+  + name : str
+}
+class cbpmn_FlowNodeInstance {
+  + status : str
+}
+class cbpmn_IntermediateEvent {
+}
+class cbpmn_OCLConstraint {
+  + constraintName : str
+  + constraintStr : str
+}
+class cbpmn_ParallelGateway {
+}
+class cbpmn_ProcessInstance {
+  + id : str
+}
+class cbpmn_ProcessModel {
+  + name : str
+  + getRandomStartEvent() : str
+  + iterator(cbpmn_iterator : str, cbpmn_start : str) : str
+}
+abstract class cbpmn_SplitGateway {
+}
+class cbpmn_StartEvent {
+}
+EObject <|-- cbpmn_DataObject
+Event <|-- cbpmn_EndEvent
+Event <|-- cbpmn_IntermediateEvent
+Event <|-- cbpmn_StartEvent
+FlowNode <|-- cbpmn_Activity
+FlowNode <|-- cbpmn_Event
+FlowNode <|-- cbpmn_SplitGateway
+SplitGateway <|-- cbpmn_DecisionGateway
+SplitGateway <|-- cbpmn_ParallelGateway
+cbpmn_Branch "0..1" -- "1..1" cbpmn_FlowNode : branch17
+cbpmn_Branch "0..1" -- "1..1" cbpmn_OCLConstraint : branch26
+cbpmn_Branch "0..9999" --* "1..1" cbpmn_SplitGateway : branches30
+cbpmn_DataObjectReference "1..1" -- "1..1" cbpmn_EClass : dataObjectClass32
+cbpmn_EObject "0..9999" --* "1..1" cbpmn_ProcessInstance : dataObjects37
+cbpmn_Branch "1..1" *-- "0..9999" cbpmn_OCLConstraint : entryConditions14
+cbpmn_FlowNodeInstance "0..9999" --* "1..1" cbpmn_ProcessInstance : executedNodes36
+cbpmn_Branch "1..1" -- "0..1" cbpmn_SplitGateway : gateway16
+cbpmn_DataObjectReference "0..9999" --* "1..1" cbpmn_FlowNode : inputs24
+cbpmn_EObject "0..9999" -- "1..1" cbpmn_FlowNodeInstance : inputs41
+cbpmn_Activity "1..1" *-- "0..9999" cbpmn_OCLConstraint : invariabilityClauses10
+cbpmn_Branch "1..1" --* "1..1" cbpmn_ProcessModel : mainBranch0
+cbpmn_FlowNode "1..1" -- "0..1" cbpmn_FlowNode : next19
+cbpmn_FlowNode "1..1" -- "1..1" cbpmn_FlowNodeInstance : nodeDef39
+cbpmn_Branch "1..1" *-- "1..9999" cbpmn_FlowNode : nodes13
+cbpmn_EObject "0..9999" -- "1..1" cbpmn_FlowNodeInstance : outputs44
+cbpmn_Activity "1..1" *-- "0..9999" cbpmn_DataObjectReference : outputs8
+cbpmn_Activity "1..1" *-- "0..9999" cbpmn_OCLConstraint : postConditions5
+cbpmn_Activity "1..1" *-- "0..9999" cbpmn_OCLConstraint : preConditions3
+cbpmn_FlowNode "1..1" -- "0..1" cbpmn_FlowNode : previous22
+cbpmn_FlowNodeInstance "1..1" -- "1..1" cbpmn_ProcessInstance : processInstance47
+cbpmn_OCLConstraint "0..9999" --* "1..1" cbpmn_ProcessModel : processInvariants1
+cbpmn_ProcessInstance "1..1" -- "1..1" cbpmn_ProcessModel : processModel34
+cbpmn_Event "1..1" *-- "0..1" cbpmn_OCLConstraint : trigger28
+cbpmn_DataObject "1..1" -- "1..1" cbpmn_EClass : type48
+@enduml

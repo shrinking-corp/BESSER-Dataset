@@ -1,0 +1,23 @@
+@startuml
+class Node {
+}
+class petri_net_Arc {
+  + name : str
+}
+abstract class petri_net_Node {
+  + name : str
+}
+class petri_net_PetriNet {
+  + name : str
+}
+class petri_net_Place {
+}
+class petri_net_Transition {
+}
+Node <|-- petri_net_Place
+Node <|-- petri_net_Transition
+petri_net_Arc "0..9999" --* "1..1" petri_net_PetriNet : arcs1
+petri_net_Node "0..9999" --* "1..1" petri_net_PetriNet : nodes0
+petri_net_Arc "1..1" -- "1..1" petri_net_Node : source3
+petri_net_Arc "1..1" -- "1..1" petri_net_Node : target6
+@enduml

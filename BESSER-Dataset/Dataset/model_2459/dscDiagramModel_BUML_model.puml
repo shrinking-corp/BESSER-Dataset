@@ -1,0 +1,51 @@
+@startuml
+class Classifier {
+}
+class Container {
+}
+class GenericDiagram {
+}
+class Relationship {
+}
+class dscDiagramModel_AnchorNoteToItem {
+}
+class dscDiagramModel_DSCDiagram {
+  + actionFile : str
+  + diagramVariables : str
+  + eventFile : str
+  + functionFile : str
+  + guardFile : str
+}
+class dscDiagramModel_DSCState {
+  + Variables : str
+  + isSimple : bool
+}
+class dscDiagramModel_DeepHistory {
+}
+class dscDiagramModel_ShallowHistory {
+}
+class dscDiagramModel_StartPoint {
+}
+class dscDiagramModel_Transition {
+  + actionID : str
+  + eventID : str
+  + guardID : str
+  + showProperties : bool
+  + showTransitionID : bool
+  + transitionID : str
+  + triggeredByEvent : bool
+}
+Classifier <|-- dscDiagramModel_DeepHistory
+Classifier <|-- dscDiagramModel_ShallowHistory
+Classifier <|-- dscDiagramModel_StartPoint
+Container <|-- dscDiagramModel_DSCState
+GenericDiagram <|-- dscDiagramModel_DSCDiagram
+Relationship <|-- dscDiagramModel_AnchorNoteToItem
+Relationship <|-- dscDiagramModel_Transition
+dscDiagramModel_DSCState "1..1" -- "1..1" dscDiagramModel_StartPoint : compositeState0
+dscDiagramModel_DSCState "1..1" -- "1..1" dscDiagramModel_ShallowHistory : compositeState1
+dscDiagramModel_DSCState "1..1" -- "1..1" dscDiagramModel_DeepHistory : compositeState3
+dscDiagramModel_DSCState "1..1" -- "0..1" dscDiagramModel_DeepHistory : deepHistory8
+dscDiagramModel_DSCState "1..1" -- "0..1" dscDiagramModel_ShallowHistory : shallowHistory6
+dscDiagramModel_DSCState "1..1" -- "1..1" dscDiagramModel_StartPoint : startPoint5
+@enduml

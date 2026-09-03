@@ -1,0 +1,23 @@
+@startuml
+class ClassM_Attribute {
+  + is_primary : bool
+  + name : str
+}
+class ClassM_Class {
+}
+class ClassM_Classifier {
+  + name : str
+}
+class ClassM_Model {
+}
+class ClassM_PrimitiveType {
+}
+class Classifier {
+}
+Classifier <|-- ClassM_Class
+Classifier <|-- ClassM_PrimitiveType
+ClassM_Attribute "0..9999" --* "1..1" ClassM_Class : attrs0
+ClassM_Classifier "0..9999" --* "1..1" ClassM_Model : classifiers3
+ClassM_Attribute "1..1" -- "0..1" ClassM_Class : owner2
+ClassM_Attribute "1..1" -- "0..1" ClassM_Classifier : type1
+@enduml

@@ -1,0 +1,87 @@
+@startuml
+class Block {
+}
+class DataType {
+}
+class InterfaceBlock {
+}
+class Port {
+}
+class SMElement {
+}
+abstract class systemmodel_Block {
+  + sequenceNumber : int
+}
+abstract class systemmodel_DataType {
+  + basetype : str
+}
+class systemmodel_GainBlock {
+  + gainfactor : str
+}
+class systemmodel_Inport {
+}
+class systemmodel_InputBlock {
+}
+abstract class systemmodel_InterfaceBlock {
+}
+class systemmodel_MatrixType {
+  + columns : str
+  + rows : str
+}
+class systemmodel_Outport {
+}
+class systemmodel_OutputBlock {
+}
+abstract class systemmodel_Port {
+}
+abstract class systemmodel_SMElement {
+  + name : str
+}
+class systemmodel_Saturation {
+  + lowerBound : str
+  + upperBound : str
+}
+class systemmodel_ScalarType {
+}
+class systemmodel_Signal {
+}
+class systemmodel_Sum {
+}
+class systemmodel_SystemModel {
+}
+class systemmodel_UnitDelay {
+  + initialCondition : str
+}
+class systemmodel_VectorType {
+  + size : str
+}
+Block <|-- systemmodel_GainBlock
+Block <|-- systemmodel_InterfaceBlock
+Block <|-- systemmodel_Saturation
+Block <|-- systemmodel_Sum
+Block <|-- systemmodel_UnitDelay
+DataType <|-- systemmodel_MatrixType
+DataType <|-- systemmodel_ScalarType
+DataType <|-- systemmodel_VectorType
+InterfaceBlock <|-- systemmodel_InputBlock
+InterfaceBlock <|-- systemmodel_OutputBlock
+Port <|-- systemmodel_Inport
+Port <|-- systemmodel_Outport
+SMElement <|-- systemmodel_Block
+SMElement <|-- systemmodel_DataType
+SMElement <|-- systemmodel_Port
+SMElement <|-- systemmodel_Signal
+SMElement <|-- systemmodel_SystemModel
+systemmodel_Block "0..9999" --* "1..1" systemmodel_SystemModel : blocks0
+systemmodel_DataType "1..9999" --* "1..1" systemmodel_SystemModel : dataTypes3
+systemmodel_Inport "1..1" -- "1..1" systemmodel_Signal : dstPort10
+systemmodel_Inport "1..1" -- "0..1" systemmodel_Signal : inSignal12
+systemmodel_Block "1..1" *-- "0..9999" systemmodel_Inport : inports5
+systemmodel_Outport "1..1" -- "0..9999" systemmodel_Signal : outSignals14
+systemmodel_Block "1..1" *-- "0..9999" systemmodel_Outport : outports6
+systemmodel_Block "1..1" -- "1..1" systemmodel_Inport : parentBlock13
+systemmodel_Block "1..1" -- "1..1" systemmodel_Outport : parentBlock16
+systemmodel_Signal "0..9999" --* "1..1" systemmodel_SystemModel : signals1
+systemmodel_Outport "1..1" -- "1..1" systemmodel_Signal : srcPort8
+systemmodel_DataType "1..1" -- "1..1" systemmodel_Port : type18
+@enduml

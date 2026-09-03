@@ -1,0 +1,38 @@
+@startuml
+class NamedElement {
+}
+class simpleparts_Element {
+}
+class simpleparts_Item {
+}
+abstract class simpleparts_NamedElement {
+  + name : str
+}
+class simpleparts_Part {
+}
+class simpleparts_Piece {
+}
+class simpleparts_RelatedTo {
+  + since : str
+}
+class simpleparts_Thing {
+  + id : int
+}
+class simpleparts_World {
+}
+NamedElement <|-- simpleparts_Element
+NamedElement <|-- simpleparts_Item
+NamedElement <|-- simpleparts_Part
+NamedElement <|-- simpleparts_Piece
+NamedElement <|-- simpleparts_RelatedTo
+NamedElement <|-- simpleparts_Thing
+simpleparts_Element "0..9999" --* "1..1" simpleparts_Thing : elements4
+simpleparts_RelatedTo "1..1" -- "0..1" simpleparts_Thing : fromThing10
+simpleparts_Item "0..9999" --* "1..1" simpleparts_Thing : items6
+simpleparts_Part "0..1" -- "1..1" simpleparts_Piece : part13
+simpleparts_Part "0..9999" --* "1..1" simpleparts_Thing : parts2
+simpleparts_Piece "0..9999" --* "1..1" simpleparts_Thing : pieces8
+simpleparts_RelatedTo "0..9999" --* "1..1" simpleparts_Thing : relations1
+simpleparts_Thing "0..9999" --* "1..1" simpleparts_World : things0
+simpleparts_RelatedTo "1..1" -- "0..1" simpleparts_Thing : toThing11
+@enduml

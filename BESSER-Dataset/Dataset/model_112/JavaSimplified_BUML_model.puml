@@ -1,0 +1,184 @@
+@startuml
+class Expression {
+}
+class NamedElement {
+}
+class Statement {
+}
+class Type {
+}
+enum VisibilityKind {
+  none
+  private
+  protected
+  public
+}
+class javasimplified_ArrayAccess {
+}
+class javasimplified_ArrayCreation {
+}
+class javasimplified_Assignment {
+}
+class javasimplified_Block {
+}
+class javasimplified_BooleanLiteral {
+  + value : bool
+}
+class javasimplified_CastExpression {
+}
+class javasimplified_CatchStatment {
+}
+class javasimplified_Class {
+  + isAbstract : bool
+}
+class javasimplified_ClassInstanceCreation {
+}
+class javasimplified_Comment {
+}
+abstract class javasimplified_Expression {
+}
+class javasimplified_ExpressionStatement {
+}
+class javasimplified_ForStatement {
+}
+class javasimplified_IfStatement {
+}
+class javasimplified_ImportDeclaration {
+}
+class javasimplified_InstanceOfExpression {
+}
+class javasimplified_Interface {
+}
+class javasimplified_Method {
+  + visibility : str
+}
+class javasimplified_Model {
+}
+class javasimplified_Modifier {
+  + isFinal : bool
+  + isStatic : bool
+  + isSynchronized : bool
+  + isVolatile : bool
+  + visibility : str
+}
+abstract class javasimplified_NamedElement {
+  + name : str
+}
+class javasimplified_NullLiteral {
+}
+class javasimplified_NumberLiteral {
+  + value : str
+}
+class javasimplified_Package {
+}
+class javasimplified_Parameter {
+}
+class javasimplified_PrimitiveType {
+}
+class javasimplified_ReturnStatement {
+}
+abstract class javasimplified_Statement {
+}
+class javasimplified_StringLiteral {
+  + value : str
+}
+class javasimplified_ThisExpression {
+}
+class javasimplified_ThrowStatement {
+}
+class javasimplified_TryStatement {
+}
+class javasimplified_Type {
+}
+class javasimplified_Variable {
+  + name : str
+}
+class javasimplified_VariableAccess {
+}
+class javasimplified_WhileStatement {
+}
+Expression <|-- javasimplified_ArrayAccess
+Expression <|-- javasimplified_ArrayCreation
+Expression <|-- javasimplified_Assignment
+Expression <|-- javasimplified_BooleanLiteral
+Expression <|-- javasimplified_CastExpression
+Expression <|-- javasimplified_ClassInstanceCreation
+Expression <|-- javasimplified_InstanceOfExpression
+Expression <|-- javasimplified_NullLiteral
+Expression <|-- javasimplified_NumberLiteral
+Expression <|-- javasimplified_StringLiteral
+Expression <|-- javasimplified_ThisExpression
+Expression <|-- javasimplified_VariableAccess
+NamedElement <|-- javasimplified_Method
+NamedElement <|-- javasimplified_Model
+NamedElement <|-- javasimplified_Package
+NamedElement <|-- javasimplified_Parameter
+NamedElement <|-- javasimplified_Type
+Statement <|-- javasimplified_Block
+Statement <|-- javasimplified_CatchStatment
+Statement <|-- javasimplified_ExpressionStatement
+Statement <|-- javasimplified_ForStatement
+Statement <|-- javasimplified_IfStatement
+Statement <|-- javasimplified_ReturnStatement
+Statement <|-- javasimplified_ThrowStatement
+Statement <|-- javasimplified_TryStatement
+Statement <|-- javasimplified_Variable
+Statement <|-- javasimplified_WhileStatement
+Type <|-- javasimplified_Class
+Type <|-- javasimplified_Interface
+Type <|-- javasimplified_PrimitiveType
+javasimplified_ArrayAccess "1..1" -- "1..1" javasimplified_Expression : array113
+javasimplified_ForStatement "1..1" *-- "1..1" javasimplified_Statement : body45
+javasimplified_IfStatement "1..1" *-- "1..1" javasimplified_Statement : body57
+javasimplified_Statement "1..1" --* "1..1" javasimplified_WhileStatement : body63
+javasimplified_Statement "1..1" --* "1..1" javasimplified_TryStatement : body68
+javasimplified_CatchStatment "1..1" -- "1..1" javasimplified_Statement : body83
+javasimplified_CatchStatment "0..9999" -- "1..1" javasimplified_TryStatement : catchClauses70
+javasimplified_Class "0..1" -- "1..1" javasimplified_Method : class_0
+javasimplified_Class "0..1" -- "1..1" javasimplified_Variable : class_11
+javasimplified_Class "1..1" -- "1..1" javasimplified_Comment : class_18
+javasimplified_Class "1..1" *-- "0..9999" javasimplified_Comment : comments21
+javasimplified_ArrayCreation "1..1" -- "0..9999" javasimplified_Expression : dimensions118
+javasimplified_IfStatement "1..1" *-- "1..1" javasimplified_Statement : else_60
+javasimplified_CatchStatment "1..1" -- "1..1" javasimplified_Parameter : exception86
+javasimplified_Expression "1..1" -- "1..1" javasimplified_VariableAccess : expression100
+javasimplified_ClassInstanceCreation "1..1" -- "1..1" javasimplified_Expression : expression103
+javasimplified_Expression "1..1" --* "1..1" javasimplified_ForStatement : expression47
+javasimplified_Expression "1..1" --* "1..1" javasimplified_IfStatement : expression55
+javasimplified_Expression "1..1" --* "1..1" javasimplified_WhileStatement : expression65
+javasimplified_Expression "1..1" --* "1..1" javasimplified_ThrowStatement : expression72
+javasimplified_Expression "1..1" --* "1..1" javasimplified_ReturnStatement : expression74
+javasimplified_Expression "1..1" --* "1..1" javasimplified_ExpressionStatement : expression81
+javasimplified_CastExpression "1..1" -- "1..1" javasimplified_Expression : expression91
+javasimplified_Class "1..1" *-- "0..9999" javasimplified_Interface : implements34
+javasimplified_ImportDeclaration "1..1" -- "1..1" javasimplified_NamedElement : importedElement43
+javasimplified_Class "1..1" *-- "0..9999" javasimplified_ImportDeclaration : imports29
+javasimplified_ArrayAccess "1..1" -- "1..1" javasimplified_Expression : index115
+javasimplified_ArrayCreation "1..1" -- "0..9999" javasimplified_Expression : initializars123
+javasimplified_Expression "0..9999" --* "1..1" javasimplified_ForStatement : initializers52
+javasimplified_Assignment "1..1" -- "1..1" javasimplified_Expression : leftHandSide76
+javasimplified_Expression "1..1" --* "1..1" javasimplified_InstanceOfExpression : leftOperand108
+javasimplified_Class "1..1" *-- "0..9999" javasimplified_Method : methods26
+javasimplified_Modifier "0..1" --* "1..1" javasimplified_Variable : modifier12
+javasimplified_Class "1..1" *-- "0..1" javasimplified_Modifier : modifier31
+javasimplified_Method "1..1" *-- "0..1" javasimplified_Modifier : modifier5
+javasimplified_Class "0..9999" --* "1..1" javasimplified_Package : ownedElems36
+javasimplified_Package "0..1" -- "1..1" javasimplified_Package : package39
+javasimplified_Model "1..1" *-- "0..9999" javasimplified_Package : packs41
+javasimplified_Method "1..1" *-- "0..9999" javasimplified_Parameter : params1
+javasimplified_Method "1..1" -- "0..1" javasimplified_Type : returnType3
+javasimplified_Assignment "1..1" -- "1..1" javasimplified_Expression : rightHandSide78
+javasimplified_InstanceOfExpression "1..1" -- "1..1" javasimplified_Type : rightOperand110
+javasimplified_Method "1..1" *-- "0..9999" javasimplified_Statement : statements7
+javasimplified_Block "1..1" *-- "0..9999" javasimplified_Statement : statements89
+javasimplified_Class "0..1" -- "1..1" javasimplified_Class : superClass24
+javasimplified_ClassInstanceCreation "1..1" -- "1..1" javasimplified_Type : type105
+javasimplified_ArrayCreation "1..1" -- "1..1" javasimplified_Type : type120
+javasimplified_Parameter "1..1" -- "0..1" javasimplified_Type : type15
+javasimplified_Type "0..1" -- "1..1" javasimplified_Variable : type9
+javasimplified_CastExpression "1..1" -- "1..1" javasimplified_Type : type93
+javasimplified_ThisExpression "1..1" -- "1..1" javasimplified_Type : type96
+javasimplified_Expression "0..9999" --* "1..1" javasimplified_ForStatement : updaters49
+javasimplified_Variable "1..1" -- "1..1" javasimplified_VariableAccess : variable98
+javasimplified_Class "1..1" *-- "0..9999" javasimplified_Variable : variables20
+@enduml

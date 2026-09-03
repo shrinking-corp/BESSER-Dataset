@@ -1,0 +1,62 @@
+@startuml
+class Card_Interface {
+}
+class Deck {
+  + deck__ : Deck
+  + draw__ : str
+  + isEmpty__ : bool
+  + shuffle__ : str
+  + topcard : int
+}
+class Play {
+  + Score : int
+  + removedCard : int
+}
+class Play_UseCase {
+}
+class Play_UseCase1 {
+}
+class Player1_Actor {
+}
+class Player2_Actor {
+}
+class Players {
+  + Player1 : Card_Interface
+  + Player2 : Card_Interface
+}
+enum Rank {
+}
+enum Suit {
+}
+class WAR {
+}
+class War_UseCase {
+}
+class War_UseCase1 {
+}
+class Winner_UseCase {
+}
+enum en {
+}
+enum en2 {
+}
+class playerOne_external {
+}
+class playerTwo_external {
+}
+Card_Interface "0..1" -- "0..1" Deck : Deck_Card
+Deck "0..1" -- "0..1" Play : Deck_Function
+Deck "0..1" -- "0..1" WAR : Deck_WAR
+Card_Interface "0..1" -- "0..1" Play : Function_Card
+Play "0..1" -- "0..1" playerTwo_external : Function_PlayerCPU
+Play "0..1" -- "0..1" playerOne_external : Function_PlayerUser
+Play "0..1" -- "0..1" Players : Function_Players
+Play_UseCase "0..1" -- "0..1" War_UseCase : Play_Winner
+War_UseCase "0..1" -- "0..1" War_UseCase1 : Play_Winner2
+Play_UseCase1 "0..1" -- "0..1" Winner_UseCase : Play_Winner3
+Play_UseCase "0..1" -- "0..1" Player1_Actor : Player1_Play
+Play_UseCase "0..1" -- "0..1" Player2_Actor : Player2_Play
+Players "0..1" -- "0..1" WAR : Players_WAR
+Players "0..1" -- "0..1" WAR : WAR_Players
+War_UseCase1 "0..1" -- "0..1" Winner_UseCase : Winner_Play
+@enduml

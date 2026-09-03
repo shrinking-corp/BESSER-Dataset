@@ -1,0 +1,98 @@
+@startuml
+class DClassElement {
+}
+class DContainedEdge {
+}
+class DContainedElement {
+}
+class DEdge {
+}
+class DGraphElement {
+}
+class DModelElementBridge {
+}
+class dsml_DAttributeBridge {
+}
+class dsml_DClassBridge {
+}
+abstract class dsml_DClassElement {
+}
+abstract class dsml_DContainedEdge {
+}
+abstract class dsml_DContainedElement {
+}
+class dsml_DContainment {
+  + compartment : bool
+}
+abstract class dsml_DEdge {
+}
+class dsml_DGraph {
+}
+abstract class dsml_DGraphElement {
+  + name : str
+}
+class dsml_DLabel {
+  + name : str
+}
+class dsml_DLink {
+}
+class dsml_DModelElementBridge {
+  + ecoreName : str
+  + ecorePath : str
+}
+class dsml_DNode {
+  + pointOfView : bool
+  + pointOfViewName : str
+}
+class dsml_DReference {
+  + nonGraphicalProperty : bool
+}
+class dsml_DReferenceBridge {
+}
+class dsml_DSemanticBridge {
+}
+class dsml_Diagraph {
+}
+class dsml_EAttribute {
+}
+class dsml_EClass {
+}
+class dsml_EReference {
+}
+DClassElement <|-- dsml_DLink
+DClassElement <|-- dsml_DNode
+DContainedEdge <|-- dsml_DContainment
+DContainedEdge <|-- dsml_DLink
+DContainedElement <|-- dsml_DContainedEdge
+DContainedElement <|-- dsml_DNode
+DEdge <|-- dsml_DContainedEdge
+DEdge <|-- dsml_DReference
+DGraphElement <|-- dsml_DContainedElement
+DGraphElement <|-- dsml_DEdge
+DGraphElement <|-- dsml_DNode
+DModelElementBridge <|-- dsml_DAttributeBridge
+DModelElementBridge <|-- dsml_DClassBridge
+DModelElementBridge <|-- dsml_DReferenceBridge
+dsml_DNode "1..1" -- "0..9999" dsml_DNode : childrenPointOfView14
+dsml_DContainedElement "1..1" -- "0..1" dsml_DNode : containment36
+dsml_DSemanticBridge "1..1" --* "1..1" dsml_Diagraph : dAbstractSyntax43
+dsml_DGraph "1..1" --* "1..1" dsml_Diagraph : dConcreteSyntax41
+dsml_DModelElementBridge "0..9999" --* "1..1" dsml_DSemanticBridge : dModelElements45
+dsml_DAttributeBridge "0..1" -- "1..1" dsml_DLabel : eAttributeBridge47
+dsml_DClassElement "1..1" -- "0..1" dsml_EClass : eClass31
+dsml_DClassBridge "0..1" -- "1..1" dsml_DClassElement : eClassBridge34
+dsml_DContainedElement "1..1" -- "0..1" dsml_DReferenceBridge : eContainmentReferenceBridge38
+dsml_DLink "1..1" -- "0..1" dsml_DReferenceBridge : eSourceReferenceBridge20
+dsml_DEdge "1..1" -- "0..1" dsml_DReferenceBridge : eTargetReferenceBridge6
+dsml_DEdge "0..9999" --* "1..1" dsml_DNode : edges8
+dsml_DClassElement "1..1" -- "0..1" dsml_EAttribute : labelAttribute32
+dsml_DLabel "0..9999" --* "1..1" dsml_DNode : labels16
+dsml_DLabel "0..9999" -- "1..1" dsml_DLink : linkLabels23
+dsml_DGraph "1..1" *-- "0..9999" dsml_DNode : nodes26
+dsml_DNode "1..1" -- "0..1" dsml_DNode : parentPointOfView12
+dsml_DGraph "1..1" -- "1..1" dsml_DNode : rootPointOfView28
+dsml_DEdge "1..1" -- "0..1" dsml_DNode : sourceNode3
+dsml_DLink "1..1" -- "0..1" dsml_EReference : sourceReference18
+dsml_DEdge "1..1" -- "0..1" dsml_DNode : targetNode0
+dsml_DEdge "1..1" -- "0..1" dsml_EReference : targetReference1
+@enduml

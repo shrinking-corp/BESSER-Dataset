@@ -1,0 +1,40 @@
+@startuml
+class Access_Information {
+}
+class Admin {
+}
+class Attendance {
+}
+class Authentication {
+}
+class Course {
+  + duration : str
+  + subjects__ : Subject
+}
+class Department {
+  + course : Course
+  + hod : HOD
+  + lecturer__ : Lecturer
+  + students__ : Student
+}
+class HOD {
+}
+class Lecturer {
+}
+class Student {
+  + ID : str
+  + Name : str
+}
+class Subject {
+  + name : str
+}
+Access_Information "0..1" -- "0..1" Attendance : Access_Information_Attendance
+Access_Information "0..1" -- "0..1" Department : Access_Information_Department
+Admin "0..1" -- "0..9999" Student : Admin_Student
+Course "0..1" -- "0..9999" Subject : Course_Subject
+Course "1..1" -- "0..1" Department : Department_Course
+Department "0..1" -- "0..9999" Student : Department_Student
+Department "0..1" -- "0..1" HOD : HOD_Department
+Department "0..1" -- "0..1" Lecturer : Lecturer_Department
+Access_Information "0..1" -- "0..1" Student : Student_Access_Information
+@enduml

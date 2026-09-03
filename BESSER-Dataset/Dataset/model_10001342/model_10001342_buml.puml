@@ -1,0 +1,49 @@
+@startuml
+class Book_Room_UseCase {
+}
+class Cancel_Reservation_UseCase {
+}
+class Check_In_UseCase {
+}
+class Check_Out_UseCase {
+}
+class Chef_Actor {
+}
+class Customer {
+}
+class Food_Serving_UseCase {
+}
+class Hotel_Guest_Actor {
+}
+class HouseKeeping_Actor {
+}
+class Inventory {
+  + Status : str
+  + Type : str
+}
+class Manager {
+  + Id : int
+  + Name : str
+  + Phone_No : int
+}
+class Menu_Preparation_UseCase {
+}
+class Receptionist_Actor {
+}
+class Room_Cleaning_UseCase {
+}
+class Search_Avalibility_UseCase {
+}
+Book_Room_UseCase "0..1" -- "0..1" Hotel_Guest_Actor : Book_Room_Hotel_Guest
+Check_In_UseCase "0..1" -- "0..1" Hotel_Guest_Actor : Check_In_Hotel_Guest
+Check_In_UseCase "0..1" -- "0..1" Receptionist_Actor : Check_In_Receptionist
+Check_Out_UseCase "0..1" -- "0..1" Hotel_Guest_Actor : Check_Out_Hotel_Guest
+Check_Out_UseCase "0..1" -- "0..1" Receptionist_Actor : Check_Out_Receptionist
+Chef_Actor "0..1" -- "0..1" Food_Serving_UseCase : Food_Serving_Chef
+Food_Serving_UseCase "0..1" -- "0..1" Hotel_Guest_Actor : Food_Serving_Hotel_Guest
+Chef_Actor "0..1" -- "0..1" Menu_Preparation_UseCase : Menu_Preparation_Chef
+Book_Room_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Book_Room
+Hotel_Guest_Actor "0..1" -- "0..1" Room_Cleaning_UseCase : Room_Cleaning_Hotel_Guest
+HouseKeeping_Actor "0..1" -- "0..1" Room_Cleaning_UseCase : Room_Cleaning_HouseKeeping
+Hotel_Guest_Actor "0..1" -- "0..1" Search_Avalibility_UseCase : Search_Avalibility_Hotel_Guest
+@enduml

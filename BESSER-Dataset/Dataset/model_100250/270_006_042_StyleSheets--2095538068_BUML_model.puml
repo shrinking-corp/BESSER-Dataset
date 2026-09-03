@@ -1,0 +1,31 @@
+@startuml
+class EModelElement {
+}
+class StyleSheet {
+}
+class stylesheets_EmbeddedStyleSheet {
+  + content : str
+  + label : str
+}
+class stylesheets_ModelStyleSheets {
+}
+abstract class stylesheets_StyleSheet {
+}
+class stylesheets_StyleSheetReference {
+  + path : str
+}
+class stylesheets_Theme {
+  + icon : str
+  + id : str
+  + label : str
+}
+class stylesheets_WorkspaceThemes {
+}
+EModelElement <|-- stylesheets_ModelStyleSheets
+EModelElement <|-- stylesheets_WorkspaceThemes
+StyleSheet <|-- stylesheets_EmbeddedStyleSheet
+StyleSheet <|-- stylesheets_StyleSheetReference
+stylesheets_ModelStyleSheets "1..1" *-- "0..9999" stylesheets_StyleSheet : stylesheets0
+stylesheets_StyleSheet "0..9999" --* "1..1" stylesheets_Theme : stylesheets2
+stylesheets_Theme "0..9999" --* "1..1" stylesheets_WorkspaceThemes : themes1
+@enduml

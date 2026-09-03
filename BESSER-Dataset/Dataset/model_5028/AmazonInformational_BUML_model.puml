@@ -1,0 +1,36 @@
+@startuml
+class amazoninformational_Customer {
+  + address : str
+  + consummedCredit : float
+  + creditLimit : float
+  + inGoodStanding : bool
+  + isVIP : bool
+}
+class amazoninformational_Invoice {
+}
+class amazoninformational_Order {
+  + status : str
+  + totalAmount : float
+}
+class amazoninformational_Package {
+  + location : str
+}
+class amazoninformational_Payment {
+}
+class amazoninformational_Product {
+  + onHand : int
+}
+class amazoninformational_Shipment {
+}
+amazoninformational_Customer "0..1" -- "1..1" amazoninformational_Order : customer6
+amazoninformational_Invoice "0..1" --* "1..1" amazoninformational_Order : invoice2
+amazoninformational_Order "1..1" -- "1..1" amazoninformational_Package : order10
+amazoninformational_Order "0..1" -- "1..1" amazoninformational_Shipment : order13
+amazoninformational_Invoice "1..1" -- "1..1" amazoninformational_Order : order15
+amazoninformational_Package "1..9999" -- "1..1" amazoninformational_Shipment : package11
+amazoninformational_Order "1..1" *-- "0..9999" amazoninformational_Package : packages4
+amazoninformational_Invoice "1..1" *-- "0..1" amazoninformational_Payment : payment17
+amazoninformational_Order "1..1" *-- "1..9999" amazoninformational_Product : products0
+amazoninformational_Package "1..1" -- "0..1" amazoninformational_Product : products8
+amazoninformational_Order "1..1" *-- "0..1" amazoninformational_Shipment : shipment1
+@enduml

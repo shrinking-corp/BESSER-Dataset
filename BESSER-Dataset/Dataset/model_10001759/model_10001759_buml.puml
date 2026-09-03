@@ -1,0 +1,44 @@
+@startuml
+class administrateur {
+}
+class compte {
+  + informations_conducteur : str
+  + informations_passager : str
+}
+class conducteur {
+  + informations_conducteur : str
+}
+class inscription {
+  + informations_conducteur : str
+  + informations_passager : str
+}
+class paiement {
+  + m_thode_de_paiement : str
+}
+class passager {
+  + informations_passager : str
+}
+class reservation {
+  + nombre_de_passager : int
+}
+class trajet {
+  + l_heure_de_d_part : float
+  + la_date : str
+  + lieu_de_d_part : str
+  + prix_du_trajet : float
+}
+class voiture {
+  + nombre_de_si_ges : int
+  + type_de_voiture : str
+}
+administrateur "0..1" -- "0..1" inscription : administrateur_inscription
+administrateur "1..1" -- "1..9999" paiement : administrateur_paiement
+administrateur "0..1" -- "0..1" passager : administrateur_passager
+administrateur "0..1" -- "0..1" reservation : administrateur_reservation
+administrateur "0..1" -- "0..1" trajet : administrateur_trajet
+compte "1..1" -- "1..1" passager : compte_passager
+conducteur "1..1" -- "1..1" inscription : inscription_conducteur
+inscription "1..1" -- "1..1" passager : inscription_passager
+paiement "0..1" -- "0..1" passager : passager_paiement
+passager "1..9999" -- "1..1" trajet : trajet_passager
+@enduml

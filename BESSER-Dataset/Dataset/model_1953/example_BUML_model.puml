@@ -1,0 +1,54 @@
+@startuml
+enum DeviceType {
+  Computer
+  Smartphone
+  Tablet
+}
+class MediaArtifact {
+}
+enum MediaSourceType {
+  ExternalArtifact
+  MediaStore
+}
+class mode_AudioBook {
+  + length : int
+}
+class mode_Device {
+  + name : str
+  + type : str
+}
+class mode_EBook {
+}
+abstract class mode_MediaArtifact {
+  + identifier : str
+  + name : str
+  + source : str
+}
+class mode_MediaCollection {
+  + name : str
+}
+class mode_MediaLibrary {
+}
+class mode_Music {
+  + length : int
+}
+class mode_User {
+  + name : str
+}
+class mode_Video {
+  + length : int
+}
+MediaArtifact <|-- mode_AudioBook
+MediaArtifact <|-- mode_EBook
+MediaArtifact <|-- mode_Music
+MediaArtifact <|-- mode_Video
+mode_MediaArtifact "1..1" -- "1..1" mode_MediaCollection : collection9
+mode_MediaCollection "0..9999" --* "1..1" mode_MediaLibrary : collections3
+mode_Device "0..9999" --* "1..1" mode_MediaLibrary : devices0
+mode_MediaArtifact "1..9999" --* "1..1" mode_MediaCollection : mediaArtifacts6
+mode_MediaCollection "0..9999" -- "1..1" mode_User : ownedCollections5
+mode_MediaCollection "1..1" -- "0..1" mode_User : ownedUser8
+mode_Device "1..1" -- "0..9999" mode_MediaCollection : synchronisedCollections11
+mode_Device "0..9999" -- "1..1" mode_MediaCollection : synchronisedDevices7
+mode_MediaLibrary "1..1" *-- "0..9999" mode_User : users1
+@enduml

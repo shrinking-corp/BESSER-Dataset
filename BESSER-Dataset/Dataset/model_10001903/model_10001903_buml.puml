@@ -1,0 +1,127 @@
+@startuml
+class Blech {
+}
+class array_int_3_ {
+}
+class array_int__ {
+}
+class auftrag {
+  + attribute : str
+  + backofen : backofen
+  + backtemp : str
+  + backzeit : str
+  + belagmaschine : belagmaschine
+  + menge : str
+  + name : str
+  + pdeko : zutat_
+  + pform : plaetzchenForm_
+  + pguss : zutat_
+  + pteig : teig_
+  + pteigmaschine : teigmaschine_
+}
+class backofen {
+  + backtemp : str
+  + backzeit : str
+  + bandgeschwindigkeit : str
+  + ofenlaenge : str
+  + teigmaschine : teigmaschine
+}
+class belagmaschine {
+}
+class const_zutat {
+}
+enum enum_form {
+}
+enum form {
+}
+class groesse {
+  + breite : str
+  + laenge : str
+  + name : str
+  + name1 : str
+}
+class groesse_ {
+}
+class lager {
+  + attribute : str
+  + bestandZutaten : str
+}
+class lager_ {
+}
+class list_zutat__ {
+}
+class myException {
+}
+class ostream_ {
+}
+class ostream_1 {
+}
+class plaetzchen {
+  + name : str
+  + pdeko : zutat_
+  + pguss : zutat_
+  + pteig : teig_
+}
+class plaetzchenForm {
+  + form : enum_form
+  + groesse : groesse
+}
+class plaetzchenForm_ {
+}
+class prozessBand {
+  + geschwindigkeit_ist : str
+}
+class prozessHeizen {
+  + attribute : str
+  + temperatur_ist : str
+}
+class string_ {
+}
+class teig {
+  + attribute : str
+  + form : plaetzchenForm
+  + menge : str
+  + name : str
+  + zutaten : str
+}
+class teig_ {
+}
+class teig_2 {
+}
+class teigmaschine {
+  + abstand : str
+  + anzBleche : str
+  + anzBlechePlaetzchen : array_int_3_
+  + anzPlaetzchenLetzesBlech : str
+  + blechgroesse : groesse_
+}
+class teigmaschine_ {
+}
+class zutat {
+  + einheit : str
+  + menge : str
+  + name : str
+}
+class zutat_ {
+}
+auftrag "0..1" -- "0..1" backofen : auftrag_backofen
+auftrag "0..1" -- "0..1" belagmaschine : auftrag_belagmaschine
+auftrag "0..1" -- "0..1" lager : auftrag_lager
+auftrag "0..1" -- "0..1" myException : auftrag_myException
+auftrag "0..1" -- "0..1" teigmaschine : auftrag_teigmaschine
+backofen "0..1" -- "0..1" myException : backofen_myException
+groesse "0..1" -- "0..1" teigmaschine : groesse_belch
+lager "0..1" -- "0..1" myException : lager_myException
+lager "0..1" -- "0..1" teig : lager_teig
+lager "0..1" -- "0..1" zutat : lager_zutat
+auftrag "0..1" -- "0..1" plaetzchenForm : plaetzchenForm_auftrag
+groesse "0..1" -- "0..1" plaetzchenForm : plaetzchenForm_groesse
+auftrag "0..1" -- "0..1" plaetzchen : plaetzchen_auftrag
+plaetzchen "0..1" -- "0..1" teig : plaetzchen_teig
+plaetzchen "0..1" -- "0..1" zutat : plaetzchen_zutat
+backofen "0..1" -- "0..1" prozessBand : prozessBand_backstrasse
+backofen "0..1" -- "0..1" prozessHeizen : prozessHeizen_backstrasse
+auftrag "0..1" -- "0..1" teig : teig_auftrag
+teig "0..1" -- "0..1" zutat : teig_zutat
+auftrag "0..1" -- "0..1" zutat : zutat_auftrag
+@enduml

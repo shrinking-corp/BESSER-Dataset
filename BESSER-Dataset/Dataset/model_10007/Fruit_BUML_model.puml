@@ -1,0 +1,54 @@
+@startuml
+class Apple {
+}
+enum Color {
+  black
+  brown
+  green
+  orange
+  pink
+  red
+  yellow
+}
+class Fruit {
+}
+class fruit_Apple {
+  + label : str
+  + label(fruit_text : str) : void
+  + newApple() : str
+  + preferredLabel(fruit_text : str) : str
+}
+abstract class fruit_Fruit {
+  + color : str
+  + name : str
+  + newFruit() : str
+  + preferredColor() : str
+  + ripen(fruit_color : str) : bool
+  + setColor(fruit_fruit : str, fruit_newColor : str) : void
+}
+class fruit_FruitUtil {
+  + processBag(fruit_fruits : str) : Fruit
+  + processOrderedSet(fruit_fruits : str) : Fruit
+  + processSequence(fruit_fruits : str) : Fruit
+  + processSet(fruit_fruits : str) : Fruit
+}
+class fruit_Stem {
+}
+class fruit_Tree {
+  + name : str
+}
+class fruit_apple_CookingApple {
+}
+class fruit_apple_EatingApple {
+}
+Apple <|-- fruit_apple_CookingApple
+Apple <|-- fruit_apple_EatingApple
+Fruit <|-- fruit_Apple
+fruit_Fruit "0..9999" -- "1..1" fruit_FruitUtil : bag8
+fruit_Fruit "0..9999" --* "1..1" fruit_Tree : fruits14
+fruit_Fruit "0..9999" -- "1..1" fruit_FruitUtil : orderedSet3
+fruit_Fruit "1..1" -- "0..9999" fruit_Fruit : relatedFruits1
+fruit_Fruit "0..9999" -- "1..1" fruit_FruitUtil : sequence11
+fruit_Fruit "0..9999" -- "1..1" fruit_FruitUtil : set5
+fruit_Apple "1..1" *-- "0..1" fruit_Stem : stem2
+@enduml

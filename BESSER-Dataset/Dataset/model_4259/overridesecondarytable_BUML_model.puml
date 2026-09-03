@@ -1,0 +1,26 @@
+@startuml
+class Person {
+}
+class attroverridesecondarytable_Address {
+  + city : str
+  + name : str
+  + street : str
+}
+class attroverridesecondarytable_Country {
+  + name : str
+}
+class attroverridesecondarytable_Employee {
+  + employeeNumber : str
+}
+class attroverridesecondarytable_NonEmployee {
+}
+class attroverridesecondarytable_Person {
+  + age : int
+  + name : str
+}
+Person <|-- attroverridesecondarytable_Employee
+Person <|-- attroverridesecondarytable_NonEmployee
+attroverridesecondarytable_Address "0..1" -- "1..1" attroverridesecondarytable_Employee : address1
+attroverridesecondarytable_Address "0..1" -- "1..1" attroverridesecondarytable_NonEmployee : address3
+attroverridesecondarytable_Address "1..1" -- "0..1" attroverridesecondarytable_Country : country0
+@enduml

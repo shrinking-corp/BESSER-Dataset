@@ -1,0 +1,22 @@
+@startuml
+class tutorial_Book {
+  + copies : str
+  + name : str
+}
+class tutorial_Library {
+  + name : str
+}
+class tutorial_Loan {
+  + date : date
+}
+class tutorial_Member {
+  + name : str
+}
+tutorial_Book "1..1" -- "1..1" tutorial_Loan : book7
+tutorial_Book "0..9999" --* "1..1" tutorial_Library : books0
+tutorial_Book "1..1" -- "0..1" tutorial_Library : library4
+tutorial_Library "0..1" -- "1..1" tutorial_Member : library5
+tutorial_Library "1..1" *-- "0..9999" tutorial_Loan : loans1
+tutorial_Loan "1..1" -- "1..1" tutorial_Member : member9
+tutorial_Library "1..1" *-- "0..9999" tutorial_Member : members2
+@enduml

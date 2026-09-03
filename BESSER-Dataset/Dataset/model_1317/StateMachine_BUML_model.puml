@@ -1,0 +1,38 @@
+@startuml
+class stateMachine_Condition {
+  + op : str
+  + value : int
+}
+class stateMachine_Event {
+  + name : str
+}
+class stateMachine_Events {
+}
+class stateMachine_State {
+  + name : str
+}
+class stateMachine_StateMachine {
+  + name : str
+}
+class stateMachine_States {
+}
+class stateMachine_Transition {
+}
+class stateMachine_Variable {
+  + name : str
+}
+class stateMachine_Variables {
+}
+stateMachine_Condition "0..1" --* "1..1" stateMachine_Transition : condition19
+stateMachine_Event "0..1" -- "1..1" stateMachine_Transition : event16
+stateMachine_Events "0..1" --* "1..1" stateMachine_StateMachine : eventdefs1
+stateMachine_Event "0..9999" --* "1..1" stateMachine_Events : events7
+stateMachine_State "0..1" -- "1..1" stateMachine_States : start9
+stateMachine_StateMachine "1..1" *-- "0..1" stateMachine_States : statedefs3
+stateMachine_State "0..9999" --* "1..1" stateMachine_States : states11
+stateMachine_State "0..1" -- "1..1" stateMachine_Transition : target21
+stateMachine_State "1..1" *-- "0..9999" stateMachine_Transition : transitions14
+stateMachine_StateMachine "1..1" *-- "0..1" stateMachine_Variables : vardefs0
+stateMachine_Condition "1..1" -- "0..1" stateMachine_Variable : variable24
+stateMachine_Variable "0..9999" --* "1..1" stateMachine_Variables : vars5
+@enduml

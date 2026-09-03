@@ -1,0 +1,87 @@
+@startuml
+class Actuator {
+}
+class Component {
+}
+class Sensor {
+}
+abstract class rover_Actuator {
+}
+class rover_Block {
+  + name : str
+}
+class rover_Command {
+}
+class rover_Compass {
+}
+abstract class rover_Component {
+  + name : str
+}
+class rover_DistanceSensor {
+  + remainingDistance : float
+}
+class rover_GPS {
+  + currentPosition : float
+}
+class rover_Light {
+}
+class rover_Motor {
+}
+class rover_Move {
+  + length : int
+  + velocity : int
+}
+class rover_PositionQuantity {
+}
+class rover_Program {
+  + name : str
+}
+class rover_Repeate {
+  + count : int
+}
+class rover_Rotate {
+  + angel : int
+}
+class rover_Rover {
+}
+abstract class rover_Sensor {
+}
+class rover_SetLightColor {
+  + color : str
+}
+class rover_SingleQuantity {
+}
+class rover_Tansition {
+  + comparedQuantity : str
+  + operationUsed : str
+}
+class rover_Wait {
+  + time : int
+}
+class rover_directionFacing {
+  + currentlyFacing : float
+}
+Actuator <|-- rover_Light
+Actuator <|-- rover_Motor
+Component <|-- rover_Actuator
+Component <|-- rover_Sensor
+Sensor <|-- rover_Compass
+Sensor <|-- rover_DistanceSensor
+Sensor <|-- rover_GPS
+Sensor <|-- rover_directionFacing
+rover_Block "1..1" -- "1..1" rover_Program : block4
+rover_Block "1..1" *-- "1..9999" rover_Command : command6
+rover_Component "1..9999" --* "1..1" rover_Rover : component0
+rover_Command "1..1" -- "0..1" rover_Tansition : incomingTransition22
+rover_Command "1..1" -- "0..1" rover_Move : move15
+rover_Command "1..1" -- "0..1" rover_Tansition : outgoingTransition21
+rover_Program "0..1" --* "1..1" rover_Rover : program1
+rover_Command "1..1" -- "0..1" rover_Repeate : repeate11
+rover_Command "1..1" -- "0..1" rover_Rotate : rotate13
+rover_Command "1..1" -- "0..1" rover_SetLightColor : setlightcolor19
+rover_Command "0..1" -- "1..1" rover_Tansition : sourceCommand24
+rover_Block "1..1" *-- "1..9999" rover_Tansition : tansition8
+rover_Command "0..1" -- "1..1" rover_Tansition : targetCommand25
+rover_Sensor "1..1" -- "0..1" rover_Tansition : triggered3
+rover_Command "1..1" -- "0..1" rover_Wait : wait17
+@enduml

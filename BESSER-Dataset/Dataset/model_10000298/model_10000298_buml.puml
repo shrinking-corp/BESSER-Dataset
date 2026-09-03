@@ -1,0 +1,47 @@
+@startuml
+class Cliente {
+  + Asunto : str
+  + Ciudad : str
+  + Nombre : str
+}
+class Entrega_producto {
+  + Agradecimiento : str
+  + Email_confirmaci_n : str
+}
+class Lineamiento {
+  + Cantidad : int
+  + Costo : float
+}
+class Order {
+  + number : int
+  + ordered : date
+  + status : str
+  + total : float
+}
+class Pago {
+  + Contra_entrega : date
+  + PSI : float
+}
+class ShoppingCart {
+  + creationDate : date
+}
+class Toma_de_pedido {
+  + Despacho : date
+  + Tipo_de_elemnto : str
+}
+class WebADM {
+  + login : str
+  + password : str
+  + state : str
+}
+Order "0..9999" -- "1..1" Toma_de_pedido : Account_Order
+Pago "0..9999" -- "1..1" Toma_de_pedido : Account_Payment
+Lineamiento "1..1" -- "1..1" Toma_de_pedido : Account_ShoppingCart
+Cliente "1..1" -- "1..1" Toma_de_pedido : Customer_Account
+Lineamiento "1..9999" -- "0..1" Order : Order_LineItem
+Order "1..1" -- "0..1" Pago : Payment_Order
+Entrega_producto "1..1" -- "0..9999" Lineamiento : Product_LineItem
+Lineamiento "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
+Cliente "1..1" -- "1..1" WebADM : WebUser_Customer
+ShoppingCart "0..1" -- "1..1" WebADM : WebUser_ShoppingCart
+@enduml

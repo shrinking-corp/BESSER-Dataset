@@ -1,0 +1,64 @@
+@startuml
+enum DroneState {
+  CREATED
+  DONE
+  HOVERING
+  MOVING
+}
+class Observation {
+}
+enum TaskState {
+  DONE
+  IN_PROGRESS
+  NOT_STARTED
+  WAITING
+}
+class dronesSimulation_Drone {
+}
+class dronesSimulation_DroneInstance {
+  + currentBattery : float
+  + state : str
+}
+class dronesSimulation_DroneObservation {
+}
+class dronesSimulation_DronesSimulation {
+}
+abstract class dronesSimulation_Observation {
+  + id : str
+  + time : str
+}
+class dronesSimulation_Obstacle {
+}
+class dronesSimulation_ObstacleObservation {
+}
+class dronesSimulation_Position {
+}
+class dronesSimulation_Role {
+}
+class dronesSimulation_RoleInstance {
+}
+class dronesSimulation_Scenario {
+}
+class dronesSimulation_Task {
+}
+class dronesSimulation_TaskInstance {
+  + state : str
+}
+Observation <|-- dronesSimulation_DroneObservation
+Observation <|-- dronesSimulation_ObstacleObservation
+dronesSimulation_DroneInstance "0..1" -- "1..1" dronesSimulation_RoleInstance : allocatedDrone18
+dronesSimulation_DroneInstance "1..1" -- "0..1" dronesSimulation_RoleInstance : currentRole9
+dronesSimulation_Drone "1..1" -- "1..1" dronesSimulation_DroneObservation : drone20
+dronesSimulation_Drone "1..1" -- "1..1" dronesSimulation_DroneInstance : drone5
+dronesSimulation_DroneInstance "0..9999" --* "1..1" dronesSimulation_DronesSimulation : droneInstances3
+dronesSimulation_DroneInstance "1..1" *-- "0..9999" dronesSimulation_Observation : observations10
+dronesSimulation_Obstacle "1..1" -- "1..1" dronesSimulation_ObstacleObservation : obstacle19
+dronesSimulation_DroneObservation "1..1" *-- "1..1" dronesSimulation_Position : position22
+dronesSimulation_DroneInstance "1..1" *-- "1..1" dronesSimulation_Position : position7
+dronesSimulation_Role "0..1" -- "1..1" dronesSimulation_RoleInstance : role16
+dronesSimulation_RoleInstance "1..9999" --* "1..1" dronesSimulation_TaskInstance : roleInstances14
+dronesSimulation_DronesSimulation "1..1" -- "1..1" dronesSimulation_Scenario : scenario0
+dronesSimulation_Task "0..1" -- "1..1" dronesSimulation_TaskInstance : task12
+dronesSimulation_RoleInstance "1..1" -- "1..1" dronesSimulation_TaskInstance : taskInstance17
+dronesSimulation_DronesSimulation "1..1" *-- "0..9999" dronesSimulation_TaskInstance : taskInstances1
+@enduml

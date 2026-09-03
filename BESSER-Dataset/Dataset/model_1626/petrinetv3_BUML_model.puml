@@ -1,0 +1,22 @@
+@startuml
+class petrinetv3_Net {
+}
+class petrinetv3_Place {
+  + initialTokens : int
+  + name : str
+}
+class petrinetv3_Token {
+}
+class petrinetv3_Transition {
+  + clock : int
+  + name : str
+  + tmax : int
+  + tmin : int
+}
+petrinetv3_Place "1..9999" -- "1..1" petrinetv3_Transition : input2
+petrinetv3_Place "1..9999" -- "1..1" petrinetv3_Transition : output4
+petrinetv3_Net "1..1" -- "1..1" petrinetv3_Transition : parentNet7
+petrinetv3_Net "1..1" *-- "0..9999" petrinetv3_Place : places0
+petrinetv3_Place "1..1" *-- "0..9999" petrinetv3_Token : tokens8
+petrinetv3_Net "1..1" *-- "0..9999" petrinetv3_Transition : transitions1
+@enduml

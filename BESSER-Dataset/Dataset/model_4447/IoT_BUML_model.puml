@@ -1,0 +1,283 @@
+@startuml
+class Action {
+}
+class Address {
+}
+class Bool {
+}
+class Command {
+}
+class Comparison {
+}
+class ComparisonOp {
+}
+class Config {
+}
+class Device {
+}
+class Expression {
+}
+class ExpressionLeft {
+}
+class ExpressionRight {
+}
+class SENSOR {
+}
+class TIMEUNIT {
+}
+class VarOrList {
+}
+class ioT_AND {
+}
+class ioT_Action {
+}
+class ioT_AddToList {
+}
+class ioT_Address {
+  + value : str
+}
+class ioT_ArrowCommand {
+}
+class ioT_Block {
+}
+class ioT_Bool {
+}
+class ioT_BoolExpression {
+}
+class ioT_ClearListAction {
+}
+class ioT_Command {
+}
+class ioT_Comparison {
+}
+class ioT_ComparisonOp {
+  + op : str
+}
+class ioT_Config {
+  + name : str
+}
+class ioT_ConnectStatement {
+}
+class ioT_ConnectionConfig {
+  + type : str
+}
+class ioT_ControllerDevice {
+}
+class ioT_DAYS {
+}
+class ioT_Declaration {
+  + key : str
+  + value : str
+}
+class ioT_Device {
+  + name : str
+}
+class ioT_DeviceConfig {
+}
+class ioT_EQ {
+}
+class ioT_EQL {
+}
+class ioT_ElseBlock {
+}
+class ioT_Expression {
+}
+class ioT_ExpressionLeft {
+}
+class ioT_ExpressionRight {
+}
+class ioT_ExternalDeclaration {
+  + name : str
+}
+class ioT_ExternalOf {
+}
+class ioT_ExternalRight {
+}
+class ioT_False {
+}
+class ioT_GE {
+}
+class ioT_GT {
+}
+class ioT_HOURS {
+}
+class ioT_HUMIDITY {
+}
+class ioT_IfStatement {
+}
+class ioT_IntExpression {
+  + value : int
+}
+class ioT_IoTDevice {
+}
+class ioT_IpAddress {
+}
+class ioT_ItemBool {
+}
+class ioT_ItemInt {
+  + value : int
+}
+class ioT_ItemVariable {
+}
+class ioT_LE {
+}
+class ioT_LEDAction {
+  + state : str
+}
+class ioT_LIGHTSENSOR {
+}
+class ioT_LT {
+}
+class ioT_ListenStatement {
+  + ip : str
+  + port : int
+}
+class ioT_Loop {
+}
+class ioT_MILLISECONDS {
+}
+class ioT_MINUTES {
+}
+class ioT_Model {
+}
+class ioT_NE {
+}
+class ioT_OR {
+}
+class ioT_Program {
+}
+class ioT_PyList {
+}
+class ioT_ReadConnection {
+}
+class ioT_ReadSensor {
+}
+class ioT_ReadVariable {
+}
+class ioT_SECONDS {
+}
+class ioT_SENSOR {
+}
+class ioT_SendCommand {
+}
+class ioT_TEMPERATURE {
+}
+class ioT_TIMEUNIT {
+}
+class ioT_ToVar {
+}
+class ioT_True {
+}
+class ioT_UnixSerialAddress {
+}
+class ioT_VarAccess {
+}
+class ioT_VarOrList {
+  + name : str
+}
+class ioT_Variable {
+}
+class ioT_WEEKS {
+}
+class ioT_WifiStatement {
+}
+class ioT_WindowsSerialAddress {
+}
+Action <|-- ioT_ClearListAction
+Action <|-- ioT_LEDAction
+Address <|-- ioT_IpAddress
+Address <|-- ioT_UnixSerialAddress
+Address <|-- ioT_WindowsSerialAddress
+Bool <|-- ioT_False
+Bool <|-- ioT_True
+Command <|-- ioT_Action
+Command <|-- ioT_ArrowCommand
+Command <|-- ioT_IfStatement
+Comparison <|-- ioT_AND
+Comparison <|-- ioT_EQL
+Comparison <|-- ioT_ItemBool
+Comparison <|-- ioT_ItemInt
+Comparison <|-- ioT_ItemVariable
+Comparison <|-- ioT_OR
+ComparisonOp <|-- ioT_EQ
+ComparisonOp <|-- ioT_GE
+ComparisonOp <|-- ioT_GT
+ComparisonOp <|-- ioT_LE
+ComparisonOp <|-- ioT_LT
+ComparisonOp <|-- ioT_NE
+Config <|-- ioT_ConnectionConfig
+Config <|-- ioT_DeviceConfig
+Device <|-- ioT_ControllerDevice
+Device <|-- ioT_IoTDevice
+Expression <|-- ioT_BoolExpression
+Expression <|-- ioT_IntExpression
+Expression <|-- ioT_VarAccess
+ExpressionLeft <|-- ioT_Expression
+ExpressionLeft <|-- ioT_ExternalOf
+ExpressionLeft <|-- ioT_ReadConnection
+ExpressionLeft <|-- ioT_ReadSensor
+ExpressionLeft <|-- ioT_ReadVariable
+ExpressionRight <|-- ioT_AddToList
+ExpressionRight <|-- ioT_Block
+ExpressionRight <|-- ioT_ExternalRight
+ExpressionRight <|-- ioT_SendCommand
+ExpressionRight <|-- ioT_ToVar
+SENSOR <|-- ioT_HUMIDITY
+SENSOR <|-- ioT_LIGHTSENSOR
+SENSOR <|-- ioT_TEMPERATURE
+TIMEUNIT <|-- ioT_DAYS
+TIMEUNIT <|-- ioT_HOURS
+TIMEUNIT <|-- ioT_MILLISECONDS
+TIMEUNIT <|-- ioT_MINUTES
+TIMEUNIT <|-- ioT_SECONDS
+TIMEUNIT <|-- ioT_WEEKS
+VarOrList <|-- ioT_PyList
+VarOrList <|-- ioT_Variable
+ioT_Address "0..1" --* "1..1" ioT_ConnectStatement : address26
+ioT_ExpressionRight "0..1" --* "1..1" ioT_ListenStatement : body19
+ioT_Command "0..9999" --* "1..1" ioT_Loop : command35
+ioT_Block "1..1" *-- "0..9999" ioT_Command : commands47
+ioT_Command "0..9999" --* "1..1" ioT_ElseBlock : commands51
+ioT_Command "0..9999" --* "1..1" ioT_IfStatement : commands70
+ioT_Comparison "0..1" --* "1..1" ioT_IfStatement : condition69
+ioT_Config "0..9999" --* "1..1" ioT_Model : configs1
+ioT_ConnectStatement "1..1" -- "0..1" ioT_ConnectionConfig : configuration28
+ioT_ConnectStatement "0..9999" --* "1..1" ioT_Program : connectStatements11
+ioT_ConnectionConfig "0..1" -- "1..1" ioT_WifiStatement : connectionConfig21
+ioT_Config "1..1" *-- "0..9999" ioT_Declaration : declarations5
+ioT_ConnectStatement "1..1" -- "0..1" ioT_Device : device23
+ioT_Device "0..9999" --* "1..1" ioT_Model : devices3
+ioT_ElseBlock "0..1" --* "1..1" ioT_IfStatement : elseBlock73
+ioT_ExternalDeclaration "0..9999" --* "1..1" ioT_Model : externalDeclarations0
+ioT_ArrowCommand "1..1" *-- "0..1" ioT_ExpressionLeft : left57
+ioT_Comparison "0..1" --* "1..1" ioT_OR : left76
+ioT_AND "1..1" *-- "0..1" ioT_Comparison : left81
+ioT_Comparison "0..1" --* "1..1" ioT_EQL : left86
+ioT_ClearListAction "1..1" -- "0..1" ioT_PyList : list56
+ioT_AddToList "1..1" -- "0..1" ioT_PyList : list65
+ioT_ListenStatement "0..9999" --* "1..1" ioT_Program : listenStatements15
+ioT_Loop "0..9999" --* "1..1" ioT_Program : loops17
+ioT_ExternalDeclaration "0..1" -- "1..1" ioT_ExternalOf : method41
+ioT_ExternalDeclaration "0..1" -- "1..1" ioT_ExternalRight : method49
+ioT_ComparisonOp "0..1" --* "1..1" ioT_EQL : op88
+ioT_Device "1..1" *-- "0..1" ioT_Program : program7
+ioT_ArrowCommand "1..1" *-- "0..1" ioT_ExpressionRight : right58
+ioT_Comparison "0..1" --* "1..1" ioT_OR : right78
+ioT_AND "1..1" *-- "0..1" ioT_Comparison : right83
+ioT_Comparison "0..1" --* "1..1" ioT_EQL : right90
+ioT_ReadSensor "1..1" *-- "0..1" ioT_SENSOR : sensor46
+ioT_Device "0..1" -- "1..1" ioT_ReadConnection : source39
+ioT_ExternalOf "1..1" -- "0..1" ioT_VarOrList : target43
+ioT_Device "0..1" -- "1..1" ioT_SendCommand : target67
+ioT_Loop "1..1" *-- "0..1" ioT_TIMEUNIT : timeUnit33
+ioT_Expression "0..1" --* "1..1" ioT_Loop : timeVal31
+ioT_Bool "0..1" --* "1..1" ioT_BoolExpression : value37
+ioT_ReadVariable "1..1" -- "0..1" ioT_Variable : value38
+ioT_Expression "0..1" --* "1..1" ioT_Variable : value53
+ioT_ItemVariable "1..1" -- "0..1" ioT_Variable : value93
+ioT_Bool "0..1" --* "1..1" ioT_ItemBool : value95
+ioT_ToVar "1..1" -- "0..1" ioT_Variable : variable63
+ioT_VarAccess "1..1" -- "0..1" ioT_VarOrList : variableName61
+ioT_Program "1..1" *-- "0..9999" ioT_VarOrList : variables13
+ioT_Program "1..1" *-- "0..1" ioT_WifiStatement : wifiStatements9
+@enduml

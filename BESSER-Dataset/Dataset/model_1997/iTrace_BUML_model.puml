@@ -1,0 +1,119 @@
+@startuml
+enum AbstractionLevel {
+  ANNOTATION
+  CIM
+  CODE
+  PDM
+  PIM
+  PSM
+  UNSPECIFIED
+}
+class Artefact {
+}
+enum Aspect {
+  Architecture
+  Behaviour
+  Content
+  Interface
+  Quality
+  Semantics
+  Unspecified
+}
+enum Mode {
+  Automatic
+  Manual
+}
+enum ModelType {
+  Both
+  None_
+  Source
+  Target
+}
+class TraceLink {
+}
+class TraceLinkElement {
+}
+enum Type {
+  Annotation
+  Transformation
+}
+abstract class iTrace_Artefact {
+  + abstractionLevel : str
+  + aspect : str
+  + name : str
+  + path : str
+}
+class iTrace_Block {
+  + blockNumber : int
+  + endColumn : int
+  + endLine : int
+  + startColumn : int
+  + startLine : int
+}
+class iTrace_Code {
+}
+class iTrace_EObject {
+}
+class iTrace_Feature {
+  + attribute : str
+  + value : str
+}
+class iTrace_M2MLink {
+}
+class iTrace_M2TLink {
+}
+class iTrace_Model {
+  + metamodel : str
+  + getModelType() : str
+}
+class iTrace_SourceElement {
+}
+class iTrace_SpecificFeature {
+  + groupName : str
+}
+class iTrace_TargetElement {
+}
+abstract class iTrace_TraceLink {
+  + comment : str
+  + createdBy : str
+  + createdOn : str
+  + fromFileName : str
+  + mode : str
+  + ruleName : str
+  + technicalBinding : str
+  + type : str
+}
+abstract class iTrace_TraceLinkElement {
+  + ref : str
+  + type : str
+}
+class iTrace_iTraceModel {
+  + projectName : str
+  + version : str
+}
+Artefact <|-- iTrace_Code
+Artefact <|-- iTrace_Model
+TraceLink <|-- iTrace_M2MLink
+TraceLink <|-- iTrace_M2TLink
+TraceLinkElement <|-- iTrace_SourceElement
+TraceLinkElement <|-- iTrace_TargetElement
+iTrace_Artefact "1..9999" --* "1..1" iTrace_iTraceModel : artefacts1
+iTrace_Block "0..9999" -- "1..1" iTrace_Code : blocks16
+iTrace_Block "1..1" -- "1..1" iTrace_Code : code18
+iTrace_Model "1..1" -- "0..9999" iTrace_TraceLinkElement : elements20
+iTrace_Feature "1..9999" --* "1..1" iTrace_SpecificFeature : features26
+iTrace_Artefact "1..1" -- "1..1" iTrace_iTraceModel : iTraceModel14
+iTrace_SpecificFeature "1..1" -- "1..1" iTrace_iTraceModel : iTraceModel27
+iTrace_TraceLink "1..1" -- "1..1" iTrace_iTraceModel : iTraceModel6
+iTrace_Model "1..1" -- "1..1" iTrace_TraceLinkElement : model8
+iTrace_EObject "0..1" -- "1..1" iTrace_TraceLinkElement : object9
+iTrace_SourceElement "0..9999" --* "1..1" iTrace_TraceLink : sourceElements5
+iTrace_Feature "1..1" -- "1..1" iTrace_SpecificFeature : specificFeature24
+iTrace_SpecificFeature "0..1" --* "1..1" iTrace_iTraceModel : specificFeatures3
+iTrace_Block "0..9999" --* "1..1" iTrace_M2TLink : targetBlocks12
+iTrace_M2MLink "1..1" *-- "0..9999" iTrace_TargetElement : targetElements10
+iTrace_Block "1..1" -- "1..1" iTrace_M2TLink : traceLink19
+iTrace_SourceElement "1..1" -- "1..1" iTrace_TraceLink : traceLink21
+iTrace_M2MLink "1..1" -- "1..1" iTrace_TargetElement : traceLink23
+iTrace_TraceLink "1..9999" --* "1..1" iTrace_iTraceModel : traceLinks0
+@enduml

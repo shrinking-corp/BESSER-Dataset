@@ -1,0 +1,72 @@
+@startuml
+class DataType {
+}
+class cassandra_AsciiType {
+  + value : str
+}
+class cassandra_BooleanType {
+  + value : bool
+}
+class cassandra_BytesType {
+  + value : str
+}
+class cassandra_Column {
+  + key : str
+  + timestamp : str
+}
+class cassandra_ColumnFamily {
+  + name : str
+}
+class cassandra_CounterColumnType {
+  + value : str
+}
+class cassandra_DataType {
+}
+class cassandra_DateType {
+  + value : str
+}
+class cassandra_DecimalType {
+  + value : str
+}
+class cassandra_DoubleType {
+  + value : float
+}
+class cassandra_FloatType {
+  + value : float
+}
+class cassandra_IntegerType {
+  + value : int
+}
+class cassandra_Keyspace {
+  + name : str
+}
+class cassandra_Row {
+  + key : str
+}
+class cassandra_SuperColumn {
+  + key : str
+}
+class cassandra_UTF8Type {
+  + value : str
+}
+class cassandra_UUIDType {
+  + value : str
+}
+DataType <|-- cassandra_AsciiType
+DataType <|-- cassandra_BooleanType
+DataType <|-- cassandra_BytesType
+DataType <|-- cassandra_CounterColumnType
+DataType <|-- cassandra_DateType
+DataType <|-- cassandra_DecimalType
+DataType <|-- cassandra_DoubleType
+DataType <|-- cassandra_FloatType
+DataType <|-- cassandra_IntegerType
+DataType <|-- cassandra_UTF8Type
+DataType <|-- cassandra_UUIDType
+cassandra_ColumnFamily "1..9999" --* "1..1" cassandra_Keyspace : columnfamilies0
+cassandra_Column "1..9999" --* "1..1" cassandra_Row : columns3
+cassandra_Column "1..9999" --* "1..1" cassandra_SuperColumn : columns9
+cassandra_ColumnFamily "1..1" *-- "1..9999" cassandra_Row : rows1
+cassandra_Row "1..1" *-- "0..9999" cassandra_SuperColumn : supercolumns5
+cassandra_Column "1..1" -- "1..1" cassandra_DataType : value7
+@enduml

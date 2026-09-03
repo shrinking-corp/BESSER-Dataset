@@ -1,0 +1,56 @@
+@startuml
+class Card___Interface {
+}
+class Cards_CardImpl {
+  + Cardinality : Cards_Cardinality
+  + Suit : str
+  + isMarked : bool
+}
+class Cards_Card_Interface {
+}
+enum Cards_Cardinality {
+}
+class Cards_Deck {
+  + burnt : Cards_Card_Interface
+  + list : str
+}
+class Game_GUI {
+}
+class Game_Ranker {
+  + hand : Players_PokerHand
+}
+class Main_MainGame {
+  + Bigblind : int
+  + Dealer : int
+  + HighestBid : int
+  + Players : str
+  + SmallBlind : int
+  + screen : Game_GUI
+}
+class Players_Person {
+  + name : str
+  + personNumber : str
+}
+class Players_Player {
+  + Hand : Players_PokerHand
+  + chips : Players_Wallet
+  + hasFolded : bool
+  + isBigBlind : bool
+  + isDealer : bool
+  + isSmallBlind : bool
+}
+class Players_PokerHand {
+  + Cards : Card___Interface
+  + highCard : Cards_Cardinality
+  + value : int
+}
+class Players_Wallet {
+  + balance : int
+}
+Cards_Card_Interface "52..52" -- "1..1" Cards_Deck : Deck_Card
+Game_GUI "0..1" -- "0..1" Main_MainGame : GUI_Main_Game
+Cards_Deck "0..1" -- "0..1" Players_Player : Player_Deck
+Players_Player "0..1" -- "0..1" Players_PokerHand : Player_PokerHand
+Cards_Card_Interface "0..5" -- "0..1" Players_PokerHand : PokerHand_Card
+Players_Player "0..1" -- "0..1" Players_Wallet : Wallet_Player
+@enduml

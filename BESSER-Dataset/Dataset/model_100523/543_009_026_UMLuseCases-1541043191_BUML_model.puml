@@ -1,0 +1,213 @@
+@startuml
+enum AggregationKind {
+  composite
+  none
+  shared
+}
+class BehavioredClassifier {
+}
+enum CallConcurrencyKind {
+  concurrent
+  guarded
+  sequential
+}
+class Classifier {
+}
+enum ConnectorKind {
+  assembly
+  delegation
+}
+class DirectedRelationship {
+}
+class EModelElement {
+}
+class Element {
+}
+enum ExpansionKind {
+  iterative
+  parallel
+  stream
+}
+enum InteractionOperatorKind {
+  alt
+  assert_
+  break_
+  consider
+  critical
+  ignore
+  loop
+  neg
+  opt
+  par
+  seq
+  strict
+}
+enum MessageKind {
+  complete
+  found
+  lost
+  unknown
+}
+enum MessageSort {
+  asynchCall
+  asynchSignal
+  createMessage
+  deleteMessage
+  reply
+  synchCall
+}
+class NamedElement {
+}
+class Namespace {
+}
+enum ObjectNodeOrderingKind {
+  FIFO
+  LIFO
+  ordered
+  unordered
+}
+class PackageableElement {
+}
+enum ParameterDirectionKind {
+  in_
+  inout
+  out
+  return_
+}
+enum ParameterEffectKind {
+  create
+  delete
+  read
+  update
+}
+class ParameterableElement {
+}
+enum PseudostateKind {
+  choice
+  deepHistory
+  entryPoint
+  exitPoint
+  fork
+  initial
+  join
+  junction
+  shallowHistory
+  terminate
+}
+class RedefinableElement {
+}
+class Relationship {
+}
+class TemplateableElement {
+}
+enum TransitionKind {
+  external
+  internal
+  local
+}
+class Type {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class umluseCases_Actor {
+  + associations(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+  + must_have_name(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+}
+abstract class umluseCases_BehavioredClassifier {
+}
+abstract class umluseCases_Classifier {
+  + isAbstract : str
+}
+abstract class umluseCases_DirectedRelationship {
+}
+abstract class umluseCases_Element {
+}
+class umluseCases_Extend {
+  + extension_points(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+}
+class umluseCases_ExtensionPoint {
+  + must_have_name(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+}
+class umluseCases_Include {
+}
+abstract class umluseCases_NamedElement {
+  + name : str
+  + qualifiedName : str
+  + visibility : str
+}
+abstract class umluseCases_Namespace {
+}
+abstract class umluseCases_PackageableElement {
+}
+abstract class umluseCases_ParameterableElement {
+}
+abstract class umluseCases_RedefinableElement {
+  + isLeaf : str
+}
+abstract class umluseCases_Relationship {
+}
+abstract class umluseCases_TemplateableElement {
+}
+abstract class umluseCases_Type {
+}
+class umluseCases_UseCase {
+  + allIncludedUseCases() : str
+  + binary_associations(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+  + cannot_include_self(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+  + must_have_name(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+  + no_association_to_use_case(umluseCases_context : str, umluseCases_diagnostics : str) : bool
+}
+BehavioredClassifier <|-- umluseCases_Actor
+BehavioredClassifier <|-- umluseCases_UseCase
+Classifier <|-- umluseCases_BehavioredClassifier
+DirectedRelationship <|-- umluseCases_Extend
+DirectedRelationship <|-- umluseCases_Include
+EModelElement <|-- umluseCases_Element
+Element <|-- umluseCases_NamedElement
+Element <|-- umluseCases_ParameterableElement
+Element <|-- umluseCases_Relationship
+Element <|-- umluseCases_TemplateableElement
+NamedElement <|-- umluseCases_Extend
+NamedElement <|-- umluseCases_Include
+NamedElement <|-- umluseCases_Namespace
+NamedElement <|-- umluseCases_PackageableElement
+NamedElement <|-- umluseCases_RedefinableElement
+Namespace <|-- umluseCases_Classifier
+PackageableElement <|-- umluseCases_Type
+ParameterableElement <|-- umluseCases_PackageableElement
+RedefinableElement <|-- umluseCases_Classifier
+RedefinableElement <|-- umluseCases_ExtensionPoint
+Relationship <|-- umluseCases_DirectedRelationship
+TemplateableElement <|-- umluseCases_Classifier
+Type <|-- umluseCases_Classifier
+umluseCases_Include "1..1" -- "1..1" umluseCases_UseCase : addition37
+umluseCases_Extend "0..9999" --* "1..1" umluseCases_UseCase : extend33
+umluseCases_Extend "1..1" -- "1..1" umluseCases_UseCase : extendedCase41
+umluseCases_Extend "1..1" -- "1..1" umluseCases_UseCase : extension45
+umluseCases_Extend "1..1" -- "1..9999" umluseCases_ExtensionPoint : extensionLocation43
+umluseCases_ExtensionPoint "0..9999" --* "1..1" umluseCases_UseCase : extensionPoint34
+umluseCases_Classifier "0..9999" -- "1..1" umluseCases_Classifier : general22
+umluseCases_Namespace "1..1" -- "0..9999" umluseCases_PackageableElement : importedMember13
+umluseCases_Include "0..9999" --* "1..1" umluseCases_UseCase : include32
+umluseCases_Include "1..1" -- "1..1" umluseCases_UseCase : includingCase39
+umluseCases_Classifier "1..1" -- "0..9999" umluseCases_NamedElement : inheritedMember16
+umluseCases_NamedElement "0..9999" -- "1..1" umluseCases_Namespace : member12
+umluseCases_NamedElement "1..1" -- "0..1" umluseCases_Namespace : namespace5
+umluseCases_Element "1..1" -- "0..9999" umluseCases_Element : ownedElement1
+umluseCases_NamedElement "0..9999" -- "1..1" umluseCases_Namespace : ownedMember15
+umluseCases_Classifier "1..1" *-- "0..9999" umluseCases_UseCase : ownedUseCase24
+umluseCases_Element "1..1" -- "0..1" umluseCases_Element : owner3
+umluseCases_Classifier "0..9999" -- "1..1" umluseCases_Classifier : redefinedClassifier19
+umluseCases_RedefinableElement "1..1" -- "0..9999" umluseCases_RedefinableElement : redefinedElement28
+umluseCases_Classifier "0..9999" -- "1..1" umluseCases_RedefinableElement : redefinitionContext29
+umluseCases_Element "1..9999" -- "1..1" umluseCases_Relationship : relatedElement10
+umluseCases_DirectedRelationship "1..1" -- "1..9999" umluseCases_Element : source6
+umluseCases_Classifier "0..9999" -- "1..1" umluseCases_UseCase : subject35
+umluseCases_DirectedRelationship "1..1" -- "1..9999" umluseCases_Element : target7
+umluseCases_Classifier "1..1" -- "0..9999" umluseCases_UseCase : useCase26
+umluseCases_ExtensionPoint "1..1" -- "1..1" umluseCases_UseCase : useCase47
+@enduml

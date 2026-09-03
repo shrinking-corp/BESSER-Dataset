@@ -1,0 +1,38 @@
+@startuml
+class BinExp {
+}
+class Exp {
+}
+class Lit {
+}
+class boolExpEnv_And {
+}
+abstract class boolExpEnv_BinExp {
+}
+abstract class boolExpEnv_Exp {
+}
+class boolExpEnv_Fals {
+}
+abstract class boolExpEnv_Lit {
+}
+class boolExpEnv_Not {
+}
+class boolExpEnv_Or {
+}
+class boolExpEnv_Tru {
+}
+class boolExpEnv_VarRef {
+  + name : str
+}
+BinExp <|-- boolExpEnv_And
+BinExp <|-- boolExpEnv_Or
+Exp <|-- boolExpEnv_BinExp
+Exp <|-- boolExpEnv_Lit
+Exp <|-- boolExpEnv_Not
+Exp <|-- boolExpEnv_VarRef
+Lit <|-- boolExpEnv_Fals
+Lit <|-- boolExpEnv_Tru
+boolExpEnv_Exp "1..1" --* "1..1" boolExpEnv_Not : exp4
+boolExpEnv_BinExp "1..1" *-- "1..1" boolExpEnv_Exp : lhs0
+boolExpEnv_BinExp "1..1" *-- "1..1" boolExpEnv_Exp : rhs1
+@enduml

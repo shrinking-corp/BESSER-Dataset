@@ -1,0 +1,65 @@
+@startuml
+class Guard {
+}
+class Value {
+}
+class statemachine_Command {
+  + code : int
+  + name : str
+}
+class statemachine_Constant {
+  + name : str
+}
+class statemachine_ConstantRef {
+}
+class statemachine_Event {
+  + code : int
+  + name : str
+}
+class statemachine_Guard {
+}
+class statemachine_IntLiteral {
+  + value : int
+}
+class statemachine_RangeGuard {
+}
+class statemachine_State {
+  + description : str
+  + name : str
+}
+class statemachine_Statemachine {
+  + name : str
+}
+class statemachine_Thing {
+  + name : str
+}
+class statemachine_Transition {
+}
+class statemachine_Value {
+}
+class statemachine_ValueGuard {
+}
+Guard <|-- statemachine_RangeGuard
+Guard <|-- statemachine_ValueGuard
+Value <|-- statemachine_ConstantRef
+Value <|-- statemachine_IntLiteral
+statemachine_Command "0..9999" -- "1..1" statemachine_State : actions26
+statemachine_Command "0..9999" --* "1..1" statemachine_Statemachine : commands4
+statemachine_Value "0..1" --* "1..1" statemachine_ValueGuard : cond12
+statemachine_Constant "0..1" -- "1..1" statemachine_ConstantRef : constant18
+statemachine_Constant "0..9999" --* "1..1" statemachine_Statemachine : constants6
+statemachine_Event "0..1" -- "1..1" statemachine_Transition : event33
+statemachine_Event "0..9999" --* "1..1" statemachine_Statemachine : events0
+statemachine_Event "1..1" *-- "0..1" statemachine_Guard : guard10
+statemachine_Command "1..1" *-- "0..1" statemachine_Guard : guard20
+statemachine_Guard "0..1" --* "1..1" statemachine_Transition : guard36
+statemachine_Guard "0..1" --* "1..1" statemachine_Thing : guard42
+statemachine_RangeGuard "1..1" *-- "0..1" statemachine_Value : max15
+statemachine_RangeGuard "1..1" *-- "0..1" statemachine_Value : min13
+statemachine_Event "0..9999" -- "1..1" statemachine_Statemachine : resetEvents1
+statemachine_State "0..1" -- "1..1" statemachine_Transition : state39
+statemachine_State "0..9999" --* "1..1" statemachine_Statemachine : states8
+statemachine_State "1..1" *-- "0..9999" statemachine_Thing : things31
+statemachine_State "1..1" *-- "0..9999" statemachine_Transition : transitions29
+statemachine_Constant "1..1" *-- "0..1" statemachine_Value : value23
+@enduml

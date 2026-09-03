@@ -1,0 +1,29 @@
+@startuml
+enum ArcType {
+  Arc
+  ReadArc
+}
+class PetriElement {
+}
+class PetriNet_Arc {
+  + arcType : str
+  + poids : int
+}
+class PetriNet_PetriElement {
+  + nom : str
+}
+class PetriNet_PetriNet {
+  + name : str
+}
+class PetriNet_Place {
+  + nbJetons : int
+}
+class PetriNet_Transition {
+}
+PetriElement <|-- PetriNet_Place
+PetriElement <|-- PetriNet_Transition
+PetriNet_Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs4
+PetriNet_Arc "1..1" -- "1..1" PetriNet_PetriElement : dbt0
+PetriNet_Arc "1..1" -- "1..1" PetriNet_PetriElement : fin1
+PetriNet_PetriElement "0..9999" --* "1..1" PetriNet_PetriNet : petriElements6
+@enduml

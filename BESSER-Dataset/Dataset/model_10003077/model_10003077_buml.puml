@@ -1,0 +1,60 @@
+@startuml
+class Account {
+  + Acc_no : int
+  + Balance : int
+  + date_Of_Opening : str
+  + min_Balance : int
+}
+class Bank {
+  + Code : str
+  + Name : str
+}
+class Branch {
+  + Branch_code : str
+  + City : str
+}
+class Current_Account {
+}
+class Customer {
+  + Cust_id : str
+  + address : str
+  + name : str
+  + phone : str
+}
+class Employee {
+  + Eid : int
+  + Mid : int
+}
+class Manager {
+}
+class Saving_Account {
+  + interest_Rate : int
+}
+class Setting {
+}
+class Transaction {
+  + Acc_num : int
+  + TranId : int
+  + amount : int
+  + currentBalance : int
+  + date : str
+  + prevBalance : int
+  + status : str
+  + type : TransactionType
+}
+enum TransactionType {
+}
+class User {
+  + family : str
+  + name : str
+  + password : str
+  + uid : int
+  + userName : str
+}
+Account "1..1" -- "0..9999" Transaction : Account_Transaction
+Bank "1..1" -- "0..9999" Branch : Bank_Branch
+Account "0..9999" -- "1..1" Branch : Branch_Account
+Current_Account "0..1" -- "1..1" Customer : Current_Account_Customer
+Employee "1..9999" -- "1..1" Manager : Employee_Manager
+Customer "1..1" -- "0..1" Saving_Account : Saving_Account_Customer
+@enduml

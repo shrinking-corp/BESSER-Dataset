@@ -1,0 +1,21 @@
+@startuml
+class Type {
+}
+class metamodel_Datatype {
+}
+class metamodel_Entity {
+}
+class metamodel_Feature {
+  + name : str
+}
+class metamodel_Model {
+}
+abstract class metamodel_Type {
+  + name : str
+}
+Type <|-- metamodel_Datatype
+Type <|-- metamodel_Entity
+metamodel_Entity "1..1" *-- "0..9999" metamodel_Feature : features1
+metamodel_Feature "1..1" -- "0..1" metamodel_Type : type2
+metamodel_Model "1..1" *-- "0..9999" metamodel_Type : types0
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+class Book_ticket_UseCase {
+}
+class Cancel_ticket_UseCase {
+}
+class Check_ticket_availability_UseCase {
+}
+class Class {
+}
+class Clerk_Actor {
+}
+class Express {
+  + General : str
+  + SecondSitting : str
+}
+class Express1 {
+  + SecondSitting : str
+}
+class Fill_the_details_UseCase {
+}
+class Information_Interface {
+}
+class Pay_fare_amount_UseCase {
+}
+class Pessanger {
+  + AadharNo : int
+  + Children : int
+}
+class Railway_website_Actor {
+}
+class Refund_money_UseCase {
+}
+class SuperFast {
+  + AC_1 : str
+  + AC_2 : str
+  + AC_3 : str
+  + Sleeper : str
+}
+class SuperFast1 {
+  + AC_1 : str
+  + AC_2 : str
+  + AC_3 : str
+  + Handicamp : str
+  + Ladies : str
+  + Sleeper : str
+}
+class Traveler_Actor {
+}
+Book_ticket_UseCase "0..1" -- "0..1" Railway_website_Actor : Book_ticket_Railway_website
+Cancel_ticket_UseCase "0..1" -- "0..1" Railway_website_Actor : Cancel_ticket_Railway_website
+Check_ticket_availability_UseCase "0..1" -- "0..1" Railway_website_Actor : Check_ticket_availability_Railway_website
+Cancel_ticket_UseCase "0..1" -- "0..1" Clerk_Actor : Clerk_Cancel_ticket
+Fill_the_details_UseCase "0..1" -- "0..1" Railway_website_Actor : Fill_the_details_Railway_website
+Pay_fare_amount_UseCase "0..1" -- "0..1" Railway_website_Actor : Pay_fare_amount_Railway_website
+Railway_website_Actor "0..1" -- "0..1" Refund_money_UseCase : Refund_money_Railway_website
+Book_ticket_UseCase "0..1" -- "0..1" Traveler_Actor : Traveler_Book_ticket
+Cancel_ticket_UseCase "0..1" -- "0..1" Traveler_Actor : Traveler_Cancel_ticket
+Check_ticket_availability_UseCase "0..1" -- "0..1" Traveler_Actor : Traveler_Check_ticket_availability
+Fill_the_details_UseCase "0..1" -- "0..1" Traveler_Actor : Traveler_Fill_the_details
+Pay_fare_amount_UseCase "0..1" -- "0..1" Traveler_Actor : Traveler_Pay_fare_amount
+@enduml

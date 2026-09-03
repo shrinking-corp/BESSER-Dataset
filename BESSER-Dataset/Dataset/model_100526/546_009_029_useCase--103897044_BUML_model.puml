@@ -1,0 +1,86 @@
+@startuml
+class Classifier {
+}
+class DirectedRelationship {
+}
+class MultiplicityElement_c {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class Relationship {
+}
+class UsecaseDSL_Actor {
+}
+class UsecaseDSL_Association_c {
+}
+abstract class UsecaseDSL_Classifier {
+}
+abstract class UsecaseDSL_DirectedRelationship {
+}
+class UsecaseDSL_Extend_c {
+  + Expression : str
+}
+class UsecaseDSL_ExtensionPoint {
+}
+class UsecaseDSL_Generalization {
+}
+class UsecaseDSL_Include {
+}
+abstract class UsecaseDSL_MultiplicityElement_c {
+  + sourceLower : str
+  + sourceUpper : str
+  + targetLower : str
+  + targetUpper : str
+}
+abstract class UsecaseDSL_NamedElement {
+  + name : str
+}
+abstract class UsecaseDSL_Namespace {
+}
+abstract class UsecaseDSL_Relationship {
+}
+class UsecaseDSL_System_c {
+}
+class UsecaseDSL_UseCase {
+}
+class UsecaseDSL_UseCaseDiagram_c {
+}
+Classifier <|-- UsecaseDSL_Actor
+Classifier <|-- UsecaseDSL_Association_c
+Classifier <|-- UsecaseDSL_System_c
+Classifier <|-- UsecaseDSL_UseCase
+Classifier <|-- UsecaseDSL_UseCaseDiagram_c
+DirectedRelationship <|-- UsecaseDSL_Extend_c
+DirectedRelationship <|-- UsecaseDSL_Generalization
+DirectedRelationship <|-- UsecaseDSL_Include
+MultiplicityElement_c <|-- UsecaseDSL_Association_c
+NamedElement <|-- UsecaseDSL_Extend_c
+NamedElement <|-- UsecaseDSL_ExtensionPoint
+NamedElement <|-- UsecaseDSL_Include
+NamedElement <|-- UsecaseDSL_Namespace
+Namespace <|-- UsecaseDSL_Classifier
+Relationship <|-- UsecaseDSL_Association_c
+Relationship <|-- UsecaseDSL_DirectedRelationship
+UsecaseDSL_Include "1..1" -- "1..1" UsecaseDSL_UseCase : addition41
+UsecaseDSL_Classifier "0..9999" --* "1..1" UsecaseDSL_UseCaseDiagram_c : classifier16
+UsecaseDSL_Extend_c "0..9999" -- "1..1" UsecaseDSL_UseCase : extend31
+UsecaseDSL_Extend_c "1..1" -- "1..1" UsecaseDSL_UseCase : extendedCase35
+UsecaseDSL_Extend_c "1..1" -- "1..1" UsecaseDSL_UseCase : extension38
+UsecaseDSL_ExtensionPoint "0..9999" --* "1..1" UsecaseDSL_UseCase : extensionPoint33
+UsecaseDSL_Classifier "1..1" -- "0..9999" UsecaseDSL_Classifier : general1
+UsecaseDSL_Classifier "1..1" -- "1..1" UsecaseDSL_Generalization : general9
+UsecaseDSL_Classifier "1..1" -- "0..9999" UsecaseDSL_Generalization : generalization2
+UsecaseDSL_Include "0..9999" -- "1..1" UsecaseDSL_UseCase : include29
+UsecaseDSL_Include "1..1" -- "1..1" UsecaseDSL_UseCase : includingCase44
+UsecaseDSL_System_c "1..1" *-- "0..9999" UsecaseDSL_UseCase : ownedUseCase20
+UsecaseDSL_Relationship "0..9999" --* "1..1" UsecaseDSL_UseCaseDiagram_c : relationship15
+UsecaseDSL_Association_c "1..1" -- "1..1" UsecaseDSL_Classifier : source4
+UsecaseDSL_Classifier "1..1" -- "1..1" UsecaseDSL_Generalization : specific12
+UsecaseDSL_Classifier "0..9999" --* "1..1" UsecaseDSL_System_c : sub23
+UsecaseDSL_Classifier "1..1" -- "1..1" UsecaseDSL_UseCase : subject26
+UsecaseDSL_Association_c "1..1" -- "1..1" UsecaseDSL_Classifier : target6
+UsecaseDSL_System_c "1..1" *-- "0..9999" UsecaseDSL_UseCase : useCase19
+UsecaseDSL_ExtensionPoint "1..1" -- "1..1" UsecaseDSL_UseCase : useCase47
+@enduml

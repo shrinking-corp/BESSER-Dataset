@@ -1,0 +1,97 @@
+@startuml
+class rdbms_DocumentRoot {
+  + mixed : str
+}
+class rdbms_EStringToStringMapEntry {
+}
+class rdbms_RDBMS {
+}
+class rdbms_column {
+  + kind : str
+  + name : str
+  + oID : str
+  + type : str
+}
+class rdbms_columns {
+  + group : str
+}
+class rdbms_foreignKey {
+  + kind : str
+  + name : str
+  + oID : str
+  + owner : str
+  + refersTo : str
+}
+class rdbms_foreignKeys {
+  + group : str
+}
+class rdbms_hasForeignKeys {
+  + group : str
+}
+class rdbms_key {
+  + kind : str
+  + name : str
+  + oID : str
+}
+class rdbms_key2 {
+}
+class rdbms_oID {
+  + oID : str
+}
+class rdbms_referencedColumns {
+  + group : str
+}
+class rdbms_referencedKeys {
+  + group : str
+}
+class rdbms_schema {
+  + kind : str
+  + name : str
+  + oID : str
+}
+class rdbms_schemas {
+  + group : str
+}
+class rdbms_table {
+  + kind : str
+  + name : str
+  + oID : str
+}
+class rdbms_tables {
+  + group : str
+}
+rdbms_column "0..9999" --* "1..1" rdbms_columns : column3
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_column : column9
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_columns : columns12
+rdbms_columns "1..1" --* "1..1" rdbms_table : columns76
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_foreignKey : foreignKey15
+rdbms_foreignKey "0..9999" --* "1..1" rdbms_foreignKeys : foreignKey46
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_foreignKeys : foreignKeys17
+rdbms_foreignKeys "1..1" --* "1..1" rdbms_schema : foreignKeys70
+rdbms_column "1..1" *-- "1..1" rdbms_hasForeignKeys : hasForeignKeys1
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_hasForeignKeys : hasForeignKeys19
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_key : key22
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_key2 : key224
+rdbms_key2 "1..1" --* "1..1" rdbms_table : key279
+rdbms_key "0..1" --* "1..1" rdbms_key2 : key55
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_oID : oID26
+rdbms_hasForeignKeys "1..1" *-- "0..9999" rdbms_oID : oID49
+rdbms_oID "0..9999" --* "1..1" rdbms_referencedColumns : oID61
+rdbms_oID "0..9999" --* "1..1" rdbms_referencedKeys : oID64
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_RDBMS : rDBMS28
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_referencedColumns : referencedColumns30
+rdbms_foreignKey "1..1" *-- "1..1" rdbms_referencedColumns : referencedColumns43
+rdbms_key "1..1" *-- "1..1" rdbms_referencedColumns : referencedColumns52
+rdbms_column "1..1" *-- "1..1" rdbms_referencedKeys : referencedKeys0
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_referencedKeys : referencedKeys32
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_schema : schema35
+rdbms_schema "0..9999" --* "1..1" rdbms_schemas : schema73
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_schemas : schemas37
+rdbms_RDBMS "1..1" *-- "1..1" rdbms_schemas : schemas58
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_table : table39
+rdbms_table "0..9999" --* "1..1" rdbms_tables : table82
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_tables : tables41
+rdbms_schema "1..1" *-- "1..1" rdbms_tables : tables67
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_EStringToStringMapEntry : xMLNSPrefixMap5
+rdbms_DocumentRoot "1..1" *-- "0..9999" rdbms_EStringToStringMapEntry : xSISchemaLocation6
+@enduml

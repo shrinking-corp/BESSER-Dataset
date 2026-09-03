@@ -1,0 +1,82 @@
+@startuml
+class Administrator_Actor {
+}
+class Authentication_UseCase {
+}
+class Coordinator {
+  + office : office
+}
+class Department {
+  + description : str
+  + name : str
+}
+class Employee_Actor {
+}
+class Employee_Management_System_Component {
+}
+class Login_external {
+}
+class Logout_external {
+}
+class Patient {
+  + ICD : str
+  + approvedHours : float
+  + employee : Employee_Actor
+  + patientid : str
+}
+class Person {
+  + DoB : date
+  + State : str
+  + address : str
+  + cellPhone : str
+  + city : str
+  + email : str
+  + firstName : str
+  + homePhone : str
+  + lastName : str
+  + middleName : str
+  + note : str
+}
+class Physician {
+  + office : office
+}
+class Role {
+  + description : str
+  + name : str
+}
+class Salary_Management_UseCase {
+}
+class account {
+  + id : int
+  + office : str
+  + password : str
+  + username : str
+}
+class employee {
+  + Date_Ended : date
+  + Date_Hired : date
+  + Date_Started : date
+  + Department : Department
+  + Role : role
+  + empid : str
+  + ssn : str
+  + workingHours : float
+}
+class hourlyPay {
+  + employee : employee
+}
+class office {
+}
+class role {
+}
+Employee_Actor "0..1" -- "0..1" Login_external : Employee_Login
+Employee_Actor "0..1" -- "0..1" Logout_external : Employee_Logout
+Coordinator "0..1" -- "0..1" Person : Person_Coordinator
+Person "0..1" -- "0..1" Physician : Person_Physician
+Person "0..1" -- "0..1" account : Person_account
+Patient "0..1" -- "0..1" account : account_Patient
+Department "0..1" -- "0..1" employee : employee_Department
+Role "0..1" -- "0..1" employee : employee_Role
+account "0..1" -- "0..1" employee : employee_account
+employee "0..1" -- "0..1" hourlyPay : hourlyPay_employee
+@enduml

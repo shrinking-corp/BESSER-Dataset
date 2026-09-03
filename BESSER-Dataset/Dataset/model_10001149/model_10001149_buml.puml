@@ -1,0 +1,61 @@
+@startuml
+class Admin_Actor {
+}
+class Cash {
+  + cashTendered : int
+}
+class Credit_Card {
+  + number : int
+}
+class Customer {
+  + Address : str
+  + Contact : str
+  + Name : str
+}
+class Login_UseCase {
+}
+class Order {
+  + Date : str
+}
+class OrderDetails {
+  + qty : int
+}
+class Order_Details_UseCase {
+}
+class Order_Status {
+  + Create : int
+  + Deliveried : int
+  + Paid : int
+}
+class Password_UseCase {
+}
+class Payment {
+  + Amount : str
+}
+class Payment_UseCase {
+}
+class Registration_UseCase {
+}
+class Shipping_UseCase {
+}
+class cart_UseCase {
+}
+class cheque_UseCase {
+}
+class credit_card_UseCase {
+}
+class customer_Actor {
+}
+Admin_Actor "0..1" -- "0..1" Password_UseCase : Admin_Password
+Customer "1..1" -- "1..9999" Order : Customer_Order
+Login_UseCase "0..1" -- "0..1" customer_Actor : Login_customer
+Order "0..1" -- "0..1" OrderDetails : Order_OrderDetails
+Order "0..1" -- "0..1" Order_Status : Order_Status_Order
+Order "0..1" -- "0..1" Payment : Order____Payment
+Password_UseCase "0..1" -- "0..1" customer_Actor : Password_customer
+Payment_UseCase "0..1" -- "0..1" customer_Actor : Payment_customer
+Registration_UseCase "0..1" -- "0..1" customer_Actor : Registration_customer
+Order_Details_UseCase "0..1" -- "0..1" customer_Actor : customer_Order_Details
+Shipping_UseCase "0..1" -- "0..1" customer_Actor : customer_Shipping
+cart_UseCase "0..1" -- "0..1" customer_Actor : customer_cart
+@enduml

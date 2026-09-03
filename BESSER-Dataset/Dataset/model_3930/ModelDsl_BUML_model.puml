@@ -1,0 +1,198 @@
+@startuml
+class AnnoTypes {
+}
+class Annotated {
+}
+class AnnotationValue {
+}
+class Container {
+}
+class Element {
+}
+class Field {
+}
+class Type {
+}
+class Value {
+}
+enum ValueType {
+  DOUBLE
+  FORMAT_RANGE
+  INTEGER
+  INT_RANGE
+  STRING
+}
+class modelDsl_AnnoTypes {
+  + type : str
+}
+class modelDsl_Annotated {
+}
+class modelDsl_Annotation {
+}
+class modelDsl_AnnotationGroup {
+}
+class modelDsl_AnnotationHiddenProperty {
+}
+class modelDsl_AnnotationInstance {
+}
+class modelDsl_AnnotationProperty {
+  + multi : bool
+  + name : str
+  + type : str
+}
+class modelDsl_AnnotationType {
+}
+class modelDsl_AnnotationValue {
+}
+class modelDsl_Child {
+}
+class modelDsl_ChildType {
+}
+class modelDsl_Container {
+}
+class modelDsl_DataType {
+}
+class modelDsl_DataTypeField {
+  + format : str
+}
+class modelDsl_DataTypeType {
+}
+class modelDsl_DoubleValue {
+  + value : float
+}
+class modelDsl_Element {
+  + name : str
+}
+class modelDsl_Entity {
+}
+class modelDsl_EntityElements {
+}
+class modelDsl_EntityGroup {
+  + name : str
+}
+class modelDsl_EntityType {
+}
+class modelDsl_Field {
+  + name : str
+}
+class modelDsl_FormatRangeValue {
+  + from_ : str
+  + to : str
+}
+class modelDsl_GroupType {
+  + name : str
+}
+class modelDsl_Import {
+  + importedNamespace : str
+}
+class modelDsl_IntegerValue {
+  + value : int
+}
+class modelDsl_Model {
+}
+class modelDsl_Package {
+}
+class modelDsl_PackageType {
+}
+class modelDsl_Parent {
+}
+class modelDsl_ParentType {
+}
+class modelDsl_PatternType {
+  + DATE : str
+  + NUMBER : str
+  + REGEX : str
+}
+class modelDsl_Property {
+  + optional : bool
+}
+class modelDsl_PropertyType {
+}
+class modelDsl_RangeValue {
+  + fromInf : bool
+  + from_ : int
+  + to : int
+  + toInf : bool
+}
+class modelDsl_Reference {
+  + optional : bool
+}
+class modelDsl_ReferenceList {
+}
+class modelDsl_ReferenceListType {
+}
+class modelDsl_ReferenceType {
+}
+class modelDsl_StringValue {
+  + value : str
+}
+class modelDsl_Type {
+}
+class modelDsl_Value {
+}
+AnnoTypes <|-- modelDsl_AnnotationType
+AnnoTypes <|-- modelDsl_ChildType
+AnnoTypes <|-- modelDsl_DataTypeType
+AnnoTypes <|-- modelDsl_EntityType
+AnnoTypes <|-- modelDsl_GroupType
+AnnoTypes <|-- modelDsl_PackageType
+AnnoTypes <|-- modelDsl_ParentType
+AnnoTypes <|-- modelDsl_PropertyType
+AnnoTypes <|-- modelDsl_ReferenceListType
+AnnoTypes <|-- modelDsl_ReferenceType
+Annotated <|-- modelDsl_AnnotationInstance
+Annotated <|-- modelDsl_Container
+Annotated <|-- modelDsl_Element
+Annotated <|-- modelDsl_Field
+AnnotationValue <|-- modelDsl_AnnotationGroup
+AnnotationValue <|-- modelDsl_Value
+Container <|-- modelDsl_Child
+Container <|-- modelDsl_Parent
+Element <|-- modelDsl_Annotation
+Element <|-- modelDsl_Package
+Element <|-- modelDsl_Type
+Field <|-- modelDsl_Property
+Field <|-- modelDsl_Reference
+Field <|-- modelDsl_ReferenceList
+Type <|-- modelDsl_DataType
+Type <|-- modelDsl_Entity
+Value <|-- modelDsl_DoubleValue
+Value <|-- modelDsl_FormatRangeValue
+Value <|-- modelDsl_IntegerValue
+Value <|-- modelDsl_RangeValue
+Value <|-- modelDsl_StringValue
+modelDsl_Annotation "0..1" -- "1..1" modelDsl_AnnotationInstance : annotation63
+modelDsl_AnnotationGroup "0..9999" --* "1..1" modelDsl_Type : annotations3
+modelDsl_AnnotationGroup "0..9999" --* "1..1" modelDsl_Container : annotations33
+modelDsl_AnnotationGroup "0..9999" --* "1..1" modelDsl_Field : annotations36
+modelDsl_AnnotationGroup "0..9999" --* "1..1" modelDsl_Package : annotations4
+modelDsl_Child "0..9999" --* "1..1" modelDsl_EntityElements : childs23
+modelDsl_Element "0..9999" --* "1..1" modelDsl_Model : elements1
+modelDsl_Entity "1..1" *-- "0..1" modelDsl_EntityElements : elements16
+modelDsl_EntityElements "0..1" --* "1..1" modelDsl_EntityGroup : elements20
+modelDsl_Element "0..9999" --* "1..1" modelDsl_Package : elements6
+modelDsl_Entity "0..1" -- "1..1" modelDsl_Reference : entity41
+modelDsl_Entity "0..1" -- "1..1" modelDsl_ReferenceList : entity47
+modelDsl_DataType "1..1" *-- "0..9999" modelDsl_DataTypeField : formatedFields9
+modelDsl_AnnotationProperty "1..1" *-- "0..1" modelDsl_GroupType : group58
+modelDsl_Entity "1..1" *-- "0..9999" modelDsl_EntityGroup : groups18
+modelDsl_Import "0..9999" --* "1..1" modelDsl_Model : imports0
+modelDsl_Annotation "1..1" *-- "0..9999" modelDsl_AnnotationInstance : instances51
+modelDsl_AnnotationGroup "1..1" *-- "0..9999" modelDsl_AnnotationInstance : instances60
+modelDsl_Annotation "1..1" *-- "0..9999" modelDsl_AnnotationProperty : mandatories53
+modelDsl_Annotation "1..1" *-- "0..9999" modelDsl_AnnotationProperty : optionals55
+modelDsl_Entity "1..1" *-- "0..1" modelDsl_Parent : parent15
+modelDsl_DataTypeField "1..1" *-- "0..1" modelDsl_PatternType : pattern10
+modelDsl_EntityElements "1..1" *-- "0..9999" modelDsl_Property : properties25
+modelDsl_AnnotationHiddenProperty "0..9999" --* "1..1" modelDsl_AnnotationInstance : properties68
+modelDsl_AnnotationHiddenProperty "1..1" -- "0..1" modelDsl_AnnotationProperty : property70
+modelDsl_Reference "0..1" -- "1..1" modelDsl_ReferenceList : reference44
+modelDsl_EntityElements "1..1" *-- "0..9999" modelDsl_ReferenceList : referenceLists29
+modelDsl_EntityElements "1..1" *-- "0..9999" modelDsl_Reference : references27
+modelDsl_DataType "0..1" -- "1..1" modelDsl_DataTypeField : type12
+modelDsl_Container "1..1" -- "0..1" modelDsl_Entity : type31
+modelDsl_Property "1..1" -- "0..1" modelDsl_Type : type38
+modelDsl_AnnoTypes "0..9999" --* "1..1" modelDsl_Annotation : types50
+modelDsl_AnnotationInstance "1..1" *-- "0..9999" modelDsl_AnnotationValue : values66
+modelDsl_AnnotationHiddenProperty "1..1" -- "0..9999" modelDsl_AnnotationValue : values73
+@enduml

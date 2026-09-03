@@ -1,0 +1,102 @@
+@startuml
+class Command {
+}
+class whileDsl_Command {
+}
+class whileDsl_Commands {
+}
+class whileDsl_Definition {
+}
+class whileDsl_EObject {
+}
+class whileDsl_Expr {
+}
+class whileDsl_ExprAnd {
+}
+class whileDsl_ExprEq {
+}
+class whileDsl_ExprNot {
+  + negation : bool
+}
+class whileDsl_ExprOr {
+}
+class whileDsl_ExprSimple {
+  + term : str
+}
+class whileDsl_ExprSimpleWithExpr {
+  + operation : str
+}
+class whileDsl_ExprSimpleWithLExpr {
+  + operation : str
+}
+class whileDsl_ExprSimpleWithSymbolLExpr {
+  + symbol : str
+}
+class whileDsl_Exprs {
+}
+class whileDsl_ForCommand {
+}
+class whileDsl_ForeachCommand {
+  + expElement : str
+}
+class whileDsl_Function {
+  + functionName : str
+}
+class whileDsl_IfCommand {
+}
+class whileDsl_Input {
+  + variables : str
+}
+class whileDsl_LExpr {
+}
+class whileDsl_Model {
+}
+class whileDsl_NopCommand {
+}
+class whileDsl_Output {
+  + variables : str
+}
+class whileDsl_Vars {
+  + variables : str
+}
+class whileDsl_VarsCommand {
+}
+class whileDsl_WhileCommand {
+}
+Command <|-- whileDsl_ForCommand
+Command <|-- whileDsl_ForeachCommand
+Command <|-- whileDsl_IfCommand
+Command <|-- whileDsl_NopCommand
+Command <|-- whileDsl_VarsCommand
+Command <|-- whileDsl_WhileCommand
+whileDsl_Commands "0..1" --* "1..1" whileDsl_WhileCommand : body12
+whileDsl_Commands "0..1" --* "1..1" whileDsl_ForCommand : body17
+whileDsl_Commands "0..1" --* "1..1" whileDsl_ForeachCommand : body30
+whileDsl_Commands "0..1" --* "1..1" whileDsl_Definition : body5
+whileDsl_Command "0..9999" --* "1..1" whileDsl_Commands : commands9
+whileDsl_Expr "0..1" --* "1..1" whileDsl_WhileCommand : cond11
+whileDsl_Expr "0..1" --* "1..1" whileDsl_ForCommand : cond15
+whileDsl_Expr "0..1" --* "1..1" whileDsl_IfCommand : cond20
+whileDsl_Commands "0..1" --* "1..1" whileDsl_IfCommand : elseBody25
+whileDsl_Expr "0..1" --* "1..1" whileDsl_ForeachCommand : expList28
+whileDsl_Expr "0..1" --* "1..1" whileDsl_ExprSimpleWithExpr : expr38
+whileDsl_Expr "0..1" --* "1..1" whileDsl_ExprEq : expr62
+whileDsl_ExprEq "1..1" *-- "0..1" whileDsl_ExprSimple : exprLSimple56
+whileDsl_ExprEq "1..1" *-- "0..1" whileDsl_ExprSimple : exprRSimple59
+whileDsl_EObject "0..1" --* "1..1" whileDsl_ExprSimple : expression36
+whileDsl_EObject "0..1" --* "1..1" whileDsl_Expr : expression48
+whileDsl_ExprEq "0..1" --* "1..1" whileDsl_ExprNot : expressionEq54
+whileDsl_Expr "0..9999" --* "1..1" whileDsl_LExpr : expressions42
+whileDsl_Expr "0..9999" --* "1..1" whileDsl_Exprs : expressions45
+whileDsl_ExprNot "0..9999" --* "1..1" whileDsl_ExprOr : expressionsNot52
+whileDsl_ExprAnd "1..1" *-- "0..9999" whileDsl_ExprOr : expressionsOr51
+whileDsl_Definition "0..1" --* "1..1" whileDsl_Function : functionDefinition1
+whileDsl_Definition "1..1" *-- "0..1" whileDsl_Input : intput3
+whileDsl_ExprSimpleWithLExpr "1..1" *-- "0..1" whileDsl_LExpr : lexpr37
+whileDsl_ExprSimpleWithSymbolLExpr "1..1" *-- "0..1" whileDsl_LExpr : lexpr40
+whileDsl_Definition "1..1" *-- "0..1" whileDsl_Output : output7
+whileDsl_Function "0..9999" --* "1..1" whileDsl_Model : program0
+whileDsl_Commands "0..1" --* "1..1" whileDsl_IfCommand : thenBody22
+whileDsl_Exprs "0..1" --* "1..1" whileDsl_VarsCommand : values34
+whileDsl_Vars "0..1" --* "1..1" whileDsl_VarsCommand : variables33
+@enduml

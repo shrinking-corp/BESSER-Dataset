@@ -1,0 +1,87 @@
+@startuml
+class EModelElement {
+}
+class fiacremm_Action {
+  + Body : str
+  + Name : str
+  + codeFiacre : str
+}
+class fiacremm_Component {
+  + Name : str
+  + ProcessSize : int
+  + VarSize : int
+}
+class fiacremm_DataType {
+  + Name : str
+}
+class fiacremm_Guard {
+  + Body : str
+  + Name : str
+  + codeFiacre : str
+}
+class fiacremm_Port {
+  + Name : str
+}
+class fiacremm_Process {
+  + Name : str
+  + StateSize : int
+  + VarSize : int
+}
+class fiacremm_Program {
+  + ComponentSize : int
+  + Name : str
+}
+class fiacremm_State {
+  + Name : str
+}
+class fiacremm_Transition {
+  + Name : str
+}
+class fiacremm_Trigger {
+  + ArgSize : int
+  + Body : str
+  + Name : str
+  + codeFiacre : str
+}
+class fiacremm_Variable {
+  + Name : str
+  + initVal : str
+}
+EModelElement <|-- fiacremm_Action
+EModelElement <|-- fiacremm_Component
+EModelElement <|-- fiacremm_DataType
+EModelElement <|-- fiacremm_Guard
+EModelElement <|-- fiacremm_Port
+EModelElement <|-- fiacremm_Process
+EModelElement <|-- fiacremm_Program
+EModelElement <|-- fiacremm_State
+EModelElement <|-- fiacremm_Transition
+EModelElement <|-- fiacremm_Trigger
+EModelElement <|-- fiacremm_Variable
+fiacremm_Action "0..1" --* "1..1" fiacremm_Transition : action22
+fiacremm_Process "1..1" *-- "0..9999" fiacremm_Trigger : alluniqueTriggers11
+fiacremm_Trigger "1..1" *-- "0..9999" fiacremm_Variable : arguments47
+fiacremm_Component "0..9999" -- "1..1" fiacremm_Variable : components27
+fiacremm_Component "1..9999" --* "1..1" fiacremm_Program : components36
+fiacremm_Component "0..9999" -- "1..1" fiacremm_Port : components50
+fiacremm_DataType "1..1" -- "1..1" fiacremm_Variable : datatype24
+fiacremm_DataType "0..9999" --* "1..1" fiacremm_Program : datatypes44
+fiacremm_Guard "0..1" --* "1..1" fiacremm_Transition : guard17
+fiacremm_State "1..1" -- "1..9999" fiacremm_Transition : inTransitions1
+fiacremm_Process "1..1" -- "1..1" fiacremm_State : initState8
+fiacremm_Component "1..1" *-- "1..9999" fiacremm_Process : instances29
+fiacremm_Port "0..1" --* "1..1" fiacremm_Process : outPorts9
+fiacremm_State "1..1" -- "1..9999" fiacremm_Transition : outTransitions0
+fiacremm_Component "1..1" *-- "0..9999" fiacremm_Port : ports33
+fiacremm_Process "1..1" -- "1..1" fiacremm_State : process3
+fiacremm_Process "0..9999" -- "1..1" fiacremm_Variable : processes25
+fiacremm_Process "1..9999" --* "1..1" fiacremm_Program : processes41
+fiacremm_State "1..1" -- "1..1" fiacremm_Transition : source13
+fiacremm_Process "1..1" *-- "1..9999" fiacremm_State : states6
+fiacremm_State "1..1" -- "1..1" fiacremm_Transition : target15
+fiacremm_Process "1..1" *-- "1..9999" fiacremm_Transition : transitions4
+fiacremm_Transition "1..1" *-- "0..1" fiacremm_Trigger : trigger19
+fiacremm_Program "1..1" *-- "0..9999" fiacremm_Variable : variable38
+fiacremm_Component "1..1" -- "0..9999" fiacremm_Variable : variables31
+fiacremm_Process "1..1" -- "0..9999" fiacremm_Variable : variables5
+@enduml

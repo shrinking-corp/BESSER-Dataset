@@ -1,0 +1,32 @@
+@startuml
+class Delivery {
+  + Date : str
+  + Name : str
+  + Type : str
+}
+class Discription {
+  + Discription : str
+  + Email : str
+}
+class Order {
+  + ID : int
+  + Quantity : int
+  + Size : int
+  + Type : str
+}
+class Payment {
+  + Amount : int
+  + Date_off : str
+}
+class User {
+  + Address : str
+  + Email : str
+  + Name : str
+  + Phone_num : int
+}
+Delivery "0..1" -- "0..1" Order : Order_Delivery
+Discription "0..1" -- "0..1" Order : Order_Discription
+Order "0..1" -- "0..1" Payment : Order_Payment
+Order "0..1" -- "0..1" User : Order_User
+Delivery "0..1" -- "0..1" User : User_Delivery
+@enduml

@@ -1,0 +1,163 @@
+@startuml
+class Class {
+}
+class Comment {
+}
+class DataType {
+}
+class EMOF_Class {
+  + isAbstract : str
+}
+class EMOF_Comment {
+  + body : str
+}
+class EMOF_DataType {
+}
+abstract class EMOF_Element {
+  + container() : str
+  + equals(EMOF_object : str) : str
+  + get(EMOF_property : str) : str
+  + getMetaClass() : str
+  + isSet(EMOF_property : str) : str
+  + set(EMOF_object : str, EMOF_property : str) : void
+  + unset(EMOF_property : str) : void
+}
+class EMOF_Enumeration {
+}
+class EMOF_EnumerationLiteral {
+}
+class EMOF_Extent {
+  + elements() : str
+  + useContainment() : str
+}
+class EMOF_Factory {
+  + convertToString(EMOF_dataType : str, EMOF_object : str) : str
+  + create(EMOF_metaClass : str) : str
+  + createFromString(EMOF_dataType : str, EMOF_string : str) : str
+}
+abstract class EMOF_MultiplicityElement {
+  + isOrdered : str
+  + isUnique : str
+  + lower : str
+  + upper : str
+}
+abstract class EMOF_NamedElement {
+  + name : str
+}
+class EMOF_Object {
+}
+class EMOF_Operation {
+}
+class EMOF_Package {
+  + uri : str
+}
+class EMOF_Parameter {
+}
+class EMOF_PrimitiveType {
+}
+class EMOF_Property {
+  + default : str
+  + isComposite : str
+  + isDerived : str
+  + isID : str
+  + isReadOnly : str
+}
+class EMOF_ReflectiveCollection {
+  + add(EMOF_object : str) : str
+  + addAll(EMOF_objects : str) : str
+  + clear() : void
+  + remove(EMOF_object : str) : str
+  + size() : str
+}
+class EMOF_ReflectiveSequence {
+  + add(EMOF_index : str, EMOF_object : str) : void
+  + get(EMOF_index : str) : str
+  + remove(EMOF_index : str) : str
+  + set(EMOF_index : str, EMOF_object : str) : str
+}
+class EMOF_Tag {
+  + name : str
+  + value : str
+}
+abstract class EMOF_Type {
+  + isInstance(EMOF_object : str) : str
+}
+abstract class EMOF_TypedElement {
+}
+class EMOF_URIExtent {
+  + contextURI() : str
+  + element(EMOF_uri : str) : str
+  + uri(EMOF_element : str) : str
+}
+class Element {
+}
+class Enumeration {
+}
+class EnumerationLiteral {
+}
+class Extent {
+}
+class MultiplicityElement {
+}
+class NamedElement {
+}
+class Object {
+}
+class Operation {
+}
+class Package {
+}
+class Parameter {
+}
+class Property {
+}
+class ReflectiveCollection {
+}
+class Type {
+}
+class TypedElement {
+}
+DataType <|-- EMOF_Enumeration
+DataType <|-- EMOF_PrimitiveType
+Element <|-- EMOF_Comment
+Element <|-- EMOF_Factory
+Element <|-- EMOF_NamedElement
+Element <|-- EMOF_Tag
+Extent <|-- EMOF_URIExtent
+MultiplicityElement <|-- EMOF_Operation
+MultiplicityElement <|-- EMOF_Parameter
+MultiplicityElement <|-- EMOF_Property
+NamedElement <|-- EMOF_EnumerationLiteral
+NamedElement <|-- EMOF_Package
+NamedElement <|-- EMOF_Type
+NamedElement <|-- EMOF_TypedElement
+Object <|-- EMOF_Element
+Object <|-- EMOF_Extent
+Object <|-- EMOF_ReflectiveCollection
+ReflectiveCollection <|-- EMOF_ReflectiveSequence
+Type <|-- EMOF_Class
+Type <|-- EMOF_DataType
+TypedElement <|-- EMOF_Operation
+TypedElement <|-- EMOF_Parameter
+TypedElement <|-- EMOF_Property
+EMOF_Comment "1..1" -- "0..9999" NamedElement : annotatedElement5
+Class "0..1" -- "1..1" EMOF_Operation : class_10
+Class "0..1" -- "1..1" EMOF_Property : class_25
+EMOF_Tag "1..1" -- "0..9999" Element : element30
+EMOF_EnumerationLiteral "1..1" -- "0..1" Enumeration : enumeration8
+EMOF_Package "1..1" *-- "0..9999" Package : nestedPackage16
+EMOF_Package "1..1" -- "0..1" Package : nestingPackage18
+EMOF_Parameter "1..1" -- "0..1" Operation : operation23
+EMOF_Property "1..1" -- "0..1" Property : opposite27
+EMOF_Class "1..1" *-- "0..9999" Property : ownedAttribute0
+Comment "0..9999" --* "1..1" EMOF_Element : ownedComment6
+EMOF_Enumeration "1..1" *-- "0..9999" EnumerationLiteral : ownedLiteral7
+EMOF_Class "1..1" *-- "0..9999" Operation : ownedOperation1
+EMOF_Operation "1..1" *-- "0..9999" Parameter : ownedParameter12
+EMOF_Package "1..1" *-- "0..9999" Type : ownedType20
+EMOF_Type "1..1" -- "0..1" Package : package31
+EMOF_Factory "1..1" -- "1..1" Package : package9
+EMOF_Operation "1..1" -- "0..9999" Type : raisedException14
+Class "0..9999" -- "1..1" EMOF_Class : superClass3
+EMOF_TypedElement "1..1" -- "0..1" Type : type33
+@enduml

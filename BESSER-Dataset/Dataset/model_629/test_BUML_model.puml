@@ -1,0 +1,22 @@
+@startuml
+class test_Book {
+  + pages : int
+  + title : str
+}
+class test_Library {
+  + name : str
+}
+class test_Writer {
+  + BirthDate : date
+  + EMail : str
+  + Pseudonym : bool
+  + firstName : str
+  + lastName : str
+  + validate(test_context : str, test_diagnostic : str) : bool
+}
+test_Book "0..9999" --* "1..1" test_Library : books1
+test_Book "0..9999" -- "1..1" test_Writer : books2
+test_Library "0..1" -- "1..1" test_Writer : library3
+test_Library "1..1" *-- "0..9999" test_Writer : writers0
+test_Book "1..1" -- "0..1" test_Writer : writers5
+@enduml

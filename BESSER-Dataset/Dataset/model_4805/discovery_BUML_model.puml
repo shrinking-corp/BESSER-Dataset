@@ -1,0 +1,31 @@
+@startuml
+class model_IHost {
+  + address : str
+  + name : str
+}
+class model_INetwork {
+}
+class model_IServiceID {
+  + ecfServiceID : str
+  + ecfServiceName : str
+}
+class model_IServiceInfo {
+  + ecfLocation : str
+  + ecfName : str
+  + ecfPriority : int
+  + ecfServiceInfo : str
+  + ecfWeight : int
+}
+class model_IServiceTypeID {
+  + ecfNamingAuthority : str
+  + ecfProtocols : str
+  + ecfScopes : str
+  + ecfServiceName : str
+  + ecfServiceTypeID : str
+  + ecfServices : str
+}
+model_IHost "0..9999" --* "1..1" model_INetwork : hosts1
+model_IServiceID "0..1" -- "1..1" model_IServiceInfo : serviceID0
+model_IServiceID "1..1" -- "0..1" model_IServiceTypeID : serviceTypeID5
+model_IHost "1..1" *-- "0..9999" model_IServiceInfo : services2
+@enduml

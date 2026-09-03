@@ -1,0 +1,98 @@
+@startuml
+enum BOLDType {
+  true
+}
+enum FOLDEDType {
+  false
+  true
+}
+class Freemind_ArrowlinkType {
+  + Color : str
+  + Destination : str
+  + EndArrow : str
+  + EndInclination : str
+  + Id : str
+  + StartArrow : str
+  + StartInclination : str
+}
+class Freemind_CloudType {
+  + Color : str
+}
+class Freemind_DocumentRoot {
+  + mixed : str
+}
+class Freemind_EStringToStringMapEntry {
+}
+class Freemind_EdgeType {
+  + Color : str
+  + Style : str
+  + Width : str
+}
+class Freemind_FontType {
+  + Bold : str
+  + Italic : str
+  + Name : str
+  + Size : str
+}
+class Freemind_HookType {
+  + Name : str
+}
+class Freemind_IconType {
+  + Builtin : str
+}
+class Freemind_MapType {
+  + version : str
+}
+class Freemind_NodeType {
+  + BackgroundColor : str
+  + Color : str
+  + Created : str
+  + EncryptedContent : str
+  + Folded : str
+  + Hgap : str
+  + Id : str
+  + Link : str
+  + Modified : str
+  + Position : str
+  + Style : str
+  + Text : str
+  + Vgap : str
+  + Vshift : str
+  + group : str
+}
+class Freemind_ParametersType {
+  + RemindUserAt : str
+}
+class Freemind_TextType {
+}
+enum ITALICType {
+  false
+  true
+}
+enum POSITIONType {
+  left
+  right
+}
+Freemind_ArrowlinkType "0..9999" --* "1..1" Freemind_NodeType : arrowlink33
+Freemind_ArrowlinkType "0..9999" --* "1..1" Freemind_DocumentRoot : arrowlink4
+Freemind_CloudType "0..9999" --* "1..1" Freemind_NodeType : cloud36
+Freemind_CloudType "0..9999" --* "1..1" Freemind_DocumentRoot : cloud6
+Freemind_EdgeType "0..9999" --* "1..1" Freemind_NodeType : edge39
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_EdgeType : edge8
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_FontType : font10
+Freemind_FontType "0..9999" --* "1..1" Freemind_NodeType : font42
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_HookType : hook12
+Freemind_HookType "0..9999" --* "1..1" Freemind_NodeType : hook45
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_IconType : icon14
+Freemind_IconType "0..9999" --* "1..1" Freemind_NodeType : icon48
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_MapType : map16
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_NodeType : node18
+Freemind_MapType "1..1" *-- "1..1" Freemind_NodeType : node30
+Freemind_NodeType "0..9999" --* "1..1" Freemind_NodeType : node52
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_ParametersType : parameters20
+Freemind_HookType "1..1" *-- "0..1" Freemind_ParametersType : parameters24
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_TextType : text22
+Freemind_HookType "1..1" *-- "0..1" Freemind_TextType : text27
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_EStringToStringMapEntry : xMLNSPrefixMap0
+Freemind_DocumentRoot "1..1" *-- "0..9999" Freemind_EStringToStringMapEntry : xSISchemaLocation1
+@enduml

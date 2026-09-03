@@ -1,0 +1,33 @@
+@startuml
+class NamedElement {
+}
+class Vehicle {
+}
+class trip_Car {
+}
+abstract class trip_NamedElement {
+  + name : str
+}
+class trip_Person {
+}
+class trip_Trip {
+}
+class trip_TripModel {
+}
+class trip_Van {
+}
+abstract class trip_Vehicle {
+  + nrOfSeats : int
+}
+NamedElement <|-- trip_Person
+NamedElement <|-- trip_Trip
+NamedElement <|-- trip_TripModel
+NamedElement <|-- trip_Vehicle
+Vehicle <|-- trip_Car
+Vehicle <|-- trip_Van
+trip_Person "1..1" -- "1..1" trip_Trip : driver2
+trip_NamedElement "0..9999" --* "1..1" trip_TripModel : elements5
+trip_Person "0..9999" -- "1..1" trip_Trip : passengers1
+trip_Person "1..1" -- "0..9999" trip_Trip : trips4
+trip_Trip "1..1" -- "1..1" trip_Vehicle : vehicle0
+@enduml

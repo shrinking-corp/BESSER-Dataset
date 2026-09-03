@@ -1,0 +1,97 @@
+@startuml
+class AbstractType {
+}
+enum Sex {
+  FEMALE
+  MALE
+}
+abstract class model_AbstractType {
+  + name : str
+}
+class model_Address {
+  + addId : str
+  + city : str
+  + number : str
+  + street : str
+}
+class model_ConcreteTypeOne {
+  + propTypeOne : str
+}
+class model_ConcreteTypeTwo {
+  + propTypeTwo : str
+}
+class model_Container {
+}
+class model_EStringToStringMapEntry {
+}
+class model_ETypes {
+  + doubleValue : str
+  + eBigDecimal : str
+  + eBigInteger : str
+  + eBoolean : bool
+  + eBooleans : str
+  + eByte : str
+  + eByteArray : str
+  + eChar : str
+  + eDate : date
+  + eDouble : float
+  + eDoubles : str
+  + eFloat : float
+  + eInt : int
+  + eInts : int
+  + eLong : str
+  + eShort : str
+  + eString : str
+  + eStrings : str
+  + uris : str
+}
+class model_Node {
+  + label : str
+}
+class model_ObjectWithMap {
+}
+class model_PrimaryObject {
+  + featureMapAttributeCollection : str
+  + featureMapAttributeType1 : str
+  + featureMapAttributeType2 : str
+  + featureMapReferenceCollection : str
+  + idAttribute : str
+  + name : str
+  + unsettableAttribute : str
+  + unsettableAttributeWithNonNullDefault : str
+}
+class model_TargetObject {
+  + arrayAttribute : str
+  + singleAttribute : str
+}
+class model_User {
+  + birthDate : date
+  + name : str
+  + sex : str
+  + userId : str
+}
+AbstractType <|-- model_ConcreteTypeOne
+AbstractType <|-- model_ConcreteTypeTwo
+model_Address "0..1" --* "1..1" model_User : address5
+model_Node "0..9999" --* "1..1" model_Node : child50
+model_PrimaryObject "1..1" *-- "0..1" model_PrimaryObject : containmentReferenceSameCollectioin9
+model_EStringToStringMapEntry "0..9999" --* "1..1" model_ObjectWithMap : dependencies55
+model_AbstractType "0..9999" --* "1..1" model_Container : elements38
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : featureMapReferenceType132
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : featureMapReferenceType235
+model_User "1..1" -- "0..9999" model_User : friends1
+model_Node "1..1" -- "0..9999" model_Node : manyRef48
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : multipleContainmentReferenceNoProxies20
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : multipleContainmentReferenceProxies26
+model_PrimaryObject "1..1" -- "0..9999" model_TargetObject : multipleNonContainmentReference14
+model_AbstractType "0..9999" -- "1..1" model_AbstractType : refProperty40
+model_PrimaryObject "1..1" *-- "0..1" model_TargetObject : singleContainmentReferenceNoProxies17
+model_PrimaryObject "1..1" *-- "0..1" model_TargetObject : singleContainmentReferenceProxies23
+model_PrimaryObject "1..1" -- "0..1" model_TargetObject : singleNonContainmentReference11
+model_PrimaryObject "1..1" -- "0..1" model_TargetObject : singleNonContainmentReferenceNoProxies29
+model_Node "1..1" -- "0..1" model_Node : source45
+model_Node "1..1" -- "0..1" model_Node : target43
+model_Node "0..1" --* "1..1" model_Node : uniqueChild53
+model_User "0..1" -- "1..1" model_User : uniqueFriend3
+model_PrimaryObject "1..1" -- "0..1" model_TargetObject : unsettableReference7
+@enduml

@@ -1,0 +1,127 @@
+@startuml
+class AbstractGraph {
+}
+class Attributable {
+}
+class Attribute {
+}
+class Commentable {
+}
+enum Compass {
+  APPROPRIATE
+  CENTER
+  EAST
+  NORTH
+  NORTH_EAST
+  NORTH_WEST
+  SOUTH
+  SOUTH_EAST
+  SOUTH_WEST
+  WEST
+}
+class Connectable {
+}
+class Identifiable {
+}
+class Statement {
+}
+class StrictIdentifiable {
+}
+class dot_AList {
+  + getAllAttributes() : str
+}
+abstract class dot_AbstractGraph {
+}
+class dot_AssignmentStatement {
+  + left : str
+  + right : str
+}
+abstract class dot_Attributable {
+  + getAllALists() : str
+}
+class dot_Attribute {
+  + key : str
+  + value : str
+}
+class dot_AttributeList {
+}
+class dot_AttributeStatement {
+  + context : str
+}
+abstract class dot_Commentable {
+  + comments : str
+}
+abstract class dot_Connectable {
+}
+class dot_EdgeStatement {
+}
+class dot_Graph {
+  + strict : str
+  + type : str
+  + getAllStatements() : Statement
+}
+abstract class dot_Identifiable {
+  + id : str
+}
+class dot_NodeID {
+}
+class dot_NodeStatement {
+}
+class dot_Port {
+  + compass : str
+}
+abstract class dot_Statement {
+}
+class dot_StatementList {
+}
+abstract class dot_StrictIdentifiable {
+  + id : str
+}
+class dot_Subgraph {
+  + type : str
+}
+class dot_Target {
+  + operation : str
+}
+AbstractGraph <|-- dot_Graph
+AbstractGraph <|-- dot_Subgraph
+Attributable <|-- dot_AttributeStatement
+Attributable <|-- dot_EdgeStatement
+Attributable <|-- dot_NodeStatement
+Attribute <|-- dot_NodeStatement
+Commentable <|-- dot_AList
+Commentable <|-- dot_AssignmentStatement
+Commentable <|-- dot_Attribute
+Commentable <|-- dot_AttributeList
+Commentable <|-- dot_AttributeStatement
+Commentable <|-- dot_EdgeStatement
+Commentable <|-- dot_Graph
+Commentable <|-- dot_NodeID
+Commentable <|-- dot_Port
+Commentable <|-- dot_StatementList
+Commentable <|-- dot_Subgraph
+Commentable <|-- dot_Target
+Connectable <|-- dot_NodeID
+Connectable <|-- dot_Subgraph
+Identifiable <|-- dot_AbstractGraph
+Identifiable <|-- dot_Port
+Statement <|-- dot_AssignmentStatement
+Statement <|-- dot_AttributeStatement
+Statement <|-- dot_EdgeStatement
+Statement <|-- dot_NodeStatement
+StrictIdentifiable <|-- dot_NodeID
+dot_AList "1..1" *-- "1..1" dot_Attribute : attribute1
+dot_Attributable "1..1" *-- "0..1" dot_AttributeList : attributes5
+dot_AList "1..1" --* "1..1" dot_AttributeList : list6
+dot_AttributeList "1..1" *-- "0..1" dot_AttributeList : next10
+dot_Target "0..1" --* "1..1" dot_Target : next_target24
+dot_NodeID "1..1" --* "1..1" dot_NodeStatement : node_id15
+dot_NodeID "1..1" *-- "0..1" dot_Port : port16
+dot_Connectable "1..1" -- "1..1" dot_EdgeStatement : source12
+dot_Statement "1..1" --* "1..1" dot_StatementList : statement18
+dot_AbstractGraph "1..1" *-- "0..1" dot_StatementList : statements0
+dot_StatementList "0..1" --* "1..1" dot_StatementList : tail21
+dot_AList "0..1" --* "1..1" dot_AList : tail3
+dot_EdgeStatement "1..1" *-- "1..1" dot_Target : target13
+dot_Connectable "1..1" -- "1..1" dot_Target : target26
+@enduml

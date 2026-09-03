@@ -1,0 +1,43 @@
+@startuml
+enum FallOrSpring {
+  Fall
+  Spring
+}
+enum programmeCode {
+  Datateknologi2
+  Datateknologi5
+  Informatikk
+}
+class study_Course {
+  + code : str
+  + name : str
+  + points : float
+}
+class study_CourseSlot {
+  + elective : bool
+}
+class study_Department {
+}
+class study_Programme {
+  + name : str
+  + programmeCode : str
+}
+class study_Semester {
+  + fallOrSpring : str
+  + semesterNumber : int
+}
+class study_Specialization {
+  + name : str
+}
+class study_StudyPlan {
+}
+study_Course "0..9999" --* "1..1" study_Department : course1
+study_CourseSlot "0..9999" --* "1..1" study_Semester : courseSlot12
+study_Course "0..9999" -- "1..1" study_CourseSlot : electiveCourses17
+study_Course "0..1" -- "1..1" study_CourseSlot : mandatoryCourse14
+study_Department "1..1" *-- "0..9999" study_Programme : programme0
+study_Semester "0..9999" --* "1..1" study_StudyPlan : semester7
+study_Semester "0..9999" --* "1..1" study_Specialization : semester9
+study_Specialization "0..9999" --* "1..1" study_StudyPlan : spesialization5
+study_Programme "1..1" *-- "0..9999" study_StudyPlan : studyPlan3
+@enduml

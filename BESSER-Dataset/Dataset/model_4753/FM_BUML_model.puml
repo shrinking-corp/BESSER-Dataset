@@ -1,0 +1,46 @@
+@startuml
+class Child {
+}
+class Formula {
+}
+class fM_Child {
+  + mandatory : bool
+  + name : str
+}
+class fM_Constraints {
+}
+class fM_FeatureDiagram {
+}
+class fM_FeatureModel {
+}
+class fM_Formula {
+}
+class fM_Leaf {
+}
+class fM_Node {
+  + close_relation : str
+  + open_relation : str
+}
+class fM_Rule {
+}
+class fM_RuleElement {
+  + close_operator : str
+  + open_operator : str
+}
+class fM_Var {
+  + name : str
+  + not_ : bool
+}
+Child <|-- fM_Leaf
+Child <|-- fM_Node
+Formula <|-- fM_RuleElement
+Formula <|-- fM_Var
+fM_Child "0..9999" --* "1..1" fM_Node : children5
+fM_Constraints "0..1" --* "1..1" fM_FeatureModel : constraints1
+fM_FeatureDiagram "0..1" --* "1..1" fM_FeatureModel : diagram0
+fM_Formula "0..9999" --* "1..1" fM_Rule : elements9
+fM_RuleElement "1..1" *-- "0..1" fM_Var : left_side11
+fM_RuleElement "1..1" *-- "0..1" fM_Var : right_side12
+fM_Child "0..1" --* "1..1" fM_FeatureDiagram : root3
+fM_Constraints "1..1" *-- "0..9999" fM_Rule : rules7
+@enduml

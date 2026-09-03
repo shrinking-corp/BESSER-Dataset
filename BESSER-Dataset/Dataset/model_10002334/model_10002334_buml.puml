@@ -1,0 +1,49 @@
+@startuml
+class Camera {
+  + CameraID : int
+}
+class Door {
+  + DoorID : int
+}
+class Entertainment_System {
+  + DeviceID : int
+}
+class Fan {
+  + FanID : str
+}
+class GSM_Module {
+  + CmdMatch : str
+  + Status : str
+  + Update : float
+}
+class Geyser {
+  + GeyserID : str
+}
+class HomeTheatre {
+  + HTID : str
+}
+class Light {
+  + LightID : str
+}
+class Microcontroller {
+  + Status : str
+  + Update : float
+}
+class Speakers {
+  + SpeakerID : int
+}
+class TV {
+  + TVID : int
+}
+class User__SMS_ {
+  + Status : str
+}
+Camera "0..9999" -- "1..1" Door : Door_Camera
+GSM_Module "0..1" -- "0..1" Microcontroller : GSM_Module_Microcontroller
+Entertainment_System "1..1" -- "1..9999" HomeTheatre : HomeTheatre_Entertainment
+HomeTheatre "1..9999" -- "0..1" Speakers : HomeTheatre_Speakers
+HomeTheatre "1..9999" -- "1..1" TV : HomeTheatre_TV
+Fan "0..1" -- "0..1" Light : Light_Fan
+Entertainment_System "1..1" -- "1..9999" Speakers : Speakers_Entertainment
+Entertainment_System "1..1" -- "1..9999" TV : TV_Entertainment
+@enduml

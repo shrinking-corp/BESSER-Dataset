@@ -1,0 +1,196 @@
+@startuml
+class Action {
+}
+enum BBinaryOp {
+  AND
+  OR
+}
+enum Color {
+  BLACK
+  BLUE
+  BROWN
+  CYAN
+  DARK_GRAY
+  GRAY
+  GREEN
+  LIGHT_GRAY
+  MAGENTA
+  ORANGE
+  PINK
+  RED
+  WHITE
+  YELLOW
+}
+enum CompareOp {
+  EQ
+  GEQ
+  GT
+  LEQ
+  LT
+  NEQ
+}
+enum EMotor {
+  LEFTMOTOR
+  RIGHTMOTOR
+}
+class Expression {
+}
+enum Sensor {
+  ANGLESENSOR
+  COLORIDSENSOR
+  FRONTULTRASONICSENSOR
+  LEFTLIGHTSENSOR
+  REARULTRASONICSENSOR
+  RIGHTLIGHTSENSOR
+  TOUCHSENSORL
+  TOUCHSENSORR
+}
+enum Sound {
+  BEEP
+  BUZZ
+}
+class ValueExpression {
+}
+class roverDSL_Action {
+}
+class roverDSL_AssignExpression {
+}
+class roverDSL_BBLiteral {
+  + bValue : bool
+}
+class roverDSL_BNotExpr {
+}
+class roverDSL_BSensorLiteral {
+  + sensor : str
+}
+class roverDSL_BVBracket {
+}
+class roverDSL_BVLiteral {
+  + aValue : int
+  + neg : bool
+}
+class roverDSL_BVarLiteral {
+  + var : str
+}
+class roverDSL_BehaviorName {
+  + name : str
+}
+class roverDSL_ColorLiteral {
+  + color : str
+}
+class roverDSL_Expression {
+}
+class roverDSL_ExpressionBinComp {
+  + bcomp : str
+}
+class roverDSL_ExpressionBinOp {
+  + bop : str
+}
+class roverDSL_ForwardAction {
+}
+class roverDSL_FreeAction {
+}
+class roverDSL_Global {
+  + name : str
+}
+class roverDSL_IFExpression {
+}
+class roverDSL_Implementation {
+}
+class roverDSL_MeasureAction {
+}
+class roverDSL_Motor {
+  + m : str
+}
+class roverDSL_Robot {
+}
+class roverDSL_RotateAction {
+  + blocking : bool
+}
+class roverDSL_SAccelerationAction {
+}
+class roverDSL_SSpeedAction {
+}
+class roverDSL_ShowAction {
+  + sensor : str
+  + string : str
+}
+class roverDSL_SoundAction {
+  + sound : str
+}
+class roverDSL_Static {
+  + name : str
+}
+class roverDSL_StopAction {
+}
+class roverDSL_SubRoutine {
+  + name : str
+}
+class roverDSL_SubRoutineAction {
+}
+class roverDSL_ValExpr {
+}
+class roverDSL_ValueExpression {
+}
+class roverDSL_WHILEExpression {
+}
+Action <|-- roverDSL_ForwardAction
+Action <|-- roverDSL_FreeAction
+Action <|-- roverDSL_MeasureAction
+Action <|-- roverDSL_RotateAction
+Action <|-- roverDSL_SAccelerationAction
+Action <|-- roverDSL_SSpeedAction
+Action <|-- roverDSL_ShowAction
+Action <|-- roverDSL_SoundAction
+Action <|-- roverDSL_StopAction
+Action <|-- roverDSL_SubRoutineAction
+Expression <|-- roverDSL_Action
+Expression <|-- roverDSL_AssignExpression
+Expression <|-- roverDSL_IFExpression
+Expression <|-- roverDSL_ValExpr
+Expression <|-- roverDSL_WHILEExpression
+ValueExpression <|-- roverDSL_BBLiteral
+ValueExpression <|-- roverDSL_BNotExpr
+ValueExpression <|-- roverDSL_BSensorLiteral
+ValueExpression <|-- roverDSL_BVBracket
+ValueExpression <|-- roverDSL_BVLiteral
+ValueExpression <|-- roverDSL_BVarLiteral
+ValueExpression <|-- roverDSL_ColorLiteral
+ValueExpression <|-- roverDSL_ExpressionBinComp
+ValueExpression <|-- roverDSL_ExpressionBinOp
+roverDSL_Expression "0..9999" --* "1..1" roverDSL_WHILEExpression : b37
+roverDSL_BehaviorName "0..9999" --* "1..1" roverDSL_Robot : behaviorOrder0
+roverDSL_Implementation "0..9999" --* "1..1" roverDSL_Robot : behaviors7
+roverDSL_BVBracket "1..1" *-- "0..1" roverDSL_ValueExpression : bsub69
+roverDSL_IFExpression "1..1" *-- "0..1" roverDSL_ValueExpression : c27
+roverDSL_ValueExpression "0..1" --* "1..1" roverDSL_WHILEExpression : c35
+roverDSL_Implementation "1..1" *-- "0..1" roverDSL_ValueExpression : controlCheck17
+roverDSL_RotateAction "1..1" *-- "0..1" roverDSL_ValueExpression : degrees48
+roverDSL_Expression "0..9999" --* "1..1" roverDSL_IFExpression : e32
+roverDSL_Expression "0..9999" --* "1..1" roverDSL_Implementation : expressions20
+roverDSL_Expression "0..9999" --* "1..1" roverDSL_SubRoutine : expressions22
+roverDSL_BehaviorName "0..1" -- "1..1" roverDSL_Implementation : for_14
+roverDSL_AssignExpression "1..1" -- "0..1" roverDSL_Global : global_40
+roverDSL_Global "0..9999" --* "1..1" roverDSL_Robot : globals1
+roverDSL_ExpressionBinOp "1..1" *-- "0..1" roverDSL_ValueExpression : left71
+roverDSL_ExpressionBinComp "1..1" *-- "0..1" roverDSL_ValueExpression : left76
+roverDSL_ForwardAction "1..1" *-- "0..1" roverDSL_Motor : motor45
+roverDSL_Motor "0..1" --* "1..1" roverDSL_RotateAction : motor46
+roverDSL_Motor "0..1" --* "1..1" roverDSL_StopAction : motor51
+roverDSL_Motor "0..1" --* "1..1" roverDSL_SAccelerationAction : motor53
+roverDSL_Motor "0..1" --* "1..1" roverDSL_SSpeedAction : motor58
+roverDSL_FreeAction "1..1" *-- "0..1" roverDSL_Motor : motor65
+roverDSL_ExpressionBinOp "1..1" *-- "0..1" roverDSL_ValueExpression : right73
+roverDSL_ExpressionBinComp "1..1" *-- "0..1" roverDSL_ValueExpression : right78
+roverDSL_SubRoutine "0..1" -- "1..1" roverDSL_SubRoutineAction : routine63
+roverDSL_Robot "1..1" *-- "0..9999" roverDSL_Static : statics3
+roverDSL_Robot "1..1" *-- "0..1" roverDSL_ValueExpression : stopBehaviour5
+roverDSL_BNotExpr "1..1" *-- "0..1" roverDSL_ValueExpression : sub67
+roverDSL_Robot "1..1" *-- "0..9999" roverDSL_SubRoutine : subRoutines9
+roverDSL_Expression "0..9999" --* "1..1" roverDSL_IFExpression : t29
+roverDSL_AssignExpression "1..1" *-- "0..1" roverDSL_ValueExpression : v42
+roverDSL_SAccelerationAction "1..1" *-- "0..1" roverDSL_ValueExpression : v55
+roverDSL_SSpeedAction "1..1" *-- "0..1" roverDSL_ValueExpression : v60
+roverDSL_ValExpr "1..1" *-- "0..1" roverDSL_ValueExpression : vExpr25
+roverDSL_Static "1..1" *-- "0..1" roverDSL_ValueExpression : value11
+@enduml

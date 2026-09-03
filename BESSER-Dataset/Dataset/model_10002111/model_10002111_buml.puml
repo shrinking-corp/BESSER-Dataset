@@ -1,0 +1,47 @@
+@startuml
+class Group {
+  + admins : User__
+  + description : str
+  + members : User__
+  + nMembers : int
+  + name : str
+  + posts : str
+}
+class HashTags {
+  + allHashTags : str
+}
+class Page {
+  + admin : User
+  + description : str
+  + fans : User__
+  + nFans : int
+  + name : str
+  + posts : str
+}
+class Post {
+  + nComments : int
+  + nLikes : int
+  + nShares : int
+  + owner : User
+  + privateMode : bool
+}
+class User {
+  + email : str
+  + gender : str
+  + groups : str
+  + name : str
+  + pages : str
+  + password : str
+  + username : str
+}
+class User2_Interface {
+}
+class User__ {
+}
+Group "0..1" -- "0..1" Post : Post_Group
+HashTags "0..1" -- "0..1" Post : Post_HashTags
+Page "0..1" -- "0..1" Post : Post_Page
+Group "1..1" -- "0..9999" User : User_Group2
+Page "1..1" -- "0..9999" User : User_Page
+Post "1..1" -- "1..1" User : User_Post
+@enduml

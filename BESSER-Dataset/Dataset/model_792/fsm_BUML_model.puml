@@ -1,0 +1,32 @@
+@startuml
+class NamedElement {
+}
+class fsm_FSM {
+}
+class fsm_NamedElement {
+  + name : str
+}
+class fsm_State {
+  + onEnter() : void
+  + onLeave() : void
+}
+class fsm_Transition {
+  + input : str
+  + letterToMatch : str
+  + output : str
+  + callEffect() : void
+  + evaluateGuard() : bool
+  + fire() : void
+}
+NamedElement <|-- fsm_FSM
+NamedElement <|-- fsm_State
+NamedElement <|-- fsm_Transition
+fsm_FSM "1..1" -- "1..1" fsm_State : currentState2
+fsm_State "1..1" -- "0..1" fsm_Transition : incomingTransition7
+fsm_FSM "1..1" -- "1..1" fsm_State : initialState1
+fsm_State "1..1" *-- "0..9999" fsm_Transition : outgoingTransition6
+fsm_FSM "1..1" *-- "0..9999" fsm_State : ownedState0
+fsm_FSM "1..1" -- "1..1" fsm_State : owningFSM5
+fsm_State "1..1" -- "1..1" fsm_Transition : source9
+fsm_State "1..1" -- "1..1" fsm_Transition : target11
+@enduml

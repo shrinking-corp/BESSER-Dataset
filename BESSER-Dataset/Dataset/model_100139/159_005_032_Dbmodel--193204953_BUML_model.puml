@@ -1,0 +1,173 @@
+@startuml
+class ClassOrDuplicate {
+}
+enum KobeType {
+  AUSW
+  KORA
+  MAIN
+}
+enum KudaReplicate {
+  DWH
+  PUBLISH
+  PUBLISHSTV
+  SNAP
+}
+enum KudaType {
+  MAIN
+  PUBLISH
+  TIPO
+}
+enum LockSchema {
+  ALLPAGES
+  DATAPAGES
+  DATAROWS
+}
+enum Mtype {
+  KOBE
+  KUDA
+}
+enum PhysicalDatabase {
+  PDB_ABFRAGE_ARCHIV
+  PDB_ABFRAGE_BUCH_STAMM
+  PDB_ABFRAGE_ETV
+  PDB_ABFRAGE_FZK
+  PDB_ABFRAGE_MON
+  PDB_ABFRAGE_PKT_STAMM
+  PDB_ABFRAGE_VSTI
+  PDB_AUSW_KOBE_ARCHIV
+  PDB_AUSW_KOBE_BUCH_STAMM
+  PDB_AUSW_KOBE_MON
+  PDB_AUSW_KOBE_PKT_STAMM
+  PDB_AUSW_KOBE_STATISTIK
+  PDB_KOBE_AUSW_ADMIN
+  PDB_KOBE_DATA
+  PDB_KOBE_DEZ_STAMM
+  PDB_KOBE_GLOBAL
+  PDB_KOBE_KNDTEST
+  PDB_KOBE_PMON
+  PDB_KOBE_STAMM
+  PDB_KOBE_STEUERUNG
+  PDB_KUDA_TRANS_TRANSIT
+  PDB_MANDANT_BUCH_PROV
+  PDB_MANDANT_BUCH_STAMM
+  PDB_MANDANT_MON
+  PDB_MANDANT_PKT_DATA
+  PDB_MANDANT_PKT_STAMM
+  PDB_MANDANT_TAG
+  PDB_MANDANT_TAG_A
+  PDB_PART_AUFT
+  PDB_PART_BUCH_PROV
+  PDB_PART_BUCH_STAMM
+  PDB_PART_JAHR
+  PDB_PART_MON
+  PDB_PART_PKT_DATA
+  PDB_PART_PKT_STAMM
+  PDB_PART_TAG
+  PDB_PART_TAG_A
+}
+class dbmodel_Attribute {
+  + aName : str
+  + archiv : bool
+  + descr : str
+  + extattr : str
+  + exttable : str
+  + foreign : bool
+  + immutable : bool
+  + isInDB : bool
+  + isPublic : bool
+  + kuko : bool
+  + kukoindex : bool
+  + kukoonly : bool
+  + name : str
+  + nullOK : bool
+  + optional : bool
+  + shared : bool
+  + sybident : bool
+}
+class dbmodel_Class {
+  + aName : str
+  + archivIndex : str
+  + descr : str
+  + noDBio : bool
+  + publish : bool
+  + pubname : str
+  + pubspec : bool
+  + vmaj : int
+  + vmin : int
+  + whereclause : str
+}
+class dbmodel_ClassOrDuplicate {
+  + abbrev : str
+  + name : str
+  + reps : str
+}
+class dbmodel_DbModel {
+  + doAll : bool
+  + kobeType : str
+  + kudaType : str
+  + mtype : str
+  + name : str
+  + version : str
+}
+class dbmodel_Duplicate {
+}
+class dbmodel_Import {
+  + importedNamespace : str
+}
+class dbmodel_Index {
+  + kuko : bool
+  + name : str
+  + unique : bool
+}
+class dbmodel_IndexRef {
+  + clustered : bool
+  + isPrimkey : bool
+}
+class dbmodel_Ltype {
+}
+class dbmodel_Pdb {
+  + lockSchema : str
+  + name : str
+  + tablePartitioning : int
+}
+class dbmodel_Primkey {
+}
+class dbmodel_StructOverride {
+  + altname : str
+}
+class dbmodel_StructShare {
+}
+class dbmodel_Stype {
+}
+class dbmodel_Subject {
+  + name : str
+}
+class dbmodel_Type {
+}
+ClassOrDuplicate <|-- dbmodel_Class
+ClassOrDuplicate <|-- dbmodel_Duplicate
+dbmodel_Attribute "0..1" -- "1..1" dbmodel_IndexRef : attr41
+dbmodel_Attribute "0..1" -- "1..1" dbmodel_StructShare : attr51
+dbmodel_Attribute "0..9999" --* "1..1" dbmodel_Class : attributes10
+dbmodel_Attribute "0..9999" -- "1..1" dbmodel_Index : attrs36
+dbmodel_Class "0..9999" --* "1..1" dbmodel_DbModel : classes3
+dbmodel_DbModel "1..1" *-- "0..9999" dbmodel_Duplicate : duplicates5
+dbmodel_Attribute "0..1" -- "1..1" dbmodel_Attribute : forattr24
+dbmodel_DbModel "1..1" *-- "0..9999" dbmodel_Import : imports0
+dbmodel_Index "0..1" -- "1..1" dbmodel_IndexRef : index39
+dbmodel_Class "1..1" *-- "0..9999" dbmodel_Index : indices14
+dbmodel_IndexRef "0..9999" --* "1..1" dbmodel_Pdb : indices44
+dbmodel_Attribute "0..1" -- "1..1" dbmodel_Attribute : logattr31
+dbmodel_Class "0..1" -- "1..1" dbmodel_Duplicate : orig18
+dbmodel_Attribute "1..1" *-- "0..9999" dbmodel_StructOverride : ovride28
+dbmodel_StructOverride "1..1" -- "0..1" dbmodel_Stype : part49
+dbmodel_StructShare "1..1" -- "0..1" dbmodel_Stype : part54
+dbmodel_Class "1..1" *-- "0..9999" dbmodel_Pdb : pdbs16
+dbmodel_Attribute "0..9999" -- "1..1" dbmodel_Primkey : pkeys33
+dbmodel_Class "1..1" *-- "0..1" dbmodel_Primkey : primkey12
+dbmodel_Attribute "1..1" *-- "0..9999" dbmodel_StructShare : shrs26
+dbmodel_Class "1..1" -- "0..1" dbmodel_Subject : subject7
+dbmodel_DbModel "1..1" *-- "0..9999" dbmodel_Subject : subjects1
+dbmodel_Attribute "1..1" *-- "0..1" dbmodel_Ltype : type21
+dbmodel_Ltype "1..1" -- "0..1" dbmodel_Type : type47
+@enduml

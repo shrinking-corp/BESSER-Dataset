@@ -1,0 +1,231 @@
+@startuml
+enum AggregationKind {
+  ak_aggregate
+  ak_composite
+  ak_none
+}
+class Association {
+}
+class AssociationEnd {
+}
+class Attribute {
+}
+class AttributeLink {
+}
+class BooleanExpression {
+}
+enum ChangeableKind {
+  ck_addOnly
+  ck_changeable
+  ck_frozen
+}
+class Classifier {
+}
+class Common_Behavior_AttributeLink {
+}
+class Common_Behavior_ComponentInstance {
+}
+abstract class Common_Behavior_Instance {
+}
+class Common_Behavior_Link {
+}
+class Common_Behavior_LinkEnd {
+}
+class Common_Behavior_NodeInstance {
+}
+class ComponentInstance {
+}
+class Core_Association {
+}
+class Core_AssociationEnd {
+  + aggregation : str
+  + changeability : str
+  + isNavigable : str
+  + ordering : str
+  + targetScope : str
+}
+class Core_Attribute {
+}
+abstract class Core_Classifier {
+}
+abstract class Core_Element {
+}
+abstract class Core_Feature {
+  + ownerScope : str
+}
+abstract class Core_GeneralizableElement {
+  + isAbstract : str
+  + isLeaf : str
+  + isRoot : str
+}
+class Core_Generalization_ {
+  + discriminator : str
+}
+abstract class Core_ModelElement {
+  + isSpecification : str
+  + name : str
+  + visibility : str
+}
+abstract class Core_Namespace {
+}
+abstract class Core_Relationship {
+}
+abstract class Core_StructuralFeature {
+  + changeability : str
+  + ordering : str
+  + targetScope : str
+}
+class Data_Types_BooleanExpression {
+}
+class Data_Types_Expression {
+  + body : str
+  + language : str
+}
+class Data_Types_MultiplicityRange {
+  + lower : str
+  + upper : str
+}
+class Data_Types_Multiplicity_ {
+}
+class Element {
+}
+class Expression {
+}
+class Extend {
+}
+class ExtensionPoint {
+}
+class Feature {
+}
+class GeneralizableElement {
+}
+class Generalization_ {
+}
+class Include {
+}
+class Instance {
+}
+class Link {
+}
+class LinkEnd {
+}
+class ModelElement {
+}
+class MultiplicityRange {
+}
+class Multiplicity_ {
+}
+class Namespace {
+}
+class NodeInstance {
+}
+enum OrderingKind {
+  ok_ordered
+  ok_unordered
+}
+class Relationship {
+}
+enum ScopeKind {
+  sk_classifier
+  sk_instance
+}
+class StructuralFeature {
+}
+class UseCase {
+}
+class Use_Cases_Actor {
+}
+class Use_Cases_Extend {
+}
+class Use_Cases_ExtensionPoint {
+  + location : str
+}
+class Use_Cases_Include {
+}
+class Use_Cases_UseCase {
+}
+class Use_Cases_UseCaseInstance {
+}
+enum VisibilityKind {
+  vk_package
+  vk_private
+  vk_protected
+  vk_public
+}
+Classifier <|-- Use_Cases_Actor
+Classifier <|-- Use_Cases_UseCase
+Element <|-- Core_ModelElement
+Expression <|-- Data_Types_BooleanExpression
+Feature <|-- Core_StructuralFeature
+GeneralizableElement <|-- Core_Association
+GeneralizableElement <|-- Core_Classifier
+Instance <|-- Common_Behavior_ComponentInstance
+Instance <|-- Common_Behavior_NodeInstance
+Instance <|-- Use_Cases_UseCaseInstance
+ModelElement <|-- Common_Behavior_AttributeLink
+ModelElement <|-- Common_Behavior_Instance
+ModelElement <|-- Common_Behavior_Link
+ModelElement <|-- Common_Behavior_LinkEnd
+ModelElement <|-- Core_AssociationEnd
+ModelElement <|-- Core_Feature
+ModelElement <|-- Core_GeneralizableElement
+ModelElement <|-- Core_Namespace
+ModelElement <|-- Core_Relationship
+ModelElement <|-- Use_Cases_ExtensionPoint
+Namespace <|-- Core_Classifier
+Relationship <|-- Core_Association
+Relationship <|-- Core_Generalization_
+Relationship <|-- Use_Cases_Extend
+Relationship <|-- Use_Cases_Include
+StructuralFeature <|-- Core_Attribute
+UseCase "1..1" -- "1..1" Use_Cases_Include : addition45
+Association "1..1" -- "1..1" Common_Behavior_Link : association17
+Association "1..1" -- "1..1" Core_AssociationEnd : association63
+AssociationEnd "1..1" -- "1..1" Common_Behavior_LinkEnd : associationEnd27
+AssociationEnd "0..1" -- "1..1" Core_Attribute : associationEnd78
+Attribute "1..1" -- "1..1" Common_Behavior_AttributeLink : attribute15
+UseCase "1..1" -- "1..1" Use_Cases_Extend : base40
+UseCase "1..1" -- "1..1" Use_Cases_Include : base47
+Core_Generalization_ "1..1" -- "1..1" GeneralizableElement : child84
+Classifier "1..9999" -- "1..1" Common_Behavior_Instance : classifier2
+Common_Behavior_Instance "1..1" -- "0..1" ComponentInstance : componentInstance4
+BooleanExpression "1..1" --* "1..1" Use_Cases_Extend : condition43
+Common_Behavior_Link "1..1" *-- "2..9999" LinkEnd : connection18
+AssociationEnd "2..9999" --* "1..1" Core_Association : connection76
+Extend "0..9999" -- "1..1" Use_Cases_UseCase : extend35
+UseCase "1..1" -- "1..1" Use_Cases_Extend : extension39
+ExtensionPoint "0..9999" --* "1..1" Use_Cases_UseCase : extensionPoint36
+ExtensionPoint "1..9999" -- "1..1" Use_Cases_Extend : extensionPoint37
+Core_Classifier "1..1" *-- "0..9999" Feature : feature56
+Core_GeneralizableElement "1..1" -- "0..9999" Generalization_ : generalization52
+Include "0..9999" -- "1..1" Use_Cases_UseCase : include34
+Core_Attribute "1..1" *-- "0..1" Expression : initialValue80
+Common_Behavior_LinkEnd "1..1" -- "1..1" Instance : instance24
+Common_Behavior_AttributeLink "1..1" -- "0..1" Instance : instance9
+Common_Behavior_LinkEnd "1..1" -- "1..1" Link : link20
+Common_Behavior_Instance "1..1" -- "0..9999" LinkEnd : linkEnd1
+Common_Behavior_AttributeLink "1..1" -- "0..1" LinkEnd : linkEnd13
+Core_StructuralFeature "1..1" *-- "0..1" Multiplicity_ : multiplicity61
+Core_AssociationEnd "1..1" *-- "0..1" Multiplicity_ : multiplicity73
+Data_Types_MultiplicityRange "1..1" -- "1..1" Multiplicity_ : multiplicity87
+Core_ModelElement "1..1" -- "0..1" Namespace : namespace51
+Common_Behavior_ComponentInstance "1..1" -- "0..1" NodeInstance : nodeInstance30
+Core_Namespace "1..1" *-- "0..9999" ModelElement : ownedElement53
+Common_Behavior_Instance "1..1" *-- "0..9999" Instance : ownedInstance0
+Common_Behavior_Instance "1..1" *-- "0..9999" Link : ownedLink7
+Classifier "0..1" -- "1..1" Core_Feature : owner57
+Core_Generalization_ "1..1" -- "1..1" GeneralizableElement : parent81
+Classifier "1..1" -- "1..1" Core_AssociationEnd : participant68
+Classifier "0..1" -- "1..1" Core_Generalization_ : powertype82
+Core_Classifier "1..1" -- "0..9999" Generalization_ : powertypeRange54
+AttributeLink "0..9999" --* "1..1" Common_Behavior_LinkEnd : qualifiedValue22
+Attribute "0..9999" --* "1..1" Core_AssociationEnd : qualifier71
+Data_Types_Multiplicity_ "1..1" *-- "1..9999" MultiplicityRange : range86
+Common_Behavior_ComponentInstance "1..1" -- "0..9999" Instance : resident28
+Common_Behavior_NodeInstance "1..1" -- "0..9999" ComponentInstance : resident32
+AttributeLink "0..9999" --* "1..1" Common_Behavior_Instance : slot5
+Classifier "0..9999" -- "1..1" Core_AssociationEnd : specification66
+Classifier "1..1" -- "1..1" Core_StructuralFeature : type59
+UseCase "1..1" -- "1..1" Use_Cases_ExtensionPoint : useCase49
+Common_Behavior_AttributeLink "1..1" -- "1..1" Instance : value11
+@enduml

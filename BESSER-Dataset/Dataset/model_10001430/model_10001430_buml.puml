@@ -1,0 +1,51 @@
+@startuml
+class Customer {
+  + address : str
+  + creditCardInfo : str
+  + email : str
+  + name : str
+  + phone : int
+  + shippingInfo : str
+}
+class Order {
+  + creationDate : str
+  + customerId : int
+  + dateShipped : str
+  + orderId : int
+  + shippingId : int
+  + status : OrderStatus
+  + totalPrice : float
+}
+class OrderDetail {
+  + ordrId : int
+  + productId : int
+  + productName : str
+  + quantity : int
+  + subtotal : float
+  + unitCost : float
+}
+enum OrderStatus {
+}
+class Portal {
+  + name : str
+  + portalId : str
+  + url : str
+}
+class PremiumCustomer {
+  + subscriptionExpires : str
+}
+class Product {
+  + description : str
+  + imageFileName : str
+  + price : float
+  + productId : int
+  + productName : str
+  + stock : int
+}
+enum real {
+}
+Customer "1..1" -- "0..9999" Order : Customer_Order
+Customer "0..9999" -- "1..1" Portal : Customer_Portal
+Order "1..1" -- "1..9999" OrderDetail : Order_OrderDetail
+OrderDetail "0..9999" -- "1..1" Product : Product_OrderDetail
+@enduml

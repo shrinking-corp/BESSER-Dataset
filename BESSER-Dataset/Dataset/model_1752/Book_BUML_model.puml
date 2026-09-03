@@ -1,0 +1,19 @@
+@startuml
+class Book_Book {
+  + title : str
+}
+class Book_Chapter {
+  + author : str
+  + nbPages : int
+  + title : str
+}
+class Book_Library {
+}
+class Book_Summary {
+  + content : str
+  + nbWords : int
+}
+Book_Book "0..9999" --* "1..1" Book_Library : books3
+Book_Book "1..1" *-- "0..9999" Book_Chapter : chapters0
+Book_Chapter "1..1" *-- "0..1" Book_Summary : digest1
+@enduml

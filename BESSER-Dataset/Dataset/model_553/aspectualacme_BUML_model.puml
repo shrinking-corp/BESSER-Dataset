@@ -1,0 +1,284 @@
+@startuml
+class ArmaniDesignRuleExpression {
+}
+class ArmaniExpression {
+}
+class ArmaniPrimitiveExpression {
+}
+enum ArmaniQuantifier {
+  exists
+  forall
+}
+enum ArmaniSetTypes {
+  Components
+  Connectors
+  Elements
+  Ports
+  Properties
+  Representations
+  Roles
+}
+enum ArmaniTypes {
+  Component
+  Connector
+  Port
+  Property
+  Representation
+  Role
+}
+class ArmaniUnaryExpression {
+}
+class BasicElement {
+}
+class BindableElement {
+}
+class Element {
+}
+enum GlueType {
+  after
+  around
+  before
+}
+class Role {
+}
+class TypeDefinition {
+}
+class aspectualacme_Armani {
+  + modifiers : str
+}
+class aspectualacme_ArmaniAdditiveExpression {
+  + operators : str
+}
+class aspectualacme_ArmaniBooleanExpression {
+}
+class aspectualacme_ArmaniConstant {
+}
+abstract class aspectualacme_ArmaniDesignRuleExpression {
+}
+class aspectualacme_ArmaniEqualityExpression {
+  + operators : str
+}
+class aspectualacme_ArmaniExpression {
+}
+class aspectualacme_ArmaniFunctionCall {
+  + functionId : str
+}
+class aspectualacme_ArmaniIffExpression {
+}
+class aspectualacme_ArmaniImpliesExpression {
+}
+class aspectualacme_ArmaniMultiplicativeExpression {
+  + operators : str
+}
+class aspectualacme_ArmaniOrExpression {
+  + operators : str
+}
+class aspectualacme_ArmaniPrimitiveExpression {
+}
+class aspectualacme_ArmaniQuantifiedExpression {
+  + quantifier : str
+}
+class aspectualacme_ArmaniRelationalExpression {
+  + operators : str
+}
+class aspectualacme_ArmaniSetExpression {
+  + reference : str
+  + referenceType : str
+}
+class aspectualacme_ArmaniUnaryExpression {
+  + operator : str
+}
+class aspectualacme_ArmaniVariable {
+  + basicType : str
+  + id : str
+}
+class aspectualacme_Attachment {
+}
+class aspectualacme_BaseRole {
+}
+abstract class aspectualacme_BasicElement {
+}
+class aspectualacme_BindableElement {
+}
+class aspectualacme_Binding {
+}
+class aspectualacme_Component {
+}
+class aspectualacme_ComponentType {
+}
+class aspectualacme_Connector {
+}
+class aspectualacme_ConnectorType {
+}
+class aspectualacme_CrosscuttingRole {
+}
+class aspectualacme_Element {
+  + name : str
+}
+class aspectualacme_Family {
+}
+class aspectualacme_Glue {
+  + glueType : str
+}
+class aspectualacme_Import {
+  + fileName : str
+}
+class aspectualacme_Port {
+}
+class aspectualacme_PortType {
+}
+class aspectualacme_Property {
+  + name : str
+  + value : str
+}
+class aspectualacme_PropertyType {
+  + type : str
+  + values : str
+}
+class aspectualacme_Representation {
+  + name : str
+}
+class aspectualacme_Role {
+}
+class aspectualacme_RoleType {
+}
+class aspectualacme_Root {
+}
+class aspectualacme_System {
+}
+class aspectualacme_TypeDefinition {
+}
+class aspectualacme_WildCard {
+  + expression : str
+}
+abstract class aspectualacme_attachableElement {
+}
+class attachableElement {
+}
+ArmaniDesignRuleExpression <|-- aspectualacme_ArmaniBooleanExpression
+ArmaniDesignRuleExpression <|-- aspectualacme_ArmaniQuantifiedExpression
+ArmaniExpression <|-- aspectualacme_ArmaniAdditiveExpression
+ArmaniExpression <|-- aspectualacme_ArmaniDesignRuleExpression
+ArmaniExpression <|-- aspectualacme_ArmaniEqualityExpression
+ArmaniExpression <|-- aspectualacme_ArmaniIffExpression
+ArmaniExpression <|-- aspectualacme_ArmaniImpliesExpression
+ArmaniExpression <|-- aspectualacme_ArmaniMultiplicativeExpression
+ArmaniExpression <|-- aspectualacme_ArmaniOrExpression
+ArmaniExpression <|-- aspectualacme_ArmaniRelationalExpression
+ArmaniExpression <|-- aspectualacme_ArmaniUnaryExpression
+ArmaniExpression <|-- aspectualacme_ArmaniVariable
+ArmaniPrimitiveExpression <|-- aspectualacme_ArmaniConstant
+ArmaniPrimitiveExpression <|-- aspectualacme_ArmaniFunctionCall
+ArmaniPrimitiveExpression <|-- aspectualacme_ArmaniSetExpression
+ArmaniUnaryExpression <|-- aspectualacme_ArmaniPrimitiveExpression
+BasicElement <|-- aspectualacme_Family
+BasicElement <|-- aspectualacme_System
+BindableElement <|-- aspectualacme_Port
+BindableElement <|-- aspectualacme_Role
+Element <|-- aspectualacme_BasicElement
+Element <|-- aspectualacme_BindableElement
+Element <|-- aspectualacme_Component
+Element <|-- aspectualacme_Connector
+Element <|-- aspectualacme_TypeDefinition
+Element <|-- aspectualacme_attachableElement
+Role <|-- aspectualacme_BaseRole
+Role <|-- aspectualacme_CrosscuttingRole
+TypeDefinition <|-- aspectualacme_ComponentType
+TypeDefinition <|-- aspectualacme_ConnectorType
+TypeDefinition <|-- aspectualacme_PortType
+TypeDefinition <|-- aspectualacme_PropertyType
+TypeDefinition <|-- aspectualacme_RoleType
+attachableElement <|-- aspectualacme_Port
+attachableElement <|-- aspectualacme_Role
+attachableElement <|-- aspectualacme_WildCard
+aspectualacme_Component "0..1" -- "1..1" aspectualacme_Port : Component109
+aspectualacme_ComponentType "0..1" -- "1..1" aspectualacme_Port : ComponentT111
+aspectualacme_Connector "0..1" -- "1..1" aspectualacme_Role : Connector93
+aspectualacme_ConnectorType "0..1" -- "1..1" aspectualacme_Role : ConnectorT95
+aspectualacme_Armani "0..9999" --* "1..1" aspectualacme_BasicElement : armani5
+aspectualacme_Attachment "0..9999" --* "1..1" aspectualacme_Family : attachments12
+aspectualacme_Attachment "0..9999" --* "1..1" aspectualacme_System : attachments54
+aspectualacme_BaseRole "0..1" -- "1..1" aspectualacme_Glue : baseAttach124
+aspectualacme_Binding "0..9999" --* "1..1" aspectualacme_Representation : bindings152
+aspectualacme_ConnectorType "0..9999" --* "1..1" aspectualacme_Family : cntypes20
+aspectualacme_Component "0..9999" --* "1..1" aspectualacme_Family : components10
+aspectualacme_Component "0..9999" --* "1..1" aspectualacme_System : components59
+aspectualacme_Connector "0..1" -- "1..1" aspectualacme_Glue : connector130
+aspectualacme_Connector "0..9999" --* "1..1" aspectualacme_System : connectors49
+aspectualacme_Connector "0..9999" --* "1..1" aspectualacme_Family : connectors9
+aspectualacme_CrosscuttingRole "0..1" -- "1..1" aspectualacme_Glue : crosscuttingAttach127
+aspectualacme_ComponentType "0..9999" --* "1..1" aspectualacme_Family : ctypes16
+aspectualacme_Armani "1..1" *-- "1..1" aspectualacme_ArmaniDesignRuleExpression : designRule154
+aspectualacme_ArmaniDesignRuleExpression "0..1" --* "1..1" aspectualacme_ArmaniPrimitiveExpression : designRule158
+aspectualacme_ArmaniDesignRuleExpression "1..1" --* "1..1" aspectualacme_ArmaniQuantifiedExpression : designRule185
+aspectualacme_Role "1..1" -- "0..9999" aspectualacme_RoleType : effective_type100
+aspectualacme_Port "1..1" -- "0..9999" aspectualacme_PortType : effective_type114
+aspectualacme_Family "0..9999" -- "1..1" aspectualacme_System : effective_type64
+aspectualacme_Component "1..1" -- "0..9999" aspectualacme_ComponentType : effective_type76
+aspectualacme_Connector "1..1" -- "0..9999" aspectualacme_ConnectorType : effective_type90
+aspectualacme_Element "1..1" -- "1..1" aspectualacme_Representation : element153
+aspectualacme_BasicElement "1..9999" --* "1..1" aspectualacme_Root : elements1
+aspectualacme_ArmaniMultiplicativeExpression "1..1" *-- "1..9999" aspectualacme_ArmaniUnaryExpression : expressions163
+aspectualacme_ArmaniAdditiveExpression "1..1" *-- "1..9999" aspectualacme_ArmaniMultiplicativeExpression : expressions165
+aspectualacme_ArmaniAdditiveExpression "1..9999" --* "1..1" aspectualacme_ArmaniRelationalExpression : expressions167
+aspectualacme_ArmaniEqualityExpression "1..1" *-- "1..9999" aspectualacme_ArmaniRelationalExpression : expressions169
+aspectualacme_ArmaniEqualityExpression "1..9999" --* "1..1" aspectualacme_ArmaniIffExpression : expressions171
+aspectualacme_ArmaniIffExpression "1..9999" --* "1..1" aspectualacme_ArmaniImpliesExpression : expressions173
+aspectualacme_ArmaniImpliesExpression "1..9999" --* "1..1" aspectualacme_ArmaniOrExpression : expressions175
+aspectualacme_ArmaniBooleanExpression "1..1" *-- "1..9999" aspectualacme_ArmaniOrExpression : expressions178
+aspectualacme_Attachment "1..1" -- "1..1" aspectualacme_attachableElement : firstElement132
+aspectualacme_BindableElement "1..1" -- "1..1" aspectualacme_Binding : firstPort143
+aspectualacme_ConnectorType "1..1" *-- "0..9999" aspectualacme_Glue : glue43
+aspectualacme_Connector "1..1" *-- "0..9999" aspectualacme_Glue : glue82
+aspectualacme_Import "0..9999" --* "1..1" aspectualacme_Root : imports0
+aspectualacme_ArmaniFunctionCall "1..1" *-- "0..9999" aspectualacme_ArmaniPrimitiveExpression : parameters156
+aspectualacme_Family "0..1" -- "1..1" aspectualacme_Property : parentFamily121
+aspectualacme_Attachment "1..1" -- "0..1" aspectualacme_Family : parentFamily138
+aspectualacme_ComponentType "1..1" -- "0..1" aspectualacme_Family : parentFamily31
+aspectualacme_Family "0..1" -- "1..1" aspectualacme_RoleType : parentFamily34
+aspectualacme_Family "0..1" -- "1..1" aspectualacme_PortType : parentFamily38
+aspectualacme_ConnectorType "1..1" -- "0..1" aspectualacme_Family : parentFamily45
+aspectualacme_Family "0..1" -- "1..1" aspectualacme_PropertyType : parentFamily47
+aspectualacme_BasicElement "1..1" -- "0..9999" aspectualacme_Family : parentFamily7
+aspectualacme_Component "1..1" -- "0..1" aspectualacme_Family : parentFamily73
+aspectualacme_Connector "1..1" -- "0..1" aspectualacme_Family : parentFamily87
+aspectualacme_Representation "0..1" -- "1..1" aspectualacme_System : parentRepresentation62
+aspectualacme_Property "1..1" -- "0..1" aspectualacme_System : parentSystem119
+aspectualacme_Attachment "1..1" -- "0..1" aspectualacme_System : parentSystem136
+aspectualacme_Component "1..1" -- "0..1" aspectualacme_System : parentSystem72
+aspectualacme_Connector "1..1" -- "0..1" aspectualacme_System : parentSystem85
+aspectualacme_ComponentType "1..1" -- "0..9999" aspectualacme_ComponentType : parentType30
+aspectualacme_RoleType "1..1" -- "0..9999" aspectualacme_RoleType : parentType33
+aspectualacme_PortType "1..1" -- "0..9999" aspectualacme_PortType : parentType37
+aspectualacme_ConnectorType "1..1" -- "0..9999" aspectualacme_ConnectorType : parentType41
+aspectualacme_ComponentType "1..1" *-- "0..9999" aspectualacme_Port : port28
+aspectualacme_Component "1..1" *-- "0..9999" aspectualacme_Port : port67
+aspectualacme_Port "1..1" -- "0..9999" aspectualacme_PortType : portType107
+aspectualacme_Family "1..1" *-- "0..9999" aspectualacme_Property : properties26
+aspectualacme_Property "0..9999" --* "1..1" aspectualacme_System : properties51
+aspectualacme_Binding "1..1" *-- "0..9999" aspectualacme_Property : property141
+aspectualacme_Element "1..1" *-- "0..9999" aspectualacme_Property : property3
+aspectualacme_Family "1..1" *-- "0..9999" aspectualacme_PropertyType : prtypes24
+aspectualacme_Family "1..1" *-- "0..9999" aspectualacme_PortType : ptypes18
+aspectualacme_Binding "1..1" -- "0..1" aspectualacme_Representation : representation148
+aspectualacme_Element "1..1" *-- "0..9999" aspectualacme_Representation : representations4
+aspectualacme_ConnectorType "1..1" *-- "0..9999" aspectualacme_Role : role42
+aspectualacme_Connector "1..1" *-- "0..9999" aspectualacme_Role : role79
+aspectualacme_Role "1..1" -- "0..9999" aspectualacme_RoleType : roleType98
+aspectualacme_Family "1..1" *-- "0..9999" aspectualacme_RoleType : rtypes22
+aspectualacme_Attachment "1..1" -- "1..1" aspectualacme_attachableElement : secondElement133
+aspectualacme_BindableElement "1..1" -- "1..1" aspectualacme_Binding : secondPort145
+aspectualacme_ArmaniQuantifiedExpression "1..1" *-- "1..1" aspectualacme_ArmaniSetExpression : setExpression182
+aspectualacme_ArmaniConstant "0..9999" --* "1..1" aspectualacme_ArmaniSetExpression : setValues157
+aspectualacme_Representation "1..1" *-- "1..1" aspectualacme_System : system150
+aspectualacme_BaseRole "1..1" -- "0..9999" aspectualacme_RoleType : type103
+aspectualacme_CrosscuttingRole "1..1" -- "0..9999" aspectualacme_RoleType : type105
+aspectualacme_Property "1..1" -- "0..9999" aspectualacme_PropertyType : type117
+aspectualacme_Component "1..1" -- "0..9999" aspectualacme_ComponentType : type70
+aspectualacme_Connector "1..1" -- "0..9999" aspectualacme_ConnectorType : type83
+aspectualacme_ArmaniUnaryExpression "1..1" *-- "0..1" aspectualacme_ArmaniUnaryExpression : unaryExpression162
+aspectualacme_ArmaniVariable "1..1" -- "0..1" aspectualacme_TypeDefinition : userType177
+aspectualacme_ArmaniQuantifiedExpression "1..1" *-- "1..1" aspectualacme_ArmaniVariable : variable180
+aspectualacme_System "1..1" *-- "0..9999" aspectualacme_WildCard : wildCard57
+aspectualacme_Family "1..1" *-- "0..9999" aspectualacme_WildCard : wildcard14
+@enduml

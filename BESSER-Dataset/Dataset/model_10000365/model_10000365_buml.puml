@@ -1,0 +1,61 @@
+@startuml
+class Administration {
+  + Asst__Executive_Director : Administrator_Actor
+  + CFO : Administrator_Actor
+  + Executive_Director___COO : Administrator_Actor
+  + Office_Manager : Employee_Actor
+}
+class Administrator_Actor {
+}
+class Edit__Archive_UseCase {
+}
+class Employee_Actor {
+}
+class Employee_DB {
+  + Address : str
+  + Date_of_Birth : int
+  + E_Mail : str
+  + Employee_ID : int
+  + Name__1st_and_last_ : Employee_Actor
+  + Password : str
+  + SSN : int
+  + Salary : int
+  + Supervisor : Administrator_Actor
+  + Telephone : int
+  + Title : Employee_Title__Non_Admin
+  + Username : Log_In_UseCase
+}
+class Employee_Title__Non_Admin {
+  + Assistant_Teacher : Employee_Actor
+  + Community_Service : str
+  + Cook : Employee_Actor
+  + Maintenance : Employee_Actor
+  + Teacher : Employee_Actor
+  + Work_Study : str
+}
+class Log_In_UseCase {
+}
+class Log_Out_UseCase {
+}
+class Managing_Users_UseCase {
+}
+class Notes___Comments_UseCase {
+}
+class Print_UseCase {
+}
+class Reporting_UseCase {
+}
+Administrator_Actor "0..1" -- "0..1" Print_UseCase : Administrator_Archive___Save
+Administrator_Actor "0..1" -- "0..1" Edit__Archive_UseCase : Administrator_Edit___Print
+Administrator_Actor "0..1" -- "0..1" Log_In_UseCase : Administrator_Log_In
+Administrator_Actor "0..1" -- "0..1" Log_Out_UseCase : Administrator_Log_Out
+Administrator_Actor "0..1" -- "0..1" Managing_Users_UseCase : Administrator_Managing_Users
+Administrator_Actor "0..1" -- "0..1" Notes___Comments_UseCase : Administrator_Note___Comments
+Administrator_Actor "0..1" -- "0..1" Reporting_UseCase : Administrator_Reporting
+Administration "0..1" -- "0..1" Employee_DB : Employee_DB_Administration
+Employee_DB "0..1" -- "0..1" Employee_Title__Non_Admin : Employee_DB_Employee_Title__Non_Admin
+Employee_Actor "0..1" -- "0..1" Log_In_UseCase : Employee_Log_In
+Employee_Actor "0..1" -- "0..1" Log_Out_UseCase : Employee_Log_Out
+Employee_Actor "0..1" -- "0..1" Notes___Comments_UseCase : Employee_Note___Comments
+Employee_Actor "0..1" -- "0..1" Print_UseCase : Employee_Print
+@enduml

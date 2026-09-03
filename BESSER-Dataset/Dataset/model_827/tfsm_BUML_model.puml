@@ -1,0 +1,72 @@
+@startuml
+class Guard {
+}
+class NamedElement {
+}
+class tfsm_EvaluateGuard {
+  + condition : str
+  + evaluate() : bool
+}
+class tfsm_EventGuard {
+}
+class tfsm_FSMClock {
+  + numberOfTicks : int
+  + ticks() : str
+}
+class tfsm_FSMEvent {
+  + occurs() : str
+}
+abstract class tfsm_Guard {
+}
+class tfsm_NamedElement {
+  + name : str
+}
+class tfsm_State {
+  + OnEnterAction : str
+  + onEnter() : str
+  + onLeave() : str
+}
+class tfsm_TFSM {
+  + changeCurrentState(tfsm_newState : str) : void
+  + init() : str
+}
+class tfsm_TemporalGuard {
+  + afterDuration : int
+}
+class tfsm_TimedSystem {
+  + init() : str
+}
+class tfsm_Transition {
+  + action : str
+  + fire() : str
+}
+Guard <|-- tfsm_EvaluateGuard
+Guard <|-- tfsm_EventGuard
+Guard <|-- tfsm_TemporalGuard
+NamedElement <|-- tfsm_FSMClock
+NamedElement <|-- tfsm_FSMEvent
+NamedElement <|-- tfsm_Guard
+NamedElement <|-- tfsm_State
+NamedElement <|-- tfsm_TFSM
+NamedElement <|-- tfsm_TimedSystem
+NamedElement <|-- tfsm_Transition
+tfsm_State "0..1" -- "1..1" tfsm_TFSM : currentState8
+tfsm_FSMEvent "0..9999" -- "1..1" tfsm_Transition : generatedEvents21
+tfsm_FSMClock "0..9999" --* "1..1" tfsm_TimedSystem : globalClocks33
+tfsm_FSMEvent "0..9999" --* "1..1" tfsm_TimedSystem : globalEvents36
+tfsm_State "1..1" -- "0..9999" tfsm_Transition : incomingTransitions13
+tfsm_State "1..1" -- "1..1" tfsm_TFSM : initialState1
+tfsm_FSMClock "1..1" --* "1..1" tfsm_TFSM : localClock4
+tfsm_FSMEvent "0..9999" --* "1..1" tfsm_TFSM : localEvents2
+tfsm_FSMClock "1..1" -- "1..1" tfsm_TemporalGuard : onClock24
+tfsm_State "1..1" -- "0..9999" tfsm_Transition : outgoingTransitions12
+tfsm_Guard "1..1" --* "1..1" tfsm_Transition : ownedGuard19
+tfsm_State "0..9999" --* "1..1" tfsm_TFSM : ownedStates0
+tfsm_TFSM "1..1" *-- "0..9999" tfsm_Transition : ownedTransitions6
+tfsm_State "1..1" -- "1..1" tfsm_TFSM : owningFSM11
+tfsm_FSMEvent "1..1" -- "0..9999" tfsm_Transition : sollicitingTransitions28
+tfsm_State "1..1" -- "1..1" tfsm_Transition : source15
+tfsm_State "1..1" -- "1..1" tfsm_Transition : target17
+tfsm_TFSM "0..9999" --* "1..1" tfsm_TimedSystem : tfsms31
+tfsm_EventGuard "1..1" -- "1..1" tfsm_FSMEvent : triggeringEvent26
+@enduml

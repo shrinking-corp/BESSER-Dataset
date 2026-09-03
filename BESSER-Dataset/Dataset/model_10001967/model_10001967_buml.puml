@@ -1,0 +1,45 @@
+@startuml
+class Camera_1 {
+  + Camera_ID : str
+  + Sensor_ID : str
+}
+class Dispatch_drown {
+  + Camera_ID : str
+  + Drown_ID : str
+}
+class Event_Log {
+  + Status : bool
+}
+class Home_Security__Hub_ {
+  + Camera_ID : str
+  + Hub_ID : str
+  + Login_ID : str
+  + Sensor_ID : str
+}
+class Light_Sensor {
+  + Sensor_ID : str
+}
+class Lock_doors {
+  + Door_ID : str
+}
+class Motion_Sensor {
+  + Sensor_ID : str
+}
+class Security_logs {
+  + Camera_ID : str
+  + Log_ID : str
+  + Sensor_ID : str
+}
+class T {
+}
+class Temperature_sensor {
+  + Temp_ID : str
+}
+Camera_1 "0..1" -- "0..1" Camera_1 : Camera_1_Camera_1
+Camera_1 "1..9999" -- "1..1" Home_Security__Hub_ : Home_Security_Camera
+Home_Security__Hub_ "1..1" -- "1..1" Lock_doors : Home_Security_Doors
+Event_Log "1..9999" -- "1..1" Home_Security__Hub_ : Home_Security_Event_Log
+Camera_1 "1..1" -- "1..9999" Light_Sensor : Home_Security_Light_Sensor
+Home_Security__Hub_ "1..1" -- "1..1" Security_logs : Home_Security_Server
+Camera_1 "1..1" -- "1..9999" Temperature_sensor : Home_Security_Temperature_sensor
+@enduml

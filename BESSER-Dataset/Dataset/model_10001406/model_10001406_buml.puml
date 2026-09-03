@@ -1,0 +1,56 @@
+@startuml
+class Cosul_de_cumparaturi {
+  + creationDate : date
+}
+class LineItem {
+  + price : float
+  + quantity : int
+}
+class Ordin {
+  + number : int
+  + ordered : date
+  + shipTo : str
+  + shipped : bool
+  + status : Starea_comenzii
+  + total : float
+}
+class Plata {
+  + details : str
+  + paidDate : date
+  + total : float
+}
+class Produse {
+  + description : str
+  + name : str
+}
+enum Starea_comenzii {
+}
+enum StatusulUtilizatorilor {
+}
+class WebUser {
+  + login : str
+  + password : str
+  + state : StatusulUtilizatorilor
+}
+class client {
+  + address : str
+  + email : str
+  + phone : str
+}
+class cont {
+  + billingAddress : str
+  + closed : date
+  + isClosed : bool
+  + open : date
+}
+Ordin "0..9999" -- "1..1" cont : Account_Order
+Plata "0..9999" -- "1..1" cont : Account_Payment
+Cosul_de_cumparaturi "1..1" -- "1..1" cont : Account_ShoppingCart
+client "1..1" -- "1..1" cont : Customer_Account
+LineItem "1..9999" -- "0..1" Ordin : Order_LineItem
+Ordin "1..1" -- "0..1" Plata : Payment_Order
+LineItem "0..9999" -- "1..1" Produse : Product_LineItem
+Cosul_de_cumparaturi "1..1" -- "1..1" LineItem : ShoppingCart_LineItem
+WebUser "1..1" -- "1..1" client : WebUser_Customer
+Cosul_de_cumparaturi "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+@enduml

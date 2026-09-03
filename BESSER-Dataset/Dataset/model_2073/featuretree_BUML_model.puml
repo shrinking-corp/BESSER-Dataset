@@ -1,0 +1,21 @@
+@startuml
+class Feature {
+}
+class core_AbstractModelElement {
+}
+class core_ITopLevelElement {
+}
+class features_IFeatureDomain {
+}
+class featuretree_FeatureTree {
+}
+class featuretree_TreeFeature {
+  + mandatory : bool
+}
+Feature <|-- featuretree_TreeFeature
+core_AbstractModelElement <|-- featuretree_FeatureTree
+core_ITopLevelElement <|-- featuretree_FeatureTree
+features_IFeatureDomain <|-- featuretree_FeatureTree
+featuretree_TreeFeature "0..9999" --* "1..1" featuretree_TreeFeature : children2
+featuretree_FeatureTree "1..1" *-- "0..1" featuretree_TreeFeature : root0
+@enduml

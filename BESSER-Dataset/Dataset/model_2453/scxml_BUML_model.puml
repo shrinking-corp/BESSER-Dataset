@@ -1,0 +1,195 @@
+@startuml
+class NamedElement {
+}
+class scxml_Anchor {
+  + snapshot : str
+  + type : str
+}
+class scxml_Assign {
+  + dataid : str
+  + expr : str
+  + location : str
+}
+class scxml_Cancel {
+  + sendid : str
+  + sendidexpr : str
+}
+class scxml_Content {
+}
+class scxml_Data {
+  + expr : str
+  + id : str
+  + src : str
+}
+class scxml_DataModel {
+  + schema : str
+}
+class scxml_Donedata {
+}
+class scxml_Else {
+}
+class scxml_ElseIf {
+  + cond : str
+}
+class scxml_FinalState {
+  + id : str
+}
+class scxml_Finalize {
+}
+class scxml_HistoryState {
+  + id : str
+  + type : str
+}
+class scxml_If {
+  + cond : str
+}
+class scxml_InitialState {
+}
+class scxml_Invoke {
+  + autoforward : str
+  + id : str
+  + idlocation : str
+  + namelist : str
+  + src : str
+  + srcexpr : str
+  + type : str
+  + typeexpr : str
+}
+class scxml_Log {
+  + expr : str
+  + label : str
+  + level : str
+}
+class scxml_NamedElement {
+}
+class scxml_OnEntry {
+}
+class scxml_OnExit {
+}
+class scxml_Parallel {
+  + id : str
+}
+class scxml_Param {
+  + expr : str
+  + name : str
+}
+class scxml_Raise {
+  + event : str
+}
+class scxml_Script {
+}
+class scxml_Send {
+  + delay : str
+  + delayexpr : str
+  + event : str
+  + eventexpr : str
+  + hints : str
+  + hintsexpr : str
+  + id : str
+  + idlocation : str
+  + namelist : str
+  + target : str
+  + targetexpr : str
+  + type : str
+  + typeexpr : str
+}
+class scxml_ServiceTemplate {
+  + exmode : str
+  + name : str
+  + profile : str
+  + version : str
+  + xmlns : str
+}
+class scxml_State {
+  + id : str
+}
+class scxml_Transition {
+  + anchor : str
+  + cond : str
+  + event : str
+}
+class scxml_Validate {
+  + location : str
+  + schema : str
+}
+NamedElement <|-- scxml_FinalState
+NamedElement <|-- scxml_HistoryState
+NamedElement <|-- scxml_InitialState
+NamedElement <|-- scxml_Parallel
+NamedElement <|-- scxml_State
+scxml_Anchor "0..9999" --* "1..1" scxml_Parallel : anchor115
+scxml_Anchor "0..9999" --* "1..1" scxml_State : anchor17
+scxml_Assign "0..9999" --* "1..1" scxml_If : assign122
+scxml_Assign "0..9999" --* "1..1" scxml_Finalize : assign173
+scxml_Assign "0..9999" --* "1..1" scxml_OnEntry : assign49
+scxml_Assign "0..9999" --* "1..1" scxml_OnExit : assign68
+scxml_Cancel "0..9999" --* "1..1" scxml_If : cancel125
+scxml_Cancel "0..9999" --* "1..1" scxml_Finalize : cancel176
+scxml_Cancel "0..9999" --* "1..1" scxml_OnEntry : cancel51
+scxml_Cancel "0..9999" --* "1..1" scxml_OnExit : cancel71
+scxml_Content "0..1" --* "1..1" scxml_Data : content148
+scxml_Content "0..1" --* "1..1" scxml_Send : content153
+scxml_Content "0..9999" --* "1..1" scxml_Content : content157
+scxml_Content "0..1" --* "1..1" scxml_Donedata : content159
+scxml_Content "0..1" --* "1..1" scxml_Invoke : content165
+scxml_Data "0..9999" --* "1..1" scxml_DataModel : data146
+scxml_DataModel "0..9999" --* "1..1" scxml_NamedElement : datamodel0
+scxml_DataModel "0..9999" --* "1..1" scxml_ServiceTemplate : datamodel41
+scxml_Donedata "0..1" --* "1..1" scxml_FinalState : donedata98
+scxml_Else "0..1" --* "1..1" scxml_If : else_120
+scxml_ElseIf "0..9999" --* "1..1" scxml_If : elseif118
+scxml_FinalState "0..9999" --* "1..1" scxml_State : final11
+scxml_FinalState "0..9999" --* "1..1" scxml_ServiceTemplate : final35
+scxml_Finalize "0..1" --* "1..1" scxml_Invoke : finalize171
+scxml_HistoryState "0..9999" --* "1..1" scxml_Parallel : history112
+scxml_HistoryState "0..9999" --* "1..1" scxml_State : history15
+scxml_If "0..9999" --* "1..1" scxml_If : if_129
+scxml_Finalize "1..1" *-- "0..9999" scxml_If : if_179
+scxml_If "0..9999" --* "1..1" scxml_OnEntry : if_53
+scxml_If "0..9999" --* "1..1" scxml_OnExit : if_74
+scxml_InitialState "0..1" --* "1..1" scxml_ServiceTemplate : initial32
+scxml_InitialState "0..1" --* "1..1" scxml_State : initial6
+scxml_Invoke "0..9999" --* "1..1" scxml_State : invoke19
+scxml_If "1..1" *-- "0..9999" scxml_Log : log131
+scxml_Finalize "1..1" *-- "0..9999" scxml_Log : log182
+scxml_Log "0..9999" --* "1..1" scxml_OnEntry : log55
+scxml_Log "0..9999" --* "1..1" scxml_OnExit : log77
+scxml_OnEntry "0..9999" --* "1..1" scxml_Parallel : onentry100
+scxml_OnEntry "0..9999" --* "1..1" scxml_State : onentry3
+scxml_FinalState "1..1" *-- "0..9999" scxml_OnEntry : onentry92
+scxml_OnExit "0..9999" --* "1..1" scxml_Parallel : onexit103
+scxml_OnExit "0..9999" --* "1..1" scxml_State : onexit4
+scxml_FinalState "1..1" *-- "0..9999" scxml_OnExit : onexit95
+scxml_Parallel "0..9999" --* "1..1" scxml_Parallel : parallel107
+scxml_Parallel "0..9999" --* "1..1" scxml_State : parallel13
+scxml_Parallel "0..9999" --* "1..1" scxml_ServiceTemplate : parallel38
+scxml_If "1..1" *-- "0..9999" scxml_Param : param134
+scxml_Param "0..9999" --* "1..1" scxml_Send : param150
+scxml_Donedata "1..1" *-- "0..9999" scxml_Param : param162
+scxml_Invoke "1..1" *-- "0..9999" scxml_Param : param168
+scxml_Finalize "1..1" *-- "0..9999" scxml_Param : param185
+scxml_OnEntry "1..1" *-- "0..9999" scxml_Param : param57
+scxml_OnExit "1..1" *-- "0..9999" scxml_Param : param80
+scxml_If "1..1" *-- "0..9999" scxml_Raise : raise_137
+scxml_Finalize "1..1" *-- "0..9999" scxml_Raise : raise_188
+scxml_OnEntry "1..1" *-- "0..9999" scxml_Raise : raise_59
+scxml_OnExit "1..1" *-- "0..9999" scxml_Raise : raise_83
+scxml_Script "0..1" --* "1..1" scxml_ServiceTemplate : script44
+scxml_OnEntry "1..1" *-- "0..1" scxml_Script : script46
+scxml_OnExit "1..1" *-- "0..1" scxml_Script : script65
+scxml_If "1..1" *-- "0..9999" scxml_Send : send140
+scxml_Finalize "1..1" *-- "0..9999" scxml_Send : send191
+scxml_OnEntry "1..1" *-- "0..9999" scxml_Send : send61
+scxml_OnExit "1..1" *-- "0..9999" scxml_Send : send86
+scxml_NamedElement "0..1" -- "1..1" scxml_Transition : source24
+scxml_Parallel "1..1" *-- "0..9999" scxml_State : state109
+scxml_ServiceTemplate "1..1" *-- "0..9999" scxml_State : state29
+scxml_State "1..1" *-- "0..9999" scxml_State : state9
+scxml_NamedElement "0..1" -- "1..1" scxml_Transition : target21
+scxml_NamedElement "1..1" *-- "0..9999" scxml_Transition : transition1
+scxml_ServiceTemplate "1..1" *-- "0..9999" scxml_Transition : transition27
+scxml_If "1..1" *-- "0..9999" scxml_Validate : validate143
+scxml_Finalize "1..1" *-- "0..9999" scxml_Validate : validate194
+scxml_OnEntry "1..1" *-- "0..9999" scxml_Validate : validate63
+scxml_OnExit "1..1" *-- "0..9999" scxml_Validate : validate89
+@enduml

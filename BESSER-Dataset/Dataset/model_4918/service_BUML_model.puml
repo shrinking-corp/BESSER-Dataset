@@ -1,0 +1,65 @@
+@startuml
+class FormalParameterList {
+}
+class NamedElement {
+}
+enum OperationResultTypes {
+  File
+  None_
+}
+class Order {
+}
+class Variable {
+}
+class service_Asc {
+}
+class service_Association {
+}
+class service_BusinessOperation {
+  + resultMimeType : str
+  + resultType : str
+}
+class service_Desc {
+}
+class service_EntityOrView {
+}
+class service_Feature {
+}
+abstract class service_Order {
+}
+class service_Predicate {
+}
+class service_Selection {
+  + distinct : bool
+  + limit : int
+  + selected : bool
+}
+class service_Service {
+}
+class service_ServiceFeatureReference {
+  + name : str
+}
+class service_Services {
+}
+class service_Variable {
+}
+FormalParameterList <|-- service_Selection
+NamedElement <|-- service_BusinessOperation
+NamedElement <|-- service_Selection
+NamedElement <|-- service_Service
+Order <|-- service_Asc
+Order <|-- service_Desc
+Variable <|-- service_ServiceFeatureReference
+service_Feature "1..1" -- "1..1" service_ServiceFeatureReference : feature16
+service_Feature "0..9999" -- "1..1" service_Selection : fields7
+service_Predicate "0..1" --* "1..1" service_Selection : filter10
+service_Association "0..9999" -- "1..1" service_Selection : joins8
+service_BusinessOperation "0..9999" --* "1..1" service_Service : operations4
+service_Order "0..9999" --* "1..1" service_Selection : ordering12
+service_Order "1..1" *-- "1..1" service_Variable : path14
+service_Selection "0..9999" --* "1..1" service_Service : selections3
+service_EntityOrView "1..1" -- "1..1" service_Service : serves1
+service_Service "0..9999" --* "1..1" service_Services : services0
+service_Selection "1..1" -- "1..1" service_Service : usedBy6
+service_BusinessOperation "1..1" -- "0..9999" service_Service : uses18
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+class Edge {
+}
+class petrinetmodel_Edge {
+  + weight : int
+}
+class petrinetmodel_EdgeToPlace {
+}
+class petrinetmodel_EdgeToTransaction {
+}
+class petrinetmodel_Petrinet {
+  + fireTransactionsByPriority() : void
+  + init() : void
+}
+class petrinetmodel_Place {
+  + id : int
+  + token : int
+  + addToken() : void
+  + hasToken() : bool
+  + init() : void
+  + removeToken() : void
+}
+class petrinetmodel_Transition {
+  + id : int
+  + priority : int
+  + token : int
+  + addInputPlace(petrinetmodel_p : str) : void
+  + fire() : void
+  + prepare() : bool
+}
+Edge <|-- petrinetmodel_EdgeToPlace
+Edge <|-- petrinetmodel_EdgeToTransaction
+petrinetmodel_EdgeToPlace "1..1" -- "1..1" petrinetmodel_Place : in_10
+petrinetmodel_EdgeToTransaction "1..1" -- "1..1" petrinetmodel_Transition : in_13
+petrinetmodel_Place "0..9999" -- "1..1" petrinetmodel_Transition : inputPlaces5
+petrinetmodel_EdgeToPlace "1..9999" --* "1..1" petrinetmodel_Transition : out3
+petrinetmodel_EdgeToTransaction "0..9999" --* "1..1" petrinetmodel_Place : out8
+petrinetmodel_Petrinet "1..1" *-- "0..9999" petrinetmodel_Place : places1
+petrinetmodel_Petrinet "1..1" *-- "0..9999" petrinetmodel_Transition : transitions0
+@enduml

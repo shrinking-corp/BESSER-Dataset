@@ -1,0 +1,70 @@
+@startuml
+class Actor_Actor {
+}
+class Create_playlist_UseCase {
+}
+class Download_UseCase {
+}
+class Downloads {
+  + dID : int
+  + sID : int
+}
+class Favorite_UseCase {
+}
+class Favourites {
+  + fID : int
+  + sID : int
+}
+class Pause_UseCase {
+}
+class Play_UseCase {
+}
+class Playlist {
+  + pDate : str
+  + pID : int
+  + pName : str
+}
+class Playlist_Song {
+  + pID : int
+  + sID : int
+}
+class Recently_Played {
+  + rpID : int
+  + sID : int
+}
+class Repeat_Non_UseCase {
+}
+class Search_UseCase {
+}
+class Shuflfe_play_UseCase {
+}
+class Song {
+  + sArtist : str
+  + sCateg : str
+  + sDate : str
+  + sID : int
+  + sIMG_url : str
+  + sName : str
+}
+class Stop_UseCase {
+}
+class TopMostPlayed {
+  + mpID : int
+  + sID : int
+}
+class UseCase_UseCase {
+}
+class User_Actor {
+}
+Playlist "0..1" -- "0..1" Playlist_Song : Playlist_Playlist_Song
+Playlist_Song "0..1" -- "0..1" Song : Song_Playlist_Song
+Play_UseCase "0..1" -- "0..1" Stop_UseCase : UseCase2_Play
+Play_UseCase "0..1" -- "0..1" Shuflfe_play_UseCase : UseCase3_Play
+Play_UseCase "0..1" -- "0..1" Repeat_Non_UseCase : UseCase4_Play
+Pause_UseCase "0..1" -- "0..1" Play_UseCase : UseCase_Play
+Download_UseCase "0..1" -- "0..1" User_Actor : User_UseCase
+Play_UseCase "0..1" -- "0..1" User_Actor : User_UseCase2
+Create_playlist_UseCase "0..1" -- "0..1" User_Actor : User_UseCase3
+Search_UseCase "0..1" -- "0..1" User_Actor : User_UseCase4
+Favorite_UseCase "0..1" -- "0..1" User_Actor : User_UseCase5
+@enduml

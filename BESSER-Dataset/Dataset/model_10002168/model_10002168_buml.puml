@@ -1,0 +1,48 @@
+@startuml
+class Airport {
+  + code : int
+  + location : str
+  + name : str
+}
+class Flight {
+  + Flightname : str
+  + Flightnumber : int
+  + arrival : str
+  + date : int
+  + destination : str
+  + price : int
+  + time : int
+}
+class Payment {
+  + Method : str
+  + Ticketnumber : Ticket
+  + date : Ticket
+  + price : Ticket
+  + username : Ticket
+}
+class Ticket {
+  + Flightnumber : Flight
+  + Ticketnumber : int
+  + age : User
+  + arrival : Flight
+  + class : str
+  + date : int
+  + destination : Flight
+  + price : int
+  + username : User
+}
+class User {
+  + age : int
+  + email : str
+  + gender : str
+  + name : str
+  + password : str
+  + phone : int
+  + username : str
+}
+Airport "1..9999" -- "1..9999" Flight : Flight_Airport
+Flight "1..1" -- "1..9999" Ticket : Flight_Ticket
+Payment "1..1" -- "1..1" Ticket : Ticket_Payment
+Ticket "1..9999" -- "0..1" User : User_Ticket
+Flight "1..9999" -- "0..1" User : assoc__o7HyFpgTEeqEM7mFKilpXw
+@enduml

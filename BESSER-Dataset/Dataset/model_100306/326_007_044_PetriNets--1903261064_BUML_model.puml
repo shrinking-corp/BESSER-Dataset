@@ -1,0 +1,27 @@
+@startuml
+class PetriNets_InputArc {
+  + weight : int
+}
+class PetriNets_OutputArc {
+  + weight : int
+}
+class PetriNets_PetriNet {
+  + name : str
+}
+class PetriNets_Place {
+  + capacity : int
+  + name : str
+  + numberOfTokens : int
+}
+class PetriNets_Transition {
+  + name : str
+}
+PetriNets_InputArc "1..1" -- "0..1" PetriNets_Place : InputArcFromPlace7
+PetriNets_InputArc "1..1" -- "0..1" PetriNets_Transition : InputArcToTransition10
+PetriNets_OutputArc "1..1" -- "0..1" PetriNets_Transition : OutputArcFromTransition13
+PetriNets_OutputArc "1..1" -- "0..1" PetriNets_Place : OutputArcToPlace16
+PetriNets_InputArc "0..9999" --* "1..1" PetriNets_PetriNet : containsInputArcs3
+PetriNets_OutputArc "0..9999" --* "1..1" PetriNets_PetriNet : containsOutputArcs5
+PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Place : containsPlaces0
+PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Transition : containsTransitions1
+@enduml

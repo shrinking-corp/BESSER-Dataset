@@ -1,0 +1,58 @@
+@startuml
+class Administrator {
+  + AdminName : str
+  + Email : str
+}
+class Customer {
+  + AccountBalance : int
+  + Address : str
+  + CreditCartInfo : str
+  + CustomerName : str
+  + Email : str
+  + ShippingInfo : str
+}
+class Order {
+  + CustomerID : str
+  + CustomerName : str
+  + DateCreated : str
+  + DateShipped : str
+  + OrderID : int
+  + ShippingID : str
+  + Status : str
+}
+class OrderDetails {
+  + OrderID : int
+  + ProductID : int
+  + ProductName : str
+  + Quantity : int
+  + SubTotal : int
+  + UnitCost : int
+}
+class ShippingInfo {
+  + ShippingCost : int
+  + ShippingID : int
+  + ShippingRegionID : int
+  + ShippingType : str
+}
+class Shopping {
+  + Identity : int
+  + Location : str
+  + Name : str
+}
+class ShoppingCart {
+  + CartID : int
+  + DateAdded : int
+  + ProductID : int
+  + Quantity : int
+}
+class Users {
+  + LoginStatus : str
+  + Password : str
+  + RegisterDate : int
+  + UserID : str
+}
+Customer "1..1" -- "0..9999" Order : Customer_Order
+Customer "1..1" -- "0..9999" ShoppingCart : Customer_ShoppingCart
+Order "1..1" -- "1..1" OrderDetails : Order_OrderDetails
+Order "1..1" -- "1..1" ShippingInfo : Order_ShippingInfo
+@enduml

@@ -1,0 +1,93 @@
+@startuml
+class AbstractCondition {
+}
+class AbstractState {
+}
+class AbstractTransition {
+}
+class Named {
+}
+enum StateAttributeType {
+  constant
+  eventField
+  location
+  null
+  query
+}
+enum StateValueType {
+  definedState
+  delete
+  eventField
+  eventName
+  int
+  long
+  null
+  query
+  string
+}
+class statemachine_AbstractCondition {
+  + isNotCondition : bool
+}
+abstract class statemachine_AbstractState {
+}
+abstract class statemachine_AbstractTransition {
+}
+class statemachine_AttributeCondition {
+}
+class statemachine_ConditionalState {
+  + andExpression : bool
+  + conditionsOrganization : str
+}
+class statemachine_ConditionalTransition {
+}
+class statemachine_FieldCondition {
+  + fieldName : str
+}
+class statemachine_FinalState {
+}
+class statemachine_InitialState {
+}
+class statemachine_Named {
+  + name : str
+}
+class statemachine_State {
+  + stateColor : str
+}
+class statemachine_StateAttribute {
+  + type : str
+  + value : str
+}
+class statemachine_StateChange {
+}
+class statemachine_StateValue {
+  + type : str
+  + value : str
+}
+class statemachine_Statemachine {
+  + associatedAttribute : str
+  + associatedTree : str
+}
+class statemachine_Transition {
+}
+AbstractCondition <|-- statemachine_AttributeCondition
+AbstractCondition <|-- statemachine_FieldCondition
+AbstractState <|-- statemachine_ConditionalState
+AbstractState <|-- statemachine_FinalState
+AbstractState <|-- statemachine_InitialState
+AbstractState <|-- statemachine_State
+AbstractTransition <|-- statemachine_ConditionalTransition
+AbstractTransition <|-- statemachine_Transition
+Named <|-- statemachine_AbstractState
+Named <|-- statemachine_AbstractTransition
+Named <|-- statemachine_Statemachine
+statemachine_AbstractCondition "0..9999" --* "1..1" statemachine_ConditionalState : condition10
+statemachine_AbstractState "0..1" -- "1..1" statemachine_AbstractTransition : state3
+statemachine_StateAttribute "0..9999" --* "1..1" statemachine_StateChange : stateAttribute11
+statemachine_AttributeCondition "1..1" *-- "0..9999" statemachine_StateAttribute : stateAttribute19
+statemachine_StateAttribute "1..1" *-- "0..9999" statemachine_StateAttribute : stateAttributeQuery9
+statemachine_AbstractTransition "1..1" *-- "0..9999" statemachine_StateChange : stateChange6
+statemachine_StateChange "1..1" *-- "0..1" statemachine_StateValue : stateValue14
+statemachine_AbstractCondition "1..1" *-- "0..1" statemachine_StateValue : stateValue16
+statemachine_AbstractState "0..9999" --* "1..1" statemachine_Statemachine : states0
+statemachine_AbstractState "1..1" *-- "0..9999" statemachine_AbstractTransition : transitions1
+@enduml

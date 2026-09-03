@@ -1,0 +1,109 @@
+@startuml
+class Attribute {
+}
+enum AttributesType {
+  Allocate
+  Link
+  Object
+  Text
+}
+class EModelElement {
+}
+class IdentifiedElement {
+}
+class ObjectAttribute {
+}
+class Project {
+}
+class Requirement {
+}
+class SpecialChapter {
+}
+class requirement_AnonymousRequirement {
+}
+abstract class requirement_Attribute {
+  + name : str
+}
+class requirement_AttributeAllocate {
+}
+class requirement_AttributeConfiguration {
+}
+class requirement_AttributeLink {
+  + partial : str
+}
+class requirement_AttributeValue {
+  + value : str
+}
+class requirement_ConfiguratedAttribute {
+  + name : str
+  + type : str
+}
+class requirement_CurrentRequirement {
+  + impacted : bool
+}
+class requirement_DefaultAttributeValue {
+}
+class requirement_DeletedChapter {
+}
+class requirement_EObject {
+}
+class requirement_HierarchicalElement {
+  + nextReqIndex : str
+}
+abstract class requirement_IdentifiedElement {
+  + identifier : str
+  + shortDescription : str
+}
+class requirement_ObjectAttribute {
+}
+class requirement_ProblemChapter {
+}
+abstract class requirement_Requirement {
+  + externalResources : str
+}
+class requirement_RequirementProject {
+}
+abstract class requirement_SpecialChapter {
+}
+class requirement_TextAttribute {
+  + value : str
+}
+class requirement_TrashChapter {
+}
+class requirement_UntracedChapter {
+}
+class requirement_UpstreamModel {
+}
+Attribute <|-- requirement_ObjectAttribute
+Attribute <|-- requirement_TextAttribute
+EModelElement <|-- requirement_Attribute
+EModelElement <|-- requirement_IdentifiedElement
+IdentifiedElement <|-- requirement_HierarchicalElement
+IdentifiedElement <|-- requirement_Requirement
+IdentifiedElement <|-- requirement_RequirementProject
+ObjectAttribute <|-- requirement_AttributeAllocate
+ObjectAttribute <|-- requirement_AttributeLink
+Project <|-- requirement_UpstreamModel
+Requirement <|-- requirement_AnonymousRequirement
+Requirement <|-- requirement_CurrentRequirement
+SpecialChapter <|-- requirement_DeletedChapter
+SpecialChapter <|-- requirement_ProblemChapter
+SpecialChapter <|-- requirement_TrashChapter
+SpecialChapter <|-- requirement_UntracedChapter
+requirement_Attribute "0..9999" --* "1..1" requirement_Requirement : attribute33
+requirement_AttributeConfiguration "0..1" --* "1..1" requirement_RequirementProject : attributeConfiguration1
+requirement_RequirementProject "1..1" *-- "3..3" requirement_SpecialChapter : chapter3
+requirement_HierarchicalElement "1..1" *-- "0..9999" requirement_HierarchicalElement : children10
+requirement_ConfiguratedAttribute "1..1" *-- "0..1" requirement_DefaultAttributeValue : defaultValue18
+requirement_EObject "0..1" -- "1..1" requirement_HierarchicalElement : element7
+requirement_HierarchicalElement "0..9999" --* "1..1" requirement_RequirementProject : hierarchicalElement0
+requirement_HierarchicalElement "0..9999" --* "1..1" requirement_SpecialChapter : hierarchicalElement25
+requirement_AttributeConfiguration "1..1" *-- "0..9999" requirement_ConfiguratedAttribute : listAttributes16
+requirement_AttributeValue "0..9999" --* "1..1" requirement_ConfiguratedAttribute : listValue20
+requirement_HierarchicalElement "1..1" -- "0..1" requirement_HierarchicalElement : parent12
+requirement_HierarchicalElement "1..1" *-- "0..9999" requirement_Requirement : requirement14
+requirement_Requirement "0..9999" --* "1..1" requirement_SpecialChapter : requirement28
+requirement_RequirementProject "1..1" *-- "1..1" requirement_UpstreamModel : upstreamModel5
+requirement_AttributeValue "1..1" -- "1..1" requirement_DefaultAttributeValue : value22
+requirement_EObject "0..1" -- "1..1" requirement_ObjectAttribute : value31
+@enduml

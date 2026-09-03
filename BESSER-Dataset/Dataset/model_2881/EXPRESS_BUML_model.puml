@@ -1,0 +1,243 @@
+@startuml
+class BuiltInType {
+}
+class DataType {
+}
+class ExpressConcept {
+}
+class Index {
+}
+class IndexTerminal {
+}
+class Statement {
+}
+class VarOrAttrib {
+}
+class express_Assignment {
+  + expression : str
+}
+class express_Attribute {
+  + expression : str
+  + name : str
+  + optional : bool
+  + qualifier : str
+  + self : bool
+}
+class express_AttributeVar {
+}
+class express_BinaryType {
+  + size : int
+}
+class express_BooleanType {
+}
+class express_BuiltInType {
+}
+class express_CaseAction {
+  + value : str
+}
+class express_CaseStatement {
+  + variable : str
+}
+class express_CollectionType {
+  + lowerBound : int
+  + many : bool
+  + name : str
+  + opt : bool
+  + unique : bool
+  + upperBound : int
+}
+class express_ConstantVal {
+  + name : str
+}
+class express_DataType {
+}
+class express_Entity {
+  + abstract : bool
+}
+class express_EnumType {
+}
+class express_EscapeStatement {
+}
+class express_ExpressConcept {
+  + name : str
+}
+class express_FormalParam {
+  + paramName : str
+}
+class express_Function {
+  + name : str
+}
+class express_FunctionExpression {
+  + name : str
+}
+class express_GenericType {
+  + typelabel : str
+}
+class express_IfStatement {
+}
+class express_Index {
+}
+class express_IndexTerminal {
+}
+class express_IndexedVar {
+}
+class express_IntLiteral {
+  + value : int
+}
+class express_IntegerType {
+}
+class express_Intervall {
+  + expression : str
+}
+class express_Line {
+  + text : str
+}
+class express_LiteralType {
+  + name : str
+}
+class express_LocalVar {
+  + varname : str
+}
+class express_LogicalType {
+}
+class express_NumberType {
+}
+class express_ParameterList {
+}
+class express_RealType {
+}
+class express_Reference {
+  + name : str
+  + optional : bool
+  + qualifier : str
+  + self : bool
+}
+class express_ReferenceType {
+}
+class express_RepeatStatement {
+  + end : str
+  + idx : str
+  + start : str
+}
+class express_ReturnStatement {
+  + expression : str
+}
+class express_Rule {
+  + name : str
+}
+class express_Schema {
+  + name : str
+}
+class express_SelectType {
+}
+class express_SequenceStatement {
+  + expression : str
+}
+class express_SimpleVar {
+  + name : str
+}
+class express_Statement {
+}
+class express_StringType {
+  + fixed : bool
+  + size : int
+}
+class express_Type {
+}
+class express_TypeNameList {
+  + type : str
+}
+class express_UniqueRule {
+  + attribute : str
+  + name : str
+}
+class express_VarLiteral {
+  + value : str
+}
+class express_VarOrAttrib {
+}
+class express_WhereRule {
+  + expression : str
+  + name : str
+}
+BuiltInType <|-- express_BinaryType
+BuiltInType <|-- express_BooleanType
+BuiltInType <|-- express_IntegerType
+BuiltInType <|-- express_LogicalType
+BuiltInType <|-- express_NumberType
+BuiltInType <|-- express_RealType
+BuiltInType <|-- express_StringType
+DataType <|-- express_BuiltInType
+DataType <|-- express_CollectionType
+DataType <|-- express_EnumType
+DataType <|-- express_GenericType
+DataType <|-- express_ReferenceType
+DataType <|-- express_SelectType
+ExpressConcept <|-- express_Entity
+ExpressConcept <|-- express_Type
+Index <|-- express_IndexTerminal
+IndexTerminal <|-- express_IntLiteral
+IndexTerminal <|-- express_VarLiteral
+Statement <|-- express_Assignment
+Statement <|-- express_CaseStatement
+Statement <|-- express_EscapeStatement
+Statement <|-- express_IfStatement
+Statement <|-- express_RepeatStatement
+Statement <|-- express_ReturnStatement
+Statement <|-- express_SequenceStatement
+VarOrAttrib <|-- express_AttributeVar
+VarOrAttrib <|-- express_IndexedVar
+VarOrAttrib <|-- express_SimpleVar
+express_FunctionExpression "1..1" *-- "0..1" express_ParameterList : argument53
+express_Assignment "1..1" *-- "0..1" express_VarOrAttrib : assignTo105
+express_Attribute "0..9999" --* "1..1" express_Entity : attribute19
+express_AttributeVar "1..1" *-- "0..9999" express_VarOrAttrib : component109
+express_IfStatement "1..1" *-- "0..1" express_Line : condition111
+express_ConstantVal "0..9999" --* "1..1" express_Rule : constant33
+express_ConstantVal "0..9999" --* "1..1" express_Function : constant69
+express_DataType "0..1" --* "1..1" express_Type : datatype8
+express_Entity "0..9999" -- "1..1" express_Entity : disjointSubtype11
+express_IfStatement "1..1" *-- "0..9999" express_Statement : elseStatement116
+express_Entity "0..9999" --* "1..1" express_Schema : entity1
+express_ConstantVal "1..1" *-- "0..1" express_Line : expression45
+express_Line "0..1" --* "1..1" express_LocalVar : expression50
+express_FormalParam "0..9999" --* "1..1" express_ParameterList : formalParam78
+express_Function "0..9999" --* "1..1" express_Schema : function3
+express_Index "0..9999" --* "1..1" express_IndexedVar : index107
+express_ExpressConcept "0..1" -- "1..1" express_ReferenceType : instance85
+express_Intervall "0..1" --* "1..1" express_WhereRule : interval83
+express_EnumType "1..1" *-- "0..9999" express_LiteralType : literal95
+express_FunctionExpression "1..1" *-- "0..9999" express_LocalVar : local57
+express_LocalVar "0..9999" --* "1..1" express_Rule : localVar35
+express_Function "1..1" *-- "0..9999" express_LocalVar : localVar72
+express_Attribute "0..1" -- "1..1" express_CollectionType : lowerRef87
+express_Attribute "0..1" -- "1..1" express_Attribute : opposite27
+express_CaseStatement "1..1" *-- "0..9999" express_Statement : otherwise99
+express_Function "1..1" *-- "0..1" express_ParameterList : params63
+express_DataType "0..1" --* "1..1" express_Function : returnType66
+express_DataType "0..1" --* "1..1" express_FunctionExpression : return_54
+express_Rule "0..9999" --* "1..1" express_Schema : rule5
+express_ExpressConcept "0..9999" -- "1..1" express_SelectType : select96
+express_CaseAction "0..9999" --* "1..1" express_CaseStatement : slot98
+express_CaseAction "1..1" *-- "0..1" express_Statement : statement102
+express_IfStatement "1..1" *-- "0..9999" express_Statement : statement113
+express_RepeatStatement "1..1" *-- "0..9999" express_Statement : statement119
+express_Rule "1..1" *-- "0..9999" express_Statement : statement37
+express_FunctionExpression "1..1" *-- "0..9999" express_Statement : statement60
+express_Function "1..1" *-- "0..9999" express_Statement : statement75
+express_Entity "0..9999" -- "1..1" express_Entity : subtype14
+express_Entity "0..9999" -- "1..1" express_Entity : supertype17
+express_Rule "1..1" *-- "0..1" express_TypeNameList : target31
+express_Schema "1..1" *-- "0..9999" express_Type : type0
+express_Attribute "1..1" *-- "0..1" express_DataType : type23
+express_Entity "0..1" -- "1..1" express_Reference : type29
+express_ConstantVal "1..1" *-- "0..1" express_DataType : type42
+express_DataType "0..1" --* "1..1" express_LocalVar : type47
+express_DataType "0..1" --* "1..1" express_FormalParam : type80
+express_CollectionType "1..1" *-- "0..1" express_DataType : type92
+express_Entity "1..1" *-- "0..9999" express_UniqueRule : uniqueRule21
+express_Attribute "0..1" -- "1..1" express_CollectionType : upperRef89
+express_IndexedVar "1..1" *-- "0..1" express_SimpleVar : variable106
+express_Rule "1..1" *-- "0..9999" express_WhereRule : whereRule39
+express_ExpressConcept "1..1" *-- "0..9999" express_WhereRule : whereRule7
+@enduml

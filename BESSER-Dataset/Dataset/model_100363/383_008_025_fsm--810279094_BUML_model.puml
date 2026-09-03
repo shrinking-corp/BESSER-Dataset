@@ -1,0 +1,41 @@
+@startuml
+class State {
+}
+class SuperState {
+}
+class fsm_Action {
+  + entryLabel : str
+}
+class fsm_FSM {
+}
+class fsm_InitialState {
+}
+class fsm_State {
+  + name : str
+}
+class fsm_SteadyState {
+}
+class fsm_SuperState {
+}
+class fsm_TransientState {
+}
+class fsm_Transition {
+  + action : str
+  + guard : str
+}
+class fsm_eAction {
+  + exitLabel : str
+}
+State <|-- fsm_SteadyState
+State <|-- fsm_TransientState
+SuperState <|-- fsm_InitialState
+SuperState <|-- fsm_State
+fsm_Action "0..1" --* "1..1" fsm_State : entry3
+fsm_State "1..1" *-- "0..1" fsm_eAction : exit5
+fsm_FSM "1..1" *-- "1..1" fsm_InitialState : intialState1
+fsm_SuperState "1..1" *-- "0..9999" fsm_Transition : outTrans12
+fsm_SuperState "1..1" -- "1..1" fsm_Transition : source9
+fsm_SuperState "0..1" -- "1..1" fsm_Transition : src11
+fsm_FSM "1..1" *-- "0..9999" fsm_State : state0
+fsm_State "1..1" -- "1..1" fsm_Transition : target7
+@enduml

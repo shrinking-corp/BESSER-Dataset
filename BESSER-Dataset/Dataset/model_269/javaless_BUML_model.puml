@@ -1,0 +1,162 @@
+@startuml
+class EClassifier {
+}
+class EDataType {
+}
+class EModelElement {
+}
+class ENamedElement {
+}
+class EObject {
+}
+class EStructuralFeature {
+}
+class ETypedElement {
+}
+class javaless_EAnnotation {
+  + source : str
+}
+class javaless_EAttribute {
+  + iD : bool
+}
+class javaless_EClass {
+  + abstract : bool
+  + interface : bool
+  + getEStructuralFeature(javaless_featureName : str) : EStructuralFeature
+  + getFeatureCount() : int
+  + getFeatureID(javaless_feature : str) : int
+  + isSuperTypeOf(javaless_someClass : str) : bool
+}
+abstract class javaless_EClassifier {
+  + defaultValue : str
+  + instanceClass : str
+  + instanceClassName : str
+  + getClassifierID() : int
+  + isInstance(javaless_object : str) : bool
+}
+class javaless_EDataType {
+  + serializable : bool
+}
+class javaless_EEnum {
+  + getEEnumLiteral(javaless_value : str) : str
+  + getEEnumLiteralByLiteral(javaless_literal : str) : str
+}
+class javaless_EEnumLiteral {
+  + instance : str
+  + literal : str
+  + value : int
+}
+class javaless_EFactory {
+  + convertToString(javaless_eDataType : str, javaless_instanceValue : str) : str
+  + create(javaless_eClass : str) : str
+  + createFromString(javaless_eDataType : str, javaless_literalValue : str) : str
+}
+abstract class javaless_EModelElement {
+  + getEAnnotation(javaless_source : str) : str
+}
+abstract class javaless_ENamedElement {
+  + name : str
+}
+class javaless_EObject {
+  + eAllContents() : str
+  + eClass() : str
+  + eContainer() : EObject
+  + eContainingFeature() : EStructuralFeature
+  + eContainmentFeature() : str
+  + eContents() : str
+  + eCrossReferences() : str
+  + eGet(javaless_feature : str, javaless_resolve : str) : str
+  + eIsProxy() : bool
+  + eIsSet(javaless_feature : str) : bool
+  + eResource() : str
+  + eSet(javaless_feature : str, javaless_newValue : str) : void
+  + eUnset(javaless_feature : str) : void
+}
+class javaless_EOperation {
+}
+class javaless_EPackage {
+  + nsPrefix : str
+  + nsURI : str
+  + getEClassifier(javaless_name : str) : EClassifier
+}
+class javaless_EParameter {
+}
+class javaless_EReference {
+  + container : bool
+  + containment : bool
+  + resolveProxies : bool
+}
+class javaless_EStringToStringMapEntry {
+  + key : str
+  + value : str
+}
+abstract class javaless_EStructuralFeature {
+  + changeable : bool
+  + defaultValue : str
+  + defaultValueLiteral : str
+  + derived : bool
+  + transient : bool
+  + unsettable : bool
+  + volatile : bool
+  + getContainerClass() : str
+  + getFeatureID() : int
+}
+abstract class javaless_ETypedElement {
+  + lowerBound : int
+  + many : bool
+  + ordered : bool
+  + required : bool
+  + unique : bool
+  + upperBound : int
+}
+EClassifier <|-- javaless_EClass
+EClassifier <|-- javaless_EDataType
+EDataType <|-- javaless_EEnum
+EModelElement <|-- javaless_EAnnotation
+EModelElement <|-- javaless_EFactory
+EModelElement <|-- javaless_ENamedElement
+ENamedElement <|-- javaless_EClassifier
+ENamedElement <|-- javaless_EEnumLiteral
+ENamedElement <|-- javaless_EPackage
+ENamedElement <|-- javaless_ETypedElement
+EObject <|-- javaless_EModelElement
+EStructuralFeature <|-- javaless_EAttribute
+EStructuralFeature <|-- javaless_EReference
+ETypedElement <|-- javaless_EOperation
+ETypedElement <|-- javaless_EParameter
+ETypedElement <|-- javaless_EStructuralFeature
+javaless_EAnnotation "1..1" *-- "0..9999" javaless_EObject : contents3
+javaless_EAnnotation "1..1" *-- "0..9999" javaless_EStringToStringMapEntry : details1
+javaless_EAttribute "0..9999" -- "1..1" javaless_EClass : eAllAttributes11
+javaless_EClass "1..1" -- "0..9999" javaless_EReference : eAllContainments22
+javaless_EClass "1..1" -- "0..9999" javaless_EOperation : eAllOperations25
+javaless_EClass "1..1" -- "0..9999" javaless_EReference : eAllReferences14
+javaless_EClass "1..1" -- "0..9999" javaless_EStructuralFeature : eAllStructuralFeatures27
+javaless_EClass "0..9999" -- "1..1" javaless_EClass : eAllSuperTypes30
+javaless_EAnnotation "0..9999" --* "1..1" javaless_EModelElement : eAnnotations42
+javaless_EAttribute "1..1" -- "1..1" javaless_EDataType : eAttributeType0
+javaless_EAttribute "0..9999" -- "1..1" javaless_EClass : eAttributes19
+javaless_EClassifier "0..9999" --* "1..1" javaless_EPackage : eClassifiers48
+javaless_EClass "0..1" -- "1..1" javaless_EOperation : eContainingClass43
+javaless_EClass "0..1" -- "1..1" javaless_EStructuralFeature : eContainingClass64
+javaless_EEnum "0..1" -- "1..1" javaless_EEnumLiteral : eEnum39
+javaless_EClassifier "0..9999" -- "1..1" javaless_EOperation : eExceptions45
+javaless_EFactory "1..1" -- "1..1" javaless_EPackage : eFactoryInstance47
+javaless_EAttribute "0..1" -- "1..1" javaless_EClass : eIDAttribute32
+javaless_EEnum "1..1" *-- "0..9999" javaless_EEnumLiteral : eLiterals38
+javaless_EAnnotation "1..1" -- "0..1" javaless_EModelElement : eModelElement2
+javaless_EOperation "0..1" -- "1..1" javaless_EParameter : eOperation56
+javaless_EClass "1..1" *-- "0..9999" javaless_EOperation : eOperations10
+javaless_EReference "0..1" -- "1..1" javaless_EReference : eOpposite59
+javaless_EClassifier "1..1" -- "0..1" javaless_EPackage : ePackage37
+javaless_EFactory "1..1" -- "1..1" javaless_EPackage : ePackage40
+javaless_EOperation "1..1" *-- "0..9999" javaless_EParameter : eParameters44
+javaless_EClass "1..1" -- "1..1" javaless_EReference : eReferenceType61
+javaless_EClass "1..1" -- "0..9999" javaless_EReference : eReferences16
+javaless_EClass "1..1" *-- "0..9999" javaless_EStructuralFeature : eStructuralFeatures35
+javaless_EPackage "1..1" *-- "0..9999" javaless_EPackage : eSubpackages51
+javaless_EPackage "1..1" -- "0..1" javaless_EPackage : eSuperPackage54
+javaless_EClass "1..1" -- "0..9999" javaless_EClass : eSuperTypes9
+javaless_EClassifier "0..1" -- "1..1" javaless_ETypedElement : eType66
+javaless_EAnnotation "1..1" -- "0..9999" javaless_EObject : references5
+@enduml

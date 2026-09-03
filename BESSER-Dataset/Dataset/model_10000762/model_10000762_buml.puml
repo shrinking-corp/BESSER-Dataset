@@ -1,0 +1,49 @@
+@startuml
+class Building {
+  + Building : TKinter_Canvas
+  + Elevator_list : Elevator_Elevator
+  + Panel : TKinter_Canvas
+  + Panel_list : Panel_Panel
+}
+class Elevator_Elevator {
+  + Height : int
+  + Velocity : int
+  + Width : int
+  + body : TKinter_Canvas
+  + building : TKinter_Canvas
+  + call_queue : Floor_Floor
+  + destination : int
+  + floor_list : Floor_Floor
+  + gate_status : str
+  + move_direction : str
+  + name : int
+  + people : int
+  + ready : bool
+}
+class Floor_Floor {
+  + canvas : TKinter_Canvas
+  + down_status : str
+  + name : int
+  + up_status : str
+}
+class Panel_Panel {
+  + button_list : TKinter_Button
+  + canvas : TKinter_Canvas
+  + flag_list : bool
+}
+class TKinter_Button {
+}
+class TKinter_Canvas {
+}
+class TKinter_Frame {
+}
+class TKinter_TK {
+}
+class TKinter_Text {
+}
+Building "0..1" -- "0..1" Elevator_Elevator : Building_Elevator
+Building "0..1" -- "0..1" Floor_Floor : Building_Floor
+Building "0..1" -- "0..1" Panel_Panel : Building_Panel
+Elevator_Elevator "0..1" -- "0..1" Floor_Floor : Floor_Elevator
+Elevator_Elevator "0..1" -- "0..1" Panel_Panel : Panel_Elevator
+@enduml

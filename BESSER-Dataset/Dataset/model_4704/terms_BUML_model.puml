@@ -1,0 +1,121 @@
+@startuml
+class Operator {
+}
+class OperatorDecl {
+}
+class Sort {
+}
+class SortDecl {
+}
+class Term {
+}
+class TermsDeclaration {
+}
+class terms_All {
+}
+abstract class terms_BuiltInConstant {
+}
+abstract class terms_BuiltInOperator {
+}
+abstract class terms_BuiltInSort {
+}
+class terms_Condition {
+}
+class terms_Declaration {
+}
+class terms_Declarations {
+}
+class terms_Empty {
+}
+class terms_HLAnnotation {
+}
+class terms_HLMarking {
+}
+abstract class terms_MultisetOperator {
+}
+class terms_MultisetSort {
+}
+class terms_NamedOperator {
+}
+class terms_NamedSort {
+}
+abstract class terms_Operator {
+}
+abstract class terms_OperatorDecl {
+}
+class terms_Partition {
+}
+class terms_PartitionElement {
+}
+class terms_ProductSort {
+}
+abstract class terms_Sort {
+}
+abstract class terms_SortDecl {
+}
+abstract class terms_Term {
+}
+abstract class terms_TermsDeclaration {
+  + id : str
+  + name : str
+}
+class terms_Tuple {
+}
+class terms_Type {
+}
+class terms_UserOperator {
+}
+class terms_UserSort {
+}
+class terms_Variable {
+}
+class terms_VariableDecl {
+}
+Operator <|-- terms_BuiltInConstant
+Operator <|-- terms_BuiltInOperator
+Operator <|-- terms_MultisetOperator
+Operator <|-- terms_Tuple
+Operator <|-- terms_UserOperator
+OperatorDecl <|-- terms_NamedOperator
+Sort <|-- terms_BuiltInSort
+Sort <|-- terms_MultisetSort
+Sort <|-- terms_ProductSort
+Sort <|-- terms_UserSort
+SortDecl <|-- terms_NamedSort
+Term <|-- terms_Operator
+Term <|-- terms_Variable
+TermsDeclaration <|-- terms_OperatorDecl
+TermsDeclaration <|-- terms_SortDecl
+TermsDeclaration <|-- terms_VariableDecl
+terms_MultisetSort "1..1" *-- "1..1" terms_Sort : basis12
+terms_All "0..1" -- "1..1" terms_Sort : containerAll9
+terms_Condition "0..1" -- "1..1" terms_Term : containerCondition20
+terms_Declaration "0..1" -- "1..1" terms_Declarations : containerDeclaration1
+terms_Declarations "0..1" -- "1..1" terms_TermsDeclaration : containerDeclarations2
+terms_Empty "0..1" -- "1..1" terms_Sort : containerEmpty10
+terms_HLAnnotation "0..1" -- "1..1" terms_Term : containerHLAnnotation22
+terms_HLMarking "0..1" -- "1..1" terms_Term : containerHLMarking18
+terms_NamedOperator "0..1" -- "1..1" terms_Term : containerNamedOperator16
+terms_NamedOperator "0..1" -- "1..1" terms_VariableDecl : containerNamedOperator33
+terms_NamedSort "0..1" -- "1..1" terms_Sort : containerNamedSort4
+terms_Operator "0..1" -- "1..1" terms_Term : containerOperator15
+terms_Partition "0..1" -- "1..1" terms_Sort : containerPartition11
+terms_PartitionElement "0..1" -- "1..1" terms_Term : containerPartitionElement24
+terms_ProductSort "0..1" -- "1..1" terms_Sort : containerProductSort6
+terms_Sort "1..1" -- "0..1" terms_Type : containerType7
+terms_Sort "1..1" -- "0..1" terms_VariableDecl : containerVariableDecl5
+terms_Declarations "1..1" *-- "0..9999" terms_TermsDeclaration : declaration0
+terms_SortDecl "1..1" -- "1..1" terms_UserSort : declaration40
+terms_OperatorDecl "1..1" -- "1..1" terms_UserOperator : declaration46
+terms_NamedOperator "1..1" *-- "1..1" terms_Term : def_41
+terms_ProductSort "1..1" *-- "0..9999" terms_Sort : elementSort36
+terms_Operator "1..1" -- "0..9999" terms_Sort : input28
+terms_MultisetSort "0..1" -- "1..1" terms_Sort : multi3
+terms_Operator "1..1" -- "0..1" terms_Sort : output26
+terms_NamedOperator "1..1" *-- "0..9999" terms_VariableDecl : parameters43
+terms_Sort "0..1" -- "1..1" terms_Term : sort13
+terms_Sort "1..1" --* "1..1" terms_VariableDecl : sort31
+terms_NamedSort "1..1" *-- "1..1" terms_Sort : sortdef38
+terms_Operator "1..1" *-- "0..9999" terms_Term : subterm25
+terms_Variable "1..1" -- "1..1" terms_VariableDecl : variableDecl35
+@enduml

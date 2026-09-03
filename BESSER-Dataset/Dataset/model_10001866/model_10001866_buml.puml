@@ -1,0 +1,44 @@
+@startuml
+class Cancelar_Consulta_external {
+}
+class Cirurgi_o_Actor {
+}
+class Cirurgiao {
+  + CirurgiaoId : int
+  + Especialidade : str
+  + Nome : str
+}
+class Cl_nica_Component {
+}
+class Cliente {
+  + ClienteId : int
+  + Cpf : str
+  + Email : str
+  + Nome : str
+  + Telefone : str
+}
+class Cliente_Actor {
+}
+class Confirmar_Consulta_external {
+}
+class Consulta {
+  + Cirurgiao : Cirurgiao
+  + Cliente : Cliente
+  + ConsultaId : int
+  + DataHora : str
+  + Observacoes : str
+  + Situacao : str
+}
+class Marcar_consulta_external {
+}
+class Ver_consultas_external {
+}
+Cancelar_Consulta_external "0..1" -- "0..1" Cirurgi_o_Actor : Cancelar_Consulta_Cirurgi_o
+Cancelar_Consulta_external "0..1" -- "0..1" Cliente_Actor : Cancelar_Consulta_Cliente
+Cirurgi_o_Actor "0..1" -- "0..1" Confirmar_Consulta_external : Cirurgi_o_Confirmar_Consulta
+Cirurgi_o_Actor "0..1" -- "0..1" Ver_consultas_external : Cirurgi_o_Ver_consultas
+Cirurgiao "1..1" -- "0..9999" Consulta : Cirurgiao_Consulta
+Cliente_Actor "0..1" -- "0..1" Marcar_consulta_external : Cliente_Marcar_consulta
+Cliente_Actor "0..1" -- "0..1" Ver_consultas_external : Cliente_Ver_consultas
+Cliente "1..1" -- "0..9999" Consulta : Consulta_Cliente
+@enduml

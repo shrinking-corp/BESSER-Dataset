@@ -1,0 +1,54 @@
+@startuml
+class Chat {
+}
+class Friend {
+}
+class Group {
+  + Description : str
+  + Name : str
+}
+class Login {
+  + Password : str
+  + Username : str
+}
+class Media {
+  + MediaPath : str
+}
+class Post {
+  + PostContent : str
+}
+class Profile {
+  + About : str
+  + Password : str
+  + Username : str
+}
+class Public {
+  + Name : str
+}
+class Registration {
+  + Password : Secret
+  + Username : str
+}
+class Review {
+  + PostContent : str
+}
+class Secret {
+  + Name : str
+}
+class Team_Timeline {
+  + Name : str
+}
+class User {
+  + Name : str
+}
+Login "1..1" -- "1..1" User : Login_User
+Media "0..9999" -- "1..1" Post : Post_ImagePost
+Registration "1..1" -- "1..1" User : Registration_User
+Review "1..1" -- "1..1" User : Review_User
+Chat "0..9999" -- "1..1" User : User_Chat
+Friend "0..9999" -- "1..1" User : User_Friend
+Group "0..9999" -- "1..1" User : User_Group
+Post "0..9999" -- "1..1" User : User_Post
+Profile "1..1" -- "1..1" User : User_Profile
+Team_Timeline "1..1" -- "1..1" User : User_Timeline
+@enduml

@@ -1,0 +1,356 @@
+@startuml
+class BehavioralFeature {
+}
+class Classifier {
+}
+class DataType {
+}
+class DirectedRelationship {
+}
+class Element {
+}
+class Feature {
+}
+class MultiplicityElement {
+}
+class NamedElement {
+}
+class Namespace {
+}
+class PackageableElement {
+}
+enum ParameterDirectionKind {
+  in_
+  inout
+  out
+  return_
+}
+class RedefinableElement {
+}
+class Relationship {
+}
+class StructuralFeature {
+}
+class Type {
+}
+class TypedElement {
+}
+class ValueSpecification {
+}
+enum VisibilityKind {
+  package
+  private
+  protected
+  public
+}
+class cmof_Argument {
+  + name : str
+  + value : str
+}
+class cmof_Association {
+  + isDerived : bool
+  + association_ends(cmof_context : str, cmof_diagnostics : str) : bool
+}
+abstract class cmof_BehavioralFeature {
+}
+class cmof_Class {
+  + isAbstract : bool
+}
+abstract class cmof_Classifier {
+  + allFeatures() : str
+  + allParents() : str
+  + conformsTo(cmof_other : str) : bool
+  + getGenerals() : str
+  + getInheritedMembers() : str
+  + hasVisibilityOf(cmof_n : str) : bool
+  + inherit(cmof_inhs : str) : str
+  + inheritableMembers(cmof_c : str) : str
+  + maySpecializeType(cmof_c : str) : bool
+  + no_cycles_in_generalization(cmof_context : str, cmof_diagnostics : str) : bool
+  + parents() : str
+  + specialize_type(cmof_context : str, cmof_diagnostics : str) : bool
+}
+class cmof_Comment {
+  + body : str
+}
+class cmof_Constraint {
+  + not_apply_to_self(cmof_context : str, cmof_diagnostics : str) : bool
+  + value_specification_boolean(cmof_context : str, cmof_diagnostics : str) : bool
+}
+class cmof_DataType {
+}
+abstract class cmof_DirectedRelationship {
+}
+abstract class cmof_Element {
+  + allOwnedElements() : Element
+  + container() : Element
+  + delete() : str
+  + equals(cmof_otherElement : str) : bool
+  + get(cmof_property : str) : str
+  + getMetaClass() : str
+  + has_owner(cmof_context : str, cmof_diagnostics : str) : bool
+  + invoke(cmof_arguments : str, cmof_op : str) : str
+  + isInstanceOfType(cmof_includeSubtypes : str, cmof_type : str) : bool
+  + isSet(cmof_property : str) : bool
+  + mustBeOwned() : bool
+  + not_own_self(cmof_context : str, cmof_diagnostics : str) : bool
+  + set(cmof_property : str, cmof_value : str) : str
+  + unset(cmof_property : str) : str
+  + verify(cmof_deepVerify : str) : str
+}
+class cmof_ElementImport {
+  + alias : str
+  + visibility : str
+  + getName() : str
+  + imported_element_is_public(cmof_context : str, cmof_diagnostics : str) : bool
+  + visibility_public_or_private(cmof_context : str, cmof_diagnostics : str) : bool
+}
+class cmof_Enumeration {
+}
+class cmof_EnumerationLiteral {
+}
+class cmof_Exception {
+  + description : str
+}
+class cmof_Expression {
+}
+class cmof_Factory {
+  + convertToString(cmof_dataType : str, cmof_object : str) : str
+  + create(cmof_metaClass : str) : Element
+  + createElement(cmof_aClass : str, cmof_arguments : str) : Element
+  + createFromString(cmof_dataType : str, cmof_string : str) : str
+  + createLink(cmof_association : str, cmof_firstElement : str, cmof_secondElement : str) : str
+}
+abstract class cmof_Feature {
+}
+class cmof_Link {
+  + delete() : str
+  + equals(cmof_otherLink : str) : bool
+}
+abstract class cmof_MultiplicityElement {
+  + isOrdered : bool
+  + isUnique : bool
+  + lower : int
+  + upper : int
+  + includesCardinality(cmof_C : str) : bool
+  + includesMultiplicity(cmof_M : str) : bool
+  + isMultivalued() : bool
+  + lowerBound() : int
+  + lower_ge_0(cmof_context : str, cmof_diagnostics : str) : bool
+  + upperBound() : int
+  + upper_ge_lower(cmof_context : str, cmof_diagnostics : str) : bool
+  + upper_gt_0(cmof_context : str, cmof_diagnostics : str) : bool
+}
+abstract class cmof_NamedElement {
+  + name : str
+  + visibility : str
+  + allNamespaces() : Namespace
+  + isDistinguishableFrom(cmof_n : str, cmof_ns : str) : bool
+  + no_name(cmof_context : str, cmof_diagnostics : str) : bool
+  + qualifiedName() : str
+  + qualified_name(cmof_context : str, cmof_diagnostics : str) : bool
+  + separator() : str
+  + visibility_needs_ownership(cmof_context : str, cmof_diagnostics : str) : bool
+}
+abstract class cmof_Namespace {
+  + excludeCollisions(cmof_imps : str) : str
+  + getImportedMembers() : str
+  + getNamesOfMember(cmof_element : str) : str
+  + importMembers(cmof_imps : str) : str
+  + membersAreDistinguishable() : bool
+  + members_are_distinguishable(cmof_context : str, cmof_diagnostics : str) : bool
+}
+class cmof_OpaqueExpression {
+  + body : str
+  + language : str
+}
+class cmof_Operation {
+  + isQuery : bool
+  + at_most_one_return(cmof_context : str, cmof_diagnostics : str) : bool
+  + getType() : Type
+  + isOrdered() : bool
+  + isUnique() : bool
+  + only_body_for_query(cmof_context : str, cmof_diagnostics : str) : bool
+  + returnResult() : str
+}
+class cmof_Package {
+  + uRI : str
+  + elements_public_or_private(cmof_context : str, cmof_diagnostics : str) : bool
+  + makesVisible(cmof_el : str) : bool
+  + visibleMembers() : PackageableElement
+}
+class cmof_PackageImport {
+  + visibility : str
+  + public_or_private(cmof_context : str, cmof_diagnostics : str) : bool
+}
+class cmof_PackageMerge {
+}
+abstract class cmof_PackageableElement {
+}
+class cmof_Parameter {
+  + default : str
+  + direction : str
+}
+class cmof_PrimitiveType {
+}
+class cmof_Property {
+  + default : str
+  + isComposite : bool
+  + isDerived : bool
+  + isDerivedUnion : bool
+  + isID : bool
+  + isReadOnly : bool
+  + derived_union_is_derived(cmof_context : str, cmof_diagnostics : str) : bool
+  + getOpposite() : str
+  + isNavigable() : bool
+  + multiplicity_of_composite(cmof_context : str, cmof_diagnostics : str) : bool
+  + navigable_property_redefinition(cmof_context : str, cmof_diagnostics : str) : bool
+  + navigable_readonly(cmof_context : str, cmof_diagnostics : str) : bool
+  + subsettingContext() : Classifier
+  + subsetting_context(cmof_context : str, cmof_diagnostics : str) : bool
+  + subsetting_rules(cmof_context : str, cmof_diagnostics : str) : bool
+}
+abstract class cmof_RedefinableElement {
+  + isConsistentWith(cmof_redefinee : str) : bool
+  + isRedefinitionContextValid(cmof_redefinable : str) : bool
+  + redefinition_consistent(cmof_context : str, cmof_diagnostics : str) : bool
+  + redefinition_context_valid(cmof_context : str, cmof_diagnostics : str) : bool
+}
+abstract class cmof_Relationship {
+}
+abstract class cmof_StructuralFeature {
+}
+class cmof_Tag {
+  + name : str
+  + value : str
+}
+abstract class cmof_Type {
+  + conformsTo(cmof_other : str) : bool
+  + isInstance(cmof_object : str) : bool
+}
+abstract class cmof_TypedElement {
+}
+abstract class cmof_ValueSpecification {
+  + booleanValue() : bool
+  + integerValue() : int
+  + isComputable() : bool
+  + isNull() : bool
+  + stringValue() : str
+  + unlimitedValue() : int
+}
+BehavioralFeature <|-- cmof_Operation
+Classifier <|-- cmof_Association
+Classifier <|-- cmof_Class
+Classifier <|-- cmof_DataType
+DataType <|-- cmof_Enumeration
+DataType <|-- cmof_PrimitiveType
+DirectedRelationship <|-- cmof_ElementImport
+DirectedRelationship <|-- cmof_PackageImport
+DirectedRelationship <|-- cmof_PackageMerge
+Element <|-- cmof_Comment
+Element <|-- cmof_Factory
+Element <|-- cmof_MultiplicityElement
+Element <|-- cmof_NamedElement
+Element <|-- cmof_Relationship
+Element <|-- cmof_Tag
+Feature <|-- cmof_BehavioralFeature
+Feature <|-- cmof_StructuralFeature
+MultiplicityElement <|-- cmof_Operation
+MultiplicityElement <|-- cmof_Parameter
+MultiplicityElement <|-- cmof_Property
+MultiplicityElement <|-- cmof_StructuralFeature
+NamedElement <|-- cmof_EnumerationLiteral
+NamedElement <|-- cmof_Namespace
+NamedElement <|-- cmof_PackageableElement
+NamedElement <|-- cmof_RedefinableElement
+NamedElement <|-- cmof_TypedElement
+Namespace <|-- cmof_BehavioralFeature
+Namespace <|-- cmof_Classifier
+Namespace <|-- cmof_Package
+PackageableElement <|-- cmof_Constraint
+PackageableElement <|-- cmof_Package
+PackageableElement <|-- cmof_Type
+PackageableElement <|-- cmof_ValueSpecification
+RedefinableElement <|-- cmof_Feature
+Relationship <|-- cmof_Association
+Relationship <|-- cmof_DirectedRelationship
+StructuralFeature <|-- cmof_Property
+Type <|-- cmof_Classifier
+TypedElement <|-- cmof_Operation
+TypedElement <|-- cmof_Parameter
+TypedElement <|-- cmof_StructuralFeature
+TypedElement <|-- cmof_ValueSpecification
+ValueSpecification <|-- cmof_Expression
+ValueSpecification <|-- cmof_OpaqueExpression
+cmof_Comment "1..1" -- "0..9999" cmof_Element : annotatedElement21
+cmof_Association "1..1" -- "1..1" cmof_Link : association142
+cmof_Association "0..1" -- "1..1" cmof_Property : association30
+cmof_Classifier "1..1" -- "0..9999" cmof_Property : attribute1
+cmof_Constraint "0..9999" -- "1..1" cmof_Operation : bodyCondition94
+cmof_Class "0..1" -- "1..1" cmof_Property : class_42
+cmof_Class "0..1" -- "1..1" cmof_Operation : class_97
+cmof_Constraint "1..1" -- "0..9999" cmof_Element : constrainedElement112
+cmof_Constraint "1..1" -- "0..1" cmof_Namespace : context109
+cmof_DataType "0..1" -- "1..1" cmof_Property : datatype38
+cmof_DataType "0..1" -- "1..1" cmof_Operation : datatype99
+cmof_Element "0..9999" -- "1..1" cmof_Tag : element145
+cmof_ElementImport "0..9999" --* "1..1" cmof_Namespace : elementImport9
+cmof_Element "1..1" -- "1..1" cmof_Exception : elementInError132
+cmof_Association "1..1" -- "1..9999" cmof_Type : endType73
+cmof_Enumeration "0..1" -- "1..1" cmof_EnumerationLiteral : enumeration129
+cmof_Classifier "1..1" -- "0..9999" cmof_Feature : feature0
+cmof_Classifier "0..9999" -- "1..1" cmof_Feature : featuringClassifier44
+cmof_Element "1..1" -- "1..1" cmof_Link : firstElement139
+cmof_Classifier "0..9999" -- "1..1" cmof_Classifier : general3
+cmof_ElementImport "1..1" -- "1..1" cmof_PackageableElement : importedElement118
+cmof_Namespace "1..1" -- "0..9999" cmof_PackageableElement : importedMember8
+cmof_Package "1..1" -- "1..1" cmof_PackageImport : importedPackage122
+cmof_ElementImport "1..1" -- "1..1" cmof_Namespace : importingNamespace120
+cmof_Namespace "1..1" -- "1..1" cmof_PackageImport : importingNamespace124
+cmof_Classifier "1..1" -- "0..9999" cmof_NamedElement : inheritedMember5
+cmof_NamedElement "0..9999" -- "1..1" cmof_Namespace : member12
+cmof_Association "1..1" -- "2..9999" cmof_Property : memberEnd75
+cmof_Package "1..1" -- "1..1" cmof_PackageMerge : mergedPackage62
+cmof_Constraint "1..1" -- "0..1" cmof_Namespace : namespace117
+cmof_Association "1..1" -- "0..9999" cmof_Property : navigableOwnedEnd77
+cmof_Package "1..1" -- "0..9999" cmof_Package : nestedPackage56
+cmof_Package "1..1" -- "0..1" cmof_Package : nestingPackage59
+cmof_Element "1..1" -- "1..1" cmof_Exception : objectInError130
+cmof_Expression "1..1" *-- "0..9999" cmof_ValueSpecification : operand126
+cmof_Operation "0..1" -- "1..1" cmof_Parameter : operation106
+cmof_Property "0..1" -- "1..1" cmof_Property : opposite40
+cmof_Class "1..1" *-- "0..9999" cmof_Property : ownedAttribute24
+cmof_DataType "1..1" *-- "0..9999" cmof_Property : ownedAttribute84
+cmof_Comment "0..9999" --* "1..1" cmof_Element : ownedComment20
+cmof_Element "1..1" -- "0..9999" cmof_Element : ownedElement16
+cmof_Association "1..1" *-- "0..9999" cmof_Property : ownedEnd80
+cmof_Enumeration "1..1" *-- "0..9999" cmof_EnumerationLiteral : ownedLiteral128
+cmof_Package "1..1" *-- "0..9999" cmof_PackageableElement : ownedMember52
+cmof_Class "1..1" *-- "0..9999" cmof_Operation : ownedOperation25
+cmof_DataType "1..1" *-- "0..9999" cmof_Operation : ownedOperation82
+cmof_BehavioralFeature "1..1" *-- "0..9999" cmof_Parameter : ownedParameter102
+cmof_Constraint "0..9999" --* "1..1" cmof_Namespace : ownedRule7
+cmof_Package "1..1" -- "0..9999" cmof_Type : ownedType61
+cmof_Element "1..1" -- "0..1" cmof_Element : owner18
+cmof_Association "0..1" -- "1..1" cmof_Property : owningAssociation29
+cmof_Factory "1..1" -- "1..1" cmof_Package : package135
+cmof_Package "0..1" -- "1..1" cmof_Type : package51
+cmof_Namespace "1..1" *-- "0..9999" cmof_PackageImport : packageImport10
+cmof_Package "1..1" *-- "0..9999" cmof_PackageMerge : packageMerge54
+cmof_Constraint "0..9999" -- "1..1" cmof_Operation : postcondition91
+cmof_Constraint "0..9999" -- "1..1" cmof_Operation : precondition89
+cmof_BehavioralFeature "1..1" -- "0..9999" cmof_Type : raisedException103
+cmof_Package "1..1" -- "1..1" cmof_PackageMerge : receivingPackage64
+cmof_RedefinableElement "0..9999" -- "1..1" cmof_RedefinableElement : redefinedElement48
+cmof_Operation "1..1" -- "0..9999" cmof_Operation : redefinedOperation88
+cmof_Property "0..9999" -- "1..1" cmof_Property : redefinedProperty33
+cmof_Classifier "0..9999" -- "1..1" cmof_RedefinableElement : redefinitionContext45
+cmof_Element "1..9999" -- "1..1" cmof_Relationship : relatedElement71
+cmof_Element "1..1" -- "1..1" cmof_Link : secondElement137
+cmof_DirectedRelationship "1..1" -- "1..9999" cmof_Element : source66
+cmof_Constraint "1..1" *-- "1..1" cmof_ValueSpecification : specification115
+cmof_Property "0..9999" -- "1..1" cmof_Property : subsettedProperty36
+cmof_Class "1..1" -- "0..9999" cmof_Class : superClass28
+cmof_DirectedRelationship "1..1" -- "1..9999" cmof_Element : target68
+cmof_Type "0..1" -- "1..1" cmof_TypedElement : type50
+@enduml

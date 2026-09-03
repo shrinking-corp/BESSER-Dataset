@@ -1,0 +1,57 @@
+@startuml
+class Literal {
+}
+enum StateStatus {
+  Repeated
+  new
+  unSafeState
+}
+enum TransStatus {
+  error
+  normal
+  redundantTrans
+  unsafeTrans
+}
+class execTraces_BoolLiteral {
+  + bool : str
+}
+class execTraces_Edge {
+  + actions : str
+  + guard : str
+  + status : str
+  + trigger : str
+}
+class execTraces_ExecTraces {
+  + ComponentName : str
+}
+class execTraces_IntLiteral {
+  + int : int
+}
+class execTraces_Literal {
+}
+class execTraces_Node {
+  + constraints : str
+  + id : int
+  + level : int
+  + name : str
+  + status : str
+}
+class execTraces_RealLiteral {
+  + decimalPart : int
+  + intPart : int
+}
+class execTraces_Variable {
+  + name : str
+}
+Literal <|-- execTraces_BoolLiteral
+Literal <|-- execTraces_IntLiteral
+Literal <|-- execTraces_RealLiteral
+execTraces_Edge "0..9999" --* "1..1" execTraces_ExecTraces : Edge1
+execTraces_ExecTraces "1..1" *-- "0..9999" execTraces_Node : Node0
+execTraces_Node "1..1" *-- "0..9999" execTraces_Variable : VarData9
+execTraces_Edge "1..1" -- "0..1" execTraces_Node : destination6
+execTraces_Edge "0..9999" -- "1..1" execTraces_Node : incomingEdges14
+execTraces_Edge "0..9999" -- "1..1" execTraces_Node : outgoingEdges11
+execTraces_Edge "1..1" -- "0..1" execTraces_Node : source3
+execTraces_Literal "0..1" --* "1..1" execTraces_Variable : value17
+@enduml

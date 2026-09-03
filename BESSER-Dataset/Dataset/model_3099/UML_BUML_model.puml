@@ -1,0 +1,31 @@
+@startuml
+class Classifier {
+}
+class UML_Association {
+  + name : str
+}
+class UML_Attribute {
+  + is_primary : bool
+  + name : str
+}
+class UML_Class {
+  + is_persistent : bool
+}
+abstract class UML_Classifier {
+  + name : str
+}
+class UML_Package {
+  + name : str
+}
+class UML_PrimitiveDataType {
+}
+Classifier <|-- UML_Class
+Classifier <|-- UML_PrimitiveDataType
+UML_Association "0..9999" --* "1..1" UML_Package : associations1
+UML_Attribute "0..9999" --* "1..1" UML_Class : attrs3
+UML_Classifier "0..9999" --* "1..1" UML_Package : classifiers0
+UML_Association "1..1" -- "1..1" UML_Class : dest13
+UML_Class "0..1" -- "1..1" UML_Class : parent5
+UML_Association "1..1" -- "1..1" UML_Class : src10
+UML_Attribute "1..1" -- "1..1" UML_Classifier : type7
+@enduml

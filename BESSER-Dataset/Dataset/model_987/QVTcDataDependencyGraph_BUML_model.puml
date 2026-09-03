@@ -1,0 +1,65 @@
+@startuml
+enum DependencyDirection {
+  input
+  output
+}
+class Edge {
+}
+class Element {
+}
+enum Model {
+  input
+  middle
+  output
+}
+class Node {
+}
+class qVTcDataDependencyGraph_ClassNode {
+  + model : str
+  + superTypes : str
+}
+class qVTcDataDependencyGraph_ContainmentEdge {
+  + model : str
+}
+class qVTcDataDependencyGraph_DataTypeNode {
+}
+class qVTcDataDependencyGraph_DependencyEdge {
+  + derived : bool
+  + direction : str
+  + multiple : bool
+}
+class qVTcDataDependencyGraph_EObject {
+}
+class qVTcDataDependencyGraph_Edge {
+}
+abstract class qVTcDataDependencyGraph_Element {
+}
+class qVTcDataDependencyGraph_Graph {
+  + name : str
+}
+class qVTcDataDependencyGraph_MappingNode {
+}
+class qVTcDataDependencyGraph_Node {
+  + label : str
+}
+class qVTcDataDependencyGraph_ReferenceEdge {
+}
+Edge <|-- qVTcDataDependencyGraph_ContainmentEdge
+Edge <|-- qVTcDataDependencyGraph_DependencyEdge
+Edge <|-- qVTcDataDependencyGraph_ReferenceEdge
+Element <|-- qVTcDataDependencyGraph_Edge
+Element <|-- qVTcDataDependencyGraph_Node
+Node <|-- qVTcDataDependencyGraph_ClassNode
+Node <|-- qVTcDataDependencyGraph_DataTypeNode
+Node <|-- qVTcDataDependencyGraph_MappingNode
+qVTcDataDependencyGraph_DataTypeNode "1..1" -- "1..1" qVTcDataDependencyGraph_EObject : attribute0
+qVTcDataDependencyGraph_Element "0..9999" --* "1..1" qVTcDataDependencyGraph_Graph : elements10
+qVTcDataDependencyGraph_Element "1..1" -- "1..1" qVTcDataDependencyGraph_Graph : graph9
+qVTcDataDependencyGraph_Edge "0..9999" -- "1..1" qVTcDataDependencyGraph_Node : incoming11
+qVTcDataDependencyGraph_Edge "0..9999" -- "1..1" qVTcDataDependencyGraph_Node : outgoing12
+qVTcDataDependencyGraph_EObject "0..1" -- "1..1" qVTcDataDependencyGraph_Node : qvtAstNode14
+qVTcDataDependencyGraph_EObject "0..1" -- "1..1" qVTcDataDependencyGraph_Edge : referredProperty7
+qVTcDataDependencyGraph_Edge "1..1" -- "1..1" qVTcDataDependencyGraph_Node : source5
+qVTcDataDependencyGraph_Edge "1..1" -- "1..1" qVTcDataDependencyGraph_Node : target4
+qVTcDataDependencyGraph_DataTypeNode "1..1" -- "1..1" qVTcDataDependencyGraph_EObject : type1
+@enduml

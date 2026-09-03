@@ -1,0 +1,147 @@
+@startuml
+class ArithmeticExpression {
+}
+class AtomicExpression {
+}
+enum ComparisonOperator {
+  EQUAL
+  GREATER_THAN
+  GREATER_THAN_EQUAL
+  INEQUAL
+  LESS_THAN
+  LESS_THAN_EQUAL
+}
+class Expression {
+}
+enum ForLoopDirection {
+  DOWN
+  UP
+}
+class FunctionalUnit {
+}
+class Operation {
+}
+class Statement {
+}
+class UnaryExpression {
+}
+class mpl_AddExpression {
+}
+abstract class mpl_ArithmeticExpression {
+}
+class mpl_Assignment {
+}
+abstract class mpl_AtomicExpression {
+}
+class mpl_Block {
+}
+class mpl_ComparisonExpression {
+  + comparisonOperator : str
+}
+class mpl_DivExpression {
+}
+abstract class mpl_Expression {
+}
+class mpl_ExpressionStatement {
+}
+class mpl_ForLoop {
+  + direction : str
+}
+class mpl_Function {
+}
+abstract class mpl_FunctionalUnit {
+  + name : str
+}
+class mpl_IfStatement {
+}
+class mpl_LiteralValue {
+  + rawValue : int
+}
+class mpl_MPLModel {
+}
+class mpl_MulExpression {
+}
+abstract class mpl_Operation {
+}
+class mpl_OperationExpression {
+}
+class mpl_ParenthesisExpression {
+}
+class mpl_Procedure {
+}
+class mpl_Program {
+}
+class mpl_ReturnStatement {
+}
+abstract class mpl_Statement {
+}
+class mpl_SubExpression {
+}
+class mpl_Trace {
+}
+abstract class mpl_UnaryExpression {
+}
+class mpl_UnaryMinusExpression {
+}
+class mpl_Variable {
+  + name : str
+}
+class mpl_VariableDeclaration {
+}
+class mpl_VariableReference {
+}
+class mpl_WhileLoop {
+}
+ArithmeticExpression <|-- mpl_AddExpression
+ArithmeticExpression <|-- mpl_DivExpression
+ArithmeticExpression <|-- mpl_MulExpression
+ArithmeticExpression <|-- mpl_SubExpression
+AtomicExpression <|-- mpl_LiteralValue
+AtomicExpression <|-- mpl_VariableReference
+Expression <|-- mpl_ArithmeticExpression
+Expression <|-- mpl_AtomicExpression
+Expression <|-- mpl_OperationExpression
+Expression <|-- mpl_UnaryExpression
+FunctionalUnit <|-- mpl_Operation
+FunctionalUnit <|-- mpl_Program
+Operation <|-- mpl_Function
+Operation <|-- mpl_Procedure
+Statement <|-- mpl_Assignment
+Statement <|-- mpl_ExpressionStatement
+Statement <|-- mpl_ForLoop
+Statement <|-- mpl_IfStatement
+Statement <|-- mpl_ReturnStatement
+Statement <|-- mpl_Trace
+Statement <|-- mpl_WhileLoop
+UnaryExpression <|-- mpl_ParenthesisExpression
+UnaryExpression <|-- mpl_UnaryMinusExpression
+mpl_Block "1..1" --* "1..1" mpl_WhileLoop : body28
+mpl_Block "1..1" --* "1..1" mpl_ForLoop : body36
+mpl_Expression "1..1" --* "1..1" mpl_ForLoop : bound33
+mpl_ComparisonExpression "1..1" --* "1..1" mpl_IfStatement : condition19
+mpl_ComparisonExpression "1..1" --* "1..1" mpl_WhileLoop : condition26
+mpl_Assignment "1..1" --* "1..1" mpl_ForLoop : counter31
+mpl_Block "0..1" --* "1..1" mpl_IfStatement : elseBlock23
+mpl_Expression "1..1" --* "1..1" mpl_ExpressionStatement : expression43
+mpl_Block "1..1" --* "1..1" mpl_FunctionalUnit : functionalBody4
+mpl_Assignment "1..1" *-- "1..1" mpl_VariableReference : leftHandSide17
+mpl_ComparisonExpression "1..1" *-- "1..1" mpl_Expression : leftHandSide48
+mpl_ArithmeticExpression "1..1" *-- "1..1" mpl_Expression : operand154
+mpl_ArithmeticExpression "1..1" *-- "1..1" mpl_Expression : operand256
+mpl_Expression "1..1" --* "1..1" mpl_UnaryExpression : operand59
+mpl_Operation "1..1" -- "1..1" mpl_OperationExpression : operation61
+mpl_MPLModel "1..1" *-- "0..9999" mpl_Operation : operations1
+mpl_Operation "1..1" *-- "0..9999" mpl_Variable : parameters6
+mpl_Expression "0..9999" --* "1..1" mpl_OperationExpression : parameters63
+mpl_MPLModel "1..1" *-- "1..1" mpl_Program : program0
+mpl_Expression "0..1" --* "1..1" mpl_ReturnStatement : returnValue41
+mpl_Assignment "1..1" *-- "1..1" mpl_Expression : rightHandSide15
+mpl_ComparisonExpression "1..1" *-- "1..1" mpl_Expression : rightHandSide51
+mpl_Block "1..1" *-- "0..9999" mpl_Statement : statements13
+mpl_Block "1..1" --* "1..1" mpl_IfStatement : thenBlock20
+mpl_Trace "1..1" *-- "1..1" mpl_VariableReference : varToPrint39
+mpl_Variable "1..1" -- "1..1" mpl_VariableReference : variable45
+mpl_Variable "1..1" --* "1..1" mpl_VariableDeclaration : variable8
+mpl_FunctionalUnit "1..1" *-- "0..9999" mpl_VariableDeclaration : variableDeclarations3
+mpl_Expression "0..1" --* "1..1" mpl_VariableDeclaration : variableInitialization11
+@enduml

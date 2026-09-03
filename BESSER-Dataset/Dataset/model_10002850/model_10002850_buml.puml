@@ -1,0 +1,30 @@
+@startuml
+class Deleted {
+}
+class Doctor_Actor {
+}
+class From_Author {
+}
+class Inbox {
+}
+class Sent {
+}
+class To_Author {
+}
+class Update_Patient_Mental_Info_UseCase {
+}
+class View_Patient_Clinical_info_UseCase {
+}
+class View_Patient_Mental_Info_UseCase {
+}
+class message {
+}
+Doctor_Actor "0..1" -- "0..1" Update_Patient_Mental_Info_UseCase : Doctor_Update_Patient_Mental_Info
+Doctor_Actor "0..1" -- "0..1" View_Patient_Clinical_info_UseCase : Doctor_View_Patient_Clinical_info
+Doctor_Actor "0..1" -- "0..1" View_Patient_Mental_Info_UseCase : Doctor_View_Patient_Mental_Info
+From_Author "1..9999" -- "1..9999" message : From_message
+Inbox "0..1" -- "0..9999" message : Inbox_message
+Sent "0..1" -- "0..9999" message : Sent_message
+Deleted "0..1" -- "0..9999" message : message_Deleted
+To_Author "1..9999" -- "1..9999" message : message_To
+@enduml

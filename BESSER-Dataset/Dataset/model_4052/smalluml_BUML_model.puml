@@ -1,0 +1,73 @@
+@startuml
+class NamedElement {
+}
+class Relation {
+}
+class Type {
+}
+class smalluml_Attribute {
+}
+class smalluml_Bool {
+}
+class smalluml_Class {
+}
+class smalluml_Composition {
+}
+class smalluml_Enumeration {
+  + values : str
+}
+class smalluml_Integer {
+}
+class smalluml_Method {
+}
+abstract class smalluml_NamedElement {
+  + name : str
+}
+class smalluml_Package {
+}
+class smalluml_Parameter {
+}
+class smalluml_Real {
+}
+class smalluml_Reference {
+}
+abstract class smalluml_Relation {
+}
+class smalluml_Role {
+  + lowerBound : int
+  + upperBound : int
+}
+class smalluml_String {
+}
+abstract class smalluml_Type {
+}
+class smalluml_UnlimitedNatural {
+}
+NamedElement <|-- smalluml_Attribute
+NamedElement <|-- smalluml_Class
+NamedElement <|-- smalluml_Enumeration
+NamedElement <|-- smalluml_Method
+NamedElement <|-- smalluml_Package
+NamedElement <|-- smalluml_Parameter
+NamedElement <|-- smalluml_Relation
+NamedElement <|-- smalluml_Role
+Relation <|-- smalluml_Composition
+Relation <|-- smalluml_Reference
+Type <|-- smalluml_Bool
+Type <|-- smalluml_Enumeration
+Type <|-- smalluml_Integer
+Type <|-- smalluml_Real
+Type <|-- smalluml_String
+Type <|-- smalluml_UnlimitedNatural
+smalluml_Attribute "0..9999" --* "1..1" smalluml_Class : attribute1
+smalluml_Class "1..1" -- "1..1" smalluml_Role : class_20
+smalluml_NamedElement "0..9999" --* "1..1" smalluml_Package : member23
+smalluml_Class "1..1" *-- "0..9999" smalluml_Method : method0
+smalluml_Method "1..1" *-- "0..9999" smalluml_Parameter : parameter8
+smalluml_Method "1..1" *-- "0..1" smalluml_Type : returnType10
+smalluml_Relation "1..1" *-- "1..1" smalluml_Role : source16
+smalluml_Class "0..1" -- "1..1" smalluml_Class : super4
+smalluml_Relation "1..1" *-- "1..1" smalluml_Role : target17
+smalluml_Parameter "1..1" *-- "1..1" smalluml_Type : type13
+smalluml_Attribute "1..1" *-- "1..1" smalluml_Type : type6
+@enduml

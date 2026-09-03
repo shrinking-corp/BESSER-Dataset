@@ -1,0 +1,120 @@
+@startuml
+class AnnotationStatement {
+}
+class AssignmentStatement {
+}
+class Expression {
+}
+class Statement {
+}
+class SwitchCaseStatement {
+}
+class eol_statements_AbortStatement {
+}
+abstract class eol_statements_AnnotationStatement {
+}
+class eol_statements_AssignmentStatement {
+}
+class eol_statements_BreakAllStatement {
+}
+class eol_statements_BreakStatement {
+}
+class eol_statements_ContinueStatement {
+}
+class eol_statements_DeleteStatement {
+}
+class eol_statements_ExecutableAnnotationStatement {
+}
+abstract class eol_statements_Expression {
+}
+class eol_statements_ExpressionOrStatementBlock {
+}
+class eol_statements_ExpressionStatement {
+}
+class eol_statements_ForStatement {
+}
+class eol_statements_FormalParameterExpression {
+}
+class eol_statements_IfStatement {
+}
+class eol_statements_ModelDeclarationParameter {
+}
+class eol_statements_ModelDeclarationStatement {
+}
+class eol_statements_NameExpression {
+}
+class eol_statements_ReturnStatement {
+}
+class eol_statements_SimpleAnnotationStatement {
+}
+class eol_statements_SpecialAssignmentStatement {
+}
+abstract class eol_statements_Statement {
+}
+class eol_statements_StringExpression {
+}
+class eol_statements_SwitchCaseDefaultStatement {
+}
+class eol_statements_SwitchCaseExpressionStatement {
+}
+abstract class eol_statements_SwitchCaseStatement {
+}
+class eol_statements_SwitchStatement {
+}
+class eol_statements_ThrowStatement {
+}
+class eol_statements_VariableDeclarationExpression {
+}
+class eol_statements_WhileStatement {
+}
+AnnotationStatement <|-- eol_statements_ExecutableAnnotationStatement
+AnnotationStatement <|-- eol_statements_SimpleAnnotationStatement
+AssignmentStatement <|-- eol_statements_SpecialAssignmentStatement
+Expression <|-- eol_statements_NameExpression
+Expression <|-- eol_statements_VariableDeclarationExpression
+Statement <|-- eol_statements_AbortStatement
+Statement <|-- eol_statements_AnnotationStatement
+Statement <|-- eol_statements_AssignmentStatement
+Statement <|-- eol_statements_BreakAllStatement
+Statement <|-- eol_statements_BreakStatement
+Statement <|-- eol_statements_ContinueStatement
+Statement <|-- eol_statements_DeleteStatement
+Statement <|-- eol_statements_ExpressionStatement
+Statement <|-- eol_statements_ForStatement
+Statement <|-- eol_statements_IfStatement
+Statement <|-- eol_statements_ModelDeclarationStatement
+Statement <|-- eol_statements_ReturnStatement
+Statement <|-- eol_statements_SwitchCaseStatement
+Statement <|-- eol_statements_SwitchStatement
+Statement <|-- eol_statements_ThrowStatement
+Statement <|-- eol_statements_WhileStatement
+SwitchCaseStatement <|-- eol_statements_SwitchCaseDefaultStatement
+SwitchCaseStatement <|-- eol_statements_SwitchCaseExpressionStatement
+eol_statements_ModelDeclarationStatement "1..1" *-- "0..9999" eol_statements_VariableDeclarationExpression : aliases53
+eol_statements_ExpressionOrStatementBlock "1..1" --* "1..1" eol_statements_ForStatement : body26
+eol_statements_ExpressionOrStatementBlock "1..1" --* "1..1" eol_statements_WhileStatement : body31
+eol_statements_ExpressionOrStatementBlock "1..1" --* "1..1" eol_statements_SwitchCaseStatement : body7
+eol_statements_SwitchCaseExpressionStatement "0..9999" --* "1..1" eol_statements_SwitchStatement : cases3
+eol_statements_Expression "1..1" --* "1..1" eol_statements_IfStatement : condition11
+eol_statements_Expression "1..1" --* "1..1" eol_statements_ForStatement : condition23
+eol_statements_Expression "1..1" --* "1..1" eol_statements_WhileStatement : condition29
+eol_statements_SwitchCaseDefaultStatement "0..1" --* "1..1" eol_statements_SwitchStatement : default5
+eol_statements_ModelDeclarationStatement "1..1" *-- "1..1" eol_statements_NameExpression : driver50
+eol_statements_ExpressionOrStatementBlock "0..1" --* "1..1" eol_statements_IfStatement : elseBody19
+eol_statements_ExpressionOrStatementBlock "0..9999" --* "1..1" eol_statements_IfStatement : elseIfBodies16
+eol_statements_Expression "1..1" --* "1..1" eol_statements_ExpressionStatement : expr0
+eol_statements_Expression "1..1" --* "1..1" eol_statements_SwitchStatement : expr1
+eol_statements_Expression "1..1" --* "1..1" eol_statements_ReturnStatement : expr34
+eol_statements_Expression "1..1" --* "1..1" eol_statements_ThrowStatement : expr36
+eol_statements_DeleteStatement "1..1" *-- "1..1" eol_statements_Expression : expr38
+eol_statements_ExecutableAnnotationStatement "1..1" *-- "1..1" eol_statements_Expression : expr47
+eol_statements_Expression "1..1" --* "1..1" eol_statements_SwitchCaseExpressionStatement : expr8
+eol_statements_ExpressionOrStatementBlock "1..1" --* "1..1" eol_statements_IfStatement : ifBody13
+eol_statements_ForStatement "1..1" *-- "1..1" eol_statements_FormalParameterExpression : iterator22
+eol_statements_AssignmentStatement "1..1" *-- "1..1" eol_statements_Expression : lhs40
+eol_statements_AnnotationStatement "1..1" *-- "1..1" eol_statements_NameExpression : name45
+eol_statements_ModelDeclarationStatement "1..1" *-- "1..1" eol_statements_VariableDeclarationExpression : name49
+eol_statements_ModelDeclarationParameter "0..9999" --* "1..1" eol_statements_ModelDeclarationStatement : parameters56
+eol_statements_AssignmentStatement "1..1" *-- "1..1" eol_statements_Expression : rhs42
+eol_statements_SimpleAnnotationStatement "1..1" *-- "0..9999" eol_statements_StringExpression : values46
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+class esof_homework4_q2_Item {
+  + USPrice : int
+  + comment : str
+  + partNum : str
+  + productName : str
+  + quantity : int
+  + shipDate : str
+}
+class esof_homework4_q2_PurchaseOrder {
+  + comment : str
+  + orderDate : str
+}
+class esof_homework4_q2_USAddress {
+  + city : str
+  + country : str
+  + name : str
+  + state : str
+  + street : str
+  + zip : int
+}
+esof_homework4_q2_PurchaseOrder "1..1" *-- "1..1" esof_homework4_q2_USAddress : billTo3
+esof_homework4_q2_Item "0..9999" --* "1..1" esof_homework4_q2_PurchaseOrder : items0
+esof_homework4_q2_PurchaseOrder "1..1" *-- "1..1" esof_homework4_q2_USAddress : shipTo1
+@enduml

@@ -1,0 +1,99 @@
+@startuml
+class Account {
+  + creationDate : int
+  + login : str
+  + password : int
+}
+class Admin_Actor {
+}
+class Attack {
+  + name : str
+  + requiredTokens : int
+}
+class AttackHistory {
+  + auto : bool
+  + date : int
+  + target : str
+}
+class Authenticate_UseCase {
+}
+class Authenticate_UseCase1 {
+}
+class Balance {
+  + tokens : int
+}
+class Country {
+  + countryName : str
+}
+class Edit_Profile_UseCase {
+}
+class Edit_Profile_UseCase1 {
+}
+class ExecuteAttack_UseCase {
+}
+class Location {
+  + city : str
+  + postalCode : int
+  + stateProvince : str
+  + streetAddress : str
+}
+class Register_UseCase {
+}
+class Result {
+  + value : str
+}
+class Role {
+  + type : str
+}
+class StartParam {
+  + type : str
+  + value : str
+}
+class User {
+  + birthDate : int
+  + cin : str
+  + email : str
+  + fName : str
+  + lName : str
+  + phoneNumber : int
+}
+class User_Actor {
+}
+class View_AttackHistory_UseCase {
+}
+class View_AttackHistory_UseCase1 {
+}
+class View_AttackNews_UseCase {
+}
+class View_AttackNews_UseCase1 {
+}
+class View_Home_UseCase {
+}
+class View_Home_UseCase1 {
+}
+class View_Profile_UseCase {
+}
+class View_Profile_UseCase1 {
+}
+Account "1..1" -- "1..1" Balance : Account_Balance
+Attack "1..1" -- "0..9999" AttackHistory : Attack_AttackHistory
+Country "0..1" -- "0..9999" Location : Location_Country
+AttackHistory "0..9999" -- "1..1" Result : Result_AttackHistory
+AttackHistory "0..9999" -- "1..1" StartParam : StartParam_AttackHistory
+Account "1..1" -- "1..1" User : User_Account
+AttackHistory "0..1" -- "0..1" User : User_AttackHistory
+Edit_Profile_UseCase "0..1" -- "0..1" User_Actor : User_Edit_Profile
+Admin_Actor "0..1" -- "0..1" Edit_Profile_UseCase1 : User_Edit_Profile2
+ExecuteAttack_UseCase "0..1" -- "0..1" User_Actor : User_ExecuteAttack
+Location "1..1" -- "1..1" User : User_Location
+Register_UseCase "0..1" -- "0..1" User_Actor : User_Register
+Role "1..9999" -- "0..9999" User : User_Role
+User_Actor "0..1" -- "0..1" View_AttackHistory_UseCase : User_View_AttackHistory
+Admin_Actor "0..1" -- "0..1" View_AttackHistory_UseCase1 : User_View_AttackHistory2
+User_Actor "0..1" -- "0..1" View_AttackNews_UseCase : User_View_AttackNews
+Admin_Actor "0..1" -- "0..1" View_AttackNews_UseCase1 : User_View_AttackNews2
+User_Actor "0..1" -- "0..1" View_Home_UseCase : User_View_Home
+Admin_Actor "0..1" -- "0..1" View_Home_UseCase1 : User_View_Home2
+User_Actor "0..1" -- "0..1" View_Profile_UseCase : User_View_Profile
+Admin_Actor "0..1" -- "0..1" View_Profile_UseCase1 : User_View_Profile2
+@enduml

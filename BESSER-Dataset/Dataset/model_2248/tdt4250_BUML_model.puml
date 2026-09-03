@@ -1,0 +1,41 @@
+@startuml
+enum Semester {
+  autumn
+  spring
+}
+enum StudyProgramName {
+  computer_science_2_years
+  computer_science_5_years
+  informatics
+}
+class tdt4250_Course {
+  + code : str
+  + level : str
+  + name : str
+  + semester : str
+  + study_points : float
+}
+class tdt4250_CourseGroup {
+}
+class tdt4250_Specialisation {
+  + name : str
+}
+class tdt4250_Student {
+  + current_semester : int
+  + studentID : int
+}
+class tdt4250_StudyProgram {
+  + name : str
+  + number_of_semesters : int
+}
+tdt4250_CourseGroup "0..1" -- "1..1" tdt4250_Specialisation : course_group22
+tdt4250_Course "0..9999" --* "1..1" tdt4250_Student : courses5
+tdt4250_Course "0..1" -- "1..1" tdt4250_CourseGroup : elective_courses10
+tdt4250_Specialisation "0..1" -- "1..1" tdt4250_Specialisation : further_specialisation20
+tdt4250_Course "0..1" -- "1..1" tdt4250_CourseGroup : mandatory_courses8
+tdt4250_Course "0..9999" --* "1..1" tdt4250_StudyProgram : obligatory_courses3
+tdt4250_CourseGroup "1..1" -- "0..1" tdt4250_Specialisation : specialisation13
+tdt4250_Specialisation "0..10" --* "1..1" tdt4250_StudyProgram : specialisations1
+tdt4250_Student "0..9999" --* "1..1" tdt4250_StudyProgram : students0
+tdt4250_Specialisation "1..1" *-- "0..9999" tdt4250_Student : students16
+@enduml

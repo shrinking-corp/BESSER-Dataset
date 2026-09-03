@@ -311,7 +311,7 @@ Elabora: BinaryAssociation = BinaryAssociation(
         Property(name="factura23", type=Factura, multiplicity=Multiplicity(0, 9999))
     }
 )
-Factura: BinaryAssociation = BinaryAssociation(
+Factura_assoc: BinaryAssociation = BinaryAssociation(
     name="Factura",
     ends={
         Property(name="eLementos24", type=ELementos, multiplicity=Multiplicity(1, 9999)),
@@ -393,7 +393,7 @@ Contiene1: BinaryAssociation = BinaryAssociation(
 domain_model = DomainModel(
     name="_hoX_MG3dEeqhRdvvYtDJdw",
     types={Brindar_Consultoria_external, Millenium_S_A_Component, Clientes_Actor, Natural_Actor, Juridico_Actor, Departamento_de_inventarios_y_suministros___DIS_Component, Proveedores_Actor, Dependencias_Actor, Component_Component, OrdenesPedidos, ELementos, Dependencia, Factura, SolicitudSuministro, Proveedor, Pedidos, Pemsum_Universitario, Materias, Departamento, Profesor, Horas_de_clase, asignacion_de_creditos, Areas_del_Conocimiento, Creditos, Programa, Servidor_Intel__Node, Persistencia___Factura_Component, Servidor_WEB_Node, LogicaPresentacion___Factura_Component, Servidor_BD_Node, Calcular, Javaaplication, Venta, Producto, Impuesto, Class4, Registrar_proveedores_external, Recibir_productos_external, Recivir_ordenes_de_suministro_external, Entregar_los_pedidos_external},
-    associations={Calcular_Javaaplication, Venta_Producto, Venta_Impuesto, Producto_Impuesto, Clientes_Brindar_Consultoria, Proveedores_Registrar_proveedores, Proveedores_Recibir_productos, Dependencias_Recivir_ordenes_de_suministro, Dependencias_Entregar_los_pedidos, Es_Enviado, Provee, Conforma, Relasiona, Genera, Realiza, Elabora, Factura, Contiene, Asignada_por, Tiene, Tiene1, Ayudan_a, Ayudan_a1, Hace, Hace1, Forma, Contiene1},
+    associations={Calcular_Javaaplication, Venta_Producto, Venta_Impuesto, Producto_Impuesto, Clientes_Brindar_Consultoria, Proveedores_Registrar_proveedores, Proveedores_Recibir_productos, Dependencias_Recivir_ordenes_de_suministro, Dependencias_Entregar_los_pedidos, Es_Enviado, Provee, Conforma, Relasiona, Genera, Realiza, Elabora, Factura_assoc, Contiene, Asignada_por, Tiene, Tiene1, Ayudan_a, Ayudan_a1, Hace, Hace1, Forma, Contiene1},
     generalizations={},
     metadata=None
 )

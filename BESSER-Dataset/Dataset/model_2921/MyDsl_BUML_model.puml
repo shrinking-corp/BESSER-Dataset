@@ -1,0 +1,23 @@
+@startuml
+class Type {
+}
+class myDsl_DataType {
+}
+class myDsl_Domainmodel {
+}
+class myDsl_Entity {
+}
+class myDsl_Feature {
+  + many : bool
+  + name : str
+}
+class myDsl_Type {
+  + name : str
+}
+Type <|-- myDsl_DataType
+Type <|-- myDsl_Entity
+myDsl_Domainmodel "1..1" *-- "0..9999" myDsl_Type : elements0
+myDsl_Entity "1..1" *-- "0..9999" myDsl_Feature : features3
+myDsl_Entity "1..1" -- "0..1" myDsl_Entity : superType2
+myDsl_Feature "1..1" -- "0..1" myDsl_Type : type5
+@enduml

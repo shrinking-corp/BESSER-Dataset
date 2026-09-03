@@ -1,0 +1,62 @@
+@startuml
+class Avis {
+}
+class Avis1 {
+  + description : str
+  + note : int
+}
+class Chemin_Interface {
+}
+class Class {
+}
+class Conducteur {
+}
+class Lieu {
+}
+class Passager {
+}
+class Personne {
+}
+enum Personne2 {
+}
+class Trajet {
+  + date : str
+  + depart : Lieu
+  + description : str
+  + destination : Lieu
+  + placesRestantes : int
+  + prix : int
+}
+class Trajet1 {
+  + dateFin : str
+  + datedebut : str
+  + lieuFin : Lieu
+  + lieudebut : Lieu
+}
+class Utilisateur {
+  + nbAvis : int
+  + nom : str
+  + photoDeProfil : str
+  + score : str
+}
+class Utilisateur1 {
+  + adresse : str
+  + age : int
+  + nom : str
+}
+class V_hicule {
+  + imatriculation : str
+  + marque : str
+  + modele : str
+  + propri_taire : Conducteur
+}
+class Voiture {
+  + places : int
+}
+Avis1 "0..9999" -- "1..1" Utilisateur : Personne_Avis
+Trajet "0..9999" -- "1..1" Utilisateur : Personne_Trajet
+Utilisateur "1..1" -- "0..9999" Voiture : Personne_Voiture
+Conducteur "1..1" -- "0..9999" Trajet1 : Trajet_Conducteur
+Passager "1..9999" -- "1..1" Trajet1 : Trajet_Passager
+Conducteur "1..1" -- "1..9999" V_hicule : V_hicule_Conducteur
+@enduml

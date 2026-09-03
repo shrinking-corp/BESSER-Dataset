@@ -1,0 +1,191 @@
+@startuml
+class Articulo {
+  + Nombre : str
+}
+class Articulo1 {
+}
+class Articulo2 {
+  + Descripci_n : str
+  + Nombre : str
+  + Precio : real
+}
+class Asistencia {
+  + Ingreso : str
+  + Sucursal : str
+}
+class Caja {
+  + Arqueo : Real
+  + Dinero_Inicio : real
+  + Fecha : str
+  + moto_final : Real
+}
+class Clase {
+  + Asistencia : str
+  + Nombre : str
+}
+class Cliente {
+  + Apellido : str
+  + Direccion : str
+  + Email : str
+  + Nombre : str
+}
+class Cliente1 {
+  + Apellido : str
+  + DNI : str
+  + Email : str
+  + Fecha_de_Nac : str
+  + Nombre : str
+  + Telefono : str
+}
+class Cliente_Actor {
+}
+class Comprador_Actor {
+}
+class Consulta {
+  + Fecha : str
+  + Producto : str
+}
+class Consultar_asistencia_historica_UseCase {
+}
+class Consultar_inscripci_n_a_otra_clase_UseCase {
+}
+class Consultar_producto_UseCase {
+}
+class Detalle {
+  + Cantidad : str
+  + Precio : real
+  + Producto : str
+}
+enum Enumeration {
+}
+class Enviar_producto_UseCase {
+}
+class Envio {
+  + Codigo : str
+  + Fecha : str
+}
+class Inscribir_a_una_clase_UseCase {
+}
+class Instructor {
+  + Nombre : str
+}
+class Instructor_Actor {
+}
+class Jornada {
+  + Arqueo : real
+  + Dinero_en_caja : real
+  + Stock : str
+}
+class Listar_stock_UseCase {
+}
+class Pedido {
+  + Fecha : str
+  + Numero : str
+}
+class Producto {
+  + Modo_de_venta : str
+  + Precio : real
+  + Stock : str
+}
+class Publicar_producto_UseCase {
+}
+class Real {
+}
+class Realizar_consulta_UseCase {
+}
+class Realizar_pedido_UseCase {
+}
+class Registrar_cierre_de_caja_UseCase {
+}
+class Registrar_datos_de_clientes_UseCase {
+}
+class Registrar_datos_de_la_clase_a_la_que_asistir__el_cliente_UseCase {
+}
+class Registrar_datos_del_producto_UseCase {
+}
+class Registrar_inicio_de_caja_UseCase {
+}
+class Registrar_venta_UseCase {
+}
+class Renovar_inscripci_n_UseCase {
+}
+class Responder_consultas_UseCase {
+}
+class Supervisor {
+  + Clave : str
+}
+class Supervisor_Actor {
+}
+class T {
+}
+class Vendedor_Actor {
+}
+class Vendedor_Actor1 {
+}
+class Vender_producto_UseCase {
+}
+class Ventas {
+  + Cantidad : str
+  + Fecha : str
+  + Monto : real
+  + Producto : str
+}
+class Ver_consultas_sin_responder_UseCase {
+}
+class consulta_caja_UseCase {
+}
+class consulta_producto_UseCase {
+}
+class consulta_ventas_UseCase {
+}
+class due_o_Actor {
+}
+class inscripcion {
+  + fecha : str
+  + pago : Real
+}
+class real {
+}
+class usario {
+  + nombre : str
+}
+Articulo2 "1..9999" -- "1..9999" Cliente : Articulo_Cliente
+Articulo2 "1..1" -- "1..9999" Consulta : Articulo_Consulta
+Articulo2 "1..9999" -- "1..1" Detalle : Articulo_Detalle
+Articulo2 "1..9999" -- "0..1" Envio : Articulo_Envio
+Asistencia "1..9999" -- "1..1" Clase : Asistencia_Clase
+Asistencia "1..9999" -- "1..1" Instructor : Asistencia_Instructor
+Asistencia "1..9999" -- "1..1" Cliente1 : Cliente_Asistencia
+Cliente "1..1" -- "1..9999" Consulta : Cliente_Consulta
+Cliente "0..1" -- "0..1" Envio : Cliente_Envio
+Cliente "1..1" -- "0..9999" Pedido : Cliente_Pedido
+Cliente1 "1..1" -- "1..9999" inscripcion : Cliente_inscripcion
+Cliente_Actor "0..1" -- "0..1" Consultar_asistencia_historica_UseCase : Consultar_asistencia_historica_Cliente
+Comprador_Actor "0..1" -- "0..1" Consultar_producto_UseCase : Consultar_producto_Comprador
+Inscribir_a_una_clase_UseCase "0..1" -- "0..1" Instructor_Actor : Inscribir_a_una_clase_Cliente
+Instructor_Actor "0..1" -- "0..1" Registrar_datos_de_clientes_UseCase : Instructor_Registrar_datos_de_clientes
+Caja "0..1" -- "1..9999" Jornada : Jornada_Caja
+Jornada "1..9999" -- "1..1" Supervisor : Jornada_Supervisor
+Listar_stock_UseCase "0..1" -- "0..1" Supervisor_Actor : Listar_stock_Supervisor
+Detalle "1..9999" -- "1..1" Pedido : Pedido_Detalle
+Envio "1..1" -- "1..1" Pedido : Pedido_Envio
+Jornada "1..9999" -- "0..9999" Producto : Producto_Jornada
+Producto "1..1" -- "0..9999" Ventas : Producto_Ventas
+Comprador_Actor "0..1" -- "0..1" Realizar_consulta_UseCase : Realizar_consulta_Comprador
+Comprador_Actor "0..1" -- "0..1" Realizar_pedido_UseCase : Realizar_pedido_Comprador
+Registrar_cierre_de_caja_UseCase "0..1" -- "0..1" Supervisor_Actor : Registrar_cierre_de_caja_Supervisor
+Instructor_Actor "0..1" -- "0..1" Registrar_datos_de_la_clase_a_la_que_asistir__el_cliente_UseCase : Registrar_datos_de_la_clase_a_la_que_asistir__el_cliente_Instructor
+Registrar_datos_del_producto_UseCase "0..1" -- "0..1" Supervisor_Actor : Registrar_datos_del_producto_Supervisor
+Registrar_inicio_de_caja_UseCase "0..1" -- "0..1" Supervisor_Actor : Registrar_inicio_de_caja_Supervisor
+Registrar_venta_UseCase "0..1" -- "0..1" Vendedor_Actor1 : Registrar_venta_Vendedor
+Cliente_Actor "0..1" -- "0..1" Renovar_inscripci_n_UseCase : Renovar_inscripci_n_Cliente
+Caja "1..9999" -- "1..1" Supervisor : Supervisor_Caja
+Enviar_producto_UseCase "0..1" -- "0..1" Vendedor_Actor : Vendedor_Enviar_producto
+Publicar_producto_UseCase "0..1" -- "0..1" Vendedor_Actor : Vendedor_Publicar_producto
+Responder_consultas_UseCase "0..1" -- "0..1" Vendedor_Actor : Vendedor_Responder_consultas
+Vendedor_Actor1 "0..1" -- "0..1" Vender_producto_UseCase : Vender_producto_Vendedor
+Caja "1..1" -- "1..9999" Ventas : Ventas_Caja
+consulta_caja_UseCase "0..1" -- "0..1" due_o_Actor : consulta_caja_due_o
+consulta_producto_UseCase "0..1" -- "0..1" due_o_Actor : consulta_producto_due_o
+consulta_ventas_UseCase "0..1" -- "0..1" due_o_Actor : consulta_ventas_due_o
+@enduml

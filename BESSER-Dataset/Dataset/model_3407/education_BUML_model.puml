@@ -1,0 +1,21 @@
+@startuml
+class Person {
+}
+class education_Course {
+  + name : str
+  + finish(education_finishdate : str) : void
+  + start(education_startdate : str) : void
+}
+class education_Person {
+  + firstname : str
+  + lastname : str
+}
+class education_Student {
+}
+class education_Teacher {
+}
+Person <|-- education_Student
+Person <|-- education_Teacher
+education_Course "1..1" *-- "0..9999" education_Student : student0
+education_Course "1..1" *-- "1..1" education_Teacher : teacher1
+@enduml

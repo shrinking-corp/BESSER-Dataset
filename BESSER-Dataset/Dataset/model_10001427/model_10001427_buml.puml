@@ -1,0 +1,71 @@
+@startuml
+class Login {
+  + UserId : str
+  + login_status : str
+  + password : str
+}
+class Payment {
+  + Payment_id : str
+  + Payment_method : int
+  + Payment_type : str
+}
+class ShoppingCart {
+  + cartId : int
+  + dateAdded : int
+  + productId : int
+  + quantity : int
+}
+class User {
+  + Card_info : str
+  + User_name : str
+  + address : str
+  + email : str
+  + phone_no : int
+  + shipping_info : str
+}
+class cartitem {
+  + name : str
+  + product : int
+  + quantity : int
+  + subtotal : float
+  + unitcost : float
+}
+enum login_status {
+}
+class order {
+  + c_name : str
+  + date_created : date
+  + order_ID : int
+  + shipping_date : date
+  + shippingid : str
+  + status : str
+}
+class orderDetail {
+  + orderId : int
+  + productid : int
+  + productname : str
+  + quantity : int
+  + subtotall : float
+  + unitcost : float
+}
+class product {
+  + imagefilename : str
+  + price : int
+  + productid : int
+  + productname : str
+}
+class shippinginfo {
+  + shipping_Address : str
+  + shipping_cost : int
+  + shipping_date : date
+  + shipping_id : str
+  + shipping_type : str
+}
+ShoppingCart "1..1" -- "0..1" cartitem : ShoppingCart_cartitem
+ShoppingCart "0..1" -- "1..1" User : ShoppingCart_coustomer
+cartitem "0..1" -- "0..1" product : cartitem_product
+User "1..1" -- "1..9999" order : coustomer_order
+Payment "0..1" -- "0..1" order : order_Payment
+order "1..1" -- "1..1" orderDetail : order_orderDetail
+order "1..1" -- "1..1" shippinginfo : order_shippinginfo
+@enduml

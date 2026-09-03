@@ -1,0 +1,38 @@
+@startuml
+class ANode {
+}
+class XAnnotable {
+}
+class atomic_AEdge {
+}
+class atomic_AGraph {
+  + corpus : str
+}
+abstract class atomic_ANode {
+}
+class atomic_AStructured {
+}
+class atomic_ATargetEdge {
+}
+class atomic_AToken {
+  + text : str
+}
+abstract class atomic_XAnnotable {
+}
+ANode <|-- atomic_AStructured
+ANode <|-- atomic_AToken
+XAnnotable <|-- atomic_ANode
+atomic_AEdge "0..9999" --* "1..1" atomic_AGraph : edges3
+atomic_AGraph "0..1" -- "1..1" atomic_AToken : graph11
+atomic_AGraph "1..1" -- "1..1" atomic_AStructured : graph13
+atomic_AEdge "1..1" -- "1..1" atomic_AGraph : graph15
+atomic_AGraph "1..1" -- "1..1" atomic_ATargetEdge : graph25
+atomic_AToken "1..1" -- "0..1" atomic_AToken : next6
+atomic_AToken "1..1" -- "0..1" atomic_AToken : previous9
+atomic_AEdge "1..1" -- "1..1" atomic_ANode : source17
+atomic_AGraph "1..1" *-- "0..9999" atomic_AStructured : structures1
+atomic_AEdge "1..1" -- "1..1" atomic_ANode : target19
+atomic_ANode "1..1" -- "1..1" atomic_ATargetEdge : target22
+atomic_ANode "1..1" *-- "0..9999" atomic_ATargetEdge : targetedges12
+atomic_AGraph "1..1" *-- "0..9999" atomic_AToken : tokens0
+@enduml

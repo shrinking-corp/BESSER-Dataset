@@ -1,0 +1,61 @@
+@startuml
+class ShoppingCart {
+  + cartId : int
+  + dateAdded : int
+  + productId : int
+  + quantity : int
+}
+class cartitem {
+  + productId : int
+  + quantity : int
+  + subtotal : float
+  + unitcost : float
+}
+class coustomer {
+  + address : str
+  + customerId : int
+  + email : str
+  + name : str
+  + phoneno : int
+  + shippinginfo : str
+}
+class order {
+  + customerid : int
+  + datecreated : str
+  + name : str
+  + orderId : int
+  + shippingid : str
+}
+class orderDetail {
+  + orderId : int
+  + productid : int
+  + productname : str
+  + quantity : int
+  + subtotall : float
+  + unitcost : float
+}
+class product {
+  + description : str
+  + image : str
+  + name : str
+  + price : int
+  + productId : int
+}
+class shippinginfo {
+  + shippingId : int
+  + shippingcost : int
+}
+class user {
+  + UserId : int
+  + email : str
+  + loginstatus : str
+  + password : str
+}
+ShoppingCart "1..1" -- "0..1" cartitem : ShoppingCart_cartitem
+ShoppingCart "0..1" -- "1..1" coustomer : ShoppingCart_coustomer
+cartitem "0..1" -- "0..1" product : cartitem_ProLocal
+coustomer "1..1" -- "1..9999" order : coustomer_order
+orderDetail "1..9999" -- "1..1" product : orderDetail_ProLocal
+order "1..1" -- "1..1" orderDetail : order_orderDetail
+order "1..1" -- "1..1" shippinginfo : order_shippinginfo
+@enduml

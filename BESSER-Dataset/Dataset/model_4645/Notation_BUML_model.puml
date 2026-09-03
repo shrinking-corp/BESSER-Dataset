@@ -1,0 +1,76 @@
+@startuml
+class LayoutConstraint {
+}
+class Location {
+}
+class Node {
+}
+class NotationElement {
+}
+class View {
+}
+class notation_Bounds {
+  + height : int
+  + width : int
+}
+class notation_CategorySeparator {
+  + category : str
+  + newChildCodeSyncType : str
+  + newChildIcon : str
+}
+class notation_Diagram {
+  + locationForNewElements : str
+  + name : str
+  + showLocationForNewElementsDialog : bool
+}
+class notation_EObject {
+}
+class notation_Edge {
+}
+class notation_ExpandableNode {
+  + expanded : bool
+  + hasChildren : bool
+  + template : str
+}
+abstract class notation_LayoutConstraint {
+}
+class notation_Location {
+  + x : int
+  + y : int
+}
+class notation_MindMapNode {
+}
+class notation_Node {
+}
+abstract class notation_NotationElement {
+  + id : str
+  + idBeforeRemoval : str
+}
+class notation_Note {
+  + text : str
+}
+abstract class notation_View {
+  + viewDetails : str
+  + viewType : str
+  + getAllChildren() : str
+}
+LayoutConstraint <|-- notation_Location
+Location <|-- notation_Bounds
+Node <|-- notation_CategorySeparator
+Node <|-- notation_ExpandableNode
+Node <|-- notation_MindMapNode
+Node <|-- notation_Note
+NotationElement <|-- notation_Location
+NotationElement <|-- notation_View
+View <|-- notation_Diagram
+View <|-- notation_Edge
+View <|-- notation_Node
+notation_EObject "0..1" -- "1..1" notation_View : diagrammableElement1
+notation_Bounds "0..1" --* "1..1" notation_Node : layoutConstraint6
+notation_Node "0..9999" --* "1..1" notation_View : persistentChildren0
+notation_Diagram "1..1" *-- "0..9999" notation_Edge : persistentEdges11
+notation_Edge "1..1" -- "0..1" notation_View : source8
+notation_Edge "0..9999" -- "1..1" notation_View : sourceEdges3
+notation_Edge "1..1" -- "0..1" notation_View : target9
+notation_Edge "0..9999" -- "1..1" notation_View : targetEdges4
+@enduml

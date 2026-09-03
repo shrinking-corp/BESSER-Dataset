@@ -1,0 +1,34 @@
+@startuml
+class Type {
+}
+class myDsl_Association {
+}
+class myDsl_Attribute {
+  + many : bool
+  + name : str
+}
+class myDsl_DataType {
+}
+class myDsl_Domainmodel {
+}
+class myDsl_Entity {
+}
+class myDsl_Role {
+  + many : bool
+  + name : str
+}
+class myDsl_Type {
+  + name : str
+}
+Type <|-- myDsl_Association
+Type <|-- myDsl_DataType
+Type <|-- myDsl_Entity
+myDsl_Association "1..1" *-- "0..9999" myDsl_Attribute : attribute1
+myDsl_Attribute "0..9999" --* "1..1" myDsl_Entity : attribute6
+myDsl_Domainmodel "1..1" *-- "0..9999" myDsl_Type : elements0
+myDsl_Association "1..1" *-- "0..9999" myDsl_Role : role2
+myDsl_Entity "1..1" *-- "0..9999" myDsl_Role : role9
+myDsl_Entity "1..1" -- "0..1" myDsl_Entity : superType5
+myDsl_Attribute "1..1" -- "0..1" myDsl_Type : type12
+myDsl_Role "1..1" -- "0..1" myDsl_Type : type15
+@enduml

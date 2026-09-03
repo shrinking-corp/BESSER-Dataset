@@ -1,0 +1,25 @@
+@startuml
+class ppo_Item {
+  + USPrice : int
+  + comment : str
+  + partNum : str
+  + productName : str
+  + quantity : int
+  + shipDate : str
+}
+class ppo_PurchaseOrder {
+  + comment : str
+  + orderDate : str
+}
+class ppo_USAddress {
+  + city : str
+  + country : str
+  + name : str
+  + state : str
+  + street : str
+  + zip : int
+}
+ppo_PurchaseOrder "1..1" *-- "1..1" ppo_USAddress : billTo1
+ppo_Item "0..9999" --* "1..1" ppo_PurchaseOrder : items4
+ppo_PurchaseOrder "1..1" *-- "1..1" ppo_USAddress : shipTo0
+@enduml

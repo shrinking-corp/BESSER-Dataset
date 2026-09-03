@@ -1,0 +1,66 @@
+@startuml
+class Content {
+  + price : float
+  + quantity : int
+}
+class Customer {
+  + address : str
+  + email : str
+  + name : str
+  + phone : str
+}
+class New_Customer {
+  + Name : str
+  + address : str
+  + email : str
+  + password : str
+  + phone : str
+}
+class Order {
+  + number : str
+  + ordered : date
+  + ship_to : str
+  + shipped : date
+}
+class Payment {
+  + details : str
+  + id : str
+  + paid : date
+  + total : float
+}
+class Product {
+  + id : str
+  + name : str
+  + supplier : str
+}
+class Registered_Customer {
+  + Email : str
+  + password : str
+}
+class Shopping_Cart {
+  + id : str
+  + number : str
+  + total : float
+}
+class __enumeration___OderStatus {
+  + closed : str
+  + delivery : str
+  + hold : str
+  + new : str
+  + return : str
+  + shipped : str
+}
+class __enumeration___UserState {
+  + active : str
+  + banned : str
+  + blocked : str
+  + new : str
+}
+Content "0..1" -- "0..1" Customer : Customer_Content
+Customer "0..1" -- "0..1" Order : Customer_Order
+Customer "0..1" -- "0..1" Product : Customer_Product
+Customer "0..1" -- "0..1" New_Customer : New_Customer_Customer
+Customer "0..1" -- "0..1" Registered_Customer : Registered_Customer_Customer
+Order "0..1" -- "0..1" Shopping_Cart : Shopping_Cart_Order
+Payment "0..1" -- "0..1" Shopping_Cart : Shopping_Cart_Payment
+@enduml

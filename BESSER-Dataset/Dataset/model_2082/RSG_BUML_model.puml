@@ -1,0 +1,96 @@
+@startuml
+class BasicNode {
+}
+class Coordinator {
+}
+class Middleware {
+}
+class Node {
+}
+class Process {
+}
+class Root {
+}
+class Simulator {
+}
+class Skeleton {
+}
+class Tree {
+}
+class VM {
+}
+class rsgf_bundle_Bundle {
+  + ID : str
+}
+class rsgf_bundle_Process {
+  + ID : str
+}
+class rsgf_mw_Middleware {
+  + bind() : void
+  + establish() : void
+  + send() : void
+}
+class rsgf_skeleton_Skeleton {
+  + ID : str
+}
+abstract class rsgf_tree_BasicNode {
+  + modelName : str
+}
+class rsgf_tree_CDEVSCoordinator {
+}
+class rsgf_tree_CDEVSSimulator {
+}
+abstract class rsgf_tree_Coordinator {
+}
+class rsgf_tree_FlatCoordinator {
+}
+abstract class rsgf_tree_Node {
+  + ID : str
+}
+class rsgf_tree_NodeCoordinator {
+}
+class rsgf_tree_PDEVSCoordinator {
+}
+class rsgf_tree_PDEVSSimulator {
+}
+class rsgf_tree_P_Coordinator {
+}
+class rsgf_tree_P_Simulator {
+}
+class rsgf_tree_Root {
+}
+abstract class rsgf_tree_Simulator {
+}
+class rsgf_tree_Tree {
+  + ID : str
+}
+class rsgf_vm_VM {
+  + ID : str
+  + protocol : str
+}
+BasicNode <|-- rsgf_tree_Coordinator
+BasicNode <|-- rsgf_tree_Simulator
+Coordinator <|-- rsgf_tree_CDEVSCoordinator
+Coordinator <|-- rsgf_tree_FlatCoordinator
+Coordinator <|-- rsgf_tree_NodeCoordinator
+Coordinator <|-- rsgf_tree_PDEVSCoordinator
+Coordinator <|-- rsgf_tree_P_Coordinator
+Node <|-- rsgf_tree_BasicNode
+Node <|-- rsgf_tree_Root
+Simulator <|-- rsgf_tree_CDEVSSimulator
+Simulator <|-- rsgf_tree_PDEVSSimulator
+Simulator <|-- rsgf_tree_P_Simulator
+Coordinator "0..9999" --* "1..1" rsgf_tree_Tree : Coordinator1
+Process "1..9999" --* "1..1" rsgf_bundle_Bundle : Process13
+Root "1..1" --* "1..1" rsgf_tree_Tree : Root0
+Simulator "1..9999" --* "1..1" rsgf_tree_Tree : Simulator3
+BasicNode "1..1" -- "1..1" rsgf_tree_Root : child5
+BasicNode "1..9999" -- "1..1" rsgf_tree_Coordinator : children6
+Middleware "1..1" -- "1..1" rsgf_bundle_Process : middleware16
+Node "1..9999" -- "1..1" rsgf_bundle_Process : nodes15
+Process "1..9999" -- "1..1" rsgf_mw_Middleware : process18
+Root "1..9999" --* "1..1" rsgf_skeleton_Skeleton : rootskel9
+Skeleton "1..1" -- "1..1" rsgf_bundle_Bundle : skeleton12
+Tree "0..1" -- "1..1" rsgf_skeleton_Skeleton : tree8
+VM "0..1" -- "1..1" rsgf_mw_Middleware : uses20
+@enduml

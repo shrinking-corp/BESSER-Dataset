@@ -1,0 +1,299 @@
+@startuml
+enum AssignmentType {
+  ADD_ASSIGN
+  ASSIGN
+  BAN_ASSIGN
+  BLS_ASSIGN
+  BOR_ASSIGN
+  BRS_ASSIGN
+  DIV_ASSIGN
+  MOD_ASSIGN
+  MUL_ASSIGN
+  SUB_ASSIGN
+  XOR_ASSIGN
+}
+class Expression {
+}
+class Member {
+}
+class Statement {
+}
+enum StorageType {
+  CHRROM
+  INESCHR
+  INESMAPPER
+  INESMIR
+  INESPRG
+  INLINE
+  IRQ
+  MMC3CFG
+  NMI
+  PRGROM
+  RESET
+  ZP
+}
+class noop_AddExpression {
+}
+class noop_AndExpression {
+}
+class noop_ArrayLiteral {
+}
+class noop_AsmStatement {
+  + codes : str
+}
+class noop_AssignmentExpression {
+  + assignment : str
+}
+class noop_BAndExpression {
+}
+class noop_BOrExpression {
+}
+class noop_BXorExpression {
+}
+class noop_Block {
+}
+class noop_BoolLiteral {
+  + value : bool
+}
+class noop_BreakStatement {
+  + name : str
+}
+class noop_ByteLiteral {
+  + value : str
+}
+class noop_CastExpression {
+}
+class noop_ComplementExpression {
+}
+class noop_Constructor {
+}
+class noop_ConstructorField {
+}
+class noop_ContinueStatement {
+  + name : str
+}
+class noop_DecExpression {
+}
+class noop_DifferExpression {
+}
+class noop_DivExpression {
+}
+class noop_ElseStatement {
+  + name : str
+}
+class noop_EqualsExpression {
+}
+class noop_Expression {
+}
+class noop_ForStatement {
+  + name : str
+}
+class noop_ForeverStatement {
+  + name : str
+}
+class noop_GeExpression {
+}
+class noop_GtExpression {
+}
+class noop_IfStatement {
+  + name : str
+}
+class noop_IncExpression {
+}
+class noop_Index {
+}
+class noop_InstanceOfExpression {
+}
+class noop_LShiftExpression {
+}
+class noop_LeExpression {
+}
+class noop_Length {
+}
+class noop_LtExpression {
+}
+class noop_Member {
+  + name : str
+}
+class noop_MemberRef {
+  + hasArgs : bool
+}
+class noop_MemberSelect {
+  + hasArgs : bool
+}
+class noop_Method {
+}
+class noop_ModExpression {
+}
+class noop_MulExpression {
+}
+class noop_NewInstance {
+}
+class noop_NoopClass {
+  + name : str
+}
+class noop_NotExpression {
+}
+class noop_OrExpression {
+}
+class noop_RShiftExpression {
+}
+class noop_ReturnStatement {
+  + name : str
+}
+class noop_SigNegExpression {
+}
+class noop_SigPosExpression {
+}
+class noop_Statement {
+}
+class noop_Storage {
+  + type : str
+}
+class noop_StringLiteral {
+  + value : str
+}
+class noop_SubExpression {
+}
+class noop_Super {
+}
+class noop_This {
+}
+class noop_Variable {
+}
+Expression <|-- noop_AddExpression
+Expression <|-- noop_AndExpression
+Expression <|-- noop_ArrayLiteral
+Expression <|-- noop_AssignmentExpression
+Expression <|-- noop_BAndExpression
+Expression <|-- noop_BOrExpression
+Expression <|-- noop_BXorExpression
+Expression <|-- noop_BoolLiteral
+Expression <|-- noop_ByteLiteral
+Expression <|-- noop_CastExpression
+Expression <|-- noop_ComplementExpression
+Expression <|-- noop_DecExpression
+Expression <|-- noop_DifferExpression
+Expression <|-- noop_DivExpression
+Expression <|-- noop_EqualsExpression
+Expression <|-- noop_GeExpression
+Expression <|-- noop_GtExpression
+Expression <|-- noop_IncExpression
+Expression <|-- noop_InstanceOfExpression
+Expression <|-- noop_LShiftExpression
+Expression <|-- noop_LeExpression
+Expression <|-- noop_LtExpression
+Expression <|-- noop_MemberRef
+Expression <|-- noop_MemberSelect
+Expression <|-- noop_ModExpression
+Expression <|-- noop_MulExpression
+Expression <|-- noop_NewInstance
+Expression <|-- noop_NotExpression
+Expression <|-- noop_OrExpression
+Expression <|-- noop_RShiftExpression
+Expression <|-- noop_SigNegExpression
+Expression <|-- noop_SigPosExpression
+Expression <|-- noop_StringLiteral
+Expression <|-- noop_SubExpression
+Expression <|-- noop_Super
+Expression <|-- noop_This
+Member <|-- noop_Method
+Member <|-- noop_Variable
+Statement <|-- noop_AsmStatement
+Statement <|-- noop_BreakStatement
+Statement <|-- noop_ContinueStatement
+Statement <|-- noop_Expression
+Statement <|-- noop_ForStatement
+Statement <|-- noop_ForeverStatement
+Statement <|-- noop_IfStatement
+Statement <|-- noop_ReturnStatement
+Statement <|-- noop_Variable
+noop_Expression "0..9999" --* "1..1" noop_MemberSelect : args191
+noop_Expression "0..9999" --* "1..1" noop_MemberRef : args209
+noop_Expression "0..9999" --* "1..1" noop_ForStatement : assignments38
+noop_Block "0..1" --* "1..1" noop_Method : body17
+noop_Block "0..1" --* "1..1" noop_IfStatement : body25
+noop_Block "0..1" --* "1..1" noop_ElseStatement : body30
+noop_Block "0..1" --* "1..1" noop_ForStatement : body47
+noop_Block "0..1" --* "1..1" noop_ForeverStatement : body50
+noop_Expression "0..1" --* "1..1" noop_IfStatement : condition23
+noop_Expression "0..1" --* "1..1" noop_ForStatement : condition41
+noop_Constructor "0..1" --* "1..1" noop_NewInstance : constructor201
+noop_Length "0..9999" --* "1..1" noop_Variable : dimension13
+noop_CastExpression "1..1" *-- "0..9999" noop_Index : dimension171
+noop_Index "0..9999" --* "1..1" noop_NewInstance : dimension204
+noop_ElseStatement "0..1" --* "1..1" noop_IfStatement : else_28
+noop_Expression "0..9999" --* "1..1" noop_ForStatement : expressions44
+noop_Constructor "1..1" *-- "0..9999" noop_ConstructorField : fields54
+noop_ElseStatement "1..1" *-- "0..1" noop_IfStatement : if_33
+noop_Index "0..9999" --* "1..1" noop_MemberSelect : indexes194
+noop_Index "0..9999" --* "1..1" noop_MemberRef : indexes212
+noop_DifferExpression "1..1" *-- "0..1" noop_Expression : left101
+noop_Expression "0..1" --* "1..1" noop_GtExpression : left106
+noop_Expression "0..1" --* "1..1" noop_GeExpression : left111
+noop_Expression "0..1" --* "1..1" noop_LtExpression : left116
+noop_Expression "0..1" --* "1..1" noop_LeExpression : left121
+noop_Expression "0..1" --* "1..1" noop_InstanceOfExpression : left126
+noop_Expression "0..1" --* "1..1" noop_LShiftExpression : left131
+noop_Expression "0..1" --* "1..1" noop_RShiftExpression : left136
+noop_AddExpression "1..1" *-- "0..1" noop_Expression : left141
+noop_Expression "0..1" --* "1..1" noop_SubExpression : left146
+noop_Expression "0..1" --* "1..1" noop_MulExpression : left151
+noop_DivExpression "1..1" *-- "0..1" noop_Expression : left156
+noop_Expression "0..1" --* "1..1" noop_ModExpression : left161
+noop_CastExpression "1..1" *-- "0..1" noop_Expression : left166
+noop_AssignmentExpression "1..1" *-- "0..1" noop_Expression : left66
+noop_Expression "0..1" --* "1..1" noop_OrExpression : left71
+noop_AndExpression "1..1" *-- "0..1" noop_Expression : left76
+noop_BOrExpression "1..1" *-- "0..1" noop_Expression : left81
+noop_BXorExpression "1..1" *-- "0..1" noop_Expression : left86
+noop_BAndExpression "1..1" *-- "0..1" noop_Expression : left91
+noop_EqualsExpression "1..1" *-- "0..1" noop_Expression : left96
+noop_Expression "0..1" --* "1..1" noop_Storage : location6
+noop_Member "0..1" -- "1..1" noop_MemberSelect : member188
+noop_Member "0..1" -- "1..1" noop_MemberRef : member207
+noop_Member "0..9999" --* "1..1" noop_NoopClass : members2
+noop_Method "1..1" *-- "0..9999" noop_Variable : params15
+noop_Expression "0..1" --* "1..1" noop_MemberSelect : receiver186
+noop_DifferExpression "1..1" *-- "0..1" noop_Expression : right103
+noop_Expression "0..1" --* "1..1" noop_GtExpression : right108
+noop_Expression "0..1" --* "1..1" noop_GeExpression : right113
+noop_Expression "0..1" --* "1..1" noop_LtExpression : right118
+noop_Expression "0..1" --* "1..1" noop_LeExpression : right123
+noop_Expression "0..1" --* "1..1" noop_LShiftExpression : right133
+noop_Expression "0..1" --* "1..1" noop_RShiftExpression : right138
+noop_AddExpression "1..1" *-- "0..1" noop_Expression : right143
+noop_Expression "0..1" --* "1..1" noop_SubExpression : right148
+noop_Expression "0..1" --* "1..1" noop_MulExpression : right153
+noop_DivExpression "1..1" *-- "0..1" noop_Expression : right158
+noop_Expression "0..1" --* "1..1" noop_ModExpression : right163
+noop_ComplementExpression "1..1" *-- "0..1" noop_Expression : right174
+noop_Expression "0..1" --* "1..1" noop_NotExpression : right176
+noop_Expression "0..1" --* "1..1" noop_SigNegExpression : right178
+noop_Expression "0..1" --* "1..1" noop_SigPosExpression : right180
+noop_DecExpression "1..1" *-- "0..1" noop_Expression : right182
+noop_Expression "0..1" --* "1..1" noop_IncExpression : right184
+noop_AssignmentExpression "1..1" *-- "0..1" noop_Expression : right68
+noop_Expression "0..1" --* "1..1" noop_OrExpression : right73
+noop_AndExpression "1..1" *-- "0..1" noop_Expression : right78
+noop_BOrExpression "1..1" *-- "0..1" noop_Expression : right83
+noop_BXorExpression "1..1" *-- "0..1" noop_Expression : right88
+noop_BAndExpression "1..1" *-- "0..1" noop_Expression : right93
+noop_EqualsExpression "1..1" *-- "0..1" noop_Expression : right98
+noop_Block "1..1" *-- "0..9999" noop_Statement : statements19
+noop_Member "1..1" *-- "0..1" noop_Storage : storage4
+noop_NoopClass "1..1" -- "0..1" noop_NoopClass : superClass1
+noop_NoopClass "0..1" -- "1..1" noop_Variable : type10
+noop_InstanceOfExpression "1..1" -- "0..1" noop_NoopClass : type128
+noop_CastExpression "1..1" -- "0..1" noop_NoopClass : type168
+noop_NewInstance "1..1" -- "0..1" noop_NoopClass : type199
+noop_Expression "0..1" --* "1..1" noop_ReturnStatement : value21
+noop_ConstructorField "1..1" *-- "0..1" noop_Expression : value58
+noop_Expression "0..1" --* "1..1" noop_Index : value61
+noop_Expression "0..1" --* "1..1" noop_Length : value63
+noop_Expression "0..1" --* "1..1" noop_Variable : value8
+noop_ArrayLiteral "1..1" *-- "0..9999" noop_Expression : values197
+noop_ConstructorField "1..1" -- "0..1" noop_Variable : variable55
+noop_ForStatement "1..1" *-- "0..9999" noop_Variable : variables36
+noop_AsmStatement "1..1" *-- "0..9999" noop_Expression : vars52
+@enduml

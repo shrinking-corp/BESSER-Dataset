@@ -1,0 +1,66 @@
+@startuml
+class Term {
+}
+class TermReference {
+}
+class mprologTermReference_Body {
+}
+class mprologTermReference_Clause {
+}
+class mprologTermReference_Functor {
+  + text : str
+}
+class mprologTermReference_FunctorReference {
+}
+class mprologTermReference_Head {
+}
+class mprologTermReference_InfixExpression {
+}
+class mprologTermReference_List {
+}
+class mprologTermReference_Model {
+  + name : str
+}
+class mprologTermReference_Operator {
+  + symbol : str
+}
+class mprologTermReference_Parenthesis {
+}
+class mprologTermReference_QuotedAtom {
+  + text : str
+}
+abstract class mprologTermReference_Term {
+}
+abstract class mprologTermReference_TermReference {
+}
+class mprologTermReference_Variable {
+  + name : str
+}
+class mprologTermReference_VariableReference {
+}
+Term <|-- mprologTermReference_Functor
+Term <|-- mprologTermReference_InfixExpression
+Term <|-- mprologTermReference_List
+Term <|-- mprologTermReference_Parenthesis
+Term <|-- mprologTermReference_QuotedAtom
+Term <|-- mprologTermReference_TermReference
+Term <|-- mprologTermReference_Variable
+TermReference <|-- mprologTermReference_FunctorReference
+TermReference <|-- mprologTermReference_VariableReference
+mprologTermReference_Functor "0..1" -- "1..1" mprologTermReference_FunctorReference : idReference27
+mprologTermReference_Variable "0..1" -- "1..1" mprologTermReference_VariableReference : idReference32
+mprologTermReference_InfixExpression "1..1" *-- "1..1" mprologTermReference_Term : leftTerm20
+mprologTermReference_Term "1..1" *-- "0..1" mprologTermReference_Term : nextTerm8
+mprologTermReference_Body "0..1" --* "1..1" mprologTermReference_Clause : ownedBody3
+mprologTermReference_Clause "0..9999" --* "1..1" mprologTermReference_Model : ownedClause0
+mprologTermReference_Functor "1..1" --* "1..1" mprologTermReference_Head : ownedFunctor5
+mprologTermReference_Clause "1..1" *-- "0..1" mprologTermReference_Head : ownedHead1
+mprologTermReference_List "1..1" *-- "0..1" mprologTermReference_Term : ownedHeadTerms15
+mprologTermReference_InfixExpression "1..1" *-- "1..1" mprologTermReference_Operator : ownedOperator25
+mprologTermReference_List "1..1" *-- "0..1" mprologTermReference_Term : ownedTailTerms17
+mprologTermReference_Functor "1..1" *-- "0..1" mprologTermReference_Term : ownedTerm12
+mprologTermReference_FunctorReference "1..1" *-- "0..1" mprologTermReference_Term : ownedTerm29
+mprologTermReference_Parenthesis "1..1" *-- "1..1" mprologTermReference_Term : ownedTerm33
+mprologTermReference_Body "1..1" *-- "1..1" mprologTermReference_Term : ownedTerm9
+mprologTermReference_InfixExpression "1..1" *-- "1..1" mprologTermReference_Term : rightTerm22
+@enduml

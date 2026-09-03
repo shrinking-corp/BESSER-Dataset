@@ -1,0 +1,175 @@
+@startuml
+class AbstractState {
+}
+class ControlPort {
+}
+class DataPort {
+}
+enum DataType {
+  Boolean
+  Double
+  Float
+  Integer
+  Real
+}
+class EModelElement {
+}
+class Flow {
+}
+class IdentifiedItem {
+}
+class InputPort {
+}
+class ModelContent {
+}
+class NamedItem {
+}
+class OutputPort {
+}
+class Port {
+}
+class State {
+}
+class SynchronisationGate {
+}
+abstract class sam_AbstractState {
+}
+class sam_Automaton {
+}
+class sam_Composition {
+}
+class sam_ControlFlow {
+}
+abstract class sam_ControlPort {
+}
+class sam_DataFlow {
+  + type : str
+}
+abstract class sam_DataPort {
+}
+class sam_DataStore {
+}
+class sam_Decomposition {
+}
+abstract class sam_Flow {
+}
+abstract class sam_IdentifiedItem {
+  + comment : str
+  + requirements : str
+}
+class sam_InControlPort {
+}
+class sam_InDataPort {
+}
+class sam_InitialState {
+}
+abstract class sam_InputPort {
+}
+class sam_MacroState {
+}
+class sam_Model {
+}
+abstract class sam_ModelContent {
+}
+class sam_MultiPort {
+}
+abstract class sam_NamedItem {
+  + name : str
+}
+class sam_OutControlPort {
+}
+class sam_OutDataPort {
+}
+abstract class sam_OutputPort {
+}
+abstract class sam_Port {
+}
+class sam_State {
+}
+abstract class sam_SynchronisationGate {
+}
+class sam_System {
+}
+class sam_Transition {
+  + condition : str
+  + emission : str
+  + priority : str
+}
+AbstractState <|-- sam_MacroState
+AbstractState <|-- sam_State
+ControlPort <|-- sam_InControlPort
+ControlPort <|-- sam_OutControlPort
+DataPort <|-- sam_InDataPort
+DataPort <|-- sam_OutDataPort
+EModelElement <|-- sam_IdentifiedItem
+Flow <|-- sam_ControlFlow
+Flow <|-- sam_DataFlow
+IdentifiedItem <|-- sam_NamedItem
+IdentifiedItem <|-- sam_SynchronisationGate
+IdentifiedItem <|-- sam_Transition
+InputPort <|-- sam_InControlPort
+InputPort <|-- sam_InDataPort
+ModelContent <|-- sam_Automaton
+ModelContent <|-- sam_System
+NamedItem <|-- sam_AbstractState
+NamedItem <|-- sam_DataStore
+NamedItem <|-- sam_Flow
+NamedItem <|-- sam_ModelContent
+NamedItem <|-- sam_MultiPort
+NamedItem <|-- sam_Port
+OutputPort <|-- sam_OutControlPort
+OutputPort <|-- sam_OutDataPort
+Port <|-- sam_ControlPort
+Port <|-- sam_DataPort
+Port <|-- sam_InputPort
+Port <|-- sam_OutputPort
+State <|-- sam_InitialState
+SynchronisationGate <|-- sam_Composition
+SynchronisationGate <|-- sam_Decomposition
+sam_AbstractState "0..9999" --* "1..1" sam_MacroState : composition11
+sam_State "1..1" -- "1..1" sam_Transition : dest15
+sam_ControlFlow "1..1" -- "1..9999" sam_ControlPort : dest42
+sam_DataFlow "1..1" -- "1..9999" sam_DataPort : dest46
+sam_DataStore "1..1" *-- "1..1" sam_InDataPort : in_51
+sam_InDataPort "1..9999" --* "1..1" sam_SynchronisationGate : in_60
+sam_State "1..1" -- "0..9999" sam_Transition : inlink13
+sam_Flow "0..1" -- "1..1" sam_Port : inlink30
+sam_Automaton "1..1" -- "0..1" sam_Automaton : isInstanceOf10
+sam_Port "0..1" -- "1..1" sam_Port : isInstanceOf39
+sam_System "1..1" -- "0..1" sam_System : isInstanceOf76
+sam_MultiPort "0..1" -- "1..1" sam_MultiPort : isInstanceOf89
+sam_ModelContent "0..9999" --* "1..1" sam_System : listElements73
+sam_Flow "0..9999" --* "1..1" sam_System : listFlows71
+sam_ModelContent "1..1" *-- "0..9999" sam_MultiPort : listMultiPort82
+sam_MultiPort "1..1" *-- "1..9999" sam_Port : listPort83
+sam_Automaton "1..1" *-- "0..9999" sam_Port : listPorts5
+sam_Port "0..9999" --* "1..1" sam_System : listPorts63
+sam_AbstractState "1..9999" --* "1..1" sam_Automaton : listStates7
+sam_DataStore "0..9999" --* "1..1" sam_System : listStores65
+sam_SynchronisationGate "0..9999" --* "1..1" sam_System : listSynchronisation68
+sam_Automaton "1..1" *-- "0..9999" sam_Transition : listTransitions3
+sam_Model "1..1" *-- "1..1" sam_ModelContent : modelContent77
+sam_DataStore "1..1" *-- "1..1" sam_OutDataPort : out52
+sam_OutDataPort "1..9999" --* "1..1" sam_SynchronisationGate : out58
+sam_AbstractState "1..1" -- "0..9999" sam_Transition : outlink2
+sam_Flow "0..1" -- "1..1" sam_Port : outlink29
+sam_ModelContent "1..1" -- "1..1" sam_MultiPort : parent86
+sam_AbstractState "1..1" -- "0..1" sam_Automaton : parentAutomaton1
+sam_Automaton "1..1" -- "1..1" sam_Transition : parentAutomaton16
+sam_Automaton "0..1" -- "1..1" sam_Port : parentAutomaton33
+sam_DataStore "0..1" -- "1..1" sam_InDataPort : parentDataStore21
+sam_DataStore "0..1" -- "1..1" sam_OutDataPort : parentDataStore25
+sam_Model "0..1" -- "1..1" sam_ModelContent : parentModel79
+sam_MultiPort "0..1" -- "1..1" sam_Port : parentMultiPort36
+sam_AbstractState "1..1" -- "0..1" sam_MacroState : parentState0
+sam_InDataPort "1..1" -- "0..1" sam_SynchronisationGate : parentSync20
+sam_OutDataPort "1..1" -- "0..1" sam_SynchronisationGate : parentSync23
+sam_Port "1..1" -- "0..1" sam_System : parentSystem28
+sam_DataStore "1..1" -- "1..1" sam_System : parentSystem49
+sam_Flow "1..1" -- "1..1" sam_System : parentSystem54
+sam_SynchronisationGate "1..1" -- "1..1" sam_System : parentSystem56
+sam_ModelContent "1..1" -- "0..1" sam_System : parentSystem80
+sam_AbstractState "1..1" -- "1..1" sam_Transition : source18
+sam_ControlFlow "1..1" -- "1..1" sam_ControlPort : source41
+sam_DataFlow "1..1" -- "1..1" sam_DataPort : source45
+@enduml

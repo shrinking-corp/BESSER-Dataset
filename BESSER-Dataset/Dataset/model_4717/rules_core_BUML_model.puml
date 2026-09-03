@@ -1,0 +1,71 @@
+@startuml
+class BinaryExpression {
+}
+class IntegerExpression {
+}
+class UnaryExpression {
+}
+class core_Add {
+}
+class core_And {
+}
+class core_BinaryExpression {
+}
+class core_Conditional {
+}
+class core_Div {
+}
+class core_Equal {
+}
+abstract class core_Filter {
+}
+class core_Greater {
+}
+abstract class core_IntegerExpression {
+}
+class core_IntegerLiteral {
+  + val : int
+}
+class core_Lower {
+}
+class core_Minus {
+}
+class core_Mod {
+}
+class core_Mult {
+}
+class core_Not {
+}
+class core_Or {
+}
+class core_Rule {
+}
+class core_UMinus {
+}
+class core_UnaryExpression {
+}
+BinaryExpression <|-- core_Add
+BinaryExpression <|-- core_And
+BinaryExpression <|-- core_Div
+BinaryExpression <|-- core_Equal
+BinaryExpression <|-- core_Greater
+BinaryExpression <|-- core_Lower
+BinaryExpression <|-- core_Minus
+BinaryExpression <|-- core_Mod
+BinaryExpression <|-- core_Mult
+BinaryExpression <|-- core_Or
+IntegerExpression <|-- core_BinaryExpression
+IntegerExpression <|-- core_Conditional
+IntegerExpression <|-- core_IntegerLiteral
+IntegerExpression <|-- core_UnaryExpression
+UnaryExpression <|-- core_Not
+UnaryExpression <|-- core_UMinus
+core_Conditional "1..1" *-- "1..1" core_IntegerExpression : condition10
+core_IntegerExpression "1..1" --* "1..1" core_Rule : evaluatedVal0
+core_Filter "0..1" --* "1..1" core_Rule : filter1
+core_Conditional "1..1" *-- "1..1" core_IntegerExpression : ifFalseExpression7
+core_Conditional "1..1" *-- "1..1" core_IntegerExpression : ifTrueExpression5
+core_BinaryExpression "1..1" *-- "1..1" core_IntegerExpression : left13
+core_BinaryExpression "1..1" *-- "1..1" core_IntegerExpression : right15
+core_IntegerExpression "1..1" --* "1..1" core_UnaryExpression : target3
+@enduml

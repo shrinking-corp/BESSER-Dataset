@@ -1,0 +1,29 @@
+@startuml
+class Named {
+}
+class refact_A {
+}
+class refact_B {
+}
+class refact_C {
+}
+class refact_D {
+}
+class refact_E {
+}
+class refact_Named {
+  + name : str
+}
+Named <|-- refact_B
+Named <|-- refact_C
+Named <|-- refact_D
+Named <|-- refact_E
+refact_A "1..1" *-- "0..9999" refact_B : Bs0
+refact_B "0..1" -- "1..1" refact_C : c_input10
+refact_B "0..9999" -- "1..1" refact_C : c_outputs13
+refact_B "1..1" *-- "0..9999" refact_C : cs8
+refact_B "1..1" *-- "0..9999" refact_D : ds3
+refact_D "1..1" -- "0..1" refact_E : e16
+refact_A "1..1" *-- "0..9999" refact_E : es1
+refact_B "1..1" -- "0..9999" refact_E : es5
+@enduml

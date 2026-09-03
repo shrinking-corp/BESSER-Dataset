@@ -1,0 +1,60 @@
+@startuml
+class Bill {
+  + amount : str
+  + bill_no : str
+  + patient_name : str
+}
+class department {
+  + depart_id : str
+  + loacation : str
+}
+class doctor {
+  + dept : str
+  + did : str
+  + name : str
+  + phone_no : str
+  + specilization : str
+}
+class general {
+}
+class loan {
+  + amount : str
+  + patient_name : str
+}
+class login {
+  + id : str
+  + name : str
+  + pass : str
+}
+class patient {
+  + address : str
+  + age : str
+  + name : str
+  + phone_no : str
+  + pid : str
+  + room_no : str
+}
+class private {
+}
+class receptionist {
+  + name : str
+  + rid : str
+}
+class room {
+  + room_no : str
+}
+class staff {
+  + name : str
+}
+class test {
+  + disease_name : str
+}
+Bill "1..1" -- "1..1" loan : billing_loan
+department "1..9999" -- "1..9999" staff : department_staff
+doctor "1..1" -- "1..9999" test : doctor_test
+Bill "1..1" -- "1..1" patient : patient_billing
+doctor "1..1" -- "1..9999" patient : patient_doctor
+patient "1..1" -- "1..1" room : patient_room
+Bill "1..9999" -- "1..1" receptionist : receptionist_billing
+login "1..1" -- "1..1" receptionist : receptionist_login
+@enduml

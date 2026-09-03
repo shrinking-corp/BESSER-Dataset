@@ -1,0 +1,158 @@
+@startuml
+class BinaryExp {
+}
+class ControlStructure {
+}
+class Expression {
+}
+class Instruction {
+}
+class Primitive {
+}
+class UnaryExpression {
+}
+class kmLogo_Back {
+}
+abstract class kmLogo_BinaryExp {
+}
+class kmLogo_Block {
+}
+class kmLogo_CallStack {
+}
+class kmLogo_Clear {
+}
+class kmLogo_Constant {
+  + value : float
+}
+class kmLogo_ControlStructure {
+}
+class kmLogo_Cos {
+}
+class kmLogo_Div {
+}
+class kmLogo_Equals {
+}
+abstract class kmLogo_Expression {
+}
+class kmLogo_Forward {
+}
+class kmLogo_Greater {
+}
+class kmLogo_If {
+}
+abstract class kmLogo_Instruction {
+}
+class kmLogo_Left {
+}
+class kmLogo_LogoProgram {
+}
+class kmLogo_Lower {
+}
+class kmLogo_Minus {
+}
+class kmLogo_Mult {
+}
+class kmLogo_Parameter {
+  + name : str
+}
+class kmLogo_ParameterCall {
+}
+class kmLogo_PenDown {
+}
+class kmLogo_PenUp {
+}
+class kmLogo_Plus {
+}
+class kmLogo_Point {
+  + x : float
+  + y : float
+}
+abstract class kmLogo_Primitive {
+}
+class kmLogo_ProcCall {
+}
+class kmLogo_ProcDeclaration {
+  + name : str
+}
+class kmLogo_Repeat {
+}
+class kmLogo_Right {
+}
+class kmLogo_Segment {
+}
+class kmLogo_Sin {
+}
+class kmLogo_StackFrame {
+}
+class kmLogo_Tan {
+}
+class kmLogo_Turtle {
+  + heading : float
+  + penUp : bool
+}
+abstract class kmLogo_UnaryExpression {
+}
+class kmLogo_Variable {
+  + name : str
+  + value : float
+}
+class kmLogo_While {
+}
+BinaryExp <|-- kmLogo_Div
+BinaryExp <|-- kmLogo_Equals
+BinaryExp <|-- kmLogo_Greater
+BinaryExp <|-- kmLogo_Lower
+BinaryExp <|-- kmLogo_Minus
+BinaryExp <|-- kmLogo_Mult
+BinaryExp <|-- kmLogo_Plus
+ControlStructure <|-- kmLogo_If
+ControlStructure <|-- kmLogo_Repeat
+ControlStructure <|-- kmLogo_While
+Expression <|-- kmLogo_BinaryExp
+Expression <|-- kmLogo_Constant
+Expression <|-- kmLogo_ParameterCall
+Expression <|-- kmLogo_ProcCall
+Expression <|-- kmLogo_UnaryExpression
+Instruction <|-- kmLogo_Block
+Instruction <|-- kmLogo_ControlStructure
+Instruction <|-- kmLogo_Expression
+Instruction <|-- kmLogo_Primitive
+Instruction <|-- kmLogo_ProcDeclaration
+Primitive <|-- kmLogo_Back
+Primitive <|-- kmLogo_Clear
+Primitive <|-- kmLogo_Forward
+Primitive <|-- kmLogo_Left
+Primitive <|-- kmLogo_PenDown
+Primitive <|-- kmLogo_PenUp
+Primitive <|-- kmLogo_Right
+UnaryExpression <|-- kmLogo_Cos
+UnaryExpression <|-- kmLogo_Sin
+UnaryExpression <|-- kmLogo_Tan
+kmLogo_Expression "0..9999" --* "1..1" kmLogo_ProcCall : actualArgs14
+kmLogo_Expression "0..1" --* "1..1" kmLogo_Left : angle3
+kmLogo_Expression "0..1" --* "1..1" kmLogo_Right : angle5
+kmLogo_Parameter "0..9999" --* "1..1" kmLogo_ProcDeclaration : args17
+kmLogo_Point "1..1" --* "1..1" kmLogo_Segment : begin43
+kmLogo_Block "1..1" --* "1..1" kmLogo_Repeat : block30
+kmLogo_Block "1..1" --* "1..1" kmLogo_While : block32
+kmLogo_CallStack "1..1" --* "1..1" kmLogo_Turtle : callStack41
+kmLogo_ControlStructure "1..1" *-- "0..1" kmLogo_Expression : condition28
+kmLogo_ProcCall "1..1" -- "1..1" kmLogo_ProcDeclaration : declaration16
+kmLogo_Segment "0..9999" --* "1..1" kmLogo_Turtle : drawings39
+kmLogo_Block "0..1" --* "1..1" kmLogo_If : elsePart25
+kmLogo_Point "1..1" --* "1..1" kmLogo_Segment : end46
+kmLogo_Expression "1..1" --* "1..1" kmLogo_UnaryExpression : expression12
+kmLogo_CallStack "1..1" *-- "0..9999" kmLogo_StackFrame : frames49
+kmLogo_Instruction "0..9999" --* "1..1" kmLogo_ProcDeclaration : instructions19
+kmLogo_Block "1..1" *-- "0..9999" kmLogo_Instruction : instructions21
+kmLogo_Instruction "0..9999" --* "1..1" kmLogo_LogoProgram : instructions36
+kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : lhs7
+kmLogo_Parameter "1..1" -- "1..1" kmLogo_ParameterCall : parameter34
+kmLogo_Point "1..1" --* "1..1" kmLogo_Turtle : position38
+kmLogo_ProcCall "0..9999" -- "1..1" kmLogo_ProcDeclaration : procCall18
+kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : rhs9
+kmLogo_Back "1..1" *-- "1..1" kmLogo_Expression : steps0
+kmLogo_Expression "1..1" --* "1..1" kmLogo_Forward : steps1
+kmLogo_Block "1..1" --* "1..1" kmLogo_If : thenPart23
+kmLogo_StackFrame "1..1" *-- "0..9999" kmLogo_Variable : variables51
+@enduml

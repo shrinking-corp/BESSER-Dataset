@@ -1,0 +1,36 @@
+@startuml
+class PseudoState {
+}
+class SimplStateMachineDC_CompositeState {
+}
+class SimplStateMachineDC_InitialState {
+}
+abstract class SimplStateMachineDC_PseudoState {
+}
+class SimplStateMachineDC_State {
+  + Inh : str
+  + InhIf : str
+  + Ord : str
+  + OrdIf : str
+  + isActive : bool
+  + name : str
+}
+class SimplStateMachineDC_StateMachine {
+}
+class SimplStateMachineDC_Transition {
+  + event : str
+}
+class State {
+}
+PseudoState <|-- SimplStateMachineDC_InitialState
+State <|-- SimplStateMachineDC_CompositeState
+State <|-- SimplStateMachineDC_PseudoState
+SimplStateMachineDC_CompositeState "0..1" -- "1..1" SimplStateMachineDC_State : container3
+SimplStateMachineDC_CompositeState "1..1" -- "1..1" SimplStateMachineDC_InitialState : initialState5
+SimplStateMachineDC_PseudoState "1..1" -- "0..1" SimplStateMachineDC_State : referencedState6
+SimplStateMachineDC_State "1..1" -- "1..1" SimplStateMachineDC_Transition : source8
+SimplStateMachineDC_State "0..9999" --* "1..1" SimplStateMachineDC_StateMachine : states1
+SimplStateMachineDC_CompositeState "1..1" *-- "1..9999" SimplStateMachineDC_State : states4
+SimplStateMachineDC_State "1..1" -- "1..1" SimplStateMachineDC_Transition : target11
+SimplStateMachineDC_StateMachine "1..1" *-- "1..9999" SimplStateMachineDC_Transition : transitions0
+@enduml

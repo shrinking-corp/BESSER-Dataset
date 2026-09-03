@@ -1,0 +1,55 @@
+@startuml
+enum Print_Receipt {
+}
+class bill {
+  + menuid : str
+  + orderid : int
+  + tableno : int
+}
+class chef {
+  + Name : str
+  + Staffid : int
+}
+class customer {
+  + Name : str
+  + Order : str
+  + Tableno : int
+}
+class menu {
+  + Menuid : str
+  + Menuname : str
+  + Price : int
+}
+class order {
+  + orderdate : str
+  + orderid : int
+  + price : int
+}
+class payment {
+  + name : str
+  + tableno : int
+}
+class restaurant {
+  + Menuid : str
+  + tableid : int
+}
+class staff {
+  + jobtype : str
+  + name : str
+  + staffID : int
+}
+class waiter {
+  + Staffid : int
+  + name : str
+}
+customer "0..1" -- "0..1" menu : customer__menu
+menu "0..1" -- "0..1" order : menu_order
+menu "0..1" -- "0..1" staff : menu_staff
+order "0..1" -- "0..1" payment : order_payment
+customer "0..1" -- "0..1" payment : payment_customer
+customer "0..1" -- "0..1" restaurant : restaurant_customer
+restaurant "0..1" -- "0..1" staff : restaurant_staff2
+chef "0..1" -- "0..1" waiter : waiter_chef
+menu "0..1" -- "0..1" waiter : waiter_menu
+staff "0..1" -- "0..1" waiter : waiter_staff
+@enduml

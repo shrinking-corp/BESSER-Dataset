@@ -1,0 +1,29 @@
+@startuml
+enum JreType {
+  J2SE14
+  J2SE15
+}
+class pushbuttonbuild_BuildType {
+  + isIncubation : str
+  + jre : str
+  + newsgroupPublisherEmail : str
+  + newsgroupPublisherName : str
+  + parentProjectName : str
+  + projectNamespace : str
+  + shortName : str
+  + testsAreJarred : str
+}
+class pushbuttonbuild_DocumentRoot {
+  + mixed : str
+}
+class pushbuttonbuild_EStringToStringMapEntry {
+}
+class pushbuttonbuild_ExtraZIPType {
+  + name : str
+}
+pushbuttonbuild_BuildType "0..9999" --* "1..1" pushbuttonbuild_DocumentRoot : build5
+pushbuttonbuild_BuildType "1..1" *-- "0..9999" pushbuttonbuild_ExtraZIPType : extraZIP0
+pushbuttonbuild_DocumentRoot "1..1" *-- "0..9999" pushbuttonbuild_ExtraZIPType : extraZIP8
+pushbuttonbuild_DocumentRoot "1..1" *-- "0..9999" pushbuttonbuild_EStringToStringMapEntry : xMLNSPrefixMap1
+pushbuttonbuild_DocumentRoot "1..1" *-- "0..9999" pushbuttonbuild_EStringToStringMapEntry : xSISchemaLocation2
+@enduml

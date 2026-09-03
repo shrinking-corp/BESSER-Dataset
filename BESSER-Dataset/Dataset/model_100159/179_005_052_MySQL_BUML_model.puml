@@ -1,0 +1,50 @@
+@startuml
+class Column {
+}
+class DataBase {
+}
+class EnumItem {
+}
+class EnumSet {
+}
+class MySQL_Column {
+  + comment : str
+  + defaultValue : str
+  + isPrimaryKey : str
+  + null : str
+  + type : str
+}
+class MySQL_DataBase {
+}
+class MySQL_EnumColumn {
+}
+class MySQL_EnumItem {
+}
+class MySQL_EnumSet {
+}
+class MySQL_IntegerColumn {
+  + isAutoIncrement : str
+}
+abstract class MySQL_NamedElement {
+  + name : str
+}
+class MySQL_Table {
+}
+class NamedElement {
+}
+class Table {
+}
+Column <|-- MySQL_EnumColumn
+Column <|-- MySQL_IntegerColumn
+NamedElement <|-- MySQL_Column
+NamedElement <|-- MySQL_DataBase
+NamedElement <|-- MySQL_EnumItem
+NamedElement <|-- MySQL_Table
+Column "0..9999" --* "1..1" MySQL_Table : columns1
+DataBase "1..1" -- "1..1" MySQL_Table : database2
+EnumItem "0..9999" --* "1..1" MySQL_EnumSet : enumItems6
+EnumSet "1..1" --* "1..1" MySQL_EnumColumn : enumSet5
+EnumSet "1..1" -- "1..1" MySQL_EnumItem : enumSet7
+MySQL_Column "1..1" -- "1..1" Table : table3
+MySQL_DataBase "1..1" *-- "0..9999" Table : tables0
+@enduml

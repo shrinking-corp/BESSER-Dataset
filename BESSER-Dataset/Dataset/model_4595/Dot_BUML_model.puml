@@ -1,0 +1,34 @@
+@startuml
+class Graph {
+}
+class dot_Attribute {
+  + weight : int
+}
+class dot_DirectedEdge {
+}
+class dot_DirectedGraph {
+}
+class dot_Graph {
+  + name : str
+}
+class dot_GraphModel {
+}
+class dot_Node {
+  + name : str
+}
+class dot_UnDirectedEdge {
+}
+class dot_UndirectedGraph {
+}
+Graph <|-- dot_DirectedGraph
+Graph <|-- dot_UndirectedGraph
+dot_Attribute "0..9999" --* "1..1" dot_DirectedEdge : attributes16
+dot_Attribute "0..9999" --* "1..1" dot_UnDirectedEdge : attributes8
+dot_UnDirectedEdge "0..9999" --* "1..1" dot_UndirectedGraph : edge1
+dot_DirectedEdge "0..9999" --* "1..1" dot_DirectedGraph : edge2
+dot_Graph "0..9999" --* "1..1" dot_GraphModel : graph0
+dot_DirectedEdge "1..1" *-- "0..1" dot_Node : src10
+dot_Node "0..1" --* "1..1" dot_UnDirectedEdge : src3
+dot_DirectedEdge "1..1" *-- "0..1" dot_Node : tgt13
+dot_Node "0..1" --* "1..1" dot_UnDirectedEdge : tgt5
+@enduml

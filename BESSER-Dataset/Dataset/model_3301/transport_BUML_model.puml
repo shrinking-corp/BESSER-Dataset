@@ -1,0 +1,71 @@
+@startuml
+class DynamicLabel {
+}
+class EdgeDecorator {
+}
+class EdgeLabel {
+}
+class LabelValue {
+}
+class MigrationEdge {
+}
+class MigrationEdgeLabel {
+}
+class Node {
+}
+class NodeLabel {
+}
+class PopulationEdge {
+}
+class TransportSystem {
+}
+class transport_LoadUnloadEdge {
+  + loadingEdge : bool
+}
+class transport_LoadUnloadEdgeLabel {
+  + activatedRate : float
+}
+class transport_PacketStyleTransportSystem {
+}
+class transport_PacketStyleTransportSystemDecorator {
+}
+class transport_PacketTransportLabel {
+}
+class transport_PacketTransportLabelValue {
+  + capacity : float
+}
+class transport_PipeStyleTransportSystem {
+  + maxCapacity : float
+}
+class transport_PipeTransportEdge {
+}
+class transport_PipeTransportEdgeLabel {
+}
+class transport_PipeTransportEdgeLabelValue {
+  + maxFlow : float
+  + timePeriod : str
+}
+class transport_STEMTime {
+}
+abstract class transport_TransportSystem {
+}
+DynamicLabel <|-- transport_LoadUnloadEdgeLabel
+EdgeDecorator <|-- transport_PacketStyleTransportSystemDecorator
+EdgeLabel <|-- transport_PipeTransportEdgeLabel
+LabelValue <|-- transport_PacketTransportLabelValue
+LabelValue <|-- transport_PipeTransportEdgeLabelValue
+MigrationEdge <|-- transport_LoadUnloadEdge
+MigrationEdgeLabel <|-- transport_LoadUnloadEdgeLabel
+Node <|-- transport_TransportSystem
+NodeLabel <|-- transport_PacketTransportLabel
+PopulationEdge <|-- transport_PipeTransportEdge
+TransportSystem <|-- transport_PacketStyleTransportSystem
+TransportSystem <|-- transport_PipeStyleTransportSystem
+transport_LoadUnloadEdgeLabel "1..1" -- "0..1" transport_STEMTime : activationTime0
+transport_LoadUnloadEdgeLabel "1..1" -- "0..1" transport_STEMTime : deactivationTime1
+transport_PipeStyleTransportSystem "1..1" -- "0..9999" transport_PipeTransportEdge : inTransportEdges10
+transport_LoadUnloadEdge "0..9999" -- "1..1" transport_PacketStyleTransportSystem : loadingEdges5
+transport_PipeStyleTransportSystem "1..1" -- "0..9999" transport_PipeTransportEdge : outTransportEdges11
+transport_PacketStyleTransportSystem "1..1" -- "0..1" transport_PacketTransportLabel : packetTransportLabel4
+transport_LoadUnloadEdge "0..9999" -- "1..1" transport_PacketStyleTransportSystem : unloadingEdges7
+@enduml

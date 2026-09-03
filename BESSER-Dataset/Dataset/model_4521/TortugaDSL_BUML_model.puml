@@ -1,0 +1,184 @@
+@startuml
+class BOOLEAN_EXPRESSION {
+}
+class COLOREABLE {
+}
+class CONTROL_SENTENCES {
+}
+class DRAWING_SENTENCE {
+}
+class EXPRESSION {
+}
+class FONT_SPEC {
+}
+class FontStyleValues {
+}
+class MOVE {
+}
+class OPERATION {
+}
+class REFERENCIABLE {
+}
+class SENTENCE {
+}
+class tortugaDSL_BOLD {
+}
+class tortugaDSL_BOOLEAN_EXPRESSION {
+}
+class tortugaDSL_CANVAS_COLOR {
+}
+class tortugaDSL_CLEAR {
+}
+class tortugaDSL_COLOREABLE {
+  + color : str
+}
+class tortugaDSL_COLOR_SPEC {
+}
+class tortugaDSL_CONTENT {
+}
+class tortugaDSL_CONTROL_SENTENCES {
+}
+class tortugaDSL_DIVIDE {
+}
+class tortugaDSL_DRAWING_SENTENCE {
+}
+class tortugaDSL_DRAW_STRING {
+  + text : str
+}
+class tortugaDSL_EQUALS {
+}
+class tortugaDSL_EXPRESSION {
+}
+class tortugaDSL_FONT_SIZE {
+}
+class tortugaDSL_FONT_SPEC {
+}
+class tortugaDSL_FONT_STYLE {
+}
+class tortugaDSL_FORWARD {
+}
+class tortugaDSL_FontStyleValues {
+}
+class tortugaDSL_GREATER_THAN {
+}
+class tortugaDSL_HOME {
+}
+class tortugaDSL_IF {
+}
+class tortugaDSL_ITALIC {
+}
+class tortugaDSL_LEFT {
+}
+class tortugaDSL_LESSER_THAN {
+}
+class tortugaDSL_MAKE {
+}
+class tortugaDSL_MOVE {
+}
+class tortugaDSL_MULTIPLY {
+}
+class tortugaDSL_OPERATION {
+}
+class tortugaDSL_PARAM {
+}
+class tortugaDSL_PENCOLOR {
+}
+class tortugaDSL_PENDOWN {
+}
+class tortugaDSL_PENUP {
+}
+class tortugaDSL_PLAIN {
+}
+class tortugaDSL_PROCEDURE_CALL {
+}
+class tortugaDSL_REFERENCIABLE {
+  + name : str
+}
+class tortugaDSL_REPEAT {
+}
+class tortugaDSL_RIGHT {
+}
+class tortugaDSL_SENTENCE {
+}
+class tortugaDSL_SET_X {
+}
+class tortugaDSL_SET_Y {
+}
+class tortugaDSL_SUBTRACT {
+}
+class tortugaDSL_SUM {
+}
+class tortugaDSL_TO {
+  + name : str
+}
+class tortugaDSL_TortugaProgram {
+}
+class tortugaDSL_VALUE {
+  + val : float
+}
+class tortugaDSL_VARIABLE_REF {
+}
+BOOLEAN_EXPRESSION <|-- tortugaDSL_EQUALS
+BOOLEAN_EXPRESSION <|-- tortugaDSL_GREATER_THAN
+BOOLEAN_EXPRESSION <|-- tortugaDSL_LESSER_THAN
+COLOREABLE <|-- tortugaDSL_CANVAS_COLOR
+COLOREABLE <|-- tortugaDSL_PENCOLOR
+CONTROL_SENTENCES <|-- tortugaDSL_IF
+CONTROL_SENTENCES <|-- tortugaDSL_REPEAT
+CONTROL_SENTENCES <|-- tortugaDSL_TO
+DRAWING_SENTENCE <|-- tortugaDSL_CLEAR
+DRAWING_SENTENCE <|-- tortugaDSL_COLOREABLE
+DRAWING_SENTENCE <|-- tortugaDSL_DRAW_STRING
+DRAWING_SENTENCE <|-- tortugaDSL_FONT_SPEC
+DRAWING_SENTENCE <|-- tortugaDSL_HOME
+DRAWING_SENTENCE <|-- tortugaDSL_PENDOWN
+DRAWING_SENTENCE <|-- tortugaDSL_PENUP
+EXPRESSION <|-- tortugaDSL_VALUE
+EXPRESSION <|-- tortugaDSL_VARIABLE_REF
+FONT_SPEC <|-- tortugaDSL_FONT_SIZE
+FONT_SPEC <|-- tortugaDSL_FONT_STYLE
+FontStyleValues <|-- tortugaDSL_BOLD
+FontStyleValues <|-- tortugaDSL_ITALIC
+FontStyleValues <|-- tortugaDSL_PLAIN
+MOVE <|-- tortugaDSL_FORWARD
+MOVE <|-- tortugaDSL_LEFT
+MOVE <|-- tortugaDSL_RIGHT
+MOVE <|-- tortugaDSL_SET_X
+MOVE <|-- tortugaDSL_SET_Y
+OPERATION <|-- tortugaDSL_DIVIDE
+OPERATION <|-- tortugaDSL_MULTIPLY
+OPERATION <|-- tortugaDSL_SUBTRACT
+OPERATION <|-- tortugaDSL_SUM
+REFERENCIABLE <|-- tortugaDSL_MAKE
+REFERENCIABLE <|-- tortugaDSL_PARAM
+SENTENCE <|-- tortugaDSL_CONTENT
+SENTENCE <|-- tortugaDSL_CONTROL_SENTENCES
+SENTENCE <|-- tortugaDSL_DRAWING_SENTENCE
+SENTENCE <|-- tortugaDSL_MAKE
+SENTENCE <|-- tortugaDSL_MOVE
+SENTENCE <|-- tortugaDSL_OPERATION
+SENTENCE <|-- tortugaDSL_PROCEDURE_CALL
+tortugaDSL_COLOR_SPEC "1..1" *-- "0..1" tortugaDSL_EXPRESSION : alpha12
+tortugaDSL_EXPRESSION "0..1" --* "1..1" tortugaDSL_MOVE : amount1
+tortugaDSL_COLOR_SPEC "1..1" *-- "0..1" tortugaDSL_EXPRESSION : blue9
+tortugaDSL_COLOREABLE "1..1" *-- "0..1" tortugaDSL_COLOR_SPEC : colorSpec2
+tortugaDSL_CONTROL_SENTENCES "1..1" *-- "0..9999" tortugaDSL_SENTENCE : commands31
+tortugaDSL_BOOLEAN_EXPRESSION "0..1" --* "1..1" tortugaDSL_IF : condition41
+tortugaDSL_COLOR_SPEC "1..1" *-- "0..1" tortugaDSL_EXPRESSION : green6
+tortugaDSL_BOOLEAN_EXPRESSION "1..1" *-- "0..1" tortugaDSL_EXPRESSION : op142
+tortugaDSL_BOOLEAN_EXPRESSION "1..1" *-- "0..1" tortugaDSL_EXPRESSION : op245
+tortugaDSL_PARAM "0..9999" --* "1..1" tortugaDSL_TO : parameters35
+tortugaDSL_EXPRESSION "0..9999" --* "1..1" tortugaDSL_PROCEDURE_CALL : params38
+tortugaDSL_COLOR_SPEC "1..1" *-- "0..1" tortugaDSL_EXPRESSION : red3
+tortugaDSL_SENTENCE "0..9999" --* "1..1" tortugaDSL_TortugaProgram : sentences0
+tortugaDSL_EXPRESSION "0..1" --* "1..1" tortugaDSL_FONT_SIZE : size15
+tortugaDSL_FONT_STYLE "1..1" *-- "0..1" tortugaDSL_FontStyleValues : style17
+tortugaDSL_MAKE "0..1" -- "1..1" tortugaDSL_OPERATION : targetVariable23
+tortugaDSL_EXPRESSION "0..1" --* "1..1" tortugaDSL_REPEAT : times33
+tortugaDSL_PROCEDURE_CALL "1..1" -- "0..1" tortugaDSL_TO : to36
+tortugaDSL_REFERENCIABLE "0..1" -- "1..1" tortugaDSL_VARIABLE_REF : toVar20
+tortugaDSL_EXPRESSION "0..1" --* "1..1" tortugaDSL_OPERATION : valOne25
+tortugaDSL_EXPRESSION "0..1" --* "1..1" tortugaDSL_OPERATION : valTwo28
+tortugaDSL_EXPRESSION "0..1" --* "1..1" tortugaDSL_MAKE : value18
+tortugaDSL_CONTENT "1..1" -- "0..1" tortugaDSL_MAKE : var21
+@enduml

@@ -1,0 +1,209 @@
+@startuml
+enum Alignment {
+  BOTTOM
+  CENTER
+  LEFT
+  RIGHT
+  TOP
+}
+class Child {
+}
+class Container {
+}
+class Cursor {
+}
+class Figure {
+}
+enum GridAlignment {
+  BEGINNING
+  CENTER
+  END
+  FILL
+}
+enum Orientation {
+  EAST
+  NORTH
+  SOUTH
+  WEST
+}
+class Primitive {
+}
+class Shape {
+}
+enum SystemCursorType {
+  ARROW
+  HAND
+}
+class model_Arc {
+  + length : int
+  + start : int
+}
+class model_BorderChild {
+  + alignment : str
+}
+class model_BorderContainer {
+  + horizontalSpacing : int
+  + verticalSpacing : int
+}
+class model_Child {
+  + name : str
+}
+class model_Connection {
+}
+abstract class model_Container {
+}
+abstract class model_Cursor {
+}
+class model_Dimension {
+  + height : float
+  + width : float
+}
+class model_Ellipse {
+}
+abstract class model_Figure {
+  + backgroundColor : str
+  + border : str
+  + foregroundColor : str
+  + onClick : str
+  + onDoubleClick : str
+  + onMouseDrag : str
+  + onMouseHover : str
+  + onMouseIn : str
+  + onMouseMove : str
+  + onMouseOut : str
+  + opaque : str
+  + toolTip : str
+  + visible : bool
+}
+class model_FigureContainer {
+}
+class model_GridChild {
+  + grabHorizontalSpace : bool
+  + grabVerticalSpace : bool
+  + heightHint : str
+  + horizontalAlignment : str
+  + spanCols : int
+  + spanRows : str
+  + verticalAlignment : str
+  + widthHint : str
+}
+class model_GridContainer {
+  + columns : int
+  + equalWidth : bool
+  + horizontalSpacing : int
+  + marginHeight : int
+  + marginWidth : int
+  + verticalSpacing : int
+}
+class model_Image {
+  + imageAlignment : str
+  + uri : str
+}
+class model_Line {
+}
+class model_Polygon {
+}
+class model_Position {
+  + x : float
+  + y : float
+}
+abstract class model_Primitive {
+  + name : str
+}
+class model_Rectangle {
+}
+class model_RoundedRectangle {
+}
+abstract class model_Shape {
+  + alpha : str
+  + antialias : str
+  + fill : bool
+  + lineWidth : float
+  + outline : bool
+}
+class model_StackContainer {
+}
+class model_StringToStringMap {
+  + key : str
+  + value : str
+}
+class model_Symbol {
+  + backgroundColor : str
+  + backgroundImage : str
+  + onDispose : str
+  + onInit : str
+  + onUpdate : str
+  + scriptModules : str
+}
+class model_SymbolReference {
+  + onCreateProperties : str
+  + uri : str
+  + zoom : str
+}
+class model_SystemCursor {
+  + type : str
+}
+class model_Text {
+  + alpha : str
+  + fontBold : bool
+  + fontItalic : bool
+  + fontName : str
+  + fontSize : int
+  + iconAlignment : str
+  + labelAlignment : str
+  + text : str
+  + textAlignment : str
+  + textPlacement : str
+}
+class model_TimeTrigger {
+  + onTrigger : str
+  + period : str
+}
+class model_XYChild {
+}
+class model_XYContainer {
+}
+Child <|-- model_BorderChild
+Child <|-- model_GridChild
+Child <|-- model_XYChild
+Container <|-- model_BorderContainer
+Container <|-- model_GridContainer
+Container <|-- model_StackContainer
+Container <|-- model_XYContainer
+Cursor <|-- model_SystemCursor
+Figure <|-- model_FigureContainer
+Figure <|-- model_Image
+Figure <|-- model_Shape
+Figure <|-- model_Text
+Primitive <|-- model_Container
+Primitive <|-- model_Figure
+Primitive <|-- model_SymbolReference
+Shape <|-- model_Arc
+Shape <|-- model_Ellipse
+Shape <|-- model_Line
+Shape <|-- model_Polygon
+Shape <|-- model_Rectangle
+Shape <|-- model_RoundedRectangle
+model_XYChild "0..9999" --* "1..1" model_XYContainer : children17
+model_GridChild "0..9999" --* "1..1" model_GridContainer : children28
+model_BorderChild "0..9999" --* "1..1" model_BorderContainer : children29
+model_Primitive "0..9999" --* "1..1" model_StackContainer : children38
+model_Connection "0..9999" --* "1..1" model_Symbol : connections7
+model_FigureContainer "1..1" *-- "0..1" model_Primitive : content30
+model_Dimension "0..1" --* "1..1" model_RoundedRectangle : corner42
+model_Cursor "0..1" -- "1..1" model_Figure : cursor23
+model_Cursor "0..1" --* "1..1" model_Symbol : cursors3
+model_Dimension "0..1" --* "1..1" model_Symbol : designSize5
+model_Dimension "0..1" --* "1..1" model_XYChild : dimension14
+model_Child "1..1" *-- "0..1" model_Primitive : element11
+model_Connection "1..1" -- "1..1" model_Primitive : end35
+model_Line "1..1" *-- "0..9999" model_Position : points19
+model_Polygon "1..1" *-- "0..9999" model_Position : points40
+model_Position "1..1" --* "1..1" model_XYChild : position13
+model_StringToStringMap "0..9999" --* "1..1" model_Symbol : properties1
+model_StringToStringMap "0..9999" --* "1..1" model_SymbolReference : properties26
+model_Primitive "0..1" --* "1..1" model_Symbol : root0
+model_Dimension "0..1" --* "1..1" model_Figure : size21
+model_Connection "1..1" -- "1..1" model_Primitive : start32
+model_Symbol "1..1" *-- "0..9999" model_TimeTrigger : timeTriggers9
+@enduml

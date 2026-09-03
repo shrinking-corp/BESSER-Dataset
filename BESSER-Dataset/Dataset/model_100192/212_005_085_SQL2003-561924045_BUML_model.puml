@@ -1,0 +1,371 @@
+@startuml
+class BaseTable {
+}
+class BehaviouralComponent {
+}
+enum BinaryStringTypes {
+  BINARY
+  BINARYLARGEOBJECT
+  BINARYVARYING
+}
+enum BooleanTypes {
+  BOOLEAN
+}
+enum CharacterStringTypes {
+  CHARACTER
+  CHARACTERLARGEOBJECT
+  CHARACTERVARYING
+}
+class CollectionType {
+}
+class ColumnConstraint {
+}
+class ConstructedType {
+}
+class DataType {
+}
+enum DatetimeFeatures {
+  precision
+}
+enum DatetimeTypes {
+  DATE
+  TIMESTAMPWITHOUTTIMEZONE
+  TIMESTAMPWITHTIMEZONE
+  TIMEWITHOUTTIMEZONE
+  TIMEWITHTIMEZONE
+}
+class DerivedTable {
+}
+class Feature {
+}
+enum IntervalFeatures {
+  end_leading_precision
+  leading_precision
+  second_precision
+  start_leading_precision
+}
+enum IntervalTypes {
+  DAY
+  DAY_HOUR
+  DAY_MINUTE
+  DAY_SECOND
+  HOUR
+  HOUR_MINUTE
+  HOUR_SECOND
+  MINUTE
+  MINUTE_SECOND
+  MONTH
+  SECOND
+  YEAR
+  YEAR_MONTH
+}
+enum MatchTypes {
+  PARTIAL
+  SIMPLE
+  TOTAL
+}
+enum Multiplier {
+  G
+  K
+  M
+  P
+  T
+}
+enum NumericFeatures {
+  precision
+  radix
+  scale
+}
+enum NumericRadix {
+  BINARY
+  DECIMAL
+}
+enum NumericTypes {
+  BIGINT
+  DECIMAL
+  DOUBLEPRECISION
+  FLOAT
+  INTEGER
+  NUMERIC
+  REAL
+  SMALLINT
+}
+class Parameter {
+}
+enum ParameterMode {
+  IN
+  INOUT
+  OUT
+}
+class PredefinedType {
+}
+enum ReferentialAction {
+  CASCADE
+  NO_ACTION
+  RESTRICT
+  SET_DEFAULT
+  SET_NULL
+}
+class Restriction {
+}
+class SQL2003_ARRAY {
+  + num_elements : str
+}
+class SQL2003_Attribute {
+  + default : str
+}
+class SQL2003_BaseTable {
+}
+abstract class SQL2003_BehaviouralComponent {
+  + body : str
+  + name : str
+}
+class SQL2003_BinaryStringType {
+  + descriptor : str
+  + length_def : str
+}
+class SQL2003_BooleanType {
+  + descriptor : str
+}
+class SQL2003_CharacterStringType {
+  + descriptor : str
+  + length_def : str
+}
+abstract class SQL2003_CollectionType {
+}
+class SQL2003_Column {
+  + default : str
+}
+abstract class SQL2003_ColumnConstraint {
+}
+abstract class SQL2003_ConstructedType {
+  + name : str
+}
+abstract class SQL2003_DataType {
+}
+class SQL2003_DatetimeFeature {
+  + key : str
+  + value : str
+}
+class SQL2003_DatetimeType {
+  + descriptor : str
+}
+class SQL2003_DerivedTable {
+  + query_expression : str
+}
+class SQL2003_DistinctType {
+}
+abstract class SQL2003_Feature {
+}
+class SQL2003_Field {
+}
+class SQL2003_Function {
+}
+class SQL2003_IntervalFeature {
+  + key : str
+  + value : str
+}
+class SQL2003_IntervalType {
+  + descriptor : str
+}
+class SQL2003_MULTISET {
+}
+class SQL2003_Method {
+  + body : str
+  + name : str
+}
+class SQL2003_MethodParameter {
+}
+class SQL2003_NotNull {
+}
+class SQL2003_NumericFeature {
+  + key : str
+  + value : str
+}
+class SQL2003_NumericType {
+  + descriptor : str
+}
+abstract class SQL2003_Parameter {
+  + name : str
+}
+class SQL2003_ParameterWithMode {
+  + mode : str
+}
+abstract class SQL2003_PredefinedType {
+}
+class SQL2003_PrimaryKey {
+}
+class SQL2003_Procedure {
+}
+class SQL2003_ROW {
+}
+class SQL2003_ReferenceType {
+}
+class SQL2003_ReferentialConstraint {
+  + delete_action : str
+  + match : str
+  + update_action : str
+}
+abstract class SQL2003_Restriction {
+}
+class SQL2003_Schema {
+  + name : str
+}
+class SQL2003_StringFeature {
+  + key : str
+  + value : str
+}
+abstract class SQL2003_StructuralComponent {
+  + name : str
+}
+class SQL2003_StructuredType {
+  + is_final : bool
+  + is_instantiable : bool
+}
+abstract class SQL2003_Table {
+  + name : str
+}
+class SQL2003_TableCheckConstraint {
+  + expression : str
+}
+abstract class SQL2003_TableConstraint {
+  + name : str
+}
+class SQL2003_Trigger {
+  + actionTime : str
+  + event : str
+  + name : str
+  + triggeredAction : str
+}
+class SQL2003_TypedTable {
+}
+class SQL2003_UniqueConstraint {
+}
+abstract class SQL2003_UserDefinedType {
+  + name : str
+}
+class SQL2003_View {
+}
+class SQL2003_XMLType {
+  + descriptor : str
+}
+enum StringFeatures {
+  length
+  multiplier
+  unit
+}
+class StructuralComponent {
+}
+class Table {
+}
+class TableConstraint {
+}
+enum TriggerActionTime {
+  AFTER
+  BEFORE
+}
+enum TriggerEvent {
+  DELETE
+  INSERT
+  UPDATE
+}
+class UniqueConstraint {
+}
+enum Unit {
+  CHARACTERS
+  OCTETS
+}
+class UserDefinedType {
+}
+enum XMLTypes {
+  XMLTYPE
+}
+BaseTable <|-- SQL2003_TypedTable
+BehaviouralComponent <|-- SQL2003_Function
+BehaviouralComponent <|-- SQL2003_Procedure
+CollectionType <|-- SQL2003_ARRAY
+CollectionType <|-- SQL2003_MULTISET
+ColumnConstraint <|-- SQL2003_NotNull
+ConstructedType <|-- SQL2003_CollectionType
+ConstructedType <|-- SQL2003_ROW
+ConstructedType <|-- SQL2003_ReferenceType
+DataType <|-- SQL2003_ConstructedType
+DataType <|-- SQL2003_PredefinedType
+DataType <|-- SQL2003_UserDefinedType
+DerivedTable <|-- SQL2003_View
+Feature <|-- SQL2003_DatetimeFeature
+Feature <|-- SQL2003_IntervalFeature
+Feature <|-- SQL2003_NumericFeature
+Feature <|-- SQL2003_StringFeature
+Parameter <|-- SQL2003_MethodParameter
+Parameter <|-- SQL2003_ParameterWithMode
+PredefinedType <|-- SQL2003_BinaryStringType
+PredefinedType <|-- SQL2003_BooleanType
+PredefinedType <|-- SQL2003_CharacterStringType
+PredefinedType <|-- SQL2003_DatetimeType
+PredefinedType <|-- SQL2003_IntervalType
+PredefinedType <|-- SQL2003_NumericType
+PredefinedType <|-- SQL2003_XMLType
+Restriction <|-- SQL2003_ColumnConstraint
+Restriction <|-- SQL2003_TableConstraint
+StructuralComponent <|-- SQL2003_Attribute
+StructuralComponent <|-- SQL2003_Column
+StructuralComponent <|-- SQL2003_Field
+Table <|-- SQL2003_BaseTable
+Table <|-- SQL2003_DerivedTable
+TableConstraint <|-- SQL2003_ReferentialConstraint
+TableConstraint <|-- SQL2003_TableCheckConstraint
+TableConstraint <|-- SQL2003_UniqueConstraint
+UniqueConstraint <|-- SQL2003_PrimaryKey
+UserDefinedType <|-- SQL2003_DistinctType
+UserDefinedType <|-- SQL2003_StructuredType
+SQL2003_Attribute "0..9999" --* "1..1" SQL2003_StructuredType : attributes59
+SQL2003_BehaviouralComponent "1..1" -- "1..1" SQL2003_ParameterWithMode : behaviouralComponent26
+SQL2003_BehaviouralComponent "0..9999" --* "1..1" SQL2003_Schema : behaviouralComponents41
+SQL2003_Restriction "1..1" -- "1..9999" SQL2003_StructuralComponent : columns39
+SQL2003_Column "0..9999" --* "1..1" SQL2003_Table : columns67
+SQL2003_StructuralComponent "0..9999" -- "1..1" SQL2003_View : components90
+SQL2003_DataType "0..9999" --* "1..1" SQL2003_Schema : datatypes43
+SQL2003_DistinctType "1..1" *-- "0..9999" SQL2003_Feature : features11
+SQL2003_Feature "0..9999" --* "1..1" SQL2003_StructuralComponent : features53
+SQL2003_Field "1..9999" --* "1..1" SQL2003_ROW : fields31
+SQL2003_DistinctType "0..9999" -- "1..1" SQL2003_PredefinedType : is_source_of27
+SQL2003_Method "1..1" -- "1..1" SQL2003_MethodParameter : method23
+SQL2003_Method "0..9999" --* "1..1" SQL2003_StructuredType : methods60
+SQL2003_Method "1..1" -- "0..1" SQL2003_Method : override16
+SQL2003_Method "1..1" *-- "0..9999" SQL2003_MethodParameter : parameters22
+SQL2003_BehaviouralComponent "1..1" *-- "0..9999" SQL2003_ParameterWithMode : parametersWithMode2
+SQL2003_ReferentialConstraint "1..1" -- "1..1" SQL2003_UniqueConstraint : references36
+SQL2003_Restriction "0..9999" -- "1..1" SQL2003_StructuralComponent : restrictions51
+SQL2003_Restriction "0..9999" --* "1..1" SQL2003_Table : restrictions73
+SQL2003_DataType "1..1" -- "1..1" SQL2003_Function : return_type13
+SQL2003_DataType "1..1" -- "1..1" SQL2003_Method : return_type19
+SQL2003_Field "1..1" -- "1..1" SQL2003_ROW : row12
+SQL2003_BehaviouralComponent "1..1" -- "1..1" SQL2003_Schema : schema1
+SQL2003_Schema "1..1" -- "1..1" SQL2003_Table : schema65
+SQL2003_DataType "1..1" -- "1..1" SQL2003_Schema : schema8
+SQL2003_DistinctType "1..1" -- "1..1" SQL2003_PredefinedType : source_type10
+SQL2003_Attribute "1..1" -- "1..1" SQL2003_StructuredType : structured0
+SQL2003_Method "1..1" -- "1..1" SQL2003_StructuredType : structured17
+SQL2003_StructuredType "1..1" -- "1..1" SQL2003_TypedTable : structured80
+SQL2003_ROW "1..1" -- "0..9999" SQL2003_ROW : sub_types33
+SQL2003_TypedTable "1..1" -- "0..9999" SQL2003_TypedTable : subtables86
+SQL2003_ROW "1..1" -- "0..1" SQL2003_ROW : super_type29
+SQL2003_CollectionType "1..1" -- "0..1" SQL2003_CollectionType : super_type4
+SQL2003_StructuredType "0..1" -- "1..1" SQL2003_StructuredType : super_type57
+SQL2003_TypedTable "1..1" -- "0..1" SQL2003_TypedTable : supertable83
+SQL2003_Restriction "1..1" -- "1..1" SQL2003_Table : table37
+SQL2003_Column "1..1" -- "1..1" SQL2003_Table : table7
+SQL2003_Table "1..1" -- "1..1" SQL2003_Trigger : table76
+SQL2003_Schema "1..1" *-- "0..9999" SQL2003_Table : tables45
+SQL2003_Table "1..9999" -- "1..1" SQL2003_View : tables88
+SQL2003_Table "1..1" *-- "0..9999" SQL2003_Trigger : triggers71
+SQL2003_DataType "1..1" -- "1..1" SQL2003_Parameter : type24
+SQL2003_ReferenceType "1..1" -- "1..1" SQL2003_StructuredType : type35
+SQL2003_DataType "1..1" -- "1..1" SQL2003_StructuralComponent : type48
+SQL2003_CollectionType "1..1" -- "1..1" SQL2003_DataType : type5
+SQL2003_StructuredType "1..1" -- "0..9999" SQL2003_TypedTable : typed63
+SQL2003_StructuralComponent "0..9999" -- "1..1" SQL2003_Trigger : updateColumns78
+SQL2003_StructuralComponent "1..1" -- "0..9999" SQL2003_View : views50
+SQL2003_Table "1..1" -- "0..9999" SQL2003_View : views68
+@enduml

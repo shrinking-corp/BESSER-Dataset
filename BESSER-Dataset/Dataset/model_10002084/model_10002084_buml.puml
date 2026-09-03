@@ -1,0 +1,29 @@
+@startuml
+class Event {
+  + Address : str
+  + CurrentNumberOfPlayers : int
+  + DateTime : str
+  + Description : str
+  + EventId : int
+  + MaxNumberOfPlayers : int
+  + attribute : str
+}
+class EventType {
+  + EventTypeId : int
+  + Type : str
+}
+class Registration {
+}
+class User {
+  + DateOfBirth : str
+  + Email : str
+  + Login : str
+  + Password : str
+  + PhoneNumber : str
+  + UserId : int
+}
+Event "0..9999" -- "1..1" EventType : EventType_Event
+Event "1..1" -- "0..9999" Registration : Event_Registration
+Event "0..1" -- "1..1" User : User_Event
+Registration "0..9999" -- "1..1" User : User_Registration
+@enduml

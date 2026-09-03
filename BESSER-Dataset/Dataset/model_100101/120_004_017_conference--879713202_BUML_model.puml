@@ -1,0 +1,52 @@
+@startuml
+enum GENDER {
+  FEMALE
+  MALE
+  UNKNOWN
+}
+enum TALK_TYPE {
+  CONFERENCE
+  DEMONSTRATION
+  WORKSHOP
+}
+class conference_Conference {
+  + name : str
+  + overview : str
+  + place : str
+}
+class conference_Person {
+  + age : int
+  + eclipseCommiter : bool
+  + firstname : str
+  + gender : str
+  + isRegistered : bool
+  + lastname : str
+}
+class conference_Room {
+  + capacity : int
+  + name : str
+}
+class conference_Site {
+  + documentation : str
+  + name : str
+}
+class conference_Talk {
+  + documentation : str
+  + title : str
+  + type : str
+}
+class conference_Topic {
+  + description : str
+  + documentation : str
+  + references : str
+}
+conference_Person "1..1" -- "0..9999" conference_Talk : assists7
+conference_Person "0..1" -- "1..1" conference_Talk : creator16
+conference_Conference "1..1" *-- "0..9999" conference_Person : participants0
+conference_Person "1..1" -- "1..1" conference_Talk : presenter13
+conference_Room "0..9999" --* "1..1" conference_Site : rooms19
+conference_Conference "1..1" *-- "0..9999" conference_Site : sites5
+conference_Conference "1..1" *-- "0..9999" conference_Talk : talks1
+conference_Talk "1..1" -- "1..1" conference_Topic : topic10
+conference_Conference "1..1" *-- "0..9999" conference_Topic : topics3
+@enduml

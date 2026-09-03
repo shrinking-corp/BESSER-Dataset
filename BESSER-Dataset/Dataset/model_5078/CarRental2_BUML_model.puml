@@ -1,0 +1,64 @@
+@startuml
+class CarRental2_Branch {
+  + location : str
+  + rentalsForDate() : void
+}
+class CarRental2_Car {
+  + id : str
+  + description() : str
+}
+class CarRental2_CarGroup {
+  + kind : str
+}
+class CarRental2_Check {
+  + description : str
+}
+class CarRental2_Customer {
+  + address : str
+}
+class CarRental2_Employee {
+  + salary : int
+  + raiseSalary() : int
+}
+abstract class CarRental2_Person {
+  + age : int
+  + firstname : str
+  + isMarried : bool
+  + lastname : str
+  + fullname() : str
+}
+class CarRental2_Rental {
+  + fromDate : str
+  + untilDate : str
+}
+class CarRental2_ServiceDepot {
+  + location : str
+}
+class Person {
+}
+Person <|-- CarRental2_Customer
+Person <|-- CarRental2_Employee
+CarRental2_Car "0..1" -- "1..1" CarRental2_Rental : Assignment_Car16
+CarRental2_Car "1..1" -- "0..1" CarRental2_Rental : Assignment_Rental34
+CarRental2_Customer "1..1" -- "1..1" CarRental2_Rental : Booking_Customer11
+CarRental2_Customer "1..1" -- "0..9999" CarRental2_Rental : Booking_Rental0
+CarRental2_Car "0..9999" -- "1..1" CarRental2_CarGroup : Classification_Car20
+CarRental2_Car "1..1" -- "1..1" CarRental2_CarGroup : Classification_CarGroup32
+CarRental2_Branch "1..1" -- "1..1" CarRental2_Employee : Employment_Branch_role_employer2
+CarRental2_Branch "1..1" -- "0..9999" CarRental2_Employee : Employment_Employee_role_employee5
+CarRental2_Branch "1..1" -- "1..1" CarRental2_Car : Fleet_Branch30
+CarRental2_Branch "1..1" -- "0..9999" CarRental2_Car : Fleet_Car7
+CarRental2_Car "0..9999" -- "1..1" CarRental2_ServiceDepot : Maintenance_Car37
+CarRental2_Check "1..1" -- "0..9999" CarRental2_ServiceDepot : Maintenance_Check___FIX_TYPE39
+CarRental2_Car "1..1" -- "0..1" CarRental2_ServiceDepot : Maintenance_ServiceDepot36
+CarRental2_Branch "0..1" -- "1..1" CarRental2_Employee : Management_Branch_role_managedBranch1
+CarRental2_Branch "1..1" -- "1..1" CarRental2_Employee : Management_Employee_role_manager4
+CarRental2_Branch "0..9999" -- "1..1" CarRental2_CarGroup : Offers_Branch18
+CarRental2_Branch "1..1" -- "0..9999" CarRental2_CarGroup : Offers_CarGroup8
+CarRental2_Branch "1..1" -- "1..1" CarRental2_Rental : Provider_Branch12
+CarRental2_Branch "1..1" -- "0..9999" CarRental2_Rental : Provider_Rental9
+CarRental2_CarGroup "1..1" -- "0..1" CarRental2_CarGroup : Quality_CarGroup_role_higher28
+CarRental2_CarGroup "1..1" -- "0..1" CarRental2_CarGroup : Quality_CarGroup_role_lower25
+CarRental2_CarGroup "1..1" -- "1..1" CarRental2_Rental : Reservation_CarGroup14
+CarRental2_CarGroup "1..1" -- "0..9999" CarRental2_Rental : Reservation_Rental22
+@enduml

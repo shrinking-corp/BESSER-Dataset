@@ -1,0 +1,27 @@
+@startuml
+class Column {
+}
+class FKey {
+}
+class RDBMS_Column {
+  + name : str
+  + type : str
+}
+class RDBMS_FKey {
+}
+class RDBMS_Schema {
+  + name : str
+}
+class RDBMS_Table {
+  + name : str
+  + tipo : str
+}
+class Table {
+}
+Column "0..9999" --* "1..1" RDBMS_Table : cols3
+Column "0..9999" -- "1..1" RDBMS_FKey : cols7
+FKey "0..9999" --* "1..1" RDBMS_Table : fkeys0
+Column "0..9999" -- "1..1" RDBMS_Table : pkey1
+RDBMS_FKey "1..1" -- "1..1" Table : references6
+RDBMS_Schema "1..1" *-- "0..9999" Table : tables10
+@enduml

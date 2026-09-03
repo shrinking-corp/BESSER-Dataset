@@ -1,0 +1,31 @@
+@startuml
+class Item {
+}
+class MultimediaItem {
+}
+class library_BlueRay {
+}
+class library_Book {
+  + numPages : int
+}
+class library_CD {
+}
+class library_DVD {
+}
+abstract class library_Item {
+  + pubDate : date
+  + title : str
+}
+class library_LibraryShelf {
+  + name : str
+}
+abstract class library_MultimediaItem {
+  + length : float
+}
+Item <|-- library_Book
+Item <|-- library_MultimediaItem
+MultimediaItem <|-- library_BlueRay
+MultimediaItem <|-- library_CD
+MultimediaItem <|-- library_DVD
+library_Item "0..9999" --* "1..1" library_LibraryShelf : items0
+@enduml

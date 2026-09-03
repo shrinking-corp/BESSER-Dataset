@@ -1,0 +1,25 @@
+@startuml
+class Node {
+}
+class petrinet_Arc {
+  + w : str
+}
+abstract class petrinet_Node {
+}
+class petrinet_PNGraph {
+}
+class petrinet_Place {
+  + id : str
+  + markings : str
+}
+class petrinet_Transition {
+  + id : str
+}
+Node <|-- petrinet_Place
+Node <|-- petrinet_Transition
+petrinet_Arc "0..9999" --* "1..1" petrinet_PNGraph : arcs3
+petrinet_Arc "1..1" -- "0..1" petrinet_Node : from_5
+petrinet_PNGraph "1..1" *-- "0..9999" petrinet_Place : places0
+petrinet_Arc "1..1" -- "0..1" petrinet_Node : to7
+petrinet_PNGraph "1..1" *-- "0..9999" petrinet_Transition : transitions1
+@enduml

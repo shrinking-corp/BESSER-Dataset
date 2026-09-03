@@ -1,0 +1,54 @@
+@startuml
+enum AggregationKind {
+  composite
+  none
+  shared
+}
+class ClassDiagram_Association {
+  + name : str
+}
+class ClassDiagram_Class {
+}
+abstract class ClassDiagram_Classifier {
+  + name : str
+}
+class ClassDiagram_DataType {
+}
+class ClassDiagram_Dependency {
+}
+class ClassDiagram_Generalization {
+}
+class ClassDiagram_Interface {
+}
+class ClassDiagram_Property {
+  + aggregation : str
+  + lower : int
+  + name : str
+  + upper : str
+}
+class ClassDiagram_Realization {
+}
+abstract class ClassDiagram_Relationship {
+}
+class Classifier {
+}
+class Dependency {
+}
+class Relationship {
+}
+Classifier <|-- ClassDiagram_Class
+Classifier <|-- ClassDiagram_DataType
+Classifier <|-- ClassDiagram_Interface
+Dependency <|-- ClassDiagram_Realization
+Relationship <|-- ClassDiagram_Association
+Relationship <|-- ClassDiagram_Dependency
+Relationship <|-- ClassDiagram_Generalization
+ClassDiagram_Classifier "1..9999" -- "1..1" ClassDiagram_Dependency : client14
+ClassDiagram_Classifier "1..1" -- "1..1" ClassDiagram_Generalization : general7
+ClassDiagram_Association "1..1" *-- "2..2" ClassDiagram_Property : memberEnd5
+ClassDiagram_Class "1..1" *-- "0..9999" ClassDiagram_Property : ownedAttribute0
+ClassDiagram_Interface "1..1" *-- "0..9999" ClassDiagram_Property : ownedAttribute1
+ClassDiagram_Classifier "1..1" -- "1..1" ClassDiagram_Generalization : specific9
+ClassDiagram_Classifier "1..9999" -- "1..1" ClassDiagram_Dependency : supplier12
+ClassDiagram_Classifier "1..1" -- "1..1" ClassDiagram_Property : type3
+@enduml

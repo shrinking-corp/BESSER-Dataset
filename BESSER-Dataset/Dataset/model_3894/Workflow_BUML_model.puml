@@ -1,0 +1,350 @@
+@startuml
+class ActivityAspect {
+}
+class Atom {
+}
+class CaseAspect {
+}
+class Control {
+}
+class Document {
+}
+class DocumentCondition {
+}
+class DocumentDescriptor {
+}
+class DocumentType {
+}
+class Expression {
+}
+class GlobalAspect {
+}
+class ModelAspect {
+}
+class Operator {
+}
+class ProcessAspect {
+}
+class RuntimeGlobalAspect {
+}
+class RuntimeModelAspect {
+}
+class State {
+}
+class TaskAspect {
+}
+class TaskC {
+}
+class workflow_Activity {
+  + finished : bool
+  + started : bool
+}
+abstract class workflow_ActivityAspect {
+}
+class workflow_ActivityC {
+}
+class workflow_ActivityI {
+}
+class workflow_ActivityO {
+}
+class workflow_Agent {
+  + name : str
+  + password : str
+  + username : str
+}
+class workflow_AgentContainer {
+  + name : str
+}
+class workflow_Arc {
+  + name : str
+}
+class workflow_Atom {
+}
+class workflow_Case {
+  + client : str
+  + finished : bool
+  + id : str
+  + started : bool
+}
+abstract class workflow_CaseAspect {
+}
+class workflow_CaseC {
+}
+class workflow_CaseI {
+}
+class workflow_CaseO {
+}
+class workflow_ConstantAtom {
+  + value : str
+}
+abstract class workflow_Control {
+}
+class workflow_ControlAspect {
+}
+class workflow_CoreModel {
+  + name : str
+}
+class workflow_DefaultDocument {
+  + placeholder : bool
+}
+class workflow_DefaultDocumentCondition {
+}
+class workflow_DefaultDocumentDescriptor {
+}
+class workflow_DefaultDocumentType {
+}
+abstract class workflow_Document {
+  + id : str
+  + name : str
+}
+abstract class workflow_DocumentCondition {
+  + name : str
+}
+class workflow_DocumentContainer {
+  + name : str
+}
+class workflow_DocumentDescrAtom {
+}
+abstract class workflow_DocumentDescriptor {
+  + name : str
+}
+abstract class workflow_DocumentType {
+  + name : str
+}
+class workflow_DocumentTypeContainer {
+  + name : str
+}
+class workflow_DotOperator {
+}
+class workflow_EnumField {
+  + name : str
+}
+class workflow_EnumFieldAtom {
+}
+class workflow_EnumFieldValue {
+}
+class workflow_EnumLiteral {
+  + name : str
+}
+class workflow_EnumLiteralAtom {
+}
+class workflow_EqualToOperator {
+}
+class workflow_Expression {
+}
+class workflow_Field {
+  + name : str
+}
+class workflow_FieldAtom {
+}
+class workflow_FieldValue {
+  + value : str
+}
+abstract class workflow_GlobalAspect {
+}
+class workflow_GreaterThanOperator {
+}
+class workflow_Information {
+}
+class workflow_InformationAspect {
+}
+class workflow_InformationRuntimeAspect {
+}
+class workflow_LessThanOperator {
+}
+class workflow_Marking {
+}
+abstract class workflow_ModelAspect {
+}
+class workflow_ModelRegistry {
+}
+class workflow_Operator {
+}
+class workflow_Organisation {
+  + name : str
+}
+class workflow_OrganisationAspect {
+}
+class workflow_PetriNet {
+}
+class workflow_Place {
+  + name : str
+}
+class workflow_Process {
+  + name : str
+}
+abstract class workflow_ProcessAspect {
+}
+class workflow_ProcessDocument {
+  + name : str
+}
+class workflow_ProcessO {
+}
+class workflow_Role {
+  + name : str
+}
+class workflow_RuntimeCoreModel {
+}
+abstract class workflow_RuntimeGlobalAspect {
+}
+class workflow_RuntimeInformation {
+  + caseIdCount : str
+}
+abstract class workflow_RuntimeModelAspect {
+}
+abstract class workflow_State {
+}
+class workflow_String2DocumentMap {
+  + key : str
+}
+class workflow_Task {
+  + name : str
+}
+abstract class workflow_TaskAspect {
+}
+abstract class workflow_TaskC {
+  + name : str
+}
+class workflow_TaskI {
+}
+class workflow_TaskO {
+  + name : str
+}
+class workflow_Token {
+}
+class workflow_Transition {
+}
+class workflow_UnequalToOperator {
+}
+class workflow_WorkflowEngine {
+}
+ActivityAspect <|-- workflow_ActivityC
+ActivityAspect <|-- workflow_ActivityI
+ActivityAspect <|-- workflow_ActivityO
+Atom <|-- workflow_ConstantAtom
+Atom <|-- workflow_DocumentDescrAtom
+Atom <|-- workflow_EnumFieldAtom
+Atom <|-- workflow_EnumLiteralAtom
+Atom <|-- workflow_FieldAtom
+CaseAspect <|-- workflow_CaseC
+CaseAspect <|-- workflow_CaseI
+CaseAspect <|-- workflow_CaseO
+Control <|-- workflow_PetriNet
+Document <|-- workflow_DefaultDocument
+DocumentCondition <|-- workflow_DefaultDocumentCondition
+DocumentDescriptor <|-- workflow_DefaultDocumentDescriptor
+DocumentType <|-- workflow_DefaultDocumentType
+Expression <|-- workflow_Atom
+Expression <|-- workflow_Operator
+GlobalAspect <|-- workflow_DocumentTypeContainer
+GlobalAspect <|-- workflow_Organisation
+ModelAspect <|-- workflow_ControlAspect
+ModelAspect <|-- workflow_InformationAspect
+ModelAspect <|-- workflow_OrganisationAspect
+Operator <|-- workflow_DotOperator
+Operator <|-- workflow_EqualToOperator
+Operator <|-- workflow_GreaterThanOperator
+Operator <|-- workflow_LessThanOperator
+Operator <|-- workflow_UnequalToOperator
+ProcessAspect <|-- workflow_Control
+ProcessAspect <|-- workflow_Information
+ProcessAspect <|-- workflow_ProcessO
+RuntimeGlobalAspect <|-- workflow_AgentContainer
+RuntimeGlobalAspect <|-- workflow_DocumentContainer
+RuntimeModelAspect <|-- workflow_InformationRuntimeAspect
+State <|-- workflow_Marking
+TaskAspect <|-- workflow_TaskC
+TaskAspect <|-- workflow_TaskI
+TaskAspect <|-- workflow_TaskO
+TaskC <|-- workflow_Transition
+workflow_Document "1..1" -- "1..1" workflow_DocumentType : DocumentType80
+workflow_Activity "1..1" -- "0..1" workflow_ActivityAspect : EReference014
+workflow_ActivityO "0..9999" -- "1..1" workflow_Agent : active18
+workflow_Activity "0..9999" --* "1..1" workflow_Case : activities6
+workflow_Agent "0..9999" --* "1..1" workflow_AgentContainer : agents166
+workflow_Arc "0..9999" --* "1..1" workflow_PetriNet : arcs25
+workflow_Activity "1..1" *-- "0..9999" workflow_ActivityAspect : aspects10
+workflow_Process "1..1" -- "0..9999" workflow_ProcessAspect : aspects109
+workflow_Task "1..1" -- "0..9999" workflow_TaskAspect : aspects111
+workflow_RuntimeCoreModel "1..1" *-- "0..9999" workflow_RuntimeModelAspect : aspects113
+workflow_Case "1..1" *-- "0..9999" workflow_CaseAspect : aspects5
+workflow_CoreModel "1..1" *-- "0..9999" workflow_ModelAspect : aspects99
+workflow_ActivityO "1..1" -- "0..1" workflow_Agent : assignedTo4
+workflow_ActivityC "1..1" -- "1..1" workflow_CaseC : case22
+workflow_CaseI "1..1" *-- "0..9999" workflow_String2DocumentMap : caseDocuments83
+workflow_Case "0..9999" --* "1..1" workflow_RuntimeCoreModel : cases114
+workflow_Process "1..1" -- "1..1" workflow_ProcessAspect : core87
+workflow_Task "1..1" -- "1..1" workflow_TaskAspect : core88
+workflow_Case "1..1" -- "1..1" workflow_CaseAspect : core92
+workflow_Activity "1..1" -- "1..1" workflow_ActivityAspect : core97
+workflow_CoreModel "1..1" -- "1..1" workflow_Process : coreModel107
+workflow_CoreModel "1..1" -- "1..1" workflow_RuntimeCoreModel : coreModel116
+workflow_CoreModel "0..9999" -- "1..1" workflow_ModelRegistry : coreModels57
+workflow_EnumField "1..1" -- "1..1" workflow_EnumLiteral : defaultValue153
+workflow_DocumentDescrAtom "1..1" -- "1..1" workflow_DocumentDescriptor : descriptor145
+workflow_DocumentType "1..1" -- "1..1" workflow_ProcessDocument : documentType138
+workflow_DocumentDescriptor "1..1" -- "1..1" workflow_DocumentType : documentType71
+workflow_DocumentType "0..9999" --* "1..1" workflow_DocumentTypeContainer : documentTypes174
+workflow_Document "0..9999" --* "1..1" workflow_DocumentContainer : documents176
+workflow_RuntimeGlobalAspect "1..1" -- "1..1" workflow_WorkflowEngine : engine172
+workflow_ModelRegistry "1..1" -- "1..1" workflow_WorkflowEngine : engine56
+workflow_EnumField "1..1" -- "1..1" workflow_EnumFieldValue : enumField156
+workflow_EnumField "1..1" -- "1..1" workflow_EnumFieldAtom : enumField162
+workflow_DefaultDocument "1..1" *-- "0..9999" workflow_EnumFieldValue : enumFieldValues131
+workflow_DefaultDocumentType "1..1" *-- "0..9999" workflow_EnumField : enumFields128
+workflow_EnumLiteral "1..1" -- "1..1" workflow_EnumLiteralAtom : enumLiteral164
+workflow_EnumField "1..1" *-- "1..9999" workflow_EnumLiteral : enumLiterals151
+workflow_EnumFieldValue "1..1" -- "1..1" workflow_EnumLiteral : enumValue159
+workflow_DefaultDocumentCondition "1..1" *-- "1..1" workflow_Expression : expression149
+workflow_Field "1..1" -- "1..1" workflow_FieldValue : field133
+workflow_Field "1..1" -- "1..1" workflow_FieldAtom : field147
+workflow_DefaultDocument "1..1" *-- "0..9999" workflow_FieldValue : fieldValues130
+workflow_DefaultDocumentType "1..1" *-- "0..9999" workflow_Field : fields127
+workflow_PetriNet "1..1" -- "1..1" workflow_Place : finish31
+workflow_DocumentCondition "0..9999" --* "1..1" workflow_TaskI : finish68
+workflow_TaskO "1..1" -- "1..1" workflow_TaskO : followsUpOn2
+workflow_GlobalAspect "0..9999" -- "1..1" workflow_ModelRegistry : globalAspects59
+workflow_Arc "0..9999" -- "1..1" workflow_Transition : in_35
+workflow_Arc "0..9999" -- "1..1" workflow_Place : in_45
+workflow_DocumentDescriptor "0..9999" --* "1..1" workflow_TaskI : in_62
+workflow_ActivityI "1..1" -- "0..9999" workflow_Document : in_76
+workflow_ProcessO "1..1" -- "0..9999" workflow_Role : involved125
+workflow_Agent "0..9999" -- "1..1" workflow_CaseO : involved136
+workflow_Agent "1..1" -- "1..9999" workflow_Role : mayTakeRoles19
+workflow_CoreModel "1..1" -- "1..1" workflow_ModelRegistry : modelRegistry103
+workflow_ModelRegistry "1..1" -- "1..1" workflow_WorkflowEngine : modelRegistry119
+workflow_GlobalAspect "1..1" -- "1..1" workflow_ModelRegistry : modelRegistry170
+workflow_Expression "2..2" --* "1..1" workflow_Operator : operands144
+workflow_Arc "0..9999" -- "1..1" workflow_Transition : out34
+workflow_Arc "0..9999" -- "1..1" workflow_Place : out47
+workflow_DocumentDescriptor "0..9999" --* "1..1" workflow_TaskI : out63
+workflow_ActivityI "1..1" -- "0..9999" workflow_Document : out77
+workflow_Marking "1..1" -- "1..1" workflow_PetriNet : petrinet50
+workflow_Place "1..1" -- "1..1" workflow_Token : place53
+workflow_PetriNet "1..1" *-- "0..9999" workflow_Place : places26
+workflow_CoreModel "1..1" *-- "0..1" workflow_Process : process101
+workflow_Case "1..1" -- "1..1" workflow_Process : process7
+workflow_ModelAspect "1..1" *-- "0..1" workflow_ProcessAspect : process84
+workflow_CaseAspect "1..1" -- "0..1" workflow_ProcessAspect : process90
+workflow_DocumentDescriptor "1..1" -- "1..1" workflow_ProcessDocument : processDocument73
+workflow_Information "1..1" *-- "0..9999" workflow_ProcessDocument : processDocuments61
+workflow_Role "1..9999" -- "1..1" workflow_TaskO : requiredRoles0
+workflow_Organisation "1..1" *-- "0..9999" workflow_Role : roles168
+workflow_Case "1..1" -- "1..1" workflow_RuntimeCoreModel : runtimeCoreModel9
+workflow_RuntimeCoreModel "0..9999" --* "1..1" workflow_WorkflowEngine : runtimeCoreModels121
+workflow_RuntimeGlobalAspect "0..9999" -- "1..1" workflow_WorkflowEngine : runtimeGlobalAspects123
+workflow_Arc "1..1" -- "1..1" workflow_Place : sourcePlace37
+workflow_Arc "1..1" -- "1..1" workflow_Transition : sourceTransition40
+workflow_PetriNet "1..1" -- "1..1" workflow_Place : start28
+workflow_DocumentCondition "0..9999" --* "1..1" workflow_TaskI : start66
+workflow_CaseC "1..1" *-- "1..1" workflow_State : state23
+workflow_Agent "1..1" -- "1..9999" workflow_Role : takenRoles16
+workflow_Arc "1..1" -- "1..1" workflow_Place : targetPlace38
+workflow_Arc "1..1" -- "1..1" workflow_Transition : targetTransition42
+workflow_Activity "1..1" -- "1..1" workflow_Task : task12
+workflow_ActivityAspect "1..1" -- "1..1" workflow_TaskAspect : task94
+workflow_Process "1..1" *-- "0..9999" workflow_Task : tasks104
+workflow_ProcessAspect "1..1" *-- "0..9999" workflow_TaskAspect : tasks85
+workflow_Marking "1..1" *-- "0..9999" workflow_Token : tokens49
+workflow_Document "1..1" -- "1..1" workflow_String2DocumentMap : value141
+@enduml

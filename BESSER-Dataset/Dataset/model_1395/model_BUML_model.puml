@@ -1,0 +1,23 @@
+@startuml
+class AbstractState {
+}
+abstract class model_AbstractState {
+  + name : str
+}
+class model_FiniteStateMachine {
+}
+class model_State {
+}
+class model_Transition {
+  + name : str
+  + trigger : str
+}
+AbstractState <|-- model_FiniteStateMachine
+AbstractState <|-- model_State
+model_AbstractState "0..1" -- "1..1" model_FiniteStateMachine : initial2
+model_AbstractState "1..1" *-- "0..9999" model_Transition : outgoings1
+model_AbstractState "1..1" -- "0..1" model_FiniteStateMachine : parent0
+model_AbstractState "1..1" -- "1..1" model_Transition : source4
+model_AbstractState "0..9999" --* "1..1" model_FiniteStateMachine : states3
+model_AbstractState "1..1" -- "1..1" model_Transition : target6
+@enduml

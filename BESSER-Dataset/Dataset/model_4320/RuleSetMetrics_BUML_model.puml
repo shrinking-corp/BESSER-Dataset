@@ -1,0 +1,20 @@
+@startuml
+class metrics_Rule {
+}
+class metrics_RuleMetrics {
+  + numberOfAttributes : int
+  + numberOfEdges : int
+  + numberOfNodes : int
+}
+class metrics_RuleSetMetrics {
+  + numberOfRules : int
+  + totalNumberOfAttributes : int
+  + totalNumberOfEdges : int
+  + totalNumberOfNodes : int
+  + createPresentationString() : str
+  + findRuleMetrics(metrics_rule : str) : str
+}
+metrics_Rule "0..1" -- "1..1" metrics_RuleMetrics : rule3
+metrics_RuleMetrics "0..9999" --* "1..1" metrics_RuleSetMetrics : ruleMetrics0
+metrics_Rule "0..9999" -- "1..1" metrics_RuleSetMetrics : ruleSet1
+@enduml

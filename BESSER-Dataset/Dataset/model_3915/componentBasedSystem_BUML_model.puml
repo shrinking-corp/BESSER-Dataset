@@ -1,0 +1,172 @@
+@startuml
+class AssemblyConnector {
+}
+class BehaviourDescription {
+}
+class Component {
+}
+class DescriptionElement {
+}
+class ParameterType {
+}
+class ProvidedRole {
+}
+class RequiredRole {
+}
+class ReturnType {
+}
+class Role {
+}
+class Simple {
+}
+class Type {
+}
+class componentBasedSystem_Allocation {
+}
+class componentBasedSystem_AllocationContext {
+}
+class componentBasedSystem_AssemblyContext {
+  + name : str
+}
+class componentBasedSystem_Component {
+  + name : str
+}
+class componentBasedSystem_ComponentBasedSystem {
+  + GetContainerOfContext(componentBasedSystem_context : str) : str
+}
+class componentBasedSystem_CompositeComponent {
+}
+class componentBasedSystem_Container {
+  + name : str
+}
+class componentBasedSystem_DelegationConnector {
+  + name : str
+}
+class componentBasedSystem_Environment {
+  + IsLinked(componentBasedSystem_c1 : str, componentBasedSystem_c2 : str) : bool
+}
+class componentBasedSystem_Interface {
+  + name : str
+}
+class componentBasedSystem_Link {
+  + name : str
+}
+class componentBasedSystem_Parameter {
+  + name : str
+}
+class componentBasedSystem_Repository {
+}
+class componentBasedSystem_Service {
+}
+class componentBasedSystem_Signature {
+  + name : str
+}
+class componentBasedSystem_behaviourDescription_BehaviourDescription {
+}
+class componentBasedSystem_behaviourDescription_Branch {
+}
+class componentBasedSystem_behaviourDescription_DescriptionElement {
+}
+class componentBasedSystem_behaviourDescription_ExternalCall {
+}
+class componentBasedSystem_behaviourDescription_InternalAction {
+}
+class componentBasedSystem_behaviourDescription_Loop {
+}
+class componentBasedSystem_dataTypes_Complex {
+}
+class componentBasedSystem_dataTypes_ParameterType {
+}
+class componentBasedSystem_dataTypes_ReturnType {
+}
+class componentBasedSystem_dataTypes_Simple {
+  + kind : str
+}
+class componentBasedSystem_dataTypes_Type {
+  + name : str
+}
+class componentBasedSystem_dataTypes_Void {
+}
+class componentBasedSystem_roles_AssemblyConnector {
+  + name : str
+}
+class componentBasedSystem_roles_ProvidedRole {
+}
+class componentBasedSystem_roles_RequiredRole {
+}
+class componentBasedSystem_roles_Role {
+  + name : str
+}
+class dataTypes_ParameterType {
+}
+class dataTypes_ReturnType {
+}
+class roles_componentBasedSystem_AssemblyContext {
+}
+class roles_componentBasedSystem_Interface {
+}
+enum simpleTypes {
+  boolean
+  char
+  date
+  double
+  float
+  int
+  list
+  long
+  map
+  string
+}
+Component <|-- componentBasedSystem_CompositeComponent
+DescriptionElement <|-- componentBasedSystem_behaviourDescription_Branch
+DescriptionElement <|-- componentBasedSystem_behaviourDescription_ExternalCall
+DescriptionElement <|-- componentBasedSystem_behaviourDescription_InternalAction
+DescriptionElement <|-- componentBasedSystem_behaviourDescription_Loop
+ReturnType <|-- componentBasedSystem_dataTypes_Void
+Role <|-- componentBasedSystem_roles_ProvidedRole
+Role <|-- componentBasedSystem_roles_RequiredRole
+Type <|-- componentBasedSystem_dataTypes_ParameterType
+Type <|-- componentBasedSystem_dataTypes_ReturnType
+dataTypes_ParameterType <|-- componentBasedSystem_dataTypes_Complex
+dataTypes_ParameterType <|-- componentBasedSystem_dataTypes_Simple
+dataTypes_ReturnType <|-- componentBasedSystem_dataTypes_Complex
+dataTypes_ReturnType <|-- componentBasedSystem_dataTypes_Simple
+componentBasedSystem_Allocation "1..1" --* "1..1" componentBasedSystem_ComponentBasedSystem : allocation5
+componentBasedSystem_Allocation "1..1" *-- "1..9999" componentBasedSystem_AllocationContext : allocationcontext58
+AssemblyConnector "0..9999" --* "1..1" componentBasedSystem_ComponentBasedSystem : assemblyconnector3
+componentBasedSystem_AssemblyContext "0..9999" --* "1..1" componentBasedSystem_ComponentBasedSystem : assemblycontext0
+componentBasedSystem_AssemblyContext "2..9999" --* "1..1" componentBasedSystem_CompositeComponent : assemblycontext25
+componentBasedSystem_AllocationContext "1..1" -- "1..1" componentBasedSystem_AssemblyContext : assemblycontext41
+BehaviourDescription "0..9999" --* "1..1" componentBasedSystem_Component : behaviourdescription15
+componentBasedSystem_AssemblyContext "1..1" -- "1..1" componentBasedSystem_Component : component36
+componentBasedSystem_Component "0..9999" --* "1..1" componentBasedSystem_Repository : component55
+componentBasedSystem_Container "2..9999" -- "1..1" componentBasedSystem_Link : container29
+componentBasedSystem_AllocationContext "1..1" -- "1..1" componentBasedSystem_Container : container39
+componentBasedSystem_Container "0..9999" --* "1..1" componentBasedSystem_Environment : container46
+componentBasedSystem_Service "1..1" -- "1..9999" componentBasedSystem_Signature : correspondingSignatures61
+componentBasedSystem_CompositeComponent "1..1" *-- "1..9999" componentBasedSystem_DelegationConnector : delegationconnector27
+DescriptionElement "0..9999" --* "1..1" componentBasedSystem_behaviourDescription_Loop : descriptionelement65
+DescriptionElement "0..9999" --* "1..1" componentBasedSystem_behaviourDescription_Branch : descriptionelement66
+DescriptionElement "0..9999" --* "1..1" componentBasedSystem_behaviourDescription_BehaviourDescription : descriptionelement68
+componentBasedSystem_ComponentBasedSystem "1..1" *-- "1..1" componentBasedSystem_Environment : environment9
+componentBasedSystem_Interface "0..9999" --* "1..1" componentBasedSystem_Repository : interface52
+componentBasedSystem_roles_Role "1..1" -- "1..1" roles_componentBasedSystem_Interface : interface70
+componentBasedSystem_Environment "1..1" *-- "0..9999" componentBasedSystem_Link : link49
+componentBasedSystem_Parameter "0..9999" --* "1..1" componentBasedSystem_Signature : parameter30
+ParameterType "1..1" -- "1..1" componentBasedSystem_Parameter : parametertype34
+componentBasedSystem_roles_AssemblyConnector "1..1" -- "1..1" roles_componentBasedSystem_AssemblyContext : providedAssemblyContext76
+ProvidedRole "1..9999" -- "1..1" componentBasedSystem_ComponentBasedSystem : providedrole11
+ProvidedRole "1..9999" --* "1..1" componentBasedSystem_Component : providedrole21
+ProvidedRole "1..1" -- "1..1" componentBasedSystem_roles_AssemblyConnector : providedrole71
+componentBasedSystem_ComponentBasedSystem "1..1" *-- "1..1" componentBasedSystem_Repository : repository7
+componentBasedSystem_roles_AssemblyConnector "1..1" -- "1..1" roles_componentBasedSystem_AssemblyContext : requiredAssemblyContext78
+RequiredRole "0..9999" -- "1..1" componentBasedSystem_ComponentBasedSystem : requiredrole13
+RequiredRole "0..9999" --* "1..1" componentBasedSystem_Component : requiredrole18
+RequiredRole "1..1" -- "1..1" componentBasedSystem_roles_AssemblyConnector : requiredrole73
+ReturnType "1..1" -- "1..1" componentBasedSystem_Signature : returntype32
+Role "2..2" -- "1..1" componentBasedSystem_DelegationConnector : role44
+componentBasedSystem_Component "1..1" *-- "1..9999" componentBasedSystem_Service : service16
+componentBasedSystem_Interface "1..1" *-- "0..9999" componentBasedSystem_Signature : signature24
+Simple "2..9999" --* "1..1" componentBasedSystem_dataTypes_Complex : simple64
+Type "0..9999" --* "1..1" componentBasedSystem_ComponentBasedSystem : type1
+@enduml

@@ -1,0 +1,309 @@
+@startuml
+class Action {
+}
+class ActionExpression {
+}
+class ActionSequence {
+}
+class Argument {
+}
+class BehavioralFeature {
+}
+class BooleanExpression {
+}
+enum CallConcurrencyKind {
+  cck_concurrent
+  cck_guarded
+  cck_sequential
+}
+class Classifier {
+}
+abstract class Common_Behavior_Action {
+  + isAsynchronous : str
+}
+class Common_Behavior_ActionSequence {
+}
+class Common_Behavior_Argument {
+}
+class Common_Behavior_CallAction {
+}
+class Common_Behavior_CreateAction {
+}
+class Common_Behavior_DestroyAction {
+}
+class Common_Behavior_Exception {
+}
+class Common_Behavior_Reception {
+  + isAbstract : str
+  + isLeaf : str
+  + isRoot : str
+  + specification : str
+}
+class Common_Behavior_ReturnAction {
+}
+class Common_Behavior_SendAction {
+}
+class Common_Behavior_Signal {
+}
+class Common_Behavior_TerminateAction {
+}
+class Common_Behavior_UninterpretedAction {
+}
+class CompositeState {
+}
+abstract class Core_BehavioralFeature {
+  + isQuery : str
+}
+abstract class Core_Classifier {
+}
+abstract class Core_Element {
+}
+abstract class Core_Feature {
+  + ownerScope : str
+}
+abstract class Core_GeneralizableElement {
+  + isAbstract : str
+  + isLeaf : str
+  + isRoot : str
+}
+class Core_Generalization_ {
+  + discriminator : str
+}
+abstract class Core_ModelElement {
+  + isSpecification : str
+  + name : str
+  + visibility : str
+}
+abstract class Core_Namespace {
+}
+class Core_Operation {
+  + concurrency : str
+  + isAbstract : str
+  + isLeaf : str
+  + isRoot : str
+  + specification : str
+}
+class Core_Parameter {
+  + kind : str
+}
+abstract class Core_Relationship {
+}
+class Data_Types_ActionExpression {
+}
+class Data_Types_BooleanExpression {
+}
+class Data_Types_Expression {
+  + body : str
+  + language : str
+}
+class Data_Types_IterationExpression {
+}
+class Data_Types_ObjectSetExpression {
+}
+class Data_Types_TimeExpression {
+}
+class Element {
+}
+class Event {
+}
+class Expression {
+}
+class Feature {
+}
+class GeneralizableElement {
+}
+class Generalization_ {
+}
+class Guard {
+}
+class IterationExpression {
+}
+class ModelElement {
+}
+class Namespace {
+}
+class ObjectSetExpression {
+}
+class Operation {
+}
+class Parameter {
+}
+enum ParameterDirectionKind {
+  pdk_in
+  pdk_inout
+  pdk_out
+  pdk_return
+}
+enum PseudostateKind {
+  pk_choice
+  pk_deepHistory
+  pk_fork
+  pk_initial
+  pk_join
+  pk_junction
+  pk_shallowHistory
+}
+class Relationship {
+}
+enum ScopeKind {
+  sk_classifier
+  sk_instance
+}
+class Signal {
+}
+class State {
+}
+class StateMachine {
+}
+class StateVertex {
+}
+class State_Machines_CallEvent {
+}
+class State_Machines_ChangeEvent {
+}
+class State_Machines_CompositeState {
+  + isConcurrent : str
+}
+abstract class State_Machines_Event {
+}
+class State_Machines_FinalState {
+}
+class State_Machines_Guard {
+}
+class State_Machines_Pseudostate {
+  + kind : str
+}
+class State_Machines_SignalEvent {
+}
+class State_Machines_SimpleState {
+}
+abstract class State_Machines_State {
+}
+class State_Machines_StateMachine {
+}
+abstract class State_Machines_StateVertex {
+}
+class State_Machines_StubState {
+  + referenceState : str
+}
+class State_Machines_SubmachineState {
+}
+class State_Machines_SynchState {
+  + bound : str
+}
+class State_Machines_TimeEvent {
+}
+class State_Machines_Transition {
+}
+class SubmachineState {
+}
+class TimeExpression {
+}
+class Transition {
+}
+enum VisibilityKind {
+  vk_package
+  vk_private
+  vk_protected
+  vk_public
+}
+Action <|-- Common_Behavior_ActionSequence
+Action <|-- Common_Behavior_CallAction
+Action <|-- Common_Behavior_CreateAction
+Action <|-- Common_Behavior_DestroyAction
+Action <|-- Common_Behavior_ReturnAction
+Action <|-- Common_Behavior_SendAction
+Action <|-- Common_Behavior_TerminateAction
+Action <|-- Common_Behavior_UninterpretedAction
+BehavioralFeature <|-- Common_Behavior_Reception
+BehavioralFeature <|-- Core_Operation
+Classifier <|-- Common_Behavior_Signal
+CompositeState <|-- State_Machines_SubmachineState
+Element <|-- Core_ModelElement
+Event <|-- State_Machines_CallEvent
+Event <|-- State_Machines_ChangeEvent
+Event <|-- State_Machines_SignalEvent
+Event <|-- State_Machines_TimeEvent
+Expression <|-- Data_Types_ActionExpression
+Expression <|-- Data_Types_BooleanExpression
+Expression <|-- Data_Types_IterationExpression
+Expression <|-- Data_Types_ObjectSetExpression
+Expression <|-- Data_Types_TimeExpression
+Feature <|-- Core_BehavioralFeature
+GeneralizableElement <|-- Core_Classifier
+ModelElement <|-- Common_Behavior_Action
+ModelElement <|-- Common_Behavior_Argument
+ModelElement <|-- Core_Feature
+ModelElement <|-- Core_GeneralizableElement
+ModelElement <|-- Core_Namespace
+ModelElement <|-- Core_Parameter
+ModelElement <|-- Core_Relationship
+ModelElement <|-- State_Machines_Event
+ModelElement <|-- State_Machines_Guard
+ModelElement <|-- State_Machines_StateMachine
+ModelElement <|-- State_Machines_StateVertex
+ModelElement <|-- State_Machines_Transition
+Namespace <|-- Core_Classifier
+Relationship <|-- Core_Generalization_
+Signal <|-- Common_Behavior_Exception
+State <|-- State_Machines_CompositeState
+State <|-- State_Machines_FinalState
+State <|-- State_Machines_SimpleState
+StateVertex <|-- State_Machines_Pseudostate
+StateVertex <|-- State_Machines_State
+StateVertex <|-- State_Machines_StubState
+StateVertex <|-- State_Machines_SynchState
+Action "0..9999" --* "1..1" Common_Behavior_ActionSequence : action11
+Action "0..1" -- "1..1" Common_Behavior_Argument : action12
+ActionSequence "0..1" -- "1..1" Common_Behavior_Action : actionSequence1
+Argument "0..9999" --* "1..1" Common_Behavior_Action : actualArgument0
+BehavioralFeature "0..1" -- "1..1" Core_Parameter : behavioralFeature80
+BooleanExpression "1..1" --* "1..1" State_Machines_ChangeEvent : changeExpression60
+Core_Generalization_ "1..1" -- "1..1" GeneralizableElement : child87
+CompositeState "0..1" -- "1..1" State_Machines_StateVertex : container23
+ModelElement "0..1" -- "1..1" State_Machines_StateMachine : context17
+Core_Parameter "1..1" *-- "0..1" Expression : defaultValue81
+Event "0..9999" -- "1..1" State_Machines_State : deferrableEvent28
+Action "0..1" --* "1..1" State_Machines_State : doActivity35
+Action "0..1" --* "1..1" State_Machines_Transition : effect54
+Action "0..1" --* "1..1" State_Machines_State : entry38
+Action "0..1" --* "1..1" State_Machines_State : exit32
+BooleanExpression "1..1" --* "1..1" State_Machines_Guard : expression63
+Core_Classifier "1..1" *-- "0..9999" Feature : feature73
+Core_GeneralizableElement "1..1" -- "0..9999" Generalization_ : generalization68
+Guard "0..1" --* "1..1" State_Machines_Transition : guard57
+State_Machines_StateVertex "1..1" -- "0..9999" Transition : incoming24
+Classifier "1..1" -- "1..1" Common_Behavior_CreateAction : instantiation8
+State_Machines_State "1..1" *-- "0..9999" Transition : internalTransition29
+Core_ModelElement "1..1" -- "0..1" Namespace : namespace67
+Operation "1..1" -- "1..1" State_Machines_CallEvent : operation43
+Common_Behavior_CallAction "1..1" -- "1..1" Operation : operation9
+State_Machines_StateVertex "1..1" -- "0..9999" Transition : outgoing26
+Core_Namespace "1..1" *-- "0..9999" ModelElement : ownedElement69
+Classifier "0..1" -- "1..1" Core_Feature : owner74
+Parameter "0..9999" --* "1..1" State_Machines_Event : parameter22
+Core_BehavioralFeature "1..1" *-- "0..9999" Parameter : parameter76
+Core_Generalization_ "1..1" -- "1..1" GeneralizableElement : parent84
+Classifier "0..1" -- "1..1" Core_Generalization_ : powertype85
+Core_Classifier "1..1" -- "0..9999" Generalization_ : powertypeRange71
+Common_Behavior_Action "1..1" *-- "0..1" IterationExpression : recurrence3
+ActionExpression "0..1" --* "1..1" Common_Behavior_Action : script6
+Common_Behavior_SendAction "1..1" -- "1..1" Signal : signal10
+Common_Behavior_Reception "1..1" -- "1..1" Signal : signal15
+Signal "1..1" -- "1..1" State_Machines_SignalEvent : signal45
+StateVertex "1..1" -- "1..1" State_Machines_Transition : source52
+StateMachine "0..1" -- "1..1" State_Machines_State : stateMachine41
+StateMachine "0..1" -- "1..1" State_Machines_Transition : stateMachine50
+StateMachine "1..1" -- "1..1" State_Machines_SubmachineState : submachine65
+State_Machines_StateMachine "1..1" -- "0..9999" SubmachineState : submachineState18
+StateVertex "0..9999" --* "1..1" State_Machines_CompositeState : subvertex58
+Common_Behavior_Action "1..1" *-- "0..1" ObjectSetExpression : target4
+StateVertex "1..1" -- "1..1" State_Machines_Transition : target47
+State "1..1" --* "1..1" State_Machines_StateMachine : top19
+State_Machines_Guard "1..1" -- "1..1" Transition : transition61
+State_Machines_StateMachine "1..1" *-- "0..9999" Transition : transitions20
+Event "0..1" -- "1..1" State_Machines_Transition : trigger48
+Classifier "1..1" -- "1..1" Core_Parameter : type78
+Common_Behavior_Argument "1..1" *-- "1..1" Expression : value14
+State_Machines_TimeEvent "1..1" *-- "1..1" TimeExpression : when42
+@enduml

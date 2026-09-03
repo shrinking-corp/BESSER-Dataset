@@ -1,0 +1,37 @@
+@startuml
+class Identifiable {
+}
+class PetriNet_InputArc {
+}
+class PetriNet_Net {
+}
+class PetriNet_OutputArc {
+}
+class PetriNet_Place {
+  + name : str
+}
+class PetriNet_Token {
+}
+class PetriNet_Transition {
+  + name : str
+}
+Identifiable <|-- PetriNet_InputArc
+Identifiable <|-- PetriNet_Net
+Identifiable <|-- PetriNet_OutputArc
+Identifiable <|-- PetriNet_Place
+Identifiable <|-- PetriNet_Token
+Identifiable <|-- PetriNet_Transition
+PetriNet_InputArc "0..9999" -- "1..1" PetriNet_Place : inputArc1
+PetriNet_InputArc "0..9999" --* "1..1" PetriNet_Net : inputArc27
+PetriNet_InputArc "0..9999" -- "1..1" PetriNet_Transition : inputArc5
+PetriNet_OutputArc "0..9999" -- "1..1" PetriNet_Place : outputArc3
+PetriNet_Net "1..1" *-- "0..9999" PetriNet_OutputArc : outputArc30
+PetriNet_OutputArc "0..9999" -- "1..1" PetriNet_Transition : outputArc7
+PetriNet_InputArc "1..1" -- "0..9999" PetriNet_Place : place10
+PetriNet_OutputArc "1..1" -- "0..9999" PetriNet_Place : place16
+PetriNet_Net "1..1" *-- "0..9999" PetriNet_Place : place22
+PetriNet_Place "1..1" *-- "0..9999" PetriNet_Token : token0
+PetriNet_Net "1..1" *-- "0..9999" PetriNet_Token : token24
+PetriNet_InputArc "1..1" -- "0..9999" PetriNet_Transition : transition13
+PetriNet_OutputArc "1..1" -- "0..9999" PetriNet_Transition : transition19
+@enduml

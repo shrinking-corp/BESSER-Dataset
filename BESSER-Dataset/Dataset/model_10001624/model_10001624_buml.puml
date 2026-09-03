@@ -1,0 +1,61 @@
+@startuml
+class Administrateur_Actor {
+}
+class Administre_UseCase {
+}
+class Choisi_un_voyage_UseCase {
+}
+class Conducteur_Actor {
+}
+class Date_trajet {
+  + Date___heure__minute : str
+  + Jour : str
+  + Type_date : str
+  + id_date : int
+}
+class Effectue_un_paiement_UseCase {
+}
+class Enregistre_son_vehicule_UseCase {
+}
+class Passager__Actor {
+}
+class Proposition_de_voyage_UseCase {
+}
+class Reserve_voyage_UseCase {
+}
+class S_authentifier_UseCase {
+}
+class S_enregistre_UseCase {
+}
+class Utilisateur {
+  + Login : str
+  + Mail : str
+  + Nom : str
+  + Password : str
+  + Pr_nom : str
+  + Telephone : str
+  + id_utilisateur : int
+}
+class Utilisateur_anonyme_Actor {
+}
+class Valide_arriv__UseCase {
+}
+class Valide_embarquement_UseCase {
+}
+class confirme_voyage_UseCase {
+}
+Administrateur_Actor "0..1" -- "0..1" Administre_UseCase : Administrateur_Administre
+Conducteur_Actor "0..1" -- "0..1" Enregistre_son_vehicule_UseCase : Conducteur_Enregistre_son_vehicule
+Conducteur_Actor "0..1" -- "0..1" Proposition_de_voyage_UseCase : Conducteur_Proposition_de_voyage
+Conducteur_Actor "0..1" -- "0..1" Valide_arriv__UseCase : Conducteur_Valide_arriv_
+Conducteur_Actor "0..1" -- "0..1" Valide_embarquement_UseCase : Conducteur_Valide_embarquement
+Conducteur_Actor "0..1" -- "0..1" confirme_voyage_UseCase : Conducteur_confirme_voyage
+Choisi_un_voyage_UseCase "0..1" -- "0..1" Passager__Actor : Passager__Choisi_un_voyage
+Effectue_un_paiement_UseCase "0..1" -- "0..1" Passager__Actor : Passager__Effectue_un_paiement
+Passager__Actor "0..1" -- "0..1" Reserve_voyage_UseCase : Passager__Reserve_voyage
+Passager__Actor "0..1" -- "0..1" Valide_arriv__UseCase : Passager__Valide_arriv_
+Conducteur_Actor "0..1" -- "0..1" S_enregistre_UseCase : S_enregistre_Conducteur
+Passager__Actor "0..1" -- "0..1" S_enregistre_UseCase : S_enregistre_Passager
+S_enregistre_UseCase "0..1" -- "0..1" Utilisateur_anonyme_Actor : Utilisateur_S_enregistre
+S_authentifier_UseCase "0..1" -- "0..1" Utilisateur_anonyme_Actor : Utilisateur_anonyme_S_authentifier
+@enduml

@@ -1,0 +1,157 @@
+@startuml
+class ContractualElement {
+}
+class ReqPredicate {
+}
+class ReqRoot {
+}
+class RequirementSet {
+}
+class reqSpec_AVariableDeclaration {
+}
+class reqSpec_AVariableReference {
+}
+class reqSpec_Category {
+}
+class reqSpec_ComponentClassifier {
+}
+class reqSpec_ContractualElement {
+  + dropRationale : str
+  + dropped : bool
+  + issues : str
+  + name : str
+  + targetDescription : str
+  + title : str
+}
+class reqSpec_Description {
+}
+class reqSpec_DesiredValue {
+  + upto : bool
+}
+class reqSpec_DocumentSection {
+  + label : str
+  + title : str
+}
+class reqSpec_EObject {
+}
+class reqSpec_ErrorBehaviorState {
+}
+class reqSpec_ExternalDocument {
+  + docFragment : str
+  + docReference : str
+}
+class reqSpec_GlobalConstants {
+  + name : str
+}
+class reqSpec_GlobalRequirementSet {
+}
+class reqSpec_Goal {
+}
+class reqSpec_IncludeGlobalRequirement {
+  + componentCategory : str
+  + self : bool
+}
+class reqSpec_InformalPredicate {
+  + description : str
+}
+class reqSpec_Mode {
+}
+class reqSpec_NamedElement {
+}
+class reqSpec_Predicate {
+}
+class reqSpec_PropertyExpression {
+}
+class reqSpec_Rationale {
+}
+class reqSpec_ReqDocument {
+}
+class reqSpec_ReqPredicate {
+}
+class reqSpec_ReqRoot {
+  + issues : str
+  + name : str
+  + title : str
+}
+class reqSpec_ReqSpec {
+}
+class reqSpec_Requirement {
+  + componentCategory : str
+  + connections : bool
+  + exceptionText : str
+}
+class reqSpec_RequirementSet {
+}
+class reqSpec_Stakeholder {
+}
+class reqSpec_StakeholderGoals {
+  + componentCategory : str
+}
+class reqSpec_SystemRequirementSet {
+}
+class reqSpec_Uncertainty {
+}
+class reqSpec_ValuePredicate {
+}
+class reqSpec_WhenCondition {
+}
+ContractualElement <|-- reqSpec_Goal
+ContractualElement <|-- reqSpec_Requirement
+ReqPredicate <|-- reqSpec_InformalPredicate
+ReqPredicate <|-- reqSpec_Predicate
+ReqPredicate <|-- reqSpec_ValuePredicate
+ReqRoot <|-- reqSpec_ReqDocument
+ReqRoot <|-- reqSpec_RequirementSet
+ReqRoot <|-- reqSpec_StakeholderGoals
+RequirementSet <|-- reqSpec_GlobalRequirementSet
+RequirementSet <|-- reqSpec_SystemRequirementSet
+reqSpec_Category "0..9999" -- "1..1" reqSpec_ContractualElement : category5
+reqSpec_ContractualElement "1..1" *-- "0..1" reqSpec_Uncertainty : changeUncertainty16
+reqSpec_AVariableDeclaration "0..9999" --* "1..1" reqSpec_RequirementSet : computes52
+reqSpec_AVariableDeclaration "0..9999" --* "1..1" reqSpec_Requirement : computes69
+reqSpec_PropertyExpression "0..1" --* "1..1" reqSpec_WhenCondition : condition98
+reqSpec_Goal "0..9999" -- "1..1" reqSpec_Goal : conflictsReference65
+reqSpec_AVariableDeclaration "0..9999" --* "1..1" reqSpec_GlobalConstants : constants1
+reqSpec_AVariableDeclaration "0..9999" --* "1..1" reqSpec_StakeholderGoals : constants34
+reqSpec_AVariableDeclaration "0..9999" --* "1..1" reqSpec_RequirementSet : constants49
+reqSpec_AVariableDeclaration "0..9999" --* "1..1" reqSpec_ContractualElement : constants9
+reqSpec_EObject "0..9999" --* "1..1" reqSpec_ReqDocument : content40
+reqSpec_DocumentSection "1..1" *-- "0..9999" reqSpec_EObject : content44
+reqSpec_Requirement "0..9999" -- "1..1" reqSpec_Requirement : decomposesReference81
+reqSpec_Description "0..1" --* "1..1" reqSpec_ReqRoot : description24
+reqSpec_Description "0..1" --* "1..1" reqSpec_DocumentSection : description42
+reqSpec_ContractualElement "1..1" *-- "0..1" reqSpec_Description : description7
+reqSpec_AVariableReference "0..1" -- "1..1" reqSpec_DesiredValue : desired106
+reqSpec_DesiredValue "0..9999" --* "1..1" reqSpec_ValuePredicate : desiredValue104
+reqSpec_Requirement "1..1" -- "0..9999" reqSpec_Stakeholder : developmentStakeholder86
+reqSpec_ContractualElement "1..1" *-- "0..9999" reqSpec_ExternalDocument : docReference20
+reqSpec_ExternalDocument "0..9999" --* "1..1" reqSpec_ReqRoot : docReference26
+reqSpec_ContractualElement "1..1" -- "0..9999" reqSpec_Requirement : evolvesReference18
+reqSpec_EObject "0..1" -- "1..1" reqSpec_Requirement : exception74
+reqSpec_ContractualElement "1..1" -- "0..9999" reqSpec_Goal : goalReference22
+reqSpec_Goal "0..9999" --* "1..1" reqSpec_StakeholderGoals : goals37
+reqSpec_GlobalConstants "0..9999" -- "1..1" reqSpec_StakeholderGoals : importConstants31
+reqSpec_GlobalConstants "0..9999" -- "1..1" reqSpec_RequirementSet : importConstants47
+reqSpec_ErrorBehaviorState "0..9999" -- "1..1" reqSpec_WhenCondition : inErrorState96
+reqSpec_Mode "0..9999" -- "1..1" reqSpec_WhenCondition : inMode94
+reqSpec_IncludeGlobalRequirement "0..9999" --* "1..1" reqSpec_SystemRequirementSet : include113
+reqSpec_EObject "0..1" -- "1..1" reqSpec_IncludeGlobalRequirement : include92
+reqSpec_Requirement "0..1" -- "1..1" reqSpec_Requirement : inheritsReference84
+reqSpec_EObject "0..9999" --* "1..1" reqSpec_ReqSpec : parts0
+reqSpec_ReqPredicate "0..1" --* "1..1" reqSpec_Requirement : predicate72
+reqSpec_ContractualElement "1..1" *-- "0..1" reqSpec_Rationale : rationale14
+reqSpec_Goal "0..9999" -- "1..1" reqSpec_Goal : refinesReference62
+reqSpec_Requirement "0..9999" -- "1..1" reqSpec_Requirement : refinesReference78
+reqSpec_Requirement "0..9999" -- "1..1" reqSpec_Requirement : requirementReference90
+reqSpec_Requirement "0..9999" --* "1..1" reqSpec_RequirementSet : requirements55
+reqSpec_ReqRoot "0..9999" -- "1..1" reqSpec_RequirementSet : stakeholderGoals58
+reqSpec_Goal "1..1" -- "0..9999" reqSpec_Stakeholder : stakeholderReference67
+reqSpec_ComponentClassifier "0..1" -- "1..1" reqSpec_SystemRequirementSet : target111
+reqSpec_ComponentClassifier "0..1" -- "1..1" reqSpec_ContractualElement : target2
+reqSpec_ComponentClassifier "0..1" -- "1..1" reqSpec_StakeholderGoals : target29
+reqSpec_ContractualElement "1..1" -- "0..1" reqSpec_NamedElement : targetElement3
+reqSpec_DesiredValue "1..1" *-- "0..1" reqSpec_PropertyExpression : value108
+reqSpec_ContractualElement "1..1" *-- "0..1" reqSpec_WhenCondition : whencondition12
+reqSpec_Predicate "1..1" *-- "0..1" reqSpec_PropertyExpression : xpression100
+reqSpec_PropertyExpression "0..1" --* "1..1" reqSpec_ValuePredicate : xpression102
+@enduml

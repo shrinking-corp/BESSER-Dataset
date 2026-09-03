@@ -1,0 +1,21 @@
+@startuml
+class NamedElement {
+}
+abstract class simpleworld_NamedElement {
+  + name : str
+}
+class simpleworld_RelatedTo {
+  + since : str
+}
+class simpleworld_Thing {
+  + id : int
+}
+class simpleworld_World {
+}
+NamedElement <|-- simpleworld_RelatedTo
+NamedElement <|-- simpleworld_Thing
+simpleworld_RelatedTo "1..1" -- "0..1" simpleworld_Thing : fromThing2
+simpleworld_RelatedTo "0..9999" --* "1..1" simpleworld_Thing : relations1
+simpleworld_Thing "0..9999" --* "1..1" simpleworld_World : things0
+simpleworld_RelatedTo "1..1" -- "0..1" simpleworld_Thing : toThing3
+@enduml

@@ -1,0 +1,117 @@
+@startuml
+class Command {
+}
+class SuperCommand {
+}
+class xDrone_BackWall {
+  + value : str
+}
+class xDrone_Backward {
+  + distance : str
+}
+class xDrone_Color {
+  + color_value : str
+}
+class xDrone_Command {
+}
+class xDrone_Down {
+  + distance : str
+}
+class xDrone_Drone {
+  + rotation : str
+}
+class xDrone_Environment {
+}
+class xDrone_Fly {
+  + land : str
+  + takeoff : str
+}
+class xDrone_Forward {
+  + distance : str
+}
+class xDrone_FrontWall {
+  + value : str
+}
+class xDrone_GoTo {
+  + object_name : str
+}
+class xDrone_Left {
+  + distance : str
+}
+class xDrone_LeftWall {
+  + value : str
+}
+class xDrone_Main {
+}
+class xDrone_Object {
+  + object_name : str
+}
+class xDrone_Origin {
+}
+class xDrone_Position {
+}
+class xDrone_Program {
+}
+class xDrone_Right {
+  + distance : str
+}
+class xDrone_RightWall {
+  + value : str
+}
+class xDrone_RotateL {
+  + angle : str
+}
+class xDrone_RotateR {
+  + angle : str
+}
+class xDrone_Size {
+}
+class xDrone_SuperCommand {
+}
+class xDrone_Up {
+  + distance : str
+}
+class xDrone_UpWall {
+  + value : str
+}
+class xDrone_Vector {
+  + x : str
+  + y : str
+  + z : str
+}
+class xDrone_Wait {
+  + seconds : str
+}
+class xDrone_Walls {
+}
+Command <|-- xDrone_Backward
+Command <|-- xDrone_Down
+Command <|-- xDrone_Forward
+Command <|-- xDrone_GoTo
+Command <|-- xDrone_Left
+Command <|-- xDrone_Right
+Command <|-- xDrone_RotateL
+Command <|-- xDrone_RotateR
+Command <|-- xDrone_Up
+Command <|-- xDrone_Wait
+SuperCommand <|-- xDrone_Command
+xDrone_BackWall "0..1" --* "1..1" xDrone_Walls : back33
+xDrone_Color "0..1" --* "1..1" xDrone_Object : color19
+xDrone_Fly "1..1" *-- "0..9999" xDrone_SuperCommand : commands5
+xDrone_Drone "0..9999" --* "1..1" xDrone_Environment : drone7
+xDrone_Environment "0..1" --* "1..1" xDrone_Main : environment3
+xDrone_Fly "0..1" --* "1..1" xDrone_Main : fly1
+xDrone_FrontWall "0..1" --* "1..1" xDrone_Walls : front29
+xDrone_LeftWall "0..1" --* "1..1" xDrone_Walls : left35
+xDrone_Main "0..1" --* "1..1" xDrone_Program : main0
+xDrone_Environment "1..1" *-- "0..9999" xDrone_Object : objects11
+xDrone_Object "1..1" *-- "0..1" xDrone_Origin : origin15
+xDrone_Drone "1..1" *-- "0..1" xDrone_Position : position13
+xDrone_RightWall "0..1" --* "1..1" xDrone_Walls : right31
+xDrone_Object "1..1" *-- "0..1" xDrone_Size : size17
+xDrone_UpWall "0..1" --* "1..1" xDrone_Walls : up37
+xDrone_Origin "1..1" *-- "0..1" xDrone_Vector : vector21
+xDrone_Size "1..1" *-- "0..1" xDrone_Vector : vector23
+xDrone_Position "1..1" *-- "0..1" xDrone_Vector : vector26
+xDrone_Environment "1..1" *-- "0..9999" xDrone_Walls : walls9
+@enduml

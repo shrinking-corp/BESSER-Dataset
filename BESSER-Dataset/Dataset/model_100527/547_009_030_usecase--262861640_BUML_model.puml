@@ -1,0 +1,80 @@
+@startuml
+class Actor {
+}
+class Comment {
+}
+class HasInheritance {
+}
+class NamedElement {
+}
+class PackableElement {
+}
+class Relation {
+}
+class UseCase {
+}
+class mtpusecase_Actor {
+}
+class mtpusecase_Association {
+  + sourceName : str
+  + targetName : str
+}
+class mtpusecase_Comment {
+}
+class mtpusecase_ConstraintComment {
+}
+class mtpusecase_DirectedAssociation {
+  + targetName : str
+}
+class mtpusecase_Extend {
+}
+class mtpusecase_Generalization {
+}
+class mtpusecase_HasInheritance {
+}
+class mtpusecase_Include {
+}
+class mtpusecase_NamedElement {
+  + name : str
+}
+class mtpusecase_PackableElement {
+}
+class mtpusecase_Package {
+}
+class mtpusecase_Relation {
+}
+class mtpusecase_RequirementUseCase {
+}
+class mtpusecase_TransformationActor {
+}
+class mtpusecase_UseCase {
+}
+Actor <|-- mtpusecase_TransformationActor
+Comment <|-- mtpusecase_ConstraintComment
+HasInheritance <|-- mtpusecase_Actor
+HasInheritance <|-- mtpusecase_UseCase
+NamedElement <|-- mtpusecase_PackableElement
+NamedElement <|-- mtpusecase_Package
+PackableElement <|-- mtpusecase_Comment
+PackableElement <|-- mtpusecase_Extend
+PackableElement <|-- mtpusecase_Generalization
+PackableElement <|-- mtpusecase_HasInheritance
+PackableElement <|-- mtpusecase_Include
+PackableElement <|-- mtpusecase_Relation
+Relation <|-- mtpusecase_Association
+Relation <|-- mtpusecase_DirectedAssociation
+UseCase <|-- mtpusecase_RequirementUseCase
+mtpusecase_Extend "0..1" -- "1..1" mtpusecase_UseCase : extends7
+mtpusecase_Include "0..1" -- "1..1" mtpusecase_UseCase : includes6
+mtpusecase_Generalization "0..9999" -- "1..1" mtpusecase_HasInheritance : inheritances1
+mtpusecase_PackableElement "0..9999" --* "1..1" mtpusecase_Package : packableElements0
+mtpusecase_Include "1..1" -- "0..1" mtpusecase_UseCase : source14
+mtpusecase_Extend "1..1" -- "0..1" mtpusecase_UseCase : source16
+mtpusecase_PackableElement "0..1" -- "1..1" mtpusecase_Relation : source9
+mtpusecase_Generalization "1..1" -- "0..1" mtpusecase_HasInheritance : src2
+mtpusecase_PackableElement "0..1" -- "1..1" mtpusecase_Relation : target11
+mtpusecase_Include "1..1" -- "0..1" mtpusecase_UseCase : target15
+mtpusecase_Extend "1..1" -- "0..1" mtpusecase_UseCase : target18
+mtpusecase_Generalization "1..1" -- "0..1" mtpusecase_HasInheritance : target3
+mtpusecase_Comment "1..1" -- "0..1" mtpusecase_PackableElement : target4
+@enduml

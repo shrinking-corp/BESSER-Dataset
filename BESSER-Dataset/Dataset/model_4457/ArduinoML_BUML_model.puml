@@ -1,0 +1,58 @@
+@startuml
+class Action {
+}
+class Brick {
+}
+enum DigitalValue {
+  OFF
+  ON
+}
+class NamedElement {
+}
+abstract class arduinoml_Action {
+}
+class arduinoml_Actuator {
+}
+class arduinoml_Board {
+}
+abstract class arduinoml_Brick {
+  + pin : int
+}
+abstract class arduinoml_NamedElement {
+  + name : str
+}
+class arduinoml_Off {
+}
+class arduinoml_On {
+}
+class arduinoml_Sensor {
+}
+class arduinoml_State {
+}
+class arduinoml_Transition {
+}
+class arduinoml_Trigger {
+  + value : str
+}
+class arduinoml_Wait {
+  + waitingTime : int
+}
+Action <|-- arduinoml_Off
+Action <|-- arduinoml_On
+Action <|-- arduinoml_Wait
+Brick <|-- arduinoml_Actuator
+Brick <|-- arduinoml_Sensor
+NamedElement <|-- arduinoml_Brick
+NamedElement <|-- arduinoml_State
+NamedElement <|-- arduinoml_Transition
+arduinoml_Action "1..9999" --* "1..1" arduinoml_State : actions6
+arduinoml_Action "1..1" -- "1..9999" arduinoml_Actuator : actuators14
+arduinoml_Board "1..1" *-- "0..9999" arduinoml_State : alternatives1
+arduinoml_Board "1..1" *-- "1..9999" arduinoml_Brick : bricks4
+arduinoml_State "1..1" *-- "1..9999" arduinoml_Transition : eventCode8
+arduinoml_Board "1..1" *-- "1..1" arduinoml_State : initial0
+arduinoml_Sensor "1..9999" -- "1..1" arduinoml_Trigger : sensors16
+arduinoml_State "1..1" -- "1..1" arduinoml_Transition : source13
+arduinoml_State "1..1" -- "1..1" arduinoml_Transition : target9
+arduinoml_Transition "1..1" *-- "1..1" arduinoml_Trigger : trigger11
+@enduml

@@ -1,0 +1,75 @@
+@startuml
+class FormWidget {
+}
+class Widget {
+}
+class bootstrap_CheckBox {
+  + description : str
+}
+class bootstrap_Form {
+}
+abstract class bootstrap_FormWidget {
+  + label : str
+}
+class bootstrap_Gallery {
+  + imagesPath : str
+}
+class bootstrap_ImagesBlock {
+  + imagesPath : str
+}
+class bootstrap_MainPage {
+  + description : str
+  + title : str
+}
+class bootstrap_Page {
+  + description : str
+  + name : str
+  + title : str
+}
+class bootstrap_Section {
+  + description : str
+  + title : str
+}
+class bootstrap_Site {
+  + title : str
+}
+class bootstrap_Spinner {
+  + values : str
+}
+class bootstrap_Table {
+  + bordered : bool
+  + columnNames : str
+  + rowNames : str
+  + striped : bool
+}
+class bootstrap_Text {
+  + columnNumber : int
+}
+class bootstrap_TextArea {
+}
+class bootstrap_Video {
+  + path : str
+}
+abstract class bootstrap_Widget {
+  + title : str
+}
+FormWidget <|-- bootstrap_CheckBox
+FormWidget <|-- bootstrap_Spinner
+FormWidget <|-- bootstrap_TextArea
+Widget <|-- bootstrap_Form
+Widget <|-- bootstrap_Gallery
+Widget <|-- bootstrap_ImagesBlock
+Widget <|-- bootstrap_Table
+Widget <|-- bootstrap_Text
+Widget <|-- bootstrap_Video
+bootstrap_Form "1..1" -- "1..1" bootstrap_FormWidget : form13
+bootstrap_Form "1..1" *-- "1..9999" bootstrap_FormWidget : formWidgets12
+bootstrap_MainPage "1..1" --* "1..1" bootstrap_Site : mainPage1
+bootstrap_Page "1..1" -- "1..1" bootstrap_Section : page8
+bootstrap_Page "0..9999" --* "1..1" bootstrap_Site : pages0
+bootstrap_Section "1..1" -- "1..1" bootstrap_Widget : section10
+bootstrap_Page "1..1" *-- "1..9999" bootstrap_Section : sections3
+bootstrap_Page "1..1" -- "1..1" bootstrap_Site : site4
+bootstrap_MainPage "1..1" -- "1..1" bootstrap_Site : site5
+bootstrap_Section "1..1" *-- "1..9999" bootstrap_Widget : widgets7
+@enduml

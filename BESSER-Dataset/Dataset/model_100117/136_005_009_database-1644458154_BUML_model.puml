@@ -1,0 +1,130 @@
+@startuml
+class AbstractTable {
+}
+class DatabaseElement {
+}
+class NamedElement {
+}
+class TableContainer {
+}
+class TypesLibraryUser {
+}
+abstract class database_AbstractTable {
+}
+class database_Column {
+  + autoincrement : bool
+  + defaultValue : str
+  + inForeignKey : bool
+  + inPrimaryKey : bool
+  + nullable : bool
+  + unique : bool
+  + addToPrimaryKey() : void
+  + addToUniqueIndex() : void
+  + removeFromPrimaryKey() : void
+  + removeFromUniqueIndex() : void
+}
+class database_Constraint {
+  + expression : str
+}
+class database_DataBase {
+  + url : str
+}
+abstract class database_DatabaseElement {
+  + ID : str
+  + comments : str
+  + techID : str
+}
+class database_ForeignKey {
+  + getSourceTable() : str
+  + getTargetTable() : str
+}
+class database_ForeignKeyElement {
+}
+class database_Index {
+  + cardinality : int
+  + indexType : str
+  + qualifier : str
+  + unique : bool
+}
+class database_IndexElement {
+  + asc : bool
+}
+abstract class database_NamedElement {
+  + name : str
+}
+class database_PrimaryKey {
+}
+class database_Schema {
+}
+class database_Sequence {
+  + cacheSize : str
+  + cycle : bool
+  + increment : str
+  + maxValue : str
+  + minValue : str
+  + start : str
+}
+class database_Table {
+}
+abstract class database_TableContainer {
+}
+class database_Type {
+}
+class database_UserDefinedTypesLibrary {
+}
+class database_View {
+  + query : str
+}
+class database_ViewElement {
+  + alias : str
+  + name : str
+}
+AbstractTable <|-- database_Table
+AbstractTable <|-- database_View
+DatabaseElement <|-- database_ForeignKeyElement
+DatabaseElement <|-- database_IndexElement
+DatabaseElement <|-- database_NamedElement
+NamedElement <|-- database_AbstractTable
+NamedElement <|-- database_Column
+NamedElement <|-- database_Constraint
+NamedElement <|-- database_ForeignKey
+NamedElement <|-- database_Index
+NamedElement <|-- database_PrimaryKey
+NamedElement <|-- database_Sequence
+NamedElement <|-- database_TableContainer
+TableContainer <|-- database_DataBase
+TableContainer <|-- database_Schema
+TypesLibraryUser <|-- database_DataBase
+database_Column "0..1" -- "1..1" database_IndexElement : column50
+database_View "1..1" *-- "0..9999" database_ViewElement : columns20
+database_Column "0..9999" --* "1..1" database_Table : columns32
+database_Column "0..9999" -- "1..1" database_PrimaryKey : columns34
+database_Column "0..9999" -- "1..1" database_Sequence : columns54
+database_Constraint "0..9999" --* "1..1" database_Table : constraints28
+database_DataBase "1..1" *-- "0..9999" database_UserDefinedTypesLibrary : defines1
+database_Index "1..1" *-- "0..9999" database_IndexElement : elements16
+database_ForeignKey "1..1" *-- "0..9999" database_ForeignKeyElement : elements39
+database_Column "0..1" -- "1..1" database_ForeignKeyElement : fkColumn45
+database_Column "1..1" -- "0..9999" database_ForeignKeyElement : foreignKeyElements9
+database_ForeignKey "0..9999" --* "1..1" database_Table : foreignKeys26
+database_Column "1..1" -- "0..9999" database_ForeignKey : foreignKeys7
+database_Column "1..1" -- "0..9999" database_IndexElement : indexElements5
+database_Index "0..9999" --* "1..1" database_Table : indexes30
+database_Column "1..1" -- "0..9999" database_Index : indexes4
+database_Column "1..1" -- "1..1" database_Table : owner14
+database_Index "1..1" -- "1..1" database_Table : owner18
+database_AbstractTable "1..1" -- "1..1" database_TableContainer : owner3
+database_PrimaryKey "1..1" -- "1..1" database_Table : owner36
+database_ForeignKey "1..1" -- "1..1" database_Table : owner41
+database_Constraint "1..1" -- "1..1" database_Table : owner52
+database_Column "0..1" -- "1..1" database_ForeignKeyElement : pkColumn47
+database_PrimaryKey "0..1" --* "1..1" database_Table : primaryKey24
+database_Column "1..1" -- "0..1" database_PrimaryKey : primaryKey6
+database_DataBase "1..1" *-- "0..9999" database_Schema : schemas0
+database_Column "1..1" -- "0..1" database_Sequence : sequence12
+database_Sequence "0..9999" --* "1..1" database_TableContainer : sequences58
+database_View "1..1" *-- "0..9999" database_ViewElement : tables21
+database_AbstractTable "0..9999" --* "1..1" database_TableContainer : tables56
+database_ForeignKey "1..1" -- "0..1" database_Table : target43
+database_Column "1..1" *-- "1..1" database_Type : type10
+@enduml

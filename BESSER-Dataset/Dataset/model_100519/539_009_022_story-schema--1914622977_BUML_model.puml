@@ -1,0 +1,61 @@
+@startuml
+enum ActionTypeStatus {
+  resolved
+  unresolved
+}
+class BundleAware {
+}
+class NameContainer {
+}
+class NsPrefixable {
+}
+class ResourceAware {
+}
+enum Tenses {
+  both
+  present
+}
+abstract class schema_ActionLike {
+  + imperativeTense : str
+  + pastTense : str
+  + pluralPastTense : str
+  + pluralPresentTense : str
+  + presentTense : str
+  + tenses : str
+}
+class schema_ActionType {
+  + status : str
+  + create() : str
+}
+class schema_AggregationType {
+  + create() : str
+}
+class schema_EFactory {
+}
+class schema_EPackage {
+}
+class schema_StorySchemaCatalog {
+  + ecoreUrl : str
+  + generatedPackageName : str
+  + xmiUrl : str
+  + createAction(schema_targetClass : str) : void
+}
+class schema_StoryType {
+}
+class schema_TargetType {
+}
+class schema_TargetTypeRef {
+}
+BundleAware <|-- schema_StorySchemaCatalog
+NameContainer <|-- schema_TargetTypeRef
+NsPrefixable <|-- schema_StorySchemaCatalog
+NsPrefixable <|-- schema_TargetTypeRef
+ResourceAware <|-- schema_StorySchemaCatalog
+schema_ActionType "0..9999" --* "1..1" schema_StorySchemaCatalog : actionTypes1
+schema_AggregationType "0..9999" --* "1..1" schema_StorySchemaCatalog : aggregationTypes3
+schema_EFactory "0..1" -- "1..1" schema_StorySchemaCatalog : eFactory7
+schema_EPackage "0..1" -- "1..1" schema_StorySchemaCatalog : ePackage5
+schema_ActionType "1..1" -- "0..9999" schema_TargetType : resolvedSubjectTypes9
+schema_StorySchemaCatalog "1..1" *-- "0..9999" schema_StoryType : storyTypes0
+schema_ActionType "1..1" *-- "0..9999" schema_TargetTypeRef : subjectTypes11
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class model_Book {
+  + author : str
+  + avgRating : int
+  + name : str
+}
+class model_BookShelf {
+  + name : str
+}
+class model_DataBase {
+}
+class model_Person {
+  + name : str
+}
+model_Book "0..9999" -- "1..1" model_BookShelf : books5
+model_Book "0..9999" --* "1..1" model_DataBase : books9
+model_Person "1..1" -- "0..9999" model_Person : friends4
+model_BookShelf "1..1" -- "1..1" model_Person : ownedBy6
+model_DataBase "1..1" *-- "0..9999" model_Person : people7
+model_Book "1..1" -- "0..9999" model_BookShelf : presentIn0
+model_BookShelf "0..9999" --* "1..1" model_Person : shelves1
+@enduml

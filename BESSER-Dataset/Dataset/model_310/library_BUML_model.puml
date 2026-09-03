@@ -1,0 +1,35 @@
+@startuml
+enum BookCategory {
+  Biography
+  MYSTERY
+  ScienceFiction
+}
+class library_Book {
+  + category : str
+  + pages : int
+  + title : str
+}
+class library_EStringToBookMapEntry {
+  + key : str
+}
+class library_EStringToWriterMapEntry {
+  + key : str
+}
+class library_Library {
+  + name : str
+  + options : str
+  + writerByIDMap : str
+}
+class library_Writer {
+  + name : str
+}
+library_Book "1..1" -- "0..1" library_Writer : author0
+library_EStringToBookMapEntry "0..9999" --* "1..1" library_Library : bookByTitleMap7
+library_Book "0..9999" -- "1..1" library_Writer : books11
+library_Book "0..9999" --* "1..1" library_Library : books2
+library_Book "0..9999" -- "1..1" library_Library : specialBooks4
+library_Book "0..1" -- "1..1" library_EStringToBookMapEntry : value12
+library_EStringToWriterMapEntry "1..1" -- "0..1" library_Writer : value15
+library_EStringToWriterMapEntry "0..9999" --* "1..1" library_Library : writerByNameMap9
+library_Library "1..1" *-- "0..9999" library_Writer : writers1
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+class fsmtest_ConditionDeclaration {
+}
+class fsmtest_FsmDefinition {
+  + name : str
+}
+class fsmtest_GuardDeclaration {
+}
+class fsmtest_LoopsDeclaration {
+  + val : int
+}
+class fsmtest_Model {
+}
+class fsmtest_PostconditionDeclaration {
+}
+class fsmtest_PreconditionDeclaration {
+}
+class fsmtest_RandomTest {
+  + name : str
+}
+class fsmtest_SeedDeclaration {
+  + val : int
+}
+class fsmtest_SignalDeclaration {
+  + intVal : int
+  + port : str
+  + signame : str
+  + strVal : str
+}
+class fsmtest_StateDeclaration {
+  + name : str
+}
+class fsmtest_TransitionDeclaration {
+  + name : str
+}
+fsmtest_FsmDefinition "0..9999" --* "1..1" fsmtest_Model : FsmDefinitions0
+fsmtest_Model "1..1" *-- "0..9999" fsmtest_RandomTest : RandomTests1
+fsmtest_ConditionDeclaration "0..9999" --* "1..1" fsmtest_StateDeclaration : condition33
+fsmtest_StateDeclaration "0..1" -- "1..1" fsmtest_TransitionDeclaration : destination13
+fsmtest_FsmDefinition "0..1" -- "1..1" fsmtest_RandomTest : fsm5
+fsmtest_LoopsDeclaration "0..1" --* "1..1" fsmtest_RandomTest : loopsDeclaration8
+fsmtest_PostconditionDeclaration "0..9999" --* "1..1" fsmtest_TransitionDeclaration : postcondition23
+fsmtest_PreconditionDeclaration "0..9999" --* "1..1" fsmtest_TransitionDeclaration : precondition21
+fsmtest_RandomTest "1..1" *-- "0..1" fsmtest_SeedDeclaration : seedDeclaration10
+fsmtest_GuardDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal12
+fsmtest_ConditionDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal25
+fsmtest_PreconditionDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal27
+fsmtest_PostconditionDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal30
+fsmtest_FsmDefinition "1..1" *-- "0..9999" fsmtest_StateDeclaration : states3
+fsmtest_StateDeclaration "1..1" *-- "0..9999" fsmtest_TransitionDeclaration : transitions36
+fsmtest_SignalDeclaration "0..1" --* "1..1" fsmtest_TransitionDeclaration : trigger15
+fsmtest_GuardDeclaration "0..9999" --* "1..1" fsmtest_TransitionDeclaration : triggers18
+@enduml

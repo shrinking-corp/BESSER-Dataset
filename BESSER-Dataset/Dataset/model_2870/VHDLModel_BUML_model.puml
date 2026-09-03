@@ -1,0 +1,62 @@
+@startuml
+class BinaryGate {
+}
+class Block {
+}
+class ComplexBlock {
+}
+class Port {
+}
+class VHDLModel_AndGate {
+}
+abstract class VHDLModel_BinaryGate {
+}
+abstract class VHDLModel_Block {
+  + name : str
+}
+class VHDLModel_BlockRef {
+}
+abstract class VHDLModel_ComplexBlock {
+}
+class VHDLModel_CompositeBlock {
+}
+class VHDLModel_InputPort {
+}
+class VHDLModel_NotGate {
+}
+class VHDLModel_OrGate {
+}
+class VHDLModel_OutputPort {
+}
+abstract class VHDLModel_Port {
+  + high : bool
+  + name : str
+}
+class VHDLModel_Signal {
+}
+class VHDLModel_VHDLSpecification {
+  + name : str
+}
+BinaryGate <|-- VHDLModel_AndGate
+BinaryGate <|-- VHDLModel_OrGate
+Block <|-- VHDLModel_BinaryGate
+Block <|-- VHDLModel_ComplexBlock
+Block <|-- VHDLModel_NotGate
+ComplexBlock <|-- VHDLModel_BlockRef
+ComplexBlock <|-- VHDLModel_CompositeBlock
+Port <|-- VHDLModel_InputPort
+Port <|-- VHDLModel_OutputPort
+Port <|-- VHDLModel_Signal
+VHDLModel_Block "1..1" -- "1..1" VHDLModel_Port : block21
+VHDLModel_BlockRef "1..1" -- "1..1" VHDLModel_CompositeBlock : block8
+VHDLModel_Block "1..9999" --* "1..1" VHDLModel_CompositeBlock : blocks10
+VHDLModel_CompositeBlock "0..9999" --* "1..1" VHDLModel_VHDLSpecification : blocks24
+VHDLModel_BinaryGate "1..1" *-- "1..1" VHDLModel_InputPort : inputport11
+VHDLModel_InputPort "1..1" --* "1..1" VHDLModel_NotGate : inputport15
+VHDLModel_BinaryGate "1..1" *-- "1..1" VHDLModel_InputPort : inputport20
+VHDLModel_Block "1..1" -- "0..9999" VHDLModel_InputPort : inputs6
+VHDLModel_NotGate "1..1" *-- "1..1" VHDLModel_OutputPort : outputport13
+VHDLModel_BinaryGate "1..1" *-- "1..1" VHDLModel_OutputPort : outputport4
+VHDLModel_ComplexBlock "1..1" *-- "0..9999" VHDLModel_Port : ports9
+VHDLModel_Port "0..1" -- "1..1" VHDLModel_Port : src19
+@enduml

@@ -1,0 +1,180 @@
+@startuml
+class Button {
+}
+class Error {
+}
+class Field {
+}
+class Form {
+}
+class FormElement {
+}
+class Item {
+}
+class Link {
+}
+class ListField {
+}
+class Page {
+}
+class Success {
+}
+class Text {
+}
+enum Type {
+  float
+  int
+}
+class Validator {
+}
+class Visitor {
+}
+class dsml_visitor_JSPVisitor {
+}
+class dsml_visitor_POJOVisitor {
+}
+class dsml_visitor_ResourceVisitor {
+}
+abstract class dsml_visitor_Visitor {
+  + tag : str
+}
+class dsml_web_BetweenValidator {
+  + valueG : int
+  + valueL : int
+}
+abstract class dsml_web_Button {
+}
+class dsml_web_CancelButton {
+}
+class dsml_web_CheckBox {
+}
+class dsml_web_DateValidator {
+}
+class dsml_web_EmailValidator {
+}
+class dsml_web_Error {
+}
+abstract class dsml_web_Field {
+}
+class dsml_web_Form {
+  + action : str
+  + accept(dsml_visitor : str) : str
+}
+abstract class dsml_web_FormElement {
+  + name : str
+  + value : str
+  + accept(dsml_visitor : str) : str
+}
+class dsml_web_GreaterThanValidator {
+  + value : int
+}
+class dsml_web_Hidden {
+}
+class dsml_web_Item {
+  + value : str
+}
+class dsml_web_Label {
+}
+class dsml_web_LessThanValidator {
+  + value : int
+}
+class dsml_web_Link {
+  + value : str
+  + accept(dsml_visitor : str) : str
+}
+abstract class dsml_web_ListField {
+}
+class dsml_web_Page {
+  + name : str
+  + title : str
+}
+class dsml_web_PasswordField {
+  + maxlength : int
+  + size : int
+}
+class dsml_web_RadioButton {
+}
+class dsml_web_RegexValidator {
+  + regex : str
+}
+class dsml_web_Required {
+}
+class dsml_web_ResetButton {
+}
+class dsml_web_Select {
+  + size : int
+}
+class dsml_web_StringLengthValidator {
+  + max : int
+  + min : int
+}
+class dsml_web_SubmitButton {
+}
+class dsml_web_Success {
+}
+class dsml_web_Text {
+  + value : str
+  + accept(dsml_visitor : str) : str
+}
+class dsml_web_TextArea {
+  + cols : int
+  + rows : int
+}
+class dsml_web_TextField {
+  + maxlength : int
+  + size : int
+}
+class dsml_web_TimeValidator {
+}
+class dsml_web_TypeValidator {
+  + type : str
+}
+class dsml_web_URLValidator {
+}
+abstract class dsml_web_Validator {
+  + accept(dsml_visitor : str) : str
+}
+class dsml_web_Website {
+  + name : str
+}
+Button <|-- dsml_web_CancelButton
+Button <|-- dsml_web_ResetButton
+Button <|-- dsml_web_SubmitButton
+Field <|-- dsml_web_PasswordField
+Field <|-- dsml_web_TextArea
+Field <|-- dsml_web_TextField
+FormElement <|-- dsml_web_Button
+FormElement <|-- dsml_web_CheckBox
+FormElement <|-- dsml_web_Field
+FormElement <|-- dsml_web_Hidden
+FormElement <|-- dsml_web_Label
+FormElement <|-- dsml_web_ListField
+ListField <|-- dsml_web_RadioButton
+ListField <|-- dsml_web_Select
+Validator <|-- dsml_web_BetweenValidator
+Validator <|-- dsml_web_DateValidator
+Validator <|-- dsml_web_EmailValidator
+Validator <|-- dsml_web_GreaterThanValidator
+Validator <|-- dsml_web_LessThanValidator
+Validator <|-- dsml_web_RegexValidator
+Validator <|-- dsml_web_Required
+Validator <|-- dsml_web_StringLengthValidator
+Validator <|-- dsml_web_TimeValidator
+Validator <|-- dsml_web_TypeValidator
+Validator <|-- dsml_web_URLValidator
+Visitor <|-- dsml_visitor_JSPVisitor
+Visitor <|-- dsml_visitor_POJOVisitor
+Visitor <|-- dsml_visitor_ResourceVisitor
+Error "0..1" --* "1..1" dsml_web_Form : Error13
+Page "0..1" -- "1..1" dsml_web_Error : ErrorPage17
+Form "0..1" --* "1..1" dsml_web_Page : Form1
+FormElement "0..9999" --* "1..1" dsml_web_Form : FormElements10
+Item "0..9999" --* "1..1" dsml_web_ListField : Items7
+Page "0..1" -- "1..1" dsml_web_Link : LinkedPage8
+Link "0..9999" --* "1..1" dsml_web_Page : Links4
+Page "1..9999" --* "1..1" dsml_web_Website : Pages0
+Success "0..1" --* "1..1" dsml_web_Form : Success11
+Page "0..1" -- "1..1" dsml_web_Success : SuccessPage15
+Text "0..9999" --* "1..1" dsml_web_Page : Texts2
+Validator "0..9999" --* "1..1" dsml_web_Field : Validator6
+@enduml

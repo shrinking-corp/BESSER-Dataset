@@ -1,0 +1,120 @@
+@startuml
+class ArrayExpression {
+}
+enum ArrayOperator {
+  mongo_all
+  mongo_in
+  mongo_nin
+  sql_in
+  sql_notIn
+}
+class Expression {
+}
+class ExpressionWhereEntry {
+}
+enum Operator {
+  equal
+  greaterEqual
+  greaterThen
+  in_
+  lessEqual
+  lessThen
+  like
+  notEqual
+  notIn
+  notLike
+}
+class WhereEntry {
+}
+class query_AndWhereEntry {
+}
+class query_ArrayExpression {
+}
+class query_BooleanArrayExpression {
+  + values : str
+}
+class query_BooleanExpression {
+  + true : str
+}
+class query_Database {
+  + dbName : str
+  + name : str
+  + port : str
+  + url : str
+}
+class query_DateArrayExpression {
+  + values : date
+}
+class query_DateExpression {
+  + value : date
+}
+class query_DoubleArrayExpression {
+  + values : float
+}
+class query_DoubleExpression {
+  + value : float
+}
+class query_Expression {
+}
+class query_ExpressionWhereEntry {
+  + name : str
+}
+class query_LongArrayExpression {
+  + values : str
+}
+class query_LongExpression {
+  + value : str
+}
+class query_Model {
+  + attrs : str
+}
+class query_MultiExpressionWhereEntry {
+  + operator : str
+}
+class query_NullArrayExpression {
+  + values : str
+}
+class query_NullExpression {
+  + value : str
+}
+class query_OrWhereEntry {
+}
+class query_ReplacableValue {
+  + value : str
+}
+class query_SingleExpressionWhereEntry {
+  + operator : str
+}
+class query_StringArrayExpression {
+  + values : str
+}
+class query_StringExpression {
+  + value : str
+}
+class query_WhereEntry {
+}
+ArrayExpression <|-- query_BooleanArrayExpression
+ArrayExpression <|-- query_DateArrayExpression
+ArrayExpression <|-- query_DoubleArrayExpression
+ArrayExpression <|-- query_LongArrayExpression
+ArrayExpression <|-- query_NullArrayExpression
+ArrayExpression <|-- query_StringArrayExpression
+Expression <|-- query_BooleanExpression
+Expression <|-- query_DateExpression
+Expression <|-- query_DoubleExpression
+Expression <|-- query_LongExpression
+Expression <|-- query_NullExpression
+Expression <|-- query_ReplacableValue
+Expression <|-- query_StringExpression
+ExpressionWhereEntry <|-- query_MultiExpressionWhereEntry
+ExpressionWhereEntry <|-- query_SingleExpressionWhereEntry
+WhereEntry <|-- query_AndWhereEntry
+WhereEntry <|-- query_ExpressionWhereEntry
+WhereEntry <|-- query_OrWhereEntry
+query_Database "0..1" --* "1..1" query_Model : db0
+query_OrWhereEntry "1..1" *-- "0..9999" query_WhereEntry : entries5
+query_AndWhereEntry "1..1" *-- "0..9999" query_WhereEntry : entries7
+query_Expression "0..1" --* "1..1" query_SingleExpressionWhereEntry : rhs3
+query_ArrayExpression "0..1" --* "1..1" query_MultiExpressionWhereEntry : rhs4
+query_Model "1..1" *-- "0..1" query_WhereEntry : whereEntry1
+@enduml

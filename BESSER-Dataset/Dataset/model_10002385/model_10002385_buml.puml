@@ -1,0 +1,54 @@
+@startuml
+class Admin {
+  + adminId : int
+  + adminName : str
+  + adminPassword : str
+  + adminRmail : str
+}
+class BookSet {
+  + bookIsbn : int
+  + bookTitle : str
+}
+class Bookstore_Shop {
+  + Admin : Admin
+  + User : User
+}
+class Customer {
+  + customerAddress : str
+  + customerId : int
+  + customerName : str
+  + customerPaymentInfo : str
+  + customerPhone : int
+}
+class Order {
+  + NumberOfBooks : int
+  + customerId : int
+  + orderId : int
+  + price : str
+}
+class Payment {
+  + paymentId : int
+  + paymentTotal : str
+}
+class Search {
+  + authorName : str
+  + bookTitle : str
+  + priceLimit : str
+}
+class Shopping_Cart {
+  + customerId : Customer
+  + orderId : int
+  + price : str
+}
+class User {
+  + password : str
+  + userId : int
+}
+Customer "1..1" -- "0..9999" Search : Customer_Search
+Customer "0..9999" -- "1..1" Shopping_Cart : Customer_Shopping_Cart
+Admin "0..1" -- "0..1" Order : OrderBook_Admin
+BookSet "0..1" -- "0..1" Search : Search_BookSet
+Order "0..9999" -- "1..1" Shopping_Cart : Shopping_Cart_OrderBook
+Admin "0..10" -- "0..1" User : User_Admin
+Customer "0..1" -- "0..1" User : User_Customer
+@enduml

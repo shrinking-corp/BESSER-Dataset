@@ -1,0 +1,124 @@
+@startuml
+enum ArmOpType {
+  DOWN
+  UP
+}
+enum BoolType {
+  AND
+  FALSE
+  G
+  L
+  OR
+  TRUE
+}
+enum ColorName {
+  BLACK
+  BLUE
+  GREEN
+  RED
+  WHITE
+}
+enum DirectionVal {
+  BACKWARD
+  FORWARD
+  LEFT
+  RIGHT
+}
+enum SensorType {
+  BACKUS
+  COLOR
+  FRONTUS
+  GYRO
+  LEFTLIGHT
+  LEFTTOUCH
+  RIGHTLIGHT
+  RIGHTTOUCH
+}
+enum SoundName {
+  BUZZ
+  FANFARE
+}
+enum SpeedVal {
+  HIGH
+  LOW
+  MED
+}
+class robotDSL_Action {
+  + cent : str
+  + degr : int
+  + duration : int
+}
+class robotDSL_ArmOp {
+  + opType : str
+}
+class robotDSL_Bool {
+  + boolType : str
+}
+class robotDSL_Color {
+  + colorName : str
+}
+class robotDSL_Direction {
+  + dir : str
+}
+class robotDSL_Distance {
+  + distance : int
+}
+class robotDSL_Flag {
+  + name : str
+}
+class robotDSL_Goal {
+}
+class robotDSL_Mission {
+  + name : str
+}
+class robotDSL_Missions {
+  + name : str
+}
+class robotDSL_Negation {
+  + NOT : str
+}
+class robotDSL_Sensor {
+  + sensorType : str
+}
+class robotDSL_Sound {
+  + soundName : str
+}
+class robotDSL_Speed {
+  + speed : str
+}
+class robotDSL_Task {
+  + name : str
+  + prio : int
+}
+class robotDSL_Time {
+  + sec : int
+}
+class robotDSL_Trigger {
+  + degrees : int
+  + touching : str
+}
+robotDSL_Action "0..9999" --* "1..1" robotDSL_Task : actionList16
+robotDSL_Action "1..1" *-- "0..1" robotDSL_Bool : bool36
+robotDSL_Bool "0..1" --* "1..1" robotDSL_Trigger : boolType38
+robotDSL_Color "0..1" --* "1..1" robotDSL_Trigger : color48
+robotDSL_Distance "0..1" --* "1..1" robotDSL_Trigger : dist50
+robotDSL_Action "0..9999" --* "1..1" robotDSL_Goal : finishActions11
+robotDSL_Action "1..1" -- "0..1" robotDSL_Flag : flag33
+robotDSL_Flag "0..1" -- "1..1" robotDSL_Trigger : flag43
+robotDSL_Flag "0..9999" --* "1..1" robotDSL_Mission : flagsList1
+robotDSL_Goal "0..1" --* "1..1" robotDSL_Mission : goal5
+robotDSL_Goal "1..1" *-- "0..9999" robotDSL_Trigger : goalEvents7
+robotDSL_Mission "0..9999" --* "1..1" robotDSL_Missions : missionList0
+robotDSL_Action "1..1" *-- "0..1" robotDSL_Direction : moveDir19
+robotDSL_Negation "0..1" --* "1..1" robotDSL_Trigger : neg41
+robotDSL_Action "1..1" *-- "0..1" robotDSL_ArmOp : op29
+robotDSL_Bool "0..1" --* "1..1" robotDSL_Distance : rangeBool52
+robotDSL_Sensor "0..1" --* "1..1" robotDSL_Trigger : sensor46
+robotDSL_Action "1..1" *-- "0..1" robotDSL_Sound : sound31
+robotDSL_Action "1..1" *-- "0..1" robotDSL_Speed : speed21
+robotDSL_Mission "1..1" *-- "0..9999" robotDSL_Task : taskList3
+robotDSL_Goal "1..1" *-- "0..1" robotDSL_Time : timeout9
+robotDSL_Action "1..1" *-- "0..9999" robotDSL_Trigger : trig26
+robotDSL_Task "1..1" *-- "0..9999" robotDSL_Trigger : triggerList13
+robotDSL_Action "1..1" *-- "0..1" robotDSL_Direction : turnDir23
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+class State {
+}
+class StateMachine {
+}
+class TracedClass {
+}
+class Transition {
+}
+class UHSM_CompositeState {
+}
+class UHSM_EObject {
+}
+class UHSM_FinalState {
+}
+class UHSM_InitialState {
+}
+class UHSM_State {
+  + name : str
+}
+class UHSM_StateMachine {
+  + name : str
+}
+abstract class UHSM_TracedClass {
+  + trace : str
+}
+class UHSM_Transition {
+  + effect : str
+  + name : str
+  + trigger : str
+}
+class UHSM_UState {
+}
+class UHSM_UStateMachine {
+}
+class UHSM_UTransition {
+}
+State <|-- UHSM_CompositeState
+State <|-- UHSM_FinalState
+State <|-- UHSM_InitialState
+State <|-- UHSM_UState
+StateMachine <|-- UHSM_UStateMachine
+TracedClass <|-- UHSM_State
+TracedClass <|-- UHSM_StateMachine
+TracedClass <|-- UHSM_Transition
+Transition <|-- UHSM_UTransition
+UHSM_State "1..9999" --* "1..1" UHSM_UState : States16
+UHSM_State "0..9999" --* "1..1" UHSM_StateMachine : ownedState11
+UHSM_CompositeState "1..1" *-- "0..9999" UHSM_State : ownedSubState8
+UHSM_StateMachine "1..1" *-- "0..9999" UHSM_Transition : ownedTransition13
+UHSM_CompositeState "0..1" -- "1..1" UHSM_State : owningCompositeState0
+UHSM_EObject "0..9999" -- "1..1" UHSM_TracedClass : ref20
+UHSM_State "0..1" -- "1..1" UHSM_Transition : source5
+UHSM_StateMachine "1..9999" --* "1..1" UHSM_UStateMachine : stateMachines18
+UHSM_State "0..1" -- "1..1" UHSM_Transition : target2
+UHSM_Transition "1..9999" --* "1..1" UHSM_UTransition : transitions1
+@enduml

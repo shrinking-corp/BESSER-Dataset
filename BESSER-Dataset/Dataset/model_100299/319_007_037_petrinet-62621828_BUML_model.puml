@@ -1,0 +1,50 @@
+@startuml
+class Arc {
+}
+class Attribute {
+}
+class Label {
+}
+class PetriNetType {
+}
+class Place {
+}
+class StructuredLabel {
+}
+class petrinet_Animation {
+}
+class petrinet_AnimationLabel {
+}
+class petrinet_Arc {
+}
+class petrinet_ExtendedPetriNet {
+}
+class petrinet_GeometryLabel {
+  + text : str
+}
+class petrinet_Identity {
+  + text : str
+}
+class petrinet_InputPlace {
+  + text : bool
+}
+class petrinet_Place {
+}
+class petrinet_Token {
+  + text : str
+}
+Arc <|-- petrinet_Arc
+Attribute <|-- petrinet_Identity
+Attribute <|-- petrinet_InputPlace
+Attribute <|-- petrinet_Token
+Label <|-- petrinet_GeometryLabel
+PetriNetType <|-- petrinet_ExtendedPetriNet
+Place <|-- petrinet_Place
+StructuredLabel <|-- petrinet_AnimationLabel
+petrinet_AnimationLabel "0..1" --* "1..1" petrinet_Place : animationLabel1
+petrinet_GeometryLabel "0..1" --* "1..1" petrinet_Place : geometryLabel0
+petrinet_Arc "1..1" *-- "0..1" petrinet_Identity : identity9
+petrinet_InputPlace "1..1" --* "1..1" petrinet_Place : inputPlaceLabel5
+petrinet_Animation "1..1" --* "1..1" petrinet_AnimationLabel : structure7
+petrinet_Place "1..1" *-- "0..9999" petrinet_Token : tokens3
+@enduml

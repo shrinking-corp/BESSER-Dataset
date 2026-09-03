@@ -1,0 +1,51 @@
+@startuml
+class e2_AssignmentSubmission {
+  + Assessment : int
+  + Comments : str
+}
+class e2_Assingnment {
+  + Content : str
+  + Deadline : date
+  + StartDate : date
+  + Title : str
+  + Type : str
+  + isMandatory : bool
+}
+class e2_Course {
+  + Credit : float
+  + ID : str
+  + Name : str
+}
+class e2_Group {
+  + Name : str
+}
+class e2_Lecture {
+  + Date : date
+  + Length : int
+}
+class e2_LectureContent {
+  + Material : str
+  + Type : str
+}
+class e2_Person {
+  + Name : str
+}
+class e2_University {
+  + Name : str
+}
+e2_AssignmentSubmission "1..1" -- "1..1" e2_Person : AssesedBy26
+e2_Assingnment "0..9999" --* "1..1" e2_Course : Assingments7
+e2_Lecture "1..1" *-- "1..9999" e2_LectureContent : Content0
+e2_Course "0..9999" --* "1..1" e2_University : Courses31
+e2_Group "1..1" -- "2..3" e2_Person : GroupMember17
+e2_Assingnment "0..9999" --* "1..1" e2_LectureContent : LectureAssignment34
+e2_Course "1..1" -- "1..9999" e2_Person : Lecturerer4
+e2_Course "1..1" *-- "0..9999" e2_Lecture : Lectures9
+e2_Person "0..9999" --* "1..1" e2_University : Persons29
+e2_Course "1..1" *-- "0..9999" e2_Group : StudentGroups12
+e2_Course "1..1" -- "0..9999" e2_Person : Students2
+e2_AssignmentSubmission "0..9999" --* "1..1" e2_Person : Submitted1
+e2_AssignmentSubmission "0..9999" --* "1..1" e2_Group : Submitted20
+e2_Course "1..1" -- "0..9999" e2_Person : TeachingAssistant14
+e2_AssignmentSubmission "1..1" -- "1..1" e2_Assingnment : assignment23
+@enduml

@@ -1,0 +1,338 @@
+@startuml
+class AbstractText {
+}
+class AdvancedAnchor {
+}
+class Anchor {
+}
+class AnchorContainer {
+}
+class Connection {
+}
+class ConnectionDecorator {
+}
+class ContainerShape {
+}
+class CurvedConnection {
+}
+class Diagram {
+}
+class GraphicsAlgorithm {
+}
+class GraphicsAlgorithmContainer {
+}
+enum LineStyle {
+  DASH
+  DASHDOT
+  DASHDOTDOT
+  DOT
+  SOLID
+  UNSPECIFIED
+}
+enum LocationType {
+  LOCATION_TYPE_ABSOLUTE_END
+  LOCATION_TYPE_ABSOLUTE_START
+  LOCATION_TYPE_RELATIVE
+}
+enum Orientation {
+  ALIGNMENT_BOTTOM
+  ALIGNMENT_CENTER
+  ALIGNMENT_LEFT
+  ALIGNMENT_MIDDLE
+  ALIGNMENT_RIGHT
+  ALIGNMENT_TOP
+  UNSPECIFIED
+}
+class PictogramElement {
+}
+class PictogramLink {
+}
+class Polyline {
+}
+class PropertyContainer {
+}
+class Shape {
+}
+class StyleContainer {
+}
+enum UnderlineStyle {
+  UNDERLINE_DOUBLE
+  UNDERLINE_ERROR
+  UNDERLINE_SINGLE
+  UNDERLINE_SQUIGGLE
+}
+abstract class mm_GraphicsAlgorithmContainer {
+}
+class mm_Property {
+  + key : str
+  + value : str
+}
+abstract class mm_PropertyContainer {
+}
+abstract class mm_StyleContainer {
+}
+abstract class mm_algorithms_AbstractText {
+  + angle : str
+  + horizontalAlignment : str
+  + rotation : str
+  + value : str
+  + verticalAlignment : str
+}
+class mm_algorithms_Ellipse {
+}
+abstract class mm_algorithms_GraphicsAlgorithm {
+  + height : int
+  + width : int
+  + x : int
+  + y : int
+}
+class mm_algorithms_Image {
+  + id : str
+  + proportional : str
+  + stretchH : str
+  + stretchV : str
+}
+class mm_algorithms_MultiText {
+}
+class mm_algorithms_PlatformGraphicsAlgorithm {
+  + id : str
+}
+class mm_algorithms_Polygon {
+}
+class mm_algorithms_Polyline {
+}
+class mm_algorithms_Rectangle {
+}
+class mm_algorithms_RoundedRectangle {
+  + cornerHeight : int
+  + cornerWidth : int
+}
+class mm_algorithms_Text {
+}
+abstract class mm_pictograms_AdvancedAnchor {
+  + useAnchorLocationAsConnectionEndpoint : bool
+}
+abstract class mm_pictograms_Anchor {
+}
+abstract class mm_pictograms_AnchorContainer {
+}
+class mm_pictograms_BoxRelativeAnchor {
+  + relativeHeight : float
+  + relativeWidth : float
+}
+class mm_pictograms_ChopboxAnchor {
+}
+class mm_pictograms_CompositeConnection {
+}
+class mm_pictograms_Connection {
+}
+class mm_pictograms_ConnectionDecorator {
+  + location : float
+  + locationRelative : bool
+}
+class mm_pictograms_ContainerShape {
+}
+class mm_pictograms_CurvedConnection {
+}
+class mm_pictograms_Diagram {
+  + diagramTypeId : str
+  + gridUnit : int
+  + name : str
+  + showGuides : bool
+  + snapToGrid : bool
+  + version : str
+  + verticalGridUnit : int
+}
+class mm_pictograms_FixPointAnchor {
+}
+class mm_pictograms_FreeFormConnection {
+}
+class mm_pictograms_ManhattanConnection {
+}
+abstract class mm_pictograms_PictogramElement {
+  + active : bool
+  + visible : bool
+}
+class mm_pictograms_PictogramLink {
+}
+class mm_pictograms_Shape {
+}
+abstract class mm_styles_AbstractStyle {
+  + filled : str
+  + lineStyle : str
+  + lineVisible : str
+  + lineWidth : str
+  + transparency : str
+}
+class mm_styles_AdaptedGradientColoredAreas {
+  + definedStyleId : str
+  + gradientType : str
+}
+class mm_styles_Color {
+  + blue : int
+  + green : int
+  + red : int
+}
+class mm_styles_Font {
+  + bold : bool
+  + italic : bool
+  + name : str
+  + size : int
+}
+class mm_styles_GradientColoredArea {
+}
+class mm_styles_GradientColoredAreas {
+  + styleAdaption : str
+}
+class mm_styles_GradientColoredLocation {
+  + locationType : str
+  + locationValue : str
+}
+class mm_styles_Point {
+  + after : int
+  + before : int
+  + x : int
+  + y : int
+}
+class mm_styles_PrecisionPoint {
+  + x : float
+  + y : float
+}
+class mm_styles_RenderingStyle {
+}
+class mm_styles_Style {
+  + angle : str
+  + description : str
+  + horizontalAlignment : str
+  + id : str
+  + proportional : str
+  + rotation : str
+  + stretchH : str
+  + stretchV : str
+  + verticalAlignment : str
+}
+class mm_styles_TextStyle {
+  + strikeout : bool
+  + underline : bool
+  + underlineStyle : str
+}
+class mm_styles_TextStyleRegion {
+  + end : int
+  + start : int
+}
+class pictograms_ContainerShape {
+}
+class pictograms_mm_EObject {
+}
+class styles_AbstractStyle {
+}
+class styles_AdaptedGradientColoredAreas {
+}
+class styles_Color {
+}
+class styles_Font {
+}
+class styles_GradientColoredArea {
+}
+class styles_GradientColoredAreas {
+}
+class styles_GradientColoredLocation {
+}
+class styles_Point {
+}
+class styles_PrecisionPoint {
+}
+class styles_RenderingStyle {
+}
+class styles_Style {
+}
+class styles_TextStyle {
+}
+class styles_TextStyleRegion {
+}
+class styles_mm_StyleContainer {
+}
+AbstractText <|-- mm_algorithms_MultiText
+AbstractText <|-- mm_algorithms_Text
+AdvancedAnchor <|-- mm_pictograms_BoxRelativeAnchor
+AdvancedAnchor <|-- mm_pictograms_FixPointAnchor
+Anchor <|-- mm_pictograms_AdvancedAnchor
+Anchor <|-- mm_pictograms_ChopboxAnchor
+AnchorContainer <|-- mm_pictograms_Connection
+AnchorContainer <|-- mm_pictograms_Shape
+Connection <|-- mm_pictograms_CompositeConnection
+Connection <|-- mm_pictograms_CurvedConnection
+Connection <|-- mm_pictograms_FreeFormConnection
+Connection <|-- mm_pictograms_ManhattanConnection
+GraphicsAlgorithm <|-- mm_algorithms_AbstractText
+GraphicsAlgorithm <|-- mm_algorithms_Ellipse
+GraphicsAlgorithm <|-- mm_algorithms_Image
+GraphicsAlgorithm <|-- mm_algorithms_PlatformGraphicsAlgorithm
+GraphicsAlgorithm <|-- mm_algorithms_Polyline
+GraphicsAlgorithm <|-- mm_algorithms_Rectangle
+GraphicsAlgorithm <|-- mm_algorithms_RoundedRectangle
+GraphicsAlgorithmContainer <|-- mm_algorithms_GraphicsAlgorithm
+GraphicsAlgorithmContainer <|-- mm_pictograms_PictogramElement
+PictogramElement <|-- mm_pictograms_Anchor
+PictogramElement <|-- mm_pictograms_AnchorContainer
+Polyline <|-- mm_algorithms_Polygon
+PropertyContainer <|-- mm_GraphicsAlgorithmContainer
+PropertyContainer <|-- mm_pictograms_PictogramLink
+Shape <|-- mm_pictograms_ConnectionDecorator
+Shape <|-- mm_pictograms_ContainerShape
+StyleContainer <|-- mm_pictograms_Diagram
+StyleContainer <|-- mm_styles_Style
+pictograms_ContainerShape <|-- mm_pictograms_Diagram
+styles_AbstractStyle <|-- mm_algorithms_GraphicsAlgorithm
+styles_AbstractStyle <|-- mm_styles_Style
+mm_styles_RenderingStyle "1..1" *-- "0..1" styles_AdaptedGradientColoredAreas : adaptedGradientColoredAreas51
+mm_styles_AdaptedGradientColoredAreas "1..1" *-- "0..9999" styles_GradientColoredAreas : adaptedGradientColoredAreas69
+Anchor "0..9999" --* "1..1" mm_pictograms_AnchorContainer : anchors26
+mm_styles_AbstractStyle "1..1" -- "0..1" styles_Color : background55
+mm_styles_TextStyle "1..1" -- "0..1" styles_Color : background75
+mm_pictograms_FreeFormConnection "1..1" *-- "0..9999" styles_Point : bendpoints32
+mm_pictograms_PictogramLink "1..1" -- "0..9999" pictograms_mm_EObject : businessObjects35
+Shape "0..9999" --* "1..1" mm_pictograms_ContainerShape : children3
+CurvedConnection "0..9999" -- "1..1" mm_pictograms_CompositeConnection : children37
+mm_styles_GradientColoredLocation "1..1" *-- "1..1" styles_Color : color62
+mm_pictograms_Diagram "1..1" *-- "0..9999" styles_Color : colors5
+Connection "1..1" -- "1..1" mm_pictograms_ConnectionDecorator : connection30
+ConnectionDecorator "0..9999" --* "1..1" mm_pictograms_Connection : connectionDecorators18
+Connection "0..9999" --* "1..1" mm_pictograms_Diagram : connections4
+ContainerShape "0..1" -- "1..1" mm_pictograms_Shape : container2
+mm_pictograms_CurvedConnection "1..1" *-- "0..9999" styles_PrecisionPoint : controlPoints36
+Anchor "1..1" -- "1..1" mm_pictograms_Connection : end15
+mm_styles_GradientColoredArea "1..1" *-- "0..1" styles_GradientColoredLocation : end65
+mm_algorithms_AbstractText "1..1" -- "0..1" styles_Font : font47
+mm_styles_Style "1..1" -- "0..1" styles_Font : font52
+mm_styles_TextStyle "1..1" -- "0..1" styles_Font : font70
+mm_pictograms_Diagram "1..1" *-- "0..9999" styles_Font : fonts6
+mm_styles_AbstractStyle "1..1" -- "0..1" styles_Color : foreground57
+mm_styles_TextStyle "1..1" -- "0..1" styles_Color : foreground72
+mm_styles_GradientColoredAreas "1..1" *-- "0..9999" styles_GradientColoredArea : gradientColor68
+GraphicsAlgorithm "0..1" --* "1..1" mm_pictograms_PictogramElement : graphicsAlgorithm10
+GraphicsAlgorithm "0..9999" --* "1..1" mm_algorithms_GraphicsAlgorithm : graphicsAlgorithmChildren38
+Connection "0..9999" -- "1..1" mm_pictograms_Anchor : incomingConnections22
+PictogramLink "0..1" --* "1..1" mm_pictograms_PictogramElement : link11
+mm_pictograms_FixPointAnchor "1..1" *-- "1..1" styles_Point : location29
+Connection "0..9999" -- "1..1" mm_pictograms_Anchor : outgoingConnections20
+Diagram "1..1" -- "1..1" mm_pictograms_Connection : parent17
+AnchorContainer "1..1" -- "1..1" mm_pictograms_Anchor : parent19
+GraphicsAlgorithm "0..1" -- "1..1" mm_algorithms_GraphicsAlgorithm : parentGraphicsAlgorithm40
+PictogramElement "0..1" -- "1..1" mm_pictograms_PictogramLink : pictogramElement34
+PictogramElement "0..1" -- "1..1" mm_algorithms_GraphicsAlgorithm : pictogramElement42
+PictogramLink "0..9999" -- "1..1" mm_pictograms_Diagram : pictogramLinks8
+mm_algorithms_Polyline "1..1" *-- "0..9999" styles_Point : points45
+mm_Property "0..9999" --* "1..1" mm_PropertyContainer : properties0
+GraphicsAlgorithm "0..1" -- "1..1" mm_pictograms_Anchor : referencedGraphicsAlgorithm24
+mm_styles_AbstractStyle "1..1" *-- "0..1" styles_RenderingStyle : renderingStyle60
+Anchor "1..1" -- "1..1" mm_pictograms_Connection : start14
+mm_styles_GradientColoredArea "1..1" *-- "0..1" styles_GradientColoredLocation : start64
+mm_styles_TextStyle "1..1" -- "0..1" styles_Color : strikeoutColor81
+mm_algorithms_GraphicsAlgorithm "1..1" -- "0..1" styles_Style : style44
+mm_styles_TextStyleRegion "1..1" *-- "0..1" styles_TextStyle : style84
+mm_styles_Style "1..1" -- "1..1" styles_mm_StyleContainer : styleContainer54
+mm_algorithms_AbstractText "1..1" *-- "0..9999" styles_TextStyleRegion : styleRegions49
+mm_StyleContainer "1..1" *-- "0..9999" styles_Style : styles1
+mm_styles_TextStyle "1..1" -- "0..1" styles_Color : underlineColor78
+@enduml

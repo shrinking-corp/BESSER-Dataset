@@ -1,0 +1,32 @@
+@startuml
+class Contact {
+}
+class addressbook_AddressBook {
+}
+class addressbook_BookVersion {
+  + id : int
+}
+abstract class addressbook_Contact {
+}
+class addressbook_Electronic {
+  + email : str
+  + website : str
+}
+class addressbook_Office {
+  + company : str
+}
+class addressbook_People {
+  + name : str
+}
+class addressbook_Repository {
+  + checkin() : void
+  + checkout(addressbook_id : str) : str
+}
+Contact <|-- addressbook_Electronic
+Contact <|-- addressbook_Office
+addressbook_AddressBook "1..1" --* "1..1" addressbook_BookVersion : book7
+addressbook_Contact "0..9999" --* "1..1" addressbook_People : contacts0
+addressbook_AddressBook "1..1" --* "1..1" addressbook_Repository : head3
+addressbook_BookVersion "0..9999" --* "1..1" addressbook_Repository : history5
+addressbook_AddressBook "1..1" *-- "0..9999" addressbook_People : peoples1
+@enduml

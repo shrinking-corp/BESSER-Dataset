@@ -1,0 +1,83 @@
+@startuml
+enum FunctionDomain {
+  form
+  space
+  time
+}
+class Port {
+}
+class ProcessNode {
+}
+class Sequence {
+}
+class SequenceNode {
+}
+class effbd201_And {
+}
+class effbd201_Description {
+  + content : str
+}
+class effbd201_Final {
+}
+class effbd201_Flow {
+}
+class effbd201_Function {
+  + domain : str
+}
+class effbd201_InputPort {
+}
+class effbd201_Item {
+  + name : str
+}
+class effbd201_Iteration {
+}
+class effbd201_Loop {
+}
+class effbd201_LoopExit {
+}
+class effbd201_Or {
+}
+class effbd201_OutputPort {
+}
+abstract class effbd201_Port {
+  + id : str
+}
+abstract class effbd201_ProcessNode {
+  + label : str
+}
+abstract class effbd201_Sequence {
+}
+abstract class effbd201_SequenceNode {
+  + name : str
+  + tMax : int
+  + tMin : int
+}
+class effbd201_Start {
+}
+class effbd201_Token {
+}
+Port <|-- effbd201_InputPort
+Port <|-- effbd201_OutputPort
+ProcessNode <|-- effbd201_Flow
+ProcessNode <|-- effbd201_Function
+Sequence <|-- effbd201_And
+Sequence <|-- effbd201_Final
+Sequence <|-- effbd201_Iteration
+Sequence <|-- effbd201_Loop
+Sequence <|-- effbd201_LoopExit
+Sequence <|-- effbd201_Or
+Sequence <|-- effbd201_Start
+SequenceNode <|-- effbd201_Function
+SequenceNode <|-- effbd201_Sequence
+effbd201_SequenceNode "1..1" -- "0..9999" effbd201_SequenceNode : controlFlowEdge15
+effbd201_Function "1..1" *-- "0..9999" effbd201_Function : decompositions1
+effbd201_Description "0..9999" --* "1..1" effbd201_Function : descriptions10
+effbd201_Flow "0..9999" --* "1..1" effbd201_Function : flows4
+effbd201_Function "1..1" *-- "0..9999" effbd201_InputPort : inputPorts8
+effbd201_Flow "1..1" -- "0..9999" effbd201_Port : inputflowEdge18
+effbd201_Flow "1..1" *-- "0..9999" effbd201_Item : items21
+effbd201_Function "1..1" *-- "0..9999" effbd201_OutputPort : outputPorts6
+effbd201_Flow "0..9999" -- "1..1" effbd201_Port : outputflowEdge16
+effbd201_Function "1..1" *-- "0..9999" effbd201_Sequence : sequenceNodes2
+effbd201_Function "1..1" *-- "0..9999" effbd201_Token : tokens12
+@enduml

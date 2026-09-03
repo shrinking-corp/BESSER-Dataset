@@ -1,0 +1,101 @@
+@startuml
+enum ArithmeticOperator {
+  div
+  minus
+  mult
+  plus
+}
+class Expression {
+}
+class Literal {
+}
+enum RelationalOperator {
+  and_
+  equal
+  greater
+  greaterEqual
+  less
+  lessEqual
+}
+class fmpl_ArithmeticExpression {
+  + operator : str
+}
+class fmpl_Automata {
+  + name : str
+}
+class fmpl_Cond {
+}
+class fmpl_Exec {
+}
+abstract class fmpl_Expression {
+}
+abstract class fmpl_Field {
+}
+class fmpl_Init {
+}
+class fmpl_IntegerLit {
+  + value : int
+}
+abstract class fmpl_Literal {
+}
+class fmpl_Policy {
+  + name : str
+  + parserURI : str
+}
+class fmpl_Read {
+  + initBit : int
+  + length : int
+}
+class fmpl_Relational {
+  + operator : str
+}
+class fmpl_State {
+  + name : str
+}
+class fmpl_StringLit {
+  + value : str
+}
+class fmpl_Transition {
+  + name : str
+}
+class fmpl_VarDeclaration {
+  + name : str
+}
+class fmpl_VarReference {
+}
+class fmpl_Write {
+  + initBit : int
+  + length : int
+}
+Expression <|-- fmpl_ArithmeticExpression
+Expression <|-- fmpl_Cond
+Expression <|-- fmpl_Exec
+Expression <|-- fmpl_Init
+Expression <|-- fmpl_Literal
+Expression <|-- fmpl_Read
+Expression <|-- fmpl_Relational
+Expression <|-- fmpl_VarDeclaration
+Expression <|-- fmpl_VarReference
+Expression <|-- fmpl_Write
+Literal <|-- fmpl_Field
+Literal <|-- fmpl_IntegerLit
+Literal <|-- fmpl_StringLit
+fmpl_Automata "1..1" -- "1..1" fmpl_Init : automata23
+fmpl_Automata "0..9999" --* "1..1" fmpl_Policy : automatas0
+fmpl_Expression "1..1" --* "1..1" fmpl_VarDeclaration : expr36
+fmpl_State "1..1" -- "1..1" fmpl_Transition : from_10
+fmpl_Cond "1..1" *-- "1..1" fmpl_Relational : if_18
+fmpl_Automata "1..1" -- "1..1" fmpl_State : init7
+fmpl_Expression "1..1" --* "1..1" fmpl_Relational : left25
+fmpl_ArithmeticExpression "1..1" *-- "1..1" fmpl_Expression : left31
+fmpl_VarDeclaration "0..1" -- "1..1" fmpl_VarReference : name38
+fmpl_Expression "1..1" --* "1..1" fmpl_Relational : right28
+fmpl_ArithmeticExpression "1..1" *-- "1..1" fmpl_Expression : right33
+fmpl_Expression "0..9999" --* "1..1" fmpl_Policy : statements1
+fmpl_Automata "1..1" *-- "0..9999" fmpl_State : states3
+fmpl_Cond "1..1" *-- "1..1" fmpl_Expression : then19
+fmpl_State "1..1" -- "1..1" fmpl_Transition : to13
+fmpl_Exec "1..1" -- "1..1" fmpl_Transition : transition16
+fmpl_Automata "1..1" *-- "0..9999" fmpl_Transition : transitions5
+fmpl_VarReference "1..1" -- "1..1" fmpl_Write : var22
+@enduml

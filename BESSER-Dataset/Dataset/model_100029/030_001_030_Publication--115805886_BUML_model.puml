@@ -1,0 +1,118 @@
+@startuml
+class Article {
+}
+class BiblioReference {
+}
+class Journal {
+}
+class SimpleCitation {
+}
+class SimpleFeature {
+}
+class SimpleIdentifier {
+}
+class publication_Article {
+  + firstPage : str
+  + lastPage : str
+}
+class publication_BiblioReference {
+}
+class publication_BiblioReferenceSet {
+}
+class publication_Book {
+  + edition : str
+  + iSBN : str
+  + series : str
+  + volume : str
+}
+class publication_BookArticle {
+  + section : str
+}
+class publication_Contact {
+}
+class publication_Content {
+  + body : str
+}
+class publication_Indexing {
+  + keywords : str
+}
+class publication_Journal {
+  + iSSN : str
+}
+class publication_JournalArticle {
+}
+class publication_JournalIssue {
+  + issue : str
+  + issueSupplement : str
+  + volume : str
+}
+class publication_LegalEntity {
+}
+class publication_Multimedia {
+}
+class publication_Ontology {
+}
+class publication_OrderedLegalEntitySet {
+}
+class publication_Organization {
+}
+class publication_Proceeding {
+}
+class publication_Protocol {
+}
+class publication_SimpleCitation {
+  + authorList : str
+  + date : date
+  + source : str
+}
+class publication_SimpleFeature {
+}
+class publication_SimpleOntologyTerm {
+}
+class publication_TechnicalReport {
+}
+class publication_Thesis {
+}
+class publication_WebResource {
+  + uRL : str
+}
+Article <|-- publication_BookArticle
+Article <|-- publication_JournalArticle
+BiblioReference <|-- publication_Article
+BiblioReference <|-- publication_Book
+BiblioReference <|-- publication_Journal
+BiblioReference <|-- publication_Multimedia
+BiblioReference <|-- publication_Proceeding
+BiblioReference <|-- publication_Protocol
+BiblioReference <|-- publication_TechnicalReport
+BiblioReference <|-- publication_Thesis
+BiblioReference <|-- publication_WebResource
+Journal <|-- publication_JournalIssue
+SimpleCitation <|-- publication_BiblioReference
+SimpleFeature <|-- publication_Content
+SimpleFeature <|-- publication_SimpleCitation
+SimpleIdentifier <|-- publication_BiblioReferenceSet
+publication_Journal "1..1" -- "0..1" publication_SimpleOntologyTerm : abbreviation35
+publication_Book "1..1" -- "0..9999" publication_BookArticle : articles17
+publication_JournalArticle "0..9999" -- "1..1" publication_JournalIssue : articles39
+publication_Indexing "1..1" -- "0..1" publication_LegalEntity : authority23
+publication_BiblioReference "1..1" -- "0..1" publication_OrderedLegalEntitySet : authors6
+publication_BiblioReference "1..1" -- "1..1" publication_Content : biblioReference19
+publication_Book "0..9999" -- "1..1" publication_BookArticle : book18
+publication_BiblioReferenceSet "1..1" -- "0..9999" publication_SimpleCitation : citations14
+publication_Indexing "1..1" -- "0..9999" publication_SimpleOntologyTerm : classificationCodes31
+publication_BiblioReference "1..1" -- "1..1" publication_Content : content11
+publication_BiblioReference "1..1" -- "0..1" publication_OrderedLegalEntitySet : contributors8
+publication_Book "1..1" -- "0..1" publication_OrderedLegalEntitySet : editors15
+publication_BiblioReference "1..1" -- "0..1" publication_SimpleOntologyTerm : format1
+publication_BiblioReference "1..1" -- "0..9999" publication_Indexing : indexings13
+publication_Organization "1..1" -- "1..1" publication_Thesis : institution41
+publication_JournalArticle "1..1" -- "1..1" publication_JournalIssue : journalIssue37
+publication_BiblioReference "1..1" -- "0..1" publication_SimpleOntologyTerm : language0
+publication_Contact "0..1" -- "1..1" publication_Indexing : librarian22
+publication_Protocol "1..1" -- "0..9999" publication_SimpleFeature : parameters40
+publication_BiblioReference "1..1" -- "0..1" publication_LegalEntity : publisher4
+publication_BiblioReference "1..1" -- "1..1" publication_Indexing : reference34
+publication_Indexing "1..1" -- "0..1" publication_Ontology : subjectHeadingOntology26
+publication_Indexing "1..1" -- "0..9999" publication_SimpleOntologyTerm : subjectHeadings28
+@enduml

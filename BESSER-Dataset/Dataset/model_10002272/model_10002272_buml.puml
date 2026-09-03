@@ -1,0 +1,53 @@
+@startuml
+class Department {
+  + departmentID : str
+  + departmentName : str
+  + doctorList : str
+  + nurseList : str
+}
+class Doctor {
+  + department : Department
+}
+class Employee {
+  + employeeID : str
+  + salary : str
+}
+class Hospital {
+  + address : str
+  + name : str
+}
+class Manager {
+  + allowance : str
+  + employeeList : str
+}
+class Nurse {
+  + department : Department
+}
+class Patient {
+  + patientID : str
+  + treatment : str
+}
+class Person {
+  + address : str
+  + gender : str
+  + name : str
+  + phoneNumber : str
+  + title : str
+}
+class inPatient {
+  + inDate : str
+  + outDate : str
+  + rooomNumber : str
+}
+class outPatient {
+  + inDate : str
+  + outDate : str
+  + roomNumber : str
+}
+Department "0..1" -- "0..1" Doctor : Department__Doctor
+Department "0..1" -- "0..1" Nurse : Department__Nurse
+Department "0..1" -- "0..1" Hospital : Hospital_Department
+Hospital "0..1" -- "0..1" Person : Hospital_Person
+Doctor "0..1" -- "0..1" Manager : Manager_Doctor
+Manager "0..1" -- "0..1" Nurse : Manager_Nurse
+@enduml

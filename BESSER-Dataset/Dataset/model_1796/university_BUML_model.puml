@@ -1,0 +1,80 @@
+@startuml
+class NamedElement {
+}
+enum StaffMemberType {
+  Academic
+  Admin
+  Honary
+  Other
+  Research
+  ResearchStudent
+  Technical
+}
+class university_Book {
+  + ISBN : str
+  + authorNames : str
+}
+class university_Computer {
+}
+class university_Department {
+}
+class university_Library {
+}
+class university_Module {
+}
+abstract class university_NamedElement {
+  + name : str
+}
+class university_PrimitiveType {
+  + a : str
+  + b : int
+  + bigIntList : str
+  + c : str
+  + d : bool
+  + e : str
+  + f : float
+  + g : str
+  + h : str
+  + i : float
+  + j : str
+  + k : str
+  + l : str
+  + m : str
+  + n : str
+  + o : str
+  + p : str
+}
+class university_StaffMember {
+  + staffMemberType : str
+}
+class university_Student {
+  + studentId : float
+}
+class university_University {
+}
+class university_Vehicle {
+  + registrationNumber : str
+}
+NamedElement <|-- university_Book
+NamedElement <|-- university_Computer
+NamedElement <|-- university_Department
+NamedElement <|-- university_Library
+NamedElement <|-- university_Module
+NamedElement <|-- university_StaffMember
+NamedElement <|-- university_Student
+NamedElement <|-- university_University
+university_Book "0..9999" --* "1..1" university_Library : books9
+university_StaffMember "0..1" -- "1..1" university_University : chancelor3
+university_Department "1..9999" --* "1..1" university_University : departments0
+university_Module "0..9999" -- "1..1" university_Student : enrolledModules5
+university_Module "1..1" -- "0..9999" university_Student : enrolledStudents26
+university_Library "1..9999" --* "1..1" university_University : libraries1
+university_Library "1..1" -- "0..9999" university_Vehicle : libraryVans11
+university_Computer "0..1" --* "1..1" university_Library : mainComputer7
+university_Module "1..1" -- "0..9999" university_StaffMember : moduleLecturers25
+university_Student "1..1" -- "0..1" university_Vehicle : registeredVehicle6
+university_StaffMember "1..1" -- "0..3" university_Vehicle : registeredVehicles16
+university_Department "1..1" *-- "0..9999" university_StaffMember : staff19
+university_Department "1..1" *-- "0..9999" university_Student : students22
+university_Module "0..9999" -- "1..1" university_StaffMember : taughtModules14
+@enduml

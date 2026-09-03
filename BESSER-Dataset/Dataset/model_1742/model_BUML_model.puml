@@ -1,0 +1,90 @@
+@startuml
+class model_Actor {
+  + id : int
+  + name : str
+}
+class model_BNode {
+  + id : int
+}
+class model_Book {
+  + data : str
+  + tags : str
+  + title : str
+}
+class model_BookBNode {
+  + title : str
+}
+class model_ETypes {
+  + eBigDecimal : str
+  + eBigInteger : str
+  + eBoolean : bool
+  + eByte : str
+  + eByteArray : str
+  + eChar : str
+  + eDate : date
+  + eDouble : float
+  + eFloat : float
+  + eInt : int
+  + eLong : str
+  + eShort : str
+  + eString : str
+  + uris : str
+}
+class model_Library {
+}
+class model_Location {
+  + address : str
+  + id : str
+}
+class model_MappedLibrary {
+  + books : str
+}
+class model_Movie {
+  + id : int
+  + title : str
+}
+class model_Person {
+  + name : str
+}
+class model_PersonBNode {
+  + name : str
+}
+class model_PrimaryObject {
+  + featureMapAttributeCollection : str
+  + featureMapAttributeType1 : str
+  + featureMapAttributeType2 : str
+  + featureMapReferenceCollection : str
+  + id : int
+  + name : str
+  + unsettableAttribute : str
+  + unsettableAttributeWithDefault : str
+}
+class model_TargetObject {
+  + arrayAttribute : str
+  + id : int
+  + singleAttribute : str
+}
+model_Actor "1..1" -- "0..9999" model_Movie : actorOf51
+model_Actor "0..9999" -- "1..1" model_Movie : actors50
+model_Book "1..1" -- "0..9999" model_Person : authors1
+model_BookBNode "1..1" -- "0..9999" model_PersonBNode : authors3
+model_Book "0..9999" -- "1..1" model_Person : books0
+model_BookBNode "0..9999" --* "1..1" model_PersonBNode : books2
+model_Book "0..9999" --* "1..1" model_Library : books8
+model_BNode "1..1" *-- "0..9999" model_BNode : child7
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : featureMapReferenceType147
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : featureMapReferenceType244
+model_Book "0..1" -- "1..1" model_Location : featuredBook14
+model_Book "0..1" -- "1..1" model_Library : latestBook11
+model_Location "0..1" --* "1..1" model_MappedLibrary : location17
+model_Library "1..1" *-- "0..1" model_Location : location9
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : multipleContainmentReferenceNoProxies35
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : multipleContainmentReferenceProxies41
+model_PrimaryObject "1..1" -- "0..9999" model_TargetObject : multipleNonContainmentReference29
+model_Book "0..9999" --* "1..1" model_MappedLibrary : rareBooks19
+model_Book "0..9999" --* "1..1" model_MappedLibrary : regularBooks22
+model_PrimaryObject "1..1" *-- "0..1" model_TargetObject : singleContainmentReferenceNoProxies32
+model_PrimaryObject "1..1" *-- "0..1" model_TargetObject : singleContainmentReferenceProxies38
+model_PrimaryObject "1..1" -- "0..1" model_TargetObject : singleNonContainmentReference26
+model_PrimaryObject "1..1" -- "0..1" model_TargetObject : unsettableReference25
+@enduml

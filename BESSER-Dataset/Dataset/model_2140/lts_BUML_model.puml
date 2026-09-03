@@ -1,0 +1,30 @@
+@startuml
+class State {
+}
+class lts_FinalState {
+}
+class lts_InitialState {
+}
+class lts_IntermediateState {
+}
+class lts_LTS {
+  + name : str
+}
+class lts_State {
+  + Id : str
+}
+class lts_Transition {
+  + label : str
+}
+State <|-- lts_FinalState
+State <|-- lts_InitialState
+State <|-- lts_IntermediateState
+lts_FinalState "0..1" --* "1..1" lts_LTS : finalState5
+lts_State "1..1" -- "0..9999" lts_Transition : incoming10
+lts_InitialState "0..1" --* "1..1" lts_LTS : initialState1
+lts_IntermediateState "0..9999" --* "1..1" lts_LTS : intermediateStates3
+lts_State "1..1" -- "0..9999" lts_Transition : outgoing11
+lts_State "0..1" -- "1..1" lts_Transition : source8
+lts_State "0..1" -- "1..1" lts_Transition : target7
+lts_LTS "1..1" *-- "1..9999" lts_Transition : transitions0
+@enduml

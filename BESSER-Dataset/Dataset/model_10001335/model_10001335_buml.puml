@@ -1,0 +1,30 @@
+@startuml
+class books_database {
+  + author : str
+  + book_id : str
+  + book_title : str
+}
+class librarian {
+  + name : str
+}
+class library {
+  + location : str
+}
+class student {
+  + details : str
+}
+class student_record {
+  + address : str
+  + fines : str
+  + name : str
+  + phone_number : str
+}
+class vendor {
+  + attribute : str
+  + book_details : str
+}
+books_database "0..1" -- "0..1" student : books_database_customer
+student "0..1" -- "0..1" student_record : customer_student_record
+books_database "0..1" -- "0..1" library : library_books_database
+librarian "0..1" -- "0..1" library : library_librarian
+@enduml

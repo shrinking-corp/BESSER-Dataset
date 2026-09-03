@@ -1,0 +1,426 @@
+@startuml
+enum DataReaderStatus {
+  DATA_AVAILABLE_STATUS
+  LIVELINESS_CHANGED_STATUS
+  REQUESTED_DEADLINE_MISSED_STATUS
+  REQUESTED_INCOMPATIBLE_QOS_STATUS
+  SAMPLE_LOST_STATUS
+  SAMPLE_REJECTED_STATUS
+  SUBSCRIPTION_MATCHED_STATUS
+}
+enum DataWriterStatus {
+  LIVELINESS_LOST_STATUS
+  OFFERED_DEADLINE_MISSED_STATUS
+  OFFERED_INCOMPATIBLE_QOS_STATUS
+  PUBLICATION_MATCHED_STATUS
+}
+class DdsQosProfile {
+}
+class DdsReadCondition {
+}
+class DdsStatusCondition {
+}
+enum DestinationOrderQosPolicyKind {
+  BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS
+  BY_SOURCE_TIMESTAMP_DESTINATIONORDER_QOS
+}
+enum DomainParticipantStatus {
+  DATA_AVAILABLE_STATUS
+  DATA_ON_READERS_STATUS
+  INCONSISTENT_TOPIC_STATUS
+  LIVELINESS_CHANGED_STATUS
+  LIVELINESS_LOST_STATUS
+  OFFERED_DEADLINE_MISSED_STATUS
+  OFFERED_INCOMPATIBLE_QOS_STATUS
+  PUBLICATION_MATCHED_STATUS
+  REQUESTED_DEADLINE_MISSED_STATUS
+  REQUESTED_INCOMPATIBLE_QOS_STATUS
+  SAMPLE_LOST_STATUS
+  SAMPLE_REJECTED_STATUS
+  SUBSCRIPTION_MATCHED_STATUS
+}
+enum DurabilityQosPolicyKind {
+  PERSISTENT_DURABILITY_QOS
+  TRANSIENT_DURABILITY_QOS
+  TRANSIENT_LOCAL_DURABILITY_QOS
+  VOLATILE_DURABILITY_QOS
+}
+enum HistoryQosPolicyKind {
+  KEEP_ALL_HISTORY_QOS
+  KEEP_LAST_HISTORY_QOS
+}
+enum InstanceStateKind {
+  ALIVE_INSTANCE_STATE
+  ANY_INSTANCE_STATE
+  NOT_ALIVE_DISPOSED_INSTANCE_STATE
+  NOT_ALIVE_NO_WRITERS_INSTANCE_STATE
+}
+enum InvalidSampleVisibilityQosPolicy {
+  ALL_INVALID_SAMPLES
+  MINIMUM_INVALID_SAMPLES
+  NO_INVALID_SAMPLES
+}
+enum LivelinessQosPolicyKind {
+  AUTOMATIC_LIVELINESS_QOS
+  MANUAL_BY_PARTICIPANT_LIVELINESS_QOS
+  MANUAL_BY_TOPIC_LIVELINESS_QOS
+  MANUAL_LIVELINESS_QOS
+}
+enum OwnershipQosPolicyKind {
+  EXCLUSIVE_OWNERSHIP_QOS
+  SHARED_OWNERSHIP_QOS
+}
+enum PresentationQosPolicyAccessScopeKind {
+  GROUP_PRESENTATION_QOS
+  INSTANCE_PRESENTATION_QOS
+  TOPIC_PRESENTATION_QOS
+}
+enum PublisherStatus {
+  LIVELINESS_LOST_STATUS
+  OFFERED_DEADLINE_MISSED_STATUS
+  OFFERED_INCOMPATIBLE_QOS_STATUS
+  PUBLICATION_MATCHED_STATUS
+}
+enum ReliabilityQosPolicyKind {
+  BEST_EFFORT_RELIABILITY_QOS
+  RELIABLE_RELIABILITY_QOS
+}
+enum SampleStateKind {
+  ANY_READ_SAMPLE_STATE
+  NOT_READ_SAMPLE_STATE
+  READ_SAMPLE_STATE
+}
+enum SubscriberStatus {
+  DATA_AVAILABLE_STATUS
+  DATA_ON_READERS_STATUS
+  LIVELINESS_CHANGED_STATUS
+  REQUESTED_DEADLINE_MISSED_STATUS
+  REQUESTED_INCOMPATIBLE_QOS_STATUS
+  SAMPLE_LOST_STATUS
+  SAMPLE_REJECTED_STATUS
+  SUBSCRIPTION_MATCHED_STATUS
+}
+enum TopicStatus {
+  INCONSISTENT_TOPIC_STATUS
+}
+enum ViewStateKind {
+  ANY_VIEW_STATE
+  NEW_VIEW_STATE
+  NOT_NEW_VIEW_STATE
+}
+class ddsMetamodel_DdsApplication {
+  + applicationName : str
+}
+class ddsMetamodel_DdsDataField {
+  + fieldName : str
+  + fieldType : str
+  + isKey : bool
+  + maxMultiplicity : int
+}
+class ddsMetamodel_DdsDataModule {
+  + moduleName : str
+}
+class ddsMetamodel_DdsDataReader {
+  + dataReaderName : str
+}
+class ddsMetamodel_DdsDataReaderLifecycleQos {
+  + autopurge_dispose_all : bool
+  + enable_invalid_samples : bool
+}
+class ddsMetamodel_DdsDataReaderListener {
+  + listenedStatus : str
+  + name : str
+}
+class ddsMetamodel_DdsDataReaderQosProfile {
+}
+class ddsMetamodel_DdsDataReaderStatusCondition {
+  + enabled_status : str
+}
+class ddsMetamodel_DdsDataStructure {
+  + structureName : str
+}
+class ddsMetamodel_DdsDataWriter {
+  + dataWriterName : str
+}
+class ddsMetamodel_DdsDataWriterLifecycleQos {
+  + autodispose_unregistered_instances : bool
+}
+class ddsMetamodel_DdsDataWriterListener {
+  + listenedStatus : str
+  + name : str
+}
+class ddsMetamodel_DdsDataWriterQosProfile {
+}
+class ddsMetamodel_DdsDataWriterStatusCondition {
+  + enabled_status : str
+}
+class ddsMetamodel_DdsDeadlineQos {
+}
+class ddsMetamodel_DdsDestinationOrderQos {
+  + kind : str
+}
+class ddsMetamodel_DdsDomainParticipant {
+  + domainId : int
+  + domainParticipantName : str
+}
+class ddsMetamodel_DdsDomainParticipantListener {
+  + listenedStatus : str
+  + name : str
+}
+class ddsMetamodel_DdsDomainParticipantQosProfile {
+}
+class ddsMetamodel_DdsDomainParticipantStatusCondition {
+  + enabled_status : str
+}
+class ddsMetamodel_DdsDurabilityQos {
+  + kind : str
+}
+class ddsMetamodel_DdsDurabilityServiceQos {
+  + history_depth : str
+  + history_kind : str
+  + max_instances : str
+  + max_samples : str
+  + max_samples_per_instances : str
+}
+class ddsMetamodel_DdsDuration {
+  + nanoSec : str
+  + sec : str
+}
+class ddsMetamodel_DdsEntityFactoryQos {
+  + autoenable_created_entities : bool
+}
+class ddsMetamodel_DdsGroupDataQos {
+  + value : str
+}
+class ddsMetamodel_DdsHistoryQos {
+  + depth : str
+  + kind : str
+}
+class ddsMetamodel_DdsHost {
+  + hostName : str
+}
+class ddsMetamodel_DdsLatencyBudgetQos {
+}
+class ddsMetamodel_DdsLifespan {
+}
+class ddsMetamodel_DdsLivelinessQos {
+  + kind : str
+}
+class ddsMetamodel_DdsOwnershipQos {
+  + kind : str
+}
+class ddsMetamodel_DdsOwnershipStrengthQos {
+  + value : str
+}
+class ddsMetamodel_DdsPartitionQos {
+  + name : str
+}
+class ddsMetamodel_DdsPresentationQos {
+  + access_scope : str
+  + coherent_access : bool
+  + ordered_access : bool
+}
+class ddsMetamodel_DdsPublisher {
+  + publisherName : str
+}
+class ddsMetamodel_DdsPublisherListener {
+  + listenedStatus : str
+  + name : str
+}
+class ddsMetamodel_DdsPublisherQosProfile {
+}
+class ddsMetamodel_DdsPublisherStatusCondition {
+  + enabled_status : str
+}
+class ddsMetamodel_DdsQosProfile {
+  + profileName : str
+}
+class ddsMetamodel_DdsReadCondition {
+  + instance_state_mask : str
+  + sample_state_mask : str
+  + view_state_mask : str
+}
+class ddsMetamodel_DdsReliabilityQos {
+  + kind : str
+}
+class ddsMetamodel_DdsResourceLimits {
+  + max_instances : str
+  + max_samples : str
+  + max_samples_per_instances : str
+}
+class ddsMetamodel_DdsStatusCondition {
+}
+class ddsMetamodel_DdsStructuredField {
+  + fieldName : str
+  + isKey : bool
+  + maxMultiplicity : int
+}
+class ddsMetamodel_DdsSubscriber {
+  + subscriberName : str
+}
+class ddsMetamodel_DdsSubscriberListener {
+  + listenedStatus : str
+  + name : str
+}
+class ddsMetamodel_DdsSubscriberQosProfile {
+}
+class ddsMetamodel_DdsSubscriberStatusCondition {
+  + enabled_status : str
+}
+class ddsMetamodel_DdsSystem {
+  + systemName : str
+}
+class ddsMetamodel_DdsTimeBasedFilterQos {
+}
+class ddsMetamodel_DdsTopic {
+  + topicName : str
+}
+class ddsMetamodel_DdsTopicDataQos {
+  + value : str
+}
+class ddsMetamodel_DdsTopicListener {
+  + listenedStatus : str
+  + name : str
+}
+class ddsMetamodel_DdsTopicQosProfile {
+}
+class ddsMetamodel_DdsTopicStatusCondition {
+  + enabled_status : str
+}
+class ddsMetamodel_DdsTransportPriorityQos {
+  + value : str
+}
+class ddsMetamodel_DdsUserDataQos {
+  + value : str
+}
+class ddsMetamodel_DdsWaitSet {
+  + name : str
+}
+class ddsMetamodel_GuardCondition {
+  + name : str
+}
+class ddsMetamodel_QueryCondition {
+  + query : str
+  + queryParameters : str
+}
+DdsQosProfile <|-- ddsMetamodel_DdsDataReaderQosProfile
+DdsQosProfile <|-- ddsMetamodel_DdsDataWriterQosProfile
+DdsQosProfile <|-- ddsMetamodel_DdsDomainParticipantQosProfile
+DdsQosProfile <|-- ddsMetamodel_DdsPublisherQosProfile
+DdsQosProfile <|-- ddsMetamodel_DdsSubscriberQosProfile
+DdsQosProfile <|-- ddsMetamodel_DdsTopicQosProfile
+DdsReadCondition <|-- ddsMetamodel_QueryCondition
+DdsStatusCondition <|-- ddsMetamodel_DdsDataReaderStatusCondition
+DdsStatusCondition <|-- ddsMetamodel_DdsDataWriterStatusCondition
+DdsStatusCondition <|-- ddsMetamodel_DdsDomainParticipantStatusCondition
+DdsStatusCondition <|-- ddsMetamodel_DdsPublisherStatusCondition
+DdsStatusCondition <|-- ddsMetamodel_DdsSubscriberStatusCondition
+DdsStatusCondition <|-- ddsMetamodel_DdsTopicStatusCondition
+ddsMetamodel_DdsApplication "0..9999" --* "1..1" ddsMetamodel_DdsHost : applications243
+ddsMetamodel_DdsDataReaderLifecycleQos "1..1" *-- "0..1" ddsMetamodel_DdsDuration : autopurge_disposed_samples_delay109
+ddsMetamodel_DdsDataReaderLifecycleQos "1..1" *-- "0..1" ddsMetamodel_DdsDuration : autopurge_nowriters_samples_delay107
+ddsMetamodel_DdsDataWriterLifecycleQos "1..1" *-- "0..1" ddsMetamodel_DdsDuration : autopurge_suspended_samples_delay102
+ddsMetamodel_DdsDataWriterLifecycleQos "1..1" *-- "0..1" ddsMetamodel_DdsDuration : autounregister_instance_delay104
+ddsMetamodel_DdsDataModule "0..1" -- "1..1" ddsMetamodel_DdsDataStructure : containerDataModule51
+ddsMetamodel_DdsDataModule "1..1" -- "0..1" ddsMetamodel_DdsDataModule : containingModule46
+ddsMetamodel_DdsDataReader "1..1" -- "1..1" ddsMetamodel_DdsSubscriber : containingSubscriber27
+ddsMetamodel_DdsDataModule "1..1" -- "0..1" ddsMetamodel_DdsSystem : containingSystem44
+ddsMetamodel_DdsStatusCondition "1..1" -- "0..1" ddsMetamodel_DdsWaitSet : containingWaitset222
+ddsMetamodel_DdsDataModule "0..9999" --* "1..1" ddsMetamodel_DdsSystem : dataModules238
+ddsMetamodel_DdsDataReader "0..1" -- "1..1" ddsMetamodel_DdsReadCondition : dataReader215
+ddsMetamodel_DdsDataReader "1..1" -- "1..1" ddsMetamodel_DdsDataReaderStatusCondition : dataReader231
+ddsMetamodel_DdsDataReaderLifecycleQos "0..1" --* "1..1" ddsMetamodel_DdsDataReaderQosProfile : dataReaderLifecycleQos207
+ddsMetamodel_DdsDataReader "1..1" *-- "0..1" ddsMetamodel_DdsDataReaderListener : dataReaderListener23
+ddsMetamodel_DdsDataReader "1..1" -- "0..1" ddsMetamodel_DdsDataReaderQosProfile : dataReaderQosProfile25
+ddsMetamodel_DdsDataStructure "0..1" -- "1..1" ddsMetamodel_DdsStructuredField : dataStructure220
+ddsMetamodel_DdsDataModule "1..1" *-- "0..9999" ddsMetamodel_DdsDataStructure : dataStructures41
+ddsMetamodel_DdsDataWriter "1..1" -- "1..1" ddsMetamodel_DdsDataWriterStatusCondition : dataWriter229
+ddsMetamodel_DdsDataWriterLifecycleQos "0..1" --* "1..1" ddsMetamodel_DdsDataWriterQosProfile : dataWriterLifecycleQos159
+ddsMetamodel_DdsDataWriter "1..1" *-- "0..1" ddsMetamodel_DdsDataWriterListener : dataWriterListener37
+ddsMetamodel_DdsDataWriter "1..1" -- "0..1" ddsMetamodel_DdsDataWriterQosProfile : dataWriterQosProfile39
+ddsMetamodel_DdsDataReader "0..9999" --* "1..1" ddsMetamodel_DdsSubscriber : ddsdatareader16
+ddsMetamodel_DdsDataStructure "0..1" -- "1..1" ddsMetamodel_DdsTopic : ddsdatastructure14
+ddsMetamodel_DdsDataWriter "0..9999" --* "1..1" ddsMetamodel_DdsPublisher : ddsdatawriter28
+ddsMetamodel_DdsDomainParticipant "1..1" -- "0..1" ddsMetamodel_DdsDomainParticipantQosProfile : ddsdomainparticipantqosprofile7
+ddsMetamodel_DdsDomainParticipant "1..1" *-- "0..9999" ddsMetamodel_DdsPublisher : ddspublisher5
+ddsMetamodel_DdsDomainParticipant "1..1" *-- "0..9999" ddsMetamodel_DdsSubscriber : ddssubscriber3
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsDeadlineQos : deadlineQos127
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsDeadlineQos : deadlineQos180
+ddsMetamodel_DdsDeadlineQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : deadlineQos81
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsDestinationOrderQos : destinationOrderQos150
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsDestinationOrderQos : destinationOrderQos198
+ddsMetamodel_DdsDestinationOrderQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : destinationOrderQos71
+ddsMetamodel_DdsDomainParticipant "1..1" -- "1..1" ddsMetamodel_DdsDomainParticipantStatusCondition : domainParticipant223
+ddsMetamodel_DdsDomainParticipant "1..1" *-- "0..1" ddsMetamodel_DdsDomainParticipantListener : domainParticipantListener9
+ddsMetamodel_DdsApplication "1..1" *-- "0..9999" ddsMetamodel_DdsDomainParticipant : domainParticipants0
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsDurabilityQos : durabilityQos124
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsDurabilityQos : durabilityQos177
+ddsMetamodel_DdsDurabilityQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : durabilityQos59
+ddsMetamodel_DdsDurabilityServiceQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : durabilityServiceQos61
+ddsMetamodel_DdsDuration "0..1" --* "1..1" ddsMetamodel_DdsLatencyBudgetQos : duration88
+ddsMetamodel_DdsDuration "0..1" --* "1..1" ddsMetamodel_DdsLifespan : duration99
+ddsMetamodel_DdsEntityFactoryQos "0..1" --* "1..1" ddsMetamodel_DdsPublisherQosProfile : entityFactoryQos114
+ddsMetamodel_DdsEntityFactoryQos "0..1" --* "1..1" ddsMetamodel_DdsSubscriberQosProfile : entityFactoryQos165
+ddsMetamodel_DdsDomainParticipantQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsEntityFactoryQos : entityFactoryQos55
+ddsMetamodel_DdsDataField "0..9999" --* "1..1" ddsMetamodel_DdsDataStructure : fields48
+ddsMetamodel_DdsGroupDataQos "0..1" --* "1..1" ddsMetamodel_DdsPublisherQosProfile : groupDataQos112
+ddsMetamodel_DdsGroupDataQos "0..1" --* "1..1" ddsMetamodel_DdsSubscriberQosProfile : groupDataQos162
+ddsMetamodel_DdsWaitSet "1..1" *-- "0..9999" ddsMetamodel_GuardCondition : guardConditions213
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsHistoryQos : historyQos153
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsHistoryQos : historyQos201
+ddsMetamodel_DdsHistoryQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : historyQos73
+ddsMetamodel_DdsHost "0..9999" --* "1..1" ddsMetamodel_DdsSystem : hosts235
+ddsMetamodel_DdsDataModule "1..1" *-- "0..9999" ddsMetamodel_DdsDataModule : innerModules43
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsLatencyBudgetQos : latencyBudgetQos130
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsLatencyBudgetQos : latencyBudgetQos183
+ddsMetamodel_DdsLatencyBudgetQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : latencyBudgetQos63
+ddsMetamodel_DdsDuration "0..1" --* "1..1" ddsMetamodel_DdsLivelinessQos : lease_duration91
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsLifespan : lifespanQos147
+ddsMetamodel_DdsLifespan "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : lifespanQos79
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsLivelinessQos : livelinessQos138
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsLivelinessQos : livelinessQos186
+ddsMetamodel_DdsLivelinessQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : livelinessQos65
+ddsMetamodel_DdsDuration "0..1" --* "1..1" ddsMetamodel_DdsReliabilityQos : max_blocking_time96
+ddsMetamodel_DdsDuration "0..1" --* "1..1" ddsMetamodel_DdsTimeBasedFilterQos : minimum_separation94
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsOwnershipQos : ownershipQos133
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsOwnershipQos : ownershipQos189
+ddsMetamodel_DdsOwnershipQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : ownershipQos67
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsOwnershipStrengthQos : ownershipStrength136
+ddsMetamodel_DdsPartitionQos "0..1" --* "1..1" ddsMetamodel_DdsPublisherQosProfile : partitionQos119
+ddsMetamodel_DdsPartitionQos "0..1" --* "1..1" ddsMetamodel_DdsSubscriberQosProfile : partitionQos171
+ddsMetamodel_DdsDeadlineQos "1..1" *-- "0..1" ddsMetamodel_DdsDuration : period85
+ddsMetamodel_DdsPresentationQos "0..1" --* "1..1" ddsMetamodel_DdsPublisherQosProfile : presentationQos117
+ddsMetamodel_DdsPresentationQos "0..1" --* "1..1" ddsMetamodel_DdsSubscriberQosProfile : presentationQos168
+ddsMetamodel_DdsDataWriter "1..1" -- "1..1" ddsMetamodel_DdsTopic : publiableTopic34
+ddsMetamodel_DdsPublisher "1..1" -- "1..1" ddsMetamodel_DdsPublisherStatusCondition : publisher225
+ddsMetamodel_DdsPublisher "1..1" *-- "0..1" ddsMetamodel_DdsPublisherListener : publisherListener30
+ddsMetamodel_DdsPublisher "1..1" -- "0..1" ddsMetamodel_DdsPublisherQosProfile : publisherQosProfile32
+ddsMetamodel_DdsQosProfile "0..9999" --* "1..1" ddsMetamodel_DdsSystem : qosProfiles236
+ddsMetamodel_DdsReadCondition "0..9999" --* "1..1" ddsMetamodel_DdsWaitSet : readConditions210
+ddsMetamodel_DdsDataReader "1..1" -- "1..1" ddsMetamodel_DdsTopic : readableTopic21
+ddsMetamodel_DdsDataStructure "0..1" -- "1..1" ddsMetamodel_DdsStructuredField : referencedType218
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsReliabilityQos : reliabilityQos141
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsReliabilityQos : reliabilityQos195
+ddsMetamodel_DdsReliabilityQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : reliabilityQos69
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsResourceLimits : resourceLimitsQos156
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsResourceLimits : resourceLimitsQos204
+ddsMetamodel_DdsResourceLimits "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : resourceLimitsQos75
+ddsMetamodel_DdsDurabilityServiceQos "1..1" *-- "0..1" ddsMetamodel_DdsDuration : service_cleanup_delay83
+ddsMetamodel_DdsStatusCondition "0..9999" --* "1..1" ddsMetamodel_DdsWaitSet : statusConditions212
+ddsMetamodel_DdsDataStructure "1..1" *-- "0..9999" ddsMetamodel_DdsStructuredField : structuredFields50
+ddsMetamodel_DdsSubscriber "1..1" -- "1..1" ddsMetamodel_DdsSubscriberStatusCondition : subscriber227
+ddsMetamodel_DdsSubscriber "1..1" *-- "0..1" ddsMetamodel_DdsSubscriberListener : subscriberListener17
+ddsMetamodel_DdsSubscriber "1..1" -- "0..1" ddsMetamodel_DdsSubscriberQosProfile : subscriberQosProfile19
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsTimeBasedFilterQos : timeBasedFilterQos192
+ddsMetamodel_DdsTopic "1..1" -- "1..1" ddsMetamodel_DdsTopicStatusCondition : topic233
+ddsMetamodel_DdsTopicDataQos "0..1" --* "1..1" ddsMetamodel_DdsTopicQosProfile : topicDataQos57
+ddsMetamodel_DdsTopic "1..1" *-- "0..1" ddsMetamodel_DdsTopicListener : topicListener11
+ddsMetamodel_DdsTopic "1..1" -- "0..1" ddsMetamodel_DdsTopicQosProfile : topicQosProfile12
+ddsMetamodel_DdsSystem "1..1" *-- "0..9999" ddsMetamodel_DdsTopic : topics240
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsTransportPriorityQos : transportPriorityQos144
+ddsMetamodel_DdsTopicQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsTransportPriorityQos : transportPriorityQos77
+ddsMetamodel_DdsDataWriterQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsUserDataQos : userDataQos121
+ddsMetamodel_DdsDataReaderQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsUserDataQos : userDataQos174
+ddsMetamodel_DdsDomainParticipantQosProfile "1..1" *-- "0..1" ddsMetamodel_DdsUserDataQos : userDataQos53
+ddsMetamodel_DdsApplication "1..1" *-- "0..1" ddsMetamodel_DdsWaitSet : waitset1
+@enduml

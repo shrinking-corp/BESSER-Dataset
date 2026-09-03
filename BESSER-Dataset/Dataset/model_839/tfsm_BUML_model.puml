@@ -1,0 +1,60 @@
+@startuml
+class Guard {
+}
+class NamedElement {
+}
+class tfsm_plaink3_EvaluateGuard {
+  + condition : str
+}
+class tfsm_plaink3_EventGuard {
+}
+class tfsm_plaink3_FSMClock {
+}
+class tfsm_plaink3_FSMEvent {
+}
+abstract class tfsm_plaink3_Guard {
+}
+abstract class tfsm_plaink3_NamedElement {
+  + name : str
+}
+class tfsm_plaink3_State {
+}
+class tfsm_plaink3_TFSM {
+}
+class tfsm_plaink3_TemporalGuard {
+  + afterDuration : int
+}
+class tfsm_plaink3_TimedSystem {
+}
+class tfsm_plaink3_Transition {
+  + action : str
+}
+Guard <|-- tfsm_plaink3_EvaluateGuard
+Guard <|-- tfsm_plaink3_EventGuard
+Guard <|-- tfsm_plaink3_TemporalGuard
+NamedElement <|-- tfsm_plaink3_FSMClock
+NamedElement <|-- tfsm_plaink3_FSMEvent
+NamedElement <|-- tfsm_plaink3_Guard
+NamedElement <|-- tfsm_plaink3_State
+NamedElement <|-- tfsm_plaink3_TFSM
+NamedElement <|-- tfsm_plaink3_TimedSystem
+NamedElement <|-- tfsm_plaink3_Transition
+tfsm_plaink3_FSMEvent "0..9999" -- "1..1" tfsm_plaink3_Transition : generatedEvents18
+tfsm_plaink3_FSMClock "0..9999" --* "1..1" tfsm_plaink3_TimedSystem : globalClocks30
+tfsm_plaink3_FSMEvent "0..9999" --* "1..1" tfsm_plaink3_TimedSystem : globalEvents33
+tfsm_plaink3_State "1..1" -- "0..9999" tfsm_plaink3_Transition : incomingTransitions10
+tfsm_plaink3_State "1..1" -- "1..1" tfsm_plaink3_TFSM : initialState1
+tfsm_plaink3_FSMClock "1..1" --* "1..1" tfsm_plaink3_TFSM : localClock4
+tfsm_plaink3_FSMEvent "0..9999" --* "1..1" tfsm_plaink3_TFSM : localEvents2
+tfsm_plaink3_FSMClock "1..1" -- "1..1" tfsm_plaink3_TemporalGuard : onClock21
+tfsm_plaink3_State "1..1" -- "0..9999" tfsm_plaink3_Transition : outgoingTransitions9
+tfsm_plaink3_Guard "1..1" --* "1..1" tfsm_plaink3_Transition : ownedGuard16
+tfsm_plaink3_State "0..9999" --* "1..1" tfsm_plaink3_TFSM : ownedStates0
+tfsm_plaink3_TFSM "1..1" *-- "0..9999" tfsm_plaink3_Transition : ownedTransitions6
+tfsm_plaink3_State "1..1" -- "1..1" tfsm_plaink3_TFSM : owningFSM8
+tfsm_plaink3_FSMEvent "1..1" -- "0..9999" tfsm_plaink3_Transition : sollicitingTransitions25
+tfsm_plaink3_State "1..1" -- "1..1" tfsm_plaink3_Transition : source12
+tfsm_plaink3_State "1..1" -- "1..1" tfsm_plaink3_Transition : target14
+tfsm_plaink3_TFSM "0..9999" --* "1..1" tfsm_plaink3_TimedSystem : tfsms28
+tfsm_plaink3_EventGuard "1..1" -- "1..1" tfsm_plaink3_FSMEvent : triggeringEvent23
+@enduml

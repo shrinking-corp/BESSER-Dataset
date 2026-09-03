@@ -1,0 +1,1102 @@
+@startuml
+enum AdHocOrdering {
+  parallel
+  sequential
+}
+enum AssociationDirection {
+  both
+  none
+  one
+}
+class BPMNActivity {
+}
+class BPMNArtifact {
+}
+class BPMNCollaboration {
+}
+class BPMNEvent {
+}
+class BPMNExpression {
+}
+class BaseElement {
+}
+class CallableElement {
+}
+class CatchEvent {
+}
+class ConversationNode {
+}
+class DataAssociation {
+}
+enum EventBasedGatewayType {
+  exclusive
+  parallel
+}
+class EventDefinition {
+}
+class FlowElement {
+}
+class FlowElementsContainer {
+}
+class FlowNode {
+}
+class Gateway {
+}
+enum GatewayDirection {
+  converging
+  diverging
+  mixed
+  unspecified
+}
+class GlobalTask {
+}
+class HumanPerformer {
+}
+class InteractionNode {
+}
+class ItemAwareElement {
+}
+class ItemDefinition {
+}
+enum ItemKind {
+  information
+  physical
+}
+class LoopCharacteristics {
+}
+enum MultiInstanceBehavior {
+  all
+  complex
+  none
+  one
+}
+class NonExclusiveGateway {
+}
+class Performer {
+}
+enum ProcessType {
+  none
+  private
+  public
+}
+enum RelationshipDirection {
+  backward
+  both
+  forward
+  none
+}
+class ResourceRole {
+}
+class RootElement {
+}
+class SubProcess {
+}
+class Task {
+}
+class ThrowEvent {
+}
+class bpmnprof_AcceptEventAction {
+}
+class bpmnprof_Action {
+}
+class bpmnprof_Activity {
+}
+class bpmnprof_ActivityGroup {
+}
+class bpmnprof_ActivityNode {
+}
+class bpmnprof_ActivityParameterNode {
+}
+class bpmnprof_ActivityPartition {
+}
+class bpmnprof_AdHocSubProcess {
+  + cancelRemainingInstances : str
+  + ordering : str
+  + AdHocSubProcesscancelRemainingInstances(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Assignment {
+}
+class bpmnprof_Auditing {
+}
+abstract class bpmnprof_BPMNActivity {
+  + completionQuantity : str
+  + isForCompensation : str
+  + startQuantity : str
+  + BPMNActivityboundaryEventsRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNActivitycontainer(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNActivitydefault(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNActivityloopCharacteristics(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNActivityproperties(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNActivityresources(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+abstract class bpmnprof_BPMNArtifact {
+}
+class bpmnprof_BPMNAssociation {
+  + associationDirection : str
+  + AssociationEnd(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BPMNCollaboration {
+  + isClosed : str
+  + Collaborationparticipants(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+abstract class bpmnprof_BPMNEvent {
+}
+class bpmnprof_BPMNExpression {
+}
+class bpmnprof_BPMNExtension {
+  + mustUnderstand : str
+}
+class bpmnprof_BPMNInterface {
+  + BPMNInterfacecallableElements(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNInterfaceoperations(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Interfaceoperationmultiplicity(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + InterfaceownedOperation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BPMNMessage {
+  + MessageitemRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BPMNOperation {
+  + BPMNOperationerrorRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNOperationinMessageRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNOperationoutMessageRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + BPMNOperationowner(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BPMNProcess {
+  + isClosed : str
+  + isExecutable : str
+  + processType : str
+  + ProcessflowElements(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ProcesslaneSets(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Processproperties(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ProcesssupportedInterfaceRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Processsupports(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BPMNProperty {
+  + BPMNPropertyapply(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Propertynotation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BPMNRelationship {
+  + direction : str
+  + type : str
+}
+class bpmnprof_BPMNSignal {
+  + BPMNSignalstructureRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+abstract class bpmnprof_BaseElement {
+  + id : str
+}
+class bpmnprof_Behavior {
+}
+class bpmnprof_BoundaryEvent {
+  + cancelActivity : str
+  + boundaryEventattachedToRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_BusinessRuleTask {
+  + implementation : str
+  + BusinessRuleTaskimplementation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_CallActivity {
+  + CallActivitycalledElementRefvalues(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_CallBehaviorAction {
+}
+class bpmnprof_CallConversation {
+  + CallConversationcalledCollaborationRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + CallConversationparticipantAssociations(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_CallEvent {
+}
+class bpmnprof_CallOperationAction {
+}
+abstract class bpmnprof_CallableElement {
+  + CallableEelementsupportedInterfaceRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + CallableElementresources(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_CancelEventDefinition {
+}
+abstract class bpmnprof_CatchEvent {
+  + parallelMultiple : str
+  + catchEventeventDefinitionsRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Category {
+}
+class bpmnprof_CategoryValue {
+}
+class bpmnprof_ChangeEvent {
+}
+class bpmnprof_Class {
+}
+class bpmnprof_Collaboration {
+}
+class bpmnprof_CollaborationUse {
+}
+class bpmnprof_Comment {
+}
+class bpmnprof_CompensateEventDefinition {
+  + waitForCompletion : str
+}
+class bpmnprof_ComplexBehaviorDefinition {
+}
+class bpmnprof_ComplexGateway {
+  + complexGatewayactivationCondition(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + complexGatewaydefault(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + complexGatewayjoinSpec(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ConditionalEventDefinition {
+  + conditionalEventDefinitioncondition(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Constraint {
+}
+class bpmnprof_ControlFlow {
+}
+class bpmnprof_ControlNode {
+}
+class bpmnprof_Conversation {
+}
+class bpmnprof_ConversationLink {
+}
+abstract class bpmnprof_ConversationNode {
+  + ConversationNodeparticipantRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_CorrelationKey {
+}
+class bpmnprof_CorrelationProperty {
+}
+class bpmnprof_CorrelationPropertyBinding {
+}
+class bpmnprof_CorrelationPropertyRetrievalExpression {
+}
+class bpmnprof_CorrelationSubscription {
+}
+abstract class bpmnprof_DataAssociation {
+  + DataAssociationsource(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + DataAssociationtarget(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + DataAssociationtransformation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataInput {
+  + isCollection : str
+  + DataInputAssociation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + DataInputitemSubjectRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + DataInputnotation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataInputAssociation {
+  + dataInputAssociationsource(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + dataInputAssociationtarget(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataObject {
+  + isCollection : str
+  + DataObjectdataState(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataObjectReference {
+  + DataObjectRefdataState(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + DataObjectRefsourcetarget(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataOutput {
+  + isCollection : str
+  + DataOutputitemSubjectRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + DataOutputnotation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataOutputAssociation {
+  + dataOutputAssociationsource(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + dataOutputAssociationtarget(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_DataState {
+}
+class bpmnprof_DataStore {
+  + capacity : str
+  + isUnlimited : str
+}
+class bpmnprof_DataStoreNode {
+}
+class bpmnprof_DataStoreReference {
+}
+class bpmnprof_DecisionNode {
+}
+class bpmnprof_Definitions {
+  + exporter : str
+  + exporterVersion : str
+  + expressionLanguage : str
+  + targetNamespace : str
+  + typeLanguage : str
+}
+class bpmnprof_Dependency {
+}
+class bpmnprof_Documentation {
+  + text : str
+  + textFormat : str
+}
+class bpmnprof_Element {
+}
+class bpmnprof_EndEvent {
+}
+class bpmnprof_Enumeration {
+}
+class bpmnprof_EnumerationLiteral {
+}
+class bpmnprof_Error {
+  + errorCode : str
+}
+class bpmnprof_ErrorEventDefinition {
+}
+class bpmnprof_Escalation {
+  + escalationCode : str
+  + EscalationstructureRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_EscalationEventDefinition {
+}
+class bpmnprof_Event {
+}
+class bpmnprof_EventBasedGateway {
+  + eventGatewayType : str
+  + instantiate : str
+}
+abstract class bpmnprof_EventDefinition {
+}
+class bpmnprof_ExclusiveGateway {
+  + exclusiveGatewaydefault(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ExpansionRegion {
+}
+class bpmnprof_ExtensionAttributeDefinition {
+  + isReference : str
+  + type : str
+}
+class bpmnprof_ExtensionAttributeValue {
+}
+class bpmnprof_ExtensionDefinition {
+}
+class bpmnprof_FinalNode {
+}
+abstract class bpmnprof_FlowElement {
+}
+abstract class bpmnprof_FlowElementsContainer {
+}
+class bpmnprof_FlowFinalNode {
+}
+abstract class bpmnprof_FlowNode {
+}
+class bpmnprof_ForkNode {
+}
+class bpmnprof_FormalExpression {
+  + FormalExpressionevaluatesToTypeRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+abstract class bpmnprof_Gateway {
+}
+class bpmnprof_GlobalBusinessRuleTask {
+  + implementation : str
+  + GlobalBusinessRuleTaskimplementation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_GlobalConversation {
+  + GlobalConversationcontainedelements(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_GlobalManualTask {
+}
+class bpmnprof_GlobalScriptTask {
+  + script : str
+  + scriptFormat : str
+  + GlobalScriptTaskscript(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + GlobalScriptTaskscriptFormat(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_GlobalTask {
+  + GlobalTasksupportedInterfaceRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_GlobalUserTask {
+  + implementation : str
+  + GlobalUserTaskimplementation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + GlobalUserTaskrenderings(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Group {
+}
+class bpmnprof_HumanPerformer {
+}
+class bpmnprof_Image {
+}
+class bpmnprof_ImplicitThrowEvent {
+}
+class bpmnprof_Import {
+  + importType : str
+  + location : str
+  + namespace : str
+}
+class bpmnprof_InclusiveGateway {
+  + inclusiveGatewaydefault(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_InformationFlow {
+}
+class bpmnprof_InitialNode {
+}
+class bpmnprof_InputOutputBinding {
+}
+class bpmnprof_InputOutputSpecification {
+}
+class bpmnprof_InputPin {
+}
+class bpmnprof_InputSet {
+  + InputSetdataInputRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + InputSetoptionalInputRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + InputSetwhileExecutingInputRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_InstanceSpecification {
+}
+abstract class bpmnprof_InteractionNode {
+}
+class bpmnprof_Interface {
+}
+class bpmnprof_IntermediateCatchEvent {
+}
+class bpmnprof_IntermediateThrowEvent {
+}
+class bpmnprof_InterruptibleActivityRegion {
+}
+abstract class bpmnprof_ItemAwareElement {
+  + ItemAwareElementdataState(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ItemDefinition {
+  + isCollection : str
+  + itemKind : str
+  + ItemDefinitionstructureRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_JoinNode {
+}
+class bpmnprof_Lane {
+  + LanechildLaneSet(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + LaneflowNodeRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + LanelaneSet(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + LanepartitionElementRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_LaneSet {
+  + LaneSet(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + LaneSetflowElementsContainer(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + LaneSetlanes(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + LaneSetparentLane(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_LinkEventDefinition {
+}
+abstract class bpmnprof_LoopCharacteristics {
+}
+class bpmnprof_LoopNode {
+}
+class bpmnprof_ManualTask {
+}
+class bpmnprof_MergeNode {
+}
+class bpmnprof_MessageEventDefinition {
+}
+class bpmnprof_MessageFlow {
+  + MessageFlowmessageRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + MessageFlowsourceRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + MessageFlowtargetRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_MessageFlowAssociation {
+  + MessageFlowAssociationinnerMessageFlowRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + MessageFlowAssociationouterMessageFlowRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Monitoring {
+}
+class bpmnprof_MultiInstanceLoopCharacteristics {
+  + behavior : str
+  + isSequential : str
+  + MultiinstanceLoopCharacteristicstarget(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_MultiplicityElement {
+}
+abstract class bpmnprof_NonExclusiveGateway {
+}
+class bpmnprof_ObjectFlow {
+}
+class bpmnprof_OpaqueAction {
+}
+class bpmnprof_OpaqueBehavior {
+}
+class bpmnprof_OpaqueExpression {
+}
+class bpmnprof_Operation {
+}
+class bpmnprof_OutputPin {
+}
+class bpmnprof_OutputSet {
+  + OutputSetdataOutputRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + OutputSetoptionalOutputRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + OutputSetwhileExecutingOutputRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Package {
+}
+class bpmnprof_PackageImport {
+}
+class bpmnprof_PackageableElement {
+}
+class bpmnprof_ParallelGateway {
+}
+class bpmnprof_Parameter {
+}
+class bpmnprof_ParameterSet {
+}
+class bpmnprof_Participant {
+  + ParticipantinterfaceRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ParticipantmultiplicityMaximum(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ParticipantmultiplicityMinimum(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Participantownership(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ParticipantprocessRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Participantrealizationsupplier(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + Participanttype(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + participantpartnerEntityRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + participantpartnerRoleRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ParticipantAssociation {
+  + ParticipantAssociationinnerParticipantRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ParticipantAssociationouterParticipantRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ParticipantMultiplicity {
+  + maximum : str
+  + minimum : str
+}
+class bpmnprof_PartnerEntity {
+  + PartnerEntityparticipantRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_PartnerRole {
+  + PartnerRoleparticipantRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Performer {
+}
+class bpmnprof_PotentialOwner {
+}
+class bpmnprof_Property {
+}
+class bpmnprof_ReceiveTask {
+  + implementation : str
+  + instantiate : str
+  + ReceiveTaskoperationRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Rendering {
+}
+class bpmnprof_Resource {
+  + ResourceresourceParameters(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ResourceAssignmentExpression {
+  + ResourceAssignmentExpressionexpression(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ResourceParameter {
+  + isRequired : str
+  + ResourceParameterisRequired(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceParameterowner(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceParametertype(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ResourceParameterBinding {
+  + ResourceParameterBindingexpression(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceParameterBindingparameterRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ResourceRole {
+  + ResourceRoleisRequired(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceRoleowner(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceRoleprocess(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceRoleresourceParameterBindings(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ResourceRoleresourceRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+abstract class bpmnprof_RootElement {
+}
+class bpmnprof_ScriptTask {
+  + script : str
+  + scriptFormat : str
+  + ScriptTaskscript(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ScriptTaskscriptFormat(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_SendObjectAction {
+}
+class bpmnprof_SendTask {
+  + implementation : str
+  + SendTaskoperationRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_SequenceFlow {
+  + isImmediate : str
+  + SequenceFlowconditionExpression(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + SequenceFlowsourceRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + SequenceFlowtargetRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_ServiceTask {
+  + implementation : str
+  + ServiceTaskinputSet(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ServiceTaskoperationRef(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + ServiceTaskoutputSet(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_SignalEventDefinition {
+}
+class bpmnprof_Slot {
+}
+class bpmnprof_StandardLoopCharacteristics {
+  + loopMaximum : str
+  + testBefore : str
+  + StandardLoopCharacteristicsloopCondition(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + StandardLoopCharacteristicstestBefore(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_StartEvent {
+  + isInterrupting : str
+}
+class bpmnprof_State {
+}
+class bpmnprof_Stereotype {
+}
+class bpmnprof_StructuredActivityNode {
+}
+class bpmnprof_SubConversation {
+  + SubConversationconnectedelements(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_SubProcess {
+  + triggeredByEvent : str
+  + SubProcesstriggeredByEvent(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_Task {
+}
+class bpmnprof_TerminateEventDefinition {
+}
+class bpmnprof_TextAnnotation {
+  + text : str
+  + textFormat : str
+}
+abstract class bpmnprof_ThrowEvent {
+  + ThrowEventeventDefinitionRefs(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+class bpmnprof_TimerEventDefinition {
+}
+class bpmnprof_Transaction {
+  + method : str
+}
+class bpmnprof_TypedElement {
+}
+class bpmnprof_UserTask {
+  + implementation : str
+  + UserTaskimplementation(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+  + UserTaskrenderings(bpmnprof_context : str, bpmnprof_diagnostics : str) : bool
+}
+BPMNActivity <|-- bpmnprof_CallActivity
+BPMNActivity <|-- bpmnprof_SubProcess
+BPMNActivity <|-- bpmnprof_Task
+BPMNArtifact <|-- bpmnprof_BPMNAssociation
+BPMNArtifact <|-- bpmnprof_Group
+BPMNArtifact <|-- bpmnprof_TextAnnotation
+BPMNCollaboration <|-- bpmnprof_GlobalConversation
+BPMNEvent <|-- bpmnprof_CatchEvent
+BPMNEvent <|-- bpmnprof_ThrowEvent
+BPMNExpression <|-- bpmnprof_FormalExpression
+BPMNExpression <|-- bpmnprof_ResourceAssignmentExpression
+BaseElement <|-- bpmnprof_Assignment
+BaseElement <|-- bpmnprof_Auditing
+BaseElement <|-- bpmnprof_BPMNArtifact
+BaseElement <|-- bpmnprof_BPMNExpression
+BaseElement <|-- bpmnprof_BPMNOperation
+BaseElement <|-- bpmnprof_BPMNRelationship
+BaseElement <|-- bpmnprof_CategoryValue
+BaseElement <|-- bpmnprof_ComplexBehaviorDefinition
+BaseElement <|-- bpmnprof_ConversationLink
+BaseElement <|-- bpmnprof_CorrelationKey
+BaseElement <|-- bpmnprof_CorrelationProperty
+BaseElement <|-- bpmnprof_CorrelationPropertyBinding
+BaseElement <|-- bpmnprof_CorrelationPropertyRetrievalExpression
+BaseElement <|-- bpmnprof_CorrelationSubscription
+BaseElement <|-- bpmnprof_DataAssociation
+BaseElement <|-- bpmnprof_DataState
+BaseElement <|-- bpmnprof_Definitions
+BaseElement <|-- bpmnprof_Documentation
+BaseElement <|-- bpmnprof_FlowElement
+BaseElement <|-- bpmnprof_FlowElementsContainer
+BaseElement <|-- bpmnprof_InputOutputBinding
+BaseElement <|-- bpmnprof_InputOutputSpecification
+BaseElement <|-- bpmnprof_InputSet
+BaseElement <|-- bpmnprof_ItemAwareElement
+BaseElement <|-- bpmnprof_Lane
+BaseElement <|-- bpmnprof_LaneSet
+BaseElement <|-- bpmnprof_LoopCharacteristics
+BaseElement <|-- bpmnprof_MessageFlow
+BaseElement <|-- bpmnprof_MessageFlowAssociation
+BaseElement <|-- bpmnprof_Monitoring
+BaseElement <|-- bpmnprof_OutputSet
+BaseElement <|-- bpmnprof_Participant
+BaseElement <|-- bpmnprof_ParticipantAssociation
+BaseElement <|-- bpmnprof_ParticipantMultiplicity
+BaseElement <|-- bpmnprof_Rendering
+BaseElement <|-- bpmnprof_ResourceParameter
+BaseElement <|-- bpmnprof_ResourceParameterBinding
+BaseElement <|-- bpmnprof_ResourceRole
+BaseElement <|-- bpmnprof_RootElement
+CallableElement <|-- bpmnprof_BPMNProcess
+CallableElement <|-- bpmnprof_GlobalTask
+CatchEvent <|-- bpmnprof_BoundaryEvent
+CatchEvent <|-- bpmnprof_IntermediateCatchEvent
+CatchEvent <|-- bpmnprof_StartEvent
+ConversationNode <|-- bpmnprof_CallConversation
+ConversationNode <|-- bpmnprof_Conversation
+ConversationNode <|-- bpmnprof_SubConversation
+DataAssociation <|-- bpmnprof_DataInputAssociation
+DataAssociation <|-- bpmnprof_DataOutputAssociation
+EventDefinition <|-- bpmnprof_CancelEventDefinition
+EventDefinition <|-- bpmnprof_CompensateEventDefinition
+EventDefinition <|-- bpmnprof_ConditionalEventDefinition
+EventDefinition <|-- bpmnprof_ErrorEventDefinition
+EventDefinition <|-- bpmnprof_EscalationEventDefinition
+EventDefinition <|-- bpmnprof_LinkEventDefinition
+EventDefinition <|-- bpmnprof_MessageEventDefinition
+EventDefinition <|-- bpmnprof_SignalEventDefinition
+EventDefinition <|-- bpmnprof_TerminateEventDefinition
+EventDefinition <|-- bpmnprof_TimerEventDefinition
+FlowElement <|-- bpmnprof_DataObject
+FlowElement <|-- bpmnprof_DataObjectReference
+FlowElement <|-- bpmnprof_DataStoreReference
+FlowElement <|-- bpmnprof_FlowNode
+FlowElement <|-- bpmnprof_SequenceFlow
+FlowElementsContainer <|-- bpmnprof_BPMNProcess
+FlowElementsContainer <|-- bpmnprof_SubProcess
+FlowNode <|-- bpmnprof_BPMNActivity
+FlowNode <|-- bpmnprof_BPMNEvent
+FlowNode <|-- bpmnprof_Gateway
+Gateway <|-- bpmnprof_EventBasedGateway
+Gateway <|-- bpmnprof_ExclusiveGateway
+Gateway <|-- bpmnprof_NonExclusiveGateway
+GlobalTask <|-- bpmnprof_GlobalBusinessRuleTask
+GlobalTask <|-- bpmnprof_GlobalManualTask
+GlobalTask <|-- bpmnprof_GlobalScriptTask
+GlobalTask <|-- bpmnprof_GlobalUserTask
+HumanPerformer <|-- bpmnprof_PotentialOwner
+InteractionNode <|-- bpmnprof_ConversationNode
+ItemAwareElement <|-- bpmnprof_BPMNProperty
+ItemAwareElement <|-- bpmnprof_DataInput
+ItemAwareElement <|-- bpmnprof_DataObject
+ItemAwareElement <|-- bpmnprof_DataObjectReference
+ItemAwareElement <|-- bpmnprof_DataOutput
+ItemAwareElement <|-- bpmnprof_DataStoreReference
+ItemDefinition <|-- bpmnprof_BPMNMessage
+ItemDefinition <|-- bpmnprof_BPMNSignal
+ItemDefinition <|-- bpmnprof_Error
+ItemDefinition <|-- bpmnprof_Escalation
+ItemDefinition <|-- bpmnprof_Resource
+LoopCharacteristics <|-- bpmnprof_MultiInstanceLoopCharacteristics
+LoopCharacteristics <|-- bpmnprof_StandardLoopCharacteristics
+NonExclusiveGateway <|-- bpmnprof_ComplexGateway
+NonExclusiveGateway <|-- bpmnprof_InclusiveGateway
+NonExclusiveGateway <|-- bpmnprof_ParallelGateway
+Performer <|-- bpmnprof_HumanPerformer
+ResourceRole <|-- bpmnprof_Performer
+RootElement <|-- bpmnprof_BPMNCollaboration
+RootElement <|-- bpmnprof_BPMNInterface
+RootElement <|-- bpmnprof_CallableElement
+RootElement <|-- bpmnprof_Category
+RootElement <|-- bpmnprof_DataStore
+RootElement <|-- bpmnprof_EventDefinition
+RootElement <|-- bpmnprof_ItemDefinition
+RootElement <|-- bpmnprof_PartnerEntity
+RootElement <|-- bpmnprof_PartnerRole
+SubProcess <|-- bpmnprof_AdHocSubProcess
+SubProcess <|-- bpmnprof_Transaction
+Task <|-- bpmnprof_BusinessRuleTask
+Task <|-- bpmnprof_ManualTask
+Task <|-- bpmnprof_ReceiveTask
+Task <|-- bpmnprof_ScriptTask
+Task <|-- bpmnprof_SendTask
+Task <|-- bpmnprof_ServiceTask
+Task <|-- bpmnprof_UserTask
+ThrowEvent <|-- bpmnprof_EndEvent
+ThrowEvent <|-- bpmnprof_ImplicitThrowEvent
+ThrowEvent <|-- bpmnprof_IntermediateThrowEvent
+bpmnprof_CategoryValue "1..9999" -- "1..1" bpmnprof_FlowElement : _categoryValueRef11
+bpmnprof_CategoryValue "0..1" -- "1..1" bpmnprof_Group : _categoryValueRef569
+bpmnprof_CallConversation "1..1" -- "1..1" bpmnprof_CollaborationUse : _collaborationUse602
+bpmnprof_DataStore "0..1" -- "1..1" bpmnprof_DataStoreReference : _dataStore584
+bpmnprof_BPMNEvent "1..1" -- "1..9999" bpmnprof_EventDefinition : _eventDefinitions473
+bpmnprof_Element "0..1" -- "1..1" bpmnprof_Lane : _partitionElement62
+bpmnprof_LinkEventDefinition "1..1" -- "0..1" bpmnprof_LinkEventDefinition : _target545
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_ComplexGateway : activationCondition90
+bpmnprof_BPMNActivity "1..1" -- "0..1" bpmnprof_Class : activityClass442
+bpmnprof_BPMNActivity "0..1" -- "1..1" bpmnprof_CompensateEventDefinition : activityRef435
+bpmnprof_Assignment "1..9999" -- "1..1" bpmnprof_DataAssociation : assignment492
+bpmnprof_BPMNActivity "1..1" -- "1..1" bpmnprof_BoundaryEvent : attachedToRef462
+bpmnprof_Auditing "0..1" -- "1..1" bpmnprof_BPMNProcess : auditing131
+bpmnprof_Auditing "0..1" -- "1..1" bpmnprof_FlowElement : auditing8
+bpmnprof_AcceptEventAction "1..1" -- "1..1" bpmnprof_CatchEvent : base_AcceptEventAction465
+bpmnprof_AcceptEventAction "1..1" -- "1..1" bpmnprof_ReceiveTask : base_AcceptEventAction645
+bpmnprof_Action "1..1" -- "1..1" bpmnprof_InputOutputSpecification : base_Action158
+bpmnprof_Action "1..1" -- "1..1" bpmnprof_BPMNActivity : base_Action439
+bpmnprof_Activity "1..1" -- "1..1" bpmnprof_BPMNProcess : base_Activity135
+bpmnprof_ActivityGroup "1..1" -- "1..1" bpmnprof_Gateway : base_ActivityGroup5
+bpmnprof_ActivityNode "1..1" -- "1..1" bpmnprof_FlowNode : base_ActivityNode7
+bpmnprof_ActivityParameterNode "1..1" -- "1..1" bpmnprof_DataInput : base_ActivityParameterNode172
+bpmnprof_ActivityParameterNode "1..1" -- "1..1" bpmnprof_DataOutput : base_ActivityParameterNode207
+bpmnprof_ActivityPartition "1..1" -- "1..1" bpmnprof_LaneSet : base_ActivityPartition53
+bpmnprof_ActivityPartition "1..1" -- "1..1" bpmnprof_Group : base_ActivityPartition567
+bpmnprof_ActivityPartition "1..1" -- "1..1" bpmnprof_Lane : base_ActivityPartition59
+bpmnprof_Behavior "1..1" -- "1..1" bpmnprof_CallableElement : base_Behavior148
+bpmnprof_Behavior "1..1" -- "1..1" bpmnprof_InputOutputSpecification : base_Behavior155
+bpmnprof_CallActivity "1..1" -- "1..1" bpmnprof_CallBehaviorAction : base_CallBehaviorAction614
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_CompensateEventDefinition : base_CallEvent436
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_EscalationEventDefinition : base_CallEvent507
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_SignalEventDefinition : base_CallEvent521
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_MessageEventDefinition : base_CallEvent536
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_LinkEventDefinition : base_CallEvent549
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_ErrorEventDefinition : base_CallEvent553
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_TerminateEventDefinition : base_CallEvent557
+bpmnprof_CallEvent "1..1" -- "1..1" bpmnprof_CancelEventDefinition : base_CallEvent559
+bpmnprof_CallOperationAction "1..1" -- "1..1" bpmnprof_ThrowEvent : base_CallOperationAction525
+bpmnprof_CallOperationAction "1..1" -- "1..1" bpmnprof_SendTask : base_CallOperationAction633
+bpmnprof_CallOperationAction "1..1" -- "1..1" bpmnprof_ServiceTask : base_CallOperationAction651
+bpmnprof_ChangeEvent "1..1" -- "1..1" bpmnprof_TimerEventDefinition : base_ChangeEvent518
+bpmnprof_ChangeEvent "1..1" -- "1..1" bpmnprof_ConditionalEventDefinition : base_ChangeEvent539
+bpmnprof_Class "1..1" -- "1..1" bpmnprof_ItemDefinition : base_Class186
+bpmnprof_Class "1..1" -- "1..1" bpmnprof_PartnerRole : base_Class320
+bpmnprof_Class "1..1" -- "1..1" bpmnprof_CorrelationKey : base_Class356
+bpmnprof_Class "1..1" -- "1..1" bpmnprof_CorrelationSubscription : base_Class380
+bpmnprof_Auditing "1..1" -- "1..1" bpmnprof_Class : base_Class43
+bpmnprof_Class "1..1" -- "1..1" bpmnprof_Monitoring : base_Class45
+bpmnprof_Class "1..1" -- "1..1" bpmnprof_DataStore : base_Class579
+bpmnprof_BPMNCollaboration "1..1" -- "1..1" bpmnprof_Collaboration : base_Collaboration271
+bpmnprof_Comment "1..1" -- "1..1" bpmnprof_Documentation : base_Comment32
+bpmnprof_Comment "1..1" -- "1..1" bpmnprof_TextAnnotation : base_Comment561
+bpmnprof_BPMNRelationship "1..1" -- "1..1" bpmnprof_Constraint : base_Constraint120
+bpmnprof_ComplexBehaviorDefinition "1..1" -- "1..1" bpmnprof_ControlFlow : base_ControlFlow624
+bpmnprof_ControlFlow "1..1" -- "1..1" bpmnprof_SequenceFlow : base_ControlFlow76
+bpmnprof_ControlNode "1..1" -- "1..1" bpmnprof_Gateway : base_ControlNode4
+bpmnprof_BPMNProperty "1..1" -- "1..1" bpmnprof_DataStoreNode : base_DataStoreNode397
+bpmnprof_DataObjectReference "1..1" -- "1..1" bpmnprof_DataStoreNode : base_DataStoreNode573
+bpmnprof_DataObject "1..1" -- "1..1" bpmnprof_DataStoreNode : base_DataStoreNode576
+bpmnprof_DataStoreNode "1..1" -- "1..1" bpmnprof_DataStoreReference : base_DataStoreNode586
+bpmnprof_DecisionNode "1..1" -- "1..1" bpmnprof_ExclusiveGateway : base_DecisionNode93
+bpmnprof_Dependency "1..1" -- "1..1" bpmnprof_InputOutputBinding : base_Dependency261
+bpmnprof_Dependency "1..1" -- "1..1" bpmnprof_ParticipantAssociation : base_Dependency279
+bpmnprof_ConversationLink "1..1" -- "1..1" bpmnprof_Dependency : base_Dependency311
+bpmnprof_Dependency "1..1" -- "1..1" bpmnprof_MessageFlowAssociation : base_Dependency324
+bpmnprof_CorrelationPropertyRetrievalExpression "1..1" -- "1..1" bpmnprof_Dependency : base_Dependency369
+bpmnprof_BPMNAssociation "1..1" -- "1..1" bpmnprof_Dependency : base_Dependency39
+bpmnprof_Assignment "1..1" -- "1..1" bpmnprof_Dependency : base_Dependency494
+bpmnprof_BaseElement "1..1" -- "1..1" bpmnprof_Element : base_Element14
+bpmnprof_Element "1..1" -- "1..1" bpmnprof_InteractionNode : base_Element302
+bpmnprof_Category "1..1" -- "1..1" bpmnprof_Enumeration : base_Enumeration563
+bpmnprof_CategoryValue "1..1" -- "1..1" bpmnprof_EnumerationLiteral : base_EnumerationLiteral48
+bpmnprof_Event "1..1" -- "1..1" bpmnprof_EventDefinition : base_Event438
+bpmnprof_ExpansionRegion "1..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : base_ExpansionRegion661
+bpmnprof_EndEvent "1..1" -- "1..1" bpmnprof_FinalNode : base_FinalNode524
+bpmnprof_FlowFinalNode "1..1" -- "1..1" bpmnprof_ThrowEvent : base_FlowFinalNode526
+bpmnprof_ForkNode "1..1" -- "1..1" bpmnprof_NonExclusiveGateway : base_ForkNode2
+bpmnprof_EventBasedGateway "1..1" -- "1..1" bpmnprof_ForkNode : base_ForkNode82
+bpmnprof_Image "1..1" -- "1..1" bpmnprof_Rendering : base_Image594
+bpmnprof_InformationFlow "1..1" -- "1..1" bpmnprof_MessageFlow : base_InformationFlow333
+bpmnprof_ConversationNode "1..1" -- "1..1" bpmnprof_InformationFlow : base_InformationFlow344
+bpmnprof_CatchEvent "1..1" -- "1..1" bpmnprof_InitialNode : base_InitialNode466
+bpmnprof_DataInput "1..1" -- "1..1" bpmnprof_InputPin : base_InputPin168
+bpmnprof_InstanceSpecification "1..1" -- "1..1" bpmnprof_PartnerEntity : base_InstanceSpecification318
+bpmnprof_BPMNInterface "1..1" -- "1..1" bpmnprof_Interface : base_Interface227
+bpmnprof_EventBasedGateway "1..1" -- "1..1" bpmnprof_InterruptibleActivityRegion : base_InterruptibleActivityRegion86
+bpmnprof_JoinNode "1..1" -- "1..1" bpmnprof_NonExclusiveGateway : base_JoinNode1
+bpmnprof_LoopNode "1..1" -- "1..1" bpmnprof_StandardLoopCharacteristics : base_LoopNode639
+bpmnprof_ExclusiveGateway "1..1" -- "1..1" bpmnprof_MergeNode : base_MergeNode94
+bpmnprof_MultiplicityElement "1..1" -- "1..1" bpmnprof_ParticipantMultiplicity : base_MultiplicityElement316
+bpmnprof_DataAssociation "1..1" -- "1..1" bpmnprof_ObjectFlow : base_ObjectFlow482
+bpmnprof_OpaqueAction "1..1" -- "1..1" bpmnprof_UserTask : base_OpaqueAction589
+bpmnprof_ManualTask "1..1" -- "1..1" bpmnprof_OpaqueAction : base_OpaqueAction598
+bpmnprof_BusinessRuleTask "1..1" -- "1..1" bpmnprof_OpaqueAction : base_OpaqueAction618
+bpmnprof_OpaqueAction "1..1" -- "1..1" bpmnprof_ScriptTask : base_OpaqueAction629
+bpmnprof_GlobalTask "1..1" -- "1..1" bpmnprof_OpaqueBehavior : base_OpaqueBehavior431
+bpmnprof_BPMNExpression "1..1" -- "1..1" bpmnprof_OpaqueExpression : base_OpaqueExpression80
+bpmnprof_BPMNOperation "1..1" -- "1..1" bpmnprof_Operation : base_Operation237
+bpmnprof_DataOutput "1..1" -- "1..1" bpmnprof_OutputPin : base_OutputPin202
+bpmnprof_Definitions "1..1" -- "1..1" bpmnprof_Package : base_Package101
+bpmnprof_Import "1..1" -- "1..1" bpmnprof_PackageImport : base_PackageImport115
+bpmnprof_PackageableElement "1..1" -- "1..1" bpmnprof_RootElement : base_PackageableElement99
+bpmnprof_DataInput "1..1" -- "1..1" bpmnprof_Parameter : base_Parameter170
+bpmnprof_DataOutput "1..1" -- "1..1" bpmnprof_Parameter : base_Parameter204
+bpmnprof_InputSet "1..1" -- "1..1" bpmnprof_ParameterSet : base_ParameterSet195
+bpmnprof_OutputSet "1..1" -- "1..1" bpmnprof_ParameterSet : base_ParameterSet217
+bpmnprof_Participant "1..1" -- "1..1" bpmnprof_Property : base_Property288
+bpmnprof_ExtensionAttributeDefinition "1..1" -- "1..1" bpmnprof_Property : base_Property30
+bpmnprof_CorrelationProperty "1..1" -- "1..1" bpmnprof_Property : base_Property361
+bpmnprof_CorrelationPropertyBinding "1..1" -- "1..1" bpmnprof_Property : base_Property388
+bpmnprof_Property "1..1" -- "1..1" bpmnprof_ResourceRole : base_Property402
+bpmnprof_Property "1..1" -- "1..1" bpmnprof_ResourceParameter : base_Property416
+bpmnprof_IntermediateThrowEvent "1..1" -- "1..1" bpmnprof_SendObjectAction : base_SendObjectAction556
+bpmnprof_ExtensionAttributeValue "1..1" -- "1..1" bpmnprof_Slot : base_Slot23
+bpmnprof_ResourceParameterBinding "1..1" -- "1..1" bpmnprof_Slot : base_Slot422
+bpmnprof_DataState "1..1" -- "1..1" bpmnprof_State : base_State184
+bpmnprof_BPMNExtension "1..1" -- "1..1" bpmnprof_Stereotype : base_Stereotype109
+bpmnprof_ExtensionDefinition "1..1" -- "1..1" bpmnprof_Stereotype : base_Stereotype34
+bpmnprof_LoopCharacteristics "1..1" -- "1..1" bpmnprof_StructuredActivityNode : base_StructuredActivityNode503
+bpmnprof_StructuredActivityNode "1..1" -- "1..1" bpmnprof_SubProcess : base_StructuredActivityNode609
+bpmnprof_EventBasedGateway "1..1" -- "1..1" bpmnprof_StructuredActivityNode : base_StructuredActivityNode84
+bpmnprof_ItemAwareElement "1..1" -- "1..1" bpmnprof_TypedElement : base_TypedElement180
+bpmnprof_BPMNActivity "1..1" -- "1..9999" bpmnprof_BoundaryEvent : boundaryEventRefs451
+bpmnprof_BPMNInterface "1..1" -- "1..9999" bpmnprof_CallableElement : callableElements234
+bpmnprof_BPMNCollaboration "0..1" -- "1..1" bpmnprof_CallConversation : calledCollaborationRef603
+bpmnprof_CallActivity "1..1" -- "0..1" bpmnprof_CallableElement : calledElementRef615
+bpmnprof_CategoryValue "1..1" -- "1..9999" bpmnprof_FlowElement : categorizedFlowElements49
+bpmnprof_Category "1..1" -- "1..9999" bpmnprof_CategoryValue : categoryValue564
+bpmnprof_Lane "1..1" -- "1..1" bpmnprof_LaneSet : childLaneSet71
+bpmnprof_BPMNCollaboration "1..1" -- "1..1" bpmnprof_ConversationLink : collaboration310
+bpmnprof_AdHocSubProcess "1..1" -- "1..1" bpmnprof_BPMNExpression : completionCondition627
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : completionCondition658
+bpmnprof_ComplexBehaviorDefinition "1..9999" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : complexBehaviorDefinition681
+bpmnprof_BPMNExpression "1..1" -- "1..1" bpmnprof_ConditionalEventDefinition : condition541
+bpmnprof_ComplexBehaviorDefinition "1..1" -- "1..1" bpmnprof_FormalExpression : condition620
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_SequenceFlow : conditionExpression78
+bpmnprof_FlowElement "1..1" -- "1..1" bpmnprof_FlowElementsContainer : container12
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_ConversationLink : conversationLinks266
+bpmnprof_ConversationNode "1..9999" -- "1..1" bpmnprof_SubConversation : conversationNodes600
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_ConversationNode : conversations273
+bpmnprof_CorrelationKey "1..1" -- "1..1" bpmnprof_CorrelationSubscription : correlationKeyRef383
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_CorrelationKey : correlationKeys275
+bpmnprof_ConversationNode "1..1" -- "1..9999" bpmnprof_CorrelationKey : correlationKeys350
+bpmnprof_CorrelationPropertyBinding "1..9999" -- "1..1" bpmnprof_CorrelationSubscription : correlationPropertyBinding386
+bpmnprof_CorrelationKey "1..1" -- "1..9999" bpmnprof_CorrelationProperty : correlationPropertyRef359
+bpmnprof_CorrelationProperty "1..1" -- "1..1" bpmnprof_CorrelationPropertyBinding : correlationPropertyRef394
+bpmnprof_CorrelationProperty "1..1" -- "1..9999" bpmnprof_CorrelationPropertyRetrievalExpression : correlationPropertyRetrievalExpression367
+bpmnprof_BPMNProcess "1..1" -- "1..9999" bpmnprof_CorrelationSubscription : correlationSubscriptions137
+bpmnprof_DataInputAssociation "1..9999" -- "1..1" bpmnprof_ThrowEvent : dataInputAssociation528
+bpmnprof_BPMNActivity "1..1" -- "1..9999" bpmnprof_DataInputAssociation : dataInputAssociations453
+bpmnprof_DataInput "1..9999" -- "1..1" bpmnprof_InputSet : dataInputRefs200
+bpmnprof_DataInput "1..9999" -- "1..1" bpmnprof_InputOutputSpecification : dataInputs160
+bpmnprof_DataObject "1..1" -- "1..1" bpmnprof_DataObjectReference : dataObjectRef572
+bpmnprof_CatchEvent "1..1" -- "1..9999" bpmnprof_DataOutputAssociation : dataOutputAssociation468
+bpmnprof_BPMNActivity "1..1" -- "1..9999" bpmnprof_DataOutputAssociation : dataOutputAssociations455
+bpmnprof_DataOutput "1..9999" -- "1..1" bpmnprof_OutputSet : dataOutputRefs226
+bpmnprof_DataOutput "1..9999" -- "1..1" bpmnprof_InputOutputSpecification : dataOutputs162
+bpmnprof_CorrelationPropertyBinding "1..1" -- "1..1" bpmnprof_FormalExpression : dataPath391
+bpmnprof_DataState "1..9999" -- "1..1" bpmnprof_ItemAwareElement : dataState179
+bpmnprof_InclusiveGateway "1..1" -- "0..1" bpmnprof_SequenceFlow : default0
+bpmnprof_BPMNActivity "1..1" -- "0..1" bpmnprof_SequenceFlow : default448
+bpmnprof_ComplexGateway "1..1" -- "0..1" bpmnprof_SequenceFlow : default88
+bpmnprof_ExclusiveGateway "1..1" -- "0..1" bpmnprof_SequenceFlow : default96
+bpmnprof_Definitions "0..1" -- "1..1" bpmnprof_RootElement : definition100
+bpmnprof_BPMNExtension "1..1" -- "1..1" bpmnprof_ExtensionDefinition : definition112
+bpmnprof_BPMNRelationship "1..1" -- "1..1" bpmnprof_Definitions : definition128
+bpmnprof_BPMNCollaboration "0..1" -- "1..1" bpmnprof_BPMNProcess : definitionalCollaborationRef133
+bpmnprof_Definitions "1..1" -- "1..1" bpmnprof_Import : definitions117
+bpmnprof_BaseElement "1..1" -- "1..9999" bpmnprof_Documentation : documentation16
+bpmnprof_BPMNOperation "1..1" -- "1..9999" bpmnprof_Error : errorRef247
+bpmnprof_Error "0..1" -- "1..1" bpmnprof_ErrorEventDefinition : errorRef551
+bpmnprof_Escalation "0..1" -- "1..1" bpmnprof_EscalationEventDefinition : escalationRef506
+bpmnprof_FormalExpression "1..1" -- "1..1" bpmnprof_ItemDefinition : evaluatesToTypeRef377
+bpmnprof_ComplexBehaviorDefinition "1..1" -- "0..1" bpmnprof_ImplicitThrowEvent : event622
+bpmnprof_BPMNEvent "1..1" -- "0..1" bpmnprof_Class : eventClass471
+bpmnprof_BPMNEvent "1..1" -- "1..9999" bpmnprof_EventDefinition : eventDefinitionRefs479
+bpmnprof_BPMNExpression "1..1" -- "1..1" bpmnprof_ResourceAssignmentExpression : expression411
+bpmnprof_BPMNExpression "1..1" -- "1..1" bpmnprof_ResourceParameterBinding : expression428
+bpmnprof_ExtensionAttributeDefinition "1..1" -- "1..1" bpmnprof_ExtensionAttributeValue : extensionAttributeDefinition28
+bpmnprof_ExtensionAttributeDefinition "1..9999" -- "1..1" bpmnprof_ExtensionDefinition : extensionAttributeDefinitions36
+bpmnprof_BaseElement "1..1" -- "1..9999" bpmnprof_ExtensionDefinition : extensionDefinitions18
+bpmnprof_BaseElement "1..1" -- "1..9999" bpmnprof_ExtensionAttributeValue : extensionValues13
+bpmnprof_BPMNExtension "1..9999" -- "1..1" bpmnprof_Definitions : extensions102
+bpmnprof_FlowElement "1..9999" -- "1..1" bpmnprof_FlowElementsContainer : flowElements51
+bpmnprof_FlowElementsContainer "0..1" -- "1..1" bpmnprof_LaneSet : flowElementsContainer57
+bpmnprof_FlowNode "1..9999" -- "1..1" bpmnprof_Lane : flowNodeRefs65
+bpmnprof_Assignment "1..1" -- "1..1" bpmnprof_BPMNExpression : from_497
+bpmnprof_LaneSet "1..9999" -- "1..1" bpmnprof_SubProcess : hasLaneSets611
+bpmnprof_BPMNInterface "1..1" -- "0..1" bpmnprof_Element : implementationRef229
+bpmnprof_BPMNOperation "1..1" -- "0..1" bpmnprof_Element : implementationRef239
+bpmnprof_Import "0..1" -- "1..1" bpmnprof_ItemDefinition : import_192
+bpmnprof_Definitions "1..1" -- "1..9999" bpmnprof_Import : imports104
+bpmnprof_BPMNMessage "1..1" -- "1..1" bpmnprof_BPMNOperation : inMessageRef242
+bpmnprof_BPMNAssociation "1..1" -- "1..1" bpmnprof_BaseElement : incoming21
+bpmnprof_ConversationLink "1..1" -- "1..1" bpmnprof_InteractionNode : incomingConversationLinks307
+bpmnprof_MessageFlow "1..1" -- "1..1" bpmnprof_MessageFlowAssociation : innerMessageFlowRef327
+bpmnprof_Participant "1..1" -- "1..1" bpmnprof_ParticipantAssociation : innerParticipantRef282
+bpmnprof_DataInput "1..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : inputDataItem672
+bpmnprof_InputOutputBinding "1..1" -- "1..1" bpmnprof_InputSet : inputDataRef252
+bpmnprof_DataInput "1..1" -- "1..9999" bpmnprof_InputSet : inputSetRefs174
+bpmnprof_DataInput "1..1" -- "1..9999" bpmnprof_InputSet : inputSetWithOptional175
+bpmnprof_DataInput "1..1" -- "1..9999" bpmnprof_InputSet : inputSetWithWhileExecuting177
+bpmnprof_InputOutputSpecification "1..1" -- "1..9999" bpmnprof_InputSet : inputSets164
+bpmnprof_BPMNInterface "1..9999" -- "1..1" bpmnprof_Participant : interfaceRefs299
+bpmnprof_CallableElement "1..1" -- "1..9999" bpmnprof_InputOutputBinding : ioBinding153
+bpmnprof_CallableElement "1..1" -- "0..1" bpmnprof_InputOutputSpecification : ioSpecification149
+bpmnprof_InputOutputSpecification "0..1" -- "1..1" bpmnprof_Task : ioSpecification592
+bpmnprof_BPMNMessage "1..1" -- "0..1" bpmnprof_ItemDefinition : itemRef249
+bpmnprof_ItemAwareElement "1..1" -- "0..1" bpmnprof_ItemDefinition : itemSubjectRef182
+bpmnprof_DataStore "1..1" -- "0..1" bpmnprof_ItemDefinition : itemSubjectRef581
+bpmnprof_Lane "1..1" -- "1..1" bpmnprof_LaneSet : laneSet74
+bpmnprof_FlowElementsContainer "1..1" -- "1..9999" bpmnprof_LaneSet : laneSets50
+bpmnprof_Lane "1..9999" -- "1..1" bpmnprof_LaneSet : lanes54
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : loopCardinality656
+bpmnprof_BPMNActivity "1..1" -- "0..1" bpmnprof_LoopCharacteristics : loopCharacteristics457
+bpmnprof_BPMNExpression "1..1" -- "1..1" bpmnprof_StandardLoopCharacteristics : loopCondition640
+bpmnprof_ItemAwareElement "0..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : loopDataInputRef663
+bpmnprof_ItemAwareElement "0..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : loopDataOutputRef666
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_MessageFlowAssociation : messageFlowAssociations267
+bpmnprof_ConversationNode "1..1" -- "1..9999" bpmnprof_MessageFlow : messageFlowRefs347
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_MessageFlow : messageFlows269
+bpmnprof_CorrelationPropertyRetrievalExpression "1..1" -- "1..1" bpmnprof_FormalExpression : messagePath375
+bpmnprof_BPMNMessage "0..1" -- "1..1" bpmnprof_MessageFlow : messageRef341
+bpmnprof_BPMNMessage "1..1" -- "1..1" bpmnprof_CorrelationPropertyRetrievalExpression : messageRef372
+bpmnprof_BPMNMessage "0..1" -- "1..1" bpmnprof_MessageEventDefinition : messageRef531
+bpmnprof_BPMNMessage "0..1" -- "1..1" bpmnprof_SendTask : messageRef631
+bpmnprof_BPMNMessage "0..1" -- "1..1" bpmnprof_ReceiveTask : messageRef643
+bpmnprof_BPMNProcess "1..1" -- "0..1" bpmnprof_Monitoring : monitoring139
+bpmnprof_FlowElement "1..1" -- "0..1" bpmnprof_Monitoring : monitoring9
+bpmnprof_EventDefinition "0..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : noneBehaviorEventRef678
+bpmnprof_EventDefinition "0..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : oneBehaviorEventRef675
+bpmnprof_BPMNOperation "1..1" -- "1..1" bpmnprof_InputOutputBinding : operationRef258
+bpmnprof_BPMNOperation "0..1" -- "1..1" bpmnprof_MessageEventDefinition : operationRef533
+bpmnprof_BPMNOperation "0..1" -- "1..1" bpmnprof_SendTask : operationRef636
+bpmnprof_BPMNOperation "0..1" -- "1..1" bpmnprof_ReceiveTask : operationRef648
+bpmnprof_BPMNOperation "0..1" -- "1..1" bpmnprof_ServiceTask : operationRef653
+bpmnprof_BPMNInterface "1..1" -- "1..9999" bpmnprof_BPMNOperation : operations232
+bpmnprof_DataInput "1..9999" -- "1..1" bpmnprof_InputSet : optionalInputRefs197
+bpmnprof_DataOutput "1..9999" -- "1..1" bpmnprof_OutputSet : optionalOutputRefs220
+bpmnprof_BPMNMessage "0..1" -- "1..1" bpmnprof_BPMNOperation : outMessageRef244
+bpmnprof_MessageFlow "1..1" -- "1..1" bpmnprof_MessageFlowAssociation : outerMessageFlowRef330
+bpmnprof_Participant "1..1" -- "1..1" bpmnprof_ParticipantAssociation : outerParticipantRef285
+bpmnprof_BPMNAssociation "1..1" -- "1..1" bpmnprof_BaseElement : outgoing20
+bpmnprof_ConversationLink "1..9999" -- "1..1" bpmnprof_InteractionNode : outgoingConversationLinks304
+bpmnprof_DataOutput "1..1" -- "1..1" bpmnprof_MultiInstanceLoopCharacteristics : outputDataItem669
+bpmnprof_InputOutputBinding "1..1" -- "1..1" bpmnprof_OutputSet : outputDataRef255
+bpmnprof_DataOutput "1..1" -- "1..9999" bpmnprof_OutputSet : outputSetRefs210
+bpmnprof_DataOutput "1..1" -- "1..9999" bpmnprof_OutputSet : outputSetWithOptional211
+bpmnprof_DataOutput "1..1" -- "1..9999" bpmnprof_OutputSet : outputSetWithWhileExecuting214
+bpmnprof_InputOutputSpecification "1..1" -- "1..9999" bpmnprof_OutputSet : outputSets166
+bpmnprof_ResourceParameter "1..1" -- "1..1" bpmnprof_ResourceParameterBinding : parameterRef425
+bpmnprof_Lane "1..9999" -- "1..1" bpmnprof_LaneSet : parentLane55
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_ParticipantAssociation : participantAssociations264
+bpmnprof_CallConversation "1..1" -- "1..9999" bpmnprof_ParticipantAssociation : participantAssociations606
+bpmnprof_Participant "1..1" -- "0..1" bpmnprof_ParticipantMultiplicity : participantMultiplicity294
+bpmnprof_Participant "1..9999" -- "1..1" bpmnprof_PartnerEntity : participantRef319
+bpmnprof_Participant "1..9999" -- "1..1" bpmnprof_PartnerRole : participantRef322
+bpmnprof_ConversationNode "1..1" -- "2..9999" bpmnprof_Participant : participantRefs353
+bpmnprof_BPMNCollaboration "1..1" -- "1..9999" bpmnprof_Participant : participants277
+bpmnprof_BaseElement "0..1" -- "1..1" bpmnprof_Lane : partitionElementRef68
+bpmnprof_Participant "1..1" -- "1..9999" bpmnprof_PartnerEntity : partnerEntityRef296
+bpmnprof_Participant "1..1" -- "1..9999" bpmnprof_PartnerRole : partnerRoleRef297
+bpmnprof_BPMNProcess "0..1" -- "1..1" bpmnprof_ResourceRole : process410
+bpmnprof_BPMNProcess "0..1" -- "1..1" bpmnprof_Participant : processRef291
+bpmnprof_BPMNProcess "1..1" -- "1..9999" bpmnprof_BPMNProperty : properties145
+bpmnprof_BPMNActivity "1..1" -- "1..9999" bpmnprof_BPMNProperty : properties445
+bpmnprof_BPMNEvent "1..1" -- "1..9999" bpmnprof_BPMNProperty : properties476
+bpmnprof_BPMNRelationship "1..9999" -- "1..1" bpmnprof_Definitions : relationships106
+bpmnprof_Rendering "1..9999" -- "1..1" bpmnprof_UserTask : renderings590
+bpmnprof_GlobalUserTask "1..1" -- "1..9999" bpmnprof_Rendering : renderings596
+bpmnprof_ResourceAssignmentExpression "0..1" -- "1..1" bpmnprof_ResourceRole : resourceAssignmentExpression404
+bpmnprof_ResourceParameterBinding "1..9999" -- "1..1" bpmnprof_ResourceRole : resourceParameterBindings408
+bpmnprof_Resource "1..1" -- "1..9999" bpmnprof_ResourceParameter : resourceParameters414
+bpmnprof_Resource "0..1" -- "1..1" bpmnprof_ResourceRole : resourceRef406
+bpmnprof_BPMNProcess "1..1" -- "1..9999" bpmnprof_ResourceRole : resources147
+bpmnprof_GlobalTask "1..1" -- "1..9999" bpmnprof_ResourceRole : resources432
+bpmnprof_BPMNActivity "1..1" -- "1..9999" bpmnprof_ResourceRole : resources459
+bpmnprof_Definitions "1..1" -- "1..9999" bpmnprof_RootElement : rootElements108
+bpmnprof_BPMNSignal "0..1" -- "1..1" bpmnprof_SignalEventDefinition : signalRef520
+bpmnprof_LinkEventDefinition "1..1" -- "1..9999" bpmnprof_LinkEventDefinition : source547
+bpmnprof_ConversationLink "1..1" -- "1..1" bpmnprof_InteractionNode : sourceRef314
+bpmnprof_InteractionNode "1..1" -- "1..1" bpmnprof_MessageFlow : sourceRef335
+bpmnprof_BPMNAssociation "1..1" -- "1..1" bpmnprof_BaseElement : sourceRef41
+bpmnprof_DataAssociation "1..1" -- "1..1" bpmnprof_ItemAwareElement : sourceRef483
+bpmnprof_BPMNRelationship "1..1" -- "1..9999" bpmnprof_Element : sources125
+bpmnprof_Element "0..1" -- "1..1" bpmnprof_ItemDefinition : structureRef189
+bpmnprof_BPMNInterface "1..9999" -- "1..1" bpmnprof_CallableElement : supportedInterfaceRefs151
+bpmnprof_BPMNProcess "1..1" -- "1..1" bpmnprof_BPMNProcess : supports143
+bpmnprof_ConversationLink "1..1" -- "1..1" bpmnprof_InteractionNode : targetRef313
+bpmnprof_InteractionNode "1..1" -- "1..1" bpmnprof_MessageFlow : targetRef338
+bpmnprof_BPMNAssociation "1..1" -- "1..1" bpmnprof_BaseElement : targetRef40
+bpmnprof_DataAssociation "1..1" -- "1..1" bpmnprof_ItemAwareElement : targetRef486
+bpmnprof_BPMNRelationship "1..1" -- "1..9999" bpmnprof_Element : targets122
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_TimerEventDefinition : timeCycle510
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_TimerEventDefinition : timeDate512
+bpmnprof_BPMNExpression "0..1" -- "1..1" bpmnprof_TimerEventDefinition : timeDuration515
+bpmnprof_Assignment "1..1" -- "1..1" bpmnprof_BPMNExpression : to500
+bpmnprof_DataAssociation "1..1" -- "1..1" bpmnprof_FormalExpression : transformation489
+bpmnprof_CorrelationProperty "1..1" -- "0..1" bpmnprof_ItemDefinition : type364
+bpmnprof_ItemDefinition "0..1" -- "1..1" bpmnprof_ResourceParameter : type419
+bpmnprof_BPMNProperty "1..1" -- "1..1" bpmnprof_Property : umlProperty399
+bpmnprof_Element "0..1" -- "1..1" bpmnprof_ExtensionAttributeValue : valueRef25
+bpmnprof_DataInput "1..9999" -- "1..1" bpmnprof_InputSet : whileExecutingInputRefs198
+bpmnprof_DataOutput "1..9999" -- "1..1" bpmnprof_OutputSet : whileExecutingOutputRefs223
+@enduml

@@ -1,0 +1,76 @@
+@startuml
+class Controller {
+}
+class Data {
+}
+enum DataType {
+  any
+  array
+  boolean
+  date
+  number
+  object
+  string
+}
+class NamedElement {
+}
+class webapp_Attribute {
+  + baseType : str
+  + customType : str
+}
+class webapp_Collection {
+}
+abstract class webapp_Controller {
+}
+class webapp_Data {
+  + endpoint : str
+}
+class webapp_Model {
+}
+class webapp_NamedElement {
+  + name : str
+}
+class webapp_PageController {
+}
+class webapp_Router {
+}
+class webapp_RouterBinding {
+  + url : str
+}
+class webapp_ServiceController {
+  + endpoint : str
+}
+class webapp_Template {
+  + structure : str
+  + style : str
+}
+class webapp_View {
+}
+class webapp_WebApp {
+}
+Controller <|-- webapp_PageController
+Controller <|-- webapp_ServiceController
+Data <|-- webapp_Collection
+Data <|-- webapp_Model
+NamedElement <|-- webapp_Attribute
+NamedElement <|-- webapp_Controller
+NamedElement <|-- webapp_Data
+NamedElement <|-- webapp_Template
+NamedElement <|-- webapp_View
+NamedElement <|-- webapp_WebApp
+webapp_Attribute "0..9999" --* "1..1" webapp_Model : attributes11
+webapp_Router "1..1" *-- "0..9999" webapp_RouterBinding : bindings24
+webapp_Collection "0..9999" --* "1..1" webapp_WebApp : collections0
+webapp_Controller "1..1" -- "1..1" webapp_RouterBinding : controller26
+webapp_Controller "0..9999" --* "1..1" webapp_WebApp : controllers5
+webapp_Data "0..1" -- "1..1" webapp_View : data22
+webapp_Collection "1..1" -- "0..1" webapp_Model : model13
+webapp_Model "0..9999" --* "1..1" webapp_WebApp : models3
+webapp_PageController "1..1" -- "0..1" webapp_View : page32
+webapp_Attribute "0..9999" --* "1..1" webapp_Controller : parameters29
+webapp_Router "0..1" --* "1..1" webapp_WebApp : router1
+webapp_View "0..9999" --* "1..1" webapp_View : subviews17
+webapp_Template "0..1" -- "1..1" webapp_View : template19
+webapp_Template "0..9999" --* "1..1" webapp_WebApp : templates7
+webapp_View "0..9999" --* "1..1" webapp_WebApp : views9
+@enduml

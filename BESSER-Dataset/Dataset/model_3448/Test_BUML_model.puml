@@ -1,0 +1,38 @@
+@startuml
+enum EEnum0 {
+}
+enum Grade {
+  BSC
+  MSC
+  None_
+  PHD
+  Professor
+}
+class Person {
+}
+enum incomeLevel {
+  PostDoc
+  PreDoc
+  Professor
+  UnderGrad
+}
+class test_Employee {
+  + incomeLevel : str
+}
+class test_Person {
+  + Grade : str
+  + firstame : str
+  + lastname : str
+}
+class test_Student {
+  + regNo : str
+}
+class test_University {
+  + name : str
+}
+Person <|-- test_Employee
+Person <|-- test_Student
+test_Person "0..9999" --* "1..1" test_University : persons5
+test_Person "0..9999" -- "1..1" test_Person : supervised3
+test_Person "1..1" -- "0..1" test_Person : supervisor1
+@enduml

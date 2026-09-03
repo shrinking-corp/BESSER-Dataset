@@ -1,0 +1,41 @@
+@startuml
+class Cooking_System {
+}
+class Display {
+}
+class Heater {
+  + Status : bool
+}
+class Humidity_Sensor {
+  + CurrentValue : float
+}
+class Ingredient_Box {
+  + BoxID : int
+  + WeightValue : float
+}
+class Interior_Container {
+  + WorkMode : int
+}
+class PhoneApplication {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class SteamGenerator {
+  + Status : bool
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+class Temperature_Sensor {
+  + CurrentValue : float
+}
+Display "0..1" -- "0..9999" System : HomeTheatre_System
+Cooking_System "0..1" -- "0..1" Ingredient_Box : Home_Security_System_Alert
+Cooking_System "1..1" -- "1..1" System : Home_Security_System_System
+PhoneApplication "1..9999" -- "1..1" System : MicroPhone_System
+Interior_Container "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" System : Sensor_System
+@enduml

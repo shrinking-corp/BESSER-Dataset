@@ -1,0 +1,53 @@
+@startuml
+class Association {
+}
+class Attribute {
+}
+class Class {
+}
+class Classifier {
+}
+enum EA {
+  Author
+  Institution
+  Journal
+}
+enum Entity {
+}
+class PrimitiveDataType {
+}
+class SimpleClass_Association {
+  + name : str
+}
+class SimpleClass_Attribute {
+  + is_primary : str
+  + name : str
+}
+class SimpleClass_Class {
+  + is_persistent : str
+}
+class SimpleClass_Classifier {
+  + name : str
+}
+class SimpleClass_PrimitiveDataType {
+}
+class SimpleClass_Schema {
+}
+enum Vocabulary {
+  Decs
+  Eurovocs
+  Language
+  Normal
+}
+Classifier <|-- SimpleClass_Class
+Classifier <|-- SimpleClass_PrimitiveDataType
+Classifier <|-- SimpleClass_Schema
+Attribute "0..9999" --* "1..1" SimpleClass_Class : attrs1
+Class "0..9999" --* "1..1" SimpleClass_Schema : clases9
+PrimitiveDataType "0..9999" --* "1..1" SimpleClass_Schema : datos13
+Class "1..1" -- "1..1" SimpleClass_Association : dest5
+Class "0..1" -- "1..1" SimpleClass_Class : parent0
+Association "0..9999" --* "1..1" SimpleClass_Schema : relaciones11
+Class "1..1" -- "1..1" SimpleClass_Association : src3
+Classifier "1..1" -- "1..1" SimpleClass_Attribute : type8
+@enduml

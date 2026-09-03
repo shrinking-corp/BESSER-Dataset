@@ -1,0 +1,76 @@
+@startuml
+class Expr {
+}
+class miniJava_Addition {
+}
+class miniJava_ClassDecl {
+  + name : str
+}
+class miniJava_Expr {
+  + expressionType : str
+}
+class miniJava_Expression {
+}
+class miniJava_MainMethod {
+}
+class miniJava_Method {
+  + name : str
+}
+class miniJava_MethodCall {
+}
+class miniJava_Multiplication {
+}
+class miniJava_NumberValue {
+  + value : int
+}
+class miniJava_Point {
+}
+class miniJava_Program {
+}
+class miniJava_SquareBrackets {
+}
+class miniJava_Statement {
+  + isArrayElementAssignment : bool
+  + statementType : str
+}
+class miniJava_Type {
+  + typeName : str
+}
+class miniJava_VarDeclaration {
+}
+class miniJava_Variable {
+  + name : str
+}
+Expr <|-- miniJava_Addition
+Expr <|-- miniJava_Expression
+Expr <|-- miniJava_Multiplication
+Expr <|-- miniJava_Point
+Expr <|-- miniJava_SquareBrackets
+miniJava_ClassDecl "0..1" -- "1..1" miniJava_Type : classDecl12
+miniJava_ClassDecl "0..9999" --* "1..1" miniJava_Program : classDeclarations0
+miniJava_Expr "0..1" --* "1..1" miniJava_Expr : expression49
+miniJava_ClassDecl "0..1" -- "1..1" miniJava_ClassDecl : extendedClass4
+miniJava_Expr "0..1" --* "1..1" miniJava_Statement : firstExpression36
+miniJava_Method "1..1" *-- "0..9999" miniJava_Variable : formalVarDeclarations22
+miniJava_Expr "0..1" --* "1..1" miniJava_Expr : left62
+miniJava_Method "1..1" *-- "0..9999" miniJava_VarDeclaration : localVarDeclarations25
+miniJava_ClassDecl "1..1" *-- "0..1" miniJava_MainMethod : mainMethod1
+miniJava_Method "0..1" -- "1..1" miniJava_MethodCall : method64
+miniJava_Expr "1..1" *-- "0..1" miniJava_MethodCall : methodCall59
+miniJava_ClassDecl "1..1" *-- "0..9999" miniJava_Method : methodDeclarations8
+miniJava_Method "1..1" *-- "0..1" miniJava_Type : methodType19
+miniJava_Expr "1..1" *-- "0..1" miniJava_NumberValue : number57
+miniJava_Expr "0..9999" --* "1..1" miniJava_MethodCall : parameters67
+miniJava_Expr "0..1" --* "1..1" miniJava_Method : returnExpression31
+miniJava_Expr "0..1" --* "1..1" miniJava_Expr : right46
+miniJava_Expr "0..1" --* "1..1" miniJava_Statement : secondExpression42
+miniJava_MainMethod "1..1" *-- "0..1" miniJava_Statement : statement10
+miniJava_Method "1..1" *-- "0..9999" miniJava_Statement : statements28
+miniJava_Statement "0..9999" --* "1..1" miniJava_Statement : statements34
+miniJava_Expr "1..1" *-- "0..1" miniJava_Type : type51
+miniJava_ClassDecl "1..1" *-- "0..9999" miniJava_VarDeclaration : varDeclarations6
+miniJava_VarDeclaration "1..1" *-- "0..1" miniJava_Variable : variable14
+miniJava_Statement "1..1" -- "0..1" miniJava_Variable : variable39
+miniJava_Expr "1..1" -- "0..1" miniJava_Variable : variable54
+miniJava_Type "0..1" --* "1..1" miniJava_Variable : variableType16
+@enduml

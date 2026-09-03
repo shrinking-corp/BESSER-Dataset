@@ -1,0 +1,69 @@
+@startuml
+class Alert {
+  + AlertID : int
+}
+class Door {
+  + DoorID : int
+}
+class End_Of_Day {
+  + EOT : int
+}
+class Entertainment {
+  + DeviceID : int
+}
+class FireAlarm_Sensor {
+  + DispenseSprinkler : bool
+  + SmokeAlarm : bool
+}
+class HomeControl {
+  + HTID : str
+}
+class Home_Security_System {
+  + UserID : int
+}
+class HouseHolds {
+  + Alarm : str
+  + Coffee : str
+  + DishWasher : str
+  + TimeID : str
+  + WashingMachine : str
+}
+class LPGControl {
+  + LPGControlID : int
+}
+class Light {
+  + LightID : str
+}
+class Motion_Sensor {
+}
+class Sensor {
+  + SensorID : int
+  + SensorType : int
+}
+class Start_Of_Day {
+  + SOT : int
+}
+class SwitchControl {
+  + SWITCHID : int
+}
+class System {
+  + Status : bool
+  + Update : float
+}
+class WIFI_Sense {
+  + WIFIID : int
+}
+Door "1..1" -- "0..9999" WIFI_Sense : Door_Camera
+Entertainment "1..1" -- "1..9999" HomeControl : HomeTheatre_Entertainment
+HomeControl "1..9999" -- "0..1" LPGControl : HomeTheatre_Speakers
+HomeControl "0..1" -- "1..1" System : HomeTheatre_System
+HomeControl "1..9999" -- "1..1" SwitchControl : HomeTheatre_TV
+Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "1..1" -- "1..1" System : Home_Security_System_System
+End_Of_Day "0..1" -- "0..1" HouseHolds : HouseHolds_End_Of_Day
+HouseHolds "0..1" -- "0..1" Start_Of_Day : HouseHolds_Start_Of_Day
+Door "1..1" -- "1..1" Sensor : Sensor_Door
+Sensor "1..9999" -- "1..1" System : Sensor_System
+HouseHolds "0..1" -- "1..1" System : System_HouseHolds
+Entertainment "1..1" -- "1..9999" SwitchControl : TV_Entertainment
+@enduml

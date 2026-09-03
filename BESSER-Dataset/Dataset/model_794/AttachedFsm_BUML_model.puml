@@ -1,0 +1,28 @@
+@startuml
+class FSM {
+}
+class ecore_EClass {
+}
+abstract class ecore_ENamedElement {
+}
+class ecore_FSM {
+}
+class ecore_State {
+  + name : str
+}
+class ecore_Transition {
+  + input : str
+  + output : str
+}
+FSM <|-- ecore_EClass
+ecore_FSM "1..1" -- "1..9999" ecore_State : finalState2
+ecore_State "1..1" -- "0..9999" ecore_Transition : incomingTransition7
+ecore_FSM "1..1" -- "1..1" ecore_State : initialState1
+ecore_EClass "0..9999" -- "1..1" ecore_State : myClasses9
+ecore_ENamedElement "1..1" *-- "1..9999" ecore_FSM : myFSMs15
+ecore_State "1..1" *-- "0..9999" ecore_Transition : outgoingTransition6
+ecore_FSM "1..1" *-- "0..9999" ecore_State : ownedState0
+ecore_FSM "1..1" -- "1..1" ecore_State : owningFSM5
+ecore_State "1..1" -- "1..1" ecore_Transition : source11
+ecore_State "1..1" -- "1..1" ecore_Transition : target13
+@enduml

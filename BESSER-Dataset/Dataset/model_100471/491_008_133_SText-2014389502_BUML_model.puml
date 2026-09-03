@@ -1,0 +1,319 @@
+@startuml
+enum AdditiveOperator {
+  minus
+  plus
+}
+enum AssignmentOperator {
+  addAssign
+  andAssign
+  assign
+  divAssign
+  leftShiftAssign
+  modAssign
+  multAssign
+  orAssign
+  rightShiftAssign
+  subAssign
+  xorAssign
+}
+class BuiltinEventSpec {
+}
+class Declaration {
+}
+class DefRoot {
+}
+enum Direction {
+  IN
+  OUT
+}
+class Effect {
+}
+class Event {
+}
+class EventSpec {
+}
+class Expression {
+}
+enum MultiplicativeOperator {
+  div
+  mod
+  mul
+}
+class Reaction {
+}
+class ReactionProperty {
+}
+enum RelationalOperator {
+  equals
+  greater
+  greaterEqual
+  notEquals
+  smaller
+  smallerEqual
+}
+class Scope {
+}
+enum ShiftOperator {
+  left
+  right
+}
+class Statement {
+}
+enum TimeEventType {
+  after
+  every
+}
+enum TimeUnit {
+  millisecond
+  nanosecond
+  second
+}
+class TransitionStatement {
+}
+class Trigger {
+}
+enum Type {
+  boolean
+  integer
+  real
+  string
+  void
+}
+enum UnaryOperator {
+  complement
+  negative
+  positive
+}
+class Variable {
+}
+class stext_AlwaysEvent {
+}
+class stext_Assignment {
+  + operator : str
+}
+class stext_BitwiseAndExpression {
+}
+class stext_BitwiseOrExpression {
+}
+class stext_BitwiseXorExpression {
+}
+class stext_BuiltinEventSpec {
+}
+class stext_Clock {
+}
+class stext_ConditionalExpression {
+}
+class stext_Declaration {
+}
+class stext_DefRoot {
+}
+class stext_ElementReferenceExpression {
+}
+class stext_EntryEvent {
+}
+class stext_EntryPointSpec {
+}
+class stext_Entrypoint {
+}
+class stext_Event {
+}
+class stext_EventDefinition {
+  + direction : str
+  + type : str
+}
+class stext_EventDerivation {
+}
+class stext_EventRaising {
+}
+class stext_EventSpec {
+}
+class stext_ExitEvent {
+}
+class stext_ExitPointSpec {
+}
+class stext_Exitpoint {
+}
+class stext_Expression {
+}
+class stext_InterfaceScope {
+  + name : str
+}
+class stext_InternalScope {
+}
+class stext_LocalReaction {
+}
+class stext_LogicalAndExpression {
+}
+class stext_LogicalNotExpression {
+}
+class stext_LogicalOrExpression {
+}
+class stext_LogicalRelationExpression {
+  + operator : str
+}
+class stext_NumericalAddSubtractExpression {
+  + operator : str
+}
+class stext_NumericalMultiplyDivideExpression {
+  + operator : str
+}
+class stext_NumericalUnaryExpression {
+  + operator : str
+}
+class stext_OnCycleEvent {
+}
+class stext_Operation {
+  + paramTypes : str
+  + type : str
+}
+class stext_OperationCall {
+}
+class stext_PrimitiveValueExpression {
+  + value : str
+}
+class stext_ReactionEffect {
+}
+class stext_ReactionPriority {
+  + priority : int
+}
+class stext_ReactionProperties {
+}
+class stext_ReactionProperty {
+}
+class stext_ReactionTrigger {
+}
+class stext_RegularEventSpec {
+}
+class stext_Root {
+}
+class stext_Scope {
+}
+class stext_ShiftExpression {
+  + operator : str
+}
+class stext_SimpleScope {
+}
+class stext_StateDeclaration {
+}
+class stext_StateRoot {
+}
+class stext_StatechartDefinition {
+}
+class stext_StatechartRoot {
+}
+class stext_Statement {
+}
+class stext_TimeEventSpec {
+  + type : str
+  + unit : str
+  + value : int
+}
+class stext_TransitionReaction {
+}
+class stext_TransitionRoot {
+}
+class stext_TransitionStatement {
+}
+class stext_Variable {
+}
+class stext_VariableDefinition {
+  + external : bool
+  + initialValue : str
+  + readonly : bool
+  + type : str
+}
+BuiltinEventSpec <|-- stext_AlwaysEvent
+BuiltinEventSpec <|-- stext_EntryEvent
+BuiltinEventSpec <|-- stext_ExitEvent
+BuiltinEventSpec <|-- stext_OnCycleEvent
+Declaration <|-- stext_Clock
+Declaration <|-- stext_Entrypoint
+Declaration <|-- stext_Exitpoint
+Declaration <|-- stext_LocalReaction
+Declaration <|-- stext_Operation
+DefRoot <|-- stext_StateRoot
+DefRoot <|-- stext_StatechartRoot
+DefRoot <|-- stext_TransitionRoot
+Effect <|-- stext_ReactionEffect
+Event <|-- stext_EventDefinition
+EventSpec <|-- stext_BuiltinEventSpec
+EventSpec <|-- stext_RegularEventSpec
+EventSpec <|-- stext_TimeEventSpec
+Expression <|-- stext_BitwiseAndExpression
+Expression <|-- stext_BitwiseOrExpression
+Expression <|-- stext_BitwiseXorExpression
+Expression <|-- stext_ConditionalExpression
+Expression <|-- stext_ElementReferenceExpression
+Expression <|-- stext_LogicalAndExpression
+Expression <|-- stext_LogicalNotExpression
+Expression <|-- stext_LogicalOrExpression
+Expression <|-- stext_LogicalRelationExpression
+Expression <|-- stext_NumericalAddSubtractExpression
+Expression <|-- stext_NumericalMultiplyDivideExpression
+Expression <|-- stext_NumericalUnaryExpression
+Expression <|-- stext_OperationCall
+Expression <|-- stext_PrimitiveValueExpression
+Expression <|-- stext_ShiftExpression
+Reaction <|-- stext_LocalReaction
+Reaction <|-- stext_TransitionReaction
+ReactionProperty <|-- stext_EntryPointSpec
+ReactionProperty <|-- stext_ExitPointSpec
+ReactionProperty <|-- stext_ReactionPriority
+Scope <|-- stext_InterfaceScope
+Scope <|-- stext_InternalScope
+Scope <|-- stext_SimpleScope
+Statement <|-- stext_Assignment
+Statement <|-- stext_EventRaising
+Statement <|-- stext_Expression
+TransitionStatement <|-- stext_TransitionReaction
+Trigger <|-- stext_ReactionTrigger
+Variable <|-- stext_VariableDefinition
+stext_ReactionEffect "1..1" *-- "0..9999" stext_Statement : actions36
+stext_Expression "0..9999" --* "1..1" stext_OperationCall : args96
+stext_ConditionalExpression "1..1" *-- "0..1" stext_Expression : condition37
+stext_EventDerivation "1..1" *-- "0..1" stext_Expression : condition9
+stext_StatechartDefinition "0..1" --* "1..1" stext_StatechartRoot : def_1
+stext_StateDeclaration "0..1" --* "1..1" stext_StateRoot : def_2
+stext_TransitionRoot "1..1" *-- "0..1" stext_TransitionStatement : def_3
+stext_Scope "0..9999" --* "1..1" stext_StatechartDefinition : definitionScopes4
+stext_EventDefinition "1..1" *-- "0..1" stext_EventDerivation : derivation30
+stext_EntryPointSpec "1..1" -- "0..1" stext_Entrypoint : entrypoint18
+stext_Event "0..1" -- "1..1" stext_RegularEventSpec : event20
+stext_Event "0..1" -- "1..1" stext_EventRaising : event25
+stext_ExitPointSpec "1..1" -- "0..1" stext_Exitpoint : exitpoint19
+stext_Assignment "1..1" *-- "0..1" stext_Expression : expression22
+stext_ConditionalExpression "1..1" *-- "0..1" stext_Expression : falseCase42
+stext_Expression "0..1" --* "1..1" stext_ReactionTrigger : guardExpression33
+stext_Expression "0..1" --* "1..1" stext_LogicalOrExpression : leftOperand45
+stext_Expression "0..1" --* "1..1" stext_LogicalAndExpression : leftOperand50
+stext_BitwiseXorExpression "1..1" *-- "0..1" stext_Expression : leftOperand57
+stext_BitwiseOrExpression "1..1" *-- "0..1" stext_Expression : leftOperand62
+stext_BitwiseAndExpression "1..1" *-- "0..1" stext_Expression : leftOperand67
+stext_Expression "0..1" --* "1..1" stext_LogicalRelationExpression : leftOperand72
+stext_Expression "0..1" --* "1..1" stext_ShiftExpression : leftOperand77
+stext_Expression "0..1" --* "1..1" stext_NumericalAddSubtractExpression : leftOperand82
+stext_Expression "0..1" --* "1..1" stext_NumericalMultiplyDivideExpression : leftOperand87
+stext_Expression "0..1" --* "1..1" stext_LogicalNotExpression : operand55
+stext_Expression "0..1" --* "1..1" stext_NumericalUnaryExpression : operand92
+stext_Operation "0..1" -- "1..1" stext_OperationCall : operation95
+stext_LocalReaction "1..1" *-- "0..1" stext_ReactionProperties : properties13
+stext_ReactionProperties "0..1" --* "1..1" stext_TransitionReaction : properties14
+stext_ReactionProperties "1..1" *-- "0..9999" stext_ReactionProperty : properties16
+stext_Expression "0..1" --* "1..1" stext_LogicalOrExpression : rightOperand47
+stext_Expression "0..1" --* "1..1" stext_LogicalAndExpression : rightOperand52
+stext_BitwiseXorExpression "1..1" *-- "0..1" stext_Expression : rightOperand59
+stext_BitwiseOrExpression "1..1" *-- "0..1" stext_Expression : rightOperand64
+stext_BitwiseAndExpression "1..1" *-- "0..1" stext_Expression : rightOperand69
+stext_Expression "0..1" --* "1..1" stext_LogicalRelationExpression : rightOperand74
+stext_Expression "0..1" --* "1..1" stext_ShiftExpression : rightOperand79
+stext_Expression "0..1" --* "1..1" stext_NumericalAddSubtractExpression : rightOperand84
+stext_Expression "0..1" --* "1..1" stext_NumericalMultiplyDivideExpression : rightOperand89
+stext_DefRoot "0..9999" --* "1..1" stext_Root : roots0
+stext_Scope "0..1" --* "1..1" stext_StateDeclaration : scope6
+stext_EventSpec "0..9999" --* "1..1" stext_ReactionTrigger : triggers32
+stext_ConditionalExpression "1..1" *-- "0..1" stext_Expression : trueCase39
+stext_EventDerivation "1..1" *-- "0..1" stext_Expression : value10
+stext_EventRaising "1..1" *-- "0..1" stext_Expression : value27
+stext_Declaration "0..1" -- "1..1" stext_ElementReferenceExpression : value94
+stext_Assignment "1..1" -- "0..1" stext_Variable : varRef21
+@enduml

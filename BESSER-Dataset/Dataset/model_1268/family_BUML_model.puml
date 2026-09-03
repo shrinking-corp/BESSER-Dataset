@@ -1,0 +1,26 @@
+@startuml
+class family_Root {
+}
+class family_family {
+  + name : str
+}
+class family_person {
+  + age : str
+  + cpr : str
+  + name : str
+}
+class family_studyprogramme {
+  + name : str
+}
+class family_university {
+  + name : str
+}
+family_person "0..9999" -- "1..1" family_person : children4
+family_person "0..9999" -- "1..1" family_studyprogramme : enrolledStudents11
+family_Root "1..1" *-- "0..9999" family_family : families14
+family_family "1..1" *-- "1..9999" family_person : familymember9
+family_person "1..1" -- "0..1" family_person : married2
+family_studyprogramme "1..9999" --* "1..1" family_university : owns0
+family_person "0..2" -- "1..1" family_person : parents7
+family_Root "1..1" *-- "0..9999" family_university : universities16
+@enduml

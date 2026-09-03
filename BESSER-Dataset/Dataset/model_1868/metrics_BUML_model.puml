@@ -1,0 +1,21 @@
+@startuml
+enum MetricKind {
+  FILE
+  RDMS
+}
+class metrics_Metric {
+}
+class metrics_MetricLibrary {
+  + name : str
+}
+class metrics_MetricSource {
+  + lastContact : str
+  + lastPurge : str
+  + mappingFile : str
+  + metricLocation : str
+  + metrickind : str
+  + name : str
+}
+metrics_Metric "0..9999" -- "1..1" metrics_MetricSource : metricRefs1
+metrics_MetricLibrary "1..1" *-- "0..9999" metrics_MetricSource : metricSources0
+@enduml

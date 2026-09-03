@@ -1,0 +1,23 @@
+@startuml
+class NamedElement {
+}
+class beans_Bean {
+}
+class beans_BeanLibrary {
+  + packageName : str
+}
+class beans_BeanProperty {
+  + changeable : bool
+  + typeName : str
+}
+abstract class beans_NamedElement {
+  + name : str
+}
+NamedElement <|-- beans_Bean
+NamedElement <|-- beans_BeanLibrary
+NamedElement <|-- beans_BeanProperty
+beans_Bean "1..1" -- "1..1" beans_BeanProperty : bean3
+beans_Bean "1..1" -- "1..1" beans_BeanLibrary : beanLibrary1
+beans_Bean "1..9999" --* "1..1" beans_BeanLibrary : beans0
+beans_Bean "1..1" *-- "1..9999" beans_BeanProperty : properties2
+@enduml

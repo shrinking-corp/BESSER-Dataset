@@ -1,0 +1,110 @@
+@startuml
+class Annotation {
+}
+class Class {
+}
+class Field {
+}
+class Interface {
+}
+class Java_Annotation {
+  + sentenceText : str
+  + type : str
+}
+class Java_Assignment {
+  + fieldName : str
+  + objectId : str
+  + variableExpr : str
+}
+class Java_Class {
+  + isPublic : bool
+  + isStatic : bool
+}
+class Java_Field {
+  + isPrivate : bool
+  + isProtected : bool
+  + isPublic : bool
+  + isStatic : bool
+  + name : str
+}
+class Java_Interface {
+}
+class Java_Method {
+}
+class Java_MethodCall {
+  + methodName : str
+  + variableName : str
+}
+class Java_MethodSignature {
+  + isPrivate : bool
+  + isProtected : bool
+  + isPublic : bool
+  + isStatic : bool
+  + name : str
+}
+abstract class Java_ObjectType {
+}
+class Java_Package {
+  + name : str
+}
+class Java_Parameter {
+  + defaultValue : str
+  + name : str
+}
+class Java_PrimitiveType {
+}
+class Java_Return {
+  + fieldName : str
+  + objectId : str
+}
+abstract class Java_Statement {
+}
+abstract class Java_Type {
+  + name : str
+}
+class Java_VariableDeclaration {
+  + variableName : str
+}
+class Java_VoidType {
+}
+class Method {
+}
+class MethodSignature {
+}
+class ObjectType {
+}
+class Package {
+}
+class Parameter {
+}
+class Statement {
+}
+class Type {
+}
+MethodSignature <|-- Java_Method
+ObjectType <|-- Java_Class
+ObjectType <|-- Java_Interface
+Statement <|-- Java_Assignment
+Statement <|-- Java_MethodCall
+Statement <|-- Java_Return
+Statement <|-- Java_VariableDeclaration
+Type <|-- Java_ObjectType
+Type <|-- Java_PrimitiveType
+Type <|-- Java_VoidType
+Annotation "0..1" --* "1..1" Java_Method : annotation17
+Java_Package "1..1" *-- "0..9999" ObjectType : content0
+Field "0..9999" --* "1..1" Java_Class : field5
+Interface "0..9999" -- "1..1" Java_Class : implements2
+Java_Class "1..1" *-- "0..9999" Method : method7
+Java_Interface "1..1" *-- "0..9999" MethodSignature : methodDeclaration11
+Java_ObjectType "1..1" -- "1..1" Package : owner1
+Class "1..1" -- "1..1" Java_Field : owner23
+Java_MethodSignature "1..1" *-- "0..9999" Parameter : parameters14
+Java_MethodSignature "1..1" -- "1..1" Type : returnType13
+Java_Method "1..1" *-- "0..9999" Statement : statements16
+Class "0..1" -- "1..1" Java_Class : superclass3
+Interface "0..1" -- "1..1" Java_Interface : superinterface9
+Java_Parameter "1..1" -- "1..1" Type : type19
+Java_Field "1..1" -- "1..1" Type : type21
+Java_VariableDeclaration "1..1" -- "1..1" Type : type25
+@enduml

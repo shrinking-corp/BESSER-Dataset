@@ -1,0 +1,63 @@
+@startuml
+class model_Book {
+  + data : str
+  + tags : str
+  + title : str
+}
+class model_ETypes {
+  + eBigDecimal : str
+  + eBigInteger : str
+  + eBoolean : bool
+  + eByte : str
+  + eByteArray : str
+  + eChar : str
+  + eDate : date
+  + eDouble : float
+  + eFloat : float
+  + eInt : int
+  + eLong : str
+  + eShort : str
+  + eString : str
+  + uris : str
+}
+class model_Library {
+}
+class model_Location {
+  + address : str
+  + id : str
+}
+class model_MappedLibrary {
+  + books : str
+}
+class model_Person {
+  + name : str
+}
+class model_PrimaryObject {
+  + featureMapAttributeCollection : str
+  + featureMapAttributeType1 : str
+  + featureMapAttributeType2 : str
+  + featureMapReferenceCollection : str
+  + name : str
+}
+class model_TargetObject {
+  + arrayAttribute : str
+  + singleAttribute : str
+}
+model_Book "1..1" -- "0..9999" model_Person : authors1
+model_Book "0..9999" -- "1..1" model_Person : books0
+model_Book "0..9999" --* "1..1" model_Library : books2
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : featureMapReferenceType138
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : featureMapReferenceType235
+model_Book "0..1" -- "1..1" model_Location : featuredBook8
+model_Book "0..1" -- "1..1" model_Library : latestBook5
+model_Location "0..1" --* "1..1" model_MappedLibrary : location11
+model_Library "1..1" *-- "0..1" model_Location : location3
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : multipleContainmentReferenceNoProxies26
+model_PrimaryObject "1..1" *-- "0..9999" model_TargetObject : multipleContainmentReferenceProxies32
+model_PrimaryObject "1..1" -- "0..9999" model_TargetObject : multipleNonContainmentReference20
+model_Book "0..9999" --* "1..1" model_MappedLibrary : rareBooks13
+model_Book "0..9999" --* "1..1" model_MappedLibrary : regularBooks16
+model_PrimaryObject "1..1" *-- "0..1" model_TargetObject : singleContainmentReferenceNoProxies23
+model_PrimaryObject "1..1" *-- "0..1" model_TargetObject : singleContainmentReferenceProxies29
+model_PrimaryObject "1..1" -- "0..1" model_TargetObject : singleNonContainmentReference19
+@enduml

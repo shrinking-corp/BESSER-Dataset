@@ -1,0 +1,302 @@
+@startuml
+class Assignable {
+}
+class Expression {
+}
+class Identifiable {
+}
+class Literal {
+}
+class Statement {
+}
+class StatementOperation {
+}
+class StringExpression {
+}
+class urml_ActionCode {
+}
+class urml_Assignable {
+}
+class urml_Assignment {
+}
+class urml_Attribute {
+}
+class urml_BoolLiteral {
+  + true : bool
+}
+class urml_Capsule {
+  + name : str
+  + root : bool
+}
+class urml_CapsuleInst {
+  + name : str
+}
+class urml_ConcatenateExpression {
+}
+class urml_ConditionalAndExpression {
+}
+class urml_ConditionalOrExpression {
+}
+class urml_Connector {
+}
+class urml_Divide {
+}
+class urml_Equal {
+}
+class urml_Expression {
+}
+class urml_FunctionCall {
+}
+class urml_GreaterThan {
+}
+class urml_GreaterThanOrEqual {
+}
+class urml_Identifiable {
+  + isBool : bool
+  + isInt : bool
+  + name : str
+}
+class urml_Identifier {
+}
+class urml_IfStatement {
+}
+class urml_IfStatementOperation {
+}
+class urml_IncomingVariable {
+}
+class urml_InformTimer {
+}
+class urml_IntLiteral {
+  + int : int
+}
+class urml_Invoke {
+}
+class urml_LessThan {
+}
+class urml_LessThanOrEqual {
+}
+class urml_Literal {
+}
+class urml_LocalVar {
+}
+class urml_LogPort {
+  + name : str
+}
+class urml_LogStatement {
+}
+class urml_Minus {
+}
+class urml_Model {
+  + name : str
+}
+class urml_Modulo {
+}
+class urml_Multiply {
+}
+class urml_NoOp {
+}
+class urml_NotBooleanExpression {
+}
+class urml_NotEqual {
+}
+class urml_Operation {
+  + isBool : bool
+  + isInt : bool
+  + isVoid : bool
+  + name : str
+}
+class urml_OperationCode {
+}
+class urml_Plus {
+}
+class urml_Port {
+  + conjugated : bool
+  + name : str
+}
+class urml_Protocol {
+  + name : str
+}
+class urml_ReturnStatement {
+}
+class urml_SendTrigger {
+}
+class urml_Signal {
+  + name : str
+}
+class urml_StateMachine {
+}
+class urml_State_ {
+  + final : bool
+  + name : str
+}
+class urml_Statement {
+}
+class urml_StatementOperation {
+}
+class urml_StringExpression {
+  + str : str
+}
+class urml_TimerPort {
+  + name : str
+}
+class urml_Transition {
+  + init : bool
+  + name : str
+  + universal : bool
+}
+class urml_Trigger_in {
+}
+class urml_Trigger_out {
+}
+class urml_UnaryExpression {
+}
+class urml_Variable {
+  + assign : bool
+}
+class urml_WhileLoop {
+}
+class urml_WhileLoopOperation {
+}
+Assignable <|-- urml_Attribute
+Assignable <|-- urml_LocalVar
+Expression <|-- urml_ConditionalAndExpression
+Expression <|-- urml_ConditionalOrExpression
+Expression <|-- urml_Divide
+Expression <|-- urml_Equal
+Expression <|-- urml_GreaterThan
+Expression <|-- urml_GreaterThanOrEqual
+Expression <|-- urml_Identifier
+Expression <|-- urml_LessThan
+Expression <|-- urml_LessThanOrEqual
+Expression <|-- urml_Literal
+Expression <|-- urml_Minus
+Expression <|-- urml_Modulo
+Expression <|-- urml_Multiply
+Expression <|-- urml_NotBooleanExpression
+Expression <|-- urml_NotEqual
+Expression <|-- urml_Plus
+Expression <|-- urml_UnaryExpression
+Identifiable <|-- urml_Assignable
+Identifiable <|-- urml_IncomingVariable
+Literal <|-- urml_BoolLiteral
+Literal <|-- urml_FunctionCall
+Literal <|-- urml_IntLiteral
+Statement <|-- urml_Assignment
+Statement <|-- urml_IfStatement
+Statement <|-- urml_InformTimer
+Statement <|-- urml_Invoke
+Statement <|-- urml_LogStatement
+Statement <|-- urml_NoOp
+Statement <|-- urml_SendTrigger
+Statement <|-- urml_Variable
+Statement <|-- urml_WhileLoop
+StatementOperation <|-- urml_Assignment
+StatementOperation <|-- urml_IfStatementOperation
+StatementOperation <|-- urml_InformTimer
+StatementOperation <|-- urml_Invoke
+StatementOperation <|-- urml_LogStatement
+StatementOperation <|-- urml_NoOp
+StatementOperation <|-- urml_ReturnStatement
+StatementOperation <|-- urml_SendTrigger
+StatementOperation <|-- urml_Variable
+StatementOperation <|-- urml_WhileLoopOperation
+StringExpression <|-- urml_ConcatenateExpression
+urml_LocalVar "0..9999" --* "1..1" urml_Operation : LocalVars31
+urml_LocalVar "0..9999" --* "1..1" urml_Signal : LocalVars9
+urml_ActionCode "0..1" --* "1..1" urml_Transition : action80
+urml_Attribute "0..9999" --* "1..1" urml_Capsule : attributes20
+urml_FunctionCall "1..1" -- "0..1" urml_Operation : call162
+urml_CapsuleInst "0..1" -- "1..1" urml_Connector : capsuleInst139
+urml_CapsuleInst "0..1" -- "1..1" urml_Connector : capsuleInst245
+urml_Capsule "1..1" *-- "0..9999" urml_CapsuleInst : capsuleInsts23
+urml_Capsule "0..9999" --* "1..1" urml_Model : capsules0
+urml_Expression "0..1" --* "1..1" urml_WhileLoopOperation : condition101
+urml_Expression "0..1" --* "1..1" urml_IfStatementOperation : condition106
+urml_Expression "0..1" --* "1..1" urml_WhileLoop : condition139
+urml_Expression "0..1" --* "1..1" urml_IfStatement : condition144
+urml_Capsule "1..1" *-- "0..9999" urml_Connector : connectors25
+urml_Attribute "1..1" *-- "0..1" urml_Expression : defaultValue3
+urml_IfStatementOperation "1..1" *-- "0..9999" urml_StatementOperation : elseStatements111
+urml_IfStatement "1..1" *-- "0..9999" urml_Statement : elseStatements149
+urml_ActionCode "0..1" --* "1..1" urml_State_ : entryCode58
+urml_ActionCode "0..1" --* "1..1" urml_State_ : exitCode60
+urml_Expression "0..1" --* "1..1" urml_Variable : exp120
+urml_Assignment "1..1" *-- "0..1" urml_Expression : exp136
+urml_Expression "0..1" --* "1..1" urml_NotBooleanExpression : exp159
+urml_Expression "0..1" --* "1..1" urml_UnaryExpression : exp237
+urml_Expression "0..1" --* "1..1" urml_StringExpression : expr156
+urml_State_ "0..1" -- "1..1" urml_Transition : from_66
+urml_Port "0..1" -- "1..1" urml_Trigger_in : from_83
+urml_Expression "0..1" --* "1..1" urml_Transition : guard72
+urml_Identifiable "0..1" -- "1..1" urml_Identifier : id161
+urml_Protocol "1..1" *-- "0..9999" urml_Signal : incomingMessages4
+urml_Capsule "1..1" *-- "0..9999" urml_Port : interfacePorts11
+urml_Capsule "1..1" *-- "0..9999" urml_Port : internalPorts13
+urml_LogStatement "1..1" *-- "0..1" urml_StringExpression : left154
+urml_ConcatenateExpression "1..1" *-- "0..1" urml_StringExpression : left167
+urml_ConditionalOrExpression "1..1" *-- "0..1" urml_Expression : left172
+urml_ConditionalAndExpression "1..1" *-- "0..1" urml_Expression : left177
+urml_Expression "0..1" --* "1..1" urml_LessThanOrEqual : left182
+urml_Expression "0..1" --* "1..1" urml_LessThan : left187
+urml_Expression "0..1" --* "1..1" urml_GreaterThanOrEqual : left192
+urml_Expression "0..1" --* "1..1" urml_GreaterThan : left197
+urml_Equal "1..1" *-- "0..1" urml_Expression : left202
+urml_Expression "0..1" --* "1..1" urml_NotEqual : left207
+urml_Expression "0..1" --* "1..1" urml_Plus : left212
+urml_Expression "0..1" --* "1..1" urml_Minus : left217
+urml_Expression "0..1" --* "1..1" urml_Multiply : left222
+urml_Divide "1..1" *-- "0..1" urml_Expression : left227
+urml_Expression "0..1" --* "1..1" urml_Modulo : left232
+urml_LogPort "0..1" -- "1..1" urml_LogStatement : logPort152
+urml_Capsule "1..1" *-- "0..9999" urml_LogPort : logPorts18
+urml_Assignable "0..1" -- "1..1" urml_Assignment : lvalue135
+urml_Invoke "1..1" -- "0..1" urml_Operation : operation130
+urml_Operation "1..1" *-- "0..1" urml_OperationCode : operationCode34
+urml_Capsule "1..1" *-- "0..9999" urml_Operation : operations27
+urml_Protocol "1..1" *-- "0..9999" urml_Signal : outgoingMessages6
+urml_Expression "0..9999" --* "1..1" urml_Invoke : parameters132
+urml_IncomingVariable "0..9999" --* "1..1" urml_Trigger_in : parameters89
+urml_Expression "0..9999" --* "1..1" urml_Trigger_out : parameters96
+urml_Expression "0..9999" --* "1..1" urml_FunctionCall : params164
+urml_Connector "1..1" -- "0..1" urml_Port : port142
+urml_Connector "1..1" -- "0..1" urml_Port : port248
+urml_Port "1..1" -- "0..1" urml_Protocol : protocol36
+urml_Model "1..1" *-- "0..9999" urml_Protocol : protocols1
+urml_ConcatenateExpression "1..1" *-- "0..1" urml_StringExpression : rest169
+urml_ConditionalOrExpression "1..1" *-- "0..1" urml_Expression : rest174
+urml_ConditionalAndExpression "1..1" *-- "0..1" urml_Expression : rest179
+urml_Expression "0..1" --* "1..1" urml_LessThanOrEqual : rest184
+urml_Expression "0..1" --* "1..1" urml_LessThan : rest189
+urml_Expression "0..1" --* "1..1" urml_GreaterThanOrEqual : rest194
+urml_Expression "0..1" --* "1..1" urml_GreaterThan : rest199
+urml_Equal "1..1" *-- "0..1" urml_Expression : rest204
+urml_Expression "0..1" --* "1..1" urml_NotEqual : rest209
+urml_Expression "0..1" --* "1..1" urml_Plus : rest214
+urml_Expression "0..1" --* "1..1" urml_Minus : rest219
+urml_Expression "0..1" --* "1..1" urml_Multiply : rest224
+urml_Divide "1..1" *-- "0..1" urml_Expression : rest229
+urml_Expression "0..1" --* "1..1" urml_Modulo : rest234
+urml_Expression "0..1" --* "1..1" urml_ReturnStatement : returnValue114
+urml_Signal "0..1" -- "1..1" urml_Trigger_in : signal86
+urml_Signal "0..1" -- "1..1" urml_Trigger_out : signal93
+urml_Capsule "1..1" *-- "0..9999" urml_StateMachine : statemachines29
+urml_StatementOperation "0..9999" --* "1..1" urml_WhileLoopOperation : statements103
+urml_ActionCode "1..1" *-- "0..9999" urml_Statement : statements116
+urml_Statement "0..9999" --* "1..1" urml_WhileLoop : statements141
+urml_OperationCode "1..1" *-- "0..9999" urml_StatementOperation : statements99
+urml_StateMachine "1..1" *-- "0..9999" urml_State_ : states54
+urml_StateMachine "0..1" --* "1..1" urml_State_ : substatemachine63
+urml_IfStatementOperation "1..1" *-- "0..9999" urml_StatementOperation : thenStatements108
+urml_IfStatement "1..1" *-- "0..9999" urml_Statement : thenStatements146
+urml_Expression "0..1" --* "1..1" urml_InformTimer : time127
+urml_InformTimer "1..1" -- "0..1" urml_TimerPort : timerPort125
+urml_TimerPort "0..1" -- "1..1" urml_Transition : timerPort77
+urml_Capsule "1..1" *-- "0..9999" urml_TimerPort : timerPorts16
+urml_State_ "0..1" -- "1..1" urml_Transition : to69
+urml_Port "0..1" -- "1..1" urml_Trigger_out : to91
+urml_StateMachine "1..1" *-- "0..9999" urml_Transition : transitions56
+urml_SendTrigger "1..1" *-- "0..9999" urml_Trigger_out : triggers123
+urml_Transition "1..1" *-- "0..9999" urml_Trigger_in : triggers75
+urml_Capsule "0..1" -- "1..1" urml_CapsuleInst : type51
+urml_LocalVar "0..1" --* "1..1" urml_Variable : var118
+@enduml

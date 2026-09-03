@@ -1,0 +1,232 @@
+@startuml
+enum AccessKind {
+  exist
+  read
+  write
+}
+class Addable {
+}
+enum AdditiveKind {
+  add
+  subtract
+}
+class Andable {
+}
+class Atom {
+}
+class Collection {
+}
+class Comparable {
+}
+enum ComparisonKind {
+  greater
+  greaterOrEqual
+  lower
+  lowerOrEqual
+}
+enum EqualityKind {
+  equal
+  notEqual
+}
+class Equatable {
+}
+class Expression {
+}
+class Index {
+}
+class Multipliable {
+}
+enum MultiplicativeKind {
+  divide
+  multiply
+  remainder
+}
+class Orable {
+}
+class Primary {
+}
+class Setable {
+}
+class Statement {
+}
+class game_Access {
+  + kind : str
+  + name : str
+}
+abstract class game_Addable {
+}
+class game_Addition {
+  + kind : str
+}
+class game_And {
+}
+abstract class game_Andable {
+}
+class game_Assignment {
+}
+abstract class game_Atom {
+}
+class game_Brackets {
+}
+class game_Call {
+  + name : str
+}
+class game_Cardinal {
+}
+class game_Cell {
+}
+abstract class game_Collection {
+}
+abstract class game_Comparable {
+}
+class game_Comparison {
+  + kind : str
+}
+class game_ComponentData {
+  + name : str
+}
+class game_End {
+}
+class game_Equality {
+  + kind : str
+}
+abstract class game_Equatable {
+}
+abstract class game_Expression {
+}
+class game_Forall {
+}
+class game_Function {
+  + name : str
+}
+class game_Game {
+  + name : str
+  + version : str
+}
+class game_ImplicitSet {
+}
+class game_Index {
+}
+class game_Iteration {
+}
+class game_Join {
+}
+class game_LogicalNot {
+}
+abstract class game_Multipliable {
+}
+class game_Multiplication {
+  + kind : str
+}
+class game_Or {
+}
+abstract class game_Orable {
+}
+abstract class game_Primary {
+}
+class game_Query {
+  + name : str
+}
+class game_Selection {
+}
+class game_SetExpression {
+}
+abstract class game_Setable {
+}
+abstract class game_Statement {
+}
+class game_Subprocess {
+}
+class game_System {
+  + name : str
+}
+class game_Type {
+  + name : str
+  + namespace : str
+  + valueType : bool
+}
+class game_Variable {
+  + name : str
+}
+Addable <|-- game_Addition
+Addable <|-- game_Multipliable
+Andable <|-- game_And
+Andable <|-- game_Equatable
+Atom <|-- game_Cell
+Atom <|-- game_Variable
+Collection <|-- game_Brackets
+Collection <|-- game_ImplicitSet
+Collection <|-- game_Join
+Comparable <|-- game_Addable
+Comparable <|-- game_Comparison
+Equatable <|-- game_Comparable
+Equatable <|-- game_Equality
+Expression <|-- game_Orable
+Index <|-- game_Atom
+Multipliable <|-- game_Multiplication
+Multipliable <|-- game_Setable
+Orable <|-- game_Andable
+Orable <|-- game_Or
+Primary <|-- game_Call
+Primary <|-- game_Cardinal
+Primary <|-- game_Collection
+Primary <|-- game_Index
+Primary <|-- game_LogicalNot
+Setable <|-- game_Primary
+Setable <|-- game_SetExpression
+Statement <|-- game_Assignment
+Statement <|-- game_Forall
+Statement <|-- game_Iteration
+Statement <|-- game_Selection
+Statement <|-- game_Subprocess
+game_Access "0..9999" --* "1..1" game_Query : accesses22
+game_Call "1..1" *-- "0..9999" game_Expression : arguments79
+game_Assignment "1..1" *-- "0..1" game_Expression : atom43
+game_Atom "1..1" --* "1..1" game_Index : atom97
+game_Call "0..1" --* "1..1" game_Subprocess : call48
+game_Cell "1..1" *-- "0..1" game_Variable : component104
+game_ComponentData "0..9999" -- "1..1" game_Game : components3
+game_Expression "0..1" --* "1..1" game_Selection : condition24
+game_Expression "0..1" --* "1..1" game_Iteration : condition31
+game_Expression "0..1" --* "1..1" game_Forall : condition36
+game_End "0..1" --* "1..1" game_Game : end5
+game_Cell "1..1" *-- "0..1" game_Variable : entity102
+game_Expression "0..9999" --* "1..1" game_Join : entries88
+game_Assignment "1..1" *-- "0..1" game_Expression : expression45
+game_LogicalNot "1..1" *-- "0..1" game_Primary : expression82
+game_Cardinal "1..1" *-- "0..1" game_Primary : expression84
+game_Brackets "1..1" *-- "0..1" game_Expression : expression86
+game_Expression "0..1" --* "1..1" game_Index : expression99
+game_Function "0..9999" -- "1..1" game_Game : functions7
+game_Atom "1..1" *-- "0..1" game_Expression : index95
+game_Or "1..1" *-- "0..1" game_Orable : left52
+game_And "1..1" *-- "0..1" game_Andable : left55
+game_Equality "1..1" *-- "0..1" game_Equatable : left59
+game_Comparable "0..1" --* "1..1" game_Comparison : left63
+game_Addable "0..1" --* "1..1" game_Addition : left67
+game_Multipliable "0..1" --* "1..1" game_Multiplication : left71
+game_SetExpression "1..1" *-- "0..1" game_Setable : left75
+game_Selection "1..1" *-- "0..9999" game_Statement : negativeStatements28
+game_Type "0..9999" -- "1..1" game_Type : parameters108
+game_Selection "1..1" *-- "0..9999" game_Statement : positiveStatements25
+game_Expression "0..1" --* "1..1" game_ImplicitSet : predicate90
+game_Query "0..9999" --* "1..1" game_System : queries20
+game_Andable "0..1" --* "1..1" game_Or : right53
+game_And "1..1" *-- "0..1" game_Equatable : right57
+game_Comparable "0..1" --* "1..1" game_Equality : right61
+game_Addable "0..1" --* "1..1" game_Comparison : right65
+game_Addition "1..1" *-- "0..1" game_Multipliable : right69
+game_Multiplication "1..1" *-- "0..1" game_Setable : right73
+game_Primary "0..1" --* "1..1" game_SetExpression : right77
+game_Function "1..1" *-- "0..9999" game_Statement : statements12
+game_Statement "0..9999" --* "1..1" game_System : statements17
+game_Iteration "1..1" *-- "0..9999" game_Statement : statements33
+game_Forall "1..1" *-- "0..9999" game_Statement : statements38
+game_Game "1..1" *-- "0..9999" game_System : systems1
+game_ComponentData "1..1" -- "0..1" game_Type : type14
+game_Expression "1..1" -- "0..1" game_Type : type49
+game_Function "1..1" -- "0..1" game_Type : type9
+game_Game "1..1" -- "0..9999" game_Type : types0
+game_Forall "1..1" *-- "0..1" game_Variable : variable41
+game_ImplicitSet "1..1" *-- "0..1" game_Variable : variable92
+@enduml

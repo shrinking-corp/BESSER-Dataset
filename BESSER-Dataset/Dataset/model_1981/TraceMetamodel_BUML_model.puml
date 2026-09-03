@@ -1,0 +1,22 @@
+@startuml
+class TraceMetamodel_EObject {
+}
+class TraceMetamodel_TraceLink {
+  + id : str
+  + isNonInjective : bool
+  + isPartial : bool
+  + name : str
+  + trule : str
+}
+class TraceMetamodel_TraceLinkEnd {
+  + name : str
+  + type : str
+}
+class TraceMetamodel_TraceModel {
+  + name : str
+}
+TraceMetamodel_TraceLink "1..1" *-- "0..9999" TraceMetamodel_TraceLinkEnd : leftLinkEnd3
+TraceMetamodel_TraceLink "1..1" *-- "0..9999" TraceMetamodel_TraceLinkEnd : rightLinkEnd1
+TraceMetamodel_EObject "0..1" -- "1..1" TraceMetamodel_TraceLinkEnd : traceElement6
+TraceMetamodel_TraceLink "0..9999" --* "1..1" TraceMetamodel_TraceModel : traceLinks0
+@enduml

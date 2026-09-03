@@ -1,0 +1,35 @@
+@startuml
+class GraphMetaM_Edge {
+  + async_ : bool
+  + localPriority : int
+  + name : str
+  + rName : str
+}
+class GraphMetaM_Graph {
+  + cycles : int
+  + name : str
+  + rName : str
+}
+class GraphMetaM_Model {
+  + name : str
+}
+class GraphMetaM_Vertex {
+  + activity : str
+  + cycles : int
+  + globalPriority : int
+  + name : str
+  + rName : str
+  + type : str
+}
+enum Type {
+  and_
+  or_
+}
+GraphMetaM_Edge "0..9999" --* "1..1" GraphMetaM_Graph : edge1
+GraphMetaM_Graph "0..9999" --* "1..1" GraphMetaM_Model : graph9
+GraphMetaM_Edge "0..9999" -- "1..1" GraphMetaM_Vertex : incoming6
+GraphMetaM_Edge "0..9999" -- "1..1" GraphMetaM_Vertex : outgoing7
+GraphMetaM_Edge "1..1" -- "1..1" GraphMetaM_Vertex : source4
+GraphMetaM_Edge "1..1" -- "1..1" GraphMetaM_Vertex : target3
+GraphMetaM_Graph "1..1" *-- "0..9999" GraphMetaM_Vertex : vertex0
+@enduml

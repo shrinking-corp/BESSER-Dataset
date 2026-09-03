@@ -1,0 +1,169 @@
+@startuml
+class Attribute {
+}
+class AttributeValue {
+}
+class Behavior {
+}
+class EventOccurrence {
+}
+class EventType {
+}
+class NamedElement {
+}
+enum PseudostateKind {
+  entrypoint
+  exitpoint
+  fork
+  initial
+  join
+  terminate
+}
+class State {
+}
+enum TransitionKind {
+  external
+  internal
+  local
+}
+class Vertex {
+}
+abstract class statemachines_Attribute {
+}
+abstract class statemachines_AttributeValue {
+}
+class statemachines_Behavior {
+}
+class statemachines_BooleanAttribute {
+}
+class statemachines_BooleanAttributeValue {
+  + value : str
+}
+class statemachines_BooleanConstraint {
+}
+class statemachines_CallEventOccurrence {
+}
+class statemachines_CallEventType {
+}
+class statemachines_CompletionEventOccurrence {
+}
+abstract class statemachines_Constraint {
+  + value : str
+}
+class statemachines_CustomSystem {
+}
+abstract class statemachines_EventOccurrence {
+}
+abstract class statemachines_EventType {
+}
+class statemachines_FinalState {
+}
+class statemachines_IntegerAttribute {
+}
+class statemachines_IntegerAttributeValue {
+  + value : str
+}
+class statemachines_IntegerConstraint {
+}
+abstract class statemachines_NamedElement {
+  + name : str
+}
+class statemachines_Operation {
+}
+class statemachines_OperationBehavior {
+}
+class statemachines_Pseudostate {
+  + kind : str
+}
+class statemachines_Region {
+}
+class statemachines_Signal {
+}
+class statemachines_SignalEventOccurrence {
+}
+class statemachines_SignalEventType {
+}
+class statemachines_State {
+}
+class statemachines_StateMachine {
+}
+class statemachines_StringAttribute {
+}
+class statemachines_StringAttributeValue {
+  + value : str
+}
+class statemachines_StringConstraint {
+}
+class statemachines_Transition {
+  + kind : str
+}
+class statemachines_Trigger {
+}
+abstract class statemachines_Vertex {
+}
+Attribute <|-- statemachines_BooleanAttribute
+Attribute <|-- statemachines_IntegerAttribute
+Attribute <|-- statemachines_StringAttribute
+AttributeValue <|-- statemachines_BooleanAttributeValue
+AttributeValue <|-- statemachines_IntegerAttributeValue
+AttributeValue <|-- statemachines_StringAttributeValue
+Behavior <|-- statemachines_OperationBehavior
+EventOccurrence <|-- statemachines_CallEventOccurrence
+EventOccurrence <|-- statemachines_SignalEventOccurrence
+EventType <|-- statemachines_CallEventType
+EventType <|-- statemachines_SignalEventType
+NamedElement <|-- statemachines_Attribute
+NamedElement <|-- statemachines_Behavior
+NamedElement <|-- statemachines_Operation
+NamedElement <|-- statemachines_Region
+NamedElement <|-- statemachines_Signal
+NamedElement <|-- statemachines_StateMachine
+NamedElement <|-- statemachines_Transition
+NamedElement <|-- statemachines_Trigger
+NamedElement <|-- statemachines_Vertex
+State <|-- statemachines_FinalState
+Vertex <|-- statemachines_Pseudostate
+Vertex <|-- statemachines_State
+statemachines_BooleanAttribute "0..1" -- "1..1" statemachines_BooleanAttributeValue : attribute64
+statemachines_IntegerAttribute "0..1" -- "1..1" statemachines_IntegerAttributeValue : attribute65
+statemachines_StringAttribute "0..1" -- "1..1" statemachines_StringAttributeValue : attribute66
+statemachines_AttributeValue "0..9999" --* "1..1" statemachines_OperationBehavior : attributeValues63
+statemachines_AttributeValue "0..9999" --* "1..1" statemachines_SignalEventOccurrence : attributeValues72
+statemachines_Attribute "0..9999" --* "1..1" statemachines_Signal : attributes5
+statemachines_Pseudostate "0..9999" --* "1..1" statemachines_State : connectionPoint46
+statemachines_Region "0..1" -- "1..1" statemachines_Vertex : container27
+statemachines_Region "1..1" -- "1..1" statemachines_Transition : container54
+statemachines_State "1..1" *-- "0..9999" statemachines_Trigger : deferrableTriggers44
+statemachines_Behavior "0..1" --* "1..1" statemachines_State : doActivity38
+statemachines_Behavior "0..1" --* "1..1" statemachines_Transition : effect56
+statemachines_Behavior "1..1" *-- "0..9999" statemachines_SignalEventOccurrence : emittedSignals61
+statemachines_Behavior "0..1" --* "1..1" statemachines_State : entry37
+statemachines_EventType "1..1" --* "1..1" statemachines_Trigger : eventType59
+statemachines_Behavior "0..1" --* "1..1" statemachines_State : exit41
+statemachines_AttributeValue "0..9999" --* "1..1" statemachines_CallEventOccurrence : inParameterValues77
+statemachines_Attribute "0..9999" --* "1..1" statemachines_Operation : inParameters7
+statemachines_Transition "0..9999" -- "1..1" statemachines_Vertex : incomingTransitions31
+statemachines_CallEventType "1..1" -- "1..1" statemachines_Operation : operation18
+statemachines_CallEventOccurrence "1..1" -- "1..1" statemachines_Operation : operation75
+statemachines_CustomSystem "1..1" *-- "0..9999" statemachines_Operation : operations3
+statemachines_AttributeValue "0..9999" --* "1..1" statemachines_CallEventOccurrence : outParameterValues80
+statemachines_Attribute "0..9999" --* "1..1" statemachines_Operation : outParameters10
+statemachines_Transition "0..9999" -- "1..1" statemachines_Vertex : outgoingTransitions29
+statemachines_Region "1..9999" --* "1..1" statemachines_StateMachine : regions20
+statemachines_Region "0..9999" --* "1..1" statemachines_State : regions35
+statemachines_AttributeValue "0..1" --* "1..1" statemachines_CallEventOccurrence : returnValue83
+statemachines_Attribute "0..1" --* "1..1" statemachines_Operation : return_13
+statemachines_Signal "1..1" -- "1..1" statemachines_SignalEventType : signal16
+statemachines_Signal "1..1" -- "1..1" statemachines_SignalEventOccurrence : signal69
+statemachines_CustomSystem "1..1" *-- "0..9999" statemachines_Signal : signals1
+statemachines_Transition "1..1" -- "1..1" statemachines_Vertex : source48
+statemachines_Region "1..1" -- "0..1" statemachines_State : state25
+statemachines_Pseudostate "1..1" -- "0..1" statemachines_State : state33
+statemachines_CompletionEventOccurrence "1..1" -- "0..1" statemachines_State : state67
+statemachines_Region "1..1" -- "0..1" statemachines_StateMachine : stateMachine24
+statemachines_CustomSystem "1..1" *-- "1..1" statemachines_StateMachine : statemachine0
+statemachines_Transition "1..1" -- "1..1" statemachines_Vertex : target50
+statemachines_Region "1..1" *-- "0..9999" statemachines_Transition : transitions22
+statemachines_Transition "1..1" *-- "0..9999" statemachines_Trigger : triggers52
+statemachines_Region "1..1" *-- "0..9999" statemachines_Vertex : vertice21
+@enduml

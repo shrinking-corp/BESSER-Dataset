@@ -1,0 +1,27 @@
+@startuml
+class Type {
+}
+class entity_Attribute {
+  + many : bool
+  + name : str
+}
+class entity_Entity {
+}
+class entity_JAVAID {
+  + name : str
+}
+class entity_Model {
+}
+class entity_Type {
+  + name : str
+}
+class entity_TypeDef {
+}
+Type <|-- entity_Entity
+Type <|-- entity_TypeDef
+entity_Attribute "0..9999" --* "1..1" entity_Entity : attributes4
+entity_JAVAID "0..1" --* "1..1" entity_TypeDef : mappedType1
+entity_Entity "1..1" -- "0..1" entity_Entity : superEntity3
+entity_Attribute "1..1" -- "0..1" entity_Type : type6
+entity_Model "1..1" *-- "0..9999" entity_Type : types0
+@enduml

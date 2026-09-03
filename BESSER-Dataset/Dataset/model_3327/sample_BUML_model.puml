@@ -1,0 +1,41 @@
+@startuml
+class sample_Annotation {
+  + Text : str
+  + Type : str
+}
+class sample_Given {
+}
+class sample_Register {
+  + Name : str
+}
+class sample_Scenario {
+  + Title : str
+}
+class sample_Sentence {
+  + Text : str
+}
+class sample_Story {
+  + Benefit : str
+  + Feature : str
+  + Role : str
+  + Title : str
+}
+class sample_Then {
+}
+class sample_Variable {
+  + Name : str
+  + Type : str
+}
+class sample_When {
+}
+sample_Annotation "1..1" --* "1..1" sample_Sentence : annotation17
+sample_Given "1..1" --* "1..1" sample_Scenario : given3
+sample_Scenario "1..9999" --* "1..1" sample_Story : scenarios0
+sample_Sentence "1..9999" --* "1..1" sample_Then : sentences12
+sample_Sentence "1..9999" --* "1..1" sample_When : sentences7
+sample_Given "1..1" *-- "1..9999" sample_Sentence : sentences9
+sample_Register "1..1" *-- "0..9999" sample_Story : stories19
+sample_Scenario "1..1" *-- "1..1" sample_Then : then5
+sample_Sentence "1..1" *-- "0..9999" sample_Variable : variables15
+sample_Scenario "1..1" *-- "1..1" sample_When : when1
+@enduml

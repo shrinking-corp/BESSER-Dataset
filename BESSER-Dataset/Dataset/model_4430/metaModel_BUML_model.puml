@@ -1,0 +1,180 @@
+@startuml
+class Action {
+}
+class ActionWheel {
+}
+class Actuator {
+}
+class BinaryCond {
+}
+class BinaryOperator {
+}
+class Condition {
+}
+class Operator {
+}
+class Sensor {
+}
+class Type {
+}
+class UnaryCond {
+}
+class UnaryOperator {
+}
+abstract class metamodel_Action {
+}
+abstract class metamodel_ActionWheel {
+  + speed : int
+}
+abstract class metamodel_Actuator {
+  + name : str
+}
+class metamodel_Add {
+}
+class metamodel_And {
+}
+class metamodel_Backward {
+}
+class metamodel_Behaviour {
+  + name : str
+  + priority : int
+}
+abstract class metamodel_BinaryCond {
+}
+abstract class metamodel_BinaryOperator {
+}
+class metamodel_BoolVal {
+  + value : bool
+}
+abstract class metamodel_Condition {
+}
+class metamodel_Different {
+}
+class metamodel_DifferentialWheel {
+  + isLeft : bool
+  + speed : int
+}
+class metamodel_DistanceSensor {
+}
+class metamodel_Equal {
+}
+class metamodel_FloatVal {
+  + value : float
+}
+class metamodel_Forward {
+}
+class metamodel_Group {
+}
+class metamodel_IntVal {
+  + value : int
+}
+class metamodel_Less {
+}
+class metamodel_LessOrEqual {
+}
+class metamodel_LightSensor {
+}
+class metamodel_More {
+}
+class metamodel_MoreOrEqual {
+}
+class metamodel_Negation {
+}
+class metamodel_Negative {
+}
+abstract class metamodel_Operator {
+}
+class metamodel_Or {
+}
+class metamodel_Positive {
+}
+class metamodel_Robot {
+  + name : str
+}
+abstract class metamodel_Sensor {
+  + name : str
+  + sensorName : str
+}
+class metamodel_State {
+  + isInitial : bool
+  + name : str
+  + uid : int
+}
+class metamodel_StateMachine {
+  + name : str
+}
+class metamodel_Stopping {
+}
+class metamodel_Sub {
+}
+class metamodel_Transition {
+  + nameIn : str
+}
+class metamodel_TurnLeft {
+}
+class metamodel_TurnRight {
+}
+abstract class metamodel_Type {
+}
+abstract class metamodel_UnaryCond {
+}
+abstract class metamodel_UnaryOperator {
+}
+class metamodel_Value {
+  + name : str
+}
+Action <|-- metamodel_ActionWheel
+ActionWheel <|-- metamodel_Backward
+ActionWheel <|-- metamodel_Forward
+ActionWheel <|-- metamodel_Stopping
+ActionWheel <|-- metamodel_TurnLeft
+ActionWheel <|-- metamodel_TurnRight
+Actuator <|-- metamodel_DifferentialWheel
+Actuator <|-- metamodel_Group
+BinaryCond <|-- metamodel_And
+BinaryCond <|-- metamodel_Or
+BinaryOperator <|-- metamodel_Add
+BinaryOperator <|-- metamodel_Different
+BinaryOperator <|-- metamodel_Equal
+BinaryOperator <|-- metamodel_Less
+BinaryOperator <|-- metamodel_LessOrEqual
+BinaryOperator <|-- metamodel_More
+BinaryOperator <|-- metamodel_MoreOrEqual
+BinaryOperator <|-- metamodel_Sub
+Condition <|-- metamodel_BinaryCond
+Condition <|-- metamodel_Operator
+Condition <|-- metamodel_UnaryCond
+Operator <|-- metamodel_BinaryOperator
+Operator <|-- metamodel_UnaryOperator
+Sensor <|-- metamodel_DistanceSensor
+Sensor <|-- metamodel_LightSensor
+Type <|-- metamodel_BoolVal
+Type <|-- metamodel_FloatVal
+Type <|-- metamodel_IntVal
+UnaryCond <|-- metamodel_Negation
+UnaryOperator <|-- metamodel_Negative
+UnaryOperator <|-- metamodel_Positive
+metamodel_BinaryOperator "1..1" *-- "1..1" metamodel_Operator : OperandRight40
+metamodel_Action "0..9999" --* "1..1" metamodel_Robot : actions5
+metamodel_Actuator "0..9999" --* "1..1" metamodel_Robot : actuators3
+metamodel_Behaviour "0..9999" --* "1..1" metamodel_Robot : behaviours0
+metamodel_Condition "1..1" --* "1..1" metamodel_UnaryCond : child48
+metamodel_Condition "1..1" --* "1..1" metamodel_Transition : cond35
+metamodel_StateMachine "1..1" *-- "0..9999" metamodel_Value : constants18
+metamodel_State "1..1" -- "1..1" metamodel_Transition : dstId32
+metamodel_ActionWheel "1..1" -- "1..1" metamodel_Group : group8
+metamodel_Action "0..1" -- "1..1" metamodel_State : onEnterAction26
+metamodel_Action "0..1" -- "1..1" metamodel_State : onLeaveAction29
+metamodel_BinaryOperator "1..1" *-- "1..1" metamodel_Operator : operandLeft39
+metamodel_BinaryCond "1..1" *-- "1..1" metamodel_Condition : operandLeft45
+metamodel_BinaryCond "1..1" *-- "1..1" metamodel_Condition : operandRight43
+metamodel_Robot "1..1" *-- "0..9999" metamodel_Sensor : sensors1
+metamodel_Behaviour "1..1" *-- "1..1" metamodel_StateMachine : stateMachine14
+metamodel_State "0..9999" --* "1..1" metamodel_StateMachine : states16
+metamodel_State "1..1" *-- "0..9999" metamodel_Transition : transitions21
+metamodel_UnaryOperator "1..1" -- "1..1" metamodel_Value : valeur37
+metamodel_Sensor "1..1" *-- "1..1" metamodel_Value : value10
+metamodel_Type "1..1" --* "1..1" metamodel_Value : value12
+metamodel_DifferentialWheel "2..2" -- "1..1" metamodel_Group : wheels7
+metamodel_Action "0..1" -- "1..1" metamodel_State : workingAction23
+@enduml

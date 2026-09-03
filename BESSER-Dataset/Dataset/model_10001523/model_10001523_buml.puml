@@ -1,0 +1,40 @@
+@startuml
+class Admin {
+  + Email : str
+  + Name : str
+}
+class Days_Attended {
+  + Days_attended : int
+  + EmployeeBasicSalary : int
+  + EmployeeId : str
+  + OverTime : int
+  + Total_no__of_workingdays : int
+}
+class Employee {
+  + EmployeeEmail : str
+  + EmployeeId : str
+  + EmployeePhoneNumber : int
+  + EmplyeeName : str
+}
+class Leave {
+  + Leave_Detail : str
+  + Leave_NoOfDays : int
+  + attribute : str
+}
+class Login {
+  + Password : str
+  + Username : str
+}
+class Salary {
+  + Bonus : int
+  + DaysAttended : int
+  + EmployeeID : str
+  + NetSalary : int
+}
+Admin "1..1" -- "0..9999" Employee : Admin_Employee
+Days_Attended "0..9999" -- "1..1" Employee : Employee_Days_Attended
+Employee "1..1" -- "1..1" Leave : Employee_Leave
+Employee "0..1" -- "0..1" Salary : Employee_Salary
+Employee "1..1" -- "1..1" Login : Login_Employee
+Days_Attended "0..1" -- "1..1" Salary : Salary_Days_Attended
+@enduml

@@ -1,0 +1,75 @@
+@startuml
+enum AuxiliaryKind {
+  Method
+  ProgrammingLanguage
+  Tool
+}
+enum Course {
+  InfoBSc
+  InfoDiplom
+  InfoMSc
+  InfoMinorSubject
+  InfoPostGraduate
+}
+class Person {
+}
+enum Status {
+  cancelled
+  completed
+  inprocess
+  pending
+}
+class fopramodel_Associate {
+}
+class fopramodel_Auxiliary {
+  + description : str
+  + kind : str
+}
+class fopramodel_ExternalAdvisor {
+  + information : str
+}
+class fopramodel_FoPra {
+  + description : str
+  + end : date
+  + maxNumberOfStudents : int
+  + start : date
+  + status : str
+  + title : str
+}
+class fopramodel_FoPraManagementSystem {
+}
+abstract class fopramodel_Person {
+  + forename : str
+  + lastname : str
+}
+class fopramodel_Professor {
+}
+class fopramodel_ResearchGroup {
+  + name : str
+}
+class fopramodel_Student {
+  + course : str
+  + matrikel : str
+}
+Person <|-- fopramodel_Associate
+Person <|-- fopramodel_ExternalAdvisor
+Person <|-- fopramodel_Professor
+Person <|-- fopramodel_Student
+fopramodel_ExternalAdvisor "0..9999" -- "1..1" fopramodel_FoPra : advisor5
+fopramodel_Associate "0..9999" -- "1..1" fopramodel_ResearchGroup : associate21
+fopramodel_Auxiliary "0..9999" --* "1..1" fopramodel_FoPraManagementSystem : auxiliaries12
+fopramodel_Auxiliary "1..9999" -- "1..1" fopramodel_FoPra : auxiliaries7
+fopramodel_FoPra "0..9999" -- "1..1" fopramodel_Student : fopras14
+fopramodel_FoPra "0..9999" -- "1..1" fopramodel_ResearchGroup : fopras17
+fopramodel_Associate "1..1" -- "0..9999" fopramodel_FoPra : fopras26
+fopramodel_ExternalAdvisor "1..1" -- "0..9999" fopramodel_FoPra : fopras28
+fopramodel_Auxiliary "1..1" -- "0..9999" fopramodel_FoPra : fopras30
+fopramodel_FoPra "0..9999" --* "1..1" fopramodel_FoPraManagementSystem : fopras9
+fopramodel_FoPraManagementSystem "1..1" *-- "0..9999" fopramodel_Person : persons10
+fopramodel_Professor "1..1" -- "1..1" fopramodel_ResearchGroup : professor19
+fopramodel_FoPra "1..1" -- "1..1" fopramodel_ResearchGroup : rg1
+fopramodel_Professor "1..1" *-- "1..1" fopramodel_ResearchGroup : rg15
+fopramodel_Associate "1..1" -- "1..1" fopramodel_ResearchGroup : rg24
+fopramodel_FoPra "1..1" -- "1..9999" fopramodel_Student : students0
+fopramodel_Associate "0..1" -- "1..1" fopramodel_FoPra : supervisor3
+@enduml

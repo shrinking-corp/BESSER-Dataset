@@ -1,0 +1,40 @@
+@startuml
+class Classifier {
+}
+class umlMM_Association {
+  + name : str
+}
+class umlMM_Attribute {
+  + name : str
+}
+class umlMM_Class {
+  + kind : str
+}
+abstract class umlMM_Classifier {
+  + name : str
+}
+class umlMM_Package {
+  + name : str
+}
+class umlMM_PrimitiveDataType {
+}
+class umlMM_dummy {
+}
+Classifier <|-- umlMM_Class
+Classifier <|-- umlMM_PrimitiveDataType
+umlMM_Association "0..9999" --* "1..1" umlMM_Package : association1
+umlMM_Attribute "0..9999" --* "1..1" umlMM_Class : attribute3
+umlMM_Classifier "0..9999" --* "1..1" umlMM_Package : classifier0
+umlMM_Package "0..9999" --* "1..1" umlMM_dummy : containsPackage26
+umlMM_Association "1..1" -- "1..1" umlMM_Class : destination24
+umlMM_Association "0..9999" -- "1..1" umlMM_Class : destinationOf11
+umlMM_Class "1..1" -- "0..1" umlMM_Class : general5
+umlMM_Classifier "1..1" -- "1..1" umlMM_Package : namespace19
+umlMM_Association "1..1" -- "1..1" umlMM_Package : namespace20
+umlMM_Attribute "1..1" -- "1..1" umlMM_Class : owner13
+umlMM_Association "1..1" -- "1..1" umlMM_Class : source22
+umlMM_Association "0..9999" -- "1..1" umlMM_Class : sourceOf9
+umlMM_Class "1..1" -- "0..9999" umlMM_Class : subclass7
+umlMM_Attribute "1..1" -- "1..1" umlMM_Classifier : type15
+umlMM_Attribute "0..9999" -- "1..1" umlMM_Classifier : typeOf17
+@enduml

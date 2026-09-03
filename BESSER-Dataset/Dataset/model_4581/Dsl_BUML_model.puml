@@ -1,0 +1,228 @@
+@startuml
+class Action {
+}
+class dsl_Abort {
+  + value : str
+}
+class dsl_Action {
+  + name : str
+}
+class dsl_Callprocess {
+  + datasource : str
+  + source : str
+  + target : str
+  + value : str
+}
+class dsl_Catch {
+  + name : str
+}
+class dsl_ClickSendSms {
+  + securityKey : str
+  + target : str
+  + userid : str
+  + value : str
+}
+class dsl_Copydata {
+  + source : str
+  + to : str
+  + value : str
+}
+class dsl_Doozle {
+  + on : str
+  + target : str
+  + value : str
+}
+class dsl_Dropfile {
+  + target : str
+}
+class dsl_ExecJava {
+  + classFqn : str
+  + dbSrc : str
+  + value : str
+}
+class dsl_Expression {
+  + lhs : str
+  + operator : str
+  + rhs : str
+}
+class dsl_FBCLead {
+  + accessToken : str
+  + accountId : str
+  + appSecret : str
+  + campaignId : str
+  + target : str
+  + value : str
+}
+class dsl_FBFormDownload {
+  + accessToken : str
+  + accountId : str
+  + appSecret : str
+  + formId : str
+  + target : str
+  + value : str
+}
+class dsl_Fetch {
+  + source : str
+  + value : str
+}
+class dsl_Finally {
+  + name : str
+}
+class dsl_FirebaseDatabasePut {
+  + classFqn : str
+  + dbSrc : str
+  + fbjson : str
+  + groupPath : str
+  + url : str
+  + value : str
+}
+class dsl_FirebaseReactiveNotification {
+  + classFqn : str
+  + dbSrc : str
+  + fbjson : str
+  + groupPath : str
+  + url : str
+}
+class dsl_GooglecalPUT {
+  + account : str
+  + dbSrc : str
+  + impersonatedUser : str
+  + privateKey : str
+  + project : str
+  + ptwelveFile : str
+  + value : str
+}
+class dsl_GooglecontactPUT {
+  + account : str
+  + dbSrc : str
+  + impersonatedUser : str
+  + privateKey : str
+  + project : str
+  + ptwelveFile : str
+  + value : str
+}
+class dsl_GooglecontactSelectAll {
+  + account : str
+  + dbSrc : str
+  + impersonatedUser : str
+  + privateKey : str
+  + project : str
+  + ptwelveFile : str
+  + value : str
+}
+class dsl_LoadCsv {
+  + delim : str
+  + source : str
+  + to : str
+  + value : str
+}
+class dsl_Process {
+  + name : str
+}
+class dsl_Rest {
+  + ackdata : str
+  + ackdatato : str
+  + authtoken : str
+  + headerdata : str
+  + headerdatafrom : str
+  + method : str
+  + parentName : str
+  + parentdata : str
+  + postdatafrom : str
+  + resourcedatafrom : str
+  + url : str
+  + urldata : str
+}
+class dsl_RestPart {
+  + partData : str
+  + partName : str
+}
+class dsl_SendMail {
+  + dbSrc : str
+  + dryrunMail : str
+  + impersonatedUser : str
+  + privateKey : str
+  + value : str
+}
+class dsl_SlackPUT {
+  + channel : str
+  + team : str
+  + value : str
+}
+class dsl_SmsLeadSms {
+  + account : str
+  + dbSrc : str
+  + dryrunNumber : str
+  + privateKey : str
+  + sender : str
+  + url : str
+  + value : str
+}
+class dsl_Transform {
+  + on : str
+  + value : str
+}
+class dsl_TrelloGET {
+  + authtoken : str
+  + board : str
+  + key : str
+  + target : str
+  + useraccount : str
+  + value : str
+}
+class dsl_TrelloPUT {
+  + authtoken : str
+  + key : str
+  + list : str
+  + source : str
+  + useraccount : str
+  + value : str
+}
+class dsl_Try {
+  + name : str
+}
+class dsl_Updatedaudit {
+  + datasource : str
+  + logsink : str
+  + value : str
+}
+class dsl_WriteCsv {
+  + delim : str
+  + source : str
+  + to : str
+  + value : str
+}
+Action <|-- dsl_Abort
+Action <|-- dsl_Callprocess
+Action <|-- dsl_ClickSendSms
+Action <|-- dsl_Copydata
+Action <|-- dsl_Doozle
+Action <|-- dsl_Dropfile
+Action <|-- dsl_ExecJava
+Action <|-- dsl_FBCLead
+Action <|-- dsl_FBFormDownload
+Action <|-- dsl_Fetch
+Action <|-- dsl_FirebaseDatabasePut
+Action <|-- dsl_FirebaseReactiveNotification
+Action <|-- dsl_GooglecalPUT
+Action <|-- dsl_GooglecontactPUT
+Action <|-- dsl_GooglecontactSelectAll
+Action <|-- dsl_LoadCsv
+Action <|-- dsl_Rest
+Action <|-- dsl_SendMail
+Action <|-- dsl_SlackPUT
+Action <|-- dsl_SmsLeadSms
+Action <|-- dsl_Transform
+Action <|-- dsl_TrelloGET
+Action <|-- dsl_TrelloPUT
+Action <|-- dsl_Updatedaudit
+Action <|-- dsl_WriteCsv
+dsl_Action "0..9999" --* "1..1" dsl_Catch : action10
+dsl_Action "0..9999" --* "1..1" dsl_Try : action5
+dsl_Action "0..9999" --* "1..1" dsl_Finally : action7
+dsl_Catch "0..1" --* "1..1" dsl_Process : catch1
+dsl_Action "1..1" *-- "0..1" dsl_Expression : condition13
+dsl_Finally "0..1" --* "1..1" dsl_Process : finally_3
+dsl_Rest "1..1" *-- "0..9999" dsl_RestPart : parts15
+dsl_Process "1..1" *-- "0..1" dsl_Try : try_0
+@enduml

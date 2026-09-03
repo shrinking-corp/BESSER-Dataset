@@ -1,0 +1,78 @@
+@startuml
+class NamedElement {
+}
+class Person {
+}
+class conf101_Admin {
+}
+class conf101_Chapter {
+}
+class conf101_Conference {
+}
+class conf101_Contribution {
+}
+class conf101_Evaluation {
+}
+class conf101_Laboratory {
+}
+class conf101_Location {
+}
+class conf101_NamedElement {
+  + name : str
+}
+class conf101_Person {
+}
+class conf101_ProgramComitee {
+}
+class conf101_Publication {
+}
+class conf101_Researcher {
+}
+class conf101_RevisionNote {
+}
+class conf101_RevisionProcess {
+}
+class conf101_Session {
+  + year : str
+}
+class conf101_SteeringComitee {
+}
+class conf101_System {
+}
+NamedElement <|-- conf101_Admin
+NamedElement <|-- conf101_Chapter
+NamedElement <|-- conf101_Conference
+NamedElement <|-- conf101_Contribution
+NamedElement <|-- conf101_Evaluation
+NamedElement <|-- conf101_Laboratory
+NamedElement <|-- conf101_Location
+NamedElement <|-- conf101_Person
+NamedElement <|-- conf101_ProgramComitee
+NamedElement <|-- conf101_Publication
+NamedElement <|-- conf101_Session
+NamedElement <|-- conf101_SteeringComitee
+NamedElement <|-- conf101_System
+Person <|-- conf101_Researcher
+conf101_Admin "0..1" --* "1..1" conf101_System : admin0
+conf101_Chapter "0..9999" --* "1..1" conf101_Publication : chapters33
+conf101_Conference "0..9999" --* "1..1" conf101_System : conferences3
+conf101_Contribution "0..1" -- "1..1" conf101_Session : contributions12
+conf101_Evaluation "1..1" -- "0..1" conf101_Publication : evPubli47
+conf101_Evaluation "0..1" -- "1..1" conf101_Researcher : evaluations24
+conf101_Laboratory "0..9999" --* "1..1" conf101_System : laboratories1
+conf101_Location "0..1" -- "1..1" conf101_Session : location7
+conf101_Admin "1..1" *-- "0..9999" conf101_Location : locations14
+conf101_Person "0..1" -- "1..1" conf101_ProgramComitee : pcPerson41
+conf101_ProgramComitee "0..1" -- "1..1" conf101_Session : progcomit8
+conf101_Contribution "1..1" -- "0..1" conf101_Publication : publication44
+conf101_Laboratory "1..1" *-- "0..9999" conf101_Publication : publications22
+conf101_Publication "0..9999" --* "1..1" conf101_Researcher : publications30
+conf101_Laboratory "1..1" *-- "0..9999" conf101_Researcher : researchers20
+conf101_Researcher "1..1" -- "0..1" conf101_RevisionNote : reviews28
+conf101_RevisionProcess "0..1" --* "1..1" conf101_System : revisionProcess5
+conf101_Chapter "1..1" *-- "0..9999" conf101_RevisionNote : revisonNotes36
+conf101_Person "0..1" -- "1..1" conf101_SteeringComitee : scPerson39
+conf101_Conference "1..1" *-- "0..9999" conf101_Session : sessions17
+conf101_Session "1..1" -- "0..1" conf101_SteeringComitee : steercomit10
+conf101_Chapter "0..1" -- "1..1" conf101_Researcher : writes26
+@enduml

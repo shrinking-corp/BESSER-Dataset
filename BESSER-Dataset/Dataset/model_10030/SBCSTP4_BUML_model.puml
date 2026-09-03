@@ -1,0 +1,74 @@
+@startuml
+enum Mode {
+  Dameged
+  Degraded
+  EmergencyStop
+  Initialization
+  Normal
+  Rescue
+}
+class SBCS_ControlProgram {
+  + mode : str
+}
+class SBCS_ControlProgram_Start {
+}
+class SBCS_Pump {
+  + mode : str
+}
+class SBCS_PumpControler {
+}
+class SBCS_PumpController_ClosePump {
+}
+class SBCS_PumpController_OpenPump {
+}
+class SBCS_Snapshot {
+  + futureClosure(SBCS_s : str) : str
+  + getNext() : str
+  + getPost() : str
+}
+class SBCS_SteamBoiler {
+  + capacity : float
+  + maximalNormal : float
+  + valveOpen : str
+}
+class SBCS_SteamBoiler_OpenValve {
+}
+class SBCS_Transition {
+}
+class SBCS_WaterLevelMeasurementDevice {
+  + waterLevel : float
+}
+class SBCS_WaterLevelMeaurementDevice_getLevel {
+  + ret : float
+}
+enum State {
+  Off
+  On
+}
+class Transition {
+}
+enum ValveState {
+  Closed
+  Open
+}
+Transition <|-- SBCS_ControlProgram_Start
+Transition <|-- SBCS_PumpController_ClosePump
+Transition <|-- SBCS_PumpController_OpenPump
+Transition <|-- SBCS_SteamBoiler_OpenValve
+Transition <|-- SBCS_WaterLevelMeaurementDevice_getLevel
+SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans18
+SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans25
+SBCS_ControlProgram "0..1" -- "1..1" SBCS_ControlProgram_Start : CPPost23
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPost30
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPost5
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPre28
+SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPre4
+SBCS_Pump "1..1" -- "1..1" SBCS_PumpControler : PumpControlerPump12
+SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPost1
+SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPre0
+SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamBoiler : SnapshotSteamBoiler8
+SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamBoiler : SteamBoilerControlProgram10
+SBCS_Snapshot "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSnapshot15
+SBCS_SteamBoiler "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSteamBoiler20
+SBCS_WaterLevelMeasurementDevice "0..1" -- "1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPost14
+@enduml

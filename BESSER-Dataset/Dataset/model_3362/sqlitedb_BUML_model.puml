@@ -1,0 +1,178 @@
+@startuml
+class Column {
+}
+class ColumnConstraint {
+}
+class ColumnMapping {
+}
+enum DataType {
+  BLOB
+  INTEGER
+  NULL
+  REAL
+  TEXT
+}
+class Expression {
+}
+class Index {
+}
+class IndexedColumn {
+}
+class NameProvider {
+}
+class StringToColumnMappingEntryMap {
+}
+class StringToTableMappingEntryMap {
+}
+class Table {
+}
+class TableConstraint {
+}
+class TableMapping {
+}
+class Trigger {
+}
+class View {
+}
+class index_model_Database {
+}
+class model_Database {
+}
+class model_DatabaseVersion {
+}
+class model_DatabaseVersions {
+  + fileName : str
+  + packageName : str
+  + createVersion() : str
+  + getFirstVersion() : str
+  + getLastVersion() : str
+}
+class model_column_CheckColumnConstraint {
+}
+class model_column_Column {
+  + type : str
+}
+abstract class model_column_ColumnConstraint {
+  + name : str
+}
+class model_column_DefaultExpressionValueColumnConstraint {
+}
+class model_column_DefaultIntegerValueColumnConstraint {
+}
+class model_column_DefaultRealValueColumnConstraint {
+}
+class model_column_DefaultStringValueColumnConstraint {
+}
+abstract class model_column_DefaultValueColumnConstraint {
+}
+class model_column_IndexedColumn {
+}
+class model_column_NotNullColumnConstraint {
+}
+class model_column_PrimaryKeyColumnConstraint {
+}
+class model_column_UniqueColumnConstraint {
+}
+class model_common_ColumnMapping {
+  + entries() : void
+  + getAllCurrent() : void
+  + getAllPrevious() : void
+  + getCurrent(model_previous : str) : str
+  + getPrevious(model_current : str) : str
+  + put(model_current : str, model_previous : str) : void
+}
+class model_common_MappingEntry {
+  + current : str
+  + previous : str
+}
+abstract class model_common_NameProvider {
+  + name : str
+}
+class model_common_StringToColumnMappingEntryMap {
+  + key : str
+}
+class model_common_StringToTableMappingEntryMap {
+  + key : str
+}
+class model_common_TableMapping {
+  + entries() : void
+  + getAllCurrent() : void
+  + getAllPrevious() : void
+  + getCurrent(model_previous : str) : str
+  + getPrevious(model_current : str) : str
+  + put(model_current : str, model_previous : str) : void
+}
+abstract class model_expression_Expression {
+}
+abstract class model_index_Index {
+}
+class model_table_CheckTableConstraint {
+}
+class model_table_ForeignKeyTableConstraint {
+}
+class model_table_PrimaryKeyTableConstraint {
+}
+class model_table_Table {
+}
+abstract class model_table_TableConstraint {
+  + name : str
+}
+class model_table_UniqueTableConstraint {
+}
+class model_trigger_Trigger {
+}
+class model_view_View {
+}
+class table_model_Database {
+}
+class trigger_model_Database {
+}
+class view_model_Database {
+}
+ColumnConstraint <|-- model_column_CheckColumnConstraint
+ColumnConstraint <|-- model_column_DefaultValueColumnConstraint
+ColumnConstraint <|-- model_column_NotNullColumnConstraint
+ColumnConstraint <|-- model_column_PrimaryKeyColumnConstraint
+ColumnConstraint <|-- model_column_UniqueColumnConstraint
+NameProvider <|-- model_Database
+NameProvider <|-- model_column_Column
+NameProvider <|-- model_table_Table
+NameProvider <|-- model_trigger_Trigger
+NameProvider <|-- model_view_View
+TableConstraint <|-- model_table_CheckTableConstraint
+TableConstraint <|-- model_table_ForeignKeyTableConstraint
+TableConstraint <|-- model_table_PrimaryKeyTableConstraint
+TableConstraint <|-- model_table_UniqueTableConstraint
+Column "1..1" -- "1..1" model_column_IndexedColumn : column48
+Column "1..1" -- "1..1" model_column_ColumnConstraint : column50
+ColumnMapping "0..1" --* "1..1" model_DatabaseVersion : columnMapping10
+Column "0..9999" --* "1..1" model_table_Table : columns28
+IndexedColumn "1..1" --* "1..1" model_table_PrimaryKeyTableConstraint : columns33
+IndexedColumn "1..1" --* "1..1" model_table_UniqueTableConstraint : columns34
+Column "1..9999" -- "1..1" model_table_ForeignKeyTableConstraint : columns37
+TableConstraint "0..9999" --* "1..1" model_table_Table : constraints29
+ColumnConstraint "0..9999" --* "1..1" model_column_Column : constraints47
+StringToTableMappingEntryMap "0..9999" --* "1..1" model_common_TableMapping : curr2entryMap20
+StringToColumnMappingEntryMap "0..9999" --* "1..1" model_common_ColumnMapping : curr2entryMap24
+model_Database "1..1" --* "1..1" model_DatabaseVersion : database1
+model_table_Table "1..1" -- "1..1" table_model_Database : database27
+model_view_View "1..1" -- "1..1" view_model_Database : database55
+index_model_Database "1..1" -- "1..1" model_index_Index : database57
+model_trigger_Trigger "1..1" -- "1..1" trigger_model_Database : database59
+Expression "1..1" --* "1..1" model_table_CheckTableConstraint : expression36
+Expression "1..1" -- "1..1" model_column_CheckColumnConstraint : expression53
+Column "1..9999" -- "1..1" model_table_ForeignKeyTableConstraint : foreignColumns42
+Table "1..1" -- "1..1" model_table_ForeignKeyTableConstraint : foreignTable39
+Index "0..9999" --* "1..1" model_Database : indexes17
+model_DatabaseVersion "1..1" -- "0..1" model_DatabaseVersion : nextVersion6
+StringToTableMappingEntryMap "0..9999" --* "1..1" model_common_TableMapping : prev2entryMap19
+StringToColumnMappingEntryMap "0..9999" --* "1..1" model_common_ColumnMapping : prev2entryMap23
+model_DatabaseVersion "1..1" -- "0..1" model_DatabaseVersion : previousVersion4
+Table "1..1" -- "1..1" model_table_TableConstraint : table31
+Table "1..1" -- "1..1" model_column_Column : table45
+TableMapping "0..1" --* "1..1" model_DatabaseVersion : tableMapping8
+Table "0..9999" --* "1..1" model_Database : tables12
+Trigger "0..9999" --* "1..1" model_Database : triggers15
+model_DatabaseVersion "1..9999" --* "1..1" model_DatabaseVersions : versions0
+View "0..9999" --* "1..1" model_Database : views13
+@enduml

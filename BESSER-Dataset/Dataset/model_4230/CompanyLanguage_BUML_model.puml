@@ -1,0 +1,19 @@
+@startuml
+class CompanyLanguage_Admin {
+  + name : str
+}
+class CompanyLanguage_CEO {
+  + name : str
+}
+class CompanyLanguage_Company {
+  + name : str
+}
+class CompanyLanguage_Employee {
+  + name : str
+}
+CompanyLanguage_Admin "0..9999" --* "1..1" CompanyLanguage_Company : admin8
+CompanyLanguage_Admin "1..1" -- "0..1" CompanyLanguage_CEO : ceo0
+CompanyLanguage_CEO "0..9999" --* "1..1" CompanyLanguage_Company : ceo5
+CompanyLanguage_CEO "1..1" -- "0..9999" CompanyLanguage_Employee : employee1
+CompanyLanguage_Company "1..1" *-- "0..9999" CompanyLanguage_Employee : employee3
+@enduml

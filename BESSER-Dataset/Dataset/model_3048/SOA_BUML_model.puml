@@ -1,0 +1,89 @@
+@startuml
+class Entities {
+}
+class FeatureType {
+}
+enum PrimitiveType {
+  Boolean
+  Byte
+  Date
+  Datetime
+  Decimal
+  Double
+  Float
+  Integer
+  Long
+  Short
+  String
+  Timestamp
+}
+class soa_Architecture {
+  + name : str
+}
+class soa_Comment {
+  + value : str
+}
+class soa_Entities {
+  + name : str
+}
+class soa_EntitiesFeature {
+}
+class soa_Entity {
+}
+class soa_Enum {
+  + features : str
+}
+class soa_Exception {
+  + msg : str
+  + name : str
+}
+class soa_Exceptions {
+}
+class soa_Feature {
+  + name : str
+}
+class soa_FeatureType {
+}
+class soa_GenericListFeature {
+}
+class soa_Import {
+  + importedNamespace : str
+}
+class soa_Model {
+}
+class soa_Module {
+  + event : str
+  + name : str
+  + version : str
+}
+class soa_Operation {
+  + name : str
+}
+class soa_PrimitiveFeature {
+  + type : str
+}
+class soa_Service {
+  + name : str
+}
+Entities <|-- soa_Entity
+Entities <|-- soa_Enum
+FeatureType <|-- soa_EntitiesFeature
+FeatureType <|-- soa_GenericListFeature
+FeatureType <|-- soa_PrimitiveFeature
+soa_Entities "0..9999" --* "1..1" soa_Model : entities9
+soa_Exception "0..9999" --* "1..1" soa_Exceptions : exceptions20
+soa_Exceptions "0..1" --* "1..1" soa_Module : exceptions5
+soa_Exception "0..9999" -- "1..1" soa_Operation : exceptionts30
+soa_Comment "0..9999" --* "1..1" soa_Feature : featureComment12
+soa_Entity "1..1" *-- "0..9999" soa_Feature : features11
+soa_Feature "0..9999" --* "1..1" soa_Operation : featuresInput24
+soa_Feature "0..9999" --* "1..1" soa_Operation : featuresOutput27
+soa_Import "0..9999" --* "1..1" soa_Module : imports1
+soa_Model "0..1" --* "1..1" soa_Module : model3
+soa_Architecture "1..1" *-- "0..1" soa_Module : module0
+soa_Operation "0..9999" --* "1..1" soa_Service : operations22
+soa_Module "1..1" *-- "0..9999" soa_Service : services7
+soa_Feature "1..1" *-- "0..1" soa_FeatureType : type14
+soa_Entities "0..1" -- "1..1" soa_EntitiesFeature : type16
+soa_FeatureType "0..1" --* "1..1" soa_GenericListFeature : type18
+@enduml

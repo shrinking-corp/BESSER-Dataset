@@ -1,0 +1,33 @@
+@startuml
+class Account {
+  + Info : str
+  + UserName : str
+}
+class Administrator {
+  + Id : int
+}
+class Comment {
+  + Body : str
+  + CreationDate : str
+  + Creator : User
+  + Id : int
+  + Title : str
+}
+class IAcc_Interface {
+}
+class Project {
+  + Access : str
+  + Id : int
+  + Info : str
+  + State : str
+  + Title : str
+}
+class User {
+  + Id : int
+}
+Account "1..1" -- "1..1" Administrator : Account_Administrator
+Account "1..1" -- "1..1" User : Account_User
+Administrator "1..1" -- "0..9999" Comment : Administrator_Comment
+Comment "0..9999" -- "1..1" User : User_Comment
+Project "0..9999" -- "1..1" User : User_Project
+@enduml

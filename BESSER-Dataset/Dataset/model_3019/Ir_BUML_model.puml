@@ -1,0 +1,360 @@
+@startuml
+class ArgOrVar {
+}
+class Container {
+}
+class Expression {
+}
+class Instruction {
+}
+class IrAnnotable {
+}
+class IrType {
+}
+class ItemIdValue {
+}
+class IterableInstruction {
+}
+class IterationBlock {
+}
+class Job {
+}
+class JobContainer {
+}
+enum PrimitiveType {
+  Bool
+  Int
+  Real
+}
+class TimeLoopCopyJob {
+}
+class Variable {
+}
+class ir_Affectation {
+}
+class ir_AfterTimeLoopJob {
+}
+class ir_Arg {
+}
+abstract class ir_ArgOrVar {
+  + name : str
+}
+class ir_ArgOrVarRef {
+}
+class ir_BaseType {
+  + primitive : str
+}
+class ir_BaseTypeConstant {
+}
+class ir_BeforeTimeLoopJob {
+}
+class ir_BinaryExpression {
+  + operator : str
+}
+class ir_BoolConstant {
+  + value : bool
+}
+class ir_Cardinality {
+}
+class ir_Connectivity {
+  + indexEqualId : bool
+  + multiple : bool
+  + name : str
+}
+class ir_ConnectivityCall {
+}
+class ir_ConnectivityType {
+}
+class ir_ConnectivityVariable {
+}
+abstract class ir_Container {
+}
+class ir_ContractedIf {
+}
+class ir_EStringToStringMapEntry {
+}
+class ir_Exit {
+  + message : str
+}
+abstract class ir_Expression {
+}
+class ir_Function {
+  + name : str
+  + provider : str
+}
+class ir_FunctionCall {
+}
+class ir_If {
+}
+class ir_Import {
+  + importedNamespace : str
+}
+abstract class ir_Instruction {
+}
+class ir_InstructionBlock {
+}
+class ir_InstructionJob {
+}
+class ir_IntConstant {
+  + value : int
+}
+class ir_Interval {
+}
+abstract class ir_IrAnnotable {
+}
+class ir_IrAnnotation {
+  + source : str
+}
+class ir_IrModule {
+  + name : str
+}
+class ir_IrType {
+}
+class ir_ItemId {
+  + itemName : str
+  + name : str
+}
+class ir_ItemIdDefinition {
+}
+abstract class ir_ItemIdValue {
+}
+class ir_ItemIdValueCall {
+}
+class ir_ItemIdValueIterator {
+  + shift : int
+}
+class ir_ItemIndex {
+  + itemName : str
+  + name : str
+}
+class ir_ItemIndexDefinition {
+}
+class ir_ItemIndexValue {
+}
+class ir_ItemType {
+  + name : str
+}
+abstract class ir_IterableInstruction {
+}
+abstract class ir_IterationBlock {
+}
+class ir_Iterator {
+}
+abstract class ir_Job {
+  + at : float
+  + name : str
+  + onCycle : bool
+}
+abstract class ir_JobContainer {
+}
+class ir_Loop {
+  + multithreadable : bool
+}
+class ir_MaxConstant {
+}
+class ir_MinConstant {
+}
+class ir_Parenthesis {
+}
+class ir_PostProcessingInfo {
+  + periodValue : float
+}
+class ir_RealConstant {
+  + value : float
+}
+class ir_ReductionInstruction {
+}
+class ir_Return {
+}
+class ir_SetDefinition {
+  + name : str
+}
+class ir_SetRef {
+}
+class ir_SimpleVariable {
+}
+class ir_TimeLoop {
+  + name : str
+}
+class ir_TimeLoopCopy {
+}
+abstract class ir_TimeLoopCopyJob {
+}
+class ir_TimeLoopJob {
+}
+class ir_TimeLoopVariable {
+  + name : str
+}
+class ir_UnaryExpression {
+  + operator : str
+}
+abstract class ir_Variable {
+  + const : bool
+  + persistenceName : str
+}
+class ir_VariableDefinition {
+}
+class ir_VectorConstant {
+}
+ArgOrVar <|-- ir_Arg
+ArgOrVar <|-- ir_Variable
+Container <|-- ir_ConnectivityCall
+Container <|-- ir_SetRef
+Expression <|-- ir_ArgOrVarRef
+Expression <|-- ir_BaseTypeConstant
+Expression <|-- ir_BinaryExpression
+Expression <|-- ir_BoolConstant
+Expression <|-- ir_Cardinality
+Expression <|-- ir_ContractedIf
+Expression <|-- ir_FunctionCall
+Expression <|-- ir_IntConstant
+Expression <|-- ir_MaxConstant
+Expression <|-- ir_MinConstant
+Expression <|-- ir_Parenthesis
+Expression <|-- ir_RealConstant
+Expression <|-- ir_UnaryExpression
+Expression <|-- ir_VectorConstant
+Instruction <|-- ir_Affectation
+Instruction <|-- ir_Exit
+Instruction <|-- ir_If
+Instruction <|-- ir_InstructionBlock
+Instruction <|-- ir_ItemIdDefinition
+Instruction <|-- ir_ItemIndexDefinition
+Instruction <|-- ir_IterableInstruction
+Instruction <|-- ir_Return
+Instruction <|-- ir_SetDefinition
+Instruction <|-- ir_VariableDefinition
+IrAnnotable <|-- ir_ArgOrVar
+IrAnnotable <|-- ir_Connectivity
+IrAnnotable <|-- ir_Container
+IrAnnotable <|-- ir_Expression
+IrAnnotable <|-- ir_Function
+IrAnnotable <|-- ir_Import
+IrAnnotable <|-- ir_Instruction
+IrAnnotable <|-- ir_IrType
+IrAnnotable <|-- ir_ItemId
+IrAnnotable <|-- ir_ItemIdValue
+IrAnnotable <|-- ir_ItemIndex
+IrAnnotable <|-- ir_ItemIndexValue
+IrAnnotable <|-- ir_ItemType
+IrAnnotable <|-- ir_IterationBlock
+IrAnnotable <|-- ir_Job
+IrAnnotable <|-- ir_JobContainer
+IrAnnotable <|-- ir_PostProcessingInfo
+IrAnnotable <|-- ir_TimeLoop
+IrAnnotable <|-- ir_TimeLoopCopy
+IrAnnotable <|-- ir_TimeLoopVariable
+IrType <|-- ir_BaseType
+IrType <|-- ir_ConnectivityType
+ItemIdValue <|-- ir_ItemIdValueCall
+ItemIdValue <|-- ir_ItemIdValueIterator
+IterableInstruction <|-- ir_Loop
+IterableInstruction <|-- ir_ReductionInstruction
+IterationBlock <|-- ir_Interval
+IterationBlock <|-- ir_Iterator
+Job <|-- ir_InstructionJob
+Job <|-- ir_TimeLoopCopyJob
+JobContainer <|-- ir_IrModule
+JobContainer <|-- ir_TimeLoopJob
+TimeLoopCopyJob <|-- ir_AfterTimeLoopJob
+TimeLoopCopyJob <|-- ir_BeforeTimeLoopJob
+TimeLoopCopyJob <|-- ir_TimeLoopJob
+Variable <|-- ir_ConnectivityVariable
+Variable <|-- ir_SimpleVariable
+ir_IrAnnotable "1..1" *-- "0..9999" ir_IrAnnotation : annotations0
+ir_Expression "0..9999" --* "1..1" ir_FunctionCall : args172
+ir_ConnectivityCall "1..1" -- "0..9999" ir_ItemId : args210
+ir_TimeLoop "1..1" -- "1..1" ir_TimeLoopJob : associatedJob50
+ir_BaseType "1..1" --* "1..1" ir_ConnectivityType : base195
+ir_Function "1..1" -- "1..1" ir_ReductionInstruction : binaryFunction111
+ir_Instruction "1..1" --* "1..1" ir_Loop : body120
+ir_Function "1..1" *-- "0..1" ir_Instruction : body75
+ir_ConnectivityCall "1..1" --* "1..1" ir_ItemIdValueCall : call217
+ir_Expression "1..1" --* "1..1" ir_If : condition129
+ir_ContractedIf "1..1" *-- "1..1" ir_Expression : condition153
+ir_Connectivity "0..9999" -- "1..1" ir_ConnectivityType : connectivities192
+ir_Connectivity "0..9999" --* "1..1" ir_IrModule : connectivities9
+ir_Connectivity "1..1" -- "1..1" ir_ConnectivityCall : connectivity207
+ir_Container "1..1" --* "1..1" ir_Iterator : container141
+ir_Cardinality "1..1" *-- "1..1" ir_Container : container179
+ir_ConnectivityCall "1..1" --* "1..1" ir_ItemIndexValue : container222
+ir_TimeLoopCopy "0..9999" --* "1..1" ir_TimeLoopCopyJob : copies86
+ir_Iterator "1..1" *-- "0..1" ir_SimpleVariable : counter143
+ir_TimeLoopVariable "1..1" -- "1..1" ir_Variable : current201
+ir_Expression "0..1" --* "1..1" ir_SimpleVariable : defaultValue59
+ir_ArgOrVarRef "0..1" --* "1..1" ir_ConnectivityVariable : defaultValue64
+ir_IrModule "1..1" -- "1..1" ir_SimpleVariable : deltatVariable23
+ir_TimeLoopCopy "1..1" -- "1..1" ir_Variable : destination90
+ir_EStringToStringMapEntry "0..9999" --* "1..1" ir_IrAnnotation : details1
+ir_ContractedIf "1..1" *-- "1..1" ir_Expression : elseExpression158
+ir_If "1..1" *-- "0..1" ir_Instruction : elseInstruction134
+ir_Expression "1..1" --* "1..1" ir_Return : expression137
+ir_Expression "1..1" --* "1..1" ir_UnaryExpression : expression166
+ir_Expression "1..1" --* "1..1" ir_Parenthesis : expression168
+ir_Function "1..1" -- "1..1" ir_FunctionCall : function170
+ir_Function "0..9999" --* "1..1" ir_IrModule : functions7
+ir_ItemId "1..1" --* "1..1" ir_ItemIdDefinition : id125
+ir_ItemId "1..1" -- "1..1" ir_ItemIndexValue : id219
+ir_Import "0..9999" --* "1..1" ir_IrModule : imports4
+ir_Arg "0..9999" --* "1..1" ir_Function : inArgs72
+ir_Connectivity "1..1" -- "0..9999" ir_ItemType : inTypes77
+ir_ItemIndex "1..1" --* "1..1" ir_ItemIndexDefinition : index122
+ir_ItemIndex "1..1" --* "1..1" ir_Iterator : index139
+ir_Interval "1..1" *-- "1..1" ir_SimpleVariable : index146
+ir_ArgOrVarRef "1..1" *-- "0..9999" ir_Expression : indices186
+ir_TimeLoopVariable "1..1" -- "0..1" ir_Variable : init198
+ir_ConnectivityVariable "1..1" -- "1..1" ir_IrModule : initNodeCoordVariable15
+ir_Instruction "0..9999" --* "1..1" ir_ReductionInstruction : innerInstructions109
+ir_Job "0..9999" -- "1..1" ir_JobContainer : innerJobs3
+ir_TimeLoop "1..1" *-- "0..1" ir_TimeLoop : innerTimeLoop42
+ir_Instruction "1..1" --* "1..1" ir_InstructionJob : instruction84
+ir_Instruction "1..9999" --* "1..1" ir_InstructionBlock : instructions98
+ir_IrModule "1..1" *-- "0..9999" ir_ItemType : itemTypes5
+ir_IterableInstruction "1..1" *-- "1..1" ir_IterationBlock : iterationBlock108
+ir_SimpleVariable "1..1" -- "1..1" ir_TimeLoop : iterationCounter52
+ir_ItemIdValueIterator "1..1" -- "1..1" ir_Iterator : iterator215
+ir_ArgOrVarRef "1..1" -- "0..9999" ir_ItemIndex : iterators183
+ir_Job "1..1" -- "1..1" ir_JobContainer : jobContainer83
+ir_IrModule "1..1" *-- "0..9999" ir_Job : jobs26
+ir_Expression "1..1" --* "1..1" ir_ReductionInstruction : lambda_114
+ir_PostProcessingInfo "1..1" -- "1..1" ir_SimpleVariable : lastDumpVariable38
+ir_Affectation "1..1" *-- "1..1" ir_ArgOrVarRef : left103
+ir_BinaryExpression "1..1" *-- "1..1" ir_Expression : left161
+ir_IrModule "1..1" *-- "0..1" ir_TimeLoop : mainTimeLoop28
+ir_Expression "1..1" --* "1..1" ir_Interval : nbElems148
+ir_TimeLoopVariable "1..1" -- "1..1" ir_Variable : next204
+ir_ConnectivityVariable "1..1" -- "1..1" ir_IrModule : nodeCoordVariable17
+ir_IrModule "1..1" *-- "0..9999" ir_SimpleVariable : options11
+ir_TimeLoop "1..1" -- "0..1" ir_TimeLoop : outerTimeLoop44
+ir_PostProcessingInfo "1..1" -- "1..1" ir_SimpleVariable : periodVariable35
+ir_PostProcessingInfo "1..1" -- "0..9999" ir_Variable : postProcessedVariables32
+ir_IrModule "1..1" *-- "0..1" ir_PostProcessingInfo : postProcessingInfo30
+ir_ReductionInstruction "1..1" *-- "1..1" ir_SimpleVariable : result117
+ir_BaseType "0..1" --* "1..1" ir_Function : returnType66
+ir_Connectivity "1..1" -- "0..1" ir_ItemType : returnType80
+ir_Affectation "1..1" *-- "1..1" ir_Expression : right105
+ir_BinaryExpression "1..1" *-- "1..1" ir_Expression : right163
+ir_BaseType "1..1" *-- "0..9999" ir_Expression : sizes189
+ir_TimeLoopCopy "1..1" -- "1..1" ir_Variable : source93
+ir_ArgOrVar "1..1" -- "1..1" ir_ArgOrVarRef : target181
+ir_SetDefinition "1..1" -- "1..1" ir_SetRef : target213
+ir_ContractedIf "1..1" *-- "1..1" ir_Expression : thenExpression155
+ir_If "1..1" *-- "1..1" ir_Instruction : thenInstruction131
+ir_TimeLoop "1..1" -- "1..1" ir_TimeLoopCopyJob : timeLoop87
+ir_IrModule "1..1" -- "1..1" ir_SimpleVariable : timeVariable20
+ir_Expression "1..1" *-- "1..1" ir_IrType : type151
+ir_Arg "1..1" *-- "1..1" ir_BaseType : type55
+ir_BaseType "1..1" --* "1..1" ir_SimpleVariable : type56
+ir_ConnectivityType "1..1" --* "1..1" ir_ConnectivityVariable : type62
+ir_ItemIndexDefinition "1..1" *-- "1..1" ir_ItemIndexValue : value123
+ir_ItemIdDefinition "1..1" *-- "1..1" ir_ItemIdValue : value126
+ir_ConnectivityCall "1..1" --* "1..1" ir_SetDefinition : value128
+ir_BaseTypeConstant "1..1" *-- "1..1" ir_Expression : value175
+ir_Expression "0..9999" --* "1..1" ir_VectorConstant : values177
+ir_Variable "1..1" --* "1..1" ir_VariableDefinition : variable101
+ir_IrModule "1..1" *-- "0..9999" ir_Variable : variables13
+ir_TimeLoop "1..1" *-- "0..9999" ir_TimeLoopVariable : variables46
+ir_Function "1..1" *-- "0..9999" ir_SimpleVariable : variables69
+ir_InstructionBlock "1..1" *-- "0..9999" ir_Variable : variables96
+ir_Expression "1..1" --* "1..1" ir_TimeLoop : whileCondition48
+@enduml

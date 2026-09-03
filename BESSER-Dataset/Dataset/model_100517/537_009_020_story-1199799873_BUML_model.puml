@@ -1,0 +1,98 @@
+@startuml
+class Actor {
+}
+class CatalogElement {
+}
+class Protagonist {
+}
+class StoryBase {
+}
+class StoryContainer {
+}
+class User {
+}
+abstract class story_Actor {
+}
+class story_Catalog {
+}
+abstract class story_CatalogElement {
+  + description : str
+  + id : str
+  + name : str
+}
+class story_ConditionalProtagonist {
+  + condition : str
+}
+class story_EClass {
+}
+class story_Epic {
+}
+class story_Goal {
+  + details : str
+  + name : str
+}
+class story_Parameter {
+  + description : str
+  + name : str
+  + type : str
+}
+class story_Persona {
+  + picture : str
+}
+abstract class story_Protagonist {
+}
+class story_Role {
+}
+class story_Scenario {
+  + action : str
+  + context : str
+  + outcome : str
+}
+class story_Story {
+  + benefit : str
+  + completed : bool
+  + goal : str
+}
+abstract class story_StoryBase {
+}
+abstract class story_StoryContainer {
+}
+class story_System {
+}
+class story_Theme {
+}
+class story_User {
+}
+Actor <|-- story_System
+Actor <|-- story_User
+CatalogElement <|-- story_Catalog
+CatalogElement <|-- story_Scenario
+CatalogElement <|-- story_StoryBase
+CatalogElement <|-- story_StoryContainer
+CatalogElement <|-- story_Theme
+Protagonist <|-- story_Actor
+Protagonist <|-- story_Role
+StoryBase <|-- story_Epic
+StoryBase <|-- story_Story
+StoryContainer <|-- story_Epic
+StoryContainer <|-- story_Protagonist
+User <|-- story_Persona
+story_Theme "1..1" *-- "0..9999" story_Theme : children18
+story_ConditionalProtagonist "0..9999" --* "1..1" story_Story : conditionalprotagonists29
+story_Story "0..9999" -- "1..1" story_Story : depends21
+story_Catalog "1..1" *-- "0..9999" story_CatalogElement : elements0
+story_Goal "0..9999" --* "1..1" story_Persona : goals16
+story_EClass "0..1" -- "1..1" story_Protagonist : linkTo2
+story_Parameter "0..9999" --* "1..1" story_Story : parameters31
+story_ConditionalProtagonist "1..1" -- "1..9999" story_Protagonist : protagonist36
+story_Protagonist "0..9999" -- "1..1" story_Story : protagonists26
+story_Goal "0..9999" -- "1..1" story_Story : realizes33
+story_Actor "1..1" -- "0..9999" story_Role : roles8
+story_Scenario "0..9999" --* "1..1" story_Story : scenarios19
+story_StoryBase "0..9999" --* "1..1" story_StoryContainer : stories1
+story_Actor "0..9999" --* "1..1" story_Actor : subActors11
+story_Role "1..1" *-- "0..9999" story_Role : subRoles4
+story_Actor "0..9999" -- "1..1" story_Actor : superActors14
+story_Role "0..9999" -- "1..1" story_Role : superRoles6
+story_Story "1..1" -- "0..9999" story_Theme : themes23
+@enduml

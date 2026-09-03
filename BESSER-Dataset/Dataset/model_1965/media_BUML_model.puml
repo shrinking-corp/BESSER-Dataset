@@ -1,0 +1,52 @@
+@startuml
+class BaseObject {
+}
+class MediaPlayer_BaseObject {
+  + id : int
+  + propertyChangeSupport : str
+  + addPropertyChangeListener(MediaPlayer_listener : str) : void
+  + removePropertyChangeListener(MediaPlayer_listener : str) : void
+}
+class MediaPlayer_Library {
+}
+abstract class MediaPlayer_MediaApi {
+  + canPlay(MediaPlayer_media : str) : bool
+  + dispose() : void
+  + init() : void
+  + pause(MediaPlayer_pauseMe : str) : void
+  + play(MediaPlayer_playMe : str) : void
+  + stop(MediaPlayer_stopMe : str) : void
+  + updateMediaObjectInfo(MediaPlayer_updateMe : str) : void
+}
+class MediaPlayer_MediaObject {
+  + album : str
+  + artist : str
+  + location : str
+  + state : str
+  + title : str
+  + year : int
+}
+class MediaPlayer_PlayLayer {
+  + registerApi(MediaPlayer_addMe : str) : void
+  + unregisterApi(MediaPlayer_unregisterMe : str) : void
+}
+class MediaPlayer_Playlist {
+  + name : str
+  + repeat : bool
+  + shuffle() : void
+}
+enum State {
+  PAUSED
+  PLAYING
+  STOPPED
+}
+BaseObject <|-- MediaPlayer_Library
+BaseObject <|-- MediaPlayer_MediaObject
+BaseObject <|-- MediaPlayer_Playlist
+MediaPlayer_MediaApi "1..1" -- "0..9999" MediaPlayer_MediaObject : currentlyPaused3
+MediaPlayer_MediaApi "1..1" -- "0..9999" MediaPlayer_MediaObject : currentlyPlaying1
+MediaPlayer_MediaApi "0..9999" -- "1..1" MediaPlayer_PlayLayer : installedApi6
+MediaPlayer_Library "1..1" *-- "0..9999" MediaPlayer_MediaObject : mediaLibrary10
+MediaPlayer_MediaObject "0..9999" -- "1..1" MediaPlayer_Playlist : mediaList0
+MediaPlayer_Library "0..1" -- "1..1" MediaPlayer_PlayLayer : myLibrary8
+@enduml

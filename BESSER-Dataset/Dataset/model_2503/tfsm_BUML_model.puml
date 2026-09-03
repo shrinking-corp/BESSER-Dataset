@@ -1,0 +1,78 @@
+@startuml
+class BinaryClockConstraint {
+}
+class ClockConstraint {
+}
+class ClockConstraintOperation {
+}
+class FSM {
+}
+class FinalState {
+}
+class InitialState {
+}
+class State {
+}
+class TimedState {
+}
+class Transition {
+}
+class tfsm_AndClockConstraint {
+}
+abstract class tfsm_BinaryClockConstraint {
+}
+class tfsm_Clock {
+  + name : str
+  + tick : int
+}
+abstract class tfsm_ClockConstraint {
+  + threshold : int
+}
+abstract class tfsm_ClockConstraintOperation {
+}
+class tfsm_ClockReset {
+}
+class tfsm_LowerClockConstraint {
+}
+class tfsm_LowerEqualClockConstraint {
+}
+class tfsm_OrClockConstraint {
+}
+class tfsm_TimedFSM {
+}
+class tfsm_TimedFinalState {
+}
+class tfsm_TimedInitialState {
+}
+class tfsm_TimedState {
+}
+class tfsm_TimedTransition {
+}
+class tfsm_UpperClockConstraint {
+}
+class tfsm_UpperEqualClockConstraint {
+}
+BinaryClockConstraint <|-- tfsm_AndClockConstraint
+BinaryClockConstraint <|-- tfsm_OrClockConstraint
+ClockConstraint <|-- tfsm_LowerClockConstraint
+ClockConstraint <|-- tfsm_LowerEqualClockConstraint
+ClockConstraint <|-- tfsm_UpperClockConstraint
+ClockConstraint <|-- tfsm_UpperEqualClockConstraint
+ClockConstraintOperation <|-- tfsm_BinaryClockConstraint
+ClockConstraintOperation <|-- tfsm_ClockConstraint
+FSM <|-- tfsm_TimedFSM
+FinalState <|-- tfsm_TimedFinalState
+InitialState <|-- tfsm_TimedInitialState
+State <|-- tfsm_TimedState
+TimedState <|-- tfsm_TimedFinalState
+TimedState <|-- tfsm_TimedInitialState
+Transition <|-- tfsm_TimedTransition
+tfsm_Clock "1..1" -- "1..1" tfsm_ClockConstraint : clock6
+tfsm_Clock "1..1" -- "1..1" tfsm_ClockReset : clock8
+tfsm_ClockReset "0..9999" --* "1..1" tfsm_TimedTransition : clockresets2
+tfsm_Clock "0..9999" --* "1..1" tfsm_TimedFSM : clocks0
+tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : left11
+tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : right13
+tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_TimedState : stateguard1
+tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_TimedTransition : transitionguard3
+@enduml

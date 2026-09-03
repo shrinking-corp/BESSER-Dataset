@@ -1,0 +1,63 @@
+@startuml
+class Classifier {
+}
+class KM3_Attribute {
+}
+class KM3_Class {
+  + isAbstract : bool
+}
+class KM3_Classifier {
+}
+class KM3_DataType {
+}
+class KM3_EnumLiteral {
+}
+class KM3_Enumeration {
+}
+abstract class KM3_LocatedElement {
+  + location : str
+}
+class KM3_Metamodel {
+}
+abstract class KM3_ModelElement {
+  + name : str
+}
+class KM3_Package {
+}
+class KM3_Reference {
+  + isContainer : bool
+}
+class KM3_StructuralFeature {
+  + isOrdered : bool
+  + isUnique : bool
+  + lower : int
+  + upper : int
+}
+class LocatedElement {
+}
+class ModelElement {
+}
+class StructuralFeature {
+}
+Classifier <|-- KM3_Class
+Classifier <|-- KM3_DataType
+Classifier <|-- KM3_Enumeration
+LocatedElement <|-- KM3_Metamodel
+LocatedElement <|-- KM3_ModelElement
+ModelElement <|-- KM3_Classifier
+ModelElement <|-- KM3_EnumLiteral
+ModelElement <|-- KM3_Package
+ModelElement <|-- KM3_StructuralFeature
+StructuralFeature <|-- KM3_Attribute
+StructuralFeature <|-- KM3_Reference
+KM3_Metamodel "1..1" *-- "0..9999" KM3_Package : contents12
+KM3_ModelElement "0..9999" --* "1..1" KM3_Package : contents9
+KM3_EnumLiteral "0..9999" --* "1..1" KM3_Enumeration : literals1
+KM3_Metamodel "1..1" -- "1..1" KM3_Package : metamodel10
+KM3_Reference "1..1" -- "0..1" KM3_Reference : opposite8
+KM3_Class "1..1" -- "1..1" KM3_StructuralFeature : owner5
+KM3_ModelElement "1..1" -- "0..1" KM3_Package : package0
+KM3_Class "1..1" *-- "0..9999" KM3_StructuralFeature : structuralFeatures4
+KM3_Class "1..1" -- "0..9999" KM3_Class : supertypes3
+KM3_Classifier "1..1" -- "1..1" KM3_StructuralFeature : type6
+@enduml

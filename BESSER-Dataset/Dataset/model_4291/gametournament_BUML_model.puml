@@ -1,0 +1,44 @@
+@startuml
+enum GameType {
+  ACTION
+  COMBAT
+  FPS
+  RPG
+  STRATEGIC
+}
+class gametournament_FinalPhase {
+}
+class gametournament_Game {
+  + name : str
+  + type : str
+}
+class gametournament_Gamer {
+  + firstName : str
+  + lastName : str
+  + matches : int
+  + pseudo : str
+  + victories : int
+}
+class gametournament_Pool {
+  + generateClassment() : void
+}
+class gametournament_QualificationPhase {
+  + createPools() : str
+}
+class gametournament_Tournament {
+  + endDate : date
+  + location : str
+  + name : str
+  + prize : int
+  + startDate : date
+}
+gametournament_Gamer "4..4" -- "1..1" gametournament_Pool : classment18
+gametournament_FinalPhase "1..1" --* "1..1" gametournament_Tournament : finalPhase3
+gametournament_FinalPhase "1..1" *-- "1..16" gametournament_Gamer : finalists9
+gametournament_Game "1..1" --* "1..1" gametournament_Tournament : game0
+gametournament_Gamer "0..9999" --* "1..1" gametournament_Tournament : gamers1
+gametournament_Gamer "4..4" --* "1..1" gametournament_Pool : participants15
+gametournament_Pool "1..16" --* "1..1" gametournament_QualificationPhase : pools7
+gametournament_QualificationPhase "1..1" --* "1..1" gametournament_Tournament : qualificationPhase5
+gametournament_FinalPhase "1..1" -- "1..1" gametournament_QualificationPhase : qualificationphase12
+@enduml

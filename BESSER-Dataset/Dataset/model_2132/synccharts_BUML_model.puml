@@ -1,0 +1,101 @@
+@startuml
+class Action {
+}
+class Annotatable {
+}
+class Effect {
+}
+class Scope {
+}
+enum StateType {
+  CONDITIONAL
+  NORMAL
+  REFERENCE
+  TEXTUAL
+}
+class TextualCode {
+}
+enum TransitionType {
+  NORMALTERMINATION
+  STRONGABORT
+  WEAKABORT
+}
+class synccharts_Action {
+  + delay : int
+  + isImmediate : bool
+  + label : str
+}
+class synccharts_Assignment {
+}
+class synccharts_EObject {
+}
+abstract class synccharts_Effect {
+}
+class synccharts_Emission {
+}
+class synccharts_Expression {
+}
+class synccharts_Region {
+}
+abstract class synccharts_Scope {
+  + id : str
+  + interfaceDeclaration : str
+  + label : str
+}
+class synccharts_Signal {
+}
+class synccharts_State {
+  + isFinal : bool
+  + isInitial : bool
+  + type : str
+}
+class synccharts_Substitution {
+  + actual : str
+  + formal : str
+}
+class synccharts_TextEffect {
+}
+class synccharts_TextualCode {
+}
+class synccharts_Transition {
+  + isHistory : bool
+  + priority : int
+  + type : str
+}
+class synccharts_Variable {
+}
+Action <|-- synccharts_Transition
+Annotatable <|-- synccharts_Action
+Annotatable <|-- synccharts_Scope
+Effect <|-- synccharts_Assignment
+Effect <|-- synccharts_Emission
+Effect <|-- synccharts_TextEffect
+Scope <|-- synccharts_Region
+Scope <|-- synccharts_State
+TextualCode <|-- synccharts_TextEffect
+synccharts_EObject "0..1" --* "1..1" synccharts_Scope : bodyContents44
+synccharts_EObject "0..1" -- "1..1" synccharts_Scope : bodyReference42
+synccharts_Scope "1..1" *-- "0..9999" synccharts_TextualCode : bodyText47
+synccharts_Action "1..1" *-- "0..9999" synccharts_Effect : effects0
+synccharts_Action "0..9999" --* "1..1" synccharts_Scope : entryActions39
+synccharts_Action "0..9999" --* "1..1" synccharts_Scope : exitActions33
+synccharts_Assignment "1..1" *-- "1..1" synccharts_Expression : expression4
+synccharts_State "1..1" -- "0..9999" synccharts_Transition : incomingTransitions19
+synccharts_Action "0..9999" --* "1..1" synccharts_Scope : innerActions36
+synccharts_Emission "1..1" *-- "0..1" synccharts_Expression : newValue8
+synccharts_State "1..1" *-- "0..9999" synccharts_Transition : outgoingTransitions18
+synccharts_Region "1..1" -- "1..1" synccharts_State : parentRegion16
+synccharts_Scope "1..1" -- "1..1" synccharts_Substitution : parentScope14
+synccharts_Region "1..1" -- "0..1" synccharts_State : parentState12
+synccharts_Region "0..9999" --* "1..1" synccharts_State : regions15
+synccharts_Scope "1..1" *-- "0..9999" synccharts_Substitution : renamings49
+synccharts_Emission "1..1" -- "1..1" synccharts_Signal : signal7
+synccharts_Scope "1..1" *-- "0..9999" synccharts_Signal : signals25
+synccharts_State "1..1" -- "1..1" synccharts_Transition : sourceState23
+synccharts_Region "1..1" *-- "0..9999" synccharts_State : states11
+synccharts_Action "0..1" --* "1..1" synccharts_Scope : suspensionTrigger30
+synccharts_State "1..1" -- "1..1" synccharts_Transition : targetState21
+synccharts_Action "1..1" *-- "0..1" synccharts_Expression : trigger1
+synccharts_Assignment "1..1" -- "1..1" synccharts_Variable : variable3
+synccharts_Scope "1..1" *-- "0..9999" synccharts_Variable : variables27
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+class NamedElement {
+}
+class company_Company {
+}
+class company_Department {
+  + ageSumOfEmployees : int
+  + numberOfEmployees : int
+}
+class company_NamedElement {
+  + name : str
+}
+class company_Person {
+  + age : int
+  + firstName : str
+  + fullName : str
+}
+NamedElement <|-- company_Company
+NamedElement <|-- company_Department
+NamedElement <|-- company_Person
+company_Company "1..1" *-- "0..9999" company_Department : department0
+company_Department "1..1" *-- "0..9999" company_Person : employee1
+company_Person "0..1" -- "1..1" company_Person : supervisor4
+@enduml

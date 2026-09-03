@@ -1,0 +1,59 @@
+@startuml
+class AbstractComponent {
+}
+class Interface {
+}
+class NamedElement {
+}
+class Type {
+}
+abstract class ktest301_AbstractComponent {
+}
+class ktest301_Attribute {
+  + name : str
+  + value : str
+}
+class ktest301_Attributes {
+  + signature : str
+}
+class ktest301_Binding {
+}
+class ktest301_Component {
+}
+class ktest301_Content {
+  + class_ : str
+  + language : str
+}
+abstract class ktest301_Interface {
+}
+class ktest301_Item {
+}
+abstract class ktest301_NamedElement {
+  + name : str
+}
+class ktest301_Provided {
+}
+class ktest301_Required {
+}
+abstract class ktest301_Type {
+  + signature : str
+}
+AbstractComponent <|-- ktest301_Component
+Interface <|-- ktest301_Type
+NamedElement <|-- ktest301_Binding
+NamedElement <|-- ktest301_Component
+NamedElement <|-- ktest301_Interface
+NamedElement <|-- ktest301_Item
+Type <|-- ktest301_Provided
+Type <|-- ktest301_Required
+ktest301_AbstractComponent "1..1" *-- "0..1" ktest301_Attributes : attributes1
+ktest301_Attribute "0..9999" --* "1..1" ktest301_Attributes : attributes14
+ktest301_Binding "0..9999" --* "1..1" ktest301_Interface : bindings7
+ktest301_AbstractComponent "1..1" *-- "0..1" ktest301_Content : content0
+ktest301_Binding "1..1" -- "0..1" ktest301_Interface : from_8
+ktest301_Item "0..9999" --* "1..1" ktest301_Type : items18
+ktest301_AbstractComponent "1..1" *-- "0..9999" ktest301_Provided : providedInterfaces5
+ktest301_AbstractComponent "1..1" *-- "0..9999" ktest301_Required : requiredInterfaces3
+ktest301_Component "1..1" *-- "0..9999" ktest301_Component : subComponents17
+ktest301_Binding "1..1" -- "0..1" ktest301_Interface : to11
+@enduml

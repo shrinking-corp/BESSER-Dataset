@@ -1,0 +1,71 @@
+@startuml
+class BackgroundCallListener {
+}
+class BackgroundStopLoader {
+  + stops : str
+}
+class Call {
+  + created : str
+  + direction : str
+  + location : Floor
+}
+class Car {
+  + WEIGHT_LIMIT : int
+  + box : CarCallBox
+  + destQueue : str
+  + destination : Floor
+  + direction : str
+  + floorNum : int
+  + location : int
+  + stopLoader : BackgroundStopLoader
+  + stopQueue : str
+  + weightLoad : int
+}
+class CarCallBox {
+  + buttons : str
+}
+class Controller {
+  + callAdmin : BackgroundCallListener
+  + callQueue : str
+  + cars : str
+  + floors : str
+}
+class Floor {
+  + BOTTOM : int
+  + LOCATION : int
+  + TOP : int
+  + box : FloorCallBox
+  + number : int
+}
+class FloorCallBox {
+  + BUTTONS : array_enum_
+  + LOCATION : int
+}
+class Passenger {
+  + DEST : int
+  + START_FLOOR : int
+  + WEIGHT : int
+  + carNum : int
+  + readyToDie : bool
+  + traveling : bool
+  + waiting : bool
+}
+class Sim {
+  + elevator : Controller
+  + people : str
+}
+class Test_Report {
+}
+class array_enum_ {
+}
+BackgroundStopLoader "1..1" -- "0..1" Car : Car_BackgroundStopLoader
+Call "0..9999" -- "0..1" Car : Car_Call
+Car "0..1" -- "1..1" CarCallBox : Car_CarCallBox
+BackgroundCallListener "1..1" -- "0..1" Controller : Director_BackgroundCallListener
+Call "0..9999" -- "0..1" Controller : Director_Call
+Car "0..9999" -- "0..1" Controller : Director_Car
+Controller "1..1" -- "1..9999" Floor : Director_Floor
+Floor "0..1" -- "1..1" FloorCallBox : Floor_FloorCallBox
+Controller "1..1" -- "1..1" Sim : Sim_Director
+Passenger "0..9999" -- "1..1" Sim : Sim_Passenger
+@enduml

@@ -1,0 +1,88 @@
+@startuml
+class DataKind {
+}
+enum KindHintType {
+  AVG
+  BH
+}
+class Mapping {
+}
+class MappingRecord {
+}
+enum ObjectNameType {
+  EQUIPMENT
+  FUNCTION
+  NODE
+}
+enum ValueKindType {
+  DATETIME
+  METRIC
+  NULL
+}
+class metrics_DataKind {
+}
+class metrics_DateTimeRange {
+}
+class metrics_IdentifierDataKind {
+  + objectAttribute : str
+  + objectName : str
+}
+class metrics_Mapping {
+}
+class metrics_MappingCSV {
+}
+class metrics_MappingRDBMS {
+}
+class metrics_MappingRecord {
+}
+class metrics_MappingRecordXLS {
+  + column : str
+  + row : str
+}
+class metrics_MappingStatistic {
+  + totalRecords : str
+}
+class metrics_MappingXLS {
+  + columnHeaders : str
+  + firstDataRow : str
+  + headerRow : str
+  + sheetNumber : str
+}
+class metrics_Metric {
+  + description : str
+  + measurementKind : str
+  + measurementPoint : str
+  + metricCalculation : str
+  + name : str
+  + unitRef : str
+}
+class metrics_MetricSource {
+  + metricLocation : str
+  + name : str
+}
+class metrics_MetricValueRange {
+  + kindHint : str
+  + name : str
+  + periodHint : str
+}
+class metrics_Value {
+}
+class metrics_ValueDataKind {
+  + valueKind : str
+}
+DataKind <|-- metrics_IdentifierDataKind
+DataKind <|-- metrics_ValueDataKind
+Mapping <|-- metrics_MappingCSV
+Mapping <|-- metrics_MappingRDBMS
+Mapping <|-- metrics_MappingXLS
+MappingRecord <|-- metrics_MappingRecordXLS
+metrics_DataKind "0..9999" --* "1..1" metrics_MappingXLS : columnDataKind3
+metrics_MappingRecord "0..9999" --* "1..1" metrics_MappingStatistic : failedRecords0
+metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : mappingDuration1
+metrics_Mapping "0..1" --* "1..1" metrics_MetricSource : metricMapping8
+metrics_Metric "0..9999" -- "1..1" metrics_MetricSource : metricRefs7
+metrics_Metric "1..1" -- "0..1" metrics_MetricSource : metricSourceRef6
+metrics_MetricValueRange "1..1" *-- "0..9999" metrics_Value : metricValues12
+metrics_Metric "1..1" *-- "0..9999" metrics_Metric : metrics5
+metrics_MappingStatistic "0..9999" --* "1..1" metrics_MetricSource : statistics9
+@enduml

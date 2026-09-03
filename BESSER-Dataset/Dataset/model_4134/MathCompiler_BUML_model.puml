@@ -1,0 +1,52 @@
+@startuml
+class Expression {
+}
+class mathCompiler_Div {
+}
+class mathCompiler_Expression {
+}
+class mathCompiler_Expressions {
+}
+class mathCompiler_External {
+  + base : int
+  + exponent : int
+}
+class mathCompiler_Let {
+  + id : str
+}
+class mathCompiler_MathExp {
+  + line : str
+}
+class mathCompiler_Minus {
+}
+class mathCompiler_Mult {
+}
+class mathCompiler_Num {
+  + value : int
+}
+class mathCompiler_Plus {
+}
+class mathCompiler_Var {
+  + id : str
+}
+Expression <|-- mathCompiler_Div
+Expression <|-- mathCompiler_External
+Expression <|-- mathCompiler_Let
+Expression <|-- mathCompiler_Minus
+Expression <|-- mathCompiler_Mult
+Expression <|-- mathCompiler_Num
+Expression <|-- mathCompiler_Plus
+Expression <|-- mathCompiler_Var
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Let : binding23
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Let : body25
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_MathExp : exp1
+mathCompiler_Expressions "1..1" *-- "0..9999" mathCompiler_MathExp : expressions0
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Mult : left13
+mathCompiler_Div "1..1" *-- "0..1" mathCompiler_Expression : left18
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Plus : left3
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Minus : left8
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Minus : right10
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Mult : right15
+mathCompiler_Div "1..1" *-- "0..1" mathCompiler_Expression : right20
+mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Plus : right5
+@enduml

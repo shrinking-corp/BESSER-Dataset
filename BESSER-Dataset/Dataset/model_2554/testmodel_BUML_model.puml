@@ -1,0 +1,17 @@
+@startuml
+class testmodel_Node {
+  + nodename : str
+}
+class testmodel_Val {
+  + intlist : int
+  + intvl : int
+  + valname : str
+}
+class testmodel_cont {
+}
+testmodel_Node "1..1" -- "0..9999" testmodel_Node : childNodes9
+testmodel_Node "0..9999" --* "1..1" testmodel_cont : containsNode0
+testmodel_Val "0..9999" --* "1..1" testmodel_cont : containsVal1
+testmodel_Node "1..1" -- "0..9999" testmodel_Val : hasVals3
+testmodel_Node "1..1" -- "0..1" testmodel_Node : parentNode7
+@enduml

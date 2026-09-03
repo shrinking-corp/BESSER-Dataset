@@ -1,0 +1,41 @@
+@startuml
+class AbstractState {
+}
+enum ActionKind {
+  ENTRY
+  EXIT
+}
+abstract class errorstm_AbstractState {
+  + name : str
+}
+class errorstm_Action {
+  + kind : str
+}
+class errorstm_CompositeState {
+}
+class errorstm_FinalState {
+}
+class errorstm_InitialState {
+}
+class errorstm_SimpleState {
+}
+class errorstm_StateMachine {
+}
+class errorstm_Transition {
+  + event : str
+  + guard : str
+  + name : str
+}
+AbstractState <|-- errorstm_CompositeState
+AbstractState <|-- errorstm_FinalState
+AbstractState <|-- errorstm_InitialState
+AbstractState <|-- errorstm_SimpleState
+errorstm_AbstractState "1..1" *-- "0..9999" errorstm_Action : actions6
+errorstm_AbstractState "1..1" -- "1..1" errorstm_Transition : from_0
+errorstm_AbstractState "1..1" -- "0..9999" errorstm_Transition : incoming3
+errorstm_AbstractState "1..1" -- "0..9999" errorstm_Transition : outgoing4
+errorstm_CompositeState "0..1" --* "1..1" errorstm_StateMachine : state11
+errorstm_AbstractState "0..9999" --* "1..1" errorstm_CompositeState : states7
+errorstm_AbstractState "1..1" -- "1..1" errorstm_Transition : to1
+errorstm_CompositeState "1..1" *-- "0..9999" errorstm_Transition : transitions9
+@enduml

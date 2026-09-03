@@ -1,0 +1,36 @@
+@startuml
+class Unit {
+}
+enum UnitNames {
+  BYTE
+  METER
+  SECOND
+  UNITLESS
+}
+class units_BaseUnit {
+  + name : str
+}
+abstract class units_Unit {
+}
+abstract class units_UnitCarryingElement {
+}
+class units_UnitDivision {
+}
+class units_UnitMultiplication {
+}
+class units_UnitPower {
+  + exponent : int
+}
+class units_UnitRepository {
+}
+Unit <|-- units_BaseUnit
+Unit <|-- units_UnitDivision
+Unit <|-- units_UnitMultiplication
+Unit <|-- units_UnitPower
+units_Unit "1..1" --* "1..1" units_UnitDivision : dividend6
+units_Unit "1..1" --* "1..1" units_UnitDivision : divisor8
+units_Unit "0..1" --* "1..1" units_UnitCarryingElement : unit0
+units_Unit "1..1" --* "1..1" units_UnitPower : unit4
+units_BaseUnit "0..9999" --* "1..1" units_UnitRepository : units1
+units_Unit "1..9999" --* "1..1" units_UnitMultiplication : units2
+@enduml

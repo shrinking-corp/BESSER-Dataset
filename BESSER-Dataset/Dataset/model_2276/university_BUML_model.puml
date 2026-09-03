@@ -1,0 +1,20 @@
+@startuml
+class university_Course {
+  + name : str
+}
+class university_Professor {
+  + name : str
+}
+class university_Student {
+  + MNR : str
+}
+class university_University {
+  + name : str
+}
+university_Course "1..9999" -- "1..1" university_Professor : courses1
+university_Course "0..9999" --* "1..1" university_University : courses3
+university_Course "1..1" -- "1..9999" university_Professor : professors0
+university_Professor "0..9999" --* "1..1" university_University : professors2
+university_Student "1..9999" --* "1..1" university_University : students5
+university_Student "1..1" -- "1..1" university_University : uni7
+@enduml

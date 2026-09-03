@@ -1,0 +1,96 @@
+@startuml
+class Base {
+}
+class Child1 {
+}
+class Child2 {
+}
+class Child3 {
+}
+class Common {
+}
+class GrandChildD {
+}
+class Interface {
+}
+class TestClassifier {
+}
+class TestPackageableElement {
+}
+class pltest_Base {
+}
+class pltest_Child1 {
+  + name : str
+}
+class pltest_Child2 {
+}
+class pltest_Child3 {
+}
+class pltest_Circle {
+  + area : float
+  + circumference : float
+  + diameter : str
+}
+class pltest_Common {
+}
+class pltest_GrandChild {
+}
+class pltest_GrandChild2 {
+}
+class pltest_GrandChildD {
+}
+class pltest_GrandGrandChildE {
+}
+class pltest_GrandGrandChildF {
+}
+abstract class pltest_Interface {
+}
+class pltest_Numbers {
+  + bigDecimal : str
+  + bigInt : str
+  + double : float
+  + float : float
+  + int : int
+  + long : str
+}
+class pltest_Red {
+  + redness : int
+}
+class pltest_TestClass {
+}
+class pltest_TestClassifier {
+}
+class pltest_TestInterface {
+}
+class pltest_TestPackage {
+}
+class pltest_TestPackageableElement {
+}
+class pltest_WhatEver {
+}
+Base <|-- pltest_Common
+Child1 <|-- pltest_GrandChild
+Child1 <|-- pltest_GrandGrandChildE
+Child2 <|-- pltest_GrandChild2
+Child2 <|-- pltest_GrandGrandChildF
+Child3 <|-- pltest_Child2
+Child3 <|-- pltest_GrandChild
+Child3 <|-- pltest_GrandChildD
+Common <|-- pltest_Child1
+Common <|-- pltest_Child2
+GrandChildD <|-- pltest_GrandGrandChildE
+GrandChildD <|-- pltest_GrandGrandChildF
+Interface <|-- pltest_Child1
+Interface <|-- pltest_Child2
+TestClassifier <|-- pltest_TestClass
+TestClassifier <|-- pltest_TestInterface
+TestPackageableElement <|-- pltest_TestClassifier
+TestPackageableElement <|-- pltest_TestPackage
+pltest_Child1 "1..1" -- "0..1" pltest_Common : a10
+pltest_Child2 "1..1" -- "0..1" pltest_Common : a21
+pltest_TestClass "1..1" *-- "0..9999" pltest_TestClassifier : nestedClassifier10
+pltest_TestPackage "1..1" *-- "0..9999" pltest_TestPackageableElement : ownedElements7
+pltest_TestPackage "0..1" -- "1..1" pltest_TestPackageableElement : owningPackage6
+pltest_Circle "1..1" -- "0..9999" pltest_Red : red3
+pltest_Circle "0..1" -- "1..1" pltest_WhatEver : someRef4
+@enduml

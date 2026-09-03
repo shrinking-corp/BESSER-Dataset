@@ -1,0 +1,46 @@
+@startuml
+class TreeConstraint {
+}
+class myDsl_CrossTreeConstraint {
+  + type : str
+}
+class myDsl_FM {
+}
+class myDsl_Feature {
+  + name : str
+}
+class myDsl_FeatureAttribute {
+  + attributeType : str
+  + defaultValue : int
+  + maxValue : int
+  + minValue : int
+  + nullValue : int
+}
+class myDsl_MandatoryTreeConstraint {
+}
+class myDsl_OptionalTreeConstraint {
+}
+class myDsl_OrAlternativeTreeConstraint {
+  + max : int
+  + min : int
+}
+class myDsl_ParentChildConstraint {
+}
+class myDsl_TreeConstraint {
+}
+TreeConstraint <|-- myDsl_MandatoryTreeConstraint
+TreeConstraint <|-- myDsl_OptionalTreeConstraint
+TreeConstraint <|-- myDsl_OrAlternativeTreeConstraint
+myDsl_FM "1..1" *-- "0..9999" myDsl_FeatureAttribute : attributes3
+myDsl_CrossTreeConstraint "0..9999" --* "1..1" myDsl_FM : crossTreeConstraints5
+myDsl_CrossTreeConstraint "1..1" -- "0..1" myDsl_Feature : feature118
+myDsl_Feature "0..1" -- "1..1" myDsl_MandatoryTreeConstraint : feature12
+myDsl_Feature "0..1" -- "1..1" myDsl_OptionalTreeConstraint : feature14
+myDsl_CrossTreeConstraint "1..1" -- "0..1" myDsl_Feature : feature221
+myDsl_Feature "0..1" -- "1..1" myDsl_FeatureAttribute : feature24
+myDsl_FM "1..1" *-- "0..9999" myDsl_Feature : features0
+myDsl_Feature "0..9999" -- "1..1" myDsl_OrAlternativeTreeConstraint : features16
+myDsl_Feature "0..1" -- "1..1" myDsl_ParentChildConstraint : parent7
+myDsl_FM "1..1" *-- "0..9999" myDsl_ParentChildConstraint : relationships1
+myDsl_ParentChildConstraint "1..1" *-- "0..9999" myDsl_TreeConstraint : treeConstraints10
+@enduml

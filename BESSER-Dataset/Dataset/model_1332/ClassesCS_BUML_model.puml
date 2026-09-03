@@ -1,0 +1,60 @@
+@startuml
+class ElementCS {
+}
+class NamedElementCS {
+}
+class classescs_ArgumentCS {
+}
+class classescs_ClassCS {
+}
+class classescs_EObject {
+}
+abstract class classescs_ElementCS {
+}
+class classescs_NameExpCS {
+}
+abstract class classescs_NamedElementCS {
+  + name : str
+}
+class classescs_OperationCS {
+  + params : str
+}
+class classescs_PackageCS {
+}
+class classescs_PathElementCS {
+}
+class classescs_PathNameCS {
+}
+class classescs_PropertyCS {
+}
+class classescs_RootCS {
+}
+class classescs_RoundedBracketClause {
+}
+ElementCS <|-- classescs_NameExpCS
+ElementCS <|-- classescs_NamedElementCS
+ElementCS <|-- classescs_PathNameCS
+ElementCS <|-- classescs_RootCS
+ElementCS <|-- classescs_RoundedBracketClause
+NamedElementCS <|-- classescs_ArgumentCS
+NamedElementCS <|-- classescs_ClassCS
+NamedElementCS <|-- classescs_OperationCS
+NamedElementCS <|-- classescs_PackageCS
+NamedElementCS <|-- classescs_PathElementCS
+NamedElementCS <|-- classescs_PropertyCS
+classescs_ArgumentCS "0..9999" --* "1..1" classescs_RoundedBracketClause : args31
+classescs_EObject "0..1" -- "1..1" classescs_ElementCS : ast0
+classescs_NameExpCS "0..9999" --* "1..1" classescs_OperationCS : bodyExps18
+classescs_ClassCS "1..1" *-- "0..1" classescs_PathNameCS : extends5
+classescs_NameExpCS "1..1" *-- "0..1" classescs_PathNameCS : name23
+classescs_ClassCS "1..1" *-- "0..9999" classescs_OperationCS : operations9
+classescs_ClassCS "0..9999" --* "1..1" classescs_PackageCS : ownedClasses1
+classescs_NameExpCS "0..1" --* "1..1" classescs_NameExpCS : ownedNameExp29
+classescs_PackageCS "0..9999" --* "1..1" classescs_RootCS : ownedPackages13
+classescs_PackageCS "0..9999" --* "1..1" classescs_PackageCS : ownedPackages3
+classescs_PathElementCS "1..9999" --* "1..1" classescs_PathNameCS : path11
+classescs_ClassCS "1..1" *-- "0..9999" classescs_PropertyCS : properties7
+classescs_OperationCS "1..1" *-- "0..1" classescs_PathNameCS : resultRef20
+classescs_NameExpCS "1..1" *-- "0..1" classescs_RoundedBracketClause : roundedBrackets26
+classescs_PathNameCS "0..1" --* "1..1" classescs_PropertyCS : typeRef15
+@enduml

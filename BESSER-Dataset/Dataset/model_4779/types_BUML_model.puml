@@ -1,0 +1,145 @@
+@startuml
+class AnnotatableElement {
+}
+class ComplexType {
+}
+class Declaration {
+}
+enum Direction {
+  IN
+  LOCAL
+  OUT
+}
+class DomainElement {
+}
+class GenericElement {
+}
+class MetaComposite {
+}
+class NamedElement {
+}
+class Type {
+}
+class TypeSpecifier {
+}
+class TypedDeclaration {
+}
+class TypedElement {
+}
+class types_AnnotatableElement {
+  + getAnnotationOfType(types_typeName : str) : str
+}
+class types_Annotation {
+}
+class types_AnnotationType {
+}
+class types_ArrayTypeSpecifier {
+  + size : int
+  + getElementType() : Type
+}
+class types_ComplexType {
+  + getAllFeatures() : Declaration
+}
+abstract class types_Declaration {
+  + id : str
+  + static : bool
+}
+class types_Domain {
+  + domainID : str
+}
+class types_EObject {
+}
+class types_EnumerationType {
+}
+class types_Enumerator {
+  + literalValue : int
+}
+class types_Event {
+  + direction : str
+}
+abstract class types_Expression {
+}
+class types_GenericElement {
+}
+class types_MetaComposite {
+}
+class types_Operation {
+  + variadic : bool
+  + getVarArgIndex() : int
+}
+class types_Package {
+}
+class types_Parameter {
+  + optional : bool
+  + varArgs : bool
+}
+class types_PrimitiveType {
+}
+class types_Property {
+  + const : bool
+  + readonly : bool
+}
+class types_Type {
+  + abstract : bool
+  + visible : bool
+  + getOriginType() : str
+}
+class types_TypeAlias {
+}
+class types_TypeParameter {
+}
+class types_TypeSpecifier {
+}
+class types_TypedDeclaration {
+}
+abstract class types_TypedElement {
+}
+AnnotatableElement <|-- types_Declaration
+AnnotatableElement <|-- types_Parameter
+ComplexType <|-- types_EnumerationType
+Declaration <|-- types_Package
+Declaration <|-- types_Type
+Declaration <|-- types_TypedDeclaration
+DomainElement <|-- types_Package
+GenericElement <|-- types_ComplexType
+GenericElement <|-- types_Operation
+MetaComposite <|-- types_Declaration
+NamedElement <|-- types_Declaration
+NamedElement <|-- types_GenericElement
+NamedElement <|-- types_Parameter
+Type <|-- types_AnnotationType
+Type <|-- types_ComplexType
+Type <|-- types_PrimitiveType
+Type <|-- types_TypeAlias
+Type <|-- types_TypeParameter
+TypeSpecifier <|-- types_ArrayTypeSpecifier
+TypedDeclaration <|-- types_Enumerator
+TypedDeclaration <|-- types_Event
+TypedDeclaration <|-- types_Operation
+TypedDeclaration <|-- types_Property
+TypedDeclaration <|-- types_TypeAlias
+TypedElement <|-- types_Parameter
+TypedElement <|-- types_TypedDeclaration
+types_AnnotatableElement "0..1" --* "1..1" types_AnnotatableElement : annotationInfo34
+types_AnnotatableElement "1..1" *-- "0..9999" types_Annotation : annotations31
+types_Annotation "1..1" *-- "0..9999" types_Expression : arguments28
+types_Type "0..1" -- "1..1" types_TypeParameter : bound23
+types_EnumerationType "1..1" *-- "0..9999" types_Enumerator : enumerator19
+types_ComplexType "1..1" *-- "0..9999" types_Declaration : features20
+types_Package "0..9999" -- "1..1" types_Package : import_2
+types_Expression "0..1" --* "1..1" types_Property : initialValue6
+types_Declaration "0..9999" --* "1..1" types_Package : member0
+types_Declaration "0..9999" --* "1..1" types_MetaComposite : metaFeatures41
+types_EnumerationType "0..1" -- "1..1" types_Enumerator : owningEnumeration22
+types_Operation "0..1" -- "1..1" types_Parameter : owningOperation7
+types_Operation "1..1" *-- "0..9999" types_Parameter : parameters5
+types_AnnotationType "1..1" *-- "0..9999" types_Property : properties36
+types_Type "1..1" *-- "0..9999" types_TypeSpecifier : superTypes4
+types_AnnotationType "1..1" -- "0..9999" types_EObject : targets39
+types_Type "0..1" -- "1..1" types_TypeSpecifier : type13
+types_Annotation "1..1" -- "0..1" types_AnnotationType : type27
+types_Type "0..1" -- "1..1" types_TypedElement : type8
+types_TypeSpecifier "0..9999" --* "1..1" types_TypeSpecifier : typeArguments17
+types_GenericElement "1..1" *-- "0..9999" types_TypeParameter : typeParameters25
+types_TypeSpecifier "0..1" --* "1..1" types_TypedElement : typeSpecifier10
+@enduml

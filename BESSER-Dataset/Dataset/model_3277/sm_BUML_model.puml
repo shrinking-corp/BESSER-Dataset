@@ -1,0 +1,27 @@
+@startuml
+class sm_Observation {
+  + time : str
+}
+class sm_State {
+  + name : str
+}
+class sm_StateMachine {
+  + name : str
+}
+class sm_Transition {
+  + name : str
+}
+sm_StateMachine "1..1" *-- "0..9999" sm_Transition : edges5
+sm_State "0..9999" -- "1..1" sm_StateMachine : final1
+sm_State "1..1" -- "1..1" sm_StateMachine : graph14
+sm_StateMachine "1..1" -- "1..1" sm_Transition : graph20
+sm_Observation "1..1" -- "1..1" sm_StateMachine : graph24
+sm_State "0..1" -- "1..1" sm_StateMachine : initial0
+sm_Observation "0..1" -- "1..1" sm_State : mark12
+sm_Observation "0..9999" --* "1..1" sm_StateMachine : marks7
+sm_Observation "1..1" -- "1..1" sm_State : node22
+sm_State "0..9999" --* "1..1" sm_StateMachine : nodes4
+sm_State "1..1" -- "1..1" sm_Transition : source15
+sm_State "1..1" *-- "0..9999" sm_StateMachine : subMachines9
+sm_State "1..1" -- "1..1" sm_Transition : target17
+@enduml

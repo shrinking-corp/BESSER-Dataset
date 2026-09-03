@@ -1,0 +1,24 @@
+@startuml
+class library_Author {
+  + name : str
+}
+class library_Book {
+  + title : str
+}
+class library_Employee {
+  + name : str
+}
+class library_Library {
+  + name : str
+}
+class library_Shelf {
+  + name : str
+}
+library_Author "1..1" -- "1..1" library_Book : author1
+library_Author "0..9999" --* "1..1" library_Library : authors5
+library_Author "1..1" -- "0..9999" library_Book : books0
+library_Book "0..9999" --* "1..1" library_Shelf : books10
+library_Employee "0..9999" --* "1..1" library_Library : employees7
+library_Employee "1..1" -- "0..9999" library_Shelf : shelves2
+library_Library "1..1" *-- "0..9999" library_Shelf : shelves3
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+class DDL_CreateCk {
+  + columnName : str
+  + nameCk : str
+  + valuesCk : str
+}
+class DDL_CreateColumn {
+  + columnName : str
+  + columnNull : bool
+  + columnType : str
+  + commentColumn : str
+}
+class DDL_CreateCommentColumn {
+  + columnComment : str
+  + columnName : str
+  + tableName : str
+}
+class DDL_CreateCommentTable {
+  + tableComment : str
+  + tableName : str
+}
+class DDL_CreateDatabase {
+  + databaseName : str
+}
+class DDL_CreateFk {
+  + columnName : str
+  + columnReference : str
+  + nameFk : str
+}
+class DDL_CreatePk {
+  + columnName : str
+  + namePk : str
+}
+class DDL_CreateTable {
+  + commentTable : str
+  + tableName : str
+}
+class DDL_DDLDefinition {
+}
+class DDL_DataDefinition {
+}
+class DDL_Statement {
+}
+class DataDefinition {
+}
+class Statement {
+}
+DataDefinition <|-- DDL_CreateCommentColumn
+DataDefinition <|-- DDL_CreateCommentTable
+DataDefinition <|-- DDL_CreateDatabase
+DataDefinition <|-- DDL_CreateTable
+Statement <|-- DDL_DataDefinition
+DDL_CreateCk "0..9999" --* "1..1" DDL_CreateTable : checks8
+DDL_CreateColumn "0..9999" --* "1..1" DDL_CreateTable : columns1
+DDL_CreateFk "0..9999" --* "1..1" DDL_CreateTable : columnsFk5
+DDL_CreatePk "0..1" --* "1..1" DDL_CreateTable : columnsPk3
+DDL_CreateFk "1..1" -- "0..1" DDL_CreateTable : references0
+DDL_DDLDefinition "1..1" *-- "0..9999" DDL_Statement : statements10
+@enduml

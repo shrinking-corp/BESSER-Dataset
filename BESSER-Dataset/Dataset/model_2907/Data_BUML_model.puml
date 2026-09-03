@@ -1,0 +1,21 @@
+@startuml
+class Data_Attribute {
+  + name : str
+}
+class Data_Entity {
+}
+class Data_Model {
+}
+class Data_PrimitiveType {
+}
+abstract class Data_Type {
+  + name : str
+}
+class Type {
+}
+Type <|-- Data_Entity
+Type <|-- Data_PrimitiveType
+Data_Attribute "0..9999" --* "1..1" Data_Entity : attributes3
+Data_Attribute "1..1" -- "1..1" Data_Type : type1
+Data_Model "1..1" *-- "0..9999" Data_Type : types0
+@enduml

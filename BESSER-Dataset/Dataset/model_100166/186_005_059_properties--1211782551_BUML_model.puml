@@ -1,0 +1,109 @@
+@startuml
+enum DBMS {
+  HSQLDB
+  MSAccess
+  MySQL
+  PgSQL
+  SQLite
+}
+enum ParameterType {
+  Array
+  AsciiStream
+  BigDecimal
+  BinaryStream
+  Blob
+  Boolean
+  Byte
+  Bytes
+  CharacterStream
+  Clob
+  Date
+  DateCalendar
+  Double
+  Float
+  Int
+  Long
+  Object
+  Ref
+  Short
+  String
+  Time
+  TimeCalendar
+  TimeStampCalendar
+  Timestamp
+  Token
+  URL
+  UnicodeStream
+}
+class Sql {
+}
+class properties_DatabaseAlias {
+  + alias : str
+  + id : str
+}
+class properties_DatabaseProperties {
+  + dBMS : str
+  + databaseName : str
+  + dialect : str
+  + driverClassName : str
+  + id : str
+  + namespace : str
+  + password : str
+  + persistenceUnitName : str
+  + port : str
+  + serverURL : str
+  + username : str
+}
+class properties_DatabasePropertiesListType {
+}
+class properties_DocumentRoot {
+  + mixed : str
+}
+class properties_EStringToStringMapEntry {
+}
+class properties_Property {
+  + key : str
+  + value : str
+}
+class properties_SpecificDBMSProperties {
+  + dBMS : str
+}
+class properties_Sql {
+  + hqlQuery : str
+  + id : str
+}
+class properties_SqlFile {
+  + filePath : str
+}
+class properties_SqlGroup {
+  + description : str
+  + id : str
+}
+class properties_SqlParameter {
+  + index : str
+  + name : str
+  + type : str
+}
+class properties_SqlProperties {
+}
+class properties_SqlQuery {
+  + queryString : str
+}
+Sql <|-- properties_SqlFile
+Sql <|-- properties_SqlQuery
+properties_DatabaseProperties "1..1" *-- "0..9999" properties_Property : additionalProperties1
+properties_DatabaseAlias "0..9999" --* "1..1" properties_DatabasePropertiesListType : databaseAlias5
+properties_DatabaseProperties "0..9999" --* "1..1" properties_DatabasePropertiesListType : databaseProperties3
+properties_DatabasePropertiesListType "0..9999" --* "1..1" properties_DocumentRoot : databasePropertiesList11
+properties_Sql "1..1" *-- "0..9999" properties_SqlParameter : parameters20
+properties_SpecificDBMSProperties "0..9999" --* "1..1" properties_SqlGroup : specificDBMSProperties26
+properties_SpecificDBMSProperties "1..1" *-- "0..9999" properties_SqlFile : sqlFile18
+properties_SqlFile "0..9999" --* "1..1" properties_SqlGroup : sqlFile23
+properties_SqlGroup "1..9999" --* "1..1" properties_SqlProperties : sqlGroup29
+properties_DatabaseProperties "1..1" *-- "0..1" properties_SqlProperties : sqlProperties0
+properties_DocumentRoot "1..1" *-- "0..9999" properties_SqlProperties : sqlProperties14
+properties_SpecificDBMSProperties "1..1" *-- "0..9999" properties_SqlQuery : sqlQuery17
+properties_SqlGroup "1..1" *-- "0..9999" properties_SqlQuery : sqlQuery21
+properties_DocumentRoot "1..1" *-- "0..9999" properties_EStringToStringMapEntry : xMLNSPrefixMap7
+properties_DocumentRoot "1..1" *-- "0..9999" properties_EStringToStringMapEntry : xSISchemaLocation8
+@enduml

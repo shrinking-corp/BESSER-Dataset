@@ -1,0 +1,97 @@
+@startuml
+class BinaryExpression {
+}
+class IntegerExpression {
+}
+class NeighborsExpression {
+}
+class UnaryExpression {
+}
+class ca_rule_Add {
+}
+class ca_rule_And {
+}
+class ca_rule_BinaryExpression {
+}
+class ca_rule_CellularAutomata {
+}
+class ca_rule_Conditional {
+}
+class ca_rule_CurrentCellPopulation {
+}
+class ca_rule_Div {
+}
+class ca_rule_Equal {
+}
+class ca_rule_Greater {
+}
+class ca_rule_IntegerExpression {
+}
+class ca_rule_IntegerLiteral {
+  + value : int
+}
+class ca_rule_Lower {
+}
+class ca_rule_Max {
+}
+class ca_rule_Min {
+}
+class ca_rule_Minus {
+}
+class ca_rule_Mod {
+}
+class ca_rule_Mult {
+}
+class ca_rule_NeighborsExpression {
+}
+class ca_rule_Not {
+}
+class ca_rule_Or {
+}
+class ca_rule_PopulationRange {
+  + lowerRange : int
+  + upperRange : int
+}
+class ca_rule_Rule {
+}
+class ca_rule_Size {
+}
+class ca_rule_Sum {
+}
+class ca_rule_UMinus {
+}
+class ca_rule_UnaryExpression {
+}
+BinaryExpression <|-- ca_rule_Add
+BinaryExpression <|-- ca_rule_And
+BinaryExpression <|-- ca_rule_Div
+BinaryExpression <|-- ca_rule_Equal
+BinaryExpression <|-- ca_rule_Greater
+BinaryExpression <|-- ca_rule_Lower
+BinaryExpression <|-- ca_rule_Minus
+BinaryExpression <|-- ca_rule_Mod
+BinaryExpression <|-- ca_rule_Mult
+BinaryExpression <|-- ca_rule_Or
+IntegerExpression <|-- ca_rule_BinaryExpression
+IntegerExpression <|-- ca_rule_Conditional
+IntegerExpression <|-- ca_rule_CurrentCellPopulation
+IntegerExpression <|-- ca_rule_IntegerLiteral
+IntegerExpression <|-- ca_rule_NeighborsExpression
+IntegerExpression <|-- ca_rule_UnaryExpression
+NeighborsExpression <|-- ca_rule_Max
+NeighborsExpression <|-- ca_rule_Min
+NeighborsExpression <|-- ca_rule_Size
+NeighborsExpression <|-- ca_rule_Sum
+UnaryExpression <|-- ca_rule_Not
+UnaryExpression <|-- ca_rule_UMinus
+ca_rule_Conditional "1..1" *-- "1..1" ca_rule_IntegerExpression : condition10
+ca_rule_PopulationRange "0..1" --* "1..1" ca_rule_Rule : filter1
+ca_rule_Conditional "1..1" *-- "1..1" ca_rule_IntegerExpression : ifFalseExpression7
+ca_rule_Conditional "1..1" *-- "1..1" ca_rule_IntegerExpression : ifTrueExpression5
+ca_rule_BinaryExpression "1..1" *-- "1..1" ca_rule_IntegerExpression : left15
+ca_rule_NeighborsExpression "1..1" *-- "0..1" ca_rule_PopulationRange : neighborsFilter13
+ca_rule_IntegerExpression "1..1" --* "1..1" ca_rule_Rule : nextValue0
+ca_rule_BinaryExpression "1..1" *-- "1..1" ca_rule_IntegerExpression : right17
+ca_rule_CellularAutomata "1..1" *-- "1..9999" ca_rule_Rule : rules20
+ca_rule_IntegerExpression "1..1" --* "1..1" ca_rule_UnaryExpression : target3
+@enduml

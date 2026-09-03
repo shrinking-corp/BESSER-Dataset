@@ -1,0 +1,21 @@
+@startuml
+class TypeGraphTrace_ClassListTrace {
+  + concatSignature : str
+}
+class TypeGraphTrace_MethodSignatureTrace {
+  + signatureString : str
+}
+class TypeGraphTrace_TClass {
+}
+class TypeGraphTrace_TMethodSignature {
+}
+class TypeGraphTrace_Trace {
+}
+class TypeGraphTrace_TypeGraph {
+}
+TypeGraphTrace_ClassListTrace "0..9999" --* "1..1" TypeGraphTrace_Trace : classLists3
+TypeGraphTrace_MethodSignatureTrace "0..9999" --* "1..1" TypeGraphTrace_Trace : methodSignatures1
+TypeGraphTrace_Trace "1..1" *-- "0..1" TypeGraphTrace_TypeGraph : programGraph0
+TypeGraphTrace_ClassListTrace "1..1" -- "0..9999" TypeGraphTrace_TClass : tClasses7
+TypeGraphTrace_MethodSignatureTrace "1..1" -- "0..1" TypeGraphTrace_TMethodSignature : tMethodSignature5
+@enduml

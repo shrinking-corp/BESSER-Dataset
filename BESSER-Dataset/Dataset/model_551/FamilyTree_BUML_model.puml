@@ -1,0 +1,24 @@
+@startuml
+class Person {
+}
+class familyTree_FamilyTree {
+}
+class familyTree_Female {
+}
+class familyTree_Male {
+}
+abstract class familyTree_Person {
+  + lastName : str
+  + name : str
+}
+Person <|-- familyTree_Female
+Person <|-- familyTree_Male
+familyTree_Female "1..1" -- "0..1" familyTree_Person : children11
+familyTree_Male "1..1" -- "0..1" familyTree_Person : children7
+familyTree_Male "0..1" -- "1..1" familyTree_Person : father1
+familyTree_Female "1..1" -- "0..1" familyTree_Male : husband9
+familyTree_FamilyTree "1..1" -- "0..9999" familyTree_Person : leaves0
+familyTree_Female "0..1" -- "1..1" familyTree_Person : mother2
+familyTree_FamilyTree "0..1" -- "1..1" familyTree_Person : tree4
+familyTree_Female "0..1" -- "1..1" familyTree_Male : wife5
+@enduml

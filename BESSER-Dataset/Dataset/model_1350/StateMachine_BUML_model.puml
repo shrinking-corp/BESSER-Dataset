@@ -1,0 +1,27 @@
+@startuml
+class AbstractState {
+}
+class Named {
+}
+abstract class statemachine_AbstractState {
+}
+class statemachine_Initial {
+}
+abstract class statemachine_Named {
+  + name : str
+}
+class statemachine_State {
+}
+class statemachine_StateMachine {
+}
+class statemachine_Transition {
+}
+AbstractState <|-- statemachine_Initial
+AbstractState <|-- statemachine_State
+Named <|-- statemachine_AbstractState
+Named <|-- statemachine_Transition
+statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : source3
+statemachine_AbstractState "0..9999" --* "1..1" statemachine_StateMachine : states0
+statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : target6
+statemachine_StateMachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class Edge {
+}
+class petri_Edge {
+  + weight : int
+}
+class petri_EdgeToPlace {
+}
+class petri_EdgeToTransition {
+}
+class petri_PetriNet {
+}
+class petri_Place {
+  + token : int
+}
+class petri_Transition {
+  + token : int
+}
+Edge <|-- petri_EdgeToPlace
+Edge <|-- petri_EdgeToTransition
+petri_EdgeToTransition "1..1" -- "1..1" petri_Transition : in_10
+petri_EdgeToPlace "1..1" -- "1..1" petri_Place : in_7
+petri_EdgeToTransition "0..9999" --* "1..1" petri_Place : out3
+petri_EdgeToPlace "1..9999" --* "1..1" petri_Transition : out5
+petri_PetriNet "1..1" *-- "0..9999" petri_Place : places1
+petri_PetriNet "1..1" *-- "0..9999" petri_Transition : transitions0
+@enduml

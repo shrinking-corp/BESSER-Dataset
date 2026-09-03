@@ -1,0 +1,38 @@
+@startuml
+enum ArithmeticOperator {
+  Add
+  Divide
+  Multiply
+  Subtract
+}
+class Expression {
+}
+class Operand {
+}
+abstract class ast_Expression {
+  + incrementalID : str
+}
+class ast_Model {
+}
+class ast_Number {
+  + value : int
+}
+abstract class ast_Operand {
+}
+class ast_Operator {
+  + op : str
+}
+class ast_Variable {
+  + name : str
+}
+Expression <|-- ast_Operand
+Expression <|-- ast_Operator
+Operand <|-- ast_Number
+Operand <|-- ast_Variable
+ast_Expression "0..1" --* "1..1" ast_Model : expr0
+ast_Expression "0..1" --* "1..1" ast_Operator : left5
+ast_Expression "1..1" -- "0..1" ast_Operator : leftInverse2
+ast_Expression "1..1" -- "0..1" ast_Model : model1
+ast_Expression "0..1" --* "1..1" ast_Operator : right7
+ast_Expression "1..1" -- "0..1" ast_Operator : rightInverse3
+@enduml

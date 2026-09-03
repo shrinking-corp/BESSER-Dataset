@@ -1,0 +1,286 @@
+@startuml
+class ActiveStructure {
+}
+class ApplicationComponent {
+}
+class ApplicationFunction {
+}
+class ArchimateElement {
+}
+class BehaviorElement {
+}
+class BusinessBehaviorElement {
+}
+class BusinessObject {
+}
+class BusinessRole {
+}
+class Node {
+}
+class PassiveStructure {
+}
+abstract class archimateC2_ActiveStructure {
+}
+class archimateC2_ApplicationCollaboration {
+}
+class archimateC2_ApplicationComponent {
+}
+class archimateC2_ApplicationFunction {
+}
+class archimateC2_ApplicationInteraction {
+}
+class archimateC2_ApplicationInterface {
+}
+class archimateC2_ApplicationService {
+}
+abstract class archimateC2_ArchimateElement {
+  + description : str
+  + elementName : str
+}
+class archimateC2_ArchimateModel {
+}
+class archimateC2_Artifact {
+}
+abstract class archimateC2_BehaviorElement {
+}
+class archimateC2_BusinessActor {
+}
+abstract class archimateC2_BusinessBehaviorElement {
+}
+class archimateC2_BusinessCollaboration {
+  + collaboration : str
+}
+class archimateC2_BusinessEvent {
+}
+class archimateC2_BusinessFunction {
+}
+class archimateC2_BusinessInteraction {
+}
+class archimateC2_BusinessInterface {
+}
+class archimateC2_BusinessObject {
+}
+class archimateC2_BusinessProcess {
+  + importance : int
+  + missionary : bool
+  + processDesign : str
+  + processFullName : str
+  + processID : str
+  + processType : str
+}
+class archimateC2_BusinessRole {
+  + rank : int
+}
+class archimateC2_BusinessService {
+}
+class archimateC2_CommunicationPath {
+}
+class archimateC2_Contract {
+}
+class archimateC2_DataObject {
+}
+class archimateC2_Device {
+}
+class archimateC2_InfrastructureInterface {
+}
+class archimateC2_InfrastructureService {
+}
+class archimateC2_Location {
+  + address : str
+}
+class archimateC2_Meaning {
+}
+class archimateC2_Network {
+}
+class archimateC2_Node {
+}
+abstract class archimateC2_PassiveStructure {
+}
+class archimateC2_Product {
+  + contract : str
+}
+class archimateC2_Representation {
+}
+class archimateC2_SystemSoftware {
+}
+class archimateC2_Value {
+}
+ActiveStructure <|-- archimateC2_BusinessActor
+ActiveStructure <|-- archimateC2_BusinessInterface
+ActiveStructure <|-- archimateC2_BusinessRole
+ActiveStructure <|-- archimateC2_Location
+ApplicationComponent <|-- archimateC2_ApplicationCollaboration
+ApplicationFunction <|-- archimateC2_ApplicationInteraction
+ArchimateElement <|-- archimateC2_ActiveStructure
+ArchimateElement <|-- archimateC2_ApplicationComponent
+ArchimateElement <|-- archimateC2_ApplicationFunction
+ArchimateElement <|-- archimateC2_ApplicationInterface
+ArchimateElement <|-- archimateC2_ApplicationService
+ArchimateElement <|-- archimateC2_Artifact
+ArchimateElement <|-- archimateC2_BehaviorElement
+ArchimateElement <|-- archimateC2_BusinessEvent
+ArchimateElement <|-- archimateC2_CommunicationPath
+ArchimateElement <|-- archimateC2_DataObject
+ArchimateElement <|-- archimateC2_InfrastructureInterface
+ArchimateElement <|-- archimateC2_InfrastructureService
+ArchimateElement <|-- archimateC2_Network
+ArchimateElement <|-- archimateC2_Node
+ArchimateElement <|-- archimateC2_PassiveStructure
+BehaviorElement <|-- archimateC2_BusinessBehaviorElement
+BehaviorElement <|-- archimateC2_BusinessService
+BusinessBehaviorElement <|-- archimateC2_BusinessFunction
+BusinessBehaviorElement <|-- archimateC2_BusinessInteraction
+BusinessBehaviorElement <|-- archimateC2_BusinessProcess
+BusinessObject <|-- archimateC2_Contract
+BusinessRole <|-- archimateC2_BusinessCollaboration
+Node <|-- archimateC2_Device
+Node <|-- archimateC2_SystemSoftware
+PassiveStructure <|-- archimateC2_BusinessObject
+PassiveStructure <|-- archimateC2_Meaning
+PassiveStructure <|-- archimateC2_Product
+PassiveStructure <|-- archimateC2_Representation
+PassiveStructure <|-- archimateC2_Value
+archimateC2_ApplicationFunction "0..9999" -- "1..1" archimateC2_DataObject : accessedByApplicationFunctionDataObject134
+archimateC2_ApplicationService "0..9999" -- "1..1" archimateC2_DataObject : accessedByApplicationServiceDataObject135
+archimateC2_BusinessBehaviorElement "0..9999" -- "1..1" archimateC2_BusinessObject : accessedByBusinessBehaviorElementBusinessObject26
+archimateC2_BusinessEvent "1..1" -- "0..9999" archimateC2_BusinessObject : accessedByBusinessObjectBusinessEvent76
+archimateC2_BusinessObject "1..1" -- "0..9999" archimateC2_BusinessService : accessedByBusinessServiceBusinessObject24
+archimateC2_Artifact "1..1" -- "0..9999" archimateC2_InfrastructureService : accessedByInfrastructureServiceArtifact211
+archimateC2_Artifact "0..9999" -- "1..1" archimateC2_InfrastructureService : accessesArtifactInfrastructureService221
+archimateC2_BusinessEvent "0..9999" -- "1..1" archimateC2_BusinessObject : accessesBusinessEventBusinessObject23
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessObject : accessesBusinessObjectBusinessBehaviorElement65
+archimateC2_BusinessObject "0..9999" -- "1..1" archimateC2_BusinessService : accessesBusinessObjectBusinessService41
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_DataObject : accessesDataObjectApplicationFunction177
+archimateC2_ApplicationService "1..1" -- "0..9999" archimateC2_DataObject : accessesDataObjectApplicationService149
+archimateC2_ApplicationCollaboration "0..1" -- "1..1" archimateC2_ApplicationComponent : aggregatedByApplicationCollaborationApplicationComponent193
+archimateC2_BusinessCollaboration "0..1" -- "1..1" archimateC2_BusinessRole : aggregatedByBusinessCollaborationBusinessRole107
+archimateC2_ArchimateElement "1..1" -- "0..1" archimateC2_ArchimateElement : aggregatedByElementElement10
+archimateC2_ApplicationService "0..9999" -- "1..1" archimateC2_Product : aggregatedByProductApplicationService16
+archimateC2_BusinessService "1..1" -- "0..9999" archimateC2_Product : aggregatedByProductBusinessService33
+archimateC2_Contract "1..1" -- "0..9999" archimateC2_Product : aggregatedByProductContract18
+archimateC2_InfrastructureService "0..9999" -- "1..1" archimateC2_Product : aggregatedByProductInfrastructureService17
+archimateC2_ApplicationCollaboration "1..1" -- "0..9999" archimateC2_ApplicationComponent : aggregatesApplicationComponentApplicationCollaboration209
+archimateC2_BusinessActor "0..9999" -- "1..1" archimateC2_BusinessCollaboration : aggregatesBusinessActorBusinessCollaboration116
+archimateC2_BusinessCollaboration "1..1" -- "0..9999" archimateC2_BusinessRole : aggregatesBusinessRoleBusinessCollaboration118
+archimateC2_BusinessService "0..9999" -- "1..1" archimateC2_Product : aggregatesBusinessServiceProduct15
+archimateC2_BusinessActor "1..1" -- "0..9999" archimateC2_BusinessCollaboration : aggregatesByBusinessCollaborationBusinessActor120
+archimateC2_Contract "0..9999" -- "1..1" archimateC2_Product : aggregatesContractProduct14
+archimateC2_ArchimateElement "1..1" -- "0..9999" archimateC2_ArchimateElement : aggregatesElementElement7
+archimateC2_ApplicationService "1..1" -- "0..9999" archimateC2_Product : aggregatesProductApplicationService151
+archimateC2_InfrastructureService "1..1" -- "0..9999" archimateC2_Product : aggregatesProductInfrastructureService227
+archimateC2_ApplicationInterface "0..9999" -- "1..1" archimateC2_BusinessService : assigedToBusinessServiceApplicationInterface44
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_BusinessBehaviorElement : assignedFromApplicationComponentBusinessBehaviorElement202
+archimateC2_BusinessActor "0..9999" -- "1..1" archimateC2_Location : assignedFromBusinessActorLocation78
+archimateC2_BusinessObject "0..9999" -- "1..1" archimateC2_Location : assignedFromBusinessObjectLocation80
+archimateC2_ApplicationInterface "1..1" -- "0..9999" archimateC2_BusinessService : assignedFromBusinessServiceApplicationInterface191
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_Location : assignedFromLocationApplicationComponent86
+archimateC2_Artifact "0..9999" -- "1..1" archimateC2_Location : assignedFromLocationArtifact92
+archimateC2_CommunicationPath "1..1" -- "0..9999" archimateC2_Location : assignedFromLocationCommunicationPath259
+archimateC2_CommunicationPath "0..9999" -- "1..1" archimateC2_Location : assignedFromLocationCommunicationPath90
+archimateC2_Location "0..9999" -- "1..1" archimateC2_Network : assignedFromLocationNetwork266
+archimateC2_Location "1..1" -- "0..9999" archimateC2_Network : assignedFromLocationNetwork89
+archimateC2_Location "1..1" -- "0..9999" archimateC2_Node : assignedFromLocationNode88
+archimateC2_Location "1..1" -- "0..9999" archimateC2_Representation : assignedFromRepresentationLocation82
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_ApplicationFunction : assignedToApplicationComponentApplicationFunction173
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_BusinessBehaviorElement : assignedToApplicationComponentBusinessBehaviorElement71
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_ApplicationFunction : assignedToApplicationFunctionApplicationComponent194
+archimateC2_ApplicationInterface "0..9999" -- "1..1" archimateC2_ApplicationService : assignedToApplicationInterfaceApplicationService147
+archimateC2_ApplicationInterface "1..1" -- "0..9999" archimateC2_ApplicationService : assignedToApplicationServiceApplicationInterface185
+archimateC2_Artifact "0..9999" -- "1..1" archimateC2_Node : assignedToArtifactNode242
+archimateC2_BusinessActor "0..9999" -- "1..1" archimateC2_BusinessRole : assignedToBusinessActorBusinessRole105
+archimateC2_BusinessBehaviorElement "0..9999" -- "1..1" archimateC2_BusinessRole : assignedToBusinessBehaviorElementBusinessRole108
+archimateC2_BusinessInterface "0..9999" -- "1..1" archimateC2_BusinessService : assignedToBusinessInterfaceBusinessService40
+archimateC2_BusinessActor "1..1" -- "0..9999" archimateC2_BusinessRole : assignedToBusinessRoleBusinessActor124
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessRole : assignedToBusinessRoleBusinessBehaviorElement67
+archimateC2_BusinessInterface "1..1" -- "0..9999" archimateC2_BusinessService : assignedToBusinessServiceBusinessInterface99
+archimateC2_Device "0..9999" -- "1..1" archimateC2_SystemSoftware : assignedToDeviceSystemSoftware252
+archimateC2_InfrastructureInterface "0..9999" -- "1..1" archimateC2_InfrastructureService : assignedToInfrastructureInterfaceInfrastructureService223
+archimateC2_InfrastructureInterface "1..1" -- "0..9999" archimateC2_InfrastructureService : assignedToInfrastructureServiceInfrastructureInterface235
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_Location : assignedToLocationApplicationComponent200
+archimateC2_Artifact "1..1" -- "0..9999" archimateC2_Location : assignedToLocationArtifact215
+archimateC2_BusinessActor "1..1" -- "0..9999" archimateC2_Location : assignedToLocationBusinessActor128
+archimateC2_BusinessObject "1..1" -- "0..9999" archimateC2_Location : assignedToLocationBusinessObject22
+archimateC2_DataObject "0..9999" -- "1..1" archimateC2_Location : assignedToLocationDataObject84
+archimateC2_Location "0..9999" -- "1..1" archimateC2_Node : assignedToLocationNode250
+archimateC2_Location "0..9999" -- "1..1" archimateC2_Representation : assignedToLocationRepresentation31
+archimateC2_Artifact "1..1" -- "0..9999" archimateC2_Node : assignedToNodeArtifact213
+archimateC2_Device "1..1" -- "0..9999" archimateC2_SystemSoftware : assignedToSystemSoftwareDevice254
+archimateC2_DataObject "1..1" -- "0..9999" archimateC2_Location : assignedfromLocationDataObject139
+archimateC2_BusinessObject "0..9999" -- "1..1" archimateC2_Meaning : associatedWithBusinessObjectMeaning28
+archimateC2_CommunicationPath "0..1" -- "1..1" archimateC2_Node : associatedWithCommunicationPathNode241
+archimateC2_Device "0..1" -- "1..1" archimateC2_Network : associatedWithDeviceNetwork264
+archimateC2_BusinessObject "1..1" -- "0..9999" archimateC2_Meaning : associatedWithMeaningBusinessObject20
+archimateC2_Device "1..1" -- "0..1" archimateC2_Network : associatedWithNetworkDevice253
+archimateC2_CommunicationPath "1..1" -- "0..1" archimateC2_Node : associatedWithNodeCommunicationPath255
+archimateC2_Product "0..9999" -- "1..1" archimateC2_Value : associatedWithProductValue12
+archimateC2_Product "1..1" -- "0..9999" archimateC2_Value : associatedWithValueProduct13
+archimateC2_ApplicationComponent "1..1" *-- "0..9999" archimateC2_ApplicationInterface : composedOfApplicationInterfaceApplicationComponent196
+archimateC2_BusinessInterface "0..9999" --* "1..1" archimateC2_BusinessRole : composedOfBusinessInterfaceBusinessRole101
+archimateC2_ArchimateElement "1..1" *-- "0..9999" archimateC2_ArchimateElement : composedOfElementElement2
+archimateC2_InfrastructureInterface "0..9999" --* "1..1" archimateC2_Node : composedOfInfrastructureInterfaceNode244
+archimateC2_ApplicationComponent "0..1" -- "1..1" archimateC2_ApplicationInterface : composesApplicationComponentApplicationInterface181
+archimateC2_BusinessInterface "1..1" -- "0..1" archimateC2_BusinessRole : composesBusinessRoleBusinessInterface93
+archimateC2_ArchimateElement "1..1" -- "0..1" archimateC2_ArchimateElement : composesElementElement4
+archimateC2_InfrastructureInterface "1..1" -- "0..1" archimateC2_Node : composesNodeInfrastructureInterface233
+archimateC2_ArchimateElement "0..9999" --* "1..1" archimateC2_ArchimateModel : elements0
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_ApplicationFunction : flowsFromApplicationFunctionApplicationFunction169
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessBehaviorElement : flowsFromBusinessBehaviorElementBusinessBehaviorElement52
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_ApplicationFunction : flowsToApplicationFunctionApplicationFunction166
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessBehaviorElement : flowsToBusinessBehaviorElementBusinessBehaviorElement55
+archimateC2_BusinessBehaviorElement "1..1" -- "0..1" archimateC2_BusinessService : realisesBusinessServiceBusinessBehaviorElement61
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_Artifact : realizedByApplicationComponentArtifact204
+archimateC2_ApplicationFunction "0..9999" -- "1..1" archimateC2_ApplicationService : realizedByApplicationFunctionApplicationService143
+archimateC2_BusinessBehaviorElement "0..9999" -- "1..1" archimateC2_BusinessService : realizedByBusinessBehaviorElementBusinessService36
+archimateC2_BusinessObject "0..9999" -- "1..1" archimateC2_DataObject : realizedByBusinessObjectDataObject137
+archimateC2_Artifact "0..9999" -- "1..1" archimateC2_DataObject : realizedByDataObjectArtifact141
+archimateC2_CommunicationPath "1..1" -- "0..9999" archimateC2_Network : realizedByNetworkCommunicationPath257
+archimateC2_InfrastructureService "1..1" -- "0..9999" archimateC2_Node : realizedByNodeInfrastructureService225
+archimateC2_BusinessObject "1..1" -- "0..9999" archimateC2_Representation : realizedByRepresentationBusinessObject21
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_Artifact : realizesApplicationComponentArtifact219
+archimateC2_ApplicationFunction "1..1" -- "0..1" archimateC2_ApplicationService : realizesApplicationServiceApplicationFunction171
+archimateC2_BusinessObject "1..1" -- "0..9999" archimateC2_DataObject : realizesBusinessObjectDataObject27
+archimateC2_BusinessObject "0..9999" -- "1..1" archimateC2_Representation : realizesBusinessObjectRepresentation29
+archimateC2_CommunicationPath "0..1" -- "1..1" archimateC2_Network : realizesCommunicationPathNetwork262
+archimateC2_Artifact "1..1" -- "0..9999" archimateC2_DataObject : realizesDataObjectArtifact217
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_ApplicationFunction : triggeredByApplicationFunctionApplicationFunction160
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessBehaviorElement : triggeredByBusinessBehaviorElementBusinessBehaviorElement49
+archimateC2_BusinessBehaviorElement "0..9999" -- "1..1" archimateC2_BusinessEvent : triggersBusinessBehaviorElementBusinessEvent74
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessEvent : triggersBusinessEventBusinessBehaviorElement57
+archimateC2_BusinessBehaviorElement "0..9999" -- "1..1" archimateC2_BusinessEvent : triggersByBusinessBehaviorElementBusinessEvent72
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessEvent : triggersByBusinessEventBusinessBehaviorElement59
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_ApplicationFunction : triggersToApplicationFunctionApplicationFunction163
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessBehaviorElement : triggersToBusinessBehaviorElementBusinessBehaviorElement46
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_ApplicationInterface : usedByApplicationComponentApplicationInterface183
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_InfrastructureInterface : usedByApplicationComponentInfrastructureInterface239
+archimateC2_ApplicationComponent "0..9999" -- "1..1" archimateC2_InfrastructureService : usedByApplicationComponentInfrastructureService229
+archimateC2_ApplicationFunction "0..9999" -- "1..1" archimateC2_ApplicationService : usedByApplicationFunctionApplicationService145
+archimateC2_ApplicationFunction "0..9999" -- "1..1" archimateC2_InfrastructureService : usedByApplicationFunctionInfrastructureService231
+archimateC2_ApplicationInterface "0..9999" -- "1..1" archimateC2_BusinessActor : usedByBusinessActorApplicationInterface132
+archimateC2_ApplicationService "1..1" -- "0..9999" archimateC2_BusinessActor : usedByBusinessActorApplicationService157
+archimateC2_BusinessActor "0..9999" -- "1..1" archimateC2_BusinessInterface : usedByBusinessActorBusinessInterface95
+archimateC2_BusinessActor "0..9999" -- "1..1" archimateC2_BusinessService : usedByBusinessActorBusinessService35
+archimateC2_ApplicationService "0..9999" -- "1..1" archimateC2_BusinessBehaviorElement : usedByBusinessBehaviorElementApplicationservice69
+archimateC2_BusinessBehaviorElement "0..9999" -- "1..1" archimateC2_BusinessService : usedByBusinessBehaviorElementBusinessService38
+archimateC2_ApplicationInterface "0..9999" -- "1..1" archimateC2_BusinessRole : usedByBusinessRoleApplicationInterface114
+archimateC2_ApplicationService "1..1" -- "0..9999" archimateC2_BusinessRole : usedByBusinessRoleApplicationService155
+archimateC2_BusinessInterface "1..1" -- "0..9999" archimateC2_BusinessRole : usedByBusinessRoleBusinessInterface97
+archimateC2_BusinessRole "0..9999" -- "1..1" archimateC2_BusinessService : usedByElementBusinessRoleBusinessService43
+archimateC2_InfrastructureInterface "1..1" -- "0..9999" archimateC2_Node : usedByNodeInfrastructureInterface237
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_InfrastructureInterface : usesApplicationComponentInfrastructureInterface206
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_InfrastructureService : usesApplicationComponentInfrastructureService207
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_InfrastructureService : usesApplicationFunctionInfrastructureService179
+archimateC2_ApplicationComponent "1..1" -- "0..9999" archimateC2_ApplicationInterface : usesApplicationInterfaceApplicationComponent198
+archimateC2_ApplicationFunction "1..1" -- "0..9999" archimateC2_ApplicationService : usesApplicationServiceApplicationFunction175
+archimateC2_ApplicationInterface "1..1" -- "0..9999" archimateC2_BusinessActor : usesBusinessActorApplicationInterface187
+archimateC2_ApplicationService "0..9999" -- "1..1" archimateC2_BusinessActor : usesBusinessActorApplicationService130
+archimateC2_ApplicationService "1..1" -- "0..9999" archimateC2_BusinessBehaviorElement : usesBusinessBehaviorElementApplicationservice153
+archimateC2_BusinessActor "1..1" -- "0..9999" archimateC2_BusinessInterface : usesBusinessInterfaceBusinessActor122
+archimateC2_BusinessInterface "0..9999" -- "1..1" archimateC2_BusinessRole : usesBusinessInterfaceBusinessRole103
+archimateC2_ApplicationInterface "1..1" -- "0..9999" archimateC2_BusinessRole : usesBusinessRoleApplicationInterface189
+archimateC2_ApplicationService "0..9999" -- "1..1" archimateC2_BusinessRole : usesBusinessRoleApplicationService112
+archimateC2_BusinessBehaviorElement "1..1" -- "0..9999" archimateC2_BusinessService : usesBusinessServiceBusinessBehaviorElement63
+archimateC2_BusinessActor "1..1" -- "0..9999" archimateC2_BusinessService : usesElementBusinessServiceBusinessActor126
+archimateC2_BusinessRole "1..1" -- "0..9999" archimateC2_BusinessService : usesElementBusinessServiceBusinessRole110
+archimateC2_InfrastructureInterface "0..9999" -- "1..1" archimateC2_Node : usesInfrastructureInterfaceNode246
+archimateC2_InfrastructureService "0..9999" -- "1..1" archimateC2_Node : usesInfrastructureServiceNode248
+@enduml

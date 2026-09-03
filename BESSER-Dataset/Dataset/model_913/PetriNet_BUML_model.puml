@@ -1,0 +1,33 @@
+@startuml
+class Noeud {
+}
+class PetriElement {
+}
+class PetriNet_Arc {
+  + isReadArc : bool
+  + poids : int
+}
+abstract class PetriNet_Noeud {
+  + name : str
+}
+abstract class PetriNet_PetriElement {
+}
+class PetriNet_Place {
+  + jeton : int
+}
+class PetriNet_ReseauPetri {
+  + name : str
+}
+class PetriNet_Transition {
+}
+Noeud <|-- PetriNet_Place
+Noeud <|-- PetriNet_Transition
+PetriElement <|-- PetriNet_Arc
+PetriElement <|-- PetriNet_Noeud
+PetriNet_Arc "0..9999" -- "1..1" PetriNet_Noeud : LinksToSuccessors8
+PetriNet_Arc "0..9999" -- "1..1" PetriNet_Noeud : linksToPredecessors7
+PetriNet_PetriElement "0..9999" --* "1..1" PetriNet_ReseauPetri : petrielement3
+PetriNet_Arc "1..1" -- "1..1" PetriNet_Noeud : predecessor1
+PetriNet_PetriElement "1..1" -- "0..1" PetriNet_ReseauPetri : reseauPetri4
+PetriNet_Arc "1..1" -- "1..1" PetriNet_Noeud : successor0
+@enduml

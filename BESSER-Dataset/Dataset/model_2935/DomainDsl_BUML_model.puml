@@ -1,0 +1,47 @@
+@startuml
+class AbstractElement {
+}
+class Type {
+}
+class domainDsl_AbstractElement {
+}
+class domainDsl_DataType {
+}
+class domainDsl_Domainmodel {
+}
+class domainDsl_EType {
+  + name : str
+}
+class domainDsl_Entity {
+}
+class domainDsl_Feature {
+  + defaultVal : str
+  + many : bool
+  + name : str
+}
+class domainDsl_Import {
+  + importedNamespace : str
+}
+class domainDsl_PackageDeclaration {
+  + name : str
+}
+class domainDsl_Type {
+  + name : str
+}
+class domainDsl_Validator {
+  + name : str
+  + svalue : str
+  + value : int
+}
+AbstractElement <|-- domainDsl_Import
+AbstractElement <|-- domainDsl_PackageDeclaration
+AbstractElement <|-- domainDsl_Type
+Type <|-- domainDsl_DataType
+Type <|-- domainDsl_Entity
+domainDsl_AbstractElement "0..9999" --* "1..1" domainDsl_Domainmodel : elements0
+domainDsl_AbstractElement "0..9999" --* "1..1" domainDsl_PackageDeclaration : elements1
+domainDsl_Entity "1..1" *-- "0..9999" domainDsl_Feature : features5
+domainDsl_Entity "1..1" -- "0..1" domainDsl_Entity : superType4
+domainDsl_Feature "1..1" -- "0..1" domainDsl_Type : type7
+domainDsl_Feature "1..1" *-- "0..9999" domainDsl_Validator : valdiators9
+@enduml

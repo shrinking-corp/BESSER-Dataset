@@ -1,0 +1,49 @@
+@startuml
+class Bill {
+  + Amount : int
+  + BillNo_ : str
+  + PatientName : str
+}
+class Dept {
+  + Doc_id : int
+  + Id : int
+  + Name : str
+}
+class Doctor {
+  + Dept : str
+  + DocName : str
+  + Doct_id : int
+  + Location : str
+  + PhoneNo_ : int
+  + Specialization : str
+}
+class Patient {
+  + Address : str
+  + Age : int
+  + Name : str
+  + Patient_id : int
+  + PhoneNo_ : int
+  + RoomNo_ : int
+  + Sex : str
+}
+class Receptionist {
+  + Name : str
+  + Receptional_id : int
+}
+class Rooms {
+  + Location : str
+  + Roomno_ : int
+}
+class Staff {
+  + Id : int
+  + Staff_name : str
+  + Type : str
+}
+Bill "0..1" -- "0..1" Receptionist : Class_Receptionist
+Dept "0..1" -- "0..1" Doctor : Doctor_Dept
+Bill "0..1" -- "0..1" Patient : Patient_Bill
+Doctor "0..1" -- "0..1" Patient : Patient_Doctor
+Patient "0..1" -- "0..1" Rooms : Patient_Rooms
+Patient "0..1" -- "0..1" Receptionist : Receptionist_Patient
+Rooms "0..1" -- "0..1" Staff : Rooms_Staff
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+class PetriNetModuleTraceLink {
+}
+class TraceLink {
+}
+class railway2stochasticpetrinet_Arc {
+}
+class railway2stochasticpetrinet_ImmediateTransition {
+}
+class railway2stochasticpetrinet_Node {
+}
+class railway2stochasticpetrinet_PetriNet {
+}
+abstract class railway2stochasticpetrinet_PetriNetModuleTraceLink {
+}
+class railway2stochasticpetrinet_Place {
+}
+class railway2stochasticpetrinet_Railway2StochasticPetriNetTrace {
+}
+class railway2stochasticpetrinet_RailwayContainer {
+}
+class railway2stochasticpetrinet_RailwayContainer2PetriNet {
+}
+class railway2stochasticpetrinet_RailwayElement {
+}
+class railway2stochasticpetrinet_RequiredElement2Connection {
+}
+class railway2stochasticpetrinet_RequiredElement2FailureModel {
+}
+class railway2stochasticpetrinet_Route {
+}
+class railway2stochasticpetrinet_Route2FailureModel {
+}
+abstract class railway2stochasticpetrinet_TraceLink {
+}
+PetriNetModuleTraceLink <|-- railway2stochasticpetrinet_RequiredElement2Connection
+PetriNetModuleTraceLink <|-- railway2stochasticpetrinet_RequiredElement2FailureModel
+PetriNetModuleTraceLink <|-- railway2stochasticpetrinet_Route2FailureModel
+TraceLink <|-- railway2stochasticpetrinet_PetriNetModuleTraceLink
+TraceLink <|-- railway2stochasticpetrinet_RailwayContainer2PetriNet
+railway2stochasticpetrinet_Arc "0..9999" -- "1..1" railway2stochasticpetrinet_PetriNetModuleTraceLink : arcs4
+railway2stochasticpetrinet_Place "0..1" -- "1..1" railway2stochasticpetrinet_RequiredElement2FailureModel : failed18
+railway2stochasticpetrinet_Place "0..1" -- "1..1" railway2stochasticpetrinet_Route2FailureModel : failed9
+railway2stochasticpetrinet_Node "0..9999" -- "1..1" railway2stochasticpetrinet_PetriNetModuleTraceLink : nodes3
+railway2stochasticpetrinet_Place "0..1" -- "1..1" railway2stochasticpetrinet_RequiredElement2FailureModel : operational15
+railway2stochasticpetrinet_Place "0..1" -- "1..1" railway2stochasticpetrinet_Route2FailureModel : operational7
+railway2stochasticpetrinet_PetriNet "0..1" -- "1..1" railway2stochasticpetrinet_RailwayContainer2PetriNet : petriNet28
+railway2stochasticpetrinet_RailwayContainer "0..1" -- "1..1" railway2stochasticpetrinet_RailwayContainer2PetriNet : railwayContainer26
+railway2stochasticpetrinet_RailwayElement "0..1" -- "1..1" railway2stochasticpetrinet_RequiredElement2FailureModel : railwayElement14
+railway2stochasticpetrinet_RailwayElement "0..1" -- "1..1" railway2stochasticpetrinet_RequiredElement2Connection : railwayElement23
+railway2stochasticpetrinet_ImmediateTransition "0..1" -- "1..1" railway2stochasticpetrinet_Route2FailureModel : repair12
+railway2stochasticpetrinet_RequiredElement2Connection "1..1" -- "0..1" railway2stochasticpetrinet_Route : route21
+railway2stochasticpetrinet_Route "0..1" -- "1..1" railway2stochasticpetrinet_Route2FailureModel : route6
+railway2stochasticpetrinet_Railway2StochasticPetriNetTrace "1..1" -- "0..1" railway2stochasticpetrinet_RailwayContainer : source1
+railway2stochasticpetrinet_Railway2StochasticPetriNetTrace "1..1" *-- "0..9999" railway2stochasticpetrinet_TraceLink : traceLinks0
+@enduml

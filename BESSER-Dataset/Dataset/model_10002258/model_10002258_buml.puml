@@ -1,0 +1,101 @@
+@startuml
+class Halaman_Publikasi__major_sales_record_UseCase {
+}
+class Halaman_Publikasi__news_UseCase {
+}
+class Halaman_Publikasi__produk_UseCase {
+}
+class Pengunjung_Website_Actor {
+}
+class admin {
+}
+class admin_Actor {
+}
+class halaman_admin_login_UseCase {
+}
+class halaman_admin_major_sales_record_UseCase {
+}
+class halaman_admin_major_sales_record_UseCase1 {
+}
+class halaman_admin_news_UseCase {
+}
+class halaman_admin_news_UseCase1 {
+}
+class halaman_admin_news_UseCase2 {
+}
+class halaman_admin_produk_UseCase {
+}
+class halaman_admin_produk_UseCase1 {
+}
+class halaman_admin_produk_UseCase2 {
+}
+class halaman_admin_register_UseCase {
+}
+class halaman_admin_register_UseCase1 {
+}
+class halaman_admin_register_UseCase2 {
+}
+class login_admin {
+  + email : str
+  + password : str
+}
+class news {
+  + foto_news : str
+  + id_news : int
+  + isi_news : str
+  + judul_news : str
+}
+class news_Interface {
+}
+class our_costumer_Interface {
+}
+class our_costumer___major {
+  + id_major : int
+  + logo_major : str
+}
+class pengunjung_website {
+}
+class produk {
+  + foto_produk : str
+  + id_produk : int
+  + website : str
+}
+class produk_Interface {
+}
+class register_admin {
+  + email : str
+  + id_user : int
+  + nama_lengkap : str
+  + nik : str
+  + password : str
+}
+Halaman_Publikasi__major_sales_record_UseCase "0..1" -- "0..1" Pengunjung_Website_Actor : Pengunjung_Website_major_sales_record
+Halaman_Publikasi__news_UseCase "0..1" -- "0..1" Pengunjung_Website_Actor : Pengunjung_Website_news
+Halaman_Publikasi__produk_UseCase "0..1" -- "0..1" Pengunjung_Website_Actor : Pengunjung_Website_produk
+admin "1..1" -- "1..9999" produk_Interface : admin_Interface
+admin_Actor "0..1" -- "0..1" halaman_admin_login_UseCase : admin_login
+admin "1..1" -- "1..1" login_admin : admin_login_admin
+admin_Actor "0..1" -- "0..1" halaman_admin_major_sales_record_UseCase1 : admin_major_sales_record
+admin_Actor "0..1" -- "0..1" halaman_admin_major_sales_record_UseCase : admin_major_sales_record2
+Halaman_Publikasi__major_sales_record_UseCase "0..1" -- "0..1" admin_Actor : admin_major_sales_record3
+admin "1..1" -- "0..9999" news : admin_news
+admin "1..1" -- "1..9999" news_Interface : admin_news2
+admin_Actor "0..1" -- "0..1" halaman_admin_news_UseCase2 : admin_news3
+admin_Actor "0..1" -- "0..1" halaman_admin_news_UseCase1 : admin_news4
+admin_Actor "0..1" -- "0..1" halaman_admin_news_UseCase : admin_news5
+Halaman_Publikasi__news_UseCase "0..1" -- "0..1" admin_Actor : admin_news6
+admin "1..1" -- "1..9999" our_costumer_Interface : admin_our_costumer
+admin "1..1" -- "0..9999" our_costumer___major : admin_our_costumer___major
+admin "1..1" -- "0..9999" produk : admin_produk
+admin_Actor "0..1" -- "0..1" halaman_admin_produk_UseCase : admin_produk2
+admin_Actor "0..1" -- "0..1" halaman_admin_produk_UseCase2 : admin_produk3
+admin_Actor "0..1" -- "0..1" halaman_admin_produk_UseCase1 : admin_produk4
+Halaman_Publikasi__produk_UseCase "0..1" -- "0..1" admin_Actor : admin_produk5
+admin_Actor "0..1" -- "0..1" halaman_admin_register_UseCase2 : admin_register
+admin_Actor "0..1" -- "0..1" halaman_admin_register_UseCase1 : admin_register2
+admin_Actor "0..1" -- "0..1" halaman_admin_register_UseCase : admin_register3
+admin "1..1" -- "1..1" register_admin : admin_register_admin
+news_Interface "1..9999" -- "0..1" pengunjung_website : pengunjung_website_news
+our_costumer_Interface "1..9999" -- "0..1" pengunjung_website : pengunjung_website_our_costumer
+pengunjung_website "0..1" -- "1..9999" produk_Interface : pengunjung_website_produk
+@enduml

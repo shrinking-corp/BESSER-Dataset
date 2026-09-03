@@ -1,0 +1,27 @@
+@startuml
+class statechart_Model {
+  + name : str
+}
+class statechart_Node {
+  + activity : str
+  + label : str
+  + name : str
+  + type : str
+}
+class statechart_Transition {
+  + TE : str
+  + name : str
+}
+class statechart_Variable {
+  + name : str
+  + type : str
+}
+statechart_Node "0..9999" --* "1..1" statechart_Node : Children9
+statechart_Node "0..1" -- "1..1" statechart_Node : Father_of11
+statechart_Model "1..1" *-- "0..9999" statechart_Node : nodes0
+statechart_Node "0..1" -- "1..1" statechart_Transition : source13
+statechart_Node "0..1" -- "1..1" statechart_Transition : target16
+statechart_Model "1..1" *-- "0..9999" statechart_Transition : transitions1
+statechart_Model "1..1" *-- "0..9999" statechart_Variable : variables3
+statechart_Node "1..1" -- "0..9999" statechart_Variable : variables5
+@enduml

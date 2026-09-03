@@ -1,0 +1,92 @@
+@startuml
+enum PrimitiveTypeEnum {
+  Boolean
+  Integer
+  Real
+  String
+  UnlimitedNatural
+}
+class VSpec {
+}
+class VSpecResolution {
+}
+class VariationPoint {
+}
+class cvlmodel_CVLModel {
+  + name : str
+}
+class cvlmodel_Choice {
+}
+class cvlmodel_ChoiceResolution {
+  + decision : str
+}
+class cvlmodel_MOFRef {
+  + id : str
+}
+class cvlmodel_Multiplicity {
+  + max : str
+  + min : str
+}
+class cvlmodel_ObjectExistence {
+  + target : str
+}
+class cvlmodel_ResolutionModel {
+  + name : str
+  + getVSpecResolutionsForVSpec(cvlmodel_vspec : str) : str
+}
+class cvlmodel_StringToMOFRefMap {
+  + key : str
+}
+class cvlmodel_VClassifier {
+}
+class cvlmodel_VClassifierResolution {
+  + instance : str
+}
+abstract class cvlmodel_VSpec {
+  + mandatory : str
+  + name : str
+  + isClon() : str
+  + isCloneable() : str
+  + isRoot() : str
+}
+abstract class cvlmodel_VSpecResolution {
+  + name : str
+  + isPossitivelyResolved() : str
+}
+class cvlmodel_VSpecTree {
+}
+class cvlmodel_Variable {
+  + type : str
+}
+class cvlmodel_VariableResolution {
+  + value : str
+}
+abstract class cvlmodel_VariationPoint {
+  + modelTransformationSourceURL : str
+  + modelTransformationURL : str
+  + name : str
+  + negativeVariability : str
+}
+VSpec <|-- cvlmodel_Choice
+VSpec <|-- cvlmodel_VClassifier
+VSpec <|-- cvlmodel_Variable
+VSpecResolution <|-- cvlmodel_ChoiceResolution
+VSpecResolution <|-- cvlmodel_VClassifierResolution
+VSpecResolution <|-- cvlmodel_VariableResolution
+VariationPoint <|-- cvlmodel_ObjectExistence
+cvlmodel_VSpec "1..1" -- "1..1" cvlmodel_VariationPoint : binding14
+cvlmodel_VSpec "0..9999" -- "1..1" cvlmodel_VSpec : children5
+cvlmodel_Multiplicity "1..1" -- "0..9999" cvlmodel_VSpec : children7
+cvlmodel_Multiplicity "0..1" --* "1..1" cvlmodel_VSpec : groupMultiplicity0
+cvlmodel_Multiplicity "0..1" --* "1..1" cvlmodel_VClassifier : instanceMultiplicity10
+cvlmodel_VSpec "0..1" -- "1..1" cvlmodel_VSpec : parent2
+cvlmodel_StringToMOFRefMap "0..9999" --* "1..1" cvlmodel_VariationPoint : references16
+cvlmodel_ResolutionModel "1..1" *-- "0..9999" cvlmodel_VSpecResolution : resolutions25
+cvlmodel_VSpec "1..1" -- "1..1" cvlmodel_VSpecResolution : resolvedVSpec12
+cvlmodel_ResolutionModel "1..1" -- "1..1" cvlmodel_VSpecTree : resolvedVSpec27
+cvlmodel_VSpec "0..1" -- "1..1" cvlmodel_VSpecTree : root22
+cvlmodel_MOFRef "1..1" --* "1..1" cvlmodel_StringToMOFRefMap : value18
+cvlmodel_CVLModel "1..1" *-- "0..9999" cvlmodel_VariationPoint : variationPoints32
+cvlmodel_CVLModel "1..1" *-- "1..1" cvlmodel_VSpecTree : vspecTree30
+cvlmodel_VSpec "0..9999" --* "1..1" cvlmodel_VSpecTree : vspecs20
+@enduml

@@ -1,0 +1,78 @@
+@startuml
+class Account {
+  + billing_address : Customer
+  + id : int
+}
+class Authentication_Actor {
+}
+class Bill {
+  + Billing_address : Account
+  + Customer_name : Customer
+  + Total_Price : Order
+}
+class Cash_on_Delivery_Actor {
+}
+class Checkout_UseCase {
+}
+class Class {
+}
+class Client_Register_UseCase {
+}
+class Customer {
+  + Address : str
+  + Contact : str
+  + Name : str
+  + Password : str
+  + Username : str
+}
+class Make_Purchase_UseCase {
+}
+class New_customer_Actor {
+}
+class Order {
+  + Total : int
+  + id : str
+}
+class Product {
+  + Price : int
+  + Product_Name : str
+  + id : int
+}
+class Registered_Customer_Actor {
+}
+class Shopping_cart {
+  + Cart_id : int
+  + Customer_id : Customer
+  + Product_Name : Product
+  + Quantity : int
+}
+class Suppliers {
+  + Name : str
+  + id : int
+}
+class View_items_UseCase {
+}
+class Web_Customer_Actor {
+}
+class Web_User {
+  + Password : int
+  + Username : str
+}
+Account "1..1" -- "1..1" Order : Account_Order
+Account "1..1" -- "1..1" Shopping_cart : Account_Shopping_cart
+Authentication_Actor "0..1" -- "0..1" Checkout_UseCase : Authentication_Checkout
+Authentication_Actor "0..1" -- "0..1" Client_Register_UseCase : Authentication_Client_Register
+Authentication_Actor "0..1" -- "0..1" View_items_UseCase : Authentication_View_items
+Account "1..1" -- "0..1" Bill : Bill_Account
+Cash_on_Delivery_Actor "0..1" -- "0..1" Checkout_UseCase : Checkout_Cash_on_Delivery
+Account "1..1" -- "1..1" Customer : Customer_Account
+Bill "1..1" -- "0..1" Customer : Customer_Bill
+Client_Register_UseCase "0..1" -- "0..1" New_customer_Actor : New_customer_Client_Register
+New_customer_Actor "0..1" -- "0..1" View_items_UseCase : New_customer_View_items
+Bill "0..1" -- "1..1" Order : Order_Bill
+Product "1..1" -- "1..1" Shopping_cart : Product_Shopping_cart
+Make_Purchase_UseCase "0..1" -- "0..1" Registered_Customer_Actor : Registered_Customer_Make_Purchase
+Registered_Customer_Actor "0..1" -- "0..1" View_items_UseCase : Registered_Customer_View_items
+Product "1..1" -- "0..1" Suppliers : Suppliers_Product
+Customer "0..1" -- "0..1" Web_User : Web_User_Customer
+@enduml
