@@ -7,6 +7,86 @@ decision was made, so we can backtrack later without re-deriving it.
 
 ---
 
+## 2026-09-10 — Models with no testable logic: detected statically (not from coverage/mutation), and **marked**, not deleted
+
+**User ask:** mark every model that "does not implement any logic" as not-to-be-used,
+using best practice (mark vs. delete); and first check whether the metadata already
+gathered (coverage / mutation / test validation) is sufficient to identify them.
+
+**Was the existing metadata sufficient? No — and coverage/mutation are actively
+the wrong signal here.** Two separate reasons:
+
+1. *Availability:* a sweep of all 9,082 `code_metadata.json` files found exactly
+   two keys everywhere — `python_code_validation` and `test_validation`. The
+   coverage and mutation numbers only ever existed for prototype samples in
+   `reports/` (250 / 231 / 38 models) and were never merged into metadata, so
+   there is nothing dataset-wide to filter on.
+2. *Validity:* even with a full run they would not work. A file made only of
+   `class X: pass` declarations scores **100% line coverage** — importing the
+   module executes every one of its statements, because all of them are class
+   headers and `pass` — and produces **zero mutants**, because there is no
+   operator, literal or branch to mutate. Both metrics look *perfect* exactly
+   where there is nothing to measure. Confirmed empirically against the existing
+   prototype reports: all 19 such models in the 250-model coverage sample scored
+   100.0%.
+
+**Detection method chosen: static AST analysis of `python_code.py`.** No
+execution, no test run. Definition of "no logic": zero statements inside any
+function/method body, counting neither `pass`/`...` stubs nor docstrings.
+
+**Validated against the mutation ground truth we already had.** Against the
+250-model cosmic-ray prototype: the 19 models cosmic-ray generated 0 mutants for
+are *exactly* the 19 the static classifier calls unusable — 19/19 agreement, 0
+false positives among the 231 models that did produce mutants. Across those 231,
+correlation between static statement count and mutants generated is r = 0.995.
+The static pass covers all 9,082 models in **~15 seconds**; the 250-model
+mutation prototype alone cost ~7 CPU-hours. The cheap static signal reproduces
+the expensive dynamic one exactly for this purpose.
+
+**Decision: mark, do not delete.** Reasons, in order of weight:
+- The dataset is a published research artifact derived from ModelSet, with
+  externally-referenced model ids (`model_path.txt`, the Java renderings, the
+  release bundle). Deleting directories breaks those references and silently
+  invalidates the two prior validation reports, which are keyed by model name.
+- The no-logic models *are a finding* about the B-UML→Python generator (566
+  models where every class is a bare `pass`), not noise to be swept away. They
+  are the negative examples for any future generator work.
+- Marking is reversible and additive; deletion is neither.
+- Consumers filter on one predicate, and get the reason for free.
+
+**New script:** `scripts/validate_logic.py`, same shape as the other validators
+(`--dataset-dir`/`--reports-dir`/`--workers`/`--limit`), but **defaults to a dry
+run** — it only touches `code_metadata.json` when `--write-metadata` is passed,
+so the classification can be reviewed before it lands. Adds a `logic_validation`
+key per model with `status`, a boolean `usable`, a human-readable
+`exclude_reason`, and a `metrics` block (classes, empty classes, enum classes,
+init/getter/setter/operation counts, logic statements, branch statements).
+
+**Full run (2026-09-10, `--write-metadata`):** 8,438/9,082 usable (92.91%), 644
+excluded — 630 `no_logic`, 12 `syntax_error`, 1 `missing_file`, 1 `empty_file`.
+Verified with `git status --porcelain -- Dataset` that exactly 9,082 files
+changed and every one of them is a `code_metadata.json`. Reports:
+`reports/logic_validation_report.{json,md}` plus a flat
+`reports/excluded_models_no_logic.txt` so consumers need not walk 9,082
+metadata files.
+
+**Incidental finding, and a significant one: the dataset contains zero
+implemented operations.** All **19,768** B-UML operations, across the 1,037
+models that declare any, are `pass` stubs — there is not a single implemented
+operation body anywhere in the 9,082 models. This is the dataset-wide
+generalisation of the 2026-09-01 test-validation finding (907 models failing
+because tests assert stubbed operations change state). It also means a stricter
+reading of "implements no logic" — *no implemented operations* — would exclude
+all 1,037. That is deliberately **not** what `usable: false` encodes: those
+models still carry real bidirectional-association logic in their property
+setters, which is genuinely coverable and mutable. The stricter reading is
+exposed separately as `all_operations_stubbed`, so either exclusion policy can
+be applied downstream without a re-run. Written up in full, with the
+`AssertionError` cross-reference and an upstream recommendation, in
+[`2026-09-10-zero-implemented-operations.md`](2026-09-10-zero-implemented-operations.md).
+
+---
+
 ## 2026-09-02 — New metric: coverage split by test section (structural vs. hypothesis), empty-method exclusion
 
 **User ask:** add per-model coverage ratios to metadata, but computed separately
