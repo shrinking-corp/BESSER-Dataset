@@ -5160,7 +5160,7 @@ class RefOntoUML_MultiplicityElement(Element):
         # TODO: Implement lower_ge_0 method
         pass
 
-    def is(self, RefOntoUML_upperbound, RefOntoUML_lowerbound) :
+    def is_(self, RefOntoUML_upperbound, RefOntoUML_lowerbound) :
         # TODO: Implement is method
         pass
 

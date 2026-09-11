@@ -4847,7 +4847,7 @@ class RefOntoUML_MultiplicityElement(Element):
         # TODO: Implement compatibleWith method
         pass
 
-    def is(self, RefOntoUML_lowerbound, RefOntoUML_upperbound) :
+    def is_(self, RefOntoUML_lowerbound, RefOntoUML_upperbound) :
         # TODO: Implement is method
         pass
 

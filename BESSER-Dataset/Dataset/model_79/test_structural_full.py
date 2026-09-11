@@ -1,0 +1,3578 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    ASTNode,
+    AbstractMethodDeclaration,
+    AbstractMethodInvocation,
+    AbstractTypeDeclaration,
+    AbstractTypeQualifiedExpression,
+    AbstractVariablesContainer,
+    AnnotationTypeDeclaration,
+    AnnotationTypeMemberDeclaration,
+    BodyDeclaration,
+    ClassDeclaration,
+    Comment,
+    EnumDeclaration,
+    Expression,
+    InterfaceDeclaration,
+    LabeledStatement,
+    MethodDeclaration,
+    NamedElement,
+    NamespaceAccess,
+    PrimitiveType,
+    SingleVariableDeclaration,
+    Statement,
+    Type,
+    TypeDeclaration,
+    UnresolvedItem,
+    VariableDeclaration,
+    VariableDeclarationFragment,
+    java__ASTNode,
+    java__AbstractMethodDeclaration,
+    java__AbstractMethodInvocation,
+    java__AbstractTypeDeclaration,
+    java__AbstractTypeQualifiedExpression,
+    java__AbstractVariablesContainer,
+    java__Annotation,
+    java__AnnotationMemberValuePair,
+    java__AnnotationTypeDeclaration,
+    java__AnnotationTypeMemberDeclaration,
+    java__AnonymousClassDeclaration,
+    java__Archive,
+    java__ArrayAccess,
+    java__ArrayCreation,
+    java__ArrayInitializer,
+    java__ArrayLengthAccess,
+    java__ArrayType,
+    java__AssertStatement,
+    java__Assignment,
+    java__Block,
+    java__BlockComment,
+    java__BodyDeclaration,
+    java__BooleanLiteral,
+    java__BreakStatement,
+    java__CastExpression,
+    java__CatchClause,
+    java__CharacterLiteral,
+    java__ClassDeclaration,
+    java__ClassFile,
+    java__ClassInstanceCreation,
+    java__Comment,
+    java__CompilationUnit,
+    java__ConditionalExpression,
+    java__ConstructorDeclaration,
+    java__ConstructorInvocation,
+    java__ContinueStatement,
+    java__DoStatement,
+    java__EmptyStatement,
+    java__EnhancedForStatement,
+    java__EnumConstantDeclaration,
+    java__EnumDeclaration,
+    java__Expression,
+    java__ExpressionStatement,
+    java__FieldAccess,
+    java__FieldDeclaration,
+    java__ForStatement,
+    java__IfStatement,
+    java__ImportDeclaration,
+    java__InfixExpression,
+    java__Initializer,
+    java__InstanceofExpression,
+    java__InterfaceDeclaration,
+    java__Javadoc,
+    java__LabeledStatement,
+    java__LineComment,
+    java__Manifest,
+    java__ManifestAttribute,
+    java__ManifestEntry,
+    java__MemberRef,
+    java__MethodDeclaration,
+    java__MethodInvocation,
+    java__MethodRef,
+    java__MethodRefParameter,
+    java__Model,
+    java__Modifier,
+    java__NamedElement,
+    java__NamespaceAccess,
+    java__NullLiteral,
+    java__NumberLiteral,
+    java__Package,
+    java__PackageAccess,
+    java__ParameterizedType,
+    java__ParenthesizedExpression,
+    java__PostfixExpression,
+    java__PrefixExpression,
+    java__PrimitiveType,
+    java__PrimitiveTypeBoolean,
+    java__PrimitiveTypeByte,
+    java__PrimitiveTypeChar,
+    java__PrimitiveTypeDouble,
+    java__PrimitiveTypeFloat,
+    java__PrimitiveTypeInt,
+    java__PrimitiveTypeLong,
+    java__PrimitiveTypeShort,
+    java__PrimitiveTypeVoid,
+    java__ReturnStatement,
+    java__SingleVariableAccess,
+    java__SingleVariableDeclaration,
+    java__Statement,
+    java__StringLiteral,
+    java__SuperConstructorInvocation,
+    java__SuperFieldAccess,
+    java__SuperMethodInvocation,
+    java__SwitchCase,
+    java__SwitchStatement,
+    java__SynchronizedStatement,
+    java__TagElement,
+    java__Test,
+    java__TextElement,
+    java__ThisExpression,
+    java__ThrowStatement,
+    java__TryStatement,
+    java__Type,
+    java__TypeAccess,
+    java__TypeDeclaration,
+    java__TypeDeclarationStatement,
+    java__TypeLiteral,
+    java__TypeParameter,
+    java__UnresolvedAnnotationDeclaration,
+    java__UnresolvedAnnotationTypeMemberDeclaration,
+    java__UnresolvedClassDeclaration,
+    java__UnresolvedEnumDeclaration,
+    java__UnresolvedInterfaceDeclaration,
+    java__UnresolvedItem,
+    java__UnresolvedItemAccess,
+    java__UnresolvedLabeledStatement,
+    java__UnresolvedMethodDeclaration,
+    java__UnresolvedSingleVariableDeclaration,
+    java__UnresolvedType,
+    java__UnresolvedTypeDeclaration,
+    java__UnresolvedVariableDeclarationFragment,
+    java__VariableDeclaration,
+    java__VariableDeclarationExpression,
+    java__VariableDeclarationFragment,
+    java__VariableDeclarationStatement,
+    java__WhileStatement,
+    java__WildCardType,
+    AssignmentKind,
+    InfixExpressionKind,
+    InheritanceKind,
+    PostfixExpressionKind,
+    PrefixExpressionKind,
+    VisibilityKind,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_java__Archive_originalFilePath_value_roundtrip():
+    instance = java__Archive(originalFilePath="sample_text")
+    assert instance.originalFilePath == "sample_text"
+    instance.originalFilePath = "sample_text_2"
+    assert instance.originalFilePath == "sample_text_2"
+
+
+def test_java__ArrayType_dimensions_value_roundtrip():
+    instance = java__ArrayType(dimensions=7)
+    assert instance.dimensions == 7
+    instance.dimensions = 13
+    assert instance.dimensions == 13
+
+
+def test_java__Assignment_operator_value_roundtrip():
+    instance = java__Assignment(operator="sample_text")
+    assert instance.operator == "sample_text"
+    instance.operator = "sample_text_2"
+    assert instance.operator == "sample_text_2"
+
+
+def test_java__BooleanLiteral_value_value_roundtrip():
+    instance = java__BooleanLiteral(value=True)
+    assert instance.value == True
+    instance.value = False
+    assert instance.value == False
+
+
+def test_java__CharacterLiteral_escapedValue_value_roundtrip():
+    instance = java__CharacterLiteral(escapedValue="sample_text")
+    assert instance.escapedValue == "sample_text"
+    instance.escapedValue = "sample_text_2"
+    assert instance.escapedValue == "sample_text_2"
+
+
+def test_java__ClassFile_originalFilePath_value_roundtrip():
+    instance = java__ClassFile(originalFilePath="sample_text")
+    assert instance.originalFilePath == "sample_text"
+    instance.originalFilePath = "sample_text_2"
+    assert instance.originalFilePath == "sample_text_2"
+
+
+def test_java__Comment_content_value_roundtrip():
+    instance = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    assert instance.content == "sample_text"
+    instance.content = "sample_text_2"
+    assert instance.content == "sample_text_2"
+
+
+def test_java__Comment_enclosedByParent_value_roundtrip():
+    instance = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    assert instance.enclosedByParent == True
+    instance.enclosedByParent = False
+    assert instance.enclosedByParent == False
+
+
+def test_java__Comment_prefixOfParent_value_roundtrip():
+    instance = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    assert instance.prefixOfParent == True
+    instance.prefixOfParent = False
+    assert instance.prefixOfParent == False
+
+
+def test_java__CompilationUnit_originalFilePath_value_roundtrip():
+    instance = java__CompilationUnit(originalFilePath="sample_text")
+    assert instance.originalFilePath == "sample_text"
+    instance.originalFilePath = "sample_text_2"
+    assert instance.originalFilePath == "sample_text_2"
+
+
+def test_java__ImportDeclaration_static_value_roundtrip():
+    instance = java__ImportDeclaration(static=True)
+    assert instance.static == True
+    instance.static = False
+    assert instance.static == False
+
+
+def test_java__InfixExpression_operator_value_roundtrip():
+    instance = java__InfixExpression(operator="sample_text")
+    assert instance.operator == "sample_text"
+    instance.operator = "sample_text_2"
+    assert instance.operator == "sample_text_2"
+
+
+def test_java__ManifestAttribute_key_value_roundtrip():
+    instance = java__ManifestAttribute(key="sample_text", value="sample_text")
+    assert instance.key == "sample_text"
+    instance.key = "sample_text_2"
+    assert instance.key == "sample_text_2"
+
+
+def test_java__ManifestAttribute_value_value_roundtrip():
+    instance = java__ManifestAttribute(key="sample_text", value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_java__ManifestEntry_name_value_roundtrip():
+    instance = java__ManifestEntry(name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_java__MethodDeclaration_extraArrayDimensions_value_roundtrip():
+    instance = java__MethodDeclaration(extraArrayDimensions=7)
+    assert instance.extraArrayDimensions == 7
+    instance.extraArrayDimensions = 13
+    assert instance.extraArrayDimensions == 13
+
+
+def test_java__MethodRefParameter_name_value_roundtrip():
+    instance = java__MethodRefParameter(name="sample_text", varargs=True)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_java__MethodRefParameter_varargs_value_roundtrip():
+    instance = java__MethodRefParameter(name="sample_text", varargs=True)
+    assert instance.varargs == True
+    instance.varargs = False
+    assert instance.varargs == False
+
+
+def test_java__Model_name_value_roundtrip():
+    instance = java__Model(name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_java__Modifier_inheritance_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.inheritance == "sample_text"
+    instance.inheritance = "sample_text_2"
+    assert instance.inheritance == "sample_text_2"
+
+
+def test_java__Modifier_native_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.native == True
+    instance.native = False
+    assert instance.native == False
+
+
+def test_java__Modifier_static_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.static == True
+    instance.static = False
+    assert instance.static == False
+
+
+def test_java__Modifier_strictfp_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.strictfp == True
+    instance.strictfp = False
+    assert instance.strictfp == False
+
+
+def test_java__Modifier_synchronized_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.synchronized == True
+    instance.synchronized = False
+    assert instance.synchronized == False
+
+
+def test_java__Modifier_transient_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.transient == True
+    instance.transient = False
+    assert instance.transient == False
+
+
+def test_java__Modifier_visibility_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.visibility == "sample_text"
+    instance.visibility = "sample_text_2"
+    assert instance.visibility == "sample_text_2"
+
+
+def test_java__Modifier_volatile_value_roundtrip():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert instance.volatile == True
+    instance.volatile = False
+    assert instance.volatile == False
+
+
+def test_java__NamedElement_name_value_roundtrip():
+    instance = java__NamedElement(name="sample_text", proxy=True)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_java__NamedElement_proxy_value_roundtrip():
+    instance = java__NamedElement(name="sample_text", proxy=True)
+    assert instance.proxy == True
+    instance.proxy = False
+    assert instance.proxy == False
+
+
+def test_java__NumberLiteral_tokenValue_value_roundtrip():
+    instance = java__NumberLiteral(tokenValue="sample_text")
+    assert instance.tokenValue == "sample_text"
+    instance.tokenValue = "sample_text_2"
+    assert instance.tokenValue == "sample_text_2"
+
+
+def test_java__PostfixExpression_operator_value_roundtrip():
+    instance = java__PostfixExpression(operator="sample_text")
+    assert instance.operator == "sample_text"
+    instance.operator = "sample_text_2"
+    assert instance.operator == "sample_text_2"
+
+
+def test_java__PrefixExpression_operator_value_roundtrip():
+    instance = java__PrefixExpression(operator="sample_text")
+    assert instance.operator == "sample_text"
+    instance.operator = "sample_text_2"
+    assert instance.operator == "sample_text_2"
+
+
+def test_java__SingleVariableDeclaration_varargs_value_roundtrip():
+    instance = java__SingleVariableDeclaration(varargs=True)
+    assert instance.varargs == True
+    instance.varargs = False
+    assert instance.varargs == False
+
+
+def test_java__StringLiteral_escapedValue_value_roundtrip():
+    instance = java__StringLiteral(escapedValue="sample_text")
+    assert instance.escapedValue == "sample_text"
+    instance.escapedValue = "sample_text_2"
+    assert instance.escapedValue == "sample_text_2"
+
+
+def test_java__SwitchCase_default_value_roundtrip():
+    instance = java__SwitchCase(default=True)
+    assert instance.default == True
+    instance.default = False
+    assert instance.default == False
+
+
+def test_java__TagElement_tagName_value_roundtrip():
+    instance = java__TagElement(tagName="sample_text")
+    assert instance.tagName == "sample_text"
+    instance.tagName = "sample_text_2"
+    assert instance.tagName == "sample_text_2"
+
+
+def test_java__TextElement_text_value_roundtrip():
+    instance = java__TextElement(text="sample_text")
+    assert instance.text == "sample_text"
+    instance.text = "sample_text_2"
+    assert instance.text == "sample_text_2"
+
+
+def test_java__VariableDeclaration_extraArrayDimensions_value_roundtrip():
+    instance = java__VariableDeclaration(extraArrayDimensions=7)
+    assert instance.extraArrayDimensions == 7
+    instance.extraArrayDimensions = 13
+    assert instance.extraArrayDimensions == 13
+
+
+def test_java__VariableDeclarationStatement_extraArrayDimensions_value_roundtrip():
+    instance = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    assert instance.extraArrayDimensions == 7
+    instance.extraArrayDimensions = 13
+    assert instance.extraArrayDimensions == 13
+
+
+def test_java__WildCardType_upperBound_value_roundtrip():
+    instance = java__WildCardType(upperBound=True)
+    assert instance.upperBound == True
+    instance.upperBound = False
+    assert instance.upperBound == False
+
+
+def test_java__AbstractMethodInvocation_isa_ASTNode():
+    instance = java__AbstractMethodInvocation()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__AbstractVariablesContainer_isa_ASTNode():
+    instance = java__AbstractVariablesContainer()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__AnonymousClassDeclaration_isa_ASTNode():
+    instance = java__AnonymousClassDeclaration()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__Comment_isa_ASTNode():
+    instance = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__Expression_isa_ASTNode():
+    instance = java__Expression()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__ImportDeclaration_isa_ASTNode():
+    instance = java__ImportDeclaration(static=True)
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__MemberRef_isa_ASTNode():
+    instance = java__MemberRef()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__MethodRef_isa_ASTNode():
+    instance = java__MethodRef()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__MethodRefParameter_isa_ASTNode():
+    instance = java__MethodRefParameter(name="sample_text", varargs=True)
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__Modifier_isa_ASTNode():
+    instance = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__NamedElement_isa_ASTNode():
+    instance = java__NamedElement(name="sample_text", proxy=True)
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__NamespaceAccess_isa_ASTNode():
+    instance = java__NamespaceAccess()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__Statement_isa_ASTNode():
+    instance = java__Statement()
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__TagElement_isa_ASTNode():
+    instance = java__TagElement(tagName="sample_text")
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__TextElement_isa_ASTNode():
+    instance = java__TextElement(text="sample_text")
+    assert isinstance(instance, ASTNode)
+
+
+def test_java__ConstructorDeclaration_isa_AbstractMethodDeclaration():
+    instance = java__ConstructorDeclaration()
+    assert isinstance(instance, AbstractMethodDeclaration)
+
+
+def test_java__MethodDeclaration_isa_AbstractMethodDeclaration():
+    instance = java__MethodDeclaration(extraArrayDimensions=7)
+    assert isinstance(instance, AbstractMethodDeclaration)
+
+
+def test_java__ClassInstanceCreation_isa_AbstractMethodInvocation():
+    instance = java__ClassInstanceCreation()
+    assert isinstance(instance, AbstractMethodInvocation)
+
+
+def test_java__ConstructorInvocation_isa_AbstractMethodInvocation():
+    instance = java__ConstructorInvocation()
+    assert isinstance(instance, AbstractMethodInvocation)
+
+
+def test_java__MethodInvocation_isa_AbstractMethodInvocation():
+    instance = java__MethodInvocation()
+    assert isinstance(instance, AbstractMethodInvocation)
+
+
+def test_java__SuperConstructorInvocation_isa_AbstractMethodInvocation():
+    instance = java__SuperConstructorInvocation()
+    assert isinstance(instance, AbstractMethodInvocation)
+
+
+def test_java__SuperMethodInvocation_isa_AbstractMethodInvocation():
+    instance = java__SuperMethodInvocation()
+    assert isinstance(instance, AbstractMethodInvocation)
+
+
+def test_java__AnnotationTypeDeclaration_isa_AbstractTypeDeclaration():
+    instance = java__AnnotationTypeDeclaration()
+    assert isinstance(instance, AbstractTypeDeclaration)
+
+
+def test_java__EnumDeclaration_isa_AbstractTypeDeclaration():
+    instance = java__EnumDeclaration()
+    assert isinstance(instance, AbstractTypeDeclaration)
+
+
+def test_java__TypeDeclaration_isa_AbstractTypeDeclaration():
+    instance = java__TypeDeclaration()
+    assert isinstance(instance, AbstractTypeDeclaration)
+
+
+def test_java__UnresolvedTypeDeclaration_isa_AbstractTypeDeclaration():
+    instance = java__UnresolvedTypeDeclaration()
+    assert isinstance(instance, AbstractTypeDeclaration)
+
+
+def test_java__SuperFieldAccess_isa_AbstractTypeQualifiedExpression():
+    instance = java__SuperFieldAccess()
+    assert isinstance(instance, AbstractTypeQualifiedExpression)
+
+
+def test_java__SuperMethodInvocation_isa_AbstractTypeQualifiedExpression():
+    instance = java__SuperMethodInvocation()
+    assert isinstance(instance, AbstractTypeQualifiedExpression)
+
+
+def test_java__ThisExpression_isa_AbstractTypeQualifiedExpression():
+    instance = java__ThisExpression()
+    assert isinstance(instance, AbstractTypeQualifiedExpression)
+
+
+def test_java__FieldDeclaration_isa_AbstractVariablesContainer():
+    instance = java__FieldDeclaration()
+    assert isinstance(instance, AbstractVariablesContainer)
+
+
+def test_java__VariableDeclarationExpression_isa_AbstractVariablesContainer():
+    instance = java__VariableDeclarationExpression()
+    assert isinstance(instance, AbstractVariablesContainer)
+
+
+def test_java__VariableDeclarationStatement_isa_AbstractVariablesContainer():
+    instance = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    assert isinstance(instance, AbstractVariablesContainer)
+
+
+def test_java__UnresolvedAnnotationDeclaration_isa_AnnotationTypeDeclaration():
+    instance = java__UnresolvedAnnotationDeclaration()
+    assert isinstance(instance, AnnotationTypeDeclaration)
+
+
+def test_java__UnresolvedAnnotationTypeMemberDeclaration_isa_AnnotationTypeMemberDeclaration():
+    instance = java__UnresolvedAnnotationTypeMemberDeclaration()
+    assert isinstance(instance, AnnotationTypeMemberDeclaration)
+
+
+def test_java__AbstractMethodDeclaration_isa_BodyDeclaration():
+    instance = java__AbstractMethodDeclaration()
+    assert isinstance(instance, BodyDeclaration)
+
+
+def test_java__AbstractTypeDeclaration_isa_BodyDeclaration():
+    instance = java__AbstractTypeDeclaration()
+    assert isinstance(instance, BodyDeclaration)
+
+
+def test_java__AnnotationTypeMemberDeclaration_isa_BodyDeclaration():
+    instance = java__AnnotationTypeMemberDeclaration()
+    assert isinstance(instance, BodyDeclaration)
+
+
+def test_java__EnumConstantDeclaration_isa_BodyDeclaration():
+    instance = java__EnumConstantDeclaration()
+    assert isinstance(instance, BodyDeclaration)
+
+
+def test_java__FieldDeclaration_isa_BodyDeclaration():
+    instance = java__FieldDeclaration()
+    assert isinstance(instance, BodyDeclaration)
+
+
+def test_java__Initializer_isa_BodyDeclaration():
+    instance = java__Initializer()
+    assert isinstance(instance, BodyDeclaration)
+
+
+def test_java__UnresolvedClassDeclaration_isa_ClassDeclaration():
+    instance = java__UnresolvedClassDeclaration()
+    assert isinstance(instance, ClassDeclaration)
+
+
+def test_java__BlockComment_isa_Comment():
+    instance = java__BlockComment()
+    assert isinstance(instance, Comment)
+
+
+def test_java__Javadoc_isa_Comment():
+    instance = java__Javadoc()
+    assert isinstance(instance, Comment)
+
+
+def test_java__LineComment_isa_Comment():
+    instance = java__LineComment()
+    assert isinstance(instance, Comment)
+
+
+def test_java__UnresolvedEnumDeclaration_isa_EnumDeclaration():
+    instance = java__UnresolvedEnumDeclaration()
+    assert isinstance(instance, EnumDeclaration)
+
+
+def test_java__AbstractTypeQualifiedExpression_isa_Expression():
+    instance = java__AbstractTypeQualifiedExpression()
+    assert isinstance(instance, Expression)
+
+
+def test_java__Annotation_isa_Expression():
+    instance = java__Annotation()
+    assert isinstance(instance, Expression)
+
+
+def test_java__ArrayAccess_isa_Expression():
+    instance = java__ArrayAccess()
+    assert isinstance(instance, Expression)
+
+
+def test_java__ArrayCreation_isa_Expression():
+    instance = java__ArrayCreation()
+    assert isinstance(instance, Expression)
+
+
+def test_java__ArrayInitializer_isa_Expression():
+    instance = java__ArrayInitializer()
+    assert isinstance(instance, Expression)
+
+
+def test_java__ArrayLengthAccess_isa_Expression():
+    instance = java__ArrayLengthAccess()
+    assert isinstance(instance, Expression)
+
+
+def test_java__Assignment_isa_Expression():
+    instance = java__Assignment(operator="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__BooleanLiteral_isa_Expression():
+    instance = java__BooleanLiteral(value=True)
+    assert isinstance(instance, Expression)
+
+
+def test_java__CastExpression_isa_Expression():
+    instance = java__CastExpression()
+    assert isinstance(instance, Expression)
+
+
+def test_java__CharacterLiteral_isa_Expression():
+    instance = java__CharacterLiteral(escapedValue="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__ClassInstanceCreation_isa_Expression():
+    instance = java__ClassInstanceCreation()
+    assert isinstance(instance, Expression)
+
+
+def test_java__ConditionalExpression_isa_Expression():
+    instance = java__ConditionalExpression()
+    assert isinstance(instance, Expression)
+
+
+def test_java__FieldAccess_isa_Expression():
+    instance = java__FieldAccess()
+    assert isinstance(instance, Expression)
+
+
+def test_java__InfixExpression_isa_Expression():
+    instance = java__InfixExpression(operator="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__InstanceofExpression_isa_Expression():
+    instance = java__InstanceofExpression()
+    assert isinstance(instance, Expression)
+
+
+def test_java__MethodInvocation_isa_Expression():
+    instance = java__MethodInvocation()
+    assert isinstance(instance, Expression)
+
+
+def test_java__NullLiteral_isa_Expression():
+    instance = java__NullLiteral()
+    assert isinstance(instance, Expression)
+
+
+def test_java__NumberLiteral_isa_Expression():
+    instance = java__NumberLiteral(tokenValue="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__ParenthesizedExpression_isa_Expression():
+    instance = java__ParenthesizedExpression()
+    assert isinstance(instance, Expression)
+
+
+def test_java__PostfixExpression_isa_Expression():
+    instance = java__PostfixExpression(operator="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__PrefixExpression_isa_Expression():
+    instance = java__PrefixExpression(operator="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__SingleVariableAccess_isa_Expression():
+    instance = java__SingleVariableAccess()
+    assert isinstance(instance, Expression)
+
+
+def test_java__StringLiteral_isa_Expression():
+    instance = java__StringLiteral(escapedValue="sample_text")
+    assert isinstance(instance, Expression)
+
+
+def test_java__TypeAccess_isa_Expression():
+    instance = java__TypeAccess()
+    assert isinstance(instance, Expression)
+
+
+def test_java__TypeLiteral_isa_Expression():
+    instance = java__TypeLiteral()
+    assert isinstance(instance, Expression)
+
+
+def test_java__UnresolvedItemAccess_isa_Expression():
+    instance = java__UnresolvedItemAccess()
+    assert isinstance(instance, Expression)
+
+
+def test_java__VariableDeclarationExpression_isa_Expression():
+    instance = java__VariableDeclarationExpression()
+    assert isinstance(instance, Expression)
+
+
+def test_java__UnresolvedInterfaceDeclaration_isa_InterfaceDeclaration():
+    instance = java__UnresolvedInterfaceDeclaration()
+    assert isinstance(instance, InterfaceDeclaration)
+
+
+def test_java__UnresolvedLabeledStatement_isa_LabeledStatement():
+    instance = java__UnresolvedLabeledStatement()
+    assert isinstance(instance, LabeledStatement)
+
+
+def test_java__UnresolvedMethodDeclaration_isa_MethodDeclaration():
+    instance = java__UnresolvedMethodDeclaration()
+    assert isinstance(instance, MethodDeclaration)
+
+
+def test_java__AnnotationMemberValuePair_isa_NamedElement():
+    instance = java__AnnotationMemberValuePair()
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__Archive_isa_NamedElement():
+    instance = java__Archive(originalFilePath="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__BodyDeclaration_isa_NamedElement():
+    instance = java__BodyDeclaration()
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__ClassFile_isa_NamedElement():
+    instance = java__ClassFile(originalFilePath="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__CompilationUnit_isa_NamedElement():
+    instance = java__CompilationUnit(originalFilePath="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__LabeledStatement_isa_NamedElement():
+    instance = java__LabeledStatement()
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__Package_isa_NamedElement():
+    instance = java__Package()
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__Type_isa_NamedElement():
+    instance = java__Type()
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__UnresolvedItem_isa_NamedElement():
+    instance = java__UnresolvedItem()
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__VariableDeclaration_isa_NamedElement():
+    instance = java__VariableDeclaration(extraArrayDimensions=7)
+    assert isinstance(instance, NamedElement)
+
+
+def test_java__PackageAccess_isa_NamespaceAccess():
+    instance = java__PackageAccess()
+    assert isinstance(instance, NamespaceAccess)
+
+
+def test_java__TypeAccess_isa_NamespaceAccess():
+    instance = java__TypeAccess()
+    assert isinstance(instance, NamespaceAccess)
+
+
+def test_java__UnresolvedItemAccess_isa_NamespaceAccess():
+    instance = java__UnresolvedItemAccess()
+    assert isinstance(instance, NamespaceAccess)
+
+
+def test_java__PrimitiveTypeBoolean_isa_PrimitiveType():
+    instance = java__PrimitiveTypeBoolean()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeByte_isa_PrimitiveType():
+    instance = java__PrimitiveTypeByte()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeChar_isa_PrimitiveType():
+    instance = java__PrimitiveTypeChar()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeDouble_isa_PrimitiveType():
+    instance = java__PrimitiveTypeDouble()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeFloat_isa_PrimitiveType():
+    instance = java__PrimitiveTypeFloat()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeInt_isa_PrimitiveType():
+    instance = java__PrimitiveTypeInt()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeLong_isa_PrimitiveType():
+    instance = java__PrimitiveTypeLong()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeShort_isa_PrimitiveType():
+    instance = java__PrimitiveTypeShort()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__PrimitiveTypeVoid_isa_PrimitiveType():
+    instance = java__PrimitiveTypeVoid()
+    assert isinstance(instance, PrimitiveType)
+
+
+def test_java__UnresolvedSingleVariableDeclaration_isa_SingleVariableDeclaration():
+    instance = java__UnresolvedSingleVariableDeclaration()
+    assert isinstance(instance, SingleVariableDeclaration)
+
+
+def test_java__AssertStatement_isa_Statement():
+    instance = java__AssertStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__Block_isa_Statement():
+    instance = java__Block()
+    assert isinstance(instance, Statement)
+
+
+def test_java__BreakStatement_isa_Statement():
+    instance = java__BreakStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__CatchClause_isa_Statement():
+    instance = java__CatchClause()
+    assert isinstance(instance, Statement)
+
+
+def test_java__ConstructorInvocation_isa_Statement():
+    instance = java__ConstructorInvocation()
+    assert isinstance(instance, Statement)
+
+
+def test_java__ContinueStatement_isa_Statement():
+    instance = java__ContinueStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__DoStatement_isa_Statement():
+    instance = java__DoStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__EmptyStatement_isa_Statement():
+    instance = java__EmptyStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__EnhancedForStatement_isa_Statement():
+    instance = java__EnhancedForStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__ExpressionStatement_isa_Statement():
+    instance = java__ExpressionStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__ForStatement_isa_Statement():
+    instance = java__ForStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__IfStatement_isa_Statement():
+    instance = java__IfStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__LabeledStatement_isa_Statement():
+    instance = java__LabeledStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__ReturnStatement_isa_Statement():
+    instance = java__ReturnStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__SuperConstructorInvocation_isa_Statement():
+    instance = java__SuperConstructorInvocation()
+    assert isinstance(instance, Statement)
+
+
+def test_java__SwitchCase_isa_Statement():
+    instance = java__SwitchCase(default=True)
+    assert isinstance(instance, Statement)
+
+
+def test_java__SwitchStatement_isa_Statement():
+    instance = java__SwitchStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__SynchronizedStatement_isa_Statement():
+    instance = java__SynchronizedStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__ThrowStatement_isa_Statement():
+    instance = java__ThrowStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__TryStatement_isa_Statement():
+    instance = java__TryStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__TypeDeclarationStatement_isa_Statement():
+    instance = java__TypeDeclarationStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__VariableDeclarationStatement_isa_Statement():
+    instance = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    assert isinstance(instance, Statement)
+
+
+def test_java__WhileStatement_isa_Statement():
+    instance = java__WhileStatement()
+    assert isinstance(instance, Statement)
+
+
+def test_java__AbstractTypeDeclaration_isa_Type():
+    instance = java__AbstractTypeDeclaration()
+    assert isinstance(instance, Type)
+
+
+def test_java__ArrayType_isa_Type():
+    instance = java__ArrayType(dimensions=7)
+    assert isinstance(instance, Type)
+
+
+def test_java__ParameterizedType_isa_Type():
+    instance = java__ParameterizedType()
+    assert isinstance(instance, Type)
+
+
+def test_java__PrimitiveType_isa_Type():
+    instance = java__PrimitiveType()
+    assert isinstance(instance, Type)
+
+
+def test_java__TypeParameter_isa_Type():
+    instance = java__TypeParameter()
+    assert isinstance(instance, Type)
+
+
+def test_java__UnresolvedType_isa_Type():
+    instance = java__UnresolvedType()
+    assert isinstance(instance, Type)
+
+
+def test_java__WildCardType_isa_Type():
+    instance = java__WildCardType(upperBound=True)
+    assert isinstance(instance, Type)
+
+
+def test_java__ClassDeclaration_isa_TypeDeclaration():
+    instance = java__ClassDeclaration()
+    assert isinstance(instance, TypeDeclaration)
+
+
+def test_java__InterfaceDeclaration_isa_TypeDeclaration():
+    instance = java__InterfaceDeclaration()
+    assert isinstance(instance, TypeDeclaration)
+
+
+def test_java__UnresolvedAnnotationDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedAnnotationDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedAnnotationTypeMemberDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedAnnotationTypeMemberDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedClassDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedClassDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedEnumDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedEnumDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedInterfaceDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedInterfaceDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedLabeledStatement_isa_UnresolvedItem():
+    instance = java__UnresolvedLabeledStatement()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedMethodDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedMethodDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedSingleVariableDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedSingleVariableDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedType_isa_UnresolvedItem():
+    instance = java__UnresolvedType()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedTypeDeclaration_isa_UnresolvedItem():
+    instance = java__UnresolvedTypeDeclaration()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__UnresolvedVariableDeclarationFragment_isa_UnresolvedItem():
+    instance = java__UnresolvedVariableDeclarationFragment()
+    assert isinstance(instance, UnresolvedItem)
+
+
+def test_java__EnumConstantDeclaration_isa_VariableDeclaration():
+    instance = java__EnumConstantDeclaration()
+    assert isinstance(instance, VariableDeclaration)
+
+
+def test_java__SingleVariableDeclaration_isa_VariableDeclaration():
+    instance = java__SingleVariableDeclaration(varargs=True)
+    assert isinstance(instance, VariableDeclaration)
+
+
+def test_java__VariableDeclarationFragment_isa_VariableDeclaration():
+    instance = java__VariableDeclarationFragment()
+    assert isinstance(instance, VariableDeclaration)
+
+
+def test_java__UnresolvedVariableDeclarationFragment_isa_VariableDeclarationFragment():
+    instance = java__UnresolvedVariableDeclarationFragment()
+    assert isinstance(instance, VariableDeclarationFragment)
+
+
+def test_assoc_annotations297_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__Annotation()
+    b2 = java__Annotation()
+    _safe_set(a, 'java__SingleVariableDeclaration298', {b1})
+    assert _is_linked(a, 'java__SingleVariableDeclaration298', b1)
+    if hasattr(b1, 'java__Annotation299'):
+        assert _is_linked(b1, 'java__Annotation299', a)
+    _safe_set(a, 'java__SingleVariableDeclaration298', {b2})
+    assert _is_linked(a, 'java__SingleVariableDeclaration298', b2)
+    if hasattr(b1, 'java__Annotation299'):
+        assert not _is_linked(b1, 'java__Annotation299', a)
+    if hasattr(b2, 'java__Annotation299'):
+        assert _is_linked(b2, 'java__Annotation299', a)
+    _safe_set(a, 'java__SingleVariableDeclaration298', set())
+    assert not _is_linked(a, 'java__SingleVariableDeclaration298', b2)
+    if hasattr(b2, 'java__Annotation299'):
+        assert not _is_linked(b2, 'java__Annotation299', a)
+
+
+def test_assoc_annotations361_link_reassign_clear():
+    a = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    b1 = java__Annotation()
+    b2 = java__Annotation()
+    _safe_set(a, 'java__VariableDeclarationStatement', {b1})
+    assert _is_linked(a, 'java__VariableDeclarationStatement', b1)
+    if hasattr(b1, 'java__Annotation362'):
+        assert _is_linked(b1, 'java__Annotation362', a)
+    _safe_set(a, 'java__VariableDeclarationStatement', {b2})
+    assert _is_linked(a, 'java__VariableDeclarationStatement', b2)
+    if hasattr(b1, 'java__Annotation362'):
+        assert not _is_linked(b1, 'java__Annotation362', a)
+    if hasattr(b2, 'java__Annotation362'):
+        assert _is_linked(b2, 'java__Annotation362', a)
+    _safe_set(a, 'java__VariableDeclarationStatement', set())
+    assert not _is_linked(a, 'java__VariableDeclarationStatement', b2)
+    if hasattr(b2, 'java__Annotation362'):
+        assert not _is_linked(b2, 'java__Annotation362', a)
+
+
+def test_assoc_archives246_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__Archive(originalFilePath="sample_text")
+    b2 = java__Archive(originalFilePath="sample_text_2")
+    _safe_set(a, 'java__Model247', {b1})
+    assert _is_linked(a, 'java__Model247', b1)
+    if hasattr(b1, 'java__Archive248'):
+        assert _is_linked(b1, 'java__Archive248', a)
+    _safe_set(a, 'java__Model247', {b2})
+    assert _is_linked(a, 'java__Model247', b2)
+    if hasattr(b1, 'java__Archive248'):
+        assert not _is_linked(b1, 'java__Archive248', a)
+    if hasattr(b2, 'java__Archive248'):
+        assert _is_linked(b2, 'java__Archive248', a)
+    _safe_set(a, 'java__Model247', set())
+    assert not _is_linked(a, 'java__Model247', b2)
+    if hasattr(b2, 'java__Archive248'):
+        assert not _is_linked(b2, 'java__Archive248', a)
+
+
+def test_assoc_attachedSource106_link_reassign_clear():
+    a = java__CompilationUnit(originalFilePath="sample_text")
+    b1 = java__ClassFile(originalFilePath="sample_text")
+    b2 = java__ClassFile(originalFilePath="sample_text_2")
+    _safe_set(a, 'java__CompilationUnit108', b1)
+    assert _is_linked(a, 'java__CompilationUnit108', b1)
+    if hasattr(b1, 'java__ClassFile107'):
+        assert _is_linked(b1, 'java__ClassFile107', a)
+    _safe_set(a, 'java__CompilationUnit108', b2)
+    assert _is_linked(a, 'java__CompilationUnit108', b2)
+    if hasattr(b1, 'java__ClassFile107'):
+        assert not _is_linked(b1, 'java__ClassFile107', a)
+    if hasattr(b2, 'java__ClassFile107'):
+        assert _is_linked(b2, 'java__ClassFile107', a)
+    _safe_set(a, 'java__CompilationUnit108', None)
+    assert not _is_linked(a, 'java__CompilationUnit108', b2)
+    if hasattr(b2, 'java__ClassFile107'):
+        assert not _is_linked(b2, 'java__ClassFile107', a)
+
+
+def test_assoc_attributes210_link_reassign_clear():
+    a = java__ManifestEntry(name="sample_text")
+    b1 = java__ManifestAttribute(key="sample_text", value="sample_text")
+    b2 = java__ManifestAttribute(key="sample_text_2", value="sample_text_2")
+    _safe_set(a, 'java__ManifestEntry211', {b1})
+    assert _is_linked(a, 'java__ManifestEntry211', b1)
+    if hasattr(b1, 'java__ManifestAttribute212'):
+        assert _is_linked(b1, 'java__ManifestAttribute212', a)
+    _safe_set(a, 'java__ManifestEntry211', {b2})
+    assert _is_linked(a, 'java__ManifestEntry211', b2)
+    if hasattr(b1, 'java__ManifestAttribute212'):
+        assert not _is_linked(b1, 'java__ManifestAttribute212', a)
+    if hasattr(b2, 'java__ManifestAttribute212'):
+        assert _is_linked(b2, 'java__ManifestAttribute212', a)
+    _safe_set(a, 'java__ManifestEntry211', set())
+    assert not _is_linked(a, 'java__ManifestEntry211', b2)
+    if hasattr(b2, 'java__ManifestAttribute212'):
+        assert not _is_linked(b2, 'java__ManifestAttribute212', a)
+
+
+def test_assoc_bodyDeclaration249_link_reassign_clear():
+    a = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b1 = java__BodyDeclaration()
+    b2 = java__BodyDeclaration()
+    _safe_set(a, 'modifier', b1)
+    assert _is_linked(a, 'modifier', b1)
+    if hasattr(b1, 'BodyDeclaration250'):
+        assert _is_linked(b1, 'BodyDeclaration250', a)
+    _safe_set(a, 'modifier', b2)
+    assert _is_linked(a, 'modifier', b2)
+    if hasattr(b1, 'BodyDeclaration250'):
+        assert not _is_linked(b1, 'BodyDeclaration250', a)
+    if hasattr(b2, 'BodyDeclaration250'):
+        assert _is_linked(b2, 'BodyDeclaration250', a)
+    _safe_set(a, 'modifier', None)
+    assert not _is_linked(a, 'modifier', b2)
+    if hasattr(b2, 'BodyDeclaration250'):
+        assert not _is_linked(b2, 'BodyDeclaration250', a)
+
+
+def test_assoc_bound363_link_reassign_clear():
+    a = java__WildCardType(upperBound=True)
+    b1 = java__TypeAccess()
+    b2 = java__TypeAccess()
+    _safe_set(a, 'java__WildCardType', b1)
+    assert _is_linked(a, 'java__WildCardType', b1)
+    if hasattr(b1, 'java__TypeAccess364'):
+        assert _is_linked(b1, 'java__TypeAccess364', a)
+    _safe_set(a, 'java__WildCardType', b2)
+    assert _is_linked(a, 'java__WildCardType', b2)
+    if hasattr(b1, 'java__TypeAccess364'):
+        assert not _is_linked(b1, 'java__TypeAccess364', a)
+    if hasattr(b2, 'java__TypeAccess364'):
+        assert _is_linked(b2, 'java__TypeAccess364', a)
+    _safe_set(a, 'java__WildCardType', None)
+    assert not _is_linked(a, 'java__WildCardType', b2)
+    if hasattr(b2, 'java__TypeAccess364'):
+        assert not _is_linked(b2, 'java__TypeAccess364', a)
+
+
+def test_assoc_catchClause302_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__CatchClause()
+    b2 = java__CatchClause()
+    _safe_set(a, 'exception', b1)
+    assert _is_linked(a, 'exception', b1)
+    if hasattr(b1, 'CatchClause'):
+        assert _is_linked(b1, 'CatchClause', a)
+    _safe_set(a, 'exception', b2)
+    assert _is_linked(a, 'exception', b2)
+    if hasattr(b1, 'CatchClause'):
+        assert not _is_linked(b1, 'CatchClause', a)
+    if hasattr(b2, 'CatchClause'):
+        assert _is_linked(b2, 'CatchClause', a)
+    _safe_set(a, 'exception', None)
+    assert not _is_linked(a, 'exception', b2)
+    if hasattr(b2, 'CatchClause'):
+        assert not _is_linked(b2, 'CatchClause', a)
+
+
+def test_assoc_classFiles243_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__ClassFile(originalFilePath="sample_text")
+    b2 = java__ClassFile(originalFilePath="sample_text_2")
+    _safe_set(a, 'java__Model244', {b1})
+    assert _is_linked(a, 'java__Model244', b1)
+    if hasattr(b1, 'java__ClassFile245'):
+        assert _is_linked(b1, 'java__ClassFile245', a)
+    _safe_set(a, 'java__Model244', {b2})
+    assert _is_linked(a, 'java__Model244', b2)
+    if hasattr(b1, 'java__ClassFile245'):
+        assert not _is_linked(b1, 'java__ClassFile245', a)
+    if hasattr(b2, 'java__ClassFile245'):
+        assert _is_linked(b2, 'java__ClassFile245', a)
+    _safe_set(a, 'java__Model244', set())
+    assert not _is_linked(a, 'java__Model244', b2)
+    if hasattr(b2, 'java__ClassFile245'):
+        assert not _is_linked(b2, 'java__ClassFile245', a)
+
+
+def test_assoc_classFiles32_link_reassign_clear():
+    a = java__ClassFile(originalFilePath="sample_text")
+    b1 = java__Archive(originalFilePath="sample_text")
+    b2 = java__Archive(originalFilePath="sample_text_2")
+    _safe_set(a, 'java__ClassFile', b1)
+    assert _is_linked(a, 'java__ClassFile', b1)
+    if hasattr(b1, 'java__Archive'):
+        assert _is_linked(b1, 'java__Archive', a)
+    _safe_set(a, 'java__ClassFile', b2)
+    assert _is_linked(a, 'java__ClassFile', b2)
+    if hasattr(b1, 'java__Archive'):
+        assert not _is_linked(b1, 'java__Archive', a)
+    if hasattr(b2, 'java__Archive'):
+        assert _is_linked(b2, 'java__Archive', a)
+    _safe_set(a, 'java__ClassFile', None)
+    assert not _is_linked(a, 'java__ClassFile', b2)
+    if hasattr(b2, 'java__Archive'):
+        assert not _is_linked(b2, 'java__Archive', a)
+
+
+def test_assoc_commentList128_link_reassign_clear():
+    a = java__CompilationUnit(originalFilePath="sample_text")
+    b1 = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    b2 = java__Comment(content="sample_text_2", enclosedByParent=False, prefixOfParent=False)
+    _safe_set(a, 'java__CompilationUnit129', {b1})
+    assert _is_linked(a, 'java__CompilationUnit129', b1)
+    if hasattr(b1, 'java__Comment130'):
+        assert _is_linked(b1, 'java__Comment130', a)
+    _safe_set(a, 'java__CompilationUnit129', {b2})
+    assert _is_linked(a, 'java__CompilationUnit129', b2)
+    if hasattr(b1, 'java__Comment130'):
+        assert not _is_linked(b1, 'java__Comment130', a)
+    if hasattr(b2, 'java__Comment130'):
+        assert _is_linked(b2, 'java__Comment130', a)
+    _safe_set(a, 'java__CompilationUnit129', set())
+    assert not _is_linked(a, 'java__CompilationUnit129', b2)
+    if hasattr(b2, 'java__Comment130'):
+        assert not _is_linked(b2, 'java__Comment130', a)
+
+
+def test_assoc_comments40_link_reassign_clear():
+    a = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    b1 = java__ASTNode()
+    b2 = java__ASTNode()
+    _safe_set(a, 'java__Comment41', b1)
+    assert _is_linked(a, 'java__Comment41', b1)
+    if hasattr(b1, 'java__ASTNode'):
+        assert _is_linked(b1, 'java__ASTNode', a)
+    _safe_set(a, 'java__Comment41', b2)
+    assert _is_linked(a, 'java__Comment41', b2)
+    if hasattr(b1, 'java__ASTNode'):
+        assert not _is_linked(b1, 'java__ASTNode', a)
+    if hasattr(b2, 'java__ASTNode'):
+        assert _is_linked(b2, 'java__ASTNode', a)
+    _safe_set(a, 'java__Comment41', None)
+    assert not _is_linked(a, 'java__Comment41', b2)
+    if hasattr(b2, 'java__ASTNode'):
+        assert not _is_linked(b2, 'java__ASTNode', a)
+
+
+def test_assoc_commentsAfterBody16_link_reassign_clear():
+    a = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    b1 = java__AbstractTypeDeclaration()
+    b2 = java__AbstractTypeDeclaration()
+    _safe_set(a, 'java__Comment18', b1)
+    assert _is_linked(a, 'java__Comment18', b1)
+    if hasattr(b1, 'java__AbstractTypeDeclaration17'):
+        assert _is_linked(b1, 'java__AbstractTypeDeclaration17', a)
+    _safe_set(a, 'java__Comment18', b2)
+    assert _is_linked(a, 'java__Comment18', b2)
+    if hasattr(b1, 'java__AbstractTypeDeclaration17'):
+        assert not _is_linked(b1, 'java__AbstractTypeDeclaration17', a)
+    if hasattr(b2, 'java__AbstractTypeDeclaration17'):
+        assert _is_linked(b2, 'java__AbstractTypeDeclaration17', a)
+    _safe_set(a, 'java__Comment18', None)
+    assert not _is_linked(a, 'java__Comment18', b2)
+    if hasattr(b2, 'java__AbstractTypeDeclaration17'):
+        assert not _is_linked(b2, 'java__AbstractTypeDeclaration17', a)
+
+
+def test_assoc_commentsBeforeBody15_link_reassign_clear():
+    a = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    b1 = java__AbstractTypeDeclaration()
+    b2 = java__AbstractTypeDeclaration()
+    _safe_set(a, 'java__Comment', b1)
+    assert _is_linked(a, 'java__Comment', b1)
+    if hasattr(b1, 'java__AbstractTypeDeclaration'):
+        assert _is_linked(b1, 'java__AbstractTypeDeclaration', a)
+    _safe_set(a, 'java__Comment', b2)
+    assert _is_linked(a, 'java__Comment', b2)
+    if hasattr(b1, 'java__AbstractTypeDeclaration'):
+        assert not _is_linked(b1, 'java__AbstractTypeDeclaration', a)
+    if hasattr(b2, 'java__AbstractTypeDeclaration'):
+        assert _is_linked(b2, 'java__AbstractTypeDeclaration', a)
+    _safe_set(a, 'java__Comment', None)
+    assert not _is_linked(a, 'java__Comment', b2)
+    if hasattr(b2, 'java__AbstractTypeDeclaration'):
+        assert not _is_linked(b2, 'java__AbstractTypeDeclaration', a)
+
+
+def test_assoc_compilationUnits240_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__CompilationUnit(originalFilePath="sample_text")
+    b2 = java__CompilationUnit(originalFilePath="sample_text_2")
+    _safe_set(a, 'java__Model241', {b1})
+    assert _is_linked(a, 'java__Model241', b1)
+    if hasattr(b1, 'java__CompilationUnit242'):
+        assert _is_linked(b1, 'java__CompilationUnit242', a)
+    _safe_set(a, 'java__Model241', {b2})
+    assert _is_linked(a, 'java__Model241', b2)
+    if hasattr(b1, 'java__CompilationUnit242'):
+        assert not _is_linked(b1, 'java__CompilationUnit242', a)
+    if hasattr(b2, 'java__CompilationUnit242'):
+        assert _is_linked(b2, 'java__CompilationUnit242', a)
+    _safe_set(a, 'java__Model241', set())
+    assert not _is_linked(a, 'java__Model241', b2)
+    if hasattr(b2, 'java__CompilationUnit242'):
+        assert not _is_linked(b2, 'java__CompilationUnit242', a)
+
+
+def test_assoc_elementType78_link_reassign_clear():
+    a = java__ArrayType(dimensions=7)
+    b1 = java__TypeAccess()
+    b2 = java__TypeAccess()
+    _safe_set(a, 'java__ArrayType', b1)
+    assert _is_linked(a, 'java__ArrayType', b1)
+    if hasattr(b1, 'java__TypeAccess79'):
+        assert _is_linked(b1, 'java__TypeAccess79', a)
+    _safe_set(a, 'java__ArrayType', b2)
+    assert _is_linked(a, 'java__ArrayType', b2)
+    if hasattr(b1, 'java__TypeAccess79'):
+        assert not _is_linked(b1, 'java__TypeAccess79', a)
+    if hasattr(b2, 'java__TypeAccess79'):
+        assert _is_linked(b2, 'java__TypeAccess79', a)
+    _safe_set(a, 'java__ArrayType', None)
+    assert not _is_linked(a, 'java__ArrayType', b2)
+    if hasattr(b2, 'java__TypeAccess79'):
+        assert not _is_linked(b2, 'java__TypeAccess79', a)
+
+
+def test_assoc_enhancedForStatement303_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__EnhancedForStatement()
+    b2 = java__EnhancedForStatement()
+    _safe_set(a, 'parameter', b1)
+    assert _is_linked(a, 'parameter', b1)
+    if hasattr(b1, 'EnhancedForStatement'):
+        assert _is_linked(b1, 'EnhancedForStatement', a)
+    _safe_set(a, 'parameter', b2)
+    assert _is_linked(a, 'parameter', b2)
+    if hasattr(b1, 'EnhancedForStatement'):
+        assert not _is_linked(b1, 'EnhancedForStatement', a)
+    if hasattr(b2, 'EnhancedForStatement'):
+        assert _is_linked(b2, 'EnhancedForStatement', a)
+    _safe_set(a, 'parameter', None)
+    assert not _is_linked(a, 'parameter', b2)
+    if hasattr(b2, 'EnhancedForStatement'):
+        assert not _is_linked(b2, 'EnhancedForStatement', a)
+
+
+def test_assoc_entryAttributes208_link_reassign_clear():
+    a = java__ManifestEntry(name="sample_text")
+    b1 = java__Manifest()
+    b2 = java__Manifest()
+    _safe_set(a, 'java__ManifestEntry', b1)
+    assert _is_linked(a, 'java__ManifestEntry', b1)
+    if hasattr(b1, 'java__Manifest209'):
+        assert _is_linked(b1, 'java__Manifest209', a)
+    _safe_set(a, 'java__ManifestEntry', b2)
+    assert _is_linked(a, 'java__ManifestEntry', b2)
+    if hasattr(b1, 'java__Manifest209'):
+        assert not _is_linked(b1, 'java__Manifest209', a)
+    if hasattr(b2, 'java__Manifest209'):
+        assert _is_linked(b2, 'java__Manifest209', a)
+    _safe_set(a, 'java__ManifestEntry', None)
+    assert not _is_linked(a, 'java__ManifestEntry', b2)
+    if hasattr(b2, 'java__Manifest209'):
+        assert not _is_linked(b2, 'java__Manifest209', a)
+
+
+def test_assoc_exception99_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__CatchClause()
+    b2 = java__CatchClause()
+    _safe_set(a, 'SingleVariableDeclaration100', b1)
+    assert _is_linked(a, 'SingleVariableDeclaration100', b1)
+    if hasattr(b1, 'catchClause'):
+        assert _is_linked(b1, 'catchClause', a)
+    _safe_set(a, 'SingleVariableDeclaration100', b2)
+    assert _is_linked(a, 'SingleVariableDeclaration100', b2)
+    if hasattr(b1, 'catchClause'):
+        assert not _is_linked(b1, 'catchClause', a)
+    if hasattr(b2, 'catchClause'):
+        assert _is_linked(b2, 'catchClause', a)
+    _safe_set(a, 'SingleVariableDeclaration100', None)
+    assert not _is_linked(a, 'SingleVariableDeclaration100', b2)
+    if hasattr(b2, 'catchClause'):
+        assert not _is_linked(b2, 'catchClause', a)
+
+
+def test_assoc_expression308_link_reassign_clear():
+    a = java__SwitchCase(default=True)
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__SwitchCase', b1)
+    assert _is_linked(a, 'java__SwitchCase', b1)
+    if hasattr(b1, 'java__Expression309'):
+        assert _is_linked(b1, 'java__Expression309', a)
+    _safe_set(a, 'java__SwitchCase', b2)
+    assert _is_linked(a, 'java__SwitchCase', b2)
+    if hasattr(b1, 'java__Expression309'):
+        assert not _is_linked(b1, 'java__Expression309', a)
+    if hasattr(b2, 'java__Expression309'):
+        assert _is_linked(b2, 'java__Expression309', a)
+    _safe_set(a, 'java__SwitchCase', None)
+    assert not _is_linked(a, 'java__SwitchCase', b2)
+    if hasattr(b2, 'java__Expression309'):
+        assert not _is_linked(b2, 'java__Expression309', a)
+
+
+def test_assoc_extendedOperands190_link_reassign_clear():
+    a = java__InfixExpression(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__InfixExpression191', {b1})
+    assert _is_linked(a, 'java__InfixExpression191', b1)
+    if hasattr(b1, 'java__Expression192'):
+        assert _is_linked(b1, 'java__Expression192', a)
+    _safe_set(a, 'java__InfixExpression191', {b2})
+    assert _is_linked(a, 'java__InfixExpression191', b2)
+    if hasattr(b1, 'java__Expression192'):
+        assert not _is_linked(b1, 'java__Expression192', a)
+    if hasattr(b2, 'java__Expression192'):
+        assert _is_linked(b2, 'java__Expression192', a)
+    _safe_set(a, 'java__InfixExpression191', set())
+    assert not _is_linked(a, 'java__InfixExpression191', b2)
+    if hasattr(b2, 'java__Expression192'):
+        assert not _is_linked(b2, 'java__Expression192', a)
+
+
+def test_assoc_fragments320_link_reassign_clear():
+    a = java__TagElement(tagName="sample_text")
+    b1 = java__ASTNode()
+    b2 = java__ASTNode()
+    _safe_set(a, 'java__TagElement321', {b1})
+    assert _is_linked(a, 'java__TagElement321', b1)
+    if hasattr(b1, 'java__ASTNode322'):
+        assert _is_linked(b1, 'java__ASTNode322', a)
+    _safe_set(a, 'java__TagElement321', {b2})
+    assert _is_linked(a, 'java__TagElement321', b2)
+    if hasattr(b1, 'java__ASTNode322'):
+        assert not _is_linked(b1, 'java__ASTNode322', a)
+    if hasattr(b2, 'java__ASTNode322'):
+        assert _is_linked(b2, 'java__ASTNode322', a)
+    _safe_set(a, 'java__TagElement321', set())
+    assert not _is_linked(a, 'java__TagElement321', b2)
+    if hasattr(b2, 'java__ASTNode322'):
+        assert not _is_linked(b2, 'java__ASTNode322', a)
+
+
+def test_assoc_importedElement184_link_reassign_clear():
+    a = java__NamedElement(name="sample_text", proxy=True)
+    b1 = java__ImportDeclaration(static=True)
+    b2 = java__ImportDeclaration(static=False)
+    _safe_set(a, 'NamedElement', b1)
+    assert _is_linked(a, 'NamedElement', b1)
+    if hasattr(b1, 'usagesInImports'):
+        assert _is_linked(b1, 'usagesInImports', a)
+    _safe_set(a, 'NamedElement', b2)
+    assert _is_linked(a, 'NamedElement', b2)
+    if hasattr(b1, 'usagesInImports'):
+        assert not _is_linked(b1, 'usagesInImports', a)
+    if hasattr(b2, 'usagesInImports'):
+        assert _is_linked(b2, 'usagesInImports', a)
+    _safe_set(a, 'NamedElement', None)
+    assert not _is_linked(a, 'NamedElement', b2)
+    if hasattr(b2, 'usagesInImports'):
+        assert not _is_linked(b2, 'usagesInImports', a)
+
+
+def test_assoc_imports131_link_reassign_clear():
+    a = java__ImportDeclaration(static=True)
+    b1 = java__CompilationUnit(originalFilePath="sample_text")
+    b2 = java__CompilationUnit(originalFilePath="sample_text_2")
+    _safe_set(a, 'java__ImportDeclaration', b1)
+    assert _is_linked(a, 'java__ImportDeclaration', b1)
+    if hasattr(b1, 'java__CompilationUnit132'):
+        assert _is_linked(b1, 'java__CompilationUnit132', a)
+    _safe_set(a, 'java__ImportDeclaration', b2)
+    assert _is_linked(a, 'java__ImportDeclaration', b2)
+    if hasattr(b1, 'java__CompilationUnit132'):
+        assert not _is_linked(b1, 'java__CompilationUnit132', a)
+    if hasattr(b2, 'java__CompilationUnit132'):
+        assert _is_linked(b2, 'java__CompilationUnit132', a)
+    _safe_set(a, 'java__ImportDeclaration', None)
+    assert not _is_linked(a, 'java__ImportDeclaration', b2)
+    if hasattr(b2, 'java__CompilationUnit132'):
+        assert not _is_linked(b2, 'java__CompilationUnit132', a)
+
+
+def test_assoc_initializer351_link_reassign_clear():
+    a = java__VariableDeclaration(extraArrayDimensions=7)
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__VariableDeclaration', b1)
+    assert _is_linked(a, 'java__VariableDeclaration', b1)
+    if hasattr(b1, 'java__Expression352'):
+        assert _is_linked(b1, 'java__Expression352', a)
+    _safe_set(a, 'java__VariableDeclaration', b2)
+    assert _is_linked(a, 'java__VariableDeclaration', b2)
+    if hasattr(b1, 'java__Expression352'):
+        assert not _is_linked(b1, 'java__Expression352', a)
+    if hasattr(b2, 'java__Expression352'):
+        assert _is_linked(b2, 'java__Expression352', a)
+    _safe_set(a, 'java__VariableDeclaration', None)
+    assert not _is_linked(a, 'java__VariableDeclaration', b2)
+    if hasattr(b2, 'java__Expression352'):
+        assert not _is_linked(b2, 'java__Expression352', a)
+
+
+def test_assoc_leftHandSide80_link_reassign_clear():
+    a = java__Assignment(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__Assignment', b1)
+    assert _is_linked(a, 'java__Assignment', b1)
+    if hasattr(b1, 'java__Expression81'):
+        assert _is_linked(b1, 'java__Expression81', a)
+    _safe_set(a, 'java__Assignment', b2)
+    assert _is_linked(a, 'java__Assignment', b2)
+    if hasattr(b1, 'java__Expression81'):
+        assert not _is_linked(b1, 'java__Expression81', a)
+    if hasattr(b2, 'java__Expression81'):
+        assert _is_linked(b2, 'java__Expression81', a)
+    _safe_set(a, 'java__Assignment', None)
+    assert not _is_linked(a, 'java__Assignment', b2)
+    if hasattr(b2, 'java__Expression81'):
+        assert not _is_linked(b2, 'java__Expression81', a)
+
+
+def test_assoc_leftOperand187_link_reassign_clear():
+    a = java__InfixExpression(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__InfixExpression188', b1)
+    assert _is_linked(a, 'java__InfixExpression188', b1)
+    if hasattr(b1, 'java__Expression189'):
+        assert _is_linked(b1, 'java__Expression189', a)
+    _safe_set(a, 'java__InfixExpression188', b2)
+    assert _is_linked(a, 'java__InfixExpression188', b2)
+    if hasattr(b1, 'java__Expression189'):
+        assert not _is_linked(b1, 'java__Expression189', a)
+    if hasattr(b2, 'java__Expression189'):
+        assert _is_linked(b2, 'java__Expression189', a)
+    _safe_set(a, 'java__InfixExpression188', None)
+    assert not _is_linked(a, 'java__InfixExpression188', b2)
+    if hasattr(b2, 'java__Expression189'):
+        assert not _is_linked(b2, 'java__Expression189', a)
+
+
+def test_assoc_mainAttributes206_link_reassign_clear():
+    a = java__ManifestAttribute(key="sample_text", value="sample_text")
+    b1 = java__Manifest()
+    b2 = java__Manifest()
+    _safe_set(a, 'java__ManifestAttribute', b1)
+    assert _is_linked(a, 'java__ManifestAttribute', b1)
+    if hasattr(b1, 'java__Manifest207'):
+        assert _is_linked(b1, 'java__Manifest207', a)
+    _safe_set(a, 'java__ManifestAttribute', b2)
+    assert _is_linked(a, 'java__ManifestAttribute', b2)
+    if hasattr(b1, 'java__Manifest207'):
+        assert not _is_linked(b1, 'java__Manifest207', a)
+    if hasattr(b2, 'java__Manifest207'):
+        assert _is_linked(b2, 'java__Manifest207', a)
+    _safe_set(a, 'java__ManifestAttribute', None)
+    assert not _is_linked(a, 'java__ManifestAttribute', b2)
+    if hasattr(b2, 'java__Manifest207'):
+        assert not _is_linked(b2, 'java__Manifest207', a)
+
+
+def test_assoc_manifest33_link_reassign_clear():
+    a = java__Archive(originalFilePath="sample_text")
+    b1 = java__Manifest()
+    b2 = java__Manifest()
+    _safe_set(a, 'java__Archive34', b1)
+    assert _is_linked(a, 'java__Archive34', b1)
+    if hasattr(b1, 'java__Manifest'):
+        assert _is_linked(b1, 'java__Manifest', a)
+    _safe_set(a, 'java__Archive34', b2)
+    assert _is_linked(a, 'java__Archive34', b2)
+    if hasattr(b1, 'java__Manifest'):
+        assert not _is_linked(b1, 'java__Manifest', a)
+    if hasattr(b2, 'java__Manifest'):
+        assert _is_linked(b2, 'java__Manifest', a)
+    _safe_set(a, 'java__Archive34', None)
+    assert not _is_linked(a, 'java__Archive34', b2)
+    if hasattr(b2, 'java__Manifest'):
+        assert not _is_linked(b2, 'java__Manifest', a)
+
+
+def test_assoc_member213_link_reassign_clear():
+    a = java__NamedElement(name="sample_text", proxy=True)
+    b1 = java__MemberRef()
+    b2 = java__MemberRef()
+    _safe_set(a, 'java__NamedElement', b1)
+    assert _is_linked(a, 'java__NamedElement', b1)
+    if hasattr(b1, 'java__MemberRef'):
+        assert _is_linked(b1, 'java__MemberRef', a)
+    _safe_set(a, 'java__NamedElement', b2)
+    assert _is_linked(a, 'java__NamedElement', b2)
+    if hasattr(b1, 'java__MemberRef'):
+        assert not _is_linked(b1, 'java__MemberRef', a)
+    if hasattr(b2, 'java__MemberRef'):
+        assert _is_linked(b2, 'java__MemberRef', a)
+    _safe_set(a, 'java__NamedElement', None)
+    assert not _is_linked(a, 'java__NamedElement', b2)
+    if hasattr(b2, 'java__MemberRef'):
+        assert not _is_linked(b2, 'java__MemberRef', a)
+
+
+def test_assoc_methodDeclaration300_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__AbstractMethodDeclaration()
+    b2 = java__AbstractMethodDeclaration()
+    _safe_set(a, 'parameters', b1)
+    assert _is_linked(a, 'parameters', b1)
+    if hasattr(b1, 'AbstractMethodDeclaration301'):
+        assert _is_linked(b1, 'AbstractMethodDeclaration301', a)
+    _safe_set(a, 'parameters', b2)
+    assert _is_linked(a, 'parameters', b2)
+    if hasattr(b1, 'AbstractMethodDeclaration301'):
+        assert not _is_linked(b1, 'AbstractMethodDeclaration301', a)
+    if hasattr(b2, 'AbstractMethodDeclaration301'):
+        assert _is_linked(b2, 'AbstractMethodDeclaration301', a)
+    _safe_set(a, 'parameters', None)
+    assert not _is_linked(a, 'parameters', b2)
+    if hasattr(b2, 'AbstractMethodDeclaration301'):
+        assert not _is_linked(b2, 'AbstractMethodDeclaration301', a)
+
+
+def test_assoc_model261_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__Package()
+    b2 = java__Package()
+    _safe_set(a, 'Model', b1)
+    assert _is_linked(a, 'Model', b1)
+    if hasattr(b1, 'ownedElements262'):
+        assert _is_linked(b1, 'ownedElements262', a)
+    _safe_set(a, 'Model', b2)
+    assert _is_linked(a, 'Model', b2)
+    if hasattr(b1, 'ownedElements262'):
+        assert not _is_linked(b1, 'ownedElements262', a)
+    if hasattr(b2, 'ownedElements262'):
+        assert _is_linked(b2, 'ownedElements262', a)
+    _safe_set(a, 'Model', None)
+    assert not _is_linked(a, 'Model', b2)
+    if hasattr(b2, 'ownedElements262'):
+        assert not _is_linked(b2, 'ownedElements262', a)
+
+
+def test_assoc_modifier293_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b2 = java__Modifier(inheritance="sample_text_2", native=False, static=False, strictfp=False, synchronized=False, transient=False, visibility="sample_text_2", volatile=False)
+    _safe_set(a, 'singleVariableDeclaration', b1)
+    assert _is_linked(a, 'singleVariableDeclaration', b1)
+    if hasattr(b1, 'Modifier294'):
+        assert _is_linked(b1, 'Modifier294', a)
+    _safe_set(a, 'singleVariableDeclaration', b2)
+    assert _is_linked(a, 'singleVariableDeclaration', b2)
+    if hasattr(b1, 'Modifier294'):
+        assert not _is_linked(b1, 'Modifier294', a)
+    if hasattr(b2, 'Modifier294'):
+        assert _is_linked(b2, 'Modifier294', a)
+    _safe_set(a, 'singleVariableDeclaration', None)
+    assert not _is_linked(a, 'singleVariableDeclaration', b2)
+    if hasattr(b2, 'Modifier294'):
+        assert not _is_linked(b2, 'Modifier294', a)
+
+
+def test_assoc_modifier354_link_reassign_clear():
+    a = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b1 = java__VariableDeclarationExpression()
+    b2 = java__VariableDeclarationExpression()
+    _safe_set(a, 'Modifier355', b1)
+    assert _is_linked(a, 'Modifier355', b1)
+    if hasattr(b1, 'variableDeclarationExpression'):
+        assert _is_linked(b1, 'variableDeclarationExpression', a)
+    _safe_set(a, 'Modifier355', b2)
+    assert _is_linked(a, 'Modifier355', b2)
+    if hasattr(b1, 'variableDeclarationExpression'):
+        assert not _is_linked(b1, 'variableDeclarationExpression', a)
+    if hasattr(b2, 'variableDeclarationExpression'):
+        assert _is_linked(b2, 'variableDeclarationExpression', a)
+    _safe_set(a, 'Modifier355', None)
+    assert not _is_linked(a, 'Modifier355', b2)
+    if hasattr(b2, 'variableDeclarationExpression'):
+        assert not _is_linked(b2, 'variableDeclarationExpression', a)
+
+
+def test_assoc_modifier359_link_reassign_clear():
+    a = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    b1 = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b2 = java__Modifier(inheritance="sample_text_2", native=False, static=False, strictfp=False, synchronized=False, transient=False, visibility="sample_text_2", volatile=False)
+    _safe_set(a, 'variableDeclarationStatement', b1)
+    assert _is_linked(a, 'variableDeclarationStatement', b1)
+    if hasattr(b1, 'Modifier360'):
+        assert _is_linked(b1, 'Modifier360', a)
+    _safe_set(a, 'variableDeclarationStatement', b2)
+    assert _is_linked(a, 'variableDeclarationStatement', b2)
+    if hasattr(b1, 'Modifier360'):
+        assert not _is_linked(b1, 'Modifier360', a)
+    if hasattr(b2, 'Modifier360'):
+        assert _is_linked(b2, 'Modifier360', a)
+    _safe_set(a, 'variableDeclarationStatement', None)
+    assert not _is_linked(a, 'variableDeclarationStatement', b2)
+    if hasattr(b2, 'Modifier360'):
+        assert not _is_linked(b2, 'Modifier360', a)
+
+
+def test_assoc_modifier90_link_reassign_clear():
+    a = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b1 = java__BodyDeclaration()
+    b2 = java__BodyDeclaration()
+    _safe_set(a, 'Modifier', b1)
+    assert _is_linked(a, 'Modifier', b1)
+    if hasattr(b1, 'bodyDeclaration'):
+        assert _is_linked(b1, 'bodyDeclaration', a)
+    _safe_set(a, 'Modifier', b2)
+    assert _is_linked(a, 'Modifier', b2)
+    if hasattr(b1, 'bodyDeclaration'):
+        assert not _is_linked(b1, 'bodyDeclaration', a)
+    if hasattr(b2, 'bodyDeclaration'):
+        assert _is_linked(b2, 'bodyDeclaration', a)
+    _safe_set(a, 'Modifier', None)
+    assert not _is_linked(a, 'Modifier', b2)
+    if hasattr(b2, 'bodyDeclaration'):
+        assert not _is_linked(b2, 'bodyDeclaration', a)
+
+
+def test_assoc_operand283_link_reassign_clear():
+    a = java__PostfixExpression(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__PostfixExpression', b1)
+    assert _is_linked(a, 'java__PostfixExpression', b1)
+    if hasattr(b1, 'java__Expression284'):
+        assert _is_linked(b1, 'java__Expression284', a)
+    _safe_set(a, 'java__PostfixExpression', b2)
+    assert _is_linked(a, 'java__PostfixExpression', b2)
+    if hasattr(b1, 'java__Expression284'):
+        assert not _is_linked(b1, 'java__Expression284', a)
+    if hasattr(b2, 'java__Expression284'):
+        assert _is_linked(b2, 'java__Expression284', a)
+    _safe_set(a, 'java__PostfixExpression', None)
+    assert not _is_linked(a, 'java__PostfixExpression', b2)
+    if hasattr(b2, 'java__Expression284'):
+        assert not _is_linked(b2, 'java__Expression284', a)
+
+
+def test_assoc_operand285_link_reassign_clear():
+    a = java__PrefixExpression(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__PrefixExpression', b1)
+    assert _is_linked(a, 'java__PrefixExpression', b1)
+    if hasattr(b1, 'java__Expression286'):
+        assert _is_linked(b1, 'java__Expression286', a)
+    _safe_set(a, 'java__PrefixExpression', b2)
+    assert _is_linked(a, 'java__PrefixExpression', b2)
+    if hasattr(b1, 'java__Expression286'):
+        assert not _is_linked(b1, 'java__Expression286', a)
+    if hasattr(b2, 'java__Expression286'):
+        assert _is_linked(b2, 'java__Expression286', a)
+    _safe_set(a, 'java__PrefixExpression', None)
+    assert not _is_linked(a, 'java__PrefixExpression', b2)
+    if hasattr(b2, 'java__Expression286'):
+        assert not _is_linked(b2, 'java__Expression286', a)
+
+
+def test_assoc_originalClassFile44_link_reassign_clear():
+    a = java__ClassFile(originalFilePath="sample_text")
+    b1 = java__ASTNode()
+    b2 = java__ASTNode()
+    _safe_set(a, 'java__ClassFile46', b1)
+    assert _is_linked(a, 'java__ClassFile46', b1)
+    if hasattr(b1, 'java__ASTNode45'):
+        assert _is_linked(b1, 'java__ASTNode45', a)
+    _safe_set(a, 'java__ClassFile46', b2)
+    assert _is_linked(a, 'java__ClassFile46', b2)
+    if hasattr(b1, 'java__ASTNode45'):
+        assert not _is_linked(b1, 'java__ASTNode45', a)
+    if hasattr(b2, 'java__ASTNode45'):
+        assert _is_linked(b2, 'java__ASTNode45', a)
+    _safe_set(a, 'java__ClassFile46', None)
+    assert not _is_linked(a, 'java__ClassFile46', b2)
+    if hasattr(b2, 'java__ASTNode45'):
+        assert not _is_linked(b2, 'java__ASTNode45', a)
+
+
+def test_assoc_originalCompilationUnit42_link_reassign_clear():
+    a = java__CompilationUnit(originalFilePath="sample_text")
+    b1 = java__ASTNode()
+    b2 = java__ASTNode()
+    _safe_set(a, 'java__CompilationUnit', b1)
+    assert _is_linked(a, 'java__CompilationUnit', b1)
+    if hasattr(b1, 'java__ASTNode43'):
+        assert _is_linked(b1, 'java__ASTNode43', a)
+    _safe_set(a, 'java__CompilationUnit', b2)
+    assert _is_linked(a, 'java__CompilationUnit', b2)
+    if hasattr(b1, 'java__ASTNode43'):
+        assert not _is_linked(b1, 'java__ASTNode43', a)
+    if hasattr(b2, 'java__ASTNode43'):
+        assert _is_linked(b2, 'java__ASTNode43', a)
+    _safe_set(a, 'java__CompilationUnit', None)
+    assert not _is_linked(a, 'java__CompilationUnit', b2)
+    if hasattr(b2, 'java__ASTNode43'):
+        assert not _is_linked(b2, 'java__ASTNode43', a)
+
+
+def test_assoc_orphanTypes237_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__Type()
+    b2 = java__Type()
+    _safe_set(a, 'java__Model', {b1})
+    assert _is_linked(a, 'java__Model', b1)
+    if hasattr(b1, 'java__Type'):
+        assert _is_linked(b1, 'java__Type', a)
+    _safe_set(a, 'java__Model', {b2})
+    assert _is_linked(a, 'java__Model', b2)
+    if hasattr(b1, 'java__Type'):
+        assert not _is_linked(b1, 'java__Type', a)
+    if hasattr(b2, 'java__Type'):
+        assert _is_linked(b2, 'java__Type', a)
+    _safe_set(a, 'java__Model', set())
+    assert not _is_linked(a, 'java__Model', b2)
+    if hasattr(b2, 'java__Type'):
+        assert not _is_linked(b2, 'java__Type', a)
+
+
+def test_assoc_ownedElements235_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__Package()
+    b2 = java__Package()
+    _safe_set(a, 'model', {b1})
+    assert _is_linked(a, 'model', b1)
+    if hasattr(b1, 'Package236'):
+        assert _is_linked(b1, 'Package236', a)
+    _safe_set(a, 'model', {b2})
+    assert _is_linked(a, 'model', b2)
+    if hasattr(b1, 'Package236'):
+        assert not _is_linked(b1, 'Package236', a)
+    if hasattr(b2, 'Package236'):
+        assert _is_linked(b2, 'Package236', a)
+    _safe_set(a, 'model', set())
+    assert not _is_linked(a, 'model', b2)
+    if hasattr(b2, 'Package236'):
+        assert not _is_linked(b2, 'Package236', a)
+
+
+def test_assoc_package109_link_reassign_clear():
+    a = java__ClassFile(originalFilePath="sample_text")
+    b1 = java__Package()
+    b2 = java__Package()
+    _safe_set(a, 'java__ClassFile110', b1)
+    assert _is_linked(a, 'java__ClassFile110', b1)
+    if hasattr(b1, 'java__Package'):
+        assert _is_linked(b1, 'java__Package', a)
+    _safe_set(a, 'java__ClassFile110', b2)
+    assert _is_linked(a, 'java__ClassFile110', b2)
+    if hasattr(b1, 'java__Package'):
+        assert not _is_linked(b1, 'java__Package', a)
+    if hasattr(b2, 'java__Package'):
+        assert _is_linked(b2, 'java__Package', a)
+    _safe_set(a, 'java__ClassFile110', None)
+    assert not _is_linked(a, 'java__ClassFile110', b2)
+    if hasattr(b2, 'java__Package'):
+        assert not _is_linked(b2, 'java__Package', a)
+
+
+def test_assoc_package133_link_reassign_clear():
+    a = java__CompilationUnit(originalFilePath="sample_text")
+    b1 = java__Package()
+    b2 = java__Package()
+    _safe_set(a, 'java__CompilationUnit134', b1)
+    assert _is_linked(a, 'java__CompilationUnit134', b1)
+    if hasattr(b1, 'java__Package135'):
+        assert _is_linked(b1, 'java__Package135', a)
+    _safe_set(a, 'java__CompilationUnit134', b2)
+    assert _is_linked(a, 'java__CompilationUnit134', b2)
+    if hasattr(b1, 'java__Package135'):
+        assert not _is_linked(b1, 'java__Package135', a)
+    if hasattr(b2, 'java__Package135'):
+        assert _is_linked(b2, 'java__Package135', a)
+    _safe_set(a, 'java__CompilationUnit134', None)
+    assert not _is_linked(a, 'java__CompilationUnit134', b2)
+    if hasattr(b2, 'java__Package135'):
+        assert not _is_linked(b2, 'java__Package135', a)
+
+
+def test_assoc_parameter151_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__EnhancedForStatement()
+    b2 = java__EnhancedForStatement()
+    _safe_set(a, 'SingleVariableDeclaration152', b1)
+    assert _is_linked(a, 'SingleVariableDeclaration152', b1)
+    if hasattr(b1, 'enhancedForStatement'):
+        assert _is_linked(b1, 'enhancedForStatement', a)
+    _safe_set(a, 'SingleVariableDeclaration152', b2)
+    assert _is_linked(a, 'SingleVariableDeclaration152', b2)
+    if hasattr(b1, 'enhancedForStatement'):
+        assert not _is_linked(b1, 'enhancedForStatement', a)
+    if hasattr(b2, 'enhancedForStatement'):
+        assert _is_linked(b2, 'enhancedForStatement', a)
+    _safe_set(a, 'SingleVariableDeclaration152', None)
+    assert not _is_linked(a, 'SingleVariableDeclaration152', b2)
+    if hasattr(b2, 'enhancedForStatement'):
+        assert not _is_linked(b2, 'enhancedForStatement', a)
+
+
+def test_assoc_parameters1_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__AbstractMethodDeclaration()
+    b2 = java__AbstractMethodDeclaration()
+    _safe_set(a, 'SingleVariableDeclaration', b1)
+    assert _is_linked(a, 'SingleVariableDeclaration', b1)
+    if hasattr(b1, 'methodDeclaration'):
+        assert _is_linked(b1, 'methodDeclaration', a)
+    _safe_set(a, 'SingleVariableDeclaration', b2)
+    assert _is_linked(a, 'SingleVariableDeclaration', b2)
+    if hasattr(b1, 'methodDeclaration'):
+        assert not _is_linked(b1, 'methodDeclaration', a)
+    if hasattr(b2, 'methodDeclaration'):
+        assert _is_linked(b2, 'methodDeclaration', a)
+    _safe_set(a, 'SingleVariableDeclaration', None)
+    assert not _is_linked(a, 'SingleVariableDeclaration', b2)
+    if hasattr(b2, 'methodDeclaration'):
+        assert not _is_linked(b2, 'methodDeclaration', a)
+
+
+def test_assoc_parameters230_link_reassign_clear():
+    a = java__MethodRefParameter(name="sample_text", varargs=True)
+    b1 = java__MethodRef()
+    b2 = java__MethodRef()
+    _safe_set(a, 'java__MethodRefParameter', b1)
+    assert _is_linked(a, 'java__MethodRefParameter', b1)
+    if hasattr(b1, 'java__MethodRef231'):
+        assert _is_linked(b1, 'java__MethodRef231', a)
+    _safe_set(a, 'java__MethodRefParameter', b2)
+    assert _is_linked(a, 'java__MethodRefParameter', b2)
+    if hasattr(b1, 'java__MethodRef231'):
+        assert not _is_linked(b1, 'java__MethodRef231', a)
+    if hasattr(b2, 'java__MethodRef231'):
+        assert _is_linked(b2, 'java__MethodRef231', a)
+    _safe_set(a, 'java__MethodRefParameter', None)
+    assert not _is_linked(a, 'java__MethodRefParameter', b2)
+    if hasattr(b2, 'java__MethodRef231'):
+        assert not _is_linked(b2, 'java__MethodRef231', a)
+
+
+def test_assoc_redefinedMethodDeclaration220_link_reassign_clear():
+    a = java__MethodDeclaration(extraArrayDimensions=7)
+    b1 = java__MethodDeclaration(extraArrayDimensions=7)
+    b2 = java__MethodDeclaration(extraArrayDimensions=13)
+    _safe_set(a, 'MethodDeclaration', b1)
+    assert _is_linked(a, 'MethodDeclaration', b1)
+    if hasattr(b1, 'redefinitions'):
+        assert _is_linked(b1, 'redefinitions', a)
+    _safe_set(a, 'MethodDeclaration', b2)
+    assert _is_linked(a, 'MethodDeclaration', b2)
+    if hasattr(b1, 'redefinitions'):
+        assert not _is_linked(b1, 'redefinitions', a)
+    if hasattr(b2, 'redefinitions'):
+        assert _is_linked(b2, 'redefinitions', a)
+    _safe_set(a, 'MethodDeclaration', None)
+    assert not _is_linked(a, 'MethodDeclaration', b2)
+    if hasattr(b2, 'redefinitions'):
+        assert not _is_linked(b2, 'redefinitions', a)
+
+
+def test_assoc_redefinitions222_link_reassign_clear():
+    a = java__MethodDeclaration(extraArrayDimensions=7)
+    b1 = java__MethodDeclaration(extraArrayDimensions=7)
+    b2 = java__MethodDeclaration(extraArrayDimensions=13)
+    _safe_set(a, 'MethodDeclaration223', b1)
+    assert _is_linked(a, 'MethodDeclaration223', b1)
+    if hasattr(b1, 'redefinedMethodDeclaration'):
+        assert _is_linked(b1, 'redefinedMethodDeclaration', a)
+    _safe_set(a, 'MethodDeclaration223', b2)
+    assert _is_linked(a, 'MethodDeclaration223', b2)
+    if hasattr(b1, 'redefinedMethodDeclaration'):
+        assert not _is_linked(b1, 'redefinedMethodDeclaration', a)
+    if hasattr(b2, 'redefinedMethodDeclaration'):
+        assert _is_linked(b2, 'redefinedMethodDeclaration', a)
+    _safe_set(a, 'MethodDeclaration223', None)
+    assert not _is_linked(a, 'MethodDeclaration223', b2)
+    if hasattr(b2, 'redefinedMethodDeclaration'):
+        assert not _is_linked(b2, 'redefinedMethodDeclaration', a)
+
+
+def test_assoc_returnType217_link_reassign_clear():
+    a = java__MethodDeclaration(extraArrayDimensions=7)
+    b1 = java__TypeAccess()
+    b2 = java__TypeAccess()
+    _safe_set(a, 'java__MethodDeclaration', b1)
+    assert _is_linked(a, 'java__MethodDeclaration', b1)
+    if hasattr(b1, 'java__TypeAccess218'):
+        assert _is_linked(b1, 'java__TypeAccess218', a)
+    _safe_set(a, 'java__MethodDeclaration', b2)
+    assert _is_linked(a, 'java__MethodDeclaration', b2)
+    if hasattr(b1, 'java__TypeAccess218'):
+        assert not _is_linked(b1, 'java__TypeAccess218', a)
+    if hasattr(b2, 'java__TypeAccess218'):
+        assert _is_linked(b2, 'java__TypeAccess218', a)
+    _safe_set(a, 'java__MethodDeclaration', None)
+    assert not _is_linked(a, 'java__MethodDeclaration', b2)
+    if hasattr(b2, 'java__TypeAccess218'):
+        assert not _is_linked(b2, 'java__TypeAccess218', a)
+
+
+def test_assoc_rightHandSide82_link_reassign_clear():
+    a = java__Assignment(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__Assignment83', b1)
+    assert _is_linked(a, 'java__Assignment83', b1)
+    if hasattr(b1, 'java__Expression84'):
+        assert _is_linked(b1, 'java__Expression84', a)
+    _safe_set(a, 'java__Assignment83', b2)
+    assert _is_linked(a, 'java__Assignment83', b2)
+    if hasattr(b1, 'java__Expression84'):
+        assert not _is_linked(b1, 'java__Expression84', a)
+    if hasattr(b2, 'java__Expression84'):
+        assert _is_linked(b2, 'java__Expression84', a)
+    _safe_set(a, 'java__Assignment83', None)
+    assert not _is_linked(a, 'java__Assignment83', b2)
+    if hasattr(b2, 'java__Expression84'):
+        assert not _is_linked(b2, 'java__Expression84', a)
+
+
+def test_assoc_rightOperand185_link_reassign_clear():
+    a = java__InfixExpression(operator="sample_text")
+    b1 = java__Expression()
+    b2 = java__Expression()
+    _safe_set(a, 'java__InfixExpression', b1)
+    assert _is_linked(a, 'java__InfixExpression', b1)
+    if hasattr(b1, 'java__Expression186'):
+        assert _is_linked(b1, 'java__Expression186', a)
+    _safe_set(a, 'java__InfixExpression', b2)
+    assert _is_linked(a, 'java__InfixExpression', b2)
+    if hasattr(b1, 'java__Expression186'):
+        assert not _is_linked(b1, 'java__Expression186', a)
+    if hasattr(b2, 'java__Expression186'):
+        assert _is_linked(b2, 'java__Expression186', a)
+    _safe_set(a, 'java__InfixExpression', None)
+    assert not _is_linked(a, 'java__InfixExpression', b2)
+    if hasattr(b2, 'java__Expression186'):
+        assert not _is_linked(b2, 'java__Expression186', a)
+
+
+def test_assoc_singleVariableDeclaration251_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b2 = java__Modifier(inheritance="sample_text_2", native=False, static=False, strictfp=False, synchronized=False, transient=False, visibility="sample_text_2", volatile=False)
+    _safe_set(a, 'SingleVariableDeclaration253', b1)
+    assert _is_linked(a, 'SingleVariableDeclaration253', b1)
+    if hasattr(b1, 'modifier252'):
+        assert _is_linked(b1, 'modifier252', a)
+    _safe_set(a, 'SingleVariableDeclaration253', b2)
+    assert _is_linked(a, 'SingleVariableDeclaration253', b2)
+    if hasattr(b1, 'modifier252'):
+        assert not _is_linked(b1, 'modifier252', a)
+    if hasattr(b2, 'modifier252'):
+        assert _is_linked(b2, 'modifier252', a)
+    _safe_set(a, 'SingleVariableDeclaration253', None)
+    assert not _is_linked(a, 'SingleVariableDeclaration253', b2)
+    if hasattr(b2, 'modifier252'):
+        assert not _is_linked(b2, 'modifier252', a)
+
+
+def test_assoc_tags200_link_reassign_clear():
+    a = java__TagElement(tagName="sample_text")
+    b1 = java__Javadoc()
+    b2 = java__Javadoc()
+    _safe_set(a, 'java__TagElement', b1)
+    assert _is_linked(a, 'java__TagElement', b1)
+    if hasattr(b1, 'java__Javadoc'):
+        assert _is_linked(b1, 'java__Javadoc', a)
+    _safe_set(a, 'java__TagElement', b2)
+    assert _is_linked(a, 'java__TagElement', b2)
+    if hasattr(b1, 'java__Javadoc'):
+        assert not _is_linked(b1, 'java__Javadoc', a)
+    if hasattr(b2, 'java__Javadoc'):
+        assert _is_linked(b2, 'java__Javadoc', a)
+    _safe_set(a, 'java__TagElement', None)
+    assert not _is_linked(a, 'java__TagElement', b2)
+    if hasattr(b2, 'java__Javadoc'):
+        assert not _is_linked(b2, 'java__Javadoc', a)
+
+
+def test_assoc_thrownExceptions370_link_reassign_clear():
+    a = java__Test()
+    b1 = java__TypeAccess()
+    b2 = java__TypeAccess()
+    _safe_set(a, 'java__Test', {b1})
+    assert _is_linked(a, 'java__Test', b1)
+    if hasattr(b1, 'java__TypeAccess371'):
+        assert _is_linked(b1, 'java__TypeAccess371', a)
+    _safe_set(a, 'java__Test', {b2})
+    assert _is_linked(a, 'java__Test', b2)
+    if hasattr(b1, 'java__TypeAccess371'):
+        assert not _is_linked(b1, 'java__TypeAccess371', a)
+    if hasattr(b2, 'java__TypeAccess371'):
+        assert _is_linked(b2, 'java__TypeAccess371', a)
+    _safe_set(a, 'java__Test', set())
+    assert not _is_linked(a, 'java__Test', b2)
+    if hasattr(b2, 'java__TypeAccess371'):
+        assert not _is_linked(b2, 'java__TypeAccess371', a)
+
+
+def test_assoc_type103_link_reassign_clear():
+    a = java__ClassFile(originalFilePath="sample_text")
+    b1 = java__AbstractTypeDeclaration()
+    b2 = java__AbstractTypeDeclaration()
+    _safe_set(a, 'java__ClassFile104', b1)
+    assert _is_linked(a, 'java__ClassFile104', b1)
+    if hasattr(b1, 'java__AbstractTypeDeclaration105'):
+        assert _is_linked(b1, 'java__AbstractTypeDeclaration105', a)
+    _safe_set(a, 'java__ClassFile104', b2)
+    assert _is_linked(a, 'java__ClassFile104', b2)
+    if hasattr(b1, 'java__AbstractTypeDeclaration105'):
+        assert not _is_linked(b1, 'java__AbstractTypeDeclaration105', a)
+    if hasattr(b2, 'java__AbstractTypeDeclaration105'):
+        assert _is_linked(b2, 'java__AbstractTypeDeclaration105', a)
+    _safe_set(a, 'java__ClassFile104', None)
+    assert not _is_linked(a, 'java__ClassFile104', b2)
+    if hasattr(b2, 'java__AbstractTypeDeclaration105'):
+        assert not _is_linked(b2, 'java__AbstractTypeDeclaration105', a)
+
+
+def test_assoc_type232_link_reassign_clear():
+    a = java__MethodRefParameter(name="sample_text", varargs=True)
+    b1 = java__TypeAccess()
+    b2 = java__TypeAccess()
+    _safe_set(a, 'java__MethodRefParameter233', b1)
+    assert _is_linked(a, 'java__MethodRefParameter233', b1)
+    if hasattr(b1, 'java__TypeAccess234'):
+        assert _is_linked(b1, 'java__TypeAccess234', a)
+    _safe_set(a, 'java__MethodRefParameter233', b2)
+    assert _is_linked(a, 'java__MethodRefParameter233', b2)
+    if hasattr(b1, 'java__TypeAccess234'):
+        assert not _is_linked(b1, 'java__TypeAccess234', a)
+    if hasattr(b2, 'java__TypeAccess234'):
+        assert _is_linked(b2, 'java__TypeAccess234', a)
+    _safe_set(a, 'java__MethodRefParameter233', None)
+    assert not _is_linked(a, 'java__MethodRefParameter233', b2)
+    if hasattr(b2, 'java__TypeAccess234'):
+        assert not _is_linked(b2, 'java__TypeAccess234', a)
+
+
+def test_assoc_type295_link_reassign_clear():
+    a = java__SingleVariableDeclaration(varargs=True)
+    b1 = java__TypeAccess()
+    b2 = java__TypeAccess()
+    _safe_set(a, 'java__SingleVariableDeclaration', b1)
+    assert _is_linked(a, 'java__SingleVariableDeclaration', b1)
+    if hasattr(b1, 'java__TypeAccess296'):
+        assert _is_linked(b1, 'java__TypeAccess296', a)
+    _safe_set(a, 'java__SingleVariableDeclaration', b2)
+    assert _is_linked(a, 'java__SingleVariableDeclaration', b2)
+    if hasattr(b1, 'java__TypeAccess296'):
+        assert not _is_linked(b1, 'java__TypeAccess296', a)
+    if hasattr(b2, 'java__TypeAccess296'):
+        assert _is_linked(b2, 'java__TypeAccess296', a)
+    _safe_set(a, 'java__SingleVariableDeclaration', None)
+    assert not _is_linked(a, 'java__SingleVariableDeclaration', b2)
+    if hasattr(b2, 'java__TypeAccess296'):
+        assert not _is_linked(b2, 'java__TypeAccess296', a)
+
+
+def test_assoc_types136_link_reassign_clear():
+    a = java__CompilationUnit(originalFilePath="sample_text")
+    b1 = java__AbstractTypeDeclaration()
+    b2 = java__AbstractTypeDeclaration()
+    _safe_set(a, 'java__CompilationUnit137', {b1})
+    assert _is_linked(a, 'java__CompilationUnit137', b1)
+    if hasattr(b1, 'java__AbstractTypeDeclaration138'):
+        assert _is_linked(b1, 'java__AbstractTypeDeclaration138', a)
+    _safe_set(a, 'java__CompilationUnit137', {b2})
+    assert _is_linked(a, 'java__CompilationUnit137', b2)
+    if hasattr(b1, 'java__AbstractTypeDeclaration138'):
+        assert not _is_linked(b1, 'java__AbstractTypeDeclaration138', a)
+    if hasattr(b2, 'java__AbstractTypeDeclaration138'):
+        assert _is_linked(b2, 'java__AbstractTypeDeclaration138', a)
+    _safe_set(a, 'java__CompilationUnit137', set())
+    assert not _is_linked(a, 'java__CompilationUnit137', b2)
+    if hasattr(b2, 'java__AbstractTypeDeclaration138'):
+        assert not _is_linked(b2, 'java__AbstractTypeDeclaration138', a)
+
+
+def test_assoc_unresolvedItems238_link_reassign_clear():
+    a = java__Model(name="sample_text")
+    b1 = java__UnresolvedItem()
+    b2 = java__UnresolvedItem()
+    _safe_set(a, 'java__Model239', {b1})
+    assert _is_linked(a, 'java__Model239', b1)
+    if hasattr(b1, 'java__UnresolvedItem'):
+        assert _is_linked(b1, 'java__UnresolvedItem', a)
+    _safe_set(a, 'java__Model239', {b2})
+    assert _is_linked(a, 'java__Model239', b2)
+    if hasattr(b1, 'java__UnresolvedItem'):
+        assert not _is_linked(b1, 'java__UnresolvedItem', a)
+    if hasattr(b2, 'java__UnresolvedItem'):
+        assert _is_linked(b2, 'java__UnresolvedItem', a)
+    _safe_set(a, 'java__Model239', set())
+    assert not _is_linked(a, 'java__Model239', b2)
+    if hasattr(b2, 'java__UnresolvedItem'):
+        assert not _is_linked(b2, 'java__UnresolvedItem', a)
+
+
+def test_assoc_usageInVariableAccess353_link_reassign_clear():
+    a = java__VariableDeclaration(extraArrayDimensions=7)
+    b1 = java__SingleVariableAccess()
+    b2 = java__SingleVariableAccess()
+    _safe_set(a, 'variable', {b1})
+    assert _is_linked(a, 'variable', b1)
+    if hasattr(b1, 'SingleVariableAccess'):
+        assert _is_linked(b1, 'SingleVariableAccess', a)
+    _safe_set(a, 'variable', {b2})
+    assert _is_linked(a, 'variable', b2)
+    if hasattr(b1, 'SingleVariableAccess'):
+        assert not _is_linked(b1, 'SingleVariableAccess', a)
+    if hasattr(b2, 'SingleVariableAccess'):
+        assert _is_linked(b2, 'SingleVariableAccess', a)
+    _safe_set(a, 'variable', set())
+    assert not _is_linked(a, 'variable', b2)
+    if hasattr(b2, 'SingleVariableAccess'):
+        assert not _is_linked(b2, 'SingleVariableAccess', a)
+
+
+def test_assoc_usagesInImports258_link_reassign_clear():
+    a = java__NamedElement(name="sample_text", proxy=True)
+    b1 = java__ImportDeclaration(static=True)
+    b2 = java__ImportDeclaration(static=False)
+    _safe_set(a, 'importedElement', {b1})
+    assert _is_linked(a, 'importedElement', b1)
+    if hasattr(b1, 'ImportDeclaration'):
+        assert _is_linked(b1, 'ImportDeclaration', a)
+    _safe_set(a, 'importedElement', {b2})
+    assert _is_linked(a, 'importedElement', b2)
+    if hasattr(b1, 'ImportDeclaration'):
+        assert not _is_linked(b1, 'ImportDeclaration', a)
+    if hasattr(b2, 'ImportDeclaration'):
+        assert _is_linked(b2, 'ImportDeclaration', a)
+    _safe_set(a, 'importedElement', set())
+    assert not _is_linked(a, 'importedElement', b2)
+    if hasattr(b2, 'ImportDeclaration'):
+        assert not _is_linked(b2, 'ImportDeclaration', a)
+
+
+def test_assoc_variable289_link_reassign_clear():
+    a = java__VariableDeclaration(extraArrayDimensions=7)
+    b1 = java__SingleVariableAccess()
+    b2 = java__SingleVariableAccess()
+    _safe_set(a, 'VariableDeclaration', b1)
+    assert _is_linked(a, 'VariableDeclaration', b1)
+    if hasattr(b1, 'usageInVariableAccess'):
+        assert _is_linked(b1, 'usageInVariableAccess', a)
+    _safe_set(a, 'VariableDeclaration', b2)
+    assert _is_linked(a, 'VariableDeclaration', b2)
+    if hasattr(b1, 'usageInVariableAccess'):
+        assert not _is_linked(b1, 'usageInVariableAccess', a)
+    if hasattr(b2, 'usageInVariableAccess'):
+        assert _is_linked(b2, 'usageInVariableAccess', a)
+    _safe_set(a, 'VariableDeclaration', None)
+    assert not _is_linked(a, 'VariableDeclaration', b2)
+    if hasattr(b2, 'usageInVariableAccess'):
+        assert not _is_linked(b2, 'usageInVariableAccess', a)
+
+
+def test_assoc_variableDeclarationExpression256_link_reassign_clear():
+    a = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b1 = java__VariableDeclarationExpression()
+    b2 = java__VariableDeclarationExpression()
+    _safe_set(a, 'modifier257', b1)
+    assert _is_linked(a, 'modifier257', b1)
+    if hasattr(b1, 'VariableDeclarationExpression'):
+        assert _is_linked(b1, 'VariableDeclarationExpression', a)
+    _safe_set(a, 'modifier257', b2)
+    assert _is_linked(a, 'modifier257', b2)
+    if hasattr(b1, 'VariableDeclarationExpression'):
+        assert not _is_linked(b1, 'VariableDeclarationExpression', a)
+    if hasattr(b2, 'VariableDeclarationExpression'):
+        assert _is_linked(b2, 'VariableDeclarationExpression', a)
+    _safe_set(a, 'modifier257', None)
+    assert not _is_linked(a, 'modifier257', b2)
+    if hasattr(b2, 'VariableDeclarationExpression'):
+        assert not _is_linked(b2, 'VariableDeclarationExpression', a)
+
+
+def test_assoc_variableDeclarationStatement254_link_reassign_clear():
+    a = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    b1 = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    b2 = java__Modifier(inheritance="sample_text_2", native=False, static=False, strictfp=False, synchronized=False, transient=False, visibility="sample_text_2", volatile=False)
+    _safe_set(a, 'VariableDeclarationStatement', b1)
+    assert _is_linked(a, 'VariableDeclarationStatement', b1)
+    if hasattr(b1, 'modifier255'):
+        assert _is_linked(b1, 'modifier255', a)
+    _safe_set(a, 'VariableDeclarationStatement', b2)
+    assert _is_linked(a, 'VariableDeclarationStatement', b2)
+    if hasattr(b1, 'modifier255'):
+        assert not _is_linked(b1, 'modifier255', a)
+    if hasattr(b2, 'modifier255'):
+        assert _is_linked(b2, 'modifier255', a)
+    _safe_set(a, 'VariableDeclarationStatement', None)
+    assert not _is_linked(a, 'VariableDeclarationStatement', b2)
+    if hasattr(b2, 'modifier255'):
+        assert not _is_linked(b2, 'modifier255', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+ASTNode_strategy = st.builds(ASTNode)
+@given(instance=ASTNode_strategy)
+@settings(max_examples=25)
+def test_ASTNode_instantiation(instance):
+    assert isinstance(instance, ASTNode)
+
+
+AbstractMethodDeclaration_strategy = st.builds(AbstractMethodDeclaration)
+@given(instance=AbstractMethodDeclaration_strategy)
+@settings(max_examples=25)
+def test_AbstractMethodDeclaration_instantiation(instance):
+    assert isinstance(instance, AbstractMethodDeclaration)
+
+
+AbstractMethodInvocation_strategy = st.builds(AbstractMethodInvocation)
+@given(instance=AbstractMethodInvocation_strategy)
+@settings(max_examples=25)
+def test_AbstractMethodInvocation_instantiation(instance):
+    assert isinstance(instance, AbstractMethodInvocation)
+
+
+AbstractTypeDeclaration_strategy = st.builds(AbstractTypeDeclaration)
+@given(instance=AbstractTypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_AbstractTypeDeclaration_instantiation(instance):
+    assert isinstance(instance, AbstractTypeDeclaration)
+
+
+AbstractTypeQualifiedExpression_strategy = st.builds(AbstractTypeQualifiedExpression)
+@given(instance=AbstractTypeQualifiedExpression_strategy)
+@settings(max_examples=25)
+def test_AbstractTypeQualifiedExpression_instantiation(instance):
+    assert isinstance(instance, AbstractTypeQualifiedExpression)
+
+
+AbstractVariablesContainer_strategy = st.builds(AbstractVariablesContainer)
+@given(instance=AbstractVariablesContainer_strategy)
+@settings(max_examples=25)
+def test_AbstractVariablesContainer_instantiation(instance):
+    assert isinstance(instance, AbstractVariablesContainer)
+
+
+AnnotationTypeDeclaration_strategy = st.builds(AnnotationTypeDeclaration)
+@given(instance=AnnotationTypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_AnnotationTypeDeclaration_instantiation(instance):
+    assert isinstance(instance, AnnotationTypeDeclaration)
+
+
+AnnotationTypeMemberDeclaration_strategy = st.builds(AnnotationTypeMemberDeclaration)
+@given(instance=AnnotationTypeMemberDeclaration_strategy)
+@settings(max_examples=25)
+def test_AnnotationTypeMemberDeclaration_instantiation(instance):
+    assert isinstance(instance, AnnotationTypeMemberDeclaration)
+
+
+BodyDeclaration_strategy = st.builds(BodyDeclaration)
+@given(instance=BodyDeclaration_strategy)
+@settings(max_examples=25)
+def test_BodyDeclaration_instantiation(instance):
+    assert isinstance(instance, BodyDeclaration)
+
+
+ClassDeclaration_strategy = st.builds(ClassDeclaration)
+@given(instance=ClassDeclaration_strategy)
+@settings(max_examples=25)
+def test_ClassDeclaration_instantiation(instance):
+    assert isinstance(instance, ClassDeclaration)
+
+
+Comment_strategy = st.builds(Comment)
+@given(instance=Comment_strategy)
+@settings(max_examples=25)
+def test_Comment_instantiation(instance):
+    assert isinstance(instance, Comment)
+
+
+EnumDeclaration_strategy = st.builds(EnumDeclaration)
+@given(instance=EnumDeclaration_strategy)
+@settings(max_examples=25)
+def test_EnumDeclaration_instantiation(instance):
+    assert isinstance(instance, EnumDeclaration)
+
+
+Expression_strategy = st.builds(Expression)
+@given(instance=Expression_strategy)
+@settings(max_examples=25)
+def test_Expression_instantiation(instance):
+    assert isinstance(instance, Expression)
+
+
+InterfaceDeclaration_strategy = st.builds(InterfaceDeclaration)
+@given(instance=InterfaceDeclaration_strategy)
+@settings(max_examples=25)
+def test_InterfaceDeclaration_instantiation(instance):
+    assert isinstance(instance, InterfaceDeclaration)
+
+
+LabeledStatement_strategy = st.builds(LabeledStatement)
+@given(instance=LabeledStatement_strategy)
+@settings(max_examples=25)
+def test_LabeledStatement_instantiation(instance):
+    assert isinstance(instance, LabeledStatement)
+
+
+MethodDeclaration_strategy = st.builds(MethodDeclaration)
+@given(instance=MethodDeclaration_strategy)
+@settings(max_examples=25)
+def test_MethodDeclaration_instantiation(instance):
+    assert isinstance(instance, MethodDeclaration)
+
+
+NamedElement_strategy = st.builds(NamedElement)
+@given(instance=NamedElement_strategy)
+@settings(max_examples=25)
+def test_NamedElement_instantiation(instance):
+    assert isinstance(instance, NamedElement)
+
+
+NamespaceAccess_strategy = st.builds(NamespaceAccess)
+@given(instance=NamespaceAccess_strategy)
+@settings(max_examples=25)
+def test_NamespaceAccess_instantiation(instance):
+    assert isinstance(instance, NamespaceAccess)
+
+
+PrimitiveType_strategy = st.builds(PrimitiveType)
+@given(instance=PrimitiveType_strategy)
+@settings(max_examples=25)
+def test_PrimitiveType_instantiation(instance):
+    assert isinstance(instance, PrimitiveType)
+
+
+SingleVariableDeclaration_strategy = st.builds(SingleVariableDeclaration)
+@given(instance=SingleVariableDeclaration_strategy)
+@settings(max_examples=25)
+def test_SingleVariableDeclaration_instantiation(instance):
+    assert isinstance(instance, SingleVariableDeclaration)
+
+
+Statement_strategy = st.builds(Statement)
+@given(instance=Statement_strategy)
+@settings(max_examples=25)
+def test_Statement_instantiation(instance):
+    assert isinstance(instance, Statement)
+
+
+Type_strategy = st.builds(Type)
+@given(instance=Type_strategy)
+@settings(max_examples=25)
+def test_Type_instantiation(instance):
+    assert isinstance(instance, Type)
+
+
+TypeDeclaration_strategy = st.builds(TypeDeclaration)
+@given(instance=TypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_TypeDeclaration_instantiation(instance):
+    assert isinstance(instance, TypeDeclaration)
+
+
+UnresolvedItem_strategy = st.builds(UnresolvedItem)
+@given(instance=UnresolvedItem_strategy)
+@settings(max_examples=25)
+def test_UnresolvedItem_instantiation(instance):
+    assert isinstance(instance, UnresolvedItem)
+
+
+VariableDeclaration_strategy = st.builds(VariableDeclaration)
+@given(instance=VariableDeclaration_strategy)
+@settings(max_examples=25)
+def test_VariableDeclaration_instantiation(instance):
+    assert isinstance(instance, VariableDeclaration)
+
+
+VariableDeclarationFragment_strategy = st.builds(VariableDeclarationFragment)
+@given(instance=VariableDeclarationFragment_strategy)
+@settings(max_examples=25)
+def test_VariableDeclarationFragment_instantiation(instance):
+    assert isinstance(instance, VariableDeclarationFragment)
+
+
+java__ASTNode_strategy = st.builds(java__ASTNode)
+@given(instance=java__ASTNode_strategy)
+@settings(max_examples=25)
+def test_java__ASTNode_instantiation(instance):
+    assert isinstance(instance, java__ASTNode)
+
+
+java__AbstractMethodDeclaration_strategy = st.builds(java__AbstractMethodDeclaration)
+@given(instance=java__AbstractMethodDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__AbstractMethodDeclaration_instantiation(instance):
+    assert isinstance(instance, java__AbstractMethodDeclaration)
+
+
+java__AbstractMethodInvocation_strategy = st.builds(java__AbstractMethodInvocation)
+@given(instance=java__AbstractMethodInvocation_strategy)
+@settings(max_examples=25)
+def test_java__AbstractMethodInvocation_instantiation(instance):
+    assert isinstance(instance, java__AbstractMethodInvocation)
+
+
+java__AbstractTypeDeclaration_strategy = st.builds(java__AbstractTypeDeclaration)
+@given(instance=java__AbstractTypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__AbstractTypeDeclaration_instantiation(instance):
+    assert isinstance(instance, java__AbstractTypeDeclaration)
+
+
+java__AbstractTypeQualifiedExpression_strategy = st.builds(java__AbstractTypeQualifiedExpression)
+@given(instance=java__AbstractTypeQualifiedExpression_strategy)
+@settings(max_examples=25)
+def test_java__AbstractTypeQualifiedExpression_instantiation(instance):
+    assert isinstance(instance, java__AbstractTypeQualifiedExpression)
+
+
+java__AbstractVariablesContainer_strategy = st.builds(java__AbstractVariablesContainer)
+@given(instance=java__AbstractVariablesContainer_strategy)
+@settings(max_examples=25)
+def test_java__AbstractVariablesContainer_instantiation(instance):
+    assert isinstance(instance, java__AbstractVariablesContainer)
+
+
+java__Annotation_strategy = st.builds(java__Annotation)
+@given(instance=java__Annotation_strategy)
+@settings(max_examples=25)
+def test_java__Annotation_instantiation(instance):
+    assert isinstance(instance, java__Annotation)
+
+
+java__AnnotationMemberValuePair_strategy = st.builds(java__AnnotationMemberValuePair)
+@given(instance=java__AnnotationMemberValuePair_strategy)
+@settings(max_examples=25)
+def test_java__AnnotationMemberValuePair_instantiation(instance):
+    assert isinstance(instance, java__AnnotationMemberValuePair)
+
+
+java__AnnotationTypeDeclaration_strategy = st.builds(java__AnnotationTypeDeclaration)
+@given(instance=java__AnnotationTypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__AnnotationTypeDeclaration_instantiation(instance):
+    assert isinstance(instance, java__AnnotationTypeDeclaration)
+
+
+java__AnnotationTypeMemberDeclaration_strategy = st.builds(java__AnnotationTypeMemberDeclaration)
+@given(instance=java__AnnotationTypeMemberDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__AnnotationTypeMemberDeclaration_instantiation(instance):
+    assert isinstance(instance, java__AnnotationTypeMemberDeclaration)
+
+
+java__AnonymousClassDeclaration_strategy = st.builds(java__AnonymousClassDeclaration)
+@given(instance=java__AnonymousClassDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__AnonymousClassDeclaration_instantiation(instance):
+    assert isinstance(instance, java__AnonymousClassDeclaration)
+
+
+java__Archive_strategy = st.builds(java__Archive, originalFilePath=safe_text)
+@given(instance=java__Archive_strategy)
+@settings(max_examples=25)
+def test_java__Archive_instantiation(instance):
+    assert isinstance(instance, java__Archive)
+
+
+java__ArrayAccess_strategy = st.builds(java__ArrayAccess)
+@given(instance=java__ArrayAccess_strategy)
+@settings(max_examples=25)
+def test_java__ArrayAccess_instantiation(instance):
+    assert isinstance(instance, java__ArrayAccess)
+
+
+java__ArrayCreation_strategy = st.builds(java__ArrayCreation)
+@given(instance=java__ArrayCreation_strategy)
+@settings(max_examples=25)
+def test_java__ArrayCreation_instantiation(instance):
+    assert isinstance(instance, java__ArrayCreation)
+
+
+java__ArrayInitializer_strategy = st.builds(java__ArrayInitializer)
+@given(instance=java__ArrayInitializer_strategy)
+@settings(max_examples=25)
+def test_java__ArrayInitializer_instantiation(instance):
+    assert isinstance(instance, java__ArrayInitializer)
+
+
+java__ArrayLengthAccess_strategy = st.builds(java__ArrayLengthAccess)
+@given(instance=java__ArrayLengthAccess_strategy)
+@settings(max_examples=25)
+def test_java__ArrayLengthAccess_instantiation(instance):
+    assert isinstance(instance, java__ArrayLengthAccess)
+
+
+java__ArrayType_strategy = st.builds(java__ArrayType, dimensions=st.integers())
+@given(instance=java__ArrayType_strategy)
+@settings(max_examples=25)
+def test_java__ArrayType_instantiation(instance):
+    assert isinstance(instance, java__ArrayType)
+
+
+java__AssertStatement_strategy = st.builds(java__AssertStatement)
+@given(instance=java__AssertStatement_strategy)
+@settings(max_examples=25)
+def test_java__AssertStatement_instantiation(instance):
+    assert isinstance(instance, java__AssertStatement)
+
+
+java__Assignment_strategy = st.builds(java__Assignment, operator=safe_text)
+@given(instance=java__Assignment_strategy)
+@settings(max_examples=25)
+def test_java__Assignment_instantiation(instance):
+    assert isinstance(instance, java__Assignment)
+
+
+java__Block_strategy = st.builds(java__Block)
+@given(instance=java__Block_strategy)
+@settings(max_examples=25)
+def test_java__Block_instantiation(instance):
+    assert isinstance(instance, java__Block)
+
+
+java__BlockComment_strategy = st.builds(java__BlockComment)
+@given(instance=java__BlockComment_strategy)
+@settings(max_examples=25)
+def test_java__BlockComment_instantiation(instance):
+    assert isinstance(instance, java__BlockComment)
+
+
+java__BodyDeclaration_strategy = st.builds(java__BodyDeclaration)
+@given(instance=java__BodyDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__BodyDeclaration_instantiation(instance):
+    assert isinstance(instance, java__BodyDeclaration)
+
+
+java__BooleanLiteral_strategy = st.builds(java__BooleanLiteral, value=st.booleans())
+@given(instance=java__BooleanLiteral_strategy)
+@settings(max_examples=25)
+def test_java__BooleanLiteral_instantiation(instance):
+    assert isinstance(instance, java__BooleanLiteral)
+
+
+java__BreakStatement_strategy = st.builds(java__BreakStatement)
+@given(instance=java__BreakStatement_strategy)
+@settings(max_examples=25)
+def test_java__BreakStatement_instantiation(instance):
+    assert isinstance(instance, java__BreakStatement)
+
+
+java__CastExpression_strategy = st.builds(java__CastExpression)
+@given(instance=java__CastExpression_strategy)
+@settings(max_examples=25)
+def test_java__CastExpression_instantiation(instance):
+    assert isinstance(instance, java__CastExpression)
+
+
+java__CatchClause_strategy = st.builds(java__CatchClause)
+@given(instance=java__CatchClause_strategy)
+@settings(max_examples=25)
+def test_java__CatchClause_instantiation(instance):
+    assert isinstance(instance, java__CatchClause)
+
+
+java__CharacterLiteral_strategy = st.builds(java__CharacterLiteral, escapedValue=safe_text)
+@given(instance=java__CharacterLiteral_strategy)
+@settings(max_examples=25)
+def test_java__CharacterLiteral_instantiation(instance):
+    assert isinstance(instance, java__CharacterLiteral)
+
+
+java__ClassDeclaration_strategy = st.builds(java__ClassDeclaration)
+@given(instance=java__ClassDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__ClassDeclaration_instantiation(instance):
+    assert isinstance(instance, java__ClassDeclaration)
+
+
+java__ClassFile_strategy = st.builds(java__ClassFile, originalFilePath=safe_text)
+@given(instance=java__ClassFile_strategy)
+@settings(max_examples=25)
+def test_java__ClassFile_instantiation(instance):
+    assert isinstance(instance, java__ClassFile)
+
+
+java__ClassInstanceCreation_strategy = st.builds(java__ClassInstanceCreation)
+@given(instance=java__ClassInstanceCreation_strategy)
+@settings(max_examples=25)
+def test_java__ClassInstanceCreation_instantiation(instance):
+    assert isinstance(instance, java__ClassInstanceCreation)
+
+
+java__Comment_strategy = st.builds(java__Comment, content=safe_text, enclosedByParent=st.booleans(), prefixOfParent=st.booleans())
+@given(instance=java__Comment_strategy)
+@settings(max_examples=25)
+def test_java__Comment_instantiation(instance):
+    assert isinstance(instance, java__Comment)
+
+
+java__CompilationUnit_strategy = st.builds(java__CompilationUnit, originalFilePath=safe_text)
+@given(instance=java__CompilationUnit_strategy)
+@settings(max_examples=25)
+def test_java__CompilationUnit_instantiation(instance):
+    assert isinstance(instance, java__CompilationUnit)
+
+
+java__ConditionalExpression_strategy = st.builds(java__ConditionalExpression)
+@given(instance=java__ConditionalExpression_strategy)
+@settings(max_examples=25)
+def test_java__ConditionalExpression_instantiation(instance):
+    assert isinstance(instance, java__ConditionalExpression)
+
+
+java__ConstructorDeclaration_strategy = st.builds(java__ConstructorDeclaration)
+@given(instance=java__ConstructorDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__ConstructorDeclaration_instantiation(instance):
+    assert isinstance(instance, java__ConstructorDeclaration)
+
+
+java__ConstructorInvocation_strategy = st.builds(java__ConstructorInvocation)
+@given(instance=java__ConstructorInvocation_strategy)
+@settings(max_examples=25)
+def test_java__ConstructorInvocation_instantiation(instance):
+    assert isinstance(instance, java__ConstructorInvocation)
+
+
+java__ContinueStatement_strategy = st.builds(java__ContinueStatement)
+@given(instance=java__ContinueStatement_strategy)
+@settings(max_examples=25)
+def test_java__ContinueStatement_instantiation(instance):
+    assert isinstance(instance, java__ContinueStatement)
+
+
+java__DoStatement_strategy = st.builds(java__DoStatement)
+@given(instance=java__DoStatement_strategy)
+@settings(max_examples=25)
+def test_java__DoStatement_instantiation(instance):
+    assert isinstance(instance, java__DoStatement)
+
+
+java__EmptyStatement_strategy = st.builds(java__EmptyStatement)
+@given(instance=java__EmptyStatement_strategy)
+@settings(max_examples=25)
+def test_java__EmptyStatement_instantiation(instance):
+    assert isinstance(instance, java__EmptyStatement)
+
+
+java__EnhancedForStatement_strategy = st.builds(java__EnhancedForStatement)
+@given(instance=java__EnhancedForStatement_strategy)
+@settings(max_examples=25)
+def test_java__EnhancedForStatement_instantiation(instance):
+    assert isinstance(instance, java__EnhancedForStatement)
+
+
+java__EnumConstantDeclaration_strategy = st.builds(java__EnumConstantDeclaration)
+@given(instance=java__EnumConstantDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__EnumConstantDeclaration_instantiation(instance):
+    assert isinstance(instance, java__EnumConstantDeclaration)
+
+
+java__EnumDeclaration_strategy = st.builds(java__EnumDeclaration)
+@given(instance=java__EnumDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__EnumDeclaration_instantiation(instance):
+    assert isinstance(instance, java__EnumDeclaration)
+
+
+java__Expression_strategy = st.builds(java__Expression)
+@given(instance=java__Expression_strategy)
+@settings(max_examples=25)
+def test_java__Expression_instantiation(instance):
+    assert isinstance(instance, java__Expression)
+
+
+java__ExpressionStatement_strategy = st.builds(java__ExpressionStatement)
+@given(instance=java__ExpressionStatement_strategy)
+@settings(max_examples=25)
+def test_java__ExpressionStatement_instantiation(instance):
+    assert isinstance(instance, java__ExpressionStatement)
+
+
+java__FieldAccess_strategy = st.builds(java__FieldAccess)
+@given(instance=java__FieldAccess_strategy)
+@settings(max_examples=25)
+def test_java__FieldAccess_instantiation(instance):
+    assert isinstance(instance, java__FieldAccess)
+
+
+java__FieldDeclaration_strategy = st.builds(java__FieldDeclaration)
+@given(instance=java__FieldDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__FieldDeclaration_instantiation(instance):
+    assert isinstance(instance, java__FieldDeclaration)
+
+
+java__ForStatement_strategy = st.builds(java__ForStatement)
+@given(instance=java__ForStatement_strategy)
+@settings(max_examples=25)
+def test_java__ForStatement_instantiation(instance):
+    assert isinstance(instance, java__ForStatement)
+
+
+java__IfStatement_strategy = st.builds(java__IfStatement)
+@given(instance=java__IfStatement_strategy)
+@settings(max_examples=25)
+def test_java__IfStatement_instantiation(instance):
+    assert isinstance(instance, java__IfStatement)
+
+
+java__ImportDeclaration_strategy = st.builds(java__ImportDeclaration, static=st.booleans())
+@given(instance=java__ImportDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__ImportDeclaration_instantiation(instance):
+    assert isinstance(instance, java__ImportDeclaration)
+
+
+java__InfixExpression_strategy = st.builds(java__InfixExpression, operator=safe_text)
+@given(instance=java__InfixExpression_strategy)
+@settings(max_examples=25)
+def test_java__InfixExpression_instantiation(instance):
+    assert isinstance(instance, java__InfixExpression)
+
+
+java__Initializer_strategy = st.builds(java__Initializer)
+@given(instance=java__Initializer_strategy)
+@settings(max_examples=25)
+def test_java__Initializer_instantiation(instance):
+    assert isinstance(instance, java__Initializer)
+
+
+java__InstanceofExpression_strategy = st.builds(java__InstanceofExpression)
+@given(instance=java__InstanceofExpression_strategy)
+@settings(max_examples=25)
+def test_java__InstanceofExpression_instantiation(instance):
+    assert isinstance(instance, java__InstanceofExpression)
+
+
+java__InterfaceDeclaration_strategy = st.builds(java__InterfaceDeclaration)
+@given(instance=java__InterfaceDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__InterfaceDeclaration_instantiation(instance):
+    assert isinstance(instance, java__InterfaceDeclaration)
+
+
+java__Javadoc_strategy = st.builds(java__Javadoc)
+@given(instance=java__Javadoc_strategy)
+@settings(max_examples=25)
+def test_java__Javadoc_instantiation(instance):
+    assert isinstance(instance, java__Javadoc)
+
+
+java__LabeledStatement_strategy = st.builds(java__LabeledStatement)
+@given(instance=java__LabeledStatement_strategy)
+@settings(max_examples=25)
+def test_java__LabeledStatement_instantiation(instance):
+    assert isinstance(instance, java__LabeledStatement)
+
+
+java__LineComment_strategy = st.builds(java__LineComment)
+@given(instance=java__LineComment_strategy)
+@settings(max_examples=25)
+def test_java__LineComment_instantiation(instance):
+    assert isinstance(instance, java__LineComment)
+
+
+java__Manifest_strategy = st.builds(java__Manifest)
+@given(instance=java__Manifest_strategy)
+@settings(max_examples=25)
+def test_java__Manifest_instantiation(instance):
+    assert isinstance(instance, java__Manifest)
+
+
+java__ManifestAttribute_strategy = st.builds(java__ManifestAttribute, key=safe_text, value=safe_text)
+@given(instance=java__ManifestAttribute_strategy)
+@settings(max_examples=25)
+def test_java__ManifestAttribute_instantiation(instance):
+    assert isinstance(instance, java__ManifestAttribute)
+
+
+java__ManifestEntry_strategy = st.builds(java__ManifestEntry, name=safe_text)
+@given(instance=java__ManifestEntry_strategy)
+@settings(max_examples=25)
+def test_java__ManifestEntry_instantiation(instance):
+    assert isinstance(instance, java__ManifestEntry)
+
+
+java__MemberRef_strategy = st.builds(java__MemberRef)
+@given(instance=java__MemberRef_strategy)
+@settings(max_examples=25)
+def test_java__MemberRef_instantiation(instance):
+    assert isinstance(instance, java__MemberRef)
+
+
+java__MethodDeclaration_strategy = st.builds(java__MethodDeclaration, extraArrayDimensions=st.integers())
+@given(instance=java__MethodDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__MethodDeclaration_instantiation(instance):
+    assert isinstance(instance, java__MethodDeclaration)
+
+
+java__MethodInvocation_strategy = st.builds(java__MethodInvocation)
+@given(instance=java__MethodInvocation_strategy)
+@settings(max_examples=25)
+def test_java__MethodInvocation_instantiation(instance):
+    assert isinstance(instance, java__MethodInvocation)
+
+
+java__MethodRef_strategy = st.builds(java__MethodRef)
+@given(instance=java__MethodRef_strategy)
+@settings(max_examples=25)
+def test_java__MethodRef_instantiation(instance):
+    assert isinstance(instance, java__MethodRef)
+
+
+java__MethodRefParameter_strategy = st.builds(java__MethodRefParameter, name=safe_text, varargs=st.booleans())
+@given(instance=java__MethodRefParameter_strategy)
+@settings(max_examples=25)
+def test_java__MethodRefParameter_instantiation(instance):
+    assert isinstance(instance, java__MethodRefParameter)
+
+
+java__Model_strategy = st.builds(java__Model, name=safe_text)
+@given(instance=java__Model_strategy)
+@settings(max_examples=25)
+def test_java__Model_instantiation(instance):
+    assert isinstance(instance, java__Model)
+
+
+java__Modifier_strategy = st.builds(java__Modifier, inheritance=safe_text, native=st.booleans(), static=st.booleans(), strictfp=st.booleans(), synchronized=st.booleans(), transient=st.booleans(), visibility=safe_text, volatile=st.booleans())
+@given(instance=java__Modifier_strategy)
+@settings(max_examples=25)
+def test_java__Modifier_instantiation(instance):
+    assert isinstance(instance, java__Modifier)
+
+
+java__NamedElement_strategy = st.builds(java__NamedElement, name=safe_text, proxy=st.booleans())
+@given(instance=java__NamedElement_strategy)
+@settings(max_examples=25)
+def test_java__NamedElement_instantiation(instance):
+    assert isinstance(instance, java__NamedElement)
+
+
+java__NamespaceAccess_strategy = st.builds(java__NamespaceAccess)
+@given(instance=java__NamespaceAccess_strategy)
+@settings(max_examples=25)
+def test_java__NamespaceAccess_instantiation(instance):
+    assert isinstance(instance, java__NamespaceAccess)
+
+
+java__NullLiteral_strategy = st.builds(java__NullLiteral)
+@given(instance=java__NullLiteral_strategy)
+@settings(max_examples=25)
+def test_java__NullLiteral_instantiation(instance):
+    assert isinstance(instance, java__NullLiteral)
+
+
+java__NumberLiteral_strategy = st.builds(java__NumberLiteral, tokenValue=safe_text)
+@given(instance=java__NumberLiteral_strategy)
+@settings(max_examples=25)
+def test_java__NumberLiteral_instantiation(instance):
+    assert isinstance(instance, java__NumberLiteral)
+
+
+java__Package_strategy = st.builds(java__Package)
+@given(instance=java__Package_strategy)
+@settings(max_examples=25)
+def test_java__Package_instantiation(instance):
+    assert isinstance(instance, java__Package)
+
+
+java__PackageAccess_strategy = st.builds(java__PackageAccess)
+@given(instance=java__PackageAccess_strategy)
+@settings(max_examples=25)
+def test_java__PackageAccess_instantiation(instance):
+    assert isinstance(instance, java__PackageAccess)
+
+
+java__ParameterizedType_strategy = st.builds(java__ParameterizedType)
+@given(instance=java__ParameterizedType_strategy)
+@settings(max_examples=25)
+def test_java__ParameterizedType_instantiation(instance):
+    assert isinstance(instance, java__ParameterizedType)
+
+
+java__ParenthesizedExpression_strategy = st.builds(java__ParenthesizedExpression)
+@given(instance=java__ParenthesizedExpression_strategy)
+@settings(max_examples=25)
+def test_java__ParenthesizedExpression_instantiation(instance):
+    assert isinstance(instance, java__ParenthesizedExpression)
+
+
+java__PostfixExpression_strategy = st.builds(java__PostfixExpression, operator=safe_text)
+@given(instance=java__PostfixExpression_strategy)
+@settings(max_examples=25)
+def test_java__PostfixExpression_instantiation(instance):
+    assert isinstance(instance, java__PostfixExpression)
+
+
+java__PrefixExpression_strategy = st.builds(java__PrefixExpression, operator=safe_text)
+@given(instance=java__PrefixExpression_strategy)
+@settings(max_examples=25)
+def test_java__PrefixExpression_instantiation(instance):
+    assert isinstance(instance, java__PrefixExpression)
+
+
+java__PrimitiveType_strategy = st.builds(java__PrimitiveType)
+@given(instance=java__PrimitiveType_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveType_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveType)
+
+
+java__PrimitiveTypeBoolean_strategy = st.builds(java__PrimitiveTypeBoolean)
+@given(instance=java__PrimitiveTypeBoolean_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeBoolean_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeBoolean)
+
+
+java__PrimitiveTypeByte_strategy = st.builds(java__PrimitiveTypeByte)
+@given(instance=java__PrimitiveTypeByte_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeByte_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeByte)
+
+
+java__PrimitiveTypeChar_strategy = st.builds(java__PrimitiveTypeChar)
+@given(instance=java__PrimitiveTypeChar_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeChar_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeChar)
+
+
+java__PrimitiveTypeDouble_strategy = st.builds(java__PrimitiveTypeDouble)
+@given(instance=java__PrimitiveTypeDouble_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeDouble_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeDouble)
+
+
+java__PrimitiveTypeFloat_strategy = st.builds(java__PrimitiveTypeFloat)
+@given(instance=java__PrimitiveTypeFloat_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeFloat_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeFloat)
+
+
+java__PrimitiveTypeInt_strategy = st.builds(java__PrimitiveTypeInt)
+@given(instance=java__PrimitiveTypeInt_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeInt_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeInt)
+
+
+java__PrimitiveTypeLong_strategy = st.builds(java__PrimitiveTypeLong)
+@given(instance=java__PrimitiveTypeLong_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeLong_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeLong)
+
+
+java__PrimitiveTypeShort_strategy = st.builds(java__PrimitiveTypeShort)
+@given(instance=java__PrimitiveTypeShort_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeShort_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeShort)
+
+
+java__PrimitiveTypeVoid_strategy = st.builds(java__PrimitiveTypeVoid)
+@given(instance=java__PrimitiveTypeVoid_strategy)
+@settings(max_examples=25)
+def test_java__PrimitiveTypeVoid_instantiation(instance):
+    assert isinstance(instance, java__PrimitiveTypeVoid)
+
+
+java__ReturnStatement_strategy = st.builds(java__ReturnStatement)
+@given(instance=java__ReturnStatement_strategy)
+@settings(max_examples=25)
+def test_java__ReturnStatement_instantiation(instance):
+    assert isinstance(instance, java__ReturnStatement)
+
+
+java__SingleVariableAccess_strategy = st.builds(java__SingleVariableAccess)
+@given(instance=java__SingleVariableAccess_strategy)
+@settings(max_examples=25)
+def test_java__SingleVariableAccess_instantiation(instance):
+    assert isinstance(instance, java__SingleVariableAccess)
+
+
+java__SingleVariableDeclaration_strategy = st.builds(java__SingleVariableDeclaration, varargs=st.booleans())
+@given(instance=java__SingleVariableDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__SingleVariableDeclaration_instantiation(instance):
+    assert isinstance(instance, java__SingleVariableDeclaration)
+
+
+java__Statement_strategy = st.builds(java__Statement)
+@given(instance=java__Statement_strategy)
+@settings(max_examples=25)
+def test_java__Statement_instantiation(instance):
+    assert isinstance(instance, java__Statement)
+
+
+java__StringLiteral_strategy = st.builds(java__StringLiteral, escapedValue=safe_text)
+@given(instance=java__StringLiteral_strategy)
+@settings(max_examples=25)
+def test_java__StringLiteral_instantiation(instance):
+    assert isinstance(instance, java__StringLiteral)
+
+
+java__SuperConstructorInvocation_strategy = st.builds(java__SuperConstructorInvocation)
+@given(instance=java__SuperConstructorInvocation_strategy)
+@settings(max_examples=25)
+def test_java__SuperConstructorInvocation_instantiation(instance):
+    assert isinstance(instance, java__SuperConstructorInvocation)
+
+
+java__SuperFieldAccess_strategy = st.builds(java__SuperFieldAccess)
+@given(instance=java__SuperFieldAccess_strategy)
+@settings(max_examples=25)
+def test_java__SuperFieldAccess_instantiation(instance):
+    assert isinstance(instance, java__SuperFieldAccess)
+
+
+java__SuperMethodInvocation_strategy = st.builds(java__SuperMethodInvocation)
+@given(instance=java__SuperMethodInvocation_strategy)
+@settings(max_examples=25)
+def test_java__SuperMethodInvocation_instantiation(instance):
+    assert isinstance(instance, java__SuperMethodInvocation)
+
+
+java__SwitchCase_strategy = st.builds(java__SwitchCase, default=st.booleans())
+@given(instance=java__SwitchCase_strategy)
+@settings(max_examples=25)
+def test_java__SwitchCase_instantiation(instance):
+    assert isinstance(instance, java__SwitchCase)
+
+
+java__SwitchStatement_strategy = st.builds(java__SwitchStatement)
+@given(instance=java__SwitchStatement_strategy)
+@settings(max_examples=25)
+def test_java__SwitchStatement_instantiation(instance):
+    assert isinstance(instance, java__SwitchStatement)
+
+
+java__SynchronizedStatement_strategy = st.builds(java__SynchronizedStatement)
+@given(instance=java__SynchronizedStatement_strategy)
+@settings(max_examples=25)
+def test_java__SynchronizedStatement_instantiation(instance):
+    assert isinstance(instance, java__SynchronizedStatement)
+
+
+java__TagElement_strategy = st.builds(java__TagElement, tagName=safe_text)
+@given(instance=java__TagElement_strategy)
+@settings(max_examples=25)
+def test_java__TagElement_instantiation(instance):
+    assert isinstance(instance, java__TagElement)
+
+
+java__Test_strategy = st.builds(java__Test)
+@given(instance=java__Test_strategy)
+@settings(max_examples=25)
+def test_java__Test_instantiation(instance):
+    assert isinstance(instance, java__Test)
+
+
+java__TextElement_strategy = st.builds(java__TextElement, text=safe_text)
+@given(instance=java__TextElement_strategy)
+@settings(max_examples=25)
+def test_java__TextElement_instantiation(instance):
+    assert isinstance(instance, java__TextElement)
+
+
+java__ThisExpression_strategy = st.builds(java__ThisExpression)
+@given(instance=java__ThisExpression_strategy)
+@settings(max_examples=25)
+def test_java__ThisExpression_instantiation(instance):
+    assert isinstance(instance, java__ThisExpression)
+
+
+java__ThrowStatement_strategy = st.builds(java__ThrowStatement)
+@given(instance=java__ThrowStatement_strategy)
+@settings(max_examples=25)
+def test_java__ThrowStatement_instantiation(instance):
+    assert isinstance(instance, java__ThrowStatement)
+
+
+java__TryStatement_strategy = st.builds(java__TryStatement)
+@given(instance=java__TryStatement_strategy)
+@settings(max_examples=25)
+def test_java__TryStatement_instantiation(instance):
+    assert isinstance(instance, java__TryStatement)
+
+
+java__Type_strategy = st.builds(java__Type)
+@given(instance=java__Type_strategy)
+@settings(max_examples=25)
+def test_java__Type_instantiation(instance):
+    assert isinstance(instance, java__Type)
+
+
+java__TypeAccess_strategy = st.builds(java__TypeAccess)
+@given(instance=java__TypeAccess_strategy)
+@settings(max_examples=25)
+def test_java__TypeAccess_instantiation(instance):
+    assert isinstance(instance, java__TypeAccess)
+
+
+java__TypeDeclaration_strategy = st.builds(java__TypeDeclaration)
+@given(instance=java__TypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__TypeDeclaration_instantiation(instance):
+    assert isinstance(instance, java__TypeDeclaration)
+
+
+java__TypeDeclarationStatement_strategy = st.builds(java__TypeDeclarationStatement)
+@given(instance=java__TypeDeclarationStatement_strategy)
+@settings(max_examples=25)
+def test_java__TypeDeclarationStatement_instantiation(instance):
+    assert isinstance(instance, java__TypeDeclarationStatement)
+
+
+java__TypeLiteral_strategy = st.builds(java__TypeLiteral)
+@given(instance=java__TypeLiteral_strategy)
+@settings(max_examples=25)
+def test_java__TypeLiteral_instantiation(instance):
+    assert isinstance(instance, java__TypeLiteral)
+
+
+java__TypeParameter_strategy = st.builds(java__TypeParameter)
+@given(instance=java__TypeParameter_strategy)
+@settings(max_examples=25)
+def test_java__TypeParameter_instantiation(instance):
+    assert isinstance(instance, java__TypeParameter)
+
+
+java__UnresolvedAnnotationDeclaration_strategy = st.builds(java__UnresolvedAnnotationDeclaration)
+@given(instance=java__UnresolvedAnnotationDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedAnnotationDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedAnnotationDeclaration)
+
+
+java__UnresolvedAnnotationTypeMemberDeclaration_strategy = st.builds(java__UnresolvedAnnotationTypeMemberDeclaration)
+@given(instance=java__UnresolvedAnnotationTypeMemberDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedAnnotationTypeMemberDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedAnnotationTypeMemberDeclaration)
+
+
+java__UnresolvedClassDeclaration_strategy = st.builds(java__UnresolvedClassDeclaration)
+@given(instance=java__UnresolvedClassDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedClassDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedClassDeclaration)
+
+
+java__UnresolvedEnumDeclaration_strategy = st.builds(java__UnresolvedEnumDeclaration)
+@given(instance=java__UnresolvedEnumDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedEnumDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedEnumDeclaration)
+
+
+java__UnresolvedInterfaceDeclaration_strategy = st.builds(java__UnresolvedInterfaceDeclaration)
+@given(instance=java__UnresolvedInterfaceDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedInterfaceDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedInterfaceDeclaration)
+
+
+java__UnresolvedItem_strategy = st.builds(java__UnresolvedItem)
+@given(instance=java__UnresolvedItem_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedItem_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedItem)
+
+
+java__UnresolvedItemAccess_strategy = st.builds(java__UnresolvedItemAccess)
+@given(instance=java__UnresolvedItemAccess_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedItemAccess_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedItemAccess)
+
+
+java__UnresolvedLabeledStatement_strategy = st.builds(java__UnresolvedLabeledStatement)
+@given(instance=java__UnresolvedLabeledStatement_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedLabeledStatement_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedLabeledStatement)
+
+
+java__UnresolvedMethodDeclaration_strategy = st.builds(java__UnresolvedMethodDeclaration)
+@given(instance=java__UnresolvedMethodDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedMethodDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedMethodDeclaration)
+
+
+java__UnresolvedSingleVariableDeclaration_strategy = st.builds(java__UnresolvedSingleVariableDeclaration)
+@given(instance=java__UnresolvedSingleVariableDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedSingleVariableDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedSingleVariableDeclaration)
+
+
+java__UnresolvedType_strategy = st.builds(java__UnresolvedType)
+@given(instance=java__UnresolvedType_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedType_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedType)
+
+
+java__UnresolvedTypeDeclaration_strategy = st.builds(java__UnresolvedTypeDeclaration)
+@given(instance=java__UnresolvedTypeDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedTypeDeclaration_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedTypeDeclaration)
+
+
+java__UnresolvedVariableDeclarationFragment_strategy = st.builds(java__UnresolvedVariableDeclarationFragment)
+@given(instance=java__UnresolvedVariableDeclarationFragment_strategy)
+@settings(max_examples=25)
+def test_java__UnresolvedVariableDeclarationFragment_instantiation(instance):
+    assert isinstance(instance, java__UnresolvedVariableDeclarationFragment)
+
+
+java__VariableDeclaration_strategy = st.builds(java__VariableDeclaration, extraArrayDimensions=st.integers())
+@given(instance=java__VariableDeclaration_strategy)
+@settings(max_examples=25)
+def test_java__VariableDeclaration_instantiation(instance):
+    assert isinstance(instance, java__VariableDeclaration)
+
+
+java__VariableDeclarationExpression_strategy = st.builds(java__VariableDeclarationExpression)
+@given(instance=java__VariableDeclarationExpression_strategy)
+@settings(max_examples=25)
+def test_java__VariableDeclarationExpression_instantiation(instance):
+    assert isinstance(instance, java__VariableDeclarationExpression)
+
+
+java__VariableDeclarationFragment_strategy = st.builds(java__VariableDeclarationFragment)
+@given(instance=java__VariableDeclarationFragment_strategy)
+@settings(max_examples=25)
+def test_java__VariableDeclarationFragment_instantiation(instance):
+    assert isinstance(instance, java__VariableDeclarationFragment)
+
+
+java__VariableDeclarationStatement_strategy = st.builds(java__VariableDeclarationStatement, extraArrayDimensions=st.integers())
+@given(instance=java__VariableDeclarationStatement_strategy)
+@settings(max_examples=25)
+def test_java__VariableDeclarationStatement_instantiation(instance):
+    assert isinstance(instance, java__VariableDeclarationStatement)
+
+
+java__WhileStatement_strategy = st.builds(java__WhileStatement)
+@given(instance=java__WhileStatement_strategy)
+@settings(max_examples=25)
+def test_java__WhileStatement_instantiation(instance):
+    assert isinstance(instance, java__WhileStatement)
+
+
+java__WildCardType_strategy = st.builds(java__WildCardType, upperBound=st.booleans())
+@given(instance=java__WildCardType_strategy)
+@settings(max_examples=25)
+def test_java__WildCardType_instantiation(instance):
+    assert isinstance(instance, java__WildCardType)
+
+

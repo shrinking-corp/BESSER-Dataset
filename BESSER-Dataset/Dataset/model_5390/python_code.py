@@ -8,6 +8,7 @@ from enum import Enum
 ############################################
 
 class TestA(Enum):
+    pass
 class TestB(Enum):
 
 
@@ -15,6 +16,7 @@ class TestB(Enum):
 # Definition of Classes
 ############################################
 
+    pass
 class nonemf_Serializable(ABC):
 
     pass

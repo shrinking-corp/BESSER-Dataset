@@ -5,7 +5,184 @@ coverage and mutation testing for the dataset (see `PROMPT.md`). Newest
 entries at the top. Each entry should stand alone enough to explain *why* a
 decision was made, so we can backtrack later without re-deriving it.
 
+Entries below from 2026-09-10 onward were written from a second, parallel
+Claude Code session (Windows, Claude Sonnet 5) working the same repo
+alongside the session that produced the entries below them — expect some
+independent convergence on the same underlying script names
+(`validate_mutation.py` in particular has fixes from both sessions, for
+different, non-overlapping reasons).
+
 ---
+
+## 2026-09-10 — Master exclusion list
+
+Unions three independent exclusion reasons into
+`reports/excluded_models_master.{json,txt}` (635 models total), tagged by
+`reason_source` so any subset of these policies can be applied downstream
+without re-deriving the list: `logic_validation.usable == false` (631,
+refreshed post-fix, no known staleness — see the 2026-09-10 entry below),
+`model_1339`/`model_1950` (test-infra-unfixable, see entry below), and
+`model_10001058`/`model_2881` (property-name mismatches, see entry below).
+The complement — 8,447 usable models — is in `reports/usable_models.txt`,
+for scoping expensive runs (e.g. mutation testing) away from models with
+nothing meaningful, or nothing trustworthy, to measure. Details in
+[`2026-09-10-master-exclusion-list.md`](2026-09-10-master-exclusion-list.md).
+
+## 2026-09-10 — Property-name mismatches: 2 models excluded, not fixable without breaking ground truth
+
+**Finding:** a `@X.setter`/`@X.deleter`-decorated function whose name
+doesn't match `X` doesn't reassign the property named `X` — decorator syntax
+`@class2.setter\ndef class1(...)` desugars to `class1 = class2.setter(fn)`,
+creating a *new*, separate property under the wrong name while the original
+`class2` property is left getter-only. Concretely:
+`instance.class2 = "x"` raises `AttributeError: can't set attribute`, while
+the accidental byproduct `instance.class1 = "x"` works. Found by a new
+read-only audit script, `scripts/check_property_name_mismatches.py`
+(AST-based, same `encoding="utf-8"`-on-`read_text()` fix needed as
+`validate_coverage_structural.py`'s `function_ranges()` — same 4 false
+`parse_error`s on the same 4 models until fixed). Full-dataset run: 2
+mismatches across 2 models (`model_10001058`'s `class2`/`class1`,
+`model_2881`'s `self1`/`self`).
+
+**Why not fixed:** `test_hypothesis.py` for both models already asserts
+against the buggy name (`instance.class1 = ...`, `instance.self = ...`), not
+the intended one — the test generator introspects what's actually on the
+class, and the buggy setter genuinely works, just under the wrong name.
+Renaming the function to match its decorator (the "obvious" fix) would flip
+both currently-passing tests to failing, and `test_hypothesis.py` is
+off-limits to modify. **Decision:** mark and exclude rather than patch,
+consistent with the same policy applied to `logic_validation`.
+
+## 2026-09-10 — `model_1339` / `model_1950`: excluded, not fixable with available tools
+
+**Finding:** both models' `test_hypothesis.py` was already broken
+independent of anything this session touched (safe to treat as pre-existing).
+Attempting the obvious fix — regenerate `python_code.py` via besser's current
+`PythonGenerator` — produces a *new* `SyntaxError:
+non-default argument follows default argument`, a real bug in besser's own
+template (likely emits association-end constructor parameters in unordered
+`set`-iteration order without sorting required-before-optional args first).
+Neither the existing test suite nor the regeneration path works for these
+two specific models' structure.
+
+**Decision:** mark and exclude, don't attempt further fixes — no BUML-level
+edit is available the way there was for the 7 conversion-time bugs in
+[`2026-09-10-buml-to-puml-conversion.md`](2026-09-10-buml-to-puml-conversion.md);
+this is a defect in besser's generator itself. Neither model appears in the
+colleague's `logic_validation` exclusion set (their `python_code.py` does
+contain real logic) — this is a distinct exclusion reason, tracked
+separately and then unioned into the master exclusion list (see entry
+above).
+
+## 2026-09-10 — Structural test generation for near-100% coverage, and a 4-type coverage validator
+
+**User ask:** build a stronger, more deterministic baseline test suite (for
+comparing a future diagram-shrinking tool's output against) and measure
+coverage of it across as many dimensions as practical — discussed as 6
+possible coverage "types," narrowed to 4 after weighing cost against
+evidence of value for the other 2.
+
+**New script:** `scripts/generate_structural_tests.py` → per-model
+`test_structural_full.py`, deterministic-first (link → reassign → clear
+sequences hit branches random `@given` sampling rarely reaches), with a
+supplementary Hypothesis-based section kept for breadth. Full writeup of the
+design decisions, the real dataset defects found and fixed along the way
+(17+ `python_code.py` errors categorized by root cause, an encoding bug, a
+BUML-name-vs-Python-identifier mismatch for special characters, and a
+coverage-side `no_coverage_data`/`empty_model` misclassification) in
+[`2026-09-10-structural-test-generation.md`](2026-09-10-structural-test-generation.md).
+
+**New script:** `scripts/validate_coverage_structural.py` → line, branch,
+function (custom AST-based — coverage.py's own per-function grouping merges
+`@property` getter/setter pairs), and "structural" coverage (fraction of the
+BUML model's true attribute/generalization/association total that a passing
+test actually verifies) against `test_structural_full.py`, written to
+`structural_coverage_validation`. Full run: 9,035/9,082 measured, avg 88.24%
+/ 56.03% / 100.0% / 74.59% (line/branch/function/structural). Rationale for
+measuring only 4 of the 6 discussed coverage types (condition/MC-DC and path
+coverage deliberately excluded) in
+[`2026-09-10-coverage-taxonomy.md`](2026-09-10-coverage-taxonomy.md).
+
+**Incidental audit tool, execution on hold:**
+`scripts/check_property_name_mismatches.py` — read-only check for
+`@x.setter`/`@x.deleter` decorators whose function name doesn't match `x`.
+Built but deliberately not run yet at the user's request; see the structural
+test generation writeup for status.
+
+## 2026-09-10 — Property-scoped mutation testing (`validate_mutation_properties.py`)
+
+**User ask:** since almost all of this dataset's non-stub code is
+getter/setter logic, build a mutation score scoped to just
+`@property`/`@x.setter` regions, as a new, separate metadata key — explicitly
+**not** merged into the existing whole-file `validate_mutation.py` /
+`mutation_validation`, so already-computed results aren't overwritten.
+
+**Findings, empirically:** getters generate 0 mutants (only `RemoveDecorator`
+is possible against a bare `return self.__x`); 49.2% of setters are equally
+"trivial" (plain assignment, no relationship logic) — only the
+relationship-linked 50.8% (bidirectional `hasattr`/`getattr`/`setattr`
+wiring) produce mutants with anything real to kill. Confirms there is no
+explicit skip/filter for empty classes or stub methods anywhere in either
+mutation script — it's a natural consequence of what cosmic-ray's operators
+can act on, not something that needed building. Full table and rationale in
+[`2026-09-10-mutation-scope-property-setters.md`](2026-09-10-mutation-scope-property-setters.md).
+
+**Status:** smoke-tested on 3 models; a full 9,082-model `--write-metadata`
+run was handed off to run unattended — check
+`mutation_validation_properties` in `code_metadata.json` for current
+completion status before citing full-dataset numbers.
+
+## 2026-09-10 — BUML → PUML converter and structural `model_metadata.json`
+
+**New script:** `scripts/buml_to_puml.py` — renders a PlantUML diagram from
+each model's BUML source. Deliberately plain functions, not a forced
+visitor/walker design — the traversal is a single pass over a handful of
+known BUML types, so a class-hierarchy abstraction would add indirection
+without buying anything.
+
+**New script:** `scripts/generate_model_metadata.py` — a *new*,
+separate `model_metadata.json` per model (never touches
+`code_metadata.json`) with structural counts read directly from the BUML
+model (classes, abstract classes, association classes, enumerations +
+literals, attributes, methods, generalizations, associations,
+aggregation/composition) — independent of whatever the code generator
+produced, useful as ground truth for later comparison work.
+**Correction made during design:** `AssociationClass` is a `Class` subtype
+(confirmed via MRO) and must be counted in `classes`, not excluded as a
+special case — `association_classes` is a subset count, not a separate
+bucket.
+
+**7 BUML-source bugs found and fixed** to reach a clean 9,082/9,082
+conversion run (name collisions, undefined association variables, a wrong
+metamodel-class reference, hyphens in `name=` strings, a blank domain-model
+name) — table and per-model detail in
+[`2026-09-10-buml-to-puml-conversion.md`](2026-09-10-buml-to-puml-conversion.md).
+
+## 2026-09-10 — Windows-specific fixes to `validate_mutation.py`
+
+The existing `validate_mutation.py` (built in the prior macOS session, entries
+below) needed several Windows-only fixes to run at all on this machine —
+distinct from, and unrelated to, that session's own fixes to the same file
+(in-place mutation / scratch-copy safety, resume/cache):
+
+- `cosmic-ray` resolved via `subprocess.run(["cosmic-ray", ...])` fails
+  without the venv's `Scripts` dir on `PATH` (not activated in a subprocess)
+  — resolved relative to `sys.executable`'s directory instead.
+- `sys.executable`'s Windows backslash path breaks both TOML
+  double-quoted-string parsing *and* cosmic-ray's own `shlex.split()` of the
+  `test-command` — fixed via forward-slash normalization
+  (`Path(...).as_posix()`) plus TOML literal (single-quoted) strings.
+- `Path.read_text()` defaults to the OS locale encoding, not UTF-8, on
+  Windows — corrupts multi-byte Unicode characters. Fixed with explicit
+  `encoding="utf-8"` (the same bug class recurred later in
+  `validate_coverage_structural.py`'s `function_ranges()` — see
+  [`2026-09-10-structural-test-generation.md`](2026-09-10-structural-test-generation.md)).
+
+Also added: LPT (longest-processing-time) scheduling — sort models by file
+size descending before submitting to the worker pool, to reduce idle-worker
+tail time — and an opt-in `--write-metadata` flag (single pass at the end,
+only for `status == "measured"` results, requires `code_metadata.json` to
+already exist).
 
 ## 2026-09-10 — Models with no testable logic: detected statically (not from coverage/mutation), and **marked**, not deleted
 

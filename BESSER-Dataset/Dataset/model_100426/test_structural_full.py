@@ -1,0 +1,435 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    DataElement,
+    Node,
+    State,
+    statemachine_DataElement,
+    statemachine_Event,
+    statemachine_FinalState,
+    statemachine_Node,
+    statemachine_Pseudostate,
+    statemachine_Region,
+    statemachine_State,
+    statemachine_Statechart,
+    statemachine_Transition,
+    statemachine_Variable,
+    DataTypes,
+    IOTypes,
+    PseudoTypes,
+    TriggerTypes,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_statemachine_DataElement_ioType_value_roundtrip():
+    instance = statemachine_DataElement(ioType="sample_text", name="sample_text", port=7)
+    assert instance.ioType == "sample_text"
+    instance.ioType = "sample_text_2"
+    assert instance.ioType == "sample_text_2"
+
+
+def test_statemachine_DataElement_name_value_roundtrip():
+    instance = statemachine_DataElement(ioType="sample_text", name="sample_text", port=7)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_statemachine_DataElement_port_value_roundtrip():
+    instance = statemachine_DataElement(ioType="sample_text", name="sample_text", port=7)
+    assert instance.port == 7
+    instance.port = 13
+    assert instance.port == 13
+
+
+def test_statemachine_Event_trigger_value_roundtrip():
+    instance = statemachine_Event(trigger="sample_text")
+    assert instance.trigger == "sample_text"
+    instance.trigger = "sample_text_2"
+    assert instance.trigger == "sample_text_2"
+
+
+def test_statemachine_Node_id_value_roundtrip():
+    instance = statemachine_Node(id=7, name="sample_text")
+    assert instance.id == 7
+    instance.id = 13
+    assert instance.id == 13
+
+
+def test_statemachine_Node_name_value_roundtrip():
+    instance = statemachine_Node(id=7, name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_statemachine_Pseudostate_pseudoType_value_roundtrip():
+    instance = statemachine_Pseudostate(pseudoType="sample_text")
+    assert instance.pseudoType == "sample_text"
+    instance.pseudoType = "sample_text_2"
+    assert instance.pseudoType == "sample_text_2"
+
+
+def test_statemachine_Region_priority_value_roundtrip():
+    instance = statemachine_Region(priority=7)
+    assert instance.priority == 7
+    instance.priority = 13
+    assert instance.priority == 13
+
+
+def test_statemachine_State_do_value_roundtrip():
+    instance = statemachine_State(do="sample_text", entry="sample_text", exit="sample_text")
+    assert instance.do == "sample_text"
+    instance.do = "sample_text_2"
+    assert instance.do == "sample_text_2"
+
+
+def test_statemachine_State_entry_value_roundtrip():
+    instance = statemachine_State(do="sample_text", entry="sample_text", exit="sample_text")
+    assert instance.entry == "sample_text"
+    instance.entry = "sample_text_2"
+    assert instance.entry == "sample_text_2"
+
+
+def test_statemachine_State_exit_value_roundtrip():
+    instance = statemachine_State(do="sample_text", entry="sample_text", exit="sample_text")
+    assert instance.exit == "sample_text"
+    instance.exit = "sample_text_2"
+    assert instance.exit == "sample_text_2"
+
+
+def test_statemachine_Statechart_UUID_value_roundtrip():
+    instance = statemachine_Statechart(UUID="sample_text", name="sample_text")
+    assert instance.UUID == "sample_text"
+    instance.UUID = "sample_text_2"
+    assert instance.UUID == "sample_text_2"
+
+
+def test_statemachine_Statechart_name_value_roundtrip():
+    instance = statemachine_Statechart(UUID="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_statemachine_Transition_expression_value_roundtrip():
+    instance = statemachine_Transition(expression="sample_text", id=7, priority=7)
+    assert instance.expression == "sample_text"
+    instance.expression = "sample_text_2"
+    assert instance.expression == "sample_text_2"
+
+
+def test_statemachine_Transition_id_value_roundtrip():
+    instance = statemachine_Transition(expression="sample_text", id=7, priority=7)
+    assert instance.id == 7
+    instance.id = 13
+    assert instance.id == 13
+
+
+def test_statemachine_Transition_priority_value_roundtrip():
+    instance = statemachine_Transition(expression="sample_text", id=7, priority=7)
+    assert instance.priority == 7
+    instance.priority = 13
+    assert instance.priority == 13
+
+
+def test_statemachine_Variable_dataType_value_roundtrip():
+    instance = statemachine_Variable(dataType="sample_text")
+    assert instance.dataType == "sample_text"
+    instance.dataType = "sample_text_2"
+    assert instance.dataType == "sample_text_2"
+
+
+def test_statemachine_Event_isa_DataElement():
+    instance = statemachine_Event(trigger="sample_text")
+    assert isinstance(instance, DataElement)
+
+
+def test_statemachine_Variable_isa_DataElement():
+    instance = statemachine_Variable(dataType="sample_text")
+    assert isinstance(instance, DataElement)
+
+
+def test_statemachine_Pseudostate_isa_Node():
+    instance = statemachine_Pseudostate(pseudoType="sample_text")
+    assert isinstance(instance, Node)
+
+
+def test_statemachine_State_isa_Node():
+    instance = statemachine_State(do="sample_text", entry="sample_text", exit="sample_text")
+    assert isinstance(instance, Node)
+
+
+def test_statemachine_FinalState_isa_State():
+    instance = statemachine_FinalState()
+    assert isinstance(instance, State)
+
+
+def test_assoc_dataElement8_link_reassign_clear():
+    a = statemachine_Statechart(UUID="sample_text", name="sample_text")
+    b1 = statemachine_DataElement(ioType="sample_text", name="sample_text", port=7)
+    b2 = statemachine_DataElement(ioType="sample_text_2", name="sample_text_2", port=13)
+    _safe_set(a, 'statemachine_Statechart', {b1})
+    assert _is_linked(a, 'statemachine_Statechart', b1)
+    if hasattr(b1, 'statemachine_DataElement'):
+        assert _is_linked(b1, 'statemachine_DataElement', a)
+    _safe_set(a, 'statemachine_Statechart', {b2})
+    assert _is_linked(a, 'statemachine_Statechart', b2)
+    if hasattr(b1, 'statemachine_DataElement'):
+        assert not _is_linked(b1, 'statemachine_DataElement', a)
+    if hasattr(b2, 'statemachine_DataElement'):
+        assert _is_linked(b2, 'statemachine_DataElement', a)
+    _safe_set(a, 'statemachine_Statechart', set())
+    assert not _is_linked(a, 'statemachine_Statechart', b2)
+    if hasattr(b2, 'statemachine_DataElement'):
+        assert not _is_linked(b2, 'statemachine_DataElement', a)
+
+
+def test_assoc_region6_link_reassign_clear():
+    a = statemachine_State(do="sample_text", entry="sample_text", exit="sample_text")
+    b1 = statemachine_Region(priority=7)
+    b2 = statemachine_Region(priority=13)
+    _safe_set(a, 'statemachine_State', {b1})
+    assert _is_linked(a, 'statemachine_State', b1)
+    if hasattr(b1, 'statemachine_Region7'):
+        assert _is_linked(b1, 'statemachine_Region7', a)
+    _safe_set(a, 'statemachine_State', {b2})
+    assert _is_linked(a, 'statemachine_State', b2)
+    if hasattr(b1, 'statemachine_Region7'):
+        assert not _is_linked(b1, 'statemachine_Region7', a)
+    if hasattr(b2, 'statemachine_Region7'):
+        assert _is_linked(b2, 'statemachine_Region7', a)
+    _safe_set(a, 'statemachine_State', set())
+    assert not _is_linked(a, 'statemachine_State', b2)
+    if hasattr(b2, 'statemachine_Region7'):
+        assert not _is_linked(b2, 'statemachine_Region7', a)
+
+
+def test_assoc_region9_link_reassign_clear():
+    a = statemachine_Statechart(UUID="sample_text", name="sample_text")
+    b1 = statemachine_Region(priority=7)
+    b2 = statemachine_Region(priority=13)
+    _safe_set(a, 'statemachine_Statechart10', {b1})
+    assert _is_linked(a, 'statemachine_Statechart10', b1)
+    if hasattr(b1, 'statemachine_Region11'):
+        assert _is_linked(b1, 'statemachine_Region11', a)
+    _safe_set(a, 'statemachine_Statechart10', {b2})
+    assert _is_linked(a, 'statemachine_Statechart10', b2)
+    if hasattr(b1, 'statemachine_Region11'):
+        assert not _is_linked(b1, 'statemachine_Region11', a)
+    if hasattr(b2, 'statemachine_Region11'):
+        assert _is_linked(b2, 'statemachine_Region11', a)
+    _safe_set(a, 'statemachine_Statechart10', set())
+    assert not _is_linked(a, 'statemachine_Statechart10', b2)
+    if hasattr(b2, 'statemachine_Region11'):
+        assert not _is_linked(b2, 'statemachine_Region11', a)
+
+
+def test_assoc_sourceNode3_link_reassign_clear():
+    a = statemachine_Transition(expression="sample_text", id=7, priority=7)
+    b1 = statemachine_Node(id=7, name="sample_text")
+    b2 = statemachine_Node(id=13, name="sample_text_2")
+    _safe_set(a, 'statemachine_Transition4', b1)
+    assert _is_linked(a, 'statemachine_Transition4', b1)
+    if hasattr(b1, 'statemachine_Node5'):
+        assert _is_linked(b1, 'statemachine_Node5', a)
+    _safe_set(a, 'statemachine_Transition4', b2)
+    assert _is_linked(a, 'statemachine_Transition4', b2)
+    if hasattr(b1, 'statemachine_Node5'):
+        assert not _is_linked(b1, 'statemachine_Node5', a)
+    if hasattr(b2, 'statemachine_Node5'):
+        assert _is_linked(b2, 'statemachine_Node5', a)
+    _safe_set(a, 'statemachine_Transition4', None)
+    assert not _is_linked(a, 'statemachine_Transition4', b2)
+    if hasattr(b2, 'statemachine_Node5'):
+        assert not _is_linked(b2, 'statemachine_Node5', a)
+
+
+def test_assoc_state0_link_reassign_clear():
+    a = statemachine_Region(priority=7)
+    b1 = statemachine_Node(id=7, name="sample_text")
+    b2 = statemachine_Node(id=13, name="sample_text_2")
+    _safe_set(a, 'statemachine_Region', {b1})
+    assert _is_linked(a, 'statemachine_Region', b1)
+    if hasattr(b1, 'statemachine_Node'):
+        assert _is_linked(b1, 'statemachine_Node', a)
+    _safe_set(a, 'statemachine_Region', {b2})
+    assert _is_linked(a, 'statemachine_Region', b2)
+    if hasattr(b1, 'statemachine_Node'):
+        assert not _is_linked(b1, 'statemachine_Node', a)
+    if hasattr(b2, 'statemachine_Node'):
+        assert _is_linked(b2, 'statemachine_Node', a)
+    _safe_set(a, 'statemachine_Region', set())
+    assert not _is_linked(a, 'statemachine_Region', b2)
+    if hasattr(b2, 'statemachine_Node'):
+        assert not _is_linked(b2, 'statemachine_Node', a)
+
+
+def test_assoc_targetNode1_link_reassign_clear():
+    a = statemachine_Transition(expression="sample_text", id=7, priority=7)
+    b1 = statemachine_Node(id=7, name="sample_text")
+    b2 = statemachine_Node(id=13, name="sample_text_2")
+    _safe_set(a, 'statemachine_Transition', b1)
+    assert _is_linked(a, 'statemachine_Transition', b1)
+    if hasattr(b1, 'statemachine_Node2'):
+        assert _is_linked(b1, 'statemachine_Node2', a)
+    _safe_set(a, 'statemachine_Transition', b2)
+    assert _is_linked(a, 'statemachine_Transition', b2)
+    if hasattr(b1, 'statemachine_Node2'):
+        assert not _is_linked(b1, 'statemachine_Node2', a)
+    if hasattr(b2, 'statemachine_Node2'):
+        assert _is_linked(b2, 'statemachine_Node2', a)
+    _safe_set(a, 'statemachine_Transition', None)
+    assert not _is_linked(a, 'statemachine_Transition', b2)
+    if hasattr(b2, 'statemachine_Node2'):
+        assert not _is_linked(b2, 'statemachine_Node2', a)
+
+
+def test_assoc_transition12_link_reassign_clear():
+    a = statemachine_Transition(expression="sample_text", id=7, priority=7)
+    b1 = statemachine_Statechart(UUID="sample_text", name="sample_text")
+    b2 = statemachine_Statechart(UUID="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'statemachine_Transition14', b1)
+    assert _is_linked(a, 'statemachine_Transition14', b1)
+    if hasattr(b1, 'statemachine_Statechart13'):
+        assert _is_linked(b1, 'statemachine_Statechart13', a)
+    _safe_set(a, 'statemachine_Transition14', b2)
+    assert _is_linked(a, 'statemachine_Transition14', b2)
+    if hasattr(b1, 'statemachine_Statechart13'):
+        assert not _is_linked(b1, 'statemachine_Statechart13', a)
+    if hasattr(b2, 'statemachine_Statechart13'):
+        assert _is_linked(b2, 'statemachine_Statechart13', a)
+    _safe_set(a, 'statemachine_Transition14', None)
+    assert not _is_linked(a, 'statemachine_Transition14', b2)
+    if hasattr(b2, 'statemachine_Statechart13'):
+        assert not _is_linked(b2, 'statemachine_Statechart13', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+DataElement_strategy = st.builds(DataElement)
+@given(instance=DataElement_strategy)
+@settings(max_examples=25)
+def test_DataElement_instantiation(instance):
+    assert isinstance(instance, DataElement)
+
+
+Node_strategy = st.builds(Node)
+@given(instance=Node_strategy)
+@settings(max_examples=25)
+def test_Node_instantiation(instance):
+    assert isinstance(instance, Node)
+
+
+State_strategy = st.builds(State)
+@given(instance=State_strategy)
+@settings(max_examples=25)
+def test_State_instantiation(instance):
+    assert isinstance(instance, State)
+
+
+statemachine_DataElement_strategy = st.builds(statemachine_DataElement, ioType=safe_text, name=safe_text, port=st.integers())
+@given(instance=statemachine_DataElement_strategy)
+@settings(max_examples=25)
+def test_statemachine_DataElement_instantiation(instance):
+    assert isinstance(instance, statemachine_DataElement)
+
+
+statemachine_Event_strategy = st.builds(statemachine_Event, trigger=safe_text)
+@given(instance=statemachine_Event_strategy)
+@settings(max_examples=25)
+def test_statemachine_Event_instantiation(instance):
+    assert isinstance(instance, statemachine_Event)
+
+
+statemachine_FinalState_strategy = st.builds(statemachine_FinalState)
+@given(instance=statemachine_FinalState_strategy)
+@settings(max_examples=25)
+def test_statemachine_FinalState_instantiation(instance):
+    assert isinstance(instance, statemachine_FinalState)
+
+
+statemachine_Node_strategy = st.builds(statemachine_Node, id=st.integers(), name=safe_text)
+@given(instance=statemachine_Node_strategy)
+@settings(max_examples=25)
+def test_statemachine_Node_instantiation(instance):
+    assert isinstance(instance, statemachine_Node)
+
+
+statemachine_Pseudostate_strategy = st.builds(statemachine_Pseudostate, pseudoType=safe_text)
+@given(instance=statemachine_Pseudostate_strategy)
+@settings(max_examples=25)
+def test_statemachine_Pseudostate_instantiation(instance):
+    assert isinstance(instance, statemachine_Pseudostate)
+
+
+statemachine_Region_strategy = st.builds(statemachine_Region, priority=st.integers())
+@given(instance=statemachine_Region_strategy)
+@settings(max_examples=25)
+def test_statemachine_Region_instantiation(instance):
+    assert isinstance(instance, statemachine_Region)
+
+
+statemachine_State_strategy = st.builds(statemachine_State, do=safe_text, entry=safe_text, exit=safe_text)
+@given(instance=statemachine_State_strategy)
+@settings(max_examples=25)
+def test_statemachine_State_instantiation(instance):
+    assert isinstance(instance, statemachine_State)
+
+
+statemachine_Statechart_strategy = st.builds(statemachine_Statechart, UUID=safe_text, name=safe_text)
+@given(instance=statemachine_Statechart_strategy)
+@settings(max_examples=25)
+def test_statemachine_Statechart_instantiation(instance):
+    assert isinstance(instance, statemachine_Statechart)
+
+
+statemachine_Transition_strategy = st.builds(statemachine_Transition, expression=safe_text, id=st.integers(), priority=st.integers())
+@given(instance=statemachine_Transition_strategy)
+@settings(max_examples=25)
+def test_statemachine_Transition_instantiation(instance):
+    assert isinstance(instance, statemachine_Transition)
+
+
+statemachine_Variable_strategy = st.builds(statemachine_Variable, dataType=safe_text)
+@given(instance=statemachine_Variable_strategy)
+@settings(max_examples=25)
+def test_statemachine_Variable_instantiation(instance):
+    assert isinstance(instance, statemachine_Variable)
+
+

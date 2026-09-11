@@ -104,6 +104,7 @@ class EventKind(Enum):
     receive = "receive"
     consume = "consume"
 class TUK(Enum):
+    pass
 class ProtectProtocolKind(Enum):
     PriorityCeiling = "PriorityCeiling"
     PriorityInheritance = "PriorityInheritance"

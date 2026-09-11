@@ -3888,7 +3888,7 @@ class RefUML_MultiplicityElement(Element):
                 opp_val = getattr(value, "RefUML_ValueSpecification100", None)
                 setattr(value, "RefUML_ValueSpecification100", self)
 
-    def is(self, RefUML_upperbound, RefUML_lowerbound) :
+    def is_(self, RefUML_upperbound, RefUML_lowerbound) :
         # TODO: Implement is method
         pass
 

@@ -3337,7 +3337,7 @@ class RefUML_MultiplicityElement(Element):
         # TODO: Implement includesMultiplicity method
         pass
 
-    def is(self, RefUML_lowerbound, RefUML_upperbound) :
+    def is_(self, RefUML_lowerbound, RefUML_upperbound) :
         # TODO: Implement is method
         pass
 

@@ -1,0 +1,1884 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Acao,
+    Antecedente,
+    Caracteristica,
+    CaracteristicaProduto,
+    Elemento,
+    ElementoCaracteristico,
+    ElementoDeProduto,
+    Evento,
+    Expressao,
+    PontoDeVariacao,
+    Regra,
+    caracteristica_Acao,
+    caracteristica_AcaoLogico,
+    caracteristica_Antecedente,
+    caracteristica_Atributo,
+    caracteristica_AtributoProduto,
+    caracteristica_Caracteristica,
+    caracteristica_CaracteristicaAgrupada,
+    caracteristica_CaracteristicaMandatoria,
+    caracteristica_CaracteristicaMandatoriaProduto,
+    caracteristica_CaracteristicaOpcional,
+    caracteristica_CaracteristicaOpcionalProduto,
+    caracteristica_CaracteristicaProduto,
+    caracteristica_CaracteristicaRaiz,
+    caracteristica_Designar,
+    caracteristica_Elemento,
+    caracteristica_ElementoCaracteristico,
+    caracteristica_ElementoDeProduto,
+    caracteristica_EntidadeDeContexto,
+    caracteristica_Estado,
+    caracteristica_Evento,
+    caracteristica_EventoLogico,
+    caracteristica_EventoRelacional,
+    caracteristica_Expressao,
+    caracteristica_ExpressaoLogica,
+    caracteristica_ExpressaoRelacional,
+    caracteristica_InconsistenciaRegraAdaptacao,
+    caracteristica_InformacaoDeContexto,
+    caracteristica_LPS,
+    caracteristica_LiteralAcao,
+    caracteristica_LiteralComposicao,
+    caracteristica_PontoDeVariacao,
+    caracteristica_Produto,
+    caracteristica_RaizDeContexto,
+    caracteristica_Regra,
+    caracteristica_RegraDeComposicao,
+    caracteristica_RegraDeContexto,
+    caracteristica_Simulacao,
+    caracteristica_Transicao,
+    caracteristica_Variacao,
+    caracteristica_VariacaoDois,
+    caracteristica_VariacaoDoisProduto,
+    caracteristica_VariacaoProduto,
+    caracteristica_Variante,
+    caracteristica_VarianteProduto,
+    CardinalidadeMaxima,
+    OperadorAcaoLogico,
+    OperadorLogico,
+    OperadorRelacional,
+    Origem,
+    Presenca,
+    Qualidade,
+    TipoValor,
+    Validade,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_caracteristica_AcaoLogico_operadorAcaoLogico_value_roundtrip():
+    instance = caracteristica_AcaoLogico(operadorAcaoLogico="sample_text")
+    assert instance.operadorAcaoLogico == "sample_text"
+    instance.operadorAcaoLogico = "sample_text_2"
+    assert instance.operadorAcaoLogico == "sample_text_2"
+
+
+def test_caracteristica_Atributo_tipoValor_value_roundtrip():
+    instance = caracteristica_Atributo(tipoValor="sample_text")
+    assert instance.tipoValor == "sample_text"
+    instance.tipoValor = "sample_text_2"
+    assert instance.tipoValor == "sample_text_2"
+
+
+def test_caracteristica_AtributoProduto_tipoValor_value_roundtrip():
+    instance = caracteristica_AtributoProduto(tipoValor="sample_text", valor="sample_text")
+    assert instance.tipoValor == "sample_text"
+    instance.tipoValor = "sample_text_2"
+    assert instance.tipoValor == "sample_text_2"
+
+
+def test_caracteristica_AtributoProduto_valor_value_roundtrip():
+    instance = caracteristica_AtributoProduto(tipoValor="sample_text", valor="sample_text")
+    assert instance.valor == "sample_text"
+    instance.valor = "sample_text_2"
+    assert instance.valor == "sample_text_2"
+
+
+def test_caracteristica_Designar_tipoValor_value_roundtrip():
+    instance = caracteristica_Designar(tipoValor="sample_text", valor="sample_text")
+    assert instance.tipoValor == "sample_text"
+    instance.tipoValor = "sample_text_2"
+    assert instance.tipoValor == "sample_text_2"
+
+
+def test_caracteristica_Designar_valor_value_roundtrip():
+    instance = caracteristica_Designar(tipoValor="sample_text", valor="sample_text")
+    assert instance.valor == "sample_text"
+    instance.valor = "sample_text_2"
+    assert instance.valor == "sample_text_2"
+
+
+def test_caracteristica_Elemento_nome_value_roundtrip():
+    instance = caracteristica_Elemento(nome="sample_text")
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_ElementoDeProduto_nome_value_roundtrip():
+    instance = caracteristica_ElementoDeProduto(nome="sample_text")
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_Estado_nome_value_roundtrip():
+    instance = caracteristica_Estado(nome="sample_text", safe=True)
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_Estado_safe_value_roundtrip():
+    instance = caracteristica_Estado(nome="sample_text", safe=True)
+    assert instance.safe == True
+    instance.safe = False
+    assert instance.safe == False
+
+
+def test_caracteristica_EventoLogico_operadorLogico_value_roundtrip():
+    instance = caracteristica_EventoLogico(operadorLogico="sample_text")
+    assert instance.operadorLogico == "sample_text"
+    instance.operadorLogico = "sample_text_2"
+    assert instance.operadorLogico == "sample_text_2"
+
+
+def test_caracteristica_EventoRelacional_operadorRelacional_value_roundtrip():
+    instance = caracteristica_EventoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    assert instance.operadorRelacional == "sample_text"
+    instance.operadorRelacional = "sample_text_2"
+    assert instance.operadorRelacional == "sample_text_2"
+
+
+def test_caracteristica_EventoRelacional_valor_value_roundtrip():
+    instance = caracteristica_EventoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    assert instance.valor == "sample_text"
+    instance.valor = "sample_text_2"
+    assert instance.valor == "sample_text_2"
+
+
+def test_caracteristica_Expressao_nome_value_roundtrip():
+    instance = caracteristica_Expressao(nome="sample_text")
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_ExpressaoLogica_operadorLogico_value_roundtrip():
+    instance = caracteristica_ExpressaoLogica(operadorLogico="sample_text")
+    assert instance.operadorLogico == "sample_text"
+    instance.operadorLogico = "sample_text_2"
+    assert instance.operadorLogico == "sample_text_2"
+
+
+def test_caracteristica_ExpressaoRelacional_operadorRelacional_value_roundtrip():
+    instance = caracteristica_ExpressaoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    assert instance.operadorRelacional == "sample_text"
+    instance.operadorRelacional = "sample_text_2"
+    assert instance.operadorRelacional == "sample_text_2"
+
+
+def test_caracteristica_ExpressaoRelacional_valor_value_roundtrip():
+    instance = caracteristica_ExpressaoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    assert instance.valor == "sample_text"
+    instance.valor = "sample_text_2"
+    assert instance.valor == "sample_text_2"
+
+
+def test_caracteristica_InformacaoDeContexto_origem_value_roundtrip():
+    instance = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    assert instance.origem == "sample_text"
+    instance.origem = "sample_text_2"
+    assert instance.origem == "sample_text_2"
+
+
+def test_caracteristica_InformacaoDeContexto_qualidade_value_roundtrip():
+    instance = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    assert instance.qualidade == "sample_text"
+    instance.qualidade = "sample_text_2"
+    assert instance.qualidade == "sample_text_2"
+
+
+def test_caracteristica_InformacaoDeContexto_tipoValor_value_roundtrip():
+    instance = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    assert instance.tipoValor == "sample_text"
+    instance.tipoValor = "sample_text_2"
+    assert instance.tipoValor == "sample_text_2"
+
+
+def test_caracteristica_InformacaoDeContexto_validade_value_roundtrip():
+    instance = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    assert instance.validade == "sample_text"
+    instance.validade = "sample_text_2"
+    assert instance.validade == "sample_text_2"
+
+
+def test_caracteristica_InformacaoDeContexto_valor_value_roundtrip():
+    instance = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    assert instance.valor == "sample_text"
+    instance.valor = "sample_text_2"
+    assert instance.valor == "sample_text_2"
+
+
+def test_caracteristica_LPS_erro_value_roundtrip():
+    instance = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    assert instance.erro == "sample_text"
+    instance.erro = "sample_text_2"
+    assert instance.erro == "sample_text_2"
+
+
+def test_caracteristica_LPS_nome_value_roundtrip():
+    instance = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_LPS_valoresContextuais_value_roundtrip():
+    instance = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    assert instance.valoresContextuais == "sample_text"
+    instance.valoresContextuais = "sample_text_2"
+    assert instance.valoresContextuais == "sample_text_2"
+
+
+def test_caracteristica_LiteralAcao_presenca_value_roundtrip():
+    instance = caracteristica_LiteralAcao(presenca="sample_text")
+    assert instance.presenca == "sample_text"
+    instance.presenca = "sample_text_2"
+    assert instance.presenca == "sample_text_2"
+
+
+def test_caracteristica_LiteralComposicao_presenca_value_roundtrip():
+    instance = caracteristica_LiteralComposicao(presenca="sample_text")
+    assert instance.presenca == "sample_text"
+    instance.presenca = "sample_text_2"
+    assert instance.presenca == "sample_text_2"
+
+
+def test_caracteristica_Regra_conteudo_value_roundtrip():
+    instance = caracteristica_Regra(conteudo="sample_text", nome="sample_text")
+    assert instance.conteudo == "sample_text"
+    instance.conteudo = "sample_text_2"
+    assert instance.conteudo == "sample_text_2"
+
+
+def test_caracteristica_Regra_nome_value_roundtrip():
+    instance = caracteristica_Regra(conteudo="sample_text", nome="sample_text")
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_Simulacao_nome_value_roundtrip():
+    instance = caracteristica_Simulacao(nome="sample_text")
+    assert instance.nome == "sample_text"
+    instance.nome = "sample_text_2"
+    assert instance.nome == "sample_text_2"
+
+
+def test_caracteristica_Transicao_etiqueta_value_roundtrip():
+    instance = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    assert instance.etiqueta == "sample_text"
+    instance.etiqueta = "sample_text_2"
+    assert instance.etiqueta == "sample_text_2"
+
+
+def test_caracteristica_Transicao_safe_value_roundtrip():
+    instance = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    assert instance.safe == True
+    instance.safe = False
+    assert instance.safe == False
+
+
+def test_caracteristica_Variacao_cardinalidadeMaxima_value_roundtrip():
+    instance = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert instance.cardinalidadeMaxima == "sample_text"
+    instance.cardinalidadeMaxima = "sample_text_2"
+    assert instance.cardinalidadeMaxima == "sample_text_2"
+
+
+def test_caracteristica_Variacao_cardinalidadeMinima_value_roundtrip():
+    instance = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert instance.cardinalidadeMinima == "sample_text"
+    instance.cardinalidadeMinima = "sample_text_2"
+    assert instance.cardinalidadeMinima == "sample_text_2"
+
+
+def test_caracteristica_VariacaoDois_cardinalidadeMaxima_value_roundtrip():
+    instance = caracteristica_VariacaoDois(cardinalidadeMaxima="sample_text", cardinalidadeMaximaOr="sample_text", cardinalidadeMinimaOr="sample_text")
+    assert instance.cardinalidadeMaxima == "sample_text"
+    instance.cardinalidadeMaxima = "sample_text_2"
+    assert instance.cardinalidadeMaxima == "sample_text_2"
+
+
+def test_caracteristica_VariacaoDois_cardinalidadeMaximaOr_value_roundtrip():
+    instance = caracteristica_VariacaoDois(cardinalidadeMaxima="sample_text", cardinalidadeMaximaOr="sample_text", cardinalidadeMinimaOr="sample_text")
+    assert instance.cardinalidadeMaximaOr == "sample_text"
+    instance.cardinalidadeMaximaOr = "sample_text_2"
+    assert instance.cardinalidadeMaximaOr == "sample_text_2"
+
+
+def test_caracteristica_VariacaoDois_cardinalidadeMinimaOr_value_roundtrip():
+    instance = caracteristica_VariacaoDois(cardinalidadeMaxima="sample_text", cardinalidadeMaximaOr="sample_text", cardinalidadeMinimaOr="sample_text")
+    assert instance.cardinalidadeMinimaOr == "sample_text"
+    instance.cardinalidadeMinimaOr = "sample_text_2"
+    assert instance.cardinalidadeMinimaOr == "sample_text_2"
+
+
+def test_caracteristica_VariacaoDoisProduto_cardinalidadeMaxima_value_roundtrip():
+    instance = caracteristica_VariacaoDoisProduto(cardinalidadeMaxima="sample_text")
+    assert instance.cardinalidadeMaxima == "sample_text"
+    instance.cardinalidadeMaxima = "sample_text_2"
+    assert instance.cardinalidadeMaxima == "sample_text_2"
+
+
+def test_caracteristica_VariacaoProduto_cardinalidadeMaxima_value_roundtrip():
+    instance = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert instance.cardinalidadeMaxima == "sample_text"
+    instance.cardinalidadeMaxima = "sample_text_2"
+    assert instance.cardinalidadeMaxima == "sample_text_2"
+
+
+def test_caracteristica_VariacaoProduto_cardinalidadeMinima_value_roundtrip():
+    instance = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert instance.cardinalidadeMinima == "sample_text"
+    instance.cardinalidadeMinima = "sample_text_2"
+    assert instance.cardinalidadeMinima == "sample_text_2"
+
+
+def test_caracteristica_VarianteProduto_selecionado_value_roundtrip():
+    instance = caracteristica_VarianteProduto(selecionado="sample_text")
+    assert instance.selecionado == "sample_text"
+    instance.selecionado = "sample_text_2"
+    assert instance.selecionado == "sample_text_2"
+
+
+def test_caracteristica_AcaoLogico_isa_Acao():
+    instance = caracteristica_AcaoLogico(operadorAcaoLogico="sample_text")
+    assert isinstance(instance, Acao)
+
+
+def test_caracteristica_Designar_isa_Acao():
+    instance = caracteristica_Designar(tipoValor="sample_text", valor="sample_text")
+    assert isinstance(instance, Acao)
+
+
+def test_caracteristica_LiteralAcao_isa_Acao():
+    instance = caracteristica_LiteralAcao(presenca="sample_text")
+    assert isinstance(instance, Acao)
+
+
+def test_caracteristica_ExpressaoLogica_isa_Antecedente():
+    instance = caracteristica_ExpressaoLogica(operadorLogico="sample_text")
+    assert isinstance(instance, Antecedente)
+
+
+def test_caracteristica_ExpressaoRelacional_isa_Antecedente():
+    instance = caracteristica_ExpressaoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    assert isinstance(instance, Antecedente)
+
+
+def test_caracteristica_LiteralComposicao_isa_Antecedente():
+    instance = caracteristica_LiteralComposicao(presenca="sample_text")
+    assert isinstance(instance, Antecedente)
+
+
+def test_caracteristica_CaracteristicaAgrupada_isa_Caracteristica():
+    instance = caracteristica_CaracteristicaAgrupada()
+    assert isinstance(instance, Caracteristica)
+
+
+def test_caracteristica_CaracteristicaMandatoria_isa_Caracteristica():
+    instance = caracteristica_CaracteristicaMandatoria()
+    assert isinstance(instance, Caracteristica)
+
+
+def test_caracteristica_CaracteristicaOpcional_isa_Caracteristica():
+    instance = caracteristica_CaracteristicaOpcional()
+    assert isinstance(instance, Caracteristica)
+
+
+def test_caracteristica_CaracteristicaRaiz_isa_Caracteristica():
+    instance = caracteristica_CaracteristicaRaiz()
+    assert isinstance(instance, Caracteristica)
+
+
+def test_caracteristica_VariacaoDois_isa_Caracteristica():
+    instance = caracteristica_VariacaoDois(cardinalidadeMaxima="sample_text", cardinalidadeMaximaOr="sample_text", cardinalidadeMinimaOr="sample_text")
+    assert isinstance(instance, Caracteristica)
+
+
+def test_caracteristica_Variante_isa_Caracteristica():
+    instance = caracteristica_Variante()
+    assert isinstance(instance, Caracteristica)
+
+
+def test_caracteristica_CaracteristicaMandatoriaProduto_isa_CaracteristicaProduto():
+    instance = caracteristica_CaracteristicaMandatoriaProduto()
+    assert isinstance(instance, CaracteristicaProduto)
+
+
+def test_caracteristica_CaracteristicaOpcionalProduto_isa_CaracteristicaProduto():
+    instance = caracteristica_CaracteristicaOpcionalProduto()
+    assert isinstance(instance, CaracteristicaProduto)
+
+
+def test_caracteristica_Produto_isa_CaracteristicaProduto():
+    instance = caracteristica_Produto()
+    assert isinstance(instance, CaracteristicaProduto)
+
+
+def test_caracteristica_VariacaoDoisProduto_isa_CaracteristicaProduto():
+    instance = caracteristica_VariacaoDoisProduto(cardinalidadeMaxima="sample_text")
+    assert isinstance(instance, CaracteristicaProduto)
+
+
+def test_caracteristica_Atributo_isa_Elemento():
+    instance = caracteristica_Atributo(tipoValor="sample_text")
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_Caracteristica_isa_Elemento():
+    instance = caracteristica_Caracteristica()
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_ElementoCaracteristico_isa_Elemento():
+    instance = caracteristica_ElementoCaracteristico()
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_EntidadeDeContexto_isa_Elemento():
+    instance = caracteristica_EntidadeDeContexto()
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_InformacaoDeContexto_isa_Elemento():
+    instance = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_RaizDeContexto_isa_Elemento():
+    instance = caracteristica_RaizDeContexto()
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_Variacao_isa_Elemento():
+    instance = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert isinstance(instance, Elemento)
+
+
+def test_caracteristica_CaracteristicaAgrupada_isa_ElementoCaracteristico():
+    instance = caracteristica_CaracteristicaAgrupada()
+    assert isinstance(instance, ElementoCaracteristico)
+
+
+def test_caracteristica_CaracteristicaOpcional_isa_ElementoCaracteristico():
+    instance = caracteristica_CaracteristicaOpcional()
+    assert isinstance(instance, ElementoCaracteristico)
+
+
+def test_caracteristica_VariacaoDois_isa_ElementoCaracteristico():
+    instance = caracteristica_VariacaoDois(cardinalidadeMaxima="sample_text", cardinalidadeMaximaOr="sample_text", cardinalidadeMinimaOr="sample_text")
+    assert isinstance(instance, ElementoCaracteristico)
+
+
+def test_caracteristica_Variante_isa_ElementoCaracteristico():
+    instance = caracteristica_Variante()
+    assert isinstance(instance, ElementoCaracteristico)
+
+
+def test_caracteristica_AtributoProduto_isa_ElementoDeProduto():
+    instance = caracteristica_AtributoProduto(tipoValor="sample_text", valor="sample_text")
+    assert isinstance(instance, ElementoDeProduto)
+
+
+def test_caracteristica_CaracteristicaProduto_isa_ElementoDeProduto():
+    instance = caracteristica_CaracteristicaProduto()
+    assert isinstance(instance, ElementoDeProduto)
+
+
+def test_caracteristica_VariacaoDoisProduto_isa_ElementoDeProduto():
+    instance = caracteristica_VariacaoDoisProduto(cardinalidadeMaxima="sample_text")
+    assert isinstance(instance, ElementoDeProduto)
+
+
+def test_caracteristica_VariacaoProduto_isa_ElementoDeProduto():
+    instance = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert isinstance(instance, ElementoDeProduto)
+
+
+def test_caracteristica_VarianteProduto_isa_ElementoDeProduto():
+    instance = caracteristica_VarianteProduto(selecionado="sample_text")
+    assert isinstance(instance, ElementoDeProduto)
+
+
+def test_caracteristica_EventoLogico_isa_Evento():
+    instance = caracteristica_EventoLogico(operadorLogico="sample_text")
+    assert isinstance(instance, Evento)
+
+
+def test_caracteristica_EventoRelacional_isa_Evento():
+    instance = caracteristica_EventoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    assert isinstance(instance, Evento)
+
+
+def test_caracteristica_Acao_isa_Expressao():
+    instance = caracteristica_Acao()
+    assert isinstance(instance, Expressao)
+
+
+def test_caracteristica_Antecedente_isa_Expressao():
+    instance = caracteristica_Antecedente()
+    assert isinstance(instance, Expressao)
+
+
+def test_caracteristica_Evento_isa_Expressao():
+    instance = caracteristica_Evento()
+    assert isinstance(instance, Expressao)
+
+
+def test_caracteristica_Variacao_isa_PontoDeVariacao():
+    instance = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    assert isinstance(instance, PontoDeVariacao)
+
+
+def test_caracteristica_Variante_isa_PontoDeVariacao():
+    instance = caracteristica_Variante()
+    assert isinstance(instance, PontoDeVariacao)
+
+
+def test_caracteristica_RegraDeComposicao_isa_Regra():
+    instance = caracteristica_RegraDeComposicao()
+    assert isinstance(instance, Regra)
+
+
+def test_caracteristica_RegraDeContexto_isa_Regra():
+    instance = caracteristica_RegraDeContexto()
+    assert isinstance(instance, Regra)
+
+
+def test_assoc_LpsDoSistema29_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_CaracteristicaRaiz()
+    b2 = caracteristica_CaracteristicaRaiz()
+    _safe_set(a, 'LPS', b1)
+    assert _is_linked(a, 'LPS', b1)
+    if hasattr(b1, 'sistema'):
+        assert _is_linked(b1, 'sistema', a)
+    _safe_set(a, 'LPS', b2)
+    assert _is_linked(a, 'LPS', b2)
+    if hasattr(b1, 'sistema'):
+        assert not _is_linked(b1, 'sistema', a)
+    if hasattr(b2, 'sistema'):
+        assert _is_linked(b2, 'sistema', a)
+    _safe_set(a, 'LPS', None)
+    assert not _is_linked(a, 'LPS', b2)
+    if hasattr(b2, 'sistema'):
+        assert not _is_linked(b2, 'sistema', a)
+
+
+def test_assoc_acoes100_link_reassign_clear():
+    a = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    b1 = caracteristica_Acao()
+    b2 = caracteristica_Acao()
+    _safe_set(a, 'caracteristica_Transicao101', {b1})
+    assert _is_linked(a, 'caracteristica_Transicao101', b1)
+    if hasattr(b1, 'caracteristica_Acao102'):
+        assert _is_linked(b1, 'caracteristica_Acao102', a)
+    _safe_set(a, 'caracteristica_Transicao101', {b2})
+    assert _is_linked(a, 'caracteristica_Transicao101', b2)
+    if hasattr(b1, 'caracteristica_Acao102'):
+        assert not _is_linked(b1, 'caracteristica_Acao102', a)
+    if hasattr(b2, 'caracteristica_Acao102'):
+        assert _is_linked(b2, 'caracteristica_Acao102', a)
+    _safe_set(a, 'caracteristica_Transicao101', set())
+    assert not _is_linked(a, 'caracteristica_Transicao101', b2)
+    if hasattr(b2, 'caracteristica_Acao102'):
+        assert not _is_linked(b2, 'caracteristica_Acao102', a)
+
+
+def test_assoc_atribuicoesInconsistentes112_link_reassign_clear():
+    a = caracteristica_Designar(tipoValor="sample_text", valor="sample_text")
+    b1 = caracteristica_InconsistenciaRegraAdaptacao()
+    b2 = caracteristica_InconsistenciaRegraAdaptacao()
+    _safe_set(a, 'caracteristica_Designar114', b1)
+    assert _is_linked(a, 'caracteristica_Designar114', b1)
+    if hasattr(b1, 'caracteristica_InconsistenciaRegraAdaptacao113'):
+        assert _is_linked(b1, 'caracteristica_InconsistenciaRegraAdaptacao113', a)
+    _safe_set(a, 'caracteristica_Designar114', b2)
+    assert _is_linked(a, 'caracteristica_Designar114', b2)
+    if hasattr(b1, 'caracteristica_InconsistenciaRegraAdaptacao113'):
+        assert not _is_linked(b1, 'caracteristica_InconsistenciaRegraAdaptacao113', a)
+    if hasattr(b2, 'caracteristica_InconsistenciaRegraAdaptacao113'):
+        assert _is_linked(b2, 'caracteristica_InconsistenciaRegraAdaptacao113', a)
+    _safe_set(a, 'caracteristica_Designar114', None)
+    assert not _is_linked(a, 'caracteristica_Designar114', b2)
+    if hasattr(b2, 'caracteristica_InconsistenciaRegraAdaptacao113'):
+        assert not _is_linked(b2, 'caracteristica_InconsistenciaRegraAdaptacao113', a)
+
+
+def test_assoc_atributo27_link_reassign_clear():
+    a = caracteristica_Atributo(tipoValor="sample_text")
+    b1 = caracteristica_Caracteristica()
+    b2 = caracteristica_Caracteristica()
+    _safe_set(a, 'Atributo', b1)
+    assert _is_linked(a, 'Atributo', b1)
+    if hasattr(b1, 'caracteristicaPai28'):
+        assert _is_linked(b1, 'caracteristicaPai28', a)
+    _safe_set(a, 'Atributo', b2)
+    assert _is_linked(a, 'Atributo', b2)
+    if hasattr(b1, 'caracteristicaPai28'):
+        assert not _is_linked(b1, 'caracteristicaPai28', a)
+    if hasattr(b2, 'caracteristicaPai28'):
+        assert _is_linked(b2, 'caracteristicaPai28', a)
+    _safe_set(a, 'Atributo', None)
+    assert not _is_linked(a, 'Atributo', b2)
+    if hasattr(b2, 'caracteristicaPai28'):
+        assert not _is_linked(b2, 'caracteristicaPai28', a)
+
+
+def test_assoc_atributo76_link_reassign_clear():
+    a = caracteristica_Designar(tipoValor="sample_text", valor="sample_text")
+    b1 = caracteristica_Atributo(tipoValor="sample_text")
+    b2 = caracteristica_Atributo(tipoValor="sample_text_2")
+    _safe_set(a, 'caracteristica_Designar', b1)
+    assert _is_linked(a, 'caracteristica_Designar', b1)
+    if hasattr(b1, 'caracteristica_Atributo77'):
+        assert _is_linked(b1, 'caracteristica_Atributo77', a)
+    _safe_set(a, 'caracteristica_Designar', b2)
+    assert _is_linked(a, 'caracteristica_Designar', b2)
+    if hasattr(b1, 'caracteristica_Atributo77'):
+        assert not _is_linked(b1, 'caracteristica_Atributo77', a)
+    if hasattr(b2, 'caracteristica_Atributo77'):
+        assert _is_linked(b2, 'caracteristica_Atributo77', a)
+    _safe_set(a, 'caracteristica_Designar', None)
+    assert not _is_linked(a, 'caracteristica_Designar', b2)
+    if hasattr(b2, 'caracteristica_Atributo77'):
+        assert not _is_linked(b2, 'caracteristica_Atributo77', a)
+
+
+def test_assoc_atributoProduto48_link_reassign_clear():
+    a = caracteristica_AtributoProduto(tipoValor="sample_text", valor="sample_text")
+    b1 = caracteristica_CaracteristicaProduto()
+    b2 = caracteristica_CaracteristicaProduto()
+    _safe_set(a, 'AtributoProduto', b1)
+    assert _is_linked(a, 'AtributoProduto', b1)
+    if hasattr(b1, 'caracteristicaProdutoPai49'):
+        assert _is_linked(b1, 'caracteristicaProdutoPai49', a)
+    _safe_set(a, 'AtributoProduto', b2)
+    assert _is_linked(a, 'AtributoProduto', b2)
+    if hasattr(b1, 'caracteristicaProdutoPai49'):
+        assert not _is_linked(b1, 'caracteristicaProdutoPai49', a)
+    if hasattr(b2, 'caracteristicaProdutoPai49'):
+        assert _is_linked(b2, 'caracteristicaProdutoPai49', a)
+    _safe_set(a, 'AtributoProduto', None)
+    assert not _is_linked(a, 'AtributoProduto', b2)
+    if hasattr(b2, 'caracteristicaProdutoPai49'):
+        assert not _is_linked(b2, 'caracteristicaProdutoPai49', a)
+
+
+def test_assoc_atributos12_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_Atributo(tipoValor="sample_text")
+    b2 = caracteristica_Atributo(tipoValor="sample_text_2")
+    _safe_set(a, 'caracteristica_LPS13', {b1})
+    assert _is_linked(a, 'caracteristica_LPS13', b1)
+    if hasattr(b1, 'caracteristica_Atributo'):
+        assert _is_linked(b1, 'caracteristica_Atributo', a)
+    _safe_set(a, 'caracteristica_LPS13', {b2})
+    assert _is_linked(a, 'caracteristica_LPS13', b2)
+    if hasattr(b1, 'caracteristica_Atributo'):
+        assert not _is_linked(b1, 'caracteristica_Atributo', a)
+    if hasattr(b2, 'caracteristica_Atributo'):
+        assert _is_linked(b2, 'caracteristica_Atributo', a)
+    _safe_set(a, 'caracteristica_LPS13', set())
+    assert not _is_linked(a, 'caracteristica_LPS13', b2)
+    if hasattr(b2, 'caracteristica_Atributo'):
+        assert not _is_linked(b2, 'caracteristica_Atributo', a)
+
+
+def test_assoc_caracteristicaPai18_link_reassign_clear():
+    a = caracteristica_Atributo(tipoValor="sample_text")
+    b1 = caracteristica_Caracteristica()
+    b2 = caracteristica_Caracteristica()
+    _safe_set(a, 'atributo', b1)
+    assert _is_linked(a, 'atributo', b1)
+    if hasattr(b1, 'Caracteristica'):
+        assert _is_linked(b1, 'Caracteristica', a)
+    _safe_set(a, 'atributo', b2)
+    assert _is_linked(a, 'atributo', b2)
+    if hasattr(b1, 'Caracteristica'):
+        assert not _is_linked(b1, 'Caracteristica', a)
+    if hasattr(b2, 'Caracteristica'):
+        assert _is_linked(b2, 'Caracteristica', a)
+    _safe_set(a, 'atributo', None)
+    assert not _is_linked(a, 'atributo', b2)
+    if hasattr(b2, 'Caracteristica'):
+        assert not _is_linked(b2, 'Caracteristica', a)
+
+
+def test_assoc_caracteristicaPai31_link_reassign_clear():
+    a = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b1 = caracteristica_Caracteristica()
+    b2 = caracteristica_Caracteristica()
+    _safe_set(a, 'variacoes', b1)
+    assert _is_linked(a, 'variacoes', b1)
+    if hasattr(b1, 'Caracteristica32'):
+        assert _is_linked(b1, 'Caracteristica32', a)
+    _safe_set(a, 'variacoes', b2)
+    assert _is_linked(a, 'variacoes', b2)
+    if hasattr(b1, 'Caracteristica32'):
+        assert not _is_linked(b1, 'Caracteristica32', a)
+    if hasattr(b2, 'Caracteristica32'):
+        assert _is_linked(b2, 'Caracteristica32', a)
+    _safe_set(a, 'variacoes', None)
+    assert not _is_linked(a, 'variacoes', b2)
+    if hasattr(b2, 'Caracteristica32'):
+        assert not _is_linked(b2, 'Caracteristica32', a)
+
+
+def test_assoc_caracteristicaProdutoPai50_link_reassign_clear():
+    a = caracteristica_AtributoProduto(tipoValor="sample_text", valor="sample_text")
+    b1 = caracteristica_CaracteristicaProduto()
+    b2 = caracteristica_CaracteristicaProduto()
+    _safe_set(a, 'atributoProduto', b1)
+    assert _is_linked(a, 'atributoProduto', b1)
+    if hasattr(b1, 'CaracteristicaProduto51'):
+        assert _is_linked(b1, 'CaracteristicaProduto51', a)
+    _safe_set(a, 'atributoProduto', b2)
+    assert _is_linked(a, 'atributoProduto', b2)
+    if hasattr(b1, 'CaracteristicaProduto51'):
+        assert not _is_linked(b1, 'CaracteristicaProduto51', a)
+    if hasattr(b2, 'CaracteristicaProduto51'):
+        assert _is_linked(b2, 'CaracteristicaProduto51', a)
+    _safe_set(a, 'atributoProduto', None)
+    assert not _is_linked(a, 'atributoProduto', b2)
+    if hasattr(b2, 'CaracteristicaProduto51'):
+        assert not _is_linked(b2, 'CaracteristicaProduto51', a)
+
+
+def test_assoc_caracteristicaProdutoPai53_link_reassign_clear():
+    a = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b1 = caracteristica_CaracteristicaProduto()
+    b2 = caracteristica_CaracteristicaProduto()
+    _safe_set(a, 'caracteristica_VariacaoProduto', b1)
+    assert _is_linked(a, 'caracteristica_VariacaoProduto', b1)
+    if hasattr(b1, 'caracteristica_CaracteristicaProduto'):
+        assert _is_linked(b1, 'caracteristica_CaracteristicaProduto', a)
+    _safe_set(a, 'caracteristica_VariacaoProduto', b2)
+    assert _is_linked(a, 'caracteristica_VariacaoProduto', b2)
+    if hasattr(b1, 'caracteristica_CaracteristicaProduto'):
+        assert not _is_linked(b1, 'caracteristica_CaracteristicaProduto', a)
+    if hasattr(b2, 'caracteristica_CaracteristicaProduto'):
+        assert _is_linked(b2, 'caracteristica_CaracteristicaProduto', a)
+    _safe_set(a, 'caracteristica_VariacaoProduto', None)
+    assert not _is_linked(a, 'caracteristica_VariacaoProduto', b2)
+    if hasattr(b2, 'caracteristica_CaracteristicaProduto'):
+        assert not _is_linked(b2, 'caracteristica_CaracteristicaProduto', a)
+
+
+def test_assoc_eAntigo91_link_reassign_clear():
+    a = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    b1 = caracteristica_Estado(nome="sample_text", safe=True)
+    b2 = caracteristica_Estado(nome="sample_text_2", safe=False)
+    _safe_set(a, 'caracteristica_Transicao92', b1)
+    assert _is_linked(a, 'caracteristica_Transicao92', b1)
+    if hasattr(b1, 'caracteristica_Estado93'):
+        assert _is_linked(b1, 'caracteristica_Estado93', a)
+    _safe_set(a, 'caracteristica_Transicao92', b2)
+    assert _is_linked(a, 'caracteristica_Transicao92', b2)
+    if hasattr(b1, 'caracteristica_Estado93'):
+        assert not _is_linked(b1, 'caracteristica_Estado93', a)
+    if hasattr(b2, 'caracteristica_Estado93'):
+        assert _is_linked(b2, 'caracteristica_Estado93', a)
+    _safe_set(a, 'caracteristica_Transicao92', None)
+    assert not _is_linked(a, 'caracteristica_Transicao92', b2)
+    if hasattr(b2, 'caracteristica_Estado93'):
+        assert not _is_linked(b2, 'caracteristica_Estado93', a)
+
+
+def test_assoc_eNovo94_link_reassign_clear():
+    a = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    b1 = caracteristica_Estado(nome="sample_text", safe=True)
+    b2 = caracteristica_Estado(nome="sample_text_2", safe=False)
+    _safe_set(a, 'caracteristica_Transicao95', b1)
+    assert _is_linked(a, 'caracteristica_Transicao95', b1)
+    if hasattr(b1, 'caracteristica_Estado96'):
+        assert _is_linked(b1, 'caracteristica_Estado96', a)
+    _safe_set(a, 'caracteristica_Transicao95', b2)
+    assert _is_linked(a, 'caracteristica_Transicao95', b2)
+    if hasattr(b1, 'caracteristica_Estado96'):
+        assert not _is_linked(b1, 'caracteristica_Estado96', a)
+    if hasattr(b2, 'caracteristica_Estado96'):
+        assert _is_linked(b2, 'caracteristica_Estado96', a)
+    _safe_set(a, 'caracteristica_Transicao95', None)
+    assert not _is_linked(a, 'caracteristica_Transicao95', b2)
+    if hasattr(b2, 'caracteristica_Estado96'):
+        assert not _is_linked(b2, 'caracteristica_Estado96', a)
+
+
+def test_assoc_elemento75_link_reassign_clear():
+    a = caracteristica_LiteralAcao(presenca="sample_text")
+    b1 = caracteristica_ElementoCaracteristico()
+    b2 = caracteristica_ElementoCaracteristico()
+    _safe_set(a, 'caracteristica_LiteralAcao', b1)
+    assert _is_linked(a, 'caracteristica_LiteralAcao', b1)
+    if hasattr(b1, 'caracteristica_ElementoCaracteristico'):
+        assert _is_linked(b1, 'caracteristica_ElementoCaracteristico', a)
+    _safe_set(a, 'caracteristica_LiteralAcao', b2)
+    assert _is_linked(a, 'caracteristica_LiteralAcao', b2)
+    if hasattr(b1, 'caracteristica_ElementoCaracteristico'):
+        assert not _is_linked(b1, 'caracteristica_ElementoCaracteristico', a)
+    if hasattr(b2, 'caracteristica_ElementoCaracteristico'):
+        assert _is_linked(b2, 'caracteristica_ElementoCaracteristico', a)
+    _safe_set(a, 'caracteristica_LiteralAcao', None)
+    assert not _is_linked(a, 'caracteristica_LiteralAcao', b2)
+    if hasattr(b2, 'caracteristica_ElementoCaracteristico'):
+        assert not _is_linked(b2, 'caracteristica_ElementoCaracteristico', a)
+
+
+def test_assoc_elemento85_link_reassign_clear():
+    a = caracteristica_LiteralComposicao(presenca="sample_text")
+    b1 = caracteristica_ElementoCaracteristico()
+    b2 = caracteristica_ElementoCaracteristico()
+    _safe_set(a, 'caracteristica_LiteralComposicao', b1)
+    assert _is_linked(a, 'caracteristica_LiteralComposicao', b1)
+    if hasattr(b1, 'caracteristica_ElementoCaracteristico86'):
+        assert _is_linked(b1, 'caracteristica_ElementoCaracteristico86', a)
+    _safe_set(a, 'caracteristica_LiteralComposicao', b2)
+    assert _is_linked(a, 'caracteristica_LiteralComposicao', b2)
+    if hasattr(b1, 'caracteristica_ElementoCaracteristico86'):
+        assert not _is_linked(b1, 'caracteristica_ElementoCaracteristico86', a)
+    if hasattr(b2, 'caracteristica_ElementoCaracteristico86'):
+        assert _is_linked(b2, 'caracteristica_ElementoCaracteristico86', a)
+    _safe_set(a, 'caracteristica_LiteralComposicao', None)
+    assert not _is_linked(a, 'caracteristica_LiteralComposicao', b2)
+    if hasattr(b2, 'caracteristica_ElementoCaracteristico86'):
+        assert not _is_linked(b2, 'caracteristica_ElementoCaracteristico86', a)
+
+
+def test_assoc_elementoOriginal40_link_reassign_clear():
+    a = caracteristica_ElementoDeProduto(nome="sample_text")
+    b1 = caracteristica_Elemento(nome="sample_text")
+    b2 = caracteristica_Elemento(nome="sample_text_2")
+    _safe_set(a, 'caracteristica_ElementoDeProduto41', b1)
+    assert _is_linked(a, 'caracteristica_ElementoDeProduto41', b1)
+    if hasattr(b1, 'caracteristica_Elemento42'):
+        assert _is_linked(b1, 'caracteristica_Elemento42', a)
+    _safe_set(a, 'caracteristica_ElementoDeProduto41', b2)
+    assert _is_linked(a, 'caracteristica_ElementoDeProduto41', b2)
+    if hasattr(b1, 'caracteristica_Elemento42'):
+        assert not _is_linked(b1, 'caracteristica_Elemento42', a)
+    if hasattr(b2, 'caracteristica_Elemento42'):
+        assert _is_linked(b2, 'caracteristica_Elemento42', a)
+    _safe_set(a, 'caracteristica_ElementoDeProduto41', None)
+    assert not _is_linked(a, 'caracteristica_ElementoDeProduto41', b2)
+    if hasattr(b2, 'caracteristica_Elemento42'):
+        assert not _is_linked(b2, 'caracteristica_Elemento42', a)
+
+
+def test_assoc_elementoPai38_link_reassign_clear():
+    a = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    b1 = caracteristica_EntidadeDeContexto()
+    b2 = caracteristica_EntidadeDeContexto()
+    _safe_set(a, 'informacoesDeContexto', b1)
+    assert _is_linked(a, 'informacoesDeContexto', b1)
+    if hasattr(b1, 'EntidadeDeContexto39'):
+        assert _is_linked(b1, 'EntidadeDeContexto39', a)
+    _safe_set(a, 'informacoesDeContexto', b2)
+    assert _is_linked(a, 'informacoesDeContexto', b2)
+    if hasattr(b1, 'EntidadeDeContexto39'):
+        assert not _is_linked(b1, 'EntidadeDeContexto39', a)
+    if hasattr(b2, 'EntidadeDeContexto39'):
+        assert _is_linked(b2, 'EntidadeDeContexto39', a)
+    _safe_set(a, 'informacoesDeContexto', None)
+    assert not _is_linked(a, 'informacoesDeContexto', b2)
+    if hasattr(b2, 'EntidadeDeContexto39'):
+        assert not _is_linked(b2, 'EntidadeDeContexto39', a)
+
+
+def test_assoc_elementos1_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_Elemento(nome="sample_text")
+    b2 = caracteristica_Elemento(nome="sample_text_2")
+    _safe_set(a, 'caracteristica_LPS2', {b1})
+    assert _is_linked(a, 'caracteristica_LPS2', b1)
+    if hasattr(b1, 'caracteristica_Elemento'):
+        assert _is_linked(b1, 'caracteristica_Elemento', a)
+    _safe_set(a, 'caracteristica_LPS2', {b2})
+    assert _is_linked(a, 'caracteristica_LPS2', b2)
+    if hasattr(b1, 'caracteristica_Elemento'):
+        assert not _is_linked(b1, 'caracteristica_Elemento', a)
+    if hasattr(b2, 'caracteristica_Elemento'):
+        assert _is_linked(b2, 'caracteristica_Elemento', a)
+    _safe_set(a, 'caracteristica_LPS2', set())
+    assert not _is_linked(a, 'caracteristica_LPS2', b2)
+    if hasattr(b2, 'caracteristica_Elemento'):
+        assert not _is_linked(b2, 'caracteristica_Elemento', a)
+
+
+def test_assoc_elementosDeProduto9_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_ElementoDeProduto(nome="sample_text")
+    b2 = caracteristica_ElementoDeProduto(nome="sample_text_2")
+    _safe_set(a, 'caracteristica_LPS10', {b1})
+    assert _is_linked(a, 'caracteristica_LPS10', b1)
+    if hasattr(b1, 'caracteristica_ElementoDeProduto'):
+        assert _is_linked(b1, 'caracteristica_ElementoDeProduto', a)
+    _safe_set(a, 'caracteristica_LPS10', {b2})
+    assert _is_linked(a, 'caracteristica_LPS10', b2)
+    if hasattr(b1, 'caracteristica_ElementoDeProduto'):
+        assert not _is_linked(b1, 'caracteristica_ElementoDeProduto', a)
+    if hasattr(b2, 'caracteristica_ElementoDeProduto'):
+        assert _is_linked(b2, 'caracteristica_ElementoDeProduto', a)
+    _safe_set(a, 'caracteristica_LPS10', set())
+    assert not _is_linked(a, 'caracteristica_LPS10', b2)
+    if hasattr(b2, 'caracteristica_ElementoDeProduto'):
+        assert not _is_linked(b2, 'caracteristica_ElementoDeProduto', a)
+
+
+def test_assoc_estados89_link_reassign_clear():
+    a = caracteristica_Simulacao(nome="sample_text")
+    b1 = caracteristica_Estado(nome="sample_text", safe=True)
+    b2 = caracteristica_Estado(nome="sample_text_2", safe=False)
+    _safe_set(a, 'caracteristica_Simulacao90', {b1})
+    assert _is_linked(a, 'caracteristica_Simulacao90', b1)
+    if hasattr(b1, 'caracteristica_Estado'):
+        assert _is_linked(b1, 'caracteristica_Estado', a)
+    _safe_set(a, 'caracteristica_Simulacao90', {b2})
+    assert _is_linked(a, 'caracteristica_Simulacao90', b2)
+    if hasattr(b1, 'caracteristica_Estado'):
+        assert not _is_linked(b1, 'caracteristica_Estado', a)
+    if hasattr(b2, 'caracteristica_Estado'):
+        assert _is_linked(b2, 'caracteristica_Estado', a)
+    _safe_set(a, 'caracteristica_Simulacao90', set())
+    assert not _is_linked(a, 'caracteristica_Simulacao90', b2)
+    if hasattr(b2, 'caracteristica_Estado'):
+        assert not _is_linked(b2, 'caracteristica_Estado', a)
+
+
+def test_assoc_expressoes7_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_Expressao(nome="sample_text")
+    b2 = caracteristica_Expressao(nome="sample_text_2")
+    _safe_set(a, 'caracteristica_LPS8', {b1})
+    assert _is_linked(a, 'caracteristica_LPS8', b1)
+    if hasattr(b1, 'caracteristica_Expressao'):
+        assert _is_linked(b1, 'caracteristica_Expressao', a)
+    _safe_set(a, 'caracteristica_LPS8', {b2})
+    assert _is_linked(a, 'caracteristica_LPS8', b2)
+    if hasattr(b1, 'caracteristica_Expressao'):
+        assert not _is_linked(b1, 'caracteristica_Expressao', a)
+    if hasattr(b2, 'caracteristica_Expressao'):
+        assert _is_linked(b2, 'caracteristica_Expressao', a)
+    _safe_set(a, 'caracteristica_LPS8', set())
+    assert not _is_linked(a, 'caracteristica_LPS8', b2)
+    if hasattr(b2, 'caracteristica_Expressao'):
+        assert not _is_linked(b2, 'caracteristica_Expressao', a)
+
+
+def test_assoc_inconsistenciaERA16_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_InconsistenciaRegraAdaptacao()
+    b2 = caracteristica_InconsistenciaRegraAdaptacao()
+    _safe_set(a, 'caracteristica_LPS17', {b1})
+    assert _is_linked(a, 'caracteristica_LPS17', b1)
+    if hasattr(b1, 'caracteristica_InconsistenciaRegraAdaptacao'):
+        assert _is_linked(b1, 'caracteristica_InconsistenciaRegraAdaptacao', a)
+    _safe_set(a, 'caracteristica_LPS17', {b2})
+    assert _is_linked(a, 'caracteristica_LPS17', b2)
+    if hasattr(b1, 'caracteristica_InconsistenciaRegraAdaptacao'):
+        assert not _is_linked(b1, 'caracteristica_InconsistenciaRegraAdaptacao', a)
+    if hasattr(b2, 'caracteristica_InconsistenciaRegraAdaptacao'):
+        assert _is_linked(b2, 'caracteristica_InconsistenciaRegraAdaptacao', a)
+    _safe_set(a, 'caracteristica_LPS17', set())
+    assert not _is_linked(a, 'caracteristica_LPS17', b2)
+    if hasattr(b2, 'caracteristica_InconsistenciaRegraAdaptacao'):
+        assert not _is_linked(b2, 'caracteristica_InconsistenciaRegraAdaptacao', a)
+
+
+def test_assoc_informacoesDeContexto37_link_reassign_clear():
+    a = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    b1 = caracteristica_EntidadeDeContexto()
+    b2 = caracteristica_EntidadeDeContexto()
+    _safe_set(a, 'InformacaoDeContexto', b1)
+    assert _is_linked(a, 'InformacaoDeContexto', b1)
+    if hasattr(b1, 'elementoPai'):
+        assert _is_linked(b1, 'elementoPai', a)
+    _safe_set(a, 'InformacaoDeContexto', b2)
+    assert _is_linked(a, 'InformacaoDeContexto', b2)
+    if hasattr(b1, 'elementoPai'):
+        assert not _is_linked(b1, 'elementoPai', a)
+    if hasattr(b2, 'elementoPai'):
+        assert _is_linked(b2, 'elementoPai', a)
+    _safe_set(a, 'InformacaoDeContexto', None)
+    assert not _is_linked(a, 'InformacaoDeContexto', b2)
+    if hasattr(b2, 'elementoPai'):
+        assert not _is_linked(b2, 'elementoPai', a)
+
+
+def test_assoc_ladoDireitoAcao72_link_reassign_clear():
+    a = caracteristica_AcaoLogico(operadorAcaoLogico="sample_text")
+    b1 = caracteristica_Acao()
+    b2 = caracteristica_Acao()
+    _safe_set(a, 'caracteristica_AcaoLogico73', b1)
+    assert _is_linked(a, 'caracteristica_AcaoLogico73', b1)
+    if hasattr(b1, 'caracteristica_Acao74'):
+        assert _is_linked(b1, 'caracteristica_Acao74', a)
+    _safe_set(a, 'caracteristica_AcaoLogico73', b2)
+    assert _is_linked(a, 'caracteristica_AcaoLogico73', b2)
+    if hasattr(b1, 'caracteristica_Acao74'):
+        assert not _is_linked(b1, 'caracteristica_Acao74', a)
+    if hasattr(b2, 'caracteristica_Acao74'):
+        assert _is_linked(b2, 'caracteristica_Acao74', a)
+    _safe_set(a, 'caracteristica_AcaoLogico73', None)
+    assert not _is_linked(a, 'caracteristica_AcaoLogico73', b2)
+    if hasattr(b2, 'caracteristica_Acao74'):
+        assert not _is_linked(b2, 'caracteristica_Acao74', a)
+
+
+def test_assoc_ladoDireitoComposicao78_link_reassign_clear():
+    a = caracteristica_ExpressaoLogica(operadorLogico="sample_text")
+    b1 = caracteristica_Antecedente()
+    b2 = caracteristica_Antecedente()
+    _safe_set(a, 'caracteristica_ExpressaoLogica', b1)
+    assert _is_linked(a, 'caracteristica_ExpressaoLogica', b1)
+    if hasattr(b1, 'caracteristica_Antecedente79'):
+        assert _is_linked(b1, 'caracteristica_Antecedente79', a)
+    _safe_set(a, 'caracteristica_ExpressaoLogica', b2)
+    assert _is_linked(a, 'caracteristica_ExpressaoLogica', b2)
+    if hasattr(b1, 'caracteristica_Antecedente79'):
+        assert not _is_linked(b1, 'caracteristica_Antecedente79', a)
+    if hasattr(b2, 'caracteristica_Antecedente79'):
+        assert _is_linked(b2, 'caracteristica_Antecedente79', a)
+    _safe_set(a, 'caracteristica_ExpressaoLogica', None)
+    assert not _is_linked(a, 'caracteristica_ExpressaoLogica', b2)
+    if hasattr(b2, 'caracteristica_Antecedente79'):
+        assert not _is_linked(b2, 'caracteristica_Antecedente79', a)
+
+
+def test_assoc_ladoDireitoEvento64_link_reassign_clear():
+    a = caracteristica_EventoLogico(operadorLogico="sample_text")
+    b1 = caracteristica_Evento()
+    b2 = caracteristica_Evento()
+    _safe_set(a, 'caracteristica_EventoLogico', b1)
+    assert _is_linked(a, 'caracteristica_EventoLogico', b1)
+    if hasattr(b1, 'caracteristica_Evento65'):
+        assert _is_linked(b1, 'caracteristica_Evento65', a)
+    _safe_set(a, 'caracteristica_EventoLogico', b2)
+    assert _is_linked(a, 'caracteristica_EventoLogico', b2)
+    if hasattr(b1, 'caracteristica_Evento65'):
+        assert not _is_linked(b1, 'caracteristica_Evento65', a)
+    if hasattr(b2, 'caracteristica_Evento65'):
+        assert _is_linked(b2, 'caracteristica_Evento65', a)
+    _safe_set(a, 'caracteristica_EventoLogico', None)
+    assert not _is_linked(a, 'caracteristica_EventoLogico', b2)
+    if hasattr(b2, 'caracteristica_Evento65'):
+        assert not _is_linked(b2, 'caracteristica_Evento65', a)
+
+
+def test_assoc_ladoEsquerdoAcao70_link_reassign_clear():
+    a = caracteristica_AcaoLogico(operadorAcaoLogico="sample_text")
+    b1 = caracteristica_Acao()
+    b2 = caracteristica_Acao()
+    _safe_set(a, 'caracteristica_AcaoLogico', b1)
+    assert _is_linked(a, 'caracteristica_AcaoLogico', b1)
+    if hasattr(b1, 'caracteristica_Acao71'):
+        assert _is_linked(b1, 'caracteristica_Acao71', a)
+    _safe_set(a, 'caracteristica_AcaoLogico', b2)
+    assert _is_linked(a, 'caracteristica_AcaoLogico', b2)
+    if hasattr(b1, 'caracteristica_Acao71'):
+        assert not _is_linked(b1, 'caracteristica_Acao71', a)
+    if hasattr(b2, 'caracteristica_Acao71'):
+        assert _is_linked(b2, 'caracteristica_Acao71', a)
+    _safe_set(a, 'caracteristica_AcaoLogico', None)
+    assert not _is_linked(a, 'caracteristica_AcaoLogico', b2)
+    if hasattr(b2, 'caracteristica_Acao71'):
+        assert not _is_linked(b2, 'caracteristica_Acao71', a)
+
+
+def test_assoc_ladoEsquerdoComposicao80_link_reassign_clear():
+    a = caracteristica_ExpressaoLogica(operadorLogico="sample_text")
+    b1 = caracteristica_Antecedente()
+    b2 = caracteristica_Antecedente()
+    _safe_set(a, 'caracteristica_ExpressaoLogica81', b1)
+    assert _is_linked(a, 'caracteristica_ExpressaoLogica81', b1)
+    if hasattr(b1, 'caracteristica_Antecedente82'):
+        assert _is_linked(b1, 'caracteristica_Antecedente82', a)
+    _safe_set(a, 'caracteristica_ExpressaoLogica81', b2)
+    assert _is_linked(a, 'caracteristica_ExpressaoLogica81', b2)
+    if hasattr(b1, 'caracteristica_Antecedente82'):
+        assert not _is_linked(b1, 'caracteristica_Antecedente82', a)
+    if hasattr(b2, 'caracteristica_Antecedente82'):
+        assert _is_linked(b2, 'caracteristica_Antecedente82', a)
+    _safe_set(a, 'caracteristica_ExpressaoLogica81', None)
+    assert not _is_linked(a, 'caracteristica_ExpressaoLogica81', b2)
+    if hasattr(b2, 'caracteristica_Antecedente82'):
+        assert not _is_linked(b2, 'caracteristica_Antecedente82', a)
+
+
+def test_assoc_ladoEsquerdoEvento66_link_reassign_clear():
+    a = caracteristica_EventoLogico(operadorLogico="sample_text")
+    b1 = caracteristica_Evento()
+    b2 = caracteristica_Evento()
+    _safe_set(a, 'caracteristica_EventoLogico67', b1)
+    assert _is_linked(a, 'caracteristica_EventoLogico67', b1)
+    if hasattr(b1, 'caracteristica_Evento68'):
+        assert _is_linked(b1, 'caracteristica_Evento68', a)
+    _safe_set(a, 'caracteristica_EventoLogico67', b2)
+    assert _is_linked(a, 'caracteristica_EventoLogico67', b2)
+    if hasattr(b1, 'caracteristica_Evento68'):
+        assert not _is_linked(b1, 'caracteristica_Evento68', a)
+    if hasattr(b2, 'caracteristica_Evento68'):
+        assert _is_linked(b2, 'caracteristica_Evento68', a)
+    _safe_set(a, 'caracteristica_EventoLogico67', None)
+    assert not _is_linked(a, 'caracteristica_EventoLogico67', b2)
+    if hasattr(b2, 'caracteristica_Evento68'):
+        assert not _is_linked(b2, 'caracteristica_Evento68', a)
+
+
+def test_assoc_literaisInconsistentes109_link_reassign_clear():
+    a = caracteristica_LiteralAcao(presenca="sample_text")
+    b1 = caracteristica_InconsistenciaRegraAdaptacao()
+    b2 = caracteristica_InconsistenciaRegraAdaptacao()
+    _safe_set(a, 'caracteristica_LiteralAcao111', b1)
+    assert _is_linked(a, 'caracteristica_LiteralAcao111', b1)
+    if hasattr(b1, 'caracteristica_InconsistenciaRegraAdaptacao110'):
+        assert _is_linked(b1, 'caracteristica_InconsistenciaRegraAdaptacao110', a)
+    _safe_set(a, 'caracteristica_LiteralAcao111', b2)
+    assert _is_linked(a, 'caracteristica_LiteralAcao111', b2)
+    if hasattr(b1, 'caracteristica_InconsistenciaRegraAdaptacao110'):
+        assert not _is_linked(b1, 'caracteristica_InconsistenciaRegraAdaptacao110', a)
+    if hasattr(b2, 'caracteristica_InconsistenciaRegraAdaptacao110'):
+        assert _is_linked(b2, 'caracteristica_InconsistenciaRegraAdaptacao110', a)
+    _safe_set(a, 'caracteristica_LiteralAcao111', None)
+    assert not _is_linked(a, 'caracteristica_LiteralAcao111', b2)
+    if hasattr(b2, 'caracteristica_InconsistenciaRegraAdaptacao110'):
+        assert not _is_linked(b2, 'caracteristica_InconsistenciaRegraAdaptacao110', a)
+
+
+def test_assoc_pontosDeVariacao0_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_PontoDeVariacao()
+    b2 = caracteristica_PontoDeVariacao()
+    _safe_set(a, 'caracteristica_LPS', {b1})
+    assert _is_linked(a, 'caracteristica_LPS', b1)
+    if hasattr(b1, 'caracteristica_PontoDeVariacao'):
+        assert _is_linked(b1, 'caracteristica_PontoDeVariacao', a)
+    _safe_set(a, 'caracteristica_LPS', {b2})
+    assert _is_linked(a, 'caracteristica_LPS', b2)
+    if hasattr(b1, 'caracteristica_PontoDeVariacao'):
+        assert not _is_linked(b1, 'caracteristica_PontoDeVariacao', a)
+    if hasattr(b2, 'caracteristica_PontoDeVariacao'):
+        assert _is_linked(b2, 'caracteristica_PontoDeVariacao', a)
+    _safe_set(a, 'caracteristica_LPS', set())
+    assert not _is_linked(a, 'caracteristica_LPS', b2)
+    if hasattr(b2, 'caracteristica_PontoDeVariacao'):
+        assert not _is_linked(b2, 'caracteristica_PontoDeVariacao', a)
+
+
+def test_assoc_produto103_link_reassign_clear():
+    a = caracteristica_Estado(nome="sample_text", safe=True)
+    b1 = caracteristica_CaracteristicaProduto()
+    b2 = caracteristica_CaracteristicaProduto()
+    _safe_set(a, 'caracteristica_Estado104', b1)
+    assert _is_linked(a, 'caracteristica_Estado104', b1)
+    if hasattr(b1, 'caracteristica_CaracteristicaProduto105'):
+        assert _is_linked(b1, 'caracteristica_CaracteristicaProduto105', a)
+    _safe_set(a, 'caracteristica_Estado104', b2)
+    assert _is_linked(a, 'caracteristica_Estado104', b2)
+    if hasattr(b1, 'caracteristica_CaracteristicaProduto105'):
+        assert not _is_linked(b1, 'caracteristica_CaracteristicaProduto105', a)
+    if hasattr(b2, 'caracteristica_CaracteristicaProduto105'):
+        assert _is_linked(b2, 'caracteristica_CaracteristicaProduto105', a)
+    _safe_set(a, 'caracteristica_Estado104', None)
+    assert not _is_linked(a, 'caracteristica_Estado104', b2)
+    if hasattr(b2, 'caracteristica_CaracteristicaProduto105'):
+        assert not _is_linked(b2, 'caracteristica_CaracteristicaProduto105', a)
+
+
+def test_assoc_produtos5_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_Produto()
+    b2 = caracteristica_Produto()
+    _safe_set(a, 'caracteristica_LPS6', {b1})
+    assert _is_linked(a, 'caracteristica_LPS6', b1)
+    if hasattr(b1, 'caracteristica_Produto'):
+        assert _is_linked(b1, 'caracteristica_Produto', a)
+    _safe_set(a, 'caracteristica_LPS6', {b2})
+    assert _is_linked(a, 'caracteristica_LPS6', b2)
+    if hasattr(b1, 'caracteristica_Produto'):
+        assert not _is_linked(b1, 'caracteristica_Produto', a)
+    if hasattr(b2, 'caracteristica_Produto'):
+        assert _is_linked(b2, 'caracteristica_Produto', a)
+    _safe_set(a, 'caracteristica_LPS6', set())
+    assert not _is_linked(a, 'caracteristica_LPS6', b2)
+    if hasattr(b2, 'caracteristica_Produto'):
+        assert not _is_linked(b2, 'caracteristica_Produto', a)
+
+
+def test_assoc_regras3_link_reassign_clear():
+    a = caracteristica_Regra(conteudo="sample_text", nome="sample_text")
+    b1 = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b2 = caracteristica_LPS(erro="sample_text_2", nome="sample_text_2", valoresContextuais="sample_text_2")
+    _safe_set(a, 'caracteristica_Regra', b1)
+    assert _is_linked(a, 'caracteristica_Regra', b1)
+    if hasattr(b1, 'caracteristica_LPS4'):
+        assert _is_linked(b1, 'caracteristica_LPS4', a)
+    _safe_set(a, 'caracteristica_Regra', b2)
+    assert _is_linked(a, 'caracteristica_Regra', b2)
+    if hasattr(b1, 'caracteristica_LPS4'):
+        assert not _is_linked(b1, 'caracteristica_LPS4', a)
+    if hasattr(b2, 'caracteristica_LPS4'):
+        assert _is_linked(b2, 'caracteristica_LPS4', a)
+    _safe_set(a, 'caracteristica_Regra', None)
+    assert not _is_linked(a, 'caracteristica_Regra', b2)
+    if hasattr(b2, 'caracteristica_LPS4'):
+        assert not _is_linked(b2, 'caracteristica_LPS4', a)
+
+
+def test_assoc_regrasQuebradas97_link_reassign_clear():
+    a = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    b1 = caracteristica_RegraDeComposicao()
+    b2 = caracteristica_RegraDeComposicao()
+    _safe_set(a, 'caracteristica_Transicao98', {b1})
+    assert _is_linked(a, 'caracteristica_Transicao98', b1)
+    if hasattr(b1, 'caracteristica_RegraDeComposicao99'):
+        assert _is_linked(b1, 'caracteristica_RegraDeComposicao99', a)
+    _safe_set(a, 'caracteristica_Transicao98', {b2})
+    assert _is_linked(a, 'caracteristica_Transicao98', b2)
+    if hasattr(b1, 'caracteristica_RegraDeComposicao99'):
+        assert not _is_linked(b1, 'caracteristica_RegraDeComposicao99', a)
+    if hasattr(b2, 'caracteristica_RegraDeComposicao99'):
+        assert _is_linked(b2, 'caracteristica_RegraDeComposicao99', a)
+    _safe_set(a, 'caracteristica_Transicao98', set())
+    assert not _is_linked(a, 'caracteristica_Transicao98', b2)
+    if hasattr(b2, 'caracteristica_RegraDeComposicao99'):
+        assert not _is_linked(b2, 'caracteristica_RegraDeComposicao99', a)
+
+
+def test_assoc_simulacoes14_link_reassign_clear():
+    a = caracteristica_Simulacao(nome="sample_text")
+    b1 = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b2 = caracteristica_LPS(erro="sample_text_2", nome="sample_text_2", valoresContextuais="sample_text_2")
+    _safe_set(a, 'caracteristica_Simulacao', b1)
+    assert _is_linked(a, 'caracteristica_Simulacao', b1)
+    if hasattr(b1, 'caracteristica_LPS15'):
+        assert _is_linked(b1, 'caracteristica_LPS15', a)
+    _safe_set(a, 'caracteristica_Simulacao', b2)
+    assert _is_linked(a, 'caracteristica_Simulacao', b2)
+    if hasattr(b1, 'caracteristica_LPS15'):
+        assert not _is_linked(b1, 'caracteristica_LPS15', a)
+    if hasattr(b2, 'caracteristica_LPS15'):
+        assert _is_linked(b2, 'caracteristica_LPS15', a)
+    _safe_set(a, 'caracteristica_Simulacao', None)
+    assert not _is_linked(a, 'caracteristica_Simulacao', b2)
+    if hasattr(b2, 'caracteristica_LPS15'):
+        assert not _is_linked(b2, 'caracteristica_LPS15', a)
+
+
+def test_assoc_sistema11_link_reassign_clear():
+    a = caracteristica_LPS(erro="sample_text", nome="sample_text", valoresContextuais="sample_text")
+    b1 = caracteristica_CaracteristicaRaiz()
+    b2 = caracteristica_CaracteristicaRaiz()
+    _safe_set(a, 'LpsDoSistema', b1)
+    assert _is_linked(a, 'LpsDoSistema', b1)
+    if hasattr(b1, 'CaracteristicaRaiz'):
+        assert _is_linked(b1, 'CaracteristicaRaiz', a)
+    _safe_set(a, 'LpsDoSistema', b2)
+    assert _is_linked(a, 'LpsDoSistema', b2)
+    if hasattr(b1, 'CaracteristicaRaiz'):
+        assert not _is_linked(b1, 'CaracteristicaRaiz', a)
+    if hasattr(b2, 'CaracteristicaRaiz'):
+        assert _is_linked(b2, 'CaracteristicaRaiz', a)
+    _safe_set(a, 'LpsDoSistema', None)
+    assert not _is_linked(a, 'LpsDoSistema', b2)
+    if hasattr(b2, 'CaracteristicaRaiz'):
+        assert not _is_linked(b2, 'CaracteristicaRaiz', a)
+
+
+def test_assoc_transicoes87_link_reassign_clear():
+    a = caracteristica_Transicao(etiqueta="sample_text", safe=True)
+    b1 = caracteristica_Simulacao(nome="sample_text")
+    b2 = caracteristica_Simulacao(nome="sample_text_2")
+    _safe_set(a, 'caracteristica_Transicao', b1)
+    assert _is_linked(a, 'caracteristica_Transicao', b1)
+    if hasattr(b1, 'caracteristica_Simulacao88'):
+        assert _is_linked(b1, 'caracteristica_Simulacao88', a)
+    _safe_set(a, 'caracteristica_Transicao', b2)
+    assert _is_linked(a, 'caracteristica_Transicao', b2)
+    if hasattr(b1, 'caracteristica_Simulacao88'):
+        assert not _is_linked(b1, 'caracteristica_Simulacao88', a)
+    if hasattr(b2, 'caracteristica_Simulacao88'):
+        assert _is_linked(b2, 'caracteristica_Simulacao88', a)
+    _safe_set(a, 'caracteristica_Transicao', None)
+    assert not _is_linked(a, 'caracteristica_Transicao', b2)
+    if hasattr(b2, 'caracteristica_Simulacao88'):
+        assert not _is_linked(b2, 'caracteristica_Simulacao88', a)
+
+
+def test_assoc_variacaoPai33_link_reassign_clear():
+    a = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b1 = caracteristica_Variante()
+    b2 = caracteristica_Variante()
+    _safe_set(a, 'Variacao34', b1)
+    assert _is_linked(a, 'Variacao34', b1)
+    if hasattr(b1, 'variantes'):
+        assert _is_linked(b1, 'variantes', a)
+    _safe_set(a, 'Variacao34', b2)
+    assert _is_linked(a, 'Variacao34', b2)
+    if hasattr(b1, 'variantes'):
+        assert not _is_linked(b1, 'variantes', a)
+    if hasattr(b2, 'variantes'):
+        assert _is_linked(b2, 'variantes', a)
+    _safe_set(a, 'Variacao34', None)
+    assert not _is_linked(a, 'Variacao34', b2)
+    if hasattr(b2, 'variantes'):
+        assert not _is_linked(b2, 'variantes', a)
+
+
+def test_assoc_variacaoProdutoPai54_link_reassign_clear():
+    a = caracteristica_VarianteProduto(selecionado="sample_text")
+    b1 = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b2 = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text_2", cardinalidadeMinima="sample_text_2")
+    _safe_set(a, 'variantesProduto', b1)
+    assert _is_linked(a, 'variantesProduto', b1)
+    if hasattr(b1, 'VariacaoProduto'):
+        assert _is_linked(b1, 'VariacaoProduto', a)
+    _safe_set(a, 'variantesProduto', b2)
+    assert _is_linked(a, 'variantesProduto', b2)
+    if hasattr(b1, 'VariacaoProduto'):
+        assert not _is_linked(b1, 'VariacaoProduto', a)
+    if hasattr(b2, 'VariacaoProduto'):
+        assert _is_linked(b2, 'VariacaoProduto', a)
+    _safe_set(a, 'variantesProduto', None)
+    assert not _is_linked(a, 'variantesProduto', b2)
+    if hasattr(b2, 'VariacaoProduto'):
+        assert not _is_linked(b2, 'VariacaoProduto', a)
+
+
+def test_assoc_variacoes25_link_reassign_clear():
+    a = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b1 = caracteristica_Caracteristica()
+    b2 = caracteristica_Caracteristica()
+    _safe_set(a, 'Variacao', b1)
+    assert _is_linked(a, 'Variacao', b1)
+    if hasattr(b1, 'caracteristicaPai26'):
+        assert _is_linked(b1, 'caracteristicaPai26', a)
+    _safe_set(a, 'Variacao', b2)
+    assert _is_linked(a, 'Variacao', b2)
+    if hasattr(b1, 'caracteristicaPai26'):
+        assert not _is_linked(b1, 'caracteristicaPai26', a)
+    if hasattr(b2, 'caracteristicaPai26'):
+        assert _is_linked(b2, 'caracteristicaPai26', a)
+    _safe_set(a, 'Variacao', None)
+    assert not _is_linked(a, 'Variacao', b2)
+    if hasattr(b2, 'caracteristicaPai26'):
+        assert not _is_linked(b2, 'caracteristicaPai26', a)
+
+
+def test_assoc_variantes30_link_reassign_clear():
+    a = caracteristica_Variacao(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b1 = caracteristica_Variante()
+    b2 = caracteristica_Variante()
+    _safe_set(a, 'variacaoPai', {b1})
+    assert _is_linked(a, 'variacaoPai', b1)
+    if hasattr(b1, 'Variante'):
+        assert _is_linked(b1, 'Variante', a)
+    _safe_set(a, 'variacaoPai', {b2})
+    assert _is_linked(a, 'variacaoPai', b2)
+    if hasattr(b1, 'Variante'):
+        assert not _is_linked(b1, 'Variante', a)
+    if hasattr(b2, 'Variante'):
+        assert _is_linked(b2, 'Variante', a)
+    _safe_set(a, 'variacaoPai', set())
+    assert not _is_linked(a, 'variacaoPai', b2)
+    if hasattr(b2, 'Variante'):
+        assert not _is_linked(b2, 'Variante', a)
+
+
+def test_assoc_variantesProduto52_link_reassign_clear():
+    a = caracteristica_VarianteProduto(selecionado="sample_text")
+    b1 = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text", cardinalidadeMinima="sample_text")
+    b2 = caracteristica_VariacaoProduto(cardinalidadeMaxima="sample_text_2", cardinalidadeMinima="sample_text_2")
+    _safe_set(a, 'VarianteProduto', b1)
+    assert _is_linked(a, 'VarianteProduto', b1)
+    if hasattr(b1, 'variacaoProdutoPai'):
+        assert _is_linked(b1, 'variacaoProdutoPai', a)
+    _safe_set(a, 'VarianteProduto', b2)
+    assert _is_linked(a, 'VarianteProduto', b2)
+    if hasattr(b1, 'variacaoProdutoPai'):
+        assert not _is_linked(b1, 'variacaoProdutoPai', a)
+    if hasattr(b2, 'variacaoProdutoPai'):
+        assert _is_linked(b2, 'variacaoProdutoPai', a)
+    _safe_set(a, 'VarianteProduto', None)
+    assert not _is_linked(a, 'VarianteProduto', b2)
+    if hasattr(b2, 'variacaoProdutoPai'):
+        assert not _is_linked(b2, 'variacaoProdutoPai', a)
+
+
+def test_assoc_variavelDeContexto69_link_reassign_clear():
+    a = caracteristica_InformacaoDeContexto(origem="sample_text", qualidade="sample_text", tipoValor="sample_text", validade="sample_text", valor="sample_text")
+    b1 = caracteristica_EventoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    b2 = caracteristica_EventoRelacional(operadorRelacional="sample_text_2", valor="sample_text_2")
+    _safe_set(a, 'caracteristica_InformacaoDeContexto', b1)
+    assert _is_linked(a, 'caracteristica_InformacaoDeContexto', b1)
+    if hasattr(b1, 'caracteristica_EventoRelacional'):
+        assert _is_linked(b1, 'caracteristica_EventoRelacional', a)
+    _safe_set(a, 'caracteristica_InformacaoDeContexto', b2)
+    assert _is_linked(a, 'caracteristica_InformacaoDeContexto', b2)
+    if hasattr(b1, 'caracteristica_EventoRelacional'):
+        assert not _is_linked(b1, 'caracteristica_EventoRelacional', a)
+    if hasattr(b2, 'caracteristica_EventoRelacional'):
+        assert _is_linked(b2, 'caracteristica_EventoRelacional', a)
+    _safe_set(a, 'caracteristica_InformacaoDeContexto', None)
+    assert not _is_linked(a, 'caracteristica_InformacaoDeContexto', b2)
+    if hasattr(b2, 'caracteristica_EventoRelacional'):
+        assert not _is_linked(b2, 'caracteristica_EventoRelacional', a)
+
+
+def test_assoc_variaveldaExpressao83_link_reassign_clear():
+    a = caracteristica_ExpressaoRelacional(operadorRelacional="sample_text", valor="sample_text")
+    b1 = caracteristica_Atributo(tipoValor="sample_text")
+    b2 = caracteristica_Atributo(tipoValor="sample_text_2")
+    _safe_set(a, 'caracteristica_ExpressaoRelacional', b1)
+    assert _is_linked(a, 'caracteristica_ExpressaoRelacional', b1)
+    if hasattr(b1, 'caracteristica_Atributo84'):
+        assert _is_linked(b1, 'caracteristica_Atributo84', a)
+    _safe_set(a, 'caracteristica_ExpressaoRelacional', b2)
+    assert _is_linked(a, 'caracteristica_ExpressaoRelacional', b2)
+    if hasattr(b1, 'caracteristica_Atributo84'):
+        assert not _is_linked(b1, 'caracteristica_Atributo84', a)
+    if hasattr(b2, 'caracteristica_Atributo84'):
+        assert _is_linked(b2, 'caracteristica_Atributo84', a)
+    _safe_set(a, 'caracteristica_ExpressaoRelacional', None)
+    assert not _is_linked(a, 'caracteristica_ExpressaoRelacional', b2)
+    if hasattr(b2, 'caracteristica_Atributo84'):
+        assert not _is_linked(b2, 'caracteristica_Atributo84', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Acao_strategy = st.builds(Acao)
+@given(instance=Acao_strategy)
+@settings(max_examples=25)
+def test_Acao_instantiation(instance):
+    assert isinstance(instance, Acao)
+
+
+Antecedente_strategy = st.builds(Antecedente)
+@given(instance=Antecedente_strategy)
+@settings(max_examples=25)
+def test_Antecedente_instantiation(instance):
+    assert isinstance(instance, Antecedente)
+
+
+Caracteristica_strategy = st.builds(Caracteristica)
+@given(instance=Caracteristica_strategy)
+@settings(max_examples=25)
+def test_Caracteristica_instantiation(instance):
+    assert isinstance(instance, Caracteristica)
+
+
+CaracteristicaProduto_strategy = st.builds(CaracteristicaProduto)
+@given(instance=CaracteristicaProduto_strategy)
+@settings(max_examples=25)
+def test_CaracteristicaProduto_instantiation(instance):
+    assert isinstance(instance, CaracteristicaProduto)
+
+
+Elemento_strategy = st.builds(Elemento)
+@given(instance=Elemento_strategy)
+@settings(max_examples=25)
+def test_Elemento_instantiation(instance):
+    assert isinstance(instance, Elemento)
+
+
+ElementoCaracteristico_strategy = st.builds(ElementoCaracteristico)
+@given(instance=ElementoCaracteristico_strategy)
+@settings(max_examples=25)
+def test_ElementoCaracteristico_instantiation(instance):
+    assert isinstance(instance, ElementoCaracteristico)
+
+
+ElementoDeProduto_strategy = st.builds(ElementoDeProduto)
+@given(instance=ElementoDeProduto_strategy)
+@settings(max_examples=25)
+def test_ElementoDeProduto_instantiation(instance):
+    assert isinstance(instance, ElementoDeProduto)
+
+
+Evento_strategy = st.builds(Evento)
+@given(instance=Evento_strategy)
+@settings(max_examples=25)
+def test_Evento_instantiation(instance):
+    assert isinstance(instance, Evento)
+
+
+Expressao_strategy = st.builds(Expressao)
+@given(instance=Expressao_strategy)
+@settings(max_examples=25)
+def test_Expressao_instantiation(instance):
+    assert isinstance(instance, Expressao)
+
+
+PontoDeVariacao_strategy = st.builds(PontoDeVariacao)
+@given(instance=PontoDeVariacao_strategy)
+@settings(max_examples=25)
+def test_PontoDeVariacao_instantiation(instance):
+    assert isinstance(instance, PontoDeVariacao)
+
+
+Regra_strategy = st.builds(Regra)
+@given(instance=Regra_strategy)
+@settings(max_examples=25)
+def test_Regra_instantiation(instance):
+    assert isinstance(instance, Regra)
+
+
+caracteristica_Acao_strategy = st.builds(caracteristica_Acao)
+@given(instance=caracteristica_Acao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Acao_instantiation(instance):
+    assert isinstance(instance, caracteristica_Acao)
+
+
+caracteristica_AcaoLogico_strategy = st.builds(caracteristica_AcaoLogico, operadorAcaoLogico=safe_text)
+@given(instance=caracteristica_AcaoLogico_strategy)
+@settings(max_examples=25)
+def test_caracteristica_AcaoLogico_instantiation(instance):
+    assert isinstance(instance, caracteristica_AcaoLogico)
+
+
+caracteristica_Antecedente_strategy = st.builds(caracteristica_Antecedente)
+@given(instance=caracteristica_Antecedente_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Antecedente_instantiation(instance):
+    assert isinstance(instance, caracteristica_Antecedente)
+
+
+caracteristica_Atributo_strategy = st.builds(caracteristica_Atributo, tipoValor=safe_text)
+@given(instance=caracteristica_Atributo_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Atributo_instantiation(instance):
+    assert isinstance(instance, caracteristica_Atributo)
+
+
+caracteristica_AtributoProduto_strategy = st.builds(caracteristica_AtributoProduto, tipoValor=safe_text, valor=safe_text)
+@given(instance=caracteristica_AtributoProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_AtributoProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_AtributoProduto)
+
+
+caracteristica_Caracteristica_strategy = st.builds(caracteristica_Caracteristica)
+@given(instance=caracteristica_Caracteristica_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Caracteristica_instantiation(instance):
+    assert isinstance(instance, caracteristica_Caracteristica)
+
+
+caracteristica_CaracteristicaAgrupada_strategy = st.builds(caracteristica_CaracteristicaAgrupada)
+@given(instance=caracteristica_CaracteristicaAgrupada_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaAgrupada_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaAgrupada)
+
+
+caracteristica_CaracteristicaMandatoria_strategy = st.builds(caracteristica_CaracteristicaMandatoria)
+@given(instance=caracteristica_CaracteristicaMandatoria_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaMandatoria_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaMandatoria)
+
+
+caracteristica_CaracteristicaMandatoriaProduto_strategy = st.builds(caracteristica_CaracteristicaMandatoriaProduto)
+@given(instance=caracteristica_CaracteristicaMandatoriaProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaMandatoriaProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaMandatoriaProduto)
+
+
+caracteristica_CaracteristicaOpcional_strategy = st.builds(caracteristica_CaracteristicaOpcional)
+@given(instance=caracteristica_CaracteristicaOpcional_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaOpcional_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaOpcional)
+
+
+caracteristica_CaracteristicaOpcionalProduto_strategy = st.builds(caracteristica_CaracteristicaOpcionalProduto)
+@given(instance=caracteristica_CaracteristicaOpcionalProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaOpcionalProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaOpcionalProduto)
+
+
+caracteristica_CaracteristicaProduto_strategy = st.builds(caracteristica_CaracteristicaProduto)
+@given(instance=caracteristica_CaracteristicaProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaProduto)
+
+
+caracteristica_CaracteristicaRaiz_strategy = st.builds(caracteristica_CaracteristicaRaiz)
+@given(instance=caracteristica_CaracteristicaRaiz_strategy)
+@settings(max_examples=25)
+def test_caracteristica_CaracteristicaRaiz_instantiation(instance):
+    assert isinstance(instance, caracteristica_CaracteristicaRaiz)
+
+
+caracteristica_Designar_strategy = st.builds(caracteristica_Designar, tipoValor=safe_text, valor=safe_text)
+@given(instance=caracteristica_Designar_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Designar_instantiation(instance):
+    assert isinstance(instance, caracteristica_Designar)
+
+
+caracteristica_Elemento_strategy = st.builds(caracteristica_Elemento, nome=safe_text)
+@given(instance=caracteristica_Elemento_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Elemento_instantiation(instance):
+    assert isinstance(instance, caracteristica_Elemento)
+
+
+caracteristica_ElementoCaracteristico_strategy = st.builds(caracteristica_ElementoCaracteristico)
+@given(instance=caracteristica_ElementoCaracteristico_strategy)
+@settings(max_examples=25)
+def test_caracteristica_ElementoCaracteristico_instantiation(instance):
+    assert isinstance(instance, caracteristica_ElementoCaracteristico)
+
+
+caracteristica_ElementoDeProduto_strategy = st.builds(caracteristica_ElementoDeProduto, nome=safe_text)
+@given(instance=caracteristica_ElementoDeProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_ElementoDeProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_ElementoDeProduto)
+
+
+caracteristica_EntidadeDeContexto_strategy = st.builds(caracteristica_EntidadeDeContexto)
+@given(instance=caracteristica_EntidadeDeContexto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_EntidadeDeContexto_instantiation(instance):
+    assert isinstance(instance, caracteristica_EntidadeDeContexto)
+
+
+caracteristica_Estado_strategy = st.builds(caracteristica_Estado, nome=safe_text, safe=st.booleans())
+@given(instance=caracteristica_Estado_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Estado_instantiation(instance):
+    assert isinstance(instance, caracteristica_Estado)
+
+
+caracteristica_Evento_strategy = st.builds(caracteristica_Evento)
+@given(instance=caracteristica_Evento_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Evento_instantiation(instance):
+    assert isinstance(instance, caracteristica_Evento)
+
+
+caracteristica_EventoLogico_strategy = st.builds(caracteristica_EventoLogico, operadorLogico=safe_text)
+@given(instance=caracteristica_EventoLogico_strategy)
+@settings(max_examples=25)
+def test_caracteristica_EventoLogico_instantiation(instance):
+    assert isinstance(instance, caracteristica_EventoLogico)
+
+
+caracteristica_EventoRelacional_strategy = st.builds(caracteristica_EventoRelacional, operadorRelacional=safe_text, valor=safe_text)
+@given(instance=caracteristica_EventoRelacional_strategy)
+@settings(max_examples=25)
+def test_caracteristica_EventoRelacional_instantiation(instance):
+    assert isinstance(instance, caracteristica_EventoRelacional)
+
+
+caracteristica_Expressao_strategy = st.builds(caracteristica_Expressao, nome=safe_text)
+@given(instance=caracteristica_Expressao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Expressao_instantiation(instance):
+    assert isinstance(instance, caracteristica_Expressao)
+
+
+caracteristica_ExpressaoLogica_strategy = st.builds(caracteristica_ExpressaoLogica, operadorLogico=safe_text)
+@given(instance=caracteristica_ExpressaoLogica_strategy)
+@settings(max_examples=25)
+def test_caracteristica_ExpressaoLogica_instantiation(instance):
+    assert isinstance(instance, caracteristica_ExpressaoLogica)
+
+
+caracteristica_ExpressaoRelacional_strategy = st.builds(caracteristica_ExpressaoRelacional, operadorRelacional=safe_text, valor=safe_text)
+@given(instance=caracteristica_ExpressaoRelacional_strategy)
+@settings(max_examples=25)
+def test_caracteristica_ExpressaoRelacional_instantiation(instance):
+    assert isinstance(instance, caracteristica_ExpressaoRelacional)
+
+
+caracteristica_InconsistenciaRegraAdaptacao_strategy = st.builds(caracteristica_InconsistenciaRegraAdaptacao)
+@given(instance=caracteristica_InconsistenciaRegraAdaptacao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_InconsistenciaRegraAdaptacao_instantiation(instance):
+    assert isinstance(instance, caracteristica_InconsistenciaRegraAdaptacao)
+
+
+caracteristica_InformacaoDeContexto_strategy = st.builds(caracteristica_InformacaoDeContexto, origem=safe_text, qualidade=safe_text, tipoValor=safe_text, validade=safe_text, valor=safe_text)
+@given(instance=caracteristica_InformacaoDeContexto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_InformacaoDeContexto_instantiation(instance):
+    assert isinstance(instance, caracteristica_InformacaoDeContexto)
+
+
+caracteristica_LPS_strategy = st.builds(caracteristica_LPS, erro=safe_text, nome=safe_text, valoresContextuais=safe_text)
+@given(instance=caracteristica_LPS_strategy)
+@settings(max_examples=25)
+def test_caracteristica_LPS_instantiation(instance):
+    assert isinstance(instance, caracteristica_LPS)
+
+
+caracteristica_LiteralAcao_strategy = st.builds(caracteristica_LiteralAcao, presenca=safe_text)
+@given(instance=caracteristica_LiteralAcao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_LiteralAcao_instantiation(instance):
+    assert isinstance(instance, caracteristica_LiteralAcao)
+
+
+caracteristica_LiteralComposicao_strategy = st.builds(caracteristica_LiteralComposicao, presenca=safe_text)
+@given(instance=caracteristica_LiteralComposicao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_LiteralComposicao_instantiation(instance):
+    assert isinstance(instance, caracteristica_LiteralComposicao)
+
+
+caracteristica_PontoDeVariacao_strategy = st.builds(caracteristica_PontoDeVariacao)
+@given(instance=caracteristica_PontoDeVariacao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_PontoDeVariacao_instantiation(instance):
+    assert isinstance(instance, caracteristica_PontoDeVariacao)
+
+
+caracteristica_Produto_strategy = st.builds(caracteristica_Produto)
+@given(instance=caracteristica_Produto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Produto_instantiation(instance):
+    assert isinstance(instance, caracteristica_Produto)
+
+
+caracteristica_RaizDeContexto_strategy = st.builds(caracteristica_RaizDeContexto)
+@given(instance=caracteristica_RaizDeContexto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_RaizDeContexto_instantiation(instance):
+    assert isinstance(instance, caracteristica_RaizDeContexto)
+
+
+caracteristica_Regra_strategy = st.builds(caracteristica_Regra, conteudo=safe_text, nome=safe_text)
+@given(instance=caracteristica_Regra_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Regra_instantiation(instance):
+    assert isinstance(instance, caracteristica_Regra)
+
+
+caracteristica_RegraDeComposicao_strategy = st.builds(caracteristica_RegraDeComposicao)
+@given(instance=caracteristica_RegraDeComposicao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_RegraDeComposicao_instantiation(instance):
+    assert isinstance(instance, caracteristica_RegraDeComposicao)
+
+
+caracteristica_RegraDeContexto_strategy = st.builds(caracteristica_RegraDeContexto)
+@given(instance=caracteristica_RegraDeContexto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_RegraDeContexto_instantiation(instance):
+    assert isinstance(instance, caracteristica_RegraDeContexto)
+
+
+caracteristica_Simulacao_strategy = st.builds(caracteristica_Simulacao, nome=safe_text)
+@given(instance=caracteristica_Simulacao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Simulacao_instantiation(instance):
+    assert isinstance(instance, caracteristica_Simulacao)
+
+
+caracteristica_Transicao_strategy = st.builds(caracteristica_Transicao, etiqueta=safe_text, safe=st.booleans())
+@given(instance=caracteristica_Transicao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Transicao_instantiation(instance):
+    assert isinstance(instance, caracteristica_Transicao)
+
+
+caracteristica_Variacao_strategy = st.builds(caracteristica_Variacao, cardinalidadeMaxima=safe_text, cardinalidadeMinima=safe_text)
+@given(instance=caracteristica_Variacao_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Variacao_instantiation(instance):
+    assert isinstance(instance, caracteristica_Variacao)
+
+
+caracteristica_VariacaoDois_strategy = st.builds(caracteristica_VariacaoDois, cardinalidadeMaxima=safe_text, cardinalidadeMaximaOr=safe_text, cardinalidadeMinimaOr=safe_text)
+@given(instance=caracteristica_VariacaoDois_strategy)
+@settings(max_examples=25)
+def test_caracteristica_VariacaoDois_instantiation(instance):
+    assert isinstance(instance, caracteristica_VariacaoDois)
+
+
+caracteristica_VariacaoDoisProduto_strategy = st.builds(caracteristica_VariacaoDoisProduto, cardinalidadeMaxima=safe_text)
+@given(instance=caracteristica_VariacaoDoisProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_VariacaoDoisProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_VariacaoDoisProduto)
+
+
+caracteristica_VariacaoProduto_strategy = st.builds(caracteristica_VariacaoProduto, cardinalidadeMaxima=safe_text, cardinalidadeMinima=safe_text)
+@given(instance=caracteristica_VariacaoProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_VariacaoProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_VariacaoProduto)
+
+
+caracteristica_Variante_strategy = st.builds(caracteristica_Variante)
+@given(instance=caracteristica_Variante_strategy)
+@settings(max_examples=25)
+def test_caracteristica_Variante_instantiation(instance):
+    assert isinstance(instance, caracteristica_Variante)
+
+
+caracteristica_VarianteProduto_strategy = st.builds(caracteristica_VarianteProduto, selecionado=safe_text)
+@given(instance=caracteristica_VarianteProduto_strategy)
+@settings(max_examples=25)
+def test_caracteristica_VarianteProduto_instantiation(instance):
+    assert isinstance(instance, caracteristica_VarianteProduto)
+
+

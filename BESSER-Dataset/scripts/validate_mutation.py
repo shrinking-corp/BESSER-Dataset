@@ -57,7 +57,12 @@ Usage:
     python scripts/validate_mutation.py --models-file PATH [--workers N]
         [--max-mutants N] [--per-mutant-timeout SECONDS]
         [--overall-timeout SECONDS] [--dataset-dir PATH] [--fresh]
-        [--write-metadata]
+        [--write-metadata] [--test-file NAME] [--metadata-key KEY]
+
+By default mutates test_hypothesis.py, writing mutation_validation. Pass
+--test-file test_structural_full.py to instead measure the new structural
+suite (auto-derives --metadata-key structural_mutation_validation; pass
+--metadata-key explicitly for any test file not in TEST_FILE_METADATA_KEYS).
 """
 from __future__ import annotations
 
@@ -76,12 +81,27 @@ import tempfile
 import time
 from pathlib import Path
 
-TEST_FILENAME = "test_hypothesis.py"
+# Overridable via --test-file/--metadata-key (see main()) so the same script
+# can be pointed at test_structural_full.py without a code change. Read from
+# env vars, not just module-level constants, because ProcessPoolExecutor
+# workers on Windows use 'spawn' -- each worker re-imports this file fresh in
+# a new interpreter, so a plain `global TEST_FILENAME = ...` mutation in
+# main() (which only runs in the parent process) would never reach them. The
+# parent sets these env vars *before* creating the pool; every worker's own
+# fresh import of this module then reads the same overridden values.
+TEST_FILENAME = os.environ.get("VALIDATE_MUTATION_TEST_FILENAME", "test_hypothesis.py")
 SOURCE_FILENAME = "python_code.py"
 CONFIG_FILENAME = "cr-config.toml"
 SESSION_FILENAME = "cr-session.sqlite"
 METADATA_FILENAME = "code_metadata.json"
-METADATA_KEY = "mutation_validation"
+METADATA_KEY = os.environ.get("VALIDATE_MUTATION_METADATA_KEY", "mutation_validation")
+# Known test files this dataset has -> this script's default metadata key for
+# each. Used to auto-derive --metadata-key from --test-file so the common
+# case (pointing at test_structural_full.py) doesn't require typing both.
+TEST_FILE_METADATA_KEYS = {
+    "test_hypothesis.py": "mutation_validation",
+    "test_structural_full.py": "structural_mutation_validation",
+}
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
 DEFAULT_OVERALL_TIMEOUT = 900  # hard wall-clock cap per model, seconds
@@ -434,6 +454,7 @@ def render_markdown_report(report: dict) -> str:
 
 
 def main() -> None:
+    global TEST_FILENAME, METADATA_KEY
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--dataset-dir", type=Path,
@@ -455,7 +476,32 @@ def main() -> None:
     parser.add_argument("--write-metadata", action="store_true",
                          help="Also write results into each model's code_metadata.json "
                               "(off by default -- this is a prototype script)")
+    parser.add_argument("--test-file", type=str, default=None,
+                         help=f"Run mutants against this test file instead of the default "
+                              f"({TEST_FILENAME!r}) -- e.g. test_structural_full.py")
+    parser.add_argument("--metadata-key", type=str, default=None,
+                         help="Override the code_metadata.json key results are written under "
+                              "(default: derived from --test-file, see TEST_FILE_METADATA_KEYS)")
     args = parser.parse_args()
+
+    if args.test_file:
+        TEST_FILENAME = args.test_file
+    if args.metadata_key:
+        METADATA_KEY = args.metadata_key
+    elif args.test_file:
+        if args.test_file not in TEST_FILE_METADATA_KEYS:
+            parser.error(
+                f"--test-file {args.test_file!r} has no known default metadata key -- "
+                f"pass --metadata-key explicitly (known test files: "
+                f"{sorted(TEST_FILE_METADATA_KEYS)})"
+            )
+        METADATA_KEY = TEST_FILE_METADATA_KEYS[args.test_file]
+    # Propagate the resolved values to worker processes via env vars, set
+    # BEFORE the pool is created -- see the comment on TEST_FILENAME's
+    # definition for why this can't just be a plain global assignment.
+    os.environ["VALIDATE_MUTATION_TEST_FILENAME"] = TEST_FILENAME
+    os.environ["VALIDATE_MUTATION_METADATA_KEY"] = METADATA_KEY
+    print(f"Test file: {TEST_FILENAME}  |  metadata key: {METADATA_KEY}")
 
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"

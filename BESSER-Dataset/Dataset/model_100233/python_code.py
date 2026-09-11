@@ -3,6 +3,13 @@ from abc import ABC, abstractmethod
 
 from enum import Enum
 
+# Aliases for unresolved BUML metamodel primitive-type names left in
+# by a generation-time resolution gap (found: NameError on StringType /
+# DateTimeType). These map directly to their Python equivalents, exactly
+# like every other correctly-resolved model in this dataset uses.
+StringType = str
+DateTimeType = datetime
+
 ############################################
 # Definition of Enumerations
 ############################################

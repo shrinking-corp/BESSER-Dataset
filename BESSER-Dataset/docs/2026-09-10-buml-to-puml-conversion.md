@@ -1,0 +1,86 @@
+<!--
+  AI-GENERATED DOCUMENT
+  Generated/modified by: Claude Code (VS Code extension)
+  Model used:            Claude Sonnet 5 (claude-sonnet-5)
+  Generated at:          2026-09-10
+-->
+
+> **AI marking** — This document was generated/modified by **Claude Code (VS Code extension)**,
+> using **Claude Sonnet 5** (`claude-sonnet-5`), generated at **2026-09-10**.
+> Figures were produced by the scripts cited under [Reproduction](#reproduction) and
+> cross-checked against the reports in [`../reports/`](../reports/); the
+> interpretation is AI-authored and has not been independently reviewed.
+
+# BUML → PUML conversion and `model_metadata.json`
+
+**Status:** complete, dataset-wide (9,082/9,082)
+**Related:** [`DECISIONS.md`](DECISIONS.md) — "BUML → PUML converter and structural `model_metadata.json`"
+
+---
+
+## What was built
+
+`scripts/buml_to_puml.py` — loads each model's BUML source with the `besser`
+package and renders a PlantUML (`.puml`) diagram from it. Deliberately **plain
+functions**, not a forced design pattern (no visitor/walker class hierarchy) —
+the model only needs one pass over a handful of BUML types
+(`Class`, `Enumeration`, `BinaryAssociation`, `Generalization`,
+`AssociationClass`), so a walker abstraction would add indirection without
+buying anything.
+
+`scripts/generate_model_metadata.py` — writes a new, separate
+`model_metadata.json` per model (never touches `code_metadata.json`) with
+structural counts read directly from the BUML model, independent of whatever
+the code generator produced: `classes`, `abstract_classes`,
+`association_classes`, `enumerations`, `enumeration_literals`, `attributes`,
+`methods`, `abstract_methods`, `generalizations`, `associations`,
+`aggregation`, `composition`.
+
+**Correction made during design:** `AssociationClass` was initially going to be
+excluded from the `classes` count as a "special case." Wrong — `AssociationClass`
+*is* a `Class` subtype (confirmed via MRO), so it must be included in `classes`;
+`association_classes` is reported separately as a subset count, not an
+exclusive category.
+
+**Non-determinism handled:** BUML collections (`model.types`, `class.attributes`,
+`association.ends`, etc.) are Python `set`s with non-deterministic iteration
+order. Every place that emits ordered output (PUML text, generated test code)
+sorts explicitly — this recurs as a bug class throughout the session (see
+[`2026-09-10-structural-test-generation.md`](2026-09-10-structural-test-generation.md)).
+
+## Bugs found in the dataset while getting a clean 9,082/9,082 run
+
+Seven models failed the initial conversion attempt and needed a source fix
+before the full run succeeded:
+
+| Model | Bug | Fix applied |
+|---|---|---|
+| `model_10001897` | A Python variable name was reused for both a `Class` and a later `BinaryAssociation`, silently clobbering the class reference | Renamed the association's variable to `Factura_assoc` |
+| `model_10001985` | Identical bug — same `Factura` name collision | Same fix |
+| `model_10002944` | Two associations referenced undefined variables `_external_unnamed_46` / `_external_unnamed_48` — never defined, unlike other legitimate `_external`-suffixed stub classes in the same file | Added the two missing `Class(...)` definitions, included them in `types={...}` |
+| `model_10006` | `types={...}` included the bare imported `Constraint` metamodel class instead of `Constraint_` (the actual class instance, used correctly everywhere else in the file) | One-token fix: `Constraint` → `Constraint_` |
+| `model_100097` | Three hyphenated `name=` strings (`"cmt_Meta-Reviewer"`, `"cmt_Meta-Review"`, `"co-writePaper"`) — besser rejects hyphens in names | Replaced hyphens with underscores in each string |
+| `model_100098` | Two hyphenated `name=` strings (`"Cocus_Meta-Review"`, `"co-writePaper"`) | Same fix |
+| `model_100245` | `DomainModel(name="", ...)` — blank domain-model name | Set to `"SpreadsheetMLSimplified"`, matching the descriptive part of the source filename |
+
+All seven are edits to the BUML **source** file itself (small, well-understood,
+the intended fix was obvious from the error) — a materially easier class of fix
+than the generated-code defects found later (see the "malformed class body" /
+"deep syntax error" rows in
+[`2026-09-10-structural-test-generation.md`](2026-09-10-structural-test-generation.md)),
+which are hand-patches to an *artifact*, not its source.
+
+`model_10002944` and `model_10006` reappear later in the session in a different
+context — `model_10002944`'s `python_code.py` is separately missing entirely
+(unrelated to this BUML-source fix), and `model_10006` needed a second,
+independent fix for a stale-encoding bug in `generate_structural_tests.py`.
+
+## Reproduction
+
+```bash
+python scripts/buml_to_puml.py --write-metadata
+python scripts/generate_model_metadata.py --write-metadata
+```
+
+Sources: [`../reports/`](../reports/) `buml_to_puml_report.{json,md}`,
+`model_metadata_report.{json,md}` (generated by the respective scripts).

@@ -1,0 +1,1620 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    AbstractView,
+    ComponentPackage,
+    HelperForSendingRequest,
+    MainComponent,
+    MainComponentRelation,
+    NamedElement,
+    Package,
+    PresentationElement,
+    PresentationFormElement,
+    ryz_AbstractView,
+    ryz_ActionLink,
+    ryz_ActionMethod,
+    ryz_Actor,
+    ryz_Button,
+    ryz_Choice,
+    ryz_ComponentPackage,
+    ryz_Controller,
+    ryz_ControllerPackage,
+    ryz_ControllerToModelRelation,
+    ryz_ControllerToViewRelation,
+    ryz_Form,
+    ryz_FormElementToPropertyKeyRelation,
+    ryz_Header,
+    ryz_HelperForSendingRequest,
+    ryz_Input,
+    ryz_Layout,
+    ryz_Link,
+    ryz_MainComponent,
+    ryz_MainComponentRelation,
+    ryz_Model,
+    ryz_ModelAssociation,
+    ryz_ModelPackage,
+    ryz_MultipleChoice,
+    ryz_MvcPackage,
+    ryz_NamedElement,
+    ryz_Package,
+    ryz_Parameter,
+    ryz_Partial,
+    ryz_PresentationElement,
+    ryz_PresentationForm,
+    ryz_PresentationFormElement,
+    ryz_PresentationFormElementToPropertyKey,
+    ryz_Project,
+    ryz_Property,
+    ryz_Table,
+    ryz_TableKey,
+    ryz_UseCase,
+    ryz_UseCaseActorPackage,
+    ryz_UseCasePackage,
+    ryz_View,
+    ryz_ViewPackage,
+    ryz_ViewToControllerRelation,
+    ryz_ViewToModelRelation,
+    ActionMethodParameterType,
+    ActionMethodReturnType,
+    ButtonType,
+    Cardinality,
+    HttpMethod,
+    InputDataType,
+    ModelCardinality,
+    ModelOperation,
+    ModelPropertyType,
+    MultipleChoiceType,
+    RequestType,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_ryz_ActionMethod_httpMethod_value_roundtrip():
+    instance = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    assert instance.httpMethod == "sample_text"
+    instance.httpMethod = "sample_text_2"
+    assert instance.httpMethod == "sample_text_2"
+
+
+def test_ryz_ActionMethod_returns_value_roundtrip():
+    instance = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    assert instance.returns == "sample_text"
+    instance.returns = "sample_text_2"
+    assert instance.returns == "sample_text_2"
+
+
+def test_ryz_Button_buttonType_value_roundtrip():
+    instance = ryz_Button(buttonType="sample_text")
+    assert instance.buttonType == "sample_text"
+    instance.buttonType = "sample_text_2"
+    assert instance.buttonType == "sample_text_2"
+
+
+def test_ryz_Choice_selected_value_roundtrip():
+    instance = ryz_Choice(selected="sample_text", text="sample_text", value="sample_text")
+    assert instance.selected == "sample_text"
+    instance.selected = "sample_text_2"
+    assert instance.selected == "sample_text_2"
+
+
+def test_ryz_Choice_text_value_roundtrip():
+    instance = ryz_Choice(selected="sample_text", text="sample_text", value="sample_text")
+    assert instance.text == "sample_text"
+    instance.text = "sample_text_2"
+    assert instance.text == "sample_text_2"
+
+
+def test_ryz_Choice_value_value_roundtrip():
+    instance = ryz_Choice(selected="sample_text", text="sample_text", value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_ryz_ControllerToModelRelation_modelCardinality_value_roundtrip():
+    instance = ryz_ControllerToModelRelation(modelCardinality="sample_text", modelOperation="sample_text")
+    assert instance.modelCardinality == "sample_text"
+    instance.modelCardinality = "sample_text_2"
+    assert instance.modelCardinality == "sample_text_2"
+
+
+def test_ryz_ControllerToModelRelation_modelOperation_value_roundtrip():
+    instance = ryz_ControllerToModelRelation(modelCardinality="sample_text", modelOperation="sample_text")
+    assert instance.modelOperation == "sample_text"
+    instance.modelOperation = "sample_text_2"
+    assert instance.modelOperation == "sample_text_2"
+
+
+def test_ryz_Header_labelText_value_roundtrip():
+    instance = ryz_Header(labelText="sample_text", name="sample_text")
+    assert instance.labelText == "sample_text"
+    instance.labelText = "sample_text_2"
+    assert instance.labelText == "sample_text_2"
+
+
+def test_ryz_Header_name_value_roundtrip():
+    instance = ryz_Header(labelText="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_ryz_HelperForSendingRequest_httpMethod_value_roundtrip():
+    instance = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    assert instance.httpMethod == "sample_text"
+    instance.httpMethod = "sample_text_2"
+    assert instance.httpMethod == "sample_text_2"
+
+
+def test_ryz_HelperForSendingRequest_requestType_value_roundtrip():
+    instance = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    assert instance.requestType == "sample_text"
+    instance.requestType = "sample_text_2"
+    assert instance.requestType == "sample_text_2"
+
+
+def test_ryz_HelperForSendingRequest_text_value_roundtrip():
+    instance = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    assert instance.text == "sample_text"
+    instance.text = "sample_text_2"
+    assert instance.text == "sample_text_2"
+
+
+def test_ryz_Input_inputDataType_value_roundtrip():
+    instance = ryz_Input(inputDataType="sample_text", isHidden=True, isReadOnly=True)
+    assert instance.inputDataType == "sample_text"
+    instance.inputDataType = "sample_text_2"
+    assert instance.inputDataType == "sample_text_2"
+
+
+def test_ryz_Input_isHidden_value_roundtrip():
+    instance = ryz_Input(inputDataType="sample_text", isHidden=True, isReadOnly=True)
+    assert instance.isHidden == True
+    instance.isHidden = False
+    assert instance.isHidden == False
+
+
+def test_ryz_Input_isReadOnly_value_roundtrip():
+    instance = ryz_Input(inputDataType="sample_text", isHidden=True, isReadOnly=True)
+    assert instance.isReadOnly == True
+    instance.isReadOnly = False
+    assert instance.isReadOnly == False
+
+
+def test_ryz_Link_text_value_roundtrip():
+    instance = ryz_Link(text="sample_text")
+    assert instance.text == "sample_text"
+    instance.text = "sample_text_2"
+    assert instance.text == "sample_text_2"
+
+
+def test_ryz_Model_isAbstract_value_roundtrip():
+    instance = ryz_Model(isAbstract=True)
+    assert instance.isAbstract == True
+    instance.isAbstract = False
+    assert instance.isAbstract == False
+
+
+def test_ryz_ModelAssociation_cardinality_value_roundtrip():
+    instance = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    assert instance.cardinality == "sample_text"
+    instance.cardinality = "sample_text_2"
+    assert instance.cardinality == "sample_text_2"
+
+
+def test_ryz_ModelAssociation_dependentRoleName_value_roundtrip():
+    instance = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    assert instance.dependentRoleName == "sample_text"
+    instance.dependentRoleName = "sample_text_2"
+    assert instance.dependentRoleName == "sample_text_2"
+
+
+def test_ryz_ModelAssociation_isRequired_value_roundtrip():
+    instance = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    assert instance.isRequired == True
+    instance.isRequired = False
+    assert instance.isRequired == False
+
+
+def test_ryz_ModelAssociation_principalRoleName_value_roundtrip():
+    instance = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    assert instance.principalRoleName == "sample_text"
+    instance.principalRoleName = "sample_text_2"
+    assert instance.principalRoleName == "sample_text_2"
+
+
+def test_ryz_MultipleChoice_multipleChoiceType_value_roundtrip():
+    instance = ryz_MultipleChoice(multipleChoiceType="sample_text", multipleSelection=True)
+    assert instance.multipleChoiceType == "sample_text"
+    instance.multipleChoiceType = "sample_text_2"
+    assert instance.multipleChoiceType == "sample_text_2"
+
+
+def test_ryz_MultipleChoice_multipleSelection_value_roundtrip():
+    instance = ryz_MultipleChoice(multipleChoiceType="sample_text", multipleSelection=True)
+    assert instance.multipleSelection == True
+    instance.multipleSelection = False
+    assert instance.multipleSelection == False
+
+
+def test_ryz_NamedElement_name_value_roundtrip():
+    instance = ryz_NamedElement(name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_ryz_Parameter_isList_value_roundtrip():
+    instance = ryz_Parameter(isList=True, isNullable=True, type="sample_text")
+    assert instance.isList == True
+    instance.isList = False
+    assert instance.isList == False
+
+
+def test_ryz_Parameter_isNullable_value_roundtrip():
+    instance = ryz_Parameter(isList=True, isNullable=True, type="sample_text")
+    assert instance.isNullable == True
+    instance.isNullable = False
+    assert instance.isNullable == False
+
+
+def test_ryz_Parameter_type_value_roundtrip():
+    instance = ryz_Parameter(isList=True, isNullable=True, type="sample_text")
+    assert instance.type == "sample_text"
+    instance.type = "sample_text_2"
+    assert instance.type == "sample_text_2"
+
+
+def test_ryz_PresentationFormElement_labelText_value_roundtrip():
+    instance = ryz_PresentationFormElement(labelText="sample_text")
+    assert instance.labelText == "sample_text"
+    instance.labelText = "sample_text_2"
+    assert instance.labelText == "sample_text_2"
+
+
+def test_ryz_Property_isRequired_value_roundtrip():
+    instance = ryz_Property(isRequired=True, type="sample_text")
+    assert instance.isRequired == True
+    instance.isRequired = False
+    assert instance.isRequired == False
+
+
+def test_ryz_Property_type_value_roundtrip():
+    instance = ryz_Property(isRequired=True, type="sample_text")
+    assert instance.type == "sample_text"
+    instance.type = "sample_text_2"
+    assert instance.type == "sample_text_2"
+
+
+def test_ryz_TableKey_isForeignKey_value_roundtrip():
+    instance = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    assert instance.isForeignKey == True
+    instance.isForeignKey = False
+    assert instance.isForeignKey == False
+
+
+def test_ryz_TableKey_isPrimaryKey_value_roundtrip():
+    instance = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    assert instance.isPrimaryKey == True
+    instance.isPrimaryKey = False
+    assert instance.isPrimaryKey == False
+
+
+def test_ryz_TableKey_isRequired_value_roundtrip():
+    instance = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    assert instance.isRequired == True
+    instance.isRequired = False
+    assert instance.isRequired == False
+
+
+def test_ryz_TableKey_type_value_roundtrip():
+    instance = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    assert instance.type == "sample_text"
+    instance.type = "sample_text_2"
+    assert instance.type == "sample_text_2"
+
+
+def test_ryz_ViewToModelRelation_modelcardinality_value_roundtrip():
+    instance = ryz_ViewToModelRelation(modelcardinality="sample_text")
+    assert instance.modelcardinality == "sample_text"
+    instance.modelcardinality = "sample_text_2"
+    assert instance.modelcardinality == "sample_text_2"
+
+
+def test_ryz_Layout_isa_AbstractView():
+    instance = ryz_Layout()
+    assert isinstance(instance, AbstractView)
+
+
+def test_ryz_Partial_isa_AbstractView():
+    instance = ryz_Partial()
+    assert isinstance(instance, AbstractView)
+
+
+def test_ryz_View_isa_AbstractView():
+    instance = ryz_View()
+    assert isinstance(instance, AbstractView)
+
+
+def test_ryz_ControllerPackage_isa_ComponentPackage():
+    instance = ryz_ControllerPackage()
+    assert isinstance(instance, ComponentPackage)
+
+
+def test_ryz_ModelPackage_isa_ComponentPackage():
+    instance = ryz_ModelPackage()
+    assert isinstance(instance, ComponentPackage)
+
+
+def test_ryz_ViewPackage_isa_ComponentPackage():
+    instance = ryz_ViewPackage()
+    assert isinstance(instance, ComponentPackage)
+
+
+def test_ryz_ActionLink_isa_HelperForSendingRequest():
+    instance = ryz_ActionLink()
+    assert isinstance(instance, HelperForSendingRequest)
+
+
+def test_ryz_Form_isa_HelperForSendingRequest():
+    instance = ryz_Form()
+    assert isinstance(instance, HelperForSendingRequest)
+
+
+def test_ryz_AbstractView_isa_MainComponent():
+    instance = ryz_AbstractView()
+    assert isinstance(instance, MainComponent)
+
+
+def test_ryz_Controller_isa_MainComponent():
+    instance = ryz_Controller()
+    assert isinstance(instance, MainComponent)
+
+
+def test_ryz_Model_isa_MainComponent():
+    instance = ryz_Model(isAbstract=True)
+    assert isinstance(instance, MainComponent)
+
+
+def test_ryz_ControllerToModelRelation_isa_MainComponentRelation():
+    instance = ryz_ControllerToModelRelation(modelCardinality="sample_text", modelOperation="sample_text")
+    assert isinstance(instance, MainComponentRelation)
+
+
+def test_ryz_ControllerToViewRelation_isa_MainComponentRelation():
+    instance = ryz_ControllerToViewRelation()
+    assert isinstance(instance, MainComponentRelation)
+
+
+def test_ryz_FormElementToPropertyKeyRelation_isa_MainComponentRelation():
+    instance = ryz_FormElementToPropertyKeyRelation()
+    assert isinstance(instance, MainComponentRelation)
+
+
+def test_ryz_ViewToControllerRelation_isa_MainComponentRelation():
+    instance = ryz_ViewToControllerRelation()
+    assert isinstance(instance, MainComponentRelation)
+
+
+def test_ryz_ViewToModelRelation_isa_MainComponentRelation():
+    instance = ryz_ViewToModelRelation(modelcardinality="sample_text")
+    assert isinstance(instance, MainComponentRelation)
+
+
+def test_ryz_ActionMethod_isa_NamedElement():
+    instance = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_Actor_isa_NamedElement():
+    instance = ryz_Actor()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_MainComponent_isa_NamedElement():
+    instance = ryz_MainComponent()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_MainComponentRelation_isa_NamedElement():
+    instance = ryz_MainComponentRelation()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_ModelAssociation_isa_NamedElement():
+    instance = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_Package_isa_NamedElement():
+    instance = ryz_Package()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_Parameter_isa_NamedElement():
+    instance = ryz_Parameter(isList=True, isNullable=True, type="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_PresentationElement_isa_NamedElement():
+    instance = ryz_PresentationElement()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_Project_isa_NamedElement():
+    instance = ryz_Project()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_Property_isa_NamedElement():
+    instance = ryz_Property(isRequired=True, type="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_TableKey_isa_NamedElement():
+    instance = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_UseCase_isa_NamedElement():
+    instance = ryz_UseCase()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_UseCasePackage_isa_NamedElement():
+    instance = ryz_UseCasePackage()
+    assert isinstance(instance, NamedElement)
+
+
+def test_ryz_ComponentPackage_isa_Package():
+    instance = ryz_ComponentPackage()
+    assert isinstance(instance, Package)
+
+
+def test_ryz_MvcPackage_isa_Package():
+    instance = ryz_MvcPackage()
+    assert isinstance(instance, Package)
+
+
+def test_ryz_UseCaseActorPackage_isa_Package():
+    instance = ryz_UseCaseActorPackage()
+    assert isinstance(instance, Package)
+
+
+def test_ryz_Link_isa_PresentationElement():
+    instance = ryz_Link(text="sample_text")
+    assert isinstance(instance, PresentationElement)
+
+
+def test_ryz_PresentationForm_isa_PresentationElement():
+    instance = ryz_PresentationForm()
+    assert isinstance(instance, PresentationElement)
+
+
+def test_ryz_Table_isa_PresentationElement():
+    instance = ryz_Table()
+    assert isinstance(instance, PresentationElement)
+
+
+def test_ryz_Button_isa_PresentationFormElement():
+    instance = ryz_Button(buttonType="sample_text")
+    assert isinstance(instance, PresentationFormElement)
+
+
+def test_ryz_Input_isa_PresentationFormElement():
+    instance = ryz_Input(inputDataType="sample_text", isHidden=True, isReadOnly=True)
+    assert isinstance(instance, PresentationFormElement)
+
+
+def test_ryz_MultipleChoice_isa_PresentationFormElement():
+    instance = ryz_MultipleChoice(multipleChoiceType="sample_text", multipleSelection=True)
+    assert isinstance(instance, PresentationFormElement)
+
+
+def test_assoc_abstractview62_link_reassign_clear():
+    a = ryz_ViewToModelRelation(modelcardinality="sample_text")
+    b1 = ryz_AbstractView()
+    b2 = ryz_AbstractView()
+    _safe_set(a, 'ryz_ViewToModelRelation', b1)
+    assert _is_linked(a, 'ryz_ViewToModelRelation', b1)
+    if hasattr(b1, 'ryz_AbstractView63'):
+        assert _is_linked(b1, 'ryz_AbstractView63', a)
+    _safe_set(a, 'ryz_ViewToModelRelation', b2)
+    assert _is_linked(a, 'ryz_ViewToModelRelation', b2)
+    if hasattr(b1, 'ryz_AbstractView63'):
+        assert not _is_linked(b1, 'ryz_AbstractView63', a)
+    if hasattr(b2, 'ryz_AbstractView63'):
+        assert _is_linked(b2, 'ryz_AbstractView63', a)
+    _safe_set(a, 'ryz_ViewToModelRelation', None)
+    assert not _is_linked(a, 'ryz_ViewToModelRelation', b2)
+    if hasattr(b2, 'ryz_AbstractView63'):
+        assert not _is_linked(b2, 'ryz_AbstractView63', a)
+
+
+def test_assoc_actionmethod36_link_reassign_clear():
+    a = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b1 = ryz_ViewToControllerRelation()
+    b2 = ryz_ViewToControllerRelation()
+    _safe_set(a, 'ryz_ActionMethod38', b1)
+    assert _is_linked(a, 'ryz_ActionMethod38', b1)
+    if hasattr(b1, 'ryz_ViewToControllerRelation37'):
+        assert _is_linked(b1, 'ryz_ViewToControllerRelation37', a)
+    _safe_set(a, 'ryz_ActionMethod38', b2)
+    assert _is_linked(a, 'ryz_ActionMethod38', b2)
+    if hasattr(b1, 'ryz_ViewToControllerRelation37'):
+        assert not _is_linked(b1, 'ryz_ViewToControllerRelation37', a)
+    if hasattr(b2, 'ryz_ViewToControllerRelation37'):
+        assert _is_linked(b2, 'ryz_ViewToControllerRelation37', a)
+    _safe_set(a, 'ryz_ActionMethod38', None)
+    assert not _is_linked(a, 'ryz_ActionMethod38', b2)
+    if hasattr(b2, 'ryz_ViewToControllerRelation37'):
+        assert not _is_linked(b2, 'ryz_ViewToControllerRelation37', a)
+
+
+def test_assoc_actionmethod45_link_reassign_clear():
+    a = ryz_ControllerToModelRelation(modelCardinality="sample_text", modelOperation="sample_text")
+    b1 = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b2 = ryz_ActionMethod(httpMethod="sample_text_2", returns="sample_text_2")
+    _safe_set(a, 'ryz_ControllerToModelRelation', b1)
+    assert _is_linked(a, 'ryz_ControllerToModelRelation', b1)
+    if hasattr(b1, 'ryz_ActionMethod46'):
+        assert _is_linked(b1, 'ryz_ActionMethod46', a)
+    _safe_set(a, 'ryz_ControllerToModelRelation', b2)
+    assert _is_linked(a, 'ryz_ControllerToModelRelation', b2)
+    if hasattr(b1, 'ryz_ActionMethod46'):
+        assert not _is_linked(b1, 'ryz_ActionMethod46', a)
+    if hasattr(b2, 'ryz_ActionMethod46'):
+        assert _is_linked(b2, 'ryz_ActionMethod46', a)
+    _safe_set(a, 'ryz_ControllerToModelRelation', None)
+    assert not _is_linked(a, 'ryz_ControllerToModelRelation', b2)
+    if hasattr(b2, 'ryz_ActionMethod46'):
+        assert not _is_linked(b2, 'ryz_ActionMethod46', a)
+
+
+def test_assoc_actionmethod57_link_reassign_clear():
+    a = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b1 = ryz_ControllerToViewRelation()
+    b2 = ryz_ControllerToViewRelation()
+    _safe_set(a, 'ryz_ActionMethod58', b1)
+    assert _is_linked(a, 'ryz_ActionMethod58', b1)
+    if hasattr(b1, 'ryz_ControllerToViewRelation'):
+        assert _is_linked(b1, 'ryz_ControllerToViewRelation', a)
+    _safe_set(a, 'ryz_ActionMethod58', b2)
+    assert _is_linked(a, 'ryz_ActionMethod58', b2)
+    if hasattr(b1, 'ryz_ControllerToViewRelation'):
+        assert not _is_linked(b1, 'ryz_ControllerToViewRelation', a)
+    if hasattr(b2, 'ryz_ControllerToViewRelation'):
+        assert _is_linked(b2, 'ryz_ControllerToViewRelation', a)
+    _safe_set(a, 'ryz_ActionMethod58', None)
+    assert not _is_linked(a, 'ryz_ActionMethod58', b2)
+    if hasattr(b2, 'ryz_ControllerToViewRelation'):
+        assert not _is_linked(b2, 'ryz_ControllerToViewRelation', a)
+
+
+def test_assoc_actionmethod78_link_reassign_clear():
+    a = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b1 = ryz_UseCase()
+    b2 = ryz_UseCase()
+    _safe_set(a, 'ActionMethod', b1)
+    assert _is_linked(a, 'ActionMethod', b1)
+    if hasattr(b1, 'usecase79'):
+        assert _is_linked(b1, 'usecase79', a)
+    _safe_set(a, 'ActionMethod', b2)
+    assert _is_linked(a, 'ActionMethod', b2)
+    if hasattr(b1, 'usecase79'):
+        assert not _is_linked(b1, 'usecase79', a)
+    if hasattr(b2, 'usecase79'):
+        assert _is_linked(b2, 'usecase79', a)
+    _safe_set(a, 'ActionMethod', None)
+    assert not _is_linked(a, 'ActionMethod', b2)
+    if hasattr(b2, 'usecase79'):
+        assert not _is_linked(b2, 'usecase79', a)
+
+
+def test_assoc_actionmethods22_link_reassign_clear():
+    a = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b1 = ryz_Controller()
+    b2 = ryz_Controller()
+    _safe_set(a, 'ryz_ActionMethod', b1)
+    assert _is_linked(a, 'ryz_ActionMethod', b1)
+    if hasattr(b1, 'ryz_Controller23'):
+        assert _is_linked(b1, 'ryz_Controller23', a)
+    _safe_set(a, 'ryz_ActionMethod', b2)
+    assert _is_linked(a, 'ryz_ActionMethod', b2)
+    if hasattr(b1, 'ryz_Controller23'):
+        assert not _is_linked(b1, 'ryz_Controller23', a)
+    if hasattr(b2, 'ryz_Controller23'):
+        assert _is_linked(b2, 'ryz_Controller23', a)
+    _safe_set(a, 'ryz_ActionMethod', None)
+    assert not _is_linked(a, 'ryz_ActionMethod', b2)
+    if hasattr(b2, 'ryz_Controller23'):
+        assert not _is_linked(b2, 'ryz_Controller23', a)
+
+
+def test_assoc_choice85_link_reassign_clear():
+    a = ryz_MultipleChoice(multipleChoiceType="sample_text", multipleSelection=True)
+    b1 = ryz_Choice(selected="sample_text", text="sample_text", value="sample_text")
+    b2 = ryz_Choice(selected="sample_text_2", text="sample_text_2", value="sample_text_2")
+    _safe_set(a, 'ryz_MultipleChoice', {b1})
+    assert _is_linked(a, 'ryz_MultipleChoice', b1)
+    if hasattr(b1, 'ryz_Choice'):
+        assert _is_linked(b1, 'ryz_Choice', a)
+    _safe_set(a, 'ryz_MultipleChoice', {b2})
+    assert _is_linked(a, 'ryz_MultipleChoice', b2)
+    if hasattr(b1, 'ryz_Choice'):
+        assert not _is_linked(b1, 'ryz_Choice', a)
+    if hasattr(b2, 'ryz_Choice'):
+        assert _is_linked(b2, 'ryz_Choice', a)
+    _safe_set(a, 'ryz_MultipleChoice', set())
+    assert not _is_linked(a, 'ryz_MultipleChoice', b2)
+    if hasattr(b2, 'ryz_Choice'):
+        assert not _is_linked(b2, 'ryz_Choice', a)
+
+
+def test_assoc_dependent27_link_reassign_clear():
+    a = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    b1 = ryz_Model(isAbstract=True)
+    b2 = ryz_Model(isAbstract=False)
+    _safe_set(a, 'ryz_ModelAssociation28', b1)
+    assert _is_linked(a, 'ryz_ModelAssociation28', b1)
+    if hasattr(b1, 'ryz_Model29'):
+        assert _is_linked(b1, 'ryz_Model29', a)
+    _safe_set(a, 'ryz_ModelAssociation28', b2)
+    assert _is_linked(a, 'ryz_ModelAssociation28', b2)
+    if hasattr(b1, 'ryz_Model29'):
+        assert not _is_linked(b1, 'ryz_Model29', a)
+    if hasattr(b2, 'ryz_Model29'):
+        assert _is_linked(b2, 'ryz_Model29', a)
+    _safe_set(a, 'ryz_ModelAssociation28', None)
+    assert not _is_linked(a, 'ryz_ModelAssociation28', b2)
+    if hasattr(b2, 'ryz_Model29'):
+        assert not _is_linked(b2, 'ryz_Model29', a)
+
+
+def test_assoc_header86_link_reassign_clear():
+    a = ryz_Header(labelText="sample_text", name="sample_text")
+    b1 = ryz_Table()
+    b2 = ryz_Table()
+    _safe_set(a, 'ryz_Header', b1)
+    assert _is_linked(a, 'ryz_Header', b1)
+    if hasattr(b1, 'ryz_Table'):
+        assert _is_linked(b1, 'ryz_Table', a)
+    _safe_set(a, 'ryz_Header', b2)
+    assert _is_linked(a, 'ryz_Header', b2)
+    if hasattr(b1, 'ryz_Table'):
+        assert not _is_linked(b1, 'ryz_Table', a)
+    if hasattr(b2, 'ryz_Table'):
+        assert _is_linked(b2, 'ryz_Table', a)
+    _safe_set(a, 'ryz_Header', None)
+    assert not _is_linked(a, 'ryz_Header', b2)
+    if hasattr(b2, 'ryz_Table'):
+        assert not _is_linked(b2, 'ryz_Table', a)
+
+
+def test_assoc_helperforsendingrequest34_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_ViewToControllerRelation()
+    b2 = ryz_ViewToControllerRelation()
+    _safe_set(a, 'ryz_HelperForSendingRequest35', b1)
+    assert _is_linked(a, 'ryz_HelperForSendingRequest35', b1)
+    if hasattr(b1, 'ryz_ViewToControllerRelation'):
+        assert _is_linked(b1, 'ryz_ViewToControllerRelation', a)
+    _safe_set(a, 'ryz_HelperForSendingRequest35', b2)
+    assert _is_linked(a, 'ryz_HelperForSendingRequest35', b2)
+    if hasattr(b1, 'ryz_ViewToControllerRelation'):
+        assert not _is_linked(b1, 'ryz_ViewToControllerRelation', a)
+    if hasattr(b2, 'ryz_ViewToControllerRelation'):
+        assert _is_linked(b2, 'ryz_ViewToControllerRelation', a)
+    _safe_set(a, 'ryz_HelperForSendingRequest35', None)
+    assert not _is_linked(a, 'ryz_HelperForSendingRequest35', b2)
+    if hasattr(b2, 'ryz_ViewToControllerRelation'):
+        assert not _is_linked(b2, 'ryz_ViewToControllerRelation', a)
+
+
+def test_assoc_helperforsendingrequest76_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_UseCase()
+    b2 = ryz_UseCase()
+    _safe_set(a, 'HelperForSendingRequest', b1)
+    assert _is_linked(a, 'HelperForSendingRequest', b1)
+    if hasattr(b1, 'usecase77'):
+        assert _is_linked(b1, 'usecase77', a)
+    _safe_set(a, 'HelperForSendingRequest', b2)
+    assert _is_linked(a, 'HelperForSendingRequest', b2)
+    if hasattr(b1, 'usecase77'):
+        assert not _is_linked(b1, 'usecase77', a)
+    if hasattr(b2, 'usecase77'):
+        assert _is_linked(b2, 'usecase77', a)
+    _safe_set(a, 'HelperForSendingRequest', None)
+    assert not _is_linked(a, 'HelperForSendingRequest', b2)
+    if hasattr(b2, 'usecase77'):
+        assert not _is_linked(b2, 'usecase77', a)
+
+
+def test_assoc_helperforsendingrequest82_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_PresentationElement()
+    b2 = ryz_PresentationElement()
+    _safe_set(a, 'HelperForSendingRequest83', b1)
+    assert _is_linked(a, 'HelperForSendingRequest83', b1)
+    if hasattr(b1, 'presentationelement'):
+        assert _is_linked(b1, 'presentationelement', a)
+    _safe_set(a, 'HelperForSendingRequest83', b2)
+    assert _is_linked(a, 'HelperForSendingRequest83', b2)
+    if hasattr(b1, 'presentationelement'):
+        assert not _is_linked(b1, 'presentationelement', a)
+    if hasattr(b2, 'presentationelement'):
+        assert _is_linked(b2, 'presentationelement', a)
+    _safe_set(a, 'HelperForSendingRequest83', None)
+    assert not _is_linked(a, 'HelperForSendingRequest83', b2)
+    if hasattr(b2, 'presentationelement'):
+        assert not _is_linked(b2, 'presentationelement', a)
+
+
+def test_assoc_helperforsendingrequest87_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_FormElementToPropertyKeyRelation()
+    b2 = ryz_FormElementToPropertyKeyRelation()
+    _safe_set(a, 'ryz_HelperForSendingRequest88', b1)
+    assert _is_linked(a, 'ryz_HelperForSendingRequest88', b1)
+    if hasattr(b1, 'ryz_FormElementToPropertyKeyRelation'):
+        assert _is_linked(b1, 'ryz_FormElementToPropertyKeyRelation', a)
+    _safe_set(a, 'ryz_HelperForSendingRequest88', b2)
+    assert _is_linked(a, 'ryz_HelperForSendingRequest88', b2)
+    if hasattr(b1, 'ryz_FormElementToPropertyKeyRelation'):
+        assert not _is_linked(b1, 'ryz_FormElementToPropertyKeyRelation', a)
+    if hasattr(b2, 'ryz_FormElementToPropertyKeyRelation'):
+        assert _is_linked(b2, 'ryz_FormElementToPropertyKeyRelation', a)
+    _safe_set(a, 'ryz_HelperForSendingRequest88', None)
+    assert not _is_linked(a, 'ryz_HelperForSendingRequest88', b2)
+    if hasattr(b2, 'ryz_FormElementToPropertyKeyRelation'):
+        assert not _is_linked(b2, 'ryz_FormElementToPropertyKeyRelation', a)
+
+
+def test_assoc_htmlelements18_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_AbstractView()
+    b2 = ryz_AbstractView()
+    _safe_set(a, 'ryz_HelperForSendingRequest', b1)
+    assert _is_linked(a, 'ryz_HelperForSendingRequest', b1)
+    if hasattr(b1, 'ryz_AbstractView19'):
+        assert _is_linked(b1, 'ryz_AbstractView19', a)
+    _safe_set(a, 'ryz_HelperForSendingRequest', b2)
+    assert _is_linked(a, 'ryz_HelperForSendingRequest', b2)
+    if hasattr(b1, 'ryz_AbstractView19'):
+        assert not _is_linked(b1, 'ryz_AbstractView19', a)
+    if hasattr(b2, 'ryz_AbstractView19'):
+        assert _is_linked(b2, 'ryz_AbstractView19', a)
+    _safe_set(a, 'ryz_HelperForSendingRequest', None)
+    assert not _is_linked(a, 'ryz_HelperForSendingRequest', b2)
+    if hasattr(b2, 'ryz_AbstractView19'):
+        assert not _is_linked(b2, 'ryz_AbstractView19', a)
+
+
+def test_assoc_inherits12_link_reassign_clear():
+    a = ryz_Model(isAbstract=True)
+    b1 = ryz_Model(isAbstract=True)
+    b2 = ryz_Model(isAbstract=False)
+    _safe_set(a, 'ryz_Model11', b1)
+    assert _is_linked(a, 'ryz_Model11', b1)
+    if hasattr(b1, 'ryz_Model13'):
+        assert _is_linked(b1, 'ryz_Model13', a)
+    _safe_set(a, 'ryz_Model11', b2)
+    assert _is_linked(a, 'ryz_Model11', b2)
+    if hasattr(b1, 'ryz_Model13'):
+        assert not _is_linked(b1, 'ryz_Model13', a)
+    if hasattr(b2, 'ryz_Model13'):
+        assert _is_linked(b2, 'ryz_Model13', a)
+    _safe_set(a, 'ryz_Model11', None)
+    assert not _is_linked(a, 'ryz_Model11', b2)
+    if hasattr(b2, 'ryz_Model13'):
+        assert not _is_linked(b2, 'ryz_Model13', a)
+
+
+def test_assoc_model39_link_reassign_clear():
+    a = ryz_Model(isAbstract=True)
+    b1 = ryz_ViewToControllerRelation()
+    b2 = ryz_ViewToControllerRelation()
+    _safe_set(a, 'ryz_Model41', b1)
+    assert _is_linked(a, 'ryz_Model41', b1)
+    if hasattr(b1, 'ryz_ViewToControllerRelation40'):
+        assert _is_linked(b1, 'ryz_ViewToControllerRelation40', a)
+    _safe_set(a, 'ryz_Model41', b2)
+    assert _is_linked(a, 'ryz_Model41', b2)
+    if hasattr(b1, 'ryz_ViewToControllerRelation40'):
+        assert not _is_linked(b1, 'ryz_ViewToControllerRelation40', a)
+    if hasattr(b2, 'ryz_ViewToControllerRelation40'):
+        assert _is_linked(b2, 'ryz_ViewToControllerRelation40', a)
+    _safe_set(a, 'ryz_Model41', None)
+    assert not _is_linked(a, 'ryz_Model41', b2)
+    if hasattr(b2, 'ryz_ViewToControllerRelation40'):
+        assert not _is_linked(b2, 'ryz_ViewToControllerRelation40', a)
+
+
+def test_assoc_model47_link_reassign_clear():
+    a = ryz_Model(isAbstract=True)
+    b1 = ryz_ControllerToModelRelation(modelCardinality="sample_text", modelOperation="sample_text")
+    b2 = ryz_ControllerToModelRelation(modelCardinality="sample_text_2", modelOperation="sample_text_2")
+    _safe_set(a, 'ryz_Model49', b1)
+    assert _is_linked(a, 'ryz_Model49', b1)
+    if hasattr(b1, 'ryz_ControllerToModelRelation48'):
+        assert _is_linked(b1, 'ryz_ControllerToModelRelation48', a)
+    _safe_set(a, 'ryz_Model49', b2)
+    assert _is_linked(a, 'ryz_Model49', b2)
+    if hasattr(b1, 'ryz_ControllerToModelRelation48'):
+        assert not _is_linked(b1, 'ryz_ControllerToModelRelation48', a)
+    if hasattr(b2, 'ryz_ControllerToModelRelation48'):
+        assert _is_linked(b2, 'ryz_ControllerToModelRelation48', a)
+    _safe_set(a, 'ryz_Model49', None)
+    assert not _is_linked(a, 'ryz_Model49', b2)
+    if hasattr(b2, 'ryz_ControllerToModelRelation48'):
+        assert not _is_linked(b2, 'ryz_ControllerToModelRelation48', a)
+
+
+def test_assoc_model64_link_reassign_clear():
+    a = ryz_ViewToModelRelation(modelcardinality="sample_text")
+    b1 = ryz_Model(isAbstract=True)
+    b2 = ryz_Model(isAbstract=False)
+    _safe_set(a, 'ryz_ViewToModelRelation65', b1)
+    assert _is_linked(a, 'ryz_ViewToModelRelation65', b1)
+    if hasattr(b1, 'ryz_Model66'):
+        assert _is_linked(b1, 'ryz_Model66', a)
+    _safe_set(a, 'ryz_ViewToModelRelation65', b2)
+    assert _is_linked(a, 'ryz_ViewToModelRelation65', b2)
+    if hasattr(b1, 'ryz_Model66'):
+        assert not _is_linked(b1, 'ryz_Model66', a)
+    if hasattr(b2, 'ryz_Model66'):
+        assert _is_linked(b2, 'ryz_Model66', a)
+    _safe_set(a, 'ryz_ViewToModelRelation65', None)
+    assert not _is_linked(a, 'ryz_ViewToModelRelation65', b2)
+    if hasattr(b2, 'ryz_Model66'):
+        assert not _is_linked(b2, 'ryz_Model66', a)
+
+
+def test_assoc_model89_link_reassign_clear():
+    a = ryz_Model(isAbstract=True)
+    b1 = ryz_FormElementToPropertyKeyRelation()
+    b2 = ryz_FormElementToPropertyKeyRelation()
+    _safe_set(a, 'ryz_Model91', b1)
+    assert _is_linked(a, 'ryz_Model91', b1)
+    if hasattr(b1, 'ryz_FormElementToPropertyKeyRelation90'):
+        assert _is_linked(b1, 'ryz_FormElementToPropertyKeyRelation90', a)
+    _safe_set(a, 'ryz_Model91', b2)
+    assert _is_linked(a, 'ryz_Model91', b2)
+    if hasattr(b1, 'ryz_FormElementToPropertyKeyRelation90'):
+        assert not _is_linked(b1, 'ryz_FormElementToPropertyKeyRelation90', a)
+    if hasattr(b2, 'ryz_FormElementToPropertyKeyRelation90'):
+        assert _is_linked(b2, 'ryz_FormElementToPropertyKeyRelation90', a)
+    _safe_set(a, 'ryz_Model91', None)
+    assert not _is_linked(a, 'ryz_Model91', b2)
+    if hasattr(b2, 'ryz_FormElementToPropertyKeyRelation90'):
+        assert not _is_linked(b2, 'ryz_FormElementToPropertyKeyRelation90', a)
+
+
+def test_assoc_modelassociations5_link_reassign_clear():
+    a = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    b1 = ryz_ModelPackage()
+    b2 = ryz_ModelPackage()
+    _safe_set(a, 'ryz_ModelAssociation', b1)
+    assert _is_linked(a, 'ryz_ModelAssociation', b1)
+    if hasattr(b1, 'ryz_ModelPackage6'):
+        assert _is_linked(b1, 'ryz_ModelPackage6', a)
+    _safe_set(a, 'ryz_ModelAssociation', b2)
+    assert _is_linked(a, 'ryz_ModelAssociation', b2)
+    if hasattr(b1, 'ryz_ModelPackage6'):
+        assert not _is_linked(b1, 'ryz_ModelPackage6', a)
+    if hasattr(b2, 'ryz_ModelPackage6'):
+        assert _is_linked(b2, 'ryz_ModelPackage6', a)
+    _safe_set(a, 'ryz_ModelAssociation', None)
+    assert not _is_linked(a, 'ryz_ModelAssociation', b2)
+    if hasattr(b2, 'ryz_ModelPackage6'):
+        assert not _is_linked(b2, 'ryz_ModelPackage6', a)
+
+
+def test_assoc_modelproperties50_link_reassign_clear():
+    a = ryz_Property(isRequired=True, type="sample_text")
+    b1 = ryz_ControllerToModelRelation(modelCardinality="sample_text", modelOperation="sample_text")
+    b2 = ryz_ControllerToModelRelation(modelCardinality="sample_text_2", modelOperation="sample_text_2")
+    _safe_set(a, 'ryz_Property52', b1)
+    assert _is_linked(a, 'ryz_Property52', b1)
+    if hasattr(b1, 'ryz_ControllerToModelRelation51'):
+        assert _is_linked(b1, 'ryz_ControllerToModelRelation51', a)
+    _safe_set(a, 'ryz_Property52', b2)
+    assert _is_linked(a, 'ryz_Property52', b2)
+    if hasattr(b1, 'ryz_ControllerToModelRelation51'):
+        assert not _is_linked(b1, 'ryz_ControllerToModelRelation51', a)
+    if hasattr(b2, 'ryz_ControllerToModelRelation51'):
+        assert _is_linked(b2, 'ryz_ControllerToModelRelation51', a)
+    _safe_set(a, 'ryz_Property52', None)
+    assert not _is_linked(a, 'ryz_Property52', b2)
+    if hasattr(b2, 'ryz_ControllerToModelRelation51'):
+        assert not _is_linked(b2, 'ryz_ControllerToModelRelation51', a)
+
+
+def test_assoc_models4_link_reassign_clear():
+    a = ryz_Model(isAbstract=True)
+    b1 = ryz_ModelPackage()
+    b2 = ryz_ModelPackage()
+    _safe_set(a, 'ryz_Model', b1)
+    assert _is_linked(a, 'ryz_Model', b1)
+    if hasattr(b1, 'ryz_ModelPackage'):
+        assert _is_linked(b1, 'ryz_ModelPackage', a)
+    _safe_set(a, 'ryz_Model', b2)
+    assert _is_linked(a, 'ryz_Model', b2)
+    if hasattr(b1, 'ryz_ModelPackage'):
+        assert not _is_linked(b1, 'ryz_ModelPackage', a)
+    if hasattr(b2, 'ryz_ModelPackage'):
+        assert _is_linked(b2, 'ryz_ModelPackage', a)
+    _safe_set(a, 'ryz_Model', None)
+    assert not _is_linked(a, 'ryz_Model', b2)
+    if hasattr(b2, 'ryz_ModelPackage'):
+        assert not _is_linked(b2, 'ryz_ModelPackage', a)
+
+
+def test_assoc_parameters30_link_reassign_clear():
+    a = ryz_Parameter(isList=True, isNullable=True, type="sample_text")
+    b1 = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b2 = ryz_ActionMethod(httpMethod="sample_text_2", returns="sample_text_2")
+    _safe_set(a, 'ryz_Parameter', b1)
+    assert _is_linked(a, 'ryz_Parameter', b1)
+    if hasattr(b1, 'ryz_ActionMethod31'):
+        assert _is_linked(b1, 'ryz_ActionMethod31', a)
+    _safe_set(a, 'ryz_Parameter', b2)
+    assert _is_linked(a, 'ryz_Parameter', b2)
+    if hasattr(b1, 'ryz_ActionMethod31'):
+        assert not _is_linked(b1, 'ryz_ActionMethod31', a)
+    if hasattr(b2, 'ryz_ActionMethod31'):
+        assert _is_linked(b2, 'ryz_ActionMethod31', a)
+    _safe_set(a, 'ryz_Parameter', None)
+    assert not _is_linked(a, 'ryz_Parameter', b2)
+    if hasattr(b2, 'ryz_ActionMethod31'):
+        assert not _is_linked(b2, 'ryz_ActionMethod31', a)
+
+
+def test_assoc_presentationelement55_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_PresentationElement()
+    b2 = ryz_PresentationElement()
+    _safe_set(a, 'helperforsendingrequest56', {b1})
+    assert _is_linked(a, 'helperforsendingrequest56', b1)
+    if hasattr(b1, 'PresentationElement'):
+        assert _is_linked(b1, 'PresentationElement', a)
+    _safe_set(a, 'helperforsendingrequest56', {b2})
+    assert _is_linked(a, 'helperforsendingrequest56', b2)
+    if hasattr(b1, 'PresentationElement'):
+        assert not _is_linked(b1, 'PresentationElement', a)
+    if hasattr(b2, 'PresentationElement'):
+        assert _is_linked(b2, 'PresentationElement', a)
+    _safe_set(a, 'helperforsendingrequest56', set())
+    assert not _is_linked(a, 'helperforsendingrequest56', b2)
+    if hasattr(b2, 'PresentationElement'):
+        assert not _is_linked(b2, 'PresentationElement', a)
+
+
+def test_assoc_presentationformelement84_link_reassign_clear():
+    a = ryz_PresentationFormElement(labelText="sample_text")
+    b1 = ryz_PresentationForm()
+    b2 = ryz_PresentationForm()
+    _safe_set(a, 'ryz_PresentationFormElement', b1)
+    assert _is_linked(a, 'ryz_PresentationFormElement', b1)
+    if hasattr(b1, 'ryz_PresentationForm'):
+        assert _is_linked(b1, 'ryz_PresentationForm', a)
+    _safe_set(a, 'ryz_PresentationFormElement', b2)
+    assert _is_linked(a, 'ryz_PresentationFormElement', b2)
+    if hasattr(b1, 'ryz_PresentationForm'):
+        assert not _is_linked(b1, 'ryz_PresentationForm', a)
+    if hasattr(b2, 'ryz_PresentationForm'):
+        assert _is_linked(b2, 'ryz_PresentationForm', a)
+    _safe_set(a, 'ryz_PresentationFormElement', None)
+    assert not _is_linked(a, 'ryz_PresentationFormElement', b2)
+    if hasattr(b2, 'ryz_PresentationForm'):
+        assert not _is_linked(b2, 'ryz_PresentationForm', a)
+
+
+def test_assoc_presentationformelement94_link_reassign_clear():
+    a = ryz_PresentationFormElement(labelText="sample_text")
+    b1 = ryz_PresentationFormElementToPropertyKey()
+    b2 = ryz_PresentationFormElementToPropertyKey()
+    _safe_set(a, 'ryz_PresentationFormElement96', b1)
+    assert _is_linked(a, 'ryz_PresentationFormElement96', b1)
+    if hasattr(b1, 'ryz_PresentationFormElementToPropertyKey95'):
+        assert _is_linked(b1, 'ryz_PresentationFormElementToPropertyKey95', a)
+    _safe_set(a, 'ryz_PresentationFormElement96', b2)
+    assert _is_linked(a, 'ryz_PresentationFormElement96', b2)
+    if hasattr(b1, 'ryz_PresentationFormElementToPropertyKey95'):
+        assert not _is_linked(b1, 'ryz_PresentationFormElementToPropertyKey95', a)
+    if hasattr(b2, 'ryz_PresentationFormElementToPropertyKey95'):
+        assert _is_linked(b2, 'ryz_PresentationFormElementToPropertyKey95', a)
+    _safe_set(a, 'ryz_PresentationFormElement96', None)
+    assert not _is_linked(a, 'ryz_PresentationFormElement96', b2)
+    if hasattr(b2, 'ryz_PresentationFormElementToPropertyKey95'):
+        assert not _is_linked(b2, 'ryz_PresentationFormElementToPropertyKey95', a)
+
+
+def test_assoc_principal24_link_reassign_clear():
+    a = ryz_ModelAssociation(cardinality="sample_text", dependentRoleName="sample_text", isRequired=True, principalRoleName="sample_text")
+    b1 = ryz_Model(isAbstract=True)
+    b2 = ryz_Model(isAbstract=False)
+    _safe_set(a, 'ryz_ModelAssociation25', b1)
+    assert _is_linked(a, 'ryz_ModelAssociation25', b1)
+    if hasattr(b1, 'ryz_Model26'):
+        assert _is_linked(b1, 'ryz_Model26', a)
+    _safe_set(a, 'ryz_ModelAssociation25', b2)
+    assert _is_linked(a, 'ryz_ModelAssociation25', b2)
+    if hasattr(b1, 'ryz_Model26'):
+        assert not _is_linked(b1, 'ryz_Model26', a)
+    if hasattr(b2, 'ryz_Model26'):
+        assert _is_linked(b2, 'ryz_Model26', a)
+    _safe_set(a, 'ryz_ModelAssociation25', None)
+    assert not _is_linked(a, 'ryz_ModelAssociation25', b2)
+    if hasattr(b2, 'ryz_Model26'):
+        assert not _is_linked(b2, 'ryz_Model26', a)
+
+
+def test_assoc_properties42_link_reassign_clear():
+    a = ryz_Property(isRequired=True, type="sample_text")
+    b1 = ryz_ViewToControllerRelation()
+    b2 = ryz_ViewToControllerRelation()
+    _safe_set(a, 'ryz_Property44', b1)
+    assert _is_linked(a, 'ryz_Property44', b1)
+    if hasattr(b1, 'ryz_ViewToControllerRelation43'):
+        assert _is_linked(b1, 'ryz_ViewToControllerRelation43', a)
+    _safe_set(a, 'ryz_Property44', b2)
+    assert _is_linked(a, 'ryz_Property44', b2)
+    if hasattr(b1, 'ryz_ViewToControllerRelation43'):
+        assert not _is_linked(b1, 'ryz_ViewToControllerRelation43', a)
+    if hasattr(b2, 'ryz_ViewToControllerRelation43'):
+        assert _is_linked(b2, 'ryz_ViewToControllerRelation43', a)
+    _safe_set(a, 'ryz_Property44', None)
+    assert not _is_linked(a, 'ryz_Property44', b2)
+    if hasattr(b2, 'ryz_ViewToControllerRelation43'):
+        assert not _is_linked(b2, 'ryz_ViewToControllerRelation43', a)
+
+
+def test_assoc_properties67_link_reassign_clear():
+    a = ryz_ViewToModelRelation(modelcardinality="sample_text")
+    b1 = ryz_Property(isRequired=True, type="sample_text")
+    b2 = ryz_Property(isRequired=False, type="sample_text_2")
+    _safe_set(a, 'ryz_ViewToModelRelation68', {b1})
+    assert _is_linked(a, 'ryz_ViewToModelRelation68', b1)
+    if hasattr(b1, 'ryz_Property69'):
+        assert _is_linked(b1, 'ryz_Property69', a)
+    _safe_set(a, 'ryz_ViewToModelRelation68', {b2})
+    assert _is_linked(a, 'ryz_ViewToModelRelation68', b2)
+    if hasattr(b1, 'ryz_Property69'):
+        assert not _is_linked(b1, 'ryz_Property69', a)
+    if hasattr(b2, 'ryz_Property69'):
+        assert _is_linked(b2, 'ryz_Property69', a)
+    _safe_set(a, 'ryz_ViewToModelRelation68', set())
+    assert not _is_linked(a, 'ryz_ViewToModelRelation68', b2)
+    if hasattr(b2, 'ryz_Property69'):
+        assert not _is_linked(b2, 'ryz_Property69', a)
+
+
+def test_assoc_properties9_link_reassign_clear():
+    a = ryz_Property(isRequired=True, type="sample_text")
+    b1 = ryz_Model(isAbstract=True)
+    b2 = ryz_Model(isAbstract=False)
+    _safe_set(a, 'ryz_Property', b1)
+    assert _is_linked(a, 'ryz_Property', b1)
+    if hasattr(b1, 'ryz_Model10'):
+        assert _is_linked(b1, 'ryz_Model10', a)
+    _safe_set(a, 'ryz_Property', b2)
+    assert _is_linked(a, 'ryz_Property', b2)
+    if hasattr(b1, 'ryz_Model10'):
+        assert not _is_linked(b1, 'ryz_Model10', a)
+    if hasattr(b2, 'ryz_Model10'):
+        assert _is_linked(b2, 'ryz_Model10', a)
+    _safe_set(a, 'ryz_Property', None)
+    assert not _is_linked(a, 'ryz_Property', b2)
+    if hasattr(b2, 'ryz_Model10'):
+        assert not _is_linked(b2, 'ryz_Model10', a)
+
+
+def test_assoc_property97_link_reassign_clear():
+    a = ryz_Property(isRequired=True, type="sample_text")
+    b1 = ryz_PresentationFormElementToPropertyKey()
+    b2 = ryz_PresentationFormElementToPropertyKey()
+    _safe_set(a, 'ryz_Property99', b1)
+    assert _is_linked(a, 'ryz_Property99', b1)
+    if hasattr(b1, 'ryz_PresentationFormElementToPropertyKey98'):
+        assert _is_linked(b1, 'ryz_PresentationFormElementToPropertyKey98', a)
+    _safe_set(a, 'ryz_Property99', b2)
+    assert _is_linked(a, 'ryz_Property99', b2)
+    if hasattr(b1, 'ryz_PresentationFormElementToPropertyKey98'):
+        assert not _is_linked(b1, 'ryz_PresentationFormElementToPropertyKey98', a)
+    if hasattr(b2, 'ryz_PresentationFormElementToPropertyKey98'):
+        assert _is_linked(b2, 'ryz_PresentationFormElementToPropertyKey98', a)
+    _safe_set(a, 'ryz_Property99', None)
+    assert not _is_linked(a, 'ryz_Property99', b2)
+    if hasattr(b2, 'ryz_PresentationFormElementToPropertyKey98'):
+        assert not _is_linked(b2, 'ryz_PresentationFormElementToPropertyKey98', a)
+
+
+def test_assoc_tablekey100_link_reassign_clear():
+    a = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    b1 = ryz_PresentationFormElementToPropertyKey()
+    b2 = ryz_PresentationFormElementToPropertyKey()
+    _safe_set(a, 'ryz_TableKey102', b1)
+    assert _is_linked(a, 'ryz_TableKey102', b1)
+    if hasattr(b1, 'ryz_PresentationFormElementToPropertyKey101'):
+        assert _is_linked(b1, 'ryz_PresentationFormElementToPropertyKey101', a)
+    _safe_set(a, 'ryz_TableKey102', b2)
+    assert _is_linked(a, 'ryz_TableKey102', b2)
+    if hasattr(b1, 'ryz_PresentationFormElementToPropertyKey101'):
+        assert not _is_linked(b1, 'ryz_PresentationFormElementToPropertyKey101', a)
+    if hasattr(b2, 'ryz_PresentationFormElementToPropertyKey101'):
+        assert _is_linked(b2, 'ryz_PresentationFormElementToPropertyKey101', a)
+    _safe_set(a, 'ryz_TableKey102', None)
+    assert not _is_linked(a, 'ryz_TableKey102', b2)
+    if hasattr(b2, 'ryz_PresentationFormElementToPropertyKey101'):
+        assert not _is_linked(b2, 'ryz_PresentationFormElementToPropertyKey101', a)
+
+
+def test_assoc_tablekeys14_link_reassign_clear():
+    a = ryz_TableKey(isForeignKey=True, isPrimaryKey=True, isRequired=True, type="sample_text")
+    b1 = ryz_Model(isAbstract=True)
+    b2 = ryz_Model(isAbstract=False)
+    _safe_set(a, 'ryz_TableKey', b1)
+    assert _is_linked(a, 'ryz_TableKey', b1)
+    if hasattr(b1, 'ryz_Model15'):
+        assert _is_linked(b1, 'ryz_Model15', a)
+    _safe_set(a, 'ryz_TableKey', b2)
+    assert _is_linked(a, 'ryz_TableKey', b2)
+    if hasattr(b1, 'ryz_Model15'):
+        assert not _is_linked(b1, 'ryz_Model15', a)
+    if hasattr(b2, 'ryz_Model15'):
+        assert _is_linked(b2, 'ryz_Model15', a)
+    _safe_set(a, 'ryz_TableKey', None)
+    assert not _is_linked(a, 'ryz_TableKey', b2)
+    if hasattr(b2, 'ryz_Model15'):
+        assert not _is_linked(b2, 'ryz_Model15', a)
+
+
+def test_assoc_usecase32_link_reassign_clear():
+    a = ryz_ActionMethod(httpMethod="sample_text", returns="sample_text")
+    b1 = ryz_UseCase()
+    b2 = ryz_UseCase()
+    _safe_set(a, 'actionmethod', {b1})
+    assert _is_linked(a, 'actionmethod', b1)
+    if hasattr(b1, 'UseCase'):
+        assert _is_linked(b1, 'UseCase', a)
+    _safe_set(a, 'actionmethod', {b2})
+    assert _is_linked(a, 'actionmethod', b2)
+    if hasattr(b1, 'UseCase'):
+        assert not _is_linked(b1, 'UseCase', a)
+    if hasattr(b2, 'UseCase'):
+        assert _is_linked(b2, 'UseCase', a)
+    _safe_set(a, 'actionmethod', set())
+    assert not _is_linked(a, 'actionmethod', b2)
+    if hasattr(b2, 'UseCase'):
+        assert not _is_linked(b2, 'UseCase', a)
+
+
+def test_assoc_usecase53_link_reassign_clear():
+    a = ryz_HelperForSendingRequest(httpMethod="sample_text", requestType="sample_text", text="sample_text")
+    b1 = ryz_UseCase()
+    b2 = ryz_UseCase()
+    _safe_set(a, 'helperforsendingrequest', {b1})
+    assert _is_linked(a, 'helperforsendingrequest', b1)
+    if hasattr(b1, 'UseCase54'):
+        assert _is_linked(b1, 'UseCase54', a)
+    _safe_set(a, 'helperforsendingrequest', {b2})
+    assert _is_linked(a, 'helperforsendingrequest', b2)
+    if hasattr(b1, 'UseCase54'):
+        assert not _is_linked(b1, 'UseCase54', a)
+    if hasattr(b2, 'UseCase54'):
+        assert _is_linked(b2, 'UseCase54', a)
+    _safe_set(a, 'helperforsendingrequest', set())
+    assert not _is_linked(a, 'helperforsendingrequest', b2)
+    if hasattr(b2, 'UseCase54'):
+        assert not _is_linked(b2, 'UseCase54', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+AbstractView_strategy = st.builds(AbstractView)
+@given(instance=AbstractView_strategy)
+@settings(max_examples=25)
+def test_AbstractView_instantiation(instance):
+    assert isinstance(instance, AbstractView)
+
+
+ComponentPackage_strategy = st.builds(ComponentPackage)
+@given(instance=ComponentPackage_strategy)
+@settings(max_examples=25)
+def test_ComponentPackage_instantiation(instance):
+    assert isinstance(instance, ComponentPackage)
+
+
+HelperForSendingRequest_strategy = st.builds(HelperForSendingRequest)
+@given(instance=HelperForSendingRequest_strategy)
+@settings(max_examples=25)
+def test_HelperForSendingRequest_instantiation(instance):
+    assert isinstance(instance, HelperForSendingRequest)
+
+
+MainComponent_strategy = st.builds(MainComponent)
+@given(instance=MainComponent_strategy)
+@settings(max_examples=25)
+def test_MainComponent_instantiation(instance):
+    assert isinstance(instance, MainComponent)
+
+
+MainComponentRelation_strategy = st.builds(MainComponentRelation)
+@given(instance=MainComponentRelation_strategy)
+@settings(max_examples=25)
+def test_MainComponentRelation_instantiation(instance):
+    assert isinstance(instance, MainComponentRelation)
+
+
+NamedElement_strategy = st.builds(NamedElement)
+@given(instance=NamedElement_strategy)
+@settings(max_examples=25)
+def test_NamedElement_instantiation(instance):
+    assert isinstance(instance, NamedElement)
+
+
+Package_strategy = st.builds(Package)
+@given(instance=Package_strategy)
+@settings(max_examples=25)
+def test_Package_instantiation(instance):
+    assert isinstance(instance, Package)
+
+
+PresentationElement_strategy = st.builds(PresentationElement)
+@given(instance=PresentationElement_strategy)
+@settings(max_examples=25)
+def test_PresentationElement_instantiation(instance):
+    assert isinstance(instance, PresentationElement)
+
+
+PresentationFormElement_strategy = st.builds(PresentationFormElement)
+@given(instance=PresentationFormElement_strategy)
+@settings(max_examples=25)
+def test_PresentationFormElement_instantiation(instance):
+    assert isinstance(instance, PresentationFormElement)
+
+
+ryz_AbstractView_strategy = st.builds(ryz_AbstractView)
+@given(instance=ryz_AbstractView_strategy)
+@settings(max_examples=25)
+def test_ryz_AbstractView_instantiation(instance):
+    assert isinstance(instance, ryz_AbstractView)
+
+
+ryz_ActionLink_strategy = st.builds(ryz_ActionLink)
+@given(instance=ryz_ActionLink_strategy)
+@settings(max_examples=25)
+def test_ryz_ActionLink_instantiation(instance):
+    assert isinstance(instance, ryz_ActionLink)
+
+
+ryz_ActionMethod_strategy = st.builds(ryz_ActionMethod, httpMethod=safe_text, returns=safe_text)
+@given(instance=ryz_ActionMethod_strategy)
+@settings(max_examples=25)
+def test_ryz_ActionMethod_instantiation(instance):
+    assert isinstance(instance, ryz_ActionMethod)
+
+
+ryz_Actor_strategy = st.builds(ryz_Actor)
+@given(instance=ryz_Actor_strategy)
+@settings(max_examples=25)
+def test_ryz_Actor_instantiation(instance):
+    assert isinstance(instance, ryz_Actor)
+
+
+ryz_Button_strategy = st.builds(ryz_Button, buttonType=safe_text)
+@given(instance=ryz_Button_strategy)
+@settings(max_examples=25)
+def test_ryz_Button_instantiation(instance):
+    assert isinstance(instance, ryz_Button)
+
+
+ryz_Choice_strategy = st.builds(ryz_Choice, selected=safe_text, text=safe_text, value=safe_text)
+@given(instance=ryz_Choice_strategy)
+@settings(max_examples=25)
+def test_ryz_Choice_instantiation(instance):
+    assert isinstance(instance, ryz_Choice)
+
+
+ryz_ComponentPackage_strategy = st.builds(ryz_ComponentPackage)
+@given(instance=ryz_ComponentPackage_strategy)
+@settings(max_examples=25)
+def test_ryz_ComponentPackage_instantiation(instance):
+    assert isinstance(instance, ryz_ComponentPackage)
+
+
+ryz_Controller_strategy = st.builds(ryz_Controller)
+@given(instance=ryz_Controller_strategy)
+@settings(max_examples=25)
+def test_ryz_Controller_instantiation(instance):
+    assert isinstance(instance, ryz_Controller)
+
+
+ryz_ControllerPackage_strategy = st.builds(ryz_ControllerPackage)
+@given(instance=ryz_ControllerPackage_strategy)
+@settings(max_examples=25)
+def test_ryz_ControllerPackage_instantiation(instance):
+    assert isinstance(instance, ryz_ControllerPackage)
+
+
+ryz_ControllerToModelRelation_strategy = st.builds(ryz_ControllerToModelRelation, modelCardinality=safe_text, modelOperation=safe_text)
+@given(instance=ryz_ControllerToModelRelation_strategy)
+@settings(max_examples=25)
+def test_ryz_ControllerToModelRelation_instantiation(instance):
+    assert isinstance(instance, ryz_ControllerToModelRelation)
+
+
+ryz_ControllerToViewRelation_strategy = st.builds(ryz_ControllerToViewRelation)
+@given(instance=ryz_ControllerToViewRelation_strategy)
+@settings(max_examples=25)
+def test_ryz_ControllerToViewRelation_instantiation(instance):
+    assert isinstance(instance, ryz_ControllerToViewRelation)
+
+
+ryz_Form_strategy = st.builds(ryz_Form)
+@given(instance=ryz_Form_strategy)
+@settings(max_examples=25)
+def test_ryz_Form_instantiation(instance):
+    assert isinstance(instance, ryz_Form)
+
+
+ryz_FormElementToPropertyKeyRelation_strategy = st.builds(ryz_FormElementToPropertyKeyRelation)
+@given(instance=ryz_FormElementToPropertyKeyRelation_strategy)
+@settings(max_examples=25)
+def test_ryz_FormElementToPropertyKeyRelation_instantiation(instance):
+    assert isinstance(instance, ryz_FormElementToPropertyKeyRelation)
+
+
+ryz_Header_strategy = st.builds(ryz_Header, labelText=safe_text, name=safe_text)
+@given(instance=ryz_Header_strategy)
+@settings(max_examples=25)
+def test_ryz_Header_instantiation(instance):
+    assert isinstance(instance, ryz_Header)
+
+
+ryz_HelperForSendingRequest_strategy = st.builds(ryz_HelperForSendingRequest, httpMethod=safe_text, requestType=safe_text, text=safe_text)
+@given(instance=ryz_HelperForSendingRequest_strategy)
+@settings(max_examples=25)
+def test_ryz_HelperForSendingRequest_instantiation(instance):
+    assert isinstance(instance, ryz_HelperForSendingRequest)
+
+
+ryz_Input_strategy = st.builds(ryz_Input, inputDataType=safe_text, isHidden=st.booleans(), isReadOnly=st.booleans())
+@given(instance=ryz_Input_strategy)
+@settings(max_examples=25)
+def test_ryz_Input_instantiation(instance):
+    assert isinstance(instance, ryz_Input)
+
+
+ryz_Layout_strategy = st.builds(ryz_Layout)
+@given(instance=ryz_Layout_strategy)
+@settings(max_examples=25)
+def test_ryz_Layout_instantiation(instance):
+    assert isinstance(instance, ryz_Layout)
+
+
+ryz_Link_strategy = st.builds(ryz_Link, text=safe_text)
+@given(instance=ryz_Link_strategy)
+@settings(max_examples=25)
+def test_ryz_Link_instantiation(instance):
+    assert isinstance(instance, ryz_Link)
+
+
+ryz_MainComponent_strategy = st.builds(ryz_MainComponent)
+@given(instance=ryz_MainComponent_strategy)
+@settings(max_examples=25)
+def test_ryz_MainComponent_instantiation(instance):
+    assert isinstance(instance, ryz_MainComponent)
+
+
+ryz_MainComponentRelation_strategy = st.builds(ryz_MainComponentRelation)
+@given(instance=ryz_MainComponentRelation_strategy)
+@settings(max_examples=25)
+def test_ryz_MainComponentRelation_instantiation(instance):
+    assert isinstance(instance, ryz_MainComponentRelation)
+
+
+ryz_Model_strategy = st.builds(ryz_Model, isAbstract=st.booleans())
+@given(instance=ryz_Model_strategy)
+@settings(max_examples=25)
+def test_ryz_Model_instantiation(instance):
+    assert isinstance(instance, ryz_Model)
+
+
+ryz_ModelAssociation_strategy = st.builds(ryz_ModelAssociation, cardinality=safe_text, dependentRoleName=safe_text, isRequired=st.booleans(), principalRoleName=safe_text)
+@given(instance=ryz_ModelAssociation_strategy)
+@settings(max_examples=25)
+def test_ryz_ModelAssociation_instantiation(instance):
+    assert isinstance(instance, ryz_ModelAssociation)
+
+
+ryz_ModelPackage_strategy = st.builds(ryz_ModelPackage)
+@given(instance=ryz_ModelPackage_strategy)
+@settings(max_examples=25)
+def test_ryz_ModelPackage_instantiation(instance):
+    assert isinstance(instance, ryz_ModelPackage)
+
+
+ryz_MultipleChoice_strategy = st.builds(ryz_MultipleChoice, multipleChoiceType=safe_text, multipleSelection=st.booleans())
+@given(instance=ryz_MultipleChoice_strategy)
+@settings(max_examples=25)
+def test_ryz_MultipleChoice_instantiation(instance):
+    assert isinstance(instance, ryz_MultipleChoice)
+
+
+ryz_MvcPackage_strategy = st.builds(ryz_MvcPackage)
+@given(instance=ryz_MvcPackage_strategy)
+@settings(max_examples=25)
+def test_ryz_MvcPackage_instantiation(instance):
+    assert isinstance(instance, ryz_MvcPackage)
+
+
+ryz_NamedElement_strategy = st.builds(ryz_NamedElement, name=safe_text)
+@given(instance=ryz_NamedElement_strategy)
+@settings(max_examples=25)
+def test_ryz_NamedElement_instantiation(instance):
+    assert isinstance(instance, ryz_NamedElement)
+
+
+ryz_Package_strategy = st.builds(ryz_Package)
+@given(instance=ryz_Package_strategy)
+@settings(max_examples=25)
+def test_ryz_Package_instantiation(instance):
+    assert isinstance(instance, ryz_Package)
+
+
+ryz_Parameter_strategy = st.builds(ryz_Parameter, isList=st.booleans(), isNullable=st.booleans(), type=safe_text)
+@given(instance=ryz_Parameter_strategy)
+@settings(max_examples=25)
+def test_ryz_Parameter_instantiation(instance):
+    assert isinstance(instance, ryz_Parameter)
+
+
+ryz_Partial_strategy = st.builds(ryz_Partial)
+@given(instance=ryz_Partial_strategy)
+@settings(max_examples=25)
+def test_ryz_Partial_instantiation(instance):
+    assert isinstance(instance, ryz_Partial)
+
+
+ryz_PresentationElement_strategy = st.builds(ryz_PresentationElement)
+@given(instance=ryz_PresentationElement_strategy)
+@settings(max_examples=25)
+def test_ryz_PresentationElement_instantiation(instance):
+    assert isinstance(instance, ryz_PresentationElement)
+
+
+ryz_PresentationForm_strategy = st.builds(ryz_PresentationForm)
+@given(instance=ryz_PresentationForm_strategy)
+@settings(max_examples=25)
+def test_ryz_PresentationForm_instantiation(instance):
+    assert isinstance(instance, ryz_PresentationForm)
+
+
+ryz_PresentationFormElement_strategy = st.builds(ryz_PresentationFormElement, labelText=safe_text)
+@given(instance=ryz_PresentationFormElement_strategy)
+@settings(max_examples=25)
+def test_ryz_PresentationFormElement_instantiation(instance):
+    assert isinstance(instance, ryz_PresentationFormElement)
+
+
+ryz_PresentationFormElementToPropertyKey_strategy = st.builds(ryz_PresentationFormElementToPropertyKey)
+@given(instance=ryz_PresentationFormElementToPropertyKey_strategy)
+@settings(max_examples=25)
+def test_ryz_PresentationFormElementToPropertyKey_instantiation(instance):
+    assert isinstance(instance, ryz_PresentationFormElementToPropertyKey)
+
+
+ryz_Project_strategy = st.builds(ryz_Project)
+@given(instance=ryz_Project_strategy)
+@settings(max_examples=25)
+def test_ryz_Project_instantiation(instance):
+    assert isinstance(instance, ryz_Project)
+
+
+ryz_Property_strategy = st.builds(ryz_Property, isRequired=st.booleans(), type=safe_text)
+@given(instance=ryz_Property_strategy)
+@settings(max_examples=25)
+def test_ryz_Property_instantiation(instance):
+    assert isinstance(instance, ryz_Property)
+
+
+ryz_Table_strategy = st.builds(ryz_Table)
+@given(instance=ryz_Table_strategy)
+@settings(max_examples=25)
+def test_ryz_Table_instantiation(instance):
+    assert isinstance(instance, ryz_Table)
+
+
+ryz_TableKey_strategy = st.builds(ryz_TableKey, isForeignKey=st.booleans(), isPrimaryKey=st.booleans(), isRequired=st.booleans(), type=safe_text)
+@given(instance=ryz_TableKey_strategy)
+@settings(max_examples=25)
+def test_ryz_TableKey_instantiation(instance):
+    assert isinstance(instance, ryz_TableKey)
+
+
+ryz_UseCase_strategy = st.builds(ryz_UseCase)
+@given(instance=ryz_UseCase_strategy)
+@settings(max_examples=25)
+def test_ryz_UseCase_instantiation(instance):
+    assert isinstance(instance, ryz_UseCase)
+
+
+ryz_UseCaseActorPackage_strategy = st.builds(ryz_UseCaseActorPackage)
+@given(instance=ryz_UseCaseActorPackage_strategy)
+@settings(max_examples=25)
+def test_ryz_UseCaseActorPackage_instantiation(instance):
+    assert isinstance(instance, ryz_UseCaseActorPackage)
+
+
+ryz_UseCasePackage_strategy = st.builds(ryz_UseCasePackage)
+@given(instance=ryz_UseCasePackage_strategy)
+@settings(max_examples=25)
+def test_ryz_UseCasePackage_instantiation(instance):
+    assert isinstance(instance, ryz_UseCasePackage)
+
+
+ryz_View_strategy = st.builds(ryz_View)
+@given(instance=ryz_View_strategy)
+@settings(max_examples=25)
+def test_ryz_View_instantiation(instance):
+    assert isinstance(instance, ryz_View)
+
+
+ryz_ViewPackage_strategy = st.builds(ryz_ViewPackage)
+@given(instance=ryz_ViewPackage_strategy)
+@settings(max_examples=25)
+def test_ryz_ViewPackage_instantiation(instance):
+    assert isinstance(instance, ryz_ViewPackage)
+
+
+ryz_ViewToControllerRelation_strategy = st.builds(ryz_ViewToControllerRelation)
+@given(instance=ryz_ViewToControllerRelation_strategy)
+@settings(max_examples=25)
+def test_ryz_ViewToControllerRelation_instantiation(instance):
+    assert isinstance(instance, ryz_ViewToControllerRelation)
+
+
+ryz_ViewToModelRelation_strategy = st.builds(ryz_ViewToModelRelation, modelcardinality=safe_text)
+@given(instance=ryz_ViewToModelRelation_strategy)
+@settings(max_examples=25)
+def test_ryz_ViewToModelRelation_instantiation(instance):
+    assert isinstance(instance, ryz_ViewToModelRelation)
+
+

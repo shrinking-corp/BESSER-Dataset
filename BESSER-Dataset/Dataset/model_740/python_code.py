@@ -4759,7 +4759,7 @@ class RefOntoUML_MultiplicityElement(Element):
         # TODO: Implement getLower method
         pass
 
-    def is(self, RefOntoUML_upperbound, RefOntoUML_lowerbound) :
+    def is_(self, RefOntoUML_upperbound, RefOntoUML_lowerbound) :
         # TODO: Implement is method
         pass
 

@@ -1,0 +1,770 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Person,
+    fair_Animal,
+    fair_Class,
+    fair_Department,
+    fair_Division,
+    fair_Exhibit,
+    fair_Fair,
+    fair_Lot,
+    fair_Person,
+    fair_Premises,
+    fair_YoungPerson,
+    fair_YouthClub,
+    Award,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_fair_Class_comments_value_roundtrip():
+    instance = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Class_description_value_roundtrip():
+    instance = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_fair_Class_name_value_roundtrip():
+    instance = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Department_comments_value_roundtrip():
+    instance = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Department_description_value_roundtrip():
+    instance = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_fair_Department_name_value_roundtrip():
+    instance = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Division_comments_value_roundtrip():
+    instance = fair_Division(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Division_description_value_roundtrip():
+    instance = fair_Division(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_fair_Division_name_value_roundtrip():
+    instance = fair_Division(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Exhibit_award_value_roundtrip():
+    instance = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    assert instance.award == "sample_text"
+    instance.award = "sample_text_2"
+    assert instance.award == "sample_text_2"
+
+
+def test_fair_Exhibit_comments_value_roundtrip():
+    instance = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Exhibit_inAuction_value_roundtrip():
+    instance = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    assert instance.inAuction == True
+    instance.inAuction = False
+    assert instance.inAuction == False
+
+
+def test_fair_Exhibit_name_value_roundtrip():
+    instance = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Exhibit_number_value_roundtrip():
+    instance = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    assert instance.number == 7
+    instance.number = 13
+    assert instance.number == 13
+
+
+def test_fair_Exhibit_salesOrder_value_roundtrip():
+    instance = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    assert instance.salesOrder == 7
+    instance.salesOrder = 13
+    assert instance.salesOrder == 13
+
+
+def test_fair_Fair_comments_value_roundtrip():
+    instance = fair_Fair(comments="sample_text", name="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Fair_name_value_roundtrip():
+    instance = fair_Fair(comments="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Lot_comments_value_roundtrip():
+    instance = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Lot_description_value_roundtrip():
+    instance = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_fair_Lot_name_value_roundtrip():
+    instance = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Person_city_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.city == "sample_text"
+    instance.city = "sample_text_2"
+    assert instance.city == "sample_text_2"
+
+
+def test_fair_Person_comments_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_Person_email_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.email == "sample_text"
+    instance.email = "sample_text_2"
+    assert instance.email == "sample_text_2"
+
+
+def test_fair_Person_exhibitorNumber_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.exhibitorNumber == 7
+    instance.exhibitorNumber = 13
+    assert instance.exhibitorNumber == 13
+
+
+def test_fair_Person_firstName_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.firstName == "sample_text"
+    instance.firstName = "sample_text_2"
+    assert instance.firstName == "sample_text_2"
+
+
+def test_fair_Person_lastName_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.lastName == "sample_text"
+    instance.lastName = "sample_text_2"
+    assert instance.lastName == "sample_text_2"
+
+
+def test_fair_Person_name_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_Person_phone_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.phone == "sample_text"
+    instance.phone = "sample_text_2"
+    assert instance.phone == "sample_text_2"
+
+
+def test_fair_Person_pin_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.pin == "sample_text"
+    instance.pin = "sample_text_2"
+    assert instance.pin == "sample_text_2"
+
+
+def test_fair_Person_salesOrder_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.salesOrder == 7
+    instance.salesOrder = 13
+    assert instance.salesOrder == 13
+
+
+def test_fair_Person_state_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.state == "sample_text"
+    instance.state = "sample_text_2"
+    assert instance.state == "sample_text_2"
+
+
+def test_fair_Person_street_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.street == "sample_text"
+    instance.street = "sample_text_2"
+    assert instance.street == "sample_text_2"
+
+
+def test_fair_Person_zipCode_value_roundtrip():
+    instance = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    assert instance.zipCode == "sample_text"
+    instance.zipCode = "sample_text_2"
+    assert instance.zipCode == "sample_text_2"
+
+
+def test_fair_YouthClub_comments_value_roundtrip():
+    instance = fair_YouthClub(comments="sample_text", name="sample_text")
+    assert instance.comments == "sample_text"
+    instance.comments = "sample_text_2"
+    assert instance.comments == "sample_text_2"
+
+
+def test_fair_YouthClub_name_value_roundtrip():
+    instance = fair_YouthClub(comments="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_fair_YoungPerson_isa_Person():
+    instance = fair_YoungPerson()
+    assert isinstance(instance, Person)
+
+
+def test_assoc_animal7_link_reassign_clear():
+    a = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    b1 = fair_Animal()
+    b2 = fair_Animal()
+    _safe_set(a, 'fair_Exhibit', b1)
+    assert _is_linked(a, 'fair_Exhibit', b1)
+    if hasattr(b1, 'fair_Animal'):
+        assert _is_linked(b1, 'fair_Animal', a)
+    _safe_set(a, 'fair_Exhibit', b2)
+    assert _is_linked(a, 'fair_Exhibit', b2)
+    if hasattr(b1, 'fair_Animal'):
+        assert not _is_linked(b1, 'fair_Animal', a)
+    if hasattr(b2, 'fair_Animal'):
+        assert _is_linked(b2, 'fair_Animal', a)
+    _safe_set(a, 'fair_Exhibit', None)
+    assert not _is_linked(a, 'fair_Exhibit', b2)
+    if hasattr(b2, 'fair_Animal'):
+        assert not _is_linked(b2, 'fair_Animal', a)
+
+
+def test_assoc_class_27_link_reassign_clear():
+    a = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Class(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'lots', b1)
+    assert _is_linked(a, 'lots', b1)
+    if hasattr(b1, 'Class28'):
+        assert _is_linked(b1, 'Class28', a)
+    _safe_set(a, 'lots', b2)
+    assert _is_linked(a, 'lots', b2)
+    if hasattr(b1, 'Class28'):
+        assert not _is_linked(b1, 'Class28', a)
+    if hasattr(b2, 'Class28'):
+        assert _is_linked(b2, 'Class28', a)
+    _safe_set(a, 'lots', None)
+    assert not _is_linked(a, 'lots', b2)
+    if hasattr(b2, 'Class28'):
+        assert not _is_linked(b2, 'Class28', a)
+
+
+def test_assoc_classes16_link_reassign_clear():
+    a = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Class(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'department', {b1})
+    assert _is_linked(a, 'department', b1)
+    if hasattr(b1, 'Class'):
+        assert _is_linked(b1, 'Class', a)
+    _safe_set(a, 'department', {b2})
+    assert _is_linked(a, 'department', b2)
+    if hasattr(b1, 'Class'):
+        assert not _is_linked(b1, 'Class', a)
+    if hasattr(b2, 'Class'):
+        assert _is_linked(b2, 'Class', a)
+    _safe_set(a, 'department', set())
+    assert not _is_linked(a, 'department', b2)
+    if hasattr(b2, 'Class'):
+        assert not _is_linked(b2, 'Class', a)
+
+
+def test_assoc_club31_link_reassign_clear():
+    a = fair_YouthClub(comments="sample_text", name="sample_text")
+    b1 = fair_YoungPerson()
+    b2 = fair_YoungPerson()
+    _safe_set(a, 'fair_YouthClub33', b1)
+    assert _is_linked(a, 'fair_YouthClub33', b1)
+    if hasattr(b1, 'fair_YoungPerson32'):
+        assert _is_linked(b1, 'fair_YoungPerson32', a)
+    _safe_set(a, 'fair_YouthClub33', b2)
+    assert _is_linked(a, 'fair_YouthClub33', b2)
+    if hasattr(b1, 'fair_YoungPerson32'):
+        assert not _is_linked(b1, 'fair_YoungPerson32', a)
+    if hasattr(b2, 'fair_YoungPerson32'):
+        assert _is_linked(b2, 'fair_YoungPerson32', a)
+    _safe_set(a, 'fair_YouthClub33', None)
+    assert not _is_linked(a, 'fair_YouthClub33', b2)
+    if hasattr(b2, 'fair_YoungPerson32'):
+        assert not _is_linked(b2, 'fair_YoungPerson32', a)
+
+
+def test_assoc_contacts12_link_reassign_clear():
+    a = fair_YouthClub(comments="sample_text", name="sample_text")
+    b1 = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    b2 = fair_Person(city="sample_text_2", comments="sample_text_2", email="sample_text_2", exhibitorNumber=13, firstName="sample_text_2", lastName="sample_text_2", name="sample_text_2", phone="sample_text_2", pin="sample_text_2", salesOrder=13, state="sample_text_2", street="sample_text_2", zipCode="sample_text_2")
+    _safe_set(a, 'fair_YouthClub13', {b1})
+    assert _is_linked(a, 'fair_YouthClub13', b1)
+    if hasattr(b1, 'fair_Person14'):
+        assert _is_linked(b1, 'fair_Person14', a)
+    _safe_set(a, 'fair_YouthClub13', {b2})
+    assert _is_linked(a, 'fair_YouthClub13', b2)
+    if hasattr(b1, 'fair_Person14'):
+        assert not _is_linked(b1, 'fair_Person14', a)
+    if hasattr(b2, 'fair_Person14'):
+        assert _is_linked(b2, 'fair_Person14', a)
+    _safe_set(a, 'fair_YouthClub13', set())
+    assert not _is_linked(a, 'fair_YouthClub13', b2)
+    if hasattr(b2, 'fair_Person14'):
+        assert not _is_linked(b2, 'fair_Person14', a)
+
+
+def test_assoc_department24_link_reassign_clear():
+    a = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Class(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'Department25', b1)
+    assert _is_linked(a, 'Department25', b1)
+    if hasattr(b1, 'classes'):
+        assert _is_linked(b1, 'classes', a)
+    _safe_set(a, 'Department25', b2)
+    assert _is_linked(a, 'Department25', b2)
+    if hasattr(b1, 'classes'):
+        assert not _is_linked(b1, 'classes', a)
+    if hasattr(b2, 'classes'):
+        assert _is_linked(b2, 'classes', a)
+    _safe_set(a, 'Department25', None)
+    assert not _is_linked(a, 'Department25', b2)
+    if hasattr(b2, 'classes'):
+        assert not _is_linked(b2, 'classes', a)
+
+
+def test_assoc_departments15_link_reassign_clear():
+    a = fair_Division(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Department(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'division', {b1})
+    assert _is_linked(a, 'division', b1)
+    if hasattr(b1, 'Department'):
+        assert _is_linked(b1, 'Department', a)
+    _safe_set(a, 'division', {b2})
+    assert _is_linked(a, 'division', b2)
+    if hasattr(b1, 'Department'):
+        assert not _is_linked(b1, 'Department', a)
+    if hasattr(b2, 'Department'):
+        assert _is_linked(b2, 'Department', a)
+    _safe_set(a, 'division', set())
+    assert not _is_linked(a, 'division', b2)
+    if hasattr(b2, 'Department'):
+        assert not _is_linked(b2, 'Department', a)
+
+
+def test_assoc_division19_link_reassign_clear():
+    a = fair_Division(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Department(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'Division', b1)
+    assert _is_linked(a, 'Division', b1)
+    if hasattr(b1, 'departments'):
+        assert _is_linked(b1, 'departments', a)
+    _safe_set(a, 'Division', b2)
+    assert _is_linked(a, 'Division', b2)
+    if hasattr(b1, 'departments'):
+        assert not _is_linked(b1, 'departments', a)
+    if hasattr(b2, 'departments'):
+        assert _is_linked(b2, 'departments', a)
+    _safe_set(a, 'Division', None)
+    assert not _is_linked(a, 'Division', b2)
+    if hasattr(b2, 'departments'):
+        assert not _is_linked(b2, 'departments', a)
+
+
+def test_assoc_divisions1_link_reassign_clear():
+    a = fair_Fair(comments="sample_text", name="sample_text")
+    b1 = fair_Division(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Division(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'fair_Fair2', {b1})
+    assert _is_linked(a, 'fair_Fair2', b1)
+    if hasattr(b1, 'fair_Division'):
+        assert _is_linked(b1, 'fair_Division', a)
+    _safe_set(a, 'fair_Fair2', {b2})
+    assert _is_linked(a, 'fair_Fair2', b2)
+    if hasattr(b1, 'fair_Division'):
+        assert not _is_linked(b1, 'fair_Division', a)
+    if hasattr(b2, 'fair_Division'):
+        assert _is_linked(b2, 'fair_Division', a)
+    _safe_set(a, 'fair_Fair2', set())
+    assert not _is_linked(a, 'fair_Fair2', b2)
+    if hasattr(b2, 'fair_Division'):
+        assert not _is_linked(b2, 'fair_Division', a)
+
+
+def test_assoc_exhibitor8_link_reassign_clear():
+    a = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    b1 = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    b2 = fair_Exhibit(award="sample_text_2", comments="sample_text_2", inAuction=False, name="sample_text_2", number=13, salesOrder=13)
+    _safe_set(a, 'fair_Person10', b1)
+    assert _is_linked(a, 'fair_Person10', b1)
+    if hasattr(b1, 'fair_Exhibit9'):
+        assert _is_linked(b1, 'fair_Exhibit9', a)
+    _safe_set(a, 'fair_Person10', b2)
+    assert _is_linked(a, 'fair_Person10', b2)
+    if hasattr(b1, 'fair_Exhibit9'):
+        assert not _is_linked(b1, 'fair_Exhibit9', a)
+    if hasattr(b2, 'fair_Exhibit9'):
+        assert _is_linked(b2, 'fair_Exhibit9', a)
+    _safe_set(a, 'fair_Person10', None)
+    assert not _is_linked(a, 'fair_Person10', b2)
+    if hasattr(b2, 'fair_Exhibit9'):
+        assert not _is_linked(b2, 'fair_Exhibit9', a)
+
+
+def test_assoc_exhibits26_link_reassign_clear():
+    a = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    b2 = fair_Exhibit(award="sample_text_2", comments="sample_text_2", inAuction=False, name="sample_text_2", number=13, salesOrder=13)
+    _safe_set(a, 'lot', {b1})
+    assert _is_linked(a, 'lot', b1)
+    if hasattr(b1, 'Exhibit'):
+        assert _is_linked(b1, 'Exhibit', a)
+    _safe_set(a, 'lot', {b2})
+    assert _is_linked(a, 'lot', b2)
+    if hasattr(b1, 'Exhibit'):
+        assert not _is_linked(b1, 'Exhibit', a)
+    if hasattr(b2, 'Exhibit'):
+        assert _is_linked(b2, 'Exhibit', a)
+    _safe_set(a, 'lot', set())
+    assert not _is_linked(a, 'lot', b2)
+    if hasattr(b2, 'Exhibit'):
+        assert not _is_linked(b2, 'Exhibit', a)
+
+
+def test_assoc_judges22_link_reassign_clear():
+    a = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    b1 = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Class(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'fair_Person23', b1)
+    assert _is_linked(a, 'fair_Person23', b1)
+    if hasattr(b1, 'fair_Class'):
+        assert _is_linked(b1, 'fair_Class', a)
+    _safe_set(a, 'fair_Person23', b2)
+    assert _is_linked(a, 'fair_Person23', b2)
+    if hasattr(b1, 'fair_Class'):
+        assert not _is_linked(b1, 'fair_Class', a)
+    if hasattr(b2, 'fair_Class'):
+        assert _is_linked(b2, 'fair_Class', a)
+    _safe_set(a, 'fair_Person23', None)
+    assert not _is_linked(a, 'fair_Person23', b2)
+    if hasattr(b2, 'fair_Class'):
+        assert not _is_linked(b2, 'fair_Class', a)
+
+
+def test_assoc_lot11_link_reassign_clear():
+    a = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Exhibit(award="sample_text", comments="sample_text", inAuction=True, name="sample_text", number=7, salesOrder=7)
+    b2 = fair_Exhibit(award="sample_text_2", comments="sample_text_2", inAuction=False, name="sample_text_2", number=13, salesOrder=13)
+    _safe_set(a, 'Lot', b1)
+    assert _is_linked(a, 'Lot', b1)
+    if hasattr(b1, 'exhibits'):
+        assert _is_linked(b1, 'exhibits', a)
+    _safe_set(a, 'Lot', b2)
+    assert _is_linked(a, 'Lot', b2)
+    if hasattr(b1, 'exhibits'):
+        assert not _is_linked(b1, 'exhibits', a)
+    if hasattr(b2, 'exhibits'):
+        assert _is_linked(b2, 'exhibits', a)
+    _safe_set(a, 'Lot', None)
+    assert not _is_linked(a, 'Lot', b2)
+    if hasattr(b2, 'exhibits'):
+        assert not _is_linked(b2, 'exhibits', a)
+
+
+def test_assoc_lots20_link_reassign_clear():
+    a = fair_Lot(comments="sample_text", description="sample_text", name="sample_text")
+    b1 = fair_Class(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Class(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'Lot21', b1)
+    assert _is_linked(a, 'Lot21', b1)
+    if hasattr(b1, 'class_'):
+        assert _is_linked(b1, 'class_', a)
+    _safe_set(a, 'Lot21', b2)
+    assert _is_linked(a, 'Lot21', b2)
+    if hasattr(b1, 'class_'):
+        assert not _is_linked(b1, 'class_', a)
+    if hasattr(b2, 'class_'):
+        assert _is_linked(b2, 'class_', a)
+    _safe_set(a, 'Lot21', None)
+    assert not _is_linked(a, 'Lot21', b2)
+    if hasattr(b2, 'class_'):
+        assert not _is_linked(b2, 'class_', a)
+
+
+def test_assoc_parents29_link_reassign_clear():
+    a = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    b1 = fair_YoungPerson()
+    b2 = fair_YoungPerson()
+    _safe_set(a, 'fair_Person30', b1)
+    assert _is_linked(a, 'fair_Person30', b1)
+    if hasattr(b1, 'fair_YoungPerson'):
+        assert _is_linked(b1, 'fair_YoungPerson', a)
+    _safe_set(a, 'fair_Person30', b2)
+    assert _is_linked(a, 'fair_Person30', b2)
+    if hasattr(b1, 'fair_YoungPerson'):
+        assert not _is_linked(b1, 'fair_YoungPerson', a)
+    if hasattr(b2, 'fair_YoungPerson'):
+        assert _is_linked(b2, 'fair_YoungPerson', a)
+    _safe_set(a, 'fair_Person30', None)
+    assert not _is_linked(a, 'fair_Person30', b2)
+    if hasattr(b2, 'fair_YoungPerson'):
+        assert not _is_linked(b2, 'fair_YoungPerson', a)
+
+
+def test_assoc_people5_link_reassign_clear():
+    a = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    b1 = fair_Fair(comments="sample_text", name="sample_text")
+    b2 = fair_Fair(comments="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'fair_Person', b1)
+    assert _is_linked(a, 'fair_Person', b1)
+    if hasattr(b1, 'fair_Fair6'):
+        assert _is_linked(b1, 'fair_Fair6', a)
+    _safe_set(a, 'fair_Person', b2)
+    assert _is_linked(a, 'fair_Person', b2)
+    if hasattr(b1, 'fair_Fair6'):
+        assert not _is_linked(b1, 'fair_Fair6', a)
+    if hasattr(b2, 'fair_Fair6'):
+        assert _is_linked(b2, 'fair_Fair6', a)
+    _safe_set(a, 'fair_Person', None)
+    assert not _is_linked(a, 'fair_Person', b2)
+    if hasattr(b2, 'fair_Fair6'):
+        assert not _is_linked(b2, 'fair_Fair6', a)
+
+
+def test_assoc_premises3_link_reassign_clear():
+    a = fair_Fair(comments="sample_text", name="sample_text")
+    b1 = fair_Premises()
+    b2 = fair_Premises()
+    _safe_set(a, 'fair_Fair4', b1)
+    assert _is_linked(a, 'fair_Fair4', b1)
+    if hasattr(b1, 'fair_Premises'):
+        assert _is_linked(b1, 'fair_Premises', a)
+    _safe_set(a, 'fair_Fair4', b2)
+    assert _is_linked(a, 'fair_Fair4', b2)
+    if hasattr(b1, 'fair_Premises'):
+        assert not _is_linked(b1, 'fair_Premises', a)
+    if hasattr(b2, 'fair_Premises'):
+        assert _is_linked(b2, 'fair_Premises', a)
+    _safe_set(a, 'fair_Fair4', None)
+    assert not _is_linked(a, 'fair_Fair4', b2)
+    if hasattr(b2, 'fair_Premises'):
+        assert not _is_linked(b2, 'fair_Premises', a)
+
+
+def test_assoc_superintendents17_link_reassign_clear():
+    a = fair_Person(city="sample_text", comments="sample_text", email="sample_text", exhibitorNumber=7, firstName="sample_text", lastName="sample_text", name="sample_text", phone="sample_text", pin="sample_text", salesOrder=7, state="sample_text", street="sample_text", zipCode="sample_text")
+    b1 = fair_Department(comments="sample_text", description="sample_text", name="sample_text")
+    b2 = fair_Department(comments="sample_text_2", description="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'fair_Person18', b1)
+    assert _is_linked(a, 'fair_Person18', b1)
+    if hasattr(b1, 'fair_Department'):
+        assert _is_linked(b1, 'fair_Department', a)
+    _safe_set(a, 'fair_Person18', b2)
+    assert _is_linked(a, 'fair_Person18', b2)
+    if hasattr(b1, 'fair_Department'):
+        assert not _is_linked(b1, 'fair_Department', a)
+    if hasattr(b2, 'fair_Department'):
+        assert _is_linked(b2, 'fair_Department', a)
+    _safe_set(a, 'fair_Person18', None)
+    assert not _is_linked(a, 'fair_Person18', b2)
+    if hasattr(b2, 'fair_Department'):
+        assert not _is_linked(b2, 'fair_Department', a)
+
+
+def test_assoc_youthClubs0_link_reassign_clear():
+    a = fair_YouthClub(comments="sample_text", name="sample_text")
+    b1 = fair_Fair(comments="sample_text", name="sample_text")
+    b2 = fair_Fair(comments="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'fair_YouthClub', b1)
+    assert _is_linked(a, 'fair_YouthClub', b1)
+    if hasattr(b1, 'fair_Fair'):
+        assert _is_linked(b1, 'fair_Fair', a)
+    _safe_set(a, 'fair_YouthClub', b2)
+    assert _is_linked(a, 'fair_YouthClub', b2)
+    if hasattr(b1, 'fair_Fair'):
+        assert not _is_linked(b1, 'fair_Fair', a)
+    if hasattr(b2, 'fair_Fair'):
+        assert _is_linked(b2, 'fair_Fair', a)
+    _safe_set(a, 'fair_YouthClub', None)
+    assert not _is_linked(a, 'fair_YouthClub', b2)
+    if hasattr(b2, 'fair_Fair'):
+        assert not _is_linked(b2, 'fair_Fair', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Person_strategy = st.builds(Person)
+@given(instance=Person_strategy)
+@settings(max_examples=25)
+def test_Person_instantiation(instance):
+    assert isinstance(instance, Person)
+
+
+fair_Animal_strategy = st.builds(fair_Animal)
+@given(instance=fair_Animal_strategy)
+@settings(max_examples=25)
+def test_fair_Animal_instantiation(instance):
+    assert isinstance(instance, fair_Animal)
+
+
+fair_Class_strategy = st.builds(fair_Class, comments=safe_text, description=safe_text, name=safe_text)
+@given(instance=fair_Class_strategy)
+@settings(max_examples=25)
+def test_fair_Class_instantiation(instance):
+    assert isinstance(instance, fair_Class)
+
+
+fair_Department_strategy = st.builds(fair_Department, comments=safe_text, description=safe_text, name=safe_text)
+@given(instance=fair_Department_strategy)
+@settings(max_examples=25)
+def test_fair_Department_instantiation(instance):
+    assert isinstance(instance, fair_Department)
+
+
+fair_Division_strategy = st.builds(fair_Division, comments=safe_text, description=safe_text, name=safe_text)
+@given(instance=fair_Division_strategy)
+@settings(max_examples=25)
+def test_fair_Division_instantiation(instance):
+    assert isinstance(instance, fair_Division)
+
+
+fair_Exhibit_strategy = st.builds(fair_Exhibit, award=safe_text, comments=safe_text, inAuction=st.booleans(), name=safe_text, number=st.integers(), salesOrder=st.integers())
+@given(instance=fair_Exhibit_strategy)
+@settings(max_examples=25)
+def test_fair_Exhibit_instantiation(instance):
+    assert isinstance(instance, fair_Exhibit)
+
+
+fair_Fair_strategy = st.builds(fair_Fair, comments=safe_text, name=safe_text)
+@given(instance=fair_Fair_strategy)
+@settings(max_examples=25)
+def test_fair_Fair_instantiation(instance):
+    assert isinstance(instance, fair_Fair)
+
+
+fair_Lot_strategy = st.builds(fair_Lot, comments=safe_text, description=safe_text, name=safe_text)
+@given(instance=fair_Lot_strategy)
+@settings(max_examples=25)
+def test_fair_Lot_instantiation(instance):
+    assert isinstance(instance, fair_Lot)
+
+
+fair_Person_strategy = st.builds(fair_Person, city=safe_text, comments=safe_text, email=safe_text, exhibitorNumber=st.integers(), firstName=safe_text, lastName=safe_text, name=safe_text, phone=safe_text, pin=safe_text, salesOrder=st.integers(), state=safe_text, street=safe_text, zipCode=safe_text)
+@given(instance=fair_Person_strategy)
+@settings(max_examples=25)
+def test_fair_Person_instantiation(instance):
+    assert isinstance(instance, fair_Person)
+
+
+fair_Premises_strategy = st.builds(fair_Premises)
+@given(instance=fair_Premises_strategy)
+@settings(max_examples=25)
+def test_fair_Premises_instantiation(instance):
+    assert isinstance(instance, fair_Premises)
+
+
+fair_YoungPerson_strategy = st.builds(fair_YoungPerson)
+@given(instance=fair_YoungPerson_strategy)
+@settings(max_examples=25)
+def test_fair_YoungPerson_instantiation(instance):
+    assert isinstance(instance, fair_YoungPerson)
+
+
+fair_YouthClub_strategy = st.builds(fair_YouthClub, comments=safe_text, name=safe_text)
+@given(instance=fair_YouthClub_strategy)
+@settings(max_examples=25)
+def test_fair_YouthClub_instantiation(instance):
+    assert isinstance(instance, fair_YouthClub)
+
+

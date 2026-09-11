@@ -12,6 +12,7 @@ class E(Enum):
 # Definition of Classes
 ############################################
 
+    pass
 class a_C2:
 
     pass

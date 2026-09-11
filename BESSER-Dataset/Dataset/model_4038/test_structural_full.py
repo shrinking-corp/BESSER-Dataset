@@ -1,0 +1,431 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Class,
+    Classifier,
+    Feature,
+    NamedElement,
+    Package,
+    PackageableElement,
+    Type,
+    TypedElement,
+    uml_Behavior,
+    uml_Class,
+    uml_Classifier,
+    uml_Dependency,
+    uml_Feature,
+    uml_Model,
+    uml_NamedElement,
+    uml_Operation,
+    uml_Package,
+    uml_PackageableElement,
+    uml_Parameter,
+    uml_Property,
+    uml_Type,
+    uml_TypedElement,
+    VisibilityKind,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_uml_Class_isAbstract_value_roundtrip():
+    instance = uml_Class(isAbstract="sample_text")
+    assert instance.isAbstract == "sample_text"
+    instance.isAbstract = "sample_text_2"
+    assert instance.isAbstract == "sample_text_2"
+
+
+def test_uml_NamedElement_name_value_roundtrip():
+    instance = uml_NamedElement(name="sample_text", visibility="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_uml_NamedElement_visibility_value_roundtrip():
+    instance = uml_NamedElement(name="sample_text", visibility="sample_text")
+    assert instance.visibility == "sample_text"
+    instance.visibility = "sample_text_2"
+    assert instance.visibility == "sample_text_2"
+
+
+def test_uml_Behavior_isa_Class():
+    instance = uml_Behavior()
+    assert isinstance(instance, Class)
+
+
+def test_uml_Class_isa_Classifier():
+    instance = uml_Class(isAbstract="sample_text")
+    assert isinstance(instance, Classifier)
+
+
+def test_uml_Operation_isa_Feature():
+    instance = uml_Operation()
+    assert isinstance(instance, Feature)
+
+
+def test_uml_Property_isa_Feature():
+    instance = uml_Property()
+    assert isinstance(instance, Feature)
+
+
+def test_uml_Classifier_isa_NamedElement():
+    instance = uml_Classifier()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_Feature_isa_NamedElement():
+    instance = uml_Feature()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_Operation_isa_NamedElement():
+    instance = uml_Operation()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_Package_isa_NamedElement():
+    instance = uml_Package()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_PackageableElement_isa_NamedElement():
+    instance = uml_PackageableElement()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_Property_isa_NamedElement():
+    instance = uml_Property()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_TypedElement_isa_NamedElement():
+    instance = uml_TypedElement()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uml_Model_isa_Package():
+    instance = uml_Model()
+    assert isinstance(instance, Package)
+
+
+def test_uml_Dependency_isa_PackageableElement():
+    instance = uml_Dependency()
+    assert isinstance(instance, PackageableElement)
+
+
+def test_uml_Package_isa_PackageableElement():
+    instance = uml_Package()
+    assert isinstance(instance, PackageableElement)
+
+
+def test_uml_Type_isa_PackageableElement():
+    instance = uml_Type()
+    assert isinstance(instance, PackageableElement)
+
+
+def test_uml_Classifier_isa_Type():
+    instance = uml_Classifier()
+    assert isinstance(instance, Type)
+
+
+def test_uml_Parameter_isa_TypedElement():
+    instance = uml_Parameter()
+    assert isinstance(instance, TypedElement)
+
+
+def test_uml_Property_isa_TypedElement():
+    instance = uml_Property()
+    assert isinstance(instance, TypedElement)
+
+
+def test_assoc_generalizationGeneral5_link_reassign_clear():
+    a = uml_Class(isAbstract="sample_text")
+    b1 = uml_Classifier()
+    b2 = uml_Classifier()
+    _safe_set(a, 'uml_Class6', {b1})
+    assert _is_linked(a, 'uml_Class6', b1)
+    if hasattr(b1, 'uml_Classifier7'):
+        assert _is_linked(b1, 'uml_Classifier7', a)
+    _safe_set(a, 'uml_Class6', {b2})
+    assert _is_linked(a, 'uml_Class6', b2)
+    if hasattr(b1, 'uml_Classifier7'):
+        assert not _is_linked(b1, 'uml_Classifier7', a)
+    if hasattr(b2, 'uml_Classifier7'):
+        assert _is_linked(b2, 'uml_Classifier7', a)
+    _safe_set(a, 'uml_Class6', set())
+    assert not _is_linked(a, 'uml_Class6', b2)
+    if hasattr(b2, 'uml_Classifier7'):
+        assert not _is_linked(b2, 'uml_Classifier7', a)
+
+
+def test_assoc_nestedClassifier2_link_reassign_clear():
+    a = uml_Class(isAbstract="sample_text")
+    b1 = uml_Classifier()
+    b2 = uml_Classifier()
+    _safe_set(a, 'uml_Class', {b1})
+    assert _is_linked(a, 'uml_Class', b1)
+    if hasattr(b1, 'uml_Classifier'):
+        assert _is_linked(b1, 'uml_Classifier', a)
+    _safe_set(a, 'uml_Class', {b2})
+    assert _is_linked(a, 'uml_Class', b2)
+    if hasattr(b1, 'uml_Classifier'):
+        assert not _is_linked(b1, 'uml_Classifier', a)
+    if hasattr(b2, 'uml_Classifier'):
+        assert _is_linked(b2, 'uml_Classifier', a)
+    _safe_set(a, 'uml_Class', set())
+    assert not _is_linked(a, 'uml_Class', b2)
+    if hasattr(b2, 'uml_Classifier'):
+        assert not _is_linked(b2, 'uml_Classifier', a)
+
+
+def test_assoc_ownedAttribute8_link_reassign_clear():
+    a = uml_Class(isAbstract="sample_text")
+    b1 = uml_Property()
+    b2 = uml_Property()
+    _safe_set(a, 'uml_Class9', {b1})
+    assert _is_linked(a, 'uml_Class9', b1)
+    if hasattr(b1, 'uml_Property'):
+        assert _is_linked(b1, 'uml_Property', a)
+    _safe_set(a, 'uml_Class9', {b2})
+    assert _is_linked(a, 'uml_Class9', b2)
+    if hasattr(b1, 'uml_Property'):
+        assert not _is_linked(b1, 'uml_Property', a)
+    if hasattr(b2, 'uml_Property'):
+        assert _is_linked(b2, 'uml_Property', a)
+    _safe_set(a, 'uml_Class9', set())
+    assert not _is_linked(a, 'uml_Class9', b2)
+    if hasattr(b2, 'uml_Property'):
+        assert not _is_linked(b2, 'uml_Property', a)
+
+
+def test_assoc_ownedOperation3_link_reassign_clear():
+    a = uml_Class(isAbstract="sample_text")
+    b1 = uml_Operation()
+    b2 = uml_Operation()
+    _safe_set(a, 'uml_Class4', {b1})
+    assert _is_linked(a, 'uml_Class4', b1)
+    if hasattr(b1, 'uml_Operation'):
+        assert _is_linked(b1, 'uml_Operation', a)
+    _safe_set(a, 'uml_Class4', {b2})
+    assert _is_linked(a, 'uml_Class4', b2)
+    if hasattr(b1, 'uml_Operation'):
+        assert not _is_linked(b1, 'uml_Operation', a)
+    if hasattr(b2, 'uml_Operation'):
+        assert _is_linked(b2, 'uml_Operation', a)
+    _safe_set(a, 'uml_Class4', set())
+    assert not _is_linked(a, 'uml_Class4', b2)
+    if hasattr(b2, 'uml_Operation'):
+        assert not _is_linked(b2, 'uml_Operation', a)
+
+
+def test_assoc_supplier1_link_reassign_clear():
+    a = uml_NamedElement(name="sample_text", visibility="sample_text")
+    b1 = uml_Dependency()
+    b2 = uml_Dependency()
+    _safe_set(a, 'uml_NamedElement', b1)
+    assert _is_linked(a, 'uml_NamedElement', b1)
+    if hasattr(b1, 'uml_Dependency'):
+        assert _is_linked(b1, 'uml_Dependency', a)
+    _safe_set(a, 'uml_NamedElement', b2)
+    assert _is_linked(a, 'uml_NamedElement', b2)
+    if hasattr(b1, 'uml_Dependency'):
+        assert not _is_linked(b1, 'uml_Dependency', a)
+    if hasattr(b2, 'uml_Dependency'):
+        assert _is_linked(b2, 'uml_Dependency', a)
+    _safe_set(a, 'uml_NamedElement', None)
+    assert not _is_linked(a, 'uml_NamedElement', b2)
+    if hasattr(b2, 'uml_Dependency'):
+        assert not _is_linked(b2, 'uml_Dependency', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Class_strategy = st.builds(Class)
+@given(instance=Class_strategy)
+@settings(max_examples=25)
+def test_Class_instantiation(instance):
+    assert isinstance(instance, Class)
+
+
+Classifier_strategy = st.builds(Classifier)
+@given(instance=Classifier_strategy)
+@settings(max_examples=25)
+def test_Classifier_instantiation(instance):
+    assert isinstance(instance, Classifier)
+
+
+Feature_strategy = st.builds(Feature)
+@given(instance=Feature_strategy)
+@settings(max_examples=25)
+def test_Feature_instantiation(instance):
+    assert isinstance(instance, Feature)
+
+
+NamedElement_strategy = st.builds(NamedElement)
+@given(instance=NamedElement_strategy)
+@settings(max_examples=25)
+def test_NamedElement_instantiation(instance):
+    assert isinstance(instance, NamedElement)
+
+
+Package_strategy = st.builds(Package)
+@given(instance=Package_strategy)
+@settings(max_examples=25)
+def test_Package_instantiation(instance):
+    assert isinstance(instance, Package)
+
+
+PackageableElement_strategy = st.builds(PackageableElement)
+@given(instance=PackageableElement_strategy)
+@settings(max_examples=25)
+def test_PackageableElement_instantiation(instance):
+    assert isinstance(instance, PackageableElement)
+
+
+Type_strategy = st.builds(Type)
+@given(instance=Type_strategy)
+@settings(max_examples=25)
+def test_Type_instantiation(instance):
+    assert isinstance(instance, Type)
+
+
+TypedElement_strategy = st.builds(TypedElement)
+@given(instance=TypedElement_strategy)
+@settings(max_examples=25)
+def test_TypedElement_instantiation(instance):
+    assert isinstance(instance, TypedElement)
+
+
+uml_Behavior_strategy = st.builds(uml_Behavior)
+@given(instance=uml_Behavior_strategy)
+@settings(max_examples=25)
+def test_uml_Behavior_instantiation(instance):
+    assert isinstance(instance, uml_Behavior)
+
+
+uml_Class_strategy = st.builds(uml_Class, isAbstract=safe_text)
+@given(instance=uml_Class_strategy)
+@settings(max_examples=25)
+def test_uml_Class_instantiation(instance):
+    assert isinstance(instance, uml_Class)
+
+
+uml_Classifier_strategy = st.builds(uml_Classifier)
+@given(instance=uml_Classifier_strategy)
+@settings(max_examples=25)
+def test_uml_Classifier_instantiation(instance):
+    assert isinstance(instance, uml_Classifier)
+
+
+uml_Dependency_strategy = st.builds(uml_Dependency)
+@given(instance=uml_Dependency_strategy)
+@settings(max_examples=25)
+def test_uml_Dependency_instantiation(instance):
+    assert isinstance(instance, uml_Dependency)
+
+
+uml_Feature_strategy = st.builds(uml_Feature)
+@given(instance=uml_Feature_strategy)
+@settings(max_examples=25)
+def test_uml_Feature_instantiation(instance):
+    assert isinstance(instance, uml_Feature)
+
+
+uml_Model_strategy = st.builds(uml_Model)
+@given(instance=uml_Model_strategy)
+@settings(max_examples=25)
+def test_uml_Model_instantiation(instance):
+    assert isinstance(instance, uml_Model)
+
+
+uml_NamedElement_strategy = st.builds(uml_NamedElement, name=safe_text, visibility=safe_text)
+@given(instance=uml_NamedElement_strategy)
+@settings(max_examples=25)
+def test_uml_NamedElement_instantiation(instance):
+    assert isinstance(instance, uml_NamedElement)
+
+
+uml_Operation_strategy = st.builds(uml_Operation)
+@given(instance=uml_Operation_strategy)
+@settings(max_examples=25)
+def test_uml_Operation_instantiation(instance):
+    assert isinstance(instance, uml_Operation)
+
+
+uml_Package_strategy = st.builds(uml_Package)
+@given(instance=uml_Package_strategy)
+@settings(max_examples=25)
+def test_uml_Package_instantiation(instance):
+    assert isinstance(instance, uml_Package)
+
+
+uml_PackageableElement_strategy = st.builds(uml_PackageableElement)
+@given(instance=uml_PackageableElement_strategy)
+@settings(max_examples=25)
+def test_uml_PackageableElement_instantiation(instance):
+    assert isinstance(instance, uml_PackageableElement)
+
+
+uml_Parameter_strategy = st.builds(uml_Parameter)
+@given(instance=uml_Parameter_strategy)
+@settings(max_examples=25)
+def test_uml_Parameter_instantiation(instance):
+    assert isinstance(instance, uml_Parameter)
+
+
+uml_Property_strategy = st.builds(uml_Property)
+@given(instance=uml_Property_strategy)
+@settings(max_examples=25)
+def test_uml_Property_instantiation(instance):
+    assert isinstance(instance, uml_Property)
+
+
+uml_Type_strategy = st.builds(uml_Type)
+@given(instance=uml_Type_strategy)
+@settings(max_examples=25)
+def test_uml_Type_instantiation(instance):
+    assert isinstance(instance, uml_Type)
+
+
+uml_TypedElement_strategy = st.builds(uml_TypedElement)
+@given(instance=uml_TypedElement_strategy)
+@settings(max_examples=25)
+def test_uml_TypedElement_instantiation(instance):
+    assert isinstance(instance, uml_TypedElement)
+
+

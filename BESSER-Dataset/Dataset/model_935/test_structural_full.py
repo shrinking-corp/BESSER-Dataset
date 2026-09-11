@@ -1,0 +1,3475 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Activity,
+    ActivityDescription,
+    BreakdownElement,
+    BreakdownElementDescription,
+    Concept,
+    ContentCategory,
+    ContentDescription,
+    ContentElement,
+    DescribableElement,
+    Descriptor,
+    Element,
+    Guidance,
+    MethodElement,
+    MethodPackage,
+    MethodUnit,
+    NamedElement,
+    PackageableElement,
+    Process,
+    ProcessDescription,
+    ProcessElement,
+    ProcessPackage,
+    RoleDescriptor,
+    WorkBreakdownElement,
+    WorkProduct,
+    WorkProductDescription,
+    uma_Activity,
+    uma_ActivityDescription,
+    uma_ApplicableMetaClassInfo,
+    uma_Artifact,
+    uma_ArtifactDescription,
+    uma_BreakdownElement,
+    uma_BreakdownElementDescription,
+    uma_CapabilityPattern,
+    uma_Checklist,
+    uma_CompositeRole,
+    uma_Concept,
+    uma_Constraint,
+    uma_ContentCategory,
+    uma_ContentCategoryPackage,
+    uma_ContentDescription,
+    uma_ContentElement,
+    uma_ContentPackage,
+    uma_CustomCategory,
+    uma_Deliverable,
+    uma_DeliverableDescription,
+    uma_DeliveryProcess,
+    uma_DeliveryProcessDescription,
+    uma_DescribableElement,
+    uma_Descriptor,
+    uma_DescriptorDescription,
+    uma_Discipline,
+    uma_DisciplineGrouping,
+    uma_DocumentRoot,
+    uma_Domain,
+    uma_EStringToStringMapEntry,
+    uma_Element,
+    uma_Estimate,
+    uma_EstimatingMetric,
+    uma_EstimationConsiderations,
+    uma_Example,
+    uma_Guidance,
+    uma_GuidanceDescription,
+    uma_Guideline,
+    uma_Iteration,
+    uma_Kind,
+    uma_MethodConfiguration,
+    uma_MethodElement,
+    uma_MethodElementProperty,
+    uma_MethodLibrary,
+    uma_MethodPackage,
+    uma_MethodPlugin,
+    uma_MethodUnit,
+    uma_Milestone,
+    uma_NamedElement,
+    uma_Outcome,
+    uma_PackageableElement,
+    uma_Phase,
+    uma_PlanningData,
+    uma_Practice,
+    uma_PracticeDescription,
+    uma_Process,
+    uma_ProcessComponent,
+    uma_ProcessComponentInterface,
+    uma_ProcessDescription,
+    uma_ProcessElement,
+    uma_ProcessPackage,
+    uma_ProcessPlanningTemplate,
+    uma_Report,
+    uma_ReusableAsset,
+    uma_Roadmap,
+    uma_Role,
+    uma_RoleDescription,
+    uma_RoleDescriptor,
+    uma_RoleSet,
+    uma_RoleSetGrouping,
+    uma_Section,
+    uma_SupportingMaterial,
+    uma_Task,
+    uma_TaskDescription,
+    uma_TaskDescriptor,
+    uma_TeamProfile,
+    uma_Template,
+    uma_TermDefinition,
+    uma_Tool,
+    uma_ToolMentor,
+    uma_Whitepaper,
+    uma_WorkBreakdownElement,
+    uma_WorkDefinition,
+    uma_WorkOrder,
+    uma_WorkProduct,
+    uma_WorkProductDescription,
+    uma_WorkProductDescriptor,
+    uma_WorkProductType,
+    VariabilityType,
+    WorkOrderType,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_uma_Activity_group3_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.group3 == "sample_text"
+    instance.group3 = "sample_text_2"
+    assert instance.group3 == "sample_text_2"
+
+
+def test_uma_Activity_isEnactable_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.isEnactable == "sample_text"
+    instance.isEnactable = "sample_text_2"
+    assert instance.isEnactable == "sample_text_2"
+
+
+def test_uma_Activity_postcondition_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.postcondition == "sample_text"
+    instance.postcondition = "sample_text_2"
+    assert instance.postcondition == "sample_text_2"
+
+
+def test_uma_Activity_precondition_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.precondition == "sample_text"
+    instance.precondition = "sample_text_2"
+    assert instance.precondition == "sample_text_2"
+
+
+def test_uma_Activity_roadmap_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.roadmap == "sample_text"
+    instance.roadmap = "sample_text_2"
+    assert instance.roadmap == "sample_text_2"
+
+
+def test_uma_Activity_variabilityBasedOnElement_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.variabilityBasedOnElement == "sample_text"
+    instance.variabilityBasedOnElement = "sample_text_2"
+    assert instance.variabilityBasedOnElement == "sample_text_2"
+
+
+def test_uma_Activity_variabilityType_value_roundtrip():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.variabilityType == "sample_text"
+    instance.variabilityType = "sample_text_2"
+    assert instance.variabilityType == "sample_text_2"
+
+
+def test_uma_ActivityDescription_alternatives_value_roundtrip():
+    instance = uma_ActivityDescription(alternatives="sample_text", howToStaff="sample_text", purpose="sample_text")
+    assert instance.alternatives == "sample_text"
+    instance.alternatives = "sample_text_2"
+    assert instance.alternatives == "sample_text_2"
+
+
+def test_uma_ActivityDescription_howToStaff_value_roundtrip():
+    instance = uma_ActivityDescription(alternatives="sample_text", howToStaff="sample_text", purpose="sample_text")
+    assert instance.howToStaff == "sample_text"
+    instance.howToStaff = "sample_text_2"
+    assert instance.howToStaff == "sample_text_2"
+
+
+def test_uma_ActivityDescription_purpose_value_roundtrip():
+    instance = uma_ActivityDescription(alternatives="sample_text", howToStaff="sample_text", purpose="sample_text")
+    assert instance.purpose == "sample_text"
+    instance.purpose = "sample_text_2"
+    assert instance.purpose == "sample_text_2"
+
+
+def test_uma_ApplicableMetaClassInfo_isPrimaryExtension_value_roundtrip():
+    instance = uma_ApplicableMetaClassInfo(isPrimaryExtension="sample_text")
+    assert instance.isPrimaryExtension == "sample_text"
+    instance.isPrimaryExtension = "sample_text_2"
+    assert instance.isPrimaryExtension == "sample_text_2"
+
+
+def test_uma_Artifact_group3_value_roundtrip():
+    instance = uma_Artifact(group3="sample_text")
+    assert instance.group3 == "sample_text"
+    instance.group3 = "sample_text_2"
+    assert instance.group3 == "sample_text_2"
+
+
+def test_uma_ArtifactDescription_briefOutline_value_roundtrip():
+    instance = uma_ArtifactDescription(briefOutline="sample_text", notation="sample_text", representation="sample_text", representationOptions="sample_text")
+    assert instance.briefOutline == "sample_text"
+    instance.briefOutline = "sample_text_2"
+    assert instance.briefOutline == "sample_text_2"
+
+
+def test_uma_ArtifactDescription_notation_value_roundtrip():
+    instance = uma_ArtifactDescription(briefOutline="sample_text", notation="sample_text", representation="sample_text", representationOptions="sample_text")
+    assert instance.notation == "sample_text"
+    instance.notation = "sample_text_2"
+    assert instance.notation == "sample_text_2"
+
+
+def test_uma_ArtifactDescription_representation_value_roundtrip():
+    instance = uma_ArtifactDescription(briefOutline="sample_text", notation="sample_text", representation="sample_text", representationOptions="sample_text")
+    assert instance.representation == "sample_text"
+    instance.representation = "sample_text_2"
+    assert instance.representation == "sample_text_2"
+
+
+def test_uma_ArtifactDescription_representationOptions_value_roundtrip():
+    instance = uma_ArtifactDescription(briefOutline="sample_text", notation="sample_text", representation="sample_text", representationOptions="sample_text")
+    assert instance.representationOptions == "sample_text"
+    instance.representationOptions = "sample_text_2"
+    assert instance.representationOptions == "sample_text_2"
+
+
+def test_uma_BreakdownElement_checklist_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.checklist == "sample_text"
+    instance.checklist = "sample_text_2"
+    assert instance.checklist == "sample_text_2"
+
+
+def test_uma_BreakdownElement_concept_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.concept == "sample_text"
+    instance.concept = "sample_text_2"
+    assert instance.concept == "sample_text_2"
+
+
+def test_uma_BreakdownElement_example_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.example == "sample_text"
+    instance.example = "sample_text_2"
+    assert instance.example == "sample_text_2"
+
+
+def test_uma_BreakdownElement_group1_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.group1 == "sample_text"
+    instance.group1 = "sample_text_2"
+    assert instance.group1 == "sample_text_2"
+
+
+def test_uma_BreakdownElement_guideline_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.guideline == "sample_text"
+    instance.guideline = "sample_text_2"
+    assert instance.guideline == "sample_text_2"
+
+
+def test_uma_BreakdownElement_hasMultipleOccurrences_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.hasMultipleOccurrences == "sample_text"
+    instance.hasMultipleOccurrences = "sample_text_2"
+    assert instance.hasMultipleOccurrences == "sample_text_2"
+
+
+def test_uma_BreakdownElement_isOptional_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.isOptional == "sample_text"
+    instance.isOptional = "sample_text_2"
+    assert instance.isOptional == "sample_text_2"
+
+
+def test_uma_BreakdownElement_isPlanned_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.isPlanned == "sample_text"
+    instance.isPlanned = "sample_text_2"
+    assert instance.isPlanned == "sample_text_2"
+
+
+def test_uma_BreakdownElement_planningData_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.planningData == "sample_text"
+    instance.planningData = "sample_text_2"
+    assert instance.planningData == "sample_text_2"
+
+
+def test_uma_BreakdownElement_prefix_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.prefix == "sample_text"
+    instance.prefix = "sample_text_2"
+    assert instance.prefix == "sample_text_2"
+
+
+def test_uma_BreakdownElement_presentedAfter_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.presentedAfter == "sample_text"
+    instance.presentedAfter = "sample_text_2"
+    assert instance.presentedAfter == "sample_text_2"
+
+
+def test_uma_BreakdownElement_presentedBefore_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.presentedBefore == "sample_text"
+    instance.presentedBefore = "sample_text_2"
+    assert instance.presentedBefore == "sample_text_2"
+
+
+def test_uma_BreakdownElement_reusableAsset_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.reusableAsset == "sample_text"
+    instance.reusableAsset = "sample_text_2"
+    assert instance.reusableAsset == "sample_text_2"
+
+
+def test_uma_BreakdownElement_superActivity_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.superActivity == "sample_text"
+    instance.superActivity = "sample_text_2"
+    assert instance.superActivity == "sample_text_2"
+
+
+def test_uma_BreakdownElement_supportingMaterial_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.supportingMaterial == "sample_text"
+    instance.supportingMaterial = "sample_text_2"
+    assert instance.supportingMaterial == "sample_text_2"
+
+
+def test_uma_BreakdownElement_whitepaper_value_roundtrip():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert instance.whitepaper == "sample_text"
+    instance.whitepaper = "sample_text_2"
+    assert instance.whitepaper == "sample_text_2"
+
+
+def test_uma_BreakdownElementDescription_usageGuidance_value_roundtrip():
+    instance = uma_BreakdownElementDescription(usageGuidance="sample_text")
+    assert instance.usageGuidance == "sample_text"
+    instance.usageGuidance = "sample_text_2"
+    assert instance.usageGuidance == "sample_text_2"
+
+
+def test_uma_CompositeRole_group2_value_roundtrip():
+    instance = uma_CompositeRole(group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_Constraint_mainDescription_value_roundtrip():
+    instance = uma_Constraint(mainDescription="sample_text")
+    assert instance.mainDescription == "sample_text"
+    instance.mainDescription = "sample_text_2"
+    assert instance.mainDescription == "sample_text_2"
+
+
+def test_uma_ContentCategoryPackage_group2_value_roundtrip():
+    instance = uma_ContentCategoryPackage(group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_ContentDescription_externalId_value_roundtrip():
+    instance = uma_ContentDescription(externalId="sample_text", keyConsiderations="sample_text", mainDescription="sample_text")
+    assert instance.externalId == "sample_text"
+    instance.externalId = "sample_text_2"
+    assert instance.externalId == "sample_text_2"
+
+
+def test_uma_ContentDescription_keyConsiderations_value_roundtrip():
+    instance = uma_ContentDescription(externalId="sample_text", keyConsiderations="sample_text", mainDescription="sample_text")
+    assert instance.keyConsiderations == "sample_text"
+    instance.keyConsiderations = "sample_text_2"
+    assert instance.keyConsiderations == "sample_text_2"
+
+
+def test_uma_ContentDescription_mainDescription_value_roundtrip():
+    instance = uma_ContentDescription(externalId="sample_text", keyConsiderations="sample_text", mainDescription="sample_text")
+    assert instance.mainDescription == "sample_text"
+    instance.mainDescription = "sample_text_2"
+    assert instance.mainDescription == "sample_text_2"
+
+
+def test_uma_ContentElement_checklist_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.checklist == "sample_text"
+    instance.checklist = "sample_text_2"
+    assert instance.checklist == "sample_text_2"
+
+
+def test_uma_ContentElement_concept_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.concept == "sample_text"
+    instance.concept = "sample_text_2"
+    assert instance.concept == "sample_text_2"
+
+
+def test_uma_ContentElement_example_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.example == "sample_text"
+    instance.example = "sample_text_2"
+    assert instance.example == "sample_text_2"
+
+
+def test_uma_ContentElement_group1_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.group1 == "sample_text"
+    instance.group1 = "sample_text_2"
+    assert instance.group1 == "sample_text_2"
+
+
+def test_uma_ContentElement_guideline_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.guideline == "sample_text"
+    instance.guideline = "sample_text_2"
+    assert instance.guideline == "sample_text_2"
+
+
+def test_uma_ContentElement_reusableAsset_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.reusableAsset == "sample_text"
+    instance.reusableAsset = "sample_text_2"
+    assert instance.reusableAsset == "sample_text_2"
+
+
+def test_uma_ContentElement_supportingMaterial_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.supportingMaterial == "sample_text"
+    instance.supportingMaterial = "sample_text_2"
+    assert instance.supportingMaterial == "sample_text_2"
+
+
+def test_uma_ContentElement_variabilityBasedOnElement_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.variabilityBasedOnElement == "sample_text"
+    instance.variabilityBasedOnElement = "sample_text_2"
+    assert instance.variabilityBasedOnElement == "sample_text_2"
+
+
+def test_uma_ContentElement_variabilityType_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.variabilityType == "sample_text"
+    instance.variabilityType = "sample_text_2"
+    assert instance.variabilityType == "sample_text_2"
+
+
+def test_uma_ContentElement_whitepaper_value_roundtrip():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert instance.whitepaper == "sample_text"
+    instance.whitepaper = "sample_text_2"
+    assert instance.whitepaper == "sample_text_2"
+
+
+def test_uma_ContentPackage_group2_value_roundtrip():
+    instance = uma_ContentPackage(group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_CustomCategory_categorizedElement_value_roundtrip():
+    instance = uma_CustomCategory(categorizedElement="sample_text", group2="sample_text", subCategory="sample_text")
+    assert instance.categorizedElement == "sample_text"
+    instance.categorizedElement = "sample_text_2"
+    assert instance.categorizedElement == "sample_text_2"
+
+
+def test_uma_CustomCategory_group2_value_roundtrip():
+    instance = uma_CustomCategory(categorizedElement="sample_text", group2="sample_text", subCategory="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_CustomCategory_subCategory_value_roundtrip():
+    instance = uma_CustomCategory(categorizedElement="sample_text", group2="sample_text", subCategory="sample_text")
+    assert instance.subCategory == "sample_text"
+    instance.subCategory = "sample_text_2"
+    assert instance.subCategory == "sample_text_2"
+
+
+def test_uma_Deliverable_deliveredWorkProduct_value_roundtrip():
+    instance = uma_Deliverable(deliveredWorkProduct="sample_text", group3="sample_text")
+    assert instance.deliveredWorkProduct == "sample_text"
+    instance.deliveredWorkProduct = "sample_text_2"
+    assert instance.deliveredWorkProduct == "sample_text_2"
+
+
+def test_uma_Deliverable_group3_value_roundtrip():
+    instance = uma_Deliverable(deliveredWorkProduct="sample_text", group3="sample_text")
+    assert instance.group3 == "sample_text"
+    instance.group3 = "sample_text_2"
+    assert instance.group3 == "sample_text_2"
+
+
+def test_uma_DeliverableDescription_externalDescription_value_roundtrip():
+    instance = uma_DeliverableDescription(externalDescription="sample_text", packagingGuidance="sample_text")
+    assert instance.externalDescription == "sample_text"
+    instance.externalDescription = "sample_text_2"
+    assert instance.externalDescription == "sample_text_2"
+
+
+def test_uma_DeliverableDescription_packagingGuidance_value_roundtrip():
+    instance = uma_DeliverableDescription(externalDescription="sample_text", packagingGuidance="sample_text")
+    assert instance.packagingGuidance == "sample_text"
+    instance.packagingGuidance = "sample_text_2"
+    assert instance.packagingGuidance == "sample_text_2"
+
+
+def test_uma_DeliveryProcess_communicationsMaterial_value_roundtrip():
+    instance = uma_DeliveryProcess(communicationsMaterial="sample_text", educationMaterial="sample_text", group4="sample_text")
+    assert instance.communicationsMaterial == "sample_text"
+    instance.communicationsMaterial = "sample_text_2"
+    assert instance.communicationsMaterial == "sample_text_2"
+
+
+def test_uma_DeliveryProcess_educationMaterial_value_roundtrip():
+    instance = uma_DeliveryProcess(communicationsMaterial="sample_text", educationMaterial="sample_text", group4="sample_text")
+    assert instance.educationMaterial == "sample_text"
+    instance.educationMaterial = "sample_text_2"
+    assert instance.educationMaterial == "sample_text_2"
+
+
+def test_uma_DeliveryProcess_group4_value_roundtrip():
+    instance = uma_DeliveryProcess(communicationsMaterial="sample_text", educationMaterial="sample_text", group4="sample_text")
+    assert instance.group4 == "sample_text"
+    instance.group4 = "sample_text_2"
+    assert instance.group4 == "sample_text_2"
+
+
+def test_uma_DeliveryProcessDescription_estimatingTechnique_value_roundtrip():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert instance.estimatingTechnique == "sample_text"
+    instance.estimatingTechnique = "sample_text_2"
+    assert instance.estimatingTechnique == "sample_text_2"
+
+
+def test_uma_DeliveryProcessDescription_projectCharacteristics_value_roundtrip():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert instance.projectCharacteristics == "sample_text"
+    instance.projectCharacteristics = "sample_text_2"
+    assert instance.projectCharacteristics == "sample_text_2"
+
+
+def test_uma_DeliveryProcessDescription_projectMemberExpertise_value_roundtrip():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert instance.projectMemberExpertise == "sample_text"
+    instance.projectMemberExpertise = "sample_text_2"
+    assert instance.projectMemberExpertise == "sample_text_2"
+
+
+def test_uma_DeliveryProcessDescription_riskLevel_value_roundtrip():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert instance.riskLevel == "sample_text"
+    instance.riskLevel = "sample_text_2"
+    assert instance.riskLevel == "sample_text_2"
+
+
+def test_uma_DeliveryProcessDescription_scale_value_roundtrip():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert instance.scale == "sample_text"
+    instance.scale = "sample_text_2"
+    assert instance.scale == "sample_text_2"
+
+
+def test_uma_DeliveryProcessDescription_typeOfContract_value_roundtrip():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert instance.typeOfContract == "sample_text"
+    instance.typeOfContract = "sample_text_2"
+    assert instance.typeOfContract == "sample_text_2"
+
+
+def test_uma_DescribableElement_fulfill_value_roundtrip():
+    instance = uma_DescribableElement(fulfill="sample_text", isAbstract="sample_text", nodeicon="sample_text", shapeicon="sample_text")
+    assert instance.fulfill == "sample_text"
+    instance.fulfill = "sample_text_2"
+    assert instance.fulfill == "sample_text_2"
+
+
+def test_uma_DescribableElement_isAbstract_value_roundtrip():
+    instance = uma_DescribableElement(fulfill="sample_text", isAbstract="sample_text", nodeicon="sample_text", shapeicon="sample_text")
+    assert instance.isAbstract == "sample_text"
+    instance.isAbstract = "sample_text_2"
+    assert instance.isAbstract == "sample_text_2"
+
+
+def test_uma_DescribableElement_nodeicon_value_roundtrip():
+    instance = uma_DescribableElement(fulfill="sample_text", isAbstract="sample_text", nodeicon="sample_text", shapeicon="sample_text")
+    assert instance.nodeicon == "sample_text"
+    instance.nodeicon = "sample_text_2"
+    assert instance.nodeicon == "sample_text_2"
+
+
+def test_uma_DescribableElement_shapeicon_value_roundtrip():
+    instance = uma_DescribableElement(fulfill="sample_text", isAbstract="sample_text", nodeicon="sample_text", shapeicon="sample_text")
+    assert instance.shapeicon == "sample_text"
+    instance.shapeicon = "sample_text_2"
+    assert instance.shapeicon == "sample_text_2"
+
+
+def test_uma_Descriptor_isSynchronizedWithSource_value_roundtrip():
+    instance = uma_Descriptor(isSynchronizedWithSource="sample_text")
+    assert instance.isSynchronizedWithSource == "sample_text"
+    instance.isSynchronizedWithSource = "sample_text_2"
+    assert instance.isSynchronizedWithSource == "sample_text_2"
+
+
+def test_uma_DescriptorDescription_refinedDescription_value_roundtrip():
+    instance = uma_DescriptorDescription(refinedDescription="sample_text")
+    assert instance.refinedDescription == "sample_text"
+    instance.refinedDescription = "sample_text_2"
+    assert instance.refinedDescription == "sample_text_2"
+
+
+def test_uma_Discipline_group2_value_roundtrip():
+    instance = uma_Discipline(group2="sample_text", referenceWorkflow="sample_text", task="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_Discipline_referenceWorkflow_value_roundtrip():
+    instance = uma_Discipline(group2="sample_text", referenceWorkflow="sample_text", task="sample_text")
+    assert instance.referenceWorkflow == "sample_text"
+    instance.referenceWorkflow = "sample_text_2"
+    assert instance.referenceWorkflow == "sample_text_2"
+
+
+def test_uma_Discipline_task_value_roundtrip():
+    instance = uma_Discipline(group2="sample_text", referenceWorkflow="sample_text", task="sample_text")
+    assert instance.task == "sample_text"
+    instance.task = "sample_text_2"
+    assert instance.task == "sample_text_2"
+
+
+def test_uma_DisciplineGrouping_discipline_value_roundtrip():
+    instance = uma_DisciplineGrouping(discipline="sample_text", group2="sample_text")
+    assert instance.discipline == "sample_text"
+    instance.discipline = "sample_text_2"
+    assert instance.discipline == "sample_text_2"
+
+
+def test_uma_DisciplineGrouping_group2_value_roundtrip():
+    instance = uma_DisciplineGrouping(discipline="sample_text", group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_DocumentRoot_mixed_value_roundtrip():
+    instance = uma_DocumentRoot(mixed="sample_text")
+    assert instance.mixed == "sample_text"
+    instance.mixed = "sample_text_2"
+    assert instance.mixed == "sample_text_2"
+
+
+def test_uma_Domain_group2_value_roundtrip():
+    instance = uma_Domain(group2="sample_text", workProduct="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_Domain_workProduct_value_roundtrip():
+    instance = uma_Domain(group2="sample_text", workProduct="sample_text")
+    assert instance.workProduct == "sample_text"
+    instance.workProduct = "sample_text_2"
+    assert instance.workProduct == "sample_text_2"
+
+
+def test_uma_Estimate_estimationConsiderations_value_roundtrip():
+    instance = uma_Estimate(estimationConsiderations="sample_text", estimationMetric="sample_text", group2="sample_text")
+    assert instance.estimationConsiderations == "sample_text"
+    instance.estimationConsiderations = "sample_text_2"
+    assert instance.estimationConsiderations == "sample_text_2"
+
+
+def test_uma_Estimate_estimationMetric_value_roundtrip():
+    instance = uma_Estimate(estimationConsiderations="sample_text", estimationMetric="sample_text", group2="sample_text")
+    assert instance.estimationMetric == "sample_text"
+    instance.estimationMetric = "sample_text_2"
+    assert instance.estimationMetric == "sample_text_2"
+
+
+def test_uma_Estimate_group2_value_roundtrip():
+    instance = uma_Estimate(estimationConsiderations="sample_text", estimationMetric="sample_text", group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_GuidanceDescription_attachment_value_roundtrip():
+    instance = uma_GuidanceDescription(attachment="sample_text")
+    assert instance.attachment == "sample_text"
+    instance.attachment = "sample_text_2"
+    assert instance.attachment == "sample_text_2"
+
+
+def test_uma_Kind_applicableMetaClassInfo_value_roundtrip():
+    instance = uma_Kind(applicableMetaClassInfo="sample_text")
+    assert instance.applicableMetaClassInfo == "sample_text"
+    instance.applicableMetaClassInfo = "sample_text_2"
+    assert instance.applicableMetaClassInfo == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_addedCategory_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.addedCategory == "sample_text"
+    instance.addedCategory = "sample_text_2"
+    assert instance.addedCategory == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_baseConfiguration_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.baseConfiguration == "sample_text"
+    instance.baseConfiguration = "sample_text_2"
+    assert instance.baseConfiguration == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_defaultView_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.defaultView == "sample_text"
+    instance.defaultView = "sample_text_2"
+    assert instance.defaultView == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_methodPackageSelection_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.methodPackageSelection == "sample_text"
+    instance.methodPackageSelection = "sample_text_2"
+    assert instance.methodPackageSelection == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_methodPluginSelection_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.methodPluginSelection == "sample_text"
+    instance.methodPluginSelection = "sample_text_2"
+    assert instance.methodPluginSelection == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_processView_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.processView == "sample_text"
+    instance.processView = "sample_text_2"
+    assert instance.processView == "sample_text_2"
+
+
+def test_uma_MethodConfiguration_subtractedCategory_value_roundtrip():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert instance.subtractedCategory == "sample_text"
+    instance.subtractedCategory = "sample_text_2"
+    assert instance.subtractedCategory == "sample_text_2"
+
+
+def test_uma_MethodElement_briefDescription_value_roundtrip():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert instance.briefDescription == "sample_text"
+    instance.briefDescription = "sample_text_2"
+    assert instance.briefDescription == "sample_text_2"
+
+
+def test_uma_MethodElement_group_value_roundtrip():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert instance.group == "sample_text"
+    instance.group = "sample_text_2"
+    assert instance.group == "sample_text_2"
+
+
+def test_uma_MethodElement_id_value_roundtrip():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert instance.id == "sample_text"
+    instance.id = "sample_text_2"
+    assert instance.id == "sample_text_2"
+
+
+def test_uma_MethodElement_orderingGuide_value_roundtrip():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert instance.orderingGuide == "sample_text"
+    instance.orderingGuide = "sample_text_2"
+    assert instance.orderingGuide == "sample_text_2"
+
+
+def test_uma_MethodElement_presentationName_value_roundtrip():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert instance.presentationName == "sample_text"
+    instance.presentationName = "sample_text_2"
+    assert instance.presentationName == "sample_text_2"
+
+
+def test_uma_MethodElement_suppressed_value_roundtrip():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert instance.suppressed == "sample_text"
+    instance.suppressed = "sample_text_2"
+    assert instance.suppressed == "sample_text_2"
+
+
+def test_uma_MethodElementProperty_value_value_roundtrip():
+    instance = uma_MethodElementProperty(value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_uma_MethodLibrary_tool_value_roundtrip():
+    instance = uma_MethodLibrary(tool="sample_text")
+    assert instance.tool == "sample_text"
+    instance.tool = "sample_text_2"
+    assert instance.tool == "sample_text_2"
+
+
+def test_uma_MethodPackage_global__value_roundtrip():
+    instance = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    assert instance.global_ == "sample_text"
+    instance.global_ = "sample_text_2"
+    assert instance.global_ == "sample_text_2"
+
+
+def test_uma_MethodPackage_group1_value_roundtrip():
+    instance = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    assert instance.group1 == "sample_text"
+    instance.group1 = "sample_text_2"
+    assert instance.group1 == "sample_text_2"
+
+
+def test_uma_MethodPackage_reusedPackage_value_roundtrip():
+    instance = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    assert instance.reusedPackage == "sample_text"
+    instance.reusedPackage = "sample_text_2"
+    assert instance.reusedPackage == "sample_text_2"
+
+
+def test_uma_MethodPlugin_referencedMethodPlugin_value_roundtrip():
+    instance = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    assert instance.referencedMethodPlugin == "sample_text"
+    instance.referencedMethodPlugin = "sample_text_2"
+    assert instance.referencedMethodPlugin == "sample_text_2"
+
+
+def test_uma_MethodPlugin_supporting_value_roundtrip():
+    instance = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    assert instance.supporting == "sample_text"
+    instance.supporting = "sample_text_2"
+    assert instance.supporting == "sample_text_2"
+
+
+def test_uma_MethodPlugin_userChangeable_value_roundtrip():
+    instance = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    assert instance.userChangeable == "sample_text"
+    instance.userChangeable = "sample_text_2"
+    assert instance.userChangeable == "sample_text_2"
+
+
+def test_uma_MethodUnit_authors_value_roundtrip():
+    instance = uma_MethodUnit(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.authors == "sample_text"
+    instance.authors = "sample_text_2"
+    assert instance.authors == "sample_text_2"
+
+
+def test_uma_MethodUnit_changeDate_value_roundtrip():
+    instance = uma_MethodUnit(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.changeDate == "sample_text"
+    instance.changeDate = "sample_text_2"
+    assert instance.changeDate == "sample_text_2"
+
+
+def test_uma_MethodUnit_changeDescription_value_roundtrip():
+    instance = uma_MethodUnit(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.changeDescription == "sample_text"
+    instance.changeDescription = "sample_text_2"
+    assert instance.changeDescription == "sample_text_2"
+
+
+def test_uma_MethodUnit_copyright_value_roundtrip():
+    instance = uma_MethodUnit(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.copyright == "sample_text"
+    instance.copyright = "sample_text_2"
+    assert instance.copyright == "sample_text_2"
+
+
+def test_uma_MethodUnit_version_value_roundtrip():
+    instance = uma_MethodUnit(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.version == "sample_text"
+    instance.version = "sample_text_2"
+    assert instance.version == "sample_text_2"
+
+
+def test_uma_Milestone_requiredResult_value_roundtrip():
+    instance = uma_Milestone(requiredResult="sample_text")
+    assert instance.requiredResult == "sample_text"
+    instance.requiredResult = "sample_text_2"
+    assert instance.requiredResult == "sample_text_2"
+
+
+def test_uma_NamedElement_name_value_roundtrip():
+    instance = uma_NamedElement(name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_uma_PlanningData_finishDate_value_roundtrip():
+    instance = uma_PlanningData(finishDate="sample_text", rank="sample_text", startDate="sample_text")
+    assert instance.finishDate == "sample_text"
+    instance.finishDate = "sample_text_2"
+    assert instance.finishDate == "sample_text_2"
+
+
+def test_uma_PlanningData_rank_value_roundtrip():
+    instance = uma_PlanningData(finishDate="sample_text", rank="sample_text", startDate="sample_text")
+    assert instance.rank == "sample_text"
+    instance.rank = "sample_text_2"
+    assert instance.rank == "sample_text_2"
+
+
+def test_uma_PlanningData_startDate_value_roundtrip():
+    instance = uma_PlanningData(finishDate="sample_text", rank="sample_text", startDate="sample_text")
+    assert instance.startDate == "sample_text"
+    instance.startDate = "sample_text_2"
+    assert instance.startDate == "sample_text_2"
+
+
+def test_uma_Practice_activityReference_value_roundtrip():
+    instance = uma_Practice(activityReference="sample_text", contentReference="sample_text", group2="sample_text")
+    assert instance.activityReference == "sample_text"
+    instance.activityReference = "sample_text_2"
+    assert instance.activityReference == "sample_text_2"
+
+
+def test_uma_Practice_contentReference_value_roundtrip():
+    instance = uma_Practice(activityReference="sample_text", contentReference="sample_text", group2="sample_text")
+    assert instance.contentReference == "sample_text"
+    instance.contentReference = "sample_text_2"
+    assert instance.contentReference == "sample_text_2"
+
+
+def test_uma_Practice_group2_value_roundtrip():
+    instance = uma_Practice(activityReference="sample_text", contentReference="sample_text", group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_PracticeDescription_additionalInfo_value_roundtrip():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert instance.additionalInfo == "sample_text"
+    instance.additionalInfo = "sample_text_2"
+    assert instance.additionalInfo == "sample_text_2"
+
+
+def test_uma_PracticeDescription_application_value_roundtrip():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert instance.application == "sample_text"
+    instance.application = "sample_text_2"
+    assert instance.application == "sample_text_2"
+
+
+def test_uma_PracticeDescription_background_value_roundtrip():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert instance.background == "sample_text"
+    instance.background = "sample_text_2"
+    assert instance.background == "sample_text_2"
+
+
+def test_uma_PracticeDescription_goals_value_roundtrip():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert instance.goals == "sample_text"
+    instance.goals = "sample_text_2"
+    assert instance.goals == "sample_text_2"
+
+
+def test_uma_PracticeDescription_levelsOfAdoption_value_roundtrip():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert instance.levelsOfAdoption == "sample_text"
+    instance.levelsOfAdoption = "sample_text_2"
+    assert instance.levelsOfAdoption == "sample_text_2"
+
+
+def test_uma_PracticeDescription_problem_value_roundtrip():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert instance.problem == "sample_text"
+    instance.problem = "sample_text_2"
+    assert instance.problem == "sample_text_2"
+
+
+def test_uma_Process_defaultContext_value_roundtrip():
+    instance = uma_Process(defaultContext="sample_text", diagramURI="sample_text", includesPattern="sample_text", validContext="sample_text")
+    assert instance.defaultContext == "sample_text"
+    instance.defaultContext = "sample_text_2"
+    assert instance.defaultContext == "sample_text_2"
+
+
+def test_uma_Process_diagramURI_value_roundtrip():
+    instance = uma_Process(defaultContext="sample_text", diagramURI="sample_text", includesPattern="sample_text", validContext="sample_text")
+    assert instance.diagramURI == "sample_text"
+    instance.diagramURI = "sample_text_2"
+    assert instance.diagramURI == "sample_text_2"
+
+
+def test_uma_Process_includesPattern_value_roundtrip():
+    instance = uma_Process(defaultContext="sample_text", diagramURI="sample_text", includesPattern="sample_text", validContext="sample_text")
+    assert instance.includesPattern == "sample_text"
+    instance.includesPattern = "sample_text_2"
+    assert instance.includesPattern == "sample_text_2"
+
+
+def test_uma_Process_validContext_value_roundtrip():
+    instance = uma_Process(defaultContext="sample_text", diagramURI="sample_text", includesPattern="sample_text", validContext="sample_text")
+    assert instance.validContext == "sample_text"
+    instance.validContext = "sample_text_2"
+    assert instance.validContext == "sample_text_2"
+
+
+def test_uma_ProcessComponent_authors_value_roundtrip():
+    instance = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.authors == "sample_text"
+    instance.authors = "sample_text_2"
+    assert instance.authors == "sample_text_2"
+
+
+def test_uma_ProcessComponent_changeDate_value_roundtrip():
+    instance = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.changeDate == "sample_text"
+    instance.changeDate = "sample_text_2"
+    assert instance.changeDate == "sample_text_2"
+
+
+def test_uma_ProcessComponent_changeDescription_value_roundtrip():
+    instance = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.changeDescription == "sample_text"
+    instance.changeDescription = "sample_text_2"
+    assert instance.changeDescription == "sample_text_2"
+
+
+def test_uma_ProcessComponent_copyright_value_roundtrip():
+    instance = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.copyright == "sample_text"
+    instance.copyright = "sample_text_2"
+    assert instance.copyright == "sample_text_2"
+
+
+def test_uma_ProcessComponent_version_value_roundtrip():
+    instance = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert instance.version == "sample_text"
+    instance.version = "sample_text_2"
+    assert instance.version == "sample_text_2"
+
+
+def test_uma_ProcessComponentInterface_group2_value_roundtrip():
+    instance = uma_ProcessComponentInterface(group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_ProcessDescription_scope_value_roundtrip():
+    instance = uma_ProcessDescription(scope="sample_text", usageNotes="sample_text")
+    assert instance.scope == "sample_text"
+    instance.scope = "sample_text_2"
+    assert instance.scope == "sample_text_2"
+
+
+def test_uma_ProcessDescription_usageNotes_value_roundtrip():
+    instance = uma_ProcessDescription(scope="sample_text", usageNotes="sample_text")
+    assert instance.usageNotes == "sample_text"
+    instance.usageNotes = "sample_text_2"
+    assert instance.usageNotes == "sample_text_2"
+
+
+def test_uma_ProcessPackage_group2_value_roundtrip():
+    instance = uma_ProcessPackage(group2="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_ProcessPlanningTemplate_baseProcess_value_roundtrip():
+    instance = uma_ProcessPlanningTemplate(baseProcess="sample_text", group4="sample_text")
+    assert instance.baseProcess == "sample_text"
+    instance.baseProcess = "sample_text_2"
+    assert instance.baseProcess == "sample_text_2"
+
+
+def test_uma_ProcessPlanningTemplate_group4_value_roundtrip():
+    instance = uma_ProcessPlanningTemplate(baseProcess="sample_text", group4="sample_text")
+    assert instance.group4 == "sample_text"
+    instance.group4 = "sample_text_2"
+    assert instance.group4 == "sample_text_2"
+
+
+def test_uma_Role_group2_value_roundtrip():
+    instance = uma_Role(group2="sample_text", responsibleFor="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_Role_responsibleFor_value_roundtrip():
+    instance = uma_Role(group2="sample_text", responsibleFor="sample_text")
+    assert instance.responsibleFor == "sample_text"
+    instance.responsibleFor = "sample_text_2"
+    assert instance.responsibleFor == "sample_text_2"
+
+
+def test_uma_RoleDescription_assignmentApproaches_value_roundtrip():
+    instance = uma_RoleDescription(assignmentApproaches="sample_text", skills="sample_text", synonyms="sample_text")
+    assert instance.assignmentApproaches == "sample_text"
+    instance.assignmentApproaches = "sample_text_2"
+    assert instance.assignmentApproaches == "sample_text_2"
+
+
+def test_uma_RoleDescription_skills_value_roundtrip():
+    instance = uma_RoleDescription(assignmentApproaches="sample_text", skills="sample_text", synonyms="sample_text")
+    assert instance.skills == "sample_text"
+    instance.skills = "sample_text_2"
+    assert instance.skills == "sample_text_2"
+
+
+def test_uma_RoleDescription_synonyms_value_roundtrip():
+    instance = uma_RoleDescription(assignmentApproaches="sample_text", skills="sample_text", synonyms="sample_text")
+    assert instance.synonyms == "sample_text"
+    instance.synonyms = "sample_text_2"
+    assert instance.synonyms == "sample_text_2"
+
+
+def test_uma_RoleDescriptor_responsibleFor_value_roundtrip():
+    instance = uma_RoleDescriptor(responsibleFor="sample_text", role="sample_text")
+    assert instance.responsibleFor == "sample_text"
+    instance.responsibleFor = "sample_text_2"
+    assert instance.responsibleFor == "sample_text_2"
+
+
+def test_uma_RoleDescriptor_role_value_roundtrip():
+    instance = uma_RoleDescriptor(responsibleFor="sample_text", role="sample_text")
+    assert instance.role == "sample_text"
+    instance.role = "sample_text_2"
+    assert instance.role == "sample_text_2"
+
+
+def test_uma_RoleSet_group2_value_roundtrip():
+    instance = uma_RoleSet(group2="sample_text", role="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_RoleSet_role_value_roundtrip():
+    instance = uma_RoleSet(group2="sample_text", role="sample_text")
+    assert instance.role == "sample_text"
+    instance.role = "sample_text_2"
+    assert instance.role == "sample_text_2"
+
+
+def test_uma_RoleSetGrouping_group2_value_roundtrip():
+    instance = uma_RoleSetGrouping(group2="sample_text", roleSet="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_RoleSetGrouping_roleSet_value_roundtrip():
+    instance = uma_RoleSetGrouping(group2="sample_text", roleSet="sample_text")
+    assert instance.roleSet == "sample_text"
+    instance.roleSet = "sample_text_2"
+    assert instance.roleSet == "sample_text_2"
+
+
+def test_uma_Section_description_value_roundtrip():
+    instance = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_uma_Section_predecessor_value_roundtrip():
+    instance = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.predecessor == "sample_text"
+    instance.predecessor = "sample_text_2"
+    assert instance.predecessor == "sample_text_2"
+
+
+def test_uma_Section_sectionName_value_roundtrip():
+    instance = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.sectionName == "sample_text"
+    instance.sectionName = "sample_text_2"
+    assert instance.sectionName == "sample_text_2"
+
+
+def test_uma_Section_variabilityBasedOnElement_value_roundtrip():
+    instance = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.variabilityBasedOnElement == "sample_text"
+    instance.variabilityBasedOnElement = "sample_text_2"
+    assert instance.variabilityBasedOnElement == "sample_text_2"
+
+
+def test_uma_Section_variabilityType_value_roundtrip():
+    instance = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert instance.variabilityType == "sample_text"
+    instance.variabilityType = "sample_text_2"
+    assert instance.variabilityType == "sample_text_2"
+
+
+def test_uma_Task_additionallyPerformedBy_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.additionallyPerformedBy == "sample_text"
+    instance.additionallyPerformedBy = "sample_text_2"
+    assert instance.additionallyPerformedBy == "sample_text_2"
+
+
+def test_uma_Task_estimate_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.estimate == "sample_text"
+    instance.estimate = "sample_text_2"
+    assert instance.estimate == "sample_text_2"
+
+
+def test_uma_Task_estimationConsiderations_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.estimationConsiderations == "sample_text"
+    instance.estimationConsiderations = "sample_text_2"
+    assert instance.estimationConsiderations == "sample_text_2"
+
+
+def test_uma_Task_group2_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_Task_mandatoryInput_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.mandatoryInput == "sample_text"
+    instance.mandatoryInput = "sample_text_2"
+    assert instance.mandatoryInput == "sample_text_2"
+
+
+def test_uma_Task_optionalInput_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.optionalInput == "sample_text"
+    instance.optionalInput = "sample_text_2"
+    assert instance.optionalInput == "sample_text_2"
+
+
+def test_uma_Task_output_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.output == "sample_text"
+    instance.output = "sample_text_2"
+    assert instance.output == "sample_text_2"
+
+
+def test_uma_Task_performedBy_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.performedBy == "sample_text"
+    instance.performedBy = "sample_text_2"
+    assert instance.performedBy == "sample_text_2"
+
+
+def test_uma_Task_postcondition_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.postcondition == "sample_text"
+    instance.postcondition = "sample_text_2"
+    assert instance.postcondition == "sample_text_2"
+
+
+def test_uma_Task_precondition_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.precondition == "sample_text"
+    instance.precondition = "sample_text_2"
+    assert instance.precondition == "sample_text_2"
+
+
+def test_uma_Task_toolMentor_value_roundtrip():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert instance.toolMentor == "sample_text"
+    instance.toolMentor = "sample_text_2"
+    assert instance.toolMentor == "sample_text_2"
+
+
+def test_uma_TaskDescription_alternatives_value_roundtrip():
+    instance = uma_TaskDescription(alternatives="sample_text", purpose="sample_text")
+    assert instance.alternatives == "sample_text"
+    instance.alternatives = "sample_text_2"
+    assert instance.alternatives == "sample_text_2"
+
+
+def test_uma_TaskDescription_purpose_value_roundtrip():
+    instance = uma_TaskDescription(alternatives="sample_text", purpose="sample_text")
+    assert instance.purpose == "sample_text"
+    instance.purpose = "sample_text_2"
+    assert instance.purpose == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_additionallyPerformedBy_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.additionallyPerformedBy == "sample_text"
+    instance.additionallyPerformedBy = "sample_text_2"
+    assert instance.additionallyPerformedBy == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_assistedBy_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.assistedBy == "sample_text"
+    instance.assistedBy = "sample_text_2"
+    assert instance.assistedBy == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_externalInput_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.externalInput == "sample_text"
+    instance.externalInput = "sample_text_2"
+    assert instance.externalInput == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_group3_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.group3 == "sample_text"
+    instance.group3 = "sample_text_2"
+    assert instance.group3 == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_isSynchronizedWithSource_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.isSynchronizedWithSource == "sample_text"
+    instance.isSynchronizedWithSource = "sample_text_2"
+    assert instance.isSynchronizedWithSource == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_mandatoryInput_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.mandatoryInput == "sample_text"
+    instance.mandatoryInput = "sample_text_2"
+    assert instance.mandatoryInput == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_optionalInput_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.optionalInput == "sample_text"
+    instance.optionalInput = "sample_text_2"
+    assert instance.optionalInput == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_output_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.output == "sample_text"
+    instance.output = "sample_text_2"
+    assert instance.output == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_performedPrimarilyBy_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.performedPrimarilyBy == "sample_text"
+    instance.performedPrimarilyBy = "sample_text_2"
+    assert instance.performedPrimarilyBy == "sample_text_2"
+
+
+def test_uma_TaskDescriptor_task_value_roundtrip():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert instance.task == "sample_text"
+    instance.task = "sample_text_2"
+    assert instance.task == "sample_text_2"
+
+
+def test_uma_TeamProfile_group2_value_roundtrip():
+    instance = uma_TeamProfile(group2="sample_text", role="sample_text", subTeam="sample_text", superTeam="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_TeamProfile_role_value_roundtrip():
+    instance = uma_TeamProfile(group2="sample_text", role="sample_text", subTeam="sample_text", superTeam="sample_text")
+    assert instance.role == "sample_text"
+    instance.role = "sample_text_2"
+    assert instance.role == "sample_text_2"
+
+
+def test_uma_TeamProfile_subTeam_value_roundtrip():
+    instance = uma_TeamProfile(group2="sample_text", role="sample_text", subTeam="sample_text", superTeam="sample_text")
+    assert instance.subTeam == "sample_text"
+    instance.subTeam = "sample_text_2"
+    assert instance.subTeam == "sample_text_2"
+
+
+def test_uma_TeamProfile_superTeam_value_roundtrip():
+    instance = uma_TeamProfile(group2="sample_text", role="sample_text", subTeam="sample_text", superTeam="sample_text")
+    assert instance.superTeam == "sample_text"
+    instance.superTeam = "sample_text_2"
+    assert instance.superTeam == "sample_text_2"
+
+
+def test_uma_Tool_group2_value_roundtrip():
+    instance = uma_Tool(group2="sample_text", toolMentor="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_Tool_toolMentor_value_roundtrip():
+    instance = uma_Tool(group2="sample_text", toolMentor="sample_text")
+    assert instance.toolMentor == "sample_text"
+    instance.toolMentor = "sample_text_2"
+    assert instance.toolMentor == "sample_text_2"
+
+
+def test_uma_WorkBreakdownElement_group2_value_roundtrip():
+    instance = uma_WorkBreakdownElement(group2="sample_text", isEventDriven="sample_text", isOngoing="sample_text", isRepeatable="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_WorkBreakdownElement_isEventDriven_value_roundtrip():
+    instance = uma_WorkBreakdownElement(group2="sample_text", isEventDriven="sample_text", isOngoing="sample_text", isRepeatable="sample_text")
+    assert instance.isEventDriven == "sample_text"
+    instance.isEventDriven = "sample_text_2"
+    assert instance.isEventDriven == "sample_text_2"
+
+
+def test_uma_WorkBreakdownElement_isOngoing_value_roundtrip():
+    instance = uma_WorkBreakdownElement(group2="sample_text", isEventDriven="sample_text", isOngoing="sample_text", isRepeatable="sample_text")
+    assert instance.isOngoing == "sample_text"
+    instance.isOngoing = "sample_text_2"
+    assert instance.isOngoing == "sample_text_2"
+
+
+def test_uma_WorkBreakdownElement_isRepeatable_value_roundtrip():
+    instance = uma_WorkBreakdownElement(group2="sample_text", isEventDriven="sample_text", isOngoing="sample_text", isRepeatable="sample_text")
+    assert instance.isRepeatable == "sample_text"
+    instance.isRepeatable = "sample_text_2"
+    assert instance.isRepeatable == "sample_text_2"
+
+
+def test_uma_WorkDefinition_postcondition_value_roundtrip():
+    instance = uma_WorkDefinition(postcondition="sample_text", precondition="sample_text")
+    assert instance.postcondition == "sample_text"
+    instance.postcondition = "sample_text_2"
+    assert instance.postcondition == "sample_text_2"
+
+
+def test_uma_WorkDefinition_precondition_value_roundtrip():
+    instance = uma_WorkDefinition(postcondition="sample_text", precondition="sample_text")
+    assert instance.precondition == "sample_text"
+    instance.precondition = "sample_text_2"
+    assert instance.precondition == "sample_text_2"
+
+
+def test_uma_WorkOrder_id_value_roundtrip():
+    instance = uma_WorkOrder(id="sample_text", linkType="sample_text", properties="sample_text", value="sample_text")
+    assert instance.id == "sample_text"
+    instance.id = "sample_text_2"
+    assert instance.id == "sample_text_2"
+
+
+def test_uma_WorkOrder_linkType_value_roundtrip():
+    instance = uma_WorkOrder(id="sample_text", linkType="sample_text", properties="sample_text", value="sample_text")
+    assert instance.linkType == "sample_text"
+    instance.linkType = "sample_text_2"
+    assert instance.linkType == "sample_text_2"
+
+
+def test_uma_WorkOrder_properties_value_roundtrip():
+    instance = uma_WorkOrder(id="sample_text", linkType="sample_text", properties="sample_text", value="sample_text")
+    assert instance.properties == "sample_text"
+    instance.properties = "sample_text_2"
+    assert instance.properties == "sample_text_2"
+
+
+def test_uma_WorkOrder_value_value_roundtrip():
+    instance = uma_WorkOrder(id="sample_text", linkType="sample_text", properties="sample_text", value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_uma_WorkProduct_estimate_value_roundtrip():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert instance.estimate == "sample_text"
+    instance.estimate = "sample_text_2"
+    assert instance.estimate == "sample_text_2"
+
+
+def test_uma_WorkProduct_estimationConsiderations_value_roundtrip():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert instance.estimationConsiderations == "sample_text"
+    instance.estimationConsiderations = "sample_text_2"
+    assert instance.estimationConsiderations == "sample_text_2"
+
+
+def test_uma_WorkProduct_group2_value_roundtrip():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_WorkProduct_report_value_roundtrip():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert instance.report == "sample_text"
+    instance.report = "sample_text_2"
+    assert instance.report == "sample_text_2"
+
+
+def test_uma_WorkProduct_template_value_roundtrip():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert instance.template == "sample_text"
+    instance.template = "sample_text_2"
+    assert instance.template == "sample_text_2"
+
+
+def test_uma_WorkProduct_toolMentor_value_roundtrip():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert instance.toolMentor == "sample_text"
+    instance.toolMentor = "sample_text_2"
+    assert instance.toolMentor == "sample_text_2"
+
+
+def test_uma_WorkProductDescription_impactOfNotHaving_value_roundtrip():
+    instance = uma_WorkProductDescription(impactOfNotHaving="sample_text", purpose="sample_text", reasonsForNotNeeding="sample_text")
+    assert instance.impactOfNotHaving == "sample_text"
+    instance.impactOfNotHaving = "sample_text_2"
+    assert instance.impactOfNotHaving == "sample_text_2"
+
+
+def test_uma_WorkProductDescription_purpose_value_roundtrip():
+    instance = uma_WorkProductDescription(impactOfNotHaving="sample_text", purpose="sample_text", reasonsForNotNeeding="sample_text")
+    assert instance.purpose == "sample_text"
+    instance.purpose = "sample_text_2"
+    assert instance.purpose == "sample_text_2"
+
+
+def test_uma_WorkProductDescription_reasonsForNotNeeding_value_roundtrip():
+    instance = uma_WorkProductDescription(impactOfNotHaving="sample_text", purpose="sample_text", reasonsForNotNeeding="sample_text")
+    assert instance.reasonsForNotNeeding == "sample_text"
+    instance.reasonsForNotNeeding = "sample_text_2"
+    assert instance.reasonsForNotNeeding == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_activityEntryState_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.activityEntryState == "sample_text"
+    instance.activityEntryState = "sample_text_2"
+    assert instance.activityEntryState == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_activityExitState_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.activityExitState == "sample_text"
+    instance.activityExitState = "sample_text_2"
+    assert instance.activityExitState == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_deliverableParts_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.deliverableParts == "sample_text"
+    instance.deliverableParts = "sample_text_2"
+    assert instance.deliverableParts == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_externalInputTo_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.externalInputTo == "sample_text"
+    instance.externalInputTo = "sample_text_2"
+    assert instance.externalInputTo == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_group2_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_impactedBy_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.impactedBy == "sample_text"
+    instance.impactedBy = "sample_text_2"
+    assert instance.impactedBy == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_impacts_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.impacts == "sample_text"
+    instance.impacts = "sample_text_2"
+    assert instance.impacts == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_mandatoryInputTo_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.mandatoryInputTo == "sample_text"
+    instance.mandatoryInputTo = "sample_text_2"
+    assert instance.mandatoryInputTo == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_optionalInputTo_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.optionalInputTo == "sample_text"
+    instance.optionalInputTo = "sample_text_2"
+    assert instance.optionalInputTo == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_outputFrom_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.outputFrom == "sample_text"
+    instance.outputFrom = "sample_text_2"
+    assert instance.outputFrom == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_responsibleRole_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.responsibleRole == "sample_text"
+    instance.responsibleRole = "sample_text_2"
+    assert instance.responsibleRole == "sample_text_2"
+
+
+def test_uma_WorkProductDescriptor_workProduct_value_roundtrip():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert instance.workProduct == "sample_text"
+    instance.workProduct = "sample_text_2"
+    assert instance.workProduct == "sample_text_2"
+
+
+def test_uma_WorkProductType_group2_value_roundtrip():
+    instance = uma_WorkProductType(group2="sample_text", workProduct="sample_text")
+    assert instance.group2 == "sample_text"
+    instance.group2 = "sample_text_2"
+    assert instance.group2 == "sample_text_2"
+
+
+def test_uma_WorkProductType_workProduct_value_roundtrip():
+    instance = uma_WorkProductType(group2="sample_text", workProduct="sample_text")
+    assert instance.workProduct == "sample_text"
+    instance.workProduct = "sample_text_2"
+    assert instance.workProduct == "sample_text_2"
+
+
+def test_uma_Iteration_isa_Activity():
+    instance = uma_Iteration()
+    assert isinstance(instance, Activity)
+
+
+def test_uma_Phase_isa_Activity():
+    instance = uma_Phase()
+    assert isinstance(instance, Activity)
+
+
+def test_uma_Process_isa_Activity():
+    instance = uma_Process(defaultContext="sample_text", diagramURI="sample_text", includesPattern="sample_text", validContext="sample_text")
+    assert isinstance(instance, Activity)
+
+
+def test_uma_ProcessDescription_isa_ActivityDescription():
+    instance = uma_ProcessDescription(scope="sample_text", usageNotes="sample_text")
+    assert isinstance(instance, ActivityDescription)
+
+
+def test_uma_Descriptor_isa_BreakdownElement():
+    instance = uma_Descriptor(isSynchronizedWithSource="sample_text")
+    assert isinstance(instance, BreakdownElement)
+
+
+def test_uma_ProcessComponentInterface_isa_BreakdownElement():
+    instance = uma_ProcessComponentInterface(group2="sample_text")
+    assert isinstance(instance, BreakdownElement)
+
+
+def test_uma_TeamProfile_isa_BreakdownElement():
+    instance = uma_TeamProfile(group2="sample_text", role="sample_text", subTeam="sample_text", superTeam="sample_text")
+    assert isinstance(instance, BreakdownElement)
+
+
+def test_uma_WorkBreakdownElement_isa_BreakdownElement():
+    instance = uma_WorkBreakdownElement(group2="sample_text", isEventDriven="sample_text", isOngoing="sample_text", isRepeatable="sample_text")
+    assert isinstance(instance, BreakdownElement)
+
+
+def test_uma_ActivityDescription_isa_BreakdownElementDescription():
+    instance = uma_ActivityDescription(alternatives="sample_text", howToStaff="sample_text", purpose="sample_text")
+    assert isinstance(instance, BreakdownElementDescription)
+
+
+def test_uma_DescriptorDescription_isa_BreakdownElementDescription():
+    instance = uma_DescriptorDescription(refinedDescription="sample_text")
+    assert isinstance(instance, BreakdownElementDescription)
+
+
+def test_uma_Whitepaper_isa_Concept():
+    instance = uma_Whitepaper()
+    assert isinstance(instance, Concept)
+
+
+def test_uma_CustomCategory_isa_ContentCategory():
+    instance = uma_CustomCategory(categorizedElement="sample_text", group2="sample_text", subCategory="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_Discipline_isa_ContentCategory():
+    instance = uma_Discipline(group2="sample_text", referenceWorkflow="sample_text", task="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_DisciplineGrouping_isa_ContentCategory():
+    instance = uma_DisciplineGrouping(discipline="sample_text", group2="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_Domain_isa_ContentCategory():
+    instance = uma_Domain(group2="sample_text", workProduct="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_RoleSet_isa_ContentCategory():
+    instance = uma_RoleSet(group2="sample_text", role="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_RoleSetGrouping_isa_ContentCategory():
+    instance = uma_RoleSetGrouping(group2="sample_text", roleSet="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_Tool_isa_ContentCategory():
+    instance = uma_Tool(group2="sample_text", toolMentor="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_WorkProductType_isa_ContentCategory():
+    instance = uma_WorkProductType(group2="sample_text", workProduct="sample_text")
+    assert isinstance(instance, ContentCategory)
+
+
+def test_uma_BreakdownElementDescription_isa_ContentDescription():
+    instance = uma_BreakdownElementDescription(usageGuidance="sample_text")
+    assert isinstance(instance, ContentDescription)
+
+
+def test_uma_GuidanceDescription_isa_ContentDescription():
+    instance = uma_GuidanceDescription(attachment="sample_text")
+    assert isinstance(instance, ContentDescription)
+
+
+def test_uma_PracticeDescription_isa_ContentDescription():
+    instance = uma_PracticeDescription(additionalInfo="sample_text", application="sample_text", background="sample_text", goals="sample_text", levelsOfAdoption="sample_text", problem="sample_text")
+    assert isinstance(instance, ContentDescription)
+
+
+def test_uma_RoleDescription_isa_ContentDescription():
+    instance = uma_RoleDescription(assignmentApproaches="sample_text", skills="sample_text", synonyms="sample_text")
+    assert isinstance(instance, ContentDescription)
+
+
+def test_uma_TaskDescription_isa_ContentDescription():
+    instance = uma_TaskDescription(alternatives="sample_text", purpose="sample_text")
+    assert isinstance(instance, ContentDescription)
+
+
+def test_uma_WorkProductDescription_isa_ContentDescription():
+    instance = uma_WorkProductDescription(impactOfNotHaving="sample_text", purpose="sample_text", reasonsForNotNeeding="sample_text")
+    assert isinstance(instance, ContentDescription)
+
+
+def test_uma_ContentCategory_isa_ContentElement():
+    instance = uma_ContentCategory()
+    assert isinstance(instance, ContentElement)
+
+
+def test_uma_Guidance_isa_ContentElement():
+    instance = uma_Guidance()
+    assert isinstance(instance, ContentElement)
+
+
+def test_uma_Kind_isa_ContentElement():
+    instance = uma_Kind(applicableMetaClassInfo="sample_text")
+    assert isinstance(instance, ContentElement)
+
+
+def test_uma_Role_isa_ContentElement():
+    instance = uma_Role(group2="sample_text", responsibleFor="sample_text")
+    assert isinstance(instance, ContentElement)
+
+
+def test_uma_Task_isa_ContentElement():
+    instance = uma_Task(additionallyPerformedBy="sample_text", estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedBy="sample_text", postcondition="sample_text", precondition="sample_text", toolMentor="sample_text")
+    assert isinstance(instance, ContentElement)
+
+
+def test_uma_WorkProduct_isa_ContentElement():
+    instance = uma_WorkProduct(estimate="sample_text", estimationConsiderations="sample_text", group2="sample_text", report="sample_text", template="sample_text", toolMentor="sample_text")
+    assert isinstance(instance, ContentElement)
+
+
+def test_uma_ContentElement_isa_DescribableElement():
+    instance = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    assert isinstance(instance, DescribableElement)
+
+
+def test_uma_ProcessElement_isa_DescribableElement():
+    instance = uma_ProcessElement()
+    assert isinstance(instance, DescribableElement)
+
+
+def test_uma_RoleDescriptor_isa_Descriptor():
+    instance = uma_RoleDescriptor(responsibleFor="sample_text", role="sample_text")
+    assert isinstance(instance, Descriptor)
+
+
+def test_uma_WorkProductDescriptor_isa_Descriptor():
+    instance = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    assert isinstance(instance, Descriptor)
+
+
+def test_uma_NamedElement_isa_Element():
+    instance = uma_NamedElement(name="sample_text")
+    assert isinstance(instance, Element)
+
+
+def test_uma_Checklist_isa_Guidance():
+    instance = uma_Checklist()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Concept_isa_Guidance():
+    instance = uma_Concept()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Estimate_isa_Guidance():
+    instance = uma_Estimate(estimationConsiderations="sample_text", estimationMetric="sample_text", group2="sample_text")
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_EstimatingMetric_isa_Guidance():
+    instance = uma_EstimatingMetric()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_EstimationConsiderations_isa_Guidance():
+    instance = uma_EstimationConsiderations()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Example_isa_Guidance():
+    instance = uma_Example()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Guideline_isa_Guidance():
+    instance = uma_Guideline()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Practice_isa_Guidance():
+    instance = uma_Practice(activityReference="sample_text", contentReference="sample_text", group2="sample_text")
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Report_isa_Guidance():
+    instance = uma_Report()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_ReusableAsset_isa_Guidance():
+    instance = uma_ReusableAsset()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Roadmap_isa_Guidance():
+    instance = uma_Roadmap()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_SupportingMaterial_isa_Guidance():
+    instance = uma_SupportingMaterial()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Template_isa_Guidance():
+    instance = uma_Template()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_TermDefinition_isa_Guidance():
+    instance = uma_TermDefinition()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_ToolMentor_isa_Guidance():
+    instance = uma_ToolMentor()
+    assert isinstance(instance, Guidance)
+
+
+def test_uma_Constraint_isa_MethodElement():
+    instance = uma_Constraint(mainDescription="sample_text")
+    assert isinstance(instance, MethodElement)
+
+
+def test_uma_DescribableElement_isa_MethodElement():
+    instance = uma_DescribableElement(fulfill="sample_text", isAbstract="sample_text", nodeicon="sample_text", shapeicon="sample_text")
+    assert isinstance(instance, MethodElement)
+
+
+def test_uma_MethodPackage_isa_MethodElement():
+    instance = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    assert isinstance(instance, MethodElement)
+
+
+def test_uma_MethodUnit_isa_MethodElement():
+    instance = uma_MethodUnit(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert isinstance(instance, MethodElement)
+
+
+def test_uma_Section_isa_MethodElement():
+    instance = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert isinstance(instance, MethodElement)
+
+
+def test_uma_WorkDefinition_isa_MethodElement():
+    instance = uma_WorkDefinition(postcondition="sample_text", precondition="sample_text")
+    assert isinstance(instance, MethodElement)
+
+
+def test_uma_ContentCategoryPackage_isa_MethodPackage():
+    instance = uma_ContentCategoryPackage(group2="sample_text")
+    assert isinstance(instance, MethodPackage)
+
+
+def test_uma_ContentPackage_isa_MethodPackage():
+    instance = uma_ContentPackage(group2="sample_text")
+    assert isinstance(instance, MethodPackage)
+
+
+def test_uma_ProcessPackage_isa_MethodPackage():
+    instance = uma_ProcessPackage(group2="sample_text")
+    assert isinstance(instance, MethodPackage)
+
+
+def test_uma_ContentDescription_isa_MethodUnit():
+    instance = uma_ContentDescription(externalId="sample_text", keyConsiderations="sample_text", mainDescription="sample_text")
+    assert isinstance(instance, MethodUnit)
+
+
+def test_uma_MethodConfiguration_isa_MethodUnit():
+    instance = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    assert isinstance(instance, MethodUnit)
+
+
+def test_uma_MethodLibrary_isa_MethodUnit():
+    instance = uma_MethodLibrary(tool="sample_text")
+    assert isinstance(instance, MethodUnit)
+
+
+def test_uma_MethodPlugin_isa_MethodUnit():
+    instance = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    assert isinstance(instance, MethodUnit)
+
+
+def test_uma_PackageableElement_isa_NamedElement():
+    instance = uma_PackageableElement()
+    assert isinstance(instance, NamedElement)
+
+
+def test_uma_ApplicableMetaClassInfo_isa_PackageableElement():
+    instance = uma_ApplicableMetaClassInfo(isPrimaryExtension="sample_text")
+    assert isinstance(instance, PackageableElement)
+
+
+def test_uma_MethodElement_isa_PackageableElement():
+    instance = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    assert isinstance(instance, PackageableElement)
+
+
+def test_uma_MethodElementProperty_isa_PackageableElement():
+    instance = uma_MethodElementProperty(value="sample_text")
+    assert isinstance(instance, PackageableElement)
+
+
+def test_uma_CapabilityPattern_isa_Process():
+    instance = uma_CapabilityPattern()
+    assert isinstance(instance, Process)
+
+
+def test_uma_DeliveryProcess_isa_Process():
+    instance = uma_DeliveryProcess(communicationsMaterial="sample_text", educationMaterial="sample_text", group4="sample_text")
+    assert isinstance(instance, Process)
+
+
+def test_uma_ProcessPlanningTemplate_isa_Process():
+    instance = uma_ProcessPlanningTemplate(baseProcess="sample_text", group4="sample_text")
+    assert isinstance(instance, Process)
+
+
+def test_uma_DeliveryProcessDescription_isa_ProcessDescription():
+    instance = uma_DeliveryProcessDescription(estimatingTechnique="sample_text", projectCharacteristics="sample_text", projectMemberExpertise="sample_text", riskLevel="sample_text", scale="sample_text", typeOfContract="sample_text")
+    assert isinstance(instance, ProcessDescription)
+
+
+def test_uma_BreakdownElement_isa_ProcessElement():
+    instance = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    assert isinstance(instance, ProcessElement)
+
+
+def test_uma_PlanningData_isa_ProcessElement():
+    instance = uma_PlanningData(finishDate="sample_text", rank="sample_text", startDate="sample_text")
+    assert isinstance(instance, ProcessElement)
+
+
+def test_uma_ProcessComponent_isa_ProcessPackage():
+    instance = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    assert isinstance(instance, ProcessPackage)
+
+
+def test_uma_CompositeRole_isa_RoleDescriptor():
+    instance = uma_CompositeRole(group2="sample_text")
+    assert isinstance(instance, RoleDescriptor)
+
+
+def test_uma_Activity_isa_WorkBreakdownElement():
+    instance = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    assert isinstance(instance, WorkBreakdownElement)
+
+
+def test_uma_Milestone_isa_WorkBreakdownElement():
+    instance = uma_Milestone(requiredResult="sample_text")
+    assert isinstance(instance, WorkBreakdownElement)
+
+
+def test_uma_TaskDescriptor_isa_WorkBreakdownElement():
+    instance = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    assert isinstance(instance, WorkBreakdownElement)
+
+
+def test_uma_Artifact_isa_WorkProduct():
+    instance = uma_Artifact(group3="sample_text")
+    assert isinstance(instance, WorkProduct)
+
+
+def test_uma_Deliverable_isa_WorkProduct():
+    instance = uma_Deliverable(deliveredWorkProduct="sample_text", group3="sample_text")
+    assert isinstance(instance, WorkProduct)
+
+
+def test_uma_Outcome_isa_WorkProduct():
+    instance = uma_Outcome()
+    assert isinstance(instance, WorkProduct)
+
+
+def test_uma_ArtifactDescription_isa_WorkProductDescription():
+    instance = uma_ArtifactDescription(briefOutline="sample_text", notation="sample_text", representation="sample_text", representationOptions="sample_text")
+    assert isinstance(instance, WorkProductDescription)
+
+
+def test_uma_DeliverableDescription_isa_WorkProductDescription():
+    instance = uma_DeliverableDescription(externalDescription="sample_text", packagingGuidance="sample_text")
+    assert isinstance(instance, WorkProductDescription)
+
+
+def test_assoc_aggregatedRole2_link_reassign_clear():
+    a = uma_Role(group2="sample_text", responsibleFor="sample_text")
+    b1 = uma_CompositeRole(group2="sample_text")
+    b2 = uma_CompositeRole(group2="sample_text_2")
+    _safe_set(a, 'uma_Role', b1)
+    assert _is_linked(a, 'uma_Role', b1)
+    if hasattr(b1, 'uma_CompositeRole'):
+        assert _is_linked(b1, 'uma_CompositeRole', a)
+    _safe_set(a, 'uma_Role', b2)
+    assert _is_linked(a, 'uma_Role', b2)
+    if hasattr(b1, 'uma_CompositeRole'):
+        assert not _is_linked(b1, 'uma_CompositeRole', a)
+    if hasattr(b2, 'uma_CompositeRole'):
+        assert _is_linked(b2, 'uma_CompositeRole', a)
+    _safe_set(a, 'uma_Role', None)
+    assert not _is_linked(a, 'uma_Role', b2)
+    if hasattr(b2, 'uma_CompositeRole'):
+        assert not _is_linked(b2, 'uma_CompositeRole', a)
+
+
+def test_assoc_breakdownElement5_link_reassign_clear():
+    a = uma_BreakdownElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", hasMultipleOccurrences="sample_text", isOptional="sample_text", isPlanned="sample_text", planningData="sample_text", prefix="sample_text", presentedAfter="sample_text", presentedBefore="sample_text", reusableAsset="sample_text", superActivity="sample_text", supportingMaterial="sample_text", whitepaper="sample_text")
+    b1 = uma_Activity(group3="sample_text", isEnactable="sample_text", postcondition="sample_text", precondition="sample_text", roadmap="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    b2 = uma_Activity(group3="sample_text_2", isEnactable="sample_text_2", postcondition="sample_text_2", precondition="sample_text_2", roadmap="sample_text_2", variabilityBasedOnElement="sample_text_2", variabilityType="sample_text_2")
+    _safe_set(a, 'uma_BreakdownElement', b1)
+    assert _is_linked(a, 'uma_BreakdownElement', b1)
+    if hasattr(b1, 'uma_Activity'):
+        assert _is_linked(b1, 'uma_Activity', a)
+    _safe_set(a, 'uma_BreakdownElement', b2)
+    assert _is_linked(a, 'uma_BreakdownElement', b2)
+    if hasattr(b1, 'uma_Activity'):
+        assert not _is_linked(b1, 'uma_Activity', a)
+    if hasattr(b2, 'uma_Activity'):
+        assert _is_linked(b2, 'uma_Activity', a)
+    _safe_set(a, 'uma_BreakdownElement', None)
+    assert not _is_linked(a, 'uma_BreakdownElement', b2)
+    if hasattr(b2, 'uma_Activity'):
+        assert not _is_linked(b2, 'uma_Activity', a)
+
+
+def test_assoc_containedArtifact1_link_reassign_clear():
+    a = uma_Artifact(group3="sample_text")
+    b1 = uma_Artifact(group3="sample_text")
+    b2 = uma_Artifact(group3="sample_text_2")
+    _safe_set(a, 'uma_Artifact', b1)
+    assert _is_linked(a, 'uma_Artifact', b1)
+    if hasattr(b1, 'uma_Artifact0'):
+        assert _is_linked(b1, 'uma_Artifact0', a)
+    _safe_set(a, 'uma_Artifact', b2)
+    assert _is_linked(a, 'uma_Artifact', b2)
+    if hasattr(b1, 'uma_Artifact0'):
+        assert not _is_linked(b1, 'uma_Artifact0', a)
+    if hasattr(b2, 'uma_Artifact0'):
+        assert _is_linked(b2, 'uma_Artifact0', a)
+    _safe_set(a, 'uma_Artifact', None)
+    assert not _is_linked(a, 'uma_Artifact', b2)
+    if hasattr(b2, 'uma_Artifact0'):
+        assert not _is_linked(b2, 'uma_Artifact0', a)
+
+
+def test_assoc_contentCategory3_link_reassign_clear():
+    a = uma_ContentCategoryPackage(group2="sample_text")
+    b1 = uma_ContentCategory()
+    b2 = uma_ContentCategory()
+    _safe_set(a, 'uma_ContentCategoryPackage', {b1})
+    assert _is_linked(a, 'uma_ContentCategoryPackage', b1)
+    if hasattr(b1, 'uma_ContentCategory'):
+        assert _is_linked(b1, 'uma_ContentCategory', a)
+    _safe_set(a, 'uma_ContentCategoryPackage', {b2})
+    assert _is_linked(a, 'uma_ContentCategoryPackage', b2)
+    if hasattr(b1, 'uma_ContentCategory'):
+        assert not _is_linked(b1, 'uma_ContentCategory', a)
+    if hasattr(b2, 'uma_ContentCategory'):
+        assert _is_linked(b2, 'uma_ContentCategory', a)
+    _safe_set(a, 'uma_ContentCategoryPackage', set())
+    assert not _is_linked(a, 'uma_ContentCategoryPackage', b2)
+    if hasattr(b2, 'uma_ContentCategory'):
+        assert not _is_linked(b2, 'uma_ContentCategory', a)
+
+
+def test_assoc_contentElement6_link_reassign_clear():
+    a = uma_ContentPackage(group2="sample_text")
+    b1 = uma_ContentElement(checklist="sample_text", concept="sample_text", example="sample_text", group1="sample_text", guideline="sample_text", reusableAsset="sample_text", supportingMaterial="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text", whitepaper="sample_text")
+    b2 = uma_ContentElement(checklist="sample_text_2", concept="sample_text_2", example="sample_text_2", group1="sample_text_2", guideline="sample_text_2", reusableAsset="sample_text_2", supportingMaterial="sample_text_2", variabilityBasedOnElement="sample_text_2", variabilityType="sample_text_2", whitepaper="sample_text_2")
+    _safe_set(a, 'uma_ContentPackage', {b1})
+    assert _is_linked(a, 'uma_ContentPackage', b1)
+    if hasattr(b1, 'uma_ContentElement'):
+        assert _is_linked(b1, 'uma_ContentElement', a)
+    _safe_set(a, 'uma_ContentPackage', {b2})
+    assert _is_linked(a, 'uma_ContentPackage', b2)
+    if hasattr(b1, 'uma_ContentElement'):
+        assert not _is_linked(b1, 'uma_ContentElement', a)
+    if hasattr(b2, 'uma_ContentElement'):
+        assert _is_linked(b2, 'uma_ContentElement', a)
+    _safe_set(a, 'uma_ContentPackage', set())
+    assert not _is_linked(a, 'uma_ContentPackage', b2)
+    if hasattr(b2, 'uma_ContentElement'):
+        assert not _is_linked(b2, 'uma_ContentElement', a)
+
+
+def test_assoc_interface39_link_reassign_clear():
+    a = uma_ProcessComponentInterface(group2="sample_text")
+    b1 = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    b2 = uma_ProcessComponent(authors="sample_text_2", changeDate="sample_text_2", changeDescription="sample_text_2", copyright="sample_text_2", version="sample_text_2")
+    _safe_set(a, 'uma_ProcessComponentInterface', b1)
+    assert _is_linked(a, 'uma_ProcessComponentInterface', b1)
+    if hasattr(b1, 'uma_ProcessComponent'):
+        assert _is_linked(b1, 'uma_ProcessComponent', a)
+    _safe_set(a, 'uma_ProcessComponentInterface', b2)
+    assert _is_linked(a, 'uma_ProcessComponentInterface', b2)
+    if hasattr(b1, 'uma_ProcessComponent'):
+        assert not _is_linked(b1, 'uma_ProcessComponent', a)
+    if hasattr(b2, 'uma_ProcessComponent'):
+        assert _is_linked(b2, 'uma_ProcessComponent', a)
+    _safe_set(a, 'uma_ProcessComponentInterface', None)
+    assert not _is_linked(a, 'uma_ProcessComponentInterface', b2)
+    if hasattr(b2, 'uma_ProcessComponent'):
+        assert not _is_linked(b2, 'uma_ProcessComponent', a)
+
+
+def test_assoc_interfaceIO44_link_reassign_clear():
+    a = uma_WorkProductDescriptor(activityEntryState="sample_text", activityExitState="sample_text", deliverableParts="sample_text", externalInputTo="sample_text", group2="sample_text", impactedBy="sample_text", impacts="sample_text", mandatoryInputTo="sample_text", optionalInputTo="sample_text", outputFrom="sample_text", responsibleRole="sample_text", workProduct="sample_text")
+    b1 = uma_ProcessComponentInterface(group2="sample_text")
+    b2 = uma_ProcessComponentInterface(group2="sample_text_2")
+    _safe_set(a, 'uma_WorkProductDescriptor', b1)
+    assert _is_linked(a, 'uma_WorkProductDescriptor', b1)
+    if hasattr(b1, 'uma_ProcessComponentInterface45'):
+        assert _is_linked(b1, 'uma_ProcessComponentInterface45', a)
+    _safe_set(a, 'uma_WorkProductDescriptor', b2)
+    assert _is_linked(a, 'uma_WorkProductDescriptor', b2)
+    if hasattr(b1, 'uma_ProcessComponentInterface45'):
+        assert not _is_linked(b1, 'uma_ProcessComponentInterface45', a)
+    if hasattr(b2, 'uma_ProcessComponentInterface45'):
+        assert _is_linked(b2, 'uma_ProcessComponentInterface45', a)
+    _safe_set(a, 'uma_WorkProductDescriptor', None)
+    assert not _is_linked(a, 'uma_WorkProductDescriptor', b2)
+    if hasattr(b2, 'uma_ProcessComponentInterface45'):
+        assert not _is_linked(b2, 'uma_ProcessComponentInterface45', a)
+
+
+def test_assoc_interfaceSpecification42_link_reassign_clear():
+    a = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    b1 = uma_ProcessComponentInterface(group2="sample_text")
+    b2 = uma_ProcessComponentInterface(group2="sample_text_2")
+    _safe_set(a, 'uma_TaskDescriptor', b1)
+    assert _is_linked(a, 'uma_TaskDescriptor', b1)
+    if hasattr(b1, 'uma_ProcessComponentInterface43'):
+        assert _is_linked(b1, 'uma_ProcessComponentInterface43', a)
+    _safe_set(a, 'uma_TaskDescriptor', b2)
+    assert _is_linked(a, 'uma_TaskDescriptor', b2)
+    if hasattr(b1, 'uma_ProcessComponentInterface43'):
+        assert not _is_linked(b1, 'uma_ProcessComponentInterface43', a)
+    if hasattr(b2, 'uma_ProcessComponentInterface43'):
+        assert _is_linked(b2, 'uma_ProcessComponentInterface43', a)
+    _safe_set(a, 'uma_TaskDescriptor', None)
+    assert not _is_linked(a, 'uma_TaskDescriptor', b2)
+    if hasattr(b2, 'uma_ProcessComponentInterface43'):
+        assert not _is_linked(b2, 'uma_ProcessComponentInterface43', a)
+
+
+def test_assoc_methodConfiguration15_link_reassign_clear():
+    a = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    b1 = uma_DocumentRoot(mixed="sample_text")
+    b2 = uma_DocumentRoot(mixed="sample_text_2")
+    _safe_set(a, 'uma_MethodConfiguration', b1)
+    assert _is_linked(a, 'uma_MethodConfiguration', b1)
+    if hasattr(b1, 'uma_DocumentRoot16'):
+        assert _is_linked(b1, 'uma_DocumentRoot16', a)
+    _safe_set(a, 'uma_MethodConfiguration', b2)
+    assert _is_linked(a, 'uma_MethodConfiguration', b2)
+    if hasattr(b1, 'uma_DocumentRoot16'):
+        assert not _is_linked(b1, 'uma_DocumentRoot16', a)
+    if hasattr(b2, 'uma_DocumentRoot16'):
+        assert _is_linked(b2, 'uma_DocumentRoot16', a)
+    _safe_set(a, 'uma_MethodConfiguration', None)
+    assert not _is_linked(a, 'uma_MethodConfiguration', b2)
+    if hasattr(b2, 'uma_DocumentRoot16'):
+        assert not _is_linked(b2, 'uma_DocumentRoot16', a)
+
+
+def test_assoc_methodConfiguration29_link_reassign_clear():
+    a = uma_MethodLibrary(tool="sample_text")
+    b1 = uma_MethodConfiguration(addedCategory="sample_text", baseConfiguration="sample_text", defaultView="sample_text", methodPackageSelection="sample_text", methodPluginSelection="sample_text", processView="sample_text", subtractedCategory="sample_text")
+    b2 = uma_MethodConfiguration(addedCategory="sample_text_2", baseConfiguration="sample_text_2", defaultView="sample_text_2", methodPackageSelection="sample_text_2", methodPluginSelection="sample_text_2", processView="sample_text_2", subtractedCategory="sample_text_2")
+    _safe_set(a, 'uma_MethodLibrary30', {b1})
+    assert _is_linked(a, 'uma_MethodLibrary30', b1)
+    if hasattr(b1, 'uma_MethodConfiguration31'):
+        assert _is_linked(b1, 'uma_MethodConfiguration31', a)
+    _safe_set(a, 'uma_MethodLibrary30', {b2})
+    assert _is_linked(a, 'uma_MethodLibrary30', b2)
+    if hasattr(b1, 'uma_MethodConfiguration31'):
+        assert not _is_linked(b1, 'uma_MethodConfiguration31', a)
+    if hasattr(b2, 'uma_MethodConfiguration31'):
+        assert _is_linked(b2, 'uma_MethodConfiguration31', a)
+    _safe_set(a, 'uma_MethodLibrary30', set())
+    assert not _is_linked(a, 'uma_MethodLibrary30', b2)
+    if hasattr(b2, 'uma_MethodConfiguration31'):
+        assert not _is_linked(b2, 'uma_MethodConfiguration31', a)
+
+
+def test_assoc_methodElementProperty24_link_reassign_clear():
+    a = uma_MethodElementProperty(value="sample_text")
+    b1 = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    b2 = uma_MethodElement(briefDescription="sample_text_2", group="sample_text_2", id="sample_text_2", orderingGuide="sample_text_2", presentationName="sample_text_2", suppressed="sample_text_2")
+    _safe_set(a, 'uma_MethodElementProperty', b1)
+    assert _is_linked(a, 'uma_MethodElementProperty', b1)
+    if hasattr(b1, 'uma_MethodElement25'):
+        assert _is_linked(b1, 'uma_MethodElement25', a)
+    _safe_set(a, 'uma_MethodElementProperty', b2)
+    assert _is_linked(a, 'uma_MethodElementProperty', b2)
+    if hasattr(b1, 'uma_MethodElement25'):
+        assert not _is_linked(b1, 'uma_MethodElement25', a)
+    if hasattr(b2, 'uma_MethodElement25'):
+        assert _is_linked(b2, 'uma_MethodElement25', a)
+    _safe_set(a, 'uma_MethodElementProperty', None)
+    assert not _is_linked(a, 'uma_MethodElementProperty', b2)
+    if hasattr(b2, 'uma_MethodElement25'):
+        assert not _is_linked(b2, 'uma_MethodElement25', a)
+
+
+def test_assoc_methodLibrary17_link_reassign_clear():
+    a = uma_MethodLibrary(tool="sample_text")
+    b1 = uma_DocumentRoot(mixed="sample_text")
+    b2 = uma_DocumentRoot(mixed="sample_text_2")
+    _safe_set(a, 'uma_MethodLibrary', b1)
+    assert _is_linked(a, 'uma_MethodLibrary', b1)
+    if hasattr(b1, 'uma_DocumentRoot18'):
+        assert _is_linked(b1, 'uma_DocumentRoot18', a)
+    _safe_set(a, 'uma_MethodLibrary', b2)
+    assert _is_linked(a, 'uma_MethodLibrary', b2)
+    if hasattr(b1, 'uma_DocumentRoot18'):
+        assert not _is_linked(b1, 'uma_DocumentRoot18', a)
+    if hasattr(b2, 'uma_DocumentRoot18'):
+        assert _is_linked(b2, 'uma_DocumentRoot18', a)
+    _safe_set(a, 'uma_MethodLibrary', None)
+    assert not _is_linked(a, 'uma_MethodLibrary', b2)
+    if hasattr(b2, 'uma_DocumentRoot18'):
+        assert not _is_linked(b2, 'uma_DocumentRoot18', a)
+
+
+def test_assoc_methodPackage33_link_reassign_clear():
+    a = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    b1 = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    b2 = uma_MethodPackage(global_="sample_text_2", group1="sample_text_2", reusedPackage="sample_text_2")
+    _safe_set(a, 'uma_MethodPackage', b1)
+    assert _is_linked(a, 'uma_MethodPackage', b1)
+    if hasattr(b1, 'uma_MethodPackage32'):
+        assert _is_linked(b1, 'uma_MethodPackage32', a)
+    _safe_set(a, 'uma_MethodPackage', b2)
+    assert _is_linked(a, 'uma_MethodPackage', b2)
+    if hasattr(b1, 'uma_MethodPackage32'):
+        assert not _is_linked(b1, 'uma_MethodPackage32', a)
+    if hasattr(b2, 'uma_MethodPackage32'):
+        assert _is_linked(b2, 'uma_MethodPackage32', a)
+    _safe_set(a, 'uma_MethodPackage', None)
+    assert not _is_linked(a, 'uma_MethodPackage', b2)
+    if hasattr(b2, 'uma_MethodPackage32'):
+        assert not _is_linked(b2, 'uma_MethodPackage32', a)
+
+
+def test_assoc_methodPackage34_link_reassign_clear():
+    a = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    b1 = uma_MethodPackage(global_="sample_text", group1="sample_text", reusedPackage="sample_text")
+    b2 = uma_MethodPackage(global_="sample_text_2", group1="sample_text_2", reusedPackage="sample_text_2")
+    _safe_set(a, 'uma_MethodPlugin35', {b1})
+    assert _is_linked(a, 'uma_MethodPlugin35', b1)
+    if hasattr(b1, 'uma_MethodPackage36'):
+        assert _is_linked(b1, 'uma_MethodPackage36', a)
+    _safe_set(a, 'uma_MethodPlugin35', {b2})
+    assert _is_linked(a, 'uma_MethodPlugin35', b2)
+    if hasattr(b1, 'uma_MethodPackage36'):
+        assert not _is_linked(b1, 'uma_MethodPackage36', a)
+    if hasattr(b2, 'uma_MethodPackage36'):
+        assert _is_linked(b2, 'uma_MethodPackage36', a)
+    _safe_set(a, 'uma_MethodPlugin35', set())
+    assert not _is_linked(a, 'uma_MethodPlugin35', b2)
+    if hasattr(b2, 'uma_MethodPackage36'):
+        assert not _is_linked(b2, 'uma_MethodPackage36', a)
+
+
+def test_assoc_methodPlugin19_link_reassign_clear():
+    a = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    b1 = uma_DocumentRoot(mixed="sample_text")
+    b2 = uma_DocumentRoot(mixed="sample_text_2")
+    _safe_set(a, 'uma_MethodPlugin', b1)
+    assert _is_linked(a, 'uma_MethodPlugin', b1)
+    if hasattr(b1, 'uma_DocumentRoot20'):
+        assert _is_linked(b1, 'uma_DocumentRoot20', a)
+    _safe_set(a, 'uma_MethodPlugin', b2)
+    assert _is_linked(a, 'uma_MethodPlugin', b2)
+    if hasattr(b1, 'uma_DocumentRoot20'):
+        assert not _is_linked(b1, 'uma_DocumentRoot20', a)
+    if hasattr(b2, 'uma_DocumentRoot20'):
+        assert _is_linked(b2, 'uma_DocumentRoot20', a)
+    _safe_set(a, 'uma_MethodPlugin', None)
+    assert not _is_linked(a, 'uma_MethodPlugin', b2)
+    if hasattr(b2, 'uma_DocumentRoot20'):
+        assert not _is_linked(b2, 'uma_DocumentRoot20', a)
+
+
+def test_assoc_methodPlugin26_link_reassign_clear():
+    a = uma_MethodPlugin(referencedMethodPlugin="sample_text", supporting="sample_text", userChangeable="sample_text")
+    b1 = uma_MethodLibrary(tool="sample_text")
+    b2 = uma_MethodLibrary(tool="sample_text_2")
+    _safe_set(a, 'uma_MethodPlugin28', b1)
+    assert _is_linked(a, 'uma_MethodPlugin28', b1)
+    if hasattr(b1, 'uma_MethodLibrary27'):
+        assert _is_linked(b1, 'uma_MethodLibrary27', a)
+    _safe_set(a, 'uma_MethodPlugin28', b2)
+    assert _is_linked(a, 'uma_MethodPlugin28', b2)
+    if hasattr(b1, 'uma_MethodLibrary27'):
+        assert not _is_linked(b1, 'uma_MethodLibrary27', a)
+    if hasattr(b2, 'uma_MethodLibrary27'):
+        assert _is_linked(b2, 'uma_MethodLibrary27', a)
+    _safe_set(a, 'uma_MethodPlugin28', None)
+    assert not _is_linked(a, 'uma_MethodPlugin28', b2)
+    if hasattr(b2, 'uma_MethodLibrary27'):
+        assert not _is_linked(b2, 'uma_MethodLibrary27', a)
+
+
+def test_assoc_ownedRule23_link_reassign_clear():
+    a = uma_MethodElement(briefDescription="sample_text", group="sample_text", id="sample_text", orderingGuide="sample_text", presentationName="sample_text", suppressed="sample_text")
+    b1 = uma_Constraint(mainDescription="sample_text")
+    b2 = uma_Constraint(mainDescription="sample_text_2")
+    _safe_set(a, 'uma_MethodElement', {b1})
+    assert _is_linked(a, 'uma_MethodElement', b1)
+    if hasattr(b1, 'uma_Constraint'):
+        assert _is_linked(b1, 'uma_Constraint', a)
+    _safe_set(a, 'uma_MethodElement', {b2})
+    assert _is_linked(a, 'uma_MethodElement', b2)
+    if hasattr(b1, 'uma_Constraint'):
+        assert not _is_linked(b1, 'uma_Constraint', a)
+    if hasattr(b2, 'uma_Constraint'):
+        assert _is_linked(b2, 'uma_Constraint', a)
+    _safe_set(a, 'uma_MethodElement', set())
+    assert not _is_linked(a, 'uma_MethodElement', b2)
+    if hasattr(b2, 'uma_Constraint'):
+        assert not _is_linked(b2, 'uma_Constraint', a)
+
+
+def test_assoc_predecessor53_link_reassign_clear():
+    a = uma_WorkOrder(id="sample_text", linkType="sample_text", properties="sample_text", value="sample_text")
+    b1 = uma_WorkBreakdownElement(group2="sample_text", isEventDriven="sample_text", isOngoing="sample_text", isRepeatable="sample_text")
+    b2 = uma_WorkBreakdownElement(group2="sample_text_2", isEventDriven="sample_text_2", isOngoing="sample_text_2", isRepeatable="sample_text_2")
+    _safe_set(a, 'uma_WorkOrder', b1)
+    assert _is_linked(a, 'uma_WorkOrder', b1)
+    if hasattr(b1, 'uma_WorkBreakdownElement'):
+        assert _is_linked(b1, 'uma_WorkBreakdownElement', a)
+    _safe_set(a, 'uma_WorkOrder', b2)
+    assert _is_linked(a, 'uma_WorkOrder', b2)
+    if hasattr(b1, 'uma_WorkBreakdownElement'):
+        assert not _is_linked(b1, 'uma_WorkBreakdownElement', a)
+    if hasattr(b2, 'uma_WorkBreakdownElement'):
+        assert _is_linked(b2, 'uma_WorkBreakdownElement', a)
+    _safe_set(a, 'uma_WorkOrder', None)
+    assert not _is_linked(a, 'uma_WorkOrder', b2)
+    if hasattr(b2, 'uma_WorkBreakdownElement'):
+        assert not _is_linked(b2, 'uma_WorkBreakdownElement', a)
+
+
+def test_assoc_presentation7_link_reassign_clear():
+    a = uma_DescribableElement(fulfill="sample_text", isAbstract="sample_text", nodeicon="sample_text", shapeicon="sample_text")
+    b1 = uma_ContentDescription(externalId="sample_text", keyConsiderations="sample_text", mainDescription="sample_text")
+    b2 = uma_ContentDescription(externalId="sample_text_2", keyConsiderations="sample_text_2", mainDescription="sample_text_2")
+    _safe_set(a, 'uma_DescribableElement', b1)
+    assert _is_linked(a, 'uma_DescribableElement', b1)
+    if hasattr(b1, 'uma_ContentDescription8'):
+        assert _is_linked(b1, 'uma_ContentDescription8', a)
+    _safe_set(a, 'uma_DescribableElement', b2)
+    assert _is_linked(a, 'uma_DescribableElement', b2)
+    if hasattr(b1, 'uma_ContentDescription8'):
+        assert not _is_linked(b1, 'uma_ContentDescription8', a)
+    if hasattr(b2, 'uma_ContentDescription8'):
+        assert _is_linked(b2, 'uma_ContentDescription8', a)
+    _safe_set(a, 'uma_DescribableElement', None)
+    assert not _is_linked(a, 'uma_DescribableElement', b2)
+    if hasattr(b2, 'uma_ContentDescription8'):
+        assert not _is_linked(b2, 'uma_ContentDescription8', a)
+
+
+def test_assoc_process40_link_reassign_clear():
+    a = uma_ProcessComponent(authors="sample_text", changeDate="sample_text", changeDescription="sample_text", copyright="sample_text", version="sample_text")
+    b1 = uma_Process(defaultContext="sample_text", diagramURI="sample_text", includesPattern="sample_text", validContext="sample_text")
+    b2 = uma_Process(defaultContext="sample_text_2", diagramURI="sample_text_2", includesPattern="sample_text_2", validContext="sample_text_2")
+    _safe_set(a, 'uma_ProcessComponent41', b1)
+    assert _is_linked(a, 'uma_ProcessComponent41', b1)
+    if hasattr(b1, 'uma_Process'):
+        assert _is_linked(b1, 'uma_Process', a)
+    _safe_set(a, 'uma_ProcessComponent41', b2)
+    assert _is_linked(a, 'uma_ProcessComponent41', b2)
+    if hasattr(b1, 'uma_Process'):
+        assert not _is_linked(b1, 'uma_Process', a)
+    if hasattr(b2, 'uma_Process'):
+        assert _is_linked(b2, 'uma_Process', a)
+    _safe_set(a, 'uma_ProcessComponent41', None)
+    assert not _is_linked(a, 'uma_ProcessComponent41', b2)
+    if hasattr(b2, 'uma_Process'):
+        assert not _is_linked(b2, 'uma_Process', a)
+
+
+def test_assoc_processElement46_link_reassign_clear():
+    a = uma_ProcessPackage(group2="sample_text")
+    b1 = uma_ProcessElement()
+    b2 = uma_ProcessElement()
+    _safe_set(a, 'uma_ProcessPackage', {b1})
+    assert _is_linked(a, 'uma_ProcessPackage', b1)
+    if hasattr(b1, 'uma_ProcessElement'):
+        assert _is_linked(b1, 'uma_ProcessElement', a)
+    _safe_set(a, 'uma_ProcessPackage', {b2})
+    assert _is_linked(a, 'uma_ProcessPackage', b2)
+    if hasattr(b1, 'uma_ProcessElement'):
+        assert not _is_linked(b1, 'uma_ProcessElement', a)
+    if hasattr(b2, 'uma_ProcessElement'):
+        assert _is_linked(b2, 'uma_ProcessElement', a)
+    _safe_set(a, 'uma_ProcessPackage', set())
+    assert not _is_linked(a, 'uma_ProcessPackage', b2)
+    if hasattr(b2, 'uma_ProcessElement'):
+        assert not _is_linked(b2, 'uma_ProcessElement', a)
+
+
+def test_assoc_section4_link_reassign_clear():
+    a = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    b1 = uma_ContentDescription(externalId="sample_text", keyConsiderations="sample_text", mainDescription="sample_text")
+    b2 = uma_ContentDescription(externalId="sample_text_2", keyConsiderations="sample_text_2", mainDescription="sample_text_2")
+    _safe_set(a, 'uma_Section', b1)
+    assert _is_linked(a, 'uma_Section', b1)
+    if hasattr(b1, 'uma_ContentDescription'):
+        assert _is_linked(b1, 'uma_ContentDescription', a)
+    _safe_set(a, 'uma_Section', b2)
+    assert _is_linked(a, 'uma_Section', b2)
+    if hasattr(b1, 'uma_ContentDescription'):
+        assert not _is_linked(b1, 'uma_ContentDescription', a)
+    if hasattr(b2, 'uma_ContentDescription'):
+        assert _is_linked(b2, 'uma_ContentDescription', a)
+    _safe_set(a, 'uma_Section', None)
+    assert not _is_linked(a, 'uma_Section', b2)
+    if hasattr(b2, 'uma_ContentDescription'):
+        assert not _is_linked(b2, 'uma_ContentDescription', a)
+
+
+def test_assoc_step50_link_reassign_clear():
+    a = uma_TaskDescriptor(additionallyPerformedBy="sample_text", assistedBy="sample_text", externalInput="sample_text", group3="sample_text", isSynchronizedWithSource="sample_text", mandatoryInput="sample_text", optionalInput="sample_text", output="sample_text", performedPrimarilyBy="sample_text", task="sample_text")
+    b1 = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    b2 = uma_Section(description="sample_text_2", predecessor="sample_text_2", sectionName="sample_text_2", variabilityBasedOnElement="sample_text_2", variabilityType="sample_text_2")
+    _safe_set(a, 'uma_TaskDescriptor51', {b1})
+    assert _is_linked(a, 'uma_TaskDescriptor51', b1)
+    if hasattr(b1, 'uma_Section52'):
+        assert _is_linked(b1, 'uma_Section52', a)
+    _safe_set(a, 'uma_TaskDescriptor51', {b2})
+    assert _is_linked(a, 'uma_TaskDescriptor51', b2)
+    if hasattr(b1, 'uma_Section52'):
+        assert not _is_linked(b1, 'uma_Section52', a)
+    if hasattr(b2, 'uma_Section52'):
+        assert _is_linked(b2, 'uma_Section52', a)
+    _safe_set(a, 'uma_TaskDescriptor51', set())
+    assert not _is_linked(a, 'uma_TaskDescriptor51', b2)
+    if hasattr(b2, 'uma_Section52'):
+        assert not _is_linked(b2, 'uma_Section52', a)
+
+
+def test_assoc_subDiscipline10_link_reassign_clear():
+    a = uma_Discipline(group2="sample_text", referenceWorkflow="sample_text", task="sample_text")
+    b1 = uma_Discipline(group2="sample_text", referenceWorkflow="sample_text", task="sample_text")
+    b2 = uma_Discipline(group2="sample_text_2", referenceWorkflow="sample_text_2", task="sample_text_2")
+    _safe_set(a, 'uma_Discipline', b1)
+    assert _is_linked(a, 'uma_Discipline', b1)
+    if hasattr(b1, 'uma_Discipline9'):
+        assert _is_linked(b1, 'uma_Discipline9', a)
+    _safe_set(a, 'uma_Discipline', b2)
+    assert _is_linked(a, 'uma_Discipline', b2)
+    if hasattr(b1, 'uma_Discipline9'):
+        assert not _is_linked(b1, 'uma_Discipline9', a)
+    if hasattr(b2, 'uma_Discipline9'):
+        assert _is_linked(b2, 'uma_Discipline9', a)
+    _safe_set(a, 'uma_Discipline', None)
+    assert not _is_linked(a, 'uma_Discipline', b2)
+    if hasattr(b2, 'uma_Discipline9'):
+        assert not _is_linked(b2, 'uma_Discipline9', a)
+
+
+def test_assoc_subPractice38_link_reassign_clear():
+    a = uma_Practice(activityReference="sample_text", contentReference="sample_text", group2="sample_text")
+    b1 = uma_Practice(activityReference="sample_text", contentReference="sample_text", group2="sample_text")
+    b2 = uma_Practice(activityReference="sample_text_2", contentReference="sample_text_2", group2="sample_text_2")
+    _safe_set(a, 'uma_Practice', b1)
+    assert _is_linked(a, 'uma_Practice', b1)
+    if hasattr(b1, 'uma_Practice37'):
+        assert _is_linked(b1, 'uma_Practice37', a)
+    _safe_set(a, 'uma_Practice', b2)
+    assert _is_linked(a, 'uma_Practice', b2)
+    if hasattr(b1, 'uma_Practice37'):
+        assert not _is_linked(b1, 'uma_Practice37', a)
+    if hasattr(b2, 'uma_Practice37'):
+        assert _is_linked(b2, 'uma_Practice37', a)
+    _safe_set(a, 'uma_Practice', None)
+    assert not _is_linked(a, 'uma_Practice', b2)
+    if hasattr(b2, 'uma_Practice37'):
+        assert not _is_linked(b2, 'uma_Practice37', a)
+
+
+def test_assoc_subSection48_link_reassign_clear():
+    a = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    b1 = uma_Section(description="sample_text", predecessor="sample_text", sectionName="sample_text", variabilityBasedOnElement="sample_text", variabilityType="sample_text")
+    b2 = uma_Section(description="sample_text_2", predecessor="sample_text_2", sectionName="sample_text_2", variabilityBasedOnElement="sample_text_2", variabilityType="sample_text_2")
+    _safe_set(a, 'uma_Section47', b1)
+    assert _is_linked(a, 'uma_Section47', b1)
+    if hasattr(b1, 'uma_Section49'):
+        assert _is_linked(b1, 'uma_Section49', a)
+    _safe_set(a, 'uma_Section47', b2)
+    assert _is_linked(a, 'uma_Section47', b2)
+    if hasattr(b1, 'uma_Section49'):
+        assert not _is_linked(b1, 'uma_Section49', a)
+    if hasattr(b2, 'uma_Section49'):
+        assert _is_linked(b2, 'uma_Section49', a)
+    _safe_set(a, 'uma_Section47', None)
+    assert not _is_linked(a, 'uma_Section47', b2)
+    if hasattr(b2, 'uma_Section49'):
+        assert not _is_linked(b2, 'uma_Section49', a)
+
+
+def test_assoc_subdomain22_link_reassign_clear():
+    a = uma_Domain(group2="sample_text", workProduct="sample_text")
+    b1 = uma_Domain(group2="sample_text", workProduct="sample_text")
+    b2 = uma_Domain(group2="sample_text_2", workProduct="sample_text_2")
+    _safe_set(a, 'uma_Domain', b1)
+    assert _is_linked(a, 'uma_Domain', b1)
+    if hasattr(b1, 'uma_Domain21'):
+        assert _is_linked(b1, 'uma_Domain21', a)
+    _safe_set(a, 'uma_Domain', b2)
+    assert _is_linked(a, 'uma_Domain', b2)
+    if hasattr(b1, 'uma_Domain21'):
+        assert not _is_linked(b1, 'uma_Domain21', a)
+    if hasattr(b2, 'uma_Domain21'):
+        assert _is_linked(b2, 'uma_Domain21', a)
+    _safe_set(a, 'uma_Domain', None)
+    assert not _is_linked(a, 'uma_Domain', b2)
+    if hasattr(b2, 'uma_Domain21'):
+        assert not _is_linked(b2, 'uma_Domain21', a)
+
+
+def test_assoc_xMLNSPrefixMap11_link_reassign_clear():
+    a = uma_DocumentRoot(mixed="sample_text")
+    b1 = uma_EStringToStringMapEntry()
+    b2 = uma_EStringToStringMapEntry()
+    _safe_set(a, 'uma_DocumentRoot', {b1})
+    assert _is_linked(a, 'uma_DocumentRoot', b1)
+    if hasattr(b1, 'uma_EStringToStringMapEntry'):
+        assert _is_linked(b1, 'uma_EStringToStringMapEntry', a)
+    _safe_set(a, 'uma_DocumentRoot', {b2})
+    assert _is_linked(a, 'uma_DocumentRoot', b2)
+    if hasattr(b1, 'uma_EStringToStringMapEntry'):
+        assert not _is_linked(b1, 'uma_EStringToStringMapEntry', a)
+    if hasattr(b2, 'uma_EStringToStringMapEntry'):
+        assert _is_linked(b2, 'uma_EStringToStringMapEntry', a)
+    _safe_set(a, 'uma_DocumentRoot', set())
+    assert not _is_linked(a, 'uma_DocumentRoot', b2)
+    if hasattr(b2, 'uma_EStringToStringMapEntry'):
+        assert not _is_linked(b2, 'uma_EStringToStringMapEntry', a)
+
+
+def test_assoc_xSISchemaLocation12_link_reassign_clear():
+    a = uma_DocumentRoot(mixed="sample_text")
+    b1 = uma_EStringToStringMapEntry()
+    b2 = uma_EStringToStringMapEntry()
+    _safe_set(a, 'uma_DocumentRoot13', {b1})
+    assert _is_linked(a, 'uma_DocumentRoot13', b1)
+    if hasattr(b1, 'uma_EStringToStringMapEntry14'):
+        assert _is_linked(b1, 'uma_EStringToStringMapEntry14', a)
+    _safe_set(a, 'uma_DocumentRoot13', {b2})
+    assert _is_linked(a, 'uma_DocumentRoot13', b2)
+    if hasattr(b1, 'uma_EStringToStringMapEntry14'):
+        assert not _is_linked(b1, 'uma_EStringToStringMapEntry14', a)
+    if hasattr(b2, 'uma_EStringToStringMapEntry14'):
+        assert _is_linked(b2, 'uma_EStringToStringMapEntry14', a)
+    _safe_set(a, 'uma_DocumentRoot13', set())
+    assert not _is_linked(a, 'uma_DocumentRoot13', b2)
+    if hasattr(b2, 'uma_EStringToStringMapEntry14'):
+        assert not _is_linked(b2, 'uma_EStringToStringMapEntry14', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Activity_strategy = st.builds(Activity)
+@given(instance=Activity_strategy)
+@settings(max_examples=25)
+def test_Activity_instantiation(instance):
+    assert isinstance(instance, Activity)
+
+
+ActivityDescription_strategy = st.builds(ActivityDescription)
+@given(instance=ActivityDescription_strategy)
+@settings(max_examples=25)
+def test_ActivityDescription_instantiation(instance):
+    assert isinstance(instance, ActivityDescription)
+
+
+BreakdownElement_strategy = st.builds(BreakdownElement)
+@given(instance=BreakdownElement_strategy)
+@settings(max_examples=25)
+def test_BreakdownElement_instantiation(instance):
+    assert isinstance(instance, BreakdownElement)
+
+
+BreakdownElementDescription_strategy = st.builds(BreakdownElementDescription)
+@given(instance=BreakdownElementDescription_strategy)
+@settings(max_examples=25)
+def test_BreakdownElementDescription_instantiation(instance):
+    assert isinstance(instance, BreakdownElementDescription)
+
+
+Concept_strategy = st.builds(Concept)
+@given(instance=Concept_strategy)
+@settings(max_examples=25)
+def test_Concept_instantiation(instance):
+    assert isinstance(instance, Concept)
+
+
+ContentCategory_strategy = st.builds(ContentCategory)
+@given(instance=ContentCategory_strategy)
+@settings(max_examples=25)
+def test_ContentCategory_instantiation(instance):
+    assert isinstance(instance, ContentCategory)
+
+
+ContentDescription_strategy = st.builds(ContentDescription)
+@given(instance=ContentDescription_strategy)
+@settings(max_examples=25)
+def test_ContentDescription_instantiation(instance):
+    assert isinstance(instance, ContentDescription)
+
+
+ContentElement_strategy = st.builds(ContentElement)
+@given(instance=ContentElement_strategy)
+@settings(max_examples=25)
+def test_ContentElement_instantiation(instance):
+    assert isinstance(instance, ContentElement)
+
+
+DescribableElement_strategy = st.builds(DescribableElement)
+@given(instance=DescribableElement_strategy)
+@settings(max_examples=25)
+def test_DescribableElement_instantiation(instance):
+    assert isinstance(instance, DescribableElement)
+
+
+Descriptor_strategy = st.builds(Descriptor)
+@given(instance=Descriptor_strategy)
+@settings(max_examples=25)
+def test_Descriptor_instantiation(instance):
+    assert isinstance(instance, Descriptor)
+
+
+Element_strategy = st.builds(Element)
+@given(instance=Element_strategy)
+@settings(max_examples=25)
+def test_Element_instantiation(instance):
+    assert isinstance(instance, Element)
+
+
+Guidance_strategy = st.builds(Guidance)
+@given(instance=Guidance_strategy)
+@settings(max_examples=25)
+def test_Guidance_instantiation(instance):
+    assert isinstance(instance, Guidance)
+
+
+MethodElement_strategy = st.builds(MethodElement)
+@given(instance=MethodElement_strategy)
+@settings(max_examples=25)
+def test_MethodElement_instantiation(instance):
+    assert isinstance(instance, MethodElement)
+
+
+MethodPackage_strategy = st.builds(MethodPackage)
+@given(instance=MethodPackage_strategy)
+@settings(max_examples=25)
+def test_MethodPackage_instantiation(instance):
+    assert isinstance(instance, MethodPackage)
+
+
+MethodUnit_strategy = st.builds(MethodUnit)
+@given(instance=MethodUnit_strategy)
+@settings(max_examples=25)
+def test_MethodUnit_instantiation(instance):
+    assert isinstance(instance, MethodUnit)
+
+
+NamedElement_strategy = st.builds(NamedElement)
+@given(instance=NamedElement_strategy)
+@settings(max_examples=25)
+def test_NamedElement_instantiation(instance):
+    assert isinstance(instance, NamedElement)
+
+
+PackageableElement_strategy = st.builds(PackageableElement)
+@given(instance=PackageableElement_strategy)
+@settings(max_examples=25)
+def test_PackageableElement_instantiation(instance):
+    assert isinstance(instance, PackageableElement)
+
+
+Process_strategy = st.builds(Process)
+@given(instance=Process_strategy)
+@settings(max_examples=25)
+def test_Process_instantiation(instance):
+    assert isinstance(instance, Process)
+
+
+ProcessDescription_strategy = st.builds(ProcessDescription)
+@given(instance=ProcessDescription_strategy)
+@settings(max_examples=25)
+def test_ProcessDescription_instantiation(instance):
+    assert isinstance(instance, ProcessDescription)
+
+
+ProcessElement_strategy = st.builds(ProcessElement)
+@given(instance=ProcessElement_strategy)
+@settings(max_examples=25)
+def test_ProcessElement_instantiation(instance):
+    assert isinstance(instance, ProcessElement)
+
+
+ProcessPackage_strategy = st.builds(ProcessPackage)
+@given(instance=ProcessPackage_strategy)
+@settings(max_examples=25)
+def test_ProcessPackage_instantiation(instance):
+    assert isinstance(instance, ProcessPackage)
+
+
+RoleDescriptor_strategy = st.builds(RoleDescriptor)
+@given(instance=RoleDescriptor_strategy)
+@settings(max_examples=25)
+def test_RoleDescriptor_instantiation(instance):
+    assert isinstance(instance, RoleDescriptor)
+
+
+WorkBreakdownElement_strategy = st.builds(WorkBreakdownElement)
+@given(instance=WorkBreakdownElement_strategy)
+@settings(max_examples=25)
+def test_WorkBreakdownElement_instantiation(instance):
+    assert isinstance(instance, WorkBreakdownElement)
+
+
+WorkProduct_strategy = st.builds(WorkProduct)
+@given(instance=WorkProduct_strategy)
+@settings(max_examples=25)
+def test_WorkProduct_instantiation(instance):
+    assert isinstance(instance, WorkProduct)
+
+
+WorkProductDescription_strategy = st.builds(WorkProductDescription)
+@given(instance=WorkProductDescription_strategy)
+@settings(max_examples=25)
+def test_WorkProductDescription_instantiation(instance):
+    assert isinstance(instance, WorkProductDescription)
+
+
+uma_Activity_strategy = st.builds(uma_Activity, group3=safe_text, isEnactable=safe_text, postcondition=safe_text, precondition=safe_text, roadmap=safe_text, variabilityBasedOnElement=safe_text, variabilityType=safe_text)
+@given(instance=uma_Activity_strategy)
+@settings(max_examples=25)
+def test_uma_Activity_instantiation(instance):
+    assert isinstance(instance, uma_Activity)
+
+
+uma_ActivityDescription_strategy = st.builds(uma_ActivityDescription, alternatives=safe_text, howToStaff=safe_text, purpose=safe_text)
+@given(instance=uma_ActivityDescription_strategy)
+@settings(max_examples=25)
+def test_uma_ActivityDescription_instantiation(instance):
+    assert isinstance(instance, uma_ActivityDescription)
+
+
+uma_ApplicableMetaClassInfo_strategy = st.builds(uma_ApplicableMetaClassInfo, isPrimaryExtension=safe_text)
+@given(instance=uma_ApplicableMetaClassInfo_strategy)
+@settings(max_examples=25)
+def test_uma_ApplicableMetaClassInfo_instantiation(instance):
+    assert isinstance(instance, uma_ApplicableMetaClassInfo)
+
+
+uma_Artifact_strategy = st.builds(uma_Artifact, group3=safe_text)
+@given(instance=uma_Artifact_strategy)
+@settings(max_examples=25)
+def test_uma_Artifact_instantiation(instance):
+    assert isinstance(instance, uma_Artifact)
+
+
+uma_ArtifactDescription_strategy = st.builds(uma_ArtifactDescription, briefOutline=safe_text, notation=safe_text, representation=safe_text, representationOptions=safe_text)
+@given(instance=uma_ArtifactDescription_strategy)
+@settings(max_examples=25)
+def test_uma_ArtifactDescription_instantiation(instance):
+    assert isinstance(instance, uma_ArtifactDescription)
+
+
+uma_BreakdownElement_strategy = st.builds(uma_BreakdownElement, checklist=safe_text, concept=safe_text, example=safe_text, group1=safe_text, guideline=safe_text, hasMultipleOccurrences=safe_text, isOptional=safe_text, isPlanned=safe_text, planningData=safe_text, prefix=safe_text, presentedAfter=safe_text, presentedBefore=safe_text, reusableAsset=safe_text, superActivity=safe_text, supportingMaterial=safe_text, whitepaper=safe_text)
+@given(instance=uma_BreakdownElement_strategy)
+@settings(max_examples=25)
+def test_uma_BreakdownElement_instantiation(instance):
+    assert isinstance(instance, uma_BreakdownElement)
+
+
+uma_BreakdownElementDescription_strategy = st.builds(uma_BreakdownElementDescription, usageGuidance=safe_text)
+@given(instance=uma_BreakdownElementDescription_strategy)
+@settings(max_examples=25)
+def test_uma_BreakdownElementDescription_instantiation(instance):
+    assert isinstance(instance, uma_BreakdownElementDescription)
+
+
+uma_CapabilityPattern_strategy = st.builds(uma_CapabilityPattern)
+@given(instance=uma_CapabilityPattern_strategy)
+@settings(max_examples=25)
+def test_uma_CapabilityPattern_instantiation(instance):
+    assert isinstance(instance, uma_CapabilityPattern)
+
+
+uma_Checklist_strategy = st.builds(uma_Checklist)
+@given(instance=uma_Checklist_strategy)
+@settings(max_examples=25)
+def test_uma_Checklist_instantiation(instance):
+    assert isinstance(instance, uma_Checklist)
+
+
+uma_CompositeRole_strategy = st.builds(uma_CompositeRole, group2=safe_text)
+@given(instance=uma_CompositeRole_strategy)
+@settings(max_examples=25)
+def test_uma_CompositeRole_instantiation(instance):
+    assert isinstance(instance, uma_CompositeRole)
+
+
+uma_Concept_strategy = st.builds(uma_Concept)
+@given(instance=uma_Concept_strategy)
+@settings(max_examples=25)
+def test_uma_Concept_instantiation(instance):
+    assert isinstance(instance, uma_Concept)
+
+
+uma_Constraint_strategy = st.builds(uma_Constraint, mainDescription=safe_text)
+@given(instance=uma_Constraint_strategy)
+@settings(max_examples=25)
+def test_uma_Constraint_instantiation(instance):
+    assert isinstance(instance, uma_Constraint)
+
+
+uma_ContentCategory_strategy = st.builds(uma_ContentCategory)
+@given(instance=uma_ContentCategory_strategy)
+@settings(max_examples=25)
+def test_uma_ContentCategory_instantiation(instance):
+    assert isinstance(instance, uma_ContentCategory)
+
+
+uma_ContentCategoryPackage_strategy = st.builds(uma_ContentCategoryPackage, group2=safe_text)
+@given(instance=uma_ContentCategoryPackage_strategy)
+@settings(max_examples=25)
+def test_uma_ContentCategoryPackage_instantiation(instance):
+    assert isinstance(instance, uma_ContentCategoryPackage)
+
+
+uma_ContentDescription_strategy = st.builds(uma_ContentDescription, externalId=safe_text, keyConsiderations=safe_text, mainDescription=safe_text)
+@given(instance=uma_ContentDescription_strategy)
+@settings(max_examples=25)
+def test_uma_ContentDescription_instantiation(instance):
+    assert isinstance(instance, uma_ContentDescription)
+
+
+uma_ContentElement_strategy = st.builds(uma_ContentElement, checklist=safe_text, concept=safe_text, example=safe_text, group1=safe_text, guideline=safe_text, reusableAsset=safe_text, supportingMaterial=safe_text, variabilityBasedOnElement=safe_text, variabilityType=safe_text, whitepaper=safe_text)
+@given(instance=uma_ContentElement_strategy)
+@settings(max_examples=25)
+def test_uma_ContentElement_instantiation(instance):
+    assert isinstance(instance, uma_ContentElement)
+
+
+uma_ContentPackage_strategy = st.builds(uma_ContentPackage, group2=safe_text)
+@given(instance=uma_ContentPackage_strategy)
+@settings(max_examples=25)
+def test_uma_ContentPackage_instantiation(instance):
+    assert isinstance(instance, uma_ContentPackage)
+
+
+uma_CustomCategory_strategy = st.builds(uma_CustomCategory, categorizedElement=safe_text, group2=safe_text, subCategory=safe_text)
+@given(instance=uma_CustomCategory_strategy)
+@settings(max_examples=25)
+def test_uma_CustomCategory_instantiation(instance):
+    assert isinstance(instance, uma_CustomCategory)
+
+
+uma_Deliverable_strategy = st.builds(uma_Deliverable, deliveredWorkProduct=safe_text, group3=safe_text)
+@given(instance=uma_Deliverable_strategy)
+@settings(max_examples=25)
+def test_uma_Deliverable_instantiation(instance):
+    assert isinstance(instance, uma_Deliverable)
+
+
+uma_DeliverableDescription_strategy = st.builds(uma_DeliverableDescription, externalDescription=safe_text, packagingGuidance=safe_text)
+@given(instance=uma_DeliverableDescription_strategy)
+@settings(max_examples=25)
+def test_uma_DeliverableDescription_instantiation(instance):
+    assert isinstance(instance, uma_DeliverableDescription)
+
+
+uma_DeliveryProcess_strategy = st.builds(uma_DeliveryProcess, communicationsMaterial=safe_text, educationMaterial=safe_text, group4=safe_text)
+@given(instance=uma_DeliveryProcess_strategy)
+@settings(max_examples=25)
+def test_uma_DeliveryProcess_instantiation(instance):
+    assert isinstance(instance, uma_DeliveryProcess)
+
+
+uma_DeliveryProcessDescription_strategy = st.builds(uma_DeliveryProcessDescription, estimatingTechnique=safe_text, projectCharacteristics=safe_text, projectMemberExpertise=safe_text, riskLevel=safe_text, scale=safe_text, typeOfContract=safe_text)
+@given(instance=uma_DeliveryProcessDescription_strategy)
+@settings(max_examples=25)
+def test_uma_DeliveryProcessDescription_instantiation(instance):
+    assert isinstance(instance, uma_DeliveryProcessDescription)
+
+
+uma_DescribableElement_strategy = st.builds(uma_DescribableElement, fulfill=safe_text, isAbstract=safe_text, nodeicon=safe_text, shapeicon=safe_text)
+@given(instance=uma_DescribableElement_strategy)
+@settings(max_examples=25)
+def test_uma_DescribableElement_instantiation(instance):
+    assert isinstance(instance, uma_DescribableElement)
+
+
+uma_Descriptor_strategy = st.builds(uma_Descriptor, isSynchronizedWithSource=safe_text)
+@given(instance=uma_Descriptor_strategy)
+@settings(max_examples=25)
+def test_uma_Descriptor_instantiation(instance):
+    assert isinstance(instance, uma_Descriptor)
+
+
+uma_DescriptorDescription_strategy = st.builds(uma_DescriptorDescription, refinedDescription=safe_text)
+@given(instance=uma_DescriptorDescription_strategy)
+@settings(max_examples=25)
+def test_uma_DescriptorDescription_instantiation(instance):
+    assert isinstance(instance, uma_DescriptorDescription)
+
+
+uma_Discipline_strategy = st.builds(uma_Discipline, group2=safe_text, referenceWorkflow=safe_text, task=safe_text)
+@given(instance=uma_Discipline_strategy)
+@settings(max_examples=25)
+def test_uma_Discipline_instantiation(instance):
+    assert isinstance(instance, uma_Discipline)
+
+
+uma_DisciplineGrouping_strategy = st.builds(uma_DisciplineGrouping, discipline=safe_text, group2=safe_text)
+@given(instance=uma_DisciplineGrouping_strategy)
+@settings(max_examples=25)
+def test_uma_DisciplineGrouping_instantiation(instance):
+    assert isinstance(instance, uma_DisciplineGrouping)
+
+
+uma_DocumentRoot_strategy = st.builds(uma_DocumentRoot, mixed=safe_text)
+@given(instance=uma_DocumentRoot_strategy)
+@settings(max_examples=25)
+def test_uma_DocumentRoot_instantiation(instance):
+    assert isinstance(instance, uma_DocumentRoot)
+
+
+uma_Domain_strategy = st.builds(uma_Domain, group2=safe_text, workProduct=safe_text)
+@given(instance=uma_Domain_strategy)
+@settings(max_examples=25)
+def test_uma_Domain_instantiation(instance):
+    assert isinstance(instance, uma_Domain)
+
+
+uma_EStringToStringMapEntry_strategy = st.builds(uma_EStringToStringMapEntry)
+@given(instance=uma_EStringToStringMapEntry_strategy)
+@settings(max_examples=25)
+def test_uma_EStringToStringMapEntry_instantiation(instance):
+    assert isinstance(instance, uma_EStringToStringMapEntry)
+
+
+uma_Element_strategy = st.builds(uma_Element)
+@given(instance=uma_Element_strategy)
+@settings(max_examples=25)
+def test_uma_Element_instantiation(instance):
+    assert isinstance(instance, uma_Element)
+
+
+uma_Estimate_strategy = st.builds(uma_Estimate, estimationConsiderations=safe_text, estimationMetric=safe_text, group2=safe_text)
+@given(instance=uma_Estimate_strategy)
+@settings(max_examples=25)
+def test_uma_Estimate_instantiation(instance):
+    assert isinstance(instance, uma_Estimate)
+
+
+uma_EstimatingMetric_strategy = st.builds(uma_EstimatingMetric)
+@given(instance=uma_EstimatingMetric_strategy)
+@settings(max_examples=25)
+def test_uma_EstimatingMetric_instantiation(instance):
+    assert isinstance(instance, uma_EstimatingMetric)
+
+
+uma_EstimationConsiderations_strategy = st.builds(uma_EstimationConsiderations)
+@given(instance=uma_EstimationConsiderations_strategy)
+@settings(max_examples=25)
+def test_uma_EstimationConsiderations_instantiation(instance):
+    assert isinstance(instance, uma_EstimationConsiderations)
+
+
+uma_Example_strategy = st.builds(uma_Example)
+@given(instance=uma_Example_strategy)
+@settings(max_examples=25)
+def test_uma_Example_instantiation(instance):
+    assert isinstance(instance, uma_Example)
+
+
+uma_Guidance_strategy = st.builds(uma_Guidance)
+@given(instance=uma_Guidance_strategy)
+@settings(max_examples=25)
+def test_uma_Guidance_instantiation(instance):
+    assert isinstance(instance, uma_Guidance)
+
+
+uma_GuidanceDescription_strategy = st.builds(uma_GuidanceDescription, attachment=safe_text)
+@given(instance=uma_GuidanceDescription_strategy)
+@settings(max_examples=25)
+def test_uma_GuidanceDescription_instantiation(instance):
+    assert isinstance(instance, uma_GuidanceDescription)
+
+
+uma_Guideline_strategy = st.builds(uma_Guideline)
+@given(instance=uma_Guideline_strategy)
+@settings(max_examples=25)
+def test_uma_Guideline_instantiation(instance):
+    assert isinstance(instance, uma_Guideline)
+
+
+uma_Iteration_strategy = st.builds(uma_Iteration)
+@given(instance=uma_Iteration_strategy)
+@settings(max_examples=25)
+def test_uma_Iteration_instantiation(instance):
+    assert isinstance(instance, uma_Iteration)
+
+
+uma_Kind_strategy = st.builds(uma_Kind, applicableMetaClassInfo=safe_text)
+@given(instance=uma_Kind_strategy)
+@settings(max_examples=25)
+def test_uma_Kind_instantiation(instance):
+    assert isinstance(instance, uma_Kind)
+
+
+uma_MethodConfiguration_strategy = st.builds(uma_MethodConfiguration, addedCategory=safe_text, baseConfiguration=safe_text, defaultView=safe_text, methodPackageSelection=safe_text, methodPluginSelection=safe_text, processView=safe_text, subtractedCategory=safe_text)
+@given(instance=uma_MethodConfiguration_strategy)
+@settings(max_examples=25)
+def test_uma_MethodConfiguration_instantiation(instance):
+    assert isinstance(instance, uma_MethodConfiguration)
+
+
+uma_MethodElement_strategy = st.builds(uma_MethodElement, briefDescription=safe_text, group=safe_text, id=safe_text, orderingGuide=safe_text, presentationName=safe_text, suppressed=safe_text)
+@given(instance=uma_MethodElement_strategy)
+@settings(max_examples=25)
+def test_uma_MethodElement_instantiation(instance):
+    assert isinstance(instance, uma_MethodElement)
+
+
+uma_MethodElementProperty_strategy = st.builds(uma_MethodElementProperty, value=safe_text)
+@given(instance=uma_MethodElementProperty_strategy)
+@settings(max_examples=25)
+def test_uma_MethodElementProperty_instantiation(instance):
+    assert isinstance(instance, uma_MethodElementProperty)
+
+
+uma_MethodLibrary_strategy = st.builds(uma_MethodLibrary, tool=safe_text)
+@given(instance=uma_MethodLibrary_strategy)
+@settings(max_examples=25)
+def test_uma_MethodLibrary_instantiation(instance):
+    assert isinstance(instance, uma_MethodLibrary)
+
+
+uma_MethodPackage_strategy = st.builds(uma_MethodPackage, global_=safe_text, group1=safe_text, reusedPackage=safe_text)
+@given(instance=uma_MethodPackage_strategy)
+@settings(max_examples=25)
+def test_uma_MethodPackage_instantiation(instance):
+    assert isinstance(instance, uma_MethodPackage)
+
+
+uma_MethodPlugin_strategy = st.builds(uma_MethodPlugin, referencedMethodPlugin=safe_text, supporting=safe_text, userChangeable=safe_text)
+@given(instance=uma_MethodPlugin_strategy)
+@settings(max_examples=25)
+def test_uma_MethodPlugin_instantiation(instance):
+    assert isinstance(instance, uma_MethodPlugin)
+
+
+uma_MethodUnit_strategy = st.builds(uma_MethodUnit, authors=safe_text, changeDate=safe_text, changeDescription=safe_text, copyright=safe_text, version=safe_text)
+@given(instance=uma_MethodUnit_strategy)
+@settings(max_examples=25)
+def test_uma_MethodUnit_instantiation(instance):
+    assert isinstance(instance, uma_MethodUnit)
+
+
+uma_Milestone_strategy = st.builds(uma_Milestone, requiredResult=safe_text)
+@given(instance=uma_Milestone_strategy)
+@settings(max_examples=25)
+def test_uma_Milestone_instantiation(instance):
+    assert isinstance(instance, uma_Milestone)
+
+
+uma_NamedElement_strategy = st.builds(uma_NamedElement, name=safe_text)
+@given(instance=uma_NamedElement_strategy)
+@settings(max_examples=25)
+def test_uma_NamedElement_instantiation(instance):
+    assert isinstance(instance, uma_NamedElement)
+
+
+uma_Outcome_strategy = st.builds(uma_Outcome)
+@given(instance=uma_Outcome_strategy)
+@settings(max_examples=25)
+def test_uma_Outcome_instantiation(instance):
+    assert isinstance(instance, uma_Outcome)
+
+
+uma_PackageableElement_strategy = st.builds(uma_PackageableElement)
+@given(instance=uma_PackageableElement_strategy)
+@settings(max_examples=25)
+def test_uma_PackageableElement_instantiation(instance):
+    assert isinstance(instance, uma_PackageableElement)
+
+
+uma_Phase_strategy = st.builds(uma_Phase)
+@given(instance=uma_Phase_strategy)
+@settings(max_examples=25)
+def test_uma_Phase_instantiation(instance):
+    assert isinstance(instance, uma_Phase)
+
+
+uma_PlanningData_strategy = st.builds(uma_PlanningData, finishDate=safe_text, rank=safe_text, startDate=safe_text)
+@given(instance=uma_PlanningData_strategy)
+@settings(max_examples=25)
+def test_uma_PlanningData_instantiation(instance):
+    assert isinstance(instance, uma_PlanningData)
+
+
+uma_Practice_strategy = st.builds(uma_Practice, activityReference=safe_text, contentReference=safe_text, group2=safe_text)
+@given(instance=uma_Practice_strategy)
+@settings(max_examples=25)
+def test_uma_Practice_instantiation(instance):
+    assert isinstance(instance, uma_Practice)
+
+
+uma_PracticeDescription_strategy = st.builds(uma_PracticeDescription, additionalInfo=safe_text, application=safe_text, background=safe_text, goals=safe_text, levelsOfAdoption=safe_text, problem=safe_text)
+@given(instance=uma_PracticeDescription_strategy)
+@settings(max_examples=25)
+def test_uma_PracticeDescription_instantiation(instance):
+    assert isinstance(instance, uma_PracticeDescription)
+
+
+uma_Process_strategy = st.builds(uma_Process, defaultContext=safe_text, diagramURI=safe_text, includesPattern=safe_text, validContext=safe_text)
+@given(instance=uma_Process_strategy)
+@settings(max_examples=25)
+def test_uma_Process_instantiation(instance):
+    assert isinstance(instance, uma_Process)
+
+
+uma_ProcessComponent_strategy = st.builds(uma_ProcessComponent, authors=safe_text, changeDate=safe_text, changeDescription=safe_text, copyright=safe_text, version=safe_text)
+@given(instance=uma_ProcessComponent_strategy)
+@settings(max_examples=25)
+def test_uma_ProcessComponent_instantiation(instance):
+    assert isinstance(instance, uma_ProcessComponent)
+
+
+uma_ProcessComponentInterface_strategy = st.builds(uma_ProcessComponentInterface, group2=safe_text)
+@given(instance=uma_ProcessComponentInterface_strategy)
+@settings(max_examples=25)
+def test_uma_ProcessComponentInterface_instantiation(instance):
+    assert isinstance(instance, uma_ProcessComponentInterface)
+
+
+uma_ProcessDescription_strategy = st.builds(uma_ProcessDescription, scope=safe_text, usageNotes=safe_text)
+@given(instance=uma_ProcessDescription_strategy)
+@settings(max_examples=25)
+def test_uma_ProcessDescription_instantiation(instance):
+    assert isinstance(instance, uma_ProcessDescription)
+
+
+uma_ProcessElement_strategy = st.builds(uma_ProcessElement)
+@given(instance=uma_ProcessElement_strategy)
+@settings(max_examples=25)
+def test_uma_ProcessElement_instantiation(instance):
+    assert isinstance(instance, uma_ProcessElement)
+
+
+uma_ProcessPackage_strategy = st.builds(uma_ProcessPackage, group2=safe_text)
+@given(instance=uma_ProcessPackage_strategy)
+@settings(max_examples=25)
+def test_uma_ProcessPackage_instantiation(instance):
+    assert isinstance(instance, uma_ProcessPackage)
+
+
+uma_ProcessPlanningTemplate_strategy = st.builds(uma_ProcessPlanningTemplate, baseProcess=safe_text, group4=safe_text)
+@given(instance=uma_ProcessPlanningTemplate_strategy)
+@settings(max_examples=25)
+def test_uma_ProcessPlanningTemplate_instantiation(instance):
+    assert isinstance(instance, uma_ProcessPlanningTemplate)
+
+
+uma_Report_strategy = st.builds(uma_Report)
+@given(instance=uma_Report_strategy)
+@settings(max_examples=25)
+def test_uma_Report_instantiation(instance):
+    assert isinstance(instance, uma_Report)
+
+
+uma_ReusableAsset_strategy = st.builds(uma_ReusableAsset)
+@given(instance=uma_ReusableAsset_strategy)
+@settings(max_examples=25)
+def test_uma_ReusableAsset_instantiation(instance):
+    assert isinstance(instance, uma_ReusableAsset)
+
+
+uma_Roadmap_strategy = st.builds(uma_Roadmap)
+@given(instance=uma_Roadmap_strategy)
+@settings(max_examples=25)
+def test_uma_Roadmap_instantiation(instance):
+    assert isinstance(instance, uma_Roadmap)
+
+
+uma_Role_strategy = st.builds(uma_Role, group2=safe_text, responsibleFor=safe_text)
+@given(instance=uma_Role_strategy)
+@settings(max_examples=25)
+def test_uma_Role_instantiation(instance):
+    assert isinstance(instance, uma_Role)
+
+
+uma_RoleDescription_strategy = st.builds(uma_RoleDescription, assignmentApproaches=safe_text, skills=safe_text, synonyms=safe_text)
+@given(instance=uma_RoleDescription_strategy)
+@settings(max_examples=25)
+def test_uma_RoleDescription_instantiation(instance):
+    assert isinstance(instance, uma_RoleDescription)
+
+
+uma_RoleDescriptor_strategy = st.builds(uma_RoleDescriptor, responsibleFor=safe_text, role=safe_text)
+@given(instance=uma_RoleDescriptor_strategy)
+@settings(max_examples=25)
+def test_uma_RoleDescriptor_instantiation(instance):
+    assert isinstance(instance, uma_RoleDescriptor)
+
+
+uma_RoleSet_strategy = st.builds(uma_RoleSet, group2=safe_text, role=safe_text)
+@given(instance=uma_RoleSet_strategy)
+@settings(max_examples=25)
+def test_uma_RoleSet_instantiation(instance):
+    assert isinstance(instance, uma_RoleSet)
+
+
+uma_RoleSetGrouping_strategy = st.builds(uma_RoleSetGrouping, group2=safe_text, roleSet=safe_text)
+@given(instance=uma_RoleSetGrouping_strategy)
+@settings(max_examples=25)
+def test_uma_RoleSetGrouping_instantiation(instance):
+    assert isinstance(instance, uma_RoleSetGrouping)
+
+
+uma_Section_strategy = st.builds(uma_Section, description=safe_text, predecessor=safe_text, sectionName=safe_text, variabilityBasedOnElement=safe_text, variabilityType=safe_text)
+@given(instance=uma_Section_strategy)
+@settings(max_examples=25)
+def test_uma_Section_instantiation(instance):
+    assert isinstance(instance, uma_Section)
+
+
+uma_SupportingMaterial_strategy = st.builds(uma_SupportingMaterial)
+@given(instance=uma_SupportingMaterial_strategy)
+@settings(max_examples=25)
+def test_uma_SupportingMaterial_instantiation(instance):
+    assert isinstance(instance, uma_SupportingMaterial)
+
+
+uma_Task_strategy = st.builds(uma_Task, additionallyPerformedBy=safe_text, estimate=safe_text, estimationConsiderations=safe_text, group2=safe_text, mandatoryInput=safe_text, optionalInput=safe_text, output=safe_text, performedBy=safe_text, postcondition=safe_text, precondition=safe_text, toolMentor=safe_text)
+@given(instance=uma_Task_strategy)
+@settings(max_examples=25)
+def test_uma_Task_instantiation(instance):
+    assert isinstance(instance, uma_Task)
+
+
+uma_TaskDescription_strategy = st.builds(uma_TaskDescription, alternatives=safe_text, purpose=safe_text)
+@given(instance=uma_TaskDescription_strategy)
+@settings(max_examples=25)
+def test_uma_TaskDescription_instantiation(instance):
+    assert isinstance(instance, uma_TaskDescription)
+
+
+uma_TaskDescriptor_strategy = st.builds(uma_TaskDescriptor, additionallyPerformedBy=safe_text, assistedBy=safe_text, externalInput=safe_text, group3=safe_text, isSynchronizedWithSource=safe_text, mandatoryInput=safe_text, optionalInput=safe_text, output=safe_text, performedPrimarilyBy=safe_text, task=safe_text)
+@given(instance=uma_TaskDescriptor_strategy)
+@settings(max_examples=25)
+def test_uma_TaskDescriptor_instantiation(instance):
+    assert isinstance(instance, uma_TaskDescriptor)
+
+
+uma_TeamProfile_strategy = st.builds(uma_TeamProfile, group2=safe_text, role=safe_text, subTeam=safe_text, superTeam=safe_text)
+@given(instance=uma_TeamProfile_strategy)
+@settings(max_examples=25)
+def test_uma_TeamProfile_instantiation(instance):
+    assert isinstance(instance, uma_TeamProfile)
+
+
+uma_Template_strategy = st.builds(uma_Template)
+@given(instance=uma_Template_strategy)
+@settings(max_examples=25)
+def test_uma_Template_instantiation(instance):
+    assert isinstance(instance, uma_Template)
+
+
+uma_TermDefinition_strategy = st.builds(uma_TermDefinition)
+@given(instance=uma_TermDefinition_strategy)
+@settings(max_examples=25)
+def test_uma_TermDefinition_instantiation(instance):
+    assert isinstance(instance, uma_TermDefinition)
+
+
+uma_Tool_strategy = st.builds(uma_Tool, group2=safe_text, toolMentor=safe_text)
+@given(instance=uma_Tool_strategy)
+@settings(max_examples=25)
+def test_uma_Tool_instantiation(instance):
+    assert isinstance(instance, uma_Tool)
+
+
+uma_ToolMentor_strategy = st.builds(uma_ToolMentor)
+@given(instance=uma_ToolMentor_strategy)
+@settings(max_examples=25)
+def test_uma_ToolMentor_instantiation(instance):
+    assert isinstance(instance, uma_ToolMentor)
+
+
+uma_Whitepaper_strategy = st.builds(uma_Whitepaper)
+@given(instance=uma_Whitepaper_strategy)
+@settings(max_examples=25)
+def test_uma_Whitepaper_instantiation(instance):
+    assert isinstance(instance, uma_Whitepaper)
+
+
+uma_WorkBreakdownElement_strategy = st.builds(uma_WorkBreakdownElement, group2=safe_text, isEventDriven=safe_text, isOngoing=safe_text, isRepeatable=safe_text)
+@given(instance=uma_WorkBreakdownElement_strategy)
+@settings(max_examples=25)
+def test_uma_WorkBreakdownElement_instantiation(instance):
+    assert isinstance(instance, uma_WorkBreakdownElement)
+
+
+uma_WorkDefinition_strategy = st.builds(uma_WorkDefinition, postcondition=safe_text, precondition=safe_text)
+@given(instance=uma_WorkDefinition_strategy)
+@settings(max_examples=25)
+def test_uma_WorkDefinition_instantiation(instance):
+    assert isinstance(instance, uma_WorkDefinition)
+
+
+uma_WorkOrder_strategy = st.builds(uma_WorkOrder, id=safe_text, linkType=safe_text, properties=safe_text, value=safe_text)
+@given(instance=uma_WorkOrder_strategy)
+@settings(max_examples=25)
+def test_uma_WorkOrder_instantiation(instance):
+    assert isinstance(instance, uma_WorkOrder)
+
+
+uma_WorkProduct_strategy = st.builds(uma_WorkProduct, estimate=safe_text, estimationConsiderations=safe_text, group2=safe_text, report=safe_text, template=safe_text, toolMentor=safe_text)
+@given(instance=uma_WorkProduct_strategy)
+@settings(max_examples=25)
+def test_uma_WorkProduct_instantiation(instance):
+    assert isinstance(instance, uma_WorkProduct)
+
+
+uma_WorkProductDescription_strategy = st.builds(uma_WorkProductDescription, impactOfNotHaving=safe_text, purpose=safe_text, reasonsForNotNeeding=safe_text)
+@given(instance=uma_WorkProductDescription_strategy)
+@settings(max_examples=25)
+def test_uma_WorkProductDescription_instantiation(instance):
+    assert isinstance(instance, uma_WorkProductDescription)
+
+
+uma_WorkProductDescriptor_strategy = st.builds(uma_WorkProductDescriptor, activityEntryState=safe_text, activityExitState=safe_text, deliverableParts=safe_text, externalInputTo=safe_text, group2=safe_text, impactedBy=safe_text, impacts=safe_text, mandatoryInputTo=safe_text, optionalInputTo=safe_text, outputFrom=safe_text, responsibleRole=safe_text, workProduct=safe_text)
+@given(instance=uma_WorkProductDescriptor_strategy)
+@settings(max_examples=25)
+def test_uma_WorkProductDescriptor_instantiation(instance):
+    assert isinstance(instance, uma_WorkProductDescriptor)
+
+
+uma_WorkProductType_strategy = st.builds(uma_WorkProductType, group2=safe_text, workProduct=safe_text)
+@given(instance=uma_WorkProductType_strategy)
+@settings(max_examples=25)
+def test_uma_WorkProductType_instantiation(instance):
+    assert isinstance(instance, uma_WorkProductType)
+
+

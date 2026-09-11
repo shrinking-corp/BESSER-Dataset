@@ -14,6 +14,7 @@ class MyEnumeration(Enum):
 # Definition of Classes
 ############################################
 
+    pass
 class typetranslation_AbstractClass(ABC):
 
     pass

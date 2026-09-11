@@ -14,6 +14,7 @@ class AssociationType(Enum):
 # Definition of Classes
 ############################################
 
+    pass
 class UIComponent:
 
     pass

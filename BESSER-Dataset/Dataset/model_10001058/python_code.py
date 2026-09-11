@@ -1029,8 +1029,8 @@ class result:
 
 class attendance:
 
-    def __init__(self, class1: str, present: str, absent: str, leave: str, _attr: str, lecture: int, day: str, date: int, class1: str, attribute: str, Teacher_attendance_117: "student" = None):
-        self.class1 = class1
+    def __init__(self, class_: str, present: str, absent: str, leave: str, _attr: str, lecture: int, day: str, date: int, class1: str, attribute: str, Teacher_attendance_117: "student" = None):
+        self.class_ = class_
         self.present = present
         self.absent = absent
         self.leave = leave
@@ -1041,14 +1041,14 @@ class attendance:
         self.class1 = class1
         self.attribute = attribute
         self.Teacher_attendance_117 = Teacher_attendance_117
-        
+
         pass
     @property
-    def class1(self):
-        return self.__class1
-    @class1.setter
-    def class1(self, class1: str):
-        self.__class = class1
+    def class_(self):
+        return self.__class_
+    @class_.setter
+    def class_(self, class_: str):
+        self.__class_ = class_
 
     @property
     def class1(self):

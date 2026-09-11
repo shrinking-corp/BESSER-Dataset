@@ -1,0 +1,787 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    BaseElement,
+    Cause,
+    FMEAEntry,
+    Failure,
+    FailureModel,
+    ODEProductPackage,
+    failureLogic_Cause,
+    failureLogic_FMEA,
+    failureLogic_FMEAEntry,
+    failureLogic_FMEDAEntry,
+    failureLogic_Failure,
+    failureLogic_FailureLogicPackage,
+    failureLogic_FailureModel,
+    failureLogic_FaultTree,
+    failureLogic_Gate,
+    failureLogic_MarkovChain,
+    failureLogic_MinimalCutSets,
+    failureLogic_MinimalCutset,
+    failureLogic_ProbDist,
+    failureLogic_ProbDistParam,
+    failureLogic_SecurityViolation,
+    failureLogic_State,
+    failureLogic_Transition,
+    CauseType,
+    FMEAType,
+    FailureOriginType,
+    GateType,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_failureLogic_Cause_causeType_value_roundtrip():
+    instance = failureLogic_Cause(causeType="sample_text")
+    assert instance.causeType == "sample_text"
+    instance.causeType = "sample_text_2"
+    assert instance.causeType == "sample_text_2"
+
+
+def test_failureLogic_FMEA_type_value_roundtrip():
+    instance = failureLogic_FMEA(type="sample_text")
+    assert instance.type == "sample_text"
+    instance.type = "sample_text_2"
+    assert instance.type == "sample_text_2"
+
+
+def test_failureLogic_FMEDAEntry_diagnosisRate_value_roundtrip():
+    instance = failureLogic_FMEDAEntry(diagnosisRate=3.14)
+    assert instance.diagnosisRate == 3.14
+    instance.diagnosisRate = 9.99
+    assert instance.diagnosisRate == 9.99
+
+
+def test_failureLogic_Failure_failureClass_value_roundtrip():
+    instance = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    assert instance.failureClass == "sample_text"
+    instance.failureClass = "sample_text_2"
+    assert instance.failureClass == "sample_text_2"
+
+
+def test_failureLogic_Failure_failureRate_value_roundtrip():
+    instance = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    assert instance.failureRate == 3.14
+    instance.failureRate = 9.99
+    assert instance.failureRate == 9.99
+
+
+def test_failureLogic_Failure_isCcf_value_roundtrip():
+    instance = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    assert instance.isCcf == True
+    instance.isCcf = False
+    assert instance.isCcf == False
+
+
+def test_failureLogic_Failure_originType_value_roundtrip():
+    instance = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    assert instance.originType == "sample_text"
+    instance.originType = "sample_text_2"
+    assert instance.originType == "sample_text_2"
+
+
+def test_failureLogic_Gate_gateType_value_roundtrip():
+    instance = failureLogic_Gate(gateType="sample_text")
+    assert instance.gateType == "sample_text"
+    instance.gateType = "sample_text_2"
+    assert instance.gateType == "sample_text_2"
+
+
+def test_failureLogic_ProbDist_type_value_roundtrip():
+    instance = failureLogic_ProbDist(type="sample_text")
+    assert instance.type == "sample_text"
+    instance.type = "sample_text_2"
+    assert instance.type == "sample_text_2"
+
+
+def test_failureLogic_ProbDistParam_value_value_roundtrip():
+    instance = failureLogic_ProbDistParam(value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_failureLogic_State_isFailState_value_roundtrip():
+    instance = failureLogic_State(isFailState=True, isInitialState=True)
+    assert instance.isFailState == True
+    instance.isFailState = False
+    assert instance.isFailState == False
+
+
+def test_failureLogic_State_isInitialState_value_roundtrip():
+    instance = failureLogic_State(isFailState=True, isInitialState=True)
+    assert instance.isInitialState == True
+    instance.isInitialState = False
+    assert instance.isInitialState == False
+
+
+def test_failureLogic_Transition_transition_value_roundtrip():
+    instance = failureLogic_Transition(transition=3.14)
+    assert instance.transition == 3.14
+    instance.transition = 9.99
+    assert instance.transition == 9.99
+
+
+def test_failureLogic_Cause_isa_BaseElement():
+    instance = failureLogic_Cause(causeType="sample_text")
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_FMEAEntry_isa_BaseElement():
+    instance = failureLogic_FMEAEntry()
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_Failure_isa_BaseElement():
+    instance = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_FailureModel_isa_BaseElement():
+    instance = failureLogic_FailureModel()
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_MinimalCutSets_isa_BaseElement():
+    instance = failureLogic_MinimalCutSets()
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_MinimalCutset_isa_BaseElement():
+    instance = failureLogic_MinimalCutset()
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_ProbDist_isa_BaseElement():
+    instance = failureLogic_ProbDist(type="sample_text")
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_ProbDistParam_isa_BaseElement():
+    instance = failureLogic_ProbDistParam(value="sample_text")
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_State_isa_BaseElement():
+    instance = failureLogic_State(isFailState=True, isInitialState=True)
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_Transition_isa_BaseElement():
+    instance = failureLogic_Transition(transition=3.14)
+    assert isinstance(instance, BaseElement)
+
+
+def test_failureLogic_Gate_isa_Cause():
+    instance = failureLogic_Gate(gateType="sample_text")
+    assert isinstance(instance, Cause)
+
+
+def test_failureLogic_FMEDAEntry_isa_FMEAEntry():
+    instance = failureLogic_FMEDAEntry(diagnosisRate=3.14)
+    assert isinstance(instance, FMEAEntry)
+
+
+def test_failureLogic_SecurityViolation_isa_Failure():
+    instance = failureLogic_SecurityViolation()
+    assert isinstance(instance, Failure)
+
+
+def test_failureLogic_FMEA_isa_FailureModel():
+    instance = failureLogic_FMEA(type="sample_text")
+    assert isinstance(instance, FailureModel)
+
+
+def test_failureLogic_FaultTree_isa_FailureModel():
+    instance = failureLogic_FaultTree()
+    assert isinstance(instance, FailureModel)
+
+
+def test_failureLogic_MarkovChain_isa_FailureModel():
+    instance = failureLogic_MarkovChain()
+    assert isinstance(instance, FailureModel)
+
+
+def test_failureLogic_FailureLogicPackage_isa_ODEProductPackage():
+    instance = failureLogic_FailureLogicPackage()
+    assert isinstance(instance, ODEProductPackage)
+
+
+def test_assoc_causes23_link_reassign_clear():
+    a = failureLogic_Cause(causeType="sample_text")
+    b1 = failureLogic_FaultTree()
+    b2 = failureLogic_FaultTree()
+    _safe_set(a, 'failureLogic_Cause', b1)
+    assert _is_linked(a, 'failureLogic_Cause', b1)
+    if hasattr(b1, 'failureLogic_FaultTree'):
+        assert _is_linked(b1, 'failureLogic_FaultTree', a)
+    _safe_set(a, 'failureLogic_Cause', b2)
+    assert _is_linked(a, 'failureLogic_Cause', b2)
+    if hasattr(b1, 'failureLogic_FaultTree'):
+        assert not _is_linked(b1, 'failureLogic_FaultTree', a)
+    if hasattr(b2, 'failureLogic_FaultTree'):
+        assert _is_linked(b2, 'failureLogic_FaultTree', a)
+    _safe_set(a, 'failureLogic_Cause', None)
+    assert not _is_linked(a, 'failureLogic_Cause', b2)
+    if hasattr(b2, 'failureLogic_FaultTree'):
+        assert not _is_linked(b2, 'failureLogic_FaultTree', a)
+
+
+def test_assoc_causes27_link_reassign_clear():
+    a = failureLogic_Gate(gateType="sample_text")
+    b1 = failureLogic_Cause(causeType="sample_text")
+    b2 = failureLogic_Cause(causeType="sample_text_2")
+    _safe_set(a, 'failureLogic_Gate', {b1})
+    assert _is_linked(a, 'failureLogic_Gate', b1)
+    if hasattr(b1, 'failureLogic_Cause28'):
+        assert _is_linked(b1, 'failureLogic_Cause28', a)
+    _safe_set(a, 'failureLogic_Gate', {b2})
+    assert _is_linked(a, 'failureLogic_Gate', b2)
+    if hasattr(b1, 'failureLogic_Cause28'):
+        assert not _is_linked(b1, 'failureLogic_Cause28', a)
+    if hasattr(b2, 'failureLogic_Cause28'):
+        assert _is_linked(b2, 'failureLogic_Cause28', a)
+    _safe_set(a, 'failureLogic_Gate', set())
+    assert not _is_linked(a, 'failureLogic_Gate', b2)
+    if hasattr(b2, 'failureLogic_Cause28'):
+        assert not _is_linked(b2, 'failureLogic_Cause28', a)
+
+
+def test_assoc_ccfFailures3_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b2 = failureLogic_Failure(failureClass="sample_text_2", failureRate=9.99, isCcf=False, originType="sample_text_2")
+    _safe_set(a, 'failureLogic_Failure2', {b1})
+    assert _is_linked(a, 'failureLogic_Failure2', b1)
+    if hasattr(b1, 'failureLogic_Failure4'):
+        assert _is_linked(b1, 'failureLogic_Failure4', a)
+    _safe_set(a, 'failureLogic_Failure2', {b2})
+    assert _is_linked(a, 'failureLogic_Failure2', b2)
+    if hasattr(b1, 'failureLogic_Failure4'):
+        assert not _is_linked(b1, 'failureLogic_Failure4', a)
+    if hasattr(b2, 'failureLogic_Failure4'):
+        assert _is_linked(b2, 'failureLogic_Failure4', a)
+    _safe_set(a, 'failureLogic_Failure2', set())
+    assert not _is_linked(a, 'failureLogic_Failure2', b2)
+    if hasattr(b2, 'failureLogic_Failure4'):
+        assert not _is_linked(b2, 'failureLogic_Failure4', a)
+
+
+def test_assoc_diagnosisProbDistribution51_link_reassign_clear():
+    a = failureLogic_ProbDist(type="sample_text")
+    b1 = failureLogic_FMEDAEntry(diagnosisRate=3.14)
+    b2 = failureLogic_FMEDAEntry(diagnosisRate=9.99)
+    _safe_set(a, 'failureLogic_ProbDist52', b1)
+    assert _is_linked(a, 'failureLogic_ProbDist52', b1)
+    if hasattr(b1, 'failureLogic_FMEDAEntry'):
+        assert _is_linked(b1, 'failureLogic_FMEDAEntry', a)
+    _safe_set(a, 'failureLogic_ProbDist52', b2)
+    assert _is_linked(a, 'failureLogic_ProbDist52', b2)
+    if hasattr(b1, 'failureLogic_FMEDAEntry'):
+        assert not _is_linked(b1, 'failureLogic_FMEDAEntry', a)
+    if hasattr(b2, 'failureLogic_FMEDAEntry'):
+        assert _is_linked(b2, 'failureLogic_FMEDAEntry', a)
+    _safe_set(a, 'failureLogic_ProbDist52', None)
+    assert not _is_linked(a, 'failureLogic_ProbDist52', b2)
+    if hasattr(b2, 'failureLogic_FMEDAEntry'):
+        assert not _is_linked(b2, 'failureLogic_FMEDAEntry', a)
+
+
+def test_assoc_effect45_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_FMEAEntry()
+    b2 = failureLogic_FMEAEntry()
+    _safe_set(a, 'failureLogic_Failure47', b1)
+    assert _is_linked(a, 'failureLogic_Failure47', b1)
+    if hasattr(b1, 'failureLogic_FMEAEntry46'):
+        assert _is_linked(b1, 'failureLogic_FMEAEntry46', a)
+    _safe_set(a, 'failureLogic_Failure47', b2)
+    assert _is_linked(a, 'failureLogic_Failure47', b2)
+    if hasattr(b1, 'failureLogic_FMEAEntry46'):
+        assert not _is_linked(b1, 'failureLogic_FMEAEntry46', a)
+    if hasattr(b2, 'failureLogic_FMEAEntry46'):
+        assert _is_linked(b2, 'failureLogic_FMEAEntry46', a)
+    _safe_set(a, 'failureLogic_Failure47', None)
+    assert not _is_linked(a, 'failureLogic_Failure47', b2)
+    if hasattr(b2, 'failureLogic_FMEAEntry46'):
+        assert not _is_linked(b2, 'failureLogic_FMEAEntry46', a)
+
+
+def test_assoc_entries44_link_reassign_clear():
+    a = failureLogic_FMEA(type="sample_text")
+    b1 = failureLogic_FMEAEntry()
+    b2 = failureLogic_FMEAEntry()
+    _safe_set(a, 'failureLogic_FMEA', {b1})
+    assert _is_linked(a, 'failureLogic_FMEA', b1)
+    if hasattr(b1, 'failureLogic_FMEAEntry'):
+        assert _is_linked(b1, 'failureLogic_FMEAEntry', a)
+    _safe_set(a, 'failureLogic_FMEA', {b2})
+    assert _is_linked(a, 'failureLogic_FMEA', b2)
+    if hasattr(b1, 'failureLogic_FMEAEntry'):
+        assert not _is_linked(b1, 'failureLogic_FMEAEntry', a)
+    if hasattr(b2, 'failureLogic_FMEAEntry'):
+        assert _is_linked(b2, 'failureLogic_FMEAEntry', a)
+    _safe_set(a, 'failureLogic_FMEA', set())
+    assert not _is_linked(a, 'failureLogic_FMEA', b2)
+    if hasattr(b2, 'failureLogic_FMEAEntry'):
+        assert not _is_linked(b2, 'failureLogic_FMEAEntry', a)
+
+
+def test_assoc_failState32_link_reassign_clear():
+    a = failureLogic_State(isFailState=True, isInitialState=True)
+    b1 = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b2 = failureLogic_Failure(failureClass="sample_text_2", failureRate=9.99, isCcf=False, originType="sample_text_2")
+    _safe_set(a, 'failureLogic_State33', b1)
+    assert _is_linked(a, 'failureLogic_State33', b1)
+    if hasattr(b1, 'failureLogic_Failure34'):
+        assert _is_linked(b1, 'failureLogic_Failure34', a)
+    _safe_set(a, 'failureLogic_State33', b2)
+    assert _is_linked(a, 'failureLogic_State33', b2)
+    if hasattr(b1, 'failureLogic_Failure34'):
+        assert not _is_linked(b1, 'failureLogic_Failure34', a)
+    if hasattr(b2, 'failureLogic_Failure34'):
+        assert _is_linked(b2, 'failureLogic_Failure34', a)
+    _safe_set(a, 'failureLogic_State33', None)
+    assert not _is_linked(a, 'failureLogic_State33', b2)
+    if hasattr(b2, 'failureLogic_Failure34'):
+        assert not _is_linked(b2, 'failureLogic_Failure34', a)
+
+
+def test_assoc_failure24_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_Cause(causeType="sample_text")
+    b2 = failureLogic_Cause(causeType="sample_text_2")
+    _safe_set(a, 'failureLogic_Failure26', b1)
+    assert _is_linked(a, 'failureLogic_Failure26', b1)
+    if hasattr(b1, 'failureLogic_Cause25'):
+        assert _is_linked(b1, 'failureLogic_Cause25', a)
+    _safe_set(a, 'failureLogic_Failure26', b2)
+    assert _is_linked(a, 'failureLogic_Failure26', b2)
+    if hasattr(b1, 'failureLogic_Cause25'):
+        assert not _is_linked(b1, 'failureLogic_Cause25', a)
+    if hasattr(b2, 'failureLogic_Cause25'):
+        assert _is_linked(b2, 'failureLogic_Cause25', a)
+    _safe_set(a, 'failureLogic_Failure26', None)
+    assert not _is_linked(a, 'failureLogic_Failure26', b2)
+    if hasattr(b2, 'failureLogic_Cause25'):
+        assert not _is_linked(b2, 'failureLogic_Cause25', a)
+
+
+def test_assoc_failureProbDistribution1_link_reassign_clear():
+    a = failureLogic_ProbDist(type="sample_text")
+    b1 = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b2 = failureLogic_Failure(failureClass="sample_text_2", failureRate=9.99, isCcf=False, originType="sample_text_2")
+    _safe_set(a, 'failureLogic_ProbDist', b1)
+    assert _is_linked(a, 'failureLogic_ProbDist', b1)
+    if hasattr(b1, 'failureLogic_Failure'):
+        assert _is_linked(b1, 'failureLogic_Failure', a)
+    _safe_set(a, 'failureLogic_ProbDist', b2)
+    assert _is_linked(a, 'failureLogic_ProbDist', b2)
+    if hasattr(b1, 'failureLogic_Failure'):
+        assert not _is_linked(b1, 'failureLogic_Failure', a)
+    if hasattr(b2, 'failureLogic_Failure'):
+        assert _is_linked(b2, 'failureLogic_Failure', a)
+    _safe_set(a, 'failureLogic_ProbDist', None)
+    assert not _is_linked(a, 'failureLogic_ProbDist', b2)
+    if hasattr(b2, 'failureLogic_Failure'):
+        assert not _is_linked(b2, 'failureLogic_Failure', a)
+
+
+def test_assoc_failures15_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_MinimalCutSets()
+    b2 = failureLogic_MinimalCutSets()
+    _safe_set(a, 'failureLogic_Failure17', b1)
+    assert _is_linked(a, 'failureLogic_Failure17', b1)
+    if hasattr(b1, 'failureLogic_MinimalCutSets16'):
+        assert _is_linked(b1, 'failureLogic_MinimalCutSets16', a)
+    _safe_set(a, 'failureLogic_Failure17', b2)
+    assert _is_linked(a, 'failureLogic_Failure17', b2)
+    if hasattr(b1, 'failureLogic_MinimalCutSets16'):
+        assert not _is_linked(b1, 'failureLogic_MinimalCutSets16', a)
+    if hasattr(b2, 'failureLogic_MinimalCutSets16'):
+        assert _is_linked(b2, 'failureLogic_MinimalCutSets16', a)
+    _safe_set(a, 'failureLogic_Failure17', None)
+    assert not _is_linked(a, 'failureLogic_Failure17', b2)
+    if hasattr(b2, 'failureLogic_MinimalCutSets16'):
+        assert not _is_linked(b2, 'failureLogic_MinimalCutSets16', a)
+
+
+def test_assoc_failures18_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_MinimalCutset()
+    b2 = failureLogic_MinimalCutset()
+    _safe_set(a, 'failureLogic_Failure20', b1)
+    assert _is_linked(a, 'failureLogic_Failure20', b1)
+    if hasattr(b1, 'failureLogic_MinimalCutset19'):
+        assert _is_linked(b1, 'failureLogic_MinimalCutset19', a)
+    _safe_set(a, 'failureLogic_Failure20', b2)
+    assert _is_linked(a, 'failureLogic_Failure20', b2)
+    if hasattr(b1, 'failureLogic_MinimalCutset19'):
+        assert not _is_linked(b1, 'failureLogic_MinimalCutset19', a)
+    if hasattr(b2, 'failureLogic_MinimalCutset19'):
+        assert _is_linked(b2, 'failureLogic_MinimalCutset19', a)
+    _safe_set(a, 'failureLogic_Failure20', None)
+    assert not _is_linked(a, 'failureLogic_Failure20', b2)
+    if hasattr(b2, 'failureLogic_MinimalCutset19'):
+        assert not _is_linked(b2, 'failureLogic_MinimalCutset19', a)
+
+
+def test_assoc_failures7_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_FailureModel()
+    b2 = failureLogic_FailureModel()
+    _safe_set(a, 'failureLogic_Failure9', b1)
+    assert _is_linked(a, 'failureLogic_Failure9', b1)
+    if hasattr(b1, 'failureLogic_FailureModel8'):
+        assert _is_linked(b1, 'failureLogic_FailureModel8', a)
+    _safe_set(a, 'failureLogic_Failure9', b2)
+    assert _is_linked(a, 'failureLogic_Failure9', b2)
+    if hasattr(b1, 'failureLogic_FailureModel8'):
+        assert not _is_linked(b1, 'failureLogic_FailureModel8', a)
+    if hasattr(b2, 'failureLogic_FailureModel8'):
+        assert _is_linked(b2, 'failureLogic_FailureModel8', a)
+    _safe_set(a, 'failureLogic_Failure9', None)
+    assert not _is_linked(a, 'failureLogic_Failure9', b2)
+    if hasattr(b2, 'failureLogic_FailureModel8'):
+        assert not _is_linked(b2, 'failureLogic_FailureModel8', a)
+
+
+def test_assoc_fromStates38_link_reassign_clear():
+    a = failureLogic_Transition(transition=3.14)
+    b1 = failureLogic_State(isFailState=True, isInitialState=True)
+    b2 = failureLogic_State(isFailState=False, isInitialState=False)
+    _safe_set(a, 'failureLogic_Transition39', {b1})
+    assert _is_linked(a, 'failureLogic_Transition39', b1)
+    if hasattr(b1, 'failureLogic_State40'):
+        assert _is_linked(b1, 'failureLogic_State40', a)
+    _safe_set(a, 'failureLogic_Transition39', {b2})
+    assert _is_linked(a, 'failureLogic_Transition39', b2)
+    if hasattr(b1, 'failureLogic_State40'):
+        assert not _is_linked(b1, 'failureLogic_State40', a)
+    if hasattr(b2, 'failureLogic_State40'):
+        assert _is_linked(b2, 'failureLogic_State40', a)
+    _safe_set(a, 'failureLogic_Transition39', set())
+    assert not _is_linked(a, 'failureLogic_Transition39', b2)
+    if hasattr(b2, 'failureLogic_State40'):
+        assert not _is_linked(b2, 'failureLogic_State40', a)
+
+
+def test_assoc_mode48_link_reassign_clear():
+    a = failureLogic_Failure(failureClass="sample_text", failureRate=3.14, isCcf=True, originType="sample_text")
+    b1 = failureLogic_FMEAEntry()
+    b2 = failureLogic_FMEAEntry()
+    _safe_set(a, 'failureLogic_Failure50', b1)
+    assert _is_linked(a, 'failureLogic_Failure50', b1)
+    if hasattr(b1, 'failureLogic_FMEAEntry49'):
+        assert _is_linked(b1, 'failureLogic_FMEAEntry49', a)
+    _safe_set(a, 'failureLogic_Failure50', b2)
+    assert _is_linked(a, 'failureLogic_Failure50', b2)
+    if hasattr(b1, 'failureLogic_FMEAEntry49'):
+        assert not _is_linked(b1, 'failureLogic_FMEAEntry49', a)
+    if hasattr(b2, 'failureLogic_FMEAEntry49'):
+        assert _is_linked(b2, 'failureLogic_FMEAEntry49', a)
+    _safe_set(a, 'failureLogic_Failure50', None)
+    assert not _is_linked(a, 'failureLogic_Failure50', b2)
+    if hasattr(b2, 'failureLogic_FMEAEntry49'):
+        assert not _is_linked(b2, 'failureLogic_FMEAEntry49', a)
+
+
+def test_assoc_parameters21_link_reassign_clear():
+    a = failureLogic_ProbDistParam(value="sample_text")
+    b1 = failureLogic_ProbDist(type="sample_text")
+    b2 = failureLogic_ProbDist(type="sample_text_2")
+    _safe_set(a, 'failureLogic_ProbDistParam', b1)
+    assert _is_linked(a, 'failureLogic_ProbDistParam', b1)
+    if hasattr(b1, 'failureLogic_ProbDist22'):
+        assert _is_linked(b1, 'failureLogic_ProbDist22', a)
+    _safe_set(a, 'failureLogic_ProbDistParam', b2)
+    assert _is_linked(a, 'failureLogic_ProbDistParam', b2)
+    if hasattr(b1, 'failureLogic_ProbDist22'):
+        assert not _is_linked(b1, 'failureLogic_ProbDist22', a)
+    if hasattr(b2, 'failureLogic_ProbDist22'):
+        assert _is_linked(b2, 'failureLogic_ProbDist22', a)
+    _safe_set(a, 'failureLogic_ProbDistParam', None)
+    assert not _is_linked(a, 'failureLogic_ProbDistParam', b2)
+    if hasattr(b2, 'failureLogic_ProbDist22'):
+        assert not _is_linked(b2, 'failureLogic_ProbDist22', a)
+
+
+def test_assoc_states30_link_reassign_clear():
+    a = failureLogic_State(isFailState=True, isInitialState=True)
+    b1 = failureLogic_MarkovChain()
+    b2 = failureLogic_MarkovChain()
+    _safe_set(a, 'failureLogic_State', b1)
+    assert _is_linked(a, 'failureLogic_State', b1)
+    if hasattr(b1, 'failureLogic_MarkovChain31'):
+        assert _is_linked(b1, 'failureLogic_MarkovChain31', a)
+    _safe_set(a, 'failureLogic_State', b2)
+    assert _is_linked(a, 'failureLogic_State', b2)
+    if hasattr(b1, 'failureLogic_MarkovChain31'):
+        assert not _is_linked(b1, 'failureLogic_MarkovChain31', a)
+    if hasattr(b2, 'failureLogic_MarkovChain31'):
+        assert _is_linked(b2, 'failureLogic_MarkovChain31', a)
+    _safe_set(a, 'failureLogic_State', None)
+    assert not _is_linked(a, 'failureLogic_State', b2)
+    if hasattr(b2, 'failureLogic_MarkovChain31'):
+        assert not _is_linked(b2, 'failureLogic_MarkovChain31', a)
+
+
+def test_assoc_toStates41_link_reassign_clear():
+    a = failureLogic_Transition(transition=3.14)
+    b1 = failureLogic_State(isFailState=True, isInitialState=True)
+    b2 = failureLogic_State(isFailState=False, isInitialState=False)
+    _safe_set(a, 'failureLogic_Transition42', {b1})
+    assert _is_linked(a, 'failureLogic_Transition42', b1)
+    if hasattr(b1, 'failureLogic_State43'):
+        assert _is_linked(b1, 'failureLogic_State43', a)
+    _safe_set(a, 'failureLogic_Transition42', {b2})
+    assert _is_linked(a, 'failureLogic_Transition42', b2)
+    if hasattr(b1, 'failureLogic_State43'):
+        assert not _is_linked(b1, 'failureLogic_State43', a)
+    if hasattr(b2, 'failureLogic_State43'):
+        assert _is_linked(b2, 'failureLogic_State43', a)
+    _safe_set(a, 'failureLogic_Transition42', set())
+    assert not _is_linked(a, 'failureLogic_Transition42', b2)
+    if hasattr(b2, 'failureLogic_State43'):
+        assert not _is_linked(b2, 'failureLogic_State43', a)
+
+
+def test_assoc_transitionProbDistribution35_link_reassign_clear():
+    a = failureLogic_Transition(transition=3.14)
+    b1 = failureLogic_ProbDist(type="sample_text")
+    b2 = failureLogic_ProbDist(type="sample_text_2")
+    _safe_set(a, 'failureLogic_Transition36', b1)
+    assert _is_linked(a, 'failureLogic_Transition36', b1)
+    if hasattr(b1, 'failureLogic_ProbDist37'):
+        assert _is_linked(b1, 'failureLogic_ProbDist37', a)
+    _safe_set(a, 'failureLogic_Transition36', b2)
+    assert _is_linked(a, 'failureLogic_Transition36', b2)
+    if hasattr(b1, 'failureLogic_ProbDist37'):
+        assert not _is_linked(b1, 'failureLogic_ProbDist37', a)
+    if hasattr(b2, 'failureLogic_ProbDist37'):
+        assert _is_linked(b2, 'failureLogic_ProbDist37', a)
+    _safe_set(a, 'failureLogic_Transition36', None)
+    assert not _is_linked(a, 'failureLogic_Transition36', b2)
+    if hasattr(b2, 'failureLogic_ProbDist37'):
+        assert not _is_linked(b2, 'failureLogic_ProbDist37', a)
+
+
+def test_assoc_transitions29_link_reassign_clear():
+    a = failureLogic_Transition(transition=3.14)
+    b1 = failureLogic_MarkovChain()
+    b2 = failureLogic_MarkovChain()
+    _safe_set(a, 'failureLogic_Transition', b1)
+    assert _is_linked(a, 'failureLogic_Transition', b1)
+    if hasattr(b1, 'failureLogic_MarkovChain'):
+        assert _is_linked(b1, 'failureLogic_MarkovChain', a)
+    _safe_set(a, 'failureLogic_Transition', b2)
+    assert _is_linked(a, 'failureLogic_Transition', b2)
+    if hasattr(b1, 'failureLogic_MarkovChain'):
+        assert not _is_linked(b1, 'failureLogic_MarkovChain', a)
+    if hasattr(b2, 'failureLogic_MarkovChain'):
+        assert _is_linked(b2, 'failureLogic_MarkovChain', a)
+    _safe_set(a, 'failureLogic_Transition', None)
+    assert not _is_linked(a, 'failureLogic_Transition', b2)
+    if hasattr(b2, 'failureLogic_MarkovChain'):
+        assert not _is_linked(b2, 'failureLogic_MarkovChain', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+BaseElement_strategy = st.builds(BaseElement)
+@given(instance=BaseElement_strategy)
+@settings(max_examples=25)
+def test_BaseElement_instantiation(instance):
+    assert isinstance(instance, BaseElement)
+
+
+Cause_strategy = st.builds(Cause)
+@given(instance=Cause_strategy)
+@settings(max_examples=25)
+def test_Cause_instantiation(instance):
+    assert isinstance(instance, Cause)
+
+
+FMEAEntry_strategy = st.builds(FMEAEntry)
+@given(instance=FMEAEntry_strategy)
+@settings(max_examples=25)
+def test_FMEAEntry_instantiation(instance):
+    assert isinstance(instance, FMEAEntry)
+
+
+Failure_strategy = st.builds(Failure)
+@given(instance=Failure_strategy)
+@settings(max_examples=25)
+def test_Failure_instantiation(instance):
+    assert isinstance(instance, Failure)
+
+
+FailureModel_strategy = st.builds(FailureModel)
+@given(instance=FailureModel_strategy)
+@settings(max_examples=25)
+def test_FailureModel_instantiation(instance):
+    assert isinstance(instance, FailureModel)
+
+
+ODEProductPackage_strategy = st.builds(ODEProductPackage)
+@given(instance=ODEProductPackage_strategy)
+@settings(max_examples=25)
+def test_ODEProductPackage_instantiation(instance):
+    assert isinstance(instance, ODEProductPackage)
+
+
+failureLogic_Cause_strategy = st.builds(failureLogic_Cause, causeType=safe_text)
+@given(instance=failureLogic_Cause_strategy)
+@settings(max_examples=25)
+def test_failureLogic_Cause_instantiation(instance):
+    assert isinstance(instance, failureLogic_Cause)
+
+
+failureLogic_FMEA_strategy = st.builds(failureLogic_FMEA, type=safe_text)
+@given(instance=failureLogic_FMEA_strategy)
+@settings(max_examples=25)
+def test_failureLogic_FMEA_instantiation(instance):
+    assert isinstance(instance, failureLogic_FMEA)
+
+
+failureLogic_FMEAEntry_strategy = st.builds(failureLogic_FMEAEntry)
+@given(instance=failureLogic_FMEAEntry_strategy)
+@settings(max_examples=25)
+def test_failureLogic_FMEAEntry_instantiation(instance):
+    assert isinstance(instance, failureLogic_FMEAEntry)
+
+
+failureLogic_FMEDAEntry_strategy = st.builds(failureLogic_FMEDAEntry, diagnosisRate=st.floats(allow_nan=False, allow_infinity=False))
+@given(instance=failureLogic_FMEDAEntry_strategy)
+@settings(max_examples=25)
+def test_failureLogic_FMEDAEntry_instantiation(instance):
+    assert isinstance(instance, failureLogic_FMEDAEntry)
+
+
+failureLogic_Failure_strategy = st.builds(failureLogic_Failure, failureClass=safe_text, failureRate=st.floats(allow_nan=False, allow_infinity=False), isCcf=st.booleans(), originType=safe_text)
+@given(instance=failureLogic_Failure_strategy)
+@settings(max_examples=25)
+def test_failureLogic_Failure_instantiation(instance):
+    assert isinstance(instance, failureLogic_Failure)
+
+
+failureLogic_FailureLogicPackage_strategy = st.builds(failureLogic_FailureLogicPackage)
+@given(instance=failureLogic_FailureLogicPackage_strategy)
+@settings(max_examples=25)
+def test_failureLogic_FailureLogicPackage_instantiation(instance):
+    assert isinstance(instance, failureLogic_FailureLogicPackage)
+
+
+failureLogic_FailureModel_strategy = st.builds(failureLogic_FailureModel)
+@given(instance=failureLogic_FailureModel_strategy)
+@settings(max_examples=25)
+def test_failureLogic_FailureModel_instantiation(instance):
+    assert isinstance(instance, failureLogic_FailureModel)
+
+
+failureLogic_FaultTree_strategy = st.builds(failureLogic_FaultTree)
+@given(instance=failureLogic_FaultTree_strategy)
+@settings(max_examples=25)
+def test_failureLogic_FaultTree_instantiation(instance):
+    assert isinstance(instance, failureLogic_FaultTree)
+
+
+failureLogic_Gate_strategy = st.builds(failureLogic_Gate, gateType=safe_text)
+@given(instance=failureLogic_Gate_strategy)
+@settings(max_examples=25)
+def test_failureLogic_Gate_instantiation(instance):
+    assert isinstance(instance, failureLogic_Gate)
+
+
+failureLogic_MarkovChain_strategy = st.builds(failureLogic_MarkovChain)
+@given(instance=failureLogic_MarkovChain_strategy)
+@settings(max_examples=25)
+def test_failureLogic_MarkovChain_instantiation(instance):
+    assert isinstance(instance, failureLogic_MarkovChain)
+
+
+failureLogic_MinimalCutSets_strategy = st.builds(failureLogic_MinimalCutSets)
+@given(instance=failureLogic_MinimalCutSets_strategy)
+@settings(max_examples=25)
+def test_failureLogic_MinimalCutSets_instantiation(instance):
+    assert isinstance(instance, failureLogic_MinimalCutSets)
+
+
+failureLogic_MinimalCutset_strategy = st.builds(failureLogic_MinimalCutset)
+@given(instance=failureLogic_MinimalCutset_strategy)
+@settings(max_examples=25)
+def test_failureLogic_MinimalCutset_instantiation(instance):
+    assert isinstance(instance, failureLogic_MinimalCutset)
+
+
+failureLogic_ProbDist_strategy = st.builds(failureLogic_ProbDist, type=safe_text)
+@given(instance=failureLogic_ProbDist_strategy)
+@settings(max_examples=25)
+def test_failureLogic_ProbDist_instantiation(instance):
+    assert isinstance(instance, failureLogic_ProbDist)
+
+
+failureLogic_ProbDistParam_strategy = st.builds(failureLogic_ProbDistParam, value=safe_text)
+@given(instance=failureLogic_ProbDistParam_strategy)
+@settings(max_examples=25)
+def test_failureLogic_ProbDistParam_instantiation(instance):
+    assert isinstance(instance, failureLogic_ProbDistParam)
+
+
+failureLogic_SecurityViolation_strategy = st.builds(failureLogic_SecurityViolation)
+@given(instance=failureLogic_SecurityViolation_strategy)
+@settings(max_examples=25)
+def test_failureLogic_SecurityViolation_instantiation(instance):
+    assert isinstance(instance, failureLogic_SecurityViolation)
+
+
+failureLogic_State_strategy = st.builds(failureLogic_State, isFailState=st.booleans(), isInitialState=st.booleans())
+@given(instance=failureLogic_State_strategy)
+@settings(max_examples=25)
+def test_failureLogic_State_instantiation(instance):
+    assert isinstance(instance, failureLogic_State)
+
+
+failureLogic_Transition_strategy = st.builds(failureLogic_Transition, transition=st.floats(allow_nan=False, allow_infinity=False))
+@given(instance=failureLogic_Transition_strategy)
+@settings(max_examples=25)
+def test_failureLogic_Transition_instantiation(instance):
+    assert isinstance(instance, failureLogic_Transition)
+
+

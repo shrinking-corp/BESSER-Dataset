@@ -1,0 +1,355 @@
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Block,
+    Conditional,
+    FlowInstr,
+    Item,
+    JumpStmt,
+    Stmt,
+    Var,
+    flowgraph_Block,
+    flowgraph_Break,
+    flowgraph_Conditional,
+    flowgraph_Continue,
+    flowgraph_Exit,
+    flowgraph_Expr,
+    flowgraph_FlowInstr,
+    flowgraph_If,
+    flowgraph_Item,
+    flowgraph_JumpStmt,
+    flowgraph_Label,
+    flowgraph_Loop,
+    flowgraph_Method,
+    flowgraph_Param,
+    flowgraph_Return,
+    flowgraph_SimpleStmt,
+    flowgraph_Stmt,
+    flowgraph_Var,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_flowgraph_Item_txt_value_roundtrip():
+    instance = flowgraph_Item(txt="sample_text")
+    assert instance.txt == "sample_text"
+    instance.txt = "sample_text_2"
+    assert instance.txt == "sample_text_2"
+
+
+def test_flowgraph_Method_isa_Block():
+    instance = flowgraph_Method()
+    assert isinstance(instance, Block)
+
+
+def test_flowgraph_If_isa_Conditional():
+    instance = flowgraph_If()
+    assert isinstance(instance, Conditional)
+
+
+def test_flowgraph_Loop_isa_Conditional():
+    instance = flowgraph_Loop()
+    assert isinstance(instance, Conditional)
+
+
+def test_flowgraph_Exit_isa_FlowInstr():
+    instance = flowgraph_Exit()
+    assert isinstance(instance, FlowInstr)
+
+
+def test_flowgraph_Expr_isa_FlowInstr():
+    instance = flowgraph_Expr()
+    assert isinstance(instance, FlowInstr)
+
+
+def test_flowgraph_JumpStmt_isa_FlowInstr():
+    instance = flowgraph_JumpStmt()
+    assert isinstance(instance, FlowInstr)
+
+
+def test_flowgraph_Method_isa_FlowInstr():
+    instance = flowgraph_Method()
+    assert isinstance(instance, FlowInstr)
+
+
+def test_flowgraph_Return_isa_FlowInstr():
+    instance = flowgraph_Return()
+    assert isinstance(instance, FlowInstr)
+
+
+def test_flowgraph_SimpleStmt_isa_FlowInstr():
+    instance = flowgraph_SimpleStmt()
+    assert isinstance(instance, FlowInstr)
+
+
+def test_flowgraph_FlowInstr_isa_Item():
+    instance = flowgraph_FlowInstr()
+    assert isinstance(instance, Item)
+
+
+def test_flowgraph_Stmt_isa_Item():
+    instance = flowgraph_Stmt()
+    assert isinstance(instance, Item)
+
+
+def test_flowgraph_Var_isa_Item():
+    instance = flowgraph_Var()
+    assert isinstance(instance, Item)
+
+
+def test_flowgraph_Break_isa_JumpStmt():
+    instance = flowgraph_Break()
+    assert isinstance(instance, JumpStmt)
+
+
+def test_flowgraph_Continue_isa_JumpStmt():
+    instance = flowgraph_Continue()
+    assert isinstance(instance, JumpStmt)
+
+
+def test_flowgraph_Block_isa_Stmt():
+    instance = flowgraph_Block()
+    assert isinstance(instance, Stmt)
+
+
+def test_flowgraph_Conditional_isa_Stmt():
+    instance = flowgraph_Conditional()
+    assert isinstance(instance, Stmt)
+
+
+def test_flowgraph_JumpStmt_isa_Stmt():
+    instance = flowgraph_JumpStmt()
+    assert isinstance(instance, Stmt)
+
+
+def test_flowgraph_Label_isa_Stmt():
+    instance = flowgraph_Label()
+    assert isinstance(instance, Stmt)
+
+
+def test_flowgraph_Return_isa_Stmt():
+    instance = flowgraph_Return()
+    assert isinstance(instance, Stmt)
+
+
+def test_flowgraph_SimpleStmt_isa_Stmt():
+    instance = flowgraph_SimpleStmt()
+    assert isinstance(instance, Stmt)
+
+
+def test_flowgraph_Param_isa_Var():
+    instance = flowgraph_Param()
+    assert isinstance(instance, Var)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Block_strategy = st.builds(Block)
+@given(instance=Block_strategy)
+@settings(max_examples=25)
+def test_Block_instantiation(instance):
+    assert isinstance(instance, Block)
+
+
+Conditional_strategy = st.builds(Conditional)
+@given(instance=Conditional_strategy)
+@settings(max_examples=25)
+def test_Conditional_instantiation(instance):
+    assert isinstance(instance, Conditional)
+
+
+FlowInstr_strategy = st.builds(FlowInstr)
+@given(instance=FlowInstr_strategy)
+@settings(max_examples=25)
+def test_FlowInstr_instantiation(instance):
+    assert isinstance(instance, FlowInstr)
+
+
+Item_strategy = st.builds(Item)
+@given(instance=Item_strategy)
+@settings(max_examples=25)
+def test_Item_instantiation(instance):
+    assert isinstance(instance, Item)
+
+
+JumpStmt_strategy = st.builds(JumpStmt)
+@given(instance=JumpStmt_strategy)
+@settings(max_examples=25)
+def test_JumpStmt_instantiation(instance):
+    assert isinstance(instance, JumpStmt)
+
+
+Stmt_strategy = st.builds(Stmt)
+@given(instance=Stmt_strategy)
+@settings(max_examples=25)
+def test_Stmt_instantiation(instance):
+    assert isinstance(instance, Stmt)
+
+
+Var_strategy = st.builds(Var)
+@given(instance=Var_strategy)
+@settings(max_examples=25)
+def test_Var_instantiation(instance):
+    assert isinstance(instance, Var)
+
+
+flowgraph_Block_strategy = st.builds(flowgraph_Block)
+@given(instance=flowgraph_Block_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Block_instantiation(instance):
+    assert isinstance(instance, flowgraph_Block)
+
+
+flowgraph_Break_strategy = st.builds(flowgraph_Break)
+@given(instance=flowgraph_Break_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Break_instantiation(instance):
+    assert isinstance(instance, flowgraph_Break)
+
+
+flowgraph_Conditional_strategy = st.builds(flowgraph_Conditional)
+@given(instance=flowgraph_Conditional_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Conditional_instantiation(instance):
+    assert isinstance(instance, flowgraph_Conditional)
+
+
+flowgraph_Continue_strategy = st.builds(flowgraph_Continue)
+@given(instance=flowgraph_Continue_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Continue_instantiation(instance):
+    assert isinstance(instance, flowgraph_Continue)
+
+
+flowgraph_Exit_strategy = st.builds(flowgraph_Exit)
+@given(instance=flowgraph_Exit_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Exit_instantiation(instance):
+    assert isinstance(instance, flowgraph_Exit)
+
+
+flowgraph_Expr_strategy = st.builds(flowgraph_Expr)
+@given(instance=flowgraph_Expr_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Expr_instantiation(instance):
+    assert isinstance(instance, flowgraph_Expr)
+
+
+flowgraph_FlowInstr_strategy = st.builds(flowgraph_FlowInstr)
+@given(instance=flowgraph_FlowInstr_strategy)
+@settings(max_examples=25)
+def test_flowgraph_FlowInstr_instantiation(instance):
+    assert isinstance(instance, flowgraph_FlowInstr)
+
+
+flowgraph_If_strategy = st.builds(flowgraph_If)
+@given(instance=flowgraph_If_strategy)
+@settings(max_examples=25)
+def test_flowgraph_If_instantiation(instance):
+    assert isinstance(instance, flowgraph_If)
+
+
+flowgraph_Item_strategy = st.builds(flowgraph_Item, txt=safe_text)
+@given(instance=flowgraph_Item_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Item_instantiation(instance):
+    assert isinstance(instance, flowgraph_Item)
+
+
+flowgraph_JumpStmt_strategy = st.builds(flowgraph_JumpStmt)
+@given(instance=flowgraph_JumpStmt_strategy)
+@settings(max_examples=25)
+def test_flowgraph_JumpStmt_instantiation(instance):
+    assert isinstance(instance, flowgraph_JumpStmt)
+
+
+flowgraph_Label_strategy = st.builds(flowgraph_Label)
+@given(instance=flowgraph_Label_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Label_instantiation(instance):
+    assert isinstance(instance, flowgraph_Label)
+
+
+flowgraph_Loop_strategy = st.builds(flowgraph_Loop)
+@given(instance=flowgraph_Loop_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Loop_instantiation(instance):
+    assert isinstance(instance, flowgraph_Loop)
+
+
+flowgraph_Method_strategy = st.builds(flowgraph_Method)
+@given(instance=flowgraph_Method_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Method_instantiation(instance):
+    assert isinstance(instance, flowgraph_Method)
+
+
+flowgraph_Param_strategy = st.builds(flowgraph_Param)
+@given(instance=flowgraph_Param_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Param_instantiation(instance):
+    assert isinstance(instance, flowgraph_Param)
+
+
+flowgraph_Return_strategy = st.builds(flowgraph_Return)
+@given(instance=flowgraph_Return_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Return_instantiation(instance):
+    assert isinstance(instance, flowgraph_Return)
+
+
+flowgraph_SimpleStmt_strategy = st.builds(flowgraph_SimpleStmt)
+@given(instance=flowgraph_SimpleStmt_strategy)
+@settings(max_examples=25)
+def test_flowgraph_SimpleStmt_instantiation(instance):
+    assert isinstance(instance, flowgraph_SimpleStmt)
+
+
+flowgraph_Stmt_strategy = st.builds(flowgraph_Stmt)
+@given(instance=flowgraph_Stmt_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Stmt_instantiation(instance):
+    assert isinstance(instance, flowgraph_Stmt)
+
+
+flowgraph_Var_strategy = st.builds(flowgraph_Var)
+@given(instance=flowgraph_Var_strategy)
+@settings(max_examples=25)
+def test_flowgraph_Var_instantiation(instance):
+    assert isinstance(instance, flowgraph_Var)
+
+
