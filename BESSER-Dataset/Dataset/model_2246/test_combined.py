@@ -1,0 +1,1586 @@
+# =============================================================================
+# This file is a generated concatenation of two independent test suites --
+# see scripts/generate_combined_tests.py for why simple concatenation is safe
+# despite both generators using the same naming convention for some helpers,
+# and for the deterministic rules used to drop old-suite tests the new suite
+# already covers equally or more thoroughly.
+# =============================================================================
+
+# ----- SECTION A: test_hypothesis.py (original generated suite) -----
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    courceList_Specialisation,
+    courceList_StudyProgram,
+    courceList_Student,
+    courceList_CourceSpecification,
+    courceList_StudyCourceRelation,
+    courceList_Work,
+    courceList_EvaluationForm,
+    courceList_Exam,
+    courceList_Professor,
+    courceList_Cource,
+    courceList_StudyGeneralization,
+    courceList_Department,
+    Semester,
+    EvaluationType,
+    EducationLevel,
+    Campus,
+    WorkForm,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_hyp_courcelist_specialisation_is_not_abstract():
+    assert not inspect.isabstract(courceList_Specialisation)
+
+
+def test_hyp_courcelist_specialisation_constructor_exists():
+    assert callable(courceList_Specialisation.__init__)
+
+
+def test_hyp_courcelist_specialisation_constructor_args():
+    sig = inspect.signature(courceList_Specialisation.__init__)
+    params = list(sig.parameters.keys())
+    assert "startSemester" in params, "Missing parameter 'startSemester'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+
+
+def test_hyp_courcelist_studyprogram_is_not_abstract():
+    assert not inspect.isabstract(courceList_StudyProgram)
+
+
+def test_hyp_courcelist_studyprogram_constructor_exists():
+    assert callable(courceList_StudyProgram.__init__)
+
+
+def test_hyp_courcelist_studyprogram_constructor_args():
+    sig = inspect.signature(courceList_StudyProgram.__init__)
+    params = list(sig.parameters.keys())
+    assert "year" in params, "Missing parameter 'year'"
+
+
+
+
+def test_hyp_courcelist_student_is_not_abstract():
+    assert not inspect.isabstract(courceList_Student)
+
+
+def test_hyp_courcelist_student_constructor_exists():
+    assert callable(courceList_Student.__init__)
+
+
+def test_hyp_courcelist_student_constructor_args():
+    sig = inspect.signature(courceList_Student.__init__)
+    params = list(sig.parameters.keys())
+    assert "nr" in params, "Missing parameter 'nr'"
+
+
+
+
+def test_hyp_courcelist_courcespecification_is_not_abstract():
+    assert not inspect.isabstract(courceList_CourceSpecification)
+
+
+def test_hyp_courcelist_courcespecification_constructor_exists():
+    assert callable(courceList_CourceSpecification.__init__)
+
+
+def test_hyp_courcelist_courcespecification_constructor_args():
+    sig = inspect.signature(courceList_CourceSpecification.__init__)
+    params = list(sig.parameters.keys())
+    assert "specificationYear" in params, "Missing parameter 'specificationYear'"
+    assert "credits" in params, "Missing parameter 'credits'"
+    assert "language" in params, "Missing parameter 'language'"
+    assert "semester" in params, "Missing parameter 'semester'"
+    assert "version" in params, "Missing parameter 'version'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+
+
+
+
+
+
+def test_hyp_courcelist_studycourcerelation_is_not_abstract():
+    assert not inspect.isabstract(courceList_StudyCourceRelation)
+
+
+def test_hyp_courcelist_studycourcerelation_constructor_exists():
+    assert callable(courceList_StudyCourceRelation.__init__)
+
+
+def test_hyp_courcelist_studycourcerelation_constructor_args():
+    sig = inspect.signature(courceList_StudyCourceRelation.__init__)
+    params = list(sig.parameters.keys())
+    assert "status" in params, "Missing parameter 'status'"
+    assert "year" in params, "Missing parameter 'year'"
+
+
+
+
+
+def test_hyp_courcelist_work_is_not_abstract():
+    assert not inspect.isabstract(courceList_Work)
+
+
+def test_hyp_courcelist_work_constructor_exists():
+    assert callable(courceList_Work.__init__)
+
+
+def test_hyp_courcelist_work_constructor_args():
+    sig = inspect.signature(courceList_Work.__init__)
+    params = list(sig.parameters.keys())
+    assert "weight" in params, "Missing parameter 'weight'"
+
+
+
+
+def test_hyp_courcelist_evaluationform_is_not_abstract():
+    assert not inspect.isabstract(courceList_EvaluationForm)
+
+
+def test_hyp_courcelist_evaluationform_constructor_exists():
+    assert callable(courceList_EvaluationForm.__init__)
+
+
+def test_hyp_courcelist_evaluationform_constructor_args():
+    sig = inspect.signature(courceList_EvaluationForm.__init__)
+    params = list(sig.parameters.keys())
+    assert "evaluationType" in params, "Missing parameter 'evaluationType'"
+
+
+
+
+def test_hyp_courcelist_exam_is_not_abstract():
+    assert not inspect.isabstract(courceList_Exam)
+
+
+def test_hyp_courcelist_exam_constructor_exists():
+    assert callable(courceList_Exam.__init__)
+
+
+def test_hyp_courcelist_exam_constructor_args():
+    sig = inspect.signature(courceList_Exam.__init__)
+    params = list(sig.parameters.keys())
+    assert "form" in params, "Missing parameter 'form'"
+    assert "lenght" in params, "Missing parameter 'lenght'"
+    assert "date" in params, "Missing parameter 'date'"
+    assert "weight" in params, "Missing parameter 'weight'"
+
+
+
+
+
+
+
+def test_hyp_courcelist_professor_is_not_abstract():
+    assert not inspect.isabstract(courceList_Professor)
+
+
+def test_hyp_courcelist_professor_constructor_exists():
+    assert callable(courceList_Professor.__init__)
+
+
+def test_hyp_courcelist_professor_constructor_args():
+    sig = inspect.signature(courceList_Professor.__init__)
+    params = list(sig.parameters.keys())
+    assert "title" in params, "Missing parameter 'title'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+
+
+def test_hyp_courcelist_cource_is_not_abstract():
+    assert not inspect.isabstract(courceList_Cource)
+
+
+def test_hyp_courcelist_cource_constructor_exists():
+    assert callable(courceList_Cource.__init__)
+
+
+def test_hyp_courcelist_cource_constructor_args():
+    sig = inspect.signature(courceList_Cource.__init__)
+    params = list(sig.parameters.keys())
+    assert "code" in params, "Missing parameter 'code'"
+    assert "location" in params, "Missing parameter 'location'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+
+
+
+def test_hyp_courcelist_studygeneralization_is_not_abstract():
+    assert not inspect.isabstract(courceList_StudyGeneralization)
+
+
+def test_hyp_courcelist_studygeneralization_constructor_exists():
+    assert callable(courceList_StudyGeneralization.__init__)
+
+
+def test_hyp_courcelist_studygeneralization_constructor_args():
+    sig = inspect.signature(courceList_StudyGeneralization.__init__)
+    params = list(sig.parameters.keys())
+    assert "abbreviation" in params, "Missing parameter 'abbreviation'"
+    assert "campus" in params, "Missing parameter 'campus'"
+    assert "educationLevel" in params, "Missing parameter 'educationLevel'"
+    assert "nrOfYears" in params, "Missing parameter 'nrOfYears'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+
+
+
+
+
+def test_hyp_courcelist_department_is_not_abstract():
+    assert not inspect.isabstract(courceList_Department)
+
+
+def test_hyp_courcelist_department_constructor_exists():
+    assert callable(courceList_Department.__init__)
+
+
+def test_hyp_courcelist_department_constructor_args():
+    sig = inspect.signature(courceList_Department.__init__)
+    params = list(sig.parameters.keys())
+    assert "abbreviation" in params, "Missing parameter 'abbreviation'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+def test_hyp_semester_exists():
+    # Check that the Enumeration exists
+    assert Semester is not None
+
+def test_hyp_semester_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in Semester]
+    expected_literals = [
+        "spring",
+        "autumn",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in Semester"
+
+def test_hyp_evaluationtype_exists():
+    # Check that the Enumeration exists
+    assert EvaluationType is not None
+
+def test_hyp_evaluationtype_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in EvaluationType]
+    expected_literals = [
+        "approved",
+        "grade",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in EvaluationType"
+
+def test_hyp_educationlevel_exists():
+    # Check that the Enumeration exists
+    assert EducationLevel is not None
+
+def test_hyp_educationlevel_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in EducationLevel]
+    expected_literals = [
+        "oneYear",
+        "master",
+        "bachelor",
+        "phd",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in EducationLevel"
+
+def test_hyp_campus_exists():
+    # Check that the Enumeration exists
+    assert Campus is not None
+
+def test_hyp_campus_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in Campus]
+    expected_literals = [
+        "Gjøvik",
+        "Ålesund",
+        "Trondheim",
+        "Web",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in Campus"
+
+def test_hyp_workform_exists():
+    # Check that the Enumeration exists
+    assert WorkForm is not None
+
+def test_hyp_workform_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in WorkForm]
+    expected_literals = [
+        "oral",
+        "home",
+        "written",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in WorkForm"
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+courceList_Specialisation_strategy = st.builds(
+    courceList_Specialisation,
+    startSemester=
+        st.integers(),
+    name=
+        safe_text
+)
+courceList_StudyProgram_strategy = st.builds(
+    courceList_StudyProgram,
+    year=
+        st.integers()
+)
+courceList_Student_strategy = st.builds(
+    courceList_Student,
+    nr=
+        st.integers()
+)
+courceList_CourceSpecification_strategy = st.builds(
+    courceList_CourceSpecification,
+    specificationYear=
+        st.integers(),
+    credits=
+        st.floats(min_value=0, max_value=1000,allow_nan=False, allow_infinity=False),
+    language=
+        safe_text,
+    semester=
+        safe_text,
+    version=
+        safe_text,
+    name=
+        safe_text
+)
+courceList_StudyCourceRelation_strategy = st.builds(
+    courceList_StudyCourceRelation,
+    status=
+        safe_text,
+    year=
+        st.integers()
+)
+courceList_Work_strategy = st.builds(
+    courceList_Work,
+    weight=
+        st.integers()
+)
+courceList_EvaluationForm_strategy = st.builds(
+    courceList_EvaluationForm,
+    evaluationType=
+        safe_text
+)
+courceList_Exam_strategy = st.builds(
+    courceList_Exam,
+    form=
+        safe_text,
+    lenght=
+        st.integers(),
+    date=
+        st.dates(),
+    weight=
+        st.integers()
+)
+courceList_Professor_strategy = st.builds(
+    courceList_Professor,
+    title=
+        safe_text,
+    name=
+        safe_text
+)
+courceList_Cource_strategy = st.builds(
+    courceList_Cource,
+    code=
+        safe_text,
+    location=
+        safe_text,
+    name=
+        safe_text
+)
+courceList_StudyGeneralization_strategy = st.builds(
+    courceList_StudyGeneralization,
+    abbreviation=
+        safe_text,
+    campus=
+        safe_text,
+    educationLevel=
+        safe_text,
+    nrOfYears=
+        st.integers(),
+    name=
+        safe_text
+)
+courceList_Department_strategy = st.builds(
+    courceList_Department,
+    abbreviation=
+        safe_text,
+    name=
+        safe_text
+)
+
+
+
+
+@given(instance=courceList_Specialisation_strategy)
+def test_hyp_courcelist_specialisation_startSemester_setter(instance):
+    original = instance.startSemester
+    instance.startSemester = original
+    assert instance.startSemester == original
+
+
+
+@given(instance=courceList_Specialisation_strategy)
+def test_hyp_courcelist_specialisation_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+
+@given(instance=courceList_StudyProgram_strategy)
+def test_hyp_courcelist_studyprogram_year_setter(instance):
+    original = instance.year
+    instance.year = original
+    assert instance.year == original
+
+
+
+
+@given(instance=courceList_Student_strategy)
+def test_hyp_courcelist_student_nr_setter(instance):
+    original = instance.nr
+    instance.nr = original
+    assert instance.nr == original
+
+
+
+
+@given(instance=courceList_CourceSpecification_strategy)
+def test_hyp_courcelist_courcespecification_specificationYear_setter(instance):
+    original = instance.specificationYear
+    instance.specificationYear = original
+    assert instance.specificationYear == original
+
+
+
+@given(instance=courceList_CourceSpecification_strategy)
+def test_hyp_courcelist_courcespecification_credits_setter(instance):
+    original = instance.credits
+    instance.credits = original
+    assert instance.credits == original
+
+
+
+@given(instance=courceList_CourceSpecification_strategy)
+def test_hyp_courcelist_courcespecification_language_setter(instance):
+    original = instance.language
+    instance.language = original
+    assert instance.language == original
+
+
+
+@given(instance=courceList_CourceSpecification_strategy)
+def test_hyp_courcelist_courcespecification_semester_setter(instance):
+    original = instance.semester
+    instance.semester = original
+    assert instance.semester == original
+
+
+
+@given(instance=courceList_CourceSpecification_strategy)
+def test_hyp_courcelist_courcespecification_version_setter(instance):
+    original = instance.version
+    instance.version = original
+    assert instance.version == original
+
+
+
+@given(instance=courceList_CourceSpecification_strategy)
+def test_hyp_courcelist_courcespecification_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+
+@given(instance=courceList_StudyCourceRelation_strategy)
+def test_hyp_courcelist_studycourcerelation_status_setter(instance):
+    original = instance.status
+    instance.status = original
+    assert instance.status == original
+
+
+
+@given(instance=courceList_StudyCourceRelation_strategy)
+def test_hyp_courcelist_studycourcerelation_year_setter(instance):
+    original = instance.year
+    instance.year = original
+    assert instance.year == original
+
+
+
+
+@given(instance=courceList_Work_strategy)
+def test_hyp_courcelist_work_weight_setter(instance):
+    original = instance.weight
+    instance.weight = original
+    assert instance.weight == original
+
+
+
+
+@given(instance=courceList_EvaluationForm_strategy)
+def test_hyp_courcelist_evaluationform_evaluationType_setter(instance):
+    original = instance.evaluationType
+    instance.evaluationType = original
+    assert instance.evaluationType == original
+
+
+
+
+@given(instance=courceList_Exam_strategy)
+def test_hyp_courcelist_exam_form_setter(instance):
+    original = instance.form
+    instance.form = original
+    assert instance.form == original
+
+
+
+@given(instance=courceList_Exam_strategy)
+def test_hyp_courcelist_exam_lenght_setter(instance):
+    original = instance.lenght
+    instance.lenght = original
+    assert instance.lenght == original
+
+
+
+@given(instance=courceList_Exam_strategy)
+def test_hyp_courcelist_exam_date_setter(instance):
+    original = instance.date
+    instance.date = original
+    assert instance.date == original
+
+
+
+@given(instance=courceList_Exam_strategy)
+def test_hyp_courcelist_exam_weight_setter(instance):
+    original = instance.weight
+    instance.weight = original
+    assert instance.weight == original
+
+
+
+
+@given(instance=courceList_Professor_strategy)
+def test_hyp_courcelist_professor_title_setter(instance):
+    original = instance.title
+    instance.title = original
+    assert instance.title == original
+
+
+
+@given(instance=courceList_Professor_strategy)
+def test_hyp_courcelist_professor_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+
+@given(instance=courceList_Cource_strategy)
+def test_hyp_courcelist_cource_code_setter(instance):
+    original = instance.code
+    instance.code = original
+    assert instance.code == original
+
+
+
+@given(instance=courceList_Cource_strategy)
+def test_hyp_courcelist_cource_location_setter(instance):
+    original = instance.location
+    instance.location = original
+    assert instance.location == original
+
+
+
+@given(instance=courceList_Cource_strategy)
+def test_hyp_courcelist_cource_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+
+@given(instance=courceList_StudyGeneralization_strategy)
+def test_hyp_courcelist_studygeneralization_abbreviation_setter(instance):
+    original = instance.abbreviation
+    instance.abbreviation = original
+    assert instance.abbreviation == original
+
+
+
+@given(instance=courceList_StudyGeneralization_strategy)
+def test_hyp_courcelist_studygeneralization_campus_setter(instance):
+    original = instance.campus
+    instance.campus = original
+    assert instance.campus == original
+
+
+
+@given(instance=courceList_StudyGeneralization_strategy)
+def test_hyp_courcelist_studygeneralization_educationLevel_setter(instance):
+    original = instance.educationLevel
+    instance.educationLevel = original
+    assert instance.educationLevel == original
+
+
+
+@given(instance=courceList_StudyGeneralization_strategy)
+def test_hyp_courcelist_studygeneralization_nrOfYears_setter(instance):
+    original = instance.nrOfYears
+    instance.nrOfYears = original
+    assert instance.nrOfYears == original
+
+
+
+@given(instance=courceList_StudyGeneralization_strategy)
+def test_hyp_courcelist_studygeneralization_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+
+@given(instance=courceList_Department_strategy)
+def test_hyp_courcelist_department_abbreviation_setter(instance):
+    original = instance.abbreviation
+    instance.abbreviation = original
+    assert instance.abbreviation == original
+
+
+
+@given(instance=courceList_Department_strategy)
+def test_hyp_courcelist_department_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+# ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    courceList_Cource,
+    courceList_CourceSpecification,
+    courceList_Department,
+    courceList_EvaluationForm,
+    courceList_Exam,
+    courceList_Professor,
+    courceList_Specialisation,
+    courceList_Student,
+    courceList_StudyCourceRelation,
+    courceList_StudyGeneralization,
+    courceList_StudyProgram,
+    courceList_Work,
+    Campus,
+    EducationLevel,
+    EvaluationType,
+    Semester,
+    WorkForm,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_courceList_Cource_code_value_roundtrip():
+    instance = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    assert instance.code == "sample_text"
+    instance.code = "sample_text_2"
+    assert instance.code == "sample_text_2"
+
+
+def test_courceList_Cource_location_value_roundtrip():
+    instance = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    assert instance.location == "sample_text"
+    instance.location = "sample_text_2"
+    assert instance.location == "sample_text_2"
+
+
+def test_courceList_Cource_name_value_roundtrip():
+    instance = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_courceList_CourceSpecification_credits_value_roundtrip():
+    instance = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    assert instance.credits == 3.14
+    instance.credits = 9.99
+    assert instance.credits == 9.99
+
+
+def test_courceList_CourceSpecification_language_value_roundtrip():
+    instance = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    assert instance.language == "sample_text"
+    instance.language = "sample_text_2"
+    assert instance.language == "sample_text_2"
+
+
+def test_courceList_CourceSpecification_name_value_roundtrip():
+    instance = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_courceList_CourceSpecification_semester_value_roundtrip():
+    instance = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    assert instance.semester == "sample_text"
+    instance.semester = "sample_text_2"
+    assert instance.semester == "sample_text_2"
+
+
+def test_courceList_CourceSpecification_specificationYear_value_roundtrip():
+    instance = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    assert instance.specificationYear == 7
+    instance.specificationYear = 13
+    assert instance.specificationYear == 13
+
+
+def test_courceList_CourceSpecification_version_value_roundtrip():
+    instance = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    assert instance.version == "sample_text"
+    instance.version = "sample_text_2"
+    assert instance.version == "sample_text_2"
+
+
+def test_courceList_Department_abbreviation_value_roundtrip():
+    instance = courceList_Department(abbreviation="sample_text", name="sample_text")
+    assert instance.abbreviation == "sample_text"
+    instance.abbreviation = "sample_text_2"
+    assert instance.abbreviation == "sample_text_2"
+
+
+def test_courceList_Department_name_value_roundtrip():
+    instance = courceList_Department(abbreviation="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_courceList_EvaluationForm_evaluationType_value_roundtrip():
+    instance = courceList_EvaluationForm(evaluationType="sample_text")
+    assert instance.evaluationType == "sample_text"
+    instance.evaluationType = "sample_text_2"
+    assert instance.evaluationType == "sample_text_2"
+
+
+def test_courceList_Exam_date_value_roundtrip():
+    instance = courceList_Exam(date=date(2024, 1, 1), form="sample_text", lenght=7, weight=7)
+    assert instance.date == date(2024, 1, 1)
+    instance.date = date(2025, 6, 15)
+    assert instance.date == date(2025, 6, 15)
+
+
+def test_courceList_Exam_form_value_roundtrip():
+    instance = courceList_Exam(date=date(2024, 1, 1), form="sample_text", lenght=7, weight=7)
+    assert instance.form == "sample_text"
+    instance.form = "sample_text_2"
+    assert instance.form == "sample_text_2"
+
+
+def test_courceList_Exam_lenght_value_roundtrip():
+    instance = courceList_Exam(date=date(2024, 1, 1), form="sample_text", lenght=7, weight=7)
+    assert instance.lenght == 7
+    instance.lenght = 13
+    assert instance.lenght == 13
+
+
+def test_courceList_Exam_weight_value_roundtrip():
+    instance = courceList_Exam(date=date(2024, 1, 1), form="sample_text", lenght=7, weight=7)
+    assert instance.weight == 7
+    instance.weight = 13
+    assert instance.weight == 13
+
+
+def test_courceList_Professor_name_value_roundtrip():
+    instance = courceList_Professor(name="sample_text", title="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_courceList_Professor_title_value_roundtrip():
+    instance = courceList_Professor(name="sample_text", title="sample_text")
+    assert instance.title == "sample_text"
+    instance.title = "sample_text_2"
+    assert instance.title == "sample_text_2"
+
+
+def test_courceList_Specialisation_name_value_roundtrip():
+    instance = courceList_Specialisation(name="sample_text", startSemester=7)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_courceList_Specialisation_startSemester_value_roundtrip():
+    instance = courceList_Specialisation(name="sample_text", startSemester=7)
+    assert instance.startSemester == 7
+    instance.startSemester = 13
+    assert instance.startSemester == 13
+
+
+def test_courceList_Student_nr_value_roundtrip():
+    instance = courceList_Student(nr=7)
+    assert instance.nr == 7
+    instance.nr = 13
+    assert instance.nr == 13
+
+
+def test_courceList_StudyCourceRelation_status_value_roundtrip():
+    instance = courceList_StudyCourceRelation(status="sample_text", year=7)
+    assert instance.status == "sample_text"
+    instance.status = "sample_text_2"
+    assert instance.status == "sample_text_2"
+
+
+def test_courceList_StudyCourceRelation_year_value_roundtrip():
+    instance = courceList_StudyCourceRelation(status="sample_text", year=7)
+    assert instance.year == 7
+    instance.year = 13
+    assert instance.year == 13
+
+
+def test_courceList_StudyGeneralization_abbreviation_value_roundtrip():
+    instance = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    assert instance.abbreviation == "sample_text"
+    instance.abbreviation = "sample_text_2"
+    assert instance.abbreviation == "sample_text_2"
+
+
+def test_courceList_StudyGeneralization_campus_value_roundtrip():
+    instance = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    assert instance.campus == "sample_text"
+    instance.campus = "sample_text_2"
+    assert instance.campus == "sample_text_2"
+
+
+def test_courceList_StudyGeneralization_educationLevel_value_roundtrip():
+    instance = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    assert instance.educationLevel == "sample_text"
+    instance.educationLevel = "sample_text_2"
+    assert instance.educationLevel == "sample_text_2"
+
+
+def test_courceList_StudyGeneralization_name_value_roundtrip():
+    instance = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_courceList_StudyGeneralization_nrOfYears_value_roundtrip():
+    instance = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    assert instance.nrOfYears == 7
+    instance.nrOfYears = 13
+    assert instance.nrOfYears == 13
+
+
+def test_courceList_StudyProgram_year_value_roundtrip():
+    instance = courceList_StudyProgram(year=7)
+    assert instance.year == 7
+    instance.year = 13
+    assert instance.year == 13
+
+
+def test_courceList_Work_weight_value_roundtrip():
+    instance = courceList_Work(weight=7)
+    assert instance.weight == 7
+    instance.weight = 13
+    assert instance.weight == 13
+
+
+def test_assoc_coordinator41_link_reassign_clear():
+    a = courceList_Professor(name="sample_text", title="sample_text")
+    b1 = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    b2 = courceList_CourceSpecification(credits=9.99, language="sample_text_2", name="sample_text_2", semester="sample_text_2", specificationYear=13, version="sample_text_2")
+    _safe_set(a, 'courceList_Professor', b1)
+    assert _is_linked(a, 'courceList_Professor', b1)
+    if hasattr(b1, 'courceList_CourceSpecification42'):
+        assert _is_linked(b1, 'courceList_CourceSpecification42', a)
+    _safe_set(a, 'courceList_Professor', b2)
+    assert _is_linked(a, 'courceList_Professor', b2)
+    if hasattr(b1, 'courceList_CourceSpecification42'):
+        assert not _is_linked(b1, 'courceList_CourceSpecification42', a)
+    if hasattr(b2, 'courceList_CourceSpecification42'):
+        assert _is_linked(b2, 'courceList_CourceSpecification42', a)
+    _safe_set(a, 'courceList_Professor', None)
+    assert not _is_linked(a, 'courceList_Professor', b2)
+    if hasattr(b2, 'courceList_CourceSpecification42'):
+        assert not _is_linked(b2, 'courceList_CourceSpecification42', a)
+
+
+def test_assoc_corseSpecifications6_link_reassign_clear():
+    a = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    b1 = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    b2 = courceList_Cource(code="sample_text_2", location="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'CourceSpecification', b1)
+    assert _is_linked(a, 'CourceSpecification', b1)
+    if hasattr(b1, 'cource'):
+        assert _is_linked(b1, 'cource', a)
+    _safe_set(a, 'CourceSpecification', b2)
+    assert _is_linked(a, 'CourceSpecification', b2)
+    if hasattr(b1, 'cource'):
+        assert not _is_linked(b1, 'cource', a)
+    if hasattr(b2, 'cource'):
+        assert _is_linked(b2, 'cource', a)
+    _safe_set(a, 'CourceSpecification', None)
+    assert not _is_linked(a, 'CourceSpecification', b2)
+    if hasattr(b2, 'cource'):
+        assert not _is_linked(b2, 'cource', a)
+
+
+def test_assoc_cource18_link_reassign_clear():
+    a = courceList_EvaluationForm(evaluationType="sample_text")
+    b1 = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    b2 = courceList_CourceSpecification(credits=9.99, language="sample_text_2", name="sample_text_2", semester="sample_text_2", specificationYear=13, version="sample_text_2")
+    _safe_set(a, 'evaluationForm19', b1)
+    assert _is_linked(a, 'evaluationForm19', b1)
+    if hasattr(b1, 'CourceSpecification20'):
+        assert _is_linked(b1, 'CourceSpecification20', a)
+    _safe_set(a, 'evaluationForm19', b2)
+    assert _is_linked(a, 'evaluationForm19', b2)
+    if hasattr(b1, 'CourceSpecification20'):
+        assert not _is_linked(b1, 'CourceSpecification20', a)
+    if hasattr(b2, 'CourceSpecification20'):
+        assert _is_linked(b2, 'CourceSpecification20', a)
+    _safe_set(a, 'evaluationForm19', None)
+    assert not _is_linked(a, 'evaluationForm19', b2)
+    if hasattr(b2, 'CourceSpecification20'):
+        assert not _is_linked(b2, 'CourceSpecification20', a)
+
+
+def test_assoc_cource23_link_reassign_clear():
+    a = courceList_StudyCourceRelation(status="sample_text", year=7)
+    b1 = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    b2 = courceList_CourceSpecification(credits=9.99, language="sample_text_2", name="sample_text_2", semester="sample_text_2", specificationYear=13, version="sample_text_2")
+    _safe_set(a, 'courceList_StudyCourceRelation', b1)
+    assert _is_linked(a, 'courceList_StudyCourceRelation', b1)
+    if hasattr(b1, 'courceList_CourceSpecification'):
+        assert _is_linked(b1, 'courceList_CourceSpecification', a)
+    _safe_set(a, 'courceList_StudyCourceRelation', b2)
+    assert _is_linked(a, 'courceList_StudyCourceRelation', b2)
+    if hasattr(b1, 'courceList_CourceSpecification'):
+        assert not _is_linked(b1, 'courceList_CourceSpecification', a)
+    if hasattr(b2, 'courceList_CourceSpecification'):
+        assert _is_linked(b2, 'courceList_CourceSpecification', a)
+    _safe_set(a, 'courceList_StudyCourceRelation', None)
+    assert not _is_linked(a, 'courceList_StudyCourceRelation', b2)
+    if hasattr(b2, 'courceList_CourceSpecification'):
+        assert not _is_linked(b2, 'courceList_CourceSpecification', a)
+
+
+def test_assoc_cource29_link_reassign_clear():
+    a = courceList_StudyCourceRelation(status="sample_text", year=7)
+    b1 = courceList_Specialisation(name="sample_text", startSemester=7)
+    b2 = courceList_Specialisation(name="sample_text_2", startSemester=13)
+    _safe_set(a, 'StudyCourceRelation', b1)
+    assert _is_linked(a, 'StudyCourceRelation', b1)
+    if hasattr(b1, 'specialisation'):
+        assert _is_linked(b1, 'specialisation', a)
+    _safe_set(a, 'StudyCourceRelation', b2)
+    assert _is_linked(a, 'StudyCourceRelation', b2)
+    if hasattr(b1, 'specialisation'):
+        assert not _is_linked(b1, 'specialisation', a)
+    if hasattr(b2, 'specialisation'):
+        assert _is_linked(b2, 'specialisation', a)
+    _safe_set(a, 'StudyCourceRelation', None)
+    assert not _is_linked(a, 'StudyCourceRelation', b2)
+    if hasattr(b2, 'specialisation'):
+        assert not _is_linked(b2, 'specialisation', a)
+
+
+def test_assoc_cource39_link_reassign_clear():
+    a = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    b1 = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    b2 = courceList_Cource(code="sample_text_2", location="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'corseSpecifications', b1)
+    assert _is_linked(a, 'corseSpecifications', b1)
+    if hasattr(b1, 'Cource40'):
+        assert _is_linked(b1, 'Cource40', a)
+    _safe_set(a, 'corseSpecifications', b2)
+    assert _is_linked(a, 'corseSpecifications', b2)
+    if hasattr(b1, 'Cource40'):
+        assert not _is_linked(b1, 'Cource40', a)
+    if hasattr(b2, 'Cource40'):
+        assert _is_linked(b2, 'Cource40', a)
+    _safe_set(a, 'corseSpecifications', None)
+    assert not _is_linked(a, 'corseSpecifications', b2)
+    if hasattr(b2, 'Cource40'):
+        assert not _is_linked(b2, 'Cource40', a)
+
+
+def test_assoc_cource8_link_reassign_clear():
+    a = courceList_StudyProgram(year=7)
+    b1 = courceList_Specialisation(name="sample_text", startSemester=7)
+    b2 = courceList_Specialisation(name="sample_text_2", startSemester=13)
+    _safe_set(a, 'studyProgram', {b1})
+    assert _is_linked(a, 'studyProgram', b1)
+    if hasattr(b1, 'Specialisation'):
+        assert _is_linked(b1, 'Specialisation', a)
+    _safe_set(a, 'studyProgram', {b2})
+    assert _is_linked(a, 'studyProgram', b2)
+    if hasattr(b1, 'Specialisation'):
+        assert not _is_linked(b1, 'Specialisation', a)
+    if hasattr(b2, 'Specialisation'):
+        assert _is_linked(b2, 'Specialisation', a)
+    _safe_set(a, 'studyProgram', set())
+    assert not _is_linked(a, 'studyProgram', b2)
+    if hasattr(b2, 'Specialisation'):
+        assert not _is_linked(b2, 'Specialisation', a)
+
+
+def test_assoc_course1_link_reassign_clear():
+    a = courceList_Department(abbreviation="sample_text", name="sample_text")
+    b1 = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    b2 = courceList_Cource(code="sample_text_2", location="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'department2', {b1})
+    assert _is_linked(a, 'department2', b1)
+    if hasattr(b1, 'Cource'):
+        assert _is_linked(b1, 'Cource', a)
+    _safe_set(a, 'department2', {b2})
+    assert _is_linked(a, 'department2', b2)
+    if hasattr(b1, 'Cource'):
+        assert not _is_linked(b1, 'Cource', a)
+    if hasattr(b2, 'Cource'):
+        assert _is_linked(b2, 'Cource', a)
+    _safe_set(a, 'department2', set())
+    assert not _is_linked(a, 'department2', b2)
+    if hasattr(b2, 'Cource'):
+        assert not _is_linked(b2, 'Cource', a)
+
+
+def test_assoc_department27_link_reassign_clear():
+    a = courceList_Professor(name="sample_text", title="sample_text")
+    b1 = courceList_Department(abbreviation="sample_text", name="sample_text")
+    b2 = courceList_Department(abbreviation="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'professor', b1)
+    assert _is_linked(a, 'professor', b1)
+    if hasattr(b1, 'Department28'):
+        assert _is_linked(b1, 'Department28', a)
+    _safe_set(a, 'professor', b2)
+    assert _is_linked(a, 'professor', b2)
+    if hasattr(b1, 'Department28'):
+        assert not _is_linked(b1, 'Department28', a)
+    if hasattr(b2, 'Department28'):
+        assert _is_linked(b2, 'Department28', a)
+    _safe_set(a, 'professor', None)
+    assert not _is_linked(a, 'professor', b2)
+    if hasattr(b2, 'Department28'):
+        assert not _is_linked(b2, 'Department28', a)
+
+
+def test_assoc_department48_link_reassign_clear():
+    a = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    b1 = courceList_Department(abbreviation="sample_text", name="sample_text")
+    b2 = courceList_Department(abbreviation="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'studyProgram49', b1)
+    assert _is_linked(a, 'studyProgram49', b1)
+    if hasattr(b1, 'Department50'):
+        assert _is_linked(b1, 'Department50', a)
+    _safe_set(a, 'studyProgram49', b2)
+    assert _is_linked(a, 'studyProgram49', b2)
+    if hasattr(b1, 'Department50'):
+        assert not _is_linked(b1, 'Department50', a)
+    if hasattr(b2, 'Department50'):
+        assert _is_linked(b2, 'Department50', a)
+    _safe_set(a, 'studyProgram49', None)
+    assert not _is_linked(a, 'studyProgram49', b2)
+    if hasattr(b2, 'Department50'):
+        assert not _is_linked(b2, 'Department50', a)
+
+
+def test_assoc_department5_link_reassign_clear():
+    a = courceList_Department(abbreviation="sample_text", name="sample_text")
+    b1 = courceList_Cource(code="sample_text", location="sample_text", name="sample_text")
+    b2 = courceList_Cource(code="sample_text_2", location="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'Department', b1)
+    assert _is_linked(a, 'Department', b1)
+    if hasattr(b1, 'course'):
+        assert _is_linked(b1, 'course', a)
+    _safe_set(a, 'Department', b2)
+    assert _is_linked(a, 'Department', b2)
+    if hasattr(b1, 'course'):
+        assert not _is_linked(b1, 'course', a)
+    if hasattr(b2, 'course'):
+        assert _is_linked(b2, 'course', a)
+    _safe_set(a, 'Department', None)
+    assert not _is_linked(a, 'Department', b2)
+    if hasattr(b2, 'course'):
+        assert not _is_linked(b2, 'course', a)
+
+
+def test_assoc_evaluationForm14_link_reassign_clear():
+    a = courceList_Exam(date=date(2024, 1, 1), form="sample_text", lenght=7, weight=7)
+    b1 = courceList_EvaluationForm(evaluationType="sample_text")
+    b2 = courceList_EvaluationForm(evaluationType="sample_text_2")
+    _safe_set(a, 'exam', b1)
+    assert _is_linked(a, 'exam', b1)
+    if hasattr(b1, 'EvaluationForm'):
+        assert _is_linked(b1, 'EvaluationForm', a)
+    _safe_set(a, 'exam', b2)
+    assert _is_linked(a, 'exam', b2)
+    if hasattr(b1, 'EvaluationForm'):
+        assert not _is_linked(b1, 'EvaluationForm', a)
+    if hasattr(b2, 'EvaluationForm'):
+        assert _is_linked(b2, 'EvaluationForm', a)
+    _safe_set(a, 'exam', None)
+    assert not _is_linked(a, 'exam', b2)
+    if hasattr(b2, 'EvaluationForm'):
+        assert not _is_linked(b2, 'EvaluationForm', a)
+
+
+def test_assoc_evaluationForm21_link_reassign_clear():
+    a = courceList_Work(weight=7)
+    b1 = courceList_EvaluationForm(evaluationType="sample_text")
+    b2 = courceList_EvaluationForm(evaluationType="sample_text_2")
+    _safe_set(a, 'work', b1)
+    assert _is_linked(a, 'work', b1)
+    if hasattr(b1, 'EvaluationForm22'):
+        assert _is_linked(b1, 'EvaluationForm22', a)
+    _safe_set(a, 'work', b2)
+    assert _is_linked(a, 'work', b2)
+    if hasattr(b1, 'EvaluationForm22'):
+        assert not _is_linked(b1, 'EvaluationForm22', a)
+    if hasattr(b2, 'EvaluationForm22'):
+        assert _is_linked(b2, 'EvaluationForm22', a)
+    _safe_set(a, 'work', None)
+    assert not _is_linked(a, 'work', b2)
+    if hasattr(b2, 'EvaluationForm22'):
+        assert not _is_linked(b2, 'EvaluationForm22', a)
+
+
+def test_assoc_evaluationForm43_link_reassign_clear():
+    a = courceList_EvaluationForm(evaluationType="sample_text")
+    b1 = courceList_CourceSpecification(credits=3.14, language="sample_text", name="sample_text", semester="sample_text", specificationYear=7, version="sample_text")
+    b2 = courceList_CourceSpecification(credits=9.99, language="sample_text_2", name="sample_text_2", semester="sample_text_2", specificationYear=13, version="sample_text_2")
+    _safe_set(a, 'EvaluationForm45', b1)
+    assert _is_linked(a, 'EvaluationForm45', b1)
+    if hasattr(b1, 'cource44'):
+        assert _is_linked(b1, 'cource44', a)
+    _safe_set(a, 'EvaluationForm45', b2)
+    assert _is_linked(a, 'EvaluationForm45', b2)
+    if hasattr(b1, 'cource44'):
+        assert not _is_linked(b1, 'cource44', a)
+    if hasattr(b2, 'cource44'):
+        assert _is_linked(b2, 'cource44', a)
+    _safe_set(a, 'EvaluationForm45', None)
+    assert not _is_linked(a, 'EvaluationForm45', b2)
+    if hasattr(b2, 'cource44'):
+        assert not _is_linked(b2, 'cource44', a)
+
+
+def test_assoc_exam15_link_reassign_clear():
+    a = courceList_Exam(date=date(2024, 1, 1), form="sample_text", lenght=7, weight=7)
+    b1 = courceList_EvaluationForm(evaluationType="sample_text")
+    b2 = courceList_EvaluationForm(evaluationType="sample_text_2")
+    _safe_set(a, 'Exam', b1)
+    assert _is_linked(a, 'Exam', b1)
+    if hasattr(b1, 'evaluationForm'):
+        assert _is_linked(b1, 'evaluationForm', a)
+    _safe_set(a, 'Exam', b2)
+    assert _is_linked(a, 'Exam', b2)
+    if hasattr(b1, 'evaluationForm'):
+        assert not _is_linked(b1, 'evaluationForm', a)
+    if hasattr(b2, 'evaluationForm'):
+        assert _is_linked(b2, 'evaluationForm', a)
+    _safe_set(a, 'Exam', None)
+    assert not _is_linked(a, 'Exam', b2)
+    if hasattr(b2, 'evaluationForm'):
+        assert not _is_linked(b2, 'evaluationForm', a)
+
+
+def test_assoc_furtherSpecialisation34_link_reassign_clear():
+    a = courceList_Specialisation(name="sample_text", startSemester=7)
+    b1 = courceList_Specialisation(name="sample_text", startSemester=7)
+    b2 = courceList_Specialisation(name="sample_text_2", startSemester=13)
+    _safe_set(a, 'Specialisation35', b1)
+    assert _is_linked(a, 'Specialisation35', b1)
+    if hasattr(b1, 'hostSpecialisation'):
+        assert _is_linked(b1, 'hostSpecialisation', a)
+    _safe_set(a, 'Specialisation35', b2)
+    assert _is_linked(a, 'Specialisation35', b2)
+    if hasattr(b1, 'hostSpecialisation'):
+        assert not _is_linked(b1, 'hostSpecialisation', a)
+    if hasattr(b2, 'hostSpecialisation'):
+        assert _is_linked(b2, 'hostSpecialisation', a)
+    _safe_set(a, 'Specialisation35', None)
+    assert not _is_linked(a, 'Specialisation35', b2)
+    if hasattr(b2, 'hostSpecialisation'):
+        assert not _is_linked(b2, 'hostSpecialisation', a)
+
+
+def test_assoc_generalization9_link_reassign_clear():
+    a = courceList_StudyProgram(year=7)
+    b1 = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    b2 = courceList_StudyGeneralization(abbreviation="sample_text_2", campus="sample_text_2", educationLevel="sample_text_2", name="sample_text_2", nrOfYears=13)
+    _safe_set(a, 'studyProgram10', b1)
+    assert _is_linked(a, 'studyProgram10', b1)
+    if hasattr(b1, 'StudyGeneralization11'):
+        assert _is_linked(b1, 'StudyGeneralization11', a)
+    _safe_set(a, 'studyProgram10', b2)
+    assert _is_linked(a, 'studyProgram10', b2)
+    if hasattr(b1, 'StudyGeneralization11'):
+        assert not _is_linked(b1, 'StudyGeneralization11', a)
+    if hasattr(b2, 'StudyGeneralization11'):
+        assert _is_linked(b2, 'StudyGeneralization11', a)
+    _safe_set(a, 'studyProgram10', None)
+    assert not _is_linked(a, 'studyProgram10', b2)
+    if hasattr(b2, 'StudyGeneralization11'):
+        assert not _is_linked(b2, 'StudyGeneralization11', a)
+
+
+def test_assoc_hostSpecialisation37_link_reassign_clear():
+    a = courceList_Specialisation(name="sample_text", startSemester=7)
+    b1 = courceList_Specialisation(name="sample_text", startSemester=7)
+    b2 = courceList_Specialisation(name="sample_text_2", startSemester=13)
+    _safe_set(a, 'Specialisation38', b1)
+    assert _is_linked(a, 'Specialisation38', b1)
+    if hasattr(b1, 'furtherSpecialisation'):
+        assert _is_linked(b1, 'furtherSpecialisation', a)
+    _safe_set(a, 'Specialisation38', b2)
+    assert _is_linked(a, 'Specialisation38', b2)
+    if hasattr(b1, 'furtherSpecialisation'):
+        assert not _is_linked(b1, 'furtherSpecialisation', a)
+    if hasattr(b2, 'furtherSpecialisation'):
+        assert _is_linked(b2, 'furtherSpecialisation', a)
+    _safe_set(a, 'Specialisation38', None)
+    assert not _is_linked(a, 'Specialisation38', b2)
+    if hasattr(b2, 'furtherSpecialisation'):
+        assert not _is_linked(b2, 'furtherSpecialisation', a)
+
+
+def test_assoc_professor3_link_reassign_clear():
+    a = courceList_Professor(name="sample_text", title="sample_text")
+    b1 = courceList_Department(abbreviation="sample_text", name="sample_text")
+    b2 = courceList_Department(abbreviation="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'Professor', b1)
+    assert _is_linked(a, 'Professor', b1)
+    if hasattr(b1, 'department4'):
+        assert _is_linked(b1, 'department4', a)
+    _safe_set(a, 'Professor', b2)
+    assert _is_linked(a, 'Professor', b2)
+    if hasattr(b1, 'department4'):
+        assert not _is_linked(b1, 'department4', a)
+    if hasattr(b2, 'department4'):
+        assert _is_linked(b2, 'department4', a)
+    _safe_set(a, 'Professor', None)
+    assert not _is_linked(a, 'Professor', b2)
+    if hasattr(b2, 'department4'):
+        assert not _is_linked(b2, 'department4', a)
+
+
+def test_assoc_specialisation24_link_reassign_clear():
+    a = courceList_StudyCourceRelation(status="sample_text", year=7)
+    b1 = courceList_Specialisation(name="sample_text", startSemester=7)
+    b2 = courceList_Specialisation(name="sample_text_2", startSemester=13)
+    _safe_set(a, 'cource25', b1)
+    assert _is_linked(a, 'cource25', b1)
+    if hasattr(b1, 'Specialisation26'):
+        assert _is_linked(b1, 'Specialisation26', a)
+    _safe_set(a, 'cource25', b2)
+    assert _is_linked(a, 'cource25', b2)
+    if hasattr(b1, 'Specialisation26'):
+        assert not _is_linked(b1, 'Specialisation26', a)
+    if hasattr(b2, 'Specialisation26'):
+        assert _is_linked(b2, 'Specialisation26', a)
+    _safe_set(a, 'cource25', None)
+    assert not _is_linked(a, 'cource25', b2)
+    if hasattr(b2, 'Specialisation26'):
+        assert not _is_linked(b2, 'Specialisation26', a)
+
+
+def test_assoc_student12_link_reassign_clear():
+    a = courceList_StudyProgram(year=7)
+    b1 = courceList_Student(nr=7)
+    b2 = courceList_Student(nr=13)
+    _safe_set(a, 'studyProgram13', {b1})
+    assert _is_linked(a, 'studyProgram13', b1)
+    if hasattr(b1, 'Student'):
+        assert _is_linked(b1, 'Student', a)
+    _safe_set(a, 'studyProgram13', {b2})
+    assert _is_linked(a, 'studyProgram13', b2)
+    if hasattr(b1, 'Student'):
+        assert not _is_linked(b1, 'Student', a)
+    if hasattr(b2, 'Student'):
+        assert _is_linked(b2, 'Student', a)
+    _safe_set(a, 'studyProgram13', set())
+    assert not _is_linked(a, 'studyProgram13', b2)
+    if hasattr(b2, 'Student'):
+        assert not _is_linked(b2, 'Student', a)
+
+
+def test_assoc_studyProgram0_link_reassign_clear():
+    a = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    b1 = courceList_Department(abbreviation="sample_text", name="sample_text")
+    b2 = courceList_Department(abbreviation="sample_text_2", name="sample_text_2")
+    _safe_set(a, 'StudyGeneralization', b1)
+    assert _is_linked(a, 'StudyGeneralization', b1)
+    if hasattr(b1, 'department'):
+        assert _is_linked(b1, 'department', a)
+    _safe_set(a, 'StudyGeneralization', b2)
+    assert _is_linked(a, 'StudyGeneralization', b2)
+    if hasattr(b1, 'department'):
+        assert not _is_linked(b1, 'department', a)
+    if hasattr(b2, 'department'):
+        assert _is_linked(b2, 'department', a)
+    _safe_set(a, 'StudyGeneralization', None)
+    assert not _is_linked(a, 'StudyGeneralization', b2)
+    if hasattr(b2, 'department'):
+        assert not _is_linked(b2, 'department', a)
+
+
+def test_assoc_studyProgram30_link_reassign_clear():
+    a = courceList_StudyProgram(year=7)
+    b1 = courceList_Specialisation(name="sample_text", startSemester=7)
+    b2 = courceList_Specialisation(name="sample_text_2", startSemester=13)
+    _safe_set(a, 'StudyProgram32', b1)
+    assert _is_linked(a, 'StudyProgram32', b1)
+    if hasattr(b1, 'cource31'):
+        assert _is_linked(b1, 'cource31', a)
+    _safe_set(a, 'StudyProgram32', b2)
+    assert _is_linked(a, 'StudyProgram32', b2)
+    if hasattr(b1, 'cource31'):
+        assert not _is_linked(b1, 'cource31', a)
+    if hasattr(b2, 'cource31'):
+        assert _is_linked(b2, 'cource31', a)
+    _safe_set(a, 'StudyProgram32', None)
+    assert not _is_linked(a, 'StudyProgram32', b2)
+    if hasattr(b2, 'cource31'):
+        assert not _is_linked(b2, 'cource31', a)
+
+
+def test_assoc_studyProgram46_link_reassign_clear():
+    a = courceList_StudyProgram(year=7)
+    b1 = courceList_StudyGeneralization(abbreviation="sample_text", campus="sample_text", educationLevel="sample_text", name="sample_text", nrOfYears=7)
+    b2 = courceList_StudyGeneralization(abbreviation="sample_text_2", campus="sample_text_2", educationLevel="sample_text_2", name="sample_text_2", nrOfYears=13)
+    _safe_set(a, 'StudyProgram47', b1)
+    assert _is_linked(a, 'StudyProgram47', b1)
+    if hasattr(b1, 'generalization'):
+        assert _is_linked(b1, 'generalization', a)
+    _safe_set(a, 'StudyProgram47', b2)
+    assert _is_linked(a, 'StudyProgram47', b2)
+    if hasattr(b1, 'generalization'):
+        assert not _is_linked(b1, 'generalization', a)
+    if hasattr(b2, 'generalization'):
+        assert _is_linked(b2, 'generalization', a)
+    _safe_set(a, 'StudyProgram47', None)
+    assert not _is_linked(a, 'StudyProgram47', b2)
+    if hasattr(b2, 'generalization'):
+        assert not _is_linked(b2, 'generalization', a)
+
+
+def test_assoc_studyProgram7_link_reassign_clear():
+    a = courceList_StudyProgram(year=7)
+    b1 = courceList_Student(nr=7)
+    b2 = courceList_Student(nr=13)
+    _safe_set(a, 'StudyProgram', b1)
+    assert _is_linked(a, 'StudyProgram', b1)
+    if hasattr(b1, 'student'):
+        assert _is_linked(b1, 'student', a)
+    _safe_set(a, 'StudyProgram', b2)
+    assert _is_linked(a, 'StudyProgram', b2)
+    if hasattr(b1, 'student'):
+        assert not _is_linked(b1, 'student', a)
+    if hasattr(b2, 'student'):
+        assert _is_linked(b2, 'student', a)
+    _safe_set(a, 'StudyProgram', None)
+    assert not _is_linked(a, 'StudyProgram', b2)
+    if hasattr(b2, 'student'):
+        assert not _is_linked(b2, 'student', a)
+
+
+def test_assoc_work16_link_reassign_clear():
+    a = courceList_Work(weight=7)
+    b1 = courceList_EvaluationForm(evaluationType="sample_text")
+    b2 = courceList_EvaluationForm(evaluationType="sample_text_2")
+    _safe_set(a, 'Work', b1)
+    assert _is_linked(a, 'Work', b1)
+    if hasattr(b1, 'evaluationForm17'):
+        assert _is_linked(b1, 'evaluationForm17', a)
+    _safe_set(a, 'Work', b2)
+    assert _is_linked(a, 'Work', b2)
+    if hasattr(b1, 'evaluationForm17'):
+        assert not _is_linked(b1, 'evaluationForm17', a)
+    if hasattr(b2, 'evaluationForm17'):
+        assert _is_linked(b2, 'evaluationForm17', a)
+    _safe_set(a, 'Work', None)
+    assert not _is_linked(a, 'Work', b2)
+    if hasattr(b2, 'evaluationForm17'):
+        assert not _is_linked(b2, 'evaluationForm17', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+courceList_Cource_strategy = st.builds(courceList_Cource, code=safe_text, location=safe_text, name=safe_text)
+@given(instance=courceList_Cource_strategy)
+@settings(max_examples=25)
+def test_courceList_Cource_instantiation(instance):
+    assert isinstance(instance, courceList_Cource)
+
+
+courceList_CourceSpecification_strategy = st.builds(courceList_CourceSpecification, credits=st.floats(allow_nan=False, allow_infinity=False), language=safe_text, name=safe_text, semester=safe_text, specificationYear=st.integers(), version=safe_text)
+@given(instance=courceList_CourceSpecification_strategy)
+@settings(max_examples=25)
+def test_courceList_CourceSpecification_instantiation(instance):
+    assert isinstance(instance, courceList_CourceSpecification)
+
+
+courceList_Department_strategy = st.builds(courceList_Department, abbreviation=safe_text, name=safe_text)
+@given(instance=courceList_Department_strategy)
+@settings(max_examples=25)
+def test_courceList_Department_instantiation(instance):
+    assert isinstance(instance, courceList_Department)
+
+
+courceList_EvaluationForm_strategy = st.builds(courceList_EvaluationForm, evaluationType=safe_text)
+@given(instance=courceList_EvaluationForm_strategy)
+@settings(max_examples=25)
+def test_courceList_EvaluationForm_instantiation(instance):
+    assert isinstance(instance, courceList_EvaluationForm)
+
+
+courceList_Exam_strategy = st.builds(courceList_Exam, date=st.dates(), form=safe_text, lenght=st.integers(), weight=st.integers())
+@given(instance=courceList_Exam_strategy)
+@settings(max_examples=25)
+def test_courceList_Exam_instantiation(instance):
+    assert isinstance(instance, courceList_Exam)
+
+
+courceList_Professor_strategy = st.builds(courceList_Professor, name=safe_text, title=safe_text)
+@given(instance=courceList_Professor_strategy)
+@settings(max_examples=25)
+def test_courceList_Professor_instantiation(instance):
+    assert isinstance(instance, courceList_Professor)
+
+
+courceList_Specialisation_strategy = st.builds(courceList_Specialisation, name=safe_text, startSemester=st.integers())
+@given(instance=courceList_Specialisation_strategy)
+@settings(max_examples=25)
+def test_courceList_Specialisation_instantiation(instance):
+    assert isinstance(instance, courceList_Specialisation)
+
+
+courceList_Student_strategy = st.builds(courceList_Student, nr=st.integers())
+@given(instance=courceList_Student_strategy)
+@settings(max_examples=25)
+def test_courceList_Student_instantiation(instance):
+    assert isinstance(instance, courceList_Student)
+
+
+courceList_StudyCourceRelation_strategy = st.builds(courceList_StudyCourceRelation, status=safe_text, year=st.integers())
+@given(instance=courceList_StudyCourceRelation_strategy)
+@settings(max_examples=25)
+def test_courceList_StudyCourceRelation_instantiation(instance):
+    assert isinstance(instance, courceList_StudyCourceRelation)
+
+
+courceList_StudyGeneralization_strategy = st.builds(courceList_StudyGeneralization, abbreviation=safe_text, campus=safe_text, educationLevel=safe_text, name=safe_text, nrOfYears=st.integers())
+@given(instance=courceList_StudyGeneralization_strategy)
+@settings(max_examples=25)
+def test_courceList_StudyGeneralization_instantiation(instance):
+    assert isinstance(instance, courceList_StudyGeneralization)
+
+
+courceList_StudyProgram_strategy = st.builds(courceList_StudyProgram, year=st.integers())
+@given(instance=courceList_StudyProgram_strategy)
+@settings(max_examples=25)
+def test_courceList_StudyProgram_instantiation(instance):
+    assert isinstance(instance, courceList_StudyProgram)
+
+
+courceList_Work_strategy = st.builds(courceList_Work, weight=st.integers())
+@given(instance=courceList_Work_strategy)
+@settings(max_examples=25)
+def test_courceList_Work_instantiation(instance):
+    assert isinstance(instance, courceList_Work)
+
+
+

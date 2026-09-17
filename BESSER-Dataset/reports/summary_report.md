@@ -54,13 +54,24 @@ model's own `model_metadata.json`).
 | Methods | 2.3 |
 | Abstract methods | 0.0 |
 | Generalizations | 14.86 |
-| Associations | 19.94 |
+| Associations | 9.56 |
 | Aggregation | 0.0 |
 | Composition | 10.38 |
 
+*(Associations corrected 2026-09-17: `generate_model_metadata.py`'s
+`associations` field originally counted every `BinaryAssociation`
+regardless of its aggregation/composition flags — a superset that already
+included whatever `aggregation`/`composition` counted separately, so
+summing all three double-counted every composition/aggregation edge.
+Redefined to be mutually exclusive with `aggregation`/`composition`; see
+`docs/DECISIONS.md`, 2026-09-17 entry. The chart below
+(`02_model_structure_averages.png`) was generated before this fix and still
+shows the old, superset value for Associations — regenerate it from the
+corrected data if an updated chart is needed.)*
+
 The dataset's models are, on average, fairly large (27 classes each) and
 relationship-heavy (associations + generalizations + composition together average
-~45 relations per model against 27 classes), while methods with actual behavior are
+~35 relations per model against 27 classes), while methods with actual behavior are
 sparse (2.3/model) — most of a model's logic lives in structure, not operations,
 which is consistent with the low count of `abstract_methods` (0.0 avg) and the
 "empty-method" `pass`-stub pattern noted in coverage methodology below.
@@ -156,7 +167,8 @@ lines belonging to "empty" (single-`pass`-body) generated `Operation` methods ar
 excluded from both numerator and denominator so a trivially-executed stub can't
 inflate the score (see `docs/DECISIONS.md`, 2026-09-02 entry for the exact
 methodology). This full 9,082-model run supersedes the earlier 250-model
-`coverage_prototype_report` (75.76% avg line coverage on an unsplit test run).
+`coverage_prototype_report` (75.76% avg line coverage on an unsplit test run;
+file removed 2026-09-17 during reports-folder cleanup, since fully superseded).
 
 `scripts/validate_coverage_split.py` / `reports/coverage_split_prototype_report.{json,md}`.
 
@@ -187,7 +199,8 @@ input combinations per test.
 Uses `cosmic-ray` with a per-model mutant cap; a mutant is "killed" if the existing
 test suite catches the injected fault. `scripts/validate_mutation.py`. This
 **full-dataset run** (`reports/mutation_full_dataset_report.{json,md}`) supersedes
-the earlier 250-model prototype (`mutation_prototype_report`, avg score 33.05%).
+the earlier 250-model prototype (`mutation_prototype_report`, avg score 33.05%;
+file removed 2026-09-17 during reports-folder cleanup, since fully superseded).
 
 - **Total models checked:** 9,082
 - **Measured successfully:** 8,423 (**92.7%**)
@@ -245,9 +258,9 @@ little in between.
 | Python code validation | 9,082 (full) | `python_code_validation_report.{json,md}` |
 | Test suite validation | 9,082 (full) | `test_validation_report.{json,md}` |
 | Coverage (structural / hypothesis split) | 9,082 (full) | `coverage_split_prototype_report.{json,md}` |
-| Coverage (unsplit, superseded) | 250 (sample) | `coverage_prototype_report.{json,md}` |
+| Coverage (unsplit, superseded, *file removed*) | 250 (sample) | headline number only, in prose above |
 | Mutation testing (full dataset) | 9,082 (full) | `mutation_full_dataset_report.{json,md}` |
-| Mutation testing (superseded prototype) | 250 (sample) | `mutation_prototype_report.{json,md}` |
+| Mutation testing (superseded prototype, *file removed*) | 250 (sample) | headline number only, in prose above |
 
 Charts in this report were generated from the JSON reports above; see
 `docs/DECISIONS.md` for the running log of methodology decisions behind each metric.

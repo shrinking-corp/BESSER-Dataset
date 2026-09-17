@@ -82,13 +82,14 @@ import time
 from pathlib import Path
 
 # Overridable via --test-file/--metadata-key (see main()) so the same script
-# can be pointed at test_structural_full.py without a code change. Read from
-# env vars, not just module-level constants, because ProcessPoolExecutor
-# workers on Windows use 'spawn' -- each worker re-imports this file fresh in
-# a new interpreter, so a plain `global TEST_FILENAME = ...` mutation in
-# main() (which only runs in the parent process) would never reach them. The
-# parent sets these env vars *before* creating the pool; every worker's own
-# fresh import of this module then reads the same overridden values.
+# can be pointed at test_structural_full.py (or, once generate_combined_tests.py
+# exists, test_combined.py) without a code change. Read from env vars, not
+# just module-level constants, because ProcessPoolExecutor workers on
+# Windows use 'spawn' -- each worker re-imports this file fresh in a new
+# interpreter, so a plain `global TEST_FILENAME = ...` mutation in main()
+# (which only runs in the parent process) would never reach them. The parent
+# sets these env vars *before* creating the pool; every worker's own fresh
+# import of this module then reads the same overridden values.
 TEST_FILENAME = os.environ.get("VALIDATE_MUTATION_TEST_FILENAME", "test_hypothesis.py")
 SOURCE_FILENAME = "python_code.py"
 CONFIG_FILENAME = "cr-config.toml"
@@ -101,6 +102,7 @@ METADATA_KEY = os.environ.get("VALIDATE_MUTATION_METADATA_KEY", "mutation_valida
 TEST_FILE_METADATA_KEYS = {
     "test_hypothesis.py": "mutation_validation",
     "test_structural_full.py": "structural_mutation_validation",
+    "test_combined.py": "combined_mutation_validation",
 }
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0

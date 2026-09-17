@@ -31,6 +31,19 @@ Field meanings:
   matching the PUML arrow-symbol priority used elsewhere in this dataset's
   tooling). Association *end order* doesn't matter for counting (only for
   rendering an arrow direction), so no ordering/sorting is needed here.
+  **`associations` is a plain (neither-composite-nor-aggregation) count,
+  mutually exclusive with `aggregation`/`composition`** -- changed
+  2026-09-17 from an earlier version where `associations` was every
+  BinaryAssociation regardless of flags (i.e. a superset that already
+  included the aggregation/composition ones), which made it impossible to
+  sum `associations + aggregation + composition` for a "total relationship
+  count" without double-counting. All three now partition the full
+  BinaryAssociation set with no overlap, so a total is a plain sum.
+  **Confirmed dataset-wide: `aggregation` is 0 for every one of the 9,082
+  models** (`is_aggregation` is never set without `is_composite` also being
+  set, and composite takes priority) -- so in practice this dataset only
+  ever has plain associations and compositions, never a case classified as
+  aggregation specifically.
 - Checked and confirmed UNUSED anywhere in this 9,082-model dataset (grepped
   every raw BUML source file for actual constructor calls, not just name
   matches): GeneralizationSet, NAryAssociation, Realization, Dependency,
@@ -49,6 +62,26 @@ Field meanings:
   had was lost in translation; every interface-like thing is indistinguishable
   from Class(is_abstract=True) in this metamodel. Not included as a
   separate field for the same reason.
+- many_valued_association_ends: of every BinaryAssociation END (two per
+  association) in the model, how many are collection-valued (multiplicity
+  max is None, "*", or > 1) rather than a plain scalar reference (max == 1).
+  A genuinely different complexity dimension than raw associations/
+  aggregation/composition counts: two models can have the identical
+  relationship count while one is built entirely of simple 1-1 references
+  and the other entirely of many-valued collections needing real
+  add/remove/iterate handling in the generated code. Verified real,
+  well-distributed variance dataset-wide before adding this (mean 8.999,
+  std 20.511, spanning 0-661) -- see docs/DECISIONS.md, 2026-09-17 entry.
+  (Considered and dropped: inheritance depth -- confirmed near-degenerate,
+  4,700/9,082 models at depth 0 and 4,373 at depth 1, only 9 ever reaching
+  depth 2 -- essentially redundant with the existing `generalizations`
+  count, not worth the added extraction logic.)
+- attribute_type_diversity: count of DISTINCT attribute types used across
+  all classes in the model (not the number of attributes) -- distinguishes
+  a model where every attribute is `str` (type diversity 1, however many
+  attributes it has) from one mixing several primitive/enum types (more
+  conceptually varied, and confirmed to actually vary dataset-wide: mean
+  2.329, std 1.912, spanning 0-28).
 
 Usage:
     python scripts/generate_model_metadata.py --models-file PATH [--workers N]
@@ -144,12 +177,25 @@ def compute_structure(model) -> dict:
 
     composition = 0
     aggregation = 0
+    many_valued_ends = 0
     for assoc in binary_associations:
         ends = list(getattr(assoc, "ends", []))
         if any(getattr(e, "is_composite", False) for e in ends):
             composition += 1
         elif any(getattr(e, "is_aggregation", False) for e in ends):
             aggregation += 1
+        for e in ends:
+            mult = getattr(e, "multiplicity", None)
+            max_val = getattr(mult, "max", None) if mult is not None else None
+            if max_val is None or max_val == "*" or (isinstance(max_val, (int, float)) and max_val > 1):
+                many_valued_ends += 1
+
+    attribute_types = set()
+    for c in classes:
+        for attr in c.attributes:
+            t = getattr(attr, "type", None)
+            if t is not None:
+                attribute_types.add(t.name if hasattr(t, "name") else str(t))
 
     return {
         "classes": len(classes),
@@ -161,9 +207,11 @@ def compute_structure(model) -> dict:
         "methods": sum(len(c.methods) for c in classes),
         "abstract_methods": sum(1 for c in classes for m in c.methods if getattr(m, "is_abstract", False)),
         "generalizations": len(model.generalizations),
-        "associations": len(binary_associations),
+        "associations": len(binary_associations) - aggregation - composition,
         "aggregation": aggregation,
         "composition": composition,
+        "many_valued_association_ends": many_valued_ends,
+        "attribute_type_diversity": len(attribute_types),
     }
 
 
@@ -227,6 +275,7 @@ def build_report(results: list[dict]) -> dict:
         "classes", "abstract_classes", "association_classes", "enumerations",
         "enumeration_literals", "attributes", "methods", "abstract_methods",
         "generalizations", "associations", "aggregation", "composition",
+        "many_valued_association_ends", "attribute_type_diversity",
     ]
 
     return {

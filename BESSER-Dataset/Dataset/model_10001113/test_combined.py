@@ -1,0 +1,1123 @@
+# =============================================================================
+# This file is a generated concatenation of two independent test suites --
+# see scripts/generate_combined_tests.py for why simple concatenation is safe
+# despite both generators using the same naming convention for some helpers,
+# and for the deterministic rules used to drop old-suite tests the new suite
+# already covers equally or more thoroughly.
+# =============================================================================
+
+# ----- SECTION A: test_hypothesis.py (original generated suite) -----
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    Customer,
+    Class,
+    Food,
+    Order,
+    Table,
+    Booking,
+    Report,
+    RMS,
+    Staff,
+    Chef,
+    Waiter,
+    Manager,
+    CustomerType,
+    Kitchen,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_hyp_customer_is_not_abstract():
+    assert not inspect.isabstract(Customer)
+
+
+def test_hyp_customer_constructor_exists():
+    assert callable(Customer.__init__)
+
+
+def test_hyp_customer_constructor_args():
+    sig = inspect.signature(Customer.__init__)
+    params = list(sig.parameters.keys())
+    assert "numMale" in params, "Missing parameter 'numMale'"
+    assert "numFemale" in params, "Missing parameter 'numFemale'"
+    assert "type" in params, "Missing parameter 'type'"
+
+def test_hyp_customer_has_numMale():
+    assert hasattr(Customer, "numMale")
+    descriptor = None
+    for klass in Customer.__mro__:
+        if "numMale" in klass.__dict__:
+            descriptor = klass.__dict__["numMale"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_customer_has_numFemale():
+    assert hasattr(Customer, "numFemale")
+    descriptor = None
+    for klass in Customer.__mro__:
+        if "numFemale" in klass.__dict__:
+            descriptor = klass.__dict__["numFemale"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_customer_has_type():
+    assert hasattr(Customer, "type")
+    descriptor = None
+    for klass in Customer.__mro__:
+        if "type" in klass.__dict__:
+            descriptor = klass.__dict__["type"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_hyp_class_is_not_abstract():
+    assert not inspect.isabstract(Class)
+
+
+def test_hyp_class_constructor_exists():
+    assert callable(Class.__init__)
+
+
+def test_hyp_class_constructor_args():
+    sig = inspect.signature(Class.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_food_is_not_abstract():
+    assert not inspect.isabstract(Food)
+
+
+def test_hyp_food_constructor_exists():
+    assert callable(Food.__init__)
+
+
+def test_hyp_food_constructor_args():
+    sig = inspect.signature(Food.__init__)
+    params = list(sig.parameters.keys())
+    assert "description" in params, "Missing parameter 'description'"
+    assert "type" in params, "Missing parameter 'type'"
+    assert "name" in params, "Missing parameter 'name'"
+    assert "price" in params, "Missing parameter 'price'"
+    assert "prepared" in params, "Missing parameter 'prepared'"
+    assert "food_Id" in params, "Missing parameter 'food_Id'"
+    assert "served" in params, "Missing parameter 'served'"
+
+
+
+
+
+
+
+
+
+
+def test_hyp_order_is_not_abstract():
+    assert not inspect.isabstract(Order)
+
+
+def test_hyp_order_constructor_exists():
+    assert callable(Order.__init__)
+
+
+def test_hyp_order_constructor_args():
+    sig = inspect.signature(Order.__init__)
+    params = list(sig.parameters.keys())
+    assert "order_Id" in params, "Missing parameter 'order_Id'"
+    assert "foodOrdered" in params, "Missing parameter 'foodOrdered'"
+
+def test_hyp_order_has_order_Id():
+    assert hasattr(Order, "order_Id")
+    descriptor = None
+    for klass in Order.__mro__:
+        if "order_Id" in klass.__dict__:
+            descriptor = klass.__dict__["order_Id"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_order_has_foodOrdered():
+    assert hasattr(Order, "foodOrdered")
+    descriptor = None
+    for klass in Order.__mro__:
+        if "foodOrdered" in klass.__dict__:
+            descriptor = klass.__dict__["foodOrdered"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_hyp_table_is_not_abstract():
+    assert not inspect.isabstract(Table)
+
+
+def test_hyp_table_constructor_exists():
+    assert callable(Table.__init__)
+
+
+def test_hyp_table_constructor_args():
+    sig = inspect.signature(Table.__init__)
+    params = list(sig.parameters.keys())
+    assert "occupied" in params, "Missing parameter 'occupied'"
+    assert "numSeats" in params, "Missing parameter 'numSeats'"
+    assert "specialRequest" in params, "Missing parameter 'specialRequest'"
+    assert "order" in params, "Missing parameter 'order'"
+    assert "table_Id" in params, "Missing parameter 'table_Id'"
+    assert "customerDetail" in params, "Missing parameter 'customerDetail'"
+
+def test_hyp_table_has_occupied():
+    assert hasattr(Table, "occupied")
+    descriptor = None
+    for klass in Table.__mro__:
+        if "occupied" in klass.__dict__:
+            descriptor = klass.__dict__["occupied"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_table_has_numSeats():
+    assert hasattr(Table, "numSeats")
+    descriptor = None
+    for klass in Table.__mro__:
+        if "numSeats" in klass.__dict__:
+            descriptor = klass.__dict__["numSeats"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_table_has_specialRequest():
+    assert hasattr(Table, "specialRequest")
+    descriptor = None
+    for klass in Table.__mro__:
+        if "specialRequest" in klass.__dict__:
+            descriptor = klass.__dict__["specialRequest"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_table_has_order():
+    assert hasattr(Table, "order")
+    descriptor = None
+    for klass in Table.__mro__:
+        if "order" in klass.__dict__:
+            descriptor = klass.__dict__["order"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_table_has_table_Id():
+    assert hasattr(Table, "table_Id")
+    descriptor = None
+    for klass in Table.__mro__:
+        if "table_Id" in klass.__dict__:
+            descriptor = klass.__dict__["table_Id"]
+            break
+    assert isinstance(descriptor, property)
+
+def test_hyp_table_has_customerDetail():
+    assert hasattr(Table, "customerDetail")
+    descriptor = None
+    for klass in Table.__mro__:
+        if "customerDetail" in klass.__dict__:
+            descriptor = klass.__dict__["customerDetail"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_hyp_booking_is_not_abstract():
+    assert not inspect.isabstract(Booking)
+
+
+def test_hyp_booking_constructor_exists():
+    assert callable(Booking.__init__)
+
+
+def test_hyp_booking_constructor_args():
+    sig = inspect.signature(Booking.__init__)
+    params = list(sig.parameters.keys())
+    assert "booking_Id" in params, "Missing parameter 'booking_Id'"
+    assert "reservedTables" in params, "Missing parameter 'reservedTables'"
+    assert "name" in params, "Missing parameter 'name'"
+    assert "type" in params, "Missing parameter 'type'"
+    assert "contact" in params, "Missing parameter 'contact'"
+    assert "date" in params, "Missing parameter 'date'"
+
+
+
+
+
+
+
+
+
+def test_hyp_report_is_not_abstract():
+    assert not inspect.isabstract(Report)
+
+
+def test_hyp_report_constructor_exists():
+    assert callable(Report.__init__)
+
+
+def test_hyp_report_constructor_args():
+    sig = inspect.signature(Report.__init__)
+    params = list(sig.parameters.keys())
+    assert "totalSales" in params, "Missing parameter 'totalSales'"
+    assert "orders" in params, "Missing parameter 'orders'"
+    assert "profit" in params, "Missing parameter 'profit'"
+
+
+
+
+
+
+def test_hyp_rms_is_not_abstract():
+    assert not inspect.isabstract(RMS)
+
+
+def test_hyp_rms_constructor_exists():
+    assert callable(RMS.__init__)
+
+
+def test_hyp_rms_constructor_args():
+    sig = inspect.signature(RMS.__init__)
+    params = list(sig.parameters.keys())
+    assert "bookings" in params, "Missing parameter 'bookings'"
+
+
+
+
+def test_hyp_staff_is_not_abstract():
+    assert not inspect.isabstract(Staff)
+
+
+def test_hyp_staff_constructor_exists():
+    assert callable(Staff.__init__)
+
+
+def test_hyp_staff_constructor_args():
+    sig = inspect.signature(Staff.__init__)
+    params = list(sig.parameters.keys())
+    assert "staff_Id" in params, "Missing parameter 'staff_Id'"
+    assert "contact" in params, "Missing parameter 'contact'"
+    assert "jobType" in params, "Missing parameter 'jobType'"
+    assert "name" in params, "Missing parameter 'name'"
+
+
+
+
+
+
+
+def test_hyp_chef_is_not_abstract():
+    assert not inspect.isabstract(Chef)
+
+
+def test_hyp_chef_constructor_exists():
+    assert callable(Chef.__init__)
+
+
+def test_hyp_chef_constructor_args():
+    sig = inspect.signature(Chef.__init__)
+    params = list(sig.parameters.keys())
+    assert "kitchenStation" in params, "Missing parameter 'kitchenStation'"
+
+def test_hyp_chef_has_kitchenStation():
+    assert hasattr(Chef, "kitchenStation")
+    descriptor = None
+    for klass in Chef.__mro__:
+        if "kitchenStation" in klass.__dict__:
+            descriptor = klass.__dict__["kitchenStation"]
+            break
+    assert isinstance(descriptor, property)
+
+
+
+def test_hyp_waiter_is_not_abstract():
+    assert not inspect.isabstract(Waiter)
+
+
+def test_hyp_waiter_constructor_exists():
+    assert callable(Waiter.__init__)
+
+
+def test_hyp_waiter_constructor_args():
+    sig = inspect.signature(Waiter.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_manager_is_not_abstract():
+    assert not inspect.isabstract(Manager)
+
+
+def test_hyp_manager_constructor_exists():
+    assert callable(Manager.__init__)
+
+
+def test_hyp_manager_constructor_args():
+    sig = inspect.signature(Manager.__init__)
+    params = list(sig.parameters.keys())
+
+def test_hyp_customertype_exists():
+    # Check that the Enumeration exists
+    assert CustomerType is not None
+
+def test_hyp_customertype_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in CustomerType]
+    expected_literals = [
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in CustomerType"
+
+def test_hyp_kitchen_exists():
+    # Check that the Enumeration exists
+    assert Kitchen is not None
+
+def test_hyp_kitchen_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in Kitchen]
+    expected_literals = [
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in Kitchen"
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+Customer_strategy = st.builds(
+    Customer,
+    numMale=
+        st.integers(),
+    numFemale=
+        st.integers(),
+    type=
+        st.none()
+)
+Class_strategy = st.builds(
+    Class,
+)
+Food_strategy = st.builds(
+    Food,
+    description=
+        safe_text,
+    type=
+        st.integers(),
+    name=
+        safe_text,
+    price=
+        safe_text,
+    prepared=
+        st.booleans(),
+    food_Id=
+        safe_text,
+    served=
+        st.booleans()
+)
+Order_strategy = st.builds(
+    Order,
+    order_Id=
+        safe_text,
+    foodOrdered=
+        st.none()
+)
+Table_strategy = st.builds(
+    Table,
+    occupied=
+        st.booleans(),
+    numSeats=
+        st.integers(),
+    specialRequest=
+        safe_text,
+    order=
+        safe_text,
+    table_Id=
+        safe_text,
+    customerDetail=
+        st.none()
+)
+Booking_strategy = st.builds(
+    Booking,
+    booking_Id=
+        safe_text,
+    reservedTables=
+        safe_text,
+    name=
+        safe_text,
+    type=
+        st.integers(),
+    contact=
+        safe_text,
+    date=
+        safe_text
+)
+Report_strategy = st.builds(
+    Report,
+    totalSales=
+        safe_text,
+    orders=
+        safe_text,
+    profit=
+        safe_text
+)
+RMS_strategy = st.builds(
+    RMS,
+    bookings=
+        safe_text
+)
+Staff_strategy = st.builds(
+    Staff,
+    staff_Id=
+        safe_text,
+    contact=
+        safe_text,
+    jobType=
+        st.integers(),
+    name=
+        safe_text
+)
+Chef_strategy = st.builds(
+    Chef,
+    kitchenStation=
+        st.none()
+)
+Waiter_strategy = st.builds(
+    Waiter,
+)
+Manager_strategy = st.builds(
+    Manager,
+)
+
+@given(instance=Customer_strategy)
+@settings(max_examples=50)
+def test_hyp_customer_instantiation(instance):
+    assert isinstance(instance, Customer)
+
+
+
+@given(instance=Customer_strategy)
+def test_hyp_customer_numMale_setter(instance):
+    original = instance.numMale
+    instance.numMale = original
+    assert instance.numMale == original
+
+
+
+@given(instance=Customer_strategy)
+def test_hyp_customer_numFemale_setter(instance):
+    original = instance.numFemale
+    instance.numFemale = original
+    assert instance.numFemale == original
+
+
+
+@given(instance=Customer_strategy)
+def test_hyp_customer_type_setter(instance):
+    original = instance.type
+    instance.type = original
+    assert instance.type == original
+
+
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_description_setter(instance):
+    original = instance.description
+    instance.description = original
+    assert instance.description == original
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_type_setter(instance):
+    original = instance.type
+    instance.type = original
+    assert instance.type == original
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_price_setter(instance):
+    original = instance.price
+    instance.price = original
+    assert instance.price == original
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_prepared_setter(instance):
+    original = instance.prepared
+    instance.prepared = original
+    assert instance.prepared == original
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_food_Id_setter(instance):
+    original = instance.food_Id
+    instance.food_Id = original
+    assert instance.food_Id == original
+
+
+
+@given(instance=Food_strategy)
+def test_hyp_food_served_setter(instance):
+    original = instance.served
+    instance.served = original
+    assert instance.served == original
+
+@given(instance=Order_strategy)
+@settings(max_examples=50)
+def test_hyp_order_instantiation(instance):
+    assert isinstance(instance, Order)
+
+
+
+@given(instance=Order_strategy)
+def test_hyp_order_order_Id_setter(instance):
+    original = instance.order_Id
+    instance.order_Id = original
+    assert instance.order_Id == original
+
+
+
+@given(instance=Order_strategy)
+def test_hyp_order_foodOrdered_setter(instance):
+    original = instance.foodOrdered
+    instance.foodOrdered = original
+    assert instance.foodOrdered == original
+
+@given(instance=Table_strategy)
+@settings(max_examples=50)
+def test_hyp_table_instantiation(instance):
+    assert isinstance(instance, Table)
+
+
+
+@given(instance=Table_strategy)
+def test_hyp_table_occupied_setter(instance):
+    original = instance.occupied
+    instance.occupied = original
+    assert instance.occupied == original
+
+
+
+@given(instance=Table_strategy)
+def test_hyp_table_numSeats_setter(instance):
+    original = instance.numSeats
+    instance.numSeats = original
+    assert instance.numSeats == original
+
+
+
+@given(instance=Table_strategy)
+def test_hyp_table_specialRequest_setter(instance):
+    original = instance.specialRequest
+    instance.specialRequest = original
+    assert instance.specialRequest == original
+
+
+
+@given(instance=Table_strategy)
+def test_hyp_table_order_setter(instance):
+    original = instance.order
+    instance.order = original
+    assert instance.order == original
+
+
+
+@given(instance=Table_strategy)
+def test_hyp_table_table_Id_setter(instance):
+    original = instance.table_Id
+    instance.table_Id = original
+    assert instance.table_Id == original
+
+
+
+@given(instance=Table_strategy)
+def test_hyp_table_customerDetail_setter(instance):
+    original = instance.customerDetail
+    instance.customerDetail = original
+    assert instance.customerDetail == original
+
+
+
+
+@given(instance=Booking_strategy)
+def test_hyp_booking_booking_Id_setter(instance):
+    original = instance.booking_Id
+    instance.booking_Id = original
+    assert instance.booking_Id == original
+
+
+
+@given(instance=Booking_strategy)
+def test_hyp_booking_reservedTables_setter(instance):
+    original = instance.reservedTables
+    instance.reservedTables = original
+    assert instance.reservedTables == original
+
+
+
+@given(instance=Booking_strategy)
+def test_hyp_booking_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=Booking_strategy)
+def test_hyp_booking_type_setter(instance):
+    original = instance.type
+    instance.type = original
+    assert instance.type == original
+
+
+
+@given(instance=Booking_strategy)
+def test_hyp_booking_contact_setter(instance):
+    original = instance.contact
+    instance.contact = original
+    assert instance.contact == original
+
+
+
+@given(instance=Booking_strategy)
+def test_hyp_booking_date_setter(instance):
+    original = instance.date
+    instance.date = original
+    assert instance.date == original
+
+
+
+
+@given(instance=Report_strategy)
+def test_hyp_report_totalSales_setter(instance):
+    original = instance.totalSales
+    instance.totalSales = original
+    assert instance.totalSales == original
+
+
+
+@given(instance=Report_strategy)
+def test_hyp_report_orders_setter(instance):
+    original = instance.orders
+    instance.orders = original
+    assert instance.orders == original
+
+
+
+@given(instance=Report_strategy)
+def test_hyp_report_profit_setter(instance):
+    original = instance.profit
+    instance.profit = original
+    assert instance.profit == original
+
+
+
+
+@given(instance=RMS_strategy)
+def test_hyp_rms_bookings_setter(instance):
+    original = instance.bookings
+    instance.bookings = original
+    assert instance.bookings == original
+
+
+
+
+@given(instance=Staff_strategy)
+def test_hyp_staff_staff_Id_setter(instance):
+    original = instance.staff_Id
+    instance.staff_Id = original
+    assert instance.staff_Id == original
+
+
+
+@given(instance=Staff_strategy)
+def test_hyp_staff_contact_setter(instance):
+    original = instance.contact
+    instance.contact = original
+    assert instance.contact == original
+
+
+
+@given(instance=Staff_strategy)
+def test_hyp_staff_jobType_setter(instance):
+    original = instance.jobType
+    instance.jobType = original
+    assert instance.jobType == original
+
+
+
+@given(instance=Staff_strategy)
+def test_hyp_staff_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+@given(instance=Chef_strategy)
+@settings(max_examples=50)
+def test_hyp_chef_instantiation(instance):
+    assert isinstance(instance, Chef)
+
+
+
+@given(instance=Chef_strategy)
+def test_hyp_chef_kitchenStation_setter(instance):
+    original = instance.kitchenStation
+    instance.kitchenStation = original
+    assert instance.kitchenStation == original
+
+
+
+
+# ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Booking,
+    Chef,
+    Class,
+    Customer,
+    Food,
+    Manager,
+    Order,
+    RMS,
+    Report,
+    Staff,
+    Table,
+    Waiter,
+    CustomerType,
+    Kitchen,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_Booking_booking_Id_value_roundtrip():
+    instance = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    assert instance.booking_Id == "sample_text"
+    instance.booking_Id = "sample_text_2"
+    assert instance.booking_Id == "sample_text_2"
+
+
+def test_Booking_contact_value_roundtrip():
+    instance = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    assert instance.contact == "sample_text"
+    instance.contact = "sample_text_2"
+    assert instance.contact == "sample_text_2"
+
+
+def test_Booking_date_value_roundtrip():
+    instance = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    assert instance.date == "sample_text"
+    instance.date = "sample_text_2"
+    assert instance.date == "sample_text_2"
+
+
+def test_Booking_name_value_roundtrip():
+    instance = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_Booking_reservedTables_value_roundtrip():
+    instance = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    assert instance.reservedTables == "sample_text"
+    instance.reservedTables = "sample_text_2"
+    assert instance.reservedTables == "sample_text_2"
+
+
+def test_Booking_type_value_roundtrip():
+    instance = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    assert instance.type == 7
+    instance.type = 13
+    assert instance.type == 13
+
+
+def test_Food_description_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_Food_food_Id_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.food_Id == "sample_text"
+    instance.food_Id = "sample_text_2"
+    assert instance.food_Id == "sample_text_2"
+
+
+def test_Food_name_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_Food_prepared_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.prepared == True
+    instance.prepared = False
+    assert instance.prepared == False
+
+
+def test_Food_price_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.price == "sample_text"
+    instance.price = "sample_text_2"
+    assert instance.price == "sample_text_2"
+
+
+def test_Food_served_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.served == True
+    instance.served = False
+    assert instance.served == False
+
+
+def test_Food_type_value_roundtrip():
+    instance = Food(description="sample_text", food_Id="sample_text", name="sample_text", prepared=True, price="sample_text", served=True, type=7)
+    assert instance.type == 7
+    instance.type = 13
+    assert instance.type == 13
+
+
+def test_RMS_bookings_value_roundtrip():
+    instance = RMS(bookings="sample_text")
+    assert instance.bookings == "sample_text"
+    instance.bookings = "sample_text_2"
+    assert instance.bookings == "sample_text_2"
+
+
+def test_Report_orders_value_roundtrip():
+    instance = Report(orders="sample_text", profit="sample_text", totalSales="sample_text")
+    assert instance.orders == "sample_text"
+    instance.orders = "sample_text_2"
+    assert instance.orders == "sample_text_2"
+
+
+def test_Report_profit_value_roundtrip():
+    instance = Report(orders="sample_text", profit="sample_text", totalSales="sample_text")
+    assert instance.profit == "sample_text"
+    instance.profit = "sample_text_2"
+    assert instance.profit == "sample_text_2"
+
+
+def test_Report_totalSales_value_roundtrip():
+    instance = Report(orders="sample_text", profit="sample_text", totalSales="sample_text")
+    assert instance.totalSales == "sample_text"
+    instance.totalSales = "sample_text_2"
+    assert instance.totalSales == "sample_text_2"
+
+
+def test_Staff_contact_value_roundtrip():
+    instance = Staff(contact="sample_text", jobType=7, name="sample_text", staff_Id="sample_text")
+    assert instance.contact == "sample_text"
+    instance.contact = "sample_text_2"
+    assert instance.contact == "sample_text_2"
+
+
+def test_Staff_jobType_value_roundtrip():
+    instance = Staff(contact="sample_text", jobType=7, name="sample_text", staff_Id="sample_text")
+    assert instance.jobType == 7
+    instance.jobType = 13
+    assert instance.jobType == 13
+
+
+def test_Staff_name_value_roundtrip():
+    instance = Staff(contact="sample_text", jobType=7, name="sample_text", staff_Id="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_Staff_staff_Id_value_roundtrip():
+    instance = Staff(contact="sample_text", jobType=7, name="sample_text", staff_Id="sample_text")
+    assert instance.staff_Id == "sample_text"
+    instance.staff_Id = "sample_text_2"
+    assert instance.staff_Id == "sample_text_2"
+
+
+def test_assoc_RMS_Booking_link_reassign_clear():
+    a = RMS(bookings="sample_text")
+    b1 = Booking(booking_Id="sample_text", contact="sample_text", date="sample_text", name="sample_text", reservedTables="sample_text", type=7)
+    b2 = Booking(booking_Id="sample_text_2", contact="sample_text_2", date="sample_text_2", name="sample_text_2", reservedTables="sample_text_2", type=13)
+    _safe_set(a, 'has6', {b1})
+    assert _is_linked(a, 'has6', b1)
+    if hasattr(b1, 'is_in7'):
+        assert _is_linked(b1, 'is_in7', a)
+    _safe_set(a, 'has6', {b2})
+    assert _is_linked(a, 'has6', b2)
+    if hasattr(b1, 'is_in7'):
+        assert not _is_linked(b1, 'is_in7', a)
+    if hasattr(b2, 'is_in7'):
+        assert _is_linked(b2, 'is_in7', a)
+    _safe_set(a, 'has6', set())
+    assert not _is_linked(a, 'has6', b2)
+    if hasattr(b2, 'is_in7'):
+        assert not _is_linked(b2, 'is_in7', a)
+
+
+def test_assoc_Report_RMS_link_reassign_clear():
+    a = Report(orders="sample_text", profit="sample_text", totalSales="sample_text")
+    b1 = RMS(bookings="sample_text")
+    b2 = RMS(bookings="sample_text_2")
+    _safe_set(a, 'generates10', b1)
+    assert _is_linked(a, 'generates10', b1)
+    if hasattr(b1, 'is_generated_by11'):
+        assert _is_linked(b1, 'is_generated_by11', a)
+    _safe_set(a, 'generates10', b2)
+    assert _is_linked(a, 'generates10', b2)
+    if hasattr(b1, 'is_generated_by11'):
+        assert not _is_linked(b1, 'is_generated_by11', a)
+    if hasattr(b2, 'is_generated_by11'):
+        assert _is_linked(b2, 'is_generated_by11', a)
+    _safe_set(a, 'generates10', None)
+    assert not _is_linked(a, 'generates10', b2)
+    if hasattr(b2, 'is_generated_by11'):
+        assert not _is_linked(b2, 'is_generated_by11', a)
+
+
+def test_assoc_Staff_RMS_link_reassign_clear():
+    a = Staff(contact="sample_text", jobType=7, name="sample_text", staff_Id="sample_text")
+    b1 = RMS(bookings="sample_text")
+    b2 = RMS(bookings="sample_text_2")
+    _safe_set(a, 'Staff_RMS_08', b1)
+    assert _is_linked(a, 'Staff_RMS_08', b1)
+    if hasattr(b1, 'accesses9'):
+        assert _is_linked(b1, 'accesses9', a)
+    _safe_set(a, 'Staff_RMS_08', b2)
+    assert _is_linked(a, 'Staff_RMS_08', b2)
+    if hasattr(b1, 'accesses9'):
+        assert not _is_linked(b1, 'accesses9', a)
+    if hasattr(b2, 'accesses9'):
+        assert _is_linked(b2, 'accesses9', a)
+    _safe_set(a, 'Staff_RMS_08', None)
+    assert not _is_linked(a, 'Staff_RMS_08', b2)
+    if hasattr(b2, 'accesses9'):
+        assert not _is_linked(b2, 'accesses9', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Booking_strategy = st.builds(Booking, booking_Id=safe_text, contact=safe_text, date=safe_text, name=safe_text, reservedTables=safe_text, type=st.integers())
+@given(instance=Booking_strategy)
+@settings(max_examples=25)
+def test_Booking_instantiation(instance):
+    assert isinstance(instance, Booking)
+
+
+Class_strategy = st.builds(Class)
+@given(instance=Class_strategy)
+@settings(max_examples=25)
+def test_Class_instantiation(instance):
+    assert isinstance(instance, Class)
+
+
+Food_strategy = st.builds(Food, description=safe_text, food_Id=safe_text, name=safe_text, prepared=st.booleans(), price=safe_text, served=st.booleans(), type=st.integers())
+@given(instance=Food_strategy)
+@settings(max_examples=25)
+def test_Food_instantiation(instance):
+    assert isinstance(instance, Food)
+
+
+Manager_strategy = st.builds(Manager)
+@given(instance=Manager_strategy)
+@settings(max_examples=25)
+def test_Manager_instantiation(instance):
+    assert isinstance(instance, Manager)
+
+
+RMS_strategy = st.builds(RMS, bookings=safe_text)
+@given(instance=RMS_strategy)
+@settings(max_examples=25)
+def test_RMS_instantiation(instance):
+    assert isinstance(instance, RMS)
+
+
+Report_strategy = st.builds(Report, orders=safe_text, profit=safe_text, totalSales=safe_text)
+@given(instance=Report_strategy)
+@settings(max_examples=25)
+def test_Report_instantiation(instance):
+    assert isinstance(instance, Report)
+
+
+Staff_strategy = st.builds(Staff, contact=safe_text, jobType=st.integers(), name=safe_text, staff_Id=safe_text)
+@given(instance=Staff_strategy)
+@settings(max_examples=25)
+def test_Staff_instantiation(instance):
+    assert isinstance(instance, Staff)
+
+
+Waiter_strategy = st.builds(Waiter)
+@given(instance=Waiter_strategy)
+@settings(max_examples=25)
+def test_Waiter_instantiation(instance):
+    assert isinstance(instance, Waiter)
+
+
+

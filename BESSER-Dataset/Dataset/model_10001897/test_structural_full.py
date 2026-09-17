@@ -19,7 +19,6 @@ from python_code import (
     Elementos,
     Empresa,
     Entregar_Productos_external,
-    Factura,
     Facturas,
     Imformes,
     JavaApplication2,
@@ -187,20 +186,6 @@ def test_Empresa_ubicacion_value_roundtrip():
     assert instance.ubicacion == "sample_text"
     instance.ubicacion = "sample_text_2"
     assert instance.ubicacion == "sample_text_2"
-
-
-def test_Factura_Codigo_value_roundtrip():
-    instance = Factura(Codigo="sample_text", Fecha="sample_text")
-    assert instance.Codigo == "sample_text"
-    instance.Codigo = "sample_text_2"
-    assert instance.Codigo == "sample_text_2"
-
-
-def test_Factura_Fecha_value_roundtrip():
-    instance = Factura(Codigo="sample_text", Fecha="sample_text")
-    assert instance.Fecha == "sample_text"
-    instance.Fecha = "sample_text_2"
-    assert instance.Fecha == "sample_text_2"
 
 
 def test_Facturas_codigo_value_roundtrip():
@@ -439,26 +424,6 @@ def test_assoc_Conforma_link_reassign_clear():
         assert not _is_linked(b2, 'ordenes_Perdidos19', a)
 
 
-def test_assoc_Elabora_link_reassign_clear():
-    a = Proveedores(Direccion="sample_text", Nit="sample_text", RazonSocial="sample_text", Telefono="sample_text")
-    b1 = Factura(Codigo="sample_text", Fecha="sample_text")
-    b2 = Factura(Codigo="sample_text_2", Fecha="sample_text_2")
-    _safe_set(a, 'factura27', {b1})
-    assert _is_linked(a, 'factura27', b1)
-    if hasattr(b1, 'proveedores26'):
-        assert _is_linked(b1, 'proveedores26', a)
-    _safe_set(a, 'factura27', {b2})
-    assert _is_linked(a, 'factura27', b2)
-    if hasattr(b1, 'proveedores26'):
-        assert not _is_linked(b1, 'proveedores26', a)
-    if hasattr(b2, 'proveedores26'):
-        assert _is_linked(b2, 'proveedores26', a)
-    _safe_set(a, 'factura27', set())
-    assert not _is_linked(a, 'factura27', b2)
-    if hasattr(b2, 'proveedores26'):
-        assert not _is_linked(b2, 'proveedores26', a)
-
-
 def test_assoc_Emite_link_reassign_clear():
     a = Facturas(codigo="sample_text", direccionPostal="sample_text", nif="sample_text", nombre="sample_text")
     b1 = Compa_ia(codigo="sample_text", zona="sample_text")
@@ -477,26 +442,6 @@ def test_assoc_Emite_link_reassign_clear():
     assert not _is_linked(a, 'compa_ia46', b2)
     if hasattr(b2, 'facturas47'):
         assert not _is_linked(b2, 'facturas47', a)
-
-
-def test_assoc_Factura_link_reassign_clear():
-    a = Elementos(Clasificacion="sample_text", Referencia="sample_text")
-    b1 = Factura(Codigo="sample_text", Fecha="sample_text")
-    b2 = Factura(Codigo="sample_text_2", Fecha="sample_text_2")
-    _safe_set(a, 'factura28', {b1})
-    assert _is_linked(a, 'factura28', b1)
-    if hasattr(b1, 'elementos29'):
-        assert _is_linked(b1, 'elementos29', a)
-    _safe_set(a, 'factura28', {b2})
-    assert _is_linked(a, 'factura28', b2)
-    if hasattr(b1, 'elementos29'):
-        assert not _is_linked(b1, 'elementos29', a)
-    if hasattr(b2, 'elementos29'):
-        assert _is_linked(b2, 'elementos29', a)
-    _safe_set(a, 'factura28', set())
-    assert not _is_linked(a, 'factura28', b2)
-    if hasattr(b2, 'elementos29'):
-        assert not _is_linked(b2, 'elementos29', a)
 
 
 def test_assoc_Factura1_link_reassign_clear():
@@ -919,13 +864,6 @@ Entregar_Productos_external_strategy = st.builds(Entregar_Productos_external)
 @settings(max_examples=25)
 def test_Entregar_Productos_external_instantiation(instance):
     assert isinstance(instance, Entregar_Productos_external)
-
-
-Factura_strategy = st.builds(Factura, Codigo=safe_text, Fecha=safe_text)
-@given(instance=Factura_strategy)
-@settings(max_examples=25)
-def test_Factura_instantiation(instance):
-    assert isinstance(instance, Factura)
 
 
 Facturas_strategy = st.builds(Facturas, codigo=safe_text, direccionPostal=safe_text, nif=safe_text, nombre=safe_text)

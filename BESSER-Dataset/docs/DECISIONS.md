@@ -14,6 +14,533 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-09-17 — Combined-suite class coverage: all 112 initially-unmeasured models recovered
+
+**Finding:** `validate_class_coverage.py --test-file test_combined.py` (24
+workers) left 112/8,336 models at `timeout` on the first pass
+(`combined_class_coverage_report.{json,md}`: 8,224 `measured`, avg 96.04%).
+Same underlying cause as everywhere else in this session: this script's
+default `--timeout` is only 60s (sized for a single pytest run of the old
+or new suite alone), and the combined suite's larger baseline runtime
+pushes some models past that ceiling.
+
+**Retried at `--timeout 180 --workers 8`** (matching the exact setting that
+already worked for the earlier combined-suite *line* coverage run's first
+retry tier, 233→218 recovered): **112/112 recovered**, avg class coverage
+94.01% for that batch. No further retry tier was needed this time (unlike
+line coverage's 15 genuine stragglers) — class coverage's pass/fail
+condition (does any passing test reference the class at all) is cheaper to
+resolve than the deeper line/branch instrumentation, so fewer models sit at
+the genuinely-slow extreme.
+
+**Merged final result** (base + retry,
+`combined_class_coverage_report_final.{json,md}`): **8,336/8,336 measured
+(100%)**, avg class coverage **96.01%**. Zero exclusions needed for this
+metric.
+
+## 2026-09-17 — Combined-suite property-scoped mutation: all 52 initially-unmeasured models recovered — root cause was worker concurrency, not the models
+
+**Finding:** the first pass of `validate_mutation_properties.py --test-file
+test_combined.py` (24 workers) left 52/8,336 models unmeasured: 38
+`timeout`, 12 `error` (*"A process in the process pool was terminated
+abruptly while the future was running or pending"*), 1 `init_error`
+(`model_714`), 1 `exec_error` with no recovered score (`model_1955`).
+Report: `combined_mutation_properties_report.{json,md}` (8,258 `measured`
+outright, avg score 0.4382).
+
+**The 38 timeouts are the same arithmetic-ceiling cause already documented**
+for the whole-file mutation run below (combined suite's larger baseline
+runtime × up to 40 capped mutants routinely approaches the 900s default
+ceiling) — unsurprising here too, since this report's own stats show
+property mutants are ~97.4% of a model's whole-file mutant count on
+average, i.e. nearly the same cost as the whole-file run.
+
+**The 12 `error` + 1 `init_error` + 1 `exec_error` were a different,
+previously-unseen failure mode** — worker processes crashing mid-run rather
+than timing out. Retried all three groups at lower concurrency:
+
+| Retry batch | Models | Setting | Result |
+|---|---|---|---|
+| Timeouts | 38 | `--overall-timeout 1800` | 38/38 recovered, avg score 0.4789 |
+| Worker-crash errors | 12 | `--workers 2` | 12/12 recovered, avg score 0.5604 |
+| Singletons | 2 | `--workers 2` | 2/2 recovered |
+
+**All three retry batches fully recovered — confirms the root cause was
+resource contention from running 24 workers concurrently, not anything
+wrong with the models themselves.** Unlike the whole-file mutation run
+(which needed a genuine exclusion of 17 models even after retrying at
+1800s), property-scoped mutation's smaller mutant cap meant every affected
+model finished well within a doubled timeout or reduced concurrency.
+**Zero exclusions needed for this metric.**
+
+**Also noted, not investigated further:** 26 of the base run's 27
+`exec_error`-labeled records actually had a valid `mutation_score` recovered
+despite the status label (only 1, `model_1955`, genuinely lacked one) — a
+harmless report-labeling inconsistency in `validate_mutation_properties.py`,
+already correctly counted toward "measured successfully" in the base
+report's own summary stat.
+
+**Final merged result** (base + all three retries,
+`combined_mutation_properties_report_final.{json,md}`): **8,336/8,336
+measured (100%)**, average mutation score **0.4387** (mean of per-model
+scores) / **0.4348** (pooled killed/run across the full sample).
+
+## 2026-09-17 — Finding: the article formula produces meaningless scores for large models (confirmed, quantified, and sourced against the paper itself)
+
+**The finding:** applying the reference paper's exact difficulty formula
+(`D = 0.3571*C + 0.4082*R + 0.2347*A`, raw counts, no normalization -- per
+the paper's own methodology, see the entry below) to a genuinely large model
+does not just produce a "high" score -- it produces a score with no
+interpretable relationship to the paper's own difficulty scale at all.
+
+**Concrete case:** `model_2023` (`fumltracemmNEWFormat_BUML_model.py`, a real
+fUML trace metamodel) has `classes=932`, `associations=836`, `composition=292`,
+`generalizations=332` (`R = 836+292+332 = 1460`), `attributes=11`. Its
+article score:
+
+```
+C contribution:  0.3571 * 932  =  332.86  (35.75% of total)
+R contribution:  0.4082 * 1460 =  595.92  (63.99% of total)
+A contribution:  0.2347 * 11   =    2.58  ( 0.28% of total)
+D = 931.36
+```
+
+**Why this is "wrong," not just "high":** the paper's own Table 2 reports its
+*hard*-difficulty tier average as `C=9.6, R=12.0, A=23.8` (its hardest
+textbook exercises). Recomputing `D` for that average with the same
+rescaled weights gives `D ≈ 13.9`. `model_2023`'s score of `931.36` is
+**~67x** the paper's own definition of an average "hard" exercise -- not
+because the model is 67x harder in any meaningful sense, but because `R` and
+`C` are raw, unbounded counts and this model has orders of magnitude more
+structure than anything the formula was ever calibrated against (the paper's
+own dataset tops out at `C=13, R=16`; see the entry below). One relationship
+count (`R=1460`) alone contributes more to the score than the paper's entire
+average "hard" exercise scores in total.
+
+**Root cause, already confirmed against the paper's text (entry below):**
+the paper deliberately never normalizes `C`/`R`/`A` (*"We retain original
+raw-data weighting without normalization... primitive numerical features
+carry inherent domain semantics"*). That design choice is harmless -- even
+reasonable -- for a hand-curated 30-exercise benchmark where every value is
+small and roughly comparable in scale. It breaks down completely the moment
+the formula is applied to a dataset (like this one) containing models whose
+structure spans orders of magnitude, because nothing in the formula limits
+how much a single outlier's raw counts can dominate the total.
+
+**Contrast with the PCA score:** the same model scores `86.66` under the
+PCA-based `difficulty_score` -- correctly placed near the top of a bounded
+`[0, 100]` scale (it *is* one of the hardest models in the dataset), but not
+at a value that's mathematically disconnected from every other model's
+score the way `931.36` is. This is a direct, concrete illustration of why
+`log1p` + standardization + percentile-clip rescaling (PCA score) is
+necessary for a dataset at this scale, and why a formula validated on 30
+small, uniform-scale exercises cannot be applied unmodified to a dataset
+containing real, large-scale structural models without producing scores
+that are technically "correct" (faithfully computed) but practically
+meaningless for ranking/stratification purposes.
+
+**Practical implication:** any use of `difficulty_score_article` for
+stratification, sampling, or ranking across this full dataset should treat
+it with this limitation in mind -- it remains useful for relative comparison
+among similarly-scaled models, but a handful of large models will dominate
+any aggregate statistic (mean, top-N selection, etc.) computed on the raw,
+uncapped value. See `scripts/export_difficulty_scores_for_excel.py`'s
+`difficulty_score_article_capped_100` column for a cap-based (not rescaled)
+mitigation used for chart comparison purposes only.
+
+## 2026-09-17 — Article-formula `difficulty_score_article` computed, and compared against the PCA score
+
+**Formula** (`scripts/compute_article_difficulty_score.py`), reproducing the
+reference paper's difficulty score with its FK term dropped (paper's own
+weight for it was negligible: 0.02) and the remaining weights rescaled to
+sum to 1: `D = 0.3571*C + 0.4082*R + 0.2347*A`, with `C=classes`,
+`A=attributes`, and `R = associations + aggregation + composition +
+generalizations` (every separate relationship type counted once each, now
+that `associations` is mutually exclusive from aggregation/composition --
+see the entry above; a paper-specified `dependency` term is omitted since no
+`Dependency` class is used anywhere in this dataset's BUML models).
+Applied directly to raw counts, no standardization/log-transform/rescaling
+-- unlike the PCA score, `D` is intentionally left unbounded, to compare the
+paper's formula's real behavior rather than two scores both artificially
+squeezed into [0, 100]. Written into `difficulty_score_article` (+
+`difficulty_score_article_c/r/a` for transparency) for all 9,082 measured
+models. Observed range `[0.00, 931.36]`, mean `27.88`.
+
+**Comparison** (`scripts/compare_difficulty_scores.py`, read-only):
+Pearson (linear) correlation `+0.731`, Spearman (rank) correlation `+0.894`
+across all 9,082 models -- the two approaches broadly agree on overall
+ordering, with meaningfully more agreement on *rank* than on raw linear
+value (expected: the article score's raw-count linearity makes it far more
+sensitive to a handful of extreme outliers than the log1p+standardized PCA
+score is). Top-10%-hardest overlap: 686/908 (75.6%) -- most, but not all, of
+what one score calls "hardest" the other does too.
+
+**Where they disagree most, and why (inspected concretely, not just from
+the correlation number):**
+
+- **`model_3616`** (`valueSets_BUML_model.py`): 0 classes, 0 attributes, 0
+  associations/aggregation/composition/generalizations, but 344
+  `enumerations` / 1,223 `enumeration_literals` -- a pure enumeration model.
+  PCA score: `41.17` (75th percentile, correctly reflecting substantial
+  structure). Article score: `0.00` (0.2nd percentile) -- `C`, `R`, and `A`
+  are all zero, so the formula is **structurally blind to enumeration-only
+  models**, however large. This is a real gap in the paper's formula for
+  this dataset, not a quirk of one model: any model whose complexity lives
+  entirely in enumerations scores exactly 0 under the article formula
+  regardless of size.
+- **`model_10002872`**: 41 classes, 18 associations, but 0 generalizations,
+  0 many-valued association ends, `attribute_type_diversity=1` -- a wide,
+  structurally flat/uniform model (many similar classes, little relational
+  or type richness). Article score: `22.46` (75th percentile -- driven
+  almost entirely by the raw class count, `0.3571*41 ≈ 14.6` of it). PCA
+  score: `15.32` (9.5th percentile) -- log1p dampens the raw count and
+  standardization weighs it against the model's near-total absence on every
+  *other* dimension (no inheritance, no type diversity, no multiplicity
+  richness), correctly ranking it as structurally simple despite the class
+  count. This is the general shape of most of the large rank-disagreements
+  observed: **the article formula's raw linear `C`/`R`/`A` cannot
+  distinguish "many simple, uniform classes" from "many classes forming a
+  genuinely rich structure"; the PCA score can, because it incorporates
+  enumerations, methods, type diversity, and multiplicity alongside
+  class/attribute/relationship counts, and dampens outlier magnitude via
+  log1p instead of scoring it linearly.**
+
+**Takeaway:** the two scores agree well overall (Spearman 0.894), which is
+a useful sanity check that the PCA score isn't measuring something
+unrelated to the paper's notion of difficulty. But the disagreements are not
+noise -- they concentrate in exactly the two places the article formula is
+structurally limited (blind to enumerations/methods/type-diversity/
+multiplicity entirely; linear in raw counts rather than outlier-robust) and
+the PCA score was built to address. Full report:
+`reports/difficulty_score_comparison_report.json`.
+
+## 2026-09-17 — PCA-based `difficulty_score` computed and written for all 9,082 models
+
+**Context:** a reference paper scores model difficulty as
+`D = w_c*C + w_r*R + w_a*A + w_fk*FK` (Class count, Relationship complexity,
+Attribute count, Flesch-Kincaid readability of the requirement text), with
+weights `(0.35, 0.4, 0.23, 0.02)`. Two parallel efforts were agreed: (1) our
+own PCA-based score, built here, that lets the data itself decide which
+structural fields matter and by how much, instead of hand-picking C/R/A/FK;
+(2) the paper's exact formula, for a like-for-like comparison (FK dropped as
+negligible per the paper's own weight, remaining weights rescaled to sum to
+1: `0.3571/0.4082/0.2347` — not yet built, next task).
+
+**Variables (11 of `model_metadata.json`'s 14 structural fields):** `classes`,
+`attributes`, `associations`, `composition`, `generalizations`,
+`abstract_classes`, `enumerations`, `enumeration_literals`, `methods`,
+`many_valued_association_ends`, `attribute_type_diversity`. Excluded:
+`association_classes`, `abstract_methods`, `aggregation` — confirmed true
+constants (std=0 across all 9,082 models; `aggregation` in particular is
+never used anywhere in this dataset), a hard requirement since standardizing
+a true constant divides by zero. `inheritance_depth` was also considered,
+checked for real variance first (`check_new_metrics_variance.py`), and
+dropped as near-degenerate (4,700/9,082 at depth 0, 4,373 at depth 1, only 9
+ever reaching depth 2 — effectively redundant with `generalizations`), a
+choice rather than a mathematical necessity.
+
+**Two new structural fields added to `generate_model_metadata.py` to feed
+this** (verified for real variance before implementing, same discipline as
+above): `many_valued_association_ends` (association ends whose multiplicity
+max is `*`/unbounded/>1 — avg 9.0/model) and `attribute_type_diversity`
+(count of distinct attribute types per model — avg 2.33/model). Same change
+also redefined `associations`: was `len(binary_associations)` (an inclusive
+superset that double-counted composition/aggregation associations), now
+`len(binary_associations) - composition - aggregation` (mutually exclusive
+from composition/aggregation) — see the entry directly below this one for
+the full rationale; `reports/summary_report.md` and its "~45 relations"
+prose were corrected to match (now "~35 relations", avg `associations` 9.56).
+
+**Method** (implemented in `scripts/compute_difficulty_score.py`):
+log1p-transform each raw count (dampens outlier influence, e.g. a few
+"UML-describing-itself" meta-models with thousands of classes, without
+percentile-clipping away the extremes at this stage) → standardize (z-score)
+across the full measured dataset → PCA via `numpy.linalg.eigh` on the
+correlation matrix (deterministic, no randomness anywhere in the pipeline).
+PC1 (48.54% variance explained) is "how much structure overall" — every
+loading is positive, so its sign is meaningful and it's used signed. PC2
+(14.80%) is a real second axis, a *style contrast* between data-schema-heavy
+models (high `attribute_type_diversity`/`attributes`) and hierarchy-heavy
+ones (high `generalizations`/`abstract_classes`/`composition`), verified
+empirically via `scripts/diagnose_pc2_extremes.py` to reflect real structural
+difference rather than small models drifting there by default (both PC2
+extremes score *above* the dataset's average PC1: 0.732 and 1.398 vs. an
+overall mean of 0.000).
+
+PC2 is folded into the score via **absolute value**, not signed — a hard
+requirement, not a style choice: an eigenvector's sign is mathematically
+arbitrary whenever its loadings don't all share one sign (PC2's do split,
+unlike PC1's), so using signed PC2 (or any monotonic shift of it) would make
+the score depend on an arbitrary internal sign-fixing convention with zero
+connection to the actual models — only a symmetric function like `|x|` is
+invariant to that arbitrary choice. PC1 and PC2 are combined with
+**variance-proportional weights** (not an arbitrary 50/50 split): for a
+0-100 scale, PC1 gets `100 * var(PC1)/(var(PC1)+var(PC2))` ≈ 76.6 points,
+PC2 gets the rest ≈ 23.4, computed from the real eigenvalues each run, never
+hardcoded. Each component is independently rescaled (1st/99th percentile
+clip, then linear min-max) to its own point budget, and the two totals are
+summed — bounded to [0, scale_max] by construction.
+
+**Fields written** (full float precision, no rounding — deliberately, so
+downstream stratification/sorting isn't quantized): `difficulty_score`
+(the combined 0-100 score), `difficulty_score_pc1_points` /
+`difficulty_score_pc2_points` (each component's own contribution, for
+transparency), `difficulty_score_pc1_raw` / `difficulty_score_pc2_raw` (the
+unbounded signed projections — sign kept even for PC2, as context for which
+style a model leans toward, even though only `|PC2 raw|` feeds the score).
+
+**PCA fit scope:** deliberately fit and scored on **all 9,082 measured
+models**, not just `usable_models.txt`. Considered and rejected restricting
+to usable models: exclusion from `usable_models.txt` is about whether the
+*generated code/tests* could be validated (timeouts, unmeasurable mutation
+runs, etc.), not about the *diagram's* structural complexity, and is very
+plausibly correlated with size/complexity (large models are more prone to
+mutation/coverage timeouts) — fitting only on usable models would have cut
+off disproportionately many of the largest/most complex models, shrinking
+the standardization basis and percentile-clip bounds and silently inflating
+everyone else's relative score, while leaving excluded (often "hardest")
+models with no score at all.
+
+**Result:** written into `difficulty_score` (+4 supporting fields) for
+9,082/9,082 measured models via
+`python scripts/compute_difficulty_score.py`. Reference report with full
+loadings/means/stds/variance-explained at
+`reports/difficulty_score_report.json`, so the formula can be reproduced or
+applied to a new model without recomputing PCA from scratch. Score range
+observed: `[3.27, 93.55]` (scale 0-100).
+
+**Open follow-up, noted for the article-formula build:** `R` (relationship
+complexity) in the paper's formula must sum **all** separate relationship-type
+counts now that `associations` is mutually exclusive —
+`R = associations + aggregation + composition + generalizations` (+
+`dependency`, confirmed always 0 in this dataset; no `Dependency` class is
+used anywhere in the BUML models) — not just `associations + generalizations`,
+which would silently drop every composition relationship.
+
+**Confirmed against the actual paper (Cheng et al., "Large Language Models
+for UML Class Diagram Modeling," *Appl. Sci.* 2026, 16, 6540,
+`10.3390/app16136540`, Section 3.1.2 — PDF obtained and read directly, since
+MDPI blocks automated fetches):**
+
+- `R`'s definition matches exactly: *"Different relationship types contain
+  dependency, association, aggregation, composition, and inheritance."*
+- The paper's own text confirms there is **no normalization or capping**:
+  *"We retain original raw-data weighting without normalization, as
+  primitive numerical features carry inherent domain semantics for UML
+  difficulty evaluation."* So `difficulty_score_article`'s unbounded,
+  outlier-sensitive behavior (see the entry below) is not a bug in our
+  reproduction — it is the paper's formula working exactly as designed.
+- The paper's own benchmark is **30 hand-picked textbook exercises** (its
+  Table 1), with class counts 4–13, relationship counts 3–16, and attribute
+  counts 0–38 — none remotely close to this dataset's largest real models
+  (e.g. `model_2023`, 932 classes, 836 associations, 292 composition, 332
+  generalizations — an actual fUML trace metamodel). The formula was never
+  exercised against anything at that scale in its own paper, so its lack of
+  outlier protection was never a problem there; applying it unmodified to a
+  9,082-model dataset that includes genuine large-scale specification
+  models surfaces exactly the failure mode log1p + standardization was
+  built to avoid in our PCA score.
+
+## 2026-09-17 — `model_metadata.json`'s `associations` field redefined: was a superset including aggregation/composition, now mutually exclusive
+
+**Context:** designing a difficulty score (a "relationship complexity"
+dimension summing associations + generalizations, per a reference paper's
+formula) surfaced that `generate_model_metadata.py`'s `associations` field
+was every `BinaryAssociation` regardless of its `is_composite`/
+`is_aggregation` flags — i.e. a superset that *already includes* whatever
+gets separately counted in `aggregation`/`composition`. Summing
+`associations + aggregation + composition` for a "total relationships"
+figure would silently double-count every aggregation/composition edge.
+
+**Decision: redefine `associations` in place** (not add a new field
+alongside it) so the three fields partition the full `BinaryAssociation` set
+with no overlap — `associations` is now the plain (neither-composite-nor-
+aggregation) count. Chosen over adding a parallel field because the
+inclusive definition being currently undocumented as such made it an
+actively misleading number, not just an inconvenient one; a differently-named
+field would coexist with, but not fix, that.
+
+**Real consequence: this changes an already-published number.** The
+colleague's `summary_report.md` cites "Associations: 19.94" under the old
+(inclusive) definition. Since `aggregation` is confirmed 0 for every model
+in the dataset (see below), linearity of expectation gives the new
+dataset-wide average exactly: 19.94 − 10.38 (composition avg) − 0 = **9.56**
+— stated here as an expected value, not yet written into that report, which
+should be updated once the actual full-dataset regeneration (below) lands,
+so the report always reflects real regenerated data rather than a
+derived-in-advance number.
+
+**Incidental confirmation while making this change**: `aggregation` is
+exactly 0 for all 9,082 models — `is_aggregation` is apparently never set on
+an end without `is_composite` also being set (composite takes priority in
+the classification), so in practice this dataset only ever has plain
+associations and compositions, never anything classified as aggregation
+specifically.
+
+**Verified** on `model_1` (known values: 7 total, 3 composition, 0
+aggregation): regenerating with the fixed script gives
+`associations: 4` (= 7 − 3 − 0), exactly as expected.
+
+**Full-dataset regeneration needed** (`--fresh --write-metadata`, since
+every model's `model_metadata.json` already has old-definition values
+that the resumable cache would otherwise skip):
+```
+python scripts/generate_model_metadata.py --fresh --write-metadata --workers 24
+```
+
+## 2026-09-17 — Combined-suite whole-file mutation: 70 models hitting the 900s overall-timeout, arithmetic root cause
+
+**Finding:** running `validate_mutation.py --test-file test_combined.py` on the
+8,353-model `usable_models.txt` left 70 models at `timeout` (cosmic-ray's
+default 900s overall-timeout per model), vs. 27 for the old suite alone and
+**zero** for the new suite alone. Only 2/70 overlap with the already-known
+old-suite stragglers and 0/70 with the coverage-timeout exclusions — a new,
+distinct group.
+
+**Root cause is arithmetic, not variance** (a genuinely different situation
+from the coverage timeouts below): mutation testing reruns the whole suite
+once per mutant (up to 40, capped), and a *surviving* mutant always runs to
+completion (only killed ones benefit from `-x` fail-fast). Spot-checked
+`model_10000802`: 446 tests, 29.34s baseline. At the combined suite's ~43%
+average kill rate, ~57% of 40 mutants each running the full 29.34s (≈670s)
+plus the killed ~43% at a shorter fail-fast time (≈250s) lands right around
+the 900s ceiling — a ceiling sized for smaller, single-suite runs, now
+undersized because the combined suite's baseline runtime is naturally
+larger. Since the cost is fairly predictable (~N × baseline), unlike the
+coverage timeouts' genuine run-to-run variance, more time should reliably
+help here rather than just delaying the same outcome.
+
+**Retried at `--overall-timeout 1800` (double default): 53/70 recovered, 17
+still timing out.** Confirms the arithmetic diagnosis: among the 53 that
+completed, p90/p99 duration was already 1,823-1,839s — right at the new
+ceiling, median 1,331.78s (22 minutes/model). These 17 are the most extreme
+tail; recoverable with a much larger timeout (~1hr+ per model) but not
+worth the cost for 17/8,353 models. **Decision: exclude these 17** under
+`combined_suite_unmeasurable` (now 32 total with the 15 coverage timeouts
+from the entry below) rather than retry further. Master exclusion list:
+**746** models (was 729). `reports/usable_models.txt`: **8,336** (was
+8,353). Full writeup in
+[`2026-09-16-combined-test-suite.md`](2026-09-16-combined-test-suite.md) and
+the at-a-glance table in
+[`2026-09-10-master-exclusion-list.md`](2026-09-10-master-exclusion-list.md).
+
+## 2026-09-16 — Combined test suite: `test_combined.py`, deterministic deduplication, and combined-suite results
+
+Built `scripts/generate_combined_tests.py` — a real, merged `test_combined.py`
+per model (literal concatenation, not two files fed to one pytest
+invocation, per explicit request). Three issues found and handled, in order
+of how well-hidden each one was:
+1. Module-level variable name collisions (both generators define
+   `{ClassName}_strategy`/`safe_text` under identical names) — verified
+   harmless given Python's top-to-bottom execution order; no fix needed.
+2. Test *function name* collisions (`test_{ClassName}_instantiation` in
+   both suites) — 439/9,017 models (4.9%) affected; fixed by renaming every
+   old-suite test with a `test_hyp_` infix before concatenation.
+3. **Semantic duplication** — the actual point of "combined": two
+   deterministic, AST-structural rules (never name-based) drop an old-suite
+   test when the new suite already tests the identical thing, or something
+   strictly stronger. Removed **360,308** redundant old-suite tests across
+   8,367/8,368 models (avg ~43/model) on the full-dataset run.
+
+Combined-suite coverage and whole-file mutation both measured; two more
+issues found and fixed/excluded along the way (a stale-generation bug
+affecting exactly 2 models, and 15 more `combined_suite_unmeasurable`
+timeout exclusions, same root-cause class as `old_suite_unmeasurable`
+below). Master exclusion list: **729** models (was 714, before this
+session's additions).
+
+Full writeup — every verification step, exact numbers, and the reasoning
+behind each fix — in
+[`2026-09-16-combined-test-suite.md`](2026-09-16-combined-test-suite.md).
+
+## 2026-09-16 — Tree-sitter-based generator fidelity check and class coverage
+
+Two new scripts built on top of the colleague's tree-sitter extractor
+(`scripts/extract_structure.py`/`generate_code_structure.py`, already run
+full-dataset into a per-model `code_structure.json`):
+
+- **`scripts/validate_generator_fidelity.py`** — cross-references
+  `model_metadata.json` (BUML model) against `code_structure.json` (actual
+  code) for the first time. Run: 9,081/9,082 compared, **40.87% mismatch
+  rate**. Confirmed root cause on `model_100127`: BUML declares
+  `is_abstract=True`, generated code emits a plain class with no `ABC` base
+  at all, ever — the generator doesn't implement UML "abstract" as a Python
+  concept. Confirms the mechanism behind the earlier "0/732 methods are
+  `@abstractmethod`" finding (2026-09-10 structural-test-generation entry).
+- **`scripts/validate_class_coverage.py`** — of every class tree-sitter
+  finds, what fraction got ≥1 passing test? New suite: 93.64% avg
+  (9,043/9,082). Old suite: 95.96% avg (8,259/8,368, 109 timeouts, same
+  Hypothesis-variance class as `old_suite_unmeasurable`).
+
+**Process bug found and fixed**: both class-coverage commands were given
+the same default `--report-name`, so the second run's cache-resume logic
+silently reused the *first* run's results under the new key — every
+model's `class_coverage_validation_hypothesis` was a byte-for-byte copy of
+the new-suite's data, not a real old-suite measurement. `--test-file`
+itself worked fine; nothing tied the cache to which test file was actually
+measured. Fixed with a distinct `--report-name`. Not yet fixed at the code
+level (the script should probably default its report-name to include the
+test-file); noted, not built.
+
+Full writeup in
+[`2026-09-16-tree-sitter-fidelity-and-class-coverage.md`](2026-09-16-tree-sitter-fidelity-and-class-coverage.md).
+
+## 2026-09-16 — New-suite mutation testing (whole-file + property-scoped) run to completion
+
+Both mutation types now measured against `test_structural_full.py`,
+completing the 2×2 comparison matrix (whole-file/property-scoped ×
+old-suite/new-suite):
+
+| | Old suite | New suite (restricted to the same model set) |
+|---|---|---|
+| Whole-file | 40.0% | 35.1% |
+| Property-scoped | 40.49% | 35.97% |
+
+New suite covers more code (line/branch coverage, see the 2026-09-10
+structural-test-generation entry) but kills fewer mutants either way it's
+scoped — coverage and mutation score answer genuinely different questions.
+Property-scoped run hit the same encoding bug as `validate_coverage_structural.py`
+and `check_property_name_mismatches.py` before it (`Path.read_text()`
+missing `encoding="utf-8"`, same 4 models — `model_2210`/`2213`/`2243`/`2246`)
+— this is now the *third* independent occurrence of this exact bug across
+different scripts; fixed the same way, in
+`validate_mutation_properties.py`'s `property_line_ranges()`.
+
+## 2026-09-15 — Old-suite-unmeasurable models excluded (79)
+
+**Context:** measuring line/branch/function coverage of `test_hypothesis.py`
+(closing a gap in `reports/test_suite_comparison_report.md`) left 216 models
+timing out at the default 60s. Escalated twice — 180s/8 workers (157 more
+measured, 59 still timing out), then 300s/3 workers specifically to rule out
+worker-contention as the cause (only 7 more measured, 52 still timing out).
+
+**Diagnosis before accepting the loss:** manually re-ran two sample models
+(`model_100063`, `model_1889`) standalone, repeatedly. Same file, wildly
+different wall-clock times across attempts (didn't finish in 60s → 44.66s →
+20.5s, for the identical test file with identical code) with ~0% measured
+CPU load throughout, ruling out both an infinite loop and machine
+contention as the cause. Root cause: unseeded Hypothesis search occasionally
+draws an expensive input combination for some of this dataset's larger
+`@given`-heavy suites — a real characteristic of the test suite, not a bug
+in it, and not something retrying with different worker/timeout settings
+converges on fixing (the next run could just as easily draw an expensive
+seed again). This was actually flagged as a risk in `PROMPT.md` from the
+very start of the project ("Hypothesis's `@given` tests are stochastic...
+you likely want a fixed `HYPOTHESIS_SEED`") but never acted on.
+
+Separately, the 27 `no_coverage_data` models from the very first pass are a
+different, simpler cause: `test_hypothesis.py` fails to even *collect*, e.g.
+a hard `SyntaxError` from `from` (a reserved Python keyword) used as a
+keyword argument name — a real, pre-existing defect in the untouchable
+ground-truth file, unrelated to timeouts.
+
+**Decision:** stop retrying (diminishing returns) and exclude both groups —
+52 persistent timeouts + 27 `no_coverage_data` = 79 models — under a new
+`old_suite_unmeasurable` reason in the master exclusion list, rather than
+leave them in an inconsistent measured/unmeasured limbo across later phases.
+Full writeup in
+[`2026-09-10-master-exclusion-list.md`](2026-09-10-master-exclusion-list.md).
+
 ## 2026-09-10 — Master exclusion list
 
 Unions three independent exclusion reasons into

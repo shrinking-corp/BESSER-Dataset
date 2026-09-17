@@ -99,6 +99,7 @@ METADATA_KEY = os.environ.get("VALIDATE_MUTATION_PROPERTIES_METADATA_KEY", "muta
 TEST_FILE_METADATA_KEYS = {
     "test_hypothesis.py": "mutation_validation_properties",
     "test_structural_full.py": "structural_mutation_validation_properties",
+    "test_combined.py": "combined_mutation_validation_properties",
 }
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
@@ -179,7 +180,12 @@ def property_line_ranges(source_path: Path) -> list[tuple[int, int]]:
     module docstring for why that distinction matters for RemoveDecorator
     mutants specifically.
     """
-    tree = ast.parse(source_path.read_text())
+    # encoding="utf-8" is required, not cosmetic: Path.read_text() otherwise
+    # falls back to the OS locale encoding (not UTF-8 on Windows), mangling
+    # multi-byte characters. Same bug, same 4 models (model_2210/2213/2243/
+    # 2246), as validate_coverage_structural.py's function_ranges() and
+    # check_property_name_mismatches.py's find_mismatches().
+    tree = ast.parse(source_path.read_text(encoding="utf-8"))
     ranges: list[tuple[int, int]] = []
     for node in ast.walk(tree):
         if not isinstance(node, ast.FunctionDef):

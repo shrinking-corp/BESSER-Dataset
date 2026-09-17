@@ -1,6 +1,6 @@
 # Model Structure Metadata Report
 
-Generated: 2026-09-03T15:58:56.574206+00:00
+Generated: 2026-09-17T11:40:14.887933+00:00
 
 - **Total models:** 9082
 - **Measured:** 9082
@@ -18,9 +18,11 @@ Generated: 2026-09-03T15:58:56.574206+00:00
 | methods | 2.3 |
 | abstract_methods | 0.0 |
 | generalizations | 14.86 |
-| associations | 19.94 |
+| associations | 9.56 |
 | aggregation | 0.0 |
 | composition | 10.38 |
+| many_valued_association_ends | 9.0 |
+| attribute_type_diversity | 2.33 |
 
 ## Breakdown by status
 

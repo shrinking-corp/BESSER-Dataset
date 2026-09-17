@@ -118,8 +118,9 @@ naturally finishing near that duration.
 
 - `reports/coverage_split_prototype_report.{json,md}` — full per-model detail
   (this report's source data).
-- `reports/coverage_prototype_report.{json,md}` — earlier 250-model prototype,
-  unsplit (structural + hypothesis together), superseded by this full run.
+- Earlier 250-model prototype (unsplit, structural + hypothesis together,
+  75.76% avg line coverage), superseded by this full run — file removed
+  2026-09-17 during reports-folder cleanup.
 - `reports/test_validation_report.{json,md}` — pass/fail outcome of the same test
   suites (not coverage, but the failure-type breakdown referenced above).
 - `reports/summary_report.md` — cross-metric report incorporating this coverage

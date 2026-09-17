@@ -110,6 +110,7 @@ METADATA_KEY = os.environ.get("VALIDATE_COVERAGE_STRUCTURAL_METADATA_KEY", "stru
 TEST_FILE_METADATA_KEYS = {
     "test_structural_full.py": "structural_coverage_validation",
     "test_hypothesis.py": "structural_coverage_validation_hypothesis",
+    "test_combined.py": "combined_coverage_validation",
 }
 DEFAULT_TIMEOUT = 60
 

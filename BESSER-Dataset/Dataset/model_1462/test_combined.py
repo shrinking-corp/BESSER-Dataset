@@ -1,0 +1,1162 @@
+# =============================================================================
+# This file is a generated concatenation of two independent test suites --
+# see scripts/generate_combined_tests.py for why simple concatenation is safe
+# despite both generators using the same naming convention for some helpers,
+# and for the deterministic rules used to drop old-suite tests the new suite
+# already covers equally or more thoroughly.
+# =============================================================================
+
+# ----- SECTION A: test_hypothesis.py (original generated suite) -----
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    Join,
+    apromore_ANDJoin,
+    apromore_XORJoin,
+    apromore_ORJoin,
+    Split,
+    apromore_XORSplit,
+    apromore_ANDSplit,
+    apromore_ORSplit,
+    Routing,
+    apromore_Join,
+    apromore_State,
+    apromore_Split,
+    Event,
+    apromore_Time,
+    apromore_Message,
+    Work,
+    apromore_Task,
+    apromore_Event,
+    Node,
+    apromore_Routing,
+    apromore_Work,
+    apromore_Edge,
+    apromore_Node,
+    apromore_Net,
+    apromore_CanonicalProcess,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_hyp_join_is_not_abstract():
+    assert not inspect.isabstract(Join)
+
+
+def test_hyp_join_constructor_exists():
+    assert callable(Join.__init__)
+
+
+def test_hyp_join_constructor_args():
+    sig = inspect.signature(Join.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_andjoin_is_not_abstract():
+    assert not inspect.isabstract(apromore_ANDJoin)
+
+
+def test_hyp_apromore_andjoin_constructor_exists():
+    assert callable(apromore_ANDJoin.__init__)
+
+
+def test_hyp_apromore_andjoin_constructor_args():
+    sig = inspect.signature(apromore_ANDJoin.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_xorjoin_is_not_abstract():
+    assert not inspect.isabstract(apromore_XORJoin)
+
+
+def test_hyp_apromore_xorjoin_constructor_exists():
+    assert callable(apromore_XORJoin.__init__)
+
+
+def test_hyp_apromore_xorjoin_constructor_args():
+    sig = inspect.signature(apromore_XORJoin.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_orjoin_is_not_abstract():
+    assert not inspect.isabstract(apromore_ORJoin)
+
+
+def test_hyp_apromore_orjoin_constructor_exists():
+    assert callable(apromore_ORJoin.__init__)
+
+
+def test_hyp_apromore_orjoin_constructor_args():
+    sig = inspect.signature(apromore_ORJoin.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_split_is_not_abstract():
+    assert not inspect.isabstract(Split)
+
+
+def test_hyp_split_constructor_exists():
+    assert callable(Split.__init__)
+
+
+def test_hyp_split_constructor_args():
+    sig = inspect.signature(Split.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_xorsplit_is_not_abstract():
+    assert not inspect.isabstract(apromore_XORSplit)
+
+
+def test_hyp_apromore_xorsplit_constructor_exists():
+    assert callable(apromore_XORSplit.__init__)
+
+
+def test_hyp_apromore_xorsplit_constructor_args():
+    sig = inspect.signature(apromore_XORSplit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_andsplit_is_not_abstract():
+    assert not inspect.isabstract(apromore_ANDSplit)
+
+
+def test_hyp_apromore_andsplit_constructor_exists():
+    assert callable(apromore_ANDSplit.__init__)
+
+
+def test_hyp_apromore_andsplit_constructor_args():
+    sig = inspect.signature(apromore_ANDSplit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_orsplit_is_not_abstract():
+    assert not inspect.isabstract(apromore_ORSplit)
+
+
+def test_hyp_apromore_orsplit_constructor_exists():
+    assert callable(apromore_ORSplit.__init__)
+
+
+def test_hyp_apromore_orsplit_constructor_args():
+    sig = inspect.signature(apromore_ORSplit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_routing_is_not_abstract():
+    assert not inspect.isabstract(Routing)
+
+
+def test_hyp_routing_constructor_exists():
+    assert callable(Routing.__init__)
+
+
+def test_hyp_routing_constructor_args():
+    sig = inspect.signature(Routing.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_join_is_not_abstract():
+    assert not inspect.isabstract(apromore_Join)
+
+
+def test_hyp_apromore_join_constructor_exists():
+    assert callable(apromore_Join.__init__)
+
+
+def test_hyp_apromore_join_constructor_args():
+    sig = inspect.signature(apromore_Join.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_state_is_not_abstract():
+    assert not inspect.isabstract(apromore_State)
+
+
+def test_hyp_apromore_state_constructor_exists():
+    assert callable(apromore_State.__init__)
+
+
+def test_hyp_apromore_state_constructor_args():
+    sig = inspect.signature(apromore_State.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_split_is_not_abstract():
+    assert not inspect.isabstract(apromore_Split)
+
+
+def test_hyp_apromore_split_constructor_exists():
+    assert callable(apromore_Split.__init__)
+
+
+def test_hyp_apromore_split_constructor_args():
+    sig = inspect.signature(apromore_Split.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_event_is_not_abstract():
+    assert not inspect.isabstract(Event)
+
+
+def test_hyp_event_constructor_exists():
+    assert callable(Event.__init__)
+
+
+def test_hyp_event_constructor_args():
+    sig = inspect.signature(Event.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_time_is_not_abstract():
+    assert not inspect.isabstract(apromore_Time)
+
+
+def test_hyp_apromore_time_constructor_exists():
+    assert callable(apromore_Time.__init__)
+
+
+def test_hyp_apromore_time_constructor_args():
+    sig = inspect.signature(apromore_Time.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_message_is_not_abstract():
+    assert not inspect.isabstract(apromore_Message)
+
+
+def test_hyp_apromore_message_constructor_exists():
+    assert callable(apromore_Message.__init__)
+
+
+def test_hyp_apromore_message_constructor_args():
+    sig = inspect.signature(apromore_Message.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_work_is_not_abstract():
+    assert not inspect.isabstract(Work)
+
+
+def test_hyp_work_constructor_exists():
+    assert callable(Work.__init__)
+
+
+def test_hyp_work_constructor_args():
+    sig = inspect.signature(Work.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_task_is_not_abstract():
+    assert not inspect.isabstract(apromore_Task)
+
+
+def test_hyp_apromore_task_constructor_exists():
+    assert callable(apromore_Task.__init__)
+
+
+def test_hyp_apromore_task_constructor_args():
+    sig = inspect.signature(apromore_Task.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_event_is_not_abstract():
+    assert not inspect.isabstract(apromore_Event)
+
+
+def test_hyp_apromore_event_constructor_exists():
+    assert callable(apromore_Event.__init__)
+
+
+def test_hyp_apromore_event_constructor_args():
+    sig = inspect.signature(apromore_Event.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_node_is_not_abstract():
+    assert not inspect.isabstract(Node)
+
+
+def test_hyp_node_constructor_exists():
+    assert callable(Node.__init__)
+
+
+def test_hyp_node_constructor_args():
+    sig = inspect.signature(Node.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_routing_is_not_abstract():
+    assert not inspect.isabstract(apromore_Routing)
+
+
+def test_hyp_apromore_routing_constructor_exists():
+    assert callable(apromore_Routing.__init__)
+
+
+def test_hyp_apromore_routing_constructor_args():
+    sig = inspect.signature(apromore_Routing.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_work_is_not_abstract():
+    assert not inspect.isabstract(apromore_Work)
+
+
+def test_hyp_apromore_work_constructor_exists():
+    assert callable(apromore_Work.__init__)
+
+
+def test_hyp_apromore_work_constructor_args():
+    sig = inspect.signature(apromore_Work.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_apromore_edge_is_not_abstract():
+    assert not inspect.isabstract(apromore_Edge)
+
+
+def test_hyp_apromore_edge_constructor_exists():
+    assert callable(apromore_Edge.__init__)
+
+
+def test_hyp_apromore_edge_constructor_args():
+    sig = inspect.signature(apromore_Edge.__init__)
+    params = list(sig.parameters.keys())
+    assert "ident" in params, "Missing parameter 'ident'"
+    assert "default" in params, "Missing parameter 'default'"
+    assert "condition" in params, "Missing parameter 'condition'"
+
+
+
+
+
+
+def test_hyp_apromore_node_is_not_abstract():
+    assert not inspect.isabstract(apromore_Node)
+
+
+def test_hyp_apromore_node_constructor_exists():
+    assert callable(apromore_Node.__init__)
+
+
+def test_hyp_apromore_node_constructor_args():
+    sig = inspect.signature(apromore_Node.__init__)
+    params = list(sig.parameters.keys())
+    assert "ident" in params, "Missing parameter 'ident'"
+    assert "name" in params, "Missing parameter 'name'"
+    assert "configurable" in params, "Missing parameter 'configurable'"
+
+
+
+
+
+
+def test_hyp_apromore_net_is_not_abstract():
+    assert not inspect.isabstract(apromore_Net)
+
+
+def test_hyp_apromore_net_constructor_exists():
+    assert callable(apromore_Net.__init__)
+
+
+def test_hyp_apromore_net_constructor_args():
+    sig = inspect.signature(apromore_Net.__init__)
+    params = list(sig.parameters.keys())
+    assert "ident" in params, "Missing parameter 'ident'"
+
+
+
+
+def test_hyp_apromore_canonicalprocess_is_not_abstract():
+    assert not inspect.isabstract(apromore_CanonicalProcess)
+
+
+def test_hyp_apromore_canonicalprocess_constructor_exists():
+    assert callable(apromore_CanonicalProcess.__init__)
+
+
+def test_hyp_apromore_canonicalprocess_constructor_args():
+    sig = inspect.signature(apromore_CanonicalProcess.__init__)
+    params = list(sig.parameters.keys())
+    assert "version" in params, "Missing parameter 'version'"
+    assert "author" in params, "Missing parameter 'author'"
+    assert "uri" in params, "Missing parameter 'uri'"
+
+
+
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+Join_strategy = st.builds(
+    Join,
+)
+apromore_ANDJoin_strategy = st.builds(
+    apromore_ANDJoin,
+)
+apromore_XORJoin_strategy = st.builds(
+    apromore_XORJoin,
+)
+apromore_ORJoin_strategy = st.builds(
+    apromore_ORJoin,
+)
+Split_strategy = st.builds(
+    Split,
+)
+apromore_XORSplit_strategy = st.builds(
+    apromore_XORSplit,
+)
+apromore_ANDSplit_strategy = st.builds(
+    apromore_ANDSplit,
+)
+apromore_ORSplit_strategy = st.builds(
+    apromore_ORSplit,
+)
+Routing_strategy = st.builds(
+    Routing,
+)
+apromore_Join_strategy = st.builds(
+    apromore_Join,
+)
+apromore_State_strategy = st.builds(
+    apromore_State,
+)
+apromore_Split_strategy = st.builds(
+    apromore_Split,
+)
+Event_strategy = st.builds(
+    Event,
+)
+apromore_Time_strategy = st.builds(
+    apromore_Time,
+)
+apromore_Message_strategy = st.builds(
+    apromore_Message,
+)
+Work_strategy = st.builds(
+    Work,
+)
+apromore_Task_strategy = st.builds(
+    apromore_Task,
+)
+apromore_Event_strategy = st.builds(
+    apromore_Event,
+)
+Node_strategy = st.builds(
+    Node,
+)
+apromore_Routing_strategy = st.builds(
+    apromore_Routing,
+)
+apromore_Work_strategy = st.builds(
+    apromore_Work,
+)
+apromore_Edge_strategy = st.builds(
+    apromore_Edge,
+    ident=
+        st.integers(),
+    default=
+        st.booleans(),
+    condition=
+        safe_text
+)
+apromore_Node_strategy = st.builds(
+    apromore_Node,
+    ident=
+        st.integers(),
+    name=
+        safe_text,
+    configurable=
+        st.booleans()
+)
+apromore_Net_strategy = st.builds(
+    apromore_Net,
+    ident=
+        st.integers()
+)
+apromore_CanonicalProcess_strategy = st.builds(
+    apromore_CanonicalProcess,
+    version=
+        safe_text,
+    author=
+        safe_text,
+    uri=
+        safe_text
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@given(instance=apromore_Edge_strategy)
+def test_hyp_apromore_edge_ident_setter(instance):
+    original = instance.ident
+    instance.ident = original
+    assert instance.ident == original
+
+
+
+@given(instance=apromore_Edge_strategy)
+def test_hyp_apromore_edge_default_setter(instance):
+    original = instance.default
+    instance.default = original
+    assert instance.default == original
+
+
+
+@given(instance=apromore_Edge_strategy)
+def test_hyp_apromore_edge_condition_setter(instance):
+    original = instance.condition
+    instance.condition = original
+    assert instance.condition == original
+
+
+
+
+@given(instance=apromore_Node_strategy)
+def test_hyp_apromore_node_ident_setter(instance):
+    original = instance.ident
+    instance.ident = original
+    assert instance.ident == original
+
+
+
+@given(instance=apromore_Node_strategy)
+def test_hyp_apromore_node_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=apromore_Node_strategy)
+def test_hyp_apromore_node_configurable_setter(instance):
+    original = instance.configurable
+    instance.configurable = original
+    assert instance.configurable == original
+
+
+
+
+@given(instance=apromore_Net_strategy)
+def test_hyp_apromore_net_ident_setter(instance):
+    original = instance.ident
+    instance.ident = original
+    assert instance.ident == original
+
+
+
+
+@given(instance=apromore_CanonicalProcess_strategy)
+def test_hyp_apromore_canonicalprocess_version_setter(instance):
+    original = instance.version
+    instance.version = original
+    assert instance.version == original
+
+
+
+@given(instance=apromore_CanonicalProcess_strategy)
+def test_hyp_apromore_canonicalprocess_author_setter(instance):
+    original = instance.author
+    instance.author = original
+    assert instance.author == original
+
+
+
+@given(instance=apromore_CanonicalProcess_strategy)
+def test_hyp_apromore_canonicalprocess_uri_setter(instance):
+    original = instance.uri
+    instance.uri = original
+    assert instance.uri == original
+
+
+# ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    Event,
+    Join,
+    Node,
+    Routing,
+    Split,
+    Work,
+    apromore_ANDJoin,
+    apromore_ANDSplit,
+    apromore_CanonicalProcess,
+    apromore_Edge,
+    apromore_Event,
+    apromore_Join,
+    apromore_Message,
+    apromore_Net,
+    apromore_Node,
+    apromore_ORJoin,
+    apromore_ORSplit,
+    apromore_Routing,
+    apromore_Split,
+    apromore_State,
+    apromore_Task,
+    apromore_Time,
+    apromore_Work,
+    apromore_XORJoin,
+    apromore_XORSplit,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_apromore_CanonicalProcess_author_value_roundtrip():
+    instance = apromore_CanonicalProcess(author="sample_text", uri="sample_text", version="sample_text")
+    assert instance.author == "sample_text"
+    instance.author = "sample_text_2"
+    assert instance.author == "sample_text_2"
+
+
+def test_apromore_CanonicalProcess_uri_value_roundtrip():
+    instance = apromore_CanonicalProcess(author="sample_text", uri="sample_text", version="sample_text")
+    assert instance.uri == "sample_text"
+    instance.uri = "sample_text_2"
+    assert instance.uri == "sample_text_2"
+
+
+def test_apromore_CanonicalProcess_version_value_roundtrip():
+    instance = apromore_CanonicalProcess(author="sample_text", uri="sample_text", version="sample_text")
+    assert instance.version == "sample_text"
+    instance.version = "sample_text_2"
+    assert instance.version == "sample_text_2"
+
+
+def test_apromore_Edge_condition_value_roundtrip():
+    instance = apromore_Edge(condition="sample_text", default=True, ident=7)
+    assert instance.condition == "sample_text"
+    instance.condition = "sample_text_2"
+    assert instance.condition == "sample_text_2"
+
+
+def test_apromore_Edge_default_value_roundtrip():
+    instance = apromore_Edge(condition="sample_text", default=True, ident=7)
+    assert instance.default == True
+    instance.default = False
+    assert instance.default == False
+
+
+def test_apromore_Edge_ident_value_roundtrip():
+    instance = apromore_Edge(condition="sample_text", default=True, ident=7)
+    assert instance.ident == 7
+    instance.ident = 13
+    assert instance.ident == 13
+
+
+def test_apromore_Net_ident_value_roundtrip():
+    instance = apromore_Net(ident=7)
+    assert instance.ident == 7
+    instance.ident = 13
+    assert instance.ident == 13
+
+
+def test_apromore_Node_configurable_value_roundtrip():
+    instance = apromore_Node(configurable=True, ident=7, name="sample_text")
+    assert instance.configurable == True
+    instance.configurable = False
+    assert instance.configurable == False
+
+
+def test_apromore_Node_ident_value_roundtrip():
+    instance = apromore_Node(configurable=True, ident=7, name="sample_text")
+    assert instance.ident == 7
+    instance.ident = 13
+    assert instance.ident == 13
+
+
+def test_apromore_Node_name_value_roundtrip():
+    instance = apromore_Node(configurable=True, ident=7, name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_apromore_Message_isa_Event():
+    instance = apromore_Message()
+    assert isinstance(instance, Event)
+
+
+def test_apromore_Time_isa_Event():
+    instance = apromore_Time()
+    assert isinstance(instance, Event)
+
+
+def test_apromore_ANDJoin_isa_Join():
+    instance = apromore_ANDJoin()
+    assert isinstance(instance, Join)
+
+
+def test_apromore_ORJoin_isa_Join():
+    instance = apromore_ORJoin()
+    assert isinstance(instance, Join)
+
+
+def test_apromore_XORJoin_isa_Join():
+    instance = apromore_XORJoin()
+    assert isinstance(instance, Join)
+
+
+def test_apromore_Routing_isa_Node():
+    instance = apromore_Routing()
+    assert isinstance(instance, Node)
+
+
+def test_apromore_Work_isa_Node():
+    instance = apromore_Work()
+    assert isinstance(instance, Node)
+
+
+def test_apromore_Join_isa_Routing():
+    instance = apromore_Join()
+    assert isinstance(instance, Routing)
+
+
+def test_apromore_Split_isa_Routing():
+    instance = apromore_Split()
+    assert isinstance(instance, Routing)
+
+
+def test_apromore_State_isa_Routing():
+    instance = apromore_State()
+    assert isinstance(instance, Routing)
+
+
+def test_apromore_ANDSplit_isa_Split():
+    instance = apromore_ANDSplit()
+    assert isinstance(instance, Split)
+
+
+def test_apromore_ORSplit_isa_Split():
+    instance = apromore_ORSplit()
+    assert isinstance(instance, Split)
+
+
+def test_apromore_XORSplit_isa_Split():
+    instance = apromore_XORSplit()
+    assert isinstance(instance, Split)
+
+
+def test_apromore_Event_isa_Work():
+    instance = apromore_Event()
+    assert isinstance(instance, Work)
+
+
+def test_apromore_Task_isa_Work():
+    instance = apromore_Task()
+    assert isinstance(instance, Work)
+
+
+def test_assoc_edges6_link_reassign_clear():
+    a = apromore_Net(ident=7)
+    b1 = apromore_Edge(condition="sample_text", default=True, ident=7)
+    b2 = apromore_Edge(condition="sample_text_2", default=False, ident=13)
+    _safe_set(a, 'apromore_Net7', {b1})
+    assert _is_linked(a, 'apromore_Net7', b1)
+    if hasattr(b1, 'apromore_Edge'):
+        assert _is_linked(b1, 'apromore_Edge', a)
+    _safe_set(a, 'apromore_Net7', {b2})
+    assert _is_linked(a, 'apromore_Net7', b2)
+    if hasattr(b1, 'apromore_Edge'):
+        assert not _is_linked(b1, 'apromore_Edge', a)
+    if hasattr(b2, 'apromore_Edge'):
+        assert _is_linked(b2, 'apromore_Edge', a)
+    _safe_set(a, 'apromore_Net7', set())
+    assert not _is_linked(a, 'apromore_Net7', b2)
+    if hasattr(b2, 'apromore_Edge'):
+        assert not _is_linked(b2, 'apromore_Edge', a)
+
+
+def test_assoc_nets0_link_reassign_clear():
+    a = apromore_Net(ident=7)
+    b1 = apromore_CanonicalProcess(author="sample_text", uri="sample_text", version="sample_text")
+    b2 = apromore_CanonicalProcess(author="sample_text_2", uri="sample_text_2", version="sample_text_2")
+    _safe_set(a, 'apromore_Net', b1)
+    assert _is_linked(a, 'apromore_Net', b1)
+    if hasattr(b1, 'apromore_CanonicalProcess'):
+        assert _is_linked(b1, 'apromore_CanonicalProcess', a)
+    _safe_set(a, 'apromore_Net', b2)
+    assert _is_linked(a, 'apromore_Net', b2)
+    if hasattr(b1, 'apromore_CanonicalProcess'):
+        assert not _is_linked(b1, 'apromore_CanonicalProcess', a)
+    if hasattr(b2, 'apromore_CanonicalProcess'):
+        assert _is_linked(b2, 'apromore_CanonicalProcess', a)
+    _safe_set(a, 'apromore_Net', None)
+    assert not _is_linked(a, 'apromore_Net', b2)
+    if hasattr(b2, 'apromore_CanonicalProcess'):
+        assert not _is_linked(b2, 'apromore_CanonicalProcess', a)
+
+
+def test_assoc_nodes4_link_reassign_clear():
+    a = apromore_Node(configurable=True, ident=7, name="sample_text")
+    b1 = apromore_Net(ident=7)
+    b2 = apromore_Net(ident=13)
+    _safe_set(a, 'apromore_Node', b1)
+    assert _is_linked(a, 'apromore_Node', b1)
+    if hasattr(b1, 'apromore_Net5'):
+        assert _is_linked(b1, 'apromore_Net5', a)
+    _safe_set(a, 'apromore_Node', b2)
+    assert _is_linked(a, 'apromore_Node', b2)
+    if hasattr(b1, 'apromore_Net5'):
+        assert not _is_linked(b1, 'apromore_Net5', a)
+    if hasattr(b2, 'apromore_Net5'):
+        assert _is_linked(b2, 'apromore_Net5', a)
+    _safe_set(a, 'apromore_Node', None)
+    assert not _is_linked(a, 'apromore_Node', b2)
+    if hasattr(b2, 'apromore_Net5'):
+        assert not _is_linked(b2, 'apromore_Net5', a)
+
+
+def test_assoc_root1_link_reassign_clear():
+    a = apromore_Net(ident=7)
+    b1 = apromore_CanonicalProcess(author="sample_text", uri="sample_text", version="sample_text")
+    b2 = apromore_CanonicalProcess(author="sample_text_2", uri="sample_text_2", version="sample_text_2")
+    _safe_set(a, 'apromore_Net3', b1)
+    assert _is_linked(a, 'apromore_Net3', b1)
+    if hasattr(b1, 'apromore_CanonicalProcess2'):
+        assert _is_linked(b1, 'apromore_CanonicalProcess2', a)
+    _safe_set(a, 'apromore_Net3', b2)
+    assert _is_linked(a, 'apromore_Net3', b2)
+    if hasattr(b1, 'apromore_CanonicalProcess2'):
+        assert not _is_linked(b1, 'apromore_CanonicalProcess2', a)
+    if hasattr(b2, 'apromore_CanonicalProcess2'):
+        assert _is_linked(b2, 'apromore_CanonicalProcess2', a)
+    _safe_set(a, 'apromore_Net3', None)
+    assert not _is_linked(a, 'apromore_Net3', b2)
+    if hasattr(b2, 'apromore_CanonicalProcess2'):
+        assert not _is_linked(b2, 'apromore_CanonicalProcess2', a)
+
+
+def test_assoc_source8_link_reassign_clear():
+    a = apromore_Node(configurable=True, ident=7, name="sample_text")
+    b1 = apromore_Edge(condition="sample_text", default=True, ident=7)
+    b2 = apromore_Edge(condition="sample_text_2", default=False, ident=13)
+    _safe_set(a, 'apromore_Node10', b1)
+    assert _is_linked(a, 'apromore_Node10', b1)
+    if hasattr(b1, 'apromore_Edge9'):
+        assert _is_linked(b1, 'apromore_Edge9', a)
+    _safe_set(a, 'apromore_Node10', b2)
+    assert _is_linked(a, 'apromore_Node10', b2)
+    if hasattr(b1, 'apromore_Edge9'):
+        assert not _is_linked(b1, 'apromore_Edge9', a)
+    if hasattr(b2, 'apromore_Edge9'):
+        assert _is_linked(b2, 'apromore_Edge9', a)
+    _safe_set(a, 'apromore_Node10', None)
+    assert not _is_linked(a, 'apromore_Node10', b2)
+    if hasattr(b2, 'apromore_Edge9'):
+        assert not _is_linked(b2, 'apromore_Edge9', a)
+
+
+def test_assoc_subnet14_link_reassign_clear():
+    a = apromore_Net(ident=7)
+    b1 = apromore_Task()
+    b2 = apromore_Task()
+    _safe_set(a, 'apromore_Net15', b1)
+    assert _is_linked(a, 'apromore_Net15', b1)
+    if hasattr(b1, 'apromore_Task'):
+        assert _is_linked(b1, 'apromore_Task', a)
+    _safe_set(a, 'apromore_Net15', b2)
+    assert _is_linked(a, 'apromore_Net15', b2)
+    if hasattr(b1, 'apromore_Task'):
+        assert not _is_linked(b1, 'apromore_Task', a)
+    if hasattr(b2, 'apromore_Task'):
+        assert _is_linked(b2, 'apromore_Task', a)
+    _safe_set(a, 'apromore_Net15', None)
+    assert not _is_linked(a, 'apromore_Net15', b2)
+    if hasattr(b2, 'apromore_Task'):
+        assert not _is_linked(b2, 'apromore_Task', a)
+
+
+def test_assoc_target11_link_reassign_clear():
+    a = apromore_Node(configurable=True, ident=7, name="sample_text")
+    b1 = apromore_Edge(condition="sample_text", default=True, ident=7)
+    b2 = apromore_Edge(condition="sample_text_2", default=False, ident=13)
+    _safe_set(a, 'apromore_Node13', b1)
+    assert _is_linked(a, 'apromore_Node13', b1)
+    if hasattr(b1, 'apromore_Edge12'):
+        assert _is_linked(b1, 'apromore_Edge12', a)
+    _safe_set(a, 'apromore_Node13', b2)
+    assert _is_linked(a, 'apromore_Node13', b2)
+    if hasattr(b1, 'apromore_Edge12'):
+        assert not _is_linked(b1, 'apromore_Edge12', a)
+    if hasattr(b2, 'apromore_Edge12'):
+        assert _is_linked(b2, 'apromore_Edge12', a)
+    _safe_set(a, 'apromore_Node13', None)
+    assert not _is_linked(a, 'apromore_Node13', b2)
+    if hasattr(b2, 'apromore_Edge12'):
+        assert not _is_linked(b2, 'apromore_Edge12', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+Event_strategy = st.builds(Event)
+@given(instance=Event_strategy)
+@settings(max_examples=25)
+def test_Event_instantiation(instance):
+    assert isinstance(instance, Event)
+
+
+Join_strategy = st.builds(Join)
+@given(instance=Join_strategy)
+@settings(max_examples=25)
+def test_Join_instantiation(instance):
+    assert isinstance(instance, Join)
+
+
+Node_strategy = st.builds(Node)
+@given(instance=Node_strategy)
+@settings(max_examples=25)
+def test_Node_instantiation(instance):
+    assert isinstance(instance, Node)
+
+
+Routing_strategy = st.builds(Routing)
+@given(instance=Routing_strategy)
+@settings(max_examples=25)
+def test_Routing_instantiation(instance):
+    assert isinstance(instance, Routing)
+
+
+Split_strategy = st.builds(Split)
+@given(instance=Split_strategy)
+@settings(max_examples=25)
+def test_Split_instantiation(instance):
+    assert isinstance(instance, Split)
+
+
+Work_strategy = st.builds(Work)
+@given(instance=Work_strategy)
+@settings(max_examples=25)
+def test_Work_instantiation(instance):
+    assert isinstance(instance, Work)
+
+
+apromore_ANDJoin_strategy = st.builds(apromore_ANDJoin)
+@given(instance=apromore_ANDJoin_strategy)
+@settings(max_examples=25)
+def test_apromore_ANDJoin_instantiation(instance):
+    assert isinstance(instance, apromore_ANDJoin)
+
+
+apromore_ANDSplit_strategy = st.builds(apromore_ANDSplit)
+@given(instance=apromore_ANDSplit_strategy)
+@settings(max_examples=25)
+def test_apromore_ANDSplit_instantiation(instance):
+    assert isinstance(instance, apromore_ANDSplit)
+
+
+apromore_CanonicalProcess_strategy = st.builds(apromore_CanonicalProcess, author=safe_text, uri=safe_text, version=safe_text)
+@given(instance=apromore_CanonicalProcess_strategy)
+@settings(max_examples=25)
+def test_apromore_CanonicalProcess_instantiation(instance):
+    assert isinstance(instance, apromore_CanonicalProcess)
+
+
+apromore_Edge_strategy = st.builds(apromore_Edge, condition=safe_text, default=st.booleans(), ident=st.integers())
+@given(instance=apromore_Edge_strategy)
+@settings(max_examples=25)
+def test_apromore_Edge_instantiation(instance):
+    assert isinstance(instance, apromore_Edge)
+
+
+apromore_Event_strategy = st.builds(apromore_Event)
+@given(instance=apromore_Event_strategy)
+@settings(max_examples=25)
+def test_apromore_Event_instantiation(instance):
+    assert isinstance(instance, apromore_Event)
+
+
+apromore_Join_strategy = st.builds(apromore_Join)
+@given(instance=apromore_Join_strategy)
+@settings(max_examples=25)
+def test_apromore_Join_instantiation(instance):
+    assert isinstance(instance, apromore_Join)
+
+
+apromore_Message_strategy = st.builds(apromore_Message)
+@given(instance=apromore_Message_strategy)
+@settings(max_examples=25)
+def test_apromore_Message_instantiation(instance):
+    assert isinstance(instance, apromore_Message)
+
+
+apromore_Net_strategy = st.builds(apromore_Net, ident=st.integers())
+@given(instance=apromore_Net_strategy)
+@settings(max_examples=25)
+def test_apromore_Net_instantiation(instance):
+    assert isinstance(instance, apromore_Net)
+
+
+apromore_Node_strategy = st.builds(apromore_Node, configurable=st.booleans(), ident=st.integers(), name=safe_text)
+@given(instance=apromore_Node_strategy)
+@settings(max_examples=25)
+def test_apromore_Node_instantiation(instance):
+    assert isinstance(instance, apromore_Node)
+
+
+apromore_ORJoin_strategy = st.builds(apromore_ORJoin)
+@given(instance=apromore_ORJoin_strategy)
+@settings(max_examples=25)
+def test_apromore_ORJoin_instantiation(instance):
+    assert isinstance(instance, apromore_ORJoin)
+
+
+apromore_ORSplit_strategy = st.builds(apromore_ORSplit)
+@given(instance=apromore_ORSplit_strategy)
+@settings(max_examples=25)
+def test_apromore_ORSplit_instantiation(instance):
+    assert isinstance(instance, apromore_ORSplit)
+
+
+apromore_Routing_strategy = st.builds(apromore_Routing)
+@given(instance=apromore_Routing_strategy)
+@settings(max_examples=25)
+def test_apromore_Routing_instantiation(instance):
+    assert isinstance(instance, apromore_Routing)
+
+
+apromore_Split_strategy = st.builds(apromore_Split)
+@given(instance=apromore_Split_strategy)
+@settings(max_examples=25)
+def test_apromore_Split_instantiation(instance):
+    assert isinstance(instance, apromore_Split)
+
+
+apromore_State_strategy = st.builds(apromore_State)
+@given(instance=apromore_State_strategy)
+@settings(max_examples=25)
+def test_apromore_State_instantiation(instance):
+    assert isinstance(instance, apromore_State)
+
+
+apromore_Task_strategy = st.builds(apromore_Task)
+@given(instance=apromore_Task_strategy)
+@settings(max_examples=25)
+def test_apromore_Task_instantiation(instance):
+    assert isinstance(instance, apromore_Task)
+
+
+apromore_Time_strategy = st.builds(apromore_Time)
+@given(instance=apromore_Time_strategy)
+@settings(max_examples=25)
+def test_apromore_Time_instantiation(instance):
+    assert isinstance(instance, apromore_Time)
+
+
+apromore_Work_strategy = st.builds(apromore_Work)
+@given(instance=apromore_Work_strategy)
+@settings(max_examples=25)
+def test_apromore_Work_instantiation(instance):
+    assert isinstance(instance, apromore_Work)
+
+
+apromore_XORJoin_strategy = st.builds(apromore_XORJoin)
+@given(instance=apromore_XORJoin_strategy)
+@settings(max_examples=25)
+def test_apromore_XORJoin_instantiation(instance):
+    assert isinstance(instance, apromore_XORJoin)
+
+
+apromore_XORSplit_strategy = st.builds(apromore_XORSplit)
+@given(instance=apromore_XORSplit_strategy)
+@settings(max_examples=25)
+def test_apromore_XORSplit_instantiation(instance):
+    assert isinstance(instance, apromore_XORSplit)
+
+
+
