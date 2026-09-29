@@ -50,33 +50,261 @@ which types of structure count toward "difficulty."
 
 ---
 
-## 2. The PCA-based score (`difficulty_score`)
+## 2. The PCA-based score (`difficulty_score`) — full method, with real numbers
 
-**Method:** for all 11 non-constant structural fields (`classes`, `attributes`,
-`associations`, `composition`, `generalizations`, `abstract_classes`,
-`enumerations`, `enumeration_literals`, `methods`, `many_valued_association_ends`,
-`attribute_type_diversity`), apply `log1p` (dampens outlier influence), standardize
-(z-score) across all 9,082 measured models, then run PCA (`numpy.linalg.eigh` on the
-correlation matrix — deterministic, no randomness). Three fields
-(`association_classes`, `abstract_methods`, `aggregation`) are confirmed true
-constants (std = 0 across every model) and are excluded — a mathematical
-requirement, not a judgment call.
+### 2.1 What PCA is actually doing, in plain terms
 
-**Two components combined**, not just the first:
+Picture every one of the 9,082 models as a single dot in an **11-dimensional
+space** — one axis per structural field (how many classes it has, how many
+attributes, how many associations, and so on). Most of those 11 numbers move
+together: a model with more classes usually also has more attributes, more
+relationships, more of everything. That shared movement means the cloud of
+9,082 dots isn't a random blob — it's stretched out along certain directions
+far more than others.
 
-| Component | Variance explained | What it represents |
-|---|---|---|
-| PC1 | 48.54% | Overall structural size/richness — every one of its 11 loadings is positive (range 0.13–0.36), so "more structure of any kind" pushes it up. |
-| PC2 | 14.80% | A *style* axis, not a size axis — contrasts data-schema-heavy models (`attribute_type_diversity` +0.671, `attributes` +0.483) against hierarchy-heavy ones (`generalizations` -0.319, `abstract_classes` -0.257, `composition` -0.251). Verified empirically (not assumed) that both extremes of this axis are large, substantial models, not small ones drifting there by default. |
+**PCA finds those directions mathematically**, in order of how much the cloud
+is stretched along each one:
 
-PC1 (signed) and `|PC2|` (unsigned — PC2's sign is mathematically arbitrary, so only
-a symmetric function of it is meaningful) are each independently rescaled via
-percentile-clip (1st/99th) + linear min-max to a point budget proportional to their
-own variance explained — PC1 gets 76.64 of 100 points, PC2 gets 23.36 — and summed.
-This bounds the final score to `[0, 100]` by construction while still reflecting how
-much of the dataset's *real, measured* variation each axis explains.
+- **PC1** is the *single straight line* through the 11-dimensional cloud
+  along which the dots are the most spread out. It's the one combination of
+  the 11 fields that best separates "small, simple models" from "large,
+  elaborate models."
+- **PC2** is the *next* most-spread-out direction — but only counting spread
+  that's independent (statistically uncorrelated) of PC1. It captures a
+  *different* kind of variation that PC1's "how big" axis doesn't explain.
+- This continues for as many directions as there are input fields — **11
+  components total, PC1 through PC11** — each capturing strictly less of the
+  remaining spread than the one before it.
 
-**Result:** `difficulty_score` written for 9,082/9,082 models. Observed range
+A **"loading"** is just a weight: PC1 is a weighted sum of the 11
+(standardized) fields, and the loadings are exactly those weights. A field
+with a large loading on PC1 matters a lot for "how big" a model is; a field
+with a near-zero loading barely matters for that particular direction.
+
+### 2.2 Step 1 — put every field on the same scale before comparing them
+
+Raw counts can't be compared directly: a model with 900 classes and a model
+with 3 attribute types aren't on the same scale, and PCA would just declare
+"classes" the most important field purely because its numbers are bigger. Two
+transforms fix this, applied to each of the 11 fields independently:
+
+**(a) `log1p`** — replace every raw count `x` with `ln(1 + x)`. This
+compresses extreme values (a few models have thousands of classes; most have
+a dozen) while still preserving their relative order — a 900-class model
+still logs out bigger than a 90-class one, just not 10× bigger anymore.
+
+**(b) Standardize (z-score)** — after the log transform, subtract that
+field's own mean and divide by its own standard deviation, both computed
+**across all 9,082 models**:
+
+```
+z = ( log1p(raw_count) − mean_of_log1p_across_dataset ) / std_of_log1p_across_dataset
+```
+
+After this, every field has mean 0 and spread 1 — so PCA judges each field by
+how much models genuinely *differ* on it, not by how large its raw numbers
+happen to be. These means/stds are the dataset-wide constants baked into the
+formula (from `reports/difficulty_score_report.json`):
+
+| Field | log1p mean | log1p std |
+|---|---:|---:|
+| classes | 2.6624 | 1.0579 |
+| attributes | 2.1872 | 1.1660 |
+| associations | 1.6824 | 1.1088 |
+| composition | 1.2394 | 1.3613 |
+| generalizations | 1.2342 | 1.5525 |
+| abstract_classes | 0.6414 | 0.9352 |
+| enumerations | 0.3715 | 0.6419 |
+| enumeration_literals | 0.5482 | 1.0922 |
+| methods | 0.2578 | 0.8298 |
+| many_valued_association_ends | 1.5989 | 1.1020 |
+| attribute_type_diversity | 1.0706 | 0.5084 |
+
+Three more fields exist in `model_metadata.json` (`association_classes`,
+`abstract_methods`, `aggregation`) but are **excluded entirely**: they're
+confirmed true constants (every model has the exact same value, so
+std = 0) across all 9,082 models. Standardizing a constant means dividing by
+zero, so this isn't a judgment call about relevance — it's a mathematical
+requirement.
+
+### 2.3 Step 2 — PCA itself: eigenvectors and the two components we use
+
+Once all 11 fields are standardized, PCA computes their **correlation
+matrix** (an 11×11 table of how strongly every pair of fields moves
+together) and finds its **eigenvectors** — the "stretch directions"
+described in 2.1 — via `numpy.linalg.eigh`, a deterministic, no-randomness
+algorithm (the same inputs always produce the exact same output, unlike some
+other PCA implementations that use randomized approximations). Each
+eigenvector comes with an **eigenvalue**, which is exactly "how much of the
+cloud's total spread this direction accounts for" — sorted largest to
+smallest, eigenvector #1 is PC1, #2 is PC2, and so on.
+
+A model's **raw score on a component** is a dot product — multiply each
+field's z-score by that component's loading for that field, and add them all
+up:
+
+```
+PC1_raw = Σ (PC1_loading_i × z_i)     for each of the 11 fields i
+PC2_raw = Σ (PC2_loading_i × z_i)
+```
+
+**Full PC1 and PC2 loadings** (every one of the 11 weights, exactly as
+computed):
+
+| Field | PC1 loading | PC2 loading |
+|---|---:|---:|
+| classes | +0.3576 | −0.0471 |
+| attributes | +0.2896 | +0.4831 |
+| associations | +0.2751 | +0.2400 |
+| composition | +0.3395 | −0.2514 |
+| generalizations | +0.3488 | −0.3189 |
+| abstract_classes | +0.3142 | −0.2567 |
+| enumerations | +0.3063 | +0.1275 |
+| enumeration_literals | +0.3262 | −0.0599 |
+| methods | +0.2019 | −0.0795 |
+| many_valued_association_ends | +0.3468 | +0.0017 |
+| attribute_type_diversity | +0.1254 | +0.6707 |
+
+Reading this table is the whole story: **every single PC1 loading is
+positive** (0.13 to 0.36) — there's no field that pulls PC1 down, so "higher
+PC1 = more structure, period" is a safe, literal reading. **PC2's loadings
+have mixed signs** — `attribute_type_diversity` (+0.671) and `attributes`
+(+0.483) pull one way; `generalizations` (−0.319), `abstract_classes`
+(−0.257), and `composition` (−0.251) pull the other. That's PC2's real
+content: a *contrast* between data-schema-heavy models (lots of different
+attribute types) and hierarchy-heavy models (lots of inheritance), not a
+second "bigness" scale.
+
+### 2.4 What all 11 components look like
+
+PCA always produces as many components as input fields — here's every one of
+them, with how much of the dataset's total variation each explains (from the
+same PCA run; only PC1 and PC2 are actually used in the final score, see
+2.5, but the full picture shows why the other 9 were left out):
+
+| Component | Variance explained | Cumulative | Dominant fields (largest loadings) |
+|---|---:|---:|---|
+| PC1 | 48.54% | 48.54% | Every field positive — overall size/richness |
+| PC2 | 14.80% | 63.34% | `attribute_type_diversity`/`attributes` (+) vs. `generalizations`/`abstract_classes`/`composition` (−) — data-schema-heavy vs. hierarchy-heavy style |
+| PC3 | 9.87% | 73.21% | `enumerations`/`enumeration_literals` (−) vs. `associations` (+) |
+| PC4 | 7.47% | 80.67% | `methods` (+0.89, dominates almost alone) |
+| PC5 | 5.90% | 86.58% | `associations` (−) vs. `attribute_type_diversity`/`generalizations` (+) |
+| PC6 | 4.93% | 91.51% | `composition` (+) vs. `abstract_classes` (−) |
+| PC7 | 3.34% | 94.85% | `abstract_classes` (+) vs. `classes` (−) |
+| PC8 | 2.00% | 96.85% | `attributes` (−) vs. `attribute_type_diversity` (+) |
+| PC9 | 1.38% | 98.23% | `many_valued_association_ends` (−) vs. `associations` (+) |
+| PC10 | 0.95% | 99.18% | `generalizations` (−) vs. `composition` (+) |
+| PC11 | 0.82% | 100.00% | `enumeration_literals` (+) vs. `enumerations` (−), the last leftover contrast |
+
+**Why stop at PC1+PC2 and not use more?** Two reasons. First, the drop-off is
+steep and then flattens: PC1+PC2 already capture 63.34% of all variation,
+while every component from PC3 onward explains under 10% each, trailing off
+gradually with no further sharp break. Second, and more importantly, PC2 was
+only included after being **empirically checked**, not just because it was
+next in line: its two extremes were confirmed to both be large, substantial
+models (see 2.1) rather than one being a trivial/small-model artifact. PC3
+onward were not put through that same verification, so folding any of them
+into the score would mean trusting an unverified axis — the two-component
+design is a deliberate stopping point, not a limitation of the method itself.
+
+### 2.5 Step 3 — turning PC1 and `|PC2|` into a bounded 0–100 score
+
+Three things happen here, in order:
+
+**(a) PC2 is folded in as an absolute value, `|PC2|`, not its signed value —
+this is a mathematical requirement, not a style choice.** Whenever an
+eigenvector's loadings don't all share one sign (PC2's case exactly), the
+sign of the whole component is arbitrary — the eigendecomposition math is
+equally valid flipped. Using the signed value would make the score depend on
+an arbitrary coin-flip with zero connection to the actual models. `|PC2|`
+reads as "how far this model leans toward *either* extreme style," which is
+the only sign-independent, meaningful reading.
+
+**(b) The 100 points are split between PC1 and PC2 in proportion to how much
+variance each explains** — not an even 50/50 split:
+
+```
+PC1_budget = 100 × 0.4854 / (0.4854 + 0.1480) = 76.6372 points
+PC2_budget = 100 × 0.1480 / (0.4854 + 0.1480) = 23.3628 points
+```
+
+This ratio is recomputed from the real eigenvalues every time the script
+runs — it is never hand-typed.
+
+**(c) Each component is independently rescaled into its own point budget**
+via *percentile-clip, then linear min-max* — this is the literal mechanism
+for "how do we spread the score from 0 to 100":
+
+```
+lo, hi  = 1st percentile, 99th percentile of that component's raw scores
+          (computed separately for PC1 and for |PC2|)
+clipped = clip(raw_score, lo, hi)      # values beyond the 1st/99th percentile
+                                        # are pulled in to lo/hi, not dropped
+points  = (clipped − lo) / (hi − lo) × budget
+```
+
+The actual clip bounds and budgets from the full 9,082-model run:
+
+| Component | 1st percentile (`lo`) | 99th percentile (`hi`) | Point budget |
+|---|---:|---:|---:|
+| PC1 (signed) | −3.4620 | +7.3262 | 76.6372 |
+| `\|PC2\|` (unsigned) | 0.0041 | 3.0209 | 23.3628 |
+
+Percentile-clipping (rather than plain min-max on the true min/max) means
+only the most extreme ~1% of models on each side get pulled to the boundary
+— everyone else is spread linearly across the full budget without a handful
+of outliers compressing the rest of the scale. Finally:
+
+```
+difficulty_score = PC1_points + PC2_points
+```
+
+Since each addend is already clipped to `[0, its own budget]`, the sum is
+mathematically guaranteed to land in `[0, 100]` — there is no separate
+clamping step at the end because none is needed.
+
+### 2.6 A complete worked example: `model_2023`, start to finish
+
+`model_2023` (the 932-class fUML trace metamodel used in Section 5's
+outlier discussion) makes a good worked example precisely because it's an
+extreme case. Its 11 raw counts, straight from `model_metadata.json`:
+
+| Field | Raw count | log1p | z-score | ×PC1 loading | ×PC2 loading |
+|---|---:|---:|---:|---:|---:|
+| classes | 932 | 6.8384 | 3.9473 | 1.4115 | −0.1860 |
+| attributes | 11 | 2.4849 | 0.2553 | 0.0739 | 0.1233 |
+| associations | 836 | 6.7298 | 4.5522 | 1.2523 | 1.0925 |
+| composition | 292 | 5.6802 | 3.2622 | 1.1077 | −0.8202 |
+| generalizations | 332 | 5.8081 | 2.9462 | 1.0275 | −0.9396 |
+| abstract_classes | 70 | 4.2627 | 3.8723 | 1.2167 | −0.9939 |
+| enumerations | 0 | 0.0000 | −0.5787 | −0.1772 | −0.0738 |
+| enumeration_literals | 0 | 0.0000 | −0.5019 | −0.1637 | 0.0300 |
+| methods | 0 | 0.0000 | −0.3106 | −0.0627 | 0.0247 |
+| many_valued_association_ends | 661 | 6.4953 | 4.4432 | 1.5408 | 0.0077 |
+| attribute_type_diversity | 3 | 1.3863 | 0.6210 | 0.0779 | 0.4166 |
+| **Sum (= PC1_raw / PC2_raw)** | | | | **7.3047** | **−1.3186** |
+
+Now apply the Step 3 rescale to each sum:
+
+- **PC1:** raw = 7.3047. Clip bounds are [−3.4620, 7.3262] — 7.3047 is just
+  barely *inside* the upper bound (this model sits right at the edge of the
+  top 1%, but isn't clipped). Points = `(7.3047 − (−3.4620)) / (7.3262 −
+  (−3.4620)) × 76.6372` = **76.4841**.
+- **PC2:** raw = −1.3186, so `|PC2|` = 1.3186. Clip bounds are [0.0041,
+  3.0209] — well inside, no clipping. Points = `(1.3186 − 0.0041) / (3.0209
+  − 0.0041) × 23.3628` = **10.1797**.
+- **Final score:** `76.4841 + 10.1797` = **86.6638**.
+
+This matches `model_2023`'s actual stored `model_metadata.json` values
+exactly (`difficulty_score = 86.6638227309274`,
+`difficulty_score_pc1_points = 76.4840892138438`,
+`difficulty_score_pc2_points = 10.179733517083594`) — the table above is not
+a simplified illustration, it's the literal arithmetic the script performs,
+reproduced by hand and cross-checked digit-for-digit.
+
+### 2.7 Result
+
+`difficulty_score` written for 9,082/9,082 models. Observed range
 `[3.27, 93.55]`.
 
 ---
@@ -108,13 +336,6 @@ The gap between Pearson and Spearman is itself informative: the two scores agree
 more on *ordering* than on raw linear value, which is expected — the article score's
 unstandardized linearity makes it far more sensitive to a handful of extreme-count
 outliers than the log1p + standardized PCA score is.
-
-![Difficulty score distribution — box plot](charts/difficulty_score_comparision_box_graph.png)
-
-The PCA score's median (~28) sits well above the article score's (~11, capped at 100
-for this comparison — see the note below the chart), and the article score's box is
-compressed much closer to the bottom with a long tail of statistical "outliers" —
-visually confirming the right-skew implied by the Pearson/Spearman gap above.
 
 ![Difficulty score distribution — population-pyramid comparison](charts/difficulty_score_comparision_pseudo_violin_graph.png)
 

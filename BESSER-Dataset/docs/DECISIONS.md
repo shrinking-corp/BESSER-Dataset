@@ -14,6 +14,239 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-09-29 — Phase 4 sample methodology: stratify by has_logic count, not difficulty_score; equal allocation, size 200
+
+**Superseded decision:** the original Phase 4 plan (checklist.md, first
+written 2026-09-28) said the shared Track A/B sample should be "stratified
+by `difficulty_score`." Discussed with the user and changed this after
+`classify_method_logic.py`'s results made a concrete problem visible:
+`difficulty_score` and `has_logic` method count don't always move together.
+`model_2023` (the 932-class metamodel used elsewhere as a difficulty-score
+example) scores **86.66/100** on `difficulty_score` — one of the hardest
+models in the dataset — but has **zero methods at all** (`methods = 0` in
+its raw structural fields). It would be a completely useless Phase 4 sample
+member despite looking "hard" by the old criterion, because
+`difficulty_score` measures overall structural size/style, not "how much
+logic exists to break."
+
+**New methodology, decided with the user 2026-09-29:**
+- **Stratify by `has_logic` method count** (the same buckets
+  `classify_method_logic.py` already reports: 1-5/6-10/11-20/21-50/51-100/
+  101-200/200+), since that's what Track A/B actually operate on.
+- **Sample size: ~200** — a middle ground between statistical robustness and
+  compute/effort cost for both cosmic-ray mutation testing (us) and the
+  colleague's manual LLM-loop iterations.
+- **Equal allocation across buckets, not proportional to the dataset's real
+  shape.** The user's stated purpose is "to determine which method of
+  generating tests [to] choose" — a methods comparison, not a description of
+  the dataset. Proportional sampling would starve the rare, most-interesting
+  high-`has_logic` buckets (51-100/101-200/200+ are only 9.4% of the
+  eligible pool combined) of representation exactly where seeing how each
+  method scales to complex logic matters most. Split: 1-5→29, 6-10→29,
+  11-20→29, 21-50→29, 51-100→28, 101-200→28, 200+→28 (sums to 200).
+- **De-duplicate before sampling.** Several models share identical
+  `no_logic`/`trivial`/`has_logic`/`total_methods` counts (first noticed in
+  the top-50-by-has_logic ranking, e.g. `model_455`/`model_456` both
+  370/961) — a strong signal of near-identical generated content under
+  different model names. Only one representative per duplicate signature is
+  kept in the eligible pool, so the 200-model sample can't secretly contain
+  the same code twice.
+
+Built `scripts/select_test_generation_sample.py` implementing this exactly. Verified
+against two synthetic fake classification reports (never the real dataset):
+3 planted exact-duplicate pairs were correctly detected and dropped, and
+bucketing/target-splitting/seeded-sampling produced the exact requested
+count with zero duplicates leaking through; a separate test with an
+artificially starved bucket correctly fell back to "take everything
+available" and reported the shortfall rather than silently under-delivering.
+Not yet run against the real dataset (still the user's to run, per standing
+process):
+```
+.venv\Scripts\python.exe scripts\select_test_generation_sample.py --sample-size 200 --seed 42
+```
+
+---
+
+## 2026-09-29 — Phase 4 Step 1: per-method logic classification (`classify_method_logic.py`), and the surviving-mutant export prerequisite
+
+**Why:** Phase 4 (raising mutation score, see `checklist.md`) needs to target
+test generation at methods that actually *have* logic to break — generating
+more tests for a plain getter/setter can't raise mutation score, since there's
+nothing value-dependent in it to get wrong. `validate_logic.py` (2026-09-10)
+already flags whole *models* with zero logic (`no_logic`, 631 models, every
+class a bare `pass`), but that's model-granularity — most usable models are a
+mix of stub/trivial/real methods, and Phase 1's whole-file mutation testing
+already showed 65%+ mutation scores are achievable, so most of this dataset's
+methods must be too simple to fail, not genuinely untested.
+
+**Classification, built in `scripts/classify_method_logic.py`** (AST-only,
+same pattern as `validate_logic.py` — parses `python_code.py` once per model,
+no execution). Every method in every class gets exactly one label:
+
+1. **`no_logic`** — stub body (`pass`/`...`/docstring only). Reuses
+   `validate_logic.py`'s own stub-detection helper, generalized from
+   whole-class to per-method.
+2. **`trivial`** — at most 4 statements, no loop/`try`/`match`/comprehension/
+   `lambda`, no arithmetic (`BinOp`) or boolean (`BoolOp`) computation
+   anywhere in the body, and at most one non-`elif` `if` guard. This
+   deliberately covers more than plain getters/setters: the dataset's
+   near-universal bidirectional-association setter pattern
+   (`if self._x is not None: self._x._y.remove(self)` / `self._x = value` /
+   `if value is not None: value._y.append(self)`) is still just "set a field
+   and keep both sides in sync" — no computed decision, nothing a varied
+   input could route down a qualitatively different path — so it's `trivial`
+   despite having two `if`s and three statements.
+3. **`has_logic`** — everything else: a loop, an `elif`/nested-`else`
+   branch, a `try`, a `match`, a comprehension, or arithmetic/boolean
+   computation. These are the methods Track A (library-generated tests) and
+   Track B (the colleague's LLM track) should actually target.
+
+**Statement counting descends into a single guard's branches** (a 3-line
+guarded setter counts as 3 statements, not 1), so the `≤4 statements` rule
+doesn't accidentally let a bigger, disguised-as-one-statement block through.
+Nested function/class definitions are judged as their own separate methods,
+not folded into the parent's complexity count.
+
+**Verified on a synthetic smoke test before handing off** (per the standing
+rule: project scripts are never run against the real dataset by the
+assistant, only compiled/unit-tested against hand-written code):
+`__init__` field assignment and a plain getter → `trivial`; the guarded
+bidirectional-association setter → `trivial`; a method with a `for` loop and
+arithmetic → `has_logic`; a 3-way `if/elif/else` → `has_logic`; a `pass`
+stub → `no_logic`. All five matched the intended rule.
+
+**Run against `usable_models.txt` (8,336 models), `--write-metadata` on.**
+Full breakdown (`reports/method_logic_classification_report.{json,md}`),
+640,217 methods classified across the dataset:
+
+| Category | Methods | Share of methods | Models with ≥1 such method | Share of models |
+|---|---:|---:|---:|---:|
+| no_logic | 14,256 | 2.23% | 947 | 11.36% |
+| trivial | 461,776 | 72.13% | 8,336 | 100.00% |
+| has_logic | 164,185 | 25.65% | 7,344 | 88.10% |
+
+The model-level columns tell a different story than the method-level ones:
+**every single measured model (100%) has at least one `trivial` method** —
+plain field assignment/getters/setters are universal, not a quirk of some
+models — while only **11.36%** of models contain even one fully-empty
+`no_logic` stub method (most models' methods all do at least *something*,
+even if trivial). **88.10%** of models have at least one `has_logic` method,
+which is the Phase 4 sample-eligibility number; the remaining 11.9% (992
+models, see below) have none at all.
+
+**This quantifies the mutation-score root cause directly, for the first
+time.** Earlier sessions diagnosed *why* mutation score is low (isinstance-
+only instantiation tests, fixed/non-varied setter values — see the
+2026-09-17/18 discussion below) by reading example test code; this is the
+first dataset-wide count of *how much of the code could ever fail a
+mutation regardless of test quality*. Only 1 in 4 methods (25.65%) has any
+branching, loop, or computed value at all — the remaining 74.35% is
+structurally inert (empty stub or plain field assignment/getter/setter), so
+no amount of test-writing effort against those methods could move mutation
+score. This reframes the mutation-score ceiling: it isn't only a test-
+quality problem, it's also that only a quarter of the code is the kind of
+code mutation testing can meaningfully discriminate on.
+
+**Per-model spread, from `has_logic_count_distribution` /
+`total_methods_distribution` in the report:**
+
+| has_logic methods/model | Models | Share |
+|---|---:|---:|
+| 0 | 992 | 11.90% |
+| 1-5 | 1,629 | 19.54% |
+| 6-10 | 1,691 | 20.29% |
+| 11-20 | 1,649 | 19.78% |
+| 21-50 | 1,686 | 20.23% |
+| 51-100 | 483 | 5.79% |
+| 101-200 | 158 | 1.90% |
+| 200+ | 48 | 0.58% |
+
+Mean 19.70 `has_logic` methods/model, **median only 10** — the distribution
+has a long but thin tail (just 2.48% of models clear 100 `has_logic`
+methods). **7,344/8,336 models (88.1%)** have at least one `has_logic`
+method and are eligible for Phase 4's sample; the **992 (11.9%)** with zero
+are consistently small models in their own right (avg 13.85 total methods,
+median 6, max 162 — never a large model that just happens to lack complex
+logic), so excluding them from the sample loses no large/complex model.
+
+**Side-observation, not pursued further here:** several models in the
+top-50-by-`has_logic` ranking form exact-duplicate pairs or triples with
+identical has_logic/total-method counts — `model_455`/`model_456` (370/961
+each), `model_5149`/`model_5150` (362/1104 each), `model_450`/`model_451`/
+`model_10041` (351/884 each), `model_5058`/`model_5059`/`model_5060`
+(330/886 each), among others. Consistent with this dataset containing
+near-identical generated variants (already known from earlier duplicate-
+model observations this session); worth keeping in mind when drawing the
+Phase 4 sample so it isn't accidentally padded with near-duplicate twins.
+
+**Shared prerequisite also built: exporting *which* mutants survived, not
+just the count.** `validate_mutation.py`/`validate_mutation_properties.py`
+only ever read `stats["outcomes"].get("SURVIVED", 0)` — a bare number — from
+cosmic-ray's session sqlite db, and that db lives in a scratch copy deleted
+right after each model finishes (by design, for dataset safety — see that
+script's own docstring). Track B (the colleague's LLM mutation-feedback loop)
+needs the actual surviving mutants to show the LLM, not just a count.
+
+Added `scripts/mutation_export.py` (`export_surviving_mutants()`), joining
+cosmic-ray's own `mutation_specs` and `work_results` tables
+(`cosmic_ray/work_db.py`'s real schema, confirmed by reading the installed
+package directly rather than guessing) on `test_outcome = 'SURVIVED'`, and
+writing `<dir>/<model>.json` per model with each survivor's module, line
+range, operator name+args, `definition_name`, and cosmic-ray's own unified
+diff for that specific mutant — everything needed to show a specific broken
+test case to an LLM. Wired into both validators as a new, **opt-in**
+`--export-surviving-mutants DIR` flag (default off), so every already-
+completed full-dataset mutation run stays byte-for-byte unaffected; it only
+activates when explicitly passed for the Phase 4 sample run. Verified against
+a synthetic sqlite db built to mirror cosmic-ray's real table schema exactly:
+correctly exported the one `SURVIVED` row with its full diff, correctly
+skipped the `KILLED` row.
+
+---
+
+## 2026-09-28 — Checked: is mutation score inflated by empty/trivial models? Nuanced answer, not a simple yes
+
+**Question raised:** given mutation score is `killed/run`, does the dataset's
+~40% average get artificially propped up by empty or near-empty models,
+where a handful of trivial mutants get killed easily?
+
+**No inflation from fully-empty models — they're already excluded.**
+Cross-referenced `reports/logic_validation_report.json`'s 631 `no_logic`
+models (every class is `class X: pass`, confirmed by static AST analysis
+back on 2026-09-10) against `reports/usable_models.txt` and
+`reports/combined_mutation_properties_report_final.json`: **0/631** appear
+in either. They never receive a mutation score at all, so the literal
+"empty model scores 100%" concern doesn't occur in this pipeline.
+
+**A real, modest effect among small-but-not-empty models.** Bucketing the
+8,336 scored models by how many mutants actually ran (`mutants_run`, capped
+at 40):
+
+| mutants_run | n | avg score |
+|---|---|---|
+| 1-5 | 540 | 50.5% |
+| 6-20 | 586 | 45.2% |
+| 21-50 (most models, near the cap) | 7,210 | 43.3% |
+
+The smallest ~6.5% of the dataset scores about 7 points higher on average —
+real, but small, and confined to a small slice.
+
+**The dominant "near-100%" cluster is NOT these simple models.** The
+dataset's mutation score is bimodal (documented in `summary_report.md`);
+checked the 906 models scoring exactly 1.0 directly: they ran an average of
+**38.9/40** mutants (near the cap, i.e. not small) and have an average
+`difficulty_score` of **46.6**, noticeably above a random sample's 32.2. So
+the spike at 100% is driven by larger-than-average models whose tests
+genuinely catch nearly everything, not by trivial models getting lucky.
+
+**Conclusion:** the ~40% headline average is not inflated by empty models
+(excluded) and only marginally affected by very-small ones (~6.5% of the
+dataset, +7 points) — the low average is still best explained by the
+weak-assertion pattern documented earlier (isinstance-only instantiation
+tests, fixed/non-varied setter test values), not by a measurement artifact.
+Plain-language writeup with examples:
+[`2026-09-28-explainer-empty-models-mutation-score.md`](2026-09-28-explainer-empty-models-mutation-score.md).
+
 ## 2026-09-17 — Combined-suite class coverage: all 112 initially-unmeasured models recovered
 
 **Finding:** `validate_class_coverage.py --test-file test_combined.py` (24

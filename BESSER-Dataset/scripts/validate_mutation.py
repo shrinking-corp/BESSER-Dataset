@@ -81,6 +81,8 @@ import tempfile
 import time
 from pathlib import Path
 
+from mutation_export import export_surviving_mutants
+
 # Overridable via --test-file/--metadata-key (see main()) so the same script
 # can be pointed at test_structural_full.py (or, once generate_combined_tests.py
 # exists, test_combined.py) without a code change. Read from env vars, not
@@ -221,6 +223,7 @@ def validate_model(
     overall_timeout: int,
     hypothesis_home: str,
     scratch_root: str,
+    export_surviving_dir: Path | None = None,
 ) -> dict:
     checked_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
     result = {
@@ -236,6 +239,7 @@ def validate_model(
         "mutation_score": None,
         "init_duration_s": None,
         "exec_duration_s": None,
+        "surviving_mutants_exported": None,
         "error_message": None,
     }
 
@@ -326,6 +330,9 @@ name = "local"
                 result["killed"] = stats["outcomes"].get("KILLED", 0)
                 result["survived"] = stats["outcomes"].get("SURVIVED", 0)
                 result["other_outcomes"] = {k: v for k, v in stats["outcomes"].items() if k not in ("KILLED", "SURVIVED")}
+                if export_surviving_dir is not None:
+                    result["surviving_mutants_exported"] = export_surviving_mutants(
+                        session_path, export_surviving_dir, model_dir.name, TEST_FILENAME)
             except Exception:
                 pass
             return result
@@ -342,6 +349,9 @@ name = "local"
         result["other_outcomes"] = {k: v for k, v in stats["outcomes"].items() if k not in ("KILLED", "SURVIVED")}
         if stats["total_run"] > 0:
             result["mutation_score"] = round(result["killed"] / stats["total_run"], 4)
+        if export_surviving_dir is not None:
+            result["surviving_mutants_exported"] = export_surviving_mutants(
+                session_path, export_surviving_dir, model_dir.name, TEST_FILENAME)
 
         if result["status"] == "missing_file":
             result["status"] = "measured"
@@ -484,6 +494,12 @@ def main() -> None:
     parser.add_argument("--metadata-key", type=str, default=None,
                          help="Override the code_metadata.json key results are written under "
                               "(default: derived from --test-file, see TEST_FILE_METADATA_KEYS)")
+    parser.add_argument("--export-surviving-mutants", type=Path, default=None,
+                         help="Write <dir>/<model>.json with full detail (module, line range, "
+                              "operator, diff) of every SURVIVED mutant, read from the session "
+                              "db before its scratch copy is discarded. Off by default -- only "
+                              "needed for Phase 4's sample (see checklist.md), not full-dataset "
+                              "runs, since it adds a file per model with survivors.")
     args = parser.parse_args()
 
     if args.test_file:
@@ -536,6 +552,7 @@ def main() -> None:
                 executor.submit(
                     validate_model, model_dir, args.max_mutants,
                     args.per_mutant_timeout, args.overall_timeout, hypothesis_home, scratch_root,
+                    args.export_surviving_mutants,
                 ): model_dir
                 for model_dir in model_dirs
             }
@@ -549,6 +566,7 @@ def main() -> None:
                         "mutation_score": None, "total_mutants_generated": None, "mutants_run": None,
                         "killed": None, "survived": None, "other_outcomes": {},
                         "init_duration_s": None, "exec_duration_s": None,
+                        "surviving_mutants_exported": None,
                     }
                 results.append(result)
                 cache_file.write(json.dumps(result) + "\n")
