@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Classify every method in `python_code.py` by how much real logic it has.
 
-Phase 4 Step 1 (see checklist.md): before spending effort generating tests
+this test-generation comparison, step 1: before spending effort generating tests
 that target "real logic", we need to know which methods actually have any.
 This generalizes `validate_logic.py`'s whole-model `no_logic` check down to
 individual methods, and splits the remainder into `trivial` (plain field

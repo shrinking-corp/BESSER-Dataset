@@ -2,8 +2,7 @@
 
 *Generated 2026-09-17. Consolidates every coverage/mutation/class-coverage measurement
 taken across this project's three test-suite variants. Source data: the individual
-`reports/*.json` files listed at the bottom; methodology notes: `docs/DECISIONS.md`,
-step-by-step run history: `checklist.md`.*
+`reports/*.json` files listed at the bottom; methodology notes: `docs/DECISIONS.md`.*
 
 **Three test suites exist per model:**
 - **`test_hypothesis.py`** ("old suite") — the dataset's original generated suite (a

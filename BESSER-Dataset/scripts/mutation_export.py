@@ -4,7 +4,7 @@ session db before the scratch copy holding it is discarded.
 `validate_mutation.py`/`validate_mutation_properties.py` only ever read a
 *count* of survived mutants out of the session sqlite db (see their
 `read_results()`) -- enough for a mutation score, but nothing to act on.
-Phase 4's LLM-driven track (see checklist.md) needs the actual mutant detail:
+the LLM-driven track of the test-generation comparison needs the actual mutant detail:
 which line, which operator, what the diff looked like. cosmic-ray keeps
 exactly that (`mutation_specs` + `work_results.diff`, see
 `cosmic_ray/work_db.py`), but only inside the session db, which lives in a

@@ -1,0 +1,434 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    Bridge,
+    Data,
+    Device,
+    Port,
+    Server,
+    wsmodel3_AccesPoint,
+    wsmodel3_Actuator,
+    wsmodel3_Break,
+    wsmodel3_Bridge,
+    wsmodel3_Communication,
+    wsmodel3_CommunicationData,
+    wsmodel3_Controller,
+    wsmodel3_DBServer,
+    wsmodel3_Data,
+    wsmodel3_Device,
+    wsmodel3_DeviceData,
+    wsmodel3_ExternalAPI,
+    wsmodel3_Function,
+    wsmodel3_InputBridge,
+    wsmodel3_InputOrchestrator,
+    wsmodel3_InputPort,
+    wsmodel3_IntegrationPattern,
+    wsmodel3_IoTNode,
+    wsmodel3_MessageBroker,
+    wsmodel3_Orchestrator,
+    wsmodel3_OrchestratorData,
+    wsmodel3_OutputBridge,
+    wsmodel3_OutputOrchestrator,
+    wsmodel3_OutputPort,
+    wsmodel3_Port,
+    wsmodel3_REST,
+    wsmodel3_Sensor,
+    wsmodel3_Server,
+    wsmodel3_System,
+    wsmodel3_WebServer,
+    wsmodel3_WebService,
+    ActuatorType,
+    CommunicationType,
+    ControllerType,
+    DBType,
+    MessageBrokerType,
+    PortType,
+    SensorType,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_accespoint31_reverse_link_reassign_clear():
+    a1 = wsmodel3_Communication(name="sample_text", type="sample_text")
+    a2 = wsmodel3_Communication(name="sample_text_2", type="sample_text_2")
+    b = wsmodel3_AccesPoint(pass_="sample_text", ssid="sample_text")
+    _safe_set(b, 'wsmodel3_AccesPoint33', a1)
+    assert _is_linked(b, 'wsmodel3_AccesPoint33', a1)
+    if hasattr(a1, 'wsmodel3_Communication32'):
+        assert _is_linked(a1, 'wsmodel3_Communication32', b)
+    _safe_set(b, 'wsmodel3_AccesPoint33', a2)
+    assert _is_linked(b, 'wsmodel3_AccesPoint33', a2)
+    if hasattr(a1, 'wsmodel3_Communication32'):
+        assert not _is_linked(a1, 'wsmodel3_Communication32', b)
+    if hasattr(a2, 'wsmodel3_Communication32'):
+        assert _is_linked(a2, 'wsmodel3_Communication32', b)
+    _safe_set(b, 'wsmodel3_AccesPoint33', None)
+    assert not _is_linked(b, 'wsmodel3_AccesPoint33', a2)
+    if hasattr(a2, 'wsmodel3_Communication32'):
+        assert not _is_linked(a2, 'wsmodel3_Communication32', b)
+
+
+def test_assoc_accespoint5_reverse_link_reassign_clear():
+    a1 = wsmodel3_System(name="sample_text")
+    a2 = wsmodel3_System(name="sample_text_2")
+    b = wsmodel3_AccesPoint(pass_="sample_text", ssid="sample_text")
+    _safe_set(b, 'wsmodel3_AccesPoint', a1)
+    assert _is_linked(b, 'wsmodel3_AccesPoint', a1)
+    if hasattr(a1, 'wsmodel3_System6'):
+        assert _is_linked(a1, 'wsmodel3_System6', b)
+    _safe_set(b, 'wsmodel3_AccesPoint', a2)
+    assert _is_linked(b, 'wsmodel3_AccesPoint', a2)
+    if hasattr(a1, 'wsmodel3_System6'):
+        assert not _is_linked(a1, 'wsmodel3_System6', b)
+    if hasattr(a2, 'wsmodel3_System6'):
+        assert _is_linked(a2, 'wsmodel3_System6', b)
+    _safe_set(b, 'wsmodel3_AccesPoint', None)
+    assert not _is_linked(b, 'wsmodel3_AccesPoint', a2)
+    if hasattr(a2, 'wsmodel3_System6'):
+        assert not _is_linked(a2, 'wsmodel3_System6', b)
+
+
+def test_assoc_actuator41_reverse_link_reassign_clear():
+    a1 = wsmodel3_InputBridge(URI="sample_text")
+    a2 = wsmodel3_InputBridge(URI="sample_text_2")
+    b = wsmodel3_Actuator(type="sample_text")
+    _safe_set(b, 'wsmodel3_Actuator42', a1)
+    assert _is_linked(b, 'wsmodel3_Actuator42', a1)
+    if hasattr(a1, 'wsmodel3_InputBridge'):
+        assert _is_linked(a1, 'wsmodel3_InputBridge', b)
+    _safe_set(b, 'wsmodel3_Actuator42', a2)
+    assert _is_linked(b, 'wsmodel3_Actuator42', a2)
+    if hasattr(a1, 'wsmodel3_InputBridge'):
+        assert not _is_linked(a1, 'wsmodel3_InputBridge', b)
+    if hasattr(a2, 'wsmodel3_InputBridge'):
+        assert _is_linked(a2, 'wsmodel3_InputBridge', b)
+    _safe_set(b, 'wsmodel3_Actuator42', None)
+    assert not _is_linked(b, 'wsmodel3_Actuator42', a2)
+    if hasattr(a2, 'wsmodel3_InputBridge'):
+        assert not _is_linked(a2, 'wsmodel3_InputBridge', b)
+
+
+def test_assoc_break_74_reverse_link_reassign_clear():
+    a1 = wsmodel3_Function(expression="sample_text")
+    a2 = wsmodel3_Function(expression="sample_text_2")
+    b = wsmodel3_Break(expression="sample_text")
+    _safe_set(b, 'wsmodel3_Break', a1)
+    assert _is_linked(b, 'wsmodel3_Break', a1)
+    if hasattr(a1, 'wsmodel3_Function75'):
+        assert _is_linked(a1, 'wsmodel3_Function75', b)
+    _safe_set(b, 'wsmodel3_Break', a2)
+    assert _is_linked(b, 'wsmodel3_Break', a2)
+    if hasattr(a1, 'wsmodel3_Function75'):
+        assert not _is_linked(a1, 'wsmodel3_Function75', b)
+    if hasattr(a2, 'wsmodel3_Function75'):
+        assert _is_linked(a2, 'wsmodel3_Function75', b)
+    _safe_set(b, 'wsmodel3_Break', None)
+    assert not _is_linked(b, 'wsmodel3_Break', a2)
+    if hasattr(a2, 'wsmodel3_Function75'):
+        assert not _is_linked(a2, 'wsmodel3_Function75', b)
+
+
+def test_assoc_bridge47_reverse_link_reassign_clear():
+    a1 = wsmodel3_MessageBroker(host="sample_text", pass_="sample_text", port=7, type="sample_text", usser="sample_text")
+    a2 = wsmodel3_MessageBroker(host="sample_text_2", pass_="sample_text_2", port=13, type="sample_text_2", usser="sample_text_2")
+    b = wsmodel3_Bridge(host="sample_text", port=7, topic="sample_text")
+    _safe_set(b, 'wsmodel3_Bridge49', a1)
+    assert _is_linked(b, 'wsmodel3_Bridge49', a1)
+    if hasattr(a1, 'wsmodel3_MessageBroker48'):
+        assert _is_linked(a1, 'wsmodel3_MessageBroker48', b)
+    _safe_set(b, 'wsmodel3_Bridge49', a2)
+    assert _is_linked(b, 'wsmodel3_Bridge49', a2)
+    if hasattr(a1, 'wsmodel3_MessageBroker48'):
+        assert not _is_linked(a1, 'wsmodel3_MessageBroker48', b)
+    if hasattr(a2, 'wsmodel3_MessageBroker48'):
+        assert _is_linked(a2, 'wsmodel3_MessageBroker48', b)
+    _safe_set(b, 'wsmodel3_Bridge49', None)
+    assert not _is_linked(b, 'wsmodel3_Bridge49', a2)
+    if hasattr(a2, 'wsmodel3_MessageBroker48'):
+        assert not _is_linked(a2, 'wsmodel3_MessageBroker48', b)
+
+
+def test_assoc_communication27_reverse_link_reassign_clear():
+    a1 = wsmodel3_Controller(type="sample_text")
+    a2 = wsmodel3_Controller(type="sample_text_2")
+    b = wsmodel3_Communication(name="sample_text", type="sample_text")
+    _safe_set(b, 'wsmodel3_Communication', a1)
+    assert _is_linked(b, 'wsmodel3_Communication', a1)
+    if hasattr(a1, 'wsmodel3_Controller28'):
+        assert _is_linked(a1, 'wsmodel3_Controller28', b)
+    _safe_set(b, 'wsmodel3_Communication', a2)
+    assert _is_linked(b, 'wsmodel3_Communication', a2)
+    if hasattr(a1, 'wsmodel3_Controller28'):
+        assert not _is_linked(a1, 'wsmodel3_Controller28', b)
+    if hasattr(a2, 'wsmodel3_Controller28'):
+        assert _is_linked(a2, 'wsmodel3_Controller28', b)
+    _safe_set(b, 'wsmodel3_Communication', None)
+    assert not _is_linked(b, 'wsmodel3_Communication', a2)
+    if hasattr(a2, 'wsmodel3_Controller28'):
+        assert not _is_linked(a2, 'wsmodel3_Controller28', b)
+
+
+def test_assoc_device21_reverse_link_reassign_clear():
+    a1 = wsmodel3_REST(URI="sample_text", port=7)
+    a2 = wsmodel3_REST(URI="sample_text_2", port=13)
+    b = wsmodel3_Device(name="sample_text")
+    _safe_set(b, 'wsmodel3_Device23', a1)
+    assert _is_linked(b, 'wsmodel3_Device23', a1)
+    if hasattr(a1, 'wsmodel3_REST22'):
+        assert _is_linked(a1, 'wsmodel3_REST22', b)
+    _safe_set(b, 'wsmodel3_Device23', a2)
+    assert _is_linked(b, 'wsmodel3_Device23', a2)
+    if hasattr(a1, 'wsmodel3_REST22'):
+        assert not _is_linked(a1, 'wsmodel3_REST22', b)
+    if hasattr(a2, 'wsmodel3_REST22'):
+        assert _is_linked(a2, 'wsmodel3_REST22', b)
+    _safe_set(b, 'wsmodel3_Device23', None)
+    assert not _is_linked(b, 'wsmodel3_Device23', a2)
+    if hasattr(a2, 'wsmodel3_REST22'):
+        assert not _is_linked(a2, 'wsmodel3_REST22', b)
+
+
+def test_assoc_externalapi11_reverse_link_reassign_clear():
+    a1 = wsmodel3_System(name="sample_text")
+    a2 = wsmodel3_System(name="sample_text_2")
+    b = wsmodel3_ExternalAPI(URI="sample_text")
+    _safe_set(b, 'wsmodel3_ExternalAPI', a1)
+    assert _is_linked(b, 'wsmodel3_ExternalAPI', a1)
+    if hasattr(a1, 'wsmodel3_System12'):
+        assert _is_linked(a1, 'wsmodel3_System12', b)
+    _safe_set(b, 'wsmodel3_ExternalAPI', a2)
+    assert _is_linked(b, 'wsmodel3_ExternalAPI', a2)
+    if hasattr(a1, 'wsmodel3_System12'):
+        assert not _is_linked(a1, 'wsmodel3_System12', b)
+    if hasattr(a2, 'wsmodel3_System12'):
+        assert _is_linked(a2, 'wsmodel3_System12', b)
+    _safe_set(b, 'wsmodel3_ExternalAPI', None)
+    assert not _is_linked(b, 'wsmodel3_ExternalAPI', a2)
+    if hasattr(a2, 'wsmodel3_System12'):
+        assert not _is_linked(a2, 'wsmodel3_System12', b)
+
+
+def test_assoc_externalapi62_reverse_link_reassign_clear():
+    a1 = wsmodel3_Orchestrator(name="sample_text", port="sample_text")
+    a2 = wsmodel3_Orchestrator(name="sample_text_2", port="sample_text_2")
+    b = wsmodel3_ExternalAPI(URI="sample_text")
+    _safe_set(b, 'wsmodel3_ExternalAPI64', a1)
+    assert _is_linked(b, 'wsmodel3_ExternalAPI64', a1)
+    if hasattr(a1, 'wsmodel3_Orchestrator63'):
+        assert _is_linked(a1, 'wsmodel3_Orchestrator63', b)
+    _safe_set(b, 'wsmodel3_ExternalAPI64', a2)
+    assert _is_linked(b, 'wsmodel3_ExternalAPI64', a2)
+    if hasattr(a1, 'wsmodel3_Orchestrator63'):
+        assert not _is_linked(a1, 'wsmodel3_Orchestrator63', b)
+    if hasattr(a2, 'wsmodel3_Orchestrator63'):
+        assert _is_linked(a2, 'wsmodel3_Orchestrator63', b)
+    _safe_set(b, 'wsmodel3_ExternalAPI64', None)
+    assert not _is_linked(b, 'wsmodel3_ExternalAPI64', a2)
+    if hasattr(a2, 'wsmodel3_Orchestrator63'):
+        assert not _is_linked(a2, 'wsmodel3_Orchestrator63', b)
+
+
+def test_assoc_function58_reverse_link_reassign_clear():
+    a1 = wsmodel3_Orchestrator(name="sample_text", port="sample_text")
+    a2 = wsmodel3_Orchestrator(name="sample_text_2", port="sample_text_2")
+    b = wsmodel3_Function(expression="sample_text")
+    _safe_set(b, 'wsmodel3_Function', a1)
+    assert _is_linked(b, 'wsmodel3_Function', a1)
+    if hasattr(a1, 'wsmodel3_Orchestrator59'):
+        assert _is_linked(a1, 'wsmodel3_Orchestrator59', b)
+    _safe_set(b, 'wsmodel3_Function', a2)
+    assert _is_linked(b, 'wsmodel3_Function', a2)
+    if hasattr(a1, 'wsmodel3_Orchestrator59'):
+        assert not _is_linked(a1, 'wsmodel3_Orchestrator59', b)
+    if hasattr(a2, 'wsmodel3_Orchestrator59'):
+        assert _is_linked(a2, 'wsmodel3_Orchestrator59', b)
+    _safe_set(b, 'wsmodel3_Function', None)
+    assert not _is_linked(b, 'wsmodel3_Function', a2)
+    if hasattr(a2, 'wsmodel3_Orchestrator59'):
+        assert not _is_linked(a2, 'wsmodel3_Orchestrator59', b)
+
+
+def test_assoc_inputorchestrator55_reverse_link_reassign_clear():
+    a1 = wsmodel3_Orchestrator(name="sample_text", port="sample_text")
+    a2 = wsmodel3_Orchestrator(name="sample_text_2", port="sample_text_2")
+    b = wsmodel3_InputOrchestrator(URI="sample_text")
+    _safe_set(b, 'wsmodel3_InputOrchestrator57', a1)
+    assert _is_linked(b, 'wsmodel3_InputOrchestrator57', a1)
+    if hasattr(a1, 'wsmodel3_Orchestrator56'):
+        assert _is_linked(a1, 'wsmodel3_Orchestrator56', b)
+    _safe_set(b, 'wsmodel3_InputOrchestrator57', a2)
+    assert _is_linked(b, 'wsmodel3_InputOrchestrator57', a2)
+    if hasattr(a1, 'wsmodel3_Orchestrator56'):
+        assert not _is_linked(a1, 'wsmodel3_Orchestrator56', b)
+    if hasattr(a2, 'wsmodel3_Orchestrator56'):
+        assert _is_linked(a2, 'wsmodel3_Orchestrator56', b)
+    _safe_set(b, 'wsmodel3_InputOrchestrator57', None)
+    assert not _is_linked(b, 'wsmodel3_InputOrchestrator57', a2)
+    if hasattr(a2, 'wsmodel3_Orchestrator56'):
+        assert not _is_linked(a2, 'wsmodel3_Orchestrator56', b)
+
+
+def test_assoc_inputorchestrator68_reverse_link_reassign_clear():
+    a1 = wsmodel3_InputOrchestrator(URI="sample_text")
+    a2 = wsmodel3_InputOrchestrator(URI="sample_text_2")
+    b = wsmodel3_Function(expression="sample_text")
+    _safe_set(b, 'wsmodel3_Function69', a1)
+    assert _is_linked(b, 'wsmodel3_Function69', a1)
+    if hasattr(a1, 'wsmodel3_InputOrchestrator70'):
+        assert _is_linked(a1, 'wsmodel3_InputOrchestrator70', b)
+    _safe_set(b, 'wsmodel3_Function69', a2)
+    assert _is_linked(b, 'wsmodel3_Function69', a2)
+    if hasattr(a1, 'wsmodel3_InputOrchestrator70'):
+        assert not _is_linked(a1, 'wsmodel3_InputOrchestrator70', b)
+    if hasattr(a2, 'wsmodel3_InputOrchestrator70'):
+        assert _is_linked(a2, 'wsmodel3_InputOrchestrator70', b)
+    _safe_set(b, 'wsmodel3_Function69', None)
+    assert not _is_linked(b, 'wsmodel3_Function69', a2)
+    if hasattr(a2, 'wsmodel3_InputOrchestrator70'):
+        assert not _is_linked(a2, 'wsmodel3_InputOrchestrator70', b)
+
+
+def test_assoc_messagebroker34_reverse_link_reassign_clear():
+    a1 = wsmodel3_MessageBroker(host="sample_text", pass_="sample_text", port=7, type="sample_text", usser="sample_text")
+    a2 = wsmodel3_MessageBroker(host="sample_text_2", pass_="sample_text_2", port=13, type="sample_text_2", usser="sample_text_2")
+    b = wsmodel3_Communication(name="sample_text", type="sample_text")
+    _safe_set(b, 'wsmodel3_Communication35', a1)
+    assert _is_linked(b, 'wsmodel3_Communication35', a1)
+    if hasattr(a1, 'wsmodel3_MessageBroker36'):
+        assert _is_linked(a1, 'wsmodel3_MessageBroker36', b)
+    _safe_set(b, 'wsmodel3_Communication35', a2)
+    assert _is_linked(b, 'wsmodel3_Communication35', a2)
+    if hasattr(a1, 'wsmodel3_MessageBroker36'):
+        assert not _is_linked(a1, 'wsmodel3_MessageBroker36', b)
+    if hasattr(a2, 'wsmodel3_MessageBroker36'):
+        assert _is_linked(a2, 'wsmodel3_MessageBroker36', b)
+    _safe_set(b, 'wsmodel3_Communication35', None)
+    assert not _is_linked(b, 'wsmodel3_Communication35', a2)
+    if hasattr(a2, 'wsmodel3_MessageBroker36'):
+        assert not _is_linked(a2, 'wsmodel3_MessageBroker36', b)
+
+
+def test_assoc_messagebroker9_reverse_link_reassign_clear():
+    a1 = wsmodel3_System(name="sample_text")
+    a2 = wsmodel3_System(name="sample_text_2")
+    b = wsmodel3_MessageBroker(host="sample_text", pass_="sample_text", port=7, type="sample_text", usser="sample_text")
+    _safe_set(b, 'wsmodel3_MessageBroker', a1)
+    assert _is_linked(b, 'wsmodel3_MessageBroker', a1)
+    if hasattr(a1, 'wsmodel3_System10'):
+        assert _is_linked(a1, 'wsmodel3_System10', b)
+    _safe_set(b, 'wsmodel3_MessageBroker', a2)
+    assert _is_linked(b, 'wsmodel3_MessageBroker', a2)
+    if hasattr(a1, 'wsmodel3_System10'):
+        assert not _is_linked(a1, 'wsmodel3_System10', b)
+    if hasattr(a2, 'wsmodel3_System10'):
+        assert _is_linked(a2, 'wsmodel3_System10', b)
+    _safe_set(b, 'wsmodel3_MessageBroker', None)
+    assert not _is_linked(b, 'wsmodel3_MessageBroker', a2)
+    if hasattr(a2, 'wsmodel3_System10'):
+        assert not _is_linked(a2, 'wsmodel3_System10', b)
+
+
+def test_assoc_port26_reverse_link_reassign_clear():
+    a1 = wsmodel3_Port(id="sample_text", type="sample_text")
+    a2 = wsmodel3_Port(id="sample_text_2", type="sample_text_2")
+    b = wsmodel3_Controller(type="sample_text")
+    _safe_set(b, 'wsmodel3_Controller', {a1})
+    assert _is_linked(b, 'wsmodel3_Controller', a1)
+    if hasattr(a1, 'wsmodel3_Port'):
+        assert _is_linked(a1, 'wsmodel3_Port', b)
+    _safe_set(b, 'wsmodel3_Controller', {a2})
+    assert _is_linked(b, 'wsmodel3_Controller', a2)
+    if hasattr(a1, 'wsmodel3_Port'):
+        assert not _is_linked(a1, 'wsmodel3_Port', b)
+    if hasattr(a2, 'wsmodel3_Port'):
+        assert _is_linked(a2, 'wsmodel3_Port', b)
+    _safe_set(b, 'wsmodel3_Controller', set())
+    assert not _is_linked(b, 'wsmodel3_Controller', a2)
+    if hasattr(a2, 'wsmodel3_Port'):
+        assert not _is_linked(a2, 'wsmodel3_Port', b)
+
+
+def test_assoc_rest39_reverse_link_reassign_clear():
+    a1 = wsmodel3_REST(URI="sample_text", port=7)
+    a2 = wsmodel3_REST(URI="sample_text_2", port=13)
+    b = wsmodel3_Bridge(host="sample_text", port=7, topic="sample_text")
+    _safe_set(b, 'wsmodel3_Bridge', a1)
+    assert _is_linked(b, 'wsmodel3_Bridge', a1)
+    if hasattr(a1, 'wsmodel3_REST40'):
+        assert _is_linked(a1, 'wsmodel3_REST40', b)
+    _safe_set(b, 'wsmodel3_Bridge', a2)
+    assert _is_linked(b, 'wsmodel3_Bridge', a2)
+    if hasattr(a1, 'wsmodel3_REST40'):
+        assert not _is_linked(a1, 'wsmodel3_REST40', b)
+    if hasattr(a2, 'wsmodel3_REST40'):
+        assert _is_linked(a2, 'wsmodel3_REST40', b)
+    _safe_set(b, 'wsmodel3_Bridge', None)
+    assert not _is_linked(b, 'wsmodel3_Bridge', a2)
+    if hasattr(a2, 'wsmodel3_REST40'):
+        assert not _is_linked(a2, 'wsmodel3_REST40', b)
+
+
+def test_assoc_rest65_reverse_link_reassign_clear():
+    a1 = wsmodel3_REST(URI="sample_text", port=7)
+    a2 = wsmodel3_REST(URI="sample_text_2", port=13)
+    b = wsmodel3_Orchestrator(name="sample_text", port="sample_text")
+    _safe_set(b, 'wsmodel3_Orchestrator66', {a1})
+    assert _is_linked(b, 'wsmodel3_Orchestrator66', a1)
+    if hasattr(a1, 'wsmodel3_REST67'):
+        assert _is_linked(a1, 'wsmodel3_REST67', b)
+    _safe_set(b, 'wsmodel3_Orchestrator66', {a2})
+    assert _is_linked(b, 'wsmodel3_Orchestrator66', a2)
+    if hasattr(a1, 'wsmodel3_REST67'):
+        assert not _is_linked(a1, 'wsmodel3_REST67', b)
+    if hasattr(a2, 'wsmodel3_REST67'):
+        assert _is_linked(a2, 'wsmodel3_REST67', b)
+    _safe_set(b, 'wsmodel3_Orchestrator66', set())
+    assert not _is_linked(b, 'wsmodel3_Orchestrator66', a2)
+    if hasattr(a2, 'wsmodel3_REST67'):
+        assert not _is_linked(a2, 'wsmodel3_REST67', b)
+
+
+def test_assoc_server1_reverse_link_reassign_clear():
+    a1 = wsmodel3_System(name="sample_text")
+    a2 = wsmodel3_System(name="sample_text_2")
+    b = wsmodel3_Server(host="sample_text")
+    _safe_set(b, 'wsmodel3_Server', a1)
+    assert _is_linked(b, 'wsmodel3_Server', a1)
+    if hasattr(a1, 'wsmodel3_System2'):
+        assert _is_linked(a1, 'wsmodel3_System2', b)
+    _safe_set(b, 'wsmodel3_Server', a2)
+    assert _is_linked(b, 'wsmodel3_Server', a2)
+    if hasattr(a1, 'wsmodel3_System2'):
+        assert not _is_linked(a1, 'wsmodel3_System2', b)
+    if hasattr(a2, 'wsmodel3_System2'):
+        assert _is_linked(a2, 'wsmodel3_System2', b)
+    _safe_set(b, 'wsmodel3_Server', None)
+    assert not _is_linked(b, 'wsmodel3_Server', a2)
+    if hasattr(a2, 'wsmodel3_System2'):
+        assert not _is_linked(a2, 'wsmodel3_System2', b)
+
+

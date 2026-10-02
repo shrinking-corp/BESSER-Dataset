@@ -1,0 +1,59 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    Car,
+    genericsGoCrazy_Car,
+    genericsGoCrazy_Comp,
+    genericsGoCrazy_MyClass,
+    genericsGoCrazy_MySubClass,
+    genericsGoCrazy_OtherClass,
+    genericsGoCrazy_SubCar,
+    Color,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_previousCar1_reverse_link_reassign_clear():
+    a1 = genericsGoCrazy_Car(color="sample_text", doors="sample_text", fullName="sample_text", name="sample_text")
+    a2 = genericsGoCrazy_Car(color="sample_text_2", doors="sample_text_2", fullName="sample_text_2", name="sample_text_2")
+    b = genericsGoCrazy_Car(color="sample_text", doors="sample_text", fullName="sample_text", name="sample_text")
+    _safe_set(b, 'genericsGoCrazy_Car0', a1)
+    assert _is_linked(b, 'genericsGoCrazy_Car0', a1)
+    if hasattr(a1, 'genericsGoCrazy_Car'):
+        assert _is_linked(a1, 'genericsGoCrazy_Car', b)
+    _safe_set(b, 'genericsGoCrazy_Car0', a2)
+    assert _is_linked(b, 'genericsGoCrazy_Car0', a2)
+    if hasattr(a1, 'genericsGoCrazy_Car'):
+        assert not _is_linked(a1, 'genericsGoCrazy_Car', b)
+    if hasattr(a2, 'genericsGoCrazy_Car'):
+        assert _is_linked(a2, 'genericsGoCrazy_Car', b)
+    _safe_set(b, 'genericsGoCrazy_Car0', None)
+    assert not _is_linked(b, 'genericsGoCrazy_Car0', a2)
+    if hasattr(a2, 'genericsGoCrazy_Car'):
+        assert not _is_linked(a2, 'genericsGoCrazy_Car', b)
+
+

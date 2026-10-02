@@ -14,9 +14,720 @@ different, non-overlapping reasons).
 
 ---
 
-## 2026-09-29 — Phase 4 sample methodology: stratify by has_logic count, not difficulty_score; equal allocation, size 200
+## 2026-10-02 — Name-based generator fidelity, run dataset-wide: 99.74% clean, two real patterns found
 
-**Superseded decision:** the original Phase 4 plan (checklist.md, first
+**Run against the full `usable_models.txt` (8,336 models)**:
+`validate_generator_fidelity_names.py` found only **22/8,336 models (0.26%)
+with any name-level mismatch** -- 2 missing classes, 20 with a missing
+attribute, 0 missing operations. This strongly confirms the generator is
+highly faithful **by name** at scale, not just on the 5 hand-picked spot-
+checks done when the script was built -- consistent with (and a useful
+complement to) the existing count-based fidelity finding that mismatches
+there are overwhelmingly the *expected*, documented kind (association
+accessors, property pairs), not generation failures.
+
+**Two concrete patterns among the 22, both worth knowing about:**
+
+1. **`model_10001897`/`model_10001985` -- the exact same "Factura" pair
+   already documented earlier this project** (the generator renders BUML's
+   `Factura` as `Facturas`, confirmed independently back when fixing these
+   two models' `test_structural_full.py`). Seeing this name-based check
+   reproduce a previously-known defect via a completely different method
+   (live-BUML-vs-tree-sitter name comparison, not manual inspection) is a
+   good sign the check itself is sound, not just that it finds novel bugs.
+2. **17 of the 22 involve a class attribute literally named `property`
+   going missing from the generated code** (e.g. `model_10001303`,
+   `model_10002412`, `model_10002604`, all with a `Player` class). Not yet
+   root-caused, but the name is suggestive: `property` collides with
+   Python's own `@property` decorator/builtin, so the generator may be
+   silently dropping or mishandling an attribute whose BUML name happens to
+   be exactly that reserved-sounding word -- plausible, not yet confirmed,
+   and not investigated further here.
+
+---
+
+## 2026-10-02 — Stage 1 results: Pynguin loses, CrossHair genuinely wins (on a fair, same-subset comparison)
+
+**The 200-model Stage 1 measurement finished: baseline, Pynguin, CrossHair,
+and Behavioral all measured via the same (now-reproducible, auto-retrying)
+`validate_mutation_properties.py` pipeline.** Raw standalone averages:
+baseline 50.85% (200/200), behavioral 59.89% (200/200 -- baseline plus the
+new association tests, a genuine **+9.0 point lift** over baseline, slightly
+better than the single-model `model_1` result found earlier), Pynguin
+27.75% (192/200 -- 8 models never got a `test_pynguin.py` at all, the known
+largest/most-complex-model generation failures), CrossHair 65.05% (177/200
+-- 23 models produced zero tests, no class had a usable non-property-only
+target).
+
+**Caught and fixed a real comparison-fairness mistake before drawing any
+conclusion.** Pynguin/CrossHair's raw averages are standalone scores on
+different, *smaller* subsets than baseline's full-200 average -- comparing
+65.05% directly against 50.85% would be comparing different populations of
+models, not a fair test of either tool. **Fixed by comparing each tool's
+standalone score against baseline's score on that exact same subset**, not
+baseline's full-200 figure:
+
+| | Pynguin (192-model subset) | CrossHair (177-model subset) |
+|---|---:|---:|
+| Baseline, same models | 51.54% | 52.12% |
+| Tool standalone | 27.75% | 65.05% |
+| **Delta** | **-23.79 pts** | **+12.93 pts** |
+
+**Pynguin is effectively ruled out** as a useful Track A contributor --
+loses badly even on its own best-case subset, consistent with everything
+already diagnosed about its weak isinstance-only assertions on this
+dataset's property-heavy code. **CrossHair genuinely wins**, by a wide
+margin, on a fair head-to-head -- real evidence that symbolic execution
+produces a stronger test suite than this project's current generator, at
+least on the subset of models where it can run at all (one with >=1
+class that isn't purely property-only).
+
+**Not yet measured: CrossHair's or Pynguin's *incremental* lift when merged
+into `test_combined.py`**, the same treatment Behavioral already got. The
+numbers above only show "would this suite work alone," not "does adding it
+help" -- the more directly useful question for deciding what to fold into
+the eventual super suite. CrossHair is the clear next candidate for that
+treatment given today's result; Pynguin likely isn't worth the effort given
+how badly it underperforms even standalone.
+
+---
+
+## 2026-10-02 — Built the name-based generator-fidelity check (counts were never enough)
+
+**Flagged 2026-10-01, built today, while mutation measurements ran in the
+background.** `validate_generator_fidelity.py` has only ever compared
+*counts* between the BUML model and the generated code (e.g. "model says 5
+classes, code has 6"). The user pointed out this is a real methodological
+gap, not a nice-to-have: two counts can agree while referring to entirely
+different, unrelated names. The question that actually matters -- "did the
+generator produce *this specific* class/attribute/operation?" -- requires a
+name-level check. This also directly anticipates a future need: validating
+whether an LLM (Track B, or any future LLM-based generation) produced code
+with *all the necessary* classes/methods/attributes. A count match there is
+close to meaningless -- an LLM could hallucinate the right number of classes
+under the wrong names, or merge/split classes while preserving the total.
+
+**Built `scripts/validate_generator_fidelity_names.py`, a genuinely new
+script (not a modification of the count-based one, which stays as-is and
+still answers a legitimate, different question).** Key design decision:
+`model_metadata.json` turned out to only ever store aggregate counts, never
+names (confirmed by inspection) -- so this script reads the **live BUML
+model** directly via `besser` (requires `.venv-puml`) instead, reusing
+`generate_structural_tests.py`'s own BUML-loading and identifier-
+sanitization helpers (`find_buml_file`, `load_domain_model`,
+`_python_identifier`) rather than reimplementing already-battle-tested
+logic -- in particular the handling of BUML names containing characters
+invalid in a Python identifier (e.g. `model_2533`'s `#`), which the real
+code generator silently strips and which a naive name-set comparison would
+otherwise misreport as a missing class.
+
+For each BUML class, resolves it against `code_structure.json`'s (tree-
+sitter) class names trying the raw name then the sanitized form; only a
+genuine absence in both counts as missing. For each matched class, checks
+every declared attribute/operation name against that class's actual code-
+side attributes/methods the same way. Only *missing-from-code* is flagged --
+extra code-side attributes/methods (association accessors, `__init__`,
+property getters/setters) are expected noise, same reasoning the count-
+based script already documented for its own attribute/method counts.
+
+**Verified across 5 spot-checks**, never a full/sampled dataset run (per
+standing rule -- the assistant never executes project scripts against the
+dataset, only hands off commands): `model_1` and `model_100127` both show
+zero mismatch, which is the *correct* result, not a missed bug -- this
+check is orthogonal to the already-known abstract-flag defect (that's about
+a flag's value, not whether the class exists by name). `model_2533`
+confirmed the `#`-sanitization match works with no false-positive "missing"
+report. `model_10001`/`model_100017` (real declared operations, not just
+the common zero-operations case) resolved correctly with zero false misses.
+Also directly unit-tested the resolution helper against a synthetic,
+genuinely-absent name to confirm the detection side works, not just the
+no-false-positive side.
+
+**Not yet run dataset-wide** -- the 5 spot-checks all came back clean,
+which is suggestive but not conclusive at that scale:
+```
+.venv-puml\Scripts\python.exe scripts\validate_generator_fidelity_names.py --models-file reports\usable_models.txt --workers 8
+```
+
+---
+
+## 2026-10-01 — Real surviving-mutant diagnosis on model_1: two distinct causes, neither is "just vary the values"
+
+**Correction, and real diagnosis via actual surviving mutants (not
+assumption).** Before building a new "behavioral test" generator (per the
+entry below), read `generate_structural_tests.py` in full and found the
+premise wrong: it already generates a `link -> reassign -> clear` sequence
+per binary association (e.g. `test_assoc_nodes0_link_reassign_clear`),
+which already calls a setter with two different real values and checks the
+reciprocal side -- i.e. it's already a behavioral, multi-call test, not a
+single-snapshot structural one. The earlier claim that a new generator was
+needed to add this was based on older context (`test_hypothesis.py`'s known
+weaknesses) incorrectly carried over without reading this newer script
+first.
+
+Used the newly-built `scripts/mutation_export.py` to get real evidence
+instead of guessing again: ran `validate_mutation_properties.py`'s
+`validate_model()` directly (smoke-test only, scratch copy, same convention
+as the Pynguin/CrossHair checks) against `model_1`'s real `test_combined.py`
+with `--export-surviving-mutants`. Result: 40 mutants run, 10 killed, 30
+survived (`mutation_score=0.25`, lower than this model's usual score since
+property-scoped). Inspected all 30 surviving mutants' diffs directly.
+**Every one lives inside a bidirectional-association setter's guard logic**
+-- exactly what `link_reassign_clear` is supposed to exercise -- yet they
+survive anyway, for two distinct, different reasons:
+
+1. **Genuinely unkillable (equivalent) mutants, not a test gap.**
+   `petrinet_Arc` is a bare `class petrinet_Arc: pass` (confirmed via
+   `grep`+`Read`) -- zero properties. Setters linking to `petrinet_Arc`-typed
+   objects (`target`, `petrinet_Node5`, `petrinet_Node9`) internally check
+   `hasattr(item, "Arc")`/`hasattr(item, "petrinet_Arc6")` before doing
+   anything observable -- since `petrinet_Arc` instances never have that
+   attribute, this is **always False for any possible test**, making the
+   comparison mutants inside that branch permanently dead code. No test of
+   any kind (library-generated, LLM-generated, or hand-written) could ever
+   kill these -- it's a code-generator limitation (an asymmetric
+   bidirectional association: one side fully implemented, the reciprocal
+   side a stub), not something fixable by writing better tests.
+2. **A real, subtle gap: the generated test only triggers a setter from one
+   direction, relying on the reciprocal side firing only as a side effect.**
+   Traced `test_assoc_nodes0_link_reassign_clear` against the actual code
+   line by line: it calls `a.petrinet_Petrinet = {b1}` and relies on that
+   setter's own internal code to call `setattr(b1, 'petrinet_Node', a)` as a
+   side effect -- it never calls `b1.petrinet_Node = ...` directly. Traced
+   the nested execution for the reassignment step: by the time the
+   reciprocal setter's own "remove old value" guard runs (triggered
+   recursively from inside the outer setter), the *outer* setter has
+   already overwritten its own stored collection to the new value -- so the
+   specific comparison the surviving mutant touches ends up checking data
+   that's already been replaced, making the mutant's effect unobservable in
+   this exact call sequence. This is a genuine test blind spot, but the fix
+   isn't "vary the literal values" -- it's **calling the setter from both
+   ends of an association independently**, not relying on one side's side
+   effects to exercise the other.
+
+**Conclusion: no single simple fix (new generator or otherwise) addresses
+both causes, and cause 1 isn't fixable by any test at all.** Any future
+mutation-score comparison (Track A, Track B, or a new generator) should
+expect a real, non-zero floor of unkillable mutants from asymmetric stub
+associations -- this should be accounted for when judging "how good" any
+approach's resulting mutation score is, not treated as 100% achievable.
+Whether a new generator is worth building to address cause 2 specifically
+(independent both-ends setter calls) is a decision for the user, not yet
+made.
+
+---
+
+## 2026-10-01 — The `.venv-phase4` → `.venv-testgen` rename silently broke `crosshair.exe`, affecting the entire 200-model CrossHair batch run
+
+**User reported every single model came back `no_tests_generated`, 0
+classes covered, including models with hundreds of classes** -- a batch-
+wide, total failure rather than the occasional per-class skip the smoke
+test had shown. Root cause: `generate_crosshair_tests.py` invoked the
+`crosshair`/`crosshair.exe` **console-script wrapper** directly (resolved
+via `default_crosshair_cli()`, pointing at `.venv-testgen/Scripts/crosshair.exe`).
+Windows console-script launchers generated by pip/distlib bake the venv's
+**absolute path** into the wrapper at install time -- renaming the venv
+directory (`.venv-phase4` -> `.venv-testgen`, done earlier the same day for
+unrelated naming-clarity reasons) left the installed `crosshair.exe`
+silently broken: confirmed directly, `exit 1, zero stdout, zero stderr` --
+no error message of any kind, which is why every model's classes uniformly
+failed instead of producing a visible crash.
+
+**Fix: invoke `python -m crosshair` instead of the console-script wrapper,
+never a fixed-path `.exe`.** This has no dependency on where the venv
+directory happens to live, and is exactly how `generate_pynguin_tests.py`
+already invokes Pynguin (`-m pynguin`, never a console-script wrapper) --
+same class of fix, same reasoning, just discovered a day later for the
+second tool. Removed `default_crosshair_cli()`/`--crosshair-cli` entirely
+(no longer has any reason to exist); `--crosshair-python` (already present
+for CLI symmetry with the Pynguin script, previously unused) now does the
+real work, pointing at the venv's `python.exe` directly.
+
+**Verified the fix restores the original, correct behavior**: re-ran
+`generate_model()` against the same scratch copy of `model_1` used in the
+original smoke test -- `1/7` classes covered (`petrinet_Petrinet`), byte-
+identical to the pre-rename result. **Lesson for the future: renaming any
+venv directory this project depends on requires re-verifying every
+console-script entry point still works, not just that `python.exe` and
+`-m <module>` invocations still function** -- those two are unaffected by
+the rename (confirmed directly), only `.exe` wrappers are at risk.
+
+---
+
+## 2026-10-01 — Extended the auto-retry fix to all four generation scripts
+
+**User hit the identical cache-permanence trap on `generate_pynguin_tests.py`**
+(191/200 generated, 9 presumably timed-out/errored models stuck in the cache
+as permanent failures) right after the mutation-validator fix above was
+built -- the same `RETRIABLE_STATUSES` fix just hadn't been applied to the
+newer generation scripts yet. Applied the identical pattern to all four:
+`generate_pynguin_tests.py` (`{"timeout", "no_tests_generated", "error"}`),
+`generate_crosshair_tests.py` (`{"no_tests_generated", "error"}`),
+`generate_behavioral_tests.py` (`{"error"}`), and
+`merge_combined_and_behavioral.py` (`{"error"}`) -- each excludes its own
+permanent/input-data statuses (e.g. `missing_file`, `no_classes`,
+`missing_combined`) the same way the validators exclude `missing_file`/
+`no_mutants`. Verified each one with a synthetic 2-entry cache (one "good"
+status, one "bad"/retriable status), confirming the retriable entry is
+correctly excluded from the "done" set while the good one is left alone --
+`generate_behavioral_tests.py` needed verifying via `.venv-puml` specifically
+(where `besser` lives), the other three via the main `.venv`.
+
+**Practical effect:** every script in the Phase 4 pipeline now self-heals on
+a plain re-run (optionally with adjusted timeouts/workers) -- no script in
+this project requires a separate `--report-name` + manual merge for a retry
+anymore.
+
+---
+
+## 2026-10-01 — Mutation validators now auto-retry failed models under the same report, no more `_retry`/`_error` fragmentation
+
+**User feedback: the established retry pattern (separate `--report-name`
+per retry batch, then manually merge into a `_final` report) was "tiresome"
+-- too many report files for one logical measurement.** This pattern had
+been used repeatedly throughout the project (the 52-model retry, the
+112-model retry, etc.) because the cache/resume logic treated ANY cached
+result, including a failed one, as permanently "done" -- so simply
+re-running the same command never retried a timeout, it just skipped it
+forever.
+
+**Fixed at the root in both `validate_mutation.py` and
+`validate_mutation_properties.py`.** Added `RETRIABLE_STATUSES = {"timeout",
+"error", "init_error", "exec_error"}` -- cached results with one of these
+statuses are no longer treated as done. On the next run (same
+`--report-name`, same `--models-file`, typically with a higher
+`--overall-timeout` or lower `--workers`), already-measured models are
+still skipped, but failed ones are automatically re-attempted and their new
+result appended to the same cache file -- `load_cache()` already resolves
+duplicate lines for one model name by letting the later line win, so this
+required no change to the cache format, only to what counts as "skip."
+`missing_file` and `no_mutants` are deliberately excluded from
+`RETRIABLE_STATUSES` -- those are permanent/legitimate terminal states, not
+transient failures a bigger timeout would fix.
+
+**Verified directly** with a synthetic 3-model cache (2 measured, 1
+timeout): confirmed the timeout entry is excluded from the "done" set (so
+it gets reprocessed) while the two measured ones are correctly left alone,
+then confirmed that appending a new successful result for the retried model
+makes `load_cache()` report it as measured with the new score, not the old
+failure.
+
+**Practical effect:** the test-generation-comparison baseline run (186/200 measured, 14
+timeouts at the 900s default) no longer needs a separate retry report --
+just re-run the identical command with `--overall-timeout 1800`, and the
+same `test_generation_baseline_mutation` report becomes complete in place.
+
+---
+
+## 2026-10-01 — Built and validated `generate_behavioral_tests.py`: +7.5 points mutation score on model_1, reproducibly
+
+**Built the targeted fix for category 2 of the surviving-mutant diagnosis**
+(the "both ends independently" gap, not the unkillable stub-class category).
+`scripts/generate_behavioral_tests.py` is a copy of
+`generate_structural_tests.py` (the original is never modified) trimmed down
+to emit *only* the one new kind of test this diagnosis found missing: for
+each binary association where **both** ends independently implement a real
+`@property` setter (reusing the existing `_has_real_property()` check), one
+`test_{assoc}_reverse_link_reassign_clear` test that calls the *other* end's
+setter directly -- two different values, reassign, clear -- instead of only
+ever observing that side as a side effect of the first end's setter, as
+`test_structural_full.py`'s existing forward-direction test does. Writes
+`test_behavioral.py` per model. Note: requires the `besser` package, which
+lives in `.venv-puml`, not the main `.venv` (same as the original generator
+-- found while smoke-testing).
+
+**Smoke-tested end-to-end on a scratch copy of `model_1`** (never the real
+dataset): generated exactly 1 test
+(`test_assoc_nodes0_reverse_link_reassign_clear`), correctly skipping the
+other 5 associations in that model (all link to the `petrinet_Arc` stub,
+correctly matching the earlier equivalent-mutant finding -- the generator
+doesn't waste a test on something that can't help). Passed standalone (1
+test) and merged with the real `test_combined.py` (41 tests, all pass).
+
+**Empirically validated a real, reproducible improvement**, using the now-
+fixed, reproducible mutation pipeline (see the `cap_mutants` fix above):
+merged the generated test into a scratch copy of `test_combined.py` and
+re-ran the identical 40-mutant set (confirmed identical via the content-
+sorted cap fix) -- **35% -> 42.5% mutation score (14 -> 17 killed)**, and
+the specific mutant originally traced in the diagnosis (line 96) is
+confirmed no longer surviving. This is the first concrete, measured,
+reproducible evidence in this test-generation comparison that a generator/library approach can
+actually move a model's mutation score, not just a traced mechanism in
+theory.
+
+**Not yet done:** running this across the full 200-model Stage 1 sample, or
+merging its output into `test_combined.py` for a "super suite" (that's Step
+3, pending the other three Stage 1 legs too). One model's result (even a
+positive one) doesn't establish how much this generalizes -- most models
+won't have model_1's specific mix of one real bidirectional association
+alongside several stub-linked ones.
+
+---
+
+## 2026-10-01 — Root-caused the run-to-run mutation-score noise: a real bug in `cap_mutants()`, not (mainly) Hypothesis randomness -- fixed in both validators
+
+**Started by testing the "both-ends" fix from the surviving-mutant diagnosis
+directly.** Added one hand-written test to a scratch copy of `model_1`'s
+`test_combined.py` that calls the `petrinet_Node.petrinet_Node` setter
+**directly, from both ends, with two different real values** (rather than
+relying on the reciprocal side firing only as a side effect of the other
+class's setter, as the existing `link_reassign_clear` test does).
+Sanity-checked it passes against the real code first, then re-ran the
+cosmic-ray setup with it added: the exact mutant traced in the diagnosis
+(`def: petrinet_Node`, line 96, `ReplaceComparisonOperator_IsNot_Is`) was
+**confirmed absent from the survivor list** -- the "call both ends
+independently" fix mechanism works exactly as diagnosed.
+
+**But the aggregate kill count didn't move in a way that confirmed it,
+leading to a much bigger discovery.** Re-running the **completely
+unmodified** baseline (no new test, nothing changed) gave three different
+kill counts across three separate runs (10, 9, 13 killed out of 40). Initial
+hypothesis was Hypothesis's own unseeded `@given` randomness. Tested that
+theory directly with `--hypothesis-seed=0` (newly added to both validators,
+see below) -- **still got different counts (12, then 13)**, ruling out
+Hypothesis alone as the explanation. Tested `PYTHONHASHSEED` next (affects
+`set()` iteration order, relevant since this dataset's associations are
+set-heavy) -- **also insufficient on its own.**
+
+**Real root cause, found by checking whether `cap_mutants()` even selects
+the same mutants twice:** it doesn't. Ran `cosmic-ray init` + the existing
+`scope_to_properties()`/`cap_mutants()` pipeline twice, back to back, on the
+*identical* source file, and compared the resulting 40-mutant sets by
+content (operator + position + occurrence) rather than by `job_id`: **27 of
+40 differed between the two runs**, despite `cap_mutants(seed_key=model_name)`
+being a fixed seed. Root cause: `cap_mutants()` samples via
+`random.Random(seed_key).sample(job_ids, max_mutants)`, which is
+**positional** -- it picks indices into whatever order `SELECT job_id FROM
+mutation_specs` happens to return, with no `ORDER BY`. Confirmed cosmic-ray
+does **not** guarantee that row order is stable across separate `init` runs
+on the same file (likely due to its own internal mutant-discovery process,
+not something this project controls) -- so the same seed, applied to a
+differently-ordered list each time, deterministically picks a *different*
+set of mutants. The `seed_key` was never actually making mutant selection
+reproducible, for any model, in any run, across this entire project,
+whenever capping kicked in (`total_mutants_generated > max_mutants` --
+the common case, since the default cap is 40).
+
+**Fix, verified, applied to both `validate_mutation.py` and
+`validate_mutation_properties.py`'s `cap_mutants()`:** fetch each mutant's
+content (operator, start/end position, occurrence) alongside its `job_id`,
+sort by that content *before* building the list `random.sample()` draws
+from, so the order is deterministic regardless of whatever order cosmic-ray
+happened to insert rows in. Verified directly: the same stable-sort-then-
+sample logic produced **identical mutant sets across two separate `init`
+runs** (0 differences). Then verified the fix at the `validate_model()`
+level: **3 consecutive runs of the real function against `model_1`, with
+the fix applied and no Hypothesis seed at all, gave identical results every
+time** (14 killed / 26 survived / 0.35 score, all three runs) -- confirming
+the `cap_mutants` bug was the dominant cause, not Hypothesis randomness
+(`--hypothesis-seed` is still available as a new opt-in flag on both
+scripts, since it's cheap insurance and may matter more on models with
+heavier property-based test content, but it is not what made this
+reproducible here).
+
+**This is a bigger finding than "today's noise" -- it's retroactive.**
+Every mutation score this project has ever computed, for every model where
+capping applied, was drawn from a non-reproducible random subset of that
+model's possible mutants -- not wrong in the sense of being miscounted, but
+not the single stable number the `seed_key` mechanism was always intended
+to produce. Aggregate statistics across thousands of models are still a
+legitimate sample of outcomes and not invalidated by this, but **no
+individual historical model score should be treated as exactly
+reproducible** if re-measured today. Confirms and sharpens the earlier
+"TODO: redo for every model" note -- the full-dataset re-run that was always
+going to be needed eventually now has a concrete, verified fix behind it,
+not just a seed flag. **Not yet scheduled**; the 200-model test-generation-comparison sample
+work going forward uses the fixed scripts, but the existing full-dataset
+reports are not being retroactively recomputed as part of this entry.
+
+---
+
+## 2026-10-01 — A 4th Track A approach (behavioral tests), and staging the comparison in two parts
+
+**Reframing, worked out with the user: "structural" vs. "behavioral" tests
+is the precise name for the gap Pynguin/CrossHair both hit.**
+`generate_structural_tests.py` is not incorrect -- it correctly implements a
+**structural** test: construct an object, make one call, check the
+resulting snapshot. That's a real, necessary check, and it works. But this
+dataset's actual logic (the bidirectional-association setter guard,
+`if self._x is not None: self._x._y.remove(self)`) is a **behavioral**
+property -- it's defined in terms of what should happen on a state
+*transition* (replacing an existing value), which is structurally invisible
+to any test that only ever calls the setter once from a fresh instance. No
+amount of improving a single-snapshot test (ours, Pynguin's, or CrossHair's)
+can reach it; what's needed is a test that calls the setter **twice, with
+two different real values**, so the guarded branch actually executes and a
+mutation to it becomes observable. This explains, after the fact, exactly
+why both Pynguin and CrossHair struggled on this dataset's dominant pattern
+today -- they're both fundamentally single-call/return-value-oriented tools.
+
+**Decision: add a 4th Track A approach, not just two.** A new,
+purpose-built generator, `scripts/generate_behavioral_tests.py`, will be a
+**copy** of `generate_structural_tests.py` (the original is never modified
+-- `test_structural_full.py` stays exactly as it is, still correct for what
+it checks), producing a new `test_behavioral.py` per model that calls each
+bidirectional-association setter twice with two different values. Not yet
+built.
+
+**Decision: stage the comparison in two parts, don't wait on Track B.** The
+colleague's LLM track isn't expected soon. Rather than block all comparison
+work on his timeline, Stage 1 compares the four things fully within this
+session's control (baseline `test_combined.py`, Pynguin, CrossHair,
+behavioral) first; Stage 2 re-runs the comparison as the real 5-way result
+once his results exist. The "library vs. LLM" framing for the thesis still
+refers to Stage 2, not Stage 1 alone -- Stage 1 is useful groundwork
+(confirms whether any library-side approach helps at all) but isn't the
+final answer by itself.
+
+---
+
+## 2026-10-01 — UTBotPython dropped from Track A: no native-Windows path exists
+
+**Decided with the user, same day as the CrossHair property-targeting
+findings (see below).** After Pynguin and CrossHair were both smoke-tested
+and found to have real, if different, limitations on this dataset's
+property-heavy code, investigated whether UTBotPython's actual CLI
+component (`utbot-cli-python`, inside the `UnitTestBot/UTBotJava` source
+repo -- not just the IntelliJ plugin) could run natively here.
+
+**Finding: no documented native-Windows path exists at all.**
+`utbot-cli-python` ships with its own dedicated `Dockerfile`
+(`azul/zulu-openjdk:11.0.15` base image, Linux, apt-installed **Python
+3.9** specifically -- not this project's 3.11) -- Docker is the only route
+the tool's own source provides, not an extra-cautious choice by an academic
+competition wrapper (an earlier check of the `UTBotPythonSBFT2024`
+competition repo had already surfaced a "Linux + JDK17 + glibc>=2.31"
+requirement, which this confirms is inherited from the real tool, not
+wrapper-specific over-caution).
+
+**Checked this machine's actual capability before deciding anything:** Java
+is already installed (`java -version` → JDK 25 default on PATH, JDK 11 also
+present separately -- satisfies the JVM requirement on its own). Docker is
+installed (`docker --version` → 29.4.2) but its daemon isn't currently
+running (`docker ps` fails to connect to the named pipe).
+
+**Decision: drop UTBotPython, Track A is Pynguin + CrossHair only.**
+Weighed starting Docker Desktop and building/running the official image
+(technically available) against the realistic payoff: UTBotPython is
+fundamentally the same *category* of tool as CrossHair -- symbolic
+execution, here combined with fuzzing -- and CrossHair had already hit a
+hard structural wall on this exact dataset shape (cannot target `@property`
+getters/setters at all, see below). Running a third symbolic-execution-
+family tool through an extra Docker+JVM+pinned-Python-3.9 layer for a likely
+similar result didn't justify the added setup cost and fragility. This also
+supersedes the "three libraries" part of the 2026-10-01 library-choice entry
+below -- the reasoning for choosing Pynguin/CrossHair and rejecting the
+Hypothesis-based option there still stands.
+
+---
+
+## 2026-10-01 — Pynguin installed and smoke-tested: isolated-venv incident, and a real assertion-budget gotcha
+
+**Incident: installing Pynguin/CrossHair directly into the main `.venv`
+silently changed shared dependencies.** `pip install pynguin crosshair-tool`
+downgraded `pytest` 9.1.1→8.4.2 and bumped `setuptools` 68.2.2→80.10.2,
+`Jinja2` 3.1.2→3.1.6, `rich` 15.0.0→14.3.4. This matters because
+`validate_mutation.py`/`validate_mutation_properties.py` invoke `pytest` as
+a subprocess for every one of this session's 8,000+ model mutation-testing
+runs -- changing it retroactively affects reproducibility of any future
+re-run, even though already-saved reports are unaffected. **Fixed:**
+uninstalled the new packages, reinstalled the exact prior pinned versions of
+the four affected packages, verified via `pip list` that the main venv
+matches its pre-incident state exactly. **Going forward:** Track A tooling
+lives in a new, separate `.venv-testgen`, never the main `.venv` -- mirrors
+the project's existing convention of purpose-specific venvs (`.venv-puml`
+already existed for a different purpose). (Separately noted, not caused by
+this work: the main venv already had a pre-existing, unrelated dependency
+conflict -- a package called `bocl` pins `pytest==7.4.0`/`setuptools==68.2.2`/
+etc. and requires a `besser` package that isn't installed at all; this
+predates today's session and wasn't introduced or worsened by this fix.)
+
+**Pynguin requires `PYNGUIN_DANGER_AWARE=1` to run at all** -- it executes
+the module under test with its generated inputs, and the maintainers'
+official recommendation is to run it inside Docker for isolation (the env
+var is set automatically there). Decided with the user to run natively
+instead and set the var explicitly: this dataset's generated code has shown
+zero file I/O, network, or subprocess behavior anywhere across this entire
+session (confirmed again on `model_1`: only stdlib `datetime`/`abc`
+imports), so the realistic risk is low, though not a hard guarantee the way
+Docker isolation would be.
+
+**Real finding: default settings produce isinstance-only assertions on this
+dataset's code, same weak pattern as our own generators -- but it's fixable,
+not a dead end.** Smoke-tested against a scratch copy of `model_1` (never
+the real `Dataset/` tree, same safety convention as the mutation scripts).
+With `--maximum_search_time 30` or `90` and the default
+`--maximum_mutation_time -1` ("unlimited"), **100% of generated assertions
+were `isinstance()` checks** -- zero value assertions, despite Pynguin's
+default assertion generator already being `MUTATION_ANALYSIS` (which is
+supposed to trace object-attribute/return-value changes across internally-
+generated mutants and assert on whatever differs). Root-caused this to two
+compounding factors: (1) `model_1` has **zero plain "operation" methods** --
+every method is `__init__` or a property getter/setter (confirmed via
+`grep`), the same "almost all real logic lives in property setters, not
+callable operations" shape documented earlier this project (see the
+mutation-score root-cause discussion below); (2) the default `-1` mutation-
+time budget appears to get starved by the overall time budget in practice,
+rather than genuinely running until done. **Fix: pass
+`--maximum_mutation_time` explicitly** (tried `120`) rather than trusting
+the default. With that change, Pynguin's internal mutation-analysis pass
+measurably ran (236 internally-generated mutants, 35 killed, self-reported
+`MutationScore=0.1549` via `--output_variables ... NumberOfCreatedMutants
+NumberOfKilledMutants MutationScore` and `--report_dir`), and **one real
+value assertion appeared** in the exported test file:
+`assert var_3.petrinet_Node == pytest.approx(-2204.94, abs=0.01, rel=0.01)`
+(alongside 26 still-isinstance-only ones). Modest yield for a single short
+run against one of the dataset's more property-heavy models, but confirms
+the mechanism works end-to-end here. **Takeaway for the real Track A sample
+run: always pass an explicit `--maximum_mutation_time`, never rely on the
+`-1` default.** Per-model time budget for the real 200-model run not yet
+decided.
+
+**CrossHair smoke-tested next, same scratch copy of `model_1`: works, but a
+different and more awkward limitation than Pynguin's.** `crosshair cover`
+produces valid pytest-stub output, but whole-file targeting
+(`crosshair cover python_code.py`) only ever covers **one representative
+class/method**, never all of them -- tried defaults, `-v
+--max_uninteresting_iterations 20`, and `--per_condition_timeout 3`; all
+three stopped at exactly 1 test (`petrinet_Petrinet.__init__`), never
+reaching the file's other 5 classes. Explicitly ruled out "it just needs
+more wall-clock time": a 300-second run with default settings finished on
+its own in 6 seconds with the identical single result, so this is how
+whole-file targeting behaves, not a budget shortfall. That one assertion is
+also useless on its own terms: `assert petrinet_Petrinet.__init__(...) ==
+None` is trivially true for any constructor regardless of what it did
+internally (`__init__` always returns `None`) -- the same root cause as
+Pynguin's weak spot, restated for a different engine: this dataset's logic
+lives in property *setters* (state mutation, no return value), and
+`cover`'s whole design is built around asserting on function *return
+values*. Confirmed class-level targeting is required and still inconsistent:
+`crosshair cover python_code.petrinet_Node` (the ABC base class) produced
+zero tests, and `crosshair cover python_code.petrinet_Arc` (a different
+concrete class) failed outright ("No functions or methods found", exit code
+2) -- likely because that class has no `__init__` of its own, only an
+inherited one, and CrossHair only examines methods defined directly on the
+targeted class. **Integration implication for the real sample run:**
+CrossHair probably needs one invocation **per class** (or per `has_logic`
+method), not one per model file the way Pynguin works -- a materially
+higher invocation count across 200 models, each paying its own process-
+startup/SMT-exploration overhead. Not yet tried: targeting a property
+*getter* directly, since getters do have a real return value (unlike
+setters/`__init__`) and may be the structurally correct way to point
+CrossHair at this dataset's code.
+
+**Tried targeting a property getter directly (the structurally "correct"
+CrossHair target, since getters DO return a value) -- a hard no, not a
+tuning problem.** `crosshair cover python_code.py:21` (the `name` getter's
+`def` line, confirmed correct via `grep`) failed outright: "Cannot find a
+function or method on line 21." The dotted-path form,
+`crosshair cover python_code.petrinet_Node.name`, silently found nothing at
+all -- no error, no output. Root cause: CrossHair's target lookup expects a
+plain callable; a `@property`-decorated attribute resolves to a descriptor
+object through Python's own introspection machinery, not a directly-callable
+function, so CrossHair's lookup genuinely cannot see it as a target. This is
+a hard capability gap in the tool, not something a longer budget or
+different flag would fix.
+
+**Checked whether a Python library exists specifically for getter/setter
+round-trip testing** (the user's instinct: Java has OpenPojo/pojo-tester,
+which test exactly this pattern via reflection -- surely Python has
+something similar?). **Researched and confirmed: no direct equivalent
+exists.** `classtools-autocode` *generates* getters/setters, it doesn't test
+them; "Sloth Test" builds regression tests from observed real execution
+traces, not property round-trips -- neither is actually the same tool
+category. The property-based options found earlier (Hypothesis Ghostwriter,
+icontract-hypothesis) were already ruled out 2026-10-01 for being "fuzzy."
+
+**Conclusion, combining today's two findings:** neither Pynguin
+(isinstance-only on setters) nor CrossHair (can't even target properties) --
+nor any known off-the-shelf Python library -- can meaningfully test this
+dataset's getter/setter bulk, which is most of its code. The one proven,
+actually-available lever for that part remains what was already identified
+months ago (see the mutation-score root-cause discussion below): varying
+the concrete values `generate_structural_tests.py` uses per setter test,
+instead of one hardcoded literal. **This reframes Track A's realistic
+scope**: Pynguin/CrossHair are likely to matter for the smaller pool of
+models/methods with genuine plain "operations" (actual computed logic), not
+the property-heavy bulk every model shares.
+
+UTBotPython not yet tested.
+
+---
+
+## 2026-10-01 — Test-generation comparison: library-track choice: Pynguin, CrossHair, UTBotPython (no Hypothesis-based option)
+
+**Superseded later the same day** — see the "UTBotPython dropped" entry
+above (newer entries are at the top of this file): after smoke-testing,
+UTBotPython was dropped for lack of any native-Windows path. Track A is
+**Pynguin + CrossHair only.** The reasoning below for *why* Pynguin/CrossHair
+were chosen, and why the Hypothesis-based option was rejected, still stands
+unchanged; only the UTBotPython part of this entry is no longer current.
+
+**Decided with the user and their colleagues.** Track A (the library-
+generated-tests side of the library-vs-LLM comparison, see Step 2 below)
+will use exactly three tools: **Pynguin, CrossHair, and UTBotPython.** No
+optional/control variant is included.
+
+**Why the earlier "strengthened Hypothesis" control was dropped, not just
+deprioritized:** the original test-generation-comparison plan (2026-09-28) included an optional
+control — re-targeting the Hypothesis property-based library (`@given`,
+already used in `test_hypothesis.py`) at `has_logic` methods with real value
+assertions instead of `isinstance`-only checks. The user and colleagues
+discussed this and rejected it: property-based, randomly-generated-input
+testing feels "fuzzy" for the purpose of this specific comparison — they
+want tests that exercise a method's actual logic directly, with concrete
+inputs and concrete assertions, the way a human would hand-write a test
+case. All three chosen tools produce exactly that (plain pytest-style
+functions with literal inputs/assertions), unlike Hypothesis's generated
+strategies. For the same reason, **Hypothesis Ghostwriter** and
+**icontract-hypothesis** (found while researching alternatives, both
+effectively free since they only need type hints, no new dependency burden)
+were also considered and set aside — both are still property-based/
+generated-input in character under the hood, just with a different strategy
+source (type hints/contracts instead of manual `@given` annotations).
+
+**Why these three specifically, researched 2026-09-30/10-01** after the
+user noted a plain web search for Python test generators surfaces almost
+nothing but Pynguin:
+
+- **Pynguin** — search-based (genetic/evolutionary, DynaMOSA algorithm),
+  explicitly optimizes for coverage/fault-detection as its fitness function,
+  needs no prior knowledge of what's wrong with the code. Reference
+  supplied by the user: Lukasczyk, S.; Fraser, G. "Pynguin: Automated Unit
+  Test Generation for Python." *ICSE 2022 Companion*.
+  [10.1145/3510454.3516829](https://dl.acm.org/doi/10.1145/3510454.3516829).
+- **CrossHair** — symbolic execution; finds concrete counterexamples that
+  violate an assertion. Directly targets the edge cases (empty string,
+  boundary numbers, `None`) already identified as the gap in this dataset's
+  existing tests (see the "why is mutation score low" discussion,
+  2026-09-17/18 below).
+- **UTBotPython** — symbolic execution + feedback-guided ("smart") fuzzing,
+  from JetBrains' UnitTestBot project. Chosen as the third candidate because
+  it's a genuine, independently-verified peer to Pynguin, not just something
+  found on a blog: it was one of only 4 tools in the most recent academic
+  head-to-head of Python test generators, SBFT Tool Competition 2024
+  (alongside Pynguin, Hypothesis Ghostwriter, and Klara), uses an
+  architecturally distinct technique from both Pynguin (search-based) and
+  CrossHair (pure symbolic execution, no fuzzing component), and is actively
+  maintained. Reference: Eghbali, A. et al. "SBFT Tool Competition 2024 --
+  Python Test Case Generation Track." [arXiv:2401.15189](https://arxiv.org/abs/2401.15189);
+  repo: [github.com/UnitTestBot](https://github.com/UnitTestBot).
+- **Klara ruled out**: also in the SBFT 2024 competition, but its last
+  release was 2021 and its own documentation states it doesn't support
+  loops or comprehensions — a dealbreaker given how many of this dataset's
+  `has_logic` methods involve exactly those constructs.
+
+**Not yet started:** none of the three tools are installed yet. Next step
+is checking each one actually runs against this dataset's generated Python
+code (version compatibility, whether any can be scoped to specific methods
+rather than a whole file) before committing compute time to a full Track A
+run on the 200-model sample.
+
+---
+
+## 2026-09-29 — Test-generation comparison sample methodology: stratify by has_logic count, not difficulty_score; equal allocation, size 200
+
+**Superseded decision:** the original test-generation-comparison plan (first
 written 2026-09-28) said the shared Track A/B sample should be "stratified
 by `difficulty_score`." Discussed with the user and changed this after
 `classify_method_logic.py`'s results made a concrete problem visible:
@@ -24,8 +735,8 @@ by `difficulty_score`." Discussed with the user and changed this after
 `model_2023` (the 932-class metamodel used elsewhere as a difficulty-score
 example) scores **86.66/100** on `difficulty_score` — one of the hardest
 models in the dataset — but has **zero methods at all** (`methods = 0` in
-its raw structural fields). It would be a completely useless Phase 4 sample
-member despite looking "hard" by the old criterion, because
+its raw structural fields). It would be a completely useless sample
+member for this comparison despite looking "hard" by the old criterion, because
 `difficulty_score` measures overall structural size/style, not "how much
 logic exists to break."
 
@@ -67,9 +778,9 @@ process):
 
 ---
 
-## 2026-09-29 — Phase 4 Step 1: per-method logic classification (`classify_method_logic.py`), and the surviving-mutant export prerequisite
+## 2026-09-29 — Test-generation comparison, step 1: per-method logic classification (`classify_method_logic.py`), and the surviving-mutant export prerequisite
 
-**Why:** Phase 4 (raising mutation score, see `checklist.md`) needs to target
+**Why:** this test-generation comparison (raising mutation score) needs to target
 test generation at methods that actually *have* logic to break — generating
 more tests for a plain getter/setter can't raise mutation score, since there's
 nothing value-dependent in it to get wrong. `validate_logic.py` (2026-09-10)
@@ -131,7 +842,7 @@ plain field assignment/getters/setters are universal, not a quirk of some
 models — while only **11.36%** of models contain even one fully-empty
 `no_logic` stub method (most models' methods all do at least *something*,
 even if trivial). **88.10%** of models have at least one `has_logic` method,
-which is the Phase 4 sample-eligibility number; the remaining 11.9% (992
+which is the test-generation-comparison sample-eligibility number; the remaining 11.9% (992
 models, see below) have none at all.
 
 **This quantifies the mutation-score root cause directly, for the first
@@ -164,7 +875,7 @@ code mutation testing can meaningfully discriminate on.
 Mean 19.70 `has_logic` methods/model, **median only 10** — the distribution
 has a long but thin tail (just 2.48% of models clear 100 `has_logic`
 methods). **7,344/8,336 models (88.1%)** have at least one `has_logic`
-method and are eligible for Phase 4's sample; the **992 (11.9%)** with zero
+method and are eligible for this comparison's sample; the **992 (11.9%)** with zero
 are consistently small models in their own right (avg 13.85 total methods,
 median 6, max 162 — never a large model that just happens to lack complex
 logic), so excluding them from the sample loses no large/complex model.
@@ -177,7 +888,7 @@ each), `model_5149`/`model_5150` (362/1104 each), `model_450`/`model_451`/
 (330/886 each), among others. Consistent with this dataset containing
 near-identical generated variants (already known from earlier duplicate-
 model observations this session); worth keeping in mind when drawing the
-Phase 4 sample so it isn't accidentally padded with near-duplicate twins.
+comparison's sample so it isn't accidentally padded with near-duplicate twins.
 
 **Shared prerequisite also built: exporting *which* mutants survived, not
 just the count.** `validate_mutation.py`/`validate_mutation_properties.py`
@@ -197,7 +908,7 @@ diff for that specific mutant — everything needed to show a specific broken
 test case to an LLM. Wired into both validators as a new, **opt-in**
 `--export-surviving-mutants DIR` flag (default off), so every already-
 completed full-dataset mutation run stays byte-for-byte unaffected; it only
-activates when explicitly passed for the Phase 4 sample run. Verified against
+activates when explicitly passed for this comparison's sample run. Verified against
 a synthetic sqlite db built to mirror cosmic-ray's real table schema exactly:
 correctly exported the one `SURVIVED` row with its full diff, correctly
 skipped the `KILLED` row.

@@ -109,6 +109,13 @@ TEST_FILE_METADATA_KEYS = {
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
 DEFAULT_OVERALL_TIMEOUT = 900  # hard wall-clock cap per model, seconds
+# Cached results with one of these statuses are automatically re-attempted
+# on the next run under the SAME --report-name, instead of being treated as
+# permanently done -- see validate_mutation_properties.py for the full
+# rationale (2026-10-01: avoids every retry needing its own --report-name
+# plus a manual merge). "missing_file"/"no_mutants" excluded deliberately --
+# permanent/legitimate terminal states, not transient failures.
+RETRIABLE_STATUSES = {"timeout", "error", "init_error", "exec_error"}
 
 
 def cosmic_ray_executable() -> str:
@@ -183,12 +190,31 @@ def sort_longest_first(model_dirs: list[Path]) -> list[Path]:
 
 
 def cap_mutants(session_path: Path, max_mutants: int, seed_key: str) -> tuple[int, int]:
-    """Randomly downsample mutation_specs/work_items rows in-place. Returns (total, kept)."""
+    """Randomly downsample mutation_specs/work_items rows in-place. Returns (total, kept).
+
+    IMPORTANT: sample from job_ids sorted by the mutant's own CONTENT
+    (operator + position + occurrence), never from the raw `SELECT job_id
+    FROM mutation_specs` row order. Confirmed 2026-10-01 (see
+    docs/DECISIONS.md) that cosmic-ray does NOT guarantee that row order is
+    stable across separate `cosmic-ray init` runs on the identical source
+    file -- two back-to-back init runs on the same model produced the same
+    40-mutant SAMPLE SIZE but a genuinely different SET of mutants (27/40
+    differed) despite this function's `seed_key` being fixed, because
+    `random.sample()` is positional: the same seed over a differently-
+    ordered list picks different content. Sorting by content first gives a
+    deterministic order every run, which is what makes `seed_key` actually
+    reproducible, the property this function always intended to have.
+    """
     con = sqlite3.connect(str(session_path))
     try:
         cur = con.cursor()
-        cur.execute("SELECT job_id FROM mutation_specs")
-        job_ids = [row[0] for row in cur.fetchall()]
+        cur.execute(
+            "SELECT job_id, operator_name, start_pos_row, start_pos_col, "
+            "end_pos_row, end_pos_col, occurrence FROM mutation_specs"
+        )
+        rows = cur.fetchall()
+        rows.sort(key=lambda r: (r[2], r[3], r[4], r[5], r[1], r[6]))
+        job_ids = [r[0] for r in rows]
         total = len(job_ids)
         if total <= max_mutants:
             return total, total
@@ -224,6 +250,7 @@ def validate_model(
     hypothesis_home: str,
     scratch_root: str,
     export_surviving_dir: Path | None = None,
+    hypothesis_seed: int | None = None,
 ) -> dict:
     checked_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
     result = {
@@ -273,11 +300,19 @@ def validate_model(
         # it (harmless if absent), and the TOML *literal* (single-quoted)
         # string around the whole value stops TOML from re-interpreting them.
         python_exe = Path(sys.executable).as_posix()
+        # --hypothesis-seed makes every @given test's example sequence fully
+        # deterministic instead of drawn from system entropy -- off by
+        # default (None) to keep every already-completed full-dataset run's
+        # behavior byte-for-byte unchanged. See validate_mutation_properties.py
+        # for the full rationale (2026-10-01: re-running the same unmodified
+        # model+suite twice with no seed gave 3 different kill counts out of
+        # 40 mutants across 3 runs).
+        seed_flag = f" --hypothesis-seed={hypothesis_seed}" if hypothesis_seed is not None else ""
         config_text = f"""[cosmic-ray]
 module-path = "{SOURCE_FILENAME}"
 timeout = {per_mutant_timeout}
 excluded-modules = []
-test-command = '"{python_exe}" -m pytest {TEST_FILENAME} -x -q -p no:cacheprovider'
+test-command = '"{python_exe}" -m pytest {TEST_FILENAME} -x -q -p no:cacheprovider{seed_flag}'
 
 [cosmic-ray.distributor]
 name = "local"
@@ -498,8 +533,15 @@ def main() -> None:
                          help="Write <dir>/<model>.json with full detail (module, line range, "
                               "operator, diff) of every SURVIVED mutant, read from the session "
                               "db before its scratch copy is discarded. Off by default -- only "
-                              "needed for Phase 4's sample (see checklist.md), not full-dataset "
+                              "needed for the test-generation comparison sample, not full-dataset "
                               "runs, since it adds a file per model with survivors.")
+    parser.add_argument("--hypothesis-seed", type=int, default=None,
+                         help="Pass --hypothesis-seed=N to every pytest invocation, making every "
+                              "@given test's example sequence fully deterministic instead of drawn "
+                              "from system entropy. Off by default (every already-completed full-"
+                              "dataset run stays byte-for-byte unaffected). TODO: the existing "
+                              "full-dataset mutation numbers were all measured unseeded; redoing "
+                              "them with a fixed seed is a separate, not-yet-scheduled task.")
     args = parser.parse_args()
 
     if args.test_file:
@@ -524,9 +566,11 @@ def main() -> None:
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
 
-    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
+    retriable = {m: r for m, r in cached_results_all.items() if r["status"] in RETRIABLE_STATUSES}
+    cached_results = {m: r for m, r in cached_results_all.items() if m not in retriable}
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -541,6 +585,9 @@ def main() -> None:
     if skipped:
         print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
               f"(pass --fresh to ignore the cache and recompute everything)")
+    if retriable:
+        print(f"Auto-retrying {len(retriable)} previously-failed models from the cache -- "
+              f"same report, no separate retry run needed")
     print(f"(scratch copies under {scratch_root} -- dataset directory is never mutated in place)")
 
     results: list[dict] = list(cached_results.values())
@@ -552,7 +599,7 @@ def main() -> None:
                 executor.submit(
                     validate_model, model_dir, args.max_mutants,
                     args.per_mutant_timeout, args.overall_timeout, hypothesis_home, scratch_root,
-                    args.export_surviving_mutants,
+                    args.export_surviving_mutants, args.hypothesis_seed,
                 ): model_dir
                 for model_dir in model_dirs
             }

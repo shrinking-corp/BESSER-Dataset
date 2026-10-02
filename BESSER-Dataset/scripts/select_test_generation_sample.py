@@ -3,7 +3,7 @@
 both Track A (library-generated tests, us) and Track B (the colleague's LLM
 mutation-feedback loop), so "library vs. LLM" is measured on identical models.
 
-Decided 2026-09-29 (see checklist.md / docs/DECISIONS.md): stratify by
+Decided 2026-09-29 (see docs/DECISIONS.md): stratify by
 `has_logic` method count, not `difficulty_score` -- the two don't always
 track together (e.g. model_2023 scores 86.66/100 on difficulty_score but has
 zero methods at all), and the whole point of this sample is testing methods
