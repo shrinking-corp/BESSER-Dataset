@@ -44,3 +44,56 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_JArray_JValue_stub_double():
+    # JValue_Interface has no real 'jArray5' property in the generated
+    # code (a bare stub) -- manually attach it so JArray's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # JArray's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = JArray(value="sample_text")
+    partner = JValue_Interface()
+    setattr(partner, 'jArray5', None)
+    _safe_set(owner, 'value4', {partner})
+    assert getattr(partner, 'jArray5') == owner
+    _safe_set(owner, 'value4', set())
+    assert getattr(partner, 'jArray5') is None
+
+
+def test_assoc_JMember_JValue_stub_double():
+    # JValue_Interface has no real 'jMember3' property in the generated
+    # code (a bare stub) -- manually attach it so JMember's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # JMember's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = JMember(nom="sample_text")
+    partner = JValue_Interface()
+    setattr(partner, 'jMember3', None)
+    _safe_set(owner, 'jValue2', partner)
+    assert getattr(partner, 'jMember3') == owner
+    _safe_set(owner, 'jValue2', None)
+    assert getattr(partner, 'jMember3') is None
+
+
+def test_assoc_JObject_JMember_stub_double():
+    # JObject has no real 'JObject_JMember_00' property in the generated
+    # code (a bare stub) -- manually attach it so JMember's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # JMember's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = JMember(nom="sample_text")
+    partner = JObject()
+    setattr(partner, 'JObject_JMember_00', None)
+    _safe_set(owner, 'JObject_JMember_11', partner)
+    assert getattr(partner, 'JObject_JMember_00') == owner
+    _safe_set(owner, 'JObject_JMember_11', None)
+    assert getattr(partner, 'JObject_JMember_00') is None
+
+

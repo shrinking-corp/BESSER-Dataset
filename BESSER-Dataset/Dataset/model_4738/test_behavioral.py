@@ -86,3 +86,131 @@ def test_assoc_representativeAttribute12_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'swml_Class13', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_classes8_stub_double():
+    # swml_ContentLayer has no real 'swml_ContentLayer9' property in the generated
+    # code (a bare stub) -- manually attach it so swml_Class's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_Class's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_Class(name="sample_text")
+    partner = swml_ContentLayer()
+    setattr(partner, 'swml_ContentLayer9', None)
+    _safe_set(owner, 'swml_Class', partner)
+    assert getattr(partner, 'swml_ContentLayer9') == owner
+    _safe_set(owner, 'swml_Class', None)
+    assert getattr(partner, 'swml_ContentLayer9') is None
+
+
+def test_assoc_content1_stub_double():
+    # swml_ContentLayer has no real 'swml_ContentLayer' property in the generated
+    # code (a bare stub) -- manually attach it so swml_WebModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_WebModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_WebModel(name="sample_text")
+    partner = swml_ContentLayer()
+    setattr(partner, 'swml_ContentLayer', None)
+    _safe_set(owner, 'swml_WebModel2', partner)
+    assert getattr(partner, 'swml_ContentLayer') == owner
+    _safe_set(owner, 'swml_WebModel2', None)
+    assert getattr(partner, 'swml_ContentLayer') is None
+
+
+def test_assoc_displayedClass17_stub_double():
+    # swml_DynamicPage has no real 'swml_DynamicPage' property in the generated
+    # code (a bare stub) -- manually attach it so swml_Class's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_Class's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_Class(name="sample_text")
+    partner = swml_DynamicPage()
+    setattr(partner, 'swml_DynamicPage', None)
+    _safe_set(owner, 'swml_Class18', partner)
+    assert getattr(partner, 'swml_DynamicPage') == owner
+    _safe_set(owner, 'swml_Class18', None)
+    assert getattr(partner, 'swml_DynamicPage') is None
+
+
+def test_assoc_homePage5_stub_double():
+    # swml_HypertextLayer has no real 'swml_HypertextLayer6' property in the generated
+    # code (a bare stub) -- manually attach it so swml_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_Page(name="sample_text")
+    partner = swml_HypertextLayer()
+    setattr(partner, 'swml_HypertextLayer6', None)
+    _safe_set(owner, 'swml_Page7', partner)
+    assert getattr(partner, 'swml_HypertextLayer6') == owner
+    _safe_set(owner, 'swml_Page7', None)
+    assert getattr(partner, 'swml_HypertextLayer6') is None
+
+
+def test_assoc_hypertext0_stub_double():
+    # swml_HypertextLayer has no real 'swml_HypertextLayer' property in the generated
+    # code (a bare stub) -- manually attach it so swml_WebModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_WebModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_WebModel(name="sample_text")
+    partner = swml_HypertextLayer()
+    setattr(partner, 'swml_HypertextLayer', None)
+    _safe_set(owner, 'swml_WebModel', partner)
+    assert getattr(partner, 'swml_HypertextLayer') == owner
+    _safe_set(owner, 'swml_WebModel', None)
+    assert getattr(partner, 'swml_HypertextLayer') is None
+
+
+def test_assoc_links15_stub_double():
+    # swml_Link has no real 'swml_Link' property in the generated
+    # code (a bare stub) -- manually attach it so swml_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_Page(name="sample_text")
+    partner = swml_Link()
+    setattr(partner, 'swml_Link', None)
+    _safe_set(owner, 'swml_Page16', {partner})
+    assert getattr(partner, 'swml_Link') == owner
+    _safe_set(owner, 'swml_Page16', set())
+    assert getattr(partner, 'swml_Link') is None
+
+
+def test_assoc_pages3_stub_double():
+    # swml_HypertextLayer has no real 'swml_HypertextLayer4' property in the generated
+    # code (a bare stub) -- manually attach it so swml_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_Page(name="sample_text")
+    partner = swml_HypertextLayer()
+    setattr(partner, 'swml_HypertextLayer4', None)
+    _safe_set(owner, 'swml_Page', partner)
+    assert getattr(partner, 'swml_HypertextLayer4') == owner
+    _safe_set(owner, 'swml_Page', None)
+    assert getattr(partner, 'swml_HypertextLayer4') is None
+
+
+def test_assoc_target19_stub_double():
+    # swml_Link has no real 'swml_Link20' property in the generated
+    # code (a bare stub) -- manually attach it so swml_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # swml_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = swml_Page(name="sample_text")
+    partner = swml_Link()
+    setattr(partner, 'swml_Link20', None)
+    _safe_set(owner, 'swml_Page21', partner)
+    assert getattr(partner, 'swml_Link20') == owner
+    _safe_set(owner, 'swml_Page21', None)
+    assert getattr(partner, 'swml_Link20') is None
+
+

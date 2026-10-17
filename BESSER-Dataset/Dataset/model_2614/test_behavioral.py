@@ -75,3 +75,26 @@ def test_assoc_nodeB2_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'grapho_Node4', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_elements0_stub_double():
+    # grapho_GraphO has no real 'grapho_GraphO' property in the generated
+    # code (a bare stub) -- manually attach it so grapho_GraphElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # grapho_GraphElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = grapho_GraphElement(name="sample_text")
+    partner = grapho_GraphO()
+    setattr(partner, 'grapho_GraphO', None)
+    _safe_set(owner, 'grapho_GraphElement', partner)
+    assert getattr(partner, 'grapho_GraphO') == owner
+    _safe_set(owner, 'grapho_GraphElement', None)
+    assert getattr(partner, 'grapho_GraphO') is None
+
+

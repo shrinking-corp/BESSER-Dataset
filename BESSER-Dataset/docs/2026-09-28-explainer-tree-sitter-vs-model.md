@@ -91,10 +91,61 @@ generated for that single model, not a real problem with the code or a
 pattern affecting other models. Confirmed isolated, not investigated
 further.
 
+## Part 2 (added 2026-10-11): checking by *name*, not just count
+
+Everything above compares **totals** — "the model says 5 classes, the code
+has 6." But a count match doesn't actually prove much: two models could
+have the exact same *number* of classes while the code has completely
+different *names* than the model declares. So we built a second check that
+compares names directly: for every class/attribute/operation the model
+declares, does something with that exact name (or a close, explainable
+variant) actually exist in the generated code?
+
+**First pass flagged 22 models (0.26%) out of 8,336** as having a name that
+didn't show up anywhere in the code. Concerning at first glance — but when
+we actually opened the generated code for several of them by hand, instead
+of trusting the report, **every single one turned out to be a false alarm
+in our own checking script**, not a real problem with the generated code.
+Two concrete examples:
+
+- **`model_10001303`**: the model declares a `Player` class with an
+  attribute named `property`. But `property` is also a built-in Python
+  concept (it's literally the keyword used to make a getter/setter), so the
+  code generator renames it to avoid the clash — the real generated code
+  has `property1`, not `property`. The code is completely correct; our
+  checker just never thought to look for the renamed version.
+- **`model_116`**: the model declares an attribute named `self` — which
+  collides with `self`, the implicit first parameter every Python method
+  already has. The generator handles this by renaming only the *internal*
+  backing variable (`self_`), while the public-facing getter/setter keeps
+  the original name `self`. Our checker was only looking in the "plain
+  attributes" list and never thought to also check the "methods" list,
+  where that public getter/setter actually lives.
+
+We fixed the checker to account for both patterns (and a couple of smaller
+related ones — a `Factura`→`Facturas` pluralization, and one case-only
+difference, `Codigo` vs. `codigo`). Re-running the corrected checker across
+all 8,336 models dropped the mismatch rate from **0.26% to 0.02%**
+(22 models down to 2). Those final 2 are genuinely different, real
+findings, not more checker bugs — one model is missing exactly one
+attribute (`Fecha`) with no renamed version anywhere in the code, and one
+model's `Factura` class turns out to be split across two differently-named
+classes in a more complex way than a simple rename, which we haven't
+chased down further.
+
+**The lesson, worth stating plainly**: a "generator fidelity" check is only
+as good as its own name-matching logic. Before concluding the dataset has a
+defect, it's worth asking whether the *checking tool* might be the thing
+that's wrong — especially for any renaming convention (keyword collisions,
+pluralization) a generator might apply that the checker doesn't know about
+yet.
+
 ## Bottom line, for a one-sentence summary to colleagues
 
 *"We independently verified the generated code against the model using a
 tool that reads raw Python syntax, and found exactly one real generator
 defect: abstract classes in the diagram never come out abstract in the
-code — everything else (enumerations, near enough on class counts) matches
-correctly."*
+code. By name, not just count, the generator is 99.98% faithful once our
+own checker's blind spots (keyword-collision renaming, pluralization) were
+fixed — the 22 'mismatches' we first saw were almost entirely false alarms
+in our tooling, not the dataset."*

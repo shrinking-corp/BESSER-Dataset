@@ -266,3 +266,386 @@ def test_assoc_variable66_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'applauseDsl_UIActionNavigateAction67', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_action62_stub_double():
+    # applauseDsl_UIActionSpecification has no real 'applauseDsl_UIActionSpecification' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIAction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIAction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIAction(gesture="sample_text", icon="sample_text", order=7, title="sample_text")
+    partner = applauseDsl_UIActionSpecification()
+    setattr(partner, 'applauseDsl_UIActionSpecification', None)
+    _safe_set(owner, 'applauseDsl_UIAction63', partner)
+    assert getattr(partner, 'applauseDsl_UIActionSpecification') == owner
+    _safe_set(owner, 'applauseDsl_UIAction63', None)
+    assert getattr(partner, 'applauseDsl_UIActionSpecification') is None
+
+
+def test_assoc_actions59_stub_double():
+    # applauseDsl_ScreenListItemCell has no real 'applauseDsl_ScreenListItemCell60' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIAction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIAction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIAction(gesture="sample_text", icon="sample_text", order=7, title="sample_text")
+    partner = applauseDsl_ScreenListItemCell()
+    setattr(partner, 'applauseDsl_ScreenListItemCell60', None)
+    _safe_set(owner, 'applauseDsl_UIAction61', partner)
+    assert getattr(partner, 'applauseDsl_ScreenListItemCell60') == owner
+    _safe_set(owner, 'applauseDsl_UIAction61', None)
+    assert getattr(partner, 'applauseDsl_ScreenListItemCell60') is None
+
+
+def test_assoc_baseUrl9_stub_double():
+    # applauseDsl_DataSource has no real 'applauseDsl_DataSource' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_AbsoluteRESTURL's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_AbsoluteRESTURL's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_AbsoluteRESTURL(port=7)
+    partner = applauseDsl_DataSource()
+    setattr(partner, 'applauseDsl_DataSource', None)
+    _safe_set(owner, 'applauseDsl_AbsoluteRESTURL', partner)
+    assert getattr(partner, 'applauseDsl_DataSource') == owner
+    _safe_set(owner, 'applauseDsl_AbsoluteRESTURL', None)
+    assert getattr(partner, 'applauseDsl_DataSource') is None
+
+
+def test_assoc_body21_stub_double():
+    # applauseDsl_DataSourceBodySpecification has no real 'applauseDsl_DataSourceBodySpecification' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_RESTSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_RESTSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_RESTSpecification(verb="sample_text")
+    partner = applauseDsl_DataSourceBodySpecification()
+    setattr(partner, 'applauseDsl_DataSourceBodySpecification', None)
+    _safe_set(owner, 'applauseDsl_RESTSpecification22', partner)
+    assert getattr(partner, 'applauseDsl_DataSourceBodySpecification') == owner
+    _safe_set(owner, 'applauseDsl_RESTSpecification22', None)
+    assert getattr(partner, 'applauseDsl_DataSourceBodySpecification') is None
+
+
+def test_assoc_component87_stub_double():
+    # applauseDsl_UIComponentMemberCall has no real 'applauseDsl_UIComponentMemberCall88' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIComponentMemberDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIComponentMemberDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIComponentMemberDeclaration(name="sample_text")
+    partner = applauseDsl_UIComponentMemberCall()
+    setattr(partner, 'applauseDsl_UIComponentMemberCall88', None)
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration89', partner)
+    assert getattr(partner, 'applauseDsl_UIComponentMemberCall88') == owner
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration89', None)
+    assert getattr(partner, 'applauseDsl_UIComponentMemberCall88') is None
+
+
+def test_assoc_datasource74_stub_double():
+    # applauseDsl_RESTMethodCall has no real 'applauseDsl_RESTMethodCall75' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_DataSourceCall's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_DataSourceCall's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_DataSourceCall(name="sample_text")
+    partner = applauseDsl_RESTMethodCall()
+    setattr(partner, 'applauseDsl_RESTMethodCall75', None)
+    _safe_set(owner, 'applauseDsl_DataSourceCall76', partner)
+    assert getattr(partner, 'applauseDsl_RESTMethodCall75') == owner
+    _safe_set(owner, 'applauseDsl_DataSourceCall76', None)
+    assert getattr(partner, 'applauseDsl_RESTMethodCall75') is None
+
+
+def test_assoc_datasource80_stub_double():
+    # applauseDsl_DataSource has no real 'applauseDsl_DataSource82' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_DataSourceCall's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_DataSourceCall's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_DataSourceCall(name="sample_text")
+    partner = applauseDsl_DataSource()
+    setattr(partner, 'applauseDsl_DataSource82', None)
+    _safe_set(owner, 'applauseDsl_DataSourceCall81', partner)
+    assert getattr(partner, 'applauseDsl_DataSource82') == owner
+    _safe_set(owner, 'applauseDsl_DataSourceCall81', None)
+    assert getattr(partner, 'applauseDsl_DataSource82') is None
+
+
+def test_assoc_declaredParameters15_stub_double():
+    # applauseDsl_Parameter has no real 'applauseDsl_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_DataSourceAccessMethod's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_DataSourceAccessMethod's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_DataSourceAccessMethod(name="sample_text", returnsMany=True)
+    partner = applauseDsl_Parameter()
+    setattr(partner, 'applauseDsl_Parameter', None)
+    _safe_set(owner, 'applauseDsl_DataSourceAccessMethod16', {partner})
+    assert getattr(partner, 'applauseDsl_Parameter') == owner
+    _safe_set(owner, 'applauseDsl_DataSourceAccessMethod16', set())
+    assert getattr(partner, 'applauseDsl_Parameter') is None
+
+
+def test_assoc_elements0_stub_double():
+    # applauseDsl_Model has no real 'applauseDsl_Model' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_NamedElement(name="sample_text")
+    partner = applauseDsl_Model()
+    setattr(partner, 'applauseDsl_Model', None)
+    _safe_set(owner, 'applauseDsl_NamedElement', partner)
+    assert getattr(partner, 'applauseDsl_Model') == owner
+    _safe_set(owner, 'applauseDsl_NamedElement', None)
+    assert getattr(partner, 'applauseDsl_Model') is None
+
+
+def test_assoc_head93_stub_double():
+    # applauseDsl_EntityMemberCall has no real 'applauseDsl_EntityMemberCall' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_Attribute(many=True, name="sample_text")
+    partner = applauseDsl_EntityMemberCall()
+    setattr(partner, 'applauseDsl_EntityMemberCall', None)
+    _safe_set(owner, 'applauseDsl_Attribute94', partner)
+    assert getattr(partner, 'applauseDsl_EntityMemberCall') == owner
+    _safe_set(owner, 'applauseDsl_Attribute94', None)
+    assert getattr(partner, 'applauseDsl_EntityMemberCall') is None
+
+
+def test_assoc_head97_stub_double():
+    # applauseDsl_EntityMemberCallTail has no real 'applauseDsl_EntityMemberCallTail98' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_Attribute(many=True, name="sample_text")
+    partner = applauseDsl_EntityMemberCallTail()
+    setattr(partner, 'applauseDsl_EntityMemberCallTail98', None)
+    _safe_set(owner, 'applauseDsl_Attribute99', partner)
+    assert getattr(partner, 'applauseDsl_EntityMemberCallTail98') == owner
+    _safe_set(owner, 'applauseDsl_Attribute99', None)
+    assert getattr(partner, 'applauseDsl_EntityMemberCallTail98') is None
+
+
+def test_assoc_host31_stub_double():
+    # applauseDsl_UrlFragment has no real 'applauseDsl_UrlFragment33' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_AbsoluteRESTURL's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_AbsoluteRESTURL's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_AbsoluteRESTURL(port=7)
+    partner = applauseDsl_UrlFragment()
+    setattr(partner, 'applauseDsl_UrlFragment33', None)
+    _safe_set(owner, 'applauseDsl_AbsoluteRESTURL32', partner)
+    assert getattr(partner, 'applauseDsl_UrlFragment33') == owner
+    _safe_set(owner, 'applauseDsl_AbsoluteRESTURL32', None)
+    assert getattr(partner, 'applauseDsl_UrlFragment33') is None
+
+
+def test_assoc_inputParameter36_stub_double():
+    # applauseDsl_Parameter has no real 'applauseDsl_Parameter37' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_Screen's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_Screen's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_Screen(kind="sample_text", title="sample_text")
+    partner = applauseDsl_Parameter()
+    setattr(partner, 'applauseDsl_Parameter37', None)
+    _safe_set(owner, 'applauseDsl_Screen', partner)
+    assert getattr(partner, 'applauseDsl_Parameter37') == owner
+    _safe_set(owner, 'applauseDsl_Screen', None)
+    assert getattr(partner, 'applauseDsl_Parameter37') is None
+
+
+def test_assoc_items47_stub_double():
+    # applauseDsl_ScreenSectionItems has no real 'applauseDsl_ScreenSectionItems' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_ScreenSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_ScreenSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_ScreenSection(title="sample_text")
+    partner = applauseDsl_ScreenSectionItems()
+    setattr(partner, 'applauseDsl_ScreenSectionItems', None)
+    _safe_set(owner, 'applauseDsl_ScreenSection48', partner)
+    assert getattr(partner, 'applauseDsl_ScreenSectionItems') == owner
+    _safe_set(owner, 'applauseDsl_ScreenSection48', None)
+    assert getattr(partner, 'applauseDsl_ScreenSectionItems') is None
+
+
+def test_assoc_member90_stub_double():
+    # applauseDsl_UIComponentMemberCall has no real 'applauseDsl_UIComponentMemberCall91' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIComponentMemberDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIComponentMemberDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIComponentMemberDeclaration(name="sample_text")
+    partner = applauseDsl_UIComponentMemberCall()
+    setattr(partner, 'applauseDsl_UIComponentMemberCall91', None)
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration92', partner)
+    assert getattr(partner, 'applauseDsl_UIComponentMemberCall91') == owner
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration92', None)
+    assert getattr(partner, 'applauseDsl_UIComponentMemberCall91') is None
+
+
+def test_assoc_members68_stub_double():
+    # applauseDsl_ListItemCellDeclaration has no real 'applauseDsl_ListItemCellDeclaration69' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIComponentMemberDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIComponentMemberDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIComponentMemberDeclaration(name="sample_text")
+    partner = applauseDsl_ListItemCellDeclaration()
+    setattr(partner, 'applauseDsl_ListItemCellDeclaration69', None)
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration', partner)
+    assert getattr(partner, 'applauseDsl_ListItemCellDeclaration69') == owner
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration', None)
+    assert getattr(partner, 'applauseDsl_ListItemCellDeclaration69') is None
+
+
+def test_assoc_members70_stub_double():
+    # applauseDsl_UIComponentDeclaration has no real 'applauseDsl_UIComponentDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIComponentMemberDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIComponentMemberDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIComponentMemberDeclaration(name="sample_text")
+    partner = applauseDsl_UIComponentDeclaration()
+    setattr(partner, 'applauseDsl_UIComponentDeclaration', None)
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration71', partner)
+    assert getattr(partner, 'applauseDsl_UIComponentDeclaration') == owner
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration71', None)
+    assert getattr(partner, 'applauseDsl_UIComponentDeclaration') is None
+
+
+def test_assoc_methods13_stub_double():
+    # applauseDsl_DataSource has no real 'applauseDsl_DataSource14' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_DataSourceAccessMethod's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_DataSourceAccessMethod's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_DataSourceAccessMethod(name="sample_text", returnsMany=True)
+    partner = applauseDsl_DataSource()
+    setattr(partner, 'applauseDsl_DataSource14', None)
+    _safe_set(owner, 'applauseDsl_DataSourceAccessMethod', partner)
+    assert getattr(partner, 'applauseDsl_DataSource14') == owner
+    _safe_set(owner, 'applauseDsl_DataSourceAccessMethod', None)
+    assert getattr(partner, 'applauseDsl_DataSource14') is None
+
+
+def test_assoc_path19_stub_double():
+    # applauseDsl_RESTURL has no real 'applauseDsl_RESTURL' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_RESTSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_RESTSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_RESTSpecification(verb="sample_text")
+    partner = applauseDsl_RESTURL()
+    setattr(partner, 'applauseDsl_RESTURL', None)
+    _safe_set(owner, 'applauseDsl_RESTSpecification20', partner)
+    assert getattr(partner, 'applauseDsl_RESTURL') == owner
+    _safe_set(owner, 'applauseDsl_RESTSpecification20', None)
+    assert getattr(partner, 'applauseDsl_RESTURL') is None
+
+
+def test_assoc_resourceType10_stub_double():
+    # applauseDsl_DataSource has no real 'applauseDsl_DataSource11' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_Entity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_Entity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_Entity(abstract=True)
+    partner = applauseDsl_DataSource()
+    setattr(partner, 'applauseDsl_DataSource11', None)
+    _safe_set(owner, 'applauseDsl_Entity12', partner)
+    assert getattr(partner, 'applauseDsl_DataSource11') == owner
+    _safe_set(owner, 'applauseDsl_Entity12', None)
+    assert getattr(partner, 'applauseDsl_DataSource11') is None
+
+
+def test_assoc_restMethod77_stub_double():
+    # applauseDsl_RESTMethodCall has no real 'applauseDsl_RESTMethodCall78' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_DataSourceAccessMethod's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_DataSourceAccessMethod's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_DataSourceAccessMethod(name="sample_text", returnsMany=True)
+    partner = applauseDsl_RESTMethodCall()
+    setattr(partner, 'applauseDsl_RESTMethodCall78', None)
+    _safe_set(owner, 'applauseDsl_DataSourceAccessMethod79', partner)
+    assert getattr(partner, 'applauseDsl_RESTMethodCall78') == owner
+    _safe_set(owner, 'applauseDsl_DataSourceAccessMethod79', None)
+    assert getattr(partner, 'applauseDsl_RESTMethodCall78') is None
+
+
+def test_assoc_type5_stub_double():
+    # applauseDsl_Type has no real 'applauseDsl_Type' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_Attribute(many=True, name="sample_text")
+    partner = applauseDsl_Type()
+    setattr(partner, 'applauseDsl_Type', None)
+    _safe_set(owner, 'applauseDsl_Attribute6', partner)
+    assert getattr(partner, 'applauseDsl_Type') == owner
+    _safe_set(owner, 'applauseDsl_Attribute6', None)
+    assert getattr(partner, 'applauseDsl_Type') is None
+
+
+def test_assoc_type72_stub_double():
+    # applauseDsl_UIComponentOrDataType has no real 'applauseDsl_UIComponentOrDataType' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_UIComponentMemberDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_UIComponentMemberDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_UIComponentMemberDeclaration(name="sample_text")
+    partner = applauseDsl_UIComponentOrDataType()
+    setattr(partner, 'applauseDsl_UIComponentOrDataType', None)
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration73', partner)
+    assert getattr(partner, 'applauseDsl_UIComponentOrDataType') == owner
+    _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration73', None)
+    assert getattr(partner, 'applauseDsl_UIComponentOrDataType') is None
+
+
+def test_assoc_type8_stub_double():
+    # applauseDsl_DataType has no real 'applauseDsl_DataType' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_TypeMapping's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_TypeMapping's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_TypeMapping(simpleName="sample_text")
+    partner = applauseDsl_DataType()
+    setattr(partner, 'applauseDsl_DataType', None)
+    _safe_set(owner, 'applauseDsl_TypeMapping', partner)
+    assert getattr(partner, 'applauseDsl_DataType') == owner
+    _safe_set(owner, 'applauseDsl_TypeMapping', None)
+    assert getattr(partner, 'applauseDsl_DataType') is None
+
+
+def test_assoc_value103_stub_double():
+    # applauseDsl_AttributeReference has no real 'applauseDsl_AttributeReference' property in the generated
+    # code (a bare stub) -- manually attach it so applauseDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # applauseDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = applauseDsl_Attribute(many=True, name="sample_text")
+    partner = applauseDsl_AttributeReference()
+    setattr(partner, 'applauseDsl_AttributeReference', None)
+    _safe_set(owner, 'applauseDsl_Attribute104', partner)
+    assert getattr(partner, 'applauseDsl_AttributeReference') == owner
+    _safe_set(owner, 'applauseDsl_Attribute104', None)
+    assert getattr(partner, 'applauseDsl_AttributeReference') is None
+
+

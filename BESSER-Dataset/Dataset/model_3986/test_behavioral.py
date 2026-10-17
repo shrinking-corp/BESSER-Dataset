@@ -1368,3 +1368,1571 @@ def test_assoc_view371_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'carnot_ViewType370', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Code306_stub_double():
+    # carnot_QualityControlType has no real 'carnot_QualityControlType307' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_Code's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_Code's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_Code(code="sample_text", name="sample_text", value="sample_text")
+    partner = carnot_QualityControlType()
+    setattr(partner, 'carnot_QualityControlType307', None)
+    _safe_set(owner, 'carnot_Code308', partner)
+    assert getattr(partner, 'carnot_QualityControlType307') == owner
+    _safe_set(owner, 'carnot_Code308', None)
+    assert getattr(partner, 'carnot_QualityControlType307') is None
+
+
+def test_assoc_accessPoint5_stub_double():
+    # carnot_IAccessPointOwner has no real 'carnot_IAccessPointOwner' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_AccessPointType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_AccessPointType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_AccessPointType(direction="sample_text")
+    partner = carnot_IAccessPointOwner()
+    setattr(partner, 'carnot_IAccessPointOwner', None)
+    _safe_set(owner, 'carnot_AccessPointType', partner)
+    assert getattr(partner, 'carnot_IAccessPointOwner') == owner
+    _safe_set(owner, 'carnot_AccessPointType', None)
+    assert getattr(partner, 'carnot_IAccessPointOwner') is None
+
+
+def test_assoc_actionInstances175_stub_double():
+    # carnot_AbstractEventAction has no real 'AbstractEventAction' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_EventActionTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_EventActionTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_EventActionTypeType(actionClass="sample_text", activityAction="sample_text", panelClass="sample_text", processAction="sample_text", supportedConditionTypes="sample_text", unsupportedContexts="sample_text")
+    partner = carnot_AbstractEventAction()
+    setattr(partner, 'AbstractEventAction', None)
+    _safe_set(owner, 'type176', {partner})
+    assert getattr(partner, 'AbstractEventAction') == owner
+    _safe_set(owner, 'type176', set())
+    assert getattr(partner, 'AbstractEventAction') is None
+
+
+def test_assoc_activity82_stub_double():
+    # carnot_ActivitySymbolType has no real 'activitySymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_ActivitySymbolType()
+    setattr(partner, 'activitySymbols', None)
+    _safe_set(owner, 'ActivityType83', partner)
+    assert getattr(partner, 'activitySymbols') == owner
+    _safe_set(owner, 'ActivityType83', None)
+    assert getattr(partner, 'activitySymbols') is None
+
+
+def test_assoc_activitySymbol194_stub_double():
+    # carnot_ActivitySymbolType has no real 'ActivitySymbolType195' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_GatewaySymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_GatewaySymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_GatewaySymbol(flowKind="sample_text")
+    partner = carnot_ActivitySymbolType()
+    setattr(partner, 'ActivitySymbolType195', None)
+    _safe_set(owner, 'gatewaySymbols', partner)
+    assert getattr(partner, 'ActivitySymbolType195') == owner
+    _safe_set(owner, 'gatewaySymbols', None)
+    assert getattr(partner, 'ActivitySymbolType195') is None
+
+
+def test_assoc_activitySymbol6_stub_double():
+    # carnot_ActivitySymbolType has no real 'carnot_ActivitySymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_ActivitySymbolType()
+    setattr(partner, 'carnot_ActivitySymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer', {partner})
+    assert getattr(partner, 'carnot_ActivitySymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer', set())
+    assert getattr(partner, 'carnot_ActivitySymbolType') is None
+
+
+def test_assoc_activitySymbols100_stub_double():
+    # carnot_ActivitySymbolType has no real 'ActivitySymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_ActivitySymbolType()
+    setattr(partner, 'ActivitySymbolType', None)
+    _safe_set(owner, 'activity', {partner})
+    assert getattr(partner, 'ActivitySymbolType') == owner
+    _safe_set(owner, 'activity', set())
+    assert getattr(partner, 'ActivitySymbolType') is None
+
+
+def test_assoc_annotationSymbol7_stub_double():
+    # carnot_AnnotationSymbolType has no real 'carnot_AnnotationSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_AnnotationSymbolType()
+    setattr(partner, 'carnot_AnnotationSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer8', {partner})
+    assert getattr(partner, 'carnot_AnnotationSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer8', set())
+    assert getattr(partner, 'carnot_AnnotationSymbolType') is None
+
+
+def test_assoc_application116_stub_double():
+    # carnot_ApplicationSymbolType has no real 'applicationSymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ApplicationType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ApplicationType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ApplicationType(interactive="sample_text")
+    partner = carnot_ApplicationSymbolType()
+    setattr(partner, 'applicationSymbols', None)
+    _safe_set(owner, 'ApplicationType117', partner)
+    assert getattr(partner, 'applicationSymbols') == owner
+    _safe_set(owner, 'ApplicationType117', None)
+    assert getattr(partner, 'applicationSymbols') is None
+
+
+def test_assoc_applicationSymbol9_stub_double():
+    # carnot_ApplicationSymbolType has no real 'carnot_ApplicationSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_ApplicationSymbolType()
+    setattr(partner, 'carnot_ApplicationSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer10', {partner})
+    assert getattr(partner, 'carnot_ApplicationSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer10', set())
+    assert getattr(partner, 'carnot_ApplicationSymbolType') is None
+
+
+def test_assoc_applicationSymbols122_stub_double():
+    # carnot_ApplicationSymbolType has no real 'ApplicationSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ApplicationType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ApplicationType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ApplicationType(interactive="sample_text")
+    partner = carnot_ApplicationSymbolType()
+    setattr(partner, 'ApplicationSymbolType', None)
+    _safe_set(owner, 'application123', {partner})
+    assert getattr(partner, 'ApplicationSymbolType') == owner
+    _safe_set(owner, 'application123', set())
+    assert getattr(partner, 'ApplicationSymbolType') is None
+
+
+def test_assoc_attribute0_stub_double():
+    # carnot_IExtensibleElement has no real 'carnot_IExtensibleElement' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_AttributeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_AttributeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_AttributeType(any="sample_text", group="sample_text", mixed="sample_text", name="sample_text", type="sample_text", value="sample_text")
+    partner = carnot_IExtensibleElement()
+    setattr(partner, 'carnot_IExtensibleElement', None)
+    _safe_set(owner, 'carnot_AttributeType', partner)
+    assert getattr(partner, 'carnot_IExtensibleElement') == owner
+    _safe_set(owner, 'carnot_AttributeType', None)
+    assert getattr(partner, 'carnot_IExtensibleElement') is None
+
+
+def test_assoc_attribute1_stub_double():
+    # carnot_IdentifiableReference has no real 'reference' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_AttributeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_AttributeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_AttributeType(any="sample_text", group="sample_text", mixed="sample_text", name="sample_text", type="sample_text", value="sample_text")
+    partner = carnot_IdentifiableReference()
+    setattr(partner, 'reference', None)
+    _safe_set(owner, 'AttributeType', partner)
+    assert getattr(partner, 'reference') == owner
+    _safe_set(owner, 'AttributeType', None)
+    assert getattr(partner, 'reference') is None
+
+
+def test_assoc_bindAction179_stub_double():
+    # carnot_BindActionType has no real 'carnot_BindActionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_EventHandlerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_EventHandlerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_EventHandlerType(autoBind="sample_text", consumeOnMatch="sample_text", logHandler="sample_text", unbindOnMatch="sample_text")
+    partner = carnot_BindActionType()
+    setattr(partner, 'carnot_BindActionType', None)
+    _safe_set(owner, 'carnot_EventHandlerType180', {partner})
+    assert getattr(partner, 'carnot_BindActionType') == owner
+    _safe_set(owner, 'carnot_EventHandlerType180', set())
+    assert getattr(partner, 'carnot_BindActionType') is None
+
+
+def test_assoc_childLanes66_stub_double():
+    # carnot_LaneSymbol has no real 'LaneSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISwimlaneSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISwimlaneSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISwimlaneSymbol(collapsed="sample_text", orientation="sample_text")
+    partner = carnot_LaneSymbol()
+    setattr(partner, 'LaneSymbol', None)
+    _safe_set(owner, 'parentLane', {partner})
+    assert getattr(partner, 'LaneSymbol') == owner
+    _safe_set(owner, 'parentLane', set())
+    assert getattr(partner, 'LaneSymbol') is None
+
+
+def test_assoc_conditionalPerformerSymbol11_stub_double():
+    # carnot_ConditionalPerformerSymbolType has no real 'carnot_ConditionalPerformerSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_ConditionalPerformerSymbolType()
+    setattr(partner, 'carnot_ConditionalPerformerSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer12', {partner})
+    assert getattr(partner, 'carnot_ConditionalPerformerSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer12', set())
+    assert getattr(partner, 'carnot_ConditionalPerformerSymbolType') is None
+
+
+def test_assoc_conditionalPerformerSymbols132_stub_double():
+    # carnot_ConditionalPerformerSymbolType has no real 'ConditionalPerformerSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ConditionalPerformerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ConditionalPerformerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ConditionalPerformerType(dataPath="sample_text", isUser="sample_text")
+    partner = carnot_ConditionalPerformerSymbolType()
+    setattr(partner, 'ConditionalPerformerSymbolType', None)
+    _safe_set(owner, 'participant133', {partner})
+    assert getattr(partner, 'ConditionalPerformerSymbolType') == owner
+    _safe_set(owner, 'participant133', set())
+    assert getattr(partner, 'ConditionalPerformerSymbolType') is None
+
+
+def test_assoc_context118_stub_double():
+    # carnot_ContextType has no real 'carnot_ContextType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ApplicationType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ApplicationType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ApplicationType(interactive="sample_text")
+    partner = carnot_ContextType()
+    setattr(partner, 'carnot_ContextType', None)
+    _safe_set(owner, 'carnot_ApplicationType', {partner})
+    assert getattr(partner, 'carnot_ContextType') == owner
+    _safe_set(owner, 'carnot_ApplicationType', set())
+    assert getattr(partner, 'carnot_ContextType') is None
+
+
+def test_assoc_contexts113_stub_double():
+    # carnot_ContextType has no real 'ContextType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ApplicationContextTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ApplicationContextTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ApplicationContextTypeType(accessPointProviderClass="sample_text", hasApplicationPath="sample_text", hasMappingId="sample_text", panelClass="sample_text", validatorClass="sample_text")
+    partner = carnot_ContextType()
+    setattr(partner, 'ContextType', None)
+    _safe_set(owner, 'type', {partner})
+    assert getattr(partner, 'ContextType') == owner
+    _safe_set(owner, 'type', set())
+    assert getattr(partner, 'ContextType') is None
+
+
+def test_assoc_data147_stub_double():
+    # carnot_DataSymbolType has no real 'dataSymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_DataType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_DataType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_DataType(predefined="sample_text")
+    partner = carnot_DataSymbolType()
+    setattr(partner, 'dataSymbols', None)
+    _safe_set(owner, 'DataType148', partner)
+    assert getattr(partner, 'dataSymbols') == owner
+    _safe_set(owner, 'DataType148', None)
+    assert getattr(partner, 'dataSymbols') is None
+
+
+def test_assoc_dataMappingConnection37_stub_double():
+    # carnot_DataMappingConnectionType has no real 'carnot_DataMappingConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_DataMappingConnectionType()
+    setattr(partner, 'carnot_DataMappingConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer38', {partner})
+    assert getattr(partner, 'carnot_DataMappingConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer38', set())
+    assert getattr(partner, 'carnot_DataMappingConnectionType') is None
+
+
+def test_assoc_dataSymbol13_stub_double():
+    # carnot_DataSymbolType has no real 'carnot_DataSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_DataSymbolType()
+    setattr(partner, 'carnot_DataSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer14', {partner})
+    assert getattr(partner, 'carnot_DataSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer14', set())
+    assert getattr(partner, 'carnot_DataSymbolType') is None
+
+
+def test_assoc_dataSymbols154_stub_double():
+    # carnot_DataSymbolType has no real 'DataSymbolType156' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_DataType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_DataType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_DataType(predefined="sample_text")
+    partner = carnot_DataSymbolType()
+    setattr(partner, 'DataSymbolType156', None)
+    _safe_set(owner, 'data155', {partner})
+    assert getattr(partner, 'DataSymbolType156') == owner
+    _safe_set(owner, 'data155', set())
+    assert getattr(partner, 'DataSymbolType156') is None
+
+
+def test_assoc_description134_stub_double():
+    # carnot_ContextType has no real 'carnot_ContextType135' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_DescriptionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_DescriptionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_DescriptionType(mixed="sample_text")
+    partner = carnot_ContextType()
+    setattr(partner, 'carnot_ContextType135', None)
+    _safe_set(owner, 'carnot_DescriptionType136', partner)
+    assert getattr(partner, 'carnot_ContextType135') == owner
+    _safe_set(owner, 'carnot_DescriptionType136', None)
+    assert getattr(partner, 'carnot_ContextType135') is None
+
+
+def test_assoc_endEventSymbols15_stub_double():
+    # carnot_EndEventSymbol has no real 'carnot_EndEventSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_EndEventSymbol()
+    setattr(partner, 'carnot_EndEventSymbol', None)
+    _safe_set(owner, 'carnot_ISymbolContainer16', {partner})
+    assert getattr(partner, 'carnot_EndEventSymbol') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer16', set())
+    assert getattr(partner, 'carnot_EndEventSymbol') is None
+
+
+def test_assoc_eventAction181_stub_double():
+    # carnot_EventActionType has no real 'carnot_EventActionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_EventHandlerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_EventHandlerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_EventHandlerType(autoBind="sample_text", consumeOnMatch="sample_text", logHandler="sample_text", unbindOnMatch="sample_text")
+    partner = carnot_EventActionType()
+    setattr(partner, 'carnot_EventActionType', None)
+    _safe_set(owner, 'carnot_EventHandlerType182', {partner})
+    assert getattr(partner, 'carnot_EventActionType') == owner
+    _safe_set(owner, 'carnot_EventHandlerType182', set())
+    assert getattr(partner, 'carnot_EventActionType') is None
+
+
+def test_assoc_eventHandler4_stub_double():
+    # carnot_IEventHandlerOwner has no real 'carnot_IEventHandlerOwner' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_EventHandlerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_EventHandlerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_EventHandlerType(autoBind="sample_text", consumeOnMatch="sample_text", logHandler="sample_text", unbindOnMatch="sample_text")
+    partner = carnot_IEventHandlerOwner()
+    setattr(partner, 'carnot_IEventHandlerOwner', None)
+    _safe_set(owner, 'carnot_EventHandlerType', partner)
+    assert getattr(partner, 'carnot_IEventHandlerOwner') == owner
+    _safe_set(owner, 'carnot_EventHandlerType', None)
+    assert getattr(partner, 'carnot_IEventHandlerOwner') is None
+
+
+def test_assoc_executedByConnection39_stub_double():
+    # carnot_ExecutedByConnectionType has no real 'carnot_ExecutedByConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_ExecutedByConnectionType()
+    setattr(partner, 'carnot_ExecutedByConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer40', {partner})
+    assert getattr(partner, 'carnot_ExecutedByConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer40', set())
+    assert getattr(partner, 'carnot_ExecutedByConnectionType') is None
+
+
+def test_assoc_externalPackages242_stub_double():
+    # carnot_ExternalPackages has no real 'carnot_ExternalPackages' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelType(author="sample_text", carnotVersion="sample_text", created="sample_text", modelOID="sample_text", oid="sample_text", vendor="sample_text")
+    partner = carnot_ExternalPackages()
+    setattr(partner, 'carnot_ExternalPackages', None)
+    _safe_set(owner, 'carnot_ModelType243', partner)
+    assert getattr(partner, 'carnot_ExternalPackages') == owner
+    _safe_set(owner, 'carnot_ModelType243', None)
+    assert getattr(partner, 'carnot_ExternalPackages') is None
+
+
+def test_assoc_externalRef192_stub_double():
+    # carnot_IdRefOwner has no real 'carnot_IdRefOwner' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IdRef's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IdRef's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IdRef(ref="sample_text")
+    partner = carnot_IdRefOwner()
+    setattr(partner, 'carnot_IdRefOwner', None)
+    _safe_set(owner, 'carnot_IdRef193', partner)
+    assert getattr(partner, 'carnot_IdRefOwner') == owner
+    _safe_set(owner, 'carnot_IdRef193', None)
+    assert getattr(partner, 'carnot_IdRefOwner') is None
+
+
+def test_assoc_externalReference164_stub_double():
+    # carnot_ExternalReferenceType has no real 'carnot_ExternalReferenceType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_DataType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_DataType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_DataType(predefined="sample_text")
+    partner = carnot_ExternalReferenceType()
+    setattr(partner, 'carnot_ExternalReferenceType', None)
+    _safe_set(owner, 'carnot_DataType', partner)
+    assert getattr(partner, 'carnot_ExternalReferenceType') == owner
+    _safe_set(owner, 'carnot_DataType', None)
+    assert getattr(partner, 'carnot_ExternalReferenceType') is None
+
+
+def test_assoc_formalParameterMappings299_stub_double():
+    # FormalParameterMappingsType has no real 'FormalParameterMappingsType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ProcessDefinitionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ProcessDefinitionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ProcessDefinitionType(defaultPriority="sample_text")
+    partner = FormalParameterMappingsType()
+    setattr(partner, 'FormalParameterMappingsType', None)
+    _safe_set(owner, 'carnot_ProcessDefinitionType300', partner)
+    assert getattr(partner, 'FormalParameterMappingsType') == owner
+    _safe_set(owner, 'carnot_ProcessDefinitionType300', None)
+    assert getattr(partner, 'FormalParameterMappingsType') is None
+
+
+def test_assoc_formalParameters297_stub_double():
+    # carnot_FormalParametersType has no real 'carnot_FormalParametersType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ProcessDefinitionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ProcessDefinitionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ProcessDefinitionType(defaultPriority="sample_text")
+    partner = carnot_FormalParametersType()
+    setattr(partner, 'carnot_FormalParametersType', None)
+    _safe_set(owner, 'carnot_ProcessDefinitionType298', partner)
+    assert getattr(partner, 'carnot_FormalParametersType') == owner
+    _safe_set(owner, 'carnot_ProcessDefinitionType298', None)
+    assert getattr(partner, 'carnot_FormalParametersType') is None
+
+
+def test_assoc_from_309_stub_double():
+    # carnot_RefersToConnectionType has no real 'referingFromConnections' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IGraphicalObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IGraphicalObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IGraphicalObject(borderColor="sample_text", fillColor="sample_text", style="sample_text")
+    partner = carnot_RefersToConnectionType()
+    setattr(partner, 'referingFromConnections', None)
+    _safe_set(owner, 'IGraphicalObject', partner)
+    assert getattr(partner, 'referingFromConnections') == owner
+    _safe_set(owner, 'IGraphicalObject', None)
+    assert getattr(partner, 'referingFromConnections') is None
+
+
+def test_assoc_gatewaySymbols90_stub_double():
+    # carnot_ActivitySymbolType has no real 'activitySymbol91' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_GatewaySymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_GatewaySymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_GatewaySymbol(flowKind="sample_text")
+    partner = carnot_ActivitySymbolType()
+    setattr(partner, 'activitySymbol91', None)
+    _safe_set(owner, 'GatewaySymbol', partner)
+    assert getattr(partner, 'activitySymbol91') == owner
+    _safe_set(owner, 'GatewaySymbol', None)
+    assert getattr(partner, 'activitySymbol91') is None
+
+
+def test_assoc_genericLinkConnection41_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'carnot_GenericLinkConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'carnot_GenericLinkConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer42', {partner})
+    assert getattr(partner, 'carnot_GenericLinkConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer42', set())
+    assert getattr(partner, 'carnot_GenericLinkConnectionType') is None
+
+
+def test_assoc_groupSymbol19_stub_double():
+    # carnot_GroupSymbolType has no real 'carnot_GroupSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_GroupSymbolType()
+    setattr(partner, 'carnot_GroupSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer20', {partner})
+    assert getattr(partner, 'carnot_GroupSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer20', set())
+    assert getattr(partner, 'carnot_GroupSymbolType') is None
+
+
+def test_assoc_inLinks62_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'GenericLinkConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_INodeSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_INodeSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_INodeSymbol(height="sample_text", shape="sample_text", width="sample_text", xPos="sample_text", yPos="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'GenericLinkConnectionType', None)
+    _safe_set(owner, 'targetSymbol', {partner})
+    assert getattr(partner, 'GenericLinkConnectionType') == owner
+    _safe_set(owner, 'targetSymbol', set())
+    assert getattr(partner, 'GenericLinkConnectionType') is None
+
+
+def test_assoc_inTransitions68_stub_double():
+    # carnot_IFlowObjectSymbol has no real 'targetActivitySymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TransitionConnectionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TransitionConnectionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TransitionConnectionType(points="sample_text")
+    partner = carnot_IFlowObjectSymbol()
+    setattr(partner, 'targetActivitySymbol', None)
+    _safe_set(owner, 'TransitionConnectionType', partner)
+    assert getattr(partner, 'targetActivitySymbol') == owner
+    _safe_set(owner, 'TransitionConnectionType', None)
+    assert getattr(partner, 'targetActivitySymbol') is None
+
+
+def test_assoc_intermediateEventSymbols21_stub_double():
+    # carnot_IntermediateEventSymbol has no real 'carnot_IntermediateEventSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_IntermediateEventSymbol()
+    setattr(partner, 'carnot_IntermediateEventSymbol', None)
+    _safe_set(owner, 'carnot_ISymbolContainer22', {partner})
+    assert getattr(partner, 'carnot_IntermediateEventSymbol') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer22', set())
+    assert getattr(partner, 'carnot_IntermediateEventSymbol') is None
+
+
+def test_assoc_lanes280_stub_double():
+    # carnot_LaneSymbol has no real 'LaneSymbol281' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_PoolSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_PoolSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_PoolSymbol(boundaryVisible="sample_text")
+    partner = carnot_LaneSymbol()
+    setattr(partner, 'LaneSymbol281', None)
+    _safe_set(owner, 'parentPool', {partner})
+    assert getattr(partner, 'LaneSymbol281') == owner
+    _safe_set(owner, 'parentPool', set())
+    assert getattr(partner, 'LaneSymbol281') is None
+
+
+def test_assoc_linkInstances204_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'GenericLinkConnectionType205' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_LinkTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_LinkTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_LinkTypeType(lineColor="sample_text", lineStyle="sample_text", showLinkTypeName="sample_text", showRoleNames="sample_text", sourceCardinality="sample_text", sourceClass="sample_text", sourceRole="sample_text", sourceSymbol="sample_text", targetCardinality="sample_text", targetClass="sample_text", targetRole="sample_text", targetSymbol="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'GenericLinkConnectionType205', None)
+    _safe_set(owner, 'linkType', {partner})
+    assert getattr(partner, 'GenericLinkConnectionType205') == owner
+    _safe_set(owner, 'linkType', set())
+    assert getattr(partner, 'GenericLinkConnectionType205') is None
+
+
+def test_assoc_linkType196_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'linkInstances' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_LinkTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_LinkTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_LinkTypeType(lineColor="sample_text", lineStyle="sample_text", showLinkTypeName="sample_text", showRoleNames="sample_text", sourceCardinality="sample_text", sourceClass="sample_text", sourceRole="sample_text", sourceSymbol="sample_text", targetCardinality="sample_text", targetClass="sample_text", targetRole="sample_text", targetSymbol="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'linkInstances', None)
+    _safe_set(owner, 'LinkTypeType', partner)
+    assert getattr(partner, 'linkInstances') == owner
+    _safe_set(owner, 'LinkTypeType', None)
+    assert getattr(partner, 'linkInstances') is None
+
+
+def test_assoc_loop109_stub_double():
+    # carnot_LoopType has no real 'carnot_LoopType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_LoopType()
+    setattr(partner, 'carnot_LoopType', None)
+    _safe_set(owner, 'carnot_ActivityType110', partner)
+    assert getattr(partner, 'carnot_LoopType') == owner
+    _safe_set(owner, 'carnot_ActivityType110', None)
+    assert getattr(partner, 'carnot_LoopType') is None
+
+
+def test_assoc_mapping383_stub_double():
+    # FormalParameterMappingType has no real 'FormalParameterMappingType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_extensions_FormalParameterMappingsType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_extensions_FormalParameterMappingsType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_extensions_FormalParameterMappingsType()
+    partner = FormalParameterMappingType()
+    setattr(partner, 'FormalParameterMappingType', None)
+    _safe_set(owner, 'carnot_extensions_FormalParameterMappingsType', {partner})
+    assert getattr(partner, 'FormalParameterMappingType') == owner
+    _safe_set(owner, 'carnot_extensions_FormalParameterMappingsType', set())
+    assert getattr(partner, 'FormalParameterMappingType') is None
+
+
+def test_assoc_modeler206_stub_double():
+    # carnot_ModelerSymbolType has no real 'modelerSymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelerType(email="sample_text", password="sample_text")
+    partner = carnot_ModelerSymbolType()
+    setattr(partner, 'modelerSymbols', None)
+    _safe_set(owner, 'ModelerType', partner)
+    assert getattr(partner, 'modelerSymbols') == owner
+    _safe_set(owner, 'ModelerType', None)
+    assert getattr(partner, 'modelerSymbols') is None
+
+
+def test_assoc_modelerSymbol23_stub_double():
+    # carnot_ModelerSymbolType has no real 'carnot_ModelerSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_ModelerSymbolType()
+    setattr(partner, 'carnot_ModelerSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer24', {partner})
+    assert getattr(partner, 'carnot_ModelerSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer24', set())
+    assert getattr(partner, 'carnot_ModelerSymbolType') is None
+
+
+def test_assoc_modelerSymbols207_stub_double():
+    # carnot_ModelerSymbolType has no real 'ModelerSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelerType(email="sample_text", password="sample_text")
+    partner = carnot_ModelerSymbolType()
+    setattr(partner, 'ModelerSymbolType', None)
+    _safe_set(owner, 'modeler', {partner})
+    assert getattr(partner, 'ModelerSymbolType') == owner
+    _safe_set(owner, 'modeler', set())
+    assert getattr(partner, 'ModelerSymbolType') is None
+
+
+def test_assoc_organization236_stub_double():
+    # carnot_OrganizationType has no real 'carnot_OrganizationType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelType(author="sample_text", carnotVersion="sample_text", created="sample_text", modelOID="sample_text", oid="sample_text", vendor="sample_text")
+    partner = carnot_OrganizationType()
+    setattr(partner, 'carnot_OrganizationType', None)
+    _safe_set(owner, 'carnot_ModelType237', {partner})
+    assert getattr(partner, 'carnot_OrganizationType') == owner
+    _safe_set(owner, 'carnot_ModelType237', set())
+    assert getattr(partner, 'carnot_OrganizationType') is None
+
+
+def test_assoc_organizationSymbol25_stub_double():
+    # carnot_OrganizationSymbolType has no real 'carnot_OrganizationSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_OrganizationSymbolType()
+    setattr(partner, 'carnot_OrganizationSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer26', {partner})
+    assert getattr(partner, 'carnot_OrganizationSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer26', set())
+    assert getattr(partner, 'carnot_OrganizationSymbolType') is None
+
+
+def test_assoc_outLinks63_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'GenericLinkConnectionType64' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_INodeSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_INodeSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_INodeSymbol(height="sample_text", shape="sample_text", width="sample_text", xPos="sample_text", yPos="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'GenericLinkConnectionType64', None)
+    _safe_set(owner, 'sourceSymbol', {partner})
+    assert getattr(partner, 'GenericLinkConnectionType64') == owner
+    _safe_set(owner, 'sourceSymbol', set())
+    assert getattr(partner, 'GenericLinkConnectionType64') is None
+
+
+def test_assoc_outTransitions69_stub_double():
+    # carnot_IFlowObjectSymbol has no real 'sourceActivitySymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TransitionConnectionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TransitionConnectionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TransitionConnectionType(points="sample_text")
+    partner = carnot_IFlowObjectSymbol()
+    setattr(partner, 'sourceActivitySymbol', None)
+    _safe_set(owner, 'TransitionConnectionType70', partner)
+    assert getattr(partner, 'sourceActivitySymbol') == owner
+    _safe_set(owner, 'TransitionConnectionType70', None)
+    assert getattr(partner, 'sourceActivitySymbol') is None
+
+
+def test_assoc_packageRef191_stub_double():
+    # carnot_ExternalPackage has no real 'carnot_ExternalPackage' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IdRef's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IdRef's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IdRef(ref="sample_text")
+    partner = carnot_ExternalPackage()
+    setattr(partner, 'carnot_ExternalPackage', None)
+    _safe_set(owner, 'carnot_IdRef', partner)
+    assert getattr(partner, 'carnot_ExternalPackage') == owner
+    _safe_set(owner, 'carnot_IdRef', None)
+    assert getattr(partner, 'carnot_ExternalPackage') is None
+
+
+def test_assoc_parameterMapping358_stub_double():
+    # carnot_TriggerType has no real 'carnot_TriggerType359' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ParameterMappingType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ParameterMappingType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ParameterMappingType(dataPath="sample_text", parameter="sample_text", parameterPath="sample_text")
+    partner = carnot_TriggerType()
+    setattr(partner, 'carnot_TriggerType359', None)
+    _safe_set(owner, 'carnot_ParameterMappingType', partner)
+    assert getattr(partner, 'carnot_TriggerType359') == owner
+    _safe_set(owner, 'carnot_ParameterMappingType', None)
+    assert getattr(partner, 'carnot_TriggerType359') is None
+
+
+def test_assoc_parentLane202_stub_double():
+    # carnot_LaneSymbol has no real 'childLanes' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISwimlaneSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISwimlaneSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISwimlaneSymbol(collapsed="sample_text", orientation="sample_text")
+    partner = carnot_LaneSymbol()
+    setattr(partner, 'childLanes', None)
+    _safe_set(owner, 'ISwimlaneSymbol203', partner)
+    assert getattr(partner, 'childLanes') == owner
+    _safe_set(owner, 'ISwimlaneSymbol203', None)
+    assert getattr(partner, 'childLanes') is None
+
+
+def test_assoc_parentPool200_stub_double():
+    # carnot_LaneSymbol has no real 'lanes' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_PoolSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_PoolSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_PoolSymbol(boundaryVisible="sample_text")
+    partner = carnot_LaneSymbol()
+    setattr(partner, 'lanes', None)
+    _safe_set(owner, 'PoolSymbol201', partner)
+    assert getattr(partner, 'lanes') == owner
+    _safe_set(owner, 'PoolSymbol201', None)
+    assert getattr(partner, 'lanes') is None
+
+
+def test_assoc_partOfConnection43_stub_double():
+    # carnot_PartOfConnectionType has no real 'carnot_PartOfConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_PartOfConnectionType()
+    setattr(partner, 'carnot_PartOfConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer44', {partner})
+    assert getattr(partner, 'carnot_PartOfConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer44', set())
+    assert getattr(partner, 'carnot_PartOfConnectionType') is None
+
+
+def test_assoc_participant130_stub_double():
+    # carnot_ConditionalPerformerSymbolType has no real 'conditionalPerformerSymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ConditionalPerformerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ConditionalPerformerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ConditionalPerformerType(dataPath="sample_text", isUser="sample_text")
+    partner = carnot_ConditionalPerformerSymbolType()
+    setattr(partner, 'conditionalPerformerSymbols', None)
+    _safe_set(owner, 'ConditionalPerformerType', partner)
+    assert getattr(partner, 'conditionalPerformerSymbols') == owner
+    _safe_set(owner, 'ConditionalPerformerType', None)
+    assert getattr(partner, 'conditionalPerformerSymbols') is None
+
+
+def test_assoc_participant65_stub_double():
+    # carnot_IModelParticipant has no real 'IModelParticipant' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISwimlaneSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISwimlaneSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISwimlaneSymbol(collapsed="sample_text", orientation="sample_text")
+    partner = carnot_IModelParticipant()
+    setattr(partner, 'IModelParticipant', None)
+    _safe_set(owner, 'performedSwimlanes', partner)
+    assert getattr(partner, 'IModelParticipant') == owner
+    _safe_set(owner, 'performedSwimlanes', None)
+    assert getattr(partner, 'IModelParticipant') is None
+
+
+def test_assoc_participantReference67_stub_double():
+    # carnot_IModelParticipant has no real 'carnot_IModelParticipant' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISwimlaneSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISwimlaneSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISwimlaneSymbol(collapsed="sample_text", orientation="sample_text")
+    partner = carnot_IModelParticipant()
+    setattr(partner, 'carnot_IModelParticipant', None)
+    _safe_set(owner, 'carnot_ISwimlaneSymbol', partner)
+    assert getattr(partner, 'carnot_IModelParticipant') == owner
+    _safe_set(owner, 'carnot_ISwimlaneSymbol', None)
+    assert getattr(partner, 'carnot_IModelParticipant') is None
+
+
+def test_assoc_performedActivities72_stub_double():
+    # carnot_IModelParticipant has no real 'performer' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_IModelParticipant()
+    setattr(partner, 'performer', None)
+    _safe_set(owner, 'ActivityType', partner)
+    assert getattr(partner, 'performer') == owner
+    _safe_set(owner, 'ActivityType', None)
+    assert getattr(partner, 'performer') is None
+
+
+def test_assoc_performedSwimlanes73_stub_double():
+    # carnot_IModelParticipant has no real 'participant' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISwimlaneSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISwimlaneSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISwimlaneSymbol(collapsed="sample_text", orientation="sample_text")
+    partner = carnot_IModelParticipant()
+    setattr(partner, 'participant', None)
+    _safe_set(owner, 'ISwimlaneSymbol', partner)
+    assert getattr(partner, 'participant') == owner
+    _safe_set(owner, 'ISwimlaneSymbol', None)
+    assert getattr(partner, 'participant') is None
+
+
+def test_assoc_performer95_stub_double():
+    # carnot_IModelParticipant has no real 'IModelParticipant96' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_IModelParticipant()
+    setattr(partner, 'IModelParticipant96', None)
+    _safe_set(owner, 'performedActivities', partner)
+    assert getattr(partner, 'IModelParticipant96') == owner
+    _safe_set(owner, 'performedActivities', None)
+    assert getattr(partner, 'IModelParticipant96') is None
+
+
+def test_assoc_performsConnection45_stub_double():
+    # carnot_PerformsConnectionType has no real 'carnot_PerformsConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_PerformsConnectionType()
+    setattr(partner, 'carnot_PerformsConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer46', {partner})
+    assert getattr(partner, 'carnot_PerformsConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer46', set())
+    assert getattr(partner, 'carnot_PerformsConnectionType') is None
+
+
+def test_assoc_process301_stub_double():
+    # carnot_ProcessSymbolType has no real 'processSymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ProcessDefinitionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ProcessDefinitionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ProcessDefinitionType(defaultPriority="sample_text")
+    partner = carnot_ProcessSymbolType()
+    setattr(partner, 'processSymbols', None)
+    _safe_set(owner, 'ProcessDefinitionType302', partner)
+    assert getattr(partner, 'processSymbols') == owner
+    _safe_set(owner, 'ProcessDefinitionType302', None)
+    assert getattr(partner, 'processSymbols') is None
+
+
+def test_assoc_processInterfaceSymbols29_stub_double():
+    # carnot_PublicInterfaceSymbol has no real 'carnot_PublicInterfaceSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_PublicInterfaceSymbol()
+    setattr(partner, 'carnot_PublicInterfaceSymbol', None)
+    _safe_set(owner, 'carnot_ISymbolContainer30', {partner})
+    assert getattr(partner, 'carnot_PublicInterfaceSymbol') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer30', set())
+    assert getattr(partner, 'carnot_PublicInterfaceSymbol') is None
+
+
+def test_assoc_processSymbol27_stub_double():
+    # carnot_ProcessSymbolType has no real 'carnot_ProcessSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_ProcessSymbolType()
+    setattr(partner, 'carnot_ProcessSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer28', {partner})
+    assert getattr(partner, 'carnot_ProcessSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer28', set())
+    assert getattr(partner, 'carnot_ProcessSymbolType') is None
+
+
+def test_assoc_processSymbols296_stub_double():
+    # carnot_ProcessSymbolType has no real 'ProcessSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ProcessDefinitionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ProcessDefinitionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ProcessDefinitionType(defaultPriority="sample_text")
+    partner = carnot_ProcessSymbolType()
+    setattr(partner, 'ProcessSymbolType', None)
+    _safe_set(owner, 'process', {partner})
+    assert getattr(partner, 'ProcessSymbolType') == owner
+    _safe_set(owner, 'process', set())
+    assert getattr(partner, 'ProcessSymbolType') is None
+
+
+def test_assoc_qualityControl232_stub_double():
+    # carnot_QualityControlType has no real 'carnot_QualityControlType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelType(author="sample_text", carnotVersion="sample_text", created="sample_text", modelOID="sample_text", oid="sample_text", vendor="sample_text")
+    partner = carnot_QualityControlType()
+    setattr(partner, 'carnot_QualityControlType', None)
+    _safe_set(owner, 'carnot_ModelType233', partner)
+    assert getattr(partner, 'carnot_QualityControlType') == owner
+    _safe_set(owner, 'carnot_ModelType233', None)
+    assert getattr(partner, 'carnot_QualityControlType') is None
+
+
+def test_assoc_qualityControlPerformer97_stub_double():
+    # carnot_IModelParticipant has no real 'carnot_IModelParticipant99' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_IModelParticipant()
+    setattr(partner, 'carnot_IModelParticipant99', None)
+    _safe_set(owner, 'carnot_ActivityType98', partner)
+    assert getattr(partner, 'carnot_IModelParticipant99') == owner
+    _safe_set(owner, 'carnot_ActivityType98', None)
+    assert getattr(partner, 'carnot_IModelParticipant99') is None
+
+
+def test_assoc_reference129_stub_double():
+    # carnot_IdentifiableReference has no real 'IdentifiableReference' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_AttributeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_AttributeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_AttributeType(any="sample_text", group="sample_text", mixed="sample_text", name="sample_text", type="sample_text", value="sample_text")
+    partner = carnot_IdentifiableReference()
+    setattr(partner, 'IdentifiableReference', None)
+    _safe_set(owner, 'attribute', partner)
+    assert getattr(partner, 'IdentifiableReference') == owner
+    _safe_set(owner, 'attribute', None)
+    assert getattr(partner, 'IdentifiableReference') is None
+
+
+def test_assoc_referingFromConnections60_stub_double():
+    # carnot_RefersToConnectionType has no real 'RefersToConnectionType61' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IGraphicalObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IGraphicalObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IGraphicalObject(borderColor="sample_text", fillColor="sample_text", style="sample_text")
+    partner = carnot_RefersToConnectionType()
+    setattr(partner, 'RefersToConnectionType61', None)
+    _safe_set(owner, 'from_', {partner})
+    assert getattr(partner, 'RefersToConnectionType61') == owner
+    _safe_set(owner, 'from_', set())
+    assert getattr(partner, 'RefersToConnectionType61') is None
+
+
+def test_assoc_referingToConnections59_stub_double():
+    # carnot_RefersToConnectionType has no real 'RefersToConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IGraphicalObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IGraphicalObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IGraphicalObject(borderColor="sample_text", fillColor="sample_text", style="sample_text")
+    partner = carnot_RefersToConnectionType()
+    setattr(partner, 'RefersToConnectionType', None)
+    _safe_set(owner, 'to', {partner})
+    assert getattr(partner, 'RefersToConnectionType') == owner
+    _safe_set(owner, 'to', set())
+    assert getattr(partner, 'RefersToConnectionType') is None
+
+
+def test_assoc_refersToConnection49_stub_double():
+    # carnot_RefersToConnectionType has no real 'carnot_RefersToConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_RefersToConnectionType()
+    setattr(partner, 'carnot_RefersToConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer50', {partner})
+    assert getattr(partner, 'carnot_RefersToConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer50', set())
+    assert getattr(partner, 'carnot_RefersToConnectionType') is None
+
+
+def test_assoc_role312_stub_double():
+    # carnot_RoleSymbolType has no real 'roleSymbols' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_RoleType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_RoleType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_RoleType(cardinality=7)
+    partner = carnot_RoleSymbolType()
+    setattr(partner, 'roleSymbols', None)
+    _safe_set(owner, 'RoleType313', partner)
+    assert getattr(partner, 'roleSymbols') == owner
+    _safe_set(owner, 'RoleType313', None)
+    assert getattr(partner, 'roleSymbols') is None
+
+
+def test_assoc_roleSymbol31_stub_double():
+    # carnot_RoleSymbolType has no real 'carnot_RoleSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_RoleSymbolType()
+    setattr(partner, 'carnot_RoleSymbolType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer32', {partner})
+    assert getattr(partner, 'carnot_RoleSymbolType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer32', set())
+    assert getattr(partner, 'carnot_RoleSymbolType') is None
+
+
+def test_assoc_roleSymbols321_stub_double():
+    # carnot_RoleSymbolType has no real 'RoleSymbolType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_RoleType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_RoleType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_RoleType(cardinality=7)
+    partner = carnot_RoleSymbolType()
+    setattr(partner, 'RoleSymbolType', None)
+    _safe_set(owner, 'role', {partner})
+    assert getattr(partner, 'RoleSymbolType') == owner
+    _safe_set(owner, 'role', set())
+    assert getattr(partner, 'RoleSymbolType') is None
+
+
+def test_assoc_script244_stub_double():
+    # carnot_ScriptType has no real 'carnot_ScriptType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelType(author="sample_text", carnotVersion="sample_text", created="sample_text", modelOID="sample_text", oid="sample_text", vendor="sample_text")
+    partner = carnot_ScriptType()
+    setattr(partner, 'carnot_ScriptType', None)
+    _safe_set(owner, 'carnot_ModelType245', partner)
+    assert getattr(partner, 'carnot_ScriptType') == owner
+    _safe_set(owner, 'carnot_ModelType245', None)
+    assert getattr(partner, 'carnot_ScriptType') is None
+
+
+def test_assoc_sourceActivitySymbol338_stub_double():
+    # carnot_IFlowObjectSymbol has no real 'IFlowObjectSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TransitionConnectionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TransitionConnectionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TransitionConnectionType(points="sample_text")
+    partner = carnot_IFlowObjectSymbol()
+    setattr(partner, 'IFlowObjectSymbol', None)
+    _safe_set(owner, 'outTransitions', partner)
+    assert getattr(partner, 'IFlowObjectSymbol') == owner
+    _safe_set(owner, 'outTransitions', None)
+    assert getattr(partner, 'IFlowObjectSymbol') is None
+
+
+def test_assoc_sourceSymbol197_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'outLinks' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_INodeSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_INodeSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_INodeSymbol(height="sample_text", shape="sample_text", width="sample_text", xPos="sample_text", yPos="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'outLinks', None)
+    _safe_set(owner, 'INodeSymbol', partner)
+    assert getattr(partner, 'outLinks') == owner
+    _safe_set(owner, 'INodeSymbol', None)
+    assert getattr(partner, 'outLinks') is None
+
+
+def test_assoc_startActivity325_stub_double():
+    # carnot_StartEventSymbol has no real 'startingEventSymbols326' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_StartEventSymbol()
+    setattr(partner, 'startingEventSymbols326', None)
+    _safe_set(owner, 'ActivityType327', partner)
+    assert getattr(partner, 'startingEventSymbols326') == owner
+    _safe_set(owner, 'ActivityType327', None)
+    assert getattr(partner, 'startingEventSymbols326') is None
+
+
+def test_assoc_startEventSymbols33_stub_double():
+    # carnot_StartEventSymbol has no real 'carnot_StartEventSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_StartEventSymbol()
+    setattr(partner, 'carnot_StartEventSymbol', None)
+    _safe_set(owner, 'carnot_ISymbolContainer34', {partner})
+    assert getattr(partner, 'carnot_StartEventSymbol') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer34', set())
+    assert getattr(partner, 'carnot_StartEventSymbol') is None
+
+
+def test_assoc_startingEventSymbols101_stub_double():
+    # carnot_StartEventSymbol has no real 'StartEventSymbol' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ActivityType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ActivityType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ActivityType(allowsAbortByPerformer="sample_text", hibernateOnCreation="sample_text", implementation="sample_text", join="sample_text", loopCondition="sample_text", loopType="sample_text", split="sample_text", subProcessMode="sample_text")
+    partner = carnot_StartEventSymbol()
+    setattr(partner, 'StartEventSymbol', None)
+    _safe_set(owner, 'startActivity', {partner})
+    assert getattr(partner, 'StartEventSymbol') == owner
+    _safe_set(owner, 'startActivity', set())
+    assert getattr(partner, 'StartEventSymbol') is None
+
+
+def test_assoc_subProcessOfConnection51_stub_double():
+    # carnot_SubProcessOfConnectionType has no real 'carnot_SubProcessOfConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_SubProcessOfConnectionType()
+    setattr(partner, 'carnot_SubProcessOfConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer52', {partner})
+    assert getattr(partner, 'carnot_SubProcessOfConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer52', set())
+    assert getattr(partner, 'carnot_SubProcessOfConnectionType') is None
+
+
+def test_assoc_targetActivitySymbol339_stub_double():
+    # carnot_IFlowObjectSymbol has no real 'IFlowObjectSymbol340' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TransitionConnectionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TransitionConnectionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TransitionConnectionType(points="sample_text")
+    partner = carnot_IFlowObjectSymbol()
+    setattr(partner, 'IFlowObjectSymbol340', None)
+    _safe_set(owner, 'inTransitions', partner)
+    assert getattr(partner, 'IFlowObjectSymbol340') == owner
+    _safe_set(owner, 'inTransitions', None)
+    assert getattr(partner, 'IFlowObjectSymbol340') is None
+
+
+def test_assoc_targetSymbol198_stub_double():
+    # carnot_GenericLinkConnectionType has no real 'inLinks' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_INodeSymbol's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_INodeSymbol's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_INodeSymbol(height="sample_text", shape="sample_text", width="sample_text", xPos="sample_text", yPos="sample_text")
+    partner = carnot_GenericLinkConnectionType()
+    setattr(partner, 'inLinks', None)
+    _safe_set(owner, 'INodeSymbol199', partner)
+    assert getattr(partner, 'inLinks') == owner
+    _safe_set(owner, 'INodeSymbol199', None)
+    assert getattr(partner, 'inLinks') is None
+
+
+def test_assoc_teamLead264_stub_double():
+    # carnot_OrganizationType has no real 'teams' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_RoleType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_RoleType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_RoleType(cardinality=7)
+    partner = carnot_OrganizationType()
+    setattr(partner, 'teams', None)
+    _safe_set(owner, 'RoleType', partner)
+    assert getattr(partner, 'teams') == owner
+    _safe_set(owner, 'RoleType', None)
+    assert getattr(partner, 'teams') is None
+
+
+def test_assoc_teamLeadConnection57_stub_double():
+    # carnot_TeamLeadConnectionType has no real 'carnot_TeamLeadConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_TeamLeadConnectionType()
+    setattr(partner, 'carnot_TeamLeadConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer58', {partner})
+    assert getattr(partner, 'carnot_TeamLeadConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer58', set())
+    assert getattr(partner, 'carnot_TeamLeadConnectionType') is None
+
+
+def test_assoc_teams319_stub_double():
+    # carnot_OrganizationType has no real 'OrganizationType320' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_RoleType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_RoleType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_RoleType(cardinality=7)
+    partner = carnot_OrganizationType()
+    setattr(partner, 'OrganizationType320', None)
+    _safe_set(owner, 'teamLead', {partner})
+    assert getattr(partner, 'OrganizationType320') == owner
+    _safe_set(owner, 'teamLead', set())
+    assert getattr(partner, 'OrganizationType320') is None
+
+
+def test_assoc_text111_stub_double():
+    # carnot_AnnotationSymbolType has no real 'carnot_AnnotationSymbolType112' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TextType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TextType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TextType(mixed="sample_text")
+    partner = carnot_AnnotationSymbolType()
+    setattr(partner, 'carnot_AnnotationSymbolType112', None)
+    _safe_set(owner, 'carnot_TextType', partner)
+    assert getattr(partner, 'carnot_AnnotationSymbolType112') == owner
+    _safe_set(owner, 'carnot_TextType', None)
+    assert getattr(partner, 'carnot_AnnotationSymbolType112') is None
+
+
+def test_assoc_to310_stub_double():
+    # carnot_RefersToConnectionType has no real 'referingToConnections' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IGraphicalObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IGraphicalObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IGraphicalObject(borderColor="sample_text", fillColor="sample_text", style="sample_text")
+    partner = carnot_RefersToConnectionType()
+    setattr(partner, 'referingToConnections', None)
+    _safe_set(owner, 'IGraphicalObject311', partner)
+    assert getattr(partner, 'referingToConnections') == owner
+    _safe_set(owner, 'IGraphicalObject311', None)
+    assert getattr(partner, 'referingToConnections') is None
+
+
+def test_assoc_trigger287_stub_double():
+    # carnot_TriggerType has no real 'carnot_TriggerType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ProcessDefinitionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ProcessDefinitionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ProcessDefinitionType(defaultPriority="sample_text")
+    partner = carnot_TriggerType()
+    setattr(partner, 'carnot_TriggerType', None)
+    _safe_set(owner, 'carnot_ProcessDefinitionType288', {partner})
+    assert getattr(partner, 'carnot_TriggerType') == owner
+    _safe_set(owner, 'carnot_ProcessDefinitionType288', set())
+    assert getattr(partner, 'carnot_TriggerType') is None
+
+
+def test_assoc_triggers363_stub_double():
+    # carnot_TriggerType has no real 'TriggerType365' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TriggerTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TriggerTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TriggerTypeType(panelClass="sample_text", pullTrigger="sample_text", pullTriggerEvaluator="sample_text", rule="sample_text")
+    partner = carnot_TriggerType()
+    setattr(partner, 'TriggerType365', None)
+    _safe_set(owner, 'type364', {partner})
+    assert getattr(partner, 'TriggerType365') == owner
+    _safe_set(owner, 'type364', set())
+    assert getattr(partner, 'TriggerType365') is None
+
+
+def test_assoc_triggersConnection47_stub_double():
+    # carnot_TriggersConnectionType has no real 'carnot_TriggersConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_TriggersConnectionType()
+    setattr(partner, 'carnot_TriggersConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer48', {partner})
+    assert getattr(partner, 'carnot_TriggersConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer48', set())
+    assert getattr(partner, 'carnot_TriggersConnectionType') is None
+
+
+def test_assoc_type137_stub_double():
+    # carnot_ContextType has no real 'contexts' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ApplicationContextTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ApplicationContextTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ApplicationContextTypeType(accessPointProviderClass="sample_text", hasApplicationPath="sample_text", hasMappingId="sample_text", panelClass="sample_text", validatorClass="sample_text")
+    partner = carnot_ContextType()
+    setattr(partner, 'contexts', None)
+    _safe_set(owner, 'ApplicationContextTypeType', partner)
+    assert getattr(partner, 'contexts') == owner
+    _safe_set(owner, 'ApplicationContextTypeType', None)
+    assert getattr(partner, 'contexts') is None
+
+
+def test_assoc_type360_stub_double():
+    # carnot_TriggerType has no real 'triggers' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_TriggerTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_TriggerTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_TriggerTypeType(panelClass="sample_text", pullTrigger="sample_text", pullTriggerEvaluator="sample_text", rule="sample_text")
+    partner = carnot_TriggerType()
+    setattr(partner, 'triggers', None)
+    _safe_set(owner, 'TriggerTypeType', partner)
+    assert getattr(partner, 'triggers') == owner
+    _safe_set(owner, 'TriggerTypeType', None)
+    assert getattr(partner, 'triggers') is None
+
+
+def test_assoc_type79_stub_double():
+    # carnot_AbstractEventAction has no real 'actionInstances' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_EventActionTypeType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_EventActionTypeType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_EventActionTypeType(actionClass="sample_text", activityAction="sample_text", panelClass="sample_text", processAction="sample_text", supportedConditionTypes="sample_text", unsupportedContexts="sample_text")
+    partner = carnot_AbstractEventAction()
+    setattr(partner, 'actionInstances', None)
+    _safe_set(owner, 'EventActionTypeType', partner)
+    assert getattr(partner, 'actionInstances') == owner
+    _safe_set(owner, 'EventActionTypeType', None)
+    assert getattr(partner, 'actionInstances') is None
+
+
+def test_assoc_typeDeclarations246_stub_double():
+    # carnot_TypeDeclarationsType has no real 'carnot_TypeDeclarationsType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ModelType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ModelType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ModelType(author="sample_text", carnotVersion="sample_text", created="sample_text", modelOID="sample_text", oid="sample_text", vendor="sample_text")
+    partner = carnot_TypeDeclarationsType()
+    setattr(partner, 'carnot_TypeDeclarationsType', None)
+    _safe_set(owner, 'carnot_ModelType247', partner)
+    assert getattr(partner, 'carnot_TypeDeclarationsType') == owner
+    _safe_set(owner, 'carnot_ModelType247', None)
+    assert getattr(partner, 'carnot_TypeDeclarationsType') is None
+
+
+def test_assoc_unbindAction183_stub_double():
+    # carnot_UnbindActionType has no real 'carnot_UnbindActionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_EventHandlerType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_EventHandlerType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_EventHandlerType(autoBind="sample_text", consumeOnMatch="sample_text", logHandler="sample_text", unbindOnMatch="sample_text")
+    partner = carnot_UnbindActionType()
+    setattr(partner, 'carnot_UnbindActionType', None)
+    _safe_set(owner, 'carnot_EventHandlerType184', {partner})
+    assert getattr(partner, 'carnot_UnbindActionType') == owner
+    _safe_set(owner, 'carnot_EventHandlerType184', set())
+    assert getattr(partner, 'carnot_UnbindActionType') is None
+
+
+def test_assoc_viewable366_stub_double():
+    # carnot_ViewableType has no real 'carnot_ViewableType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_IModelElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_IModelElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_IModelElement(elementOid="sample_text")
+    partner = carnot_ViewableType()
+    setattr(partner, 'carnot_ViewableType', None)
+    _safe_set(owner, 'carnot_IModelElement', partner)
+    assert getattr(partner, 'carnot_ViewableType') == owner
+    _safe_set(owner, 'carnot_IModelElement', None)
+    assert getattr(partner, 'carnot_ViewableType') is None
+
+
+def test_assoc_viewable373_stub_double():
+    # carnot_ViewableType has no real 'carnot_ViewableType375' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ViewType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ViewType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ViewType(name="sample_text")
+    partner = carnot_ViewableType()
+    setattr(partner, 'carnot_ViewableType375', None)
+    _safe_set(owner, 'carnot_ViewType374', {partner})
+    assert getattr(partner, 'carnot_ViewableType375') == owner
+    _safe_set(owner, 'carnot_ViewType374', set())
+    assert getattr(partner, 'carnot_ViewableType375') is None
+
+
+def test_assoc_worksForConnection55_stub_double():
+    # carnot_WorksForConnectionType has no real 'carnot_WorksForConnectionType' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_ISymbolContainer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_ISymbolContainer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_ISymbolContainer(connections="sample_text", nodes="sample_text")
+    partner = carnot_WorksForConnectionType()
+    setattr(partner, 'carnot_WorksForConnectionType', None)
+    _safe_set(owner, 'carnot_ISymbolContainer56', {partner})
+    assert getattr(partner, 'carnot_WorksForConnectionType') == owner
+    _safe_set(owner, 'carnot_ISymbolContainer56', set())
+    assert getattr(partner, 'carnot_WorksForConnectionType') is None
+
+
+def test_assoc_xMLNSPrefixMap169_stub_double():
+    # carnot_EStringToStringMapEntry has no real 'carnot_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_DocumentRoot(mixed="sample_text")
+    partner = carnot_EStringToStringMapEntry()
+    setattr(partner, 'carnot_EStringToStringMapEntry', None)
+    _safe_set(owner, 'carnot_DocumentRoot', {partner})
+    assert getattr(partner, 'carnot_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'carnot_DocumentRoot', set())
+    assert getattr(partner, 'carnot_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation170_stub_double():
+    # carnot_EStringToStringMapEntry has no real 'carnot_EStringToStringMapEntry172' property in the generated
+    # code (a bare stub) -- manually attach it so carnot_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # carnot_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = carnot_DocumentRoot(mixed="sample_text")
+    partner = carnot_EStringToStringMapEntry()
+    setattr(partner, 'carnot_EStringToStringMapEntry172', None)
+    _safe_set(owner, 'carnot_DocumentRoot171', {partner})
+    assert getattr(partner, 'carnot_EStringToStringMapEntry172') == owner
+    _safe_set(owner, 'carnot_DocumentRoot171', set())
+    assert getattr(partner, 'carnot_EStringToStringMapEntry172') is None
+
+

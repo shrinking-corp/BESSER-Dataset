@@ -1036,3 +1036,926 @@ def test_assoc_Workflow139_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'avm_Workflow', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_AnalysisConstruct11_stub_double():
+    # avm_AnalysisConstruct has no real 'avm_AnalysisConstruct' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Component's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Component's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Component(Classifications="sample_text", ID="sample_text", Name="sample_text", SchemaVersion="sample_text", Supercedes="sample_text", Version="sample_text")
+    partner = avm_AnalysisConstruct()
+    setattr(partner, 'avm_AnalysisConstruct', None)
+    _safe_set(owner, 'avm_Component12', {partner})
+    assert getattr(partner, 'avm_AnalysisConstruct') == owner
+    _safe_set(owner, 'avm_Component12', set())
+    assert getattr(partner, 'avm_AnalysisConstruct') is None
+
+
+def test_assoc_ApplyJoinData120_stub_double():
+    # avm_assemblyDetail has no real 'avm_assemblyDetail122' property in the generated
+    # code (a bare stub) -- manually attach it so avm_ConnectorCompositionTarget's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_ConnectorCompositionTarget's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_ConnectorCompositionTarget(ID="sample_text")
+    partner = avm_assemblyDetail()
+    setattr(partner, 'avm_assemblyDetail122', None)
+    _safe_set(owner, 'avm_ConnectorCompositionTarget121', {partner})
+    assert getattr(partner, 'avm_assemblyDetail122') == owner
+    _safe_set(owner, 'avm_ConnectorCompositionTarget121', set())
+    assert getattr(partner, 'avm_assemblyDetail122') is None
+
+
+def test_assoc_AssignedValue62_stub_double():
+    # avm_ParametricEnumeratedValue has no real 'avm_ParametricEnumeratedValue' property in the generated
+    # code (a bare stub) -- manually attach it so avm_FixedValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_FixedValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_FixedValue(Uncertainty="sample_text", Value="sample_text")
+    partner = avm_ParametricEnumeratedValue()
+    setattr(partner, 'avm_ParametricEnumeratedValue', None)
+    _safe_set(owner, 'avm_FixedValue', partner)
+    assert getattr(partner, 'avm_ParametricEnumeratedValue') == owner
+    _safe_set(owner, 'avm_FixedValue', None)
+    assert getattr(partner, 'avm_ParametricEnumeratedValue') is None
+
+
+def test_assoc_CADModel297_stub_double():
+    # CADModel has no real 'CADModel' property in the generated
+    # code (a bare stub) -- manually attach it so avm_domainmapping_CAD2EDATransform's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_domainmapping_CAD2EDATransform's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_domainmapping_CAD2EDATransform(RotationX="sample_text", RotationY="sample_text", RotationZ="sample_text", ScaleX="sample_text", ScaleY="sample_text", ScaleZ="sample_text", TranslationX="sample_text", TranslationY="sample_text", TranslationZ="sample_text")
+    partner = CADModel()
+    setattr(partner, 'CADModel', None)
+    _safe_set(owner, 'avm_domainmapping_CAD2EDATransform298', partner)
+    assert getattr(partner, 'CADModel') == owner
+    _safe_set(owner, 'avm_domainmapping_CAD2EDATransform298', None)
+    assert getattr(partner, 'CADModel') is None
+
+
+def test_assoc_Connector154_stub_double():
+    # Connector has no real 'Connector' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_ModelicaModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_ModelicaModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_ModelicaModel(Class="sample_text")
+    partner = Connector()
+    setattr(partner, 'Connector', None)
+    _safe_set(owner, 'avm_modelica_ModelicaModel155', {partner})
+    assert getattr(partner, 'Connector') == owner
+    _safe_set(owner, 'avm_modelica_ModelicaModel155', set())
+    assert getattr(partner, 'Connector') is None
+
+
+def test_assoc_Connector251_stub_double():
+    # Connector has no real 'Connector252' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cyber_CyberModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cyber_CyberModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cyber_CyberModel(Class="sample_text", Locator="sample_text", Type="sample_text")
+    partner = Connector()
+    setattr(partner, 'Connector252', None)
+    _safe_set(owner, 'avm_cyber_CyberModel', {partner})
+    assert getattr(partner, 'Connector252') == owner
+    _safe_set(owner, 'avm_cyber_CyberModel', set())
+    assert getattr(partner, 'Connector252') is None
+
+
+def test_assoc_ConnectorFeature35_stub_double():
+    # avm_ConnectorFeature has no real 'avm_ConnectorFeature' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Connector's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Connector's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Connector(Definition="sample_text", Name="sample_text", Notes="sample_text", XPosition="sample_text", YPosition="sample_text")
+    partner = avm_ConnectorFeature()
+    setattr(partner, 'avm_ConnectorFeature', None)
+    _safe_set(owner, 'avm_Connector36', {partner})
+    assert getattr(partner, 'avm_ConnectorFeature') == owner
+    _safe_set(owner, 'avm_Connector36', set())
+    assert getattr(partner, 'avm_ConnectorFeature') is None
+
+
+def test_assoc_ConstraintTarget259_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_ExactLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_ExactLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_ExactLayoutConstraint(Layer="sample_text", Rotation="sample_text", X="sample_text", Y="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance', None)
+    _safe_set(owner, 'avm_eda_ExactLayoutConstraint', {partner})
+    assert getattr(partner, 'eda_avm_ComponentInstance') == owner
+    _safe_set(owner, 'avm_eda_ExactLayoutConstraint', set())
+    assert getattr(partner, 'eda_avm_ComponentInstance') is None
+
+
+def test_assoc_ConstraintTarget262_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance263' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RangeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RangeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RangeLayoutConstraint(LayerRange="sample_text", Type="sample_text", XRangeMax="sample_text", XRangeMin="sample_text", YRangeMax="sample_text", YRangeMin="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance263', None)
+    _safe_set(owner, 'avm_eda_RangeLayoutConstraint', {partner})
+    assert getattr(partner, 'eda_avm_ComponentInstance263') == owner
+    _safe_set(owner, 'avm_eda_RangeLayoutConstraint', set())
+    assert getattr(partner, 'eda_avm_ComponentInstance263') is None
+
+
+def test_assoc_ConstraintTarget267_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance268' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RelativeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RelativeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RelativeLayoutConstraint(RelativeLayer="sample_text", RelativeRotation="sample_text", XOffset="sample_text", YOffset="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance268', None)
+    _safe_set(owner, 'avm_eda_RelativeLayoutConstraint', {partner})
+    assert getattr(partner, 'eda_avm_ComponentInstance268') == owner
+    _safe_set(owner, 'avm_eda_RelativeLayoutConstraint', set())
+    assert getattr(partner, 'eda_avm_ComponentInstance268') is None
+
+
+def test_assoc_ConstraintTarget280_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance282' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RelativeRangeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RelativeRangeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RelativeRangeLayoutConstraint(RelativeLayer="sample_text", XRelativeRangeMax="sample_text", XRelativeRangeMin="sample_text", YRelativeRangeMax="sample_text", YRelativeRangeMin="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance282', None)
+    _safe_set(owner, 'avm_eda_RelativeRangeLayoutConstraint281', {partner})
+    assert getattr(partner, 'eda_avm_ComponentInstance282') == owner
+    _safe_set(owner, 'avm_eda_RelativeRangeLayoutConstraint281', set())
+    assert getattr(partner, 'eda_avm_ComponentInstance282') is None
+
+
+def test_assoc_ConstraintTarget283_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance284' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_GlobalLayoutConstraintException's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_GlobalLayoutConstraintException's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_GlobalLayoutConstraintException(Constraint="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance284', None)
+    _safe_set(owner, 'avm_eda_GlobalLayoutConstraintException', {partner})
+    assert getattr(partner, 'eda_avm_ComponentInstance284') == owner
+    _safe_set(owner, 'avm_eda_GlobalLayoutConstraintException', set())
+    assert getattr(partner, 'eda_avm_ComponentInstance284') is None
+
+
+def test_assoc_ContainerConstraintTarget260_stub_double():
+    # eda_avm_Container has no real 'eda_avm_Container' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_ExactLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_ExactLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_ExactLayoutConstraint(Layer="sample_text", Rotation="sample_text", X="sample_text", Y="sample_text")
+    partner = eda_avm_Container()
+    setattr(partner, 'eda_avm_Container', None)
+    _safe_set(owner, 'avm_eda_ExactLayoutConstraint261', {partner})
+    assert getattr(partner, 'eda_avm_Container') == owner
+    _safe_set(owner, 'avm_eda_ExactLayoutConstraint261', set())
+    assert getattr(partner, 'eda_avm_Container') is None
+
+
+def test_assoc_ContainerConstraintTarget264_stub_double():
+    # eda_avm_Container has no real 'eda_avm_Container266' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RangeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RangeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RangeLayoutConstraint(LayerRange="sample_text", Type="sample_text", XRangeMax="sample_text", XRangeMin="sample_text", YRangeMax="sample_text", YRangeMin="sample_text")
+    partner = eda_avm_Container()
+    setattr(partner, 'eda_avm_Container266', None)
+    _safe_set(owner, 'avm_eda_RangeLayoutConstraint265', {partner})
+    assert getattr(partner, 'eda_avm_Container266') == owner
+    _safe_set(owner, 'avm_eda_RangeLayoutConstraint265', set())
+    assert getattr(partner, 'eda_avm_Container266') is None
+
+
+def test_assoc_ContainerConstraintTarget272_stub_double():
+    # eda_avm_Container has no real 'eda_avm_Container274' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RelativeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RelativeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RelativeLayoutConstraint(RelativeLayer="sample_text", RelativeRotation="sample_text", XOffset="sample_text", YOffset="sample_text")
+    partner = eda_avm_Container()
+    setattr(partner, 'eda_avm_Container274', None)
+    _safe_set(owner, 'avm_eda_RelativeLayoutConstraint273', {partner})
+    assert getattr(partner, 'eda_avm_Container274') == owner
+    _safe_set(owner, 'avm_eda_RelativeLayoutConstraint273', set())
+    assert getattr(partner, 'eda_avm_Container274') is None
+
+
+def test_assoc_ContainerConstraintTarget275_stub_double():
+    # eda_avm_Container has no real 'eda_avm_Container276' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RelativeRangeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RelativeRangeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RelativeRangeLayoutConstraint(RelativeLayer="sample_text", XRelativeRangeMax="sample_text", XRelativeRangeMin="sample_text", YRelativeRangeMax="sample_text", YRelativeRangeMin="sample_text")
+    partner = eda_avm_Container()
+    setattr(partner, 'eda_avm_Container276', None)
+    _safe_set(owner, 'avm_eda_RelativeRangeLayoutConstraint', {partner})
+    assert getattr(partner, 'eda_avm_Container276') == owner
+    _safe_set(owner, 'avm_eda_RelativeRangeLayoutConstraint', set())
+    assert getattr(partner, 'eda_avm_Container276') is None
+
+
+def test_assoc_ContainerConstraintTarget285_stub_double():
+    # eda_avm_Container has no real 'eda_avm_Container287' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_GlobalLayoutConstraintException's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_GlobalLayoutConstraintException's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_GlobalLayoutConstraintException(Constraint="sample_text")
+    partner = eda_avm_Container()
+    setattr(partner, 'eda_avm_Container287', None)
+    _safe_set(owner, 'avm_eda_GlobalLayoutConstraintException286', {partner})
+    assert getattr(partner, 'eda_avm_Container287') == owner
+    _safe_set(owner, 'avm_eda_GlobalLayoutConstraintException286', set())
+    assert getattr(partner, 'eda_avm_Container287') is None
+
+
+def test_assoc_ContainerFeature95_stub_double():
+    # avm_ContainerFeature has no real 'avm_ContainerFeature' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Container's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Container's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Container(Classifications="sample_text", Description="sample_text", ID="sample_text", Name="sample_text", XPosition="sample_text", YPosition="sample_text")
+    partner = avm_ContainerFeature()
+    setattr(partner, 'avm_ContainerFeature', None)
+    _safe_set(owner, 'avm_Container96', {partner})
+    assert getattr(partner, 'avm_ContainerFeature') == owner
+    _safe_set(owner, 'avm_Container96', set())
+    assert getattr(partner, 'avm_ContainerFeature') is None
+
+
+def test_assoc_Datum172_stub_double():
+    # Datum has no real 'Datum' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cad_CADModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cad_CADModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cad_CADModel(Format="sample_text")
+    partner = Datum()
+    setattr(partner, 'Datum', None)
+    _safe_set(owner, 'avm_cad_CADModel', {partner})
+    assert getattr(partner, 'Datum') == owner
+    _safe_set(owner, 'avm_cad_CADModel', set())
+    assert getattr(partner, 'Datum') is None
+
+
+def test_assoc_DatumMetric179_stub_double():
+    # Metric has no real 'Metric180' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cad_Datum's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cad_Datum's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cad_Datum(DatumName="sample_text")
+    partner = Metric()
+    setattr(partner, 'Metric180', None)
+    _safe_set(owner, 'avm_cad_Datum', {partner})
+    assert getattr(partner, 'Metric180') == owner
+    _safe_set(owner, 'avm_cad_Datum', set())
+    assert getattr(partner, 'Metric180') is None
+
+
+def test_assoc_DefaultJoin30_stub_double():
+    # avm_assemblyDetail has no real 'avm_assemblyDetail' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Connector's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Connector's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Connector(Definition="sample_text", Name="sample_text", Notes="sample_text", XPosition="sample_text", YPosition="sample_text")
+    partner = avm_assemblyDetail()
+    setattr(partner, 'avm_assemblyDetail', None)
+    _safe_set(owner, 'avm_Connector31', {partner})
+    assert getattr(partner, 'avm_assemblyDetail') == owner
+    _safe_set(owner, 'avm_Connector31', set())
+    assert getattr(partner, 'avm_assemblyDetail') is None
+
+
+def test_assoc_DomainFeature70_stub_double():
+    # avm_DesignDomainFeature has no real 'avm_DesignDomainFeature' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Design's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Design's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Design(DesignID="sample_text", DesignSpaceSrcID="sample_text", Name="sample_text", SchemaVersion="sample_text")
+    partner = avm_DesignDomainFeature()
+    setattr(partner, 'avm_DesignDomainFeature', None)
+    _safe_set(owner, 'avm_Design71', {partner})
+    assert getattr(partner, 'avm_DesignDomainFeature') == owner
+    _safe_set(owner, 'avm_Design71', set())
+    assert getattr(partner, 'avm_DesignDomainFeature') is None
+
+
+def test_assoc_DomainMapping15_stub_double():
+    # avm_DomainMapping has no real 'avm_DomainMapping' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Component's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Component's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Component(Classifications="sample_text", ID="sample_text", Name="sample_text", SchemaVersion="sample_text", Supercedes="sample_text", Version="sample_text")
+    partner = avm_DomainMapping()
+    setattr(partner, 'avm_DomainMapping', None)
+    _safe_set(owner, 'avm_Component16', {partner})
+    assert getattr(partner, 'avm_DomainMapping') == owner
+    _safe_set(owner, 'avm_Component16', set())
+    assert getattr(partner, 'avm_DomainMapping') is None
+
+
+def test_assoc_EDAModel296_stub_double():
+    # eda_EDAModel has no real 'eda_EDAModel' property in the generated
+    # code (a bare stub) -- manually attach it so avm_domainmapping_CAD2EDATransform's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_domainmapping_CAD2EDATransform's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_domainmapping_CAD2EDATransform(RotationX="sample_text", RotationY="sample_text", RotationZ="sample_text", ScaleX="sample_text", ScaleY="sample_text", ScaleZ="sample_text", TranslationX="sample_text", TranslationY="sample_text", TranslationZ="sample_text")
+    partner = eda_EDAModel()
+    setattr(partner, 'eda_EDAModel', None)
+    _safe_set(owner, 'avm_domainmapping_CAD2EDATransform', partner)
+    assert getattr(partner, 'eda_EDAModel') == owner
+    _safe_set(owner, 'avm_domainmapping_CAD2EDATransform', None)
+    assert getattr(partner, 'eda_EDAModel') is None
+
+
+def test_assoc_FileReferenceSwap306_stub_double():
+    # FileReference has no real 'FileReference308' property in the generated
+    # code (a bare stub) -- manually attach it so avm_adamsCar_FileReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_adamsCar_FileReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_adamsCar_FileReference(FilePath="sample_text", ID="sample_text", Name="sample_text")
+    partner = FileReference()
+    setattr(partner, 'FileReference308', None)
+    _safe_set(owner, 'avm_adamsCar_FileReference307', {partner})
+    assert getattr(partner, 'FileReference308') == owner
+    _safe_set(owner, 'avm_adamsCar_FileReference307', set())
+    assert getattr(partner, 'FileReference308') is None
+
+
+def test_assoc_InputGeometry204_stub_double():
+    # Geometry has no real 'Geometry' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cad_CustomGeometryInput's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cad_CustomGeometryInput's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cad_CustomGeometryInput(Operation="sample_text")
+    partner = Geometry()
+    setattr(partner, 'Geometry', None)
+    _safe_set(owner, 'avm_cad_CustomGeometryInput', partner)
+    assert getattr(partner, 'Geometry') == owner
+    _safe_set(owner, 'avm_cad_CustomGeometryInput', None)
+    assert getattr(partner, 'Geometry') is None
+
+
+def test_assoc_JoinData89_stub_double():
+    # avm_assemblyDetail has no real 'avm_assemblyDetail91' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Container's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Container's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Container(Classifications="sample_text", Description="sample_text", ID="sample_text", Name="sample_text", XPosition="sample_text", YPosition="sample_text")
+    partner = avm_assemblyDetail()
+    setattr(partner, 'avm_assemblyDetail91', None)
+    _safe_set(owner, 'avm_Container90', {partner})
+    assert getattr(partner, 'avm_assemblyDetail91') == owner
+    _safe_set(owner, 'avm_Container90', set())
+    assert getattr(partner, 'avm_assemblyDetail91') is None
+
+
+def test_assoc_Limit158_stub_double():
+    # Limit has no real 'Limit' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_ModelicaModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_ModelicaModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_ModelicaModel(Class="sample_text")
+    partner = Limit()
+    setattr(partner, 'Limit', None)
+    _safe_set(owner, 'avm_modelica_ModelicaModel159', {partner})
+    assert getattr(partner, 'Limit') == owner
+    _safe_set(owner, 'avm_modelica_ModelicaModel159', set())
+    assert getattr(partner, 'Limit') is None
+
+
+def test_assoc_Metric132_stub_double():
+    # avm_Metric has no real 'avm_Metric' property in the generated
+    # code (a bare stub) -- manually attach it so avm_TestBench's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_TestBench's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_TestBench(Name="sample_text")
+    partner = avm_Metric()
+    setattr(partner, 'avm_Metric', None)
+    _safe_set(owner, 'avm_TestBench133', {partner})
+    assert getattr(partner, 'avm_Metric') == owner
+    _safe_set(owner, 'avm_TestBench133', set())
+    assert getattr(partner, 'avm_Metric') is None
+
+
+def test_assoc_Metric156_stub_double():
+    # Metric has no real 'Metric' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_ModelicaModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_ModelicaModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_ModelicaModel(Class="sample_text")
+    partner = Metric()
+    setattr(partner, 'Metric', None)
+    _safe_set(owner, 'avm_modelica_ModelicaModel157', {partner})
+    assert getattr(partner, 'Metric') == owner
+    _safe_set(owner, 'avm_modelica_ModelicaModel157', set())
+    assert getattr(partner, 'Metric') is None
+
+
+def test_assoc_ModelMetric176_stub_double():
+    # Metric has no real 'Metric178' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cad_CADModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cad_CADModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cad_CADModel(Format="sample_text")
+    partner = Metric()
+    setattr(partner, 'Metric178', None)
+    _safe_set(owner, 'avm_cad_CADModel177', {partner})
+    assert getattr(partner, 'Metric178') == owner
+    _safe_set(owner, 'avm_cad_CADModel177', set())
+    assert getattr(partner, 'Metric178') is None
+
+
+def test_assoc_Origin269_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance271' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RelativeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RelativeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RelativeLayoutConstraint(RelativeLayer="sample_text", RelativeRotation="sample_text", XOffset="sample_text", YOffset="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance271', None)
+    _safe_set(owner, 'avm_eda_RelativeLayoutConstraint270', partner)
+    assert getattr(partner, 'eda_avm_ComponentInstance271') == owner
+    _safe_set(owner, 'avm_eda_RelativeLayoutConstraint270', None)
+    assert getattr(partner, 'eda_avm_ComponentInstance271') is None
+
+
+def test_assoc_Origin277_stub_double():
+    # eda_avm_ComponentInstance has no real 'eda_avm_ComponentInstance279' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_RelativeRangeLayoutConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_RelativeRangeLayoutConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_RelativeRangeLayoutConstraint(RelativeLayer="sample_text", XRelativeRangeMax="sample_text", XRelativeRangeMin="sample_text", YRelativeRangeMax="sample_text", YRelativeRangeMin="sample_text")
+    partner = eda_avm_ComponentInstance()
+    setattr(partner, 'eda_avm_ComponentInstance279', None)
+    _safe_set(owner, 'avm_eda_RelativeRangeLayoutConstraint278', partner)
+    assert getattr(partner, 'eda_avm_ComponentInstance279') == owner
+    _safe_set(owner, 'avm_eda_RelativeRangeLayoutConstraint278', None)
+    assert getattr(partner, 'eda_avm_ComponentInstance279') is None
+
+
+def test_assoc_Parameter130_stub_double():
+    # avm_Parameter has no real 'avm_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so avm_TestBench's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_TestBench's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_TestBench(Name="sample_text")
+    partner = avm_Parameter()
+    setattr(partner, 'avm_Parameter', None)
+    _safe_set(owner, 'avm_TestBench131', {partner})
+    assert getattr(partner, 'avm_Parameter') == owner
+    _safe_set(owner, 'avm_TestBench131', set())
+    assert getattr(partner, 'avm_Parameter') is None
+
+
+def test_assoc_Parameter153_stub_double():
+    # Parameter has no real 'Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_ModelicaModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_ModelicaModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_ModelicaModel(Class="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter', None)
+    _safe_set(owner, 'avm_modelica_ModelicaModel', {partner})
+    assert getattr(partner, 'Parameter') == owner
+    _safe_set(owner, 'avm_modelica_ModelicaModel', set())
+    assert getattr(partner, 'Parameter') is None
+
+
+def test_assoc_Parameter162_stub_double():
+    # Parameter has no real 'Parameter163' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_Connector's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_Connector's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_Connector(Class="sample_text", Locator="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter163', None)
+    _safe_set(owner, 'avm_modelica_Connector', {partner})
+    assert getattr(partner, 'Parameter163') == owner
+    _safe_set(owner, 'avm_modelica_Connector', set())
+    assert getattr(partner, 'Parameter163') is None
+
+
+def test_assoc_Parameter173_stub_double():
+    # Parameter has no real 'Parameter175' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cad_CADModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cad_CADModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cad_CADModel(Format="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter175', None)
+    _safe_set(owner, 'avm_cad_CADModel174', {partner})
+    assert getattr(partner, 'Parameter175') == owner
+    _safe_set(owner, 'avm_cad_CADModel174', set())
+    assert getattr(partner, 'Parameter175') is None
+
+
+def test_assoc_Parameter253_stub_double():
+    # Parameter has no real 'Parameter255' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cyber_CyberModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cyber_CyberModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cyber_CyberModel(Class="sample_text", Locator="sample_text", Type="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter255', None)
+    _safe_set(owner, 'avm_cyber_CyberModel254', {partner})
+    assert getattr(partner, 'Parameter255') == owner
+    _safe_set(owner, 'avm_cyber_CyberModel254', set())
+    assert getattr(partner, 'Parameter255') is None
+
+
+def test_assoc_Parameter257_stub_double():
+    # eda_Parameter has no real 'eda_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_EDAModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_EDAModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_EDAModel(Device="sample_text", DeviceSet="sample_text", HasMultiLayerFootprint="sample_text", Library="sample_text", Package="sample_text")
+    partner = eda_Parameter()
+    setattr(partner, 'eda_Parameter', None)
+    _safe_set(owner, 'avm_eda_EDAModel', {partner})
+    assert getattr(partner, 'eda_Parameter') == owner
+    _safe_set(owner, 'avm_eda_EDAModel', set())
+    assert getattr(partner, 'eda_Parameter') is None
+
+
+def test_assoc_Parameter288_stub_double():
+    # spice_Parameter has no real 'spice_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so avm_spice_SPICEModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_spice_SPICEModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_spice_SPICEModel(Class="sample_text")
+    partner = spice_Parameter()
+    setattr(partner, 'spice_Parameter', None)
+    _safe_set(owner, 'avm_spice_SPICEModel', {partner})
+    assert getattr(partner, 'spice_Parameter') == owner
+    _safe_set(owner, 'avm_spice_SPICEModel', set())
+    assert getattr(partner, 'spice_Parameter') is None
+
+
+def test_assoc_Parameter291_stub_double():
+    # Parameter has no real 'Parameter293' property in the generated
+    # code (a bare stub) -- manually attach it so avm_systemc_SystemCModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_systemc_SystemCModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_systemc_SystemCModel(ModuleName="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter293', None)
+    _safe_set(owner, 'avm_systemc_SystemCModel292', {partner})
+    assert getattr(partner, 'Parameter293') == owner
+    _safe_set(owner, 'avm_systemc_SystemCModel292', set())
+    assert getattr(partner, 'Parameter293') is None
+
+
+def test_assoc_ParameterSwap304_stub_double():
+    # Parameter has no real 'Parameter305' property in the generated
+    # code (a bare stub) -- manually attach it so avm_adamsCar_FileReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_adamsCar_FileReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_adamsCar_FileReference(FilePath="sample_text", ID="sample_text", Name="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter305', None)
+    _safe_set(owner, 'avm_adamsCar_FileReference', {partner})
+    assert getattr(partner, 'Parameter305') == owner
+    _safe_set(owner, 'avm_adamsCar_FileReference', set())
+    assert getattr(partner, 'Parameter305') is None
+
+
+def test_assoc_RFPort295_stub_double():
+    # RFPort has no real 'RFPort' property in the generated
+    # code (a bare stub) -- manually attach it so avm_rf_RFModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_rf_RFModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_rf_RFModel(Rotation="sample_text", X="sample_text", Y="sample_text")
+    partner = RFPort()
+    setattr(partner, 'RFPort', None)
+    _safe_set(owner, 'avm_rf_RFModel', {partner})
+    assert getattr(partner, 'RFPort') == owner
+    _safe_set(owner, 'avm_rf_RFModel', set())
+    assert getattr(partner, 'RFPort') is None
+
+
+def test_assoc_Redeclare160_stub_double():
+    # Redeclare has no real 'Redeclare' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_ModelicaModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_ModelicaModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_ModelicaModel(Class="sample_text")
+    partner = Redeclare()
+    setattr(partner, 'Redeclare', None)
+    _safe_set(owner, 'avm_modelica_ModelicaModel161', {partner})
+    assert getattr(partner, 'Redeclare') == owner
+    _safe_set(owner, 'avm_modelica_ModelicaModel161', set())
+    assert getattr(partner, 'Redeclare') is None
+
+
+def test_assoc_Redeclare164_stub_double():
+    # Redeclare has no real 'Redeclare166' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_Connector's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_Connector's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_Connector(Class="sample_text", Locator="sample_text")
+    partner = Redeclare()
+    setattr(partner, 'Redeclare166', None)
+    _safe_set(owner, 'avm_modelica_Connector165', {partner})
+    assert getattr(partner, 'Redeclare166') == owner
+    _safe_set(owner, 'avm_modelica_Connector165', set())
+    assert getattr(partner, 'Redeclare166') is None
+
+
+def test_assoc_Settings141_stub_double():
+    # avm_Settings has no real 'avm_Settings' property in the generated
+    # code (a bare stub) -- manually attach it so avm_TestBench's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_TestBench's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_TestBench(Name="sample_text")
+    partner = avm_Settings()
+    setattr(partner, 'avm_Settings', None)
+    _safe_set(owner, 'avm_TestBench142', {partner})
+    assert getattr(partner, 'avm_Settings') == owner
+    _safe_set(owner, 'avm_TestBench142', set())
+    assert getattr(partner, 'avm_Settings') is None
+
+
+def test_assoc_Source150_stub_double():
+    # avm_ValueFlowMux has no real 'avm_ValueFlowMux151' property in the generated
+    # code (a bare stub) -- manually attach it so avm_ValueNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_ValueNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_ValueNode(ID="sample_text")
+    partner = avm_ValueFlowMux()
+    setattr(partner, 'avm_ValueFlowMux151', None)
+    _safe_set(owner, 'avm_ValueNode152', partner)
+    assert getattr(partner, 'avm_ValueFlowMux151') == owner
+    _safe_set(owner, 'avm_ValueNode152', None)
+    assert getattr(partner, 'avm_ValueFlowMux151') is None
+
+
+def test_assoc_SystemCPort290_stub_double():
+    # SystemCPort has no real 'SystemCPort' property in the generated
+    # code (a bare stub) -- manually attach it so avm_systemc_SystemCModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_systemc_SystemCModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_systemc_SystemCModel(ModuleName="sample_text")
+    partner = SystemCPort()
+    setattr(partner, 'SystemCPort', None)
+    _safe_set(owner, 'avm_systemc_SystemCModel', {partner})
+    assert getattr(partner, 'SystemCPort') == owner
+    _safe_set(owner, 'avm_systemc_SystemCModel', set())
+    assert getattr(partner, 'SystemCPort') is None
+
+
+def test_assoc_TargetValue168_stub_double():
+    # modelica_avm_Value has no real 'modelica_avm_Value169' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_Limit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_Limit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_Limit(BoundType="sample_text", Name="sample_text", Notes="sample_text", ToleranceTimeWindow="sample_text", VariableLocator="sample_text")
+    partner = modelica_avm_Value()
+    setattr(partner, 'modelica_avm_Value169', None)
+    _safe_set(owner, 'avm_modelica_Limit', partner)
+    assert getattr(partner, 'modelica_avm_Value169') == owner
+    _safe_set(owner, 'avm_modelica_Limit', None)
+    assert getattr(partner, 'modelica_avm_Value169') is None
+
+
+def test_assoc_TestInjectionPoint134_stub_double():
+    # avm_TestInjectionPoint has no real 'avm_TestInjectionPoint' property in the generated
+    # code (a bare stub) -- manually attach it so avm_TestBench's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_TestBench's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_TestBench(Name="sample_text")
+    partner = avm_TestInjectionPoint()
+    setattr(partner, 'avm_TestInjectionPoint', None)
+    _safe_set(owner, 'avm_TestBench135', {partner})
+    assert getattr(partner, 'avm_TestInjectionPoint') == owner
+    _safe_set(owner, 'avm_TestBench135', set())
+    assert getattr(partner, 'avm_TestInjectionPoint') is None
+
+
+def test_assoc_Value167_stub_double():
+    # modelica_avm_Value has no real 'modelica_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_Parameter(Locator="sample_text")
+    partner = modelica_avm_Value()
+    setattr(partner, 'modelica_avm_Value', None)
+    _safe_set(owner, 'avm_modelica_Parameter', partner)
+    assert getattr(partner, 'modelica_avm_Value') == owner
+    _safe_set(owner, 'avm_modelica_Parameter', None)
+    assert getattr(partner, 'modelica_avm_Value') is None
+
+
+def test_assoc_Value170_stub_double():
+    # modelica_avm_Value has no real 'modelica_avm_Value171' property in the generated
+    # code (a bare stub) -- manually attach it so avm_modelica_Redeclare's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_modelica_Redeclare's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_modelica_Redeclare(Locator="sample_text", Type="sample_text")
+    partner = modelica_avm_Value()
+    setattr(partner, 'modelica_avm_Value171', None)
+    _safe_set(owner, 'avm_modelica_Redeclare', partner)
+    assert getattr(partner, 'modelica_avm_Value171') == owner
+    _safe_set(owner, 'avm_modelica_Redeclare', None)
+    assert getattr(partner, 'modelica_avm_Value171') is None
+
+
+def test_assoc_Value181_stub_double():
+    # cad_avm_Value has no real 'cad_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_cad_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_cad_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_cad_Parameter(Name="sample_text")
+    partner = cad_avm_Value()
+    setattr(partner, 'cad_avm_Value', None)
+    _safe_set(owner, 'avm_cad_Parameter', partner)
+    assert getattr(partner, 'cad_avm_Value') == owner
+    _safe_set(owner, 'avm_cad_Parameter', None)
+    assert getattr(partner, 'cad_avm_Value') is None
+
+
+def test_assoc_Value250_stub_double():
+    # manufacturing_avm_Value has no real 'manufacturing_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_manufacturing_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_manufacturing_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_manufacturing_Parameter(Locator="sample_text", Name="sample_text")
+    partner = manufacturing_avm_Value()
+    setattr(partner, 'manufacturing_avm_Value', None)
+    _safe_set(owner, 'avm_manufacturing_Parameter', partner)
+    assert getattr(partner, 'manufacturing_avm_Value') == owner
+    _safe_set(owner, 'avm_manufacturing_Parameter', None)
+    assert getattr(partner, 'manufacturing_avm_Value') is None
+
+
+def test_assoc_Value258_stub_double():
+    # eda_avm_Value has no real 'eda_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_eda_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_eda_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_eda_Parameter(Locator="sample_text")
+    partner = eda_avm_Value()
+    setattr(partner, 'eda_avm_Value', None)
+    _safe_set(owner, 'avm_eda_Parameter', partner)
+    assert getattr(partner, 'eda_avm_Value') == owner
+    _safe_set(owner, 'avm_eda_Parameter', None)
+    assert getattr(partner, 'eda_avm_Value') is None
+
+
+def test_assoc_Value289_stub_double():
+    # spice_avm_Value has no real 'spice_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_spice_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_spice_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_spice_Parameter(Locator="sample_text")
+    partner = spice_avm_Value()
+    setattr(partner, 'spice_avm_Value', None)
+    _safe_set(owner, 'avm_spice_Parameter', partner)
+    assert getattr(partner, 'spice_avm_Value') == owner
+    _safe_set(owner, 'avm_spice_Parameter', None)
+    assert getattr(partner, 'spice_avm_Value') is None
+
+
+def test_assoc_Value294_stub_double():
+    # systemc_avm_Value has no real 'systemc_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_systemc_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_systemc_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_systemc_Parameter(ParamName="sample_text", ParamPosition="sample_text")
+    partner = systemc_avm_Value()
+    setattr(partner, 'systemc_avm_Value', None)
+    _safe_set(owner, 'avm_systemc_Parameter', partner)
+    assert getattr(partner, 'systemc_avm_Value') == owner
+    _safe_set(owner, 'avm_systemc_Parameter', None)
+    assert getattr(partner, 'systemc_avm_Value') is None
+
+
+def test_assoc_Value303_stub_double():
+    # adamsCar_avm_Value has no real 'adamsCar_avm_Value' property in the generated
+    # code (a bare stub) -- manually attach it so avm_adamsCar_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_adamsCar_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_adamsCar_Parameter(ID="sample_text", Name="sample_text")
+    partner = adamsCar_avm_Value()
+    setattr(partner, 'adamsCar_avm_Value', None)
+    _safe_set(owner, 'avm_adamsCar_Parameter', partner)
+    assert getattr(partner, 'adamsCar_avm_Value') == owner
+    _safe_set(owner, 'avm_adamsCar_Parameter', None)
+    assert getattr(partner, 'adamsCar_avm_Value') is None
+
+
+def test_assoc_Value55_stub_double():
+    # avm_PrimitiveProperty has no real 'avm_PrimitiveProperty' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Value's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Value's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Value(DataType="sample_text", DimensionType="sample_text", Dimensions="sample_text", Unit="sample_text")
+    partner = avm_PrimitiveProperty()
+    setattr(partner, 'avm_PrimitiveProperty', None)
+    _safe_set(owner, 'avm_Value56', partner)
+    assert getattr(partner, 'avm_PrimitiveProperty') == owner
+    _safe_set(owner, 'avm_Value56', None)
+    assert getattr(partner, 'avm_PrimitiveProperty') is None
+
+
+def test_assoc_ValueExpression20_stub_double():
+    # avm_ValueExpressionType has no real 'avm_ValueExpressionType' property in the generated
+    # code (a bare stub) -- manually attach it so avm_Value's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_Value's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_Value(DataType="sample_text", DimensionType="sample_text", Dimensions="sample_text", Unit="sample_text")
+    partner = avm_ValueExpressionType()
+    setattr(partner, 'avm_ValueExpressionType', None)
+    _safe_set(owner, 'avm_Value', partner)
+    assert getattr(partner, 'avm_ValueExpressionType') == owner
+    _safe_set(owner, 'avm_Value', None)
+    assert getattr(partner, 'avm_ValueExpressionType') is None
+
+
+def test_assoc_ValueSource23_stub_double():
+    # avm_DerivedValue has no real 'avm_DerivedValue' property in the generated
+    # code (a bare stub) -- manually attach it so avm_ValueNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # avm_ValueNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = avm_ValueNode(ID="sample_text")
+    partner = avm_DerivedValue()
+    setattr(partner, 'avm_DerivedValue', None)
+    _safe_set(owner, 'avm_ValueNode', partner)
+    assert getattr(partner, 'avm_DerivedValue') == owner
+    _safe_set(owner, 'avm_ValueNode', None)
+    assert getattr(partner, 'avm_DerivedValue') is None
+
+

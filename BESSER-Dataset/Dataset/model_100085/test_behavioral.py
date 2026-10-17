@@ -94,3 +94,41 @@ def test_assoc_versions8_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'metadata_Versions', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_xMLNSPrefixMap0_stub_double():
+    # metadata_EStringToStringMapEntry has no real 'metadata_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so metadata_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metadata_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metadata_DocumentRoot(mixed="sample_text")
+    partner = metadata_EStringToStringMapEntry()
+    setattr(partner, 'metadata_EStringToStringMapEntry', None)
+    _safe_set(owner, 'metadata_DocumentRoot', {partner})
+    assert getattr(partner, 'metadata_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'metadata_DocumentRoot', set())
+    assert getattr(partner, 'metadata_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation1_stub_double():
+    # metadata_EStringToStringMapEntry has no real 'metadata_EStringToStringMapEntry3' property in the generated
+    # code (a bare stub) -- manually attach it so metadata_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metadata_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metadata_DocumentRoot(mixed="sample_text")
+    partner = metadata_EStringToStringMapEntry()
+    setattr(partner, 'metadata_EStringToStringMapEntry3', None)
+    _safe_set(owner, 'metadata_DocumentRoot2', {partner})
+    assert getattr(partner, 'metadata_EStringToStringMapEntry3') == owner
+    _safe_set(owner, 'metadata_DocumentRoot2', set())
+    assert getattr(partner, 'metadata_EStringToStringMapEntry3') is None
+
+

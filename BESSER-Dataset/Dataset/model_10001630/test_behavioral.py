@@ -77,3 +77,26 @@ def test_assoc_B_C_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'b1', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_R_A_stub_double():
+    # R has no real 'aR4' property in the generated
+    # code (a bare stub) -- manually attach it so A's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # A's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = A(attA="sample_text")
+    partner = R()
+    setattr(partner, 'aR4', None)
+    _safe_set(owner, 'r5', partner)
+    assert getattr(partner, 'aR4') == owner
+    _safe_set(owner, 'r5', None)
+    assert getattr(partner, 'aR4') is None
+
+

@@ -4755,3 +4755,791 @@ def test_assoc_viewPortTrigger366_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'domain_ViewPortTrigger', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_any131_stub_double():
+    # domain_EObject has no real 'domain_EObject133' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Messages's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Messages's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Messages(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject133', None)
+    _safe_set(owner, 'domain_Messages132', partner)
+    assert getattr(partner, 'domain_EObject133') == owner
+    _safe_set(owner, 'domain_Messages132', None)
+    assert getattr(partner, 'domain_EObject133') is None
+
+
+def test_assoc_any152_stub_double():
+    # domain_EObject has no real 'domain_EObject154' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Roles's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Roles's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Roles(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject154', None)
+    _safe_set(owner, 'domain_Roles153', partner)
+    assert getattr(partner, 'domain_EObject154') == owner
+    _safe_set(owner, 'domain_Roles153', None)
+    assert getattr(partner, 'domain_EObject154') is None
+
+
+def test_assoc_any164_stub_double():
+    # domain_EObject has no real 'domain_EObject166' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Styles's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Styles's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Styles(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject166', None)
+    _safe_set(owner, 'domain_Styles165', partner)
+    assert getattr(partner, 'domain_EObject166') == owner
+    _safe_set(owner, 'domain_Styles165', None)
+    assert getattr(partner, 'domain_EObject166') is None
+
+
+def test_assoc_any173_stub_double():
+    # domain_EObject has no real 'domain_EObject174' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Mappers's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Mappers's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Mappers(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject174', None)
+    _safe_set(owner, 'domain_Mappers', partner)
+    assert getattr(partner, 'domain_EObject174') == owner
+    _safe_set(owner, 'domain_Mappers', None)
+    assert getattr(partner, 'domain_EObject174') is None
+
+
+def test_assoc_any196_stub_double():
+    # domain_EObject has no real 'domain_EObject198' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Recipes's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Recipes's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Recipes(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject198', None)
+    _safe_set(owner, 'domain_Recipes197', partner)
+    assert getattr(partner, 'domain_EObject198') == owner
+    _safe_set(owner, 'domain_Recipes197', None)
+    assert getattr(partner, 'domain_EObject198') is None
+
+
+def test_assoc_any205_stub_double():
+    # domain_EObject has no real 'domain_EObject207' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DeploymentComponents's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DeploymentComponents's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DeploymentComponents(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject207', None)
+    _safe_set(owner, 'domain_DeploymentComponents206', partner)
+    assert getattr(partner, 'domain_EObject207') == owner
+    _safe_set(owner, 'domain_DeploymentComponents206', None)
+    assert getattr(partner, 'domain_EObject207') is None
+
+
+def test_assoc_any285_stub_double():
+    # domain_EObject has no real 'domain_EObject287' property in the generated
+    # code (a bare stub) -- manually attach it so domain_TypeDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_TypeDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_TypeDefinition(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject287', None)
+    _safe_set(owner, 'domain_TypeDefinition286', partner)
+    assert getattr(partner, 'domain_EObject287') == owner
+    _safe_set(owner, 'domain_TypeDefinition286', None)
+    assert getattr(partner, 'domain_EObject287') is None
+
+
+def test_assoc_any325_stub_double():
+    # domain_EObject has no real 'domain_EObject326' property in the generated
+    # code (a bare stub) -- manually attach it so domain_TypesRepository's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_TypesRepository's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_TypesRepository(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject326', None)
+    _safe_set(owner, 'domain_TypesRepository', partner)
+    assert getattr(partner, 'domain_EObject326') == owner
+    _safe_set(owner, 'domain_TypesRepository', None)
+    assert getattr(partner, 'domain_EObject326') is None
+
+
+def test_assoc_any340_stub_double():
+    # domain_EObject has no real 'domain_EObject342' property in the generated
+    # code (a bare stub) -- manually attach it so domain_UIPackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_UIPackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_UIPackage(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject342', None)
+    _safe_set(owner, 'domain_UIPackage341', partner)
+    assert getattr(partner, 'domain_EObject342') == owner
+    _safe_set(owner, 'domain_UIPackage341', None)
+    assert getattr(partner, 'domain_EObject342') is None
+
+
+def test_assoc_any359_stub_double():
+    # domain_EObject has no real 'domain_EObject361' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Views's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Views's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Views(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject361', None)
+    _safe_set(owner, 'domain_Views360', partner)
+    assert getattr(partner, 'domain_EObject361') == owner
+    _safe_set(owner, 'domain_Views360', None)
+    assert getattr(partner, 'domain_EObject361') is None
+
+
+def test_assoc_any37_stub_double():
+    # domain_EObject has no real 'domain_EObject38' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Artifacts's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Artifacts's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Artifacts(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject38', None)
+    _safe_set(owner, 'domain_Artifacts', partner)
+    assert getattr(partner, 'domain_EObject38') == owner
+    _safe_set(owner, 'domain_Artifacts', None)
+    assert getattr(partner, 'domain_EObject38') is None
+
+
+def test_assoc_any387_stub_double():
+    # domain_EObject has no real 'domain_EObject389' property in the generated
+    # code (a bare stub) -- manually attach it so domain_CanvasView's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_CanvasView's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_CanvasView(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject389', None)
+    _safe_set(owner, 'domain_CanvasView388', partner)
+    assert getattr(partner, 'domain_EObject389') == owner
+    _safe_set(owner, 'domain_CanvasView388', None)
+    assert getattr(partner, 'domain_EObject389') is None
+
+
+def test_assoc_any477_stub_double():
+    # domain_EObject has no real 'domain_EObject479' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Controls's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Controls's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Controls(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject479', None)
+    _safe_set(owner, 'domain_Controls478', partner)
+    assert getattr(partner, 'domain_EObject479') == owner
+    _safe_set(owner, 'domain_Controls478', None)
+    assert getattr(partner, 'domain_EObject479') is None
+
+
+def test_assoc_any5_stub_double():
+    # domain_EObject has no real 'domain_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Domain's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Domain's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Domain(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject', None)
+    _safe_set(owner, 'domain_Domain', partner)
+    assert getattr(partner, 'domain_EObject') == owner
+    _safe_set(owner, 'domain_Domain', None)
+    assert getattr(partner, 'domain_EObject') is None
+
+
+def test_assoc_any563_stub_double():
+    # domain_EObject has no real 'domain_EObject565' property in the generated
+    # code (a bare stub) -- manually attach it so domain_EnterpriseInfrastructure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_EnterpriseInfrastructure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_EnterpriseInfrastructure(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject565', None)
+    _safe_set(owner, 'domain_EnterpriseInfrastructure564', partner)
+    assert getattr(partner, 'domain_EObject565') == owner
+    _safe_set(owner, 'domain_EnterpriseInfrastructure564', None)
+    assert getattr(partner, 'domain_EObject565') is None
+
+
+def test_assoc_any588_stub_double():
+    # domain_EObject has no real 'domain_EObject590' property in the generated
+    # code (a bare stub) -- manually attach it so domain_MenuView's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_MenuView's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_MenuView(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject590', None)
+    _safe_set(owner, 'domain_MenuView589', partner)
+    assert getattr(partner, 'domain_EObject590') == owner
+    _safe_set(owner, 'domain_MenuView589', None)
+    assert getattr(partner, 'domain_EObject590') is None
+
+
+def test_assoc_any83_stub_double():
+    # domain_EObject has no real 'domain_EObject84' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Application's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Application's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Application(uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject84', None)
+    _safe_set(owner, 'domain_Application', partner)
+    assert getattr(partner, 'domain_EObject84') == owner
+    _safe_set(owner, 'domain_Application', None)
+    assert getattr(partner, 'domain_EObject84') is None
+
+
+def test_assoc_attributes304_stub_double():
+    # domain_Type has no real 'parent305' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Attribute(name="sample_text", pk=True, uid="sample_text")
+    partner = domain_Type()
+    setattr(partner, 'parent305', None)
+    _safe_set(owner, 'Attribute', partner)
+    assert getattr(partner, 'parent305') == owner
+    _safe_set(owner, 'Attribute', None)
+    assert getattr(partner, 'parent305') is None
+
+
+def test_assoc_baseCanvas382_stub_double():
+    # domain_LayerHolder has no real 'domain_LayerHolder' property in the generated
+    # code (a bare stub) -- manually attach it so domain_CanvasView's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_CanvasView's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_CanvasView(uid="sample_text")
+    partner = domain_LayerHolder()
+    setattr(partner, 'domain_LayerHolder', None)
+    _safe_set(owner, 'domain_CanvasView', partner)
+    assert getattr(partner, 'domain_LayerHolder') == owner
+    _safe_set(owner, 'domain_CanvasView', None)
+    assert getattr(partner, 'domain_LayerHolder') is None
+
+
+def test_assoc_children399_stub_double():
+    # domain_ChildrenHolder has no real 'domain_ChildrenHolder' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Uielement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Uielement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Uielement(uid="sample_text")
+    partner = domain_ChildrenHolder()
+    setattr(partner, 'domain_ChildrenHolder', None)
+    _safe_set(owner, 'domain_Uielement', partner)
+    assert getattr(partner, 'domain_ChildrenHolder') == owner
+    _safe_set(owner, 'domain_Uielement', None)
+    assert getattr(partner, 'domain_ChildrenHolder') is None
+
+
+def test_assoc_classifier415_stub_double():
+    # domain_StyleClass has no real 'domain_StyleClass416' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Classifier(details="sample_text", uid="sample_text")
+    partner = domain_StyleClass()
+    setattr(partner, 'domain_StyleClass416', None)
+    _safe_set(owner, 'domain_Classifier417', partner)
+    assert getattr(partner, 'domain_StyleClass416') == owner
+    _safe_set(owner, 'domain_Classifier417', None)
+    assert getattr(partner, 'domain_StyleClass416') is None
+
+
+def test_assoc_classifiers6_stub_double():
+    # domain_Categorized has no real 'domain_Categorized' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Classifier(details="sample_text", uid="sample_text")
+    partner = domain_Categorized()
+    setattr(partner, 'domain_Categorized', None)
+    _safe_set(owner, 'domain_Classifier', partner)
+    assert getattr(partner, 'domain_Categorized') == owner
+    _safe_set(owner, 'domain_Classifier', None)
+    assert getattr(partner, 'domain_Categorized') is None
+
+
+def test_assoc_defaultSearch521_stub_double():
+    # domain_ContextParameters has no real 'domain_ContextParameters523' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DataControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DataControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DataControl(name="sample_text", uid="sample_text")
+    partner = domain_ContextParameters()
+    setattr(partner, 'domain_ContextParameters523', None)
+    _safe_set(owner, 'domain_DataControl522', partner)
+    assert getattr(partner, 'domain_ContextParameters523') == owner
+    _safe_set(owner, 'domain_DataControl522', None)
+    assert getattr(partner, 'domain_ContextParameters523') is None
+
+
+def test_assoc_extensionRef593_stub_double():
+    # domain_MenuExtensionRef has no real 'domain_MenuExtensionRef' property in the generated
+    # code (a bare stub) -- manually attach it so domain_MenuFolder's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_MenuFolder's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_MenuFolder(extensionPoint=True, name="sample_text", uid="sample_text")
+    partner = domain_MenuExtensionRef()
+    setattr(partner, 'domain_MenuExtensionRef', None)
+    _safe_set(owner, 'domain_MenuFolder594', partner)
+    assert getattr(partner, 'domain_MenuExtensionRef') == owner
+    _safe_set(owner, 'domain_MenuFolder594', None)
+    assert getattr(partner, 'domain_MenuExtensionRef') is None
+
+
+def test_assoc_grants9_stub_double():
+    # domain_Secured has no real 'domain_Secured' property in the generated
+    # code (a bare stub) -- manually attach it so domain_GrantAccess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_GrantAccess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_GrantAccess(uid="sample_text")
+    partner = domain_Secured()
+    setattr(partner, 'domain_Secured', None)
+    _safe_set(owner, 'domain_GrantAccess', partner)
+    assert getattr(partner, 'domain_Secured') == owner
+    _safe_set(owner, 'domain_GrantAccess', None)
+    assert getattr(partner, 'domain_Secured') is None
+
+
+def test_assoc_image464_stub_double():
+    # domain_Context has no real 'domain_Context465' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Tree's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Tree's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Tree(label="sample_text")
+    partner = domain_Context()
+    setattr(partner, 'domain_Context465', None)
+    _safe_set(owner, 'domain_Tree', partner)
+    assert getattr(partner, 'domain_Context465') == owner
+    _safe_set(owner, 'domain_Tree', None)
+    assert getattr(partner, 'domain_Context465') is None
+
+
+def test_assoc_initialOptionMessage457_stub_double():
+    # domain_Context has no real 'domain_Context459' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DropDownSelection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DropDownSelection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DropDownSelection(initialOptionValue="sample_text")
+    partner = domain_Context()
+    setattr(partner, 'domain_Context459', None)
+    _safe_set(owner, 'domain_DropDownSelection458', partner)
+    assert getattr(partner, 'domain_Context459') == owner
+    _safe_set(owner, 'domain_DropDownSelection458', None)
+    assert getattr(partner, 'domain_Context459') is None
+
+
+def test_assoc_mappers216_stub_double():
+    # domain_UsingMappers has no real 'domain_UsingMappers' property in the generated
+    # code (a bare stub) -- manually attach it so domain_ApplicationMapper's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_ApplicationMapper's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_ApplicationMapper(name="sample_text", uid="sample_text")
+    partner = domain_UsingMappers()
+    setattr(partner, 'domain_UsingMappers', None)
+    _safe_set(owner, 'domain_ApplicationMapper', partner)
+    assert getattr(partner, 'domain_UsingMappers') == owner
+    _safe_set(owner, 'domain_ApplicationMapper', None)
+    assert getattr(partner, 'domain_UsingMappers') is None
+
+
+def test_assoc_menu591_stub_double():
+    # domain_MenuHolder has no real 'domain_MenuHolder' property in the generated
+    # code (a bare stub) -- manually attach it so domain_MenuFolder's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_MenuFolder's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_MenuFolder(extensionPoint=True, name="sample_text", uid="sample_text")
+    partner = domain_MenuHolder()
+    setattr(partner, 'domain_MenuHolder', None)
+    _safe_set(owner, 'domain_MenuFolder592', partner)
+    assert getattr(partner, 'domain_MenuHolder') == owner
+    _safe_set(owner, 'domain_MenuFolder592', None)
+    assert getattr(partner, 'domain_MenuHolder') is None
+
+
+def test_assoc_objRef406_stub_double():
+    # domain_EObject has no real 'domain_EObject408' property in the generated
+    # code (a bare stub) -- manually attach it so domain_ExpressionPart's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_ExpressionPart's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_ExpressionPart(expressionType="sample_text", order=7, uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject408', None)
+    _safe_set(owner, 'domain_ExpressionPart407', partner)
+    assert getattr(partner, 'domain_EObject408') == owner
+    _safe_set(owner, 'domain_ExpressionPart407', None)
+    assert getattr(partner, 'domain_EObject408') is None
+
+
+def test_assoc_operations306_stub_double():
+    # domain_Type has no real 'parent307' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Operation(name="sample_text", uid="sample_text")
+    partner = domain_Type()
+    setattr(partner, 'parent307', None)
+    _safe_set(owner, 'Operation', partner)
+    assert getattr(partner, 'parent307') == owner
+    _safe_set(owner, 'Operation', None)
+    assert getattr(partner, 'parent307') is None
+
+
+def test_assoc_optionCastDataControl452_stub_double():
+    # domain_OptionSelection has no real 'domain_OptionSelection453' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DataControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DataControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DataControl(name="sample_text", uid="sample_text")
+    partner = domain_OptionSelection()
+    setattr(partner, 'domain_OptionSelection453', None)
+    _safe_set(owner, 'domain_DataControl454', partner)
+    assert getattr(partner, 'domain_OptionSelection453') == owner
+    _safe_set(owner, 'domain_DataControl454', None)
+    assert getattr(partner, 'domain_OptionSelection453') is None
+
+
+def test_assoc_optionPointer447_stub_double():
+    # domain_OptionSelection has no real 'domain_OptionSelection' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DataControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DataControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DataControl(name="sample_text", uid="sample_text")
+    partner = domain_OptionSelection()
+    setattr(partner, 'domain_OptionSelection', None)
+    _safe_set(owner, 'domain_DataControl448', partner)
+    assert getattr(partner, 'domain_OptionSelection') == owner
+    _safe_set(owner, 'domain_DataControl448', None)
+    assert getattr(partner, 'domain_OptionSelection') is None
+
+
+def test_assoc_parameters409_stub_double():
+    # domain_ContextParameters has no real 'domain_ContextParameters' property in the generated
+    # code (a bare stub) -- manually attach it so domain_ContextParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_ContextParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_ContextParameter(operation="sample_text", uid="sample_text")
+    partner = domain_ContextParameters()
+    setattr(partner, 'domain_ContextParameters', None)
+    _safe_set(owner, 'domain_ContextParameter410', partner)
+    assert getattr(partner, 'domain_ContextParameters') == owner
+    _safe_set(owner, 'domain_ContextParameter410', None)
+    assert getattr(partner, 'domain_ContextParameters') is None
+
+
+def test_assoc_parent308_stub_double():
+    # domain_Type has no real 'Type' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Attribute(name="sample_text", pk=True, uid="sample_text")
+    partner = domain_Type()
+    setattr(partner, 'Type', None)
+    _safe_set(owner, 'attributes', partner)
+    assert getattr(partner, 'Type') == owner
+    _safe_set(owner, 'attributes', None)
+    assert getattr(partner, 'Type') is None
+
+
+def test_assoc_parent309_stub_double():
+    # domain_Type has no real 'Type310' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Operation(name="sample_text", uid="sample_text")
+    partner = domain_Type()
+    setattr(partner, 'Type310', None)
+    _safe_set(owner, 'operations', partner)
+    assert getattr(partner, 'Type310') == owner
+    _safe_set(owner, 'operations', None)
+    assert getattr(partner, 'Type310') is None
+
+
+def test_assoc_parent320_stub_double():
+    # domain_Enumarator has no real 'Enumarator' property in the generated
+    # code (a bare stub) -- manually attach it so domain_EnumAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_EnumAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_EnumAttribute(name="sample_text", uid="sample_text", value="sample_text")
+    partner = domain_Enumarator()
+    setattr(partner, 'Enumarator', None)
+    _safe_set(owner, 'values', partner)
+    assert getattr(partner, 'Enumarator') == owner
+    _safe_set(owner, 'values', None)
+    assert getattr(partner, 'Enumarator') is None
+
+
+def test_assoc_readOnly424_stub_double():
+    # domain_Context has no real 'domain_Context426' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Uielement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Uielement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Uielement(uid="sample_text")
+    partner = domain_Context()
+    setattr(partner, 'domain_Context426', None)
+    _safe_set(owner, 'domain_Uielement425', partner)
+    assert getattr(partner, 'domain_Context426') == owner
+    _safe_set(owner, 'domain_Uielement425', None)
+    assert getattr(partner, 'domain_Context426') is None
+
+
+def test_assoc_refObj400_stub_double():
+    # domain_EObject has no real 'domain_EObject401' property in the generated
+    # code (a bare stub) -- manually attach it so domain_ContextParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_ContextParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_ContextParameter(operation="sample_text", uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject401', None)
+    _safe_set(owner, 'domain_ContextParameter', partner)
+    assert getattr(partner, 'domain_EObject401') == owner
+    _safe_set(owner, 'domain_ContextParameter', None)
+    assert getattr(partner, 'domain_EObject401') is None
+
+
+def test_assoc_refObj528_stub_double():
+    # domain_EObject has no real 'domain_EObject530' property in the generated
+    # code (a bare stub) -- manually attach it so domain_OrderBy's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_OrderBy's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_OrderBy(order="sample_text", uid="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject530', None)
+    _safe_set(owner, 'domain_OrderBy529', partner)
+    assert getattr(partner, 'domain_EObject530') == owner
+    _safe_set(owner, 'domain_OrderBy529', None)
+    assert getattr(partner, 'domain_EObject530') is None
+
+
+def test_assoc_refreshAreas599_stub_double():
+    # domain_MenuItem has no real 'domain_MenuItem600' property in the generated
+    # code (a bare stub) -- manually attach it so domain_AreaRef's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_AreaRef's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_AreaRef(group=7)
+    partner = domain_MenuItem()
+    setattr(partner, 'domain_MenuItem600', None)
+    _safe_set(owner, 'domain_AreaRef601', partner)
+    assert getattr(partner, 'domain_MenuItem600') == owner
+    _safe_set(owner, 'domain_AreaRef601', None)
+    assert getattr(partner, 'domain_MenuItem600') is None
+
+
+def test_assoc_required421_stub_double():
+    # domain_Context has no real 'domain_Context423' property in the generated
+    # code (a bare stub) -- manually attach it so domain_Uielement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_Uielement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_Uielement(uid="sample_text")
+    partner = domain_Context()
+    setattr(partner, 'domain_Context423', None)
+    _safe_set(owner, 'domain_Uielement422', partner)
+    assert getattr(partner, 'domain_Context423') == owner
+    _safe_set(owner, 'domain_Uielement422', None)
+    assert getattr(partner, 'domain_Context423') is None
+
+
+def test_assoc_role182_stub_double():
+    # domain_EObject has no real 'domain_EObject183' property in the generated
+    # code (a bare stub) -- manually attach it so domain_RoleMapper's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_RoleMapper's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_RoleMapper(fakeRoleName="sample_text", globalRoleName="sample_text", localRoleName="sample_text")
+    partner = domain_EObject()
+    setattr(partner, 'domain_EObject183', None)
+    _safe_set(owner, 'domain_RoleMapper', partner)
+    assert getattr(partner, 'domain_EObject183') == owner
+    _safe_set(owner, 'domain_RoleMapper', None)
+    assert getattr(partner, 'domain_EObject183') is None
+
+
+def test_assoc_selection455_stub_double():
+    # domain_Selection has no real 'domain_Selection456' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DropDownSelection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DropDownSelection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DropDownSelection(initialOptionValue="sample_text")
+    partner = domain_Selection()
+    setattr(partner, 'domain_Selection456', None)
+    _safe_set(owner, 'domain_DropDownSelection', partner)
+    assert getattr(partner, 'domain_Selection456') == owner
+    _safe_set(owner, 'domain_DropDownSelection', None)
+    assert getattr(partner, 'domain_Selection456') is None
+
+
+def test_assoc_source390_stub_double():
+    # domain_InputElement has no real 'domain_InputElement' property in the generated
+    # code (a bare stub) -- manually attach it so domain_LinkToMessage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_LinkToMessage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_LinkToMessage(uid="sample_text")
+    partner = domain_InputElement()
+    setattr(partner, 'domain_InputElement', None)
+    _safe_set(owner, 'domain_LinkToMessage391', partner)
+    assert getattr(partner, 'domain_InputElement') == owner
+    _safe_set(owner, 'domain_LinkToMessage391', None)
+    assert getattr(partner, 'domain_InputElement') is None
+
+
+def test_assoc_source394_stub_double():
+    # domain_InputElement has no real 'domain_InputElement396' property in the generated
+    # code (a bare stub) -- manually attach it so domain_LinkToLabel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_LinkToLabel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_LinkToLabel(uid="sample_text")
+    partner = domain_InputElement()
+    setattr(partner, 'domain_InputElement396', None)
+    _safe_set(owner, 'domain_LinkToLabel395', partner)
+    assert getattr(partner, 'domain_InputElement396') == owner
+    _safe_set(owner, 'domain_LinkToLabel395', None)
+    assert getattr(partner, 'domain_InputElement396') is None
+
+
+def test_assoc_sourceCastDataControl439_stub_double():
+    # domain_SourcesPointer has no real 'domain_SourcesPointer440' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DataControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DataControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DataControl(name="sample_text", uid="sample_text")
+    partner = domain_SourcesPointer()
+    setattr(partner, 'domain_SourcesPointer440', None)
+    _safe_set(owner, 'domain_DataControl441', partner)
+    assert getattr(partner, 'domain_SourcesPointer440') == owner
+    _safe_set(owner, 'domain_DataControl441', None)
+    assert getattr(partner, 'domain_SourcesPointer440') is None
+
+
+def test_assoc_sourcePointer433_stub_double():
+    # domain_SourcesPointer has no real 'domain_SourcesPointer' property in the generated
+    # code (a bare stub) -- manually attach it so domain_DataControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_DataControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_DataControl(name="sample_text", uid="sample_text")
+    partner = domain_SourcesPointer()
+    setattr(partner, 'domain_SourcesPointer', None)
+    _safe_set(owner, 'domain_DataControl', partner)
+    assert getattr(partner, 'domain_SourcesPointer') == owner
+    _safe_set(owner, 'domain_DataControl', None)
+    assert getattr(partner, 'domain_SourcesPointer') is None
+
+
+def test_assoc_target377_stub_double():
+    # domain_TabPage has no real 'domain_TabPage' property in the generated
+    # code (a bare stub) -- manually attach it so domain_TabPagesInheritance's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_TabPagesInheritance's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_TabPagesInheritance(uid="sample_text")
+    partner = domain_TabPage()
+    setattr(partner, 'domain_TabPage', None)
+    _safe_set(owner, 'domain_TabPagesInheritance378', partner)
+    assert getattr(partner, 'domain_TabPage') == owner
+    _safe_set(owner, 'domain_TabPagesInheritance378', None)
+    assert getattr(partner, 'domain_TabPage') is None
+
+
+def test_assoc_toSubmenu602_stub_double():
+    # domain_SubMenu has no real 'domain_SubMenu' property in the generated
+    # code (a bare stub) -- manually attach it so domain_MenuFolder's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_MenuFolder's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_MenuFolder(extensionPoint=True, name="sample_text", uid="sample_text")
+    partner = domain_SubMenu()
+    setattr(partner, 'domain_SubMenu', None)
+    _safe_set(owner, 'domain_MenuFolder603', partner)
+    assert getattr(partner, 'domain_SubMenu') == owner
+    _safe_set(owner, 'domain_MenuFolder603', None)
+    assert getattr(partner, 'domain_SubMenu') is None
+
+
+def test_assoc_typePointers480_stub_double():
+    # domain_ProxiesList has no real 'domain_ProxiesList' property in the generated
+    # code (a bare stub) -- manually attach it so domain_TypePointer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_TypePointer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_TypePointer(fakePackageName="sample_text", fakeTypeName="sample_text")
+    partner = domain_ProxiesList()
+    setattr(partner, 'domain_ProxiesList', None)
+    _safe_set(owner, 'domain_TypePointer481', partner)
+    assert getattr(partner, 'domain_ProxiesList') == owner
+    _safe_set(owner, 'domain_TypePointer481', None)
+    assert getattr(partner, 'domain_ProxiesList') is None
+
+
+def test_assoc_values318_stub_double():
+    # domain_Enumarator has no real 'parent319' property in the generated
+    # code (a bare stub) -- manually attach it so domain_EnumAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # domain_EnumAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = domain_EnumAttribute(name="sample_text", uid="sample_text", value="sample_text")
+    partner = domain_Enumarator()
+    setattr(partner, 'parent319', None)
+    _safe_set(owner, 'EnumAttribute', partner)
+    assert getattr(partner, 'parent319') == owner
+    _safe_set(owner, 'EnumAttribute', None)
+    assert getattr(partner, 'parent319') is None
+
+

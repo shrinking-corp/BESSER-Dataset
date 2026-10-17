@@ -147,3 +147,371 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_actionBlock11_stub_double():
+    # ActionBlock has no real 'ActionBlock' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Rule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Rule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Rule(name="sample_text")
+    partner = ActionBlock()
+    setattr(partner, 'ActionBlock', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Rule12', partner)
+    assert getattr(partner, 'ActionBlock') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Rule12', None)
+    assert getattr(partner, 'ActionBlock') is None
+
+
+def test_assoc_arguments83_stub_double():
+    # OclExpression has no real 'OclExpression84' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_OperationCallExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_OperationCallExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_OperationCallExp(operationName="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression84', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_OperationCallExp', {partner})
+    assert getattr(partner, 'OclExpression84') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_OperationCallExp', set())
+    assert getattr(partner, 'OclExpression84') is None
+
+
+def test_assoc_body135_stub_double():
+    # OclExpression has no real 'OclExpression137' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_Operation(name="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression137', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_Operation136', partner)
+    assert getattr(partner, 'OclExpression137') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_Operation136', None)
+    assert getattr(partner, 'OclExpression137') is None
+
+
+def test_assoc_children16_stub_double():
+    # MatchedRule has no real 'MatchedRule' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_MatchedRule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_MatchedRule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_MatchedRule(isAbstract=True, isNoDefault=True, isRefining=True)
+    partner = MatchedRule()
+    setattr(partner, 'MatchedRule', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_MatchedRule17', {partner})
+    assert getattr(partner, 'MatchedRule') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_MatchedRule17', set())
+    assert getattr(partner, 'MatchedRule') is None
+
+
+def test_assoc_elements140_stub_double():
+    # OclModelElement has no real 'OclModelElement' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_OclModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_OclModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_OclModel(name="sample_text")
+    partner = OclModelElement()
+    setattr(partner, 'OclModelElement', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_OclModel141', {partner})
+    assert getattr(partner, 'OclModelElement') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_OclModel141', set())
+    assert getattr(partner, 'OclModelElement') is None
+
+
+def test_assoc_elements7_stub_double():
+    # ModuleElement has no real 'ModuleElement' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Module's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Module's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Module(isRefining=True)
+    partner = ModuleElement()
+    setattr(partner, 'ModuleElement', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Module8', {partner})
+    assert getattr(partner, 'ModuleElement') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Module8', set())
+    assert getattr(partner, 'ModuleElement') is None
+
+
+def test_assoc_inModels3_stub_double():
+    # OclModel has no real 'OclModel' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Module's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Module's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Module(isRefining=True)
+    partner = OclModel()
+    setattr(partner, 'OclModel', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Module', {partner})
+    assert getattr(partner, 'OclModel') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Module', set())
+    assert getattr(partner, 'OclModel') is None
+
+
+def test_assoc_inPattern15_stub_double():
+    # InPattern has no real 'InPattern' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_MatchedRule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_MatchedRule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_MatchedRule(isAbstract=True, isNoDefault=True, isRefining=True)
+    partner = InPattern()
+    setattr(partner, 'InPattern', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_MatchedRule', partner)
+    assert getattr(partner, 'InPattern') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_MatchedRule', None)
+    assert getattr(partner, 'InPattern') is None
+
+
+def test_assoc_initExpression107_stub_double():
+    # OclExpression has no real 'OclExpression109' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_VariableDeclaration(id="sample_text", varName="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression109', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_VariableDeclaration108', partner)
+    assert getattr(partner, 'OclExpression109') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_VariableDeclaration108', None)
+    assert getattr(partner, 'OclExpression109') is None
+
+
+def test_assoc_initExpression125_stub_double():
+    # OclExpression has no real 'OclExpression126' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_Attribute(name="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression126', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_Attribute', partner)
+    assert getattr(partner, 'OclExpression126') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_Attribute', None)
+    assert getattr(partner, 'OclExpression126') is None
+
+
+def test_assoc_metamodel138_stub_double():
+    # OclModel has no real 'OclModel139' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_OclModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_OclModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_OclModel(name="sample_text")
+    partner = OclModel()
+    setattr(partner, 'OclModel139', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_OclModel', partner)
+    assert getattr(partner, 'OclModel139') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_OclModel', None)
+    assert getattr(partner, 'OclModel139') is None
+
+
+def test_assoc_model142_stub_double():
+    # OclModel has no real 'OclModel144' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_OclModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_OclModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_OclModel(name="sample_text")
+    partner = OclModel()
+    setattr(partner, 'OclModel144', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_OclModel143', {partner})
+    assert getattr(partner, 'OclModel144') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_OclModel143', set())
+    assert getattr(partner, 'OclModel144') is None
+
+
+def test_assoc_outModels4_stub_double():
+    # OclModel has no real 'OclModel6' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Module's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Module's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Module(isRefining=True)
+    partner = OclModel()
+    setattr(partner, 'OclModel6', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Module5', {partner})
+    assert getattr(partner, 'OclModel6') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Module5', set())
+    assert getattr(partner, 'OclModel6') is None
+
+
+def test_assoc_outPattern10_stub_double():
+    # OutPattern has no real 'OutPattern' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Rule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Rule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Rule(name="sample_text")
+    partner = OutPattern()
+    setattr(partner, 'OutPattern', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Rule', partner)
+    assert getattr(partner, 'OutPattern') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Rule', None)
+    assert getattr(partner, 'OutPattern') is None
+
+
+def test_assoc_parameters130_stub_double():
+    # Parameter has no real 'Parameter131' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_Operation(name="sample_text")
+    partner = Parameter()
+    setattr(partner, 'Parameter131', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_Operation', {partner})
+    assert getattr(partner, 'Parameter131') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_Operation', set())
+    assert getattr(partner, 'Parameter131') is None
+
+
+def test_assoc_parameters18_stub_double():
+    # Parameter has no real 'Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_CalledRule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_CalledRule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_CalledRule(isEndpoint=True, isEntrypoint=True)
+    partner = Parameter()
+    setattr(partner, 'Parameter', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_CalledRule', {partner})
+    assert getattr(partner, 'Parameter') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_CalledRule', set())
+    assert getattr(partner, 'Parameter') is None
+
+
+def test_assoc_returnType132_stub_double():
+    # OclType has no real 'OclType134' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_Operation(name="sample_text")
+    partner = OclType()
+    setattr(partner, 'OclType134', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_Operation133', partner)
+    assert getattr(partner, 'OclType134') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_Operation133', None)
+    assert getattr(partner, 'OclType134') is None
+
+
+def test_assoc_source48_stub_double():
+    # OclExpression has no real 'OclExpression49' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_BindingStat's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_BindingStat's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_BindingStat(isAssignment=True, propertyName="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression49', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_BindingStat', partner)
+    assert getattr(partner, 'OclExpression49') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_BindingStat', None)
+    assert getattr(partner, 'OclExpression49') is None
+
+
+def test_assoc_type105_stub_double():
+    # OclType has no real 'OclType106' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_VariableDeclaration(id="sample_text", varName="sample_text")
+    partner = OclType()
+    setattr(partner, 'OclType106', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_VariableDeclaration', partner)
+    assert getattr(partner, 'OclType106') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_VariableDeclaration', None)
+    assert getattr(partner, 'OclType106') is None
+
+
+def test_assoc_type113_stub_double():
+    # OclType has no real 'OclType114' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_TupleTypeAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_TupleTypeAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_TupleTypeAttribute(name="sample_text")
+    partner = OclType()
+    setattr(partner, 'OclType114', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_TupleTypeAttribute', partner)
+    assert getattr(partner, 'OclType114') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_TupleTypeAttribute', None)
+    assert getattr(partner, 'OclType114') is None
+
+
+def test_assoc_type127_stub_double():
+    # OclType has no real 'OclType129' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_OCL_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_OCL_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_OCL_Attribute(name="sample_text")
+    partner = OclType()
+    setattr(partner, 'OclType129', None)
+    _safe_set(owner, 'atl_n_ocl_OCL_Attribute128', partner)
+    assert getattr(partner, 'OclType129') == owner
+    _safe_set(owner, 'atl_n_ocl_OCL_Attribute128', None)
+    assert getattr(partner, 'OclType129') is None
+
+
+def test_assoc_value43_stub_double():
+    # OclExpression has no real 'OclExpression44' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Binding's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Binding's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Binding(isAssignment=True, propertyName="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression44', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Binding', partner)
+    assert getattr(partner, 'OclExpression44') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Binding', None)
+    assert getattr(partner, 'OclExpression44') is None
+
+
+def test_assoc_value50_stub_double():
+    # OclExpression has no real 'OclExpression52' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_BindingStat's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_BindingStat's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_BindingStat(isAssignment=True, propertyName="sample_text")
+    partner = OclExpression()
+    setattr(partner, 'OclExpression52', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_BindingStat51', partner)
+    assert getattr(partner, 'OclExpression52') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_BindingStat51', None)
+    assert getattr(partner, 'OclExpression52') is None
+
+
+def test_assoc_variables13_stub_double():
+    # RuleVariableDeclaration has no real 'RuleVariableDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so atl_n_ocl_ATL_Rule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # atl_n_ocl_ATL_Rule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = atl_n_ocl_ATL_Rule(name="sample_text")
+    partner = RuleVariableDeclaration()
+    setattr(partner, 'RuleVariableDeclaration', None)
+    _safe_set(owner, 'atl_n_ocl_ATL_Rule14', {partner})
+    assert getattr(partner, 'RuleVariableDeclaration') == owner
+    _safe_set(owner, 'atl_n_ocl_ATL_Rule14', set())
+    assert getattr(partner, 'RuleVariableDeclaration') is None
+
+

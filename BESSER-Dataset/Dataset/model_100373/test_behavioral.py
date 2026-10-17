@@ -178,3 +178,161 @@ def test_assoc_states14_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'MDAIntermediateStateMachine_State16', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_input28_stub_double():
+    # MDAIntermediateStateMachine_Transition has no real 'MDAIntermediateStateMachine_Transition29' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Operation(name="sample_text")
+    partner = MDAIntermediateStateMachine_Transition()
+    setattr(partner, 'MDAIntermediateStateMachine_Transition29', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Operation30', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition29') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Operation30', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition29') is None
+
+
+def test_assoc_messages7_stub_double():
+    # MDAIntermediateStateMachine_Message has no real 'MDAIntermediateStateMachine_Message' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Content's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Content's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Content(name="sample_text")
+    partner = MDAIntermediateStateMachine_Message()
+    setattr(partner, 'MDAIntermediateStateMachine_Message', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Content8', {partner})
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Content8', set())
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message') is None
+
+
+def test_assoc_operation33_stub_double():
+    # MDAIntermediateStateMachine_Message has no real 'MDAIntermediateStateMachine_Message34' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Operation(name="sample_text")
+    partner = MDAIntermediateStateMachine_Message()
+    setattr(partner, 'MDAIntermediateStateMachine_Message34', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Operation35', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message34') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Operation35', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message34') is None
+
+
+def test_assoc_postState25_stub_double():
+    # MDAIntermediateStateMachine_Transition has no real 'MDAIntermediateStateMachine_Transition26' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_State(name="sample_text")
+    partner = MDAIntermediateStateMachine_Transition()
+    setattr(partner, 'MDAIntermediateStateMachine_Transition26', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_State27', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition26') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_State27', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition26') is None
+
+
+def test_assoc_preState22_stub_double():
+    # MDAIntermediateStateMachine_Transition has no real 'MDAIntermediateStateMachine_Transition23' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_State(name="sample_text")
+    partner = MDAIntermediateStateMachine_Transition()
+    setattr(partner, 'MDAIntermediateStateMachine_Transition23', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_State24', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition23') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_State24', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition23') is None
+
+
+def test_assoc_receiver36_stub_double():
+    # MDAIntermediateStateMachine_Message has no real 'MDAIntermediateStateMachine_Message37' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Participant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Participant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Participant(name="sample_text")
+    partner = MDAIntermediateStateMachine_Message()
+    setattr(partner, 'MDAIntermediateStateMachine_Message37', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Participant38', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message37') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Participant38', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message37') is None
+
+
+def test_assoc_returnValue31_stub_double():
+    # MDAIntermediateStateMachine_Transition has no real 'MDAIntermediateStateMachine_Transition32' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Value's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Value's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Value(value="sample_text")
+    partner = MDAIntermediateStateMachine_Transition()
+    setattr(partner, 'MDAIntermediateStateMachine_Transition32', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Value', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition32') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Value', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition32') is None
+
+
+def test_assoc_returnValue39_stub_double():
+    # MDAIntermediateStateMachine_Message has no real 'MDAIntermediateStateMachine_Message40' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Value's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Value's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Value(value="sample_text")
+    partner = MDAIntermediateStateMachine_Message()
+    setattr(partner, 'MDAIntermediateStateMachine_Message40', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Value41', partner)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message40') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Value41', None)
+    assert getattr(partner, 'MDAIntermediateStateMachine_Message40') is None
+
+
+def test_assoc_sequences9_stub_double():
+    # MDAIntermediateStateMachine_MessageSequence has no real 'MDAIntermediateStateMachine_MessageSequence' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_State(name="sample_text")
+    partner = MDAIntermediateStateMachine_MessageSequence()
+    setattr(partner, 'MDAIntermediateStateMachine_MessageSequence', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_State10', {partner})
+    assert getattr(partner, 'MDAIntermediateStateMachine_MessageSequence') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_State10', set())
+    assert getattr(partner, 'MDAIntermediateStateMachine_MessageSequence') is None
+
+
+def test_assoc_transitions17_stub_double():
+    # MDAIntermediateStateMachine_Transition has no real 'MDAIntermediateStateMachine_Transition' property in the generated
+    # code (a bare stub) -- manually attach it so MDAIntermediateStateMachine_Automaton's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MDAIntermediateStateMachine_Automaton's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MDAIntermediateStateMachine_Automaton(name="sample_text")
+    partner = MDAIntermediateStateMachine_Transition()
+    setattr(partner, 'MDAIntermediateStateMachine_Transition', None)
+    _safe_set(owner, 'MDAIntermediateStateMachine_Automaton18', {partner})
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition') == owner
+    _safe_set(owner, 'MDAIntermediateStateMachine_Automaton18', set())
+    assert getattr(partner, 'MDAIntermediateStateMachine_Transition') is None
+
+

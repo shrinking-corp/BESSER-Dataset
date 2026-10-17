@@ -508,3 +508,731 @@ def test_assoc_variableDeclarationStatement254_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'VariableDeclarationStatement', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_annotations297_stub_double():
+    # java__Annotation has no real 'java__Annotation299' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__Annotation()
+    setattr(partner, 'java__Annotation299', None)
+    _safe_set(owner, 'java__SingleVariableDeclaration298', {partner})
+    assert getattr(partner, 'java__Annotation299') == owner
+    _safe_set(owner, 'java__SingleVariableDeclaration298', set())
+    assert getattr(partner, 'java__Annotation299') is None
+
+
+def test_assoc_annotations361_stub_double():
+    # java__Annotation has no real 'java__Annotation362' property in the generated
+    # code (a bare stub) -- manually attach it so java__VariableDeclarationStatement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__VariableDeclarationStatement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__VariableDeclarationStatement(extraArrayDimensions=7)
+    partner = java__Annotation()
+    setattr(partner, 'java__Annotation362', None)
+    _safe_set(owner, 'java__VariableDeclarationStatement', {partner})
+    assert getattr(partner, 'java__Annotation362') == owner
+    _safe_set(owner, 'java__VariableDeclarationStatement', set())
+    assert getattr(partner, 'java__Annotation362') is None
+
+
+def test_assoc_bodyDeclaration249_stub_double():
+    # java__BodyDeclaration has no real 'BodyDeclaration250' property in the generated
+    # code (a bare stub) -- manually attach it so java__Modifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Modifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    partner = java__BodyDeclaration()
+    setattr(partner, 'BodyDeclaration250', None)
+    _safe_set(owner, 'modifier', partner)
+    assert getattr(partner, 'BodyDeclaration250') == owner
+    _safe_set(owner, 'modifier', None)
+    assert getattr(partner, 'BodyDeclaration250') is None
+
+
+def test_assoc_bound363_stub_double():
+    # java__TypeAccess has no real 'java__TypeAccess364' property in the generated
+    # code (a bare stub) -- manually attach it so java__WildCardType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__WildCardType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__WildCardType(upperBound=True)
+    partner = java__TypeAccess()
+    setattr(partner, 'java__TypeAccess364', None)
+    _safe_set(owner, 'java__WildCardType', partner)
+    assert getattr(partner, 'java__TypeAccess364') == owner
+    _safe_set(owner, 'java__WildCardType', None)
+    assert getattr(partner, 'java__TypeAccess364') is None
+
+
+def test_assoc_catchClause302_stub_double():
+    # java__CatchClause has no real 'CatchClause' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__CatchClause()
+    setattr(partner, 'CatchClause', None)
+    _safe_set(owner, 'exception', partner)
+    assert getattr(partner, 'CatchClause') == owner
+    _safe_set(owner, 'exception', None)
+    assert getattr(partner, 'CatchClause') is None
+
+
+def test_assoc_comments40_stub_double():
+    # java__ASTNode has no real 'java__ASTNode' property in the generated
+    # code (a bare stub) -- manually attach it so java__Comment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Comment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    partner = java__ASTNode()
+    setattr(partner, 'java__ASTNode', None)
+    _safe_set(owner, 'java__Comment41', partner)
+    assert getattr(partner, 'java__ASTNode') == owner
+    _safe_set(owner, 'java__Comment41', None)
+    assert getattr(partner, 'java__ASTNode') is None
+
+
+def test_assoc_commentsAfterBody16_stub_double():
+    # java__AbstractTypeDeclaration has no real 'java__AbstractTypeDeclaration17' property in the generated
+    # code (a bare stub) -- manually attach it so java__Comment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Comment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    partner = java__AbstractTypeDeclaration()
+    setattr(partner, 'java__AbstractTypeDeclaration17', None)
+    _safe_set(owner, 'java__Comment18', partner)
+    assert getattr(partner, 'java__AbstractTypeDeclaration17') == owner
+    _safe_set(owner, 'java__Comment18', None)
+    assert getattr(partner, 'java__AbstractTypeDeclaration17') is None
+
+
+def test_assoc_commentsBeforeBody15_stub_double():
+    # java__AbstractTypeDeclaration has no real 'java__AbstractTypeDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so java__Comment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Comment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Comment(content="sample_text", enclosedByParent=True, prefixOfParent=True)
+    partner = java__AbstractTypeDeclaration()
+    setattr(partner, 'java__AbstractTypeDeclaration', None)
+    _safe_set(owner, 'java__Comment', partner)
+    assert getattr(partner, 'java__AbstractTypeDeclaration') == owner
+    _safe_set(owner, 'java__Comment', None)
+    assert getattr(partner, 'java__AbstractTypeDeclaration') is None
+
+
+def test_assoc_elementType78_stub_double():
+    # java__TypeAccess has no real 'java__TypeAccess79' property in the generated
+    # code (a bare stub) -- manually attach it so java__ArrayType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__ArrayType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__ArrayType(dimensions=7)
+    partner = java__TypeAccess()
+    setattr(partner, 'java__TypeAccess79', None)
+    _safe_set(owner, 'java__ArrayType', partner)
+    assert getattr(partner, 'java__TypeAccess79') == owner
+    _safe_set(owner, 'java__ArrayType', None)
+    assert getattr(partner, 'java__TypeAccess79') is None
+
+
+def test_assoc_enhancedForStatement303_stub_double():
+    # java__EnhancedForStatement has no real 'EnhancedForStatement' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__EnhancedForStatement()
+    setattr(partner, 'EnhancedForStatement', None)
+    _safe_set(owner, 'parameter', partner)
+    assert getattr(partner, 'EnhancedForStatement') == owner
+    _safe_set(owner, 'parameter', None)
+    assert getattr(partner, 'EnhancedForStatement') is None
+
+
+def test_assoc_entryAttributes208_stub_double():
+    # java__Manifest has no real 'java__Manifest209' property in the generated
+    # code (a bare stub) -- manually attach it so java__ManifestEntry's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__ManifestEntry's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__ManifestEntry(name="sample_text")
+    partner = java__Manifest()
+    setattr(partner, 'java__Manifest209', None)
+    _safe_set(owner, 'java__ManifestEntry', partner)
+    assert getattr(partner, 'java__Manifest209') == owner
+    _safe_set(owner, 'java__ManifestEntry', None)
+    assert getattr(partner, 'java__Manifest209') is None
+
+
+def test_assoc_exception99_stub_double():
+    # java__CatchClause has no real 'catchClause' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__CatchClause()
+    setattr(partner, 'catchClause', None)
+    _safe_set(owner, 'SingleVariableDeclaration100', partner)
+    assert getattr(partner, 'catchClause') == owner
+    _safe_set(owner, 'SingleVariableDeclaration100', None)
+    assert getattr(partner, 'catchClause') is None
+
+
+def test_assoc_expression308_stub_double():
+    # java__Expression has no real 'java__Expression309' property in the generated
+    # code (a bare stub) -- manually attach it so java__SwitchCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SwitchCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SwitchCase(default=True)
+    partner = java__Expression()
+    setattr(partner, 'java__Expression309', None)
+    _safe_set(owner, 'java__SwitchCase', partner)
+    assert getattr(partner, 'java__Expression309') == owner
+    _safe_set(owner, 'java__SwitchCase', None)
+    assert getattr(partner, 'java__Expression309') is None
+
+
+def test_assoc_extendedOperands190_stub_double():
+    # java__Expression has no real 'java__Expression192' property in the generated
+    # code (a bare stub) -- manually attach it so java__InfixExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__InfixExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__InfixExpression(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression192', None)
+    _safe_set(owner, 'java__InfixExpression191', {partner})
+    assert getattr(partner, 'java__Expression192') == owner
+    _safe_set(owner, 'java__InfixExpression191', set())
+    assert getattr(partner, 'java__Expression192') is None
+
+
+def test_assoc_fragments320_stub_double():
+    # java__ASTNode has no real 'java__ASTNode322' property in the generated
+    # code (a bare stub) -- manually attach it so java__TagElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__TagElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__TagElement(tagName="sample_text")
+    partner = java__ASTNode()
+    setattr(partner, 'java__ASTNode322', None)
+    _safe_set(owner, 'java__TagElement321', {partner})
+    assert getattr(partner, 'java__ASTNode322') == owner
+    _safe_set(owner, 'java__TagElement321', set())
+    assert getattr(partner, 'java__ASTNode322') is None
+
+
+def test_assoc_initializer351_stub_double():
+    # java__Expression has no real 'java__Expression352' property in the generated
+    # code (a bare stub) -- manually attach it so java__VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__VariableDeclaration(extraArrayDimensions=7)
+    partner = java__Expression()
+    setattr(partner, 'java__Expression352', None)
+    _safe_set(owner, 'java__VariableDeclaration', partner)
+    assert getattr(partner, 'java__Expression352') == owner
+    _safe_set(owner, 'java__VariableDeclaration', None)
+    assert getattr(partner, 'java__Expression352') is None
+
+
+def test_assoc_leftHandSide80_stub_double():
+    # java__Expression has no real 'java__Expression81' property in the generated
+    # code (a bare stub) -- manually attach it so java__Assignment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Assignment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Assignment(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression81', None)
+    _safe_set(owner, 'java__Assignment', partner)
+    assert getattr(partner, 'java__Expression81') == owner
+    _safe_set(owner, 'java__Assignment', None)
+    assert getattr(partner, 'java__Expression81') is None
+
+
+def test_assoc_leftOperand187_stub_double():
+    # java__Expression has no real 'java__Expression189' property in the generated
+    # code (a bare stub) -- manually attach it so java__InfixExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__InfixExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__InfixExpression(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression189', None)
+    _safe_set(owner, 'java__InfixExpression188', partner)
+    assert getattr(partner, 'java__Expression189') == owner
+    _safe_set(owner, 'java__InfixExpression188', None)
+    assert getattr(partner, 'java__Expression189') is None
+
+
+def test_assoc_mainAttributes206_stub_double():
+    # java__Manifest has no real 'java__Manifest207' property in the generated
+    # code (a bare stub) -- manually attach it so java__ManifestAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__ManifestAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__ManifestAttribute(key="sample_text", value="sample_text")
+    partner = java__Manifest()
+    setattr(partner, 'java__Manifest207', None)
+    _safe_set(owner, 'java__ManifestAttribute', partner)
+    assert getattr(partner, 'java__Manifest207') == owner
+    _safe_set(owner, 'java__ManifestAttribute', None)
+    assert getattr(partner, 'java__Manifest207') is None
+
+
+def test_assoc_manifest33_stub_double():
+    # java__Manifest has no real 'java__Manifest' property in the generated
+    # code (a bare stub) -- manually attach it so java__Archive's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Archive's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Archive(originalFilePath="sample_text")
+    partner = java__Manifest()
+    setattr(partner, 'java__Manifest', None)
+    _safe_set(owner, 'java__Archive34', partner)
+    assert getattr(partner, 'java__Manifest') == owner
+    _safe_set(owner, 'java__Archive34', None)
+    assert getattr(partner, 'java__Manifest') is None
+
+
+def test_assoc_member213_stub_double():
+    # java__MemberRef has no real 'java__MemberRef' property in the generated
+    # code (a bare stub) -- manually attach it so java__NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__NamedElement(name="sample_text", proxy=True)
+    partner = java__MemberRef()
+    setattr(partner, 'java__MemberRef', None)
+    _safe_set(owner, 'java__NamedElement', partner)
+    assert getattr(partner, 'java__MemberRef') == owner
+    _safe_set(owner, 'java__NamedElement', None)
+    assert getattr(partner, 'java__MemberRef') is None
+
+
+def test_assoc_methodDeclaration300_stub_double():
+    # java__AbstractMethodDeclaration has no real 'AbstractMethodDeclaration301' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__AbstractMethodDeclaration()
+    setattr(partner, 'AbstractMethodDeclaration301', None)
+    _safe_set(owner, 'parameters', partner)
+    assert getattr(partner, 'AbstractMethodDeclaration301') == owner
+    _safe_set(owner, 'parameters', None)
+    assert getattr(partner, 'AbstractMethodDeclaration301') is None
+
+
+def test_assoc_model261_stub_double():
+    # java__Package has no real 'ownedElements262' property in the generated
+    # code (a bare stub) -- manually attach it so java__Model's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Model's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Model(name="sample_text")
+    partner = java__Package()
+    setattr(partner, 'ownedElements262', None)
+    _safe_set(owner, 'Model', partner)
+    assert getattr(partner, 'ownedElements262') == owner
+    _safe_set(owner, 'Model', None)
+    assert getattr(partner, 'ownedElements262') is None
+
+
+def test_assoc_modifier354_stub_double():
+    # java__VariableDeclarationExpression has no real 'variableDeclarationExpression' property in the generated
+    # code (a bare stub) -- manually attach it so java__Modifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Modifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    partner = java__VariableDeclarationExpression()
+    setattr(partner, 'variableDeclarationExpression', None)
+    _safe_set(owner, 'Modifier355', partner)
+    assert getattr(partner, 'variableDeclarationExpression') == owner
+    _safe_set(owner, 'Modifier355', None)
+    assert getattr(partner, 'variableDeclarationExpression') is None
+
+
+def test_assoc_modifier90_stub_double():
+    # java__BodyDeclaration has no real 'bodyDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so java__Modifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Modifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    partner = java__BodyDeclaration()
+    setattr(partner, 'bodyDeclaration', None)
+    _safe_set(owner, 'Modifier', partner)
+    assert getattr(partner, 'bodyDeclaration') == owner
+    _safe_set(owner, 'Modifier', None)
+    assert getattr(partner, 'bodyDeclaration') is None
+
+
+def test_assoc_operand283_stub_double():
+    # java__Expression has no real 'java__Expression284' property in the generated
+    # code (a bare stub) -- manually attach it so java__PostfixExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__PostfixExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__PostfixExpression(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression284', None)
+    _safe_set(owner, 'java__PostfixExpression', partner)
+    assert getattr(partner, 'java__Expression284') == owner
+    _safe_set(owner, 'java__PostfixExpression', None)
+    assert getattr(partner, 'java__Expression284') is None
+
+
+def test_assoc_operand285_stub_double():
+    # java__Expression has no real 'java__Expression286' property in the generated
+    # code (a bare stub) -- manually attach it so java__PrefixExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__PrefixExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__PrefixExpression(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression286', None)
+    _safe_set(owner, 'java__PrefixExpression', partner)
+    assert getattr(partner, 'java__Expression286') == owner
+    _safe_set(owner, 'java__PrefixExpression', None)
+    assert getattr(partner, 'java__Expression286') is None
+
+
+def test_assoc_originalClassFile44_stub_double():
+    # java__ASTNode has no real 'java__ASTNode45' property in the generated
+    # code (a bare stub) -- manually attach it so java__ClassFile's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__ClassFile's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__ClassFile(originalFilePath="sample_text")
+    partner = java__ASTNode()
+    setattr(partner, 'java__ASTNode45', None)
+    _safe_set(owner, 'java__ClassFile46', partner)
+    assert getattr(partner, 'java__ASTNode45') == owner
+    _safe_set(owner, 'java__ClassFile46', None)
+    assert getattr(partner, 'java__ASTNode45') is None
+
+
+def test_assoc_originalCompilationUnit42_stub_double():
+    # java__ASTNode has no real 'java__ASTNode43' property in the generated
+    # code (a bare stub) -- manually attach it so java__CompilationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__CompilationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__CompilationUnit(originalFilePath="sample_text")
+    partner = java__ASTNode()
+    setattr(partner, 'java__ASTNode43', None)
+    _safe_set(owner, 'java__CompilationUnit', partner)
+    assert getattr(partner, 'java__ASTNode43') == owner
+    _safe_set(owner, 'java__CompilationUnit', None)
+    assert getattr(partner, 'java__ASTNode43') is None
+
+
+def test_assoc_orphanTypes237_stub_double():
+    # java__Type has no real 'java__Type' property in the generated
+    # code (a bare stub) -- manually attach it so java__Model's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Model's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Model(name="sample_text")
+    partner = java__Type()
+    setattr(partner, 'java__Type', None)
+    _safe_set(owner, 'java__Model', {partner})
+    assert getattr(partner, 'java__Type') == owner
+    _safe_set(owner, 'java__Model', set())
+    assert getattr(partner, 'java__Type') is None
+
+
+def test_assoc_ownedElements235_stub_double():
+    # java__Package has no real 'Package236' property in the generated
+    # code (a bare stub) -- manually attach it so java__Model's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Model's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Model(name="sample_text")
+    partner = java__Package()
+    setattr(partner, 'Package236', None)
+    _safe_set(owner, 'model', {partner})
+    assert getattr(partner, 'Package236') == owner
+    _safe_set(owner, 'model', set())
+    assert getattr(partner, 'Package236') is None
+
+
+def test_assoc_package109_stub_double():
+    # java__Package has no real 'java__Package' property in the generated
+    # code (a bare stub) -- manually attach it so java__ClassFile's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__ClassFile's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__ClassFile(originalFilePath="sample_text")
+    partner = java__Package()
+    setattr(partner, 'java__Package', None)
+    _safe_set(owner, 'java__ClassFile110', partner)
+    assert getattr(partner, 'java__Package') == owner
+    _safe_set(owner, 'java__ClassFile110', None)
+    assert getattr(partner, 'java__Package') is None
+
+
+def test_assoc_package133_stub_double():
+    # java__Package has no real 'java__Package135' property in the generated
+    # code (a bare stub) -- manually attach it so java__CompilationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__CompilationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__CompilationUnit(originalFilePath="sample_text")
+    partner = java__Package()
+    setattr(partner, 'java__Package135', None)
+    _safe_set(owner, 'java__CompilationUnit134', partner)
+    assert getattr(partner, 'java__Package135') == owner
+    _safe_set(owner, 'java__CompilationUnit134', None)
+    assert getattr(partner, 'java__Package135') is None
+
+
+def test_assoc_parameter151_stub_double():
+    # java__EnhancedForStatement has no real 'enhancedForStatement' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__EnhancedForStatement()
+    setattr(partner, 'enhancedForStatement', None)
+    _safe_set(owner, 'SingleVariableDeclaration152', partner)
+    assert getattr(partner, 'enhancedForStatement') == owner
+    _safe_set(owner, 'SingleVariableDeclaration152', None)
+    assert getattr(partner, 'enhancedForStatement') is None
+
+
+def test_assoc_parameters1_stub_double():
+    # java__AbstractMethodDeclaration has no real 'methodDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__AbstractMethodDeclaration()
+    setattr(partner, 'methodDeclaration', None)
+    _safe_set(owner, 'SingleVariableDeclaration', partner)
+    assert getattr(partner, 'methodDeclaration') == owner
+    _safe_set(owner, 'SingleVariableDeclaration', None)
+    assert getattr(partner, 'methodDeclaration') is None
+
+
+def test_assoc_parameters230_stub_double():
+    # java__MethodRef has no real 'java__MethodRef231' property in the generated
+    # code (a bare stub) -- manually attach it so java__MethodRefParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__MethodRefParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__MethodRefParameter(name="sample_text", varargs=True)
+    partner = java__MethodRef()
+    setattr(partner, 'java__MethodRef231', None)
+    _safe_set(owner, 'java__MethodRefParameter', partner)
+    assert getattr(partner, 'java__MethodRef231') == owner
+    _safe_set(owner, 'java__MethodRefParameter', None)
+    assert getattr(partner, 'java__MethodRef231') is None
+
+
+def test_assoc_returnType217_stub_double():
+    # java__TypeAccess has no real 'java__TypeAccess218' property in the generated
+    # code (a bare stub) -- manually attach it so java__MethodDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__MethodDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__MethodDeclaration(extraArrayDimensions=7)
+    partner = java__TypeAccess()
+    setattr(partner, 'java__TypeAccess218', None)
+    _safe_set(owner, 'java__MethodDeclaration', partner)
+    assert getattr(partner, 'java__TypeAccess218') == owner
+    _safe_set(owner, 'java__MethodDeclaration', None)
+    assert getattr(partner, 'java__TypeAccess218') is None
+
+
+def test_assoc_rightHandSide82_stub_double():
+    # java__Expression has no real 'java__Expression84' property in the generated
+    # code (a bare stub) -- manually attach it so java__Assignment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Assignment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Assignment(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression84', None)
+    _safe_set(owner, 'java__Assignment83', partner)
+    assert getattr(partner, 'java__Expression84') == owner
+    _safe_set(owner, 'java__Assignment83', None)
+    assert getattr(partner, 'java__Expression84') is None
+
+
+def test_assoc_rightOperand185_stub_double():
+    # java__Expression has no real 'java__Expression186' property in the generated
+    # code (a bare stub) -- manually attach it so java__InfixExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__InfixExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__InfixExpression(operator="sample_text")
+    partner = java__Expression()
+    setattr(partner, 'java__Expression186', None)
+    _safe_set(owner, 'java__InfixExpression', partner)
+    assert getattr(partner, 'java__Expression186') == owner
+    _safe_set(owner, 'java__InfixExpression', None)
+    assert getattr(partner, 'java__Expression186') is None
+
+
+def test_assoc_tags200_stub_double():
+    # java__Javadoc has no real 'java__Javadoc' property in the generated
+    # code (a bare stub) -- manually attach it so java__TagElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__TagElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__TagElement(tagName="sample_text")
+    partner = java__Javadoc()
+    setattr(partner, 'java__Javadoc', None)
+    _safe_set(owner, 'java__TagElement', partner)
+    assert getattr(partner, 'java__Javadoc') == owner
+    _safe_set(owner, 'java__TagElement', None)
+    assert getattr(partner, 'java__Javadoc') is None
+
+
+def test_assoc_type103_stub_double():
+    # java__AbstractTypeDeclaration has no real 'java__AbstractTypeDeclaration105' property in the generated
+    # code (a bare stub) -- manually attach it so java__ClassFile's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__ClassFile's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__ClassFile(originalFilePath="sample_text")
+    partner = java__AbstractTypeDeclaration()
+    setattr(partner, 'java__AbstractTypeDeclaration105', None)
+    _safe_set(owner, 'java__ClassFile104', partner)
+    assert getattr(partner, 'java__AbstractTypeDeclaration105') == owner
+    _safe_set(owner, 'java__ClassFile104', None)
+    assert getattr(partner, 'java__AbstractTypeDeclaration105') is None
+
+
+def test_assoc_type232_stub_double():
+    # java__TypeAccess has no real 'java__TypeAccess234' property in the generated
+    # code (a bare stub) -- manually attach it so java__MethodRefParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__MethodRefParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__MethodRefParameter(name="sample_text", varargs=True)
+    partner = java__TypeAccess()
+    setattr(partner, 'java__TypeAccess234', None)
+    _safe_set(owner, 'java__MethodRefParameter233', partner)
+    assert getattr(partner, 'java__TypeAccess234') == owner
+    _safe_set(owner, 'java__MethodRefParameter233', None)
+    assert getattr(partner, 'java__TypeAccess234') is None
+
+
+def test_assoc_type295_stub_double():
+    # java__TypeAccess has no real 'java__TypeAccess296' property in the generated
+    # code (a bare stub) -- manually attach it so java__SingleVariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__SingleVariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__SingleVariableDeclaration(varargs=True)
+    partner = java__TypeAccess()
+    setattr(partner, 'java__TypeAccess296', None)
+    _safe_set(owner, 'java__SingleVariableDeclaration', partner)
+    assert getattr(partner, 'java__TypeAccess296') == owner
+    _safe_set(owner, 'java__SingleVariableDeclaration', None)
+    assert getattr(partner, 'java__TypeAccess296') is None
+
+
+def test_assoc_types136_stub_double():
+    # java__AbstractTypeDeclaration has no real 'java__AbstractTypeDeclaration138' property in the generated
+    # code (a bare stub) -- manually attach it so java__CompilationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__CompilationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__CompilationUnit(originalFilePath="sample_text")
+    partner = java__AbstractTypeDeclaration()
+    setattr(partner, 'java__AbstractTypeDeclaration138', None)
+    _safe_set(owner, 'java__CompilationUnit137', {partner})
+    assert getattr(partner, 'java__AbstractTypeDeclaration138') == owner
+    _safe_set(owner, 'java__CompilationUnit137', set())
+    assert getattr(partner, 'java__AbstractTypeDeclaration138') is None
+
+
+def test_assoc_unresolvedItems238_stub_double():
+    # java__UnresolvedItem has no real 'java__UnresolvedItem' property in the generated
+    # code (a bare stub) -- manually attach it so java__Model's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Model's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Model(name="sample_text")
+    partner = java__UnresolvedItem()
+    setattr(partner, 'java__UnresolvedItem', None)
+    _safe_set(owner, 'java__Model239', {partner})
+    assert getattr(partner, 'java__UnresolvedItem') == owner
+    _safe_set(owner, 'java__Model239', set())
+    assert getattr(partner, 'java__UnresolvedItem') is None
+
+
+def test_assoc_usageInVariableAccess353_stub_double():
+    # java__SingleVariableAccess has no real 'SingleVariableAccess' property in the generated
+    # code (a bare stub) -- manually attach it so java__VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__VariableDeclaration(extraArrayDimensions=7)
+    partner = java__SingleVariableAccess()
+    setattr(partner, 'SingleVariableAccess', None)
+    _safe_set(owner, 'variable', {partner})
+    assert getattr(partner, 'SingleVariableAccess') == owner
+    _safe_set(owner, 'variable', set())
+    assert getattr(partner, 'SingleVariableAccess') is None
+
+
+def test_assoc_variable289_stub_double():
+    # java__SingleVariableAccess has no real 'usageInVariableAccess' property in the generated
+    # code (a bare stub) -- manually attach it so java__VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__VariableDeclaration(extraArrayDimensions=7)
+    partner = java__SingleVariableAccess()
+    setattr(partner, 'usageInVariableAccess', None)
+    _safe_set(owner, 'VariableDeclaration', partner)
+    assert getattr(partner, 'usageInVariableAccess') == owner
+    _safe_set(owner, 'VariableDeclaration', None)
+    assert getattr(partner, 'usageInVariableAccess') is None
+
+
+def test_assoc_variableDeclarationExpression256_stub_double():
+    # java__VariableDeclarationExpression has no real 'VariableDeclarationExpression' property in the generated
+    # code (a bare stub) -- manually attach it so java__Modifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # java__Modifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = java__Modifier(inheritance="sample_text", native=True, static=True, strictfp=True, synchronized=True, transient=True, visibility="sample_text", volatile=True)
+    partner = java__VariableDeclarationExpression()
+    setattr(partner, 'VariableDeclarationExpression', None)
+    _safe_set(owner, 'modifier257', partner)
+    assert getattr(partner, 'VariableDeclarationExpression') == owner
+    _safe_set(owner, 'modifier257', None)
+    assert getattr(partner, 'VariableDeclarationExpression') is None
+
+

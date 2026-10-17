@@ -98,3 +98,71 @@ def test_assoc_type4_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'metamodel_Type6', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_EReference07_stub_double():
+    # metamodel_Entity has no real 'metamodel_Entity9' property in the generated
+    # code (a bare stub) -- manually attach it so metamodel_Query's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metamodel_Query's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metamodel_Query(methodName="sample_text", queryString="sample_text")
+    partner = metamodel_Entity()
+    setattr(partner, 'metamodel_Entity9', None)
+    _safe_set(owner, 'metamodel_Query8', partner)
+    assert getattr(partner, 'metamodel_Entity9') == owner
+    _safe_set(owner, 'metamodel_Query8', None)
+    assert getattr(partner, 'metamodel_Entity9') is None
+
+
+def test_assoc_features1_stub_double():
+    # metamodel_Entity has no real 'metamodel_Entity' property in the generated
+    # code (a bare stub) -- manually attach it so metamodel_Feature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metamodel_Feature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metamodel_Feature(annotation="sample_text", mappedBy="sample_text", name="sample_text")
+    partner = metamodel_Entity()
+    setattr(partner, 'metamodel_Entity', None)
+    _safe_set(owner, 'metamodel_Feature', partner)
+    assert getattr(partner, 'metamodel_Entity') == owner
+    _safe_set(owner, 'metamodel_Feature', None)
+    assert getattr(partner, 'metamodel_Entity') is None
+
+
+def test_assoc_queries2_stub_double():
+    # metamodel_Entity has no real 'metamodel_Entity3' property in the generated
+    # code (a bare stub) -- manually attach it so metamodel_Query's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metamodel_Query's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metamodel_Query(methodName="sample_text", queryString="sample_text")
+    partner = metamodel_Entity()
+    setattr(partner, 'metamodel_Entity3', None)
+    _safe_set(owner, 'metamodel_Query', partner)
+    assert getattr(partner, 'metamodel_Entity3') == owner
+    _safe_set(owner, 'metamodel_Query', None)
+    assert getattr(partner, 'metamodel_Entity3') is None
+
+
+def test_assoc_types0_stub_double():
+    # metamodel_Model has no real 'metamodel_Model' property in the generated
+    # code (a bare stub) -- manually attach it so metamodel_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metamodel_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metamodel_Type(name="sample_text")
+    partner = metamodel_Model()
+    setattr(partner, 'metamodel_Model', None)
+    _safe_set(owner, 'metamodel_Type', partner)
+    assert getattr(partner, 'metamodel_Model') == owner
+    _safe_set(owner, 'metamodel_Type', None)
+    assert getattr(partner, 'metamodel_Model') is None
+
+

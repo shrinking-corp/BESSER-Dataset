@@ -2623,3 +2623,41 @@ def test_assoc_transition54_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'scxml_ScxmlTransitionType', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_xMLNSPrefixMap0_stub_double():
+    # scxml_EStringToStringMapEntry has no real 'scxml_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so scxml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # scxml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = scxml_DocumentRoot(mixed="sample_text")
+    partner = scxml_EStringToStringMapEntry()
+    setattr(partner, 'scxml_EStringToStringMapEntry', None)
+    _safe_set(owner, 'scxml_DocumentRoot', {partner})
+    assert getattr(partner, 'scxml_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'scxml_DocumentRoot', set())
+    assert getattr(partner, 'scxml_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation1_stub_double():
+    # scxml_EStringToStringMapEntry has no real 'scxml_EStringToStringMapEntry3' property in the generated
+    # code (a bare stub) -- manually attach it so scxml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # scxml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = scxml_DocumentRoot(mixed="sample_text")
+    partner = scxml_EStringToStringMapEntry()
+    setattr(partner, 'scxml_EStringToStringMapEntry3', None)
+    _safe_set(owner, 'scxml_DocumentRoot2', {partner})
+    assert getattr(partner, 'scxml_EStringToStringMapEntry3') == owner
+    _safe_set(owner, 'scxml_DocumentRoot2', set())
+    assert getattr(partner, 'scxml_EStringToStringMapEntry3') is None
+
+

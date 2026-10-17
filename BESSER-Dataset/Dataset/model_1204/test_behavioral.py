@@ -134,3 +134,86 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_body68_stub_double():
+    # OCLExpression has no real 'OCLExpression69' property in the generated
+    # code (a bare stub) -- manually attach it so ocl_uml_Constraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ocl_uml_Constraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ocl_uml_Constraint(instanceVarName="sample_text", stereotype="sample_text")
+    partner = OCLExpression()
+    setattr(partner, 'OCLExpression69', None)
+    _safe_set(owner, 'ocl_uml_Constraint', partner)
+    assert getattr(partner, 'OCLExpression69') == owner
+    _safe_set(owner, 'ocl_uml_Constraint', None)
+    assert getattr(partner, 'OCLExpression69') is None
+
+
+def test_assoc_constrainedElement70_stub_double():
+    # uml_ocl_ENamedElement has no real 'uml_ocl_ENamedElement' property in the generated
+    # code (a bare stub) -- manually attach it so ocl_uml_Constraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ocl_uml_Constraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ocl_uml_Constraint(instanceVarName="sample_text", stereotype="sample_text")
+    partner = uml_ocl_ENamedElement()
+    setattr(partner, 'uml_ocl_ENamedElement', None)
+    _safe_set(owner, 'ocl_uml_Constraint71', {partner})
+    assert getattr(partner, 'uml_ocl_ENamedElement') == owner
+    _safe_set(owner, 'ocl_uml_Constraint71', set())
+    assert getattr(partner, 'uml_ocl_ENamedElement') is None
+
+
+def test_assoc_elementType0_stub_double():
+    # types_ocl_EClassifier has no real 'types_ocl_EClassifier' property in the generated
+    # code (a bare stub) -- manually attach it so ocl_types_CollectionType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ocl_types_CollectionType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ocl_types_CollectionType(kind="sample_text")
+    partner = types_ocl_EClassifier()
+    setattr(partner, 'types_ocl_EClassifier', None)
+    _safe_set(owner, 'ocl_types_CollectionType', partner)
+    assert getattr(partner, 'types_ocl_EClassifier') == owner
+    _safe_set(owner, 'ocl_types_CollectionType', None)
+    assert getattr(partner, 'types_ocl_EClassifier') is None
+
+
+def test_assoc_expression74_stub_double():
+    # OCLExpression has no real 'OCLExpression75' property in the generated
+    # code (a bare stub) -- manually attach it so ocl_query_Query's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ocl_query_Query's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ocl_query_Query(extentMap="sample_text")
+    partner = OCLExpression()
+    setattr(partner, 'OCLExpression75', None)
+    _safe_set(owner, 'ocl_query_Query', partner)
+    assert getattr(partner, 'OCLExpression75') == owner
+    _safe_set(owner, 'ocl_query_Query', None)
+    assert getattr(partner, 'OCLExpression75') is None
+
+
+def test_assoc_part8_stub_double():
+    # CollectionLiteralPart has no real 'CollectionLiteralPart' property in the generated
+    # code (a bare stub) -- manually attach it so ocl_expressions_CollectionLiteralExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ocl_expressions_CollectionLiteralExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ocl_expressions_CollectionLiteralExp(kind="sample_text")
+    partner = CollectionLiteralPart()
+    setattr(partner, 'CollectionLiteralPart', None)
+    _safe_set(owner, 'ocl_expressions_CollectionLiteralExp', {partner})
+    assert getattr(partner, 'CollectionLiteralPart') == owner
+    _safe_set(owner, 'ocl_expressions_CollectionLiteralExp', set())
+    assert getattr(partner, 'CollectionLiteralPart') is None
+
+

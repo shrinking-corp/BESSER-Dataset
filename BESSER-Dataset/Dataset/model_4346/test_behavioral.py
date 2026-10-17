@@ -123,3 +123,41 @@ def test_assoc_owner7_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'slots', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_classObjects8_stub_double():
+    # hutn_ContainmentSlot has no real 'hutn_ContainmentSlot' property in the generated
+    # code (a bare stub) -- manually attach it so hutn_ClassObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hutn_ClassObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hutn_ClassObject()
+    partner = hutn_ContainmentSlot()
+    setattr(partner, 'hutn_ContainmentSlot', None)
+    _safe_set(owner, 'hutn_ClassObject9', partner)
+    assert getattr(partner, 'hutn_ContainmentSlot') == owner
+    _safe_set(owner, 'hutn_ClassObject9', None)
+    assert getattr(partner, 'hutn_ContainmentSlot') is None
+
+
+def test_assoc_metamodel3_stub_double():
+    # hutn_EPackage has no real 'hutn_EPackage' property in the generated
+    # code (a bare stub) -- manually attach it so hutn_PackageObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hutn_PackageObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hutn_PackageObject()
+    partner = hutn_EPackage()
+    setattr(partner, 'hutn_EPackage', None)
+    _safe_set(owner, 'hutn_PackageObject4', {partner})
+    assert getattr(partner, 'hutn_EPackage') == owner
+    _safe_set(owner, 'hutn_PackageObject4', set())
+    assert getattr(partner, 'hutn_EPackage') is None
+
+

@@ -411,3 +411,356 @@ def test_assoc_specification12_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'basecs_SpecificationCS', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_element68_stub_double():
+    # basecs_Element has no real 'basecs_Element70' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_PathNameCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_PathNameCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_PathNameCS(scopeFilter="sample_text")
+    partner = basecs_Element()
+    setattr(partner, 'basecs_Element70', None)
+    _safe_set(owner, 'basecs_PathNameCS69', partner)
+    assert getattr(partner, 'basecs_Element70') == owner
+    _safe_set(owner, 'basecs_PathNameCS69', None)
+    assert getattr(partner, 'basecs_Element70') is None
+
+
+def test_assoc_literals17_stub_double():
+    # basecs_DataTypeCS has no real 'basecs_DataTypeCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_EnumerationLiteralCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_EnumerationLiteralCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_EnumerationLiteralCS(value=7)
+    partner = basecs_DataTypeCS()
+    setattr(partner, 'basecs_DataTypeCS', None)
+    _safe_set(owner, 'basecs_EnumerationLiteralCS', partner)
+    assert getattr(partner, 'basecs_DataTypeCS') == owner
+    _safe_set(owner, 'basecs_EnumerationLiteralCS', None)
+    assert getattr(partner, 'basecs_DataTypeCS') is None
+
+
+def test_assoc_multiplicity106_stub_double():
+    # basecs_TypedRefCS has no real 'basecs_TypedRefCS107' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_MultiplicityCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_MultiplicityCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_MultiplicityCS()
+    partner = basecs_TypedRefCS()
+    setattr(partner, 'basecs_TypedRefCS107', None)
+    _safe_set(owner, 'basecs_MultiplicityCS', partner)
+    assert getattr(partner, 'basecs_TypedRefCS107') == owner
+    _safe_set(owner, 'basecs_MultiplicityCS', None)
+    assert getattr(partner, 'basecs_TypedRefCS107') is None
+
+
+def test_assoc_namespace23_stub_double():
+    # basecs_Namespace has no real 'basecs_Namespace' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_ImportCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_ImportCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_ImportCS(all=True)
+    partner = basecs_Namespace()
+    setattr(partner, 'basecs_Namespace', None)
+    _safe_set(owner, 'basecs_ImportCS24', partner)
+    assert getattr(partner, 'basecs_Namespace') == owner
+    _safe_set(owner, 'basecs_ImportCS24', None)
+    assert getattr(partner, 'basecs_Namespace') is None
+
+
+def test_assoc_ownedAnnotation35_stub_double():
+    # basecs_AnnotationElementCS has no real 'basecs_AnnotationElementCS37' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_ModelElementCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_ModelElementCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_ModelElementCS(csi="sample_text", originalXmiId="sample_text")
+    partner = basecs_AnnotationElementCS()
+    setattr(partner, 'basecs_AnnotationElementCS37', None)
+    _safe_set(owner, 'basecs_ModelElementCS36', {partner})
+    assert getattr(partner, 'basecs_AnnotationElementCS37') == owner
+    _safe_set(owner, 'basecs_ModelElementCS36', set())
+    assert getattr(partner, 'basecs_AnnotationElementCS37') is None
+
+
+def test_assoc_ownedContent0_stub_double():
+    # basecs_AnnotationCS has no real 'basecs_AnnotationCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_ModelElementCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_ModelElementCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_ModelElementCS(csi="sample_text", originalXmiId="sample_text")
+    partner = basecs_AnnotationCS()
+    setattr(partner, 'basecs_AnnotationCS', None)
+    _safe_set(owner, 'basecs_ModelElementCS', partner)
+    assert getattr(partner, 'basecs_AnnotationCS') == owner
+    _safe_set(owner, 'basecs_ModelElementCS', None)
+    assert getattr(partner, 'basecs_AnnotationCS') is None
+
+
+def test_assoc_ownedContextType25_stub_double():
+    # basecs_TypedRefCS has no real 'basecs_TypedRefCS26' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_LambdaTypeCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_LambdaTypeCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_LambdaTypeCS(name="sample_text")
+    partner = basecs_TypedRefCS()
+    setattr(partner, 'basecs_TypedRefCS26', None)
+    _safe_set(owner, 'basecs_LambdaTypeCS', partner)
+    assert getattr(partner, 'basecs_TypedRefCS26') == owner
+    _safe_set(owner, 'basecs_LambdaTypeCS', None)
+    assert getattr(partner, 'basecs_TypedRefCS26') is None
+
+
+def test_assoc_ownedDetail3_stub_double():
+    # basecs_AnnotationElementCS has no real 'basecs_AnnotationElementCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_DetailCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_DetailCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_DetailCS(value="sample_text")
+    partner = basecs_AnnotationElementCS()
+    setattr(partner, 'basecs_AnnotationElementCS', None)
+    _safe_set(owner, 'basecs_DetailCS', partner)
+    assert getattr(partner, 'basecs_AnnotationElementCS') == owner
+    _safe_set(owner, 'basecs_DetailCS', None)
+    assert getattr(partner, 'basecs_AnnotationElementCS') is None
+
+
+def test_assoc_ownedException46_stub_double():
+    # basecs_TypedRefCS has no real 'basecs_TypedRefCS47' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_OperationCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_OperationCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_OperationCS()
+    partner = basecs_TypedRefCS()
+    setattr(partner, 'basecs_TypedRefCS47', None)
+    _safe_set(owner, 'basecs_OperationCS', {partner})
+    assert getattr(partner, 'basecs_TypedRefCS47') == owner
+    _safe_set(owner, 'basecs_OperationCS', set())
+    assert getattr(partner, 'basecs_TypedRefCS47') is None
+
+
+def test_assoc_ownedImport80_stub_double():
+    # basecs_RootCS has no real 'basecs_RootCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_ImportCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_ImportCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_ImportCS(all=True)
+    partner = basecs_RootCS()
+    setattr(partner, 'basecs_RootCS', None)
+    _safe_set(owner, 'basecs_ImportCS81', partner)
+    assert getattr(partner, 'basecs_RootCS') == owner
+    _safe_set(owner, 'basecs_ImportCS81', None)
+    assert getattr(partner, 'basecs_RootCS') is None
+
+
+def test_assoc_ownedNestedPackage59_stub_double():
+    # basecs_PackageOwnerCS has no real 'basecs_PackageOwnerCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_PackageCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_PackageCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_PackageCS(nsPrefix="sample_text", nsURI="sample_text")
+    partner = basecs_PackageOwnerCS()
+    setattr(partner, 'basecs_PackageOwnerCS', None)
+    _safe_set(owner, 'basecs_PackageCS', partner)
+    assert getattr(partner, 'basecs_PackageOwnerCS') == owner
+    _safe_set(owner, 'basecs_PackageCS', None)
+    assert getattr(partner, 'basecs_PackageOwnerCS') is None
+
+
+def test_assoc_ownedOperation5_stub_double():
+    # basecs_ClassCS has no real 'owningClass' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_OperationCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_OperationCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_OperationCS()
+    partner = basecs_ClassCS()
+    setattr(partner, 'owningClass', None)
+    _safe_set(owner, 'OperationCS', partner)
+    assert getattr(partner, 'owningClass') == owner
+    _safe_set(owner, 'OperationCS', None)
+    assert getattr(partner, 'owningClass') is None
+
+
+def test_assoc_ownedParameterType27_stub_double():
+    # basecs_TypedRefCS has no real 'basecs_TypedRefCS29' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_LambdaTypeCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_LambdaTypeCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_LambdaTypeCS(name="sample_text")
+    partner = basecs_TypedRefCS()
+    setattr(partner, 'basecs_TypedRefCS29', None)
+    _safe_set(owner, 'basecs_LambdaTypeCS28', {partner})
+    assert getattr(partner, 'basecs_TypedRefCS29') == owner
+    _safe_set(owner, 'basecs_LambdaTypeCS28', set())
+    assert getattr(partner, 'basecs_TypedRefCS29') is None
+
+
+def test_assoc_ownedParts98_stub_double():
+    # basecs_TuplePartCS has no real 'basecs_TuplePartCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_TupleTypeCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_TupleTypeCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_TupleTypeCS(name="sample_text")
+    partner = basecs_TuplePartCS()
+    setattr(partner, 'basecs_TuplePartCS', None)
+    _safe_set(owner, 'basecs_TupleTypeCS', {partner})
+    assert getattr(partner, 'basecs_TuplePartCS') == owner
+    _safe_set(owner, 'basecs_TupleTypeCS', set())
+    assert getattr(partner, 'basecs_TuplePartCS') is None
+
+
+def test_assoc_ownedProperty6_stub_double():
+    # basecs_ClassCS has no real 'owner' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_StructuralFeatureCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_StructuralFeatureCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_StructuralFeatureCS(default="sample_text")
+    partner = basecs_ClassCS()
+    setattr(partner, 'owner', None)
+    _safe_set(owner, 'StructuralFeatureCS', partner)
+    assert getattr(partner, 'owner') == owner
+    _safe_set(owner, 'StructuralFeatureCS', None)
+    assert getattr(partner, 'owner') is None
+
+
+def test_assoc_ownedResultType30_stub_double():
+    # basecs_TypedRefCS has no real 'basecs_TypedRefCS32' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_LambdaTypeCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_LambdaTypeCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_LambdaTypeCS(name="sample_text")
+    partner = basecs_TypedRefCS()
+    setattr(partner, 'basecs_TypedRefCS32', None)
+    _safe_set(owner, 'basecs_LambdaTypeCS31', partner)
+    assert getattr(partner, 'basecs_TypedRefCS32') == owner
+    _safe_set(owner, 'basecs_LambdaTypeCS31', None)
+    assert getattr(partner, 'basecs_TypedRefCS32') is None
+
+
+def test_assoc_ownedType104_stub_double():
+    # basecs_TypedRefCS has no real 'basecs_TypedRefCS105' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_TypedElementCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_TypedElementCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_TypedElementCS(optional=True, qualifier="sample_text")
+    partner = basecs_TypedRefCS()
+    setattr(partner, 'basecs_TypedRefCS105', None)
+    _safe_set(owner, 'basecs_TypedElementCS', partner)
+    assert getattr(partner, 'basecs_TypedRefCS105') == owner
+    _safe_set(owner, 'basecs_TypedElementCS', None)
+    assert getattr(partner, 'basecs_TypedRefCS105') is None
+
+
+def test_assoc_owner85_stub_double():
+    # basecs_ClassCS has no real 'ClassCS86' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_StructuralFeatureCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_StructuralFeatureCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_StructuralFeatureCS(default="sample_text")
+    partner = basecs_ClassCS()
+    setattr(partner, 'ClassCS86', None)
+    _safe_set(owner, 'ownedProperty', partner)
+    assert getattr(partner, 'ClassCS86') == owner
+    _safe_set(owner, 'ownedProperty', None)
+    assert getattr(partner, 'ClassCS86') is None
+
+
+def test_assoc_owningClass43_stub_double():
+    # basecs_ClassCS has no real 'ClassCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_OperationCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_OperationCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_OperationCS()
+    partner = basecs_ClassCS()
+    setattr(partner, 'ClassCS', None)
+    _safe_set(owner, 'ownedOperation', partner)
+    assert getattr(partner, 'ClassCS') == owner
+    _safe_set(owner, 'ownedOperation', None)
+    assert getattr(partner, 'ClassCS') is None
+
+
+def test_assoc_path67_stub_double():
+    # basecs_PathElementCS has no real 'PathElementCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_PathNameCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_PathNameCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_PathNameCS(scopeFilter="sample_text")
+    partner = basecs_PathElementCS()
+    setattr(partner, 'PathElementCS', None)
+    _safe_set(owner, 'pathName', {partner})
+    assert getattr(partner, 'PathElementCS') == owner
+    _safe_set(owner, 'pathName', set())
+    assert getattr(partner, 'PathElementCS') is None
+
+
+def test_assoc_pathName108_stub_double():
+    # basecs_TypedTypeRefCS has no real 'basecs_TypedTypeRefCS' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_PathNameCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_PathNameCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_PathNameCS(scopeFilter="sample_text")
+    partner = basecs_TypedTypeRefCS()
+    setattr(partner, 'basecs_TypedTypeRefCS', None)
+    _safe_set(owner, 'basecs_PathNameCS109', partner)
+    assert getattr(partner, 'basecs_TypedTypeRefCS') == owner
+    _safe_set(owner, 'basecs_PathNameCS109', None)
+    assert getattr(partner, 'basecs_TypedTypeRefCS') is None
+
+
+def test_assoc_pathName38_stub_double():
+    # basecs_ModelElementRefCS has no real 'basecs_ModelElementRefCS39' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_PathNameCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_PathNameCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_PathNameCS(scopeFilter="sample_text")
+    partner = basecs_ModelElementRefCS()
+    setattr(partner, 'basecs_ModelElementRefCS39', None)
+    _safe_set(owner, 'basecs_PathNameCS40', partner)
+    assert getattr(partner, 'basecs_ModelElementRefCS39') == owner
+    _safe_set(owner, 'basecs_PathNameCS40', None)
+    assert getattr(partner, 'basecs_ModelElementRefCS39') is None
+
+
+def test_assoc_pathName62_stub_double():
+    # basecs_PathElementCS has no real 'path' property in the generated
+    # code (a bare stub) -- manually attach it so basecs_PathNameCS's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # basecs_PathNameCS's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = basecs_PathNameCS(scopeFilter="sample_text")
+    partner = basecs_PathElementCS()
+    setattr(partner, 'path', None)
+    _safe_set(owner, 'PathNameCS', partner)
+    assert getattr(partner, 'path') == owner
+    _safe_set(owner, 'PathNameCS', None)
+    assert getattr(partner, 'path') is None
+
+

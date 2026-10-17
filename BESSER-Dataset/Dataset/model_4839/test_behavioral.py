@@ -910,3 +910,1136 @@ def test_assoc_suppliesPlatformServices299_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'PlatformService', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_accessesFunctions95_stub_double():
+    # contentfwk_Function has no real 'Function96' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Role's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Role's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Role(estimatedFTEs="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'Function96', None)
+    _safe_set(owner, 'canBeAccessedByRoles', {partner})
+    assert getattr(partner, 'Function96') == owner
+    _safe_set(owner, 'canBeAccessedByRoles', set())
+    assert getattr(partner, 'Function96') is None
+
+
+def test_assoc_actors12_stub_double():
+    # contentfwk_BusinessArchitecture has no real 'contentfwk_BusinessArchitecture13' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_BusinessArchitecture()
+    setattr(partner, 'contentfwk_BusinessArchitecture13', None)
+    _safe_set(owner, 'contentfwk_Actor', partner)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture13') == owner
+    _safe_set(owner, 'contentfwk_Actor', None)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture13') is None
+
+
+def test_assoc_appliesToContracts209_stub_double():
+    # contentfwk_ServiceQuality has no real 'meetsServiceQuality' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Contract's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Contract's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Contract(ServiceNameCalled="sample_text", ServiceNameCaller="sample_text", availabilityQualityCharacteristics="sample_text", behaviorCharacteristics="sample_text", capacityCharacteristics="sample_text", contractControlRequirements="sample_text", credibilityCharacteristics="sample_text", extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", qualityOfInformationRequired="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", responseCharacteristics="sample_text", resultControlRequirements="sample_text", scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceQualityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_ServiceQuality()
+    setattr(partner, 'meetsServiceQuality', None)
+    _safe_set(owner, 'Contract', partner)
+    assert getattr(partner, 'meetsServiceQuality') == owner
+    _safe_set(owner, 'Contract', None)
+    assert getattr(partner, 'meetsServiceQuality') is None
+
+
+def test_assoc_canBeAccessedByRoles137_stub_double():
+    # contentfwk_Function has no real 'accessesFunctions' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Role's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Role's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Role(estimatedFTEs="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'accessesFunctions', None)
+    _safe_set(owner, 'Role138', partner)
+    assert getattr(partner, 'accessesFunctions') == owner
+    _safe_set(owner, 'Role138', None)
+    assert getattr(partner, 'accessesFunctions') is None
+
+
+def test_assoc_capabilities308_stub_double():
+    # contentfwk_StrategicArchitecture has no real 'contentfwk_StrategicArchitecture' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Capability's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Capability's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Capability(businessValue="sample_text", increments="sample_text")
+    partner = contentfwk_StrategicArchitecture()
+    setattr(partner, 'contentfwk_StrategicArchitecture', None)
+    _safe_set(owner, 'contentfwk_Capability', partner)
+    assert getattr(partner, 'contentfwk_StrategicArchitecture') == owner
+    _safe_set(owner, 'contentfwk_Capability', None)
+    assert getattr(partner, 'contentfwk_StrategicArchitecture') is None
+
+
+def test_assoc_consumesEntities318_stub_double():
+    # contentfwk_Service has no real 'isAccessedByServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'isAccessedByServices', None)
+    _safe_set(owner, 'DataEntity319', partner)
+    assert getattr(partner, 'isAccessedByServices') == owner
+    _safe_set(owner, 'DataEntity319', None)
+    assert getattr(partner, 'isAccessedByServices') is None
+
+
+def test_assoc_consumesServices80_stub_double():
+    # contentfwk_Service has no real 'contentfwk_Service' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'contentfwk_Service', None)
+    _safe_set(owner, 'contentfwk_Actor81', {partner})
+    assert getattr(partner, 'contentfwk_Service') == owner
+    _safe_set(owner, 'contentfwk_Actor81', set())
+    assert getattr(partner, 'contentfwk_Service') is None
+
+
+def test_assoc_containers1_stub_double():
+    # contentfwk_EnterpriseArchitecture has no real 'contentfwk_EnterpriseArchitecture2' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Container's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Container's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Container(description="sample_text", id="sample_text", name="sample_text")
+    partner = contentfwk_EnterpriseArchitecture()
+    setattr(partner, 'contentfwk_EnterpriseArchitecture2', None)
+    _safe_set(owner, 'contentfwk_Container', partner)
+    assert getattr(partner, 'contentfwk_EnterpriseArchitecture2') == owner
+    _safe_set(owner, 'contentfwk_Container', None)
+    assert getattr(partner, 'contentfwk_EnterpriseArchitecture2') is None
+
+
+def test_assoc_containsActors245_stub_double():
+    # contentfwk_Location has no real 'operatesInLocation' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'operatesInLocation', None)
+    _safe_set(owner, 'Actor246', partner)
+    assert getattr(partner, 'operatesInLocation') == owner
+    _safe_set(owner, 'Actor246', None)
+    assert getattr(partner, 'operatesInLocation') is None
+
+
+def test_assoc_containsOrganizationUnits247_stub_double():
+    # contentfwk_Location has no real 'operatesInLocation248' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'operatesInLocation248', None)
+    _safe_set(owner, 'OrganizationUnit249', partner)
+    assert getattr(partner, 'operatesInLocation248') == owner
+    _safe_set(owner, 'OrganizationUnit249', None)
+    assert getattr(partner, 'operatesInLocation248') is None
+
+
+def test_assoc_containsPhysicalApplicationComponents251_stub_double():
+    # contentfwk_Location has no real 'isHostedInLocation' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'isHostedInLocation', None)
+    _safe_set(owner, 'PhysicalApplicationComponent252', partner)
+    assert getattr(partner, 'isHostedInLocation') == owner
+    _safe_set(owner, 'PhysicalApplicationComponent252', None)
+    assert getattr(partner, 'isHostedInLocation') is None
+
+
+def test_assoc_containsPhysicalTechnologyComponents253_stub_double():
+    # contentfwk_Location has no real 'isHostedInLocation254' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalTechnologyComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalTechnologyComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalTechnologyComponent(categoryTRM="sample_text", moduleName="sample_text", productName="sample_text", vendor="sample_text", version="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'isHostedInLocation254', None)
+    _safe_set(owner, 'PhysicalTechnologyComponent', partner)
+    assert getattr(partner, 'isHostedInLocation254') == owner
+    _safe_set(owner, 'PhysicalTechnologyComponent', None)
+    assert getattr(partner, 'isHostedInLocation254') is None
+
+
+def test_assoc_contracts30_stub_double():
+    # contentfwk_BusinessArchitecture has no real 'contentfwk_BusinessArchitecture31' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Contract's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Contract's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Contract(ServiceNameCalled="sample_text", ServiceNameCaller="sample_text", availabilityQualityCharacteristics="sample_text", behaviorCharacteristics="sample_text", capacityCharacteristics="sample_text", contractControlRequirements="sample_text", credibilityCharacteristics="sample_text", extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", qualityOfInformationRequired="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", responseCharacteristics="sample_text", resultControlRequirements="sample_text", scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceQualityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_BusinessArchitecture()
+    setattr(partner, 'contentfwk_BusinessArchitecture31', None)
+    _safe_set(owner, 'contentfwk_Contract', partner)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture31') == owner
+    _safe_set(owner, 'contentfwk_Contract', None)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture31') is None
+
+
+def test_assoc_decomposesFunctions152_stub_double():
+    # contentfwk_Function has no real 'Function153' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'Function153', None)
+    _safe_set(owner, 'supportsProcesses', {partner})
+    assert getattr(partner, 'Function153') == owner
+    _safe_set(owner, 'supportsProcesses', set())
+    assert getattr(partner, 'Function153') is None
+
+
+def test_assoc_decomposesServices159_stub_double():
+    # contentfwk_Service has no real 'Service161' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service161', None)
+    _safe_set(owner, 'supportsProcesses160', {partner})
+    assert getattr(partner, 'Service161') == owner
+    _safe_set(owner, 'supportsProcesses160', set())
+    assert getattr(partner, 'Service161') is None
+
+
+def test_assoc_encapsulatesDataEntities260_stub_double():
+    # contentfwk_LogicalDataComponent has no real 'residesWithinLogicalDataComponent' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_LogicalDataComponent()
+    setattr(partner, 'residesWithinLogicalDataComponent', None)
+    _safe_set(owner, 'DataEntity261', partner)
+    assert getattr(partner, 'residesWithinLogicalDataComponent') == owner
+    _safe_set(owner, 'DataEntity261', None)
+    assert getattr(partner, 'residesWithinLogicalDataComponent') is None
+
+
+def test_assoc_encapsulatesPhysicalApplicationComponents271_stub_double():
+    # contentfwk_PhysicalDataComponent has no real 'contentfwk_PhysicalDataComponent272' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_PhysicalDataComponent()
+    setattr(partner, 'contentfwk_PhysicalDataComponent272', None)
+    _safe_set(owner, 'contentfwk_PhysicalApplicationComponent273', partner)
+    assert getattr(partner, 'contentfwk_PhysicalDataComponent272') == owner
+    _safe_set(owner, 'contentfwk_PhysicalApplicationComponent273', None)
+    assert getattr(partner, 'contentfwk_PhysicalDataComponent272') is None
+
+
+def test_assoc_encapsulatesPhysicalDataComponents288_stub_double():
+    # contentfwk_PhysicalDataComponent has no real 'contentfwk_PhysicalDataComponent290' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_PhysicalDataComponent()
+    setattr(partner, 'contentfwk_PhysicalDataComponent290', None)
+    _safe_set(owner, 'contentfwk_PhysicalApplicationComponent289', {partner})
+    assert getattr(partner, 'contentfwk_PhysicalDataComponent290') == owner
+    _safe_set(owner, 'contentfwk_PhysicalApplicationComponent289', set())
+    assert getattr(partner, 'contentfwk_PhysicalDataComponent290') is None
+
+
+def test_assoc_ensuresCorrectOperationOfProcesses226_stub_double():
+    # contentfwk_Control has no real 'isGuidedByControls' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Control()
+    setattr(partner, 'isGuidedByControls', None)
+    _safe_set(owner, 'Process227', partner)
+    assert getattr(partner, 'isGuidedByControls') == owner
+    _safe_set(owner, 'Process227', None)
+    assert getattr(partner, 'isGuidedByControls') is None
+
+
+def test_assoc_entities36_stub_double():
+    # contentfwk_DataArchitecture has no real 'contentfwk_DataArchitecture' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_DataArchitecture()
+    setattr(partner, 'contentfwk_DataArchitecture', None)
+    _safe_set(owner, 'contentfwk_DataEntity', partner)
+    assert getattr(partner, 'contentfwk_DataArchitecture') == owner
+    _safe_set(owner, 'contentfwk_DataEntity', None)
+    assert getattr(partner, 'contentfwk_DataArchitecture') is None
+
+
+def test_assoc_extendsLogicalApplicationComponents281_stub_double():
+    # contentfwk_LogicalApplicationComponent has no real 'LogicalApplicationComponent282' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_LogicalApplicationComponent()
+    setattr(partner, 'LogicalApplicationComponent282', None)
+    _safe_set(owner, 'isExtendedByPhysicalApplicationComponents', {partner})
+    assert getattr(partner, 'LogicalApplicationComponent282') == owner
+    _safe_set(owner, 'isExtendedByPhysicalApplicationComponents', set())
+    assert getattr(partner, 'LogicalApplicationComponent282') is None
+
+
+def test_assoc_generatesEvents168_stub_double():
+    # contentfwk_Event has no real 'Event169' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'Event169', None)
+    _safe_set(owner, 'isGeneratedByProcesses', {partner})
+    assert getattr(partner, 'Event169') == owner
+    _safe_set(owner, 'isGeneratedByProcesses', set())
+    assert getattr(partner, 'Event169') is None
+
+
+def test_assoc_generatesEvents83_stub_double():
+    # contentfwk_Event has no real 'Event84' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'Event84', None)
+    _safe_set(owner, 'isGeneratedByActors', {partner})
+    assert getattr(partner, 'Event84') == owner
+    _safe_set(owner, 'isGeneratedByActors', set())
+    assert getattr(partner, 'Event84') is None
+
+
+def test_assoc_governsAndMeasuresBusinessServices210_stub_double():
+    # contentfwk_Service has no real 'Service211' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Contract's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Contract's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Contract(ServiceNameCalled="sample_text", ServiceNameCaller="sample_text", availabilityQualityCharacteristics="sample_text", behaviorCharacteristics="sample_text", capacityCharacteristics="sample_text", contractControlRequirements="sample_text", credibilityCharacteristics="sample_text", extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", qualityOfInformationRequired="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", responseCharacteristics="sample_text", resultControlRequirements="sample_text", scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceQualityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service211', None)
+    _safe_set(owner, 'isGovernedAndMeasuredByContracts', {partner})
+    assert getattr(partner, 'Service211') == owner
+    _safe_set(owner, 'isGovernedAndMeasuredByContracts', set())
+    assert getattr(partner, 'Service211') is None
+
+
+def test_assoc_interactsWithFunctions75_stub_double():
+    # contentfwk_Function has no real 'Function76' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'Function76', None)
+    _safe_set(owner, 'supportsActors', {partner})
+    assert getattr(partner, 'Function76') == owner
+    _safe_set(owner, 'supportsActors', set())
+    assert getattr(partner, 'Function76') is None
+
+
+def test_assoc_isAccessedByServices104_stub_double():
+    # contentfwk_Service has no real 'Service106' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service106', None)
+    _safe_set(owner, 'consumesEntities105', {partner})
+    assert getattr(partner, 'Service106') == owner
+    _safe_set(owner, 'consumesEntities105', set())
+    assert getattr(partner, 'Service106') is None
+
+
+def test_assoc_isExtendedByPhysicalApplicationComponents121_stub_double():
+    # contentfwk_LogicalApplicationComponent has no real 'extendsLogicalApplicationComponents' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_LogicalApplicationComponent()
+    setattr(partner, 'extendsLogicalApplicationComponents', None)
+    _safe_set(owner, 'PhysicalApplicationComponent', partner)
+    assert getattr(partner, 'extendsLogicalApplicationComponents') == owner
+    _safe_set(owner, 'PhysicalApplicationComponent', None)
+    assert getattr(partner, 'extendsLogicalApplicationComponents') is None
+
+
+def test_assoc_isGeneratedByActors223_stub_double():
+    # contentfwk_Event has no real 'generatesEvents224' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'generatesEvents224', None)
+    _safe_set(owner, 'Actor225', partner)
+    assert getattr(partner, 'generatesEvents224') == owner
+    _safe_set(owner, 'Actor225', None)
+    assert getattr(partner, 'generatesEvents224') is None
+
+
+def test_assoc_isGeneratedByProcesses218_stub_double():
+    # contentfwk_Event has no real 'generatesEvents' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'generatesEvents', None)
+    _safe_set(owner, 'Process219', partner)
+    assert getattr(partner, 'generatesEvents') == owner
+    _safe_set(owner, 'Process219', None)
+    assert getattr(partner, 'generatesEvents') is None
+
+
+def test_assoc_isGovernedAndMeasuredByContracts320_stub_double():
+    # contentfwk_Service has no real 'governsAndMeasuresBusinessServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Contract's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Contract's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Contract(ServiceNameCalled="sample_text", ServiceNameCaller="sample_text", availabilityQualityCharacteristics="sample_text", behaviorCharacteristics="sample_text", capacityCharacteristics="sample_text", contractControlRequirements="sample_text", credibilityCharacteristics="sample_text", extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", qualityOfInformationRequired="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", responseCharacteristics="sample_text", resultControlRequirements="sample_text", scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceQualityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'governsAndMeasuresBusinessServices', None)
+    _safe_set(owner, 'Contract321', partner)
+    assert getattr(partner, 'governsAndMeasuresBusinessServices') == owner
+    _safe_set(owner, 'Contract321', None)
+    assert getattr(partner, 'governsAndMeasuresBusinessServices') is None
+
+
+def test_assoc_isGuidedByControls165_stub_double():
+    # contentfwk_Control has no real 'Control' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Control()
+    setattr(partner, 'Control', None)
+    _safe_set(owner, 'ensuresCorrectOperationOfProcesses', {partner})
+    assert getattr(partner, 'Control') == owner
+    _safe_set(owner, 'ensuresCorrectOperationOfProcesses', set())
+    assert getattr(partner, 'Control') is None
+
+
+def test_assoc_isHostedInLocation186_stub_double():
+    # contentfwk_Location has no real 'Location187' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalTechnologyComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalTechnologyComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalTechnologyComponent(categoryTRM="sample_text", moduleName="sample_text", productName="sample_text", vendor="sample_text", version="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'Location187', None)
+    _safe_set(owner, 'containsPhysicalTechnologyComponents', {partner})
+    assert getattr(partner, 'Location187') == owner
+    _safe_set(owner, 'containsPhysicalTechnologyComponents', set())
+    assert getattr(partner, 'Location187') is None
+
+
+def test_assoc_isHostedInLocation283_stub_double():
+    # contentfwk_Location has no real 'Location284' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'Location284', None)
+    _safe_set(owner, 'containsPhysicalApplicationComponents', {partner})
+    assert getattr(partner, 'Location284') == owner
+    _safe_set(owner, 'containsPhysicalApplicationComponents', set())
+    assert getattr(partner, 'Location284') is None
+
+
+def test_assoc_isImplementedOnLogicalTechnologyComponents324_stub_double():
+    # contentfwk_Service has no real 'providesPlatformForServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_LogicalTechnologyComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_LogicalTechnologyComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_LogicalTechnologyComponent(categoryTRM="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'providesPlatformForServices', None)
+    _safe_set(owner, 'LogicalTechnologyComponent325', partner)
+    assert getattr(partner, 'providesPlatformForServices') == owner
+    _safe_set(owner, 'LogicalTechnologyComponent325', None)
+    assert getattr(partner, 'providesPlatformForServices') is None
+
+
+def test_assoc_isMotivatedByDrivers66_stub_double():
+    # contentfwk_Driver has no real 'Driver67' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Driver()
+    setattr(partner, 'Driver67', None)
+    _safe_set(owner, 'motivatesOrganizationUnits', {partner})
+    assert getattr(partner, 'Driver67') == owner
+    _safe_set(owner, 'motivatesOrganizationUnits', set())
+    assert getattr(partner, 'Driver67') is None
+
+
+def test_assoc_isOwnedAndGovernedByOrganizationUnits328_stub_double():
+    # contentfwk_Service has no real 'ownsAndGovernsServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'ownsAndGovernsServices', None)
+    _safe_set(owner, 'OrganizationUnit329', partner)
+    assert getattr(partner, 'ownsAndGovernsServices') == owner
+    _safe_set(owner, 'OrganizationUnit329', None)
+    assert getattr(partner, 'ownsAndGovernsServices') is None
+
+
+def test_assoc_isOwnedByUnit129_stub_double():
+    # contentfwk_Function has no real 'ownsFunctions' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'ownsFunctions', None)
+    _safe_set(owner, 'OrganizationUnit130', partner)
+    assert getattr(partner, 'ownsFunctions') == owner
+    _safe_set(owner, 'OrganizationUnit130', None)
+    assert getattr(partner, 'ownsFunctions') is None
+
+
+def test_assoc_isPerformedByActors127_stub_double():
+    # contentfwk_Function has no real 'performsFunctions' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'performsFunctions', None)
+    _safe_set(owner, 'Actor128', partner)
+    assert getattr(partner, 'performsFunctions') == owner
+    _safe_set(owner, 'Actor128', None)
+    assert getattr(partner, 'performsFunctions') is None
+
+
+def test_assoc_isProcessesByLogicalApplicationComponents110_stub_double():
+    # contentfwk_LogicalApplicationComponent has no real 'LogicalApplicationComponent' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_LogicalApplicationComponent()
+    setattr(partner, 'LogicalApplicationComponent', None)
+    _safe_set(owner, 'operatesOnDataEntities', {partner})
+    assert getattr(partner, 'LogicalApplicationComponent') == owner
+    _safe_set(owner, 'operatesOnDataEntities', set())
+    assert getattr(partner, 'LogicalApplicationComponent') is None
+
+
+def test_assoc_isProducedByOrganizationUnits194_stub_double():
+    # contentfwk_Product has no real 'producesProducts' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Product()
+    setattr(partner, 'producesProducts', None)
+    _safe_set(owner, 'OrganizationUnit195', partner)
+    assert getattr(partner, 'producesProducts') == owner
+    _safe_set(owner, 'OrganizationUnit195', None)
+    assert getattr(partner, 'producesProducts') is None
+
+
+def test_assoc_isProducedByProcesses196_stub_double():
+    # contentfwk_Product has no real 'producesProducts197' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Product()
+    setattr(partner, 'producesProducts197', None)
+    _safe_set(owner, 'Process198', partner)
+    assert getattr(partner, 'producesProducts197') == owner
+    _safe_set(owner, 'Process198', None)
+    assert getattr(partner, 'producesProducts197') is None
+
+
+def test_assoc_isProvidedToActors311_stub_double():
+    # contentfwk_Service has no real 'contentfwk_Service312' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'contentfwk_Service312', None)
+    _safe_set(owner, 'contentfwk_Actor313', partner)
+    assert getattr(partner, 'contentfwk_Service312') == owner
+    _safe_set(owner, 'contentfwk_Actor313', None)
+    assert getattr(partner, 'contentfwk_Service312') is None
+
+
+def test_assoc_isRealizedByProcesses135_stub_double():
+    # contentfwk_Function has no real 'orchestratesFunctions' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'orchestratesFunctions', None)
+    _safe_set(owner, 'Process136', partner)
+    assert getattr(partner, 'orchestratesFunctions') == owner
+    _safe_set(owner, 'Process136', None)
+    assert getattr(partner, 'orchestratesFunctions') is None
+
+
+def test_assoc_isRealizedByProcesses334_stub_double():
+    # contentfwk_Service has no real 'orchestratesServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'orchestratesServices', None)
+    _safe_set(owner, 'Process335', partner)
+    assert getattr(partner, 'orchestratesServices') == owner
+    _safe_set(owner, 'Process335', None)
+    assert getattr(partner, 'orchestratesServices') is None
+
+
+def test_assoc_isResolvedByActors220_stub_double():
+    # contentfwk_Event has no real 'resolvesEvents221' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'resolvesEvents221', None)
+    _safe_set(owner, 'Actor222', partner)
+    assert getattr(partner, 'resolvesEvents221') == owner
+    _safe_set(owner, 'Actor222', None)
+    assert getattr(partner, 'resolvesEvents221') is None
+
+
+def test_assoc_isResolvedByProcesses215_stub_double():
+    # contentfwk_Event has no real 'resolvesEvents216' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'resolvesEvents216', None)
+    _safe_set(owner, 'Process217', partner)
+    assert getattr(partner, 'resolvesEvents216') == owner
+    _safe_set(owner, 'Process217', None)
+    assert getattr(partner, 'resolvesEvents216') is None
+
+
+def test_assoc_isUpdatedThroughServices107_stub_double():
+    # contentfwk_Service has no real 'Service108' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service108', None)
+    _safe_set(owner, 'providesEntities', {partner})
+    assert getattr(partner, 'Service108') == owner
+    _safe_set(owner, 'providesEntities', set())
+    assert getattr(partner, 'Service108') is None
+
+
+def test_assoc_labels3_stub_double():
+    # contentfwk_EnterpriseArchitecture has no real 'contentfwk_EnterpriseArchitecture4' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Label's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Label's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Label(description="sample_text", id="sample_text", name="sample_text")
+    partner = contentfwk_EnterpriseArchitecture()
+    setattr(partner, 'contentfwk_EnterpriseArchitecture4', None)
+    _safe_set(owner, 'contentfwk_Label', partner)
+    assert getattr(partner, 'contentfwk_EnterpriseArchitecture4') == owner
+    _safe_set(owner, 'contentfwk_Label', None)
+    assert getattr(partner, 'contentfwk_EnterpriseArchitecture4') is None
+
+
+def test_assoc_logicalComponents44_stub_double():
+    # contentfwk_TechnologyArchitecture has no real 'contentfwk_TechnologyArchitecture45' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_LogicalTechnologyComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_LogicalTechnologyComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_LogicalTechnologyComponent(categoryTRM="sample_text")
+    partner = contentfwk_TechnologyArchitecture()
+    setattr(partner, 'contentfwk_TechnologyArchitecture45', None)
+    _safe_set(owner, 'contentfwk_LogicalTechnologyComponent', partner)
+    assert getattr(partner, 'contentfwk_TechnologyArchitecture45') == owner
+    _safe_set(owner, 'contentfwk_LogicalTechnologyComponent', None)
+    assert getattr(partner, 'contentfwk_TechnologyArchitecture45') is None
+
+
+def test_assoc_meetsServiceQuality212_stub_double():
+    # contentfwk_ServiceQuality has no real 'ServiceQuality' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Contract's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Contract's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Contract(ServiceNameCalled="sample_text", ServiceNameCaller="sample_text", availabilityQualityCharacteristics="sample_text", behaviorCharacteristics="sample_text", capacityCharacteristics="sample_text", contractControlRequirements="sample_text", credibilityCharacteristics="sample_text", extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", qualityOfInformationRequired="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", responseCharacteristics="sample_text", resultControlRequirements="sample_text", scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceQualityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_ServiceQuality()
+    setattr(partner, 'ServiceQuality', None)
+    _safe_set(owner, 'appliesToContracts', {partner})
+    assert getattr(partner, 'ServiceQuality') == owner
+    _safe_set(owner, 'appliesToContracts', set())
+    assert getattr(partner, 'ServiceQuality') is None
+
+
+def test_assoc_motivatesOrganizationUnits47_stub_double():
+    # contentfwk_Driver has no real 'isMotivatedByDrivers' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Driver()
+    setattr(partner, 'isMotivatedByDrivers', None)
+    _safe_set(owner, 'OrganizationUnit', partner)
+    assert getattr(partner, 'isMotivatedByDrivers') == owner
+    _safe_set(owner, 'OrganizationUnit', None)
+    assert getattr(partner, 'isMotivatedByDrivers') is None
+
+
+def test_assoc_operatesInLocation69_stub_double():
+    # contentfwk_Location has no real 'Location' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'Location', None)
+    _safe_set(owner, 'containsOrganizationUnits', partner)
+    assert getattr(partner, 'Location') == owner
+    _safe_set(owner, 'containsOrganizationUnits', None)
+    assert getattr(partner, 'Location') is None
+
+
+def test_assoc_operatesInLocation85_stub_double():
+    # contentfwk_Location has no real 'Location87' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Location()
+    setattr(partner, 'Location87', None)
+    _safe_set(owner, 'containsActors86', partner)
+    assert getattr(partner, 'Location87') == owner
+    _safe_set(owner, 'containsActors86', None)
+    assert getattr(partner, 'Location87') is None
+
+
+def test_assoc_operatesOnDataEntities119_stub_double():
+    # contentfwk_LogicalApplicationComponent has no real 'isProcessesByLogicalApplicationComponents' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_LogicalApplicationComponent()
+    setattr(partner, 'isProcessesByLogicalApplicationComponents', None)
+    _safe_set(owner, 'DataEntity120', partner)
+    assert getattr(partner, 'isProcessesByLogicalApplicationComponents') == owner
+    _safe_set(owner, 'DataEntity120', None)
+    assert getattr(partner, 'isProcessesByLogicalApplicationComponents') is None
+
+
+def test_assoc_orchestratesFunctions150_stub_double():
+    # contentfwk_Function has no real 'Function151' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'Function151', None)
+    _safe_set(owner, 'isRealizedByProcesses', {partner})
+    assert getattr(partner, 'Function151') == owner
+    _safe_set(owner, 'isRealizedByProcesses', set())
+    assert getattr(partner, 'Function151') is None
+
+
+def test_assoc_orchestratesServices156_stub_double():
+    # contentfwk_Service has no real 'Service158' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service158', None)
+    _safe_set(owner, 'isRealizedByProcesses157', {partner})
+    assert getattr(partner, 'Service158') == owner
+    _safe_set(owner, 'isRealizedByProcesses157', set())
+    assert getattr(partner, 'Service158') is None
+
+
+def test_assoc_ownsAndGovernsServices62_stub_double():
+    # contentfwk_Service has no real 'Service' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service', None)
+    _safe_set(owner, 'isOwnedAndGovernedByOrganizationUnits', {partner})
+    assert getattr(partner, 'Service') == owner
+    _safe_set(owner, 'isOwnedAndGovernedByOrganizationUnits', set())
+    assert getattr(partner, 'Service') is None
+
+
+def test_assoc_ownsFunctions64_stub_double():
+    # contentfwk_Function has no real 'Function' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'Function', None)
+    _safe_set(owner, 'isOwnedByUnit', {partner})
+    assert getattr(partner, 'Function') == owner
+    _safe_set(owner, 'isOwnedByUnit', set())
+    assert getattr(partner, 'Function') is None
+
+
+def test_assoc_performsFunctions88_stub_double():
+    # contentfwk_Function has no real 'Function89' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'Function89', None)
+    _safe_set(owner, 'isPerformedByActors', {partner})
+    assert getattr(partner, 'Function89') == owner
+    _safe_set(owner, 'isPerformedByActors', set())
+    assert getattr(partner, 'Function89') is None
+
+
+def test_assoc_physicalApplicationComponents276_stub_double():
+    # contentfwk_ApplicationArchitecture has no real 'contentfwk_ApplicationArchitecture277' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalApplicationComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalApplicationComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalApplicationComponent(availabilityQualityCharacteristics="sample_text", capacityCharacteristics="sample_text", credibilityCharacteristics="sample_text", dateOfLastRelease=date(2024, 1, 1), dateOfNextRelease=date(2024, 1, 1), extensibilityCharacteristics="sample_text", growth="sample_text", growthPeriod="sample_text", initialLiveDate=date(2024, 1, 1), integrityCharacteristics="sample_text", internationalizationCharacteristics="sample_text", interoperabilityCharacteristics="sample_text", lifeCycleStatus="sample_text", localizationCharacteristics="sample_text", locatabilityCharacteristics="sample_text", manageabilityCharacteristics="sample_text", peakProfileLongTerm="sample_text", peakProfileShortTerm="sample_text", performanceCharacteristics="sample_text", portabilityCharacteristics="sample_text", privacyCharacteristics="sample_text", recoverabilityCharacteristics="sample_text", reliabilityCharacteristics="sample_text", retirementDate=date(2024, 1, 1), scalabilityCharacteristics="sample_text", securityCharacteristics="sample_text", serviceabilityCharacteristics="sample_text", servicesTimes="sample_text", throughput="sample_text", throughputPeriod="sample_text")
+    partner = contentfwk_ApplicationArchitecture()
+    setattr(partner, 'contentfwk_ApplicationArchitecture277', None)
+    _safe_set(owner, 'contentfwk_PhysicalApplicationComponent278', partner)
+    assert getattr(partner, 'contentfwk_ApplicationArchitecture277') == owner
+    _safe_set(owner, 'contentfwk_PhysicalApplicationComponent278', None)
+    assert getattr(partner, 'contentfwk_ApplicationArchitecture277') is None
+
+
+def test_assoc_physicalComponents42_stub_double():
+    # contentfwk_TechnologyArchitecture has no real 'contentfwk_TechnologyArchitecture43' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PhysicalTechnologyComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PhysicalTechnologyComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PhysicalTechnologyComponent(categoryTRM="sample_text", moduleName="sample_text", productName="sample_text", vendor="sample_text", version="sample_text")
+    partner = contentfwk_TechnologyArchitecture()
+    setattr(partner, 'contentfwk_TechnologyArchitecture43', None)
+    _safe_set(owner, 'contentfwk_PhysicalTechnologyComponent', partner)
+    assert getattr(partner, 'contentfwk_TechnologyArchitecture43') == owner
+    _safe_set(owner, 'contentfwk_PhysicalTechnologyComponent', None)
+    assert getattr(partner, 'contentfwk_TechnologyArchitecture43') is None
+
+
+def test_assoc_platformServices41_stub_double():
+    # contentfwk_TechnologyArchitecture has no real 'contentfwk_TechnologyArchitecture' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_PlatformService's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_PlatformService's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_PlatformService(categoryTRM="sample_text")
+    partner = contentfwk_TechnologyArchitecture()
+    setattr(partner, 'contentfwk_TechnologyArchitecture', None)
+    _safe_set(owner, 'contentfwk_PlatformService', partner)
+    assert getattr(partner, 'contentfwk_TechnologyArchitecture') == owner
+    _safe_set(owner, 'contentfwk_PlatformService', None)
+    assert getattr(partner, 'contentfwk_TechnologyArchitecture') is None
+
+
+def test_assoc_processes20_stub_double():
+    # contentfwk_BusinessArchitecture has no real 'contentfwk_BusinessArchitecture21' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_BusinessArchitecture()
+    setattr(partner, 'contentfwk_BusinessArchitecture21', None)
+    _safe_set(owner, 'contentfwk_Process', partner)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture21') == owner
+    _safe_set(owner, 'contentfwk_Process', None)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture21') is None
+
+
+def test_assoc_producesProducts170_stub_double():
+    # contentfwk_Product has no real 'Product171' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Product()
+    setattr(partner, 'Product171', None)
+    _safe_set(owner, 'isProducedByProcesses', {partner})
+    assert getattr(partner, 'Product171') == owner
+    _safe_set(owner, 'isProducedByProcesses', set())
+    assert getattr(partner, 'Product171') is None
+
+
+def test_assoc_producesProducts68_stub_double():
+    # contentfwk_Product has no real 'Product' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_Product()
+    setattr(partner, 'Product', None)
+    _safe_set(owner, 'isProducedByOrganizationUnits', {partner})
+    assert getattr(partner, 'Product') == owner
+    _safe_set(owner, 'isProducedByOrganizationUnits', set())
+    assert getattr(partner, 'Product') is None
+
+
+def test_assoc_providesEntities316_stub_double():
+    # contentfwk_Service has no real 'isUpdatedThroughServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'isUpdatedThroughServices', None)
+    _safe_set(owner, 'DataEntity317', partner)
+    assert getattr(partner, 'isUpdatedThroughServices') == owner
+    _safe_set(owner, 'DataEntity317', None)
+    assert getattr(partner, 'isUpdatedThroughServices') is None
+
+
+def test_assoc_providesPlatformForServices297_stub_double():
+    # contentfwk_Service has no real 'Service298' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_LogicalTechnologyComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_LogicalTechnologyComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_LogicalTechnologyComponent(categoryTRM="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'Service298', None)
+    _safe_set(owner, 'isImplementedOnLogicalTechnologyComponents', {partner})
+    assert getattr(partner, 'Service298') == owner
+    _safe_set(owner, 'isImplementedOnLogicalTechnologyComponents', set())
+    assert getattr(partner, 'Service298') is None
+
+
+def test_assoc_residesWithinLogicalDataComponent109_stub_double():
+    # contentfwk_LogicalDataComponent has no real 'LogicalDataComponent' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_DataEntity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_DataEntity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_DataEntity(dataEntityCategory="sample_text", privacyClassification="sample_text", retentionClassification="sample_text")
+    partner = contentfwk_LogicalDataComponent()
+    setattr(partner, 'LogicalDataComponent', None)
+    _safe_set(owner, 'encapsulatesDataEntities', partner)
+    assert getattr(partner, 'LogicalDataComponent') == owner
+    _safe_set(owner, 'encapsulatesDataEntities', None)
+    assert getattr(partner, 'LogicalDataComponent') is None
+
+
+def test_assoc_resolvesEvents166_stub_double():
+    # contentfwk_Event has no real 'Event167' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'Event167', None)
+    _safe_set(owner, 'isResolvedByProcesses', {partner})
+    assert getattr(partner, 'Event167') == owner
+    _safe_set(owner, 'isResolvedByProcesses', set())
+    assert getattr(partner, 'Event167') is None
+
+
+def test_assoc_resolvesEvents82_stub_double():
+    # contentfwk_Event has no real 'Event' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Event()
+    setattr(partner, 'Event', None)
+    _safe_set(owner, 'isResolvedByActors', {partner})
+    assert getattr(partner, 'Event') == owner
+    _safe_set(owner, 'isResolvedByActors', set())
+    assert getattr(partner, 'Event') is None
+
+
+def test_assoc_roles14_stub_double():
+    # contentfwk_BusinessArchitecture has no real 'contentfwk_BusinessArchitecture15' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Role's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Role's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Role(estimatedFTEs="sample_text")
+    partner = contentfwk_BusinessArchitecture()
+    setattr(partner, 'contentfwk_BusinessArchitecture15', None)
+    _safe_set(owner, 'contentfwk_Role', partner)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture15') == owner
+    _safe_set(owner, 'contentfwk_Role', None)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture15') is None
+
+
+def test_assoc_supportsActors139_stub_double():
+    # contentfwk_Function has no real 'interactsWithFunctions' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Actor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Actor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Actor(FTEs="sample_text", actorGoal="sample_text", actorTasks="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'interactsWithFunctions', None)
+    _safe_set(owner, 'Actor140', partner)
+    assert getattr(partner, 'interactsWithFunctions') == owner
+    _safe_set(owner, 'Actor140', None)
+    assert getattr(partner, 'interactsWithFunctions') is None
+
+
+def test_assoc_supportsProcesses133_stub_double():
+    # contentfwk_Function has no real 'decomposesFunctions' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Function()
+    setattr(partner, 'decomposesFunctions', None)
+    _safe_set(owner, 'Process134', partner)
+    assert getattr(partner, 'decomposesFunctions') == owner
+    _safe_set(owner, 'Process134', None)
+    assert getattr(partner, 'decomposesFunctions') is None
+
+
+def test_assoc_supportsProcesses332_stub_double():
+    # contentfwk_Service has no real 'decomposesServices' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_Process(isAutomated=True, processCritiality="sample_text", processVolumetrics="sample_text")
+    partner = contentfwk_Service()
+    setattr(partner, 'decomposesServices', None)
+    _safe_set(owner, 'Process333', partner)
+    assert getattr(partner, 'decomposesServices') == owner
+    _safe_set(owner, 'Process333', None)
+    assert getattr(partner, 'decomposesServices') is None
+
+
+def test_assoc_units10_stub_double():
+    # contentfwk_BusinessArchitecture has no real 'contentfwk_BusinessArchitecture11' property in the generated
+    # code (a bare stub) -- manually attach it so contentfwk_OrganizationUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contentfwk_OrganizationUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contentfwk_OrganizationUnit(headcount="sample_text")
+    partner = contentfwk_BusinessArchitecture()
+    setattr(partner, 'contentfwk_BusinessArchitecture11', None)
+    _safe_set(owner, 'contentfwk_OrganizationUnit', partner)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture11') == owner
+    _safe_set(owner, 'contentfwk_OrganizationUnit', None)
+    assert getattr(partner, 'contentfwk_BusinessArchitecture11') is None
+
+

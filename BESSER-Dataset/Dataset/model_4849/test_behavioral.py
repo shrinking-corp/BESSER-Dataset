@@ -1895,3 +1895,491 @@ def test_assoc_witness229_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'aml_Witness231', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_aggregationRule26_stub_double():
+    # aml_AggregationRule has no real 'aml_AggregationRule28' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Answer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Answer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Answer(group="sample_text", questionId="sample_text", rationale="sample_text")
+    partner = aml_AggregationRule()
+    setattr(partner, 'aml_AggregationRule28', None)
+    _safe_set(owner, 'aml_Answer27', {partner})
+    assert getattr(partner, 'aml_AggregationRule28') == owner
+    _safe_set(owner, 'aml_Answer27', set())
+    assert getattr(partner, 'aml_AggregationRule28') is None
+
+
+def test_assoc_aggregationRule304_stub_double():
+    # aml_AggregationRule has no real 'aml_AggregationRule306' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Question's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Question's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Question(amplification="sample_text", description="sample_text", group="sample_text", id="sample_text", label="sample_text")
+    partner = aml_AggregationRule()
+    setattr(partner, 'aml_AggregationRule306', None)
+    _safe_set(owner, 'aml_Question305', {partner})
+    assert getattr(partner, 'aml_AggregationRule306') == owner
+    _safe_set(owner, 'aml_Question305', set())
+    assert getattr(partner, 'aml_AggregationRule306') is None
+
+
+def test_assoc_aggregationRule73_stub_double():
+    # aml_AggregationRule has no real 'aml_AggregationRule75' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_AggregationRule()
+    setattr(partner, 'aml_AggregationRule75', None)
+    _safe_set(owner, 'aml_DocumentRoot74', {partner})
+    assert getattr(partner, 'aml_AggregationRule75') == owner
+    _safe_set(owner, 'aml_DocumentRoot74', set())
+    assert getattr(partner, 'aml_AggregationRule75') is None
+
+
+def test_assoc_archive220_stub_double():
+    # aml_EObject has no real 'aml_EObject222' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Exhibit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Exhibit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Exhibit(id="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject222', None)
+    _safe_set(owner, 'aml_Exhibit221', partner)
+    assert getattr(partner, 'aml_EObject222') == owner
+    _safe_set(owner, 'aml_Exhibit221', None)
+    assert getattr(partner, 'aml_EObject222') is None
+
+
+def test_assoc_archive85_stub_double():
+    # aml_EObject has no real 'aml_EObject87' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject87', None)
+    _safe_set(owner, 'aml_DocumentRoot86', {partner})
+    assert getattr(partner, 'aml_EObject87') == owner
+    _safe_set(owner, 'aml_DocumentRoot86', set())
+    assert getattr(partner, 'aml_EObject87') is None
+
+
+def test_assoc_contributor105_stub_double():
+    # aml_EObject has no real 'aml_EObject107' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject107', None)
+    _safe_set(owner, 'aml_DocumentRoot106', {partner})
+    assert getattr(partner, 'aml_EObject107') == owner
+    _safe_set(owner, 'aml_DocumentRoot106', set())
+    assert getattr(partner, 'aml_EObject107') is None
+
+
+def test_assoc_contributor250_stub_double():
+    # aml_EObject has no real 'aml_EObject252' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject252', None)
+    _safe_set(owner, 'aml_MetaData251', {partner})
+    assert getattr(partner, 'aml_EObject252') == owner
+    _safe_set(owner, 'aml_MetaData251', set())
+    assert getattr(partner, 'aml_EObject252') is None
+
+
+def test_assoc_dependent292_stub_double():
+    # aml_QuestionRelationships has no real 'aml_QuestionRelationships293' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Dependent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Dependent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Dependent(idRef="sample_text", ordinal="sample_text")
+    partner = aml_QuestionRelationships()
+    setattr(partner, 'aml_QuestionRelationships293', None)
+    _safe_set(owner, 'aml_Dependent294', partner)
+    assert getattr(partner, 'aml_QuestionRelationships293') == owner
+    _safe_set(owner, 'aml_Dependent294', None)
+    assert getattr(partner, 'aml_QuestionRelationships293') is None
+
+
+def test_assoc_format134_stub_double():
+    # aml_EObject has no real 'aml_EObject136' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject136', None)
+    _safe_set(owner, 'aml_DocumentRoot135', {partner})
+    assert getattr(partner, 'aml_EObject136') == owner
+    _safe_set(owner, 'aml_DocumentRoot135', set())
+    assert getattr(partner, 'aml_EObject136') is None
+
+
+def test_assoc_format256_stub_double():
+    # aml_EObject has no real 'aml_EObject258' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject258', None)
+    _safe_set(owner, 'aml_MetaData257', {partner})
+    assert getattr(partner, 'aml_EObject258') == owner
+    _safe_set(owner, 'aml_MetaData257', set())
+    assert getattr(partner, 'aml_EObject258') is None
+
+
+def test_assoc_identifier137_stub_double():
+    # aml_EObject has no real 'aml_EObject139' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject139', None)
+    _safe_set(owner, 'aml_DocumentRoot138', {partner})
+    assert getattr(partner, 'aml_EObject139') == owner
+    _safe_set(owner, 'aml_DocumentRoot138', set())
+    assert getattr(partner, 'aml_EObject139') is None
+
+
+def test_assoc_identifier259_stub_double():
+    # aml_EObject has no real 'aml_EObject261' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject261', None)
+    _safe_set(owner, 'aml_MetaData260', {partner})
+    assert getattr(partner, 'aml_EObject261') == owner
+    _safe_set(owner, 'aml_MetaData260', set())
+    assert getattr(partner, 'aml_EObject261') is None
+
+
+def test_assoc_image140_stub_double():
+    # aml_EObject has no real 'aml_EObject142' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject142', None)
+    _safe_set(owner, 'aml_DocumentRoot141', {partner})
+    assert getattr(partner, 'aml_EObject142') == owner
+    _safe_set(owner, 'aml_DocumentRoot141', set())
+    assert getattr(partner, 'aml_EObject142') is None
+
+
+def test_assoc_image277_stub_double():
+    # aml_EObject has no real 'aml_EObject279' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject279', None)
+    _safe_set(owner, 'aml_MetaData278', {partner})
+    assert getattr(partner, 'aml_EObject279') == owner
+    _safe_set(owner, 'aml_MetaData278', set())
+    assert getattr(partner, 'aml_EObject279') is None
+
+
+def test_assoc_language145_stub_double():
+    # aml_EObject has no real 'aml_EObject147' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject147', None)
+    _safe_set(owner, 'aml_DocumentRoot146', {partner})
+    assert getattr(partner, 'aml_EObject147') == owner
+    _safe_set(owner, 'aml_DocumentRoot146', set())
+    assert getattr(partner, 'aml_EObject147') is None
+
+
+def test_assoc_language265_stub_double():
+    # aml_EObject has no real 'aml_EObject267' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject267', None)
+    _safe_set(owner, 'aml_MetaData266', {partner})
+    assert getattr(partner, 'aml_EObject267') == owner
+    _safe_set(owner, 'aml_MetaData266', set())
+    assert getattr(partner, 'aml_EObject267') is None
+
+
+def test_assoc_li232_stub_double():
+    # aml_EObject has no real 'aml_EObject234' property in the generated
+    # code (a bare stub) -- manually attach it so aml_List's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_List's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_List(group="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject234', None)
+    _safe_set(owner, 'aml_List233', {partner})
+    assert getattr(partner, 'aml_EObject234') == owner
+    _safe_set(owner, 'aml_List233', set())
+    assert getattr(partner, 'aml_EObject234') is None
+
+
+def test_assoc_method156_stub_double():
+    # aml_EObject has no real 'aml_EObject158' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject158', None)
+    _safe_set(owner, 'aml_DocumentRoot157', {partner})
+    assert getattr(partner, 'aml_EObject158') == owner
+    _safe_set(owner, 'aml_DocumentRoot157', set())
+    assert getattr(partner, 'aml_EObject158') is None
+
+
+def test_assoc_parameter1_stub_double():
+    # aml_AggregationRule has no real 'aml_AggregationRule2' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Parameter(symbol="sample_text")
+    partner = aml_AggregationRule()
+    setattr(partner, 'aml_AggregationRule2', None)
+    _safe_set(owner, 'aml_Parameter', partner)
+    assert getattr(partner, 'aml_AggregationRule2') == owner
+    _safe_set(owner, 'aml_Parameter', None)
+    assert getattr(partner, 'aml_AggregationRule2') is None
+
+
+def test_assoc_questionRelationships175_stub_double():
+    # aml_QuestionRelationships has no real 'aml_QuestionRelationships' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_QuestionRelationships()
+    setattr(partner, 'aml_QuestionRelationships', None)
+    _safe_set(owner, 'aml_DocumentRoot176', {partner})
+    assert getattr(partner, 'aml_QuestionRelationships') == owner
+    _safe_set(owner, 'aml_DocumentRoot176', set())
+    assert getattr(partner, 'aml_QuestionRelationships') is None
+
+
+def test_assoc_questionRelationships301_stub_double():
+    # aml_QuestionRelationships has no real 'aml_QuestionRelationships303' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Question's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Question's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Question(amplification="sample_text", description="sample_text", group="sample_text", id="sample_text", label="sample_text")
+    partner = aml_QuestionRelationships()
+    setattr(partner, 'aml_QuestionRelationships303', None)
+    _safe_set(owner, 'aml_Question302', {partner})
+    assert getattr(partner, 'aml_QuestionRelationships303') == owner
+    _safe_set(owner, 'aml_Question302', set())
+    assert getattr(partner, 'aml_QuestionRelationships303') is None
+
+
+def test_assoc_relation179_stub_double():
+    # aml_EObject has no real 'aml_EObject181' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject181', None)
+    _safe_set(owner, 'aml_DocumentRoot180', {partner})
+    assert getattr(partner, 'aml_EObject181') == owner
+    _safe_set(owner, 'aml_DocumentRoot180', set())
+    assert getattr(partner, 'aml_EObject181') is None
+
+
+def test_assoc_relation268_stub_double():
+    # aml_EObject has no real 'aml_EObject270' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject270', None)
+    _safe_set(owner, 'aml_MetaData269', {partner})
+    assert getattr(partner, 'aml_EObject270') == owner
+    _safe_set(owner, 'aml_MetaData269', set())
+    assert getattr(partner, 'aml_EObject270') is None
+
+
+def test_assoc_rights186_stub_double():
+    # aml_EObject has no real 'aml_EObject188' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject188', None)
+    _safe_set(owner, 'aml_DocumentRoot187', {partner})
+    assert getattr(partner, 'aml_EObject188') == owner
+    _safe_set(owner, 'aml_DocumentRoot187', set())
+    assert getattr(partner, 'aml_EObject188') is None
+
+
+def test_assoc_rights274_stub_double():
+    # aml_EObject has no real 'aml_EObject276' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject276', None)
+    _safe_set(owner, 'aml_MetaData275', {partner})
+    assert getattr(partner, 'aml_EObject276') == owner
+    _safe_set(owner, 'aml_MetaData275', set())
+    assert getattr(partner, 'aml_EObject276') is None
+
+
+def test_assoc_source189_stub_double():
+    # aml_EObject has no real 'aml_EObject191' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject191', None)
+    _safe_set(owner, 'aml_DocumentRoot190', {partner})
+    assert getattr(partner, 'aml_EObject191') == owner
+    _safe_set(owner, 'aml_DocumentRoot190', set())
+    assert getattr(partner, 'aml_EObject191') is None
+
+
+def test_assoc_source262_stub_double():
+    # aml_EObject has no real 'aml_EObject264' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject264', None)
+    _safe_set(owner, 'aml_MetaData263', {partner})
+    assert getattr(partner, 'aml_EObject264') == owner
+    _safe_set(owner, 'aml_MetaData263', set())
+    assert getattr(partner, 'aml_EObject264') is None
+
+
+def test_assoc_type197_stub_double():
+    # aml_EObject has no real 'aml_EObject199' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject199', None)
+    _safe_set(owner, 'aml_DocumentRoot198', {partner})
+    assert getattr(partner, 'aml_EObject199') == owner
+    _safe_set(owner, 'aml_DocumentRoot198', set())
+    assert getattr(partner, 'aml_EObject199') is None
+
+
+def test_assoc_type253_stub_double():
+    # aml_EObject has no real 'aml_EObject255' property in the generated
+    # code (a bare stub) -- manually attach it so aml_MetaData's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_MetaData's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_MetaData(date="sample_text", description="sample_text", group="sample_text", securityMarking="sample_text", subject="sample_text", title="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject255', None)
+    _safe_set(owner, 'aml_MetaData254', {partner})
+    assert getattr(partner, 'aml_EObject255') == owner
+    _safe_set(owner, 'aml_MetaData254', set())
+    assert getattr(partner, 'aml_EObject255') is None
+
+
+def test_assoc_type295_stub_double():
+    # aml_EObject has no real 'aml_EObject297' property in the generated
+    # code (a bare stub) -- manually attach it so aml_Question's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_Question's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_Question(amplification="sample_text", description="sample_text", group="sample_text", id="sample_text", label="sample_text")
+    partner = aml_EObject()
+    setattr(partner, 'aml_EObject297', None)
+    _safe_set(owner, 'aml_Question296', {partner})
+    assert getattr(partner, 'aml_EObject297') == owner
+    _safe_set(owner, 'aml_Question296', set())
+    assert getattr(partner, 'aml_EObject297') is None
+
+
+def test_assoc_xMLNSPrefixMap69_stub_double():
+    # aml_EStringToStringMapEntry has no real 'aml_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EStringToStringMapEntry()
+    setattr(partner, 'aml_EStringToStringMapEntry', None)
+    _safe_set(owner, 'aml_DocumentRoot', {partner})
+    assert getattr(partner, 'aml_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'aml_DocumentRoot', set())
+    assert getattr(partner, 'aml_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation70_stub_double():
+    # aml_EStringToStringMapEntry has no real 'aml_EStringToStringMapEntry72' property in the generated
+    # code (a bare stub) -- manually attach it so aml_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aml_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aml_DocumentRoot(actor="sample_text", body="sample_text", date="sample_text", department="sample_text", description="sample_text", description1="sample_text", email="sample_text", event="sample_text", firstName="sample_text", id="sample_text", idRef="sample_text", label="sample_text", label1="sample_text", lastName="sample_text", middleName="sample_text", mixed="sample_text", nickName="sample_text", organization="sample_text", perspective="sample_text", rationale="sample_text", region="sample_text", securityMarking="sample_text", subject="sample_text", symbol="sample_text", title="sample_text", url="sample_text")
+    partner = aml_EStringToStringMapEntry()
+    setattr(partner, 'aml_EStringToStringMapEntry72', None)
+    _safe_set(owner, 'aml_DocumentRoot71', {partner})
+    assert getattr(partner, 'aml_EStringToStringMapEntry72') == owner
+    _safe_set(owner, 'aml_DocumentRoot71', set())
+    assert getattr(partner, 'aml_EStringToStringMapEntry72') is None
+
+

@@ -2125,3 +2125,1511 @@ def test_assoc_whileExecutingOutputRefs72_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'outputSetWithWhileExecuting', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_artifacts124_stub_double():
+    # bpmn2_Artifact has no real 'bpmn2_Artifact' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Process(isClosed=True, isExecutable=True, processType="sample_text")
+    partner = bpmn2_Artifact()
+    setattr(partner, 'bpmn2_Artifact', None)
+    _safe_set(owner, 'bpmn2_Process125', {partner})
+    assert getattr(partner, 'bpmn2_Artifact') == owner
+    _safe_set(owner, 'bpmn2_Process125', set())
+    assert getattr(partner, 'bpmn2_Artifact') is None
+
+
+def test_assoc_artifacts168_stub_double():
+    # bpmn2_Artifact has no real 'bpmn2_Artifact170' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Collaboration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Collaboration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Collaboration(isClosed=True, name="sample_text")
+    partner = bpmn2_Artifact()
+    setattr(partner, 'bpmn2_Artifact170', None)
+    _safe_set(owner, 'bpmn2_Collaboration169', {partner})
+    assert getattr(partner, 'bpmn2_Artifact170') == owner
+    _safe_set(owner, 'bpmn2_Collaboration169', set())
+    assert getattr(partner, 'bpmn2_Artifact170') is None
+
+
+def test_assoc_artifacts426_stub_double():
+    # bpmn2_Artifact has no real 'bpmn2_Artifact427' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SubProcess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SubProcess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SubProcess(triggeredByEvent=True)
+    partner = bpmn2_Artifact()
+    setattr(partner, 'bpmn2_Artifact427', None)
+    _safe_set(owner, 'bpmn2_SubProcess', {partner})
+    assert getattr(partner, 'bpmn2_Artifact427') == owner
+    _safe_set(owner, 'bpmn2_SubProcess', set())
+    assert getattr(partner, 'bpmn2_Artifact427') is None
+
+
+def test_assoc_auditing111_stub_double():
+    # bpmn2_Auditing has no real 'bpmn2_Auditing' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Process(isClosed=True, isExecutable=True, processType="sample_text")
+    partner = bpmn2_Auditing()
+    setattr(partner, 'bpmn2_Auditing', None)
+    _safe_set(owner, 'bpmn2_Process', partner)
+    assert getattr(partner, 'bpmn2_Auditing') == owner
+    _safe_set(owner, 'bpmn2_Process', None)
+    assert getattr(partner, 'bpmn2_Auditing') is None
+
+
+def test_assoc_auditing136_stub_double():
+    # bpmn2_Auditing has no real 'bpmn2_Auditing138' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FlowElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FlowElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FlowElement(name="sample_text")
+    partner = bpmn2_Auditing()
+    setattr(partner, 'bpmn2_Auditing138', None)
+    _safe_set(owner, 'bpmn2_FlowElement137', partner)
+    assert getattr(partner, 'bpmn2_Auditing138') == owner
+    _safe_set(owner, 'bpmn2_FlowElement137', None)
+    assert getattr(partner, 'bpmn2_Auditing138') is None
+
+
+def test_assoc_body252_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject254' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FormalExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FormalExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FormalExpression(language="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject254', None)
+    _safe_set(owner, 'bpmn2_FormalExpression253', partner)
+    assert getattr(partner, 'bpmn2_EObject254') == owner
+    _safe_set(owner, 'bpmn2_FormalExpression253', None)
+    assert getattr(partner, 'bpmn2_EObject254') is None
+
+
+def test_assoc_calledCollaborationRef386_stub_double():
+    # bpmn2_CallConversation has no real 'bpmn2_CallConversation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Collaboration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Collaboration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Collaboration(isClosed=True, name="sample_text")
+    partner = bpmn2_CallConversation()
+    setattr(partner, 'bpmn2_CallConversation', None)
+    _safe_set(owner, 'bpmn2_Collaboration387', partner)
+    assert getattr(partner, 'bpmn2_CallConversation') == owner
+    _safe_set(owner, 'bpmn2_Collaboration387', None)
+    assert getattr(partner, 'bpmn2_CallConversation') is None
+
+
+def test_assoc_calledElementRef463_stub_double():
+    # bpmn2_CallActivity has no real 'bpmn2_CallActivity' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CallableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CallableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CallableElement(name="sample_text")
+    partner = bpmn2_CallActivity()
+    setattr(partner, 'bpmn2_CallActivity', None)
+    _safe_set(owner, 'bpmn2_CallableElement464', partner)
+    assert getattr(partner, 'bpmn2_CallActivity') == owner
+    _safe_set(owner, 'bpmn2_CallableElement464', None)
+    assert getattr(partner, 'bpmn2_CallActivity') is None
+
+
+def test_assoc_categoryValueRef416_stub_double():
+    # bpmn2_Group has no real 'bpmn2_Group' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CategoryValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CategoryValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CategoryValue(value="sample_text")
+    partner = bpmn2_Group()
+    setattr(partner, 'bpmn2_Group', None)
+    _safe_set(owner, 'bpmn2_CategoryValue', partner)
+    assert getattr(partner, 'bpmn2_Group') == owner
+    _safe_set(owner, 'bpmn2_CategoryValue', None)
+    assert getattr(partner, 'bpmn2_Group') is None
+
+
+def test_assoc_choreographyRef166_stub_double():
+    # bpmn2_Choreography has no real 'bpmn2_Choreography' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Collaboration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Collaboration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Collaboration(isClosed=True, name="sample_text")
+    partner = bpmn2_Choreography()
+    setattr(partner, 'bpmn2_Choreography', None)
+    _safe_set(owner, 'bpmn2_Collaboration167', {partner})
+    assert getattr(partner, 'bpmn2_Choreography') == owner
+    _safe_set(owner, 'bpmn2_Collaboration167', set())
+    assert getattr(partner, 'bpmn2_Choreography') is None
+
+
+def test_assoc_completionCondition442_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression444' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression444', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics443', partner)
+    assert getattr(partner, 'bpmn2_Expression444') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics443', None)
+    assert getattr(partner, 'bpmn2_Expression444') is None
+
+
+def test_assoc_completionCondition475_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression476' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_AdHocSubProcess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_AdHocSubProcess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_AdHocSubProcess(cancelRemainingInstances=True, ordering="sample_text")
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression476', None)
+    _safe_set(owner, 'bpmn2_AdHocSubProcess', partner)
+    assert getattr(partner, 'bpmn2_Expression476') == owner
+    _safe_set(owner, 'bpmn2_AdHocSubProcess', None)
+    assert getattr(partner, 'bpmn2_Expression476') is None
+
+
+def test_assoc_complexBehaviorDefinition445_stub_double():
+    # bpmn2_ComplexBehaviorDefinition has no real 'bpmn2_ComplexBehaviorDefinition' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_ComplexBehaviorDefinition()
+    setattr(partner, 'bpmn2_ComplexBehaviorDefinition', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics446', {partner})
+    assert getattr(partner, 'bpmn2_ComplexBehaviorDefinition') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics446', set())
+    assert getattr(partner, 'bpmn2_ComplexBehaviorDefinition') is None
+
+
+def test_assoc_condition453_stub_double():
+    # bpmn2_ComplexBehaviorDefinition has no real 'bpmn2_ComplexBehaviorDefinition454' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FormalExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FormalExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FormalExpression(language="sample_text")
+    partner = bpmn2_ComplexBehaviorDefinition()
+    setattr(partner, 'bpmn2_ComplexBehaviorDefinition454', None)
+    _safe_set(owner, 'bpmn2_FormalExpression455', partner)
+    assert getattr(partner, 'bpmn2_ComplexBehaviorDefinition454') == owner
+    _safe_set(owner, 'bpmn2_FormalExpression455', None)
+    assert getattr(partner, 'bpmn2_ComplexBehaviorDefinition454') is None
+
+
+def test_assoc_conditionExpression160_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression161' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression161', None)
+    _safe_set(owner, 'bpmn2_SequenceFlow', partner)
+    assert getattr(partner, 'bpmn2_Expression161') == owner
+    _safe_set(owner, 'bpmn2_SequenceFlow', None)
+    assert getattr(partner, 'bpmn2_Expression161') is None
+
+
+def test_assoc_conversationAssociations175_stub_double():
+    # bpmn2_ConversationAssociation has no real 'bpmn2_ConversationAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Collaboration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Collaboration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Collaboration(isClosed=True, name="sample_text")
+    partner = bpmn2_ConversationAssociation()
+    setattr(partner, 'bpmn2_ConversationAssociation', None)
+    _safe_set(owner, 'bpmn2_Collaboration176', partner)
+    assert getattr(partner, 'bpmn2_ConversationAssociation') == owner
+    _safe_set(owner, 'bpmn2_Collaboration176', None)
+    assert getattr(partner, 'bpmn2_ConversationAssociation') is None
+
+
+def test_assoc_conversationNodes391_stub_double():
+    # bpmn2_SubConversation has no real 'bpmn2_SubConversation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationNode(name="sample_text")
+    partner = bpmn2_SubConversation()
+    setattr(partner, 'bpmn2_SubConversation', None)
+    _safe_set(owner, 'bpmn2_ConversationNode392', partner)
+    assert getattr(partner, 'bpmn2_SubConversation') == owner
+    _safe_set(owner, 'bpmn2_ConversationNode392', None)
+    assert getattr(partner, 'bpmn2_SubConversation') is None
+
+
+def test_assoc_correlationKeyRef258_stub_double():
+    # bpmn2_CorrelationSubscription has no real 'bpmn2_CorrelationSubscription259' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CorrelationKey's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CorrelationKey's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CorrelationKey(name="sample_text")
+    partner = bpmn2_CorrelationSubscription()
+    setattr(partner, 'bpmn2_CorrelationSubscription259', None)
+    _safe_set(owner, 'bpmn2_CorrelationKey260', partner)
+    assert getattr(partner, 'bpmn2_CorrelationSubscription259') == owner
+    _safe_set(owner, 'bpmn2_CorrelationKey260', None)
+    assert getattr(partner, 'bpmn2_CorrelationSubscription259') is None
+
+
+def test_assoc_correlationPropertyRef266_stub_double():
+    # bpmn2_CorrelationPropertyBinding has no real 'bpmn2_CorrelationPropertyBinding267' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CorrelationProperty's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CorrelationProperty's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CorrelationProperty(name="sample_text")
+    partner = bpmn2_CorrelationPropertyBinding()
+    setattr(partner, 'bpmn2_CorrelationPropertyBinding267', None)
+    _safe_set(owner, 'bpmn2_CorrelationProperty268', partner)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyBinding267') == owner
+    _safe_set(owner, 'bpmn2_CorrelationProperty268', None)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyBinding267') is None
+
+
+def test_assoc_correlationPropertyRetrievalExpression242_stub_double():
+    # bpmn2_CorrelationPropertyRetrievalExpression has no real 'bpmn2_CorrelationPropertyRetrievalExpression' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CorrelationProperty's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CorrelationProperty's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CorrelationProperty(name="sample_text")
+    partner = bpmn2_CorrelationPropertyRetrievalExpression()
+    setattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression', None)
+    _safe_set(owner, 'bpmn2_CorrelationProperty243', {partner})
+    assert getattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression') == owner
+    _safe_set(owner, 'bpmn2_CorrelationProperty243', set())
+    assert getattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression') is None
+
+
+def test_assoc_correlationSubscriptions126_stub_double():
+    # bpmn2_CorrelationSubscription has no real 'bpmn2_CorrelationSubscription' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Process(isClosed=True, isExecutable=True, processType="sample_text")
+    partner = bpmn2_CorrelationSubscription()
+    setattr(partner, 'bpmn2_CorrelationSubscription', None)
+    _safe_set(owner, 'bpmn2_Process127', {partner})
+    assert getattr(partner, 'bpmn2_CorrelationSubscription') == owner
+    _safe_set(owner, 'bpmn2_Process127', set())
+    assert getattr(partner, 'bpmn2_CorrelationSubscription') is None
+
+
+def test_assoc_dataInputAssociations283_stub_double():
+    # bpmn2_DataInputAssociation has no real 'bpmn2_DataInputAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Activity(completionQuantity=7, isForCompensation=True, startQuantity=7)
+    partner = bpmn2_DataInputAssociation()
+    setattr(partner, 'bpmn2_DataInputAssociation', None)
+    _safe_set(owner, 'bpmn2_Activity284', {partner})
+    assert getattr(partner, 'bpmn2_DataInputAssociation') == owner
+    _safe_set(owner, 'bpmn2_Activity284', set())
+    assert getattr(partner, 'bpmn2_DataInputAssociation') is None
+
+
+def test_assoc_dataInputs346_stub_double():
+    # bpmn2_ThrowEvent has no real 'bpmn2_ThrowEvent347' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_DataInput's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_DataInput's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_DataInput(isCollection=True, name="sample_text")
+    partner = bpmn2_ThrowEvent()
+    setattr(partner, 'bpmn2_ThrowEvent347', None)
+    _safe_set(owner, 'bpmn2_DataInput348', partner)
+    assert getattr(partner, 'bpmn2_ThrowEvent347') == owner
+    _safe_set(owner, 'bpmn2_DataInput348', None)
+    assert getattr(partner, 'bpmn2_ThrowEvent347') is None
+
+
+def test_assoc_dataInputs49_stub_double():
+    # bpmn2_InputOutputSpecification has no real 'bpmn2_InputOutputSpecification50' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_DataInput's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_DataInput's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_DataInput(isCollection=True, name="sample_text")
+    partner = bpmn2_InputOutputSpecification()
+    setattr(partner, 'bpmn2_InputOutputSpecification50', None)
+    _safe_set(owner, 'bpmn2_DataInput', partner)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification50') == owner
+    _safe_set(owner, 'bpmn2_DataInput', None)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification50') is None
+
+
+def test_assoc_dataObjectRef385_stub_double():
+    # bpmn2_DataObjectReference has no real 'bpmn2_DataObjectReference' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_DataObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_DataObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_DataObject(isCollection=True)
+    partner = bpmn2_DataObjectReference()
+    setattr(partner, 'bpmn2_DataObjectReference', None)
+    _safe_set(owner, 'bpmn2_DataObject', partner)
+    assert getattr(partner, 'bpmn2_DataObjectReference') == owner
+    _safe_set(owner, 'bpmn2_DataObject', None)
+    assert getattr(partner, 'bpmn2_DataObjectReference') is None
+
+
+def test_assoc_dataOutputAssociation292_stub_double():
+    # bpmn2_DataOutputAssociation has no real 'bpmn2_DataOutputAssociation294' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CatchEvent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CatchEvent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CatchEvent(parallelMultiple=True)
+    partner = bpmn2_DataOutputAssociation()
+    setattr(partner, 'bpmn2_DataOutputAssociation294', None)
+    _safe_set(owner, 'bpmn2_CatchEvent293', {partner})
+    assert getattr(partner, 'bpmn2_DataOutputAssociation294') == owner
+    _safe_set(owner, 'bpmn2_CatchEvent293', set())
+    assert getattr(partner, 'bpmn2_DataOutputAssociation294') is None
+
+
+def test_assoc_dataOutputAssociations285_stub_double():
+    # bpmn2_DataOutputAssociation has no real 'bpmn2_DataOutputAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Activity(completionQuantity=7, isForCompensation=True, startQuantity=7)
+    partner = bpmn2_DataOutputAssociation()
+    setattr(partner, 'bpmn2_DataOutputAssociation', None)
+    _safe_set(owner, 'bpmn2_Activity286', {partner})
+    assert getattr(partner, 'bpmn2_DataOutputAssociation') == owner
+    _safe_set(owner, 'bpmn2_Activity286', set())
+    assert getattr(partner, 'bpmn2_DataOutputAssociation') is None
+
+
+def test_assoc_dataOutputs51_stub_double():
+    # bpmn2_InputOutputSpecification has no real 'bpmn2_InputOutputSpecification52' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_DataOutput's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_DataOutput's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_DataOutput(isCollection=True, name="sample_text")
+    partner = bpmn2_InputOutputSpecification()
+    setattr(partner, 'bpmn2_InputOutputSpecification52', None)
+    _safe_set(owner, 'bpmn2_DataOutput', partner)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification52') == owner
+    _safe_set(owner, 'bpmn2_DataOutput', None)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification52') is None
+
+
+def test_assoc_dataPath263_stub_double():
+    # bpmn2_CorrelationPropertyBinding has no real 'bpmn2_CorrelationPropertyBinding264' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FormalExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FormalExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FormalExpression(language="sample_text")
+    partner = bpmn2_CorrelationPropertyBinding()
+    setattr(partner, 'bpmn2_CorrelationPropertyBinding264', None)
+    _safe_set(owner, 'bpmn2_FormalExpression265', partner)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyBinding264') == owner
+    _safe_set(owner, 'bpmn2_FormalExpression265', None)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyBinding264') is None
+
+
+def test_assoc_dataState67_stub_double():
+    # bpmn2_ItemAwareElement has no real 'bpmn2_ItemAwareElement68' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_DataState's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_DataState's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_DataState(name="sample_text")
+    partner = bpmn2_ItemAwareElement()
+    setattr(partner, 'bpmn2_ItemAwareElement68', None)
+    _safe_set(owner, 'bpmn2_DataState', partner)
+    assert getattr(partner, 'bpmn2_ItemAwareElement68') == owner
+    _safe_set(owner, 'bpmn2_DataState', None)
+    assert getattr(partner, 'bpmn2_ItemAwareElement68') is None
+
+
+def test_assoc_dataStoreRef384_stub_double():
+    # bpmn2_DataStoreReference has no real 'bpmn2_DataStoreReference' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_DataStore's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_DataStore's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_DataStore(capacity=7, isUnlimited=True, name="sample_text")
+    partner = bpmn2_DataStoreReference()
+    setattr(partner, 'bpmn2_DataStoreReference', None)
+    _safe_set(owner, 'bpmn2_DataStore', partner)
+    assert getattr(partner, 'bpmn2_DataStoreReference') == owner
+    _safe_set(owner, 'bpmn2_DataStore', None)
+    assert getattr(partner, 'bpmn2_DataStoreReference') is None
+
+
+def test_assoc_default324_stub_double():
+    # bpmn2_ComplexGateway has no real 'bpmn2_ComplexGateway325' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_ComplexGateway()
+    setattr(partner, 'bpmn2_ComplexGateway325', None)
+    _safe_set(owner, 'bpmn2_SequenceFlow326', partner)
+    assert getattr(partner, 'bpmn2_ComplexGateway325') == owner
+    _safe_set(owner, 'bpmn2_SequenceFlow326', None)
+    assert getattr(partner, 'bpmn2_ComplexGateway325') is None
+
+
+def test_assoc_default327_stub_double():
+    # bpmn2_ExclusiveGateway has no real 'bpmn2_ExclusiveGateway' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_ExclusiveGateway()
+    setattr(partner, 'bpmn2_ExclusiveGateway', None)
+    _safe_set(owner, 'bpmn2_SequenceFlow328', partner)
+    assert getattr(partner, 'bpmn2_ExclusiveGateway') == owner
+    _safe_set(owner, 'bpmn2_SequenceFlow328', None)
+    assert getattr(partner, 'bpmn2_ExclusiveGateway') is None
+
+
+def test_assoc_default329_stub_double():
+    # bpmn2_InclusiveGateway has no real 'bpmn2_InclusiveGateway' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_InclusiveGateway()
+    setattr(partner, 'bpmn2_InclusiveGateway', None)
+    _safe_set(owner, 'bpmn2_SequenceFlow330', partner)
+    assert getattr(partner, 'bpmn2_InclusiveGateway') == owner
+    _safe_set(owner, 'bpmn2_SequenceFlow330', None)
+    assert getattr(partner, 'bpmn2_InclusiveGateway') is None
+
+
+def test_assoc_diagrams487_stub_double():
+    # bpmn2_BPMNDiagram has no real 'bpmn2_BPMNDiagram' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Definitions's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Definitions's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Definitions(exporter="sample_text", exporterVersion="sample_text", expressionLanguage="sample_text", name="sample_text", targetNamespace="sample_text", typeLanguage="sample_text")
+    partner = bpmn2_BPMNDiagram()
+    setattr(partner, 'bpmn2_BPMNDiagram', None)
+    _safe_set(owner, 'bpmn2_Definitions488', {partner})
+    assert getattr(partner, 'bpmn2_BPMNDiagram') == owner
+    _safe_set(owner, 'bpmn2_Definitions488', set())
+    assert getattr(partner, 'bpmn2_BPMNDiagram') is None
+
+
+def test_assoc_endPointRefs198_stub_double():
+    # bpmn2_EndPoint has no real 'bpmn2_EndPoint' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Participant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Participant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Participant(name="sample_text")
+    partner = bpmn2_EndPoint()
+    setattr(partner, 'bpmn2_EndPoint', None)
+    _safe_set(owner, 'bpmn2_Participant199', {partner})
+    assert getattr(partner, 'bpmn2_EndPoint') == owner
+    _safe_set(owner, 'bpmn2_Participant199', set())
+    assert getattr(partner, 'bpmn2_EndPoint') is None
+
+
+def test_assoc_errorRef352_stub_double():
+    # bpmn2_ErrorEventDefinition has no real 'bpmn2_ErrorEventDefinition' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Error's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Error's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Error(errorCode="sample_text", name="sample_text")
+    partner = bpmn2_ErrorEventDefinition()
+    setattr(partner, 'bpmn2_ErrorEventDefinition', None)
+    _safe_set(owner, 'bpmn2_Error353', partner)
+    assert getattr(partner, 'bpmn2_ErrorEventDefinition') == owner
+    _safe_set(owner, 'bpmn2_Error353', None)
+    assert getattr(partner, 'bpmn2_ErrorEventDefinition') is None
+
+
+def test_assoc_escalationRef354_stub_double():
+    # bpmn2_EscalationEventDefinition has no real 'bpmn2_EscalationEventDefinition' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Escalation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Escalation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Escalation(escalationCode="sample_text", id="sample_text", name="sample_text")
+    partner = bpmn2_EscalationEventDefinition()
+    setattr(partner, 'bpmn2_EscalationEventDefinition', None)
+    _safe_set(owner, 'bpmn2_Escalation', partner)
+    assert getattr(partner, 'bpmn2_EscalationEventDefinition') == owner
+    _safe_set(owner, 'bpmn2_Escalation', None)
+    assert getattr(partner, 'bpmn2_EscalationEventDefinition') is None
+
+
+def test_assoc_eventDefinitionRefs290_stub_double():
+    # bpmn2_EventDefinition has no real 'bpmn2_EventDefinition' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CatchEvent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CatchEvent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CatchEvent(parallelMultiple=True)
+    partner = bpmn2_EventDefinition()
+    setattr(partner, 'bpmn2_EventDefinition', None)
+    _safe_set(owner, 'bpmn2_CatchEvent291', {partner})
+    assert getattr(partner, 'bpmn2_EventDefinition') == owner
+    _safe_set(owner, 'bpmn2_CatchEvent291', set())
+    assert getattr(partner, 'bpmn2_EventDefinition') is None
+
+
+def test_assoc_eventDefinitions298_stub_double():
+    # bpmn2_EventDefinition has no real 'bpmn2_EventDefinition300' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CatchEvent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CatchEvent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CatchEvent(parallelMultiple=True)
+    partner = bpmn2_EventDefinition()
+    setattr(partner, 'bpmn2_EventDefinition300', None)
+    _safe_set(owner, 'bpmn2_CatchEvent299', {partner})
+    assert getattr(partner, 'bpmn2_EventDefinition300') == owner
+    _safe_set(owner, 'bpmn2_CatchEvent299', set())
+    assert getattr(partner, 'bpmn2_EventDefinition300') is None
+
+
+def test_assoc_expression103_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ResourceParameterBinding's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ResourceParameterBinding's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ResourceParameterBinding(id="sample_text")
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression', None)
+    _safe_set(owner, 'bpmn2_ResourceParameterBinding104', partner)
+    assert getattr(partner, 'bpmn2_Expression') == owner
+    _safe_set(owner, 'bpmn2_ResourceParameterBinding104', None)
+    assert getattr(partner, 'bpmn2_Expression') is None
+
+
+def test_assoc_expression108_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression110' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ResourceAssignmentExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ResourceAssignmentExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ResourceAssignmentExpression(id="sample_text")
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression110', None)
+    _safe_set(owner, 'bpmn2_ResourceAssignmentExpression109', partner)
+    assert getattr(partner, 'bpmn2_Expression110') == owner
+    _safe_set(owner, 'bpmn2_ResourceAssignmentExpression109', None)
+    assert getattr(partner, 'bpmn2_Expression110') is None
+
+
+def test_assoc_flowElements133_stub_double():
+    # bpmn2_FlowElementsContainer has no real 'bpmn2_FlowElementsContainer' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FlowElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FlowElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FlowElement(name="sample_text")
+    partner = bpmn2_FlowElementsContainer()
+    setattr(partner, 'bpmn2_FlowElementsContainer', None)
+    _safe_set(owner, 'bpmn2_FlowElement', partner)
+    assert getattr(partner, 'bpmn2_FlowElementsContainer') == owner
+    _safe_set(owner, 'bpmn2_FlowElement', None)
+    assert getattr(partner, 'bpmn2_FlowElementsContainer') is None
+
+
+def test_assoc_flowNodeRefs152_stub_double():
+    # bpmn2_FlowNode has no real 'FlowNode' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Lane's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Lane's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Lane(name="sample_text")
+    partner = bpmn2_FlowNode()
+    setattr(partner, 'FlowNode', None)
+    _safe_set(owner, 'lanes', {partner})
+    assert getattr(partner, 'FlowNode') == owner
+    _safe_set(owner, 'lanes', set())
+    assert getattr(partner, 'FlowNode') is None
+
+
+def test_assoc_implementationRef1_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Interface's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Interface's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Interface(name="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject', None)
+    _safe_set(owner, 'bpmn2_Interface2', partner)
+    assert getattr(partner, 'bpmn2_EObject') == owner
+    _safe_set(owner, 'bpmn2_Interface2', None)
+    assert getattr(partner, 'bpmn2_EObject') is None
+
+
+def test_assoc_implementationRef25_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject27' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Operation(name="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject27', None)
+    _safe_set(owner, 'bpmn2_Operation26', partner)
+    assert getattr(partner, 'bpmn2_EObject27') == owner
+    _safe_set(owner, 'bpmn2_Operation26', None)
+    assert getattr(partner, 'bpmn2_EObject27') is None
+
+
+def test_assoc_incoming157_stub_double():
+    # bpmn2_FlowNode has no real 'targetRef' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_FlowNode()
+    setattr(partner, 'targetRef', None)
+    _safe_set(owner, 'SequenceFlow158', partner)
+    assert getattr(partner, 'targetRef') == owner
+    _safe_set(owner, 'SequenceFlow158', None)
+    assert getattr(partner, 'targetRef') is None
+
+
+def test_assoc_incomingConversationLinks203_stub_double():
+    # bpmn2_InteractionNode has no real 'targetRef204' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationLink's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationLink's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationLink(name="sample_text")
+    partner = bpmn2_InteractionNode()
+    setattr(partner, 'targetRef204', None)
+    _safe_set(owner, 'ConversationLink', partner)
+    assert getattr(partner, 'targetRef204') == owner
+    _safe_set(owner, 'ConversationLink', None)
+    assert getattr(partner, 'targetRef204') is None
+
+
+def test_assoc_initiatingParticipantRef414_stub_double():
+    # bpmn2_GlobalChoreographyTask has no real 'bpmn2_GlobalChoreographyTask' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Participant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Participant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Participant(name="sample_text")
+    partner = bpmn2_GlobalChoreographyTask()
+    setattr(partner, 'bpmn2_GlobalChoreographyTask', None)
+    _safe_set(owner, 'bpmn2_Participant415', partner)
+    assert getattr(partner, 'bpmn2_GlobalChoreographyTask') == owner
+    _safe_set(owner, 'bpmn2_Participant415', None)
+    assert getattr(partner, 'bpmn2_GlobalChoreographyTask') is None
+
+
+def test_assoc_innerConversationNodeRef225_stub_double():
+    # bpmn2_ConversationAssociation has no real 'bpmn2_ConversationAssociation226' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationNode(name="sample_text")
+    partner = bpmn2_ConversationAssociation()
+    setattr(partner, 'bpmn2_ConversationAssociation226', None)
+    _safe_set(owner, 'bpmn2_ConversationNode227', partner)
+    assert getattr(partner, 'bpmn2_ConversationAssociation226') == owner
+    _safe_set(owner, 'bpmn2_ConversationNode227', None)
+    assert getattr(partner, 'bpmn2_ConversationAssociation226') is None
+
+
+def test_assoc_innerMessageFlowRef211_stub_double():
+    # bpmn2_MessageFlowAssociation has no real 'bpmn2_MessageFlowAssociation212' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MessageFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MessageFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MessageFlow(name="sample_text")
+    partner = bpmn2_MessageFlowAssociation()
+    setattr(partner, 'bpmn2_MessageFlowAssociation212', None)
+    _safe_set(owner, 'bpmn2_MessageFlow213', partner)
+    assert getattr(partner, 'bpmn2_MessageFlowAssociation212') == owner
+    _safe_set(owner, 'bpmn2_MessageFlow213', None)
+    assert getattr(partner, 'bpmn2_MessageFlowAssociation212') is None
+
+
+def test_assoc_innerParticipantRef187_stub_double():
+    # bpmn2_ParticipantAssociation has no real 'bpmn2_ParticipantAssociation188' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Participant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Participant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Participant(name="sample_text")
+    partner = bpmn2_ParticipantAssociation()
+    setattr(partner, 'bpmn2_ParticipantAssociation188', None)
+    _safe_set(owner, 'bpmn2_Participant189', partner)
+    assert getattr(partner, 'bpmn2_ParticipantAssociation188') == owner
+    _safe_set(owner, 'bpmn2_Participant189', None)
+    assert getattr(partner, 'bpmn2_ParticipantAssociation188') is None
+
+
+def test_assoc_inputSet338_stub_double():
+    # bpmn2_ThrowEvent has no real 'bpmn2_ThrowEvent' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_InputSet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_InputSet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_InputSet(name="sample_text")
+    partner = bpmn2_ThrowEvent()
+    setattr(partner, 'bpmn2_ThrowEvent', None)
+    _safe_set(owner, 'bpmn2_InputSet339', partner)
+    assert getattr(partner, 'bpmn2_ThrowEvent') == owner
+    _safe_set(owner, 'bpmn2_InputSet339', None)
+    assert getattr(partner, 'bpmn2_ThrowEvent') is None
+
+
+def test_assoc_inputSets45_stub_double():
+    # bpmn2_InputOutputSpecification has no real 'bpmn2_InputOutputSpecification46' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_InputSet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_InputSet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_InputSet(name="sample_text")
+    partner = bpmn2_InputOutputSpecification()
+    setattr(partner, 'bpmn2_InputOutputSpecification46', None)
+    _safe_set(owner, 'bpmn2_InputSet', partner)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification46') == owner
+    _safe_set(owner, 'bpmn2_InputSet', None)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification46') is None
+
+
+def test_assoc_ioSpecification279_stub_double():
+    # bpmn2_InputOutputSpecification has no real 'bpmn2_InputOutputSpecification281' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Activity(completionQuantity=7, isForCompensation=True, startQuantity=7)
+    partner = bpmn2_InputOutputSpecification()
+    setattr(partner, 'bpmn2_InputOutputSpecification281', None)
+    _safe_set(owner, 'bpmn2_Activity280', partner)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification281') == owner
+    _safe_set(owner, 'bpmn2_Activity280', None)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification281') is None
+
+
+def test_assoc_ioSpecification39_stub_double():
+    # bpmn2_InputOutputSpecification has no real 'bpmn2_InputOutputSpecification' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_CallableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_CallableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_CallableElement(name="sample_text")
+    partner = bpmn2_InputOutputSpecification()
+    setattr(partner, 'bpmn2_InputOutputSpecification', None)
+    _safe_set(owner, 'bpmn2_CallableElement', partner)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification') == owner
+    _safe_set(owner, 'bpmn2_CallableElement', None)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification') is None
+
+
+def test_assoc_itemSubjectRef65_stub_double():
+    # bpmn2_ItemAwareElement has no real 'bpmn2_ItemAwareElement' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ItemDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ItemDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ItemDefinition(isCollection=True, itemKind="sample_text")
+    partner = bpmn2_ItemAwareElement()
+    setattr(partner, 'bpmn2_ItemAwareElement', None)
+    _safe_set(owner, 'bpmn2_ItemDefinition66', partner)
+    assert getattr(partner, 'bpmn2_ItemAwareElement') == owner
+    _safe_set(owner, 'bpmn2_ItemDefinition66', None)
+    assert getattr(partner, 'bpmn2_ItemAwareElement') is None
+
+
+def test_assoc_laneSets134_stub_double():
+    # bpmn2_FlowElementsContainer has no real 'bpmn2_FlowElementsContainer135' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_LaneSet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_LaneSet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_LaneSet(name="sample_text")
+    partner = bpmn2_FlowElementsContainer()
+    setattr(partner, 'bpmn2_FlowElementsContainer135', None)
+    _safe_set(owner, 'bpmn2_LaneSet', partner)
+    assert getattr(partner, 'bpmn2_FlowElementsContainer135') == owner
+    _safe_set(owner, 'bpmn2_LaneSet', None)
+    assert getattr(partner, 'bpmn2_FlowElementsContainer135') is None
+
+
+def test_assoc_lanes159_stub_double():
+    # bpmn2_FlowNode has no real 'flowNodeRefs' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Lane's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Lane's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Lane(name="sample_text")
+    partner = bpmn2_FlowNode()
+    setattr(partner, 'flowNodeRefs', None)
+    _safe_set(owner, 'Lane', partner)
+    assert getattr(partner, 'flowNodeRefs') == owner
+    _safe_set(owner, 'Lane', None)
+    assert getattr(partner, 'flowNodeRefs') is None
+
+
+def test_assoc_loopCardinality428_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression429' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression429', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics', partner)
+    assert getattr(partner, 'bpmn2_Expression429') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics', None)
+    assert getattr(partner, 'bpmn2_Expression429') is None
+
+
+def test_assoc_loopCharacteristics269_stub_double():
+    # bpmn2_LoopCharacteristics has no real 'bpmn2_LoopCharacteristics' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Activity(completionQuantity=7, isForCompensation=True, startQuantity=7)
+    partner = bpmn2_LoopCharacteristics()
+    setattr(partner, 'bpmn2_LoopCharacteristics', None)
+    _safe_set(owner, 'bpmn2_Activity', partner)
+    assert getattr(partner, 'bpmn2_LoopCharacteristics') == owner
+    _safe_set(owner, 'bpmn2_Activity', None)
+    assert getattr(partner, 'bpmn2_LoopCharacteristics') is None
+
+
+def test_assoc_loopCondition458_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression459' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_StandardLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_StandardLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_StandardLoopCharacteristics(testBefore=True)
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression459', None)
+    _safe_set(owner, 'bpmn2_StandardLoopCharacteristics', partner)
+    assert getattr(partner, 'bpmn2_Expression459') == owner
+    _safe_set(owner, 'bpmn2_StandardLoopCharacteristics', None)
+    assert getattr(partner, 'bpmn2_Expression459') is None
+
+
+def test_assoc_loopDataInputRef430_stub_double():
+    # bpmn2_ItemAwareElement has no real 'bpmn2_ItemAwareElement432' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_ItemAwareElement()
+    setattr(partner, 'bpmn2_ItemAwareElement432', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics431', partner)
+    assert getattr(partner, 'bpmn2_ItemAwareElement432') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics431', None)
+    assert getattr(partner, 'bpmn2_ItemAwareElement432') is None
+
+
+def test_assoc_loopDataOutputRef433_stub_double():
+    # bpmn2_ItemAwareElement has no real 'bpmn2_ItemAwareElement435' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_ItemAwareElement()
+    setattr(partner, 'bpmn2_ItemAwareElement435', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics434', partner)
+    assert getattr(partner, 'bpmn2_ItemAwareElement435') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics434', None)
+    assert getattr(partner, 'bpmn2_ItemAwareElement435') is None
+
+
+def test_assoc_loopMaximum460_stub_double():
+    # bpmn2_Expression has no real 'bpmn2_Expression462' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_StandardLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_StandardLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_StandardLoopCharacteristics(testBefore=True)
+    partner = bpmn2_Expression()
+    setattr(partner, 'bpmn2_Expression462', None)
+    _safe_set(owner, 'bpmn2_StandardLoopCharacteristics461', partner)
+    assert getattr(partner, 'bpmn2_Expression462') == owner
+    _safe_set(owner, 'bpmn2_StandardLoopCharacteristics461', None)
+    assert getattr(partner, 'bpmn2_Expression462') is None
+
+
+def test_assoc_messageFlowAssociations173_stub_double():
+    # bpmn2_MessageFlowAssociation has no real 'bpmn2_MessageFlowAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Collaboration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Collaboration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Collaboration(isClosed=True, name="sample_text")
+    partner = bpmn2_MessageFlowAssociation()
+    setattr(partner, 'bpmn2_MessageFlowAssociation', None)
+    _safe_set(owner, 'bpmn2_Collaboration174', {partner})
+    assert getattr(partner, 'bpmn2_MessageFlowAssociation') == owner
+    _safe_set(owner, 'bpmn2_Collaboration174', set())
+    assert getattr(partner, 'bpmn2_MessageFlowAssociation') is None
+
+
+def test_assoc_messageFlowRef412_stub_double():
+    # bpmn2_ChoreographyTask has no real 'bpmn2_ChoreographyTask' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MessageFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MessageFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MessageFlow(name="sample_text")
+    partner = bpmn2_ChoreographyTask()
+    setattr(partner, 'bpmn2_ChoreographyTask', None)
+    _safe_set(owner, 'bpmn2_MessageFlow413', partner)
+    assert getattr(partner, 'bpmn2_ChoreographyTask') == owner
+    _safe_set(owner, 'bpmn2_MessageFlow413', None)
+    assert getattr(partner, 'bpmn2_ChoreographyTask') is None
+
+
+def test_assoc_messagePath247_stub_double():
+    # bpmn2_CorrelationPropertyRetrievalExpression has no real 'bpmn2_CorrelationPropertyRetrievalExpression248' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FormalExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FormalExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FormalExpression(language="sample_text")
+    partner = bpmn2_CorrelationPropertyRetrievalExpression()
+    setattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression248', None)
+    _safe_set(owner, 'bpmn2_FormalExpression', partner)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression248') == owner
+    _safe_set(owner, 'bpmn2_FormalExpression', None)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression248') is None
+
+
+def test_assoc_messageRef249_stub_double():
+    # bpmn2_CorrelationPropertyRetrievalExpression has no real 'bpmn2_CorrelationPropertyRetrievalExpression250' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Message's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Message's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Message(name="sample_text")
+    partner = bpmn2_CorrelationPropertyRetrievalExpression()
+    setattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression250', None)
+    _safe_set(owner, 'bpmn2_Message251', partner)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression250') == owner
+    _safe_set(owner, 'bpmn2_Message251', None)
+    assert getattr(partner, 'bpmn2_CorrelationPropertyRetrievalExpression250') is None
+
+
+def test_assoc_messageRef373_stub_double():
+    # bpmn2_MessageEventDefinition has no real 'bpmn2_MessageEventDefinition' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Message's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Message's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Message(name="sample_text")
+    partner = bpmn2_MessageEventDefinition()
+    setattr(partner, 'bpmn2_MessageEventDefinition', None)
+    _safe_set(owner, 'bpmn2_Message374', partner)
+    assert getattr(partner, 'bpmn2_MessageEventDefinition') == owner
+    _safe_set(owner, 'bpmn2_Message374', None)
+    assert getattr(partner, 'bpmn2_MessageEventDefinition') is None
+
+
+def test_assoc_monitoring112_stub_double():
+    # bpmn2_Monitoring has no real 'bpmn2_Monitoring' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Process(isClosed=True, isExecutable=True, processType="sample_text")
+    partner = bpmn2_Monitoring()
+    setattr(partner, 'bpmn2_Monitoring', None)
+    _safe_set(owner, 'bpmn2_Process113', partner)
+    assert getattr(partner, 'bpmn2_Monitoring') == owner
+    _safe_set(owner, 'bpmn2_Process113', None)
+    assert getattr(partner, 'bpmn2_Monitoring') is None
+
+
+def test_assoc_monitoring139_stub_double():
+    # bpmn2_Monitoring has no real 'bpmn2_Monitoring141' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FlowElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FlowElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FlowElement(name="sample_text")
+    partner = bpmn2_Monitoring()
+    setattr(partner, 'bpmn2_Monitoring141', None)
+    _safe_set(owner, 'bpmn2_FlowElement140', partner)
+    assert getattr(partner, 'bpmn2_Monitoring141') == owner
+    _safe_set(owner, 'bpmn2_FlowElement140', None)
+    assert getattr(partner, 'bpmn2_Monitoring141') is None
+
+
+def test_assoc_noneBehaviorEventRef450_stub_double():
+    # bpmn2_EventDefinition has no real 'bpmn2_EventDefinition452' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_EventDefinition()
+    setattr(partner, 'bpmn2_EventDefinition452', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics451', partner)
+    assert getattr(partner, 'bpmn2_EventDefinition452') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics451', None)
+    assert getattr(partner, 'bpmn2_EventDefinition452') is None
+
+
+def test_assoc_oneBehaviorEventRef447_stub_double():
+    # bpmn2_EventDefinition has no real 'bpmn2_EventDefinition449' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MultiInstanceLoopCharacteristics's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MultiInstanceLoopCharacteristics's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MultiInstanceLoopCharacteristics(behavior="sample_text", isSequential=True)
+    partner = bpmn2_EventDefinition()
+    setattr(partner, 'bpmn2_EventDefinition449', None)
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics448', partner)
+    assert getattr(partner, 'bpmn2_EventDefinition449') == owner
+    _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics448', None)
+    assert getattr(partner, 'bpmn2_EventDefinition449') is None
+
+
+def test_assoc_operationRef375_stub_double():
+    # bpmn2_MessageEventDefinition has no real 'bpmn2_MessageEventDefinition376' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Operation(name="sample_text")
+    partner = bpmn2_MessageEventDefinition()
+    setattr(partner, 'bpmn2_MessageEventDefinition376', None)
+    _safe_set(owner, 'bpmn2_Operation377', partner)
+    assert getattr(partner, 'bpmn2_MessageEventDefinition376') == owner
+    _safe_set(owner, 'bpmn2_Operation377', None)
+    assert getattr(partner, 'bpmn2_MessageEventDefinition376') is None
+
+
+def test_assoc_outerConversationNodeRef228_stub_double():
+    # bpmn2_ConversationAssociation has no real 'bpmn2_ConversationAssociation229' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationNode(name="sample_text")
+    partner = bpmn2_ConversationAssociation()
+    setattr(partner, 'bpmn2_ConversationAssociation229', None)
+    _safe_set(owner, 'bpmn2_ConversationNode230', partner)
+    assert getattr(partner, 'bpmn2_ConversationAssociation229') == owner
+    _safe_set(owner, 'bpmn2_ConversationNode230', None)
+    assert getattr(partner, 'bpmn2_ConversationAssociation229') is None
+
+
+def test_assoc_outerMessageFlowRef214_stub_double():
+    # bpmn2_MessageFlowAssociation has no real 'bpmn2_MessageFlowAssociation215' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MessageFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MessageFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MessageFlow(name="sample_text")
+    partner = bpmn2_MessageFlowAssociation()
+    setattr(partner, 'bpmn2_MessageFlowAssociation215', None)
+    _safe_set(owner, 'bpmn2_MessageFlow216', partner)
+    assert getattr(partner, 'bpmn2_MessageFlowAssociation215') == owner
+    _safe_set(owner, 'bpmn2_MessageFlow216', None)
+    assert getattr(partner, 'bpmn2_MessageFlowAssociation215') is None
+
+
+def test_assoc_outerParticipantRef190_stub_double():
+    # bpmn2_ParticipantAssociation has no real 'bpmn2_ParticipantAssociation191' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Participant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Participant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Participant(name="sample_text")
+    partner = bpmn2_ParticipantAssociation()
+    setattr(partner, 'bpmn2_ParticipantAssociation191', None)
+    _safe_set(owner, 'bpmn2_Participant192', partner)
+    assert getattr(partner, 'bpmn2_ParticipantAssociation191') == owner
+    _safe_set(owner, 'bpmn2_Participant192', None)
+    assert getattr(partner, 'bpmn2_ParticipantAssociation191') is None
+
+
+def test_assoc_outgoing156_stub_double():
+    # bpmn2_FlowNode has no real 'sourceRef' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_FlowNode()
+    setattr(partner, 'sourceRef', None)
+    _safe_set(owner, 'SequenceFlow', partner)
+    assert getattr(partner, 'sourceRef') == owner
+    _safe_set(owner, 'SequenceFlow', None)
+    assert getattr(partner, 'sourceRef') is None
+
+
+def test_assoc_outgoingConversationLinks205_stub_double():
+    # bpmn2_InteractionNode has no real 'sourceRef206' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationLink's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationLink's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationLink(name="sample_text")
+    partner = bpmn2_InteractionNode()
+    setattr(partner, 'sourceRef206', None)
+    _safe_set(owner, 'ConversationLink207', partner)
+    assert getattr(partner, 'sourceRef206') == owner
+    _safe_set(owner, 'ConversationLink207', None)
+    assert getattr(partner, 'sourceRef206') is None
+
+
+def test_assoc_outputSets47_stub_double():
+    # bpmn2_InputOutputSpecification has no real 'bpmn2_InputOutputSpecification48' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_OutputSet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_OutputSet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_OutputSet(name="sample_text")
+    partner = bpmn2_InputOutputSpecification()
+    setattr(partner, 'bpmn2_InputOutputSpecification48', None)
+    _safe_set(owner, 'bpmn2_OutputSet', partner)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification48') == owner
+    _safe_set(owner, 'bpmn2_OutputSet', None)
+    assert getattr(partner, 'bpmn2_InputOutputSpecification48') is None
+
+
+def test_assoc_participantAssociations171_stub_double():
+    # bpmn2_ParticipantAssociation has no real 'bpmn2_ParticipantAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Collaboration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Collaboration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Collaboration(isClosed=True, name="sample_text")
+    partner = bpmn2_ParticipantAssociation()
+    setattr(partner, 'bpmn2_ParticipantAssociation', None)
+    _safe_set(owner, 'bpmn2_Collaboration172', {partner})
+    assert getattr(partner, 'bpmn2_ParticipantAssociation') == owner
+    _safe_set(owner, 'bpmn2_Collaboration172', set())
+    assert getattr(partner, 'bpmn2_ParticipantAssociation') is None
+
+
+def test_assoc_properties301_stub_double():
+    # bpmn2_Event has no real 'bpmn2_Event' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Property(name="sample_text")
+    partner = bpmn2_Event()
+    setattr(partner, 'bpmn2_Event', None)
+    _safe_set(owner, 'bpmn2_Property302', partner)
+    assert getattr(partner, 'bpmn2_Event') == owner
+    _safe_set(owner, 'bpmn2_Property302', None)
+    assert getattr(partner, 'bpmn2_Event') is None
+
+
+def test_assoc_renderings319_stub_double():
+    # bpmn2_Rendering has no real 'bpmn2_Rendering' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_UserTask's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_UserTask's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_UserTask(implementation="sample_text")
+    partner = bpmn2_Rendering()
+    setattr(partner, 'bpmn2_Rendering', None)
+    _safe_set(owner, 'bpmn2_UserTask', {partner})
+    assert getattr(partner, 'bpmn2_Rendering') == owner
+    _safe_set(owner, 'bpmn2_UserTask', set())
+    assert getattr(partner, 'bpmn2_Rendering') is None
+
+
+def test_assoc_renderings320_stub_double():
+    # bpmn2_Rendering has no real 'bpmn2_Rendering321' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_GlobalUserTask's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_GlobalUserTask's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_GlobalUserTask(implementation="sample_text")
+    partner = bpmn2_Rendering()
+    setattr(partner, 'bpmn2_Rendering321', None)
+    _safe_set(owner, 'bpmn2_GlobalUserTask', {partner})
+    assert getattr(partner, 'bpmn2_Rendering321') == owner
+    _safe_set(owner, 'bpmn2_GlobalUserTask', set())
+    assert getattr(partner, 'bpmn2_Rendering321') is None
+
+
+def test_assoc_resources38_stub_double():
+    # bpmn2_GlobalTask has no real 'bpmn2_GlobalTask' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ResourceRole's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ResourceRole's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ResourceRole(name="sample_text")
+    partner = bpmn2_GlobalTask()
+    setattr(partner, 'bpmn2_GlobalTask', None)
+    _safe_set(owner, 'bpmn2_ResourceRole', partner)
+    assert getattr(partner, 'bpmn2_GlobalTask') == owner
+    _safe_set(owner, 'bpmn2_ResourceRole', None)
+    assert getattr(partner, 'bpmn2_GlobalTask') is None
+
+
+def test_assoc_rootElements485_stub_double():
+    # bpmn2_RootElement has no real 'bpmn2_RootElement' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Definitions's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Definitions's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Definitions(exporter="sample_text", exporterVersion="sample_text", expressionLanguage="sample_text", name="sample_text", targetNamespace="sample_text", typeLanguage="sample_text")
+    partner = bpmn2_RootElement()
+    setattr(partner, 'bpmn2_RootElement', None)
+    _safe_set(owner, 'bpmn2_Definitions486', {partner})
+    assert getattr(partner, 'bpmn2_RootElement') == owner
+    _safe_set(owner, 'bpmn2_Definitions486', set())
+    assert getattr(partner, 'bpmn2_RootElement') is None
+
+
+def test_assoc_signalRef380_stub_double():
+    # bpmn2_SignalEventDefinition has no real 'bpmn2_SignalEventDefinition' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Signal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Signal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Signal(name="sample_text")
+    partner = bpmn2_SignalEventDefinition()
+    setattr(partner, 'bpmn2_SignalEventDefinition', None)
+    _safe_set(owner, 'bpmn2_Signal', partner)
+    assert getattr(partner, 'bpmn2_SignalEventDefinition') == owner
+    _safe_set(owner, 'bpmn2_Signal', None)
+    assert getattr(partner, 'bpmn2_SignalEventDefinition') is None
+
+
+def test_assoc_sourceRef164_stub_double():
+    # bpmn2_FlowNode has no real 'FlowNode165' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_FlowNode()
+    setattr(partner, 'FlowNode165', None)
+    _safe_set(owner, 'outgoing', partner)
+    assert getattr(partner, 'FlowNode165') == owner
+    _safe_set(owner, 'outgoing', None)
+    assert getattr(partner, 'FlowNode165') is None
+
+
+def test_assoc_sourceRef208_stub_double():
+    # bpmn2_InteractionNode has no real 'InteractionNode' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationLink's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationLink's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationLink(name="sample_text")
+    partner = bpmn2_InteractionNode()
+    setattr(partner, 'InteractionNode', None)
+    _safe_set(owner, 'outgoingConversationLinks', partner)
+    assert getattr(partner, 'InteractionNode') == owner
+    _safe_set(owner, 'outgoingConversationLinks', None)
+    assert getattr(partner, 'InteractionNode') is None
+
+
+def test_assoc_sourceRef217_stub_double():
+    # bpmn2_InteractionNode has no real 'bpmn2_InteractionNode' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MessageFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MessageFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MessageFlow(name="sample_text")
+    partner = bpmn2_InteractionNode()
+    setattr(partner, 'bpmn2_InteractionNode', None)
+    _safe_set(owner, 'bpmn2_MessageFlow218', partner)
+    assert getattr(partner, 'bpmn2_InteractionNode') == owner
+    _safe_set(owner, 'bpmn2_MessageFlow218', None)
+    assert getattr(partner, 'bpmn2_InteractionNode') is None
+
+
+def test_assoc_sources331_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject332' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Relationship's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Relationship's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Relationship(direction="sample_text", type="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject332', None)
+    _safe_set(owner, 'bpmn2_Relationship', {partner})
+    assert getattr(partner, 'bpmn2_EObject332') == owner
+    _safe_set(owner, 'bpmn2_Relationship', set())
+    assert getattr(partner, 'bpmn2_EObject332') is None
+
+
+def test_assoc_structureRef30_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject32' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ItemDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ItemDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ItemDefinition(isCollection=True, itemKind="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject32', None)
+    _safe_set(owner, 'bpmn2_ItemDefinition31', partner)
+    assert getattr(partner, 'bpmn2_EObject32') == owner
+    _safe_set(owner, 'bpmn2_ItemDefinition31', None)
+    assert getattr(partner, 'bpmn2_EObject32') is None
+
+
+def test_assoc_targetRef162_stub_double():
+    # bpmn2_FlowNode has no real 'FlowNode163' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_SequenceFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_SequenceFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_SequenceFlow(isImmediate=True)
+    partner = bpmn2_FlowNode()
+    setattr(partner, 'FlowNode163', None)
+    _safe_set(owner, 'incoming', partner)
+    assert getattr(partner, 'FlowNode163') == owner
+    _safe_set(owner, 'incoming', None)
+    assert getattr(partner, 'FlowNode163') is None
+
+
+def test_assoc_targetRef209_stub_double():
+    # bpmn2_InteractionNode has no real 'InteractionNode210' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ConversationLink's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ConversationLink's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ConversationLink(name="sample_text")
+    partner = bpmn2_InteractionNode()
+    setattr(partner, 'InteractionNode210', None)
+    _safe_set(owner, 'incomingConversationLinks', partner)
+    assert getattr(partner, 'InteractionNode210') == owner
+    _safe_set(owner, 'incomingConversationLinks', None)
+    assert getattr(partner, 'InteractionNode210') is None
+
+
+def test_assoc_targetRef219_stub_double():
+    # bpmn2_InteractionNode has no real 'bpmn2_InteractionNode221' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_MessageFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_MessageFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_MessageFlow(name="sample_text")
+    partner = bpmn2_InteractionNode()
+    setattr(partner, 'bpmn2_InteractionNode221', None)
+    _safe_set(owner, 'bpmn2_MessageFlow220', partner)
+    assert getattr(partner, 'bpmn2_InteractionNode221') == owner
+    _safe_set(owner, 'bpmn2_MessageFlow220', None)
+    assert getattr(partner, 'bpmn2_InteractionNode221') is None
+
+
+def test_assoc_targets333_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject335' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_Relationship's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_Relationship's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_Relationship(direction="sample_text", type="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject335', None)
+    _safe_set(owner, 'bpmn2_Relationship334', {partner})
+    assert getattr(partner, 'bpmn2_EObject335') == owner
+    _safe_set(owner, 'bpmn2_Relationship334', set())
+    assert getattr(partner, 'bpmn2_EObject335') is None
+
+
+def test_assoc_transformation303_stub_double():
+    # bpmn2_DataAssociation has no real 'bpmn2_DataAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_FormalExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_FormalExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_FormalExpression(language="sample_text")
+    partner = bpmn2_DataAssociation()
+    setattr(partner, 'bpmn2_DataAssociation', None)
+    _safe_set(owner, 'bpmn2_FormalExpression304', partner)
+    assert getattr(partner, 'bpmn2_DataAssociation') == owner
+    _safe_set(owner, 'bpmn2_FormalExpression304', None)
+    assert getattr(partner, 'bpmn2_DataAssociation') is None
+
+
+def test_assoc_value13_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject15' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ExtensionAttributeValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ExtensionAttributeValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ExtensionAttributeValue(id="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject15', None)
+    _safe_set(owner, 'bpmn2_ExtensionAttributeValue14', partner)
+    assert getattr(partner, 'bpmn2_EObject15') == owner
+    _safe_set(owner, 'bpmn2_ExtensionAttributeValue14', None)
+    assert getattr(partner, 'bpmn2_EObject15') is None
+
+
+def test_assoc_valueRef10_stub_double():
+    # bpmn2_EObject has no real 'bpmn2_EObject12' property in the generated
+    # code (a bare stub) -- manually attach it so bpmn2_ExtensionAttributeValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # bpmn2_ExtensionAttributeValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = bpmn2_ExtensionAttributeValue(id="sample_text")
+    partner = bpmn2_EObject()
+    setattr(partner, 'bpmn2_EObject12', None)
+    _safe_set(owner, 'bpmn2_ExtensionAttributeValue11', partner)
+    assert getattr(partner, 'bpmn2_EObject12') == owner
+    _safe_set(owner, 'bpmn2_ExtensionAttributeValue11', None)
+    assert getattr(partner, 'bpmn2_EObject12') is None
+
+

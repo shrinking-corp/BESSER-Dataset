@@ -36,3 +36,101 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Home_Security_Camera_stub_double():
+    # Home_Security has no real 'camera2' property in the generated
+    # code (a bare stub) -- manually attach it so Camera_sensor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Camera_sensor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Camera_sensor(Image_ID=7, Video_ID=7)
+    partner = Home_Security()
+    setattr(partner, 'camera2', None)
+    _safe_set(owner, 'home_Security3', partner)
+    assert getattr(partner, 'camera2') == owner
+    _safe_set(owner, 'home_Security3', None)
+    assert getattr(partner, 'camera2') is None
+
+
+def test_assoc_Home_Security_Doors_stub_double():
+    # Home_Security has no real 'doors8' property in the generated
+    # code (a bare stub) -- manually attach it so Lock_doors_sensors's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Lock_doors_sensors's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Lock_doors_sensors(attribute="sample_text")
+    partner = Home_Security()
+    setattr(partner, 'doors8', None)
+    _safe_set(owner, 'home_Security9', partner)
+    assert getattr(partner, 'doors8') == owner
+    _safe_set(owner, 'home_Security9', None)
+    assert getattr(partner, 'doors8') is None
+
+
+def test_assoc_Home_Security_Event_Log_stub_double():
+    # Home_Security has no real 'event_Log4' property in the generated
+    # code (a bare stub) -- manually attach it so Event_Log's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Event_Log's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Event_Log(attribute="sample_text")
+    partner = Home_Security()
+    setattr(partner, 'event_Log4', None)
+    _safe_set(owner, 'home_Security5', partner)
+    assert getattr(partner, 'event_Log4') == owner
+    _safe_set(owner, 'home_Security5', None)
+    assert getattr(partner, 'event_Log4') is None
+
+
+def test_assoc_Home_Security_Light_Sensor_stub_double():
+    # Home_Security has no real 'light_Sensor6' property in the generated
+    # code (a bare stub) -- manually attach it so Light_Sensor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Light_Sensor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Light_Sensor(attribute="sample_text")
+    partner = Home_Security()
+    setattr(partner, 'light_Sensor6', None)
+    _safe_set(owner, 'home_Security7', partner)
+    assert getattr(partner, 'light_Sensor6') == owner
+    _safe_set(owner, 'home_Security7', None)
+    assert getattr(partner, 'light_Sensor6') is None
+
+
+def test_assoc_Home_Security_Server_stub_double():
+    # Home_Security has no real 'server0' property in the generated
+    # code (a bare stub) -- manually attach it so Server's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Server's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Server(attribute="sample_text")
+    partner = Home_Security()
+    setattr(partner, 'server0', None)
+    _safe_set(owner, 'home_Security1', partner)
+    assert getattr(partner, 'server0') == owner
+    _safe_set(owner, 'home_Security1', None)
+    assert getattr(partner, 'server0') is None
+
+
+def test_assoc_Home_Security_Temperature_sensor_stub_double():
+    # Home_Security has no real 'temperature_sensor10' property in the generated
+    # code (a bare stub) -- manually attach it so Temperature_sensor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Temperature_sensor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Temperature_sensor(attribute="sample_text")
+    partner = Home_Security()
+    setattr(partner, 'temperature_sensor10', None)
+    _safe_set(owner, 'home_Security11', partner)
+    assert getattr(partner, 'temperature_sensor10') == owner
+    _safe_set(owner, 'home_Security11', None)
+    assert getattr(partner, 'temperature_sensor10') is None
+
+

@@ -586,3 +586,116 @@ def test_assoc_tables67_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'rdbms_tables69', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_key224_stub_double():
+    # rdbms_key2 has no real 'rdbms_key2' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_DocumentRoot(mixed="sample_text")
+    partner = rdbms_key2()
+    setattr(partner, 'rdbms_key2', None)
+    _safe_set(owner, 'rdbms_DocumentRoot25', {partner})
+    assert getattr(partner, 'rdbms_key2') == owner
+    _safe_set(owner, 'rdbms_DocumentRoot25', set())
+    assert getattr(partner, 'rdbms_key2') is None
+
+
+def test_assoc_key279_stub_double():
+    # rdbms_key2 has no real 'rdbms_key281' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_table(kind="sample_text", name="sample_text", oID="sample_text")
+    partner = rdbms_key2()
+    setattr(partner, 'rdbms_key281', None)
+    _safe_set(owner, 'rdbms_table80', partner)
+    assert getattr(partner, 'rdbms_key281') == owner
+    _safe_set(owner, 'rdbms_table80', None)
+    assert getattr(partner, 'rdbms_key281') is None
+
+
+def test_assoc_key55_stub_double():
+    # rdbms_key2 has no real 'rdbms_key256' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_key's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_key's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_key(kind="sample_text", name="sample_text", oID="sample_text")
+    partner = rdbms_key2()
+    setattr(partner, 'rdbms_key256', None)
+    _safe_set(owner, 'rdbms_key57', partner)
+    assert getattr(partner, 'rdbms_key256') == owner
+    _safe_set(owner, 'rdbms_key57', None)
+    assert getattr(partner, 'rdbms_key256') is None
+
+
+def test_assoc_rDBMS28_stub_double():
+    # rdbms_RDBMS has no real 'rdbms_RDBMS' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_DocumentRoot(mixed="sample_text")
+    partner = rdbms_RDBMS()
+    setattr(partner, 'rdbms_RDBMS', None)
+    _safe_set(owner, 'rdbms_DocumentRoot29', {partner})
+    assert getattr(partner, 'rdbms_RDBMS') == owner
+    _safe_set(owner, 'rdbms_DocumentRoot29', set())
+    assert getattr(partner, 'rdbms_RDBMS') is None
+
+
+def test_assoc_schemas58_stub_double():
+    # rdbms_RDBMS has no real 'rdbms_RDBMS59' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_schemas's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_schemas's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_schemas(group="sample_text")
+    partner = rdbms_RDBMS()
+    setattr(partner, 'rdbms_RDBMS59', None)
+    _safe_set(owner, 'rdbms_schemas60', partner)
+    assert getattr(partner, 'rdbms_RDBMS59') == owner
+    _safe_set(owner, 'rdbms_schemas60', None)
+    assert getattr(partner, 'rdbms_RDBMS59') is None
+
+
+def test_assoc_xMLNSPrefixMap5_stub_double():
+    # rdbms_EStringToStringMapEntry has no real 'rdbms_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_DocumentRoot(mixed="sample_text")
+    partner = rdbms_EStringToStringMapEntry()
+    setattr(partner, 'rdbms_EStringToStringMapEntry', None)
+    _safe_set(owner, 'rdbms_DocumentRoot', {partner})
+    assert getattr(partner, 'rdbms_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'rdbms_DocumentRoot', set())
+    assert getattr(partner, 'rdbms_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation6_stub_double():
+    # rdbms_EStringToStringMapEntry has no real 'rdbms_EStringToStringMapEntry8' property in the generated
+    # code (a bare stub) -- manually attach it so rdbms_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rdbms_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rdbms_DocumentRoot(mixed="sample_text")
+    partner = rdbms_EStringToStringMapEntry()
+    setattr(partner, 'rdbms_EStringToStringMapEntry8', None)
+    _safe_set(owner, 'rdbms_DocumentRoot7', {partner})
+    assert getattr(partner, 'rdbms_EStringToStringMapEntry8') == owner
+    _safe_set(owner, 'rdbms_DocumentRoot7', set())
+    assert getattr(partner, 'rdbms_EStringToStringMapEntry8') is None
+
+

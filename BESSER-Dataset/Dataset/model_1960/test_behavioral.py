@@ -44,3 +44,71 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Files4_stub_double():
+    # file_FileOwner has no real 'file_FileOwner' property in the generated
+    # code (a bare stub) -- manually attach it so file_File's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # file_File's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = file_File(Name="sample_text")
+    partner = file_FileOwner()
+    setattr(partner, 'file_FileOwner', None)
+    _safe_set(owner, 'file_File5', partner)
+    assert getattr(partner, 'file_FileOwner') == owner
+    _safe_set(owner, 'file_File5', None)
+    assert getattr(partner, 'file_FileOwner') is None
+
+
+def test_assoc_HandledFile1_stub_double():
+    # file_FileHandler has no real 'file_FileHandler2' property in the generated
+    # code (a bare stub) -- manually attach it so file_File's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # file_File's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = file_File(Name="sample_text")
+    partner = file_FileHandler()
+    setattr(partner, 'file_FileHandler2', None)
+    _safe_set(owner, 'file_File3', partner)
+    assert getattr(partner, 'file_FileHandler2') == owner
+    _safe_set(owner, 'file_File3', None)
+    assert getattr(partner, 'file_FileHandler2') is None
+
+
+def test_assoc_OutputFile6_stub_double():
+    # file_FileOutput has no real 'file_FileOutput' property in the generated
+    # code (a bare stub) -- manually attach it so file_File's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # file_File's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = file_File(Name="sample_text")
+    partner = file_FileOutput()
+    setattr(partner, 'file_FileOutput', None)
+    _safe_set(owner, 'file_File7', partner)
+    assert getattr(partner, 'file_FileOutput') == owner
+    _safe_set(owner, 'file_File7', None)
+    assert getattr(partner, 'file_FileOutput') is None
+
+
+def test_assoc_SelectedFile0_stub_double():
+    # file_FileHandler has no real 'file_FileHandler' property in the generated
+    # code (a bare stub) -- manually attach it so file_File's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # file_File's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = file_File(Name="sample_text")
+    partner = file_FileHandler()
+    setattr(partner, 'file_FileHandler', None)
+    _safe_set(owner, 'file_File', partner)
+    assert getattr(partner, 'file_FileHandler') == owner
+    _safe_set(owner, 'file_File', None)
+    assert getattr(partner, 'file_FileHandler') is None
+
+

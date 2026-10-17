@@ -156,3 +156,41 @@ def test_assoc_secondTerm9_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'stateMachineActions_TERM11', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_assignment1_stub_double():
+    # stateMachineActions_Action has no real 'stateMachineActions_Action2' property in the generated
+    # code (a bare stub) -- manually attach it so stateMachineActions_Assignment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stateMachineActions_Assignment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stateMachineActions_Assignment(leftvar="sample_text")
+    partner = stateMachineActions_Action()
+    setattr(partner, 'stateMachineActions_Action2', None)
+    _safe_set(owner, 'stateMachineActions_Assignment', partner)
+    assert getattr(partner, 'stateMachineActions_Action2') == owner
+    _safe_set(owner, 'stateMachineActions_Assignment', None)
+    assert getattr(partner, 'stateMachineActions_Action2') is None
+
+
+def test_assoc_eventAction3_stub_double():
+    # stateMachineActions_Action has no real 'stateMachineActions_Action4' property in the generated
+    # code (a bare stub) -- manually attach it so stateMachineActions_EventAction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stateMachineActions_EventAction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stateMachineActions_EventAction(eventExtension="sample_text", eventName="sample_text")
+    partner = stateMachineActions_Action()
+    setattr(partner, 'stateMachineActions_Action4', None)
+    _safe_set(owner, 'stateMachineActions_EventAction', partner)
+    assert getattr(partner, 'stateMachineActions_Action4') == owner
+    _safe_set(owner, 'stateMachineActions_EventAction', None)
+    assert getattr(partner, 'stateMachineActions_Action4') is None
+
+

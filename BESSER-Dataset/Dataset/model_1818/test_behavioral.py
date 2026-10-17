@@ -1029,3 +1029,791 @@ def test_assoc_waitset1_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'ddsMetamodel_DdsWaitSet', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_containingWaitset222_stub_double():
+    # ddsMetamodel_DdsStatusCondition has no real 'statusConditions' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsWaitSet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsWaitSet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsWaitSet(name="sample_text")
+    partner = ddsMetamodel_DdsStatusCondition()
+    setattr(partner, 'statusConditions', None)
+    _safe_set(owner, 'DdsWaitSet', partner)
+    assert getattr(partner, 'statusConditions') == owner
+    _safe_set(owner, 'DdsWaitSet', None)
+    assert getattr(partner, 'statusConditions') is None
+
+
+def test_assoc_dataReaderLifecycleQos207_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile208' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDataReaderLifecycleQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDataReaderLifecycleQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDataReaderLifecycleQos(autopurge_dispose_all=True, enable_invalid_samples=True)
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile208', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDataReaderLifecycleQos209', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile208') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDataReaderLifecycleQos209', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile208') is None
+
+
+def test_assoc_dataReaderQosProfile25_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDataReader's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDataReader's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDataReader(dataReaderName="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDataReader26', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDataReader26', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile') is None
+
+
+def test_assoc_dataWriterLifecycleQos159_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile160' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDataWriterLifecycleQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDataWriterLifecycleQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDataWriterLifecycleQos(autodispose_unregistered_instances=True)
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile160', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDataWriterLifecycleQos161', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile160') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDataWriterLifecycleQos161', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile160') is None
+
+
+def test_assoc_dataWriterQosProfile39_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDataWriter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDataWriter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDataWriter(dataWriterName="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDataWriter40', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDataWriter40', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile') is None
+
+
+def test_assoc_ddsdomainparticipantqosprofile7_stub_double():
+    # ddsMetamodel_DdsDomainParticipantQosProfile has no real 'ddsMetamodel_DdsDomainParticipantQosProfile' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDomainParticipant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDomainParticipant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDomainParticipant(domainId=7, domainParticipantName="sample_text")
+    partner = ddsMetamodel_DdsDomainParticipantQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDomainParticipant8', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDomainParticipant8', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile') is None
+
+
+def test_assoc_destinationOrderQos150_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile151' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDestinationOrderQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDestinationOrderQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDestinationOrderQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile151', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDestinationOrderQos152', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile151') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDestinationOrderQos152', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile151') is None
+
+
+def test_assoc_destinationOrderQos198_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile199' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDestinationOrderQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDestinationOrderQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDestinationOrderQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile199', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDestinationOrderQos200', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile199') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDestinationOrderQos200', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile199') is None
+
+
+def test_assoc_destinationOrderQos71_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile72' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDestinationOrderQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDestinationOrderQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDestinationOrderQos(kind="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile72', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDestinationOrderQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile72') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDestinationOrderQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile72') is None
+
+
+def test_assoc_durabilityQos124_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile125' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDurabilityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDurabilityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDurabilityQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile125', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityQos126', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile125') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityQos126', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile125') is None
+
+
+def test_assoc_durabilityQos177_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile178' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDurabilityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDurabilityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDurabilityQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile178', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityQos179', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile178') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityQos179', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile178') is None
+
+
+def test_assoc_durabilityQos59_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile60' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDurabilityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDurabilityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDurabilityQos(kind="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile60', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile60') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile60') is None
+
+
+def test_assoc_durabilityServiceQos61_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile62' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDurabilityServiceQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDurabilityServiceQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDurabilityServiceQos(history_depth="sample_text", history_kind="sample_text", max_instances="sample_text", max_samples="sample_text", max_samples_per_instances="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile62', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityServiceQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile62') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDurabilityServiceQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile62') is None
+
+
+def test_assoc_duration88_stub_double():
+    # ddsMetamodel_DdsLatencyBudgetQos has no real 'ddsMetamodel_DdsLatencyBudgetQos89' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDuration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDuration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDuration(nanoSec="sample_text", sec="sample_text")
+    partner = ddsMetamodel_DdsLatencyBudgetQos()
+    setattr(partner, 'ddsMetamodel_DdsLatencyBudgetQos89', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDuration90', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsLatencyBudgetQos89') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDuration90', None)
+    assert getattr(partner, 'ddsMetamodel_DdsLatencyBudgetQos89') is None
+
+
+def test_assoc_duration99_stub_double():
+    # ddsMetamodel_DdsLifespan has no real 'ddsMetamodel_DdsLifespan100' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDuration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDuration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDuration(nanoSec="sample_text", sec="sample_text")
+    partner = ddsMetamodel_DdsLifespan()
+    setattr(partner, 'ddsMetamodel_DdsLifespan100', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDuration101', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsLifespan100') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDuration101', None)
+    assert getattr(partner, 'ddsMetamodel_DdsLifespan100') is None
+
+
+def test_assoc_entityFactoryQos114_stub_double():
+    # ddsMetamodel_DdsPublisherQosProfile has no real 'ddsMetamodel_DdsPublisherQosProfile115' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsEntityFactoryQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsEntityFactoryQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsEntityFactoryQos(autoenable_created_entities=True)
+    partner = ddsMetamodel_DdsPublisherQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsPublisherQosProfile115', None)
+    _safe_set(owner, 'ddsMetamodel_DdsEntityFactoryQos116', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile115') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsEntityFactoryQos116', None)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile115') is None
+
+
+def test_assoc_entityFactoryQos165_stub_double():
+    # ddsMetamodel_DdsSubscriberQosProfile has no real 'ddsMetamodel_DdsSubscriberQosProfile166' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsEntityFactoryQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsEntityFactoryQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsEntityFactoryQos(autoenable_created_entities=True)
+    partner = ddsMetamodel_DdsSubscriberQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile166', None)
+    _safe_set(owner, 'ddsMetamodel_DdsEntityFactoryQos167', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile166') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsEntityFactoryQos167', None)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile166') is None
+
+
+def test_assoc_entityFactoryQos55_stub_double():
+    # ddsMetamodel_DdsDomainParticipantQosProfile has no real 'ddsMetamodel_DdsDomainParticipantQosProfile56' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsEntityFactoryQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsEntityFactoryQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsEntityFactoryQos(autoenable_created_entities=True)
+    partner = ddsMetamodel_DdsDomainParticipantQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile56', None)
+    _safe_set(owner, 'ddsMetamodel_DdsEntityFactoryQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile56') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsEntityFactoryQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile56') is None
+
+
+def test_assoc_groupDataQos112_stub_double():
+    # ddsMetamodel_DdsPublisherQosProfile has no real 'ddsMetamodel_DdsPublisherQosProfile113' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsGroupDataQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsGroupDataQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsGroupDataQos(value="sample_text")
+    partner = ddsMetamodel_DdsPublisherQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsPublisherQosProfile113', None)
+    _safe_set(owner, 'ddsMetamodel_DdsGroupDataQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile113') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsGroupDataQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile113') is None
+
+
+def test_assoc_groupDataQos162_stub_double():
+    # ddsMetamodel_DdsSubscriberQosProfile has no real 'ddsMetamodel_DdsSubscriberQosProfile163' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsGroupDataQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsGroupDataQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsGroupDataQos(value="sample_text")
+    partner = ddsMetamodel_DdsSubscriberQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile163', None)
+    _safe_set(owner, 'ddsMetamodel_DdsGroupDataQos164', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile163') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsGroupDataQos164', None)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile163') is None
+
+
+def test_assoc_historyQos153_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile154' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsHistoryQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsHistoryQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsHistoryQos(depth="sample_text", kind="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile154', None)
+    _safe_set(owner, 'ddsMetamodel_DdsHistoryQos155', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile154') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsHistoryQos155', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile154') is None
+
+
+def test_assoc_historyQos201_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile202' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsHistoryQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsHistoryQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsHistoryQos(depth="sample_text", kind="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile202', None)
+    _safe_set(owner, 'ddsMetamodel_DdsHistoryQos203', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile202') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsHistoryQos203', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile202') is None
+
+
+def test_assoc_historyQos73_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile74' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsHistoryQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsHistoryQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsHistoryQos(depth="sample_text", kind="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile74', None)
+    _safe_set(owner, 'ddsMetamodel_DdsHistoryQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile74') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsHistoryQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile74') is None
+
+
+def test_assoc_livelinessQos138_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile139' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsLivelinessQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsLivelinessQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsLivelinessQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile139', None)
+    _safe_set(owner, 'ddsMetamodel_DdsLivelinessQos140', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile139') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsLivelinessQos140', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile139') is None
+
+
+def test_assoc_livelinessQos186_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile187' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsLivelinessQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsLivelinessQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsLivelinessQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile187', None)
+    _safe_set(owner, 'ddsMetamodel_DdsLivelinessQos188', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile187') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsLivelinessQos188', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile187') is None
+
+
+def test_assoc_livelinessQos65_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile66' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsLivelinessQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsLivelinessQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsLivelinessQos(kind="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile66', None)
+    _safe_set(owner, 'ddsMetamodel_DdsLivelinessQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile66') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsLivelinessQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile66') is None
+
+
+def test_assoc_minimum_separation94_stub_double():
+    # ddsMetamodel_DdsTimeBasedFilterQos has no real 'ddsMetamodel_DdsTimeBasedFilterQos' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDuration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDuration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDuration(nanoSec="sample_text", sec="sample_text")
+    partner = ddsMetamodel_DdsTimeBasedFilterQos()
+    setattr(partner, 'ddsMetamodel_DdsTimeBasedFilterQos', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDuration95', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTimeBasedFilterQos') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDuration95', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTimeBasedFilterQos') is None
+
+
+def test_assoc_ownershipQos133_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile134' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsOwnershipQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsOwnershipQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsOwnershipQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile134', None)
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipQos135', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile134') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipQos135', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile134') is None
+
+
+def test_assoc_ownershipQos189_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile190' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsOwnershipQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsOwnershipQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsOwnershipQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile190', None)
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipQos191', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile190') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipQos191', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile190') is None
+
+
+def test_assoc_ownershipQos67_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile68' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsOwnershipQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsOwnershipQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsOwnershipQos(kind="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile68', None)
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile68') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile68') is None
+
+
+def test_assoc_ownershipStrength136_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile137' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsOwnershipStrengthQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsOwnershipStrengthQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsOwnershipStrengthQos(value="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile137', None)
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipStrengthQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile137') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsOwnershipStrengthQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile137') is None
+
+
+def test_assoc_partitionQos119_stub_double():
+    # ddsMetamodel_DdsPublisherQosProfile has no real 'ddsMetamodel_DdsPublisherQosProfile120' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsPartitionQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsPartitionQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsPartitionQos(name="sample_text")
+    partner = ddsMetamodel_DdsPublisherQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsPublisherQosProfile120', None)
+    _safe_set(owner, 'ddsMetamodel_DdsPartitionQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile120') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsPartitionQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile120') is None
+
+
+def test_assoc_partitionQos171_stub_double():
+    # ddsMetamodel_DdsSubscriberQosProfile has no real 'ddsMetamodel_DdsSubscriberQosProfile172' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsPartitionQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsPartitionQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsPartitionQos(name="sample_text")
+    partner = ddsMetamodel_DdsSubscriberQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile172', None)
+    _safe_set(owner, 'ddsMetamodel_DdsPartitionQos173', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile172') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsPartitionQos173', None)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile172') is None
+
+
+def test_assoc_period85_stub_double():
+    # ddsMetamodel_DdsDeadlineQos has no real 'ddsMetamodel_DdsDeadlineQos86' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsDuration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsDuration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsDuration(nanoSec="sample_text", sec="sample_text")
+    partner = ddsMetamodel_DdsDeadlineQos()
+    setattr(partner, 'ddsMetamodel_DdsDeadlineQos86', None)
+    _safe_set(owner, 'ddsMetamodel_DdsDuration87', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDeadlineQos86') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsDuration87', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDeadlineQos86') is None
+
+
+def test_assoc_presentationQos117_stub_double():
+    # ddsMetamodel_DdsPublisherQosProfile has no real 'ddsMetamodel_DdsPublisherQosProfile118' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsPresentationQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsPresentationQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsPresentationQos(access_scope="sample_text", coherent_access=True, ordered_access=True)
+    partner = ddsMetamodel_DdsPublisherQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsPublisherQosProfile118', None)
+    _safe_set(owner, 'ddsMetamodel_DdsPresentationQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile118') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsPresentationQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile118') is None
+
+
+def test_assoc_presentationQos168_stub_double():
+    # ddsMetamodel_DdsSubscriberQosProfile has no real 'ddsMetamodel_DdsSubscriberQosProfile169' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsPresentationQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsPresentationQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsPresentationQos(access_scope="sample_text", coherent_access=True, ordered_access=True)
+    partner = ddsMetamodel_DdsSubscriberQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile169', None)
+    _safe_set(owner, 'ddsMetamodel_DdsPresentationQos170', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile169') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsPresentationQos170', None)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile169') is None
+
+
+def test_assoc_publisherQosProfile32_stub_double():
+    # ddsMetamodel_DdsPublisherQosProfile has no real 'ddsMetamodel_DdsPublisherQosProfile' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsPublisher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsPublisher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsPublisher(publisherName="sample_text")
+    partner = ddsMetamodel_DdsPublisherQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsPublisherQosProfile', None)
+    _safe_set(owner, 'ddsMetamodel_DdsPublisher33', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsPublisher33', None)
+    assert getattr(partner, 'ddsMetamodel_DdsPublisherQosProfile') is None
+
+
+def test_assoc_reliabilityQos141_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile142' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsReliabilityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsReliabilityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsReliabilityQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile142', None)
+    _safe_set(owner, 'ddsMetamodel_DdsReliabilityQos143', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile142') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsReliabilityQos143', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile142') is None
+
+
+def test_assoc_reliabilityQos195_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile196' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsReliabilityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsReliabilityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsReliabilityQos(kind="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile196', None)
+    _safe_set(owner, 'ddsMetamodel_DdsReliabilityQos197', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile196') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsReliabilityQos197', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile196') is None
+
+
+def test_assoc_reliabilityQos69_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile70' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsReliabilityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsReliabilityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsReliabilityQos(kind="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile70', None)
+    _safe_set(owner, 'ddsMetamodel_DdsReliabilityQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile70') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsReliabilityQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile70') is None
+
+
+def test_assoc_resourceLimitsQos156_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile157' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsResourceLimits's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsResourceLimits's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsResourceLimits(max_instances="sample_text", max_samples="sample_text", max_samples_per_instances="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile157', None)
+    _safe_set(owner, 'ddsMetamodel_DdsResourceLimits158', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile157') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsResourceLimits158', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile157') is None
+
+
+def test_assoc_resourceLimitsQos204_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile205' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsResourceLimits's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsResourceLimits's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsResourceLimits(max_instances="sample_text", max_samples="sample_text", max_samples_per_instances="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile205', None)
+    _safe_set(owner, 'ddsMetamodel_DdsResourceLimits206', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile205') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsResourceLimits206', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile205') is None
+
+
+def test_assoc_resourceLimitsQos75_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile76' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsResourceLimits's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsResourceLimits's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsResourceLimits(max_instances="sample_text", max_samples="sample_text", max_samples_per_instances="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile76', None)
+    _safe_set(owner, 'ddsMetamodel_DdsResourceLimits', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile76') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsResourceLimits', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile76') is None
+
+
+def test_assoc_statusConditions212_stub_double():
+    # ddsMetamodel_DdsStatusCondition has no real 'DdsStatusCondition' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsWaitSet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsWaitSet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsWaitSet(name="sample_text")
+    partner = ddsMetamodel_DdsStatusCondition()
+    setattr(partner, 'DdsStatusCondition', None)
+    _safe_set(owner, 'containingWaitset', {partner})
+    assert getattr(partner, 'DdsStatusCondition') == owner
+    _safe_set(owner, 'containingWaitset', set())
+    assert getattr(partner, 'DdsStatusCondition') is None
+
+
+def test_assoc_subscriberQosProfile19_stub_double():
+    # ddsMetamodel_DdsSubscriberQosProfile has no real 'ddsMetamodel_DdsSubscriberQosProfile' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsSubscriber's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsSubscriber's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsSubscriber(subscriberName="sample_text")
+    partner = ddsMetamodel_DdsSubscriberQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile', None)
+    _safe_set(owner, 'ddsMetamodel_DdsSubscriber20', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsSubscriber20', None)
+    assert getattr(partner, 'ddsMetamodel_DdsSubscriberQosProfile') is None
+
+
+def test_assoc_topicDataQos57_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile58' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsTopicDataQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsTopicDataQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsTopicDataQos(value="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile58', None)
+    _safe_set(owner, 'ddsMetamodel_DdsTopicDataQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile58') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsTopicDataQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile58') is None
+
+
+def test_assoc_topicQosProfile12_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsTopic's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsTopic's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsTopic(topicName="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile', None)
+    _safe_set(owner, 'ddsMetamodel_DdsTopic13', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsTopic13', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile') is None
+
+
+def test_assoc_transportPriorityQos144_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile145' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsTransportPriorityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsTransportPriorityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsTransportPriorityQos(value="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile145', None)
+    _safe_set(owner, 'ddsMetamodel_DdsTransportPriorityQos146', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile145') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsTransportPriorityQos146', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile145') is None
+
+
+def test_assoc_transportPriorityQos77_stub_double():
+    # ddsMetamodel_DdsTopicQosProfile has no real 'ddsMetamodel_DdsTopicQosProfile78' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsTransportPriorityQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsTransportPriorityQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsTransportPriorityQos(value="sample_text")
+    partner = ddsMetamodel_DdsTopicQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsTopicQosProfile78', None)
+    _safe_set(owner, 'ddsMetamodel_DdsTransportPriorityQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile78') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsTransportPriorityQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsTopicQosProfile78') is None
+
+
+def test_assoc_userDataQos121_stub_double():
+    # ddsMetamodel_DdsDataWriterQosProfile has no real 'ddsMetamodel_DdsDataWriterQosProfile122' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsUserDataQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsUserDataQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsUserDataQos(value="sample_text")
+    partner = ddsMetamodel_DdsDataWriterQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile122', None)
+    _safe_set(owner, 'ddsMetamodel_DdsUserDataQos123', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile122') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsUserDataQos123', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataWriterQosProfile122') is None
+
+
+def test_assoc_userDataQos174_stub_double():
+    # ddsMetamodel_DdsDataReaderQosProfile has no real 'ddsMetamodel_DdsDataReaderQosProfile175' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsUserDataQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsUserDataQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsUserDataQos(value="sample_text")
+    partner = ddsMetamodel_DdsDataReaderQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile175', None)
+    _safe_set(owner, 'ddsMetamodel_DdsUserDataQos176', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile175') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsUserDataQos176', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDataReaderQosProfile175') is None
+
+
+def test_assoc_userDataQos53_stub_double():
+    # ddsMetamodel_DdsDomainParticipantQosProfile has no real 'ddsMetamodel_DdsDomainParticipantQosProfile54' property in the generated
+    # code (a bare stub) -- manually attach it so ddsMetamodel_DdsUserDataQos's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ddsMetamodel_DdsUserDataQos's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ddsMetamodel_DdsUserDataQos(value="sample_text")
+    partner = ddsMetamodel_DdsDomainParticipantQosProfile()
+    setattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile54', None)
+    _safe_set(owner, 'ddsMetamodel_DdsUserDataQos', partner)
+    assert getattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile54') == owner
+    _safe_set(owner, 'ddsMetamodel_DdsUserDataQos', None)
+    assert getattr(partner, 'ddsMetamodel_DdsDomainParticipantQosProfile54') is None
+
+

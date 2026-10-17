@@ -644,3 +644,71 @@ def test_assoc_subdomain22_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'uma_Domain', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_contentCategory3_stub_double():
+    # uma_ContentCategory has no real 'uma_ContentCategory' property in the generated
+    # code (a bare stub) -- manually attach it so uma_ContentCategoryPackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uma_ContentCategoryPackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uma_ContentCategoryPackage(group2="sample_text")
+    partner = uma_ContentCategory()
+    setattr(partner, 'uma_ContentCategory', None)
+    _safe_set(owner, 'uma_ContentCategoryPackage', {partner})
+    assert getattr(partner, 'uma_ContentCategory') == owner
+    _safe_set(owner, 'uma_ContentCategoryPackage', set())
+    assert getattr(partner, 'uma_ContentCategory') is None
+
+
+def test_assoc_processElement46_stub_double():
+    # uma_ProcessElement has no real 'uma_ProcessElement' property in the generated
+    # code (a bare stub) -- manually attach it so uma_ProcessPackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uma_ProcessPackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uma_ProcessPackage(group2="sample_text")
+    partner = uma_ProcessElement()
+    setattr(partner, 'uma_ProcessElement', None)
+    _safe_set(owner, 'uma_ProcessPackage', {partner})
+    assert getattr(partner, 'uma_ProcessElement') == owner
+    _safe_set(owner, 'uma_ProcessPackage', set())
+    assert getattr(partner, 'uma_ProcessElement') is None
+
+
+def test_assoc_xMLNSPrefixMap11_stub_double():
+    # uma_EStringToStringMapEntry has no real 'uma_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so uma_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uma_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uma_DocumentRoot(mixed="sample_text")
+    partner = uma_EStringToStringMapEntry()
+    setattr(partner, 'uma_EStringToStringMapEntry', None)
+    _safe_set(owner, 'uma_DocumentRoot', {partner})
+    assert getattr(partner, 'uma_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'uma_DocumentRoot', set())
+    assert getattr(partner, 'uma_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation12_stub_double():
+    # uma_EStringToStringMapEntry has no real 'uma_EStringToStringMapEntry14' property in the generated
+    # code (a bare stub) -- manually attach it so uma_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uma_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uma_DocumentRoot(mixed="sample_text")
+    partner = uma_EStringToStringMapEntry()
+    setattr(partner, 'uma_EStringToStringMapEntry14', None)
+    _safe_set(owner, 'uma_DocumentRoot13', {partner})
+    assert getattr(partner, 'uma_EStringToStringMapEntry14') == owner
+    _safe_set(owner, 'uma_DocumentRoot13', set())
+    assert getattr(partner, 'uma_EStringToStringMapEntry14') is None
+
+

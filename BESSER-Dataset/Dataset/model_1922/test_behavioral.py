@@ -904,3 +904,581 @@ def test_assoc_varDeclarations98_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'libraryElement_VarDeclaration99', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_adapterDecl169_stub_double():
+    # libraryElement_AdapterDeclaration has no real 'AdapterDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_AdapterFB's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_AdapterFB's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_AdapterFB()
+    partner = libraryElement_AdapterDeclaration()
+    setattr(partner, 'AdapterDeclaration', None)
+    _safe_set(owner, 'adapterFB', partner)
+    assert getattr(partner, 'AdapterDeclaration') == owner
+    _safe_set(owner, 'adapterFB', None)
+    assert getattr(partner, 'AdapterDeclaration') is None
+
+
+def test_assoc_adapterFB0_stub_double():
+    # libraryElement_AdapterDeclaration has no real 'adapterDecl' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_AdapterFB's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_AdapterFB's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_AdapterFB()
+    partner = libraryElement_AdapterDeclaration()
+    setattr(partner, 'adapterDecl', None)
+    _safe_set(owner, 'AdapterFB', partner)
+    assert getattr(partner, 'adapterDecl') == owner
+    _safe_set(owner, 'AdapterFB', None)
+    assert getattr(partner, 'adapterDecl') is None
+
+
+def test_assoc_adapterFBType2_stub_double():
+    # libraryElement_AdapterFBType has no real 'libraryElement_AdapterFBType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_AdapterType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_AdapterType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_AdapterType()
+    partner = libraryElement_AdapterFBType()
+    setattr(partner, 'libraryElement_AdapterFBType', None)
+    _safe_set(owner, 'libraryElement_AdapterType', partner)
+    assert getattr(partner, 'libraryElement_AdapterFBType') == owner
+    _safe_set(owner, 'libraryElement_AdapterType', None)
+    assert getattr(partner, 'libraryElement_AdapterFBType') is None
+
+
+def test_assoc_adapterType155_stub_double():
+    # libraryElement_AdapterFBType has no real 'libraryElement_AdapterFBType156' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_AdapterType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_AdapterType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_AdapterType()
+    partner = libraryElement_AdapterFBType()
+    setattr(partner, 'libraryElement_AdapterFBType156', None)
+    _safe_set(owner, 'libraryElement_AdapterType157', partner)
+    assert getattr(partner, 'libraryElement_AdapterFBType156') == owner
+    _safe_set(owner, 'libraryElement_AdapterType157', None)
+    assert getattr(partner, 'libraryElement_AdapterFBType156') is None
+
+
+def test_assoc_color172_stub_double():
+    # libraryElement_ColorizableElement has no real 'libraryElement_ColorizableElement' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Color's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Color's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Color(blue="sample_text", green="sample_text", red="sample_text")
+    partner = libraryElement_ColorizableElement()
+    setattr(partner, 'libraryElement_ColorizableElement', None)
+    _safe_set(owner, 'libraryElement_Color', partner)
+    assert getattr(partner, 'libraryElement_ColorizableElement') == owner
+    _safe_set(owner, 'libraryElement_Color', None)
+    assert getattr(partner, 'libraryElement_ColorizableElement') is None
+
+
+def test_assoc_compilerInfo132_stub_double():
+    # libraryElement_CompilableType has no real 'libraryElement_CompilableType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_CompilerInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_CompilerInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_CompilerInfo(classdef="sample_text", header="sample_text")
+    partner = libraryElement_CompilableType()
+    setattr(partner, 'libraryElement_CompilableType', None)
+    _safe_set(owner, 'libraryElement_CompilerInfo133', partner)
+    assert getattr(partner, 'libraryElement_CompilableType') == owner
+    _safe_set(owner, 'libraryElement_CompilerInfo133', None)
+    assert getattr(partner, 'libraryElement_CompilableType') is None
+
+
+def test_assoc_conditionEvent45_stub_double():
+    # libraryElement_Event has no real 'libraryElement_Event47' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ECTransition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ECTransition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ECTransition(comment="sample_text", conditionExpression="sample_text")
+    partner = libraryElement_Event()
+    setattr(partner, 'libraryElement_Event47', None)
+    _safe_set(owner, 'libraryElement_ECTransition46', partner)
+    assert getattr(partner, 'libraryElement_Event47') == owner
+    _safe_set(owner, 'libraryElement_ECTransition46', None)
+    assert getattr(partner, 'libraryElement_Event47') is None
+
+
+def test_assoc_device78_stub_double():
+    # libraryElement_Link has no real 'inConnections' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Device's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Device's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Device(profile="sample_text")
+    partner = libraryElement_Link()
+    setattr(partner, 'inConnections', None)
+    _safe_set(owner, 'Device', partner)
+    assert getattr(partner, 'inConnections') == owner
+    _safe_set(owner, 'Device', None)
+    assert getattr(partner, 'inConnections') is None
+
+
+def test_assoc_eCAction36_stub_double():
+    # libraryElement_ECAction has no real 'libraryElement_ECAction38' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ECState's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ECState's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ECState()
+    partner = libraryElement_ECAction()
+    setattr(partner, 'libraryElement_ECAction38', None)
+    _safe_set(owner, 'libraryElement_ECState37', {partner})
+    assert getattr(partner, 'libraryElement_ECAction38') == owner
+    _safe_set(owner, 'libraryElement_ECState37', set())
+    assert getattr(partner, 'libraryElement_ECAction38') is None
+
+
+def test_assoc_eCState29_stub_double():
+    # libraryElement_ECC has no real 'libraryElement_ECC30' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ECState's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ECState's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ECState()
+    partner = libraryElement_ECC()
+    setattr(partner, 'libraryElement_ECC30', None)
+    _safe_set(owner, 'libraryElement_ECState', partner)
+    assert getattr(partner, 'libraryElement_ECC30') == owner
+    _safe_set(owner, 'libraryElement_ECState', None)
+    assert getattr(partner, 'libraryElement_ECC30') is None
+
+
+def test_assoc_eCTransition31_stub_double():
+    # libraryElement_ECC has no real 'libraryElement_ECC32' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ECTransition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ECTransition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ECTransition(comment="sample_text", conditionExpression="sample_text")
+    partner = libraryElement_ECC()
+    setattr(partner, 'libraryElement_ECC32', None)
+    _safe_set(owner, 'libraryElement_ECTransition', partner)
+    assert getattr(partner, 'libraryElement_ECC32') == owner
+    _safe_set(owner, 'libraryElement_ECTransition', None)
+    assert getattr(partner, 'libraryElement_ECC32') is None
+
+
+def test_assoc_eventInputs65_stub_double():
+    # libraryElement_Event has no real 'libraryElement_Event67' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_InterfaceList's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_InterfaceList's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_InterfaceList()
+    partner = libraryElement_Event()
+    setattr(partner, 'libraryElement_Event67', None)
+    _safe_set(owner, 'libraryElement_InterfaceList66', {partner})
+    assert getattr(partner, 'libraryElement_Event67') == owner
+    _safe_set(owner, 'libraryElement_InterfaceList66', set())
+    assert getattr(partner, 'libraryElement_Event67') is None
+
+
+def test_assoc_eventOutputs68_stub_double():
+    # libraryElement_Event has no real 'libraryElement_Event70' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_InterfaceList's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_InterfaceList's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_InterfaceList()
+    partner = libraryElement_Event()
+    setattr(partner, 'libraryElement_Event70', None)
+    _safe_set(owner, 'libraryElement_InterfaceList69', {partner})
+    assert getattr(partner, 'libraryElement_Event70') == owner
+    _safe_set(owner, 'libraryElement_InterfaceList69', set())
+    assert getattr(partner, 'libraryElement_Event70') is None
+
+
+def test_assoc_fBNetwork135_stub_double():
+    # libraryElement_CompositeFBType has no real 'libraryElement_CompositeFBType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_FBNetwork's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_FBNetwork's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_FBNetwork()
+    partner = libraryElement_CompositeFBType()
+    setattr(partner, 'libraryElement_CompositeFBType', None)
+    _safe_set(owner, 'libraryElement_FBNetwork136', partner)
+    assert getattr(partner, 'libraryElement_CompositeFBType') == owner
+    _safe_set(owner, 'libraryElement_FBNetwork136', None)
+    assert getattr(partner, 'libraryElement_CompositeFBType') is None
+
+
+def test_assoc_fBNetwork92_stub_double():
+    # libraryElement_ResourceType has no real 'libraryElement_ResourceType93' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_FBNetwork's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_FBNetwork's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_FBNetwork()
+    partner = libraryElement_ResourceType()
+    setattr(partner, 'libraryElement_ResourceType93', None)
+    _safe_set(owner, 'libraryElement_FBNetwork94', partner)
+    assert getattr(partner, 'libraryElement_ResourceType93') == owner
+    _safe_set(owner, 'libraryElement_FBNetwork94', None)
+    assert getattr(partner, 'libraryElement_ResourceType93') is None
+
+
+def test_assoc_identification129_stub_double():
+    # libraryElement_LibraryElement has no real 'libraryElement_LibraryElement130' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Identification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Identification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Identification(applicationDomain="sample_text", classification="sample_text", description="sample_text", function="sample_text", standard="sample_text", type="sample_text")
+    partner = libraryElement_LibraryElement()
+    setattr(partner, 'libraryElement_LibraryElement130', None)
+    _safe_set(owner, 'libraryElement_Identification', partner)
+    assert getattr(partner, 'libraryElement_LibraryElement130') == owner
+    _safe_set(owner, 'libraryElement_Identification', None)
+    assert getattr(partner, 'libraryElement_LibraryElement130') is None
+
+
+def test_assoc_inConnections14_stub_double():
+    # libraryElement_Link has no real 'Link' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Device's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Device's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Device(profile="sample_text")
+    partner = libraryElement_Link()
+    setattr(partner, 'Link', None)
+    _safe_set(owner, 'device15', {partner})
+    assert getattr(partner, 'Link') == owner
+    _safe_set(owner, 'device15', set())
+    assert getattr(partner, 'Link') is None
+
+
+def test_assoc_inputPrimitive103_stub_double():
+    # libraryElement_InputPrimitive has no real 'libraryElement_InputPrimitive' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ServiceTransaction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ServiceTransaction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ServiceTransaction(TestResult="sample_text")
+    partner = libraryElement_InputPrimitive()
+    setattr(partner, 'libraryElement_InputPrimitive', None)
+    _safe_set(owner, 'libraryElement_ServiceTransaction104', partner)
+    assert getattr(partner, 'libraryElement_InputPrimitive') == owner
+    _safe_set(owner, 'libraryElement_ServiceTransaction104', None)
+    assert getattr(partner, 'libraryElement_InputPrimitive') is None
+
+
+def test_assoc_interface170_stub_double():
+    # libraryElement_ServiceInterface has no real 'libraryElement_ServiceInterface171' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Primitive's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Primitive's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Primitive(event="sample_text", parameters="sample_text")
+    partner = libraryElement_ServiceInterface()
+    setattr(partner, 'libraryElement_ServiceInterface171', None)
+    _safe_set(owner, 'libraryElement_Primitive', partner)
+    assert getattr(partner, 'libraryElement_ServiceInterface171') == owner
+    _safe_set(owner, 'libraryElement_Primitive', None)
+    assert getattr(partner, 'libraryElement_ServiceInterface171') is None
+
+
+def test_assoc_interfaceList55_stub_double():
+    # libraryElement_FBType has no real 'libraryElement_FBType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_InterfaceList's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_InterfaceList's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_InterfaceList()
+    partner = libraryElement_FBType()
+    setattr(partner, 'libraryElement_FBType', None)
+    _safe_set(owner, 'libraryElement_InterfaceList56', partner)
+    assert getattr(partner, 'libraryElement_FBType') == owner
+    _safe_set(owner, 'libraryElement_InterfaceList56', None)
+    assert getattr(partner, 'libraryElement_FBType') is None
+
+
+def test_assoc_internalVars7_stub_double():
+    # libraryElement_BasicFBType has no real 'libraryElement_BasicFBType8' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_BasicFBType()
+    setattr(partner, 'libraryElement_BasicFBType8', None)
+    _safe_set(owner, 'libraryElement_VarDeclaration', partner)
+    assert getattr(partner, 'libraryElement_BasicFBType8') == owner
+    _safe_set(owner, 'libraryElement_VarDeclaration', None)
+    assert getattr(partner, 'libraryElement_BasicFBType8') is None
+
+
+def test_assoc_links150_stub_double():
+    # libraryElement_Link has no real 'libraryElement_Link' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_SystemConfiguration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_SystemConfiguration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_SystemConfiguration()
+    partner = libraryElement_Link()
+    setattr(partner, 'libraryElement_Link', None)
+    _safe_set(owner, 'libraryElement_SystemConfiguration151', {partner})
+    assert getattr(partner, 'libraryElement_Link') == owner
+    _safe_set(owner, 'libraryElement_SystemConfiguration151', set())
+    assert getattr(partner, 'libraryElement_Link') is None
+
+
+def test_assoc_outConnections100_stub_double():
+    # libraryElement_Link has no real 'Link101' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Segment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Segment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Segment(width="sample_text")
+    partner = libraryElement_Link()
+    setattr(partner, 'Link101', None)
+    _safe_set(owner, 'segment', {partner})
+    assert getattr(partner, 'Link101') == owner
+    _safe_set(owner, 'segment', set())
+    assert getattr(partner, 'Link101') is None
+
+
+def test_assoc_palette121_stub_double():
+    # libraryElement_Palette has no real 'palette.ecorePalette' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_AutomationSystem's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_AutomationSystem's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_AutomationSystem(project="sample_text")
+    partner = libraryElement_Palette()
+    setattr(partner, 'palette.ecorePalette', None)
+    _safe_set(owner, 'automationSystem', partner)
+    assert getattr(partner, 'palette.ecorePalette') == owner
+    _safe_set(owner, 'automationSystem', None)
+    assert getattr(partner, 'palette.ecorePalette') is None
+
+
+def test_assoc_paletteEntry168_stub_double():
+    # libraryElement_PaletteEntry has no real 'libraryElement_PaletteEntry' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_TypedConfigureableObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_TypedConfigureableObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_TypedConfigureableObject()
+    partner = libraryElement_PaletteEntry()
+    setattr(partner, 'libraryElement_PaletteEntry', None)
+    _safe_set(owner, 'libraryElement_TypedConfigureableObject', partner)
+    assert getattr(partner, 'libraryElement_PaletteEntry') == owner
+    _safe_set(owner, 'libraryElement_TypedConfigureableObject', None)
+    assert getattr(partner, 'libraryElement_PaletteEntry') is None
+
+
+def test_assoc_plugs59_stub_double():
+    # libraryElement_AdapterDeclaration has no real 'libraryElement_AdapterDeclaration61' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_InterfaceList's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_InterfaceList's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_InterfaceList()
+    partner = libraryElement_AdapterDeclaration()
+    setattr(partner, 'libraryElement_AdapterDeclaration61', None)
+    _safe_set(owner, 'libraryElement_InterfaceList60', {partner})
+    assert getattr(partner, 'libraryElement_AdapterDeclaration61') == owner
+    _safe_set(owner, 'libraryElement_InterfaceList60', set())
+    assert getattr(partner, 'libraryElement_AdapterDeclaration61') is None
+
+
+def test_assoc_segment77_stub_double():
+    # libraryElement_Link has no real 'outConnections' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_Segment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_Segment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_Segment(width="sample_text")
+    partner = libraryElement_Link()
+    setattr(partner, 'outConnections', None)
+    _safe_set(owner, 'Segment', partner)
+    assert getattr(partner, 'outConnections') == owner
+    _safe_set(owner, 'Segment', None)
+    assert getattr(partner, 'outConnections') is None
+
+
+def test_assoc_serviceSequence165_stub_double():
+    # libraryElement_Service has no real 'libraryElement_Service166' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ServiceSequence's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ServiceSequence's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ServiceSequence(TestResult="sample_text")
+    partner = libraryElement_Service()
+    setattr(partner, 'libraryElement_Service166', None)
+    _safe_set(owner, 'libraryElement_ServiceSequence167', partner)
+    assert getattr(partner, 'libraryElement_Service166') == owner
+    _safe_set(owner, 'libraryElement_ServiceSequence167', None)
+    assert getattr(partner, 'libraryElement_Service166') is None
+
+
+def test_assoc_sockets62_stub_double():
+    # libraryElement_AdapterDeclaration has no real 'libraryElement_AdapterDeclaration64' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_InterfaceList's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_InterfaceList's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_InterfaceList()
+    partner = libraryElement_AdapterDeclaration()
+    setattr(partner, 'libraryElement_AdapterDeclaration64', None)
+    _safe_set(owner, 'libraryElement_InterfaceList63', {partner})
+    assert getattr(partner, 'libraryElement_AdapterDeclaration64') == owner
+    _safe_set(owner, 'libraryElement_InterfaceList63', set())
+    assert getattr(partner, 'libraryElement_AdapterDeclaration64') is None
+
+
+def test_assoc_start33_stub_double():
+    # libraryElement_ECC has no real 'libraryElement_ECC34' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_ECState's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_ECState's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_ECState()
+    partner = libraryElement_ECC()
+    setattr(partner, 'libraryElement_ECC34', None)
+    _safe_set(owner, 'libraryElement_ECState35', partner)
+    assert getattr(partner, 'libraryElement_ECC34') == owner
+    _safe_set(owner, 'libraryElement_ECState35', None)
+    assert getattr(partner, 'libraryElement_ECC34') is None
+
+
+def test_assoc_type142_stub_double():
+    # libraryElement_DataType has no real 'libraryElement_DataType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_IInterfaceElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_IInterfaceElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_IInterfaceElement(isInput="sample_text", typeName="sample_text")
+    partner = libraryElement_DataType()
+    setattr(partner, 'libraryElement_DataType', None)
+    _safe_set(owner, 'libraryElement_IInterfaceElement', partner)
+    assert getattr(partner, 'libraryElement_DataType') == owner
+    _safe_set(owner, 'libraryElement_IInterfaceElement', None)
+    assert getattr(partner, 'libraryElement_DataType') is None
+
+
+def test_assoc_varDeclaration153_stub_double():
+    # libraryElement_SegmentType has no real 'libraryElement_SegmentType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_SegmentType()
+    setattr(partner, 'libraryElement_SegmentType', None)
+    _safe_set(owner, 'libraryElement_VarDeclaration154', partner)
+    assert getattr(partner, 'libraryElement_SegmentType') == owner
+    _safe_set(owner, 'libraryElement_VarDeclaration154', None)
+    assert getattr(partner, 'libraryElement_SegmentType') is None
+
+
+def test_assoc_varDeclaration90_stub_double():
+    # libraryElement_ResourceType has no real 'libraryElement_ResourceType' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_ResourceType()
+    setattr(partner, 'libraryElement_ResourceType', None)
+    _safe_set(owner, 'libraryElement_VarDeclaration91', partner)
+    assert getattr(partner, 'libraryElement_ResourceType') == owner
+    _safe_set(owner, 'libraryElement_VarDeclaration91', None)
+    assert getattr(partner, 'libraryElement_ResourceType') is None
+
+
+def test_assoc_varDeclarations173_stub_double():
+    # libraryElement_IVarElement has no real 'libraryElement_IVarElement' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_IVarElement()
+    setattr(partner, 'libraryElement_IVarElement', None)
+    _safe_set(owner, 'libraryElement_VarDeclaration174', partner)
+    assert getattr(partner, 'libraryElement_IVarElement') == owner
+    _safe_set(owner, 'libraryElement_VarDeclaration174', None)
+    assert getattr(partner, 'libraryElement_IVarElement') is None
+
+
+def test_assoc_varInitialization124_stub_double():
+    # libraryElement_VarInitialization has no real 'libraryElement_VarInitialization' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_VarInitialization()
+    setattr(partner, 'libraryElement_VarInitialization', None)
+    _safe_set(owner, 'libraryElement_VarDeclaration125', partner)
+    assert getattr(partner, 'libraryElement_VarInitialization') == owner
+    _safe_set(owner, 'libraryElement_VarDeclaration125', None)
+    assert getattr(partner, 'libraryElement_VarInitialization') is None
+
+
+def test_assoc_variables127_stub_double():
+    # libraryElement_With has no real 'withs' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_With()
+    setattr(partner, 'withs', None)
+    _safe_set(owner, 'VarDeclaration', partner)
+    assert getattr(partner, 'withs') == owner
+    _safe_set(owner, 'VarDeclaration', None)
+    assert getattr(partner, 'withs') is None
+
+
+def test_assoc_versionInfo128_stub_double():
+    # libraryElement_LibraryElement has no real 'libraryElement_LibraryElement' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VersionInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VersionInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VersionInfo(author="sample_text", date="sample_text", organization="sample_text", remarks="sample_text", version="sample_text")
+    partner = libraryElement_LibraryElement()
+    setattr(partner, 'libraryElement_LibraryElement', None)
+    _safe_set(owner, 'libraryElement_VersionInfo', partner)
+    assert getattr(partner, 'libraryElement_LibraryElement') == owner
+    _safe_set(owner, 'libraryElement_VersionInfo', None)
+    assert getattr(partner, 'libraryElement_LibraryElement') is None
+
+
+def test_assoc_withs126_stub_double():
+    # libraryElement_With has no real 'With' property in the generated
+    # code (a bare stub) -- manually attach it so libraryElement_VarDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # libraryElement_VarDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = libraryElement_VarDeclaration(arraySize="sample_text")
+    partner = libraryElement_With()
+    setattr(partner, 'With', None)
+    _safe_set(owner, 'variables', {partner})
+    assert getattr(partner, 'With') == owner
+    _safe_set(owner, 'variables', set())
+    assert getattr(partner, 'With') is None
+
+

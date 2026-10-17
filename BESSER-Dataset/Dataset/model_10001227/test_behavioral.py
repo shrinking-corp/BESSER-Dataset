@@ -99,3 +99,41 @@ def test_assoc_assoc__RwqMw5UFEeqqGZh46IEtXQ_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'assoc_018', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_assoc__RwqMk5UFEeqqGZh46IEtXQ_stub_double():
+    # Admin has no real 'assoc_115' property in the generated
+    # code (a bare stub) -- manually attach it so Online_pizza_ordering's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Online_pizza_ordering's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Online_pizza_ordering(Ingredients="sample_text", Price=3.14, pizza_type="sample_text")
+    partner = Admin()
+    setattr(partner, 'assoc_115', None)
+    _safe_set(owner, 'assoc_014', partner)
+    assert getattr(partner, 'assoc_115') == owner
+    _safe_set(owner, 'assoc_014', None)
+    assert getattr(partner, 'assoc_115') is None
+
+
+def test_assoc_assoc__RwqMpJUFEeqqGZh46IEtXQ_stub_double():
+    # Payment has no real 'assoc_117' property in the generated
+    # code (a bare stub) -- manually attach it so Customer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Customer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Customer(Name="sample_text", Password="sample_text")
+    partner = Payment()
+    setattr(partner, 'assoc_117', None)
+    _safe_set(owner, 'assoc_016', {partner})
+    assert getattr(partner, 'assoc_117') == owner
+    _safe_set(owner, 'assoc_016', set())
+    assert getattr(partner, 'assoc_117') is None
+
+

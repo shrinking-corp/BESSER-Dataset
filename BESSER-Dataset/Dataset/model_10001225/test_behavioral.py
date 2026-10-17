@@ -118,3 +118,86 @@ def test_assoc_system_app_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'app8', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Chef_system_stub_double():
+    # Chef has no real 'system10' property in the generated
+    # code (a bare stub) -- manually attach it so system's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # system's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = system(name="sample_text", user_id="sample_text")
+    partner = Chef()
+    setattr(partner, 'system10', None)
+    _safe_set(owner, 'chef11', partner)
+    assert getattr(partner, 'system10') == owner
+    _safe_set(owner, 'chef11', None)
+    assert getattr(partner, 'system10') is None
+
+
+def test_assoc_Waiter_Table_stub_double():
+    # Waiter has no real 'table2' property in the generated
+    # code (a bare stub) -- manually attach it so Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Table(avaliable=True, numSeats=7, table_id="sample_text")
+    partner = Waiter()
+    setattr(partner, 'table2', None)
+    _safe_set(owner, 'waiter3', partner)
+    assert getattr(partner, 'table2') == owner
+    _safe_set(owner, 'waiter3', None)
+    assert getattr(partner, 'table2') is None
+
+
+def test_assoc_Waiter_app_stub_double():
+    # Waiter has no real 'app16' property in the generated
+    # code (a bare stub) -- manually attach it so app's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # app's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = app(name="sample_text", user_id="sample_text")
+    partner = Waiter()
+    setattr(partner, 'app16', None)
+    _safe_set(owner, 'waiter17', partner)
+    assert getattr(partner, 'app16') == owner
+    _safe_set(owner, 'waiter17', None)
+    assert getattr(partner, 'app16') is None
+
+
+def test_assoc_customer__Order_stub_double():
+    # customer has no real 'order14' property in the generated
+    # code (a bare stub) -- manually attach it so Order's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Order's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Order(foodList="sample_text", order_id="sample_text")
+    partner = customer()
+    setattr(partner, 'order14', None)
+    _safe_set(owner, 'customer15', partner)
+    assert getattr(partner, 'order14') == owner
+    _safe_set(owner, 'customer15', None)
+    assert getattr(partner, 'order14') is None
+
+
+def test_assoc_manger_system_stub_double():
+    # manger has no real 'system12' property in the generated
+    # code (a bare stub) -- manually attach it so system's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # system's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = system(name="sample_text", user_id="sample_text")
+    partner = manger()
+    setattr(partner, 'system12', None)
+    _safe_set(owner, 'manger13', partner)
+    assert getattr(partner, 'system12') == owner
+    _safe_set(owner, 'manger13', None)
+    assert getattr(partner, 'system12') is None
+
+

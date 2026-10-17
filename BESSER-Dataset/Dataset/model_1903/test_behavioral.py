@@ -913,3 +913,506 @@ def test_assoc_wrap131_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'myDsl_Functionality132', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_abstractMethod75_stub_double():
+    # myDsl_AbstractClass has no real 'myDsl_AbstractClass76' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_AbstractMethod's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_AbstractMethod's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_AbstractMethod(name="sample_text")
+    partner = myDsl_AbstractClass()
+    setattr(partner, 'myDsl_AbstractClass76', None)
+    _safe_set(owner, 'myDsl_AbstractMethod', partner)
+    assert getattr(partner, 'myDsl_AbstractClass76') == owner
+    _safe_set(owner, 'myDsl_AbstractMethod', None)
+    assert getattr(partner, 'myDsl_AbstractClass76') is None
+
+
+def test_assoc_annotation73_stub_double():
+    # myDsl_AbstractClass has no real 'myDsl_AbstractClass74' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Annotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Annotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Annotation(propertie="sample_text")
+    partner = myDsl_AbstractClass()
+    setattr(partner, 'myDsl_AbstractClass74', None)
+    _safe_set(owner, 'myDsl_Annotation', partner)
+    assert getattr(partner, 'myDsl_AbstractClass74') == owner
+    _safe_set(owner, 'myDsl_Annotation', None)
+    assert getattr(partner, 'myDsl_AbstractClass74') is None
+
+
+def test_assoc_annotation82_stub_double():
+    # myDsl_GenericClass has no real 'myDsl_GenericClass83' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Annotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Annotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Annotation(propertie="sample_text")
+    partner = myDsl_GenericClass()
+    setattr(partner, 'myDsl_GenericClass83', None)
+    _safe_set(owner, 'myDsl_Annotation84', partner)
+    assert getattr(partner, 'myDsl_GenericClass83') == owner
+    _safe_set(owner, 'myDsl_Annotation84', None)
+    assert getattr(partner, 'myDsl_GenericClass83') is None
+
+
+def test_assoc_attribute70_stub_double():
+    # myDsl_AbstractClass has no real 'myDsl_AbstractClass' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Attribute(name="sample_text")
+    partner = myDsl_AbstractClass()
+    setattr(partner, 'myDsl_AbstractClass', None)
+    _safe_set(owner, 'myDsl_Attribute', partner)
+    assert getattr(partner, 'myDsl_AbstractClass') == owner
+    _safe_set(owner, 'myDsl_Attribute', None)
+    assert getattr(partner, 'myDsl_AbstractClass') is None
+
+
+def test_assoc_attribute77_stub_double():
+    # myDsl_GenericClass has no real 'myDsl_GenericClass' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Attribute(name="sample_text")
+    partner = myDsl_GenericClass()
+    setattr(partner, 'myDsl_GenericClass', None)
+    _safe_set(owner, 'myDsl_Attribute78', partner)
+    assert getattr(partner, 'myDsl_GenericClass') == owner
+    _safe_set(owner, 'myDsl_Attribute78', None)
+    assert getattr(partner, 'myDsl_GenericClass') is None
+
+
+def test_assoc_attribute96_stub_double():
+    # myDsl_NativeClass has no real 'myDsl_NativeClass' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Attribute(name="sample_text")
+    partner = myDsl_NativeClass()
+    setattr(partner, 'myDsl_NativeClass', None)
+    _safe_set(owner, 'myDsl_Attribute97', partner)
+    assert getattr(partner, 'myDsl_NativeClass') == owner
+    _safe_set(owner, 'myDsl_Attribute97', None)
+    assert getattr(partner, 'myDsl_NativeClass') is None
+
+
+def test_assoc_componentes44_stub_double():
+    # myDsl_Architecture has no real 'myDsl_Architecture45' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Component's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Component's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Component(name="sample_text")
+    partner = myDsl_Architecture()
+    setattr(partner, 'myDsl_Architecture45', None)
+    _safe_set(owner, 'myDsl_Component', partner)
+    assert getattr(partner, 'myDsl_Architecture45') == owner
+    _safe_set(owner, 'myDsl_Component', None)
+    assert getattr(partner, 'myDsl_Architecture45') is None
+
+
+def test_assoc_dir125_stub_double():
+    # myDsl_ReactApp has no real 'myDsl_ReactApp126' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Directory's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Directory's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Directory(name="sample_text", purpose="sample_text")
+    partner = myDsl_ReactApp()
+    setattr(partner, 'myDsl_ReactApp126', None)
+    _safe_set(owner, 'myDsl_Directory', partner)
+    assert getattr(partner, 'myDsl_ReactApp126') == owner
+    _safe_set(owner, 'myDsl_Directory', None)
+    assert getattr(partner, 'myDsl_ReactApp126') is None
+
+
+def test_assoc_entities15_stub_double():
+    # myDsl_EObject has no real 'myDsl_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Submodule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Submodule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Submodule(name="sample_text")
+    partner = myDsl_EObject()
+    setattr(partner, 'myDsl_EObject', None)
+    _safe_set(owner, 'myDsl_Submodule16', {partner})
+    assert getattr(partner, 'myDsl_EObject') == owner
+    _safe_set(owner, 'myDsl_Submodule16', set())
+    assert getattr(partner, 'myDsl_EObject') is None
+
+
+def test_assoc_func123_stub_double():
+    # myDsl_ReactApp has no real 'myDsl_ReactApp124' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Functionality's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Functionality's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Functionality(name="sample_text")
+    partner = myDsl_ReactApp()
+    setattr(partner, 'myDsl_ReactApp124', None)
+    _safe_set(owner, 'myDsl_Functionality', partner)
+    assert getattr(partner, 'myDsl_ReactApp124') == owner
+    _safe_set(owner, 'myDsl_Functionality', None)
+    assert getattr(partner, 'myDsl_ReactApp124') is None
+
+
+def test_assoc_imp88_stub_double():
+    # myDsl_GenericClass has no real 'myDsl_GenericClass89' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Einterface's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Einterface's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Einterface(name="sample_text")
+    partner = myDsl_GenericClass()
+    setattr(partner, 'myDsl_GenericClass89', None)
+    _safe_set(owner, 'myDsl_Einterface', partner)
+    assert getattr(partner, 'myDsl_GenericClass89') == owner
+    _safe_set(owner, 'myDsl_Einterface', None)
+    assert getattr(partner, 'myDsl_GenericClass89') is None
+
+
+def test_assoc_jeeproject60_stub_double():
+    # myDsl_JavaApp has no real 'myDsl_JavaApp61' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_JeeProject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_JeeProject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_JeeProject(name="sample_text")
+    partner = myDsl_JavaApp()
+    setattr(partner, 'myDsl_JavaApp61', None)
+    _safe_set(owner, 'myDsl_JeeProject', partner)
+    assert getattr(partner, 'myDsl_JavaApp61') == owner
+    _safe_set(owner, 'myDsl_JeeProject', None)
+    assert getattr(partner, 'myDsl_JavaApp61') is None
+
+
+def test_assoc_methodClass71_stub_double():
+    # myDsl_AbstractClass has no real 'myDsl_AbstractClass72' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_MethodBack's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_MethodBack's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_MethodBack(name="sample_text")
+    partner = myDsl_AbstractClass()
+    setattr(partner, 'myDsl_AbstractClass72', None)
+    _safe_set(owner, 'myDsl_MethodBack', partner)
+    assert getattr(partner, 'myDsl_AbstractClass72') == owner
+    _safe_set(owner, 'myDsl_MethodBack', None)
+    assert getattr(partner, 'myDsl_AbstractClass72') is None
+
+
+def test_assoc_methodClass79_stub_double():
+    # myDsl_GenericClass has no real 'myDsl_GenericClass80' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_MethodBack's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_MethodBack's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_MethodBack(name="sample_text")
+    partner = myDsl_GenericClass()
+    setattr(partner, 'myDsl_GenericClass80', None)
+    _safe_set(owner, 'myDsl_MethodBack81', partner)
+    assert getattr(partner, 'myDsl_GenericClass80') == owner
+    _safe_set(owner, 'myDsl_MethodBack81', None)
+    assert getattr(partner, 'myDsl_GenericClass80') is None
+
+
+def test_assoc_methodClass98_stub_double():
+    # myDsl_NativeClass has no real 'myDsl_NativeClass99' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_MethodBack's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_MethodBack's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_MethodBack(name="sample_text")
+    partner = myDsl_NativeClass()
+    setattr(partner, 'myDsl_NativeClass99', None)
+    _safe_set(owner, 'myDsl_MethodBack100', partner)
+    assert getattr(partner, 'myDsl_NativeClass99') == owner
+    _safe_set(owner, 'myDsl_MethodBack100', None)
+    assert getattr(partner, 'myDsl_NativeClass99') is None
+
+
+def test_assoc_mod127_stub_double():
+    # myDsl_ReactApp has no real 'myDsl_ReactApp128' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_JsModule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_JsModule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_JsModule(name="sample_text")
+    partner = myDsl_ReactApp()
+    setattr(partner, 'myDsl_ReactApp128', None)
+    _safe_set(owner, 'myDsl_JsModule', partner)
+    assert getattr(partner, 'myDsl_ReactApp128') == owner
+    _safe_set(owner, 'myDsl_JsModule', None)
+    assert getattr(partner, 'myDsl_ReactApp128') is None
+
+
+def test_assoc_modules7_stub_double():
+    # myDsl_Domain has no real 'myDsl_Domain8' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Module's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Module's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Module(name="sample_text")
+    partner = myDsl_Domain()
+    setattr(partner, 'myDsl_Domain8', None)
+    _safe_set(owner, 'myDsl_Module', partner)
+    assert getattr(partner, 'myDsl_Domain8') == owner
+    _safe_set(owner, 'myDsl_Module', None)
+    assert getattr(partner, 'myDsl_Domain8') is None
+
+
+def test_assoc_name19_stub_double():
+    # myDsl_GeneralEntity has no real 'myDsl_GeneralEntity' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_EntityName's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_EntityName's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_EntityName(name="sample_text")
+    partner = myDsl_GeneralEntity()
+    setattr(partner, 'myDsl_GeneralEntity', None)
+    _safe_set(owner, 'myDsl_EntityName20', partner)
+    assert getattr(partner, 'myDsl_GeneralEntity') == owner
+    _safe_set(owner, 'myDsl_EntityName20', None)
+    assert getattr(partner, 'myDsl_GeneralEntity') is None
+
+
+def test_assoc_name26_stub_double():
+    # myDsl_SpecialEntity has no real 'myDsl_SpecialEntity' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_EntityName's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_EntityName's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_EntityName(name="sample_text")
+    partner = myDsl_SpecialEntity()
+    setattr(partner, 'myDsl_SpecialEntity', None)
+    _safe_set(owner, 'myDsl_EntityName27', partner)
+    assert getattr(partner, 'myDsl_SpecialEntity') == owner
+    _safe_set(owner, 'myDsl_EntityName27', None)
+    assert getattr(partner, 'myDsl_SpecialEntity') is None
+
+
+def test_assoc_operateson33_stub_double():
+    # myDsl_Operateson has no real 'myDsl_Operateson' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Transaction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Transaction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Transaction(type="sample_text")
+    partner = myDsl_Operateson()
+    setattr(partner, 'myDsl_Operateson', None)
+    _safe_set(owner, 'myDsl_Transaction34', {partner})
+    assert getattr(partner, 'myDsl_Operateson') == owner
+    _safe_set(owner, 'myDsl_Transaction34', set())
+    assert getattr(partner, 'myDsl_Operateson') is None
+
+
+def test_assoc_operateson35_stub_double():
+    # myDsl_Operateson has no real 'myDsl_Operateson36' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_EntityName's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_EntityName's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_EntityName(name="sample_text")
+    partner = myDsl_Operateson()
+    setattr(partner, 'myDsl_Operateson36', None)
+    _safe_set(owner, 'myDsl_EntityName37', partner)
+    assert getattr(partner, 'myDsl_Operateson36') == owner
+    _safe_set(owner, 'myDsl_EntityName37', None)
+    assert getattr(partner, 'myDsl_Operateson36') is None
+
+
+def test_assoc_properties21_stub_double():
+    # myDsl_GeneralEntity has no real 'myDsl_GeneralEntity22' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Property(name="sample_text")
+    partner = myDsl_GeneralEntity()
+    setattr(partner, 'myDsl_GeneralEntity22', None)
+    _safe_set(owner, 'myDsl_Property', partner)
+    assert getattr(partner, 'myDsl_GeneralEntity22') == owner
+    _safe_set(owner, 'myDsl_Property', None)
+    assert getattr(partner, 'myDsl_GeneralEntity22') is None
+
+
+def test_assoc_properties28_stub_double():
+    # myDsl_SpecialEntity has no real 'myDsl_SpecialEntity29' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Property(name="sample_text")
+    partner = myDsl_SpecialEntity()
+    setattr(partner, 'myDsl_SpecialEntity29', None)
+    _safe_set(owner, 'myDsl_Property30', partner)
+    assert getattr(partner, 'myDsl_SpecialEntity29') == owner
+    _safe_set(owner, 'myDsl_Property30', None)
+    assert getattr(partner, 'myDsl_SpecialEntity29') is None
+
+
+def test_assoc_relationArch46_stub_double():
+    # myDsl_Architecture has no real 'myDsl_Architecture47' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_RelationArch's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_RelationArch's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_RelationArch(name="sample_text", source="sample_text", target="sample_text")
+    partner = myDsl_Architecture()
+    setattr(partner, 'myDsl_Architecture47', None)
+    _safe_set(owner, 'myDsl_RelationArch', partner)
+    assert getattr(partner, 'myDsl_Architecture47') == owner
+    _safe_set(owner, 'myDsl_RelationArch', None)
+    assert getattr(partner, 'myDsl_Architecture47') is None
+
+
+def test_assoc_route145_stub_double():
+    # myDsl_UIComponent has no real 'myDsl_UIComponent' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_RouterComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_RouterComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_RouterComponent(name="sample_text")
+    partner = myDsl_UIComponent()
+    setattr(partner, 'myDsl_UIComponent', None)
+    _safe_set(owner, 'myDsl_RouterComponent146', partner)
+    assert getattr(partner, 'myDsl_UIComponent') == owner
+    _safe_set(owner, 'myDsl_RouterComponent146', None)
+    assert getattr(partner, 'myDsl_UIComponent') is None
+
+
+def test_assoc_source38_stub_double():
+    # myDsl_RelationDom has no real 'myDsl_RelationDom39' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_EntityName's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_EntityName's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_EntityName(name="sample_text")
+    partner = myDsl_RelationDom()
+    setattr(partner, 'myDsl_RelationDom39', None)
+    _safe_set(owner, 'myDsl_EntityName40', partner)
+    assert getattr(partner, 'myDsl_RelationDom39') == owner
+    _safe_set(owner, 'myDsl_EntityName40', None)
+    assert getattr(partner, 'myDsl_RelationDom39') is None
+
+
+def test_assoc_target41_stub_double():
+    # myDsl_RelationDom has no real 'myDsl_RelationDom42' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_EntityName's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_EntityName's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_EntityName(name="sample_text")
+    partner = myDsl_RelationDom()
+    setattr(partner, 'myDsl_RelationDom42', None)
+    _safe_set(owner, 'myDsl_EntityName43', partner)
+    assert getattr(partner, 'myDsl_RelationDom42') == owner
+    _safe_set(owner, 'myDsl_EntityName43', None)
+    assert getattr(partner, 'myDsl_RelationDom42') is None
+
+
+def test_assoc_transactions31_stub_double():
+    # myDsl_SpecialEntity has no real 'myDsl_SpecialEntity32' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Transaction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Transaction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Transaction(type="sample_text")
+    partner = myDsl_SpecialEntity()
+    setattr(partner, 'myDsl_SpecialEntity32', None)
+    _safe_set(owner, 'myDsl_Transaction', partner)
+    assert getattr(partner, 'myDsl_SpecialEntity32') == owner
+    _safe_set(owner, 'myDsl_Transaction', None)
+    assert getattr(partner, 'myDsl_SpecialEntity32') is None
+
+
+def test_assoc_type142_stub_double():
+    # myDsl_AbstractFrontElement has no real 'myDsl_AbstractFrontElement144' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_RouterComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_RouterComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_RouterComponent(name="sample_text")
+    partner = myDsl_AbstractFrontElement()
+    setattr(partner, 'myDsl_AbstractFrontElement144', None)
+    _safe_set(owner, 'myDsl_RouterComponent143', partner)
+    assert getattr(partner, 'myDsl_AbstractFrontElement144') == owner
+    _safe_set(owner, 'myDsl_RouterComponent143', None)
+    assert getattr(partner, 'myDsl_AbstractFrontElement144') is None
+
+
+def test_assoc_type147_stub_double():
+    # myDsl_AbstractFrontElement has no real 'myDsl_AbstractFrontElement149' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Container's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Container's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Container(name="sample_text")
+    partner = myDsl_AbstractFrontElement()
+    setattr(partner, 'myDsl_AbstractFrontElement149', None)
+    _safe_set(owner, 'myDsl_Container148', partner)
+    assert getattr(partner, 'myDsl_AbstractFrontElement149') == owner
+    _safe_set(owner, 'myDsl_Container148', None)
+    assert getattr(partner, 'myDsl_AbstractFrontElement149') is None
+
+
+def test_assoc_type150_stub_double():
+    # myDsl_AbstractFrontElement has no real 'myDsl_AbstractFrontElement152' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Visualizer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Visualizer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Visualizer(name="sample_text")
+    partner = myDsl_AbstractFrontElement()
+    setattr(partner, 'myDsl_AbstractFrontElement152', None)
+    _safe_set(owner, 'myDsl_Visualizer151', partner)
+    assert getattr(partner, 'myDsl_AbstractFrontElement152') == owner
+    _safe_set(owner, 'myDsl_Visualizer151', None)
+    assert getattr(partner, 'myDsl_AbstractFrontElement152') is None
+
+
+def test_assoc_type179_stub_double():
+    # myDsl_AbstractFrontElement has no real 'myDsl_AbstractFrontElement181' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Reducer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Reducer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Reducer(name="sample_text")
+    partner = myDsl_AbstractFrontElement()
+    setattr(partner, 'myDsl_AbstractFrontElement181', None)
+    _safe_set(owner, 'myDsl_Reducer180', partner)
+    assert getattr(partner, 'myDsl_AbstractFrontElement181') == owner
+    _safe_set(owner, 'myDsl_Reducer180', None)
+    assert getattr(partner, 'myDsl_AbstractFrontElement181') is None
+
+
+def test_assoc_types5_stub_double():
+    # myDsl_Domain has no real 'myDsl_Domain6' property in the generated
+    # code (a bare stub) -- manually attach it so myDsl_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # myDsl_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = myDsl_Type(name="sample_text")
+    partner = myDsl_Domain()
+    setattr(partner, 'myDsl_Domain6', None)
+    _safe_set(owner, 'myDsl_Type', partner)
+    assert getattr(partner, 'myDsl_Domain6') == owner
+    _safe_set(owner, 'myDsl_Type', None)
+    assert getattr(partner, 'myDsl_Domain6') is None
+
+

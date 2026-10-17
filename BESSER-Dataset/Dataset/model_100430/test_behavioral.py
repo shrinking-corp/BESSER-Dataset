@@ -160,3 +160,26 @@ def test_assoc_target4_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'statemachine_Transition5', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_entry13_stub_double():
+    # statemachine_NormalState has no real 'statemachine_NormalState' property in the generated
+    # code (a bare stub) -- manually attach it so statemachine_Action's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statemachine_Action's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statemachine_Action(actionLabel="sample_text", actionStatement="sample_text")
+    partner = statemachine_NormalState()
+    setattr(partner, 'statemachine_NormalState', None)
+    _safe_set(owner, 'statemachine_Action', partner)
+    assert getattr(partner, 'statemachine_NormalState') == owner
+    _safe_set(owner, 'statemachine_Action', None)
+    assert getattr(partner, 'statemachine_NormalState') is None
+
+

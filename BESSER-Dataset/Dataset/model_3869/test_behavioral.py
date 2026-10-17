@@ -50,3 +50,116 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_configurations10_stub_double():
+    # core_COREConfiguration has no real 'core_COREConfiguration' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREConfiguration()
+    setattr(partner, 'core_COREConfiguration', None)
+    _safe_set(owner, 'core_COREFeature11', {partner})
+    assert getattr(partner, 'core_COREConfiguration') == owner
+    _safe_set(owner, 'core_COREFeature11', set())
+    assert getattr(partner, 'core_COREConfiguration') is None
+
+
+def test_assoc_realizedBy8_stub_double():
+    # core_COREModel has no real 'COREModel' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREModel()
+    setattr(partner, 'COREModel', None)
+    _safe_set(owner, 'realizes', {partner})
+    assert getattr(partner, 'COREModel') == owner
+    _safe_set(owner, 'realizes', set())
+    assert getattr(partner, 'COREModel') is None
+
+
+def test_assoc_realizes3_stub_double():
+    # core_COREModel has no real 'realizedBy' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREModel()
+    setattr(partner, 'realizedBy', None)
+    _safe_set(owner, 'COREFeature', partner)
+    assert getattr(partner, 'realizedBy') == owner
+    _safe_set(owner, 'COREFeature', None)
+    assert getattr(partner, 'realizedBy') is None
+
+
+def test_assoc_selectable24_stub_double():
+    # core_COREInterface has no real 'core_COREInterface25' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREInterface()
+    setattr(partner, 'core_COREInterface25', None)
+    _safe_set(owner, 'core_COREFeature26', partner)
+    assert getattr(partner, 'core_COREInterface25') == owner
+    _safe_set(owner, 'core_COREFeature26', None)
+    assert getattr(partner, 'core_COREInterface25') is None
+
+
+def test_assoc_selected41_stub_double():
+    # core_COREReuse has no real 'core_COREReuse42' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREReuse()
+    setattr(partner, 'core_COREReuse42', None)
+    _safe_set(owner, 'core_COREFeature43', partner)
+    assert getattr(partner, 'core_COREReuse42') == owner
+    _safe_set(owner, 'core_COREFeature43', None)
+    assert getattr(partner, 'core_COREReuse42') is None
+
+
+def test_assoc_selected47_stub_double():
+    # core_COREConfiguration has no real 'core_COREConfiguration48' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREConfiguration()
+    setattr(partner, 'core_COREConfiguration48', None)
+    _safe_set(owner, 'core_COREFeature49', partner)
+    assert getattr(partner, 'core_COREConfiguration48') == owner
+    _safe_set(owner, 'core_COREFeature49', None)
+    assert getattr(partner, 'core_COREConfiguration48') is None
+
+
+def test_assoc_strategies9_stub_double():
+    # core_COREStrategy has no real 'core_COREStrategy' property in the generated
+    # code (a bare stub) -- manually attach it so core_COREFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # core_COREFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = core_COREFeature()
+    partner = core_COREStrategy()
+    setattr(partner, 'core_COREStrategy', None)
+    _safe_set(owner, 'core_COREFeature', {partner})
+    assert getattr(partner, 'core_COREStrategy') == owner
+    _safe_set(owner, 'core_COREFeature', set())
+    assert getattr(partner, 'core_COREStrategy') is None
+
+

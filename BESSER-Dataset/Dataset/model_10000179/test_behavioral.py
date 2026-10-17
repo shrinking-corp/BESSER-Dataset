@@ -63,3 +63,26 @@ def test_assoc_Hand_Card_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'cards0', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Hand_Card2_stub_double():
+    # classes_Hand has no real 'hand2' property in the generated
+    # code (a bare stub) -- manually attach it so classes_Card's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # classes_Card's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = classes_Card(name="sample_text", value=7)
+    partner = classes_Hand()
+    setattr(partner, 'hand2', None)
+    _safe_set(owner, 'hand3', partner)
+    assert getattr(partner, 'hand2') == owner
+    _safe_set(owner, 'hand3', None)
+    assert getattr(partner, 'hand2') is None
+
+

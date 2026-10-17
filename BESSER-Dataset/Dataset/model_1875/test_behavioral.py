@@ -61,3 +61,41 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_template15_stub_double():
+    # problog_TermInstance has no real 'problog_TermInstance' property in the generated
+    # code (a bare stub) -- manually attach it so problog_Term's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # problog_Term's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = problog_Term(arguments=7, name="sample_text")
+    partner = problog_TermInstance()
+    setattr(partner, 'problog_TermInstance', None)
+    _safe_set(owner, 'problog_Term16', partner)
+    assert getattr(partner, 'problog_TermInstance') == owner
+    _safe_set(owner, 'problog_Term16', None)
+    assert getattr(partner, 'problog_TermInstance') is None
+
+
+def test_assoc_terms1_stub_double():
+    # problog_ProbLogProgram has no real 'problog_ProbLogProgram2' property in the generated
+    # code (a bare stub) -- manually attach it so problog_Term's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # problog_Term's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = problog_Term(arguments=7, name="sample_text")
+    partner = problog_ProbLogProgram()
+    setattr(partner, 'problog_ProbLogProgram2', None)
+    _safe_set(owner, 'problog_Term', partner)
+    assert getattr(partner, 'problog_ProbLogProgram2') == owner
+    _safe_set(owner, 'problog_Term', None)
+    assert getattr(partner, 'problog_ProbLogProgram2') is None
+
+

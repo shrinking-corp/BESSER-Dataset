@@ -542,3 +542,476 @@ def test_assoc_eSuperTypes8_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'ecoreDiff_EClass', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_contents2_stub_double():
+    # ecoreDiff_EObject has no real 'ecoreDiff_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EAnnotation(source="sample_text")
+    partner = ecoreDiff_EObject()
+    setattr(partner, 'ecoreDiff_EObject', None)
+    _safe_set(owner, 'ecoreDiff_EAnnotation3', {partner})
+    assert getattr(partner, 'ecoreDiff_EObject') == owner
+    _safe_set(owner, 'ecoreDiff_EAnnotation3', set())
+    assert getattr(partner, 'ecoreDiff_EObject') is None
+
+
+def test_assoc_eAllGenericSuperTypes37_stub_double():
+    # ecoreDiff_EGenericType has no real 'ecoreDiff_EGenericType39' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClass(abstract=True, interface=True)
+    partner = ecoreDiff_EGenericType()
+    setattr(partner, 'ecoreDiff_EGenericType39', None)
+    _safe_set(owner, 'ecoreDiff_EClass38', {partner})
+    assert getattr(partner, 'ecoreDiff_EGenericType39') == owner
+    _safe_set(owner, 'ecoreDiff_EClass38', set())
+    assert getattr(partner, 'ecoreDiff_EGenericType39') is None
+
+
+def test_assoc_eAllOperations25_stub_double():
+    # ecoreDiff_EOperation has no real 'ecoreDiff_EOperation' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClass(abstract=True, interface=True)
+    partner = ecoreDiff_EOperation()
+    setattr(partner, 'ecoreDiff_EOperation', None)
+    _safe_set(owner, 'ecoreDiff_EClass26', {partner})
+    assert getattr(partner, 'ecoreDiff_EOperation') == owner
+    _safe_set(owner, 'ecoreDiff_EClass26', set())
+    assert getattr(partner, 'ecoreDiff_EOperation') is None
+
+
+def test_assoc_eAnnotations107_stub_double():
+    # ecoreDiff_EModelElement has no real 'eModelElement' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EAnnotation(source="sample_text")
+    partner = ecoreDiff_EModelElement()
+    setattr(partner, 'eModelElement', None)
+    _safe_set(owner, 'EAnnotation', partner)
+    assert getattr(partner, 'eModelElement') == owner
+    _safe_set(owner, 'EAnnotation', None)
+    assert getattr(partner, 'eModelElement') is None
+
+
+def test_assoc_eClassifier71_stub_double():
+    # ecoreDiff_EGenericType has no real 'ecoreDiff_EGenericType72' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClassifier(defaultValue="sample_text", instanceClass="sample_text", instanceClassName="sample_text", instanceTypeName="sample_text")
+    partner = ecoreDiff_EGenericType()
+    setattr(partner, 'ecoreDiff_EGenericType72', None)
+    _safe_set(owner, 'ecoreDiff_EClassifier73', partner)
+    assert getattr(partner, 'ecoreDiff_EGenericType72') == owner
+    _safe_set(owner, 'ecoreDiff_EClassifier73', None)
+    assert getattr(partner, 'ecoreDiff_EGenericType72') is None
+
+
+def test_assoc_eContainingClass84_stub_double():
+    # ecoreDiff_EOperation has no real 'eOperations' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClass(abstract=True, interface=True)
+    partner = ecoreDiff_EOperation()
+    setattr(partner, 'eOperations', None)
+    _safe_set(owner, 'EClass', partner)
+    assert getattr(partner, 'eOperations') == owner
+    _safe_set(owner, 'EClass', None)
+    assert getattr(partner, 'eOperations') is None
+
+
+def test_assoc_eEnum106_stub_double():
+    # ecoreDiff_EEnum has no real 'EEnum' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EEnumLiteral's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EEnumLiteral's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EEnumLiteral(instance="sample_text", literal="sample_text", value=7)
+    partner = ecoreDiff_EEnum()
+    setattr(partner, 'EEnum', None)
+    _safe_set(owner, 'eLiterals', partner)
+    assert getattr(partner, 'EEnum') == owner
+    _safe_set(owner, 'eLiterals', None)
+    assert getattr(partner, 'EEnum') is None
+
+
+def test_assoc_eExceptions78_stub_double():
+    # ecoreDiff_EOperation has no real 'ecoreDiff_EOperation79' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClassifier(defaultValue="sample_text", instanceClass="sample_text", instanceClassName="sample_text", instanceTypeName="sample_text")
+    partner = ecoreDiff_EOperation()
+    setattr(partner, 'ecoreDiff_EOperation79', None)
+    _safe_set(owner, 'ecoreDiff_EClassifier80', partner)
+    assert getattr(partner, 'ecoreDiff_EOperation79') == owner
+    _safe_set(owner, 'ecoreDiff_EClassifier80', None)
+    assert getattr(partner, 'ecoreDiff_EOperation79') is None
+
+
+def test_assoc_eFactoryInstance42_stub_double():
+    # ecoreDiff_EFactory has no real 'EFactory' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EPackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EPackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EPackage(nsPrefix="sample_text", nsURI="sample_text")
+    partner = ecoreDiff_EFactory()
+    setattr(partner, 'EFactory', None)
+    _safe_set(owner, 'ePackage', partner)
+    assert getattr(partner, 'EFactory') == owner
+    _safe_set(owner, 'ePackage', None)
+    assert getattr(partner, 'EFactory') is None
+
+
+def test_assoc_eGenericSuperTypes35_stub_double():
+    # ecoreDiff_EGenericType has no real 'ecoreDiff_EGenericType' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClass(abstract=True, interface=True)
+    partner = ecoreDiff_EGenericType()
+    setattr(partner, 'ecoreDiff_EGenericType', None)
+    _safe_set(owner, 'ecoreDiff_EClass36', {partner})
+    assert getattr(partner, 'ecoreDiff_EGenericType') == owner
+    _safe_set(owner, 'ecoreDiff_EClass36', set())
+    assert getattr(partner, 'ecoreDiff_EGenericType') is None
+
+
+def test_assoc_eGenericType87_stub_double():
+    # ecoreDiff_EGenericType has no real 'ecoreDiff_EGenericType89' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_ETypedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_ETypedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_ETypedElement(lowerBound=7, many=True, ordered=True, required=True, unique=True, upperBound=7)
+    partner = ecoreDiff_EGenericType()
+    setattr(partner, 'ecoreDiff_EGenericType89', None)
+    _safe_set(owner, 'ecoreDiff_ETypedElement88', partner)
+    assert getattr(partner, 'ecoreDiff_EGenericType89') == owner
+    _safe_set(owner, 'ecoreDiff_ETypedElement88', None)
+    assert getattr(partner, 'ecoreDiff_EGenericType89') is None
+
+
+def test_assoc_eLiterals105_stub_double():
+    # ecoreDiff_EEnum has no real 'eEnum' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EEnumLiteral's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EEnumLiteral's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EEnumLiteral(instance="sample_text", literal="sample_text", value=7)
+    partner = ecoreDiff_EEnum()
+    setattr(partner, 'eEnum', None)
+    _safe_set(owner, 'EEnumLiteral', partner)
+    assert getattr(partner, 'eEnum') == owner
+    _safe_set(owner, 'EEnumLiteral', None)
+    assert getattr(partner, 'eEnum') is None
+
+
+def test_assoc_eModelElement1_stub_double():
+    # ecoreDiff_EModelElement has no real 'EModelElement' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EAnnotation(source="sample_text")
+    partner = ecoreDiff_EModelElement()
+    setattr(partner, 'EModelElement', None)
+    _safe_set(owner, 'eAnnotations', partner)
+    assert getattr(partner, 'EModelElement') == owner
+    _safe_set(owner, 'eAnnotations', None)
+    assert getattr(partner, 'EModelElement') is None
+
+
+def test_assoc_eOperations9_stub_double():
+    # ecoreDiff_EOperation has no real 'EOperation' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClass(abstract=True, interface=True)
+    partner = ecoreDiff_EOperation()
+    setattr(partner, 'EOperation', None)
+    _safe_set(owner, 'eContainingClass', {partner})
+    assert getattr(partner, 'EOperation') == owner
+    _safe_set(owner, 'eContainingClass', set())
+    assert getattr(partner, 'EOperation') is None
+
+
+def test_assoc_ePackage51_stub_double():
+    # ecoreDiff_EFactory has no real 'eFactoryInstance' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EPackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EPackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EPackage(nsPrefix="sample_text", nsURI="sample_text")
+    partner = ecoreDiff_EFactory()
+    setattr(partner, 'eFactoryInstance', None)
+    _safe_set(owner, 'EPackage52', partner)
+    assert getattr(partner, 'eFactoryInstance') == owner
+    _safe_set(owner, 'EPackage52', None)
+    assert getattr(partner, 'eFactoryInstance') is None
+
+
+def test_assoc_eRawType62_stub_double():
+    # ecoreDiff_EGenericType has no real 'ecoreDiff_EGenericType63' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClassifier(defaultValue="sample_text", instanceClass="sample_text", instanceClassName="sample_text", instanceTypeName="sample_text")
+    partner = ecoreDiff_EGenericType()
+    setattr(partner, 'ecoreDiff_EGenericType63', None)
+    _safe_set(owner, 'ecoreDiff_EClassifier64', partner)
+    assert getattr(partner, 'ecoreDiff_EGenericType63') == owner
+    _safe_set(owner, 'ecoreDiff_EClassifier64', None)
+    assert getattr(partner, 'ecoreDiff_EGenericType63') is None
+
+
+def test_assoc_eType85_stub_double():
+    # ecoreDiff_EObject has no real 'ecoreDiff_EObject86' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_ETypedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_ETypedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_ETypedElement(lowerBound=7, many=True, ordered=True, required=True, unique=True, upperBound=7)
+    partner = ecoreDiff_EObject()
+    setattr(partner, 'ecoreDiff_EObject86', None)
+    _safe_set(owner, 'ecoreDiff_ETypedElement', partner)
+    assert getattr(partner, 'ecoreDiff_EObject86') == owner
+    _safe_set(owner, 'ecoreDiff_ETypedElement', None)
+    assert getattr(partner, 'ecoreDiff_EObject86') is None
+
+
+def test_assoc_eTypeParameters41_stub_double():
+    # ecoreDiff_ETypeParameter has no real 'ecoreDiff_ETypeParameter' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClassifier(defaultValue="sample_text", instanceClass="sample_text", instanceClassName="sample_text", instanceTypeName="sample_text")
+    partner = ecoreDiff_ETypeParameter()
+    setattr(partner, 'ecoreDiff_ETypeParameter', None)
+    _safe_set(owner, 'ecoreDiff_EClassifier', {partner})
+    assert getattr(partner, 'ecoreDiff_ETypeParameter') == owner
+    _safe_set(owner, 'ecoreDiff_EClassifier', set())
+    assert getattr(partner, 'ecoreDiff_ETypeParameter') is None
+
+
+def test_assoc_references4_stub_double():
+    # ecoreDiff_EObject has no real 'ecoreDiff_EObject6' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EAnnotation(source="sample_text")
+    partner = ecoreDiff_EObject()
+    setattr(partner, 'ecoreDiff_EObject6', None)
+    _safe_set(owner, 'ecoreDiff_EAnnotation5', {partner})
+    assert getattr(partner, 'ecoreDiff_EObject6') == owner
+    _safe_set(owner, 'ecoreDiff_EAnnotation5', set())
+    assert getattr(partner, 'ecoreDiff_EObject6') is None
+
+
+def test_assoc_updatedElement111_stub_double():
+    # ecoreDiff_ChangedEAnnotation has no real 'ecoreDiff_ChangedEAnnotation' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EAnnotation(source="sample_text")
+    partner = ecoreDiff_ChangedEAnnotation()
+    setattr(partner, 'ecoreDiff_ChangedEAnnotation', None)
+    _safe_set(owner, 'ecoreDiff_EAnnotation112', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEAnnotation') == owner
+    _safe_set(owner, 'ecoreDiff_EAnnotation112', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEAnnotation') is None
+
+
+def test_assoc_updatedElement118_stub_double():
+    # ecoreDiff_ChangedEStringToStringMapEntry has no real 'ecoreDiff_ChangedEStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EStringToStringMapEntry's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EStringToStringMapEntry's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EStringToStringMapEntry(key="sample_text", value="sample_text")
+    partner = ecoreDiff_ChangedEStringToStringMapEntry()
+    setattr(partner, 'ecoreDiff_ChangedEStringToStringMapEntry', None)
+    _safe_set(owner, 'ecoreDiff_EStringToStringMapEntry119', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEStringToStringMapEntry') == owner
+    _safe_set(owner, 'ecoreDiff_EStringToStringMapEntry119', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEStringToStringMapEntry') is None
+
+
+def test_assoc_updatedElement132_stub_double():
+    # ecoreDiff_ChangedEClass has no real 'ecoreDiff_ChangedEClass' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClass(abstract=True, interface=True)
+    partner = ecoreDiff_ChangedEClass()
+    setattr(partner, 'ecoreDiff_ChangedEClass', None)
+    _safe_set(owner, 'ecoreDiff_EClass133', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEClass') == owner
+    _safe_set(owner, 'ecoreDiff_EClass133', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEClass') is None
+
+
+def test_assoc_updatedElement139_stub_double():
+    # ecoreDiff_ChangedEClassifier has no real 'ecoreDiff_ChangedEClassifier' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EClassifier(defaultValue="sample_text", instanceClass="sample_text", instanceClassName="sample_text", instanceTypeName="sample_text")
+    partner = ecoreDiff_ChangedEClassifier()
+    setattr(partner, 'ecoreDiff_ChangedEClassifier', None)
+    _safe_set(owner, 'ecoreDiff_EClassifier140', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEClassifier') == owner
+    _safe_set(owner, 'ecoreDiff_EClassifier140', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEClassifier') is None
+
+
+def test_assoc_updatedElement146_stub_double():
+    # ecoreDiff_ChangedENamedElement has no real 'ecoreDiff_ChangedENamedElement' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_ENamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_ENamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_ENamedElement(name="sample_text")
+    partner = ecoreDiff_ChangedENamedElement()
+    setattr(partner, 'ecoreDiff_ChangedENamedElement', None)
+    _safe_set(owner, 'ecoreDiff_ENamedElement', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedENamedElement') == owner
+    _safe_set(owner, 'ecoreDiff_ENamedElement', None)
+    assert getattr(partner, 'ecoreDiff_ChangedENamedElement') is None
+
+
+def test_assoc_updatedElement152_stub_double():
+    # ecoreDiff_ChangedEPackage has no real 'ecoreDiff_ChangedEPackage' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EPackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EPackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EPackage(nsPrefix="sample_text", nsURI="sample_text")
+    partner = ecoreDiff_ChangedEPackage()
+    setattr(partner, 'ecoreDiff_ChangedEPackage', None)
+    _safe_set(owner, 'ecoreDiff_EPackage', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEPackage') == owner
+    _safe_set(owner, 'ecoreDiff_EPackage', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEPackage') is None
+
+
+def test_assoc_updatedElement164_stub_double():
+    # ecoreDiff_ChangedEDataType has no real 'ecoreDiff_ChangedEDataType' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EDataType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EDataType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EDataType(serializable=True)
+    partner = ecoreDiff_ChangedEDataType()
+    setattr(partner, 'ecoreDiff_ChangedEDataType', None)
+    _safe_set(owner, 'ecoreDiff_EDataType165', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEDataType') == owner
+    _safe_set(owner, 'ecoreDiff_EDataType165', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEDataType') is None
+
+
+def test_assoc_updatedElement198_stub_double():
+    # ecoreDiff_ChangedETypedElement has no real 'ecoreDiff_ChangedETypedElement' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_ETypedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_ETypedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_ETypedElement(lowerBound=7, many=True, ordered=True, required=True, unique=True, upperBound=7)
+    partner = ecoreDiff_ChangedETypedElement()
+    setattr(partner, 'ecoreDiff_ChangedETypedElement', None)
+    _safe_set(owner, 'ecoreDiff_ETypedElement199', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedETypedElement') == owner
+    _safe_set(owner, 'ecoreDiff_ETypedElement199', None)
+    assert getattr(partner, 'ecoreDiff_ChangedETypedElement') is None
+
+
+def test_assoc_updatedElement211_stub_double():
+    # ecoreDiff_ChangedEAttribute has no real 'ecoreDiff_ChangedEAttribute' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EAttribute(iD=True)
+    partner = ecoreDiff_ChangedEAttribute()
+    setattr(partner, 'ecoreDiff_ChangedEAttribute', None)
+    _safe_set(owner, 'ecoreDiff_EAttribute212', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEAttribute') == owner
+    _safe_set(owner, 'ecoreDiff_EAttribute212', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEAttribute') is None
+
+
+def test_assoc_updatedElement218_stub_double():
+    # ecoreDiff_ChangedEStructuralFeature has no real 'ecoreDiff_ChangedEStructuralFeature' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EStructuralFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EStructuralFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EStructuralFeature(changeable=True, defaultValue="sample_text", defaultValueLiteral="sample_text", derived=True, transient=True, unsettable=True, volatile=True)
+    partner = ecoreDiff_ChangedEStructuralFeature()
+    setattr(partner, 'ecoreDiff_ChangedEStructuralFeature', None)
+    _safe_set(owner, 'ecoreDiff_EStructuralFeature219', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEStructuralFeature') == owner
+    _safe_set(owner, 'ecoreDiff_EStructuralFeature219', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEStructuralFeature') is None
+
+
+def test_assoc_updatedElement231_stub_double():
+    # ecoreDiff_ChangedEReference has no real 'ecoreDiff_ChangedEReference' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EReference(container=True, containment=True, resolveProxies=True)
+    partner = ecoreDiff_ChangedEReference()
+    setattr(partner, 'ecoreDiff_ChangedEReference', None)
+    _safe_set(owner, 'ecoreDiff_EReference232', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEReference') == owner
+    _safe_set(owner, 'ecoreDiff_EReference232', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEReference') is None
+
+
+def test_assoc_updatedElement244_stub_double():
+    # ecoreDiff_ChangedEEnumLiteral has no real 'ecoreDiff_ChangedEEnumLiteral' property in the generated
+    # code (a bare stub) -- manually attach it so ecoreDiff_EEnumLiteral's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecoreDiff_EEnumLiteral's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecoreDiff_EEnumLiteral(instance="sample_text", literal="sample_text", value=7)
+    partner = ecoreDiff_ChangedEEnumLiteral()
+    setattr(partner, 'ecoreDiff_ChangedEEnumLiteral', None)
+    _safe_set(owner, 'ecoreDiff_EEnumLiteral', partner)
+    assert getattr(partner, 'ecoreDiff_ChangedEEnumLiteral') == owner
+    _safe_set(owner, 'ecoreDiff_EEnumLiteral', None)
+    assert getattr(partner, 'ecoreDiff_ChangedEEnumLiteral') is None
+
+

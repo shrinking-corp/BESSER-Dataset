@@ -575,3 +575,326 @@ def test_assoc_webConfig1_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'webapp_WebConfig', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_action23_stub_double():
+    # webapp_Controller has no real 'webapp_Controller24' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Action's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Action's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Action(name="sample_text", returnType="sample_text")
+    partner = webapp_Controller()
+    setattr(partner, 'webapp_Controller24', None)
+    _safe_set(owner, 'webapp_Action', partner)
+    assert getattr(partner, 'webapp_Controller24') == owner
+    _safe_set(owner, 'webapp_Action', None)
+    assert getattr(partner, 'webapp_Controller24') is None
+
+
+def test_assoc_appConfig0_stub_double():
+    # webapp_AppConfig has no real 'webapp_AppConfig' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_WebApp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_WebApp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_WebApp(framework="sample_text", name="sample_text")
+    partner = webapp_AppConfig()
+    setattr(partner, 'webapp_AppConfig', None)
+    _safe_set(owner, 'webapp_WebApp', partner)
+    assert getattr(partner, 'webapp_AppConfig') == owner
+    _safe_set(owner, 'webapp_WebApp', None)
+    assert getattr(partner, 'webapp_AppConfig') is None
+
+
+def test_assoc_check43_stub_double():
+    # webapp_Constraint has no real 'webapp_Constraint44' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Check's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Check's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Check(expr="sample_text")
+    partner = webapp_Constraint()
+    setattr(partner, 'webapp_Constraint44', None)
+    _safe_set(owner, 'webapp_Check', partner)
+    assert getattr(partner, 'webapp_Constraint44') == owner
+    _safe_set(owner, 'webapp_Check', None)
+    assert getattr(partner, 'webapp_Constraint44') is None
+
+
+def test_assoc_column47_stub_double():
+    # webapp_PrimaryKey has no real 'webapp_PrimaryKey48' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Column's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Column's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Column(defaultValue="sample_text", isNotNull=True, name="sample_text", size=7, type="sample_text", useZeroFill=True)
+    partner = webapp_PrimaryKey()
+    setattr(partner, 'webapp_PrimaryKey48', None)
+    _safe_set(owner, 'webapp_Column49', partner)
+    assert getattr(partner, 'webapp_PrimaryKey48') == owner
+    _safe_set(owner, 'webapp_Column49', None)
+    assert getattr(partner, 'webapp_PrimaryKey48') is None
+
+
+def test_assoc_column63_stub_double():
+    # webapp_Unique has no real 'webapp_Unique64' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Column's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Column's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Column(defaultValue="sample_text", isNotNull=True, name="sample_text", size=7, type="sample_text", useZeroFill=True)
+    partner = webapp_Unique()
+    setattr(partner, 'webapp_Unique64', None)
+    _safe_set(owner, 'webapp_Column65', partner)
+    assert getattr(partner, 'webapp_Unique64') == owner
+    _safe_set(owner, 'webapp_Column65', None)
+    assert getattr(partner, 'webapp_Unique64') is None
+
+
+def test_assoc_constraint35_stub_double():
+    # webapp_Constraint has no real 'webapp_Constraint' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Table(charset="sample_text", name="sample_text")
+    partner = webapp_Constraint()
+    setattr(partner, 'webapp_Constraint', None)
+    _safe_set(owner, 'webapp_Table36', partner)
+    assert getattr(partner, 'webapp_Constraint') == owner
+    _safe_set(owner, 'webapp_Table36', None)
+    assert getattr(partner, 'webapp_Constraint') is None
+
+
+def test_assoc_controller9_stub_double():
+    # webapp_Controller has no real 'webapp_Controller' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_WebApp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_WebApp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_WebApp(framework="sample_text", name="sample_text")
+    partner = webapp_Controller()
+    setattr(partner, 'webapp_Controller', None)
+    _safe_set(owner, 'webapp_WebApp10', partner)
+    assert getattr(partner, 'webapp_Controller') == owner
+    _safe_set(owner, 'webapp_WebApp10', None)
+    assert getattr(partner, 'webapp_Controller') is None
+
+
+def test_assoc_externalColumn50_stub_double():
+    # webapp_ForeignKey has no real 'webapp_ForeignKey51' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Column's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Column's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Column(defaultValue="sample_text", isNotNull=True, name="sample_text", size=7, type="sample_text", useZeroFill=True)
+    partner = webapp_ForeignKey()
+    setattr(partner, 'webapp_ForeignKey51', None)
+    _safe_set(owner, 'webapp_Column52', partner)
+    assert getattr(partner, 'webapp_ForeignKey51') == owner
+    _safe_set(owner, 'webapp_Column52', None)
+    assert getattr(partner, 'webapp_ForeignKey51') is None
+
+
+def test_assoc_externalTable57_stub_double():
+    # webapp_ForeignKey has no real 'webapp_ForeignKey58' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Table(charset="sample_text", name="sample_text")
+    partner = webapp_ForeignKey()
+    setattr(partner, 'webapp_ForeignKey58', None)
+    _safe_set(owner, 'webapp_Table59', partner)
+    assert getattr(partner, 'webapp_ForeignKey58') == owner
+    _safe_set(owner, 'webapp_Table59', None)
+    assert getattr(partner, 'webapp_ForeignKey58') is None
+
+
+def test_assoc_instruction75_stub_double():
+    # webapp_Instruction has no real 'webapp_Instruction' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Page(isMain=True, name="sample_text")
+    partner = webapp_Instruction()
+    setattr(partner, 'webapp_Instruction', None)
+    _safe_set(owner, 'webapp_Page76', {partner})
+    assert getattr(partner, 'webapp_Instruction') == owner
+    _safe_set(owner, 'webapp_Page76', set())
+    assert getattr(partner, 'webapp_Instruction') is None
+
+
+def test_assoc_internalColumn60_stub_double():
+    # webapp_ForeignKey has no real 'webapp_ForeignKey61' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Column's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Column's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Column(defaultValue="sample_text", isNotNull=True, name="sample_text", size=7, type="sample_text", useZeroFill=True)
+    partner = webapp_ForeignKey()
+    setattr(partner, 'webapp_ForeignKey61', None)
+    _safe_set(owner, 'webapp_Column62', partner)
+    assert getattr(partner, 'webapp_ForeignKey61') == owner
+    _safe_set(owner, 'webapp_Column62', None)
+    assert getattr(partner, 'webapp_ForeignKey61') is None
+
+
+def test_assoc_library3_stub_double():
+    # webapp_Library has no real 'webapp_Library' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_WebApp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_WebApp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_WebApp(framework="sample_text", name="sample_text")
+    partner = webapp_Library()
+    setattr(partner, 'webapp_Library', None)
+    _safe_set(owner, 'webapp_WebApp4', {partner})
+    assert getattr(partner, 'webapp_Library') == owner
+    _safe_set(owner, 'webapp_WebApp4', set())
+    assert getattr(partner, 'webapp_Library') is None
+
+
+def test_assoc_navigation15_stub_double():
+    # webapp_View has no real 'webapp_View16' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Navigation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Navigation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Navigation(message="sample_text")
+    partner = webapp_View()
+    setattr(partner, 'webapp_View16', None)
+    _safe_set(owner, 'webapp_Navigation', partner)
+    assert getattr(partner, 'webapp_View16') == owner
+    _safe_set(owner, 'webapp_Navigation', None)
+    assert getattr(partner, 'webapp_View16') is None
+
+
+def test_assoc_onDelete53_stub_double():
+    # webapp_ForeignKey has no real 'webapp_ForeignKey54' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_OnDelete's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_OnDelete's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_OnDelete(behavior="sample_text")
+    partner = webapp_ForeignKey()
+    setattr(partner, 'webapp_ForeignKey54', None)
+    _safe_set(owner, 'webapp_OnDelete', partner)
+    assert getattr(partner, 'webapp_ForeignKey54') == owner
+    _safe_set(owner, 'webapp_OnDelete', None)
+    assert getattr(partner, 'webapp_ForeignKey54') is None
+
+
+def test_assoc_onUpdate55_stub_double():
+    # webapp_ForeignKey has no real 'webapp_ForeignKey56' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_OnUpdate's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_OnUpdate's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_OnUpdate(behavior="sample_text")
+    partner = webapp_ForeignKey()
+    setattr(partner, 'webapp_ForeignKey56', None)
+    _safe_set(owner, 'webapp_OnUpdate', partner)
+    assert getattr(partner, 'webapp_ForeignKey56') == owner
+    _safe_set(owner, 'webapp_OnUpdate', None)
+    assert getattr(partner, 'webapp_ForeignKey56') is None
+
+
+def test_assoc_page13_stub_double():
+    # webapp_View has no real 'webapp_View14' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Page(isMain=True, name="sample_text")
+    partner = webapp_View()
+    setattr(partner, 'webapp_View14', None)
+    _safe_set(owner, 'webapp_Page', partner)
+    assert getattr(partner, 'webapp_View14') == owner
+    _safe_set(owner, 'webapp_Page', None)
+    assert getattr(partner, 'webapp_View14') is None
+
+
+def test_assoc_propertie29_stub_double():
+    # webapp_Resource has no real 'webapp_Resource30' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Properties's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Properties's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Properties(name="sample_text", package="sample_text")
+    partner = webapp_Resource()
+    setattr(partner, 'webapp_Resource30', None)
+    _safe_set(owner, 'webapp_Properties', partner)
+    assert getattr(partner, 'webapp_Resource30') == owner
+    _safe_set(owner, 'webapp_Properties', None)
+    assert getattr(partner, 'webapp_Resource30') is None
+
+
+def test_assoc_resource11_stub_double():
+    # webapp_Resource has no real 'webapp_Resource' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_WebApp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_WebApp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_WebApp(framework="sample_text", name="sample_text")
+    partner = webapp_Resource()
+    setattr(partner, 'webapp_Resource', None)
+    _safe_set(owner, 'webapp_WebApp12', partner)
+    assert getattr(partner, 'webapp_Resource') == owner
+    _safe_set(owner, 'webapp_WebApp12', None)
+    assert getattr(partner, 'webapp_Resource') is None
+
+
+def test_assoc_tag101_stub_double():
+    # webapp_Td has no real 'webapp_Td102' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Tag's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Tag's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Tag(_property="sample_text")
+    partner = webapp_Td()
+    setattr(partner, 'webapp_Td102', None)
+    _safe_set(owner, 'webapp_Tag103', partner)
+    assert getattr(partner, 'webapp_Td102') == owner
+    _safe_set(owner, 'webapp_Tag103', None)
+    assert getattr(partner, 'webapp_Td102') is None
+
+
+def test_assoc_validator21_stub_double():
+    # webapp_Controller has no real 'webapp_Controller22' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_Validator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_Validator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_Validator(name="sample_text", package="sample_text")
+    partner = webapp_Controller()
+    setattr(partner, 'webapp_Controller22', None)
+    _safe_set(owner, 'webapp_Validator', partner)
+    assert getattr(partner, 'webapp_Controller22') == owner
+    _safe_set(owner, 'webapp_Validator', None)
+    assert getattr(partner, 'webapp_Controller22') is None
+
+
+def test_assoc_view5_stub_double():
+    # webapp_View has no real 'webapp_View' property in the generated
+    # code (a bare stub) -- manually attach it so webapp_WebApp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # webapp_WebApp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = webapp_WebApp(framework="sample_text", name="sample_text")
+    partner = webapp_View()
+    setattr(partner, 'webapp_View', None)
+    _safe_set(owner, 'webapp_WebApp6', partner)
+    assert getattr(partner, 'webapp_View') == owner
+    _safe_set(owner, 'webapp_WebApp6', None)
+    assert getattr(partner, 'webapp_View') is None
+
+

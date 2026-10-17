@@ -3030,3 +3030,131 @@ def test_assoc_variable67_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'jpdl31_VariableType', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_design407_stub_double():
+    # jpdl31_ExperimentalPlan has no real 'jpdl31_ExperimentalPlan408' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_Design's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_Design's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_Design(DoE="sample_text")
+    partner = jpdl31_ExperimentalPlan()
+    setattr(partner, 'jpdl31_ExperimentalPlan408', None)
+    _safe_set(owner, 'jpdl31_Design', partner)
+    assert getattr(partner, 'jpdl31_ExperimentalPlan408') == owner
+    _safe_set(owner, 'jpdl31_Design', None)
+    assert getattr(partner, 'jpdl31_ExperimentalPlan408') is None
+
+
+def test_assoc_elements362_stub_double():
+    # jpdl31_Model has no real 'jpdl31_Model' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_DocumentRoot(mixed="sample_text")
+    partner = jpdl31_Model()
+    setattr(partner, 'jpdl31_Model', None)
+    _safe_set(owner, 'jpdl31_DocumentRoot363', partner)
+    assert getattr(partner, 'jpdl31_Model') == owner
+    _safe_set(owner, 'jpdl31_DocumentRoot363', None)
+    assert getattr(partner, 'jpdl31_Model') is None
+
+
+def test_assoc_goals401_stub_double():
+    # jpdl31_ExperimentalPlan has no real 'jpdl31_ExperimentalPlan402' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_Goal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_Goal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_Goal(description="sample_text", id="sample_text")
+    partner = jpdl31_ExperimentalPlan()
+    setattr(partner, 'jpdl31_ExperimentalPlan402', None)
+    _safe_set(owner, 'jpdl31_Goal403', partner)
+    assert getattr(partner, 'jpdl31_ExperimentalPlan402') == owner
+    _safe_set(owner, 'jpdl31_Goal403', None)
+    assert getattr(partner, 'jpdl31_ExperimentalPlan402') is None
+
+
+def test_assoc_hypothesis404_stub_double():
+    # jpdl31_ExperimentalPlan has no real 'jpdl31_ExperimentalPlan405' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_Hyphotesis's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_Hyphotesis's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_Hyphotesis(description="sample_text", id="sample_text", relationOp="sample_text", type="sample_text")
+    partner = jpdl31_ExperimentalPlan()
+    setattr(partner, 'jpdl31_ExperimentalPlan405', None)
+    _safe_set(owner, 'jpdl31_Hyphotesis406', partner)
+    assert getattr(partner, 'jpdl31_ExperimentalPlan405') == owner
+    _safe_set(owner, 'jpdl31_Hyphotesis406', None)
+    assert getattr(partner, 'jpdl31_ExperimentalPlan405') is None
+
+
+def test_assoc_plan71_stub_double():
+    # jpdl31_ExperimentalPlan has no real 'jpdl31_ExperimentalPlan' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_DocumentRoot(mixed="sample_text")
+    partner = jpdl31_ExperimentalPlan()
+    setattr(partner, 'jpdl31_ExperimentalPlan', None)
+    _safe_set(owner, 'jpdl31_DocumentRoot72', {partner})
+    assert getattr(partner, 'jpdl31_ExperimentalPlan') == owner
+    _safe_set(owner, 'jpdl31_DocumentRoot72', set())
+    assert getattr(partner, 'jpdl31_ExperimentalPlan') is None
+
+
+def test_assoc_test414_stub_double():
+    # jpdl31_StatisticalTest has no real 'jpdl31_StatisticalTest' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_Design's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_Design's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_Design(DoE="sample_text")
+    partner = jpdl31_StatisticalTest()
+    setattr(partner, 'jpdl31_StatisticalTest', None)
+    _safe_set(owner, 'jpdl31_Design415', {partner})
+    assert getattr(partner, 'jpdl31_StatisticalTest') == owner
+    _safe_set(owner, 'jpdl31_Design415', set())
+    assert getattr(partner, 'jpdl31_StatisticalTest') is None
+
+
+def test_assoc_xMLNSPrefixMap10_stub_double():
+    # jpdl31_EStringToStringMapEntry has no real 'jpdl31_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_DocumentRoot(mixed="sample_text")
+    partner = jpdl31_EStringToStringMapEntry()
+    setattr(partner, 'jpdl31_EStringToStringMapEntry', None)
+    _safe_set(owner, 'jpdl31_DocumentRoot', {partner})
+    assert getattr(partner, 'jpdl31_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'jpdl31_DocumentRoot', set())
+    assert getattr(partner, 'jpdl31_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation11_stub_double():
+    # jpdl31_EStringToStringMapEntry has no real 'jpdl31_EStringToStringMapEntry13' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl31_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl31_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl31_DocumentRoot(mixed="sample_text")
+    partner = jpdl31_EStringToStringMapEntry()
+    setattr(partner, 'jpdl31_EStringToStringMapEntry13', None)
+    _safe_set(owner, 'jpdl31_DocumentRoot12', {partner})
+    assert getattr(partner, 'jpdl31_EStringToStringMapEntry13') == owner
+    _safe_set(owner, 'jpdl31_DocumentRoot12', set())
+    assert getattr(partner, 'jpdl31_EStringToStringMapEntry13') is None
+
+

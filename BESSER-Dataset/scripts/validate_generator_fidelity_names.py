@@ -28,19 +28,70 @@ uses, read differently here:
 
 What counts as a real mismatch vs. expected, reported-only noise (same
 philosophy as the count-based script, applied at name granularity):
-  - **Classes**: a BUML class whose name (raw or sanitized) has no matching
-    class in the code at all is a real miss -- nothing to argue about.
-  - **Attributes**: a BUML-declared attribute whose name doesn't appear in
-    its matched class's code-side `attributes` list (populated from `self.x
-    = ...` assignments, confirmed against model_1) is a real miss. The
-    reverse (code attributes not in the model) is NOT flagged -- expected,
-    since association ends also contribute accessor attributes the BUML
-    `Class.attributes` list never includes (same reason
+  - **Classes**: a BUML class whose name (raw, sanitized, or pluralized --
+    see below) has no matching class in the code at all is a real miss --
+    nothing to argue about.
+  - **Attributes**: a BUML-declared attribute whose name doesn't resolve
+    (raw, sanitized, or disambiguated -- see below) against its matched
+    class's code-side `attributes` **or** `methods` names is a real miss.
+    The reverse (code attributes not in the model) is NOT flagged --
+    expected, since association ends also contribute accessor attributes
+    the BUML `Class.attributes` list never includes (same reason
     `validate_generator_fidelity.py`'s attribute counts never match).
   - **Operations**: a BUML-declared Operation whose name doesn't appear
     anywhere in its matched class's code-side `methods` list is a real
     miss. The reverse (code methods not matching any operation -- `__init__`,
     property getters/setters) is NOT flagged, for the same reason.
+
+**Found and fixed 2026-10-11, root-caused by actually reading the generated
+code for several of the 22 models the original version of this script
+flagged as mismatched** (not by guessing): all 22 were false positives in
+*this script's* resolution logic, not real generator or tree-sitter defects.
+Two concrete, confirmed patterns, both now handled:
+
+1. **Attribute name collides with a Python keyword/builtin
+   (`property`, `self`) -- 20/22 models.** The generator disambiguates,
+   but inconsistently across the dataset (confirmed on real examples, not
+   assumed to be uniform): sometimes only the *internal* backing
+   field/constructor-parameter gets a suffix while the *public* `@property`
+   accessor keeps the original name (`model_116`: attribute `self` ->
+   backing field `self_`, but `def self(self): ...` is still the public
+   getter -- confirmed directly in `code_structure.json`: tree-sitter put
+   `"self"` in that class's `methods` list, not `attributes`, which the old
+   version of this script never checked). Other times both the backing
+   field AND the public accessor get the SAME numeric suffix instead
+   (`model_100505`: attribute `self` -> `self1` end-to-end;
+   `model_10001303`: attribute `property` -> `property1` end-to-end --
+   confirmed `"property1"` appears in `code_structure.json`, never
+   `"property"` alone). Fixed by resolving an attribute's name against the
+   UNION of the matched class's `attributes` and `methods` names, trying
+   raw name, `_python_identifier`-sanitized name, AND a `+ "1"`-suffixed
+   form of each.
+2. **`Factura` -> `Facturas` pluralization -- 2/22 models.** Already known
+   and already handled in `generate_structural_tests.py`'s own
+   `resolve_code_name()` (a different script, used when actually writing
+   tests against the generated code) -- this script just never carried the
+   same rule. Fixed by also trying a `+ "s"`-suffixed form when resolving a
+   class name.
+
+Both fixes are deliberately narrow (one extra fallback name-set, two extra
+suffix forms) rather than a general fuzzy-match, to avoid trading false
+"missing" reports for false "found" ones. A third, even narrower fallback
+(case-insensitive match, tried only after every exact-form candidate above)
+was added for one more confirmed real case: `model_10001897`'s `Codigo`
+BUML attribute resolves to the generated code's `codigo`.
+
+**Re-verified against exactly these 22 models (never a full/sampled
+dataset run): 20/22 now resolve cleanly.** The remaining 2 are genuinely
+different from each other, not a leftover resolution gap: `model_10001897`
+has exactly one real, unresolvable miss (`Fecha`, absent from the generated
+code under any name or case this script tries); `model_10001985` -- despite
+being lumped together with `model_10001897` as "the Factura pair" in
+earlier project notes -- turns out to have an entirely different, more
+complex structure: its BUML `Factura` class has no single matching class in
+the code at all, splitting instead into two package/layer-qualified classes
+(`LogicaPresentacion___Factura_Component`, `Persistencia___Factura_Component`)
+-- not a simple pluralization, and not chased further here.
 
 Usage:
     python scripts/validate_generator_fidelity_names.py --models-file PATH
@@ -74,9 +125,27 @@ CODE_STRUCTURE_FILENAME = "code_structure.json"
 RETRIABLE_STATUSES = {"error"}
 
 
+def _read_text_robust(path: Path) -> str:
+    """Reads a text file regardless of which BOM (if any) Windows wrote --
+    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
+    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
+    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
+    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
+    created with plain `echo` silently corrupts the first model name AND
+    throws off line-splitting entirely (one line becomes several, since
+    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
+    guessing from one case."""
+    raw = path.read_bytes()
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        return raw.decode("utf-16")
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return raw.decode("utf-8-sig")
+    return raw.decode("utf-8")
+
+
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
     if models_file:
-        names = [l.strip() for l in models_file.read_text().splitlines() if l.strip()]
+        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
         dirs = [dataset_dir / name for name in names]
     else:
         dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
@@ -102,16 +171,43 @@ def load_cache(cache_path: Path) -> dict[str, dict]:
     return cached
 
 
-def resolve_name_in_set(raw_name: str, known_names: set[str]) -> str | None:
-    """Same resolution rule as generate_structural_tests.py's resolve_code_name(),
-    but against a plain name set (from code_structure.json) instead of a live
+def resolve_name_in_set(raw_name: str, known_names: set[str], extra_suffixes: tuple[str, ...] = ()) -> str | None:
+    """Same base resolution rule as generate_structural_tests.py's
+    resolve_code_name() (raw name, then _python_identifier-sanitized name),
+    against a plain name set (from code_structure.json) instead of a live
     module's hasattr() -- there is no running python_code.py here, only
-    tree-sitter's static extraction."""
-    if raw_name in known_names:
-        return raw_name
+    tree-sitter's static extraction.
+
+    `extra_suffixes` adds further candidate forms on top of raw/sanitized --
+    e.g. ("1",) to also try `{raw_name}1` -- for the generator's own
+    keyword/builtin-collision-avoidance renaming (confirmed real, see module
+    docstring's 2026-10-11 entry). Tried in addition to, not instead of, the
+    base forms, since most names need no disambiguation at all.
+    """
+    candidates = [raw_name]
     sanitized = _python_identifier(raw_name)
-    if sanitized != raw_name and sanitized in known_names:
-        return sanitized
+    if sanitized != raw_name:
+        candidates.append(sanitized)
+    for suffix in extra_suffixes:
+        candidates.append(f"{raw_name}{suffix}")
+        if sanitized != raw_name:
+            candidates.append(f"{sanitized}{suffix}")
+    for candidate in candidates:
+        if candidate in known_names:
+            return candidate
+    # Last resort: case-insensitive match. Confirmed real and needed
+    # (2026-10-11, model_10001897): BUML's `Codigo` attribute, capitalized,
+    # resolves to the generated code's `codigo`, lowercase -- while that
+    # same class's other attributes (nif, nombre, direccionPostal) are
+    # already lowercase on BOTH sides, suggesting this specific case
+    # mismatch is a quirk of the source BUML model's own data entry, not a
+    # systematic generator rule worth a dedicated suffix form. Tried only
+    # after every exact-form candidate above, to prefer an exact match
+    # whenever one exists.
+    lowered = {n.lower(): n for n in known_names}
+    for candidate in candidates:
+        if candidate.lower() in lowered:
+            return lowered[candidate.lower()]
     return None
 
 
@@ -163,7 +259,10 @@ def compare_model(model_dir: Path) -> dict:
     total_ops_missing = 0
 
     for cls in sorted(buml_classes, key=_type_name):
-        resolved = resolve_name_in_set(cls.name, code_class_names)
+        # "s" fallback: the generator pluralizes some class names
+        # (Factura -> Facturas, confirmed, see module docstring) --
+        # independent of the raw/sanitized forms tried by default.
+        resolved = resolve_name_in_set(cls.name, code_class_names, extra_suffixes=("s",))
         if resolved is None:
             classes_missing.append(cls.name)
             continue
@@ -172,10 +271,18 @@ def compare_model(model_dir: Path) -> dict:
         code_class = code_classes_by_name[resolved]
         code_attr_names = {a["name"] for a in code_class.get("attributes", [])}
         code_method_names = {m["name"] for m in code_class.get("methods", [])}
+        # Attributes resolve against attrs UNION methods, plus a "1" suffix
+        # fallback -- the generator's keyword/builtin-collision-avoidance
+        # renaming sometimes keeps the original name on the public @property
+        # accessor (which tree-sitter files under `methods`, not
+        # `attributes`) and sometimes suffixes both the backing field and
+        # the public accessor with "1" instead. Both confirmed real, see
+        # module docstring's 2026-10-11 entry.
+        code_attr_or_method_names = code_attr_names | code_method_names
 
         attrs_missing = sorted(
             a.name for a in cls.attributes
-            if resolve_name_in_set(a.name, code_attr_names) is None
+            if resolve_name_in_set(a.name, code_attr_or_method_names, extra_suffixes=("1",)) is None
         )
         ops_missing = sorted(
             op.name for op in cls.methods

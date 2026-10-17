@@ -44,3 +44,71 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_geometryLabel0_stub_double():
+    # petrinet_Place has no real 'petrinet_Place' property in the generated
+    # code (a bare stub) -- manually attach it so petrinet_GeometryLabel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # petrinet_GeometryLabel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = petrinet_GeometryLabel(text="sample_text")
+    partner = petrinet_Place()
+    setattr(partner, 'petrinet_Place', None)
+    _safe_set(owner, 'petrinet_GeometryLabel', partner)
+    assert getattr(partner, 'petrinet_Place') == owner
+    _safe_set(owner, 'petrinet_GeometryLabel', None)
+    assert getattr(partner, 'petrinet_Place') is None
+
+
+def test_assoc_identity9_stub_double():
+    # petrinet_Arc has no real 'petrinet_Arc' property in the generated
+    # code (a bare stub) -- manually attach it so petrinet_Identity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # petrinet_Identity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = petrinet_Identity(text="sample_text")
+    partner = petrinet_Arc()
+    setattr(partner, 'petrinet_Arc', None)
+    _safe_set(owner, 'petrinet_Identity', partner)
+    assert getattr(partner, 'petrinet_Arc') == owner
+    _safe_set(owner, 'petrinet_Identity', None)
+    assert getattr(partner, 'petrinet_Arc') is None
+
+
+def test_assoc_inputPlaceLabel5_stub_double():
+    # petrinet_Place has no real 'petrinet_Place6' property in the generated
+    # code (a bare stub) -- manually attach it so petrinet_InputPlace's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # petrinet_InputPlace's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = petrinet_InputPlace(text=True)
+    partner = petrinet_Place()
+    setattr(partner, 'petrinet_Place6', None)
+    _safe_set(owner, 'petrinet_InputPlace', partner)
+    assert getattr(partner, 'petrinet_Place6') == owner
+    _safe_set(owner, 'petrinet_InputPlace', None)
+    assert getattr(partner, 'petrinet_Place6') is None
+
+
+def test_assoc_tokens3_stub_double():
+    # petrinet_Place has no real 'petrinet_Place4' property in the generated
+    # code (a bare stub) -- manually attach it so petrinet_Token's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # petrinet_Token's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = petrinet_Token(text="sample_text")
+    partner = petrinet_Place()
+    setattr(partner, 'petrinet_Place4', None)
+    _safe_set(owner, 'petrinet_Token', partner)
+    assert getattr(partner, 'petrinet_Place4') == owner
+    _safe_set(owner, 'petrinet_Token', None)
+    assert getattr(partner, 'petrinet_Place4') is None
+
+

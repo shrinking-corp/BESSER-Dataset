@@ -73,3 +73,41 @@ def test_assoc_User_Event_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'events6', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Event_Registration_stub_double():
+    # Registration has no real 'event5' property in the generated
+    # code (a bare stub) -- manually attach it so Event's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Event's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Event(Address="sample_text", CurrentNumberOfPlayers=7, DateTime="sample_text", Description="sample_text", EventId=7, MaxNumberOfPlayers=7, attribute="sample_text")
+    partner = Registration()
+    setattr(partner, 'event5', None)
+    _safe_set(owner, 'registrations4', {partner})
+    assert getattr(partner, 'event5') == owner
+    _safe_set(owner, 'registrations4', set())
+    assert getattr(partner, 'event5') is None
+
+
+def test_assoc_User_Registration_stub_double():
+    # Registration has no real 'user1' property in the generated
+    # code (a bare stub) -- manually attach it so User's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # User's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = User(DateOfBirth="sample_text", Email="sample_text", Login="sample_text", Password="sample_text", PhoneNumber="sample_text", UserId=7)
+    partner = Registration()
+    setattr(partner, 'user1', None)
+    _safe_set(owner, 'registrations0', {partner})
+    assert getattr(partner, 'user1') == owner
+    _safe_set(owner, 'registrations0', set())
+    assert getattr(partner, 'user1') is None
+
+

@@ -1174,3 +1174,266 @@ def test_assoc_weekly_planning_of_dishes__for__waiter_food_dish_reverse_link_rea
         assert not _is_linked(a2, 'weekly_planning_of_dishes__for__waiter165', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Component_waiter_stub_double():
+    # kitchen_worker has no real 'component139' property in the generated
+    # code (a bare stub) -- manually attach it so Component's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Component's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Component(Expiry_date="sample_text", ID="sample_text", Name="sample_text", Storage_or_sehlf="sample_text", Type="sample_text", attribute="sample_text")
+    partner = kitchen_worker()
+    setattr(partner, 'component139', None)
+    _safe_set(owner, 'waiter138', {partner})
+    assert getattr(partner, 'component139') == owner
+    _safe_set(owner, 'waiter138', set())
+    assert getattr(partner, 'component139') is None
+
+
+def test_assoc_Csutomer_catering_stub_double():
+    # catering has no real 'csutomer175' property in the generated
+    # code (a bare stub) -- manually attach it so Csutomer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Csutomer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Csutomer(Adress="sample_text", attribute="sample_text", email="sample_text", id="sample_text", name="sample_text", password="sample_text", register="sample_text", tel_no="sample_text")
+    partner = catering()
+    setattr(partner, 'csutomer175', None)
+    _safe_set(owner, 'catering174', partner)
+    assert getattr(partner, 'csutomer175') == owner
+    _safe_set(owner, 'catering174', None)
+    assert getattr(partner, 'csutomer175') is None
+
+
+def test_assoc_Csutomer_shopping_cart_stub_double():
+    # shopping_cart has no real 'csutomer129' property in the generated
+    # code (a bare stub) -- manually attach it so Csutomer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Csutomer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Csutomer(Adress="sample_text", attribute="sample_text", email="sample_text", id="sample_text", name="sample_text", password="sample_text", register="sample_text", tel_no="sample_text")
+    partner = shopping_cart()
+    setattr(partner, 'csutomer129', None)
+    _safe_set(owner, 'shopping_cart128', partner)
+    assert getattr(partner, 'csutomer129') == owner
+    _safe_set(owner, 'shopping_cart128', None)
+    assert getattr(partner, 'csutomer129') is None
+
+
+def test_assoc_Payment_bank_account_stub_double():
+    # bank_account has no real 'payment67' property in the generated
+    # code (a bare stub) -- manually attach it so Payment1's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Payment1's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Payment1(Amount="sample_text", CustomerID=7, OrderID=7, PaymentID=7, date="sample_text", time="sample_text")
+    partner = bank_account()
+    setattr(partner, 'payment67', None)
+    _safe_set(owner, 'bank_account66', partner)
+    assert getattr(partner, 'payment67') == owner
+    _safe_set(owner, 'bank_account66', None)
+    assert getattr(partner, 'payment67') is None
+
+
+def test_assoc_System_bank_account_stub_double():
+    # bank_account has no real 'system69' property in the generated
+    # code (a bare stub) -- manually attach it so System1's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # System1's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = System1(Email="sample_text", Password="sample_text", WebAdmin_or_owner="sample_text")
+    partner = bank_account()
+    setattr(partner, 'system69', None)
+    _safe_set(owner, 'bank_account68', partner)
+    assert getattr(partner, 'system69') == owner
+    _safe_set(owner, 'bank_account68', None)
+    assert getattr(partner, 'system69') is None
+
+
+def test_assoc_System_bank_account2_stub_double():
+    # bank_account has no real 'system71' property in the generated
+    # code (a bare stub) -- manually attach it so System1's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # System1's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = System1(Email="sample_text", Password="sample_text", WebAdmin_or_owner="sample_text")
+    partner = bank_account()
+    setattr(partner, 'system71', None)
+    _safe_set(owner, 'bank_account70', partner)
+    assert getattr(partner, 'system71') == owner
+    _safe_set(owner, 'bank_account70', None)
+    assert getattr(partner, 'system71') is None
+
+
+def test_assoc_System_help_stub_double():
+    # help has no real 'system75' property in the generated
+    # code (a bare stub) -- manually attach it so System1's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # System1's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = System1(Email="sample_text", Password="sample_text", WebAdmin_or_owner="sample_text")
+    partner = help()
+    setattr(partner, 'system75', None)
+    _safe_set(owner, 'help74', partner)
+    assert getattr(partner, 'system75') == owner
+    _safe_set(owner, 'help74', None)
+    assert getattr(partner, 'system75') is None
+
+
+def test_assoc_Web_master_contact_stub_double():
+    # Web_master has no real 'contact62' property in the generated
+    # code (a bare stub) -- manually attach it so contact's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # contact's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = contact(Adress="sample_text", Email="sample_text", Name="sample_text", Tel=7, attribute="sample_text")
+    partner = Web_master()
+    setattr(partner, 'contact62', None)
+    _safe_set(owner, 'web_master63', partner)
+    assert getattr(partner, 'contact62') == owner
+    _safe_set(owner, 'web_master63', None)
+    assert getattr(partner, 'contact62') is None
+
+
+def test_assoc_chef_planning_stub_double():
+    # chef2 has no real 'planning150' property in the generated
+    # code (a bare stub) -- manually attach it so dayplan's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dayplan's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dayplan(Monday="sample_text", friday="sample_text", plan_per_date="sample_text", saturday="sample_text", sunday="sample_text", thursday="sample_text", tuesday="sample_text", wenesday="sample_text")
+    partner = chef2()
+    setattr(partner, 'planning150', None)
+    _safe_set(owner, 'chef151', partner)
+    assert getattr(partner, 'planning150') == owner
+    _safe_set(owner, 'chef151', None)
+    assert getattr(partner, 'planning150') is None
+
+
+def test_assoc_menu_catering_stub_double():
+    # catering has no real 'menu177' property in the generated
+    # code (a bare stub) -- manually attach it so menu's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # menu's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = menu(attribute="sample_text", dish_quantity="sample_text", dishname="sample_text", drinkname="sample_text", price="sample_text")
+    partner = catering()
+    setattr(partner, 'menu177', None)
+    _safe_set(owner, 'catering176', partner)
+    assert getattr(partner, 'menu177') == owner
+    _safe_set(owner, 'catering176', None)
+    assert getattr(partner, 'menu177') is None
+
+
+def test_assoc_order_shopping_cart_stub_double():
+    # shopping_cart has no real 'order131' property in the generated
+    # code (a bare stub) -- manually attach it so order's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # order's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = order(_attr="sample_text", date="sample_text", order_id="sample_text", ordered_item="sample_text", status="sample_text")
+    partner = shopping_cart()
+    setattr(partner, 'order131', None)
+    _safe_set(owner, 'shopping_cart130', partner)
+    assert getattr(partner, 'order131') == owner
+    _safe_set(owner, 'shopping_cart130', None)
+    assert getattr(partner, 'order131') is None
+
+
+def test_assoc_order_shopping_cart2_stub_double():
+    # shopping_cart has no real 'order159' property in the generated
+    # code (a bare stub) -- manually attach it so order's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # order's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = order(_attr="sample_text", date="sample_text", order_id="sample_text", ordered_item="sample_text", status="sample_text")
+    partner = shopping_cart()
+    setattr(partner, 'order159', None)
+    _safe_set(owner, 'shopping_cart158', {partner})
+    assert getattr(partner, 'order159') == owner
+    _safe_set(owner, 'shopping_cart158', set())
+    assert getattr(partner, 'order159') is None
+
+
+def test_assoc_planning_chef_stub_double():
+    # chef2 has no real 'planning137' property in the generated
+    # code (a bare stub) -- manually attach it so dayplan's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dayplan's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dayplan(Monday="sample_text", friday="sample_text", plan_per_date="sample_text", saturday="sample_text", sunday="sample_text", thursday="sample_text", tuesday="sample_text", wenesday="sample_text")
+    partner = chef2()
+    setattr(partner, 'planning137', None)
+    _safe_set(owner, 'chef136', partner)
+    assert getattr(partner, 'planning137') == owner
+    _safe_set(owner, 'chef136', None)
+    assert getattr(partner, 'planning137') is None
+
+
+def test_assoc_shopping_cart_payment_stub_double():
+    # shopping_cart has no real 'payment132' property in the generated
+    # code (a bare stub) -- manually attach it so payment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # payment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = payment(_attr="sample_text", amount="sample_text", total_amount="sample_text")
+    partner = shopping_cart()
+    setattr(partner, 'payment132', None)
+    _safe_set(owner, 'shopping_cart133', {partner})
+    assert getattr(partner, 'payment132') == owner
+    _safe_set(owner, 'shopping_cart133', set())
+    assert getattr(partner, 'payment132') is None
+
+
+def test_assoc_shopping_cart_payment2_stub_double():
+    # shopping_cart has no real 'payment170' property in the generated
+    # code (a bare stub) -- manually attach it so payment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # payment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = payment(_attr="sample_text", amount="sample_text", total_amount="sample_text")
+    partner = shopping_cart()
+    setattr(partner, 'payment170', None)
+    _safe_set(owner, 'shopping_cart171', partner)
+    assert getattr(partner, 'payment170') == owner
+    _safe_set(owner, 'shopping_cart171', None)
+    assert getattr(partner, 'payment170') is None
+
+
+def test_assoc_weekly_planning_of_dishes__by_waiter_waiter_stub_double():
+    # kitchen_worker has no real 'weekly_planning_of_dishes__by_waiter145' property in the generated
+    # code (a bare stub) -- manually attach it so events's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # events's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = events(attribute="sample_text", catering_location="sample_text", duration="sample_text", get_employee_name="sample_text")
+    partner = kitchen_worker()
+    setattr(partner, 'weekly_planning_of_dishes__by_waiter145', None)
+    _safe_set(owner, 'waiter144', partner)
+    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter145') == owner
+    _safe_set(owner, 'waiter144', None)
+    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter145') is None
+
+
+def test_assoc_weekly_planning_of_dishes__by_waiter_waiter2_stub_double():
+    # kitchen_worker has no real 'weekly_planning_of_dishes__by_waiter147' property in the generated
+    # code (a bare stub) -- manually attach it so events's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # events's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = events(attribute="sample_text", catering_location="sample_text", duration="sample_text", get_employee_name="sample_text")
+    partner = kitchen_worker()
+    setattr(partner, 'weekly_planning_of_dishes__by_waiter147', None)
+    _safe_set(owner, 'waiter146', {partner})
+    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter147') == owner
+    _safe_set(owner, 'waiter146', set())
+    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter147') is None
+
+

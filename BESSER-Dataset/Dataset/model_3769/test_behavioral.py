@@ -36,3 +36,26 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_yyy1_stub_double():
+    # d_B has no real 'd_B2' property in the generated
+    # code (a bare stub) -- manually attach it so d_Z's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # d_Z's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = d_Z(b=7)
+    partner = d_B()
+    setattr(partner, 'd_B2', None)
+    _safe_set(owner, 'd_Z', partner)
+    assert getattr(partner, 'd_B2') == owner
+    _safe_set(owner, 'd_Z', None)
+    assert getattr(partner, 'd_B2') is None
+
+

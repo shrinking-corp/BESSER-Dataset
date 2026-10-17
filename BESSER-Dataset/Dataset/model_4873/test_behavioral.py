@@ -340,3 +340,116 @@ def test_assoc_sources5_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Source', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_configuration34_stub_double():
+    # application_Configuration has no real 'application_Configuration35' property in the generated
+    # code (a bare stub) -- manually attach it so application_ConfigurableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_ConfigurableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_ConfigurableElement(changeable="sample_text", configurationImage="sample_text", description="sample_text", hidden="sample_text", ident="sample_text", name="sample_text")
+    partner = application_Configuration()
+    setattr(partner, 'application_Configuration35', None)
+    _safe_set(owner, 'application_ConfigurableElement', partner)
+    assert getattr(partner, 'application_Configuration35') == owner
+    _safe_set(owner, 'application_ConfigurableElement', None)
+    assert getattr(partner, 'application_Configuration35') is None
+
+
+def test_assoc_dataSet1_stub_double():
+    # application_DataSet has no real 'application_DataSet' property in the generated
+    # code (a bare stub) -- manually attach it so application_Source's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_Source's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_Source(activeState="sample_text", bundleId="sample_text", logLevel="sample_text", removeDataOnStop="sample_text", state="sample_text", updateRound="sample_text")
+    partner = application_DataSet()
+    setattr(partner, 'application_DataSet', None)
+    _safe_set(owner, 'application_Source2', partner)
+    assert getattr(partner, 'application_DataSet') == owner
+    _safe_set(owner, 'application_Source2', None)
+    assert getattr(partner, 'application_DataSet') is None
+
+
+def test_assoc_interface25_stub_double():
+    # application_Security has no real 'security' property in the generated
+    # code (a bare stub) -- manually attach it so application_Interface's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_Interface's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_Interface(frontEndCaching="sample_text", urlSuffix="sample_text")
+    partner = application_Security()
+    setattr(partner, 'security', None)
+    _safe_set(owner, 'Interface26', partner)
+    assert getattr(partner, 'security') == owner
+    _safe_set(owner, 'Interface26', None)
+    assert getattr(partner, 'security') is None
+
+
+def test_assoc_mappingRules4_stub_double():
+    # application_MappingRule has no real 'application_MappingRule' property in the generated
+    # code (a bare stub) -- manually attach it so application_Mashup's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_Mashup's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_Mashup(backupDataSet="sample_text", backupIntervall="sample_text", cacheAttachments="sample_text", cacheDataSet="sample_text", cacheDelay="sample_text", keepDeletedItemsList="sample_text", sourceIdentCounter="sample_text", workingDirectory="sample_text")
+    partner = application_MappingRule()
+    setattr(partner, 'application_MappingRule', None)
+    _safe_set(owner, 'application_Mashup', {partner})
+    assert getattr(partner, 'application_MappingRule') == owner
+    _safe_set(owner, 'application_Mashup', set())
+    assert getattr(partner, 'application_MappingRule') is None
+
+
+def test_assoc_persistency0_stub_double():
+    # application_Persistency has no real 'application_Persistency' property in the generated
+    # code (a bare stub) -- manually attach it so application_Source's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_Source's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_Source(activeState="sample_text", bundleId="sample_text", logLevel="sample_text", removeDataOnStop="sample_text", state="sample_text", updateRound="sample_text")
+    partner = application_Persistency()
+    setattr(partner, 'application_Persistency', None)
+    _safe_set(owner, 'application_Source', partner)
+    assert getattr(partner, 'application_Persistency') == owner
+    _safe_set(owner, 'application_Source', None)
+    assert getattr(partner, 'application_Persistency') is None
+
+
+def test_assoc_properties9_stub_double():
+    # application_Configuration has no real 'application_Configuration' property in the generated
+    # code (a bare stub) -- manually attach it so application_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_Property(Key="sample_text", Value="sample_text", changeable="sample_text", helpText="sample_text", hidden="sample_text", possibleValues="sample_text", propertyType="sample_text", required="sample_text")
+    partner = application_Configuration()
+    setattr(partner, 'application_Configuration', None)
+    _safe_set(owner, 'application_Property', partner)
+    assert getattr(partner, 'application_Configuration') == owner
+    _safe_set(owner, 'application_Property', None)
+    assert getattr(partner, 'application_Configuration') is None
+
+
+def test_assoc_security22_stub_double():
+    # application_Security has no real 'Security' property in the generated
+    # code (a bare stub) -- manually attach it so application_Interface's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # application_Interface's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = application_Interface(frontEndCaching="sample_text", urlSuffix="sample_text")
+    partner = application_Security()
+    setattr(partner, 'Security', None)
+    _safe_set(owner, 'interface', partner)
+    assert getattr(partner, 'Security') == owner
+    _safe_set(owner, 'interface', None)
+    assert getattr(partner, 'Security') is None
+
+

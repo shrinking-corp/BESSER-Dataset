@@ -660,3 +660,266 @@ def test_assoc_types10_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'tExp_TraceExpression11', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_elements0_stub_double():
+    # tExp_Domainmodel has no real 'tExp_Domainmodel' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_TraceExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_TraceExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_TraceExpression(bodyL="sample_text", channelsL="sample_text", constraintsL="sample_text", decentralized="sample_text", decentralizedL="sample_text", gui="sample_text", guiL="sample_text", minimal="sample_text", minimalL="sample_text", modules="sample_text", modulesL="sample_text", name="sample_text", partitionL="sample_text", rolesL="sample_text", threshold="sample_text", thresholdL="sample_text", typesL="sample_text")
+    partner = tExp_Domainmodel()
+    setattr(partner, 'tExp_Domainmodel', None)
+    _safe_set(owner, 'tExp_TraceExpression', partner)
+    assert getattr(partner, 'tExp_Domainmodel') == owner
+    _safe_set(owner, 'tExp_TraceExpression', None)
+    assert getattr(partner, 'tExp_Domainmodel') is None
+
+
+def test_assoc_filterExpr116_stub_double():
+    # tExp_FilterExpr has no real 'tExp_FilterExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_FilterExpr()
+    setattr(partner, 'tExp_FilterExpr', None)
+    _safe_set(owner, 'tExp_Expression117', partner)
+    assert getattr(partner, 'tExp_FilterExpr') == owner
+    _safe_set(owner, 'tExp_Expression117', None)
+    assert getattr(partner, 'tExp_FilterExpr') is None
+
+
+def test_assoc_head89_stub_double():
+    # tExp_ListExpression has no real 'tExp_ListExpression' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_PrologExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_PrologExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_PrologExpression(op="sample_text")
+    partner = tExp_ListExpression()
+    setattr(partner, 'tExp_ListExpression', None)
+    _safe_set(owner, 'tExp_PrologExpression90', partner)
+    assert getattr(partner, 'tExp_ListExpression') == owner
+    _safe_set(owner, 'tExp_PrologExpression90', None)
+    assert getattr(partner, 'tExp_ListExpression') is None
+
+
+def test_assoc_left104_stub_double():
+    # tExp_AndExpr has no real 'tExp_AndExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_AndExpr()
+    setattr(partner, 'tExp_AndExpr', None)
+    _safe_set(owner, 'tExp_Expression105', partner)
+    assert getattr(partner, 'tExp_AndExpr') == owner
+    _safe_set(owner, 'tExp_Expression105', None)
+    assert getattr(partner, 'tExp_AndExpr') is None
+
+
+def test_assoc_left109_stub_double():
+    # tExp_CatExpr has no real 'tExp_CatExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_CatExpr()
+    setattr(partner, 'tExp_CatExpr', None)
+    _safe_set(owner, 'tExp_Expression110', partner)
+    assert getattr(partner, 'tExp_CatExpr') == owner
+    _safe_set(owner, 'tExp_Expression110', None)
+    assert getattr(partner, 'tExp_CatExpr') is None
+
+
+def test_assoc_left94_stub_double():
+    # tExp_ShuffleExpr has no real 'tExp_ShuffleExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_ShuffleExpr()
+    setattr(partner, 'tExp_ShuffleExpr', None)
+    _safe_set(owner, 'tExp_Expression95', partner)
+    assert getattr(partner, 'tExp_ShuffleExpr') == owner
+    _safe_set(owner, 'tExp_Expression95', None)
+    assert getattr(partner, 'tExp_ShuffleExpr') is None
+
+
+def test_assoc_left99_stub_double():
+    # tExp_UnionExpr has no real 'tExp_UnionExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_UnionExpr()
+    setattr(partner, 'tExp_UnionExpr', None)
+    _safe_set(owner, 'tExp_Expression100', partner)
+    assert getattr(partner, 'tExp_UnionExpr') == owner
+    _safe_set(owner, 'tExp_Expression100', None)
+    assert getattr(partner, 'tExp_UnionExpr') is None
+
+
+def test_assoc_partition12_stub_double():
+    # tExp_Partition has no real 'tExp_Partition' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_TraceExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_TraceExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_TraceExpression(bodyL="sample_text", channelsL="sample_text", constraintsL="sample_text", decentralized="sample_text", decentralizedL="sample_text", gui="sample_text", guiL="sample_text", minimal="sample_text", minimalL="sample_text", modules="sample_text", modulesL="sample_text", name="sample_text", partitionL="sample_text", rolesL="sample_text", threshold="sample_text", thresholdL="sample_text", typesL="sample_text")
+    partner = tExp_Partition()
+    setattr(partner, 'tExp_Partition', None)
+    _safe_set(owner, 'tExp_TraceExpression13', {partner})
+    assert getattr(partner, 'tExp_Partition') == owner
+    _safe_set(owner, 'tExp_TraceExpression13', set())
+    assert getattr(partner, 'tExp_Partition') is None
+
+
+def test_assoc_right101_stub_double():
+    # tExp_UnionExpr has no real 'tExp_UnionExpr102' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_UnionExpr()
+    setattr(partner, 'tExp_UnionExpr102', None)
+    _safe_set(owner, 'tExp_Expression103', partner)
+    assert getattr(partner, 'tExp_UnionExpr102') == owner
+    _safe_set(owner, 'tExp_Expression103', None)
+    assert getattr(partner, 'tExp_UnionExpr102') is None
+
+
+def test_assoc_right106_stub_double():
+    # tExp_AndExpr has no real 'tExp_AndExpr107' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_AndExpr()
+    setattr(partner, 'tExp_AndExpr107', None)
+    _safe_set(owner, 'tExp_Expression108', partner)
+    assert getattr(partner, 'tExp_AndExpr107') == owner
+    _safe_set(owner, 'tExp_Expression108', None)
+    assert getattr(partner, 'tExp_AndExpr107') is None
+
+
+def test_assoc_right111_stub_double():
+    # tExp_CatExpr has no real 'tExp_CatExpr112' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_CatExpr()
+    setattr(partner, 'tExp_CatExpr112', None)
+    _safe_set(owner, 'tExp_Expression113', partner)
+    assert getattr(partner, 'tExp_CatExpr112') == owner
+    _safe_set(owner, 'tExp_Expression113', None)
+    assert getattr(partner, 'tExp_CatExpr112') is None
+
+
+def test_assoc_right96_stub_double():
+    # tExp_ShuffleExpr has no real 'tExp_ShuffleExpr97' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_ShuffleExpr()
+    setattr(partner, 'tExp_ShuffleExpr97', None)
+    _safe_set(owner, 'tExp_Expression98', partner)
+    assert getattr(partner, 'tExp_ShuffleExpr97') == owner
+    _safe_set(owner, 'tExp_Expression98', None)
+    assert getattr(partner, 'tExp_ShuffleExpr97') is None
+
+
+def test_assoc_roles78_stub_double():
+    # tExp_Together has no real 'tExp_Together79' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Role's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Role's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Role(args="sample_text", class_="sample_text", name="sample_text")
+    partner = tExp_Together()
+    setattr(partner, 'tExp_Together79', None)
+    _safe_set(owner, 'tExp_Role80', partner)
+    assert getattr(partner, 'tExp_Together79') == owner
+    _safe_set(owner, 'tExp_Role80', None)
+    assert getattr(partner, 'tExp_Together79') is None
+
+
+def test_assoc_seqExpr114_stub_double():
+    # tExp_SeqExpr has no real 'tExp_SeqExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_SeqExpr()
+    setattr(partner, 'tExp_SeqExpr', None)
+    _safe_set(owner, 'tExp_Expression115', partner)
+    assert getattr(partner, 'tExp_SeqExpr') == owner
+    _safe_set(owner, 'tExp_Expression115', None)
+    assert getattr(partner, 'tExp_SeqExpr') is None
+
+
+def test_assoc_tail91_stub_double():
+    # tExp_ListExpression has no real 'tExp_ListExpression92' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_PrologExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_PrologExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_PrologExpression(op="sample_text")
+    partner = tExp_ListExpression()
+    setattr(partner, 'tExp_ListExpression92', None)
+    _safe_set(owner, 'tExp_PrologExpression93', partner)
+    assert getattr(partner, 'tExp_ListExpression92') == owner
+    _safe_set(owner, 'tExp_PrologExpression93', None)
+    assert getattr(partner, 'tExp_ListExpression92') is None
+
+
+def test_assoc_terminalExpr120_stub_double():
+    # tExp_TerminalExpr has no real 'tExp_TerminalExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_TerminalExpr()
+    setattr(partner, 'tExp_TerminalExpr', None)
+    _safe_set(owner, 'tExp_Expression121', partner)
+    assert getattr(partner, 'tExp_TerminalExpr') == owner
+    _safe_set(owner, 'tExp_Expression121', None)
+    assert getattr(partner, 'tExp_TerminalExpr') is None
+
+
+def test_assoc_varExpr118_stub_double():
+    # tExp_VarExpr has no real 'tExp_VarExpr' property in the generated
+    # code (a bare stub) -- manually attach it so tExp_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # tExp_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = tExp_Expression(eps="sample_text", operator="sample_text", variable="sample_text")
+    partner = tExp_VarExpr()
+    setattr(partner, 'tExp_VarExpr', None)
+    _safe_set(owner, 'tExp_Expression119', partner)
+    assert getattr(partner, 'tExp_VarExpr') == owner
+    _safe_set(owner, 'tExp_Expression119', None)
+    assert getattr(partner, 'tExp_VarExpr') is None
+
+

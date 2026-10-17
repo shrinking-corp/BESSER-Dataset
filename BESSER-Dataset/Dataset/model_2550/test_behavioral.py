@@ -366,3 +366,326 @@ def test_assoc_we35_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'dml_S36', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_b67_stub_double():
+    # dml_IS has no real 'dml_IS69' property in the generated
+    # code (a bare stub) -- manually attach it so dml_DI's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_DI's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_DI(clid="sample_text", cln="sample_text")
+    partner = dml_IS()
+    setattr(partner, 'dml_IS69', None)
+    _safe_set(owner, 'dml_DI68', partner)
+    assert getattr(partner, 'dml_IS69') == owner
+    _safe_set(owner, 'dml_DI68', None)
+    assert getattr(partner, 'dml_IS69') is None
+
+
+def test_assoc_e100_stub_double():
+    # dml_PE has no real 'dml_PE101' property in the generated
+    # code (a bare stub) -- manually attach it so dml_E's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_E's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_E(op="sample_text")
+    partner = dml_PE()
+    setattr(partner, 'dml_PE101', None)
+    _safe_set(owner, 'dml_E102', partner)
+    assert getattr(partner, 'dml_PE101') == owner
+    _safe_set(owner, 'dml_E102', None)
+    assert getattr(partner, 'dml_PE101') is None
+
+
+def test_assoc_e173_stub_double():
+    # dml_IS has no real 'dml_IS74' property in the generated
+    # code (a bare stub) -- manually attach it so dml_E's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_E's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_E(op="sample_text")
+    partner = dml_IS()
+    setattr(partner, 'dml_IS74', None)
+    _safe_set(owner, 'dml_E75', partner)
+    assert getattr(partner, 'dml_IS74') == owner
+    _safe_set(owner, 'dml_E75', None)
+    assert getattr(partner, 'dml_IS74') is None
+
+
+def test_assoc_e276_stub_double():
+    # dml_IS has no real 'dml_IS77' property in the generated
+    # code (a bare stub) -- manually attach it so dml_E's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_E's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_E(op="sample_text")
+    partner = dml_IS()
+    setattr(partner, 'dml_IS77', None)
+    _safe_set(owner, 'dml_E78', partner)
+    assert getattr(partner, 'dml_IS77') == owner
+    _safe_set(owner, 'dml_E78', None)
+    assert getattr(partner, 'dml_IS77') is None
+
+
+def test_assoc_e70_stub_double():
+    # dml_IS has no real 'dml_IS72' property in the generated
+    # code (a bare stub) -- manually attach it so dml_DI's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_DI's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_DI(clid="sample_text", cln="sample_text")
+    partner = dml_IS()
+    setattr(partner, 'dml_IS72', None)
+    _safe_set(owner, 'dml_DI71', partner)
+    assert getattr(partner, 'dml_IS72') == owner
+    _safe_set(owner, 'dml_DI71', None)
+    assert getattr(partner, 'dml_IS72') is None
+
+
+def test_assoc_es22_stub_double():
+    # dml_BS has no real 'dml_BS24' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_BS()
+    setattr(partner, 'dml_BS24', None)
+    _safe_set(owner, 'dml_S23', partner)
+    assert getattr(partner, 'dml_BS24') == owner
+    _safe_set(owner, 'dml_S23', None)
+    assert getattr(partner, 'dml_BS24') is None
+
+
+def test_assoc_fp25_stub_double():
+    # dml_FP has no real 'dml_FP' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_FP()
+    setattr(partner, 'dml_FP', None)
+    _safe_set(owner, 'dml_S26', partner)
+    assert getattr(partner, 'dml_FP') == owner
+    _safe_set(owner, 'dml_S26', None)
+    assert getattr(partner, 'dml_FP') is None
+
+
+def test_assoc_id59_stub_double():
+    # dml_FP has no real 'dml_FP60' property in the generated
+    # code (a bare stub) -- manually attach it so dml_ID's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_ID's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_ID(name="sample_text")
+    partner = dml_FP()
+    setattr(partner, 'dml_FP60', None)
+    _safe_set(owner, 'dml_ID61', partner)
+    assert getattr(partner, 'dml_FP60') == owner
+    _safe_set(owner, 'dml_ID61', None)
+    assert getattr(partner, 'dml_FP60') is None
+
+
+def test_assoc_id97_stub_double():
+    # dml_PE has no real 'dml_PE98' property in the generated
+    # code (a bare stub) -- manually attach it so dml_ID's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_ID's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_ID(name="sample_text")
+    partner = dml_PE()
+    setattr(partner, 'dml_PE98', None)
+    _safe_set(owner, 'dml_ID99', partner)
+    assert getattr(partner, 'dml_PE98') == owner
+    _safe_set(owner, 'dml_ID99', None)
+    assert getattr(partner, 'dml_PE98') is None
+
+
+def test_assoc_is_20_stub_double():
+    # dml_BS has no real 'dml_BS' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_BS()
+    setattr(partner, 'dml_BS', None)
+    _safe_set(owner, 'dml_S21', partner)
+    assert getattr(partner, 'dml_BS') == owner
+    _safe_set(owner, 'dml_S21', None)
+    assert getattr(partner, 'dml_BS') is None
+
+
+def test_assoc_name3_stub_double():
+    # dml_F has no real 'dml_F4' property in the generated
+    # code (a bare stub) -- manually attach it so dml_ID's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_ID's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_ID(name="sample_text")
+    partner = dml_F()
+    setattr(partner, 'dml_F4', None)
+    _safe_set(owner, 'dml_ID', partner)
+    assert getattr(partner, 'dml_F4') == owner
+    _safe_set(owner, 'dml_ID', None)
+    assert getattr(partner, 'dml_F4') is None
+
+
+def test_assoc_pe51_stub_double():
+    # dml_PE has no real 'dml_PE' property in the generated
+    # code (a bare stub) -- manually attach it so dml_FC's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_FC's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_FC(bif="sample_text")
+    partner = dml_PE()
+    setattr(partner, 'dml_PE', None)
+    _safe_set(owner, 'dml_FC52', {partner})
+    assert getattr(partner, 'dml_PE') == owner
+    _safe_set(owner, 'dml_FC52', set())
+    assert getattr(partner, 'dml_PE') is None
+
+
+def test_assoc_pf32_stub_double():
+    # dml_FP has no real 'dml_FP34' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_FP()
+    setattr(partner, 'dml_FP34', None)
+    _safe_set(owner, 'dml_S33', partner)
+    assert getattr(partner, 'dml_FP34') == owner
+    _safe_set(owner, 'dml_S33', None)
+    assert getattr(partner, 'dml_FP34') is None
+
+
+def test_assoc_s1_stub_double():
+    # dml_D has no real 'dml_D2' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_D()
+    setattr(partner, 'dml_D2', None)
+    _safe_set(owner, 'dml_S', partner)
+    assert getattr(partner, 'dml_D2') == owner
+    _safe_set(owner, 'dml_S', None)
+    assert getattr(partner, 'dml_D2') is None
+
+
+def test_assoc_s10_stub_double():
+    # dml_F has no real 'dml_F11' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_F()
+    setattr(partner, 'dml_F11', None)
+    _safe_set(owner, 'dml_S12', partner)
+    assert getattr(partner, 'dml_F11') == owner
+    _safe_set(owner, 'dml_S12', None)
+    assert getattr(partner, 'dml_F11') is None
+
+
+def test_assoc_s29_stub_double():
+    # dml_BS has no real 'dml_BS31' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_BS()
+    setattr(partner, 'dml_BS31', None)
+    _safe_set(owner, 'dml_S30', partner)
+    assert getattr(partner, 'dml_BS31') == owner
+    _safe_set(owner, 'dml_S30', None)
+    assert getattr(partner, 'dml_BS31') is None
+
+
+def test_assoc_s56_stub_double():
+    # dml_BS has no real 'dml_BS57' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_BS()
+    setattr(partner, 'dml_BS57', None)
+    _safe_set(owner, 'dml_S58', partner)
+    assert getattr(partner, 'dml_BS57') == owner
+    _safe_set(owner, 'dml_S58', None)
+    assert getattr(partner, 'dml_BS57') is None
+
+
+def test_assoc_singleS53_stub_double():
+    # dml_BS has no real 'dml_BS54' property in the generated
+    # code (a bare stub) -- manually attach it so dml_S's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_S's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_S(cwd="sample_text", src="sample_text")
+    partner = dml_BS()
+    setattr(partner, 'dml_BS54', None)
+    _safe_set(owner, 'dml_S55', partner)
+    assert getattr(partner, 'dml_BS54') == owner
+    _safe_set(owner, 'dml_S55', None)
+    assert getattr(partner, 'dml_BS54') is None
+
+
+def test_assoc_spkv13_stub_double():
+    # dml_F has no real 'dml_F14' property in the generated
+    # code (a bare stub) -- manually attach it so dml_SPKV's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_SPKV's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_SPKV(v="sample_text")
+    partner = dml_F()
+    setattr(partner, 'dml_F14', None)
+    _safe_set(owner, 'dml_SPKV', partner)
+    assert getattr(partner, 'dml_F14') == owner
+    _safe_set(owner, 'dml_SPKV', None)
+    assert getattr(partner, 'dml_F14') is None
+
+
+def test_assoc_t181_stub_double():
+    # dml_EObject has no real 'dml_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so dml_E's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_E's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_E(op="sample_text")
+    partner = dml_EObject()
+    setattr(partner, 'dml_EObject', None)
+    _safe_set(owner, 'dml_E82', partner)
+    assert getattr(partner, 'dml_EObject') == owner
+    _safe_set(owner, 'dml_E82', None)
+    assert getattr(partner, 'dml_EObject') is None
+
+
+def test_assoc_t79_stub_double():
+    # dml_PL has no real 'dml_PL80' property in the generated
+    # code (a bare stub) -- manually attach it so dml_TAN's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dml_TAN's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dml_TAN(t="sample_text")
+    partner = dml_PL()
+    setattr(partner, 'dml_PL80', None)
+    _safe_set(owner, 'dml_TAN', partner)
+    assert getattr(partner, 'dml_PL80') == owner
+    _safe_set(owner, 'dml_TAN', None)
+    assert getattr(partner, 'dml_PL80') is None
+
+

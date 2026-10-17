@@ -69,3 +69,86 @@ def test_assoc_statements23_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'fsmcore_Statement', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_doActivity8_stub_double():
+    # fsmcore_State has no real 'fsmcore_State' property in the generated
+    # code (a bare stub) -- manually attach it so fsmcore_Program's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # fsmcore_Program's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = fsmcore_Program()
+    partner = fsmcore_State()
+    setattr(partner, 'fsmcore_State', None)
+    _safe_set(owner, 'fsmcore_Program', partner)
+    assert getattr(partner, 'fsmcore_State') == owner
+    _safe_set(owner, 'fsmcore_Program', None)
+    assert getattr(partner, 'fsmcore_State') is None
+
+
+def test_assoc_entry9_stub_double():
+    # fsmcore_State has no real 'fsmcore_State10' property in the generated
+    # code (a bare stub) -- manually attach it so fsmcore_Program's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # fsmcore_Program's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = fsmcore_Program()
+    partner = fsmcore_State()
+    setattr(partner, 'fsmcore_State10', None)
+    _safe_set(owner, 'fsmcore_Program11', partner)
+    assert getattr(partner, 'fsmcore_State10') == owner
+    _safe_set(owner, 'fsmcore_Program11', None)
+    assert getattr(partner, 'fsmcore_State10') is None
+
+
+def test_assoc_exit12_stub_double():
+    # fsmcore_State has no real 'fsmcore_State13' property in the generated
+    # code (a bare stub) -- manually attach it so fsmcore_Program's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # fsmcore_Program's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = fsmcore_Program()
+    partner = fsmcore_State()
+    setattr(partner, 'fsmcore_State13', None)
+    _safe_set(owner, 'fsmcore_Program14', partner)
+    assert getattr(partner, 'fsmcore_State13') == owner
+    _safe_set(owner, 'fsmcore_Program14', None)
+    assert getattr(partner, 'fsmcore_State13') is None
+
+
+def test_assoc_guard21_stub_double():
+    # fsmcore_Transition has no real 'fsmcore_Transition22' property in the generated
+    # code (a bare stub) -- manually attach it so fsmcore_Constraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # fsmcore_Constraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = fsmcore_Constraint()
+    partner = fsmcore_Transition()
+    setattr(partner, 'fsmcore_Transition22', None)
+    _safe_set(owner, 'fsmcore_Constraint', partner)
+    assert getattr(partner, 'fsmcore_Transition22') == owner
+    _safe_set(owner, 'fsmcore_Constraint', None)
+    assert getattr(partner, 'fsmcore_Transition22') is None
+
+
+def test_assoc_trigger15_stub_double():
+    # fsmcore_Transition has no real 'fsmcore_Transition16' property in the generated
+    # code (a bare stub) -- manually attach it so fsmcore_Trigger's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # fsmcore_Trigger's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = fsmcore_Trigger(expression=True)
+    partner = fsmcore_Transition()
+    setattr(partner, 'fsmcore_Transition16', None)
+    _safe_set(owner, 'fsmcore_Trigger', partner)
+    assert getattr(partner, 'fsmcore_Transition16') == owner
+    _safe_set(owner, 'fsmcore_Trigger', None)
+    assert getattr(partner, 'fsmcore_Transition16') is None
+
+

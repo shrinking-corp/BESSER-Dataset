@@ -1373,3 +1373,86 @@ def test_assoc_workstations85_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Workstation86', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_considers4_stub_double():
+    # sipme_BusinessRules has no real 'sipme_BusinessRules' property in the generated
+    # code (a bare stub) -- manually attach it so sipme_EnterpriseObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # sipme_EnterpriseObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = sipme_EnterpriseObject(properties="sample_text", reference="sample_text")
+    partner = sipme_BusinessRules()
+    setattr(partner, 'sipme_BusinessRules', None)
+    _safe_set(owner, 'sipme_EnterpriseObject', partner)
+    assert getattr(partner, 'sipme_BusinessRules') == owner
+    _safe_set(owner, 'sipme_EnterpriseObject', None)
+    assert getattr(partner, 'sipme_BusinessRules') is None
+
+
+def test_assoc_impacts5_stub_double():
+    # sipme_BusinessRules has no real 'sipme_BusinessRules6' property in the generated
+    # code (a bare stub) -- manually attach it so sipme_EnterpriseObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # sipme_EnterpriseObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = sipme_EnterpriseObject(properties="sample_text", reference="sample_text")
+    partner = sipme_BusinessRules()
+    setattr(partner, 'sipme_BusinessRules6', None)
+    _safe_set(owner, 'sipme_EnterpriseObject7', partner)
+    assert getattr(partner, 'sipme_BusinessRules6') == owner
+    _safe_set(owner, 'sipme_EnterpriseObject7', None)
+    assert getattr(partner, 'sipme_BusinessRules6') is None
+
+
+def test_assoc_induces19_stub_double():
+    # sipme_BusinessRules has no real 'sipme_BusinessRules21' property in the generated
+    # code (a bare stub) -- manually attach it so sipme_Domain's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # sipme_Domain's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = sipme_Domain(domainCharacterization="sample_text", performanceIndicators=3.14)
+    partner = sipme_BusinessRules()
+    setattr(partner, 'sipme_BusinessRules21', None)
+    _safe_set(owner, 'sipme_Domain20', {partner})
+    assert getattr(partner, 'sipme_BusinessRules21') == owner
+    _safe_set(owner, 'sipme_Domain20', set())
+    assert getattr(partner, 'sipme_BusinessRules21') is None
+
+
+def test_assoc_respectsRoleRules120_stub_double():
+    # sipme_BusinessRules has no real 'sipme_BusinessRules122' property in the generated
+    # code (a bare stub) -- manually attach it so sipme_Role_Function's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # sipme_Role_Function's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = sipme_Role_Function(roleType="sample_text")
+    partner = sipme_BusinessRules()
+    setattr(partner, 'sipme_BusinessRules122', None)
+    _safe_set(owner, 'sipme_Role_Function121', {partner})
+    assert getattr(partner, 'sipme_BusinessRules122') == owner
+    _safe_set(owner, 'sipme_Role_Function121', set())
+    assert getattr(partner, 'sipme_BusinessRules122') is None
+
+
+def test_assoc_respectsTaskRules126_stub_double():
+    # sipme_BusinessRules has no real 'sipme_BusinessRules128' property in the generated
+    # code (a bare stub) -- manually attach it so sipme_Task's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # sipme_Task's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = sipme_Task(taskDuration=7)
+    partner = sipme_BusinessRules()
+    setattr(partner, 'sipme_BusinessRules128', None)
+    _safe_set(owner, 'sipme_Task127', partner)
+    assert getattr(partner, 'sipme_BusinessRules128') == owner
+    _safe_set(owner, 'sipme_Task127', None)
+    assert getattr(partner, 'sipme_BusinessRules128') is None
+
+

@@ -101,3 +101,11 @@ def test_assoc_newRunStack_VirtualMachine_RunTimeStack_0_reverse_link_reassign_c
         assert not _is_linked(a2, 'newRunStack5', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+

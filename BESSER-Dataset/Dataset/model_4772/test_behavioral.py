@@ -593,3 +593,101 @@ def test_assoc_varDecls28_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'model_VarDecl', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_body64_stub_double():
+    # model_Expression has no real 'model_Expression' property in the generated
+    # code (a bare stub) -- manually attach it so model_MClassInvariant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_MClassInvariant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_MClassInvariant(name="sample_text", positionInModel=7)
+    partner = model_Expression()
+    setattr(partner, 'model_Expression', None)
+    _safe_set(owner, 'model_MClassInvariant65', partner)
+    assert getattr(partner, 'model_Expression') == owner
+    _safe_set(owner, 'model_MClassInvariant65', None)
+    assert getattr(partner, 'model_Expression') is None
+
+
+def test_assoc_elemType33_stub_double():
+    # model_CollectionType has no real 'model_CollectionType' property in the generated
+    # code (a bare stub) -- manually attach it so model_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_Type(typeId=7, typeName="sample_text")
+    partner = model_CollectionType()
+    setattr(partner, 'model_CollectionType', None)
+    _safe_set(owner, 'model_Type34', partner)
+    assert getattr(partner, 'model_CollectionType') == owner
+    _safe_set(owner, 'model_Type34', None)
+    assert getattr(partner, 'model_CollectionType') is None
+
+
+def test_assoc_expanded66_stub_double():
+    # model_Expression has no real 'model_Expression68' property in the generated
+    # code (a bare stub) -- manually attach it so model_MClassInvariant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_MClassInvariant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_MClassInvariant(name="sample_text", positionInModel=7)
+    partner = model_Expression()
+    setattr(partner, 'model_Expression68', None)
+    _safe_set(owner, 'model_MClassInvariant67', partner)
+    assert getattr(partner, 'model_Expression68') == owner
+    _safe_set(owner, 'model_MClassInvariant67', None)
+    assert getattr(partner, 'model_Expression68') is None
+
+
+def test_assoc_expression72_stub_double():
+    # model_Expression has no real 'model_Expression74' property in the generated
+    # code (a bare stub) -- manually attach it so model_MPrePostCondition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_MPrePostCondition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_MPrePostCondition(positionInModel=7)
+    partner = model_Expression()
+    setattr(partner, 'model_Expression74', None)
+    _safe_set(owner, 'model_MPrePostCondition73', partner)
+    assert getattr(partner, 'model_Expression74') == owner
+    _safe_set(owner, 'model_MPrePostCondition73', None)
+    assert getattr(partner, 'model_Expression74') is None
+
+
+def test_assoc_mClass35_stub_double():
+    # model_ObjectType has no real 'model_ObjectType' property in the generated
+    # code (a bare stub) -- manually attach it so model_MClass's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_MClass's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_MClass()
+    partner = model_ObjectType()
+    setattr(partner, 'model_ObjectType', None)
+    _safe_set(owner, 'model_MClass36', partner)
+    assert getattr(partner, 'model_ObjectType') == owner
+    _safe_set(owner, 'model_MClass36', None)
+    assert getattr(partner, 'model_ObjectType') is None
+
+
+def test_assoc_vars59_stub_double():
+    # model_VarDeclList has no real 'model_VarDeclList' property in the generated
+    # code (a bare stub) -- manually attach it so model_MClassInvariant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_MClassInvariant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_MClassInvariant(name="sample_text", positionInModel=7)
+    partner = model_VarDeclList()
+    setattr(partner, 'model_VarDeclList', None)
+    _safe_set(owner, 'model_MClassInvariant60', partner)
+    assert getattr(partner, 'model_VarDeclList') == owner
+    _safe_set(owner, 'model_MClassInvariant60', None)
+    assert getattr(partner, 'model_VarDeclList') is None
+
+

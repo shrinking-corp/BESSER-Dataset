@@ -43,9 +43,23 @@ OUTPUT_FILENAME = "test_combined_plus_behavioral.py"
 RETRIABLE_STATUSES = {"error"}
 
 
+def _read_text_robust(path: Path) -> str:
+    """Reads a text file regardless of which BOM (if any) Windows wrote --
+    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
+    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
+    matches plain `.read_text()`'s assumption) -- sniffs the actual BOM
+    bytes rather than assuming one encoding."""
+    raw = path.read_bytes()
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        return raw.decode("utf-16")
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return raw.decode("utf-8-sig")
+    return raw.decode("utf-8")
+
+
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
     if models_file:
-        names = [l.strip() for l in models_file.read_text().splitlines() if l.strip()]
+        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
         dirs = [dataset_dir / name for name in names]
     else:
         dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())

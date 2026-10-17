@@ -322,3 +322,521 @@ def test_assoc_variable11_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'docl_OclExpression12', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_argsTypes47_stub_double():
+    # docl_OclType has no real 'docl_OclType48' property in the generated
+    # code (a bare stub) -- manually attach it so docl_LambdaType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_LambdaType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_LambdaType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType48', None)
+    _safe_set(owner, 'docl_LambdaType', {partner})
+    assert getattr(partner, 'docl_OclType48') == owner
+    _safe_set(owner, 'docl_LambdaType', set())
+    assert getattr(partner, 'docl_OclType48') is None
+
+
+def test_assoc_arguments77_stub_double():
+    # docl_CollectionOpCallExp has no real 'docl_CollectionOpCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_CollectionOpCallExp()
+    setattr(partner, 'docl_CollectionOpCallExp', None)
+    _safe_set(owner, 'docl_OclExpression78', partner)
+    assert getattr(partner, 'docl_CollectionOpCallExp') == owner
+    _safe_set(owner, 'docl_OclExpression78', None)
+    assert getattr(partner, 'docl_CollectionOpCallExp') is None
+
+
+def test_assoc_arguments92_stub_double():
+    # docl_OperationCall has no real 'docl_OperationCall' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_OperationCall()
+    setattr(partner, 'docl_OperationCall', None)
+    _safe_set(owner, 'docl_OclExpression93', partner)
+    assert getattr(partner, 'docl_OperationCall') == owner
+    _safe_set(owner, 'docl_OclExpression93', None)
+    assert getattr(partner, 'docl_OperationCall') is None
+
+
+def test_assoc_body84_stub_double():
+    # docl_IterateExp has no real 'docl_IterateExp85' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_IterateExp()
+    setattr(partner, 'docl_IterateExp85', None)
+    _safe_set(owner, 'docl_OclExpression86', partner)
+    assert getattr(partner, 'docl_IterateExp85') == owner
+    _safe_set(owner, 'docl_OclExpression86', None)
+    assert getattr(partner, 'docl_IterateExp85') is None
+
+
+def test_assoc_body89_stub_double():
+    # docl_IteratorExp has no real 'docl_IteratorExp90' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_IteratorExp()
+    setattr(partner, 'docl_IteratorExp90', None)
+    _safe_set(owner, 'docl_OclExpression91', partner)
+    assert getattr(partner, 'docl_IteratorExp90') == owner
+    _safe_set(owner, 'docl_OclExpression91', None)
+    assert getattr(partner, 'docl_IteratorExp90') is None
+
+
+def test_assoc_condition34_stub_double():
+    # docl_IfExp has no real 'docl_IfExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_IfExp()
+    setattr(partner, 'docl_IfExp', None)
+    _safe_set(owner, 'docl_OclExpression35', partner)
+    assert getattr(partner, 'docl_IfExp') == owner
+    _safe_set(owner, 'docl_OclExpression35', None)
+    assert getattr(partner, 'docl_IfExp') is None
+
+
+def test_assoc_condition98_stub_double():
+    # docl_ElseIfThenExp has no real 'docl_ElseIfThenExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_ElseIfThenExp()
+    setattr(partner, 'docl_ElseIfThenExp', None)
+    _safe_set(owner, 'docl_OclExpression99', partner)
+    assert getattr(partner, 'docl_ElseIfThenExp') == owner
+    _safe_set(owner, 'docl_OclExpression99', None)
+    assert getattr(partner, 'docl_ElseIfThenExp') is None
+
+
+def test_assoc_elementType57_stub_double():
+    # docl_OclType has no real 'docl_OclType58' property in the generated
+    # code (a bare stub) -- manually attach it so docl_SetType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_SetType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_SetType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType58', None)
+    _safe_set(owner, 'docl_SetType', partner)
+    assert getattr(partner, 'docl_OclType58') == owner
+    _safe_set(owner, 'docl_SetType', None)
+    assert getattr(partner, 'docl_OclType58') is None
+
+
+def test_assoc_elementType59_stub_double():
+    # docl_OclType has no real 'docl_OclType60' property in the generated
+    # code (a bare stub) -- manually attach it so docl_SequenceType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_SequenceType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_SequenceType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType60', None)
+    _safe_set(owner, 'docl_SequenceType', partner)
+    assert getattr(partner, 'docl_OclType60') == owner
+    _safe_set(owner, 'docl_SequenceType', None)
+    assert getattr(partner, 'docl_OclType60') is None
+
+
+def test_assoc_elementType61_stub_double():
+    # docl_OclType has no real 'docl_OclType62' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OrderedSetType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OrderedSetType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OrderedSetType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType62', None)
+    _safe_set(owner, 'docl_OrderedSetType', partner)
+    assert getattr(partner, 'docl_OclType62') == owner
+    _safe_set(owner, 'docl_OrderedSetType', None)
+    assert getattr(partner, 'docl_OclType62') is None
+
+
+def test_assoc_elementType63_stub_double():
+    # docl_OclType has no real 'docl_OclType64' property in the generated
+    # code (a bare stub) -- manually attach it so docl_BagType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_BagType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_BagType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType64', None)
+    _safe_set(owner, 'docl_BagType', partner)
+    assert getattr(partner, 'docl_OclType64') == owner
+    _safe_set(owner, 'docl_BagType', None)
+    assert getattr(partner, 'docl_OclType64') is None
+
+
+def test_assoc_elements6_stub_double():
+    # docl_ModuleElement has no real 'docl_ModuleElement' property in the generated
+    # code (a bare stub) -- manually attach it so docl_Module's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_Module's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_Module(name="sample_text")
+    partner = docl_ModuleElement()
+    setattr(partner, 'docl_ModuleElement', None)
+    _safe_set(owner, 'docl_Module7', {partner})
+    assert getattr(partner, 'docl_ModuleElement') == owner
+    _safe_set(owner, 'docl_Module7', set())
+    assert getattr(partner, 'docl_ModuleElement') is None
+
+
+def test_assoc_else_42_stub_double():
+    # docl_IfExp has no real 'docl_IfExp43' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_IfExp()
+    setattr(partner, 'docl_IfExp43', None)
+    _safe_set(owner, 'docl_OclExpression44', partner)
+    assert getattr(partner, 'docl_IfExp43') == owner
+    _safe_set(owner, 'docl_OclExpression44', None)
+    assert getattr(partner, 'docl_IfExp43') is None
+
+
+def test_assoc_exp103_stub_double():
+    # docl_NestedExp has no real 'docl_NestedExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_NestedExp()
+    setattr(partner, 'docl_NestedExp', None)
+    _safe_set(owner, 'docl_OclExpression104', partner)
+    assert getattr(partner, 'docl_NestedExp') == owner
+    _safe_set(owner, 'docl_OclExpression104', None)
+    assert getattr(partner, 'docl_NestedExp') is None
+
+
+def test_assoc_expression94_stub_double():
+    # docl_LambdaExp has no real 'docl_LambdaExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_LambdaExp()
+    setattr(partner, 'docl_LambdaExp', None)
+    _safe_set(owner, 'docl_OclExpression95', partner)
+    assert getattr(partner, 'docl_LambdaExp') == owner
+    _safe_set(owner, 'docl_OclExpression95', None)
+    assert getattr(partner, 'docl_LambdaExp') is None
+
+
+def test_assoc_ifThen39_stub_double():
+    # docl_IfExp has no real 'docl_IfExp40' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_IfExp()
+    setattr(partner, 'docl_IfExp40', None)
+    _safe_set(owner, 'docl_OclExpression41', partner)
+    assert getattr(partner, 'docl_IfExp40') == owner
+    _safe_set(owner, 'docl_OclExpression41', None)
+    assert getattr(partner, 'docl_IfExp40') is None
+
+
+def test_assoc_iterators79_stub_double():
+    # docl_IterateExp has no real 'docl_IterateExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_Iterator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_Iterator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_Iterator(name="sample_text")
+    partner = docl_IterateExp()
+    setattr(partner, 'docl_IterateExp', None)
+    _safe_set(owner, 'docl_Iterator80', partner)
+    assert getattr(partner, 'docl_IterateExp') == owner
+    _safe_set(owner, 'docl_Iterator80', None)
+    assert getattr(partner, 'docl_IterateExp') is None
+
+
+def test_assoc_iterators87_stub_double():
+    # docl_IteratorExp has no real 'docl_IteratorExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_Iterator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_Iterator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_Iterator(name="sample_text")
+    partner = docl_IteratorExp()
+    setattr(partner, 'docl_IteratorExp', None)
+    _safe_set(owner, 'docl_Iterator88', partner)
+    assert getattr(partner, 'docl_IteratorExp') == owner
+    _safe_set(owner, 'docl_Iterator88', None)
+    assert getattr(partner, 'docl_IteratorExp') is None
+
+
+def test_assoc_keyType52_stub_double():
+    # docl_OclType has no real 'docl_OclType53' property in the generated
+    # code (a bare stub) -- manually attach it so docl_MapType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_MapType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_MapType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType53', None)
+    _safe_set(owner, 'docl_MapType', partner)
+    assert getattr(partner, 'docl_OclType53') == owner
+    _safe_set(owner, 'docl_MapType', None)
+    assert getattr(partner, 'docl_OclType53') is None
+
+
+def test_assoc_parts96_stub_double():
+    # docl_TupleExp has no real 'docl_TupleExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_TuplePart's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_TuplePart's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_TuplePart(name="sample_text")
+    partner = docl_TupleExp()
+    setattr(partner, 'docl_TupleExp', None)
+    _safe_set(owner, 'docl_TuplePart97', partner)
+    assert getattr(partner, 'docl_TupleExp') == owner
+    _safe_set(owner, 'docl_TuplePart97', None)
+    assert getattr(partner, 'docl_TupleExp') is None
+
+
+def test_assoc_result81_stub_double():
+    # docl_IterateExp has no real 'docl_IterateExp82' property in the generated
+    # code (a bare stub) -- manually attach it so docl_LocalVariable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_LocalVariable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_LocalVariable(name="sample_text")
+    partner = docl_IterateExp()
+    setattr(partner, 'docl_IterateExp82', None)
+    _safe_set(owner, 'docl_LocalVariable83', partner)
+    assert getattr(partner, 'docl_IterateExp82') == owner
+    _safe_set(owner, 'docl_LocalVariable83', None)
+    assert getattr(partner, 'docl_IterateExp82') is None
+
+
+def test_assoc_returnType49_stub_double():
+    # docl_OclType has no real 'docl_OclType51' property in the generated
+    # code (a bare stub) -- manually attach it so docl_LambdaType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_LambdaType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_LambdaType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType51', None)
+    _safe_set(owner, 'docl_LambdaType50', partner)
+    assert getattr(partner, 'docl_OclType51') == owner
+    _safe_set(owner, 'docl_LambdaType50', None)
+    assert getattr(partner, 'docl_OclType51') is None
+
+
+def test_assoc_source65_stub_double():
+    # docl_BoolOpCallExp has no real 'docl_BoolOpCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_BoolOpCallExp()
+    setattr(partner, 'docl_BoolOpCallExp', None)
+    _safe_set(owner, 'docl_OclExpression66', partner)
+    assert getattr(partner, 'docl_BoolOpCallExp') == owner
+    _safe_set(owner, 'docl_OclExpression66', None)
+    assert getattr(partner, 'docl_BoolOpCallExp') is None
+
+
+def test_assoc_source67_stub_double():
+    # docl_EqOpCallExp has no real 'docl_EqOpCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_EqOpCallExp()
+    setattr(partner, 'docl_EqOpCallExp', None)
+    _safe_set(owner, 'docl_OclExpression68', partner)
+    assert getattr(partner, 'docl_EqOpCallExp') == owner
+    _safe_set(owner, 'docl_OclExpression68', None)
+    assert getattr(partner, 'docl_EqOpCallExp') is None
+
+
+def test_assoc_source69_stub_double():
+    # docl_ComOpCallExp has no real 'docl_ComOpCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_ComOpCallExp()
+    setattr(partner, 'docl_ComOpCallExp', None)
+    _safe_set(owner, 'docl_OclExpression70', partner)
+    assert getattr(partner, 'docl_ComOpCallExp') == owner
+    _safe_set(owner, 'docl_OclExpression70', None)
+    assert getattr(partner, 'docl_ComOpCallExp') is None
+
+
+def test_assoc_source71_stub_double():
+    # docl_AddOpCallExp has no real 'docl_AddOpCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_AddOpCallExp()
+    setattr(partner, 'docl_AddOpCallExp', None)
+    _safe_set(owner, 'docl_OclExpression72', partner)
+    assert getattr(partner, 'docl_AddOpCallExp') == owner
+    _safe_set(owner, 'docl_OclExpression72', None)
+    assert getattr(partner, 'docl_AddOpCallExp') is None
+
+
+def test_assoc_source73_stub_double():
+    # docl_MulOpCallExp has no real 'docl_MulOpCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_MulOpCallExp()
+    setattr(partner, 'docl_MulOpCallExp', None)
+    _safe_set(owner, 'docl_OclExpression74', partner)
+    assert getattr(partner, 'docl_MulOpCallExp') == owner
+    _safe_set(owner, 'docl_OclExpression74', None)
+    assert getattr(partner, 'docl_MulOpCallExp') is None
+
+
+def test_assoc_source75_stub_double():
+    # docl_NavigationExp has no real 'docl_NavigationExp' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_NavigationExp()
+    setattr(partner, 'docl_NavigationExp', None)
+    _safe_set(owner, 'docl_OclExpression76', partner)
+    assert getattr(partner, 'docl_NavigationExp') == owner
+    _safe_set(owner, 'docl_OclExpression76', None)
+    assert getattr(partner, 'docl_NavigationExp') is None
+
+
+def test_assoc_then100_stub_double():
+    # docl_ElseIfThenExp has no real 'docl_ElseIfThenExp101' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_ElseIfThenExp()
+    setattr(partner, 'docl_ElseIfThenExp101', None)
+    _safe_set(owner, 'docl_OclExpression102', partner)
+    assert getattr(partner, 'docl_ElseIfThenExp101') == owner
+    _safe_set(owner, 'docl_OclExpression102', None)
+    assert getattr(partner, 'docl_ElseIfThenExp101') is None
+
+
+def test_assoc_then36_stub_double():
+    # docl_IfExp has no real 'docl_IfExp37' property in the generated
+    # code (a bare stub) -- manually attach it so docl_OclExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_OclExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_OclExpression(elements="sample_text", name="sample_text")
+    partner = docl_IfExp()
+    setattr(partner, 'docl_IfExp37', None)
+    _safe_set(owner, 'docl_OclExpression38', partner)
+    assert getattr(partner, 'docl_IfExp37') == owner
+    _safe_set(owner, 'docl_OclExpression38', None)
+    assert getattr(partner, 'docl_IfExp37') is None
+
+
+def test_assoc_type22_stub_double():
+    # docl_OclType has no real 'docl_OclType' property in the generated
+    # code (a bare stub) -- manually attach it so docl_Iterator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_Iterator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_Iterator(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType', None)
+    _safe_set(owner, 'docl_Iterator', partner)
+    assert getattr(partner, 'docl_OclType') == owner
+    _safe_set(owner, 'docl_Iterator', None)
+    assert getattr(partner, 'docl_OclType') is None
+
+
+def test_assoc_type23_stub_double():
+    # docl_OclType has no real 'docl_OclType25' property in the generated
+    # code (a bare stub) -- manually attach it so docl_LocalVariable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_LocalVariable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_LocalVariable(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType25', None)
+    _safe_set(owner, 'docl_LocalVariable24', partner)
+    assert getattr(partner, 'docl_OclType25') == owner
+    _safe_set(owner, 'docl_LocalVariable24', None)
+    assert getattr(partner, 'docl_OclType25') is None
+
+
+def test_assoc_type29_stub_double():
+    # docl_OclType has no real 'docl_OclType30' property in the generated
+    # code (a bare stub) -- manually attach it so docl_TuplePart's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_TuplePart's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_TuplePart(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType30', None)
+    _safe_set(owner, 'docl_TuplePart', partner)
+    assert getattr(partner, 'docl_OclType30') == owner
+    _safe_set(owner, 'docl_TuplePart', None)
+    assert getattr(partner, 'docl_OclType30') is None
+
+
+def test_assoc_valueType54_stub_double():
+    # docl_OclType has no real 'docl_OclType56' property in the generated
+    # code (a bare stub) -- manually attach it so docl_MapType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # docl_MapType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = docl_MapType(name="sample_text")
+    partner = docl_OclType()
+    setattr(partner, 'docl_OclType56', None)
+    _safe_set(owner, 'docl_MapType55', partner)
+    assert getattr(partner, 'docl_OclType56') == owner
+    _safe_set(owner, 'docl_MapType55', None)
+    assert getattr(partner, 'docl_OclType56') is None
+
+

@@ -52,3 +52,71 @@ def test_assoc_traces0_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'trace_TraceLink', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_source6_stub_double():
+    # trace_EObject has no real 'trace_EObject8' property in the generated
+    # code (a bare stub) -- manually attach it so trace_TraceLink's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # trace_TraceLink's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = trace_TraceLink(name="sample_text", rationale="sample_text", requiredSimilarity=7, similarity=7, similarityMethod=7, sourceValue="sample_text", targetValue="sample_text")
+    partner = trace_EObject()
+    setattr(partner, 'trace_EObject8', None)
+    _safe_set(owner, 'trace_TraceLink7', partner)
+    assert getattr(partner, 'trace_EObject8') == owner
+    _safe_set(owner, 'trace_TraceLink7', None)
+    assert getattr(partner, 'trace_EObject8') is None
+
+
+def test_assoc_sourceModel1_stub_double():
+    # trace_EObject has no real 'trace_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so trace_Trace's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # trace_Trace's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = trace_Trace()
+    partner = trace_EObject()
+    setattr(partner, 'trace_EObject', None)
+    _safe_set(owner, 'trace_Trace2', partner)
+    assert getattr(partner, 'trace_EObject') == owner
+    _safe_set(owner, 'trace_Trace2', None)
+    assert getattr(partner, 'trace_EObject') is None
+
+
+def test_assoc_target9_stub_double():
+    # trace_EObject has no real 'trace_EObject11' property in the generated
+    # code (a bare stub) -- manually attach it so trace_TraceLink's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # trace_TraceLink's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = trace_TraceLink(name="sample_text", rationale="sample_text", requiredSimilarity=7, similarity=7, similarityMethod=7, sourceValue="sample_text", targetValue="sample_text")
+    partner = trace_EObject()
+    setattr(partner, 'trace_EObject11', None)
+    _safe_set(owner, 'trace_TraceLink10', partner)
+    assert getattr(partner, 'trace_EObject11') == owner
+    _safe_set(owner, 'trace_TraceLink10', None)
+    assert getattr(partner, 'trace_EObject11') is None
+
+
+def test_assoc_targetModel3_stub_double():
+    # trace_EObject has no real 'trace_EObject5' property in the generated
+    # code (a bare stub) -- manually attach it so trace_Trace's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # trace_Trace's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = trace_Trace()
+    partner = trace_EObject()
+    setattr(partner, 'trace_EObject5', None)
+    _safe_set(owner, 'trace_Trace4', partner)
+    assert getattr(partner, 'trace_EObject5') == owner
+    _safe_set(owner, 'trace_Trace4', None)
+    assert getattr(partner, 'trace_EObject5') is None
+
+

@@ -341,3 +341,281 @@ def test_assoc_useCases21_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'useCases_UseCase', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_alternativeFlows41_stub_double():
+    # useCases_AlternativeFlow has no real 'useCases_AlternativeFlow' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_AlternativeFlow()
+    setattr(partner, 'useCases_AlternativeFlow', None)
+    _safe_set(owner, 'useCases_UseCase42', {partner})
+    assert getattr(partner, 'useCases_AlternativeFlow') == owner
+    _safe_set(owner, 'useCases_UseCase42', set())
+    assert getattr(partner, 'useCases_AlternativeFlow') is None
+
+
+def test_assoc_basicFlow39_stub_double():
+    # useCases_BasicFlow has no real 'useCases_BasicFlow' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_BasicFlow()
+    setattr(partner, 'useCases_BasicFlow', None)
+    _safe_set(owner, 'useCases_UseCase40', partner)
+    assert getattr(partner, 'useCases_BasicFlow') == owner
+    _safe_set(owner, 'useCases_UseCase40', None)
+    assert getattr(partner, 'useCases_BasicFlow') is None
+
+
+def test_assoc_commonLabels37_stub_double():
+    # useCases_Label has no real 'useCases_Label' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_Label()
+    setattr(partner, 'useCases_Label', None)
+    _safe_set(owner, 'useCases_UseCase38', {partner})
+    assert getattr(partner, 'useCases_Label') == owner
+    _safe_set(owner, 'useCases_UseCase38', set())
+    assert getattr(partner, 'useCases_Label') is None
+
+
+def test_assoc_condition80_stub_double():
+    # useCases_AlternativeFlowAlternative has no real 'useCases_AlternativeFlowAlternative' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_Condition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_Condition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_Condition(condition="sample_text")
+    partner = useCases_AlternativeFlowAlternative()
+    setattr(partner, 'useCases_AlternativeFlowAlternative', None)
+    _safe_set(owner, 'useCases_Condition81', partner)
+    assert getattr(partner, 'useCases_AlternativeFlowAlternative') == owner
+    _safe_set(owner, 'useCases_Condition81', None)
+    assert getattr(partner, 'useCases_AlternativeFlowAlternative') is None
+
+
+def test_assoc_customAttributes45_stub_double():
+    # useCases_CustomAttributes has no real 'useCases_CustomAttributes' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_CustomAttributes()
+    setattr(partner, 'useCases_CustomAttributes', None)
+    _safe_set(owner, 'useCases_UseCase46', partner)
+    assert getattr(partner, 'useCases_CustomAttributes') == owner
+    _safe_set(owner, 'useCases_UseCase46', None)
+    assert getattr(partner, 'useCases_CustomAttributes') is None
+
+
+def test_assoc_customStepType68_stub_double():
+    # useCases_CustomStepType has no real 'useCases_CustomStepType' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_Step(description="sample_text", label="sample_text", name="sample_text")
+    partner = useCases_CustomStepType()
+    setattr(partner, 'useCases_CustomStepType', None)
+    _safe_set(owner, 'useCases_Step69', partner)
+    assert getattr(partner, 'useCases_CustomStepType') == owner
+    _safe_set(owner, 'useCases_Step69', None)
+    assert getattr(partner, 'useCases_CustomStepType') is None
+
+
+def test_assoc_customStepType73_stub_double():
+    # useCases_CustomStepType has no real 'useCases_CustomStepType75' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_StepAlternative's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_StepAlternative's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_StepAlternative(finalState="sample_text", finalizeFlow=True)
+    partner = useCases_CustomStepType()
+    setattr(partner, 'useCases_CustomStepType75', None)
+    _safe_set(owner, 'useCases_StepAlternative74', partner)
+    assert getattr(partner, 'useCases_CustomStepType75') == owner
+    _safe_set(owner, 'useCases_StepAlternative74', None)
+    assert getattr(partner, 'useCases_CustomStepType75') is None
+
+
+def test_assoc_entities31_stub_double():
+    # useCases_Entity has no real 'useCases_Entity' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_Entity()
+    setattr(partner, 'useCases_Entity', None)
+    _safe_set(owner, 'useCases_UseCase32', {partner})
+    assert getattr(partner, 'useCases_Entity') == owner
+    _safe_set(owner, 'useCases_UseCase32', set())
+    assert getattr(partner, 'useCases_Entity') is None
+
+
+def test_assoc_entityRefs58_stub_double():
+    # useCases_EntityRef has no real 'useCases_EntityRef' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_Step(description="sample_text", label="sample_text", name="sample_text")
+    partner = useCases_EntityRef()
+    setattr(partner, 'useCases_EntityRef', None)
+    _safe_set(owner, 'useCases_Step59', {partner})
+    assert getattr(partner, 'useCases_EntityRef') == owner
+    _safe_set(owner, 'useCases_Step59', set())
+    assert getattr(partner, 'useCases_EntityRef') is None
+
+
+def test_assoc_namespaceImports16_stub_double():
+    # useCases_NamespaceImport has no real 'useCases_NamespaceImport18' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_PackageDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_PackageDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_PackageDeclaration(description="sample_text", name="sample_text")
+    partner = useCases_NamespaceImport()
+    setattr(partner, 'useCases_NamespaceImport18', None)
+    _safe_set(owner, 'useCases_PackageDeclaration17', {partner})
+    assert getattr(partner, 'useCases_NamespaceImport18') == owner
+    _safe_set(owner, 'useCases_PackageDeclaration17', set())
+    assert getattr(partner, 'useCases_NamespaceImport18') is None
+
+
+def test_assoc_packages1_stub_double():
+    # useCases_UseCasesModel has no real 'useCases_UseCasesModel2' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_PackageDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_PackageDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_PackageDeclaration(description="sample_text", name="sample_text")
+    partner = useCases_UseCasesModel()
+    setattr(partner, 'useCases_UseCasesModel2', None)
+    _safe_set(owner, 'useCases_PackageDeclaration', partner)
+    assert getattr(partner, 'useCases_UseCasesModel2') == owner
+    _safe_set(owner, 'useCases_PackageDeclaration', None)
+    assert getattr(partner, 'useCases_UseCasesModel2') is None
+
+
+def test_assoc_pages33_stub_double():
+    # useCases_PageRef has no real 'useCases_PageRef' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_PageRef()
+    setattr(partner, 'useCases_PageRef', None)
+    _safe_set(owner, 'useCases_UseCase34', {partner})
+    assert getattr(partner, 'useCases_PageRef') == owner
+    _safe_set(owner, 'useCases_UseCase34', set())
+    assert getattr(partner, 'useCases_PageRef') is None
+
+
+def test_assoc_ref82_stub_double():
+    # useCases_AlternativeFlowAlternative has no real 'useCases_AlternativeFlowAlternative83' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_NamedFlow's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_NamedFlow's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_NamedFlow(name="sample_text")
+    partner = useCases_AlternativeFlowAlternative()
+    setattr(partner, 'useCases_AlternativeFlowAlternative83', None)
+    _safe_set(owner, 'useCases_NamedFlow', partner)
+    assert getattr(partner, 'useCases_AlternativeFlowAlternative83') == owner
+    _safe_set(owner, 'useCases_NamedFlow', None)
+    assert getattr(partner, 'useCases_AlternativeFlowAlternative83') is None
+
+
+def test_assoc_refActorImportedNamespace13_stub_double():
+    # useCases_NamespaceImport has no real 'useCases_NamespaceImport14' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_PackageDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_PackageDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_PackageDeclaration(description="sample_text", name="sample_text")
+    partner = useCases_NamespaceImport()
+    setattr(partner, 'useCases_NamespaceImport14', None)
+    _safe_set(owner, 'useCases_PackageDeclaration15', partner)
+    assert getattr(partner, 'useCases_NamespaceImport14') == owner
+    _safe_set(owner, 'useCases_PackageDeclaration15', None)
+    assert getattr(partner, 'useCases_NamespaceImport14') is None
+
+
+def test_assoc_refEntityImportedNamespace3_stub_double():
+    # useCases_NamespaceImport has no real 'useCases_NamespaceImport4' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_PackageDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_PackageDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_PackageDeclaration(description="sample_text", name="sample_text")
+    partner = useCases_NamespaceImport()
+    setattr(partner, 'useCases_NamespaceImport4', None)
+    _safe_set(owner, 'useCases_PackageDeclaration5', partner)
+    assert getattr(partner, 'useCases_NamespaceImport4') == owner
+    _safe_set(owner, 'useCases_PackageDeclaration5', None)
+    assert getattr(partner, 'useCases_NamespaceImport4') is None
+
+
+def test_assoc_refUseCaseImportedNamespace10_stub_double():
+    # useCases_NamespaceImport has no real 'useCases_NamespaceImport11' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_PackageDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_PackageDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_PackageDeclaration(description="sample_text", name="sample_text")
+    partner = useCases_NamespaceImport()
+    setattr(partner, 'useCases_NamespaceImport11', None)
+    _safe_set(owner, 'useCases_PackageDeclaration12', partner)
+    assert getattr(partner, 'useCases_NamespaceImport11') == owner
+    _safe_set(owner, 'useCases_PackageDeclaration12', None)
+    assert getattr(partner, 'useCases_NamespaceImport11') is None
+
+
+def test_assoc_requirements26_stub_double():
+    # useCases_RequirementRef has no real 'useCases_RequirementRef' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_UseCase(goals="sample_text", name="sample_text", ucName="sample_text")
+    partner = useCases_RequirementRef()
+    setattr(partner, 'useCases_RequirementRef', None)
+    _safe_set(owner, 'useCases_UseCase27', {partner})
+    assert getattr(partner, 'useCases_RequirementRef') == owner
+    _safe_set(owner, 'useCases_UseCase27', set())
+    assert getattr(partner, 'useCases_RequirementRef') is None
+
+
+def test_assoc_screen60_stub_double():
+    # useCases_Screen has no real 'useCases_Screen62' property in the generated
+    # code (a bare stub) -- manually attach it so useCases_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # useCases_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = useCases_Step(description="sample_text", label="sample_text", name="sample_text")
+    partner = useCases_Screen()
+    setattr(partner, 'useCases_Screen62', None)
+    _safe_set(owner, 'useCases_Step61', partner)
+    assert getattr(partner, 'useCases_Screen62') == owner
+    _safe_set(owner, 'useCases_Step61', None)
+    assert getattr(partner, 'useCases_Screen62') is None
+
+

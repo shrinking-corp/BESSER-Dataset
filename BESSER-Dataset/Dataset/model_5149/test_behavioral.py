@@ -3257,3 +3257,11 @@ def test_assoc_var368_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'xhtml_Var370', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+

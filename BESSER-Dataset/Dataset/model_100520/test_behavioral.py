@@ -168,3 +168,251 @@ def test_assoc_steps24_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Step25', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_actor7_stub_double():
+    # textualusecase_Actor has no real 'Actor9' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_Actor()
+    setattr(partner, 'Actor9', None)
+    _safe_set(owner, 'useCase8', {partner})
+    assert getattr(partner, 'Actor9') == owner
+    _safe_set(owner, 'useCase8', set())
+    assert getattr(partner, 'Actor9') is None
+
+
+def test_assoc_alternativeFlow26_stub_double():
+    # textualusecase_AlternativeFlow has no real 'AlternativeFlow27' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_Step(name="sample_text")
+    partner = textualusecase_AlternativeFlow()
+    setattr(partner, 'AlternativeFlow27', None)
+    _safe_set(owner, 'branchingStep', {partner})
+    assert getattr(partner, 'AlternativeFlow27') == owner
+    _safe_set(owner, 'branchingStep', set())
+    assert getattr(partner, 'AlternativeFlow27') is None
+
+
+def test_assoc_alternativeFlow4_stub_double():
+    # textualusecase_AlternativeFlow has no real 'AlternativeFlow' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_AlternativeFlow()
+    setattr(partner, 'AlternativeFlow', None)
+    _safe_set(owner, 'useCase', {partner})
+    assert getattr(partner, 'AlternativeFlow') == owner
+    _safe_set(owner, 'useCase', set())
+    assert getattr(partner, 'AlternativeFlow') is None
+
+
+def test_assoc_basicFlow5_stub_double():
+    # textualusecase_BasicFlow has no real 'BasicFlow' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_BasicFlow()
+    setattr(partner, 'BasicFlow', None)
+    _safe_set(owner, 'useCase6', partner)
+    assert getattr(partner, 'BasicFlow') == owner
+    _safe_set(owner, 'useCase6', None)
+    assert getattr(partner, 'BasicFlow') is None
+
+
+def test_assoc_branchingStep18_stub_double():
+    # textualusecase_AlternativeFlow has no real 'alternativeFlow' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_Step(name="sample_text")
+    partner = textualusecase_AlternativeFlow()
+    setattr(partner, 'alternativeFlow', None)
+    _safe_set(owner, 'Step', partner)
+    assert getattr(partner, 'alternativeFlow') == owner
+    _safe_set(owner, 'Step', None)
+    assert getattr(partner, 'alternativeFlow') is None
+
+
+def test_assoc_condition19_stub_double():
+    # textualusecase_AlternativeFlow has no real 'textualusecase_AlternativeFlow' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_Condition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_Condition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_Condition(expression="sample_text")
+    partner = textualusecase_AlternativeFlow()
+    setattr(partner, 'textualusecase_AlternativeFlow', None)
+    _safe_set(owner, 'textualusecase_Condition20', partner)
+    assert getattr(partner, 'textualusecase_AlternativeFlow') == owner
+    _safe_set(owner, 'textualusecase_Condition20', None)
+    assert getattr(partner, 'textualusecase_AlternativeFlow') is None
+
+
+def test_assoc_condition32_stub_double():
+    # textualusecase_Statement has no real 'textualusecase_Statement' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_Condition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_Condition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_Condition(expression="sample_text")
+    partner = textualusecase_Statement()
+    setattr(partner, 'textualusecase_Statement', None)
+    _safe_set(owner, 'textualusecase_Condition33', partner)
+    assert getattr(partner, 'textualusecase_Statement') == owner
+    _safe_set(owner, 'textualusecase_Condition33', None)
+    assert getattr(partner, 'textualusecase_Statement') is None
+
+
+def test_assoc_includes16_stub_double():
+    # textualusecase_Include has no real 'Include' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_Include()
+    setattr(partner, 'Include', None)
+    _safe_set(owner, 'useCase17', {partner})
+    assert getattr(partner, 'Include') == owner
+    _safe_set(owner, 'useCase17', set())
+    assert getattr(partner, 'Include') is None
+
+
+def test_assoc_statement28_stub_double():
+    # textualusecase_Statement has no real 'Statement' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_Step(name="sample_text")
+    partner = textualusecase_Statement()
+    setattr(partner, 'Statement', None)
+    _safe_set(owner, 'steps', partner)
+    assert getattr(partner, 'Statement') == owner
+    _safe_set(owner, 'steps', None)
+    assert getattr(partner, 'Statement') is None
+
+
+def test_assoc_steps34_stub_double():
+    # textualusecase_Statement has no real 'statement' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_Step's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_Step's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_Step(name="sample_text")
+    partner = textualusecase_Statement()
+    setattr(partner, 'statement', None)
+    _safe_set(owner, 'Step35', partner)
+    assert getattr(partner, 'statement') == owner
+    _safe_set(owner, 'Step35', None)
+    assert getattr(partner, 'statement') is None
+
+
+def test_assoc_useCase0_stub_double():
+    # textualusecase_UseCaseModel has no real 'useCaseModel' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_UseCaseModel()
+    setattr(partner, 'useCaseModel', None)
+    _safe_set(owner, 'UseCase', partner)
+    assert getattr(partner, 'useCaseModel') == owner
+    _safe_set(owner, 'UseCase', None)
+    assert getattr(partner, 'useCaseModel') is None
+
+
+def test_assoc_useCase21_stub_double():
+    # textualusecase_AlternativeFlow has no real 'alternativeFlow22' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_AlternativeFlow()
+    setattr(partner, 'alternativeFlow22', None)
+    _safe_set(owner, 'UseCase23', partner)
+    assert getattr(partner, 'alternativeFlow22') == owner
+    _safe_set(owner, 'UseCase23', None)
+    assert getattr(partner, 'alternativeFlow22') is None
+
+
+def test_assoc_useCase36_stub_double():
+    # textualusecase_BasicFlow has no real 'basicFlow' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_BasicFlow()
+    setattr(partner, 'basicFlow', None)
+    _safe_set(owner, 'UseCase37', partner)
+    assert getattr(partner, 'basicFlow') == owner
+    _safe_set(owner, 'UseCase37', None)
+    assert getattr(partner, 'basicFlow') is None
+
+
+def test_assoc_useCase40_stub_double():
+    # textualusecase_Actor has no real 'actor41' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_Actor()
+    setattr(partner, 'actor41', None)
+    _safe_set(owner, 'UseCase42', partner)
+    assert getattr(partner, 'actor41') == owner
+    _safe_set(owner, 'UseCase42', None)
+    assert getattr(partner, 'actor41') is None
+
+
+def test_assoc_useCase46_stub_double():
+    # textualusecase_Include has no real 'includes' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_Include()
+    setattr(partner, 'includes', None)
+    _safe_set(owner, 'UseCase47', partner)
+    assert getattr(partner, 'includes') == owner
+    _safe_set(owner, 'UseCase47', None)
+    assert getattr(partner, 'includes') is None
+
+
+def test_assoc_useCaseModel14_stub_double():
+    # textualusecase_UseCaseModel has no real 'UseCaseModel' property in the generated
+    # code (a bare stub) -- manually attach it so textualusecase_UseCase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # textualusecase_UseCase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = textualusecase_UseCase(description="sample_text", name="sample_text")
+    partner = textualusecase_UseCaseModel()
+    setattr(partner, 'UseCaseModel', None)
+    _safe_set(owner, 'useCase15', partner)
+    assert getattr(partner, 'UseCaseModel') == owner
+    _safe_set(owner, 'useCase15', None)
+    assert getattr(partner, 'UseCaseModel') is None
+
+

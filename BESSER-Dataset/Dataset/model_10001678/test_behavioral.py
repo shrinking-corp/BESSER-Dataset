@@ -75,3 +75,41 @@ def test_assoc_Student_Grade_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'grade2', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_Schedule_Student_stub_double():
+    # Schedule has no real 'student8' property in the generated
+    # code (a bare stub) -- manually attach it so Student's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Student's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Student(email="sample_text", name="sample_text", phone="sample_text", surname="sample_text")
+    partner = Schedule()
+    setattr(partner, 'student8', None)
+    _safe_set(owner, 'schedule9', partner)
+    assert getattr(partner, 'student8') == owner
+    _safe_set(owner, 'schedule9', None)
+    assert getattr(partner, 'student8') is None
+
+
+def test_assoc_Student_Subject_stub_double():
+    # Subject has no real 'student5' property in the generated
+    # code (a bare stub) -- manually attach it so Student's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Student's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Student(email="sample_text", name="sample_text", phone="sample_text", surname="sample_text")
+    partner = Subject()
+    setattr(partner, 'student5', None)
+    _safe_set(owner, 'subjects4', partner)
+    assert getattr(partner, 'student5') == owner
+    _safe_set(owner, 'subjects4', None)
+    assert getattr(partner, 'student5') is None
+
+

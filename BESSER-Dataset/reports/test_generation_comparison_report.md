@@ -50,6 +50,18 @@ diagnosis on model_1" entry in `docs/DECISIONS.md`).
 | Pynguin (standalone) | 192/200 | 27.75% |
 | CrossHair (standalone) | 177/200 | 65.05% |
 
+> **Correction, 2026-10-11**: 4 of these 177 models (`model_452`,
+> `model_1116`, `model_1185`, `model_3216`) have an invalid-Python
+> `test_crosshair.py` — CrossHair's own pytest-output generator dumped a
+> raw object repr into a set literal — which fails to collect under pytest
+> regardless of mutation applied, so every mutant was misread as "killed".
+> All 4 report a fake `mutation_score: 1.0`. Excluding them, the real
+> CrossHair standalone average is **64.24%** (173/177 valid models) —
+> the conclusion below is unchanged, the number was inflated. See
+> `docs/DECISIONS.md`, 2026-10-11 entry. The fair-comparison and per-model
+> tables in Sections 3-4 below still use the original 177-model figures;
+> they haven't been re-derived against the 173-model subset yet.
+
 Pynguin and CrossHair's rows are **not directly comparable to baseline's
 full-200 figure** — they're standalone scores measured only on the subset
 of models each tool could generate anything for at all (192 and 177
@@ -158,6 +170,22 @@ whole-file) was needed in the first place (see `docs/DECISIONS.md`).
 
 ## 7. Recommendation
 
+> **Update, 2026-10-11**: the super suite (baseline + Behavioral +
+> CrossHair, merged) has now actually been built and measured — see
+> `docs/DECISIONS.md`'s 2026-10-11 "Super suite confirmed" entry. Result:
+> **77.59% avg (200/200 measured)**, a **+26.74 pt lift** over baseline on
+> the full sample, with **123 improved / 0 worsened / 77 unchanged** per
+> model. This directly confirms the recommendation below — it was written
+> before the super suite existed, as a prediction; it's now a measured
+> result, and the first Open Item below is resolved.
+>
+> **Update, 2026-10-12**: Behavioral gained a second kind of test (a test
+> double for stub-association "equivalent" mutants — see
+> `docs/DECISIONS.md`'s 2026-10-12 entry). Re-measured the super suite with
+> it: **92.66% avg (200/200 measured)**, a **+41.81 pt lift** over baseline,
+> 142 improved / 0 worsened / 58 unchanged. This also resolves the second
+> Open Item below — the "unkillable floor" wasn't unconditional after all.
+
 **Combine Behavioral and CrossHair into the eventual super suite; drop
 Pynguin.**
 
@@ -192,19 +220,24 @@ directly supports doing for both of them.
 
 ## 8. Open items, not yet done
 
-- **CrossHair has not been measured merged-with-baseline** — only
-  standalone. Given Section 4's finding that standalone CrossHair actively
-  hurts 36.7% of the models it covers, this is the single most important
-  next measurement: does `baseline + CrossHair`'s tests (same treatment
-  Behavioral got) convert CrossHair's real per-model wins into pure
-  upside, the way the standalone-vs-additive comparison predicts it should?
-- **A real, non-zero floor of unkillable (equivalent) mutants exists** in
-  this dataset from asymmetric stub associations (one side of a
-  bidirectional link is a bare `class X: pass`) — confirmed directly via
-  surviving-mutant inspection on `model_1`. No approach tested here, or any
-  conceivable test-writing approach, can close that gap. Worth keeping in
-  mind when judging how close to 100% any future combined score could
-  realistically get.
+- ~~**CrossHair has not been measured merged-with-baseline**~~ — **resolved
+  2026-10-11**: measured as part of the full super suite (baseline +
+  Behavioral + CrossHair, not CrossHair alone merged with baseline, but the
+  same underlying question). 77.59% avg, +26.74 pts over baseline on the
+  full 200-model sample, 0/200 models worsened — yes, merging converts
+  CrossHair's real per-model wins into pure upside, confirming the
+  prediction. See the Section 7 update above.
+- ~~**A real, non-zero floor of unkillable (equivalent) mutants exists**~~
+  — **reversed, 2026-10-12**: this was wrong. Stub-association mutants
+  (one side of a bidirectional link is a bare `class X: pass`) are
+  genuinely dead code for the generated code's *own* construction flow,
+  but a test can manually `setattr()` the stub with the attribute a real
+  implementation would have had — a standard test-double pattern, not a
+  fabricated result — and exercise the real side's logic that way. Built
+  as a new rule in `scripts/generate_behavioral_tests.py`; closed most of
+  what looked like a permanent floor (92.66% avg on the 200-sample, up
+  from 77.59%). See `docs/DECISIONS.md`'s 2026-10-12 entries for the full
+  trace.
 - **This is Stage 1 only.** Track B (the colleague's LLM-driven mutation-
   feedback loop) is still pending, not expected soon. This report will be
   re-run as a 5-way comparison once his results exist.

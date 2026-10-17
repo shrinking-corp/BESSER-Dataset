@@ -875,3 +875,566 @@ def test_assoc_valueConstraints4_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'ric_ValueConstraint', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_blockLevelComponents157_stub_double():
+    # ric_BlockLevelComponent has no real 'ric_BlockLevelComponent159' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Document's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Document's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Document(fileName="sample_text", index=True, title="sample_text")
+    partner = ric_BlockLevelComponent()
+    setattr(partner, 'ric_BlockLevelComponent159', None)
+    _safe_set(owner, 'ric_Document158', {partner})
+    assert getattr(partner, 'ric_BlockLevelComponent159') == owner
+    _safe_set(owner, 'ric_Document158', set())
+    assert getattr(partner, 'ric_BlockLevelComponent159') is None
+
+
+def test_assoc_blockLevelComponents17_stub_double():
+    # ric_BlockLevelComponent has no real 'ric_BlockLevelComponent' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Form's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Form's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Form(method="sample_text", name="sample_text")
+    partner = ric_BlockLevelComponent()
+    setattr(partner, 'ric_BlockLevelComponent', None)
+    _safe_set(owner, 'ric_Form18', {partner})
+    assert getattr(partner, 'ric_BlockLevelComponent') == owner
+    _safe_set(owner, 'ric_Form18', set())
+    assert getattr(partner, 'ric_BlockLevelComponent') is None
+
+
+def test_assoc_blockLevelComponents60_stub_double():
+    # ric_BlockLevelComponent has no real 'ric_BlockLevelComponent62' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Tab's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Tab's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Tab(title="sample_text")
+    partner = ric_BlockLevelComponent()
+    setattr(partner, 'ric_BlockLevelComponent62', None)
+    _safe_set(owner, 'ric_Tab61', {partner})
+    assert getattr(partner, 'ric_BlockLevelComponent62') == owner
+    _safe_set(owner, 'ric_Tab61', set())
+    assert getattr(partner, 'ric_BlockLevelComponent62') is None
+
+
+def test_assoc_blockLevelComponents82_stub_double():
+    # ric_BlockLevelComponent has no real 'ric_BlockLevelComponent84' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Section's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Section's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Section(title="sample_text")
+    partner = ric_BlockLevelComponent()
+    setattr(partner, 'ric_BlockLevelComponent84', None)
+    _safe_set(owner, 'ric_Section83', {partner})
+    assert getattr(partner, 'ric_BlockLevelComponent84') == owner
+    _safe_set(owner, 'ric_Section83', set())
+    assert getattr(partner, 'ric_BlockLevelComponent84') is None
+
+
+def test_assoc_contentRegion108_stub_double():
+    # ric_ContentRegion has no real 'ric_ContentRegion' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Portal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Portal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Portal(documentsExtension="sample_text", name="sample_text")
+    partner = ric_ContentRegion()
+    setattr(partner, 'ric_ContentRegion', None)
+    _safe_set(owner, 'ric_Portal109', partner)
+    assert getattr(partner, 'ric_ContentRegion') == owner
+    _safe_set(owner, 'ric_Portal109', None)
+    assert getattr(partner, 'ric_ContentRegion') is None
+
+
+def test_assoc_contextualNavigationRegion104_stub_double():
+    # ric_ContextualNavigationRegion has no real 'ric_ContextualNavigationRegion' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Portal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Portal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Portal(documentsExtension="sample_text", name="sample_text")
+    partner = ric_ContextualNavigationRegion()
+    setattr(partner, 'ric_ContextualNavigationRegion', None)
+    _safe_set(owner, 'ric_Portal105', partner)
+    assert getattr(partner, 'ric_ContextualNavigationRegion') == owner
+    _safe_set(owner, 'ric_Portal105', None)
+    assert getattr(partner, 'ric_ContextualNavigationRegion') is None
+
+
+def test_assoc_documents151_stub_double():
+    # ric_ContentRegion has no real 'ric_ContentRegion152' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Document's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Document's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Document(fileName="sample_text", index=True, title="sample_text")
+    partner = ric_ContentRegion()
+    setattr(partner, 'ric_ContentRegion152', None)
+    _safe_set(owner, 'ric_Document153', partner)
+    assert getattr(partner, 'ric_ContentRegion152') == owner
+    _safe_set(owner, 'ric_Document153', None)
+    assert getattr(partner, 'ric_ContentRegion152') is None
+
+
+def test_assoc_events0_stub_double():
+    # ric_EventComponent has no real 'ric_EventComponent' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Event's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Event's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Event(type="sample_text")
+    partner = ric_EventComponent()
+    setattr(partner, 'ric_EventComponent', None)
+    _safe_set(owner, 'ric_Event', partner)
+    assert getattr(partner, 'ric_EventComponent') == owner
+    _safe_set(owner, 'ric_Event', None)
+    assert getattr(partner, 'ric_EventComponent') is None
+
+
+def test_assoc_footerRegion110_stub_double():
+    # ric_FooterRegion has no real 'ric_FooterRegion' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Portal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Portal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Portal(documentsExtension="sample_text", name="sample_text")
+    partner = ric_FooterRegion()
+    setattr(partner, 'ric_FooterRegion', None)
+    _safe_set(owner, 'ric_Portal111', partner)
+    assert getattr(partner, 'ric_FooterRegion') == owner
+    _safe_set(owner, 'ric_Portal111', None)
+    assert getattr(partner, 'ric_FooterRegion') is None
+
+
+def test_assoc_forms145_stub_double():
+    # ric_ContextualNavigationRegion has no real 'ric_ContextualNavigationRegion146' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Form's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Form's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Form(method="sample_text", name="sample_text")
+    partner = ric_ContextualNavigationRegion()
+    setattr(partner, 'ric_ContextualNavigationRegion146', None)
+    _safe_set(owner, 'ric_Form147', partner)
+    assert getattr(partner, 'ric_ContextualNavigationRegion146') == owner
+    _safe_set(owner, 'ric_Form147', None)
+    assert getattr(partner, 'ric_ContextualNavigationRegion146') is None
+
+
+def test_assoc_forms148_stub_double():
+    # ric_SearchRegion has no real 'ric_SearchRegion149' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Form's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Form's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Form(method="sample_text", name="sample_text")
+    partner = ric_SearchRegion()
+    setattr(partner, 'ric_SearchRegion149', None)
+    _safe_set(owner, 'ric_Form150', partner)
+    assert getattr(partner, 'ric_SearchRegion149') == owner
+    _safe_set(owner, 'ric_Form150', None)
+    assert getattr(partner, 'ric_SearchRegion149') is None
+
+
+def test_assoc_headerRegion101_stub_double():
+    # ric_HeaderRegion has no real 'ric_HeaderRegion' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Portal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Portal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Portal(documentsExtension="sample_text", name="sample_text")
+    partner = ric_HeaderRegion()
+    setattr(partner, 'ric_HeaderRegion', None)
+    _safe_set(owner, 'ric_Portal', partner)
+    assert getattr(partner, 'ric_HeaderRegion') == owner
+    _safe_set(owner, 'ric_Portal', None)
+    assert getattr(partner, 'ric_HeaderRegion') is None
+
+
+def test_assoc_image123_stub_double():
+    # ric_Logo has no real 'ric_Logo124' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Image's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Image's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Image(alt="sample_text", src="sample_text")
+    partner = ric_Logo()
+    setattr(partner, 'ric_Logo124', None)
+    _safe_set(owner, 'ric_Image', partner)
+    assert getattr(partner, 'ric_Logo124') == owner
+    _safe_set(owner, 'ric_Image', None)
+    assert getattr(partner, 'ric_Logo124') is None
+
+
+def test_assoc_inlineComponents117_stub_double():
+    # ric_HeaderRegion has no real 'ric_HeaderRegion118' property in the generated
+    # code (a bare stub) -- manually attach it so ric_InlineComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_InlineComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_InlineComponent(text="sample_text")
+    partner = ric_HeaderRegion()
+    setattr(partner, 'ric_HeaderRegion118', None)
+    _safe_set(owner, 'ric_InlineComponent119', partner)
+    assert getattr(partner, 'ric_HeaderRegion118') == owner
+    _safe_set(owner, 'ric_InlineComponent119', None)
+    assert getattr(partner, 'ric_HeaderRegion118') is None
+
+
+def test_assoc_inlineComponents127_stub_double():
+    # ric_ContextualNavigationRegion has no real 'ric_ContextualNavigationRegion128' property in the generated
+    # code (a bare stub) -- manually attach it so ric_InlineComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_InlineComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_InlineComponent(text="sample_text")
+    partner = ric_ContextualNavigationRegion()
+    setattr(partner, 'ric_ContextualNavigationRegion128', None)
+    _safe_set(owner, 'ric_InlineComponent129', partner)
+    assert getattr(partner, 'ric_ContextualNavigationRegion128') == owner
+    _safe_set(owner, 'ric_InlineComponent129', None)
+    assert getattr(partner, 'ric_ContextualNavigationRegion128') is None
+
+
+def test_assoc_inlineComponents175_stub_double():
+    # ric_FooterRegion has no real 'ric_FooterRegion176' property in the generated
+    # code (a bare stub) -- manually attach it so ric_InlineComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_InlineComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_InlineComponent(text="sample_text")
+    partner = ric_FooterRegion()
+    setattr(partner, 'ric_FooterRegion176', None)
+    _safe_set(owner, 'ric_InlineComponent177', partner)
+    assert getattr(partner, 'ric_FooterRegion176') == owner
+    _safe_set(owner, 'ric_InlineComponent177', None)
+    assert getattr(partner, 'ric_FooterRegion176') is None
+
+
+def test_assoc_inlineComponents48_stub_double():
+    # ric_BlockLevelComponent has no real 'ric_BlockLevelComponent49' property in the generated
+    # code (a bare stub) -- manually attach it so ric_InlineComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_InlineComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_InlineComponent(text="sample_text")
+    partner = ric_BlockLevelComponent()
+    setattr(partner, 'ric_BlockLevelComponent49', None)
+    _safe_set(owner, 'ric_InlineComponent50', partner)
+    assert getattr(partner, 'ric_BlockLevelComponent49') == owner
+    _safe_set(owner, 'ric_InlineComponent50', None)
+    assert getattr(partner, 'ric_BlockLevelComponent49') is None
+
+
+def test_assoc_lineBreaks163_stub_double():
+    # ric_LineBreak has no real 'ric_LineBreak165' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Document's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Document's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Document(fileName="sample_text", index=True, title="sample_text")
+    partner = ric_LineBreak()
+    setattr(partner, 'ric_LineBreak165', None)
+    _safe_set(owner, 'ric_Document164', {partner})
+    assert getattr(partner, 'ric_LineBreak165') == owner
+    _safe_set(owner, 'ric_Document164', set())
+    assert getattr(partner, 'ric_LineBreak165') is None
+
+
+def test_assoc_lineBreaks33_stub_double():
+    # ric_LineBreak has no real 'ric_LineBreak' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Div's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Div's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Div(align="sample_text")
+    partner = ric_LineBreak()
+    setattr(partner, 'ric_LineBreak', None)
+    _safe_set(owner, 'ric_Div34', {partner})
+    assert getattr(partner, 'ric_LineBreak') == owner
+    _safe_set(owner, 'ric_Div34', set())
+    assert getattr(partner, 'ric_LineBreak') is None
+
+
+def test_assoc_lineBreaks66_stub_double():
+    # ric_LineBreak has no real 'ric_LineBreak68' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Tab's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Tab's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Tab(title="sample_text")
+    partner = ric_LineBreak()
+    setattr(partner, 'ric_LineBreak68', None)
+    _safe_set(owner, 'ric_Tab67', {partner})
+    assert getattr(partner, 'ric_LineBreak68') == owner
+    _safe_set(owner, 'ric_Tab67', set())
+    assert getattr(partner, 'ric_LineBreak68') is None
+
+
+def test_assoc_lineBreaks88_stub_double():
+    # ric_LineBreak has no real 'ric_LineBreak90' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Section's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Section's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Section(title="sample_text")
+    partner = ric_LineBreak()
+    setattr(partner, 'ric_LineBreak90', None)
+    _safe_set(owner, 'ric_Section89', {partner})
+    assert getattr(partner, 'ric_LineBreak90') == owner
+    _safe_set(owner, 'ric_Section89', set())
+    assert getattr(partner, 'ric_LineBreak90') is None
+
+
+def test_assoc_lists169_stub_double():
+    # ric_List has no real 'ric_List171' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Document's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Document's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Document(fileName="sample_text", index=True, title="sample_text")
+    partner = ric_List()
+    setattr(partner, 'ric_List171', None)
+    _safe_set(owner, 'ric_Document170', {partner})
+    assert getattr(partner, 'ric_List171') == owner
+    _safe_set(owner, 'ric_Document170', set())
+    assert getattr(partner, 'ric_List171') is None
+
+
+def test_assoc_lists37_stub_double():
+    # ric_List has no real 'ric_List' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Div's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Div's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Div(align="sample_text")
+    partner = ric_List()
+    setattr(partner, 'ric_List', None)
+    _safe_set(owner, 'ric_Div38', {partner})
+    assert getattr(partner, 'ric_List') == owner
+    _safe_set(owner, 'ric_Div38', set())
+    assert getattr(partner, 'ric_List') is None
+
+
+def test_assoc_lists72_stub_double():
+    # ric_List has no real 'ric_List74' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Tab's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Tab's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Tab(title="sample_text")
+    partner = ric_List()
+    setattr(partner, 'ric_List74', None)
+    _safe_set(owner, 'ric_Tab73', {partner})
+    assert getattr(partner, 'ric_List74') == owner
+    _safe_set(owner, 'ric_Tab73', set())
+    assert getattr(partner, 'ric_List74') is None
+
+
+def test_assoc_lists94_stub_double():
+    # ric_List has no real 'ric_List96' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Section's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Section's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Section(title="sample_text")
+    partner = ric_List()
+    setattr(partner, 'ric_List96', None)
+    _safe_set(owner, 'ric_Section95', {partner})
+    assert getattr(partner, 'ric_List96') == owner
+    _safe_set(owner, 'ric_Section95', set())
+    assert getattr(partner, 'ric_List96') is None
+
+
+def test_assoc_numberConstraint6_stub_double():
+    # ric_NumberValueConstraint has no real 'ric_NumberValueConstraint' property in the generated
+    # code (a bare stub) -- manually attach it so ric_FormControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_FormControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_FormControl(name="sample_text", value="sample_text")
+    partner = ric_NumberValueConstraint()
+    setattr(partner, 'ric_NumberValueConstraint', None)
+    _safe_set(owner, 'ric_FormControl7', partner)
+    assert getattr(partner, 'ric_NumberValueConstraint') == owner
+    _safe_set(owner, 'ric_FormControl7', None)
+    assert getattr(partner, 'ric_NumberValueConstraint') is None
+
+
+def test_assoc_objectComponents133_stub_double():
+    # ric_ContextualNavigationRegion has no real 'ric_ContextualNavigationRegion134' property in the generated
+    # code (a bare stub) -- manually attach it so ric_ObjectComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_ObjectComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_ObjectComponent(align="sample_text", border=7, height=7, hspace=7, vspace=7, width=7)
+    partner = ric_ContextualNavigationRegion()
+    setattr(partner, 'ric_ContextualNavigationRegion134', None)
+    _safe_set(owner, 'ric_ObjectComponent135', partner)
+    assert getattr(partner, 'ric_ContextualNavigationRegion134') == owner
+    _safe_set(owner, 'ric_ObjectComponent135', None)
+    assert getattr(partner, 'ric_ContextualNavigationRegion134') is None
+
+
+def test_assoc_objectComponents181_stub_double():
+    # ric_FooterRegion has no real 'ric_FooterRegion182' property in the generated
+    # code (a bare stub) -- manually attach it so ric_ObjectComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_ObjectComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_ObjectComponent(align="sample_text", border=7, height=7, hspace=7, vspace=7, width=7)
+    partner = ric_FooterRegion()
+    setattr(partner, 'ric_FooterRegion182', None)
+    _safe_set(owner, 'ric_ObjectComponent183', partner)
+    assert getattr(partner, 'ric_FooterRegion182') == owner
+    _safe_set(owner, 'ric_ObjectComponent183', None)
+    assert getattr(partner, 'ric_FooterRegion182') is None
+
+
+def test_assoc_requiredFieldConstraint8_stub_double():
+    # ric_RequiredFieldConstraint has no real 'ric_RequiredFieldConstraint' property in the generated
+    # code (a bare stub) -- manually attach it so ric_FormControl's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_FormControl's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_FormControl(name="sample_text", value="sample_text")
+    partner = ric_RequiredFieldConstraint()
+    setattr(partner, 'ric_RequiredFieldConstraint', None)
+    _safe_set(owner, 'ric_FormControl9', partner)
+    assert getattr(partner, 'ric_RequiredFieldConstraint') == owner
+    _safe_set(owner, 'ric_FormControl9', None)
+    assert getattr(partner, 'ric_RequiredFieldConstraint') is None
+
+
+def test_assoc_richWidgets166_stub_double():
+    # ric_RichWidget has no real 'ric_RichWidget168' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Document's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Document's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Document(fileName="sample_text", index=True, title="sample_text")
+    partner = ric_RichWidget()
+    setattr(partner, 'ric_RichWidget168', None)
+    _safe_set(owner, 'ric_Document167', {partner})
+    assert getattr(partner, 'ric_RichWidget168') == owner
+    _safe_set(owner, 'ric_Document167', set())
+    assert getattr(partner, 'ric_RichWidget168') is None
+
+
+def test_assoc_richWidgets35_stub_double():
+    # ric_RichWidget has no real 'ric_RichWidget' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Div's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Div's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Div(align="sample_text")
+    partner = ric_RichWidget()
+    setattr(partner, 'ric_RichWidget', None)
+    _safe_set(owner, 'ric_Div36', {partner})
+    assert getattr(partner, 'ric_RichWidget') == owner
+    _safe_set(owner, 'ric_Div36', set())
+    assert getattr(partner, 'ric_RichWidget') is None
+
+
+def test_assoc_richWidgets69_stub_double():
+    # ric_RichWidget has no real 'ric_RichWidget71' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Tab's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Tab's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Tab(title="sample_text")
+    partner = ric_RichWidget()
+    setattr(partner, 'ric_RichWidget71', None)
+    _safe_set(owner, 'ric_Tab70', {partner})
+    assert getattr(partner, 'ric_RichWidget71') == owner
+    _safe_set(owner, 'ric_Tab70', set())
+    assert getattr(partner, 'ric_RichWidget71') is None
+
+
+def test_assoc_richWidgets91_stub_double():
+    # ric_RichWidget has no real 'ric_RichWidget93' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Section's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Section's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Section(title="sample_text")
+    partner = ric_RichWidget()
+    setattr(partner, 'ric_RichWidget93', None)
+    _safe_set(owner, 'ric_Section92', {partner})
+    assert getattr(partner, 'ric_RichWidget93') == owner
+    _safe_set(owner, 'ric_Section92', set())
+    assert getattr(partner, 'ric_RichWidget93') is None
+
+
+def test_assoc_searchRegion106_stub_double():
+    # ric_SearchRegion has no real 'ric_SearchRegion' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Portal's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Portal's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Portal(documentsExtension="sample_text", name="sample_text")
+    partner = ric_SearchRegion()
+    setattr(partner, 'ric_SearchRegion', None)
+    _safe_set(owner, 'ric_Portal107', partner)
+    assert getattr(partner, 'ric_SearchRegion') == owner
+    _safe_set(owner, 'ric_Portal107', None)
+    assert getattr(partner, 'ric_SearchRegion') is None
+
+
+def test_assoc_sections78_stub_double():
+    # ric_AccordionPanel has no real 'ric_AccordionPanel' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Section's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Section's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Section(title="sample_text")
+    partner = ric_AccordionPanel()
+    setattr(partner, 'ric_AccordionPanel', None)
+    _safe_set(owner, 'ric_Section', partner)
+    assert getattr(partner, 'ric_AccordionPanel') == owner
+    _safe_set(owner, 'ric_Section', None)
+    assert getattr(partner, 'ric_AccordionPanel') is None
+
+
+def test_assoc_subsiteNavigation114_stub_double():
+    # ric_HeaderRegion has no real 'ric_HeaderRegion115' property in the generated
+    # code (a bare stub) -- manually attach it so ric_NavigationRegion's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_NavigationRegion's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_NavigationRegion(orientation="sample_text")
+    partner = ric_HeaderRegion()
+    setattr(partner, 'ric_HeaderRegion115', None)
+    _safe_set(owner, 'ric_NavigationRegion116', partner)
+    assert getattr(partner, 'ric_HeaderRegion115') == owner
+    _safe_set(owner, 'ric_NavigationRegion116', None)
+    assert getattr(partner, 'ric_HeaderRegion115') is None
+
+
+def test_assoc_tabs56_stub_double():
+    # ric_TabbedPanel has no real 'ric_TabbedPanel' property in the generated
+    # code (a bare stub) -- manually attach it so ric_Tab's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ric_Tab's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ric_Tab(title="sample_text")
+    partner = ric_TabbedPanel()
+    setattr(partner, 'ric_TabbedPanel', None)
+    _safe_set(owner, 'ric_Tab', partner)
+    assert getattr(partner, 'ric_TabbedPanel') == owner
+    _safe_set(owner, 'ric_Tab', None)
+    assert getattr(partner, 'ric_TabbedPanel') is None
+
+

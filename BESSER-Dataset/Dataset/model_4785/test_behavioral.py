@@ -72,3 +72,86 @@ def test_assoc_superTypes15_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'types_ComplexType', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_constraint1_stub_double():
+    # types_Type has no real 'types_Type' property in the generated
+    # code (a bare stub) -- manually attach it so types_TypeConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # types_TypeConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = types_TypeConstraint(value="sample_text")
+    partner = types_Type()
+    setattr(partner, 'types_Type', None)
+    _safe_set(owner, 'types_TypeConstraint', partner)
+    assert getattr(partner, 'types_Type') == owner
+    _safe_set(owner, 'types_TypeConstraint', None)
+    assert getattr(partner, 'types_Type') is None
+
+
+def test_assoc_enumerator10_stub_double():
+    # types_EnumerationType has no real 'owningEnumeration' property in the generated
+    # code (a bare stub) -- manually attach it so types_Enumerator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # types_Enumerator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = types_Enumerator(literalValue="sample_text")
+    partner = types_EnumerationType()
+    setattr(partner, 'owningEnumeration', None)
+    _safe_set(owner, 'Enumerator', partner)
+    assert getattr(partner, 'owningEnumeration') == owner
+    _safe_set(owner, 'Enumerator', None)
+    assert getattr(partner, 'owningEnumeration') is None
+
+
+def test_assoc_features13_stub_double():
+    # types_Feature has no real 'Feature' property in the generated
+    # code (a bare stub) -- manually attach it so types_ComplexType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # types_ComplexType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = types_ComplexType()
+    partner = types_Feature()
+    setattr(partner, 'Feature', None)
+    _safe_set(owner, 'owningType', {partner})
+    assert getattr(partner, 'Feature') == owner
+    _safe_set(owner, 'owningType', set())
+    assert getattr(partner, 'Feature') is None
+
+
+def test_assoc_owningEnumeration16_stub_double():
+    # types_EnumerationType has no real 'EnumerationType' property in the generated
+    # code (a bare stub) -- manually attach it so types_Enumerator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # types_Enumerator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = types_Enumerator(literalValue="sample_text")
+    partner = types_EnumerationType()
+    setattr(partner, 'EnumerationType', None)
+    _safe_set(owner, 'enumerator', partner)
+    assert getattr(partner, 'EnumerationType') == owner
+    _safe_set(owner, 'enumerator', None)
+    assert getattr(partner, 'EnumerationType') is None
+
+
+def test_assoc_owningType2_stub_double():
+    # types_Feature has no real 'features' property in the generated
+    # code (a bare stub) -- manually attach it so types_ComplexType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # types_ComplexType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = types_ComplexType()
+    partner = types_Feature()
+    setattr(partner, 'features', None)
+    _safe_set(owner, 'ComplexType', partner)
+    assert getattr(partner, 'features') == owner
+    _safe_set(owner, 'ComplexType', None)
+    assert getattr(partner, 'features') is None
+
+

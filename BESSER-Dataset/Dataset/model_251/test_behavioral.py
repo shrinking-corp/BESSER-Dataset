@@ -999,3 +999,176 @@ def test_assoc_target124_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'incomingTransition', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_eBounds106_stub_double():
+    # ecore_ETypeParameter has no real 'ecore_ETypeParameter107' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_EGenericType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_EGenericType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_EGenericType()
+    partner = ecore_ETypeParameter()
+    setattr(partner, 'ecore_ETypeParameter107', None)
+    _safe_set(owner, 'ecore_EGenericType108', partner)
+    assert getattr(partner, 'ecore_ETypeParameter107') == owner
+    _safe_set(owner, 'ecore_EGenericType108', None)
+    assert getattr(partner, 'ecore_ETypeParameter107') is None
+
+
+def test_assoc_eOperation70_stub_double():
+    # ecore_EParameter has no real 'eParameters' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_EOperation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_EOperation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_EOperation()
+    partner = ecore_EParameter()
+    setattr(partner, 'eParameters', None)
+    _safe_set(owner, 'EOperation71', partner)
+    assert getattr(partner, 'eParameters') == owner
+    _safe_set(owner, 'EOperation71', None)
+    assert getattr(partner, 'eParameters') is None
+
+
+def test_assoc_eParameters54_stub_double():
+    # ecore_EParameter has no real 'EParameter' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_EOperation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_EOperation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_EOperation()
+    partner = ecore_EParameter()
+    setattr(partner, 'EParameter', None)
+    _safe_set(owner, 'eOperation', {partner})
+    assert getattr(partner, 'EParameter') == owner
+    _safe_set(owner, 'eOperation', set())
+    assert getattr(partner, 'EParameter') is None
+
+
+def test_assoc_eTypeParameter100_stub_double():
+    # ecore_ETypeParameter has no real 'ecore_ETypeParameter102' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_EGenericType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_EGenericType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_EGenericType()
+    partner = ecore_ETypeParameter()
+    setattr(partner, 'ecore_ETypeParameter102', None)
+    _safe_set(owner, 'ecore_EGenericType101', partner)
+    assert getattr(partner, 'ecore_ETypeParameter102') == owner
+    _safe_set(owner, 'ecore_EGenericType101', None)
+    assert getattr(partner, 'ecore_ETypeParameter102') is None
+
+
+def test_assoc_eTypeParameters43_stub_double():
+    # ecore_ETypeParameter has no real 'ecore_ETypeParameter' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_EClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_EClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_EClassifier(defaultValue="sample_text", instanceClass="sample_text", instanceClassName="sample_text", instanceTypeName="sample_text")
+    partner = ecore_ETypeParameter()
+    setattr(partner, 'ecore_ETypeParameter', None)
+    _safe_set(owner, 'ecore_EClassifier', {partner})
+    assert getattr(partner, 'ecore_ETypeParameter') == owner
+    _safe_set(owner, 'ecore_EClassifier', set())
+    assert getattr(partner, 'ecore_ETypeParameter') is None
+
+
+def test_assoc_eTypeParameters51_stub_double():
+    # ecore_ETypeParameter has no real 'ecore_ETypeParameter53' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_EOperation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_EOperation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_EOperation()
+    partner = ecore_ETypeParameter()
+    setattr(partner, 'ecore_ETypeParameter53', None)
+    _safe_set(owner, 'ecore_EOperation52', {partner})
+    assert getattr(partner, 'ecore_ETypeParameter53') == owner
+    _safe_set(owner, 'ecore_EOperation52', set())
+    assert getattr(partner, 'ecore_ETypeParameter53') is None
+
+
+def test_assoc_finalState112_stub_double():
+    # ecore_FSM has no real 'ecore_FSM113' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_State(name="sample_text")
+    partner = ecore_FSM()
+    setattr(partner, 'ecore_FSM113', None)
+    _safe_set(owner, 'ecore_State114', partner)
+    assert getattr(partner, 'ecore_FSM113') == owner
+    _safe_set(owner, 'ecore_State114', None)
+    assert getattr(partner, 'ecore_FSM113') is None
+
+
+def test_assoc_initialState110_stub_double():
+    # ecore_FSM has no real 'ecore_FSM111' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_State(name="sample_text")
+    partner = ecore_FSM()
+    setattr(partner, 'ecore_FSM111', None)
+    _safe_set(owner, 'ecore_State', partner)
+    assert getattr(partner, 'ecore_FSM111') == owner
+    _safe_set(owner, 'ecore_State', None)
+    assert getattr(partner, 'ecore_FSM111') is None
+
+
+def test_assoc_myFSMs49_stub_double():
+    # ecore_FSM has no real 'ecore_FSM' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_ENamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_ENamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_ENamedElement(name="sample_text")
+    partner = ecore_FSM()
+    setattr(partner, 'ecore_FSM', None)
+    _safe_set(owner, 'ecore_ENamedElement', {partner})
+    assert getattr(partner, 'ecore_FSM') == owner
+    _safe_set(owner, 'ecore_ENamedElement', set())
+    assert getattr(partner, 'ecore_FSM') is None
+
+
+def test_assoc_ownedState109_stub_double():
+    # ecore_FSM has no real 'owningFSM' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_State(name="sample_text")
+    partner = ecore_FSM()
+    setattr(partner, 'owningFSM', None)
+    _safe_set(owner, 'State', partner)
+    assert getattr(partner, 'owningFSM') == owner
+    _safe_set(owner, 'State', None)
+    assert getattr(partner, 'owningFSM') is None
+
+
+def test_assoc_owningFSM115_stub_double():
+    # ecore_FSM has no real 'FSM' property in the generated
+    # code (a bare stub) -- manually attach it so ecore_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ecore_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ecore_State(name="sample_text")
+    partner = ecore_FSM()
+    setattr(partner, 'FSM', None)
+    _safe_set(owner, 'ownedState', partner)
+    assert getattr(partner, 'FSM') == owner
+    _safe_set(owner, 'ownedState', None)
+    assert getattr(partner, 'FSM') is None
+
+

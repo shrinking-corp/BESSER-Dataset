@@ -86,3 +86,116 @@ def test_assoc_playerStats1_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'hockeyleague_PlayerStats2', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_arena20_stub_double():
+    # hockeyleague_Team has no real 'hockeyleague_Team21' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_Arena's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_Arena's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_Arena(address="sample_text", capacity=7)
+    partner = hockeyleague_Team()
+    setattr(partner, 'hockeyleague_Team21', None)
+    _safe_set(owner, 'hockeyleague_Arena', partner)
+    assert getattr(partner, 'hockeyleague_Team21') == owner
+    _safe_set(owner, 'hockeyleague_Arena', None)
+    assert getattr(partner, 'hockeyleague_Team21') is None
+
+
+def test_assoc_defencemen14_stub_double():
+    # hockeyleague_Team has no real 'hockeyleague_Team15' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_Defence's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_Defence's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_Defence(position="sample_text")
+    partner = hockeyleague_Team()
+    setattr(partner, 'hockeyleague_Team15', None)
+    _safe_set(owner, 'hockeyleague_Defence16', partner)
+    assert getattr(partner, 'hockeyleague_Team15') == owner
+    _safe_set(owner, 'hockeyleague_Defence16', None)
+    assert getattr(partner, 'hockeyleague_Team15') is None
+
+
+def test_assoc_forwards11_stub_double():
+    # hockeyleague_Team has no real 'hockeyleague_Team12' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_Forward's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_Forward's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_Forward(position="sample_text")
+    partner = hockeyleague_Team()
+    setattr(partner, 'hockeyleague_Team12', None)
+    _safe_set(owner, 'hockeyleague_Forward13', partner)
+    assert getattr(partner, 'hockeyleague_Team12') == owner
+    _safe_set(owner, 'hockeyleague_Forward13', None)
+    assert getattr(partner, 'hockeyleague_Team12') is None
+
+
+def test_assoc_goalieStats3_stub_double():
+    # hockeyleague_Goalie has no real 'hockeyleague_Goalie' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_GoalieStats's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_GoalieStats's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_GoalieStats(assists=7, emptyNetGoals=7, gamesPlayedIn=7, goals=7, goalsAgainst=7, goalsAgainstAverage=3.14, losses=7, minutesPlayedIn=7, penaltyMinutes=7, points=7, saves=7, shutouts=7, ties=7, wins=7, year="sample_text")
+    partner = hockeyleague_Goalie()
+    setattr(partner, 'hockeyleague_Goalie', None)
+    _safe_set(owner, 'hockeyleague_GoalieStats', partner)
+    assert getattr(partner, 'hockeyleague_Goalie') == owner
+    _safe_set(owner, 'hockeyleague_GoalieStats', None)
+    assert getattr(partner, 'hockeyleague_Goalie') is None
+
+
+def test_assoc_team4_stub_double():
+    # hockeyleague_Team has no real 'hockeyleague_Team' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_GoalieStats's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_GoalieStats's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_GoalieStats(assists=7, emptyNetGoals=7, gamesPlayedIn=7, goals=7, goalsAgainst=7, goalsAgainstAverage=3.14, losses=7, minutesPlayedIn=7, penaltyMinutes=7, points=7, saves=7, shutouts=7, ties=7, wins=7, year="sample_text")
+    partner = hockeyleague_Team()
+    setattr(partner, 'hockeyleague_Team', None)
+    _safe_set(owner, 'hockeyleague_GoalieStats5', partner)
+    assert getattr(partner, 'hockeyleague_Team') == owner
+    _safe_set(owner, 'hockeyleague_GoalieStats5', None)
+    assert getattr(partner, 'hockeyleague_Team') is None
+
+
+def test_assoc_team8_stub_double():
+    # hockeyleague_Team has no real 'hockeyleague_Team10' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_PlayerStats's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_PlayerStats's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_PlayerStats(assists=7, gameWinningGoals=7, gamesPlayedIn=7, goals=7, penaltyMinutes=7, plusMinus=7, points=7, powerPlayGoals=7, shortHandedGoals=7, shotPercentage=3.14, shots=7, year="sample_text")
+    partner = hockeyleague_Team()
+    setattr(partner, 'hockeyleague_Team10', None)
+    _safe_set(owner, 'hockeyleague_PlayerStats9', partner)
+    assert getattr(partner, 'hockeyleague_Team10') == owner
+    _safe_set(owner, 'hockeyleague_PlayerStats9', None)
+    assert getattr(partner, 'hockeyleague_Team10') is None
+
+
+def test_assoc_teams6_stub_double():
+    # hockeyleague_Team has no real 'hockeyleague_Team7' property in the generated
+    # code (a bare stub) -- manually attach it so hockeyleague_League's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # hockeyleague_League's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = hockeyleague_League(headoffice="sample_text")
+    partner = hockeyleague_Team()
+    setattr(partner, 'hockeyleague_Team7', None)
+    _safe_set(owner, 'hockeyleague_League', {partner})
+    assert getattr(partner, 'hockeyleague_Team7') == owner
+    _safe_set(owner, 'hockeyleague_League', set())
+    assert getattr(partner, 'hockeyleague_Team7') is None
+
+

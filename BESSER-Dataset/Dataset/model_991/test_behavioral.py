@@ -137,3 +137,101 @@ def test_assoc_target12_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Node13', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_edges14_stub_double():
+    # dfs_DFSGraph has no real 'graph' property in the generated
+    # code (a bare stub) -- manually attach it so dfs_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dfs_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dfs_Edge(type="sample_text")
+    partner = dfs_DFSGraph()
+    setattr(partner, 'graph', None)
+    _safe_set(owner, 'Edge15', partner)
+    assert getattr(partner, 'graph') == owner
+    _safe_set(owner, 'Edge15', None)
+    assert getattr(partner, 'graph') is None
+
+
+def test_assoc_graph3_stub_double():
+    # dfs_DFSGraph has no real 'DFSGraph' property in the generated
+    # code (a bare stub) -- manually attach it so dfs_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dfs_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dfs_Node(postTraversal=7, preTraversal=7)
+    partner = dfs_DFSGraph()
+    setattr(partner, 'DFSGraph', None)
+    _safe_set(owner, 'nodes', partner)
+    assert getattr(partner, 'DFSGraph') == owner
+    _safe_set(owner, 'nodes', None)
+    assert getattr(partner, 'DFSGraph') is None
+
+
+def test_assoc_graph7_stub_double():
+    # dfs_DFSGraph has no real 'DFSGraph8' property in the generated
+    # code (a bare stub) -- manually attach it so dfs_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dfs_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dfs_Edge(type="sample_text")
+    partner = dfs_DFSGraph()
+    setattr(partner, 'DFSGraph8', None)
+    _safe_set(owner, 'edges', partner)
+    assert getattr(partner, 'DFSGraph8') == owner
+    _safe_set(owner, 'edges', None)
+    assert getattr(partner, 'DFSGraph8') is None
+
+
+def test_assoc_nodes16_stub_double():
+    # dfs_DFSGraph has no real 'graph17' property in the generated
+    # code (a bare stub) -- manually attach it so dfs_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dfs_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dfs_Node(postTraversal=7, preTraversal=7)
+    partner = dfs_DFSGraph()
+    setattr(partner, 'graph17', None)
+    _safe_set(owner, 'Node18', partner)
+    assert getattr(partner, 'graph17') == owner
+    _safe_set(owner, 'Node18', None)
+    assert getattr(partner, 'graph17') is None
+
+
+def test_assoc_origin10_stub_double():
+    # dfs_EObject has no real 'dfs_EObject11' property in the generated
+    # code (a bare stub) -- manually attach it so dfs_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dfs_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dfs_Edge(type="sample_text")
+    partner = dfs_EObject()
+    setattr(partner, 'dfs_EObject11', None)
+    _safe_set(owner, 'dfs_Edge', partner)
+    assert getattr(partner, 'dfs_EObject11') == owner
+    _safe_set(owner, 'dfs_Edge', None)
+    assert getattr(partner, 'dfs_EObject11') is None
+
+
+def test_assoc_origin4_stub_double():
+    # dfs_EObject has no real 'dfs_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so dfs_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # dfs_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = dfs_Node(postTraversal=7, preTraversal=7)
+    partner = dfs_EObject()
+    setattr(partner, 'dfs_EObject', None)
+    _safe_set(owner, 'dfs_Node', partner)
+    assert getattr(partner, 'dfs_EObject') == owner
+    _safe_set(owner, 'dfs_Node', None)
+    assert getattr(partner, 'dfs_EObject') is None
+
+

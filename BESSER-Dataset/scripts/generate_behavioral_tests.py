@@ -28,14 +28,27 @@ by hand-adding exactly this kind of test and confirming a previously-
 surviving mutant (`model_1`, line 96, `ReplaceComparisonOperator_IsNot_Is`)
 is killed by it.
 
-**Not every surviving mutant is fixable this way.** The same diagnosis found
-a separate, genuinely unkillable class of surviving mutants: where the
-association's other participant class is a bare `class X: pass` stub with
-no real properties at all, the generated code's own `hasattr(item, "...")`
-guard is permanently False, making the mutant inside it dead code for any
-possible test. This script does nothing for that case (nothing could) --
-see the DECISIONS.md entry for the full trace, and account for this floor
-when judging any approach's resulting mutation score.
+**Second gap, found and fixed 2026-10-12: the "unkillable" stub-association
+mutants turned out to be killable after all, with a test double.** The
+original assumption was that when one side's class is a bare
+`class X: pass` stub, the generated code's `hasattr(item, "...")` guard
+protecting the bidirectional-consistency logic is permanently False, so the
+mutant inside it is dead code for any possible test -- confirmed real on
+`model_1` (~92% of its surviving mutants traced to exactly this: `target`,
+`petrinet_Node5`, `petrinet_Node9`, `Node`, and `petrinet_Petrinet2` all
+point at the bare `petrinet_Arc` stub). The dead-code diagnosis was correct,
+but the conclusion "nothing could" kill it was wrong: `petrinet_Arc` has no
+`__slots__`, so nothing stops a TEST from manually attaching the exact
+attribute name a real implementation would have had
+(`setattr(stub_instance, reciprocal_attr_name, ...)`) before exercising the
+real side's setter. This is an ordinary test-double pattern -- standing in
+for an incomplete collaborator to test the REAL side's own logic in
+isolation -- not a fabricated result: the resulting assertion genuinely
+passes or fails based on real behavior of real code, it just does so via a
+hand-shaped object rather than one the generated code happens to construct
+on its own. Verified by hand-tracing exactly this sequence against
+`model_1`'s `target` property and confirming the `opp_val == self`
+comparison mutants are observably killable this way.
 
 What this generates: for each binary association where BOTH ends have a
 real, independently-settable property (checked via `_has_real_property()`,
@@ -51,6 +64,21 @@ already present in the copied generator), one additional test that:
 This is the mirror image of the existing `link_reassign_clear` test --
 exercising class_b's own setter guard directly, the half of a bidirectional
 pair the existing test never calls on its own.
+
+**A second, independent kind of test, for the stub case**: for each binary
+association where exactly ONE side has a real property and the other is a
+bare stub, one test that:
+  1. Constructs both sides.
+  2. Manually `setattr()`s the stub side with the exact attribute name the
+     real side's setter checks via `hasattr()` -- simulating the reciprocal
+     property a correct implementation would have had, so the real side's
+     guard is actually reachable instead of permanently skipped.
+  3. Calls the real side's own setter (assign, then clear), asserting the
+     stub's manually-attached attribute updates correctly in both
+     directions.
+This targets the "equivalent mutant" class the reverse-direction test above
+explicitly cannot help with -- not dead code after all, just code that a
+test can't reach without standing in for an incomplete collaborator.
 
 Usage:
     python scripts/generate_behavioral_tests.py --models-file PATH [--workers N]
@@ -130,9 +158,27 @@ def load_cache(cache_path: Path) -> dict[str, dict]:
     return cached
 
 
+def _read_text_robust(path: Path) -> str:
+    """Reads a text file regardless of which BOM (if any) Windows wrote --
+    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
+    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
+    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
+    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
+    created with plain `echo` silently corrupts the first model name AND
+    throws off line-splitting entirely (one line becomes several, since
+    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
+    guessing from one case."""
+    raw = path.read_bytes()
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        return raw.decode("utf-16")
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return raw.decode("utf-8-sig")
+    return raw.decode("utf-8")
+
+
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
     if models_file:
-        names = [l.strip() for l in models_file.read_text().splitlines() if l.strip()]
+        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
         dirs = [dataset_dir / name for name in names]
     else:
         dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
@@ -492,6 +538,71 @@ def generate_tests(model, code_module) -> str:
             f"    assert not _is_linked(b, {attr_b!r}, a2)",
             f"    if hasattr(a2, {attr_a!r}):",
             f"        assert not _is_linked(a2, {attr_a!r}, b)",
+            "",
+            "",
+        ]
+
+    lines += [
+        "# =============================================================================",
+        "# STUB-SIDE TEST DOUBLE",
+        "# For associations where one side is a bare stub class with no real property:",
+        "# manually attach the attribute a real implementation would have had, so the",
+        "# real side's hasattr()-guarded consistency logic is actually reachable. See",
+        "# module docstring.",
+        "# =============================================================================",
+        "",
+    ]
+
+    # --- binary associations: stub-side test double ---
+    for assoc in associations:
+        ordered = _ordered_ends(assoc)
+        if ordered is None:
+            continue
+        e1, e2 = ordered
+        class_a, attr_a, type_a, many_a = e2.type, e1.name, e1.type, _is_many(e1.multiplicity)
+        class_b, attr_b, type_b, many_b = e1.type, e2.name, e2.type, _is_many(e2.multiplicity)
+
+        code_class_a = getattr(code_module, code_names[class_a.name], None) if class_a.name in code_names else None
+        code_class_b = getattr(code_module, code_names[class_b.name], None) if class_b.name in code_names else None
+        a_is_real = _has_real_property(code_class_a, attr_a)
+        b_is_real = _has_real_property(code_class_b, attr_b)
+
+        # Exactly one side real, the other a stub -- the gap neither the
+        # forward generator's test nor the reverse-direction test above can
+        # reach (the former's hasattr guard on the stub partner is
+        # permanently False with a real stub instance; the latter requires
+        # BOTH sides real so it never applies here at all).
+        if a_is_real and not b_is_real:
+            real_cls, real_attr, real_many = class_a, attr_a, many_a
+            stub_cls, stub_attr = class_b, attr_b
+        elif b_is_real and not a_is_real:
+            real_cls, real_attr, real_many = class_b, attr_b, many_b
+            stub_cls, stub_attr = class_a, attr_a
+        else:
+            continue  # both real (handled above) or both stub (nothing testable either way)
+
+        if not constructible.get(real_cls.name, False) or not constructible.get(stub_cls.name, False):
+            continue
+
+        tname = _sanitize(f"assoc_{assoc.name}_stub_double")
+        kwargs_real = constructor_kwargs(real_cls, known_types, sample_table, False, alt_table)
+        kwargs_stub = constructor_kwargs(stub_cls, known_types, sample_table, False, alt_table)
+        set_val = "{partner}" if real_many else "partner"
+
+        lines += [
+            f"def test_{tname}():",
+            f"    # {stub_cls.name} has no real {stub_attr!r} property in the generated",
+            f"    # code (a bare stub) -- manually attach it so {real_cls.name}'s own",
+            f"    # bidirectional-consistency guard can actually be exercised. This tests",
+            f"    # {real_cls.name}'s OWN setter logic via a hand-shaped stand-in for an",
+            f"    # incomplete collaborator, same reasoning as a test double anywhere else.",
+            f"    owner = {code_names[real_cls.name]}({kwargs_real})",
+            f"    partner = {code_names[stub_cls.name]}({kwargs_stub})",
+            f"    setattr(partner, {stub_attr!r}, None)",
+            f"    _safe_set(owner, {real_attr!r}, {set_val})",
+            f"    assert getattr(partner, {stub_attr!r}) == owner",
+            f"    _safe_set(owner, {real_attr!r}, {'set()' if real_many else 'None'})",
+            f"    assert getattr(partner, {stub_attr!r}) is None",
             "",
             "",
         ]

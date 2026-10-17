@@ -102,6 +102,8 @@ TEST_FILE_METADATA_KEYS = {
     "test_hypothesis.py": "mutation_validation_properties",
     "test_structural_full.py": "structural_mutation_validation_properties",
     "test_combined.py": "combined_mutation_validation_properties",
+    "test_super_suite.py": "super_suite_mutation_validation_properties",
+    "test_combined_plus_behavioral.py": "combined_plus_behavioral_mutation_validation_properties",
 }
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
@@ -135,13 +137,21 @@ def cosmic_ray_executable() -> str:
     return str(candidate) if candidate.is_file() else "cosmic-ray"
 
 
-def load_cache(cache_path: Path) -> dict[str, dict]:
+def load_cache(cache_path: Path, expected_test_file: str | None = None) -> dict[str, dict]:
     """Read a JSONL cache of previously-completed results, keyed by model name.
 
     Tolerates a truncated last line (e.g. the process was killed mid-write)
     by skipping any line that fails to parse.
+
+    If `expected_test_file` is given, a cached entry recorded against a
+    DIFFERENT test file is dropped (forced to recompute) instead of being
+    silently reused -- the real bug found 2026-09-16: two runs sharing a
+    --report-name but different --test-file values had the second run
+    reuse the first's results under its own key. Entries written before
+    this field existed (no "test_file" key) are trusted as before.
     """
     cached: dict[str, dict] = {}
+    stale = 0
     if not cache_path.is_file():
         return cached
     with cache_path.open("r") as f:
@@ -153,13 +163,35 @@ def load_cache(cache_path: Path) -> dict[str, dict]:
                 result = json.loads(line)
             except json.JSONDecodeError:
                 continue
+            recorded_test_file = result.get("test_file")
+            if expected_test_file and recorded_test_file and recorded_test_file != expected_test_file:
+                stale += 1
+                continue
             cached[result["model"]] = result
+    if stale:
+        print(f"Ignored {stale} cached result(s) recorded against a different --test-file "
+              f"than this run ({expected_test_file!r}) -- recomputing them instead of "
+              f"silently reusing stale data.")
     return cached
+
+
+def _read_text_robust(path: Path) -> str:
+    """Reads a text file regardless of which BOM (if any) Windows wrote --
+    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
+    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
+    matches plain `.read_text()`'s assumption) -- sniffs the actual BOM
+    bytes rather than assuming one encoding."""
+    raw = path.read_bytes()
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        return raw.decode("utf-16")
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return raw.decode("utf-8-sig")
+    return raw.decode("utf-8")
 
 
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
     if models_file:
-        names = [l.strip() for l in models_file.read_text().splitlines() if l.strip()]
+        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
         dirs = [dataset_dir / name for name in names]
     else:
         dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
@@ -300,6 +332,7 @@ def validate_model(
     checked_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
     result = {
         "model": model_dir.name,
+        "test_file": TEST_FILENAME,
         "checked_at": checked_at,
         "python_version": platform.python_version(),
         "status": "missing_file",
@@ -627,7 +660,7 @@ def main() -> None:
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
 
-    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path, expected_test_file=TEST_FILENAME)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
     # Split out retriable failures (timeout/error/...) so they get
@@ -677,7 +710,7 @@ def main() -> None:
                     result = future.result()
                 except Exception as exc:
                     result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
+                        "model": model_dir.name, "test_file": TEST_FILENAME, "status": "error", "error_message": str(exc),
                         "mutation_score": None, "total_mutants_in_file": None,
                         "total_mutants_in_properties": None, "total_mutants_generated": None,
                         "mutants_run": None, "killed": None, "survived": None, "other_outcomes": {},

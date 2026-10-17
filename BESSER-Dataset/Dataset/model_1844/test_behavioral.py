@@ -1445,3 +1445,311 @@ def test_assoc_type140_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'rapidml_SingleValueType', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_URI5_stub_double():
+    # rapidml_URI has no real 'rapidml_URI' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_ResourceDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_ResourceDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_ResourceDefinition(name="sample_text")
+    partner = rapidml_URI()
+    setattr(partner, 'rapidml_URI', None)
+    _safe_set(owner, 'rapidml_ResourceDefinition6', partner)
+    assert getattr(partner, 'rapidml_URI') == owner
+    _safe_set(owner, 'rapidml_ResourceDefinition6', None)
+    assert getattr(partner, 'rapidml_URI') is None
+
+
+def test_assoc_allSupertypes150_stub_double():
+    # rapidml_Inheritable has no real 'rapidml_Inheritable152' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Structure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Structure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Structure()
+    partner = rapidml_Inheritable()
+    setattr(partner, 'rapidml_Inheritable152', None)
+    _safe_set(owner, 'rapidml_Structure151', {partner})
+    assert getattr(partner, 'rapidml_Inheritable152') == owner
+    _safe_set(owner, 'rapidml_Structure151', set())
+    assert getattr(partner, 'rapidml_Inheritable152') is None
+
+
+def test_assoc_baseType160_stub_double():
+    # rapidml_SimpleType has no real 'rapidml_SimpleType' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_UserDefinedType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_UserDefinedType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_UserDefinedType()
+    partner = rapidml_SimpleType()
+    setattr(partner, 'rapidml_SimpleType', None)
+    _safe_set(owner, 'rapidml_UserDefinedType', partner)
+    assert getattr(partner, 'rapidml_SimpleType') == owner
+    _safe_set(owner, 'rapidml_UserDefinedType', None)
+    assert getattr(partner, 'rapidml_SimpleType') is None
+
+
+def test_assoc_collectionParameters28_stub_double():
+    # rapidml_CollectionParameter has no real 'CollectionParameter' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_CollectionResource's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_CollectionResource's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_CollectionResource(resourceRealizationKind="sample_text")
+    partner = rapidml_CollectionParameter()
+    setattr(partner, 'CollectionParameter', None)
+    _safe_set(owner, 'containingResourceDefinition29', {partner})
+    assert getattr(partner, 'CollectionParameter') == owner
+    _safe_set(owner, 'containingResourceDefinition29', set())
+    assert getattr(partner, 'CollectionParameter') is None
+
+
+def test_assoc_containingMethod22_stub_double():
+    # rapidml_TypedRequest has no real 'request' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Method(httpMethod="sample_text", id="sample_text")
+    partner = rapidml_TypedRequest()
+    setattr(partner, 'request', None)
+    _safe_set(owner, 'Method23', partner)
+    assert getattr(partner, 'request') == owner
+    _safe_set(owner, 'Method23', None)
+    assert getattr(partner, 'request') is None
+
+
+def test_assoc_containingResourceDefinition31_stub_double():
+    # rapidml_CollectionParameter has no real 'collectionParameters' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_CollectionResource's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_CollectionResource's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_CollectionResource(resourceRealizationKind="sample_text")
+    partner = rapidml_CollectionParameter()
+    setattr(partner, 'collectionParameters', None)
+    _safe_set(owner, 'CollectionResource', partner)
+    assert getattr(partner, 'collectionParameters') == owner
+    _safe_set(owner, 'CollectionResource', None)
+    assert getattr(partner, 'collectionParameters') is None
+
+
+def test_assoc_containingURI27_stub_double():
+    # rapidml_URI has no real 'URI' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_URIParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_URIParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_URIParameter()
+    partner = rapidml_URI()
+    setattr(partner, 'URI', None)
+    _safe_set(owner, 'uriParameters', partner)
+    assert getattr(partner, 'URI') == owner
+    _safe_set(owner, 'uriParameters', None)
+    assert getattr(partner, 'URI') is None
+
+
+def test_assoc_documentation18_stub_double():
+    # rapidml_Documentable has no real 'rapidml_Documentable' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Documentation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Documentation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Documentation(text="sample_text")
+    partner = rapidml_Documentable()
+    setattr(partner, 'rapidml_Documentable', None)
+    _safe_set(owner, 'rapidml_Documentation', partner)
+    assert getattr(partner, 'rapidml_Documentable') == owner
+    _safe_set(owner, 'rapidml_Documentation', None)
+    assert getattr(partner, 'rapidml_Documentable') is None
+
+
+def test_assoc_examples86_stub_double():
+    # rapidml_WithExamples has no real 'rapidml_WithExamples' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Example's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Example's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Example()
+    partner = rapidml_WithExamples()
+    setattr(partner, 'rapidml_WithExamples', None)
+    _safe_set(owner, 'rapidml_Example', partner)
+    assert getattr(partner, 'rapidml_WithExamples') == owner
+    _safe_set(owner, 'rapidml_Example', None)
+    assert getattr(partner, 'rapidml_WithExamples') is None
+
+
+def test_assoc_extensions124_stub_double():
+    # rapidml_Extensible has no real 'rapidml_Extensible' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Extension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Extension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Extension(name="sample_text", value="sample_text")
+    partner = rapidml_Extensible()
+    setattr(partner, 'rapidml_Extensible', None)
+    _safe_set(owner, 'rapidml_Extension', partner)
+    assert getattr(partner, 'rapidml_Extensible') == owner
+    _safe_set(owner, 'rapidml_Extension', None)
+    assert getattr(partner, 'rapidml_Extensible') is None
+
+
+def test_assoc_mediaTypes125_stub_double():
+    # rapidml_MediaTypesLibrary has no real 'rapidml_MediaTypesLibrary126' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_MediaType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_MediaType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_MediaType(name="sample_text", specURL="sample_text")
+    partner = rapidml_MediaTypesLibrary()
+    setattr(partner, 'rapidml_MediaTypesLibrary126', None)
+    _safe_set(owner, 'rapidml_MediaType127', partner)
+    assert getattr(partner, 'rapidml_MediaTypesLibrary126') == owner
+    _safe_set(owner, 'rapidml_MediaType127', None)
+    assert getattr(partner, 'rapidml_MediaTypesLibrary126') is None
+
+
+def test_assoc_mediaTypesLibrary38_stub_double():
+    # rapidml_MediaTypesLibrary has no real 'rapidml_MediaTypesLibrary' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_ZenModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_ZenModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_ZenModel(name="sample_text", namespace="sample_text")
+    partner = rapidml_MediaTypesLibrary()
+    setattr(partner, 'rapidml_MediaTypesLibrary', None)
+    _safe_set(owner, 'rapidml_ZenModel39', partner)
+    assert getattr(partner, 'rapidml_MediaTypesLibrary') == owner
+    _safe_set(owner, 'rapidml_ZenModel39', None)
+    assert getattr(partner, 'rapidml_MediaTypesLibrary') is None
+
+
+def test_assoc_referenceElement79_stub_double():
+    # rapidml_PathSegment has no real 'rapidml_PathSegment' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_ReferenceElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_ReferenceElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_ReferenceElement()
+    partner = rapidml_PathSegment()
+    setattr(partner, 'rapidml_PathSegment', None)
+    _safe_set(owner, 'rapidml_ReferenceElement80', partner)
+    assert getattr(partner, 'rapidml_PathSegment') == owner
+    _safe_set(owner, 'rapidml_ReferenceElement80', None)
+    assert getattr(partner, 'rapidml_PathSegment') is None
+
+
+def test_assoc_request13_stub_double():
+    # rapidml_TypedRequest has no real 'TypedRequest' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Method(httpMethod="sample_text", id="sample_text")
+    partner = rapidml_TypedRequest()
+    setattr(partner, 'TypedRequest', None)
+    _safe_set(owner, 'containingMethod', partner)
+    assert getattr(partner, 'TypedRequest') == owner
+    _safe_set(owner, 'containingMethod', None)
+    assert getattr(partner, 'TypedRequest') is None
+
+
+def test_assoc_scheme107_stub_double():
+    # rapidml_AuthenticationMethod has no real 'rapidml_AuthenticationMethod108' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_SecurityScheme's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_SecurityScheme's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_SecurityScheme(flow="sample_text", name="sample_text", type="sample_text")
+    partner = rapidml_AuthenticationMethod()
+    setattr(partner, 'rapidml_AuthenticationMethod108', None)
+    _safe_set(owner, 'rapidml_SecurityScheme109', partner)
+    assert getattr(partner, 'rapidml_AuthenticationMethod108') == owner
+    _safe_set(owner, 'rapidml_SecurityScheme109', None)
+    assert getattr(partner, 'rapidml_AuthenticationMethod108') is None
+
+
+def test_assoc_scopes110_stub_double():
+    # rapidml_AuthenticationMethod has no real 'rapidml_AuthenticationMethod111' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_SecurityScope's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_SecurityScope's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_SecurityScope(name="sample_text")
+    partner = rapidml_AuthenticationMethod()
+    setattr(partner, 'rapidml_AuthenticationMethod111', None)
+    _safe_set(owner, 'rapidml_SecurityScope112', partner)
+    assert getattr(partner, 'rapidml_AuthenticationMethod111') == owner
+    _safe_set(owner, 'rapidml_SecurityScope112', None)
+    assert getattr(partner, 'rapidml_AuthenticationMethod111') is None
+
+
+def test_assoc_segments82_stub_double():
+    # rapidml_URI has no real 'rapidml_URI83' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_URISegment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_URISegment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_URISegment(name="sample_text")
+    partner = rapidml_URI()
+    setattr(partner, 'rapidml_URI83', None)
+    _safe_set(owner, 'rapidml_URISegment', partner)
+    assert getattr(partner, 'rapidml_URI83') == owner
+    _safe_set(owner, 'rapidml_URISegment', None)
+    assert getattr(partner, 'rapidml_URI83') is None
+
+
+def test_assoc_supertypes148_stub_double():
+    # rapidml_Inheritable has no real 'rapidml_Inheritable' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_Structure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_Structure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_Structure()
+    partner = rapidml_Inheritable()
+    setattr(partner, 'rapidml_Inheritable', None)
+    _safe_set(owner, 'rapidml_Structure149', {partner})
+    assert getattr(partner, 'rapidml_Inheritable') == owner
+    _safe_set(owner, 'rapidml_Structure149', set())
+    assert getattr(partner, 'rapidml_Inheritable') is None
+
+
+def test_assoc_uriParameters84_stub_double():
+    # rapidml_URI has no real 'containingURI' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_URIParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_URIParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_URIParameter()
+    partner = rapidml_URI()
+    setattr(partner, 'containingURI', None)
+    _safe_set(owner, 'URIParameter', partner)
+    assert getattr(partner, 'containingURI') == owner
+    _safe_set(owner, 'URIParameter', None)
+    assert getattr(partner, 'containingURI') is None
+
+
+def test_assoc_uriSegment26_stub_double():
+    # rapidml_URISegmentWithParameter has no real 'rapidml_URISegmentWithParameter' property in the generated
+    # code (a bare stub) -- manually attach it so rapidml_URIParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # rapidml_URIParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = rapidml_URIParameter()
+    partner = rapidml_URISegmentWithParameter()
+    setattr(partner, 'rapidml_URISegmentWithParameter', None)
+    _safe_set(owner, 'rapidml_URIParameter', partner)
+    assert getattr(partner, 'rapidml_URISegmentWithParameter') == owner
+    _safe_set(owner, 'rapidml_URIParameter', None)
+    assert getattr(partner, 'rapidml_URISegmentWithParameter') is None
+
+

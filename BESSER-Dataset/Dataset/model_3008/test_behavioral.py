@@ -201,3 +201,236 @@ def test_assoc_superClass10_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'miniJava_Clazz', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_arraysHeap174_stub_double():
+    # miniJava_State has no real 'miniJava_State175' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_ArrayInstance's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_ArrayInstance's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_ArrayInstance(size=7)
+    partner = miniJava_State()
+    setattr(partner, 'miniJava_State175', None)
+    _safe_set(owner, 'miniJava_ArrayInstance', partner)
+    assert getattr(partner, 'miniJava_State175') == owner
+    _safe_set(owner, 'miniJava_ArrayInstance', None)
+    assert getattr(partner, 'miniJava_State175') is None
+
+
+def test_assoc_body12_stub_double():
+    # miniJava_Block has no real 'miniJava_Block' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Method(isabstract=True, isstatic=True)
+    partner = miniJava_Block()
+    setattr(partner, 'miniJava_Block', None)
+    _safe_set(owner, 'miniJava_Method13', partner)
+    assert getattr(partner, 'miniJava_Block') == owner
+    _safe_set(owner, 'miniJava_Method13', None)
+    assert getattr(partner, 'miniJava_Block') is None
+
+
+def test_assoc_cache14_stub_double():
+    # miniJava_ClazzToMethodMap has no real 'miniJava_ClazzToMethodMap' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Method(isabstract=True, isstatic=True)
+    partner = miniJava_ClazzToMethodMap()
+    setattr(partner, 'miniJava_ClazzToMethodMap', None)
+    _safe_set(owner, 'miniJava_Method15', {partner})
+    assert getattr(partner, 'miniJava_ClazzToMethodMap') == owner
+    _safe_set(owner, 'miniJava_Method15', set())
+    assert getattr(partner, 'miniJava_ClazzToMethodMap') is None
+
+
+def test_assoc_implementz5_stub_double():
+    # miniJava_Interface has no real 'miniJava_Interface' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_TypeDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_TypeDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_TypeDeclaration(accessLevel="sample_text")
+    partner = miniJava_Interface()
+    setattr(partner, 'miniJava_Interface', None)
+    _safe_set(owner, 'miniJava_TypeDeclaration6', {partner})
+    assert getattr(partner, 'miniJava_Interface') == owner
+    _safe_set(owner, 'miniJava_TypeDeclaration6', set())
+    assert getattr(partner, 'miniJava_Interface') is None
+
+
+def test_assoc_instance213_stub_double():
+    # miniJava_ArrayRefValue has no real 'miniJava_ArrayRefValue' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_ArrayInstance's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_ArrayInstance's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_ArrayInstance(size=7)
+    partner = miniJava_ArrayRefValue()
+    setattr(partner, 'miniJava_ArrayRefValue', None)
+    _safe_set(owner, 'miniJava_ArrayInstance214', partner)
+    assert getattr(partner, 'miniJava_ArrayRefValue') == owner
+    _safe_set(owner, 'miniJava_ArrayInstance214', None)
+    assert getattr(partner, 'miniJava_ArrayRefValue') is None
+
+
+def test_assoc_key221_stub_double():
+    # miniJava_ClazzToMethodMap has no real 'miniJava_ClazzToMethodMap222' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Clazz's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Clazz's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Clazz(isabstract=True)
+    partner = miniJava_ClazzToMethodMap()
+    setattr(partner, 'miniJava_ClazzToMethodMap222', None)
+    _safe_set(owner, 'miniJava_Clazz223', partner)
+    assert getattr(partner, 'miniJava_ClazzToMethodMap222') == owner
+    _safe_set(owner, 'miniJava_Clazz223', None)
+    assert getattr(partner, 'miniJava_ClazzToMethodMap222') is None
+
+
+def test_assoc_method133_stub_double():
+    # miniJava_MethodCall has no real 'miniJava_MethodCall134' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Method(isabstract=True, isstatic=True)
+    partner = miniJava_MethodCall()
+    setattr(partner, 'miniJava_MethodCall134', None)
+    _safe_set(owner, 'miniJava_Method135', partner)
+    assert getattr(partner, 'miniJava_MethodCall134') == owner
+    _safe_set(owner, 'miniJava_Method135', None)
+    assert getattr(partner, 'miniJava_MethodCall134') is None
+
+
+def test_assoc_outputStream172_stub_double():
+    # miniJava_State has no real 'miniJava_State173' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_OutputStream's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_OutputStream's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_OutputStream(stream="sample_text")
+    partner = miniJava_State()
+    setattr(partner, 'miniJava_State173', None)
+    _safe_set(owner, 'miniJava_OutputStream', partner)
+    assert getattr(partner, 'miniJava_State173') == owner
+    _safe_set(owner, 'miniJava_OutputStream', None)
+    assert getattr(partner, 'miniJava_State173') is None
+
+
+def test_assoc_params11_stub_double():
+    # miniJava_Parameter has no real 'miniJava_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Method(isabstract=True, isstatic=True)
+    partner = miniJava_Parameter()
+    setattr(partner, 'miniJava_Parameter', None)
+    _safe_set(owner, 'miniJava_Method', {partner})
+    assert getattr(partner, 'miniJava_Parameter') == owner
+    _safe_set(owner, 'miniJava_Method', set())
+    assert getattr(partner, 'miniJava_Parameter') is None
+
+
+def test_assoc_referencedClass46_stub_double():
+    # miniJava_ClassRef has no real 'miniJava_ClassRef' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_TypeDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_TypeDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_TypeDeclaration(accessLevel="sample_text")
+    partner = miniJava_ClassRef()
+    setattr(partner, 'miniJava_ClassRef', None)
+    _safe_set(owner, 'miniJava_TypeDeclaration47', partner)
+    assert getattr(partner, 'miniJava_ClassRef') == owner
+    _safe_set(owner, 'miniJava_TypeDeclaration47', None)
+    assert getattr(partner, 'miniJava_ClassRef') is None
+
+
+def test_assoc_state3_stub_double():
+    # miniJava_State has no real 'miniJava_State' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Program's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Program's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Program(name="sample_text")
+    partner = miniJava_State()
+    setattr(partner, 'miniJava_State', None)
+    _safe_set(owner, 'miniJava_Program4', partner)
+    assert getattr(partner, 'miniJava_State') == owner
+    _safe_set(owner, 'miniJava_Program4', None)
+    assert getattr(partner, 'miniJava_State') is None
+
+
+def test_assoc_type139_stub_double():
+    # miniJava_NewObject has no real 'miniJava_NewObject' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Clazz's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Clazz's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Clazz(isabstract=True)
+    partner = miniJava_NewObject()
+    setattr(partner, 'miniJava_NewObject', None)
+    _safe_set(owner, 'miniJava_Clazz140', partner)
+    assert getattr(partner, 'miniJava_NewObject') == owner
+    _safe_set(owner, 'miniJava_Clazz140', None)
+    assert getattr(partner, 'miniJava_NewObject') is None
+
+
+def test_assoc_type205_stub_double():
+    # miniJava_ObjectInstance has no real 'miniJava_ObjectInstance206' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Clazz's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Clazz's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Clazz(isabstract=True)
+    partner = miniJava_ObjectInstance()
+    setattr(partner, 'miniJava_ObjectInstance206', None)
+    _safe_set(owner, 'miniJava_Clazz207', partner)
+    assert getattr(partner, 'miniJava_ObjectInstance206') == owner
+    _safe_set(owner, 'miniJava_Clazz207', None)
+    assert getattr(partner, 'miniJava_ObjectInstance206') is None
+
+
+def test_assoc_value208_stub_double():
+    # miniJava_Value has no real 'miniJava_Value210' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_ArrayInstance's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_ArrayInstance's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_ArrayInstance(size=7)
+    partner = miniJava_Value()
+    setattr(partner, 'miniJava_Value210', None)
+    _safe_set(owner, 'miniJava_ArrayInstance209', {partner})
+    assert getattr(partner, 'miniJava_Value210') == owner
+    _safe_set(owner, 'miniJava_ArrayInstance209', set())
+    assert getattr(partner, 'miniJava_Value210') is None
+
+
+def test_assoc_value224_stub_double():
+    # miniJava_ClazzToMethodMap has no real 'miniJava_ClazzToMethodMap225' property in the generated
+    # code (a bare stub) -- manually attach it so miniJava_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # miniJava_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = miniJava_Method(isabstract=True, isstatic=True)
+    partner = miniJava_ClazzToMethodMap()
+    setattr(partner, 'miniJava_ClazzToMethodMap225', None)
+    _safe_set(owner, 'miniJava_Method226', partner)
+    assert getattr(partner, 'miniJava_ClazzToMethodMap225') == owner
+    _safe_set(owner, 'miniJava_Method226', None)
+    assert getattr(partner, 'miniJava_ClazzToMethodMap225') is None
+
+

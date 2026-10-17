@@ -111,3 +111,236 @@ def _safe_set(obj, attr_name, value):
 # side effect of the forward-direction test. See module docstring.
 # =============================================================================
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_def_1_stub_double():
+    # stext_StatechartRoot has no real 'stext_StatechartRoot' property in the generated
+    # code (a bare stub) -- manually attach it so stext_StatechartDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_StatechartDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_StatechartDefinition(namespace="sample_text")
+    partner = stext_StatechartRoot()
+    setattr(partner, 'stext_StatechartRoot', None)
+    _safe_set(owner, 'stext_StatechartDefinition', partner)
+    assert getattr(partner, 'stext_StatechartRoot') == owner
+    _safe_set(owner, 'stext_StatechartDefinition', None)
+    assert getattr(partner, 'stext_StatechartRoot') is None
+
+
+def test_assoc_definitionScopes4_stub_double():
+    # stext_Scope has no real 'stext_Scope' property in the generated
+    # code (a bare stub) -- manually attach it so stext_StatechartDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_StatechartDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_StatechartDefinition(namespace="sample_text")
+    partner = stext_Scope()
+    setattr(partner, 'stext_Scope', None)
+    _safe_set(owner, 'stext_StatechartDefinition5', {partner})
+    assert getattr(partner, 'stext_Scope') == owner
+    _safe_set(owner, 'stext_StatechartDefinition5', set())
+    assert getattr(partner, 'stext_Scope') is None
+
+
+def test_assoc_derivation30_stub_double():
+    # stext_EventDerivation has no real 'stext_EventDerivation31' property in the generated
+    # code (a bare stub) -- manually attach it so stext_EventDefinition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_EventDefinition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_EventDefinition(direction="sample_text", type="sample_text")
+    partner = stext_EventDerivation()
+    setattr(partner, 'stext_EventDerivation31', None)
+    _safe_set(owner, 'stext_EventDefinition', partner)
+    assert getattr(partner, 'stext_EventDerivation31') == owner
+    _safe_set(owner, 'stext_EventDefinition', None)
+    assert getattr(partner, 'stext_EventDerivation31') is None
+
+
+def test_assoc_expression22_stub_double():
+    # stext_Expression has no real 'stext_Expression24' property in the generated
+    # code (a bare stub) -- manually attach it so stext_Assignment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_Assignment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_Assignment(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression24', None)
+    _safe_set(owner, 'stext_Assignment23', partner)
+    assert getattr(partner, 'stext_Expression24') == owner
+    _safe_set(owner, 'stext_Assignment23', None)
+    assert getattr(partner, 'stext_Expression24') is None
+
+
+def test_assoc_leftOperand72_stub_double():
+    # stext_Expression has no real 'stext_Expression73' property in the generated
+    # code (a bare stub) -- manually attach it so stext_LogicalRelationExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_LogicalRelationExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_LogicalRelationExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression73', None)
+    _safe_set(owner, 'stext_LogicalRelationExpression', partner)
+    assert getattr(partner, 'stext_Expression73') == owner
+    _safe_set(owner, 'stext_LogicalRelationExpression', None)
+    assert getattr(partner, 'stext_Expression73') is None
+
+
+def test_assoc_leftOperand77_stub_double():
+    # stext_Expression has no real 'stext_Expression78' property in the generated
+    # code (a bare stub) -- manually attach it so stext_ShiftExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_ShiftExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_ShiftExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression78', None)
+    _safe_set(owner, 'stext_ShiftExpression', partner)
+    assert getattr(partner, 'stext_Expression78') == owner
+    _safe_set(owner, 'stext_ShiftExpression', None)
+    assert getattr(partner, 'stext_Expression78') is None
+
+
+def test_assoc_leftOperand82_stub_double():
+    # stext_Expression has no real 'stext_Expression83' property in the generated
+    # code (a bare stub) -- manually attach it so stext_NumericalAddSubtractExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_NumericalAddSubtractExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_NumericalAddSubtractExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression83', None)
+    _safe_set(owner, 'stext_NumericalAddSubtractExpression', partner)
+    assert getattr(partner, 'stext_Expression83') == owner
+    _safe_set(owner, 'stext_NumericalAddSubtractExpression', None)
+    assert getattr(partner, 'stext_Expression83') is None
+
+
+def test_assoc_leftOperand87_stub_double():
+    # stext_Expression has no real 'stext_Expression88' property in the generated
+    # code (a bare stub) -- manually attach it so stext_NumericalMultiplyDivideExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_NumericalMultiplyDivideExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_NumericalMultiplyDivideExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression88', None)
+    _safe_set(owner, 'stext_NumericalMultiplyDivideExpression', partner)
+    assert getattr(partner, 'stext_Expression88') == owner
+    _safe_set(owner, 'stext_NumericalMultiplyDivideExpression', None)
+    assert getattr(partner, 'stext_Expression88') is None
+
+
+def test_assoc_operand92_stub_double():
+    # stext_Expression has no real 'stext_Expression93' property in the generated
+    # code (a bare stub) -- manually attach it so stext_NumericalUnaryExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_NumericalUnaryExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_NumericalUnaryExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression93', None)
+    _safe_set(owner, 'stext_NumericalUnaryExpression', partner)
+    assert getattr(partner, 'stext_Expression93') == owner
+    _safe_set(owner, 'stext_NumericalUnaryExpression', None)
+    assert getattr(partner, 'stext_Expression93') is None
+
+
+def test_assoc_operation95_stub_double():
+    # stext_OperationCall has no real 'stext_OperationCall' property in the generated
+    # code (a bare stub) -- manually attach it so stext_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_Operation(paramTypes="sample_text", type="sample_text")
+    partner = stext_OperationCall()
+    setattr(partner, 'stext_OperationCall', None)
+    _safe_set(owner, 'stext_Operation', partner)
+    assert getattr(partner, 'stext_OperationCall') == owner
+    _safe_set(owner, 'stext_Operation', None)
+    assert getattr(partner, 'stext_OperationCall') is None
+
+
+def test_assoc_rightOperand74_stub_double():
+    # stext_Expression has no real 'stext_Expression76' property in the generated
+    # code (a bare stub) -- manually attach it so stext_LogicalRelationExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_LogicalRelationExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_LogicalRelationExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression76', None)
+    _safe_set(owner, 'stext_LogicalRelationExpression75', partner)
+    assert getattr(partner, 'stext_Expression76') == owner
+    _safe_set(owner, 'stext_LogicalRelationExpression75', None)
+    assert getattr(partner, 'stext_Expression76') is None
+
+
+def test_assoc_rightOperand79_stub_double():
+    # stext_Expression has no real 'stext_Expression81' property in the generated
+    # code (a bare stub) -- manually attach it so stext_ShiftExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_ShiftExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_ShiftExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression81', None)
+    _safe_set(owner, 'stext_ShiftExpression80', partner)
+    assert getattr(partner, 'stext_Expression81') == owner
+    _safe_set(owner, 'stext_ShiftExpression80', None)
+    assert getattr(partner, 'stext_Expression81') is None
+
+
+def test_assoc_rightOperand84_stub_double():
+    # stext_Expression has no real 'stext_Expression86' property in the generated
+    # code (a bare stub) -- manually attach it so stext_NumericalAddSubtractExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_NumericalAddSubtractExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_NumericalAddSubtractExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression86', None)
+    _safe_set(owner, 'stext_NumericalAddSubtractExpression85', partner)
+    assert getattr(partner, 'stext_Expression86') == owner
+    _safe_set(owner, 'stext_NumericalAddSubtractExpression85', None)
+    assert getattr(partner, 'stext_Expression86') is None
+
+
+def test_assoc_rightOperand89_stub_double():
+    # stext_Expression has no real 'stext_Expression91' property in the generated
+    # code (a bare stub) -- manually attach it so stext_NumericalMultiplyDivideExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_NumericalMultiplyDivideExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_NumericalMultiplyDivideExpression(operator="sample_text")
+    partner = stext_Expression()
+    setattr(partner, 'stext_Expression91', None)
+    _safe_set(owner, 'stext_NumericalMultiplyDivideExpression90', partner)
+    assert getattr(partner, 'stext_Expression91') == owner
+    _safe_set(owner, 'stext_NumericalMultiplyDivideExpression90', None)
+    assert getattr(partner, 'stext_Expression91') is None
+
+
+def test_assoc_varRef21_stub_double():
+    # stext_Variable has no real 'stext_Variable' property in the generated
+    # code (a bare stub) -- manually attach it so stext_Assignment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # stext_Assignment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = stext_Assignment(operator="sample_text")
+    partner = stext_Variable()
+    setattr(partner, 'stext_Variable', None)
+    _safe_set(owner, 'stext_Assignment', partner)
+    assert getattr(partner, 'stext_Variable') == owner
+    _safe_set(owner, 'stext_Assignment', None)
+    assert getattr(partner, 'stext_Variable') is None
+
+

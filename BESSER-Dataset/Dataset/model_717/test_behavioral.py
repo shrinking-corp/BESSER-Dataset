@@ -511,3 +511,356 @@ def test_assoc_type73_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'uml_Property74', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_annotatedElement0_stub_double():
+    # uml_Element has no real 'uml_Element' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Comment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Comment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Comment(body="sample_text")
+    partner = uml_Element()
+    setattr(partner, 'uml_Element', None)
+    _safe_set(owner, 'uml_Comment', {partner})
+    assert getattr(partner, 'uml_Element') == owner
+    _safe_set(owner, 'uml_Comment', set())
+    assert getattr(partner, 'uml_Element') is None
+
+
+def test_assoc_client14_stub_double():
+    # uml_Dependency has no real 'clientDependency' property in the generated
+    # code (a bare stub) -- manually attach it so uml_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_NamedElement(name="sample_text", qualifiedName="sample_text", visibility="sample_text")
+    partner = uml_Dependency()
+    setattr(partner, 'clientDependency', None)
+    _safe_set(owner, 'NamedElement', partner)
+    assert getattr(partner, 'clientDependency') == owner
+    _safe_set(owner, 'NamedElement', None)
+    assert getattr(partner, 'clientDependency') is None
+
+
+def test_assoc_clientDependency11_stub_double():
+    # uml_Dependency has no real 'Dependency' property in the generated
+    # code (a bare stub) -- manually attach it so uml_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_NamedElement(name="sample_text", qualifiedName="sample_text", visibility="sample_text")
+    partner = uml_Dependency()
+    setattr(partner, 'Dependency', None)
+    _safe_set(owner, 'client', {partner})
+    assert getattr(partner, 'Dependency') == owner
+    _safe_set(owner, 'client', set())
+    assert getattr(partner, 'Dependency') is None
+
+
+def test_assoc_contract66_stub_double():
+    # uml_Substitution has no real 'uml_Substitution' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Classifier(isAbstract="sample_text")
+    partner = uml_Substitution()
+    setattr(partner, 'uml_Substitution', None)
+    _safe_set(owner, 'uml_Classifier67', partner)
+    assert getattr(partner, 'uml_Substitution') == owner
+    _safe_set(owner, 'uml_Classifier67', None)
+    assert getattr(partner, 'uml_Substitution') is None
+
+
+def test_assoc_defaultValue71_stub_double():
+    # uml_ValueSpecification has no real 'uml_ValueSpecification' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Parameter(default="sample_text", isException="sample_text", isStream="sample_text")
+    partner = uml_ValueSpecification()
+    setattr(partner, 'uml_ValueSpecification', None)
+    _safe_set(owner, 'uml_Parameter72', partner)
+    assert getattr(partner, 'uml_ValueSpecification') == owner
+    _safe_set(owner, 'uml_Parameter72', None)
+    assert getattr(partner, 'uml_ValueSpecification') is None
+
+
+def test_assoc_elementImport22_stub_double():
+    # uml_Namespace has no real 'importingNamespace' property in the generated
+    # code (a bare stub) -- manually attach it so uml_ElementImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_ElementImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_ElementImport(alias="sample_text", visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'importingNamespace', None)
+    _safe_set(owner, 'ElementImport', partner)
+    assert getattr(partner, 'importingNamespace') == owner
+    _safe_set(owner, 'ElementImport', None)
+    assert getattr(partner, 'importingNamespace') is None
+
+
+def test_assoc_endType46_stub_double():
+    # uml_Type has no real 'uml_Type48' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Association's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Association's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Association(isDerived="sample_text")
+    partner = uml_Type()
+    setattr(partner, 'uml_Type48', None)
+    _safe_set(owner, 'uml_Association47', {partner})
+    assert getattr(partner, 'uml_Type48') == owner
+    _safe_set(owner, 'uml_Association47', set())
+    assert getattr(partner, 'uml_Type48') is None
+
+
+def test_assoc_importedElement32_stub_double():
+    # uml_PackageableElement has no real 'uml_PackageableElement33' property in the generated
+    # code (a bare stub) -- manually attach it so uml_ElementImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_ElementImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_ElementImport(alias="sample_text", visibility="sample_text")
+    partner = uml_PackageableElement()
+    setattr(partner, 'uml_PackageableElement33', None)
+    _safe_set(owner, 'uml_ElementImport', partner)
+    assert getattr(partner, 'uml_PackageableElement33') == owner
+    _safe_set(owner, 'uml_ElementImport', None)
+    assert getattr(partner, 'uml_PackageableElement33') is None
+
+
+def test_assoc_importingNamespace34_stub_double():
+    # uml_Namespace has no real 'Namespace35' property in the generated
+    # code (a bare stub) -- manually attach it so uml_ElementImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_ElementImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_ElementImport(alias="sample_text", visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'Namespace35', None)
+    _safe_set(owner, 'elementImport', partner)
+    assert getattr(partner, 'Namespace35') == owner
+    _safe_set(owner, 'elementImport', None)
+    assert getattr(partner, 'Namespace35') is None
+
+
+def test_assoc_importingNamespace38_stub_double():
+    # uml_Namespace has no real 'Namespace39' property in the generated
+    # code (a bare stub) -- manually attach it so uml_PackageImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_PackageImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_PackageImport(visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'Namespace39', None)
+    _safe_set(owner, 'packageImport', partner)
+    assert getattr(partner, 'Namespace39') == owner
+    _safe_set(owner, 'packageImport', None)
+    assert getattr(partner, 'Namespace39') is None
+
+
+def test_assoc_member25_stub_double():
+    # uml_Namespace has no real 'uml_Namespace' property in the generated
+    # code (a bare stub) -- manually attach it so uml_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_NamedElement(name="sample_text", qualifiedName="sample_text", visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'uml_Namespace', None)
+    _safe_set(owner, 'uml_NamedElement26', partner)
+    assert getattr(partner, 'uml_Namespace') == owner
+    _safe_set(owner, 'uml_NamedElement26', None)
+    assert getattr(partner, 'uml_Namespace') is None
+
+
+def test_assoc_namespace12_stub_double():
+    # uml_Namespace has no real 'Namespace' property in the generated
+    # code (a bare stub) -- manually attach it so uml_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_NamedElement(name="sample_text", qualifiedName="sample_text", visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'Namespace', None)
+    _safe_set(owner, 'ownedMember', partner)
+    assert getattr(partner, 'Namespace') == owner
+    _safe_set(owner, 'ownedMember', None)
+    assert getattr(partner, 'Namespace') is None
+
+
+def test_assoc_ownedComment6_stub_double():
+    # uml_Element has no real 'uml_Element7' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Comment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Comment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Comment(body="sample_text")
+    partner = uml_Element()
+    setattr(partner, 'uml_Element7', None)
+    _safe_set(owner, 'uml_Comment8', partner)
+    assert getattr(partner, 'uml_Element7') == owner
+    _safe_set(owner, 'uml_Comment8', None)
+    assert getattr(partner, 'uml_Element7') is None
+
+
+def test_assoc_ownedMember30_stub_double():
+    # uml_Namespace has no real 'namespace' property in the generated
+    # code (a bare stub) -- manually attach it so uml_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_NamedElement(name="sample_text", qualifiedName="sample_text", visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'namespace', None)
+    _safe_set(owner, 'NamedElement31', partner)
+    assert getattr(partner, 'namespace') == owner
+    _safe_set(owner, 'NamedElement31', None)
+    assert getattr(partner, 'namespace') is None
+
+
+def test_assoc_ownedType9_stub_double():
+    # uml_Type has no real 'Type' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Package(name="sample_text")
+    partner = uml_Type()
+    setattr(partner, 'Type', None)
+    _safe_set(owner, 'package', {partner})
+    assert getattr(partner, 'Type') == owner
+    _safe_set(owner, 'package', set())
+    assert getattr(partner, 'Type') is None
+
+
+def test_assoc_package41_stub_double():
+    # uml_Type has no real 'ownedType' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Package(name="sample_text")
+    partner = uml_Type()
+    setattr(partner, 'ownedType', None)
+    _safe_set(owner, 'Package', partner)
+    assert getattr(partner, 'ownedType') == owner
+    _safe_set(owner, 'Package', None)
+    assert getattr(partner, 'ownedType') is None
+
+
+def test_assoc_packageImport23_stub_double():
+    # uml_Namespace has no real 'importingNamespace24' property in the generated
+    # code (a bare stub) -- manually attach it so uml_PackageImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_PackageImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_PackageImport(visibility="sample_text")
+    partner = uml_Namespace()
+    setattr(partner, 'importingNamespace24', None)
+    _safe_set(owner, 'PackageImport', partner)
+    assert getattr(partner, 'importingNamespace24') == owner
+    _safe_set(owner, 'PackageImport', None)
+    assert getattr(partner, 'importingNamespace24') is None
+
+
+def test_assoc_packagedElement10_stub_double():
+    # uml_PackageableElement has no real 'uml_PackageableElement' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Package(name="sample_text")
+    partner = uml_PackageableElement()
+    setattr(partner, 'uml_PackageableElement', None)
+    _safe_set(owner, 'uml_Package', {partner})
+    assert getattr(partner, 'uml_PackageableElement') == owner
+    _safe_set(owner, 'uml_Package', set())
+    assert getattr(partner, 'uml_PackageableElement') is None
+
+
+def test_assoc_packagedElement102_stub_double():
+    # uml_PackageableElement has no real 'uml_PackageableElement103' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Model's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Model's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Model(name="sample_text")
+    partner = uml_PackageableElement()
+    setattr(partner, 'uml_PackageableElement103', None)
+    _safe_set(owner, 'uml_Model', {partner})
+    assert getattr(partner, 'uml_PackageableElement103') == owner
+    _safe_set(owner, 'uml_Model', set())
+    assert getattr(partner, 'uml_PackageableElement103') is None
+
+
+def test_assoc_raisedException81_stub_double():
+    # uml_Type has no real 'uml_Type83' property in the generated
+    # code (a bare stub) -- manually attach it so uml_BehavioralFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_BehavioralFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_BehavioralFeature(isAbstract="sample_text")
+    partner = uml_Type()
+    setattr(partner, 'uml_Type83', None)
+    _safe_set(owner, 'uml_BehavioralFeature82', {partner})
+    assert getattr(partner, 'uml_Type83') == owner
+    _safe_set(owner, 'uml_BehavioralFeature82', set())
+    assert getattr(partner, 'uml_Type83') is None
+
+
+def test_assoc_substitutingClassifier68_stub_double():
+    # uml_Substitution has no real 'substitution' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Classifier(isAbstract="sample_text")
+    partner = uml_Substitution()
+    setattr(partner, 'substitution', None)
+    _safe_set(owner, 'Classifier69', partner)
+    assert getattr(partner, 'substitution') == owner
+    _safe_set(owner, 'Classifier69', None)
+    assert getattr(partner, 'substitution') is None
+
+
+def test_assoc_substitution61_stub_double():
+    # uml_Substitution has no real 'Substitution' property in the generated
+    # code (a bare stub) -- manually attach it so uml_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_Classifier(isAbstract="sample_text")
+    partner = uml_Substitution()
+    setattr(partner, 'Substitution', None)
+    _safe_set(owner, 'substitutingClassifier', {partner})
+    assert getattr(partner, 'Substitution') == owner
+    _safe_set(owner, 'substitutingClassifier', set())
+    assert getattr(partner, 'Substitution') is None
+
+
+def test_assoc_supplier13_stub_double():
+    # uml_Dependency has no real 'uml_Dependency' property in the generated
+    # code (a bare stub) -- manually attach it so uml_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # uml_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = uml_NamedElement(name="sample_text", qualifiedName="sample_text", visibility="sample_text")
+    partner = uml_Dependency()
+    setattr(partner, 'uml_Dependency', None)
+    _safe_set(owner, 'uml_NamedElement', partner)
+    assert getattr(partner, 'uml_Dependency') == owner
+    _safe_set(owner, 'uml_NamedElement', None)
+    assert getattr(partner, 'uml_Dependency') is None
+
+

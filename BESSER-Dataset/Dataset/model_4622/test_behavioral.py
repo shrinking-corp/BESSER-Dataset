@@ -324,3 +324,416 @@ def test_assoc_typedFigure70_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'gmfgraph_RealFigure71', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_accessors109_stub_double():
+    # gmfgraph_FigureDescriptor has no real 'owner110' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_ChildAccess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_ChildAccess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_ChildAccess(accessor="sample_text")
+    partner = gmfgraph_FigureDescriptor()
+    setattr(partner, 'owner110', None)
+    _safe_set(owner, 'ChildAccess', partner)
+    assert getattr(partner, 'owner110') == owner
+    _safe_set(owner, 'ChildAccess', None)
+    assert getattr(partner, 'owner110') is None
+
+
+def test_assoc_borders13_stub_double():
+    # gmfgraph_Border has no real 'gmfgraph_Border' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_FigureGallery's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_FigureGallery's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_FigureGallery(implementationBundle="sample_text")
+    partner = gmfgraph_Border()
+    setattr(partner, 'gmfgraph_Border', None)
+    _safe_set(owner, 'gmfgraph_FigureGallery14', {partner})
+    assert getattr(partner, 'gmfgraph_Border') == owner
+    _safe_set(owner, 'gmfgraph_FigureGallery14', set())
+    assert getattr(partner, 'gmfgraph_Border') is None
+
+
+def test_assoc_children103_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure105' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_RealFigure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_RealFigure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_RealFigure(name="sample_text")
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure105', None)
+    _safe_set(owner, 'gmfgraph_RealFigure104', {partner})
+    assert getattr(partner, 'gmfgraph_Figure105') == owner
+    _safe_set(owner, 'gmfgraph_RealFigure104', set())
+    assert getattr(partner, 'gmfgraph_Figure105') is None
+
+
+def test_assoc_color74_stub_double():
+    # gmfgraph_Color has no real 'gmfgraph_Color75' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_LineBorder's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_LineBorder's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_LineBorder(width=7)
+    partner = gmfgraph_Color()
+    setattr(partner, 'gmfgraph_Color75', None)
+    _safe_set(owner, 'gmfgraph_LineBorder', partner)
+    assert getattr(partner, 'gmfgraph_Color75') == owner
+    _safe_set(owner, 'gmfgraph_LineBorder', None)
+    assert getattr(partner, 'gmfgraph_Color75') is None
+
+
+def test_assoc_compartments5_stub_double():
+    # gmfgraph_Canvas has no real 'gmfgraph_Canvas6' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Compartment's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Compartment's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Compartment(collapsible=True, needsTitle=True)
+    partner = gmfgraph_Canvas()
+    setattr(partner, 'gmfgraph_Canvas6', None)
+    _safe_set(owner, 'gmfgraph_Compartment', partner)
+    assert getattr(partner, 'gmfgraph_Canvas6') == owner
+    _safe_set(owner, 'gmfgraph_Compartment', None)
+    assert getattr(partner, 'gmfgraph_Canvas6') is None
+
+
+def test_assoc_customChildren72_stub_double():
+    # gmfgraph_CustomFigure has no real 'gmfgraph_CustomFigure' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_FigureAccessor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_FigureAccessor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_FigureAccessor(accessor="sample_text")
+    partner = gmfgraph_CustomFigure()
+    setattr(partner, 'gmfgraph_CustomFigure', None)
+    _safe_set(owner, 'gmfgraph_FigureAccessor73', partner)
+    assert getattr(partner, 'gmfgraph_CustomFigure') == owner
+    _safe_set(owner, 'gmfgraph_FigureAccessor73', None)
+    assert getattr(partner, 'gmfgraph_CustomFigure') is None
+
+
+def test_assoc_defaultSize101_stub_double():
+    # gmfgraph_DefaultSizeFacet has no real 'gmfgraph_DefaultSizeFacet' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Dimension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Dimension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Dimension(dx=7, dy=7)
+    partner = gmfgraph_DefaultSizeFacet()
+    setattr(partner, 'gmfgraph_DefaultSizeFacet', None)
+    _safe_set(owner, 'gmfgraph_Dimension102', partner)
+    assert getattr(partner, 'gmfgraph_DefaultSizeFacet') == owner
+    _safe_set(owner, 'gmfgraph_Dimension102', None)
+    assert getattr(partner, 'gmfgraph_DefaultSizeFacet') is None
+
+
+def test_assoc_descriptors11_stub_double():
+    # gmfgraph_FigureDescriptor has no real 'gmfgraph_FigureDescriptor' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_FigureGallery's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_FigureGallery's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_FigureGallery(implementationBundle="sample_text")
+    partner = gmfgraph_FigureDescriptor()
+    setattr(partner, 'gmfgraph_FigureDescriptor', None)
+    _safe_set(owner, 'gmfgraph_FigureGallery12', {partner})
+    assert getattr(partner, 'gmfgraph_FigureDescriptor') == owner
+    _safe_set(owner, 'gmfgraph_FigureGallery12', set())
+    assert getattr(partner, 'gmfgraph_FigureDescriptor') is None
+
+
+def test_assoc_figure112_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure114' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_ChildAccess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_ChildAccess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_ChildAccess(accessor="sample_text")
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure114', None)
+    _safe_set(owner, 'gmfgraph_ChildAccess113', partner)
+    assert getattr(partner, 'gmfgraph_Figure114') == owner
+    _safe_set(owner, 'gmfgraph_ChildAccess113', None)
+    assert getattr(partner, 'gmfgraph_Figure114') is None
+
+
+def test_assoc_figure59_stub_double():
+    # gmfgraph_FigureRef has no real 'gmfgraph_FigureRef' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_RealFigure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_RealFigure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_RealFigure(name="sample_text")
+    partner = gmfgraph_FigureRef()
+    setattr(partner, 'gmfgraph_FigureRef', None)
+    _safe_set(owner, 'gmfgraph_RealFigure60', partner)
+    assert getattr(partner, 'gmfgraph_FigureRef') == owner
+    _safe_set(owner, 'gmfgraph_RealFigure60', None)
+    assert getattr(partner, 'gmfgraph_FigureRef') is None
+
+
+def test_assoc_figures0_stub_double():
+    # gmfgraph_Canvas has no real 'gmfgraph_Canvas' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_FigureGallery's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_FigureGallery's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_FigureGallery(implementationBundle="sample_text")
+    partner = gmfgraph_Canvas()
+    setattr(partner, 'gmfgraph_Canvas', None)
+    _safe_set(owner, 'gmfgraph_FigureGallery', partner)
+    assert getattr(partner, 'gmfgraph_Canvas') == owner
+    _safe_set(owner, 'gmfgraph_FigureGallery', None)
+    assert getattr(partner, 'gmfgraph_Canvas') is None
+
+
+def test_assoc_insets46_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure47' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Insets's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Insets's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Insets(bottom=7, left=7, right=7, top=7)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure47', None)
+    _safe_set(owner, 'gmfgraph_Insets', partner)
+    assert getattr(partner, 'gmfgraph_Figure47') == owner
+    _safe_set(owner, 'gmfgraph_Insets', None)
+    assert getattr(partner, 'gmfgraph_Figure47') is None
+
+
+def test_assoc_insets76_stub_double():
+    # gmfgraph_MarginBorder has no real 'gmfgraph_MarginBorder' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Insets's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Insets's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Insets(bottom=7, left=7, right=7, top=7)
+    partner = gmfgraph_MarginBorder()
+    setattr(partner, 'gmfgraph_MarginBorder', None)
+    _safe_set(owner, 'gmfgraph_Insets77', partner)
+    assert getattr(partner, 'gmfgraph_MarginBorder') == owner
+    _safe_set(owner, 'gmfgraph_Insets77', None)
+    assert getattr(partner, 'gmfgraph_MarginBorder') is None
+
+
+def test_assoc_labels7_stub_double():
+    # gmfgraph_Canvas has no real 'gmfgraph_Canvas8' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_DiagramLabel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_DiagramLabel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_DiagramLabel(elementIcon=True, external=True)
+    partner = gmfgraph_Canvas()
+    setattr(partner, 'gmfgraph_Canvas8', None)
+    _safe_set(owner, 'gmfgraph_DiagramLabel', partner)
+    assert getattr(partner, 'gmfgraph_Canvas8') == owner
+    _safe_set(owner, 'gmfgraph_DiagramLabel', None)
+    assert getattr(partner, 'gmfgraph_Canvas8') is None
+
+
+def test_assoc_layouts15_stub_double():
+    # gmfgraph_Layout has no real 'gmfgraph_Layout' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_FigureGallery's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_FigureGallery's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_FigureGallery(implementationBundle="sample_text")
+    partner = gmfgraph_Layout()
+    setattr(partner, 'gmfgraph_Layout', None)
+    _safe_set(owner, 'gmfgraph_FigureGallery16', {partner})
+    assert getattr(partner, 'gmfgraph_Layout') == owner
+    _safe_set(owner, 'gmfgraph_FigureGallery16', set())
+    assert getattr(partner, 'gmfgraph_Layout') is None
+
+
+def test_assoc_location51_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure52' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Point's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Point's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Point(x=7, y=7)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure52', None)
+    _safe_set(owner, 'gmfgraph_Point', partner)
+    assert getattr(partner, 'gmfgraph_Figure52') == owner
+    _safe_set(owner, 'gmfgraph_Point', None)
+    assert getattr(partner, 'gmfgraph_Figure52') is None
+
+
+def test_assoc_maximumSize36_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure37' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Dimension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Dimension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Dimension(dx=7, dy=7)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure37', None)
+    _safe_set(owner, 'gmfgraph_Dimension', partner)
+    assert getattr(partner, 'gmfgraph_Figure37') == owner
+    _safe_set(owner, 'gmfgraph_Dimension', None)
+    assert getattr(partner, 'gmfgraph_Figure37') is None
+
+
+def test_assoc_minimumSize38_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure39' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Dimension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Dimension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Dimension(dx=7, dy=7)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure39', None)
+    _safe_set(owner, 'gmfgraph_Dimension40', partner)
+    assert getattr(partner, 'gmfgraph_Figure39') == owner
+    _safe_set(owner, 'gmfgraph_Dimension40', None)
+    assert getattr(partner, 'gmfgraph_Figure39') is None
+
+
+def test_assoc_nodes1_stub_double():
+    # gmfgraph_Canvas has no real 'gmfgraph_Canvas2' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Node(affixedParentSide="sample_text", resizeConstraint="sample_text")
+    partner = gmfgraph_Canvas()
+    setattr(partner, 'gmfgraph_Canvas2', None)
+    _safe_set(owner, 'gmfgraph_Node', partner)
+    assert getattr(partner, 'gmfgraph_Canvas2') == owner
+    _safe_set(owner, 'gmfgraph_Node', None)
+    assert getattr(partner, 'gmfgraph_Canvas2') is None
+
+
+def test_assoc_owner111_stub_double():
+    # gmfgraph_FigureDescriptor has no real 'FigureDescriptor' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_ChildAccess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_ChildAccess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_ChildAccess(accessor="sample_text")
+    partner = gmfgraph_FigureDescriptor()
+    setattr(partner, 'FigureDescriptor', None)
+    _safe_set(owner, 'accessors', partner)
+    assert getattr(partner, 'FigureDescriptor') == owner
+    _safe_set(owner, 'accessors', None)
+    assert getattr(partner, 'FigureDescriptor') is None
+
+
+def test_assoc_preferredSize41_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure42' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Dimension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Dimension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Dimension(dx=7, dy=7)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure42', None)
+    _safe_set(owner, 'gmfgraph_Dimension43', partner)
+    assert getattr(partner, 'gmfgraph_Figure42') == owner
+    _safe_set(owner, 'gmfgraph_Dimension43', None)
+    assert getattr(partner, 'gmfgraph_Figure42') is None
+
+
+def test_assoc_resolvedChildren61_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure62' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Shape's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Shape's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Shape(fill=True, lineKind="sample_text", lineWidth=7, outline=True, xorFill=True, xorOutline=True)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure62', None)
+    _safe_set(owner, 'gmfgraph_Shape', {partner})
+    assert getattr(partner, 'gmfgraph_Figure62') == owner
+    _safe_set(owner, 'gmfgraph_Shape', set())
+    assert getattr(partner, 'gmfgraph_Figure62') is None
+
+
+def test_assoc_size53_stub_double():
+    # gmfgraph_Figure has no real 'gmfgraph_Figure54' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Point's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Point's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Point(x=7, y=7)
+    partner = gmfgraph_Figure()
+    setattr(partner, 'gmfgraph_Figure54', None)
+    _safe_set(owner, 'gmfgraph_Point55', partner)
+    assert getattr(partner, 'gmfgraph_Figure54') == owner
+    _safe_set(owner, 'gmfgraph_Point55', None)
+    assert getattr(partner, 'gmfgraph_Figure54') is None
+
+
+def test_assoc_size98_stub_double():
+    # gmfgraph_XYLayoutData has no real 'gmfgraph_XYLayoutData99' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Dimension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Dimension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Dimension(dx=7, dy=7)
+    partner = gmfgraph_XYLayoutData()
+    setattr(partner, 'gmfgraph_XYLayoutData99', None)
+    _safe_set(owner, 'gmfgraph_Dimension100', partner)
+    assert getattr(partner, 'gmfgraph_XYLayoutData99') == owner
+    _safe_set(owner, 'gmfgraph_Dimension100', None)
+    assert getattr(partner, 'gmfgraph_XYLayoutData99') is None
+
+
+def test_assoc_spacing94_stub_double():
+    # gmfgraph_BorderLayout has no real 'gmfgraph_BorderLayout' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Dimension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Dimension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Dimension(dx=7, dy=7)
+    partner = gmfgraph_BorderLayout()
+    setattr(partner, 'gmfgraph_BorderLayout', None)
+    _safe_set(owner, 'gmfgraph_Dimension95', partner)
+    assert getattr(partner, 'gmfgraph_BorderLayout') == owner
+    _safe_set(owner, 'gmfgraph_Dimension95', None)
+    assert getattr(partner, 'gmfgraph_BorderLayout') is None
+
+
+def test_assoc_template63_stub_double():
+    # gmfgraph_Polyline has no real 'gmfgraph_Polyline' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Point's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Point's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Point(x=7, y=7)
+    partner = gmfgraph_Polyline()
+    setattr(partner, 'gmfgraph_Polyline', None)
+    _safe_set(owner, 'gmfgraph_Point64', partner)
+    assert getattr(partner, 'gmfgraph_Polyline') == owner
+    _safe_set(owner, 'gmfgraph_Point64', None)
+    assert getattr(partner, 'gmfgraph_Polyline') is None
+
+
+def test_assoc_topLeft96_stub_double():
+    # gmfgraph_XYLayoutData has no real 'gmfgraph_XYLayoutData' property in the generated
+    # code (a bare stub) -- manually attach it so gmfgraph_Point's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # gmfgraph_Point's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = gmfgraph_Point(x=7, y=7)
+    partner = gmfgraph_XYLayoutData()
+    setattr(partner, 'gmfgraph_XYLayoutData', None)
+    _safe_set(owner, 'gmfgraph_Point97', partner)
+    assert getattr(partner, 'gmfgraph_XYLayoutData') == owner
+    _safe_set(owner, 'gmfgraph_Point97', None)
+    assert getattr(partner, 'gmfgraph_XYLayoutData') is None
+
+

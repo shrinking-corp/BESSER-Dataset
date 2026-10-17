@@ -58,3 +58,56 @@ def test_assoc_statistics1_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'school_SchoolStatistics', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_persons3_stub_double():
+    # school_Person has no real 'school_Person' property in the generated
+    # code (a bare stub) -- manually attach it so school_School's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # school_School's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = school_School()
+    partner = school_Person()
+    setattr(partner, 'school_Person', None)
+    _safe_set(owner, 'school_School4', {partner})
+    assert getattr(partner, 'school_Person') == owner
+    _safe_set(owner, 'school_School4', set())
+    assert getattr(partner, 'school_Person') is None
+
+
+def test_assoc_schools0_stub_double():
+    # school_SchoolModel has no real 'school_SchoolModel' property in the generated
+    # code (a bare stub) -- manually attach it so school_School's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # school_School's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = school_School()
+    partner = school_SchoolModel()
+    setattr(partner, 'school_SchoolModel', None)
+    _safe_set(owner, 'school_School', partner)
+    assert getattr(partner, 'school_SchoolModel') == owner
+    _safe_set(owner, 'school_School', None)
+    assert getattr(partner, 'school_SchoolModel') is None
+
+
+def test_assoc_teachers5_stub_double():
+    # school_Teacher has no real 'school_Teacher' property in the generated
+    # code (a bare stub) -- manually attach it so school_Student's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # school_Student's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = school_Student(registrationNum=7)
+    partner = school_Teacher()
+    setattr(partner, 'school_Teacher', None)
+    _safe_set(owner, 'school_Student', {partner})
+    assert getattr(partner, 'school_Teacher') == owner
+    _safe_set(owner, 'school_Student', set())
+    assert getattr(partner, 'school_Teacher') is None
+
+

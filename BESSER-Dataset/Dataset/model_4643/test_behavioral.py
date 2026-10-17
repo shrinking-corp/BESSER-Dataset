@@ -410,3 +410,236 @@ def test_assoc_value46_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'notation_StringToPropertyValueMapEntry47', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_bendpoints3_stub_double():
+    # notation_Bendpoints has no real 'notation_Bendpoints' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Edge()
+    partner = notation_Bendpoints()
+    setattr(partner, 'notation_Bendpoints', None)
+    _safe_set(owner, 'notation_Edge', partner)
+    assert getattr(partner, 'notation_Bendpoints') == owner
+    _safe_set(owner, 'notation_Edge', None)
+    assert getattr(partner, 'notation_Bendpoints') is None
+
+
+def test_assoc_cropBound43_stub_double():
+    # notation_Bounds has no real 'notation_Bounds' property in the generated
+    # code (a bare stub) -- manually attach it so notation_ImageStyle's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_ImageStyle's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_ImageStyle(antiAlias="sample_text", maintainAspectRatio="sample_text")
+    partner = notation_Bounds()
+    setattr(partner, 'notation_Bounds', None)
+    _safe_set(owner, 'notation_ImageStyle', partner)
+    assert getattr(partner, 'notation_Bounds') == owner
+    _safe_set(owner, 'notation_ImageStyle', None)
+    assert getattr(partner, 'notation_Bounds') is None
+
+
+def test_assoc_diagramLink56_stub_double():
+    # notation_DiagramLinkStyle has no real 'notation_DiagramLinkStyle' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Diagram's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Diagram's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Diagram(measurementUnit="sample_text", name="sample_text")
+    partner = notation_DiagramLinkStyle()
+    setattr(partner, 'notation_DiagramLinkStyle', None)
+    _safe_set(owner, 'notation_Diagram57', partner)
+    assert getattr(partner, 'notation_DiagramLinkStyle') == owner
+    _safe_set(owner, 'notation_Diagram57', None)
+    assert getattr(partner, 'notation_DiagramLinkStyle') is None
+
+
+def test_assoc_diagramLinks58_stub_double():
+    # notation_MultiDiagramLinkStyle has no real 'notation_MultiDiagramLinkStyle' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Diagram's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Diagram's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Diagram(measurementUnit="sample_text", name="sample_text")
+    partner = notation_MultiDiagramLinkStyle()
+    setattr(partner, 'notation_MultiDiagramLinkStyle', None)
+    _safe_set(owner, 'notation_Diagram59', partner)
+    assert getattr(partner, 'notation_MultiDiagramLinkStyle') == owner
+    _safe_set(owner, 'notation_Diagram59', None)
+    assert getattr(partner, 'notation_MultiDiagramLinkStyle') is None
+
+
+def test_assoc_element18_stub_double():
+    # notation_EObject has no real 'notation_EObject20' property in the generated
+    # code (a bare stub) -- manually attach it so notation_View's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_View's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_View(mutable=True, type="sample_text", visible=True)
+    partner = notation_EObject()
+    setattr(partner, 'notation_EObject20', None)
+    _safe_set(owner, 'notation_View19', partner)
+    assert getattr(partner, 'notation_EObject20') == owner
+    _safe_set(owner, 'notation_View19', None)
+    assert getattr(partner, 'notation_EObject20') is None
+
+
+def test_assoc_filteredObjects41_stub_double():
+    # notation_EObject has no real 'notation_EObject42' property in the generated
+    # code (a bare stub) -- manually attach it so notation_FilteringStyle's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_FilteringStyle's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_FilteringStyle(filtering="sample_text", filteringKeys="sample_text")
+    partner = notation_EObject()
+    setattr(partner, 'notation_EObject42', None)
+    _safe_set(owner, 'notation_FilteringStyle', {partner})
+    assert getattr(partner, 'notation_EObject42') == owner
+    _safe_set(owner, 'notation_FilteringStyle', set())
+    assert getattr(partner, 'notation_EObject42') is None
+
+
+def test_assoc_horizontalGuides32_stub_double():
+    # notation_GuideStyle has no real 'notation_GuideStyle' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Guide's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Guide's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Guide(position=7)
+    partner = notation_GuideStyle()
+    setattr(partner, 'notation_GuideStyle', None)
+    _safe_set(owner, 'notation_Guide', partner)
+    assert getattr(partner, 'notation_GuideStyle') == owner
+    _safe_set(owner, 'notation_Guide', None)
+    assert getattr(partner, 'notation_GuideStyle') is None
+
+
+def test_assoc_imageBuffer44_stub_double():
+    # notation_ImageBufferStyle has no real 'notation_ImageBufferStyle' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Image's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Image's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Image(data="sample_text")
+    partner = notation_ImageBufferStyle()
+    setattr(partner, 'notation_ImageBufferStyle', None)
+    _safe_set(owner, 'notation_Image', partner)
+    assert getattr(partner, 'notation_ImageBufferStyle') == owner
+    _safe_set(owner, 'notation_Image', None)
+    assert getattr(partner, 'notation_ImageBufferStyle') is None
+
+
+def test_assoc_instanceType48_stub_double():
+    # notation_EDataType has no real 'notation_EDataType' property in the generated
+    # code (a bare stub) -- manually attach it so notation_PropertyValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_PropertyValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_PropertyValue(rawValue="sample_text")
+    partner = notation_EDataType()
+    setattr(partner, 'notation_EDataType', None)
+    _safe_set(owner, 'notation_PropertyValue49', partner)
+    assert getattr(partner, 'notation_EDataType') == owner
+    _safe_set(owner, 'notation_PropertyValue49', None)
+    assert getattr(partner, 'notation_EDataType') is None
+
+
+def test_assoc_layoutConstraint9_stub_double():
+    # notation_LayoutConstraint has no real 'notation_LayoutConstraint' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Node()
+    partner = notation_LayoutConstraint()
+    setattr(partner, 'notation_LayoutConstraint', None)
+    _safe_set(owner, 'notation_Node', partner)
+    assert getattr(partner, 'notation_LayoutConstraint') == owner
+    _safe_set(owner, 'notation_Node', None)
+    assert getattr(partner, 'notation_LayoutConstraint') is None
+
+
+def test_assoc_sortedObjects10_stub_double():
+    # notation_EObject has no real 'notation_EObject' property in the generated
+    # code (a bare stub) -- manually attach it so notation_SortingStyle's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_SortingStyle's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_SortingStyle(sorting="sample_text", sortingKeys="sample_text")
+    partner = notation_EObject()
+    setattr(partner, 'notation_EObject', None)
+    _safe_set(owner, 'notation_SortingStyle', {partner})
+    assert getattr(partner, 'notation_EObject') == owner
+    _safe_set(owner, 'notation_SortingStyle', set())
+    assert getattr(partner, 'notation_EObject') is None
+
+
+def test_assoc_sourceAnchor4_stub_double():
+    # notation_Anchor has no real 'notation_Anchor' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Edge()
+    partner = notation_Anchor()
+    setattr(partner, 'notation_Anchor', None)
+    _safe_set(owner, 'notation_Edge5', partner)
+    assert getattr(partner, 'notation_Anchor') == owner
+    _safe_set(owner, 'notation_Edge5', None)
+    assert getattr(partner, 'notation_Anchor') is None
+
+
+def test_assoc_styles16_stub_double():
+    # notation_Style has no real 'notation_Style' property in the generated
+    # code (a bare stub) -- manually attach it so notation_View's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_View's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_View(mutable=True, type="sample_text", visible=True)
+    partner = notation_Style()
+    setattr(partner, 'notation_Style', None)
+    _safe_set(owner, 'notation_View17', {partner})
+    assert getattr(partner, 'notation_Style') == owner
+    _safe_set(owner, 'notation_View17', set())
+    assert getattr(partner, 'notation_Style') is None
+
+
+def test_assoc_targetAnchor6_stub_double():
+    # notation_Anchor has no real 'notation_Anchor8' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Edge()
+    partner = notation_Anchor()
+    setattr(partner, 'notation_Anchor8', None)
+    _safe_set(owner, 'notation_Edge7', partner)
+    assert getattr(partner, 'notation_Anchor8') == owner
+    _safe_set(owner, 'notation_Edge7', None)
+    assert getattr(partner, 'notation_Anchor8') is None
+
+
+def test_assoc_verticalGuides33_stub_double():
+    # notation_GuideStyle has no real 'notation_GuideStyle34' property in the generated
+    # code (a bare stub) -- manually attach it so notation_Guide's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # notation_Guide's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = notation_Guide(position=7)
+    partner = notation_GuideStyle()
+    setattr(partner, 'notation_GuideStyle34', None)
+    _safe_set(owner, 'notation_Guide35', partner)
+    assert getattr(partner, 'notation_GuideStyle34') == owner
+    _safe_set(owner, 'notation_Guide35', None)
+    assert getattr(partner, 'notation_GuideStyle34') is None
+
+

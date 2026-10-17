@@ -212,6 +212,55 @@ that same check for PC3 onward, so we don't fold them into the score — using
 an unverified pattern would be exactly the "assume it matters" mistake we
 built this whole approach to avoid.
 
+## Did we actually check "why stop at two"? (added 2026-10-11)
+
+The reasoning above for using only PC1+PC2 was "the numbers drop off fast,
+and we only verified PC2 is real." That's a good reason to stop trusting
+*new, unverified* components — but it doesn't by itself prove that adding
+more components would make the score agree *less* with the reference
+paper's formula. We checked this directly instead of assuming it, by
+building the score 11 different ways — PC1 alone, PC1+PC2, PC1+PC2+PC3, and
+so on up to all 11 — and comparing each version's **rank agreement**
+(Spearman correlation) with the paper's own formula.
+
+**Surprising result: PC1 *by itself* agrees with the paper's formula better
+than our official PC1+PC2 score does** (+0.896 vs. +0.879 — close, but a
+real, consistent gap, not noise). Adding PC2 actually makes the two scores
+agree *less*, and it keeps getting slightly worse through PC3/PC4
+(+0.867), before slowly climbing back up through PC5–PC11 — but never
+fully recovering to what PC1 alone already achieved.
+
+Once you think about *why*, this isn't actually surprising, and it isn't a
+reason to drop PC2:
+
+- The paper's formula is a simple, unbounded sum of raw counts. A model
+  with more of everything scores higher — it's fundamentally a *size*
+  measure, nothing more.
+- **PC1 is also, fundamentally, a size measure** ("how big/elaborate," see
+  Step 3) — so of course it tracks a size-based formula closely.
+- **PC2 measures something the paper's formula was never designed to
+  capture at all**: not size, but *architectural style* — data-schema-heavy
+  vs. hierarchy-heavy. Folding that real, separate signal into the score
+  necessarily pulls some models' rank away from a pure size-ordering,
+  which is exactly what "agrees less with a size-only formula" means here.
+
+So the right way to read this result is: **the two scores measure
+deliberately different things, and this experiment proves that, rather
+than just asserting it.** If the goal were "match the reference paper as
+closely as possible," PC1 alone would be the better choice. Our goal was
+"capture more than one real kind of difficulty" — and PC2 is what does
+that, at a small, explainable cost in agreement with a formula that was
+only ever measuring one kind of difficulty to begin with.
+
+(One more small, related check: does the final step's percentile-clipping,
+described below, distort this ranking? Barely — removing it changes the
+Spearman number by a tiny −0.0001, confirming clipping mainly affects a
+small number of extreme models' exact *score*, not their relative *order*.
+It does affect the extremes concretely, though: without it, 13 out of
+8,451 models (0.15%) would score *above* 100 — one reaches 106.2 — which
+is exactly the kind of runaway-outlier problem percentile clipping exists
+to prevent.)
+
 ## Step 4 — combining PC1 and PC2 into one final 0–100 number
 
 A few careful decisions went into this, each for a concrete reason:

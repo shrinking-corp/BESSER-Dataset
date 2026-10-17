@@ -222,3 +222,161 @@ def test_assoc_unitCollection38_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'statesml_SystemUnitLibrary', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_attributes23_stub_double():
+    # statesml_Attribute has no real 'statesml_Attribute25' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_SystemUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_SystemUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_SystemUnit(name="sample_text")
+    partner = statesml_Attribute()
+    setattr(partner, 'statesml_Attribute25', None)
+    _safe_set(owner, 'statesml_SystemUnit24', {partner})
+    assert getattr(partner, 'statesml_Attribute25') == owner
+    _safe_set(owner, 'statesml_SystemUnit24', set())
+    assert getattr(partner, 'statesml_Attribute25') is None
+
+
+def test_assoc_calls22_stub_double():
+    # statesml_RegularState has no real 'statesml_RegularState' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Function's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Function's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Function(name="sample_text")
+    partner = statesml_RegularState()
+    setattr(partner, 'statesml_RegularState', None)
+    _safe_set(owner, 'statesml_Function', partner)
+    assert getattr(partner, 'statesml_RegularState') == owner
+    _safe_set(owner, 'statesml_Function', None)
+    assert getattr(partner, 'statesml_RegularState') is None
+
+
+def test_assoc_edges3_stub_double():
+    # statesml_StatesMLModel has no real 'statesml_StatesMLModel4' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Edge(name="sample_text")
+    partner = statesml_StatesMLModel()
+    setattr(partner, 'statesml_StatesMLModel4', None)
+    _safe_set(owner, 'statesml_Edge', partner)
+    assert getattr(partner, 'statesml_StatesMLModel4') == owner
+    _safe_set(owner, 'statesml_Edge', None)
+    assert getattr(partner, 'statesml_StatesMLModel4') is None
+
+
+def test_assoc_inputParams29_stub_double():
+    # statesml_Parameter has no real 'statesml_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Function's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Function's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Function(name="sample_text")
+    partner = statesml_Parameter()
+    setattr(partner, 'statesml_Parameter', None)
+    _safe_set(owner, 'statesml_Function30', {partner})
+    assert getattr(partner, 'statesml_Parameter') == owner
+    _safe_set(owner, 'statesml_Function30', set())
+    assert getattr(partner, 'statesml_Parameter') is None
+
+
+def test_assoc_node7_stub_double():
+    # statesml_Transition has no real 'transition' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Node(name="sample_text")
+    partner = statesml_Transition()
+    setattr(partner, 'transition', None)
+    _safe_set(owner, 'Node', partner)
+    assert getattr(partner, 'transition') == owner
+    _safe_set(owner, 'Node', None)
+    assert getattr(partner, 'transition') is None
+
+
+def test_assoc_nodes0_stub_double():
+    # statesml_StatesMLModel has no real 'statesml_StatesMLModel' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Node(name="sample_text")
+    partner = statesml_StatesMLModel()
+    setattr(partner, 'statesml_StatesMLModel', None)
+    _safe_set(owner, 'statesml_Node', partner)
+    assert getattr(partner, 'statesml_StatesMLModel') == owner
+    _safe_set(owner, 'statesml_Node', None)
+    assert getattr(partner, 'statesml_StatesMLModel') is None
+
+
+def test_assoc_outputParams31_stub_double():
+    # statesml_Parameter has no real 'statesml_Parameter33' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Function's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Function's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Function(name="sample_text")
+    partner = statesml_Parameter()
+    setattr(partner, 'statesml_Parameter33', None)
+    _safe_set(owner, 'statesml_Function32', partner)
+    assert getattr(partner, 'statesml_Parameter33') == owner
+    _safe_set(owner, 'statesml_Function32', None)
+    assert getattr(partner, 'statesml_Parameter33') is None
+
+
+def test_assoc_systemunits1_stub_double():
+    # statesml_StatesMLModel has no real 'statesml_StatesMLModel2' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_SystemUnit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_SystemUnit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_SystemUnit(name="sample_text")
+    partner = statesml_StatesMLModel()
+    setattr(partner, 'statesml_StatesMLModel2', None)
+    _safe_set(owner, 'statesml_SystemUnit', partner)
+    assert getattr(partner, 'statesml_StatesMLModel2') == owner
+    _safe_set(owner, 'statesml_SystemUnit', None)
+    assert getattr(partner, 'statesml_StatesMLModel2') is None
+
+
+def test_assoc_transition9_stub_double():
+    # statesml_Transition has no real 'Transition' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Node(name="sample_text")
+    partner = statesml_Transition()
+    setattr(partner, 'Transition', None)
+    _safe_set(owner, 'node', {partner})
+    assert getattr(partner, 'Transition') == owner
+    _safe_set(owner, 'node', set())
+    assert getattr(partner, 'Transition') is None
+
+
+def test_assoc_trigger8_stub_double():
+    # statesml_Transition has no real 'statesml_Transition' property in the generated
+    # code (a bare stub) -- manually attach it so statesml_Trigger's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # statesml_Trigger's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = statesml_Trigger()
+    partner = statesml_Transition()
+    setattr(partner, 'statesml_Transition', None)
+    _safe_set(owner, 'statesml_Trigger', partner)
+    assert getattr(partner, 'statesml_Transition') == owner
+    _safe_set(owner, 'statesml_Trigger', None)
+    assert getattr(partner, 'statesml_Transition') is None
+
+

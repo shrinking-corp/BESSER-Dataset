@@ -2747,3 +2747,41 @@ def test_assoc_variable72_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'jpdl32_VariableType', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_xMLNSPrefixMap10_stub_double():
+    # jpdl32_EStringToStringMapEntry has no real 'jpdl32_EStringToStringMapEntry' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl32_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl32_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl32_DocumentRoot(description="sample_text", mixed="sample_text", recipients="sample_text", subject="sample_text", template="sample_text", text="sample_text", to="sample_text")
+    partner = jpdl32_EStringToStringMapEntry()
+    setattr(partner, 'jpdl32_EStringToStringMapEntry', None)
+    _safe_set(owner, 'jpdl32_DocumentRoot', {partner})
+    assert getattr(partner, 'jpdl32_EStringToStringMapEntry') == owner
+    _safe_set(owner, 'jpdl32_DocumentRoot', set())
+    assert getattr(partner, 'jpdl32_EStringToStringMapEntry') is None
+
+
+def test_assoc_xSISchemaLocation11_stub_double():
+    # jpdl32_EStringToStringMapEntry has no real 'jpdl32_EStringToStringMapEntry13' property in the generated
+    # code (a bare stub) -- manually attach it so jpdl32_DocumentRoot's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # jpdl32_DocumentRoot's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = jpdl32_DocumentRoot(description="sample_text", mixed="sample_text", recipients="sample_text", subject="sample_text", template="sample_text", text="sample_text", to="sample_text")
+    partner = jpdl32_EStringToStringMapEntry()
+    setattr(partner, 'jpdl32_EStringToStringMapEntry13', None)
+    _safe_set(owner, 'jpdl32_DocumentRoot12', {partner})
+    assert getattr(partner, 'jpdl32_EStringToStringMapEntry13') == owner
+    _safe_set(owner, 'jpdl32_DocumentRoot12', set())
+    assert getattr(partner, 'jpdl32_EStringToStringMapEntry13') is None
+
+

@@ -430,3 +430,206 @@ def test_assoc_unique48_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'persistence_Feature50', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_dataType54_stub_double():
+    # persistence_DataType has no real 'persistence_DataType55' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_DataTypeAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_DataTypeAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_DataTypeAttribute(caseInsensitive=True, encrypt=True, obfuscateFormFields=True)
+    partner = persistence_DataType()
+    setattr(partner, 'persistence_DataType55', None)
+    _safe_set(owner, 'persistence_DataTypeAttribute', partner)
+    assert getattr(partner, 'persistence_DataType55') == owner
+    _safe_set(owner, 'persistence_DataTypeAttribute', None)
+    assert getattr(partner, 'persistence_DataType55') is None
+
+
+def test_assoc_dataTypes1_stub_double():
+    # persistence_DataType has no real 'persistence_DataType' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Persistence's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Persistence's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Persistence(databaseTechnology="sample_text", ormTechnology="sample_text", timestampCreation=True, timestampUpdates=True)
+    partner = persistence_DataType()
+    setattr(partner, 'persistence_DataType', None)
+    _safe_set(owner, 'persistence_Persistence2', {partner})
+    assert getattr(partner, 'persistence_DataType') == owner
+    _safe_set(owner, 'persistence_Persistence2', set())
+    assert getattr(partner, 'persistence_DataType') is None
+
+
+def test_assoc_defaultValue10_stub_double():
+    # persistence_Expression has no real 'persistence_Expression' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Attribute(containerUnique=True, hidden=True, inputColumnClass="sample_text", inputElementClass="sample_text", interfaceType="sample_text", ormType="sample_text", persistentType="sample_text", placeholder="sample_text", unique=True, validationPattern="sample_text")
+    partner = persistence_Expression()
+    setattr(partner, 'persistence_Expression', None)
+    _safe_set(owner, 'persistence_Attribute11', partner)
+    assert getattr(partner, 'persistence_Expression') == owner
+    _safe_set(owner, 'persistence_Attribute11', None)
+    assert getattr(partner, 'persistence_Expression') is None
+
+
+def test_assoc_features17_stub_double():
+    # persistence_ModelLabelFeature has no real 'ModelLabelFeature' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_ModelLabel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_ModelLabel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_ModelLabel(customise=True, format="sample_text")
+    partner = persistence_ModelLabelFeature()
+    setattr(partner, 'ModelLabelFeature', None)
+    _safe_set(owner, 'partOf', {partner})
+    assert getattr(partner, 'ModelLabelFeature') == owner
+    _safe_set(owner, 'partOf', set())
+    assert getattr(partner, 'ModelLabelFeature') is None
+
+
+def test_assoc_keyFor57_stub_double():
+    # persistence_AssociationKey has no real 'keys' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Association's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Association's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Association(bidirectional=True, inputColumnClass="sample_text", inputElementClass="sample_text", pivotTableName="sample_text", pseudo=True, serializationMaxDepth=7, targetColumnName="sample_text", targetDisplayClass="sample_text", targetDisplayLabel="sample_text", targetFeatureName="sample_text", targetFooterClass="sample_text", targetHeaderClass="sample_text", targetInputClass="sample_text", targetPrimaryKey=True, unique=True)
+    partner = persistence_AssociationKey()
+    setattr(partner, 'keys', None)
+    _safe_set(owner, 'Association58', partner)
+    assert getattr(partner, 'keys') == owner
+    _safe_set(owner, 'Association58', None)
+    assert getattr(partner, 'keys') is None
+
+
+def test_assoc_keys12_stub_double():
+    # persistence_AssociationKey has no real 'AssociationKey' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Association's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Association's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Association(bidirectional=True, inputColumnClass="sample_text", inputElementClass="sample_text", pivotTableName="sample_text", pseudo=True, serializationMaxDepth=7, targetColumnName="sample_text", targetDisplayClass="sample_text", targetDisplayLabel="sample_text", targetFeatureName="sample_text", targetFooterClass="sample_text", targetHeaderClass="sample_text", targetInputClass="sample_text", targetPrimaryKey=True, unique=True)
+    partner = persistence_AssociationKey()
+    setattr(partner, 'AssociationKey', None)
+    _safe_set(owner, 'keyFor', {partner})
+    assert getattr(partner, 'AssociationKey') == owner
+    _safe_set(owner, 'keyFor', set())
+    assert getattr(partner, 'AssociationKey') is None
+
+
+def test_assoc_partOf20_stub_double():
+    # persistence_ModelLabelFeature has no real 'features21' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_ModelLabel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_ModelLabel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_ModelLabel(customise=True, format="sample_text")
+    partner = persistence_ModelLabelFeature()
+    setattr(partner, 'features21', None)
+    _safe_set(owner, 'ModelLabel', partner)
+    assert getattr(partner, 'features21') == owner
+    _safe_set(owner, 'ModelLabel', None)
+    assert getattr(partner, 'features21') is None
+
+
+def test_assoc_serializationGroups0_stub_double():
+    # persistence_SerializationGroup has no real 'persistence_SerializationGroup' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Persistence's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Persistence's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Persistence(databaseTechnology="sample_text", ormTechnology="sample_text", timestampCreation=True, timestampUpdates=True)
+    partner = persistence_SerializationGroup()
+    setattr(partner, 'persistence_SerializationGroup', None)
+    _safe_set(owner, 'persistence_Persistence', {partner})
+    assert getattr(partner, 'persistence_SerializationGroup') == owner
+    _safe_set(owner, 'persistence_Persistence', set())
+    assert getattr(partner, 'persistence_SerializationGroup') is None
+
+
+def test_assoc_serializationGroups18_stub_double():
+    # persistence_SerializationGroup has no real 'persistence_SerializationGroup19' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_ModelLabel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_ModelLabel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_ModelLabel(customise=True, format="sample_text")
+    partner = persistence_SerializationGroup()
+    setattr(partner, 'persistence_SerializationGroup19', None)
+    _safe_set(owner, 'persistence_ModelLabel', {partner})
+    assert getattr(partner, 'persistence_SerializationGroup19') == owner
+    _safe_set(owner, 'persistence_ModelLabel', set())
+    assert getattr(partner, 'persistence_SerializationGroup19') is None
+
+
+def test_assoc_serializationGroups6_stub_double():
+    # persistence_SerializationGroup has no real 'persistence_SerializationGroup7' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Feature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Feature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Feature(booleanIsHasChoice="sample_text", cardinality="sample_text", collectionOrmAllowAdd=True, collectionOrmAllowRemove=True, columnName="sample_text", customiseSet=True, defaultDisplayValue="sample_text", derived=True, displayClass="sample_text", emptyDisplayValue="sample_text", encodeUriKey=True, footerClass="sample_text", headerClass="sample_text", ordered=True, pluralisedName="sample_text", primaryKey=True, singletonName="sample_text", title="sample_text")
+    partner = persistence_SerializationGroup()
+    setattr(partner, 'persistence_SerializationGroup7', None)
+    _safe_set(owner, 'persistence_Feature', {partner})
+    assert getattr(partner, 'persistence_SerializationGroup7') == owner
+    _safe_set(owner, 'persistence_Feature', set())
+    assert getattr(partner, 'persistence_SerializationGroup7') is None
+
+
+def test_assoc_sourceFeature59_stub_double():
+    # persistence_AssociationKey has no real 'persistence_AssociationKey' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Feature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Feature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Feature(booleanIsHasChoice="sample_text", cardinality="sample_text", collectionOrmAllowAdd=True, collectionOrmAllowRemove=True, columnName="sample_text", customiseSet=True, defaultDisplayValue="sample_text", derived=True, displayClass="sample_text", emptyDisplayValue="sample_text", encodeUriKey=True, footerClass="sample_text", headerClass="sample_text", ordered=True, pluralisedName="sample_text", primaryKey=True, singletonName="sample_text", title="sample_text")
+    partner = persistence_AssociationKey()
+    setattr(partner, 'persistence_AssociationKey', None)
+    _safe_set(owner, 'persistence_Feature60', partner)
+    assert getattr(partner, 'persistence_AssociationKey') == owner
+    _safe_set(owner, 'persistence_Feature60', None)
+    assert getattr(partner, 'persistence_AssociationKey') is None
+
+
+def test_assoc_targetFeature61_stub_double():
+    # persistence_AssociationKey has no real 'persistence_AssociationKey62' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_Feature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_Feature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_Feature(booleanIsHasChoice="sample_text", cardinality="sample_text", collectionOrmAllowAdd=True, collectionOrmAllowRemove=True, columnName="sample_text", customiseSet=True, defaultDisplayValue="sample_text", derived=True, displayClass="sample_text", emptyDisplayValue="sample_text", encodeUriKey=True, footerClass="sample_text", headerClass="sample_text", ordered=True, pluralisedName="sample_text", primaryKey=True, singletonName="sample_text", title="sample_text")
+    partner = persistence_AssociationKey()
+    setattr(partner, 'persistence_AssociationKey62', None)
+    _safe_set(owner, 'persistence_Feature63', partner)
+    assert getattr(partner, 'persistence_AssociationKey62') == owner
+    _safe_set(owner, 'persistence_Feature63', None)
+    assert getattr(partner, 'persistence_AssociationKey62') is None
+
+
+def test_assoc_uploadPath56_stub_double():
+    # persistence_PathElement has no real 'persistence_PathElement' property in the generated
+    # code (a bare stub) -- manually attach it so persistence_ResourceAttribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # persistence_ResourceAttribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = persistence_ResourceAttribute(maximumUploadSize=7, uploadsWithinWebsite=True, validUploadExtensions="sample_text", validUploadMimeTypes="sample_text")
+    partner = persistence_PathElement()
+    setattr(partner, 'persistence_PathElement', None)
+    _safe_set(owner, 'persistence_ResourceAttribute', {partner})
+    assert getattr(partner, 'persistence_PathElement') == owner
+    _safe_set(owner, 'persistence_ResourceAttribute', set())
+    assert getattr(partner, 'persistence_PathElement') is None
+
+

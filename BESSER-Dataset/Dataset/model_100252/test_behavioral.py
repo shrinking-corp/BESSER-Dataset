@@ -173,3 +173,56 @@ def test_assoc_styles0_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Styling_StylingModel', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_basic3_stub_double():
+    # Styling_Basic has no real 'Styling_Basic' property in the generated
+    # code (a bare stub) -- manually attach it so Styling_StylingModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Styling_StylingModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Styling_StylingModel(modeName="sample_text")
+    partner = Styling_Basic()
+    setattr(partner, 'Styling_Basic', None)
+    _safe_set(owner, 'Styling_StylingModel4', partner)
+    assert getattr(partner, 'Styling_Basic') == owner
+    _safe_set(owner, 'Styling_StylingModel4', None)
+    assert getattr(partner, 'Styling_Basic') is None
+
+
+def test_assoc_default1_stub_double():
+    # Styling_Default has no real 'Styling_Default' property in the generated
+    # code (a bare stub) -- manually attach it so Styling_StylingModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Styling_StylingModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Styling_StylingModel(modeName="sample_text")
+    partner = Styling_Default()
+    setattr(partner, 'Styling_Default', None)
+    _safe_set(owner, 'Styling_StylingModel2', partner)
+    assert getattr(partner, 'Styling_Default') == owner
+    _safe_set(owner, 'Styling_StylingModel2', None)
+    assert getattr(partner, 'Styling_Default') is None
+
+
+def test_assoc_models14_stub_double():
+    # Styling_Styling has no real 'Styling_Styling' property in the generated
+    # code (a bare stub) -- manually attach it so Styling_StylingModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Styling_StylingModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Styling_StylingModel(modeName="sample_text")
+    partner = Styling_Styling()
+    setattr(partner, 'Styling_Styling', None)
+    _safe_set(owner, 'Styling_StylingModel15', partner)
+    assert getattr(partner, 'Styling_Styling') == owner
+    _safe_set(owner, 'Styling_StylingModel15', None)
+    assert getattr(partner, 'Styling_Styling') is None
+
+

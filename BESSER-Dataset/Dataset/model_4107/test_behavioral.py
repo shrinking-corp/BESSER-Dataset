@@ -78,3 +78,41 @@ def test_assoc_ownerState1_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'State', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_ownerRegion6_stub_double():
+    # compositestates_AbstractState has no real 'subvertex' property in the generated
+    # code (a bare stub) -- manually attach it so compositestates_Region's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # compositestates_Region's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = compositestates_Region()
+    partner = compositestates_AbstractState()
+    setattr(partner, 'subvertex', None)
+    _safe_set(owner, 'Region7', partner)
+    assert getattr(partner, 'subvertex') == owner
+    _safe_set(owner, 'Region7', None)
+    assert getattr(partner, 'subvertex') is None
+
+
+def test_assoc_subvertex0_stub_double():
+    # compositestates_AbstractState has no real 'AbstractState' property in the generated
+    # code (a bare stub) -- manually attach it so compositestates_Region's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # compositestates_Region's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = compositestates_Region()
+    partner = compositestates_AbstractState()
+    setattr(partner, 'AbstractState', None)
+    _safe_set(owner, 'ownerRegion', {partner})
+    assert getattr(partner, 'AbstractState') == owner
+    _safe_set(owner, 'ownerRegion', set())
+    assert getattr(partner, 'AbstractState') is None
+
+

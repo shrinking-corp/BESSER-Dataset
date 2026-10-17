@@ -336,3 +336,26 @@ def test_assoc_subDepartment12_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Department13', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_intern6_stub_double():
+    # company_Student has no real 'company_Student' property in the generated
+    # code (a bare stub) -- manually attach it so company_Employee's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # company_Employee's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = company_Employee(age="sample_text", name="sample_text", salary="sample_text")
+    partner = company_Student()
+    setattr(partner, 'company_Student', None)
+    _safe_set(owner, 'company_Employee7', partner)
+    assert getattr(partner, 'company_Student') == owner
+    _safe_set(owner, 'company_Employee7', None)
+    assert getattr(partner, 'company_Student') is None
+
+

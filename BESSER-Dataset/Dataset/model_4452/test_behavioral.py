@@ -432,3 +432,296 @@ def test_assoc_server1_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'wsmodel3_System2', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_actuator38_stub_double():
+    # wsmodel3_OutputPort has no real 'wsmodel3_OutputPort' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Actuator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Actuator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Actuator(type="sample_text")
+    partner = wsmodel3_OutputPort()
+    setattr(partner, 'wsmodel3_OutputPort', None)
+    _safe_set(owner, 'wsmodel3_Actuator', partner)
+    assert getattr(partner, 'wsmodel3_OutputPort') == owner
+    _safe_set(owner, 'wsmodel3_Actuator', None)
+    assert getattr(partner, 'wsmodel3_OutputPort') is None
+
+
+def test_assoc_communicationdata29_stub_double():
+    # wsmodel3_CommunicationData has no real 'wsmodel3_CommunicationData' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Communication's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Communication's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Communication(name="sample_text", type="sample_text")
+    partner = wsmodel3_CommunicationData()
+    setattr(partner, 'wsmodel3_CommunicationData', None)
+    _safe_set(owner, 'wsmodel3_Communication30', {partner})
+    assert getattr(partner, 'wsmodel3_CommunicationData') == owner
+    _safe_set(owner, 'wsmodel3_Communication30', set())
+    assert getattr(partner, 'wsmodel3_CommunicationData') is None
+
+
+def test_assoc_dbserver19_stub_double():
+    # wsmodel3_WebService has no real 'wsmodel3_WebService20' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_DBServer's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_DBServer's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_DBServer(database="sample_text", pass_="sample_text", port=7, type="sample_text", usser="sample_text")
+    partner = wsmodel3_WebService()
+    setattr(partner, 'wsmodel3_WebService20', None)
+    _safe_set(owner, 'wsmodel3_DBServer', partner)
+    assert getattr(partner, 'wsmodel3_WebService20') == owner
+    _safe_set(owner, 'wsmodel3_DBServer', None)
+    assert getattr(partner, 'wsmodel3_WebService20') is None
+
+
+def test_assoc_device13_stub_double():
+    # wsmodel3_IoTNode has no real 'wsmodel3_IoTNode14' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Device's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Device's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Device(name="sample_text")
+    partner = wsmodel3_IoTNode()
+    setattr(partner, 'wsmodel3_IoTNode14', None)
+    _safe_set(owner, 'wsmodel3_Device', partner)
+    assert getattr(partner, 'wsmodel3_IoTNode14') == owner
+    _safe_set(owner, 'wsmodel3_Device', None)
+    assert getattr(partner, 'wsmodel3_IoTNode14') is None
+
+
+def test_assoc_devicedata24_stub_double():
+    # wsmodel3_DeviceData has no real 'wsmodel3_DeviceData' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Device's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Device's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Device(name="sample_text")
+    partner = wsmodel3_DeviceData()
+    setattr(partner, 'wsmodel3_DeviceData', None)
+    _safe_set(owner, 'wsmodel3_Device25', {partner})
+    assert getattr(partner, 'wsmodel3_DeviceData') == owner
+    _safe_set(owner, 'wsmodel3_Device25', set())
+    assert getattr(partner, 'wsmodel3_DeviceData') is None
+
+
+def test_assoc_externalapi87_stub_double():
+    # wsmodel3_OutputOrchestrator has no real 'wsmodel3_OutputOrchestrator88' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_ExternalAPI's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_ExternalAPI's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_ExternalAPI(URI="sample_text")
+    partner = wsmodel3_OutputOrchestrator()
+    setattr(partner, 'wsmodel3_OutputOrchestrator88', None)
+    _safe_set(owner, 'wsmodel3_ExternalAPI89', partner)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator88') == owner
+    _safe_set(owner, 'wsmodel3_ExternalAPI89', None)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator88') is None
+
+
+def test_assoc_inputbridge79_stub_double():
+    # wsmodel3_OutputOrchestrator has no real 'wsmodel3_OutputOrchestrator80' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_InputBridge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_InputBridge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_InputBridge(URI="sample_text")
+    partner = wsmodel3_OutputOrchestrator()
+    setattr(partner, 'wsmodel3_OutputOrchestrator80', None)
+    _safe_set(owner, 'wsmodel3_InputBridge81', partner)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator80') == owner
+    _safe_set(owner, 'wsmodel3_InputBridge81', None)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator80') is None
+
+
+def test_assoc_inputorchestrator43_stub_double():
+    # wsmodel3_OutputBridge has no real 'wsmodel3_OutputBridge' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_InputOrchestrator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_InputOrchestrator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_InputOrchestrator(URI="sample_text")
+    partner = wsmodel3_OutputBridge()
+    setattr(partner, 'wsmodel3_OutputBridge', None)
+    _safe_set(owner, 'wsmodel3_InputOrchestrator', partner)
+    assert getattr(partner, 'wsmodel3_OutputBridge') == owner
+    _safe_set(owner, 'wsmodel3_InputOrchestrator', None)
+    assert getattr(partner, 'wsmodel3_OutputBridge') is None
+
+
+def test_assoc_inputorchestrator76_stub_double():
+    # wsmodel3_OutputOrchestrator has no real 'wsmodel3_OutputOrchestrator77' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_InputOrchestrator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_InputOrchestrator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_InputOrchestrator(URI="sample_text")
+    partner = wsmodel3_OutputOrchestrator()
+    setattr(partner, 'wsmodel3_OutputOrchestrator77', None)
+    _safe_set(owner, 'wsmodel3_InputOrchestrator78', partner)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator77') == owner
+    _safe_set(owner, 'wsmodel3_InputOrchestrator78', None)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator77') is None
+
+
+def test_assoc_integrationpattern7_stub_double():
+    # wsmodel3_IntegrationPattern has no real 'wsmodel3_IntegrationPattern' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_System's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_System's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_System(name="sample_text")
+    partner = wsmodel3_IntegrationPattern()
+    setattr(partner, 'wsmodel3_IntegrationPattern', None)
+    _safe_set(owner, 'wsmodel3_System8', {partner})
+    assert getattr(partner, 'wsmodel3_IntegrationPattern') == owner
+    _safe_set(owner, 'wsmodel3_System8', set())
+    assert getattr(partner, 'wsmodel3_IntegrationPattern') is None
+
+
+def test_assoc_iotnode3_stub_double():
+    # wsmodel3_IoTNode has no real 'wsmodel3_IoTNode' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_System's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_System's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_System(name="sample_text")
+    partner = wsmodel3_IoTNode()
+    setattr(partner, 'wsmodel3_IoTNode', None)
+    _safe_set(owner, 'wsmodel3_System4', {partner})
+    assert getattr(partner, 'wsmodel3_IoTNode') == owner
+    _safe_set(owner, 'wsmodel3_System4', set())
+    assert getattr(partner, 'wsmodel3_IoTNode') is None
+
+
+def test_assoc_orchestrator50_stub_double():
+    # wsmodel3_IntegrationPattern has no real 'wsmodel3_IntegrationPattern51' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Orchestrator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Orchestrator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Orchestrator(name="sample_text", port="sample_text")
+    partner = wsmodel3_IntegrationPattern()
+    setattr(partner, 'wsmodel3_IntegrationPattern51', None)
+    _safe_set(owner, 'wsmodel3_Orchestrator', partner)
+    assert getattr(partner, 'wsmodel3_IntegrationPattern51') == owner
+    _safe_set(owner, 'wsmodel3_Orchestrator', None)
+    assert getattr(partner, 'wsmodel3_IntegrationPattern51') is None
+
+
+def test_assoc_outputorchestrator60_stub_double():
+    # wsmodel3_OutputOrchestrator has no real 'wsmodel3_OutputOrchestrator' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Orchestrator's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Orchestrator's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Orchestrator(name="sample_text", port="sample_text")
+    partner = wsmodel3_OutputOrchestrator()
+    setattr(partner, 'wsmodel3_OutputOrchestrator', None)
+    _safe_set(owner, 'wsmodel3_Orchestrator61', {partner})
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator') == owner
+    _safe_set(owner, 'wsmodel3_Orchestrator61', set())
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator') is None
+
+
+def test_assoc_outputorchestrator71_stub_double():
+    # wsmodel3_OutputOrchestrator has no real 'wsmodel3_OutputOrchestrator73' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Function's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Function's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Function(expression="sample_text")
+    partner = wsmodel3_OutputOrchestrator()
+    setattr(partner, 'wsmodel3_OutputOrchestrator73', None)
+    _safe_set(owner, 'wsmodel3_Function72', partner)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator73') == owner
+    _safe_set(owner, 'wsmodel3_Function72', None)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator73') is None
+
+
+def test_assoc_rest15_stub_double():
+    # wsmodel3_WebService has no real 'wsmodel3_WebService16' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_REST's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_REST's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_REST(URI="sample_text", port=7)
+    partner = wsmodel3_WebService()
+    setattr(partner, 'wsmodel3_WebService16', None)
+    _safe_set(owner, 'wsmodel3_REST', partner)
+    assert getattr(partner, 'wsmodel3_WebService16') == owner
+    _safe_set(owner, 'wsmodel3_REST', None)
+    assert getattr(partner, 'wsmodel3_WebService16') is None
+
+
+def test_assoc_rest84_stub_double():
+    # wsmodel3_OutputOrchestrator has no real 'wsmodel3_OutputOrchestrator85' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_REST's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_REST's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_REST(URI="sample_text", port=7)
+    partner = wsmodel3_OutputOrchestrator()
+    setattr(partner, 'wsmodel3_OutputOrchestrator85', None)
+    _safe_set(owner, 'wsmodel3_REST86', partner)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator85') == owner
+    _safe_set(owner, 'wsmodel3_REST86', None)
+    assert getattr(partner, 'wsmodel3_OutputOrchestrator85') is None
+
+
+def test_assoc_sensor37_stub_double():
+    # wsmodel3_InputPort has no real 'wsmodel3_InputPort' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Sensor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Sensor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Sensor(type="sample_text")
+    partner = wsmodel3_InputPort()
+    setattr(partner, 'wsmodel3_InputPort', None)
+    _safe_set(owner, 'wsmodel3_Sensor', partner)
+    assert getattr(partner, 'wsmodel3_InputPort') == owner
+    _safe_set(owner, 'wsmodel3_Sensor', None)
+    assert getattr(partner, 'wsmodel3_InputPort') is None
+
+
+def test_assoc_sensor44_stub_double():
+    # wsmodel3_OutputBridge has no real 'wsmodel3_OutputBridge45' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_Sensor's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_Sensor's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_Sensor(type="sample_text")
+    partner = wsmodel3_OutputBridge()
+    setattr(partner, 'wsmodel3_OutputBridge45', None)
+    _safe_set(owner, 'wsmodel3_Sensor46', partner)
+    assert getattr(partner, 'wsmodel3_OutputBridge45') == owner
+    _safe_set(owner, 'wsmodel3_Sensor46', None)
+    assert getattr(partner, 'wsmodel3_OutputBridge45') is None
+
+
+def test_assoc_webservice0_stub_double():
+    # wsmodel3_WebService has no real 'wsmodel3_WebService' property in the generated
+    # code (a bare stub) -- manually attach it so wsmodel3_System's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # wsmodel3_System's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = wsmodel3_System(name="sample_text")
+    partner = wsmodel3_WebService()
+    setattr(partner, 'wsmodel3_WebService', None)
+    _safe_set(owner, 'wsmodel3_System', {partner})
+    assert getattr(partner, 'wsmodel3_WebService') == owner
+    _safe_set(owner, 'wsmodel3_System', set())
+    assert getattr(partner, 'wsmodel3_WebService') is None
+
+

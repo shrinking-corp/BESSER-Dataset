@@ -1346,3 +1346,1406 @@ def test_assoc_variable106_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'pivot_Variable108', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_actual289_stub_double():
+    # pivot_TemplateParameterSubstitution has no real 'pivot_TemplateParameterSubstitution' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameterSubstitution()
+    setattr(partner, 'pivot_TemplateParameterSubstitution', None)
+    _safe_set(owner, 'pivot_ParameterableElement290', partner)
+    assert getattr(partner, 'pivot_TemplateParameterSubstitution') == owner
+    _safe_set(owner, 'pivot_ParameterableElement290', None)
+    assert getattr(partner, 'pivot_TemplateParameterSubstitution') is None
+
+
+def test_assoc_application189_stub_double():
+    # pivot_Profile has no real 'appliedProfile' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ProfileApplication's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ProfileApplication's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ProfileApplication(isStrict="sample_text")
+    partner = pivot_Profile()
+    setattr(partner, 'appliedProfile', None)
+    _safe_set(owner, 'ProfileApplication190', partner)
+    assert getattr(partner, 'appliedProfile') == owner
+    _safe_set(owner, 'ProfileApplication190', None)
+    assert getattr(partner, 'appliedProfile') is None
+
+
+def test_assoc_appliedProfile191_stub_double():
+    # pivot_Profile has no real 'Profile' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ProfileApplication's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ProfileApplication's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ProfileApplication(isStrict="sample_text")
+    partner = pivot_Profile()
+    setattr(partner, 'Profile', None)
+    _safe_set(owner, 'application', partner)
+    assert getattr(partner, 'Profile') == owner
+    _safe_set(owner, 'application', None)
+    assert getattr(partner, 'Profile') is None
+
+
+def test_assoc_argument118_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression119' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_MessageExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_MessageExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_MessageExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression119', None)
+    _safe_set(owner, 'pivot_MessageExp', {partner})
+    assert getattr(partner, 'pivot_OCLExpression119') == owner
+    _safe_set(owner, 'pivot_MessageExp', set())
+    assert getattr(partner, 'pivot_OCLExpression119') is None
+
+
+def test_assoc_argument168_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression169' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_OperationCallExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_OperationCallExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_OperationCallExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression169', None)
+    _safe_set(owner, 'pivot_OperationCallExp', {partner})
+    assert getattr(partner, 'pivot_OCLExpression169') == owner
+    _safe_set(owner, 'pivot_OperationCallExp', set())
+    assert getattr(partner, 'pivot_OCLExpression169') is None
+
+
+def test_assoc_associationClass194_stub_double():
+    # pivot_AssociationClass has no real 'AssociationClass' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Property(default="sample_text", implicit="sample_text", isComposite="sample_text", isDerived="sample_text", isID="sample_text", isReadOnly="sample_text", isResolveProxies="sample_text", isTransient="sample_text", isUnsettable="sample_text", isVolatile="sample_text")
+    partner = pivot_AssociationClass()
+    setattr(partner, 'AssociationClass', None)
+    _safe_set(owner, 'unownedAttribute', partner)
+    assert getattr(partner, 'AssociationClass') == owner
+    _safe_set(owner, 'unownedAttribute', None)
+    assert getattr(partner, 'AssociationClass') is None
+
+
+def test_assoc_body110_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression111' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_LoopExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_LoopExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_LoopExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression111', None)
+    _safe_set(owner, 'pivot_LoopExp', partner)
+    assert getattr(partner, 'pivot_OCLExpression111') == owner
+    _safe_set(owner, 'pivot_LoopExp', None)
+    assert getattr(partner, 'pivot_OCLExpression111') is None
+
+
+def test_assoc_boundElement276_stub_double():
+    # pivot_TemplateBinding has no real 'templateBinding' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_TemplateableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_TemplateableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_TemplateableElement()
+    partner = pivot_TemplateBinding()
+    setattr(partner, 'templateBinding', None)
+    _safe_set(owner, 'TemplateableElement', partner)
+    assert getattr(partner, 'templateBinding') == owner
+    _safe_set(owner, 'TemplateableElement', None)
+    assert getattr(partner, 'templateBinding') is None
+
+
+def test_assoc_calledOperation120_stub_double():
+    # pivot_CallOperationAction has no real 'pivot_CallOperationAction122' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_MessageExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_MessageExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_MessageExp()
+    partner = pivot_CallOperationAction()
+    setattr(partner, 'pivot_CallOperationAction122', None)
+    _safe_set(owner, 'pivot_MessageExp121', partner)
+    assert getattr(partner, 'pivot_CallOperationAction122') == owner
+    _safe_set(owner, 'pivot_MessageExp121', None)
+    assert getattr(partner, 'pivot_CallOperationAction122') is None
+
+
+def test_assoc_condition80_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression81' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_IfExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_IfExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_IfExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression81', None)
+    _safe_set(owner, 'pivot_IfExp', partner)
+    assert getattr(partner, 'pivot_OCLExpression81') == owner
+    _safe_set(owner, 'pivot_IfExp', None)
+    assert getattr(partner, 'pivot_OCLExpression81') is None
+
+
+def test_assoc_connection242_stub_double():
+    # pivot_ConnectionPointReference has no real 'ConnectionPointReference' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_ConnectionPointReference()
+    setattr(partner, 'ConnectionPointReference', None)
+    _safe_set(owner, 'state', {partner})
+    assert getattr(partner, 'ConnectionPointReference') == owner
+    _safe_set(owner, 'state', set())
+    assert getattr(partner, 'ConnectionPointReference') is None
+
+
+def test_assoc_connectionPoint265_stub_double():
+    # pivot_StateMachine has no real 'pivot_StateMachine266' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Pseudostate's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Pseudostate's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Pseudostate(kind="sample_text")
+    partner = pivot_StateMachine()
+    setattr(partner, 'pivot_StateMachine266', None)
+    _safe_set(owner, 'pivot_Pseudostate267', partner)
+    assert getattr(partner, 'pivot_StateMachine266') == owner
+    _safe_set(owner, 'pivot_Pseudostate267', None)
+    assert getattr(partner, 'pivot_StateMachine266') is None
+
+
+def test_assoc_container308_stub_double():
+    # pivot_Region has no real 'Region309' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Region()
+    setattr(partner, 'Region309', None)
+    _safe_set(owner, 'transition', partner)
+    assert getattr(partner, 'Region309') == owner
+    _safe_set(owner, 'transition', None)
+    assert getattr(partner, 'Region309') is None
+
+
+def test_assoc_context33_stub_double():
+    # pivot_Namespace has no real 'pivot_Namespace' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Constraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Constraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Constraint(isCallable="sample_text")
+    partner = pivot_Namespace()
+    setattr(partner, 'pivot_Namespace', None)
+    _safe_set(owner, 'pivot_Constraint34', partner)
+    assert getattr(partner, 'pivot_Namespace') == owner
+    _safe_set(owner, 'pivot_Constraint34', None)
+    assert getattr(partner, 'pivot_Namespace') is None
+
+
+def test_assoc_contextType96_stub_double():
+    # pivot_LambdaType has no real 'pivot_LambdaType' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_LambdaType()
+    setattr(partner, 'pivot_LambdaType', None)
+    _safe_set(owner, 'pivot_Type97', partner)
+    assert getattr(partner, 'pivot_LambdaType') == owner
+    _safe_set(owner, 'pivot_Type97', None)
+    assert getattr(partner, 'pivot_LambdaType') is None
+
+
+def test_assoc_contextVariable72_stub_double():
+    # pivot_ExpressionInOCL has no real 'pivot_ExpressionInOCL73' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Variable(implicit="sample_text")
+    partner = pivot_ExpressionInOCL()
+    setattr(partner, 'pivot_ExpressionInOCL73', None)
+    _safe_set(owner, 'pivot_Variable', partner)
+    assert getattr(partner, 'pivot_ExpressionInOCL73') == owner
+    _safe_set(owner, 'pivot_Variable', None)
+    assert getattr(partner, 'pivot_ExpressionInOCL73') is None
+
+
+def test_assoc_default280_stub_double():
+    # pivot_TemplateParameter has no real 'pivot_TemplateParameter' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameter()
+    setattr(partner, 'pivot_TemplateParameter', None)
+    _safe_set(owner, 'pivot_ParameterableElement', partner)
+    assert getattr(partner, 'pivot_TemplateParameter') == owner
+    _safe_set(owner, 'pivot_ParameterableElement', None)
+    assert getattr(partner, 'pivot_TemplateParameter') is None
+
+
+def test_assoc_deferrableTrigger245_stub_double():
+    # pivot_Trigger has no real 'Trigger' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Trigger()
+    setattr(partner, 'Trigger', None)
+    _safe_set(owner, 'state246', {partner})
+    assert getattr(partner, 'Trigger') == owner
+    _safe_set(owner, 'state246', set())
+    assert getattr(partner, 'Trigger') is None
+
+
+def test_assoc_doActivity247_stub_double():
+    # pivot_Behavior has no real 'pivot_Behavior248' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Behavior()
+    setattr(partner, 'pivot_Behavior248', None)
+    _safe_set(owner, 'pivot_State', partner)
+    assert getattr(partner, 'pivot_Behavior248') == owner
+    _safe_set(owner, 'pivot_State', None)
+    assert getattr(partner, 'pivot_Behavior248') is None
+
+
+def test_assoc_effect310_stub_double():
+    # pivot_Behavior has no real 'Behavior' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Behavior()
+    setattr(partner, 'Behavior', None)
+    _safe_set(owner, 'transition311', partner)
+    assert getattr(partner, 'Behavior') == owner
+    _safe_set(owner, 'transition311', None)
+    assert getattr(partner, 'Behavior') is None
+
+
+def test_assoc_elseExpression82_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression84' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_IfExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_IfExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_IfExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression84', None)
+    _safe_set(owner, 'pivot_IfExp83', partner)
+    assert getattr(partner, 'pivot_OCLExpression84') == owner
+    _safe_set(owner, 'pivot_IfExp83', None)
+    assert getattr(partner, 'pivot_OCLExpression84') is None
+
+
+def test_assoc_entry249_stub_double():
+    # pivot_Behavior has no real 'pivot_Behavior251' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Behavior()
+    setattr(partner, 'pivot_Behavior251', None)
+    _safe_set(owner, 'pivot_State250', partner)
+    assert getattr(partner, 'pivot_Behavior251') == owner
+    _safe_set(owner, 'pivot_State250', None)
+    assert getattr(partner, 'pivot_Behavior251') is None
+
+
+def test_assoc_entry26_stub_double():
+    # pivot_ConnectionPointReference has no real 'pivot_ConnectionPointReference' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Pseudostate's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Pseudostate's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Pseudostate(kind="sample_text")
+    partner = pivot_ConnectionPointReference()
+    setattr(partner, 'pivot_ConnectionPointReference', None)
+    _safe_set(owner, 'pivot_Pseudostate', partner)
+    assert getattr(partner, 'pivot_ConnectionPointReference') == owner
+    _safe_set(owner, 'pivot_Pseudostate', None)
+    assert getattr(partner, 'pivot_ConnectionPointReference') is None
+
+
+def test_assoc_enumeration69_stub_double():
+    # pivot_Enumeration has no real 'Enumeration' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_EnumerationLiteral's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_EnumerationLiteral's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_EnumerationLiteral(value="sample_text")
+    partner = pivot_Enumeration()
+    setattr(partner, 'Enumeration', None)
+    _safe_set(owner, 'ownedLiteral', partner)
+    assert getattr(partner, 'Enumeration') == owner
+    _safe_set(owner, 'ownedLiteral', None)
+    assert getattr(partner, 'Enumeration') is None
+
+
+def test_assoc_exit252_stub_double():
+    # pivot_Behavior has no real 'pivot_Behavior254' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Behavior()
+    setattr(partner, 'pivot_Behavior254', None)
+    _safe_set(owner, 'pivot_State253', partner)
+    assert getattr(partner, 'pivot_Behavior254') == owner
+    _safe_set(owner, 'pivot_State253', None)
+    assert getattr(partner, 'pivot_Behavior254') is None
+
+
+def test_assoc_exit27_stub_double():
+    # pivot_ConnectionPointReference has no real 'pivot_ConnectionPointReference28' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Pseudostate's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Pseudostate's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Pseudostate(kind="sample_text")
+    partner = pivot_ConnectionPointReference()
+    setattr(partner, 'pivot_ConnectionPointReference28', None)
+    _safe_set(owner, 'pivot_Pseudostate29', partner)
+    assert getattr(partner, 'pivot_ConnectionPointReference28') == owner
+    _safe_set(owner, 'pivot_Pseudostate29', None)
+    assert getattr(partner, 'pivot_ConnectionPointReference28') is None
+
+
+def test_assoc_expressionInOCL142_stub_double():
+    # pivot_ExpressionInOCL has no real 'pivot_ExpressionInOCL144' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_OpaqueExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_OpaqueExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_OpaqueExpression(body="sample_text", language="sample_text")
+    partner = pivot_ExpressionInOCL()
+    setattr(partner, 'pivot_ExpressionInOCL144', None)
+    _safe_set(owner, 'pivot_OpaqueExpression143', partner)
+    assert getattr(partner, 'pivot_ExpressionInOCL144') == owner
+    _safe_set(owner, 'pivot_OpaqueExpression143', None)
+    assert getattr(partner, 'pivot_ExpressionInOCL144') is None
+
+
+def test_assoc_extensionOfs275_stub_double():
+    # pivot_Stereotype has no real 'stereotype' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_TypeExtension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_TypeExtension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_TypeExtension(isRequired="sample_text")
+    partner = pivot_Stereotype()
+    setattr(partner, 'stereotype', None)
+    _safe_set(owner, 'TypeExtension', partner)
+    assert getattr(partner, 'stereotype') == owner
+    _safe_set(owner, 'TypeExtension', None)
+    assert getattr(partner, 'stereotype') is None
+
+
+def test_assoc_imports234_stub_double():
+    # pivot_Import has no real 'pivot_Import235' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Root's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Root's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Root(externalURI="sample_text")
+    partner = pivot_Import()
+    setattr(partner, 'pivot_Import235', None)
+    _safe_set(owner, 'pivot_Root', {partner})
+    assert getattr(partner, 'pivot_Import235') == owner
+    _safe_set(owner, 'pivot_Root', set())
+    assert getattr(partner, 'pivot_Import235') is None
+
+
+def test_assoc_in_104_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression105' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_LetExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_LetExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_LetExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression105', None)
+    _safe_set(owner, 'pivot_LetExp', partner)
+    assert getattr(partner, 'pivot_OCLExpression105') == owner
+    _safe_set(owner, 'pivot_LetExp', None)
+    assert getattr(partner, 'pivot_OCLExpression105') is None
+
+
+def test_assoc_incoming368_stub_double():
+    # pivot_Vertex has no real 'target' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Vertex()
+    setattr(partner, 'target', None)
+    _safe_set(owner, 'Transition369', partner)
+    assert getattr(partner, 'target') == owner
+    _safe_set(owner, 'Transition369', None)
+    assert getattr(partner, 'target') is None
+
+
+def test_assoc_initExpression359_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression361' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Variable(implicit="sample_text")
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression361', None)
+    _safe_set(owner, 'pivot_Variable360', partner)
+    assert getattr(partner, 'pivot_OCLExpression361') == owner
+    _safe_set(owner, 'pivot_Variable360', None)
+    assert getattr(partner, 'pivot_OCLExpression361') is None
+
+
+def test_assoc_instanceType132_stub_double():
+    # pivot_Metaclass has no real 'pivot_Metaclass' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_Metaclass()
+    setattr(partner, 'pivot_Metaclass', None)
+    _safe_set(owner, 'pivot_Type133', partner)
+    assert getattr(partner, 'pivot_Metaclass') == owner
+    _safe_set(owner, 'pivot_Type133', None)
+    assert getattr(partner, 'pivot_Metaclass') is None
+
+
+def test_assoc_item15_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression16' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_CollectionItem's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_CollectionItem's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_CollectionItem()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression16', None)
+    _safe_set(owner, 'pivot_CollectionItem', partner)
+    assert getattr(partner, 'pivot_OCLExpression16') == owner
+    _safe_set(owner, 'pivot_CollectionItem', None)
+    assert getattr(partner, 'pivot_OCLExpression16') is None
+
+
+def test_assoc_lowerBound354_stub_double():
+    # pivot_UnspecifiedType has no real 'pivot_UnspecifiedType' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_UnspecifiedType()
+    setattr(partner, 'pivot_UnspecifiedType', None)
+    _safe_set(owner, 'pivot_Type355', partner)
+    assert getattr(partner, 'pivot_UnspecifiedType') == owner
+    _safe_set(owner, 'pivot_Type355', None)
+    assert getattr(partner, 'pivot_UnspecifiedType') is None
+
+
+def test_assoc_metaType52_stub_double():
+    # pivot_DynamicElement has no real 'pivot_DynamicElement' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_DynamicElement()
+    setattr(partner, 'pivot_DynamicElement', None)
+    _safe_set(owner, 'pivot_Type53', partner)
+    assert getattr(partner, 'pivot_DynamicElement') == owner
+    _safe_set(owner, 'pivot_Type53', None)
+    assert getattr(partner, 'pivot_DynamicElement') is None
+
+
+def test_assoc_navigationSource137_stub_double():
+    # pivot_NavigationCallExp has no real 'pivot_NavigationCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Property(default="sample_text", implicit="sample_text", isComposite="sample_text", isDerived="sample_text", isID="sample_text", isReadOnly="sample_text", isResolveProxies="sample_text", isTransient="sample_text", isUnsettable="sample_text", isVolatile="sample_text")
+    partner = pivot_NavigationCallExp()
+    setattr(partner, 'pivot_NavigationCallExp', None)
+    _safe_set(owner, 'pivot_Property138', partner)
+    assert getattr(partner, 'pivot_NavigationCallExp') == owner
+    _safe_set(owner, 'pivot_Property138', None)
+    assert getattr(partner, 'pivot_NavigationCallExp') is None
+
+
+def test_assoc_operation10_stub_double():
+    # pivot_CallOperationAction has no real 'pivot_CallOperationAction' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Operation(isInvalidating="sample_text", isValidating="sample_text")
+    partner = pivot_CallOperationAction()
+    setattr(partner, 'pivot_CallOperationAction', None)
+    _safe_set(owner, 'pivot_Operation', partner)
+    assert getattr(partner, 'pivot_CallOperationAction') == owner
+    _safe_set(owner, 'pivot_Operation', None)
+    assert getattr(partner, 'pivot_CallOperationAction') is None
+
+
+def test_assoc_operation185_stub_double():
+    # pivot_Parameter has no real 'ownedParameter' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Operation(isInvalidating="sample_text", isValidating="sample_text")
+    partner = pivot_Parameter()
+    setattr(partner, 'ownedParameter', None)
+    _safe_set(owner, 'Operation', partner)
+    assert getattr(partner, 'ownedParameter') == owner
+    _safe_set(owner, 'Operation', None)
+    assert getattr(partner, 'ownedParameter') is None
+
+
+def test_assoc_outgoing370_stub_double():
+    # pivot_Vertex has no real 'source' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Vertex()
+    setattr(partner, 'source', None)
+    _safe_set(owner, 'Transition371', partner)
+    assert getattr(partner, 'source') == owner
+    _safe_set(owner, 'Transition371', None)
+    assert getattr(partner, 'source') is None
+
+
+def test_assoc_ownedActual294_stub_double():
+    # pivot_TemplateParameterSubstitution has no real 'pivot_TemplateParameterSubstitution295' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameterSubstitution()
+    setattr(partner, 'pivot_TemplateParameterSubstitution295', None)
+    _safe_set(owner, 'pivot_ParameterableElement296', partner)
+    assert getattr(partner, 'pivot_TemplateParameterSubstitution295') == owner
+    _safe_set(owner, 'pivot_ParameterableElement296', None)
+    assert getattr(partner, 'pivot_TemplateParameterSubstitution295') is None
+
+
+def test_assoc_ownedBehavior13_stub_double():
+    # pivot_Behavior has no real 'pivot_Behavior' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Class's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Class's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Class(isAbstract="sample_text", isActive="sample_text", isInterface="sample_text")
+    partner = pivot_Behavior()
+    setattr(partner, 'pivot_Behavior', None)
+    _safe_set(owner, 'pivot_Class14', {partner})
+    assert getattr(partner, 'pivot_Behavior') == owner
+    _safe_set(owner, 'pivot_Class14', set())
+    assert getattr(partner, 'pivot_Behavior') is None
+
+
+def test_assoc_ownedContent0_stub_double():
+    # pivot_Annotation has no real 'pivot_Annotation' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Element's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Element's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Element()
+    partner = pivot_Annotation()
+    setattr(partner, 'pivot_Annotation', None)
+    _safe_set(owner, 'pivot_Element', partner)
+    assert getattr(partner, 'pivot_Annotation') == owner
+    _safe_set(owner, 'pivot_Element', None)
+    assert getattr(partner, 'pivot_Annotation') is None
+
+
+def test_assoc_ownedDefault281_stub_double():
+    # pivot_TemplateParameter has no real 'pivot_TemplateParameter282' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameter()
+    setattr(partner, 'pivot_TemplateParameter282', None)
+    _safe_set(owner, 'pivot_ParameterableElement283', partner)
+    assert getattr(partner, 'pivot_TemplateParameter282') == owner
+    _safe_set(owner, 'pivot_ParameterableElement283', None)
+    assert getattr(partner, 'pivot_TemplateParameter282') is None
+
+
+def test_assoc_ownedDetail1_stub_double():
+    # pivot_Annotation has no real 'pivot_Annotation2' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Detail's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Detail's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Detail(value="sample_text")
+    partner = pivot_Annotation()
+    setattr(partner, 'pivot_Annotation2', None)
+    _safe_set(owner, 'pivot_Detail', partner)
+    assert getattr(partner, 'pivot_Annotation2') == owner
+    _safe_set(owner, 'pivot_Detail', None)
+    assert getattr(partner, 'pivot_Annotation2') is None
+
+
+def test_assoc_ownedLiteral68_stub_double():
+    # pivot_Enumeration has no real 'enumeration' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_EnumerationLiteral's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_EnumerationLiteral's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_EnumerationLiteral(value="sample_text")
+    partner = pivot_Enumeration()
+    setattr(partner, 'enumeration', None)
+    _safe_set(owner, 'EnumerationLiteral', partner)
+    assert getattr(partner, 'enumeration') == owner
+    _safe_set(owner, 'EnumerationLiteral', None)
+    assert getattr(partner, 'enumeration') is None
+
+
+def test_assoc_ownedParameter151_stub_double():
+    # pivot_Parameter has no real 'Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Operation(isInvalidating="sample_text", isValidating="sample_text")
+    partner = pivot_Parameter()
+    setattr(partner, 'Parameter', None)
+    _safe_set(owner, 'operation', {partner})
+    assert getattr(partner, 'Parameter') == owner
+    _safe_set(owner, 'operation', set())
+    assert getattr(partner, 'Parameter') is None
+
+
+def test_assoc_ownedParameteredElement284_stub_double():
+    # pivot_TemplateParameter has no real 'owningTemplateParameter' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameter()
+    setattr(partner, 'owningTemplateParameter', None)
+    _safe_set(owner, 'ParameterableElement', partner)
+    assert getattr(partner, 'owningTemplateParameter') == owner
+    _safe_set(owner, 'ParameterableElement', None)
+    assert getattr(partner, 'owningTemplateParameter') is None
+
+
+def test_assoc_ownedPrecedence109_stub_double():
+    # pivot_Library has no real 'pivot_Library' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Precedence's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Precedence's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Precedence(associativity="sample_text", order=7)
+    partner = pivot_Library()
+    setattr(partner, 'pivot_Library', None)
+    _safe_set(owner, 'pivot_Precedence', partner)
+    assert getattr(partner, 'pivot_Library') == owner
+    _safe_set(owner, 'pivot_Precedence', None)
+    assert getattr(partner, 'pivot_Library') is None
+
+
+def test_assoc_ownedProperty56_stub_double():
+    # pivot_DynamicType has no real 'pivot_DynamicType' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_DynamicProperty's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_DynamicProperty's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_DynamicProperty(default="sample_text")
+    partner = pivot_DynamicType()
+    setattr(partner, 'pivot_DynamicType', None)
+    _safe_set(owner, 'pivot_DynamicProperty57', partner)
+    assert getattr(partner, 'pivot_DynamicType') == owner
+    _safe_set(owner, 'pivot_DynamicProperty57', None)
+    assert getattr(partner, 'pivot_DynamicType') is None
+
+
+def test_assoc_ownedRule134_stub_double():
+    # pivot_Namespace has no real 'pivot_Namespace135' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Constraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Constraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Constraint(isCallable="sample_text")
+    partner = pivot_Namespace()
+    setattr(partner, 'pivot_Namespace135', None)
+    _safe_set(owner, 'pivot_Constraint136', partner)
+    assert getattr(partner, 'pivot_Namespace135') == owner
+    _safe_set(owner, 'pivot_Constraint136', None)
+    assert getattr(partner, 'pivot_Namespace135') is None
+
+
+def test_assoc_ownedTemplateSignature302_stub_double():
+    # pivot_TemplateSignature has no real 'TemplateSignature303' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_TemplateableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_TemplateableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_TemplateableElement()
+    partner = pivot_TemplateSignature()
+    setattr(partner, 'TemplateSignature303', None)
+    _safe_set(owner, 'template', partner)
+    assert getattr(partner, 'TemplateSignature303') == owner
+    _safe_set(owner, 'template', None)
+    assert getattr(partner, 'TemplateSignature303') is None
+
+
+def test_assoc_owningTemplateParameter186_stub_double():
+    # pivot_TemplateParameter has no real 'TemplateParameter' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameter()
+    setattr(partner, 'TemplateParameter', None)
+    _safe_set(owner, 'ownedParameteredElement', partner)
+    assert getattr(partner, 'TemplateParameter') == owner
+    _safe_set(owner, 'ownedParameteredElement', None)
+    assert getattr(partner, 'TemplateParameter') is None
+
+
+def test_assoc_parameterType98_stub_double():
+    # pivot_LambdaType has no real 'pivot_LambdaType99' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_LambdaType()
+    setattr(partner, 'pivot_LambdaType99', None)
+    _safe_set(owner, 'pivot_Type100', partner)
+    assert getattr(partner, 'pivot_LambdaType99') == owner
+    _safe_set(owner, 'pivot_Type100', None)
+    assert getattr(partner, 'pivot_LambdaType99') is None
+
+
+def test_assoc_parameterVariable74_stub_double():
+    # pivot_ExpressionInOCL has no real 'pivot_ExpressionInOCL75' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Variable(implicit="sample_text")
+    partner = pivot_ExpressionInOCL()
+    setattr(partner, 'pivot_ExpressionInOCL75', None)
+    _safe_set(owner, 'pivot_Variable76', partner)
+    assert getattr(partner, 'pivot_ExpressionInOCL75') == owner
+    _safe_set(owner, 'pivot_Variable76', None)
+    assert getattr(partner, 'pivot_ExpressionInOCL75') is None
+
+
+def test_assoc_parameteredElement285_stub_double():
+    # pivot_TemplateParameter has no real 'templateParameter' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameter()
+    setattr(partner, 'templateParameter', None)
+    _safe_set(owner, 'ParameterableElement286', partner)
+    assert getattr(partner, 'templateParameter') == owner
+    _safe_set(owner, 'ParameterableElement286', None)
+    assert getattr(partner, 'templateParameter') is None
+
+
+def test_assoc_part17_stub_double():
+    # pivot_CollectionLiteralPart has no real 'pivot_CollectionLiteralPart' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_CollectionLiteralExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_CollectionLiteralExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_CollectionLiteralExp(kind="sample_text")
+    partner = pivot_CollectionLiteralPart()
+    setattr(partner, 'pivot_CollectionLiteralPart', None)
+    _safe_set(owner, 'pivot_CollectionLiteralExp', {partner})
+    assert getattr(partner, 'pivot_CollectionLiteralPart') == owner
+    _safe_set(owner, 'pivot_CollectionLiteralExp', set())
+    assert getattr(partner, 'pivot_CollectionLiteralPart') is None
+
+
+def test_assoc_part44_stub_double():
+    # pivot_ConstructorPart has no real 'pivot_ConstructorPart' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ConstructorExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ConstructorExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ConstructorExp(value="sample_text")
+    partner = pivot_ConstructorPart()
+    setattr(partner, 'pivot_ConstructorPart', None)
+    _safe_set(owner, 'pivot_ConstructorExp', {partner})
+    assert getattr(partner, 'pivot_ConstructorPart') == owner
+    _safe_set(owner, 'pivot_ConstructorExp', set())
+    assert getattr(partner, 'pivot_ConstructorPart') is None
+
+
+def test_assoc_reference3_stub_double():
+    # pivot_Annotation has no real 'pivot_Annotation4' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Element's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Element's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Element()
+    partner = pivot_Annotation()
+    setattr(partner, 'pivot_Annotation4', None)
+    _safe_set(owner, 'pivot_Element5', partner)
+    assert getattr(partner, 'pivot_Annotation4') == owner
+    _safe_set(owner, 'pivot_Element5', None)
+    assert getattr(partner, 'pivot_Annotation4') is None
+
+
+def test_assoc_referredIteration115_stub_double():
+    # pivot_Iteration has no real 'pivot_Iteration117' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_LoopExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_LoopExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_LoopExp()
+    partner = pivot_Iteration()
+    setattr(partner, 'pivot_Iteration117', None)
+    _safe_set(owner, 'pivot_LoopExp116', partner)
+    assert getattr(partner, 'pivot_Iteration117') == owner
+    _safe_set(owner, 'pivot_LoopExp116', None)
+    assert getattr(partner, 'pivot_Iteration117') is None
+
+
+def test_assoc_referredOperation128_stub_double():
+    # pivot_MessageType has no real 'pivot_MessageType' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Operation(isInvalidating="sample_text", isValidating="sample_text")
+    partner = pivot_MessageType()
+    setattr(partner, 'pivot_MessageType', None)
+    _safe_set(owner, 'pivot_Operation129', partner)
+    assert getattr(partner, 'pivot_MessageType') == owner
+    _safe_set(owner, 'pivot_Operation129', None)
+    assert getattr(partner, 'pivot_MessageType') is None
+
+
+def test_assoc_referredProperty173_stub_double():
+    # pivot_OppositePropertyCallExp has no real 'pivot_OppositePropertyCallExp' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Property(default="sample_text", implicit="sample_text", isComposite="sample_text", isDerived="sample_text", isID="sample_text", isReadOnly="sample_text", isResolveProxies="sample_text", isTransient="sample_text", isUnsettable="sample_text", isVolatile="sample_text")
+    partner = pivot_OppositePropertyCallExp()
+    setattr(partner, 'pivot_OppositePropertyCallExp', None)
+    _safe_set(owner, 'pivot_Property174', partner)
+    assert getattr(partner, 'pivot_OppositePropertyCallExp') == owner
+    _safe_set(owner, 'pivot_Property174', None)
+    assert getattr(partner, 'pivot_OppositePropertyCallExp') is None
+
+
+def test_assoc_referredProperty48_stub_double():
+    # pivot_ConstructorPart has no real 'pivot_ConstructorPart49' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Property(default="sample_text", implicit="sample_text", isComposite="sample_text", isDerived="sample_text", isID="sample_text", isReadOnly="sample_text", isResolveProxies="sample_text", isTransient="sample_text", isUnsettable="sample_text", isVolatile="sample_text")
+    partner = pivot_ConstructorPart()
+    setattr(partner, 'pivot_ConstructorPart49', None)
+    _safe_set(owner, 'pivot_Property', partner)
+    assert getattr(partner, 'pivot_ConstructorPart49') == owner
+    _safe_set(owner, 'pivot_Property', None)
+    assert getattr(partner, 'pivot_ConstructorPart49') is None
+
+
+def test_assoc_referredState263_stub_double():
+    # pivot_StateExp has no real 'pivot_StateExp' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_StateExp()
+    setattr(partner, 'pivot_StateExp', None)
+    _safe_set(owner, 'pivot_State264', partner)
+    assert getattr(partner, 'pivot_StateExp') == owner
+    _safe_set(owner, 'pivot_State264', None)
+    assert getattr(partner, 'pivot_StateExp') is None
+
+
+def test_assoc_referredType345_stub_double():
+    # pivot_TypeExp has no real 'pivot_TypeExp' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_TypeExp()
+    setattr(partner, 'pivot_TypeExp', None)
+    _safe_set(owner, 'pivot_Type346', partner)
+    assert getattr(partner, 'pivot_TypeExp') == owner
+    _safe_set(owner, 'pivot_Type346', None)
+    assert getattr(partner, 'pivot_TypeExp') is None
+
+
+def test_assoc_referredVariable365_stub_double():
+    # pivot_VariableDeclaration has no real 'pivot_VariableDeclaration' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_VariableExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_VariableExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_VariableExp(implicit="sample_text")
+    partner = pivot_VariableDeclaration()
+    setattr(partner, 'pivot_VariableDeclaration', None)
+    _safe_set(owner, 'pivot_VariableExp', partner)
+    assert getattr(partner, 'pivot_VariableDeclaration') == owner
+    _safe_set(owner, 'pivot_VariableExp', None)
+    assert getattr(partner, 'pivot_VariableDeclaration') is None
+
+
+def test_assoc_region258_stub_double():
+    # pivot_Region has no real 'Region' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Region()
+    setattr(partner, 'Region', None)
+    _safe_set(owner, 'state259', {partner})
+    assert getattr(partner, 'Region') == owner
+    _safe_set(owner, 'state259', set())
+    assert getattr(partner, 'Region') is None
+
+
+def test_assoc_representedParameter362_stub_double():
+    # pivot_Parameter has no real 'pivot_Parameter364' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Variable(implicit="sample_text")
+    partner = pivot_Parameter()
+    setattr(partner, 'pivot_Parameter364', None)
+    _safe_set(owner, 'pivot_Variable363', partner)
+    assert getattr(partner, 'pivot_Parameter364') == owner
+    _safe_set(owner, 'pivot_Variable363', None)
+    assert getattr(partner, 'pivot_Parameter364') is None
+
+
+def test_assoc_resultType101_stub_double():
+    # pivot_LambdaType has no real 'pivot_LambdaType102' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_LambdaType()
+    setattr(partner, 'pivot_LambdaType102', None)
+    _safe_set(owner, 'pivot_Type103', partner)
+    assert getattr(partner, 'pivot_LambdaType102') == owner
+    _safe_set(owner, 'pivot_Type103', None)
+    assert getattr(partner, 'pivot_LambdaType102') is None
+
+
+def test_assoc_resultVariable77_stub_double():
+    # pivot_ExpressionInOCL has no real 'pivot_ExpressionInOCL78' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Variable(implicit="sample_text")
+    partner = pivot_ExpressionInOCL()
+    setattr(partner, 'pivot_ExpressionInOCL78', None)
+    _safe_set(owner, 'pivot_Variable79', partner)
+    assert getattr(partner, 'pivot_ExpressionInOCL78') == owner
+    _safe_set(owner, 'pivot_Variable79', None)
+    assert getattr(partner, 'pivot_ExpressionInOCL78') is None
+
+
+def test_assoc_sentSignal123_stub_double():
+    # pivot_SendSignalAction has no real 'pivot_SendSignalAction' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_MessageExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_MessageExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_MessageExp()
+    partner = pivot_SendSignalAction()
+    setattr(partner, 'pivot_SendSignalAction', None)
+    _safe_set(owner, 'pivot_MessageExp124', partner)
+    assert getattr(partner, 'pivot_SendSignalAction') == owner
+    _safe_set(owner, 'pivot_MessageExp124', None)
+    assert getattr(partner, 'pivot_SendSignalAction') is None
+
+
+def test_assoc_source315_stub_double():
+    # pivot_Vertex has no real 'Vertex316' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Vertex()
+    setattr(partner, 'Vertex316', None)
+    _safe_set(owner, 'outgoing', partner)
+    assert getattr(partner, 'Vertex316') == owner
+    _safe_set(owner, 'outgoing', None)
+    assert getattr(partner, 'Vertex316') is None
+
+
+def test_assoc_source9_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_CallExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_CallExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_CallExp(implicit="sample_text")
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression', None)
+    _safe_set(owner, 'pivot_CallExp', partner)
+    assert getattr(partner, 'pivot_OCLExpression') == owner
+    _safe_set(owner, 'pivot_CallExp', None)
+    assert getattr(partner, 'pivot_OCLExpression') is None
+
+
+def test_assoc_state226_stub_double():
+    # pivot_Region has no real 'region' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Region()
+    setattr(partner, 'region', None)
+    _safe_set(owner, 'State227', partner)
+    assert getattr(partner, 'region') == owner
+    _safe_set(owner, 'State227', None)
+    assert getattr(partner, 'region') is None
+
+
+def test_assoc_state30_stub_double():
+    # pivot_ConnectionPointReference has no real 'connection' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_ConnectionPointReference()
+    setattr(partner, 'connection', None)
+    _safe_set(owner, 'State', partner)
+    assert getattr(partner, 'connection') == owner
+    _safe_set(owner, 'State', None)
+    assert getattr(partner, 'connection') is None
+
+
+def test_assoc_state322_stub_double():
+    # pivot_Trigger has no real 'deferrableTrigger' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_Trigger()
+    setattr(partner, 'deferrableTrigger', None)
+    _safe_set(owner, 'State323', partner)
+    assert getattr(partner, 'deferrableTrigger') == owner
+    _safe_set(owner, 'State323', None)
+    assert getattr(partner, 'deferrableTrigger') is None
+
+
+def test_assoc_stateMachine222_stub_double():
+    # pivot_StateMachine has no real 'pivot_StateMachine' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Pseudostate's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Pseudostate's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Pseudostate(kind="sample_text")
+    partner = pivot_StateMachine()
+    setattr(partner, 'pivot_StateMachine', None)
+    _safe_set(owner, 'pivot_Pseudostate223', partner)
+    assert getattr(partner, 'pivot_StateMachine') == owner
+    _safe_set(owner, 'pivot_Pseudostate223', None)
+    assert getattr(partner, 'pivot_StateMachine') is None
+
+
+def test_assoc_stereotype347_stub_double():
+    # pivot_Stereotype has no real 'Stereotype' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_TypeExtension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_TypeExtension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_TypeExtension(isRequired="sample_text")
+    partner = pivot_Stereotype()
+    setattr(partner, 'Stereotype', None)
+    _safe_set(owner, 'extensionOfs', partner)
+    assert getattr(partner, 'Stereotype') == owner
+    _safe_set(owner, 'extensionOfs', None)
+    assert getattr(partner, 'Stereotype') is None
+
+
+def test_assoc_stereotype66_stub_double():
+    # pivot_Stereotype has no real 'pivot_Stereotype' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ElementExtension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ElementExtension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ElementExtension(isApplied="sample_text", isRequired="sample_text")
+    partner = pivot_Stereotype()
+    setattr(partner, 'pivot_Stereotype', None)
+    _safe_set(owner, 'pivot_ElementExtension', partner)
+    assert getattr(partner, 'pivot_Stereotype') == owner
+    _safe_set(owner, 'pivot_ElementExtension', None)
+    assert getattr(partner, 'pivot_Stereotype') is None
+
+
+def test_assoc_submachine261_stub_double():
+    # pivot_StateMachine has no real 'StateMachine262' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_StateMachine()
+    setattr(partner, 'StateMachine262', None)
+    _safe_set(owner, 'submachineState', partner)
+    assert getattr(partner, 'StateMachine262') == owner
+    _safe_set(owner, 'submachineState', None)
+    assert getattr(partner, 'StateMachine262') is None
+
+
+def test_assoc_submachineState273_stub_double():
+    # pivot_StateMachine has no real 'submachine' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_State's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_State's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_State(isComposite="sample_text", isOrthogonal="sample_text", isSimple="sample_text", isSubmachineState="sample_text")
+    partner = pivot_StateMachine()
+    setattr(partner, 'submachine', None)
+    _safe_set(owner, 'State274', partner)
+    assert getattr(partner, 'submachine') == owner
+    _safe_set(owner, 'State274', None)
+    assert getattr(partner, 'submachine') is None
+
+
+def test_assoc_target125_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression127' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_MessageExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_MessageExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_MessageExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression127', None)
+    _safe_set(owner, 'pivot_MessageExp126', partner)
+    assert getattr(partner, 'pivot_OCLExpression127') == owner
+    _safe_set(owner, 'pivot_MessageExp126', None)
+    assert getattr(partner, 'pivot_OCLExpression127') is None
+
+
+def test_assoc_target317_stub_double():
+    # pivot_Vertex has no real 'Vertex318' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Vertex()
+    setattr(partner, 'Vertex318', None)
+    _safe_set(owner, 'incoming', partner)
+    assert getattr(partner, 'Vertex318') == owner
+    _safe_set(owner, 'incoming', None)
+    assert getattr(partner, 'Vertex318') is None
+
+
+def test_assoc_template300_stub_double():
+    # pivot_TemplateSignature has no real 'ownedTemplateSignature' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_TemplateableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_TemplateableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_TemplateableElement()
+    partner = pivot_TemplateSignature()
+    setattr(partner, 'ownedTemplateSignature', None)
+    _safe_set(owner, 'TemplateableElement301', partner)
+    assert getattr(partner, 'ownedTemplateSignature') == owner
+    _safe_set(owner, 'TemplateableElement301', None)
+    assert getattr(partner, 'ownedTemplateSignature') is None
+
+
+def test_assoc_templateBinding304_stub_double():
+    # pivot_TemplateBinding has no real 'TemplateBinding305' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_TemplateableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_TemplateableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_TemplateableElement()
+    partner = pivot_TemplateBinding()
+    setattr(partner, 'TemplateBinding305', None)
+    _safe_set(owner, 'boundElement', {partner})
+    assert getattr(partner, 'TemplateBinding305') == owner
+    _safe_set(owner, 'boundElement', set())
+    assert getattr(partner, 'TemplateBinding305') is None
+
+
+def test_assoc_templateParameter187_stub_double():
+    # pivot_TemplateParameter has no real 'TemplateParameter188' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_ParameterableElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_ParameterableElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_ParameterableElement()
+    partner = pivot_TemplateParameter()
+    setattr(partner, 'TemplateParameter188', None)
+    _safe_set(owner, 'parameteredElement', partner)
+    assert getattr(partner, 'TemplateParameter188') == owner
+    _safe_set(owner, 'parameteredElement', None)
+    assert getattr(partner, 'TemplateParameter188') is None
+
+
+def test_assoc_thenExpression85_stub_double():
+    # pivot_OCLExpression has no real 'pivot_OCLExpression87' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_IfExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_IfExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_IfExp()
+    partner = pivot_OCLExpression()
+    setattr(partner, 'pivot_OCLExpression87', None)
+    _safe_set(owner, 'pivot_IfExp86', partner)
+    assert getattr(partner, 'pivot_OCLExpression87') == owner
+    _safe_set(owner, 'pivot_IfExp86', None)
+    assert getattr(partner, 'pivot_OCLExpression87') is None
+
+
+def test_assoc_transition231_stub_double():
+    # pivot_Region has no real 'container232' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Region()
+    setattr(partner, 'container232', None)
+    _safe_set(owner, 'Transition233', partner)
+    assert getattr(partner, 'container232') == owner
+    _safe_set(owner, 'Transition233', None)
+    assert getattr(partner, 'container232') is None
+
+
+def test_assoc_transition324_stub_double():
+    # pivot_Trigger has no real 'trigger' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Trigger()
+    setattr(partner, 'trigger', None)
+    _safe_set(owner, 'Transition325', partner)
+    assert getattr(partner, 'trigger') == owner
+    _safe_set(owner, 'Transition325', None)
+    assert getattr(partner, 'trigger') is None
+
+
+def test_assoc_transition8_stub_double():
+    # pivot_Behavior has no real 'effect' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Behavior()
+    setattr(partner, 'effect', None)
+    _safe_set(owner, 'Transition', partner)
+    assert getattr(partner, 'effect') == owner
+    _safe_set(owner, 'Transition', None)
+    assert getattr(partner, 'effect') is None
+
+
+def test_assoc_trigger319_stub_double():
+    # pivot_Trigger has no real 'Trigger321' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Transition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Transition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Transition(kind="sample_text")
+    partner = pivot_Trigger()
+    setattr(partner, 'Trigger321', None)
+    _safe_set(owner, 'transition320', {partner})
+    assert getattr(partner, 'Trigger321') == owner
+    _safe_set(owner, 'transition320', set())
+    assert getattr(partner, 'Trigger321') is None
+
+
+def test_assoc_unownedAttribute6_stub_double():
+    # pivot_AssociationClass has no real 'associationClass' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Property(default="sample_text", implicit="sample_text", isComposite="sample_text", isDerived="sample_text", isID="sample_text", isReadOnly="sample_text", isResolveProxies="sample_text", isTransient="sample_text", isUnsettable="sample_text", isVolatile="sample_text")
+    partner = pivot_AssociationClass()
+    setattr(partner, 'associationClass', None)
+    _safe_set(owner, 'Property', partner)
+    assert getattr(partner, 'associationClass') == owner
+    _safe_set(owner, 'Property', None)
+    assert getattr(partner, 'associationClass') is None
+
+
+def test_assoc_upperBound356_stub_double():
+    # pivot_UnspecifiedType has no real 'pivot_UnspecifiedType357' property in the generated
+    # code (a bare stub) -- manually attach it so pivot_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # pivot_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = pivot_Type(instanceClassName="sample_text")
+    partner = pivot_UnspecifiedType()
+    setattr(partner, 'pivot_UnspecifiedType357', None)
+    _safe_set(owner, 'pivot_Type358', partner)
+    assert getattr(partner, 'pivot_UnspecifiedType357') == owner
+    _safe_set(owner, 'pivot_Type358', None)
+    assert getattr(partner, 'pivot_UnspecifiedType357') is None
+
+

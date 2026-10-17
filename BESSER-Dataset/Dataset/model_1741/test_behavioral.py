@@ -172,3 +172,86 @@ def test_assoc_syncedDevices13_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'collections', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_contents19_stub_double():
+    # MediaLibrary_MediaSource has no real 'origin' property in the generated
+    # code (a bare stub) -- manually attach it so MediaLibrary_Artifact's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MediaLibrary_Artifact's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MediaLibrary_Artifact(author="sample_text", name="sample_text")
+    partner = MediaLibrary_MediaSource()
+    setattr(partner, 'origin', None)
+    _safe_set(owner, 'Artifact', partner)
+    assert getattr(partner, 'origin') == owner
+    _safe_set(owner, 'Artifact', None)
+    assert getattr(partner, 'origin') is None
+
+
+def test_assoc_devices1_stub_double():
+    # MediaLibrary_Ecosystem has no real 'MediaLibrary_Ecosystem2' property in the generated
+    # code (a bare stub) -- manually attach it so MediaLibrary_Device's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MediaLibrary_Device's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MediaLibrary_Device(MACAddress="sample_text", resolutionHeight=7, resolutionWidth=7)
+    partner = MediaLibrary_Ecosystem()
+    setattr(partner, 'MediaLibrary_Ecosystem2', None)
+    _safe_set(owner, 'MediaLibrary_Device', partner)
+    assert getattr(partner, 'MediaLibrary_Ecosystem2') == owner
+    _safe_set(owner, 'MediaLibrary_Device', None)
+    assert getattr(partner, 'MediaLibrary_Ecosystem2') is None
+
+
+def test_assoc_libraries0_stub_double():
+    # MediaLibrary_Ecosystem has no real 'MediaLibrary_Ecosystem' property in the generated
+    # code (a bare stub) -- manually attach it so MediaLibrary_Library's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MediaLibrary_Library's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MediaLibrary_Library(name="sample_text")
+    partner = MediaLibrary_Ecosystem()
+    setattr(partner, 'MediaLibrary_Ecosystem', None)
+    _safe_set(owner, 'MediaLibrary_Library', partner)
+    assert getattr(partner, 'MediaLibrary_Ecosystem') == owner
+    _safe_set(owner, 'MediaLibrary_Library', None)
+    assert getattr(partner, 'MediaLibrary_Ecosystem') is None
+
+
+def test_assoc_mediaArtifacts5_stub_double():
+    # MediaLibrary_Ecosystem has no real 'MediaLibrary_Ecosystem6' property in the generated
+    # code (a bare stub) -- manually attach it so MediaLibrary_Artifact's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MediaLibrary_Artifact's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MediaLibrary_Artifact(author="sample_text", name="sample_text")
+    partner = MediaLibrary_Ecosystem()
+    setattr(partner, 'MediaLibrary_Ecosystem6', None)
+    _safe_set(owner, 'MediaLibrary_Artifact', partner)
+    assert getattr(partner, 'MediaLibrary_Ecosystem6') == owner
+    _safe_set(owner, 'MediaLibrary_Artifact', None)
+    assert getattr(partner, 'MediaLibrary_Ecosystem6') is None
+
+
+def test_assoc_origin18_stub_double():
+    # MediaLibrary_MediaSource has no real 'MediaSource' property in the generated
+    # code (a bare stub) -- manually attach it so MediaLibrary_Artifact's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # MediaLibrary_Artifact's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = MediaLibrary_Artifact(author="sample_text", name="sample_text")
+    partner = MediaLibrary_MediaSource()
+    setattr(partner, 'MediaSource', None)
+    _safe_set(owner, 'contents', partner)
+    assert getattr(partner, 'MediaSource') == owner
+    _safe_set(owner, 'contents', None)
+    assert getattr(partner, 'MediaSource') is None
+
+

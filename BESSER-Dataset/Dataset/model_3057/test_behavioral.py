@@ -164,3 +164,26 @@ def test_assoc_superEntity4_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'titan_Entity3', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_opposite10_stub_double():
+    # titan_MultiReference has no real 'titan_MultiReference' property in the generated
+    # code (a bare stub) -- manually attach it so titan_Reference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # titan_Reference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = titan_Reference(unique=True)
+    partner = titan_MultiReference()
+    setattr(partner, 'titan_MultiReference', None)
+    _safe_set(owner, 'titan_Reference11', partner)
+    assert getattr(partner, 'titan_MultiReference') == owner
+    _safe_set(owner, 'titan_Reference11', None)
+    assert getattr(partner, 'titan_MultiReference') is None
+
+

@@ -255,3 +255,236 @@ def test_assoc_successor11_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'publication_Sequence12', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_authors28_stub_double():
+    # publication_Paper has no real 'papers' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Researcher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Researcher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Researcher(forName="sample_text", name="sample_text", position="sample_text")
+    partner = publication_Paper()
+    setattr(partner, 'papers', None)
+    _safe_set(owner, 'Researcher29', partner)
+    assert getattr(partner, 'papers') == owner
+    _safe_set(owner, 'Researcher29', None)
+    assert getattr(partner, 'papers') is None
+
+
+def test_assoc_paper36_stub_double():
+    # publication_Paper has no real 'Paper37' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Progress's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Progress's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Progress(percent=7, time=7)
+    partner = publication_Paper()
+    setattr(partner, 'Paper37', None)
+    _safe_set(owner, 'progress', partner)
+    assert getattr(partner, 'Paper37') == owner
+    _safe_set(owner, 'progress', None)
+    assert getattr(partner, 'Paper37') is None
+
+
+def test_assoc_papers23_stub_double():
+    # publication_Paper has no real 'Paper' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Researcher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Researcher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Researcher(forName="sample_text", name="sample_text", position="sample_text")
+    partner = publication_Paper()
+    setattr(partner, 'Paper', None)
+    _safe_set(owner, 'authors', {partner})
+    assert getattr(partner, 'Paper') == owner
+    _safe_set(owner, 'authors', set())
+    assert getattr(partner, 'Paper') is None
+
+
+def test_assoc_paragraph38_stub_double():
+    # publication_Write has no real 'publication_Write39' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Paragraph's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Paragraph's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Paragraph(content="sample_text")
+    partner = publication_Write()
+    setattr(partner, 'publication_Write39', None)
+    _safe_set(owner, 'publication_Paragraph40', partner)
+    assert getattr(partner, 'publication_Write39') == owner
+    _safe_set(owner, 'publication_Paragraph40', None)
+    assert getattr(partner, 'publication_Write39') is None
+
+
+def test_assoc_paragraphs26_stub_double():
+    # publication_Paper has no real 'publication_Paper' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Paragraph's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Paragraph's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Paragraph(content="sample_text")
+    partner = publication_Paper()
+    setattr(partner, 'publication_Paper', None)
+    _safe_set(owner, 'publication_Paragraph', partner)
+    assert getattr(partner, 'publication_Paper') == owner
+    _safe_set(owner, 'publication_Paragraph', None)
+    assert getattr(partner, 'publication_Paper') is None
+
+
+def test_assoc_placeholder17_stub_double():
+    # publication_PlaceHolderRule has no real 'publication_PlaceHolderRule' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Rule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Rule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Rule(key="sample_text", text="sample_text")
+    partner = publication_PlaceHolderRule()
+    setattr(partner, 'publication_PlaceHolderRule', None)
+    _safe_set(owner, 'publication_Rule18', partner)
+    assert getattr(partner, 'publication_PlaceHolderRule') == owner
+    _safe_set(owner, 'publication_Rule18', None)
+    assert getattr(partner, 'publication_PlaceHolderRule') is None
+
+
+def test_assoc_placeholder24_stub_double():
+    # publication_PlaceHolderRs has no real 'publication_PlaceHolderRs' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Researcher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Researcher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Researcher(forName="sample_text", name="sample_text", position="sample_text")
+    partner = publication_PlaceHolderRs()
+    setattr(partner, 'publication_PlaceHolderRs', None)
+    _safe_set(owner, 'publication_Researcher25', partner)
+    assert getattr(partner, 'publication_PlaceHolderRs') == owner
+    _safe_set(owner, 'publication_Researcher25', None)
+    assert getattr(partner, 'publication_PlaceHolderRs') is None
+
+
+def test_assoc_placeholder32_stub_double():
+    # publication_PlaceHolderRn has no real 'publication_PlaceHolderRn' property in the generated
+    # code (a bare stub) -- manually attach it so publication_ReviewNote's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_ReviewNote's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_ReviewNote(content="sample_text")
+    partner = publication_PlaceHolderRn()
+    setattr(partner, 'publication_PlaceHolderRn', None)
+    _safe_set(owner, 'publication_ReviewNote33', partner)
+    assert getattr(partner, 'publication_PlaceHolderRn') == owner
+    _safe_set(owner, 'publication_ReviewNote33', None)
+    assert getattr(partner, 'publication_PlaceHolderRn') is None
+
+
+def test_assoc_placeholder9_stub_double():
+    # publication_PlaceHolderPP has no real 'publication_PlaceHolderPP' property in the generated
+    # code (a bare stub) -- manually attach it so publication_PublicationPhase's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_PublicationPhase's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_PublicationPhase(maxTime=7, minTime=7, name="sample_text")
+    partner = publication_PlaceHolderPP()
+    setattr(partner, 'publication_PlaceHolderPP', None)
+    _safe_set(owner, 'publication_PublicationPhase10', partner)
+    assert getattr(partner, 'publication_PlaceHolderPP') == owner
+    _safe_set(owner, 'publication_PublicationPhase10', None)
+    assert getattr(partner, 'publication_PlaceHolderPP') is None
+
+
+def test_assoc_processView49_stub_double():
+    # publication_PublicationSystem has no real 'publication_PublicationSystem' property in the generated
+    # code (a bare stub) -- manually attach it so publication_PublicationProcess's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_PublicationProcess's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_PublicationProcess(maxTime=7, minTime=7)
+    partner = publication_PublicationSystem()
+    setattr(partner, 'publication_PublicationSystem', None)
+    _safe_set(owner, 'publication_PublicationProcess50', partner)
+    assert getattr(partner, 'publication_PublicationSystem') == owner
+    _safe_set(owner, 'publication_PublicationProcess50', None)
+    assert getattr(partner, 'publication_PublicationSystem') is None
+
+
+def test_assoc_progress27_stub_double():
+    # publication_Paper has no real 'paper' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Progress's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Progress's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Progress(percent=7, time=7)
+    partner = publication_Paper()
+    setattr(partner, 'paper', None)
+    _safe_set(owner, 'Progress', partner)
+    assert getattr(partner, 'paper') == owner
+    _safe_set(owner, 'Progress', None)
+    assert getattr(partner, 'paper') is None
+
+
+def test_assoc_researchers44_stub_double():
+    # publication_PublicationStructure has no real 'publication_PublicationStructure' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Researcher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Researcher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Researcher(forName="sample_text", name="sample_text", position="sample_text")
+    partner = publication_PublicationStructure()
+    setattr(partner, 'publication_PublicationStructure', None)
+    _safe_set(owner, 'publication_Researcher45', partner)
+    assert getattr(partner, 'publication_PublicationStructure') == owner
+    _safe_set(owner, 'publication_Researcher45', None)
+    assert getattr(partner, 'publication_PublicationStructure') is None
+
+
+def test_assoc_reviewNote41_stub_double():
+    # publication_Review has no real 'publication_Review42' property in the generated
+    # code (a bare stub) -- manually attach it so publication_ReviewNote's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_ReviewNote's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_ReviewNote(content="sample_text")
+    partner = publication_Review()
+    setattr(partner, 'publication_Review42', None)
+    _safe_set(owner, 'publication_ReviewNote43', partner)
+    assert getattr(partner, 'publication_Review42') == owner
+    _safe_set(owner, 'publication_ReviewNote43', None)
+    assert getattr(partner, 'publication_Review42') is None
+
+
+def test_assoc_reviews21_stub_double():
+    # publication_Review has no real 'publication_Review' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Researcher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Researcher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Researcher(forName="sample_text", name="sample_text", position="sample_text")
+    partner = publication_Review()
+    setattr(partner, 'publication_Review', None)
+    _safe_set(owner, 'publication_Researcher22', {partner})
+    assert getattr(partner, 'publication_Review') == owner
+    _safe_set(owner, 'publication_Researcher22', set())
+    assert getattr(partner, 'publication_Review') is None
+
+
+def test_assoc_writes20_stub_double():
+    # publication_Write has no real 'publication_Write' property in the generated
+    # code (a bare stub) -- manually attach it so publication_Researcher's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # publication_Researcher's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = publication_Researcher(forName="sample_text", name="sample_text", position="sample_text")
+    partner = publication_Write()
+    setattr(partner, 'publication_Write', None)
+    _safe_set(owner, 'publication_Researcher', {partner})
+    assert getattr(partner, 'publication_Write') == owner
+    _safe_set(owner, 'publication_Researcher', set())
+    assert getattr(partner, 'publication_Write') is None
+
+

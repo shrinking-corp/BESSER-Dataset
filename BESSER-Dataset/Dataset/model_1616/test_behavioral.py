@@ -377,3 +377,461 @@ def test_assoc_vars111_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'ptnet_VariableValues', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_MultiplicityFunction106_stub_double():
+    # ptnet_ArithmeticExpression has no real 'ptnet_ArithmeticExpression' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_GSPNArc's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_GSPNArc's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_GSPNArc(type="sample_text")
+    partner = ptnet_ArithmeticExpression()
+    setattr(partner, 'ptnet_ArithmeticExpression', None)
+    _safe_set(owner, 'ptnet_GSPNArc', partner)
+    assert getattr(partner, 'ptnet_ArithmeticExpression') == owner
+    _safe_set(owner, 'ptnet_GSPNArc', None)
+    assert getattr(partner, 'ptnet_ArithmeticExpression') is None
+
+
+def test_assoc_containerAnnotationGraphics61_stub_double():
+    # ptnet_AnnotationGraphics has no real 'AnnotationGraphics63' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Fill's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Fill's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Fill(color="sample_text", gradientcolor="sample_text", gradientrotation="sample_text", image="sample_text")
+    partner = ptnet_AnnotationGraphics()
+    setattr(partner, 'AnnotationGraphics63', None)
+    _safe_set(owner, 'fill62', partner)
+    assert getattr(partner, 'AnnotationGraphics63') == owner
+    _safe_set(owner, 'fill62', None)
+    assert getattr(partner, 'AnnotationGraphics63') is None
+
+
+def test_assoc_containerAnnotationGraphics69_stub_double():
+    # ptnet_AnnotationGraphics has no real 'AnnotationGraphics71' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Line's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Line's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Line(color="sample_text", shape="sample_text", style="sample_text", width="sample_text")
+    partner = ptnet_AnnotationGraphics()
+    setattr(partner, 'AnnotationGraphics71', None)
+    _safe_set(owner, 'line70', partner)
+    assert getattr(partner, 'AnnotationGraphics71') == owner
+    _safe_set(owner, 'line70', None)
+    assert getattr(partner, 'AnnotationGraphics71') is None
+
+
+def test_assoc_containerAnnotationGraphics93_stub_double():
+    # ptnet_AnnotationGraphics has no real 'AnnotationGraphics94' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Font's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Font's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Font(align="sample_text", decoration="sample_text", family="sample_text", rotation="sample_text", size="sample_text", style="sample_text", weight="sample_text")
+    partner = ptnet_AnnotationGraphics()
+    setattr(partner, 'AnnotationGraphics94', None)
+    _safe_set(owner, 'font', partner)
+    assert getattr(partner, 'AnnotationGraphics94') == owner
+    _safe_set(owner, 'font', None)
+    assert getattr(partner, 'AnnotationGraphics94') is None
+
+
+def test_assoc_containerArc1_stub_double():
+    # ptnet_Arc has no real 'Arc' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PTArcAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PTArcAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PTArcAnnotation(text="sample_text")
+    partner = ptnet_Arc()
+    setattr(partner, 'Arc', None)
+    _safe_set(owner, 'inscription', partner)
+    assert getattr(partner, 'Arc') == owner
+    _safe_set(owner, 'inscription', None)
+    assert getattr(partner, 'Arc') is None
+
+
+def test_assoc_containerArcGraphics66_stub_double():
+    # ptnet_ArcGraphics has no real 'ArcGraphics68' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Line's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Line's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Line(color="sample_text", shape="sample_text", style="sample_text", width="sample_text")
+    partner = ptnet_ArcGraphics()
+    setattr(partner, 'ArcGraphics68', None)
+    _safe_set(owner, 'line67', partner)
+    assert getattr(partner, 'ArcGraphics68') == owner
+    _safe_set(owner, 'line67', None)
+    assert getattr(partner, 'ArcGraphics68') is None
+
+
+def test_assoc_containerLabel29_stub_double():
+    # ptnet_Label has no real 'Label' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_ToolInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_ToolInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_ToolInfo(formattedXMLBuffer="sample_text", tool="sample_text", toolInfoGrammarURI="sample_text", version="sample_text")
+    partner = ptnet_Label()
+    setattr(partner, 'Label', None)
+    _safe_set(owner, 'toolspecifics30', partner)
+    assert getattr(partner, 'Label') == owner
+    _safe_set(owner, 'toolspecifics30', None)
+    assert getattr(partner, 'Label') is None
+
+
+def test_assoc_containerNodeGraphics59_stub_double():
+    # ptnet_NodeGraphics has no real 'NodeGraphics60' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Fill's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Fill's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Fill(color="sample_text", gradientcolor="sample_text", gradientrotation="sample_text", image="sample_text")
+    partner = ptnet_NodeGraphics()
+    setattr(partner, 'NodeGraphics60', None)
+    _safe_set(owner, 'fill', partner)
+    assert getattr(partner, 'NodeGraphics60') == owner
+    _safe_set(owner, 'fill', None)
+    assert getattr(partner, 'NodeGraphics60') is None
+
+
+def test_assoc_containerNodeGraphics64_stub_double():
+    # ptnet_NodeGraphics has no real 'NodeGraphics65' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Line's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Line's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Line(color="sample_text", shape="sample_text", style="sample_text", width="sample_text")
+    partner = ptnet_NodeGraphics()
+    setattr(partner, 'NodeGraphics65', None)
+    _safe_set(owner, 'line', partner)
+    assert getattr(partner, 'NodeGraphics65') == owner
+    _safe_set(owner, 'line', None)
+    assert getattr(partner, 'NodeGraphics65') is None
+
+
+def test_assoc_containerPage17_stub_double():
+    # ptnet_Page has no real 'Page18' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PnObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PnObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PnObject(id="sample_text")
+    partner = ptnet_Page()
+    setattr(partner, 'Page18', None)
+    _safe_set(owner, 'objects', partner)
+    assert getattr(partner, 'Page18') == owner
+    _safe_set(owner, 'objects', None)
+    assert getattr(partner, 'Page18') is None
+
+
+def test_assoc_containerPetriNet9_stub_double():
+    # ptnet_Page has no real 'pages' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PetriNet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PetriNet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PetriNet(id="sample_text", type="sample_text")
+    partner = ptnet_Page()
+    setattr(partner, 'pages', None)
+    _safe_set(owner, 'PetriNet10', partner)
+    assert getattr(partner, 'pages') == owner
+    _safe_set(owner, 'PetriNet10', None)
+    assert getattr(partner, 'pages') is None
+
+
+def test_assoc_containerPlace0_stub_double():
+    # ptnet_Place has no real 'Place' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PTMarking's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PTMarking's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PTMarking(text="sample_text")
+    partner = ptnet_Place()
+    setattr(partner, 'Place', None)
+    _safe_set(owner, 'initialMarking', partner)
+    assert getattr(partner, 'Place') == owner
+    _safe_set(owner, 'initialMarking', None)
+    assert getattr(partner, 'Place') is None
+
+
+def test_assoc_containerToolInfo103_stub_double():
+    # ptnet_AnyObject has no real 'toolInfoModel' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_ToolInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_ToolInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_ToolInfo(formattedXMLBuffer="sample_text", tool="sample_text", toolInfoGrammarURI="sample_text", version="sample_text")
+    partner = ptnet_AnyObject()
+    setattr(partner, 'toolInfoModel', None)
+    _safe_set(owner, 'ToolInfo104', partner)
+    assert getattr(partner, 'toolInfoModel') == owner
+    _safe_set(owner, 'ToolInfo104', None)
+    assert getattr(partner, 'toolInfoModel') is None
+
+
+def test_assoc_evaluationType116_stub_double():
+    # ptnet_EvaluationType has no real 'ptnet_EvaluationType' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Measure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Measure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Measure(name="sample_text")
+    partner = ptnet_EvaluationType()
+    setattr(partner, 'ptnet_EvaluationType', None)
+    _safe_set(owner, 'ptnet_Measure117', partner)
+    assert getattr(partner, 'ptnet_EvaluationType') == owner
+    _safe_set(owner, 'ptnet_Measure117', None)
+    assert getattr(partner, 'ptnet_EvaluationType') is None
+
+
+def test_assoc_fill36_stub_double():
+    # ptnet_NodeGraphics has no real 'containerNodeGraphics' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Fill's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Fill's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Fill(color="sample_text", gradientcolor="sample_text", gradientrotation="sample_text", image="sample_text")
+    partner = ptnet_NodeGraphics()
+    setattr(partner, 'containerNodeGraphics', None)
+    _safe_set(owner, 'Fill', partner)
+    assert getattr(partner, 'containerNodeGraphics') == owner
+    _safe_set(owner, 'Fill', None)
+    assert getattr(partner, 'containerNodeGraphics') is None
+
+
+def test_assoc_fill50_stub_double():
+    # ptnet_AnnotationGraphics has no real 'containerAnnotationGraphics51' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Fill's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Fill's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Fill(color="sample_text", gradientcolor="sample_text", gradientrotation="sample_text", image="sample_text")
+    partner = ptnet_AnnotationGraphics()
+    setattr(partner, 'containerAnnotationGraphics51', None)
+    _safe_set(owner, 'Fill52', partner)
+    assert getattr(partner, 'containerAnnotationGraphics51') == owner
+    _safe_set(owner, 'Fill52', None)
+    assert getattr(partner, 'containerAnnotationGraphics51') is None
+
+
+def test_assoc_font56_stub_double():
+    # ptnet_AnnotationGraphics has no real 'containerAnnotationGraphics57' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Font's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Font's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Font(align="sample_text", decoration="sample_text", family="sample_text", rotation="sample_text", size="sample_text", style="sample_text", weight="sample_text")
+    partner = ptnet_AnnotationGraphics()
+    setattr(partner, 'containerAnnotationGraphics57', None)
+    _safe_set(owner, 'Font', partner)
+    assert getattr(partner, 'containerAnnotationGraphics57') == owner
+    _safe_set(owner, 'Font', None)
+    assert getattr(partner, 'containerAnnotationGraphics57') is None
+
+
+def test_assoc_initialMarking98_stub_double():
+    # ptnet_Place has no real 'containerPlace' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PTMarking's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PTMarking's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PTMarking(text="sample_text")
+    partner = ptnet_Place()
+    setattr(partner, 'containerPlace', None)
+    _safe_set(owner, 'PTMarking', partner)
+    assert getattr(partner, 'containerPlace') == owner
+    _safe_set(owner, 'PTMarking', None)
+    assert getattr(partner, 'containerPlace') is None
+
+
+def test_assoc_inscription85_stub_double():
+    # ptnet_Arc has no real 'containerArc86' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PTArcAnnotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PTArcAnnotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PTArcAnnotation(text="sample_text")
+    partner = ptnet_Arc()
+    setattr(partner, 'containerArc86', None)
+    _safe_set(owner, 'PTArcAnnotation', partner)
+    assert getattr(partner, 'containerArc86') == owner
+    _safe_set(owner, 'PTArcAnnotation', None)
+    assert getattr(partner, 'containerArc86') is None
+
+
+def test_assoc_line37_stub_double():
+    # ptnet_NodeGraphics has no real 'containerNodeGraphics38' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Line's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Line's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Line(color="sample_text", shape="sample_text", style="sample_text", width="sample_text")
+    partner = ptnet_NodeGraphics()
+    setattr(partner, 'containerNodeGraphics38', None)
+    _safe_set(owner, 'Line', partner)
+    assert getattr(partner, 'containerNodeGraphics38') == owner
+    _safe_set(owner, 'Line', None)
+    assert getattr(partner, 'containerNodeGraphics38') is None
+
+
+def test_assoc_line53_stub_double():
+    # ptnet_AnnotationGraphics has no real 'containerAnnotationGraphics54' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Line's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Line's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Line(color="sample_text", shape="sample_text", style="sample_text", width="sample_text")
+    partner = ptnet_AnnotationGraphics()
+    setattr(partner, 'containerAnnotationGraphics54', None)
+    _safe_set(owner, 'Line55', partner)
+    assert getattr(partner, 'containerAnnotationGraphics54') == owner
+    _safe_set(owner, 'Line55', None)
+    assert getattr(partner, 'containerAnnotationGraphics54') is None
+
+
+def test_assoc_line74_stub_double():
+    # ptnet_ArcGraphics has no real 'containerArcGraphics75' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Line's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Line's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Line(color="sample_text", shape="sample_text", style="sample_text", width="sample_text")
+    partner = ptnet_ArcGraphics()
+    setattr(partner, 'containerArcGraphics75', None)
+    _safe_set(owner, 'Line76', partner)
+    assert getattr(partner, 'containerArcGraphics75') == owner
+    _safe_set(owner, 'Line76', None)
+    assert getattr(partner, 'containerArcGraphics75') is None
+
+
+def test_assoc_measures109_stub_double():
+    # ptnet_EvaluationList has no real 'ptnet_EvaluationList110' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Measure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Measure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Measure(name="sample_text")
+    partner = ptnet_EvaluationList()
+    setattr(partner, 'ptnet_EvaluationList110', None)
+    _safe_set(owner, 'ptnet_Measure', partner)
+    assert getattr(partner, 'ptnet_EvaluationList110') == owner
+    _safe_set(owner, 'ptnet_Measure', None)
+    assert getattr(partner, 'ptnet_EvaluationList110') is None
+
+
+def test_assoc_objects8_stub_double():
+    # ptnet_Page has no real 'containerPage' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PnObject's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PnObject's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PnObject(id="sample_text")
+    partner = ptnet_Page()
+    setattr(partner, 'containerPage', None)
+    _safe_set(owner, 'PnObject', partner)
+    assert getattr(partner, 'containerPage') == owner
+    _safe_set(owner, 'PnObject', None)
+    assert getattr(partner, 'containerPage') is None
+
+
+def test_assoc_pages3_stub_double():
+    # ptnet_Page has no real 'Page' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_PetriNet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_PetriNet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_PetriNet(id="sample_text", type="sample_text")
+    partner = ptnet_Page()
+    setattr(partner, 'Page', None)
+    _safe_set(owner, 'containerPetriNet', {partner})
+    assert getattr(partner, 'Page') == owner
+    _safe_set(owner, 'containerPetriNet', set())
+    assert getattr(partner, 'Page') is None
+
+
+def test_assoc_rewardFunction113_stub_double():
+    # ptnet_ArithmeticExpression has no real 'ptnet_ArithmeticExpression115' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Measure's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Measure's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Measure(name="sample_text")
+    partner = ptnet_ArithmeticExpression()
+    setattr(partner, 'ptnet_ArithmeticExpression115', None)
+    _safe_set(owner, 'ptnet_Measure114', partner)
+    assert getattr(partner, 'ptnet_ArithmeticExpression115') == owner
+    _safe_set(owner, 'ptnet_Measure114', None)
+    assert getattr(partner, 'ptnet_ArithmeticExpression115') is None
+
+
+def test_assoc_studies108_stub_double():
+    # ptnet_EvaluationList has no real 'ptnet_EvaluationList' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Study's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Study's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Study(name="sample_text")
+    partner = ptnet_EvaluationList()
+    setattr(partner, 'ptnet_EvaluationList', None)
+    _safe_set(owner, 'ptnet_Study', partner)
+    assert getattr(partner, 'ptnet_EvaluationList') == owner
+    _safe_set(owner, 'ptnet_Study', None)
+    assert getattr(partner, 'ptnet_EvaluationList') is None
+
+
+def test_assoc_toolInfoModel31_stub_double():
+    # ptnet_AnyObject has no real 'AnyObject' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_ToolInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_ToolInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_ToolInfo(formattedXMLBuffer="sample_text", tool="sample_text", toolInfoGrammarURI="sample_text", version="sample_text")
+    partner = ptnet_AnyObject()
+    setattr(partner, 'AnyObject', None)
+    _safe_set(owner, 'containerToolInfo', partner)
+    assert getattr(partner, 'AnyObject') == owner
+    _safe_set(owner, 'containerToolInfo', None)
+    assert getattr(partner, 'AnyObject') is None
+
+
+def test_assoc_toolspecifics32_stub_double():
+    # ptnet_Label has no real 'containerLabel' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_ToolInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_ToolInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_ToolInfo(formattedXMLBuffer="sample_text", tool="sample_text", toolInfoGrammarURI="sample_text", version="sample_text")
+    partner = ptnet_Label()
+    setattr(partner, 'containerLabel', None)
+    _safe_set(owner, 'ToolInfo33', partner)
+    assert getattr(partner, 'containerLabel') == owner
+    _safe_set(owner, 'ToolInfo33', None)
+    assert getattr(partner, 'containerLabel') is None
+
+
+def test_assoc_variable158_stub_double():
+    # ptnet_VariableExpression has no real 'ptnet_VariableExpression' property in the generated
+    # code (a bare stub) -- manually attach it so ptnet_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ptnet_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ptnet_Variable(name="sample_text")
+    partner = ptnet_VariableExpression()
+    setattr(partner, 'ptnet_VariableExpression', None)
+    _safe_set(owner, 'ptnet_Variable159', partner)
+    assert getattr(partner, 'ptnet_VariableExpression') == owner
+    _safe_set(owner, 'ptnet_Variable159', None)
+    assert getattr(partner, 'ptnet_VariableExpression') is None
+
+

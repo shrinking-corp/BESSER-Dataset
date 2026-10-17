@@ -171,3 +171,146 @@ def test_assoc_base_Property29_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'soaml_Property30', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_base_Class31_stub_double():
+    # soaml_Class has no real 'soaml_Class32' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_MessageType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_MessageType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_MessageType(encoding="sample_text")
+    partner = soaml_Class()
+    setattr(partner, 'soaml_Class32', None)
+    _safe_set(owner, 'soaml_MessageType', partner)
+    assert getattr(partner, 'soaml_Class32') == owner
+    _safe_set(owner, 'soaml_MessageType', None)
+    assert getattr(partner, 'soaml_Class32') is None
+
+
+def test_assoc_base_Comment41_stub_double():
+    # soaml_Comment has no real 'soaml_Comment' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_Milestone's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_Milestone's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_Milestone(progress="sample_text")
+    partner = soaml_Comment()
+    setattr(partner, 'soaml_Comment', None)
+    _safe_set(owner, 'soaml_Milestone42', partner)
+    assert getattr(partner, 'soaml_Comment') == owner
+    _safe_set(owner, 'soaml_Milestone42', None)
+    assert getattr(partner, 'soaml_Comment') is None
+
+
+def test_assoc_base_DataType33_stub_double():
+    # soaml_DataType has no real 'soaml_DataType' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_MessageType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_MessageType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_MessageType(encoding="sample_text")
+    partner = soaml_DataType()
+    setattr(partner, 'soaml_DataType', None)
+    _safe_set(owner, 'soaml_MessageType34', partner)
+    assert getattr(partner, 'soaml_DataType') == owner
+    _safe_set(owner, 'soaml_MessageType34', None)
+    assert getattr(partner, 'soaml_DataType') is None
+
+
+def test_assoc_base_Port22_stub_double():
+    # soaml_Request has no real 'soaml_Request' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_Port's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_Port's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_Port(connectorRequired="sample_text")
+    partner = soaml_Request()
+    setattr(partner, 'soaml_Request', None)
+    _safe_set(owner, 'soaml_Port23', partner)
+    assert getattr(partner, 'soaml_Request') == owner
+    _safe_set(owner, 'soaml_Port23', None)
+    assert getattr(partner, 'soaml_Request') is None
+
+
+def test_assoc_base_Port24_stub_double():
+    # soaml_Service has no real 'soaml_Service' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_Port's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_Port's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_Port(connectorRequired="sample_text")
+    partner = soaml_Service()
+    setattr(partner, 'soaml_Service', None)
+    _safe_set(owner, 'soaml_Port25', partner)
+    assert getattr(partner, 'soaml_Service') == owner
+    _safe_set(owner, 'soaml_Port25', None)
+    assert getattr(partner, 'soaml_Service') is None
+
+
+def test_assoc_base_Property48_stub_double():
+    # soaml_FreeFormDescriptor has no real 'soaml_FreeFormDescriptor' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_Property(isID="sample_text")
+    partner = soaml_FreeFormDescriptor()
+    setattr(partner, 'soaml_FreeFormDescriptor', None)
+    _safe_set(owner, 'soaml_Property49', partner)
+    assert getattr(partner, 'soaml_FreeFormDescriptor') == owner
+    _safe_set(owner, 'soaml_Property49', None)
+    assert getattr(partner, 'soaml_FreeFormDescriptor') is None
+
+
+def test_assoc_base_Signal35_stub_double():
+    # soaml_Signal has no real 'soaml_Signal' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_MessageType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_MessageType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_MessageType(encoding="sample_text")
+    partner = soaml_Signal()
+    setattr(partner, 'soaml_Signal', None)
+    _safe_set(owner, 'soaml_MessageType36', partner)
+    assert getattr(partner, 'soaml_Signal') == owner
+    _safe_set(owner, 'soaml_MessageType36', None)
+    assert getattr(partner, 'soaml_Signal') is None
+
+
+def test_assoc_signal38_stub_double():
+    # soaml_Signal has no real 'soaml_Signal40' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_Milestone's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_Milestone's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_Milestone(progress="sample_text")
+    partner = soaml_Signal()
+    setattr(partner, 'soaml_Signal40', None)
+    _safe_set(owner, 'soaml_Milestone39', partner)
+    assert getattr(partner, 'soaml_Signal40') == owner
+    _safe_set(owner, 'soaml_Milestone39', None)
+    assert getattr(partner, 'soaml_Signal40') is None
+
+
+def test_assoc_value37_stub_double():
+    # soaml_ValueSpecification has no real 'soaml_ValueSpecification' property in the generated
+    # code (a bare stub) -- manually attach it so soaml_Milestone's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # soaml_Milestone's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = soaml_Milestone(progress="sample_text")
+    partner = soaml_ValueSpecification()
+    setattr(partner, 'soaml_ValueSpecification', None)
+    _safe_set(owner, 'soaml_Milestone', {partner})
+    assert getattr(partner, 'soaml_ValueSpecification') == owner
+    _safe_set(owner, 'soaml_Milestone', set())
+    assert getattr(partner, 'soaml_ValueSpecification') is None
+
+

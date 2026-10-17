@@ -152,3 +152,26 @@ def test_assoc_sons0_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'Families_Member', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_families16_stub_double():
+    # Families_FamilyRegistry has no real 'Families_FamilyRegistry' property in the generated
+    # code (a bare stub) -- manually attach it so Families_Family's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # Families_Family's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = Families_Family(address="sample_text", lastName="sample_text")
+    partner = Families_FamilyRegistry()
+    setattr(partner, 'Families_FamilyRegistry', None)
+    _safe_set(owner, 'Families_Family17', partner)
+    assert getattr(partner, 'Families_FamilyRegistry') == owner
+    _safe_set(owner, 'Families_Family17', None)
+    assert getattr(partner, 'Families_FamilyRegistry') is None
+
+

@@ -14,6 +14,198 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-17 — BOM-read rollout, stale-cache-by-test-file safeguard, and a non-decision on the mutation-score exclusion filter
+
+**BOM-sniffing fix rolled out to the remaining 17 scripts.** `_read_text_robust()` (sniffs the actual BOM bytes for `--models-file` instead of assuming one encoding -- see the 2026-10-12 entry below for the two different real encodings this already caught) had only been applied to the 4 scripts touched that day. Grepped for the vulnerable `models_file.read_text().splitlines()` pattern across `scripts/`, found 17 more, applied the same helper to all of them: `generate_crosshair_tests.py`, `generate_super_suite.py`, `generate_combined_tests.py`, `generate_pynguin_tests.py`, `validate_coverage.py`, `generate_structural_tests.py`, `validate_class_coverage.py`, `validate_generator_fidelity.py`, `validate_coverage_split.py`, `validate_coverage_structural.py`, `validate_generator_fidelity_names.py`, `generate_model_metadata.py`, `generate_code_structure.py`, `classify_method_logic.py`, `validate_mutation.py`, `buml_to_puml.py`, `check_property_name_mismatches.py`.
+
+**Stale-cache-by-test-file safeguard, built for real instead of left as a "decide later" item.** The 2026-09-16 entry below documented a real incident (two class-coverage runs sharing a `--report-name` but different `--test-file` values, second run silently reusing the first's cached results under its own key) and only worked around it manually (distinct `--report-name` per run), noting the script-level fix as "not yet built." Fixed at the code level this time, in the 4 scripts that actually combine a resumable JSONL cache with `--test-file`: `validate_class_coverage.py`, `validate_coverage_structural.py`, `validate_mutation.py`, `validate_mutation_properties.py`. Each cached result now records which `test_file` produced it; `load_cache()` takes an `expected_test_file` argument and drops (forces recompute of) any cached entry recorded against a different test file, printing how many it dropped, instead of silently trusting it. Entries written before this field existed (no `"test_file"` key) are still trusted, so existing caches aren't invalidated. The other ~14 cache-using scripts don't take `--test-file` at all, so they were never exposed to this failure mode and weren't touched.
+
+**Decided not to build a dedicated "exclude unmeasurable models" script.** `reports/excluded_models_master.json` already records the 111 models with no calculable mutation score (79 `old_suite_unmeasurable` + 32 `combined_suite_unmeasurable`, both timeout-driven, distinct from the 631 `no_logic` models). No current script cross-references mutation score against difficulty score, so there's nothing to wire this into yet, and building a standalone script for a 2-3 line filter nobody calls would be premature. Whenever a future analysis actually needs it: load `excluded_models_master.json`, pull the model names tagged with either of those two reasons, and subtract them from that script's model list inline -- no new script or shared helper needed for this.
+
+---
+
+## 2026-10-12 — "Equivalent" mutants from stub associations turned out to be killable after all
+
+Reversing a 2026-10-01 conclusion: stub-association mutants (one side of a bidirectional link is a bare `class X: pass` with no real properties, so the generated code's own `hasattr(item, "...")` guard protecting that logic is permanently False) were assumed genuinely unkillable by any test -- "a real, non-zero floor... account for that when judging any track's resulting mutation score." That diagnosis of *why* they survive was correct; the conclusion that nothing could kill them was not.
+
+**Found while debugging why a local-LLM generator-upgrade loop made zero progress on `model_1` across 5 retries** (see the "Local-LLM test-generation experiment" entry below): traced all 26 surviving mutants by hand against the real generated code. ~24/26 sit behind exactly this stub-association pattern (`target`, `petrinet_Node5`, `petrinet_Node9`, `Node`, `petrinet_Petrinet2` -- all point at the bare `petrinet_Arc` stub). This wasn't an LLM or prompting failure; no test, from any technique, can observe a difference inside dead code.
+
+**The fix**: `petrinet_Arc` has no `__slots__`, so nothing stops a *test* from manually `setattr()`-ing the exact attribute name a real implementation would have had, before exercising the real side's setter. This is an ordinary test-double pattern -- standing in for an incomplete collaborator to test the real side's own logic in isolation -- not a fabricated result: the resulting assertion genuinely passes or fails based on real behavior. Hand-traced the exact sequence against `model_1`'s `target` property first to confirm the mutated comparison (`opp_val == self` -> `is not`/`<`/`>`/etc.) would actually be observable this way, before building anything.
+
+**Built as a new deterministic rule in `scripts/generate_behavioral_tests.py`** (not LLM-dependent -- same "diagnose once by hand, hand-write a reliable generator rule" pattern as the original behavioral generator): for each binary association where exactly one side is a stub, construct both sides, manually attach the stub's missing reciprocal attribute, then exercise the real side's setter (assign + clear), asserting the stub's attribute updates correctly both ways.
+
+**Result on `model_1`: 35% (baseline) -> 42.5% (first behavioral fix) -> 95% (38/40 killed, 2 survived).** Confirmed not a false positive the same way the CrossHair/LLM-written-test bugs were: a collection-failure false positive always produces a *uniform* result (every mutant misread as killed identically, i.e. 40/0) -- a genuine 38/2 split is only possible if the suite is actually differentiating between mutants, which means it's really running.
+
+**Confirmed this generalizes well beyond `model_1`**: ran across the full 200-model sample, folded into the super suite -- **92.66% avg, 200/200 measured**. Vs. baseline (50.85%): **+41.81 pt lift**, 142 improved / 0 worsened / 58 unchanged. Vs. the pre-stub-double super suite (77.59%, see the entry below): a further **+15.08 pts**, 55 improved / 0 worsened / 145 unchanged. Zero models worsened in either comparison -- the fix is monotonic at scale, not a `model_1`-specific fluke. Report: `reports/test_generation_super_suite_mutation_v2.{json,md}`.
+
+---
+
+## 2026-10-12 — Local-LLM test-generation experiment (exploratory, via Ollama)
+
+Before handing the colleague's two-stage pipeline off, tried running it locally against `model_1` with a local Ollama model to see what breaks in practice. Real findings, not wasted effort -- several genuine bugs found and fixed along the way:
+
+- **`llama3:8b` too weak for this task.** First just described the code instead of editing it at all (fixed by restating the instruction at the end of the user turn, not just the system prompt -- weaker models weight a system prompt less reliably than something stated right before generation starts). Once it did attempt the task, it wrote fragments with malformed names (`exact_name='constructible'` instead of just `constructible`) and hallucinated code unrelated to anything real in the file.
+- **`qwen3-coder:latest` capable, but surfaced real format and safety problems.** Asking for a full-file rewrite caused genuine timeouts (large expected output, compounded by Ollama's default 5-minute keep-alive evicting the model between slow retries) -- fixed by switching from "return the whole file" to a plain-text `<<<ADD>>>`/`<<<REPLACE name>>>`/`<<<DELETE name>>>` ... `<<<END>>>` action format (deliberately not JSON either: embedding multi-line code as a JSON string needs exact escaping of every newline/quote, which a weak model gets wrong far more often than it gets a short literal marker line wrong).
+- **A real false-positive mutation score, same bug class as the CrossHair syntax bug.** An LLM-written test called a constructor with the wrong arguments, so it failed unconditionally (not from any mutation) -- `pytest -x` turned that into "every mutant looks killed." Fixed by adding `check_baseline_passes()` to `scripts/generate_llm_improved_tests.py`: the candidate suite must pass UNMUTATED before any mutation score from it is trusted at all; if every model's baseline fails, mutation measurement is skipped entirely that retry and the LLM is shown the real error instead.
+- **A duplicate-definition bug in our own `apply_edit_actions()`**: an `ADD` action for a name that already exists would have created a conflicting duplicate top-level definition instead of replacing it (confirmed real -- `qwen3-coder` did this twice for the same helper). Fixed to auto-convert to a replace in that case.
+- **The real reason retries stopped helping wasn't the model or the prompt at all** -- see the "equivalent mutants" entry above. Once ~92% of a model's survivors are confirmed unkillable by any test, no amount of retrying moves the score; the deterministic stub-double fix was the right lever, not more prompting.
+- **A recurring BOM encoding bug, found twice with two different encodings on two different scripts**: PowerShell's `echo >` defaults to UTF-16LE with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM -- neither matches plain `.read_text()`'s assumption, and the UTF-16 case also corrupts line-splitting entirely (one line becomes several, since UTF-16 is 2 bytes/char). Fixed with a shared `_read_text_robust()` helper (sniffs the actual BOM bytes) in `generate_llm_improved_tests.py`, `generate_behavioral_tests.py`, `merge_combined_and_behavioral.py`, and `validate_mutation_properties.py` so far -- `checklist.md` tracks rolling it out to the ~20 other scripts with the same `--models-file` pattern.
+
+---
+
+## 2026-10-11 — Super suite confirmed to beat every individual test-generation approach, not just on average
+
+Ran `scripts/generate_super_suite.py` (combined+behavioral+CrossHair, with the invalid-syntax guard from the earlier entry) for real across the 200-model sample, then measured mutation score with `--hypothesis-seed=0` (the now-standing convention) via `validate_mutation_properties.py`.
+
+First pass measured 185/200 (15 timeout); retried at `--overall-timeout 1800` and all 15 recovered, same auto-retry pattern used everywhere else in this project (no manual merge needed, same `--report-name`).
+
+**Final result: 200/200 measured, 77.59% avg.** On the full 200-model set, baseline scores its own already-published 50.85% -- a **+26.74 point lift**, well beyond even CrossHair's standalone best (64.24% on its own, smaller, 173-model subset). Per-model breakdown is the real confirmation this isn't just an average fluke: **123 improved, 0 worsened, 77 unchanged** -- strictly monotonic, now confirmed on the complete sample, not just the 185 that measured on the first pass. Behavioral alone was already known to be monotonic (purely additive); this confirms the property holds even once CrossHair's tests (which were a real mixed bag -- 65 worsened -- when substituted in standalone) are merged alongside rather than swapped in. Report: `reports/test_generation_super_suite_mutation.{json,md}`.
+
+This is now the strongest evidence in the whole comparison for the "combine, don't pick one" recommendation already written up in `reports/test_generation_comparison_report.md`.
+
+---
+
+## 2026-10-11 — Built the colleague's two-stage LLM pipeline (generator upgrade, then per-model tests), pluggable and scratch-safe
+
+Per the redesigned plan (see Step 2/checklist, 2026-10-11): instead of an LLM patching tests for one model at a time, stage 1 edits the *shared* test-generator script using patterns pooled across the sample's surviving mutants (the same kind of improvement as the behavioral generator, but LLM-found instead of hand-found); stage 2 then adds per-model tests on top, once stage 1 has run across the whole sample.
+
+Built two files:
+- **`scripts/llm_test_adapter.py`** -- the pluggable interface (`upgrade_generator`, `write_model_specific_tests`). `StubAdapter` is a no-op (no network call, no API key) specifically so every OTHER part of the pipeline can be verified for real without one. `LiteLLMAdapter` is a thin wrapper around `litellm.completion(**kwargs)`, deliberately not exercised against a real model/key from this side -- that's the colleague's own credential and config, not ours to guess at.
+- **`scripts/generate_llm_improved_tests.py`** -- the two-stage orchestrator. Every file it writes lives under `--scratch-dir`, never `Dataset/` directly -- enforced unconditionally here (not left to caller discipline), since an LLM-edited generator script is untrusted code by this project's own standard, and running untrusted generated code directly against the live dataset would be a much worse failure mode than the usual case. Reuses the real pipeline throughout, not reimplementations: `generate_structural_tests.py` for regeneration, `generate_combined_tests.py`'s `combine_tests()` for the old+new merge, the same invalid-syntax guard `generate_super_suite.py` uses for CrossHair, and `validate_mutation_properties.py` (with `--hypothesis-seed=0` and `--export-surviving-mutants`, so each retry's prompt is built from THAT retry's own remaining gaps, not stale baseline data) for the real, expensive mutation measurement. The "still open" design questions from the checklist (retry count, per-model-vs-aggregate threshold, whether to afford a full-sample remeasurement every retry) are left as CLI flags with defaults rather than guessed at and hardcoded.
+
+**Verified end-to-end on exactly one named model (`model_1`, never the real dataset)**, stub adapter, `--max-retries 1 --stage 1`: real regeneration -> real suite assembly -> real mutation measurement gave **0.35**, an exact match to `model_1`'s already-known, seed-0-reproducible baseline score. That's a stronger check than "it runs without crashing" -- it confirms the plumbing produces the SAME real number the rest of this project already trusts, not a plausible-looking but wrong one. Stage 2 also verified not to corrupt anything with the stub adapter (0 tests added, candidate file's test count unchanged).
+
+---
+
+## 2026-10-11 — PCA component sweep: more components does not mean better agreement with the article formula
+
+Built `scripts/experiment_difficulty_score_pca.py` to check an implicit assumption behind the official 2-component (PC1+PC2) `difficulty_score`: that using more of the available structure (up to all 11 components) would track the reference paper's formula at least as well. Run dataset-wide (8,451 models, excluding the ~631 no_logic-only models the official score doesn't exclude):
+
+**Spearman-vs-`difficulty_score_article` is not monotonic in component count, and PC1 alone is the best single choice (+0.8960)** -- adding PC2 (the official combination) actually drops it to +0.8791, it keeps dropping through PC3/PC4 (+0.8672/+0.8653), then slowly climbs back to +0.8887 by PC10, never recovering to PC1-alone. Makes sense once stated plainly: the article formula is an unbounded linear combination of raw counts, dominated by sheer size -- exactly what PC1 ("how big") already measures. PC2's axis (data-schema-heavy vs. hierarchy-heavy architectural style, real variation, already documented in `difficulty_score_report.md`) is a *different kind* of complexity the article formula was never designed to reward, so folding it in trades away some rank agreement with that specific reference, even though it's the reason PC2 was included in the first place (capturing a second, genuinely different axis of difficulty the article formula misses entirely). **This isn't a reason to drop PC2** -- the official score's goal was never "maximize agreement with the article formula," it was "capture more than one real kind of structural complexity" -- but it is a concrete number for anyone asking why the two scores don't agree perfectly, and confirms the two scores are measuring deliberately different things, not that either is wrong.
+
+**Second experiment, same script**: removing the percentile clip changes rank agreement negligibly (+0.8791 clamped vs. +0.8790 unclamped, delta -0.0001) -- confirms clipping barely affects *rank*, as expected. But it does real, measurable work on *magnitude*: **13/8,451 models (0.15%) exceed the nominal 0-100 cap once unclamped**, up to 106.2 (`model_2578`); 0 fall below 0.
+
+Full numbers: `reports/difficulty_score_pca_experiment_report.json`. Also built `scripts/difficulty_score_distribution.py` (1-point-bucket histogram of the official score, same exclusion): mean 33.0, median 29.35, min 3.27 (exact match to the official full-dataset min -- a good independent cross-check that the exclusion didn't silently break anything), max 93.55, right-skewed, densest around 15-30.
+
+---
+
+## 2026-10-11 — The 22 tree-sitter-vs-model name mismatches were false positives in our own checker, not a dataset defect
+
+Scoped down from the original idea ("fix the models/code that `validate_generator_fidelity_names.py` flagged") after actually reading the generated code for several of the 22 flagged models, rather than assuming the report was right: **every one of the 22 is a false positive in this project's own name-resolution logic**, not a generator bug, and not a tree-sitter bug. There was nothing in the dataset to fix.
+
+Two confirmed patterns (full detail in `validate_generator_fidelity_names.py`'s own docstring, which was updated alongside the fix):
+
+1. **20/22**: a BUML attribute named `property` or `self` collides with a Python builtin/keyword. The generator disambiguates -- inconsistently across the dataset -- either by keeping the public `@property` accessor's original name while only renaming the internal backing field (`model_116`: `self` -> public getter still `self`, backing field `self_`), or by renaming both ends with the same `+1` suffix (`model_100505`: `self` -> `self1` end-to-end; `model_10001303`: `property` -> `property1` end-to-end). The old checker only ever looked at the code's `attributes` list, never `methods`, and never tried a `+1` suffix -- so it reported "missing" for something that was correctly generated, just filed under a different JSON key or a disambiguated name.
+2. **2/22**: the already-known `Factura` -> `Facturas` pluralization, which `generate_structural_tests.py`'s own `resolve_code_name()` already handles but this checker never carried over.
+
+**Fix applied to `scripts/validate_generator_fidelity_names.py`** (no dataset files touched -- manually "fixing" already-correct generated code would have diverged 22 models from their own generator and broken consistency with the rest of the dataset for no reason): `resolve_name_in_set()` now tries, in order, the raw name, the sanitized name, each of those with a `+1` suffix (attributes) or `+s` suffix (classes), and finally a case-insensitive match as a last resort.
+
+**Re-verified against exactly these 22 named models (not a full/sampled dataset run, per standing rule)**: 20/22 now resolve with zero mismatch. The remaining 2 are real, distinct findings, not resolver gaps:
+- `model_10001897`: one attribute, `Fecha`, is genuinely absent from the generated code under any name/case tried -- a real (tiny) generator gap.
+- `model_10001985`: turns out *not* to be the same kind of case as `model_10001897` despite being documented together as "the Factura pair" since early in the project -- its BUML `Factura` class has no matching class in the code at all, instead splitting into two package/layer-qualified classes (`LogicaPresentacion___Factura_Component`, `Persistencia___Factura_Component`). A structurally different, more complex case, not chased further today.
+
+**Confirmed dataset-wide (8,336/8,336 compared, `--fresh` -- the first attempt silently reused the pre-fix cache, since `"compared"` isn't a retriable status; worth remembering for any future fix to a script with a mature cache)**: mismatch rate drops from 0.26% (22/8,336) to **0.02% (2/8,336)**, and the 2 remaining are exactly the two genuine findings above -- no new false positives, no regressions.
+
+---
+
+## 2026-10-11 — Standing convention: `--hypothesis-seed=0` for every test-generation-comparison mutation run
+
+Writing this down explicitly because it had only ever been agreed in
+conversation, not recorded anywhere, which caused a real mix-up: a
+super-suite mutation command was handed off and run without the flag before
+this was caught.
+
+**The rule**: every mutation measurement that feeds the test-generation
+comparison (`reports/test_generation_comparison_report.md` and anything
+that extends it -- baseline, Pynguin, CrossHair, Behavioral, the super
+suite, and any future approach) uses `--hypothesis-seed=0` on
+`validate_mutation_properties.py`, for genuine apples-to-apples
+comparability across approaches. Confirmed with the user 2026-10-11: the
+4 existing Stage 1 reports (`test_generation_baseline_mutation`,
+`_behavioral_mutation`, `_pynguin_mutation`, `_crosshair_mutation`) were
+already run this way, so the super suite run joining them must match.
+
+**Why this is worth a flag was easy to miss**: neither the mutation
+validators nor their reports store which flags a given run used --
+`--hypothesis-seed`'s effect lives entirely inside a per-model cosmic-ray
+config file in a scratch directory that gets deleted once that model's run
+finishes, so there is no way to verify after the fact whether a past run
+was seeded just by inspecting `reports/*.json` or the dataset. If this ever
+needs re-confirming, there is no file to check -- only this entry and
+whoever ran the commands.
+
+**Scope**: this is specific to the test-generation-comparison sample
+(200 models) and whatever supersedes it. The much larger body of
+already-published full-dataset mutation scores (old/new/combined suites,
+~9,082 models) was measured before this convention existed and is not
+retroactively affected -- that's the same already-known
+"not reproducible pre-`cap_mutants`-fix" gap tracked separately (see the
+"Found and fixed a real bug in cap_mutants()" entry above/below).
+
+---
+
+## 2026-10-11 — Super suite merger built; found a real bug in CrossHair's own output deflating confidence in 4 standalone scores
+
+Built `scripts/generate_super_suite.py`: `test_combined.py` + `test_behavioral.py`
++ `test_crosshair.py` merged into one real `test_super_suite.py` per model,
+the actual artifact for "does combining everything beat each individual
+approach" (not just averaging separate scores).
+
+**Checked collision risk before writing it, rather than assuming**: an AST
+scan across all 177 models that actually have `test_crosshair.py` found
+**zero top-level function-name collisions** against that same model's
+`test_combined.py`/`test_behavioral.py` — CrossHair's own naming
+(`test_{ClassName}___init__`, triple underscore) never matches anything our
+own generators produce. Plain concatenation is safe here for the same
+reason it was already safe for behavioral (a wholly new test shape with no
+counterpart to dedupe against), confirmed rather than inherited by analogy.
+
+**Real bug found during that same scan**: 4/177 models'
+(`model_452`, `model_1116`, `model_1185`, `model_3216`) `test_crosshair.py`
+is **not valid Python** — CrossHair's `--example_output_format pytest`
+can emit a bare object repr (e.g.
+`UML2WithID_Component={<python_code.UML2WithID_Interface object at
+0x...>}`) into a set literal when it can't find a better example value for
+a set-typed argument. A syntactically broken test file fails to even
+collect under pytest regardless of which mutation is applied to
+`python_code.py`, and neither `validate_mutation.py` nor
+`validate_mutation_properties.py` ever checks that the *unmutated* test
+file collects before trusting a result — cosmic-ray reads the resulting
+non-zero exit code as "killed" for every single mutant, every time.
+Confirmed: all 4 models report `mutation_score: 1.0`, `killed: 40/40`,
+`survived: 0` — a fake perfect score from a collection failure, not real
+test strength. **Corrected published number**: excluding these 4,
+`reports/test_generation_comparison_report.md`'s CrossHair standalone
+average moves from **65.05% → 64.24%** (177 → 173 models). The headline
+conclusion (CrossHair beats baseline) is unaffected, but the number was
+inflated.
+
+**Fix applied in `generate_super_suite.py`**: `ast.parse`-validate
+`test_crosshair.py` before including it in the merge; an invalid file is
+skipped for that model (flagged in the report as
+`crosshair_skipped_invalid_syntax`, not silently dropped) rather than
+corrupting the whole merged file into another fake-perfect score — which
+would have been worse than the standalone case, since it would also mask
+whatever `test_combined.py`/`test_behavioral.py` were really contributing.
+
+**Not yet fixed at the root**: `validate_mutation.py`/
+`validate_mutation_properties.py` still have no baseline-collection sanity
+check for *any* test file, so this exact failure mode could recur for any
+future generator with its own syntax edge cases, not just CrossHair. Noted
+as a known gap, not scheduled.
+
+**Verified** against a 4-model scratch copy (never the real dataset):
+plain combined-only merge (`model_1`), a clean 3-way merge with real
+behavioral + CrossHair tests (`model_10000151` — counts matched exactly:
+2 behavioral + 2 CrossHair tests added, confirmed independently via
+`grep -c '^def test_'`), a 3-way merge where the model's own
+`test_behavioral.py` legitimately contains zero tests, just unused helper
+functions (`model_10000011` — correctly reported as 0 added, not a bug),
+and the invalid-syntax skip case (`model_452` — confirmed the broken
+literal is absent from the merged output and the file still parses).
+
+---
+
 ## 2026-10-02 — Name-based generator fidelity, run dataset-wide: 99.74% clean, two real patterns found
 
 **Run against the full `usable_models.txt` (8,336 models)**:

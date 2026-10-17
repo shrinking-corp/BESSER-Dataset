@@ -154,3 +154,71 @@ def test_assoc_TargetTable7_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'database_Table9', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_DbFK0_stub_double():
+    # database_Database has no real 'DbFkRoot' property in the generated
+    # code (a bare stub) -- manually attach it so database_ForeignKey's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # database_ForeignKey's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = database_ForeignKey(Name="sample_text")
+    partner = database_Database()
+    setattr(partner, 'DbFkRoot', None)
+    _safe_set(owner, 'ForeignKey', partner)
+    assert getattr(partner, 'DbFkRoot') == owner
+    _safe_set(owner, 'ForeignKey', None)
+    assert getattr(partner, 'DbFkRoot') is None
+
+
+def test_assoc_DbFkRoot15_stub_double():
+    # database_Database has no real 'Database16' property in the generated
+    # code (a bare stub) -- manually attach it so database_ForeignKey's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # database_ForeignKey's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = database_ForeignKey(Name="sample_text")
+    partner = database_Database()
+    setattr(partner, 'Database16', None)
+    _safe_set(owner, 'DbFK', partner)
+    assert getattr(partner, 'Database16') == owner
+    _safe_set(owner, 'DbFK', None)
+    assert getattr(partner, 'Database16') is None
+
+
+def test_assoc_DbTable1_stub_double():
+    # database_Database has no real 'DbTableRoot' property in the generated
+    # code (a bare stub) -- manually attach it so database_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # database_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = database_Table(Name="sample_text")
+    partner = database_Database()
+    setattr(partner, 'DbTableRoot', None)
+    _safe_set(owner, 'Table', partner)
+    assert getattr(partner, 'DbTableRoot') == owner
+    _safe_set(owner, 'Table', None)
+    assert getattr(partner, 'DbTableRoot') is None
+
+
+def test_assoc_DbTableRoot2_stub_double():
+    # database_Database has no real 'Database' property in the generated
+    # code (a bare stub) -- manually attach it so database_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # database_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = database_Table(Name="sample_text")
+    partner = database_Database()
+    setattr(partner, 'Database', None)
+    _safe_set(owner, 'DbTable', partner)
+    assert getattr(partner, 'Database') == owner
+    _safe_set(owner, 'DbTable', None)
+    assert getattr(partner, 'Database') is None
+
+

@@ -455,3 +455,311 @@ def test_assoc_updateColumns75_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'SQL2003_evo_Trigger', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_columns39_stub_double():
+    # SQL2003_evo_Restriction has no real 'restrictions40' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuralComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuralComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuralComponent(name="sample_text")
+    partner = SQL2003_evo_Restriction()
+    setattr(partner, 'restrictions40', None)
+    _safe_set(owner, 'StructuralComponent', partner)
+    assert getattr(partner, 'restrictions40') == owner
+    _safe_set(owner, 'StructuralComponent', None)
+    assert getattr(partner, 'restrictions40') is None
+
+
+def test_assoc_components88_stub_double():
+    # SQL2003_evo_View has no real 'views89' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuralComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuralComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuralComponent(name="sample_text")
+    partner = SQL2003_evo_View()
+    setattr(partner, 'views89', None)
+    _safe_set(owner, 'StructuralComponent90', partner)
+    assert getattr(partner, 'views89') == owner
+    _safe_set(owner, 'StructuralComponent90', None)
+    assert getattr(partner, 'views89') is None
+
+
+def test_assoc_datatypes43_stub_double():
+    # SQL2003_evo_DataType has no real 'DataType' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Schema's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Schema's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Schema(name="sample_text")
+    partner = SQL2003_evo_DataType()
+    setattr(partner, 'DataType', None)
+    _safe_set(owner, 'schema44', {partner})
+    assert getattr(partner, 'DataType') == owner
+    _safe_set(owner, 'schema44', set())
+    assert getattr(partner, 'DataType') is None
+
+
+def test_assoc_features53_stub_double():
+    # SQL2003_evo_Feature has no real 'SQL2003_evo_Feature55' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuralComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuralComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuralComponent(name="sample_text")
+    partner = SQL2003_evo_Feature()
+    setattr(partner, 'SQL2003_evo_Feature55', None)
+    _safe_set(owner, 'SQL2003_evo_StructuralComponent54', {partner})
+    assert getattr(partner, 'SQL2003_evo_Feature55') == owner
+    _safe_set(owner, 'SQL2003_evo_StructuralComponent54', set())
+    assert getattr(partner, 'SQL2003_evo_Feature55') is None
+
+
+def test_assoc_method23_stub_double():
+    # SQL2003_evo_MethodParameter has no real 'parameters' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Method(body="sample_text", name="sample_text")
+    partner = SQL2003_evo_MethodParameter()
+    setattr(partner, 'parameters', None)
+    _safe_set(owner, 'Method', partner)
+    assert getattr(partner, 'parameters') == owner
+    _safe_set(owner, 'Method', None)
+    assert getattr(partner, 'parameters') is None
+
+
+def test_assoc_parameters22_stub_double():
+    # SQL2003_evo_MethodParameter has no real 'MethodParameter' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Method(body="sample_text", name="sample_text")
+    partner = SQL2003_evo_MethodParameter()
+    setattr(partner, 'MethodParameter', None)
+    _safe_set(owner, 'method', {partner})
+    assert getattr(partner, 'MethodParameter') == owner
+    _safe_set(owner, 'method', set())
+    assert getattr(partner, 'MethodParameter') is None
+
+
+def test_assoc_references36_stub_double():
+    # SQL2003_evo_UniqueConstraint has no real 'SQL2003_evo_UniqueConstraint' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_ReferentialConstraint's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_ReferentialConstraint's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_ReferentialConstraint(delete_action="sample_text", match="sample_text", update_action="sample_text")
+    partner = SQL2003_evo_UniqueConstraint()
+    setattr(partner, 'SQL2003_evo_UniqueConstraint', None)
+    _safe_set(owner, 'SQL2003_evo_ReferentialConstraint', partner)
+    assert getattr(partner, 'SQL2003_evo_UniqueConstraint') == owner
+    _safe_set(owner, 'SQL2003_evo_ReferentialConstraint', None)
+    assert getattr(partner, 'SQL2003_evo_UniqueConstraint') is None
+
+
+def test_assoc_restrictions51_stub_double():
+    # SQL2003_evo_Restriction has no real 'Restriction' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuralComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuralComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuralComponent(name="sample_text")
+    partner = SQL2003_evo_Restriction()
+    setattr(partner, 'Restriction', None)
+    _safe_set(owner, 'columns52', {partner})
+    assert getattr(partner, 'Restriction') == owner
+    _safe_set(owner, 'columns52', set())
+    assert getattr(partner, 'Restriction') is None
+
+
+def test_assoc_restrictions71_stub_double():
+    # SQL2003_evo_Restriction has no real 'Restriction73' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Table(name="sample_text")
+    partner = SQL2003_evo_Restriction()
+    setattr(partner, 'Restriction73', None)
+    _safe_set(owner, 'table72', {partner})
+    assert getattr(partner, 'Restriction73') == owner
+    _safe_set(owner, 'table72', set())
+    assert getattr(partner, 'Restriction73') is None
+
+
+def test_assoc_return_type19_stub_double():
+    # SQL2003_evo_DataType has no real 'SQL2003_evo_DataType21' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Method(body="sample_text", name="sample_text")
+    partner = SQL2003_evo_DataType()
+    setattr(partner, 'SQL2003_evo_DataType21', None)
+    _safe_set(owner, 'SQL2003_evo_Method20', partner)
+    assert getattr(partner, 'SQL2003_evo_DataType21') == owner
+    _safe_set(owner, 'SQL2003_evo_Method20', None)
+    assert getattr(partner, 'SQL2003_evo_DataType21') is None
+
+
+def test_assoc_schema8_stub_double():
+    # SQL2003_evo_DataType has no real 'datatypes' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Schema's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Schema's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Schema(name="sample_text")
+    partner = SQL2003_evo_DataType()
+    setattr(partner, 'datatypes', None)
+    _safe_set(owner, 'Schema9', partner)
+    assert getattr(partner, 'datatypes') == owner
+    _safe_set(owner, 'Schema9', None)
+    assert getattr(partner, 'datatypes') is None
+
+
+def test_assoc_structured78_stub_double():
+    # SQL2003_evo_TypedTable has no real 'typed' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuredType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuredType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuredType(is_final=True, is_instantiable=True)
+    partner = SQL2003_evo_TypedTable()
+    setattr(partner, 'typed', None)
+    _safe_set(owner, 'StructuredType79', partner)
+    assert getattr(partner, 'typed') == owner
+    _safe_set(owner, 'StructuredType79', None)
+    assert getattr(partner, 'typed') is None
+
+
+def test_assoc_table37_stub_double():
+    # SQL2003_evo_Restriction has no real 'restrictions' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Table(name="sample_text")
+    partner = SQL2003_evo_Restriction()
+    setattr(partner, 'restrictions', None)
+    _safe_set(owner, 'Table38', partner)
+    assert getattr(partner, 'restrictions') == owner
+    _safe_set(owner, 'Table38', None)
+    assert getattr(partner, 'restrictions') is None
+
+
+def test_assoc_tables86_stub_double():
+    # SQL2003_evo_View has no real 'views' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Table(name="sample_text")
+    partner = SQL2003_evo_View()
+    setattr(partner, 'views', None)
+    _safe_set(owner, 'Table87', partner)
+    assert getattr(partner, 'views') == owner
+    _safe_set(owner, 'Table87', None)
+    assert getattr(partner, 'views') is None
+
+
+def test_assoc_type24_stub_double():
+    # SQL2003_evo_DataType has no real 'SQL2003_evo_DataType25' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Parameter(name="sample_text")
+    partner = SQL2003_evo_DataType()
+    setattr(partner, 'SQL2003_evo_DataType25', None)
+    _safe_set(owner, 'SQL2003_evo_Parameter', partner)
+    assert getattr(partner, 'SQL2003_evo_DataType25') == owner
+    _safe_set(owner, 'SQL2003_evo_Parameter', None)
+    assert getattr(partner, 'SQL2003_evo_DataType25') is None
+
+
+def test_assoc_type35_stub_double():
+    # SQL2003_evo_ReferenceType has no real 'SQL2003_evo_ReferenceType' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuredType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuredType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuredType(is_final=True, is_instantiable=True)
+    partner = SQL2003_evo_ReferenceType()
+    setattr(partner, 'SQL2003_evo_ReferenceType', None)
+    _safe_set(owner, 'SQL2003_evo_StructuredType', partner)
+    assert getattr(partner, 'SQL2003_evo_ReferenceType') == owner
+    _safe_set(owner, 'SQL2003_evo_StructuredType', None)
+    assert getattr(partner, 'SQL2003_evo_ReferenceType') is None
+
+
+def test_assoc_type48_stub_double():
+    # SQL2003_evo_DataType has no real 'SQL2003_evo_DataType49' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuralComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuralComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuralComponent(name="sample_text")
+    partner = SQL2003_evo_DataType()
+    setattr(partner, 'SQL2003_evo_DataType49', None)
+    _safe_set(owner, 'SQL2003_evo_StructuralComponent', partner)
+    assert getattr(partner, 'SQL2003_evo_DataType49') == owner
+    _safe_set(owner, 'SQL2003_evo_StructuralComponent', None)
+    assert getattr(partner, 'SQL2003_evo_DataType49') is None
+
+
+def test_assoc_typed63_stub_double():
+    # SQL2003_evo_TypedTable has no real 'TypedTable' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuredType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuredType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuredType(is_final=True, is_instantiable=True)
+    partner = SQL2003_evo_TypedTable()
+    setattr(partner, 'TypedTable', None)
+    _safe_set(owner, 'structured64', {partner})
+    assert getattr(partner, 'TypedTable') == owner
+    _safe_set(owner, 'structured64', set())
+    assert getattr(partner, 'TypedTable') is None
+
+
+def test_assoc_views50_stub_double():
+    # SQL2003_evo_View has no real 'View' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_StructuralComponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_StructuralComponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_StructuralComponent(name="sample_text")
+    partner = SQL2003_evo_View()
+    setattr(partner, 'View', None)
+    _safe_set(owner, 'components', {partner})
+    assert getattr(partner, 'View') == owner
+    _safe_set(owner, 'components', set())
+    assert getattr(partner, 'View') is None
+
+
+def test_assoc_views68_stub_double():
+    # SQL2003_evo_View has no real 'View70' property in the generated
+    # code (a bare stub) -- manually attach it so SQL2003_evo_Table's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # SQL2003_evo_Table's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = SQL2003_evo_Table(name="sample_text")
+    partner = SQL2003_evo_View()
+    setattr(partner, 'View70', None)
+    _safe_set(owner, 'tables69', {partner})
+    assert getattr(partner, 'View70') == owner
+    _safe_set(owner, 'tables69', set())
+    assert getattr(partner, 'View70') is None
+
+

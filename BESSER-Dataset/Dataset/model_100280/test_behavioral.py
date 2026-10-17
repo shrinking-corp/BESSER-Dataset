@@ -125,3 +125,146 @@ def test_assoc_parameterAssignment37_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'ParameterAssignment', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_fusionGroups22_stub_double():
+    # model_FusionGroup has no real 'FusionGroup' property in the generated
+    # code (a bare stub) -- manually attach it so model_PetriNet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_PetriNet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_PetriNet(type="sample_text")
+    partner = model_FusionGroup()
+    setattr(partner, 'FusionGroup', None)
+    _safe_set(owner, 'petriNet23', {partner})
+    assert getattr(partner, 'FusionGroup') == owner
+    _safe_set(owner, 'petriNet23', set())
+    assert getattr(partner, 'FusionGroup') is None
+
+
+def test_assoc_hlinscription31_stub_double():
+    # model_HLAnnotation has no real 'model_HLAnnotation' property in the generated
+    # code (a bare stub) -- manually attach it so model_HLArcAddin's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_HLArcAddin's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_HLArcAddin(type="sample_text")
+    partner = model_HLAnnotation()
+    setattr(partner, 'model_HLAnnotation', None)
+    _safe_set(owner, 'model_HLArcAddin', partner)
+    assert getattr(partner, 'model_HLAnnotation') == owner
+    _safe_set(owner, 'model_HLArcAddin', None)
+    assert getattr(partner, 'model_HLAnnotation') is None
+
+
+def test_assoc_label4_stub_double():
+    # model_HasLabel has no real 'parent' property in the generated
+    # code (a bare stub) -- manually attach it so model_Label's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_Label's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_Label()
+    partner = model_HasLabel()
+    setattr(partner, 'parent', None)
+    _safe_set(owner, 'Label', partner)
+    assert getattr(partner, 'parent') == owner
+    _safe_set(owner, 'Label', None)
+    assert getattr(partner, 'parent') is None
+
+
+def test_assoc_page20_stub_double():
+    # model_Page has no real 'Page21' property in the generated
+    # code (a bare stub) -- manually attach it so model_PetriNet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_PetriNet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_PetriNet(type="sample_text")
+    partner = model_Page()
+    setattr(partner, 'Page21', None)
+    _safe_set(owner, 'petriNet', {partner})
+    assert getattr(partner, 'Page21') == owner
+    _safe_set(owner, 'petriNet', set())
+    assert getattr(partner, 'Page21') is None
+
+
+def test_assoc_parent27_stub_double():
+    # model_HasToolInfo has no real 'HasToolInfo' property in the generated
+    # code (a bare stub) -- manually attach it so model_ToolInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_ToolInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_ToolInfo(tool="sample_text", version="sample_text")
+    partner = model_HasToolInfo()
+    setattr(partner, 'HasToolInfo', None)
+    _safe_set(owner, 'toolinfo', partner)
+    assert getattr(partner, 'HasToolInfo') == owner
+    _safe_set(owner, 'toolinfo', None)
+    assert getattr(partner, 'HasToolInfo') is None
+
+
+def test_assoc_parent8_stub_double():
+    # model_HasLabel has no real 'HasLabel' property in the generated
+    # code (a bare stub) -- manually attach it so model_Label's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_Label's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_Label()
+    partner = model_HasLabel()
+    setattr(partner, 'HasLabel', None)
+    _safe_set(owner, 'label', partner)
+    assert getattr(partner, 'HasLabel') == owner
+    _safe_set(owner, 'label', None)
+    assert getattr(partner, 'HasLabel') is None
+
+
+def test_assoc_petriNet14_stub_double():
+    # model_Page has no real 'page' property in the generated
+    # code (a bare stub) -- manually attach it so model_PetriNet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_PetriNet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_PetriNet(type="sample_text")
+    partner = model_Page()
+    setattr(partner, 'page', None)
+    _safe_set(owner, 'PetriNet', partner)
+    assert getattr(partner, 'page') == owner
+    _safe_set(owner, 'PetriNet', None)
+    assert getattr(partner, 'page') is None
+
+
+def test_assoc_petriNet39_stub_double():
+    # model_FusionGroup has no real 'fusionGroups' property in the generated
+    # code (a bare stub) -- manually attach it so model_PetriNet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_PetriNet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_PetriNet(type="sample_text")
+    partner = model_FusionGroup()
+    setattr(partner, 'fusionGroups', None)
+    _safe_set(owner, 'PetriNet40', partner)
+    assert getattr(partner, 'fusionGroups') == owner
+    _safe_set(owner, 'PetriNet40', None)
+    assert getattr(partner, 'fusionGroups') is None
+
+
+def test_assoc_toolinfo6_stub_double():
+    # model_HasToolInfo has no real 'parent7' property in the generated
+    # code (a bare stub) -- manually attach it so model_ToolInfo's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_ToolInfo's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_ToolInfo(tool="sample_text", version="sample_text")
+    partner = model_HasToolInfo()
+    setattr(partner, 'parent7', None)
+    _safe_set(owner, 'ToolInfo', partner)
+    assert getattr(partner, 'parent7') == owner
+    _safe_set(owner, 'ToolInfo', None)
+    assert getattr(partner, 'parent7') is None
+
+

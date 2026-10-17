@@ -63,9 +63,27 @@ def load_cache(cache_path: Path) -> dict[str, dict]:
     return cached
 
 
+def _read_text_robust(path: Path) -> str:
+    """Reads a text file regardless of which BOM (if any) Windows wrote --
+    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
+    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
+    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
+    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
+    created with plain `echo` silently corrupts the first model name AND
+    throws off line-splitting entirely (one line becomes several, since
+    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
+    guessing from one case."""
+    raw = path.read_bytes()
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        return raw.decode("utf-16")
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return raw.decode("utf-8-sig")
+    return raw.decode("utf-8")
+
+
 def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
     if models_file:
-        names = [l.strip() for l in models_file.read_text().splitlines() if l.strip()]
+        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
         dirs = [dataset_dir / name for name in names]
     else:
         dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())

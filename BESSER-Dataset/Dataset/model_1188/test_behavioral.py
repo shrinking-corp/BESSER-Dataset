@@ -86,3 +86,101 @@ def test_assoc_model32_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'superimposed_OclModelElement', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_arguments10_stub_double():
+    # superimposed_OclExpression has no real 'superimposed_OclExpression11' property in the generated
+    # code (a bare stub) -- manually attach it so superimposed_OperationCallExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # superimposed_OperationCallExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = superimposed_OperationCallExp(name="sample_text")
+    partner = superimposed_OclExpression()
+    setattr(partner, 'superimposed_OclExpression11', None)
+    _safe_set(owner, 'superimposed_OperationCallExp', {partner})
+    assert getattr(partner, 'superimposed_OclExpression11') == owner
+    _safe_set(owner, 'superimposed_OperationCallExp', set())
+    assert getattr(partner, 'superimposed_OclExpression11') is None
+
+
+def test_assoc_initExpression0_stub_double():
+    # superimposed_OclExpression has no real 'superimposed_OclExpression' property in the generated
+    # code (a bare stub) -- manually attach it so superimposed_VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # superimposed_VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = superimposed_VariableDeclaration(name="sample_text")
+    partner = superimposed_OclExpression()
+    setattr(partner, 'superimposed_OclExpression', None)
+    _safe_set(owner, 'superimposed_VariableDeclaration', partner)
+    assert getattr(partner, 'superimposed_OclExpression') == owner
+    _safe_set(owner, 'superimposed_VariableDeclaration', None)
+    assert getattr(partner, 'superimposed_OclExpression') is None
+
+
+def test_assoc_iteratorVar31_stub_double():
+    # superimposed_Iterator has no real 'superimposed_Iterator' property in the generated
+    # code (a bare stub) -- manually attach it so superimposed_IteratorExp's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # superimposed_IteratorExp's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = superimposed_IteratorExp(name="sample_text")
+    partner = superimposed_Iterator()
+    setattr(partner, 'superimposed_Iterator', None)
+    _safe_set(owner, 'superimposed_IteratorExp', partner)
+    assert getattr(partner, 'superimposed_Iterator') == owner
+    _safe_set(owner, 'superimposed_IteratorExp', None)
+    assert getattr(partner, 'superimposed_Iterator') is None
+
+
+def test_assoc_type1_stub_double():
+    # superimposed_OclType has no real 'superimposed_OclType' property in the generated
+    # code (a bare stub) -- manually attach it so superimposed_VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # superimposed_VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = superimposed_VariableDeclaration(name="sample_text")
+    partner = superimposed_OclType()
+    setattr(partner, 'superimposed_OclType', None)
+    _safe_set(owner, 'superimposed_VariableDeclaration2', partner)
+    assert getattr(partner, 'superimposed_OclType') == owner
+    _safe_set(owner, 'superimposed_VariableDeclaration2', None)
+    assert getattr(partner, 'superimposed_OclType') is None
+
+
+def test_assoc_varDcl3_stub_double():
+    # superimposed_VariableExp has no real 'superimposed_VariableExp' property in the generated
+    # code (a bare stub) -- manually attach it so superimposed_VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # superimposed_VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = superimposed_VariableDeclaration(name="sample_text")
+    partner = superimposed_VariableExp()
+    setattr(partner, 'superimposed_VariableExp', None)
+    _safe_set(owner, 'superimposed_VariableDeclaration4', partner)
+    assert getattr(partner, 'superimposed_VariableExp') == owner
+    _safe_set(owner, 'superimposed_VariableDeclaration4', None)
+    assert getattr(partner, 'superimposed_VariableExp') is None
+
+
+def test_assoc_variable5_stub_double():
+    # superimposed_LetExp has no real 'superimposed_LetExp' property in the generated
+    # code (a bare stub) -- manually attach it so superimposed_VariableDeclaration's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # superimposed_VariableDeclaration's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = superimposed_VariableDeclaration(name="sample_text")
+    partner = superimposed_LetExp()
+    setattr(partner, 'superimposed_LetExp', None)
+    _safe_set(owner, 'superimposed_VariableDeclaration6', partner)
+    assert getattr(partner, 'superimposed_LetExp') == owner
+    _safe_set(owner, 'superimposed_VariableDeclaration6', None)
+    assert getattr(partner, 'superimposed_LetExp') is None
+
+

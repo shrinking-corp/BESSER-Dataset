@@ -643,3 +643,746 @@ def test_assoc_subsettedProperty143_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'ClassesProv_Property142', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_bodyCondition184_stub_double():
+    # ClassesProv_Constraint has no real 'ClassesProv_Constraint186' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Constraint()
+    setattr(partner, 'ClassesProv_Constraint186', None)
+    _safe_set(owner, 'ClassesProv_Operation185', {partner})
+    assert getattr(partner, 'ClassesProv_Constraint186') == owner
+    _safe_set(owner, 'ClassesProv_Operation185', set())
+    assert getattr(partner, 'ClassesProv_Constraint186') is None
+
+
+def test_assoc_class_131_stub_double():
+    # ClassesProv_Class has no real 'ClassesProv_Class' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_Class()
+    setattr(partner, 'ClassesProv_Class', None)
+    _safe_set(owner, 'ClassesProv_Property132', partner)
+    assert getattr(partner, 'ClassesProv_Class') == owner
+    _safe_set(owner, 'ClassesProv_Property132', None)
+    assert getattr(partner, 'ClassesProv_Class') is None
+
+
+def test_assoc_class_190_stub_double():
+    # ClassesProv_Class has no real 'ClassesProv_Class192' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Class()
+    setattr(partner, 'ClassesProv_Class192', None)
+    _safe_set(owner, 'ClassesProv_Operation191', partner)
+    assert getattr(partner, 'ClassesProv_Class192') == owner
+    _safe_set(owner, 'ClassesProv_Operation191', None)
+    assert getattr(partner, 'ClassesProv_Class192') is None
+
+
+def test_assoc_classifier85_stub_double():
+    # ClassesProv_InstanceSpecification has no real 'ClassesProv_InstanceSpecification86' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Classifier(isAbstract=True, isFinalSpecialization=True)
+    partner = ClassesProv_InstanceSpecification()
+    setattr(partner, 'ClassesProv_InstanceSpecification86', None)
+    _safe_set(owner, 'ClassesProv_Classifier', partner)
+    assert getattr(partner, 'ClassesProv_InstanceSpecification86') == owner
+    _safe_set(owner, 'ClassesProv_Classifier', None)
+    assert getattr(partner, 'ClassesProv_InstanceSpecification86') is None
+
+
+def test_assoc_client236_stub_double():
+    # ClassesProv_Dependency has no real 'ClassesProv_Dependency237' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = ClassesProv_Dependency()
+    setattr(partner, 'ClassesProv_Dependency237', None)
+    _safe_set(owner, 'ClassesProv_NamedElement238', partner)
+    assert getattr(partner, 'ClassesProv_Dependency237') == owner
+    _safe_set(owner, 'ClassesProv_NamedElement238', None)
+    assert getattr(partner, 'ClassesProv_Dependency237') is None
+
+
+def test_assoc_clientDependency6_stub_double():
+    # ClassesProv_Dependency has no real 'ClassesProv_Dependency' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = ClassesProv_Dependency()
+    setattr(partner, 'ClassesProv_Dependency', None)
+    _safe_set(owner, 'ClassesProv_NamedElement7', {partner})
+    assert getattr(partner, 'ClassesProv_Dependency') == owner
+    _safe_set(owner, 'ClassesProv_NamedElement7', set())
+    assert getattr(partner, 'ClassesProv_Dependency') is None
+
+
+def test_assoc_contract246_stub_double():
+    # ClassesProv_Substitution has no real 'ClassesProv_Substitution247' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Classifier(isAbstract=True, isFinalSpecialization=True)
+    partner = ClassesProv_Substitution()
+    setattr(partner, 'ClassesProv_Substitution247', None)
+    _safe_set(owner, 'ClassesProv_Classifier248', partner)
+    assert getattr(partner, 'ClassesProv_Substitution247') == owner
+    _safe_set(owner, 'ClassesProv_Classifier248', None)
+    assert getattr(partner, 'ClassesProv_Substitution247') is None
+
+
+def test_assoc_dataType150_stub_double():
+    # ClassesProv_DataType has no real 'ClassesProv_DataType' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_DataType()
+    setattr(partner, 'ClassesProv_DataType', None)
+    _safe_set(owner, 'ClassesProv_Property151', partner)
+    assert getattr(partner, 'ClassesProv_DataType') == owner
+    _safe_set(owner, 'ClassesProv_Property151', None)
+    assert getattr(partner, 'ClassesProv_DataType') is None
+
+
+def test_assoc_dataType193_stub_double():
+    # ClassesProv_DataType has no real 'ClassesProv_DataType195' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_DataType()
+    setattr(partner, 'ClassesProv_DataType195', None)
+    _safe_set(owner, 'ClassesProv_Operation194', partner)
+    assert getattr(partner, 'ClassesProv_DataType195') == owner
+    _safe_set(owner, 'ClassesProv_Operation194', None)
+    assert getattr(partner, 'ClassesProv_DataType195') is None
+
+
+def test_assoc_defaultValue136_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification138' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification138', None)
+    _safe_set(owner, 'ClassesProv_Property137', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification138') == owner
+    _safe_set(owner, 'ClassesProv_Property137', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification138') is None
+
+
+def test_assoc_defaultValue176_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification178' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Parameter(default="sample_text")
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification178', None)
+    _safe_set(owner, 'ClassesProv_Parameter177', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification178') == owner
+    _safe_set(owner, 'ClassesProv_Parameter177', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification178') is None
+
+
+def test_assoc_definingFeature102_stub_double():
+    # ClassesProv_Slot has no real 'ClassesProv_Slot103' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_StructuralFeature's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_StructuralFeature's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_StructuralFeature(isReadOnly=True)
+    partner = ClassesProv_Slot()
+    setattr(partner, 'ClassesProv_Slot103', None)
+    _safe_set(owner, 'ClassesProv_StructuralFeature', partner)
+    assert getattr(partner, 'ClassesProv_Slot103') == owner
+    _safe_set(owner, 'ClassesProv_StructuralFeature', None)
+    assert getattr(partner, 'ClassesProv_Slot103') is None
+
+
+def test_assoc_elementImport16_stub_double():
+    # ClassesProv_Namespace has no real 'ClassesProv_Namespace17' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_ElementImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_ElementImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_ElementImport(alias="sample_text")
+    partner = ClassesProv_Namespace()
+    setattr(partner, 'ClassesProv_Namespace17', None)
+    _safe_set(owner, 'ClassesProv_ElementImport', partner)
+    assert getattr(partner, 'ClassesProv_Namespace17') == owner
+    _safe_set(owner, 'ClassesProv_ElementImport', None)
+    assert getattr(partner, 'ClassesProv_Namespace17') is None
+
+
+def test_assoc_importedElement22_stub_double():
+    # ClassesProv_PackageableElement has no real 'ClassesProv_PackageableElement24' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_ElementImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_ElementImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_ElementImport(alias="sample_text")
+    partner = ClassesProv_PackageableElement()
+    setattr(partner, 'ClassesProv_PackageableElement24', None)
+    _safe_set(owner, 'ClassesProv_ElementImport23', partner)
+    assert getattr(partner, 'ClassesProv_PackageableElement24') == owner
+    _safe_set(owner, 'ClassesProv_ElementImport23', None)
+    assert getattr(partner, 'ClassesProv_PackageableElement24') is None
+
+
+def test_assoc_importedPackage28_stub_double():
+    # ClassesProv_PackageImport has no real 'ClassesProv_PackageImport29' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_PackageImport()
+    setattr(partner, 'ClassesProv_PackageImport29', None)
+    _safe_set(owner, 'ClassesProv_Package', partner)
+    assert getattr(partner, 'ClassesProv_PackageImport29') == owner
+    _safe_set(owner, 'ClassesProv_Package', None)
+    assert getattr(partner, 'ClassesProv_PackageImport29') is None
+
+
+def test_assoc_importingNamespace25_stub_double():
+    # ClassesProv_Namespace has no real 'ClassesProv_Namespace27' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_ElementImport's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_ElementImport's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_ElementImport(alias="sample_text")
+    partner = ClassesProv_Namespace()
+    setattr(partner, 'ClassesProv_Namespace27', None)
+    _safe_set(owner, 'ClassesProv_ElementImport26', partner)
+    assert getattr(partner, 'ClassesProv_Namespace27') == owner
+    _safe_set(owner, 'ClassesProv_ElementImport26', None)
+    assert getattr(partner, 'ClassesProv_Namespace27') is None
+
+
+def test_assoc_interface152_stub_double():
+    # ClassesProv_Interface has no real 'ClassesProv_Interface' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_Interface()
+    setattr(partner, 'ClassesProv_Interface', None)
+    _safe_set(owner, 'ClassesProv_Property153', partner)
+    assert getattr(partner, 'ClassesProv_Interface') == owner
+    _safe_set(owner, 'ClassesProv_Property153', None)
+    assert getattr(partner, 'ClassesProv_Interface') is None
+
+
+def test_assoc_interface196_stub_double():
+    # ClassesProv_Interface has no real 'ClassesProv_Interface198' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Interface()
+    setattr(partner, 'ClassesProv_Interface198', None)
+    _safe_set(owner, 'ClassesProv_Operation197', partner)
+    assert getattr(partner, 'ClassesProv_Interface198') == owner
+    _safe_set(owner, 'ClassesProv_Operation197', None)
+    assert getattr(partner, 'ClassesProv_Interface198') is None
+
+
+def test_assoc_lowerValue54_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification56' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_MultiplicityElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_MultiplicityElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_MultiplicityElement(isOrdered=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification56', None)
+    _safe_set(owner, 'ClassesProv_MultiplicityElement55', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification56') == owner
+    _safe_set(owner, 'ClassesProv_MultiplicityElement55', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification56') is None
+
+
+def test_assoc_mapping242_stub_double():
+    # ClassesProv_Abstraction has no real 'ClassesProv_Abstraction' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_OpaqueExpression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_OpaqueExpression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_OpaqueExpression(body="sample_text", language="sample_text")
+    partner = ClassesProv_Abstraction()
+    setattr(partner, 'ClassesProv_Abstraction', None)
+    _safe_set(owner, 'ClassesProv_OpaqueExpression', partner)
+    assert getattr(partner, 'ClassesProv_Abstraction') == owner
+    _safe_set(owner, 'ClassesProv_OpaqueExpression', None)
+    assert getattr(partner, 'ClassesProv_Abstraction') is None
+
+
+def test_assoc_member10_stub_double():
+    # ClassesProv_Namespace has no real 'ClassesProv_Namespace11' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = ClassesProv_Namespace()
+    setattr(partner, 'ClassesProv_Namespace11', None)
+    _safe_set(owner, 'ClassesProv_NamedElement12', partner)
+    assert getattr(partner, 'ClassesProv_Namespace11') == owner
+    _safe_set(owner, 'ClassesProv_NamedElement12', None)
+    assert getattr(partner, 'ClassesProv_Namespace11') is None
+
+
+def test_assoc_mergedPackage233_stub_double():
+    # ClassesProv_PackageMerge has no real 'ClassesProv_PackageMerge234' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_PackageMerge()
+    setattr(partner, 'ClassesProv_PackageMerge234', None)
+    _safe_set(owner, 'ClassesProv_Package235', partner)
+    assert getattr(partner, 'ClassesProv_PackageMerge234') == owner
+    _safe_set(owner, 'ClassesProv_Package235', None)
+    assert getattr(partner, 'ClassesProv_PackageMerge234') is None
+
+
+def test_assoc_namespace5_stub_double():
+    # ClassesProv_Namespace has no real 'ClassesProv_Namespace' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = ClassesProv_Namespace()
+    setattr(partner, 'ClassesProv_Namespace', None)
+    _safe_set(owner, 'ClassesProv_NamedElement', partner)
+    assert getattr(partner, 'ClassesProv_Namespace') == owner
+    _safe_set(owner, 'ClassesProv_NamedElement', None)
+    assert getattr(partner, 'ClassesProv_Namespace') is None
+
+
+def test_assoc_nestedClassifier199_stub_double():
+    # ClassesProv_Class has no real 'ClassesProv_Class200' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Classifier(isAbstract=True, isFinalSpecialization=True)
+    partner = ClassesProv_Class()
+    setattr(partner, 'ClassesProv_Class200', None)
+    _safe_set(owner, 'ClassesProv_Classifier201', partner)
+    assert getattr(partner, 'ClassesProv_Class200') == owner
+    _safe_set(owner, 'ClassesProv_Classifier201', None)
+    assert getattr(partner, 'ClassesProv_Class200') is None
+
+
+def test_assoc_nestedClassifier249_stub_double():
+    # ClassesProv_Interface has no real 'ClassesProv_Interface250' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Classifier(isAbstract=True, isFinalSpecialization=True)
+    partner = ClassesProv_Interface()
+    setattr(partner, 'ClassesProv_Interface250', None)
+    _safe_set(owner, 'ClassesProv_Classifier251', partner)
+    assert getattr(partner, 'ClassesProv_Interface250') == owner
+    _safe_set(owner, 'ClassesProv_Classifier251', None)
+    assert getattr(partner, 'ClassesProv_Interface250') is None
+
+
+def test_assoc_operand75_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification76' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Expression's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Expression's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Expression(symbol="sample_text")
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification76', None)
+    _safe_set(owner, 'ClassesProv_Expression', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification76') == owner
+    _safe_set(owner, 'ClassesProv_Expression', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification76') is None
+
+
+def test_assoc_ownedAttribute208_stub_double():
+    # ClassesProv_Class has no real 'ClassesProv_Class209' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_Class()
+    setattr(partner, 'ClassesProv_Class209', None)
+    _safe_set(owner, 'ClassesProv_Property210', partner)
+    assert getattr(partner, 'ClassesProv_Class209') == owner
+    _safe_set(owner, 'ClassesProv_Property210', None)
+    assert getattr(partner, 'ClassesProv_Class209') is None
+
+
+def test_assoc_ownedAttribute220_stub_double():
+    # ClassesProv_DataType has no real 'ClassesProv_DataType221' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_DataType()
+    setattr(partner, 'ClassesProv_DataType221', None)
+    _safe_set(owner, 'ClassesProv_Property222', partner)
+    assert getattr(partner, 'ClassesProv_DataType221') == owner
+    _safe_set(owner, 'ClassesProv_Property222', None)
+    assert getattr(partner, 'ClassesProv_DataType221') is None
+
+
+def test_assoc_ownedAttribute255_stub_double():
+    # ClassesProv_Interface has no real 'ClassesProv_Interface256' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Property(default="sample_text", isComposite=True, isDerived=True, isDerivedUnion=True, isID=True)
+    partner = ClassesProv_Interface()
+    setattr(partner, 'ClassesProv_Interface256', None)
+    _safe_set(owner, 'ClassesProv_Property257', partner)
+    assert getattr(partner, 'ClassesProv_Interface256') == owner
+    _safe_set(owner, 'ClassesProv_Property257', None)
+    assert getattr(partner, 'ClassesProv_Interface256') is None
+
+
+def test_assoc_ownedFormalParam173_stub_double():
+    # ClassesProv_BehavioralFeature has no real 'ClassesProv_BehavioralFeature175' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Parameter(default="sample_text")
+    partner = ClassesProv_BehavioralFeature()
+    setattr(partner, 'ClassesProv_BehavioralFeature175', None)
+    _safe_set(owner, 'ClassesProv_Parameter174', partner)
+    assert getattr(partner, 'ClassesProv_BehavioralFeature175') == owner
+    _safe_set(owner, 'ClassesProv_Parameter174', None)
+    assert getattr(partner, 'ClassesProv_BehavioralFeature175') is None
+
+
+def test_assoc_ownedMember13_stub_double():
+    # ClassesProv_Namespace has no real 'ClassesProv_Namespace14' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = ClassesProv_Namespace()
+    setattr(partner, 'ClassesProv_Namespace14', None)
+    _safe_set(owner, 'ClassesProv_NamedElement15', partner)
+    assert getattr(partner, 'ClassesProv_Namespace14') == owner
+    _safe_set(owner, 'ClassesProv_NamedElement15', None)
+    assert getattr(partner, 'ClassesProv_Namespace14') is None
+
+
+def test_assoc_ownedOperation202_stub_double():
+    # ClassesProv_Class has no real 'ClassesProv_Class203' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Class()
+    setattr(partner, 'ClassesProv_Class203', None)
+    _safe_set(owner, 'ClassesProv_Operation204', partner)
+    assert getattr(partner, 'ClassesProv_Class203') == owner
+    _safe_set(owner, 'ClassesProv_Operation204', None)
+    assert getattr(partner, 'ClassesProv_Class203') is None
+
+
+def test_assoc_ownedOperation223_stub_double():
+    # ClassesProv_DataType has no real 'ClassesProv_DataType224' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_DataType()
+    setattr(partner, 'ClassesProv_DataType224', None)
+    _safe_set(owner, 'ClassesProv_Operation225', partner)
+    assert getattr(partner, 'ClassesProv_DataType224') == owner
+    _safe_set(owner, 'ClassesProv_Operation225', None)
+    assert getattr(partner, 'ClassesProv_DataType224') is None
+
+
+def test_assoc_ownedOperation258_stub_double():
+    # ClassesProv_Interface has no real 'ClassesProv_Interface259' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Interface()
+    setattr(partner, 'ClassesProv_Interface259', None)
+    _safe_set(owner, 'ClassesProv_Operation260', partner)
+    assert getattr(partner, 'ClassesProv_Interface259') == owner
+    _safe_set(owner, 'ClassesProv_Operation260', None)
+    assert getattr(partner, 'ClassesProv_Interface259') is None
+
+
+def test_assoc_ownedParameter169_stub_double():
+    # ClassesProv_BehavioralFeature has no real 'ClassesProv_BehavioralFeature' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Parameter(default="sample_text")
+    partner = ClassesProv_BehavioralFeature()
+    setattr(partner, 'ClassesProv_BehavioralFeature', None)
+    _safe_set(owner, 'ClassesProv_Parameter', partner)
+    assert getattr(partner, 'ClassesProv_BehavioralFeature') == owner
+    _safe_set(owner, 'ClassesProv_Parameter', None)
+    assert getattr(partner, 'ClassesProv_BehavioralFeature') is None
+
+
+def test_assoc_ownedType42_stub_double():
+    # ClassesProv_Type has no real 'ClassesProv_Type' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_Type()
+    setattr(partner, 'ClassesProv_Type', None)
+    _safe_set(owner, 'ClassesProv_Package43', {partner})
+    assert getattr(partner, 'ClassesProv_Type') == owner
+    _safe_set(owner, 'ClassesProv_Package43', set())
+    assert getattr(partner, 'ClassesProv_Type') is None
+
+
+def test_assoc_owningLower60_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification61' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_MultiplicityElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_MultiplicityElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_MultiplicityElement(isOrdered=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification61', None)
+    _safe_set(owner, 'ClassesProv_MultiplicityElement62', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification61') == owner
+    _safe_set(owner, 'ClassesProv_MultiplicityElement62', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification61') is None
+
+
+def test_assoc_owningUpper57_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification58' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_MultiplicityElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_MultiplicityElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_MultiplicityElement(isOrdered=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification58', None)
+    _safe_set(owner, 'ClassesProv_MultiplicityElement59', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification58') == owner
+    _safe_set(owner, 'ClassesProv_MultiplicityElement59', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification58') is None
+
+
+def test_assoc_package72_stub_double():
+    # ClassesProv_Type has no real 'ClassesProv_Type73' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_Type()
+    setattr(partner, 'ClassesProv_Type73', None)
+    _safe_set(owner, 'ClassesProv_Package74', partner)
+    assert getattr(partner, 'ClassesProv_Type73') == owner
+    _safe_set(owner, 'ClassesProv_Package74', None)
+    assert getattr(partner, 'ClassesProv_Type73') is None
+
+
+def test_assoc_packageMerge44_stub_double():
+    # ClassesProv_PackageMerge has no real 'ClassesProv_PackageMerge' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_PackageMerge()
+    setattr(partner, 'ClassesProv_PackageMerge', None)
+    _safe_set(owner, 'ClassesProv_Package45', {partner})
+    assert getattr(partner, 'ClassesProv_PackageMerge') == owner
+    _safe_set(owner, 'ClassesProv_Package45', set())
+    assert getattr(partner, 'ClassesProv_PackageMerge') is None
+
+
+def test_assoc_packagedElement39_stub_double():
+    # ClassesProv_PackageableElement has no real 'ClassesProv_PackageableElement41' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_PackageableElement()
+    setattr(partner, 'ClassesProv_PackageableElement41', None)
+    _safe_set(owner, 'ClassesProv_Package40', {partner})
+    assert getattr(partner, 'ClassesProv_PackageableElement41') == owner
+    _safe_set(owner, 'ClassesProv_Package40', set())
+    assert getattr(partner, 'ClassesProv_PackageableElement41') is None
+
+
+def test_assoc_postcondition187_stub_double():
+    # ClassesProv_Constraint has no real 'ClassesProv_Constraint189' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Constraint()
+    setattr(partner, 'ClassesProv_Constraint189', None)
+    _safe_set(owner, 'ClassesProv_Operation188', {partner})
+    assert getattr(partner, 'ClassesProv_Constraint189') == owner
+    _safe_set(owner, 'ClassesProv_Operation188', set())
+    assert getattr(partner, 'ClassesProv_Constraint189') is None
+
+
+def test_assoc_precondition181_stub_double():
+    # ClassesProv_Constraint has no real 'ClassesProv_Constraint183' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Constraint()
+    setattr(partner, 'ClassesProv_Constraint183', None)
+    _safe_set(owner, 'ClassesProv_Operation182', {partner})
+    assert getattr(partner, 'ClassesProv_Constraint183') == owner
+    _safe_set(owner, 'ClassesProv_Operation182', set())
+    assert getattr(partner, 'ClassesProv_Constraint183') is None
+
+
+def test_assoc_receivingPackage230_stub_double():
+    # ClassesProv_PackageMerge has no real 'ClassesProv_PackageMerge231' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Package(URI="sample_text")
+    partner = ClassesProv_PackageMerge()
+    setattr(partner, 'ClassesProv_PackageMerge231', None)
+    _safe_set(owner, 'ClassesProv_Package232', partner)
+    assert getattr(partner, 'ClassesProv_PackageMerge231') == owner
+    _safe_set(owner, 'ClassesProv_Package232', None)
+    assert getattr(partner, 'ClassesProv_PackageMerge231') is None
+
+
+def test_assoc_substitutingClassifier243_stub_double():
+    # ClassesProv_Substitution has no real 'ClassesProv_Substitution244' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Classifier(isAbstract=True, isFinalSpecialization=True)
+    partner = ClassesProv_Substitution()
+    setattr(partner, 'ClassesProv_Substitution244', None)
+    _safe_set(owner, 'ClassesProv_Classifier245', partner)
+    assert getattr(partner, 'ClassesProv_Substitution244') == owner
+    _safe_set(owner, 'ClassesProv_Classifier245', None)
+    assert getattr(partner, 'ClassesProv_Substitution244') is None
+
+
+def test_assoc_substitution124_stub_double():
+    # ClassesProv_Substitution has no real 'ClassesProv_Substitution' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Classifier(isAbstract=True, isFinalSpecialization=True)
+    partner = ClassesProv_Substitution()
+    setattr(partner, 'ClassesProv_Substitution', None)
+    _safe_set(owner, 'ClassesProv_Classifier125', {partner})
+    assert getattr(partner, 'ClassesProv_Substitution') == owner
+    _safe_set(owner, 'ClassesProv_Classifier125', set())
+    assert getattr(partner, 'ClassesProv_Substitution') is None
+
+
+def test_assoc_supplier239_stub_double():
+    # ClassesProv_Dependency has no real 'ClassesProv_Dependency240' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = ClassesProv_Dependency()
+    setattr(partner, 'ClassesProv_Dependency240', None)
+    _safe_set(owner, 'ClassesProv_NamedElement241', partner)
+    assert getattr(partner, 'ClassesProv_Dependency240') == owner
+    _safe_set(owner, 'ClassesProv_NamedElement241', None)
+    assert getattr(partner, 'ClassesProv_Dependency240') is None
+
+
+def test_assoc_type179_stub_double():
+    # ClassesProv_Type has no real 'ClassesProv_Type180' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_Operation(isOrdered=True, isQuery=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_Type()
+    setattr(partner, 'ClassesProv_Type180', None)
+    _safe_set(owner, 'ClassesProv_Operation', partner)
+    assert getattr(partner, 'ClassesProv_Type180') == owner
+    _safe_set(owner, 'ClassesProv_Operation', None)
+    assert getattr(partner, 'ClassesProv_Type180') is None
+
+
+def test_assoc_upperValue53_stub_double():
+    # ClassesProv_ValueSpecification has no real 'ClassesProv_ValueSpecification' property in the generated
+    # code (a bare stub) -- manually attach it so ClassesProv_MultiplicityElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # ClassesProv_MultiplicityElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = ClassesProv_MultiplicityElement(isOrdered=True, isUnique=True, lower=7, upper=7)
+    partner = ClassesProv_ValueSpecification()
+    setattr(partner, 'ClassesProv_ValueSpecification', None)
+    _safe_set(owner, 'ClassesProv_MultiplicityElement', partner)
+    assert getattr(partner, 'ClassesProv_ValueSpecification') == owner
+    _safe_set(owner, 'ClassesProv_MultiplicityElement', None)
+    assert getattr(partner, 'ClassesProv_ValueSpecification') is None
+
+

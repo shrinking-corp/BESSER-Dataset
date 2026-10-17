@@ -1351,3 +1351,2006 @@ def test_assoc_type85_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'aadl2_ComponentType', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_abstractClassifier252_stub_double():
+    # aadl2_AbstractClassifier has no real 'aadl2_AbstractClassifier' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Subcomponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Subcomponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Subcomponent(allModes="sample_text")
+    partner = aadl2_AbstractClassifier()
+    setattr(partner, 'aadl2_AbstractClassifier', None)
+    _safe_set(owner, 'aadl2_Subcomponent253', partner)
+    assert getattr(partner, 'aadl2_AbstractClassifier') == owner
+    _safe_set(owner, 'aadl2_Subcomponent253', None)
+    assert getattr(partner, 'aadl2_AbstractClassifier') is None
+
+
+def test_assoc_actual791_stub_double():
+    # aadl2_ComponentPrototypeBinding has no real 'aadl2_ComponentPrototypeBinding' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentPrototypeActual's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentPrototypeActual's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentPrototypeActual(category="sample_text")
+    partner = aadl2_ComponentPrototypeBinding()
+    setattr(partner, 'aadl2_ComponentPrototypeBinding', None)
+    _safe_set(owner, 'aadl2_ComponentPrototypeActual', partner)
+    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') == owner
+    _safe_set(owner, 'aadl2_ComponentPrototypeActual', None)
+    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') is None
+
+
+def test_assoc_appliesTo13_stub_double():
+    # aadl2_ContainedNamedElement has no real 'aadl2_ContainedNamedElement' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertyAssociation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertyAssociation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertyAssociation(append="sample_text", constant="sample_text")
+    partner = aadl2_ContainedNamedElement()
+    setattr(partner, 'aadl2_ContainedNamedElement', None)
+    _safe_set(owner, 'aadl2_PropertyAssociation14', {partner})
+    assert getattr(partner, 'aadl2_ContainedNamedElement') == owner
+    _safe_set(owner, 'aadl2_PropertyAssociation14', set())
+    assert getattr(partner, 'aadl2_ContainedNamedElement') is None
+
+
+def test_assoc_appliesTo26_stub_double():
+    # aadl2_PropertyOwner has no real 'aadl2_PropertyOwner' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Property(emptyListDefault="sample_text", inherit="sample_text")
+    partner = aadl2_PropertyOwner()
+    setattr(partner, 'aadl2_PropertyOwner', None)
+    _safe_set(owner, 'aadl2_Property27', {partner})
+    assert getattr(partner, 'aadl2_PropertyOwner') == owner
+    _safe_set(owner, 'aadl2_Property27', set())
+    assert getattr(partner, 'aadl2_PropertyOwner') is None
+
+
+def test_assoc_arrayRange70_stub_double():
+    # aadl2_ContainmentPathElement has no real 'aadl2_ContainmentPathElement71' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ArrayRange's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ArrayRange's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ArrayRange(lowerBound="sample_text", upperBound="sample_text")
+    partner = aadl2_ContainmentPathElement()
+    setattr(partner, 'aadl2_ContainmentPathElement71', None)
+    _safe_set(owner, 'aadl2_ArrayRange', partner)
+    assert getattr(partner, 'aadl2_ContainmentPathElement71') == owner
+    _safe_set(owner, 'aadl2_ArrayRange', None)
+    assert getattr(partner, 'aadl2_ContainmentPathElement71') is None
+
+
+def test_assoc_arraySpecification79_stub_double():
+    # aadl2_ArrayableElement has no real 'aadl2_ArrayableElement' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ArraySpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ArraySpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ArraySpecification(dimension="sample_text")
+    partner = aadl2_ArrayableElement()
+    setattr(partner, 'aadl2_ArrayableElement', None)
+    _safe_set(owner, 'aadl2_ArraySpecification80', partner)
+    assert getattr(partner, 'aadl2_ArrayableElement') == owner
+    _safe_set(owner, 'aadl2_ArraySpecification80', None)
+    assert getattr(partner, 'aadl2_ArrayableElement') is None
+
+
+def test_assoc_callSpecification450_stub_double():
+    # aadl2_CallSpecification has no real 'aadl2_CallSpecification' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_BehavioredImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_BehavioredImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_BehavioredImplementation()
+    partner = aadl2_CallSpecification()
+    setattr(partner, 'aadl2_CallSpecification', None)
+    _safe_set(owner, 'aadl2_BehavioredImplementation', {partner})
+    assert getattr(partner, 'aadl2_CallSpecification') == owner
+    _safe_set(owner, 'aadl2_BehavioredImplementation', set())
+    assert getattr(partner, 'aadl2_CallSpecification') is None
+
+
+def test_assoc_classifier140_stub_double():
+    # aadl2_Feature has no real 'aadl2_Feature141' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentClassifier(noFlows="sample_text", noModes="sample_text")
+    partner = aadl2_Feature()
+    setattr(partner, 'aadl2_Feature141', None)
+    _safe_set(owner, 'aadl2_ComponentClassifier142', partner)
+    assert getattr(partner, 'aadl2_Feature141') == owner
+    _safe_set(owner, 'aadl2_ComponentClassifier142', None)
+    assert getattr(partner, 'aadl2_Feature141') is None
+
+
+def test_assoc_classifier808_stub_double():
+    # aadl2_ComponentReference has no real 'aadl2_ComponentReference809' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentClassifier(noFlows="sample_text", noModes="sample_text")
+    partner = aadl2_ComponentReference()
+    setattr(partner, 'aadl2_ComponentReference809', None)
+    _safe_set(owner, 'aadl2_ComponentClassifier810', partner)
+    assert getattr(partner, 'aadl2_ComponentReference809') == owner
+    _safe_set(owner, 'aadl2_ComponentClassifier810', None)
+    assert getattr(partner, 'aadl2_ComponentReference809') is None
+
+
+def test_assoc_classifier839_stub_double():
+    # aadl2_ClassifierValue has no real 'aadl2_ClassifierValue' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_ClassifierValue()
+    setattr(partner, 'aadl2_ClassifierValue', None)
+    _safe_set(owner, 'aadl2_Classifier840', partner)
+    assert getattr(partner, 'aadl2_ClassifierValue') == owner
+    _safe_set(owner, 'aadl2_Classifier840', None)
+    assert getattr(partner, 'aadl2_ClassifierValue') is None
+
+
+def test_assoc_classifierFeature30_stub_double():
+    # aadl2_ClassifierFeature has no real 'ClassifierFeature' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_ClassifierFeature()
+    setattr(partner, 'ClassifierFeature', None)
+    _safe_set(owner, 'featuringClassifier', {partner})
+    assert getattr(partner, 'ClassifierFeature') == owner
+    _safe_set(owner, 'featuringClassifier', set())
+    assert getattr(partner, 'ClassifierFeature') is None
+
+
+def test_assoc_classifierReference878_stub_double():
+    # aadl2_ClassifierType has no real 'aadl2_ClassifierType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_MetaclassReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_MetaclassReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_MetaclassReference(annexName="sample_text", metaclassName="sample_text")
+    partner = aadl2_ClassifierType()
+    setattr(partner, 'aadl2_ClassifierType', None)
+    _safe_set(owner, 'aadl2_MetaclassReference879', partner)
+    assert getattr(partner, 'aadl2_ClassifierType') == owner
+    _safe_set(owner, 'aadl2_MetaclassReference879', None)
+    assert getattr(partner, 'aadl2_ClassifierType') is None
+
+
+def test_assoc_componentClassifier233_stub_double():
+    # aadl2_AbstractFeature has no real 'aadl2_AbstractFeature234' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentClassifier(noFlows="sample_text", noModes="sample_text")
+    partner = aadl2_AbstractFeature()
+    setattr(partner, 'aadl2_AbstractFeature234', None)
+    _safe_set(owner, 'aadl2_ComponentClassifier235', partner)
+    assert getattr(partner, 'aadl2_AbstractFeature234') == owner
+    _safe_set(owner, 'aadl2_ComponentClassifier235', None)
+    assert getattr(partner, 'aadl2_AbstractFeature234') is None
+
+
+def test_assoc_constant849_stub_double():
+    # aadl2_ConstantValue has no real 'aadl2_ConstantValue' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertyConstant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertyConstant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertyConstant(list="sample_text")
+    partner = aadl2_ConstantValue()
+    setattr(partner, 'aadl2_ConstantValue', None)
+    _safe_set(owner, 'aadl2_PropertyConstant850', partner)
+    assert getattr(partner, 'aadl2_ConstantValue') == owner
+    _safe_set(owner, 'aadl2_PropertyConstant850', None)
+    assert getattr(partner, 'aadl2_ConstantValue') is None
+
+
+def test_assoc_constantValue788_stub_double():
+    # aadl2_PropertyExpression has no real 'aadl2_PropertyExpression790' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertyConstant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertyConstant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertyConstant(list="sample_text")
+    partner = aadl2_PropertyExpression()
+    setattr(partner, 'aadl2_PropertyExpression790', None)
+    _safe_set(owner, 'aadl2_PropertyConstant789', partner)
+    assert getattr(partner, 'aadl2_PropertyExpression790') == owner
+    _safe_set(owner, 'aadl2_PropertyConstant789', None)
+    assert getattr(partner, 'aadl2_PropertyExpression790') is None
+
+
+def test_assoc_constrainingFeatureGroupType792_stub_double():
+    # aadl2_FeatureGroupPrototype has no real 'aadl2_FeatureGroupPrototype' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_FeatureGroupPrototype()
+    setattr(partner, 'aadl2_FeatureGroupPrototype', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType793', partner)
+    assert getattr(partner, 'aadl2_FeatureGroupPrototype') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType793', None)
+    assert getattr(partner, 'aadl2_FeatureGroupPrototype') is None
+
+
+def test_assoc_context272_stub_double():
+    # aadl2_SubcomponentFlow has no real 'aadl2_SubcomponentFlow273' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Subcomponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Subcomponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Subcomponent(allModes="sample_text")
+    partner = aadl2_SubcomponentFlow()
+    setattr(partner, 'aadl2_SubcomponentFlow273', None)
+    _safe_set(owner, 'aadl2_Subcomponent274', partner)
+    assert getattr(partner, 'aadl2_SubcomponentFlow273') == owner
+    _safe_set(owner, 'aadl2_Subcomponent274', None)
+    assert getattr(partner, 'aadl2_SubcomponentFlow273') is None
+
+
+def test_assoc_defaultValue19_stub_double():
+    # aadl2_PropertyExpression has no real 'aadl2_PropertyExpression' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Property(emptyListDefault="sample_text", inherit="sample_text")
+    partner = aadl2_PropertyExpression()
+    setattr(partner, 'aadl2_PropertyExpression', None)
+    _safe_set(owner, 'aadl2_Property20', partner)
+    assert getattr(partner, 'aadl2_PropertyExpression') == owner
+    _safe_set(owner, 'aadl2_Property20', None)
+    assert getattr(partner, 'aadl2_PropertyExpression') is None
+
+
+def test_assoc_derivedMode260_stub_double():
+    # aadl2_ModeBinding has no real 'aadl2_ModeBinding261' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Mode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Mode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Mode(derived="sample_text", initial="sample_text")
+    partner = aadl2_ModeBinding()
+    setattr(partner, 'aadl2_ModeBinding261', None)
+    _safe_set(owner, 'aadl2_Mode262', partner)
+    assert getattr(partner, 'aadl2_ModeBinding261') == owner
+    _safe_set(owner, 'aadl2_Mode262', None)
+    assert getattr(partner, 'aadl2_ModeBinding261') is None
+
+
+def test_assoc_destination127_stub_double():
+    # aadl2_ModeTransition has no real 'aadl2_ModeTransition128' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Mode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Mode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Mode(derived="sample_text", initial="sample_text")
+    partner = aadl2_ModeTransition()
+    setattr(partner, 'aadl2_ModeTransition128', None)
+    _safe_set(owner, 'aadl2_Mode129', partner)
+    assert getattr(partner, 'aadl2_ModeTransition128') == owner
+    _safe_set(owner, 'aadl2_Mode129', None)
+    assert getattr(partner, 'aadl2_ModeTransition128') is None
+
+
+def test_assoc_destination281_stub_double():
+    # aadl2_ConnectionEnd has no real 'aadl2_ConnectionEnd' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Connection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Connection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Connection(bidirectional="sample_text", kind="sample_text")
+    partner = aadl2_ConnectionEnd()
+    setattr(partner, 'aadl2_ConnectionEnd', None)
+    _safe_set(owner, 'aadl2_Connection282', partner)
+    assert getattr(partner, 'aadl2_ConnectionEnd') == owner
+    _safe_set(owner, 'aadl2_Connection282', None)
+    assert getattr(partner, 'aadl2_ConnectionEnd') is None
+
+
+def test_assoc_destinationContext286_stub_double():
+    # aadl2_Context has no real 'aadl2_Context288' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Connection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Connection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Connection(bidirectional="sample_text", kind="sample_text")
+    partner = aadl2_Context()
+    setattr(partner, 'aadl2_Context288', None)
+    _safe_set(owner, 'aadl2_Connection287', partner)
+    assert getattr(partner, 'aadl2_Context288') == owner
+    _safe_set(owner, 'aadl2_Connection287', None)
+    assert getattr(partner, 'aadl2_Context288') is None
+
+
+def test_assoc_extended175_stub_double():
+    # aadl2_TypeExtension has no real 'aadl2_TypeExtension176' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentType(features="sample_text", noFeatures="sample_text")
+    partner = aadl2_TypeExtension()
+    setattr(partner, 'aadl2_TypeExtension176', None)
+    _safe_set(owner, 'aadl2_ComponentType177', partner)
+    assert getattr(partner, 'aadl2_TypeExtension176') == owner
+    _safe_set(owner, 'aadl2_ComponentType177', None)
+    assert getattr(partner, 'aadl2_TypeExtension176') is None
+
+
+def test_assoc_extended213_stub_double():
+    # aadl2_GroupExtension has no real 'aadl2_GroupExtension214' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_GroupExtension()
+    setattr(partner, 'aadl2_GroupExtension214', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType215', partner)
+    assert getattr(partner, 'aadl2_GroupExtension214') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType215', None)
+    assert getattr(partner, 'aadl2_GroupExtension214') is None
+
+
+def test_assoc_extended295_stub_double():
+    # aadl2_ImplementationExtension has no real 'aadl2_ImplementationExtension296' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_ImplementationExtension()
+    setattr(partner, 'aadl2_ImplementationExtension296', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation297', partner)
+    assert getattr(partner, 'aadl2_ImplementationExtension296') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation297', None)
+    assert getattr(partner, 'aadl2_ImplementationExtension296') is None
+
+
+def test_assoc_factor834_stub_double():
+    # aadl2_UnitLiteral has no real 'aadl2_UnitLiteral835' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_NumberValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_NumberValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_NumberValue(valueString="sample_text")
+    partner = aadl2_UnitLiteral()
+    setattr(partner, 'aadl2_UnitLiteral835', None)
+    _safe_set(owner, 'aadl2_NumberValue', partner)
+    assert getattr(partner, 'aadl2_UnitLiteral835') == owner
+    _safe_set(owner, 'aadl2_NumberValue', None)
+    assert getattr(partner, 'aadl2_UnitLiteral835') is None
+
+
+def test_assoc_featureGroupType815_stub_double():
+    # aadl2_FeatureGroupReference has no real 'aadl2_FeatureGroupReference816' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_FeatureGroupReference()
+    setattr(partner, 'aadl2_FeatureGroupReference816', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType817', partner)
+    assert getattr(partner, 'aadl2_FeatureGroupReference816') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType817', None)
+    assert getattr(partner, 'aadl2_FeatureGroupReference816') is None
+
+
+def test_assoc_featuringClassifier44_stub_double():
+    # aadl2_ClassifierFeature has no real 'classifierFeature' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_ClassifierFeature()
+    setattr(partner, 'classifierFeature', None)
+    _safe_set(owner, 'Classifier', partner)
+    assert getattr(partner, 'classifierFeature') == owner
+    _safe_set(owner, 'Classifier', None)
+    assert getattr(partner, 'classifierFeature') is None
+
+
+def test_assoc_flowElement266_stub_double():
+    # aadl2_FlowElement has no real 'aadl2_FlowElement' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowImplementation(kind="sample_text")
+    partner = aadl2_FlowElement()
+    setattr(partner, 'aadl2_FlowElement', None)
+    _safe_set(owner, 'aadl2_FlowImplementation267', {partner})
+    assert getattr(partner, 'aadl2_FlowElement') == owner
+    _safe_set(owner, 'aadl2_FlowImplementation267', set())
+    assert getattr(partner, 'aadl2_FlowElement') is None
+
+
+def test_assoc_flowSpecification275_stub_double():
+    # aadl2_SubcomponentFlow has no real 'aadl2_SubcomponentFlow276' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowSpecification(kind="sample_text")
+    partner = aadl2_SubcomponentFlow()
+    setattr(partner, 'aadl2_SubcomponentFlow276', None)
+    _safe_set(owner, 'aadl2_FlowSpecification277', partner)
+    assert getattr(partner, 'aadl2_SubcomponentFlow276') == owner
+    _safe_set(owner, 'aadl2_FlowSpecification277', None)
+    assert getattr(partner, 'aadl2_SubcomponentFlow276') is None
+
+
+def test_assoc_formal65_stub_double():
+    # aadl2_PrototypeBinding has no real 'aadl2_PrototypeBinding66' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Prototype's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Prototype's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Prototype()
+    partner = aadl2_PrototypeBinding()
+    setattr(partner, 'aadl2_PrototypeBinding66', None)
+    _safe_set(owner, 'aadl2_Prototype67', partner)
+    assert getattr(partner, 'aadl2_PrototypeBinding66') == owner
+    _safe_set(owner, 'aadl2_Prototype67', None)
+    assert getattr(partner, 'aadl2_PrototypeBinding66') is None
+
+
+def test_assoc_general45_stub_double():
+    # aadl2_Generalization_ has no real 'aadl2_Generalization' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_Generalization_()
+    setattr(partner, 'aadl2_Generalization', None)
+    _safe_set(owner, 'aadl2_Classifier46', partner)
+    assert getattr(partner, 'aadl2_Generalization') == owner
+    _safe_set(owner, 'aadl2_Classifier46', None)
+    assert getattr(partner, 'aadl2_Generalization') is None
+
+
+def test_assoc_generalization34_stub_double():
+    # aadl2_Generalization_ has no real 'Generalization_' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_Generalization_()
+    setattr(partner, 'Generalization_', None)
+    _safe_set(owner, 'specific', {partner})
+    assert getattr(partner, 'Generalization_') == owner
+    _safe_set(owner, 'specific', set())
+    assert getattr(partner, 'Generalization_') is None
+
+
+def test_assoc_implementation81_stub_double():
+    # aadl2_ComponentImplementationReference has no real 'aadl2_ComponentImplementationReference' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_ComponentImplementationReference()
+    setattr(partner, 'aadl2_ComponentImplementationReference', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation', partner)
+    assert getattr(partner, 'aadl2_ComponentImplementationReference') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation', None)
+    assert getattr(partner, 'aadl2_ComponentImplementationReference') is None
+
+
+def test_assoc_implementationReference246_stub_double():
+    # aadl2_ComponentImplementationReference has no real 'aadl2_ComponentImplementationReference248' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Subcomponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Subcomponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Subcomponent(allModes="sample_text")
+    partner = aadl2_ComponentImplementationReference()
+    setattr(partner, 'aadl2_ComponentImplementationReference248', None)
+    _safe_set(owner, 'aadl2_Subcomponent247', {partner})
+    assert getattr(partner, 'aadl2_ComponentImplementationReference248') == owner
+    _safe_set(owner, 'aadl2_Subcomponent247', set())
+    assert getattr(partner, 'aadl2_ComponentImplementationReference248') is None
+
+
+def test_assoc_implemented298_stub_double():
+    # aadl2_Realization has no real 'aadl2_Realization299' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentType(features="sample_text", noFeatures="sample_text")
+    partner = aadl2_Realization()
+    setattr(partner, 'aadl2_Realization299', None)
+    _safe_set(owner, 'aadl2_ComponentType300', partner)
+    assert getattr(partner, 'aadl2_Realization299') == owner
+    _safe_set(owner, 'aadl2_ComponentType300', None)
+    assert getattr(partner, 'aadl2_Realization299') is None
+
+
+def test_assoc_importedPackage320_stub_double():
+    # aadl2_AadlPackage has no real 'aadl2_AadlPackage' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_AadlPackage()
+    setattr(partner, 'aadl2_AadlPackage', None)
+    _safe_set(owner, 'aadl2_PackageSection321', {partner})
+    assert getattr(partner, 'aadl2_AadlPackage') == owner
+    _safe_set(owner, 'aadl2_PackageSection321', set())
+    assert getattr(partner, 'aadl2_AadlPackage') is None
+
+
+def test_assoc_importedPackage782_stub_double():
+    # aadl2_AadlPackage has no real 'aadl2_AadlPackage784' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertySet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertySet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertySet(contents="sample_text", imports="sample_text")
+    partner = aadl2_AadlPackage()
+    setattr(partner, 'aadl2_AadlPackage784', None)
+    _safe_set(owner, 'aadl2_PropertySet783', {partner})
+    assert getattr(partner, 'aadl2_AadlPackage784') == owner
+    _safe_set(owner, 'aadl2_PropertySet783', set())
+    assert getattr(partner, 'aadl2_AadlPackage784') is None
+
+
+def test_assoc_inContext166_stub_double():
+    # aadl2_Context has no real 'aadl2_Context168' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowSpecification(kind="sample_text")
+    partner = aadl2_Context()
+    setattr(partner, 'aadl2_Context168', None)
+    _safe_set(owner, 'aadl2_FlowSpecification167', partner)
+    assert getattr(partner, 'aadl2_Context168') == owner
+    _safe_set(owner, 'aadl2_FlowSpecification167', None)
+    assert getattr(partner, 'aadl2_Context168') is None
+
+
+def test_assoc_inFeature163_stub_double():
+    # aadl2_Feature has no real 'aadl2_Feature165' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowSpecification(kind="sample_text")
+    partner = aadl2_Feature()
+    setattr(partner, 'aadl2_Feature165', None)
+    _safe_set(owner, 'aadl2_FlowSpecification164', partner)
+    assert getattr(partner, 'aadl2_Feature165') == owner
+    _safe_set(owner, 'aadl2_FlowSpecification164', None)
+    assert getattr(partner, 'aadl2_Feature165') is None
+
+
+def test_assoc_modeBinding244_stub_double():
+    # aadl2_ModeBinding has no real 'aadl2_ModeBinding' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Subcomponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Subcomponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Subcomponent(allModes="sample_text")
+    partner = aadl2_ModeBinding()
+    setattr(partner, 'aadl2_ModeBinding', None)
+    _safe_set(owner, 'aadl2_Subcomponent245', {partner})
+    assert getattr(partner, 'aadl2_ModeBinding') == owner
+    _safe_set(owner, 'aadl2_Subcomponent245', set())
+    assert getattr(partner, 'aadl2_ModeBinding') is None
+
+
+def test_assoc_namedElement72_stub_double():
+    # aadl2_ContainmentPathElement has no real 'aadl2_ContainmentPathElement73' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_NamedElement's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_NamedElement's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_NamedElement(name="sample_text", qualifiedName="sample_text")
+    partner = aadl2_ContainmentPathElement()
+    setattr(partner, 'aadl2_ContainmentPathElement73', None)
+    _safe_set(owner, 'aadl2_NamedElement74', partner)
+    assert getattr(partner, 'aadl2_ContainmentPathElement73') == owner
+    _safe_set(owner, 'aadl2_NamedElement74', None)
+    assert getattr(partner, 'aadl2_ContainmentPathElement73') is None
+
+
+def test_assoc_namedElementReference887_stub_double():
+    # aadl2_ReferenceType has no real 'aadl2_ReferenceType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_MetaclassReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_MetaclassReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_MetaclassReference(annexName="sample_text", metaclassName="sample_text")
+    partner = aadl2_ReferenceType()
+    setattr(partner, 'aadl2_ReferenceType', None)
+    _safe_set(owner, 'aadl2_MetaclassReference888', partner)
+    assert getattr(partner, 'aadl2_ReferenceType') == owner
+    _safe_set(owner, 'aadl2_MetaclassReference888', None)
+    assert getattr(partner, 'aadl2_ReferenceType') is None
+
+
+def test_assoc_outContext172_stub_double():
+    # aadl2_Context has no real 'aadl2_Context174' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowSpecification(kind="sample_text")
+    partner = aadl2_Context()
+    setattr(partner, 'aadl2_Context174', None)
+    _safe_set(owner, 'aadl2_FlowSpecification173', partner)
+    assert getattr(partner, 'aadl2_Context174') == owner
+    _safe_set(owner, 'aadl2_FlowSpecification173', None)
+    assert getattr(partner, 'aadl2_Context174') is None
+
+
+def test_assoc_outFeature169_stub_double():
+    # aadl2_Feature has no real 'aadl2_Feature171' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowSpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowSpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowSpecification(kind="sample_text")
+    partner = aadl2_Feature()
+    setattr(partner, 'aadl2_Feature171', None)
+    _safe_set(owner, 'aadl2_FlowSpecification170', partner)
+    assert getattr(partner, 'aadl2_Feature171') == owner
+    _safe_set(owner, 'aadl2_FlowSpecification170', None)
+    assert getattr(partner, 'aadl2_Feature171') is None
+
+
+def test_assoc_ownedAbstractFeature158_stub_double():
+    # aadl2_AbstractFeature has no real 'aadl2_AbstractFeature' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentType(features="sample_text", noFeatures="sample_text")
+    partner = aadl2_AbstractFeature()
+    setattr(partner, 'aadl2_AbstractFeature', None)
+    _safe_set(owner, 'aadl2_ComponentType159', {partner})
+    assert getattr(partner, 'aadl2_AbstractFeature') == owner
+    _safe_set(owner, 'aadl2_ComponentType159', set())
+    assert getattr(partner, 'aadl2_AbstractFeature') is None
+
+
+def test_assoc_ownedAbstractFeature210_stub_double():
+    # aadl2_AbstractFeature has no real 'aadl2_AbstractFeature212' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_AbstractFeature()
+    setattr(partner, 'aadl2_AbstractFeature212', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType211', {partner})
+    assert getattr(partner, 'aadl2_AbstractFeature212') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType211', set())
+    assert getattr(partner, 'aadl2_AbstractFeature212') is None
+
+
+def test_assoc_ownedAbstractImplementation324_stub_double():
+    # aadl2_AbstractImplementation has no real 'aadl2_AbstractImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_AbstractImplementation()
+    setattr(partner, 'aadl2_AbstractImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection325', {partner})
+    assert getattr(partner, 'aadl2_AbstractImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection325', set())
+    assert getattr(partner, 'aadl2_AbstractImplementation') is None
+
+
+def test_assoc_ownedAbstractSubcomponent102_stub_double():
+    # aadl2_AbstractSubcomponent has no real 'aadl2_AbstractSubcomponent' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_AbstractSubcomponent()
+    setattr(partner, 'aadl2_AbstractSubcomponent', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation103', {partner})
+    assert getattr(partner, 'aadl2_AbstractSubcomponent') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation103', set())
+    assert getattr(partner, 'aadl2_AbstractSubcomponent') is None
+
+
+def test_assoc_ownedAbstractType322_stub_double():
+    # aadl2_AbstractType has no real 'aadl2_AbstractType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_AbstractType()
+    setattr(partner, 'aadl2_AbstractType', None)
+    _safe_set(owner, 'aadl2_PackageSection323', {partner})
+    assert getattr(partner, 'aadl2_AbstractType') == owner
+    _safe_set(owner, 'aadl2_PackageSection323', set())
+    assert getattr(partner, 'aadl2_AbstractType') is None
+
+
+def test_assoc_ownedAnnexLibrary318_stub_double():
+    # aadl2_AnnexLibrary has no real 'aadl2_AnnexLibrary' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_AnnexLibrary()
+    setattr(partner, 'aadl2_AnnexLibrary', None)
+    _safe_set(owner, 'aadl2_PackageSection319', {partner})
+    assert getattr(partner, 'aadl2_AnnexLibrary') == owner
+    _safe_set(owner, 'aadl2_PackageSection319', set())
+    assert getattr(partner, 'aadl2_AnnexLibrary') is None
+
+
+def test_assoc_ownedAnnexSubclause38_stub_double():
+    # aadl2_AnnexSubclause has no real 'aadl2_AnnexSubclause' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_AnnexSubclause()
+    setattr(partner, 'aadl2_AnnexSubclause', None)
+    _safe_set(owner, 'aadl2_Classifier39', {partner})
+    assert getattr(partner, 'aadl2_AnnexSubclause') == owner
+    _safe_set(owner, 'aadl2_Classifier39', set())
+    assert getattr(partner, 'aadl2_AnnexSubclause') is None
+
+
+def test_assoc_ownedBusAccess191_stub_double():
+    # aadl2_BusAccess has no real 'aadl2_BusAccess' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_BusAccess()
+    setattr(partner, 'aadl2_BusAccess', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType192', {partner})
+    assert getattr(partner, 'aadl2_BusAccess') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType192', set())
+    assert getattr(partner, 'aadl2_BusAccess') is None
+
+
+def test_assoc_ownedBusImplementation328_stub_double():
+    # aadl2_BusImplementation has no real 'aadl2_BusImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_BusImplementation()
+    setattr(partner, 'aadl2_BusImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection329', {partner})
+    assert getattr(partner, 'aadl2_BusImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection329', set())
+    assert getattr(partner, 'aadl2_BusImplementation') is None
+
+
+def test_assoc_ownedBusType326_stub_double():
+    # aadl2_BusType has no real 'aadl2_BusType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_BusType()
+    setattr(partner, 'aadl2_BusType', None)
+    _safe_set(owner, 'aadl2_PackageSection327', {partner})
+    assert getattr(partner, 'aadl2_BusType') == owner
+    _safe_set(owner, 'aadl2_PackageSection327', set())
+    assert getattr(partner, 'aadl2_BusType') is None
+
+
+def test_assoc_ownedDataAccess193_stub_double():
+    # aadl2_DataAccess has no real 'aadl2_DataAccess' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_DataAccess()
+    setattr(partner, 'aadl2_DataAccess', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType194', {partner})
+    assert getattr(partner, 'aadl2_DataAccess') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType194', set())
+    assert getattr(partner, 'aadl2_DataAccess') is None
+
+
+def test_assoc_ownedDataImplementation332_stub_double():
+    # aadl2_DataImplementation has no real 'aadl2_DataImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_DataImplementation()
+    setattr(partner, 'aadl2_DataImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection333', {partner})
+    assert getattr(partner, 'aadl2_DataImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection333', set())
+    assert getattr(partner, 'aadl2_DataImplementation') is None
+
+
+def test_assoc_ownedDataPort195_stub_double():
+    # aadl2_DataPort has no real 'aadl2_DataPort' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_DataPort()
+    setattr(partner, 'aadl2_DataPort', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType196', {partner})
+    assert getattr(partner, 'aadl2_DataPort') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType196', set())
+    assert getattr(partner, 'aadl2_DataPort') is None
+
+
+def test_assoc_ownedDataType330_stub_double():
+    # aadl2_DataType has no real 'aadl2_DataType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_DataType()
+    setattr(partner, 'aadl2_DataType', None)
+    _safe_set(owner, 'aadl2_PackageSection331', {partner})
+    assert getattr(partner, 'aadl2_DataType') == owner
+    _safe_set(owner, 'aadl2_PackageSection331', set())
+    assert getattr(partner, 'aadl2_DataType') is None
+
+
+def test_assoc_ownedDeviceImplementation336_stub_double():
+    # aadl2_DeviceImplementation has no real 'aadl2_DeviceImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_DeviceImplementation()
+    setattr(partner, 'aadl2_DeviceImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection337', {partner})
+    assert getattr(partner, 'aadl2_DeviceImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection337', set())
+    assert getattr(partner, 'aadl2_DeviceImplementation') is None
+
+
+def test_assoc_ownedDeviceType334_stub_double():
+    # aadl2_DeviceType has no real 'aadl2_DeviceType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_DeviceType()
+    setattr(partner, 'aadl2_DeviceType', None)
+    _safe_set(owner, 'aadl2_PackageSection335', {partner})
+    assert getattr(partner, 'aadl2_DeviceType') == owner
+    _safe_set(owner, 'aadl2_PackageSection335', set())
+    assert getattr(partner, 'aadl2_DeviceType') is None
+
+
+def test_assoc_ownedEndToEndFlow100_stub_double():
+    # aadl2_EndToEndFlow has no real 'aadl2_EndToEndFlow' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_EndToEndFlow()
+    setattr(partner, 'aadl2_EndToEndFlow', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation101', {partner})
+    assert getattr(partner, 'aadl2_EndToEndFlow') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation101', set())
+    assert getattr(partner, 'aadl2_EndToEndFlow') is None
+
+
+def test_assoc_ownedEventDataPort197_stub_double():
+    # aadl2_EventDataPort has no real 'aadl2_EventDataPort' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_EventDataPort()
+    setattr(partner, 'aadl2_EventDataPort', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType198', {partner})
+    assert getattr(partner, 'aadl2_EventDataPort') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType198', set())
+    assert getattr(partner, 'aadl2_EventDataPort') is None
+
+
+def test_assoc_ownedEventPort199_stub_double():
+    # aadl2_EventPort has no real 'aadl2_EventPort' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_EventPort()
+    setattr(partner, 'aadl2_EventPort', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType200', {partner})
+    assert getattr(partner, 'aadl2_EventPort') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType200', set())
+    assert getattr(partner, 'aadl2_EventPort') is None
+
+
+def test_assoc_ownedExtension154_stub_double():
+    # aadl2_TypeExtension has no real 'aadl2_TypeExtension' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentType(features="sample_text", noFeatures="sample_text")
+    partner = aadl2_TypeExtension()
+    setattr(partner, 'aadl2_TypeExtension', None)
+    _safe_set(owner, 'aadl2_ComponentType155', partner)
+    assert getattr(partner, 'aadl2_TypeExtension') == owner
+    _safe_set(owner, 'aadl2_ComponentType155', None)
+    assert getattr(partner, 'aadl2_TypeExtension') is None
+
+
+def test_assoc_ownedExtension189_stub_double():
+    # aadl2_GroupExtension has no real 'aadl2_GroupExtension' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_GroupExtension()
+    setattr(partner, 'aadl2_GroupExtension', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType190', partner)
+    assert getattr(partner, 'aadl2_GroupExtension') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType190', None)
+    assert getattr(partner, 'aadl2_GroupExtension') is None
+
+
+def test_assoc_ownedExtension96_stub_double():
+    # aadl2_ImplementationExtension has no real 'aadl2_ImplementationExtension' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_ImplementationExtension()
+    setattr(partner, 'aadl2_ImplementationExtension', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation97', partner)
+    assert getattr(partner, 'aadl2_ImplementationExtension') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation97', None)
+    assert getattr(partner, 'aadl2_ImplementationExtension') is None
+
+
+def test_assoc_ownedFeature146_stub_double():
+    # aadl2_Feature has no real 'aadl2_Feature148' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentType(features="sample_text", noFeatures="sample_text")
+    partner = aadl2_Feature()
+    setattr(partner, 'aadl2_Feature148', None)
+    _safe_set(owner, 'aadl2_ComponentType147', {partner})
+    assert getattr(partner, 'aadl2_Feature148') == owner
+    _safe_set(owner, 'aadl2_ComponentType147', set())
+    assert getattr(partner, 'aadl2_Feature148') is None
+
+
+def test_assoc_ownedFeature180_stub_double():
+    # aadl2_Feature has no real 'aadl2_Feature182' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_Feature()
+    setattr(partner, 'aadl2_Feature182', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType181', {partner})
+    assert getattr(partner, 'aadl2_Feature182') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType181', set())
+    assert getattr(partner, 'aadl2_Feature182') is None
+
+
+def test_assoc_ownedFeatureConnection110_stub_double():
+    # aadl2_FeatureConnection has no real 'aadl2_FeatureConnection' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_FeatureConnection()
+    setattr(partner, 'aadl2_FeatureConnection', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation111', {partner})
+    assert getattr(partner, 'aadl2_FeatureConnection') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation111', set())
+    assert getattr(partner, 'aadl2_FeatureConnection') is None
+
+
+def test_assoc_ownedFeatureGroupConnection112_stub_double():
+    # aadl2_FeatureGroupConnection has no real 'aadl2_FeatureGroupConnection' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_FeatureGroupConnection()
+    setattr(partner, 'aadl2_FeatureGroupConnection', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation113', {partner})
+    assert getattr(partner, 'aadl2_FeatureGroupConnection') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation113', set())
+    assert getattr(partner, 'aadl2_FeatureGroupConnection') is None
+
+
+def test_assoc_ownedFeatureGroupTypeRename316_stub_double():
+    # aadl2_FeatureGroupTypeRename has no real 'aadl2_FeatureGroupTypeRename' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_FeatureGroupTypeRename()
+    setattr(partner, 'aadl2_FeatureGroupTypeRename', None)
+    _safe_set(owner, 'aadl2_PackageSection317', {partner})
+    assert getattr(partner, 'aadl2_FeatureGroupTypeRename') == owner
+    _safe_set(owner, 'aadl2_PackageSection317', set())
+    assert getattr(partner, 'aadl2_FeatureGroupTypeRename') is None
+
+
+def test_assoc_ownedField885_stub_double():
+    # aadl2_RecordType has no real 'aadl2_RecordType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_BasicProperty's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_BasicProperty's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_BasicProperty(list="sample_text")
+    partner = aadl2_RecordType()
+    setattr(partner, 'aadl2_RecordType', None)
+    _safe_set(owner, 'aadl2_BasicProperty886', partner)
+    assert getattr(partner, 'aadl2_RecordType') == owner
+    _safe_set(owner, 'aadl2_BasicProperty886', None)
+    assert getattr(partner, 'aadl2_RecordType') is None
+
+
+def test_assoc_ownedInternalEvent122_stub_double():
+    # aadl2_InternalEvent has no real 'aadl2_InternalEvent' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentClassifier(noFlows="sample_text", noModes="sample_text")
+    partner = aadl2_InternalEvent()
+    setattr(partner, 'aadl2_InternalEvent', None)
+    _safe_set(owner, 'aadl2_ComponentClassifier123', {partner})
+    assert getattr(partner, 'aadl2_InternalEvent') == owner
+    _safe_set(owner, 'aadl2_ComponentClassifier123', set())
+    assert getattr(partner, 'aadl2_InternalEvent') is None
+
+
+def test_assoc_ownedMemoryImplementation340_stub_double():
+    # aadl2_MemoryImplementation has no real 'aadl2_MemoryImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_MemoryImplementation()
+    setattr(partner, 'aadl2_MemoryImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection341', {partner})
+    assert getattr(partner, 'aadl2_MemoryImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection341', set())
+    assert getattr(partner, 'aadl2_MemoryImplementation') is None
+
+
+def test_assoc_ownedMemoryType338_stub_double():
+    # aadl2_MemoryType has no real 'aadl2_MemoryType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_MemoryType()
+    setattr(partner, 'aadl2_MemoryType', None)
+    _safe_set(owner, 'aadl2_PackageSection339', {partner})
+    assert getattr(partner, 'aadl2_MemoryType') == owner
+    _safe_set(owner, 'aadl2_PackageSection339', set())
+    assert getattr(partner, 'aadl2_MemoryType') is None
+
+
+def test_assoc_ownedModeTransition118_stub_double():
+    # aadl2_ModeTransition has no real 'aadl2_ModeTransition' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentClassifier(noFlows="sample_text", noModes="sample_text")
+    partner = aadl2_ModeTransition()
+    setattr(partner, 'aadl2_ModeTransition', None)
+    _safe_set(owner, 'aadl2_ComponentClassifier119', {partner})
+    assert getattr(partner, 'aadl2_ModeTransition') == owner
+    _safe_set(owner, 'aadl2_ComponentClassifier119', set())
+    assert getattr(partner, 'aadl2_ModeTransition') is None
+
+
+def test_assoc_ownedParameter204_stub_double():
+    # aadl2_Parameter has no real 'aadl2_Parameter' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_Parameter()
+    setattr(partner, 'aadl2_Parameter', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType205', {partner})
+    assert getattr(partner, 'aadl2_Parameter') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType205', set())
+    assert getattr(partner, 'aadl2_Parameter') is None
+
+
+def test_assoc_ownedParameterConnection106_stub_double():
+    # aadl2_ParameterConnection has no real 'aadl2_ParameterConnection' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_ParameterConnection()
+    setattr(partner, 'aadl2_ParameterConnection', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation107', {partner})
+    assert getattr(partner, 'aadl2_ParameterConnection') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation107', set())
+    assert getattr(partner, 'aadl2_ParameterConnection') is None
+
+
+def test_assoc_ownedPortConnection108_stub_double():
+    # aadl2_PortConnection has no real 'aadl2_PortConnection' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_PortConnection()
+    setattr(partner, 'aadl2_PortConnection', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation109', {partner})
+    assert getattr(partner, 'aadl2_PortConnection') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation109', set())
+    assert getattr(partner, 'aadl2_PortConnection') is None
+
+
+def test_assoc_ownedProcessImplementation346_stub_double():
+    # aadl2_ProcessImplementation has no real 'aadl2_ProcessImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ProcessImplementation()
+    setattr(partner, 'aadl2_ProcessImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection347', {partner})
+    assert getattr(partner, 'aadl2_ProcessImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection347', set())
+    assert getattr(partner, 'aadl2_ProcessImplementation') is None
+
+
+def test_assoc_ownedProcessType342_stub_double():
+    # aadl2_ProcessType has no real 'aadl2_ProcessType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ProcessType()
+    setattr(partner, 'aadl2_ProcessType', None)
+    _safe_set(owner, 'aadl2_PackageSection343', {partner})
+    assert getattr(partner, 'aadl2_ProcessType') == owner
+    _safe_set(owner, 'aadl2_PackageSection343', set())
+    assert getattr(partner, 'aadl2_ProcessType') is None
+
+
+def test_assoc_ownedProcessorImplementation348_stub_double():
+    # aadl2_ProcessorImplementation has no real 'aadl2_ProcessorImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ProcessorImplementation()
+    setattr(partner, 'aadl2_ProcessorImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection349', {partner})
+    assert getattr(partner, 'aadl2_ProcessorImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection349', set())
+    assert getattr(partner, 'aadl2_ProcessorImplementation') is None
+
+
+def test_assoc_ownedProcessorPort120_stub_double():
+    # aadl2_ProcessorPort has no real 'aadl2_ProcessorPort' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentClassifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentClassifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentClassifier(noFlows="sample_text", noModes="sample_text")
+    partner = aadl2_ProcessorPort()
+    setattr(partner, 'aadl2_ProcessorPort', None)
+    _safe_set(owner, 'aadl2_ComponentClassifier121', {partner})
+    assert getattr(partner, 'aadl2_ProcessorPort') == owner
+    _safe_set(owner, 'aadl2_ComponentClassifier121', set())
+    assert getattr(partner, 'aadl2_ProcessorPort') is None
+
+
+def test_assoc_ownedProcessorSubprogram114_stub_double():
+    # aadl2_ProcessorSubprogram has no real 'aadl2_ProcessorSubprogram' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_ProcessorSubprogram()
+    setattr(partner, 'aadl2_ProcessorSubprogram', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation115', {partner})
+    assert getattr(partner, 'aadl2_ProcessorSubprogram') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation115', set())
+    assert getattr(partner, 'aadl2_ProcessorSubprogram') is None
+
+
+def test_assoc_ownedProcessorType344_stub_double():
+    # aadl2_ProcessorType has no real 'aadl2_ProcessorType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ProcessorType()
+    setattr(partner, 'aadl2_ProcessorType', None)
+    _safe_set(owner, 'aadl2_PackageSection345', {partner})
+    assert getattr(partner, 'aadl2_ProcessorType') == owner
+    _safe_set(owner, 'aadl2_PackageSection345', set())
+    assert getattr(partner, 'aadl2_ProcessorType') is None
+
+
+def test_assoc_ownedPropertyExpression853_stub_double():
+    # aadl2_PropertyExpression has no real 'aadl2_PropertyExpression854' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Operation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Operation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Operation(op="sample_text")
+    partner = aadl2_PropertyExpression()
+    setattr(partner, 'aadl2_PropertyExpression854', None)
+    _safe_set(owner, 'aadl2_Operation', {partner})
+    assert getattr(partner, 'aadl2_PropertyExpression854') == owner
+    _safe_set(owner, 'aadl2_Operation', set())
+    assert getattr(partner, 'aadl2_PropertyExpression854') is None
+
+
+def test_assoc_ownedPropertyType771_stub_double():
+    # aadl2_PropertyType has no real 'aadl2_PropertyType773' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertySet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertySet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertySet(contents="sample_text", imports="sample_text")
+    partner = aadl2_PropertyType()
+    setattr(partner, 'aadl2_PropertyType773', None)
+    _safe_set(owner, 'aadl2_PropertySet772', {partner})
+    assert getattr(partner, 'aadl2_PropertyType773') == owner
+    _safe_set(owner, 'aadl2_PropertySet772', set())
+    assert getattr(partner, 'aadl2_PropertyType773') is None
+
+
+def test_assoc_ownedPrototypeBinding239_stub_double():
+    # aadl2_PrototypeBinding has no real 'aadl2_PrototypeBinding241' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Subcomponent's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Subcomponent's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Subcomponent(allModes="sample_text")
+    partner = aadl2_PrototypeBinding()
+    setattr(partner, 'aadl2_PrototypeBinding241', None)
+    _safe_set(owner, 'aadl2_Subcomponent240', {partner})
+    assert getattr(partner, 'aadl2_PrototypeBinding241') == owner
+    _safe_set(owner, 'aadl2_Subcomponent240', set())
+    assert getattr(partner, 'aadl2_PrototypeBinding241') is None
+
+
+def test_assoc_ownedPrototypeBinding42_stub_double():
+    # aadl2_PrototypeBinding has no real 'aadl2_PrototypeBinding' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_PrototypeBinding()
+    setattr(partner, 'aadl2_PrototypeBinding', None)
+    _safe_set(owner, 'aadl2_Classifier43', {partner})
+    assert getattr(partner, 'aadl2_PrototypeBinding') == owner
+    _safe_set(owner, 'aadl2_Classifier43', set())
+    assert getattr(partner, 'aadl2_PrototypeBinding') is None
+
+
+def test_assoc_ownedRealization98_stub_double():
+    # aadl2_Realization has no real 'aadl2_Realization' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentImplementation(connections="sample_text", flows="sample_text", noCalls="sample_text", noConnections="sample_text", noSubcomponents="sample_text", subcomponents="sample_text")
+    partner = aadl2_Realization()
+    setattr(partner, 'aadl2_Realization', None)
+    _safe_set(owner, 'aadl2_ComponentImplementation99', partner)
+    assert getattr(partner, 'aadl2_Realization') == owner
+    _safe_set(owner, 'aadl2_ComponentImplementation99', None)
+    assert getattr(partner, 'aadl2_Realization') is None
+
+
+def test_assoc_ownedSubcomponentFlow268_stub_double():
+    # aadl2_SubcomponentFlow has no real 'aadl2_SubcomponentFlow' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FlowImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FlowImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FlowImplementation(kind="sample_text")
+    partner = aadl2_SubcomponentFlow()
+    setattr(partner, 'aadl2_SubcomponentFlow', None)
+    _safe_set(owner, 'aadl2_FlowImplementation269', {partner})
+    assert getattr(partner, 'aadl2_SubcomponentFlow') == owner
+    _safe_set(owner, 'aadl2_FlowImplementation269', set())
+    assert getattr(partner, 'aadl2_SubcomponentFlow') is None
+
+
+def test_assoc_ownedSubprogramAccess206_stub_double():
+    # aadl2_SubprogramAccess has no real 'aadl2_SubprogramAccess' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_SubprogramAccess()
+    setattr(partner, 'aadl2_SubprogramAccess', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType207', {partner})
+    assert getattr(partner, 'aadl2_SubprogramAccess') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType207', set())
+    assert getattr(partner, 'aadl2_SubprogramAccess') is None
+
+
+def test_assoc_ownedSubprogramCallSequence451_stub_double():
+    # aadl2_SubprogramCallSequence has no real 'aadl2_SubprogramCallSequence' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_BehavioredImplementation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_BehavioredImplementation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_BehavioredImplementation()
+    partner = aadl2_SubprogramCallSequence()
+    setattr(partner, 'aadl2_SubprogramCallSequence', None)
+    _safe_set(owner, 'aadl2_BehavioredImplementation452', {partner})
+    assert getattr(partner, 'aadl2_SubprogramCallSequence') == owner
+    _safe_set(owner, 'aadl2_BehavioredImplementation452', set())
+    assert getattr(partner, 'aadl2_SubprogramCallSequence') is None
+
+
+def test_assoc_ownedSubprogramGroupAccess208_stub_double():
+    # aadl2_SubprogramGroupAccess has no real 'aadl2_SubprogramGroupAccess' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_SubprogramGroupAccess()
+    setattr(partner, 'aadl2_SubprogramGroupAccess', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType209', {partner})
+    assert getattr(partner, 'aadl2_SubprogramGroupAccess') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType209', set())
+    assert getattr(partner, 'aadl2_SubprogramGroupAccess') is None
+
+
+def test_assoc_ownedSubprogramGroupImplementation356_stub_double():
+    # aadl2_SubprogramGroupImplementation has no real 'aadl2_SubprogramGroupImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_SubprogramGroupImplementation()
+    setattr(partner, 'aadl2_SubprogramGroupImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection357', {partner})
+    assert getattr(partner, 'aadl2_SubprogramGroupImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection357', set())
+    assert getattr(partner, 'aadl2_SubprogramGroupImplementation') is None
+
+
+def test_assoc_ownedSubprogramGroupType354_stub_double():
+    # aadl2_SubprogramGroupType has no real 'aadl2_SubprogramGroupType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_SubprogramGroupType()
+    setattr(partner, 'aadl2_SubprogramGroupType', None)
+    _safe_set(owner, 'aadl2_PackageSection355', {partner})
+    assert getattr(partner, 'aadl2_SubprogramGroupType') == owner
+    _safe_set(owner, 'aadl2_PackageSection355', set())
+    assert getattr(partner, 'aadl2_SubprogramGroupType') is None
+
+
+def test_assoc_ownedSubprogramImplementation352_stub_double():
+    # aadl2_SubprogramImplementation has no real 'aadl2_SubprogramImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_SubprogramImplementation()
+    setattr(partner, 'aadl2_SubprogramImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection353', {partner})
+    assert getattr(partner, 'aadl2_SubprogramImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection353', set())
+    assert getattr(partner, 'aadl2_SubprogramImplementation') is None
+
+
+def test_assoc_ownedSubprogramType350_stub_double():
+    # aadl2_SubprogramType has no real 'aadl2_SubprogramType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_SubprogramType()
+    setattr(partner, 'aadl2_SubprogramType', None)
+    _safe_set(owner, 'aadl2_PackageSection351', {partner})
+    assert getattr(partner, 'aadl2_SubprogramType') == owner
+    _safe_set(owner, 'aadl2_PackageSection351', set())
+    assert getattr(partner, 'aadl2_SubprogramType') is None
+
+
+def test_assoc_ownedSystemImplementation360_stub_double():
+    # aadl2_SystemImplementation has no real 'aadl2_SystemImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_SystemImplementation()
+    setattr(partner, 'aadl2_SystemImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection361', {partner})
+    assert getattr(partner, 'aadl2_SystemImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection361', set())
+    assert getattr(partner, 'aadl2_SystemImplementation') is None
+
+
+def test_assoc_ownedSystemType358_stub_double():
+    # aadl2_SystemType has no real 'aadl2_SystemType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_SystemType()
+    setattr(partner, 'aadl2_SystemType', None)
+    _safe_set(owner, 'aadl2_PackageSection359', {partner})
+    assert getattr(partner, 'aadl2_SystemType') == owner
+    _safe_set(owner, 'aadl2_PackageSection359', set())
+    assert getattr(partner, 'aadl2_SystemType') is None
+
+
+def test_assoc_ownedThreadGroupImplementation368_stub_double():
+    # aadl2_ThreadGroupImplementation has no real 'aadl2_ThreadGroupImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ThreadGroupImplementation()
+    setattr(partner, 'aadl2_ThreadGroupImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection369', {partner})
+    assert getattr(partner, 'aadl2_ThreadGroupImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection369', set())
+    assert getattr(partner, 'aadl2_ThreadGroupImplementation') is None
+
+
+def test_assoc_ownedThreadGroupType366_stub_double():
+    # aadl2_ThreadGroupType has no real 'aadl2_ThreadGroupType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ThreadGroupType()
+    setattr(partner, 'aadl2_ThreadGroupType', None)
+    _safe_set(owner, 'aadl2_PackageSection367', {partner})
+    assert getattr(partner, 'aadl2_ThreadGroupType') == owner
+    _safe_set(owner, 'aadl2_PackageSection367', set())
+    assert getattr(partner, 'aadl2_ThreadGroupType') is None
+
+
+def test_assoc_ownedThreadImplementation364_stub_double():
+    # aadl2_ThreadImplementation has no real 'aadl2_ThreadImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ThreadImplementation()
+    setattr(partner, 'aadl2_ThreadImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection365', {partner})
+    assert getattr(partner, 'aadl2_ThreadImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection365', set())
+    assert getattr(partner, 'aadl2_ThreadImplementation') is None
+
+
+def test_assoc_ownedThreadType362_stub_double():
+    # aadl2_ThreadType has no real 'aadl2_ThreadType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_ThreadType()
+    setattr(partner, 'aadl2_ThreadType', None)
+    _safe_set(owner, 'aadl2_PackageSection363', {partner})
+    assert getattr(partner, 'aadl2_ThreadType') == owner
+    _safe_set(owner, 'aadl2_PackageSection363', set())
+    assert getattr(partner, 'aadl2_ThreadType') is None
+
+
+def test_assoc_ownedType28_stub_double():
+    # aadl2_PropertyType has no real 'aadl2_PropertyType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_BasicProperty's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_BasicProperty's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_BasicProperty(list="sample_text")
+    partner = aadl2_PropertyType()
+    setattr(partner, 'aadl2_PropertyType', None)
+    _safe_set(owner, 'aadl2_BasicProperty', partner)
+    assert getattr(partner, 'aadl2_PropertyType') == owner
+    _safe_set(owner, 'aadl2_BasicProperty', None)
+    assert getattr(partner, 'aadl2_PropertyType') is None
+
+
+def test_assoc_ownedType785_stub_double():
+    # aadl2_PropertyType has no real 'aadl2_PropertyType787' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertyConstant's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertyConstant's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertyConstant(list="sample_text")
+    partner = aadl2_PropertyType()
+    setattr(partner, 'aadl2_PropertyType787', None)
+    _safe_set(owner, 'aadl2_PropertyConstant786', partner)
+    assert getattr(partner, 'aadl2_PropertyType787') == owner
+    _safe_set(owner, 'aadl2_PropertyConstant786', None)
+    assert getattr(partner, 'aadl2_PropertyType787') is None
+
+
+def test_assoc_ownedValue17_stub_double():
+    # aadl2_ModalPropertyValue has no real 'aadl2_ModalPropertyValue' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertyAssociation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertyAssociation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertyAssociation(append="sample_text", constant="sample_text")
+    partner = aadl2_ModalPropertyValue()
+    setattr(partner, 'aadl2_ModalPropertyValue', None)
+    _safe_set(owner, 'aadl2_PropertyAssociation18', {partner})
+    assert getattr(partner, 'aadl2_ModalPropertyValue') == owner
+    _safe_set(owner, 'aadl2_PropertyAssociation18', set())
+    assert getattr(partner, 'aadl2_ModalPropertyValue') is None
+
+
+def test_assoc_ownedVirtualBusImplementation372_stub_double():
+    # aadl2_VirtualBusImplementation has no real 'aadl2_VirtualBusImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_VirtualBusImplementation()
+    setattr(partner, 'aadl2_VirtualBusImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection373', {partner})
+    assert getattr(partner, 'aadl2_VirtualBusImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection373', set())
+    assert getattr(partner, 'aadl2_VirtualBusImplementation') is None
+
+
+def test_assoc_ownedVirtualBusType370_stub_double():
+    # aadl2_VirtualBusType has no real 'aadl2_VirtualBusType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_VirtualBusType()
+    setattr(partner, 'aadl2_VirtualBusType', None)
+    _safe_set(owner, 'aadl2_PackageSection371', {partner})
+    assert getattr(partner, 'aadl2_VirtualBusType') == owner
+    _safe_set(owner, 'aadl2_PackageSection371', set())
+    assert getattr(partner, 'aadl2_VirtualBusType') is None
+
+
+def test_assoc_ownedVirtualProcessorImplementation376_stub_double():
+    # aadl2_VirtualProcessorImplementation has no real 'aadl2_VirtualProcessorImplementation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_VirtualProcessorImplementation()
+    setattr(partner, 'aadl2_VirtualProcessorImplementation', None)
+    _safe_set(owner, 'aadl2_PackageSection377', {partner})
+    assert getattr(partner, 'aadl2_VirtualProcessorImplementation') == owner
+    _safe_set(owner, 'aadl2_PackageSection377', set())
+    assert getattr(partner, 'aadl2_VirtualProcessorImplementation') is None
+
+
+def test_assoc_ownedVirtualProcessorType374_stub_double():
+    # aadl2_VirtualProcessorType has no real 'aadl2_VirtualProcessorType' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageSection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageSection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageSection(aliases="sample_text", declarations="sample_text", imports="sample_text", noAnnexes="sample_text", noProperties="sample_text")
+    partner = aadl2_VirtualProcessorType()
+    setattr(partner, 'aadl2_VirtualProcessorType', None)
+    _safe_set(owner, 'aadl2_PackageSection375', {partner})
+    assert getattr(partner, 'aadl2_VirtualProcessorType') == owner
+    _safe_set(owner, 'aadl2_PackageSection375', set())
+    assert getattr(partner, 'aadl2_VirtualProcessorType') is None
+
+
+def test_assoc_parentMode257_stub_double():
+    # aadl2_ModeBinding has no real 'aadl2_ModeBinding258' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Mode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Mode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Mode(derived="sample_text", initial="sample_text")
+    partner = aadl2_ModeBinding()
+    setattr(partner, 'aadl2_ModeBinding258', None)
+    _safe_set(owner, 'aadl2_Mode259', partner)
+    assert getattr(partner, 'aadl2_ModeBinding258') == owner
+    _safe_set(owner, 'aadl2_Mode259', None)
+    assert getattr(partner, 'aadl2_ModeBinding258') is None
+
+
+def test_assoc_port136_stub_double():
+    # aadl2_TriggerPort has no real 'aadl2_TriggerPort137' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Port's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Port's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Port(category="sample_text")
+    partner = aadl2_TriggerPort()
+    setattr(partner, 'aadl2_TriggerPort137', None)
+    _safe_set(owner, 'aadl2_Port', partner)
+    assert getattr(partner, 'aadl2_TriggerPort137') == owner
+    _safe_set(owner, 'aadl2_Port', None)
+    assert getattr(partner, 'aadl2_TriggerPort137') is None
+
+
+def test_assoc_property824_stub_double():
+    # aadl2_BasicPropertyAssociation has no real 'aadl2_BasicPropertyAssociation' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_BasicProperty's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_BasicProperty's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_BasicProperty(list="sample_text")
+    partner = aadl2_BasicPropertyAssociation()
+    setattr(partner, 'aadl2_BasicPropertyAssociation', None)
+    _safe_set(owner, 'aadl2_BasicProperty825', partner)
+    assert getattr(partner, 'aadl2_BasicPropertyAssociation') == owner
+    _safe_set(owner, 'aadl2_BasicProperty825', None)
+    assert getattr(partner, 'aadl2_BasicPropertyAssociation') is None
+
+
+def test_assoc_property851_stub_double():
+    # aadl2_PropertyReference has no real 'aadl2_PropertyReference' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Property's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Property's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Property(emptyListDefault="sample_text", inherit="sample_text")
+    partner = aadl2_PropertyReference()
+    setattr(partner, 'aadl2_PropertyReference', None)
+    _safe_set(owner, 'aadl2_Property852', partner)
+    assert getattr(partner, 'aadl2_PropertyReference') == owner
+    _safe_set(owner, 'aadl2_Property852', None)
+    assert getattr(partner, 'aadl2_PropertyReference') is None
+
+
+def test_assoc_propertySet861_stub_double():
+    # aadl2_GlobalNamespace has no real 'aadl2_GlobalNamespace862' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PropertySet's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PropertySet's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PropertySet(contents="sample_text", imports="sample_text")
+    partner = aadl2_GlobalNamespace()
+    setattr(partner, 'aadl2_GlobalNamespace862', None)
+    _safe_set(owner, 'aadl2_PropertySet863', partner)
+    assert getattr(partner, 'aadl2_GlobalNamespace862') == owner
+    _safe_set(owner, 'aadl2_PropertySet863', None)
+    assert getattr(partner, 'aadl2_GlobalNamespace862') is None
+
+
+def test_assoc_prototype138_stub_double():
+    # aadl2_Feature has no real 'aadl2_Feature' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Prototype's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Prototype's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Prototype()
+    partner = aadl2_Feature()
+    setattr(partner, 'aadl2_Feature', None)
+    _safe_set(owner, 'aadl2_Prototype139', partner)
+    assert getattr(partner, 'aadl2_Feature') == owner
+    _safe_set(owner, 'aadl2_Prototype139', None)
+    assert getattr(partner, 'aadl2_Feature') is None
+
+
+def test_assoc_prototype804_stub_double():
+    # aadl2_ComponentPrototypeReference has no real 'aadl2_ComponentPrototypeReference' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ComponentPrototype's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ComponentPrototype's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ComponentPrototype(array="sample_text", category="sample_text")
+    partner = aadl2_ComponentPrototypeReference()
+    setattr(partner, 'aadl2_ComponentPrototypeReference', None)
+    _safe_set(owner, 'aadl2_ComponentPrototype805', partner)
+    assert getattr(partner, 'aadl2_ComponentPrototypeReference') == owner
+    _safe_set(owner, 'aadl2_ComponentPrototype805', None)
+    assert getattr(partner, 'aadl2_ComponentPrototypeReference') is None
+
+
+def test_assoc_prototype819_stub_double():
+    # aadl2_SubprogramCall has no real 'aadl2_SubprogramCall820' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Prototype's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Prototype's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Prototype()
+    partner = aadl2_SubprogramCall()
+    setattr(partner, 'aadl2_SubprogramCall820', None)
+    _safe_set(owner, 'aadl2_Prototype821', partner)
+    assert getattr(partner, 'aadl2_SubprogramCall820') == owner
+    _safe_set(owner, 'aadl2_Prototype821', None)
+    assert getattr(partner, 'aadl2_SubprogramCall820') is None
+
+
+def test_assoc_refinementContext60_stub_double():
+    # aadl2_RefinableElement has no real 'aadl2_RefinableElement' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_RefinableElement()
+    setattr(partner, 'aadl2_RefinableElement', None)
+    _safe_set(owner, 'aadl2_Classifier61', partner)
+    assert getattr(partner, 'aadl2_RefinableElement') == owner
+    _safe_set(owner, 'aadl2_Classifier61', None)
+    assert getattr(partner, 'aadl2_RefinableElement') is None
+
+
+def test_assoc_relatedElement54_stub_double():
+    # aadl2_Relationship has no real 'aadl2_Relationship' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Element's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Element's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Element()
+    partner = aadl2_Relationship()
+    setattr(partner, 'aadl2_Relationship', None)
+    _safe_set(owner, 'aadl2_Element55', partner)
+    assert getattr(partner, 'aadl2_Relationship') == owner
+    _safe_set(owner, 'aadl2_Element55', None)
+    assert getattr(partner, 'aadl2_Relationship') is None
+
+
+def test_assoc_renamedFeatureGroupType400_stub_double():
+    # aadl2_FeatureGroupTypeRename has no real 'aadl2_FeatureGroupTypeRename401' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_FeatureGroupType's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_FeatureGroupType's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_FeatureGroupType(feature="sample_text")
+    partner = aadl2_FeatureGroupTypeRename()
+    setattr(partner, 'aadl2_FeatureGroupTypeRename401', None)
+    _safe_set(owner, 'aadl2_FeatureGroupType402', partner)
+    assert getattr(partner, 'aadl2_FeatureGroupTypeRename401') == owner
+    _safe_set(owner, 'aadl2_FeatureGroupType402', None)
+    assert getattr(partner, 'aadl2_FeatureGroupTypeRename401') is None
+
+
+def test_assoc_renamedPackage383_stub_double():
+    # aadl2_AadlPackage has no real 'aadl2_AadlPackage385' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_PackageRename's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_PackageRename's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_PackageRename(renameAll="sample_text")
+    partner = aadl2_AadlPackage()
+    setattr(partner, 'aadl2_AadlPackage385', None)
+    _safe_set(owner, 'aadl2_PackageRename384', partner)
+    assert getattr(partner, 'aadl2_AadlPackage385') == owner
+    _safe_set(owner, 'aadl2_PackageRename384', None)
+    assert getattr(partner, 'aadl2_AadlPackage385') is None
+
+
+def test_assoc_size78_stub_double():
+    # aadl2_ArraySize has no real 'aadl2_ArraySize' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_ArraySpecification's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_ArraySpecification's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_ArraySpecification(dimension="sample_text")
+    partner = aadl2_ArraySize()
+    setattr(partner, 'aadl2_ArraySize', None)
+    _safe_set(owner, 'aadl2_ArraySpecification', {partner})
+    assert getattr(partner, 'aadl2_ArraySize') == owner
+    _safe_set(owner, 'aadl2_ArraySpecification', set())
+    assert getattr(partner, 'aadl2_ArraySize') is None
+
+
+def test_assoc_source124_stub_double():
+    # aadl2_ModeTransition has no real 'aadl2_ModeTransition125' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Mode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Mode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Mode(derived="sample_text", initial="sample_text")
+    partner = aadl2_ModeTransition()
+    setattr(partner, 'aadl2_ModeTransition125', None)
+    _safe_set(owner, 'aadl2_Mode126', partner)
+    assert getattr(partner, 'aadl2_ModeTransition125') == owner
+    _safe_set(owner, 'aadl2_Mode126', None)
+    assert getattr(partner, 'aadl2_ModeTransition125') is None
+
+
+def test_assoc_source283_stub_double():
+    # aadl2_ConnectionEnd has no real 'aadl2_ConnectionEnd285' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Connection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Connection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Connection(bidirectional="sample_text", kind="sample_text")
+    partner = aadl2_ConnectionEnd()
+    setattr(partner, 'aadl2_ConnectionEnd285', None)
+    _safe_set(owner, 'aadl2_Connection284', partner)
+    assert getattr(partner, 'aadl2_ConnectionEnd285') == owner
+    _safe_set(owner, 'aadl2_Connection284', None)
+    assert getattr(partner, 'aadl2_ConnectionEnd285') is None
+
+
+def test_assoc_source49_stub_double():
+    # aadl2_DirectedRelationship has no real 'aadl2_DirectedRelationship' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Element's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Element's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Element()
+    partner = aadl2_DirectedRelationship()
+    setattr(partner, 'aadl2_DirectedRelationship', None)
+    _safe_set(owner, 'aadl2_Element50', partner)
+    assert getattr(partner, 'aadl2_DirectedRelationship') == owner
+    _safe_set(owner, 'aadl2_Element50', None)
+    assert getattr(partner, 'aadl2_DirectedRelationship') is None
+
+
+def test_assoc_sourceContext289_stub_double():
+    # aadl2_Context has no real 'aadl2_Context291' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Connection's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Connection's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Connection(bidirectional="sample_text", kind="sample_text")
+    partner = aadl2_Context()
+    setattr(partner, 'aadl2_Context291', None)
+    _safe_set(owner, 'aadl2_Connection290', partner)
+    assert getattr(partner, 'aadl2_Context291') == owner
+    _safe_set(owner, 'aadl2_Connection290', None)
+    assert getattr(partner, 'aadl2_Context291') is None
+
+
+def test_assoc_specific47_stub_double():
+    # aadl2_Generalization_ has no real 'generalization' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Classifier's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Classifier's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Classifier(noAnnexes="sample_text", noProperties="sample_text", noPrototypes="sample_text")
+    partner = aadl2_Generalization_()
+    setattr(partner, 'generalization', None)
+    _safe_set(owner, 'Classifier48', partner)
+    assert getattr(partner, 'generalization') == owner
+    _safe_set(owner, 'Classifier48', None)
+    assert getattr(partner, 'generalization') is None
+
+
+def test_assoc_target51_stub_double():
+    # aadl2_DirectedRelationship has no real 'aadl2_DirectedRelationship52' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Element's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Element's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Element()
+    partner = aadl2_DirectedRelationship()
+    setattr(partner, 'aadl2_DirectedRelationship52', None)
+    _safe_set(owner, 'aadl2_Element53', partner)
+    assert getattr(partner, 'aadl2_DirectedRelationship52') == owner
+    _safe_set(owner, 'aadl2_Element53', None)
+    assert getattr(partner, 'aadl2_DirectedRelationship52') is None
+
+
+def test_assoc_type29_stub_double():
+    # aadl2_TypedElement has no real 'aadl2_TypedElement' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_Type()
+    partner = aadl2_TypedElement()
+    setattr(partner, 'aadl2_TypedElement', None)
+    _safe_set(owner, 'aadl2_Type', partner)
+    assert getattr(partner, 'aadl2_TypedElement') == owner
+    _safe_set(owner, 'aadl2_Type', None)
+    assert getattr(partner, 'aadl2_TypedElement') is None
+
+
+def test_assoc_unit836_stub_double():
+    # aadl2_UnitLiteral has no real 'aadl2_UnitLiteral838' property in the generated
+    # code (a bare stub) -- manually attach it so aadl2_NumberValue's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # aadl2_NumberValue's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = aadl2_NumberValue(valueString="sample_text")
+    partner = aadl2_UnitLiteral()
+    setattr(partner, 'aadl2_UnitLiteral838', None)
+    _safe_set(owner, 'aadl2_NumberValue837', partner)
+    assert getattr(partner, 'aadl2_UnitLiteral838') == owner
+    _safe_set(owner, 'aadl2_NumberValue837', None)
+    assert getattr(partner, 'aadl2_UnitLiteral838') is None
+
+

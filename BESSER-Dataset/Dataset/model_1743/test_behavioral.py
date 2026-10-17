@@ -400,3 +400,56 @@ def test_assoc_unsettableReference25_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'model_TargetObject', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_books8_stub_double():
+    # model_Library has no real 'model_Library' property in the generated
+    # code (a bare stub) -- manually attach it so model_Book's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_Book's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_Book(data="sample_text", tags="sample_text", title="sample_text")
+    partner = model_Library()
+    setattr(partner, 'model_Library', None)
+    _safe_set(owner, 'model_Book', partner)
+    assert getattr(partner, 'model_Library') == owner
+    _safe_set(owner, 'model_Book', None)
+    assert getattr(partner, 'model_Library') is None
+
+
+def test_assoc_latestBook11_stub_double():
+    # model_Library has no real 'model_Library12' property in the generated
+    # code (a bare stub) -- manually attach it so model_Book's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_Book's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_Book(data="sample_text", tags="sample_text", title="sample_text")
+    partner = model_Library()
+    setattr(partner, 'model_Library12', None)
+    _safe_set(owner, 'model_Book13', partner)
+    assert getattr(partner, 'model_Library12') == owner
+    _safe_set(owner, 'model_Book13', None)
+    assert getattr(partner, 'model_Library12') is None
+
+
+def test_assoc_location9_stub_double():
+    # model_Library has no real 'model_Library10' property in the generated
+    # code (a bare stub) -- manually attach it so model_Location's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # model_Location's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = model_Location(address="sample_text", id="sample_text")
+    partner = model_Library()
+    setattr(partner, 'model_Library10', None)
+    _safe_set(owner, 'model_Location', partner)
+    assert getattr(partner, 'model_Library10') == owner
+    _safe_set(owner, 'model_Location', None)
+    assert getattr(partner, 'model_Library10') is None
+
+

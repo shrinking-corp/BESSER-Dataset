@@ -942,3 +942,476 @@ def test_assoc_withattribute52_reverse_link_reassign_clear():
         assert not _is_linked(a2, 'eJSL_Attribute51', b)
 
 
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_attribute85_stub_double():
+    # eJSL_DetailPageField has no real 'eJSL_DetailPageField86' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Attribute(id=True, isprimary=True, isunique=True, name="sample_text", preserve=True)
+    partner = eJSL_DetailPageField()
+    setattr(partner, 'eJSL_DetailPageField86', None)
+    _safe_set(owner, 'eJSL_Attribute87', partner)
+    assert getattr(partner, 'eJSL_DetailPageField86') == owner
+    _safe_set(owner, 'eJSL_Attribute87', None)
+    assert getattr(partner, 'eJSL_DetailPageField86') is None
+
+
+def test_assoc_attributes94_stub_double():
+    # eJSL_DetailPageField has no real 'eJSL_DetailPageField95' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_KeyValuePair's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_KeyValuePair's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_KeyValuePair(name="sample_text", value="sample_text")
+    partner = eJSL_DetailPageField()
+    setattr(partner, 'eJSL_DetailPageField95', None)
+    _safe_set(owner, 'eJSL_KeyValuePair96', partner)
+    assert getattr(partner, 'eJSL_DetailPageField95') == owner
+    _safe_set(owner, 'eJSL_KeyValuePair96', None)
+    assert getattr(partner, 'eJSL_DetailPageField95') is None
+
+
+def test_assoc_classes141_stub_double():
+    # eJSL_Library has no real 'eJSL_Library142' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Class's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Class's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Class(name="sample_text")
+    partner = eJSL_Library()
+    setattr(partner, 'eJSL_Library142', None)
+    _safe_set(owner, 'eJSL_Class', partner)
+    assert getattr(partner, 'eJSL_Library142') == owner
+    _safe_set(owner, 'eJSL_Class', None)
+    assert getattr(partner, 'eJSL_Library142') is None
+
+
+def test_assoc_cssblocks174_stub_double():
+    # eJSL_Template has no real 'eJSL_Template175' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_CssBlock's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_CssBlock's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_CssBlock(selector="sample_text")
+    partner = eJSL_Template()
+    setattr(partner, 'eJSL_Template175', None)
+    _safe_set(owner, 'eJSL_CssBlock', partner)
+    assert getattr(partner, 'eJSL_Template175') == owner
+    _safe_set(owner, 'eJSL_CssBlock', None)
+    assert getattr(partner, 'eJSL_Template175') is None
+
+
+def test_assoc_datatypes1_stub_double():
+    # eJSL_EJSLPart has no real 'eJSL_EJSLPart2' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Datatype's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Datatype's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Datatype(name="sample_text", type="sample_text")
+    partner = eJSL_EJSLPart()
+    setattr(partner, 'eJSL_EJSLPart2', None)
+    _safe_set(owner, 'eJSL_Datatype', partner)
+    assert getattr(partner, 'eJSL_EJSLPart2') == owner
+    _safe_set(owner, 'eJSL_Datatype', None)
+    assert getattr(partner, 'eJSL_EJSLPart2') is None
+
+
+def test_assoc_dtype20_stub_double():
+    # eJSL_HTMLTypes has no real 'eJSL_HTMLTypes' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Parameter(defaultvalue="sample_text", descripton="sample_text", label="sample_text", name="sample_text", size=7)
+    partner = eJSL_HTMLTypes()
+    setattr(partner, 'eJSL_HTMLTypes', None)
+    _safe_set(owner, 'eJSL_Parameter21', partner)
+    assert getattr(partner, 'eJSL_HTMLTypes') == owner
+    _safe_set(owner, 'eJSL_Parameter21', None)
+    assert getattr(partner, 'eJSL_HTMLTypes') is None
+
+
+def test_assoc_ejslPart0_stub_double():
+    # eJSL_EJSLPart has no real 'eJSL_EJSLPart' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_EJSLModel's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_EJSLModel's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_EJSLModel(name="sample_text")
+    partner = eJSL_EJSLPart()
+    setattr(partner, 'eJSL_EJSLPart', None)
+    _safe_set(owner, 'eJSL_EJSLModel', partner)
+    assert getattr(partner, 'eJSL_EJSLPart') == owner
+    _safe_set(owner, 'eJSL_EJSLModel', None)
+    assert getattr(partner, 'eJSL_EJSLPart') is None
+
+
+def test_assoc_entities12_stub_double():
+    # eJSL_Feature has no real 'eJSL_Feature13' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Entity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Entity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Entity(name="sample_text", preserve=True)
+    partner = eJSL_Feature()
+    setattr(partner, 'eJSL_Feature13', None)
+    _safe_set(owner, 'eJSL_Entity', partner)
+    assert getattr(partner, 'eJSL_Feature13') == owner
+    _safe_set(owner, 'eJSL_Entity', None)
+    assert getattr(partner, 'eJSL_Feature13') is None
+
+
+def test_assoc_entities139_stub_double():
+    # eJSL_Library has no real 'eJSL_Library' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Entity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Entity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Entity(name="sample_text", preserve=True)
+    partner = eJSL_Library()
+    setattr(partner, 'eJSL_Library', None)
+    _safe_set(owner, 'eJSL_Entity140', partner)
+    assert getattr(partner, 'eJSL_Library') == owner
+    _safe_set(owner, 'eJSL_Entity140', None)
+    assert getattr(partner, 'eJSL_Library') is None
+
+
+def test_assoc_entitypackages10_stub_double():
+    # eJSL_Feature has no real 'eJSL_Feature11' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Entitypackage's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Entitypackage's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Entitypackage(name="sample_text")
+    partner = eJSL_Feature()
+    setattr(partner, 'eJSL_Feature11', None)
+    _safe_set(owner, 'eJSL_Entitypackage', partner)
+    assert getattr(partner, 'eJSL_Feature11') == owner
+    _safe_set(owner, 'eJSL_Entitypackage', None)
+    assert getattr(partner, 'eJSL_Feature11') is None
+
+
+def test_assoc_extensions115_stub_double():
+    # eJSL_ExtensionPackage has no real 'eJSL_ExtensionPackage' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Extension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Extension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Extension(name="sample_text")
+    partner = eJSL_ExtensionPackage()
+    setattr(partner, 'eJSL_ExtensionPackage', None)
+    _safe_set(owner, 'eJSL_Extension116', partner)
+    assert getattr(partner, 'eJSL_ExtensionPackage') == owner
+    _safe_set(owner, 'eJSL_Extension116', None)
+    assert getattr(partner, 'eJSL_ExtensionPackage') is None
+
+
+def test_assoc_extensions9_stub_double():
+    # eJSL_CMSExtension has no real 'eJSL_CMSExtension' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Extension's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Extension's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Extension(name="sample_text")
+    partner = eJSL_CMSExtension()
+    setattr(partner, 'eJSL_CMSExtension', None)
+    _safe_set(owner, 'eJSL_Extension', partner)
+    assert getattr(partner, 'eJSL_CMSExtension') == owner
+    _safe_set(owner, 'eJSL_Extension', None)
+    assert getattr(partner, 'eJSL_CMSExtension') is None
+
+
+def test_assoc_globalParamter117_stub_double():
+    # eJSL_Component has no real 'eJSL_Component' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_ParameterGroup's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_ParameterGroup's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_ParameterGroup(label="sample_text", name="sample_text")
+    partner = eJSL_Component()
+    setattr(partner, 'eJSL_Component', None)
+    _safe_set(owner, 'eJSL_ParameterGroup118', partner)
+    assert getattr(partner, 'eJSL_Component') == owner
+    _safe_set(owner, 'eJSL_ParameterGroup118', None)
+    assert getattr(partner, 'eJSL_Component') is None
+
+
+def test_assoc_globalparameters3_stub_double():
+    # eJSL_EJSLPart has no real 'eJSL_EJSLPart4' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Parameter(defaultvalue="sample_text", descripton="sample_text", label="sample_text", name="sample_text", size=7)
+    partner = eJSL_EJSLPart()
+    setattr(partner, 'eJSL_EJSLPart4', None)
+    _safe_set(owner, 'eJSL_Parameter', partner)
+    assert getattr(partner, 'eJSL_EJSLPart4') == owner
+    _safe_set(owner, 'eJSL_Parameter', None)
+    assert getattr(partner, 'eJSL_EJSLPart4') is None
+
+
+def test_assoc_linkedAction102_stub_double():
+    # eJSL_Link has no real 'eJSL_Link103' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_PageAction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_PageAction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_PageAction(name="sample_text", pageActionPosition="sample_text", pageActionType="sample_text")
+    partner = eJSL_Link()
+    setattr(partner, 'eJSL_Link103', None)
+    _safe_set(owner, 'eJSL_PageAction104', partner)
+    assert getattr(partner, 'eJSL_Link103') == owner
+    _safe_set(owner, 'eJSL_PageAction104', None)
+    assert getattr(partner, 'eJSL_Link103') is None
+
+
+def test_assoc_linkedAttribute99_stub_double():
+    # eJSL_Link has no real 'eJSL_Link100' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Attribute(id=True, isprimary=True, isunique=True, name="sample_text", preserve=True)
+    partner = eJSL_Link()
+    setattr(partner, 'eJSL_Link100', None)
+    _safe_set(owner, 'eJSL_Attribute101', partner)
+    assert getattr(partner, 'eJSL_Link100') == owner
+    _safe_set(owner, 'eJSL_Attribute101', None)
+    assert getattr(partner, 'eJSL_Link100') is None
+
+
+def test_assoc_linkparameters107_stub_double():
+    # eJSL_ContextLink has no real 'eJSL_ContextLink' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_LinkParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_LinkParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_LinkParameter(id=True, name="sample_text", value="sample_text")
+    partner = eJSL_ContextLink()
+    setattr(partner, 'eJSL_ContextLink', None)
+    _safe_set(owner, 'eJSL_LinkParameter', partner)
+    assert getattr(partner, 'eJSL_ContextLink') == owner
+    _safe_set(owner, 'eJSL_LinkParameter', None)
+    assert getattr(partner, 'eJSL_ContextLink') is None
+
+
+def test_assoc_links74_stub_double():
+    # eJSL_Link has no real 'eJSL_Link' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Page(name="sample_text")
+    partner = eJSL_Link()
+    setattr(partner, 'eJSL_Link', None)
+    _safe_set(owner, 'eJSL_Page75', {partner})
+    assert getattr(partner, 'eJSL_Link') == owner
+    _safe_set(owner, 'eJSL_Page75', set())
+    assert getattr(partner, 'eJSL_Link') is None
+
+
+def test_assoc_localparameters170_stub_double():
+    # eJSL_Template has no real 'eJSL_Template' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Parameter(defaultvalue="sample_text", descripton="sample_text", label="sample_text", name="sample_text", size=7)
+    partner = eJSL_Template()
+    setattr(partner, 'eJSL_Template', None)
+    _safe_set(owner, 'eJSL_Parameter171', partner)
+    assert getattr(partner, 'eJSL_Template') == owner
+    _safe_set(owner, 'eJSL_Parameter171', None)
+    assert getattr(partner, 'eJSL_Template') is None
+
+
+def test_assoc_packages143_stub_double():
+    # eJSL_Library has no real 'eJSL_Library144' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Package's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Package's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Package(name="sample_text")
+    partner = eJSL_Library()
+    setattr(partner, 'eJSL_Library144', None)
+    _safe_set(owner, 'eJSL_Package', partner)
+    assert getattr(partner, 'eJSL_Library144') == owner
+    _safe_set(owner, 'eJSL_Package', None)
+    assert getattr(partner, 'eJSL_Library144') is None
+
+
+def test_assoc_pageRef122_stub_double():
+    # eJSL_Section has no real 'eJSL_Section123' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_PageReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_PageReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_PageReference(sect="sample_text")
+    partner = eJSL_Section()
+    setattr(partner, 'eJSL_Section123', None)
+    _safe_set(owner, 'eJSL_PageReference', partner)
+    assert getattr(partner, 'eJSL_Section123') == owner
+    _safe_set(owner, 'eJSL_PageReference', None)
+    assert getattr(partner, 'eJSL_Section123') is None
+
+
+def test_assoc_pageRef132_stub_double():
+    # eJSL_Module has no real 'eJSL_Module' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_PageReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_PageReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_PageReference(sect="sample_text")
+    partner = eJSL_Module()
+    setattr(partner, 'eJSL_Module', None)
+    _safe_set(owner, 'eJSL_PageReference133', partner)
+    assert getattr(partner, 'eJSL_Module') == owner
+    _safe_set(owner, 'eJSL_PageReference133', None)
+    assert getattr(partner, 'eJSL_Module') is None
+
+
+def test_assoc_pages14_stub_double():
+    # eJSL_Feature has no real 'eJSL_Feature15' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Page's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Page's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Page(name="sample_text")
+    partner = eJSL_Feature()
+    setattr(partner, 'eJSL_Feature15', None)
+    _safe_set(owner, 'eJSL_Page', partner)
+    assert getattr(partner, 'eJSL_Feature15') == owner
+    _safe_set(owner, 'eJSL_Page', None)
+    assert getattr(partner, 'eJSL_Feature15') is None
+
+
+def test_assoc_parametergroups5_stub_double():
+    # eJSL_EJSLPart has no real 'eJSL_EJSLPart6' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_ParameterGroup's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_ParameterGroup's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_ParameterGroup(label="sample_text", name="sample_text")
+    partner = eJSL_EJSLPart()
+    setattr(partner, 'eJSL_EJSLPart6', None)
+    _safe_set(owner, 'eJSL_ParameterGroup', partner)
+    assert getattr(partner, 'eJSL_EJSLPart6') == owner
+    _safe_set(owner, 'eJSL_ParameterGroup', None)
+    assert getattr(partner, 'eJSL_EJSLPart6') is None
+
+
+def test_assoc_positions172_stub_double():
+    # eJSL_Template has no real 'eJSL_Template173' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Position's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Position's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Position(name="sample_text")
+    partner = eJSL_Template()
+    setattr(partner, 'eJSL_Template173', None)
+    _safe_set(owner, 'eJSL_Position', partner)
+    assert getattr(partner, 'eJSL_Template173') == owner
+    _safe_set(owner, 'eJSL_Position', None)
+    assert getattr(partner, 'eJSL_Template173') is None
+
+
+def test_assoc_ref129_stub_double():
+    # eJSL_Component has no real 'eJSL_Component131' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_ComponentReference's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_ComponentReference's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_ComponentReference(core="sample_text")
+    partner = eJSL_Component()
+    setattr(partner, 'eJSL_Component131', None)
+    _safe_set(owner, 'eJSL_ComponentReference130', partner)
+    assert getattr(partner, 'eJSL_Component131') == owner
+    _safe_set(owner, 'eJSL_ComponentReference130', None)
+    assert getattr(partner, 'eJSL_Component131') is None
+
+
+def test_assoc_type162_stub_double():
+    # eJSL_Type has no real 'eJSL_Type164' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Method's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Method's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Method(name="sample_text", returnvalue="sample_text")
+    partner = eJSL_Type()
+    setattr(partner, 'eJSL_Type164', None)
+    _safe_set(owner, 'eJSL_Method163', partner)
+    assert getattr(partner, 'eJSL_Type164') == owner
+    _safe_set(owner, 'eJSL_Method163', None)
+    assert getattr(partner, 'eJSL_Type164') is None
+
+
+def test_assoc_type167_stub_double():
+    # eJSL_Type has no real 'eJSL_Type169' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_MethodParameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_MethodParameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_MethodParameter(name="sample_text")
+    partner = eJSL_Type()
+    setattr(partner, 'eJSL_Type169', None)
+    _safe_set(owner, 'eJSL_MethodParameter168', partner)
+    assert getattr(partner, 'eJSL_Type169') == owner
+    _safe_set(owner, 'eJSL_MethodParameter168', None)
+    assert getattr(partner, 'eJSL_Type169') is None
+
+
+def test_assoc_type18_stub_double():
+    # eJSL_DatatypeReference has no real 'eJSL_DatatypeReference' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Datatype's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Datatype's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Datatype(name="sample_text", type="sample_text")
+    partner = eJSL_DatatypeReference()
+    setattr(partner, 'eJSL_DatatypeReference', None)
+    _safe_set(owner, 'eJSL_Datatype19', partner)
+    assert getattr(partner, 'eJSL_DatatypeReference') == owner
+    _safe_set(owner, 'eJSL_Datatype19', None)
+    assert getattr(partner, 'eJSL_DatatypeReference') is None
+
+
+def test_assoc_type49_stub_double():
+    # eJSL_Type has no real 'eJSL_Type' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_Attribute(id=True, isprimary=True, isunique=True, name="sample_text", preserve=True)
+    partner = eJSL_Type()
+    setattr(partner, 'eJSL_Type', None)
+    _safe_set(owner, 'eJSL_Attribute50', partner)
+    assert getattr(partner, 'eJSL_Type') == owner
+    _safe_set(owner, 'eJSL_Attribute50', None)
+    assert getattr(partner, 'eJSL_Type') is None
+
+
+def test_assoc_values91_stub_double():
+    # eJSL_DetailPageField has no real 'eJSL_DetailPageField92' property in the generated
+    # code (a bare stub) -- manually attach it so eJSL_KeyValuePair's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # eJSL_KeyValuePair's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = eJSL_KeyValuePair(name="sample_text", value="sample_text")
+    partner = eJSL_DetailPageField()
+    setattr(partner, 'eJSL_DetailPageField92', None)
+    _safe_set(owner, 'eJSL_KeyValuePair93', partner)
+    assert getattr(partner, 'eJSL_DetailPageField92') == owner
+    _safe_set(owner, 'eJSL_KeyValuePair93', None)
+    assert getattr(partner, 'eJSL_DetailPageField92') is None
+
+
