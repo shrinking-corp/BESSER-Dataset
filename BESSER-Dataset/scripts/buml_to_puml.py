@@ -25,6 +25,23 @@ rewrite for legacy constructor calls (DomainModel(...) etc.) was tested and
 found unnecessary against this dataset + besser 7.13.0 -- all 13 sampled
 models across both filename conventions loaded cleanly without it.
 
+The conversion is lossless (2026-10-18): everything any BUML file in the
+dataset specifies is written out, and `verify_puml_conversion.py` proves it
+by parsing every PUML back and comparing it with its BUML model.
+- Header comments (`' model:`, `' project:`, `' owner:`, `' description:`):
+  the model's name and the project metadata.
+- Classes (abstract or not), attributes with types, methods with parameters
+  and return type, enumerations with literals, generalizations.
+- Association ends as `"role min..max"` next to the class they refer to
+  (`Hand "cards0 0..9999" -- "hand1 1..1" Card`). Role names are the
+  attribute names the generated code and every test use; without them the
+  PUML could never be implemented testably. Composition is a diamond on
+  either or both sides (`*--`, `--*`, `*--*`); a non-navigable end is
+  marked `{not navigable}` in its label.
+- OCL constraints as notes on their context class.
+Method parameters are a set in BUML (no defined order), so they are sorted;
+members that share a name are ordered by their full line.
+
 Output: `<same-stem-as-source>.puml` written next to the BUML source file in
 its model directory (matching the sibling repo's own convention).
 
@@ -44,7 +61,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common.buml import (  # noqa: E402
-    NEW_GLOB, OLD_GLOB, find_buml_file, load_domain_model, ordered_ends, type_name,
+    NEW_GLOB, OLD_GLOB, PUML_MODEL_NAME_PREFIX, find_buml_file, load_buml, ordered_ends, type_name,
 )
 from _common.cache import load_cache, partition_cache  # noqa: E402
 from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
@@ -61,31 +78,77 @@ def _visibility_symbol(value) -> str:
     return "+" if visibility == "public" else "-" if visibility == "private" else "#" if visibility == "protected" else "~"
 
 
+NOT_NAVIGABLE = "{not navigable}"
+
+
+def _one_line(text) -> str:
+    """Free text (descriptions, OCL) on one PUML line, reversibly."""
+    return str(text).replace("\\", "\\\\").replace("\r", "\\r").replace("\n", "\\n")
+
+
+def _end_decoration(end) -> str:
+    if getattr(end, "is_composite", False):
+        return "*"
+    if getattr(end, "is_aggregation", False):
+        return "o"
+    return ""
+
+
 def _association_symbol(end1, end2) -> str:
-    if getattr(end2, "is_composite", False):
-        return "*--"
-    if getattr(end1, "is_composite", False):
-        return "--*"
-    if getattr(end2, "is_aggregation", False):
-        return "o--"
-    if getattr(end1, "is_aggregation", False):
-        return "--o"
-    if getattr(end1, "is_navigable", False) and not getattr(end2, "is_navigable", False):
-        return "<--"
-    if getattr(end2, "is_navigable", False) and not getattr(end1, "is_navigable", False):
-        return "-->"
-    return "--"
+    """Composition/aggregation of end2 is drawn on the left of `--` (next to
+    end1's class, the whole), end1's on the right, so both can be shown at
+    once (`*--*`). Navigability is never encoded in the symbol; a
+    non-navigable end carries `{not navigable}` in its label instead, which
+    keeps every combination of the two flags representable."""
+    return f"{_end_decoration(end2)}--{_end_decoration(end1)}"
 
 
-def _multiplicity_label(end) -> str:
+def _end_label(end) -> str:
+    """`"role min..max"` for one association end, placed next to the class the
+    end refers to (standard UML). The role name is the attribute name the
+    generated code -- and therefore every test -- uses for that link
+    (e.g. `cards0`), so a diagram without it can't be implemented testably."""
     multiplicity = getattr(end, "multiplicity", None)
-    if multiplicity is None:
-        return '""'
-    return f'"{getattr(multiplicity, "min", "")}..{getattr(multiplicity, "max", "")}"'
+    bounds = f'{getattr(multiplicity, "min", "")}..{getattr(multiplicity, "max", "")}' if multiplicity else ""
+    role = str(getattr(end, "name", "") or "")
+    navigable = "" if getattr(end, "is_navigable", True) else NOT_NAVIGABLE
+    return f'"{" ".join(part for part in (role, bounds, navigable) if part)}"'
 
 
-def generate_puml(model) -> str:
-    lines: list[str] = ["@startuml"]
+def _header_lines(model, project) -> list[str]:
+    """Model and project metadata as PlantUML comments: kept in the file, not
+    drawn. The model name line must start with PUML_MODEL_NAME_PREFIX
+    (`puml_digest` skips it, as `buml_fingerprint` skips the name)."""
+    lines = [f"{PUML_MODEL_NAME_PREFIX}{_one_line(model.name)}"]
+    model_metadata = getattr(model, "metadata", None)
+    if model_metadata is not None and getattr(model_metadata, "description", None):
+        lines.append(f"' model description: {_one_line(model_metadata.description)}")
+    if project is not None:
+        lines.append(f"' project: {_one_line(project.name)}")
+        if getattr(project, "owner", None):
+            lines.append(f"' owner: {_one_line(project.owner)}")
+        project_metadata = getattr(project, "metadata", None)
+        if project_metadata is not None and getattr(project_metadata, "description", None):
+            lines.append(f"' description: {_one_line(project_metadata.description)}")
+    return lines
+
+
+def _constraint_lines(model) -> list[str]:
+    """OCL constraints as notes attached to their context class."""
+    lines = []
+    constraints = sorted(getattr(model, "constraints", None) or [],
+                         key=lambda c: (type_name(c.context), c.name, str(c.expression)))
+    for constraint in constraints:
+        lines += [
+            f"note top of {type_name(constraint.context)}",
+            f"  constraint {constraint.name} ({constraint.language}): {_one_line(constraint.expression)}",
+            "end note",
+        ]
+    return lines
+
+
+def generate_puml(model, project=None) -> str:
+    lines: list[str] = ["@startuml"] + _header_lines(model, project)
 
     types = sorted((t for t in model.types if isinstance(t, (Class, Enumeration))), key=type_name)
 
@@ -94,19 +157,24 @@ def generate_puml(model) -> str:
             class_prefix = "abstract class" if model_type.is_abstract else "class"
             lines.append(f"{class_prefix} {model_type.name} {{")
 
-            for attr in sorted(model_type.attributes, key=type_name):
+            # Sorted by (name, full line), not name alone: two members can share
+            # a name, and a name-only sort would leave their order to set order.
+            attr_lines = []
+            for attr in model_type.attributes:
                 attr_type = type_name(getattr(attr, "type", ""))
-                lines.append(f"  {_visibility_symbol(getattr(attr, 'visibility', None))} {attr.name} : {attr_type}")
+                line = f"  {_visibility_symbol(getattr(attr, 'visibility', None))} {attr.name} : {attr_type}"
+                attr_lines.append((attr.name, line))
+            lines += [line for _, line in sorted(attr_lines)]
 
-            for method in sorted(model_type.methods, key=type_name):
-                params = [
-                    f"{p.name} : {type_name(getattr(p, 'type', ''))}"
-                    for p in sorted(getattr(method, "parameters", []), key=type_name)
-                ]
-                return_type = type_name(getattr(method, "type", "void")) if getattr(method, "type", None) else "void"
-                lines.append(
-                    f"  {_visibility_symbol(getattr(method, 'visibility', None))} {method.name}({', '.join(params)}) : {return_type}"
+            method_lines = []
+            for method in model_type.methods:
+                params = sorted(
+                    f"{p.name} : {type_name(getattr(p, 'type', ''))}" for p in getattr(method, "parameters", [])
                 )
+                return_type = type_name(getattr(method, "type", "void")) if getattr(method, "type", None) else "void"
+                line = f"  {_visibility_symbol(getattr(method, 'visibility', None))} {method.name}({', '.join(params)}) : {return_type}"
+                method_lines.append((method.name, line))
+            lines += [line for _, line in sorted(method_lines)]
 
             lines.append("}")
         elif isinstance(model_type, Enumeration):
@@ -130,25 +198,20 @@ def generate_puml(model) -> str:
     for gen in generalizations:
         lines.append(f"{gen.general.name} <|-- {gen.specific.name}")
 
-    binary_associations = sorted(
-        (a for a in model.associations if isinstance(a, BinaryAssociation)), key=type_name
-    )
-    for assoc in binary_associations:
+    association_lines = []
+    for assoc in (a for a in model.associations if isinstance(a, BinaryAssociation)):
         ordered = ordered_ends(assoc)
         if ordered is None:
             continue
         end1, end2 = ordered
-        type1_name = type_name(end1.type)
-        type2_name = type_name(end2.type)
-        label1 = _multiplicity_label(end1)
-        label2 = _multiplicity_label(end2)
-        symbol = _association_symbol(end1, end2)
+        line = f"{type_name(end1.type)} {_end_label(end1)} {_association_symbol(end1, end2)} {_end_label(end2)} {type_name(end2.type)}"
         assoc_name = str(getattr(assoc, "name", ""))
         if assoc_name:
-            lines.append(f"{type1_name} {label1} {symbol} {label2} {type2_name} : {assoc_name}")
-        else:
-            lines.append(f"{type1_name} {label1} {symbol} {label2} {type2_name}")
+            line += f" : {assoc_name}"
+        association_lines.append((assoc_name, line))
+    lines += [line for _, line in sorted(association_lines)]
 
+    lines += _constraint_lines(model)
     lines.append("@enduml")
     return "\n".join(lines)
 
@@ -174,8 +237,8 @@ def convert_model(model_dir: Path) -> dict:
 
     start = time.monotonic()
     try:
-        model = load_domain_model(buml_file)
-        puml_text = generate_puml(model)
+        model, project = load_buml(buml_file)
+        puml_text = generate_puml(model, project)
         output_path = buml_file.with_suffix(".puml")
         output_path.write_text(puml_text, encoding="utf-8")
         result["status"] = "converted"

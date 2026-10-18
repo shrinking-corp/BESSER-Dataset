@@ -14,6 +14,155 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-18 — PUML conversion made lossless, with proof over every model
+
+**Why.** Role names (entry below) were the second piece of information found missing from our PUML by accident; OCL constraints were the third. Finding gaps one example at a time, and claiming "the rest is fine" from a few models, is not defensible: the benchmark's whole comparison runs on the PUML. So the conversion is now complete by construction and verified on all 9,082 models.
+
+**Inventory** (every BUML file in `Dataset/`, all 9,082 parse). Everything the source dataset specifies:
+- `Class(name, is_abstract)`
+- `Property(name, type, multiplicity, is_composite, is_navigable)` (`is_navigable=False`: 6 ends in 1 model)
+- `Method(name, parameters, type)`, `Parameter(name, type)`
+- `Enumeration(name, literals)`, `EnumerationLiteral(name)`
+- `Generalization(general, specific)`, `BinaryAssociation(name, ends)`
+- `Constraint(name, context, expression, language)` (418 in 31 models)
+- `DomainModel(name, types, associations, generalizations, constraints, metadata)`
+- `Project(name, owner, metadata, models)`, `Metadata(description)`, `Multiplicity(min, max)`
+- property assignments `.attributes` / `.methods`
+
+Never used anywhere: visibility, aggregation, `AssociationClass` instances, attribute multiplicities.
+
+**Previously missing from the PUML:**
+- OCL constraints
+- the model name
+- project name, owner and description
+- role names (fixed just before)
+- navigability, which was only expressible through `<--`/`-->` and not combinable with composition
+- composition on both ends of one association
+
+**Now** (`buml_to_puml.py`):
+- header comments `' model:` / `' project:` / `' owner:` / `' description:`
+- constraints as `note top of <Context>` with `constraint <name> (<language>): <expression>`
+- composition as a diamond on either or both sides (`*--`, `--*`, `*--*`)
+- `{not navigable}` in the label of a non-navigable end
+- free text kept on one line with reversible escaping
+
+**Proof** (`scripts/verify_puml_conversion.py`), three independent checks per model:
+1. *Coverage:* every constructor, keyword and property assignment in the BUML source is one the converter handles. A new construct is reported as `unsupported`, never dropped silently.
+2. *Round trip:* the model is loaded with besser, the PUML is parsed back, and the two fact multisets must be equal. Every missing or extra fact is listed, and an unrecognized PUML line counts as a mismatch.
+3. *Source text:* every string literal given to a BUML constructor in the original file must appear in the PUML. This doesn't go through besser, so a field dropped on load can't hide on both sides of check 2.
+
+**Results.**
+- First verifier run: 14/9,082 lossless. Both causes were in the verifier, not the conversion:
+  - besser adds its 9 built-in primitive types to every model's types by itself, and the verifier counted them as model content;
+  - parameter names from overwritten overloaded-method definitions were demanded although they never reach the model. They are now computed exactly (`_common.buml.dead_statements`) and reported separately.
+- After fixing both: **9,082/9,082 lossless**, no unsupported construct. Separately reported source-data defect: 1,732 string literals in 222 models sit in definitions that never reach the model.
+- The 6 non-navigable ends (all in `Model_1000000002`) appear one-to-one as `{not navigable}`.
+
+**Can the checks fail?** `scripts/selftest_conversion_checks.py` mutation-tests both checks. It applies about 20 kinds of real BUML change, which must change the fingerprint, and 4 kinds of noise, which must not. besser confirms each case really changed, or didn't change, the model. It applies 16 kinds of PUML corruption, which the verifier must report, and the unmodified PUML must pass. It also groups every usable model a second time by the besser-built model.
+
+First run (300 random models): fingerprint fooled 0×, verifier fooled 0×, 0 false alarms, both groupings identical (5,264 = 5,264). But it had two gaps of its own:
+- the navigability mutation added the default value, a no-op reported as 275 `bad_test_case`;
+- no sampled model had an OCL constraint, so that path was never exercised.
+
+Fixed: flags absent from the source now get their non-default value; every model using a rare construct (OCL constraints, explicit navigability) is always added to the sample; and the verdict now fails if any operation was never exercised or any test case was bad.
+
+**Final self-test (300 random + 32 rare-construct models, seed 42): PASS.** Every one of the 24 BUML operations and 17 PUML corruptions was exercised; 0 fooled, 0 false alarms, 0 bad test cases; both groupings give 5,264.
+- Real BUML changes, each detected every time it applied (count = models where it applied): attribute type 330, multiplicity 302, OCL expression 31, description / project name / owner 332 each, abstract 332, composite 251, navigability 302, removed association 296 / attribute 331 / generalization 167 / type 327, and renamed association 302, attribute or role 332, class 332, enum literal 84, enumeration 112, method 46, parameter 34.
+- Noise left the fingerprint unchanged every time: random model name 332, reformat 332, statement reorder 332, set shuffle 329.
+- PUML corruptions, each reported every time: bogus class 332, attribute type 331, model name 332, multiplicity 302, parameter 34, role name 302, deleted association 302 / attribute 331 / constraint 31 / enum literal 84 / generalization 175 / method 46 / project header 332, abstract 332, composition 302. Dropping `{not navigable}` was tested once, because only one model has it. The unmodified PUML passed in all 332 models.
+- Not counted either way: 51 composite flips and 1 type change made the model invalid, so besser refused to load it.
+
+Report: `reports/conversion_checks_selftest.*`.
+
+---
+
+## 2026-10-18 — PUML association ends now carry role names
+
+`buml_to_puml.py` wrote association ends with multiplicities only (`Account "1..1" -- "0..9999" Order : Account_Order`). The role names, which become the attribute names in the generated code, were missing. Every test of an association uses those names: in `model_10000179`, `cards0`, `hand1`, `hand2` and `hand3` appear 8-16 times each in `test_super_suite.py` and nowhere in the `.puml`. Code generated from that PUML alone could never pass the association tests, whatever its quality, so the benchmark's comparison (original vs. shrunk PUML) would have been broken from the start.
+- Each end now reads `"role min..max"`, placed next to the class the end refers to (standard UML): `Hand "cards0 0..9999" -- "hand1 1..1" Card`.
+- Method parameters stay sorted by name: in BUML they are a set (`parameters={...}`), so no "real" order exists.
+- **This changes the input format the benchmarking repo's PUML shrinker parses**; agreed to change it, to be communicated to the benchmarking side.
+- All `.puml` files have to be regenerated.
+
+---
+
+## 2026-10-18 — 37% of the usable models are copies of another model; the pipeline now runs on one model per distinct BUML model
+
+**Finding.** Building the benchmark split showed that the 8,336 usable models hold only **5,235 distinct diagrams**. 4,120 models fall into 1,019 groups with byte-identical `.puml` files.
+- 736 of the groups are pairs.
+- The model_100000xx-model_10003xxx batch has five groups of 158-200 copies each.
+- Checked on the 200-copy "shopping" group: the diagram is identical. The `python_code.py` files (all 200 distinct) and the text descriptions differ only in the order of constructor parameters and listed classes. It is the same model ingested repeatedly, with generator ordering noise, not 200 variants.
+
+**Why it matters.** A copy is the same benchmark task again:
+- It multiplies LLM cost and regeneration cost (CrossHair, mutation testing).
+- It weights one diagram many times in every dataset-wide average and in the PCA fit, so the loadings lean toward heavily copied diagrams.
+- It could leak between train and test if the split ignored it.
+
+Earlier dataset-wide numbers (September coverage/mutation averages, the PCA fits on 9,082 / 8,451 / 8,336 models) were all weighted this way.
+
+**Why it wasn't caught sooner.**
+- Every validator in this repo works on one model at a time; none compares models with each other.
+- Exact duplicates *were* found on 2026-09-29, by method-count signature, when picking the 200-model sample. They were only removed from that sample and never quantified dataset-wide.
+- Code-level hashes would miss them, because the copies' code differs in ordering. Only the sorted `.puml` exposes them, and the PUML became the benchmark's input only with the benchmark design.
+- A visible hint was missed: model_3262/3263/3264 had the exact same unclamped difficulty score (105.7679720079053) in the 2026-10-12 clamping experiment.
+
+**Verified on the original BUML, not just our PUML** (all 8,336 usable models):
+- Raw BUML bytes show 8,203 "distinct" models, because copies of one model differ in exactly three meaningless ways:
+  1. the order of items inside set literals (`Payment.attributes={...}`; Python prints sets in arbitrary order)
+  2. statement order and comments
+  3. the DomainModel's own `name=`, a fresh random ID per copy (a UUID in 1,216 models, Eclipse-style IDs such as `__gcXQO9YEem…` in others)
+- Ignoring only those three, the BUML gives **5,258 distinct models**; the PUML gave 5,235.
+- The 23-model gap is 20 PUML groups whose copies differ only in association role names (`owner3` vs `advertiser3`, `aTM0` vs `ATM0`): exactly the information our PUML was dropping (see the PUML entry below).
+
+Where the copies are:
+
+| | Models | Distinct | Copies |
+|---|---:|---:|---:|
+| `model_1000xxxx` batch | 2,871 | 1,136 | 60% |
+| everything else | 5,465 | 4,122 | 25% |
+
+**Where the copies come from, and what differs between them** (every file in every one of the 1,018 groups; `_scratch/analyze_duplicate_groups.py`):
+- **Provenance.** 5,990 of the 5,993 models outside the `model_1000xxxx` batch have a `model_path.txt` into ModelSet's raw data (`/modelset/raw-data/repo-ecore-all/data/<github-user>/<repo>/...`). They are Ecore metamodels scraped from GitHub, and the same metamodel file sits in many repositories (e.g. `java.ecore` in `atlanmod/Prefetching_Caching_DSL` and in `martin-fleck/momot`; `Ecore.ecore` vs a `Copy.ecore`). `model_path.txt` differs in 841 groups: same model, different source file. The `model_1000xxxx` batch (3,089 models) has no `model_path.txt`, so its origin is undocumented; its random-UUID / Eclipse IDs fit models saved by many users of one modelling tool.
+- **`python_code.py`**: identical in 31 groups and identical up to ordering in 983, i.e. 1,014 of 1,018. Ordering here means the order of classes, methods, statements and constructor parameters.
+  - The other 4 groups differ for a real reason: name-clash handling in the source dataset's code generator depends on set order. An attribute `property` (clashing with Python's built-in) became `property1` in one copy and stayed `property` in another (`model_100066/100067`, `model_10001303/10002909`, `model_100086/100089`, `model_100087/100090`).
+  - This belongs to the code-vs-BUML name mismatches `validate_generator_fidelity_names.py` measures. The representative keeps one valid variant.
+- **BUML**: identical up to the three noise kinds above (set order, statement order, the random model name), consistent with the fingerprint.
+- **Generated artifacts differ only by ordering**, as far as inspected (examples checked; the analysis normalizer doesn't cover every case): `test_hypothesis.py` (keyword order in `st.builds(...)`, import order), the Java code, `textualDescription.txt` (class/role order) and the rendered `image.gv.png`.
+- **Labels are inconsistent between copies**: `category.txt` differs in 165 groups (`shopping` vs `store`, `database/sql` vs `petrinet`), and the `README.md` title in 314, taken from the source file name (`Java` vs `Java-cdo`, `Ecore` vs `Copy`). `metadata.txt` is identical; its 3 apparent differences are masking artifacts.
+
+**Decision.** New `scripts/select_unique_models.py` writes `reports/unique_models.txt`: one model per distinct **original BUML model**.
+- Copies are identified by `_common.buml.buml_fingerprint`: the BUML is parsed as Python, ignoring only the three differences above. Everything else (classes, attributes, methods, enumerations, generalizations, associations, role names, multiplicities) must match.
+- The grouping rests on the original dataset, so it holds even for someone who distrusts our PUML generation.
+- The PUML grouping is reported alongside as a cross-check (step 2 of the script).
+
+**First real run, and two fixes it caused.** On the regenerated PUML (role names included), step 1 gave 5,258 unique models, but step 2 still disagreed in 7 places:
+- *2 PUML groups spanning several BUML models:* the copies differ in **OCL constraints** (e.g. `model_10010` has `Constraint(...)` statements that `model_91` lacks). The PUML has no constraints, so the BUML is right to keep both. This is accepted: the generated code and tests don't use OCL.
+- *5 BUML groups with differing PUML:* my fingerprint was wrong. The source dataset defines **overloaded methods by assigning the same variable twice** (`..._m_deltaMinusOne` in `model_100438`/`model_1380`), and only the definition last assigned before `X.methods = {...}` reaches the model. Sorting statements hid which one that is, so two genuinely different models were merged.
+  - First fix: keep statement order for files that assign a variable twice. The next run showed this was too conservative: 239 such files, and 36 PUML groups whose copies were left unmerged only because their statements were in a different order.
+  - Final fix (`_common.buml.buml_fingerprint`):
+    - drop statements that never reach the model (`dead_statements`, computed from which statement reads which binding)
+    - rename every binding after its own content (`name@<hash of its value>`) and rewrite every read to the binding it resolves to; the source also reuses one name for an attribute and an association (`FoodItem_Food` in `model_10000436`)
+    - sort the statements
+
+    Order is kept only if one property (`X.attributes`) is still assigned twice. Checked on the flagged groups: they now merge, the 200-copy shopping group still merges, and the genuinely different `model_100438`/`model_1380` stay apart.
+  - This is also a defect in the source dataset: overloaded operations silently collapse to one, and variable names are reused across elements.
+- *Robustness:* `buml_to_puml.py` sorted attributes, methods and associations by name only. Members sharing a name (seen: two `+ defaultValue : str` in one class) would have been ordered by set order. They now sort by (name, full line), which changes nothing where names are unique.
+
+**Final result:** **8,336 usable models → 5,264 unique** (3,072 copies in 1,018 groups, statement order needed for 0 files).
+- Step 2: the lossless PUML gives the same 5,264, and the two groupings agree model for model.
+- The OCL groups resolved once constraints were added to the PUML.
+- A third, independent grouping by the besser-built model (`selftest_conversion_checks.py`) also gives exactly the same 5,264 groups.
+- `reports/unique_models.txt` is the list every later step uses.
+- The representative is the alphabetically first name, the same rule as `select_test_generation_sample.py`. Every group is listed in `reports/unique_models_report.*`. This list **replaces `usable_models.txt` for every later step**:
+- the full regeneration
+- `compute_difficulty_score.py` and its proof (`experiment_difficulty_score_pca.py`)
+- the comparison and distribution scripts
+- the split and the export
+
+This supersedes "pass `reports/usable_models.txt`" in the PCA entry below. `make_benchmark_split.py` defaults to the unique list and keeps its own PUML grouping as a safety net (expected to find 0 groups). The PCA numbers in the entry below were computed on the 8,336 usable models and will move slightly when refit on the unique set during the rerun. The PC1+PC2 argument has to be rechecked then (experiment 6).
+
+---
+
 ## 2026-10-18 — PCA evidence completed; PC1+PC2 kept although Kaiser and parallel analysis retain 3 components
 
 **Why.** We need to defend two things to colleagues: how the PCA score compares to the article's formula, and why only PC1+PC2 are used. The second rested on (a) "variance drops off fast" and (b) "PC2 was checked on real models (`diagnose_pc2_extremes.py`), PC3 never was". Neither standard component-retention tests nor a PC3 check had ever been run, and the evidence came from three different model sets (official fit 9,082, experiment 8,451, planned buckets 8,336).

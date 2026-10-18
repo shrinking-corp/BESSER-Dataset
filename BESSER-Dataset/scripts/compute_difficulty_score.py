@@ -24,9 +24,11 @@ Methodology (see docs/DECISIONS.md for the full discussion this implements):
    extremes, unlike percentile clipping applied at this stage.
 3. **Standardize** (z-score) each log-transformed column across the fitted
    model set: every measured model by default, or only the `--models-file`
-   set. The benchmarking pipeline passes `reports/usable_models.txt`, so the
-   PCA fit, the scores, the difficulty buckets and the train/test split all
-   describe the same 8,336 models (2026-10-18 decision).
+   set. The benchmarking pipeline passes `reports/unique_models.txt` (one
+   model per distinct diagram, `select_unique_models.py`), so the PCA fit,
+   the scores, the difficulty buckets and the train/test split all describe
+   the same models, and no diagram is weighted by how often it was copied
+   into the dataset (2026-10-18 decision).
 4. **PCA**: eigendecompose the resulting correlation matrix
    (`numpy.linalg.eigh`, deterministic for a real symmetric matrix -- no
    randomness anywhere in this pipeline). The first principal component's
