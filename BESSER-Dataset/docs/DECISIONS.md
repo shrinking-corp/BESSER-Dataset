@@ -14,6 +14,16 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-18 — Only exact copies are removed; similar models stay
+
+**Question.** Should near-duplicates, such as forks of one metamodel with an extra attribute or a renamed class, also be removed or kept on one side of the train/test split?
+
+**Decision: no.** A model that differs from another in anything the BUML specifies is a different model: a different diagram, different generated code, and a different task for the benchmark. Any similarity threshold would be our arbitrary choice, while "identical apart from set/statement order, comments and the random model name" is a property of the original dataset that anyone can check (`select_unique_models.py`, confirmed by the PUML and the besser-built grouping). The dedup stays at exact copies only: 5,264 models.
+
+**For the article.** If asked about train/test leakage from similar models: the split is stratified by difficulty, exact copies are removed, and similar-but-different models are treated as distinct tasks on purpose.
+
+---
+
 ## 2026-10-18 — PUML conversion made lossless, with proof over every model
 
 **Why.** Role names (entry below) were the second piece of information found missing from our PUML by accident; OCL constraints were the third. Finding gaps one example at a time, and claiming "the rest is fine" from a few models, is not defensible: the benchmark's whole comparison runs on the PUML. So the conversion is now complete by construction and verified on all 9,082 models.
@@ -158,6 +168,8 @@ Where the copies are:
 - `compute_difficulty_score.py` and its proof (`experiment_difficulty_score_pca.py`)
 - the comparison and distribution scripts
 - the split and the export
+
+**The 200-model test-generation sample is unaffected** (`_scratch/check_sample_vs_unique.py`): all 200 are representatives in `unique_models.txt`, and no two belong to the same group. The 2026-09-29 count-signature dedup used for the sample was stricter than this one, so the +43.03-point result stands on the unique set as published.
 
 This supersedes "pass `reports/usable_models.txt`" in the PCA entry below. `make_benchmark_split.py` defaults to the unique list and keeps its own PUML grouping as a safety net (expected to find 0 groups). The PCA numbers in the entry below were computed on the 8,336 usable models and will move slightly when refit on the unique set during the rerun. The PC1+PC2 argument has to be rechecked then (experiment 6).
 

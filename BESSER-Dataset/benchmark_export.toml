@@ -1,0 +1,78 @@
+# What scripts/export_benchmark_dataset.py puts into the benchmark dataset.
+# Add, remove or comment out items here; the export's pre-check, manifest.json
+# and README all follow this file, and a copy of it is stored in the export.
+
+# ---------------------------------------------------------------------------
+# Per-model files, copied into train/<model>/ and test/<model>/.
+#   name         file (or folder) name inside the exported model folder
+#   source       name in Dataset/<model>/, or "@puml" / "@buml" (those
+#                file names vary per model)
+#   required     true (default): a model without it aborts the whole export
+#                false: exported where present, listed as absent otherwise
+#   keys         JSON files only: export just these top-level keys
+#   description  one line for the generated README
+
+[[model_files]]
+name = "model.puml"
+source = "@puml"
+description = "the class diagram, the benchmark input"
+
+[[model_files]]
+name = "model_buml.py"
+source = "@buml"
+description = "the same model as BUML source (the original dataset's format)"
+
+[[model_files]]
+name = "python_code.py"
+source = "python_code.py"
+description = "the reference implementation; the test suite imports it by this name, so generated code must use it too"
+
+[[model_files]]
+name = "test_super_suite.py"
+source = "test_super_suite.py"
+description = "the fixed test suite, passing on the reference implementation"
+
+[[model_files]]
+name = "code_structure.json"
+source = "code_structure.json"
+description = "tree-sitter structure of the reference implementation (classes, attributes, methods)"
+
+[[model_files]]
+name = "model_metadata.json"
+source = "model_metadata.json"
+description = "structural counts of the model and its difficulty scores"
+
+# Enable after runbook step 7. Only the listed keys: code_metadata.json also
+# holds older measurements made before the baseline guard, which must not
+# leave this repo.
+# [[model_files]]
+# name = "test_suite_quality.json"
+# source = "code_metadata.json"
+# keys = ["super_suite_mutation_validation_properties", "combined_green_mutation_validation_properties"]
+# required = false
+# description = "mutation scores of the fixed test suite and of the green baseline suite"
+
+# ---------------------------------------------------------------------------
+# Values copied into each model's manifest.json entry, so the benchmark can
+# filter or group models without opening their files. Every entry already
+# has model, split, bucket, difficulty_score and path.
+#   name    key in the manifest entry
+#   source  JSON file in Dataset/<model>/
+#   key     dotted path inside it; a missing value is written as null
+
+# [[manifest_fields]]
+# name = "classes"
+# source = "model_metadata.json"
+# key = "classes"
+
+# ---------------------------------------------------------------------------
+# Repo files or folders copied once into the export, e.g. scripts the
+# benchmark runs on generated code. Folders are copied without caches.
+#   name         path inside the export
+#   source       path in this repo
+#   description  one line for the generated README
+
+# [[shared_files]]
+# name = "tools/run_test_suite.py"
+# source = "scripts/run_test_suite.py"
+# description = "runs a model's test suite on a python_code.py, as the suites were built"
