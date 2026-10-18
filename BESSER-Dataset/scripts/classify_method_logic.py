@@ -23,8 +23,8 @@ Classification rules, in order:
    AND the body has at most 4 statements total.
 3. **has_logic** -- everything else.
 
-This is a static, AST-only heuristic tuned for triage/sampling (Phase 4's
-"which methods are worth targeting"), not a formal complexity metric.
+This is a static, AST-only heuristic tuned for triage/sampling ("which
+methods are worth targeting"), not a formal complexity metric.
 
 Usage:
     python scripts/classify_method_logic.py [--models-file PATH] [--workers N]
@@ -52,7 +52,13 @@ import concurrent.futures
 import datetime
 import json
 import platform
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.ast_utils import safe_parse  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
 
 CODE_FILENAME = "python_code.py"
 METADATA_FILENAME = "code_metadata.json"
@@ -62,35 +68,6 @@ BRANCH_NODES = (ast.For, ast.AsyncFor, ast.While, ast.Try, ast.Match)
 COMPUTE_NODES = (ast.BinOp, ast.BoolOp, ast.ListComp, ast.SetComp,
                  ast.DictComp, ast.GeneratorExp, ast.Lambda)
 MAX_TRIVIAL_STATEMENTS = 4
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
 
 
 def _is_docstring(node: ast.stmt) -> bool:
@@ -162,10 +139,9 @@ def classify_method_body(body: list[ast.stmt]) -> tuple[str, int]:
 
 def analyse_source(source: str) -> tuple[list[dict], str | None]:
     """Returns (per-method records, syntax_error_message)."""
-    try:
-        tree = ast.parse(source)
-    except SyntaxError as exc:
-        return [], f"{exc.msg} (line {exc.lineno})"
+    tree, syntax_error = safe_parse(source)
+    if tree is None:
+        return [], syntax_error
 
     records: list[dict] = []
     for node in ast.walk(tree):
@@ -232,8 +208,8 @@ def write_model_metadata(model_dir: Path, result: dict) -> None:
     data = {}
     if metadata_path.is_file():
         try:
-            data = json.loads(metadata_path.read_text())
-        except (json.JSONDecodeError, OSError):
+            data = json.loads(metadata_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
             data = {}
 
     has_logic_methods = [
@@ -247,7 +223,7 @@ def write_model_metadata(model_dir: Path, result: dict) -> None:
         "totals": result["totals"],
         "has_logic_methods": has_logic_methods,
     }
-    metadata_path.write_text(json.dumps(data, indent=2) + "\n")
+    metadata_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
 _HAS_LOGIC_BUCKET_EDGES = [0, 5, 10, 20, 50, 100, 200, 10**9]
@@ -369,14 +345,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Total models:** {report['total_models']}",
         f"- **Measured:** {report['measured_count']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in report["by_status"].items():
-        lines.append(f"| {status} | {count} |")
-
+    lines += render_status_table(report["by_status"])
     lines += [
         "",
         "## Method counts across all measured models",
@@ -396,7 +366,7 @@ def render_markdown_report(report: dict) -> str:
         f"| **Total methods** | **{t['total_methods']}** | | | |",
         "",
         f"**{report['models_with_at_least_one_has_logic_method']}** models have at least one "
-        f"`has_logic` method (Phase 4's sample should be drawn from these). "
+        f"`has_logic` method (the test-generation sample is drawn from these). "
         f"**{report['models_with_zero_has_logic_methods']}** measured models have none at all "
         "-- every method is either a stub or a plain assignment/getter/setter, so no test-"
         "generation library targeting logic would have anything to work with there.",
@@ -454,11 +424,9 @@ def render_markdown_report(report: dict) -> str:
 
 
 def main() -> None:
-    repo_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__,
                                       formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=repo_root / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=repo_root / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None,
                          help="Optional newline-separated model list (default: every model directory)")
     parser.add_argument("--workers", type=int, default=8)
@@ -492,9 +460,7 @@ def main() -> None:
         print(f"Wrote method_logic_classification into {written}/{total} code_metadata.json files.")
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-    (args.reports_dir / f"{REPORT_BASENAME}.json").write_text(json.dumps(report, indent=2) + "\n")
-    (args.reports_dir / f"{REPORT_BASENAME}.md").write_text(render_markdown_report(report))
+    write_reports(args.reports_dir, REPORT_BASENAME, report, render_markdown_report(report))
 
     t = report["totals_over_measured_models"]
     print(f"\nMeasured: {report['measured_count']}/{total}")

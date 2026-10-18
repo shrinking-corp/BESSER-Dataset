@@ -19,7 +19,7 @@ uses, read differently here:
     `model_metadata.json`, which only stores aggregate counts, no names at
     all). Reuses `generate_structural_tests.py`'s own BUML-loading and
     identifier-sanitization helpers (`find_buml_file`, `load_domain_model`,
-    `_python_identifier`) rather than reimplementing them -- that logic
+    `python_identifier`) rather than reimplementing them -- that logic
     already handles real, confirmed edge cases (e.g. a BUML name containing
     "#", invalid in a Python identifier, which the actual code generator
     silently strips; model_2533 is the known example).
@@ -65,7 +65,7 @@ Two concrete, confirmed patterns, both now handled:
    confirmed `"property1"` appears in `code_structure.json`, never
    `"property"` alone). Fixed by resolving an attribute's name against the
    UNION of the matched class's `attributes` and `methods` names, trying
-   raw name, `_python_identifier`-sanitized name, AND a `+ "1"`-suffixed
+   raw name, `python_identifier`-sanitized name, AND a `+ "1"`-suffixed
    form of each.
 2. **`Factura` -> `Facturas` pluralization -- 2/22 models.** Already known
    and already handled in `generate_structural_tests.py`'s own
@@ -103,7 +103,6 @@ Requires `.venv-puml` (where `besser` is installed), not the main `.venv`.
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import datetime
 import json
 import platform
@@ -111,69 +110,23 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from generate_structural_tests import (  # noqa: E402
-    _python_identifier, _type_name, find_buml_file, load_domain_model,
-)
+from _common.buml import find_buml_file, load_domain_model, type_name  # noqa: E402
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+from _common.testgen import python_identifier  # noqa: E402
 from besser.BUML.metamodel.structural import Class  # noqa: E402
 
 CODE_STRUCTURE_FILENAME = "code_structure.json"
-# Cached results with one of these statuses are automatically re-attempted
-# on the next run under the SAME --report-name (see docs/DECISIONS.md,
-# 2026-10-01, for why this is now standard across every script in this
-# pipeline). "missing_file"/"missing_code_structure" excluded: permanent
-# facts about a model's input data, not transient failures.
-RETRIABLE_STATUSES = {"error"}
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
-
-
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
+# "missing_file"/"missing_code_structure" are permanent facts about a model's
+# input data, not transient failures, so only "error" is auto-retried.
+RETRIABLE_STATUSES = frozenset({"error"})
 
 
 def resolve_name_in_set(raw_name: str, known_names: set[str], extra_suffixes: tuple[str, ...] = ()) -> str | None:
     """Same base resolution rule as generate_structural_tests.py's
-    resolve_code_name() (raw name, then _python_identifier-sanitized name),
+    resolve_code_name() (raw name, then python_identifier-sanitized name),
     against a plain name set (from code_structure.json) instead of a live
     module's hasattr() -- there is no running python_code.py here, only
     tree-sitter's static extraction.
@@ -185,7 +138,7 @@ def resolve_name_in_set(raw_name: str, known_names: set[str], extra_suffixes: tu
     base forms, since most names need no disambiguation at all.
     """
     candidates = [raw_name]
-    sanitized = _python_identifier(raw_name)
+    sanitized = python_identifier(raw_name)
     if sanitized != raw_name:
         candidates.append(sanitized)
     for suffix in extra_suffixes:
@@ -258,7 +211,7 @@ def compare_model(model_dir: Path) -> dict:
     total_attrs_missing = 0
     total_ops_missing = 0
 
-    for cls in sorted(buml_classes, key=_type_name):
+    for cls in sorted(buml_classes, key=type_name):
         # "s" fallback: the generator pluralizes some class names
         # (Factura -> Facturas, confirmed, see module docstring) --
         # independent of the raw/sanitized forms tried by default.
@@ -377,13 +330,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Total missing attributes across dataset:** {report['total_attributes_missing_sum']}",
         f"- **Total missing operations across dataset:** {report['total_operations_missing_sum']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in report["by_status"].items():
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
     lines += [
         "",
         "## Top 50 worst models (by total missing classes+attributes+operations)",
@@ -400,8 +348,7 @@ def render_markdown_report(report: dict) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="generator_fidelity_names_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -415,8 +362,7 @@ def main() -> None:
     cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
-    retriable = {m: r for m, r in cached_results_all.items() if r["status"] in RETRIABLE_STATUSES}
-    cached_results = {m: r for m, r in cached_results_all.items() if m not in retriable}
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -431,38 +377,17 @@ def main() -> None:
         print(f"Auto-retrying {len(retriable)} previously-failed models from the cache -- "
               f"same report, no separate retry run needed")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
-    try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {executor.submit(compare_model, model_dir): model_dir for model_dir in model_dirs}
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "classes_missing_from_code": None, "classes_extra_in_code": None,
-                        "per_class_detail": None, "total_classes_missing": None,
-                        "total_attributes_missing": None, "total_operations_missing": None,
-                        "has_mismatch": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                if done % 500 == 0 or done == total:
-                    print(f"  {done}/{total} compared", flush=True)
-    finally:
-        cache_file.close()
+    results = run_models(
+        compare_model, model_dirs, workers=args.workers, cache_path=cache_path,
+        results=list(cached_results.values()), already_done=skipped, total=total,
+        error_fields={"classes_missing_from_code": None, "classes_extra_in_code": None,
+                      "per_class_detail": None, "total_classes_missing": None,
+                      "total_attributes_missing": None, "total_operations_missing": None,
+                      "has_mismatch": None},
+    )
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Compared: {report['compared_count']}/{report['total_models']}")

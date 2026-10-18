@@ -32,7 +32,7 @@ ABSTRACT_METHOD_DECORATORS = {"abstractmethod", "abstractproperty"}
 
 
 def _load_query(filename: str) -> Query:
-    return Query(PY_LANGUAGE, (QUERIES_DIR / filename).read_text())
+    return Query(PY_LANGUAGE, (QUERIES_DIR / filename).read_text(encoding="utf-8"))
 
 
 CLASSES_QUERY = _load_query("classes.scm")
@@ -95,22 +95,12 @@ def _docstring_of(body: Node, src: bytes) -> str | None:
 def _base_names(superclasses: Node | None, src: bytes) -> list[str]:
     """Names from a class's `superclasses: (argument_list)` field.
 
-    Only plain names are resolved (`Base`, `module.Base`); a metaclass
-    keyword argument (`metaclass=ABCMeta`) or a call is kept as raw text so
-    nothing is silently dropped.
+    Each entry is kept as raw text (`Base`, `module.Base`, `metaclass=ABCMeta`,
+    a call, ...), so nothing is silently dropped.
     """
     if superclasses is None:
         return []
-    names = []
-    for child in superclasses.children:
-        if child.type in ("(", ")", ","):
-            continue
-        if child.type == "identifier":
-            names.append(_text(src, child))
-        elif child.type == "attribute":
-            names.append(_text(src, child))
-        else:
-            names.append(_text(src, child))  # keyword_argument, call, etc. -- kept as-is
+    names = [_text(src, child) for child in superclasses.children if child.type not in ("(", ")", ",")]
     return [n for n in names if n]
 
 

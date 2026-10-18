@@ -18,43 +18,37 @@ Rank correlation is computed by hand (average-rank Spearman) rather than
 importing scipy, since only numpy is installed in this project's `.venv`.
 
 Usage:
-    python scripts/compare_difficulty_scores.py [--dataset-dir PATH]
-        [--reports-dir PATH] [--top-n N] [--top-pct P]
+    python scripts/compare_difficulty_scores.py [--models-file PATH]
+        [--dataset-dir PATH] [--reports-dir PATH] [--top-n N] [--top-pct P]
 """
 from __future__ import annotations
 
 import argparse
 import datetime
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
 
-METADATA_FILENAME = "model_metadata.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, iter_measured_models, read_model_names  # noqa: E402
 
 
-def load_scores(dataset_dir: Path) -> tuple[list[str], np.ndarray, np.ndarray]:
-    """Every measured model's name and both difficulty scores, in a stable
-    (sorted-by-name) order. Skips any model missing either score (e.g. if
-    one script's write step was interrupted partway through)."""
+def load_scores(dataset_dir: Path, only: set[str] | None = None) -> tuple[list[str], np.ndarray, np.ndarray]:
+    """Every measured model's name and both difficulty scores (restricted to
+    `only` if given), in a stable (sorted-by-name) order. Skips any model
+    missing either score (e.g. if one script's write step was interrupted
+    partway through)."""
     models: list[str] = []
     pca: list[float] = []
     article: list[float] = []
     skipped = 0
-    for d in sorted(dataset_dir.iterdir(), key=lambda p: p.name):
-        p = d / METADATA_FILENAME
-        if not p.is_file():
-            continue
-        try:
-            data = json.loads(p.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            continue
-        if data.get("status") != "measured":
-            continue
+    for name, _path, data in iter_measured_models(dataset_dir, only):
         if "difficulty_score" not in data or "difficulty_score_article" not in data:
             skipped += 1
             continue
-        models.append(d.name)
+        models.append(name)
         pca.append(float(data["difficulty_score"]))
         article.append(float(data["difficulty_score_article"]))
     if skipped:
@@ -123,13 +117,14 @@ def biggest_rank_disagreements(models: list[str], pca: np.ndarray, article: np.n
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
+    parser.add_argument("--models-file", type=Path, help="Compare only these models (e.g. reports/usable_models.txt)")
     parser.add_argument("--top-n", type=int, default=15, help="How many biggest rank-disagreement models to list")
     parser.add_argument("--top-pct", type=float, default=10.0, help="Top-N%% overlap to compute (default: top 10%%)")
     args = parser.parse_args()
 
-    models, pca, article = load_scores(args.dataset_dir)
+    only = set(read_model_names(args.models_file)) if args.models_file else None
+    models, pca, article = load_scores(args.dataset_dir, only)
     print(f"Compared {len(models)} models with both scores")
 
     r_pearson = pearson(pca, article)
@@ -151,6 +146,7 @@ def main() -> None:
 
     report = {
         "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "models_file": str(args.models_file) if args.models_file else None,
         "models_compared": len(models),
         "pearson_correlation": r_pearson,
         "spearman_correlation": r_spearman,

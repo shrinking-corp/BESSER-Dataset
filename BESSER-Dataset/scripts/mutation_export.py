@@ -78,5 +78,5 @@ def export_surviving_mutants(
         "survived_count": len(mutants),
         "mutants": mutants,
     }
-    (export_dir / f"{model_name}.json").write_text(json.dumps(payload, indent=2) + "\n")
+    (export_dir / f"{model_name}.json").write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return len(mutants)

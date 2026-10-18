@@ -42,7 +42,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import datetime
 import json
 import platform
@@ -50,61 +49,15 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
 from extract_structure import extract_module_structure  # noqa: E402
 
 CODE_FILENAME = "python_code.py"
 STRUCTURE_FILENAME = "code_structure.json"
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
-
-
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    """Read a JSONL cache of previously-completed results, keyed by model name.
-
-    Tolerates a truncated last line (e.g. the process was killed mid-write)
-    by skipping any line that fails to parse.
-    """
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
+RETRIABLE_STATUSES = frozenset({"error"})
 
 
 def process_model(model_dir: Path) -> dict:
@@ -152,7 +105,7 @@ def process_model(model_dir: Path) -> dict:
         "functions": structure["functions"],
         "classes": structure["classes"],
     }
-    (model_dir / STRUCTURE_FILENAME).write_text(json.dumps(payload, indent=2) + "\n")
+    (model_dir / STRUCTURE_FILENAME).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return result
 
 
@@ -199,24 +152,15 @@ def render_markdown_report(report: dict) -> str:
     ]
     for field, value in report["sums"].items():
         lines.append(f"| {field} | {value} |")
-    lines += [
-        "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
-    ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines.append("")
+    lines += render_status_table(report["by_status"])
     lines += ["", "Full per-model detail: see the accompanying `.json` report and each model's `code_structure.json`."]
     return "\n".join(lines) + "\n"
 
 
 def main() -> None:
-    repo_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=repo_root / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=repo_root / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="code_structure_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -227,10 +171,10 @@ def main() -> None:
 
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
-
-    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -241,36 +185,15 @@ def main() -> None:
     if skipped:
         print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
               f"(pass --fresh to ignore the cache and recompute everything)")
+    if retriable:
+        print(f"Auto-retrying {len(retriable)} previously-failed models from the cache")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
-    try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {executor.submit(process_model, model_dir): model_dir for model_dir in model_dirs}
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "has_error": None, "counts": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                if done % 200 == 0 or done == total:
-                    print(f"  {done}/{total}: {model_dir.name} -> {result['status']}", flush=True)
-    finally:
-        cache_file.close()
+    results = run_models(process_model, model_dirs, workers=args.workers, cache_path=cache_path,
+                         results=list(cached_results.values()), already_done=skipped, total=total,
+                         error_fields={"has_error": None, "counts": None})
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Extracted: {report['extracted_count']}/{report['total_models']}")

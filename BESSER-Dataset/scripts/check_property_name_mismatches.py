@@ -37,39 +37,14 @@ from __future__ import annotations
 import argparse
 import ast
 import datetime
-import json
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+
 SOURCE_FILENAME = "python_code.py"
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
 
 
 def _decorator_setter_target(decorator: ast.expr) -> str | None:
@@ -174,13 +149,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Models with at least one mismatch:** {report['models_with_mismatches']}",
         f"- **Total mismatches found:** {report['total_mismatches']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
     lines += [
         "",
         "## Models with mismatches",
@@ -200,14 +170,7 @@ def render_markdown_report(report: dict) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        "--dataset-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "Dataset",
-    )
-    parser.add_argument(
-        "--reports-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "reports",
-    )
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="property_name_mismatch_report")
     parser.add_argument("--limit", type=int, default=None)
@@ -227,11 +190,7 @@ def main() -> None:
             print(f"  {i}/{total} scanned...", flush=True)
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Models with mismatches: {report['models_with_mismatches']}/{report['total_models']}")

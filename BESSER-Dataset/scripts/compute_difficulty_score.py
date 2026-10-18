@@ -22,11 +22,11 @@ Methodology (see docs/DECISIONS.md for the full discussion this implements):
    itself" meta-models with thousands of classes vs. a median of roughly a
    dozen) while preserving relative ordering all the way through the
    extremes, unlike percentile clipping applied at this stage.
-3. **Standardize** (z-score) each log-transformed column across the full
-   measured dataset (not just `usable_models.txt` -- this score describes
-   the *diagram's* structural complexity, independent of whether the
-   generated code/tests happen to work, so models excluded from test
-   validation for unrelated reasons still get a real score here).
+3. **Standardize** (z-score) each log-transformed column across the fitted
+   model set: every measured model by default, or only the `--models-file`
+   set. The benchmarking pipeline passes `reports/usable_models.txt`, so the
+   PCA fit, the scores, the difficulty buckets and the train/test split all
+   describe the same 8,336 models (2026-10-18 decision).
 4. **PCA**: eigendecompose the resulting correlation matrix
    (`numpy.linalg.eigh`, deterministic for a real symmetric matrix -- no
    randomness anywhere in this pipeline). The first principal component's
@@ -46,6 +46,12 @@ Methodology (see docs/DECISIONS.md for the full discussion this implements):
    zero-attribute" model and a "58-class, 79-attribute, zero-generalization"
    model are genuinely large, just built in opposite architectural styles.
    Neither extreme is a small/trivial model drifting there by default.
+   That check, plus the component-retention tests (Kaiser, broken stick,
+   parallel analysis) and the comparison with the article formula, is
+   re-run by `experiment_difficulty_score_pca.py`. PC3 is left out on
+   purpose although Kaiser and parallel analysis retain it: measured, it
+   barely changes the ranking and mainly lifts small enum-heavy models
+   while pulling the largest ones down (docs/DECISIONS.md, 2026-10-18).
 6. **PC2 is folded in via its absolute value, not its signed value --
    this is a hard requirement, not a style choice.** An eigenvector's sign
    is mathematically arbitrary (undefined up to a flip) whenever its
@@ -89,18 +95,22 @@ same formula can be reproduced or applied to a new model without
 recomputing PCA from scratch.
 
 Usage:
-    python scripts/compute_difficulty_score.py [--dataset-dir PATH]
-        [--reports-dir PATH] [--low-percentile P] [--high-percentile P]
-        [--scale-max N] [--dry-run]
+    python scripts/compute_difficulty_score.py [--models-file PATH]
+        [--dataset-dir PATH] [--reports-dir PATH] [--low-percentile P]
+        [--high-percentile P] [--scale-max N] [--dry-run]
 """
 from __future__ import annotations
 
 import argparse
 import datetime
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, iter_measured_models, read_model_names  # noqa: E402
 
 FIELDS = [
     "classes", "attributes", "associations", "composition", "generalizations",
@@ -112,29 +122,34 @@ EXCLUDED_CONSTANT_FIELDS = ["association_classes", "abstract_methods", "aggregat
 # (4,700/9,082 models at depth 0, 4,373 at depth 1, only 9 ever reaching
 # depth 2), essentially redundant with `generalizations`. See
 # docs/DECISIONS.md, 2026-09-17 entry.
-METADATA_FILENAME = "model_metadata.json"
 
 
-def load_raw_matrix(dataset_dir: Path) -> tuple[list[str], np.ndarray]:
-    """Every measured model's raw FIELDS values, in a stable (sorted-by-name)
-    order -- determinism requires a fixed row order, not directory-listing
-    order (which some filesystems don't guarantee is stable)."""
+def load_raw_matrix(dataset_dir: Path, only: set[str] | None = None) -> tuple[list[str], np.ndarray, list[tuple[Path, dict]]]:
+    """Every measured model's raw FIELDS values (restricted to `only` if
+    given), in a stable (sorted-by-name) order, plus each model's
+    (metadata_path, parsed metadata) so the write step can reuse them instead
+    of re-reading thousands of files."""
     models: list[str] = []
     rows: list[list[float]] = []
-    for d in sorted(dataset_dir.iterdir(), key=lambda p: p.name):
-        p = d / METADATA_FILENAME
-        if not p.is_file():
-            continue
-        try:
-            data = json.loads(p.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            continue
-        if data.get("status") != "measured":
-            continue
-        row = [float(data.get(f) or 0) for f in FIELDS]
-        models.append(d.name)
-        rows.append(row)
-    return models, np.array(rows, dtype=np.float64)
+    loaded: list[tuple[Path, dict]] = []
+    for name, path, data in iter_measured_models(dataset_dir, only):
+        models.append(name)
+        rows.append([float(data.get(f) or 0) for f in FIELDS])
+        loaded.append((path, data))
+    return models, np.array(rows, dtype=np.float64), loaded
+
+
+def check_excluded_fields_still_constant(loaded: list[tuple[Path, dict]]) -> list[str]:
+    """EXCLUDED_CONSTANT_FIELDS were left out because they had zero variance
+    across the dataset when this was designed -- re-verified every run, so a
+    future model batch that gives one of them real variance is flagged
+    instead of silently staying out of the score forever."""
+    no_longer_constant = []
+    for field in EXCLUDED_CONSTANT_FIELDS:
+        values = {float(data.get(field) or 0) for _, data in loaded}
+        if len(values) > 1:
+            no_longer_constant.append(field)
+    return no_longer_constant
 
 
 def compute_pca(raw_matrix: np.ndarray) -> dict:
@@ -252,8 +267,9 @@ def compute_combined_score(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
+    parser.add_argument("--models-file", type=Path,
+                         help="Fit and score only these models (e.g. reports/usable_models.txt)")
     parser.add_argument("--low-percentile", type=float, default=1.0)
     parser.add_argument("--high-percentile", type=float, default=99.0)
     parser.add_argument("--scale-max", type=float, default=100.0)
@@ -261,9 +277,21 @@ def main() -> None:
                          help="Compute and report everything, but don't write into model_metadata.json files")
     args = parser.parse_args()
 
+    only = set(read_model_names(args.models_file)) if args.models_file else None
     print(f"Loading structural counts for fields: {FIELDS}")
-    models, raw_matrix = load_raw_matrix(args.dataset_dir)
+    models, raw_matrix, loaded = load_raw_matrix(args.dataset_dir, only)
     print(f"Loaded {len(models)} measured models")
+    stale_outside_set = 0
+    if only is not None:
+        stale_outside_set = sum(1 for name, _p, data in iter_measured_models(args.dataset_dir)
+                                if name not in only and "difficulty_score" in data)
+        if stale_outside_set:
+            print(f"WARNING: {stale_outside_set} models outside --models-file still carry a difficulty_score "
+                  f"from an earlier fit -- not touched; ignore them or regenerate model_metadata.json first.")
+    no_longer_constant = check_excluded_fields_still_constant(loaded)
+    if no_longer_constant:
+        print(f"WARNING: {no_longer_constant} are excluded as zero-variance constants but now vary "
+              f"across the dataset -- reconsider adding them to FIELDS (see EXCLUDED_CONSTANT_FIELDS).")
 
     fit = compute_pca(raw_matrix)
 
@@ -304,13 +332,7 @@ def main() -> None:
           f"(scale 0-{args.scale_max})")
 
     if not args.dry_run:
-        written = 0
-        for i, name in enumerate(models):
-            path = args.dataset_dir / name / METADATA_FILENAME
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                continue
+        for i, (path, data) in enumerate(loaded):
             # Kept at full float precision, deliberately not rounded.
             data["difficulty_score"] = float(combined_scores[i])
             data["difficulty_score_pc1_points"] = float(combo["pc1_points"][i])
@@ -318,8 +340,7 @@ def main() -> None:
             data["difficulty_score_pc1_raw"] = float(pc1_scores[i])
             data["difficulty_score_pc2_raw"] = float(pc2_scores[i])
             path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
-            written += 1
-        print(f"\nWrote difficulty_score into {written}/{len(models)} models' model_metadata.json")
+        print(f"\nWrote difficulty_score into {len(loaded)}/{len(models)} models' model_metadata.json")
     else:
         print("\n--dry-run: nothing written to model_metadata.json files")
 
@@ -327,7 +348,10 @@ def main() -> None:
         "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "fields_used": FIELDS,
         "fields_excluded_true_constants": EXCLUDED_CONSTANT_FIELDS,
+        "excluded_fields_no_longer_constant": no_longer_constant,
+        "models_file": str(args.models_file) if args.models_file else None,
         "models_used_for_pca": len(models),
+        "models_outside_set_with_stale_score": stale_outside_set,
         "all_components": fit["all_components"],
         "log1p_means": fit["log1p_means"],
         "log1p_stds": fit["log1p_stds"],

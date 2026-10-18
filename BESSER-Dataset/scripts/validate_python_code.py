@@ -10,7 +10,7 @@ alongside the model's other artifacts, and an aggregate report is written to
 
 Usage:
     python scripts/validate_python_code.py [--workers N] [--timeout SECONDS]
-                                            [--dataset-dir PATH] [--limit N]
+                                            [--dataset-dir PATH] [--models-file PATH] [--limit N]
 
 Each model's `code_metadata.json` gets (or has updated) a top-level
 "python_code_validation" key:
@@ -43,14 +43,15 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+
 CODE_FILENAME = "python_code.py"
 METADATA_FILENAME = "code_metadata.json"
+REPORT_NAME = "python_code_validation_report"
 DEFAULT_TIMEOUT = 20
 SYNTAX_ERROR_TYPES = {"SyntaxError", "IndentationError", "TabError"}
-
-
-def find_model_dirs(dataset_dir: Path) -> list[Path]:
-    return sorted(p for p in dataset_dir.iterdir() if p.is_dir())
 
 
 def parse_traceback(stderr: str) -> tuple[str | None, str | None]:
@@ -128,18 +129,17 @@ def validate_model(model_dir: Path, timeout: int) -> dict:
 
 
 def write_model_metadata(model_dir: Path, validation: dict) -> None:
+    """The first validator in the pipeline, so unlike every later writer this
+    one creates code_metadata.json when it doesn't exist yet."""
     metadata_path = model_dir / METADATA_FILENAME
     data = {}
     if metadata_path.is_file():
         try:
-            data = json.loads(metadata_path.read_text())
-        except (json.JSONDecodeError, OSError):
+            data = json.loads(metadata_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
             data = {}
-
-    entry = {k: v for k, v in validation.items() if k != "model"}
-    data["python_code_validation"] = entry
-
-    metadata_path.write_text(json.dumps(data, indent=2) + "\n")
+    data["python_code_validation"] = {k: v for k, v in validation.items() if k != "model"}
+    metadata_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
 def build_report(results: list[dict]) -> dict:
@@ -186,13 +186,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Failed:** {report['failed']}",
         f"- **Pass rate:** {report['pass_rate'] * 100:.2f}%" if report["pass_rate"] is not None else "- **Pass rate:** n/a",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
 
     if report["by_error_type"]:
         lines += ["", "## Failing models by error type", "", "| Error type | Count |", "|---|---|"]
@@ -206,27 +201,14 @@ def render_markdown_report(report: dict) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--dataset-dir",
-        type=Path,
-        default=Path(__file__).resolve().parent.parent / "Dataset",
-        help="Path to the Dataset directory (default: <repo>/Dataset)",
-    )
-    parser.add_argument(
-        "--reports-dir",
-        type=Path,
-        default=Path(__file__).resolve().parent.parent / "reports",
-        help="Where to write the aggregate report (default: <repo>/reports)",
-    )
+    add_common_io_args(parser, __file__)
+    parser.add_argument("--models-file", type=Path, default=None, help="File with one model dir name per line")
     parser.add_argument("--workers", type=int, default=8, help="Parallel worker processes")
     parser.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="Per-model timeout (seconds)")
     parser.add_argument("--limit", type=int, default=None, help="Only process the first N models (for testing)")
     args = parser.parse_args()
 
-    model_dirs = find_model_dirs(args.dataset_dir)
-    if args.limit:
-        model_dirs = model_dirs[: args.limit]
-
+    model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(model_dirs)
     print(f"Validating {total} models from {args.dataset_dir} with {args.workers} workers...")
 
@@ -261,13 +243,7 @@ def main() -> None:
                 print(f"  {done}/{total} processed...")
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-
-    json_path = args.reports_dir / "python_code_validation_report.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-
-    md_path = args.reports_dir / "python_code_validation_report.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, REPORT_NAME, report, render_markdown_report(report))
 
     print()
     print(f"Passed: {report['passed']}/{report['total_models']} ({(report['pass_rate'] or 0) * 100:.2f}%)")

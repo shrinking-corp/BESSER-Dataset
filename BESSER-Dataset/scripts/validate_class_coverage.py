@@ -29,7 +29,6 @@ from __future__ import annotations
 
 import argparse
 import ast
-import concurrent.futures
 import datetime
 import json
 import os
@@ -41,9 +40,22 @@ import tempfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs, update_json_key  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+
 CODE_STRUCTURE_FILENAME = "code_structure.json"
 METADATA_FILENAME = "code_metadata.json"
 DEFAULT_TIMEOUT = 60
+
+# "error"/"timeout" are execution-environment failures, not content-driven --
+# the same model re-run later may well succeed, so they're auto-retried under
+# the same --report-name instead of calcifying permanently in the cache (see
+# docs/DECISIONS.md's 2026-10-01 entry; this script never got that fix until
+# the 2026-10-17 code-review pass found the gap).
+RETRIABLE_STATUSES = frozenset({"timeout", "error"})
 
 # Overridable via --test-file/--metadata-key; see validate_coverage_structural.py
 # for why this reads from env vars rather than a plain module constant
@@ -54,71 +66,8 @@ TEST_FILE_METADATA_KEYS = {
     "test_structural_full.py": "class_coverage_validation",
     "test_hypothesis.py": "class_coverage_validation_hypothesis",
     "test_combined.py": "combined_class_coverage_validation",
+    "test_super_suite.py": "super_suite_class_coverage_validation",
 }
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
-
-
-def load_cache(cache_path: Path, expected_test_file: str | None = None) -> dict[str, dict]:
-    """Read a JSONL cache of previously-completed results, keyed by model name.
-
-    If `expected_test_file` is given, a cached entry recorded against a
-    DIFFERENT test file is dropped (forced to recompute) instead of being
-    silently reused -- the real bug found 2026-09-16: two runs sharing a
-    --report-name but different --test-file values had the second run
-    reuse the first's results under its own key. Entries written before
-    this field existed (no "test_file" key) are trusted as before.
-    """
-    cached: dict[str, dict] = {}
-    stale = 0
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            recorded_test_file = result.get("test_file")
-            if expected_test_file and recorded_test_file and recorded_test_file != expected_test_file:
-                stale += 1
-                continue
-            cached[result["model"]] = result
-    if stale:
-        print(f"Ignored {stale} cached result(s) recorded against a different --test-file "
-              f"than this run ({expected_test_file!r}) -- recomputing them instead of "
-              f"silently reusing stale data.")
-    return cached
 
 
 def real_class_names(code_structure_path: Path) -> list[str]:
@@ -259,9 +208,15 @@ def validate_model(model_dir: Path, timeout: int, hypothesis_home: str, scratch_
             continue
         # pytest's testcase name is the bare function name for non-parametrized
         # tests; match on suffix to tolerate a parametrize-id suffix if present.
+        # Anchored to "test_name[" specifically (not a bare startswith) --
+        # an unanchored prefix match could misattribute pass/fail from an
+        # unrelated test that merely shares a name prefix (2026-10-17
+        # code-review finding).
         test_passed = passed_by_test.get(test_name)
         if test_passed is None:
-            test_passed = next((v for k, v in passed_by_test.items() if k.startswith(test_name)), None)
+            test_passed = next(
+                (v for k, v in passed_by_test.items() if k.startswith(test_name + "[")), None
+            )
         if test_passed:
             covered |= refs
 
@@ -276,14 +231,7 @@ def validate_model(model_dir: Path, timeout: int, hypothesis_home: str, scratch_
 
 
 def write_metadata(model_dir: Path, result: dict) -> bool:
-    metadata_path = model_dir / METADATA_FILENAME
-    if not metadata_path.is_file():
-        return False
-    try:
-        metadata = json.loads(metadata_path.read_text())
-    except json.JSONDecodeError:
-        return False
-    metadata[METADATA_KEY] = {
+    return update_json_key(model_dir / METADATA_FILENAME, METADATA_KEY, {
         "checked_at": result["checked_at"],
         "python_version": result["python_version"],
         "status": result["status"],
@@ -291,9 +239,7 @@ def write_metadata(model_dir: Path, result: dict) -> bool:
         "covered_classes": result["covered_classes"],
         "class_coverage_percent": result["class_coverage_percent"],
         "uncovered_class_names": result["uncovered_class_names"],
-    }
-    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
-    return True
+    })
 
 
 def build_report(results: list[dict]) -> dict:
@@ -329,13 +275,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Measured:** {report['measured_count']}",
         f"- **Avg class coverage:** {report['avg_class_coverage_percent']}%",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
     lines += ["", "Full per-model detail, including uncovered class names: see the accompanying `.json` report."]
     return "\n".join(lines) + "\n"
 
@@ -343,8 +284,7 @@ def render_markdown_report(report: dict) -> str:
 def main() -> None:
     global TEST_FILENAME, METADATA_KEY
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="class_coverage_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -365,13 +305,14 @@ def main() -> None:
         TEST_FILENAME = args.test_file
     if args.metadata_key:
         METADATA_KEY = args.metadata_key
-    elif args.test_file:
-        if args.test_file not in TEST_FILE_METADATA_KEYS:
-            parser.error(
-                f"--test-file {args.test_file!r} has no known default metadata key -- "
-                f"pass --metadata-key explicitly (known test files: {sorted(TEST_FILE_METADATA_KEYS)})"
-            )
+    elif args.test_file in TEST_FILE_METADATA_KEYS:
         METADATA_KEY = TEST_FILE_METADATA_KEYS[args.test_file]
+    elif args.test_file and args.write_metadata:
+        parser.error(
+            f"--test-file {args.test_file!r} has no known default metadata key -- "
+            f"pass --metadata-key explicitly with --write-metadata "
+            f"(known test files: {sorted(TEST_FILE_METADATA_KEYS)})"
+        )
     os.environ["VALIDATE_CLASS_COVERAGE_TEST_FILENAME"] = TEST_FILENAME
     os.environ["VALIDATE_CLASS_COVERAGE_METADATA_KEY"] = METADATA_KEY
     print(f"Test file: {TEST_FILENAME}  |  metadata key: {METADATA_KEY}")
@@ -379,9 +320,10 @@ def main() -> None:
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
 
-    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path, expected_test_file=TEST_FILENAME)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path, expected_test_file=TEST_FILENAME)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -394,34 +336,20 @@ def main() -> None:
     if skipped:
         print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
               f"(pass --fresh to ignore the cache and recompute everything)")
+    if retriable:
+        print(f"Auto-retrying {len(retriable)} previously-failed models from the cache -- "
+              f"same report, no separate retry run needed")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
     try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {
-                executor.submit(validate_model, model_dir, args.timeout, hypothesis_home, scratch_dir): model_dir
-                for model_dir in model_dirs
-            }
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "test_file": TEST_FILENAME, "status": "error", "error_message": str(exc),
-                        "total_classes": None, "covered_classes": None, "class_coverage_percent": None,
-                        "covered_class_names": None, "uncovered_class_names": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                if done % 500 == 0 or done == total:
-                    print(f"  {done}/{total} processed", flush=True)
+        results = run_models(
+            validate_model, model_dirs, worker_args=(args.timeout, hypothesis_home, scratch_dir),
+            workers=args.workers, cache_path=cache_path, results=list(cached_results.values()),
+            already_done=skipped, total=total,
+            error_fields={"test_file": TEST_FILENAME, "total_classes": None, "covered_classes": None,
+                          "class_coverage_percent": None, "covered_class_names": None,
+                          "uncovered_class_names": None},
+        )
     finally:
-        cache_file.close()
         shutil.rmtree(hypothesis_home, ignore_errors=True)
         shutil.rmtree(scratch_dir, ignore_errors=True)
 
@@ -435,10 +363,7 @@ def main() -> None:
         print(f"Wrote {METADATA_KEY} into {written}/{len(results)} models' code_metadata.json")
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Measured: {report['measured_count']}/{report['total_models']}")

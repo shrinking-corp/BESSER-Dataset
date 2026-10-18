@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Pick the shared test-generation-comparison sample: one model list used by
-both Track A (library-generated tests, us) and Track B (the colleague's LLM
-mutation-feedback loop), so "library vs. LLM" is measured on identical models.
+"""Pick the shared test-generation-comparison sample: one model list every
+test-generation approach is measured on, so results are directly comparable.
 
 Decided 2026-09-29 (see docs/DECISIONS.md): stratify by
 `has_logic` method count, not `difficulty_score` -- the two don't always
@@ -51,9 +50,10 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.report import write_reports  # noqa: E402
 from classify_method_logic import _HAS_LOGIC_BUCKET_EDGES, _HAS_LOGIC_BUCKET_LABELS, _bucket  # noqa: E402
 
-# The "0" bucket (no has_logic methods at all) is never eligible for Phase 4.
+# The "0" bucket (no has_logic methods at all) is never eligible for the sample.
 ELIGIBLE_BUCKET_LABELS = [l for l in _HAS_LOGIC_BUCKET_LABELS if l != "0"]
 
 
@@ -163,9 +163,8 @@ def render_markdown_report(report: dict) -> str:
         "",
         f"Generated: {report['generated_at']}  |  seed: {report['seed']}",
         "",
-        "Shared sample for Track A (library-generated tests) and Track B "
-        "(the colleague's LLM mutation-feedback loop) -- both tracks work "
-        "against exactly this model list, so results are directly comparable.",
+        "Shared sample for the test-generation comparison -- every approach is "
+        "measured on exactly this model list, so results are directly comparable.",
         "",
         f"- **Requested sample size:** {report['requested_sample_size']}",
         f"- **Actual sample size:** {report['actual_sample_size']}",
@@ -235,13 +234,9 @@ def main() -> None:
     selection = select_sample(buckets, targets, args.seed)
     report = build_report(all_results, kept, dropped, buckets, targets, selection, args.seed, args.sample_size)
 
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
+    json_path, md_path = write_reports(args.reports_dir, f"{args.output_name}_report", report, render_markdown_report(report))
     txt_path = args.reports_dir / f"{args.output_name}.txt"
-    txt_path.write_text("".join(f"{m['model']}\n" for m in report["sample"]))
-    json_path = args.reports_dir / f"{args.output_name}_report.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.output_name}_report.md"
-    md_path.write_text(render_markdown_report(report))
+    txt_path.write_text("".join(f"{m['model']}\n" for m in report["sample"]), encoding="utf-8")
 
     print(f"\nActual sample size: {report['actual_sample_size']}/{report['requested_sample_size']}")
     if any(b["shortfall"] for b in report["bucket_summary"]):

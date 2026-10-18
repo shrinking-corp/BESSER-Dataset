@@ -1,6 +1,6 @@
 # Behavioral Test Generation Report
 
-Generated: 2026-10-12T10:07:10.999659+00:00
+Generated: 2026-10-17T19:14:57.931534+00:00
 
 - **Total models:** 200
 - **Generated:** 200

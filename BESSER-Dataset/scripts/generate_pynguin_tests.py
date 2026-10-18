@@ -29,13 +29,13 @@ Also requires `--pynguin-python` to point at the isolated `.venv-testgen`
 interpreter (default: `<repo>/.venv-testgen/Scripts/python.exe`), NOT the
 main `.venv` -- installing Pynguin into the main venv was found to silently
 downgrade `pytest`/`setuptools`/`Jinja2`/`rich` (see docs/DECISIONS.md), so
-Track A tooling is isolated in its own venv.
+the test-generation libraries are isolated in their own venv.
 
 Each model gets `test_pynguin.py` written into its directory (same
 convention as `generate_combined_tests.py`'s `test_combined.py`), plus the
 model's own `pynguin_stats.json` sidecar with Pynguin's self-reported
-coverage/mutation statistics (NOT the number to trust for the Phase 4
-comparison -- that comes from re-running this project's own
+coverage/mutation statistics (NOT the number to trust for the comparison
+-- that comes from re-running this project's own
 `validate_mutation_properties.py` against the generated file, same as every
 other suite, so results are apples-to-apples. Pynguin's own numbers are kept
 only as a secondary diagnostic).
@@ -49,7 +49,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import datetime
 import json
 import os
@@ -59,6 +58,12 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
 
 SOURCE_FILENAME = "python_code.py"
 OUTPUT_TEST_FILENAME = "test_pynguin.py"
@@ -73,7 +78,7 @@ DEFAULT_OVERALL_TIMEOUT = 600
 # user hit the identical annoyance with this script. "missing_file" is
 # excluded: permanent (the model genuinely has no python_code.py), not a
 # transient failure a re-run would fix.
-RETRIABLE_STATUSES = {"timeout", "no_tests_generated", "error"}
+RETRIABLE_STATUSES = frozenset({"timeout", "no_tests_generated", "error"})
 
 OUTPUT_VARIABLES = [
     "TargetModule", "Coverage", "NumberOfCreatedMutants",
@@ -85,51 +90,6 @@ def default_pynguin_python(repo_root: Path) -> Path:
     name = "python.exe" if platform.system() == "Windows" else "python"
     return repo_root / ".venv-testgen" / ("Scripts" if platform.system() == "Windows" else "bin") / name
 
-
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
 
 
 def parse_statistics_csv(csv_path: Path) -> dict | None:
@@ -256,7 +216,7 @@ def build_report(results: list[dict]) -> dict:
 
 def render_markdown_report(report: dict) -> str:
     lines = [
-        "# Pynguin Test Generation Report (Phase 4 Track A)",
+        "# Pynguin Test Generation Report",
         "",
         f"Generated: {report['generated_at']}",
         "",
@@ -267,22 +227,16 @@ def render_markdown_report(report: dict) -> str:
         "(diagnostic only -- the real comparison number comes from re-running "
         "validate_mutation_properties.py against test_pynguin.py)",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in report["by_status"].items():
-        lines.append(f"| {status} | {count} |")
-    lines += ["", "Full per-model detail: see the accompanying `.json` report."]
+    lines += render_status_table(report["by_status"])
+    lines +=["", "Full per-model detail: see the accompanying `.json` report."]
     return "\n".join(lines) + "\n"
 
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=repo_root / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=repo_root / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="pynguin_generation_report")
     parser.add_argument("--workers", type=int, default=4,
@@ -310,8 +264,7 @@ def main() -> None:
     cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
-    retriable = {m: r for m, r in cached_results_all.items() if r["status"] in RETRIABLE_STATUSES}
-    cached_results = {m: r for m, r in cached_results_all.items() if m not in retriable}
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -327,40 +280,16 @@ def main() -> None:
         print(f"Auto-retrying {len(retriable)} previously-failed models from the cache -- "
               f"same report, no separate retry run needed")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
-    try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {
-                executor.submit(
-                    generate_model, model_dir, pynguin_python,
-                    args.maximum_search_time, args.maximum_mutation_time, args.overall_timeout,
-                ): model_dir
-                for model_dir in model_dirs
-            }
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "tests_written": None, "pynguin_stats": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                print(f"  {done}/{total}: {model_dir.name} -> {result['status']}", flush=True)
-    finally:
-        cache_file.close()
+    results = run_models(
+        generate_model, model_dirs,
+        worker_args=(pynguin_python, args.maximum_search_time, args.maximum_mutation_time, args.overall_timeout),
+        workers=args.workers, cache_path=cache_path, results=list(cached_results.values()),
+        already_done=skipped, total=total, describe=lambda r: "",
+        error_fields={"tests_written": None, "pynguin_stats": None},
+    )
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Generated: {report['generated_count']}/{report['total_models']}")

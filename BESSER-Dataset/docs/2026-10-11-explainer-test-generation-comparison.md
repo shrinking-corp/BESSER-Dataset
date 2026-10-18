@@ -1,5 +1,17 @@
 # Raising mutation score: library-generated tests vs. our own generator, explained simply
 
+> **Correction (2026-10-18).** The earlier versions of this document reported a
+> super-suite score of **92.66%** (+41.81 pts over a 50.85% baseline). That was
+> wrong. Many of the test files contained tests that fail even on the original,
+> unmodified code, and our mutation tool counts *any* failing test run as
+> "mutant caught" -- so those models got a fake perfect score. Nothing in our
+> measurement checked for this. After fixing it (every suite now has to pass on
+> the original code before it is measured), the honest numbers are:
+> **super suite 77.55%, baseline 34.52%, lift +43.03 pts**, with 188 of 200
+> models improved and none worse. The improvement holds -- it's actually a
+> little bigger, because the baseline was inflated even more than the super
+> suite. The full story is in "What went wrong, and the honest numbers" below.
+
 ## The problem we're solving
 
 Mutation score across this dataset's test suites had been stuck around
@@ -52,15 +64,28 @@ exact same subset.** This reversed part of the naive conclusion.
 
 ## The headline numbers
 
+**Honest numbers (2026-10-18, every suite checked to pass on the original code first):**
+
+| Approach | Measured | Score | Baseline, same models | Difference |
+|---|---:|---:|---:|---:|
+| Baseline | 200/200 | **34.52%** | — | — |
+| **Super suite (all three combined)** | 200/200 | **77.55%** | 34.52% | **+43.03 pts** |
+
+**Original table, kept for the record -- these numbers are inflated** (measured
+before the fix; several suites contained tests that fail on the original code):
+
 | Approach | Measured | Standalone score | Baseline, same models | Difference |
 |---|---:|---:|---:|---:|
-| Baseline | 200/200 | 50.85% | — | — |
-| Behavioral (additive) | 200/200 | 59.89% | 50.85% | **+9.0 pts** |
-| Pynguin | 192/200 | 27.75% | 51.54% | **−23.79 pts** |
-| CrossHair | 173/200* | 64.24% | 52.12% | **+12.93 pts** |
-| **Super suite (all three combined)** | 200/200 | **92.66%** | 50.85% | **+41.81 pts** |
+| Baseline | 200/200 | ~~50.85%~~ | — | — |
+| Behavioral (additive) | 200/200 | ~~59.89%~~ | ~~50.85%~~ | ~~+9.0 pts~~ |
+| Pynguin | 192/200 | ~~27.75%~~ | ~~51.54%~~ | ~~−23.79 pts~~ |
+| CrossHair | 173/200* | ~~64.24%~~ | ~~52.12%~~ | ~~+12.93 pts~~ |
+| Super suite | 200/200 | ~~92.66%~~ | ~~50.85%~~ | ~~+41.81 pts~~ |
 
-*(First measured at 77.59% — see "A second jump" below for what changed and why it went up further.)*
+The individual Behavioral / Pynguin / CrossHair rows weren't re-measured; the
+qualitative conclusions below (Pynguin's assertions are too weak, combining
+beats choosing) still match what we saw, but treat their exact percentages as
+unreliable.
 
 \* CrossHair's real count: a data-quality bug was found and fixed along the
 way — 4 of its original 177 "successful" models had a syntax error in
@@ -93,15 +118,16 @@ baseline with CrossHair's output. The obvious fix: don't replace, merge —
 baseline + Behavioral + CrossHair's tests, all in one file. We built that
 ("the super suite") and measured it for real:
 
-**First measured: 77.59% average, a +26.74 point lift over baseline on
+~~**First measured: 77.59% average, a +26.74 point lift over baseline on
 the full 200-model sample — and 123 models improved, 0 worsened, 77
-unchanged.**
+unchanged.**~~ *(Inflated -- see the correction at the top.)*
 
-Zero models worsened. Combining preserves Behavioral's "never hurts"
-property even with CrossHair's real mixed-bag tendencies folded in,
-because nothing from baseline ever gets removed — only added to.
+Combining preserves Behavioral's "never hurts" property even with
+CrossHair's real mixed-bag tendencies folded in, because nothing from
+baseline ever gets removed — only added to. That part held up in the honest
+re-measurement: 188 models improved, 0 worsened, 12 unchanged.
 
-## A second jump: 77.59% → 92.66%, and what actually changed
+## A second jump that turned out to be partly fake: 77.59% → 92.66%
 
 We'd been treating a chunk of surviving mutants as a permanent, accepted
 limit — not a bug, just a structural fact of this dataset we couldn't do
@@ -143,9 +169,52 @@ a permanent rule once diagnosed by hand.
 
 **Result**: on the one model we traced this on by hand, the score for
 that model went from 35% (baseline) → 42.5% (first behavioral fix) → 95%.
-Across the full 200-model sample, folded into the super suite: 77.59% →
-**92.66%**, with the same safety property as everything else here — zero
-models worsened, 55 more improved.
+That result is genuine. Across the full 200-model sample we then reported
+77.59% → 92.66% -- **that part was not genuine**, see the next section.
+
+## What went wrong, and the honest numbers
+
+**The trap.** The mutation tool decides "this mutant was caught" when the
+test run fails. If a test fails *even on the original, unmodified code*, every
+single mutant looks caught and the model gets a perfect score that means
+nothing. Our measurement never checked that the tests pass on the original
+code first. Running every sample model's super suite once, unmodified, showed
+155 of 200 failing.
+
+**Four separate causes**, each from a different source:
+1. **Our stub-double tests checked the wrong thing for some shapes.** They
+   asserted "the stand-in now points to the owner", which is right when the
+   stand-in holds one object -- but when it holds a *collection*, the real
+   code puts `{owner}` there, so the test failed every time. We had verified
+   the rule by hand on one model whose relationships all happen to be
+   single-object, and assumed it held everywhere.
+2. **CrossHair wrote tests of Python's own `Enum` class** (not our code), checking
+   an exact error message that differs between Python versions.
+3. **CrossHair used dates without importing the date module.**
+4. **The dataset's own original tests deliberately fail on empty methods** --
+   they're there to flag `# TODO: Implement` stubs, not to test behavior. Since
+   they're in the baseline too, the *baseline* score was inflated as well.
+
+**The fix.** (1) The mutation tool now runs every suite once on the original
+code first and refuses to score a suite that fails -- this catches the
+problem no matter where it comes from. (2) Each final test file is "green by
+construction": tests that fail on the original code are removed and listed,
+and the baseline gets exactly the same treatment so the comparison stays fair.
+(3) The CrossHair and stub-double generators were fixed so good tests aren't
+thrown away. In the end only the dataset's own empty-method checks (441 tests,
+identical in both suites) had to be removed.
+
+**Honest result (200 models, each suite verified to pass on the original code):**
+
+| | Before the fix (inflated) | Honest |
+|---|---:|---:|
+| Baseline | 50.85% | **34.52%** |
+| Super suite | 92.66% | **77.55%** |
+| Lift | +41.81 pts | **+43.03 pts** |
+
+Per model: **188 improved, 0 worsened, 12 unchanged**. Perfect scores fell from
+157 to 3 in the super suite and from 49 to 0 in the baseline -- the old perfect
+scores were almost all fake.
 
 ## The recommendation
 
@@ -168,11 +237,9 @@ Behavioral, LLM-driven) replaces this one.
 
 ## One-sentence summary for colleagues
 
-*"Among three ways to automatically strengthen a weak test suite, our own
-purpose-built generator and a symbolic-execution library (CrossHair) both
-genuinely helped, a search-based library (Pynguin) made things worse,
-combining the two winners together — rather than picking one — beat either
-alone by a wide margin with zero models made worse off, and a limitation
-we'd accepted as permanent (certain mutants being structurally unkillable)
-turned out to be fixable too, taking the combined result from 77.59% to
-92.66%."*
+*"Combining our own purpose-built test generator with a symbolic-execution
+library (CrossHair) on top of the existing suite raises the mutation score
+from 34.52% to 77.55% (+43 pts) on a 200-model sample, with 188 models
+improved and none worse -- measured only on test suites verified to pass on
+the original code, after we discovered and fixed a measurement flaw that had
+made earlier, higher numbers (up to 92.66%) look better than they were."*

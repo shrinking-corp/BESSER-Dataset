@@ -60,47 +60,29 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
-import inspect
 import datetime
-import importlib.util
-import json
 import platform
 import sys
-import uuid
 from pathlib import Path
 
-from besser.BUML.metamodel.project import Project
-from besser.BUML.metamodel.structural import (
-    AssociationClass, BinaryAssociation, Class, DomainModel, Enumeration,
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.buml import (  # noqa: E402
+    NEW_GLOB, OLD_GLOB, find_buml_file, load_domain_model, ordered_ends, type_name,
+)
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+from _common.testgen import (  # noqa: E402
+    build_literal_tables, constructor_kwargs, has_real_property, is_constructible, is_many,
+    load_python_module, plain_attributes, resolve_code_name, sanitize,
 )
 
-OLD_GLOB = "*_BUML_model.py"
-NEW_GLOB = "*_buml.py"
-TEST_FILENAME = "test_structural_full.py"
+from besser.BUML.metamodel.structural import BinaryAssociation, Class, Enumeration  # noqa: E402
 
-SAMPLE_LITERAL = {
-    "str": '"sample_text"',
-    "int": "7",
-    "float": "3.14",
-    "bool": "True",
-    "date": "date(2024, 1, 1)",
-    "datetime": "datetime(2024, 1, 1, 12, 0, 0)",
-    "time": "time(12, 0, 0)",
-    "timedelta": "timedelta(days=1)",
-    "any": '"sample_any_value"',
-}
-SAMPLE_LITERAL_ALT = {
-    "str": '"sample_text_2"',
-    "int": "13",
-    "float": "9.99",
-    "bool": "False",
-    "date": "date(2025, 6, 15)",
-    "datetime": "datetime(2025, 6, 15, 8, 30, 0)",
-    "time": "time(8, 30, 0)",
-    "timedelta": "timedelta(days=2)",
-    "any": '"sample_any_value_2"',
-}
+TEST_FILENAME = "test_structural_full.py"
+RETRIABLE_STATUSES = frozenset({"error"})
+
 HYPOTHESIS_STRATEGY = {
     "str": "safe_text",
     "int": "st.integers()",
@@ -113,282 +95,18 @@ HYPOTHESIS_STRATEGY = {
 }
 
 
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    """Read a JSONL cache of previously-completed results, keyed by model name.
-
-    Tolerates a truncated last line (e.g. the process was killed mid-write)
-    by skipping any line that fails to parse.
-    """
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
-
-
-def find_buml_file(model_dir: Path) -> Path | None:
-    matches = list(model_dir.glob(OLD_GLOB)) or list(model_dir.glob(NEW_GLOB))
-    return matches[0] if matches else None
-
-
-def load_domain_model(file_path: Path):
-    module_name = f"buml_model_{uuid.uuid4().hex}"
-    spec = importlib.util.spec_from_file_location(module_name, str(file_path))
-    if spec is None or spec.loader is None:
-        raise ValueError(f"Could not load Python module from path: {file_path}")
-
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    try:
-        spec.loader.exec_module(module)
-    finally:
-        sys.modules.pop(module_name, None)
-
-    for value in vars(module).values():
-        if isinstance(value, DomainModel):
-            return value
-    for value in vars(module).values():
-        if isinstance(value, Project) and value.models:
-            return value.models[0]
-
-    raise ValueError(f"No DomainModel found in {file_path}")
-
-
-def _type_name(value) -> str:
-    return value.name if hasattr(value, "name") else str(value)
-
-
-def load_python_module(source_path: Path):
-    module_name = f"python_code_{uuid.uuid4().hex}"
-    spec = importlib.util.spec_from_file_location(module_name, str(source_path))
-    if spec is None or spec.loader is None:
-        raise ValueError(f"Could not load Python module from path: {source_path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    try:
-        spec.loader.exec_module(module)
-    finally:
-        sys.modules.pop(module_name, None)
-    return module
-
-
-def _has_real_property(cls, attr_name: str) -> bool:
-    """Whether `cls` (a class from the actually-generated python_code module,
-    not the BUML model) implements `attr_name` as a real @property -- i.e.
-    whether assigning to it actually runs setter logic, as opposed to a bare
-    `class X: pass` silently accepting a plain dynamic attribute assignment
-    that triggers nothing. Declaring an association in BUML does not
-    guarantee the generator implemented it on either participant's class
-    (confirmed: model_1's petrinet_Arc/petrinet_Token are bare stubs despite
-    being association participants) -- this has to be checked against the
-    real generated code, not inferred from the model.
-    """
-    if cls is None:
-        return False
-    for klass in getattr(cls, "__mro__", [cls]):
-        if attr_name in klass.__dict__:
-            return isinstance(klass.__dict__[attr_name], property)
-    return False
-
-
-def _ordered_ends(association):
-    """Deterministic (end1, end2) pair -- association.ends is an unordered set,
-    so picking list(ends)[0]/[1] directly varies between process runs
-    (Python's hash randomization). Same fix as buml_to_puml.py's
-    _ordered_ends -- needed here too, and originally missed."""
-    ends = list(getattr(association, "ends", []))
-    if len(ends) != 2:
-        return None
-
-    def end_key(end):
-        multiplicity = getattr(end, "multiplicity", None)
-        return (
-            _type_name(getattr(end, "type", "")),
-            str(getattr(end, "name", "")),
-            str(getattr(multiplicity, "min", "")),
-            str(getattr(multiplicity, "max", "")),
-            bool(getattr(end, "is_navigable", False)),
-            bool(getattr(end, "is_composite", False)),
-            bool(getattr(end, "is_aggregation", False)),
-        )
-
-    ordered = sorted(ends, key=end_key)
-    return ordered[0], ordered[1]
-
-
-def _is_many(multiplicity) -> bool:
-    if multiplicity is None:
-        return True
-    max_val = getattr(multiplicity, "max", None)
-    return max_val is None or max_val == "*" or (isinstance(max_val, (int, float)) and max_val > 1)
-
-
-def _sanitize(name: str) -> str:
-    return "".join(c if c.isalnum() or c == "_" else "_" for c in name)
-
-
-def _python_identifier(name: str) -> str:
-    """Best-effort sanitization matching how this dataset's python_code.py
-    generator turns a BUML `.name` into an actual Python identifier: strip
-    any character that isn't valid in one. Confirmed real case:
-    model_2533's `Class(name="raas_small_test_#29373817")` -- "#" is legal
-    in a UML/BUML name but not in a Python identifier (and would start a
-    comment if emitted raw, silently truncating the rest of the line) -- the
-    generated code simply drops it: `class raas_small_test_29373817:`.
-    """
-    cleaned = "".join(c for c in name if c.isalnum() or c == "_")
-    if not cleaned or cleaned[0].isdigit():
-        cleaned = f"_{cleaned}"
-    return cleaned
-
-
-def resolve_code_name(code_module, raw_name: str) -> str | None:
-    """The actual attribute name `raw_name` resolves to in the generated
-    python_code module -- not always the same string as the BUML `.name`
-    (see _python_identifier). Returns None if neither the raw nor the
-    sanitized form exists there, meaning this class/enum can't be safely
-    referenced in generated code at all (BUML model and generated code have
-    diverged too far to bridge automatically).
-    """
-    if hasattr(code_module, raw_name):
-        return raw_name
-    sanitized = _python_identifier(raw_name)
-    if sanitized != raw_name and hasattr(code_module, sanitized):
-        return sanitized
-    return None
-
-
-def build_literal_tables(model, code_module) -> tuple[dict, dict, set]:
-    """Extend the static primitive sample-value tables with this model's own
-    enum literals (e.g. "UserRole" -> "UserRole.SALES_MANAGER"). Enumeration-
-    typed attributes are NOT optional in the generated __init__ just because
-    we don't have a static literal for them -- omitting them from
-    constructor_kwargs() left them as a *missing required argument*, breaking
-    construction (and therefore every test) for any class with one.
-    Confirmed on Model_1000000001: 64/108 tests failed with
-    "missing 1 required positional argument: 'role'" until this was added.
-    Returns (sample_table, alt_table, known_type_names).
-    """
-    sample = dict(SAMPLE_LITERAL)
-    alt = dict(SAMPLE_LITERAL_ALT)
-    for enum in (t for t in model.types if isinstance(t, Enumeration)):
-        literals = sorted(enum.literals, key=lambda l: l.name)
-        if not literals:
-            continue
-        # Dict KEY stays the raw BUML name (that's what _type_name(attr.type)
-        # returns for lookups elsewhere); the VALUE must use the name the
-        # enum actually has in python_code.py, or the emitted literal
-        # (e.g. "UserRole.SALES_MANAGER") would reference a name that
-        # doesn't exist there -- see resolve_code_name().
-        code_enum_name = resolve_code_name(code_module, enum.name)
-        if code_enum_name is None:
-            continue
-        sample[enum.name] = f"{code_enum_name}.{literals[0].name}"
-        alt[enum.name] = f"{code_enum_name}.{literals[1].name}" if len(literals) > 1 else f"{code_enum_name}.{literals[0].name}"
-    return sample, alt, set(sample.keys())
-
-
-def _required_param_names(code_class) -> set | None:
-    """Names of code_class.__init__'s parameters with no default (excluding
-    self). None if code_class is missing or has no introspectable __init__
-    (a bare `class X: pass` stub -- always constructible with zero args)."""
-    if code_class is None:
-        return None
-    try:
-        sig = inspect.signature(code_class.__init__)
-    except (TypeError, ValueError):
-        return None
-    return {
-        name for name, param in sig.parameters.items()
-        if name != "self" and param.default is inspect.Parameter.empty
-        and param.kind in (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
-    }
-
-
-def is_constructible(class_type, code_class, known_types: set) -> bool:
-    """Whether we can actually build a valid constructor call for this class.
-
-    Checks the REAL __init__ signature, not just the BUML model's attribute
-    list -- they can diverge. Confirmed real case: model_10000002's `Order`
-    requires `status: OrderStatus`, but `OrderStatus` is a genuinely empty
-    enum (`class OrderStatus(Enum): pass`, zero literals) in the generated
-    code -- there is no valid Python value for it at all, so `Order` is
-    unconstructable by anyone, not just by this generator. Silently omitting
-    unfillable required arguments (the previous behavior) breaks
-    construction instead of catching this.
-    """
-    required = _required_param_names(code_class)
-    if required is None:
-        return True
-    coverable = {a.name for a in class_type.attributes if _type_name(getattr(a, "type", "")) in known_types}
-    return required.issubset(coverable)
-
-
-def plain_attributes(class_type, known_types: set) -> list:
-    """This class's own attributes whose type has a known sample literal
-    (primitives, plus this model's own enums)."""
-    return [a for a in class_type.attributes if _type_name(getattr(a, "type", "")) in known_types]
-
-
-def constructor_kwargs(class_type, known_types: set, sample_table: dict, alt: bool, alt_table: dict) -> str:
-    table = alt_table if alt else sample_table
-    parts = []
-    for attr in sorted(plain_attributes(class_type, known_types), key=lambda a: a.name):
-        literal = table.get(_type_name(attr.type), '"sample"')
-        parts.append(f"{attr.name}={literal}")
-    return ", ".join(parts)
-
-
 def generate_tests(model, code_module) -> str:
-    classes = sorted((t for t in model.types if isinstance(t, Class)), key=_type_name)
-    enums = sorted((t for t in model.types if isinstance(t, Enumeration)), key=_type_name)
-    generalizations = sorted(model.generalizations, key=lambda g: f"{_type_name(g.general)}::{_type_name(g.specific)}")
+    classes = sorted((t for t in model.types if isinstance(t, Class)), key=type_name)
+    enums = sorted((t for t in model.types if isinstance(t, Enumeration)), key=type_name)
+    generalizations = sorted(model.generalizations, key=lambda g: f"{type_name(g.general)}::{type_name(g.specific)}")
     associations = sorted(
-        (a for a in model.associations if isinstance(a, BinaryAssociation)), key=_type_name
+        (a for a in model.associations if isinstance(a, BinaryAssociation)), key=type_name
     )
 
     sample_table, alt_table, known_types = build_literal_tables(model, code_module)
 
     # A class/enum's BUML `.name` isn't always the identifier it has in the
-    # generated python_code.py (see resolve_code_name/_python_identifier --
+    # generated python_code.py (see resolve_code_name/python_identifier --
     # confirmed real case: model_2533's `raas_small_test_#29373817` loses
     # the "#"). Resolve every class/enum against the actually-loaded module
     # up front; anything that can't be resolved is excluded from imports,
@@ -475,13 +193,13 @@ def generate_tests(model, code_module) -> str:
         if not constructible[cls.name]:
             continue
         for attr in sorted(plain_attributes(cls, known_types), key=lambda a: a.name):
-            tname = _sanitize(f"{cls.name}_{attr.name}")
+            tname = sanitize(f"{cls.name}_{attr.name}")
             kwargs = constructor_kwargs(cls, known_types, sample_table, False, alt_table)
-            alt_literal = alt_table.get(_type_name(attr.type), '"sample_2"')
+            alt_literal = alt_table.get(type_name(attr.type), '"sample_2"')
             lines += [
                 f"def test_{tname}_value_roundtrip():",
                 f"    instance = {code_names[cls.name]}({kwargs})",
-                f"    assert instance.{attr.name} == {sample_table.get(_type_name(attr.type), chr(34)+'sample'+chr(34))}",
+                f"    assert instance.{attr.name} == {sample_table.get(type_name(attr.type), chr(34)+'sample'+chr(34))}",
                 f"    instance.{attr.name} = {alt_literal}",
                 f"    assert instance.{attr.name} == {alt_literal}",
                 "",
@@ -494,7 +212,7 @@ def generate_tests(model, code_module) -> str:
             continue
         if gen.general.name not in code_names:
             continue
-        tname = _sanitize(f"{gen.specific.name}_isa_{gen.general.name}")
+        tname = sanitize(f"{gen.specific.name}_isa_{gen.general.name}")
         kwargs = constructor_kwargs(gen.specific, known_types, sample_table, False, alt_table)
         lines += [
             f"def test_{tname}():",
@@ -506,18 +224,18 @@ def generate_tests(model, code_module) -> str:
 
     # --- binary associations: link -> reassign -> clear ---
     for assoc in associations:
-        ordered = _ordered_ends(assoc)
+        ordered = ordered_ends(assoc)
         if ordered is None:
             continue
         e1, e2 = ordered
         # attribute named e1.name (type e1.type) lives on class e2.type, and vice versa
-        class_a, attr_a, type_a, many_a = e2.type, e1.name, e1.type, _is_many(e1.multiplicity)
-        class_b, attr_b, type_b, many_b = e1.type, e2.name, e2.type, _is_many(e2.multiplicity)
+        class_a, attr_a, type_a, many_a = e2.type, e1.name, e1.type, is_many(e1.multiplicity)
+        class_b, attr_b, type_b, many_b = e1.type, e2.name, e2.type, is_many(e2.multiplicity)
 
         code_class_a = getattr(code_module, code_names[class_a.name], None) if class_a.name in code_names else None
         code_class_b = getattr(code_module, code_names[class_b.name], None) if class_b.name in code_names else None
-        a_is_real = _has_real_property(code_class_a, attr_a)
-        b_is_real = _has_real_property(code_class_b, attr_b)
+        a_is_real = has_real_property(code_class_a, attr_a)
+        b_is_real = has_real_property(code_class_b, attr_b)
         if not a_is_real and b_is_real:
             # Only class_b's side actually has setter logic -- link from
             # there instead, or the assignment would be a dead no-op.
@@ -535,7 +253,7 @@ def generate_tests(model, code_module) -> str:
         if not constructible.get(class_a.name, False) or not constructible.get(class_b.name, False):
             continue
 
-        tname = _sanitize(f"assoc_{assoc.name}")
+        tname = sanitize(f"assoc_{assoc.name}")
         kwargs_a = constructor_kwargs(class_a, known_types, sample_table, False, alt_table)
         kwargs_b1 = constructor_kwargs(class_b, known_types, sample_table, False, alt_table)
         kwargs_b2 = constructor_kwargs(class_b, known_types, sample_table, True, alt_table)
@@ -582,23 +300,20 @@ def generate_tests(model, code_module) -> str:
     ]
     enum_names_set = {e.name for e in enums}
 
-    def _strategy_for(type_name: str) -> str:
-        # Only sample from enums that actually have literals -- known_types
-        # already excludes empty ones (build_literal_tables), same fix as
-        # is_constructible: an empty `class OrderStatus(Enum): pass` has no
-        # valid value, so st.sampled_from() would raise InvalidArgument.
-        if type_name in enum_names_set and type_name in known_types and type_name in code_names:
-            return f"st.sampled_from({code_names[type_name]})"
-        return HYPOTHESIS_STRATEGY.get(type_name, "st.none()")
+    def _strategy_for(buml_type: str) -> str:
+        # known_types excludes empty enums, which st.sampled_from() rejects.
+        if buml_type in enum_names_set and buml_type in known_types and buml_type in code_names:
+            return f"st.sampled_from({code_names[buml_type]})"
+        return HYPOTHESIS_STRATEGY.get(buml_type, "st.none()")
 
     for cls in classes:
         if not constructible[cls.name]:
             continue
         prim_attrs = sorted(plain_attributes(cls, known_types), key=lambda a: a.name)
         strategy_args = ", ".join(
-            f"{a.name}={_strategy_for(_type_name(a.type))}" for a in prim_attrs
+            f"{a.name}={_strategy_for(type_name(a.type))}" for a in prim_attrs
         )
-        tname = _sanitize(cls.name)
+        tname = sanitize(cls.name)
         code_cls_name = code_names[cls.name]
         lines += [
             f"{tname}_strategy = st.builds({code_cls_name}, {strategy_args})" if strategy_args else f"{tname}_strategy = st.builds({code_cls_name})",
@@ -642,7 +357,7 @@ def generate_model(model_dir: Path) -> dict:
         code_module = load_python_module(code_path)
         test_text = generate_tests(model, code_module)
         output_path = model_dir / TEST_FILENAME
-        output_path.write_text(test_text)
+        output_path.write_text(test_text, encoding="utf-8")
         result["status"] = "generated"
         result["tests_written"] = test_text.count("\ndef test_")
     except Exception as exc:
@@ -679,27 +394,15 @@ def render_markdown_report(report: dict) -> str:
         f"- **Avg tests per model:** {report['avg_tests_per_model']}",
         f"- **Total tests written:** {report['total_tests_written']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
     lines += ["", "Full per-model detail: see the accompanying `.json` report."]
     return "\n".join(lines) + "\n"
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        "--dataset-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "Dataset",
-    )
-    parser.add_argument(
-        "--reports-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "reports",
-    )
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="structural_tests_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -710,10 +413,10 @@ def main() -> None:
 
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
-
-    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -724,35 +427,16 @@ def main() -> None:
     if skipped:
         print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
               f"(pass --fresh to ignore the cache and recompute everything)")
+    if retriable:
+        print(f"Auto-retrying {len(retriable)} previously-failed models from the cache")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
-    try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {executor.submit(generate_model, model_dir): model_dir for model_dir in model_dirs}
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "buml_source": None, "tests_written": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                print(f"  {done}/{total}: {model_dir.name} -> {result['status']}", flush=True)
-    finally:
-        cache_file.close()
+    results = run_models(generate_model, model_dirs, workers=args.workers, cache_path=cache_path,
+                         results=list(cached_results.values()), already_done=skipped, total=total,
+                         error_fields={"buml_source": None, "tests_written": None},
+                         describe=lambda r: "")
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Generated: {report['generated_count']}/{report['total_models']}")

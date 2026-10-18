@@ -212,6 +212,33 @@ that same check for PC3 onward, so we don't fold them into the score — using
 an unverified pattern would be exactly the "assume it matters" mistake we
 built this whole approach to avoid.
 
+> **Correction (2026-10-18).** The two reasons above don't hold up once
+> tested properly. (1) The standard rules for "how many components to keep"
+> were never actually run. Now they have been (`experiment_difficulty_score_pca.py`,
+> 8,336 usable models): **Kaiser keeps 3, Horn's parallel analysis keeps 3**
+> (PC3's eigenvalue 1.12 beats the random-data 95th percentile of 1.04),
+> only the broken-stick rule keeps fewer (1). (2) "We never checked PC3"
+> is no longer true: the same extremes check that was used for PC2 now runs
+> on PC3 too, and PC3 passes it *more* clearly than PC2. Both ends of PC3
+> are large models (average PC1 +2.6 and +2.8 for the 5% tails) built in
+> opposite styles: enumeration-heavy (≈6.6 enums, 36 literals, almost no
+> methods) vs. association/method-heavy (≈31 associations, 17 methods, no
+> enums). PC2 holds for its 10 most extreme models, but over its 5% tails
+> one end is **average-sized**, not large: ≈12 classes, 30 attributes,
+> 8 attribute types, no inheritance (average PC1 −0.38). So PC2 is a real
+> style contrast, but it is not purely "two kinds of big model".
+>
+> **So why still only PC1+PC2?** Because we measured what PC3 would do to
+> the score instead of assuming. Adding it barely changes the ranking
+> (Spearman 0.986 with the current score). Where it does change scores, it
+> moves small enum-heavy models up by up to 10.7 points (e.g. 5 classes,
+> 4 enums) and pulls the largest models down by about 12 (271-341 classes),
+> because size's share of the points drops from 75 to 64.5. Models with methods are
+> not affected differently from models without. For a code-generation
+> difficulty score that is a step in the wrong direction, so PC3 is left
+> out on purpose. The statistics alone would allow 3; we chose 2 based on
+> this measurement. Full argument: `docs/DECISIONS.md` (2026-10-18).
+
 ## Did we actually check "why stop at two"? (added 2026-10-11)
 
 The reasoning above for using only PC1+PC2 was "the numbers drop off fast,

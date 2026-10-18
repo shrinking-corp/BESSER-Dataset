@@ -44,31 +44,15 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, iter_measured_models  # noqa: E402
 
 W_C = 0.35 / 0.98
 W_R = 0.40 / 0.98
 W_A = 0.23 / 0.98
-
-METADATA_FILENAME = "model_metadata.json"
-
-
-def load_models(dataset_dir: Path) -> list[tuple[str, Path, dict]]:
-    """Every measured model's name, metadata path, and parsed metadata, in a
-    stable (sorted-by-name) order -- determinism requires a fixed row order."""
-    out: list[tuple[str, Path, dict]] = []
-    for d in sorted(dataset_dir.iterdir(), key=lambda p: p.name):
-        p = d / METADATA_FILENAME
-        if not p.is_file():
-            continue
-        try:
-            data = json.loads(p.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            continue
-        if data.get("status") != "measured":
-            continue
-        out.append((d.name, p, data))
-    return out
 
 
 def compute_car(data: dict) -> tuple[float, float, float]:
@@ -86,13 +70,12 @@ def compute_car(data: dict) -> tuple[float, float, float]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--dry-run", action="store_true",
                          help="Compute and report everything, but don't write into model_metadata.json files")
     args = parser.parse_args()
 
-    entries = load_models(args.dataset_dir)
+    entries = list(iter_measured_models(args.dataset_dir))
     print(f"Loaded {len(entries)} measured models")
     print(f"Weights: w_c={W_C:.4f}  w_r={W_R:.4f}  w_a={W_A:.4f}")
 

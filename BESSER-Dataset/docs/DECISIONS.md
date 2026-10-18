@@ -14,6 +14,89 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-18 — PCA evidence completed; PC1+PC2 kept although Kaiser and parallel analysis retain 3 components
+
+**Why.** We need to defend two things to colleagues: how the PCA score compares to the article's formula, and why only PC1+PC2 are used. The second rested on (a) "variance drops off fast" and (b) "PC2 was checked on real models (`diagnose_pc2_extremes.py`), PC3 never was". Neither standard component-retention tests nor a PC3 check had ever been run, and the evidence came from three different model sets (official fit 9,082, experiment 8,451, planned buckets 8,336).
+
+**What changed.** `experiment_difficulty_score_pca.py` is now the single evidence script. It adds component retention (Kaiser, broken stick, Horn's parallel analysis: 100 random-normal runs of identical shape, seed 42, 95th percentile) and the extremes check for PC2 *and* PC3 (top/bottom 10, plus 5% tails), keeps the component sweep, clamping and exclusion experiments, and writes a Markdown report next to the JSON. `compute_difficulty_score.py`, `compare_difficulty_scores.py`, `difficulty_score_distribution.py` and the experiment all take `--models-file`; the rerun passes `reports/usable_models.txt` to all of them, so the fit, the scores, the proof and the buckets describe the same 8,336 models. Run on the old default set (8,451) the script reproduces the previous report's numbers exactly.
+
+**Findings** (8,336 usable models; 8,451 in brackets):
+
+| | PC1 | PC2 | PC3 | PC4 |
+|---|---:|---:|---:|---:|
+| Eigenvalue | 5.13 (5.27) | 1.71 (1.67) | 1.12 (1.09) | 0.85 (0.81) |
+| Variance | 46.7% | 15.5% | 10.2% | 7.7% |
+| Random-data 95th pct (parallel analysis) | 1.07 | 1.05 | 1.04 | 1.03 |
+| Spearman vs article, PC1..PCk | 0.893 | 0.874 | 0.861 | 0.858 |
+
+- Retained: **Kaiser 3, parallel analysis 3, broken stick 1.** No standard rule picks 2.
+- Extremes check, mean PC1 (overall 0): PC2 top/bottom 10 = +0.92 / +0.66, but 5% tails = −0.38 / +0.50. PC3 top/bottom 10 = +5.74 / +3.87, 5% tails = +2.82 / +2.57.
+- PC2's positive tail is average-sized, attribute-rich flat models (≈12 classes, 30 attributes, 8 attribute types, no inheritance). Its negative tail is big hierarchies (≈74 classes, 66 generalizations). PC3 contrasts enumeration-heavy large models (≈6.6 enums, 36 literals) with association/method-heavy ones (≈31 associations, 17 methods, no enums).
+- Caveat on the extremes check: components driven by fields that are zero for most small models (enums, methods) can only reach their extremes in large models, so passing it is necessary but not sufficient evidence of a "real" axis.
+
+**Consequence.** The written justification "PC3 was never verified" no longer applies, and "the numbers drop off fast" is answered by the formal tests: they say 3. Article agreement falls slightly with every added component (PC2 included), for the reason already given in the explainer: the article measures size only. Three options were weighed: PC1+PC2 (current), PC1+PC2+PC3 (what Kaiser and parallel analysis support), PC1 alone (broken stick; best article agreement; size only). The choice was made on what PC3 actually does to the score, measured below (`experiment_difficulty_score_pca.py`, experiment 6).
+
+**What adding PC3 would actually do** (same fit, 8,336 usable models, PC1+PC2 vs. PC1+PC2+PC3, both clipped and variance-weighted; point budgets 75.0/25.0 vs. 64.5/21.4/14.1):
+- Ranking almost unchanged: Spearman between the two scores **0.986**. Median |change| 1.8 points, 90th percentile 5.5, extremes +10.7 / −11.9.
+- 25.0% of models change difficulty bucket, all by exactly one bucket. These are mostly models sitting near a bucket boundary.
+- The models that rise most are **small and enumeration-heavy** (e.g. `model_4314`: 5 classes, 4 enums, 0 methods, +10.7). The models that fall most are **the largest ones** (271-341 classes, about −12), because PC1's share of the points shrinks from 75 to 64.5. The 80-90 bucket thins from 69 to 26 models.
+- Models with methods change the same as models without (−0.95 vs. −1.01). PC3 does **not** in practice raise the weight of methods, despite its +0.30 loading.
+
+**Decision: keep PC1+PC2.** PC3 passes the statistical retention tests, but in practice it changes the score in the wrong direction for a code-generation difficulty measure. It mostly rewards enum count in small models and pulls down the largest models, and it does not give methods more weight.
+
+**How to defend it (for the article).** The argument, in order:
+1. *Why PC1.* It is the dominant component (46.7% of variance) and every loading is positive, so it reads as overall size and complexity.
+2. *Why PC2.* It is a second, interpretable axis (data-schema-heavy vs. hierarchy-heavy). Kaiser and parallel analysis both retain it. Its 10 most extreme models on both ends are above-average size. Over its 5% tails, one end is big hierarchies and the other is average-sized, attribute-rich flat models: a real difference in style, not tiny models drifting to one end.
+3. *Why not PC3, although the tests also retain it.* Retention rules say how many components carry more than noise; they do not say which ones improve a difficulty score for a given purpose. We therefore measured PC3's effect directly:
+   - It barely changes the ranking (Spearman 0.986 with the PC1+PC2 score).
+   - Where it does change scores, it moves small enum-heavy models up by up to 10.7 points and the largest models down by about 12.
+   - It leaves models with methods unaffected.
+
+   That adds noise for our purpose rather than signal. Report the retention tests in full and present PC1+PC2 as a deliberate, measured choice, not as what the tests alone dictate.
+4. *Why not PC1 alone.* It agrees best with the article (0.893), but only because the article measures size alone. PC2 adds a real second kind of structure at a small cost in agreement (0.874).
+5. *Why variance-proportional weights and |PC2|.* See the 2026-09-28 explainer and the method entry further down: the weights are not hand-chosen, and the sign of PC2 is arbitrary.
+
+---
+
+## 2026-10-18 — Scripts refactored onto a shared `scripts/_common/` package; output verified byte-identical
+
+**Why.** The code review found the same helpers copy-pasted 13-24 times across `scripts/`, and fixes that had only reached some of the copies (the retry-on-error rule reached 7/17 scripts, the stale-cache safeguard 4/17). A fix applied to one copy and not the others is how inconsistent results creep in, so the copies were replaced with one shared implementation each.
+
+**What `_common/` holds.** `io` (BOM-safe text reading, model-list resolution, `--dataset-dir`/`--reports-dir`, merging one key into a model's JSON), `cache` (resumable JSONL cache with the test-file safeguard, retriable-status partitioning), `pool` (the ProcessPoolExecutor loop that appends each result to the cache and records crashes as `error`), `report` (status table, JSON+Markdown report writing in UTF-8), `ast_utils`, `baseline` and `green` (the 2026-10-18 false-positive fixes below), `crosshair` (the CrossHair sanitizer), `buml` (finding/loading a model's BUML source, `type_name`, deterministic `ordered_ends`), `testgen` (the ~15 helpers `generate_structural_tests.py` and `generate_behavioral_tests.py` used to duplicate, plus `buml_to_puml.py`'s third copy of `ordered_ends`). Every script now uses these.
+
+**Bugs fixed along the way.** `validate_coverage_split.py` read `python_code.py` in the Windows default encoding (mis-reported model_2210/2213/2243/2246); `validate_tests.py` recorded a model's last error instead of its first; `validate_logic.py` overwrote the exclusion file even on a partial `--models-file` run; several scripts wrote reports/metadata without `encoding="utf-8"`; `select_test_generation_sample.py` would have crashed with a `NameError` on its final print; `compute_difficulty_score.py` now warns if a field excluded for being constant stops being constant.
+
+**Verification.** A static pass over all 42 script files (compile, undefined names, unused imports): 0 problems. Every module imports under its venv (`.venv`, `.venv-puml`; the two tree-sitter scripts need a `.venv-treesitter` that doesn't exist on this machine yet). `test_structural_full.py`, `test_behavioral.py` and the `.puml` file were regenerated for all 200 sample models into a scratch copy and compared to the dataset: **600/600 byte-identical** -- the refactor changes no output.
+
+---
+
+## 2026-10-18 — The 92.66% super-suite score was a false positive; honest re-measurement: 77.55% vs 34.52% baseline (+43.03 pts)
+
+**What was wrong.** cosmic-ray counts a mutant as KILLED whenever the test command exits non-zero. A suite that already fails on the *unmutated* `python_code.py` therefore "kills" every mutant and the model scores a fake 1.0. Neither mutation validator ever checked that a suite passes unmutated first -- the only such check (`check_baseline_passes()`) lived in the since-deleted LLM pipeline script, never in `validate_mutation.py`/`validate_mutation_properties.py`. Running every sample model's `test_super_suite.py` once, unmutated, showed **155/200 failing**; the v2 report had 157 perfect scores.
+
+**Four independent causes** (found by running each failing suite without `-x` and grouping every failing test):
+1. **Stub-double tests asserted the wrong shape** (`generate_behavioral_tests.py`, added 2026-10-12): `assert getattr(partner, attr) == owner` is only right when the stub end holds one object. When it holds a collection the real setter stores `{owner}`, so the test failed on every run. Verified by hand only on `model_1`, whose stub ends happen to all be scalar -- that one check was wrongly treated as covering every shape. A second variant: BUML end names the generator sanitizes (`RDBMS.ecoreTable` -> `RDBMS_ecoreTable`, `model_100170`) were attached to the stub under the raw name, so the setter's `hasattr` guard never saw them.
+2. **CrossHair tests of Python's own `Enum` internals** (89/200 models): `Enum.__new__` / `Enum._generate_next_value_` -- standard library, not model code -- matching an exact error message whose wording differs between Python versions.
+3. **CrossHair `datetime.date(...)` with no `import datetime`** (~13 models): a `NameError` on its own, a `TypeError` once merged next to suites that `from datetime import datetime` (the class shadows the module name).
+4. **The dataset's own `test_hypothesis.py` empty-method checks** (49/200 models): the `..._changes_state` tests deliberately `FAIL if empty` -- every `# TODO: Implement` stub operation fails them on the original code. These are dataset-quality checks, not behavior tests, and they sit in the *baseline* suite, so the baseline (50.85%) was inflated too. Dataset-wide this affects ~940 models (1,046 have stub operations; the 2026-09-01 test validation already reported 1,055 failing original suites), and e.g. `model_298` scored a fake 1.0 in both September full-dataset mutation runs -- those dataset-wide averages are inflated the same way and must be re-measured with the guard below.
+
+**Fixes.**
+- **Guard in the measurement step** (`scripts/_common/baseline.py`, used by both mutation validators): the exact test command runs once unmutated before `cosmic-ray init`; if it fails the model gets `baseline_failed`, never a score. Generator-independent, so no future generator bug can inflate a score silently again.
+- **Green suites** (`scripts/_common/green.py`): a suite is run unmutated, every failing test is removed and listed in the report, repeated until green; repeated top-level test names are renamed first (Python keeps only the last definition, so duplicates never ran -- 28 found). `generate_super_suite.py` now only writes a green `test_super_suite.py`; `scripts/make_green_suite.py` applies the identical rule to any other suite (`test_combined.py` -> `test_combined_green.py`) so comparisons stay fair. This is also what the benchmarking oracle needs: a test that fails on the reference code can't judge LLM-generated code.
+- **Generator fixes, so good tests aren't lost to pruning**: CrossHair output sanitized (`scripts/_common/crosshair.py`: stdlib `Enum` tests dropped, invalid syntax skipped, `datetime` module references aliased) -- applied in `generate_crosshair_tests.py` and on read in `generate_super_suite.py`; stub-double tests now read the partner attribute name and its single-vs-collection shape directly from the real setter's source, and skip rather than guess when it can't be read.
+
+**Honest re-measurement** (200-model sample, `--hypothesis-seed 0`, `validate_mutation_properties.py`, 200/200 green, 200/200 measured, 0 `baseline_failed`):
+
+| | Published | Honest |
+|---|---:|---:|
+| Baseline (`test_combined` -> `test_combined_green`) | 50.85% | **34.52%** |
+| Super suite | 92.66% | **77.55%** |
+| Lift | +41.81 pts | **+43.03 pts** |
+
+Per model (super vs baseline, both green): **188 improved, 0 worsened, 12 unchanged**. Perfect scores: baseline 49 -> 0, super suite 157 -> 3. The 441 removed tests are the same dataset empty-method checks in both suites. Reports: `reports/super_suite_report.*`, `reports/green_test_combined_report.*`, `reports/test_generation_super_suite_mutation_v3.*`, `reports/test_generation_baseline_green_mutation.*`. The standalone CrossHair (64.24%) and Behavioral (59.89%) numbers from 2026-10-11 used the same unguarded measurement and are superseded, not re-measured.
+
+---
+
 ## 2026-10-17 — BOM-read rollout, stale-cache-by-test-file safeguard, and a non-decision on the mutation-score exclusion filter
 
 **BOM-sniffing fix rolled out to the remaining 17 scripts.** `_read_text_robust()` (sniffs the actual BOM bytes for `--models-file` instead of assuming one encoding -- see the 2026-10-12 entry below for the two different real encodings this already caught) had only been applied to the 4 scripts touched that day. Grepped for the vulnerable `models_file.read_text().splitlines()` pattern across `scripts/`, found 17 more, applied the same helper to all of them: `generate_crosshair_tests.py`, `generate_super_suite.py`, `generate_combined_tests.py`, `generate_pynguin_tests.py`, `validate_coverage.py`, `generate_structural_tests.py`, `validate_class_coverage.py`, `validate_generator_fidelity.py`, `validate_coverage_split.py`, `validate_coverage_structural.py`, `validate_generator_fidelity_names.py`, `generate_model_metadata.py`, `generate_code_structure.py`, `classify_method_logic.py`, `validate_mutation.py`, `buml_to_puml.py`, `check_property_name_mismatches.py`.
@@ -25,6 +108,8 @@ different, non-overlapping reasons).
 ---
 
 ## 2026-10-12 — "Equivalent" mutants from stub associations turned out to be killable after all
+
+> **Superseded 2026-10-18:** the 92.66% / +41.81 pt results below were a false positive -- the stub-double tests failed on unmutated code for collection-valued stub ends, and nothing checked that. Honest numbers: 77.55% vs 34.52% baseline (+43.03 pts). See the 2026-10-18 entry above. The `model_1` result (35% -> 95%) is genuine.
 
 Reversing a 2026-10-01 conclusion: stub-association mutants (one side of a bidirectional link is a bare `class X: pass` with no real properties, so the generated code's own `hasattr(item, "...")` guard protecting that logic is permanently False) were assumed genuinely unkillable by any test -- "a real, non-zero floor... account for that when judging any track's resulting mutation score." That diagnosis of *why* they survive was correct; the conclusion that nothing could kill them was not.
 
@@ -54,6 +139,8 @@ Before handing the colleague's two-stage pipeline off, tried running it locally 
 ---
 
 ## 2026-10-11 — Super suite confirmed to beat every individual test-generation approach, not just on average
+
+> **Superseded 2026-10-18:** every score in this entry (baseline 50.85%, super suite 77.59%, CrossHair 64.24%, Behavioral 59.89%) came from suites that were never checked to pass unmutated; several contained tests failing on the original code, which count every mutant as killed. Honest comparison: see the 2026-10-18 entry.
 
 Ran `scripts/generate_super_suite.py` (combined+behavioral+CrossHair, with the invalid-syntax guard from the earlier entry) for real across the 200-model sample, then measured mutation score with `--hypothesis-seed=0` (the now-standing convention) via `validate_mutation_properties.py`.
 

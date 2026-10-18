@@ -41,15 +41,23 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import datetime
 import json
 import os
 import platform
 import shutil
 import subprocess
+import sys
 import tempfile
+import time
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.crosshair import sanitize_crosshair_tests  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
 
 SOURCE_FILENAME = "python_code.py"
 CODE_STRUCTURE_FILENAME = "code_structure.json"
@@ -62,58 +70,12 @@ DEFAULT_PER_CONDITION_TIMEOUT = 5.0
 # "missing_file"/"missing_code_structure"/"code_structure_parse_error"/
 # "no_classes" are excluded: permanent facts about the model's input data,
 # not transient failures a re-run would fix.
-RETRIABLE_STATUSES = {"no_tests_generated", "error"}
+RETRIABLE_STATUSES = frozenset({"no_tests_generated", "error"})
 
 
 def default_crosshair_python(repo_root: Path) -> Path:
     name = "python.exe" if platform.system() == "Windows" else "python"
     return repo_root / ".venv-testgen" / ("Scripts" if platform.system() == "Windows" else "bin") / name
-
-
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
 
 
 def class_names_from_structure(code_structure_path: Path) -> list[str]:
@@ -222,7 +184,7 @@ def generate_model(
 
         per_class_status: dict[str, str] = {}
         covered_texts: list[str] = []
-        import time
+        stdlib_tests_dropped = 0
         start = time.monotonic()
         for class_name in sorted(class_names):
             if time.monotonic() - start > overall_timeout:
@@ -232,9 +194,16 @@ def generate_model(
                                        per_class_timeout, per_condition_timeout, env)
             per_class_status[class_name] = outcome["status"]
             if outcome["test_text"]:
-                covered_texts.append(outcome["test_text"])
+                sanitized, dropped = sanitize_crosshair_tests(outcome["test_text"])
+                if sanitized is None:
+                    per_class_status[class_name] = "invalid_syntax"
+                    continue
+                stdlib_tests_dropped += len(dropped)
+                if "def test_" in sanitized:
+                    covered_texts.append(sanitized)
 
         result["per_class_status"] = per_class_status
+        result["stdlib_tests_dropped"] = stdlib_tests_dropped
         result["classes_covered"] = sum(1 for s in per_class_status.values() if s == "covered")
 
         if not covered_texts:
@@ -281,7 +250,7 @@ def build_report(results: list[dict]) -> dict:
 
 def render_markdown_report(report: dict) -> str:
     lines = [
-        "# CrossHair Test Generation Report (Phase 4 Track A)",
+        "# CrossHair Test Generation Report",
         "",
         f"Generated: {report['generated_at']}",
         "",
@@ -299,24 +268,16 @@ def render_markdown_report(report: dict) -> str:
     ]
     for status, count in report["per_class_status_totals"].items():
         lines.append(f"| {status} | {count} |")
-    lines += [
-        "",
-        "## Breakdown by model status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
-    ]
-    for status, count in report["by_status"].items():
-        lines.append(f"| {status} | {count} |")
-    lines += ["", "Full per-model, per-class detail: see the accompanying `.json` report."]
+    lines.append("")
+    lines += render_status_table(report["by_status"])
+    lines +=["", "Full per-model, per-class detail: see the accompanying `.json` report."]
     return "\n".join(lines) + "\n"
 
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=repo_root / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=repo_root / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="crosshair_generation_report")
     parser.add_argument("--workers", type=int, default=4)
@@ -345,8 +306,7 @@ def main() -> None:
     cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
-    retriable = {m: r for m, r in cached_results_all.items() if r["status"] in RETRIABLE_STATUSES}
-    cached_results = {m: r for m, r in cached_results_all.items() if m not in retriable}
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -362,42 +322,18 @@ def main() -> None:
         print(f"Auto-retrying {len(retriable)} previously-failed models from the cache -- "
               f"same report, no separate retry run needed")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
-    try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {
-                executor.submit(
-                    generate_model, model_dir, crosshair_python,
-                    args.per_class_timeout, args.per_condition_timeout, args.overall_timeout,
-                ): model_dir
-                for model_dir in model_dirs
-            }
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "classes_total": None, "classes_covered": None, "tests_written": None,
-                        "per_class_status": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                print(f"  {done}/{total}: {model_dir.name} -> {result['status']} "
-                      f"({result.get('classes_covered')}/{result.get('classes_total')} classes)", flush=True)
-    finally:
-        cache_file.close()
+    results = run_models(
+        generate_model, model_dirs,
+        worker_args=(crosshair_python, args.per_class_timeout, args.per_condition_timeout, args.overall_timeout),
+        workers=args.workers, cache_path=cache_path, results=list(cached_results.values()),
+        already_done=skipped, total=total,
+        describe=lambda r: f" ({r.get('classes_covered')}/{r.get('classes_total')} classes)",
+        error_fields={"classes_total": None, "classes_covered": None, "tests_written": None,
+                      "per_class_status": None},
+    )
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Generated: {report['generated_count']}/{report['total_models']}")

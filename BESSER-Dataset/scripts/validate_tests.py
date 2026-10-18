@@ -66,8 +66,13 @@ import sys
 import tempfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+
 TEST_FILENAME = "test_hypothesis.py"
 METADATA_FILENAME = "code_metadata.json"
+REPORT_NAME = "test_validation_report"
 DEFAULT_TIMEOUT = 60
 
 SUMMARY_COUNT_RE = re.compile(
@@ -75,10 +80,6 @@ SUMMARY_COUNT_RE = re.compile(
 )
 FAILED_LINE_RE = re.compile(r"^(?:FAILED|ERROR)\s+(\S+)(?:\s+-\s+(.*))?$")
 TRACEBACK_LINE_RE = re.compile(r"^E\s+([A-Za-z_][A-Za-z0-9_.]*)\s*:\s*(.*)$")
-
-
-def find_model_dirs(dataset_dir: Path) -> list[Path]:
-    return sorted(p for p in dataset_dir.iterdir() if p.is_dir())
 
 
 def parse_counts(stdout: str) -> dict:
@@ -109,15 +110,20 @@ def parse_failure_detail(stdout: str) -> tuple[str | None, str | None, list[str]
     over the short-summary "FAILED ... - <Type>: <message>" line, because
     pytest truncates the latter to fit its summary width (e.g. "AssertionError...")
     when stdout isn't a tty, which would otherwise clip real messages.
+
+    Records the FIRST failure, not the last: a model with several failing
+    tests used to get whichever traceback pytest printed last, so its
+    reported error type (and the by-error-type aggregate) depended on test
+    order rather than on what failed first (2026-10-17 code-review finding).
     """
     failing_tests = []
-    last_dash_msg: str | None = None
+    first_dash_msg: str | None = None
     for line in stdout.splitlines():
         m = FAILED_LINE_RE.match(line.strip())
         if m:
             failing_tests.append(m.group(1))
-            if m.group(2):
-                last_dash_msg = m.group(2)
+            if m.group(2) and first_dash_msg is None:
+                first_dash_msg = m.group(2)
 
     error_type = None
     error_message = None
@@ -125,15 +131,16 @@ def parse_failure_detail(stdout: str) -> tuple[str | None, str | None, list[str]
         m = TRACEBACK_LINE_RE.match(line.rstrip())
         if m:
             error_type, error_message = m.group(1), m.group(2).strip()
+            break
 
-    if error_type is None and last_dash_msg:
-        if ":" in last_dash_msg:
-            etype, _, msg = last_dash_msg.partition(":")
+    if error_type is None and first_dash_msg:
+        if ":" in first_dash_msg:
+            etype, _, msg = first_dash_msg.partition(":")
             etype = etype.strip()
             if etype.replace("_", "").isalnum():
                 error_type, error_message = etype, msg.strip()
         if error_type is None:
-            error_message = last_dash_msg
+            error_message = first_dash_msg
 
     if error_type is None and error_message is None:
         lines = [l for l in stdout.strip().splitlines() if l.strip()]
@@ -229,14 +236,11 @@ def write_model_metadata(model_dir: Path, validation: dict) -> None:
     data = {}
     if metadata_path.is_file():
         try:
-            data = json.loads(metadata_path.read_text())
-        except (json.JSONDecodeError, OSError):
+            data = json.loads(metadata_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
             data = {}
-
-    entry = {k: v for k, v in validation.items() if k != "model"}
-    data["test_validation"] = entry
-
-    metadata_path.write_text(json.dumps(data, indent=2) + "\n")
+    data["test_validation"] = {k: v for k, v in validation.items() if k != "model"}
+    metadata_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
 def build_report(results: list[dict]) -> dict:
@@ -304,13 +308,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Total individual tests failed:** {report['total_tests_failed']}",
         f"- **Total individual tests errored:** {report['total_tests_errored']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
 
     if report["by_error_type"]:
         lines += ["", "## Failing models by error type", "", "| Error type | Count |", "|---|---|"]
@@ -324,27 +323,14 @@ def render_markdown_report(report: dict) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--dataset-dir",
-        type=Path,
-        default=Path(__file__).resolve().parent.parent / "Dataset",
-        help="Path to the Dataset directory (default: <repo>/Dataset)",
-    )
-    parser.add_argument(
-        "--reports-dir",
-        type=Path,
-        default=Path(__file__).resolve().parent.parent / "reports",
-        help="Where to write the aggregate report (default: <repo>/reports)",
-    )
+    add_common_io_args(parser, __file__)
+    parser.add_argument("--models-file", type=Path, default=None, help="File with one model dir name per line")
     parser.add_argument("--workers", type=int, default=8, help="Parallel worker processes")
     parser.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="Per-model timeout (seconds)")
     parser.add_argument("--limit", type=int, default=None, help="Only process the first N models (for testing)")
     args = parser.parse_args()
 
-    model_dirs = find_model_dirs(args.dataset_dir)
-    if args.limit:
-        model_dirs = model_dirs[: args.limit]
-
+    model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(model_dirs)
     hypothesis_home = tempfile.mkdtemp(prefix="besser_hypothesis_db_")
     print(f"Validating {total} test suites from {args.dataset_dir} with {args.workers} workers...")
@@ -388,13 +374,7 @@ def main() -> None:
         shutil.rmtree(hypothesis_home, ignore_errors=True)
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-
-    json_path = args.reports_dir / "test_validation_report.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-
-    md_path = args.reports_dir / "test_validation_report.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, REPORT_NAME, report, render_markdown_report(report))
 
     print()
     print(f"Passed: {report['passed']}/{report['total_models']} ({(report['pass_rate'] or 0) * 100:.2f}%)")

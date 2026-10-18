@@ -56,11 +56,17 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import datetime
 import json
 import platform
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs, update_json_key  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
 
 MODEL_METADATA_FILENAME = "model_metadata.json"
 CODE_STRUCTURE_FILENAME = "code_structure.json"
@@ -79,52 +85,7 @@ REPORTED_ONLY = [
     ("attributes", "attributes"),
     ("methods", "methods"),
 ]
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
-
-
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
+RETRIABLE_STATUSES = frozenset({"error"})
 
 
 def compare_model(model_dir: Path) -> dict:
@@ -202,14 +163,7 @@ def compare_model(model_dir: Path) -> dict:
 
 
 def write_metadata(model_dir: Path, result: dict) -> bool:
-    metadata_path = model_dir / METADATA_FILENAME
-    if not metadata_path.is_file():
-        return False
-    try:
-        metadata = json.loads(metadata_path.read_text())
-    except json.JSONDecodeError:
-        return False
-    metadata[METADATA_KEY] = {
+    return update_json_key(model_dir / METADATA_FILENAME, METADATA_KEY, {
         "checked_at": result["checked_at"],
         "python_version": result["python_version"],
         "status": result["status"],
@@ -217,9 +171,7 @@ def write_metadata(model_dir: Path, result: dict) -> bool:
         "reported_deltas": result["reported_deltas"],
         "has_mismatch": result["has_mismatch"],
         "code_has_parse_error": result["code_has_parse_error"],
-    }
-    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
-    return True
+    })
 
 
 def build_report(results: list[dict]) -> dict:
@@ -293,23 +245,15 @@ def render_markdown_report(report: dict) -> str:
     for field, _ in REPORTED_ONLY:
         p = report["per_field"][field]
         lines.append(f"| {field} | {p['models_compared']} | {p['avg_delta']} |")
-    lines += [
-        "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
-    ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines.append("")
+    lines += render_status_table(report["by_status"])
     lines += ["", "Mismatched models listed in the accompanying `.json` report's `mismatched_models`."]
     return "\n".join(lines) + "\n"
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="generator_fidelity_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -323,9 +267,10 @@ def main() -> None:
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
 
-    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -336,31 +281,15 @@ def main() -> None:
     if skipped:
         print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
               f"(pass --fresh to ignore the cache and recompute everything)")
+    if retriable:
+        print(f"Auto-retrying {len(retriable)} previously-failed models from the cache")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
-    try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {executor.submit(compare_model, model_dir): model_dir for model_dir in model_dirs}
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "model_counts": None, "code_counts": None, "comparable_deltas": None,
-                        "reported_deltas": None, "has_mismatch": None, "code_has_parse_error": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                if done % 500 == 0 or done == total:
-                    print(f"  {done}/{total} compared", flush=True)
-    finally:
-        cache_file.close()
+    results = run_models(
+        compare_model, model_dirs, workers=args.workers, cache_path=cache_path,
+        results=list(cached_results.values()), already_done=skipped, total=total,
+        error_fields={"model_counts": None, "code_counts": None, "comparable_deltas": None,
+                      "reported_deltas": None, "has_mismatch": None, "code_has_parse_error": None},
+    )
 
     if args.write_metadata:
         written = 0
@@ -372,10 +301,7 @@ def main() -> None:
         print(f"Wrote {METADATA_KEY} into {written}/{len(results)} models' code_metadata.json")
 
     report = build_report(results)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Compared: {report['compared_count']}/{report['total_models']}")

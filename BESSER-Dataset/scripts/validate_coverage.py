@@ -24,7 +24,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import datetime
 import json
 import os
@@ -36,60 +35,16 @@ import tempfile
 import time
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+
 TEST_FILENAME = "test_hypothesis.py"
 SOURCE_MODULE = "python_code"
 DEFAULT_TIMEOUT = 120
-
-
-def load_cache(cache_path: Path) -> dict[str, dict]:
-    """Read a JSONL cache of previously-completed results, keyed by model name.
-
-    Tolerates a truncated last line (e.g. the process was killed mid-write)
-    by skipping any line that fails to parse.
-    """
-    cached: dict[str, dict] = {}
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            cached[result["model"]] = result
-    return cached
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- `encoding="utf-8-sig"`
-    alone only covers the UTF-8 case, not UTF-16, so a `--models-file`
-    created with plain `echo` silently corrupts the first model name AND
-    throws off line-splitting entirely (one line becomes several, since
-    UTF-16 is 2 bytes/char). Sniffs the actual BOM bytes rather than
-    guessing from one case."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
+RETRIABLE_STATUSES = frozenset({"timeout", "error"})
 
 
 def validate_model(model_dir: Path, timeout: int, hypothesis_home: str, scratch_dir: str) -> dict:
@@ -155,7 +110,7 @@ def validate_model(model_dir: Path, timeout: int, hypothesis_home: str, scratch_
         return result
 
     try:
-        cov_summary = json.loads(cov_json_path.read_text())
+        cov_summary = json.loads(cov_json_path.read_text(encoding="utf-8"))
         totals = cov_summary["totals"]
         result["num_statements"] = totals["num_statements"]
         result["covered_lines"] = totals["covered_lines"]
@@ -223,27 +178,15 @@ def render_markdown_report(report: dict) -> str:
         f"- max: {report['duration_stats_s']['max']}",
         f"- total (sum, sample only): {report['duration_stats_s']['total']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
     lines += ["", "Full per-model detail: see `coverage_prototype_report.json`."]
-    return "\n".join(l for l in lines if l is not None) + "\n"
+    return "\n".join(lines) + "\n"
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--dataset-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "Dataset",
-    )
-    parser.add_argument(
-        "--reports-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "reports",
-    )
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None, help="File with one model dir name per line")
     parser.add_argument("--report-name", type=str, default="coverage_prototype_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -256,9 +199,10 @@ def main() -> None:
     args.reports_dir.mkdir(parents=True, exist_ok=True)
     cache_path = args.reports_dir / f"{args.report_name}.cache.jsonl"
 
-    cached_results: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
+    cached_results_all: dict[str, dict] = {} if args.fresh else load_cache(cache_path)
     if args.fresh and cache_path.is_file():
         cache_path.unlink()
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -271,43 +215,23 @@ def main() -> None:
     if skipped:
         print(f"Resuming from cache: {skipped}/{total} already done, {len(model_dirs)} remaining "
               f"(pass --fresh to ignore the cache and recompute everything)")
+    if retriable:
+        print(f"Auto-retrying {len(retriable)} previously-failed models from the cache")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
     try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {
-                executor.submit(validate_model, model_dir, args.timeout, hypothesis_home, scratch_dir): model_dir
-                for model_dir in model_dirs
-            }
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "status": "error", "error_message": str(exc),
-                        "duration_s": None, "percent_covered": None, "num_statements": None,
-                        "covered_lines": None, "missing_lines": None, "returncode": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                if done % 25 == 0 or done == total:
-                    print(f"  {done}/{total} processed...")
+        results = run_models(
+            validate_model, model_dirs, worker_args=(args.timeout, hypothesis_home, scratch_dir),
+            workers=args.workers, cache_path=cache_path, results=list(cached_results.values()),
+            already_done=skipped, total=total,
+            error_fields={"duration_s": None, "percent_covered": None, "num_statements": None,
+                          "covered_lines": None, "missing_lines": None, "returncode": None},
+        )
     finally:
-        cache_file.close()
         shutil.rmtree(hypothesis_home, ignore_errors=True)
         shutil.rmtree(scratch_dir, ignore_errors=True)
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Measured: {report['measured_count']}/{report['total_models']}")

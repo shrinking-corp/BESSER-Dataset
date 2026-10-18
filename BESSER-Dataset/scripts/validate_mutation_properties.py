@@ -68,9 +68,7 @@ from __future__ import annotations
 
 import argparse
 import ast
-import concurrent.futures
 import datetime
-import json
 import os
 import platform
 import random
@@ -82,7 +80,13 @@ import tempfile
 import time
 from pathlib import Path
 
-from mutation_export import export_surviving_mutants
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.baseline import check_unmutated_suite  # noqa: E402
+from _common.cache import load_cache, partition_cache  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs, update_json_key  # noqa: E402
+from _common.pool import run_models  # noqa: E402
+from _common.report import render_status_table, write_reports  # noqa: E402
+from mutation_export import export_surviving_mutants  # noqa: E402
 
 # Overridable via --test-file/--metadata-key (see main()); read from env
 # vars rather than plain module constants because ProcessPoolExecutor
@@ -103,7 +107,6 @@ TEST_FILE_METADATA_KEYS = {
     "test_structural_full.py": "structural_mutation_validation_properties",
     "test_combined.py": "combined_mutation_validation_properties",
     "test_super_suite.py": "super_suite_mutation_validation_properties",
-    "test_combined_plus_behavioral.py": "combined_plus_behavioral_mutation_validation_properties",
 }
 DEFAULT_MAX_MUTANTS = 40
 DEFAULT_PER_MUTANT_TIMEOUT = 90.0
@@ -118,7 +121,7 @@ DEFAULT_OVERALL_TIMEOUT = 900  # hard wall-clock cap per model, seconds
 # both land in the one cache/report. "missing_file" and "no_mutants" are
 # deliberately excluded: those are permanent/legitimate terminal states, not
 # transient failures a bigger timeout or lower --workers would fix.
-RETRIABLE_STATUSES = {"timeout", "error", "init_error", "exec_error"}
+RETRIABLE_STATUSES = frozenset({"timeout", "error", "init_error", "exec_error"})
 
 
 def cosmic_ray_executable() -> str:
@@ -135,69 +138,6 @@ def cosmic_ray_executable() -> str:
     name = "cosmic-ray.exe" if platform.system() == "Windows" else "cosmic-ray"
     candidate = Path(sys.executable).parent / name
     return str(candidate) if candidate.is_file() else "cosmic-ray"
-
-
-def load_cache(cache_path: Path, expected_test_file: str | None = None) -> dict[str, dict]:
-    """Read a JSONL cache of previously-completed results, keyed by model name.
-
-    Tolerates a truncated last line (e.g. the process was killed mid-write)
-    by skipping any line that fails to parse.
-
-    If `expected_test_file` is given, a cached entry recorded against a
-    DIFFERENT test file is dropped (forced to recompute) instead of being
-    silently reused -- the real bug found 2026-09-16: two runs sharing a
-    --report-name but different --test-file values had the second run
-    reuse the first's results under its own key. Entries written before
-    this field existed (no "test_file" key) are trusted as before.
-    """
-    cached: dict[str, dict] = {}
-    stale = 0
-    if not cache_path.is_file():
-        return cached
-    with cache_path.open("r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                result = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            recorded_test_file = result.get("test_file")
-            if expected_test_file and recorded_test_file and recorded_test_file != expected_test_file:
-                stale += 1
-                continue
-            cached[result["model"]] = result
-    if stale:
-        print(f"Ignored {stale} cached result(s) recorded against a different --test-file "
-              f"than this run ({expected_test_file!r}) -- recomputing them instead of "
-              f"silently reusing stale data.")
-    return cached
-
-
-def _read_text_robust(path: Path) -> str:
-    """Reads a text file regardless of which BOM (if any) Windows wrote --
-    confirmed real (2026-10-12): PowerShell's `echo >` defaults to UTF-16LE
-    with BOM, `Out-File -Encoding utf8` defaults to UTF-8 WITH BOM (neither
-    matches plain `.read_text()`'s assumption) -- sniffs the actual BOM
-    bytes rather than assuming one encoding."""
-    raw = path.read_bytes()
-    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
-        return raw.decode("utf-16")
-    if raw.startswith(b"\xef\xbb\xbf"):
-        return raw.decode("utf-8-sig")
-    return raw.decode("utf-8")
-
-
-def find_model_dirs(dataset_dir: Path, models_file: Path | None, limit: int | None) -> list[Path]:
-    if models_file:
-        names = [l.strip() for l in _read_text_robust(models_file).splitlines() if l.strip()]
-        dirs = [dataset_dir / name for name in names]
-    else:
-        dirs = sorted(p for p in dataset_dir.iterdir() if p.is_dir())
-    if limit:
-        dirs = dirs[:limit]
-    return dirs
 
 
 def sort_longest_first(model_dirs: list[Path]) -> list[Path]:
@@ -389,11 +329,16 @@ test-command = '"{python_exe}" -m pytest {TEST_FILENAME} -x -q -p no:cacheprovid
 [cosmic-ray.distributor]
 name = "local"
 """
-        config_path.write_text(config_text)
+        config_path.write_text(config_text, encoding="utf-8")
 
         env = dict(os.environ)
         env["PYTHONDONTWRITEBYTECODE"] = "1"
         env["HYPOTHESIS_STORAGE_DIRECTORY"] = hypothesis_home
+
+        baseline = check_unmutated_suite(scratch_dir, TEST_FILENAME, env, hypothesis_seed, per_mutant_timeout)
+        if baseline is not None:
+            result["status"], result["error_message"] = baseline
+            return result
 
         cr_exe = cosmic_ray_executable()
         init_start = time.monotonic()
@@ -486,14 +431,7 @@ def write_metadata(model_dir: Path, result: dict) -> bool:
     file to already exist, never creates it, never touches any other key --
     including validate_mutation.py's own "mutation_validation" key.
     """
-    metadata_path = model_dir / METADATA_FILENAME
-    if not metadata_path.is_file():
-        return False
-    try:
-        metadata = json.loads(metadata_path.read_text())
-    except json.JSONDecodeError:
-        return False
-    metadata[METADATA_KEY] = {
+    return update_json_key(model_dir / METADATA_FILENAME, METADATA_KEY, {
         "checked_at": result["checked_at"],
         "python_version": result["python_version"],
         "status": result["status"],
@@ -504,9 +442,11 @@ def write_metadata(model_dir: Path, result: dict) -> bool:
         "killed": result["killed"],
         "survived": result["survived"],
         "mutation_score": result["mutation_score"],
-    }
-    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
-    return True
+    })
+
+
+def describe_result(result: dict) -> str:
+    return f" ({result['killed']}/{result['mutants_run']} killed)" if result.get("mutants_run") else ""
 
 
 def build_report(results: list[dict]) -> dict:
@@ -580,13 +520,8 @@ def render_markdown_report(report: dict) -> str:
         f"- max: {report['duration_stats_s']['max']}",
         f"- total (sum, sample only): {report['duration_stats_s']['total']}",
         "",
-        "## Breakdown by status",
-        "",
-        "| Status | Count |",
-        "|---|---|",
     ]
-    for status, count in sorted(report["by_status"].items(), key=lambda kv: -kv[1]):
-        lines.append(f"| {status} | {count} |")
+    lines += render_status_table(report["by_status"])
     lines += ["", "Full per-model detail: see `mutation_properties_report.json`."]
     return "\n".join(l for l in lines if l is not None) + "\n"
 
@@ -594,14 +529,7 @@ def render_markdown_report(report: dict) -> str:
 def main() -> None:
     global TEST_FILENAME, METADATA_KEY
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        "--dataset-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "Dataset",
-    )
-    parser.add_argument(
-        "--reports-dir", type=Path,
-        default=Path(__file__).resolve().parent.parent / "reports",
-    )
+    add_common_io_args(parser, __file__)
     parser.add_argument("--models-file", type=Path, default=None)
     parser.add_argument("--report-name", type=str, default="mutation_properties_report")
     parser.add_argument("--workers", type=int, default=8)
@@ -633,7 +561,7 @@ def main() -> None:
                               "@given test's example sequence fully deterministic instead of drawn "
                               "from system entropy. Off by default (every already-completed full-"
                               "dataset run stays byte-for-byte unaffected). Found necessary "
-                              "2026-10-01 for the Phase 4 sample comparison: re-running the same "
+                              "2026-10-01 for the test-generation sample comparison: re-running the same "
                               "unmodified model+suite twice with no seed gave 3 different kill "
                               "counts out of 40 mutants across 3 runs -- noise bigger than a "
                               "single-mutant fix's signal. See docs/DECISIONS.md. TODO: the "
@@ -645,14 +573,14 @@ def main() -> None:
         TEST_FILENAME = args.test_file
     if args.metadata_key:
         METADATA_KEY = args.metadata_key
-    elif args.test_file:
-        if args.test_file not in TEST_FILE_METADATA_KEYS:
-            parser.error(
-                f"--test-file {args.test_file!r} has no known default metadata key -- "
-                f"pass --metadata-key explicitly (known test files: "
-                f"{sorted(TEST_FILE_METADATA_KEYS)})"
-            )
+    elif args.test_file in TEST_FILE_METADATA_KEYS:
         METADATA_KEY = TEST_FILE_METADATA_KEYS[args.test_file]
+    elif args.test_file and args.write_metadata:
+        parser.error(
+            f"--test-file {args.test_file!r} has no known default metadata key -- "
+            f"pass --metadata-key explicitly with --write-metadata "
+            f"(known test files: {sorted(TEST_FILE_METADATA_KEYS)})"
+        )
     os.environ["VALIDATE_MUTATION_PROPERTIES_TEST_FILENAME"] = TEST_FILENAME
     os.environ["VALIDATE_MUTATION_PROPERTIES_METADATA_KEY"] = METADATA_KEY
     print(f"Test file: {TEST_FILENAME}  |  metadata key: {METADATA_KEY}")
@@ -669,8 +597,7 @@ def main() -> None:
     # too; load_cache() already made later lines win for the same model
     # name, so a fresh attempt's outcome cleanly replaces the old failure
     # once this run appends its own result line.
-    retriable = {m: r for m, r in cached_results_all.items() if r["status"] in RETRIABLE_STATUSES}
-    cached_results = {m: r for m, r in cached_results_all.items() if m not in retriable}
+    cached_results, retriable = partition_cache(cached_results_all, RETRIABLE_STATUSES)
 
     all_model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(all_model_dirs)
@@ -691,41 +618,20 @@ def main() -> None:
               f"-- same report, no separate retry run needed")
     print(f"(scratch copies under {scratch_root} -- dataset directory is never mutated in place)")
 
-    results: list[dict] = list(cached_results.values())
-    done = skipped
-    cache_file = cache_path.open("a")
     try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-            futures = {
-                executor.submit(
-                    validate_model, model_dir, args.max_mutants,
-                    args.per_mutant_timeout, args.overall_timeout, hypothesis_home, scratch_root,
-                    args.export_surviving_mutants, args.hypothesis_seed,
-                ): model_dir
-                for model_dir in model_dirs
-            }
-            for future in concurrent.futures.as_completed(futures):
-                model_dir = futures[future]
-                try:
-                    result = future.result()
-                except Exception as exc:
-                    result = {
-                        "model": model_dir.name, "test_file": TEST_FILENAME, "status": "error", "error_message": str(exc),
-                        "mutation_score": None, "total_mutants_in_file": None,
-                        "total_mutants_in_properties": None, "total_mutants_generated": None,
-                        "mutants_run": None, "killed": None, "survived": None, "other_outcomes": {},
-                        "init_duration_s": None, "exec_duration_s": None,
-                        "surviving_mutants_exported": None,
-                    }
-                results.append(result)
-                cache_file.write(json.dumps(result) + "\n")
-                cache_file.flush()
-                done += 1
-                print(f"  {done}/{total}: {model_dir.name} -> {result['status']}"
-                      + (f" ({result['killed']}/{result['mutants_run']} killed)" if result.get("mutants_run") else ""),
-                      flush=True)
+        results = run_models(
+            validate_model, model_dirs,
+            worker_args=(args.max_mutants, args.per_mutant_timeout, args.overall_timeout,
+                         hypothesis_home, scratch_root, args.export_surviving_mutants, args.hypothesis_seed),
+            workers=args.workers, cache_path=cache_path, results=list(cached_results.values()),
+            already_done=skipped, total=total, describe=describe_result,
+            error_fields={"test_file": TEST_FILENAME, "mutation_score": None, "total_mutants_in_file": None,
+                          "total_mutants_in_properties": None, "total_mutants_generated": None,
+                          "mutants_run": None, "killed": None, "survived": None, "other_outcomes": {},
+                          "init_duration_s": None, "exec_duration_s": None,
+                          "surviving_mutants_exported": None},
+        )
     finally:
-        cache_file.close()
         shutil.rmtree(hypothesis_home, ignore_errors=True)
         shutil.rmtree(scratch_root, ignore_errors=True)
 
@@ -739,11 +645,7 @@ def main() -> None:
         print(f"Wrote {METADATA_KEY} into {written}/{len(results)} models' code_metadata.json")
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-    json_path = args.reports_dir / f"{args.report_name}.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n")
-    md_path = args.reports_dir / f"{args.report_name}.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, args.report_name, report, render_markdown_report(report))
 
     print()
     print(f"Measured: {report['measured_count']}/{report['total_models']}")

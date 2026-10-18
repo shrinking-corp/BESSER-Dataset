@@ -13,8 +13,8 @@ lowest buckets with scores that don't reflect "this is an easy model" so
 much as "this model barely exists."
 
 Usage:
-    python scripts/difficulty_score_distribution.py [--dataset-dir PATH]
-        [--reports-dir PATH]
+    python scripts/difficulty_score_distribution.py [--models-file PATH]
+        [--dataset-dir PATH] [--reports-dir PATH]
 """
 from __future__ import annotations
 
@@ -22,9 +22,13 @@ import argparse
 import datetime
 import json
 import math
+import sys
 from pathlib import Path
 
-METADATA_FILENAME = "model_metadata.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.io import add_common_io_args, iter_measured_models, read_model_names  # noqa: E402
+from _common.report import write_reports  # noqa: E402
+
 LOGIC_VALIDATION_REPORT = "logic_validation_report.json"
 
 
@@ -34,22 +38,12 @@ def load_no_logic_only_models(reports_dir: Path) -> set[str]:
     return {r["model"] for r in data["results"] if r.get("status") == "no_logic"}
 
 
-def load_scores(dataset_dir: Path, excluded: set[str]) -> list[tuple[str, float]]:
-    scores: list[tuple[str, float]] = []
-    for d in sorted(dataset_dir.iterdir(), key=lambda p: p.name):
-        if d.name in excluded:
-            continue
-        p = d / METADATA_FILENAME
-        if not p.is_file():
-            continue
-        try:
-            data = json.loads(p.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            continue
-        if data.get("status") != "measured" or "difficulty_score" not in data:
-            continue
-        scores.append((d.name, float(data["difficulty_score"])))
-    return scores
+def load_scores(dataset_dir: Path, only: set[str] | None, excluded: set[str]) -> list[tuple[str, float]]:
+    return [
+        (name, float(data["difficulty_score"]))
+        for name, _path, data in iter_measured_models(dataset_dir, only)
+        if name not in excluded and "difficulty_score" in data
+    ]
 
 
 def bucket_scores(scores: list[tuple[str, float]], scale_max: int = 100) -> list[dict]:
@@ -101,14 +95,15 @@ def render_markdown_report(report: dict) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=Path(__file__).resolve().parent.parent / "Dataset")
-    parser.add_argument("--reports-dir", type=Path, default=Path(__file__).resolve().parent.parent / "reports")
+    add_common_io_args(parser, __file__)
+    parser.add_argument("--models-file", type=Path, help="Only these models (e.g. reports/usable_models.txt)")
     args = parser.parse_args()
 
     excluded = load_no_logic_only_models(args.reports_dir)
     print(f"Excluding {len(excluded)} no_logic-only models (per {LOGIC_VALIDATION_REPORT})")
 
-    scored = load_scores(args.dataset_dir, excluded)
+    only = set(read_model_names(args.models_file)) if args.models_file else None
+    scored = load_scores(args.dataset_dir, only, excluded)
     print(f"Loaded {len(scored)} measured, non-excluded models with a difficulty_score")
 
     values = sorted(s for _, s in scored)
@@ -128,11 +123,8 @@ def main() -> None:
         "max": values[-1] if values else None,
         "buckets": buckets,
     }
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-    json_path = args.reports_dir / "difficulty_score_distribution_report.json"
-    json_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    md_path = args.reports_dir / "difficulty_score_distribution_report.md"
-    md_path.write_text(render_markdown_report(report))
+    json_path, md_path = write_reports(args.reports_dir, "difficulty_score_distribution_report",
+                                       report, render_markdown_report(report))
 
     print(f"Mean: {mean:.2f}  Median: {median:.2f}  Min: {report['min']:.2f}  Max: {report['max']:.2f}")
     print(f"Reports written to {json_path} and {md_path}")

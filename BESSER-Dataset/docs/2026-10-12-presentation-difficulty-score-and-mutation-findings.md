@@ -59,6 +59,15 @@ models' rank away from a pure size-ordering — which is exactly what "agrees
 less with a size-only formula" means here. This is evidence the two scores
 measure genuinely different things, not evidence either one is wrong.
 
+> **Note (2026-10-18).** This table shows how well each option matches the
+> article, not how many components the data supports. The standard
+> retention tests, run since, keep **3** components (Kaiser and Horn's
+> parallel analysis; broken stick keeps 1), and PC3 passes the same
+> real-models check PC2 did. We still keep PC1+PC2: measured directly,
+> adding PC3 barely changes the ranking (Spearman 0.986), and the changes it
+> does make lift small enum-heavy models and pull the largest models down by
+> about 12 points. See `docs/DECISIONS.md` (2026-10-18).
+
 ### Does the 0–100 clipping distort the ranking?
 
 A related, separate check: the official score clips each component to its
@@ -326,10 +335,23 @@ exercise the real side's logic and check the stand-in updates correctly.
   killed, 2 genuinely remaining).
 - Across the full 200-model comparison sample, combined with every other
   improvement already made (a purpose-built generator + a symbolic-execution
-  library's output, merged into one suite): **77.59% → 92.66%**, a
-  **+41.81 point lift over the original baseline**, with **0 models made
-  worse** by any of it — every improvement here is purely additive, never
-  a trade-off.
+  library's output, merged into one suite): **34.52% (baseline) → 77.55%**,
+  a **+43.03 point lift**, with **188 models improved, 0 made worse, 12
+  unchanged** — every improvement here is purely additive, never a trade-off.
+
+> **Correction (2026-10-18).** An earlier version of this section reported
+> 77.59% → 92.66% (+41.81 pts over a 50.85% baseline). Those numbers were
+> inflated: several test files contained tests that fail even on the
+> original code (one kind came from our own stub-double rule, which asserted
+> the wrong thing when the stand-in holds a collection; others came from
+> CrossHair and from the dataset's own empty-method checks), and the mutation
+> tool counts any failing run as "mutant caught", giving those models a fake
+> perfect score. The measurement now refuses to score any suite that fails on
+> the original code, and failing tests are removed (and listed) before
+> measuring — the same way for the baseline, so the comparison stays fair.
+> The numbers above are the honest re-measurement. Details:
+> `docs/2026-10-11-explainer-test-generation-comparison.md` and the
+> 2026-10-18 entry in `docs/DECISIONS.md`.
 
 ### How we found this (a brief, honest aside)
 

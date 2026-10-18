@@ -1,5 +1,24 @@
 # Test-Generation Comparison Report (Stage 1)
 
+> **Correction, 2026-10-18 — every score in Sections 1–8 below is inflated.**
+> None of the measured suites were checked to pass on the unmutated code
+> first, and several contained tests that fail there (CrossHair tests of
+> Python's own `Enum`, a CrossHair `datetime` import bug, a stub-double
+> generator bug, and the dataset's own empty-method checks in the baseline).
+> cosmic-ray counts any failing run as KILLED, so those models scored a fake
+> 1.0. Honest re-measurement with every suite pruned to its passing subset
+> (same rule for both) and a baseline guard in the validator:
+>
+> | | Inflated (below) | Honest |
+> |---|---:|---:|
+> | Baseline | 50.85% | **34.52%** |
+> | Super suite | 92.66% | **77.55%** |
+> | Lift | +41.81 pts | **+43.03 pts** |
+>
+> 188 improved / 0 worsened / 12 unchanged per model. The standalone
+> Behavioral, Pynguin and CrossHair numbers were not re-measured and should be
+> read as unreliable. Full account: `docs/DECISIONS.md`, 2026-10-18.
+
 *Generated 2026-10-02. Compares four approaches to raising mutation score on a
 200-model sample, stratified by `has_logic` method count (see
 `reports/test_generation_sample_report.md` for the sampling methodology):
@@ -185,6 +204,10 @@ whole-file) was needed in the first place (see `docs/DECISIONS.md`).
 > it: **92.66% avg (200/200 measured)**, a **+41.81 pt lift** over baseline,
 > 142 improved / 0 worsened / 58 unchanged. This also resolves the second
 > Open Item below — the "unkillable floor" wasn't unconditional after all.
+>
+> **Update, 2026-10-18**: both updates above were inflated (see the
+> correction at the top). Honest: **77.55%** vs a **34.52%** baseline,
+> **+43.03 pts**, 188 improved / 0 worsened / 12 unchanged.
 
 **Combine Behavioral and CrossHair into the eventual super suite; drop
 Pynguin.**

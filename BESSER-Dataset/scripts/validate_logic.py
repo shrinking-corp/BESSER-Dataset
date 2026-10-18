@@ -51,7 +51,13 @@ import concurrent.futures
 import datetime
 import json
 import platform
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common.ast_utils import safe_parse  # noqa: E402
+from _common.io import add_common_io_args, find_model_dirs  # noqa: E402
+from _common.report import write_reports  # noqa: E402
 
 CODE_FILENAME = "python_code.py"
 METADATA_FILENAME = "code_metadata.json"
@@ -60,10 +66,6 @@ EXCLUSION_BASENAME = "excluded_models_no_logic.txt"
 
 # Statuses for which `usable` is False.
 UNUSABLE_STATUSES = {"no_logic", "syntax_error", "empty_file", "missing_file"}
-
-
-def find_model_dirs(dataset_dir: Path) -> list[Path]:
-    return sorted(p for p in dataset_dir.iterdir() if p.is_dir())
 
 
 def _decorator_names(node: ast.FunctionDef | ast.AsyncFunctionDef) -> list[str]:
@@ -133,10 +135,9 @@ def analyse_source(source: str) -> tuple[ast.Module | None, dict, str | None]:
         "branch_statements": 0,   # of those, ones introducing control flow
     }
 
-    try:
-        tree = ast.parse(source)
-    except SyntaxError as exc:
-        return None, metrics, f"{exc.msg} (line {exc.lineno})"
+    tree, syntax_error = safe_parse(source)
+    if tree is None:
+        return None, metrics, syntax_error
 
     for node in ast.walk(tree):
         if not isinstance(node, ast.ClassDef):
@@ -245,12 +246,12 @@ def write_model_metadata(model_dir: Path, validation: dict) -> None:
     data = {}
     if metadata_path.is_file():
         try:
-            data = json.loads(metadata_path.read_text())
-        except (json.JSONDecodeError, OSError):
+            data = json.loads(metadata_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
             data = {}
 
     data["logic_validation"] = {k: v for k, v in validation.items() if k != "model"}
-    metadata_path.write_text(json.dumps(data, indent=2) + "\n")
+    metadata_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
 def build_report(results: list[dict]) -> dict:
@@ -341,13 +342,11 @@ def render_markdown_report(report: dict) -> str:
 
 
 def main() -> None:
-    repo_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset-dir", type=Path, default=repo_root / "Dataset",
-                        help="Path to the Dataset directory (default: <repo>/Dataset)")
-    parser.add_argument("--reports-dir", type=Path, default=repo_root / "reports",
-                        help="Where to write the aggregate report (default: <repo>/reports)")
+    add_common_io_args(parser, __file__)
+    parser.add_argument("--models-file", type=Path, default=None,
+                        help="File with one model dir name per line (default: every model)")
     parser.add_argument("--workers", type=int, default=8, help="Parallel worker processes")
     parser.add_argument("--limit", type=int, default=None,
                         help="Only process the first N models (for testing)")
@@ -356,10 +355,7 @@ def main() -> None:
                              "code_metadata.json (default: report only, dataset untouched)")
     args = parser.parse_args()
 
-    model_dirs = find_model_dirs(args.dataset_dir)
-    if args.limit:
-        model_dirs = model_dirs[: args.limit]
-
+    model_dirs = find_model_dirs(args.dataset_dir, args.models_file, args.limit)
     total = len(model_dirs)
     mode = "writing metadata" if args.write_metadata else "dry run (reports only)"
     print(f"Analysing {total} models from {args.dataset_dir} "
@@ -380,13 +376,15 @@ def main() -> None:
         print(f"Wrote logic_validation into {total} code_metadata.json files.")
 
     report = build_report(results)
-    args.reports_dir.mkdir(parents=True, exist_ok=True)
-    (args.reports_dir / f"{REPORT_BASENAME}.json").write_text(
-        json.dumps(report, indent=2) + "\n")
-    (args.reports_dir / f"{REPORT_BASENAME}.md").write_text(
-        render_markdown_report(report))
-    (args.reports_dir / EXCLUSION_BASENAME).write_text(
-        "".join(f"{m['model']}\n" for m in report["excluded_models"]))
+    write_reports(args.reports_dir, REPORT_BASENAME, report, render_markdown_report(report))
+    # The exclusion list is canonical (other scripts read it as the full set
+    # of no-logic models) -- only a full-dataset run may rewrite it, never a
+    # --models-file/--limit subset.
+    if args.models_file is None and args.limit is None:
+        (args.reports_dir / EXCLUSION_BASENAME).write_text(
+            "".join(f"{m['model']}\n" for m in report["excluded_models"]), encoding="utf-8")
+    else:
+        print(f"Subset run -- {EXCLUSION_BASENAME} left unchanged (only a full-dataset run rewrites it).")
 
     print(f"\nUsable: {report['usable']}/{total} "
           f"({(report['usable_rate'] or 0) * 100:.2f}%)  |  "
